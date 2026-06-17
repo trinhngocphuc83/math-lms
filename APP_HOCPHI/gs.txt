@@ -1,0 +1,193 @@
+var ID_TRANG_TINH = "1wBVFdB5U8Mlu7f13C-Aoy01A-pNEKTmWzpz3Xe70K0k";
+
+function doGet(e) {
+  var html = HtmlService.createHtmlOutputFromFile('Index');
+  html.setTitle('Quản lý Học phí');
+  html.addMetaTag('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0');
+  html.setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
+  return html;
+}
+
+function loadInitialData() {
+  try {
+    var trangTinh = SpreadsheetApp.openById(ID_TRANG_TINH);
+    var trangDanhSach = trangTinh.getSheetByName("DanhSach");
+    var trangCaiDat = trangTinh.getSheetByName("CaiDat");
+    var trangDiemDanh = trangTinh.getSheetByName("DiemDanh");
+    var trangChiPhi = trangTinh.getSheetByName("ChiPhi");
+    
+    var duLieuDanhSach = trangDanhSach ? trangDanhSach.getDataRange().getDisplayValues() : [];
+    var duLieuCaiDat = trangCaiDat ? trangCaiDat.getDataRange().getDisplayValues() : [];
+    var duLieuDiemDanh = trangDiemDanh ? trangDiemDanh.getDataRange().getDisplayValues() : [];
+    var duLieuChiPhi = trangChiPhi ? trangChiPhi.getDataRange().getDisplayValues() : [];
+    
+    return {
+      trangThai: "ThanhCong",
+      danhSachHocSinh: duLieuDanhSach,
+      caiDatLop: duLieuCaiDat,
+      danhSachDiemDanh: duLieuDiemDanh,
+      danhSachChiPhi: duLieuChiPhi
+    };
+  } catch (loi) {
+    return {
+      trangThai: "Loi",
+      chiTietLoi: loi.message || loi.toString()
+    };
+  }
+}
+
+function processRequest(payloadStr) {
+  try {
+    var duLieuNhan = JSON.parse(payloadStr);
+    var loaiYeuCau = duLieuNhan.loaiYeuCau;
+    var trangTinh = SpreadsheetApp.openById(ID_TRANG_TINH);
+    
+    // TÍNH NĂNG MỚI: SỬA THÔNG TIN HỌC SINH
+    if (loaiYeuCau === "suaHocSinh") {
+      var hoTen = duLieuNhan.hoTen;
+      var lop = duLieuNhan.lop;
+      var truongMoi = duLieuNhan.truong;
+      var sdtMoi = duLieuNhan.sdt;
+      var hocPhiMoi = duLieuNhan.hocPhi;
+      
+      var trangDanhSach = trangTinh.getSheetByName("DanhSach");
+      var duLieu = trangDanhSach.getDataRange().getValues();
+      for (var i = 1; i < duLieu.length; i++) {
+        if (duLieu[i][0] === hoTen && duLieu[i][1] === lop) {
+          trangDanhSach.getRange(i + 1, 3).setValue(truongMoi); // Cột Trường
+          trangDanhSach.getRange(i + 1, 4).setValue(sdtMoi);    // Cột SĐT
+          trangDanhSach.getRange(i + 1, 5).setValue(hocPhiMoi); // Cột Học phí
+          return {thanhCong: true};
+        }
+      }
+      return {thanhCong: false, loi: "Không tìm thấy học sinh"};
+    }
+
+    if (loaiYeuCau === "thuTien") {
+      var hoTen = duLieuNhan.hoTen;
+      var lop = duLieuNhan.lop;
+      var trangThaiMoi = duLieuNhan.trangThai;
+      var trangDanhSach = trangTinh.getSheetByName("DanhSach");
+      var duLieu = trangDanhSach.getDataRange().getValues();
+      for (var i = 1; i < duLieu.length; i++) {
+        if (duLieu[i][0] === hoTen && duLieu[i][1] === lop) {
+          trangDanhSach.getRange(i + 1, 6).setValue(trangThaiMoi);
+          return {thanhCong: true};
+        }
+      }
+      return {thanhCong: false, loi: "Không tìm thấy học sinh"};
+    }
+    
+    if (loaiYeuCau === "themLop") {
+      var tenLopMoi = duLieuNhan.tenLop;
+      var hocPhiMacDinh = duLieuNhan.hocPhiMacDinh;
+      var soBuoiHoc = duLieuNhan.soBuoiHoc;
+      var trangCaiDat = trangTinh.getSheetByName("CaiDat");
+      trangCaiDat.appendRow([tenLopMoi, hocPhiMacDinh, soBuoiHoc]);
+      return {thanhCong: true};
+    }
+    
+    if (loaiYeuCau === "themHocSinh") {
+      var hsHoTen = duLieuNhan.hoTen;
+      var hsLop = duLieuNhan.lop;
+      var hsTruong = duLieuNhan.truong;
+      var hsSDT = duLieuNhan.sdt;
+      var hsHocPhi = duLieuNhan.hocPhi;
+      var trangDanhSach = trangTinh.getSheetByName("DanhSach");
+      trangDanhSach.appendRow([hsHoTen, hsLop, hsTruong, hsSDT, hsHocPhi, "Chưa đóng", "Tháng hiện tại", 0, "Đang học"]);
+      return {thanhCong: true};
+    }
+
+    if (loaiYeuCau === "xoaHocSinh") {
+      var hoTenXoa = duLieuNhan.hoTen;
+      var lopXoa = duLieuNhan.lop;
+      var trangDanhSach = trangTinh.getSheetByName("DanhSach");
+      var duLieu = trangDanhSach.getDataRange().getValues();
+      for (var i = 1; i < duLieu.length; i++) {
+        if (duLieu[i][0] === hoTenXoa && duLieu[i][1] === lopXoa) {
+          trangDanhSach.getRange(i + 1, 9).setValue("Đã nghỉ");
+          return {thanhCong: true};
+        }
+      }
+      return {thanhCong: false, loi: "Không tìm thấy học sinh để xóa"};
+    }
+
+    if (loaiYeuCau === "themChiPhi") {
+      var ngayChi = duLieuNhan.ngay;
+      var tenChiPhi = duLieuNhan.tenChiPhi;
+      var soTienChi = duLieuNhan.soTien;
+      var thangChi = duLieuNhan.thang;
+      var trangChiPhi = trangTinh.getSheetByName("ChiPhi");
+      trangChiPhi.appendRow([ngayChi, tenChiPhi, soTienChi, thangChi]);
+      return {thanhCong: true};
+    }
+
+    if (loaiYeuCau === "diemDanhNghi") {
+      var tenNghi = duLieuNhan.hoTen;
+      var lopNghi = duLieuNhan.lop;
+      var ngayNghi = duLieuNhan.ngay;
+      var coPhep = duLieuNhan.coPhep;
+      var thangNghi = duLieuNhan.thang;
+      var trangDiemDanh = trangTinh.getSheetByName("DiemDanh");
+      trangDiemDanh.appendRow([tenNghi, lopNghi, ngayNghi, coPhep, thangNghi]);
+      return {thanhCong: true};
+    }
+
+    if (loaiYeuCau === "capNhatNoCu") {
+      var hsTen = duLieuNhan.hoTen;
+      var hsLopNC = duLieuNhan.lop;
+      var tienThua = duLieuNhan.tienThua;
+      var trangDanhSach = trangTinh.getSheetByName("DanhSach");
+      var duLieu = trangDanhSach.getDataRange().getValues();
+      for (var i = 1; i < duLieu.length; i++) {
+        if (duLieu[i][0] === hsTen && duLieu[i][1] === hsLopNC) {
+          var noCuHienTai = Number(duLieu[i][7]) || 0;
+          trangDanhSach.getRange(i + 1, 8).setValue(noCuHienTai + tienThua);
+          return {thanhCong: true};
+        }
+      }
+      return {thanhCong: false, loi: "Không tìm thấy học sinh để cập nhật nợ"};
+    }
+    
+    if (loaiYeuCau === "chotSoThang") {
+      var lopChot = duLieuNhan.lop;
+      var trangDanhSachChot = trangTinh.getSheetByName("DanhSach");
+      var duLieuChot = trangDanhSachChot.getDataRange().getDisplayValues();
+      
+      for (var j = 1; j < duLieuChot.length; j++) {
+        if (duLieuChot[j][1] === lopChot && duLieuChot[j][8] !== "Đã nghỉ") {
+          var trangThaiThang = String(duLieuChot[j][5]);
+          var hocPhiThang = Number(String(duLieuChot[j][4]).replace(/[^0-9.-]+/g,"")) || 0;
+          var noCuDaCo = Number(String(duLieuChot[j][7]).replace(/[^0-9.-]+/g,"")) || 0;
+          
+          if (trangThaiThang === "Chưa đóng") {
+            trangDanhSachChot.getRange(j + 1, 8).setValue(noCuDaCo + hocPhiThang);
+          }
+          
+          trangDanhSachChot.getRange(j + 1, 6).setValue("Chưa đóng");
+        }
+      }
+      return {thanhCong: true};
+    }
+
+    if (loaiYeuCau === "giamTruDongLoat") {
+      var lopGiam = duLieuNhan.lop;
+      var soTienGiam = Number(duLieuNhan.soTienGiam) || 0;
+      var trangDanhSachGiam = trangTinh.getSheetByName("DanhSach");
+      var duLieuGiam = trangDanhSachGiam.getDataRange().getValues();
+      
+      for (var k = 1; k < duLieuGiam.length; k++) {
+        if (duLieuGiam[k][1] === lopGiam && duLieuGiam[k][8] !== "Đã nghỉ") {
+          var nCuHienTai = Number(duLieuGiam[k][7]) || 0;
+          trangDanhSachGiam.getRange(k + 1, 8).setValue(nCuHienTai - soTienGiam);
+        }
+      }
+      return {thanhCong: true};
+    }
+    
+    return {thanhCong: false, loi: "Loại yêu cầu không hợp lệ"};
+    
+  } catch (loi) {
+    return {thanhCong: false, loi: loi.message || loi.toString()};
+  }
+}

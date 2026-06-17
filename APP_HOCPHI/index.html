@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Học phí | Lớp Toán Thầy Phúc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary: #0f172a; 
+            --accent: #2563eb; 
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --purple: #8b5cf6;
+            --info: #0ea5e9;
+            --bg: #f1f5f9; 
+            --surface: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--text-main); padding-top: 75px; padding-bottom: 90px; }
+
+        header {
+            position: fixed; top: 0; width: 100%; background: var(--primary); color: white;
+            padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; z-index: 100;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .header-title { font-weight: 700; font-size: 18px; letter-spacing: 0.5px; }
+        .header-action { cursor: pointer; display: flex; align-items: center; }
+
+        main { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+
+        .dashboard-card {
+            background: var(--surface); border-radius: 20px; padding: 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04); margin-bottom: 24px;
+            border: 1px solid var(--border);
+        }
+        
+        .filter-section {
+            display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; 
+            padding-bottom: 16px; border-bottom: 1px solid var(--border);
+        }
+        .filter-item { flex: 1; min-width: 140px; }
+        .filter-item.search { flex: 2; min-width: 200px; }
+        .filter-item label { font-weight: 800; font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 8px; }
+        .filter-item select, .filter-item input {
+            width: 100%; padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border); 
+            background: var(--bg); color: var(--text-main); font-weight: 700; font-size: 15px; 
+            outline: none; font-family: inherit;
+        }
+        .filter-item input { font-weight: 500; background: #f8fafc; }
+
+        .action-section {
+            display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; align-items: center;
+        }
+        
+        .btn-action {
+            color: white; border: none; padding: 10px 16px; border-radius: 10px;
+            font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 6px;
+            transition: 0.2s; height: 44px;
+        }
+        .btn-action:hover { filter: brightness(0.9); }
+
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 15px; }
+        .stat-item { text-align: left; }
+        .stat-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+        .stat-value { font-size: 22px; font-weight: 900; line-height: 1.2; word-break: break-word; }
+
+        .student-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .student-item {
+            background: var(--surface); padding: 16px; border-radius: 16px;
+            display: flex; justify-content: space-between; align-items: center;
+            border: 1px solid var(--border);
+        }
+        
+        .student-left { display: flex; align-items: center; gap: 16px; }
+        .avatar {
+            width: 48px; height: 48px; border-radius: 50%; background: #e0e7ff; color: var(--accent);
+            display: flex; justify-content: center; align-items: center; font-weight: 800; text-transform: uppercase; flex-shrink: 0;
+        }
+        
+        .status-badge { 
+            display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; 
+            background: #fee2e2; color: var(--danger); margin-top: 6px; transition: 0.3s;
+        }
+        .status-badge.paid { background: #d1fae5; color: var(--success); }
+        .status-badge.partial { background: #fef3c7; color: #d97706; }
+
+        .student-actions { display: flex; align-items: center; }
+
+        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #e2e8f0; transition: .3s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .3s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--success); }
+        input:checked + .slider:before { transform: translateX(22px); }
+        input:disabled + .slider { opacity: 0.6; cursor: not-allowed; }
+
+        .btn-delete {
+            background: #fee2e2; color: var(--danger); border: none; width: 32px; height: 32px;
+            border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center;
+            transition: 0.2s; margin-left: 12px;
+        }
+        .btn-delete:hover { background: var(--danger); color: white; }
+
+        #loading { text-align: center; padding: 20px; font-weight: 600; color: var(--accent); }
+        .empty-state { text-align: center; color: var(--text-muted); padding: 20px; font-weight: 500; font-size: 14px; }
+
+        .fab {
+            position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px;
+            background: var(--accent); color: white; border-radius: 50%; display: flex;
+            justify-content: center; align-items: center; font-size: 32px; font-weight: 400;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); border: none; cursor: pointer; z-index: 100;
+            transition: 0.3s;
+        }
+        .fab:hover { transform: scale(1.05); }
+
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;
+            padding: 20px;
+        }
+        .modal-box {
+            background: var(--surface); width: 100%; max-width: 400px; border-radius: 20px;
+            padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); max-height: 90vh; overflow-y: auto;
+        }
+        .modal-title { font-weight: 800; margin-bottom: 20px; font-size: 18px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; }
+        .form-group input, .form-group select {
+            width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 10px;
+            font-family: inherit; font-size: 15px; outline: none; background: #f8fafc;
+        }
+        .btn-group { display: flex; gap: 12px; margin-top: 24px; }
+        .btn { flex: 1; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer; border: none; transition: 0.2s; }
+        .btn-cancel { background: #e2e8f0; color: var(--text-main); }
+        .btn-submit { background: var(--accent); color: white; }
+        .btn:disabled { opacity: 0.7; cursor: not-allowed; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-title">Lớp Toán Thầy Phúc</div>
+        <div class="header-action" onclick="openClassModal()" title="Cài đặt lớp học">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+        </div>
+    </header>
+
+    <main>
+        <div id="loading">Đang kết nối dữ liệu máy chủ Google...</div>
+
+        <div id="app-content" style="display:none;">
+            <div class="dashboard-card">
+                <div class="filter-section">
+                    <div class="filter-item">
+                        <label>CHỌN LỚP HỌC</label>
+                        <select id="class-select" onchange="renderStudents()"></select>
+                    </div>
+                    <div class="filter-item search">
+                        <label>TÌM HỌC SINH</label>
+                        <input type="text" id="search-input" placeholder="Nhập tên học sinh..." onkeyup="renderStudents()">
+                    </div>
+                </div>
+
+                <div class="action-section">
+                    <select id="export-month" style="padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border); font-weight: 700; height: 44px; outline: none; background: var(--bg);" onchange="renderStudents()">
+                        <option value="1">Tháng 1</option><option value="2">Tháng 2</option>
+                        <option value="3">Tháng 3</option><option value="4">Tháng 4</option>
+                        <option value="5">Tháng 5</option><option value="6">Tháng 6</option>
+                        <option value="7">Tháng 7</option><option value="8">Tháng 8</option>
+                        <option value="9">Tháng 9</option><option value="10">Tháng 10</option>
+                        <option value="11">Tháng 11</option><option value="12">Tháng 12</option>
+                    </select>
+                    <button class="btn-action" style="background: var(--info);" onclick="openDiscountModal()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line></svg>
+                        Giảm trừ
+                    </button>
+                    <button class="btn-action" style="background: var(--purple);" onclick="openExpenseModal()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        Chi phí
+                    </button>
+                    <button class="btn-action" style="background: var(--warning);" onclick="openAttendanceModal()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        Điểm danh
+                    </button>
+                    <button class="btn-action" style="background: var(--danger);" onclick="chotSoThang()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                        Chốt sổ
+                    </button>
+                    <button class="btn-action" style="background: var(--success);" onclick="openExportModal()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Báo cáo
+                    </button>
+                </div>
+            </div>
+
+            <div class="dashboard-card" id="finance-board">
+                <div style="font-weight: 800; font-size: 15px; color: var(--text-main); margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                    THỐNG KÊ TÀI CHÍNH THÁNG <span id="lbl-month"></span>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-label">Sĩ số (Lớp này)</div>
+                        <div class="stat-value" id="total-count" style="color:var(--text-main)">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Cần thu (Lớp này)</div>
+                        <div class="stat-value" id="unpaid-count" style="color:var(--danger)">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">Thực thu (Lớp này)</div>
+                        <div class="stat-value" id="total-revenue" style="color:var(--success)">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">TỔNG THỰC THU (Tất cả lớp)</div>
+                        <div class="stat-value" id="global-revenue" style="color:var(--purple)">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">TỔNG CHI PHÍ (Tháng này)</div>
+                        <div class="stat-value" id="total-expense" style="color:var(--danger)">0</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-label">LỢI NHUẬN RÒNG (Tháng này)</div>
+                        <div class="stat-value" id="net-profit" style="color:var(--accent)">0</div>
+                    </div>
+                </div>
+                <div style="margin-top: 24px; height: 220px; position: relative;">
+                    <canvas id="financeChart"></canvas>
+                </div>
+            </div>
+
+            <ul class="student-list" id="student-list"></ul>
+        </div>
+    </main>
+
+    <button class="fab" onclick="openStudentModal()" title="Thêm học sinh mới">+</button>
+
+    <!-- Modal Thu Tiền Tùy Chỉnh -->
+    <div id="paymentModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 350px;">
+            <div class="modal-title">Ghi nhận thanh toán</div>
+            <div style="margin-bottom: 20px; font-size: 14px; background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid #e2e8f0;">
+                <div style="margin-bottom: 8px;">Học sinh: <strong id="pay-student-name" style="color: var(--accent);"></strong></div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span>Học phí tháng này:</span> <span id="pay-fee"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+                    <span>Nợ cũ mang sang:</span> <span id="pay-old-debt"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-weight: 800; color: var(--danger); font-size: 16px;">
+                    <span>TỔNG CẦN THU:</span> <span id="pay-total-due"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Phụ huynh đóng thực tế (VNĐ)</label>
+                <input type="number" id="pay-amount-received" required style="font-weight: 800; color: var(--success); font-size: 18px;">
+            </div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-cancel" onclick="closePaymentModal()">Hủy</button>
+                <button type="button" class="btn btn-submit" id="btn-submit-payment" onclick="confirmPayment()">Xác nhận thu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Giảm Trừ Đồng Loạt -->
+    <div id="discountModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-title">Điều chỉnh học phí tháng</div>
+            <div style="margin-bottom: 16px; font-size: 14px; background: #f0fdf4; padding: 12px; border-radius: 8px; color: #166534; border: 1px solid #bbf7d0;">
+                Lớp đang chọn: <strong id="disc-class-name"></strong><br>
+                Học phí 1 buổi: <strong id="disc-session-fee">0 đ</strong>
+            </div>
+            <form onsubmit="submitDiscount(event)">
+                <div class="form-group">
+                    <label>Số buổi nghỉ trong tháng này</label>
+                    <input type="number" id="disc-sessions-off" required min="1" onkeyup="calculateDiscount()">
+                </div>
+                <div class="form-group">
+                    <label>Tổng tiền giảm trừ mỗi học sinh (VNĐ)</label>
+                    <input type="number" id="disc-total-amount" required style="font-weight: 800; color: var(--danger);" readonly>
+                </div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-cancel" onclick="closeDiscountModal()">Hủy</button>
+                    <button type="submit" class="btn btn-submit" id="btn-submit-disc">Xác nhận giảm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Chi Phí -->
+    <div id="expenseModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-title">Thêm khoản chi phí</div>
+            <div style="background: #eff6ff; border: 1px dashed #3b82f6; border-radius: 10px; padding: 12px; margin-bottom: 16px; cursor: pointer; text-align: center; color: #1d4ed8; font-weight: 700; font-size: 14px; transition: 0.2s;" onclick="autoCalculateCenterFee()" onmouseover="this.style.background='#dbeafe'" onmouseout="this.style.background='#eff6ff'">
+                ⚡ Bấm vào đây để tự động tính 10% nộp Trung tâm<br><span style="font-size: 12px; font-weight: 500;">(Dựa trên Tổng Thực Thu của TẤT CẢ các lớp)</span>
+            </div>
+            <form onsubmit="submitExpense(event)">
+                <div class="form-group"><label>Ngày chi</label><input type="date" id="exp-date" required></div>
+                <div class="form-group"><label>Tên khoản chi</label><input type="text" id="exp-name" required></div>
+                <div class="form-group"><label>Số tiền (VNĐ)</label><input type="number" id="exp-amount" required></div>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-cancel" onclick="closeExpenseModal()">Hủy</button>
+                    <button type="submit" class="btn btn-submit" id="btn-submit-exp">Lưu chi phí</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Tùy Chọn Xuất Báo Cáo -->
+    <div id="exportModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 350px; text-align: center;">
+            <div class="modal-title">Xuất báo cáo Excel</div>
+            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Thầy vui lòng chọn loại danh sách muốn tải về máy tính:</p>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <button class="btn btn-submit" style="background: var(--accent);" onclick="exportToExcel('all')">1. Danh sách TỔNG toàn lớp</button>
+                <button class="btn btn-submit" style="background: var(--success);" onclick="exportToExcel('paid')">2. Danh sách học sinh ĐÃ ĐÓNG</button>
+                <button class="btn btn-submit" style="background: var(--danger);" onclick="exportToExcel('unpaid')">3. Danh sách học sinh CHƯA ĐÓNG</button>
+            </div>
+            <button class="btn btn-cancel" style="margin-top: 20px; width: 100%;" onclick="closeExportModal()">Hủy bỏ</button>
+        </div>
+    </div>
+
+    <!-- Các Modal Phụ Khác -->
+    <div id="classModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-title">Thêm lớp học mới</div>
+            <form onsubmit="submitClass(event)">
+                <div class="form-group"><label>Tên lớp</label><input type="text" id="new-class-name" required></div>
+                <div class="form-group"><label>Học phí 1 tháng (VNĐ)</label><input type="number" id="new-class-fee" required></div>
+                <div class="form-group"><label>Số buổi học 1 tháng</label><input type="number" id="new-class-sessions" required></div>
+                <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closeClassModal()">Hủy</button><button type="submit" class="btn btn-submit" id="btn-submit-class">Lưu lớp học</button></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="studentModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-title">Thêm học sinh mới</div>
+            <form onsubmit="submitStudent(event)">
+                <div class="form-group"><label>Họ và tên</label><input type="text" id="new-student-name" required></div>
+                <div class="form-group"><label>Lớp học</label><select id="new-student-class" onchange="calculateFee()" required></select></div>
+                <div class="form-group"><label>Trường đang học</label><input type="text" id="new-student-school"></div>
+                <div class="form-group"><label>SĐT Phụ huynh</label><input type="tel" id="new-student-phone"></div>
+                <div class="form-group"><label>Ngày bắt đầu (bỏ trống nếu học từ đầu tháng)</label><input type="date" id="new-student-start-date" onchange="calculateFee()"></div>
+                <div class="form-group"><label>Mức học phí áp dụng (VNĐ)</label><input type="text" id="new-student-fee" required></div>
+                <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closeStudentModal()">Hủy</button><button type="submit" class="btn btn-submit" id="btn-submit-student">Lưu học sinh</button></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="attendanceModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 500px;">
+            <div class="modal-title">Điểm danh lớp học</div>
+            <form onsubmit="submitAttendance(event)">
+                <div class="form-group"><label>Ngày điểm danh</label><input type="date" id="att-date" required></div>
+                <div id="att-students-list" style="max-height: 300px; overflow-y: auto; margin-bottom: 20px;"></div>
+                <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closeAttendanceModal()">Hủy</button><button type="submit" class="btn btn-submit" id="btn-submit-att">Lưu điểm danh</button></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let allData = [];
+        let allCaiDat = [];
+        let allChiPhi = [];
+        let financeChart;
+        let currentPayStudent = null;
+
+        document.getElementById('export-month').value = new Date().getMonth() + 1;
+
+        // CẦU NỐI API NỘI BỘ VỚI MÁY CHỦ GOOGLE
+        function apiCall(payload) {
+            return new Promise((resolve, reject) => {
+                google.script.run
+                    .withSuccessHandler(resolve)
+                    .withFailureHandler(reject)
+                    .processRequest(JSON.stringify(payload));
+            });
+        }
+
+        function fetchInitialData() {
+            return new Promise((resolve, reject) => {
+                google.script.run
+                    .withSuccessHandler(resolve)
+                    .withFailureHandler(reject)
+                    .loadInitialData();
+            });
+        }
+
+        async function loadData() {
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('app-content').style.display = 'none';
+
+                const data = await fetchInitialData();
+                
+                allData = data.danhSachHocSinh;
+                allCaiDat = data.caiDatLop;
+                allChiPhi = data.danhSachChiPhi || [];
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('app-content').style.display = 'block';
+
+                const classes = allCaiDat.slice(1).map(item => item[0]).filter(Boolean);
+                
+                if (classes.length === 0) {
+                     document.getElementById('class-select').innerHTML = '<option value="">Chưa có lớp</option>';
+                     document.getElementById('student-list').innerHTML = '<div class="empty-state">Vui lòng bấm vào bánh răng để thêm lớp học trước.</div>';
+                     return;
+                }
+
+                const select = document.getElementById('class-select');
+                const currentSelected = select.value;
+                select.innerHTML = classes.map(c => `<option value="${c}">${c}</option>`).join('');
+                if (currentSelected && classes.includes(currentSelected)) {
+                    select.value = currentSelected;
+                }
+                
+                renderStudents();
+            } catch (error) {
+                document.getElementById('loading').innerText = "Lỗi kết nối dữ liệu! Thầy vui lòng tải lại trang.";
+            }
+        }
+
+        function renderStudents() {
+            const selectedClass = document.getElementById('class-select').value;
+            const searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+            const selectedMonth = document.getElementById('export-month').value;
+            const listElement = document.getElementById('student-list');
+            
+            document.getElementById('lbl-month').innerText = selectedMonth;
+            listElement.innerHTML = '';
+
+            if (!allData || allData.length <= 1) {
+                listElement.innerHTML = '<div class="empty-state">Lớp chưa có học sinh. Bấm dấu + để thêm.</div>';
+                updateDashboard(0, 0, 0);
+                return;
+            }
+
+            const students = allData.slice(1).filter(s => {
+                const matchClass = s[1] === selectedClass;
+                const matchStatus = s[8] !== "Đã nghỉ";
+                const matchSearch = s[0] ? s[0].toLowerCase().includes(searchTerm) : false;
+                return matchClass && matchStatus && matchSearch;
+            });
+            
+            let unpaid = 0;
+            let classRevenue = 0;
+
+            if (students.length === 0) {
+                listElement.innerHTML = '<div class="empty-state">Không tìm thấy học sinh nào phù hợp.</div>';
+            }
+
+            students.forEach((s, index) => {
+                const feeAmount = Number(String(s[4]).replace(/[^0-9.-]+/g,"")) || 0;
+                const noCu = Number(s[7]) || 0;
+                const statusStr = String(s[5]);
+                
+                let isPaid = false;
+                let paidAmount = 0;
+                let badgeClass = "status-badge";
+                let displayStatus = statusStr;
+
+                if (statusStr === "Đã thu") {
+                    isPaid = true;
+                    paidAmount = feeAmount; 
+                    badgeClass = "status-badge paid";
+                } else if (statusStr.startsWith("Thu ")) {
+                    isPaid = true; 
+                    paidAmount = Number(statusStr.replace(/[^0-9]/g, "")) || 0;
+                    badgeClass = "status-badge partial";
+                } else {
+                    unpaid++;
+                }
+                
+                classRevenue += paidAmount;
+                
+                const badgeId = 'badge-' + index;
+                const cbId = 'cb-' + index;
+
+                const li = document.createElement('li');
+                li.className = 'student-item';
+                li.innerHTML = `
+                    <div class="student-left">
+                        <div class="avatar">${s[0] ? s[0].charAt(0) : '?'}</div>
+                        <div class="student-info">
+                            <h3>${s[0]}</h3>
+                            <p>${s[2]} | Phí: ${feeAmount.toLocaleString('vi-VN')} đ | Nợ cũ: ${noCu.toLocaleString('vi-VN')} đ <span onclick="editOldDebt('${s[0]}', '${s[1]}', ${noCu})" style="cursor:pointer; font-size: 14px;" title="Chỉnh sửa thủ công nợ cũ">✏️</span></p>
+                            <span id="${badgeId}" class="${badgeClass}">${displayStatus}</span>
+                        </div>
+                    </div>
+                    <div class="student-actions">
+                        <label class="switch">
+                            <input type="checkbox" id="${cbId}" ${isPaid ? 'checked' : ''} onchange="handlePaymentToggle(this, '${s[0]}', '${s[1]}', '${badgeId}', ${feeAmount}, ${noCu})">
+                            <span class="slider"></span>
+                        </label>
+                        <button class="btn-delete" style="background: #e0e7ff; color: #2563eb; width: 40px; font-size: 11px; font-weight: 800;" onclick="sendZalo('${s[0]}', '${s[3]}', ${feeAmount+noCu})" title="Nhắn Zalo">
+                            Zalo
+                        </button>
+                        <button class="btn-delete" onclick="deleteStudent('${s[0]}', '${s[1]}')" title="Báo nghỉ học">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                        </button>
+                    </div>
+                `;
+                listElement.appendChild(li);
+            });
+
+            updateDashboard(students.length, unpaid, classRevenue);
+        }
+
+        function updateDashboard(totalStudents, unpaidCount, classRevenue) {
+            const selectedMonth = document.getElementById('export-month').value;
+            const monthStr = "Tháng " + selectedMonth;
+            
+            let globalRevenue = 0;
+            if (allData.length > 1) {
+                allData.slice(1).forEach(s => {
+                    if (s[8] !== "Đã nghỉ") {
+                        const statusStr = String(s[5]);
+                        if (statusStr === "Đã thu") {
+                            globalRevenue += Number(String(s[4]).replace(/[^0-9.-]+/g,"")) || 0;
+                        } else if (statusStr.startsWith("Thu ")) {
+                            globalRevenue += Number(statusStr.replace(/[^0-9]/g, "")) || 0;
+                        }
+                    }
+                });
+            }
+
+            let totalExpense = 0;
+            if (allChiPhi && allChiPhi.length > 1) {
+                allChiPhi.slice(1).forEach(row => {
+                    if (row[3] === monthStr || row[3] === selectedMonth) {
+                        totalExpense += Number(String(row[2]).replace(/[^0-9.-]+/g, "")) || 0;
+                    }
+                });
+            }
+
+            let netProfit = globalRevenue - totalExpense;
+
+            document.getElementById('total-count').innerText = totalStudents;
+            document.getElementById('unpaid-count').innerText = unpaidCount;
+            document.getElementById('total-revenue').innerText = classRevenue.toLocaleString('vi-VN') + ' đ';
+            
+            document.getElementById('global-revenue').innerText = globalRevenue.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('total-expense').innerText = totalExpense.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('net-profit').innerText = netProfit.toLocaleString('vi-VN') + ' đ';
+
+            drawChart(globalRevenue, totalExpense, netProfit);
+        }
+
+        function drawChart(globalRev, exp, profit) {
+            const ctx = document.getElementById('financeChart').getContext('2d');
+            if (financeChart) {
+                financeChart.destroy();
+            }
+            financeChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Tổng Thực Thu', 'Tổng Chi Phí', 'Lợi Nhuận Ròng'],
+                    datasets: [{
+                        data: [globalRev, exp, profit],
+                        backgroundColor: ['#10b981', '#ef4444', '#2563eb'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+        }
+
+        function autoCalculateCenterFee() {
+            let globalRevenue = 0;
+            allData.slice(1).forEach(s => {
+                if (s[8] !== "Đã nghỉ") {
+                    const statusStr = String(s[5]);
+                    if (statusStr === "Đã thu") {
+                        globalRevenue += Number(String(s[4]).replace(/[^0-9.-]+/g,"")) || 0;
+                    } else if (statusStr.startsWith("Thu ")) {
+                        globalRevenue += Number(statusStr.replace(/[^0-9]/g, "")) || 0;
+                    }
+                }
+            });
+
+            const centerFee = Math.round(globalRevenue * 0.1);
+            const selectedMonth = document.getElementById('export-month').value;
+            
+            document.getElementById('exp-name').value = "Trích 10% nộp Trung tâm - Tháng " + selectedMonth;
+            document.getElementById('exp-amount').value = centerFee;
+            
+            alert(`✅ Thống kê tháng ${selectedMonth}:\n\n- Tổng thực thu toàn bộ các lớp: ${globalRevenue.toLocaleString('vi-VN')} VNĐ\n- Tiền 10% trích nộp Trung tâm: ${centerFee.toLocaleString('vi-VN')} VNĐ\n\nHệ thống đã tự động điền các thông số này vào form chi phí. Thầy chỉ cần bấm "Lưu chi phí" là xong!`);
+        }
+
+        // --- XỬ LÝ GIẢM TRỪ ĐỒNG LOẠT ---
+        function openDiscountModal() {
+            const selectedClass = document.getElementById('class-select').value;
+            if (!selectedClass) {
+                alert("Vui lòng chọn lớp học để giảm trừ.");
+                return;
+            }
+            
+            const classInfo = allCaiDat.find(c => c[0] === selectedClass);
+            if (!classInfo || !classInfo[2]) {
+                alert("Lớp này chưa được cài đặt số buổi học. Vui lòng vào Cài đặt lớp để bổ sung số buổi trước.");
+                return;
+            }
+            
+            const fullFee = Number(classInfo[1]) || 0;
+            const totalSessions = Number(classInfo[2]) || 0;
+            const feePerSession = Math.round(fullFee / totalSessions);
+            
+            document.getElementById('disc-class-name').innerText = selectedClass;
+            document.getElementById('disc-session-fee').innerText = feePerSession.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('disc-sessions-off').value = '';
+            document.getElementById('disc-total-amount').value = '';
+            
+            document.getElementById('disc-sessions-off').setAttribute('data-fee', feePerSession);
+            
+            document.getElementById('discountModal').style.display = 'flex';
+        }
+
+        function closeDiscountModal() {
+            document.getElementById('discountModal').style.display = 'none';
+        }
+
+        function calculateDiscount() {
+            const sessionsOff = Number(document.getElementById('disc-sessions-off').value) || 0;
+            const feePerSession = Number(document.getElementById('disc-sessions-off').getAttribute('data-fee')) || 0;
+            document.getElementById('disc-total-amount').value = sessionsOff * feePerSession;
+        }
+
+        async function submitDiscount(event) {
+            event.preventDefault();
+            const selectedClass = document.getElementById('class-select').value;
+            const amount = Number(document.getElementById('disc-total-amount').value) || 0;
+            
+            if (!confirm(`Hệ thống sẽ tự động TÍNH TRỪ trực tiếp ${amount.toLocaleString('vi-VN')} đ vào phần Nợ cũ của tất cả học sinh lớp ${selectedClass}.\n\nThầy có chắc chắn muốn thực hiện thao tác này không?`)) {
+                return;
+            }
+
+            const btn = document.getElementById('btn-submit-disc');
+            btn.disabled = true; 
+            btn.innerText = "Đang xử lý...";
+            
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('app-content').style.display = 'none';
+            document.getElementById('loading').innerText = "Đang xử lý giảm trừ đồng loạt, thầy vui lòng đợi...";
+            
+            try {
+                const result = await apiCall({
+                    loaiYeuCau: "giamTruDongLoat", 
+                    lop: selectedClass, 
+                    soTienGiam: amount
+                });
+                
+                if(result.thanhCong) { 
+                    closeDiscountModal(); 
+                    await loadData(); 
+                    alert("Đã hoàn tất giảm trừ đồng loạt!"); 
+                } else { 
+                    alert("Hệ thống báo lỗi: " + result.loi); 
+                    await loadData(); 
+                }
+            } catch(e) { 
+                alert("Lỗi kết nối mạng."); 
+                await loadData(); 
+            } finally { 
+                btn.disabled = false; 
+                btn.innerText = "Xác nhận giảm"; 
+            }
+        }
+
+        // --- CÁC HÀM CŨ ---
+        function sendZalo(hoTen, sdt, tongCanThu) {
+            if (!sdt || String(sdt).trim() === '') {
+                alert("Em học sinh này chưa có số điện thoại phụ huynh để gửi Zalo.");
+                return;
+            }
+            const thang = document.getElementById('export-month').value;
+            const tien = tongCanThu.toLocaleString('vi-VN');
+            const msg = `🌟 THÔNG BÁO HỌC PHÍ THÁNG ${thang} 🌟\n\nKính gửi Phụ huynh em: ${hoTen}\n\nThầy Phúc xin thông báo tổng học phí tháng ${thang} (bao gồm nợ cũ nếu có) của em là:\n💰 Số tiền: ${tien} VNĐ\n\nPhụ huynh vui lòng hoàn thành học phí qua tài khoản ngân hàng dưới đây:\n🏦 Ngân hàng: LPBank\n💳 Số tài khoản: 058472850001\n👤 Chủ tài khoản: TRỊNH NGỌC PHÚC\n📝 Nội dung CK: ${hoTen} hoc phi thang ${thang}\n\nTrân trọng cảm ơn Phụ huynh đã luôn đồng hành cùng lớp học! 🌻`;
+            const rawPhone = String(sdt).replace(/[^0-9]/g, '');
+            navigator.clipboard.writeText(msg).then(() => {
+                alert("Đã copy mẫu thông báo chuyên nghiệp kèm STK ngân hàng. Thầy bấm OK để hệ thống mở Zalo, sau đó dán (Paste) vào khung chat nhé.");
+                window.open(`https://zalo.me/${rawPhone}`, '_blank');
+            }).catch(err => {
+                window.open(`https://zalo.me/${rawPhone}`, '_blank');
+            });
+        }
+
+        function handlePaymentToggle(checkbox, hoTen, lop, badgeId, feeAmount, noCu) {
+            if (checkbox.checked) {
+                checkbox.checked = false; 
+                currentPayStudent = { checkbox, hoTen, lop, badgeId, feeAmount, noCu };
+                document.getElementById('pay-student-name').innerText = hoTen;
+                document.getElementById('pay-fee').innerText = feeAmount.toLocaleString('vi-VN');
+                document.getElementById('pay-old-debt').innerText = noCu.toLocaleString('vi-VN');
+                document.getElementById('pay-total-due').innerText = (feeAmount + noCu).toLocaleString('vi-VN');
+                document.getElementById('pay-amount-received').value = feeAmount + noCu;
+                document.getElementById('paymentModal').style.display = 'flex';
+            } else {
+                if (confirm("Thầy đang hủy thanh toán. Hệ thống sẽ đổi trạng thái về Chưa đóng.\n\nLưu ý: Tiền Nợ cũ đã cộng trước đó sẽ KHÔNG tự động hoàn lại. Thầy vui lòng dùng biểu tượng cây bút chì để tự sửa lại Nợ cũ nếu cần nhé.")) {
+                    executePaymentAPI(hoTen, lop, "Chưa đóng", checkbox, 0);
+                } else {
+                    checkbox.checked = true;
+                }
+            }
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').style.display = 'none';
+            currentPayStudent = null;
+        }
+
+        function confirmPayment() {
+            if(!currentPayStudent) return;
+            const amountReceived = Number(document.getElementById('pay-amount-received').value) || 0;
+            const feeAmount = currentPayStudent.feeAmount;
+            
+            let newStatus = "";
+            if (amountReceived === feeAmount && currentPayStudent.noCu === 0) {
+                newStatus = "Đã thu";
+            } else if (amountReceived === 0) {
+                newStatus = "Chưa đóng";
+            } else {
+                newStatus = `Thu ${amountReceived.toLocaleString('vi-VN')}`;
+            }
+
+            const deltaDebt = feeAmount - amountReceived;
+            executePaymentAPI(currentPayStudent.hoTen, currentPayStudent.lop, newStatus, currentPayStudent.checkbox, deltaDebt);
+            closePaymentModal();
+        }
+
+        async function executePaymentAPI(hoTen, lop, newStatus, checkboxElem, deltaDebt) {
+            const studentData = allData.find(s => s[0] === hoTen && s[1] === lop);
+            const oldStatus = studentData ? studentData[5] : "Chưa đóng";
+            const oldNoCu = studentData ? Number(studentData[7] || 0) : 0;
+            
+            if (studentData) { studentData[5] = newStatus; studentData[7] = oldNoCu + deltaDebt; }
+            renderStudents(); 
+
+            if(checkboxElem) checkboxElem.disabled = true;
+
+            try {
+                await apiCall({ loaiYeuCau: "thuTien", hoTen: hoTen, lop: lop, trangThai: newStatus });
+                if (deltaDebt !== 0) {
+                    await apiCall({ loaiYeuCau: "capNhatNoCu", hoTen: hoTen, lop: lop, tienThua: deltaDebt });
+                }
+            } catch (error) {
+                alert("Lỗi kết nối! Không thể lưu trạng thái thanh toán.");
+                if (studentData) { studentData[5] = oldStatus; studentData[7] = oldNoCu; }
+                renderStudents();
+            } finally {
+                if(checkboxElem) checkboxElem.disabled = false;
+            }
+        }
+
+        function editOldDebt(hoTen, lop, currentNoCu) {
+            let newVal = prompt("Sửa số tiền Nợ cũ cho học sinh " + hoTen + " (VNĐ):", currentNoCu);
+            if (newVal === null || newVal.trim() === '') return;
+            let parsedVal = Number(newVal.replace(/[^0-9.-]+/g, ""));
+            if (isNaN(parsedVal)) return alert("Số tiền nhập vào không hợp lệ.");
+            let diff = parsedVal - currentNoCu;
+            if (diff !== 0) updateDebtAPI(hoTen, lop, diff);
+        }
+        
+        async function updateDebtAPI(hoTen, lop, delta) {
+            try {
+                document.getElementById('loading').style.display = 'block';
+                await apiCall({ loaiYeuCau: "capNhatNoCu", hoTen: hoTen, lop: lop, tienThua: delta });
+                const studentData = allData.find(s => s[0] === hoTen && s[1] === lop);
+                if (studentData) studentData[7] = Number(studentData[7] || 0) + delta;
+                renderStudents();
+            } catch (e) { alert("Lỗi kết nối! Không thể cập nhật nợ cũ.");
+            } finally { document.getElementById('loading').style.display = 'none'; }
+        }
+
+        async function chotSoThang() {
+            const selectedClass = document.getElementById('class-select').value;
+            const selectedMonth = document.getElementById('export-month').value;
+            if (!selectedClass) return alert("Vui lòng chọn lớp học cần chốt sổ.");
+            const confirmMsg = `Thầy lưu ý: Thầy đã xuất báo cáo Excel của tháng ${selectedMonth} để lưu trữ chưa?\n\nKhi thực hiện chốt sổ, hệ thống sẽ tự động cộng dồn học phí của những em chưa đóng vào Nợ cũ và làm mới toàn bộ danh sách về trạng thái "Chưa đóng".\n\nThầy có chắc chắn muốn chốt sổ cho lớp ${selectedClass} không?`;
+            if (!confirm(confirmMsg)) return;
+
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('app-content').style.display = 'none';
+                document.getElementById('loading').innerText = `Đang xử lý chốt sổ cho lớp ${selectedClass}...`;
+
+                const result = await apiCall({ loaiYeuCau: "chotSoThang", lop: selectedClass });
+                if (result.thanhCong) { alert(`Đã chốt sổ thành công cho lớp ${selectedClass}. Tất cả dữ liệu đã được làm mới để chuẩn bị cho tháng tiếp theo.`); await loadData(); } 
+                else { alert("Hệ thống báo lỗi: " + result.loi); await loadData(); }
+            } catch (error) { alert("Lỗi kết nối mạng hoặc lỗi đường link cập nhật."); await loadData(); }
+        }
+
+        async function deleteStudent(hoTen, lop) {
+            if (!confirm(`Thầy có chắc chắn muốn báo nghỉ học cho em ${hoTen} không?`)) return;
+            try {
+                document.getElementById('loading').style.display = 'block'; document.getElementById('app-content').style.display = 'none';
+                const result = await apiCall({ loaiYeuCau: "xoaHocSinh", hoTen: hoTen, lop: lop });
+                if (result.thanhCong) { alert(`Đã báo nghỉ thành công cho em ${hoTen}.`); await loadData(); } 
+                else { alert("Hệ thống báo lỗi: " + result.loi); await loadData(); }
+            } catch (error) { alert("Lỗi kết nối! Không thể thực hiện thao tác xóa."); await loadData(); }
+        }
+
+        function openClassModal() { document.getElementById('classModal').style.display = 'flex'; }
+        function closeClassModal() { document.getElementById('classModal').style.display = 'none'; }
+        async function submitClass(event) {
+            event.preventDefault(); const btn = document.getElementById('btn-submit-class'); btn.disabled = true;
+            try { await apiCall({ loaiYeuCau: "themLop", tenLop: document.getElementById('new-class-name').value, hocPhiMacDinh: document.getElementById('new-class-fee').value, soBuoiHoc: document.getElementById('new-class-sessions').value });
+                closeClassModal(); await loadData();
+            } catch (error) {} finally { btn.disabled = false; }
+        }
+
+        function openStudentModal() {
+            const classes = allCaiDat.slice(1).map(item => item[0]).filter(Boolean);
+            if (classes.length === 0) return alert("Cần thêm lớp học trước.");
+            document.getElementById('new-student-class').innerHTML = classes.map(c => `<option value="${c}">${c}</option>`).join('');
+            calculateFee(); document.getElementById('studentModal').style.display = 'flex';
+        }
+        function closeStudentModal() { document.getElementById('studentModal').style.display = 'none'; }
+        function calculateFee() {
+            const classInfo = allCaiDat.find(c => c[0] === document.getElementById('new-student-class').value);
+            const feeInput = document.getElementById('new-student-fee');
+            const dateInput = document.getElementById('new-student-start-date').value;
+            if (!classInfo) return; const fullFee = Number(classInfo[1]) || 0; const totalSessions = Number(classInfo[2]) || 0;
+            if (!dateInput || totalSessions === 0) { feeInput.value = fullFee; return; }
+            const startDate = new Date(dateInput); const daysInMonth = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate();
+            const remainingSessions = Math.round(((daysInMonth - startDate.getDate() + 1) / daysInMonth) * totalSessions);
+            feeInput.value = Math.round((remainingSessions * (fullFee / totalSessions)) / 1000) * 1000; 
+        }
+        async function submitStudent(event) {
+            event.preventDefault(); const btn = document.getElementById('btn-submit-student'); btn.disabled = true;
+            try { await apiCall({ loaiYeuCau: "themHocSinh", hoTen: document.getElementById('new-student-name').value, lop: document.getElementById('new-student-class').value, truong: document.getElementById('new-student-school').value, sdt: document.getElementById('new-student-phone').value, hocPhi: document.getElementById('new-student-fee').value });
+                closeStudentModal(); await loadData();
+            } catch (error) {} finally { btn.disabled = false; }
+        }
+
+        function openAttendanceModal() {
+            const sc = document.getElementById('class-select').value;
+            if (!sc) return alert("Vui lòng chọn lớp học trước.");
+            const students = allData.slice(1).filter(s => s[1] === sc && s[8] !== "Đã nghỉ");
+            if (students.length === 0) return alert("Lớp này chưa có học sinh.");
+            document.getElementById('att-date').valueAsDate = new Date();
+            document.getElementById('att-students-list').innerHTML = students.map(s => `<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #e2e8f0;"><div style="font-weight:600;">${s[0]}</div><select class="att-status" data-name="${s[0]}" data-lop="${s[1]}" style="padding:8px 12px;border-radius:8px;border:1px solid #e2e8f0;"><option value="DiHoc">Đi học</option><option value="NghiCoPhep">Nghỉ có phép</option><option value="NghiKhongPhep">Nghỉ không phép</option></select></div>`).join('');
+            document.getElementById('attendanceModal').style.display = 'flex';
+        }
+        function closeAttendanceModal() { document.getElementById('attendanceModal').style.display = 'none'; }
+        async function submitAttendance(event) {
+            event.preventDefault(); const btn = document.getElementById('btn-submit-att');
+            const dateStr = document.getElementById('att-date').value; const thang = document.getElementById('export-month').value;
+            let absences = Array.from(document.querySelectorAll('.att-status')).filter(s => s.value !== 'DiHoc');
+            if (absences.length === 0) { alert("Đã lưu điểm danh (toàn bộ đi học đủ)."); return closeAttendanceModal(); }
+            btn.disabled = true; document.getElementById('loading').style.display = 'block'; document.getElementById('app-content').style.display = 'none';
+            for (let select of absences) {
+                const status = select.value, hoTen = select.getAttribute('data-name'), lop = select.getAttribute('data-lop');
+                try {
+                    await apiCall({ loaiYeuCau: "diemDanhNghi", hoTen: hoTen, lop: lop, ngay: dateStr, coPhep: (status === 'NghiCoPhep') ? "Có" : "Không", thang: "Tháng " + thang });
+                    if (status === 'NghiCoPhep') {
+                        const classInfo = allCaiDat.find(c => c[0] === lop);
+                        if (classInfo && Number(classInfo[2]) > 0) await apiCall({ loaiYeuCau: "capNhatNoCu", hoTen: hoTen, lop: lop, tienThua: -Math.round(Number(classInfo[1]) / Number(classInfo[2])) });
+                    }
+                } catch (e) {}
+            }
+            alert(`Đã lưu xong điểm danh.`); closeAttendanceModal(); btn.disabled = false; await loadData();
+        }
+
+        function openExpenseModal() { document.getElementById('exp-date').valueAsDate = new Date(); document.getElementById('expenseModal').style.display = 'flex'; }
+        function closeExpenseModal() { document.getElementById('expenseModal').style.display = 'none'; document.getElementById('exp-name').value = ''; document.getElementById('exp-amount').value = ''; }
+        async function submitExpense(event) {
+            event.preventDefault(); const btn = document.getElementById('btn-submit-exp'); btn.disabled = true;
+            try { await apiCall({ loaiYeuCau: "themChiPhi", ngay: document.getElementById('exp-date').value, tenChiPhi: document.getElementById('exp-name').value, soTien: document.getElementById('exp-amount').value, thang: "Tháng " + document.getElementById('export-month').value });
+                closeExpenseModal(); await loadData(); alert("Lưu chi phí thành công!");
+            } catch(e) {} finally { btn.disabled = false; }
+        }
+
+        function openExportModal() { if (!document.getElementById('class-select').value) return alert("Vui lòng chọn lớp học để xuất dữ liệu."); document.getElementById('exportModal').style.display = 'flex'; }
+        function closeExportModal() { document.getElementById('exportModal').style.display = 'none'; }
+        function exportToExcel(type) {
+            const sc = document.getElementById('class-select').value; const sm = document.getElementById('export-month').value;
+            let st = allData.slice(1).filter(s => s[1] === sc && s[8] !== "Đã nghỉ");
+            if (st.length === 0) { alert("Lớp này hiện không có học sinh để xuất."); return closeExportModal(); }
+            let tN = "Tong";
+            if (type === 'paid') { st = st.filter(s => String(s[5]).includes("Thu")); tN = "Da_Dong"; } 
+            else if (type === 'unpaid') { st = st.filter(s => s[5] === "Chưa đóng"); tN = "Chua_Dong"; }
+            if (st.length === 0) return alert("Không có học sinh nào thuộc danh sách thầy vừa chọn.");
+            let csv = "\uFEFFHọ và tên,Lớp,Trường,SĐT,Học phí,Trạng thái,Tháng,Nợ cũ,Tình trạng\n";
+            st.forEach(s => { let cp = [...s]; cp[6] = `Tháng ${sm}`; csv += cp.map(i => `"${String(i).replace(/"/g, '""')}"`).join(",") + "\n"; });
+            const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' }));
+            a.download = `Danh_Sach_${tN}_${sc}_Thang_${sm}.csv`; document.body.appendChild(a); a.click(); document.body.removeChild(a); closeExportModal();
+        }
+
+        loadData();
+    </script>
+</body>
+</html>

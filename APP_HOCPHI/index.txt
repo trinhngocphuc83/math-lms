@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Học phí | Lớp Toán Thầy Phúc</title>
+    <link rel="icon" href="https://img.icons8.com/fluency/512/graduation-cap.png" type="image/png">
+    <link rel="apple-touch-icon" href="https://img.icons8.com/fluency/512/graduation-cap.png">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root { 
+            --primary: #1e40af; 
+            --primary-text: #ffffff; 
+            --accent: #2563eb; 
+            --bg: #f8fafc; 
+            --success: #10b981; 
+            --danger: #ef4444; 
+            --warning: #f59e0b; 
+            --purple: #8b5cf6; 
+            --info: #0ea5e9; 
+            --surface: #ffffff; 
+            --text-main: #0f172a; 
+            --text-muted: #64748b; 
+            --border: #e2e8f0; 
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { background: var(--bg); color: var(--text-main); padding-top: 75px; padding-bottom: 90px; }
+        
+        /* GIAO DIỆN ĐĂNG NHẬP */
+        #login-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #e0e7ff; display: flex; justify-content: center; align-items: center; z-index: 9999; }
+        .login-box { background: var(--surface); padding: 40px 30px; border-radius: 20px; box-shadow: 0 20px 40px rgba(30, 64, 175, 0.15); width: 90%; max-width: 380px; text-align: center; border: 2px solid var(--primary); }
+        .login-logo { width: 80px; height: 80px; background: #eff6ff; color: var(--primary); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 20px auto; }
+        
+        header { position: fixed; top: 0; width: 100%; background: var(--primary); color: var(--primary-text); padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; z-index: 100; box-shadow: 0 4px 20px rgba(30, 64, 175, 0.15); }
+        .header-title { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header-action { cursor: pointer; display: flex; align-items: center; color: var(--primary-text); }
+        
+        main { max-width: 800px; margin: 0 auto; padding: 24px 16px; }
+        .dashboard-card { background: var(--surface); border-radius: 20px; padding: 24px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03); margin-bottom: 24px; border: 1px solid var(--border); }
+        .filter-section { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid var(--border); }
+        .filter-item { flex: 1; min-width: 140px; }
+        .filter-item.search { flex: 2; min-width: 200px; }
+        .filter-item label { font-weight: 800; font-size: 13px; color: var(--text-muted); display: block; margin-bottom: 8px; }
+        .filter-item select, .filter-item input { width: 100%; padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface); color: var(--text-main); font-weight: 700; font-size: 15px; outline: none; font-family: inherit; transition: border-color 0.2s; }
+        .filter-item input:focus, .filter-item select:focus { border-color: var(--accent); }
+        .filter-item input { font-weight: 500; background: #f1f5f9; }
+        .action-section { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 10px; align-items: center; }
+        .btn-action { color: white; border: none; padding: 10px 16px; border-radius: 10px; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: 0.2s; height: 44px; }
+        .btn-action:hover { filter: brightness(0.9); transform: translateY(-1px); }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px 15px; }
+        .stat-item { text-align: left; }
+        .stat-label { font-size: 11px; color: var(--text-muted); font-weight: 700; text-transform: uppercase; margin-bottom: 6px; }
+        .stat-value { font-size: 22px; font-weight: 900; line-height: 1.2; word-break: break-word; color: var(--primary); }
+        .student-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .student-item { background: var(--surface); padding: 16px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border); transition: 0.2s; }
+        .student-item:hover { border-color: #cbd5e1; box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+        .student-left { display: flex; align-items: center; gap: 16px; }
+        .avatar { width: 48px; height: 48px; border-radius: 50%; background: #eff6ff; color: var(--primary); display: flex; justify-content: center; align-items: center; font-weight: 800; text-transform: uppercase; flex-shrink: 0; }
+        .status-badge { display: inline-block; padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 700; background: #fee2e2; color: var(--danger); margin-top: 6px; transition: 0.3s; }
+        .status-badge.paid { background: #dcfce7; color: var(--success); }
+        .status-badge.partial { background: #fef3c7; color: #d97706; }
+        .student-actions { display: flex; align-items: center; }
+        .switch { position: relative; display: inline-block; width: 50px; height: 28px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #e2e8f0; transition: .3s; border-radius: 34px; }
+        .slider:before { position: absolute; content: ""; height: 20px; width: 20px; left: 4px; bottom: 4px; background-color: white; transition: .3s; border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        input:checked + .slider { background-color: var(--success); }
+        input:checked + .slider:before { transform: translateX(22px); }
+        input:disabled + .slider { opacity: 0.6; cursor: not-allowed; }
+        .btn-delete { background: #fee2e2; color: var(--danger); border: none; width: 32px; height: 32px; border-radius: 8px; cursor: pointer; display: flex; justify-content: center; align-items: center; transition: 0.2s; margin-left: 12px; }
+        .btn-delete:hover { background: var(--danger); color: white; }
+        #loading { text-align: center; padding: 20px; font-weight: 600; color: var(--primary); }
+        .empty-state { text-align: center; color: var(--text-muted); padding: 20px; font-weight: 500; font-size: 14px; }
+        .fab { position: fixed; bottom: 24px; right: 24px; width: 60px; height: 60px; background: var(--accent); color: white; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 32px; font-weight: 400; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3); border: none; cursor: pointer; z-index: 100; transition: 0.3s; }
+        .fab:hover { transform: scale(1.05); background: var(--primary); }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(15, 23, 42, 0.6); z-index: 1000; justify-content: center; align-items: center; padding: 20px; backdrop-filter: blur(4px); }
+        .modal-box { background: var(--surface); width: 100%; max-width: 400px; border-radius: 20px; padding: 24px; box-shadow: 0 20px 40px rgba(0,0,0,0.2); max-height: 90vh; overflow-y: auto; }
+        .modal-title { font-weight: 800; margin-bottom: 20px; font-size: 18px; color: var(--primary); }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-align: left; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 10px; font-family: inherit; font-size: 15px; outline: none; background: #f8fafc; transition: 0.2s; }
+        .form-group input:focus, .form-group select:focus { border-color: var(--accent); background: white; }
+        .btn-group { display: flex; gap: 12px; margin-top: 24px; }
+        .btn { flex: 1; padding: 12px; border-radius: 10px; font-weight: 700; font-size: 15px; cursor: pointer; border: none; transition: 0.2s; }
+        .btn-cancel { background: #f1f5f9; color: var(--text-main); }
+        .btn-cancel:hover { background: #e2e8f0; }
+        .btn-submit { background: var(--accent); color: white; }
+        .btn-submit:hover { background: var(--primary); }
+        .btn:disabled { opacity: 0.7; cursor: not-allowed; }
+        
+        .help-text p { margin-bottom: 12px; font-size: 14px; line-height: 1.6; color: var(--text-main); text-align: justify; }
+        .help-text b { color: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <!-- MÀN HÌNH ĐĂNG NHẬP BẢO MẬT HƠN -->
+    <div id="login-screen">
+        <div class="login-box">
+            <div class="login-logo">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <h2 style="color: var(--primary); margin-bottom: 25px; font-size: 20px; font-weight: 900;">ĐĂNG NHẬP HỆ THỐNG</h2>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label>Tài khoản</label>
+                    <input type="text" id="login-user" required placeholder="Nhập tên đăng nhập...">
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu</label>
+                    <input type="password" id="login-pass" required placeholder="Nhập mật khẩu...">
+                </div>
+                <p id="login-error" style="color: var(--danger); font-size: 13px; font-weight: 600; display: none; margin-bottom: 15px;">Sai tài khoản hoặc mật khẩu!</p>
+                <button type="submit" class="btn btn-submit" style="width: 100%; margin-top: 10px; padding: 14px;">Mở khóa ứng dụng</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- KHU VỰC ỨNG DỤNG CHÍNH -->
+    <div id="app-wrapper" style="display: none;">
+        <header>
+            <div class="header-title">Lớp Toán Thầy Phúc</div>
+            <div class="header-action">
+                <svg onclick="openHelpModal()" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 18px;" title="Hướng dẫn sử dụng"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                <svg onclick="openClassModal()" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" title="Cài đặt lớp học"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </div>
+        </header>
+
+        <main>
+            <div id="loading">Đang kết nối dữ liệu máy chủ Google...</div>
+
+            <div id="app-content" style="display:none;">
+                <div class="dashboard-card">
+                    <div class="filter-section">
+                        <div class="filter-item">
+                            <label>CHỌN LỚP HỌC</label>
+                            <select id="class-select" onchange="renderStudents()"></select>
+                        </div>
+                        <div class="filter-item search">
+                            <label>TÌM HỌC SINH</label>
+                            <input type="text" id="search-input" placeholder="Nhập tên học sinh..." onkeyup="renderStudents()">
+                        </div>
+                    </div>
+
+                    <div class="action-section">
+                        <select id="export-month" style="padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border); font-weight: 700; height: 44px; outline: none; background: var(--surface);" onchange="renderStudents()">
+                            <option value="1">Tháng 1</option><option value="2">Tháng 2</option>
+                            <option value="3">Tháng 3</option><option value="4">Tháng 4</option>
+                            <option value="5">Tháng 5</option><option value="6">Tháng 6</option>
+                            <option value="7">Tháng 7</option><option value="8">Tháng 8</option>
+                            <option value="9">Tháng 9</option><option value="10">Tháng 10</option>
+                            <option value="11">Tháng 11</option><option value="12">Tháng 12</option>
+                        </select>
+                        <button class="btn-action" style="background: var(--info);" onclick="openDiscountModal()">Giảm trừ</button>
+                        <button class="btn-action" style="background: var(--purple);" onclick="openExpenseModal()">Chi phí</button>
+                        <button class="btn-action" style="background: var(--warning);" onclick="openAttendanceModal()">Điểm danh</button>
+                        <button class="btn-action" style="background: var(--danger);" onclick="chotSoThang()">Chốt sổ</button>
+                        <button class="btn-action" style="background: var(--primary);" onclick="openExportModal()">Báo cáo</button>
+                    </div>
+                </div>
+
+                <div class="dashboard-card" id="finance-board">
+                    <div style="font-weight: 800; font-size: 15px; color: var(--primary); margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+                        THỐNG KÊ TÀI CHÍNH THÁNG <span id="lbl-month"></span>
+                    </div>
+                    <div class="stats-grid">
+                        <div class="stat-item"><div class="stat-label">Sĩ số (Lớp này)</div><div class="stat-value" id="total-count" style="color:var(--text-main)">0</div></div>
+                        <div class="stat-item"><div class="stat-label">Cần thu (Lớp này)</div><div class="stat-value" id="unpaid-count" style="color:var(--danger)">0</div></div>
+                        <div class="stat-item"><div class="stat-label">Thực thu (Lớp này)</div><div class="stat-value" id="total-revenue" style="color:var(--success)">0</div></div>
+                        <div class="stat-item"><div class="stat-label">TỔNG THỰC THU (Tất cả lớp)</div><div class="stat-value" id="global-revenue" style="color:var(--purple)">0</div></div>
+                        <div class="stat-item"><div class="stat-label">TỔNG CHI PHÍ (Tháng này)</div><div class="stat-value" id="total-expense" style="color:var(--danger)">0</div></div>
+                        <div class="stat-item"><div class="stat-label">LỢI NHUẬN RÒNG (Tháng này)</div><div class="stat-value" id="net-profit" style="color:var(--accent)">0</div></div>
+                    </div>
+                    <div style="margin-top: 24px; height: 220px; position: relative;">
+                        <canvas id="financeChart"></canvas>
+                    </div>
+                </div>
+
+                <ul class="student-list" id="student-list"></ul>
+            </div>
+        </main>
+
+        <button class="fab" onclick="openStudentModal()" title="Thêm học sinh mới">+</button>
+    </div> <!-- Hết App Wrapper -->
+
+    <!-- Modal Hướng Dẫn Sử Dụng -->
+    <div id="helpModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 450px;">
+            <div class="modal-title">📖 Hướng dẫn sử dụng</div>
+            <div class="help-text">
+                <p><b>1. Cài đặt Lớp học:</b> Bấm biểu tượng ⚙️ (bánh răng) ở góc trên bên phải để tạo danh sách lớp và thiết lập Học phí gốc / Số buổi học.</p>
+                <p><b>2. Thêm Học sinh:</b> Bấm nút <b>+</b> (dấu cộng) màu xanh ở góc dưới bên phải để thêm học sinh vào lớp đã tạo.</p>
+                <p><b>3. Thu tiền:</b> Gạt công tắc (nút trượt) cạnh tên học sinh. Nếu phụ huynh đóng thiếu, hãy nhập số tiền thực tế, phần thiếu sẽ tự động chuyển vào Nợ cũ.</p>
+                <p><b>4. Điểm danh:</b> Ghi nhận học sinh vắng. Học sinh vắng có phép sẽ <b>không</b> tự động trừ tiền ngay, giúp thầy linh hoạt trừ tay vào cuối tháng.</p>
+                <p><b>5. Giảm trừ:</b> Dùng để trừ nợ cũ đồng loạt cho cả lớp (Ví dụ lớp nghỉ lễ chung 1 buổi).</p>
+                <p><b>6. Chốt sổ:</b> Bấm vào ngày cuối cùng của tháng. Hệ thống sẽ gom tất cả tiền "Chưa đóng" của tháng này cộng dồn vào Nợ cũ, và làm mới danh sách cho tháng sau.</p>
+                <p><b>7. Báo cáo & Zalo:</b> Nút Zalo nhỏ sẽ tự copy mẫu tin nhắn gửi cá nhân. Nút Báo Cáo lớn giúp xuất file Excel hoặc Ảnh báo cáo để gửi vào nhóm lớp.</p>
+            </div>
+            <button class="btn btn-cancel" style="margin-top: 20px; width: 100%;" onclick="closeHelpModal()">Đã hiểu và Đóng</button>
+        </div>
+    </div>
+
+    <!-- Modal Thu Tiền -->
+    <div id="paymentModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 350px;">
+            <div class="modal-title">Ghi nhận thanh toán</div>
+            <div style="margin-bottom: 20px; font-size: 14px; background: #f8fafc; padding: 15px; border-radius: 10px; border: 1px solid var(--border);">
+                <div style="margin-bottom: 8px;">Học sinh: <strong id="pay-student-name" style="color: var(--primary);"></strong></div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Học phí tháng này:</span> <span id="pay-fee"></span></div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 4px;"><span>Nợ cũ mang sang:</span> <span id="pay-old-debt"></span></div>
+                <div style="display: flex; justify-content: space-between; margin-top: 8px; padding-top: 8px; border-top: 1px dashed #cbd5e1; font-weight: 800; color: var(--danger); font-size: 16px;">
+                    <span>TỔNG CẦN THU:</span> <span id="pay-total-due"></span>
+                </div>
+            </div>
+            <div class="form-group"><label>Phụ huynh đóng thực tế (VNĐ)</label><input type="number" id="pay-amount-received" required style="font-weight: 800; color: var(--success); font-size: 18px;"></div>
+            <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closePaymentModal()">Hủy</button><button type="button" class="btn btn-submit" id="btn-submit-payment" onclick="confirmPayment()">Xác nhận thu</button></div>
+        </div>
+    </div>
+
+    <!-- Modal Giảm Trừ -->
+    <div id="discountModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-title">Điều chỉnh học phí tháng</div>
+            <div style="margin-bottom: 16px; font-size: 14px; background: #f0fdf4; padding: 12px; border-radius: 8px; color: #166534; border: 1px solid #bbf7d0;">
+                Lớp đang chọn: <strong id="disc-class-name"></strong><br>
+                Học phí 1 buổi: <strong id="disc-session-fee">0 đ</strong>
+            </div>
+            <form onsubmit="submitDiscount(event)">
+                <div class="form-group"><label>Số buổi nghỉ trong tháng này</label><input type="number" id="disc-sessions-off" required min="1" onkeyup="calculateDiscount()"></div>
+                <div class="form-group"><label>Tổng tiền giảm trừ (VNĐ)</label><input type="number" id="disc-total-amount" required style="font-weight: 800; color: var(--danger);" readonly></div>
+                <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closeDiscountModal()">Hủy</button><button type="submit" class="btn btn-submit" id="btn-submit-disc">Xác nhận giảm</button></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Chi Phí -->
+    <div id="expenseModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-title">Thêm khoản chi phí</div>
+            <div style="background: #eff6ff; border: 1px dashed #3b82f6; border-radius: 10px; padding: 12px; margin-bottom: 16px; cursor: pointer; text-align: center; color: #1d4ed8; font-weight: 700; font-size: 14px; transition: 0.2s;" onclick="autoCalculateCenterFee()">
+                ⚡ Bấm vào đây để tự động tính 10% nộp Trung tâm<br><span style="font-size: 12px; font-weight: 500;">(Dựa trên Tổng Thực Thu của TẤT CẢ các lớp)</span>
+            </div>
+            <form onsubmit="submitExpense(event)">
+                <div class="form-group"><label>Ngày chi</label><input type="date" id="exp-date" required></div>
+                <div class="form-group"><label>Tên khoản chi</label><input type="text" id="exp-name" required></div>
+                <div class="form-group"><label>Số tiền (VNĐ)</label><input type="number" id="exp-amount" required></div>
+                <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closeExpenseModal()">Hủy</button><button type="submit" class="btn btn-submit" id="btn-submit-exp">Lưu chi phí</button></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Báo Cáo -->
+    <div id="exportModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 380px; text-align: center;">
+            <div class="modal-title">Xuất báo cáo</div>
+            <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Thầy vui lòng chọn loại danh sách muốn tải về:</p>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <button class="btn btn-submit" style="background: var(--text-main); color: white;" onclick="exportToExcel('all')">1. Danh sách TỔNG toàn lớp (Excel)</button>
+                <button class="btn btn-submit" style="background: var(--success); color: white;" onclick="exportToExcel('paid')">2. Danh sách học sinh ĐÃ ĐÓNG (Excel)</button>
+                <button class="btn btn-submit" style="background: var(--danger); color: white;" onclick="exportToExcel('unpaid')">3. Danh sách học sinh CHƯA ĐÓNG (Excel)</button>
+                <button class="btn btn-submit" style="background: var(--primary); color: white; border-top: 2px dashed #93c5fd; margin-top: 10px; padding-top: 15px; font-weight: 800;" onclick="exportToExcel('parent')">⭐ 4. Báo cáo gửi Phụ huynh (Bản Excel)</button>
+                <button class="btn btn-submit" style="background: #0ea5e9; color: white; font-weight: 800;" onclick="exportFeeReportToImage()">📸 5. Báo cáo gửi Phụ huynh (Bản Ảnh Zalo)</button>
+            </div>
+            <button class="btn btn-cancel" style="margin-top: 20px; width: 100%;" onclick="closeExportModal()">Hủy bỏ</button>
+        </div>
+    </div>
+
+    <!-- Modal Cài Đặt Lớp -->
+    <div id="classModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-title">Thêm lớp học mới</div>
+            <form onsubmit="submitClass(event)">
+                <div class="form-group"><label>Tên lớp</label><input type="text" id="new-class-name" required></div>
+                <div class="form-group"><label>Học phí 1 tháng (VNĐ)</label><input type="number" id="new-class-fee" required></div>
+                <div class="form-group"><label>Số buổi học 1 tháng</label><input type="number" id="new-class-sessions" required></div>
+                <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closeClassModal()">Hủy</button><button type="submit" class="btn btn-submit" id="btn-submit-class">Lưu lớp học</button></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Học Sinh -->
+    <div id="studentModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-title">Thêm học sinh mới</div>
+            <form onsubmit="submitStudent(event)">
+                <div class="form-group"><label>Họ và tên</label><input type="text" id="new-student-name" required></div>
+                <div class="form-group"><label>Lớp học</label><select id="new-student-class" onchange="calculateFee()" required></select></div>
+                <div class="form-group"><label>Trường đang học</label><input type="text" id="new-student-school"></div>
+                <div class="form-group"><label>SĐT Phụ huynh</label><input type="tel" id="new-student-phone"></div>
+                <div class="form-group"><label>Ngày bắt đầu (bỏ trống nếu học từ đầu tháng)</label><input type="date" id="new-student-start-date" onchange="calculateFee()"></div>
+                <div class="form-group"><label>Mức học phí áp dụng (VNĐ)</label><input type="text" id="new-student-fee" required></div>
+                <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closeStudentModal()">Hủy</button><button type="submit" class="btn btn-submit" id="btn-submit-student">Lưu học sinh</button></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Sửa TT Học Sinh -->
+    <div id="editStudentModal" class="modal-overlay">
+        <div class="modal-box">
+            <div class="modal-title">Sửa thông tin học sinh</div>
+            <div style="margin-bottom: 16px; font-size: 14px; background: #eff6ff; padding: 12px; border-radius: 8px; color: var(--primary); border: 1px solid #bfdbfe;">
+                Học sinh: <strong id="edit-student-name-display"></strong><br>
+                Lớp: <strong id="edit-student-class-display"></strong>
+            </div>
+            <form onsubmit="submitEditStudent(event)">
+                <input type="hidden" id="edit-student-name">
+                <input type="hidden" id="edit-student-class">
+                <div class="form-group"><label>Trường đang học</label><input type="text" id="edit-student-school"></div>
+                <div class="form-group"><label>SĐT Phụ huynh</label><input type="tel" id="edit-student-phone"></div>
+                <div class="form-group"><label>Mức học phí áp dụng (VNĐ)</label><input type="text" id="edit-student-fee" required></div>
+                <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closeEditStudentModal()">Hủy</button><button type="submit" class="btn btn-submit" id="btn-submit-edit">Lưu thay đổi</button></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Điểm Danh -->
+    <div id="attendanceModal" class="modal-overlay">
+        <div class="modal-box" style="max-width: 500px;">
+            <div class="modal-title">Điểm danh lớp học</div>
+            <form onsubmit="submitAttendance(event)">
+                <div class="form-group"><label>Ngày điểm danh</label><input type="date" id="att-date" required></div>
+                <div id="att-students-list" style="max-height: 300px; overflow-y: auto; margin-bottom: 20px;"></div>
+                <div class="btn-group"><button type="button" class="btn btn-cancel" onclick="closeAttendanceModal()">Hủy</button><button type="submit" class="btn btn-submit" id="btn-submit-att">Lưu điểm danh & Tải Ảnh</button></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- KHU VỰC ẨN: HTML2CANVAS -->
+    <div style="position: fixed; left: -9999px; top: 0;">
+        <div id="attendance-report-ticket" style="background: #ffffff; padding: 25px; width: 450px; border-radius: 12px; border: 3px solid #1e40af; font-family: 'Inter', sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+            <div style="text-align: center; border-bottom: 2px dashed #cbd5e1; padding-bottom: 15px; margin-bottom: 20px;">
+                <h2 style="color: #1e40af; font-size: 22px; margin-bottom: 5px; font-weight: 900; text-transform: uppercase;">Báo Cáo Điểm Danh</h2>
+                <h3 id="ticket-class" style="color: #0f172a; font-size: 18px; font-weight: 800; margin-bottom: 5px;">LỚP: ...</h3>
+                <p id="ticket-date" style="color: #64748b; font-size: 14px; font-weight: 600;">Ngày: ...</p>
+            </div>
+            <div style="display: flex; justify-content: space-around; margin-bottom: 20px; background: #f8fafc; padding: 15px; border-radius: 10px;">
+                <div style="text-align: center;"><div style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase;">Sĩ số</div><div id="ticket-total" style="font-size: 20px; font-weight: 900; color: #1e40af;">0</div></div>
+                <div style="text-align: center;"><div style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase;">Đi học</div><div id="ticket-present" style="font-size: 20px; font-weight: 900; color: #059669;">0</div></div>
+                <div style="text-align: center;"><div style="font-size: 12px; color: #64748b; font-weight: 700; text-transform: uppercase;">Vắng mặt</div><div id="ticket-absent" style="font-size: 20px; font-weight: 900; color: #dc2626;">0</div></div>
+            </div>
+            <div id="ticket-absent-list" style="min-height: 80px;"></div>
+            <div style="text-align: center; margin-top: 25px; padding-top: 15px; border-top: 1px solid #e2e8f0; font-size: 13px; color: #94a3b8; font-weight: 600;">Phần mềm Quản lý Lớp học | Thầy Phúc</div>
+        </div>
+
+        <div id="fee-report-ticket" style="background: #ffffff; padding: 25px; width: 700px; border-radius: 12px; border: 3px solid #1e40af; font-family: 'Inter', sans-serif; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="color: #1e40af; font-size: 24px; margin-bottom: 5px; font-weight: 900; text-transform: uppercase;">THÔNG BÁO HỌC PHÍ THÁNG <span id="fee-ticket-month">...</span></h2>
+                <h3 id="fee-ticket-class" style="color: #0f172a; font-size: 18px; font-weight: 800;">LỚP: ...</h3>
+            </div>
+            <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
+                <thead>
+                    <tr>
+                        <th style="background: #1e40af; color: white; padding: 10px; border: 1px solid #94a3b8; width: 50px;">STT</th>
+                        <th style="background: #1e40af; color: white; padding: 10px; border: 1px solid #94a3b8; width: 250px;">HỌ VÀ TÊN</th>
+                        <th style="background: #1e40af; color: white; padding: 10px; border: 1px solid #94a3b8; width: 150px;">TỔNG CẦN THU</th>
+                        <th style="background: #1e40af; color: white; padding: 10px; border: 1px solid #94a3b8; width: 150px;">TRẠNG THÁI</th>
+                    </tr>
+                </thead>
+                <tbody id="fee-ticket-table-body"></tbody>
+            </table>
+            <div style="text-align: center; padding-top: 15px; border-top: 1px solid #e2e8f0; font-size: 13px; color: #94a3b8; font-weight: 600;">Phần mềm Quản lý Lớp học | Thầy Phúc</div>
+        </div>
+    </div>
+
+    <script>
+        var allData = [];
+        var allCaiDat = [];
+        var allChiPhi = [];
+        var financeChart;
+        var currentPayStudent = null;
+        var currentStudents = []; 
+
+        document.getElementById('export-month').value = new Date().getMonth() + 1;
+
+        // XỬ LÝ ĐĂNG NHẬP BẢO MẬT
+        function handleLogin(event) {
+            event.preventDefault();
+            var user = document.getElementById('login-user').value.trim();
+            var pass = document.getElementById('login-pass').value.trim();
+            
+            if(user === 'admin' && pass === 'Thuphuc@123') {
+                document.getElementById('login-screen').style.display = 'none';
+                document.getElementById('app-wrapper').style.display = 'block';
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+
+        function openHelpModal() { document.getElementById('helpModal').style.display = 'flex'; }
+        function closeHelpModal() { document.getElementById('helpModal').style.display = 'none'; }
+
+        function apiCall(payload) {
+            return new Promise(function(resolve, reject) {
+                google.script.run
+                    .withSuccessHandler(resolve)
+                    .withFailureHandler(reject)
+                    .processRequest(JSON.stringify(payload));
+            });
+        }
+
+        function fetchInitialData() {
+            return new Promise(function(resolve, reject) {
+                google.script.run
+                    .withSuccessHandler(resolve)
+                    .withFailureHandler(reject)
+                    .loadInitialData();
+            });
+        }
+
+        async function loadData() {
+            try {
+                document.getElementById('loading').style.display = 'block';
+                document.getElementById('app-content').style.display = 'none';
+
+                var data = await fetchInitialData();
+                if(data && data.trangThai === "Loi") {
+                    alert("Lỗi từ file Excel: " + data.chiTietLoi);
+                    document.getElementById('loading').innerText = "Lỗi kết nối Excel. Hãy kiểm tra tên các Sheet.";
+                    return;
+                }
+
+                allData = data.danhSachHocSinh || [];
+                allCaiDat = data.caiDatLop || [];
+                allChiPhi = data.danhSachChiPhi || [];
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('app-content').style.display = 'block';
+
+                var classes = allCaiDat.slice(1).map(function(item) { return item[0]; }).filter(Boolean);
+                
+                if (classes.length === 0) {
+                     document.getElementById('class-select').innerHTML = '<option value="">Chưa có lớp</option>';
+                     document.getElementById('student-list').innerHTML = '<div class="empty-state">Vui lòng bấm vào bánh răng để thêm lớp học.</div>';
+                     return;
+                }
+
+                var select = document.getElementById('class-select');
+                var currentSelected = select.value;
+                
+                var optionsHtml = "";
+                classes.forEach(function(c) {
+                    optionsHtml += '<option value="' + c + '">' + c + '</option>';
+                });
+                select.innerHTML = optionsHtml;
+                
+                if (currentSelected && classes.indexOf(currentSelected) > -1) {
+                    select.value = currentSelected;
+                }
+                
+                renderStudents();
+            } catch (error) {
+                alert("Lỗi tải dữ liệu: " + error.message);
+                document.getElementById('loading').innerText = "Lỗi kết nối dữ liệu! Vui lòng tải lại trang.";
+            }
+        }
+
+        function renderStudents() {
+            var selectedClass = document.getElementById('class-select').value;
+            var searchTerm = document.getElementById('search-input').value.toLowerCase().trim();
+            var selectedMonth = document.getElementById('export-month').value;
+            var listElement = document.getElementById('student-list');
+            
+            document.getElementById('lbl-month').innerText = selectedMonth;
+            listElement.innerHTML = '';
+
+            if (!allData || allData.length <= 1) {
+                listElement.innerHTML = '<div class="empty-state">Lớp chưa có học sinh. Bấm dấu + để thêm.</div>';
+                updateDashboard(0, 0, 0);
+                return;
+            }
+
+            currentStudents = allData.slice(1).filter(function(s) {
+                var matchClass = s[1] === selectedClass;
+                var matchStatus = s[8] !== "Đã nghỉ";
+                var matchSearch = s[0] ? s[0].toLowerCase().indexOf(searchTerm) > -1 : false;
+                return matchClass && matchStatus && matchSearch;
+            });
+            
+            var unpaid = 0;
+            var classRevenue = 0;
+
+            if (currentStudents.length === 0) {
+                listElement.innerHTML = '<div class="empty-state">Không tìm thấy học sinh nào phù hợp.</div>';
+            }
+
+            var htmlContent = "";
+
+            currentStudents.forEach(function(s, index) {
+                var feeAmount = Number(String(s[4]).replace(/[^0-9.-]+/g,"")) || 0;
+                var noCu = Number(s[7]) || 0;
+                var statusStr = String(s[5]);
+                
+                var isPaid = false;
+                var paidAmount = 0;
+                var badgeClass = "status-badge";
+                var displayStatus = statusStr;
+
+                if (statusStr === "Đã thu") {
+                    isPaid = true;
+                    paidAmount = feeAmount; 
+                    badgeClass = "status-badge paid";
+                } else if (statusStr.indexOf("Thu ") === 0) {
+                    isPaid = true; 
+                    paidAmount = Number(statusStr.replace(/[^0-9]/g, "")) || 0;
+                    badgeClass = "status-badge partial";
+                } else {
+                    unpaid++;
+                }
+                
+                classRevenue += paidAmount;
+                
+                var badgeId = 'badge-' + index;
+                var cbId = 'cb-' + index;
+                var avatar = s[0] ? s[0].charAt(0) : '?';
+
+                htmlContent += '<li class="student-item">' +
+                    '<div class="student-left">' +
+                        '<div class="avatar">' + avatar + '</div>' +
+                        '<div class="student-info">' +
+                            '<h3 style="font-size: 15px; font-weight: 700; margin-bottom: 4px; color: var(--text-main);">' + s[0] + ' ' +
+                            '<span onclick="openEditStudentModal(' + index + ')" style="cursor:pointer; font-size: 12px; color: var(--accent); font-weight: normal; margin-left: 5px; text-decoration: none;" title="Sửa thông tin cá nhân">[Sửa TT]</span></h3>' +
+                            '<p style="font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">' + s[2] + ' | Phí: ' + feeAmount.toLocaleString('vi-VN') + ' đ | Nợ cũ: ' + noCu.toLocaleString('vi-VN') + ' đ <span onclick="editOldDebt(' + index + ')" style="cursor:pointer; font-size: 13px; font-weight:700; color:var(--accent);" title="Sửa nợ cũ">[Sửa nợ]</span></p>' +
+                            '<span id="' + badgeId + '" class="' + badgeClass + '">' + displayStatus + '</span>' +
+                        '</div>' +
+                    '</div>' +
+                    '<div class="student-actions">' +
+                        '<label class="switch">' +
+                            '<input type="checkbox" id="' + cbId + '" ' + (isPaid ? 'checked' : '') + ' onchange="handlePaymentToggle(this, ' + index + ', \'' + badgeId + '\', ' + feeAmount + ', ' + noCu + ')">' +
+                            '<span class="slider"></span>' +
+                        '</label>' +
+                        '<button class="btn-delete" style="background: #eff6ff; color: var(--accent); width: 40px; font-size: 11px; font-weight: 800;" onclick="sendZalo(' + index + ', ' + (feeAmount+noCu) + ')" title="Nhắn Zalo">Zalo</button>' +
+                        '<button class="btn-delete" onclick="deleteStudent(' + index + ')" title="Báo nghỉ học">' +
+                            '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>' +
+                        '</button>' +
+                    '</div>' +
+                '</li>';
+            });
+            
+            listElement.innerHTML = htmlContent;
+            updateDashboard(currentStudents.length, unpaid, classRevenue);
+        }
+
+        function updateDashboard(totalStudents, unpaidCount, classRevenue) {
+            var selectedMonth = document.getElementById('export-month').value;
+            var monthStr = "Tháng " + selectedMonth;
+            var globalRevenue = 0;
+            if (allData.length > 1) {
+                allData.slice(1).forEach(function(s) {
+                    if (s[8] !== "Đã nghỉ") {
+                        var statusStr = String(s[5]);
+                        if (statusStr === "Đã thu") globalRevenue += Number(String(s[4]).replace(/[^0-9.-]+/g,"")) || 0;
+                        else if (statusStr.indexOf("Thu ") === 0) globalRevenue += Number(statusStr.replace(/[^0-9]/g, "")) || 0;
+                    }
+                });
+            }
+
+            var totalExpense = 0;
+            if (allChiPhi && allChiPhi.length > 1) {
+                allChiPhi.slice(1).forEach(function(row) {
+                    if (row[3] === monthStr || row[3] === selectedMonth) totalExpense += Number(String(row[2]).replace(/[^0-9.-]+/g, "")) || 0;
+                });
+            }
+
+            var netProfit = globalRevenue - totalExpense;
+            document.getElementById('total-count').innerText = totalStudents;
+            document.getElementById('unpaid-count').innerText = unpaidCount;
+            document.getElementById('total-revenue').innerText = classRevenue.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('global-revenue').innerText = globalRevenue.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('total-expense').innerText = totalExpense.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('net-profit').innerText = netProfit.toLocaleString('vi-VN') + ' đ';
+            drawChart(globalRevenue, totalExpense, netProfit);
+        }
+
+        function drawChart(globalRev, exp, profit) {
+            var ctx = document.getElementById('financeChart').getContext('2d');
+            if (financeChart) financeChart.destroy();
+            financeChart = new Chart(ctx, {
+                type: 'bar',
+                data: { labels: ['Tổng Thực Thu', 'Tổng Chi Phí', 'Lợi Nhuận Ròng'], datasets: [{ data: [globalRev, exp, profit], backgroundColor: ['#10b981', '#ef4444', '#1e40af'], borderRadius: 6 }] },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+            });
+        }
+
+        function autoCalculateCenterFee() {
+            var globalRevenue = 0;
+            allData.slice(1).forEach(function(s) {
+                if (s[8] !== "Đã nghỉ") {
+                    var statusStr = String(s[5]);
+                    if (statusStr === "Đã thu") globalRevenue += Number(String(s[4]).replace(/[^0-9.-]+/g,"")) || 0;
+                    else if (statusStr.indexOf("Thu ") === 0) globalRevenue += Number(statusStr.replace(/[^0-9]/g, "")) || 0;
+                }
+            });
+            var centerFee = Math.round(globalRevenue * 0.1);
+            var selectedMonth = document.getElementById('export-month').value;
+            document.getElementById('exp-name').value = "Trích 10% nộp Trung tâm - Tháng " + selectedMonth;
+            document.getElementById('exp-amount').value = centerFee;
+            alert("Thống kê tháng " + selectedMonth + ":\n- Tổng thực thu toàn bộ các lớp: " + globalRevenue.toLocaleString('vi-VN') + " VNĐ\n- Tiền 10% trích nộp Trung tâm: " + centerFee.toLocaleString('vi-VN') + " VNĐ\n\nHệ thống đã tự động điền các thông số này vào form chi phí.");
+        }
+
+        function openDiscountModal() {
+            var selectedClass = document.getElementById('class-select').value;
+            if (!selectedClass) return alert("Vui lòng chọn lớp học để giảm trừ.");
+            var classInfo = allCaiDat.find(function(c) { return c[0] === selectedClass; });
+            if (!classInfo || !classInfo[2]) return alert("Lớp này chưa cài đặt số buổi.");
+            var feePerSession = Math.round((Number(classInfo[1]) || 0) / (Number(classInfo[2]) || 0));
+            document.getElementById('disc-class-name').innerText = selectedClass;
+            document.getElementById('disc-session-fee').innerText = feePerSession.toLocaleString('vi-VN') + ' đ';
+            document.getElementById('disc-sessions-off').value = '';
+            document.getElementById('disc-total-amount').value = '';
+            document.getElementById('disc-sessions-off').setAttribute('data-fee', feePerSession);
+            document.getElementById('discountModal').style.display = 'flex';
+        }
+
+        function closeDiscountModal() { document.getElementById('discountModal').style.display = 'none'; }
+        function calculateDiscount() {
+            var sessionsOff = Number(document.getElementById('disc-sessions-off').value) || 0;
+            var feePerSession = Number(document.getElementById('disc-sessions-off').getAttribute('data-fee')) || 0;
+            document.getElementById('disc-total-amount').value = sessionsOff * feePerSession;
+        }
+
+        async function submitDiscount(event) {
+            event.preventDefault();
+            var selectedClass = document.getElementById('class-select').value;
+            var amount = Number(document.getElementById('disc-total-amount').value) || 0;
+            if (!confirm("Hệ thống sẽ TRỪ " + amount.toLocaleString('vi-VN') + " đ vào Nợ cũ của lớp " + selectedClass + ". Tiếp tục?")) return;
+            var btn = document.getElementById('btn-submit-disc');
+            btn.disabled = true; btn.innerText = "Đang xử lý...";
+            try {
+                var result = await apiCall({ loaiYeuCau: "giamTruDongLoat", lop: selectedClass, soTienGiam: amount });
+                if(result && result.thanhCong) { alert("Đã giảm trừ thành công!"); closeDiscountModal(); await loadData(); } 
+                else { alert("Lỗi từ server: " + (result ? result.loi : "Không xác định")); }
+            } catch(e) { alert("Lỗi hệ thống hoặc Thiếu Sheet!"); } finally { btn.disabled = false; btn.innerText = "Xác nhận giảm"; }
+        }
+
+        function sendZalo(index, tongCanThu) {
+            var s = currentStudents[index];
+            var hoTen = s[0]; var sdt = s[3];
+            if (!sdt || String(sdt).trim() === '') return alert("Học sinh này chưa có số điện thoại phụ huynh.");
+            var thang = document.getElementById('export-month').value;
+            var tien = tongCanThu.toLocaleString('vi-VN');
+            var msg = "🌟 THÔNG BÁO HỌC PHÍ THÁNG " + thang + "\nKính gửi Phụ huynh em: " + hoTen + "\nThầy Phúc xin thông báo tổng học phí tháng " + thang + " (bao gồm nợ cũ nếu có) của em là:\n💰 Số tiền: " + tien + " VNĐ\n\nPhụ huynh vui lòng hoàn thành học phí qua tài khoản ngân hàng dưới đây:\n▪️ Ngân hàng: LPBank\n▪️ STK: 058472850001\n▪️ Tên TK: TRỊNH NGỌC PHÚC\n▪️ Nội dung: " + hoTen + " hoc phi thang " + thang + "\n\nTrân trọng cảm ơn Phụ huynh đã luôn đồng hành cùng lớp học! 🌻";
+            var rawPhone = String(sdt).replace(/[^0-9]/g, '');
+            if (rawPhone.startsWith('0')) rawPhone = '84' + rawPhone.substring(1);
+            navigator.clipboard.writeText(msg).then(function() { alert("✅ Đã copy mẫu thông báo. Bấm OK để mở Zalo."); window.open("https://zalo.me/" + rawPhone, "_blank"); }).catch(function() { window.open("https://zalo.me/" + rawPhone, "_blank"); });
+        }
+
+        function handlePaymentToggle(checkbox, index, badgeId, feeAmount, noCu) {
+            var s = currentStudents[index];
+            if (checkbox.checked) {
+                checkbox.checked = false; 
+                currentPayStudent = { checkbox: checkbox, index: index, badgeId: badgeId, feeAmount: feeAmount, noCu: noCu };
+                document.getElementById('pay-student-name').innerText = s[0];
+                document.getElementById('pay-fee').innerText = feeAmount.toLocaleString('vi-VN');
+                document.getElementById('pay-old-debt').innerText = noCu.toLocaleString('vi-VN');
+                document.getElementById('pay-total-due').innerText = (feeAmount + noCu).toLocaleString('vi-VN');
+                document.getElementById('pay-amount-received').value = feeAmount + noCu;
+                document.getElementById('paymentModal').style.display = 'flex';
+            } else {
+                if (confirm("Đang hủy thanh toán. Hệ thống sẽ đổi trạng thái về Chưa đóng.")) {
+                    executePaymentAPI(s[0], s[1], "Chưa đóng", checkbox, 0);
+                } else checkbox.checked = true;
+            }
+        }
+
+        function closePaymentModal() { document.getElementById('paymentModal').style.display = 'none'; currentPayStudent = null; }
+        function confirmPayment() {
+            if(!currentPayStudent) return;
+            var amountReceived = Number(document.getElementById('pay-amount-received').value) || 0;
+            var feeAmount = currentPayStudent.feeAmount; var s = currentStudents[currentPayStudent.index];
+            var newStatus = "";
+            if (amountReceived === feeAmount && currentPayStudent.noCu === 0) newStatus = "Đã thu";
+            else if (amountReceived === 0) newStatus = "Chưa đóng";
+            else newStatus = "Thu " + amountReceived.toLocaleString('vi-VN');
+            var deltaDebt = feeAmount - amountReceived;
+            executePaymentAPI(s[0], s[1], newStatus, currentPayStudent.checkbox, deltaDebt);
+            closePaymentModal();
+        }
+
+        async function executePaymentAPI(hoTen, lop, newStatus, checkboxElem, deltaDebt) {
+            var studentData = allData.find(function(s) { return s[0] === hoTen && s[1] === lop; });
+            var oldStatus = studentData ? studentData[5] : "Chưa đóng";
+            var oldNoCu = studentData ? Number(studentData[7] || 0) : 0;
+            if (studentData) { studentData[5] = newStatus; studentData[7] = oldNoCu + deltaDebt; }
+            renderStudents(); 
+            if(checkboxElem) checkboxElem.disabled = true;
+            try {
+                var r1 = await apiCall({ loaiYeuCau: "thuTien", hoTen: hoTen, lop: lop, trangThai: newStatus });
+                if(deltaDebt !== 0) await apiCall({ loaiYeuCau: "capNhatNoCu", hoTen: hoTen, lop: lop, tienThua: deltaDebt });
+            } catch (error) { alert("Lỗi kết nối khi thanh toán!"); if (studentData) { studentData[5] = oldStatus; studentData[7] = oldNoCu; } renderStudents(); } 
+            finally { if(checkboxElem) checkboxElem.disabled = false; }
+        }
+
+        function editOldDebt(index) {
+            var s = currentStudents[index]; var hoTen = s[0]; var lop = s[1]; var currentNoCu = Number(s[7]) || 0;
+            var newVal = prompt("Sửa số tiền Nợ cũ cho học sinh " + hoTen + " (VNĐ):", currentNoCu);
+            if (newVal === null || String(newVal).trim() === '') return;
+            var parsedVal = Number(String(newVal).replace(/[^0-9.-]+/g, ""));
+            if (!isNaN(parsedVal) && parsedVal - currentNoCu !== 0) updateDebtAPI(hoTen, lop, parsedVal - currentNoCu);
+        }
+        
+        async function updateDebtAPI(hoTen, lop, delta) {
+            try {
+                document.getElementById('loading').style.display = 'block';
+                var res = await apiCall({ loaiYeuCau: "capNhatNoCu", hoTen: hoTen, lop: lop, tienThua: delta });
+                if(res && res.thanhCong) { var s = allData.find(function(st) { return st[0] === hoTen && st[1] === lop; }); if(s) s[7] = Number(s[7]||0)+delta; renderStudents(); }
+            } catch(e) {} finally { document.getElementById('loading').style.display = 'none'; }
+        }
+
+        async function chotSoThang() {
+            var selectedClass = document.getElementById('class-select').value;
+            if (!selectedClass) return alert("Vui lòng chọn lớp học.");
+            if (!confirm("Đã xuất Excel lưu trữ chưa?\nHệ thống sẽ dồn học phí chưa đóng vào Nợ cũ và đưa lớp về Chưa đóng.")) return;
+            try {
+                document.getElementById('loading').style.display = 'block'; document.getElementById('app-content').style.display = 'none';
+                await apiCall({ loaiYeuCau: "chotSoThang", lop: selectedClass });
+                alert("Đã chốt sổ thành công."); await loadData(); 
+            } catch (error) { alert("Lỗi kết nối."); await loadData(); }
+        }
+
+        async function deleteStudent(index) {
+            var s = currentStudents[index];
+            if (!confirm("Chắc chắn báo nghỉ học cho em " + s[0] + "?")) return;
+            try {
+                document.getElementById('loading').style.display = 'block'; document.getElementById('app-content').style.display = 'none';
+                await apiCall({ loaiYeuCau: "xoaHocSinh", hoTen: s[0], lop: s[1] }); alert("Đã báo nghỉ thành công."); await loadData(); 
+            } catch (error) { alert("Lỗi kết nối."); await loadData(); }
+        }
+
+        function openClassModal() { document.getElementById('classModal').style.display = 'flex'; }
+        function closeClassModal() { document.getElementById('classModal').style.display = 'none'; }
+        async function submitClass(event) {
+            event.preventDefault(); var btn = document.getElementById('btn-submit-class'); btn.disabled = true;
+            try { await apiCall({ loaiYeuCau: "themLop", tenLop: document.getElementById('new-class-name').value, hocPhiMacDinh: document.getElementById('new-class-fee').value, soBuoiHoc: document.getElementById('new-class-sessions').value }); alert("Lưu thành công!"); closeClassModal(); await loadData(); } 
+            catch (e) { alert("Lỗi ghi dữ liệu!"); } finally { btn.disabled = false; }
+        }
+
+        function openStudentModal() {
+            var classes = allCaiDat.slice(1).map(function(item) { return item[0]; }).filter(Boolean);
+            if (classes.length === 0) return alert("Cần thêm lớp học trước.");
+            var optionsHtml = ""; classes.forEach(function(c) { optionsHtml += '<option value="' + c + '">' + c + '</option>'; });
+            document.getElementById('new-student-class').innerHTML = optionsHtml; calculateFee(); document.getElementById('studentModal').style.display = 'flex';
+        }
+        function closeStudentModal() { document.getElementById('studentModal').style.display = 'none'; }
+        function calculateFee() {
+            var classInfo = allCaiDat.find(function(c) { return c[0] === document.getElementById('new-student-class').value; });
+            var feeInput = document.getElementById('new-student-fee'); var dateInput = document.getElementById('new-student-start-date').value;
+            if (!classInfo) return; var fullFee = Number(classInfo[1]) || 0; var totalSessions = Number(classInfo[2]) || 0;
+            if (!dateInput || totalSessions === 0) { feeInput.value = fullFee; return; }
+            var startDate = new Date(dateInput); var daysInMonth = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0).getDate();
+            var remainingSessions = Math.round(((daysInMonth - startDate.getDate() + 1) / daysInMonth) * totalSessions);
+            feeInput.value = Math.round((remainingSessions * (fullFee / totalSessions)) / 1000) * 1000; 
+        }
+        async function submitStudent(event) {
+            event.preventDefault(); var btn = document.getElementById('btn-submit-student'); btn.disabled = true;
+            try { await apiCall({ loaiYeuCau: "themHocSinh", hoTen: document.getElementById('new-student-name').value, lop: document.getElementById('new-student-class').value, truong: document.getElementById('new-student-school').value, sdt: document.getElementById('new-student-phone').value, hocPhi: document.getElementById('new-student-fee').value }); alert("Đã thêm thành công!"); closeStudentModal(); await loadData(); } 
+            catch(e) { alert("Lỗi!"); } finally { btn.disabled = false; }
+        }
+
+        function openEditStudentModal(index) {
+            var s = currentStudents[index];
+            document.getElementById('edit-student-name-display').innerText = s[0]; document.getElementById('edit-student-class-display').innerText = s[1];
+            document.getElementById('edit-student-name').value = s[0]; document.getElementById('edit-student-class').value = s[1];
+            document.getElementById('edit-student-school').value = s[2]; document.getElementById('edit-student-phone').value = s[3];
+            document.getElementById('edit-student-fee').value = Number(String(s[4]).replace(/[^0-9.-]+/g,"")) || 0;
+            document.getElementById('editStudentModal').style.display = 'flex';
+        }
+        function closeEditStudentModal() { document.getElementById('editStudentModal').style.display = 'none'; }
+        async function submitEditStudent(event) {
+            event.preventDefault(); var btn = document.getElementById('btn-submit-edit'); btn.disabled = true;
+            document.getElementById('loading').style.display = 'block'; document.getElementById('app-content').style.display = 'none';
+            try { await apiCall({ loaiYeuCau: "suaHocSinh", hoTen: document.getElementById('edit-student-name').value, lop: document.getElementById('edit-student-class').value, truong: document.getElementById('edit-student-school').value, sdt: document.getElementById('edit-student-phone').value, hocPhi: document.getElementById('edit-student-fee').value }); alert("Cập nhật thành công!"); closeEditStudentModal(); await loadData(); } 
+            catch(e) { alert("Lỗi!"); await loadData(); } finally { btn.disabled = false; }
+        }
+
+        function openAttendanceModal() {
+            var sc = document.getElementById('class-select').value;
+            if (!sc) return alert("Vui lòng chọn lớp học trước.");
+            var students = allData.slice(1).filter(function(s) { return s[1] === sc && s[8] !== "Đã nghỉ"; });
+            if (students.length === 0) return alert("Lớp này chưa có học sinh.");
+            document.getElementById('att-date').valueAsDate = new Date();
+            var htmlList = "";
+            students.forEach(function(s) {
+                var safeName = String(s[0]).replace(/"/g, ''); var safeLop = String(s[1]).replace(/"/g, '');
+                htmlList += '<div style="display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #e2e8f0;"><div style="font-weight:600;">' + s[0] + '</div><select class="att-status" data-name="' + safeName + '" data-lop="' + safeLop + '" style="padding:8px 12px;border-radius:8px;border:1px solid #e2e8f0;"><option value="DiHoc">Đi học</option><option value="NghiCoPhep">Nghỉ có phép</option><option value="NghiKhongPhep">Nghỉ không phép</option></select></div>';
+            });
+            document.getElementById('att-students-list').innerHTML = htmlList;
+            document.getElementById('attendanceModal').style.display = 'flex';
+        }
+        function closeAttendanceModal() { document.getElementById('attendanceModal').style.display = 'none'; }
+        
+        async function submitAttendance(event) {
+            event.preventDefault(); var btn = document.getElementById('btn-submit-att');
+            var dateStr = document.getElementById('att-date').value; var thang = document.getElementById('export-month').value;
+            var sc = document.getElementById('class-select').value; 
+            var absencesElems = Array.from(document.querySelectorAll('.att-status'));
+            var vangCoPhep = []; var vangKhongPhep = [];
+            btn.disabled = true; document.getElementById('loading').style.display = 'block'; document.getElementById('app-content').style.display = 'none';
+            for (var i = 0; i < absencesElems.length; i++) {
+                var status = absencesElems[i].value; var hoTen = absencesElems[i].getAttribute('data-name'); var lop = absencesElems[i].getAttribute('data-lop');
+                if (status === 'NghiCoPhep') vangCoPhep.push(hoTen);
+                if (status === 'NghiKhongPhep') vangKhongPhep.push(hoTen);
+                if (status !== 'DiHoc') { try { await apiCall({ loaiYeuCau: "diemDanhNghi", hoTen: hoTen, lop: lop, ngay: dateStr, coPhep: (status === 'NghiCoPhep') ? "Có" : "Không", thang: "Tháng " + thang }); } catch(e){} }
+            }
+            
+            var d = new Date(dateStr); var formattedDate = ('0' + d.getDate()).slice(-2) + '/' + ('0' + (d.getMonth() + 1)).slice(-2) + '/' + d.getFullYear();
+            document.getElementById('ticket-class').innerText = "LỚP: " + sc; document.getElementById('ticket-date').innerText = "Ngày: " + formattedDate;
+            document.getElementById('ticket-total').innerText = absencesElems.length; document.getElementById('ticket-present').innerText = absencesElems.length - vangCoPhep.length - vangKhongPhep.length; document.getElementById('ticket-absent').innerText = vangCoPhep.length + vangKhongPhep.length;
+            
+            var listHtml = '';
+            if (vangCoPhep.length+vangKhongPhep.length === 0) listHtml = '<div style="text-align: center; color: #059669; font-weight: bold; padding: 15px; background: #dcfce7; border-radius: 8px;">🎉 Hôm nay lớp đi học đầy đủ!</div>';
+            else {
+                if (vangCoPhep.length > 0) { listHtml += '<div style="margin-bottom: 12px; background: #fffbeb; padding: 10px; border-radius: 8px; border-left: 4px solid #f59e0b;"><div style="font-weight: 800; color: #d97706; margin-bottom: 5px;">Vắng CÓ phép (' + vangCoPhep.length + '):</div><ul style="margin-left: 20px; color: #0f172a; font-size: 15px; font-weight: 600;">'; vangCoPhep.forEach(function(n) { listHtml += '<li>' + n + '</li>'; }); listHtml += '</ul></div>'; }
+                if (vangKhongPhep.length > 0) { listHtml += '<div style="background: #fef2f2; padding: 10px; border-radius: 8px; border-left: 4px solid #ef4444;"><div style="font-weight: 800; color: #dc2626; margin-bottom: 5px;">Vắng KHÔNG phép (' + vangKhongPhep.length + '):</div><ul style="margin-left: 20px; color: #0f172a; font-size: 15px; font-weight: 600;">'; vangKhongPhep.forEach(function(n) { listHtml += '<li>' + n + '</li>'; }); listHtml += '</ul></div>'; }
+            }
+            document.getElementById('ticket-absent-list').innerHTML = listHtml;
+            html2canvas(document.getElementById('attendance-report-ticket'), { scale: 2, backgroundColor: null }).then(function(canvas) {
+                var a = document.createElement("a"); a.href = canvas.toDataURL("image/png"); a.download = "DiemDanh_" + sc + "_" + formattedDate.replace(/\//g, '') + ".png"; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                alert("Đã tải ảnh báo cáo điểm danh về máy!"); closeAttendanceModal(); btn.disabled = false;
+            });
+            await loadData();
+        }
+
+        function openExpenseModal() { document.getElementById('exp-date').valueAsDate = new Date(); document.getElementById('expenseModal').style.display = 'flex'; }
+        function closeExpenseModal() { document.getElementById('expenseModal').style.display = 'none'; document.getElementById('exp-name').value = ''; document.getElementById('exp-amount').value = ''; }
+        async function submitExpense(event) {
+            event.preventDefault(); var btn = document.getElementById('btn-submit-exp'); btn.disabled = true;
+            try { await apiCall({ loaiYeuCau: "themChiPhi", ngay: document.getElementById('exp-date').value, tenChiPhi: document.getElementById('exp-name').value, soTien: document.getElementById('exp-amount').value, thang: "Tháng " + document.getElementById('export-month').value }); alert("Lưu chi phí thành công!"); closeExpenseModal(); await loadData(); } catch(e) { alert("Lỗi!"); } finally { btn.disabled = false; }
+        }
+
+        function openExportModal() { if (!document.getElementById('class-select').value) return alert("Vui lòng chọn lớp học."); document.getElementById('exportModal').style.display = 'flex'; }
+        function closeExportModal() { document.getElementById('exportModal').style.display = 'none'; }
+        function exportToExcel(type) {
+            var sc = document.getElementById('class-select').value; var sm = document.getElementById('export-month').value;
+            var st = allData.slice(1).filter(function(s) { return s[1] === sc && s[8] !== "Đã nghỉ"; });
+            if (st.length === 0) return alert("Lớp trống.");
+            
+            var tN = "Tong";
+            if (type === 'paid') { st = st.filter(function(s) { return String(s[5]).indexOf("Thu") > -1; }); tN = "Da_Dong"; } 
+            else if (type === 'unpaid') { st = st.filter(function(s) { return s[5] === "Chưa đóng"; }); tN = "Chua_Dong"; }
+            else if (type === 'parent') { tN = "Gui_Phu_Huynh"; }
+
+            if (st.length === 0) return alert("Không có dữ liệu.");
+
+            if (type !== 'parent') {
+                var csv = "\uFEFFHọ và tên,Lớp,Trường,SĐT,Học phí,Trạng thái,Tháng,Nợ cũ,Tình trạng\n";
+                st.forEach(function(s) { var cp = s.slice(); cp[6] = "Tháng " + sm; csv += cp.map(function(i) { return '"' + String(i).replace(/"/g, '""') + '"'; }).join(",") + "\n"; });
+                var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8;' })); a.download = "DanhSach_" + sc + ".csv"; document.body.appendChild(a); a.click(); document.body.removeChild(a); closeExportModal();
+            } else {
+                var html = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel"><head><meta charset="utf-8"></head><body><table border="1" style="border-collapse: collapse; font-family: Arial; font-size: 14px;"><tr><td colspan="6" style="text-align: center; font-size: 22px; font-weight: bold; padding: 15px; background-color: #1e40af; color: #ffffff;">THÔNG BÁO HỌC PHÍ THÁNG ' + sm + '</td></tr><tr><td colspan="6" style="text-align: center; font-size: 16px; font-weight: bold; padding-bottom: 20px; color: #1e40af;">LỚP: ' + sc + '</td></tr><tr><th style="background-color: #1e40af; color: #ffffff; padding: 10px;">STT</th><th style="background-color: #1e40af; color: #ffffff; padding: 10px;">HỌ VÀ TÊN</th><th style="background-color: #1e40af; color: #ffffff; padding: 10px;">LỚP</th><th style="background-color: #1e40af; color: #ffffff; padding: 10px;">TRƯỜNG</th><th style="background-color: #1e40af; color: #ffffff; padding: 10px;">TỔNG CẦN THU</th><th style="background-color: #1e40af; color: #ffffff; padding: 10px;">TRẠNG THÁI</th></tr>';
+                st.forEach(function(s, index) {
+                    var tongThu = (Number(String(s[4]).replace(/[^0-9.-]+/g,""))||0) + (Number(s[7])||0); 
+                    html += '<tr><td style="text-align: center;">' + (index + 1) + '</td><td>' + s[0] + '</td><td style="text-align: center;">' + s[1] + '</td><td style="text-align: center;">' + s[2] + '</td><td style="text-align: right; color: red;">' + tongThu.toLocaleString('vi-VN') + '</td><td>' + s[5] + '</td></tr>';
+                });
+                html += '</table></body></html>';
+                var a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([html], { type: 'application/vnd.ms-excel' })); a.download = "BaoCao_" + sc + ".xls"; document.body.appendChild(a); a.click(); document.body.removeChild(a); closeExportModal();
+            }
+        }
+
+        function exportFeeReportToImage() {
+            var sc = document.getElementById('class-select').value; var sm = document.getElementById('export-month').value;
+            var st = allData.slice(1).filter(function(s) { return s[1] === sc && s[8] !== "Đã nghỉ"; });
+            if (st.length === 0) { alert("Lớp trống."); return closeExportModal(); }
+            document.getElementById('fee-ticket-month').innerText = sm; document.getElementById('fee-ticket-class').innerText = "LỚP: " + sc;
+            var tbodyHtml = "";
+            st.forEach(function(s, index) {
+                var tongThu = (Number(String(s[4]).replace(/[^0-9.-]+/g,""))||0) + (Number(s[7])||0); 
+                var statusStyle = "font-weight: bold; text-align: center; padding: 8px; border: 1px solid #cbd5e1; ";
+                if (s[5] === "Đã thu") statusStyle += "color: #059669;"; else if (s[5] === "Chưa đóng") statusStyle += "color: #dc2626;"; else statusStyle += "color: #d97706;"; 
+                tbodyHtml += '<tr style="' + (index % 2 === 0 ? "background: #fff;" : "background: #f8fafc;") + '"><td style="text-align: center; padding: 8px; border: 1px solid #cbd5e1;">' + (index + 1) + '</td><td style="padding: 8px; font-weight: bold; border: 1px solid #cbd5e1;">' + s[0] + '</td><td style="text-align: right; padding: 8px; font-weight: bold; color: #dc2626; border: 1px solid #cbd5e1;">' + tongThu.toLocaleString('vi-VN') + ' đ</td><td style="' + statusStyle + '">' + s[5] + '</td></tr>';
+            });
+            document.getElementById('fee-ticket-table-body').innerHTML = tbodyHtml;
+            document.getElementById('loading').style.display = 'block'; document.getElementById('app-content').style.display = 'none';
+            html2canvas(document.getElementById('fee-report-ticket'), { scale: 2, backgroundColor: null }).then(function(canvas) {
+                var a = document.createElement("a"); a.href = canvas.toDataURL("image/png"); a.download = "BaoCaoHocPhi_" + sc + ".png"; document.body.appendChild(a); a.click(); document.body.removeChild(a);
+                document.getElementById('loading').style.display = 'none'; document.getElementById('app-content').style.display = 'block'; closeExportModal(); alert("✅ Đã tải Ảnh Báo Cáo Học Phí thành công!");
+            });
+        }
+
+        loadData(); 
+    </script>
+</body>
+</html>
