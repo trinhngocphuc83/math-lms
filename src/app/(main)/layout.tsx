@@ -18,7 +18,7 @@ export default async function MainLayout({
   // Check profile
   const { data: profile } = await supabase
     .from('profiles')
-    .select('role, is_active')
+    .select('role, is_active, expiration_date')
     .eq('id', user.id)
     .single();
 
