@@ -465,7 +465,7 @@ export default function ExamsManagerPage() {
                                                     {mathFormName}
                                                   </div>
                                                   <div className="p-2.5 flex flex-wrap gap-2">
-                                                    {items.map(({cat, inv}, subIdx) => {
+                                                    {(items as any[]).map(({cat, inv}: any, subIdx: number) => {
                                                       const formKey = `${cat.math_form}_${inv.question_type}_${inv.difficulty}`;
                                                       const isChecked = matrixItems.some(m => m.id === formKey);
                                                       return (
