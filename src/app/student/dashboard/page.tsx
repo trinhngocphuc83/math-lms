@@ -196,7 +196,7 @@ export default function StudentDashboardPage() {
         </div>
 
         {/* Thanh Điều Hướng Ngang (Tabs) */}
-        <div className="bg-white p-2.5 rounded-2xl border border-gray-100 shadow-sm flex flex-wrap lg:flex-nowrap gap-2 items-center justify-between relative z-10">
+        <div className="bg-white p-2.5 rounded-2xl border border-gray-100 shadow-sm flex flex-col md:flex-row gap-2 items-stretch justify-between relative z-10">
           <button 
             onClick={() => setActiveTab('schedule')} 
             className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap ${activeTab === 'schedule' ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-lg shadow-teal-500/20' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`}
