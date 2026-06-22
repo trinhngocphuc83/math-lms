@@ -62,7 +62,7 @@ export default function MainLayout({
           </div>
           {!isCollapsed && (
             <div className="overflow-hidden">
-              <h1 className="font-bold text-xl whitespace-nowrap">EduCenter</h1>
+              <h1 className="font-bold text-xl whitespace-nowrap">Math LMS</h1>
               <p className="text-xs text-teal-100 whitespace-nowrap">HỆ THỐNG QUẢN LÝ</p>
             </div>
           )}

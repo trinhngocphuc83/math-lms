@@ -19,6 +19,7 @@ export default function QuestionsPage() {
   const [questions, setQuestions] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,13 +43,31 @@ export default function QuestionsPage() {
   // Categories & Filters State
   const [categories, setCategories] = useState<any[]>([]);
   const [filters, setFilters] = useState({
-    grade: "", subject: "", topic: "", lesson: "", math_form: ""
+    grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: ""
   });
+
+  const DIFFICULTY_LABELS: Record<string, string> = {
+    "1": "Nhận biết",
+    "2": "Thông hiểu",
+    "3": "Vận dụng",
+    "4": "Vận dụng cao"
+  };
 
   useEffect(() => {
     fetchQuestions();
     fetchCategories();
   }, [currentPage, searchTerm, filters]);
+
+  // Debounce for search
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (searchTerm !== searchInput) {
+        setSearchTerm(searchInput);
+        setCurrentPage(1);
+      }
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [searchInput, searchTerm]);
 
   const fetchCategories = async () => {
     try {
@@ -63,13 +82,37 @@ export default function QuestionsPage() {
       let query = supabase.from("questions").select("*", { count: "exact" });
       
       if (searchTerm) {
-        query = query.or(`content.ilike.%${searchTerm}%,question_id.ilike.%${searchTerm}%,math_form.ilike.%${searchTerm}%`);
+        const trimmedTerm = searchTerm.trim();
+        // Nếu chuỗi dài > 30 ký tự -> Người dùng đang dán nguyên đoạn đề bài
+        if (trimmedTerm.length > 30) {
+          // Trích xuất các từ (chỉ lấy chữ cái, bỏ qua số/công thức Toán) có độ dài >= 3
+          const words = trimmedTerm.match(/[\p{L}]+/gu) || [];
+          const validWords = words.filter(w => w.length >= 3);
+          
+          if (validWords.length >= 4) {
+             // Lấy 3 từ khóa đầu và 3 từ khóa cuối của đoạn văn
+             const keywords = [...validWords.slice(0, 3), ...validWords.slice(-3)];
+             const uniqueKeywords = Array.from(new Set(keywords));
+             
+             // Bắt buộc nội dung câu hỏi phải chứa đồng thời tất cả các từ khóa này
+             uniqueKeywords.forEach(kw => {
+                query = query.ilike('content', `%${kw}%`);
+             });
+          } else {
+             // Nếu không có đủ chữ (toàn bộ là công thức), tìm kiếm fallback
+             query = query.or(`content.ilike.%${trimmedTerm}%,question_id.ilike.%${trimmedTerm}%,math_form.ilike.%${trimmedTerm}%,lesson.ilike.%${trimmedTerm}%,topic.ilike.%${trimmedTerm}%`);
+          }
+        } else {
+           // Nếu chuỗi ngắn (từ khóa bình thường), tìm kiếm trên tất cả các cột
+           query = query.or(`content.ilike.%${trimmedTerm}%,question_id.ilike.%${trimmedTerm}%,math_form.ilike.%${trimmedTerm}%,lesson.ilike.%${trimmedTerm}%,topic.ilike.%${trimmedTerm}%`);
+        }
       }
       if (filters.grade) query = query.eq('grade', filters.grade);
       if (filters.subject) query = query.eq('subject', filters.subject);
       if (filters.topic) query = query.eq('topic', filters.topic);
       if (filters.lesson) query = query.eq('lesson', filters.lesson);
       if (filters.math_form) query = query.eq('math_form', filters.math_form);
+      if (filters.difficulty) query = query.eq('difficulty', filters.difficulty);
       
       const { data, count, error } = await query
         .order("created_at", { ascending: false })
@@ -262,6 +305,13 @@ export default function QuestionsPage() {
               <option value="">-- Tên bài --</option>
               {uniqueLessons.map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
             </select>
+            <select value={filters.difficulty} onChange={e => handleFilterChange('difficulty', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 w-40 font-medium text-gray-700 bg-white">
+              <option value="">-- Mức độ --</option>
+              <option value="1">Nhận biết</option>
+              <option value="2">Thông hiểu</option>
+              <option value="3">Vận dụng</option>
+              <option value="4">Vận dụng cao</option>
+            </select>
           </div>
 
           <div className="flex gap-3">
@@ -278,10 +328,10 @@ export default function QuestionsPage() {
             <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
             <input 
               type="text" 
-              placeholder="Tìm kiếm câu hỏi, nội dung, chuyên đề..." 
-              value={searchTerm}
-              onChange={(e) => { setSearchTerm(e.target.value); setCurrentPage(1); }}
-              className="w-full pl-11 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none text-gray-700 font-medium transition-all"
+              placeholder="Tìm kiếm (Nội dung, Mã CH, Dạng toán, Chuyên đề...)" 
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
+              className="w-full pl-11 pr-4 py-3 bg-white border border-gray-300 shadow-sm rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-gray-800 font-medium transition-all"
             />
           </div>
 
@@ -351,12 +401,19 @@ export default function QuestionsPage() {
                     <input type="checkbox" checked={selectedQuestions.includes(q.id)} onChange={e => handleSelectOne(q.id, e.target.checked)} className="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500 cursor-pointer" />
                   </td>
                   <td className="p-4 font-bold text-gray-700 text-sm whitespace-nowrap">{q.question_id}</td>
-                  <td className="p-4">
-                    <div className="font-bold text-gray-800 text-sm mb-1">{q.topic}</div>
-                    <div className="text-gray-500 text-xs flex items-center gap-2">
-                      <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                      {q.math_form}
+                  <td className="p-4 min-w-[280px]">
+                    <div className="flex flex-wrap gap-1 mb-2">
+                      {q.grade && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-100">Lớp {q.grade.replace('Lớp', '').trim()}</span>}
+                      {q.subject && <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-green-50 text-green-700 border border-green-100">{q.subject}</span>}
                     </div>
+                    {q.topic && <div className="font-bold text-indigo-900 text-xs mb-1 line-clamp-1" title={q.topic}>Chương/CĐ: <span className="text-gray-700">{q.topic}</span></div>}
+                    {q.lesson && <div className="font-semibold text-gray-700 text-[11px] mb-1 line-clamp-1" title={q.lesson}>Bài: <span className="font-normal">{q.lesson}</span></div>}
+                    {q.math_form && (
+                      <div className="text-emerald-700 text-[11px] flex items-center gap-1.5 mt-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0"></span>
+                        <span className="font-medium line-clamp-1" title={q.math_form}>{q.math_form}</span>
+                      </div>
+                    )}
                   </td>
                   <td className="p-4">
                     <div className="text-gray-700 text-sm font-medium line-clamp-2 max-w-md" title={q.content}>
@@ -365,9 +422,14 @@ export default function QuestionsPage() {
                   </td>
                   <td className="p-4">
                     <div className="flex flex-col items-start gap-1">
-                      <span className="px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 text-xs font-bold border border-indigo-100">
-                        {q.question_type}
-                      </span>
+                      <div className="flex gap-1">
+                        <span className="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 text-[10px] font-bold border border-indigo-100">
+                          {q.question_type}
+                        </span>
+                        <span className="px-2 py-0.5 rounded-md bg-orange-50 text-orange-700 text-[10px] font-bold border border-orange-100">
+                          {DIFFICULTY_LABELS[q.difficulty] || `Mức ${q.difficulty}`}
+                        </span>
+                      </div>
                       <span className="text-[11px] text-gray-500 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">
                         Đã dùng: <strong className="text-gray-700">{q.usage_count || 0}</strong> lần
                       </span>

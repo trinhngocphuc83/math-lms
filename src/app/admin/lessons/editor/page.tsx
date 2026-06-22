@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import React, { useState, useEffect, useRef, Suspense, useMemo, useCallback } from "react";
-import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown } from "lucide-react";
+import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -16,6 +16,7 @@ import ReactCrop, { type Crop } from 'react-image-crop';
 import BlockEditor, { Block } from "./BlockEditor";
 import 'react-image-crop/dist/ReactCrop.css';
 import confetti from 'canvas-confetti';
+import { Document, Packer, Paragraph, TextRun } from "docx";
 
 interface PendingImage {
   id: string;
@@ -517,13 +518,19 @@ const getPrompt = (isPractice: boolean) => {
   const theoryPrompt = `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học CỰC KỲ THU HÚT, TRÌNH BÀY SIÊU ĐẸP.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
-1. Dùng Markdown. Mọi công thức Toán học BẮT BUỘC dùng LaTeX bọc trong $$ hoặc $.
-2. [CỰC QUAN TRỌNG]: Tăng cường sử dụng Emoji ở đầu các dòng, các mục để làm nổi bật (VD: 🎯 Mục tiêu, 📝 Bài tập, 🚀 Phương pháp, 💡 Phân tích). Cấu trúc bài bằng Heading (#, ##).
-3. [PHÂN TRANG KHOA HỌC]: Sử dụng đúng 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới). Hãy phân trang khoa học và hợp lý sao cho mỗi trang không quá dài, thường là sau 1 cụm lý thuyết hoàn chỉnh hoặc sau 1-2 ví dụ.
-4. Định nghĩa/Định lý bắt đầu bằng \`> 💡 **Định lý:**\`. Ví dụ bắt đầu bằng \`> 📌 **Ví dụ:**\`.
-5. Nếu ảnh gốc có Đồ thị/Hình học, chèn ngay dòng này: \`[🔴 CHÚ Ý: CÓ HÌNH VẼ Ở ĐÂY - HÃY CHÈN ẢNH VÀO]\`
-6. [SIÊU QUAN TRỌNG - TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Ngay TRƯỚC mỗi lần bạn đặt dấu ngắt trang \`---\`, bạn HÃY TỰ NGHĨ RA 1 CÂU HỎI TRẮC NGHIỆM để kiểm tra sự tập trung của học sinh. Học sinh bắt buộc phải làm đúng câu này thì mới được đọc trang tiếp theo.
-Mọi câu hỏi trắc nghiệm PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Có 2 loại cấu trúc JSON mà bạn có thể dùng:
+1. Dùng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU CHO MATHTYPE]:
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
+- Phân số: Dùng \\frac{tử}{mẫu}.
+- Góc: Dùng \\widehat{tên} (Ví dụ: $\\widehat{ABC}$).
+- Độ: Dùng $^\\circ$ hoặc $^\\circ C$.
+- Ký hiệu đỉnh, phẩy: Dùng trực tiếp dấu nháy đơn ' trên bàn phím (Ví dụ: $A'B'C'D'$). Tuyệt đối KHÔNG dùng mã \\prime.
+2. [BẮT BUỘC DÙNG HEADING]: TẤT CẢ các Tiêu đề bài học, Tên Phương pháp, và Đề mục BẮT BUỘC phải đặt trong thẻ Heading 2 (##) hoặc Heading 3 (###) kèm theo Emoji. TUYỆT ĐỐI KHÔNG viết Tiêu đề bằng văn bản in đậm (**) hay văn bản thường. Ví dụ chuẩn: "## 🚀 1. PHƯƠNG PHÁP THẾ", "### 💡 Quy tắc cộng đại số".
+3. [TÓM TẮT NGẮN GỌN & SÚC TÍCH]: ĐÂY LÀ PHẦN LÝ THUYẾT. BẠN PHẢI CHẮT LỌC VÀ CHỈ GIỮ LẠI NHỮNG Ý CHÍNH NHẤT, ĐỊNH NGHĨA VÀ CÔNG THỨC TRỌNG TÂM. TUYỆT ĐỐI KHÔNG VIẾT DÀI DÒNG, LAN MAN. NGẮN GỌN LÀ ƯU TIÊN SỐ 1. Bỏ qua các diễn giải rườm rà.
+4. [PHÂN TRANG KHOA HỌC]: Sử dụng đúng 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới). Hãy phân trang khoa học và hợp lý sao cho mỗi trang không quá dài, thường là sau 1 cụm lý thuyết hoàn chỉnh hoặc sau 1-2 ví dụ.
+5. Định nghĩa/Định lý bắt đầu bằng \`> 💡 **Định lý:**\`. Ví dụ bắt đầu bằng \`> 📌 **Ví dụ:**\`.
+6. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có sử dụng Đồ thị, Hình học, Bảng biến thiên, Bảng xét dấu... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ (VD: không viết "đồ thị đi lên/đi xuống từ..."). THAY VÀO ĐÓ, bạn BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ bảng/hình để giáo viên tự cắt ảnh dán vào. Lời giải bên dưới chỉ cần ghi "Từ Bảng biến thiên/Đồ thị ở trên, ta có kết luận:".
+7. [SIÊU QUAN TRỌNG - TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Ngay TRƯỚC mỗi lần bạn đặt dấu ngắt trang \`---\`, bạn HÃY TỰ NGHĨ RA 1 CÂU HỎI TRẮC NGHIỆM để kiểm tra sự tập trung của học sinh. Học sinh bắt buộc phải làm đúng câu này thì mới được đọc trang tiếp theo.
+Mọi câu hỏi trắc nghiệm PHẦI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Có 2 loại cấu trúc JSON mà bạn có thể dùng:
 
 LOẠI 1: CÂU HỎI NHIỀU LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 \`\`\`quiz
@@ -550,15 +557,27 @@ LOẠI 2: CÂU HỎI ĐÚNG/SAI (4 MỆNH ĐỀ ĐỘC LẬP - BAREM 2025)
 \`\`\`
 
 GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
+- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả các công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$. TUYỆT ĐỐI KHÔNG xuất công thức trần trụi (như {{begincases...}} hay x=2). Đối với Hệ phương trình, dùng chuẩn $\\begin{cases}...\\end{cases}$.
 - TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Ví dụ: \\frac phải viết là \\\\frac, \\mathbb là \\\\mathbb, \\infty là \\\\infty, \\{ là \\\\{. Nếu không làm điều này, hệ thống sẽ BỊ LỖI.
-- Tất cả các công thức toán học trong JSON BẮT BUỘC bọc trong $...$
 - Nếu không chỉ định type, hệ thống mặc định là multiple_choice.`;
 
-  const practicePrompt = `Bạn là một chuyên gia ra đề thi Toán học hàng đầu.
-Nhiệm vụ của bạn là trích xuất TẤT CẢ các câu hỏi bài tập/trắc nghiệm từ ảnh tài liệu hoặc văn bản và chuyển đổi ĐÚNG định dạng mã 'quiz' JSON.
+  const practicePrompt = `Bạn là một Gia sư Toán học xuất sắc hàng đầu.
+Nhiệm vụ của bạn là phân tích tài liệu bài tập này và thiết kế thành một "Bài Giảng Phân Dạng" TRÌNH BÀY SIÊU ĐẸP, BÀI BẢN.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
-1. [CỰC KỲ QUAN TRỌNG]: KHÔNG tạo ra bất kỳ văn bản Markdown, Heading, giải thích, hay lý thuyết nào cả. CHỈ CÓ các khối \`\`\`quiz\`\`\` nằm nối tiếp nhau. KHÔNG dùng \`---\`.
-2. Mọi câu hỏi trắc nghiệm PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Có 2 loại cấu trúc JSON mà bạn có thể dùng:
+1. Dùng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU CHO MATHTYPE]:
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
+- Phân số: Dùng \\frac{tử}{mẫu}.
+- Góc: Dùng \\widehat{tên} (Ví dụ: $\\widehat{ABC}$).
+- Độ: Dùng $^\\circ$ hoặc $^\\circ C$.
+- Ký hiệu đỉnh, phẩy: Dùng trực tiếp dấu nháy đơn ' trên bàn phím (Ví dụ: $A'B'C'D'$). Tuyệt đối KHÔNG dùng mã \\prime.
+2. [QUY TRÌNH PHÂN DẠNG - CỰC QUAN TRỌNG]:
+- Gom nhóm các bài tập trong ảnh thành các DẠNG TOÁN riêng biệt. 
+- Mở đầu mỗi Dạng bằng thẻ Heading 2 (##) kèm Emoji. Ví dụ: \`## 📚 Dạng 1: Viết phương trình tiếp tuyến\`. 
+- Sau đó bạn hãy TỰ biên soạn \`### 💡 Phương pháp giải\` ngắn gọn cho Dạng đó.
+- Tiếp theo, trích lấy 1 bài tập tiêu biểu làm \`### 📌 Ví dụ mẫu\` và tự biên soạn trình bày lời giải chi tiết bên dưới. ĐỂ KÍCH HOẠT KHUNG GIAO DIỆN CHUẨN, ở phần lời giải của Ví dụ mẫu BẮT BUỘC bạn phải ghi chữ "Hướng dẫn giải:" ngay trước khi giải.
+- [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Đồ thị, Hình học, Bảng biến thiên, Bảng xét dấu... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ (VD: không viết "đồ thị đi lên/đi xuống từ..."). THAY VÀO ĐÓ, bạn BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ bảng/hình. Lời giải bên dưới chỉ ghi ngắn gọn "Từ Bảng biến thiên/Đồ thị ở trên, ta có:".
+3. [TẠO BÀI TẬP TƯƠNG TÁC]: Ngay sau khi giải xong Ví dụ mẫu, bạn hãy dùng dấu ngắt trang \`---\`. Tiếp theo, biến các bài tập còn lại của Dạng đó thành các khối mã "quiz" (JSON) để học sinh tự làm. Học sinh làm đúng mới được qua Dạng tiếp theo.
+4. Mọi câu hỏi trong phần luyện tập PHẢI được xuất ra ĐÚNG DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Cấu trúc JSON có 3 loại:
 
 LOẠI 1: CÂU HỎI NHIỀU LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 \`\`\`quiz
@@ -566,7 +585,14 @@ LOẠI 1: CÂU HỎI NHIỀU LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
   "type": "multiple_choice",
   "question": "Đạo hàm của hàm số $y = x^2 + 2x$ là?",
   "options": ["$y' = 2x + 2$", "$y' = x + 2$", "$y' = 2x$", "$y' = 2$"],
-  "answerIndex": 0
+  "answerIndex": 0,
+  "answer": "Giải thích nhanh",
+  "phuong_phap_giai": "Sử dụng công thức đạo hàm cơ bản $(x^n)' = n.x^{n-1}$",
+  "cac_buoc_thuc_hien": [
+    "Bước 1: Đạo hàm $x^2$ được $2x$",
+    "Bước 2: Đạo hàm $2x$ được $2$"
+  ],
+  "goi_y_nhanh": "Nhớ đạo hàm tổng bằng tổng các đạo hàm"
 }
 \`\`\`
 
@@ -580,16 +606,51 @@ LOẠI 2: CÂU HỎI ĐÚNG/SAI (4 MỆNH ĐỀ ĐỘC LẬP - BAREM 2025)
     { "id": "b", "content": "Mệnh đề B", "isTrue": false },
     { "id": "c", "content": "Mệnh đề C", "isTrue": true },
     { "id": "d", "content": "Mệnh đề D", "isTrue": false }
-  ]
+  ],
+  "phuong_phap_giai": "Lập bảng biến thiên...",
+  "cac_buoc_thuc_hien": ["Đạo hàm y'", "Tìm nghiệm y'=0", "Lập BBT"],
+  "goi_y_nhanh": "Chú ý dấu của hệ số a"
+}
+\`\`\`
+
+LOẠI 3: CÂU HỎI TỰ LUẬN
+\`\`\`quiz
+{
+  "type": "essay",
+  "question": "Giải phương trình $3x + 2y = 4$.",
+  "answer": "Đáp án mẫu chi tiết của câu tự luận",
+  "phuong_phap_giai": "Rút y theo x hoặc ngược lại.",
+  "cac_buoc_thuc_hien": [
+    "Từ $3x + 2y = 4$, ta có $2y = 4 - 3x$",
+    "Suy ra $y = 2 - \\\\frac{3}{2}x$"
+  ],
+  "goi_y_nhanh": "Đây là phương trình Diophante tuyến tính."
+}
+\`\`\`
+
+LOẠI 4: CÂU TRẢ LỜI NGẮN (kết quả ngắn gọn: 1 số, 1 biểu thức, 1 từ)
+\`\`\`quiz
+{
+  "type": "short_answer",
+  "question": "Tính giá trị của biểu thức $\\\\\\\\sqrt{9} + \\\\\\\\sqrt{16}$.",
+  "correctAnswer": "7",
+  "answer": "Ta có $\\\\\\\\sqrt{9} = 3$ và $\\\\\\\\sqrt{16} = 4$, nên tổng là $3 + 4 = 7$.",
+  "phuong_phap_giai": "Tính căn bậc hai của số chính phương rồi cộng lại.",
+  "cac_buoc_thuc_hien": [
+    "Tính $\\\\\\\\sqrt{9} = 3$",
+    "Tính $\\\\\\\\sqrt{16} = 4$",
+    "Cộng: $3 + 4 = 7$"
+  ],
+  "goi_y_nhanh": "Nhớ căn bậc hai các số chính phương: 1, 4, 9, 16, 25..."
 }
 \`\`\`
 
 GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
+- BẮT BUỘC TRÍCH XUẤT ĐẦY ĐỦ "phuong_phap_giai", "cac_buoc_thuc_hien" (là MẢNG CÁC CHUỖI), và "goi_y_nhanh" cho TẤT CẢ các câu hỏi nếu có thể suy luận ra từ tài liệu.
 - TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Ví dụ: \\frac phải viết là \\\\frac, \\mathbb là \\\\mathbb. Nếu không làm điều này, hệ thống sẽ BỊ LỖI.
 - Tất cả các công thức toán học trong JSON BẮT BUỘC bọc trong $...$
 - Bạn không cần ghi chữ "Câu 1:", "Bài 2:" ở đầu mục "question", chỉ cần trích xuất nội dung cốt lõi của câu hỏi.
-- Nếu không chỉ định type, hệ thống mặc định là multiple_choice.
-- Nếu có câu hỏi yêu cầu điền đáp án ngắn, hoặc trình bày tự luận, bạn có thể thiết lập "type": "short_answer" hoặc "type": "essay".`;
+- Nếu không chỉ định type, hệ thống mặc định là multiple_choice.`;
 
   return isPractice ? practicePrompt : theoryPrompt;
 };
@@ -615,6 +676,16 @@ function EditorContent() {
   const [markdownContent, setMarkdownContent] = useState("");
   const [blocks, setBlocks] = useState<Block[]>([]);
   const [editorMode, setEditorMode] = useState<'form' | 'raw'>('form');
+  const [showRawPreview, setShowRawPreview] = useState(false);
+
+  const handleFixRawLatex = () => {
+    let text = markdownContent;
+    text = text.replace(/\[cite_start\]/g, "").replace(/\[cite_end\]/g, "");
+    text = text.replace(/\{\{\s*begincases\s*\}\}/g, "\\begin{cases}");
+    text = text.replace(/\{\{\s*endcases\s*\}\}/g, "\\end{cases}");
+    text = text.replace(/\\rightarrow/g, "\\rightarrow ");
+    setMarkdownContent(text);
+  };
   const [docList, setDocList] = useState<{id: string, title: string, url: string}[]>([]);
   const isDocumentModule = moduleTitle.toLowerCase().includes('tài liệu tham khảo');
   const isVideoModule = moduleTitle.toLowerCase().includes('video');
@@ -774,16 +845,90 @@ function EditorContent() {
     });
   };
 
+  const handleExportWord = async () => {
+    try {
+      let content = editorMode === 'form' ? serializeBlocksToMarkdown(blocks) : markdownContent;
+      
+      // 1. Lọc và bóc tách các câu hỏi trắc nghiệm JSON (Xóa bỏ JSON thô)
+      content = content.replace(/```quiz\n([\s\S]*?)\n```/g, (match, jsonString) => {
+          try {
+              const quiz = JSON.parse(jsonString);
+              let quizText = `\n\n**CÂU HỎI KIỂM TRA:**\n${quiz.question}\n\n`;
+              if (quiz.options) {
+                 quiz.options.forEach((opt: any, i: number) => {
+                    const label = String.fromCharCode(65 + i);
+                    const optText = typeof opt === 'string' ? opt : opt.content;
+                    quizText += `**${label}.** ${optText}  \n`; 
+                 });
+              }
+              return quizText;
+          } catch(e) { return match; }
+      });
+
+      // 2. Chữa các lỗi sai cú pháp LaTeX của AI để MathType/Word nhận diện được
+      content = content.replace(/\{\{begincases/g, '\\begin{cases}').replace(/endcases\}\}/g, '\\end{cases}');
+
+      // 3. Parser Markdown cơ bản sang HTML để MS Word hiểu được In đậm, Tiêu đề và Kéo dòng
+      let html = content.replace(/\\\\/g, '\\'); // Đưa dấu chéo kép về dấu chéo đơn chuẩn LaTeX cho MathType
+      html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      
+      // Parse Heading
+      html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
+      html = html.replace(/^## (.*$)/gim, '<h2>$1</h2>');
+      html = html.replace(/^# (.*$)/gim, '<h1>$1</h1>');
+      
+      // Parse Bold/Italic
+      html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+      html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
+      
+      // Bao bọc <p> cho từng dòng để Word bắt buộc phải xuống đoạn thay vì dính chùm
+      html = html.split('\n').map(line => {
+         const t = line.trim();
+         if (!t) return '';
+         if (t.startsWith('<h')) return t; // Không bọc p cho heading
+         return `<p>${line}</p>`;
+      }).join('\n');
+
+      const documentHtml = `
+      <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+      <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+      <style>
+        body { font-family: "Times New Roman", Times, serif; font-size: 14pt; line-height: 1.5; }
+        h1 { font-size: 20pt; text-align: center; color: #00529b; }
+        h2 { font-size: 16pt; color: #00529b; margin-top: 24px; }
+        h3 { font-size: 14pt; font-weight: bold; margin-top: 16px; }
+        p { margin-top: 4px; margin-bottom: 4px; }
+      </style>
+      </head>
+      <body>
+        <h1>${title || "Giáo Án Lý Thuyết"}</h1>
+        ${html}
+      </body>
+      </html>`;
+
+      const blob = new Blob(['\ufeff', documentHtml], { type: 'application/msword' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url; a.download = `GiaoAn_${title || 'BaiGiang'}.doc`;
+      document.body.appendChild(a); a.click(); document.body.removeChild(a); URL.revokeObjectURL(url);
+    } catch (e) { alert("Lỗi xuất file Word: " + e); }
+  };
+
   const handleAnalyzeQueue = async () => {
     if (pendingImages.length === 0 && pendingText.trim().length === 0) return alert("Hàng đợi rỗng!");
     if (!apiKey) return alert("Vui lòng lưu Gemini API Key trước!");
     
     setIsAnalyzing(true);
     try {
-      const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
+      // Cơ chế Xoay vòng Key (Load Balancing) - Hỗ trợ nhập nhiều key cách nhau bằng dấu phẩy
+      const keys = apiKey.split(',').map(k => k.trim()).filter(k => k);
+      const randomKey = keys[Math.floor(Math.random() * keys.length)];
+
+      const genAI = new GoogleGenerativeAI(randomKey);
+      const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
       
-      const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra');
+      const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
       const prompt = getPrompt(isPractice);
 
       let finalPrompt = prompt;
@@ -824,7 +969,7 @@ function EditorContent() {
   };
 
   const handleCopyPrompt = () => {
-    const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra');
+    const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
     const prompt = getPrompt(isPractice);
 
     navigator.clipboard.writeText(prompt);
@@ -1228,7 +1373,8 @@ function EditorContent() {
               <input type="file" ref={fileInputRef} multiple onChange={handleQueueFileUpload} accept="image/*" className="hidden" />
               <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-1.5 text-xs font-medium bg-white border border-indigo-200 text-indigo-700 px-3 py-1.5 rounded-md hover:bg-indigo-50 transition-colors shadow-sm"><ImageIcon className="w-3.5 h-3.5" /> Nạp File (Ảnh/Word/PDF)</button>
               <button onClick={() => { if (lastAnalyzedImages.length > 0) setCropImageSrc(lastAnalyzedImages[0]); setIsCropModalOpen(true); }} className="flex items-center gap-1.5 text-xs font-medium bg-orange-50 border border-orange-200 text-orange-700 px-3 py-1.5 rounded-md hover:bg-orange-100 transition-colors shadow-sm"><CropIcon className="w-3.5 h-3.5" /> Cắt Ảnh & Chèn</button>
-              <button onClick={() => setIsBackupModalOpen(true)} className="flex items-center gap-1.5 text-xs font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-md hover:bg-emerald-100 transition-colors shadow-sm"><Bot className="w-3.5 h-3.5" /> Dự phòng Web</button>
+              <button onClick={() => setIsBackupModalOpen(true)} className="flex items-center gap-1.5 text-xs font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-md hover:bg-emerald-100 transition-colors shadow-sm" title="Sinh mẫu Prompt thủ công"><Bot className="w-3.5 h-3.5" /> Lấy Prompt Thủ Công</button>
+              <button onClick={handleExportWord} className="flex items-center gap-1.5 text-xs font-bold bg-blue-600 text-white px-4 py-1.5 rounded-md hover:bg-blue-700 transition-colors shadow-[0_4px_10px_-2px_rgba(37,99,235,0.4)]"><Download className="w-3.5 h-3.5" /> Xuất Giáo Án (Word)</button>
             </div>
           </div>
           
@@ -1262,11 +1408,52 @@ function EditorContent() {
             )}
           <div className="flex-1 flex flex-col relative min-h-[75vh]">
             {editorMode === 'raw' ? (
-              <textarea 
-                ref={textareaRef} value={markdownContent} onChange={(e) => setMarkdownContent(e.target.value)} onPaste={handlePaste}
-                placeholder="Bắt đầu gõ hoặc Ấn Ctrl + V để dán ảnh bài tập vào đây."
-                className="flex-1 w-full p-4 resize-none outline-none text-gray-700 font-mono text-sm leading-relaxed"
-              />
+              <div className="flex flex-col flex-1 relative min-h-0">
+                 {/* Thanh công cụ phụ cho RAW */}
+                 <div className="bg-gray-100 border-b border-gray-200 px-3 py-2 flex items-center justify-between shrink-0">
+                    <div className="flex items-center gap-3">
+                       <button onClick={() => setShowRawPreview(!showRawPreview)} className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-md transition-colors ${showRawPreview ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'}`}>
+                          <Eye className="w-4 h-4"/> {showRawPreview ? 'Ẩn Xem Trước' : 'Bật Xem Trước (Split View)'}
+                       </button>
+                       {showRawPreview && (
+                           <button onClick={handleFixRawLatex} className="flex items-center gap-1.5 text-xs font-bold bg-purple-100 text-purple-700 px-3 py-1.5 rounded-md hover:bg-purple-200 transition-colors shadow-sm">
+                              🪄 Sửa lỗi LaTeX tự động
+                           </button>
+                       )}
+                    </div>
+                 </div>
+
+                 {/* Cảnh báo Bảng/Ảnh */}
+                 {(() => {
+                    const hasImageOrTable = /(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\|.*\|.*\n\s*\|[-\s:]+\|)/i.test(markdownContent);
+                    if (!hasImageOrTable) return null;
+                    return (
+                        <div className="bg-yellow-50 border-b border-yellow-200 px-4 py-3 shrink-0 flex items-center justify-between">
+                            <span className="text-[13px] font-medium text-yellow-800 flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-yellow-600"/> Có Bảng / Yêu cầu chèn ảnh! Đặt con trỏ đúng vị trí và nhấn:</span>
+                            <button onClick={() => {
+                                setTargetCropBlockId(null);
+                                if (lastAnalyzedImages.length > 0) setCropImageSrc(lastAnalyzedImages[0]);
+                                setIsCropModalOpen(true);
+                            }} className="bg-yellow-600 hover:bg-yellow-700 text-white px-3 py-1.5 text-xs font-bold rounded-lg shadow-sm flex items-center gap-1.5 shrink-0 animate-pulse"><CropIcon className="w-3.5 h-3.5"/> Cắt & Chèn Ảnh Tại Con Trỏ</button>
+                        </div>
+                    );
+                 })()}
+
+                 <div className="flex-1 flex flex-row overflow-hidden">
+                    <textarea 
+                      ref={textareaRef} value={markdownContent} onChange={(e) => setMarkdownContent(e.target.value)} onPaste={handlePaste}
+                      placeholder="Bắt đầu gõ hoặc Ấn Ctrl + V để dán bài tập vào đây."
+                      className={`h-full p-4 resize-none outline-none text-gray-700 font-mono text-[14px] leading-relaxed scroll-smooth ${showRawPreview ? 'w-1/2 border-r border-gray-200 bg-white' : 'w-full bg-white'}`}
+                    />
+                    {showRawPreview && (
+                       <div className="w-1/2 h-full overflow-y-auto bg-gray-50/50 p-6 scroll-smooth">
+                          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-h-full max-w-none prose prose-indigo">
+                              {renderMarkdown(markdownContent)}
+                          </div>
+                       </div>
+                    )}
+                 </div>
+              </div>
             ) : (
               <div className="flex-1 overflow-y-auto relative bg-slate-50">
                  <BlockEditor blocks={blocks} onChangeBlocks={setBlocks} onTriggerCrop={(meta, id) => {

@@ -157,7 +157,7 @@ export default function RegisterForm({ courses }: { courses: Course[] }) {
           
           <InputField label="Họ và tên Học sinh" name="student_name" required placeholder="Nguyễn Văn A" value={formData.student_name} onChange={handleChange} />
           <InputField label="Trường" name="school" placeholder="THCS Lê Hồng Phong" value={formData.school} onChange={handleChange} />
-          <InputField label="Lớp đang học" name="class_name" placeholder="9A1" value={formData.class_name} onChange={handleChange} />
+          <InputField label="Lớp đang học ở trường phổ thông" name="class_name" placeholder="VD: 12A1, 9A" value={formData.class_name} onChange={handleChange} />
           <InputField label="SĐT Học sinh" name="student_phone" type="tel" placeholder="0901234567" value={formData.student_phone} onChange={handleChange} />
         </div>
 

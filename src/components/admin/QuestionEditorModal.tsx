@@ -174,6 +174,37 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
     onClose();
   };
 
+  const handleFixLatex = () => {
+    if (!formData) return;
+    const fixText = (text: string) => {
+      if (!text) return text;
+      let s = String(text);
+      s = s.replace(/\{\{begincases/g, '\\begin{cases}').replace(/endcases\}\}/g, '\\end{cases}');
+      s = s.replace(/(?<!\\)begincases/g, '\\begin{cases}').replace(/(?<!\\)endcases/g, '\\end{cases}');
+      s = s.replace(/\\\\\\\\/g, '\\\\');
+      s = s.replace(/\\prime/g, "'");
+      s = s.replace(/(?<!\\)rightarrow/g, "\\rightarrow");
+      s = s.replace(/textAl/g, "\\text{Al}");
+      s = s.replace(/textO/g, "\\text{O}");
+      s = s.replace(/(?<!\$)\\begin\{cases\}/g, '$\\begin{cases}');
+      s = s.replace(/\\end\{cases\}(?!\$)/g, '\\end{cases}$');
+      return s;
+    };
+
+    setFormData(prev => {
+        if (!prev) return prev;
+        return {
+            ...prev,
+            content: fixText(prev.content),
+            answer_a: fixText(prev.answer_a),
+            answer_b: fixText(prev.answer_b),
+            answer_c: fixText(prev.answer_c),
+            answer_d: fixText(prev.answer_d),
+            explanation: fixText(prev.explanation)
+        };
+    });
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4" onPaste={handlePaste}>
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl max-h-[90vh] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
@@ -184,6 +215,10 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
             <Wand2 className="w-5 h-5 text-indigo-600" /> Chỉnh sửa Chi tiết Câu hỏi
           </h2>
           <div className="flex items-center gap-2">
+            <button onClick={handleFixLatex} className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold rounded-lg text-xs transition-colors border border-purple-200">
+               <Wand2 className="w-3.5 h-3.5" />
+               Sửa lỗi LaTeX
+            </button>
             <button onClick={onClose} className="p-2 text-gray-500 hover:bg-gray-200 rounded-full transition-colors">
               <X className="w-5 h-5" />
             </button>

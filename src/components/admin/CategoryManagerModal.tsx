@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { 
-  Database, UploadCloud, Download, Trash2, Search, X, FileSpreadsheet
+  Database, UploadCloud, Download, Trash2, Search, X, FileSpreadsheet, Edit2
 } from "lucide-react";
 import Papa from "papaparse";
 import * as XLSX from "xlsx";
@@ -31,6 +31,49 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
   // New States
   const [isManualAdding, setIsManualAdding] = useState(false);
   const [newCategory, setNewCategory] = useState({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
+  const [editingId, setEditingId] = useState<string | null>(null);
+
+  const startEditing = (cat: CategoryData) => {
+    setEditingId(cat.id);
+    setNewCategory({
+      grade: cat.grade || "",
+      subject: cat.subject || "",
+      topic: cat.topic || "",
+      lesson: cat.lesson || "",
+      math_form: cat.math_form || ""
+    });
+    setIsManualAdding(true);
+  };
+
+  const handleUpdate = async () => {
+    if (!newCategory.grade || !newCategory.subject || !newCategory.topic || !newCategory.math_form) {
+      return alert("Vui lòng điền đủ Lớp, Phân môn, Chuyên đề và Dạng toán!");
+    }
+    try {
+      const { error } = await supabase.from('question_categories').update({
+        grade: newCategory.grade.trim(),
+        subject: newCategory.subject.trim(),
+        topic: newCategory.topic.trim(),
+        lesson: newCategory.lesson.trim(),
+        math_form: newCategory.math_form.trim()
+      }).eq('id', editingId);
+      
+      if (error) throw error;
+      setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
+      setEditingId(null);
+      setIsManualAdding(false);
+      fetchCategories();
+      onCategoriesUpdated();
+    } catch (e: any) {
+      alert("Lỗi khi cập nhật: " + e.message);
+    }
+  };
+
+  const cancelEditing = () => {
+    setEditingId(null);
+    setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
+    setIsManualAdding(false);
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -168,8 +211,8 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
   );
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-      <div className="bg-white rounded-2xl w-full max-w-5xl h-[85vh] flex flex-col shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
+    <div className="fixed inset-0 z-[100] flex bg-white animate-in fade-in duration-200">
+      <div className="w-full h-full flex flex-col overflow-hidden">
         
         {/* Header Modal */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50">
@@ -244,7 +287,14 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
               <label className="text-xs font-bold text-blue-800">Dạng toán *</label>
               <input value={newCategory.math_form} onChange={e => setNewCategory({...newCategory, math_form: e.target.value})} placeholder="Tìm khoảng đơn điệu..." className="border border-blue-200 rounded-lg p-2 text-sm outline-none focus:border-blue-500" />
             </div>
-            <button onClick={handleManualAdd} className="bg-blue-600 text-white font-bold px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-colors shadow-sm text-sm h-[42px] shrink-0">Lưu Dạng</button>
+            {editingId ? (
+              <div className="flex gap-2 shrink-0">
+                <button onClick={handleUpdate} className="bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-lg hover:bg-emerald-700 transition-colors shadow-sm text-sm h-[42px]">Cập nhật</button>
+                <button onClick={cancelEditing} className="bg-gray-200 text-gray-700 font-bold px-5 py-2.5 rounded-lg hover:bg-gray-300 transition-colors shadow-sm text-sm h-[42px]">Hủy</button>
+              </div>
+            ) : (
+              <button onClick={handleManualAdd} className="bg-blue-600 text-white font-bold px-5 py-2.5 rounded-lg hover:bg-blue-700 transition-colors shadow-sm text-sm h-[42px] shrink-0">Lưu Dạng</button>
+            )}
           </div>
         )}
 
@@ -289,7 +339,10 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
                         {cat.math_form}
                       </span>
                     </td>
-                    <td className="p-4 pr-6 text-right">
+                    <td className="p-4 pr-6 text-right flex items-center justify-end gap-1">
+                      <button onClick={() => startEditing(cat)} className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
+                        <Edit2 className="w-4 h-4" />
+                      </button>
                       <button onClick={() => handleDelete(cat.id)} className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
                         <Trash2 className="w-4 h-4" />
                       </button>

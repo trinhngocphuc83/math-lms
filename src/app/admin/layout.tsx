@@ -15,7 +15,8 @@ import {
   ChevronLeft,
   ChevronRight,
   Sparkles,
-  DollarSign
+  DollarSign,
+  Library
 } from "lucide-react";
 
 export default function AdminLayout({
@@ -39,10 +40,14 @@ export default function AdminLayout({
       items: [
         { name: "Khối lớp & Danh mục", href: "/admin/categories", icon: List },
         { name: "Khóa học & Bài giảng", href: "/admin/courses", icon: BookOpen },
+        { name: "Sổ Tay Công Thức", href: "/admin/handbook", icon: Library },
         { name: "Soạn bài bằng AI", href: "/admin/lessons/editor", icon: Sparkles },
         { name: "Lớp học (Classes)", href: "/admin/classes", icon: Users },
         { name: "Ngân hàng Câu hỏi", href: "/admin/questions", icon: FileEdit },
         { name: "Quản lý Đề thi", href: "/admin/exams", icon: LayoutDashboard },
+        { name: "Kỳ thi Online", href: "/admin/online-exams", icon: ShieldAlert },
+        { name: "Kết quả Thi Online", href: "/admin/online-exam-results", icon: GraduationCap },
+        { name: "Kết quả Bài tập", href: "/admin/exam-results", icon: FileEdit },
       ]
     },
     {
@@ -82,8 +87,8 @@ export default function AdminLayout({
           </div>
           {!isCollapsed && (
             <div className="overflow-hidden">
-              <h1 className="font-bold text-lg leading-tight whitespace-nowrap">Admin CMS</h1>
-              <p className="text-[10px] text-teal-400 font-semibold uppercase tracking-widest mt-1 whitespace-nowrap">EduCenter</p>
+              <h1 className="font-bold text-lg leading-tight whitespace-nowrap">Math LMS</h1>
+              <p className="text-[10px] text-teal-400 font-semibold uppercase tracking-widest mt-1 whitespace-nowrap">Dashboard</p>
             </div>
           )}
         </div>

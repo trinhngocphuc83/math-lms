@@ -171,6 +171,7 @@ const calculateTrueFalseScore = (userAnswers: Record<string, boolean>, items: an
 const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) => {
   const [selectedOpt, setSelectedOpt] = useState<number | null>(null);
   const [tfAnswers, setTfAnswers] = useState<Record<string, boolean>>({});
+  const [shortAnswerText, setShortAnswerText] = useState("");
   const [isChecked, setIsChecked] = useState(false);
 
   const type = data.type || 'multiple_choice';
@@ -183,6 +184,8 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
       const items = data.options || data.statements || [];
       const score = calculateTrueFalseScore(tfAnswers, items);
       if (score > 0) onPass();
+    } else if (type === 'short_answer' || type === 'essay') {
+      onPass();
     }
   };
 
@@ -200,11 +203,11 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
   const cleanQuestion = data.question ? data.question.replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '') : "";
 
   return (
-    <div className="my-6 bg-white border-2 border-indigo-100 rounded-2xl p-5 md:p-8 shadow-sm">
-      <div className="text-lg font-bold text-gray-800 mb-4 flex items-start gap-3">
-         <span className="text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded text-sm shrink-0 mt-0.5">Câu hỏi</span>
-         <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed">
-            <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{cleanQuestion}</ReactMarkdown>
+    <div className="my-8 bg-white border-2 border-indigo-200 rounded-[2rem] p-6 md:p-8 shadow-[6px_6px_0px_0px_rgba(199,210,254,1)] relative transition-all hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(199,210,254,1)]">
+      <div className="text-lg font-bold text-gray-800 mb-6 flex flex-col md:flex-row items-start md:items-center gap-3">
+         <span className="text-indigo-800 bg-indigo-100 border-2 border-indigo-200 px-4 py-1.5 rounded-2xl text-sm shrink-0 font-black tracking-wide">THỬ THÁCH NHỎ</span>
+         <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed text-slate-700">
+            <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
          </div>
       </div>
 
@@ -220,19 +223,19 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                   key={idx}
                   disabled={isChecked}
                   onClick={() => setSelectedOpt(idx)}
-                  className={`text-left p-4 rounded-xl border-2 transition-all flex items-start gap-3
-                     ${isSelected && !isChecked ? 'border-indigo-500 bg-indigo-50 shadow-md transform -translate-y-0.5' : ''}
-                     ${!isSelected && !isChecked ? 'border-gray-200 hover:border-indigo-300 hover:bg-gray-50' : ''}
-                     ${isCorrect ? 'border-green-500 bg-green-50' : ''}
-                     ${isWrong ? 'border-red-500 bg-red-50' : ''}
+                  className={`text-left p-4 rounded-2xl border-2 transition-all flex items-start gap-4
+                     ${isSelected && !isChecked ? 'border-indigo-400 bg-indigo-50 shadow-[4px_4px_0px_0px_rgba(129,140,248,1)] transform -translate-y-1' : ''}
+                     ${!isSelected && !isChecked ? 'border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/30 hover:-translate-y-0.5 hover:shadow-sm' : ''}
+                     ${isCorrect ? 'border-green-400 bg-green-50 shadow-[4px_4px_0px_0px_rgba(74,222,128,1)]' : ''}
+                     ${isWrong ? 'border-red-400 bg-red-50 shadow-[4px_4px_0px_0px_rgba(248,113,113,1)]' : ''}
                      ${isChecked && !isCorrect && !isWrong ? 'border-gray-200 opacity-50' : ''}
                   `}
                >
-                  <div className={`w-6 h-6 shrink-0 rounded-full border-2 flex items-center justify-center font-bold text-xs
-                     ${isSelected && !isChecked ? 'border-indigo-500 bg-indigo-500 text-white' : ''}
-                     ${!isSelected && !isChecked ? 'border-gray-300 text-gray-400' : ''}
-                     ${isCorrect ? 'border-green-500 bg-green-500 text-white' : ''}
-                     ${isWrong ? 'border-red-500 bg-red-500 text-white' : ''}
+                  <div className={`w-8 h-8 shrink-0 rounded-xl border-2 flex items-center justify-center font-black text-sm
+                     ${isSelected && !isChecked ? 'border-indigo-500 bg-indigo-500 text-white shadow-sm' : ''}
+                     ${!isSelected && !isChecked ? 'border-slate-300 text-slate-500 bg-slate-50' : ''}
+                     ${isCorrect ? 'border-green-500 bg-green-500 text-white shadow-sm' : ''}
+                     ${isWrong ? 'border-red-500 bg-red-500 text-white shadow-sm' : ''}
                   `}>
                      {['A','B','C','D'][idx]}
                   </div>
@@ -284,6 +287,24 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
          </div>
       )}
 
+      {/* RENDER DẠNG TRẢ LỜI NGẮN / TỰ LUẬN */}
+      {(type === 'short_answer' || type === 'essay') && (
+         <div className="flex flex-col gap-3 mt-4">
+            <input 
+               type="text" 
+               disabled={isChecked}
+               placeholder="Nhập câu trả lời của bạn vào đây..."
+               value={shortAnswerText}
+               onChange={e => setShortAnswerText(e.target.value)}
+               className={`w-full p-4 rounded-xl border-2 outline-none font-bold text-gray-700 focus:ring-4 focus:ring-indigo-500/20 transition-all ${
+                  isChecked 
+                    ? ((shortAnswerText || '').trim().toLowerCase() === (data.exactAnswer || '').trim().toLowerCase() ? 'border-green-500 bg-green-50 text-green-700' : 'border-red-500 bg-red-50 text-red-700')
+                    : 'border-slate-200 hover:border-indigo-300 focus:border-indigo-500'
+               }`}
+            />
+         </div>
+      )}
+
       {isChecked && type === 'multiple_choice' && (
          <div className={`mt-5 p-4 rounded-xl flex items-start gap-3 ${selectedOpt === data.answerIndex ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
             {selectedOpt === data.answerIndex ? <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 shrink-0" />}
@@ -292,6 +313,18 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
             </div>
             {selectedOpt !== data.answerIndex && (
                <button onClick={() => { setIsChecked(false); setSelectedOpt(null); }} className="px-4 py-1.5 bg-red-100 hover:bg-red-200 text-red-700 font-bold rounded-lg text-sm transition-colors shrink-0 shadow-sm">Làm lại</button>
+            )}
+         </div>
+      )}
+
+      {isChecked && type === 'short_answer' && (
+         <div className={`mt-5 p-4 rounded-xl flex items-start gap-3 ${((shortAnswerText || '').trim().toLowerCase() === (data.exactAnswer || '').trim().toLowerCase()) ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+            {((shortAnswerText || '').trim().toLowerCase() === (data.exactAnswer || '').trim().toLowerCase()) ? <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 shrink-0" />}
+            <div className="flex-1">
+               <p className="font-bold">{((shortAnswerText || '').trim().toLowerCase() === (data.exactAnswer || '').trim().toLowerCase()) ? 'Tuyệt vời! Bạn đã điền chính xác.' : `Chưa đúng rồi! Đáp án đúng là: ${data.exactAnswer || 'Chưa cập nhật'}`}</p>
+            </div>
+            {((shortAnswerText || '').trim().toLowerCase() !== (data.exactAnswer || '').trim().toLowerCase()) && (
+               <button onClick={() => { setIsChecked(false); setShortAnswerText(""); }} className="px-4 py-1.5 bg-red-100 hover:bg-red-200 text-red-700 font-bold rounded-lg text-sm transition-colors shrink-0 shadow-sm">Làm lại</button>
             )}
          </div>
       )}
@@ -391,20 +424,48 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
   if (pages.length === 0) return null;
 
   return (
-    <div className="flex flex-col min-h-[50vh]">
+    <div className="flex flex-col min-h-[50vh] bg-white rounded-[2.5rem] shadow-[12px_12px_0px_0px_rgba(203,213,225,0.4)] border-2 border-slate-200 p-6 sm:p-10 md:p-14">
       <div className="flex-1">
         {parts.map((p, idx) => {
            if (p.type === 'md') {
                return (
-                 <div key={`md-${currentPage}-${idx}`} className="prose prose-lg prose-indigo max-w-none text-gray-700 leading-relaxed
-                    prose-h1:text-3xl prose-h1:font-extrabold prose-h1:text-indigo-900 prose-h1:mb-6
-                    prose-h2:text-2xl prose-h2:font-bold prose-h2:text-indigo-800 prose-h2:mt-10 prose-h2:mb-4
-                    prose-h3:text-xl prose-h3:font-bold prose-h3:text-indigo-700
-                    prose-p:mb-6 prose-li:mb-2
-                    [&_code]:bg-indigo-50 [&_code]:text-indigo-600 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-[0.9em]
-                    [&_blockquote]:border-l-4 [&_blockquote]:border-indigo-500 [&_blockquote]:bg-indigo-50 [&_blockquote]:px-4 [&_blockquote]:py-2 [&_blockquote]:rounded-r-lg
+                 <div key={`md-${currentPage}-${idx}`} className="prose prose-lg prose-indigo max-w-none text-slate-800 leading-relaxed font-medium
+                    prose-h1:text-4xl prose-h1:font-black prose-h1:text-slate-800 prose-h1:mb-10 prose-h1:text-center prose-h1:tracking-tight
+                    prose-h2:text-[1.4rem] prose-h2:font-black prose-h2:text-blue-900 prose-h2:bg-blue-50/80 prose-h2:px-5 prose-h2:py-3 prose-h2:rounded-xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:uppercase prose-h2:tracking-wide prose-h2:border-l-[6px] prose-h2:border-blue-600 prose-h2:shadow-sm
+                    prose-h3:text-[1.15rem] prose-h3:font-bold prose-h3:text-emerald-900 prose-h3:bg-emerald-50/80 prose-h3:px-4 prose-h3:py-2.5 prose-h3:rounded-lg prose-h3:mt-8 prose-h3:mb-4 prose-h3:border-l-[5px] prose-h3:border-emerald-500
+                    prose-p:mb-6 prose-p:text-[1.05rem] prose-p:leading-8
+                    prose-li:mb-3 prose-ul:list-none prose-ul:pl-0 [&_ul>li]:relative [&_ul>li]:pl-7 [&_ul>li::before]:content-[''] [&_ul>li::before]:absolute [&_ul>li::before]:w-2.5 [&_ul>li::before]:h-2.5 [&_ul>li::before]:bg-[#00529b] [&_ul>li::before]:rounded-full [&_ul>li::before]:left-0 [&_ul>li::before]:top-2.5 [&_ul>li::before]:shadow-sm
+                    [&_code]:bg-amber-100 [&_code]:text-amber-800 [&_code]:px-2 [&_code]:py-0.5 [&_code]:rounded-lg [&_code]:border [&_code]:border-amber-200 [&_code]:font-bold [&_code]:text-[0.9em]
+                    [&_blockquote]:border-2 [&_blockquote]:border-dashed [&_blockquote]:border-emerald-400 [&_blockquote]:bg-emerald-50/40 [&_blockquote]:text-emerald-950 [&_blockquote]:px-6 [&_blockquote]:py-5 [&_blockquote]:rounded-[2rem] [&_blockquote]:shadow-sm [&_blockquote]:my-8 [&_blockquote_p]:m-0 [&_blockquote_p]:font-bold [&_blockquote_p]:leading-relaxed
                  ">
-                   <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{p.content}</ReactMarkdown>
+                   <ReactMarkdown 
+                      remarkPlugins={[remarkMath, remarkBreaks]} 
+                      rehypePlugins={[rehypeKatex]}
+                      components={{
+                         strong: ({node, children, ...props}) => {
+                            const text = String(children);
+                            if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải")) {
+                               return (
+                                  <span className="block mt-10 mb-4 not-prose w-full">
+                                     <span className="bg-blue-50 text-blue-800 px-5 py-3 rounded-t-2xl border-b-2 border-emerald-400 font-bold flex items-center gap-3 w-max max-w-full">
+                                        <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm text-lg">💡</span>
+                                        PHƯƠNG PHÁP GIẢI
+                                     </span>
+                                     <span className="bg-white border-l-4 border-emerald-500 p-4 rounded-b-2xl rounded-tr-2xl shadow-sm border border-slate-100 flex items-center gap-2 mb-2 w-full">
+                                        <span className="text-emerald-700 font-bold text-sm uppercase flex items-center gap-2">
+                                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                                           CÁC BƯỚC THỰC HIỆN
+                                        </span>
+                                     </span>
+                                  </span>
+                               );
+                            }
+                            return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
+                         }
+                      }}
+                   >
+                     {p.content.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}
+                   </ReactMarkdown>
                  </div>
                );
            } else if (p.type === 'quiz') {
@@ -496,7 +557,7 @@ export default function StudentLessonPage() {
   const containerClass = isPracticeModule ? "max-w-7xl" : "max-w-4xl";
 
   return (
-    <div className="w-full flex-1 h-screen overflow-y-auto bg-gray-50 pb-20">
+    <div className="w-full flex-1 h-screen overflow-y-auto bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] bg-slate-50 pb-20">
       {/* Header */}
       <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
          <div className={`${containerClass} mx-auto px-4 py-4 flex items-center gap-4 transition-all duration-500`}>
@@ -541,7 +602,7 @@ export default function StudentLessonPage() {
                ) : isDocumentModule ? (
                   <DocumentDownloadUI content={activeModule.content_markdown || ""} />
                ) : isPracticeModule ? (
-                  <AzotaExamUI content={activeModule.content_markdown || ""} title={activeModule.title} />
+                  <AzotaExamUI content={activeModule.content_markdown || ""} title={activeModule.title} lessonId={lesson.id} moduleId={activeModule.id} />
                ) : (
                   <InteractiveFlipbook content={activeModule.content_markdown || ""} />
                )}

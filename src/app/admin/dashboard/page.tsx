@@ -41,9 +41,9 @@ export default function AdminDashboard() {
     <div className="p-8 max-w-7xl mx-auto space-y-8">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-extrabold text-gray-800 tracking-tight">Tổng Quan Hệ Thống</h1>
-          <p className="text-gray-500 mt-1.5 font-medium">Chào mừng bạn trở lại với EduCenter Dashboard</p>
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">Tổng Quan Hệ Thống</h1>
+          <p className="text-gray-500">Chào mừng bạn trở lại với Math LMS Dashboard</p>
         </div>
         <div className="flex items-center gap-3 bg-white px-4 py-2.5 rounded-xl border border-gray-200 shadow-sm">
           <Calendar className="w-5 h-5 text-gray-400" />

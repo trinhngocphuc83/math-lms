@@ -31,6 +31,8 @@ interface QuestionData {
   image_url?: string;
   isDuplicate?: boolean;
   duplicateId?: string;
+  isNewLesson?: boolean;
+  isNewMathForm?: boolean;
 }
 
 export default function BatchAIEditorPage() {
@@ -43,6 +45,7 @@ export default function BatchAIEditorPage() {
   const [globalGrade, setGlobalGrade] = useState("12");
   const [globalSubject, setGlobalSubject] = useState("Đại số");
   const [globalTopic, setGlobalTopic] = useState("");
+  const [globalLesson, setGlobalLesson] = useState("");
 
   // AI Scanning States
   const [isScanning, setIsScanning] = useState(false);
@@ -71,6 +74,8 @@ export default function BatchAIEditorPage() {
   const uniqueGrades = Array.from(new Set(categories.map(c => c.grade))).filter(Boolean).sort();
   const uniqueSubjects = Array.from(new Set(categories.filter(c => !globalGrade || c.grade === globalGrade).map(c => c.subject))).filter(Boolean);
   const uniqueTopics = Array.from(new Set(categories.filter(c => (!globalGrade || c.grade === globalGrade) && (!globalSubject || c.subject === globalSubject)).map(c => c.topic))).filter(Boolean);
+  const uniqueLessons = Array.from(new Set(categories.filter(c => (!globalGrade || c.grade === globalGrade) && (!globalSubject || c.subject === globalSubject) && (!globalTopic || c.topic === globalTopic)).map(c => c.lesson))).filter(Boolean);
+  const uniqueForms = Array.from(new Set(categories.filter(c => (!globalGrade || c.grade === globalGrade) && (!globalSubject || c.subject === globalSubject) && (!globalTopic || c.topic === globalTopic) && (!globalLesson || c.lesson === globalLesson)).map(c => c.math_form))).filter(Boolean);
 
   useEffect(() => {
     const savedKey = localStorage.getItem("gemini_api_key");
@@ -176,13 +181,20 @@ export default function BatchAIEditorPage() {
         const normalizedContent = qContent.trim().toLowerCase().replace(/\s+/g, '');
         const duplicateMatch = existingQuestions.find(eq => eq.content === normalizedContent && eq.content !== "");
 
+        const lesson = data.tenBai || "";
+        const math_form = data.dangToan || "";
+        const isNewLesson = lesson !== "" && !uniqueLessons.includes(lesson);
+        const isNewMathForm = math_form !== "" && !uniqueForms.includes(math_form);
+
         return {
           temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
           grade: data.lop || globalGrade || "12",
           subject: data.phanMon || globalSubject || "Đại số",
           topic: data.chuyenDe || globalTopic || "",
-          lesson: data.tenBai || "",
-          math_form: data.dangToan || "",
+          lesson: lesson,
+          math_form: math_form,
+          isNewLesson,
+          isNewMathForm,
           question_type: data.loaiCauHoi || "NLC",
           difficulty: data.mucDo || "1",
           content: qContent,
@@ -216,15 +228,24 @@ export default function BatchAIEditorPage() {
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
       const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
+      
+      const contextCategories = `
+DANH SÁCH BÀI HỌC ĐÃ CÓ TRONG HỆ THỐNG:
+${uniqueLessons.map(l => `- ${l}`).join("\n")}
+
+DANH SÁCH DẠNG TOÁN ĐÃ CÓ TRONG HỆ THỐNG:
+${uniqueForms.map(f => `- ${f}`).join("\n")}
+`;
+
       const prompt = `Bạn là chuyên gia Toán học. Hãy đọc (các) ảnh/file PDF này và bóc tách TẤT CẢ các câu hỏi có trong đó. 
 Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc bằng ]) chứa các object theo cấu trúc:
 [
   {
-    "lop": "${globalGrade}",
-    "phanMon": "${globalSubject}",
-    "chuyenDe": "${globalTopic}", // Nếu không có, tự phân tích từ nội dung
-    "tenBai": "Tên bài học", // Tự suy luận
-    "dangToan": "Dạng toán", // Tự suy luận
+    "lop": "${globalGrade || 'Tự suy luận'}",
+    "phanMon": "${globalSubject || 'Tự suy luận'}",
+    "chuyenDe": "${globalTopic || 'Tự suy luận'}", ${globalTopic ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, TUYỆT ĐỐI KHÔNG ĐƯỢC SỬA ĐỔI BẤT KỲ KÝ TỰ NÀO.' : '// BẮT BUỘC: Tên Chương hoặc Chủ đề (VD: Chương I. Phương trình)'}
+    "tenBai": "${globalLesson || 'Tự suy luận'}", ${globalLesson ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, TUYỆT ĐỐI KHÔNG ĐƯỢC SỬA ĐỔI BẤT KỲ KÝ TỰ NÀO.' : '// SO KHỚP VỚI DANH SÁCH BÊN DƯỚI. Nếu có bài tương tự, PHẢI COPY CHÍNH XÁC.'}
+    "dangToan": "Tự suy luận", // SO KHỚP VỚI DANH SÁCH BÊN DƯỚI. Nếu có dạng tương tự, PHẢI COPY CHÍNH XÁC.
     "loaiCauHoi": "NLC", // NLC (Trắc nghiệm 4 đáp án), DS (Đúng/Sai), TLN (Trả lời ngắn), TL (Tự luận)
     "mucDo": "1", // 1(Nhận biết), 2(Thông hiểu), 3(Vận dụng), 4(Vận dụng cao)
     "noiDung": "Đề bài (BẮT BUỘC dùng LaTeX bọc trong $...$)",
@@ -233,9 +254,23 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
     "loiGiai": "Phương pháp giải:\\n[Ghi phương pháp ở đây]\\n\\nLời giải:\\n[Ghi lời giải chi tiết ở đây]"
   }
 ]
-  LƯU Ý CỰC KỲ QUAN TRỌNG: 
-  1. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ các lệnh LaTeX. Ví dụ: Phải viết $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$, viết $\\\\sqrt{2}$ thay vì $\\sqrt{2}$.
-  2. NẾU TRONG ĐỀ CÓ HÌNH VẼ, ĐỒ THỊ, BẢNG BIẾN THIÊN, HOẶC BẢNG XÉT DẤU: Tuyệt đối KHÔNG cố gắng vẽ lại bằng Markdown, ASCII hay LaTeX. Thay vào đó, hãy chỉ ghi đúng chữ "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" vào vị trí đó trong nội dung. Người dùng sẽ tự chèn ảnh vào sau.`;
+  YÊU CẦU CỰC QUAN TRỌNG VỀ BÓC TÁCH: Bạn phải phân tích và bóc tách RẠCH RÒI 3 trường "chuyenDe" (Chương), "tenBai" (Bài học), và "dangToan" (Dạng toán). Tuyệt đối không gộp chung nội dung của chúng vào nhau.
+  
+  CƠ SỞ DỮ LIỆU ĐỐI CHIẾU: 
+  Bạn BẮT BUỘC PHẢI PHÂN LOẠI câu hỏi vào các Tên bài học và Dạng toán có trong danh sách dưới đây nếu có sự tương đồng. TUYỆT ĐỐI HẠN CHẾ TẠO MỚI (Chỉ được tự suy luận ra Dạng toán mới nếu trong danh sách thực sự không có dạng nào liên quan).
+  ${contextCategories}
+
+  LƯU Ý CỰC KỲ QUAN TRỌNG VỀ ĐỊNH DẠNG VÀ TÁCH CÂU: 
+  1. NẾU MỘT BÀI TOÁN TỰ LUẬN CÓ NHIỀU Ý NHỎ (a, b, c, d...): BẠN BẮT BUỘC PHẢI TÁCH MỖI Ý THÀNH 1 OBJECT CÂU HỎI ĐỘC LẬP.
+     - Ví dụ đề bài gốc là: "Bài 1. Giải phương trình: a) X=1 b) Y=2"
+     - TRẢ VÊ 2 OBJECT ĐỘC LẬP: 
+       + Object 1 có nội dung: "Giải phương trình: $X=1$", đánh giá mức độ riêng, dạng toán riêng, lời giải riêng cho câu a.
+       + Object 2 có nội dung: "Giải phương trình: $Y=2$", đánh giá mức độ riêng, dạng toán riêng, lời giải riêng cho câu b.
+     - BẮT BUỘC: Phải tự động ghép thêm phần "dẫn nhập chung" của bài lớn vào đầu nội dung mỗi ý nhỏ để câu hỏi đứng độc lập vẫn có nghĩa.
+     - TUYỆT ĐỐI KHÔNG: Không được đưa các tiền tố như "Bài 1.", "Bài 1a.", "Câu 2.", "a)", "b)" vào đầu nội dung câu hỏi. Hãy xóa bỏ hoàn toàn các ký hiệu đánh số này. Lấy thẳng vào nội dung chính.
+  2. GIỮ NGUYÊN DANH MỤC: Nếu trường "chuyenDe" hoặc "tenBai" trong mẫu JSON đã được điền sẵn một giá trị (Không phải chữ "Tự suy luận"), BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ CÁC TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI BẤT KỲ KÝ TỰ NÀO.
+  3. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ các lệnh LaTeX. Ví dụ: Phải viết $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$, viết $\\\\sqrt{2}$ thay vì $\\sqrt{2}$.
+  4. NẾU TRONG ĐỀ CÓ HÌNH VẼ, ĐỒ THỊ, BẢNG BIẾN THIÊN, HOẶC BẢNG XÉT DẤU: Tuyệt đối KHÔNG cố gắng vẽ lại bằng Markdown, ASCII hay LaTeX. Thay vào đó, hãy chỉ ghi đúng chữ "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" vào vị trí đó trong nội dung. Người dùng sẽ tự chèn ảnh vào sau.`;
 
       const parts = await Promise.all(aiImageFiles.map(async file => {
         const base64Data = await fileToBase64(file);
@@ -259,19 +294,36 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
   };
 
   const handleCopyPrompt = () => {
+    const contextCategories = `
+DANH SÁCH BÀI HỌC ĐÃ CÓ TRONG HỆ THỐNG:
+${uniqueLessons.map(l => `- ${l}`).join("\n")}
+
+DANH SÁCH DẠNG TOÁN ĐÃ CÓ TRONG HỆ THỐNG:
+${uniqueForms.map(f => `- ${f}`).join("\n")}
+`;
+
     const prompt = `Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong ảnh/file và trả về MỘT MẢNG JSON:
 [
   {
-    "lop": "${globalGrade}", "phanMon": "${globalSubject}", "chuyenDe": "${globalTopic}",
-    "tenBai": "Tự suy luận", "dangToan": "Tự suy luận", "loaiCauHoi": "NLC", "mucDo": "1",
+    "lop": "${globalGrade || 'Tự suy luận'}", "phanMon": "${globalSubject || 'Tự suy luận'}", 
+    "chuyenDe": "${globalTopic || 'Tự suy luận'}", ${globalTopic ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, KHÔNG SỬA ĐỔI' : ''}
+    "tenBai": "${globalLesson || 'Tự suy luận'}", ${globalLesson ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, KHÔNG SỬA ĐỔI' : ''}
+    "dangToan": "Tự suy luận", // BẮT BUỘC PHẢI LẤY TỪ DANH SÁCH BÊN DƯỚI NẾU CÓ DẠNG TƯƠNG ĐƯƠNG, 
+    "loaiCauHoi": "NLC", "mucDo": "1",
     "noiDung": "Đề bài dùng LaTeX bọc trong $...$",
     "dapAnA": "", "dapAnB": "", "dapAnC": "", "dapAnD": "", "dapAnDung": "",
     "loiGiai": "Phương pháp giải:\\n[Ghi phương pháp ở đây]\\n\\nLời giải:\\n[Ghi lời giải chi tiết ở đây]"
   }
 ]
-  LƯU Ý CỰC KỲ QUAN TRỌNG: 
-  1. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ lệnh LaTeX. Ví dụ: $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$. Mọi công thức Toán bọc trong $...$
-  2. KHÔNG vẽ lại hình vẽ, đồ thị, hay bảng biến thiên. Hãy ghi "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" thay thế.`;
+  CƠ SỞ DỮ LIỆU ĐỐI CHIẾU: 
+  Bạn BẮT BUỘC PHẢI PHÂN LOẠI câu hỏi vào các Tên bài học và Dạng toán có trong danh sách dưới đây nếu có sự tương đồng. TUYỆT ĐỐI HẠN CHẾ TẠO MỚI.
+  ${contextCategories}
+
+  LƯU Ý CỰC KỲ QUAN TRỌNG VỀ ĐỊNH DẠNG VÀ TÁCH CÂU: 
+  1. NẾU MỘT BÀI TOÁN TỰ LUẬN CÓ NHIỀU Ý NHỎ: BẮT BUỘC TÁCH MỖI Ý THÀNH 1 OBJECT ĐỘC LẬP. Ghép "dẫn chung" vào mỗi ý nhỏ. TUYỆT ĐỐI XÓA BỎ các tiền tố đánh số như "Bài 1.", "Bài 1a.", "Câu 2.", "a)". (VD Nội dung chuẩn: "Giải pt: $X=1$").
+  2. GIỮ NGUYÊN DANH MỤC: Nếu "chuyenDe" hoặc "tenBai" đã được điền sẵn giá trị, BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI GÌ.
+  3. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ lệnh LaTeX. Ví dụ: $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$. Mọi công thức Toán bọc trong $...$
+  4. KHÔNG vẽ lại hình vẽ, đồ thị, hay bảng biến thiên. Hãy ghi "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" thay thế.`;
     navigator.clipboard.writeText(prompt);
     alert("Đã Copy Prompt Chuẩn!");
   };
@@ -286,6 +338,18 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
     setIsSavingAll(true);
 
     try {
+      // 1. Lọc và chuẩn bị lưu các danh mục mới (nếu có)
+      const newCats = parsedQuestions.filter(q => q.isNewLesson || q.isNewMathForm).map(q => ({
+        grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson, math_form: q.math_form
+      }));
+      // Loại bỏ trùng lặp trong mảng newCats
+      const uniqueNewCats = Array.from(new Set(newCats.map(c => JSON.stringify(c)))).map(s => JSON.parse(s));
+      
+      if (uniqueNewCats.length > 0) {
+        const { error: catError } = await supabase.from('question_categories').insert(uniqueNewCats);
+        if (catError) console.error("Lỗi thêm danh mục mới:", catError);
+      }
+
       const inserts = parsedQuestions.map(q => ({
         question_id: `CH_${Date.now()}_${Math.random().toString(36).substring(2,6)}`,
         grade: q.grade,
@@ -324,6 +388,13 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
     if (!q) return;
     
     try {
+      if (q.isNewLesson || q.isNewMathForm) {
+        const { error: catError } = await supabase.from('question_categories').insert([{
+           grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson, math_form: q.math_form
+        }]);
+        if (catError) console.error("Lỗi thêm danh mục:", catError);
+      }
+
       const qId = `CH_${Date.now()}_${Math.random().toString(36).substring(2,6)}`;
       const insertData = {
         question_id: qId, grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson,
@@ -344,6 +415,19 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
 
   const handleModalSave = (updated: QuestionData) => {
     setParsedQuestions(prev => prev.map(q => q.temp_id === updated.temp_id ? updated : q));
+  };
+
+  const handleMapCategory = (tempId: string, field: 'grade' | 'subject' | 'topic' | 'lesson' | 'math_form', value: string) => {
+    if (!value) return;
+    setParsedQuestions(prev => prev.map(q => {
+      if (q.temp_id !== tempId) return q;
+      return {
+        ...q,
+        [field]: value,
+        ...(field === 'lesson' ? { isNewLesson: false } : {}),
+        ...(field === 'math_form' ? { isNewMathForm: false } : {})
+      };
+    }));
   };
 
   return (
@@ -383,12 +467,21 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
                 </select>
               </div>
             </div>
-            <div>
-              <label className="text-[11px] font-bold text-gray-500 uppercase">Chuyên đề</label>
-              <select value={globalTopic} onChange={e=>setGlobalTopic(e.target.value)} className="w-full text-sm border rounded-lg p-2 outline-none focus:border-blue-500 bg-white">
-                <option value="">-- AI tự trích xuất --</option>
-                {uniqueTopics.map(t => <option key={t as string} value={t as string}>{t as string}</option>)}
-              </select>
+            <div className="grid grid-cols-2 gap-3 mb-3">
+              <div>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Chuyên đề</label>
+                <select value={globalTopic} onChange={e=>setGlobalTopic(e.target.value)} className="w-full text-sm border rounded-lg p-2 outline-none focus:border-blue-500 bg-white">
+                  <option value="">-- AI tự trích xuất --</option>
+                  {uniqueTopics.map(t => <option key={t as string} value={t as string}>{t as string}</option>)}
+                </select>
+              </div>
+              <div>
+                <label className="text-[11px] font-bold text-gray-500 uppercase">Bài học</label>
+                <select value={globalLesson} onChange={e=>setGlobalLesson(e.target.value)} className="w-full text-sm border rounded-lg p-2 outline-none focus:border-blue-500 bg-white">
+                  <option value="">-- AI tự trích xuất --</option>
+                  {uniqueLessons.map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
+                </select>
+              </div>
             </div>
           </div>
 
@@ -504,13 +597,62 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
                   <div className="p-5">
                     {/* Header info */}
                     <div className="grid grid-cols-3 gap-2 mb-3">
-                      <div className="border rounded-lg px-3 py-1.5 text-xs font-bold text-gray-500 bg-gray-50 text-center truncate">{q.grade}</div>
-                      <div className="border rounded-lg px-3 py-1.5 text-xs font-bold text-gray-500 bg-gray-50 text-center truncate">{q.subject}</div>
-                      <div className="border rounded-lg px-3 py-1.5 text-xs font-bold text-gray-500 bg-gray-50 text-center truncate">{q.topic || 'Chưa phân chuyên đề'}</div>
+                      <select value={q.grade} onChange={e => handleMapCategory(q.temp_id!, 'grade', e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs font-bold text-gray-700 bg-white text-center truncate outline-none focus:border-indigo-500 cursor-pointer">
+                         {uniqueGrades.map(g => <option key={g as string} value={g as string}>{g as string}</option>)}
+                      </select>
+                      <select value={q.subject} onChange={e => handleMapCategory(q.temp_id!, 'subject', e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs font-bold text-gray-700 bg-white text-center truncate outline-none focus:border-indigo-500 cursor-pointer">
+                         {uniqueSubjects.map(s => <option key={s as string} value={s as string}>{s as string}</option>)}
+                      </select>
+                      <select value={q.topic} onChange={e => handleMapCategory(q.temp_id!, 'topic', e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs font-bold text-gray-700 bg-white text-center truncate outline-none focus:border-indigo-500 cursor-pointer">
+                         {uniqueTopics.map(t => <option key={t as string} value={t as string}>{t as string}</option>)}
+                      </select>
                     </div>
                     <div className="grid grid-cols-2 gap-2 mb-4">
-                      <div className="border rounded-lg px-3 py-1.5 text-xs font-bold text-gray-500 bg-gray-50 truncate">{q.lesson || 'Chưa phân bài học'}</div>
-                      <div className="border rounded-lg px-3 py-1.5 text-xs font-bold text-gray-500 bg-gray-50 truncate">{q.math_form || 'Chưa phân dạng toán'}</div>
+                      <div className={`border rounded-lg px-3 py-2 flex flex-col justify-center gap-2 ${q.isNewLesson ? 'bg-red-50 border-red-200 shadow-inner' : 'bg-gray-50 border-gray-200'}`}>
+                         <div className="flex items-center gap-1.5">
+                            {q.isNewLesson && <AlertCircle className="w-3.5 h-3.5 text-red-600 shrink-0" />}
+                            {!q.isNewLesson ? (
+                              <select value={q.lesson} onChange={e => handleMapCategory(q.temp_id!, 'lesson', e.target.value)} className="w-full bg-transparent text-[11px] font-bold text-gray-700 outline-none cursor-pointer truncate">
+                                <option value={q.lesson}>{q.lesson}</option>
+                                {uniqueLessons.filter(l => l !== q.lesson).map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
+                              </select>
+                            ) : (
+                              <span className="text-[11px] font-bold line-clamp-2 text-red-700">{q.lesson || 'Chưa phân bài học'}</span>
+                            )}
+                         </div>
+                         {q.isNewLesson && (
+                           <div className="flex flex-col gap-1.5 mt-1 border-t border-red-100 pt-1.5">
+                             <select onChange={e => handleMapCategory(q.temp_id!, 'lesson', e.target.value)} className="w-full text-[10px] p-1.5 border border-red-200 rounded-md bg-white text-gray-700 outline-none focus:border-red-500 font-medium shadow-sm cursor-pointer">
+                                <option value="">-- Ép về Tên Bài có sẵn --</option>
+                                {uniqueLessons.map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
+                             </select>
+                             <button onClick={() => handleMapCategory(q.temp_id!, 'lesson', q.lesson)} className="w-full py-1 text-[10px] font-black tracking-wide bg-red-100 text-red-700 border border-red-200 rounded hover:bg-red-200 transition-colors uppercase">Duyệt Tạo Mới</button>
+                           </div>
+                         )}
+                      </div>
+                      
+                      <div className={`border rounded-lg px-3 py-2 flex flex-col justify-center gap-2 ${q.isNewMathForm ? 'bg-orange-50 border-orange-200 shadow-inner' : 'bg-gray-50 border-gray-200'}`}>
+                         <div className="flex items-center gap-1.5">
+                            {q.isNewMathForm && <AlertCircle className="w-3.5 h-3.5 text-orange-600 shrink-0" />}
+                            {!q.isNewMathForm ? (
+                              <select value={q.math_form} onChange={e => handleMapCategory(q.temp_id!, 'math_form', e.target.value)} className="w-full bg-transparent text-[11px] font-bold text-gray-700 outline-none cursor-pointer truncate">
+                                <option value={q.math_form}>{q.math_form}</option>
+                                {uniqueForms.filter(f => f !== q.math_form).map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
+                              </select>
+                            ) : (
+                              <span className="text-[11px] font-bold line-clamp-2 text-orange-700">{q.math_form || 'Chưa phân dạng toán'}</span>
+                            )}
+                         </div>
+                         {q.isNewMathForm && (
+                           <div className="flex flex-col gap-1.5 mt-1 border-t border-orange-100 pt-1.5">
+                             <select onChange={e => handleMapCategory(q.temp_id!, 'math_form', e.target.value)} className="w-full text-[10px] p-1.5 border border-orange-200 rounded-md bg-white text-gray-700 outline-none focus:border-orange-500 font-medium shadow-sm cursor-pointer">
+                                <option value="">-- Ép về Dạng Toán có sẵn --</option>
+                                {uniqueForms.map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
+                             </select>
+                             <button onClick={() => handleMapCategory(q.temp_id!, 'math_form', q.math_form)} className="w-full py-1 text-[10px] font-black tracking-wide bg-orange-100 text-orange-700 border border-orange-200 rounded hover:bg-orange-200 transition-colors uppercase">Duyệt Tạo Mới</button>
+                           </div>
+                         )}
+                      </div>
                     </div>
 
                     {/* Preview Text */}

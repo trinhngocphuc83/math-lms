@@ -44,6 +44,12 @@ export default function ExamsManagerPage() {
   const [subject, setSubject] = useState("Đại số");
   const [topicFilter, setTopicFilter] = useState("");
   const [topicList, setTopicList] = useState<string[]>([]);
+  const [lessonFilter, setLessonFilter] = useState("");
+  const [lessonList, setLessonList] = useState<string[]>([]);
+  const [formFilter, setFormFilter] = useState("");
+  const [formList, setFormList] = useState<string[]>([]);
+  const [uniqueGrades, setUniqueGrades] = useState<string[]>([]);
+  const [uniqueSubjects, setUniqueSubjects] = useState<string[]>([]);
   
   // Data State
   const [categories, setCategories] = useState<CategoryData[]>([]);
@@ -67,24 +73,38 @@ export default function ExamsManagerPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const fetchTopics = async () => {
-      if (!grade || !subject) {
-        setTopicList([]);
-        return;
-      }
-      const { data } = await supabase
-        .from('question_categories')
-        .select('topic')
-        .eq('grade', grade)
-        .eq('subject', subject);
-      
+    const fetchBaseCategories = async () => {
+      const { data } = await supabase.from('question_categories').select('grade, subject');
       if (data) {
-        const uniqueTopics = Array.from(new Set(data.map(d => d.topic))).filter(Boolean);
-        setTopicList(uniqueTopics as string[]);
+        setUniqueGrades(Array.from(new Set(data.map(d => d.grade))).filter(Boolean).sort() as string[]);
+        setUniqueSubjects(Array.from(new Set(data.map(d => d.subject))).filter(Boolean) as string[]);
       }
     };
-    fetchTopics();
-  }, [grade, subject]);
+    fetchBaseCategories();
+  }, []);
+
+  useEffect(() => {
+    const fetchTreeFilters = async () => {
+      if (!grade || !subject) {
+        setTopicList([]); setLessonList([]); setFormList([]);
+        return;
+      }
+      let query = supabase.from('question_categories').select('topic, lesson, math_form').eq('grade', grade).eq('subject', subject);
+      const { data } = await query;
+      if (data) {
+        setTopicList(Array.from(new Set(data.map(d => d.topic))).filter(Boolean) as string[]);
+        
+        let lessonData = data;
+        if (topicFilter) lessonData = data.filter(d => d.topic === topicFilter);
+        setLessonList(Array.from(new Set(lessonData.map(d => d.lesson))).filter(Boolean) as string[]);
+
+        let formData = lessonData;
+        if (lessonFilter) formData = lessonData.filter(d => d.lesson === lessonFilter);
+        setFormList(Array.from(new Set(formData.map(d => d.math_form))).filter(Boolean) as string[]);
+      }
+    };
+    fetchTreeFilters();
+  }, [grade, subject, topicFilter, lessonFilter]);
 
   const fetchTreeAndInventory = async () => {
     setIsLoadingTree(true);
@@ -94,6 +114,8 @@ export default function ExamsManagerPage() {
       if (grade) query = query.eq('grade', grade);
       if (subject) query = query.eq('subject', subject);
       if (topicFilter) query = query.eq('topic', topicFilter);
+      if (lessonFilter) query = query.eq('lesson', lessonFilter);
+      if (formFilter) query = query.eq('math_form', formFilter);
       
       const { data: cats, error: err1 } = await query;
       if (err1) throw err1;
@@ -103,6 +125,8 @@ export default function ExamsManagerPage() {
       if (grade) qQuery = qQuery.eq('grade', grade);
       if (subject) qQuery = qQuery.eq('subject', subject);
       if (topicFilter) qQuery = qQuery.eq('topic', topicFilter);
+      if (lessonFilter) qQuery = qQuery.eq('lesson', lessonFilter);
+      if (formFilter) qQuery = qQuery.eq('math_form', formFilter);
 
       const { data: qData, error: err2 } = await qQuery;
       if (err2) throw err2;
@@ -343,8 +367,8 @@ export default function ExamsManagerPage() {
           </div>
           
           {isHeaderExpanded && (
-            <div className="flex flex-wrap items-center justify-between gap-4 animate-in fade-in slide-in-from-top-2">
-              <div className="flex items-center gap-3">
+            <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-top-2">
+              <div className="flex flex-wrap items-center gap-3">
               <select value={examType} onChange={e=>setExamType(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 font-bold text-indigo-700 bg-indigo-50 outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
                 <option>Kiểm tra Giữa kỳ I</option>
                 <option>Kiểm tra Cuối kỳ I</option>
@@ -357,20 +381,23 @@ export default function ExamsManagerPage() {
               <div className="w-px h-6 bg-gray-200 mx-1"></div>
               <select value={grade} onChange={e=>setGrade(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white">
                 <option value="">-- Khối Lớp --</option>
-                <option value="12">Lớp 12</option>
-                <option value="11">Lớp 11</option>
-                <option value="10">Lớp 10</option>
+                {uniqueGrades.map(g => <option key={g} value={g}>{g}</option>)}
               </select>
               <select value={subject} onChange={e=>setSubject(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white">
                 <option value="">-- Phân môn --</option>
-                <option value="Đại số">Đại số</option>
-                <option value="Hình học">Hình học</option>
-                <option value="Giải tích">Giải tích</option>
-                <option value="Đại số và Giải tích">Đại số và Giải tích</option>
+                {uniqueSubjects.map(s => <option key={s} value={s}>{s}</option>)}
               </select>
               <select value={topicFilter} onChange={e=>setTopicFilter(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white max-w-[200px]">
                 <option value="">-- Chuyên đề (Tất cả) --</option>
                 {topicList.map(t => <option key={t} value={t}>{t}</option>)}
+              </select>
+              <select value={lessonFilter} onChange={e=>setLessonFilter(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white max-w-[200px]">
+                <option value="">-- Bài học (Tất cả) --</option>
+                {lessonList.map(l => <option key={l} value={l}>{l}</option>)}
+              </select>
+              <select value={formFilter} onChange={e=>setFormFilter(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white max-w-[200px]">
+                <option value="">-- Dạng toán (Tất cả) --</option>
+                {formList.map(f => <option key={f} value={f}>{f}</option>)}
               </select>
               <button onClick={fetchTreeAndInventory} disabled={isLoadingTree} className="bg-teal-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-teal-700 transition-colors text-sm shadow-sm disabled:opacity-50 flex items-center gap-2">
                 {isLoadingTree ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Database className="w-4 h-4" />}
@@ -378,7 +405,7 @@ export default function ExamsManagerPage() {
               </button>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-end gap-3 border-t border-gray-100 pt-3 mt-1">
               <button onClick={handleExportMatrix} className="flex items-center gap-2 border border-teal-600 text-teal-700 hover:bg-teal-50 px-4 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white">
                 <Download className="w-4 h-4" /> Xuất Excel mẫu
               </button>

@@ -19,7 +19,10 @@ import {
   ChevronRight,
   AlertCircle,
   DollarSign,
-  CheckSquare
+  CheckSquare,
+  Library,
+  Clock,
+  PlayCircle
 } from "lucide-react";
 
 type TabType = 'info' | 'courses' | 'exams' | 'schedule' | 'finance';
@@ -33,6 +36,26 @@ export default function StudentDashboardPage() {
   const [expandedCourseId, setExpandedCourseId] = useState<string | null>(null);
   const [tuitionRecords, setTuitionRecords] = useState<any[]>([]);
   const [attendanceRecords, setAttendanceRecords] = useState<any[]>([]);
+  const [exams, setExams] = useState<any[]>([]);
+  const [loadingExams, setLoadingExams] = useState(true);
+
+  useEffect(() => {
+    if (activeTab === 'exams') {
+      const fetchExams = async () => {
+        setLoadingExams(true);
+        try {
+          const res = await fetch("/api/student/exams");
+          const data = await res.json();
+          if (res.ok) setExams(data);
+        } catch (error) {
+          console.error("Lỗi lấy danh sách kỳ thi:", error);
+        } finally {
+          setLoadingExams(false);
+        }
+      };
+      fetchExams();
+    }
+  }, [activeTab]);
   
   // Đổi mật khẩu
   const [showPasswordForm, setShowPasswordForm] = useState(false);
@@ -231,6 +254,13 @@ export default function StudentDashboardPage() {
           >
             <DollarSign className={`w-5 h-5 ${activeTab === 'finance' ? 'text-white' : 'text-gray-400'}`} /> Tài chính & Điểm danh
           </button>
+
+          <Link 
+            href="/student/handbook" 
+            className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap text-gray-500 hover:bg-gray-50 hover:text-gray-800 border-l border-gray-200 ml-2 pl-6"
+          >
+            <Library className="w-5 h-5 text-indigo-500" /> Sổ tay Toán học
+          </Link>
         </div>
 
         {/* KHU VỰC NỘI DUNG CHÍNH (FULL WIDTH) */}
@@ -467,14 +497,71 @@ export default function StudentDashboardPage() {
 
           {/* 4. KIỂM TRA ONLINE */}
           {activeTab === 'exams' && (
-            <div className="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-16 text-center min-h-[500px] flex flex-col items-center justify-center animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="w-28 h-28 bg-rose-50 rounded-full flex items-center justify-center mb-8 border-[8px] border-rose-100/50">
-                <ClipboardList className="w-12 h-12 text-rose-500" />
+            <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-6xl mx-auto">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="p-3 bg-rose-100 rounded-2xl text-rose-600">
+                  <ClipboardList className="w-8 h-8" />
+                </div>
+                <div>
+                  <h2 className="text-3xl font-black text-gray-800">Trung tâm Thi Cử</h2>
+                  <p className="text-gray-500 font-medium">Tham gia các kỳ thi trực tuyến và đánh giá năng lực của bạn.</p>
+                </div>
               </div>
-              <h2 className="text-3xl font-black text-gray-800 mb-4">Phòng Kiểm tra Online</h2>
-              <p className="text-gray-500 font-medium max-w-md mx-auto text-lg leading-relaxed">
-                Chức năng thi trắc nghiệm và kiểm tra trực tuyến định kỳ đang được Hệ thống xây dựng. Chúc bạn học tập thật tốt nhé!
-              </p>
+
+              {loadingExams ? (
+                <div className="flex flex-col items-center justify-center h-64 text-slate-500">
+                  <div className="w-10 h-10 border-4 border-rose-200 border-t-rose-600 rounded-full animate-spin mb-4"></div>
+                  <p className="font-medium animate-pulse">Đang tải danh sách bài thi...</p>
+                </div>
+              ) : exams.length === 0 ? (
+                <div className="bg-white p-12 text-center rounded-[2rem] border border-gray-100 shadow-sm flex flex-col items-center">
+                  <div className="w-24 h-24 bg-gray-50 rounded-full flex items-center justify-center mb-6">
+                     <ClipboardList className="w-10 h-10 text-gray-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-700 mb-2">Chưa có kỳ thi nào</h3>
+                  <p className="text-gray-500">Hiện tại chưa có bài kiểm tra nào được mở cho khóa học của bạn. Vui lòng quay lại sau.</p>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {exams.map((exam) => (
+                    <div key={exam.id} className="bg-white border border-gray-100 rounded-[2rem] overflow-hidden hover:shadow-2xl hover:shadow-rose-900/5 hover:-translate-y-2 transition-all duration-300 group flex flex-col h-full">
+                      <div className="bg-gradient-to-br from-rose-500 to-pink-600 p-8 flex flex-col justify-end min-h-[160px] relative overflow-hidden">
+                        <div className="absolute -top-4 -right-4 p-4 opacity-20 transform rotate-12">
+                          <ClipboardList className="w-32 h-32 text-white" />
+                        </div>
+                        <h3 className="text-2xl font-black text-white relative z-10 drop-shadow-md line-clamp-2 leading-tight">
+                          {exam.exam_group_name ? `${exam.exam_group_name} - ${exam.variant_name || exam.title}` : exam.title}
+                        </h3>
+                      </div>
+                      
+                      <div className="p-8 flex-1 flex flex-col">
+                        <div className="space-y-4 mb-8">
+                          <div className="flex items-center text-sm text-gray-600 font-medium">
+                            <Clock className="w-5 h-5 mr-3 text-rose-500" />
+                            Thời gian làm bài: <span className="font-bold text-gray-800 ml-1">{exam.duration_minutes} phút</span>
+                          </div>
+                          
+                          {exam.start_time && (
+                            <div className="flex items-center text-sm text-gray-600 font-medium">
+                              <Calendar className="w-5 h-5 mr-3 text-blue-500" />
+                              Mở lúc: <span className="text-gray-800 ml-1">{new Date(exam.start_time).toLocaleString('vi-VN')}</span>
+                            </div>
+                          )}
+                        </div>
+
+                        <div className="mt-auto pt-6 border-t border-gray-100">
+                          <Link 
+                            href={`/student/online-exams/${exam.id}`}
+                            className="w-full bg-rose-50 text-rose-700 hover:bg-rose-600 hover:text-white shadow-sm hover:shadow-rose-600/20 font-black py-4 rounded-xl flex items-center justify-center gap-2 transition-all"
+                          >
+                            <PlayCircle className="w-5 h-5" /> VÀO PHÒNG CHỜ
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           )}
 

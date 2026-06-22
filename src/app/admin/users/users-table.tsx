@@ -215,7 +215,7 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
                 </td>
                 <td className="px-6 py-4">
                   <p className="text-gray-800">{user.school || '-'}</p>
-                  <p className="text-xs text-gray-500">Lớp: {user.class_name || '-'}</p>
+                  <p className="text-xs text-gray-500">Lớp phổ thông: {user.class_name || '-'}</p>
                 </td>
                 <td className="px-6 py-4 font-mono text-gray-600 text-xs">
                   {user.username}
@@ -325,14 +325,14 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
                   <input value={userToEdit.school || ''} onChange={e => setUserToEdit({...userToEdit, school: e.target.value})} className="w-full border p-2 rounded text-sm"/>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold mb-1">Lớp</label>
+                  <label className="block text-xs font-semibold mb-1">Lớp ở trường phổ thông</label>
                   <input value={userToEdit.class_name || ''} onChange={e => setUserToEdit({...userToEdit, class_name: e.target.value})} className="w-full border p-2 rounded text-sm"/>
                 </div>
                 <div className="sm:col-span-2 border-t pt-2 mt-2">
                   <h3 className="font-bold text-sm text-gray-600 mb-2">Quản lý Học tập</h3>
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="block text-xs font-semibold mb-1">Gán Khóa Học Bài Giảng</label>
+                  <label className="block text-xs font-semibold mb-1">Gán Lớp học thêm / Khóa học (LMS)</label>
                   <select value={userToEdit.course_id || ''} onChange={e => setUserToEdit({...userToEdit, course_id: e.target.value})} className="w-full border p-2 rounded text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors">
                     <option value="">-- Chưa liên kết Khóa học --</option>
                     {courses.map(c => (
