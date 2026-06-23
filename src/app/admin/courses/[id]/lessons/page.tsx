@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { Plus, Edit2, Trash2, BookOpen, Layers, ArrowLeft, Loader2, ChevronDown, ChevronRight, FileEdit, Sparkles, Video } from "lucide-react";
+import { Plus, Edit2, Trash2, BookOpen, Layers, ArrowLeft, Loader2, ChevronDown, ChevronRight, FileEdit, Sparkles, Video, Pencil } from "lucide-react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 
@@ -34,6 +34,8 @@ export default function CourseStructurePage() {
   const [moduleTitle, setModuleTitle] = useState("");
   const [moduleType, setModuleType] = useState("practice");
   const [isSavingModule, setIsSavingModule] = useState(false);
+  const [isAddingPracticeChild, setIsAddingPracticeChild] = useState(false);
+  const [editingModuleId, setEditingModuleId] = useState<string | null>(null);
 
   // Accordion State
   const [expandedChapters, setExpandedChapters] = useState<string[]>([]);
@@ -175,29 +177,47 @@ export default function CourseStructurePage() {
     loadStructure();
   };
 
-  const openModuleModal = (lessonId: string) => {
+  const openModuleModal = (lessonId: string, isPracticeChild: boolean = false) => {
     setActiveLessonId(lessonId);
     setModuleTitle("");
-    setModuleType("practice");
+    setModuleType(isPracticeChild ? "practice" : "theory");
+    setIsAddingPracticeChild(isPracticeChild);
+    setEditingModuleId(null);
     setIsModuleModalOpen(true);
   };
 
-  const handleCreateModule = async () => {
+  const openEditModuleModal = (module: any) => {
+    setActiveLessonId(module.lesson_id);
+    setEditingModuleId(module.id);
+    setModuleTitle(module.title);
+    setModuleType(module.type);
+    setIsAddingPracticeChild(module.type === 'practice');
+    setIsModuleModalOpen(true);
+  };
+
+  const handleSaveModule = async () => {
     if (!moduleTitle) return alert("Vui lòng nhập tên mục!");
     setIsSavingModule(true);
-    const lessonModules = modules.filter(m => m.lesson_id === activeLessonId);
-    const { error } = await supabase.from('lesson_modules').insert([{
-      lesson_id: activeLessonId,
-      title: moduleTitle,
-      type: moduleType,
-      order_index: lessonModules.length + 1
-    }]);
-    setIsSavingModule(false);
-    if (error) {
-      alert("Lỗi tạo mục: " + error.message);
+    
+    if (editingModuleId) {
+      const { error } = await supabase.from('lesson_modules').update({
+        title: moduleTitle,
+        type: moduleType
+      }).eq('id', editingModuleId);
+      setIsSavingModule(false);
+      if (error) alert("Lỗi cập nhật mục: " + error.message);
+      else { setIsModuleModalOpen(false); loadStructure(); }
     } else {
-      setIsModuleModalOpen(false);
-      loadStructure();
+      const lessonModules = modules.filter(m => m.lesson_id === activeLessonId);
+      const { error } = await supabase.from('lesson_modules').insert([{
+        lesson_id: activeLessonId,
+        title: moduleTitle,
+        type: moduleType,
+        order_index: lessonModules.length + 1
+      }]);
+      setIsSavingModule(false);
+      if (error) alert("Lỗi tạo mục: " + error.message);
+      else { setIsModuleModalOpen(false); loadStructure(); }
     }
   };
 
@@ -321,21 +341,27 @@ export default function CourseStructurePage() {
                                         if (mod.type === 'document') icon = <BookOpen className="w-3.5 h-3.5 text-teal-500" />;
                                         
                                         return (
-                                            <li key={mod.id} className="flex items-center justify-between p-2 rounded-md hover:bg-white border border-transparent hover:border-gray-200 transition-colors group/mod">
+                                            <li key={mod.id} className="flex items-center justify-between p-2.5 rounded-md hover:bg-gray-50 border border-transparent hover:border-gray-200 transition-colors">
                                               <div className="flex items-center gap-2">
                                                 {icon}
                                                 <span className="text-sm font-medium text-gray-700">{mod.title}</span>
                                               </div>
-                                              <div className="flex items-center gap-1 opacity-0 group-hover/mod:opacity-100 transition-opacity">
+                                              <div className="flex items-center gap-2">
+                                                <button 
+                                                  onClick={() => openEditModuleModal(mod)}
+                                                  className="px-2.5 py-1.5 text-xs font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-md transition-colors flex items-center gap-1 border border-gray-200" title="Đổi tên Tab"
+                                                >
+                                                  <Pencil className="w-3.5 h-3.5" />
+                                                </button>
                                                 <Link 
                                                   href={`/admin/lessons/editor?lessonId=${lesson.id}&moduleId=${mod.id}`}
-                                                  className="px-3 py-1 text-xs font-medium bg-teal-50 text-teal-700 hover:bg-teal-100 rounded-md transition-colors flex items-center gap-1"
+                                                  className="px-3 py-1.5 text-xs font-bold bg-teal-50 text-teal-700 hover:bg-teal-100 rounded-md transition-colors flex items-center gap-1 border border-teal-100"
                                                 >
-                                                  <Edit2 className="w-3 h-3" /> Soạn
+                                                  <Edit2 className="w-3.5 h-3.5" /> Soạn bài
                                                 </Link>
                                                 <button 
                                                   onClick={(e) => handleDeleteModule(mod.id, e)}
-                                                  className="p-1 text-red-500 hover:bg-red-50 rounded-md transition-colors" title="Xóa Mục"
+                                                  className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors" title="Xóa Mục"
                                                 >
                                                   <Trash2 className="w-4 h-4" />
                                                 </button>
@@ -347,7 +373,7 @@ export default function CourseStructurePage() {
                                       {/* Thư mục Luyện tập */}
                                       {lessonModules.filter(m => m.type === 'practice').length > 0 && (
                                         <div className="mt-3 border border-orange-100 rounded-xl overflow-hidden bg-orange-50/30">
-                                           <div className="bg-orange-100/50 p-2.5 flex items-center justify-between">
+                                           <div className="bg-orange-100/50 p-3 flex items-center justify-between border-b border-orange-100/50">
                                               <div className="flex items-center gap-2">
                                                  <Layers className="w-4 h-4 text-orange-600" />
                                                  <span className="font-bold text-orange-800 text-sm">🎯 Luyện tập ({lessonModules.filter(m => m.type === 'practice').length} phần)</span>
@@ -355,16 +381,19 @@ export default function CourseStructurePage() {
                                            </div>
                                            <ul className="space-y-1 p-2">
                                               {lessonModules.filter(m => m.type === 'practice').map(mod => (
-                                                <li key={mod.id} className="flex items-center justify-between p-2 rounded-md hover:bg-white border border-transparent hover:border-orange-200 transition-colors group/mod bg-white/60">
-                                                  <div className="flex items-center gap-2">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
-                                                    <span className="text-sm font-medium text-gray-700">{mod.title}</span>
+                                                <li key={mod.id} className="flex items-center justify-between p-2.5 rounded-md hover:bg-white border border-transparent hover:border-orange-200 transition-colors bg-white/60 shadow-sm mb-1">
+                                                  <div className="flex items-center gap-3">
+                                                    <span className="w-2 h-2 rounded-full bg-orange-500"></span>
+                                                    <span className="text-sm font-bold text-gray-700">{mod.title}</span>
                                                   </div>
-                                                  <div className="flex items-center gap-1 opacity-0 group-hover/mod:opacity-100 transition-opacity">
-                                                    <Link href={`/admin/lessons/editor?lessonId=${lesson.id}&moduleId=${mod.id}`} className="px-3 py-1 text-xs font-medium bg-teal-50 text-teal-700 hover:bg-teal-100 rounded-md transition-colors flex items-center gap-1">
-                                                      <Edit2 className="w-3 h-3" /> Soạn
+                                                  <div className="flex items-center gap-2">
+                                                    <button onClick={() => openEditModuleModal(mod)} className="px-2.5 py-1.5 text-xs font-bold bg-orange-100/50 text-orange-700 hover:bg-orange-200 rounded-md transition-colors flex items-center gap-1 border border-orange-200 shadow-sm" title="Đổi tên">
+                                                      <Pencil className="w-3.5 h-3.5" />
+                                                    </button>
+                                                    <Link href={`/admin/lessons/editor?lessonId=${lesson.id}&moduleId=${mod.id}`} className="px-3 py-1.5 text-xs font-bold bg-orange-50 text-orange-700 hover:bg-orange-100 border border-orange-200 shadow-sm rounded-md transition-colors flex items-center gap-1">
+                                                      <Edit2 className="w-3.5 h-3.5" /> Soạn bài
                                                     </Link>
-                                                    <button onClick={(e) => handleDeleteModule(mod.id, e)} className="p-1 text-red-500 hover:bg-red-50 rounded-md transition-colors">
+                                                    <button onClick={(e) => handleDeleteModule(mod.id, e)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors">
                                                       <Trash2 className="w-4 h-4" />
                                                     </button>
                                                   </div>
@@ -372,7 +401,7 @@ export default function CourseStructurePage() {
                                               ))}
                                               <li className="flex justify-center p-1 mt-1">
                                                 <button 
-                                                  onClick={() => { setActiveLessonId(lesson.id); setModuleTitle(""); setModuleType("practice"); setIsModuleModalOpen(true); }}
+                                                  onClick={() => openModuleModal(lesson.id, true)}
                                                   className="text-xs font-bold text-orange-600 hover:text-orange-800 bg-white hover:bg-orange-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 w-full justify-center border border-dashed border-orange-300"
                                                 >
                                                   <Plus className="w-3.5 h-3.5" /> Thêm Bài luyện tập
@@ -384,7 +413,7 @@ export default function CourseStructurePage() {
 
                                       <li className="flex justify-center p-1 mt-3">
                                         <button 
-                                          onClick={() => openModuleModal(lesson.id)}
+                                          onClick={() => openModuleModal(lesson.id, false)}
                                           className="text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 w-full justify-center border border-dashed border-indigo-200"
                                         >
                                           <Plus className="w-3.5 h-3.5" /> Thêm Mục con (Tab)
@@ -483,20 +512,22 @@ export default function CourseStructurePage() {
       {isModuleModalOpen && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-xl w-full max-w-md p-6 shadow-xl animate-in zoom-in-95 duration-200">
-            <h2 className="text-lg font-bold text-gray-800 mb-4">Thêm Mục (Tab) mới</h2>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">{editingModuleId ? 'Đổi tên Mục (Tab)' : 'Thêm Mục (Tab) mới'}</h2>
             <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Loại mục (Tab)</label>
-                <select 
-                  value={moduleType} onChange={e => setModuleType(e.target.value)}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium"
-                >
-                  <option value="theory">📖 Lý thuyết (Bài giảng tương tác)</option>
-                  <option value="practice">🎯 Luyện tập (Trắc nghiệm/Điền khuyết)</option>
-                  <option value="exercise_types">📝 Phân dạng bài tập</option>
-                  <option value="document">📄 Tài liệu & Video (Chữa bài)</option>
-                </select>
-              </div>
+              {!isAddingPracticeChild && (
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">Loại mục (Tab)</label>
+                  <select 
+                    value={moduleType} onChange={e => setModuleType(e.target.value)}
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium"
+                  >
+                    <option value="theory">📖 Lý thuyết (Bài giảng tương tác)</option>
+                    <option value="practice">🎯 Luyện tập (Trắc nghiệm/Điền khuyết)</option>
+                    <option value="exercise_types">📝 Phân dạng bài tập</option>
+                    <option value="document">📄 Tài liệu & Video (Chữa bài)</option>
+                  </select>
+                </div>
+              )}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Tên hiển thị (Tên Tab)</label>
                 <input 
@@ -512,10 +543,10 @@ export default function CourseStructurePage() {
                 Hủy bỏ
               </button>
               <button 
-                onClick={handleCreateModule} disabled={isSavingModule}
+                onClick={handleSaveModule} disabled={isSavingModule}
                 className="px-5 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2"
               >
-                {isSavingModule ? <Loader2 className="w-4 h-4 animate-spin"/> : 'Tạo Mục'}
+                {isSavingModule ? <Loader2 className="w-4 h-4 animate-spin"/> : (editingModuleId ? 'Lưu thay đổi' : 'Tạo Mục')}
               </button>
             </div>
           </div>

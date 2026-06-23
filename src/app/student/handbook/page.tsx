@@ -45,11 +45,9 @@ export default function StudentHandbook() {
       const firstParent = data.find((c: any) => !c.parent_id);
       if (firstParent) {
         setExpandedCats([firstParent.id]);
-        const firstChild = data.find((c: any) => c.parent_id === firstParent.id);
-        if (firstChild) {
-          setSelectedCategory(firstChild);
-          fetchFormulas(firstChild.id);
-        }
+        setSelectedCategory(firstParent);
+        setFormulas([]);
+        setCurrentPage(0);
       }
     }
     setIsLoading(false);
@@ -59,7 +57,7 @@ export default function StudentHandbook() {
     setIsLoading(true);
     const { data } = await supabase.from('formulas').select('*').eq('category_id', categoryId).order('created_at');
     setFormulas(data || []);
-    setCurrentPage(0); // Quay về bìa khi chuyển chuyên đề
+    setCurrentPage(1); // Mặc định vào luôn công thức, không qua bìa
     setIsLoading(false);
   };
 
@@ -84,7 +82,8 @@ export default function StudentHandbook() {
   }, [currentPage, totalPages, isFlipping]);
 
   const goPrevPage = useCallback(() => {
-    if (isFlipping || currentPage <= 0) return;
+    const minPage = (!selectedCategory || !selectedCategory.parent_id) ? 0 : 1;
+    if (isFlipping || currentPage <= minPage) return;
     setFlipDirection('prev');
     setIsFlipping(true);
     setTimeout(() => {
@@ -92,7 +91,7 @@ export default function StudentHandbook() {
       setIsFlipping(false);
       setFlipDirection(null);
     }, 450);
-  }, [currentPage, isFlipping]);
+  }, [currentPage, isFlipping, selectedCategory]);
 
   const goToPage = (page: number) => {
     if (isFlipping || page === currentPage) return;
@@ -134,18 +133,33 @@ export default function StudentHandbook() {
       <h3 className="text-xl md:text-2xl text-violet-200 font-semibold text-center mb-2">
         {selectedCategory?.name || "Chọn chuyên đề"}
       </h3>
-      {selectedCategory && (
+      {selectedCategory && selectedCategory.parent_id && (
         <p className="text-violet-300/60 text-sm mt-1">
           {categories.find(c => c.id === selectedCategory.parent_id)?.name}
         </p>
       )}
-      <p className="text-violet-300/40 text-xs mt-8 italic">
-        {totalPages} công thức • Dùng phím ← → để lật trang
-      </p>
       
-      {totalPages > 0 && (
+      {!selectedCategory?.parent_id ? (
+        <p className="text-violet-300/40 text-xs mt-8 italic">Chọn chuyên đề bên trái hoặc mở sách để bắt đầu</p>
+      ) : (
+        <p className="text-violet-300/40 text-xs mt-8 italic">
+          {totalPages} công thức • Dùng phím ← → để lật trang
+        </p>
+      )}
+      
+      {!selectedCategory?.parent_id && (
         <button 
-          onClick={goNextPage}
+          onClick={() => {
+            const firstChild = categories.find(c => c.parent_id === selectedCategory?.id);
+            if (firstChild) {
+              setSelectedCategory(firstChild);
+              fetchFormulas(firstChild.id);
+              setSearchQuery("");
+              if (!expandedCats.includes(selectedCategory!.id)) {
+                setExpandedCats(prev => [...prev, selectedCategory!.id]);
+              }
+            }
+          }}
           className="mt-6 px-6 py-2.5 bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 rounded-full text-sm font-semibold transition-all flex items-center gap-2 border border-amber-400/20"
         >
           Mở sách <ArrowRight className="w-4 h-4" />
@@ -248,10 +262,10 @@ export default function StudentHandbook() {
             </div>
           </div>
           <Link 
-            href="/student" 
+            href="/student/dashboard" 
             className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl text-sm text-gray-600 hover:text-violet-600 hover:shadow-md transition-all border border-gray-200"
           >
-            <Home className="w-4 h-4" /> Góc Học Tập
+            <Home className="w-4 h-4" /> Quay lại Trang chủ
           </Link>
         </div>
       </div>
@@ -281,7 +295,12 @@ export default function StudentHandbook() {
                 {categories.filter(c => !c.parent_id).map(parentCat => (
                   <div key={parentCat.id}>
                     <button
-                      onClick={() => toggleExpand(parentCat.id)}
+                      onClick={() => {
+                        toggleExpand(parentCat.id);
+                        setSelectedCategory(parentCat);
+                        setFormulas([]);
+                        setCurrentPage(0);
+                      }}
                       className="w-full flex items-center gap-2 px-2.5 py-2 text-xs font-bold text-gray-700 hover:bg-violet-50 rounded-lg transition-colors"
                     >
                       <ChevronRight className={`w-3.5 h-3.5 text-gray-400 transition-transform ${expandedCats.includes(parentCat.id) ? 'rotate-90' : ''}`} />
@@ -359,7 +378,7 @@ export default function StudentHandbook() {
                 >
                   <div className="relative min-h-[520px] md:min-h-[560px]">
                     {/* Trang bìa */}
-                    {currentPage === 0 && renderCover()}
+                    {currentPage === 0 && (!selectedCategory || !selectedCategory.parent_id) && renderCover()}
 
                     {/* Các trang công thức */}
                     {formulas.map((formula, index) => renderFormulaPage(formula, index))}
@@ -384,7 +403,7 @@ export default function StudentHandbook() {
                   <div className="flex items-center gap-4 w-full max-w-3xl">
                     <button 
                       onClick={goPrevPage} 
-                      disabled={currentPage <= 0 || isFlipping}
+                      disabled={currentPage <= (!selectedCategory || !selectedCategory.parent_id ? 0 : 1) || isFlipping}
                       className="flex items-center gap-1.5 px-4 py-2.5 bg-white rounded-xl text-sm font-semibold text-gray-600 hover:text-violet-600 hover:shadow-md disabled:opacity-30 disabled:cursor-not-allowed transition-all border border-gray-200 shadow-sm"
                     >
                       <ChevronLeft className="w-4 h-4" /> Trang trước
@@ -393,11 +412,13 @@ export default function StudentHandbook() {
                     {/* Progress bar */}
                     <div className="flex-1 flex items-center gap-1 justify-center flex-wrap">
                       {/* Bìa */}
-                      <button 
-                        onClick={() => goToPage(0)}
-                        className={`w-2.5 h-2.5 rounded-full progress-dot cursor-pointer ${currentPage === 0 ? 'active' : ''}`}
-                        title="Trang bìa"
-                      />
+                      {(!selectedCategory || !selectedCategory.parent_id) && (
+                        <button 
+                          onClick={() => goToPage(0)}
+                          className={`w-2.5 h-2.5 rounded-full progress-dot cursor-pointer ${currentPage === 0 ? 'active' : ''}`}
+                          title="Trang bìa"
+                        />
+                      )}
                       {/* Các trang */}
                       {formulas.map((_, i) => {
                         const pageNum = i + 1;

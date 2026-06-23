@@ -186,8 +186,8 @@ export default function StudentDashboardPage() {
             <div className="bg-gradient-to-br from-teal-500 to-emerald-600 p-2.5 rounded-xl shadow-md shadow-teal-500/20">
               <GraduationCap className="w-6 h-6 text-white" />
             </div>
-            <h1 className="text-2xl font-black tracking-tight bg-gradient-to-r from-teal-700 to-emerald-600 bg-clip-text text-transparent">
-              EduCenter
+            <h1 className="text-xl font-black tracking-tight bg-gradient-to-r from-teal-700 to-emerald-600 bg-clip-text text-transparent">
+              LMS TOÁN THẦY PHÚC
             </h1>
           </div>
           <div className="flex items-center gap-4">

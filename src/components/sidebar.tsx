@@ -51,7 +51,7 @@ export default function Sidebar() {
           <BookOpen className="w-5 h-5 text-sidebar" />
         </div>
         <div>
-          <h1 className="font-bold text-lg leading-tight">EduCenter</h1>
+          <h1 className="font-bold text-[15px] leading-tight">LMS TOÁN THẦY PHÚC</h1>
           <p className="text-[10px] text-white/70 uppercase font-medium tracking-wider mt-0.5">Hệ thống quản lý</p>
         </div>
       </div>

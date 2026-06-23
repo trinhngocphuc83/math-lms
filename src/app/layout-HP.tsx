@@ -6,8 +6,8 @@ import AppLayout from '@/components/layout/AppLayout';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'EduCenter - LMS',
-  description: 'Hệ thống Quản lý Đào tạo EduCenter',
+  title: 'LMS TOÁN THẦY PHÚC',
+  description: 'Hệ thống Quản lý Đào tạo',
 };
 
 export default function RootLayout({

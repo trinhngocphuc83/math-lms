@@ -2,8 +2,8 @@ import { createClient } from '@/utils/supabase/server';
 import RegisterForm from './register-form';
 
 export const metadata = {
-  title: 'Đăng ký Tài khoản - EduCenter',
-  description: 'Đăng ký tài khoản học sinh cho nền tảng EduCenter',
+  title: 'Đăng ký Tài khoản - LMS TOÁN THẦY PHÚC',
+  description: 'Đăng ký tài khoản học sinh cho nền tảng LMS TOÁN THẦY PHÚC',
 };
 
 export default async function RegisterPage() {
