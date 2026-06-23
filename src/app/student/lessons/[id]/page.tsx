@@ -47,7 +47,7 @@ const DocAndVideoUI = ({ content }: { content: string }) => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 items-start animate-in fade-in slide-in-from-bottom-4 duration-500">
+    <div className="flex flex-col-reverse md:flex-row gap-6 items-start animate-in fade-in slide-in-from-bottom-4 duration-500">
        <div className="w-full md:w-[35%] bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden shrink-0 sticky top-[130px]">
           <div className="bg-gray-50 border-b border-gray-200 p-4 font-bold text-gray-700 flex items-center gap-2">
              <List className="w-5 h-5 text-indigo-600"/> Danh sách Mục

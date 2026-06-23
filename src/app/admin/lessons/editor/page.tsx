@@ -696,6 +696,7 @@ function EditorContent() {
   const [attachmentUrl, setAttachmentUrl] = useState("");
   const [pendingImages, setPendingImages] = useState<PendingImage[]>([]);
   const [pendingText, setPendingText] = useState("");
+  const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
 
   // Selection states for Course & Chapter
   const [courses, setCourses] = useState<any[]>([]);
@@ -848,23 +849,86 @@ function EditorContent() {
     });
   };
 
-  const handleExportWord = async () => {
+  const handleExportWord = async (type: 'student' | 'teacher' = 'teacher') => {
     try {
       let content = editorMode === 'form' ? serializeBlocksToMarkdown(blocks) : markdownContent;
       
+      if (type === 'student') {
+         // Xóa bỏ các đoạn được đánh dấu là Lời Giải
+         content = content.replace(/\*\*(?:Lời\s*giải|Hướng\s*dẫn\s*giải|HDG|Đáp\s*án).*?\*\*:?[\s\S]*?(?=\*\*Câu|$)/gi, '\n');
+         content = content.replace(/<details>[\s\S]*?<summary>.*?(?:Lời\s*giải|Đáp\s*án).*?<\/summary>[\s\S]*?<\/details>/gi, '\n');
+      }
+
       // 1. Lọc và bóc tách các câu hỏi trắc nghiệm JSON (Xóa bỏ JSON thô)
+      let quizzesHtml: string[] = [];
+      let questionCounter = 1;
+      
       content = content.replace(/```quiz\n([\s\S]*?)\n```/g, (match, jsonString) => {
           try {
               const quiz = JSON.parse(jsonString);
-              let quizText = `\n\n**CÂU HỎI KIỂM TRA:**\n${quiz.question}\n\n`;
+              const escapeText = (t: string) => (t||'').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
+              const escapeLines = (t: string, bulletColor: string) => {
+                  return (t||'')
+                     .replace(/^(?:\*\*)?(?:Phương pháp giải|Lời giải|Hướng dẫn giải|Giải thích):?(?:\*\*)?\s*/i, '')
+                     .split('\n')
+                     .filter((l: string) => l.trim() !== '')
+                     .map((l: string) => {
+                         let cleanLine = l.replace(/^[\-\+\*]\s*/, '').trim();
+                         if (!cleanLine) return '';
+                         return `<p><span style="color: ${bulletColor}; font-weight: bold;">➤ </span> ${cleanLine.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`;
+                     }).join('');
+              };
+              
+              let qHtml = `<p><span style="color: #0000FF; font-weight: bold;">Câu ${questionCounter}.</span> ${escapeText(quiz.question)}</p>`;
+              
               if (quiz.options) {
                  quiz.options.forEach((opt: any, i: number) => {
                     const label = String.fromCharCode(65 + i);
                     const optText = typeof opt === 'string' ? opt : opt.content;
-                    quizText += `**${label}.** ${optText}  \n`; 
+                    qHtml += `<p><span style="color: #0000FF; font-weight: bold;">${label}. </span> ${escapeText(optText)}</p>`; 
                  });
               }
-              return quizText;
+              if (type === 'teacher') {
+                  let methodText = "";
+                  let explanationText = "";
+
+                  // Gộp chung 2 trường của AI để tránh việc nằm sai chỗ
+                  let fullText = [quiz.explanation, quiz.sampleAnswer].filter(Boolean).join('\n\n');
+
+                  const lowerExp = fullText.toLowerCase();
+                  const ppIndex = lowerExp.indexOf("phương pháp giải");
+                  const lgIndex = lowerExp.indexOf("lời giải");
+                  
+                  if (ppIndex !== -1 && lgIndex !== -1 && ppIndex < lgIndex) {
+                      let startPP = ppIndex + (lowerExp.indexOf("phương pháp giải:") === ppIndex ? 17 : 16);
+                      let startLG = lgIndex + (lowerExp.indexOf("lời giải:") === lgIndex ? 9 : 8);
+                      methodText = fullText.substring(startPP, lgIndex).trim();
+                      explanationText = fullText.substring(startLG).trim();
+                  } else if (ppIndex !== -1 && lgIndex === -1) {
+                      let startPP = ppIndex + (lowerExp.indexOf("phương pháp giải:") === ppIndex ? 17 : 16);
+                      methodText = fullText.substring(startPP).trim();
+                  } else if (ppIndex === -1 && lgIndex !== -1) {
+                      let startLG = lgIndex + (lowerExp.indexOf("lời giải:") === lgIndex ? 9 : 8);
+                      explanationText = fullText.substring(startLG).trim();
+                  } else {
+                      explanationText = fullText.trim();
+                  }
+
+                  const cleanedMethod = escapeLines(methodText, '#E67E22');
+                  if (cleanedMethod) {
+                      qHtml += `<p style="color: #0000FF; text-align: center; font-weight: bold; margin-top: 16px; margin-bottom: 8px;">Phương pháp giải</p>`;
+                      qHtml += cleanedMethod;
+                  }
+                  
+                  const cleanedAnswer = escapeLines(explanationText, '#27AE60');
+                  if (cleanedAnswer) {
+                      qHtml += `<p style="color: #0000FF; text-align: center; font-weight: bold; margin-top: 16px; margin-bottom: 8px;">Lời giải</p>`;
+                      qHtml += cleanedAnswer;
+                  }
+              }
+              quizzesHtml.push(qHtml);
+              questionCounter++;
+              return `__QUIZ_PLACEHOLDER_${quizzesHtml.length - 1}__`;
           } catch(e) { return match; }
       });
 
@@ -888,9 +952,14 @@ function EditorContent() {
       html = html.split('\n').map(line => {
          const t = line.trim();
          if (!t) return '';
-         if (t.startsWith('<h')) return t; // Không bọc p cho heading
+         if (t.startsWith('<h') || t.startsWith('__QUIZ_PLACEHOLDER_')) return t; // Không bọc p cho heading/quiz placeholder
          return `<p>${line}</p>`;
       }).join('\n');
+
+      // 4. Khôi phục lại khối HTML của Quiz
+      quizzesHtml.forEach((qHtml, index) => {
+         html = html.replace(`__QUIZ_PLACEHOLDER_${index}__`, qHtml);
+      });
 
       const documentHtml = `
       <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
@@ -1385,7 +1454,17 @@ function EditorContent() {
               <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-1.5 text-xs font-medium bg-white border border-indigo-200 text-indigo-700 px-3 py-1.5 rounded-md hover:bg-indigo-50 transition-colors shadow-sm"><ImageIcon className="w-3.5 h-3.5" /> Nạp File (Ảnh/Word/PDF)</button>
               <button onClick={() => { if (lastAnalyzedImages.length > 0) setCropImageSrc(lastAnalyzedImages[0]); setIsCropModalOpen(true); }} className="flex items-center gap-1.5 text-xs font-medium bg-orange-50 border border-orange-200 text-orange-700 px-3 py-1.5 rounded-md hover:bg-orange-100 transition-colors shadow-sm"><CropIcon className="w-3.5 h-3.5" /> Cắt Ảnh & Chèn</button>
               <button onClick={() => setIsBackupModalOpen(true)} className="flex items-center gap-1.5 text-xs font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-md hover:bg-emerald-100 transition-colors shadow-sm" title="Sinh mẫu Prompt thủ công"><Bot className="w-3.5 h-3.5" /> Lấy Prompt Thủ Công</button>
-              <button onClick={handleExportWord} className="flex items-center gap-1.5 text-xs font-bold bg-blue-600 text-white px-4 py-1.5 rounded-md hover:bg-blue-700 transition-colors shadow-[0_4px_10px_-2px_rgba(37,99,235,0.4)]"><Download className="w-3.5 h-3.5" /> Xuất Giáo Án (Word)</button>
+              <div className="relative">
+                <button onClick={() => setIsExportMenuOpen(!isExportMenuOpen)} className="flex items-center gap-1.5 text-xs font-bold bg-blue-600 text-white px-4 py-1.5 rounded-md hover:bg-blue-700 transition-colors shadow-[0_4px_10px_-2px_rgba(37,99,235,0.4)]">
+                  <Download className="w-3.5 h-3.5" /> Xuất Giáo Án (Word) <ChevronDown className="w-3.5 h-3.5" />
+                </button>
+                {isExportMenuOpen && (
+                  <div className="absolute top-full mt-2 right-0 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                    <button onClick={() => { handleExportWord('student'); setIsExportMenuOpen(false); }} className="w-full text-left px-4 py-2 hover:bg-indigo-50 font-medium text-gray-700 text-sm">Bản Học Sinh (Chỉ Đề)</button>
+                    <button onClick={() => { handleExportWord('teacher'); setIsExportMenuOpen(false); }} className="w-full text-left px-4 py-2 hover:bg-indigo-50 font-medium text-gray-700 text-sm">Bản Giáo Viên (Có Lời giải)</button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
           

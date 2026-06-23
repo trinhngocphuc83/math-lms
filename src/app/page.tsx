@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { BookOpen, Loader2 } from "lucide-react";
+import { BookOpen, Loader2, FileText, PlayCircle } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -75,7 +75,7 @@ export default function LoginPage() {
           <div className="w-16 h-16 bg-white/10 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-sm border border-white/20">
             <BookOpen className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-2xl font-bold mb-1">Math LMS</h1>
+          <h1 className="text-2xl font-bold mb-1">LMS TOÁN THẦY PHÚC</h1>
           <p className="text-teal-100 text-sm">Nền tảng Quản lý Học tập môn Toán</p>
         </div>
 
@@ -127,7 +127,19 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <div className="mt-8 pt-6 border-t border-gray-100 text-center space-y-3">
+          <div className="mt-8 pt-6 border-t border-gray-100 text-center space-y-4">
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4 bg-teal-50/50 p-3 rounded-xl border border-teal-100">
+              <Link href="/huong-dan" className="text-sm font-medium text-[#0f6f60] hover:text-[#0c594c] flex items-center gap-2 hover:underline">
+                <FileText className="w-4 h-4"/> 
+                Hướng dẫn (Văn bản)
+              </Link>
+              <span className="hidden sm:inline text-teal-200">|</span>
+              <a href="https://youtu.be/I_o9_16INwo" target="_blank" rel="noopener noreferrer" className="text-sm font-medium text-[#0f6f60] hover:text-[#0c594c] flex items-center gap-2 hover:underline">
+                <PlayCircle className="w-4 h-4"/> 
+                Video hướng dẫn
+              </a>
+            </div>
+
             <p className="text-sm text-gray-500">
               Học sinh mới? {" "}
               <Link href="/register" className="text-[#0f6f60] font-bold hover:underline">

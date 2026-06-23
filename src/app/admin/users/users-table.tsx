@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Upload, Check, X, FileSpreadsheet, AlertCircle, Pencil, Trash2 } from 'lucide-react';
+import { Upload, Check, X, FileSpreadsheet, AlertCircle, Pencil, Trash2, UserPlus } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 
 type UserProfile = {
@@ -44,6 +44,51 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
   // Delete State
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [userToDelete, setUserToDelete] = useState<UserProfile | null>(null);
+
+  // Add State
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [newUser, setNewUser] = useState<Partial<UserProfile> & { password?: string }>({ is_active: true });
+
+  const openAddModal = () => {
+    setNewUser({
+      full_name: '',
+      username: '',
+      password: '',
+      school: '',
+      class_name: '',
+      student_phone: '',
+      parent_name: '',
+      parent_phone: '',
+      course_id: '',
+      is_active: true
+    });
+    setIsAddModalOpen(true);
+  };
+
+  const handleAddSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSaving(true);
+    try {
+      const res = await fetch(`/api/admin/users`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newUser)
+      });
+      
+      const data = await res.json();
+      if (res.ok) {
+        setIsAddModalOpen(false);
+        router.refresh();
+        alert('Tạo tài khoản thành công! Trang sẽ tự động tải lại để cập nhật.');
+      } else {
+        alert(data.error || 'Lỗi tạo tài khoản');
+      }
+    } catch (error) {
+      alert('Lỗi hệ thống khi tạo tài khoản');
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   const handleToggleActive = async (userId: string, currentStatus: boolean) => {
     try {
@@ -184,13 +229,22 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
           placeholder="Tìm kiếm tài khoản..." 
           className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 min-w-[300px]"
         />
-        <button 
-          onClick={() => setIsImportModalOpen(true)}
-          className="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors"
-        >
-          <Upload className="w-4 h-4" />
-          Import từ Excel
-        </button>
+        <div className="flex items-center gap-2">
+          <button 
+            onClick={openAddModal}
+            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+          >
+            <UserPlus className="w-4 h-4" />
+            Tạo tài khoản
+          </button>
+          <button 
+            onClick={() => setIsImportModalOpen(true)}
+            className="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors shadow-sm"
+          >
+            <Upload className="w-4 h-4" />
+            Import từ Excel
+          </button>
+        </div>
       </div>
 
       {/* Table */}
@@ -271,6 +325,77 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
           </tbody>
         </table>
       </div>
+
+      {/* Add Modal */}
+      {isAddModalOpen && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 overflow-y-auto">
+          <div className="bg-white rounded-2xl max-w-2xl w-full p-6 shadow-xl relative my-8">
+            <button onClick={() => setIsAddModalOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+              <X className="w-5 h-5" />
+            </button>
+            <h2 className="text-xl font-bold mb-6">Tạo Tài khoản Học sinh</h2>
+            
+            <form onSubmit={handleAddSubmit} className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold mb-1">Họ tên HS *</label>
+                  <input required value={newUser.full_name || ''} onChange={e => setNewUser({...newUser, full_name: e.target.value})} className="w-full border p-2 rounded text-sm"/>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1">Tài khoản (Username) *</label>
+                  <input required value={newUser.username || ''} onChange={e => setNewUser({...newUser, username: e.target.value})} className="w-full border p-2 rounded text-sm"/>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1">Mật khẩu *</label>
+                  <input required type="text" placeholder="Mật khẩu đăng nhập..." value={newUser.password || ''} onChange={e => setNewUser({...newUser, password: e.target.value})} className="w-full border p-2 rounded text-sm"/>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1">SĐT HS</label>
+                  <input value={newUser.student_phone || ''} onChange={e => setNewUser({...newUser, student_phone: e.target.value})} className="w-full border p-2 rounded text-sm"/>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1">Trường</label>
+                  <input value={newUser.school || ''} onChange={e => setNewUser({...newUser, school: e.target.value})} className="w-full border p-2 rounded text-sm"/>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1">Lớp ở trường phổ thông</label>
+                  <input value={newUser.class_name || ''} onChange={e => setNewUser({...newUser, class_name: e.target.value})} className="w-full border p-2 rounded text-sm"/>
+                </div>
+                <div className="sm:col-span-2 border-t pt-2 mt-2">
+                  <h3 className="font-bold text-sm text-gray-600 mb-2">Quản lý Học tập</h3>
+                </div>
+                <div className="sm:col-span-2">
+                  <label className="block text-xs font-semibold mb-1">Gán Lớp học thêm / Khóa học (LMS)</label>
+                  <select value={newUser.course_id || ''} onChange={e => setNewUser({...newUser, course_id: e.target.value})} className="w-full border p-2 rounded text-sm bg-gray-50 focus:bg-white focus:ring-2 focus:ring-teal-500 focus:outline-none transition-colors">
+                    <option value="">-- Chưa liên kết Khóa học --</option>
+                    {courses.map(c => (
+                      <option key={c.id} value={c.id}>{c.title}</option>
+                    ))}
+                  </select>
+                </div>
+                <div className="sm:col-span-2 border-t pt-2 mt-2">
+                  <h3 className="font-bold text-sm text-gray-600 mb-2">Thông tin Phụ huynh (Tự động tạo tài khoản PH)</h3>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1">Họ tên PH</label>
+                  <input value={newUser.parent_name || ''} onChange={e => setNewUser({...newUser, parent_name: e.target.value})} className="w-full border p-2 rounded text-sm"/>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1">SĐT PH (Dùng làm Tài khoản PH)</label>
+                  <input value={newUser.parent_phone || ''} onChange={e => setNewUser({...newUser, parent_phone: e.target.value})} className="w-full border p-2 rounded text-sm"/>
+                </div>
+              </div>
+
+              <div className="flex justify-end gap-3 mt-6 pt-4 border-t">
+                <button type="button" onClick={() => setIsAddModalOpen(false)} className="px-4 py-2 text-sm border rounded-lg hover:bg-gray-50">Hủy</button>
+                <button type="submit" disabled={isSaving} className="px-4 py-2 text-sm bg-blue-600 text-white rounded-lg hover:bg-blue-700">
+                  {isSaving ? 'Đang tạo...' : 'Tạo Tài khoản'}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
 
       {/* Import Modal */}
       {isImportModalOpen && (

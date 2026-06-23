@@ -387,7 +387,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-6 relative">
+    <div className="flex flex-col-reverse md:flex-row gap-6 relative">
       {/* Loading overlay khi đang chấm toàn bài */}
       {isGradingAll && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center backdrop-blur-sm">
