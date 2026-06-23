@@ -383,7 +383,7 @@ export default function StudentHandbook() {
                   </p>
                   {isSearchingGlobal && <span className="text-xs text-violet-500 animate-pulse">Đang nạp dữ liệu...</span>}
                 </div>
-                <div className="divide-y divide-gray-100 max-h-[calc(100vh-280px)] overflow-y-auto">
+                <div className="divide-y divide-gray-100 lg:max-h-[calc(100vh-140px)] lg:overflow-y-auto custom-scrollbar">
                   {filteredGlobalFormulas.length > 0 ? filteredGlobalFormulas.map(formula => (
                     <div key={formula.id} className="p-5 hover:bg-violet-50/30 transition-colors">
                       <div className="flex justify-between items-start mb-2">
