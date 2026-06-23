@@ -270,6 +270,16 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
     }
 
     const doc = new Document({
+      styles: {
+        default: {
+          document: {
+            run: {
+              size: 24,
+              font: "Times New Roman"
+            }
+          }
+        }
+      },
       sections: [{
         properties: {},
         children: childrenElements
