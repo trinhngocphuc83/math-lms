@@ -551,9 +551,9 @@ export default function StudentLessonPage() {
   if (!lesson) return <div className="p-8 text-center text-red-500 bg-gray-50 h-screen">Không tìm thấy bài giảng.</div>;
 
   const activeModule = lesson.modules?.find((m: any) => m.id === activeModuleId);
-  const isPracticeModule = activeModule?.type === 'practice' || activeModule?.title?.toLowerCase().includes('luyện tập');
-  const isDocumentModule = activeModule?.type === 'document' || activeModule?.title?.toLowerCase().includes('tài liệu');
-  const isVideoModule = activeModule?.type === 'solution_video' || activeModule?.title?.toLowerCase().includes('video');
+  const isPracticeModule = activeModule?.title.toLowerCase().includes('luyện tập') || activeModule?.title.toLowerCase().includes('kiểm tra');
+  const isDocumentModule = activeModule?.title.toLowerCase().includes('tài liệu tham khảo');
+  const isVideoModule = activeModule?.title.toLowerCase().includes('video');
   const containerClass = isPracticeModule ? "max-w-7xl" : "max-w-4xl";
 
   return (

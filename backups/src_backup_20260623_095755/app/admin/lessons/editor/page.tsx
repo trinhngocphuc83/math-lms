@@ -661,7 +661,6 @@ function EditorContent() {
   const lessonId = searchParams.get('lessonId');
   const moduleId = searchParams.get('moduleId');
   const [moduleTitle, setModuleTitle] = useState<string>('');
-  const [moduleType, setModuleType] = useState<string>('');
   const supabase = createClient();
 
   const [apiKey, setApiKey] = useState("");
@@ -688,9 +687,8 @@ function EditorContent() {
     setMarkdownContent(text);
   };
   const [docList, setDocList] = useState<{id: string, title: string, url: string}[]>([]);
-  const isDocumentModule = moduleType === 'document' || moduleTitle.toLowerCase().includes('tài liệu tham khảo');
-  const isVideoModule = moduleType === 'solution_video' || moduleTitle.toLowerCase().includes('video');
-  const isPracticeModule = moduleType === 'practice' || moduleType === 'exercise_types' || moduleTitle.toLowerCase().includes('luyện tập');
+  const isDocumentModule = moduleTitle.toLowerCase().includes('tài liệu tham khảo');
+  const isVideoModule = moduleTitle.toLowerCase().includes('video');
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
   const [attachmentUrl, setAttachmentUrl] = useState("");
@@ -740,10 +738,9 @@ function EditorContent() {
           const { data: modData } = await supabase.from('lesson_modules').select('*').eq('id', moduleId).single();
           if (modData) {
               setModuleTitle(modData.title || "");
-              setModuleType(modData.type || "");
               setMarkdownContent(modData.content_markdown || "");
               setBlocks(parseMarkdownToBlocks(modData.content_markdown || ""));
-                if (modData.type === 'document' || modData.type === 'solution_video' || modData.title?.toLowerCase().includes('tài liệu tham khảo') || modData.title?.toLowerCase().includes('video')) {
+                if (modData.title?.toLowerCase().includes('tài liệu tham khảo') || modData.title?.toLowerCase().includes('video')) {
                     try {
                         const parsed = JSON.parse(modData.content_markdown);
                         if (Array.isArray(parsed)) setDocList(parsed);
@@ -1283,30 +1280,28 @@ function EditorContent() {
             </div>
           </div>
 
-          {!isPracticeModule && (
-            <div className="flex gap-4 items-center">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
-                  <Video className="w-4 h-4 text-rose-500 shrink-0" />
-                  <input 
-                    type="text" value={videoUrl} onChange={(e) => setVideoUrl(e.target.value)}
-                    placeholder="Link Video YouTube (VD: https://youtube.com/...)"
-                    className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
-                  />
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
-                  <FileText className="w-4 h-4 text-blue-500 shrink-0" />
-                  <input 
-                    type="text" value={attachmentUrl} onChange={(e) => setAttachmentUrl(e.target.value)}
-                    placeholder="Link Tài liệu tải xuống (Google Drive, PDF...)"
-                    className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
-                  />
-                </div>
+          <div className="flex gap-4 items-center">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
+                <Video className="w-4 h-4 text-rose-500 shrink-0" />
+                <input 
+                  type="text" value={videoUrl} onChange={(e) => setVideoUrl(e.target.value)}
+                  placeholder="Link Video YouTube (VD: https://youtube.com/...)"
+                  className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
+                />
               </div>
             </div>
-          )}
+            <div className="flex-1">
+              <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
+                <FileText className="w-4 h-4 text-blue-500 shrink-0" />
+                <input 
+                  type="text" value={attachmentUrl} onChange={(e) => setAttachmentUrl(e.target.value)}
+                  placeholder="Link Tài liệu tải xuống (Google Drive, PDF...)"
+                  className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
+                />
+              </div>
+            </div>
+          </div>
           
           <div className="flex justify-between items-center pt-3 border-t border-gray-50">
             <div className="text-xs text-gray-400 font-medium">Bản nháp được lưu tại: <span className="text-teal-600 font-bold">{title}</span></div>

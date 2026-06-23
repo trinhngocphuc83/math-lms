@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import React, { useState, useEffect, useRef, Suspense, useMemo, useCallback } from "react";
-import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -528,9 +528,9 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 3. [TÓM TẮT NGẮN GỌN & SÚC TÍCH]: ĐÂY LÀ PHẦN LÝ THUYẾT. BẠN PHẢI CHẮT LỌC VÀ CHỈ GIỮ LẠI NHỮNG Ý CHÍNH NHẤT, ĐỊNH NGHĨA VÀ CÔNG THỨC TRỌNG TÂM. TUYỆT ĐỐI KHÔNG VIẾT DÀI DÒNG, LAN MAN. NGẮN GỌN LÀ ƯU TIÊN SỐ 1. Bỏ qua các diễn giải rườm rà.
 4. [PHÂN TRANG KHOA HỌC]: Sử dụng đúng 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới). Hãy phân trang khoa học và hợp lý sao cho mỗi trang không quá dài, thường là sau 1 cụm lý thuyết hoàn chỉnh hoặc sau 1-2 ví dụ.
 5. Định nghĩa/Định lý bắt đầu bằng \`> 💡 **Định lý:**\`. Ví dụ bắt đầu bằng \`> 📌 **Ví dụ:**\`.
-6. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có sử dụng Đồ thị, Hình học, Bảng biến thiên, Bảng xét dấu... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ (VD: không viết "đồ thị đi lên/đi xuống từ..."). THAY VÀO ĐÓ, bạn BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ bảng/hình để giáo viên tự cắt ảnh dán vào. Lời giải bên dưới chỉ cần ghi "Từ Bảng biến thiên/Đồ thị ở trên, ta có kết luận:".
+6. Nếu ảnh gốc có Đồ thị/Hình học, chèn ngay dòng này: \`[🔴 CHÚ Ý: CÓ HÌNH VẼ Ở ĐÂY - HÃY CHÈN ẢNH VÀO]\`
 7. [SIÊU QUAN TRỌNG - TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Ngay TRƯỚC mỗi lần bạn đặt dấu ngắt trang \`---\`, bạn HÃY TỰ NGHĨ RA 1 CÂU HỎI TRẮC NGHIỆM để kiểm tra sự tập trung của học sinh. Học sinh bắt buộc phải làm đúng câu này thì mới được đọc trang tiếp theo.
-Mọi câu hỏi trắc nghiệm PHẦI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Có 2 loại cấu trúc JSON mà bạn có thể dùng:
+Mọi câu hỏi trắc nghiệm PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Có 2 loại cấu trúc JSON mà bạn có thể dùng:
 
 LOẠI 1: CÂU HỎI NHIỀU LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 \`\`\`quiz
@@ -575,7 +575,6 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 - Mở đầu mỗi Dạng bằng thẻ Heading 2 (##) kèm Emoji. Ví dụ: \`## 📚 Dạng 1: Viết phương trình tiếp tuyến\`. 
 - Sau đó bạn hãy TỰ biên soạn \`### 💡 Phương pháp giải\` ngắn gọn cho Dạng đó.
 - Tiếp theo, trích lấy 1 bài tập tiêu biểu làm \`### 📌 Ví dụ mẫu\` và tự biên soạn trình bày lời giải chi tiết bên dưới. ĐỂ KÍCH HOẠT KHUNG GIAO DIỆN CHUẨN, ở phần lời giải của Ví dụ mẫu BẮT BUỘC bạn phải ghi chữ "Hướng dẫn giải:" ngay trước khi giải.
-- [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Đồ thị, Hình học, Bảng biến thiên, Bảng xét dấu... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ (VD: không viết "đồ thị đi lên/đi xuống từ..."). THAY VÀO ĐÓ, bạn BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ bảng/hình. Lời giải bên dưới chỉ ghi ngắn gọn "Từ Bảng biến thiên/Đồ thị ở trên, ta có:".
 3. [TẠO BÀI TẬP TƯƠNG TÁC]: Ngay sau khi giải xong Ví dụ mẫu, bạn hãy dùng dấu ngắt trang \`---\`. Tiếp theo, biến các bài tập còn lại của Dạng đó thành các khối mã "quiz" (JSON) để học sinh tự làm. Học sinh làm đúng mới được qua Dạng tiếp theo.
 4. Mọi câu hỏi trong phần luyện tập PHẢI được xuất ra ĐÚNG DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Cấu trúc JSON có 3 loại:
 
@@ -661,7 +660,6 @@ function EditorContent() {
   const lessonId = searchParams.get('lessonId');
   const moduleId = searchParams.get('moduleId');
   const [moduleTitle, setModuleTitle] = useState<string>('');
-  const [moduleType, setModuleType] = useState<string>('');
   const supabase = createClient();
 
   const [apiKey, setApiKey] = useState("");
@@ -677,20 +675,9 @@ function EditorContent() {
   const [markdownContent, setMarkdownContent] = useState("");
   const [blocks, setBlocks] = useState<Block[]>([]);
   const [editorMode, setEditorMode] = useState<'form' | 'raw'>('form');
-  const [showRawPreview, setShowRawPreview] = useState(false);
-
-  const handleFixRawLatex = () => {
-    let text = markdownContent;
-    text = text.replace(/\[cite_start\]/g, "").replace(/\[cite_end\]/g, "");
-    text = text.replace(/\{\{\s*begincases\s*\}\}/g, "\\begin{cases}");
-    text = text.replace(/\{\{\s*endcases\s*\}\}/g, "\\end{cases}");
-    text = text.replace(/\\rightarrow/g, "\\rightarrow ");
-    setMarkdownContent(text);
-  };
   const [docList, setDocList] = useState<{id: string, title: string, url: string}[]>([]);
-  const isDocumentModule = moduleType === 'document' || moduleTitle.toLowerCase().includes('tài liệu tham khảo');
-  const isVideoModule = moduleType === 'solution_video' || moduleTitle.toLowerCase().includes('video');
-  const isPracticeModule = moduleType === 'practice' || moduleType === 'exercise_types' || moduleTitle.toLowerCase().includes('luyện tập');
+  const isDocumentModule = moduleTitle.toLowerCase().includes('tài liệu tham khảo');
+  const isVideoModule = moduleTitle.toLowerCase().includes('video');
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
   const [attachmentUrl, setAttachmentUrl] = useState("");
@@ -740,10 +727,9 @@ function EditorContent() {
           const { data: modData } = await supabase.from('lesson_modules').select('*').eq('id', moduleId).single();
           if (modData) {
               setModuleTitle(modData.title || "");
-              setModuleType(modData.type || "");
               setMarkdownContent(modData.content_markdown || "");
               setBlocks(parseMarkdownToBlocks(modData.content_markdown || ""));
-                if (modData.type === 'document' || modData.type === 'solution_video' || modData.title?.toLowerCase().includes('tài liệu tham khảo') || modData.title?.toLowerCase().includes('video')) {
+                if (modData.title?.toLowerCase().includes('tài liệu tham khảo') || modData.title?.toLowerCase().includes('video')) {
                     try {
                         const parsed = JSON.parse(modData.content_markdown);
                         if (Array.isArray(parsed)) setDocList(parsed);
@@ -1283,30 +1269,28 @@ function EditorContent() {
             </div>
           </div>
 
-          {!isPracticeModule && (
-            <div className="flex gap-4 items-center">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
-                  <Video className="w-4 h-4 text-rose-500 shrink-0" />
-                  <input 
-                    type="text" value={videoUrl} onChange={(e) => setVideoUrl(e.target.value)}
-                    placeholder="Link Video YouTube (VD: https://youtube.com/...)"
-                    className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
-                  />
-                </div>
-              </div>
-              <div className="flex-1">
-                <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
-                  <FileText className="w-4 h-4 text-blue-500 shrink-0" />
-                  <input 
-                    type="text" value={attachmentUrl} onChange={(e) => setAttachmentUrl(e.target.value)}
-                    placeholder="Link Tài liệu tải xuống (Google Drive, PDF...)"
-                    className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
-                  />
-                </div>
+          <div className="flex gap-4 items-center">
+            <div className="flex-1">
+              <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
+                <Video className="w-4 h-4 text-rose-500 shrink-0" />
+                <input 
+                  type="text" value={videoUrl} onChange={(e) => setVideoUrl(e.target.value)}
+                  placeholder="Link Video YouTube (VD: https://youtube.com/...)"
+                  className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
+                />
               </div>
             </div>
-          )}
+            <div className="flex-1">
+              <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
+                <FileText className="w-4 h-4 text-blue-500 shrink-0" />
+                <input 
+                  type="text" value={attachmentUrl} onChange={(e) => setAttachmentUrl(e.target.value)}
+                  placeholder="Link Tài liệu tải xuống (Google Drive, PDF...)"
+                  className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
+                />
+              </div>
+            </div>
+          </div>
           
           <div className="flex justify-between items-center pt-3 border-t border-gray-50">
             <div className="text-xs text-gray-400 font-medium">Bản nháp được lưu tại: <span className="text-teal-600 font-bold">{title}</span></div>
@@ -1413,52 +1397,11 @@ function EditorContent() {
             )}
           <div className="flex-1 flex flex-col relative min-h-[75vh]">
             {editorMode === 'raw' ? (
-              <div className="flex flex-col flex-1 relative min-h-0">
-                 {/* Thanh công cụ phụ cho RAW */}
-                 <div className="bg-gray-100 border-b border-gray-200 px-3 py-2 flex items-center justify-between shrink-0">
-                    <div className="flex items-center gap-3">
-                       <button onClick={() => setShowRawPreview(!showRawPreview)} className={`flex items-center gap-1.5 text-xs font-bold px-3 py-1.5 rounded-md transition-colors ${showRawPreview ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white text-gray-700 border border-gray-300 hover:bg-gray-50'}`}>
-                          <Eye className="w-4 h-4"/> {showRawPreview ? 'Ẩn Xem Trước' : 'Bật Xem Trước (Split View)'}
-                       </button>
-                       {showRawPreview && (
-                           <button onClick={handleFixRawLatex} className="flex items-center gap-1.5 text-xs font-bold bg-purple-100 text-purple-700 px-3 py-1.5 rounded-md hover:bg-purple-200 transition-colors shadow-sm">
-                              🪄 Sửa lỗi LaTeX tự động
-                           </button>
-                       )}
-                    </div>
-                 </div>
-
-                 {/* Cảnh báo Bảng/Ảnh */}
-                 {(() => {
-                    const hasImageOrTable = /(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\|.*\|.*\n\s*\|[-\s:]+\|)/i.test(markdownContent);
-                    if (!hasImageOrTable) return null;
-                    return (
-                        <div className="bg-yellow-50 border-b border-yellow-200 px-4 py-3 shrink-0 flex items-center justify-between">
-                            <span className="text-[13px] font-medium text-yellow-800 flex items-center gap-2"><AlertTriangle className="w-4 h-4 text-yellow-600"/> Có Bảng / Yêu cầu chèn ảnh! Đặt con trỏ đúng vị trí và nhấn:</span>
-                            <button onClick={() => {
-                                setTargetCropBlockId(null);
-                                if (lastAnalyzedImages.length > 0) setCropImageSrc(lastAnalyzedImages[0]);
-                                setIsCropModalOpen(true);
-                            }} className="bg-yellow-600 hover:bg-yellow-700 text-white px-3 py-1.5 text-xs font-bold rounded-lg shadow-sm flex items-center gap-1.5 shrink-0 animate-pulse"><CropIcon className="w-3.5 h-3.5"/> Cắt & Chèn Ảnh Tại Con Trỏ</button>
-                        </div>
-                    );
-                 })()}
-
-                 <div className="flex-1 flex flex-row overflow-hidden">
-                    <textarea 
-                      ref={textareaRef} value={markdownContent} onChange={(e) => setMarkdownContent(e.target.value)} onPaste={handlePaste}
-                      placeholder="Bắt đầu gõ hoặc Ấn Ctrl + V để dán bài tập vào đây."
-                      className={`h-full p-4 resize-none outline-none text-gray-700 font-mono text-[14px] leading-relaxed scroll-smooth ${showRawPreview ? 'w-1/2 border-r border-gray-200 bg-white' : 'w-full bg-white'}`}
-                    />
-                    {showRawPreview && (
-                       <div className="w-1/2 h-full overflow-y-auto bg-gray-50/50 p-6 scroll-smooth">
-                          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-h-full max-w-none prose prose-indigo">
-                              {renderMarkdown(markdownContent)}
-                          </div>
-                       </div>
-                    )}
-                 </div>
-              </div>
+              <textarea 
+                ref={textareaRef} value={markdownContent} onChange={(e) => setMarkdownContent(e.target.value)} onPaste={handlePaste}
+                placeholder="Bắt đầu gõ hoặc Ấn Ctrl + V để dán ảnh bài tập vào đây."
+                className="flex-1 w-full p-4 resize-none outline-none text-gray-700 font-mono text-sm leading-relaxed"
+              />
             ) : (
               <div className="flex-1 overflow-y-auto relative bg-slate-50">
                  <BlockEditor blocks={blocks} onChangeBlocks={setBlocks} onTriggerCrop={(meta, id) => {
