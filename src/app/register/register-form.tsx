@@ -284,7 +284,7 @@ export default function RegisterForm({ courses }: { courses: Course[] }) {
       </div>
 
       <div className="text-center">
-        <a href="/login" className="text-sm text-teal-600 hover:text-teal-700 hover:underline font-semibold transition-colors">
+        <a href="/" className="text-sm text-teal-600 hover:text-teal-700 hover:underline font-semibold transition-colors">
           Đã có tài khoản? Đăng nhập ngay →
         </a>
       </div>

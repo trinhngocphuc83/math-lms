@@ -15,6 +15,11 @@ export default function StudentHandbook() {
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedCats, setExpandedCats] = useState<string[]>([]);
 
+  // Global search states
+  const [allFormulas, setAllFormulas] = useState<any[]>([]);
+  const [hasLoadedAll, setHasLoadedAll] = useState(false);
+  const [isSearchingGlobal, setIsSearchingGlobal] = useState(false);
+
   // Flip Book state
   const [currentPage, setCurrentPage] = useState(0); // 0 = bìa sách
   const [flipDirection, setFlipDirection] = useState<'next' | 'prev' | null>(null);
@@ -22,6 +27,21 @@ export default function StudentHandbook() {
   const bookRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => { fetchCategories(); }, []);
+
+  // Tự động load toàn bộ công thức khi bắt đầu gõ tìm kiếm
+  useEffect(() => {
+    if (searchQuery.trim().length > 0 && !hasLoadedAll) {
+      loadAllFormulas();
+    }
+  }, [searchQuery, hasLoadedAll]);
+
+  const loadAllFormulas = async () => {
+    setIsSearchingGlobal(true);
+    const { data } = await supabase.from('formulas').select('*, category:category_id(name)');
+    setAllFormulas(data || []);
+    setHasLoadedAll(true);
+    setIsSearchingGlobal(false);
+  };
 
   // Hỗ trợ phím mũi tên để lật trang
   useEffect(() => {
@@ -104,13 +124,23 @@ export default function StudentHandbook() {
     }, 450);
   };
 
-  // Lọc công thức theo từ khóa tìm kiếm
-  const filteredFormulas = searchQuery 
-    ? formulas.filter(f =>
-        f.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (f.description && f.description.toLowerCase().includes(searchQuery.toLowerCase()))
-      )
-    : formulas;
+  // Hàm bỏ dấu tiếng Việt để tìm kiếm mềm mại (mờ)
+  const removeAccents = (str: string) => {
+    return str ? str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() : "";
+  };
+
+  // Lọc công thức TOÀN CỤC theo từ khóa mờ
+  const filteredGlobalFormulas = searchQuery 
+    ? allFormulas.filter(f => {
+        const queryClean = removeAccents(searchQuery);
+        const titleClean = removeAccents(f.title);
+        const descClean = removeAccents(f.description || "");
+        
+        // Chia từ khóa thành các từ đơn và đảm bảo mọi từ đều khớp
+        const keywords = queryClean.split(/\s+/).filter(k => k.length > 0);
+        return keywords.every(kw => titleClean.includes(kw) || descClean.includes(kw));
+      })
+    : [];
 
   // Render trang bìa sách
   const renderCover = () => (
@@ -347,15 +377,23 @@ export default function StudentHandbook() {
             ) : searchQuery ? (
               /* Chế độ tìm kiếm — hiển thị dạng danh sách */
               <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-gray-200/60 shadow-sm overflow-hidden">
-                <div className="p-4 border-b border-gray-100 bg-violet-50/50">
+                <div className="p-4 border-b border-gray-100 bg-violet-50/50 flex justify-between items-center">
                   <p className="text-sm text-violet-700 font-semibold">
-                    🔍 Kết quả tìm kiếm: "{searchQuery}" ({filteredFormulas.length} công thức)
+                    🔍 Kết quả tìm kiếm: "{searchQuery}" ({filteredGlobalFormulas.length} công thức)
                   </p>
+                  {isSearchingGlobal && <span className="text-xs text-violet-500 animate-pulse">Đang nạp dữ liệu...</span>}
                 </div>
                 <div className="divide-y divide-gray-100 max-h-[calc(100vh-280px)] overflow-y-auto">
-                  {filteredFormulas.length > 0 ? filteredFormulas.map(formula => (
+                  {filteredGlobalFormulas.length > 0 ? filteredGlobalFormulas.map(formula => (
                     <div key={formula.id} className="p-5 hover:bg-violet-50/30 transition-colors">
-                      <h4 className="text-base font-bold text-gray-800 mb-2">{formula.title}</h4>
+                      <div className="flex justify-between items-start mb-2">
+                        <h4 className="text-base font-bold text-gray-800">{formula.title}</h4>
+                        {formula.category?.name && (
+                          <span className="text-[10px] px-2 py-0.5 bg-violet-100 text-violet-600 rounded-full font-semibold uppercase tracking-wider shrink-0 ml-3">
+                            {formula.category.name}
+                          </span>
+                        )}
+                      </div>
                       <div className="formula-handwritten p-4 overflow-x-auto text-center">
                         <BlockMath math={formula.latex_content} />
                       </div>
