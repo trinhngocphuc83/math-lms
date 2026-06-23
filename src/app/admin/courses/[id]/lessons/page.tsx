@@ -132,8 +132,7 @@ export default function CourseStructurePage() {
         { lesson_id: lessonData.id, type: 'theory', title: 'Lý thuyết (Bài giảng tương tác)', order_index: 1 },
         { lesson_id: lessonData.id, type: 'exercise_types', title: 'Phân dạng bài tập', order_index: 2 },
         { lesson_id: lessonData.id, type: 'practice', title: 'Luyện tập', order_index: 3 },
-        { lesson_id: lessonData.id, type: 'document', title: 'Tài liệu tham khảo', order_index: 4 },
-        { lesson_id: lessonData.id, type: 'solution_video', title: 'Video sửa bài tập', order_index: 5 }
+        { lesson_id: lessonData.id, type: 'document', title: 'Tài liệu & Video', order_index: 4 }
       ];
       await supabase.from('lesson_modules').insert(predefinedModules);
     }
@@ -149,8 +148,7 @@ export default function CourseStructurePage() {
       { lesson_id: lessonId, type: 'theory', title: 'Lý thuyết (Bài giảng tương tác)', order_index: 1 },
       { lesson_id: lessonId, type: 'exercise_types', title: 'Phân dạng bài tập', order_index: 2 },
       { lesson_id: lessonId, type: 'practice', title: 'Luyện tập', order_index: 3 },
-      { lesson_id: lessonId, type: 'document', title: 'Tài liệu tham khảo', order_index: 4 },
-      { lesson_id: lessonId, type: 'solution_video', title: 'Video sửa bài tập', order_index: 5 }
+      { lesson_id: lessonId, type: 'document', title: 'Tài liệu & Video', order_index: 4 }
     ];
     const { error } = await supabase.from('lesson_modules').insert(predefinedModules);
     setIsSavingLesson(false);
@@ -312,17 +310,15 @@ export default function CourseStructurePage() {
                                         onClick={() => handleGenerateDefaultModules(lesson.id)}
                                         className="text-xs font-bold text-teal-600 hover:text-teal-700 bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
                                       >
-                                        <Sparkles className="w-3.5 h-3.5" /> Khởi tạo 5 mục
+                                        <Sparkles className="w-3.5 h-3.5" /> Khởi tạo 4 mục cơ bản
                                       </button>
                                     </div>
                                   ) : (
                                     <ul className="space-y-1 pl-6 border-l-2 border-teal-100 ml-4 py-1">
-                                      {lessonModules.map(mod => {
+                                      {lessonModules.filter(m => m.type !== 'practice').map(mod => {
                                         let icon = <BookOpen className="w-3.5 h-3.5 text-blue-500" />;
                                         if (mod.type === 'exercise_types') icon = <FileEdit className="w-3.5 h-3.5 text-purple-500" />;
-                                        if (mod.type === 'practice') icon = <Layers className="w-3.5 h-3.5 text-orange-500" />;
                                         if (mod.type === 'document') icon = <BookOpen className="w-3.5 h-3.5 text-teal-500" />;
-                                        if (mod.type === 'solution_video') icon = <Video className="w-3.5 h-3.5 text-rose-500" />;
                                         
                                         return (
                                             <li key={mod.id} className="flex items-center justify-between p-2 rounded-md hover:bg-white border border-transparent hover:border-gray-200 transition-colors group/mod">
@@ -347,7 +343,46 @@ export default function CourseStructurePage() {
                                             </li>
                                         );
                                       })}
-                                      <li className="flex justify-center p-1 mt-2">
+                                      
+                                      {/* Thư mục Luyện tập */}
+                                      {lessonModules.filter(m => m.type === 'practice').length > 0 && (
+                                        <div className="mt-3 border border-orange-100 rounded-xl overflow-hidden bg-orange-50/30">
+                                           <div className="bg-orange-100/50 p-2.5 flex items-center justify-between">
+                                              <div className="flex items-center gap-2">
+                                                 <Layers className="w-4 h-4 text-orange-600" />
+                                                 <span className="font-bold text-orange-800 text-sm">🎯 Luyện tập ({lessonModules.filter(m => m.type === 'practice').length} phần)</span>
+                                              </div>
+                                           </div>
+                                           <ul className="space-y-1 p-2">
+                                              {lessonModules.filter(m => m.type === 'practice').map(mod => (
+                                                <li key={mod.id} className="flex items-center justify-between p-2 rounded-md hover:bg-white border border-transparent hover:border-orange-200 transition-colors group/mod bg-white/60">
+                                                  <div className="flex items-center gap-2">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-400"></span>
+                                                    <span className="text-sm font-medium text-gray-700">{mod.title}</span>
+                                                  </div>
+                                                  <div className="flex items-center gap-1 opacity-0 group-hover/mod:opacity-100 transition-opacity">
+                                                    <Link href={`/admin/lessons/editor?lessonId=${lesson.id}&moduleId=${mod.id}`} className="px-3 py-1 text-xs font-medium bg-teal-50 text-teal-700 hover:bg-teal-100 rounded-md transition-colors flex items-center gap-1">
+                                                      <Edit2 className="w-3 h-3" /> Soạn
+                                                    </Link>
+                                                    <button onClick={(e) => handleDeleteModule(mod.id, e)} className="p-1 text-red-500 hover:bg-red-50 rounded-md transition-colors">
+                                                      <Trash2 className="w-4 h-4" />
+                                                    </button>
+                                                  </div>
+                                                </li>
+                                              ))}
+                                              <li className="flex justify-center p-1 mt-1">
+                                                <button 
+                                                  onClick={() => { setActiveLessonId(lesson.id); setModuleTitle(""); setModuleType("practice"); setIsModuleModalOpen(true); }}
+                                                  className="text-xs font-bold text-orange-600 hover:text-orange-800 bg-white hover:bg-orange-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 w-full justify-center border border-dashed border-orange-300"
+                                                >
+                                                  <Plus className="w-3.5 h-3.5" /> Thêm Bài luyện tập
+                                                </button>
+                                              </li>
+                                           </ul>
+                                        </div>
+                                      )}
+
+                                      <li className="flex justify-center p-1 mt-3">
                                         <button 
                                           onClick={() => openModuleModal(lesson.id)}
                                           className="text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 w-full justify-center border border-dashed border-indigo-200"
@@ -459,8 +494,7 @@ export default function CourseStructurePage() {
                   <option value="theory">📖 Lý thuyết (Bài giảng tương tác)</option>
                   <option value="practice">🎯 Luyện tập (Trắc nghiệm/Điền khuyết)</option>
                   <option value="exercise_types">📝 Phân dạng bài tập</option>
-                  <option value="document">📄 Tài liệu tham khảo (PDF/Word)</option>
-                  <option value="solution_video">🎥 Video (Sửa bài/Lý thuyết)</option>
+                  <option value="document">📄 Tài liệu & Video (Chữa bài)</option>
                 </select>
               </div>
               <div>

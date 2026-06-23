@@ -12,8 +12,15 @@ import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import AzotaExamUI from './AzotaExamUI';
 
-const DocumentDownloadUI = ({ content }: { content: string }) => {
-  const [docList, setDocList] = useState<{id: string, title: string, url: string}[]>([]);
+const getYouTubeEmbedUrl = (url: string) => {
+  if (!url) return '';
+  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
+  if (match) return `https://www.youtube.com/embed/${match[1]}`;
+  return url;
+};
+
+const DocAndVideoUI = ({ content }: { content: string }) => {
+  const [docList, setDocList] = useState<any[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEffect(() => {
@@ -24,14 +31,26 @@ const DocumentDownloadUI = ({ content }: { content: string }) => {
   }, [content]);
 
   if (docList.length === 0) {
-     return <div className="p-10 text-center bg-white rounded-2xl shadow-sm border border-gray-100 text-gray-500 font-medium">Chưa có tài liệu nào trong mục này.</div>;
+     return <div className="p-10 text-center bg-white rounded-2xl shadow-sm border border-gray-100 text-gray-500 font-medium">Chưa có dữ liệu nào trong mục này.</div>;
   }
+
+  const getVideoUrl = (item: any) => {
+     if (item.video_url) return item.video_url;
+     if (item.url && (item.url.includes('youtube') || item.url.includes('youtu.be'))) return item.url;
+     return '';
+  };
+  
+  const getDocUrl = (item: any) => {
+     if (item.doc_url) return item.doc_url;
+     if (item.url && !(item.url.includes('youtube') || item.url.includes('youtu.be'))) return item.url;
+     return '';
+  };
 
   return (
     <div className="flex flex-col md:flex-row gap-6 items-start animate-in fade-in slide-in-from-bottom-4 duration-500">
        <div className="w-full md:w-[35%] bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden shrink-0 sticky top-[130px]">
           <div className="bg-gray-50 border-b border-gray-200 p-4 font-bold text-gray-700 flex items-center gap-2">
-             <List className="w-5 h-5 text-indigo-600"/> Danh sách Tài liệu
+             <List className="w-5 h-5 text-indigo-600"/> Danh sách Mục
           </div>
           <div className="flex flex-col max-h-[60vh] overflow-y-auto no-scrollbar">
              {docList.map((doc, idx) => (
@@ -40,78 +59,9 @@ const DocumentDownloadUI = ({ content }: { content: string }) => {
                   onClick={() => setActiveIndex(idx)}
                   className={`text-left px-5 py-4 border-b border-gray-100 transition-colors flex items-center gap-3 hover:bg-indigo-50/50 ${activeIndex === idx ? 'bg-indigo-50 border-l-4 border-l-indigo-600' : 'border-l-4 border-l-transparent'}`}
                 >
-                   <FileText className={`w-5 h-5 shrink-0 ${activeIndex === idx ? 'text-indigo-600' : 'text-gray-400'}`} />
+                   <PlayCircle className={`w-5 h-5 shrink-0 ${activeIndex === idx ? 'text-indigo-600' : 'text-gray-400'}`} />
                    <span className={`text-sm font-medium line-clamp-2 ${activeIndex === idx ? 'text-indigo-700 font-bold' : 'text-gray-600'}`}>
-                      {doc.title || "Tài liệu không tên"}
-                   </span>
-                </button>
-             ))}
-          </div>
-       </div>
-
-       <div className="w-full md:w-[65%]">
-          {(() => {
-             const activeDoc = docList[activeIndex];
-             if (!activeDoc) return null;
-             return (
-               <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 flex flex-col gap-6 items-center text-center">
-                  <div className="w-20 h-20 bg-indigo-50 rounded-2xl flex items-center justify-center border border-indigo-100">
-                     <FileText className="w-10 h-10 text-indigo-500"/>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                     <h3 className="font-bold text-gray-800 text-2xl">{activeDoc.title || "Tài liệu không tên"}</h3>
-                     <a href={activeDoc.url} target="_blank" className="text-sm text-blue-500 hover:underline line-clamp-1 break-all">{activeDoc.url}</a>
-                  </div>
-                  <a href={activeDoc.url} target="_blank" rel="noopener noreferrer" className="mt-4 bg-indigo-600 text-white px-10 py-4 rounded-xl font-bold shadow-md hover:bg-indigo-700 hover:shadow-lg transition-all hover:-translate-y-1 flex items-center justify-center gap-3 text-lg w-full sm:w-auto">
-                     <Download className="w-6 h-6" />
-                     Tải xuống ngay
-                  </a>
-               </div>
-             );
-          })()}
-       </div>
-    </div>
-  );
-};
-
-const getYouTubeEmbedUrl = (url: string) => {
-  if (!url) return '';
-  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
-  if (match) return `https://www.youtube.com/embed/${match[1]}`;
-  return url;
-};
-
-const VideoListUI = ({ content }: { content: string }) => {
-  const [videoList, setVideoList] = useState<{id: string, title: string, url: string}[]>([]);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  useEffect(() => {
-     try {
-        const parsed = JSON.parse(content);
-        if (Array.isArray(parsed)) setVideoList(parsed);
-     } catch(e) {}
-  }, [content]);
-
-  if (videoList.length === 0) {
-     return <div className="p-10 text-center bg-white rounded-2xl shadow-sm border border-gray-100 text-gray-500 font-medium">Chưa có video nào trong mục này.</div>;
-  }
-
-  return (
-    <div className="flex flex-col md:flex-row gap-6 items-start animate-in fade-in slide-in-from-bottom-4 duration-500">
-       <div className="w-full md:w-[35%] bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden shrink-0 sticky top-[130px]">
-          <div className="bg-gray-50 border-b border-gray-200 p-4 font-bold text-gray-700 flex items-center gap-2">
-             <List className="w-5 h-5 text-rose-600"/> Danh sách Video
-          </div>
-          <div className="flex flex-col max-h-[60vh] overflow-y-auto no-scrollbar">
-             {videoList.map((vid, idx) => (
-                <button 
-                  key={vid.id || idx} 
-                  onClick={() => setActiveIndex(idx)}
-                  className={`text-left px-5 py-4 border-b border-gray-100 transition-colors flex items-center gap-3 hover:bg-rose-50/50 ${activeIndex === idx ? 'bg-rose-50 border-l-4 border-l-rose-600' : 'border-l-4 border-l-transparent'}`}
-                >
-                   <PlayCircle className={`w-5 h-5 shrink-0 ${activeIndex === idx ? 'text-rose-600' : 'text-gray-400'}`} />
-                   <span className={`text-sm font-medium line-clamp-2 ${activeIndex === idx ? 'text-rose-700 font-bold' : 'text-gray-600'}`}>
-                      {vid.title || "Video không tên"}
+                      {doc.title || "Chưa có tên"}
                    </span>
                 </button>
              ))}
@@ -120,26 +70,39 @@ const VideoListUI = ({ content }: { content: string }) => {
 
        <div className="w-full md:w-[65%] flex flex-col gap-4">
           {(() => {
-             const activeVid = videoList[activeIndex];
-             if (!activeVid) return null;
-             const embedUrl = getYouTubeEmbedUrl(activeVid.url);
-             const isYouTube = embedUrl.includes('youtube.com/embed');
+             const activeDoc = docList[activeIndex];
+             if (!activeDoc) return null;
+             const vUrl = getVideoUrl(activeDoc);
+             const dUrl = getDocUrl(activeDoc);
+             const embedUrl = vUrl ? getYouTubeEmbedUrl(vUrl) : '';
              
              return (
-               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex flex-col gap-4">
+               <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex flex-col gap-6">
                  <h3 className="font-bold text-gray-800 text-xl flex items-center gap-2">
-                    <svg className="w-6 h-6 text-rose-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg> 
-                    {activeVid.title || "Video không tên"}
+                    {activeDoc.title || "Chưa có tên"}
                  </h3>
-                 {isYouTube ? (
+                 
+                 {vUrl && (
                    <div className="relative w-full pb-[56.25%] rounded-xl overflow-hidden shadow-sm border border-gray-100 bg-black">
                      <iframe src={embedUrl} allowFullScreen className="absolute top-0 left-0 w-full h-full border-none"></iframe>
                    </div>
-                 ) : (
-                   <a href={activeVid.url} target="_blank" rel="noopener noreferrer" className="bg-rose-50 text-rose-600 px-6 py-4 rounded-xl font-bold flex items-center justify-between hover:bg-rose-100 transition-colors">
-                     <span className="truncate">{activeVid.url}</span>
-                     <span className="shrink-0 ml-4 flex items-center gap-2">Mở Video <ArrowRight className="w-4 h-4"/></span>
-                   </a>
+                 )}
+                 
+                 {dUrl && (
+                   <div className="bg-indigo-50 rounded-xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 border border-indigo-100">
+                      <div className="flex items-center gap-4">
+                         <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center shadow-sm text-indigo-500">
+                            <FileText className="w-6 h-6" />
+                         </div>
+                         <div>
+                            <p className="font-bold text-indigo-900">Tài liệu đính kèm</p>
+                            <p className="text-xs text-indigo-600/70 line-clamp-1 break-all w-[200px] sm:w-[250px]">{dUrl}</p>
+                         </div>
+                      </div>
+                      <a href={dUrl} target="_blank" rel="noopener noreferrer" className="bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-bold shadow-md hover:bg-indigo-700 transition-colors flex items-center gap-2 shrink-0">
+                         <Download className="w-4 h-4" /> Tải Xuống
+                      </a>
+                   </div>
                  )}
                </div>
              );
@@ -550,10 +513,15 @@ export default function StudentLessonPage() {
   if (loading) return <div className="flex justify-center items-center h-screen bg-gray-50"><Loader2 className="w-10 h-10 animate-spin text-indigo-600" /></div>;
   if (!lesson) return <div className="p-8 text-center text-red-500 bg-gray-50 h-screen">Không tìm thấy bài giảng.</div>;
 
+  const practices = lesson.modules?.filter((m: any) => m.type === 'practice') || [];
+  const otherModules = lesson.modules?.filter((m: any) => m.type !== 'practice') || [];
+  
   const activeModule = lesson.modules?.find((m: any) => m.id === activeModuleId);
-  const isPracticeModule = activeModule?.type === 'practice' || activeModule?.title?.toLowerCase().includes('luyện tập');
+  const isPracticeTabActive = practices.some((p: any) => p.id === activeModuleId);
   const isDocumentModule = activeModule?.type === 'document' || activeModule?.title?.toLowerCase().includes('tài liệu');
   const isVideoModule = activeModule?.type === 'solution_video' || activeModule?.title?.toLowerCase().includes('video');
+  const isPracticeModule = activeModule?.type === 'practice' || activeModule?.title?.toLowerCase().includes('luyện tập');
+  
   const containerClass = isPracticeModule ? "max-w-7xl" : "max-w-4xl";
 
   return (
@@ -570,7 +538,7 @@ export default function StudentLessonPage() {
       {lesson.modules && lesson.modules.length > 0 && (
         <div className="bg-white border-b border-gray-200 sticky top-[69px] z-40 overflow-x-auto no-scrollbar shadow-sm">
           <div className={`${containerClass} mx-auto px-4 flex items-center gap-2 py-3 transition-all duration-500`}>
-             {lesson.modules.map((mod: any) => (
+             {otherModules.map((mod: any) => (
                <button
                  key={mod.id}
                  onClick={() => setActiveModuleId(mod.id)}
@@ -579,8 +547,33 @@ export default function StudentLessonPage() {
                  {mod.title}
                </button>
              ))}
+             {practices.length > 0 && (
+               <button
+                 onClick={() => setActiveModuleId(practices[0].id)}
+                 className={`shrink-0 px-5 py-2 rounded-full text-sm font-bold transition-all ${isPracticeTabActive ? 'bg-orange-500 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+               >
+                 🎯 Luyện tập
+               </button>
+             )}
           </div>
         </div>
+      )}
+
+      {/* SUB-TABS CHO LUYỆN TẬP */}
+      {isPracticeTabActive && practices.length > 1 && (
+         <div className="bg-orange-50/50 border-b border-orange-100 sticky top-[125px] z-30 overflow-x-auto no-scrollbar">
+            <div className={`${containerClass} mx-auto px-4 flex items-center gap-2 py-2.5 transition-all duration-500`}>
+               {practices.map((p: any) => (
+                  <button
+                     key={p.id}
+                     onClick={() => setActiveModuleId(p.id)}
+                     className={`shrink-0 px-4 py-1.5 rounded-lg text-[13px] font-bold transition-all border ${activeModuleId === p.id ? 'bg-orange-100 border-orange-300 text-orange-700 shadow-sm' : 'bg-white border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-200'}`}
+                  >
+                     {p.title}
+                  </button>
+               ))}
+            </div>
+         </div>
       )}
 
       {/* NỘI DUNG CHÍNH */}
@@ -594,13 +587,11 @@ export default function StudentLessonPage() {
          {activeModule && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                <div className="flex items-center gap-2 mb-8">
-                 <span className="w-2 h-8 bg-indigo-600 rounded-full"></span>
+                 <span className={`w-2 h-8 rounded-full ${isPracticeModule ? 'bg-orange-500' : 'bg-indigo-600'}`}></span>
                  <h2 className="text-2xl font-bold text-gray-800">{activeModule.title}</h2>
                </div>
-               {isVideoModule ? (
-                  <VideoListUI content={activeModule.content_markdown || ""} />
-               ) : isDocumentModule ? (
-                  <DocumentDownloadUI content={activeModule.content_markdown || ""} />
+               {(isVideoModule || isDocumentModule) ? (
+                  <DocAndVideoUI content={activeModule.content_markdown || ""} />
                ) : isPracticeModule ? (
                   <AzotaExamUI content={activeModule.content_markdown || ""} title={activeModule.title} lessonId={lesson.id} moduleId={activeModule.id} />
                ) : (
