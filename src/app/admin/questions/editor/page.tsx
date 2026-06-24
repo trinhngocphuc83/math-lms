@@ -255,11 +255,6 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
   ${contextCategories}
 
   LƯU Ý CỰC KỲ QUAN TRỌNG VỀ ĐỊNH DẠNG VÀ TÁCH CÂU: 
-  1. NẾU MỘT BÀI TOÁN TỰ LUẬN CÓ NHIỀU Ý NHỎ (a, b, c, d...): BẠN BẮT BUỘC PHẢI TÁCH MỖI Ý THÀNH 1 OBJECT CÂU HỎI ĐỘC LẬP.
-     - Ví dụ đề bài gốc là: "Bài 1. Giải phương trình: a) X=1 b) Y=2"
-     - TRẢ VÊ 2 OBJECT ĐỘC LẬP: 
-       + Object 1 có nội dung: "Giải phương trình: $X=1$", đánh giá mức độ riêng, dạng toán riêng, lời giải riêng cho câu a.
-       + Object 2 có nội dung: "Giải phương trình: $Y=2$", đánh giá mức độ riêng, dạng toán riêng, lời giải riêng cho câu b.
      - BẮT BUỘC: Phải tự động ghép thêm phần "dẫn nhập chung" của bài lớn vào đầu nội dung mỗi ý nhỏ để câu hỏi đứng độc lập vẫn có nghĩa.
      - TUYỆT ĐỐI KHÔNG: Không được đưa các tiền tố như "Bài 1.", "Bài 1a.", "Câu 2.", "a)", "b)" vào đầu nội dung câu hỏi. Hãy xóa bỏ hoàn toàn các ký hiệu đánh số này. Lấy thẳng vào nội dung chính.
   2. GIỮ NGUYÊN DANH MỤC: Nếu trường "chuyenDe" hoặc "tenBai" trong mẫu JSON đã được điền sẵn một giá trị (Không phải chữ "Tự suy luận"), BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ CÁC TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI BẤT KỲ KÝ TỰ NÀO.
@@ -314,7 +309,7 @@ ${uniqueForms.map(f => `- ${f}`).join("\n")}
   ${contextCategories}
 
   LƯU Ý CỰC KỲ QUAN TRỌNG VỀ ĐỊNH DẠNG VÀ TÁCH CÂU: 
-  1. NẾU MỘT BÀI TOÁN TỰ LUẬN CÓ NHIỀU Ý NHỎ: BẮT BUỘC TÁCH MỖI Ý THÀNH 1 OBJECT ĐỘC LẬP. Ghép "dẫn chung" vào mỗi ý nhỏ. TUYỆT ĐỐI XÓA BỎ các tiền tố đánh số như "Bài 1.", "Bài 1a.", "Câu 2.", "a)". (VD Nội dung chuẩn: "Giải pt: $X=1$").
+  1. NẾU MỘT BÀI TOÁN TỰ LUẬN CÓ NHIỀU Ý NHỎ: BẮT BUỘC KHÔNG ĐƯỢC TÁCH MỖI Ý THÀNH 1 OBJECT ĐỘC LẬP. Hãy GỘP CHUNG toàn bộ đề bài và các ý nhỏ a, b, c... vào một câu hỏi tự luận duy nhất. TUYỆT ĐỐI GIỮ NGUYÊN cấu trúc "Bài 1.", "a)", "b)".
   2. GIỮ NGUYÊN DANH MỤC: Nếu "chuyenDe" hoặc "tenBai" đã được điền sẵn giá trị, BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI GÌ.
   3. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ lệnh LaTeX. Ví dụ: $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$. Mọi công thức Toán bọc trong $...$
   4. KHÔNG vẽ lại hình vẽ, đồ thị, hay bảng biến thiên. Hãy ghi "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" thay thế.`;
