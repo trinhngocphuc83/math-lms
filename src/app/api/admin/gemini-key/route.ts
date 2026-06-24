@@ -19,11 +19,11 @@ export async function GET() {
       return NextResponse.json({ error: 'Không tìm thấy cấu hình Gemini API Key nào trên Server.' }, { status: 500 });
     }
 
-    // 3. Xoay vòng ngẫu nhiên (Load Balancing)
-    const randomKey = validKeys[Math.floor(Math.random() * validKeys.length)];
+    // 3. Xáo trộn ngẫu nhiên danh sách keys (Load Balancing)
+    const shuffledKeys = validKeys.sort(() => 0.5 - Math.random());
 
-    // 4. Trả về Key
-    return NextResponse.json({ key: randomKey });
+    // 4. Trả về toàn bộ danh sách Keys để Client có thể thử lại (retry) khi gặp lỗi 503
+    return NextResponse.json({ keys: shuffledKeys, key: shuffledKeys[0] });
     
   } catch (error) {
     console.error('Lỗi khi lấy Gemini API Key:', error);

@@ -212,11 +212,8 @@ export default function BatchAIEditorPage() {
     try {
       const keyRes = await fetch('/api/admin/gemini-key');
       const keyData = await keyRes.json();
-      if (!keyRes.ok || !keyData.key) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
+      if (!keyRes.ok || !keyData.keys || keyData.keys.length === 0) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
 
-      const genAI = new GoogleGenerativeAI(keyData.key);
-      const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
-      
       const contextCategories = `
 DANH SÁCH BÀI HỌC ĐÃ CÓ TRONG HỆ THỐNG:
 ${uniqueLessons.map(l => `- ${l}`).join("\n")}
@@ -261,9 +258,27 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
         return { inlineData: { data: base64Data, mimeType: file.type } };
       }));
 
-      const result = await model.generateContent([ prompt, ...parts ]);
-      const text = result.response.text();
-      processExtractedJson(text);
+      let success = false;
+      let lastErrorMsg = "";
+
+      for (const apiKey of keyData.keys) {
+        try {
+          const genAI = new GoogleGenerativeAI(apiKey);
+          const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
+          const result = await model.generateContent([ prompt, ...parts ]);
+          const text = result.response.text();
+          processExtractedJson(text);
+          success = true;
+          break;
+        } catch (e: any) {
+          console.warn("API Key lỗi, thử key tiếp theo...", e.message);
+          lastErrorMsg = e.message;
+        }
+      }
+
+      if (!success) {
+        throw new Error("Tất cả các API key đều bị lỗi hoặc quá tải (503). Vui lòng thử lại sau. Lỗi cuối: " + lastErrorMsg);
+      }
     } catch (error: any) {
       console.error(error);
       alert("Lỗi AI: " + error.message);
