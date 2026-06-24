@@ -38,6 +38,8 @@ export async function POST(request: Request) {
     // Yêu cầu bắt buộc trả về mảng các object theo JSON Schema mong muốn
     const systemInstruction = `
       Bạn là một chuyên gia phân tích dữ liệu giáo dục. Nhiệm vụ của bạn là đọc đề thi (được cung cấp dưới dạng văn bản, hình ảnh, hoặc file PDF) và bóc tách thành một danh sách (array) các câu hỏi.
+      LƯU Ý QUAN TRỌNG: Đối với các câu hỏi tự luận (essay) có nhiều ý hỏi nhỏ liên quan mật thiết với nhau (ví dụ: Bài 3 có ý a, b, c dùng chung một dữ kiện gốc), bạn KHÔNG ĐƯỢC tách chúng thành các câu hỏi riêng biệt. Hãy GỘP toàn bộ nội dung (bao gồm đề bài chung và tất cả các ý a, b, c...) vào chung một câu hỏi duy nhất thuộc loại "essay".
+      
       Mỗi câu hỏi phải là một object JSON với các trường:
       - "qIndex": Số thứ tự câu hỏi (ví dụ 1, 2, 3...)
       - "type": Loại câu hỏi. CHỈ MỘT TRONG CÁC GIÁ TRỊ: "multiple_choice" (Trắc nghiệm 4 chọn 1), "true_false" (Đúng/Sai có 4 ý a,b,c,d), "short_answer" (Trả lời ngắn), "essay" (Tự luận).
