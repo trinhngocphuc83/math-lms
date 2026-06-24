@@ -9,9 +9,10 @@ interface QuestionBankModalProps {
   isOpen: boolean;
   onClose: () => void;
   onInsert: (questions: any[]) => void;
+  usedQuestionIds?: string[];
 }
 
-export default function QuestionBankModal({ isOpen, onClose, onInsert }: QuestionBankModalProps) {
+export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuestionIds = [] }: QuestionBankModalProps) {
   const supabase = createClient();
   const [questions, setQuestions] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -280,12 +281,24 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert }: Questio
                      </div>
                      <div className="flex-1 min-w-0">
                         <div className="flex flex-col gap-1.5 mb-2">
-                           <div className="flex items-center gap-2 flex-wrap">
+                           <div className="flex items-center gap-2 flex-wrap mb-1">
                               <span className="text-[10px] font-black tracking-wider px-2 py-0.5 rounded-md bg-gray-100 text-gray-600 uppercase border border-gray-200 shadow-sm">
                                 {q.question_id || 'NO-ID'}
                               </span>
                               {q.grade && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700">{q.grade}</span>}
                               {q.difficulty && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-orange-50 text-orange-700 border border-orange-100">{DIFFICULTY_LABELS[q.difficulty] || `Mức ${q.difficulty}`}</span>}
+                              
+                              {(() => {
+                                  const usageCount = usedQuestionIds.filter(id => id === q.id).length;
+                                  if (usageCount > 0) {
+                                      return (
+                                         <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-red-50 text-red-600 border border-red-200 flex items-center gap-1" title="Câu hỏi này đã được lấy vào bài giảng hiện tại">
+                                            ⚠️ Đã dùng {usageCount} lần
+                                         </span>
+                                      );
+                                  }
+                                  return null;
+                              })()}
                            </div>
                            {q.topic && <div className="font-bold text-indigo-900 text-[11px] line-clamp-1" title={q.topic}>Chương/CĐ: <span className="text-gray-700 font-medium">{q.topic}</span></div>}
                            {q.lesson && <div className="font-bold text-teal-800 text-[11px] line-clamp-1" title={q.lesson}>Bài: <span className="text-gray-700 font-medium">{q.lesson}</span></div>}

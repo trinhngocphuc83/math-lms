@@ -376,8 +376,11 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
     }
   };
 
+  const [showExplanations, setShowExplanations] = useState(true);
+
   const handleRetake = () => {
     setIsSubmitted(false);
+    setShowExplanations(true);
     setGradingStatus({});
     setQuestionScores({});
     setScore(0);
@@ -413,25 +416,35 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                  <p className="text-gray-600 font-medium">Bạn đã hoàn thành phần thi: <span className="font-bold text-gray-800">{title}</span></p>
                  {isGradingAll && <p className="text-indigo-500 text-sm font-bold mt-1 animate-pulse">⏳ Đang chấm các câu tự luận...</p>}
                  
-                 {!isGradingAll && score < 7 && (
-                   <div className="mt-4 p-4 rounded-xl border border-red-200 bg-red-50 text-red-700 animate-in fade-in slide-in-from-bottom-2">
-                     <p className="font-bold mb-2 flex items-center gap-2"><AlertCircle className="w-5 h-5" /> Bạn chưa đạt yêu cầu (&lt; 7đ).</p>
-                     <p className="text-sm">Hãy xem kỹ Hướng dẫn giải bên dưới và làm lại bài nhé!</p>
-                     <button onClick={handleRetake} className="mt-3 px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold shadow-sm transition-colors text-sm flex items-center gap-2">
-                        LÀM LẠI BÀI NGAY
-                     </button>
-                   </div>
-                 )}
-                 
-                 {!isGradingAll && score >= 7 && (
-                   <div className="mt-4 p-4 rounded-xl border border-green-200 bg-green-50 text-green-700 animate-in fade-in slide-in-from-bottom-2">
-                     <p className="font-bold flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> Chúc mừng bạn đã vượt qua bài luyện tập!</p>
-                     <button onClick={handleRetake} className="mt-3 px-6 py-2 bg-white border-2 border-green-600 text-green-700 hover:bg-green-50 rounded-lg font-bold shadow-sm transition-colors text-sm">
-                        Làm lại lần nữa
-                     </button>
-                   </div>
-                 )}
-              </div>
+                  {!isGradingAll && score < 7 && (
+                    <div className="mt-4 p-4 rounded-xl border border-red-200 bg-red-50 text-red-700 animate-in fade-in slide-in-from-bottom-2">
+                      <p className="font-bold mb-2 flex items-center gap-2"><AlertCircle className="w-5 h-5" /> Bạn chưa đạt yêu cầu (&lt; 7đ).</p>
+                      <p className="text-sm">Hãy xem kỹ Hướng dẫn giải bên dưới và làm lại bài nhé!</p>
+                      <div className="flex flex-wrap items-center gap-3 mt-3">
+                         <button onClick={handleRetake} className="px-6 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-bold shadow-sm transition-colors text-sm flex items-center gap-2">
+                            LÀM LẠI BÀI NGAY
+                         </button>
+                         <button onClick={() => setShowExplanations(!showExplanations)} className="px-6 py-2 bg-white border border-red-300 text-red-700 hover:bg-red-100 rounded-lg font-bold shadow-sm transition-colors text-sm flex items-center gap-2">
+                            <Lightbulb className="w-4 h-4"/> {showExplanations ? 'Ẩn Hướng Dẫn Giải' : 'Xem Toàn Bộ Hướng Dẫn Giải'}
+                         </button>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {!isGradingAll && score >= 7 && (
+                    <div className="mt-4 p-4 rounded-xl border border-green-200 bg-green-50 text-green-700 animate-in fade-in slide-in-from-bottom-2">
+                      <p className="font-bold flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> Chúc mừng bạn đã vượt qua bài luyện tập!</p>
+                      <div className="flex flex-wrap items-center gap-3 mt-3">
+                         <button onClick={handleRetake} className="px-6 py-2 bg-white border-2 border-green-600 text-green-700 hover:bg-green-50 rounded-lg font-bold shadow-sm transition-colors text-sm">
+                            Làm lại lần nữa
+                         </button>
+                         <button onClick={() => setShowExplanations(!showExplanations)} className="px-6 py-2 bg-green-600 hover:bg-green-700 text-white rounded-lg font-bold shadow-sm transition-colors text-sm flex items-center gap-2">
+                            <Lightbulb className="w-4 h-4"/> {showExplanations ? 'Ẩn Hướng Dẫn Giải' : 'Xem Toàn Bộ Hướng Dẫn Giải'}
+                         </button>
+                      </div>
+                    </div>
+                  )}
+               </div>
               <div className="flex items-center justify-center bg-indigo-50 border-4 border-indigo-100 rounded-full w-28 h-28 shrink-0 shadow-sm">
                  <div className="text-center">
                     <div className="text-3xl font-black text-indigo-700 leading-none">{isGradingAll ? '...' : score.toFixed(1)}</div>
@@ -715,7 +728,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                  )}
 
                  {/* === PHẦN HƯỚNG DẪN GIẢI (Hiện sau khi nộp) === */}
-                 {isSubmitted && (
+                 {isSubmitted && showExplanations && (
                     <div className="mt-8 pt-6 border-t-2 border-slate-100 flex flex-col gap-5 animate-in fade-in slide-in-from-bottom-2">
                        {data.phuong_phap_giai && (
                           <div className="p-5 rounded-2xl border border-blue-200 bg-gradient-to-br from-blue-50 to-blue-100/50 flex gap-4 shadow-sm">
@@ -764,12 +777,14 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                           </div>
                        )}
                        
-                       {/* Fallback dữ liệu cũ chỉ có 'answer' */}
-                       {!data.phuong_phap_giai && !data.cac_buoc_thuc_hien && data.answer && (
+                       {/* Fallback dữ liệu cũ chỉ có 'answer' hoặc 'sampleAnswer' */}
+                       {!data.phuong_phap_giai && !data.cac_buoc_thuc_hien && (data.answer || data.sampleAnswer) && (
                           <div className="p-5 rounded-2xl border-2 border-indigo-100 bg-indigo-50/50">
-                             <h4 className="font-bold text-indigo-800 mb-3 uppercase tracking-wide text-sm">Gợi ý / Đáp án</h4>
+                             <h4 className="font-bold text-indigo-800 mb-3 uppercase tracking-wide text-sm flex items-center gap-2">
+                                <Lightbulb className="w-4 h-4" /> Hướng dẫn giải / Đáp án chi tiết
+                             </h4>
                              <div className="prose prose-sm sm:prose-base max-w-none text-indigo-900">
-                                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{data.answer}</ReactMarkdown>
+                                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{data.sampleAnswer || data.answer}</ReactMarkdown>
                              </div>
                           </div>
                        )}

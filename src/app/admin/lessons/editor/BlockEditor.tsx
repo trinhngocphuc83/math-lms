@@ -1,11 +1,13 @@
 "use client";
 
 import React from "react";
-import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database } from "lucide-react";
+import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronUp, ChevronDown } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
+import { fixLatexText, applyLatexFixToActiveElement } from "@/utils/latexFixer";
+import 'katex/dist/katex.min.css';
 import QuestionBankModal from "@/components/admin/QuestionBankModal";
 
 export interface Block {
@@ -17,22 +19,55 @@ export interface Block {
 export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, globalSourceImage }: { blocks: Block[], onChangeBlocks: (b: Block[]) => void, onTriggerCrop: (meta: any, targetBlockId: string) => void, globalSourceImage?: string }) {
 
   const [previewBlocks, setPreviewBlocks] = React.useState<Set<string>>(new Set());
+  const [collapsedBlocks, setCollapsedBlocks] = React.useState<Set<string>>(new Set());
+
+  const toggleCollapse = (id: string) => {
+      setCollapsedBlocks(prev => {
+          const newSet = new Set(prev);
+          if (newSet.has(id)) newSet.delete(id);
+          else newSet.add(id);
+          return newSet;
+      });
+  };
   const [isBankModalOpen, setIsBankModalOpen] = React.useState(false);
   const [insertIndex, setInsertIndex] = React.useState(-1);
 
   const handleInsertFromBank = (questions: any[]) => {
       const newBlocks = [...blocks];
       const itemsToInsert: Block[] = questions.map(q => {
+         let blockType = 'multiple_choice';
+         if (q.question_type === 'TL') blockType = 'essay';
+         else if (q.question_type === 'TLN') blockType = 'short_answer';
+         else if (q.question_type === 'DS') blockType = 'true_false_cluster';
+
+         const content: any = {
+             type: blockType,
+             question: q.content || "",
+             sampleAnswer: q.explanation || "",
+             sourceQuestionId: q.id // Lưu ID để đếm số lần sử dụng
+         };
+
+         if (blockType === 'multiple_choice') {
+             content.options = [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean);
+             content.answerIndex = q.correct_answer === 'A' ? 0 : q.correct_answer === 'B' ? 1 : q.correct_answer === 'C' ? 2 : q.correct_answer === 'D' ? 3 : 0;
+         } else if (blockType === 'short_answer') {
+             content.exactAnswer = q.correct_answer || "";
+         } else if (blockType === 'true_false_cluster') {
+             const stmts = [];
+             if (q.option_a) stmts.push({ id: 'a', content: q.option_a, isTrue: q.correct_answer?.charAt(0) === 'D' || q.correct_answer?.charAt(0) === 'T' });
+             if (q.option_b) stmts.push({ id: 'b', content: q.option_b, isTrue: q.correct_answer?.charAt(1) === 'D' || q.correct_answer?.charAt(1) === 'T' });
+             if (q.option_c) stmts.push({ id: 'c', content: q.option_c, isTrue: q.correct_answer?.charAt(2) === 'D' || q.correct_answer?.charAt(2) === 'T' });
+             if (q.option_d) stmts.push({ id: 'd', content: q.option_d, isTrue: q.correct_answer?.charAt(3) === 'D' || q.correct_answer?.charAt(3) === 'T' });
+             content.options = stmts.length > 0 ? stmts : [
+                 { id: 'a', content: "Mệnh đề A", isTrue: true },
+                 { id: 'b', content: "Mệnh đề B", isTrue: false },
+             ];
+         }
+
          return {
             id: Math.random().toString(36).substring(7),
             type: 'quiz',
-            content: {
-               type: 'multiple_choice',
-               question: q.content || "",
-               options: [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean),
-               answerIndex: q.correct_answer === 'A' ? 0 : q.correct_answer === 'B' ? 1 : q.correct_answer === 'C' ? 2 : q.correct_answer === 'D' ? 3 : 0,
-               sampleAnswer: q.explanation || ""
-            }
+            content
          };
       });
 
@@ -140,6 +175,9 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                   <div className="flex gap-1.5">
                       <button onClick={() => moveBlock(idx, -1)} disabled={idx === 0} className="p-1.5 hover:bg-gray-200 rounded-md text-gray-500 disabled:opacity-30"><ArrowUp className="w-4 h-4"/></button>
                       <button onClick={() => moveBlock(idx, 1)} disabled={idx === blocks.length - 1} className="p-1.5 hover:bg-gray-200 rounded-md text-gray-500 disabled:opacity-30"><ArrowDown className="w-4 h-4"/></button>
+                      <button onClick={() => toggleCollapse(block.id)} className={`p-1.5 hover:bg-gray-200 rounded-md transition-colors ${collapsedBlocks.has(block.id) ? 'text-indigo-600 bg-indigo-50' : 'text-gray-500'}`} title={collapsedBlocks.has(block.id) ? "Mở rộng khối này" : "Thu gọn khối này"}>
+                         {collapsedBlocks.has(block.id) ? <ChevronDown className="w-4 h-4"/> : <ChevronUp className="w-4 h-4"/>}
+                      </button>
                       <div className="w-px h-4 bg-gray-300 mx-1 self-center"></div>
                       <button onClick={() => handleFixLatex(idx)} className="flex items-center gap-1.5 px-2 py-1.5 bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 rounded-md text-[11px] font-bold transition-colors" title="Sửa nhanh các lỗi LaTeX (như dấu \\, dấu $$, v.v.)">🪄 Sửa lỗi LaTeX</button>
                       <button onClick={() => togglePreview(block.id)} className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[11px] font-bold transition-colors ${previewBlocks.has(block.id) ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-200'}`} title="Bật/Tắt Xem trước kết quả hiển thị"><MonitorPlay className="w-3.5 h-3.5"/> Xem Trước</button>
@@ -148,7 +186,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                   </div>
               </div>
 
-              <div className="p-5">
+              {!collapsedBlocks.has(block.id) && (
+              <div className="p-5 animate-in fade-in slide-in-from-top-1 duration-200">
                  {block.type === 'md' && (
                     <div className="flex flex-col gap-4">
                        {/* CẢNH BÁO CHO KHỐI LÝ THUYẾT */}
@@ -375,16 +414,18 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                            <div className="text-[10px] font-black text-indigo-400 uppercase tracking-widest flex items-center gap-2">
                               <MonitorPlay className="w-3 h-3" /> KẾT QUẢ XEM TRƯỚC:
                            </div>
-                           <button onClick={() => {
-                               try {
-                                  let fixed = block.type === 'md' ? block.content : JSON.stringify(block.content);
-                                  fixed = fixed.replace(/\[cite_start\]/g, "").replace(/\[cite_end\]/g, "");
-                                  fixed = fixed.replace(/\{\{\s*begincases\s*\}\}/g, "\\begin{cases}");
-                                  fixed = fixed.replace(/\{\{\s*endcases\s*\}\}/g, "\\end{cases}");
-                                  fixed = fixed.replace(/\\rightarrow/g, "\\rightarrow ");
-                                  if (block.type === 'md') updateBlockContent(idx, fixed);
-                                  else updateBlockContent(idx, JSON.parse(fixed));
-                               } catch(e) { console.error(e) }
+                           <button onMouseDown={(e) => {
+                               e.preventDefault(); // Tránh làm mất focus của ô nhập liệu
+                               const isFixedBySelection = applyLatexFixToActiveElement();
+                               if (!isFixedBySelection) {
+                                  // Nếu không có vùng bôi đen nào, áp dụng cho toàn bộ khối
+                                  try {
+                                     let fixed = block.type === 'md' ? block.content : JSON.stringify(block.content);
+                                     fixed = fixLatexText(fixed);
+                                     if (block.type === 'md') updateBlockContent(idx, fixed);
+                                     else updateBlockContent(idx, JSON.parse(fixed));
+                                  } catch(err) { console.error(err) }
+                               }
                            }} className="flex items-center gap-1.5 text-xs font-bold bg-purple-50 text-purple-700 px-3 py-1.5 rounded-md hover:bg-purple-100 transition-colors border border-purple-200 shadow-sm">
                               🪄 Sửa lỗi LaTeX ngay
                            </button>
@@ -422,6 +463,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                      </div>
                   )}
                </div>
+              )}
               
               <div className="bg-gray-50 border-t border-gray-100 p-2 flex justify-center gap-3 flex-wrap">
                  <button onClick={() => addBlock(idx, 'md')} className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-3 py-1.5 rounded-md"><PlusCircle className="w-3.5 h-3.5"/> Thêm Khối Lý thuyết xuống dưới</button>
@@ -435,6 +477,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
            isOpen={isBankModalOpen} 
            onClose={() => setIsBankModalOpen(false)} 
            onInsert={handleInsertFromBank} 
+           usedQuestionIds={blocks.map(b => b.type === 'quiz' && b.content.sourceQuestionId).filter(Boolean) as string[]}
         />
      </div>
    );

@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
+import { fixLatexText, applyLatexFixToActiveElement } from "@/utils/latexFixer";
 import 'katex/dist/katex.min.css';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -516,21 +517,26 @@ const serializeBlocksToMarkdown = (blocks: Block[]): string => {
 
 const getPrompt = (isPractice: boolean) => {
   const theoryPrompt = `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
-Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học CỰC KỲ THU HÚT, TRÌNH BÀY SIÊU ĐẸP.
+Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, GỒM LÝ THUYẾT VÀ CÁC DẠNG BÀI TẬP, TRÌNH BÀY SIÊU ĐẸP, CỰC KỲ THU HÚT.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. Dùng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU CHO MATHTYPE]:
 - Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
 - Phân số: Dùng \\frac{tử}{mẫu}.
 - Góc: Dùng \\widehat{tên} (Ví dụ: $\\widehat{ABC}$).
 - Độ: Dùng $^\\circ$ hoặc $^\\circ C$.
-- Ký hiệu đỉnh, phẩy: Dùng trực tiếp dấu nháy đơn ' trên bàn phím (Ví dụ: $A'B'C'D'$). Tuyệt đối KHÔNG dùng mã \\prime.
-2. [BẮT BUỘC DÙNG HEADING]: TẤT CẢ các Tiêu đề bài học, Tên Phương pháp, và Đề mục BẮT BUỘC phải đặt trong thẻ Heading 2 (##) hoặc Heading 3 (###) kèm theo Emoji. TUYỆT ĐỐI KHÔNG viết Tiêu đề bằng văn bản in đậm (**) hay văn bản thường. Ví dụ chuẩn: "## 🚀 1. PHƯƠNG PHÁP THẾ", "### 💡 Quy tắc cộng đại số".
-3. [TÓM TẮT NGẮN GỌN & SÚC TÍCH]: ĐÂY LÀ PHẦN LÝ THUYẾT. BẠN PHẢI CHẮT LỌC VÀ CHỈ GIỮ LẠI NHỮNG Ý CHÍNH NHẤT, ĐỊNH NGHĨA VÀ CÔNG THỨC TRỌNG TÂM. TUYỆT ĐỐI KHÔNG VIẾT DÀI DÒNG, LAN MAN. NGẮN GỌN LÀ ƯU TIÊN SỐ 1. Bỏ qua các diễn giải rườm rà.
-4. [PHÂN TRANG KHOA HỌC]: Sử dụng đúng 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới). Hãy phân trang khoa học và hợp lý sao cho mỗi trang không quá dài, thường là sau 1 cụm lý thuyết hoàn chỉnh hoặc sau 1-2 ví dụ.
-5. Định nghĩa/Định lý bắt đầu bằng \`> 💡 **Định lý:**\`. Ví dụ bắt đầu bằng \`> 📌 **Ví dụ:**\`.
-6. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có sử dụng Đồ thị, Hình học, Bảng biến thiên, Bảng xét dấu... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ (VD: không viết "đồ thị đi lên/đi xuống từ..."). THAY VÀO ĐÓ, bạn BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ bảng/hình để giáo viên tự cắt ảnh dán vào. Lời giải bên dưới chỉ cần ghi "Từ Bảng biến thiên/Đồ thị ở trên, ta có kết luận:".
-7. [SIÊU QUAN TRỌNG - TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Ngay TRƯỚC mỗi lần bạn đặt dấu ngắt trang \`---\`, bạn HÃY TỰ NGHĨ RA 1 CÂU HỎI TRẮC NGHIỆM để kiểm tra sự tập trung của học sinh. Học sinh bắt buộc phải làm đúng câu này thì mới được đọc trang tiếp theo.
-Mọi câu hỏi trắc nghiệm PHẦI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Có 2 loại cấu trúc JSON mà bạn có thể dùng:
+- Ký hiệu đỉnh, phẩy: Dùng trực tiếp dấu nháy đơn ' trên bàn phím. Tuyệt đối KHÔNG dùng mã \\prime.
+2. [CẤU TRÚC VÀNG CỦA BÀI GIẢNG TOÁN HỌC]:
+Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
+* PHẦN 1: TÓM TẮT LÝ THUYẾT TRỌNG TÂM. Hãy chắt lọc Định nghĩa, Định lý, Công thức cốt lõi. Bỏ qua diễn giải rườm rà.
+* PHẦN 2: PHÂN DẠNG BÀI TẬP & PHƯƠNG PHÁP GIẢI. Hãy chia các bài tập thành các Dạng Toán riêng biệt.
+3. [BẮT BUỘC DÙNG HEADING VÀ EMOJI]:
+- TẤT CẢ Tiêu đề Phần, Tên Dạng Bài phải là Heading 2 (##) kèm Emoji (Ví dụ: "## 📚 DẠNG 1: TÌM ĐIỀU KIỆN XÁC ĐỊNH").
+- TẤT CẢ Phương pháp, Ví dụ mẫu phải là Heading 3 (###) (Ví dụ: "### 💡 Phương pháp giải", "### 📌 Ví dụ mẫu").
+- ĐỂ KÍCH HOẠT KHUNG GIAO DIỆN CHUẨN cho lời giải Ví dụ, BẮT BUỘC phải ghi chữ "Hướng dẫn giải:" ngay trước khi bắt đầu giải. Ở phần các bước giải, TẤT CẢ phải bắt đầu bằng chữ "Bước 1:", "Bước 2:" để hệ thống tự động gắn màu đẹp mắt.
+4. [PHÂN TRANG KHOA HỌC]: Sử dụng đúng 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới). Phân trang sau khi hết phần Lý thuyết, và sau mỗi Dạng Bài (khi hết Ví dụ).
+5. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Hình vẽ, Bảng biến thiên... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ. THAY VÀO ĐÓ, BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ hình để giáo viên tự cắt ảnh dán vào.
+6. [TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Ngay TRƯỚC mỗi lần bạn đặt dấu ngắt trang \`---\`, bạn HÃY TỰ NGHĨ RA HOẶC TRÍCH 1 CÂU HỎI TRẮC NGHIỆM từ tài liệu để kiểm tra học sinh. Học sinh phải làm đúng câu này thì mới được đọc trang tiếp theo.
+7. Mọi câu hỏi trắc nghiệm PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Có 2 loại cấu trúc JSON mà bạn có thể dùng:
 
 LOẠI 1: CÂU HỎI NHIỀU LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 \`\`\`quiz
@@ -677,18 +683,17 @@ function EditorContent() {
   const [editorMode, setEditorMode] = useState<'form' | 'raw'>('form');
   const [showRawPreview, setShowRawPreview] = useState(false);
 
-  const handleFixRawLatex = () => {
-    let text = markdownContent;
-    text = text.replace(/\[cite_start\]/g, "").replace(/\[cite_end\]/g, "");
-    text = text.replace(/\{\{\s*begincases\s*\}\}/g, "\\begin{cases}");
-    text = text.replace(/\{\{\s*endcases\s*\}\}/g, "\\end{cases}");
-    text = text.replace(/\\rightarrow/g, "\\rightarrow ");
-    setMarkdownContent(text);
+  const handleFixRawLatex = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault(); // Tránh làm mất focus của ô nhập liệu
+    const isFixedBySelection = applyLatexFixToActiveElement();
+    if (!isFixedBySelection) {
+       setMarkdownContent(fixLatexText(markdownContent));
+    }
   };
   const [docList, setDocList] = useState<{id: string, title: string, url: string}[]>([]);
   const isDocumentModule = moduleType === 'document' || moduleTitle.toLowerCase().includes('tài liệu tham khảo');
   const isVideoModule = moduleType === 'solution_video' || moduleTitle.toLowerCase().includes('video');
-  const isPracticeModule = moduleType === 'practice' || moduleType === 'exercise_types' || moduleTitle.toLowerCase().includes('luyện tập');
+  const isPracticeModule = moduleType === 'practice' || moduleTitle.toLowerCase().includes('luyện tập');
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
   const [attachmentUrl, setAttachmentUrl] = useState("");
@@ -1176,6 +1181,34 @@ function EditorContent() {
       remarkPlugins={[remarkMath]} 
       rehypePlugins={[rehypeKatex]}
       components={{
+        strong: ({node, children, ...props}) => {
+           const text = String(children);
+           if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải") || text.toLowerCase().includes("lời giải")) {
+              return (
+                 <span className="block mt-10 mb-4 not-prose w-full">
+                    <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3 rounded-t-2xl font-black flex items-center gap-3 w-max max-w-full shadow-md">
+                       <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 shadow-inner text-lg">💡</span>
+                       {text.toUpperCase()}
+                    </span>
+                    <span className="bg-white border-l-4 border-orange-400 p-4 rounded-b-2xl rounded-tr-2xl shadow-sm border border-slate-100 flex items-center gap-2 mb-2 w-full">
+                       <span className="text-orange-600 font-bold text-sm uppercase flex items-center gap-2">
+                          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                          Các bước chi tiết bên dưới
+                       </span>
+                    </span>
+                 </span>
+              );
+           }
+           if (text.toLowerCase().startsWith("bước")) {
+              return (
+                 <span className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-400 text-white px-3 py-1 rounded-lg font-black shadow-sm mt-3 mb-1 mr-2">
+                   <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                   {children}
+                 </span>
+              );
+           }
+           return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
+        },
         blockquote({ node, children, ...props }) {
           const contentStr = String(children);
           if (contentStr.includes('💡') || contentStr.toLowerCase().includes('định lý') || contentStr.toLowerCase().includes('định nghĩa')) {
@@ -1193,26 +1226,6 @@ function EditorContent() {
             );
           }
           return <blockquote className="border-l-4 border-gray-300 pl-4 italic text-gray-500 my-4" {...props}>{children}</blockquote>
-        },
-        h1({node, children, ...props}) {
-          return (
-            <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-indigo-700 uppercase tracking-wide mb-8 pb-4 border-b-4 border-indigo-200 text-center shadow-sm break-words leading-tight block" {...props}>
-              {children}
-            </h1>
-          );
-        },
-        h2({node, children, ...props}) {
-          return (
-            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-teal-800 bg-teal-50/80 px-6 py-5 rounded-2xl border-l-8 border-teal-500 my-8 shadow-sm break-words leading-tight block" {...props}>
-              {children}
-            </h2>
-          );
-        },
-        h3({node, children, ...props}) {
-          return <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-rose-600 mt-8 mb-4 border-b-2 border-rose-100 pb-2 break-words leading-tight block" {...props}>{children}</h3>
-        },
-        h4({node, children, ...props}) {
-          return <h4 className="text-base md:text-lg lg:text-xl font-bold text-purple-700 mt-6 mb-3 break-words leading-tight block" {...props}>{children}</h4>
         },
         code(props) {
           const {children, className, node, ...rest} = props
@@ -1490,7 +1503,7 @@ function EditorContent() {
                           <Eye className="w-4 h-4"/> {showRawPreview ? 'Ẩn Xem Trước' : 'Bật Xem Trước (Split View)'}
                        </button>
                        {showRawPreview && (
-                           <button onClick={handleFixRawLatex} className="flex items-center gap-1.5 text-xs font-bold bg-purple-100 text-purple-700 px-3 py-1.5 rounded-md hover:bg-purple-200 transition-colors shadow-sm">
+                           <button onMouseDown={handleFixRawLatex} className="flex items-center gap-1.5 text-xs font-bold bg-purple-100 text-purple-700 px-3 py-1.5 rounded-md hover:bg-purple-200 transition-colors shadow-sm">
                               🪄 Sửa lỗi LaTeX tự động
                            </button>
                        )}
@@ -1521,7 +1534,7 @@ function EditorContent() {
                     />
                     {showRawPreview && (
                        <div className="w-1/2 h-full overflow-y-auto bg-gray-50/50 p-6 scroll-smooth">
-                          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-h-full max-w-none prose prose-indigo">
+                          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-h-full max-w-none prose prose-lg prose-indigo prose-h1:text-4xl prose-h1:font-black prose-h1:text-indigo-900 prose-h1:mb-10 prose-h1:text-center prose-h1:tracking-tight prose-h2:text-[1.5rem] prose-h2:font-black prose-h2:text-white prose-h2:bg-gradient-to-r prose-h2:from-indigo-600 prose-h2:via-blue-600 prose-h2:to-cyan-500 prose-h2:px-6 prose-h2:py-4 prose-h2:rounded-2xl prose-h2:mt-14 prose-h2:mb-8 prose-h2:uppercase prose-h2:tracking-wide prose-h2:shadow-[0_8px_30px_rgb(79,70,229,0.2)] prose-h2:border-l-8 prose-h2:border-l-yellow-400 prose-h3:text-[1.2rem] prose-h3:font-bold prose-h3:text-white prose-h3:bg-gradient-to-r prose-h3:from-emerald-500 prose-h3:to-teal-400 prose-h3:px-5 prose-h3:py-3 prose-h3:rounded-xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:shadow-md prose-strong:text-indigo-800 prose-strong:font-black prose-strong:bg-indigo-50/50 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded-md">
                               {renderMarkdown(markdownContent)}
                           </div>
                        </div>

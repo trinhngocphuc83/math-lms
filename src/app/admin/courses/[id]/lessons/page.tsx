@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { Plus, Edit2, Trash2, BookOpen, Layers, ArrowLeft, Loader2, ChevronDown, ChevronRight, FileEdit, Sparkles, Video, Pencil } from "lucide-react";
+import { Plus, Edit2, Trash2, BookOpen, Layers, ArrowLeft, Loader2, ChevronDown, ChevronRight, FileEdit, Sparkles, Video, Pencil, FileText, Target } from "lucide-react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 
@@ -131,10 +131,9 @@ export default function CourseStructurePage() {
     // Tự động tạo 5 mô-đun
     if (lessonData) {
       const predefinedModules = [
-        { lesson_id: lessonData.id, type: 'theory', title: 'Lý thuyết (Bài giảng tương tác)', order_index: 1 },
-        { lesson_id: lessonData.id, type: 'exercise_types', title: 'Phân dạng bài tập', order_index: 2 },
-        { lesson_id: lessonData.id, type: 'practice', title: 'Luyện tập', order_index: 3 },
-        { lesson_id: lessonData.id, type: 'document', title: 'Tài liệu & Video', order_index: 4 }
+        { lesson_id: lessonData.id, type: 'theory', title: 'Lý thuyết & Phương pháp giải (Bài giảng tương tác)', order_index: 1 },
+        { lesson_id: lessonData.id, type: 'practice', title: 'Luyện tập', order_index: 2 },
+        { lesson_id: lessonData.id, type: 'document', title: 'Tài liệu & Video', order_index: 3 }
       ];
       await supabase.from('lesson_modules').insert(predefinedModules);
     }
@@ -147,10 +146,9 @@ export default function CourseStructurePage() {
   const handleGenerateDefaultModules = async (lessonId: string) => {
     setIsSavingLesson(true);
     const predefinedModules = [
-      { lesson_id: lessonId, type: 'theory', title: 'Lý thuyết (Bài giảng tương tác)', order_index: 1 },
-      { lesson_id: lessonId, type: 'exercise_types', title: 'Phân dạng bài tập', order_index: 2 },
-      { lesson_id: lessonId, type: 'practice', title: 'Luyện tập', order_index: 3 },
-      { lesson_id: lessonId, type: 'document', title: 'Tài liệu & Video', order_index: 4 }
+      { lesson_id: lessonId, type: 'theory', title: 'Lý thuyết & Phương pháp giải (Bài giảng tương tác)', order_index: 1 },
+      { lesson_id: lessonId, type: 'practice', title: 'Luyện tập', order_index: 2 },
+      { lesson_id: lessonId, type: 'document', title: 'Tài liệu & Video', order_index: 3 }
     ];
     const { error } = await supabase.from('lesson_modules').insert(predefinedModules);
     setIsSavingLesson(false);
@@ -336,9 +334,10 @@ export default function CourseStructurePage() {
                                   ) : (
                                     <ul className="space-y-1 pl-6 border-l-2 border-teal-100 ml-4 py-1">
                                       {lessonModules.filter(m => m.type !== 'practice').map(mod => {
-                                        let icon = <BookOpen className="w-3.5 h-3.5 text-blue-500" />;
-                                        if (mod.type === 'exercise_types') icon = <FileEdit className="w-3.5 h-3.5 text-purple-500" />;
-                                        if (mod.type === 'document') icon = <BookOpen className="w-3.5 h-3.5 text-teal-500" />;
+                                        let icon = <></>;
+                                        if (mod.type === 'theory') icon = <BookOpen className="w-3.5 h-3.5 text-blue-500" />;
+                                        if (mod.type === 'practice') icon = <Target className="w-3.5 h-3.5 text-rose-500" />;
+                                        if (mod.type === 'document') icon = <FileText className="w-3.5 h-3.5 text-gray-500" />;
                                         
                                         return (
                                             <li key={mod.id} className="flex items-center justify-between p-2.5 rounded-md hover:bg-gray-50 border border-transparent hover:border-gray-200 transition-colors">
@@ -521,9 +520,8 @@ export default function CourseStructurePage() {
                     value={moduleType} onChange={e => setModuleType(e.target.value)}
                     className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium"
                   >
-                    <option value="theory">📖 Lý thuyết (Bài giảng tương tác)</option>
+                    <option value="theory">📖 Lý thuyết & Phương pháp giải (Bài giảng tương tác)</option>
                     <option value="practice">🎯 Luyện tập (Trắc nghiệm/Điền khuyết)</option>
-                    <option value="exercise_types">📝 Phân dạng bài tập</option>
                     <option value="document">📄 Tài liệu & Video (Chữa bài)</option>
                   </select>
                 </div>
