@@ -664,8 +664,6 @@ function EditorContent() {
   const [moduleType, setModuleType] = useState<string>('');
   const supabase = createClient();
 
-  const [apiKey, setApiKey] = useState("");
-  const [isKeySaved, setIsKeySaved] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isSavingDB, setIsSavingDB] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
@@ -783,16 +781,6 @@ function EditorContent() {
     fetchChapters();
   }, [selectedCourseId]);
 
-  useEffect(() => {
-    const savedKey = localStorage.getItem("gemini_api_key");
-    if (savedKey) { setApiKey(savedKey); setIsKeySaved(true); }
-  }, []);
-
-  const saveApiKey = () => {
-    if (!apiKey) return alert("Vui lòng nhập API Key!");
-    localStorage.setItem("gemini_api_key", apiKey);
-    setIsKeySaved(true); alert("Lưu API Key thành công!");
-  };
 
   const handleSaveToDB = async () => {
     if (!lessonId) return;
@@ -989,15 +977,15 @@ function EditorContent() {
 
   const handleAnalyzeQueue = async () => {
     if (pendingImages.length === 0 && pendingText.trim().length === 0) return alert("Hàng đợi rỗng!");
-    if (!apiKey) return alert("Vui lòng lưu Gemini API Key trước!");
     
     setIsAnalyzing(true);
     try {
-      // Cơ chế Xoay vòng Key (Load Balancing) - Hỗ trợ nhập nhiều key cách nhau bằng dấu phẩy
-      const keys = apiKey.split(',').map(k => k.trim()).filter(k => k);
-      const randomKey = keys[Math.floor(Math.random() * keys.length)];
+      // Tự động xin cấp phát khóa AI từ hệ thống Load Balancing
+      const keyRes = await fetch('/api/admin/gemini-key');
+      const keyData = await keyRes.json();
+      if (!keyRes.ok || !keyData.key) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
 
-      const genAI = new GoogleGenerativeAI(randomKey);
+      const genAI = new GoogleGenerativeAI(keyData.key);
       const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
       
       const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
@@ -1380,11 +1368,7 @@ function EditorContent() {
           <div className="flex justify-between items-center pt-3 border-t border-gray-50">
             <div className="text-xs text-gray-400 font-medium">Bản nháp được lưu tại: <span className="text-teal-600 font-bold">{title}</span></div>
             <div className="flex items-center gap-3">
-              <div className="flex items-center bg-gray-50 rounded-lg p-1 border border-gray-200">
-                <Key className="w-4 h-4 text-gray-400 ml-2" />
-                <input type="password" value={apiKey} onChange={(e) => { setApiKey(e.target.value); setIsKeySaved(false); }} placeholder="Nhập Gemini API Key..." className="bg-transparent border-none focus:ring-0 text-sm px-2 py-1 w-32 outline-none" />
-                <button onClick={saveApiKey} className={`text-xs px-3 py-1.5 rounded-md font-medium transition-colors ${isKeySaved ? 'bg-green-100 text-green-700' : 'bg-blue-600 text-white hover:bg-blue-700'}`}>{isKeySaved ? 'Đã lưu' : 'Lưu API'}</button>
-              </div>
+
               <button onClick={handleSaveToDB} disabled={isSavingDB} className="bg-teal-600 text-white px-6 py-2.5 rounded-lg font-bold flex items-center gap-2 hover:bg-teal-700 transition-colors shadow-[0_5px_15px_-5px_rgba(13,148,136,0.4)] hover:-translate-y-0.5 disabled:opacity-50">
                 {isSavingDB ? <Loader2 className="w-4 h-4 animate-spin"/> : <Save className="w-4 h-4" />} Lưu
               </button>

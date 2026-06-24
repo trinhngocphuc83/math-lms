@@ -40,8 +40,6 @@ export default function BatchAIEditorPage() {
   const supabase = createClient();
 
   // Settings & Context
-  const [apiKey, setApiKey] = useState("");
-  const [isKeySaved, setIsKeySaved] = useState(false);
   const [globalGrade, setGlobalGrade] = useState("12");
   const [globalSubject, setGlobalSubject] = useState("Đại số");
   const [globalTopic, setGlobalTopic] = useState("");
@@ -78,9 +76,6 @@ export default function BatchAIEditorPage() {
   const uniqueForms = Array.from(new Set(categories.filter(c => (!globalGrade || c.grade === globalGrade) && (!globalSubject || c.subject === globalSubject) && (!globalTopic || c.topic === globalTopic) && (!globalLesson || c.lesson === globalLesson)).map(c => c.math_form))).filter(Boolean);
 
   useEffect(() => {
-    const savedKey = localStorage.getItem("gemini_api_key");
-    if (savedKey) { setApiKey(savedKey); setIsKeySaved(true); }
-    
     // Fetch all existing questions once to check duplicates later
     const fetchExisting = async () => {
       const { data } = await supabase.from('questions').select('question_id, content');
@@ -94,11 +89,7 @@ export default function BatchAIEditorPage() {
     fetchExisting();
   }, []);
 
-  const saveApiKey = () => {
-    if (!apiKey) return alert("Vui lòng nhập API Key!");
-    localStorage.setItem("gemini_api_key", apiKey);
-    setIsKeySaved(true); alert("Lưu API Key thành công!");
-  };
+
 
   // --- AI SCANNING LOGIC ---
   const handleAIPaste = (e: React.ClipboardEvent) => {
@@ -222,12 +213,15 @@ export default function BatchAIEditorPage() {
 
   const handleScanAI = async () => {
     if (aiImageFiles.length === 0) return alert("Vui lòng dán/chọn file đề bài vào khung AI!");
-    if (!apiKey) return alert("Vui lòng nhập API Key!");
 
     setIsScanning(true);
     try {
-      const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
+      const keyRes = await fetch('/api/admin/gemini-key');
+      const keyData = await keyRes.json();
+      if (!keyRes.ok || !keyData.key) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
+
+      const genAI = new GoogleGenerativeAI(keyData.key);
+      const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
       
       const contextCategories = `
 DANH SÁCH BÀI HỌC ĐÃ CÓ TRONG HỆ THỐNG:
@@ -488,21 +482,13 @@ ${uniqueForms.map(f => `- ${f}`).join("\n")}
           {/* Box AI */}
           <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm flex flex-col">
             <div className="flex border-b border-gray-100">
-              <button onClick={()=>setAiTab('api')} className={`flex-1 py-2.5 text-[13px] font-bold transition-colors ${aiTab==='api'?'bg-indigo-50 text-indigo-700 border-b-2 border-indigo-600':'text-gray-500 hover:bg-gray-50'}`}>Dùng API Trực Tiếp</button>
+              <button onClick={()=>setAiTab('api')} className={`flex-1 py-2.5 text-[13px] font-bold transition-colors ${aiTab==='api'?'bg-indigo-50 text-indigo-700 border-b-2 border-indigo-600':'text-gray-500 hover:bg-gray-50'}`}>Dùng Hệ Thống AI</button>
               <button onClick={()=>setAiTab('manual')} className={`flex-1 py-2.5 text-[13px] font-bold transition-colors ${aiTab==='manual'?'bg-emerald-50 text-emerald-700 border-b-2 border-emerald-600':'text-gray-500 hover:bg-gray-50'}`}>Web Dự Phòng</button>
             </div>
 
             <div className="p-4">
               {aiTab === 'api' ? (
                 <div className="space-y-4 animate-in fade-in">
-                  <div>
-                    <label className="text-[11px] font-bold text-gray-500 uppercase mb-1 block">Gemini API Key</label>
-                    <div className="flex gap-2">
-                      <input type="password" value={apiKey} onChange={e=>setApiKey(e.target.value)} className="flex-1 text-sm border rounded-lg p-2 outline-none focus:border-indigo-500 bg-gray-50" placeholder="AIzaSy..." />
-                      <button onClick={saveApiKey} className="bg-gray-800 text-white px-3 rounded-lg text-xs font-bold hover:bg-gray-700">Lưu</button>
-                    </div>
-                  </div>
-
                   <div 
                     className="border-2 border-dashed border-indigo-200 bg-indigo-50/30 rounded-xl p-4 text-center cursor-pointer hover:bg-indigo-50 transition-colors"
                     tabIndex={0} onPaste={handleAIPaste} onClick={() => fileInputRef.current?.click()}

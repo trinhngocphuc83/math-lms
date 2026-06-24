@@ -393,13 +393,14 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
            if (p.type === 'md') {
                return (
                  <div key={`md-${currentPage}-${idx}`} className="prose prose-lg prose-indigo max-w-none text-slate-800 leading-relaxed font-medium
-                    prose-h1:text-4xl prose-h1:font-black prose-h1:text-slate-800 prose-h1:mb-10 prose-h1:text-center prose-h1:tracking-tight
-                    prose-h2:text-[1.4rem] prose-h2:font-black prose-h2:text-blue-900 prose-h2:bg-blue-50/80 prose-h2:px-5 prose-h2:py-3 prose-h2:rounded-xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:uppercase prose-h2:tracking-wide prose-h2:border-l-[6px] prose-h2:border-blue-600 prose-h2:shadow-sm
-                    prose-h3:text-[1.15rem] prose-h3:font-bold prose-h3:text-emerald-900 prose-h3:bg-emerald-50/80 prose-h3:px-4 prose-h3:py-2.5 prose-h3:rounded-lg prose-h3:mt-8 prose-h3:mb-4 prose-h3:border-l-[5px] prose-h3:border-emerald-500
-                    prose-p:mb-6 prose-p:text-[1.05rem] prose-p:leading-8
-                    prose-li:mb-3 prose-ul:list-none prose-ul:pl-0 [&_ul>li]:relative [&_ul>li]:pl-7 [&_ul>li::before]:content-[''] [&_ul>li::before]:absolute [&_ul>li::before]:w-2.5 [&_ul>li::before]:h-2.5 [&_ul>li::before]:bg-[#00529b] [&_ul>li::before]:rounded-full [&_ul>li::before]:left-0 [&_ul>li::before]:top-2.5 [&_ul>li::before]:shadow-sm
+                    prose-h1:text-4xl prose-h1:font-black prose-h1:text-indigo-900 prose-h1:mb-10 prose-h1:text-center prose-h1:tracking-tight
+                    prose-h2:text-[1.5rem] prose-h2:font-black prose-h2:text-white prose-h2:bg-gradient-to-r prose-h2:from-indigo-600 prose-h2:via-blue-600 prose-h2:to-cyan-500 prose-h2:px-6 prose-h2:py-4 prose-h2:rounded-2xl prose-h2:mt-14 prose-h2:mb-8 prose-h2:uppercase prose-h2:tracking-wide prose-h2:shadow-[0_8px_30px_rgb(79,70,229,0.2)] prose-h2:border-l-8 prose-h2:border-l-yellow-400
+                    prose-h3:text-[1.2rem] prose-h3:font-bold prose-h3:text-white prose-h3:bg-gradient-to-r prose-h3:from-emerald-500 prose-h3:to-teal-400 prose-h3:px-5 prose-h3:py-3 prose-h3:rounded-xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:shadow-md
+                    prose-p:mb-6 prose-p:text-[1.1rem] prose-p:leading-[1.8] prose-p:text-gray-700
+                    prose-strong:text-indigo-800 prose-strong:font-black prose-strong:bg-indigo-50/50 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded-md
+                    prose-li:mb-3 prose-ul:list-none prose-ul:pl-0 [&_ul>li]:relative [&_ul>li]:pl-7 [&_ul>li::before]:content-[''] [&_ul>li::before]:absolute [&_ul>li::before]:w-2.5 [&_ul>li::before]:h-2.5 [&_ul>li::before]:bg-indigo-600 [&_ul>li::before]:rounded-full [&_ul>li::before]:left-0 [&_ul>li::before]:top-2.5 [&_ul>li::before]:shadow-sm
                     [&_code]:bg-amber-100 [&_code]:text-amber-800 [&_code]:px-2 [&_code]:py-0.5 [&_code]:rounded-lg [&_code]:border [&_code]:border-amber-200 [&_code]:font-bold [&_code]:text-[0.9em]
-                    [&_blockquote]:border-2 [&_blockquote]:border-dashed [&_blockquote]:border-emerald-400 [&_blockquote]:bg-emerald-50/40 [&_blockquote]:text-emerald-950 [&_blockquote]:px-6 [&_blockquote]:py-5 [&_blockquote]:rounded-[2rem] [&_blockquote]:shadow-sm [&_blockquote]:my-8 [&_blockquote_p]:m-0 [&_blockquote_p]:font-bold [&_blockquote_p]:leading-relaxed
+                    [&_blockquote]:border-l-8 [&_blockquote]:border-dashed [&_blockquote]:border-emerald-400 [&_blockquote]:bg-gradient-to-r [&_blockquote]:from-emerald-50 [&_blockquote]:to-teal-50/30 [&_blockquote]:text-emerald-900 [&_blockquote]:px-6 [&_blockquote]:py-5 [&_blockquote]:rounded-[2rem] [&_blockquote]:shadow-sm [&_blockquote]:my-8 [&_blockquote_p]:m-0 [&_blockquote_p]:font-bold [&_blockquote_p]:leading-relaxed
                  ">
                    <ReactMarkdown 
                       remarkPlugins={[remarkMath, remarkBreaks]} 
@@ -407,19 +408,27 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
                       components={{
                          strong: ({node, children, ...props}) => {
                             const text = String(children);
-                            if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải")) {
+                            if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải") || text.toLowerCase().includes("lời giải")) {
                                return (
                                   <span className="block mt-10 mb-4 not-prose w-full">
-                                     <span className="bg-blue-50 text-blue-800 px-5 py-3 rounded-t-2xl border-b-2 border-emerald-400 font-bold flex items-center gap-3 w-max max-w-full">
-                                        <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 shadow-sm text-lg">💡</span>
-                                        PHƯƠNG PHÁP GIẢI
+                                     <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3 rounded-t-2xl font-black flex items-center gap-3 w-max max-w-full shadow-md">
+                                        <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 shadow-inner text-lg">💡</span>
+                                        {text.toUpperCase()}
                                      </span>
-                                     <span className="bg-white border-l-4 border-emerald-500 p-4 rounded-b-2xl rounded-tr-2xl shadow-sm border border-slate-100 flex items-center gap-2 mb-2 w-full">
-                                        <span className="text-emerald-700 font-bold text-sm uppercase flex items-center gap-2">
+                                     <span className="bg-white border-l-4 border-orange-400 p-4 rounded-b-2xl rounded-tr-2xl shadow-sm border border-slate-100 flex items-center gap-2 mb-2 w-full">
+                                        <span className="text-orange-600 font-bold text-sm uppercase flex items-center gap-2">
                                            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
-                                           CÁC BƯỚC THỰC HIỆN
+                                           Các bước chi tiết bên dưới
                                         </span>
                                      </span>
+                                  </span>
+                               );
+                            }
+                            if (text.toLowerCase().startsWith("bước")) {
+                               return (
+                                  <span className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-400 text-white px-3 py-1 rounded-lg font-black shadow-sm mt-3 mb-1 mr-2">
+                                    <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+                                    {children}
                                   </span>
                                );
                             }
