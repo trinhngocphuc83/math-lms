@@ -133,38 +133,32 @@ export default function BatchAIEditorPage() {
       
       let parsedData: any[] = [];
       
-      // Fix "Bad escaped character": AI sometimes forgets to escape \ in LaTeX (\frac, \sum...)
-      // We will try to pre-process the JSON string to escape unescaped backslashes.
-      // But we must be careful not to escape already escaped ones like \n, \t, \", \\
-      // A simple regex to escape \ that are followed by characters other than " \ / b f n r t
-      // Actually, \f \b \r \n \t inside math are not meant to be control chars, so escaping all single \ might be safer except \" and \\.
-      let cleanStr = jsonStr;
-      cleanStr = cleanStr.replace(/\\(?!["]|[/]|[\\]|[b]|[f]|[n]|[r]|[t])/g, "\\\\");
-      // Furthermore, if \frac is present, JSON will think it's form feed (\f). We should escape \f, \b, \n, \r, \t if they are part of math, but we don't know.
-      // Best way is to rely on Prompt.
-
+      // 1. Cắt chuỗi JSON thuần tuý ra trước
       if (firstBracket !== -1) {
-        cleanStr = cleanStr.substring(firstBracket, lastBracket + 1);
-        try {
-          parsedData = JSON.parse(cleanStr);
-        } catch(e) {
-          // Fallback if cleanStr fails, try raw
-          parsedData = JSON.parse(jsonStr.substring(firstBracket, lastBracket + 1));
-        }
+        jsonStr = jsonStr.substring(firstBracket, lastBracket + 1);
       } else {
-        // Fallback for single object
         const firstBrace = jsonStr.indexOf('{');
         const lastBrace = jsonStr.lastIndexOf('}');
         if (firstBrace !== -1) {
-          cleanStr = cleanStr.substring(firstBrace, lastBrace + 1);
-          try {
-            parsedData = [JSON.parse(cleanStr)];
-          } catch(e) {
-            parsedData = [JSON.parse(jsonStr.substring(firstBrace, lastBrace + 1))];
-          }
+          jsonStr = '[' + jsonStr.substring(firstBrace, lastBrace + 1) + ']';
         } else {
-          throw new Error("Không tìm thấy cấu trúc mảng JSON");
+          throw new Error("Không tìm thấy cấu trúc JSON");
         }
+      }
+
+      // 2. Làm sạch escape characters (Sửa lỗi "Bad escaped character")
+      // Nếu cắt chuỗi sau khi replace sẽ bị sai index (vì chiều dài chuỗi thay đổi).
+      // Giờ ta làm sạch trên chuỗi đã cắt.
+      // Đặc biệt LaTeX hay có \frac, \begin, \text, \right => JSON sẽ hiểu nhầm là \f, \b, \t, \r (control chars).
+      // Ta escape TẤT CẢ các dấu backslash TRỪ \n (xuống dòng), \" (ngoặc kép), \\ (đã escape), \/ (dấu gạch chéo).
+      let cleanStr = jsonStr.replace(/\\(?!["]|[/]|[\\]|[n])/g, "\\\\");
+
+      try {
+        parsedData = JSON.parse(cleanStr);
+      } catch(e) {
+        console.error("Lỗi parse sau khi clean:", e);
+        // Fallback: Thử parse nguyên gốc nếu regex làm hỏng gì đó
+        parsedData = JSON.parse(jsonStr);
       }
 
       const newQuestions: QuestionData[] = parsedData.map(data => {
