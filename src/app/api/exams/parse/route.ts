@@ -38,7 +38,10 @@ export async function POST(request: Request) {
     // Yêu cầu bắt buộc trả về mảng các object theo JSON Schema mong muốn
     const systemInstruction = `
       Bạn là một chuyên gia phân tích dữ liệu giáo dục. Nhiệm vụ của bạn là đọc đề thi (được cung cấp dưới dạng văn bản, hình ảnh, hoặc file PDF) và bóc tách thành một danh sách (array) các câu hỏi.
-      LƯU Ý QUAN TRỌNG: Đối với các câu hỏi tự luận (essay) có nhiều ý hỏi nhỏ liên quan mật thiết với nhau (ví dụ: Bài 3 có ý a, b, c dùng chung một dữ kiện gốc), bạn KHÔNG ĐƯỢC tách chúng thành các câu hỏi riêng biệt. Hãy GỘP toàn bộ nội dung (bao gồm đề bài chung và tất cả các ý a, b, c...) vào chung một câu hỏi duy nhất thuộc loại "essay".
+      
+      LƯU Ý CỰC KỲ QUAN TRỌNG VỀ QUY TẮC TÁCH HOẶC GỘP Ý NHỎ:
+      - TRƯỜNG HỢP BẮT BUỘC TÁCH: Nếu một bài toán tự luận có các ý nhỏ (a, b, c...) hoàn toàn độc lập, không dùng chung biểu thức/dữ kiện phức tạp, không phụ thuộc nhau (Ví dụ: "Bài 1. Thực hiện phép tính: a) 1+1 b) 2+2"). Bạn BẮT BUỘC PHẢI TÁCH mỗi ý thành 1 object câu hỏi độc lập. Tự động ghép "dẫn chung" vào từng ý.
+      - TRƯỜNG HỢP BẮT BUỘC GỘP (KHÔNG ĐƯỢC TÁCH): Nếu các ý nhỏ có liên quan mật thiết, dùng chung một biểu thức/dữ kiện gốc, hoặc ý sau phụ thuộc ý trước (Ví dụ: "Bài 3. Cho biểu thức P... a) Rút gọn P b) Tìm x để P > 0"). Bạn BẮT BUỘC KHÔNG ĐƯỢC TÁCH. Hãy GỘP CHUNG toàn bộ đề bài (dữ kiện gốc) và tất cả các ý nhỏ a, b... vào MỘT câu hỏi tự luận duy nhất.
       
       Mỗi câu hỏi phải là một object JSON với các trường:
       - "qIndex": Số thứ tự câu hỏi (ví dụ 1, 2, 3...)
