@@ -525,7 +525,7 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 2. [CẤU TRÚC VÀNG CỦA BÀI GIẢNG TOÁN HỌC]:
 Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 * PHẦN 1: TÓM TẮT LÝ THUYẾT TRỌNG TÂM. Hãy chắt lọc Định nghĩa, Định lý, Công thức cốt lõi. Bỏ qua diễn giải rườm rà.
-* PHẦN 2: PHÂN DẠNG BÀI TẬP & PHƯƠNG PHÁP GIẢI. Hãy chia các bài tập thành các Dạng Toán riêng biệt.
+* PHẦN 2: PHÂN DẠNG BÀI TẬP & PHƯƠNG PHÁP GIẢI. Hãy chia các bài tập thành các Dạng Toán riêng biệt. [KHÔNG BỎ SÓT KIẾN THỨC]: Quét kỹ 100% tài liệu, tôi đưa vào bao nhiêu dạng toán thì bắt buộc phải bóc tách bấy nhiêu dạng, tuyệt đối không được qua loa hay cắt xén bớt.
 3. [PHÂN BIỆT RẠCH RÒI BẰNG HEADING VÀ BLOCKQUOTE]:
 - TẤT CẢ Tiêu đề Phần, Tên Dạng Bài phải là Heading 2 (##) kèm Emoji (Ví dụ: "## 💡 DẠNG 1: TÌM ĐIỀU KIỆN XÁC ĐỊNH").
 - TẤT CẢ Phương pháp giải phải là Heading 3 (###) (Ví dụ: "### 💡 Phương pháp giải").
@@ -568,6 +568,7 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 - Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
 - Phân số: Dạng \frac{tử}{mẫu}. Góc: Dạng \widehat{tên}.
 2. [CẤU TRÚC PHÂN DẠNG BÀI TẬP]:
+- [KHÔNG BỎ SÓT KIẾN THỨC NGUỒN]: Quét kỹ 100% tài liệu. Tôi đưa vào bao nhiêu dạng bài, bạn BẮT BUỘC phải trích xuất và xuất ra đầy đủ bấy nhiêu dạng. TUYỆT ĐỐI KHÔNG ĐƯỢC làm qua loa, không được gộp dạng hay bỏ bớt. Phải cực kỳ đầy đủ.
 - Mở đầu mỗi Dạng bằng thẻ Heading 2 (##) kèm Emoji. Ví dụ: \`## 💡 Dạng 1: Viết phương trình tiếp tuyến\`. 
 - Sau đó bạn hãy Tự biên soạn \`### 💡 Phương pháp giải\` ngắn gọn cho Dạng đó.
 3. [QUY TẮC VÍ DỤ MẪU]: 
