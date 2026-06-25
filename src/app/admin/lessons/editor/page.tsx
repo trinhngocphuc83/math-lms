@@ -531,7 +531,7 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 * PHẦN 2: PHÂN DẠNG BÀI TẬP & PHƯƠNG PHÁP GIẢI. Hãy chia các bài tập thành các Dạng Toán riêng biệt.
 3. [BẮT BUỘC DÙNG HEADING VÀ EMOJI]:
 - TẤT CẢ Tiêu đề Phần, Tên Dạng Bài phải là Heading 2 (##) kèm Emoji (Ví dụ: "## 📚 DẠNG 1: TÌM ĐIỀU KIỆN XÁC ĐỊNH").
-- TẤT CẢ Phương pháp, Ví dụ mẫu phải là Heading 3 (###) (Ví dụ: "### 💡 Phương pháp giải", "### 📌 Ví dụ mẫu").
+- TẤT CẢ Phương pháp, Ví dụ mẫu phải là Heading 3 (###) (Ví dụ: "### 💡 Phương pháp giải", "> ### 📌 Ví dụ mẫu"). Nội dung Ví dụ mẫu BẮT BUỘC đặt trong thẻ trích dẫn Blockquote.
 - ĐỂ KÍCH HOẠT KHUNG GIAO DIỆN CHUẨN cho lời giải Ví dụ, BẮT BUỘC phải ghi chữ "Hướng dẫn giải:" ngay trước khi bắt đầu giải. Ở phần các bước giải, TẤT CẢ phải bắt đầu bằng chữ "Bước 1:", "Bước 2:" để hệ thống tự động gắn màu đẹp mắt.
 4. [PHÂN TRANG KHOA HỌC]: Sử dụng đúng 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới). Phân trang sau khi hết phần Lý thuyết, và sau mỗi Dạng Bài (khi hết Ví dụ).
 5. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Hình vẽ, Bảng biến thiên... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ. THAY VÀO ĐÓ, BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ hình để giáo viên tự cắt ảnh dán vào.
@@ -580,7 +580,9 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 - Gom nhóm các bài tập trong ảnh thành các DẠNG TOÁN riêng biệt. 
 - Mở đầu mỗi Dạng bằng thẻ Heading 2 (##) kèm Emoji. Ví dụ: \`## 📚 Dạng 1: Viết phương trình tiếp tuyến\`. 
 - Sau đó bạn hãy TỰ biên soạn \`### 💡 Phương pháp giải\` ngắn gọn cho Dạng đó.
-- Tiếp theo, trích lấy 1 bài tập tiêu biểu làm \`### 📌 Ví dụ mẫu\` và tự biên soạn trình bày lời giải chi tiết bên dưới. ĐỂ KÍCH HOẠT KHUNG GIAO DIỆN CHUẨN, ở phần lời giải của Ví dụ mẫu BẮT BUỘC bạn phải ghi chữ "Hướng dẫn giải:" ngay trước khi giải.
+- Tiếp theo, trích lấy DUY NHẤT 1 bài tập ở mức độ CƠ BẢN (Nhận biết hoặc Thông hiểu) làm `> ### 📌 Ví dụ mẫu` và tự biên soạn trình bày lời giải chi tiết bên dưới. Tuyệt đối không đưa nhiều hơn 1 ví dụ. ĐỂ KÍCH HOẠT KHUNG GIAO DIỆN CHUẨN, ở phần lời giải của Ví dụ mẫu BẮT BUỘC bạn phải ghi chữ "> Hướng dẫn giải:" ngay trước khi giải.
+- [KIỂM TRA TÍNH CHÍNH XÁC]: Trước khi đưa vào Ví dụ mẫu, bạn BẮT BUỘC phải tự kiểm tra lại tính chính xác toán học của đề bài đó. Nếu phát hiện đề bài sai (sai số liệu, vô nghiệm, sai logic...), bạn PHẢI TỰ ĐỘNG CHỈNH SỬA lại số liệu cho đúng rồi mới đưa vào bài, tuyệt đối KHÔNG cần giải thích hay báo cáo.
+- [PHÂN BIỆT RẠCH RÒI]: Để giao diện hiển thị rạch ròi, toàn bộ nội dung của Ví dụ mẫu (bao gồm tiêu đề `> ### 📌 Ví dụ mẫu`, đề bài và lời giải) BẮT BUỘC phải được đặt trong một khối trích dẫn Blockquote (tức là thêm ký tự `> ` vào đầu mỗi dòng).
 - [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Đồ thị, Hình học, Bảng biến thiên, Bảng xét dấu... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ (VD: không viết "đồ thị đi lên/đi xuống từ..."). THAY VÀO ĐÓ, bạn BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ bảng/hình. Lời giải bên dưới chỉ ghi ngắn gọn "Từ Bảng biến thiên/Đồ thị ở trên, ta có:".
 3. [TẠO BÀI TẬP TƯƠNG TÁC]: Ngay sau khi giải xong Ví dụ mẫu, bạn hãy dùng dấu ngắt trang \`---\`. Tiếp theo, biến các bài tập còn lại của Dạng đó thành các khối mã "quiz" (JSON) để học sinh tự làm. Học sinh làm đúng mới được qua Dạng tiếp theo.
 4. Mọi câu hỏi trong phần luyện tập PHẢI được xuất ra ĐÚNG DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Cấu trúc JSON có 3 loại:

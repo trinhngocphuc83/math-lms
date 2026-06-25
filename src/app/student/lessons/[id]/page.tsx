@@ -313,7 +313,11 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
 
       {!isChecked && (
         <button
-           disabled={(type === 'multiple_choice' && selectedOpt === null) || (type === 'true_false_cluster' && Object.keys(tfAnswers).length === 0)}
+           disabled={
+              (type === 'multiple_choice' && selectedOpt === null) || 
+              (type === 'true_false_cluster' && Object.keys(tfAnswers).length === 0) ||
+              (type === 'short_answer' && !(shortAnswerText || '').trim())
+           }
            onClick={handleCheck}
            className="mt-6 w-full md:w-auto bg-indigo-600 text-white font-bold px-8 py-3 rounded-xl hover:bg-indigo-700 disabled:opacity-40 disabled:cursor-not-allowed transition-all shadow-md active:scale-95"
         >
