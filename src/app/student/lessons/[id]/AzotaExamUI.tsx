@@ -8,6 +8,11 @@ import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 
+import ReactCrop, { type Crop } from 'react-image-crop';
+import 'react-image-crop/dist/ReactCrop.css';
+import { useRef } from 'react';
+
+
 // Hàm tính điểm câu Đúng/Sai theo Barem 2025
 const calculateTrueFalseScore = (userAnswers: Record<string, boolean>, items: any[]) => {
   let correctCount = 0;
@@ -655,7 +660,9 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                                          if (file) {
                                             const reader = new FileReader();
                                             reader.onload = (ev) => {
-                                               handleAnswerChange(qIndex, 'essay', { ...userAns, image: ev.target?.result });
+                                               setCropImageSrc(ev.target?.result as string);
+                                               setActiveCropQIndex(qIndex);
+                                               setCrop({ unit: '%', width: 90, height: 90, x: 5, y: 5 });
                                             };
                                             reader.readAsDataURL(file);
                                          }
@@ -679,7 +686,9 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                                             const file = e.target.files[0];
                                             const reader = new FileReader();
                                             reader.onload = (ev) => {
-                                               handleAnswerChange(qIndex, 'essay', { ...userAns, image: ev.target?.result });
+                                               setCropImageSrc(ev.target?.result as string);
+                                               setActiveCropQIndex(qIndex);
+                                               setCrop({ unit: '%', width: 90, height: 90, x: 5, y: 5 });
                                             };
                                             reader.readAsDataURL(file);
                                          }
@@ -952,6 +961,29 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
            )}
         </div>
       </div>
+      
+      {cropImageSrc && (
+        <div className="fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl w-full max-w-4xl flex flex-col overflow-hidden max-h-[90vh]">
+            <div className="p-4 border-b flex justify-between items-center bg-gray-50">
+              <h3 className="font-bold text-lg text-gray-800">Cắt phần ảnh cần nộp</h3>
+              <button onClick={() => { setCropImageSrc(''); setActiveCropQIndex(null); }} className="p-2 hover:bg-gray-200 rounded-full">
+                 <X className="w-5 h-5"/>
+              </button>
+            </div>
+            <div className="flex-1 overflow-auto bg-gray-100 p-4 flex justify-center items-center">
+               <ReactCrop crop={crop} onChange={c => setCrop(c)}>
+                  <img ref={imgRef} src={cropImageSrc} alt="Crop" className="max-w-full h-auto object-contain" style={{maxHeight: '60vh'}} />
+               </ReactCrop>
+            </div>
+            <div className="p-4 border-t bg-white flex justify-end gap-3">
+               <button onClick={() => { setCropImageSrc(''); setActiveCropQIndex(null); }} className="px-5 py-2 text-gray-600 hover:bg-gray-100 rounded-lg font-medium shadow-sm">Hủy</button>
+               <button onClick={handleConfirmCrop} className="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-lg shadow-md transition-colors flex items-center gap-2">Xác nhận nộp ảnh này</button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
