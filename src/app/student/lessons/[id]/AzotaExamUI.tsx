@@ -743,21 +743,40 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                                       }}
                                    />
                                 </label>
-                                {userAns?.image && (
+                                {((userAns?.images && userAns.images.length > 0) || userAns?.image) && (
                                    <span className="text-sm text-green-600 font-medium flex items-center gap-1">
-                                      <CheckCircle2 className="w-4 h-4" /> Đã đính kèm ảnh
+                                      <CheckCircle2 className="w-4 h-4" /> Đã đính kèm {Array.isArray(userAns?.images) ? userAns.images.length : 1} ảnh
                                    </span>
                                 )}
                              </div>
-                             {userAns?.image && (
-                                <div className="mt-2 relative inline-block">
-                                   <img src={userAns.image} alt="Bài làm" className="max-h-48 rounded-lg border-2 border-indigo-200 shadow-sm" />
-                                   <button 
-                                      onClick={() => handleAnswerChange(qIndex, 'essay', { ...userAns, image: null })}
-                                      className="absolute -top-2 -right-2 bg-red-500 text-white p-1 rounded-full shadow-sm hover:bg-red-600"
-                                   >
-                                      <X className="w-3 h-3" />
-                                   </button>
+                             {((userAns?.images && userAns.images.length > 0) || userAns?.image) && (
+                                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                   {Array.isArray(userAns.images) ? userAns.images.map((imgSrc: string, i: number) => (
+                                      <div key={i} className="relative group">
+                                         <img src={imgSrc} alt={`Bài làm ${i+1}`} className="w-full h-40 object-cover rounded-xl border-2 border-indigo-100 shadow-sm transition-all group-hover:border-indigo-300" />
+                                         <button 
+                                            onClick={() => {
+                                               const newImages = [...userAns.images];
+                                               newImages.splice(i, 1);
+                                               handleAnswerChange(qIndex, 'essay', { ...userAns, images: newImages });
+                                            }}
+                                            title="Xóa ảnh này"
+                                            className="absolute -top-2 -right-2 bg-red-500 text-white p-1.5 rounded-full shadow-md hover:bg-red-600 opacity-100 transition-all z-10"
+                                         >
+                                            <X className="w-4 h-4" />
+                                         </button>
+                                      </div>
+                                   )) : userAns?.image && (
+                                      <div className="relative group">
+                                         <img src={userAns.image} alt="Bài làm" className="w-full h-40 object-cover rounded-xl border-2 border-indigo-100 shadow-sm" />
+                                         <button 
+                                            onClick={() => handleAnswerChange(qIndex, 'essay', { ...userAns, image: null })}
+                                            className="absolute -top-2 -right-2 bg-red-500 text-white p-1.5 rounded-full shadow-md hover:bg-red-600 z-10"
+                                         >
+                                            <X className="w-4 h-4" />
+                                         </button>
+                                      </div>
+                                   )}
                                 </div>
                              )}
                           </div>
@@ -773,9 +792,13 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                                    <p className="text-slate-400 italic">Không có câu trả lời</p>
                                 ) : null}
                                 
-                                {userAns?.image && (
-                                   <div className="mt-4">
-                                      <img src={userAns.image} alt="Bài làm" className="max-h-64 rounded-lg border border-slate-300 shadow-sm" />
+                                {((userAns?.images && userAns.images.length > 0) || userAns?.image) && (
+                                   <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
+                                      {Array.isArray(userAns.images) ? userAns.images.map((imgSrc: string, i: number) => (
+                                         <img key={i} src={imgSrc} alt={`Bài làm ${i+1}`} className="w-full h-auto rounded-lg border border-slate-300 shadow-sm object-cover" />
+                                      )) : userAns?.image && (
+                                         <img src={userAns.image} alt="Bài làm" className="max-h-64 rounded-lg border border-slate-300 shadow-sm" />
+                                      )}
                                    </div>
                                 )}
                              </div>
