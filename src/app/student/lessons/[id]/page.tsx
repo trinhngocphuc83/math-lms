@@ -289,10 +289,10 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
       )}
 
       {isChecked && type === 'short_answer' && (
-         <div className={`mt-5 p-4 rounded-xl flex items-start gap-3 ${normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
-            {normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') ? <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 shrink-0" />}
+         <div className={`mt-5 p-4 rounded-xl flex items-start gap-3 ${(normalizeAnswer(shortAnswerText || '') !== '' && normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '')) ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+            {(normalizeAnswer(shortAnswerText || '') !== '' && normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '')) ? <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 shrink-0" />}
             <div className="flex-1">
-               <p className="font-bold">{normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') ? 'Tuyệt vời! Bạn đã điền chính xác.' : `Chưa đúng rồi! Đáp án đúng là: ${data.exactAnswer || data.correctAnswer || 'Chưa cập nhật'}`}</p>
+               <p className="font-bold">{(normalizeAnswer(shortAnswerText || '') !== '' && normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '')) ? 'Tuyệt vời! Bạn đã điền chính xác.' : `Chưa đúng rồi! Đáp án đúng là: ${data.exactAnswer || data.correctAnswer || 'Chưa cập nhật'}`}</p>
             </div>
             {normalizeAnswer(shortAnswerText || '') !== normalizeAnswer(data.exactAnswer || data.correctAnswer || '') && (
                <button onClick={() => { setIsChecked(false); setShortAnswerText(""); }} className="px-4 py-1.5 bg-red-100 hover:bg-red-200 text-red-700 font-bold rounded-lg text-sm transition-colors shrink-0 shadow-sm">Làm lại</button>

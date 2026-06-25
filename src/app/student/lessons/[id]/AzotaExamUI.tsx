@@ -295,7 +295,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
         newQuestionScores[qIndex] = { earned, max: maxScoreQ };
       } else if (realType === 'short_answer') {
         const correctAns = (data.exactAnswer || data.correctAnswer || '');
-        const isCorrect = normalizeAnswer(String(ans || '')) === normalizeAnswer(correctAns);
+        const isCorrect = normalizeAnswer(String(ans || '')) !== '' && normalizeAnswer(String(ans || '')) === normalizeAnswer(correctAns);
         const earned = isCorrect ? maxScoreQ : 0;
         immediateScore += earned;
         newQuestionScores[qIndex] = { earned, max: maxScoreQ };
@@ -624,8 +624,8 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                        />
                      ) : (
                        <div className="space-y-3">
-                         <div className={`p-4 rounded-xl border-2 flex items-center gap-3 ${normalizeAnswer(String(userAns || '')) === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') ? 'border-green-400 bg-green-50' : 'border-red-400 bg-red-50'}`}>
-                           {normalizeAnswer(String(userAns || '')) === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') 
+                         <div className={`p-4 rounded-xl border-2 flex items-center gap-3 ${(normalizeAnswer(String(userAns || '')) !== '' && normalizeAnswer(String(userAns || '')) === normalizeAnswer(data.exactAnswer || data.correctAnswer || '')) ? 'border-green-400 bg-green-50' : 'border-red-400 bg-red-50'}`}>
+                           {(normalizeAnswer(String(userAns || '')) !== '' && normalizeAnswer(String(userAns || '')) === normalizeAnswer(data.exactAnswer || data.correctAnswer || '')) 
                              ? <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" /> 
                              : <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />}
                            <div>
@@ -897,7 +897,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                              const items = p.content.options || p.content.statements || [];
                              isCorrect = ans ? calculateTrueFalseScore(ans, items) === 1.0 : false;
                           } else if (realType === 'short_answer') {
-                             isCorrect = normalizeAnswer(String(ans || '')) === normalizeAnswer(p.content.exactAnswer || p.content.correctAnswer || '');
+                             isCorrect = normalizeAnswer(String(ans || '')) !== '' && normalizeAnswer(String(ans || '')) === normalizeAnswer(p.content.exactAnswer || p.content.correctAnswer || '');
                           }
                        }
                     }
