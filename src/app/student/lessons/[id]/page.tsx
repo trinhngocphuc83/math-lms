@@ -12,6 +12,14 @@ import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import AzotaExamUI from './AzotaExamUI';
 
+const normalizeAnswer = (s: string) => {
+    return s.trim().toLowerCase()
+      .replace(/\s+/g, '')
+      .replace(/,/g, '.')
+      .replace(/\$/g, '')
+      .replace(/\\frac\{(\d+)\}\{(\d+)\}/g, '$1/$2');
+};
+
 const getYouTubeEmbedUrl = (url: string) => {
   if (!url) return '';
   const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
@@ -281,12 +289,12 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
       )}
 
       {isChecked && type === 'short_answer' && (
-         <div className={`mt-5 p-4 rounded-xl flex items-start gap-3 ${((shortAnswerText || '').trim().toLowerCase() === (data.exactAnswer || '').trim().toLowerCase()) ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
-            {((shortAnswerText || '').trim().toLowerCase() === (data.exactAnswer || '').trim().toLowerCase()) ? <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 shrink-0" />}
+         <div className={`mt-5 p-4 rounded-xl flex items-start gap-3 ${normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
+            {normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') ? <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 shrink-0" />}
             <div className="flex-1">
-               <p className="font-bold">{((shortAnswerText || '').trim().toLowerCase() === (data.exactAnswer || '').trim().toLowerCase()) ? 'Tuyệt vời! Bạn đã điền chính xác.' : `Chưa đúng rồi! Đáp án đúng là: ${data.exactAnswer || 'Chưa cập nhật'}`}</p>
+               <p className="font-bold">{normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') ? 'Tuyệt vời! Bạn đã điền chính xác.' : `Chưa đúng rồi! Đáp án đúng là: ${data.exactAnswer || data.correctAnswer || 'Chưa cập nhật'}`}</p>
             </div>
-            {((shortAnswerText || '').trim().toLowerCase() !== (data.exactAnswer || '').trim().toLowerCase()) && (
+            {normalizeAnswer(shortAnswerText || '') !== normalizeAnswer(data.exactAnswer || data.correctAnswer || '') && (
                <button onClick={() => { setIsChecked(false); setShortAnswerText(""); }} className="px-4 py-1.5 bg-red-100 hover:bg-red-200 text-red-700 font-bold rounded-lg text-sm transition-colors shrink-0 shadow-sm">Làm lại</button>
             )}
          </div>

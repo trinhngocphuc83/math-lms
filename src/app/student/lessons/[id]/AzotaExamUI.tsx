@@ -26,7 +26,7 @@ const calculateTrueFalseScore = (userAnswers: Record<string, boolean>, items: an
 // Hàm chuẩn hóa chuỗi đáp án để so sánh trả lời ngắn
 const normalizeAnswer = (s: string) => {
   return s.trim().toLowerCase()
-    .replace(/\s+/g, ' ')
+    .replace(/\s+/g, '')
     .replace(/,/g, '.')
     .replace(/\$/g, '')
     .replace(/\\frac\{(\d+)\}\{(\d+)\}/g, '$1/$2');
@@ -294,7 +294,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
         immediateScore += earned;
         newQuestionScores[qIndex] = { earned, max: maxScoreQ };
       } else if (realType === 'short_answer') {
-        const correctAns = data.correctAnswer || '';
+        const correctAns = (data.exactAnswer || data.correctAnswer || '');
         const isCorrect = normalizeAnswer(String(ans || '')) === normalizeAnswer(correctAns);
         const earned = isCorrect ? maxScoreQ : 0;
         immediateScore += earned;
@@ -624,13 +624,13 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                        />
                      ) : (
                        <div className="space-y-3">
-                         <div className={`p-4 rounded-xl border-2 flex items-center gap-3 ${normalizeAnswer(String(userAns || '')) === normalizeAnswer(data.correctAnswer || '') ? 'border-green-400 bg-green-50' : 'border-red-400 bg-red-50'}`}>
-                           {normalizeAnswer(String(userAns || '')) === normalizeAnswer(data.correctAnswer || '') 
+                         <div className={`p-4 rounded-xl border-2 flex items-center gap-3 ${normalizeAnswer(String(userAns || '')) === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') ? 'border-green-400 bg-green-50' : 'border-red-400 bg-red-50'}`}>
+                           {normalizeAnswer(String(userAns || '')) === normalizeAnswer(data.exactAnswer || data.correctAnswer || '') 
                              ? <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0" /> 
                              : <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />}
                            <div>
                              <p className="font-bold text-slate-800">Bạn trả lời: <span className="text-indigo-700">{userAns || '(trống)'}</span></p>
-                             <p className="font-bold text-slate-600">Đáp án đúng: <span className="text-green-700">{data.correctAnswer}</span></p>
+                             <p className="font-bold text-slate-600">Đáp án đúng: <span className="text-green-700">{data.exactAnswer || data.correctAnswer}</span></p>
                            </div>
                          </div>
                        </div>
@@ -897,7 +897,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
                              const items = p.content.options || p.content.statements || [];
                              isCorrect = ans ? calculateTrueFalseScore(ans, items) === 1.0 : false;
                           } else if (realType === 'short_answer') {
-                             isCorrect = normalizeAnswer(String(ans || '')) === normalizeAnswer(p.content.correctAnswer || '');
+                             isCorrect = normalizeAnswer(String(ans || '')) === normalizeAnswer(p.content.exactAnswer || p.content.correctAnswer || '');
                           }
                        }
                     }

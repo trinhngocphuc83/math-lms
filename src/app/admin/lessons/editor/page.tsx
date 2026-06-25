@@ -640,8 +640,8 @@ LOẠI 4: CÂU TRẢ LỜI NGẮN (kết quả ngắn gọn: 1 số, 1 biểu th
 \`\`\`quiz
 {
   "type": "short_answer",
-  "question": "Tính giá trị của biểu thức $\\\\\\\\sqrt{9} + \\\\\\\\sqrt{16}$.",
-  "correctAnswer": "7",
+    "question": "Tính giá trị của biểu thức $\\sqrt{9} + \\sqrt{16}$.",
+    "exactAnswer": "7",
   "answer": "Ta có $\\\\\\\\sqrt{9} = 3$ và $\\\\\\\\sqrt{16} = 4$, nên tổng là $3 + 4 = 7$.",
   "phuong_phap_giai": "Tính căn bậc hai của số chính phương rồi cộng lại.",
   "cac_buoc_thuc_hien": [
