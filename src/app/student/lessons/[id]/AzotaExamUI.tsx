@@ -115,7 +115,8 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
           const base64Image = await getCroppedImg(imgRef.current, crop);
           const currentAns = answers[activeCropQIndex.toString()];
           const ansObj = typeof currentAns === 'object' ? currentAns : {};
-          handleAnswerChange(activeCropQIndex, 'essay', { ...ansObj, image: base64Image });
+          const currentImages = Array.isArray(ansObj.images) ? ansObj.images : (ansObj.image ? [ansObj.image] : []);
+          handleAnswerChange(activeCropQIndex, 'essay', { ...ansObj, images: [...currentImages, base64Image] });
           setCropImageSrc('');
           setActiveCropQIndex(null);
       } catch (err) {
@@ -195,7 +196,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
     const realType = getQuestionType(data);
     
     if (realType === 'essay') {
-       return ans && (ans.text?.trim() || ans.image);
+       return ans && (ans.text?.trim() || ans.image || (ans.images && ans.images.length > 0));
     }
     if (realType === 'short_answer') return ans !== undefined && ans !== '';
     if (realType === 'multiple_choice') return ans !== undefined;
@@ -227,7 +228,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
   // Chấm 1 câu tự luận bằng AI (dùng cho nút chấm riêng lẻ và chấm hàng loạt)
   const gradeOneEssay = async (qIndex: number, data: any, maxScoreForQ: number) => {
     const userAns = answers[qIndex.toString()];
-    if (!userAns || (!userAns.text && !userAns.image)) {
+    if (!userAns || (!userAns.text && !userAns.image && (!userAns.images || userAns.images.length === 0))) {
       return { scoreNumber: 0, passed: false, feedback: "Học sinh không nộp bài.", score: `0/${maxScoreForQ.toFixed(2)}` };
     }
 
@@ -242,6 +243,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
         question: data.question,
         sampleAnswer,
         image: userAns.image,
+          images: userAns.images,
         textAnswer: userAns.text,
         serverId: 1,
         maxScore: maxScoreForQ
@@ -271,7 +273,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
   // Nút chấm riêng 1 câu essay
   const handleGradeEssay = async (qIndex: number, data: any) => {
     const userAns = answers[qIndex.toString()];
-    if (!userAns || (!userAns.text && !userAns.image)) {
+    if (!userAns || (!userAns.text && !userAns.image && (!userAns.images || userAns.images.length === 0))) {
       alert("Bạn chưa nhập câu trả lời hoặc đính kèm ảnh!");
       return;
     }

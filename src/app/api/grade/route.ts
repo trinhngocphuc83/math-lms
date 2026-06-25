@@ -3,9 +3,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 export async function POST(request: Request) {
   try {
-    const { image, textAnswer, question, sampleAnswer, serverId = 1, maxScore = 10 } = await request.json();
+    const { image, images, textAnswer, question, sampleAnswer, serverId = 1, maxScore = 10 } = await request.json();
 
-    if (!image && (!textAnswer || !textAnswer.trim())) {
+    if (!image && (!images || images.length === 0) && (!textAnswer || !textAnswer.trim())) {
       return NextResponse.json({ error: "Vui lòng nhập câu trả lời hoặc đính kèm ảnh bài làm!" }, { status: 400 });
     }
 
