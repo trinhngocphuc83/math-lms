@@ -61,6 +61,7 @@ export default function AdminLayout({
       group: "Hệ thống",
       items: [
         { name: "Cài đặt chung", href: "/admin/settings", icon: Settings },
+        { name: "Cài đặt Cổng A.I", href: "/admin/settings/ai-keys", icon: Sparkles },
       ]
     }
   ];

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import { CheckCircle2, AlertCircle, Send, ListTodo, UploadCloud, X, Lightbulb, ListOrdered, Pin, Bot, Loader2 } from "lucide-react";
+import { CheckCircle2, AlertCircle, Send, ListTodo, UploadCloud, X, Lightbulb, ListOrdered, Pin, Bot, Loader2, Image as ImageIcon } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -124,6 +124,72 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
       }
   };
 
+    const processImageFiles = (files: FileList | File[], qIndex: number) => {
+      Array.from(files).forEach(file => {
+        const reader = new FileReader();
+        reader.onload = (ev) => {
+          if(ev.target?.result) {
+            const img = new Image();
+            img.onload = () => {
+              const canvas = document.createElement('canvas');
+              let width = img.width;
+              let height = img.height;
+              const MAX_DIM = 1200;
+              
+              if (width > height && width > MAX_DIM) {
+                height *= MAX_DIM / width;
+                width = MAX_DIM;
+              } else if (height > width && height > MAX_DIM) {
+                width *= MAX_DIM / height;
+                height = MAX_DIM;
+              }
+              
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx?.drawImage(img, 0, 0, width, height);
+              const compressedBase64 = canvas.toDataURL('image/jpeg', 0.6);
+              
+              setAnswers(prev => {
+                const currentAns = prev[qIndex.toString()] || {};
+                const currentImages = currentAns.images || [];
+                return { ...prev, [qIndex.toString()]: { ...currentAns, images: [...currentImages, compressedBase64] } };
+              });
+            };
+            img.src = ev.target.result as string;
+          }
+        };
+        reader.readAsDataURL(file);
+      });
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, qIndex: number) => {
+    if (e.target.files && e.target.files.length > 0) {
+       processImageFiles(e.target.files, qIndex);
+       e.target.value = ''; // Reset input để có thể chọn lại file cũ
+    }
+  };
+
+  const handlePasteImage = (e: React.ClipboardEvent<HTMLDivElement>, qIndex: number) => {
+    if (e.clipboardData.files && e.clipboardData.files.length > 0) {
+      const imageFiles = Array.from(e.clipboardData.files).filter(f => f.type.startsWith('image/'));
+      if (imageFiles.length > 0) {
+        e.preventDefault();
+        processImageFiles(imageFiles, qIndex);
+      }
+    }
+  };
+
+  const removeImage = (qIndex: number, imgIndex: number) => {
+    setAnswers(prev => {
+      const currentAns = prev[qIndex.toString()] || {};
+      const currentImages = currentAns.images || [];
+      const newImages = [...currentImages];
+      newImages.splice(imgIndex, 1);
+      return { ...prev, [qIndex.toString()]: { ...currentAns, images: newImages } };
+    });
+  };
+
   const [answers, setAnswers] = useState<Record<string, any>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [score, setScore] = useState<number>(0);
@@ -225,8 +291,8 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
     });
   };
 
-  // Chấm 1 câu tự luận bằng AI (dùng cho nút chấm riêng lẻ và chấm hàng loạt)
-  const gradeOneEssay = async (qIndex: number, data: any, maxScoreForQ: number) => {
+  // Chấm 1 câu tự luận bằng AI
+  const gradeOneEssay = async (qIndex: number, data: any, maxScoreForQ: number): Promise<any> => {
     const userAns = answers[qIndex.toString()];
     if (!userAns || (!userAns.text && !userAns.image && (!userAns.images || userAns.images.length === 0))) {
       return { scoreNumber: 0, passed: false, feedback: "Học sinh không nộp bài.", score: `0/${maxScoreForQ.toFixed(2)}` };
@@ -242,10 +308,9 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
       body: JSON.stringify({
         question: data.question,
         sampleAnswer,
-        image: userAns.image,
-          images: userAns.images,
-        textAnswer: userAns.text,
-        serverId: 1,
+        image: userAns?.image,
+        images: userAns?.images || [],
+        textAnswer: userAns?.text,
         maxScore: maxScoreForQ
       })
     });
@@ -255,6 +320,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
     return result;
   };
 
+  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
   const recalculateAndSaveScore = async (newScores: Record<string, { earned: number; max: number }>) => {
     let total = 0;
     Object.values(newScores).forEach(s => total += s.earned);
@@ -363,57 +429,90 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
     setIsSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // 5. Chấm essay song song bằng AI
+    // 5. Chấm essay TUẦN TỰ có DELAY
     if (essayTasks.length > 0) {
-      // Đánh dấu tất cả essay đang chấm
       const gradingInit: Record<string, { isGrading: boolean; result?: any }> = {};
       essayTasks.forEach(t => { gradingInit[t.qIndex] = { isGrading: true }; });
       setGradingStatus(prev => ({ ...prev, ...gradingInit }));
 
       let essayTotalScore = 0;
-
-      // Gọi API song song
-      const results = await Promise.allSettled(
-        essayTasks.map(async (task) => {
-          try {
-            const result = await gradeOneEssay(task.qIndex, task.data, task.maxScore);
-            return { qIndex: task.qIndex, result, maxScore: task.maxScore };
-          } catch (err: any) {
-            return { qIndex: task.qIndex, result: { scoreNumber: 0, passed: false, feedback: `Lỗi chấm: ${err.message}`, score: `0/${task.maxScore.toFixed(2)}` }, maxScore: task.maxScore };
-          }
-        })
-      );
-
-      // Cập nhật kết quả
-      const newGradingStatus: Record<string, { isGrading: boolean; result?: any }> = {};
       const updatedScores = { ...newQuestionScores };
+      const finalGradingDetails: any[] = [];
 
-      results.forEach(r => {
-        if (r.status === 'fulfilled') {
-          const { qIndex, result, maxScore } = r.value;
-          newGradingStatus[qIndex] = { isGrading: false, result };
-          const earned = typeof result.scoreNumber === 'number' ? Math.min(result.scoreNumber, maxScore) : 0;
-          updatedScores[qIndex] = { earned, max: maxScore };
-          essayTotalScore += earned;
+      for (let i = 0; i < essayTasks.length; i++) {
+        const task = essayTasks[i];
+        const qIndex = task.qIndex;
+
+        const previousResult = gradingStatus[qIndex]?.result;
+        if (previousResult && typeof previousResult.scoreNumber === 'number' && !previousResult.error && !previousResult.feedback?.includes('Lỗi')) {
+            const earned = Math.min(previousResult.scoreNumber, task.maxScore);
+            essayTotalScore += earned;
+            updatedScores[qIndex] = { earned, max: task.maxScore };
+            setGradingStatus(prev => ({ ...prev, [qIndex]: { isGrading: false, result: previousResult } }));
+            finalGradingDetails.push({
+               qIndex: task.qIndex,
+               question: task.data.question,
+               sampleAnswer: task.data.answer || (task.data.phuong_phap_giai ? `PP Giải: ${task.data.phuong_phap_giai}\nCác bước: ${(task.data.cac_buoc_thuc_hien || []).join('\n')}` : ''),
+               maxScore: task.maxScore,
+               score: earned,
+               passed: previousResult.passed,
+               feedback: previousResult.feedback,
+               images: answers[qIndex.toString()]?.images || []
+            });
+            continue;
         }
-      });
+        try {
+          const result = await gradeOneEssay(qIndex, task.data, task.maxScore);
+          setGradingStatus(prev => ({ ...prev, [qIndex]: { isGrading: false, result } }));
+          const earned = typeof result.scoreNumber === 'number' ? Math.min(result.scoreNumber, task.maxScore) : 0;
+          updatedScores[qIndex] = { earned, max: task.maxScore };
+          essayTotalScore += earned;
+          setQuestionScores({ ...updatedScores });
+          setScore(Math.round((immediateScore + essayTotalScore) * 100) / 100);
+          finalGradingDetails.push({
+             qIndex: task.qIndex,
+             question: task.data.question,
+             sampleAnswer: task.data.answer || (task.data.phuong_phap_giai ? `PP Giải: ${task.data.phuong_phap_giai}\nCác bước: ${(task.data.cac_buoc_thuc_hien || []).join('\n')}` : ''),
+             maxScore: task.maxScore,
+             score: earned,
+             passed: result.passed,
+             feedback: result.feedback,
+             images: answers[qIndex.toString()]?.images || []
+          });
+          
+          if (i < essayTasks.length - 1) await sleep(1500);
+        } catch (err: any) {
+          setGradingStatus(prev => ({ ...prev, [qIndex]: { isGrading: false, result: { scoreNumber: 0, passed: false, feedback: `Lỗi: ${err.message}`, score: `0/${task.maxScore.toFixed(2)}` } } }));
+          updatedScores[qIndex] = { earned: 0, max: task.maxScore };
+          finalGradingDetails.push({
+             qIndex: task.qIndex,
+             question: task.data.question,
+             sampleAnswer: task.data.answer || (task.data.phuong_phap_giai ? `PP Giải: ${task.data.phuong_phap_giai}\nCác bước: ${(task.data.cac_buoc_thuc_hien || []).join('\n')}` : ''),
+             maxScore: task.maxScore,
+             score: 0,
+             passed: false,
+             feedback: `Lỗi hệ thống: ${err.message}`,
+             images: answers[qIndex.toString()]?.images || []
+          });
+        }
+      }
 
-      setGradingStatus(prev => ({ ...prev, ...newGradingStatus }));
       setQuestionScores(updatedScores);
+      const globalImages = Object.values(answers).flatMap((ans: any) => ans.images || []);
       const finalScore = Math.round((immediateScore + essayTotalScore) * 100) / 100;
       setScore(finalScore);
       setTotalScore(10);
       setIsGradingAll(false);
-      
-      // Gọi API lưu điểm
+
       if (lessonId) {
         fetch('/api/student/save-score', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings })
+          body: JSON.stringify({ lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: finalGradingDetails })
         }).catch(e => console.error("Error saving score:", e));
       }
     } else {
+      const globalImages = Object.values(answers).flatMap((ans: any) => ans.images || []);
       const finalScore = Math.round(immediateScore * 100) / 100;
       setScore(finalScore);
       setTotalScore(10);
@@ -423,7 +522,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
         fetch('/api/student/save-score', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings })
+          body: JSON.stringify({ lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: [] })
         }).catch(e => console.error("Error saving score:", e));
       }
     }
@@ -693,114 +792,65 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
 
                  {/* === TỰ LUẬN === */}
                  {isEssay && (
-                    <div className="flex flex-col gap-3 ml-0 md:ml-12 mt-4">
-                       {!isSubmitted ? (
-                          <div className="flex flex-col gap-3">
-                             <textarea 
-                                value={userAns?.text || ''}
-                                onChange={(e) => handleAnswerChange(qIndex, 'essay', { ...userAns, text: e.target.value })}
-                                onPaste={(e) => {
-                                   const items = e.clipboardData?.items;
-                                   if (!items) return;
-                                   for (let i = 0; i < items.length; i++) {
-                                      if (items[i].type.indexOf('image') !== -1) {
-                                         const file = items[i].getAsFile();
-                                         if (file) {
-                                            const reader = new FileReader();
-                                            reader.onload = (ev) => {
-                                               setCropImageSrc(ev.target?.result as string);
-                                               setActiveCropQIndex(qIndex);
-                                               setCrop({ unit: '%', width: 90, height: 90, x: 5, y: 5 });
-                                            };
-                                            reader.readAsDataURL(file);
-                                         }
-                                         break;
-                                      }
-                                   }
-                                }}
-                                placeholder="Nhập câu trả lời tự luận của bạn vào đây... (Có thể copy và dán/paste ảnh trực tiếp vào khung này)"
-                                className="w-full p-4 rounded-xl border-2 border-slate-200 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 outline-none min-h-[150px] transition-all"
-                             />
-                             <div className="flex items-center gap-3">
-                                <label className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-lg cursor-pointer transition-colors border border-slate-300">
-                                   <UploadCloud className="w-4 h-4" />
-                                   <span>Đính kèm ảnh bài làm</span>
+                    <div className="flex flex-col gap-4 ml-0 md:ml-12 mt-4 bg-slate-50/50 p-4 sm:p-5 rounded-2xl border-2 border-slate-100/60 transition-all hover:border-slate-200/80">
+                       {!isSubmitted && (
+                          <>
+                             <div 
+                                className="flex flex-col sm:flex-row items-start sm:items-center gap-3 p-4 border-2 border-dashed border-indigo-200 rounded-xl bg-white/50 focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-200 transition-all cursor-text outline-none relative overflow-hidden"
+                                tabIndex={0}
+                                onPaste={(e) => handlePasteImage(e, qIndex)}
+                                title="Nhấp vào khung này rồi ấn Ctrl+V để dán ảnh"
+                             >
+                                <div className="absolute inset-0 bg-indigo-50/20 pointer-events-none"></div>
+                                <label className="relative bg-white hover:bg-indigo-50 text-indigo-600 px-5 py-2.5 rounded-xl font-bold shadow-sm border border-indigo-100 cursor-pointer transition-all flex items-center gap-2 text-sm whitespace-nowrap z-10 shrink-0">
+                                   <UploadCloud className="w-4 h-4" /> Tải ảnh lên
                                    <input 
-                                      type="file" 
-                                      accept="image/*" 
-                                      className="hidden"
-                                      onChange={(e) => {
-                                         if (e.target.files && e.target.files[0]) {
-                                            const file = e.target.files[0];
-                                            const reader = new FileReader();
-                                            reader.onload = (ev) => {
-                                               setCropImageSrc(ev.target?.result as string);
-                                               setActiveCropQIndex(qIndex);
-                                               setCrop({ unit: '%', width: 90, height: 90, x: 5, y: 5 });
-                                            };
-                                            reader.readAsDataURL(file);
-                                         }
-                                      }}
+                                     type="file" 
+                                     multiple
+                                     accept="image/*" 
+                                     className="hidden"
+                                     onChange={(e) => handleImageUpload(e, qIndex)}
                                    />
                                 </label>
-                                {((userAns?.images && userAns.images.length > 0) || userAns?.image) && (
-                                   <span className="text-sm text-green-600 font-medium flex items-center gap-1">
-                                      <CheckCircle2 className="w-4 h-4" /> Đã đính kèm {Array.isArray(userAns?.images) ? userAns.images.length : 1} ảnh
+                                <div className="flex flex-col relative z-10">
+                                   <span className="text-sm font-semibold text-slate-700 flex items-center gap-2">
+                                      Hoặc click vào khung này và ấn <kbd className="px-1.5 py-0.5 bg-slate-100 border border-slate-300 rounded text-xs font-mono text-slate-600 shadow-sm">Ctrl</kbd> + <kbd className="px-1.5 py-0.5 bg-slate-100 border border-slate-300 rounded text-xs font-mono text-slate-600 shadow-sm">V</kbd> để dán ảnh
                                    </span>
-                                )}
+                                   <span className="text-xs font-medium text-slate-500 mt-1">
+                                      {answers[qIndex.toString()]?.images?.length ? `✅ Đã tải lên ${answers[qIndex.toString()]?.images?.length} ảnh` : "Chưa có ảnh nào"}
+                                   </span>
+                                </div>
                              </div>
-                             {((userAns?.images && userAns.images.length > 0) || userAns?.image) && (
-                                <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
-                                   {Array.isArray(userAns.images) ? userAns.images.map((imgSrc: string, i: number) => (
-                                      <div key={i} className="relative group">
-                                         <img src={imgSrc} alt={`Bài làm ${i+1}`} className="w-full h-40 object-cover rounded-xl border-2 border-indigo-100 shadow-sm transition-all group-hover:border-indigo-300" />
+
+                             {answers[qIndex.toString()]?.images?.length > 0 && (
+                                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-2">
+                                   {answers[qIndex.toString()].images.map((imgSrc: string, imgIdx: number) => (
+                                      <div key={imgIdx} className="relative group rounded-xl overflow-hidden border-2 border-indigo-100 shadow-sm aspect-video sm:aspect-square">
+                                         <img src={imgSrc} className="w-full h-full object-cover" />
                                          <button 
-                                            onClick={() => {
-                                               const newImages = [...userAns.images];
-                                               newImages.splice(i, 1);
-                                               handleAnswerChange(qIndex, 'essay', { ...userAns, images: newImages });
-                                            }}
-                                            title="Xóa ảnh này"
-                                            className="absolute -top-2 -right-2 bg-red-500 text-white p-1.5 rounded-full shadow-md hover:bg-red-600 opacity-100 transition-all z-10"
+                                            onClick={() => removeImage(qIndex, imgIdx)}
+                                            className="absolute top-1.5 right-1.5 bg-white/90 text-red-500 p-1.5 rounded-full shadow hover:bg-red-50 hover:text-red-600 transition-colors opacity-100 sm:opacity-0 group-hover:opacity-100"
                                          >
-                                            <X className="w-4 h-4" />
+                                            <X className="w-3.5 h-3.5" />
                                          </button>
                                       </div>
-                                   )) : userAns?.image && (
-                                      <div className="relative group">
-                                         <img src={userAns.image} alt="Bài làm" className="w-full h-40 object-cover rounded-xl border-2 border-indigo-100 shadow-sm" />
-                                         <button 
-                                            onClick={() => handleAnswerChange(qIndex, 'essay', { ...userAns, image: null })}
-                                            className="absolute -top-2 -right-2 bg-red-500 text-white p-1.5 rounded-full shadow-md hover:bg-red-600 z-10"
-                                         >
-                                            <X className="w-4 h-4" />
-                                         </button>
-                                      </div>
-                                   )}
+                                   ))}
                                 </div>
                              )}
-                          </div>
-                       ) : (
-                          <div className="flex flex-col gap-4">
-                             <div className="p-4 rounded-xl border-2 border-slate-200 bg-slate-50">
-                                <h4 className="font-bold text-slate-700 mb-2">Bài làm của bạn:</h4>
-                                {userAns?.text ? (
-                                   <div className="prose prose-sm max-w-none text-slate-600 whitespace-pre-wrap">
-                                      {userAns.text}
+                          </>
+                       )}
+
+                       {isSubmitted && answers[qIndex.toString()]?.images?.length > 0 && (
+                          <div className="mt-2">
+                             <h4 className="text-sm font-bold text-slate-700 mb-3 flex items-center gap-2">
+                                <ImageIcon className="w-4 h-4 text-slate-400" /> Ảnh bài làm đã nộp:
+                             </h4>
+                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                                {answers[qIndex.toString()].images.map((imgSrc: string, imgIdx: number) => (
+                                   <div key={imgIdx} className="rounded-xl overflow-hidden border border-slate-200 shadow-sm">
+                                      <img src={imgSrc} className="w-full h-auto object-cover" />
                                    </div>
-                                ) : !userAns?.image ? (
-                                   <p className="text-slate-400 italic">Không có câu trả lời</p>
-                                ) : null}
-                                
-                                {((userAns?.images && userAns.images.length > 0) || userAns?.image) && (
-                                   <div className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4">
-                                      {Array.isArray(userAns.images) ? userAns.images.map((imgSrc: string, i: number) => (
-                                         <img key={i} src={imgSrc} alt={`Bài làm ${i+1}`} className="w-full h-auto rounded-lg border border-slate-300 shadow-sm object-cover" />
-                                      )) : userAns?.image && (
-                                         <img src={userAns.image} alt="Bài làm" className="max-h-64 rounded-lg border border-slate-300 shadow-sm" />
-                                      )}
-                                   </div>
-                                )}
+                                ))}
                              </div>
                           </div>
                        )}
@@ -949,6 +999,8 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
           }
           return null;
         })}
+
+
       </div>
 
       {/* Phần phải: Sidebar (Sticky) */}
@@ -1021,6 +1073,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
            
            {!isSubmitted && (
               <div className="mt-auto pt-4 border-t border-slate-100">
+
                  <button 
                     onClick={handleSubmit}
                     disabled={isGradingAll}

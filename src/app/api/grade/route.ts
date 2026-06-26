@@ -1,35 +1,29 @@
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getAllAIKeys } from '@/utils/aiKeys';
+import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
 
 export async function POST(request: Request) {
   try {
-    const { image, images, textAnswer, question, sampleAnswer, serverId = 1, maxScore = 10 } = await request.json();
+    const { image, images, textAnswer, question, sampleAnswer, maxScore = 10 } = await request.json();
 
     if (!image && (!images || images.length === 0) && (!textAnswer || !textAnswer.trim())) {
       return NextResponse.json({ error: "Vui lòng nhập câu trả lời hoặc đính kèm ảnh bài làm!" }, { status: 400 });
     }
 
-    // Tìm tất cả các API keys có sẵn trong biến môi trường
-    const keys: string[] = [];
-    if (process.env.GEMINI_API_KEY) keys.push(process.env.GEMINI_API_KEY);
-    for (let i = 1; i <= 10; i++) {
-      if (process.env[`GEMINI_API_KEY_${i}`]) {
-        keys.push(process.env[`GEMINI_API_KEY_${i}`] as string);
-      }
+    // Lấy toàn bộ Keys (.env + JSON cộng dồn) rồi lọc bỏ Keys đang nằm trong Sổ Đen
+    const allKeys = getAllAIKeys();
+    const cleanKeys = filterCleanKeys(allKeys);
+    
+    if (cleanKeys.length === 0) {
+       return NextResponse.json({ 
+         error: allKeys.length === 0 
+           ? "Máy chủ chưa được cấu hình API Key nào. Vui lòng báo Giáo viên!" 
+           : "Toàn bộ Cổng AI đã cạn kiệt dung lượng (bị khóa 24h). Vui lòng nạp thêm Key mới ở trang Admin!" 
+       }, { status: 503 });
     }
 
-    if (keys.length === 0) {
-      return NextResponse.json({ 
-        error: `Máy chủ chưa được cấu hình bất kỳ API Key nào. Vui lòng báo Giáo viên kiểm tra lại!` 
-      }, { status: 500 });
-    }
-
-    // Trộn ngẫu nhiên (hoặc thử theo thứ tự)
-    // Để phân tải tự nhiên hơn, ta có thể trộn mảng keys, nhưng ở đây cứ thử tuần tự từ GEMINI_API_KEY_1 -> 2 -> ... 
-    // Wait, để xoay vòng tốt nhất ta random vị trí bắt đầu
-    const startIndex = Math.floor(Math.random() * keys.length);
-    const rotatedKeys = [...keys.slice(startIndex), ...keys.slice(0, startIndex)];
-
+    // Chuẩn bị Prompt chấm bài
     const prompt = `Bạn là một Giáo viên Toán học cực kỳ tận tâm và chấm bài rất chuẩn xác.
 Học sinh vừa làm bài tự luận và nộp câu trả lời bằng văn bản và/hoặc ảnh chụp bài làm. 
 Hãy đọc kỹ bài làm của học sinh, đối chiếu với Đề bài và Đáp án mẫu/Barem/Các bước thực hiện dưới đây để chấm điểm.
@@ -55,17 +49,30 @@ YÊU CẦU:
 - "score" (string): Điểm dạng chuỗi hiển thị (ví dụ: "1.5/${maxScore}").
 - "feedback" (string): Lời nhận xét chi tiết, khen ngợi và chỉ ra lỗi sai. CÓ THỂ DÙNG MARKDOWN và LaTeX (bọc trong $$) trong phần feedback.`;
 
+    // Chuẩn bị dữ liệu ảnh
     const parts: any[] = [prompt];
     
-    if (image) {
+    // Xử lý ảnh đơn (image)
+    if (image && typeof image === 'string' && image.startsWith('data:image')) {
       const base64Data = image.replace(/^data:image\/\w+;base64,/, '');
       parts.push({ inlineData: { data: base64Data, mimeType: "image/jpeg" } });
     }
 
-    let lastError = null;
+    // Xử lý mảng ảnh (images) 
+    if (images && Array.isArray(images)) {
+      images.forEach((img: string) => {
+        if (typeof img === 'string' && img.startsWith('data:image')) {
+          const mimeType = img.split(';')[0].split(':')[1] || 'image/jpeg';
+          const base64Content = img.split(',')[1];
+          parts.push({ inlineData: { data: base64Content, mimeType } });
+        }
+      });
+    }
 
-    // Vòng lặp xoay vòng API Keys
-    for (const apiKey of rotatedKeys) {
+    // ====== CỖ MÁY AUTO-FALLBACK: Vòng lặp Xoay Key Tự Động ======
+    let lastError: any = null;
+    
+    for (const apiKey of cleanKeys) {
       try {
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ 
@@ -77,21 +84,39 @@ YÊU CẦU:
 
         const result = await model.generateContent(parts);
         const text = result.response.text();
-        
-        // Vì sử dụng responseMimeType="application/json", text chắc chắn là chuỗi JSON hợp lệ.
         const parsed = JSON.parse(text);
+        
+        // CHẤM THÀNH CÔNG -> TRẢ VỀ NGAY LẬP TỨC
         return NextResponse.json(parsed);
 
       } catch (err: any) {
         lastError = err;
-        console.error("Lỗi với API Key này, chuyển sang key khác...", err.message);
-        // Nếu lỗi không phải 429 (quota) hoặc 503, vẫn tiếp tục thử key khác (để an toàn)
+        const msg = (err.message || '').toLowerCase();
+        
+        // Phát hiện Lỗi Quota/429 -> Quăng Key vào Sổ Đen, nhảy sang Key tiếp
+        if (msg.includes('quota') || msg.includes('429') || msg.includes('exceeded') || msg.includes('too many requests') || msg.includes('resource has been exhausted')) {
+          blockKey(apiKey, err.message);
+          console.log(`[Auto-Fallback] Key ***${apiKey.slice(-4)} đã cạn quota -> Chuyển Key tiếp theo...`);
+          continue; // NHẢY SANG KEY TIẾP THEO NGAY LẬP TỨC
+        }
+        
+        // Lỗi 503 (Service Unavailable) -> cũng thử key khác
+        if (msg.includes('503') || msg.includes('service unavailable') || msg.includes('overloaded')) {
+          console.log(`[Auto-Fallback] Key ***${apiKey.slice(-4)} bị 503 -> Thử key khác...`);
+          continue;
+        }
+
+        // Lỗi khác (parse, network...) -> cũng thử key khác cho an toàn
+        console.error(`[Auto-Fallback] Lỗi không xác định với Key ***${apiKey.slice(-4)}:`, err.message);
         continue;
       }
     }
 
-    // Nếu tất cả các keys đều thất bại
-    throw new Error(lastError?.message || "Tất cả API keys đều báo lỗi hoặc quá tải (503).");
+    // Hết sạch Key mà không chấm được -> Trả về lỗi cuối cùng
+    return NextResponse.json({ 
+      error: `Tất cả ${cleanKeys.length} Cổng AI đều đã cạn kiệt hoặc báo lỗi. Vui lòng nạp thêm Key mới ở trang Admin hoặc chờ 24h để Key được mở lại.\nChi tiết: ${lastError?.message || 'Không rõ'}` 
+    }, { status: 503 });
+
   } catch (error: any) {
     console.error("Lỗi AI Chấm điểm:", error);
     return NextResponse.json({ error: error.message || "Đã xảy ra lỗi khi chấm điểm." }, { status: 500 });

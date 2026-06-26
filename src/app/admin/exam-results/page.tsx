@@ -1,9 +1,10 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Loader2, Search, Filter, AlertCircle, CheckCircle2, RefreshCw, Users } from "lucide-react";
+import { Eye, Loader2, Search, Filter, AlertCircle, CheckCircle2, RefreshCw, Users, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { fetchExamResultsAdmin } from "./actions";
+import ReviewModal from './ReviewModal';
 
 export default function ExamResultsPage() {
   const [results, setResults] = useState<any[]>([]);
@@ -15,6 +16,14 @@ export default function ExamResultsPage() {
   const [selectedLessonId, setSelectedLessonId] = useState<string>("all");
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
+  const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedResultData, setSelectedResultData] = useState<any>(null);
+
+  const openReviewModal = (row: any) => {
+      setSelectedResultData(row);
+      setIsModalOpen(true);
+  };
 
   useEffect(() => {
     fetchData();
@@ -102,6 +111,47 @@ export default function ExamResultsPage() {
 
   const finalResults = displayResults();
 
+  const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setSelectedIds(finalResults.filter(r => !r.is_unsubmitted).map(r => r.id));
+    } else {
+      setSelectedIds([]);
+    }
+  };
+
+  const handleSelectRow = (e: React.ChangeEvent<HTMLInputElement>, id: string) => {
+    if (e.target.checked) {
+      setSelectedIds(prev => [...prev, id]);
+    } else {
+      setSelectedIds(prev => prev.filter(item => item !== id));
+    }
+  };
+
+  const handleBulkDelete = async () => {
+    if (selectedIds.length === 0) return;
+    if (!confirm(`BẠN CÓ CHẮC CHẮN MUỐN XÓA ${selectedIds.length} BÀI LÀM ĐÃ CHỌN?\nHành động này sẽ Xóa vĩnh viễn dữ liệu điểm và Toàn bộ File Ảnh của các bài làm này!`)) return;
+    
+    setLoading(true);
+    for (const id of selectedIds) {
+      try {
+        const res = await fetch('/api/admin/delete-exam-result', {
+          method: 'DELETE',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id })
+        });
+        const d = await res.json();
+        if (!res.ok) {
+           throw new Error(d.error || 'Server error');
+        }
+      } catch (e: any) {
+        console.error("Lỗi xóa: ", e);
+        alert("Lỗi khi xóa bài: " + (e.message || e));
+      }
+    }
+    setSelectedIds([]);
+    fetchData();
+  };
+
   return (
     <div className="p-8 max-w-7xl mx-auto w-full flex-1 overflow-y-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -109,6 +159,14 @@ export default function ExamResultsPage() {
           <h1 className="text-3xl font-black text-zinc-900 tracking-tight">Kết quả Luyện tập</h1>
           <p className="text-zinc-500 mt-2 font-medium">Theo dõi tiến độ, điểm số và quản lý theo lớp học</p>
         </div>
+        {selectedIds.length > 0 && (
+          <button 
+            onClick={handleBulkDelete}
+            className="bg-red-50 border border-red-200 text-red-600 hover:bg-red-100 px-4 py-2 rounded-xl shadow-sm flex items-center gap-2 font-bold transition-colors"
+          >
+            <Trash2 className="w-4 h-4" /> Xóa ({selectedIds.length}) mục
+          </button>
+        )}
         <button 
           onClick={fetchData}
           className="bg-white border border-zinc-200 text-zinc-700 hover:bg-zinc-50 px-4 py-2 rounded-xl shadow-sm flex items-center gap-2 font-bold"
@@ -163,6 +221,9 @@ export default function ExamResultsPage() {
           <table className="w-full text-left text-sm">
             <thead className="bg-zinc-50 text-zinc-500 font-semibold border-b border-zinc-200 uppercase tracking-wider text-[11px]">
               <tr>
+                <th className="px-6 py-4 w-12 text-center">
+                  <input type="checkbox" onChange={handleSelectAll} checked={finalResults.filter(r => !r.is_unsubmitted).length > 0 && selectedIds.length === finalResults.filter(r => !r.is_unsubmitted).length} className="w-4 h-4 rounded border-zinc-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"/>
+                </th>
                 <th className="px-6 py-4">Học sinh / Lớp</th>
                 <th className="px-6 py-4">Bài học</th>
                 <th className="px-6 py-4 text-center">Lần nộp</th>
@@ -170,25 +231,31 @@ export default function ExamResultsPage() {
                 <th className="px-6 py-4 text-center">Điểm số</th>
                 <th className="px-6 py-4 text-center">Trạng thái</th>
                 <th className="px-6 py-4 text-right">Thời gian</th>
+                <th className="px-6 py-4 text-center">Thao tác</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-zinc-100">
               {loading ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-12 text-center text-zinc-500">
+                  <td colSpan={8} className="px-6 py-12 text-center text-zinc-500">
                     <Loader2 className="w-8 h-8 animate-spin mx-auto text-teal-600 mb-2" />
                     Đang tải dữ liệu...
                   </td>
                 </tr>
               ) : finalResults.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-12 text-center text-zinc-500 font-medium bg-zinc-50/50">
+                  <td colSpan={8} className="px-6 py-12 text-center text-zinc-500 font-medium bg-zinc-50/50">
                     Không tìm thấy kết quả nào.
                   </td>
                 </tr>
               ) : (
                 finalResults.map((row) => (
                   <tr key={row.id} className={`transition-colors ${row.is_unsubmitted ? 'bg-zinc-50/80 grayscale-[30%] opacity-80' : 'hover:bg-zinc-50'}`}>
+                    <td className="px-6 py-4 text-center">
+                      {!row.is_unsubmitted && (
+                        <input type="checkbox" onChange={(e) => handleSelectRow(e, row.id)} checked={selectedIds.includes(row.id)} className="w-4 h-4 rounded border-zinc-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer"/>
+                      )}
+                    </td>
                     <td className="px-6 py-4">
                       <div className={`font-bold ${row.is_unsubmitted ? 'text-zinc-600' : 'text-zinc-900'}`}>{row.profiles?.full_name || 'Học sinh ẩn'}</div>
                       <div className="text-zinc-500 text-xs flex items-center gap-1 mt-1">
@@ -240,6 +307,13 @@ export default function ExamResultsPage() {
                     <td className="px-6 py-4 text-right text-zinc-500 text-xs font-medium">
                       {row.created_at ? new Date(row.created_at).toLocaleString('vi-VN') : <span className="text-zinc-300">-</span>}
                     </td>
+                    <td className="px-6 py-4 text-center">
+                      {!row.is_unsubmitted && (
+                        <button onClick={() => openReviewModal(row)} className="text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 p-2 rounded-lg transition-colors" title="Chấm chi tiết">
+                          <Eye className="w-5 h-5" />
+                        </button>
+                      )}
+                    </td>
                   </tr>
                 ))
               )}
@@ -247,6 +321,13 @@ export default function ExamResultsPage() {
           </table>
         </div>
       </div>
+      
+      <ReviewModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        resultData={selectedResultData}
+        onUpdateSuccess={fetchData}
+      />
     </div>
   );
 }

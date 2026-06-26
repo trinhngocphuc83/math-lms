@@ -22,7 +22,7 @@ export default function StudentExamRoom() {
   // Playing State
   const [submissionId, setSubmissionId] = useState("");
   const [questions, setQuestions] = useState<any[]>([]);
-  const [answers, setAnswers] = useState<Record<number, number>>({});
+  const [answers, setAnswers] = useState<Record<number, any>>({});
   const [currentQuestionIdx, setCurrentQuestionIdx] = useState(0);
   const [timeLeft, setTimeLeft] = useState(0);
   

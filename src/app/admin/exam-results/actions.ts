@@ -24,7 +24,7 @@ export async function fetchExamResultsAdmin() {
     .from('exam_results')
     .select(`
       *,
-      profiles (full_name, email),
+      profiles (full_name),
       lessons (title)
     `)
     .order('created_at', { ascending: false });

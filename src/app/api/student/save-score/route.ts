@@ -1,5 +1,11 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
+import { createClient as createAdminClient } from '@supabase/supabase-js';
+
+const supabaseAdmin = createAdminClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.SUPABASE_SERVICE_ROLE_KEY!
+);
 
 export async function POST(request: Request) {
   try {
@@ -11,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { lessonId, moduleId, score, passed, cheatWarnings = 0 } = body;
+    const { lessonId, moduleId, score, passed, cheatWarnings = 0, globalImages = [], gradingDetails = [] } = body;
 
     if (!lessonId) {
       return NextResponse.json({ error: 'Missing lessonId' }, { status: 400 });
@@ -31,6 +37,54 @@ export async function POST(request: Request) {
       console.error('Error fetching attempts:', fetchError);
     }
 
+    
+
+// ...
+    // Xử lý ảnh cho từng câu tự luận trong gradingDetails
+    if (gradingDetails && gradingDetails.length > 0) {
+      for (let j = 0; j < gradingDetails.length; j++) {
+        const questionDetail = gradingDetails[j];
+        if (questionDetail.images && questionDetail.images.length > 0) {
+          const uploadedUrls: string[] = [];
+          for (let i = 0; i < questionDetail.images.length; i++) {
+            const base64Str = questionDetail.images[i];
+            
+            // Nếu đã là link public (do làm bài lại giữ nguyên ảnh cũ) thì ko cần up
+            if (base64Str.startsWith('http')) {
+              uploadedUrls.push(base64Str);
+              continue;
+            }
+            
+            try {
+              const base64Data = base64Str.replace(/^data:image\/\w+;base64,/, '');
+              const buffer = Buffer.from(base64Data, 'base64');
+              const filename = `${user.id}/${lessonId}_${Date.now()}_q${questionDetail.qIndex}_img${i}.jpg`;
+              
+              const { error: uploadError } = await supabaseAdmin.storage
+                .from('lesson_submissions')
+                .upload(filename, buffer, { contentType: 'image/jpeg', upsert: true });
+                
+              if (!uploadError) {
+                const { data } = supabaseAdmin.storage.from('lesson_submissions').getPublicUrl(filename);
+                uploadedUrls.push(data.publicUrl);
+              } else {
+                console.error(`Lỗi upload ảnh câu ${questionDetail.qIndex}:`, uploadError);
+                uploadedUrls.push(base64Str);
+              }
+            } catch (err) {
+              console.error(`Lỗi xử lý base64 ảnh câu ${questionDetail.qIndex}:`, err);
+            }
+          }
+          questionDetail.images = uploadedUrls;
+        }
+      }
+    }
+
+    const answersData = {
+      globalImages: [], // Bỏ globalImages, chỉ dùng ảnh trong gradingDetails
+      gradingDetails: gradingDetails
+    };
+
     const nextAttempt = (attempts && attempts.length > 0) ? attempts[0].attempt_number + 1 : 1;
 
     // Lưu kết quả mới
@@ -44,7 +98,8 @@ export async function POST(request: Request) {
           score: score,
           passed: passed,
           attempt_number: nextAttempt,
-          cheat_warnings: cheatWarnings
+          cheat_warnings: cheatWarnings,
+          answers: answersData
         }
       ])
       .select()
