@@ -1,0 +1,66 @@
+[
+  {
+    "id": "chap-1-alg-9",
+    "course_id": "math-9",
+    "title": "Chương I: Căn bậc hai. Căn bậc ba",
+    "lessons": [
+      {
+        "id": "les-1-1",
+        "title": "Bài 1: Căn bậc hai",
+        "content": [
+          {
+            "type": "text",
+            "content": "Căn bậc hai số học của một số không âm $a$ là số $x$ không âm sao cho $x^2 = a$."
+          },
+          {
+            "type": "math-block",
+            "content": "\\sqrt{a} = x \\iff \\begin{cases} x \\ge 0 \\\\ x^2 = a \\end{cases}"
+          },
+          {
+            "type": "text",
+            "content": "Ví dụ:"
+          },
+          {
+            "type": "example",
+            "content": "Căn bậc hai số học của $16$ là $4$, vì $4 \\ge 0$ và $4^2 = 16$. Kí hiệu: $\\sqrt{16} = 4$."
+          }
+        ],
+        "exercises": [
+          {
+            "id": "ex-1-1-1",
+            "question": "Tính căn bậc hai số học của 25.",
+            "options": ["-5", "5", "$\\pm 5$", "2.5"],
+            "correct_index": 1,
+            "solution_steps": [
+              {
+                "step": 1,
+                "explanation": "Ta cần tìm số x không âm sao cho $x^2 = 25$.",
+                "math": "x \\ge 0, x^2 = 25"
+              },
+              {
+                "step": 2,
+                "explanation": "Ta biết rằng $5^2 = 25$.",
+                "math": "x = 5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "les-1-2",
+        "title": "Bài 2: Căn thức bậc hai và hằng đẳng thức",
+        "content": [
+          {
+            "type": "text",
+            "content": "Hằng đẳng thức cực kỳ quan trọng cần nhớ:"
+          },
+          {
+            "type": "math-block",
+            "content": "\\sqrt{A^2} = |A| = \\begin{cases} A & \\text{nếu } A \\ge 0 \\\\ -A & \\text{nếu } A < 0 \\end{cases}"
+          }
+        ],
+        "exercises": []
+      }
+    ]
+  }
+]

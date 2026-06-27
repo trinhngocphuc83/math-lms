@@ -19,12 +19,11 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
   const [searchTerm, setSearchTerm] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [selectedQuestions, setSelectedQuestions] = useState<any[]>([]);
-  const [isInserting, setIsInserting] = useState(false);
   
   // Categories & Filters State
   const [categories, setCategories] = useState<any[]>([]);
   const [filters, setFilters] = useState({
-    grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: "", question_type: ""
+    grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: ""
   });
   
   const DIFFICULTY_LABELS: Record<string, string> = {
@@ -32,13 +31,6 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
     "2": "Thông hiểu",
     "3": "Vận dụng",
     "4": "Vận dụng cao"
-  };
-  
-  const QUESTION_TYPES: Record<string, string> = {
-    "NLC": "Trắc nghiệm",
-    "DS": "Đúng/Sai",
-    "TLN": "Trả lời ngắn",
-    "TL": "Tự luận"
   };
   
   const [currentPage, setCurrentPage] = useState(1);
@@ -105,7 +97,6 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
       if (filters.lesson) query = query.eq('lesson', filters.lesson);
       if (filters.math_form) query = query.eq('math_form', filters.math_form);
       if (filters.difficulty) query = query.eq('difficulty', filters.difficulty);
-      if (filters.question_type) query = query.eq('question_type', filters.question_type);
       
       const { data, count, error } = await query
         .order("created_at", { ascending: false })
@@ -149,25 +140,10 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
     }
   };
 
-  const handleInsert = async () => {
+  const handleInsert = () => {
     if (selectedQuestions.length === 0) return;
-    setIsInserting(true);
-    
-    try {
-      // Cập nhật lượt đếm trong CSDL
-      for (const q of selectedQuestions) {
-        const newCount = (q.usage_count || 0) + 1;
-        await supabase.from('questions').update({ usage_count: newCount }).eq('id', q.id);
-      }
-      
-      onInsert(selectedQuestions);
-      onClose();
-    } catch (e: any) {
-      console.error("Lỗi khi cập nhật bộ đếm:", e);
-      alert("Đã xảy ra lỗi khi chèn câu hỏi.");
-    } finally {
-      setIsInserting(false);
-    }
+    onInsert(selectedQuestions);
+    onClose();
   };
 
   const handleFilterChange = (field: string, value: string) => {
@@ -225,20 +201,13 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
               <option value="3">Vận dụng</option>
               <option value="4">Vận dụng cao</option>
             </select>
-            <select value={filters.question_type} onChange={e => handleFilterChange('question_type', e.target.value)} className="w-36 px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-orange-500 font-medium text-gray-600">
-              <option value="">-- Mọi Dạng --</option>
-              <option value="NLC">Trắc nghiệm</option>
-              <option value="DS">Đúng/Sai</option>
-              <option value="TLN">Trả lời ngắn</option>
-              <option value="TL">Tự luận</option>
-            </select>
             <div className="flex items-center gap-2">
                <button 
                   onClick={handleInsert}
-                  disabled={selectedQuestions.length === 0 || isInserting}
+                  disabled={selectedQuestions.length === 0}
                   className="flex items-center gap-2 bg-orange-600 text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-orange-600/30 hover:bg-orange-700 hover:-translate-y-0.5 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none"
                >
-                 {isInserting ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                 <CheckCircle2 className="w-4 h-4" />
                  Chèn {selectedQuestions.length > 0 ? `(${selectedQuestions.length})` : ''} câu
                </button>
             </div>
@@ -316,20 +285,15 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
                               <span className="text-[10px] font-black tracking-wider px-2 py-0.5 rounded-md bg-gray-100 text-gray-600 uppercase border border-gray-200 shadow-sm">
                                 {q.question_id || 'NO-ID'}
                               </span>
-                              {q.question_type && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-100">{QUESTION_TYPES[q.question_type] || q.question_type}</span>}
                               {q.grade && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700">{q.grade}</span>}
                               {q.difficulty && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-orange-50 text-orange-700 border border-orange-100">{DIFFICULTY_LABELS[q.difficulty] || `Mức ${q.difficulty}`}</span>}
                               
-                              <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-amber-100 text-amber-800 border border-amber-200">
-                                Đã xuất hiện: {q.usage_count || 0} lần
-                              </span>
-
                               {(() => {
                                   const usageCount = usedQuestionIds.filter(id => id === q.id).length;
                                   if (usageCount > 0) {
                                       return (
-                                         <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-red-50 text-red-600 border border-red-200 flex items-center gap-1" title="Câu hỏi này đã có mặt trong bài giảng hiện tại">
-                                            ⚠️ Có sẵn trong bài
+                                         <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-red-50 text-red-600 border border-red-200 flex items-center gap-1" title="Câu hỏi này đã được lấy vào bài giảng hiện tại">
+                                            ⚠️ Đã dùng {usageCount} lần
                                          </span>
                                       );
                                   }
