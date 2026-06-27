@@ -23,6 +23,11 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
   // Rollover State
   const [rolling, setRolling] = useState(false);
 
+  // Auto Deduct State
+  const [teacherAbsent, setTeacherAbsent] = useState(0);
+  const [standardSessions, setStandardSessions] = useState(classInfo?.sessions_per_month || 8);
+  const [isApplyingDeduct, setIsApplyingDeduct] = useState(false);
+
   useEffect(() => {
     fetchTuition();
   }, [classId, month, year]);
@@ -119,6 +124,54 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     setRolling(false);
   };
 
+  const handleApplyDeduct = async () => {
+    if (!confirm("Hệ thống sẽ tính toán lại mức Giảm trừ cho TẤT CẢ học sinh dựa trên số buổi thầy nghỉ và Ngày nhập học (nếu vào giữa tháng). Các mức giảm trừ cũ của tháng này sẽ bị ghi đè. Bạn có chắc chắn?")) return;
+    
+    setIsApplyingDeduct(true);
+    const feePerSession = (classInfo?.tuition_fee || 0) / standardSessions;
+    const currentMonthDays = new Date(year, month, 0).getDate();
+    
+    const newTuitionData = { ...tuitionData };
+    
+    for (const en of enrollments) {
+      const stId = en.profiles.id;
+      let missedBeforeEnrollment = 0;
+      
+      if (en.profiles.enrollment_date) {
+        const enrollDate = new Date(en.profiles.enrollment_date);
+        if (enrollDate.getMonth() + 1 === month && enrollDate.getFullYear() === year) {
+          const dayEnrolled = enrollDate.getDate();
+          missedBeforeEnrollment = Math.round((dayEnrolled - 1) / currentMonthDays * standardSessions);
+        }
+      }
+      
+      const totalMissed = teacherAbsent + missedBeforeEnrollment;
+      const calculatedDiscount = Math.round(totalMissed * feePerSession);
+      
+      const current = newTuitionData[stId] || { base_fee: classInfo?.tuition_fee || 0, old_debt: 0, paid_amount: 0, status: 'UNPAID' };
+      const updated = { ...current, discount: calculatedDiscount };
+      
+      let newStatus = updated.status;
+      const totalDue = updated.base_fee + updated.old_debt - updated.discount;
+      if (updated.paid_amount >= totalDue && totalDue > 0) newStatus = 'PAID';
+      else if (updated.paid_amount > 0) newStatus = 'PARTIAL';
+      else newStatus = 'UNPAID';
+      
+      updated.status = newStatus;
+      
+      await updateTuitionFee(classId, stId, month, year, {
+        discount: calculatedDiscount,
+        status: newStatus
+      });
+      
+      newTuitionData[stId] = updated;
+    }
+    
+    setTuitionData(newTuitionData);
+    setIsApplyingDeduct(false);
+    alert("Đã cập nhật giảm trừ thành công!");
+  };
+
   const exportExcel = () => {
     import("xlsx").then((XLSX) => {
       const data = enrollments.map((en, idx) => {
@@ -213,6 +266,21 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
             </select>
             <span className="text-gray-300">/</span>
             <input type="number" value={year} onChange={e=>setYear(Number(e.target.value))} className="w-20 bg-transparent font-bold text-gray-800 outline-none px-2 py-1" />
+          </div>
+
+          <div className="bg-orange-50 p-2 rounded-xl border border-orange-100 flex items-center gap-3">
+            <div className="flex items-center gap-2 px-2">
+              <label className="text-sm font-bold text-orange-800">Số buổi/tháng:</label>
+              <input type="number" value={standardSessions} onChange={e=>setStandardSessions(Number(e.target.value))} className="w-12 px-1 py-0.5 rounded border border-orange-200 text-center font-bold outline-none text-orange-900 bg-white" />
+            </div>
+            <div className="w-px h-6 bg-orange-200"></div>
+            <div className="flex items-center gap-2 px-2">
+              <label className="text-sm font-bold text-orange-800">Thầy nghỉ:</label>
+              <input type="number" value={teacherAbsent} onChange={e=>setTeacherAbsent(Number(e.target.value))} className="w-12 px-1 py-0.5 rounded border border-orange-200 text-center font-bold outline-none text-orange-900 bg-white" />
+            </div>
+            <button onClick={handleApplyDeduct} disabled={isApplyingDeduct} className="px-3 py-1.5 bg-orange-500 hover:bg-orange-600 text-white font-bold rounded-lg text-sm transition-colors flex items-center gap-1 shadow-sm disabled:opacity-50">
+              {isApplyingDeduct ? <Loader2 size={14} className="animate-spin" /> : "Tự động trừ phí"}
+            </button>
           </div>
         </div>
 

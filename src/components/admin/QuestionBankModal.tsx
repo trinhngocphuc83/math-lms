@@ -23,7 +23,7 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
   // Categories & Filters State
   const [categories, setCategories] = useState<any[]>([]);
   const [filters, setFilters] = useState({
-    grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: ""
+    grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: "", question_type: ""
   });
   
   const DIFFICULTY_LABELS: Record<string, string> = {
@@ -31,6 +31,13 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
     "2": "Thông hiểu",
     "3": "Vận dụng",
     "4": "Vận dụng cao"
+  };
+  
+  const QUESTION_TYPES: Record<string, string> = {
+    "NLC": "Trắc nghiệm",
+    "DS": "Đúng/Sai",
+    "TLN": "Trả lời ngắn",
+    "TL": "Tự luận"
   };
   
   const [currentPage, setCurrentPage] = useState(1);
@@ -97,6 +104,7 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
       if (filters.lesson) query = query.eq('lesson', filters.lesson);
       if (filters.math_form) query = query.eq('math_form', filters.math_form);
       if (filters.difficulty) query = query.eq('difficulty', filters.difficulty);
+      if (filters.question_type) query = query.eq('question_type', filters.question_type);
       
       const { data, count, error } = await query
         .order("created_at", { ascending: false })
@@ -201,6 +209,13 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
               <option value="3">Vận dụng</option>
               <option value="4">Vận dụng cao</option>
             </select>
+            <select value={filters.question_type} onChange={e => handleFilterChange('question_type', e.target.value)} className="w-36 px-3 py-2 bg-gray-50 border border-gray-200 rounded-xl text-sm outline-none focus:border-orange-500 font-medium text-gray-600">
+              <option value="">-- Mọi Dạng --</option>
+              <option value="NLC">Trắc nghiệm</option>
+              <option value="DS">Đúng/Sai</option>
+              <option value="TLN">Trả lời ngắn</option>
+              <option value="TL">Tự luận</option>
+            </select>
             <div className="flex items-center gap-2">
                <button 
                   onClick={handleInsert}
@@ -285,6 +300,7 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
                               <span className="text-[10px] font-black tracking-wider px-2 py-0.5 rounded-md bg-gray-100 text-gray-600 uppercase border border-gray-200 shadow-sm">
                                 {q.question_id || 'NO-ID'}
                               </span>
+                              {q.question_type && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-100">{QUESTION_TYPES[q.question_type] || q.question_type}</span>}
                               {q.grade && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700">{q.grade}</span>}
                               {q.difficulty && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-orange-50 text-orange-700 border border-orange-100">{DIFFICULTY_LABELS[q.difficulty] || `Mức ${q.difficulty}`}</span>}
                               

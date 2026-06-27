@@ -12,7 +12,7 @@ export async function getEnrollments(classId: string) {
     .from('enrollments')
     .select(`
       id, status, enrolled_at,
-      profiles (id, full_name, username, student_phone, parent_name, parent_phone, school)
+      profiles (id, full_name, username, student_phone, parent_name, parent_phone, school, enrollment_date)
     `)
     .eq('class_id', classId)
     .order('enrolled_at', { ascending: false });

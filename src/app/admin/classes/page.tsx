@@ -22,12 +22,14 @@ export default function AdminClassesPage() {
   // Modal State
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [editingClassId, setEditingClassId] = useState<string | null>(null);
   
   // Form State
   const [className, setClassName] = useState("");
   const [gradeId, setGradeId] = useState("");
   const [courseId, setCourseId] = useState("");
   const [maxStudents, setMaxStudents] = useState("30");
+  const [sessionsPerMonth, setSessionsPerMonth] = useState("8");
   const [tuitionFee, setTuitionFee] = useState("0");
   const [schedule, setSchedule] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -93,34 +95,61 @@ export default function AdminClassesPage() {
     setLoading(false);
   };
 
-  const handleCreateClass = async (e: React.FormEvent) => {
+  const handleSaveClass = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!className || !gradeId || !courseId) return alert("Vui lòng điền đầy đủ Tên lớp, Khối lớp và Khóa học!");
     
     setIsSubmitting(true);
-    const { error } = await supabase.from('classes').insert([{
+    const payload = {
       name: className.trim(),
       grade_level_category_id: gradeId,
       course_id: courseId,
       max_students: parseInt(maxStudents) || 30,
+      sessions_per_month: parseInt(sessionsPerMonth) || 8,
       tuition_fee: parseInt(tuitionFee) || 0,
       schedule: schedule.trim() || null,
       start_date: startDate || null,
       status: 'active'
-    }]);
+    };
+
+    let error;
+    if (editingClassId) {
+      const res = await supabase.from('classes').update(payload).eq('id', editingClassId);
+      error = res.error;
+    } else {
+      const res = await supabase.from('classes').insert([payload]);
+      error = res.error;
+    }
 
     setIsSubmitting(false);
     if (error) {
-      alert("Lỗi khi tạo lớp học: " + error.message);
+      alert("Lỗi khi lưu lớp học: " + error.message);
     } else {
       setIsModalOpen(false);
+      setEditingClassId(null);
       setClassName("");
       setGradeId("");
       setCourseId("");
       setSchedule("");
       setStartDate("");
+      setTuitionFee("0");
+      setSessionsPerMonth("8");
+      setMaxStudents("30");
       fetchData();
     }
+  };
+
+  const handleEditClick = (cls: any) => {
+    setEditingClassId(cls.id);
+    setClassName(cls.name || "");
+    setGradeId(cls.grade_level_category_id || "");
+    setCourseId(cls.course_id || "");
+    setMaxStudents((cls.max_students || 30).toString());
+    setSessionsPerMonth((cls.sessions_per_month || 8).toString());
+    setTuitionFee((cls.tuition_fee || 0).toString());
+    setSchedule(cls.schedule || "");
+    setStartDate(cls.start_date || "");
+    setIsModalOpen(true);
   };
 
   const handleDelete = async (id: string, name: string) => {
@@ -145,7 +174,18 @@ export default function AdminClassesPage() {
           <p className="text-gray-500 mt-2 font-medium">Tổ chức lớp học, sắp xếp học sinh và quản lý lịch học.</p>
         </div>
         <button 
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => {
+            setEditingClassId(null);
+            setClassName("");
+            setGradeId("");
+            setCourseId("");
+            setSchedule("");
+            setStartDate("");
+            setTuitionFee("0");
+            setSessionsPerMonth("8");
+            setMaxStudents("30");
+            setIsModalOpen(true);
+          }}
           className="flex items-center gap-2 bg-teal-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-600/20 transition-all active:scale-95"
         >
           <Plus size={20} strokeWidth={2.5} />
@@ -178,7 +218,18 @@ export default function AdminClassesPage() {
           <p className="text-lg font-medium text-gray-800 mb-2">Chưa có lớp học nào</p>
           <p className="text-gray-500 mb-6">Hãy tạo lớp học đầu tiên để bắt đầu thêm học sinh vào lớp!</p>
           <button 
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => {
+              setEditingClassId(null);
+              setClassName("");
+              setGradeId("");
+              setCourseId("");
+              setSchedule("");
+              setStartDate("");
+              setTuitionFee("0");
+              setSessionsPerMonth("8");
+              setMaxStudents("30");
+              setIsModalOpen(true);
+            }}
             className="inline-flex items-center gap-2 text-teal-600 font-bold hover:underline"
           >
             <Plus size={18} /> Tạo ngay
@@ -207,6 +258,9 @@ export default function AdminClassesPage() {
                     </h3>
                   </div>
                   <div className="flex items-center gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity bg-white p-1 rounded-lg shadow-sm border border-gray-100">
+                    <button onClick={() => handleEditClick(cls)} className="p-1.5 text-teal-600 hover:bg-teal-50 rounded-md transition-colors" title="Sửa">
+                      <Edit2 className="w-4 h-4" />
+                    </button>
                     <button onClick={() => handleDelete(cls.id, cls.name)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors" title="Xóa">
                       <Trash2 className="w-4 h-4" />
                     </button>
@@ -228,10 +282,10 @@ export default function AdminClassesPage() {
                   
                   <div className="flex items-center gap-3 text-sm text-gray-600">
                     <DollarSign className="w-4 h-4 text-gray-400 shrink-0" />
-                    <span className="font-medium text-emerald-600">
-                      {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(cls.tuition_fee || 0)}/tháng
-                    </span>
-                  </div>
+                      <span className="font-medium text-emerald-600">
+                        {new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(cls.tuition_fee || 0)}/tháng ({cls.sessions_per_month || 8} buổi)
+                      </span>
+                    </div>
                 </div>
 
                 <div className="pt-5 border-t border-gray-50 flex items-center justify-between">
@@ -267,14 +321,14 @@ export default function AdminClassesPage() {
           <div className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm" onClick={() => setIsModalOpen(false)} />
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg relative animate-in fade-in zoom-in-95 duration-200 overflow-hidden flex flex-col max-h-[90vh]">
             <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gray-50 shrink-0">
-              <h3 className="text-xl font-bold text-gray-800">Tạo Lớp học mới</h3>
+              <h3 className="text-xl font-bold text-gray-800">{editingClassId ? 'Chỉnh sửa Lớp học' : 'Tạo Lớp học mới'}</h3>
               <button onClick={() => setIsModalOpen(false)} className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="p-6 overflow-y-auto flex-1 custom-scrollbar">
-              <form id="createClassForm" onSubmit={handleCreateClass} className="space-y-5">
+              <form id="createClassForm" onSubmit={handleSaveClass} className="space-y-5">
                 <div>
                   <label className="block text-sm font-bold text-gray-700 mb-1">Tên lớp học <span className="text-red-500">*</span></label>
                   <input 
@@ -321,14 +375,25 @@ export default function AdminClassesPage() {
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">Học phí (VNĐ/Tháng)</label>
-                    <input 
-                      type="number" 
-                      value={tuitionFee} onChange={e => setTuitionFee(e.target.value)}
-                      placeholder="VD: 600000"
-                      className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 outline-none font-medium"
-                    />
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-bold text-gray-700 mb-1">Số buổi/tháng</label>
+                      <input 
+                        type="number" 
+                        value={sessionsPerMonth} onChange={e => setSessionsPerMonth(e.target.value)}
+                        placeholder="VD: 8"
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 outline-none font-medium"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-bold text-gray-700 mb-1">Học phí (VNĐ/Tháng)</label>
+                      <input 
+                        type="number" 
+                        value={tuitionFee} onChange={e => setTuitionFee(e.target.value)}
+                        placeholder="VD: 600000"
+                        className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 outline-none font-medium"
+                      />
+                    </div>
                   </div>
                   <div>
                     <label className="block text-sm font-bold text-gray-700 mb-1">Sĩ số tối đa</label>
@@ -363,8 +428,8 @@ export default function AdminClassesPage() {
                 type="submit" form="createClassForm" disabled={isSubmitting}
                 className="px-6 py-2.5 rounded-xl bg-teal-600 text-white font-bold hover:bg-teal-700 shadow-sm shadow-teal-600/20 transition-all flex items-center gap-2 disabled:opacity-50"
               >
-                {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Plus className="w-5 h-5" />} 
-                Lưu Lớp học
+                {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : (editingClassId ? <Edit2 className="w-5 h-5" /> : <Plus className="w-5 h-5" />)} 
+                {editingClassId ? 'Cập nhật Lớp học' : 'Lưu Lớp học'}
               </button>
             </div>
           </div>
