@@ -109,9 +109,19 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
          else if (q.question_type === 'TLN') blockType = 'short_answer';
          else if (q.question_type === 'DS') blockType = 'true_false_cluster';
 
+         let questionContent = q.content || "";
+         if (q.image_url) {
+             const placeholderRegex = /(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?BẢNG BIẾN THIÊN.*?\])/i;
+             if (placeholderRegex.test(questionContent)) {
+                 questionContent = questionContent.replace(new RegExp(placeholderRegex, 'ig'), `\n\n![Hình vẽ](${q.image_url})\n\n`);
+             } else {
+                 questionContent += `\n\n![Hình vẽ](${q.image_url})\n\n`;
+             }
+         }
+
          const content: any = {
              type: blockType,
-             question: q.content || "",
+             question: questionContent,
              sampleAnswer: q.explanation || "",
              sourceQuestionId: q.id // Lưu ID để đếm số lần sử dụng
          };
