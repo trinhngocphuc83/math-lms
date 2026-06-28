@@ -275,7 +275,10 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
      - Bạn PHẢI gán "dangToan": "Toán tổng hợp".
   3. GIỮ NGUYÊN DANH MỤC: Nếu trường "chuyenDe" hoặc "tenBai" trong mẫu JSON đã được điền sẵn một giá trị (Không phải chữ "Tự suy luận"), BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ CÁC TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI BẤT KỲ KÝ TỰ NÀO.
   4. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ các lệnh LaTeX. Ví dụ: Phải viết $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$, viết $\\\\sqrt{2}$ thay vì $\\sqrt{2}$.
-  5. NẾU TRONG ĐỀ CÓ HÌNH VẼ, ĐỒ THỊ, BẢNG BIẾN THIÊN, HOẶC BẢNG XÉT DẤU: Tuyệt đối KHÔNG cố gắng vẽ lại bằng Markdown, ASCII hay LaTeX. Thay vào đó, hãy chỉ ghi đúng chữ "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" vào vị trí đó trong nội dung. Người dùng sẽ tự chèn ảnh vào sau.`;
+  5. NẾU TRONG ĐỀ CÓ HÌNH VẼ, ĐỒ THỊ, BẢNG BIẾN THIÊN, HOẶC BẢNG XÉT DẤU: Tuyệt đối KHÔNG cố gắng vẽ lại bằng Markdown, ASCII hay LaTeX. Thay vào đó, hãy chỉ ghi đúng chữ "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" vào vị trí đó trong nội dung. Người dùng sẽ tự chèn ảnh vào sau.
+  6. ÉP BUỘC TRƯỜNG ĐÁP ÁN ĐÚNG: Bạn TUYỆT ĐỐI KHÔNG ĐƯỢC BỎ TRỐNG trường "dapAnDung".
+     - Với câu Trắc nghiệm (NLC): Phải điền A, B, C hoặc D.
+     - Với câu Đúng/Sai (DS): Phải điền chuỗi 4 ký tự Đ và S (VD: "Đ S Đ S" hoặc "ĐĐSĐ"). Hãy đọc kỹ đề bài và lời giải để suy ra. TUYỆT ĐỐI KHÔNG ĐƯỢC ĐỂ TRỐNG.`;
 
       const parts = await Promise.all(aiImageFiles.map(async file => {
         const base64Data = await fileToBase64(file);
