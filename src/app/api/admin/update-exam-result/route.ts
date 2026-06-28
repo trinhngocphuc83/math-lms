@@ -24,6 +24,7 @@ export async function PUT(request: Request) {
       .from('exam_results')
       .update({
         score: score,
+        passed: score >= 7,
         answers: answers,
         is_reviewed: true // Đánh dấu giáo viên đã xem/chấm lại
       })
