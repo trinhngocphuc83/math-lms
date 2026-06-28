@@ -34,7 +34,8 @@ const normalizeAnswer = (s: string) => {
     .replace(/\s+/g, '')
     .replace(/,/g, '.')
     .replace(/\$/g, '')
-    .replace(/\\frac\{(\d+)\}\{(\d+)\}/g, '$1/$2');
+    .replace(/\\frac\{(\d+)\}\{(\d+)\}/g, '$1/$2')
+    .replace(/^[xy]=/, '');
 };
 
 // Hàm xác định dạng bài và tỉ lệ điểm

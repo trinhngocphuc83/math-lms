@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
-import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download } from "lucide-react";
+import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
@@ -17,7 +17,77 @@ const normalizeAnswer = (s: string) => {
       .replace(/\s+/g, '')
       .replace(/,/g, '.')
       .replace(/\$/g, '')
-      .replace(/\\frac\{(\d+)\}\{(\d+)\}/g, '$1/$2');
+      .replace(/\\frac\{(\d+)\}\{(\d+)\}/g, '$1/$2')
+      .replace(/^[xy]=/, ''); // Bỏ qua x= hoặc y= ở đầu đáp án
+};
+
+const customMarkdownComponents: any = {
+   strong: ({node, children, ...props}: any) => {
+      const text = String(children);
+      if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải") || text.toLowerCase().includes("lời giải")) {
+         return (
+            <span className="block mt-10 mb-4 not-prose w-full">
+               <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3 rounded-t-2xl font-black flex items-center gap-3 w-max max-w-full shadow-md">
+                  <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 shadow-inner text-lg">💡</span>
+                  {text.toUpperCase()}
+               </span>
+               <span className="bg-white border-l-4 border-orange-400 p-4 rounded-b-2xl rounded-tr-2xl shadow-sm border border-slate-100 flex items-center gap-2 mb-2 w-full">
+                  <span className="text-orange-600 font-bold text-sm uppercase flex items-center gap-2">
+                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
+                     Các bước chi tiết bên dưới
+                  </span>
+               </span>
+            </span>
+         );
+      }
+      if (text.toLowerCase().startsWith("bước")) {
+         return (
+            <span className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-400 text-white px-3 py-1 rounded-lg font-black shadow-sm mt-3 mb-1 mr-2">
+              <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
+              {children}
+            </span>
+         );
+      }
+      return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
+   },
+   li: ({node, children, ...props}: any) => (
+       <li className="flex items-start gap-3 mb-3 relative group" {...props}>
+          <span className="w-5 h-5 mt-1 shrink-0 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center shadow-sm border border-indigo-200">
+             <CheckCircle2 className="w-3 h-3" />
+          </span>
+          <div className="flex-1 min-w-0">{children}</div>
+       </li>
+   ),
+   p: ({node, children, ...props}: any) => {
+       const kids = React.Children.toArray(children);
+       const newKids: React.ReactNode[] = [];
+       
+       let isStartOfLine = true;
+       kids.forEach((child, index) => {
+           if (isStartOfLine) {
+               let shouldInject = true;
+               if (typeof child === 'string' && child.trim() === '') shouldInject = false;
+               if (React.isValidElement(child) && child.props && child.props.className && child.props.className.includes('math-display')) shouldInject = false;
+               
+               if (shouldInject) {
+                   newKids.push(
+                       <span key={`icon-${index}`} className="inline-flex items-center justify-center mr-2 mt-1.5 align-top text-orange-500 bg-orange-50 rounded shadow-sm border border-orange-100 w-5 h-5 shrink-0">
+                          <ChevronRight className="w-3.5 h-3.5 shrink-0" />
+                       </span>
+                   );
+               }
+               isStartOfLine = false;
+           }
+           
+           newKids.push(child);
+           
+           if (React.isValidElement(child) && child.type === 'br') {
+               isStartOfLine = true;
+           }
+       });
+
+       return <p className="mb-6 text-[1.1rem] leading-[1.8] text-gray-700 flex flex-wrap items-start" {...props}>{newKids}</p>;
+   }
 };
 
 const getYouTubeEmbedUrl = (url: string) => {
@@ -178,7 +248,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
       <div className="text-lg font-bold text-gray-800 mb-6 flex flex-col md:flex-row items-start md:items-center gap-3">
          <span className="text-indigo-800 bg-indigo-100 border-2 border-indigo-200 px-4 py-1.5 rounded-2xl text-sm shrink-0 font-black tracking-wide">THỬ THÁCH NHỎ</span>
          <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed text-slate-700">
-            <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
+            <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
          </div>
       </div>
 
@@ -211,7 +281,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      {['A','B','C','D'][idx]}
                   </div>
                   <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
-                     <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{opt}</ReactMarkdown>
+                     <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{opt}</ReactMarkdown>
                   </div>
                </button>
              );
@@ -233,7 +303,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      <div className="flex items-start gap-3">
                         <div className="font-bold text-gray-500 w-6">{['A','B','C','D'][idx] || 'A'}.</div>
                         <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
-                           <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{stmt.content || stmt.text}</ReactMarkdown>
+                           <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{stmt.content || stmt.text}</ReactMarkdown>
                         </div>
                      </div>
                      <div className="flex items-center gap-2 shrink-0 md:ml-auto">
@@ -410,43 +480,14 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
                     prose-h3:text-[1.2rem] prose-h3:font-bold prose-h3:text-white prose-h3:bg-gradient-to-r prose-h3:from-emerald-500 prose-h3:to-teal-400 prose-h3:px-5 prose-h3:py-3 prose-h3:rounded-xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:shadow-md
                     prose-p:mb-6 prose-p:text-[1.1rem] prose-p:leading-[1.8] prose-p:text-gray-700
                     prose-strong:text-indigo-800 prose-strong:font-black prose-strong:bg-indigo-50/50 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded-md
-                    prose-li:mb-3 prose-ul:list-none prose-ul:pl-0 [&_ul>li]:relative [&_ul>li]:pl-7 [&_ul>li::before]:content-[''] [&_ul>li::before]:absolute [&_ul>li::before]:w-2.5 [&_ul>li::before]:h-2.5 [&_ul>li::before]:bg-indigo-600 [&_ul>li::before]:rounded-full [&_ul>li::before]:left-0 [&_ul>li::before]:top-2.5 [&_ul>li::before]:shadow-sm
+                    prose-li:mb-3 prose-ul:list-none prose-ul:pl-0 
                     [&_code]:bg-amber-100 [&_code]:text-amber-800 [&_code]:px-2 [&_code]:py-0.5 [&_code]:rounded-lg [&_code]:border [&_code]:border-amber-200 [&_code]:font-bold [&_code]:text-[0.9em]
                      [&_h2]:text-blue-700 [&_h2]:bg-blue-50 [&_h2]:px-4 [&_h2]:py-2 [&_h2]:rounded-xl [&_h2]:border-l-4 [&_h2]:border-blue-500 [&_h2]:inline-block [&_h2]:shadow-sm [&_h2]:mb-4 [&_h2]:mt-8 [&_h3]:text-amber-700 [&_h3]:bg-amber-50 [&_h3]:px-3 [&_h3]:py-1.5 [&_h3]:rounded-lg [&_h3]:border-l-4 [&_h3]:border-amber-400 [&_h3]:inline-block [&_h3]:shadow-sm [&_h3]:mt-6 [&_h3]:mb-3 [&_blockquote]:border-l-8 [&_blockquote]:border-dashed [&_blockquote]:border-emerald-400 [&_blockquote]:bg-gradient-to-r [&_blockquote]:from-emerald-50 [&_blockquote]:to-teal-50/30 [&_blockquote]:text-emerald-900 [&_blockquote]:px-6 [&_blockquote]:py-5 [&_blockquote]:rounded-[2rem] [&_blockquote]:shadow-sm [&_blockquote]:my-8 [&_blockquote_p]:m-0 [&_blockquote_p]:font-bold [&_blockquote_p]:leading-relaxed
                  ">
                    <ReactMarkdown 
                       remarkPlugins={[remarkMath, remarkBreaks]} 
                       rehypePlugins={[rehypeKatex]}
-                      components={{
-                         strong: ({node, children, ...props}) => {
-                            const text = String(children);
-                            if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải") || text.toLowerCase().includes("lời giải")) {
-                               return (
-                                  <span className="block mt-10 mb-4 not-prose w-full">
-                                     <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3 rounded-t-2xl font-black flex items-center gap-3 w-max max-w-full shadow-md">
-                                        <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 shadow-inner text-lg">💡</span>
-                                        {text.toUpperCase()}
-                                     </span>
-                                     <span className="bg-white border-l-4 border-orange-400 p-4 rounded-b-2xl rounded-tr-2xl shadow-sm border border-slate-100 flex items-center gap-2 mb-2 w-full">
-                                        <span className="text-orange-600 font-bold text-sm uppercase flex items-center gap-2">
-                                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
-                                           Các bước chi tiết bên dưới
-                                        </span>
-                                     </span>
-                                  </span>
-                               );
-                            }
-                            if (text.toLowerCase().startsWith("bước")) {
-                               return (
-                                  <span className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-400 text-white px-3 py-1 rounded-lg font-black shadow-sm mt-3 mb-1 mr-2">
-                                    <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-                                    {children}
-                                  </span>
-                               );
-                            }
-                            return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
-                         }
-                      }}
+                      components={customMarkdownComponents}
                    >
                      {p.content.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}
                    </ReactMarkdown>
