@@ -20,6 +20,11 @@ export default function ReviewModal({ isOpen, onClose, resultData, onUpdateSucce
   const [isAIGrading, setIsAIGrading] = useState(false);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
+  const [showGlobalAIBox, setShowGlobalAIBox] = useState(false);
+  const [globalCustomPrompt, setGlobalCustomPrompt] = useState<string>('');
+  const [globalSelectedImages, setGlobalSelectedImages] = useState<string[]>([]);
+  const [isCopyingImages, setIsCopyingImages] = useState(false);
+
   useEffect(() => {
     if (isOpen && resultData) {
       const initialAnswers = resultData.answers || { globalImages: [], gradingDetails: [] };
@@ -29,10 +34,28 @@ export default function ReviewModal({ isOpen, onClose, resultData, onUpdateSucce
     }
   }, [isOpen, resultData]);
 
+  // Khởi tạo danh sách ảnh chọn khi mở Global AI Box
+  useEffect(() => {
+    if (showGlobalAIBox) {
+      // allImages is not computed yet here, but we can compute it on the fly
+      const images = answers?.globalImages || [];
+      const gradingDetails = answers?.gradingDetails || [];
+      const ai = Array.from(new Set([
+        ...images,
+        ...gradingDetails.flatMap((d: any) => d.images || [])
+      ]));
+      setGlobalSelectedImages(ai);
+    }
+  }, [showGlobalAIBox, answers]);
+
   if (!isOpen || !resultData) return null;
 
   const images = answers?.globalImages || [];
   const gradingDetails = answers?.gradingDetails || [];
+  const allImages = Array.from(new Set([
+    ...images,
+    ...gradingDetails.flatMap((d: any) => d.images || [])
+  ]));
 
   const handleSave = async () => {
     if (!confirm("Bạn có chắc chắn muốn lưu điểm và nhận xét này?")) return;
@@ -147,6 +170,113 @@ Hãy đưa ra Nhận xét chi tiết cho Học sinh và đánh giá số điểm
     alert("Đã sao chép Lệnh chấm bài chuẩn! Thầy có thể mở tab mới, vào trang web Gemini và dán vào đó (kèm theo thao tác Sao chép hình ảnh).");
   };
 
+  const generateGlobalManualPrompt = () => {
+    let prompt = `Bạn là Giám khảo chấm thi chuyên nghiệp.
+Hãy chấm toàn bộ bài làm tự luận (các hình ảnh đính kèm) của học sinh dựa trên Đề bài và Đáp án mẫu/Barem dưới đây.
+Đề thi gồm nhiều câu tự luận.
+
+[LỆNH ĐẶC BIỆT TỪ GIÁO VIÊN]: "${globalCustomPrompt || 'Chấm kỹ từng bước, đối chiếu chặt chẽ với barem.'}"
+
+NHIỆM VỤ CỦA BẠN:
+1. Đọc kỹ từng câu hỏi và đáp án mẫu/barem.
+2. Tìm và đọc phần bài làm của học sinh trong các ảnh đính kèm tương ứng với từng câu.
+3. Chấm điểm từng câu một cách công tâm, chỉ ra rõ học sinh sai ở bước nào, đúng ở bước nào.
+4. Cho điểm từng câu (không được vượt quá số điểm tối đa của câu đó).
+5. Cuối cùng, phải có phần TỔNG KẾT ĐIỂM: tính tổng số điểm học sinh đạt được trên tổng số điểm tối đa của toàn bài tự luận.
+
+--- DANH SÁCH CÁC CÂU HỎI TỰ LUẬN ---\n\n`;
+
+    let totalMaxScore = 0;
+    gradingDetails.forEach((detail: any, index: number) => {
+      const maxScore = detail.maxScore || 10;
+      totalMaxScore += maxScore;
+      prompt += `[CÂU ${index + 1} - Tối đa ${maxScore} điểm]:\n`;
+      if (detail.question) prompt += `ĐỀ BÀI: ${detail.question}\n`;
+      if (detail.sampleAnswer) prompt += `ĐÁP ÁN MẪU / BAREM: ${detail.sampleAnswer}\n`;
+      prompt += `\n`;
+    });
+
+    prompt += `Hãy làm theo đúng Nhiệm vụ trên. Lưu ý tổng điểm không được vượt quá ${totalMaxScore} điểm. Trình bày rõ ràng theo từng câu để tôi dễ đối chiếu.`;
+    return prompt;
+  };
+
+  const copyAllImages = async () => {
+    const imagesToCopy = globalSelectedImages.length > 0 ? globalSelectedImages : allImages;
+    if (imagesToCopy.length === 0) return alert("Không có ảnh nào để sao chép!");
+    
+    setIsCopyingImages(true);
+    try {
+      // 1. Tải tất cả ảnh
+      const loadedImages = await Promise.all(imagesToCopy.map(url => {
+        return new Promise<HTMLImageElement>((resolve, reject) => {
+          const img = new Image();
+          img.crossOrigin = "anonymous";
+          img.onload = () => resolve(img);
+          img.onerror = () => reject(new Error("Không thể tải ảnh từ máy chủ."));
+          img.src = url;
+        });
+      }));
+
+      // 2. Tính toán kích thước (Giới hạn chiều rộng để khỏi lỗi)
+      const MAX_WIDTH = 1200;
+      let totalHeight = 0;
+      let maxWidth = 0;
+      
+      const scaledImages = loadedImages.map(img => {
+        const scale = img.width > MAX_WIDTH ? MAX_WIDTH / img.width : 1;
+        const w = img.width * scale;
+        const h = img.height * scale;
+        maxWidth = Math.max(maxWidth, w);
+        totalHeight += h;
+        return { img, w, h };
+      });
+
+      // 3. Gộp ảnh bằng Canvas
+      const canvas = document.createElement("canvas");
+      canvas.width = maxWidth;
+      canvas.height = totalHeight;
+      const ctx = canvas.getContext("2d");
+      if (!ctx) throw new Error("Trình duyệt không hỗ trợ Canvas");
+
+      ctx.fillStyle = "white";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      let currentY = 0;
+      scaledImages.forEach(({img, w, h}) => {
+        const x = (maxWidth - w) / 2;
+        ctx.drawImage(img, x, currentY, w, h);
+        currentY += h;
+      });
+
+      // 4. Ghi vào Clipboard
+      await new Promise<void>((resolve, reject) => {
+        canvas.toBlob(async (blob) => {
+          if (!blob) return reject(new Error("Lỗi khi tạo ảnh gộp"));
+          try {
+            const item = new ClipboardItem({ "image/png": blob });
+            await navigator.clipboard.write([item]);
+            alert(`Đã gộp thành công ${imagesToCopy.length} ảnh thành 1 ẢNH DUY NHẤT và copy vào bộ nhớ tạm! Thầy hãy sang Gemini bấm Ctrl+V để dán.`);
+            resolve();
+          } catch (err) {
+            reject(err);
+          }
+        }, "image/png", 0.9);
+      });
+
+    } catch (e: any) {
+      console.error(e);
+      alert("Lỗi sao chép: " + e.message + "\nTrình duyệt của Thầy có thể chặn tính năng này, vui lòng sao chép thủ công từng ảnh.");
+    } finally {
+      setIsCopyingImages(false);
+    }
+  };
+
+  const toggleGlobalImageSelection = (url: string) => {
+    setGlobalSelectedImages(prev => 
+      prev.includes(url) ? prev.filter(u => u !== url) : [...prev, url]
+    );
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm">
       <div className="bg-white w-full max-w-7xl max-h-[95vh] rounded-2xl shadow-2xl flex flex-col overflow-hidden">
@@ -182,6 +312,13 @@ Hãy đưa ra Nhận xét chi tiết cho Học sinh và đánh giá số điểm
               
               <div className="flex gap-2">
                  <button 
+                  onClick={() => setShowGlobalAIBox(!showGlobalAIBox)}
+                  className={`px-4 py-2 border rounded-xl font-semibold transition-colors text-sm flex items-center gap-2 ${showGlobalAIBox ? 'bg-indigo-100 text-indigo-700 border-indigo-300' : 'bg-white text-indigo-600 border-indigo-200 hover:bg-indigo-50'}`}
+                 >
+                   <Bot className="w-4 h-4" />
+                   {showGlobalAIBox ? "Đóng vùng chấm AI" : "Chấm toàn bài bằng Gemini"}
+                 </button>
+                 <button 
                   onClick={calculateAutoScore}
                   className="px-4 py-2 bg-white text-indigo-600 border border-indigo-200 hover:bg-indigo-50 rounded-xl font-semibold transition-colors text-sm"
                  >
@@ -197,6 +334,95 @@ Hãy đưa ra Nhận xét chi tiết cho Học sinh và đánh giá số điểm
                  </button>
               </div>
             </div>
+
+            {/* Global AI Box */}
+            {showGlobalAIBox && (
+              <div className="mb-6 p-5 bg-gradient-to-r from-indigo-50 to-blue-50 border-2 border-indigo-200 rounded-2xl shadow-sm animate-in fade-in slide-in-from-top-4">
+                <div className="flex items-center gap-2 mb-4">
+                  <Bot className="w-6 h-6 text-indigo-600" />
+                  <h3 className="font-black text-lg text-indigo-900">Trạm Chấm Toàn Bài bằng Gemini (Thủ công)</h3>
+                </div>
+                
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Cột trái: Hình ảnh */}
+                  <div className="space-y-3 bg-white p-4 rounded-xl border border-indigo-100">
+                    <div className="flex justify-between items-center mb-2">
+                      <p className="text-sm font-bold text-indigo-800 uppercase flex items-center gap-1"><ImageIcon className="w-4 h-4"/> BƯỚC 1: SAO CHÉP ẢNH BÀI LÀM</p>
+                      {allImages.length > 0 && (
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2 py-1 rounded">Đã chọn: {globalSelectedImages.length}/{allImages.length}</span>
+                          <button onClick={() => setGlobalSelectedImages(globalSelectedImages.length === allImages.length ? [] : allImages)} className="text-xs font-bold text-blue-600 hover:underline">
+                            {globalSelectedImages.length === allImages.length ? 'Bỏ chọn hết' : 'Chọn tất cả'}
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    {allImages.length === 0 ? (
+                      <p className="text-sm text-red-500 italic">Không có ảnh nào trong bài làm này.</p>
+                    ) : (
+                      <div className="flex gap-3 flex-wrap max-h-64 overflow-y-auto p-2">
+                        {allImages.map((img: string, imgIdx: number) => {
+                          const isSelected = globalSelectedImages.includes(img);
+                          return (
+                            <div key={imgIdx} className="flex flex-col items-center gap-1">
+                              <div className={`relative w-24 h-24 rounded-lg overflow-hidden border-2 transition-all group ${isSelected ? 'border-indigo-600 ring-2 ring-indigo-300' : 'border-zinc-200 opacity-80 hover:opacity-100'}`}>
+                                <img src={img} className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform" onClick={() => setZoomedImage(img)} title="Phóng to" />
+                                <div className="absolute top-0 right-0 bg-white/90 rounded-bl-lg p-0.5">
+                                  <input 
+                                     type="checkbox" 
+                                     checked={isSelected}
+                                     onChange={() => toggleGlobalImageSelection(img)}
+                                     className="w-4 h-4 rounded border-zinc-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer block"
+                                  />
+                                </div>
+                              </div>
+                              <span className="text-[10px] font-bold text-zinc-500 uppercase">Ảnh {imgIdx + 1}</span>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+                    <button 
+                      onClick={copyAllImages}
+                      disabled={isCopyingImages}
+                      className="w-full mt-2 py-2.5 bg-indigo-100 text-indigo-700 hover:bg-indigo-200 rounded-lg font-bold transition-colors flex items-center justify-center gap-2 disabled:opacity-50"
+                    >
+                      {isCopyingImages ? <RefreshCw className="w-4 h-4 animate-spin" /> : <Copy className="w-4 h-4" />} 
+                      {isCopyingImages ? 'Đang gộp ảnh...' : `Sao chép ${globalSelectedImages.length > 0 ? globalSelectedImages.length : 'tất cả'} Ảnh`}
+                    </button>
+                    <p className="text-[11px] text-zinc-500 italic text-center mt-2">Mẹo: Hệ thống sẽ tự động ghép các ảnh Thầy chọn thành 1 ảnh dài duy nhất để copy, giúp lách luật giới hạn 10 ảnh của Gemini.</p>
+                  </div>
+
+                  {/* Cột phải: Lệnh */}
+                  <div className="space-y-3 bg-white p-4 rounded-xl border border-indigo-100">
+                    <p className="text-sm font-bold text-indigo-800 uppercase flex items-center gap-1"><Send className="w-4 h-4"/> BƯỚC 2: TẠO VÀ SAO CHÉP LỆNH CHẤM</p>
+                    
+                    <textarea
+                      placeholder="Lệnh bổ sung (Tùy chọn). Ví dụ: Chấm nương tay, tập trung vào phương pháp làm..."
+                      rows={2}
+                      value={globalCustomPrompt}
+                      onChange={(e) => setGlobalCustomPrompt(e.target.value)}
+                      className="w-full p-3 text-sm text-zinc-800 border-2 border-indigo-100 rounded-lg focus:border-indigo-400 focus:ring-0"
+                    />
+
+                    <button 
+                      onClick={() => copyToClipboard(generateGlobalManualPrompt())}
+                      className="w-full py-3 bg-gradient-to-r from-indigo-600 to-blue-600 text-white rounded-lg font-bold shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                    >
+                      <Copy className="w-5 h-5" /> SAO CHÉP LỆNH CHẤM (PROMPT) CHUẨN
+                    </button>
+                    
+                    <div className="text-xs text-zinc-600 bg-blue-50 p-3 rounded-lg border border-blue-100 leading-relaxed">
+                      <strong>Hướng dẫn:</strong><br/>
+                      1. Mở trang <a href="https://gemini.google.com" target="_blank" className="text-blue-600 underline font-bold">gemini.google.com</a><br/>
+                      2. Dán Ảnh (Ctrl+V) vào khung chat.<br/>
+                      3. Dán Lệnh Chấm (Ctrl+V) vào cùng khung chat và nhấn Gửi.<br/>
+                      4. Đợi Gemini chấm xong rồi copy điểm & lời phê quay lại đây nhập bằng tay.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <h3 className="font-bold text-lg mb-4 text-zinc-800 border-b pb-2 flex items-center gap-2">
               <Edit3 className="w-5 h-5 text-indigo-500" /> Bảng Chấm Chi Tiết Từng Câu

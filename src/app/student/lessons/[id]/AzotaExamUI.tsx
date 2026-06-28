@@ -77,8 +77,21 @@ const getScoreDistribution = (typeCounts: Record<string, number>) => {
   };
 };
 
-export default function AzotaExamUI({ content, title, lessonId, moduleId }: { content: string, title: string, lessonId?: string, moduleId?: string }) {
-
+export default function AzotaExamUI({ 
+  content, 
+  title, 
+  lessonId, 
+  moduleId,
+  submitUrl = "/api/student/save-score",
+  remedialId
+}: { 
+  content: string; 
+  title: string; 
+  lessonId?: string; 
+  moduleId?: string;
+  submitUrl?: string;
+  remedialId?: string;
+}) {
   const [crop, setCrop] = useState<Crop>({ unit: '%', width: 90, height: 90, x: 5, y: 5 });
   const [cropImageSrc, setCropImageSrc] = useState<string>('');
   const [activeCropQIndex, setActiveCropQIndex] = useState<number | null>(null);
@@ -430,6 +443,26 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
     setIsSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
+    // Tạo mảng gradingDetails chung cho tất cả các câu hỏi
+    const allGradingDetails: any[] = [];
+    quizParts.forEach(p => {
+      const data = p.content;
+      const qIndex = p.qIndex;
+      const realType = getQuestionType(data);
+      if (realType !== 'essay') {
+        const scoreInfo = newQuestionScores[qIndex];
+        allGradingDetails.push({
+          qIndex,
+          type: realType,
+          question: data.question || data.content || '',
+          maxScore: scoreInfo.max,
+          score: scoreInfo.earned,
+          passed: scoreInfo.earned > 0,
+          images: answers[qIndex.toString()]?.images || []
+        });
+      }
+    });
+
     // 5. Chấm essay TUẦN TỰ có DELAY
     if (essayTasks.length > 0) {
       const gradingInit: Record<string, { isGrading: boolean; result?: any }> = {};
@@ -438,7 +471,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
 
       let essayTotalScore = 0;
       const updatedScores = { ...newQuestionScores };
-      const finalGradingDetails: any[] = [];
+      const finalGradingDetails = [...allGradingDetails];
 
       for (let i = 0; i < essayTasks.length; i++) {
         const task = essayTasks[i];
@@ -452,6 +485,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
             setGradingStatus(prev => ({ ...prev, [qIndex]: { isGrading: false, result: previousResult } }));
             finalGradingDetails.push({
                qIndex: task.qIndex,
+               type: 'essay',
                question: task.data.question,
                sampleAnswer: task.data.answer || (task.data.phuong_phap_giai ? `PP Giải: ${task.data.phuong_phap_giai}\nCác bước: ${(task.data.cac_buoc_thuc_hien || []).join('\n')}` : ''),
                maxScore: task.maxScore,
@@ -472,6 +506,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
           setScore(Math.round((immediateScore + essayTotalScore) * 100) / 100);
           finalGradingDetails.push({
              qIndex: task.qIndex,
+             type: 'essay',
              question: task.data.question,
              sampleAnswer: task.data.answer || (task.data.phuong_phap_giai ? `PP Giải: ${task.data.phuong_phap_giai}\nCác bước: ${(task.data.cac_buoc_thuc_hien || []).join('\n')}` : ''),
              maxScore: task.maxScore,
@@ -487,6 +522,7 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
           updatedScores[qIndex] = { earned: 0, max: task.maxScore };
           finalGradingDetails.push({
              qIndex: task.qIndex,
+             type: 'essay',
              question: task.data.question,
              sampleAnswer: task.data.answer || (task.data.phuong_phap_giai ? `PP Giải: ${task.data.phuong_phap_giai}\nCác bước: ${(task.data.cac_buoc_thuc_hien || []).join('\n')}` : ''),
              maxScore: task.maxScore,
@@ -506,10 +542,10 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
       setIsGradingAll(false);
 
       if (lessonId) {
-        fetch('/api/student/save-score', {
+        fetch(submitUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: finalGradingDetails })
+          body: JSON.stringify({ lessonId, moduleId, remedialId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: finalGradingDetails })
         }).catch(e => console.error("Error saving score:", e));
       }
     } else {
@@ -520,10 +556,10 @@ export default function AzotaExamUI({ content, title, lessonId, moduleId }: { co
       setIsGradingAll(false);
       
       if (lessonId) {
-        fetch('/api/student/save-score', {
+        fetch(submitUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: [] })
+          body: JSON.stringify({ lessonId, moduleId, remedialId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: allGradingDetails })
         }).catch(e => console.error("Error saving score:", e));
       }
     }

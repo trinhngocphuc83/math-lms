@@ -38,6 +38,7 @@ export default function StudentDashboardPage() {
   const [attendanceRecords, setAttendanceRecords] = useState<any[]>([]);
   const [exams, setExams] = useState<any[]>([]);
   const [loadingExams, setLoadingExams] = useState(true);
+  const [pendingRemedials, setPendingRemedials] = useState<any[]>([]);
 
   useEffect(() => {
     if (activeTab === 'exams') {
@@ -97,12 +98,15 @@ export default function StudentDashboardPage() {
           
           setProfile(profileData);
 
-          // Lấy dữ liệu Học phí và Điểm danh
           const { data: tf } = await supabase.from('tuition_fees').select('*, classes(name)').eq('student_id', currentUser.id).order('year', {ascending: false}).order('month', {ascending: false});
           if (tf) setTuitionRecords(tf);
 
           const { data: att } = await supabase.from('attendance').select('*, sessions(title, session_date)').eq('student_id', currentUser.id).order('created_at', {ascending: false});
           if (att) setAttendanceRecords(att);
+          
+          // Lấy bài gỡ điểm
+          const { data: rem } = await supabase.from('remedial_exams').select('*, lessons(title)').eq('student_id', currentUser.id).eq('status', 'pending');
+          if (rem) setPendingRemedials(rem);
         }
       }
       setLoading(false);

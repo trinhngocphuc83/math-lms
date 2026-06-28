@@ -1,10 +1,14 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Eye, Loader2, Search, Filter, AlertCircle, CheckCircle2, RefreshCw, Users, Trash2 } from "lucide-react";
+import { useEffect, useState, useRef } from "react";
+import { Eye, Loader2, Search, Filter, AlertCircle, CheckCircle2, RefreshCw, Users, Trash2, BookOpen, Download, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
 import { fetchExamResultsAdmin } from "./actions";
 import ReviewModal from './ReviewModal';
+import RemedialModal from './RemedialModal';
+import * as XLSX from 'xlsx';
+import { toPng } from 'html-to-image';
+import ReportCardTemplate from './ReportCardTemplate';
 
 export default function ExamResultsPage() {
   const [results, setResults] = useState<any[]>([]);
@@ -19,10 +23,61 @@ export default function ExamResultsPage() {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedResultData, setSelectedResultData] = useState<any>(null);
+  
+  const [isRemedialModalOpen, setIsRemedialModalOpen] = useState(false);
+  const [selectedRemedialData, setSelectedRemedialData] = useState<any>(null);
+  
+  const [isExportingImage, setIsExportingImage] = useState(false);
+  const reportCardRef = useRef<HTMLDivElement>(null);
+
+  const handleExportExcel = () => {
+    if (finalResults.length === 0) return alert("Không có dữ liệu để xuất!");
+    
+    const exportData = finalResults.map(r => ({
+      "Học sinh": r.profiles?.full_name || "Không rõ",
+      "Lớp": getStudentClasses(r.student_id).join(", ") || "Không rõ",
+      "Bài học": r.lessons?.title || "Không rõ",
+      "Lần nộp": r.is_unsubmitted ? "Chưa nộp" : `Lần ${r.attempt_number || 1}`,
+      "Gian lận": r.cheat_warnings || 0,
+      "Điểm số": typeof r.score === 'number' ? r.score : "-",
+      "Trạng thái": r.is_unsubmitted ? "Chưa làm" : (r.passed ? "Đạt" : "Chưa Đạt"),
+      "Thời gian nộp": r.created_at ? new Date(r.created_at).toLocaleString('vi-VN') : "-"
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(exportData);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "KetQua");
+    
+    XLSX.writeFile(workbook, `KetQuaLuyenTap_${new Date().getTime()}.xlsx`);
+  };
+
+  const handleExportImage = async () => {
+    if (finalResults.length === 0) return alert("Không có dữ liệu để xuất!");
+    if (!reportCardRef.current) return;
+    
+    setIsExportingImage(true);
+    try {
+      const dataUrl = await toPng(reportCardRef.current, { cacheBust: true, pixelRatio: 2 });
+      const link = document.createElement('a');
+      link.download = `BangVang_${new Date().getTime()}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error(err);
+      alert("Lỗi khi xuất ảnh!");
+    } finally {
+      setIsExportingImage(false);
+    }
+  };
 
   const openReviewModal = (row: any) => {
       setSelectedResultData(row);
       setIsModalOpen(true);
+  };
+
+  const openRemedialModal = (row: any) => {
+      setSelectedRemedialData(row);
+      setIsRemedialModalOpen(true);
   };
 
   useEffect(() => {
@@ -213,6 +268,21 @@ export default function ExamResultsPage() {
                 <option key={ls.id} value={ls.id}>{ls.title}</option>
               ))}
             </select>
+            
+            <button
+              onClick={handleExportExcel}
+              className="px-4 py-2.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors ml-2"
+            >
+              <Download className="w-4 h-4" /> Xuất Excel
+            </button>
+            <button
+              onClick={handleExportImage}
+              disabled={isExportingImage}
+              className="px-4 py-2.5 bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors disabled:opacity-50"
+            >
+              {isExportingImage ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />} 
+              {isExportingImage ? 'Đang tạo...' : 'Xuất Bảng Vàng'}
+            </button>
           </div>
         </div>
 
@@ -309,9 +379,16 @@ export default function ExamResultsPage() {
                     </td>
                     <td className="px-6 py-4 text-center">
                       {!row.is_unsubmitted && (
-                        <button onClick={() => openReviewModal(row)} className="text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 p-2 rounded-lg transition-colors" title="Chấm chi tiết">
-                          <Eye className="w-5 h-5" />
-                        </button>
+                        <div className="flex items-center justify-center gap-2">
+                          {!row.passed && (
+                            <button onClick={() => openRemedialModal(row)} className="text-orange-600 hover:text-orange-800 bg-orange-50 hover:bg-orange-100 p-2 rounded-lg transition-colors" title="Giao bài tập gỡ điểm">
+                              <BookOpen className="w-5 h-5" />
+                            </button>
+                          )}
+                          <button onClick={() => openReviewModal(row)} className="text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 p-2 rounded-lg transition-colors" title="Chấm chi tiết">
+                            <Eye className="w-5 h-5" />
+                          </button>
+                        </div>
                       )}
                     </td>
                   </tr>
@@ -328,6 +405,23 @@ export default function ExamResultsPage() {
         resultData={selectedResultData}
         onUpdateSuccess={fetchData}
       />
+
+      <RemedialModal 
+        isOpen={isRemedialModalOpen}
+        onClose={() => setIsRemedialModalOpen(false)}
+        resultData={selectedRemedialData}
+        onSuccess={fetchData}
+      />
+
+      {/* Hidden Report Card for Image Export */}
+      <div style={{ position: 'absolute', left: '-9999px', top: '-9999px', opacity: 0, pointerEvents: 'none' }}>
+        <ReportCardTemplate 
+          ref={reportCardRef} 
+          results={finalResults} 
+          classNameName={selectedClassId === 'all' ? 'Tất cả các lớp' : classes.find(c => c.id === selectedClassId)?.name}
+          lessonName={selectedLessonId === 'all' ? 'Tất cả bài học' : lessons.find(l => l.id === selectedLessonId)?.title}
+        />
+      </div>
     </div>
   );
 }
