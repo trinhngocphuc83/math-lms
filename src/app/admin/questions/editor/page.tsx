@@ -171,7 +171,7 @@ export default function BatchAIEditorPage() {
         const isNewLesson = lesson !== "" && !uniqueLessons.includes(lesson);
         const isNewMathForm = math_form !== "" && !uniqueForms.includes(math_form);
 
-        return {
+        const questionData = {
           temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
           grade: data.lop || globalGrade || "12",
           subject: data.phanMon || globalSubject || "Đại số",
@@ -193,7 +193,25 @@ export default function BatchAIEditorPage() {
           isDuplicate: !!duplicateMatch,
           duplicateId: duplicateMatch ? duplicateMatch.id : undefined
         };
-      });
+
+        const parsedItems = [];
+        parsedItems.push(questionData);
+
+        // Xử lý tự động nhân bản nếu là câu hỏi DS đa bài học
+        if (data.loaiCauHoi === "DS" && data.isMultiLesson === true) {
+           const cloneData = {
+             ...questionData,
+             temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}_clone`,
+             lesson: "Ôn tập chương",
+             isNewLesson: !uniqueLessons.includes("Ôn tập chương"),
+             isDuplicate: false, // Bỏ cảnh báo trùng lặp cho bản sao này
+             duplicateId: undefined
+           };
+           parsedItems.push(cloneData);
+        }
+
+        return parsedItems;
+      }).flat();
 
       setParsedQuestions(prev => [...prev, ...newQuestions]);
       alert(`Đã nhận diện thành công ${newQuestions.length} câu hỏi!`);
@@ -236,7 +254,8 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
     "noiDung": "Đề bài (BẮT BUỘC dùng LaTeX bọc trong $...$)",
     "dapAnA": "Nội dung A", "dapAnB": "Nội dung B", "dapAnC": "Nội dung C", "dapAnD": "Nội dung D",
     "dapAnDung": "A",
-    "loiGiai": "Phương pháp giải:\\n[Ghi phương pháp ở đây]\\n\\nLời giải:\\n[Ghi lời giải chi tiết ở đây]"
+    "loiGiai": "Phương pháp giải:\\n[Ghi phương pháp ở đây]\\n\\nLời giải:\\n[Ghi lời giải chi tiết ở đây]",
+    "isMultiLesson": false // CHỈ GÁN TRUE NẾU LÀ CÂU HỎI ĐÚNG/SAI (DS) MÀ CÁC Ý NHỎ NẰM Ở NHIỀU BÀI HỌC KHÁC NHAU. MẶC ĐỊNH LÀ FALSE.
   }
 ]
   YÊU CẦU CỰC QUAN TRỌNG VỀ BÓC TÁCH: Bạn phải phân tích và bóc tách RẠCH RÒI 3 trường "chuyenDe" (Chương), "tenBai" (Bài học), và "dangToan" (Dạng toán). Tuyệt đối không gộp chung nội dung của chúng vào nhau.
@@ -249,9 +268,14 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
   1. QUY TẮC TÁCH HOẶC GỘP Ý NHỎ: 
      - TRƯỜNG HỢP TÁCH: Nếu một bài toán tự luận có các ý nhỏ (a, b, c...) hoàn toàn độc lập, không phụ thuộc nhau (VD: "Bài 1. Tính: a) 1+1 b) 2+2"). BẮT BUỘC TÁCH mỗi ý thành 1 object câu hỏi độc lập. Tự động ghép thêm "dẫn chung" vào từng ý.
      - TRƯỜNG HỢP GỘP (KHÔNG TÁCH): Nếu các ý nhỏ có liên quan mật thiết, dùng chung dữ kiện gốc, ý b phụ thuộc ý a (VD: "Cho biểu thức P... a) Rút gọn b) Tìm P max"). BẮT BUỘC GỘP CHUNG toàn bộ đề bài và các ý nhỏ thành MỘT câu hỏi tự luận duy nhất. Giữ nguyên các ký hiệu "a)", "b)".
-  2. GIỮ NGUYÊN DANH MỤC: Nếu trường "chuyenDe" hoặc "tenBai" trong mẫu JSON đã được điền sẵn một giá trị (Không phải chữ "Tự suy luận"), BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ CÁC TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI BẤT KỲ KÝ TỰ NÀO.
-  3. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ các lệnh LaTeX. Ví dụ: Phải viết $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$, viết $\\\\sqrt{2}$ thay vì $\\sqrt{2}$.
-  4. NẾU TRONG ĐỀ CÓ HÌNH VẼ, ĐỒ THỊ, BẢNG BIẾN THIÊN, HOẶC BẢNG XÉT DẤU: Tuyệt đối KHÔNG cố gắng vẽ lại bằng Markdown, ASCII hay LaTeX. Thay vào đó, hãy chỉ ghi đúng chữ "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" vào vị trí đó trong nội dung. Người dùng sẽ tự chèn ảnh vào sau.`;
+  2. QUY ĐỊNH ĐỐI VỚI CÂU HỎI ĐÚNG/SAI (DS) ĐA BÀI HỌC:
+     Nếu câu hỏi DS có 4 ý thuộc về nhiều bài học khác nhau trong chương:
+     - Bạn HÃY ĐẶT "isMultiLesson": true.
+     - Bạn PHẢI gán "tenBai" là tên bài học xa nhất/mới nhất trong chương trình mà câu hỏi đề cập tới (Ví dụ ý A thuộc Bài 1, ý C thuộc Bài 3 => Gán "tenBai": "Bài 3").
+     - Bạn PHẢI gán "dangToan": "Toán tổng hợp".
+  3. GIỮ NGUYÊN DANH MỤC: Nếu trường "chuyenDe" hoặc "tenBai" trong mẫu JSON đã được điền sẵn một giá trị (Không phải chữ "Tự suy luận"), BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ CÁC TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI BẤT KỲ KÝ TỰ NÀO.
+  4. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ các lệnh LaTeX. Ví dụ: Phải viết $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$, viết $\\\\sqrt{2}$ thay vì $\\sqrt{2}$.
+  5. NẾU TRONG ĐỀ CÓ HÌNH VẼ, ĐỒ THỊ, BẢNG BIẾN THIÊN, HOẶC BẢNG XÉT DẤU: Tuyệt đối KHÔNG cố gắng vẽ lại bằng Markdown, ASCII hay LaTeX. Thay vào đó, hãy chỉ ghi đúng chữ "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" vào vị trí đó trong nội dung. Người dùng sẽ tự chèn ảnh vào sau.`;
 
       const parts = await Promise.all(aiImageFiles.map(async file => {
         const base64Data = await fileToBase64(file);
@@ -311,7 +335,8 @@ ${uniqueForms.map(f => `- ${f}`).join("\n")}
     "loaiCauHoi": "NLC", "mucDo": "1",
     "noiDung": "Đề bài dùng LaTeX bọc trong $...$",
     "dapAnA": "", "dapAnB": "", "dapAnC": "", "dapAnD": "", "dapAnDung": "",
-    "loiGiai": "Phương pháp giải:\\n[Ghi phương pháp ở đây]\\n\\nLời giải:\\n[Ghi lời giải chi tiết ở đây]"
+    "loiGiai": "Phương pháp giải:\\n[Ghi phương pháp ở đây]\\n\\nLời giải:\\n[Ghi lời giải chi tiết ở đây]",
+    "isMultiLesson": false // CHỈ GÁN TRUE NẾU LÀ CÂU HỎI ĐÚNG/SAI (DS) MÀ CÁC Ý NHỎ NẰM Ở NHIỀU BÀI HỌC KHÁC NHAU. MẶC ĐỊNH LÀ FALSE.
   }
 ]
   CƠ SỞ DỮ LIỆU ĐỐI CHIẾU: 
@@ -322,6 +347,11 @@ ${uniqueForms.map(f => `- ${f}`).join("\n")}
   1. QUY TẮC TÁCH HOẶC GỘP Ý NHỎ: 
      - TRƯỜNG HỢP TÁCH: Nếu một bài toán tự luận có các ý nhỏ (a, b, c...) hoàn toàn độc lập, không phụ thuộc nhau (VD: "Bài 1. Tính: a) 1+1 b) 2+2"). BẮT BUỘC TÁCH mỗi ý thành 1 object câu hỏi độc lập. Tự động ghép thêm "dẫn chung" vào từng ý.
      - TRƯỜNG HỢP GỘP (KHÔNG TÁCH): Nếu các ý nhỏ có liên quan mật thiết, dùng chung dữ kiện gốc, ý b phụ thuộc ý a (VD: "Cho biểu thức P... a) Rút gọn b) Tìm P max"). BẮT BUỘC GỘP CHUNG toàn bộ đề bài và các ý nhỏ thành MỘT câu hỏi tự luận duy nhất. Giữ nguyên các ký hiệu "a)", "b)".
+  2. QUY ĐỊNH ĐỐI VỚI CÂU HỎI ĐÚNG/SAI (DS) ĐA BÀI HỌC:
+     Nếu câu hỏi DS có 4 ý thuộc về nhiều bài học khác nhau trong chương:
+     - Bạn HÃY ĐẶT "isMultiLesson": true.
+     - Bạn PHẢI gán "tenBai" là tên bài học xa nhất/mới nhất trong chương trình mà câu hỏi đề cập tới.
+     - Bạn PHẢI gán "dangToan": "Toán tổng hợp".
   2. GIỮ NGUYÊN DANH MỤC: Nếu "chuyenDe" hoặc "tenBai" đã được điền sẵn giá trị, BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI GÌ.
   3. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ lệnh LaTeX. Ví dụ: $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$. Mọi công thức Toán bọc trong $...$
   4. KHÔNG vẽ lại hình vẽ, đồ thị, hay bảng biến thiên. Hãy ghi "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" thay thế.`;

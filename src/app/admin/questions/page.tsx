@@ -205,13 +205,30 @@ export default function QuestionsPage() {
 
   const handleModalSave = async (updatedQuestion: any) => {
     try {
+      const isNew = !updatedQuestion.id;
       const qId = updatedQuestion.question_id || `CH_NEW_${Date.now()}`;
-      const { error } = await supabase.from('questions').upsert({
+      
+      const recordsToSave = [{
         ...updatedQuestion,
         question_id: qId
-      });
-      if (error) throw error;
-      alert("Lưu câu hỏi thành công!");
+      }];
+
+      if (isNew && updatedQuestion.question_type === 'DS' && updatedQuestion.math_form === 'Toán tổng hợp' && updatedQuestion.lesson !== 'Ôn tập chương') {
+        const cloneRecord = {
+          ...updatedQuestion,
+          question_id: `CH_NEW_${Date.now()}_clone`,
+          lesson: "Ôn tập chương"
+        };
+        delete cloneRecord.id;
+        recordsToSave.push(cloneRecord);
+      }
+
+      for (const record of recordsToSave) {
+        const { error } = await supabase.from('questions').upsert(record);
+        if (error) throw error;
+      }
+      
+      alert("Lưu câu hỏi thành công!" + (recordsToSave.length > 1 ? " (Đã tự động tạo thêm 1 bản sao vào bài Ôn tập chương)" : ""));
       setEditingQuestion(null);
       fetchQuestions();
     } catch (e: any) {
