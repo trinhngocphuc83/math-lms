@@ -315,3 +315,19 @@
 .progress-dot:not(.active) {
   background-color: #d4c9a8;
 }
+
+/* ===== Giới hạn kích thước ảnh trong Markdown (Bài giảng / Đề thi) ===== */
+.prose img, 
+.markdown-body img,
+img[alt="Hình vẽ"],
+img[alt="Bảng biến thiên"],
+img[alt="Minh họa"] {
+  max-height: 400px !important;
+  width: auto !important;
+  max-width: 100% !important;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  object-fit: contain;
+}
