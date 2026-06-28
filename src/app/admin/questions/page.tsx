@@ -43,7 +43,7 @@ export default function QuestionsPage() {
   // Categories & Filters State
   const [categories, setCategories] = useState<any[]>([]);
   const [filters, setFilters] = useState({
-    grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: ""
+    grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: "", question_type: ""
   });
 
   const DIFFICULTY_LABELS: Record<string, string> = {
@@ -113,6 +113,7 @@ export default function QuestionsPage() {
       if (filters.lesson) query = query.eq('lesson', filters.lesson);
       if (filters.math_form) query = query.eq('math_form', filters.math_form);
       if (filters.difficulty) query = query.eq('difficulty', filters.difficulty);
+      if (filters.question_type) query = query.eq('question_type', filters.question_type);
       
       const { data, count, error } = await query
         .order("created_at", { ascending: false })
@@ -318,6 +319,13 @@ export default function QuestionsPage() {
             <select value={filters.math_form} onChange={e => handleFilterChange('math_form', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 flex-1 font-medium text-gray-700 bg-white">
               <option value="">-- Dạng toán --</option>
               {uniqueForms.map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
+            </select>
+            <select value={filters.question_type} onChange={e => handleFilterChange('question_type', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 w-48 font-medium text-gray-700 bg-white">
+              <option value="">-- Dạng thức --</option>
+              <option value="NLC">Trắc nghiệm</option>
+              <option value="DS">Đúng/Sai</option>
+              <option value="TLN">Trả lời ngắn</option>
+              <option value="TL">Tự luận</option>
             </select>
           </div>
         </div>

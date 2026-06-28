@@ -48,6 +48,7 @@ export default function ExamsManagerPage() {
   const [lessonList, setLessonList] = useState<string[]>([]);
   const [formFilter, setFormFilter] = useState("");
   const [formList, setFormList] = useState<string[]>([]);
+  const [qTypeFilter, setQTypeFilter] = useState("");
   const [uniqueGrades, setUniqueGrades] = useState<string[]>([]);
   const [uniqueSubjects, setUniqueSubjects] = useState<string[]>([]);
   
@@ -127,6 +128,7 @@ export default function ExamsManagerPage() {
       if (topicFilter) qQuery = qQuery.eq('topic', topicFilter);
       if (lessonFilter) qQuery = qQuery.eq('lesson', lessonFilter);
       if (formFilter) qQuery = qQuery.eq('math_form', formFilter);
+      if (qTypeFilter) qQuery = qQuery.eq('question_type', qTypeFilter);
 
       const { data: qData, error: err2 } = await qQuery;
       if (err2) throw err2;
@@ -398,6 +400,13 @@ export default function ExamsManagerPage() {
               <select value={formFilter} onChange={e=>setFormFilter(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white max-w-[200px]">
                 <option value="">-- Dạng toán (Tất cả) --</option>
                 {formList.map(f => <option key={f} value={f}>{f}</option>)}
+              </select>
+              <select value={qTypeFilter} onChange={e=>setQTypeFilter(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white max-w-[200px]">
+                <option value="">-- Dạng thức (Tất cả) --</option>
+                <option value="NLC">Trắc nghiệm</option>
+                <option value="DS">Đúng/Sai</option>
+                <option value="TLN">Trả lời ngắn</option>
+                <option value="TL">Tự luận</option>
               </select>
               <button onClick={fetchTreeAndInventory} disabled={isLoadingTree} className="bg-teal-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-teal-700 transition-colors text-sm shadow-sm disabled:opacity-50 flex items-center gap-2">
                 {isLoadingTree ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Database className="w-4 h-4" />}
