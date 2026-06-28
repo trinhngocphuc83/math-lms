@@ -114,6 +114,60 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
+    // Logic dọn dẹp: Chỉ giữ lại 1 bài nộp duy nhất
+    try {
+      let query = supabaseAdmin
+        .from('exam_results')
+        .select('id, score, is_reviewed, attempt_number, created_at, answers')
+        .eq('student_id', user.id)
+        .eq('lesson_id', lessonId);
+        
+      if (moduleId) {
+        query = query.eq('module_id', moduleId);
+      } else {
+        query = query.is('module_id', null);
+      }
+
+      const { data: allResults } = await query;
+
+      if (allResults && allResults.length > 1) {
+        const resultsWithStatus = allResults.map(res => {
+          let hasAIError = false;
+          if (!res.is_reviewed) {
+             const details = res.answers?.gradingDetails || [];
+             hasAIError = details.some((d: any) => d.feedback && (d.feedback.includes('Lỗi') || d.feedback.includes('Lỗi hệ thống')));
+          }
+          return { ...res, hasAIError };
+        });
+
+        const validResults = resultsWithStatus.filter(r => !r.hasAIError);
+        const errorResults = resultsWithStatus.filter(r => r.hasAIError);
+
+        let resultToKeep = null;
+        if (validResults.length > 0) {
+           // Giữ lần cao điểm nhất (nếu bằng điểm thì giữ lần mới nhất)
+           validResults.sort((a, b) => {
+             if (b.score !== a.score) return b.score - a.score;
+             return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+           });
+           resultToKeep = validResults[0];
+        } else if (errorResults.length > 0) {
+           // Tất cả đều lỗi AI -> Giữ lần mới nhất
+           errorResults.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+           resultToKeep = errorResults[0];
+        }
+
+        if (resultToKeep) {
+          const idsToDelete = allResults.filter(r => r.id !== resultToKeep.id).map(r => r.id);
+          if (idsToDelete.length > 0) {
+            await supabaseAdmin.from('exam_results').delete().in('id', idsToDelete);
+          }
+        }
+      }
+    } catch (cleanupErr) {
+      console.error('Error cleaning up old results:', cleanupErr);
+    }
+
     return NextResponse.json({ success: true, data });
   } catch (error: any) {
     console.error('Save score error:', error);
