@@ -84,6 +84,11 @@ export default function ExamResultsPage() {
     fetchData();
   }, []);
 
+  // Reset lesson selection when class changes
+  useEffect(() => {
+    setSelectedLessonId("all");
+  }, [selectedClassId]);
+
   const fetchData = async () => {
     setLoading(true);
     
@@ -207,6 +212,11 @@ export default function ExamResultsPage() {
     fetchData();
   };
 
+  const selectedClass = classes.find(c => c.id === selectedClassId);
+  const filteredLessons = selectedClassId === "all" 
+    ? lessons 
+    : lessons.filter(ls => ls.course_id === selectedClass?.course_id);
+
   return (
     <div className="p-8 max-w-7xl mx-auto w-full flex-1 overflow-y-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -264,7 +274,7 @@ export default function ExamResultsPage() {
               className="w-full md:w-64 px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-sm font-bold text-zinc-700 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 cursor-pointer"
             >
               <option value="all">Tất cả bài học</option>
-              {lessons.map(ls => (
+              {filteredLessons.map(ls => (
                 <option key={ls.id} value={ls.id}>{ls.title}</option>
               ))}
             </select>

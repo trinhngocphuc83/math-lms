@@ -11,7 +11,7 @@ export async function fetchExamResultsAdmin() {
   // 1. Fetch classes
   const { data: classes } = await supabaseAdmin
     .from('classes')
-    .select('id, name')
+    .select('id, name, course_id')
     .order('created_at', { ascending: false });
 
   // 2. Fetch enrollments
@@ -38,7 +38,7 @@ export async function fetchExamResultsAdmin() {
   // 5. Fetch all lessons
   const { data: lessons } = await supabaseAdmin
     .from('lessons')
-    .select('id, title')
+    .select('id, title, course_id')
     .order('created_at', { ascending: false });
 
   if (error) {
