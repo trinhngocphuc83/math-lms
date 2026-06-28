@@ -322,12 +322,15 @@
 img[alt="Hình vẽ"],
 img[alt="Bảng biến thiên"],
 img[alt="Minh họa"] {
+  display: block !important;
   max-height: 400px !important;
+  height: auto !important;
   width: auto !important;
   max-width: 100% !important;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  margin-top: 1.5rem !important;
+  margin-bottom: 1.5rem !important;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  object-fit: contain;
 }
