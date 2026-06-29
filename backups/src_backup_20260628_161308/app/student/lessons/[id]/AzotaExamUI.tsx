@@ -77,21 +77,8 @@ const getScoreDistribution = (typeCounts: Record<string, number>) => {
   };
 };
 
-export default function AzotaExamUI({ 
-  content, 
-  title, 
-  lessonId, 
-  moduleId,
-  submitUrl = "/api/student/save-score",
-  remedialId
-}: { 
-  content: string; 
-  title: string; 
-  lessonId?: string; 
-  moduleId?: string;
-  submitUrl?: string;
-  remedialId?: string;
-}) {
+export default function AzotaExamUI({ content, title, lessonId, moduleId }: { content: string, title: string, lessonId?: string, moduleId?: string }) {
+
   const [crop, setCrop] = useState<Crop>({ unit: '%', width: 90, height: 90, x: 5, y: 5 });
   const [cropImageSrc, setCropImageSrc] = useState<string>('');
   const [activeCropQIndex, setActiveCropQIndex] = useState<number | null>(null);
@@ -210,7 +197,6 @@ export default function AzotaExamUI({
   const [totalScore, setTotalScore] = useState<number>(10);
   const [gradingStatus, setGradingStatus] = useState<Record<string, { isGrading: boolean; result?: any }>>({});
   const [isGradingAll, setIsGradingAll] = useState(false);
-  const [isSavingDraft, setIsSavingDraft] = useState(false);
   // Lưu điểm từng câu sau khi chấm
   const [questionScores, setQuestionScores] = useState<Record<string, { earned: number; max: number }>>({});
   
@@ -218,49 +204,18 @@ export default function AzotaExamUI({
   const [cheatWarnings, setCheatWarnings] = useState(0);
 
   useEffect(() => {
-    // (Đã gỡ bỏ tính năng cảnh báo gian lận ở phần Luyện tập theo yêu cầu)
-  }, [isSubmitted]);
-
-  // Load bản nháp khi mở trang
-  useEffect(() => {
-    if (lessonId && !isSubmitted) {
-      const fetchDraft = async () => {
-        try {
-          let url = `/api/student/get-progress?lessonId=${lessonId}`;
-          if (moduleId) url += `&moduleId=${moduleId}`;
-          const res = await fetch(url);
-          const data = await res.json();
-          if (data && data.data && data.data.answers?.rawAnswers) {
-             setAnswers(data.data.answers.rawAnswers);
-          }
-        } catch (e) {
-          console.error("Failed to fetch draft:", e);
-        }
-      };
-      fetchDraft();
-    }
-  }, [lessonId, moduleId]);
-
-  const handleSaveDraft = async () => {
-    if (!lessonId) return;
-    setIsSavingDraft(true);
-    try {
-      const res = await fetch('/api/student/save-progress', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lessonId, moduleId, answers, cheatWarnings })
-      });
-      if (res.ok) {
-        alert("Đã lưu tiến độ làm bài thành công! Bạn có thể làm tiếp bất cứ lúc nào.");
-      } else {
-        alert("Có lỗi xảy ra khi lưu bài tạm.");
+    const handleVisibilityChange = () => {
+      if (document.hidden && !isSubmitted) {
+        setCheatWarnings(prev => prev + 1);
+        alert("CẢNH BÁO GIAN LẬN: Bạn vừa rời khỏi màn hình làm bài! Hệ thống đã ghi nhận.");
       }
-    } catch (e) {
-      alert("Lỗi mạng khi lưu bài tạm.");
-    } finally {
-      setIsSavingDraft(false);
-    }
-  };
+    };
+
+    document.addEventListener("visibilitychange", handleVisibilityChange);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
+    };
+  }, [isSubmitted]);
   
   // Parse content thành các phần (markdown + quiz)
   const { parts, totalQuizzes } = useMemo(() => {
@@ -475,26 +430,6 @@ export default function AzotaExamUI({
     setIsSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // Tạo mảng gradingDetails chung cho tất cả các câu hỏi
-    const allGradingDetails: any[] = [];
-    quizParts.forEach(p => {
-      const data = p.content;
-      const qIndex = p.qIndex;
-      const realType = getQuestionType(data);
-      if (realType !== 'essay') {
-        const scoreInfo = newQuestionScores[qIndex];
-        allGradingDetails.push({
-          qIndex,
-          type: realType,
-          question: data.question || data.content || '',
-          maxScore: scoreInfo.max,
-          score: scoreInfo.earned,
-          passed: scoreInfo.earned > 0,
-          images: answers[qIndex.toString()]?.images || []
-        });
-      }
-    });
-
     // 5. Chấm essay TUẦN TỰ có DELAY
     if (essayTasks.length > 0) {
       const gradingInit: Record<string, { isGrading: boolean; result?: any }> = {};
@@ -503,7 +438,7 @@ export default function AzotaExamUI({
 
       let essayTotalScore = 0;
       const updatedScores = { ...newQuestionScores };
-      const finalGradingDetails = [...allGradingDetails];
+      const finalGradingDetails: any[] = [];
 
       for (let i = 0; i < essayTasks.length; i++) {
         const task = essayTasks[i];
@@ -517,7 +452,6 @@ export default function AzotaExamUI({
             setGradingStatus(prev => ({ ...prev, [qIndex]: { isGrading: false, result: previousResult } }));
             finalGradingDetails.push({
                qIndex: task.qIndex,
-               type: 'essay',
                question: task.data.question,
                sampleAnswer: task.data.answer || (task.data.phuong_phap_giai ? `PP Giải: ${task.data.phuong_phap_giai}\nCác bước: ${(task.data.cac_buoc_thuc_hien || []).join('\n')}` : ''),
                maxScore: task.maxScore,
@@ -538,7 +472,6 @@ export default function AzotaExamUI({
           setScore(Math.round((immediateScore + essayTotalScore) * 100) / 100);
           finalGradingDetails.push({
              qIndex: task.qIndex,
-             type: 'essay',
              question: task.data.question,
              sampleAnswer: task.data.answer || (task.data.phuong_phap_giai ? `PP Giải: ${task.data.phuong_phap_giai}\nCác bước: ${(task.data.cac_buoc_thuc_hien || []).join('\n')}` : ''),
              maxScore: task.maxScore,
@@ -554,7 +487,6 @@ export default function AzotaExamUI({
           updatedScores[qIndex] = { earned: 0, max: task.maxScore };
           finalGradingDetails.push({
              qIndex: task.qIndex,
-             type: 'essay',
              question: task.data.question,
              sampleAnswer: task.data.answer || (task.data.phuong_phap_giai ? `PP Giải: ${task.data.phuong_phap_giai}\nCác bước: ${(task.data.cac_buoc_thuc_hien || []).join('\n')}` : ''),
              maxScore: task.maxScore,
@@ -574,10 +506,10 @@ export default function AzotaExamUI({
       setIsGradingAll(false);
 
       if (lessonId) {
-        fetch(submitUrl, {
+        fetch('/api/student/save-score', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ lessonId, moduleId, remedialId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: finalGradingDetails })
+          body: JSON.stringify({ lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: finalGradingDetails })
         }).catch(e => console.error("Error saving score:", e));
       }
     } else {
@@ -588,10 +520,10 @@ export default function AzotaExamUI({
       setIsGradingAll(false);
       
       if (lessonId) {
-        fetch(submitUrl, {
+        fetch('/api/student/save-score', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ lessonId, moduleId, remedialId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: allGradingDetails })
+          body: JSON.stringify({ lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings, globalImages, gradingDetails: [] })
         }).catch(e => console.error("Error saving score:", e));
       }
     }
@@ -679,7 +611,7 @@ export default function AzotaExamUI({
           if (p.type === 'md') {
             return (
               <div key={p.id} className="prose prose-indigo max-w-none text-gray-700 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{p.content}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{p.content}</ReactMarkdown>
               </div>
             );
           } else if (p.type === 'quiz') {
@@ -690,16 +622,9 @@ export default function AzotaExamUI({
             const isEssay = realType === 'essay';
             const isShortAnswer = realType === 'short_answer';
             const userAns = answers[qIndex.toString()];
-            let cleanQuestion = data.question ? data.question.replace(/^(Câu|Bài)\s*\d+[\.:\-\s]*/i, '') : "";
-            
-            // Clean raw HTML <br> and <img> if user pasted them
-            cleanQuestion = cleanQuestion.replace(/<br\s*\/?>/gi, '\n\n');
-            cleanQuestion = cleanQuestion.replace(/<img[^>]+src=["']([^"']+)["'][^>]*>/gi, '\n\n![Hình vẽ]($1)\n\n');
-            
+            const cleanQuestion = data.question ? data.question.replace(/^(Câu|Bài)\s*\d+[\.:\-\s]*/i, '') : "";
             const qScore = questionScores[qIndex];
 
-            const imgUrl = data.imageUrl || data.autoCropMetadata?.originalUrl;
-            
             return (
               <div key={p.id} id={`question-${qIndex}`} className={`bg-white rounded-2xl p-6 shadow-sm border-2 transition-all ${isSubmitted ? 'border-gray-200' : 'border-slate-200 hover:border-indigo-300'}`}>
                  <div className="flex items-start gap-3 mb-6">
@@ -712,19 +637,7 @@ export default function AzotaExamUI({
                        )}
                     </div>
                     <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-slate max-w-none prose-p:my-0 font-bold text-slate-800">
-                       <ReactMarkdown 
-                          remarkPlugins={[remarkMath, remarkBreaks]} 
-                          rehypePlugins={[rehypeKatex]}
-                          urlTransform={(url) => url}
-                          components={{
-                             img: ({node, ...props}) => <img {...props} className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm my-4 border border-slate-200" style={{ objectFit: 'contain' }} />
-                          }}
-                       >{cleanQuestion}</ReactMarkdown>
-                       
-                       {/* Hỗ trợ hiển thị ảnh fallback nếu MD chưa có */}
-                       {imgUrl && !cleanQuestion.includes(imgUrl) && !cleanQuestion.includes('![Hình vẽ]') && !cleanQuestion.includes('![Bảng biến thiên]') && (
-                           <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
-                       )}
+                       <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{cleanQuestion}</ReactMarkdown>
                     </div>
                  </div>
 
@@ -766,7 +679,7 @@ export default function AzotaExamUI({
                                 {['A','B','C','D'][optIdx]}
                              </div>
                              <div className="flex-1 min-w-0 prose prose-sm max-w-none text-slate-700 prose-p:my-0">
-                                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{opt}</ReactMarkdown>
+                                <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{opt}</ReactMarkdown>
                              </div>
                           </button>
                         );
@@ -796,14 +709,10 @@ export default function AzotaExamUI({
 
                           return (
                              <div key={optIdx} className={`flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl border-2 transition-all gap-4 ${wrapperClass}`}>
-                                <div className="flex items-center gap-3">
-                                   <div className="font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
-                                      {['a','b','c','d'][optIdx] || 'a'}
-                                   </div>
+                                <div className="flex items-start gap-3">
+                                   <div className="font-bold text-slate-400 w-6 mt-0.5">{['A','B','C','D'][optIdx] || 'A'}.</div>
                                    <div className="flex-1 min-w-0 prose prose-sm max-w-none text-slate-700 prose-p:my-0">
-                                      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>
-                                         {(stmt.content || stmt.text)?.match(/^Mệnh đề [A-D]$/i) ? `Phát biểu ${['a','b','c','d'][optIdx]}` : (stmt.content || stmt.text)}
-                                      </ReactMarkdown>
+                                      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{stmt.content || stmt.text}</ReactMarkdown>
                                    </div>
                                 </div>
                                 <div className="flex items-center gap-2 shrink-0 md:ml-auto">
@@ -960,7 +869,7 @@ export default function AzotaExamUI({
                              <div className="flex-1">
                                 <h4 className="text-lg font-extrabold text-blue-900 mb-2 uppercase tracking-wide text-sm">Phương pháp giải</h4>
                                 <div className="prose prose-sm sm:prose-base max-w-none text-blue-900 font-medium leading-relaxed">
-                                   <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{data.phuong_phap_giai}</ReactMarkdown>
+                                   <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{data.phuong_phap_giai}</ReactMarkdown>
                                 </div>
                              </div>
                           </div>
@@ -979,7 +888,7 @@ export default function AzotaExamUI({
                                          {sIdx + 1}
                                       </div>
                                       <div className="flex-1 min-w-0 prose prose-sm sm:prose-base max-w-none text-slate-700 leading-relaxed pt-0.5">
-                                         <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{step}</ReactMarkdown>
+                                         <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{step}</ReactMarkdown>
                                       </div>
                                    </div>
                                 ))}
@@ -994,7 +903,7 @@ export default function AzotaExamUI({
                                 💡 GỢI MỞ KIẾN THỨC
                              </h4>
                              <div className="prose prose-sm sm:prose-base max-w-none text-amber-900 font-medium leading-relaxed prose-p:my-1">
-                                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{data.goi_y_nhanh}</ReactMarkdown>
+                                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{data.goi_y_nhanh}</ReactMarkdown>
                              </div>
                           </div>
                        )}
@@ -1006,7 +915,7 @@ export default function AzotaExamUI({
                                 <Lightbulb className="w-4 h-4" /> Hướng dẫn giải / Đáp án chi tiết
                              </h4>
                              <div className="prose prose-sm sm:prose-base max-w-none text-indigo-900">
-                                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{data.sampleAnswer || data.answer}</ReactMarkdown>
+                                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{data.sampleAnswer || data.answer}</ReactMarkdown>
                              </div>
                           </div>
                        )}
@@ -1057,7 +966,7 @@ export default function AzotaExamUI({
                                       )}
                                    </div>
                                    <div className="prose prose-sm sm:prose-base max-w-none text-slate-700 bg-white p-5 rounded-xl border border-indigo-100 shadow-sm leading-relaxed">
-                                      <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{gradingStatus[qIndex].result.feedback || ''}</ReactMarkdown>
+                                      <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{gradingStatus[qIndex].result.feedback || ''}</ReactMarkdown>
                                    </div>
                                 </div>
                              ) : gradingStatus[qIndex]?.isGrading ? (
@@ -1164,18 +1073,12 @@ export default function AzotaExamUI({
            </div>
            
            {!isSubmitted && (
-              <div className="mt-auto pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
-                 <button 
-                    onClick={handleSaveDraft}
-                    disabled={isSavingDraft || isGradingAll}
-                    className="flex-1 bg-white border-2 border-indigo-600 text-indigo-700 hover:bg-indigo-50 font-black py-3.5 rounded-xl shadow-sm transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                 >
-                    {isSavingDraft ? <Loader2 className="w-5 h-5 animate-spin" /> : <ListTodo className="w-5 h-5" />} LƯU BÀI TẠM
-                 </button>
+              <div className="mt-auto pt-4 border-t border-slate-100">
+
                  <button 
                     onClick={handleSubmit}
                     disabled={isGradingAll}
-                    className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-black py-3.5 rounded-xl shadow-[0_4px_14px_0_rgba(79,70,229,0.39)] transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-black py-3.5 rounded-xl shadow-[0_4px_14px_0_rgba(79,70,229,0.39)] transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                  >
                     <Send className="w-5 h-5" /> NỘP BÀI
                  </button>

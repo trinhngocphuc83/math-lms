@@ -1,14 +1,10 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import { Eye, Loader2, Search, Filter, AlertCircle, CheckCircle2, RefreshCw, Users, Trash2, BookOpen, Download, Image as ImageIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Eye, Loader2, Search, Filter, AlertCircle, CheckCircle2, RefreshCw, Users, Trash2 } from "lucide-react";
 import Link from "next/link";
 import { fetchExamResultsAdmin } from "./actions";
 import ReviewModal from './ReviewModal';
-import RemedialModal from './RemedialModal';
-import * as XLSX from 'xlsx';
-import { toPng } from 'html-to-image';
-import ReportCardTemplate from './ReportCardTemplate';
 
 export default function ExamResultsPage() {
   const [results, setResults] = useState<any[]>([]);
@@ -23,71 +19,15 @@ export default function ExamResultsPage() {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedResultData, setSelectedResultData] = useState<any>(null);
-  
-  const [isRemedialModalOpen, setIsRemedialModalOpen] = useState(false);
-  const [selectedRemedialData, setSelectedRemedialData] = useState<any>(null);
-  
-  const [isExportingImage, setIsExportingImage] = useState(false);
-  const reportCardRef = useRef<HTMLDivElement>(null);
-
-  const handleExportExcel = () => {
-    if (finalResults.length === 0) return alert("Không có dữ liệu để xuất!");
-    
-    const exportData = finalResults.map(r => ({
-      "Học sinh": r.profiles?.full_name || "Không rõ",
-      "Lớp": getStudentClasses(r.student_id).join(", ") || "Không rõ",
-      "Bài học": r.lessons?.title || "Không rõ",
-      "Lần nộp": r.is_unsubmitted ? "Chưa nộp" : r.attempt_number === 0 ? "Đang làm" : `Lần ${r.attempt_number || 1}`,
-      "Gian lận": r.cheat_warnings || 0,
-      "Điểm số": typeof r.score === 'number' ? r.score : "-",
-      "Trạng thái": r.is_unsubmitted ? "Chưa làm" : r.attempt_number === 0 ? "Đang làm" : (r.passed ? "Đạt" : "Chưa Đạt"),
-      "Thời gian nộp": r.created_at ? new Date(r.created_at).toLocaleString('vi-VN') : "-"
-    }));
-
-    const worksheet = XLSX.utils.json_to_sheet(exportData);
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "KetQua");
-    
-    XLSX.writeFile(workbook, `KetQuaLuyenTap_${new Date().getTime()}.xlsx`);
-  };
-
-  const handleExportImage = async () => {
-    if (finalResults.length === 0) return alert("Không có dữ liệu để xuất!");
-    if (!reportCardRef.current) return;
-    
-    setIsExportingImage(true);
-    try {
-      const dataUrl = await toPng(reportCardRef.current, { cacheBust: true, pixelRatio: 2 });
-      const link = document.createElement('a');
-      link.download = `BangVang_${new Date().getTime()}.png`;
-      link.href = dataUrl;
-      link.click();
-    } catch (err) {
-      console.error(err);
-      alert("Lỗi khi xuất ảnh!");
-    } finally {
-      setIsExportingImage(false);
-    }
-  };
 
   const openReviewModal = (row: any) => {
       setSelectedResultData(row);
       setIsModalOpen(true);
   };
 
-  const openRemedialModal = (row: any) => {
-      setSelectedRemedialData(row);
-      setIsRemedialModalOpen(true);
-  };
-
   useEffect(() => {
     fetchData();
   }, []);
-
-  // Reset lesson selection when class changes
-  useEffect(() => {
-    setSelectedLessonId("all");
-  }, [selectedClassId]);
 
   const fetchData = async () => {
     setLoading(true);
@@ -212,11 +152,6 @@ export default function ExamResultsPage() {
     fetchData();
   };
 
-  const selectedClass = classes.find(c => c.id === selectedClassId);
-  const filteredLessons = selectedClassId === "all" 
-    ? lessons 
-    : lessons.filter(ls => ls.course_id === selectedClass?.course_id);
-
   return (
     <div className="p-8 max-w-7xl mx-auto w-full flex-1 overflow-y-auto">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -274,25 +209,10 @@ export default function ExamResultsPage() {
               className="w-full md:w-64 px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-sm font-bold text-zinc-700 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 cursor-pointer"
             >
               <option value="all">Tất cả bài học</option>
-              {filteredLessons.map(ls => (
+              {lessons.map(ls => (
                 <option key={ls.id} value={ls.id}>{ls.title}</option>
               ))}
             </select>
-            
-            <button
-              onClick={handleExportExcel}
-              className="px-4 py-2.5 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors ml-2"
-            >
-              <Download className="w-4 h-4" /> Xuất Excel
-            </button>
-            <button
-              onClick={handleExportImage}
-              disabled={isExportingImage}
-              className="px-4 py-2.5 bg-teal-50 text-teal-700 hover:bg-teal-100 border border-teal-200 rounded-xl text-sm font-bold flex items-center gap-2 transition-colors disabled:opacity-50"
-            >
-              {isExportingImage ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />} 
-              {isExportingImage ? 'Đang tạo...' : 'Xuất Bảng Vàng'}
-            </button>
           </div>
         </div>
 
@@ -347,10 +267,10 @@ export default function ExamResultsPage() {
                       <div className="font-semibold text-zinc-800 line-clamp-2 max-w-xs">{row.lessons?.title || 'Bài giảng không xác định'}</div>
                     </td>
                     <td className="px-6 py-4 text-center font-bold text-zinc-600">
-                      {row.is_unsubmitted ? '-' : row.attempt_number === 0 ? 'Đang làm' : `Lần ${row.attempt_number}`}
+                      {row.is_unsubmitted ? '-' : `Lần ${row.attempt_number}`}
                     </td>
                     <td className="px-6 py-4 text-center">
-                      {row.is_unsubmitted || row.attempt_number === 0 ? (
+                      {row.is_unsubmitted ? (
                         <span className="text-zinc-300 font-medium">-</span>
                       ) : row.cheat_warnings > 0 ? (
                         <span className="inline-flex items-center gap-1 bg-red-100 text-red-700 px-2.5 py-1 rounded-full text-xs font-bold">
@@ -361,7 +281,7 @@ export default function ExamResultsPage() {
                       )}
                     </td>
                     <td className="px-6 py-4 text-center">
-                      {row.is_unsubmitted || row.attempt_number === 0 ? (
+                      {row.is_unsubmitted ? (
                         <span className="text-zinc-300 font-bold">-</span>
                       ) : (
                         <span className="font-black text-lg text-indigo-700 bg-indigo-50 px-3 py-1 rounded-lg">
@@ -374,17 +294,13 @@ export default function ExamResultsPage() {
                         <span className="inline-flex items-center gap-1 bg-zinc-100 text-zinc-500 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">
                           Chưa làm bài
                         </span>
-                      ) : row.attempt_number === 0 ? (
-                        <span className="inline-flex items-center gap-1 bg-orange-100 text-orange-600 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">
-                          <Edit3 className="w-4 h-4" /> Đang làm
-                        </span>
                       ) : row.passed ? (
                         <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">
                           <CheckCircle2 className="w-4 h-4" /> Đạt
                         </span>
                       ) : (
                         <span className="inline-flex items-center gap-1 bg-rose-100 text-rose-700 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">
-                          <AlertCircle className="w-4 h-4" /> Chưa đạt
+                          <AlertCircle className="w-4 h-4" /> Chưa Đạt
                         </span>
                       )}
                     </td>
@@ -393,16 +309,9 @@ export default function ExamResultsPage() {
                     </td>
                     <td className="px-6 py-4 text-center">
                       {!row.is_unsubmitted && (
-                        <div className="flex items-center justify-center gap-2">
-                          {!row.passed && (
-                            <button onClick={() => openRemedialModal(row)} className="text-orange-600 hover:text-orange-800 bg-orange-50 hover:bg-orange-100 p-2 rounded-lg transition-colors" title="Giao bài tập gỡ điểm">
-                              <BookOpen className="w-5 h-5" />
-                            </button>
-                          )}
-                          <button onClick={() => openReviewModal(row)} className="text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 p-2 rounded-lg transition-colors" title="Chấm chi tiết">
-                            <Eye className="w-5 h-5" />
-                          </button>
-                        </div>
+                        <button onClick={() => openReviewModal(row)} className="text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 p-2 rounded-lg transition-colors" title="Chấm chi tiết">
+                          <Eye className="w-5 h-5" />
+                        </button>
                       )}
                     </td>
                   </tr>
@@ -419,23 +328,6 @@ export default function ExamResultsPage() {
         resultData={selectedResultData}
         onUpdateSuccess={fetchData}
       />
-
-      <RemedialModal 
-        isOpen={isRemedialModalOpen}
-        onClose={() => setIsRemedialModalOpen(false)}
-        resultData={selectedRemedialData}
-        onSuccess={fetchData}
-      />
-
-      {/* Hidden Report Card for Image Export */}
-      <div style={{ position: 'absolute', left: '-9999px', top: '-9999px', opacity: 0, pointerEvents: 'none' }}>
-        <ReportCardTemplate 
-          ref={reportCardRef} 
-          results={finalResults} 
-          classNameName={selectedClassId === 'all' ? 'Tất cả các lớp' : classes.find(c => c.id === selectedClassId)?.name}
-          lessonName={selectedLessonId === 'all' ? 'Tất cả bài học' : lessons.find(l => l.id === selectedLessonId)?.title}
-        />
-      </div>
     </div>
   );
 }
