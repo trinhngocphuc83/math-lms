@@ -137,6 +137,14 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              if (q.option_b) stmts.push({ id: 'b', content: q.option_b, isTrue: q.correct_answer?.charAt(1) === 'D' || q.correct_answer?.charAt(1) === 'T' });
              if (q.option_c) stmts.push({ id: 'c', content: q.option_c, isTrue: q.correct_answer?.charAt(2) === 'D' || q.correct_answer?.charAt(2) === 'T' });
              if (q.option_d) stmts.push({ id: 'd', content: q.option_d, isTrue: q.correct_answer?.charAt(3) === 'D' || q.correct_answer?.charAt(3) === 'T' });
+             
+             // Nếu câu hỏi trong ngân hàng bị lỗi chỉ lưu 1-3 ý, tự động bù đủ 4 ý
+             if (stmts.length > 0 && stmts.length < 4) {
+                 const defaultIds = ['a', 'b', 'c', 'd'];
+                 for (let i = stmts.length; i < 4; i++) {
+                     stmts.push({ id: defaultIds[i], content: `Phát biểu ${defaultIds[i]}`, isTrue: false });
+                 }
+             }
              content.options = stmts.length > 0 ? stmts : [
                  { id: 'a', content: "Mệnh đề A", isTrue: true },
                  { id: 'b', content: "Mệnh đề B", isTrue: false },
