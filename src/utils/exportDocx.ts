@@ -11,10 +11,9 @@ const base64ToUint8Array = (base64: string) => {
   return bytes;
 };
 
-const processTextLine = (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
+const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
   if (!textLine) return [new TextRun({ text: "" })];
   
-  // Defensive check for any escaped HTML entities that might cause regex failure
   let decodedLine = textLine
     .replace(/&lt;/gi, '<')
     .replace(/&gt;/gi, '>')
@@ -26,48 +25,99 @@ const processTextLine = (textLine: string, defaultColor?: string, defaultBold: b
 
   while (remaining.length > 0) {
     const imgStart = remaining.toLowerCase().indexOf('<img');
+    const mdStart = remaining.indexOf('![');
     
-    if (imgStart === -1) {
-      let plainText = remaining.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    let nextType: 'html' | 'md' | null = null;
+    let startIndex = -1;
+    
+    if (imgStart !== -1 && mdStart !== -1) {
+      if (imgStart < mdStart) {
+        nextType = 'html';
+        startIndex = imgStart;
+      } else {
+        nextType = 'md';
+        startIndex = mdStart;
+      }
+    } else if (imgStart !== -1) {
+      nextType = 'html';
+      startIndex = imgStart;
+    } else if (mdStart !== -1) {
+      nextType = 'md';
+      startIndex = mdStart;
+    }
+
+    if (startIndex === -1) {
+      let plainText = remaining.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
       if (plainText) {
          elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
       }
       break;
     }
     
-    if (imgStart > 0) {
-      const textBefore = remaining.substring(0, imgStart);
-      let plainText = textBefore.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+    if (startIndex > 0) {
+      const textBefore = remaining.substring(0, startIndex);
+      let plainText = textBefore.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
       if (plainText) {
          elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
       }
     }
     
-    const afterImgStart = remaining.substring(imgStart);
-    const imgEnd = afterImgStart.indexOf('>');
+    const afterStart = remaining.substring(startIndex);
     
-    if (imgEnd === -1) {
-      let plainText = afterImgStart.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-      if (plainText) {
-         elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
+    if (nextType === 'html') {
+      const imgEnd = afterStart.indexOf('>');
+      
+      if (imgEnd === -1) {
+        let plainText = afterStart.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
+        if (plainText) {
+           elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
+        }
+        break;
       }
-      break;
-    }
-    
-    const imgTag = afterImgStart.substring(0, imgEnd + 1);
-    remaining = afterImgStart.substring(imgEnd + 1);
-    
-    const srcMatch = imgTag.match(/src="(data:image\/([^;]+);base64,([^"]+))"/i) || imgTag.match(/src='(data:image\/([^;]+);base64,([^']+))'/i);
-    if (srcMatch && srcMatch[3]) {
+      
+      const imgTag = afterStart.substring(0, imgEnd + 1);
+      remaining = afterStart.substring(imgEnd + 1);
+      
+      const srcMatch = imgTag.match(/src="(data:image\/([^;]+);base64,([^"]+))"/i) || imgTag.match(/src='(data:image\/([^;]+);base64,([^']+))'/i);
+      if (srcMatch && srcMatch[3]) {
+        try {
+          const base64Data = srcMatch[3].replace(/\s+/g, '');
+          const buffer = base64ToUint8Array(base64Data);
+          elements.push(new ImageRun({
+            data: buffer,
+            transformation: { width: 300, height: 200 }
+          } as any));
+        } catch(e) {
+          console.error("Lỗi parse ảnh base64:", e);
+        }
+      }
+    } else if (nextType === 'md') {
+      const bracketEnd = afterStart.indexOf('](');
+      if (bracketEnd === -1) {
+         elements.push(new TextRun({ text: "![", color: defaultColor, bold: defaultBold }));
+         remaining = afterStart.substring(2);
+         continue;
+      }
+      const parenEnd = afterStart.indexOf(')', bracketEnd);
+      if (parenEnd === -1) {
+         elements.push(new TextRun({ text: "![", color: defaultColor, bold: defaultBold }));
+         remaining = afterStart.substring(2);
+         continue;
+      }
+      
+      const url = afterStart.substring(bracketEnd + 2, parenEnd).trim();
+      remaining = afterStart.substring(parenEnd + 1);
+      
       try {
-        const base64Data = srcMatch[3].replace(/\s+/g, '');
-        const buffer = base64ToUint8Array(base64Data);
-        elements.push(new ImageRun({
-          data: buffer,
-          transformation: { width: 300, height: 200 }
-        } as any));
+         const imgData = await fetchImageWithDimensions(url);
+         if (imgData) {
+            elements.push(new ImageRun({
+               data: imgData.buffer,
+               transformation: { width: imgData.width, height: imgData.height }
+            } as any));
+         }
       } catch(e) {
-        console.error("Lỗi parse ảnh base64:", e);
+         console.error("Lỗi fetch MD ảnh:", e);
       }
     }
   }
@@ -142,7 +192,7 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
         new Paragraph({
           children: [
             new TextRun({ text: `Câu ${i + 1}. `, bold: true, color: "0000FF" }),
-            ...processTextLine(titleLineText)
+            ...(await processTextLine(titleLineText))
           ],
           spacing: { before: 200 }
         })
@@ -155,7 +205,7 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
                 new ImageRun({
                   data: imageData.buffer,
                   transformation: { width: imageData.width, height: imageData.height },
-                }),
+                } as any),
               ],
               alignment: AlignmentType.CENTER,
             })
@@ -172,7 +222,7 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
                   new ImageRun({
                     data: imageData.buffer,
                     transformation: { width: imageData.width, height: imageData.height },
-                  }),
+                  } as any),
                 ],
                 alignment: AlignmentType.CENTER,
               })
@@ -181,10 +231,10 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
             
             const textWithoutMarker = line.replace(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi, '').trim();
             if (textWithoutMarker) {
-               childrenElements.push(new Paragraph({ children: processTextLine(textWithoutMarker) }));
+               childrenElements.push(new Paragraph({ children: await processTextLine(textWithoutMarker) }));
             }
          } else {
-            childrenElements.push(new Paragraph({ children: processTextLine(line) }));
+            childrenElements.push(new Paragraph({ children: await processTextLine(line) }));
          }
       }
 
@@ -195,7 +245,7 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
                 new ImageRun({
                   data: imageData.buffer,
                   transformation: { width: imageData.width, height: imageData.height },
-                }),
+                } as any),
               ],
               alignment: AlignmentType.CENTER,
             })
@@ -208,22 +258,22 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
           new Paragraph({
             children: [
               new TextRun({ text: `A. `, bold: true, color: "0000FF" }),
-              ...processTextLine(cleanHtmlNewlinesInTags(`${q.option_a || ""}    `)),
+              ...(await processTextLine(cleanHtmlNewlinesInTags(`${q.option_a || ""}    `))),
               new TextRun({ text: `B. `, bold: true, color: "0000FF" }),
-              ...processTextLine(cleanHtmlNewlinesInTags(`${q.option_b || ""}    `)),
+              ...(await processTextLine(cleanHtmlNewlinesInTags(`${q.option_b || ""}    `))),
               new TextRun({ text: `C. `, bold: true, color: "0000FF" }),
-              ...processTextLine(cleanHtmlNewlinesInTags(`${q.option_c || ""}    `)),
+              ...(await processTextLine(cleanHtmlNewlinesInTags(`${q.option_c || ""}    `))),
               new TextRun({ text: `D. `, bold: true, color: "0000FF" }),
-              ...processTextLine(cleanHtmlNewlinesInTags(`${q.option_d || ""}`)),
+              ...(await processTextLine(cleanHtmlNewlinesInTags(`${q.option_d || ""}`))),
             ],
             spacing: { before: 100, after: 200 }
           })
         );
       } else if (q.question_type === 'DS') {
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `a) `}), ...processTextLine(cleanHtmlNewlinesInTags(q.option_a || ""))] }));
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `b) `}), ...processTextLine(cleanHtmlNewlinesInTags(q.option_b || ""))] }));
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `c) `}), ...processTextLine(cleanHtmlNewlinesInTags(q.option_c || ""))] }));
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `d) `}), ...processTextLine(cleanHtmlNewlinesInTags(q.option_d || ""))], spacing: { after: 200 } }));
+        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `a) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_a || "")))] }));
+        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `b) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_b || "")))] }));
+        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `c) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_c || "")))] }));
+        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `d) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_d || "")))], spacing: { after: 200 } }));
       }
 
       // Teacher Solution
@@ -275,14 +325,14 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
         if (methodText) {
           methodText = methodText.replace(/^\*\*/, "");
           const mLines = cleanHtmlNewlinesInTags(methodText).split('\n');
-          mLines.forEach((line: string) => {
+          for (const line of mLines) {
             const trimmedLine = line.trim();
             if (trimmedLine) {
-              const elements = processTextLine(cleanLine(trimmedLine));
+              const elements = await processTextLine(cleanLine(trimmedLine));
               elements.unshift(new TextRun({ text: "➤ ", color: "E67E22", bold: true })); // Orange icon
               childrenElements.push(new Paragraph({ children: elements }));
             }
-          });
+          }
         }
 
         // 3. Output "Lời giải" header
@@ -298,14 +348,14 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
         if (explanationText) {
           explanationText = explanationText.replace(/^\*\*/, "");
           const eLines = cleanHtmlNewlinesInTags(explanationText).split('\n');
-          eLines.forEach((line: string) => {
+          for (const line of eLines) {
             const trimmedLine = line.trim();
             if (trimmedLine) {
-              const elements = processTextLine(cleanLine(trimmedLine));
+              const elements = await processTextLine(cleanLine(trimmedLine));
               elements.unshift(new TextRun({ text: "➤ ", color: "27AE60", bold: true })); // Green icon
               childrenElements.push(new Paragraph({ children: elements }));
             }
-          });
+          }
         }
       }
     }
