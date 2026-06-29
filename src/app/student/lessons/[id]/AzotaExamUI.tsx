@@ -253,7 +253,8 @@ export default function AzotaExamUI({
       if (res.ok) {
         alert("Đã lưu tiến độ làm bài thành công! Bạn có thể làm tiếp bất cứ lúc nào.");
       } else {
-        alert("Có lỗi xảy ra khi lưu bài tạm.");
+        const errorData = await res.json();
+        alert(`Có lỗi xảy ra khi lưu bài tạm: ${errorData.error || 'Unknown error'}`);
       }
     } catch (e) {
       alert("Lỗi mạng khi lưu bài tạm.");

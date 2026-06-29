@@ -66,7 +66,7 @@ export async function POST(request: Request) {
             student_id: user.id,
             lesson_id: lessonId,
             module_id: moduleId || null,
-            score: null,
+            score: 0, // database requires non-null
             passed: false,
             attempt_number: 0, // Quy ước: 0 là bản nháp
             cheat_warnings: cheatWarnings,
