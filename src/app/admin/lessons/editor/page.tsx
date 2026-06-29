@@ -516,12 +516,12 @@ const serializeBlocksToMarkdown = (blocks: Block[]): string => {
 };
 
 const getPrompt = (isPractice: boolean) => {
-  const theoryPrompt = `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
+  const unifiedPrompt = `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, GỒM LÝ THUYẾT VÀ CÁC DẠNG BÀI TẬP, TRÌNH BÀY SIÊU ĐẸP, CỰC KỲ THU HÚT.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU CHO MATHTYPE]:
 - Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
-- Phân số: Dạng \frac{tử}{mẫu}. Góc: Dạng \widehat{tên}.
+- Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}.
 2. [CẤU TRÚC VÀNG CỦA BÀI GIẢNG TOÁN HỌC]:
 Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 * PHẦN 1: TÓM TẮT LÝ THUYẾT TRỌNG TÂM. Hãy chắt lọc Định nghĩa, Định lý, Công thức cốt lõi. Bỏ qua diễn giải rườm rà.
@@ -530,11 +530,11 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 - TẤT CẢ Tiêu đề Phần, Tên Dạng Bài phải là Heading 2 (##) kèm Emoji (Ví dụ: "## 💡 DẠNG 1: TÌM ĐIỀU KIỆN XÁC ĐỊNH").
 - TẤT CẢ Phương pháp giải phải là Heading 3 (###) (Ví dụ: "### 💡 Phương pháp giải").
 - [QUY TẮC VÍ DỤ MẪU]: Trích lấy DUY NHẤT 1 bài tập ở mức độ CƠ BẢN làm Ví dụ mẫu. Tuyệt đối không đưa nhiều hơn 1 ví dụ. 
-- [RẤT QUAN TRỌNG]: Toàn bộ nội dung của Ví dụ mẫu (bao gồm tiêu đề \`> ### 📌 Ví dụ mẫu\`, đề bài và lời giải) BẮT BUỘC phải được bọc trong thẻ trích dẫn Blockquote (thêm \`> \` vào đầu mỗi dòng). Ở phần lời giải, phải ghi chữ \"> Hướng dẫn giải:\" ngay trước khi giải để hệ thống lên màu chuẩn mực.
+- [RẤT QUAN TRỌNG]: Toàn bộ nội dung của Ví dụ mẫu (bao gồm tiêu đề \`> ### 📌 Ví dụ mẫu\`, đề bài và lời giải) BẮT BUỘC phải được bọc trong thẻ trích dẫn Blockquote (thêm \`> \` vào đầu mỗi dòng). Ở phần lời giải, phải ghi chữ "> Hướng dẫn giải:" ngay trước khi giải để hệ thống lên màu chuẩn mực.
 - [KIỂM TRA TÍNH CHÍNH XÁC]: Phải tự động kiểm tra xem đề bài của Ví dụ mẫu có bị sai số không, nếu sai tự động sửa số liệu cho đúng rồi mới giải.
 4. [PHÂN TRANG KHOA HỌC]: Sử dụng đúng 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới). Phân trang sau khi hết phần Lý thuyết, và sau mỗi Dạng Bài (khi hết Ví dụ).
 5. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Hình vẽ, Bảng biến thiên... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ. THAY VÀO ĐÓ, BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ hình.
-6. [TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Ngay TRƯỚC mỗi lần bạn đặt dấu ngắt trang \`---\`, bạn HÃY TỰ NGHĨ RA HOẶC TRÍCH 1 CÂU HỎI TRẮC NGHIỆM từ tài liệu để kiểm tra học sinh. Học sinh phải làm đúng câu này thì mới được đọc trang tiếp theo.
+6. [TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Ngay TRƯỚC mỗi lần bạn đặt dấu ngắt trang \`---\` , bạn HÃY TỰ NGHĨ RA HOẶC TRÍCH 1 CÂU HỎI TRẮC NGHIỆM từ tài liệu để kiểm tra học sinh. Học sinh phải làm đúng câu này thì mới được đọc trang tiếp theo.
 7. Mỗi câu hỏi trắc nghiệm PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Cấu trúc JSON có 2 loại:
 
 LOẠI 1: CÂU HỎI NHIỀU LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
@@ -559,51 +559,9 @@ LOẠI 4: CÂU TRẢ LỜI NGẮN (kết quả ngắn gọn: 1 số, 1 biểu th
 
 GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
 - [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả các công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$.
-- TẤT CẢ các ký tự gạch chéo (\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\). Nếu không làm điều này, hệ thống sẽ BỊ LỖI.`;
+- TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Nếu không làm điều này, hệ thống sẽ BỊ LỖI.`;
 
-  const practicePrompt = `Bạn là một Gia sư Toán học xuất sắc hàng đầu.
-Nhiệm vụ của bạn là phân tích tài liệu bài tập này và thiết kế thành một "Bài Giảng Phân Dạng" TRÌNH BÀY SIÊU ĐẸP, BÀI BẢN.
-YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
-1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU CHO MATHTYPE]:
-- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
-- Phân số: Dạng \frac{tử}{mẫu}. Góc: Dạng \widehat{tên}.
-2. [CẤU TRÚC PHÂN DẠNG BÀI TẬP]:
-- [KHÔNG BỎ SÓT KIẾN THỨC NGUỒN]: Quét kỹ 100% tài liệu. Tôi đưa vào bao nhiêu dạng bài, bạn BẮT BUỘC phải trích xuất và xuất ra đầy đủ bấy nhiêu dạng. TUYỆT ĐỐI KHÔNG ĐƯỢC làm qua loa, không được gộp dạng hay bỏ bớt. Phải cực kỳ đầy đủ.
-- Mở đầu mỗi Dạng bằng thẻ Heading 2 (##) kèm Emoji. Ví dụ: \`## 💡 Dạng 1: Viết phương trình tiếp tuyến\`. 
-- Sau đó bạn hãy Tự biên soạn \`### 💡 Phương pháp giải\` ngắn gọn cho Dạng đó.
-3. [QUY TẮC VÍ DỤ MẪU]: 
-- Tiếp theo, trích lấy DUY NHẤT 1 bài tập ở mức độ CƠ BẢN (Nhận biết hoặc Thông hiểu) làm Ví dụ mẫu và tự biên soạn lời giải. Tuyệt đối không đưa nhiều hơn 1 ví dụ. 
-- [RẤT QUAN TRỌNG]: Toàn bộ nội dung của Ví dụ mẫu (bao gồm tiêu đề \`> ### 📌 Ví dụ mẫu\`, đề bài và lời giải) BẮT BUỘC phải được bọc trong thẻ trích dẫn Blockquote (thêm \`> \` vào đầu mỗi dòng). Ở phần lời giải của Ví dụ mẫu BẮT BUỘC bạn phải ghi chữ "> Hướng dẫn giải:" ngay trước khi giải.
-- [KIỂM TRA TÍNH CHÍNH XÁC]: Tự động kiểm tra tính chính xác toán học của đề bài đó, nếu đề bài sai, BẮT BUỘC TỰ ĐỘNG CHỈNH SỬA số liệu cho đúng rồi mới đưa vào bài, tuyệt đối KHÔNG cần giải thích.
-4. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Đồ thị, Bảng biến thiên... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ. THAY VÀO ĐÓ, bắt buộc chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ bảng/hình.
-5. [TẠO BÀI TẬP TƯƠNG TÁC]: Ngay sau khi giải xong Ví dụ mẫu, bạn hãy dùng dấu ngắt trang \`---\`. Tiếp theo, biến các bài tập còn lại của Dạng đó thành các khối mã "quiz" (JSON) để học sinh tự làm.
-6. Mỗi câu hỏi trong phần luyện tập PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Cấu trúc JSON có 2 loại:
-
-LOẠI 1: CÂU HỎI NHIỀU LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
-\`\`\`quiz
-{
-  "type": "multiple_choice",
-  "question": "Tập xác định của hàm số $y = \\frac{1}{x-1}$ là?",
-  "options": ["$D = \\mathbb{R} \\setminus \\{1\\}$", "$D = \\mathbb{R}$", "$D = (1; +\\infty)$", "$D = (0; 1)$"],
-  "answerIndex": 0
-}
-\`\`\`
-
-LOẠI 4: CÂU TRẢ LỜI NGẮN (kết quả ngắn gọn: 1 số, 1 biểu thức, 1 từ)
-\`\`\`quiz
-{
-  "type": "short_answer",
-  "question": "Tính giá trị của biểu thức $\\\\sqrt{9} + \\\\sqrt{16}$.",
-  "exactAnswer": "7",
-  "answer": "Ta có $\\\\sqrt{9} = 3$ và $\\\\sqrt{16} = 4$, nên tổng là $3 + 4 = 7$."
-}
-\`\`\`
-
-GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
-- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả các công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$.
-- TẤT CẢ các ký tự gạch chéo (\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\). Nếu không làm điều này, hệ thống sẽ BỊ LỖI.`;
-
-  return isPractice ? practicePrompt : theoryPrompt;
+  return unifiedPrompt;
 };
 
 function EditorContent() {
