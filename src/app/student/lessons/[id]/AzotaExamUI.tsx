@@ -661,6 +661,8 @@ export default function AzotaExamUI({
             const cleanQuestion = data.question ? data.question.replace(/^(Câu|Bài)\s*\d+[\.:\-\s]*/i, '') : "";
             const qScore = questionScores[qIndex];
 
+            const imgUrl = data.imageUrl || data.autoCropMetadata?.originalUrl;
+            
             return (
               <div key={p.id} id={`question-${qIndex}`} className={`bg-white rounded-2xl p-6 shadow-sm border-2 transition-all ${isSubmitted ? 'border-gray-200' : 'border-slate-200 hover:border-indigo-300'}`}>
                  <div className="flex items-start gap-3 mb-6">
@@ -673,7 +675,18 @@ export default function AzotaExamUI({
                        )}
                     </div>
                     <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-slate max-w-none prose-p:my-0 font-bold text-slate-800">
-                       <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{cleanQuestion}</ReactMarkdown>
+                       <ReactMarkdown 
+                          remarkPlugins={[remarkMath, remarkBreaks]} 
+                          rehypePlugins={[rehypeKatex]}
+                          components={{
+                             img: ({node, ...props}) => <img {...props} className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm my-4 border border-slate-200" style={{ objectFit: 'contain' }} />
+                          }}
+                       >{cleanQuestion}</ReactMarkdown>
+                       
+                       {/* Hỗ trợ hiển thị ảnh fallback nếu MD chưa có */}
+                       {imgUrl && !cleanQuestion.includes(imgUrl) && !cleanQuestion.includes('![Hình vẽ]') && !cleanQuestion.includes('![Bảng biến thiên]') && (
+                           <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
+                       )}
                     </div>
                  </div>
 
