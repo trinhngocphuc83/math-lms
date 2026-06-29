@@ -1,40 +1,69 @@
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun } from "docx";
 import { saveAs } from "file-saver";
 
+const base64ToUint8Array = (base64: string) => {
+  const binaryString = window.atob(base64);
+  const len = binaryString.length;
+  const bytes = new Uint8Array(len);
+  for (let i = 0; i < len; i++) {
+    bytes[i] = binaryString.charCodeAt(i);
+  }
+  return bytes;
+};
+
 const processTextLine = (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
   if (!textLine) return [new TextRun({ text: "" })];
   
-  // Split string keeping the img tags
-  const parts = textLine.split(/(<img[^>]+>)/gi);
   const elements: any[] = [];
-  
-  parts.forEach(part => {
-    if (!part) return;
+  let remaining = textLine;
+
+  while (remaining.length > 0) {
+    const imgStart = remaining.toLowerCase().indexOf('<img');
     
-    if (part.toLowerCase().startsWith('<img')) {
-      const srcMatch = part.match(/src="(data:image\/([^;]+);base64,([a-zA-Z0-9+/=]+))"/i) || part.match(/src='(data:image\/([^;]+);base64,([a-zA-Z0-9+/=]+))'/i);
-      
-      if (srcMatch && srcMatch[3]) {
-        try {
-          const base64Data = srcMatch[3];
-          const buffer = Buffer.from(base64Data, 'base64');
-          elements.push(new ImageRun({
-            data: buffer,
-            transformation: { width: 300, height: 200 }
-          } as any));
-          return;
-        } catch(e) {
-          console.error("Lỗi parse ảnh base64:", e);
-        }
+    if (imgStart === -1) {
+      let plainText = remaining.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      if (plainText) {
+         elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
       }
-    } else {
-      // Decode HTML entities
-      let plainText = part.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      break;
+    }
+    
+    if (imgStart > 0) {
+      const textBefore = remaining.substring(0, imgStart);
+      let plainText = textBefore.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
       if (plainText) {
          elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
       }
     }
-  });
+    
+    const afterImgStart = remaining.substring(imgStart);
+    const imgEnd = afterImgStart.indexOf('>');
+    
+    if (imgEnd === -1) {
+      let plainText = afterImgStart.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+      if (plainText) {
+         elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
+      }
+      break;
+    }
+    
+    const imgTag = afterImgStart.substring(0, imgEnd + 1);
+    remaining = afterImgStart.substring(imgEnd + 1);
+    
+    const srcMatch = imgTag.match(/src="(data:image\/([^;]+);base64,([^"]+))"/i) || imgTag.match(/src='(data:image\/([^;]+);base64,([^']+))'/i);
+    if (srcMatch && srcMatch[3]) {
+      try {
+        const base64Data = srcMatch[3].replace(/\s+/g, '');
+        const buffer = base64ToUint8Array(base64Data);
+        elements.push(new ImageRun({
+          data: buffer,
+          transformation: { width: 300, height: 200 }
+        } as any));
+      } catch(e) {
+        console.error("Lỗi parse ảnh base64:", e);
+      }
+    }
+  }
   
   return elements.length > 0 ? elements : [new TextRun({ text: "" })];
 };
