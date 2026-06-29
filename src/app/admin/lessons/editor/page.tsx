@@ -762,7 +762,28 @@ function EditorContent() {
       content = content.replace(/```quiz\n([\s\S]*?)\n```/g, (match, jsonString) => {
           try {
               const quiz = JSON.parse(jsonString);
-              const escapeText = (t: string) => (t||'').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br/>');
+              const protectHtml = (text: string) => {
+                  let protectedText = text || '';
+                  const imgBlocks: string[] = [];
+                  protectedText = protectedText.replace(/<img[^>]+>/gi, (match) => {
+                      if (!match.includes('width=')) match = match.replace('<img', '<img width="350"');
+                      imgBlocks.push(match);
+                      return `__IMG_TAG_${imgBlocks.length - 1}__`;
+                  });
+                  const brBlocks: string[] = [];
+                  protectedText = protectedText.replace(/<br\s*\/?>/gi, (match) => {
+                      brBlocks.push(match);
+                      return `__BR_TAG_${brBlocks.length - 1}__`;
+                  });
+                  
+                  protectedText = protectedText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                  
+                  imgBlocks.forEach((img, i) => { protectedText = protectedText.replace(`__IMG_TAG_${i}__`, img); });
+                  brBlocks.forEach((br, i) => { protectedText = protectedText.replace(`__BR_TAG_${i}__`, br); });
+                  
+                  return protectedText;
+              };
+              const escapeText = (t: string) => protectHtml(t).replace(/\n/g, '<br/>');
               const escapeLines = (t: string, bulletColor: string) => {
                   return (t||'')
                      .replace(/^(?:\*\*)?(?:Phương pháp giải|Lời giải|Hướng dẫn giải|Giải thích):?(?:\*\*)?\s*/i, '')
@@ -771,7 +792,7 @@ function EditorContent() {
                      .map((l: string) => {
                          let cleanLine = l.replace(/^[\-\+\*]\s*/, '').trim();
                          if (!cleanLine) return '';
-                         return `<p><span style="color: ${bulletColor}; font-weight: bold;">➤ </span> ${cleanLine.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</p>`;
+                         return `<p><span style="color: ${bulletColor}; font-weight: bold;">➤ </span> ${protectHtml(cleanLine)}</p>`;
                      }).join('');
               };
               
