@@ -217,17 +217,7 @@ export default function AzotaExamUI({
   const [cheatWarnings, setCheatWarnings] = useState(0);
 
   useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (document.hidden && !isSubmitted) {
-        setCheatWarnings(prev => prev + 1);
-        alert("CẢNH BÁO GIAN LẬN: Bạn vừa rời khỏi màn hình làm bài! Hệ thống đã ghi nhận.");
-      }
-    };
-
-    document.addEventListener("visibilitychange", handleVisibilityChange);
-    return () => {
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
-    };
+    // (Đã gỡ bỏ tính năng cảnh báo gian lận ở phần Luyện tập theo yêu cầu)
   }, [isSubmitted]);
   
   // Parse content thành các phần (markdown + quiz)
@@ -764,10 +754,14 @@ export default function AzotaExamUI({
 
                           return (
                              <div key={optIdx} className={`flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl border-2 transition-all gap-4 ${wrapperClass}`}>
-                                <div className="flex items-start gap-3">
-                                   <div className="font-bold text-slate-400 w-6 mt-0.5">{['A','B','C','D'][optIdx] || 'A'}.</div>
+                                <div className="flex items-center gap-3">
+                                   <div className="font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
+                                      {['a','b','c','d'][optIdx] || 'a'}
+                                   </div>
                                    <div className="flex-1 min-w-0 prose prose-sm max-w-none text-slate-700 prose-p:my-0">
-                                      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{stmt.content || stmt.text}</ReactMarkdown>
+                                      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>
+                                         {(stmt.content || stmt.text)?.match(/^Mệnh đề [A-D]$/i) ? `Phát biểu ${['a','b','c','d'][optIdx]}` : (stmt.content || stmt.text)}
+                                      </ReactMarkdown>
                                    </div>
                                 </div>
                                 <div className="flex items-center gap-2 shrink-0 md:ml-auto">
