@@ -71,6 +71,11 @@ const fetchImageWithDimensions = async (url: string): Promise<{buffer: Buffer, w
   }
 };
 
+const cleanHtmlNewlinesInTags = (html: string) => {
+  if (!html) return "";
+  return html.replace(/<img[^>]+>/gi, (match) => match.replace(/\n|\r/g, ''));
+};
+
 export const exportQuestionsToWord = async (questions: any[], exportType: 'student' | 'teacher') => {
   try {
     const childrenElements: any[] = [
@@ -90,7 +95,7 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
         imageData = await fetchImageWithDimensions(q.image_url);
       }
 
-      const rawContent = q.content || "";
+      let rawContent = cleanHtmlNewlinesInTags(q.content || "");
       const contentLines = rawContent.split('\n');
       let imageInserted = false;
 
@@ -167,22 +172,22 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
           new Paragraph({
             children: [
               new TextRun({ text: `A. `, bold: true, color: "0000FF" }),
-              ...processTextLine(`${q.option_a || ""}    `),
+              ...processTextLine(cleanHtmlNewlinesInTags(`${q.option_a || ""}    `)),
               new TextRun({ text: `B. `, bold: true, color: "0000FF" }),
-              ...processTextLine(`${q.option_b || ""}    `),
+              ...processTextLine(cleanHtmlNewlinesInTags(`${q.option_b || ""}    `)),
               new TextRun({ text: `C. `, bold: true, color: "0000FF" }),
-              ...processTextLine(`${q.option_c || ""}    `),
+              ...processTextLine(cleanHtmlNewlinesInTags(`${q.option_c || ""}    `)),
               new TextRun({ text: `D. `, bold: true, color: "0000FF" }),
-              ...processTextLine(`${q.option_d || ""}`),
+              ...processTextLine(cleanHtmlNewlinesInTags(`${q.option_d || ""}`)),
             ],
             spacing: { before: 100, after: 200 }
           })
         );
       } else if (q.question_type === 'DS') {
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `a) `}), ...processTextLine(q.option_a || "")] }));
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `b) `}), ...processTextLine(q.option_b || "")] }));
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `c) `}), ...processTextLine(q.option_c || "")] }));
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `d) `}), ...processTextLine(q.option_d || "")], spacing: { after: 200 } }));
+        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `a) `}), ...processTextLine(cleanHtmlNewlinesInTags(q.option_a || ""))] }));
+        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `b) `}), ...processTextLine(cleanHtmlNewlinesInTags(q.option_b || ""))] }));
+        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `c) `}), ...processTextLine(cleanHtmlNewlinesInTags(q.option_c || ""))] }));
+        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `d) `}), ...processTextLine(cleanHtmlNewlinesInTags(q.option_d || ""))], spacing: { after: 200 } }));
       }
 
       // Teacher Solution
@@ -233,7 +238,7 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
         // 2. Output Method lines with icons
         if (methodText) {
           methodText = methodText.replace(/^\*\*/, "");
-          const mLines = methodText.split('\n');
+          const mLines = cleanHtmlNewlinesInTags(methodText).split('\n');
           mLines.forEach((line: string) => {
             const trimmedLine = line.trim();
             if (trimmedLine) {
@@ -256,7 +261,7 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
         // 4. Output Explanation lines with icons
         if (explanationText) {
           explanationText = explanationText.replace(/^\*\*/, "");
-          const eLines = explanationText.split('\n');
+          const eLines = cleanHtmlNewlinesInTags(explanationText).split('\n');
           eLines.forEach((line: string) => {
             const trimmedLine = line.trim();
             if (trimmedLine) {
