@@ -148,6 +148,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              content.options = stmts.length > 0 ? stmts : [
                  { id: 'a', content: "Mệnh đề A", isTrue: true },
                  { id: 'b', content: "Mệnh đề B", isTrue: false },
+                 { id: 'c', content: "Mệnh đề C", isTrue: true },
+                 { id: 'd', content: "Mệnh đề D", isTrue: false },
              ];
          }
 
