@@ -844,11 +844,40 @@ function EditorContent() {
       html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
       html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
       
+      // Parse Markdown Images ![alt](url) -> fetch and embed as base64
+      const imgRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
+      let match;
+      let newHtml = html;
+      while ((match = imgRegex.exec(html)) !== null) {
+        const alt = match[1];
+        const url = match[2];
+        try {
+          const res = await fetch(url);
+          if (res.ok) {
+            const arrayBuffer = await res.arrayBuffer();
+            const bytes = new Uint8Array(arrayBuffer);
+            let binary = '';
+            for (let i = 0; i < bytes.byteLength; i++) {
+                binary += String.fromCharCode(bytes[i]);
+            }
+            const base64 = btoa(binary);
+            const contentType = res.headers.get('content-type') || 'image/png';
+            const imgTag = `<br/><br/><div style="text-align: center;"><img src="data:${contentType};base64,${base64}" style="max-width: 500px;" alt="${alt}" /></div><br/><br/>`;
+            newHtml = newHtml.replace(match[0], imgTag);
+          } else {
+             newHtml = newHtml.replace(match[0], `[Lỗi tải ảnh: ${alt}]`);
+          }
+        } catch (e) {
+          newHtml = newHtml.replace(match[0], `[Lỗi tải ảnh: ${alt}]`);
+        }
+      }
+      html = newHtml;
+
       // Bao bọc <p> cho từng dòng để Word bắt buộc phải xuống đoạn thay vì dính chùm
       html = html.split('\n').map(line => {
          const t = line.trim();
          if (!t) return '';
-         if (t.startsWith('<h') || t.startsWith('__QUIZ_PLACEHOLDER_')) return t; // Không bọc p cho heading/quiz placeholder
+         if (t.startsWith('<h') || t.startsWith('__QUIZ_PLACEHOLDER_') || t.startsWith('<br/>')) return t; // Không bọc p cho heading/quiz placeholder/img
          return `<p>${line}</p>`;
       }).join('\n');
 
