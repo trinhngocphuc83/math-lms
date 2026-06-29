@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { X, Search, Loader2, Database, CheckCircle2, ChevronLeft, ChevronRight, CheckSquare, Square } from "lucide-react";
+import { X, Search, Loader2, Database, CheckCircle2, ChevronLeft, ChevronRight, CheckSquare, Square, Eye } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
@@ -20,6 +20,7 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
   const [searchInput, setSearchInput] = useState("");
   const [selectedQuestions, setSelectedQuestions] = useState<any[]>([]);
   const [isInserting, setIsInserting] = useState(false);
+  const [previewQuestion, setPreviewQuestion] = useState<any>(null);
   
   // Categories & Filters State
   const [categories, setCategories] = useState<any[]>([]);
@@ -312,9 +313,10 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
                      </div>
                      <div className="flex-1 min-w-0">
                         <div className="flex flex-col gap-1.5 mb-2">
-                           <div className="flex items-center gap-2 flex-wrap mb-1">
-                              <span className="text-[10px] font-black tracking-wider px-2 py-0.5 rounded-md bg-gray-100 text-gray-600 uppercase border border-gray-200 shadow-sm">
-                                {q.question_id || 'NO-ID'}
+                           <div className="flex flex-wrap items-start justify-between gap-2 mb-1">
+                              <div className="flex items-center gap-2 flex-wrap">
+                                 <span className="text-[10px] font-black tracking-wider px-2 py-0.5 rounded-md bg-gray-100 text-gray-600 uppercase border border-gray-200 shadow-sm">
+                                   {q.question_id || 'NO-ID'}
                               </span>
                               {q.question_type && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-purple-50 text-purple-700 border border-purple-100">{QUESTION_TYPES[q.question_type] || q.question_type}</span>}
                               {q.grade && <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-blue-50 text-blue-700">{q.grade}</span>}
@@ -334,7 +336,17 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
                                       );
                                   }
                                   return null;
-                              })()}
+                             })()}
+                              </div>
+                              <button 
+                                 onClick={(e) => {
+                                     e.stopPropagation();
+                                     setPreviewQuestion(q);
+                                 }}
+                                 className="flex items-center gap-1 px-2 py-1 bg-white border border-gray-200 text-gray-600 rounded-md hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200 transition-colors shadow-sm text-[11px] font-bold shrink-0"
+                              >
+                                 <Eye className="w-3.5 h-3.5" /> Xem trước
+                              </button>
                            </div>
                            {q.topic && <div className="font-bold text-indigo-900 text-[11px] line-clamp-1" title={q.topic}>Chương/CĐ: <span className="text-gray-700 font-medium">{q.topic}</span></div>}
                            {q.lesson && <div className="font-bold text-teal-800 text-[11px] line-clamp-1" title={q.lesson}>Bài: <span className="text-gray-700 font-medium">{q.lesson}</span></div>}
@@ -380,6 +392,37 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
         )}
 
       </div>
+
+      {/* Preview Modal */}
+      {previewQuestion && (
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200" onClick={(e) => e.stopPropagation()}>
+           <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
+              <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                 <div className="flex items-center gap-2 text-gray-800 font-bold">
+                    <Eye className="w-5 h-5 text-orange-500" />
+                    <h3 className="text-lg">Xem trước câu hỏi</h3>
+                    <span className="ml-2 text-xs font-black tracking-wider px-2 py-0.5 rounded-md bg-white text-gray-600 uppercase border border-gray-200 shadow-sm">
+                       {previewQuestion.question_id}
+                    </span>
+                 </div>
+                 <button onClick={() => setPreviewQuestion(null)} className="p-2 hover:bg-gray-200 hover:text-red-500 rounded-xl text-gray-400 transition-colors">
+                    <X className="w-5 h-5"/>
+                 </button>
+              </div>
+              <div className="p-6 overflow-y-auto prose prose-sm max-w-none text-gray-800 leading-relaxed custom-math">
+                 <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{previewQuestion.content || ""}</ReactMarkdown>
+              </div>
+              <div className="p-4 border-t border-gray-100 bg-gray-50 flex justify-end">
+                 <button 
+                    onClick={() => setPreviewQuestion(null)}
+                    className="px-4 py-2 bg-white border border-gray-200 rounded-xl font-semibold text-gray-600 hover:bg-gray-100 transition-colors"
+                 >
+                    Đóng
+                 </button>
+              </div>
+           </div>
+        </div>
+      )}
     </div>
   );
 }
