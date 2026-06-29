@@ -877,7 +877,7 @@ function EditorContent() {
             }
             const base64 = btoa(binary);
             const contentType = res.headers.get('content-type') || 'image/png';
-            const imgTag = `<br/><br/><div style="text-align: center;"><img src="data:${contentType};base64,${base64}" style="max-width: 500px;" alt="${alt}" /></div><br/><br/>`;
+            const imgTag = `<br/><br/><div style="text-align: center;"><img src="data:${contentType};base64,${base64}" width="350" alt="${alt}" /></div><br/><br/>`;
             newHtml = newHtml.replace(match[0], imgTag);
           } else {
              newHtml = newHtml.replace(match[0], `[Lỗi tải ảnh: ${alt}]`);
