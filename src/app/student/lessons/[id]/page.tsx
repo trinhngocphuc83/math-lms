@@ -241,7 +241,12 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
     return "border-red-500 bg-red-50";
   };
 
-  const cleanQuestion = data.question ? data.question.replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '') : "";
+  let cleanQuestion = data.question ? data.question.replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '') : "";
+  
+  // Clean raw HTML <br> and <img> if user pasted them
+  cleanQuestion = cleanQuestion.replace(/<br\s*\/?>/gi, '\n\n');
+  cleanQuestion = cleanQuestion.replace(/<img[^>]+src=["']([^"']+)["'][^>]*>/gi, '\n\n![Hình vẽ]($1)\n\n');
+  
   const imgUrl = data.imageUrl || data.autoCropMetadata?.originalUrl;
 
   return (
@@ -249,7 +254,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
       <div className="text-lg font-bold text-gray-800 mb-6 flex flex-col md:flex-row items-start md:items-center gap-3">
          <span className="text-indigo-800 bg-indigo-100 border-2 border-indigo-200 px-4 py-1.5 rounded-2xl text-sm shrink-0 font-black tracking-wide">THỬ THÁCH NHỎ</span>
          <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed text-slate-700">
-            <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
+            <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
             {imgUrl && !cleanQuestion.includes(imgUrl) && !cleanQuestion.includes('![Hình vẽ]') && !cleanQuestion.includes('![Bảng biến thiên]') && (
                 <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
             )}
