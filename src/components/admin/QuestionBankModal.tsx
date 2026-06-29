@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/client";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import QuestionPreviewModal from "./QuestionPreviewModal";
 
 interface QuestionBankModalProps {
   isOpen: boolean;
@@ -394,35 +395,11 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
       </div>
 
       {/* Preview Modal */}
-      {previewQuestion && (
-        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4 animate-in fade-in duration-200" onClick={(e) => e.stopPropagation()}>
-           <div className="bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] shadow-2xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200" onClick={(e) => e.stopPropagation()}>
-              <div className="p-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-                 <div className="flex items-center gap-2 text-gray-800 font-bold">
-                    <Eye className="w-5 h-5 text-orange-500" />
-                    <h3 className="text-lg">Xem trước câu hỏi</h3>
-                    <span className="ml-2 text-xs font-black tracking-wider px-2 py-0.5 rounded-md bg-white text-gray-600 uppercase border border-gray-200 shadow-sm">
-                       {previewQuestion.question_id}
-                    </span>
-                 </div>
-                 <button onClick={() => setPreviewQuestion(null)} className="p-2 hover:bg-gray-200 hover:text-red-500 rounded-xl text-gray-400 transition-colors">
-                    <X className="w-5 h-5"/>
-                 </button>
-              </div>
-              <div className="p-6 overflow-y-auto prose prose-sm max-w-none text-gray-800 leading-relaxed custom-math">
-                 <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{previewQuestion.content || ""}</ReactMarkdown>
-              </div>
-              <div className="p-4 border-t border-gray-100 bg-gray-50 flex justify-end">
-                 <button 
-                    onClick={() => setPreviewQuestion(null)}
-                    className="px-4 py-2 bg-white border border-gray-200 rounded-xl font-semibold text-gray-600 hover:bg-gray-100 transition-colors"
-                 >
-                    Đóng
-                 </button>
-              </div>
-           </div>
-        </div>
-      )}
+      <QuestionPreviewModal 
+        isOpen={!!previewQuestion} 
+        onClose={() => setPreviewQuestion(null)} 
+        question={previewQuestion} 
+      />
     </div>
   );
 }
