@@ -125,18 +125,27 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
   return elements.length > 0 ? elements : [new TextRun({ text: "" })];
 };
 
-const fetchImageWithDimensions = async (url: string): Promise<{buffer: Buffer, width: number, height: number} | null> => {
+const fetchImageWithDimensions = async (url: string): Promise<{buffer: Uint8Array, width: number, height: number} | null> => {
   try {
     const response = await fetch(url);
+    if (!response.ok) {
+      console.error("Fetch image failed with status:", response.status);
+      return null;
+    }
     const arrayBuffer = await response.arrayBuffer();
-    const buffer = Buffer.from(arrayBuffer);
+    const buffer = new Uint8Array(arrayBuffer);
     
     const dimensions = await new Promise<{width: number, height: number}>((resolve, reject) => {
       const img = new Image();
       img.onload = () => {
         resolve({ width: img.width, height: img.height });
+        URL.revokeObjectURL(img.src);
       };
-      img.onerror = reject;
+      img.onerror = (e) => {
+        console.error("Image load error", e);
+        // Trả về kích thước mặc định nếu không đọc được
+        resolve({ width: 400, height: 300 });
+      };
       const blob = new Blob([arrayBuffer]);
       const objectUrl = URL.createObjectURL(blob);
       img.src = objectUrl;
@@ -147,7 +156,7 @@ const fetchImageWithDimensions = async (url: string): Promise<{buffer: Buffer, w
     if (width > MAX_WIDTH) {
        const ratio = MAX_WIDTH / width;
        width = MAX_WIDTH;
-       height = height * ratio;
+       height = Math.round(height * ratio);
     }
 
     return { buffer, width, height };
@@ -175,7 +184,7 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
 
     for (let i = 0; i < questions.length; i++) {
       const q = questions[i];
-      let imageData: {buffer: Buffer, width: number, height: number} | null = null;
+      let imageData: {buffer: Uint8Array, width: number, height: number} | null = null;
       
       if (q.image_url) {
         imageData = await fetchImageWithDimensions(q.image_url);
