@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { exportQuestionsToWord } from "@/utils/docxExporter";
+import { exportQuestionsToWord } from "@/utils/exportDocx";
 import { 
   Sliders, Download, UploadCloud, Trash2, Printer, FileText, Settings, Database, Shuffle, CheckCircle, X, ChevronDown, ChevronRight, Folder, File, List
 } from "lucide-react";

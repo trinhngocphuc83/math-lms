@@ -11,7 +11,7 @@ import {
 import Papa from "papaparse";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import PreviewQuestionModal from "@/components/admin/PreviewQuestionModal";
-import { exportQuestionsToWord } from "@/utils/docxExporter";
+import { exportQuestionsToWord } from "@/utils/exportDocx";
 import CategoryManagerModal from "@/components/admin/CategoryManagerModal";
 
 export default function QuestionsPage() {

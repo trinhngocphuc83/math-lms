@@ -14,8 +14,15 @@ const base64ToUint8Array = (base64: string) => {
 const processTextLine = (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
   if (!textLine) return [new TextRun({ text: "" })];
   
+  // Defensive check for any escaped HTML entities that might cause regex failure
+  let decodedLine = textLine
+    .replace(/&lt;/gi, '<')
+    .replace(/&gt;/gi, '>')
+    .replace(/&amp;/gi, '&')
+    .replace(/&nbsp;/gi, ' ');
+  
   const elements: any[] = [];
-  let remaining = textLine;
+  let remaining = decodedLine;
 
   while (remaining.length > 0) {
     const imgStart = remaining.toLowerCase().indexOf('<img');
