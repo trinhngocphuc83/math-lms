@@ -844,6 +844,21 @@ function EditorContent() {
       html = html.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
       html = html.replace(/\*(.*?)\*/g, '<em>$1</em>');
       
+
+
+      // Bao bọc <p> cho từng dòng để Word bắt buộc phải xuống đoạn thay vì dính chùm
+      html = html.split('\n').map(line => {
+         const t = line.trim();
+         if (!t) return '';
+         if (t.startsWith('<h') || t.startsWith('__QUIZ_PLACEHOLDER_') || t.startsWith('<br/>')) return t; // Không bọc p cho heading/quiz placeholder/img
+         return `<p>${line}</p>`;
+      }).join('\n');
+
+      // 4. Khôi phục lại khối HTML của Quiz
+      quizzesHtml.forEach((qHtml, index) => {
+         html = html.replace(`__QUIZ_PLACEHOLDER_${index}__`, qHtml);
+      });
+
       // Parse Markdown Images ![alt](url) -> fetch and embed as base64
       const imgRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
       let match;
@@ -872,19 +887,6 @@ function EditorContent() {
         }
       }
       html = newHtml;
-
-      // Bao bọc <p> cho từng dòng để Word bắt buộc phải xuống đoạn thay vì dính chùm
-      html = html.split('\n').map(line => {
-         const t = line.trim();
-         if (!t) return '';
-         if (t.startsWith('<h') || t.startsWith('__QUIZ_PLACEHOLDER_') || t.startsWith('<br/>')) return t; // Không bọc p cho heading/quiz placeholder/img
-         return `<p>${line}</p>`;
-      }).join('\n');
-
-      // 4. Khôi phục lại khối HTML của Quiz
-      quizzesHtml.forEach((qHtml, index) => {
-         html = html.replace(`__QUIZ_PLACEHOLDER_${index}__`, qHtml);
-      });
 
       const documentHtml = `
       <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
