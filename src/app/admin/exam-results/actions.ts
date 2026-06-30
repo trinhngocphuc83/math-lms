@@ -41,6 +41,12 @@ export async function fetchExamResultsAdmin() {
     .select('id, title, course_id')
     .order('created_at', { ascending: false });
 
+  // 6. Fetch all lesson_modules
+  const { data: modules } = await supabaseAdmin
+    .from('lesson_modules')
+    .select('id, lesson_id, title, order_index')
+    .order('order_index', { ascending: true });
+
   if (error) {
     console.error("Error fetching exam_results in admin:", error);
     return { error: error.code };
@@ -51,6 +57,7 @@ export async function fetchExamResultsAdmin() {
     enrollments: enrollments || [],
     results: results || [],
     students: students || [],
-    lessons: lessons || []
+    lessons: lessons || [],
+    modules: modules || []
   };
 }

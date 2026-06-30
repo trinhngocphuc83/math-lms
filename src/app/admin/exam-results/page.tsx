@@ -16,8 +16,10 @@ export default function ExamResultsPage() {
   const [enrollments, setEnrollments] = useState<any[]>([]);
   const [students, setStudents] = useState<any[]>([]);
   const [lessons, setLessons] = useState<any[]>([]);
+  const [modules, setModules] = useState<any[]>([]);
   const [selectedClassId, setSelectedClassId] = useState<string>("all");
   const [selectedLessonId, setSelectedLessonId] = useState<string>("all");
+  const [selectedModuleId, setSelectedModuleId] = useState<string>("all");
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
@@ -102,6 +104,7 @@ export default function ExamResultsPage() {
       setResults(data.results || []);
       setStudents(data.students || []);
       setLessons(data.lessons || []);
+      setModules(data.modules || []);
     }
     
     setLoading(false);
@@ -268,7 +271,7 @@ export default function ExamResultsPage() {
                 <option key={cls.id} value={cls.id}>{cls.name}</option>
               ))}
             </select>
-            <select
+                        <select
               value={selectedLessonId}
               onChange={e => setSelectedLessonId(e.target.value)}
               className="w-full md:w-64 px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-sm font-bold text-zinc-700 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 cursor-pointer"
@@ -278,6 +281,22 @@ export default function ExamResultsPage() {
                 <option key={ls.id} value={ls.id}>{ls.title}</option>
               ))}
             </select>
+            {selectedLessonId !== "all" && modules.filter(m => m.lesson_id === selectedLessonId).length > 0 && (
+              <select
+                value={selectedModuleId}
+                onChange={e => setSelectedModuleId(e.target.value)}
+                className="w-full md:w-64 px-4 py-2.5 bg-white border border-zinc-200 rounded-xl text-sm font-bold text-zinc-700 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500 cursor-pointer"
+              >
+                <option value="all">Tất cả phần luyện tập</option>
+                {modules
+                  .filter(m => m.lesson_id === selectedLessonId)
+                  .map((m, index) => (
+                  <option key={m.id} value={m.id}>
+                    {m.title || `Phần luyện tập ${index + 1}`}
+                  </option>
+                ))}
+              </select>
+            )}
             
             <button
               onClick={handleExportExcel}
