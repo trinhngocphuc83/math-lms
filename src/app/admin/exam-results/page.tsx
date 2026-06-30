@@ -140,7 +140,7 @@ export default function ExamResultsPage() {
         .filter(e => e.class_id === selectedClassId)
         .map(e => e.student_id);
 
-      const submittedStudentIds = submittedResults.map(r => r.student_id);
+      const submittedStudentIds = results.filter(r => (selectedLessonId === "all" || r.lesson_id === selectedLessonId) && (selectedModuleId === "all" || r.module_id === selectedModuleId)).map(r => r.student_id);
       const unsubmittedStudentIds = studentIdsInClass.filter(id => !submittedStudentIds.includes(id));
 
       unsubmittedResults = unsubmittedStudentIds.map(studentId => {
