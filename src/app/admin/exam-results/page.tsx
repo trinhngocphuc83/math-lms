@@ -281,7 +281,7 @@ export default function ExamResultsPage() {
                 <option key={ls.id} value={ls.id}>{ls.title}</option>
               ))}
             </select>
-            {selectedLessonId !== "all" && modules.filter(m => m.lesson_id === selectedLessonId).length > 0 && (
+            {selectedLessonId !== "all" && modules.filter(m => m.lesson_id === selectedLessonId && m.type === 'practice').length > 0 && (
               <select
                 value={selectedModuleId}
                 onChange={e => setSelectedModuleId(e.target.value)}
@@ -289,7 +289,7 @@ export default function ExamResultsPage() {
               >
                 <option value="all">Tất cả phần luyện tập</option>
                 {modules
-                  .filter(m => m.lesson_id === selectedLessonId)
+                  .filter(m => m.lesson_id === selectedLessonId && m.type === 'practice')
                   .map((m, index) => (
                   <option key={m.id} value={m.id}>
                     {m.title || `Phần luyện tập ${index + 1}`}

@@ -44,7 +44,7 @@ export async function fetchExamResultsAdmin() {
   // 6. Fetch all lesson_modules
   const { data: modules } = await supabaseAdmin
     .from('lesson_modules')
-    .select('id, lesson_id, title, order_index')
+    .select('id, lesson_id, title, type, order_index')
     .order('order_index', { ascending: true });
 
   if (error) {
