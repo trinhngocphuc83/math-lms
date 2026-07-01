@@ -66,7 +66,7 @@ const customMarkdownComponents: any = {
                
                if (shouldInject) {
                    newKids.push(
-                       <span key={`icon-${index}`} className="inline-flex items-center justify-center mr-2 mt-1.5 align-top text-orange-500 bg-orange-50 rounded shadow-sm border border-orange-100 w-5 h-5 shrink-0">
+                       <span key={`icon-${index}`} className="inline-flex items-center justify-center mr-2 align-middle relative -top-[2px] text-orange-500 bg-orange-50 rounded shadow-sm border border-orange-100 w-5 h-5 shrink-0">
                           <ChevronRight className="w-3.5 h-3.5 shrink-0" />
                        </span>
                    );
@@ -81,7 +81,7 @@ const customMarkdownComponents: any = {
            }
        });
 
-       return <p className="mb-6 text-[1.1rem] leading-[1.8] text-gray-700 flex flex-wrap items-start" {...props}>{newKids}</p>;
+       return <p className="mb-6 text-[1.1rem] leading-[1.8] text-gray-700" {...props}>{newKids}</p>;
    }
 };
 
