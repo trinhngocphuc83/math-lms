@@ -327,11 +327,11 @@ export default function PresentationPage() {
     
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'ArrowRight' || e.key === 'Space' || e.key === 'Enter') {
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Space' || e.key === 'Enter' || e.key === 'PageDown') {
                 setCurrentSlideIndex(prev => Math.min(prev + 1, slides.length - 1));
-            } else if (e.key === 'ArrowLeft') {
+            } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
                 setCurrentSlideIndex(prev => Math.max(prev - 1, 0));
-            } else if (e.key === 'f') {
+            } else if (e.key === 'f' || e.key === 'F') {
                 toggleFullscreen();
             }
         };
@@ -385,9 +385,16 @@ export default function PresentationPage() {
             quizData = JSON.parse(jsonStr);
         } catch (e) {}
     }
-    
+    const handleSlideClick = (e: React.MouseEvent) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('button') || target.closest('a') || target.closest('input')) {
+            return;
+        }
+        setCurrentSlideIndex(prev => Math.min(prev + 1, slides.length - 1));
+    };
+
     return (
-        <div className="w-screen h-screen overflow-hidden bg-gradient-to-br from-slate-100 to-indigo-50 flex items-center justify-center selection:bg-indigo-500/30">
+        <div onClick={handleSlideClick} className="w-screen h-screen overflow-hidden bg-gradient-to-br from-slate-100 to-indigo-50 flex items-center justify-center selection:bg-indigo-500/30">
             
             {/* Header / Controls (Auto-hides) */}
             <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-50 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200">
