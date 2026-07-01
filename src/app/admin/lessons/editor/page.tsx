@@ -7,6 +7,7 @@ import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw,
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import { fixLatexText, applyLatexFixToActiveElement } from "@/utils/latexFixer";
 import 'katex/dist/katex.min.css';
@@ -120,8 +121,23 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
       <div className="prose prose-slate max-w-none prose-p:leading-relaxed prose-p:my-2 prose-pre:bg-slate-800 prose-pre:text-slate-100 prose-img:rounded-xl prose-img:shadow-md">
         <ReactMarkdown
           remarkPlugins={[remarkMath, remarkBreaks]}
-          rehypePlugins={[rehypeKatex]}
+          rehypePlugins={[rehypeKatex, rehypeRaw]}
           components={{
+             span: ({node, style, children, ...props}: any) => {
+                 let parsedStyle: any = {};
+                 if (typeof style === 'string') {
+                     style.split(';').forEach((rule: string) => {
+                         const [key, val] = rule.split(':');
+                         if (key && val) {
+                             const camelKey = key.trim().replace(/-([a-z])/g, (g: any) => g[1].toUpperCase());
+                             parsedStyle[camelKey] = val.trim();
+                         }
+                     });
+                 } else if (style) {
+                     parsedStyle = style;
+                 }
+                 return <span style={parsedStyle} {...props}>{children}</span>;
+             },
              img({node, ...props}) {
                return <img {...props} className="max-h-64 object-contain rounded-lg shadow-sm border border-slate-200 mx-auto my-4" />
              }
@@ -1186,8 +1202,23 @@ function EditorContent() {
   const renderMarkdown = (content: string) => (
     <ReactMarkdown 
       remarkPlugins={[remarkMath]} 
-      rehypePlugins={[rehypeKatex]}
+      rehypePlugins={[rehypeKatex, rehypeRaw]}
       components={{
+        span: ({node, style, children, ...props}: any) => {
+            let parsedStyle: any = {};
+            if (typeof style === 'string') {
+                style.split(';').forEach((rule: string) => {
+                    const [key, val] = rule.split(':');
+                    if (key && val) {
+                        const camelKey = key.trim().replace(/-([a-z])/g, (g: any) => g[1].toUpperCase());
+                        parsedStyle[camelKey] = val.trim();
+                    }
+                });
+            } else if (style) {
+                parsedStyle = style;
+            }
+            return <span style={parsedStyle} {...props}>{children}</span>;
+        },
         strong: ({node, children, ...props}) => {
            const text = String(children);
            if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải") || text.toLowerCase().includes("lời giải")) {

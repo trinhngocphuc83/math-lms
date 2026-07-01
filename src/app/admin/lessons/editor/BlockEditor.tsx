@@ -5,10 +5,12 @@ import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTo
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import { fixLatexText, applyLatexFixToActiveElement } from "@/utils/latexFixer";
 import 'katex/dist/katex.min.css';
 import QuestionBankModal from "@/components/admin/QuestionBankModal";
+import RichTextarea from "@/components/admin/RichTextarea";
 
 export interface Block {
   id: string;
@@ -17,6 +19,21 @@ export interface Block {
 }
 
 const customMarkdownComponents: any = {
+   span: ({node, style, children, ...props}: any) => {
+       let parsedStyle: any = {};
+       if (typeof style === 'string') {
+           style.split(';').forEach((rule: string) => {
+               const [key, val] = rule.split(':');
+               if (key && val) {
+                   const camelKey = key.trim().replace(/-([a-z])/g, (g: any) => g[1].toUpperCase());
+                   parsedStyle[camelKey] = val.trim();
+               }
+           });
+       } else if (style) {
+           parsedStyle = style;
+       }
+       return <span style={parsedStyle} {...props}>{children}</span>;
+   },
    strong: ({node, children, ...props}: any) => {
       const text = String(children);
       if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải") || text.toLowerCase().includes("lời giải")) {
@@ -62,7 +79,7 @@ const customMarkdownComponents: any = {
            if (isStartOfLine) {
                let shouldInject = true;
                if (typeof child === 'string' && child.trim() === '') shouldInject = false;
-               if (React.isValidElement(child) && child.props && child.props.className && child.props.className.includes('math-display')) shouldInject = false;
+               if (React.isValidElement(child) && child.props && (child.props as any).className && (child.props as any).className.includes('math-display')) shouldInject = false;
                
                if (shouldInject) {
                    newKids.push(
@@ -244,7 +261,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
          prose-h2:text-[1.25rem] prose-h2:font-extrabold prose-h2:text-[#00529b] prose-h2:mt-6 prose-h2:mb-3 prose-h2:bg-[#e6f0fa] prose-h2:px-3 prose-h2:py-2 prose-h2:rounded-xl prose-h2:border-l-4 prose-h2:border-[#00529b] prose-h2:block prose-h2:w-fit prose-h2:clear-both
          prose-h3:text-[1.05rem] prose-h3:font-bold prose-h3:text-[#10b981] prose-h3:mt-5 prose-h3:mb-2 prose-h3:bg-emerald-50 prose-h3:px-3 prose-h3:py-1.5 prose-h3:rounded-lg prose-h3:border-l-4 prose-h3:border-emerald-500 prose-h3:block prose-h3:w-fit prose-h3:clear-both
          [&_code]:whitespace-pre-wrap [&_pre]:whitespace-pre-wrap [&_pre]:max-w-full [&_pre]:overflow-x-auto">
-        <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{formattedText}</ReactMarkdown>
+        <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{formattedText}</ReactMarkdown>
       </div>
     );
   };
@@ -317,7 +334,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           );
                        })()}
 
-                       <textarea 
+                       <RichTextarea 
                            value={block.content} 
                            onChange={e => updateBlockContent(idx, e.target.value)} 
                            className="w-full h-40 p-4 border border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none font-mono text-[15px] transition-all"
@@ -405,7 +422,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           </select>
                        </div>
                        
-                       <textarea rows={3} value={block.content.question || ""} onChange={e => updateBlockContent(idx, { ...block.content, question: e.target.value })} className="w-full border border-gray-200 rounded-xl p-4 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 font-mono text-[15px] transition-all" placeholder="Nhập câu hỏi... (Markdown hỗ trợ)" />
+                       <RichTextarea rows={3} value={block.content.question || ""} onChange={e => updateBlockContent(idx, { ...block.content, question: e.target.value })} className="w-full border border-gray-200 rounded-xl p-4 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 font-mono text-[15px] transition-all" placeholder="Nhập câu hỏi... (Markdown hỗ trợ)" />
 
                        {(block.content.type === 'multiple_choice' || !block.content.type) && (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -415,7 +432,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                      <input type="radio" name={`q_${block.id}`} checked={block.content.answerIndex === optIdx} onChange={() => updateBlockContent(idx, { ...block.content, answerIndex: optIdx })} className="text-teal-600" />
                                      Đáp án {['A','B','C','D'][optIdx]}
                                   </label>
-                                  <textarea rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
+                                  <RichTextarea rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
                                      const newOpts = [...(block.content.options || ["","","",""])];
                                      newOpts[optIdx] = e.target.value;
                                      updateBlockContent(idx, { ...block.content, options: newOpts });
@@ -433,7 +450,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                      <input type="radio" name={`q_${block.id}`} checked={block.content.answerIndex === optIdx} onChange={() => updateBlockContent(idx, { ...block.content, answerIndex: optIdx })} className="text-teal-600" />
                                      Đáp án {['Đúng','Sai'][optIdx]}
                                   </label>
-                                  <textarea rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
+                                  <RichTextarea rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
                                      const newOpts = [...(block.content.options || ["",""])];
                                      newOpts[optIdx] = e.target.value;
                                      updateBlockContent(idx, { ...block.content, options: newOpts });
@@ -464,7 +481,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                            {opt.isTrue ? '✓ Mệnh đề Đúng' : '✕ Mệnh đề Sai'}
                                         </button>
                                      </div>
-                                     <textarea 
+                                     <RichTextarea 
                                         rows={2} 
                                         value={opt.content || ""} 
                                         onChange={e => {
@@ -491,7 +508,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                        {block.content.type === 'essay' && (
                           <div>
                              <label className="text-xs font-bold text-gray-600 mb-1 block">Hướng dẫn giải / Đáp án mẫu</label>
-                             <textarea rows={4} value={block.content.sampleAnswer || ""} onChange={e => updateBlockContent(idx, { ...block.content, sampleAnswer: e.target.value })} className="w-full border p-2 rounded outline-none focus:border-teal-500" />
+                             <RichTextarea rows={4} value={block.content.sampleAnswer || ""} onChange={e => updateBlockContent(idx, { ...block.content, sampleAnswer: e.target.value })} className="w-full border p-2 rounded outline-none focus:border-teal-500" />
                           </div>
                        )}
                     </div>

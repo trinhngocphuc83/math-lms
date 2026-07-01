@@ -5,6 +5,7 @@ import { createClient } from '@/utils/supabase/client';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, CheckCircle2, Lightbulb, Pin, BookOpen, Target } from 'lucide-react';
@@ -39,6 +40,21 @@ const checkRibbon = (children: any, fallback: any) => {
 
 // Extracting Custom Markdown Components
 const customMarkdownComponents: any = {
+   span: ({node, style, children, ...props}: any) => {
+       let parsedStyle: any = {};
+       if (typeof style === 'string') {
+           style.split(';').forEach((rule: string) => {
+               const [key, val] = rule.split(':');
+               if (key && val) {
+                   const camelKey = key.trim().replace(/-([a-z])/g, (g: any) => g[1].toUpperCase());
+                   parsedStyle[camelKey] = val.trim();
+               }
+           });
+       } else if (style) {
+           parsedStyle = style;
+       }
+       return <span style={parsedStyle} {...props}>{children}</span>;
+   },
    h1: ({node, children, ...props}: any) => checkRibbon(children, <h1 {...props}>{children}</h1>),
    h2: ({node, children, ...props}: any) => checkRibbon(children, <h2 {...props}>{children}</h2>),
    h3: ({node, children, ...props}: any) => checkRibbon(children, <h3 {...props}>{children}</h3>),
@@ -113,7 +129,7 @@ const customMarkdownComponents: any = {
            if (isStartOfLine) {
                let shouldInject = true;
                if (typeof child === 'string' && child.trim() === '') shouldInject = false;
-               if (React.isValidElement(child) && child.props && child.props.className && child.props.className.includes('math-display')) shouldInject = false;
+               if (React.isValidElement(child) && (child.props as any) && (child.props as any).className && (child.props as any).className.includes('math-display')) shouldInject = false;
                
                if (shouldInject) {
                    newKids.push(
@@ -170,7 +186,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
             
             <div className="font-semibold text-slate-800 mb-[1.5em] drop-shadow-sm">
                 <div className="prose prose-slate max-w-none [&_.katex]:text-[1.1em] [&_.katex-display]:my-[0.5em]">
-                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>
+                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                         {quizData.question || ""}
                     </ReactMarkdown>
                 </div>
@@ -201,7 +217,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                                 `}
                             >
                                 <div className="flex-1 min-w-0 text-center text-[1.2em] font-black uppercase text-gray-700">
-                                   <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{text}</ReactMarkdown>
+                                   <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{text}</ReactMarkdown>
                                 </div>
                             </button>
                         );
@@ -243,7 +259,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                                     {String.fromCharCode(65 + idx)}
                                 </div>
                                 <div className="font-medium flex-1 prose prose-slate max-w-none [&_.katex]:text-[1.1em]" style={{ fontSize: '0.9em' }}>
-                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>{opt}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{opt}</ReactMarkdown>
                                 </div>
                             </div>
                         );
@@ -461,7 +477,7 @@ export default function PresentationPage() {
                                 <ReactMarkdown 
                                     components={customMarkdownComponents}
                                     remarkPlugins={[remarkMath, remarkBreaks]} 
-                                    rehypePlugins={[rehypeKatex]}
+                                    rehypePlugins={[rehypeKatex, rehypeRaw]}
                                 >
                                     {currentContent}
                                 </ReactMarkdown>

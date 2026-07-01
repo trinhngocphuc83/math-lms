@@ -8,6 +8,7 @@ import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import AzotaExamUI from './AzotaExamUI';
@@ -22,6 +23,21 @@ const normalizeAnswer = (s: string) => {
 };
 
 const customMarkdownComponents: any = {
+   span: ({node, style, children, ...props}: any) => {
+       let parsedStyle: any = {};
+       if (typeof style === 'string') {
+           style.split(';').forEach((rule: string) => {
+               const [key, val] = rule.split(':');
+               if (key && val) {
+                   const camelKey = key.trim().replace(/-([a-z])/g, (g: any) => g[1].toUpperCase());
+                   parsedStyle[camelKey] = val.trim();
+               }
+           });
+       } else if (style) {
+           parsedStyle = style;
+       }
+       return <span style={parsedStyle} {...props}>{children}</span>;
+   },
    strong: ({node, children, ...props}: any) => {
       const text = String(children);
       if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải") || text.toLowerCase().includes("lời giải")) {
@@ -67,7 +83,7 @@ const customMarkdownComponents: any = {
            if (isStartOfLine) {
                let shouldInject = true;
                if (typeof child === 'string' && child.trim() === '') shouldInject = false;
-               if (React.isValidElement(child) && child.props && child.props.className && child.props.className.includes('math-display')) shouldInject = false;
+               if (React.isValidElement(child) && child.props && (child.props as any).className && (child.props as any).className.includes('math-display')) shouldInject = false;
                
                if (shouldInject) {
                    newKids.push(
@@ -254,7 +270,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
       <div className="text-lg font-bold text-gray-800 mb-6 flex flex-col md:flex-row items-start md:items-center gap-3">
          <span className="text-indigo-800 bg-indigo-100 border-2 border-indigo-200 px-4 py-1.5 rounded-2xl text-sm shrink-0 font-black tracking-wide">THỬ THÁCH NHỎ</span>
          <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed text-slate-700">
-            <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
+            <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]} urlTransform={(url) => url}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
             {imgUrl && !cleanQuestion.includes(imgUrl) && !cleanQuestion.includes('![Hình vẽ]') && !cleanQuestion.includes('![Bảng biến thiên]') && (
                 <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
             )}
@@ -286,7 +302,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      isChecked && !isCorrect && !isWrong ? 'border-gray-200 bg-gray-50 text-gray-400 opacity-50' : ''
                   }`}
                >
-                  <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{text}</ReactMarkdown>
+                  <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{text}</ReactMarkdown>
                </button>
              );
           })}
@@ -322,7 +338,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      {['A','B','C','D'][idx]}
                   </div>
                   <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
-                     <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{opt}</ReactMarkdown>
+                     <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{opt}</ReactMarkdown>
                   </div>
                </button>
              );
@@ -344,7 +360,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      <div className="flex items-start gap-3">
                         <div className="font-bold text-gray-500 w-6">{['A','B','C','D'][idx] || 'A'}.</div>
                         <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
-                           <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{stmt.content || stmt.text}</ReactMarkdown>
+                           <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{stmt.content || stmt.text}</ReactMarkdown>
                         </div>
                      </div>
                      <div className="flex items-center gap-2 shrink-0 md:ml-auto">
@@ -527,7 +543,7 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
                  ">
                    <ReactMarkdown 
                       remarkPlugins={[remarkMath, remarkBreaks]} 
-                      rehypePlugins={[rehypeKatex]}
+                      rehypePlugins={[rehypeKatex, rehypeRaw]}
                       components={customMarkdownComponents}
                    >
                      {p.content.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}
