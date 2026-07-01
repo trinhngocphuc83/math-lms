@@ -3,7 +3,7 @@
 import Link from "next/link";
 
 import React, { useState, useEffect, useRef, Suspense, useMemo, useCallback } from "react";
-import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -515,7 +515,25 @@ const serializeBlocksToMarkdown = (blocks: Block[]): string => {
     }).join('\n\n');
 };
 
-const getPrompt = (isPractice: boolean) => {
+const getPrompt = (isPractice: boolean, isPresentation: boolean) => {
+  if (!isPresentation) {
+      return `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
+Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, CHI TIẾT, DỄ HIỂU.
+YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
+1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU CHO MATHTYPE]:
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
+- Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}.
+2. [CẤU TRÚC VÀNG CỦA BÀI GIẢNG TOÁN HỌC]:
+Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
+* PHẦN 1: LÝ THUYẾT CHI TIẾT. Hãy giải thích cặn kẽ Định nghĩa, Định lý, Công thức cốt lõi. Văn phong tự nhiên, dễ đọc trên app điện thoại. Tuyệt đối không dùng dấu ngắt trang (---).
+* PHẦN 2: PHÂN DẠNG BÀI TẬP & PHƯƠNG PHÁP GIẢI. Hãy chia các bài tập thành các Dạng Toán riêng biệt. Giải thích rõ ràng phương pháp.
+3. [PHÂN BIỆT RẠCH RÒI BẰNG HEADING VÀ BLOCKQUOTE]:
+- TẤT CẢ Tiêu đề Phần, Tên Dạng Bài phải là Heading 2 (##) kèm Emoji (Ví dụ: "## 💡 DẠNG 1: TÌM ĐIỀU KIỆN XÁC ĐỊNH").
+- TẤT CẢ Phương pháp giải phải là Heading 3 (###).
+- [QUY TẮC VÍ DỤ MẪU]: Trích lấy ví dụ bài tập. Toàn bộ nội dung của Ví dụ mẫu (bao gồm tiêu đề \`> ### 📌 Ví dụ mẫu\`, đề bài và lời giải) BẮT BUỘC phải được bọc trong thẻ trích dẫn Blockquote (thêm \`> \` vào đầu mỗi dòng). Ở phần lời giải, phải ghi chữ "> Hướng dẫn giải:" ngay trước khi giải.
+4. [TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Thỉnh thoảng hãy chèn một câu hỏi quiz ở dạng đoạn mã "quiz" chứa chuỗi JSON (như multiple_choice, true_false, short_answer) để học sinh tự làm.`;
+  }
+
   const unifiedPrompt = `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, GỒM LÝ THUYẾT VÀ CÁC DẠNG BÀI TẬP, TRÌNH BÀY SIÊU ĐẸP, CỰC KỲ THU HÚT.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
@@ -532,7 +550,10 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 - [QUY TẮC VÍ DỤ MẪU]: Trích lấy DUY NHẤT 1 bài tập ở mức độ CƠ BẢN làm Ví dụ mẫu. Tuyệt đối không đưa nhiều hơn 1 ví dụ. 
 - [RẤT QUAN TRỌNG]: Toàn bộ nội dung của Ví dụ mẫu (bao gồm tiêu đề \`> ### 📌 Ví dụ mẫu\`, đề bài và lời giải) BẮT BUỘC phải được bọc trong thẻ trích dẫn Blockquote (thêm \`> \` vào đầu mỗi dòng). Ở phần lời giải, phải ghi chữ "> Hướng dẫn giải:" ngay trước khi giải để hệ thống lên màu chuẩn mực.
 - [KIỂM TRA TÍNH CHÍNH XÁC]: Phải tự động kiểm tra xem đề bài của Ví dụ mẫu có bị sai số không, nếu sai tự động sửa số liệu cho đúng rồi mới giải.
-4. [PHÂN TRANG KHOA HỌC]: Sử dụng đúng 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới). Phân trang sau khi hết phần Lý thuyết, và sau mỗi Dạng Bài (khi hết Ví dụ).
+4. [PHÂN TRANG KHOA HỌC ĐỂ TRÌNH CHIẾU]: Sử dụng ĐÚNG 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới).
+- MỖI MỘT ĐỊNH NGHĨA, ĐỊNH LÝ, HAY GHI CHÚ PHẢI NẰM TRÊN 1 SLIDE RIÊNG BIỆT (phải ngắt trang \`---\` ngay sau đó).
+- MỖI VÍ DỤ HOẶC BÀI TẬP BẮT BUỘC NẰM TRÊN 1 SLIDE MỚI. 
+- KHÔNG GỘP QUÁ NHIỀU NỘI DUNG VÀO 1 SLIDE VÌ ĐÂY LÀ ĐỂ CHIẾU LÊN TIVI (Slide càng ngắn gọn càng tốt).
 5. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Hình vẽ, Bảng biến thiên... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ. THAY VÀO ĐÓ, BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ hình.
 6. [TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Ngay TRƯỚC mỗi lần bạn đặt dấu ngắt trang \`---\` , bạn HÃY TỰ NGHĨ RA HOẶC TRÍCH 1 CÂU HỎI TRẮC NGHIỆM từ tài liệu để kiểm tra học sinh. Học sinh phải làm đúng câu này thì mới được đọc trang tiếp theo.
 7. Mỗi câu hỏi trắc nghiệm PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Cấu trúc JSON có 2 loại:
@@ -581,9 +602,33 @@ function EditorContent() {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const [title, setTitle] = useState("Đang tải...");
-  const [markdownContent, setMarkdownContent] = useState("");
-  const [blocks, setBlocks] = useState<Block[]>([]);
-  const [editorMode, setEditorMode] = useState<'form' | 'raw'>('form');
+  
+  const [activeTab, setActiveTab] = useState<'elearning' | 'presentation'>('elearning');
+  const [elearningMarkdown, setElearningMarkdown] = useState("");
+  const [presentationMarkdown, setPresentationMarkdown] = useState("");
+  const [elearningBlocks, setElearningBlocks] = useState<Block[]>([]);
+  const [presentationBlocks, setPresentationBlocks] = useState<Block[]>([]);
+  const [elearningEditorMode, setElearningEditorMode] = useState<'form' | 'raw'>('form');
+  const [presentationEditorMode, setPresentationEditorMode] = useState<'form' | 'raw'>('raw');
+
+  const markdownContent = activeTab === 'elearning' ? elearningMarkdown : presentationMarkdown;
+  const setMarkdownContent = (updater: any) => {
+    if (activeTab === 'elearning') setElearningMarkdown(prev => typeof updater === 'function' ? updater(prev) : updater);
+    else setPresentationMarkdown(prev => typeof updater === 'function' ? updater(prev) : updater);
+  };
+  
+  const blocks = activeTab === 'elearning' ? elearningBlocks : presentationBlocks;
+  const setBlocks = (updater: any) => {
+    if (activeTab === 'elearning') setElearningBlocks(prev => typeof updater === 'function' ? updater(prev) : updater);
+    else setPresentationBlocks(prev => typeof updater === 'function' ? updater(prev) : updater);
+  };
+
+  const editorMode = activeTab === 'elearning' ? elearningEditorMode : presentationEditorMode;
+  const setEditorMode = (mode: 'form' | 'raw') => {
+    if (activeTab === 'elearning') setElearningEditorMode(mode);
+    else setPresentationEditorMode(mode);
+  };
+
   const [showRawPreview, setShowRawPreview] = useState(false);
 
   const handleFixRawLatex = (e?: React.MouseEvent) => {
@@ -648,8 +693,10 @@ function EditorContent() {
           if (modData) {
               setModuleTitle(modData.title || "");
               setModuleType(modData.type || "");
-              setMarkdownContent(modData.content_markdown || "");
-              setBlocks(parseMarkdownToBlocks(modData.content_markdown || ""));
+              setElearningMarkdown(modData.content_markdown || "");
+              setPresentationMarkdown(modData.presentation_markdown || "");
+              setElearningBlocks(parseMarkdownToBlocks(modData.content_markdown || ""));
+              setPresentationBlocks(parseMarkdownToBlocks(modData.presentation_markdown || ""));
                 if (modData.type === 'document' || modData.type === 'solution_video' || modData.title?.toLowerCase().includes('tài liệu tham khảo') || modData.title?.toLowerCase().includes('video')) {
                     try {
                         const parsed = JSON.parse(modData.content_markdown);
@@ -660,8 +707,10 @@ function EditorContent() {
               setAttachmentUrl(modData.attachment_url || "");
           }
       } else if (lessonData) {
-          setMarkdownContent(lessonData.content_markdown || "");
-          setBlocks(parseMarkdownToBlocks(lessonData.content_markdown || ""));
+          setElearningMarkdown(lessonData.content_markdown || "");
+          setPresentationMarkdown(lessonData.presentation_markdown || "");
+          setElearningBlocks(parseMarkdownToBlocks(lessonData.content_markdown || ""));
+          setPresentationBlocks(parseMarkdownToBlocks(lessonData.presentation_markdown || ""));
           setVideoUrl(lessonData.video_url || "");
           setAttachmentUrl(lessonData.attachment_url || "");
       }
@@ -694,12 +743,14 @@ function EditorContent() {
     if (!lessonId) return;
     setIsSavingDB(true);
     const isDoc = moduleTitle.toLowerCase().includes('tài liệu tham khảo') || moduleTitle.toLowerCase().includes('video');
-    const content = isDoc ? JSON.stringify(docList) : (editorMode === 'form' ? serializeBlocksToMarkdown(blocks) : markdownContent);
+    const finalElearning = isDoc ? JSON.stringify(docList) : (elearningEditorMode === 'form' ? serializeBlocksToMarkdown(elearningBlocks) : elearningMarkdown);
+    const finalPresentation = presentationEditorMode === 'form' ? serializeBlocksToMarkdown(presentationBlocks) : presentationMarkdown;
     let error;
 
     if (moduleId) {
         const { error: modError } = await supabase.from('lesson_modules').update({
-            content_markdown: content,
+            content_markdown: finalElearning,
+            presentation_markdown: finalPresentation,
             video_url: videoUrl,
             attachment_url: attachmentUrl
         }).eq('id', moduleId);
@@ -711,7 +762,8 @@ function EditorContent() {
     } else {
         const { error: lesError } = await supabase.from('lessons').update({
           title, 
-          content_markdown: content, 
+          content_markdown: finalElearning, 
+          presentation_markdown: finalPresentation, 
           video_url: videoUrl, 
           attachment_url: attachmentUrl,
           course_id: selectedCourseId || null,
@@ -949,7 +1001,7 @@ function EditorContent() {
       const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
       
       const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
-      const prompt = getPrompt(isPractice);
+      const prompt = getPrompt(isPractice, activeTab === 'presentation');
 
       let finalPrompt = prompt;
       if (pendingText.trim().length > 0) {
@@ -990,7 +1042,7 @@ function EditorContent() {
 
   const handleCopyPrompt = () => {
     const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
-    const prompt = getPrompt(isPractice);
+    const prompt = getPrompt(isPractice, activeTab === 'presentation');
 
     navigator.clipboard.writeText(prompt);
     alert("Đã Copy Prompt Chuẩn!\n\nThầy/Cô hãy mở gemini.google.com, dán văn bản này vào. Sau đó, KÉO THẢ các ảnh tài liệu của Thầy/Cô vào phần chat rồi Enter nhé!");
@@ -1267,6 +1319,15 @@ function EditorContent() {
                    <MonitorPlay className="w-3.5 h-3.5" /> Demo
                  </button>
                )}
+               {lessonId && moduleId && (
+                 <button onClick={async (e) => { 
+                   e.stopPropagation(); 
+                   await handleSaveToDB(); 
+                   window.open(`/present/${lessonId}?moduleId=${moduleId}`, '_blank'); 
+                 }} className="bg-amber-500 text-white px-3 py-1.5 rounded-md text-xs font-bold hover:bg-amber-600 shadow-sm flex items-center gap-1.5 ml-2">
+                   <Presentation className="w-3.5 h-3.5" /> Trình chiếu
+                 </button>
+               )}
                <div className="p-1 bg-gray-200 rounded-md ml-2"><ChevronDown className="w-4 h-4 text-gray-600" /></div>
              </div>
            </div>
@@ -1392,8 +1453,19 @@ function EditorContent() {
           ) : (
           <React.Fragment>
 
+          <div className="flex bg-slate-100 p-1 gap-1 border-b border-slate-200">
+             <button onClick={() => setActiveTab('elearning')} className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold text-sm transition-all shadow-sm ${activeTab === 'elearning' ? 'bg-white text-indigo-700 border border-slate-200' : 'text-slate-500 hover:bg-slate-200 hover:text-slate-700'}`}>
+                📱 Chế độ App (E-learning)
+             </button>
+             <button onClick={() => setActiveTab('presentation')} className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-md font-bold text-sm transition-all shadow-sm ${activeTab === 'presentation' ? 'bg-white text-orange-700 border border-slate-200' : 'text-slate-500 hover:bg-slate-200 hover:text-slate-700'}`}>
+                📺 Chế độ Trình chiếu
+             </button>
+          </div>
+
           <div className="bg-gray-50 border-b border-gray-100 p-2.5 flex justify-between items-center flex-shrink-0">
-            <span className="font-semibold text-gray-700 text-sm">Nội dung E-learning</span>
+            <span className="font-semibold text-gray-700 text-sm">
+                {activeTab === 'elearning' ? 'Nội dung E-learning' : 'Nội dung Trình chiếu'}
+            </span>
             <button onClick={() => {
                  if (editorMode === 'form') setMarkdownContent(serializeBlocksToMarkdown(blocks));
                  else setBlocks(parseMarkdownToBlocks(markdownContent));
@@ -1489,7 +1561,7 @@ function EditorContent() {
                     />
                     {showRawPreview && (
                        <div className="w-1/2 h-full overflow-y-auto bg-gray-50/50 p-6 scroll-smooth">
-                          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-h-full max-w-none prose prose-lg prose-indigo prose-h1:text-4xl prose-h1:font-black prose-h1:text-indigo-900 prose-h1:mb-10 prose-h1:text-center prose-h1:tracking-tight prose-h2:text-[1.5rem] prose-h2:font-black prose-h2:text-white prose-h2:bg-gradient-to-r prose-h2:from-indigo-600 prose-h2:via-blue-600 prose-h2:to-cyan-500 prose-h2:px-6 prose-h2:py-4 prose-h2:rounded-2xl prose-h2:mt-14 prose-h2:mb-8 prose-h2:uppercase prose-h2:tracking-wide prose-h2:shadow-[0_8px_30px_rgb(79,70,229,0.2)] prose-h2:border-l-8 prose-h2:border-l-yellow-400 prose-h3:text-[1.2rem] prose-h3:font-bold prose-h3:text-white prose-h3:bg-gradient-to-r prose-h3:from-emerald-500 prose-h3:to-teal-400 prose-h3:px-5 prose-h3:py-3 prose-h3:rounded-xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:shadow-md prose-strong:text-indigo-800 prose-strong:font-black prose-strong:bg-indigo-50/50 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded-md">
+                          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-h-full max-w-none prose prose-lg prose-indigo prose-h1:text-4xl prose-h1:font-black prose-h1:text-indigo-900 prose-h1:mb-10 prose-h1:text-center prose-h1:tracking-tight prose-h2:text-[1.5rem] prose-h2:font-black prose-h2:text-white prose-h2:bg-gradient-to-r prose-h2:from-indigo-600 prose-h2:via-blue-600 prose-h2:to-cyan-500 prose-h2:px-6 prose-h2:py-4 prose-h2:rounded-2xl prose-h2:mt-14 prose-h2:mb-8 prose-h2:uppercase prose-h2:tracking-wide prose-h2:shadow-[0_8px_30px_rgb(79,70,229,0.2)] prose-h2:border-l-8 prose-h2:border-l-yellow-400 prose-h2:block prose-h2:w-fit prose-h2:clear-both prose-h3:text-[1.2rem] prose-h3:font-bold prose-h3:text-white prose-h3:bg-gradient-to-r prose-h3:from-emerald-500 prose-h3:to-teal-400 prose-h3:px-5 prose-h3:py-3 prose-h3:rounded-xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:shadow-md prose-h3:block prose-h3:w-fit prose-h3:clear-both prose-strong:text-indigo-800 prose-strong:font-black prose-strong:bg-indigo-50/50 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded-md">
                               {renderMarkdown(markdownContent)}
                           </div>
                        </div>

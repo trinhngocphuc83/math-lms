@@ -261,6 +261,38 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
          </div>
       </div>
 
+      {/* RENDER DẠNG ĐÚNG/SAI ĐƠN */}
+      {type === 'true_false' && (
+        <div className="flex flex-col sm:flex-row items-center gap-4 mt-2 mb-4">
+          {[0, 1].map((optIdx) => {
+             const isSelected = selectedOpt === optIdx;
+             const isCorrect = isChecked && optIdx === data.answerIndex;
+             const isWrong = isChecked && isSelected && optIdx !== data.answerIndex;
+             const text = (data.options && data.options[optIdx]) ? data.options[optIdx] : (optIdx === 0 ? 'ĐÚNG' : 'SAI');
+             return (
+               <button
+                  key={optIdx}
+                  disabled={isChecked}
+                  onClick={() => setSelectedOpt(optIdx)}
+                  className={`w-full flex-1 text-center font-bold py-4 px-6 rounded-2xl border-2 transition-all ${
+                     isSelected && !isChecked ? 'border-indigo-500 bg-indigo-500 text-white shadow-[4px_4px_0px_0px_rgba(129,140,248,1)] transform -translate-y-1' : ''
+                  } ${
+                     !isSelected && !isChecked ? 'border-slate-200 text-slate-600 bg-white hover:border-indigo-300 hover:bg-indigo-50 hover:-translate-y-0.5 shadow-sm' : ''
+                  } ${
+                     isCorrect ? 'border-green-500 bg-green-500 text-white shadow-[4px_4px_0px_0px_rgba(74,222,128,1)]' : ''
+                  } ${
+                     isWrong ? 'border-red-500 bg-red-500 text-white shadow-[4px_4px_0px_0px_rgba(248,113,113,1)]' : ''
+                  } ${
+                     isChecked && !isCorrect && !isWrong ? 'border-gray-200 bg-gray-50 text-gray-400 opacity-50' : ''
+                  }`}
+               >
+                  <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{text}</ReactMarkdown>
+               </button>
+             );
+          })}
+        </div>
+      )}
+
       {/* RENDER DẠNG NHIỀU LỰA CHỌN */}
       {type === 'multiple_choice' && (
         <div className="flex flex-col gap-3">
@@ -355,7 +387,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
          </div>
       )}
 
-      {isChecked && type === 'multiple_choice' && (
+      {isChecked && (type === 'multiple_choice' || type === 'true_false') && (
          <div className={`mt-5 p-4 rounded-xl flex items-start gap-3 ${selectedOpt === data.answerIndex ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
             {selectedOpt === data.answerIndex ? <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 shrink-0" />}
             <div className="flex-1">
@@ -401,7 +433,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
       {!isChecked && (
         <button
            disabled={
-              (type === 'multiple_choice' && selectedOpt === null) || 
+              ((type === 'multiple_choice' || type === 'true_false') && selectedOpt === null) || 
               (type === 'true_false_cluster' && Object.keys(tfAnswers).length === 0) ||
               (type === 'short_answer' && !(shortAnswerText || '').trim())
            }
@@ -491,7 +523,7 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
                     prose-strong:text-indigo-800 prose-strong:font-black prose-strong:bg-indigo-50/50 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded-md
                     prose-li:mb-3 prose-ul:list-none prose-ul:pl-0 
                     [&_code]:bg-amber-100 [&_code]:text-amber-800 [&_code]:px-2 [&_code]:py-0.5 [&_code]:rounded-lg [&_code]:border [&_code]:border-amber-200 [&_code]:font-bold [&_code]:text-[0.9em]
-                     [&_h2]:text-blue-700 [&_h2]:bg-blue-50 [&_h2]:px-4 [&_h2]:py-2 [&_h2]:rounded-xl [&_h2]:border-l-4 [&_h2]:border-blue-500 [&_h2]:inline-block [&_h2]:shadow-sm [&_h2]:mb-4 [&_h2]:mt-8 [&_h3]:text-amber-700 [&_h3]:bg-amber-50 [&_h3]:px-3 [&_h3]:py-1.5 [&_h3]:rounded-lg [&_h3]:border-l-4 [&_h3]:border-amber-400 [&_h3]:inline-block [&_h3]:shadow-sm [&_h3]:mt-6 [&_h3]:mb-3 [&_blockquote]:border-l-8 [&_blockquote]:border-dashed [&_blockquote]:border-emerald-400 [&_blockquote]:bg-gradient-to-r [&_blockquote]:from-emerald-50 [&_blockquote]:to-teal-50/30 [&_blockquote]:text-emerald-900 [&_blockquote]:px-6 [&_blockquote]:py-5 [&_blockquote]:rounded-[2rem] [&_blockquote]:shadow-sm [&_blockquote]:my-8 [&_blockquote_p]:m-0 [&_blockquote_p]:font-bold [&_blockquote_p]:leading-relaxed
+                     [&_h2]:text-blue-700 [&_h2]:bg-blue-50 [&_h2]:px-4 [&_h2]:py-2 [&_h2]:rounded-xl [&_h2]:border-l-4 [&_h2]:border-blue-500 [&_h2]:block [&_h2]:w-fit [&_h2]:clear-both [&_h2]:shadow-sm [&_h2]:mb-4 [&_h2]:mt-8 [&_h3]:text-amber-700 [&_h3]:bg-amber-50 [&_h3]:px-3 [&_h3]:py-1.5 [&_h3]:rounded-lg [&_h3]:border-l-4 [&_h3]:border-amber-400 [&_h3]:block [&_h3]:w-fit [&_h3]:clear-both [&_h3]:shadow-sm [&_h3]:mt-6 [&_h3]:mb-3 [&_blockquote]:border-l-8 [&_blockquote]:border-dashed [&_blockquote]:border-emerald-400 [&_blockquote]:bg-gradient-to-r [&_blockquote]:from-emerald-50 [&_blockquote]:to-teal-50/30 [&_blockquote]:text-emerald-900 [&_blockquote]:px-6 [&_blockquote]:py-5 [&_blockquote]:rounded-[2rem] [&_blockquote]:shadow-sm [&_blockquote]:my-8 [&_blockquote_p]:m-0 [&_blockquote_p]:font-bold [&_blockquote_p]:leading-relaxed
                  ">
                    <ReactMarkdown 
                       remarkPlugins={[remarkMath, remarkBreaks]} 
