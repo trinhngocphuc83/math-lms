@@ -425,7 +425,8 @@ export default function PresentationPage() {
                 {/* Inner Content Wrapper */}
                 <div 
                     ref={contentBoxRef}
-                    className="flex-1 overflow-hidden w-full h-full p-[5%] flex flex-col"
+                    className="flex-1 overflow-y-auto overflow-x-hidden w-full h-full p-[5%] flex flex-col scroll-smooth"
+                    style={{ scrollbarWidth: 'thin' }}
                 >
                     <div 
                         key={currentSlideIndex}
