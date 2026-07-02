@@ -241,7 +241,10 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
       const items = data.options || data.statements || [];
       const score = calculateTrueFalseScore(tfAnswers, items);
       if (score > 0) onPass();
-    } else if (type === 'short_answer' || type === 'essay') {
+    } else if (type === 'short_answer') {
+      const isCorrect = normalizeAnswer(shortAnswerText || '') !== '' && normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '');
+      if (isCorrect) onPass();
+    } else if (type === 'essay') {
       onPass();
     }
   };
