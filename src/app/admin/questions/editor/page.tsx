@@ -146,19 +146,12 @@ export default function BatchAIEditorPage() {
         }
       }
 
-      // 2. Làm sạch escape characters (Sửa lỗi "Bad escaped character")
-      // Nếu cắt chuỗi sau khi replace sẽ bị sai index (vì chiều dài chuỗi thay đổi).
-      // Giờ ta làm sạch trên chuỗi đã cắt.
-      // Đặc biệt LaTeX hay có \frac, \begin, \text, \right => JSON sẽ hiểu nhầm là \f, \b, \t, \r (control chars).
-      // Ta escape TẤT CẢ các dấu backslash TRỪ \n (xuống dòng), \" (ngoặc kép), \\ (đã escape), \/ (dấu gạch chéo).
-      let cleanStr = jsonStr.replace(/\\(?!["]|[/]|[\\]|[n])/g, "\\\\");
-
       try {
-        parsedData = JSON.parse(cleanStr);
-      } catch(e) {
-        console.error("Lỗi parse sau khi clean:", e);
-        // Fallback: Thử parse nguyên gốc nếu regex làm hỏng gì đó
         parsedData = JSON.parse(jsonStr);
+      } catch(e) {
+        console.error("Lỗi parse JSON:", e);
+        alert("Lỗi: AI trả về định dạng JSON không hợp lệ. Vui lòng thử lại.");
+        return;
       }
 
       const newQuestions: QuestionData[] = parsedData.map(data => {
@@ -277,7 +270,7 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
      - Bạn PHẢI gán "tenBai" là tên bài học xa nhất/mới nhất trong chương trình mà câu hỏi đề cập tới (Ví dụ ý A thuộc Bài 1, ý C thuộc Bài 3 => Gán "tenBai": "Bài 3").
      - Bạn PHẢI gán "dangToan": "Toán tổng hợp".
   3. GIỮ NGUYÊN DANH MỤC: Nếu trường "chuyenDe" hoặc "tenBai" trong mẫu JSON đã được điền sẵn một giá trị (Không phải chữ "Tự suy luận"), BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ CÁC TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI BẤT KỲ KÝ TỰ NÀO.
-  4. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ các lệnh LaTeX. Ví dụ: Phải viết $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$, viết $\\\\sqrt{2}$ thay vì $\\sqrt{2}$.
+  4. ĐỊNH DẠNG CÔNG THỨC TOÁN: Mọi công thức Toán học PHẢI được bọc trong $...$ (ví dụ: $\\frac{1}{2}$). Bạn cứ viết lệnh LaTeX chuẩn, KHÔNG ĐƯỢC dùng 2 dấu gạch chéo (\\\\) để escape lệnh trừ khi xuống dòng.
   5. NẾU TRONG ĐỀ CÓ HÌNH VẼ, ĐỒ THỊ, BẢNG BIẾN THIÊN, HOẶC BẢNG XÉT DẤU: Tuyệt đối KHÔNG cố gắng vẽ lại bằng Markdown, ASCII hay LaTeX. Thay vào đó, hãy chỉ ghi đúng chữ "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" vào vị trí đó trong nội dung. Người dùng sẽ tự chèn ảnh vào sau.
   6. ÉP BUỘC TRƯỜNG ĐÁP ÁN ĐÚNG: Bạn TUYỆT ĐỐI KHÔNG ĐƯỢC BỎ TRỐNG trường "dapAnDung".
      - Với câu Trắc nghiệm (NLC): Phải điền A, B, C hoặc D.
@@ -360,7 +353,7 @@ ${uniqueForms.map(f => `- ${f}`).join("\n")}
      - Bạn PHẢI gán "tenBai" là tên bài học xa nhất/mới nhất trong chương trình mà câu hỏi đề cập tới.
      - Bạn PHẢI gán "dangToan": "Toán tổng hợp".
   2. GIỮ NGUYÊN DANH MỤC: Nếu "chuyenDe" hoặc "tenBai" đã được điền sẵn giá trị, BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI GÌ.
-  3. Để không làm hỏng cấu trúc JSON, BẠN BẮT BUỘC phải dùng 2 dấu gạch chéo (\\\\) cho TẤT CẢ lệnh LaTeX. Ví dụ: $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$. Mọi công thức Toán bọc trong $...$
+  3. ĐỊNH DẠNG CÔNG THỨC TOÁN: Mọi công thức Toán học PHẢI được bọc trong $...$ (ví dụ: $\\frac{1}{2}$). Bạn cứ viết lệnh LaTeX chuẩn, KHÔNG ĐƯỢC dùng 2 dấu gạch chéo (\\\\) để escape lệnh trừ khi xuống dòng.
   4. KHÔNG vẽ lại hình vẽ, đồ thị, hay bảng biến thiên. Hãy ghi "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" thay thế.`;
     navigator.clipboard.writeText(prompt);
     alert("Đã Copy Prompt Chuẩn!");
