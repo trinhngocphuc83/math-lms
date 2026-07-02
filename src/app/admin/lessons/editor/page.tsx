@@ -844,10 +844,19 @@ function EditorContent() {
                       return `__BR_TAG_${brBlocks.length - 1}__`;
                   });
                   
+                  const spanBlocks: string[] = [];
+                  protectedText = protectedText.replace(/<span[^>]*>/gi, (match) => {
+                      spanBlocks.push(match);
+                      return `__SPAN_START_${spanBlocks.length - 1}__`;
+                  });
+                  protectedText = protectedText.replace(/<\/span>/gi, () => `__SPAN_END__`);
+                  
                   protectedText = protectedText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
                   
                   imgBlocks.forEach((img, i) => { protectedText = protectedText.replace(`__IMG_TAG_${i}__`, img); });
                   brBlocks.forEach((br, i) => { protectedText = protectedText.replace(`__BR_TAG_${i}__`, br); });
+                  spanBlocks.forEach((span, i) => { protectedText = protectedText.replace(`__SPAN_START_${i}__`, span); });
+                  protectedText = protectedText.replace(/__SPAN_END__/g, '</span>');
                   
                   return protectedText;
               };
@@ -922,7 +931,18 @@ function EditorContent() {
 
       // 3. Parser Markdown cơ bản sang HTML để MS Word hiểu được In đậm, Tiêu đề và Kéo dòng
       let html = content.replace(/\\\\/g, '\\'); // Đưa dấu chéo kép về dấu chéo đơn chuẩn LaTeX cho MathType
+      
+      const spanBlocks: string[] = [];
+      html = html.replace(/<span[^>]*>/gi, (match) => {
+          spanBlocks.push(match);
+          return `__SPAN_START_${spanBlocks.length - 1}__`;
+      });
+      html = html.replace(/<\/span>/gi, () => `__SPAN_END__`);
+
       html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      
+      spanBlocks.forEach((span, i) => { html = html.replace(`__SPAN_START_${i}__`, span); });
+      html = html.replace(/__SPAN_END__/g, '</span>');
       
       // Parse Heading
       html = html.replace(/^### (.*$)/gim, '<h3>$1</h3>');
