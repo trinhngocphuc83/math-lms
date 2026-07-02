@@ -250,10 +250,10 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                         }
                         
                         return (
-                            <div 
+                            <button 
                                 key={idx} 
                                 onClick={() => !showAnswer && setSelectedIdx(idx)}
-                                className={`p-[1em] rounded-[1em] border-4 ${bgColor} transition-all duration-300 ease-out flex items-center gap-[1em] min-h-[4em]`}
+                                className={`w-full text-left p-[1em] rounded-[1em] border-4 ${bgColor} transition-all duration-300 ease-out flex items-center gap-[1em] min-h-[4em]`}
                             >
                                 <div className={`w-[2em] h-[2em] rounded-full flex items-center justify-center font-black shrink-0 transition-colors duration-500 ${circleColor}`} style={{ fontSize: '1.1em' }}>
                                     {String.fromCharCode(65 + idx)}
@@ -261,7 +261,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                                 <div className="font-medium flex-1 prose prose-slate max-w-none [&_.katex]:text-[1.1em]" style={{ fontSize: '0.9em' }}>
                                     <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{opt}</ReactMarkdown>
                                 </div>
-                            </div>
+                            </button>
                         );
                     })}
                 </div>
@@ -284,7 +284,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                     {showAnswer && (
                         <div className="mt-[1em] p-[1.5em] bg-green-50 border-4 border-green-400 rounded-[1em] text-center shadow-lg">
                             <h4 className="text-green-700 font-bold mb-[0.5em]" style={{ fontSize: '0.8em' }}>Đáp án chính xác:</h4>
-                            <div className="font-black text-green-600" style={{ fontSize: '1.5em' }}>{quizData.answerText}</div>
+                            <div className="font-black text-green-600" style={{ fontSize: '1.5em' }}>{quizData.exactAnswer || quizData.correctAnswer || quizData.answerText}</div>
                         </div>
                     )}
                 </div>
