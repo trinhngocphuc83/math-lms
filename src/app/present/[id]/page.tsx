@@ -217,7 +217,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                                 `}
                             >
                                 <div className="flex-1 min-w-0 text-center text-[1.2em] font-black uppercase text-gray-700">
-                                   <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{text}</ReactMarkdown>
+                                   <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                                 </div>
                             </button>
                         );
@@ -259,7 +259,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                                     {String.fromCharCode(65 + idx)}
                                 </div>
                                 <div className="font-medium flex-1 prose prose-slate max-w-none [&_.katex]:text-[1.1em]" style={{ fontSize: '0.9em' }}>
-                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{opt}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                                 </div>
                             </button>
                         );

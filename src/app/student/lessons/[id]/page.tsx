@@ -305,7 +305,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      isChecked && !isCorrect && !isWrong ? 'border-gray-200 bg-gray-50 text-gray-400 opacity-50' : ''
                   }`}
                >
-                  <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{text}</ReactMarkdown>
+                  <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                </button>
              );
           })}
@@ -341,7 +341,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      {['A','B','C','D'][idx]}
                   </div>
                   <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
-                     <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{opt}</ReactMarkdown>
+                     <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                   </div>
                </button>
              );
@@ -363,7 +363,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      <div className="flex items-start gap-3">
                         <div className="font-bold text-gray-500 w-6">{['A','B','C','D'][idx] || 'A'}.</div>
                         <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
-                           <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{stmt.content || stmt.text}</ReactMarkdown>
+                           <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(stmt.content || stmt.text || '').replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                         </div>
                      </div>
                      <div className="flex items-center gap-2 shrink-0 md:ml-auto">
