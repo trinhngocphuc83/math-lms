@@ -506,7 +506,8 @@ export default function AzotaExamUI({
           passed: scoreInfo.earned > 0,
           images: answers[qIndex.toString()]?.images || [],
           studentAnswer: studentAnswer,
-          correctAnswer: correctAnswer
+          correctAnswer: correctAnswer,
+          options: data.options || []
         });
       }
     });

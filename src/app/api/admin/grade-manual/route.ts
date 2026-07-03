@@ -5,9 +5,9 @@ import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
 
 export async function POST(request: Request) {
   try {
-    const { imageUrls, customPrompt, question, sampleAnswer, maxScore = 10 } = await request.json();
+    const { imageUrls = [], customPrompt, question, sampleAnswer, maxScore = 10, type, studentAnswer, correctAnswer, options } = await request.json();
 
-    if (!imageUrls || imageUrls.length === 0) {
+    if ((!imageUrls || imageUrls.length === 0) && type === 'essay') {
       return NextResponse.json({ error: "Vui lòng chọn ít nhất 1 ảnh bài làm!" }, { status: 400 });
     }
 
@@ -22,8 +22,8 @@ export async function POST(request: Request) {
     }
 
     // Chuẩn bị Prompt chấm bài
-    const prompt = `Bạn là Trợ lý AI Thông Minh hỗ trợ Giáo viên chấm bài.
-Giáo viên yêu cầu bạn chấm bài làm (hình ảnh) của học sinh dựa trên Đề bài và Đáp án mẫu.
+    let prompt = `Bạn là Trợ lý AI Thông Minh hỗ trợ Giáo viên chấm bài.
+Giáo viên yêu cầu bạn chấm bài làm của học sinh dựa trên Đề bài và Đáp án mẫu.
 
 [LỆNH ĐẶC BIỆT TỪ GIÁO VIÊN]: "${customPrompt || 'Chấm bình thường dựa trên barem.'}"
 
@@ -31,14 +31,23 @@ THANG ĐIỂM TỐI ĐA: ${maxScore} điểm
 
 ĐỀ BÀI:
 ${question}
+`;
 
-ĐÁP ÁN MẪU / BAREM:
-${sampleAnswer}
+    if (type === 'multiple_choice' && options && Array.isArray(options)) {
+      prompt += `CÁC ĐÁP ÁN TRẮC NGHIỆM:\n${options.map((o: string, i: number) => `- ${o}`).join('\n')}\n\n`;
+    }
 
-YÊU CẦU TRẢ VỀ DỮ LIỆU DẠNG JSON với các trường sau:
+    if (type !== 'essay') {
+      prompt += `ĐÁP ÁN ĐÚNG CỦA HỆ THỐNG:\n${JSON.stringify(correctAnswer)}\n\n`;
+      prompt += `HỌC SINH ĐÃ CHỌN/TRẢ LỜI:\n${JSON.stringify(studentAnswer)}\n\n`;
+    } else {
+      prompt += `ĐÁP ÁN MẪU / BAREM:\n${sampleAnswer}\n\n(Vui lòng xem bài làm của học sinh trong các hình ảnh đính kèm).\n\n`;
+    }
+
+    prompt += `YÊU CẦU TRẢ VỀ DỮ LIỆU DẠNG JSON với các trường sau:
 - "passed" (boolean): true nếu học sinh đạt điểm giỏi, false nếu sai/kém.
 - "scoreNumber" (number): Điểm số dạng SỐ THỰC (ví dụ: 1.5, 2.0, 0.75). PHẢI <= ${maxScore}.
-- "feedback" (string): Lời nhận xét gửi tới học sinh (dùng Markdown/LaTeX nếu cần). Phải tuân thủ LỆNH ĐẶC BIỆT của giáo viên.`;
+- "feedback" (string): Lời nhận xét gửi tới học sinh (dùng Markdown/LaTeX nếu cần). Giải thích tại sao đúng/sai. Phải tuân thủ LỆNH ĐẶC BIỆT của giáo viên.`;
 
     const parts: any[] = [prompt];
 

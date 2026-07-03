@@ -102,8 +102,8 @@ export default function ReviewModal({ isOpen, onClose, resultData, onUpdateSucce
   };
 
   const handleCustomAIGrade = async (index: number, detail: any) => {
-    if (selectedImageUrls.length === 0) {
-      alert("Vui lòng chọn ít nhất 1 ảnh để AI chấm!");
+    if (detail.type === 'essay' && selectedImageUrls.length === 0) {
+      alert("Vui lòng chọn ít nhất 1 ảnh bài làm để AI chấm!");
       return;
     }
 
@@ -117,7 +117,11 @@ export default function ReviewModal({ isOpen, onClose, resultData, onUpdateSucce
           customPrompt: customPrompt,
           question: detail.question,
           sampleAnswer: detail.sampleAnswer,
-          maxScore: detail.maxScore || 10
+          maxScore: detail.maxScore || 10,
+          type: detail.type,
+          studentAnswer: detail.studentAnswer,
+          correctAnswer: detail.correctAnswer,
+          options: detail.options
         })
       });
 
@@ -455,6 +459,13 @@ NHIỆM VỤ CỦA BẠN:
                       {detail.question && (
                         <div className="text-sm text-zinc-700 bg-amber-50/50 p-3 rounded-lg border border-amber-100 mb-2">
                           <strong className="text-amber-800">Đề bài:</strong> {detail.question}
+                          {detail.type === 'multiple_choice' && detail.options && Array.isArray(detail.options) && (
+                            <ul className="mt-2 list-none space-y-1">
+                              {detail.options.map((opt: string, optIdx: number) => (
+                                <li key={optIdx} className="pl-4 border-l-2 border-amber-200">{opt}</li>
+                              ))}
+                            </ul>
+                          )}
                         </div>
                       )}
 
