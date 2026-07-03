@@ -130,8 +130,9 @@ export default function ExamResultsPage() {
       const matchesSearch = studentName.includes(term) || lessonTitle.includes(term);
       const matchesClass = isStudentInSelectedClass(r.student_id);
       const matchesLesson = selectedLessonId === "all" || r.lesson_id === selectedLessonId;
+      const matchesModule = selectedModuleId === "all" || r.module_id === selectedModuleId;
 
-      return matchesSearch && matchesClass && matchesLesson;
+      return matchesSearch && matchesClass && matchesLesson && matchesModule;
     });
 
     let unsubmittedResults: any[] = [];
