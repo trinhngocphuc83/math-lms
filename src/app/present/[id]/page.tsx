@@ -29,7 +29,7 @@ const checkRibbon = (children: any, fallback: any) => {
     if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
         return (
             <div className="not-prose my-[1em] block w-full">
-                <div className="bg-orange-50 text-orange-700 px-[1.5em] py-[0.6em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-flex items-center gap-[0.5em] leading-[1.3] max-w-full" style={{ fontSize: '1.2em' }}>
+                <div className="bg-orange-50 text-orange-700 px-[1.5em] py-[0.6em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-block leading-[1.4] max-w-full break-words" style={{ fontSize: '1.2em' }}>
                     {children}
                 </div>
             </div>
@@ -94,7 +94,7 @@ const customMarkdownComponents: any = {
        if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
            return (
                <li className="list-none my-[1em]" {...props}>
-                   <div className="bg-orange-50 text-orange-700 px-[1.5em] py-[0.6em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-flex items-center gap-[0.5em] leading-[1.3] max-w-full" style={{ fontSize: '1.2em' }}>
+                   <div className="bg-orange-50 text-orange-700 px-[1.5em] py-[0.6em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-block items-center gap-[0.5em] leading-[1.3] max-w-full" style={{ fontSize: '1.2em' }}>
                        {children}
                    </div>
                </li>
@@ -114,7 +114,7 @@ const customMarkdownComponents: any = {
        if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
            return (
                <div className="not-prose my-[1em] block w-full">
-                   <div className="bg-orange-50 text-orange-700 px-[1.5em] py-[0.6em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-flex items-center gap-[0.5em] leading-[1.3] max-w-full" style={{ fontSize: '1.2em' }}>
+                   <div className="bg-orange-50 text-orange-700 px-[1.5em] py-[0.6em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-block leading-[1.4] max-w-full break-words" style={{ fontSize: '1.2em' }}>
                        {children}
                    </div>
                </div>
