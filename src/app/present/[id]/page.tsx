@@ -155,14 +155,17 @@ const customMarkdownComponents: any = {
 // --- Slide Parser ---
 function parseSlides(markdown: string) {
     let parts = markdown.split(/(?:\n|^)\s*---\s*(?:\n|$)/);
-    let slides: string[] = [];
+    let slides: string[][] = [];
     
     parts.forEach(part => {
         let subparts = part.split(/(?=(?:\n|^)##\s)/);
         subparts.forEach(sp => {
             let tokens = sp.split(/(```quiz[\s\S]*?```)/g);
             tokens.forEach(t => {
-                if (t.trim()) slides.push(t.trim());
+                if (t.trim()) {
+                    let fragments = t.split(/(?:\n|^)\s*\*\*\*\s*(?:\n|$)/).filter(f => f.trim());
+                    if (fragments.length > 0) slides.push(fragments);
+                }
             });
         });
     });
@@ -318,8 +321,9 @@ export default function PresentationPage() {
     const supabase = createClient();
     
     const [moduleData, setModuleData] = useState<any>(null);
-    const [slides, setSlides] = useState<string[]>([]);
+    const [slides, setSlides] = useState<string[][]>([]);
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+    const [currentFragmentIndex, setCurrentFragmentIndex] = useState(0);
     const [isFullscreen, setIsFullscreen] = useState(false);
     
     // Auto-fit text states
@@ -344,16 +348,31 @@ export default function PresentationPage() {
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Space' || e.key === 'Enter' || e.key === 'PageDown') {
-                setCurrentSlideIndex(prev => Math.min(prev + 1, slides.length - 1));
+                if (e.key === ' ' || e.key === 'Space' || e.key === 'PageDown') e.preventDefault();
+                
+                const currentFragments = slides[currentSlideIndex] || [];
+                if (currentFragmentIndex < currentFragments.length - 1) {
+                    setCurrentFragmentIndex(prev => prev + 1);
+                } else if (currentSlideIndex < slides.length - 1) {
+                    setCurrentSlideIndex(prev => prev + 1);
+                    setCurrentFragmentIndex(0);
+                }
             } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
-                setCurrentSlideIndex(prev => Math.max(prev - 1, 0));
+                if (e.key === 'PageUp') e.preventDefault();
+                
+                if (currentFragmentIndex > 0) {
+                    setCurrentFragmentIndex(prev => prev - 1);
+                } else if (currentSlideIndex > 0) {
+                    setCurrentSlideIndex(prev => prev - 1);
+                    setCurrentFragmentIndex(slides[currentSlideIndex - 1].length - 1);
+                }
             } else if (e.key === 'f' || e.key === 'F') {
                 toggleFullscreen();
             }
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [slides.length]);
+    }, [slides, currentSlideIndex, currentFragmentIndex]);
     
     const toggleFullscreen = () => {
         if (!document.fullscreenElement) {
@@ -388,16 +407,26 @@ export default function PresentationPage() {
         return () => clearTimeout(timer);
     }, [currentSlideIndex, baseFontSize, slides]);
     
+    // Auto scroll when fragment index changes
+    useLayoutEffect(() => {
+        if (contentBoxRef.current) {
+            contentBoxRef.current.scrollTo({
+                top: contentBoxRef.current.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    }, [currentFragmentIndex]);
+
     if (!moduleData || slides.length === 0) {
         return <div className="min-h-screen bg-slate-50 flex items-center justify-center text-indigo-600 text-3xl font-bold animate-pulse">Đang nạp bài giảng...</div>;
     }
     
-    const currentContent = slides[currentSlideIndex];
-    const isQuiz = currentContent.startsWith('```quiz');
+    const currentFragments = slides[currentSlideIndex] || [];
+    const isQuiz = currentFragments.length > 0 && currentFragments[0].startsWith('```quiz');
     let quizData = null;
     if (isQuiz) {
         try {
-            const jsonStr = currentContent.replace(/^```quiz\s*/, '').replace(/\s*```$/, '');
+            const jsonStr = currentFragments[0].replace(/^```quiz\s*/, '').replace(/\s*```$/, '');
             quizData = JSON.parse(jsonStr);
         } catch (e) {}
     }
@@ -406,7 +435,12 @@ export default function PresentationPage() {
         if (target.closest('button') || target.closest('a') || target.closest('input')) {
             return;
         }
-        setCurrentSlideIndex(prev => Math.min(prev + 1, slides.length - 1));
+        if (currentFragmentIndex < currentFragments.length - 1) {
+            setCurrentFragmentIndex(prev => prev + 1);
+        } else if (currentSlideIndex < slides.length - 1) {
+            setCurrentSlideIndex(prev => prev + 1);
+            setCurrentFragmentIndex(0);
+        }
     };
 
     return (
@@ -458,40 +492,52 @@ export default function PresentationPage() {
                         {isQuiz && quizData ? (
                             <PresentationQuiz quizData={quizData} fontSize={baseFontSize} />
                         ) : (
-                            <div 
-                                className="prose prose-slate max-w-none w-full
-                                    prose-headings:font-black prose-headings:tracking-tight
-                                    prose-h1:text-[1.8em] prose-h1:text-white prose-h1:bg-gradient-to-r prose-h1:from-indigo-600 prose-h1:to-blue-600 prose-h1:px-[0.8em] prose-h1:py-[0.4em] prose-h1:rounded-[0.4em] prose-h1:shadow-lg prose-h1:inline-block prose-h1:mb-[0.8em] prose-h1:leading-tight prose-h1:border-2 prose-h1:border-white
-                                    prose-h2:text-[1.4em] prose-h2:text-indigo-900 prose-h2:bg-indigo-50 prose-h2:px-[0.6em] prose-h2:py-[0.3em] prose-h2:rounded-[0.3em] prose-h2:border-l-[0.3em] prose-h2:border-indigo-600 prose-h2:shadow-sm prose-h2:inline-block prose-h2:mb-[0.8em]
-                                    prose-h3:text-[1.2em] prose-h3:text-blue-900 prose-h3:bg-blue-50 prose-h3:px-[0.5em] prose-h3:py-[0.2em] prose-h3:rounded-[0.2em] prose-h3:border-l-[0.2em] prose-h3:border-blue-500 prose-h3:inline-block prose-h3:mb-[0.5em]
-                                    prose-p:text-[1em] prose-p:leading-[1.5] prose-p:text-slate-700
-                                    prose-li:text-[1em] prose-li:leading-[1.5] prose-li:my-[0.3em]
-                                    prose-strong:text-indigo-900 prose-strong:font-black
-                                    prose-blockquote:border-l-[0.3em] prose-blockquote:border-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:p-[0.8em] prose-blockquote:rounded-r-2xl prose-blockquote:text-slate-700 prose-blockquote:font-medium prose-blockquote:text-[1.1em]
-                                    [&_.katex-display]:text-[1.1em] [&_.katex-display]:my-[0.5em]
-                                    [&_.katex]:text-[1em] [&_.katex]:text-blue-900
-                                    [&_img]:max-h-[40vh] [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-xl [&_img]:border [&_img]:border-slate-200
-                                "
-                                style={{ fontSize: `${baseFontSize}px` }}
-                            >
-                                <ReactMarkdown 
-                                    components={customMarkdownComponents}
-                                    remarkPlugins={[remarkMath, remarkBreaks]} 
-                                    rehypePlugins={[rehypeKatex, rehypeRaw]}
-                                >
-                                    {currentContent}
-                                </ReactMarkdown>
+                            <div className="w-full flex flex-col">
+                                {currentFragments.slice(0, currentFragmentIndex + 1).map((frag, idx) => (
+                                    <div 
+                                        key={`${currentSlideIndex}-${idx}`} 
+                                        className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out w-full
+                                            prose prose-slate max-w-none 
+                                            prose-headings:font-black prose-headings:tracking-tight
+                                            prose-h1:text-[1.8em] prose-h1:text-white prose-h1:bg-gradient-to-r prose-h1:from-indigo-600 prose-h1:to-blue-600 prose-h1:px-[0.8em] prose-h1:py-[0.4em] prose-h1:rounded-[0.4em] prose-h1:shadow-lg prose-h1:inline-block prose-h1:mb-[0.8em] prose-h1:leading-tight prose-h1:border-2 prose-h1:border-white
+                                            prose-h2:text-[1.4em] prose-h2:text-indigo-900 prose-h2:bg-indigo-50 prose-h2:px-[0.6em] prose-h2:py-[0.3em] prose-h2:rounded-[0.3em] prose-h2:border-l-[0.3em] prose-h2:border-indigo-600 prose-h2:shadow-sm prose-h2:inline-block prose-h2:mb-[0.8em]
+                                            prose-h3:text-[1.2em] prose-h3:text-blue-900 prose-h3:bg-blue-50 prose-h3:px-[0.5em] prose-h3:py-[0.2em] prose-h3:rounded-[0.2em] prose-h3:border-l-[0.2em] prose-h3:border-blue-500 prose-h3:inline-block prose-h3:mb-[0.5em]
+                                            prose-p:text-[1em] prose-p:leading-[1.5] prose-p:text-slate-700
+                                            prose-li:text-[1em] prose-li:leading-[1.5] prose-li:my-[0.3em]
+                                            prose-strong:text-indigo-900 prose-strong:font-black
+                                            prose-blockquote:border-l-[0.3em] prose-blockquote:border-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:p-[0.8em] prose-blockquote:rounded-r-2xl prose-blockquote:text-slate-700 prose-blockquote:font-medium prose-blockquote:text-[1.1em]
+                                            [&_.katex-display]:text-[1.1em] [&_.katex-display]:my-[0.5em]
+                                            [&_.katex]:text-[1em] [&_.katex]:text-blue-900
+                                            [&_img]:max-h-[40vh] [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-xl [&_img]:border [&_img]:border-slate-200
+                                        "
+                                        style={{ fontSize: `${baseFontSize}px` }}
+                                    >
+                                        <ReactMarkdown 
+                                            components={customMarkdownComponents}
+                                            remarkPlugins={[remarkMath, remarkBreaks]} 
+                                            rehypePlugins={[rehypeKatex, rehypeRaw]}
+                                        >
+                                            {frag}
+                                        </ReactMarkdown>
+                                    </div>
+                                ))}
                             </div>
                         )}
                     </div>
                 </div>
             </div>
             
-            {/* Navigation Indicators */}
             <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-white/90 backdrop-blur-md border border-slate-200 px-6 py-3 rounded-full shadow-xl z-50">
                 <button 
-                    onClick={() => setCurrentSlideIndex(prev => Math.max(prev - 1, 0))}
-                    disabled={currentSlideIndex === 0}
+                    onClick={() => {
+                        if (currentFragmentIndex > 0) {
+                            setCurrentFragmentIndex(prev => prev - 1);
+                        } else if (currentSlideIndex > 0) {
+                            setCurrentSlideIndex(prev => prev - 1);
+                            setCurrentFragmentIndex(slides[currentSlideIndex - 1].length - 1);
+                        }
+                    }}
+                    disabled={currentSlideIndex === 0 && currentFragmentIndex === 0}
                     className="p-3 bg-slate-100 hover:bg-slate-200 rounded-full transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed text-slate-700 hover:scale-110 active:scale-95"
                     title="Slide trước (Mũi tên trái)"
                 >
@@ -501,8 +547,15 @@ export default function PresentationPage() {
                     Điều khiển
                 </div>
                 <button 
-                    onClick={() => setCurrentSlideIndex(prev => Math.min(prev + 1, slides.length - 1))}
-                    disabled={currentSlideIndex === slides.length - 1}
+                    onClick={() => {
+                        if (currentFragmentIndex < currentFragments.length - 1) {
+                            setCurrentFragmentIndex(prev => prev + 1);
+                        } else if (currentSlideIndex < slides.length - 1) {
+                            setCurrentSlideIndex(prev => prev + 1);
+                            setCurrentFragmentIndex(0);
+                        }
+                    }}
+                    disabled={currentSlideIndex === slides.length - 1 && currentFragmentIndex === currentFragments.length - 1}
                     className="p-3 bg-slate-100 hover:bg-slate-200 rounded-full transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed text-slate-700 hover:scale-110 active:scale-95"
                     title="Slide tiếp theo (Space / Mũi tên phải)"
                 >
