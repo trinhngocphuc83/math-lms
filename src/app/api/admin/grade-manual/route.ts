@@ -74,7 +74,7 @@ ${question}
        }
     }
 
-    if (parts.length === 1) {
+    if (type === 'essay' && parts.length === 1) {
        return NextResponse.json({ error: "Không thể tải được dữ liệu ảnh để chấm." }, { status: 400 });
     }
 
