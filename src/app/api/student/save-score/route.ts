@@ -131,7 +131,11 @@ export async function POST(request: Request) {
       const { data: allResults } = await query;
 
       if (allResults && allResults.length > 1) {
-        const resultsWithStatus = allResults.map(res => {
+        // Lọc ra các bản nháp (attempt_number === 0) để xóa thẳng, không đưa vào so sánh giữ lại
+        const drafts = allResults.filter(r => r.attempt_number === 0);
+        const realSubmissions = allResults.filter(r => r.attempt_number > 0);
+
+        const resultsWithStatus = realSubmissions.map(res => {
           let hasAIError = false;
           if (!res.is_reviewed) {
              const details = res.answers?.gradingDetails || [];
@@ -157,12 +161,19 @@ export async function POST(request: Request) {
            resultToKeep = errorResults[0];
         }
 
+        let idsToDelete = drafts.map(r => r.id);
+        
         if (resultToKeep) {
-          const idsToDelete = allResults.filter(r => r.id !== resultToKeep.id).map(r => r.id);
-          if (idsToDelete.length > 0) {
-            await supabaseAdmin.from('exam_results').delete().in('id', idsToDelete);
-          }
+          const otherSubmissions = realSubmissions.filter(r => r.id !== resultToKeep.id).map(r => r.id);
+          idsToDelete = [...idsToDelete, ...otherSubmissions];
         }
+
+        if (idsToDelete.length > 0) {
+          await supabaseAdmin.from('exam_results').delete().in('id', idsToDelete);
+        }
+      } else if (allResults && allResults.length === 1 && allResults[0].attempt_number === 0) {
+        // Nếu bằng cách nào đó chỉ có draft (ví dụ insert lỗi nhưng query vẫn chạy), xóa draft? 
+        // Không, giữ lại draft. Nhưng trường hợp này khó xảy ra vì vừa insert.
       }
     } catch (cleanupErr) {
       console.error('Error cleaning up old results:', cleanupErr);
