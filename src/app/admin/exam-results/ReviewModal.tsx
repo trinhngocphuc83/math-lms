@@ -453,14 +453,50 @@ NHIỆM VỤ CỦA BẠN:
                     {/* Detail Body */}
                     <div className="p-4 flex flex-col gap-3">
                       {detail.question && (
-                        <div className="text-sm text-zinc-700 bg-amber-50/50 p-3 rounded-lg border border-amber-100">
+                        <div className="text-sm text-zinc-700 bg-amber-50/50 p-3 rounded-lg border border-amber-100 mb-2">
                           <strong className="text-amber-800">Đề bài:</strong> {detail.question}
+                        </div>
+                      )}
+
+                      {/* Hiển thị Câu trả lời của học sinh (nếu có) */}
+                      {detail.type !== 'essay' && detail.studentAnswer !== undefined && (
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-2">
+                          <div className="bg-blue-50/50 p-3 rounded-lg border border-blue-100">
+                            <strong className="text-blue-800 block mb-1">Học sinh chọn/trả lời:</strong>
+                            <div className="text-sm font-semibold text-zinc-800 break-words whitespace-pre-wrap">
+                              {detail.type === 'true_false_cluster' 
+                                ? (
+                                  <ul className="list-disc list-inside">
+                                    {Object.entries(detail.studentAnswer || {}).map(([idx, val]) => (
+                                      <li key={idx}>Ý {Number(idx) + 1}: {val ? 'Đúng' : 'Sai'}</li>
+                                    ))}
+                                  </ul>
+                                )
+                                : String(detail.studentAnswer)
+                              }
+                            </div>
+                          </div>
+                          <div className="bg-green-50/50 p-3 rounded-lg border border-green-100">
+                            <strong className="text-green-800 block mb-1">Đáp án đúng:</strong>
+                            <div className="text-sm font-semibold text-zinc-800 break-words whitespace-pre-wrap">
+                              {detail.type === 'true_false_cluster'
+                                ? (
+                                  <ul className="list-disc list-inside">
+                                    {Array.isArray(detail.correctAnswer) && detail.correctAnswer.map((item: any, idx: number) => (
+                                      <li key={idx}>Ý {idx + 1}: {item.isTrue ? 'Đúng' : 'Sai'}</li>
+                                    ))}
+                                  </ul>
+                                )
+                                : String(detail.correctAnswer || '')
+                              }
+                            </div>
+                          </div>
                         </div>
                       )}
 
                       {/* Hiển thị Ảnh Bài Làm Từng Câu */}
                       {detail.images && detail.images.length > 0 && (
-                        <div>
+                        <div className="mb-2">
                            <label className="block text-sm font-semibold text-zinc-700 mb-2">Ảnh bài làm của học sinh:</label>
                            <div className="flex gap-3 flex-wrap">
                               {detail.images.map((img: string, imgIdx: number) => (

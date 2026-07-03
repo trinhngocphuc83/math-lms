@@ -484,6 +484,19 @@ export default function AzotaExamUI({
       const realType = getQuestionType(data);
       if (realType !== 'essay') {
         const scoreInfo = newQuestionScores[qIndex];
+        const ans = answers[qIndex.toString()];
+        
+        let studentAnswer = ans;
+        let correctAnswer = '';
+        
+        if (realType === 'multiple_choice') {
+          correctAnswer = data.answerIndex; // e.g. "A", "B"
+        } else if (realType === 'true_false_cluster') {
+          correctAnswer = data.options || data.statements || []; // Array of items with correct values
+        } else if (realType === 'short_answer') {
+          correctAnswer = data.exactAnswer || data.correctAnswer || '';
+        }
+
         allGradingDetails.push({
           qIndex,
           type: realType,
@@ -491,7 +504,9 @@ export default function AzotaExamUI({
           maxScore: scoreInfo.max,
           score: scoreInfo.earned,
           passed: scoreInfo.earned > 0,
-          images: answers[qIndex.toString()]?.images || []
+          images: answers[qIndex.toString()]?.images || [],
+          studentAnswer: studentAnswer,
+          correctAnswer: correctAnswer
         });
       }
     });
