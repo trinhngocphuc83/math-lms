@@ -57,7 +57,7 @@ export default function AdminDashboard() {
         supabase.from('courses').select('*', { count: 'exact', head: true }),
         supabase.from('profiles').select('*', { count: 'exact', head: true }).eq('role', 'student'),
         supabase.from('online_exams').select('*', { count: 'exact', head: true }),
-        supabase.from('exam_results').select('*', { count: 'exact', head: true }).eq('is_unsubmitted', false)
+        supabase.from('exam_results').select('*', { count: 'exact', head: true }).gt('attempt_number', 0)
       ]);
 
       setStats({
@@ -71,11 +71,13 @@ export default function AdminDashboard() {
       const sevenDaysAgo = new Date();
       sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
       
-      const { data: recentSubmissions } = await supabase
+      const { data: recentSubmissions, error: recentError } = await supabase
         .from('exam_results')
         .select('created_at')
-        .eq('is_unsubmitted', false)
+        .gt('attempt_number', 0)
         .gte('created_at', sevenDaysAgo.toISOString());
+        
+      if (recentError) console.error("Chart data error:", recentError);
 
       // Aggregate data by date
       const dateMap: Record<string, number> = {};
@@ -104,12 +106,14 @@ export default function AdminDashboard() {
       setChartData(finalChartData);
 
       // 3. Fetch Recent Activities
-      const { data: activities } = await supabase
+      const { data: activities, error: actError } = await supabase
         .from('exam_results')
         .select('id, created_at, profiles(full_name), lessons(title)')
-        .eq('is_unsubmitted', false)
+        .gt('attempt_number', 0)
         .order('created_at', { ascending: false })
         .limit(5);
+        
+      if (actError) console.error("Activities data error:", actError);
 
       if (activities) {
         setRecentActivities(activities);
