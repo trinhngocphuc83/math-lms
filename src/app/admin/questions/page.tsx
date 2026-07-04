@@ -83,28 +83,24 @@ export default function QuestionsPage() {
       
       if (searchTerm) {
         const trimmedTerm = searchTerm.trim();
-        // Nếu chuỗi dài > 30 ký tự -> Người dùng đang dán nguyên đoạn đề bài
-        if (trimmedTerm.length > 30) {
-          // Trích xuất các từ (chỉ lấy chữ cái, bỏ qua số/công thức Toán) có độ dài >= 3
-          const words = trimmedTerm.match(/[\p{L}]+/gu) || [];
-          const validWords = words.filter(w => w.length >= 3);
-          
-          if (validWords.length >= 4) {
-             // Lấy 3 từ khóa đầu và 3 từ khóa cuối của đoạn văn
-             const keywords = [...validWords.slice(0, 3), ...validWords.slice(-3)];
-             const uniqueKeywords = Array.from(new Set(keywords));
-             
-             // Bắt buộc nội dung câu hỏi phải chứa đồng thời tất cả các từ khóa này
-             uniqueKeywords.forEach(kw => {
-                query = query.ilike('content', `%${kw}%`);
-             });
-          } else {
-             // Nếu không có đủ chữ (toàn bộ là công thức), tìm kiếm fallback
-             query = query.or(`content.ilike.%${trimmedTerm}%,question_id.ilike.%${trimmedTerm}%,math_form.ilike.%${trimmedTerm}%,lesson.ilike.%${trimmedTerm}%,topic.ilike.%${trimmedTerm}%`);
+        // Lấy tất cả các chữ cái và số từ chuỗi tìm kiếm, bỏ qua các ký hiệu đặc biệt của LaTeX
+        let tokens = trimmedTerm.match(/[\p{L}\d]+/gu) || [];
+        
+        if (tokens.length > 0) {
+          // Lấy tối đa 15 từ khóa đầu và 15 từ khóa cuối để tránh query quá dài gây lỗi database
+          if (tokens.length > 30) {
+            tokens = [...tokens.slice(0, 15), ...tokens.slice(-15)];
           }
+          
+          // Nối các từ khóa lại bằng dấu % để tạo thành chuỗi tìm kiếm theo ĐÚNG THỨ TỰ (từ đầu đến cuối)
+          const pattern = `%${tokens.join('%')}%`;
+          
+          // Tìm kiếm trên nhiều cột, sử dụng pattern đã được làm sạch (chỉ chứa chữ/số, an toàn tuyệt đối cho PostgREST)
+          query = query.or(`content.ilike.${pattern},question_id.ilike.${pattern},math_form.ilike.${pattern},lesson.ilike.${pattern},topic.ilike.${pattern}`);
         } else {
-           // Nếu chuỗi ngắn (từ khóa bình thường), tìm kiếm trên tất cả các cột
-           query = query.or(`content.ilike.%${trimmedTerm}%,question_id.ilike.%${trimmedTerm}%,math_form.ilike.%${trimmedTerm}%,lesson.ilike.%${trimmedTerm}%,topic.ilike.%${trimmedTerm}%`);
+          // Fallback nếu người dùng chỉ nhập toàn ký tự đặc biệt
+          // Không dùng .or() vì ký tự đặc biệt có thể phá vỡ cú pháp của PostgREST
+          query = query.ilike('content', `%${trimmedTerm}%`);
         }
       }
       if (filters.grade) query = query.eq('grade', filters.grade);
