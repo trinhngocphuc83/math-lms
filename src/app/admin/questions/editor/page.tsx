@@ -78,9 +78,23 @@ export default function BatchAIEditorPage() {
   useEffect(() => {
     // Fetch all existing questions once to check duplicates later
     const fetchExisting = async () => {
-      const { data } = await supabase.from('questions').select('question_id, content');
-      if (data) {
-        setExistingQuestions(data.map(d => ({
+      let allData: any[] = [];
+      let page = 0;
+      const pageSize = 1000;
+      
+      while (true) {
+         const { data } = await supabase.from('questions')
+           .select('question_id, content')
+           .range(page * pageSize, (page + 1) * pageSize - 1);
+           
+         if (!data || data.length === 0) break;
+         allData = [...allData, ...data];
+         if (data.length < pageSize) break;
+         page++;
+      }
+      
+      if (allData.length > 0) {
+        setExistingQuestions(allData.map(d => ({
           id: d.question_id,
           content: (d.content || "").trim().toLowerCase().replace(/\s+/g, '')
         })));
@@ -369,8 +383,17 @@ ${uniqueForms.map(f => `- ${f}`).join("\n")}
     setIsSavingAll(true);
 
     try {
-      // 1. Lọc và chuẩn bị lưu các danh mục mới (nếu có)
-      const newCats = parsedQuestions.filter(q => q.isNewLesson || q.isNewMathForm).map(q => ({
+      // 1. Tự động loại bỏ các câu bị trùng lặp (isDuplicate = true)
+      const validQuestions = parsedQuestions.filter(q => !q.isDuplicate);
+      const duplicatesCount = parsedQuestions.length - validQuestions.length;
+
+      if (validQuestions.length === 0) {
+        setIsSavingAll(false);
+        return alert("Tất cả câu hỏi đều bị trùng lặp với Ngân hàng! Không có câu hỏi mới nào được thêm.");
+      }
+
+      // 2. Lọc và chuẩn bị lưu các danh mục mới (nếu có) từ các câu hỏi HỢP LỆ
+      const newCats = validQuestions.filter(q => q.isNewLesson || q.isNewMathForm).map(q => ({
         grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson, math_form: q.math_form
       }));
       // Loại bỏ trùng lặp trong mảng newCats
@@ -381,7 +404,7 @@ ${uniqueForms.map(f => `- ${f}`).join("\n")}
         if (catError) console.error("Lỗi thêm danh mục mới:", catError);
       }
 
-      const inserts = parsedQuestions.map(q => ({
+      const inserts = validQuestions.map(q => ({
         question_id: `CH_${Date.now()}_${Math.random().toString(36).substring(2,6)}`,
         grade: q.grade,
         subject: q.subject,
@@ -404,7 +427,7 @@ ${uniqueForms.map(f => `- ${f}`).join("\n")}
       const { error } = await supabase.from('questions').insert(inserts);
       if (error) throw error;
 
-      alert(`Đã lưu thành công ${inserts.length} câu vào Ngân hàng!`);
+      alert(`Đã lưu thành công ${inserts.length} câu vào Ngân hàng!${duplicatesCount > 0 ? `\n(Đã tự động loại bỏ ${duplicatesCount} câu trùng lặp)` : ''}`);
       router.push("/admin/questions");
     } catch (e: any) {
       console.error(e);
