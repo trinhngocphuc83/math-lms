@@ -36,12 +36,27 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     setLoading(true);
     const res = await getTuitionFees(classId, month, year);
     
+    // Lấy dữ liệu tháng trước để kế thừa học phí cơ bản (nếu có học sinh đặc biệt)
+    const prevMonth = month === 1 ? 12 : month - 1;
+    const prevYear = month === 1 ? year - 1 : year;
+    const resPrev = await getTuitionFees(classId, prevMonth, prevYear);
+    const prevMap: Record<string, any> = {};
+    if (resPrev.success && resPrev.data) {
+      resPrev.data.forEach((t: any) => {
+        prevMap[t.student_id] = t;
+      });
+    }
+    
     // Khởi tạo map
     const tMap: Record<string, any> = {};
     const defaultFee = classInfo?.tuition_fee || 0; // Giá trị học phí mặc định từ class
 
     if (res.success && res.data) {
       res.data.forEach((t: any) => {
+        // FIX BUG: Nếu base_fee = 0 (do lỗi tạo tự động trước đó), tự sửa thành defaultFee hoặc kế thừa tháng trước
+        if (!t.base_fee || t.base_fee === 0) {
+           t.base_fee = prevMap[t.student_id]?.base_fee || defaultFee;
+        }
         tMap[t.student_id] = t;
       });
     }
@@ -50,7 +65,8 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     enrollments.forEach(en => {
       const stId = en.profiles.id;
       if (!tMap[stId]) {
-        tMap[stId] = { base_fee: defaultFee, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
+        const studentBaseFee = prevMap[stId]?.base_fee || defaultFee;
+        tMap[stId] = { base_fee: studentBaseFee, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
       }
     });
 
@@ -101,6 +117,9 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     });
 
     await updateTuitionFee(classId, studentId, month, year, {
+      base_fee: current.base_fee, // Giữ nguyên base_fee (sửa lỗi mất base_fee)
+      old_debt: current.old_debt,
+      discount: current.discount,
       status: newStatus,
       paid_amount: newPaid
     });
@@ -149,20 +168,16 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
       const calculatedDiscount = Math.round(totalMissed * feePerSession);
       
       const current = newTuitionData[stId] || { base_fee: classInfo?.tuition_fee || 0, old_debt: 0, paid_amount: 0, status: 'UNPAID' };
-      const updated = { ...current, discount: calculatedDiscount };
       
-      let newStatus = updated.status;
-      const totalDue = updated.base_fee + updated.old_debt - updated.discount;
-      if (updated.paid_amount >= totalDue && totalDue > 0) newStatus = 'PAID';
-      else if (updated.paid_amount > 0) newStatus = 'PARTIAL';
+      let newStatus = current.status;
+      const totalDue = current.base_fee + current.old_debt - calculatedDiscount;
+      if (current.paid_amount >= totalDue && totalDue > 0) newStatus = 'PAID';
+      else if (current.paid_amount > 0) newStatus = 'PARTIAL';
       else newStatus = 'UNPAID';
       
-      updated.status = newStatus;
+      const updated = { ...current, discount: calculatedDiscount, status: newStatus };
       
-      await updateTuitionFee(classId, stId, month, year, {
-        discount: calculatedDiscount,
-        status: newStatus
-      });
+      await updateTuitionFee(classId, stId, month, year, updated);
       
       newTuitionData[stId] = updated;
     }

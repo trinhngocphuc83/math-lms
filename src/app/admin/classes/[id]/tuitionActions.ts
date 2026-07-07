@@ -80,12 +80,11 @@ export async function rolloverDebt(classId: string, fromMonth: number, fromYear:
     const totalDue = (fee.base_fee || 0) + (fee.old_debt || 0) - (fee.discount || 0);
     const remainingDebt = totalDue - (fee.paid_amount || 0);
     
-    // Only roll over if there is debt OR if we want to initialize the record
-    if (remainingDebt > 0) {
-      await updateTuitionFee(classId, fee.student_id, toMonth, toYear, {
-        old_debt: remainingDebt
-      });
-    }
+    // Always roll over to preserve base_fee!
+    await updateTuitionFee(classId, fee.student_id, toMonth, toYear, {
+      base_fee: fee.base_fee, // Kế thừa Học phí cơ bản (custom tuition)
+      old_debt: remainingDebt > 0 ? remainingDebt : 0
+    });
   }
   
   return { success: true };
