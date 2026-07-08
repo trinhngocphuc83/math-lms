@@ -274,8 +274,10 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
       ]);
       
       const rawPhone = String(student.parent_phone).replace(/[^0-9]/g, '');
-      alert("Đã copy ảnh báo cáo! Hệ thống sẽ mở Zalo, Thầy/Cô hãy ấn Dán (Ctrl+V) vào khung chat nhé.");
-      window.open(`https://zalo.me/${rawPhone}`, '_blank');
+      
+      // Sử dụng Deep link để mở trực tiếp Zalo PC, bỏ qua tab web trung gian
+      window.location.href = `zalo://conversation?phone=${rawPhone}`;
+      
     } catch (err) {
       console.error(err);
       alert("Lỗi khi copy ảnh vào bộ nhớ tạm. Trình duyệt của bạn có thể chưa cấp quyền hoặc không hỗ trợ chức năng này.");
