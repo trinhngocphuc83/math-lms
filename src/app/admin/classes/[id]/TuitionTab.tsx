@@ -450,73 +450,120 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
 
       {/* GIAO DIỆN BÁO CÁO ẨN ĐỂ XUẤT ẢNH */}
       <div className="fixed top-[200vh] left-0 pointer-events-none -z-50">
-        <div ref={printRef} className="w-[650px] bg-white p-8 font-sans border-[12px] border-gray-800 rounded-[2.5rem] relative shadow-2xl">
-          <div className="text-center relative mb-10">
-            <div className="absolute top-0 left-0 w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center -mt-2 -ml-2">
-              <DollarSign className="w-8 h-8 text-emerald-600" />
-            </div>
-            <h1 className="text-3xl font-black text-emerald-800 uppercase tracking-[0.2em] mb-3">
-              THÔNG BÁO HỌC PHÍ
-            </h1>
-            <p className="text-lg font-bold text-gray-700 mb-1">Lớp: {classInfo?.name || 'Chưa cập nhật'}</p>
-            <p className="text-base text-gray-500 font-medium">Kỳ thu phí: Tháng {month}/{year}</p>
-          </div>
+        <div ref={printRef} className="w-[850px] bg-white p-0 font-sans border-0 relative">
+          <div className="bg-orange-500 rounded-[2rem] p-3 shadow-xl">
+             <div className="bg-orange-50 rounded-[1.5rem] p-8 border-4 border-white shadow-inner flex flex-col h-full relative overflow-hidden">
+                {/* Decoration */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-orange-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
+                
+                {/* Header Top: Logo & Avatar */}
+                <div className="flex justify-between items-start mb-6 relative z-10">
+                   {/* Logo Text */}
+                   <div className="flex flex-col border-b-2 border-orange-600 pb-1 pr-4">
+                      <h2 className="text-3xl font-black text-orange-800 tracking-tight uppercase">
+                        <span className="text-red-600 text-4xl leading-none font-serif">T</span>OÁN
+                        <span className="text-red-600 text-4xl leading-none font-serif ml-1">T</span>HẦY
+                        <span className="text-red-600 text-4xl leading-none font-serif ml-1">P</span>HÚC
+                      </h2>
+                      <div className="text-[10px] text-orange-700 tracking-widest font-bold mt-1 text-center">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                   </div>
+                   
+                   {/* Teacher Avatar */}
+                   <div className="flex flex-col items-center">
+                     <div className="w-16 h-16 rounded-full bg-orange-200 border-2 border-white shadow-sm flex items-center justify-center overflow-hidden mb-1">
+                        <svg className="w-10 h-10 text-orange-600 mt-2" fill="currentColor" viewBox="0 0 20 20">
+                           <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                        </svg>
+                     </div>
+                     <span className="font-bold text-gray-800 text-sm">Thầy Phúc</span>
+                     <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">GIÁO VIÊN</span>
+                   </div>
+                </div>
 
-          <div className="w-full h-0.5 bg-gradient-to-r from-emerald-100 via-emerald-300 to-emerald-100 mb-8 rounded-full"></div>
+                {/* Title & Info */}
+                <div className="mb-8 relative z-10">
+                  <h1 className="text-4xl font-black text-orange-600 uppercase tracking-widest mb-4 drop-shadow-sm">
+                    THÔNG BÁO HỌC PHÍ
+                  </h1>
+                  <div className="flex items-center gap-2 text-xl font-bold text-gray-700 mb-3">
+                    Tháng {month}/{year}
+                  </div>
+                  <div className="inline-block bg-blue-100 text-blue-800 px-6 py-2 rounded-xl font-black text-xl uppercase shadow-sm border border-blue-200">
+                    Lớp: {classInfo?.name || 'Chưa cập nhật'}
+                  </div>
+                </div>
 
-          <div className="mb-6 min-h-[300px]">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-gray-100 text-gray-700 text-sm uppercase">
-                  <th className="p-3 font-black rounded-tl-xl w-12 text-center">STT</th>
-                  <th className="p-3 font-black">Học sinh</th>
-                  <th className="p-3 font-black text-right">Số tiền</th>
-                  <th className="p-3 font-black rounded-tr-xl text-center">Trạng thái</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {enrollments.map((en, idx) => {
-                  const stId = en.profiles.id;
-                  const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
-                  const totalDue = t.base_fee + t.old_debt - t.discount;
-                  return (
-                    <tr key={stId}>
-                      <td className="p-3 text-center font-bold text-gray-400">{idx + 1}</td>
-                      <td className="p-3 font-bold text-gray-800 text-base">{en.profiles.full_name}</td>
-                      <td className="p-3 text-right font-bold text-gray-700">{totalDue.toLocaleString('vi-VN')} đ</td>
-                      <td className="p-3 text-center">
-                         <span className={`px-3 py-1.5 text-xs font-bold rounded-full whitespace-nowrap inline-block ${
-                            t.status === 'PAID' ? 'bg-green-100 text-green-700' : 
-                            t.status === 'PARTIAL' ? 'bg-yellow-100 text-yellow-700' : 
-                            'bg-rose-100 text-rose-700'
-                         }`}>
-                           {t.status === 'PAID' ? 'ĐÃ THU' : t.status === 'PARTIAL' ? 'THU 1 PHẦN' : 'CHƯA THU'}
-                         </span>
-                      </td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
+                {/* Divider */}
+                <div className="w-full h-0.5 bg-gradient-to-r from-orange-100 via-orange-300 to-orange-100 mb-6 rounded-full"></div>
 
-            {/* Thông tin thanh toán */}
-            <div className="mt-8 flex flex-col items-center bg-emerald-50/40 border-2 border-dashed border-emerald-500/30 rounded-3xl p-6 gap-4">
-              <h3 className="text-xl font-black text-emerald-800 uppercase tracking-widest text-center">Thông tin chuyển khoản</h3>
-              <div className="w-44 h-44 bg-white border-2 border-gray-100 rounded-2xl p-2 shadow-sm">
-                <img src="https://img.vietqr.io/image/MB-0793898911-compact2.png?amount=0&addInfo=Hoc%20phi" alt="QR Code" crossOrigin="anonymous" className="w-full h-full object-contain rounded-xl" />
-              </div>
-              <div className="space-y-1 text-lg font-bold text-gray-700 text-center">
-                <p>Ngân hàng: <span className="text-emerald-700">MBBank</span></p>
-                <p>Số tài khoản: <span className="text-emerald-700">0793898911</span></p>
-              </div>
-              <div className="mt-2 bg-rose-50 text-rose-600 px-4 py-3 rounded-xl font-bold border border-rose-100 shadow-sm text-sm text-center w-full leading-relaxed">
-                ⚠️ <span className="uppercase">Lưu ý:</span> Phụ huynh chuyển khoản nhớ <b>CHỤP BILL</b> gởi thầy để tránh nhầm lẫn!
-              </div>
-            </div>
-          </div>
+                {/* Table */}
+                <div className="bg-white rounded-2xl shadow-sm border border-orange-100 mb-8 overflow-hidden relative z-10">
+                  <table className="w-full text-left">
+                    <thead>
+                      <tr className="bg-gray-50/80 border-b border-gray-100">
+                        <th className="py-4 px-6 text-gray-500 font-bold uppercase text-xs w-20 text-center">STT</th>
+                        <th className="py-4 px-6 text-gray-500 font-bold uppercase text-xs">Học Sinh</th>
+                        <th className="py-4 px-6 text-gray-500 font-bold uppercase text-xs text-right w-40">Số Tiền</th>
+                        <th className="py-4 px-6 text-gray-500 font-bold uppercase text-xs w-48 text-center">Trạng Thái</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {enrollments.length === 0 ? (
+                        <tr><td colSpan={4} className="py-8 text-center text-gray-500">Chưa có học sinh</td></tr>
+                      ) : (
+                        enrollments.map((en, idx) => {
+                          const stId = en.profiles.id;
+                          const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
+                          const totalDue = t.base_fee + t.old_debt - t.discount;
+                          return (
+                            <tr key={stId} className="hover:bg-gray-50/50 transition-colors">
+                              <td className="py-5 px-6 text-center font-bold text-gray-500">{idx + 1}</td>
+                              <td className="py-5 px-6">
+                                <div className="font-bold text-gray-800 text-lg uppercase">{en.profiles.full_name}</div>
+                                <div className="text-sm font-bold text-blue-700 mt-1 uppercase">{classInfo?.name || ''}</div>
+                              </td>
+                              <td className="py-5 px-6 text-right font-black text-gray-800 text-lg">
+                                {totalDue.toLocaleString('vi-VN')} đ
+                              </td>
+                              <td className="py-5 px-6 text-center">
+                                 <span className={`px-4 py-2 text-sm font-bold rounded-full border whitespace-nowrap inline-block ${
+                                    t.status === 'PAID' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' : 
+                                    t.status === 'PARTIAL' ? 'bg-orange-100 text-orange-700 border-orange-200' : 
+                                    'bg-rose-100 text-rose-700 border-rose-200'
+                                 }`}>
+                                   {t.status === 'PAID' ? 'ĐÃ THU' : t.status === 'PARTIAL' ? 'THU 1 PHẦN' : 'CHƯA THU'}
+                                 </span>
+                              </td>
+                            </tr>
+                          )
+                        })
+                      )}
+                    </tbody>
+                  </table>
+                </div>
 
-          <div className="mt-12 pt-6 border-t-2 border-dashed border-gray-200 text-center text-gray-400 font-medium text-sm italic">
-            Hệ thống quản lý lớp Toán thầy Phúc.
+                {/* THÔNG TIN CHUYỂN KHOẢN */}
+                <div className="bg-blue-50/50 border-2 border-dashed border-blue-300 rounded-3xl p-6 flex items-center justify-between relative z-10 shadow-sm mt-auto mb-4 mx-2">
+                   <div className="flex-1 pr-6">
+                     <h3 className="text-2xl font-black text-blue-800 uppercase tracking-widest mb-6">Thông Tin Chuyển Khoản</h3>
+                     <div className="space-y-4 text-xl font-bold text-gray-700">
+                       <p>Ngân hàng: <span className="text-blue-700">MBBank</span></p>
+                       <p>Số tài khoản: <span className="text-blue-700 tracking-widest text-2xl">0793898911</span></p>
+                       <p>Chủ TK: <span className="text-blue-700 uppercase">TRỊNH NGỌC PHÚC</span></p>
+                     </div>
+                     <div className="mt-6 bg-orange-100 text-orange-800 px-5 py-3 rounded-xl font-bold border border-orange-200 text-sm shadow-sm inline-block">
+                       ⚠️ PH chuyển khoản nhớ <b>CHỤP BILL</b> gửi lại để tránh nhầm lẫn nhé ạ.
+                     </div>
+                   </div>
+                   
+                   <div className="shrink-0 bg-white border border-gray-200 rounded-2xl p-3 shadow-sm w-48 flex items-center justify-center flex-col">
+                     <div className="text-rose-600 font-bold text-sm mb-2 uppercase">VietQR</div>
+                     <img src="https://img.vietqr.io/image/MB-0793898911-compact2.png?amount=0&addInfo=Hoc%20phi" alt="QR Code" crossOrigin="anonymous" className="w-full h-full object-contain rounded-xl" />
+                   </div>
+                </div>
+
+             </div>
           </div>
         </div>
       </div>
