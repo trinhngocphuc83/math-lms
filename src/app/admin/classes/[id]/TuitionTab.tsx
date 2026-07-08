@@ -457,41 +457,30 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                 <div className="absolute top-0 right-0 w-64 h-64 bg-orange-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
                 
-                {/* Header Top: Logo & Avatar */}
-                <div className="flex justify-between items-start mb-6 relative z-10">
+                {/* Header Top: Logo & Title */}
+                <div className="flex flex-col items-center mb-8 relative z-10">
                    {/* Logo Text */}
-                   <div className="flex flex-col border-b-2 border-orange-600 pb-1 pr-4">
-                      <h2 className="text-3xl font-black text-orange-800 tracking-tight uppercase">
-                        <span className="text-red-600 text-4xl leading-none font-serif">T</span>OÁN
-                        <span className="text-red-600 text-4xl leading-none font-serif ml-1">T</span>HẦY
-                        <span className="text-red-600 text-4xl leading-none font-serif ml-1">P</span>HÚC
+                   <div className="flex flex-col border-b-2 border-orange-600 pb-2 mb-6">
+                      <h2 className="text-4xl font-black text-orange-800 tracking-tight uppercase">
+                        <span className="text-red-600 text-5xl leading-none font-serif">T</span>OÁN
+                        <span className="text-red-600 text-5xl leading-none font-serif ml-1">T</span>HẦY
+                        <span className="text-red-600 text-5xl leading-none font-serif ml-1">P</span>HÚC
                       </h2>
-                      <div className="text-[10px] text-orange-700 tracking-widest font-bold mt-1 text-center">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                      <div className="text-xs text-orange-700 tracking-[0.3em] font-bold mt-1 text-center">NƠI KHƠI NGUỒN ĐAM MÊ</div>
                    </div>
                    
-                   {/* Teacher Avatar */}
-                   <div className="flex flex-col items-center">
-                     <div className="w-16 h-16 rounded-full bg-orange-200 border-2 border-white shadow-sm flex items-center justify-center overflow-hidden mb-1">
-                        <svg className="w-10 h-10 text-orange-600 mt-2" fill="currentColor" viewBox="0 0 20 20">
-                           <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                        </svg>
+                   {/* Title & Info */}
+                   <div className="text-center">
+                     <h1 className="text-5xl font-black text-orange-600 uppercase tracking-widest mb-4 drop-shadow-sm">
+                       THÔNG BÁO HỌC PHÍ
+                     </h1>
+                     <div className="flex items-center justify-center gap-4 text-xl font-bold text-gray-700 mb-4">
+                       Tháng {month}/{year}
                      </div>
-                     <span className="font-bold text-gray-800 text-sm">Thầy Phúc</span>
-                     <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">GIÁO VIÊN</span>
+                     <div className="inline-block bg-blue-100 text-blue-800 px-8 py-2.5 rounded-2xl font-black text-2xl uppercase shadow-sm border border-blue-200">
+                       Lớp: {classInfo?.name || 'Chưa cập nhật'}
+                     </div>
                    </div>
-                </div>
-
-                {/* Title & Info */}
-                <div className="mb-8 relative z-10">
-                  <h1 className="text-4xl font-black text-orange-600 uppercase tracking-widest mb-4 drop-shadow-sm">
-                    THÔNG BÁO HỌC PHÍ
-                  </h1>
-                  <div className="flex items-center gap-2 text-xl font-bold text-gray-700 mb-3">
-                    Tháng {month}/{year}
-                  </div>
-                  <div className="inline-block bg-blue-100 text-blue-800 px-6 py-2 rounded-xl font-black text-xl uppercase shadow-sm border border-blue-200">
-                    Lớp: {classInfo?.name || 'Chưa cập nhật'}
-                  </div>
                 </div>
 
                 {/* Divider */}
