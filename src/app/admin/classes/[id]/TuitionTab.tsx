@@ -486,15 +486,20 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
                 
                 {/* Header Top: Logo & Title */}
-                <div className="flex flex-col items-center mb-8 relative z-10">
+                <div className="flex flex-col items-center mb-8 relative z-10 w-full">
                    {/* Logo Text */}
-                   <div className="flex flex-col border-b-2 border-orange-600 pb-2 mb-6">
-                      <h2 className="text-4xl font-black text-orange-800 tracking-tight uppercase">
-                        <span className="text-red-600 text-5xl leading-none font-serif">T</span>OÁN
-                        <span className="text-red-600 text-5xl leading-none font-serif ml-1">T</span>HẦY
-                        <span className="text-red-600 text-5xl leading-none font-serif ml-1">P</span>HÚC
+                   <div className="flex flex-col pb-4 mb-6 relative w-full items-center">
+                      <div className="absolute bottom-0 w-2/3 h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-transparent rounded-full opacity-70"></div>
+                      <h2 className="text-4xl font-black text-orange-800 tracking-tight uppercase flex items-center gap-3">
+                        <span className="text-orange-400">✦</span>
+                        <span>
+                          <span className="text-red-600 text-5xl leading-none font-serif">T</span>OÁN
+                          <span className="text-red-600 text-5xl leading-none font-serif ml-1">T</span>HẦY
+                          <span className="text-red-600 text-5xl leading-none font-serif ml-1">P</span>HÚC
+                        </span>
+                        <span className="text-orange-400">✦</span>
                       </h2>
-                      <div className="text-xs text-orange-700 tracking-[0.3em] font-bold mt-1 text-center">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                      <div className="text-xs text-orange-700 tracking-[0.3em] font-bold mt-2 text-center whitespace-nowrap">NƠI KHƠI NGUỒN ĐAM MÊ</div>
                    </div>
                    
                    {/* Title & Info */}
@@ -599,14 +604,19 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                     <div className="absolute top-0 right-0 w-48 h-48 bg-orange-200/50 rounded-full mix-blend-multiply filter blur-2xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-200/50 rounded-full mix-blend-multiply filter blur-2xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
                     
-                    <div className="flex flex-col items-center mb-6 relative z-10">
-                       <div className="flex flex-col border-b-2 border-orange-600 pb-1 mb-4 w-full items-center">
-                          <h2 className="text-2xl font-black text-orange-800 tracking-tight uppercase whitespace-nowrap">
-                            <span className="text-red-600 text-3xl leading-none font-serif">T</span>OÁN
-                            <span className="text-red-600 text-3xl leading-none font-serif ml-1">T</span>HẦY
-                            <span className="text-red-600 text-3xl leading-none font-serif ml-1">P</span>HÚC
+                    <div className="flex flex-col items-center mb-6 relative z-10 w-full">
+                       <div className="flex flex-col pb-3 mb-4 w-full items-center relative">
+                          <div className="absolute bottom-0 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-orange-500 to-transparent rounded-full opacity-70"></div>
+                          <h2 className="text-2xl font-black text-orange-800 tracking-tight uppercase whitespace-nowrap flex items-center gap-2">
+                            <span className="text-orange-400">✦</span>
+                            <span>
+                              <span className="text-red-600 text-3xl leading-none font-serif">T</span>OÁN
+                              <span className="text-red-600 text-3xl leading-none font-serif ml-1">T</span>HẦY
+                              <span className="text-red-600 text-3xl leading-none font-serif ml-1">P</span>HÚC
+                            </span>
+                            <span className="text-orange-400">✦</span>
                           </h2>
-                          <div className="text-[9px] text-orange-700 tracking-[0.2em] font-bold mt-1 text-center">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                          <div className="text-[9px] text-orange-700 tracking-[0.2em] font-bold mt-1.5 text-center whitespace-nowrap">NƠI KHƠI NGUỒN ĐAM MÊ</div>
                        </div>
                        <div className="text-center w-full">
                          <h1 className="text-2xl sm:text-3xl font-black text-orange-600 uppercase tracking-wider mb-2 drop-shadow-sm whitespace-nowrap">
