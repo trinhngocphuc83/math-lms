@@ -307,70 +307,128 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
 
       {/* GIAO DIỆN BÁO CÁO ẨN ĐỂ XUẤT ẢNH */}
       <div className="fixed top-[200vh] left-0 pointer-events-none -z-50">
-        <div ref={printRef} className="w-[850px] bg-white p-12 font-sans border-[16px] border-gray-800 rounded-[3rem] relative shadow-2xl">
-          {/* Header */}
-          <div className="text-center relative mb-12">
-            <div className="absolute top-0 left-0 w-20 h-20 bg-emerald-50 rounded-full flex items-center justify-center -mt-4 -ml-4">
-              <Check className="w-10 h-10 text-emerald-600" />
-            </div>
-            <h1 className="text-4xl font-black text-emerald-800 uppercase tracking-[0.2em] mb-4">
-              BÁO CÁO ĐIỂM DANH
-            </h1>
-            <p className="text-xl font-bold text-gray-700 mb-2">Lớp: {className || 'Chưa cập nhật'}</p>
-            <p className="text-lg text-gray-500 font-medium">Ngày học: {
-              selectedSessionId === "NEW_TODAY" 
-                ? new Date().toLocaleDateString('vi-VN') 
-                : new Date(sessions.find(s => s.id === selectedSessionId)?.session_date || Date.now()).toLocaleDateString('vi-VN')
-            }</p>
-          </div>
-
-          {/* Divider */}
-          <div className="w-full h-0.5 bg-gradient-to-r from-emerald-100 via-emerald-300 to-emerald-100 mb-10 rounded-full"></div>
-
-          {/* Content */}
-          <div className="mb-8 min-h-[300px]">
-            <h2 className="text-2xl font-bold text-rose-600 mb-8 flex items-center gap-3 border-l-8 border-rose-500 pl-4">
-               Danh sách Học sinh vắng / trễ
-            </h2>
-            <div className="space-y-4">
-              {enrollments.filter(en => ['LATE', 'EXCUSED_ABSENCE', 'UNEXCUSED_ABSENCE'].includes(attendance[en.profiles.id]?.status)).length === 0 ? (
-                <div className="p-8 bg-green-50 text-green-700 rounded-[2rem] border-2 border-green-100 text-center font-bold text-xl flex flex-col items-center justify-center gap-4">
-                  <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center text-3xl shadow-sm">🎉</div>
-                  Tuyệt vời! Buổi học hôm nay tất cả học sinh đều đi học đầy đủ và đúng giờ!
+        <div ref={printRef} className="w-[850px] bg-white p-0 font-sans border-0 relative">
+          <div className="bg-emerald-500 rounded-[2rem] p-3 shadow-xl">
+             <div className="bg-emerald-50 rounded-[1.5rem] p-8 border-4 border-white shadow-inner flex flex-col h-full relative overflow-hidden">
+                {/* Decoration */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
+                
+                {/* Header Top: Logo & Avatar */}
+                <div className="flex justify-between items-start mb-6 relative z-10">
+                   {/* Logo Text */}
+                   <div className="flex flex-col border-b-2 border-emerald-600 pb-1 pr-4">
+                      <h2 className="text-3xl font-black text-emerald-800 tracking-tight uppercase">
+                        <span className="text-red-600 text-4xl leading-none font-serif">T</span>OÁN
+                        <span className="text-red-600 text-4xl leading-none font-serif ml-1">T</span>HẦY
+                        <span className="text-red-600 text-4xl leading-none font-serif ml-1">P</span>HÚC
+                      </h2>
+                      <div className="text-[10px] text-emerald-700 tracking-widest font-bold mt-1 text-center">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                   </div>
+                   
+                   {/* Teacher Avatar */}
+                   <div className="flex flex-col items-center">
+                     <div className="w-16 h-16 rounded-full bg-emerald-200 border-2 border-white shadow-sm flex items-center justify-center overflow-hidden mb-1">
+                        <svg className="w-10 h-10 text-emerald-600 mt-2" fill="currentColor" viewBox="0 0 20 20">
+                           <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                        </svg>
+                     </div>
+                     <span className="font-bold text-gray-800 text-sm">Thầy Phúc</span>
+                     <span className="text-[10px] text-gray-500 font-bold uppercase tracking-widest">GIÁO VIÊN</span>
+                   </div>
                 </div>
-              ) : (
-                enrollments.filter(en => ['LATE', 'EXCUSED_ABSENCE', 'UNEXCUSED_ABSENCE'].includes(attendance[en.profiles.id]?.status)).map((en, index) => {
-                  const stat = attendance[en.profiles.id]?.status;
-                  const note = attendance[en.profiles.id]?.note;
-                  return (
-                    <div key={en.profiles.id} className="flex justify-between items-center p-5 bg-gray-50/80 border border-gray-100 rounded-2xl shadow-sm">
-                      <div className="flex items-center gap-4">
-                        <span className="w-10 h-10 bg-white border border-gray-200 rounded-full flex items-center justify-center font-black text-gray-400 shadow-sm shrink-0">
-                          {index + 1}
-                        </span>
-                        <div>
-                          <div className="font-bold text-gray-800 text-xl">{en.profiles.full_name}</div>
-                          {note && <div className="text-base text-gray-500 mt-1 italic text-justify pr-10">Ghi chú: {note}</div>}
-                        </div>
-                      </div>
-                      <div className="shrink-0">
-                         <span className={`px-6 py-2.5 text-sm font-bold rounded-full border whitespace-nowrap tracking-wide inline-block ${
-                            stat === 'LATE' ? 'bg-amber-50 text-amber-600 border-amber-200 shadow-sm shadow-amber-100/50' : 
-                            stat === 'EXCUSED_ABSENCE' ? 'bg-orange-50 text-orange-600 border-orange-200 shadow-sm shadow-orange-100/50' : 
-                            'bg-rose-50 text-rose-600 border-rose-200 shadow-sm shadow-rose-100/50'
-                         }`}>
-                           {stat === 'LATE' ? 'ĐI TRỄ' : stat === 'EXCUSED_ABSENCE' ? 'VẮNG (CÓ PHÉP)' : 'VẮNG (K.PHÉP)'}
-                         </span>
-                      </div>
-                    </div>
-                  );
-                })
-              )}
-            </div>
-          </div>
 
-          <div className="mt-16 pt-8 border-t-2 border-dashed border-gray-200 text-center text-gray-400 font-medium text-base italic">
-            Hệ thống quản lý lớp Toán thầy Phúc.
+                {/* Title & Info */}
+                <div className="mb-6 relative z-10">
+                  <h1 className="text-4xl font-black text-teal-700 uppercase tracking-widest mb-4 drop-shadow-sm">
+                    THÔNG BÁO ĐIỂM DANH
+                  </h1>
+                  <div className="flex items-center gap-2 text-xl font-bold text-gray-700 mb-3">
+                    Ngày: {
+                      selectedSessionId === "NEW_TODAY" 
+                        ? new Date().toLocaleDateString('vi-VN') 
+                        : new Date(sessions.find(s => s.id === selectedSessionId)?.session_date || Date.now()).toLocaleDateString('vi-VN')
+                    }
+                  </div>
+                  <div className="inline-block bg-emerald-100 text-emerald-800 px-6 py-2 rounded-xl font-black text-xl uppercase shadow-sm border border-emerald-200">
+                    Lớp: {className || 'Chưa cập nhật'}
+                  </div>
+                </div>
+
+                {/* Summary Table */}
+                <div className="bg-white rounded-2xl shadow-sm border border-emerald-100 mb-6 overflow-hidden relative z-10">
+                  <table className="w-full text-center">
+                    <thead>
+                      <tr className="bg-gray-50/50">
+                        <th className="py-3 text-gray-500 font-bold uppercase text-xs w-1/4">Sĩ Số</th>
+                        <th className="py-3 text-gray-500 font-bold uppercase text-xs w-1/4">Có Mặt</th>
+                        <th className="py-3 text-gray-500 font-bold uppercase text-xs w-1/4">Có Phép</th>
+                        <th className="py-3 text-gray-500 font-bold uppercase text-xs w-1/4">Không Phép</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-x divide-gray-100 border-t border-gray-100">
+                      <tr>
+                        <td className="py-4 text-3xl font-black text-gray-800">{enrollments.length}</td>
+                        <td className="py-4 text-3xl font-black text-teal-600">{enrollments.filter(en => attendance[en.profiles.id]?.status === 'PRESENT').length}</td>
+                        <td className="py-4 text-3xl font-black text-orange-500">{enrollments.filter(en => attendance[en.profiles.id]?.status === 'EXCUSED_ABSENCE').length}</td>
+                        <td className="py-4 text-3xl font-black text-rose-600">{enrollments.filter(en => attendance[en.profiles.id]?.status === 'UNEXCUSED_ABSENCE').length}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Student List */}
+                <div className="bg-white rounded-2xl shadow-sm border border-emerald-100 overflow-hidden relative z-10 mb-6">
+                  <table className="w-full text-left">
+                    <thead>
+                      <tr className="bg-gray-50/80 border-b border-gray-100">
+                        <th className="py-3 px-6 text-gray-500 font-bold uppercase text-xs w-20 text-center">STT</th>
+                        <th className="py-3 px-6 text-gray-500 font-bold uppercase text-xs">Học Sinh</th>
+                        <th className="py-3 px-6 text-gray-500 font-bold uppercase text-xs w-48 text-center">Trạng Thái</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {enrollments.filter(en => ['LATE', 'EXCUSED_ABSENCE', 'UNEXCUSED_ABSENCE'].includes(attendance[en.profiles.id]?.status)).length === 0 ? (
+                        <tr>
+                          <td colSpan={3} className="py-10 text-center text-emerald-600 font-bold text-lg bg-emerald-50/30">
+                            🎉 Tuyệt vời! Buổi học hôm nay tất cả học sinh đều đi học đầy đủ và đúng giờ!
+                          </td>
+                        </tr>
+                      ) : (
+                        enrollments.filter(en => ['LATE', 'EXCUSED_ABSENCE', 'UNEXCUSED_ABSENCE'].includes(attendance[en.profiles.id]?.status)).map((en, index) => {
+                          const stat = attendance[en.profiles.id]?.status;
+                          const note = attendance[en.profiles.id]?.note;
+                          return (
+                            <tr key={en.profiles.id} className="hover:bg-gray-50/50 transition-colors">
+                              <td className="py-4 px-6 text-center font-bold text-gray-500">{index + 1}</td>
+                              <td className="py-4 px-6">
+                                <div className="font-bold text-gray-800 text-lg uppercase">{en.profiles.full_name}</div>
+                                {note && (
+                                  <div className="text-sm text-gray-500 italic mt-1 pr-4 text-justify">Ghi chú: {note}</div>
+                                )}
+                              </td>
+                              <td className="py-4 px-6 text-center">
+                                <span className={`px-4 py-2 text-sm font-bold rounded-full border whitespace-nowrap inline-block ${
+                                    stat === 'LATE' ? 'bg-amber-100 text-amber-700 border-amber-200' : 
+                                    stat === 'EXCUSED_ABSENCE' ? 'bg-orange-100 text-orange-700 border-orange-200' : 
+                                    'bg-rose-100 text-rose-700 border-rose-200'
+                                }`}>
+                                  {stat === 'LATE' ? 'ĐI TRỄ' : stat === 'EXCUSED_ABSENCE' ? 'VẮNG (CÓ PHÉP)' : 'VẮNG (KHÔNG PHÉP)'}
+                                </span>
+                              </td>
+                            </tr>
+                          );
+                        })
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* Footer */}
+                <div className="text-center text-gray-500 font-medium text-sm italic relative z-10 mt-auto pt-4">
+                  Trân trọng thông báo đến quý phụ huynh để nắm bắt tình hình học tập của con em.
+                </div>
+             </div>
           </div>
         </div>
       </div>
