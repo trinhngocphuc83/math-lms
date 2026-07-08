@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Loader2, DollarSign, CalendarDays, Download, CreditCard, Send, Edit, Save, ShieldAlert, ArrowRight, ImageIcon } from "lucide-react";
-import { toPng } from "html-to-image";
+import { toPng, toBlob } from "html-to-image";
 import { getTuitionFees, updateTuitionFee, rolloverDebt } from "./tuitionActions";
 
 export default function TuitionTab({ classId, classInfo, enrollments }: { classId: string, classInfo: any, enrollments: any[] }) {
@@ -242,20 +242,46 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     setExportingImage(false);
   };
 
-  const sendZalo = (student: any, tuition: any) => {
+  const [sendingZaloId, setSendingZaloId] = useState<string | null>(null);
+
+  const sendZalo = async (student: any, tuition: any) => {
     if (!student.parent_phone) {
       alert("Học sinh này chưa có số điện thoại Phụ huynh để nhắn Zalo.");
       return;
     }
-    const totalDue = tuition.base_fee + tuition.old_debt - tuition.discount;
-    const msg = `🌟 THÔNG BÁO HỌC PHÍ THÁNG ${month}/${year} 🌟\n\nKính gửi Phụ huynh em: ${student.full_name}\n\nXin thông báo học phí tháng ${month} của em là:\n💰 Số tiền cần đóng: ${totalDue.toLocaleString('vi-VN')} VNĐ\n(Học phí: ${tuition.base_fee.toLocaleString()}đ | Nợ cũ: ${tuition.old_debt.toLocaleString()}đ | Giảm trừ: ${tuition.discount.toLocaleString()}đ)\n\nPhụ huynh vui lòng hoàn thành qua chuyển khoản:\n🏦 Ngân hàng: MBbank\n💳 Số tài khoản: 0793898911\n📝 Nội dung: ${student.full_name} hoc phi T${month}\n\nTrân trọng cảm ơn!`;
-    const rawPhone = String(student.parent_phone).replace(/[^0-9]/g, '');
-    navigator.clipboard.writeText(msg).then(() => {
-      alert("Đã copy tin nhắn mẫu. Hệ thống sẽ mở Zalo, Thầy/Cô hãy Dán (Ctrl+V) vào khung chat nhé!");
+    
+    setSendingZaloId(student.id);
+    
+    const element = document.getElementById(`print-tuition-${student.id}`);
+    if (!element) {
+      alert("Không tìm thấy giao diện xuất ảnh!");
+      setSendingZaloId(null);
+      return;
+    }
+
+    try {
+      const blob = await toBlob(element, {
+        cacheBust: true,
+        backgroundColor: "#ffffff",
+        pixelRatio: 2,
+        skipFonts: true
+      });
+      
+      if (!blob) throw new Error("Không tạo được ảnh");
+      
+      await navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': blob })
+      ]);
+      
+      const rawPhone = String(student.parent_phone).replace(/[^0-9]/g, '');
+      alert("Đã copy ảnh báo cáo! Hệ thống sẽ mở Zalo, Thầy/Cô hãy ấn Dán (Ctrl+V) vào khung chat nhé.");
       window.open(`https://zalo.me/${rawPhone}`, '_blank');
-    }).catch(() => {
-      window.open(`https://zalo.me/${rawPhone}`, '_blank');
-    });
+    } catch (err) {
+      console.error(err);
+      alert("Lỗi khi copy ảnh vào bộ nhớ tạm. Trình duyệt của bạn có thể chưa cấp quyền hoặc không hỗ trợ chức năng này.");
+    }
+    
+    setSendingZaloId(null);
   };
 
   if (loading && Object.keys(tuitionData).length === 0) return <div className="py-10 text-center"><Loader2 className="w-8 h-8 animate-spin text-teal-600 mx-auto" /></div>;
@@ -373,8 +399,8 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                         </label>
                         {t.status === 'PARTIAL' && <span className="text-xs font-bold text-yellow-600 bg-yellow-50 px-2 py-1 rounded-md">Thu lẻ: {t.paid_amount.toLocaleString()}đ</span>}
                         
-                        <button onClick={() => sendZalo(en.profiles, t)} className="p-1.5 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white rounded-lg transition-colors" title="Nhắn Zalo">
-                          <Send size={14} />
+                        <button onClick={() => sendZalo(en.profiles, t)} disabled={sendingZaloId === stId} className="p-1.5 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed" title="Nhắn Zalo kèm ảnh">
+                          {sendingZaloId === stId ? <Loader2 size={14} className="animate-spin" /> : <Send size={14} />}
                         </button>
                       </div>
                     </td>
@@ -555,6 +581,92 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
              </div>
           </div>
         </div>
+      </div>
+
+      {/* KHỐI ẨN: GIAO DIỆN BÁO CÁO CÁ NHÂN TỪNG HỌC SINH */}
+      <div className="fixed top-[300vh] left-0 pointer-events-none -z-50 opacity-0">
+        {enrollments.map((en, idx) => {
+          const stId = en.profiles.id;
+          const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
+          const totalDue = t.base_fee + t.old_debt - t.discount;
+          
+          return (
+            <div key={`print-${stId}`} id={`print-tuition-${stId}`} className="w-[500px] bg-white p-0 font-sans border-0 relative mb-10">
+              <div className="bg-orange-500 rounded-3xl p-2 shadow-xl">
+                 <div className="bg-orange-50 rounded-[1.2rem] p-6 border-4 border-white shadow-inner flex flex-col h-full relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-48 h-48 bg-orange-200/50 rounded-full mix-blend-multiply filter blur-2xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+                    <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-200/50 rounded-full mix-blend-multiply filter blur-2xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
+                    
+                    <div className="flex flex-col items-center mb-6 relative z-10">
+                       <div className="flex flex-col border-b-2 border-orange-600 pb-1 mb-4">
+                          <h2 className="text-2xl font-black text-orange-800 tracking-tight uppercase">
+                            <span className="text-red-600 text-3xl leading-none font-serif">T</span>OÁN
+                            <span className="text-red-600 text-3xl leading-none font-serif ml-1">T</span>HẦY
+                            <span className="text-red-600 text-3xl leading-none font-serif ml-1">P</span>HÚC
+                          </h2>
+                          <div className="text-[9px] text-orange-700 tracking-[0.2em] font-bold mt-1 text-center">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                       </div>
+                       <div className="text-center">
+                         <h1 className="text-3xl font-black text-orange-600 uppercase tracking-widest mb-2 drop-shadow-sm">
+                           THÔNG BÁO HỌC PHÍ
+                         </h1>
+                         <div className="flex items-center justify-center gap-2 text-base font-bold text-gray-700 mb-2">
+                           Tháng {month}/{year}
+                         </div>
+                       </div>
+                    </div>
+
+                    <div className="bg-white rounded-2xl shadow-sm border border-orange-100 mb-6 p-5 relative z-10">
+                      <div className="text-center mb-4">
+                         <div className="text-sm font-bold text-gray-500 uppercase">Học sinh</div>
+                         <div className="text-xl font-black text-gray-800 uppercase">{en.profiles.full_name}</div>
+                         <div className="text-xs font-bold text-blue-700 mt-1 uppercase">{classInfo?.name || ''}</div>
+                      </div>
+                      
+                      <div className="space-y-3">
+                         <div className="flex justify-between items-center border-b border-gray-50 pb-2">
+                            <span className="text-gray-500 font-medium text-sm">Học phí cơ bản</span>
+                            <span className="font-bold text-gray-700">{t.base_fee.toLocaleString('vi-VN')} đ</span>
+                         </div>
+                         {t.old_debt > 0 && (
+                           <div className="flex justify-between items-center border-b border-gray-50 pb-2">
+                              <span className="text-gray-500 font-medium text-sm">Nợ cũ</span>
+                              <span className="font-bold text-rose-600">{t.old_debt.toLocaleString('vi-VN')} đ</span>
+                           </div>
+                         )}
+                         {t.discount > 0 && (
+                           <div className="flex justify-between items-center border-b border-gray-50 pb-2">
+                              <span className="text-gray-500 font-medium text-sm">Giảm trừ</span>
+                              <span className="font-bold text-orange-600">-{t.discount.toLocaleString('vi-VN')} đ</span>
+                           </div>
+                         )}
+                         <div className="flex justify-between items-center pt-2">
+                            <span className="text-gray-800 font-black uppercase">Cần thanh toán</span>
+                            <span className="font-black text-orange-700 text-2xl">{totalDue.toLocaleString('vi-VN')} đ</span>
+                         </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-blue-50/50 border-2 border-dashed border-blue-300 rounded-2xl p-4 flex flex-col items-center relative z-10 shadow-sm mt-auto mb-2">
+                       <h3 className="text-lg font-black text-blue-800 uppercase tracking-widest mb-3">Thông Tin Chuyển Khoản</h3>
+                       <div className="shrink-0 bg-white border border-gray-200 rounded-xl p-2 shadow-sm w-36 mb-4 flex items-center justify-center flex-col">
+                         <div className="text-rose-600 font-bold text-[10px] mb-1 uppercase">VietQR</div>
+                         <img src={`https://img.vietqr.io/image/MB-0793898911-compact2.png?amount=${totalDue}&addInfo=Hoc%20phi%20${en.profiles.full_name.replace(/ /g, '%20')}`} alt="QR Code" crossOrigin="anonymous" className="w-full object-contain rounded-lg" />
+                       </div>
+                       <div className="space-y-1 text-sm font-bold text-gray-700 text-center mb-3">
+                         <p>Ngân hàng: <span className="text-blue-700">MBBank</span></p>
+                         <p>Số tài khoản: <span className="text-blue-700 tracking-widest text-lg">0793898911</span></p>
+                         <p>Chủ TK: <span className="text-blue-700 uppercase">TRỊNH NGỌC PHÚC</span></p>
+                       </div>
+                       <div className="bg-orange-100 text-orange-800 px-3 py-2 rounded-lg font-bold border border-orange-200 text-[11px] shadow-sm text-center">
+                         ⚠️ Nhớ <b>CHỤP BILL</b> gửi lại để thầy tránh nhầm lẫn nhé.
+                       </div>
+                    </div>
+                 </div>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
