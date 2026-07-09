@@ -1723,13 +1723,13 @@ function EditorContent() {
       {/* GEMINI WEB BACKUP MODAL */}
       {isBackupModalOpen && (
         <div className="fixed inset-0 bg-black/60 z-[80] flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
-          <div className="bg-white rounded-2xl w-full max-w-2xl flex flex-col shadow-2xl overflow-hidden relative border border-gray-100">
-            <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-emerald-50/50">
+          <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[95vh] flex flex-col shadow-2xl overflow-hidden relative border border-gray-100">
+            <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-emerald-50/50 shrink-0">
               <h2 className="text-lg font-bold text-emerald-800 flex items-center gap-2"><Bot className="w-5 h-5" /> Tạo bài bằng Gemini Web (Thủ công)</h2>
               <button onClick={() => setIsBackupModalOpen(false)} className="p-2 hover:bg-gray-200 rounded-full transition-colors"><X className="w-5 h-5 text-gray-500" /></button>
             </div>
             
-            <div className="p-6 flex flex-col gap-6">
+            <div className="p-6 flex flex-col gap-6 overflow-y-auto min-h-0">
               <div className="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-xl shadow-sm">
                 <p className="text-blue-900 text-[0.95rem] font-medium mb-3 leading-relaxed">
                   <strong>Hướng dẫn soạn bài liền mạch:</strong>
