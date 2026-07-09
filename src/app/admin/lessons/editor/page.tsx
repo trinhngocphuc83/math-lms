@@ -1081,6 +1081,14 @@ function EditorContent() {
     alert("Đã copy lệnh tải ảnh!\n\nThầy/Cô hãy dán lệnh này kèm 10 ảnh vào Gemini. Nhắc lại thao tác này cho đến khi tải hết toàn bộ ảnh.");
   };
 
+  const handleCopyShortPrompt = () => {
+    const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
+    const prompt = getPrompt(isPractice, activeTab === 'presentation');
+
+    navigator.clipboard.writeText(prompt);
+    alert("Đã Copy Prompt Chuẩn cho bài NGẮN!\n\nThầy/Cô hãy mở gemini.google.com, kéo thả CÁC ẢNH VÀO, sau đó dán văn bản này vào và ấn Gửi.");
+  };
+
   const handleCopyPrompt = () => {
     const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
     const prompt = getPrompt(isPractice, activeTab === 'presentation');
@@ -1724,20 +1732,26 @@ function EditorContent() {
             <div className="p-6 flex flex-col gap-6">
               <div className="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-xl shadow-sm">
                 <p className="text-blue-900 text-[0.95rem] font-medium mb-3 leading-relaxed">
-                  <strong>Cách soạn bài liền mạch (Không bị đứt gãy cấu trúc):</strong>
+                  <strong>Hướng dẫn soạn bài liền mạch:</strong>
                 </p>
                 <div className="flex flex-col gap-3">
-                  <div className="bg-white p-3 rounded-lg border border-blue-100">
-                    <p className="text-sm text-gray-600 mb-2 font-medium">Bước 1: Tải ảnh dần lên Gemini (Mỗi lần tối đa 10 ảnh)</p>
-                    <button onClick={handleCopyUploadPrompt} className="flex items-center justify-center gap-2 w-full py-2.5 bg-blue-50 border-2 border-blue-300 text-blue-700 hover:bg-blue-100 font-bold rounded-lg transition-all text-sm">
-                      <Copy className="w-4 h-4" /> Copy lệnh tải ảnh (Chỉ nhận, không soạn)
+                  <div className="bg-white p-3 rounded-lg border border-gray-200">
+                    <p className="text-sm font-bold text-gray-800 mb-1">A. DÀNH CHO BÀI NGẮN (Dưới 10 ảnh)</p>
+                    <p className="text-xs text-gray-500 mb-2">Kéo tất cả ảnh vào Gemini, dán lệnh này và ấn Gửi.</p>
+                    <button onClick={handleCopyShortPrompt} className="flex items-center justify-center gap-2 w-full py-2 bg-gray-50 border border-gray-300 text-gray-700 hover:bg-gray-100 font-bold rounded-lg transition-all text-sm">
+                      <Copy className="w-4 h-4" /> Copy Prompt Chuẩn (Bài ngắn)
                     </button>
                   </div>
-                  
-                  <div className="bg-white p-3 rounded-lg border border-emerald-100">
-                    <p className="text-sm text-gray-600 mb-2 font-medium">Bước 2: Bắt đầu soạn thành 1 bài duy nhất</p>
-                    <button onClick={handleCopyPrompt} className="flex items-center justify-center gap-2 w-full py-2.5 bg-emerald-50 border-2 border-emerald-500 text-emerald-700 hover:bg-emerald-100 font-bold rounded-lg transition-all text-sm">
-                      <Copy className="w-4 h-4" /> Copy lệnh BẮT ĐẦU SOẠN (Kèm cấu trúc chuẩn)
+
+                  <div className="bg-white p-3 rounded-lg border border-blue-200">
+                    <p className="text-sm font-bold text-blue-800 mb-1">B. DÀNH CHO BÀI DÀI (Hơn 10 ảnh - Cần chia đợt tải)</p>
+                    <p className="text-xs text-gray-500 mb-2"><strong>Bước 1:</strong> Dùng lệnh này để tải dần ảnh lên (mỗi lần 10 ảnh).</p>
+                    <button onClick={handleCopyUploadPrompt} className="flex items-center justify-center gap-2 w-full py-2 bg-blue-50 border border-blue-300 text-blue-700 hover:bg-blue-100 font-bold rounded-lg transition-all text-sm mb-3">
+                      <Copy className="w-4 h-4" /> Copy lệnh Tải Ảnh (Chỉ nhận, không soạn)
+                    </button>
+                    <p className="text-xs text-gray-500 mb-2"><strong>Bước 2:</strong> Khi tải xong toàn bộ, dùng lệnh này để ép máy soạn 1 bài liền mạch.</p>
+                    <button onClick={handleCopyPrompt} className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-50 border border-emerald-500 text-emerald-700 hover:bg-emerald-100 font-bold rounded-lg transition-all text-sm">
+                      <Copy className="w-4 h-4" /> Copy lệnh Bắt Đầu Soạn (Kèm cấu trúc)
                     </button>
                   </div>
                 </div>
