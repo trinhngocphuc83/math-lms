@@ -1076,12 +1076,17 @@ function EditorContent() {
     }
   };
 
+  const handleCopyUploadPrompt = () => {
+    navigator.clipboard.writeText("Đây là các tài liệu đợt tiếp theo. BẠN CHỈ CẦN XÁC NHẬN 'Đã nhận ảnh đợt này', TUYỆT ĐỐI CHƯA SOẠN BÀI VỘI.");
+    alert("Đã copy lệnh tải ảnh!\n\nThầy/Cô hãy dán lệnh này kèm 10 ảnh vào Gemini. Nhắc lại thao tác này cho đến khi tải hết toàn bộ ảnh.");
+  };
+
   const handleCopyPrompt = () => {
     const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
     const prompt = getPrompt(isPractice, activeTab === 'presentation');
 
-    navigator.clipboard.writeText(prompt);
-    alert("Đã Copy Prompt Chuẩn!\n\nThầy/Cô hãy mở gemini.google.com, dán văn bản này vào.\n\n⚠️ NẾU BÀI DÀI HƠN 10 ẢNH:\n- Hãy kéo thả 10 ảnh đầu tiên vào và ấn Gửi.\n- Sau khi lấy kết quả dán vào web, hãy kéo thả tiếp các ảnh còn lại vào CHÍNH đoạn chat đó và nhắn: 'Tiếp tục soạn bài theo cấu trúc cũ cho các ảnh này'.");
+    navigator.clipboard.writeText(`TÔI ĐÃ TẢI XONG TOÀN BỘ ẢNH.\nBây giờ hãy BẮT ĐẦU tổng hợp TẤT CẢ các ảnh tôi đã gửi từ nãy đến giờ và soạn thành 1 bài giảng duy nhất theo định dạng sau:\n\n${prompt}\n\nLƯU Ý: Nếu bài dài quá dung lượng 1 tin nhắn, hãy dừng lại và in '[CÒN TIẾP]', tôi sẽ gõ 'Tiếp tục' để bạn làm nốt.`);
+    alert("Đã copy lệnh BẮT ĐẦU SOẠN BÀI!\n\nThầy/Cô dán lệnh này vào Gemini (không kèm ảnh) để yêu cầu nó bắt đầu tổng hợp thành 1 bài giảng xuyên suốt nhé.");
   };
 
   const handleInsertManualMarkdown = (closeModal: boolean = true) => {
@@ -1718,12 +1723,24 @@ function EditorContent() {
             
             <div className="p-6 flex flex-col gap-6">
               <div className="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-xl shadow-sm">
-                <p className="text-blue-900 text-[0.95rem] font-medium mb-4 leading-relaxed">
-                  <strong>Dự phòng (Khi API báo lỗi):</strong> Dùng Gemini Web miễn phí bằng cách Copy Prompt chuẩn và Dán kết quả vào đây.
+                <p className="text-blue-900 text-[0.95rem] font-medium mb-3 leading-relaxed">
+                  <strong>Cách soạn bài liền mạch (Không bị đứt gãy cấu trúc):</strong>
                 </p>
-                <button onClick={handleCopyPrompt} className="flex items-center justify-center gap-2 w-full py-3.5 bg-white border-[3px] border-emerald-500 text-emerald-600 hover:bg-emerald-50 font-bold rounded-xl transition-all shadow-sm hover:shadow-md hover:-translate-y-0.5 text-lg">
-                  <Copy className="w-5 h-5" /> Copy Prompt Chuẩn
-                </button>
+                <div className="flex flex-col gap-3">
+                  <div className="bg-white p-3 rounded-lg border border-blue-100">
+                    <p className="text-sm text-gray-600 mb-2 font-medium">Bước 1: Tải ảnh dần lên Gemini (Mỗi lần tối đa 10 ảnh)</p>
+                    <button onClick={handleCopyUploadPrompt} className="flex items-center justify-center gap-2 w-full py-2.5 bg-blue-50 border-2 border-blue-300 text-blue-700 hover:bg-blue-100 font-bold rounded-lg transition-all text-sm">
+                      <Copy className="w-4 h-4" /> Copy lệnh tải ảnh (Chỉ nhận, không soạn)
+                    </button>
+                  </div>
+                  
+                  <div className="bg-white p-3 rounded-lg border border-emerald-100">
+                    <p className="text-sm text-gray-600 mb-2 font-medium">Bước 2: Bắt đầu soạn thành 1 bài duy nhất</p>
+                    <button onClick={handleCopyPrompt} className="flex items-center justify-center gap-2 w-full py-2.5 bg-emerald-50 border-2 border-emerald-500 text-emerald-700 hover:bg-emerald-100 font-bold rounded-lg transition-all text-sm">
+                      <Copy className="w-4 h-4" /> Copy lệnh BẮT ĐẦU SOẠN (Kèm cấu trúc chuẩn)
+                    </button>
+                  </div>
+                </div>
               </div>
 
               <div>
