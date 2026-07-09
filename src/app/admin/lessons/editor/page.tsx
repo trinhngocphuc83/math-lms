@@ -1081,10 +1081,10 @@ function EditorContent() {
     const prompt = getPrompt(isPractice, activeTab === 'presentation');
 
     navigator.clipboard.writeText(prompt);
-    alert("Đã Copy Prompt Chuẩn!\n\nThầy/Cô hãy mở gemini.google.com, dán văn bản này vào. Sau đó, KÉO THẢ các ảnh tài liệu của Thầy/Cô vào phần chat rồi Enter nhé!");
+    alert("Đã Copy Prompt Chuẩn!\n\nThầy/Cô hãy mở gemini.google.com, dán văn bản này vào.\n\n⚠️ NẾU BÀI DÀI HƠN 10 ẢNH:\n- Hãy kéo thả 10 ảnh đầu tiên vào và ấn Gửi.\n- Sau khi lấy kết quả dán vào web, hãy kéo thả tiếp các ảnh còn lại vào CHÍNH đoạn chat đó và nhắn: 'Tiếp tục soạn bài theo cấu trúc cũ cho các ảnh này'.");
   };
 
-  const handleInsertManualMarkdown = () => {
+  const handleInsertManualMarkdown = (closeModal: boolean = true) => {
     if (!manualGeminiInput.trim()) {
       alert("Vui lòng dán nội dung từ Gemini vào khung trước!");
       return;
@@ -1092,8 +1092,12 @@ function EditorContent() {
     const separator = markdownContent.length > 0 && !markdownContent.endsWith('---') ? "\n\n---\n\n" : "\n\n";
     setMarkdownContent(prev => prev ? prev + separator + manualGeminiInput : manualGeminiInput);
     setManualGeminiInput("");
-    setIsBackupModalOpen(false);
-    alert("Đã chèn nội dung thành công!");
+    if (closeModal) {
+      setIsBackupModalOpen(false);
+      alert("Đã chèn nội dung thành công!");
+    } else {
+      alert("Đã chèn xong đợt này! Khung chữ đã được xóa trắng, Thầy/Cô có thể dán tiếp nội dung của đợt ảnh tiếp theo vào đây.");
+    }
   };
 
   const handlePaste = (e: React.ClipboardEvent) => {
@@ -1733,9 +1737,12 @@ function EditorContent() {
               </div>
             </div>
 
-            <div className="p-4 border-t border-gray-100 bg-gray-50 flex justify-end">
-              <button onClick={handleInsertManualMarkdown} disabled={!manualGeminiInput.trim()} className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-300 disabled:text-gray-500 text-white font-bold rounded-xl flex items-center gap-2 shadow-md transition-all hover:-translate-y-0.5">
-                <Code2 className="w-5 h-5" /> Nhận diện & Chèn Nội dung
+            <div className="p-4 border-t border-gray-100 bg-gray-50 flex justify-end gap-3">
+              <button onClick={() => handleInsertManualMarkdown(false)} disabled={!manualGeminiInput.trim()} className="px-6 py-3 bg-white border-2 border-emerald-500 hover:bg-emerald-50 disabled:border-gray-300 disabled:text-gray-400 text-emerald-600 font-bold rounded-xl flex items-center gap-2 transition-all">
+                <Code2 className="w-5 h-5" /> Chèn & Xóa trắng để Dán đợt tiếp theo
+              </button>
+              <button onClick={() => handleInsertManualMarkdown(true)} disabled={!manualGeminiInput.trim()} className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 disabled:bg-gray-300 disabled:text-gray-500 text-white font-bold rounded-xl flex items-center gap-2 shadow-md transition-all hover:-translate-y-0.5">
+                Nhận diện & Hoàn tất đóng
               </button>
             </div>
           </div>
