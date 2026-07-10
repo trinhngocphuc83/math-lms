@@ -209,6 +209,10 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
             answer_b: fixText(prev.answer_b),
             answer_c: fixText(prev.answer_c),
             answer_d: fixText(prev.answer_d),
+            option_a: fixText(prev.option_a),
+            option_b: fixText(prev.option_b),
+            option_c: fixText(prev.option_c),
+            option_d: fixText(prev.option_d),
             explanation: fixText(prev.explanation)
         };
     });

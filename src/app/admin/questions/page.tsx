@@ -588,6 +588,10 @@ export default function QuestionsPage() {
         isOpen={!!previewQuestion} 
         onClose={() => setPreviewQuestion(null)} 
         question={previewQuestion} 
+        onUpdate={(updated) => {
+          setQuestions(prev => prev.map(q => q.id === updated.id ? updated : q));
+          setPreviewQuestion(updated);
+        }}
       />
       <QuestionEditorModal 
         isOpen={!!editingQuestion} 

@@ -13,9 +13,10 @@ interface PreviewQuestionModalProps {
   isOpen: boolean;
   onClose: () => void;
   question: any;
+  onUpdate?: (updatedQuestion: any) => void;
 }
 
-export default function PreviewQuestionModal({ isOpen, onClose, question }: PreviewQuestionModalProps) {
+export default function PreviewQuestionModal({ isOpen, onClose, question, onUpdate }: PreviewQuestionModalProps) {
   const [localQuestion, setLocalQuestion] = useState<any>(null);
   const [isFixing, setIsFixing] = useState(false);
 
@@ -82,8 +83,13 @@ export default function PreviewQuestionModal({ isOpen, onClose, question }: Prev
          option_d: updated.option_d,
          explanation: updated.explanation
       }).eq('id', updated.id);
+      if (onUpdate) {
+        onUpdate(updated);
+      }
+      alert("Đã sửa lỗi LaTeX thành công!");
     } catch(e) {
       console.error("Lỗi khi lưu fix latex", e);
+      alert("Sửa lỗi LaTeX trên máy nhưng lưu vào máy chủ thất bại!");
     }
     setIsFixing(false);
   };
