@@ -31,14 +31,22 @@ export default function PreviewQuestionModal({ isOpen, onClose, question }: Prev
     const fixText = (text: string) => {
       if (!text) return text;
       let s = String(text);
+      // Fix JSON escaping for common LaTeX commands (e.g. \\vec -> \vec)
+      s = s.replace(/\\\\(vec|frac|Rightarrow|rightarrow|leftrightarrow|Leftrightarrow|lim|log|sin|cos|tan|cot|sqrt|Delta|alpha|beta|gamma|pi|Omega|Sigma|sum|int|infty|to|text|begin|end|cases|le|ge|neq|pm|mp|cup|cap|subset|supset|in|notin|emptyset|mathbb|mathcal|mathbf|mathrm|widehat)/g, '\\$1');
+      
+      // Fix cases block shortcuts
       s = s.replace(/\{\{begincases/g, '\\begin{cases}').replace(/endcases\}\}/g, '\\end{cases}');
       s = s.replace(/(?<!\\)begincases/g, '\\begin{cases}').replace(/(?<!\\)endcases/g, '\\end{cases}');
+      
+      // Convert Markdown math blocks to LaTeX math blocks
+      s = s.replace(/\\\[/g, '$$$$').replace(/\\\]/g, '$$$$');
+      s = s.replace(/\\\(/g, '$').replace(/\\\)/g, '$');
+
       s = s.replace(/\\\\\\\\/g, '\\\\');
       s = s.replace(/\\prime/g, "'");
       s = s.replace(/(?<!\\)rightarrow/g, "\\rightarrow");
       s = s.replace(/textAl/g, "\\text{Al}");
       s = s.replace(/textO/g, "\\text{O}");
-      // Cố gắng bọc begincases bằng $
       s = s.replace(/(?<!\$)\\begin\{cases\}/g, '$\\begin{cases}');
       s = s.replace(/\\end\{cases\}(?!\$)/g, '\\end{cases}$');
       return s;
