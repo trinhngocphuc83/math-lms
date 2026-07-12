@@ -529,7 +529,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                    
                    {/* Title & Info - Separated clearly */}
                    <div className="text-center mt-2">
-                     <h1 className="text-4xl font-black text-gray-800 uppercase tracking-wider mb-3">
+                     <h1 className="text-3xl font-black text-gray-800 uppercase tracking-wider mb-4 whitespace-nowrap">
                        THÔNG BÁO HỌC PHÍ
                      </h1>
                      <div className="text-lg font-bold text-gray-500 mb-3">
@@ -640,8 +640,8 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                       <div className="text-xs text-rose-700 tracking-[0.3em] font-bold mt-2 text-center whitespace-nowrap">NƠI KHƠI NGUỒN ĐAM MÊ</div>
                    </div>
                    <div className="text-center mt-2">
-                     <h1 className="text-4xl font-black text-gray-800 uppercase tracking-wider mb-3">
-                       DANH SÁCH CHƯA NỘP HỌC PHÍ
+                     <h1 className="text-3xl font-black text-gray-800 uppercase tracking-wider mb-4 whitespace-nowrap">
+                       THÔNG BÁO HỌC PHÍ
                      </h1>
                      <div className="text-lg font-bold text-gray-500 mb-3">
                        Tháng {month}/{year}
