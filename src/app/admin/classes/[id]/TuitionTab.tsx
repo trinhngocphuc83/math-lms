@@ -13,6 +13,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
   const [loading, setLoading] = useState(true);
   const [exportingImage, setExportingImage] = useState(false);
   const printRef = useRef<HTMLDivElement>(null);
+  const printUnpaidRef = useRef<HTMLDivElement>(null);
 
   // Edit Modal State
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
@@ -242,6 +243,27 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     setExportingImage(false);
   };
 
+  const exportUnpaidImage = async () => {
+    if (!printUnpaidRef.current) return;
+    setExportingImage(true); 
+    try {
+      const dataUrl = await toPng(printUnpaidRef.current, {
+        cacheBust: true,
+        backgroundColor: "#ffffff",
+        pixelRatio: 2,
+        skipFonts: true
+      });
+      const link = document.createElement("a");
+      link.download = `Chua_nop_Thang_${month}_${year}_Lop_${classInfo?.name}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error(err);
+      alert("Đã xảy ra lỗi khi xuất ảnh! Vui lòng thử lại.");
+    }
+    setExportingImage(false);
+  };
+
   const [sendingZaloId, setSendingZaloId] = useState<string | null>(null);
 
   const sendZalo = async (student: any, tuition: any) => {
@@ -330,6 +352,9 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
         <div className="flex flex-wrap gap-2 w-full lg:w-auto">
           <button onClick={exportImage} disabled={exportingImage} className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-emerald-50 text-emerald-700 px-4 py-2.5 rounded-xl font-bold hover:bg-emerald-100 transition-colors">
             {exportingImage ? <Loader2 size={18} className="animate-spin" /> : <ImageIcon size={18} />} Xuất ảnh
+          </button>
+          <button onClick={exportUnpaidImage} disabled={exportingImage} className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-rose-50 text-rose-600 px-4 py-2.5 rounded-xl font-bold hover:bg-rose-100 transition-colors">
+            {exportingImage ? <Loader2 size={18} className="animate-spin" /> : <ImageIcon size={18} />} Ảnh chưa nộp
           </button>
           <button onClick={exportExcel} className="flex-1 lg:flex-none flex items-center justify-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2.5 rounded-xl font-bold hover:bg-indigo-100 transition-colors">
             <Download size={18} /> Xuất Excel
@@ -486,9 +511,9 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
                 
                 {/* Header Top: Logo & Title */}
-                <div className="flex flex-col items-center mb-8 relative z-10 w-full">
+                <div className="flex flex-col items-center mb-6 relative z-10 w-full">
                    {/* Logo Text */}
-                   <div className="flex flex-col pb-4 mb-6 relative w-full items-center">
+                   <div className="flex flex-col pb-3 mb-4 relative w-full items-center">
                       <div className="absolute bottom-0 w-2/3 h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-transparent rounded-full opacity-70"></div>
                       <h2 className="text-4xl font-black text-orange-800 tracking-tight uppercase flex items-center gap-3">
                         <span className="text-orange-400">✦</span>
@@ -502,12 +527,12 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                       <div className="text-xs text-orange-700 tracking-[0.3em] font-bold mt-2 text-center whitespace-nowrap">NƠI KHƠI NGUỒN ĐAM MÊ</div>
                    </div>
                    
-                   {/* Title & Info */}
-                   <div className="text-center">
-                     <h1 className="text-5xl font-black text-orange-600 uppercase tracking-widest mb-4 drop-shadow-sm">
+                   {/* Title & Info - Separated clearly */}
+                   <div className="text-center mt-2">
+                     <h1 className="text-4xl font-black text-gray-800 uppercase tracking-wider mb-3">
                        THÔNG BÁO HỌC PHÍ
                      </h1>
-                     <div className="flex items-center justify-center gap-4 text-xl font-bold text-gray-700 mb-4">
+                     <div className="text-lg font-bold text-gray-500 mb-3">
                        Tháng {month}/{year}
                      </div>
                      <div className="inline-block bg-blue-100 text-blue-800 px-8 py-2.5 rounded-2xl font-black text-2xl uppercase shadow-sm border border-blue-200">
@@ -585,6 +610,120 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                    </div>
                 </div>
 
+             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* GIAO DIỆN BÁO CÁO ẨN: CHỈ HỌC SINH CHƯA NỘP */}
+      <div className="fixed top-[200vh] left-[200vw] pointer-events-none -z-50">
+        <div ref={printUnpaidRef} className="w-[850px] bg-white p-0 font-sans border-0 relative">
+          <div className="bg-rose-500 rounded-[2rem] p-3 shadow-xl">
+             <div className="bg-rose-50 rounded-[1.5rem] p-8 border-4 border-white shadow-inner flex flex-col h-full relative overflow-hidden">
+                {/* Decoration */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-rose-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
+                <div className="absolute bottom-0 left-0 w-64 h-64 bg-red-200/50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
+                
+                {/* Header */}
+                <div className="flex flex-col items-center mb-6 relative z-10 w-full">
+                   <div className="flex flex-col pb-3 mb-4 relative w-full items-center">
+                      <div className="absolute bottom-0 w-2/3 h-[3px] bg-gradient-to-r from-transparent via-rose-500 to-transparent rounded-full opacity-70"></div>
+                      <h2 className="text-4xl font-black text-rose-800 tracking-tight uppercase flex items-center gap-3">
+                        <span className="text-rose-400">✦</span>
+                        <span>
+                          <span className="text-red-600 text-5xl leading-none font-serif">T</span>OÁN
+                          <span className="text-red-600 text-5xl leading-none font-serif ml-1">T</span>HẦY
+                          <span className="text-red-600 text-5xl leading-none font-serif ml-1">P</span>HÚC
+                        </span>
+                        <span className="text-rose-400">✦</span>
+                      </h2>
+                      <div className="text-xs text-rose-700 tracking-[0.3em] font-bold mt-2 text-center whitespace-nowrap">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                   </div>
+                   <div className="text-center mt-2">
+                     <h1 className="text-4xl font-black text-gray-800 uppercase tracking-wider mb-3">
+                       DANH SÁCH CHƯA NỘP HỌC PHÍ
+                     </h1>
+                     <div className="text-lg font-bold text-gray-500 mb-3">
+                       Tháng {month}/{year}
+                     </div>
+                     <div className="inline-block bg-rose-100 text-rose-800 px-8 py-2.5 rounded-2xl font-black text-2xl uppercase shadow-sm border border-rose-200">
+                       Lớp: {classInfo?.name || 'Chưa cập nhật'}
+                     </div>
+                   </div>
+                </div>
+
+                <div className="w-full h-0.5 bg-gradient-to-r from-rose-100 via-rose-300 to-rose-100 mb-6 rounded-full"></div>
+
+                {/* Table */}
+                <div className="bg-white rounded-2xl shadow-sm border border-rose-100 mb-8 overflow-hidden relative z-10">
+                  <table className="w-full text-left">
+                    <thead>
+                      <tr className="bg-gray-50/80 border-b border-gray-100">
+                        <th className="py-4 px-6 text-gray-500 font-bold uppercase text-xs w-20 text-center">STT</th>
+                        <th className="py-4 px-6 text-gray-500 font-bold uppercase text-xs">Học Sinh</th>
+                        <th className="py-4 px-6 text-gray-500 font-bold uppercase text-xs text-right w-40">Số Tiền</th>
+                        <th className="py-4 px-6 text-gray-500 font-bold uppercase text-xs w-48 text-center">Trạng Thái</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {(() => {
+                        const unpaidStudents = enrollments.filter(en => {
+                          const t = tuitionData[en.profiles.id];
+                          return !t || t.status !== 'PAID';
+                        });
+                        if (unpaidStudents.length === 0) {
+                          return <tr><td colSpan={4} className="py-8 text-center text-emerald-600 font-bold text-lg">🎉 Tất cả học sinh đã nộp đủ!</td></tr>;
+                        }
+                        return unpaidStudents.map((en, idx) => {
+                          const stId = en.profiles.id;
+                          const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
+                          const totalDue = t.base_fee + t.old_debt - t.discount;
+                          const remaining = totalDue - t.paid_amount;
+                          return (
+                            <tr key={stId} className="hover:bg-gray-50/50 transition-colors">
+                              <td className="py-5 px-6 text-center font-bold text-gray-500">{idx + 1}</td>
+                              <td className="py-5 px-6">
+                                <div className="font-bold text-gray-800 text-lg uppercase">{en.profiles.full_name}</div>
+                                <div className="text-sm font-bold text-blue-700 mt-1 uppercase">{classInfo?.name || ''}</div>
+                              </td>
+                              <td className="py-5 px-6 text-right font-black text-rose-600 text-lg">
+                                {remaining.toLocaleString('vi-VN')} đ
+                              </td>
+                              <td className="py-5 px-6 text-center">
+                                 <span className={`px-4 py-2 text-sm font-bold rounded-full border whitespace-nowrap inline-block ${
+                                    t.status === 'PARTIAL' ? 'bg-orange-100 text-orange-700 border-orange-200' : 
+                                    'bg-rose-100 text-rose-700 border-rose-200'
+                                 }`}>
+                                   {t.status === 'PARTIAL' ? 'THU 1 PHẦN' : 'CHƯA THU'}
+                                 </span>
+                              </td>
+                            </tr>
+                          )
+                        });
+                      })()}
+                    </tbody>
+                  </table>
+                </div>
+
+                {/* THÔNG TIN CHUYỂN KHOẢN */}
+                <div className="bg-blue-50/50 border-2 border-dashed border-blue-300 rounded-3xl p-6 flex items-center justify-between relative z-10 shadow-sm mt-auto mb-4 mx-2">
+                   <div className="flex-1 pr-6">
+                     <h3 className="text-2xl font-black text-blue-800 uppercase tracking-widest mb-6">Thông Tin Chuyển Khoản</h3>
+                     <div className="space-y-4 text-xl font-bold text-gray-700">
+                       <p>Ngân hàng: <span className="text-blue-700">MBBank</span></p>
+                       <p>Số tài khoản: <span className="text-blue-700 tracking-widest text-2xl">0793898911</span></p>
+                       <p>Chủ TK: <span className="text-blue-700 uppercase">TRỊNH NGỌC PHÚC</span></p>
+                     </div>
+                     <div className="mt-6 bg-orange-100 text-orange-800 px-5 py-3 rounded-xl font-bold border border-orange-200 text-sm shadow-sm inline-block">
+                       ⚠️ PH chuyển khoản nhớ <b>CHỤP BILL</b> gửi lại để tránh nhầm lẫn nhé ạ.
+                     </div>
+                   </div>
+                   
+                   <div className="shrink-0 bg-white border border-gray-200 rounded-2xl p-3 shadow-sm w-48 flex items-center justify-center flex-col">
+                     <div className="text-rose-600 font-bold text-sm mb-2 uppercase">VietQR</div>
+                     <img src="https://img.vietqr.io/image/MB-0793898911-compact2.png?amount=0&addInfo=Hoc%20phi" alt="QR Code" crossOrigin="anonymous" className="w-full h-full object-contain rounded-xl" />
+                   </div>
+                </div>
              </div>
           </div>
         </div>
