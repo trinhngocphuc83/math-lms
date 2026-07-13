@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/client";
 import { ArrowLeft, Users, UserPlus, Upload, Trash2, Loader2, Search, X, FileSpreadsheet, Download, Plus, Edit2, CheckSquare, DollarSign } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useParams } from "next/navigation";
-import { getEnrollments, addEnrollment, removeEnrollment, updateStudentProfile } from "./actions";
+import { getEnrollments, addEnrollment, removeEnrollment, updateStudentProfile, searchStudents } from "./actions";
 import AttendanceTab from "./AttendanceTab";
 import TuitionTab from "./TuitionTab";
 
@@ -60,17 +60,14 @@ export default function ClassDetailsPage() {
       return;
     }
     setSearching(true);
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('id, full_name, username, student_phone')
-      .eq('role', 'student')
-      .or(`full_name.ilike.%${searchTerm}%,username.ilike.%${searchTerm}%,student_phone.ilike.%${searchTerm}%`)
-      .limit(20);
+    const result = await searchStudents(searchTerm.trim());
     
-    if (data) {
+    if (result.success && result.data) {
       // Lọc ra những hs chưa có trong lớp
       const existingIds = enrollments.map(e => e.profiles?.id);
-      setSearchResults(data.filter(s => !existingIds.includes(s.id)));
+      setSearchResults(result.data.filter(s => !existingIds.includes(s.id)));
+    } else {
+      setSearchResults([]);
     }
     setSearching(false);
   };

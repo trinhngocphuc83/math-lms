@@ -81,3 +81,18 @@ export async function updateStudentProfile(profileId: string, updates: any) {
   }
   return { success: true };
 }
+
+export async function searchStudents(searchTerm: string) {
+  const { data, error } = await supabaseAdmin
+    .from('profiles')
+    .select('id, full_name, username, student_phone')
+    .eq('role', 'student')
+    .or(`full_name.ilike.%${searchTerm}%,username.ilike.%${searchTerm}%,student_phone.ilike.%${searchTerm}%`)
+    .limit(20);
+
+  if (error) {
+    console.error("Search error:", error);
+    return { success: false, data: [] };
+  }
+  return { success: true, data };
+}
