@@ -42,8 +42,9 @@ export default function BatchAIEditorPage() {
   // Settings & Context
   const [globalGrade, setGlobalGrade] = useState("12");
   const [globalSubject, setGlobalSubject] = useState("Đại số");
-  const [globalTopic, setGlobalTopic] = useState("");
+  const [globalTopics, setGlobalTopics] = useState<string[]>([]);
   const [globalLesson, setGlobalLesson] = useState("");
+  const [isTopicDropdownOpen, setIsTopicDropdownOpen] = useState(false);
 
   // AI Scanning States
   const [isScanning, setIsScanning] = useState(false);
@@ -72,8 +73,8 @@ export default function BatchAIEditorPage() {
   const uniqueGrades = Array.from(new Set(categories.map(c => c.grade))).filter(Boolean).sort();
   const uniqueSubjects = Array.from(new Set(categories.filter(c => !globalGrade || c.grade === globalGrade).map(c => c.subject))).filter(Boolean);
   const uniqueTopics = Array.from(new Set(categories.filter(c => (!globalGrade || c.grade === globalGrade) && (!globalSubject || c.subject === globalSubject)).map(c => c.topic))).filter(Boolean);
-  const uniqueLessons = Array.from(new Set(categories.filter(c => (!globalGrade || c.grade === globalGrade) && (!globalSubject || c.subject === globalSubject) && (!globalTopic || c.topic === globalTopic)).map(c => c.lesson))).filter(Boolean);
-  const uniqueForms = Array.from(new Set(categories.filter(c => (!globalGrade || c.grade === globalGrade) && (!globalSubject || c.subject === globalSubject) && (!globalTopic || c.topic === globalTopic) && (!globalLesson || c.lesson === globalLesson)).map(c => c.math_form))).filter(Boolean);
+  const uniqueLessons = Array.from(new Set(categories.filter(c => (!globalGrade || c.grade === globalGrade) && (!globalSubject || c.subject === globalSubject) && (globalTopics.length === 0 || globalTopics.includes(c.topic))).map(c => c.lesson))).filter(Boolean);
+  const uniqueForms = Array.from(new Set(categories.filter(c => (!globalGrade || c.grade === globalGrade) && (!globalSubject || c.subject === globalSubject) && (globalTopics.length === 0 || globalTopics.includes(c.topic)) && (!globalLesson || c.lesson === globalLesson)).map(c => c.math_form))).filter(Boolean);
 
   useEffect(() => {
     // Fetch all existing questions once to check duplicates later
@@ -185,7 +186,7 @@ export default function BatchAIEditorPage() {
           temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
           grade: data.lop || globalGrade || "12",
           subject: data.phanMon || globalSubject || "Đại số",
-          topic: data.chuyenDe || globalTopic || "",
+          topic: data.chuyenDe || (globalTopics.length === 1 ? globalTopics[0] : ""),
           lesson: lesson,
           math_form: math_form,
           isNewLesson,
@@ -242,6 +243,9 @@ export default function BatchAIEditorPage() {
       const keyData = await keyRes.json();
       if (!keyRes.ok || !keyData.keys || keyData.keys.length === 0) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
 
+      const topicHint = globalTopics.length === 1 ? globalTopics[0] : 'Tự suy luận';
+      const topicComment = globalTopics.length === 1 ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, TUYỆT ĐỐI KHÔNG ĐƯỢC SỬA ĐỔI BẤT KỲ KÝ TỰ NÀO.' : '// BẮT BUỘC: Tên Chương hoặc Chủ đề (VD: Chương I. Phương trình). PHẢI LẤY TỪ DANH SÁCH BÊN DƯỚI.';
+
       const contextCategories = `
 DANH SÁCH BÀI HỌC ĐÃ CÓ TRONG HỆ THỐNG:
 ${uniqueLessons.map(l => `- ${l}`).join("\n")}
@@ -250,13 +254,18 @@ DANH SÁCH DẠNG TOÁN ĐÃ CÓ TRONG HỆ THỐNG:
 ${uniqueForms.map(f => `- ${f}`).join("\n")}
 `;
 
-      const prompt = `Bạn là chuyên gia Toán học. Hãy đọc (các) ảnh/file PDF này và bóc tách TẤT CẢ các câu hỏi có trong đó. 
+      const prompt = `TRƯỚC KHI BẮT ĐẦU, BẠN PHẢI:
+1. Đọc THẬT KỸ TOÀN BỘ nội dung ảnh/file từ đầu đến cuối, không bỏ sót bất kỳ câu hỏi hay hình ảnh nào.
+2. Đọc kỹ TOÀN BỘ yêu cầu trong prompt này trước khi trả lời. Mỗi quy tắc đều quan trọng.
+3. Kiểm tra lại output JSON trước khi gửi để đảm bảo ĐÚNG cấu trúc, ĐÚNG nội dung và KHÔNG thiếu trường nào.
+
+Bạn là chuyên gia Toán học. Hãy đọc (các) ảnh/file PDF này và bóc tách TẤT CẢ các câu hỏi có trong đó. 
 Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc bằng ]) chứa các object theo cấu trúc:
 [
   {
     "lop": "${globalGrade || 'Tự suy luận'}",
     "phanMon": "${globalSubject || 'Tự suy luận'}",
-    "chuyenDe": "${globalTopic || 'Tự suy luận'}", ${globalTopic ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, TUYỆT ĐỐI KHÔNG ĐƯỢC SỬA ĐỔI BẤT KỲ KÝ TỰ NÀO.' : '// BẮT BUỘC: Tên Chương hoặc Chủ đề (VD: Chương I. Phương trình)'}
+    "chuyenDe": "${topicHint}", ${topicComment}
     "tenBai": "${globalLesson || 'Tự suy luận'}", ${globalLesson ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, TUYỆT ĐỐI KHÔNG ĐƯỢC SỬA ĐỔI BẤT KỲ KÝ TỰ NÀO.' : '// SO KHỚP VỚI DANH SÁCH BÊN DƯỚI. Nếu có bài tương tự, PHẢI COPY CHÍNH XÁC.'}
     "dangToan": "Tự suy luận", // SO KHỚP VỚI DANH SÁCH BÊN DƯỚI. Nếu có dạng tương tự, PHẢI COPY CHÍNH XÁC.
     "loaiCauHoi": "NLC", // NLC (Trắc nghiệm 4 đáp án), DS (Đúng/Sai), TLN (Trả lời ngắn), TL (Tự luận)
@@ -290,7 +299,8 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
      - Với câu Trắc nghiệm (NLC): Phải điền A, B, C hoặc D.
      - Với câu Đúng/Sai (DS): Phải điền chuỗi 4 ký tự Đ và S (VD: "Đ S Đ S" hoặc "ĐĐSĐ"). Hãy đọc kỹ đề bài và lời giải để suy ra. TUYỆT ĐỐI KHÔNG ĐƯỢC ĐỂ TRỐNG.
   7. XÓA TIỀN TỐ CÂU HỎI: TUYỆT ĐỐI KHÔNG đưa các chữ như "Câu 1.", "Bài 2:", "VD 3", "Ví dụ 4." vào trong nội dung của trường "noiDung". Bạn phải tự động loại bỏ các cụm từ này ở đầu câu hỏi.
-  8. CÂU HỎI PHẢI ĐỘC LẬP VÀ TỰ CHỨA ĐẦY ĐỦ GIẢ THUYẾT: Mỗi câu hỏi sẽ được lưu RIÊNG BIỆT trong ngân hàng đề, nên TUYỆT ĐỐI KHÔNG ĐƯỢC viết kiểu tham chiếu ngữ cảnh bên ngoài như "Với các giả thiết như trong Ví dụ 5...", "Trong tình huống mở đầu...", "Trong Ví dụ 7...", "Theo bảng số liệu trên...". Nếu câu hỏi gốc trong ảnh có tham chiếu đến dữ kiện ở phần khác, BẠN PHẢI tự chép/nhúng đầy đủ toàn bộ dữ kiện cần thiết (số liệu, điều kiện, giả thuyết) vào trong "noiDung" để câu hỏi có thể hiểu được khi đứng một mình. Nếu không thể trích xuất đủ dữ kiện (ví dụ thiếu hình vẽ, bảng số liệu gốc không có trong ảnh), hãy BỎ QUA câu hỏi đó hoàn toàn, KHÔNG TẠO.`;
+  8. CÂU HỎI PHẢI ĐỘC LẬP VÀ TỰ CHỨA ĐẦY ĐỦ GIẢ THUYẾT: Mỗi câu hỏi sẽ được lưu RIÊNG BIỆT trong ngân hàng đề, nên TUYỆT ĐỐI KHÔNG ĐƯỢC viết kiểu tham chiếu ngữ cảnh bên ngoài như "Với các giả thiết như trong Ví dụ 5...", "Trong tình huống mở đầu...", "Trong Ví dụ 7...", "Theo bảng số liệu trên...". Nếu câu hỏi gốc trong ảnh có tham chiếu đến dữ kiện ở phần khác, BẠN PHẢI tự chép/nhúng đầy đủ toàn bộ dữ kiện cần thiết (số liệu, điều kiện, giả thuyết) vào trong "noiDung" để câu hỏi có thể hiểu được khi đứng một mình. Nếu không thể trích xuất đủ dữ kiện (ví dụ thiếu hình vẽ, bảng số liệu gốc không có trong ảnh), hãy BỎ QUA câu hỏi đó hoàn toàn, KHÔNG TẠO.
+  9. NHẬN DẠNG HÌNH ẢNH ĐI KÈM CÂU HỎI: Nếu trong ảnh có đồ thị, hình vẽ, bảng số liệu hoặc sơ đồ ĐI KÈM một câu hỏi, BẠN PHẢI quan sát thật kỹ và mô tả chính xác nội dung hình ảnh đó (tọa độ các điểm đặc biệt, dạng đường cong, giá trị trong bảng, hình dạng hình học...) rồi nhúng thông tin vào trường "noiDung" dưới dạng mô tả. TUYỆT ĐỐI KHÔNG BỎ QUA bất kỳ hình ảnh nào đi kèm câu hỏi. Ví dụ: Nếu ảnh có đồ thị hàm số đi qua các điểm $A(1;2)$, $B(3;0)$ thì ghi: "[Đồ thị hàm số đi qua $A(1;2)$ và $B(3;0)$, có dạng parabol bề lõm quay lên]".`;
 
       const parts = await Promise.all(aiImageFiles.map(async file => {
         const base64Data = await fileToBase64(file);
@@ -332,6 +342,8 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
   };
 
   const handleCopyPrompt = () => {
+    const topicHint = globalTopics.length === 1 ? globalTopics[0] : 'Tự suy luận';
+    const topicComment = globalTopics.length === 1 ? '// GIỮ NGUYÊN' : '// LẤY TỪ DANH SÁCH';
     const contextCategories = `
 DANH SÁCH BÀI HỌC ĐÃ CÓ TRONG HỆ THỐNG:
 ${uniqueLessons.map(l => `- ${l}`).join("\n")}
@@ -339,38 +351,37 @@ ${uniqueLessons.map(l => `- ${l}`).join("\n")}
 DANH SÁCH DẠNG TOÁN ĐÃ CÓ TRONG HỆ THỐNG:
 ${uniqueForms.map(f => `- ${f}`).join("\n")}
 `;
+    const prompt = `TRƯỚC KHI BẮT ĐẦU, BẠN PHẢI:
+1. Đọc THẬT KỸ TOÀN BỘ nội dung ảnh/file từ đầu đến cuối, không bỏ sót bất kỳ câu hỏi hay hình ảnh nào.
+2. Đọc kỹ TOÀN BỘ yêu cầu trong prompt này trước khi trả lời. Mỗi quy tắc đều quan trọng.
+3. Kiểm tra lại output JSON trước khi gửi để đảm bảo ĐÚNG cấu trúc, ĐÚNG nội dung và KHÔNG thiếu trường nào.
 
-    const prompt = `Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong ảnh/file và trả về MỘT MẢNG JSON:
+Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong ảnh/file và trả về MỘT MẢNG JSON:
 [
   {
-    "lop": "${globalGrade || 'Tự suy luận'}", "phanMon": "${globalSubject || 'Tự suy luận'}", 
-    "chuyenDe": "${globalTopic || 'Tự suy luận'}", ${globalTopic ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, KHÔNG SỬA ĐỔI' : ''}
-    "tenBai": "${globalLesson || 'Tự suy luận'}", ${globalLesson ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, KHÔNG SỬA ĐỔI' : ''}
-    "dangToan": "Tự suy luận", // BẮT BUỘC PHẢI LẤY TỪ DANH SÁCH BÊN DƯỚI NẾU CÓ DẠNG TƯƠNG ĐƯƠNG, 
+    "lop": "${globalGrade || 'Tự suy luận'}", "phanMon": "${globalSubject || 'Tự suy luận'}",
+    "chuyenDe": "${topicHint}", ${topicComment}
+    "tenBai": "${globalLesson || 'Tự suy luận'}", ${globalLesson ? '// GIỮ NGUYÊN' : '// LẤY TỪ DANH SÁCH'}
+    "dangToan": "Tự suy luận", // LẤY TỪ DANH SÁCH BÊN DƯỚI NẾU CÓ DẠNG TƯƠNG ĐƯƠNG
     "loaiCauHoi": "NLC", "mucDo": "1",
     "noiDung": "Đề bài dùng LaTeX bọc trong $...$",
     "dapAnA": "", "dapAnB": "", "dapAnC": "", "dapAnD": "", "dapAnDung": "",
-    "loiGiai": "Phương pháp giải:\\n[Ghi phương pháp ở đây]\\n\\nLời giải:\\n[Ghi lời giải chi tiết ở đây]",
-    "isMultiLesson": false // CHỈ GÁN TRUE NẾU LÀ CÂU HỎI ĐÚNG/SAI (DS) MÀ CÁC Ý NHỎ NẰM Ở NHIỀU BÀI HỌC KHÁC NHAU. MẶC ĐỊNH LÀ FALSE.
+    "loiGiai": "Phương pháp giải:\\\\n[...]\\\\n\\\\nLời giải:\\\\n[...]",
+    "isMultiLesson": false
   }
 ]
-  CƠ SỞ DỮ LIỆU ĐỐI CHIẾU: 
+  CƠ SỞ DỮ LIỆU ĐỐI CHIẾU:
   Bạn BẮT BUỘC PHẢI PHÂN LOẠI câu hỏi vào các Tên bài học và Dạng toán có trong danh sách dưới đây nếu có sự tương đồng. TUYỆT ĐỐI HẠN CHẾ TẠO MỚI.
-  ${contextCategories}
+  \${contextCategories}
 
-  LƯU Ý CỰC KỲ QUAN TRỌNG VỀ ĐỊNH DẠNG VÀ TÁCH CÂU: 
-  1. QUY TẮC TÁCH HOẶC GỘP Ý NHỎ: 
-     - TRƯỜNG HỢP TÁCH: Nếu một bài toán tự luận có các ý nhỏ (a, b, c...) hoàn toàn độc lập, không phụ thuộc nhau (VD: "Bài 1. Tính: a) 1+1 b) 2+2"). BẮT BUỘC TÁCH mỗi ý thành 1 object câu hỏi độc lập. Tự động ghép thêm "dẫn chung" vào từng ý.
-     - TRƯỜNG HỢP GỘP (KHÔNG TÁCH): Nếu các ý nhỏ có liên quan mật thiết, dùng chung dữ kiện gốc, ý b phụ thuộc ý a (VD: "Cho biểu thức P... a) Rút gọn b) Tìm P max"). BẮT BUỘC GỘP CHUNG toàn bộ đề bài và các ý nhỏ thành MỘT câu hỏi tự luận duy nhất. Giữ nguyên các ký hiệu "a)", "b)".
-  2. QUY ĐỊNH ĐỐI VỚI CÂU HỎI ĐÚNG/SAI (DS) ĐA BÀI HỌC:
-     Nếu câu hỏi DS có 4 ý thuộc về nhiều bài học khác nhau trong chương:
-     - Bạn HÃY ĐẶT "isMultiLesson": true.
-     - Bạn PHẢI gán "tenBai" là tên bài học xa nhất/mới nhất trong chương trình mà câu hỏi đề cập tới.
-     - Bạn PHẢI gán "dangToan": "Toán tổng hợp".
-  2. GIỮ NGUYÊN DANH MỤC: Nếu "chuyenDe" hoặc "tenBai" đã được điền sẵn giá trị, BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI GÌ.
-  3. ĐỊNH DẠNG CÔNG THỨC TOÁN: Mọi công thức Toán học PHẢI được bọc trong $...$ (ví dụ: $\\frac{1}{2}$). Bạn cứ viết lệnh LaTeX chuẩn, KHÔNG ĐƯỢC dùng 2 dấu gạch chéo (\\\\) để escape lệnh trừ khi xuống dòng.
-  4. KHÔNG vẽ lại hình vẽ, đồ thị, hay bảng biến thiên. Hãy ghi "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" thay thế.
-  5. CÂU HỎI PHẢI ĐỘC LẬP VÀ TỰ CHỨA ĐẦY ĐỦ GIẢ THUYẾT: Mỗi câu hỏi sẽ được lưu RIÊNG BIỆT trong ngân hàng đề, nên TUYỆT ĐỐI KHÔNG ĐƯỢC viết kiểu tham chiếu ngữ cảnh bên ngoài như "Với các giả thiết như trong Ví dụ 5...", "Trong tình huống mở đầu...", "Trong Ví dụ 7...", "Theo bảng số liệu trên...". Nếu câu hỏi gốc trong ảnh có tham chiếu đến dữ kiện ở phần khác, BẠN PHẢI tự chép/nhúng đầy đủ toàn bộ dữ kiện cần thiết (số liệu, điều kiện, giả thuyết) vào trong "noiDung" để câu hỏi có thể hiểu được khi đứng một mình. Nếu không thể trích xuất đủ dữ kiện (ví dụ thiếu hình vẽ, bảng số liệu gốc không có trong ảnh), hãy BỎ QUA câu hỏi đó hoàn toàn, KHÔNG TẠO.`;
+  LƯU Ý CỰC KỲ QUAN TRỌNG:
+  1. TÁCH/GỘP Ý NHỎ: Các ý độc lập thì TÁCH, các ý phụ thuộc nhau thì GỘP thành 1 câu TL duy nhất.
+  2. CÂU ĐÚNG/SAI ĐA BÀI HỌC: Đặt "isMultiLesson": true, gán "tenBai" bài xa nhất, "dangToan": "Toán tổng hợp".
+  3. GIỮ NGUYÊN DANH MỤC: Nếu "chuyenDe"/"tenBai" đã điền sẵn, GIỮ NGUYÊN CHÍNH XÁC, KHÔNG CẮT TIỀN TỐ.
+  4. CÔNG THỨC TOÁN: Bọc trong $...$, viết LaTeX chuẩn, KHÔNG dùng \\\\\\\\\\\\\\\\ để escape.
+  5. KHÔNG vẽ lại hình/bảng. Ghi "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]".
+  6. CÂU HỎI PHẢI ĐỘC LẬP: Không tham chiếu ngữ cảnh bên ngoài. Tự nhúng đầy đủ giả thuyết vào "noiDung".
+  7. NHẬN DẠNG HÌNH ẢNH: Nếu câu hỏi có đồ thị/hình vẽ/bảng số liệu ĐI KÈM, PHẢI mô tả chính xác nội dung (tọa độ, dạng đường, giá trị bảng...) và nhúng vào "noiDung". KHÔNG BỎ QUA bất kỳ hình ảnh nào.`;
     navigator.clipboard.writeText(prompt);
     alert("Đã Copy Prompt Chuẩn!");
   };
@@ -524,12 +535,41 @@ ${uniqueForms.map(f => `- ${f}`).join("\n")}
               </div>
             </div>
             <div className="grid grid-cols-2 gap-3 mb-3">
-              <div>
+              <div className="relative">
                 <label className="text-[11px] font-bold text-gray-500 uppercase">Chuyên đề</label>
-                <select value={globalTopic} onChange={e=>setGlobalTopic(e.target.value)} className="w-full text-sm border rounded-lg p-2 outline-none focus:border-blue-500 bg-white">
-                  <option value="">-- AI tự trích xuất --</option>
-                  {uniqueTopics.map(t => <option key={t as string} value={t as string}>{t as string}</option>)}
-                </select>
+                <div 
+                  className="w-full text-sm border rounded-lg p-2 bg-white cursor-pointer flex justify-between items-center"
+                  onClick={() => setIsTopicDropdownOpen(!isTopicDropdownOpen)}
+                >
+                  <span className="truncate flex-1">
+                    {globalTopics.length === 0 ? "-- AI tự trích xuất --" : `${globalTopics.length} chuyên đề đã chọn`}
+                  </span>
+                  <span className="text-gray-400 text-xs ml-2">▼</span>
+                </div>
+                {isTopicDropdownOpen && (
+                  <div className="absolute top-full left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-[0_4px_20px_rgba(0,0,0,0.1)] z-50 max-h-64 overflow-y-auto">
+                    <div 
+                      className="p-2 hover:bg-gray-50 cursor-pointer border-b text-[13px] font-bold text-blue-600 text-center"
+                      onClick={() => setGlobalTopics([])}
+                    >
+                      Bỏ chọn tất cả
+                    </div>
+                    {uniqueTopics.map(t => (
+                      <label key={t as string} className="flex items-center p-2.5 hover:bg-gray-50 cursor-pointer text-sm gap-2 border-b border-gray-50 last:border-0">
+                        <input 
+                          type="checkbox" 
+                          checked={globalTopics.includes(t as string)}
+                          onChange={(e) => {
+                            if (e.target.checked) setGlobalTopics([...globalTopics, t as string]);
+                            else setGlobalTopics(globalTopics.filter(topic => topic !== t));
+                          }}
+                          className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                        />
+                        <span className="truncate flex-1" title={t as string}>{t as string}</span>
+                      </label>
+                    ))}
+                  </div>
+                )}
               </div>
               <div>
                 <label className="text-[11px] font-bold text-gray-500 uppercase">Bài học</label>
