@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/client";
 import { ArrowLeft, Users, UserPlus, Upload, Trash2, Loader2, Search, X, FileSpreadsheet, Download, Plus, Edit2, CheckSquare, DollarSign } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useParams } from "next/navigation";
-import { getEnrollments, addEnrollment, removeEnrollment, updateStudentProfile, searchStudents } from "./actions";
+import { getEnrollments, addEnrollment, removeEnrollment, updateStudentProfile, searchStudents, createAndEnrollNewStudent } from "./actions";
 import AttendanceTab from "./AttendanceTab";
 import TuitionTab from "./TuitionTab";
 
@@ -21,10 +21,18 @@ export default function ClassDetailsPage() {
 
   // Search Students
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [modalTab, setModalTab] = useState<'search' | 'create'>('search');
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState<any[]>([]);
   const [searching, setSearching] = useState(false);
   const [addingId, setAddingId] = useState("");
+  
+  // Create Student
+  const [createForm, setCreateForm] = useState({
+    full_name: "", username: "", password: "", student_phone: "",
+    parent_name: "", parent_phone: "", school: "", class_name: ""
+  });
+  const [isCreating, setIsCreating] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingStudent, setEditingStudent] = useState<any>(null);
   const [editForm, setEditForm] = useState({ full_name: "", student_phone: "", school: "", parent_name: "", parent_phone: "", enrollment_date: "" });
@@ -81,6 +89,26 @@ export default function ClassDetailsPage() {
     } else {
       setIsSearchModalOpen(false);
       setSearchTerm("");
+      fetchData();
+    }
+  };
+
+  const handleCreateStudent = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!createForm.full_name || !createForm.username) {
+      alert("Vui lòng nhập đầy đủ Họ tên và Tài khoản.");
+      return;
+    }
+    setIsCreating(true);
+    const result = await createAndEnrollNewStudent(classId, createForm);
+    setIsCreating(false);
+    
+    if (!result.success) {
+      alert("Lỗi: " + result.error);
+    } else {
+      alert("Đã tạo mới và thêm học sinh vào lớp thành công!");
+      setCreateForm({ full_name: "", username: "", password: "", student_phone: "", parent_name: "", parent_phone: "", school: "", class_name: "" });
+      setIsSearchModalOpen(false);
       fetchData();
     }
   };
@@ -307,54 +335,118 @@ export default function ClassDetailsPage() {
                 <X className="w-6 h-6" />
               </button>
             </div>
-            <div className="p-6 shrink-0">
-              <div className="flex gap-2">
-                <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-                  <input 
-                    type="text" 
-                    placeholder="Nhập tên, số điện thoại hoặc tài khoản học sinh..."
-                    value={searchTerm}
-                    onChange={e => setSearchTerm(e.target.value)}
-                    onKeyDown={e => e.key === 'Enter' && handleSearchStudents()}
-                    className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500"
-                  />
-                </div>
-                <button 
-                  onClick={handleSearchStudents} disabled={searching}
-                  className="px-6 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700 transition-colors"
-                >
-                  {searching ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Tìm'}
-                </button>
-              </div>
+            <div className="flex border-b border-gray-100">
+              <button 
+                onClick={() => setModalTab('search')} 
+                className={`flex-1 py-3 text-sm font-bold transition-colors ${modalTab === 'search' ? 'border-b-2 border-teal-600 text-teal-700' : 'text-gray-500 hover:bg-gray-50'}`}
+              >
+                Tìm học sinh có sẵn
+              </button>
+              <button 
+                onClick={() => setModalTab('create')} 
+                className={`flex-1 py-3 text-sm font-bold transition-colors ${modalTab === 'create' ? 'border-b-2 border-teal-600 text-teal-700' : 'text-gray-500 hover:bg-gray-50'}`}
+              >
+                Tạo học sinh mới
+              </button>
             </div>
-            
-            <div className="flex-1 overflow-y-auto p-6 pt-0 custom-scrollbar">
-              {searchResults.length > 0 ? (
-                <div className="space-y-3">
-                  {searchResults.map(hs => (
-                    <div key={hs.id} className="flex items-center justify-between p-4 border border-gray-100 rounded-xl hover:border-teal-200 transition-colors">
-                      <div>
-                        <div className="font-bold text-gray-800">{hs.full_name}</div>
-                        <div className="text-sm text-gray-500">TK: {hs.username} {hs.student_phone && `• ĐT: ${hs.student_phone}`}</div>
-                      </div>
-                      <button 
-                        onClick={() => handleAddStudent(hs.id)}
-                        disabled={addingId === hs.id}
-                        className="px-4 py-2 text-sm font-bold bg-teal-50 text-teal-700 hover:bg-teal-600 hover:text-white rounded-lg transition-colors flex items-center gap-2"
-                      >
-                        {addingId === hs.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
-                        Thêm
-                      </button>
+
+            {modalTab === 'search' && (
+              <>
+                <div className="p-6 shrink-0">
+                  <div className="flex gap-2">
+                    <div className="relative flex-1">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+                      <input 
+                        type="text" 
+                        placeholder="Nhập tên, số điện thoại hoặc tài khoản học sinh..."
+                        value={searchTerm}
+                        onChange={e => setSearchTerm(e.target.value)}
+                        onKeyDown={e => e.key === 'Enter' && handleSearchStudents()}
+                        className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl outline-none focus:bg-white focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500"
+                      />
                     </div>
-                  ))}
+                    <button 
+                      onClick={handleSearchStudents} disabled={searching}
+                      className="px-6 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700 transition-colors"
+                    >
+                      {searching ? <Loader2 className="w-5 h-5 animate-spin" /> : 'Tìm'}
+                    </button>
+                  </div>
                 </div>
-              ) : (
-                <div className="text-center py-10 text-gray-500">
-                  {searchTerm ? 'Không tìm thấy học sinh nào phù hợp hoặc đã có trong lớp.' : 'Hãy nhập từ khóa để tìm kiếm'}
+                
+                <div className="flex-1 overflow-y-auto p-6 pt-0 custom-scrollbar">
+                  {searchResults.length > 0 ? (
+                    <div className="space-y-3">
+                      {searchResults.map(hs => (
+                        <div key={hs.id} className="flex items-center justify-between p-4 border border-gray-100 rounded-xl hover:border-teal-200 transition-colors">
+                          <div>
+                            <div className="font-bold text-gray-800">{hs.full_name}</div>
+                            <div className="text-sm text-gray-500">TK: {hs.username} {hs.student_phone && `• ĐT: ${hs.student_phone}`}</div>
+                          </div>
+                          <button 
+                            onClick={() => handleAddStudent(hs.id)}
+                            disabled={addingId === hs.id}
+                            className="px-4 py-2 text-sm font-bold bg-teal-50 text-teal-700 hover:bg-teal-600 hover:text-white rounded-lg transition-colors flex items-center gap-2"
+                          >
+                            {addingId === hs.id ? <Loader2 className="w-4 h-4 animate-spin" /> : <Plus className="w-4 h-4" />}
+                            Thêm
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="text-center py-10 text-gray-500">
+                      {searchTerm ? 'Không tìm thấy học sinh nào phù hợp hoặc đã có trong lớp.' : 'Hãy nhập từ khóa để tìm kiếm'}
+                    </div>
+                  )}
                 </div>
-              )}
-            </div>
+              </>
+            )}
+
+            {modalTab === 'create' && (
+              <form onSubmit={handleCreateStudent} className="flex-1 overflow-y-auto p-6 custom-scrollbar space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Họ và tên *</label>
+                    <input type="text" required value={createForm.full_name} onChange={e => setCreateForm({...createForm, full_name: e.target.value})} className="w-full p-2 border rounded-lg outline-none focus:border-teal-500 bg-white" placeholder="Nguyễn Văn A" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Tài khoản *</label>
+                    <input type="text" required value={createForm.username} onChange={e => setCreateForm({...createForm, username: e.target.value})} className="w-full p-2 border rounded-lg outline-none focus:border-teal-500 bg-white" placeholder="nguyenvana123" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Mật khẩu</label>
+                    <input type="text" value={createForm.password} onChange={e => setCreateForm({...createForm, password: e.target.value})} className="w-full p-2 border rounded-lg outline-none focus:border-teal-500 bg-white" placeholder="Mặc định: 123456" />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">SĐT Học sinh</label>
+                    <input type="text" value={createForm.student_phone} onChange={e => setCreateForm({...createForm, student_phone: e.target.value})} className="w-full p-2 border rounded-lg outline-none focus:border-teal-500 bg-white" placeholder="09xxxx..." />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Họ tên Phụ huynh</label>
+                    <input type="text" value={createForm.parent_name} onChange={e => setCreateForm({...createForm, parent_name: e.target.value})} className="w-full p-2 border rounded-lg outline-none focus:border-teal-500 bg-white" placeholder="Phụ huynh..." />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">SĐT Phụ huynh</label>
+                    <input type="text" value={createForm.parent_phone} onChange={e => setCreateForm({...createForm, parent_phone: e.target.value})} className="w-full p-2 border rounded-lg outline-none focus:border-teal-500 bg-white" placeholder="09xxxx..." />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Trường</label>
+                    <input type="text" value={createForm.school} onChange={e => setCreateForm({...createForm, school: e.target.value})} className="w-full p-2 border rounded-lg outline-none focus:border-teal-500 bg-white" placeholder="THPT..." />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Lớp</label>
+                    <input type="text" value={createForm.class_name} onChange={e => setCreateForm({...createForm, class_name: e.target.value})} className="w-full p-2 border rounded-lg outline-none focus:border-teal-500 bg-white" placeholder="12A1" />
+                  </div>
+                </div>
+                <div className="pt-4 flex justify-end">
+                  <button type="submit" disabled={isCreating} className="px-6 py-2.5 bg-teal-600 text-white rounded-xl font-bold hover:bg-teal-700 transition-colors flex items-center gap-2">
+                    {isCreating ? <Loader2 className="w-5 h-5 animate-spin" /> : <Plus className="w-5 h-5" />}
+                    Tạo tài khoản & Thêm vào lớp
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       )}
