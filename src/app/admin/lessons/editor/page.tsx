@@ -536,9 +536,11 @@ const getPrompt = (isPractice: boolean, isPresentation: boolean) => {
       return `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, CHI TIẾT, DỄ HIỂU.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
-1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU CHO MATHTYPE]:
+1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
 - Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
-- Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}.
+- CÔNG THỨC PHẢI LIỀN MẠCH TRÊN 1 DÒNG: Tuyệt đối không được bẻ gãy, ngắt dòng (enter) giữa chừng một công thức (trừ hệ phương trình). Các biểu thức toán học phải liền khối.
+- MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
+- Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
 2. [CẤU TRÚC VÀNG CỦA BÀI GIẢNG TOÁN HỌC]:
 Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 * PHẦN 1: LÝ THUYẾT CHI TIẾT. Hãy giải thích cặn kẽ Định nghĩa, Định lý, Công thức cốt lõi. Văn phong tự nhiên, dễ đọc trên app điện thoại. Tuyệt đối không dùng dấu ngắt trang (---).
@@ -553,9 +555,11 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
   const unifiedPrompt = `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, GỒM LÝ THUYẾT VÀ CÁC DẠNG BÀI TẬP, TRÌNH BÀY SIÊU ĐẸP, CỰC KỲ THU HÚT.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
-1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU CHO MATHTYPE]:
+1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
 - Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
-- Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}.
+- CÔNG THỨC PHẢI LIỀN MẠCH TRÊN 1 DÒNG: Tuyệt đối không được bẻ gãy, ngắt dòng (enter) giữa chừng một công thức (trừ hệ phương trình). Các biểu thức toán học phải liền khối và chuẩn xác.
+- MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
+- Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
 2. [CẤU TRÚC VÀNG CỦA BÀI GIẢNG TOÁN HỌC]:
 Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 * PHẦN 1: TÓM TẮT LÝ THUYẾT TRỌNG TÂM. Hãy chắt lọc Định nghĩa, Định lý, Công thức cốt lõi. Bỏ qua diễn giải rườm rà.
@@ -578,8 +582,8 @@ LOẠI 1: CÂU HỎI NHIỀU LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 \`\`\`quiz
 {
   "type": "multiple_choice",
-  "question": "Đạo hàm của hàm số $y = x^2 + 2x$ là?",
-  "options": ["$y' = 2x + 2$", "$y' = x + 2$", "$y' = 2x$", "$y' = 2$"],
+  "question": "Đạo hàm của hàm số $\\color{blue} y = x^2 + 2x$ là?",
+  "options": ["$\\color{blue} y' = 2x + 2$", "$\\color{blue} y' = x + 2$", "$\\color{blue} y' = 2x$", "$\\color{blue} y' = 2$"],
   "answerIndex": 0
 }
 \`\`\`
@@ -588,14 +592,14 @@ LOẠI 4: CÂU TRẢ LỜI NGẮN (kết quả ngắn gọn: 1 số, 1 biểu th
 \`\`\`quiz
 {
   "type": "short_answer",
-  "question": "Tính giá trị của biểu thức $\\\\sqrt{9} + \\\\sqrt{16}$.",
+  "question": "Tính giá trị của biểu thức $\\color{blue} \\\\sqrt{9} + \\\\sqrt{16}$.",
   "exactAnswer": "7",
-  "answer": "Ta có $\\\\sqrt{9} = 3$ và $\\\\sqrt{16} = 4$, nên tổng là $3 + 4 = 7$."
+  "answer": "Ta có $\\color{blue} \\\\sqrt{9} = 3$ và $\\color{blue} \\\\sqrt{16} = 4$, nên tổng là $\\color{blue} 3 + 4 = 7$."
 }
 \`\`\`
 
 GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
-- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả các công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$.
+- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả các công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$ và CÓ $\\color{blue}$.
 - TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Nếu không làm điều này, hệ thống sẽ BỊ LỖI.`;
 
   return unifiedPrompt;
