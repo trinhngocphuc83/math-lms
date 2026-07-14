@@ -126,10 +126,22 @@ const customMarkdownComponents: any = {
        
        let isStartOfLine = true;
        kids.forEach((child, index) => {
+           if (typeof child === 'string' && child.trim() === '') {
+               newKids.push(child);
+               return;
+           }
+
            if (isStartOfLine) {
                let shouldInject = true;
-               if (typeof child === 'string' && child.trim() === '') shouldInject = false;
-               if (React.isValidElement(child) && (child.props as any) && (child.props as any).className && (child.props as any).className.includes('math-display')) shouldInject = false;
+               if (React.isValidElement(child)) {
+                   if ((child.props as any)?.className?.includes('math-display')) shouldInject = false;
+                   if (child.type === 'strong') {
+                       const text = extractTextFromReactNode((child.props as any).children).trim();
+                       if (/^bước/i.test(text) || /^hướng dẫn giải/i.test(text) || /^phương pháp/i.test(text) || /^lời giải/i.test(text)) {
+                           shouldInject = false;
+                       }
+                   }
+               }
                
                if (shouldInject) {
                    newKids.push(

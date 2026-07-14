@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown } from "lucide-react";
 
 interface RichTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   value: string;
@@ -15,9 +15,20 @@ export default function RichTextarea({ value, onChange, onValueChange, className
   const [textColor, setTextColor] = useState<string>("#ef4444"); // Default red
   const [lineHeight, setLineHeight] = useState<string>("1.5");
   const [isClient, setIsClient] = useState(false);
+  
+  const [showIconMenu, setShowIconMenu] = useState(false);
+  const iconMenuRef = useRef<HTMLDivElement>(null);
+  const EMOJIS = ["💡", "📌", "🎯", "🚀", "📝", "⚙️", "✅", "❌", "🔥", "✨", "👉", "⚠️"];
 
   useEffect(() => {
     setIsClient(true);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (iconMenuRef.current && !iconMenuRef.current.contains(event.target as Node)) {
+        setShowIconMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const handleApplySize = (e?: React.MouseEvent | React.FormEvent) => {
@@ -235,6 +246,52 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }, 0);
   };
 
+  const handleInsertIcon = (icon: string) => {
+    if (!textareaRef.current) return;
+    const ta = textareaRef.current;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    const val = ta.value;
+
+    const newValue = val.substring(0, start) + icon + val.substring(end);
+    if (onValueChange) onValueChange(newValue);
+    else {
+      const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+      onChange(event);
+    }
+
+    setShowIconMenu(false);
+    setTimeout(() => {
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+        textareaRef.current.setSelectionRange(start + icon.length, start + icon.length);
+      }
+    }, 0);
+  };
+
+  const handleRemoveAutoIcon = () => {
+    if (!textareaRef.current) return;
+    const ta = textareaRef.current;
+    const start = ta.selectionStart;
+    const val = ta.value;
+
+    let lineStart = val.lastIndexOf('\n', start - 1) + 1;
+    const newValue = val.substring(0, lineStart) + "&nbsp;" + val.substring(lineStart);
+    
+    if (onValueChange) onValueChange(newValue);
+    else {
+      const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+      onChange(event);
+    }
+
+    setTimeout(() => {
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+        textareaRef.current.setSelectionRange(start + 6, start + 6);
+      }
+    }, 0);
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (props.onKeyDown) props.onKeyDown(e);
     
@@ -418,6 +475,42 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             title="Gạch chân"
           >
             <UnderlineIcon className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Icon Group */}
+        <div className="flex items-center gap-1 bg-white border border-gray-300 rounded p-1 shadow-sm relative" ref={iconMenuRef}>
+          <button 
+            type="button"
+            onClick={() => setShowIconMenu(!showIconMenu)}
+            className="flex items-center gap-1 px-2 py-1.5 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+            title="Thêm Icon"
+          >
+            <Smile className="w-4 h-4" /> <ChevronDown className="w-3 h-3" />
+          </button>
+          
+          {showIconMenu && (
+            <div className="absolute bottom-full left-0 mb-2 p-2 bg-white border border-gray-200 rounded-lg shadow-xl grid grid-cols-4 gap-2 z-50">
+              {EMOJIS.map(emoji => (
+                <button
+                  key={emoji}
+                  type="button"
+                  onClick={() => handleInsertIcon(emoji)}
+                  className="w-8 h-8 flex items-center justify-center text-lg hover:bg-indigo-50 rounded transition-colors"
+                >
+                  {emoji}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <button 
+            type="button"
+            onClick={handleRemoveAutoIcon}
+            className="px-2 py-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
+            title="Xoá Icon tự động ở dòng này"
+          >
+            <Eraser className="w-4 h-4" />
           </button>
         </div>
 
