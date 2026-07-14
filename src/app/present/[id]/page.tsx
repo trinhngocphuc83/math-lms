@@ -126,20 +126,32 @@ const customMarkdownComponents: any = {
        
        let isStartOfLine = true;
        kids.forEach((child, index) => {
-           if (typeof child === 'string' && child.trim() === '') {
+           // Skip pure whitespace (like \n) so they don't consume the start-of-line flag,
+           // but DO NOT skip \u00A0 (&nbsp;) because we use it as a manual hidden-icon trigger.
+           if (typeof child === 'string' && child.trim() === '' && !child.includes('\u00A0')) {
                newKids.push(child);
                return;
            }
 
            if (isStartOfLine) {
                let shouldInject = true;
-               if (React.isValidElement(child)) {
-                   if ((child.props as any)?.className?.includes('math-display')) shouldInject = false;
-                   if (child.type === 'strong') {
-                       const text = extractTextFromReactNode((child.props as any).children).trim();
-                       if (/^bước/i.test(text) || /^hướng dẫn giải/i.test(text) || /^phương pháp/i.test(text) || /^lời giải/i.test(text)) {
-                           shouldInject = false;
+               
+               if (typeof child === 'string') {
+                   if (child.startsWith('\u00A0')) {
+                       shouldInject = false;
+                       child = child.replace(/^[\u00A0]+/, '');
+                       if (child === '') {
+                           isStartOfLine = false;
+                           return;
                        }
+                   }
+               } else if (React.isValidElement(child)) {
+                   if ((child.props as any)?.className?.includes('math-display')) {
+                       shouldInject = false;
+                   }
+                   const text = extractTextFromReactNode(child).trim();
+                   if (/^(bước|hướng dẫn giải|lời giải|phương pháp)/i.test(text)) {
+                       shouldInject = false;
                    }
                }
                
