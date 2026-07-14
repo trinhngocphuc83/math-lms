@@ -62,32 +62,41 @@ const customMarkdownComponents: any = {
    h5: ({node, children, ...props}: any) => checkRibbon(children, <h5 {...props}>{children}</h5>),
    h6: ({node, children, ...props}: any) => checkRibbon(children, <h6 {...props}>{children}</h6>),
    strong: ({node, children, ...props}: any) => {
-      const text = String(children);
-      if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải") || text.toLowerCase().includes("lời giải")) {
-         return (
-            <span className="block mt-[2em] mb-[1em] not-prose w-full">
-               <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-[1.5em] py-[0.6em] rounded-t-[1em] font-black flex items-center gap-[0.5em] w-max max-w-full shadow-md" style={{ fontSize: '1.2em' }}>
-                  <span className="w-[1.5em] h-[1.5em] bg-white rounded-full flex items-center justify-center shrink-0 shadow-inner" style={{ fontSize: '1.2em' }}>💡</span>
-                  {text.toUpperCase()}
-               </span>
-               <span className="bg-white border-l-[0.4em] border-orange-400 p-[1em] rounded-b-[1em] rounded-tr-[1em] shadow-sm flex items-center gap-[0.5em] mb-[0.5em] w-full">
-                  <span className="text-orange-600 font-bold uppercase flex items-center gap-[0.5em]" style={{ fontSize: '0.9em' }}>
-                     <svg className="w-[1.2em] h-[1.2em]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
-                     Các bước chi tiết bên dưới
-                  </span>
-               </span>
-            </span>
-         );
-      }
-      if (text.toLowerCase().startsWith("bước")) {
-         return (
-            <span className="inline-flex items-center gap-[0.5em] bg-gradient-to-r from-pink-500 to-rose-400 text-white px-[0.8em] py-[0.2em] rounded-[0.5em] font-black shadow-sm mt-[0.5em] mb-[0.2em] mr-[0.5em]">
-              <span className="w-[0.5em] h-[0.5em] bg-white rounded-full animate-pulse"></span>
-              {children}
-            </span>
-         );
-      }
-      return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
+       const text = String(children);
+       const lowerText = text.toLowerCase();
+       if (lowerText.includes("hướng dẫn giải") || lowerText.includes("lời giải")) {
+          return (
+             <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-[0.2em] my-[0.2em]">
+                <span className="text-[1.2em] leading-none">📝</span>
+                <span className="text-blue-500 font-bold leading-none" style={{ fontSize: '1.1em' }}>{children}</span>
+             </span>
+          );
+       }
+       if (lowerText.includes("phương pháp giải")) {
+          return (
+             <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-[0.2em] my-[0.2em]">
+                <span className="text-[1.2em] leading-none">💡</span>
+                <span className="text-orange-500 font-bold leading-none" style={{ fontSize: '1.1em' }}>{children}</span>
+             </span>
+          );
+       }
+       if (lowerText.includes("ví dụ mẫu")) {
+          return (
+             <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-[0.2em] my-[0.2em]">
+                <span className="text-[1.2em] leading-none">📌</span>
+                <span className="text-rose-500 font-bold leading-none" style={{ fontSize: '1.1em' }}>{children}</span>
+             </span>
+          );
+       }
+       if (lowerText.startsWith("bước")) {
+          return (
+             <span className="inline-flex items-center gap-[0.5em] bg-gradient-to-r from-pink-500 to-rose-400 text-white px-[0.8em] py-[0.2em] rounded-[0.5em] font-black shadow-sm mt-[0.5em] mb-[0.2em] mr-[0.5em]">
+               <span className="w-[0.5em] h-[0.5em] bg-white rounded-full animate-pulse"></span>
+               {children}
+             </span>
+          );
+       }
+       return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
    },
    li: ({node, children, ...props}: any) => {
        const text = extractTextFromReactNode(children).trim();
@@ -152,7 +161,7 @@ const customMarkdownComponents: any = {
                        shouldInject = false;
                    }
                    const text = extractTextFromReactNode(child).trim();
-                   if (/^(bước|hướng dẫn giải|lời giải|phương pháp)/i.test(text)) {
+                   if (/^(bước|hướng dẫn giải|lời giải|phương pháp|ví dụ mẫu)/i.test(text)) {
                        shouldInject = false;
                    }
                }
