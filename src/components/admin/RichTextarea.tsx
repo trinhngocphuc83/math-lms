@@ -178,7 +178,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
 
-    const wrappedText = `<div class="border-2 border-indigo-400 bg-indigo-50/50 p-[1em] rounded-[0.8em] shadow-sm my-[1em]">${selectedText}</div>`;
+    const wrappedText = `<div class="border-2 border-indigo-400 bg-indigo-50/50 px-[1em] py-[0.5em] rounded-[0.8em] shadow-sm my-[0.5em] w-fit max-w-full [&>p:last-child]:mb-0">\n\n${selectedText.trim()}\n\n</div>`;
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
