@@ -654,6 +654,36 @@ function EditorContent() {
        setMarkdownContent(fixLatexText(markdownContent));
     }
   };
+
+  const handleRawKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    const ta = e.currentTarget;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    const val = ta.value;
+
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      if (start === end) {
+        const newValue = val.substring(0, start) + "  " + val.substring(end);
+        setMarkdownContent(newValue);
+        setTimeout(() => {
+          if (textareaRef.current) textareaRef.current.setSelectionRange(start + 2, start + 2);
+        }, 0);
+      }
+    } else if (e.key === 'Backspace' && start === end && start > 0) {
+      const lineStart = val.lastIndexOf('\n', start - 1) + 1;
+      const textBeforeCursor = val.substring(lineStart, start);
+      if (textBeforeCursor.trim() === '' && textBeforeCursor.length > 0) {
+        e.preventDefault();
+        const deleteCount = textBeforeCursor.length % 2 !== 0 ? 1 : 2;
+        const newValue = val.substring(0, start - deleteCount) + val.substring(end);
+        setMarkdownContent(newValue);
+        setTimeout(() => {
+          if (textareaRef.current) textareaRef.current.setSelectionRange(start - deleteCount, start - deleteCount);
+        }, 0);
+      }
+    }
+  };
   const [docList, setDocList] = useState<{id: string, title: string, url: string}[]>([]);
   const isDocumentModule = moduleType === 'document' || moduleTitle.toLowerCase().includes('tài liệu tham khảo');
   const isVideoModule = moduleType === 'solution_video' || moduleTitle.toLowerCase().includes('video');
@@ -1623,13 +1653,13 @@ function EditorContent() {
 
                  <div className="flex-1 flex flex-row overflow-hidden">
                     <textarea 
-                      ref={textareaRef} value={markdownContent} onChange={(e) => setMarkdownContent(e.target.value)} onPaste={handlePaste}
+                      ref={textareaRef} value={markdownContent} onChange={(e) => setMarkdownContent(e.target.value)} onPaste={handlePaste} onKeyDown={handleRawKeyDown}
                       placeholder="Bắt đầu gõ hoặc Ấn Ctrl + V để dán bài tập vào đây."
                       className={`h-full p-4 resize-none outline-none text-gray-700 font-mono text-[14px] leading-relaxed scroll-smooth ${showRawPreview ? 'w-1/2 border-r border-gray-200 bg-white' : 'w-full bg-white'}`}
                     />
                     {showRawPreview && (
                        <div className="w-1/2 h-full overflow-y-auto bg-gray-50/50 p-6 scroll-smooth">
-                          <div className="bg-white p-8 rounded-2xl shadow-md border-4 border-slate-700 aspect-video overflow-y-auto w-full max-w-none prose prose-lg prose-indigo prose-h1:text-4xl prose-h1:font-black prose-h1:text-indigo-900 prose-h1:mb-10 prose-h1:text-center prose-h1:tracking-tight prose-h2:text-[1.5rem] prose-h2:font-black prose-h2:text-white prose-h2:bg-gradient-to-r prose-h2:from-indigo-600 prose-h2:via-blue-600 prose-h2:to-cyan-500 prose-h2:px-6 prose-h2:py-4 prose-h2:rounded-2xl prose-h2:mt-14 prose-h2:mb-8 prose-h2:uppercase prose-h2:tracking-wide prose-h2:shadow-[0_8px_30px_rgb(79,70,229,0.2)] prose-h2:border-l-8 prose-h2:border-l-yellow-400 prose-h2:block prose-h2:w-fit prose-h2:clear-both prose-h3:text-[1.2rem] prose-h3:font-bold prose-h3:text-white prose-h3:bg-gradient-to-r prose-h3:from-emerald-500 prose-h3:to-teal-400 prose-h3:px-5 prose-h3:py-3 prose-h3:rounded-xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:shadow-md prose-h3:block prose-h3:w-fit prose-h3:clear-both prose-strong:text-indigo-800 prose-strong:font-black prose-strong:bg-indigo-50/50 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded-md">
+                          <div className="bg-white p-8 rounded-2xl shadow-md border-4 border-slate-700 aspect-video overflow-y-auto w-full max-w-none prose prose-lg prose-indigo whitespace-pre-wrap prose-h1:text-4xl prose-h1:font-black prose-h1:text-indigo-900 prose-h1:mb-10 prose-h1:text-center prose-h1:tracking-tight prose-h2:text-[1.5rem] prose-h2:font-black prose-h2:text-white prose-h2:bg-gradient-to-r prose-h2:from-indigo-600 prose-h2:via-blue-600 prose-h2:to-cyan-500 prose-h2:px-6 prose-h2:py-4 prose-h2:rounded-2xl prose-h2:mt-14 prose-h2:mb-8 prose-h2:uppercase prose-h2:tracking-wide prose-h2:shadow-[0_8px_30px_rgb(79,70,229,0.2)] prose-h2:border-l-8 prose-h2:border-l-yellow-400 prose-h2:block prose-h2:w-fit prose-h2:clear-both prose-h3:text-[1.2rem] prose-h3:font-bold prose-h3:text-white prose-h3:bg-gradient-to-r prose-h3:from-emerald-500 prose-h3:to-teal-400 prose-h3:px-5 prose-h3:py-3 prose-h3:rounded-xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:shadow-md prose-h3:block prose-h3:w-fit prose-h3:clear-both prose-strong:text-indigo-800 prose-strong:font-black prose-strong:bg-indigo-50/50 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded-md">
                               {renderMarkdown(markdownContent)}
                           </div>
                        </div>

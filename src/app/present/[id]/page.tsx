@@ -8,7 +8,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, CheckCircle2, Lightbulb, Pin, BookOpen, Target } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, CheckCircle2, Lightbulb, Pin, BookOpen, Target, Type } from 'lucide-react';
 import React from 'react';
 
 const extractTextFromReactNode = (node: any): string => {
@@ -327,7 +327,8 @@ export default function PresentationPage() {
     const [isFullscreen, setIsFullscreen] = useState(false);
     
     // Auto-fit text states
-    const [baseFontSize, setBaseFontSize] = useState(48); // Start huge
+    const [autoFitEnabled, setAutoFitEnabled] = useState(false);
+    const [baseFontSize, setBaseFontSize] = useState(40); // Start huge
     const contentBoxRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
@@ -388,11 +389,12 @@ export default function PresentationPage() {
     
     // Reset font size when slide changes
     useEffect(() => {
-        setBaseFontSize(52); // Initial giant size
-    }, [currentSlideIndex]);
+        setBaseFontSize(autoFitEnabled ? 52 : 40); // Initial giant size if auto-fit, else 40
+    }, [currentSlideIndex, autoFitEnabled]);
     
     // Iterative font scaling based on overflow
     useLayoutEffect(() => {
+        if (!autoFitEnabled) return;
         if (!contentBoxRef.current) return;
         const container = contentBoxRef.current;
         
@@ -405,7 +407,7 @@ export default function PresentationPage() {
         }, 10); // Small delay to let images/katex render
         
         return () => clearTimeout(timer);
-    }, [currentSlideIndex, baseFontSize, slides]);
+    }, [currentSlideIndex, baseFontSize, slides, autoFitEnabled]);
     
     // Auto scroll when fragment index changes
     useLayoutEffect(() => {
@@ -455,6 +457,13 @@ export default function PresentationPage() {
                     <h1 className="font-black text-2xl text-slate-800">{moduleData.title}</h1>
                 </div>
                 <div className="flex items-center gap-4">
+                    <button 
+                        onClick={() => setAutoFitEnabled(!autoFitEnabled)} 
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold transition-colors ${autoFitEnabled ? 'bg-indigo-100 text-indigo-700 border border-indigo-300' : 'bg-slate-100 text-slate-600 border border-slate-200'}`}
+                        title="Tự động thu nhỏ cỡ chữ khi tràn slide"
+                    >
+                        <Type className="w-5 h-5" /> {autoFitEnabled ? 'Tự ép viền: BẬT' : 'Tự ép viền: TẮT'}
+                    </button>
                     <span className="text-slate-500 font-bold text-xl px-6 bg-slate-100 py-2 rounded-full border border-slate-200">
                         {currentSlideIndex + 1} / {slides.length}
                     </span>
@@ -497,7 +506,7 @@ export default function PresentationPage() {
                                     <div 
                                         key={`${currentSlideIndex}-${idx}`} 
                                         className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out w-full
-                                            prose prose-slate max-w-none 
+                                            prose prose-slate max-w-none whitespace-pre-wrap
                                             prose-headings:font-black prose-headings:tracking-tight
                                             prose-h1:text-[1.8em] prose-h1:text-white prose-h1:bg-gradient-to-r prose-h1:from-indigo-600 prose-h1:to-blue-600 prose-h1:px-[0.8em] prose-h1:py-[0.4em] prose-h1:rounded-[0.4em] prose-h1:shadow-lg prose-h1:inline-block prose-h1:mb-[0.8em] prose-h1:leading-tight prose-h1:border-2 prose-h1:border-white
                                             prose-h2:text-[1.4em] prose-h2:text-indigo-900 prose-h2:bg-indigo-50 prose-h2:px-[0.6em] prose-h2:py-[0.3em] prose-h2:rounded-[0.3em] prose-h2:border-l-[0.3em] prose-h2:border-indigo-600 prose-h2:shadow-sm prose-h2:inline-block prose-h2:mb-[0.8em]
