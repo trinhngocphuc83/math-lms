@@ -506,7 +506,7 @@ export default function PresentationPage() {
                                     <div 
                                         key={`${currentSlideIndex}-${idx}`} 
                                         className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out w-full
-                                            prose prose-slate max-w-none whitespace-pre-wrap
+                                            prose prose-slate max-w-none [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap [&_span]:whitespace-pre-wrap
                                             prose-headings:font-black prose-headings:tracking-tight
                                             prose-h1:text-[1.8em] prose-h1:text-white prose-h1:bg-gradient-to-r prose-h1:from-indigo-600 prose-h1:to-blue-600 prose-h1:px-[0.8em] prose-h1:py-[0.4em] prose-h1:rounded-[0.4em] prose-h1:shadow-lg prose-h1:inline-block prose-h1:mb-[0.8em] prose-h1:leading-tight prose-h1:border-2 prose-h1:border-white
                                             prose-h2:text-[1.4em] prose-h2:text-indigo-900 prose-h2:bg-indigo-50 prose-h2:px-[0.6em] prose-h2:py-[0.3em] prose-h2:rounded-[0.3em] prose-h2:border-l-[0.3em] prose-h2:border-indigo-600 prose-h2:shadow-sm prose-h2:inline-block prose-h2:mb-[0.8em]
