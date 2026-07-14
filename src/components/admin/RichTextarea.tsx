@@ -9,6 +9,13 @@ interface RichTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaEle
   onValueChange?: (value: string) => void;
 }
 
+const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => string) => {
+  return selectedText.split('\n').map(line => {
+    if (line.trim() === '') return line;
+    return wrapFn(line);
+  }).join('\n');
+};
+
 export default function RichTextarea({ value, onChange, onValueChange, className = "", ...props }: RichTextareaProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [fontSize, setFontSize] = useState<string>("30");
@@ -49,7 +56,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const afterText = value.substring(end);
 
     const sizePx = fontSize ? `${fontSize}px` : '40px';
-    const wrappedText = `<span style="font-size: ${sizePx}">${selectedText}</span>`;
+    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="font-size: ${sizePx}">${l}</span>`);
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
@@ -84,7 +91,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
 
-    const wrappedText = `<span style="color: ${textColor}">${selectedText}</span>`;
+    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="color: ${textColor}">${l}</span>`);
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
@@ -119,7 +126,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
 
-    const wrappedText = `<span style="line-height: ${lineHeight}; display: block">${selectedText}</span>`;
+    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="line-height: ${lineHeight}; display: block">${l}</span>`);
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
@@ -154,7 +161,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
 
-    const wrappedText = `<span style="text-align: ${align}; display: block">${selectedText}</span>`;
+    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="text-align: ${align}; display: block">${l}</span>`);
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
@@ -225,9 +232,9 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const afterText = value.substring(end);
 
     let wrappedText = selectedText;
-    if (formatType === 'bold') wrappedText = `**${selectedText}**`;
-    else if (formatType === 'italic') wrappedText = `*${selectedText}*`;
-    else if (formatType === 'underline') wrappedText = `<u>${selectedText}</u>`;
+    if (formatType === 'bold') wrappedText = wrapMultiLineSelection(selectedText, l => `**${l}**`);
+    else if (formatType === 'italic') wrappedText = wrapMultiLineSelection(selectedText, l => `*${l}*`);
+    else if (formatType === 'underline') wrappedText = wrapMultiLineSelection(selectedText, l => `<u>${l}</u>`);
 
     const newValue = beforeText + wrappedText + afterText;
 
