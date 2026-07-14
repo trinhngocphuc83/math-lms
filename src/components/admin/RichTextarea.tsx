@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon } from "lucide-react";
 
 interface RichTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   value: string;
@@ -196,6 +196,45 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }, 0);
   };
 
+  const handleFormat = (formatType: 'bold' | 'italic' | 'underline', e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (!textareaRef.current) return;
+    
+    const ta = textareaRef.current;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    
+    if (start === end) {
+      alert("Vui lòng bôi đen văn bản cần định dạng!");
+      return;
+    }
+
+    const selectedText = value.substring(start, end);
+    const beforeText = value.substring(0, start);
+    const afterText = value.substring(end);
+
+    let wrappedText = selectedText;
+    if (formatType === 'bold') wrappedText = `**${selectedText}**`;
+    else if (formatType === 'italic') wrappedText = `*${selectedText}*`;
+    else if (formatType === 'underline') wrappedText = `<u>${selectedText}</u>`;
+
+    const newValue = beforeText + wrappedText + afterText;
+
+    if (onValueChange) {
+      onValueChange(newValue);
+    } else {
+      const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+      onChange(event);
+    }
+
+    setTimeout(() => {
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
+      }
+    }, 0);
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (props.onKeyDown) props.onKeyDown(e);
     
@@ -203,6 +242,22 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const start = ta.selectionStart;
     const end = ta.selectionEnd;
     const val = ta.value;
+
+    if (e.ctrlKey && e.key.toLowerCase() === 'b') {
+      e.preventDefault();
+      handleFormat('bold');
+      return;
+    }
+    if (e.ctrlKey && e.key.toLowerCase() === 'i') {
+      e.preventDefault();
+      handleFormat('italic');
+      return;
+    }
+    if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+      e.preventDefault();
+      handleFormat('underline');
+      return;
+    }
 
     if (e.key === 'Tab') {
       e.preventDefault();
@@ -335,6 +390,34 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             className="bg-teal-50 hover:bg-teal-100 text-teal-700 px-3 py-1.5 rounded text-xs font-bold transition-colors border border-teal-200"
           >
             Đổi giãn dòng
+          </button>
+        </div>
+
+        {/* Formatting Group */}
+        <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded p-1 shadow-sm">
+          <button 
+            type="button"
+            onClick={(e) => handleFormat('bold', e)}
+            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors font-bold"
+            title="In đậm"
+          >
+            <Bold className="w-4 h-4" />
+          </button>
+          <button 
+            type="button"
+            onClick={(e) => handleFormat('italic', e)}
+            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors italic"
+            title="In nghiêng"
+          >
+            <Italic className="w-4 h-4" />
+          </button>
+          <button 
+            type="button"
+            onClick={(e) => handleFormat('underline', e)}
+            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors underline"
+            title="Gạch chân"
+          >
+            <UnderlineIcon className="w-4 h-4" />
           </button>
         </div>
 
