@@ -28,8 +28,8 @@ const checkRibbon = (children: any, fallback: any) => {
     const text = extractTextFromReactNode(children).trim();
     if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
         return (
-            <div className="not-prose my-[1em] block w-full">
-                <div className="bg-orange-50 text-orange-700 px-[1.5em] py-[0.6em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-block leading-[1.4] max-w-full break-words" style={{ fontSize: '1.2em' }}>
+            <div className="not-prose mt-0 mb-[0.8em] block w-full">
+                <div className="bg-orange-50 text-orange-700 px-[1.2em] py-[0.4em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-block w-fit leading-[1.4] max-w-full break-words" style={{ fontSize: '1.1em' }}>
                     {children}
                 </div>
             </div>
@@ -92,14 +92,14 @@ const customMarkdownComponents: any = {
    li: ({node, children, ...props}: any) => {
        const text = extractTextFromReactNode(children).trim();
        if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
-           return (
-               <li className="list-none my-[1em]" {...props}>
-                   <div className="bg-orange-50 text-orange-700 px-[1.5em] py-[0.6em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-block items-center gap-[0.5em] leading-[1.3] max-w-full" style={{ fontSize: '1.2em' }}>
-                       {children}
-                   </div>
-               </li>
-           );
-       }
+            return (
+                <li className="list-none mt-0 mb-[0.8em]" {...props}>
+                    <div className="bg-orange-50 text-orange-700 px-[1.2em] py-[0.4em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-flex w-fit items-center gap-[0.5em] leading-[1.3] max-w-full break-words" style={{ fontSize: '1.1em' }}>
+                        {children}
+                    </div>
+                </li>
+            );
+        }
        return (
            <li className="flex items-start gap-[0.5em] mb-[0.5em] relative group" {...props}>
               <span className="w-[1.2em] h-[1.2em] mt-[0.2em] shrink-0 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center shadow-sm border border-indigo-200">
@@ -112,13 +112,13 @@ const customMarkdownComponents: any = {
    p: ({node, children, ...props}: any) => {
        const text = extractTextFromReactNode(children).trim();
        if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
-           return (
-               <div className="not-prose my-[1em] block w-full">
-                   <div className="bg-orange-50 text-orange-700 px-[1.5em] py-[0.6em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-block leading-[1.4] max-w-full break-words" style={{ fontSize: '1.2em' }}>
-                       {children}
-                   </div>
-               </div>
-           );
+            return (
+                <div className="not-prose mt-0 mb-[0.8em] block w-full">
+                    <div className="bg-orange-50 text-orange-700 px-[1.2em] py-[0.4em] rounded-r-full rounded-l-[0.3em] border-l-[0.4em] border-orange-500 font-bold shadow-sm inline-block w-fit leading-[1.4] max-w-full break-words" style={{ fontSize: '1.1em' }}>
+                        {children}
+                    </div>
+                </div>
+            );
        }
        
        const kids = React.Children.toArray(children);
