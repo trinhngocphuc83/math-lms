@@ -137,12 +137,14 @@ const customMarkdownComponents: any = {
                let shouldInject = true;
                
                if (typeof child === 'string') {
-                   if (child.startsWith('\u00A0')) {
+                   if (/^[\n\s]*\u00A0/.test(child)) {
                        shouldInject = false;
-                       child = child.replace(/^[\u00A0]+/, '');
-                       if (child === '') {
-                           isStartOfLine = false;
-                           return;
+                       // Remove exactly one \u00A0 so it doesn't cause unwanted indentation
+                       child = child.replace(/(^[\n\s]*)\u00A0/, '$1');
+                       // If the string is now empty or just a newline, add a zero-width space 
+                       // so the paragraph doesn't collapse (preserves blank lines)
+                       if (child === '' || child === '\n') {
+                           child += '\u200B';
                        }
                    }
                } else if (React.isValidElement(child)) {
