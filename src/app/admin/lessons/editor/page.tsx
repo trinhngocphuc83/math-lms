@@ -1565,9 +1565,25 @@ function EditorContent() {
           </div>
 
           <div className="bg-gray-50 border-b border-gray-100 p-2.5 flex justify-between items-center flex-shrink-0">
-            <span className="font-semibold text-gray-700 text-sm">
-                {activeTab === 'elearning' ? 'Nội dung E-learning' : 'Nội dung Trình chiếu'}
-            </span>
+            <div className="flex items-center gap-4">
+                <span className="font-semibold text-gray-700 text-sm">
+                    {activeTab === 'elearning' ? 'Nội dung E-learning' : 'Nội dung Trình chiếu'}
+                </span>
+                <button onClick={() => {
+                    const source = activeTab === 'elearning' ? 'Trình chiếu' : 'E-learning';
+                    if (window.confirm(`Thao tác này sẽ GHI ĐÈ toàn bộ nội dung hiện tại bằng nội dung từ chế độ ${source}. Bạn có chắc chắn?`)) {
+                        if (activeTab === 'elearning') {
+                            setElearningMarkdown(presentationMarkdown);
+                            setElearningBlocks(presentationBlocks);
+                        } else {
+                            setPresentationMarkdown(elearningMarkdown);
+                            setPresentationBlocks(elearningBlocks);
+                        }
+                    }
+                }} className="flex items-center gap-1.5 text-xs font-bold bg-indigo-100 border border-indigo-200 text-indigo-800 px-3 py-1.5 rounded-md hover:bg-indigo-200 transition-colors shadow-sm">
+                    🔄 Đồng bộ từ {activeTab === 'elearning' ? 'Trình chiếu' : 'E-learning'}
+                </button>
+            </div>
             <button onClick={() => {
                  if (editorMode === 'form') setMarkdownContent(serializeBlocksToMarkdown(blocks));
                  else setBlocks(parseMarkdownToBlocks(markdownContent));
