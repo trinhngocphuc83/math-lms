@@ -229,7 +229,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
             )}
             
             {type === 'multiple_choice' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-[1em] pb-[1em] items-start">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-[0.8em] pb-[1em] items-start">
                     {(quizData.options || []).map((opt: string, idx: number) => {
                         const isCorrect = idx === quizData.answerIndex;
                         const isSelected = idx === selectedIdx;
@@ -256,9 +256,9 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                             <button 
                                 key={idx} 
                                 onClick={() => !showAnswer && setSelectedIdx(idx)}
-                                className={`w-full text-left p-[1em] rounded-[1em] border-4 ${bgColor} transition-all duration-300 ease-out flex items-center gap-[1em] min-h-[4em]`}
+                                className={`w-full text-left py-[0.5em] px-[0.8em] rounded-[0.8em] border-2 md:border-4 ${bgColor} transition-all duration-300 ease-out flex items-center gap-[0.5em] min-h-[3em]`}
                             >
-                                <div className={`w-[2em] h-[2em] rounded-full flex items-center justify-center font-black shrink-0 transition-colors duration-500 ${circleColor}`} style={{ fontSize: '1.1em' }}>
+                                <div className={`w-[1.8em] h-[1.8em] rounded-full flex items-center justify-center font-black shrink-0 transition-colors duration-500 ${circleColor}`} style={{ fontSize: '1em' }}>
                                     {String.fromCharCode(65 + idx)}
                                 </div>
                                 <div className="font-medium flex-1 prose prose-slate max-w-none [&_.katex]:text-[1.1em]" style={{ fontSize: '0.9em' }}>
@@ -389,7 +389,7 @@ export default function PresentationPage() {
     
     // Reset font size when slide changes
     useEffect(() => {
-        setBaseFontSize(autoFitEnabled ? 52 : 40); // Initial giant size if auto-fit, else 40
+        setBaseFontSize(autoFitEnabled ? 40 : 30); // Initial giant size if auto-fit, else 30
     }, [currentSlideIndex, autoFitEnabled]);
     
     // Iterative font scaling based on overflow
@@ -401,14 +401,13 @@ export default function PresentationPage() {
         // Wait for rendering to stabilize
         const timer = setTimeout(() => {
             const isOverflowing = container.scrollHeight > container.clientHeight;
-            if (isOverflowing && baseFontSize > 24) { // Don't go smaller than 24px
+            if (isOverflowing && baseFontSize > 20) { // Don't go smaller than 20px
                 setBaseFontSize(prev => prev - 2);
             }
         }, 10); // Small delay to let images/katex render
         
         return () => clearTimeout(timer);
     }, [currentSlideIndex, baseFontSize, slides, autoFitEnabled]);
-    
     // Auto scroll when fragment index changes
     useLayoutEffect(() => {
         if (contentBoxRef.current) {

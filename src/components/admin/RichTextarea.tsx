@@ -11,7 +11,7 @@ interface RichTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaEle
 
 export default function RichTextarea({ value, onChange, onValueChange, className = "", ...props }: RichTextareaProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [fontSize, setFontSize] = useState<string>("40");
+  const [fontSize, setFontSize] = useState<string>("30");
   const [textColor, setTextColor] = useState<string>("#ef4444"); // Default red
   const [lineHeight, setLineHeight] = useState<string>("1.5");
   const [isClient, setIsClient] = useState(false);
