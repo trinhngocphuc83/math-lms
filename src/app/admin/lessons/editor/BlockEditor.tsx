@@ -549,7 +549,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                               🪄 Sửa lỗi LaTeX ngay
                            </button>
                         </div>
-                        <div className="bg-white p-5 rounded-2xl shadow-sm border border-indigo-50/50">
+                        <div className="bg-white p-6 rounded-xl shadow-md border-4 border-slate-700 aspect-video overflow-y-auto w-full max-w-4xl mx-auto relative">
                            {block.type === 'md' ? renderQuizContent(block.content) : (
                               <div className="flex flex-col gap-4">
                                  {renderQuizContent(block.content.question || "*(Chưa có câu hỏi)*")}
