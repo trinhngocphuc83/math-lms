@@ -90,6 +90,46 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }, 0);
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (props.onKeyDown) props.onKeyDown(e);
+    
+    const ta = e.currentTarget;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    const val = ta.value;
+
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      if (start === end) {
+        const newValue = val.substring(0, start) + "  " + val.substring(end);
+        if (onValueChange) onValueChange(newValue);
+        else {
+          const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+          onChange(event);
+        }
+        setTimeout(() => {
+          if (textareaRef.current) textareaRef.current.setSelectionRange(start + 2, start + 2);
+        }, 0);
+      }
+    } else if (e.key === 'Backspace' && start === end && start > 0) {
+      const lineStart = val.lastIndexOf('\n', start - 1) + 1;
+      const textBeforeCursor = val.substring(lineStart, start);
+      if (textBeforeCursor.trim() === '' && textBeforeCursor.length > 0) {
+        e.preventDefault();
+        const deleteCount = textBeforeCursor.length % 2 !== 0 ? 1 : 2;
+        const newValue = val.substring(0, start - deleteCount) + val.substring(end);
+        if (onValueChange) onValueChange(newValue);
+        else {
+          const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+          onChange(event);
+        }
+        setTimeout(() => {
+          if (textareaRef.current) textareaRef.current.setSelectionRange(start - deleteCount, start - deleteCount);
+        }, 0);
+      }
+    }
+  };
+
   if (!isClient) return <textarea value={value} onChange={onChange} className={className} {...props} />;
 
   // Lọc bớt class border/focus từ bên ngoài truyền vào vì ta đã có border ở thẻ bọc ngoài
@@ -102,6 +142,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         ref={textareaRef}
         value={value}
         onChange={onChange}
+        onKeyDown={handleKeyDown}
         className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] resize-y bg-transparent ${innerClass}`}
         {...props}
       />
