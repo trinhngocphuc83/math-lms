@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame } from "lucide-react";
 
 interface RichTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   value: string;
@@ -144,6 +144,41 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const afterText = value.substring(end);
 
     const wrappedText = `<span style="text-align: ${align}; display: block">${selectedText}</span>`;
+    const newValue = beforeText + wrappedText + afterText;
+
+    if (onValueChange) {
+      onValueChange(newValue);
+    } else {
+      const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+      onChange(event);
+    }
+
+    setTimeout(() => {
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
+      }
+    }, 0);
+  };
+
+  const handleApplyBox = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (!textareaRef.current) return;
+    
+    const ta = textareaRef.current;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    
+    if (start === end) {
+      alert("Vui lòng bôi đen đoạn văn bản cần đóng khung trước!");
+      return;
+    }
+
+    const selectedText = value.substring(start, end);
+    const beforeText = value.substring(0, start);
+    const afterText = value.substring(end);
+
+    const wrappedText = `<div class="border-2 border-indigo-400 bg-indigo-50/50 p-[1em] rounded-[0.8em] shadow-sm my-[1em]">${selectedText}</div>`;
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
@@ -336,6 +371,18 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             title="Canh đều 2 bên"
           >
             <AlignJustify className="w-4 h-4" />
+          </button>
+        </div>
+
+        {/* Box Group */}
+        <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded p-1 shadow-sm">
+          <button 
+            type="button"
+            onClick={handleApplyBox}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-indigo-700 font-bold hover:bg-indigo-50 rounded transition-colors"
+            title="Đóng khung đoạn văn bản"
+          >
+            <Frame className="w-4 h-4" /> Đóng khung
           </button>
         </div>
 
