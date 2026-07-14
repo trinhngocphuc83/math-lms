@@ -549,7 +549,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                               🪄 Sửa lỗi LaTeX ngay
                            </button>
                         </div>
-                        <div className="bg-white p-6 rounded-xl shadow-md border-4 border-slate-700 aspect-video overflow-y-auto w-full max-w-4xl mx-auto relative prose prose-lg prose-indigo [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap [&_span]:whitespace-pre-wrap prose-p:leading-[1.5] prose-li:leading-[1.5] prose-p:my-[0.3em] prose-li:my-[0.2em] prose-ul:my-[0.3em]">
+                        <div className="bg-white p-6 rounded-xl shadow-md border-4 border-slate-700 aspect-video overflow-y-auto w-full max-w-4xl mx-auto relative prose prose-lg prose-indigo [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap prose-p:leading-[1.5] prose-li:leading-[1.5] prose-p:my-[0.3em] prose-li:my-[0.2em] prose-ul:my-[0.3em]">
                            {block.type === 'md' ? renderQuizContent(block.content) : (
                               <div className="flex flex-col gap-4">
                                  {renderQuizContent(block.content.question || "*(Chưa có câu hỏi)*")}
