@@ -106,6 +106,19 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
   const [previewBlocks, setPreviewBlocks] = React.useState<Set<string>>(new Set());
   const [collapsedBlocks, setCollapsedBlocks] = React.useState<Set<string>>(new Set());
+  const [focusMode, setFocusMode] = React.useState(true);
+
+  const handleFocusBlock = (id: string) => {
+      if (!focusMode) return;
+      setCollapsedBlocks(prev => {
+          if (!prev.has(id) && prev.size === blocks.length - 1) return prev;
+          const newSet = new Set<string>();
+          blocks.forEach(b => {
+              if (b.id !== id) newSet.add(b.id);
+          });
+          return newSet;
+      });
+  };
 
   const toggleCollapse = (id: string) => {
       setCollapsedBlocks(prev => {
@@ -281,12 +294,19 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
   return (
     <div className="flex flex-col gap-6 p-4 h-full overflow-y-auto bg-gray-100">
+       <div className="flex items-center justify-between mb-[-0.5rem]">
+         <label className="flex items-center gap-2 text-[15px] font-bold text-indigo-700 cursor-pointer bg-indigo-50 px-4 py-2 rounded-lg border border-indigo-100 w-max shadow-sm transition-colors hover:bg-indigo-100">
+            <input type="checkbox" checked={focusMode} onChange={e => setFocusMode(e.target.checked)} className="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500" />
+            🎯 Chế độ Tập trung (Tự động thu gọn các khối khác khi làm việc)
+         </label>
+       </div>
+
        {blocks.length === 0 && (
           <div className="text-center py-10"><button onClick={() => addBlock(-1, 'md')} className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 shadow-sm transition-colors">+ Thêm nội dung đầu tiên</button></div>
        )}
 
        {blocks.map((block, idx) => (
-          <div key={block.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden shrink-0 transition-all">
+          <div key={block.id} onClickCapture={() => handleFocusBlock(block.id)} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden shrink-0 transition-all">
               <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center">
                   <div className="flex items-center gap-2 font-bold text-gray-700 text-[15px]">
                      {block.type === 'md' ? <><Type className="w-4 h-4 text-indigo-500"/> Khối Lý Thuyết / Văn Bản</> : <><ListTodo className="w-4 h-4 text-teal-500"/> Khối Trắc Nghiệm Tương Tác</>}
