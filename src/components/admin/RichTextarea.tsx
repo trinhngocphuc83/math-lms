@@ -12,6 +12,15 @@ interface RichTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaEle
 const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => string) => {
   return selectedText.split('\n').map(line => {
     if (line.trim() === '') return line;
+    
+    // Match common Markdown block prefixes to keep them OUTSIDE the wrapping tag
+    // This prevents breaking Markdown parsing (e.g., blockquotes, lists, headings)
+    const prefixRegex = /^(\s*(?:(?:>\s*)+|#+\s+|[-*+]\s+|\d+\.\s+))(.*)$/;
+    const match = line.match(prefixRegex);
+    
+    if (match) {
+        return match[1] + wrapFn(match[2]);
+    }
     return wrapFn(line);
   }).join('\n');
 };
@@ -126,7 +135,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
 
-    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="line-height: ${lineHeight}; display: block">${l}</span>`);
+    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="line-height: ${lineHeight}">${l}</span>`);
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
