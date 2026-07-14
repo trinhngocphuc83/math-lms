@@ -188,9 +188,13 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
 
   return (
     <div className="my-8 bg-white border-2 border-indigo-200 rounded-[2rem] p-6 md:p-8 shadow-[6px_6px_0px_0px_rgba(199,210,254,1)] relative transition-all hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(199,210,254,1)]">
-      <div className="text-lg font-bold text-gray-800 mb-6 flex flex-col md:flex-row items-start md:items-center gap-3">
-         <span className="text-indigo-800 bg-indigo-100 border-2 border-indigo-200 px-4 py-1.5 rounded-2xl text-sm shrink-0 font-black tracking-wide">THỬ THÁCH NHỎ</span>
-         <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed text-slate-700">
+      <div className="mb-6">
+         <div className="flex justify-center mb-4">
+             <span className="text-indigo-800 bg-indigo-100 border-2 border-indigo-200 px-5 py-1.5 rounded-full text-sm font-black tracking-wide uppercase shadow-sm">
+                 Câu hỏi tương tác
+             </span>
+         </div>
+         <div className="prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed text-slate-700">
             <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]} urlTransform={(url) => url}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
             {imgUrl && !cleanQuestion.includes(imgUrl) && !cleanQuestion.includes('![Hình vẽ]') && !cleanQuestion.includes('![Bảng biến thiên]') && (
                 <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
