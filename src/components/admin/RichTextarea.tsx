@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify } from "lucide-react";
 
 interface RichTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
   value: string;
@@ -109,6 +109,41 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const afterText = value.substring(end);
 
     const wrappedText = `<span style="line-height: ${lineHeight}; display: block">${selectedText}</span>`;
+    const newValue = beforeText + wrappedText + afterText;
+
+    if (onValueChange) {
+      onValueChange(newValue);
+    } else {
+      const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+      onChange(event);
+    }
+
+    setTimeout(() => {
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
+      }
+    }, 0);
+  };
+
+  const handleApplyAlign = (align: 'left' | 'center' | 'right' | 'justify', e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (!textareaRef.current) return;
+    
+    const ta = textareaRef.current;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    
+    if (start === end) {
+      alert("Vui lòng bôi đen đoạn văn bản cần canh lề trước!");
+      return;
+    }
+
+    const selectedText = value.substring(start, end);
+    const beforeText = value.substring(0, start);
+    const afterText = value.substring(end);
+
+    const wrappedText = `<span style="text-align: ${align}; display: block">${selectedText}</span>`;
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
@@ -265,6 +300,42 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             className="bg-teal-50 hover:bg-teal-100 text-teal-700 px-3 py-1.5 rounded text-xs font-bold transition-colors border border-teal-200"
           >
             Đổi giãn dòng
+          </button>
+        </div>
+
+        {/* Alignment Group */}
+        <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded p-1 shadow-sm">
+          <button 
+            type="button"
+            onClick={(e) => handleApplyAlign('left', e)}
+            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+            title="Canh trái"
+          >
+            <AlignLeft className="w-4 h-4" />
+          </button>
+          <button 
+            type="button"
+            onClick={(e) => handleApplyAlign('center', e)}
+            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+            title="Canh giữa"
+          >
+            <AlignCenter className="w-4 h-4" />
+          </button>
+          <button 
+            type="button"
+            onClick={(e) => handleApplyAlign('right', e)}
+            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+            title="Canh phải"
+          >
+            <AlignRight className="w-4 h-4" />
+          </button>
+          <button 
+            type="button"
+            onClick={(e) => handleApplyAlign('justify', e)}
+            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
+            title="Canh đều 2 bên"
+          >
+            <AlignJustify className="w-4 h-4" />
           </button>
         </div>
 
