@@ -13,6 +13,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [fontSize, setFontSize] = useState<string>("40");
   const [textColor, setTextColor] = useState<string>("#ef4444"); // Default red
+  const [lineHeight, setLineHeight] = useState<string>("1.5");
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -73,6 +74,41 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const afterText = value.substring(end);
 
     const wrappedText = `<span style="color: ${textColor}">${selectedText}</span>`;
+    const newValue = beforeText + wrappedText + afterText;
+
+    if (onValueChange) {
+      onValueChange(newValue);
+    } else {
+      const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+      onChange(event);
+    }
+
+    setTimeout(() => {
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
+      }
+    }, 0);
+  };
+
+  const handleApplyLineSpacing = (e?: React.MouseEvent | React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!textareaRef.current) return;
+    
+    const ta = textareaRef.current;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    
+    if (start === end) {
+      alert("Vui lòng bôi đen đoạn văn bản cần giãn dòng trước!");
+      return;
+    }
+
+    const selectedText = value.substring(start, end);
+    const beforeText = value.substring(0, start);
+    const afterText = value.substring(end);
+
+    const wrappedText = `<span style="line-height: ${lineHeight}; display: block">${selectedText}</span>`;
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
@@ -203,6 +239,32 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             className="bg-orange-50 hover:bg-orange-100 text-orange-700 px-3 py-1.5 rounded text-xs font-bold transition-colors border border-orange-200"
           >
             Đổi màu
+          </button>
+        </div>
+
+        {/* Line Spacing Group */}
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded px-2 py-1 shadow-sm">
+            <span className="text-xs font-bold text-gray-600">Giãn dòng:</span>
+            <select
+              value={lineHeight}
+              onChange={e => setLineHeight(e.target.value)}
+              className="border-none focus:ring-0 text-sm font-bold p-0 text-teal-700 bg-transparent h-5 cursor-pointer outline-none pl-1"
+            >
+              <option value="1.0">1.0</option>
+              <option value="1.15">1.15</option>
+              <option value="1.5">1.5</option>
+              <option value="2.0">2.0</option>
+              <option value="2.5">2.5</option>
+              <option value="3.0">3.0</option>
+            </select>
+          </div>
+          <button 
+            type="button"
+            onClick={handleApplyLineSpacing}
+            className="bg-teal-50 hover:bg-teal-100 text-teal-700 px-3 py-1.5 rounded text-xs font-bold transition-colors border border-teal-200"
+          >
+            Đổi giãn dòng
           </button>
         </div>
 

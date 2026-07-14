@@ -101,11 +101,11 @@ const customMarkdownComponents: any = {
             );
         }
        return (
-           <li className="flex items-start gap-[0.5em] mb-[0.5em] relative group" {...props}>
+           <li className="flex items-start gap-[0.5em] mb-[0.2em] relative group" {...props}>
               <span className="w-[1.2em] h-[1.2em] mt-[0.2em] shrink-0 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center shadow-sm border border-indigo-200">
                  <CheckCircle2 className="w-[0.8em] h-[0.8em]" />
               </span>
-              <div className="flex-1 min-w-0 leading-[1.6]">{children}</div>
+              <div className="flex-1 min-w-0 leading-[1.5]">{children}</div>
            </li>
        );
    },
@@ -148,7 +148,7 @@ const customMarkdownComponents: any = {
            }
        });
 
-       return <p className="mb-[1em] text-[1.1em] leading-[1.6] text-slate-800 font-medium" {...props}>{newKids}</p>;
+       return <p className="mb-[0.3em] text-[1.1em] leading-[1.5] text-slate-800 font-medium" {...props}>{newKids}</p>;
    }
 };
 
