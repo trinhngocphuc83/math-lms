@@ -15,44 +15,54 @@ export const extractTextFromReactNode = (node: any): string => {
 };
 
 
+const sanitizeStyle = (style: any) => {
+    let parsedStyle: any = {};
+    if (typeof style === 'string') {
+        style.split(';').forEach((rule: string) => {
+            const [key, val] = rule.split(':');
+            if (key && val) {
+                const camelKey = key.trim().replace(/-([a-z])/g, (g: any) => g[1].toUpperCase());
+                parsedStyle[camelKey] = val.trim();
+            }
+        });
+    } else if (style) {
+        parsedStyle = { ...style };
+    }
+    // Xóa bỏ các kích thước cứng để đảm bảo hiển thị chuẩn trên App
+    delete parsedStyle.fontSize;
+    delete parsedStyle.lineHeight;
+    return parsedStyle;
+};
+
 export const appMarkdownComponents: any = {
-   span: ({node, style, children, ...props}: any) => {
-       let parsedStyle: any = {};
-       if (typeof style === 'string') {
-           style.split(';').forEach((rule: string) => {
-               const [key, val] = rule.split(':');
-               if (key && val) {
-                   const camelKey = key.trim().replace(/-([a-z])/g, (g: any) => g[1].toUpperCase());
-                   parsedStyle[camelKey] = val.trim();
-               }
-           });
-       } else if (style) {
-           parsedStyle = style;
-       }
-       return <span style={parsedStyle} {...props}>{children}</span>;
+   div: ({node, style, children, ...props}: any) => {
+       return <div style={sanitizeStyle(style)} {...props}>{children}</div>;
    },
-   h1: ({node, children, ...props}: any) => (
+   span: ({node, style, children, ...props}: any) => {
+       return <span style={sanitizeStyle(style)} {...props}>{children}</span>;
+   },
+   h1: ({node, style, children, ...props}: any) => (
        <div className="not-prose mt-8 mb-5 flex items-center gap-3">
            <div className="w-1.5 h-7 bg-blue-600 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]"></div>
-           <h1 className="text-2xl font-black text-slate-800 tracking-tight m-0" {...props}>{children}</h1>
+           <h1 style={sanitizeStyle(style)} className="text-2xl font-black text-slate-800 tracking-tight m-0" {...props}>{children}</h1>
        </div>
    ),
-   h2: ({node, children, ...props}: any) => (
+   h2: ({node, style, children, ...props}: any) => (
        <div className="not-prose mt-8 mb-4 flex items-center gap-2.5">
            <div className="w-1.5 h-6 bg-indigo-500 rounded-full"></div>
-           <h2 className="text-xl font-bold text-slate-800 tracking-tight m-0" {...props}>{children}</h2>
+           <h2 style={sanitizeStyle(style)} className="text-xl font-bold text-slate-800 tracking-tight m-0" {...props}>{children}</h2>
        </div>
    ),
-   h3: ({node, children, ...props}: any) => (
+   h3: ({node, style, children, ...props}: any) => (
        <div className="not-prose mt-6 mb-3 flex items-center gap-2.5">
            <div className="w-1.5 h-5 bg-emerald-500 rounded-full"></div>
-           <h3 className="text-lg font-bold text-slate-800 tracking-tight m-0" {...props}>{children}</h3>
+           <h3 style={sanitizeStyle(style)} className="text-lg font-bold text-slate-800 tracking-tight m-0" {...props}>{children}</h3>
        </div>
    ),
-   h4: ({node, children, ...props}: any) => <h4 className="text-base font-bold text-slate-800 mt-6 mb-3" {...props}>{children}</h4>,
-   h5: ({node, children, ...props}: any) => <h5 className="text-base font-bold text-slate-800 mt-5 mb-2" {...props}>{children}</h5>,
-   h6: ({node, children, ...props}: any) => <h6 className="text-sm font-bold text-slate-800 mt-5 mb-2 uppercase" {...props}>{children}</h6>,
-   strong: ({node, children, ...props}: any) => {
+   h4: ({node, style, children, ...props}: any) => <h4 style={sanitizeStyle(style)} className="text-base font-bold text-slate-800 mt-6 mb-3" {...props}>{children}</h4>,
+   h5: ({node, style, children, ...props}: any) => <h5 style={sanitizeStyle(style)} className="text-base font-bold text-slate-800 mt-5 mb-2" {...props}>{children}</h5>,
+   h6: ({node, style, children, ...props}: any) => <h6 style={sanitizeStyle(style)} className="text-sm font-bold text-slate-800 mt-5 mb-2 uppercase" {...props}>{children}</h6>,
+   strong: ({node, style, children, ...props}: any) => {
        const text = String(children);
        const lowerText = text.toLowerCase();
        if (lowerText.includes("hướng dẫn giải") || lowerText.includes("lời giải")) {
@@ -87,18 +97,18 @@ export const appMarkdownComponents: any = {
              </span>
           );
        }
-       return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
+       return <strong style={sanitizeStyle(style)} {...props} className="text-slate-900 font-bold">{children}</strong>;
    },
-   li: ({node, children, ...props}: any) => {
+   li: ({node, style, children, ...props}: any) => {
        return (
-           <li className="flex items-start gap-3 mb-3 relative group" {...props}>
+           <li style={sanitizeStyle(style)} className="flex items-start gap-3 mb-3 relative group" {...props}>
               <span className="mt-[0.6rem] shrink-0 w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-sm"></span>
               <div className="flex-1 min-w-0 leading-relaxed text-slate-700">{children}</div>
            </li>
        );
    },
-   p: ({node, children, ...props}: any) => {
+   p: ({node, style, children, ...props}: any) => {
        // Just clean text for paragraphs, no forced icons
-       return <p className="mb-4 text-[1.05rem] sm:text-[1.1rem] leading-[1.8] text-slate-700" {...props}>{children}</p>;
+       return <p style={sanitizeStyle(style)} className="mb-4 text-[1.05rem] sm:text-[1.1rem] leading-[1.8] text-slate-700" {...props}>{children}</p>;
    }
 };
