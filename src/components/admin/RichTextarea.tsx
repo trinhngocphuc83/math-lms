@@ -11,7 +11,7 @@ interface RichTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaEle
 
 export default function RichTextarea({ value, onChange, onValueChange, className = "", ...props }: RichTextareaProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-  const [fontSize, setFontSize] = useState<string>("24");
+  const [fontSize, setFontSize] = useState<string>("40");
   const [textColor, setTextColor] = useState<string>("#ef4444"); // Default red
   const [isClient, setIsClient] = useState(false);
 
@@ -36,7 +36,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
 
-    const sizePx = fontSize ? `${fontSize}px` : '24px';
+    const sizePx = fontSize ? `${fontSize}px` : '40px';
     const wrappedText = `<span style="font-size: ${sizePx}">${selectedText}</span>`;
     const newValue = beforeText + wrappedText + afterText;
 
@@ -97,8 +97,17 @@ export default function RichTextarea({ value, onChange, onValueChange, className
 
   return (
     <div className={`relative flex flex-col border border-gray-300 rounded-lg focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all overflow-hidden bg-white ${className.includes('mt-') ? className.match(/mt-[0-9]+/)?.[0] : ''}`}>
+      {/* Textarea */}
+      <textarea
+        ref={textareaRef}
+        value={value}
+        onChange={onChange}
+        className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] resize-y bg-transparent ${innerClass}`}
+        {...props}
+      />
+      
       {/* Toolbar */}
-      <div className="flex flex-wrap items-center gap-4 px-3 py-2 bg-slate-50 border-b border-gray-200">
+      <div className="flex flex-wrap items-center gap-4 px-3 py-2 bg-slate-50 border-t border-gray-200">
         
         {/* Font Size Group */}
         <div className="flex items-center gap-2">
@@ -157,15 +166,6 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         </div>
 
       </div>
-      
-      {/* Textarea */}
-      <textarea
-        ref={textareaRef}
-        value={value}
-        onChange={onChange}
-        className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] resize-y bg-transparent ${innerClass}`}
-        {...props}
-      />
     </div>
   );
 }
