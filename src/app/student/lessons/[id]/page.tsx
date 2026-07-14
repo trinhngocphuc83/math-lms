@@ -22,7 +22,7 @@ const normalizeAnswer = (s: string) => {
       .replace(/^[xy]=/, ''); // Bỏ qua x= hoặc y= ở đầu đáp án
 };
 
-import { appMarkdownComponents } from '@/components/appMarkdownComponents';
+import { appMarkdownComponents } from '@/components/CustomMarkdownComponents';
 
 const getYouTubeEmbedUrl = (url: string) => {
   if (!url) return '';
