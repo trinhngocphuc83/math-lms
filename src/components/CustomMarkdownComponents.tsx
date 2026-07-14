@@ -14,21 +14,7 @@ export const extractTextFromReactNode = (node: any): string => {
     return '';
 };
 
-const checkRibbon = (children: any, fallback: any) => {
-    const text = extractTextFromReactNode(children).trim();
-    if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
-        return (
-            <div className="not-prose mt-0 mb-4 block w-full">
-                <div className="bg-orange-50 text-orange-700 px-5 py-2 rounded-r-full rounded-l-md border-l-4 border-orange-500 font-bold shadow-sm inline-block w-fit leading-relaxed max-w-full break-words text-lg">
-                    {children}
-                </div>
-            </div>
-        );
-    }
-    return fallback;
-};
 
-// This is the App (E-learning) optimized version of the components
 export const appMarkdownComponents: any = {
    span: ({node, style, children, ...props}: any) => {
        let parsedStyle: any = {};
@@ -45,43 +31,58 @@ export const appMarkdownComponents: any = {
        }
        return <span style={parsedStyle} {...props}>{children}</span>;
    },
-   h1: ({node, children, ...props}: any) => checkRibbon(children, <h1 {...props}>{children}</h1>),
-   h2: ({node, children, ...props}: any) => checkRibbon(children, <h2 {...props}>{children}</h2>),
-   h3: ({node, children, ...props}: any) => checkRibbon(children, <h3 {...props}>{children}</h3>),
-   h4: ({node, children, ...props}: any) => checkRibbon(children, <h4 {...props}>{children}</h4>),
-   h5: ({node, children, ...props}: any) => checkRibbon(children, <h5 {...props}>{children}</h5>),
-   h6: ({node, children, ...props}: any) => checkRibbon(children, <h6 {...props}>{children}</h6>),
+   h1: ({node, children, ...props}: any) => (
+       <div className="not-prose mt-8 mb-5 flex items-center gap-3">
+           <div className="w-1.5 h-7 bg-blue-600 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]"></div>
+           <h1 className="text-2xl font-black text-slate-800 tracking-tight m-0" {...props}>{children}</h1>
+       </div>
+   ),
+   h2: ({node, children, ...props}: any) => (
+       <div className="not-prose mt-8 mb-4 flex items-center gap-2.5">
+           <div className="w-1.5 h-6 bg-indigo-500 rounded-full"></div>
+           <h2 className="text-xl font-bold text-slate-800 tracking-tight m-0" {...props}>{children}</h2>
+       </div>
+   ),
+   h3: ({node, children, ...props}: any) => (
+       <div className="not-prose mt-6 mb-3 flex items-center gap-2.5">
+           <div className="w-1.5 h-5 bg-emerald-500 rounded-full"></div>
+           <h3 className="text-lg font-bold text-slate-800 tracking-tight m-0" {...props}>{children}</h3>
+       </div>
+   ),
+   h4: ({node, children, ...props}: any) => <h4 className="text-base font-bold text-slate-800 mt-6 mb-3" {...props}>{children}</h4>,
+   h5: ({node, children, ...props}: any) => <h5 className="text-base font-bold text-slate-800 mt-5 mb-2" {...props}>{children}</h5>,
+   h6: ({node, children, ...props}: any) => <h6 className="text-sm font-bold text-slate-800 mt-5 mb-2 uppercase" {...props}>{children}</h6>,
    strong: ({node, children, ...props}: any) => {
        const text = String(children);
        const lowerText = text.toLowerCase();
        if (lowerText.includes("hướng dẫn giải") || lowerText.includes("lời giải")) {
           return (
-             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-1 my-1">
-                <span className="text-lg leading-none">📝</span>
-                <span className="text-blue-500 font-bold leading-none text-base">{children}</span>
+             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50/80 border border-blue-100 shadow-sm mt-4 mb-2">
+                <span className="text-base leading-none">📝</span>
+                <span className="text-blue-600 font-bold text-sm tracking-wide uppercase">{children}</span>
              </span>
           );
        }
        if (lowerText.includes("phương pháp giải")) {
           return (
-             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-1 my-1">
-                <span className="text-lg leading-none">💡</span>
-                <span className="text-orange-500 font-bold leading-none text-base">{children}</span>
+             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50/80 border border-amber-100 shadow-sm mt-4 mb-2">
+                <span className="text-base leading-none">💡</span>
+                <span className="text-amber-600 font-bold text-sm tracking-wide uppercase">{children}</span>
              </span>
           );
        }
        if (lowerText.includes("ví dụ mẫu")) {
           return (
-             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-1 my-1">
-                <span className="text-lg leading-none">📌</span>
-                <span className="text-rose-500 font-bold leading-none text-base">{children}</span>
+             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50/80 border border-emerald-100 shadow-sm mt-4 mb-2">
+                <span className="text-base leading-none">📌</span>
+                <span className="text-emerald-600 font-bold text-sm tracking-wide uppercase">{children}</span>
              </span>
           );
        }
        if (lowerText.startsWith("bước")) {
           return (
-             <span className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-400 text-white px-3 py-1 rounded-lg font-black shadow-sm mt-2 mb-1 mr-2">
-               <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></span>
+             <span className="inline-flex items-center gap-2 bg-slate-800 text-white px-2.5 py-1 rounded-md font-bold shadow-sm mt-2 mb-1 mr-2 text-xs uppercase tracking-wider">
+               <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
                {children}
              </span>
           );
@@ -89,85 +90,15 @@ export const appMarkdownComponents: any = {
        return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
    },
    li: ({node, children, ...props}: any) => {
-       const text = extractTextFromReactNode(children).trim();
-       if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
-            return (
-                <li className="list-none mt-0 mb-3" {...props}>
-                    <div className="bg-orange-50 text-orange-700 px-5 py-2 rounded-r-full rounded-l-md border-l-4 border-orange-500 font-bold shadow-sm inline-flex w-fit items-center gap-2 leading-relaxed max-w-full break-words text-lg">
-                        {children}
-                    </div>
-                </li>
-            );
-        }
        return (
            <li className="flex items-start gap-3 mb-3 relative group" {...props}>
-              <span className="w-5 h-5 mt-1 shrink-0 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center shadow-sm border border-indigo-200">
-                 <CheckCircle2 className="w-3 h-3" />
-              </span>
-              <div className="flex-1 min-w-0 leading-relaxed">{children}</div>
+              <span className="mt-[0.6rem] shrink-0 w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-sm"></span>
+              <div className="flex-1 min-w-0 leading-relaxed text-slate-700">{children}</div>
            </li>
        );
    },
    p: ({node, children, ...props}: any) => {
-       const text = extractTextFromReactNode(children).trim();
-       if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
-            return (
-                <div className="not-prose mt-0 mb-4 block w-full">
-                    <div className="bg-orange-50 text-orange-700 px-5 py-2 rounded-r-full rounded-l-md border-l-4 border-orange-500 font-bold shadow-sm inline-block w-fit leading-relaxed max-w-full break-words text-lg">
-                        {children}
-                    </div>
-                </div>
-            );
-       }
-       
-       const kids = React.Children.toArray(children);
-       const newKids: React.ReactNode[] = [];
-       
-       let isStartOfLine = true;
-       kids.forEach((child, index) => {
-           if (typeof child === 'string' && child.trim() === '' && !child.includes('\u00A0')) {
-               newKids.push(child);
-               return;
-           }
-
-           if (isStartOfLine) {
-               let shouldInject = true;
-               
-               if (typeof child === 'string') {
-                   if (/^[\n\s]*\u00A0/.test(child)) {
-                       shouldInject = false;
-                       child = child.replace(/(^[\n\s]*)\u00A0/, '$1');
-                       if (child === '' || child === '\n') {
-                           child += '\u200B';
-                       }
-                   }
-               } else if (React.isValidElement(child)) {
-                   if ((child.props as any)?.className?.includes('math-display')) {
-                       shouldInject = false;
-                   }
-                   const text = extractTextFromReactNode(child).trim();
-                   if (/^(bước|hướng dẫn giải|lời giải|phương pháp|ví dụ mẫu)/i.test(text)) {
-                       shouldInject = false;
-                   }
-               }
-               
-               if (shouldInject) {
-                   newKids.push(
-                       <span key={`icon-${index}`} className="inline-flex items-center justify-center mr-2 align-middle relative -top-[1px] text-orange-500 bg-orange-50 rounded shadow-sm border border-orange-100 w-5 h-5 shrink-0">
-                          <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                       </span>
-                   );
-               }
-               isStartOfLine = false;
-           }
-           
-           newKids.push(child);
-           
-           if (React.isValidElement(child) && child.type === 'br') {
-               isStartOfLine = true;
-           }
-       });
-
-       return <p className="mb-5 text-[1.1rem] leading-[1.8] text-gray-700" {...props}>{newKids}</p>;
+       // Just clean text for paragraphs, no forced icons
+       return <p className="mb-4 text-[1.05rem] sm:text-[1.1rem] leading-[1.8] text-slate-700" {...props}>{children}</p>;
    }
 };
