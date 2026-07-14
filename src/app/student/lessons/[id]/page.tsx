@@ -22,89 +22,7 @@ const normalizeAnswer = (s: string) => {
       .replace(/^[xy]=/, ''); // Bỏ qua x= hoặc y= ở đầu đáp án
 };
 
-const customMarkdownComponents: any = {
-   span: ({node, style, children, ...props}: any) => {
-       let parsedStyle: any = {};
-       if (typeof style === 'string') {
-           style.split(';').forEach((rule: string) => {
-               const [key, val] = rule.split(':');
-               if (key && val) {
-                   const camelKey = key.trim().replace(/-([a-z])/g, (g: any) => g[1].toUpperCase());
-                   parsedStyle[camelKey] = val.trim();
-               }
-           });
-       } else if (style) {
-           parsedStyle = style;
-       }
-       return <span style={parsedStyle} {...props}>{children}</span>;
-   },
-   strong: ({node, children, ...props}: any) => {
-      const text = String(children);
-      if (text.toLowerCase().includes("hướng dẫn giải") || text.toLowerCase().includes("phương pháp giải") || text.toLowerCase().includes("lời giải")) {
-         return (
-            <span className="block mt-10 mb-4 not-prose w-full">
-               <span className="bg-gradient-to-r from-orange-500 to-amber-500 text-white px-6 py-3 rounded-t-2xl font-black flex items-center gap-3 w-max max-w-full shadow-md">
-                  <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center shrink-0 shadow-inner text-lg">💡</span>
-                  {text.toUpperCase()}
-               </span>
-               <span className="bg-white border-l-4 border-orange-400 p-4 rounded-b-2xl rounded-tr-2xl shadow-sm border border-slate-100 flex items-center gap-2 mb-2 w-full">
-                  <span className="text-orange-600 font-bold text-sm uppercase flex items-center gap-2">
-                     <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}><path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>
-                     Các bước chi tiết bên dưới
-                  </span>
-               </span>
-            </span>
-         );
-      }
-      if (text.toLowerCase().startsWith("bước")) {
-         return (
-            <span className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-rose-400 text-white px-3 py-1 rounded-lg font-black shadow-sm mt-3 mb-1 mr-2">
-              <span className="w-2 h-2 bg-white rounded-full animate-pulse"></span>
-              {children}
-            </span>
-         );
-      }
-      return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
-   },
-   li: ({node, children, ...props}: any) => (
-       <li className="flex items-start gap-3 mb-3 relative group" {...props}>
-          <span className="w-5 h-5 mt-1 shrink-0 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center shadow-sm border border-indigo-200">
-             <CheckCircle2 className="w-3 h-3" />
-          </span>
-          <div className="flex-1 min-w-0">{children}</div>
-       </li>
-   ),
-   p: ({node, children, ...props}: any) => {
-       const kids = React.Children.toArray(children);
-       const newKids: React.ReactNode[] = [];
-       
-       let isStartOfLine = true;
-       kids.forEach((child, index) => {
-           if (isStartOfLine) {
-               let shouldInject = true;
-               if (typeof child === 'string' && child.trim() === '') shouldInject = false;
-               if (React.isValidElement(child) && child.props && (child.props as any).className && (child.props as any).className.includes('math-display')) shouldInject = false;
-               
-               if (shouldInject) {
-                   newKids.push(
-                       <span key={`icon-${index}`} className="inline-flex items-center justify-center mr-2 align-middle relative -top-[2px] text-orange-500 bg-orange-50 rounded shadow-sm border border-orange-100 w-5 h-5 shrink-0">
-                          <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                       </span>
-                   );
-               }
-               isStartOfLine = false;
-           }
-           
-           newKids.push(child);
-           
-           if (React.isValidElement(child) && child.type === 'br') {
-               isStartOfLine = true;
-           }
-       });
-
-       return <p className="mb-6 text-[1.1rem] leading-[1.8] text-gray-700" {...props}>{newKids}</p>;
-   }
-};
+import { appMarkdownComponents } from '@/components/appMarkdownComponents';
 
 const getYouTubeEmbedUrl = (url: string) => {
   if (!url) return '';
@@ -273,7 +191,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
       <div className="text-lg font-bold text-gray-800 mb-6 flex flex-col md:flex-row items-start md:items-center gap-3">
          <span className="text-indigo-800 bg-indigo-100 border-2 border-indigo-200 px-4 py-1.5 rounded-2xl text-sm shrink-0 font-black tracking-wide">THỬ THÁCH NHỎ</span>
          <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed text-slate-700">
-            <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]} urlTransform={(url) => url}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
+            <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]} urlTransform={(url) => url}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
             {imgUrl && !cleanQuestion.includes(imgUrl) && !cleanQuestion.includes('![Hình vẽ]') && !cleanQuestion.includes('![Bảng biến thiên]') && (
                 <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
             )}
@@ -305,7 +223,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      isChecked && !isCorrect && !isWrong ? 'border-gray-200 bg-gray-50 text-gray-400 opacity-50' : ''
                   }`}
                >
-                  <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                  <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                </button>
              );
           })}
@@ -341,7 +259,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      {['A','B','C','D'][idx]}
                   </div>
                   <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
-                     <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                     <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                   </div>
                </button>
              );
@@ -363,7 +281,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      <div className="flex items-start gap-3">
                         <div className="font-bold text-gray-500 w-6">{['A','B','C','D'][idx] || 'A'}.</div>
                         <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
-                           <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(stmt.content || stmt.text || '').replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                           <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(stmt.content || stmt.text || '').replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                         </div>
                      </div>
                      <div className="flex items-center gap-2 shrink-0 md:ml-auto">
@@ -547,7 +465,7 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
                    <ReactMarkdown 
                       remarkPlugins={[remarkMath, remarkBreaks]} 
                       rehypePlugins={[rehypeKatex, rehypeRaw]}
-                      components={customMarkdownComponents}
+                      components={appMarkdownComponents}
                    >
                      {p.content.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}
                    </ReactMarkdown>
