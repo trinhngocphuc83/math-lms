@@ -2,8 +2,9 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown } from "lucide-react";
+import TextareaAutosize from 'react-textarea-autosize';
 
-interface RichTextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+interface RichTextareaProps extends Omit<React.ComponentProps<typeof TextareaAutosize>, 'onChange' | 'value'> {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onValueChange?: (value: string) => void;
@@ -364,7 +365,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }
   };
 
-  if (!isClient) return <textarea value={value} onChange={onChange} className={className} {...props} />;
+  if (!isClient) return <TextareaAutosize minRows={props.rows || 3} maxRows={30} value={value} onChange={onChange} className={className} {...props} />;
 
   // Lọc bớt class border/focus từ bên ngoài truyền vào vì ta đã có border ở thẻ bọc ngoài
   const innerClass = className.replace(/border-[a-zA-Z0-9-]+|rounded-[a-zA-Z0-9-]+|focus:[a-zA-Z0-9-]+|ring[a-zA-Z0-9-:]*/g, '').trim();
@@ -372,12 +373,14 @@ export default function RichTextarea({ value, onChange, onValueChange, className
   return (
     <div className={`relative flex flex-col border border-gray-300 rounded-lg focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all overflow-hidden bg-white ${className.includes('mt-') ? className.match(/mt-[0-9]+/)?.[0] : ''}`}>
       {/* Textarea */}
-      <textarea
+      <TextareaAutosize
         ref={textareaRef}
         value={value}
         onChange={onChange}
         onKeyDown={handleKeyDown}
-        className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] resize-y bg-transparent ${innerClass}`}
+        minRows={props.rows || 3}
+        maxRows={30}
+        className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] bg-transparent ${innerClass}`}
         {...props}
       />
       

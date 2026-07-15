@@ -196,7 +196,7 @@ export default function AdminLayout({
         </header>
 
         {/* Dynamic Content */}
-        <div className="p-8 flex-1 bg-gray-50">
+        <div className={`flex-1 bg-gray-50 ${(pathname.includes('/editor') || pathname.includes('/edit')) ? 'p-0' : 'p-8'}`}>
           {children}
         </div>
       </main>
