@@ -1183,7 +1183,7 @@ function EditorContent() {
   };
 
   const handleCopyUploadPrompt = () => {
-    navigator.clipboard.writeText("Đây là các tài liệu đợt tiếp theo. BẠN CHỈ CẦN XÁC NHẬN 'Đã nhận ảnh đợt này', TUYỆT ĐỐI CHƯA SOẠN BÀI VỘI.");
+    navigator.clipboard.writeText("Đây là các tài liệu đợt tiếp theo. BẠN CHỈ CẦN XÁC NHẬN 'Đã nhận ảnh đợt này', TUYỆT ĐỐI CHƯA LÀM GÌ VỘI.");
     alert("Đã copy lệnh tải ảnh!\n\nThầy/Cô hãy dán lệnh này kèm 10 ảnh vào Gemini. Nhắc lại thao tác này cho đến khi tải hết toàn bộ ảnh.");
   };
 
@@ -1198,9 +1198,10 @@ function EditorContent() {
   const handleCopyPrompt = () => {
     const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
     const prompt = getPrompt(isPractice, activeTab === 'presentation');
+    const taskName = isPractice ? "bóc tách thành các câu hỏi trắc nghiệm/tự luận" : "soạn thành 1 bài giảng duy nhất";
 
-    navigator.clipboard.writeText(`TÔI ĐÃ TẢI XONG TOÀN BỘ ẢNH.\nBây giờ hãy BẮT ĐẦU tổng hợp TẤT CẢ các ảnh tôi đã gửi từ nãy đến giờ và soạn thành 1 bài giảng duy nhất theo định dạng sau:\n\n${prompt}\n\nLƯU Ý: Nếu bài dài quá dung lượng 1 tin nhắn, hãy dừng lại và in '[CÒN TIẾP]', tôi sẽ gõ 'Tiếp tục' để bạn làm nốt.`);
-    alert("Đã copy lệnh BẮT ĐẦU SOẠN BÀI!\n\nThầy/Cô dán lệnh này vào Gemini (không kèm ảnh) để yêu cầu nó bắt đầu tổng hợp thành 1 bài giảng xuyên suốt nhé.");
+    navigator.clipboard.writeText(`TÔI ĐÃ TẢI XONG TOÀN BỘ ẢNH.\nBây giờ hãy BẮT ĐẦU tổng hợp TẤT CẢ các ảnh tôi đã gửi từ nãy đến giờ và ${taskName} theo định dạng sau:\n\n${prompt}\n\nLƯU Ý: Nếu dữ liệu dài quá dung lượng 1 tin nhắn, hãy dừng lại và in '[CÒN TIẾP]', tôi sẽ gõ 'Tiếp tục' để bạn làm nốt.`);
+    alert(`Đã copy lệnh BẮT ĐẦU ${isPractice ? 'BÓC TÁCH ĐỀ' : 'SOẠN BÀI'}!\n\nThầy/Cô dán lệnh này vào Gemini (không kèm ảnh) để yêu cầu nó bắt đầu tổng hợp xuyên suốt nhé.`);
   };
 
   const handleInsertManualMarkdown = (closeModal: boolean = true) => {
@@ -1854,14 +1855,14 @@ function EditorContent() {
         <div className="fixed inset-0 bg-black/60 z-[80] flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[95vh] flex flex-col shadow-2xl overflow-hidden relative border border-gray-100">
             <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-emerald-50/50 shrink-0">
-              <h2 className="text-lg font-bold text-emerald-800 flex items-center gap-2"><Bot className="w-5 h-5" /> Tạo bài bằng Gemini Web (Thủ công)</h2>
+              <h2 className="text-lg font-bold text-emerald-800 flex items-center gap-2"><Bot className="w-5 h-5" /> {moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng') ? 'Bóc tách đề bằng Gemini Web' : 'Tạo bài bằng Gemini Web'} (Thủ công)</h2>
               <button onClick={() => setIsBackupModalOpen(false)} className="p-2 hover:bg-gray-200 rounded-full transition-colors"><X className="w-5 h-5 text-gray-500" /></button>
             </div>
             
             <div className="p-6 flex flex-col gap-6 overflow-y-auto min-h-0">
               <div className="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-xl shadow-sm">
                 <p className="text-blue-900 text-[0.95rem] font-medium mb-3 leading-relaxed">
-                  <strong>Hướng dẫn soạn bài liền mạch:</strong>
+                  <strong>Hướng dẫn {moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng') ? 'bóc tách đề' : 'soạn bài'} liền mạch:</strong>
                 </p>
                 <div className="flex flex-col gap-3">
                   <div className="bg-white p-3 rounded-lg border border-gray-200">
@@ -1876,11 +1877,11 @@ function EditorContent() {
                     <p className="text-sm font-bold text-blue-800 mb-1">B. DÀNH CHO BÀI DÀI (Hơn 10 ảnh - Cần chia đợt tải)</p>
                     <p className="text-xs text-gray-500 mb-2"><strong>Bước 1:</strong> Dùng lệnh này để tải dần ảnh lên (mỗi lần 10 ảnh).</p>
                     <button onClick={handleCopyUploadPrompt} className="flex items-center justify-center gap-2 w-full py-2 bg-blue-50 border border-blue-300 text-blue-700 hover:bg-blue-100 font-bold rounded-lg transition-all text-sm mb-3">
-                      <Copy className="w-4 h-4" /> Copy lệnh Tải Ảnh (Chỉ nhận, không soạn)
+                      <Copy className="w-4 h-4" /> Copy lệnh Tải Ảnh (Chỉ nhận, chưa xử lý)
                     </button>
-                    <p className="text-xs text-gray-500 mb-2"><strong>Bước 2:</strong> Khi tải xong toàn bộ, dùng lệnh này để ép máy soạn 1 bài liền mạch.</p>
+                    <p className="text-xs text-gray-500 mb-2"><strong>Bước 2:</strong> Khi tải xong toàn bộ, dùng lệnh này để ép máy xử lý 1 lần liền mạch.</p>
                     <button onClick={handleCopyPrompt} className="flex items-center justify-center gap-2 w-full py-2 bg-emerald-50 border border-emerald-500 text-emerald-700 hover:bg-emerald-100 font-bold rounded-lg transition-all text-sm">
-                      <Copy className="w-4 h-4" /> Copy lệnh Bắt Đầu Soạn (Kèm cấu trúc)
+                      <Copy className="w-4 h-4" /> Copy lệnh Bắt Đầu Xử Lý (Kèm cấu trúc)
                     </button>
                   </div>
                 </div>
