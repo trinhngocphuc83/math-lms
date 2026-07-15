@@ -102,11 +102,20 @@ const customMarkdownComponents: any = {
    }
 };
 
-export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, globalSourceImage }: { blocks: Block[], onChangeBlocks: (b: Block[]) => void, onTriggerCrop: (meta: any, targetBlockId: string) => void, globalSourceImage?: string }) {
+export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, globalSourceImage, globalTriggerBankModal }: { blocks: Block[], onChangeBlocks: (b: Block[]) => void, onTriggerCrop: (meta: any, targetBlockId: string) => void, globalSourceImage?: string, globalTriggerBankModal?: number }) {
 
   const [previewBlocks, setPreviewBlocks] = React.useState<Set<string>>(new Set());
   const [collapsedBlocks, setCollapsedBlocks] = React.useState<Set<string>>(new Set());
   const [focusMode, setFocusMode] = React.useState(true);
+  const [isBankModalOpen, setIsBankModalOpen] = React.useState(false);
+  const [insertIndex, setInsertIndex] = React.useState(-1);
+
+  React.useEffect(() => {
+     if (globalTriggerBankModal && globalTriggerBankModal > 0) {
+        setInsertIndex(blocks.length - 1);
+        setIsBankModalOpen(true);
+     }
+  }, [globalTriggerBankModal]);
 
   const handleFocusBlock = (id: string) => {
       if (!focusMode) return;
@@ -128,8 +137,6 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
           return newSet;
       });
   };
-  const [isBankModalOpen, setIsBankModalOpen] = React.useState(false);
-  const [insertIndex, setInsertIndex] = React.useState(-1);
 
   const handleInsertFromBank = (questions: any[]) => {
       const newBlocks = [...blocks];
@@ -302,7 +309,10 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
        </div>
 
        {blocks.length === 0 && (
-          <div className="text-center py-10"><button onClick={() => addBlock(-1, 'md')} className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 shadow-sm transition-colors">+ Thêm nội dung đầu tiên</button></div>
+          <div className="text-center py-10 flex flex-col items-center gap-4">
+             <button onClick={() => addBlock(-1, 'md')} className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 shadow-sm transition-colors">+ Thêm nội dung đầu tiên</button>
+             <button onClick={() => { setInsertIndex(-1); setIsBankModalOpen(true); }} className="flex items-center gap-2 font-bold text-orange-600 bg-orange-50 hover:bg-orange-100 px-4 py-2 rounded-lg border border-orange-200 transition-colors shadow-sm"><Database className="w-4 h-4"/> Hoặc Rút Đề từ Ngân hàng</button>
+          </div>
        )}
 
        {blocks.map((block, idx) => (
