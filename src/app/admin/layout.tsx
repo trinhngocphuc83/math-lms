@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { 
   BookOpen, 
   List, 
@@ -18,6 +18,7 @@ import {
   DollarSign,
   Library
 } from "lucide-react";
+import { createClient } from "@/utils/supabase/client";
 
 export default function AdminLayout({
   children,
@@ -25,7 +26,40 @@ export default function AdminLayout({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
+  const router = useRouter();
   const [isCollapsed, setIsCollapsed] = useState(false);
+  const [userRole, setUserRole] = useState("admin");
+  const [userPermissions, setUserPermissions] = useState<string[]>([]);
+  const [isSessionLoading, setIsSessionLoading] = useState(true);
+  const [userName, setUserName] = useState("Admin");
+
+  const supabase = createClient();
+
+  useEffect(() => {
+    const initSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      if (session?.user) {
+        const role = session.user.user_metadata?.role || 'admin';
+        setUserRole(role);
+        setUserPermissions(session.user.user_metadata?.permissions || []);
+        setUserName(session.user.user_metadata?.full_name || (role === 'admin' ? 'Admin' : 'Giáo viên'));
+        
+        // Simple Route Protection
+        if (role === 'teacher' && pathname !== '/admin/dashboard') {
+           const allowed = session.user.user_metadata?.permissions || [];
+           const isProtectedPath = !allowed.some((p: string) => pathname.startsWith(p));
+           // Settings and Teachers are strictly forbidden
+           if (pathname.startsWith('/admin/settings') || pathname.startsWith('/admin/teachers') || (isProtectedPath && pathname !== '/admin/dashboard')) {
+             router.push('/admin/dashboard');
+           }
+        }
+      } else {
+        router.push('/');
+      }
+      setIsSessionLoading(false);
+    };
+    initSession();
+  }, [pathname, router]);
 
   const adminMenu = [
     {
@@ -66,6 +100,23 @@ export default function AdminLayout({
     }
   ];
 
+  // Filter Menu Items Based on RBAC
+  const filteredMenu = adminMenu.map(group => {
+    return {
+      ...group,
+      items: group.items.filter(item => {
+        if (userRole === 'admin') return true;
+        if (item.name === 'Dashboard') return true;
+        // Strictly block for teachers
+        if (item.href.startsWith('/admin/settings') || item.href === '/admin/teachers') return false;
+        // Check permissions array
+        return userPermissions.includes(item.href);
+      })
+    };
+  }).filter(group => group.items.length > 0);
+
+  if (isSessionLoading) return <div className="h-screen bg-gray-50 flex items-center justify-center">Đang tải...</div>;
+
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
       {/* Admin Sidebar (Màu Đen) với tính năng Thu gọn */}
@@ -95,7 +146,7 @@ export default function AdminLayout({
         </div>
 
         <nav className="flex-1 overflow-y-auto mt-4 pb-10 overflow-x-hidden no-scrollbar">
-          {adminMenu.map((group, gIdx) => (
+          {filteredMenu.map((group, gIdx) => (
             <div key={gIdx} className="mb-6 px-4">
               {!isCollapsed && (
                 <p className="text-[11px] font-bold text-zinc-500 uppercase tracking-wider mb-3 px-2 whitespace-nowrap">
@@ -104,7 +155,7 @@ export default function AdminLayout({
               )}
               <ul className="space-y-1">
                 {group.items.map((item) => {
-                  const isActive = pathname?.startsWith(item.href);
+                  const isActive = pathname === item.href || (pathname?.startsWith(item.href) && item.href !== '/admin/dashboard');
                   return (
                     <li key={item.name}>
                       <Link 
@@ -135,11 +186,11 @@ export default function AdminLayout({
           <h2 className="text-xl font-bold text-gray-800">Khu vực Quản trị</h2>
           <div className="flex items-center gap-4">
             <div className="text-right hidden md:block">
-              <p className="text-sm font-bold text-gray-800">Admin</p>
-              <p className="text-xs text-gray-500">Quản lý tối cao</p>
+              <p className="text-sm font-bold text-gray-800">{userName}</p>
+              <p className="text-xs text-gray-500">{userRole === 'admin' ? 'Quản lý tối cao' : 'Giáo viên'}</p>
             </div>
             <div className="w-10 h-10 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center font-bold border-2 border-teal-200 cursor-pointer">
-              AD
+              {userName.substring(0, 2).toUpperCase()}
             </div>
           </div>
         </header>

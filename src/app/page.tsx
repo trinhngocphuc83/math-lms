@@ -49,7 +49,7 @@ export default function LoginPage() {
           .eq('id', userId)
           .single();
 
-        if (profile?.role === 'admin') {
+        if (profile?.role === 'admin' || profile?.role === 'teacher') {
           router.push("/admin/dashboard");
         } else {
           router.push("/student/dashboard");
