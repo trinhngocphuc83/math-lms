@@ -1154,7 +1154,13 @@ function EditorContent() {
       const text = result.response.text();
       
       const separator = markdownContent.length > 0 && !markdownContent.endsWith('---') ? "\\n\\n---\\n\\n" : "\\n\\n";
-      setMarkdownContent(prev => prev ? prev + separator + text : text);
+      setMarkdownContent((prev: string) => {
+        const newMarkdown = prev ? prev + separator + text : text;
+        if (editorMode === 'form') {
+           setBlocks(parseMarkdownToBlocks(newMarkdown));
+        }
+        return newMarkdown;
+      });
       
       if (pendingImages.length > 0) {
         setLastAnalyzedImages(pendingImages.map(img => img.previewUrl));
@@ -1202,7 +1208,13 @@ function EditorContent() {
       return;
     }
     const separator = markdownContent.length > 0 && !markdownContent.endsWith('---') ? "\n\n---\n\n" : "\n\n";
-    setMarkdownContent(prev => prev ? prev + separator + manualGeminiInput : manualGeminiInput);
+    setMarkdownContent((prev: string) => {
+        const newMarkdown = prev ? prev + separator + manualGeminiInput : manualGeminiInput;
+        if (editorMode === 'form') {
+           setBlocks(parseMarkdownToBlocks(newMarkdown));
+        }
+        return newMarkdown;
+    });
     setManualGeminiInput("");
     if (closeModal) {
       setIsBackupModalOpen(false);
