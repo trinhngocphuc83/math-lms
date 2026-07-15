@@ -16,7 +16,10 @@ import {
   ChevronRight,
   Sparkles,
   DollarSign,
-  Library
+  Library,
+  ChevronUp,
+  ChevronDown,
+  X
 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
@@ -32,6 +35,7 @@ export default function AdminLayout({
   const [userPermissions, setUserPermissions] = useState<string[]>([]);
   const [isSessionLoading, setIsSessionLoading] = useState(true);
   const [userName, setUserName] = useState("Admin");
+  const [isTopbarHidden, setIsTopbarHidden] = useState(false);
 
   const supabase = createClient();
 
@@ -182,18 +186,33 @@ export default function AdminLayout({
       {/* Main Content Area */}
       <main className="flex-1 overflow-y-auto flex flex-col h-screen relative">
         {/* Topbar Admin */}
-        <header className="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center sticky top-0 z-10 shadow-sm">
-          <h2 className="text-xl font-bold text-gray-800">Khu vực Quản trị</h2>
-          <div className="flex items-center gap-4">
-            <div className="text-right hidden md:block">
-              <p className="text-sm font-bold text-gray-800">{userName}</p>
-              <p className="text-xs text-gray-500">{userRole === 'admin' ? 'Quản lý tối cao' : 'Giáo viên'}</p>
+        {!isTopbarHidden && (
+          <header className="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center sticky top-0 z-10 shadow-sm transition-all">
+            <div className="flex items-center gap-3">
+              <h2 className="text-xl font-bold text-gray-800">Khu vực Quản trị</h2>
+              <button onClick={() => setIsTopbarHidden(true)} className="p-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-500 transition-colors" title="Thu gọn Topbar">
+                <X className="w-4 h-4" />
+              </button>
             </div>
-            <div className="w-10 h-10 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center font-bold border-2 border-teal-200 cursor-pointer">
-              {userName.substring(0, 2).toUpperCase()}
+            <div className="flex items-center gap-4">
+              <div className="text-right hidden md:block">
+                <p className="text-sm font-bold text-gray-800">{userName}</p>
+                <p className="text-xs text-gray-500">{userRole === 'admin' ? 'Quản lý tối cao' : 'Giáo viên'}</p>
+              </div>
+              <div className="w-10 h-10 bg-teal-100 text-teal-700 rounded-full flex items-center justify-center font-bold border-2 border-teal-200 cursor-pointer">
+                {userName.substring(0, 2).toUpperCase()}
+              </div>
             </div>
+          </header>
+        )}
+        
+        {isTopbarHidden && (
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 z-50">
+            <button onClick={() => setIsTopbarHidden(false)} className="bg-white border border-t-0 border-gray-200 px-6 py-1 rounded-b-xl shadow-md text-gray-400 hover:text-gray-600 transition-all hover:pt-2 flex items-center justify-center" title="Mở rộng Topbar">
+              <ChevronDown className="w-5 h-5" />
+            </button>
           </div>
-        </header>
+        )}
 
         {/* Dynamic Content */}
         <div className={`flex-1 bg-gray-50 ${(pathname.includes('/editor') || pathname.includes('/edit')) ? 'p-0' : 'p-8'}`}>
