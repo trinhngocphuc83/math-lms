@@ -2,10 +2,37 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { ShieldAlert } from "lucide-react";
+import { createClient } from "@/utils/supabase/client";
 
 export default function SecurityGuard() {
   const [isBlackout, setIsBlackout] = useState(false);
   const [message, setMessage] = useState("");
+  const [shouldBypass, setShouldBypass] = useState(false); // Default to secure until admin is confirmed
+  const supabase = createClient();
+
+  useEffect(() => {
+    const initSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      // Default assume no bypass
+      let bypass = false;
+
+      if (session?.user) {
+        const role = session.user.user_metadata?.role;
+        const permissions = session.user.user_metadata?.permissions || [];
+        
+        if (role === 'admin') {
+          bypass = true; // Admin master
+        } else if (role === 'teacher' && permissions.length === 12) {
+          bypass = true; // Teacher with full 12 permissions
+        }
+      }
+
+      setShouldBypass(bypass);
+    };
+
+    initSession();
+  }, []);
 
   const triggerBlackout = useCallback((msg: string) => {
     setMessage(msg);
@@ -16,7 +43,6 @@ export default function SecurityGuard() {
       if (navigator.clipboard) {
         navigator.clipboard.writeText('');
       } else {
-        // Fallback for older browsers
         const input = document.createElement('input');
         document.body.appendChild(input);
         input.value = ' ';
@@ -33,6 +59,8 @@ export default function SecurityGuard() {
   }, []);
 
   useEffect(() => {
+    if (shouldBypass) return; // Không cài đặt sự kiện nếu được bypass
+
     // 1. Chặn chuột phải (Context Menu)
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
@@ -106,10 +134,6 @@ export default function SecurityGuard() {
       }
     };
 
-    // Cảnh báo thêm với Mac (Cmd + Shift + 4/3/5 cho screenshot)
-    // Trình duyệt không bắt được phím tắt hệ thống của Mac, nhưng việc focus mất có thể là 1 dấu hiệu
-    // Tuy nhiên nó có thể gây false positive nên ta chỉ dùng các phím cơ bản.
-
     // Đăng ký sự kiện
     document.addEventListener("contextmenu", handleContextMenu);
     document.addEventListener("selectstart", handleSelectStart);
@@ -144,7 +168,7 @@ export default function SecurityGuard() {
     `;
     document.head.appendChild(style);
 
-    // Bắt sự kiện Print Media (Đôi khi user bấm print menu từ trình duyệt)
+    // Bắt sự kiện Print Media
     const beforePrint = () => {
       triggerBlackout("Hành vi In ấn bị từ chối!");
     };
@@ -159,7 +183,7 @@ export default function SecurityGuard() {
       window.removeEventListener("beforeprint", beforePrint);
       document.head.removeChild(style);
     };
-  }, [triggerBlackout]);
+  }, [shouldBypass, triggerBlackout]);
 
   if (!isBlackout) return null;
 
