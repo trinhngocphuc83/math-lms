@@ -532,6 +532,70 @@ const serializeBlocksToMarkdown = (blocks: Block[]): string => {
 };
 
 const getPrompt = (isPractice: boolean, isPresentation: boolean) => {
+  if (isPractice) {
+      return `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
+Hãy phân tích nội dung các ảnh/tài liệu này và BÓC TÁCH TOÀN BỘ CÁC CÂU HỎI BÀI TẬP thành các khối mã \`\`\`quiz\`\`\` định dạng JSON.
+YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
+1. [KHÔNG VIẾT LÝ THUYẾT]: Tuyệt đối KHÔNG viết câu mở đầu, KHÔNG tóm tắt lý thuyết, KHÔNG giải thích. CHỈ ĐƯỢC PHÉP TRẢ VỀ CÁC ĐOẠN MÃ \`\`\`quiz\`\`\`.
+2. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
+- CÔNG THỨC PHẢI LIỀN MẠCH TRÊN 1 DÒNG: Tuyệt đối không được bẻ gãy, ngắt dòng (enter) giữa chừng một công thức (trừ hệ phương trình).
+- MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
+- Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
+3. [LỜI GIẢI CHI TIẾT]: Mỗi câu hỏi BẮT BUỘC phải có trường \`"answer"\` chứa lời giải chi tiết, giải thích rõ ràng từng bước.
+4. Mỗi câu hỏi trắc nghiệm/tự luận PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Cấu trúc JSON có các loại sau:
+
+LOẠI 1: TRẮC NGHIỆM 4 LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
+\`\`\`quiz
+{
+  "type": "multiple_choice",
+  "question": "Đạo hàm của hàm số $\\color{blue} y = x^2 + 2x$ là?",
+  "options": ["$\\color{blue} y' = 2x + 2$", "$\\color{blue} y' = x + 2$", "$\\color{blue} y' = 2x$", "$\\color{blue} y' = 2$"],
+  "answerIndex": 0,
+  "answer": "Sử dụng công thức đạo hàm cơ bản: $\\color{blue} (x^n)' = n.x^{n-1}$. Ta có $\\color{blue} y' = 2x + 2$."
+}
+\`\`\`
+
+LOẠI 2: TRẮC NGHIỆM ĐÚNG/SAI (BAREM 2025 - 4 MỆNH ĐỀ)
+\`\`\`quiz
+{
+  "type": "true_false_cluster",
+  "question": "Cho hàm số $\\color{blue} y = x^3 - 3x$.",
+  "options": [
+    { "id": "a", "content": "Hàm số đồng biến trên $\\color{blue} (1; +\\\\infty)$.", "isTrue": true },
+    { "id": "b", "content": "Hàm số đạt cực đại tại $\\color{blue} x = 1$.", "isTrue": false },
+    { "id": "c", "content": "Đồ thị cắt trục hoành tại 3 điểm.", "isTrue": true },
+    { "id": "d", "content": "Giá trị cực tiểu là $\\color{blue} y = -2$.", "isTrue": true }
+  ],
+  "answer": "Ta có $\\color{blue} y' = 3x^2 - 3$. $\\color{blue} y' = 0 \\\\Leftrightarrow x = 1 \\\\text{ hoặc } x = -1$.\na) Đúng vì $\\color{blue} y' > 0$ khi $\\color{blue} x > 1$.\nb) Sai vì $\\color{blue} y'$ đổi dấu từ âm sang dương qua $\\color{blue} x = 1$ nên đây là điểm cực tiểu.\nc) Đúng vì phương trình $\\color{blue} x^3 - 3x = 0$ có 3 nghiệm phân biệt.\nd) Đúng vì thay $\\color{blue} x = 1$ ta được $\\color{blue} y = -2$."
+}
+\`\`\`
+
+LOẠI 3: CÂU TRẢ LỜI NGẮN (kết quả ngắn gọn: 1 số, 1 biểu thức, 1 từ)
+\`\`\`quiz
+{
+  "type": "short_answer",
+  "question": "Tính giá trị của biểu thức $\\color{blue} \\\\sqrt{9} + \\\\sqrt{16}$.",
+  "exactAnswer": "7",
+  "answer": "Ta có $\\color{blue} \\\\sqrt{9} = 3$ và $\\color{blue} \\\\sqrt{16} = 4$, nên tổng là $\\color{blue} 3 + 4 = 7$."
+}
+\`\`\`
+
+LOẠI 4: TỰ LUẬN
+\`\`\`quiz
+{
+  "type": "essay",
+  "question": "Giải phương trình $\\color{blue} x^2 - 4x + 3 = 0$.",
+  "answer": "Ta có $\\color{blue} \\\\Delta = (-4)^2 - 4(1)(3) = 4 > 0$. Phương trình có 2 nghiệm phân biệt $\\color{blue} x_1 = 3, x_2 = 1$."
+}
+\`\`\`
+
+GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
+- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$ và CÓ $\\color{blue}$.
+- TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Nếu không làm điều này, JSON sẽ BỊ LỖI và bóc tách sẽ hỏng.
+- ĐỪNG xuất ra bất kỳ giải thích chữ nào bên ngoài các khối \`\`\`quiz\`\`\`. Chỉ xuất các khối quiz.`;
+  }
+
   if (!isPresentation) {
       return `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, CHI TIẾT, DỄ HIỂU.
