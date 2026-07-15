@@ -72,8 +72,8 @@ export default function LoginPage() {
         
         {/* Header Section */}
         <div className="bg-[#0f6f60] p-8 text-center text-white flex flex-col items-center">
-          <img src="/logo.jpg" alt="Digital Math by Phuc" className="w-48 sm:w-56 h-auto object-contain mx-auto mb-3 drop-shadow-lg" />
-          <p className="text-teal-100 text-sm font-medium tracking-wide">Nền tảng Quản lý Học tập môn Toán</p>
+          <img src="/logo.jpg" alt="Digital Math by Phuc" className="w-56 h-auto object-contain mx-auto mb-4 rounded-3xl shadow-xl border-4 border-white/10" />
+          <p className="text-teal-100 text-sm font-medium tracking-wide mt-2">Nền tảng Quản lý Học tập môn Toán</p>
         </div>
 
         {/* Form Section */}

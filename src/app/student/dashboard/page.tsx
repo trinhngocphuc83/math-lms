@@ -186,8 +186,8 @@ export default function StudentDashboardPage() {
       {/* Topbar Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-20 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center">
-            <img src="/logo.jpg" alt="Digital Math by Phuc" className="h-10 sm:h-12 w-auto object-contain drop-shadow-sm" />
+          <div className="flex items-center -ml-2">
+            <img src="/logo.jpg" alt="Digital Math by Phuc" className="h-16 sm:h-20 w-auto object-contain mix-blend-multiply scale-[1.15] origin-left drop-shadow-sm" />
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
