@@ -46,14 +46,8 @@ export default function Sidebar() {
   return (
     <aside className="w-[260px] min-w-[260px] bg-sidebar flex flex-col h-full text-sidebar-foreground">
       {/* Logo Area */}
-      <div className="p-6 flex items-center space-x-3 border-b border-white/5">
-        <div className="w-8 h-8 bg-white rounded-md flex items-center justify-center">
-          <BookOpen className="w-5 h-5 text-sidebar" />
-        </div>
-        <div>
-          <h1 className="font-bold text-[15px] leading-tight">LMS TOÁN THẦY PHÚC</h1>
-          <p className="text-[10px] text-white/70 uppercase font-medium tracking-wider mt-0.5">Hệ thống quản lý</p>
-        </div>
+      <div className="p-6 flex justify-center items-center border-b border-white/5 bg-white/5 h-20 shrink-0">
+         <img src="/logo.png" alt="Digital Math by Phuc" className="w-48 h-auto object-contain drop-shadow-md" />
       </div>
 
       {/* Navigation */}

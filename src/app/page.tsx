@@ -71,12 +71,9 @@ export default function LoginPage() {
       <div className="w-full max-w-md bg-white rounded-3xl shadow-xl overflow-hidden border border-teal-50">
         
         {/* Header Section */}
-        <div className="bg-[#0f6f60] p-8 text-center text-white">
-          <div className="w-16 h-16 bg-white/10 rounded-2xl mx-auto flex items-center justify-center mb-4 backdrop-blur-sm border border-white/20">
-            <BookOpen className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-2xl font-bold mb-1">LMS TOÁN THẦY PHÚC</h1>
-          <p className="text-teal-100 text-sm">Nền tảng Quản lý Học tập môn Toán</p>
+        <div className="bg-[#0f6f60] p-8 text-center text-white flex flex-col items-center">
+          <img src="/logo.png" alt="Digital Math by Phuc" className="w-48 sm:w-56 h-auto object-contain mx-auto mb-3 drop-shadow-lg" />
+          <p className="text-teal-100 text-sm font-medium tracking-wide">Nền tảng Quản lý Học tập môn Toán</p>
         </div>
 
         {/* Form Section */}

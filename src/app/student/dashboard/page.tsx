@@ -186,13 +186,8 @@ export default function StudentDashboardPage() {
       {/* Topbar Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-20 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="bg-gradient-to-br from-teal-500 to-emerald-600 p-2.5 rounded-xl shadow-md shadow-teal-500/20">
-              <GraduationCap className="w-6 h-6 text-white" />
-            </div>
-            <h1 className="text-xl font-black tracking-tight bg-gradient-to-r from-teal-700 to-emerald-600 bg-clip-text text-transparent">
-              LMS TOÁN THẦY PHÚC
-            </h1>
+          <div className="flex items-center">
+            <img src="/logo.png" alt="Digital Math by Phuc" className="h-10 sm:h-12 w-auto object-contain drop-shadow-sm" />
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
