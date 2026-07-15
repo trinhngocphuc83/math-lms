@@ -85,9 +85,19 @@ export default function SecurityGuard() {
     };
 
     // 4. Chặn phím tắt (PrintScreen, F12, Ctrl+P, Ctrl+C, Ctrl+S)
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKey = (e: KeyboardEvent) => {
       const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
       const cmdOrCtrl = isMac ? e.metaKey : e.ctrlKey;
+
+      // Cắt Win+Shift+S (Snipping Tool) hoặc Cmd+Shift+4 (Mac)
+      if (
+        (e.metaKey && e.shiftKey && (e.key === 's' || e.key === 'S')) || 
+        (e.metaKey && e.shiftKey && (e.key === '3' || e.key === '4' || e.key === '5'))
+      ) {
+        e.preventDefault();
+        triggerBlackout("Phát hiện phím tắt Chụp ảnh màn hình!");
+        return;
+      }
 
       // PrintScreen Key
       if (e.key === 'PrintScreen' || e.code === 'PrintScreen') {
@@ -134,11 +144,50 @@ export default function SecurityGuard() {
       }
     };
 
+    // 5. Chống Snipping Tool (Bằng cách phát hiện mất focus)
+    // Khi bật Snipping Tool (Win+Shift+S), trình duyệt sẽ bị mất Focus. Ta sẽ che đen ngay lập tức.
+    const handleBlur = () => {
+      // Dùng 1 thẻ div đè lên thay vì gọi triggerBlackout (vì triggerBlackout có timeout 5s)
+      const overlay = document.createElement('div');
+      overlay.id = 'anti-snipping-overlay';
+      overlay.style.position = 'fixed';
+      overlay.style.top = '0';
+      overlay.style.left = '0';
+      overlay.style.width = '100vw';
+      overlay.style.height = '100vh';
+      overlay.style.backgroundColor = '#000';
+      overlay.style.color = '#ef4444';
+      overlay.style.zIndex = '999999';
+      overlay.style.display = 'flex';
+      overlay.style.flexDirection = 'column';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-alert mb-6"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        <h1 style="font-size: 24px; font-weight: bold; text-transform: uppercase;">Màn hình đã bị khóa</h1>
+        <p style="margin-top: 10px; font-size: 16px; color: #ccc;">Trình duyệt mất tiêu điểm hoặc đang sử dụng công cụ chụp ảnh màn hình ngoài.</p>
+        <p style="margin-top: 10px; font-size: 14px; color: #888;">Hãy click chuột vào đây để tiếp tục học.</p>
+      `;
+      if (!document.getElementById('anti-snipping-overlay')) {
+        document.body.appendChild(overlay);
+      }
+    };
+
+    const handleFocus = () => {
+      const overlay = document.getElementById('anti-snipping-overlay');
+      if (overlay) {
+        document.body.removeChild(overlay);
+      }
+    };
+
     // Đăng ký sự kiện
     document.addEventListener("contextmenu", handleContextMenu);
     document.addEventListener("selectstart", handleSelectStart);
     document.addEventListener("dragstart", handleDragStart);
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keydown", handleKey);
+    window.addEventListener("keyup", handleKey); // Bắt cả keyup vì PrintScreen thường nổ ở keyup
+    window.addEventListener("blur", handleBlur);
+    window.addEventListener("focus", handleFocus);
 
     // CSS để chặn Print (Media Print) và User Select
     const style = document.createElement('style');
@@ -179,7 +228,10 @@ export default function SecurityGuard() {
       document.removeEventListener("contextmenu", handleContextMenu);
       document.removeEventListener("selectstart", handleSelectStart);
       document.removeEventListener("dragstart", handleDragStart);
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", handleKey);
+      window.removeEventListener("keyup", handleKey);
+      window.removeEventListener("blur", handleBlur);
+      window.removeEventListener("focus", handleFocus);
       window.removeEventListener("beforeprint", beforePrint);
       document.head.removeChild(style);
     };
