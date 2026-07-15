@@ -18,7 +18,14 @@ export default function SecurityGuard() {
       let bypass = false;
 
       if (session?.user) {
-        const role = session.user.user_metadata?.role;
+        // Query bảng profiles để lấy role chính xác nhất
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('role')
+          .eq('id', session.user.id)
+          .single();
+          
+        const role = profile?.role;
         const permissions = session.user.user_metadata?.permissions || [];
         
         if (role === 'admin') {
@@ -234,6 +241,9 @@ export default function SecurityGuard() {
       window.removeEventListener("focus", handleFocus);
       window.removeEventListener("beforeprint", beforePrint);
       document.head.removeChild(style);
+      
+      const overlay = document.getElementById('anti-snipping-overlay');
+      if (overlay) document.body.removeChild(overlay);
     };
   }, [shouldBypass, triggerBlackout]);
 
