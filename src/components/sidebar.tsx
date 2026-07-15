@@ -47,7 +47,7 @@ export default function Sidebar() {
     <aside className="w-[260px] min-w-[260px] bg-sidebar flex flex-col h-full text-sidebar-foreground">
       {/* Logo Area */}
       <div className="p-6 flex justify-center items-center border-b border-white/5 bg-white/5 h-20 shrink-0">
-         <img src="/logo.png" alt="Digital Math by Phuc" className="w-48 h-auto object-contain drop-shadow-md" />
+         <img src="/logo.jpg" alt="Digital Math by Phuc" className="w-48 h-auto object-contain drop-shadow-md" />
       </div>
 
       {/* Navigation */}
