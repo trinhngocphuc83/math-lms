@@ -4,6 +4,8 @@ import "./globals.css";
 import PwaRegister from "@/components/PwaRegister";
 import IOSInstallPrompt from "@/components/IOSInstallPrompt";
 
+import SecurityGuard from "@/components/SecurityGuard";
+
 const inter = Inter({ subsets: ["latin", "vietnamese"] });
 
 export const viewport: Viewport = {
@@ -34,6 +36,7 @@ export default function RootLayout({
       <body className="flex h-screen overflow-hidden bg-background">
         <PwaRegister />
         <IOSInstallPrompt />
+        <SecurityGuard />
         {children}
       </body>
     </html>
