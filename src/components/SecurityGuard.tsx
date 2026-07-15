@@ -3,20 +3,18 @@
 import { useEffect, useState, useCallback } from "react";
 import { ShieldAlert } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
+import { usePathname } from "next/navigation";
 
 export default function SecurityGuard() {
   const [isBlackout, setIsBlackout] = useState(false);
   const [message, setMessage] = useState("");
   const [shouldBypass, setShouldBypass] = useState(false); // Default to secure until admin is confirmed
   const supabase = createClient();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const initSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      
-      // Default assume no bypass
+    const checkRole = async (session: any) => {
       let bypass = false;
-
       if (session?.user) {
         // Query bảng profiles để lấy role chính xác nhất
         const { data: profile } = await supabase
@@ -25,7 +23,7 @@ export default function SecurityGuard() {
           .eq('id', session.user.id)
           .single();
           
-        const role = profile?.role;
+        const role = profile?.role || session.user.user_metadata?.role;
         const permissions = session.user.user_metadata?.permissions || [];
         
         if (role === 'admin') {
@@ -34,12 +32,23 @@ export default function SecurityGuard() {
           bypass = true; // Teacher with full 12 permissions
         }
       }
-
       setShouldBypass(bypass);
     };
 
-    initSession();
-  }, []);
+    // Initial check
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      checkRole(session);
+    });
+
+    // Listen to changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      checkRole(session);
+    });
+
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [pathname]); // Re-check when route changes just to be absolutely sure
 
   const triggerBlackout = useCallback((msg: string) => {
     setMessage(msg);
