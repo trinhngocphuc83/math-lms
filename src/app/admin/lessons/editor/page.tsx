@@ -507,10 +507,19 @@ const parseMarkdownToBlocks = (content: string): Block[] => {
       }
       try {
           const data = JSON.parse(match[1].replace(/\n$/, ''));
-          if (data.question) {
-              data.question = data.question.replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '');
+          if (Array.isArray(data)) {
+              data.forEach(item => {
+                  if (item.question) {
+                      item.question = item.question.replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '');
+                  }
+                  res.push({ id: Math.random().toString(36).substring(7), type: 'quiz', content: item });
+              });
+          } else {
+              if (data.question) {
+                  data.question = data.question.replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '');
+              }
+              res.push({ id: Math.random().toString(36).substring(7), type: 'quiz', content: data });
           }
-          res.push({ id: Math.random().toString(36).substring(7), type: 'quiz', content: data });
       } catch(e) {
           res.push({ id: Math.random().toString(36).substring(7), type: 'md', content: match[0] });
       }
@@ -546,51 +555,39 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 - MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
 - Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
 6. [LỜI GIẢI CHI TIẾT]: Mỗi câu hỏi BẮT BUỘC phải có trường \`"answer"\` chứa lời giải chi tiết, giải thích rõ ràng từng bước. Nếu đề sai, hãy chỉ rõ cái sai trong lời giải và sửa lại cho đúng.
-7. Mỗi câu hỏi trắc nghiệm/tự luận PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Cấu trúc JSON có các loại sau:
+7. TOÀN BỘ CÁC CÂU HỎI PHẢI ĐƯỢC GỘP CHUNG VÀO MỘT (1) ĐOẠN MÃ NGÔN NGỮ "quiz" DUY NHẤT. BÊN TRONG ĐOẠN MÃ NÀY LÀ MỘT MẢNG JSON (JSON ARRAY) CHỨA TẤT CẢ CÁC CÂU HỎI. Cấu trúc mỗi object JSON trong mảng có các loại sau:
 
 LOẠI 1: TRẮC NGHIỆM 4 LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 \`\`\`quiz
-{
-  "type": "multiple_choice",
-  "question": "Đạo hàm của hàm số $\\color{blue} y = x^2 + 2x$ là?",
-  "options": ["$\\color{blue} y' = 2x + 2$", "$\\color{blue} y' = x + 2$", "$\\color{blue} y' = 2x$", "$\\color{blue} y' = 2$"],
-  "answerIndex": 0,
-  "answer": "Sử dụng công thức đạo hàm cơ bản: $\\color{blue} (x^n)' = n.x^{n-1}$. Ta có $\\color{blue} y' = 2x + 2$."
-}
-\`\`\`
-
-LOẠI 2: TRẮC NGHIỆM ĐÚNG/SAI (BAREM 2025 - 4 MỆNH ĐỀ)
-\`\`\`quiz
-{
-  "type": "true_false_cluster",
-  "question": "Cho hàm số $\\color{blue} y = x^3 - 3x$.",
-  "options": [
-    { "id": "a", "content": "Hàm số đồng biến trên $\\color{blue} (1; +\\\\infty)$.", "isTrue": true },
-    { "id": "b", "content": "Hàm số đạt cực đại tại $\\color{blue} x = 1$.", "isTrue": false },
-    { "id": "c", "content": "Đồ thị cắt trục hoành tại 3 điểm.", "isTrue": true },
-    { "id": "d", "content": "Giá trị cực tiểu là $\\color{blue} y = -2$.", "isTrue": true }
-  ],
-  "answer": "Ta có $\\color{blue} y' = 3x^2 - 3$. $\\color{blue} y' = 0 \\\\Leftrightarrow x = 1 \\\\text{ hoặc } x = -1$.\na) Đúng vì $\\color{blue} y' > 0$ khi $\\color{blue} x > 1$.\nb) Sai vì $\\color{blue} y'$ đổi dấu từ âm sang dương qua $\\color{blue} x = 1$ nên đây là điểm cực tiểu.\nc) Đúng vì phương trình $\\color{blue} x^3 - 3x = 0$ có 3 nghiệm phân biệt.\nd) Đúng vì thay $\\color{blue} x = 1$ ta được $\\color{blue} y = -2$."
-}
-\`\`\`
-
-LOẠI 3: CÂU TRẢ LỜI NGẮN (kết quả ngắn gọn: 1 số, 1 biểu thức, 1 từ)
-\`\`\`quiz
-{
-  "type": "short_answer",
-  "question": "Tính giá trị của biểu thức $\\color{blue} \\\\sqrt{9} + \\\\sqrt{16}$.",
-  "exactAnswer": "7",
-  "answer": "Ta có $\\color{blue} \\\\sqrt{9} = 3$ và $\\color{blue} \\\\sqrt{16} = 4$, nên tổng là $\\color{blue} 3 + 4 = 7$."
-}
-\`\`\`
-
-LOẠI 4: TỰ LUẬN
-\`\`\`quiz
-{
-  "type": "essay",
-  "question": "Giải phương trình $\\color{blue} x^2 - 4x + 3 = 0$.",
-  "answer": "Ta có $\\color{blue} \\\\Delta = (-4)^2 - 4(1)(3) = 4 > 0$. Phương trình có 2 nghiệm phân biệt $\\color{blue} x_1 = 3, x_2 = 1$."
-}
+[
+  {
+    "type": "multiple_choice",
+    "question": "Đạo hàm của hàm số $\\color{blue} y = x^2 + 2x$ là?",
+    "options": ["$\\color{blue} y' = 2x + 2$", "$\\color{blue} y' = x + 2$", "$\\color{blue} y' = 2x$", "$\\color{blue} y' = 2$"],
+    "answerIndex": 0,
+    "answer": "Sử dụng công thức đạo hàm cơ bản: $\\color{blue} (x^n)' = n.x^{n-1}$. Ta có $\\color{blue} y' = 2x + 2$"
+  },
+  {
+    "type": "true_false_cluster",
+    "question": "Cho hàm số $\\color{blue} y = x^3 - 3x$.",
+    "options": [
+      { "id": "a", "content": "Hàm số đồng biến trên $\\color{blue} (1; +\\\\infty)$.", "isTrue": true },
+      { "id": "b", "content": "Hàm số đạt cực đại tại $\\color{blue} x = 1$.", "isTrue": false }
+    ],
+    "answer": "Ta có $\\color{blue} y' = 3x^2 - 3$..."
+  },
+  {
+    "type": "short_answer",
+    "question": "Tính giá trị của biểu thức $\\color{blue} \\\\sqrt{9} + \\\\sqrt{16}$.",
+    "exactAnswer": "7",
+    "answer": "Tổng là $\\color{blue} 3 + 4 = 7$."
+  },
+  {
+    "type": "essay",
+    "question": "Giải phương trình $\\color{blue} x^2 - 4x + 3 = 0$.",
+    "answer": "Phương trình có 2 nghiệm phân biệt $\\color{blue} x_1 = 3, x_2 = 1$."
+  }
+]
 \`\`\`
 
 GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
@@ -1425,6 +1422,15 @@ function EditorContent() {
           if (match[1] === 'quiz') {
             try {
               const data = JSON.parse(String(children).replace(/\n$/, ''));
+              if (Array.isArray(data)) {
+                 return (
+                    <div className="space-y-6">
+                       {data.map((q, idx) => (
+                           <InteractiveQuiz key={idx} data={q} onPass={() => {}} />
+                       ))}
+                    </div>
+                 );
+              }
               return <InteractiveQuiz data={data} onPass={() => {}} />
             } catch (e) {
               return <div className="p-4 bg-red-100 text-red-600 rounded-lg shadow-sm border border-red-200">Lỗi: Cấu trúc câu hỏi Quiz từ AI không hợp lệ. Vui lòng sửa lại.</div>
