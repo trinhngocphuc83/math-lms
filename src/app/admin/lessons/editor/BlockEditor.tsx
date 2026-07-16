@@ -341,7 +341,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                     <div className="flex flex-col gap-4">
                        {/* CẢNH BÁO CHO KHỐI LÝ THUYẾT */}
                        {(typeof block.content === 'string') && (() => {
-                          const placeholderRegex = /\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]/i;
+                          const placeholderRegex = /\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\]/i;
                           const hasPlaceholder = placeholderRegex.test(block.content);
                           const bboxMatch = block.content.match(/\{\s*"image_bbox"\s*:\s*\[([\d,\s]+)\]\s*\}/);
                           if (!hasPlaceholder && !bboxMatch) return null;
@@ -427,7 +427,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                 <img src={block.content.autoCropMetadata.originalUrl} alt="Source" className="w-full max-h-48 object-contain rounded-lg" />
                              </div>
                           </div>
-                       ) : (/(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\])/i.test(block.content.question || '')) && (
+                       ) : (/(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\])/i.test(block.content.question || '')) && (
                           <div className="bg-red-50 border border-red-200 px-5 py-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-pulse">
                              <div className="flex items-center gap-3 text-red-700">
                                 <AlertTriangle className="w-6 h-6 shrink-0" />

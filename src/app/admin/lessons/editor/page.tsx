@@ -1336,7 +1336,7 @@ function EditorContent() {
         const bIndex = newBlocks.findIndex(b => b.id === targetCropBlockId);
         if (bIndex > -1) {
             const b = newBlocks[bIndex];
-            const placeholderRegex = /\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]/i;
+            const placeholderRegex = /\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\]/i;
             if (b.type === 'md' && typeof b.content === 'string') {
                 if (placeholderRegex.test(b.content)) {
                     b.content = b.content.replace(placeholderRegex, imageMarkdown);
