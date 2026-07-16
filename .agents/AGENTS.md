@@ -29,5 +29,8 @@ Thầy/Cô có thể tạo các quy tắc theo định dạng `<RULE>` như ví 
 - Luôn tuân thủ nguyên tắc hỏi trước khi làm, khi nào tôi đồng ý mới tiến hành làm.
 - Luôn hỏi xây dựng trên hệ thống offline hay online
 </RULE[user_experience]>
+<RULE[user_experience]>
+- Khi update các tính năng mới không bao giờ được làm mất các tính năng cũ đã hoạt động ổn định
+<RULE[user_experience]>
 ---
 *Gợi ý: Thầy/Cô cứ tự nhiên viết thêm các rule mới ở dưới cùng nhé!*
