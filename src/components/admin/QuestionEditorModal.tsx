@@ -106,7 +106,14 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
       const { error: uploadError } = await supabase.storage.from('lesson_images').upload(filePath, file);
       if (uploadError) throw uploadError;
       const { data: { publicUrl } } = supabase.storage.from('lesson_images').getPublicUrl(filePath);
-      handleChange('image_url', publicUrl);
+      setFormData(prev => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          image_url: publicUrl,
+          content: prev.content.replace(/\[CÓ HÌNH ẢNH KÈM THEO\]/gi, '').trim()
+        };
+      });
     } catch (e: any) {
       alert("Lỗi tải ảnh: " + e.message);
     } finally {
