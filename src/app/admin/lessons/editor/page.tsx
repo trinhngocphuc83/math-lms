@@ -575,7 +575,7 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 3. [VỊ TRÍ HÌNH ẢNH/BẢNG BIỂU]: Nếu phát hiện câu hỏi trong tài liệu gốc có chứa hình vẽ, biểu đồ hoặc đồ thị, TUYỆT ĐỐI KHÔNG mô tả chi tiết làm lệch câu gốc. BẮT BUỘC phải chèn dòng chữ \`[CÓ HÌNH ẢNH KÈM THEO]\` vào ĐÚNG VỊ TRÍ mà hình ảnh đó xuất hiện trong câu hỏi gốc (ví dụ: ngay sau chữ "như hình vẽ bên:"). Tuyệt đối KHÔNG được tự ý vứt xuống cuối phần nội dung nếu nó nằm ở giữa câu.
 4. [KHÔNG VIẾT LÝ THUYẾT]: Tuyệt đối KHÔNG viết câu mở đầu, KHÔNG tóm tắt lý thuyết, KHÔNG giải thích. CHỈ ĐƯỢC PHÉP TRẢ VỀ CÁC ĐOẠN MÃ \`\`\`quiz\`\`\` (và các dòng cảnh báo lỗi đề nếu có).
 5. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
-- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $\color{blue} Ta có: x = 2$, ĐÚNG: Ta có $\color{blue} x = 2$).
 - CÔNG THỨC PHẢI LIỀN MẠCH TRÊN 1 DÒNG: Tuyệt đối không được bẻ gãy, ngắt dòng (enter) giữa chừng một công thức (trừ hệ phương trình).
 - MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
 - Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
@@ -626,7 +626,7 @@ GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, CHI TIẾT, DỄ HIỂU.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
-- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $\color{blue} Ta có: x = 2$, ĐÚNG: Ta có $\color{blue} x = 2$).
 - CÔNG THỨC PHẢI LIỀN MẠCH TRÊN 1 DÒNG: Tuyệt đối không được bẻ gãy, ngắt dòng (enter) giữa chừng một công thức (trừ hệ phương trình). Các biểu thức toán học phải liền khối.
 - MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
 - Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
@@ -645,7 +645,7 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, GỒM LÝ THUYẾT VÀ CÁC DẠNG BÀI TẬP, TRÌNH BÀY SIÊU ĐẸP, CỰC KỲ THU HÚT.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
-- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$).
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $\color{blue} Ta có: x = 2$, ĐÚNG: Ta có $\color{blue} x = 2$).
 - CÔNG THỨC PHẢI LIỀN MẠCH TRÊN 1 DÒNG: Tuyệt đối không được bẻ gãy, ngắt dòng (enter) giữa chừng một công thức (trừ hệ phương trình). Các biểu thức toán học phải liền khối và chuẩn xác.
 - MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
 - Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
@@ -1053,6 +1053,7 @@ function EditorContent() {
 
       // 2. Chữa các lỗi sai cú pháp LaTeX của AI để MathType/Word nhận diện được
       content = content.replace(/\{\{begincases/g, '\\begin{cases}').replace(/endcases\}\}/g, '\\end{cases}');
+      content = content.replace(/\\color\s*\{[^}]+\}/gi, '');
 
       // 3. Parser Markdown cơ bản sang HTML để MS Word hiểu được In đậm, Tiêu đề và Kéo dòng
       let html = content.replace(/\\\\/g, '\\'); // Đưa dấu chéo kép về dấu chéo đơn chuẩn LaTeX cho MathType

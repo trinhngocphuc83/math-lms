@@ -168,7 +168,9 @@ const fetchImageWithDimensions = async (url: string): Promise<{buffer: Uint8Arra
 
 const cleanHtmlNewlinesInTags = (html: string) => {
   if (!html) return "";
-  return html.replace(/\\n/g, '\n').replace(/<img[^>]+>/gi, (match) => match.replace(/\n|\r/g, ''));
+  return html.replace(/\\n/g, '\n')
+             .replace(/\\color\s*\{[^}]+\}/gi, '')
+             .replace(/<img[^>]+>/gi, (match) => match.replace(/\n|\r/g, ''));
 };
 
 export const exportQuestionsToWord = async (questions: any[], exportType: 'student' | 'teacher') => {
