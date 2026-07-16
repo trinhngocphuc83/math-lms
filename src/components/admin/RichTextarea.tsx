@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, Image as ImageIcon, Loader2 } from "lucide-react";
 import TextareaAutosize from 'react-textarea-autosize';
 
 interface RichTextareaProps extends Omit<React.ComponentProps<typeof TextareaAutosize>, 'onChange' | 'value'> {
@@ -35,6 +35,8 @@ export default function RichTextarea({ value, onChange, onValueChange, className
   
   const [showIconMenu, setShowIconMenu] = useState(false);
   const iconMenuRef = useRef<HTMLDivElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isUploading, setIsUploading] = useState(false);
   const EMOJIS = ["💡", "📌", "🎯", "🚀", "📝", "⚙️", "✅", "❌", "🔥", "✨", "👉", "⚠️"];
 
   useEffect(() => {
@@ -365,6 +367,89 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }
   };
 
+  const uploadAndInsertImage = async (file: File) => {
+    const ta = textareaRef.current;
+    if (!ta) return;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    const beforeText = value.substring(0, start);
+    const afterText = value.substring(end);
+    
+    setIsUploading(true);
+    const tempText = beforeText + "\n⏳ Đang tải ảnh lên...\n" + afterText;
+    
+    if (onValueChange) onValueChange(tempText);
+    else {
+       const event = { target: { value: tempText } } as React.ChangeEvent<HTMLTextAreaElement>;
+       onChange(event);
+    }
+
+    try {
+       const { createClient } = await import("@/utils/supabase/client");
+       const supabase = createClient();
+       const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.jpg`;
+       const filePath = `editor_images/${fileName}`;
+       
+       const { error } = await supabase.storage.from('lesson_images').upload(filePath, file);
+       if (error) throw error;
+       
+       const { data: publicUrlData } = supabase.storage.from('lesson_images').getPublicUrl(filePath);
+       const publicUrl = publicUrlData.publicUrl;
+       
+       const imgMd = `\n![Hình ảnh](${publicUrl})\n`;
+       const newValue = beforeText + imgMd + afterText;
+       
+       if (onValueChange) onValueChange(newValue);
+       else {
+          const ev = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+          onChange(ev);
+       }
+       
+       setTimeout(() => {
+         if (textareaRef.current) {
+           textareaRef.current.focus();
+           textareaRef.current.setSelectionRange(start + imgMd.length, start + imgMd.length);
+         }
+       }, 0);
+    } catch(err) {
+       alert("Lỗi tải ảnh lên!");
+       if (onValueChange) onValueChange(value);
+       else {
+          const ev = { target: { value: value } } as React.ChangeEvent<HTMLTextAreaElement>;
+          onChange(ev);
+       }
+    } finally {
+       setIsUploading(false);
+    }
+  };
+
+  const handlePaste = async (e: React.ClipboardEvent<HTMLTextAreaElement>) => {
+    if (props.onPaste) props.onPaste(e);
+    if (e.defaultPrevented) return;
+    
+    const items = e.clipboardData?.items;
+    if (!items) return;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].type.indexOf("image") !== -1) {
+        const file = items[i].getAsFile();
+        if (file) {
+          e.preventDefault();
+          e.stopPropagation();
+          uploadAndInsertImage(file);
+        }
+        break;
+      }
+    }
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      uploadAndInsertImage(file);
+    }
+    e.target.value = '';
+  };
+
   if (!isClient) return <TextareaAutosize minRows={props.rows || 3} maxRows={30} value={value} onChange={onChange} className={className} {...props} />;
 
   // Lọc bớt class border/focus từ bên ngoài truyền vào vì ta đã có border ở thẻ bọc ngoài
@@ -378,6 +463,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         value={value}
         onChange={onChange}
         onKeyDown={handleKeyDown}
+        onPaste={handlePaste}
         minRows={props.rows || 3}
         maxRows={30}
         className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] bg-transparent ${innerClass}`}
@@ -578,6 +664,27 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             title="Đóng khung đoạn văn bản"
           >
             <Frame className="w-4 h-4" /> Đóng khung
+          </button>
+        </div>
+
+        {/* Image Upload Group */}
+        <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded p-1 shadow-sm ml-auto">
+          <input 
+            type="file" 
+            ref={fileInputRef} 
+            onChange={handleFileChange} 
+            accept="image/*" 
+            className="hidden" 
+          />
+          <button 
+            type="button"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={isUploading}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-pink-700 font-bold hover:bg-pink-50 rounded transition-colors disabled:opacity-50"
+            title="Chèn Hình Ảnh (Có thể dùng Ctrl+V để dán trực tiếp)"
+          >
+            {isUploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />} 
+            {isUploading ? "Đang tải..." : "Chèn Ảnh"}
           </button>
         </div>
 
