@@ -121,6 +121,34 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
     }
   };
 
+  const handleOptionImageUpload = async (file: File, optField: keyof QuestionData) => {
+    try {
+      setIsUploading(true);
+      const filePath = `questions/opt_${Date.now()}_${file.name}`;
+      const { error: uploadError } = await supabase.storage.from('lesson_images').upload(filePath, file);
+      if (uploadError) throw uploadError;
+      const { data: { publicUrl } } = supabase.storage.from('lesson_images').getPublicUrl(filePath);
+      
+      setFormData(prev => {
+        if (!prev) return prev;
+        const currentText = prev[optField] as string || '';
+        let newText = currentText;
+        if (newText.includes('[HÌNH VẼ]')) {
+           newText = newText.replace(/\[HÌNH VẼ\]/gi, `![Hình ảnh](${publicUrl})`);
+        } else if (newText.includes('[CÓ HÌNH ẢNH KÈM THEO]')) {
+           newText = newText.replace(/\[CÓ HÌNH ẢNH KÈM THEO\]/gi, `![Hình ảnh](${publicUrl})`);
+        } else {
+           newText = newText + (newText ? '\n' : '') + `![Hình ảnh](${publicUrl})`;
+        }
+        return { ...prev, [optField]: newText };
+      });
+    } catch (e: any) {
+      alert("Lỗi tải ảnh đáp án: " + e.message);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
@@ -378,8 +406,22 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
                 const fieldName = `option_${opt.toLowerCase()}` as keyof QuestionData;
                 return (
                   <div key={opt} className="bg-white p-3 rounded-xl border border-gray-200 shadow-sm">
-                    <div className="flex items-center gap-2 mb-2">
+                    <div className="flex items-center justify-between mb-2">
                       <span className="w-6 h-6 bg-indigo-100 text-indigo-800 rounded flex items-center justify-center font-bold text-sm">{opt}</span>
+                      <label htmlFor={`file-${opt}`} className="cursor-pointer flex items-center gap-1 text-xs text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-2 py-1 rounded font-bold transition-colors">
+                        <ImageIcon className="w-3.5 h-3.5" /> Chèn ảnh
+                      </label>
+                      <input 
+                        type="file" 
+                        id={`file-${opt}`} 
+                        accept="image/*" 
+                        className="hidden" 
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleOptionImageUpload(file, fieldName);
+                          e.target.value = '';
+                        }}
+                      />
                     </div>
                     <textarea 
                       value={formData[fieldName] as string} onChange={e => handleChange(fieldName, e.target.value)}
