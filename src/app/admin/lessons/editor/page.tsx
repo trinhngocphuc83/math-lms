@@ -496,8 +496,33 @@ const VisualQuizEditor = ({ quizzes, onUpdateQuiz, onTriggerCrop }: { quizzes: a
 
 const parseMarkdownToBlocks = (content: string): Block[] => {
     if (!content) return [];
+    
+    const trimmed = content.trim();
+    if ((trimmed.startsWith('[') && trimmed.endsWith(']')) || (trimmed.startsWith('{') && trimmed.endsWith('}'))) {
+        try {
+            const data = JSON.parse(trimmed);
+            if (Array.isArray(data)) {
+                const res: Block[] = [];
+                data.forEach(item => {
+                    if (item.question) {
+                        item.question = item.question.replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '');
+                    }
+                    res.push({ id: Math.random().toString(36).substring(7), type: 'quiz', content: item });
+                });
+                return res;
+            } else if (data.type) {
+                if (data.question) {
+                    data.question = data.question.replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '');
+                }
+                return [{ id: Math.random().toString(36).substring(7), type: 'quiz', content: data }];
+            }
+        } catch(e) {
+            // Ignore and fall through to regex parsing
+        }
+    }
+
     const res: Block[] = [];
-    const regex = /```quiz[ \t]*\r?\n([\s\S]*?)\r?\n```/g;
+    const regex = /```(?:quiz|json)[ \t]*\r?\n([\s\S]*?)\r?\n```/g;
     let lastIndex = 0;
     let match;
     while ((match = regex.exec(content)) !== null) {
@@ -555,7 +580,7 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 - MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
 - Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
 6. [LỜI GIẢI CHI TIẾT]: Mỗi câu hỏi BẮT BUỘC phải có trường \`"answer"\` chứa lời giải chi tiết, giải thích rõ ràng từng bước. Nếu đề sai, hãy chỉ rõ cái sai trong lời giải và sửa lại cho đúng.
-7. TOÀN BỘ CÁC CÂU HỎI PHẢI ĐƯỢC GỘP CHUNG VÀO MỘT (1) ĐOẠN MÃ NGÔN NGỮ "quiz" DUY NHẤT. BÊN TRONG ĐOẠN MÃ NÀY LÀ MỘT MẢNG JSON (JSON ARRAY) CHỨA TẤT CẢ CÁC CÂU HỎI. Cấu trúc mỗi object JSON trong mảng có các loại sau:
+7. TOÀN BỘ CÁC CÂU HỎI PHẢI ĐƯỢC GỘP CHUNG VÀO MỘT (1) ĐOẠN MÃ NGÔN NGỮ "quiz" DUY NHẤT (BẮT BUỘC BỌC TRONG \`\`\`quiz VÀ \`\`\`). BÊN TRONG LÀ MỘT MẢNG JSON (JSON ARRAY) CHỨA TẤT CẢ CÁC CÂU HỎI. Cấu trúc mỗi object JSON trong mảng:
 
 LOẠI 1: TRẮC NGHIỆM 4 LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 \`\`\`quiz
@@ -1419,7 +1444,7 @@ function EditorContent() {
           const match = /language-(\w+)/.exec(className || '')
           if (!match?.length) return <code className="bg-gray-100 text-pink-600 px-1.5 py-0.5 rounded-md font-mono text-sm" {...rest}>{children}</code>;
           
-          if (match[1] === 'quiz') {
+          if (match[1] === 'quiz' || match[1] === 'json') {
             try {
               const data = JSON.parse(String(children).replace(/\n$/, ''));
               if (Array.isArray(data)) {
