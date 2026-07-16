@@ -117,6 +117,12 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
      }
   }, [globalTriggerBankModal]);
 
+  React.useEffect(() => {
+     if (!focusMode) {
+        setCollapsedBlocks(new Set());
+     }
+  }, [focusMode]);
+
   const handleFocusBlock = (id: string) => {
       if (!focusMode) return;
       setCollapsedBlocks(prev => {
