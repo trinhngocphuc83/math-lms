@@ -575,9 +575,9 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 3. [VỊ TRÍ HÌNH ẢNH/BẢNG BIỂU]: Nếu phát hiện câu hỏi trong tài liệu gốc có chứa hình vẽ, biểu đồ hoặc đồ thị, TUYỆT ĐỐI KHÔNG mô tả chi tiết làm lệch câu gốc. BẮT BUỘC phải chèn dòng chữ \`[CÓ HÌNH ẢNH KÈM THEO]\` vào ĐÚNG VỊ TRÍ mà hình ảnh đó xuất hiện trong câu hỏi gốc (ví dụ: ngay sau chữ "như hình vẽ bên:"). Tuyệt đối KHÔNG được tự ý vứt xuống cuối phần nội dung nếu nó nằm ở giữa câu.
 4. [KHÔNG VIẾT LÝ THUYẾT]: Tuyệt đối KHÔNG viết câu mở đầu, KHÔNG tóm tắt lý thuyết, KHÔNG giải thích. CHỈ ĐƯỢC PHÉP TRẢ VỀ CÁC ĐOẠN MÃ \`\`\`quiz\`\`\` (và các dòng cảnh báo lỗi đề nếu có).
 5. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
-- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $\color{blue} Ta có: x = 2$, ĐÚNG: Ta có $\color{blue} x = 2$).
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $Ta có: x = 2$, ĐÚNG: Ta có $x = 2$).
 - CÔNG THỨC PHẢI LIỀN MẠCH TRÊN 1 DÒNG: Tuyệt đối không được bẻ gãy, ngắt dòng (enter) giữa chừng một công thức (trừ hệ phương trình).
-- MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
+
 - Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
 6. [LỜI GIẢI CHI TIẾT]: Mỗi câu hỏi BẮT BUỘC phải có trường \`"answer"\` chứa lời giải chi tiết, giải thích rõ ràng từng bước. Nếu đề sai, hãy chỉ rõ cái sai trong lời giải và sửa lại cho đúng.
 7. TOÀN BỘ CÁC CÂU HỎI PHẢI ĐƯỢC GỘP CHUNG VÀO MỘT (1) ĐOẠN MÃ NGÔN NGỮ "quiz" DUY NHẤT (BẮT BUỘC BỌC TRONG \`\`\`quiz VÀ \`\`\`). BÊN TRONG LÀ MỘT MẢNG JSON (JSON ARRAY) CHỨA TẤT CẢ CÁC CÂU HỎI. Cấu trúc mỗi object JSON trong mảng:
@@ -587,36 +587,36 @@ LOẠI 1: TRẮC NGHIỆM 4 LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 [
   {
     "type": "multiple_choice",
-    "question": "Đạo hàm của hàm số $\\color{blue} y = x^2 + 2x$ là?",
-    "options": ["$\\color{blue} y' = 2x + 2$", "$\\color{blue} y' = x + 2$", "$\\color{blue} y' = 2x$", "$\\color{blue} y' = 2$"],
+    "question": "Đạo hàm của hàm số $y = x^2 + 2x$ là?",
+    "options": ["$y' = 2x + 2$", "$y' = x + 2$", "$y' = 2x$", "$y' = 2$"],
     "answerIndex": 0,
-    "answer": "Sử dụng công thức đạo hàm cơ bản: $\\color{blue} (x^n)' = n.x^{n-1}$. Ta có $\\color{blue} y' = 2x + 2$"
+    "answer": "Sử dụng công thức đạo hàm cơ bản: $(x^n)' = n.x^{n-1}$. Ta có $y' = 2x + 2$"
   },
   {
     "type": "true_false_cluster",
-    "question": "Cho hàm số $\\color{blue} y = x^3 - 3x$.",
+    "question": "Cho hàm số $y = x^3 - 3x$.",
     "options": [
-      { "id": "a", "content": "Hàm số đồng biến trên $\\color{blue} (1; +\\\\infty)$.", "isTrue": true },
-      { "id": "b", "content": "Hàm số đạt cực đại tại $\\color{blue} x = 1$.", "isTrue": false }
+      { "id": "a", "content": "Hàm số đồng biến trên $(1; +\\\\infty)$.", "isTrue": true },
+      { "id": "b", "content": "Hàm số đạt cực đại tại $x = 1$.", "isTrue": false }
     ],
-    "answer": "Ta có $\\color{blue} y' = 3x^2 - 3$..."
+    "answer": "Ta có $y' = 3x^2 - 3$..."
   },
   {
     "type": "short_answer",
-    "question": "Tính giá trị của biểu thức $\\color{blue} \\\\sqrt{9} + \\\\sqrt{16}$.",
+    "question": "Tính giá trị của biểu thức $\\\\sqrt{9} + \\\\sqrt{16}$.",
     "exactAnswer": "7",
-    "answer": "Tổng là $\\color{blue} 3 + 4 = 7$."
+    "answer": "Tổng là $3 + 4 = 7$."
   },
   {
     "type": "essay",
-    "question": "Giải phương trình $\\color{blue} x^2 - 4x + 3 = 0$.",
-    "answer": "Phương trình có 2 nghiệm phân biệt $\\color{blue} x_1 = 3, x_2 = 1$."
+    "question": "Giải phương trình $x^2 - 4x + 3 = 0$.",
+    "answer": "Phương trình có 2 nghiệm phân biệt $x_1 = 3, x_2 = 1$."
   }
 ]
 \`\`\`
 
 GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
-- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$ và CÓ $\\color{blue}$.
+- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$$.
 - TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Nếu không làm điều này, JSON sẽ BỊ LỖI và bóc tách sẽ hỏng.
 - ĐỪNG xuất ra bất kỳ giải thích chữ nào bên ngoài các khối \`\`\`quiz\`\`\`. Chỉ xuất các khối quiz.`;
   }
@@ -626,9 +626,9 @@ GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, CHI TIẾT, DỄ HIỂU.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
-- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $\color{blue} Ta có: x = 2$, ĐÚNG: Ta có $\color{blue} x = 2$).
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $Ta có: x = 2$, ĐÚNG: Ta có $x = 2$).
 - CÔNG THỨC PHẢI LIỀN MẠCH TRÊN 1 DÒNG: Tuyệt đối không được bẻ gãy, ngắt dòng (enter) giữa chừng một công thức (trừ hệ phương trình). Các biểu thức toán học phải liền khối.
-- MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
+
 - Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
 2. [CẤU TRÚC VÀNG CỦA BÀI GIẢNG TOÁN HỌC]:
 Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
@@ -645,9 +645,9 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, GỒM LÝ THUYẾT VÀ CÁC DẠNG BÀI TẬP, TRÌNH BÀY SIÊU ĐẸP, CỰC KỲ THU HÚT.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
-- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $\color{blue} Ta có: x = 2$, ĐÚNG: Ta có $\color{blue} x = 2$).
+- Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $Ta có: x = 2$, ĐÚNG: Ta có $x = 2$).
 - CÔNG THỨC PHẢI LIỀN MẠCH TRÊN 1 DÒNG: Tuyệt đối không được bẻ gãy, ngắt dòng (enter) giữa chừng một công thức (trừ hệ phương trình). Các biểu thức toán học phải liền khối và chuẩn xác.
-- MÀU XANH NƯỚC BIỂN MATHTYPE: BẮT BUỘC thêm lệnh \`\\color{blue}\` vào ngay sau dấu $ ở tất cả các công thức toán học. Ví dụ: $\\color{blue} A + B = B + A$.
+
 - Phân số: Dạng \\frac{tử}{mẫu}. Góc: Dạng \\widehat{tên}. Hệ phương trình: Dùng \\begin{cases} ... \\end{cases}.
 2. [CẤU TRÚC VÀNG CỦA BÀI GIẢNG TOÁN HỌC]:
 Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
@@ -671,8 +671,8 @@ LOẠI 1: CÂU HỎI NHIỀU LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 \`\`\`quiz
 {
   "type": "multiple_choice",
-  "question": "Đạo hàm của hàm số $\\color{blue} y = x^2 + 2x$ là?",
-  "options": ["$\\color{blue} y' = 2x + 2$", "$\\color{blue} y' = x + 2$", "$\\color{blue} y' = 2x$", "$\\color{blue} y' = 2$"],
+  "question": "Đạo hàm của hàm số $y = x^2 + 2x$ là?",
+  "options": ["$y' = 2x + 2$", "$y' = x + 2$", "$y' = 2x$", "$y' = 2$"],
   "answerIndex": 0
 }
 \`\`\`
@@ -681,14 +681,14 @@ LOẠI 4: CÂU TRẢ LỜI NGẮN (kết quả ngắn gọn: 1 số, 1 biểu th
 \`\`\`quiz
 {
   "type": "short_answer",
-  "question": "Tính giá trị của biểu thức $\\color{blue} \\\\sqrt{9} + \\\\sqrt{16}$.",
+  "question": "Tính giá trị của biểu thức $\\\\sqrt{9} + \\\\sqrt{16}$.",
   "exactAnswer": "7",
-  "answer": "Ta có $\\color{blue} \\\\sqrt{9} = 3$ và $\\color{blue} \\\\sqrt{16} = 4$, nên tổng là $\\color{blue} 3 + 4 = 7$."
+  "answer": "Ta có $\\\\sqrt{9} = 3$ và $\\\\sqrt{16} = 4$, nên tổng là $3 + 4 = 7$."
 }
 \`\`\`
 
 GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
-- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả các công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$ và CÓ $\\color{blue}$.
+- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả các công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$$.
 - TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Nếu không làm điều này, hệ thống sẽ BỊ LỖI.`;
 
   return unifiedPrompt;
@@ -1053,7 +1053,7 @@ function EditorContent() {
 
       // 2. Chữa các lỗi sai cú pháp LaTeX của AI để MathType/Word nhận diện được
       content = content.replace(/\{\{begincases/g, '\\begin{cases}').replace(/endcases\}\}/g, '\\end{cases}');
-      content = content.replace(/\\color\s*\{[^}]+\}/gi, '');
+      content = content.replace(/\\{1,2}color\s*\{[^}]+\}/gi, '');
 
       // 3. Parser Markdown cơ bản sang HTML để MS Word hiểu được In đậm, Tiêu đề và Kéo dòng
       let html = content.replace(/\\\\/g, '\\'); // Đưa dấu chéo kép về dấu chéo đơn chuẩn LaTeX cho MathType
