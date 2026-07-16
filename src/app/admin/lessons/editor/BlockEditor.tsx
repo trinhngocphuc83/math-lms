@@ -294,7 +294,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   };
 
   const renderQuizContent = (text: string) => {
-    const formattedText = text.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n');
+    const formattedText = text.replace(/\\n/g, '\n').replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n');
     return (
       <div className="prose prose-sm max-w-full break-words prose-p:my-0 leading-relaxed text-inherit overflow-hidden prose-strong:text-[#0e6263]
          prose-h2:text-[1.25rem] prose-h2:font-extrabold prose-h2:text-[#00529b] prose-h2:mt-6 prose-h2:mb-3 prose-h2:bg-[#e6f0fa] prose-h2:px-3 prose-h2:py-2 prose-h2:rounded-xl prose-h2:border-l-4 prose-h2:border-[#00529b] prose-h2:block prose-h2:w-fit prose-h2:clear-both

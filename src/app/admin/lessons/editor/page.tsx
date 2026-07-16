@@ -984,9 +984,10 @@ function EditorContent() {
                   
                   return protectedText;
               };
-              const escapeText = (t: string) => protectHtml(t).replace(/\n/g, '<br/>');
+              const escapeText = (t: string) => protectHtml((t||'').replace(/\\n/g, '\n')).replace(/\n/g, '<br/>');
               const escapeLines = (t: string, bulletColor: string) => {
                   return (t||'')
+                     .replace(/\\n/g, '\n')
                      .replace(/^(?:\*\*)?(?:Phương pháp giải|Lời giải|Hướng dẫn giải|Giải thích):?(?:\*\*)?\s*/i, '')
                      .split('\n')
                      .filter((l: string) => l.trim() !== '')
