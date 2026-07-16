@@ -947,6 +947,9 @@ function EditorContent() {
          content = content.replace(/<details>[\s\S]*?<summary>.*?(?:Lời\s*giải|Đáp\s*án).*?<\/summary>[\s\S]*?<\/details>/gi, '\n');
       }
 
+      // 0. Xóa màu xanh khỏi LaTeX
+      content = content.replace(/\\{1,2}color\s*\{[^}]+\}/gi, '');
+
       // 1. Lọc và bóc tách các câu hỏi trắc nghiệm JSON (Xóa bỏ JSON thô)
       let quizzesHtml: string[] = [];
       let questionCounter = 1;
@@ -977,9 +980,9 @@ function EditorContent() {
                   
                   protectedText = protectedText.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
                   
-                  imgBlocks.forEach((img, i) => { protectedText = protectedText.replace(`__IMG_TAG_${i}__`, img); });
-                  brBlocks.forEach((br, i) => { protectedText = protectedText.replace(`__BR_TAG_${i}__`, br); });
-                  spanBlocks.forEach((span, i) => { protectedText = protectedText.replace(`__SPAN_START_${i}__`, span); });
+                  imgBlocks.forEach((img, i) => { protectedText = protectedText.replace(`__IMG_TAG_${i}__`, () => img); });
+                  brBlocks.forEach((br, i) => { protectedText = protectedText.replace(`__BR_TAG_${i}__`, () => br); });
+                  spanBlocks.forEach((span, i) => { protectedText = protectedText.replace(`__SPAN_START_${i}__`, () => span); });
                   protectedText = protectedText.replace(/__SPAN_END__/g, '</span>');
                   
                   return protectedText;
@@ -1053,7 +1056,6 @@ function EditorContent() {
 
       // 2. Chữa các lỗi sai cú pháp LaTeX của AI để MathType/Word nhận diện được
       content = content.replace(/\{\{begincases/g, '\\begin{cases}').replace(/endcases\}\}/g, '\\end{cases}');
-      content = content.replace(/\\{1,2}color\s*\{[^}]+\}/gi, '');
 
       // 3. Parser Markdown cơ bản sang HTML để MS Word hiểu được In đậm, Tiêu đề và Kéo dòng
       let html = content.replace(/\\\\/g, '\\'); // Đưa dấu chéo kép về dấu chéo đơn chuẩn LaTeX cho MathType
@@ -1067,7 +1069,7 @@ function EditorContent() {
 
       html = html.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
       
-      spanBlocks.forEach((span, i) => { html = html.replace(`__SPAN_START_${i}__`, span); });
+      spanBlocks.forEach((span, i) => { html = html.replace(`__SPAN_START_${i}__`, () => span); });
       html = html.replace(/__SPAN_END__/g, '</span>');
       
       // Parse Heading
@@ -1091,7 +1093,7 @@ function EditorContent() {
 
       // 4. Khôi phục lại khối HTML của Quiz
       quizzesHtml.forEach((qHtml, index) => {
-         html = html.replace(`__QUIZ_PLACEHOLDER_${index}__`, qHtml);
+         html = html.replace(`__QUIZ_PLACEHOLDER_${index}__`, () => qHtml);
       });
 
       // Parse Markdown Images ![alt](url) -> fetch and embed as base64
