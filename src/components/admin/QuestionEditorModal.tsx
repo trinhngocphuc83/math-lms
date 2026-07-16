@@ -425,6 +425,21 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
                     </div>
                     <textarea 
                       value={formData[fieldName] as string} onChange={e => handleChange(fieldName, e.target.value)}
+                      onPaste={(e) => {
+                        const items = e.clipboardData?.items;
+                        if (!items) return;
+                        for (let i = 0; i < items.length; i++) {
+                          if (items[i].type.indexOf("image") !== -1) {
+                            const file = items[i].getAsFile();
+                            if (file) {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              handleOptionImageUpload(file, fieldName);
+                            }
+                            break;
+                          }
+                        }
+                      }}
                       className="w-full h-16 p-2 border rounded-lg bg-gray-50 outline-none focus:ring-1 focus:ring-indigo-500 font-mono text-sm resize-none"
                     />
                   </div>
