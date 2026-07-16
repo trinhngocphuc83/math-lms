@@ -1010,8 +1010,8 @@ function EditorContent() {
                   let methodText = "";
                   let explanationText = "";
 
-                  // Gộp chung 2 trường của AI để tránh việc nằm sai chỗ
-                  let fullText = [quiz.explanation, quiz.sampleAnswer].filter(Boolean).join('\n\n');
+                  // Gộp chung các trường của AI và Bank để tránh việc nằm sai chỗ
+                  let fullText = [quiz.explanation, quiz.sampleAnswer, quiz.answer].filter(Boolean).join('\n\n');
 
                   const lowerExp = fullText.toLowerCase();
                   const ppIndex = lowerExp.indexOf("phương pháp giải");

@@ -554,12 +554,10 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           </div>
                        )}
 
-                       {block.content.type === 'essay' && (
-                          <div>
-                             <label className="text-xs font-bold text-gray-600 mb-1 block">Hướng dẫn giải / Đáp án mẫu</label>
-                             <RichTextarea rows={4} value={block.content.sampleAnswer || ""} onChange={e => updateBlockContent(idx, { ...block.content, sampleAnswer: e.target.value })} className="w-full border p-2 rounded outline-none focus:border-teal-500" />
-                          </div>
-                       )}
+                       <div className="mt-4 pt-4 border-t border-gray-100">
+                          <label className="text-xs font-bold text-gray-600 mb-2 block text-indigo-700">✍️ Hướng dẫn giải / Lời giải chi tiết</label>
+                          <RichTextarea rows={4} value={block.content.answer || block.content.sampleAnswer || block.content.explanation || ""} onChange={e => updateBlockContent(idx, { ...block.content, answer: e.target.value, sampleAnswer: e.target.value })} className="w-full border p-2 rounded outline-none focus:border-teal-500" />
+                       </div>
                     </div>
                  )}
 
@@ -610,6 +608,17 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                              </div>
                                           </div>
                                        ))}
+                                    </div>
+                                 )}
+
+                                 {(block.content.answer || block.content.sampleAnswer || block.content.explanation) && (
+                                    <div className="mt-4 p-4 bg-emerald-50/50 border border-emerald-200 rounded-xl">
+                                       <div className="text-sm font-bold text-emerald-800 mb-2 border-b border-emerald-200/50 pb-2 flex items-center gap-2">
+                                          <span className="text-lg">💡</span> Hướng dẫn giải:
+                                       </div>
+                                       <div className="text-[15px] text-gray-800">
+                                          {renderQuizContent(block.content.answer || block.content.sampleAnswer || block.content.explanation || "")}
+                                       </div>
                                     </div>
                                  )}
                               </div>
