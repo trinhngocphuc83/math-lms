@@ -111,8 +111,10 @@ export default function ScoresTab({ classId, classInfo, enrollments }: { classId
             </tr>
           </thead>
           <tbody>
-            {enrollments.map((enrollment, idx) => (
-              <tr key={enrollment.student_id} className="hover:bg-gray-50">
+            {enrollments.map((enrollment, idx) => {
+              const studentId = enrollment.profiles?.id || enrollment.id;
+              return (
+              <tr key={studentId} className="hover:bg-gray-50">
                 <td className="p-2 border text-center font-medium text-gray-500">{idx + 1}</td>
                 <td className="p-2 border font-bold text-gray-800">{enrollment.profiles?.full_name}</td>
                 <td className="p-2 border text-center">
@@ -120,17 +122,17 @@ export default function ScoresTab({ classId, classInfo, enrollments }: { classId
                     type="number" 
                     step="0.1"
                     min="0" max="10"
-                    value={scores[enrollment.student_id] || ''}
-                    onChange={e => handleScoreChange(enrollment.student_id, e.target.value)}
+                    value={scores[studentId] || ''}
+                    onChange={e => handleScoreChange(studentId, e.target.value)}
                     className="w-full text-center py-1 bg-transparent border-b border-dashed border-gray-300 focus:outline-none focus:border-teal-500 font-bold text-gray-800"
                     data-html2canvas-ignore="false"
                   />
                 </td>
                 <td className="p-2 border text-center bg-gray-50/50">
-                  {getRemark(scores[enrollment.student_id])}
+                  {getRemark(scores[studentId])}
                 </td>
               </tr>
-            ))}
+            )})}
             {enrollments.length === 0 && (
               <tr>
                 <td colSpan={4} className="p-4 text-center text-gray-500">Lớp chưa có học sinh nào.</td>
