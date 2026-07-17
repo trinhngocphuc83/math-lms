@@ -497,6 +497,43 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     }));
   };
 
+  const handleApproveNewCategory = async (tempId: string, field: 'lesson' | 'math_form', newValue: string) => {
+    const q = parsedQuestions.find(q => q.temp_id === tempId);
+    if (!q || !newValue.trim()) return;
+    
+    try {
+      const insertData = {
+        grade: q.grade, 
+        subject: q.subject, 
+        topic: q.topic, 
+        lesson: field === 'lesson' ? newValue.trim() : q.lesson, 
+        math_form: field === 'math_form' ? newValue.trim() : (q.math_form || '')
+      };
+      
+      const { error } = await supabase.from('question_categories').insert([insertData]);
+      if (error) throw error;
+      
+      // Update local categories list
+      setCategories(prev => [...prev, insertData as any]);
+      
+      // Apply the new category to the question and dismiss the alert
+      setParsedQuestions(prev => prev.map(item => {
+        if (item.temp_id !== tempId) return item;
+        return {
+          ...item,
+          [field]: newValue.trim(),
+          ...(field === 'lesson' ? { isNewLesson: false } : {}),
+          ...(field === 'math_form' ? { isNewMathForm: false } : {})
+        };
+      }));
+      
+      alert(`Đã thêm ${field === 'lesson' ? 'Tên Bài' : 'Dạng Toán'} mới vào danh mục!`);
+    } catch (e: any) {
+      alert("Lỗi khi thêm danh mục: " + e.message);
+    }
+  };
+
+
   return (
     <div className="flex h-screen bg-[#f3f4f6] overflow-hidden text-gray-800">
       
@@ -709,13 +746,20 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                             )}
                          </div>
                          {q.isNewLesson && (
-                           <div className="flex flex-col gap-1.5 mt-1 border-t border-red-100 pt-1.5">
-                             <select onChange={e => handleMapCategory(q.temp_id!, 'lesson', e.target.value)} className="w-full text-[10px] p-1.5 border border-red-200 rounded-md bg-white text-gray-700 outline-none focus:border-red-500 font-medium shadow-sm cursor-pointer">
-                                <option value="">-- Ép về Tên Bài có sẵn --</option>
-                                {uniqueLessons.map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
-                             </select>
-                             <button onClick={() => handleMapCategory(q.temp_id!, 'lesson', q.lesson)} className="w-full py-1 text-[10px] font-black tracking-wide bg-red-100 text-red-700 border border-red-200 rounded hover:bg-red-200 transition-colors uppercase">Duyệt Tạo Mới</button>
-                           </div>
+                            <div className="flex flex-col gap-1.5 mt-1 border-t border-red-100 pt-1.5">
+                              <select onChange={e => handleMapCategory(q.temp_id!, 'lesson', e.target.value)} className="w-full text-[10px] p-1.5 border border-red-200 rounded-md bg-white text-gray-700 outline-none focus:border-red-500 font-medium shadow-sm cursor-pointer">
+                                 <option value="">-- Ép về Tên Bài có sẵn --</option>
+                                 {uniqueLessons.map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
+                              </select>
+                              <input 
+                                type="text" 
+                                value={q.lesson} 
+                                onChange={e => setParsedQuestions(prev => prev.map(item => item.temp_id === q.temp_id ? {...item, lesson: e.target.value} : item))}
+                                placeholder="Nhập tên bài mới..." 
+                                className="w-full text-[10px] p-1.5 border border-red-200 rounded-md bg-white text-gray-700 outline-none focus:border-red-500 font-medium shadow-sm"
+                              />
+                              <button onClick={() => handleApproveNewCategory(q.temp_id!, 'lesson', q.lesson)} className="w-full py-1 text-[10px] font-black tracking-wide bg-red-100 text-red-700 border border-red-200 rounded hover:bg-red-200 transition-colors uppercase">Duyệt Tạo Mới</button>
+                            </div>
                          )}
                       </div>
                       
@@ -737,7 +781,14 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                                 <option value="">-- Ép về Dạng Toán có sẵn --</option>
                                 {uniqueForms.map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
                              </select>
-                             <button onClick={() => handleMapCategory(q.temp_id!, 'math_form', q.math_form)} className="w-full py-1 text-[10px] font-black tracking-wide bg-orange-100 text-orange-700 border border-orange-200 rounded hover:bg-orange-200 transition-colors uppercase">Duyệt Tạo Mới</button>
+                             <input 
+                               type="text" 
+                               value={q.math_form} 
+                               onChange={e => setParsedQuestions(prev => prev.map(item => item.temp_id === q.temp_id ? {...item, math_form: e.target.value} : item))}
+                               placeholder="Nhập dạng toán mới..." 
+                               className="w-full text-[10px] p-1.5 border border-orange-200 rounded-md bg-white text-gray-700 outline-none focus:border-orange-500 font-medium shadow-sm"
+                             />
+                             <button onClick={() => handleApproveNewCategory(q.temp_id!, 'math_form', q.math_form)} className="w-full py-1 text-[10px] font-black tracking-wide bg-orange-100 text-orange-700 border border-orange-200 rounded hover:bg-orange-200 transition-colors uppercase">Duyệt Tạo Mới</button>
                            </div>
                          )}
                       </div>
