@@ -8,6 +8,7 @@ import { useRouter, useParams } from "next/navigation";
 import { getEnrollments, addEnrollment, removeEnrollment, updateStudentProfile, searchStudents, createAndEnrollNewStudent } from "./actions";
 import AttendanceTab from "./AttendanceTab";
 import TuitionTab from "./TuitionTab";
+import ScoresTab from "./ScoresTab";
 
 export default function ClassDetailsPage() {
   const [classInfo, setClassInfo] = useState<any>(null);
@@ -17,7 +18,7 @@ export default function ClassDetailsPage() {
   const params = useParams();
   const router = useRouter();
   const classId = params.id as string;
-  const [activeTab, setActiveTab] = useState<'students' | 'attendance' | 'tuition'>('students');
+  const [activeTab, setActiveTab] = useState<'students' | 'attendance' | 'tuition' | 'scores'>('students');
 
   // Search Students
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -227,6 +228,12 @@ export default function ClassDetailsPage() {
         >
           <DollarSign size={18} /> Học phí
         </button>
+        <button 
+          onClick={() => setActiveTab('scores')} 
+          className={`flex items-center gap-2 px-5 py-3 font-bold rounded-t-xl transition-all border-b-2 ${activeTab === 'scores' ? 'border-teal-600 text-teal-700 bg-teal-50/50' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'}`}
+        >
+          <CheckSquare size={18} /> Báo điểm
+        </button>
       </div>
 
       {activeTab === 'students' && (
@@ -321,6 +328,12 @@ export default function ClassDetailsPage() {
       {activeTab === 'tuition' && (
         <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
           <TuitionTab classId={classId} classInfo={classInfo} enrollments={enrollments} />
+        </div>
+      )}
+
+      {activeTab === 'scores' && (
+        <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <ScoresTab classId={classId} classInfo={classInfo} enrollments={enrollments} />
         </div>
       )}
 
