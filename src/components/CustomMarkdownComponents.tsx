@@ -39,18 +39,22 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
     if (text.length > 50 || text.length === 0) return null;
 
     const cleanText = text.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u27FF]|💡|🎯|📌|📝|✅|⚙️|✨|⭐|🌟/g, '').trim();
-    const lowerText = cleanText.toLowerCase();
+    // Bỏ dấu hai chấm ở cuối hoặc các dấu câu khác để so sánh chính xác hơn
+    const lowerText = cleanText.toLowerCase().replace(/[:.,-]/g, '').trim();
+    
+    // Khôi phục lại text hiển thị (có thể bỏ dấu hai chấm đi cho đẹp)
+    const displayText = cleanText.replace(/[:.,-]$/g, '').trim();
 
     if (lowerText === "hướng dẫn giải" || lowerText === "lời giải" || lowerText === "lời giải chi tiết" || lowerText === "hướng dẫn giải chi tiết") {
        return isPresentation ? (
-           <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
-                <span className="text-[1.2em] leading-none">📝</span>
-                <span className="text-blue-500 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{cleanText}</span>
+           <span className="inline-flex items-center gap-[0.5em] px-[1.2em] py-[0.4em] rounded-[1em] border-[2px] border-indigo-400 bg-indigo-50 shadow-sm mx-[0.2em] my-[0.4em] w-fit">
+                <span className="text-[1.3em] leading-none">📝</span>
+                <span className="text-purple-600 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.2em' }}>{displayText}</span>
              </span>
        ) : (
-             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-blue-50/80 border border-blue-100 shadow-sm mt-4 mb-2 w-fit">
-                <span className="text-base leading-none">📝</span>
-                <span className="text-blue-600 font-bold text-sm tracking-wide uppercase">{cleanText}</span>
+             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-indigo-50 border-2 border-indigo-400 shadow-sm mt-4 mb-2 w-fit">
+                <span className="text-xl leading-none">📝</span>
+                <span className="text-purple-600 font-bold text-base tracking-wide uppercase">{displayText}</span>
              </span>
        );
     }
@@ -58,12 +62,12 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
        return isPresentation ? (
            <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-amber-400 bg-amber-50/80 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
                 <span className="text-[1.2em] leading-none">💡</span>
-                <span className="text-orange-500 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{cleanText}</span>
+                <span className="text-orange-500 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{displayText}</span>
              </span>
        ) : (
              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50/80 border border-amber-100 shadow-sm mt-4 mb-2 w-fit">
                 <span className="text-base leading-none">💡</span>
-                <span className="text-amber-600 font-bold text-sm tracking-wide uppercase">{cleanText}</span>
+                <span className="text-amber-600 font-bold text-sm tracking-wide uppercase">{displayText}</span>
              </span>
        );
     }
@@ -71,12 +75,12 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
        return isPresentation ? (
            <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-emerald-400 bg-emerald-50/80 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
                 <span className="text-[1.2em] leading-none">📌</span>
-                <span className="text-emerald-600 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{cleanText}</span>
+                <span className="text-emerald-600 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{displayText}</span>
              </span>
        ) : (
              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50/80 border border-emerald-100 shadow-sm mt-4 mb-2 w-fit">
                 <span className="text-base leading-none">📌</span>
-                <span className="text-emerald-600 font-bold text-sm tracking-wide uppercase">{cleanText}</span>
+                <span className="text-emerald-600 font-bold text-sm tracking-wide uppercase">{displayText}</span>
              </span>
        );
     }
@@ -84,12 +88,12 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
        return isPresentation ? (
            <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-purple-400 bg-purple-50/80 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
                 <span className="text-[1.2em] leading-none">🎯</span>
-                <span className="text-purple-600 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{cleanText}</span>
+                <span className="text-purple-600 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{displayText}</span>
              </span>
        ) : (
              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-50/80 border border-purple-100 shadow-sm mt-4 mb-2 w-fit">
                 <span className="text-base leading-none">🎯</span>
-                <span className="text-purple-600 font-bold text-sm tracking-wide uppercase">{cleanText}</span>
+                <span className="text-purple-600 font-bold text-sm tracking-wide uppercase">{displayText}</span>
              </span>
        );
     }
@@ -97,12 +101,12 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
        return isPresentation ? (
            <span className="inline-flex items-center gap-[0.5em] bg-gradient-to-r from-pink-500 to-rose-400 text-white px-[0.8em] py-[0.2em] rounded-[0.5em] font-black shadow-sm mt-[0.5em] mb-[0.2em] mr-[0.5em] w-fit uppercase tracking-wider">
                <span className="w-[0.5em] h-[0.5em] bg-white rounded-full animate-pulse"></span>
-               {cleanText}
+               {displayText}
              </span>
        ) : (
              <span className="inline-flex items-center gap-2 bg-slate-800 text-white px-2.5 py-1 rounded-md font-bold shadow-sm mt-2 mb-1 mr-2 text-xs uppercase tracking-wider w-fit">
                <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
-               {cleanText}
+               {displayText}
              </span>
        );
     }
