@@ -32,9 +32,11 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
   const [isManualAdding, setIsManualAdding] = useState(false);
   const [newCategory, setNewCategory] = useState({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [editingCatData, setEditingCatData] = useState<CategoryData | null>(null);
 
   const startEditing = (cat: CategoryData) => {
     setEditingId(cat.id);
+    setEditingCatData(cat);
     setNewCategory({
       grade: cat.grade || "",
       subject: cat.subject || "",
@@ -50,6 +52,52 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
       return alert("Vui lòng điền đủ Lớp, Phân môn, Chuyên đề và Dạng toán!");
     }
     try {
+      setIsImporting(true); // use isImporting to disable UI
+      
+      if (editingCatData) {
+        const topicChanged = editingCatData.topic !== newCategory.topic.trim();
+        const lessonChanged = editingCatData.lesson !== newCategory.lesson.trim();
+        const mathFormChanged = editingCatData.math_form !== newCategory.math_form.trim();
+        
+        let updateTopic = false;
+        let updateLesson = false;
+        let updateMathForm = false;
+        
+        if (topicChanged) {
+            updateTopic = confirm(`Bạn đã thay đổi tên Chương từ "${editingCatData.topic}" thành "${newCategory.topic.trim()}".\n\nBạn có muốn đổi tên Chương này cho TẤT CẢ các Bài và Dạng toán khác đang thuộc Chương này không (bao gồm cả các câu hỏi)?`);
+        }
+        if (lessonChanged) {
+            updateLesson = confirm(`Bạn đã thay đổi tên Bài từ "${editingCatData.lesson}" thành "${newCategory.lesson.trim()}".\n\nBạn có muốn đổi tên Bài này cho TẤT CẢ các Dạng toán khác đang thuộc Bài này không (bao gồm cả các câu hỏi)?`);
+        }
+        if (mathFormChanged) {
+            updateMathForm = confirm(`Bạn đã đổi tên Dạng toán từ "${editingCatData.math_form}" thành "${newCategory.math_form.trim()}".\n\nBạn có muốn áp dụng tên mới này cho tất cả câu hỏi trong Ngân hàng đang thuộc dạng này không?`);
+        }
+
+        if (updateTopic) {
+            await supabase.from('question_categories').update({ topic: newCategory.topic.trim() })
+               .eq('grade', editingCatData.grade).eq('subject', editingCatData.subject).eq('topic', editingCatData.topic);
+            await supabase.from('questions').update({ topic: newCategory.topic.trim() })
+               .eq('grade', editingCatData.grade).eq('subject', editingCatData.subject).eq('topic', editingCatData.topic);
+        }
+        if (updateLesson) {
+            await supabase.from('question_categories').update({ lesson: newCategory.lesson.trim() })
+               .eq('grade', editingCatData.grade).eq('subject', editingCatData.subject)
+               .eq('topic', updateTopic ? newCategory.topic.trim() : editingCatData.topic)
+               .eq('lesson', editingCatData.lesson);
+            await supabase.from('questions').update({ lesson: newCategory.lesson.trim() })
+               .eq('grade', editingCatData.grade).eq('subject', editingCatData.subject)
+               .eq('topic', updateTopic ? newCategory.topic.trim() : editingCatData.topic)
+               .eq('lesson', editingCatData.lesson);
+        }
+        if (updateMathForm) {
+            await supabase.from('questions').update({ math_form: newCategory.math_form.trim() })
+               .eq('grade', editingCatData.grade).eq('subject', editingCatData.subject)
+               .eq('topic', updateTopic ? newCategory.topic.trim() : editingCatData.topic)
+               .eq('lesson', updateLesson ? newCategory.lesson.trim() : editingCatData.lesson)
+               .eq('math_form', editingCatData.math_form);
+        }
+      }
+
       const { error } = await supabase.from('question_categories').update({
         grade: newCategory.grade.trim(),
         subject: newCategory.subject.trim(),
@@ -61,16 +109,21 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
       if (error) throw error;
       setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
       setEditingId(null);
+      setEditingCatData(null);
       setIsManualAdding(false);
       fetchCategories();
       onCategoriesUpdated();
+      alert("Cập nhật danh mục thành công!");
     } catch (e: any) {
       alert("Lỗi khi cập nhật: " + e.message);
+    } finally {
+      setIsImporting(false);
     }
   };
 
   const cancelEditing = () => {
     setEditingId(null);
+    setEditingCatData(null);
     setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
     setIsManualAdding(false);
   };
