@@ -38,14 +38,14 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
     const text = extractTextFromReactNode(children).trim();
     if (text.length > 50 || text.length === 0) return null;
 
-    const cleanText = text.normalize('NFC').replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u27FF]|💡|🎯|📌|📝|✅|⚙️|✨|⭐|🌟/g, '').trim();
+    const cleanText = text.normalize('NFC').replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u27FF]|💡|🎯|📌|📝|✅|⚙️|✨|⭐|🌟/g, '').replace(/\s+/g, ' ').trim();
     // Bỏ dấu hai chấm ở cuối hoặc các dấu câu khác để so sánh chính xác hơn
     const lowerText = cleanText.toLowerCase().replace(/[:.,-]/g, '').trim();
     
     // Khôi phục lại text hiển thị (có thể bỏ dấu hai chấm đi cho đẹp)
     const displayText = cleanText.replace(/[:.,-]$/g, '').trim();
 
-    if (lowerText.startsWith("hướng dẫn giải") || lowerText.startsWith("lời giải")) {
+    if (lowerText.startsWith("hướng dẫn") || lowerText.startsWith("hướng dẩn") || lowerText.startsWith("lời giải") || lowerText.startsWith("hdg")) {
        return isPresentation ? (
            <span className="inline-flex items-center gap-[0.5em] px-[1.2em] py-[0.4em] rounded-[1em] border-[2px] border-indigo-400 bg-indigo-50 shadow-sm mx-[0.2em] my-[0.4em] w-fit">
                 <span className="text-[1.3em] leading-none">📝</span>
