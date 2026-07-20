@@ -38,14 +38,14 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
     const text = extractTextFromReactNode(children).trim();
     if (text.length > 50 || text.length === 0) return null;
 
-    const cleanText = text.replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u27FF]|💡|🎯|📌|📝|✅|⚙️|✨|⭐|🌟/g, '').trim();
+    const cleanText = text.normalize('NFC').replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u27FF]|💡|🎯|📌|📝|✅|⚙️|✨|⭐|🌟/g, '').trim();
     // Bỏ dấu hai chấm ở cuối hoặc các dấu câu khác để so sánh chính xác hơn
     const lowerText = cleanText.toLowerCase().replace(/[:.,-]/g, '').trim();
     
     // Khôi phục lại text hiển thị (có thể bỏ dấu hai chấm đi cho đẹp)
     const displayText = cleanText.replace(/[:.,-]$/g, '').trim();
 
-    if (lowerText === "hướng dẫn giải" || lowerText === "lời giải" || lowerText === "lời giải chi tiết" || lowerText === "hướng dẫn giải chi tiết") {
+    if (lowerText.startsWith("hướng dẫn giải") || lowerText.startsWith("lời giải")) {
        return isPresentation ? (
            <span className="inline-flex items-center gap-[0.5em] px-[1.2em] py-[0.4em] rounded-[1em] border-[2px] border-indigo-400 bg-indigo-50 shadow-sm mx-[0.2em] my-[0.4em] w-fit">
                 <span className="text-[1.3em] leading-none">📝</span>
@@ -58,7 +58,7 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
              </span>
        );
     }
-    if (lowerText === "phương pháp giải" || lowerText === "phương pháp") {
+    if (lowerText.startsWith("phương pháp")) {
        return isPresentation ? (
            <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-amber-400 bg-amber-50/80 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
                 <span className="text-[1.2em] leading-none">💡</span>
@@ -71,7 +71,7 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
              </span>
        );
     }
-    if (lowerText === "ví dụ mẫu" || lowerText.startsWith("ví dụ")) {
+    if (lowerText.startsWith("ví dụ")) {
        return isPresentation ? (
            <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-emerald-400 bg-emerald-50/80 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
                 <span className="text-[1.2em] leading-none">📌</span>
@@ -84,7 +84,7 @@ export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolea
              </span>
        );
     }
-    if (lowerText === "câu hỏi tương tác") {
+    if (lowerText.startsWith("câu hỏi tương tác")) {
        return isPresentation ? (
            <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-purple-400 bg-purple-50/80 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
                 <span className="text-[1.2em] leading-none">🎯</span>
