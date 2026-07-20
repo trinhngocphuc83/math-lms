@@ -10,6 +10,7 @@ import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, CheckCircle2, Lightbulb, Pin, BookOpen, Target, Type } from 'lucide-react';
 import React from 'react';
+import { checkAndRenderSpecialBlock } from '@/components/CustomMarkdownComponents';
 
 const extractTextFromReactNode = (node: any): string => {
     if (typeof node === 'string' || typeof node === 'number') {
@@ -55,47 +56,39 @@ const customMarkdownComponents: any = {
        }
        return <span style={parsedStyle} {...props}>{children}</span>;
    },
-   h1: ({node, children, ...props}: any) => checkRibbon(children, <h1 {...props}>{children}</h1>),
-   h2: ({node, children, ...props}: any) => checkRibbon(children, <h2 {...props}>{children}</h2>),
-   h3: ({node, children, ...props}: any) => checkRibbon(children, <h3 {...props}>{children}</h3>),
-   h4: ({node, children, ...props}: any) => checkRibbon(children, <h4 {...props}>{children}</h4>),
-   h5: ({node, children, ...props}: any) => checkRibbon(children, <h5 {...props}>{children}</h5>),
-   h6: ({node, children, ...props}: any) => checkRibbon(children, <h6 {...props}>{children}</h6>),
+   h1: ({node, children, ...props}: any) => {
+       const special = checkAndRenderSpecialBlock(children, true);
+       if (special) return checkRibbon(children, <div className="not-prose my-[1em] block">{special}</div>);
+       return checkRibbon(children, <h1 {...props}>{children}</h1>);
+   },
+   h2: ({node, children, ...props}: any) => {
+       const special = checkAndRenderSpecialBlock(children, true);
+       if (special) return checkRibbon(children, <div className="not-prose my-[0.8em] block">{special}</div>);
+       return checkRibbon(children, <h2 {...props}>{children}</h2>);
+   },
+   h3: ({node, children, ...props}: any) => {
+       const special = checkAndRenderSpecialBlock(children, true);
+       if (special) return checkRibbon(children, <div className="not-prose my-[0.6em] block">{special}</div>);
+       return checkRibbon(children, <h3 {...props}>{children}</h3>);
+   },
+   h4: ({node, children, ...props}: any) => {
+       const special = checkAndRenderSpecialBlock(children, true);
+       if (special) return checkRibbon(children, <div className="not-prose my-[0.6em] block">{special}</div>);
+       return checkRibbon(children, <h4 {...props}>{children}</h4>);
+   },
+   h5: ({node, children, ...props}: any) => {
+       const special = checkAndRenderSpecialBlock(children, true);
+       if (special) return checkRibbon(children, <div className="not-prose my-[0.5em] block">{special}</div>);
+       return checkRibbon(children, <h5 {...props}>{children}</h5>);
+   },
+   h6: ({node, children, ...props}: any) => {
+       const special = checkAndRenderSpecialBlock(children, true);
+       if (special) return checkRibbon(children, <div className="not-prose my-[0.5em] block">{special}</div>);
+       return checkRibbon(children, <h6 {...props}>{children}</h6>);
+   },
    strong: ({node, children, ...props}: any) => {
-       const text = String(children);
-       const lowerText = text.toLowerCase();
-       if (lowerText.includes("hướng dẫn giải") || lowerText.includes("lời giải")) {
-          return (
-             <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-[0.2em] my-[0.2em]">
-                <span className="text-[1.2em] leading-none">📝</span>
-                <span className="text-blue-500 font-bold leading-none" style={{ fontSize: '1.1em' }}>{children}</span>
-             </span>
-          );
-       }
-       if (lowerText.includes("phương pháp giải")) {
-          return (
-             <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-[0.2em] my-[0.2em]">
-                <span className="text-[1.2em] leading-none">💡</span>
-                <span className="text-orange-500 font-bold leading-none" style={{ fontSize: '1.1em' }}>{children}</span>
-             </span>
-          );
-       }
-       if (lowerText.includes("ví dụ mẫu")) {
-          return (
-             <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-indigo-400 bg-indigo-50/50 shadow-sm mx-[0.2em] my-[0.2em]">
-                <span className="text-[1.2em] leading-none">📌</span>
-                <span className="text-rose-500 font-bold leading-none" style={{ fontSize: '1.1em' }}>{children}</span>
-             </span>
-          );
-       }
-       if (lowerText.startsWith("bước")) {
-          return (
-             <span className="inline-flex items-center gap-[0.5em] bg-gradient-to-r from-pink-500 to-rose-400 text-white px-[0.8em] py-[0.2em] rounded-[0.5em] font-black shadow-sm mt-[0.5em] mb-[0.2em] mr-[0.5em]">
-               <span className="w-[0.5em] h-[0.5em] bg-white rounded-full animate-pulse"></span>
-               {children}
-             </span>
-          );
-       }
+       const special = checkAndRenderSpecialBlock(children, true);
+       if (special) return special;
        return <strong {...props} className="text-slate-900 font-bold">{children}</strong>;
    },
    li: ({node, children, ...props}: any) => {
@@ -119,6 +112,9 @@ const customMarkdownComponents: any = {
        );
    },
    p: ({node, children, ...props}: any) => {
+       const special = checkAndRenderSpecialBlock(children, true);
+       if (special) return <div className="not-prose my-[0.8em] block">{special}</div>;
+
        const text = extractTextFromReactNode(children).trim();
        if (/^(.{0,8})(Bài\s+\d+|Phần\s+\d+|Dạng\s+\d+|\d+\.)/i.test(text)) {
             return (
@@ -130,7 +126,7 @@ const customMarkdownComponents: any = {
             );
        }
        
-       return <p className="mb-[0.3em] text-[1.1em] leading-[1.5] text-slate-800 font-medium" {...props}>{children}</p>;
+       return <p className="mb-[0.3em] text-[1.1em] leading-[1.5] text-slate-800 font-medium whitespace-pre-wrap" {...props}>{children}</p>;
    }
 };
 
