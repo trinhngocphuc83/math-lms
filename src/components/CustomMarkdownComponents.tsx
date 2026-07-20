@@ -181,6 +181,6 @@ export const appMarkdownComponents: any = {
    p: ({node, style, children, ...props}: any) => {
        const special = checkAndRenderSpecialBlock(children, false);
        if (special) return <div className="not-prose my-3 block">{special}</div>;
-       return <p style={sanitizeStyle(style)} className="mb-4 text-[1.05rem] sm:text-[1.1rem] leading-[1.8] text-slate-700 whitespace-pre-wrap" {...props}>{children}</p>;
+       return <p style={sanitizeStyle(style)} className="mb-2 text-[1.05rem] sm:text-[1.1rem] leading-[1.6] text-slate-800" {...props}>{children}</p>;
    }
 };

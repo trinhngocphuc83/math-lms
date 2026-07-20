@@ -126,7 +126,7 @@ const customMarkdownComponents: any = {
             );
        }
        
-       return <p className="mb-[0.3em] text-[1.1em] leading-[1.5] text-slate-800 font-medium whitespace-pre-wrap" {...props}>{children}</p>;
+       return <p className="mb-[0.3em] text-[1.1em] leading-[1.5] text-slate-800 font-medium" {...props}>{children}</p>;
    }
 };
 
