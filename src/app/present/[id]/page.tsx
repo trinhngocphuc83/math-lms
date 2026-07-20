@@ -304,6 +304,10 @@ export default function PresentationPage() {
     const [currentFragmentIndex, setCurrentFragmentIndex] = useState(0);
     const [isFullscreen, setIsFullscreen] = useState(false);
     
+    // Resume states
+    const [showRestorePrompt, setShowRestorePrompt] = useState(false);
+    const [savedSlideIndex, setSavedSlideIndex] = useState(0);
+    
     // Auto-fit text states
     const [autoFitEnabled, setAutoFitEnabled] = useState(false);
     const [baseFontSize, setBaseFontSize] = useState(40); // Start huge
@@ -317,12 +321,31 @@ export default function PresentationPage() {
                 setModuleData(data);
                 const presentationContent = data.presentation_markdown || data.content_markdown;
                 if (presentationContent) {
-                    setSlides(parseSlides(presentationContent));
+                    const parsed = parseSlides(presentationContent);
+                    setSlides(parsed);
+                    
+                    const savedIdxStr = localStorage.getItem(`present_slide_${moduleId}`);
+                    if (savedIdxStr) {
+                        const savedIdx = parseInt(savedIdxStr);
+                        if (!isNaN(savedIdx) && savedIdx > 0 && savedIdx < parsed.length) {
+                            setSavedSlideIndex(savedIdx);
+                            setShowRestorePrompt(true);
+                        }
+                    }
                 }
             }
         }
         load();
     }, [moduleId]);
+    
+    useEffect(() => {
+        if (!moduleId) return;
+        if (currentSlideIndex > 0) {
+            localStorage.setItem(`present_slide_${moduleId}`, currentSlideIndex.toString());
+        } else {
+            localStorage.removeItem(`present_slide_${moduleId}`);
+        }
+    }, [currentSlideIndex, moduleId]);
     
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -423,7 +446,46 @@ export default function PresentationPage() {
     };
 
     return (
-        <div onClick={handleSlideClick} className="w-screen h-screen overflow-hidden bg-gradient-to-br from-slate-100 to-indigo-50 flex items-center justify-center selection:bg-indigo-500/30">
+        <div onClick={handleSlideClick} className="w-screen h-screen overflow-hidden bg-gradient-to-br from-slate-100 to-indigo-50 flex items-center justify-center selection:bg-indigo-500/30 relative">
+            
+            {showRestorePrompt && (
+                <div className="absolute inset-0 z-[100] flex items-center justify-center bg-slate-900/40 backdrop-blur-sm cursor-default" onClick={(e) => e.stopPropagation()}>
+                    <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 transform transition-all flex flex-col items-center animate-in zoom-in-95 duration-300">
+                        <div className="flex items-center justify-center w-16 h-16 bg-indigo-50 text-indigo-500 rounded-full mb-4 shadow-inner border border-indigo-100">
+                            <BookOpen className="w-8 h-8" />
+                        </div>
+                        <h2 className="text-2xl font-black text-slate-800 text-center mb-3">Tiếp tục trình chiếu?</h2>
+                        <p className="text-slate-500 text-center mb-8 font-medium leading-relaxed">
+                            Hệ thống đã lưu lại vị trí lần trước Thầy/Cô đang xem ở <strong className="text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">Trang {savedSlideIndex + 1}</strong>.<br/>Thầy/Cô muốn tiếp tục hay bắt đầu lại?
+                        </p>
+                        <div className="flex gap-4 w-full">
+                            <button 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    localStorage.removeItem(`present_slide_${moduleId}`);
+                                    setShowRestorePrompt(false);
+                                    setCurrentSlideIndex(0);
+                                    setCurrentFragmentIndex(0);
+                                }}
+                                className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-2xl transition-all hover:shadow-md"
+                            >
+                                Bắt đầu lại
+                            </button>
+                            <button 
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setCurrentSlideIndex(savedSlideIndex);
+                                    setCurrentFragmentIndex(0);
+                                    setShowRestorePrompt(false);
+                                }}
+                                className="flex-1 py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                            >
+                                Tiếp tục
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
             
             {/* Header / Controls (Auto-hides) */}
             <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-50 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200">
