@@ -36,6 +36,8 @@ export default function RichTextarea({ value, onChange, onValueChange, className
   const [showIconMenu, setShowIconMenu] = useState(false);
   const iconMenuRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const textColorRef = useRef<HTMLSelectElement>(null);
+  const fontSizeRef = useRef<HTMLInputElement>(null);
   const [isUploading, setIsUploading] = useState(false);
   const EMOJIS = ["💡", "📌", "🎯", "🚀", "📝", "⚙️", "✅", "❌", "🔥", "✨", "👉", "⚠️"];
 
@@ -319,6 +321,25 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const end = ta.selectionEnd;
     const val = ta.value;
 
+    if (e.ctrlKey && e.shiftKey) {
+      const key = e.key.toLowerCase();
+      if (key === 'k') { e.preventDefault(); handleApplyBox(); return; }
+      if (key === 'l') { e.preventDefault(); handleApplyAlign('left'); return; }
+      if (key === 'e') { e.preventDefault(); handleApplyAlign('center'); return; }
+      if (key === 'r') { e.preventDefault(); handleApplyAlign('right'); return; }
+      if (key === 'j') { e.preventDefault(); handleApplyAlign('justify'); return; }
+      if (key === 'm') { e.preventDefault(); setShowIconMenu(prev => !prev); return; }
+      if (key === 'x') { e.preventDefault(); handleRemoveAutoIcon(); return; }
+      if (key === 'c') { e.preventDefault(); textColorRef.current?.focus(); return; }
+      if (key === 's') { e.preventDefault(); fontSizeRef.current?.focus(); return; }
+    }
+    
+    if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'i') {
+      e.preventDefault();
+      fileInputRef.current?.click();
+      return;
+    }
+
     if (e.ctrlKey && e.key.toLowerCase() === 'b') {
       e.preventDefault();
       handleFormat('bold');
@@ -480,6 +501,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             <span className="text-xs font-bold text-gray-600">Cỡ chữ:</span>
             <form onSubmit={handleApplySize} className="flex items-center gap-1">
               <input 
+                ref={fontSizeRef}
                 type="number" 
                 value={fontSize} 
                 onChange={e => setFontSize(e.target.value)}
@@ -504,6 +526,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             <Palette className="w-4 h-4 text-gray-500" />
             <span className="text-xs font-bold text-gray-600">Màu chữ:</span>
             <select
+              ref={textColorRef}
               value={textColor}
               onChange={e => setTextColor(e.target.value)}
               className="border-none focus:ring-0 text-sm font-bold p-0 text-gray-700 bg-transparent h-5 cursor-pointer outline-none pl-1"
