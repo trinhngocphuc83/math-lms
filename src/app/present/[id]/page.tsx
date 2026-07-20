@@ -130,60 +130,7 @@ const customMarkdownComponents: any = {
             );
        }
        
-       const kids = React.Children.toArray(children);
-       const newKids: React.ReactNode[] = [];
-       
-       let isStartOfLine = true;
-       kids.forEach((child, index) => {
-           // Skip pure whitespace (like \n) so they don't consume the start-of-line flag,
-           // but DO NOT skip \u00A0 (&nbsp;) because we use it as a manual hidden-icon trigger.
-           if (typeof child === 'string' && child.trim() === '' && !child.includes('\u00A0')) {
-               newKids.push(child);
-               return;
-           }
-
-           if (isStartOfLine) {
-               let shouldInject = true;
-               
-               if (typeof child === 'string') {
-                   if (/^[\n\s]*\u00A0/.test(child)) {
-                       shouldInject = false;
-                       // Remove exactly one \u00A0 so it doesn't cause unwanted indentation
-                       child = child.replace(/(^[\n\s]*)\u00A0/, '$1');
-                       // If the string is now empty or just a newline, add a zero-width space 
-                       // so the paragraph doesn't collapse (preserves blank lines)
-                       if (child === '' || child === '\n') {
-                           child += '\u200B';
-                       }
-                   }
-               } else if (React.isValidElement(child)) {
-                   if ((child.props as any)?.className?.includes('math-display')) {
-                       shouldInject = false;
-                   }
-                   const text = extractTextFromReactNode(child).trim();
-                   if (/^(bước|hướng dẫn giải|lời giải|phương pháp|ví dụ mẫu)/i.test(text)) {
-                       shouldInject = false;
-                   }
-               }
-               
-               if (shouldInject) {
-                   newKids.push(
-                       <span key={`icon-${index}`} className="inline-flex items-center justify-center mr-[0.5em] align-middle relative top-[-0.1em] text-orange-500 bg-orange-50 rounded-[0.2em] shadow-sm border border-orange-100 w-[1.2em] h-[1.2em] shrink-0">
-                          <ChevronRight className="w-[0.9em] h-[0.9em] shrink-0" />
-                       </span>
-                   );
-               }
-               isStartOfLine = false;
-           }
-           
-           newKids.push(child);
-           
-           if (React.isValidElement(child) && child.type === 'br') {
-               isStartOfLine = true;
-           }
-       });
-
-       return <p className="mb-[0.3em] text-[1.1em] leading-[1.5] text-slate-800 font-medium" {...props}>{newKids}</p>;
+       return <p className="mb-[0.3em] text-[1.1em] leading-[1.5] text-slate-800 font-medium" {...props}>{children}</p>;
    }
 };
 

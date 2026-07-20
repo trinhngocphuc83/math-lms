@@ -71,34 +71,7 @@ const customMarkdownComponents: any = {
        </li>
    ),
    p: ({node, children, ...props}: any) => {
-       const kids = React.Children.toArray(children);
-       const newKids: React.ReactNode[] = [];
-       
-       let isStartOfLine = true;
-       kids.forEach((child, index) => {
-           if (isStartOfLine) {
-               let shouldInject = true;
-               if (typeof child === 'string' && child.trim() === '') shouldInject = false;
-               if (React.isValidElement(child) && child.props && (child.props as any).className && (child.props as any).className.includes('math-display')) shouldInject = false;
-               
-               if (shouldInject) {
-                   newKids.push(
-                       <span key={`icon-${index}`} className="inline-flex items-center justify-center mr-2 align-middle relative -top-[2px] text-orange-500 bg-orange-50 rounded shadow-sm border border-orange-100 w-5 h-5 shrink-0">
-                          <ChevronRight className="w-3.5 h-3.5 shrink-0" />
-                       </span>
-                   );
-               }
-               isStartOfLine = false;
-           }
-           
-           newKids.push(child);
-           
-           if (React.isValidElement(child) && child.type === 'br') {
-               isStartOfLine = true;
-           }
-       });
-
-       return <p className="mb-6 text-[1.1rem] leading-[1.8] text-gray-700" {...props}>{newKids}</p>;
+       return <p className="mb-6 text-[1.1rem] leading-[1.8] text-gray-700" {...props}>{children}</p>;
    }
 };
 
