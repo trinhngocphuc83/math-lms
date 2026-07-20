@@ -312,6 +312,7 @@ export default function PresentationPage() {
     const [autoFitEnabled, setAutoFitEnabled] = useState(false);
     const [baseFontSize, setBaseFontSize] = useState(40); // Start huge
     const contentBoxRef = useRef<HTMLDivElement>(null);
+    const isFirstRender = useRef(true);
     
     useEffect(() => {
         if (!moduleId) return;
@@ -340,6 +341,10 @@ export default function PresentationPage() {
     
     useEffect(() => {
         if (!moduleId) return;
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
         if (currentSlideIndex > 0) {
             localStorage.setItem(`present_slide_${moduleId}`, currentSlideIndex.toString());
         } else {
