@@ -359,22 +359,21 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     if (e.key === 'Tab') {
       e.preventDefault();
       if (start === end) {
-        const newValue = val.substring(0, start) + "  " + val.substring(end);
+        const newValue = val.substring(0, start) + "\u00A0\u00A0\u00A0\u00A0" + val.substring(end);
         if (onValueChange) onValueChange(newValue);
         else {
           const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
           onChange(event);
         }
         setTimeout(() => {
-          if (textareaRef.current) textareaRef.current.setSelectionRange(start + 2, start + 2);
+          if (textareaRef.current) textareaRef.current.setSelectionRange(start + 4, start + 4);
         }, 0);
       }
     } else if (e.key === 'Backspace' && start === end && start > 0) {
-      const lineStart = val.lastIndexOf('\n', start - 1) + 1;
-      const textBeforeCursor = val.substring(lineStart, start);
-      if (textBeforeCursor.trim() === '' && textBeforeCursor.length > 0) {
+      const textBeforeCursor = val.substring(0, start);
+      if (textBeforeCursor.endsWith('\u00A0\u00A0\u00A0\u00A0')) {
         e.preventDefault();
-        const deleteCount = textBeforeCursor.length % 2 !== 0 ? 1 : 2;
+        const deleteCount = 4;
         const newValue = val.substring(0, start - deleteCount) + val.substring(end);
         if (onValueChange) onValueChange(newValue);
         else {
@@ -384,6 +383,23 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         setTimeout(() => {
           if (textareaRef.current) textareaRef.current.setSelectionRange(start - deleteCount, start - deleteCount);
         }, 0);
+      } else {
+        // Fallback for regular spaces deletion at the beginning of a line
+        const lineStart = val.lastIndexOf('\n', start - 1) + 1;
+        const textOnLineBeforeCursor = val.substring(lineStart, start);
+        if (textOnLineBeforeCursor.trim() === '' && textOnLineBeforeCursor.length > 0) {
+          e.preventDefault();
+          const deleteCount = textOnLineBeforeCursor.length % 2 !== 0 ? 1 : 2;
+          const newValue = val.substring(0, start - deleteCount) + val.substring(end);
+          if (onValueChange) onValueChange(newValue);
+          else {
+            const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+            onChange(event);
+          }
+          setTimeout(() => {
+            if (textareaRef.current) textareaRef.current.setSelectionRange(start - deleteCount, start - deleteCount);
+          }, 0);
+        }
       }
     }
   };
