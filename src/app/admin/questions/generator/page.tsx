@@ -118,9 +118,9 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
 
       return {
         id: `temp_${Date.now()}_${idx}`,
-        topic: jsonObj.topic || globalTopic,
-        lesson: jsonObj.lesson || globalLesson,
-        math_form: jsonObj.math_form || globalMathForm,
+        topic: globalTopic || jsonObj.topic,
+        lesson: globalLesson || jsonObj.lesson,
+        math_form: globalMathForm || jsonObj.math_form,
         content: jsonObj.question_text,
         option_a: allOptions[0].text,
         option_b: allOptions[1].text,
