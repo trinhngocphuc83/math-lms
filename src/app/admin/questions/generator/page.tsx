@@ -71,7 +71,8 @@ ${essayExplanation ? `[LỜI GIẢI GỐC ĐỂ THAM KHẢO]:\n${essayExplanatio
 3. ĐẢM BẢO CHỐNG TRÙNG LẶP: 4 đáp án phải độc lập tuyệt đối về mặt giá trị toán học (Không được có 2 đáp án cùng giá trị như 1/2 và 0.5).
 4. Đồng nhất định dạng: 4 đáp án nên có cùng cấu trúc và độ dài tương đồng để không tạo ra "mẹo chọn".
 5. Lời giải chi tiết: Bắt buộc viết lời giải tự luận chi tiết từng bước.
-6. Mọi công thức Toán học PHẢI được bọc trong dấu $...$ (ví dụ: $\\frac{1}{2}$). KHÔNG dùng \\\\[ ... \\\\] hay $$ ... $$. KHÔNG escape markdown bừa bãi.
+6. Mọi công thức Toán học PHẢI được bọc trong dấu $...$ (ví dụ: $\\frac{1}{2}$). 
+[CẢNH BÁO LỖI JSON]: Khi xuất JSON, tất cả các dấu gạch chéo ngược (\\) trong công thức Toán học BẮT BUỘC phải được nhân đôi thành (\\\\) để tránh lỗi "Bad escaped character". Ví dụ: phải viết là $\\\\frac{1}{2}$ thay vì $\\frac{1}{2}$, $\\\\in$ thay vì $\\in$. Tương tự với \\\\notin, \\\\pi, \\\\sqrt. Khác biệt duy nhất là dùng ký tự \\n (1 gạch chéo) để xuống dòng trong phần Lời giải chi tiết. Khúc này CỰC KỲ QUAN TRỌNG, nếu sai app sẽ bị sập.
 
 [PHÂN LOẠI DANH MỤC]:
 Hãy tự động phân loại câu hỏi vào Chuyên đề, Bài học và Dạng toán phù hợp nhất dựa trên danh sách có sẵn dưới đây:
@@ -256,7 +257,20 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
   const handleManualJsonSubmit = () => {
     try {
       let text = manualJsonInput.replace(/```json/g, "").replace(/```/g, "").trim();
-      const parsedData = JSON.parse(text);
+      
+      // Basic sanitization for common LaTeX escape issues (e.g. \frac instead of \\frac)
+      // This regex looks for \ followed by any character that is NOT a valid JSON escape (", \, /, b, f, n, r, t)
+      // and escapes the backslash. We also specifically escape \f, \b, \r if they are used in math (like \frac, \beta)
+      // to prevent "Bad escaped character" errors.
+      let sanitizedText = text.replace(/\\(?!["\\/bfnrt])/g, '\\\\');
+      // Replace \f (form feed) which is valid JSON but usually a mistake for \frac
+      sanitizedText = sanitizedText.replace(/(?<!\\)\\f/g, '\\\\f'); 
+      // Replace \b (backspace) which is valid JSON but usually a mistake for \beta
+      sanitizedText = sanitizedText.replace(/(?<!\\)\\b/g, '\\\\b');
+      // Replace \r (carriage return) which is valid JSON but usually a mistake for \rightarrow
+      sanitizedText = sanitizedText.replace(/(?<!\\)\\r/g, '\\\\r');
+
+      const parsedData = JSON.parse(sanitizedText);
       const items = Array.isArray(parsedData) ? parsedData : [parsedData];
       processAndShuffleOutput(items);
       setShowManualPrompt(false);
