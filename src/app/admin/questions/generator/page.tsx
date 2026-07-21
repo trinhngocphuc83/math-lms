@@ -274,7 +274,8 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
         .from('questions')
         .select('content')
         .eq('grade', globalGrade)
-        .eq('subject', globalSubject);
+        .eq('subject', globalSubject)
+        .eq('question_type', 'NLC');
       
       if (fetchErr) throw fetchErr;
 
