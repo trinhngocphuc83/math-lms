@@ -6,7 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 import { 
   FileEdit, Search, Plus, Upload, Loader2, Database,
   Filter, ChevronLeft, ChevronRight, CheckCircle2,
-  AlertCircle, X, Trash2, ChevronDown, FileDown, Eye
+  AlertCircle, X, Trash2, ChevronDown, FileDown, Eye, Wand2
 } from "lucide-react";
 import Papa from "papaparse";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
@@ -388,6 +388,12 @@ export default function QuestionsPage() {
             className="flex items-center gap-2 bg-orange-600 text-white hover:bg-orange-700 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm"
           >
             <Database className="w-4 h-4" /> Thêm hàng loạt (AI)
+          </Link>
+          <Link 
+            href="/admin/questions/generator" 
+            className="flex items-center gap-2 bg-purple-600 text-white hover:bg-purple-700 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm"
+          >
+            <Wand2 className="w-4 h-4" /> Sinh trắc nghiệm (AI)
           </Link>
         </div>
       </div>
