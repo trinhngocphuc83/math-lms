@@ -58,7 +58,7 @@ export default function QuestionGeneratorPage() {
 
   const generatePrompt = () => {
     return `Bạn là một chuyên gia Toán học và chuyên gia ra đề thi trắc nghiệm.
-Nhiệm vụ: Chuyển đổi câu hỏi tự luận sau thành một câu hỏi TRẮC NGHIỆM 4 ĐÁP ÁN.
+Nhiệm vụ: Chuyển đổi CÁC câu hỏi tự luận dưới đây thành CÁC câu hỏi TRẮC NGHIỆM 4 ĐÁP ÁN. Nếu đầu vào có nhiều câu hỏi (Câu 1, Câu 2...), bắt buộc phải trả về mảng JSON chứa nhiều object tương ứng với từng câu.
 
 [ĐỀ BÀI TỰ LUẬN GỐC]:
 ${essayContent}
@@ -81,7 +81,7 @@ ${!globalMathForm ? `DANH SÁCH DẠNG TOÁN:\n${uniqueForms.map(f => `- ${f}`).
 Lưu ý: BẮT BUỘC ưu tiên sử dụng chính xác tên trong danh sách trên nếu có sự tương đồng.
 
 [ĐỊNH DẠNG ĐẦU RA JSON BẮT BUỘC]:
-Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`json, chỉ mảng JSON thuần) với cấu trúc sau:
+Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`json, chỉ mảng JSON thuần). Trả về bao nhiêu câu thì trong mảng có bấy nhiêu object với cấu trúc sau:
 [
   {
     "topic": "${globalTopic || "Tên chuyên đề (Lấy từ danh sách hoặc tự suy luận)"}",
