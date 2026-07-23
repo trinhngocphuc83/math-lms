@@ -37,6 +37,7 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
   const supabase = createClient();
   const [formData, setFormData] = useState<QuestionData | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const contentInputRef = useRef<HTMLTextAreaElement>(null);
 
   // Crop & Upload State
   const [crop, setCrop] = useState<CropType>();
@@ -144,6 +145,36 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
       });
     } catch (e: any) {
       alert("Lỗi tải ảnh đáp án: " + e.message);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  const handleContentImageUpload = async (file: File) => {
+    try {
+      setIsUploading(true);
+      const filePath = `questions/content_${Date.now()}_${file.name}`;
+      const { error: uploadError } = await supabase.storage.from('lesson_images').upload(filePath, file);
+      if (uploadError) throw uploadError;
+      const { data: { publicUrl } } = supabase.storage.from('lesson_images').getPublicUrl(filePath);
+      
+      setFormData(prev => {
+        if (!prev) return prev;
+        const currentText = prev.content || '';
+        const textarea = contentInputRef.current;
+        const insertPos = textarea ? textarea.selectionStart : currentText.length;
+        
+        const newText = 
+          currentText.substring(0, insertPos) +
+          (insertPos > 0 && currentText[insertPos - 1] !== '\n' ? '\n' : '') +
+          `![Hình ảnh](${publicUrl})` +
+          (currentText[insertPos] !== '\n' ? '\n' : '') +
+          currentText.substring(insertPos);
+          
+        return { ...prev, content: newText };
+      });
+    } catch (e: any) {
+      alert("Lỗi tải ảnh nội dung: " + e.message);
     } finally {
       setIsUploading(false);
     }
@@ -336,12 +367,45 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
           {/* Cột phải: Nội dung */}
           <div className="w-2/3 space-y-4 flex flex-col">
             <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex-1 flex flex-col">
-              <label className="text-xs font-bold text-gray-700 mb-2 block uppercase tracking-wider flex justify-between">
-                Nội dung câu hỏi <span className="text-orange-500 lowercase normal-case font-bold">Hỗ trợ LaTeX $...$</span>
+              <label className="text-xs font-bold text-gray-700 mb-2 flex items-center justify-between uppercase tracking-wider">
+                <span>Nội dung câu hỏi</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-orange-500 lowercase normal-case font-bold">Hỗ trợ LaTeX $...$</span>
+                  <label htmlFor="file-content" className="cursor-pointer flex items-center gap-1 text-xs text-indigo-600 bg-indigo-50 hover:bg-indigo-100 px-2 py-1 rounded font-bold transition-colors normal-case">
+                    <ImageIcon className="w-3.5 h-3.5" /> Chèn ảnh
+                  </label>
+                  <input 
+                    type="file" 
+                    id="file-content" 
+                    accept="image/*" 
+                    className="hidden" 
+                    onChange={(e) => {
+                      const file = e.target.files?.[0];
+                      if (file) handleContentImageUpload(file);
+                      e.target.value = '';
+                    }}
+                  />
+                </div>
               </label>
               
               <textarea 
+                ref={contentInputRef}
                 value={formData.content} onChange={e => handleChange('content', e.target.value)} 
+                onPaste={(e) => {
+                  const items = e.clipboardData?.items;
+                  if (!items) return;
+                  for (let i = 0; i < items.length; i++) {
+                    if (items[i].type.indexOf("image") !== -1) {
+                      const file = items[i].getAsFile();
+                      if (file) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        handleContentImageUpload(file);
+                      }
+                      break;
+                    }
+                  }
+                }}
                 className="w-full h-32 p-3 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm resize-none mb-4"
               />
 
