@@ -85,16 +85,25 @@ export default function StudentDashboardPage() {
           const res = await fetch('/api/student/my-course?userId=' + currentUser.id);
           const requestData = await res.json();
 
-          if (requestData?.course_id) {
-            profileData.course_id = requestData.course_id; // Inject course_id để JSX hiển thị đúng
-            const { data: coursesData } = await supabase
-              .from('courses')
-              .select(`*, categories!courses_category_id_fkey ( name ), lessons ( id, title, created_at )`)
-              .eq('id', requestData.course_id);
-            if (coursesData) setCourses(coursesData);
-          } else {
-            setCourses([]);
-          }
+            if (requestData?.course_id) {
+              profileData.course_id = requestData.course_id; // Inject course_id để JSX hiển thị đúng
+              const { data: coursesData } = await supabase
+                .from('courses')
+                .select(`*, categories!courses_category_id_fkey ( name ), chapters ( id, title, order_index ), lessons ( id, title, chapter_id, order_index, created_at )`)
+                .eq('id', requestData.course_id);
+              if (coursesData) {
+                const processedCourses = coursesData.map(c => {
+                  const chapters = c.chapters || [];
+                  const lessons = c.lessons || [];
+                  chapters.sort((a: any, b: any) => (a.order_index || 0) - (b.order_index || 0));
+                  lessons.sort((a: any, b: any) => (a.order_index || 0) - (b.order_index || 0));
+                  return { ...c, chapters, lessons };
+                });
+                setCourses(processedCourses);
+              }
+            } else {
+              setCourses([]);
+            }
           
           setProfile(profileData);
 
@@ -469,12 +478,33 @@ export default function StudentDashboardPage() {
                             {expandedCourseId === course.id ? "Đóng" : "Vào lớp học"} <ChevronRight className={`w-4 h-4 transition-transform ${expandedCourseId === course.id ? 'rotate-90' : ''}`} />
                           </button>
                         </div>
-                        {/* Accordion Danh sách bài giảng */}
                         {expandedCourseId === course.id && (
-                          <div className="mt-4 bg-white rounded-xl shadow-inner border border-gray-100 p-2 animate-in fade-in slide-in-from-top-2">
-                            <h4 className="font-bold text-gray-700 px-3 py-2 text-sm border-b border-gray-100 mb-2">Danh sách Bài giảng</h4>
-                            {course.lessons && course.lessons.length > 0 ? (
-                               <div className="flex flex-col gap-1 max-h-48 overflow-y-auto">
+                          <div className="mt-4 bg-white rounded-xl shadow-inner border border-gray-100 p-4 animate-in fade-in slide-in-from-top-2">
+                            <h4 className="font-bold text-gray-700 text-sm border-b border-gray-100 mb-4 pb-2">Danh sách Bài giảng</h4>
+                            {course.chapters && course.chapters.length > 0 ? (
+                               <div className="flex flex-col gap-4 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
+                                 {course.chapters.map((chapter: any) => {
+                                    const chapterLessons = (course.lessons || []).filter((l: any) => l.chapter_id === chapter.id);
+                                    return (
+                                      <div key={chapter.id} className="space-y-2">
+                                        <h5 className="font-bold text-teal-700 text-sm uppercase tracking-wide">{chapter.title}</h5>
+                                        {chapterLessons.length > 0 ? (
+                                          <div className="flex flex-col gap-1 pl-3 border-l-2 border-teal-100">
+                                            {chapterLessons.map((lesson: any) => (
+                                              <Link key={lesson.id} href={`/student/lessons/${lesson.id}`} className="block px-3 py-2 hover:bg-teal-50 rounded-lg text-gray-600 hover:text-teal-700 transition-colors text-sm font-medium">
+                                                {lesson.title}
+                                              </Link>
+                                            ))}
+                                          </div>
+                                        ) : (
+                                          <div className="text-gray-400 italic pl-3 text-xs">Chưa có bài giảng</div>
+                                        )}
+                                      </div>
+                                    )
+                                 })}
+                               </div>
+                            ) : course.lessons && course.lessons.length > 0 ? (
+                               <div className="flex flex-col gap-1 max-h-96 overflow-y-auto pr-2 custom-scrollbar">
                                  {course.lessons.map((lesson: any) => (
                                    <Link key={lesson.id} href={`/student/lessons/${lesson.id}`} className="block px-3 py-2 hover:bg-teal-50 rounded-lg text-gray-600 hover:text-teal-700 transition-colors text-sm font-medium">
                                       {lesson.title}
@@ -482,7 +512,7 @@ export default function StudentDashboardPage() {
                                  ))}
                                </div>
                             ) : (
-                               <div className="text-gray-400 italic px-3 py-2 text-sm">Chưa có bài giảng nào</div>
+                               <div className="text-gray-400 italic text-sm">Chưa có bài giảng nào</div>
                             )}
                           </div>
                         )}
