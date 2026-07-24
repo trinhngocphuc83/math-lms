@@ -28,6 +28,7 @@ type Course = {
 export default function UsersTable({ initialUsers, courses }: { initialUsers: UserProfile[], courses: Course[] }) {
   const router = useRouter();
   const [users, setUsers] = useState(initialUsers);
+  const [searchQuery, setSearchQuery] = useState('');
   
   // Import State
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
@@ -226,6 +227,8 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
       <div className="p-4 border-b flex justify-between items-center bg-gray-50">
         <input 
           type="text" 
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Tìm kiếm tài khoản..." 
           className="px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 min-w-[300px]"
         />
@@ -261,7 +264,18 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {users.map((user) => (
+            {users.filter(user => {
+              if (!searchQuery) return true;
+              const q = searchQuery.toLowerCase();
+              return (
+                (user.full_name && user.full_name.toLowerCase().includes(q)) ||
+                (user.username && user.username.toLowerCase().includes(q)) ||
+                (user.student_phone && user.student_phone.includes(q)) ||
+                (user.parent_name && user.parent_name.toLowerCase().includes(q)) ||
+                (user.parent_phone && user.parent_phone.includes(q)) ||
+                (user.school && user.school.toLowerCase().includes(q))
+              );
+            }).map((user) => (
               <tr key={user.id} className="hover:bg-gray-50 transition-colors">
                 <td className="px-6 py-4">
                   <p className="font-semibold text-gray-800">{user.full_name}</p>
@@ -315,7 +329,18 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
                 </td>
               </tr>
             ))}
-            {users.length === 0 && (
+            {users.filter(user => {
+              if (!searchQuery) return true;
+              const q = searchQuery.toLowerCase();
+              return (
+                (user.full_name && user.full_name.toLowerCase().includes(q)) ||
+                (user.username && user.username.toLowerCase().includes(q)) ||
+                (user.student_phone && user.student_phone.includes(q)) ||
+                (user.parent_name && user.parent_name.toLowerCase().includes(q)) ||
+                (user.parent_phone && user.parent_phone.includes(q)) ||
+                (user.school && user.school.toLowerCase().includes(q))
+              );
+            }).length === 0 && (
               <tr>
                 <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
                   Chưa có tài khoản nào được tạo.
