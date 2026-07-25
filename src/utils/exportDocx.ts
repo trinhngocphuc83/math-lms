@@ -168,8 +168,7 @@ const fetchImageWithDimensions = async (url: string): Promise<{buffer: Uint8Arra
 
 const cleanHtmlNewlinesInTags = (html: string) => {
   if (!html) return "";
-  return html.replace(/\\n/g, '\n')
-             .replace(/\\{1,2}color\s*\{[^}]+\}/gi, '')
+  return html.replace(/\\{1,2}color\s*\{[^}]+\}/gi, '')
              .replace(/<img[^>]+>/gi, (match) => match.replace(/\n|\r/g, ''));
 };
 
