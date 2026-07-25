@@ -142,6 +142,7 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
     setUserToEdit({
       id: user.id,
       full_name: user.full_name || '',
+      username: user.username || '',
       school: user.school || '',
       class_name: user.class_name || '',
       student_phone: user.student_phone || '',
@@ -465,6 +466,10 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
                 <div>
                   <label className="block text-xs font-semibold mb-1">Họ tên HS *</label>
                   <input required value={userToEdit.full_name || ''} onChange={e => setUserToEdit({...userToEdit, full_name: e.target.value})} className="w-full border p-2 rounded text-sm"/>
+                </div>
+                <div>
+                  <label className="block text-xs font-semibold mb-1">Tài khoản (Username) *</label>
+                  <input required value={userToEdit.username || ''} onChange={e => setUserToEdit({...userToEdit, username: e.target.value})} className="w-full border p-2 rounded text-sm"/>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold mb-1">SĐT HS</label>

@@ -57,6 +57,7 @@ export async function PUT(request: Request, context: any) {
     const body = await request.json();
     const {
       full_name,
+      username,
       school,
       class_name,
       student_phone,
@@ -66,39 +67,69 @@ export async function PUT(request: Request, context: any) {
       password // password nếu có gửi lên thì đổi
     } = body;
 
-    // 1. Cập nhật bảng profiles
-    const { error: profileError } = await supabaseAdmin.from('profiles').update({
+    // 1. Kiểm tra và Cập nhật bảng profiles
+    const updateData: any = {
       full_name: full_name?.trim(),
       school: school?.trim() || null,
       class_name: class_name?.trim() || null,
       student_phone: student_phone?.trim() || null,
       parent_name: parent_name?.trim() || null,
       parent_phone: parent_phone?.trim() || null,
-    }).eq('id', userId);
+    };
+    
+    if (username && username.trim() !== '') {
+      const cleanUsername = username.trim();
+      // Check for duplicates
+      const { data: existingUser } = await supabaseAdmin
+        .from('profiles')
+        .select('id')
+        .eq('username', cleanUsername)
+        .neq('id', userId)
+        .single();
+        
+      if (existingUser) {
+         return NextResponse.json({ error: `Tài khoản đăng nhập '${cleanUsername}' đã được người khác sử dụng!` }, { status: 400 });
+      }
+      updateData.username = cleanUsername;
+    }
+
+    const { error: profileError } = await supabaseAdmin.from('profiles').update(updateData).eq('id', userId);
 
     if (profileError) {
       return NextResponse.json({ error: 'Lỗi cập nhật hồ sơ: ' + profileError.message }, { status: 500 });
     }
 
     // 2. Cập nhật Khóa học (Course) qua bảng student_course_requests
-    if (course_id) {
+    if (course_id !== undefined) {
       // Xóa các liên kết cũ
       await supabaseAdmin.from('student_course_requests').delete().eq('student_id', userId);
-      // Thêm liên kết mới
-      await supabaseAdmin.from('student_course_requests').insert({
-        student_id: userId,
-        course_id: course_id,
-        status: 'approved'
-      });
+      // Thêm liên kết mới nếu có chọn
+      if (course_id) {
+        await supabaseAdmin.from('student_course_requests').insert({
+          student_id: userId,
+          course_id: course_id,
+          status: 'approved'
+        });
+      }
     }
 
-    // 2. Cập nhật mật khẩu nếu có
+    // 3. Cập nhật auth user (email giả định và password)
+    const authUpdateData: any = {};
     if (password && password.trim() !== '') {
-      const { error: authError } = await supabaseAdmin.auth.admin.updateUserById(userId, {
-        password: password.trim()
-      });
+      authUpdateData.password = password.trim();
+    }
+    if (updateData.username) {
+      authUpdateData.email = `${updateData.username}@edu.local`;
+      authUpdateData.user_metadata = { username: updateData.username };
+    }
+
+    if (Object.keys(authUpdateData).length > 0) {
+      const { error: authError } = await supabaseAdmin.auth.admin.updateUserById(userId, authUpdateData);
       if (authError) {
-        return NextResponse.json({ error: 'Cập nhật thông tin thành công, nhưng lỗi đổi mật khẩu: ' + authError.message }, { status: 500 });
+         if (authError?.message?.includes('already registered')) {
+            return NextResponse.json({ error: 'Tài khoản đăng nhập này đã tồn tại trong hệ thống Auth (trùng email giả định)!' }, { status: 400 });
+         }
+        return NextResponse.json({ error: 'Cập nhật thông tin thành công, nhưng lỗi Auth: ' + authError.message }, { status: 500 });
       }
     }
 
