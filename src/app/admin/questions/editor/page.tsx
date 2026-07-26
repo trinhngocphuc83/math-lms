@@ -182,6 +182,13 @@ export default function BatchAIEditorPage() {
         const isNewLesson = lesson !== "" && !uniqueLessons.includes(lesson);
         const isNewMathForm = math_form !== "" && !uniqueForms.includes(math_form);
 
+        let parsedQuestionType = data.loaiCauHoi || "NLC";
+        if (parsedQuestionType.toLowerCase().includes("trắc nghiệm")) parsedQuestionType = "NLC";
+        else if (parsedQuestionType.toLowerCase().includes("đúng/sai") || parsedQuestionType.toLowerCase().includes("đúng sai")) parsedQuestionType = "DS";
+        else if (parsedQuestionType.toLowerCase().includes("ngắn")) parsedQuestionType = "TLN";
+        else if (parsedQuestionType.toLowerCase().includes("tự luận") || parsedQuestionType === "essay") parsedQuestionType = "TL";
+        else if (!["NLC", "DS", "TLN", "TL"].includes(parsedQuestionType)) parsedQuestionType = "NLC";
+
         const questionData = {
           temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
           grade: data.lop || globalGrade || "12",
@@ -191,7 +198,7 @@ export default function BatchAIEditorPage() {
           math_form: math_form,
           isNewLesson,
           isNewMathForm,
-          question_type: data.loaiCauHoi || "NLC",
+          question_type: parsedQuestionType,
           difficulty: data.mucDo || "1",
           content: qContent,
           option_a: data.dapAnA || "",
@@ -268,8 +275,8 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
     "chuyenDe": "${topicHint}", ${topicComment}
     "tenBai": "${globalLesson || 'Tự suy luận'}", ${globalLesson ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, TUYỆT ĐỐI KHÔNG ĐƯỢC SỬA ĐỔI BẤT KỲ KÝ TỰ NÀO.' : '// SO KHỚP VỚI DANH SÁCH BÊN DƯỚI. Nếu có bài tương tự, PHẢI COPY CHÍNH XÁC.'}
     "dangToan": "Tự suy luận", // SO KHỚP VỚI DANH SÁCH BÊN DƯỚI. Nếu có dạng tương tự, PHẢI COPY CHÍNH XÁC.
-    "loaiCauHoi": "NLC", // NLC (Trắc nghiệm 4 đáp án), DS (Đúng/Sai), TLN (Trả lời ngắn), TL (Tự luận)
-    "mucDo": "1", // 1(Nhận biết), 2(Thông hiểu), 3(Vận dụng), 4(Vận dụng cao)
+    "loaiCauHoi": "Tự suy luận (CHỈ ĐIỀN 1 TRONG 4: NLC, DS, TLN, TL)", // NLC (Trắc nghiệm), DS (Đúng/Sai), TLN (Trả lời ngắn), TL (Tự luận)
+    "mucDo": "Tự suy luận (CHỈ ĐIỀN 1, 2, 3 HOẶC 4)", // 1(Nhận biết), 2(Thông hiểu), 3(Vận dụng), 4(Vận dụng cao)
     "noiDung": "Đề bài (BẮT BUỘC dùng LaTeX bọc trong $...$)",
     "dapAnA": "Nội dung A", "dapAnB": "Nội dung B", "dapAnC": "Nội dung C", "dapAnD": "Nội dung D",
     "dapAnDung": "A",
@@ -277,7 +284,7 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
     "isMultiLesson": false // CHỈ GÁN TRUE NẾU LÀ CÂU HỎI ĐÚNG/SAI (DS) MÀ CÁC Ý NHỎ NẰM Ở NHIỀU BÀI HỌC KHÁC NHAU. MẶC ĐỊNH LÀ FALSE.
   }
 ]
-  YÊU CẦU CỰC QUAN TRỌNG VỀ BÓC TÁCH: Bạn phải phân tích và bóc tách RẠCH RÒI 3 trường "chuyenDe" (Chương), "tenBai" (Bài học), và "dangToan" (Dạng toán). Tuyệt đối không gộp chung nội dung của chúng vào nhau.
+  YÊU CẦU CỰC QUAN TRỌNG VỀ BÓC TÁCH: Bạn phải phân tích và bóc tách RẠCH RÒI 3 trường "chuyenDe" (Chương), "tenBai" (Bài học), và "dangToan" (Dạng toán). Tuyệt đối không gộp chung nội dung của chúng vào nhau. ĐẶC BIỆT CHÚ Ý TRƯỜNG "loaiCauHoi", nếu là bài tự luận chứng minh/tính toán (không có ABCD), BẮT BUỘC phải điền "TL".
   
   CƠ SỞ DỮ LIỆU ĐỐI CHIẾU: 
   Bạn BẮT BUỘC PHẢI PHÂN LOẠI câu hỏi vào các Tên bài học và Dạng toán có trong danh sách dưới đây nếu có sự tương đồng. TUYỆT ĐỐI HẠN CHẾ TẠO MỚI (Chỉ được tự suy luận ra Dạng toán mới nếu trong danh sách thực sự không có dạng nào liên quan).
@@ -363,7 +370,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     "chuyenDe": "${topicHint}", ${topicComment}
     "tenBai": "${globalLesson || 'Tự suy luận'}", ${globalLesson ? '// GIỮ NGUYÊN' : '// LẤY TỪ DANH SÁCH'}
     "dangToan": "Tự suy luận", // LẤY TỪ DANH SÁCH BÊN DƯỚI NẾU CÓ DẠNG TƯƠNG ĐƯƠNG
-    "loaiCauHoi": "NLC", "mucDo": "1",
+    "loaiCauHoi": "Tự suy luận (NLC, DS, TLN, TL)", "mucDo": "Tự suy luận (1, 2, 3, 4)",
     "noiDung": "Đề bài dùng LaTeX bọc trong $...$",
     "dapAnA": "", "dapAnB": "", "dapAnC": "", "dapAnD": "", "dapAnDung": "",
     "loiGiai": "Phương pháp giải:\\\\n[...]\\\\n\\\\nLời giải:\\\\n[Ghi lời giải chi tiết. BẮT BUỘC dùng \\\\n để xuống dòng cho từng ý/bước giải!]",
@@ -375,7 +382,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
   ${contextCategories}
 
   LƯU Ý CỰC KỲ QUAN TRỌNG:
-  1. TÁCH/GỘP Ý NHỎ: Các ý độc lập thì TÁCH, các ý phụ thuộc nhau thì GỘP thành 1 câu TL duy nhất.
+  1. TÁCH/GỘP Ý NHỎ: Các ý độc lập thì TÁCH, các ý phụ thuộc nhau thì GỘP thành 1 câu TL duy nhất. ĐẶC BIỆT CHÚ Ý TRƯỜNG "loaiCauHoi", nếu là bài tự luận (không có ABCD), BẮT BUỘC phải điền "TL".
   2. CÂU ĐÚNG/SAI ĐA BÀI HỌC: Đặt "isMultiLesson": true, gán "tenBai" bài xa nhất, "dangToan": "Toán tổng hợp".
   3. GIỮ NGUYÊN DANH MỤC: Nếu "chuyenDe"/"tenBai" đã điền sẵn, GIỮ NGUYÊN CHÍNH XÁC, KHÔNG CẮT TIỀN TỐ.
   4. CÔNG THỨC TOÁN: Bọc trong $...$ (Ví dụ: $A + B = B + A$). Viết LaTeX chuẩn, liền mạch trên 1 dòng. KHÔNG dùng \\\\\\\\ để escape.
