@@ -60,6 +60,11 @@ export async function POST(request: Request) {
       5. Nếu câu hỏi gốc có Hình ảnh/Đồ thị: Bạn KHÔNG được tự vẽ đồ thị bằng ký tự. Bắt buộc chèn dòng chữ "[CẦN CHÈN HÌNH TƯƠNG TỰ]" vào đề bài để báo hiệu.
       6. Lời giải: PHẢI sinh lời giải chi tiết cho từng biến thể, tương tự như phong cách giải của câu gốc. Sử dụng \\n để xuống dòng các bước giải.
       7. Format Toán học: Phải dùng LaTeX chuẩn bọc trong dấu $...$ cho tất cả các biểu thức toán học. Không dùng \\\\ để escape lệnh.
+      8. KIỂM TRA TÍNH HỢP LÝ VÀ LOGIC TỰ ĐỘNG (SELF-REFLECTION):
+         - Trước khi xuất kết quả, BẮT BUỘC bạn phải tự giải lại bài toán vừa sinh ra.
+         - Kiểm tra cẩn thận tính hợp lý của các giả thiết thực tế và toán học (Ví dụ: Diện tích hố đào không thể lớn hơn diện tích tổng; Cạnh tam giác phải thoả mãn bất đẳng thức; Chiều dài, khối lượng, thời gian, vận tốc phải lớn hơn hoặc bằng 0; Điều kiện xác định của hàm số/phương trình...).
+         - Đảm bảo câu hỏi có đủ giả thiết để giải, không bị tối nghĩa hoặc mâu thuẫn.
+         - NẾU PHÁT HIỆN LỖI SAI, BẤT HỢP LÝ HOẶC GIẢ THIẾT KHÔNG RÕ RÀNG: Bạn PHẢI TỰ ĐỘNG SINH LẠI HOÀN TOÀN bài toán đó, điều chỉnh số liệu cho chuẩn xác và hợp logic rồi mới được đưa vào mảng kết quả JSON.
 
       TRẢ VỀ MỘT MẢNG JSON CÓ CẤU TRÚC:
       [

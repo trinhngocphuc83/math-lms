@@ -317,6 +317,7 @@ export default function SimilarGeneratorPage() {
       QUY TẮC:
       - Phải trả về JSON thuần túy, mảng các object. Không kèm text dư thừa.
       - Định dạng công thức bọc trong $...$. Lời giải xuống dòng bằng \\n.
+      - KIỂM TRA TÍNH HỢP LÝ VÀ LOGIC (SELF-REFLECTION): BẮT BUỘC tự giải lại bài toán vừa sinh. Kiểm tra tính hợp lý của giả thiết (VD: diện tích thành phần không lớn hơn diện tích tổng, độ dài không âm, nghiệm ra số đẹp...). Nếu phát hiện vô lý, thiếu logic, mâu thuẫn hoặc không đủ giả thiết, PHẢI TỰ ĐỘNG SINH LẠI BÀI TOÁN KHÁC chuẩn xác hơn trước khi xuất ra JSON.
       `;
   };
 
