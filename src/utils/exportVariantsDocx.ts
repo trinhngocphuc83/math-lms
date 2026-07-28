@@ -11,8 +11,11 @@ const base64ToUint8Array = (base64: string) => {
   return bytes;
 };
 
+import { cleanLatexForWord } from "./latexToWord";
+
 const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
   if (!textLine) return [new TextRun({ text: "" })];
+  textLine = cleanLatexForWord(textLine);
   
   let decodedLine = textLine
     .replace(/&lt;/gi, '<')
