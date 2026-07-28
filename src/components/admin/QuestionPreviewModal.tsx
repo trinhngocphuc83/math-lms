@@ -14,7 +14,7 @@ interface QuestionPreviewModalProps {
   onEdit?: (question: any) => void;
 }
 
-export default function QuestionPreviewModal({ isOpen, onClose, question }: QuestionPreviewModalProps) {
+export default function QuestionPreviewModal({ isOpen, onClose, question, onEdit }: QuestionPreviewModalProps) {
   if (!isOpen || !question) return null;
 
   // Helper function to make KaTeX render tabular and basic center environments
