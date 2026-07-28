@@ -40,7 +40,7 @@ export async function POST(request: Request) {
       try {
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ 
-          model: "gemini-3.5-flash",
+          model: "gemini-3.6-flash",
           generationConfig: { temperature: 0.1 }
         });
         
@@ -64,3 +64,4 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
 }
+

@@ -5,11 +5,13 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
+import { ChevronRight, Edit } from "lucide-react";
 
 interface QuestionPreviewModalProps {
   isOpen: boolean;
   onClose: () => void;
   question: any;
+  onEdit?: (question: any) => void;
 }
 
 export default function QuestionPreviewModal({ isOpen, onClose, question }: QuestionPreviewModalProps) {
@@ -53,6 +55,43 @@ export default function QuestionPreviewModal({ isOpen, onClose, question }: Ques
     );
   };
 
+  const renderSolutionContent = (content: string, iconColor: string) => {
+    let finalContent = String(content).replace(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi, '');
+    
+    // Force newlines to be paragraphs outside math blocks
+    const parts = finalContent.split(/(\$\$[\s\S]*?\$\$)/g);
+    finalContent = parts.map((part, i) => {
+      if (i % 2 === 1) return part;
+      return part.replace(/\n+/g, '\n\n');
+    }).join('');
+
+    return (
+      <div className="prose prose-sm max-w-none overflow-x-auto text-gray-800">
+        <ReactMarkdown 
+          remarkPlugins={[remarkMath]} 
+          rehypePlugins={[rehypeKatex]}
+          components={{
+            p: ({node, ...props}) => (
+              <div className="flex gap-2 items-start my-2">
+                <ChevronRight className={`w-4 h-4 mt-0.5 shrink-0 ${iconColor}`} />
+                <div className="flex-1 m-0 break-words" {...props} />
+              </div>
+            ),
+            li: ({node, ...props}) => (
+              <li className="flex gap-2 items-start my-2">
+                <ChevronRight className={`w-4 h-4 mt-0.5 shrink-0 ${iconColor}`} />
+                <div className="flex-1 m-0 break-words" {...props} />
+              </li>
+            ),
+            ul: ({node, ...props}) => <ul className="list-none pl-0 m-0" {...props} />
+          }}
+        >
+          {preprocessLaTeX(finalContent)}
+        </ReactMarkdown>
+      </div>
+    );
+  };
+
   return (
     <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
@@ -60,9 +99,16 @@ export default function QuestionPreviewModal({ isOpen, onClose, question }: Ques
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-gray-100 bg-orange-50">
           <h2 className="text-lg font-black text-orange-800">Xem trước câu hỏi</h2>
-          <button onClick={onClose} className="p-2 text-orange-500 hover:bg-orange-100 rounded-full transition-colors">
-            <X className="w-5 h-5" />
-          </button>
+          <div className="flex items-center gap-2">
+            {onEdit && (
+              <button onClick={() => { onClose(); onEdit(question); }} className="flex items-center gap-1.5 px-3 py-1.5 bg-orange-600 text-white rounded-lg font-bold text-sm hover:bg-orange-700 transition-colors shadow-sm">
+                <Edit className="w-4 h-4" /> Sửa câu hỏi
+              </button>
+            )}
+            <button onClick={onClose} className="p-2 text-orange-500 hover:bg-orange-100 rounded-full transition-colors">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         </div>
 
         {/* Body */}
@@ -144,7 +190,7 @@ export default function QuestionPreviewModal({ isOpen, onClose, question }: Ques
                       <span className="w-1.5 h-4 bg-blue-600 rounded-full"></span> Phương pháp giải:
                     </h4>
                     <div className="text-blue-900 text-sm">
-                      {renderContent(methodText)}
+                      {renderSolutionContent(methodText, "text-blue-500")}
                     </div>
                   </div>
                 )}
@@ -154,7 +200,7 @@ export default function QuestionPreviewModal({ isOpen, onClose, question }: Ques
                       <span className="w-1.5 h-4 bg-gray-500 rounded-full"></span> Lời giải chi tiết:
                     </h4>
                     <div className="text-gray-700 text-sm">
-                      {renderContent(explanationText)}
+                      {renderSolutionContent(explanationText, "text-gray-500")}
                     </div>
                   </div>
                 )}

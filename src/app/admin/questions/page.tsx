@@ -395,6 +395,12 @@ export default function QuestionsPage() {
           >
             <Wand2 className="w-4 h-4" /> Sinh trắc nghiệm (AI)
           </Link>
+          <Link 
+            href="/admin/questions/similar-generator" 
+            className="flex items-center gap-2 bg-pink-600 text-white hover:bg-pink-700 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm"
+          >
+            <Wand2 className="w-4 h-4" /> Sinh câu tương tự (AI)
+          </Link>
         </div>
       </div>
 

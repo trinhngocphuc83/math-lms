@@ -130,7 +130,7 @@ TRẢ VỀ DUY NHẤT một chuỗi JSON (KHÔNG bọc trong \`\`\`json):
                    const genAI = new GoogleGenerativeAI(apiKey);
                    // Dùng bản flash mạnh và hỗ trợ đa phương tiện
                    const model = genAI.getGenerativeModel({ 
-                      model: "gemini-3.5-flash",
+                      model: "gemini-3.6-flash",
                       generationConfig: { responseMimeType: "application/json" }
                    });
                    aiResult = await model.generateContent(parts);

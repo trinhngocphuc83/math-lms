@@ -1,6 +1,15 @@
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun } from "docx";
 import { saveAs } from "file-saver";
 
+// Loại bỏ ký tự không hợp lệ trong XML (control characters)
+// File .docx là XML bên trong, nếu chứa các ký tự này sẽ bị hỏng
+const sanitizeXml = (text: string): string => {
+  if (!text) return "";
+  // Loại bỏ tất cả control characters ngoại trừ tab(0x09), newline(0x0A), carriage return(0x0D)
+  // eslint-disable-next-line no-control-regex
+  return text.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
+};
+
 const base64ToUint8Array = (base64: string) => {
   const binaryString = window.atob(base64);
   const len = binaryString.length;
@@ -13,6 +22,7 @@ const base64ToUint8Array = (base64: string) => {
 
 const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
   if (!textLine) return [new TextRun({ text: "" })];
+  textLine = sanitizeXml(textLine);
   
   let decodedLine = textLine
     .replace(/&lt;/gi, '<')
@@ -168,11 +178,11 @@ const fetchImageWithDimensions = async (url: string): Promise<{buffer: Uint8Arra
 
 const cleanHtmlNewlinesInTags = (html: string) => {
   if (!html) return "";
-  return html.replace(/\\{1,2}color\s*\{[^}]+\}/gi, '')
+  return sanitizeXml(html).replace(/\\{1,2}color\s*\{[^}]+\}/gi, '')
              .replace(/<img[^>]+>/gi, (match) => match.replace(/\n|\r/g, ''));
 };
 
-export const exportQuestionsToWord = async (questions: any[], exportType: 'student' | 'teacher') => {
+export const exportQuestionsToWord = async (questions: any[], exportType: 'student' | 'teacher', filePrefix: string = 'Ngan_Hang_Cau_Hoi') => {
   try {
     const childrenElements: any[] = [
       new Paragraph({ 
@@ -263,7 +273,8 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
       }
 
       // Options
-      if ((q.question_type === 'TN' || q.question_type === 'NLC')) {
+      const qType = q.question_type;
+      if (qType === 'TN' || qType === 'NLC') {
         childrenElements.push(
           new Paragraph({
             children: [
@@ -279,20 +290,26 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
             spacing: { before: 100, after: 200 }
           })
         );
-      } else if (q.question_type === 'DS') {
+      } else if (qType === 'DS') {
         childrenElements.push(new Paragraph({ children: [new TextRun({ text: `a) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_a || "")))] }));
         childrenElements.push(new Paragraph({ children: [new TextRun({ text: `b) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_b || "")))] }));
         childrenElements.push(new Paragraph({ children: [new TextRun({ text: `c) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_c || "")))] }));
         childrenElements.push(new Paragraph({ children: [new TextRun({ text: `d) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_d || "")))], spacing: { after: 200 } }));
+      } else if (qType === 'TLN') {
+        childrenElements.push(new Paragraph({
+          children: [new TextRun({ text: "Kết quả: .......................................", bold: true, color: "0000FF" })],
+          spacing: { before: 100, after: 200 }
+        }));
       }
 
       // Teacher Solution
       if (exportType === 'teacher' && q.explanation) {
         let methodText = "";
-        let explanationText = q.explanation;
+        const sanitizedExplanation = sanitizeXml(q.explanation);
+        let explanationText = sanitizedExplanation;
 
         // Smart parsing
-        const lowerExp = q.explanation.toLowerCase();
+        const lowerExp = sanitizedExplanation.toLowerCase();
         const ppIndex = lowerExp.indexOf("phương pháp giải:");
         const ppIndex2 = lowerExp.indexOf("phương pháp giải");
         const lgIndex = lowerExp.indexOf("lời giải:");
@@ -308,15 +325,15 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
         else if (lgIndex2 !== -1) startLG = lgIndex2;
 
         if (startPP !== -1 && startLG !== -1 && startPP < startLG) {
-          methodText = q.explanation.substring(startPP, startLG).trim();
+          methodText = sanitizedExplanation.substring(startPP, startLG).trim();
           let lgOffset = lowerExp.indexOf("lời giải:") === startLG ? "lời giải:".length : "lời giải".length;
-          explanationText = q.explanation.substring(startLG + lgOffset).trim();
+          explanationText = sanitizedExplanation.substring(startLG + lgOffset).trim();
         } else if (startPP !== -1 && startLG === -1) {
-          methodText = q.explanation.substring(startPP).trim();
+          methodText = sanitizedExplanation.substring(startPP).trim();
           explanationText = "";
         } else if (startPP === -1 && startLG !== -1) {
           let lgOffset = lowerExp.indexOf("lời giải:") === startLG ? "lời giải:".length : "lời giải".length;
-          explanationText = q.explanation.substring(startLG + lgOffset).trim();
+          explanationText = sanitizedExplanation.substring(startLG + lgOffset).trim();
         }
 
         // Clean leading symbols like '-', '+', '*'
@@ -387,8 +404,16 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
       }]
     });
 
-    const blob = await Packer.toBlob(doc);
-    saveAs(blob, `Ngan_Hang_Cau_Hoi_${exportType}.docx`);
+    const buffer = await Packer.toBuffer(doc);
+    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${filePrefix}_${exportType}.docx`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
     return true;
   } catch (e: any) {
     throw new Error(e.message);

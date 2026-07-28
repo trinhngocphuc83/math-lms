@@ -89,8 +89,8 @@ Nhiệm vụ của bạn là:
 
       try {
         const genAI = new GoogleGenerativeAI(apiKey);
-        // Sử dụng gemini-3.5-flash — model mới nhất, thông minh nhất (ra 20/05/2026)
-        const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
+        // Sử dụng gemini-3.6-flash — model mới nhất, thông minh nhất (ra 20/05/2026)
+        const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
 
         // Timeout 45 giây
         const timeoutPromise = new Promise((_, reject) =>
@@ -146,3 +146,4 @@ Nhiệm vụ của bạn là:
     return NextResponse.json({ error: error.message || "Đã xảy ra lỗi khi gọi AI bóc tách ảnh." }, { status: 500 });
   }
 }
+

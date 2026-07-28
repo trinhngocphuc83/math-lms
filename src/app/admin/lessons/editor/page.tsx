@@ -1162,7 +1162,7 @@ function EditorContent() {
       if (!keyRes.ok || !keyData.key) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
 
       const genAI = new GoogleGenerativeAI(keyData.key);
-      const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
       
       const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
       const prompt = getPrompt(isPractice, activeTab === 'presentation');
@@ -1957,4 +1957,5 @@ export default function AIEditorPage() {
     </Suspense>
   );
 }
+
 

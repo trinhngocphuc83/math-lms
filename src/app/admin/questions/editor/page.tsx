@@ -320,7 +320,7 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
       for (const apiKey of keyData.keys) {
         try {
           const genAI = new GoogleGenerativeAI(apiKey);
-          const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
+          const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
           const result = await model.generateContent([ prompt, ...parts ]);
           const text = result.response.text();
           processExtractedJson(text);
@@ -856,3 +856,4 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     </div>
   );
 }
+
