@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChevronRight, CheckCircle2 } from 'lucide-react';
+import { AlertTriangle, Info } from 'lucide-react';
 
 export const extractTextFromReactNode = (node: any): string => {
     if (typeof node === 'string' || typeof node === 'number') {
@@ -14,7 +14,6 @@ export const extractTextFromReactNode = (node: any): string => {
     return '';
 };
 
-
 const sanitizeStyle = (style: any) => {
     let parsedStyle: any = {};
     if (typeof style === 'string') {
@@ -28,92 +27,58 @@ const sanitizeStyle = (style: any) => {
     } else if (style) {
         parsedStyle = { ...style };
     }
-    // Xóa bỏ các kích thước cứng để đảm bảo hiển thị chuẩn trên App
     delete parsedStyle.fontSize;
     delete parsedStyle.lineHeight;
     return parsedStyle;
 };
 
-export const checkAndRenderSpecialBlock = (children: any, isPresentation: boolean = false) => {
-    const text = extractTextFromReactNode(children).trim();
-    if (text.length > 50 || text.length === 0) return null;
-
-    const cleanText = text.normalize('NFC').replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]|[\u2600-\u27FF]|💡|🎯|📌|📝|✅|⚙️|✨|⭐|🌟/g, '').replace(/\s+/g, ' ').trim();
-    // Bỏ dấu hai chấm ở cuối hoặc các dấu câu khác để so sánh chính xác hơn
-    const lowerText = cleanText.toLowerCase().replace(/[:.,-]/g, '').trim();
+const stripTriggerPrefix = (children: any): any => {
+    let contentFound = false;
+    const triggerRegex = /^[\s]*(ví dụ|vd|phương pháp|pp|lời giải chi tiết|lời giải|hướng dẫn giải|hướng dẫn|hdg|hd|chú ý|lưu ý|định lý|định nghĩa|tổng quát|lý thuyết)[\s]*[:.-]?[\s]*/i;
     
-    // Khôi phục lại text hiển thị (có thể bỏ dấu hai chấm đi cho đẹp)
-    const displayText = cleanText.replace(/[:.,-]$/g, '').trim();
+    const walk = (node: any): any => {
+        if (contentFound) return node;
 
-    if (lowerText.startsWith("hướng dẫn") || lowerText.startsWith("hướng dẩn") || lowerText.startsWith("lời giải") || lowerText.startsWith("hdg")) {
-       return isPresentation ? (
-           <span className="inline-flex items-center gap-[0.5em] px-[1.2em] py-[0.4em] rounded-[1em] border-[2px] border-indigo-400 bg-indigo-50 shadow-sm mx-[0.2em] my-[0.4em] w-fit">
-                <span className="text-[1.3em] leading-none">📝</span>
-                <span className="text-purple-600 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.2em' }}>{displayText}</span>
-             </span>
-       ) : (
-             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-2xl bg-indigo-50 border-2 border-indigo-400 shadow-sm mt-4 mb-2 w-fit">
-                <span className="text-xl leading-none">📝</span>
-                <span className="text-purple-600 font-bold text-base tracking-wide uppercase">{displayText}</span>
-             </span>
-       );
-    }
-    if (lowerText.startsWith("phương pháp")) {
-       return isPresentation ? (
-           <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-amber-400 bg-amber-50/80 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
-                <span className="text-[1.2em] leading-none">💡</span>
-                <span className="text-orange-500 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{displayText}</span>
-             </span>
-       ) : (
-             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50/80 border border-amber-100 shadow-sm mt-4 mb-2 w-fit">
-                <span className="text-base leading-none">💡</span>
-                <span className="text-amber-600 font-bold text-sm tracking-wide uppercase">{displayText}</span>
-             </span>
-       );
-    }
-    if (lowerText.startsWith("ví dụ")) {
-       return isPresentation ? (
-           <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-emerald-400 bg-emerald-50/80 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
-                <span className="text-[1.2em] leading-none">📌</span>
-                <span className="text-emerald-600 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{displayText}</span>
-             </span>
-       ) : (
-             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-50/80 border border-emerald-100 shadow-sm mt-4 mb-2 w-fit">
-                <span className="text-base leading-none">📌</span>
-                <span className="text-emerald-600 font-bold text-sm tracking-wide uppercase">{displayText}</span>
-             </span>
-       );
-    }
-    if (lowerText.startsWith("câu hỏi tương tác")) {
-       return isPresentation ? (
-           <span className="inline-flex items-center gap-[0.4em] px-[1em] py-[0.2em] rounded-full border-[1.5px] border-purple-400 bg-purple-50/80 shadow-sm mx-[0.2em] my-[0.2em] w-fit">
-                <span className="text-[1.2em] leading-none">🎯</span>
-                <span className="text-purple-600 font-bold leading-none uppercase tracking-wide" style={{ fontSize: '1.1em' }}>{displayText}</span>
-             </span>
-       ) : (
-             <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-purple-50/80 border border-purple-100 shadow-sm mt-4 mb-2 w-fit">
-                <span className="text-base leading-none">🎯</span>
-                <span className="text-purple-600 font-bold text-sm tracking-wide uppercase">{displayText}</span>
-             </span>
-       );
-    }
-    if (lowerText.startsWith("bước")) {
-       return isPresentation ? (
-           <span className="inline-flex items-center gap-[0.5em] bg-gradient-to-r from-pink-500 to-rose-400 text-white px-[0.8em] py-[0.2em] rounded-[0.5em] font-black shadow-sm mt-[0.5em] mb-[0.2em] mr-[0.5em] w-fit uppercase tracking-wider">
-               <span className="w-[0.5em] h-[0.5em] bg-white rounded-full animate-pulse"></span>
-               {displayText}
-             </span>
-       ) : (
-             <span className="inline-flex items-center gap-2 bg-slate-800 text-white px-2.5 py-1 rounded-md font-bold shadow-sm mt-2 mb-1 mr-2 text-xs uppercase tracking-wider w-fit">
-               <span className="w-1.5 h-1.5 bg-blue-400 rounded-full"></span>
-               {displayText}
-             </span>
-       );
-    }
-    return null;
+        if (typeof node === 'string') {
+            if (!contentFound) {
+                const original = node;
+                let replaced = original.replace(triggerRegex, '');
+                
+                if (replaced === original && original.match(/^[\s]*[:.-]?[\s]*$/)) {
+                    return '';
+                } else if (replaced === original) {
+                    if (original.trim().length > 0) {
+                        replaced = original.replace(/^[\s]*[:.-]?[\s]*/, '');
+                        if (replaced.trim().length > 0) contentFound = true;
+                        return replaced;
+                    }
+                } else {
+                    if (replaced.trim().length > 0) contentFound = true;
+                    return replaced;
+                }
+            }
+            return node;
+        }
+
+        if (Array.isArray(node)) {
+            return node.map(walk);
+        }
+
+        if (React.isValidElement(node)) {
+            const props: any = { ...node.props };
+            if (props.children) {
+                props.children = walk(props.children);
+            }
+            return React.cloneElement(node, props);
+        }
+
+        return node;
+    };
+
+    return walk(children);
 };
 
-export const appMarkdownComponents: any = {
+export const unifiedMarkdownComponents: any = {
    div: ({node, style, children, ...props}: any) => {
        return <div style={sanitizeStyle(style)} {...props}>{children}</div>;
    },
@@ -121,66 +86,104 @@ export const appMarkdownComponents: any = {
        return <span style={sanitizeStyle(style)} {...props}>{children}</span>;
    },
    h1: ({node, style, children, ...props}: any) => {
-       const special = checkAndRenderSpecialBlock(children, false);
-       if (special) return <div className="not-prose my-4 block">{special}</div>;
        return (
-           <div className="not-prose mt-8 mb-5 flex items-center gap-3">
-               <div className="w-1.5 h-7 bg-blue-600 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]"></div>
-               <h1 style={sanitizeStyle(style)} className="text-2xl font-black text-slate-800 tracking-tight m-0" {...props}>{children}</h1>
+           <div className="not-prose mt-12 mb-6 flex items-center gap-4 w-full">
+               <div className="w-3 h-10 bg-blue-600 rounded-full shadow-sm shrink-0"></div>
+               <h1 style={sanitizeStyle(style)} className="text-[55px] font-black text-blue-900 tracking-tight m-0 leading-tight" {...props}>{children}</h1>
            </div>
        );
    },
    h2: ({node, style, children, ...props}: any) => {
-       const special = checkAndRenderSpecialBlock(children, false);
-       if (special) return <div className="not-prose my-3 block">{special}</div>;
        return (
-           <div className="not-prose mt-8 mb-4 flex items-center gap-2.5">
-               <div className="w-1.5 h-6 bg-indigo-500 rounded-full"></div>
-               <h2 style={sanitizeStyle(style)} className="text-xl font-bold text-slate-800 tracking-tight m-0" {...props}>{children}</h2>
+           <div className="not-prose mt-10 mb-6 flex justify-center w-full">
+               <div className="bg-orange-50 text-orange-700 px-6 py-3 rounded-r-3xl rounded-l-lg border-l-[8px] border-orange-500 font-bold shadow-sm inline-block w-fit leading-relaxed max-w-[95%] break-words text-[45px] uppercase text-center" style={sanitizeStyle(style)} {...props}>
+                   {children}
+               </div>
            </div>
        );
    },
    h3: ({node, style, children, ...props}: any) => {
-       const special = checkAndRenderSpecialBlock(children, false);
-       if (special) return <div className="not-prose my-2 block">{special}</div>;
        return (
-           <div className="not-prose mt-6 mb-3 flex items-center gap-2.5">
-               <div className="w-1.5 h-5 bg-emerald-500 rounded-full"></div>
-               <h3 style={sanitizeStyle(style)} className="text-lg font-bold text-slate-800 tracking-tight m-0" {...props}>{children}</h3>
+           <div className="not-prose mt-8 mb-4 flex items-center gap-3">
+               <div className="w-2 h-8 bg-indigo-500 rounded-full shrink-0"></div>
+               <h3 style={sanitizeStyle(style)} className="text-[40px] font-bold text-slate-800 tracking-tight m-0 leading-tight" {...props}>{children}</h3>
            </div>
        );
    },
-   h4: ({node, style, children, ...props}: any) => {
-       const special = checkAndRenderSpecialBlock(children, false);
-       if (special) return <div className="not-prose my-2 block">{special}</div>;
-       return <h4 style={sanitizeStyle(style)} className="text-base font-bold text-slate-800 mt-6 mb-3" {...props}>{children}</h4>;
-   },
-   h5: ({node, style, children, ...props}: any) => {
-       const special = checkAndRenderSpecialBlock(children, false);
-       if (special) return <div className="not-prose my-2 block">{special}</div>;
-       return <h5 style={sanitizeStyle(style)} className="text-base font-bold text-slate-800 mt-5 mb-2" {...props}>{children}</h5>;
-   },
-   h6: ({node, style, children, ...props}: any) => {
-       const special = checkAndRenderSpecialBlock(children, false);
-       if (special) return <div className="not-prose my-2 block">{special}</div>;
-       return <h6 style={sanitizeStyle(style)} className="text-sm font-bold text-slate-800 mt-5 mb-2 uppercase" {...props}>{children}</h6>;
-   },
    strong: ({node, style, children, ...props}: any) => {
-       const special = checkAndRenderSpecialBlock(children, false);
-       if (special) return special;
        return <strong style={sanitizeStyle(style)} {...props} className="text-slate-900 font-bold">{children}</strong>;
    },
    li: ({node, style, children, ...props}: any) => {
        return (
-           <li style={sanitizeStyle(style)} className="flex items-start gap-3 mb-3 relative group" {...props}>
-              <span className="mt-[0.6rem] shrink-0 w-1.5 h-1.5 rounded-full bg-indigo-400 shadow-sm"></span>
-              <div className="flex-1 min-w-0 leading-relaxed text-slate-700">{children}</div>
+           <li style={sanitizeStyle(style)} className="flex items-start gap-4 mb-4 relative group text-[35px]" {...props}>
+              <span className="mt-[15px] shrink-0 w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-sm"></span>
+              <div className="flex-1 min-w-0 leading-[1.6] text-slate-700">{children}</div>
            </li>
        );
    },
    p: ({node, style, children, ...props}: any) => {
-       const special = checkAndRenderSpecialBlock(children, false);
-       if (special) return <div className="not-prose my-3 block">{special}</div>;
-       return <p style={sanitizeStyle(style)} className="mb-2 text-[1.05rem] sm:text-[1.1rem] leading-[1.6] text-slate-800" {...props}>{children}</p>;
+       return <p style={sanitizeStyle(style)} className="mb-6 text-[35px] leading-[1.6] text-slate-800" {...props}>{children}</p>;
+   },
+   blockquote: ({node, style, children, ...props}: any) => {
+       const text = extractTextFromReactNode(children).trim();
+       const lowerText = text.toLowerCase().replace(/[:.,-]/g, '').trim();
+       
+       let type = 'default';
+       let icon = <Info className="w-5 h-5" />;
+       let bgClass = 'bg-gray-50';
+       let borderClass = 'border-gray-400';
+       let headerClass = 'bg-gray-200/50 text-gray-800 border-gray-300';
+       let headerText = 'NỘI DUNG';
+
+       if (lowerText.startsWith('ví dụ') || lowerText.startsWith('vd')) {
+           type = 'example';
+           icon = <span className="text-lg leading-none">📌</span>;
+           bgClass = 'bg-emerald-50'; borderClass = 'border-emerald-500'; headerClass = 'bg-emerald-100/70 text-emerald-900 border-emerald-200';
+           headerText = 'VÍ DỤ';
+       } else if (lowerText.startsWith('phương pháp') || lowerText.startsWith('pp')) {
+           type = 'method';
+           icon = <span className="text-lg leading-none">💡</span>;
+           bgClass = 'bg-amber-50'; borderClass = 'border-amber-500'; headerClass = 'bg-amber-100/70 text-amber-900 border-amber-200';
+           headerText = 'PHƯƠNG PHÁP';
+       } else if (lowerText.startsWith('lời giải') || lowerText.startsWith('hướng dẫn') || lowerText.startsWith('hd') || lowerText.startsWith('hdg')) {
+           type = 'solution';
+           icon = <span className="text-lg leading-none">🎯</span>;
+           bgClass = 'bg-indigo-50'; borderClass = 'border-indigo-500'; headerClass = 'bg-indigo-100/70 text-indigo-900 border-indigo-200';
+           headerText = 'HƯỚNG DẪN GIẢI';
+       } else if (lowerText.startsWith('chú ý') || lowerText.startsWith('lưu ý')) {
+           type = 'note';
+           icon = <AlertTriangle className="w-5 h-5 text-red-600" />;
+           bgClass = 'bg-red-50'; borderClass = 'border-red-500'; headerClass = 'bg-red-100/70 text-red-900 border-red-200';
+           headerText = 'CHÚ Ý';
+       } else if (lowerText.startsWith('định lý') || lowerText.startsWith('định nghĩa') || lowerText.startsWith('tổng quát') || lowerText.startsWith('lý thuyết')) {
+           type = 'theorem';
+           icon = <span className="text-lg leading-none">📖</span>;
+           bgClass = 'bg-blue-50'; borderClass = 'border-blue-500'; headerClass = 'bg-blue-100/70 text-blue-900 border-blue-200';
+           headerText = 'KIẾN THỨC TRỌNG TÂM';
+       }
+
+       if (type !== 'default') {
+           const processedChildren = stripTriggerPrefix(children);
+           return (
+               <div className={`not-prose my-6 rounded-xl border-2 ${borderClass} ${bgClass} shadow-sm overflow-hidden flex flex-col`}>
+                   <div className={`px-4 py-2 border-b ${headerClass} font-bold flex items-center gap-2 uppercase tracking-wide text-[35px]`}>
+                       {icon} <span>{headerText}</span>
+                   </div>
+                   <div className="px-5 py-4 flex-1 min-w-0 prose prose-slate max-w-none text-slate-800 leading-[1.6] font-medium [&>p:first-child]:mt-0 [&>p:last-child]:mb-0 text-[35px]">
+                       {processedChildren}
+                   </div>
+               </div>
+           );
+       }
+
+       return (
+           <blockquote className="not-prose my-6 border-l-[6px] border-slate-400 bg-slate-50 px-6 py-5 rounded-r-xl italic text-slate-700 shadow-sm text-[35px]" {...props}>
+               <div className="prose prose-slate max-w-none text-inherit [&>p:first-child]:mt-0 [&>p:last-child]:mb-0 text-[35px]">{children}</div>
+           </blockquote>
+       );
    }
 };
+
+export const appMarkdownComponents = unifiedMarkdownComponents;
+export const customMarkdownComponents = unifiedMarkdownComponents;
+export const checkAndRenderSpecialBlock = () => null;
