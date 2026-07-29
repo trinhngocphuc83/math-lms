@@ -3,19 +3,20 @@ export function cleanLatexForWord(str: string): string {
   if (!res) return res;
 
   // Xử lý các cặp dấu ngoặc nhọn lồng nhau một cách đơn giản
-  // Thay thế phân số đơn giản
-  while (res.match(/\\frac\{([^{}]+)\}\{([^{}]+)\}/)) {
-    res = res.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, (m, a, b) => {
-      let num = a.includes('+') || a.includes('-') ? '(' + a + ')' : a;
-      let den = b.includes('+') || b.includes('-') ? '(' + b + ')' : b;
-      return num + '/' + den;
-    });
-  }
+  // TẠM BỎ: Không replace \frac để giữ nguyên cho MathType
+  // while (res.match(/\\frac\{([^{}]+)\}\{([^{}]+)\}/)) {
+  //   res = res.replace(/\\frac\{([^{}]+)\}\{([^{}]+)\}/g, (m, a, b) => {
+  //     let num = a.includes('+') || a.includes('-') ? '(' + a + ')' : a;
+  //     let den = b.includes('+') || b.includes('-') ? '(' + b + ')' : b;
+  //     return num + '/' + den;
+  //   });
+  // }
 
   // Replace text block
-  res = res.replace(/\\text\{([^{}]+)\}/g, '$1');
+  // TẠM BỎ cho MathType: res = res.replace(/\\text\{([^{}]+)\}/g, '$1');
 
-  // Replace symbols
+  // TẠM BỎ: Không replace symbols thành Unicode để giữ nguyên cho MathType
+  /*
   const syms: Record<string, string> = {
     '\\\\Leftrightarrow': '⇔',
     '\\\\Rightarrow': '⇒',
@@ -83,12 +84,13 @@ export function cleanLatexForWord(str: string): string {
            .replace(/_3/g, '₃')
            .replace(/_0/g, '₀')
            .replace(/_n/g, 'ₙ');
+  */
 
-  // Remove math block markers if any are left
-  res = res.replace(/\$\$/g, '').replace(/\$/g, '');
+  // TẠM BỎ: Không xóa dấu $ để MathType nhận diện được
+  // res = res.replace(/\$\$/g, '').replace(/\$/g, '');
   
   // Remove \{ and \}
-  res = res.replace(/\\\{/g, '{').replace(/\\\}/g, '}');
+  // TẠM BỎ cho MathType: res = res.replace(/\\\{/g, '{').replace(/\\\}/g, '}');
 
   return res.trim();
 }

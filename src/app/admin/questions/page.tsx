@@ -6,7 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 import { 
   FileEdit, Search, Plus, Upload, Loader2, Database,
   Filter, ChevronLeft, ChevronRight, CheckCircle2,
-  AlertCircle, X, Trash2, ChevronDown, FileDown, Eye, Wand2
+  AlertCircle, X, Trash2, ChevronDown, FileDown, Eye, Wand2, RefreshCw
 } from "lucide-react";
 import Papa from "papaparse";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
@@ -39,6 +39,8 @@ export default function QuestionsPage() {
   const [selectedQuestions, setSelectedQuestions] = useState<string[]>([]);
   const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
+  const [isChangeTypeMenuOpen, setIsChangeTypeMenuOpen] = useState(false);
+  const [isChangingType, setIsChangingType] = useState(false);
 
   // Categories & Filters State
   const [categories, setCategories] = useState<any[]>([]);
@@ -126,6 +128,36 @@ export default function QuestionsPage() {
       console.error("Lỗi khi tải câu hỏi:", error);
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  const handleChangeBulkType = async (newType: string) => {
+    if (selectedQuestions.length === 0) return;
+    
+    // Hộp thoại xác nhận
+    const typeLabel = newType === 'NLC' ? 'Trắc nghiệm' : newType === 'DS' ? 'Đúng/Sai' : newType === 'TLN' ? 'Trả lời ngắn' : 'Tự luận';
+    const confirmMsg = `Bạn có chắc chắn muốn đổi dạng thức của ${selectedQuestions.length} câu hỏi đã chọn thành "${typeLabel}" không?`;
+    if (!window.confirm(confirmMsg)) return;
+
+    setIsChangingType(true);
+    setIsChangeTypeMenuOpen(false);
+    
+    try {
+      const { error } = await supabase
+        .from('questions')
+        .update({ question_type: newType })
+        .in('id', selectedQuestions);
+        
+      if (error) throw error;
+      
+      alert(`Đã chuyển đổi thành công ${selectedQuestions.length} câu hỏi thành ${typeLabel}!`);
+      setSelectedQuestions([]);
+      fetchQuestions(); // Giữ nguyên trang hiện tại
+    } catch (error: any) {
+      console.error("Lỗi khi đổi dạng thức:", error);
+      alert("Lỗi khi đổi dạng thức: " + error.message);
+    } finally {
+      setIsChangingType(false);
     }
   };
 
@@ -370,6 +402,28 @@ export default function QuestionsPage() {
               </div>
             )}
           </div>
+
+          {selectedQuestions.length > 0 && (
+            <div className="relative animate-in fade-in zoom-in duration-200">
+              <button 
+                onClick={() => setIsChangeTypeMenuOpen(!isChangeTypeMenuOpen)}
+                disabled={isChangingType}
+                className="flex items-center gap-2 bg-amber-600 text-white hover:bg-amber-700 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm disabled:opacity-50"
+              >
+                {isChangingType ? <Loader2 className="w-4 h-4 animate-spin" /> : <RefreshCw className="w-4 h-4" />} 
+                Đổi Dạng ({selectedQuestions.length}) <ChevronDown className="w-4 h-4" />
+              </button>
+              {isChangeTypeMenuOpen && (
+                <div className="absolute top-full mt-2 left-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                  <div className="px-4 py-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider">Chọn dạng mới</div>
+                  <button onClick={() => handleChangeBulkType('NLC')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700">Trắc nghiệm (NLC)</button>
+                  <button onClick={() => handleChangeBulkType('DS')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700">Đúng/Sai (DS)</button>
+                  <button onClick={() => handleChangeBulkType('TLN')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700">Trả lời ngắn (TLN)</button>
+                  <button onClick={() => handleChangeBulkType('TL')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700">Tự luận (TL)</button>
+                </div>
+              )}
+            </div>
+          )}
 
           <button 
             onClick={() => setIsCategoryModalOpen(true)} 
