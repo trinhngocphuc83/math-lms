@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { Plus, Users, BookOpen, Trash2, Edit2, Loader2, Calendar, DollarSign, Search, X } from "lucide-react";
+import { Plus, Users, BookOpen, Trash2, Edit2, Loader2, Calendar, DollarSign, Search, X, Download } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getEnrollmentCounts } from "./[id]/actions";
@@ -13,6 +13,7 @@ export default function AdminClassesPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const supabase = createClient();
   const router = useRouter();
+  const [isExporting, setIsExporting] = useState(false);
 
   // Reference data
   const [gradesMap, setGradesMap] = useState<Map<string, string>>(new Map());
@@ -163,6 +164,81 @@ export default function AdminClassesPage() {
     c.name?.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  const handleExportAllClasses = async () => {
+    const monthStr = prompt("Nhập THÁNG cần xuất báo cáo (VD: 7):", (new Date().getMonth() + 1).toString());
+    if (!monthStr) return;
+    const yearStr = prompt("Nhập NĂM cần xuất báo cáo (VD: 2026):", new Date().getFullYear().toString());
+    if (!yearStr) return;
+    
+    const month = parseInt(monthStr);
+    const year = parseInt(yearStr);
+    if (isNaN(month) || isNaN(year) || month < 1 || month > 12) return alert("Tháng/Năm không hợp lệ!");
+
+    setIsExporting(true);
+    try {
+      const { data: fees, error } = await supabase
+        .from('tuition_fees')
+        .select('*')
+        .eq('month', month)
+        .eq('year', year);
+        
+      if (error) throw error;
+      if (!fees) throw new Error("Không thể tải dữ liệu học phí");
+
+      const XLSX = await import('xlsx');
+      
+      const exportData = classes.map((cls, idx) => {
+        const classFees = fees.filter(f => f.class_id === cls.id);
+        const totalPaid = classFees.reduce((sum, f) => sum + (f.paid_amount || 0), 0);
+        const totalPaidStudents = classFees.filter(f => (f.paid_amount || 0) > 0 || f.status === 'PAID').length;
+        const totalStudents = enrollmentCounts.get(cls.id) || 0;
+        
+        return {
+          "STT": idx + 1,
+          "Tên Lớp": cls.name,
+          "Khóa học": coursesMap.get(cls.course_id) || "",
+          "Sĩ số thực tế": totalStudents,
+          "Học phí cơ bản (1 HS)": cls.tuition_fee || 0,
+          "Số HS đã nộp": totalPaidStudents,
+          "Số HS còn nợ": totalStudents - totalPaidStudents,
+          "Tổng tiền ĐÃ THU": totalPaid,
+          "% trích TT (10%)": totalPaid * 0.1,
+          "Còn lại của GV": totalPaid * 0.9,
+        };
+      });
+
+      const sumPaid = exportData.reduce((sum, row) => sum + row["Tổng tiền ĐÃ THU"], 0);
+      exportData.push({
+        "STT": "",
+        "Tên Lớp": "TỔNG CỘNG",
+        "Khóa học": "",
+        "Sĩ số thực tế": exportData.reduce((sum, row) => sum + (row["Sĩ số thực tế"] as number || 0), 0),
+        "Học phí cơ bản (1 HS)": "",
+        "Số HS đã nộp": exportData.reduce((sum, row) => sum + (row["Số HS đã nộp"] as number || 0), 0),
+        "Số HS còn nợ": exportData.reduce((sum, row) => sum + (row["Số HS còn nợ"] as number || 0), 0),
+        "Tổng tiền ĐÃ THU": sumPaid,
+        "% trích TT (10%)": sumPaid * 0.1,
+        "Còn lại của GV": sumPaid * 0.9,
+      } as any);
+
+      const worksheet = XLSX.utils.json_to_sheet(exportData);
+      
+      // Auto-size columns
+      const colWidths = [
+        { wch: 5 }, { wch: 20 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, 
+        { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 20 }
+      ];
+      worksheet['!cols'] = colWidths;
+
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, `Học_Phí_T${month}_${year}`);
+      XLSX.writeFile(workbook, `Bao_Cao_Hoc_Phi_Tat_Ca_Lop_T${month}_${year}.xlsx`);
+    } catch (e: any) {
+      alert("Lỗi xuất Excel: " + e.message);
+    }
+    setIsExporting(false);
+  };
+
   return (
     <div className="p-8 w-full">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -173,24 +249,35 @@ export default function AdminClassesPage() {
           </h1>
           <p className="text-gray-500 mt-2 font-medium">Tổ chức lớp học, sắp xếp học sinh và quản lý lịch học.</p>
         </div>
-        <button 
-          onClick={() => {
-            setEditingClassId(null);
-            setClassName("");
-            setGradeId("");
-            setCourseId("");
-            setSchedule("");
-            setStartDate("");
-            setTuitionFee("0");
-            setSessionsPerMonth("8");
-            setMaxStudents("30");
-            setIsModalOpen(true);
-          }}
-          className="flex items-center gap-2 bg-teal-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-600/20 transition-all active:scale-95"
-        >
-          <Plus size={20} strokeWidth={2.5} />
-          <span>Tạo lớp học mới</span>
-        </button>
+        <div className="flex items-center gap-3">
+          <button 
+            onClick={handleExportAllClasses}
+            disabled={isExporting || classes.length === 0}
+            className="flex items-center gap-2 bg-emerald-100 text-emerald-700 border border-emerald-200 px-4 py-2.5 rounded-xl font-bold hover:bg-emerald-200 transition-all disabled:opacity-50"
+          >
+            {isExporting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Download className="w-5 h-5" />}
+            <span className="hidden sm:inline">Xuất Excel Tổng</span>
+          </button>
+          
+          <button 
+            onClick={() => {
+              setEditingClassId(null);
+              setClassName("");
+              setGradeId("");
+              setCourseId("");
+              setSchedule("");
+              setStartDate("");
+              setTuitionFee("0");
+              setSessionsPerMonth("8");
+              setMaxStudents("30");
+              setIsModalOpen(true);
+            }}
+            className="flex items-center gap-2 bg-teal-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-600/20 transition-all active:scale-95"
+          >
+            <Plus size={20} strokeWidth={2.5} />
+            <span>Tạo lớp học mới</span>
+          </button>
+        </div>
       </div>
 
       <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 mb-6 flex items-center gap-4">
