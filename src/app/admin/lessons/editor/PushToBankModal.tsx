@@ -22,6 +22,48 @@ interface PushToBankModalProps {
   };
 }
 
+/* ===== Component ComboBox (Lai giữa Select & Input) ===== */
+function ComboBox({ value, onChange, options, placeholder, width }: { value: string, onChange: (v: string) => void, options: string[], placeholder: string, width: string | number }) {
+  const [isCustom, setIsCustom] = useState(false);
+  
+  // Nếu đang nhập tay hoặc value hiện tại không nằm trong options (tức là tự gõ trước đó)
+  const showInput = isCustom || (value && !options.includes(value));
+
+  if (showInput) {
+      return (
+          <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <input 
+                  autoFocus={isCustom}
+                  value={value} 
+                  onChange={e => onChange(e.target.value)}
+                  placeholder={placeholder}
+                  style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width, background: '#fff' }} 
+              />
+              <button title="Quay lại chọn danh sách" onClick={() => { setIsCustom(false); onChange(''); }} style={{ background: 'none', border: 'none', fontSize: 13, color: '#ef4444', cursor: 'pointer', padding: 2 }}>✕</button>
+          </div>
+      );
+  }
+
+  return (
+      <select
+          value={value}
+          onChange={e => {
+              if (e.target.value === '__custom__') {
+                  setIsCustom(true);
+                  onChange('');
+              } else {
+                  onChange(e.target.value);
+              }
+          }}
+          style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width, background: '#fff', cursor: 'pointer' }}
+      >
+          <option value="">{placeholder}</option>
+          {options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
+          <option value="__custom__">✏️ Nhập mới...</option>
+      </select>
+  );
+}
+
 /* ===== Tự động detect Lớp và Môn từ tên khóa học ===== */
 function autoDetectGradeSubject(courseName: string): { grade: string; subject: string } {
   if (!courseName) return { grade: '', subject: '' };
@@ -280,26 +322,16 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                 <div style={{ fontWeight: 600, marginBottom: 8 }}>Bối cảnh tự động (có thể chỉnh sửa):</div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 12px', alignItems: 'center' }}>
                   <label style={{ fontWeight: 700, fontSize: 12 }}>Lớp:</label>
-                  <input list="gradesList" value={editCtx.grade} onChange={e => handleUpdateContext('grade', e.target.value)}
-                    placeholder="VD: 10"
-                    style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 80, background: '#fff' }} />
-                  <datalist id="gradesList">{uniqueGrades.map(g => <option key={g} value={g} />)}</datalist>
+                  <ComboBox value={editCtx.grade} onChange={v => handleUpdateContext('grade', v)} options={uniqueGrades} placeholder="-- Lớp --" width={80} />
 
                   <label style={{ fontWeight: 700, fontSize: 12 }}>Môn:</label>
-                  <input list="subjectsList" value={editCtx.subject} onChange={e => handleUpdateContext('subject', e.target.value)}
-                    placeholder="VD: Toán"
-                    style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 100, background: '#fff' }} />
-                  <datalist id="subjectsList">{uniqueSubjects.map(s => <option key={s} value={s} />)}</datalist>
+                  <ComboBox value={editCtx.subject} onChange={v => handleUpdateContext('subject', v)} options={uniqueSubjects} placeholder="-- Môn --" width={100} />
 
                   <label style={{ fontWeight: 700, fontSize: 12 }}>Chương:</label>
-                  <input list="topicsList" value={editCtx.topic} onChange={e => handleUpdateContext('topic', e.target.value)}
-                    style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 220, background: '#fff' }} />
-                  <datalist id="topicsList">{uniqueTopics.map(t => <option key={t} value={t} />)}</datalist>
+                  <ComboBox value={editCtx.topic} onChange={v => handleUpdateContext('topic', v)} options={uniqueTopics} placeholder="-- Chương --" width={220} />
 
                   <label style={{ fontWeight: 700, fontSize: 12 }}>Bài:</label>
-                  <input list="lessonsList" value={editCtx.lesson} onChange={e => handleUpdateContext('lesson', e.target.value)}
-                    style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 220, background: '#fff' }} />
-                  <datalist id="lessonsList">{uniqueLessons.map(l => <option key={l} value={l} />)}</datalist>
+                  <ComboBox value={editCtx.lesson} onChange={v => handleUpdateContext('lesson', v)} options={uniqueLessons} placeholder="-- Bài --" width={220} />
                 </div>
               </div>
             </div>
