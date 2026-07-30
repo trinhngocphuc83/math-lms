@@ -318,6 +318,15 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   const [editCtx, setEditCtx] = useState({ grade: '', subject: '', topic: '', lesson: '' });
   const [categories, setCategories] = useState<any[]>([]); // Dạng toán từ DB
   const [mathFormFilter, setMathFormFilter] = useState(''); // Dropdown filter cho dạng toán chung
+  const [geminiKey, setGeminiKey] = useState('');
+  const [geminiLoading, setGeminiLoading] = useState(false);
+  const [showAddCategoryModal, setShowAddCategoryModal] = useState<{isOpen: boolean, targetId: string}>({isOpen: false, targetId: ''});
+
+  useEffect(() => {
+     if (typeof window !== 'undefined') {
+        setGeminiKey(localStorage.getItem('math_lms_gemini_key') || '');
+     }
+  }, []);
   const [showAddCategoryModal, setShowAddCategoryModal] = useState<{isOpen: boolean, targetId: string}>({isOpen: false, targetId: ''});
   const hasParsedRef = useRef(false);
   const supabase = createClient();
@@ -424,6 +433,77 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
         
         return next;
      });
+  };
+
+  const handleAutoDetectGemini = async () => {
+    if (!geminiKey) {
+       alert("Vui lòng nhập API Key của Google Gemini vào ô bên cạnh để sử dụng tính năng này!");
+       return;
+    }
+    const allForms = Array.from(new Set(categories.map(c => c.math_form))).filter(Boolean) as string[];
+    const formsToUse = relevantForms.length > 0 ? relevantForms : allForms;
+    
+    if (formsToUse.length === 0) {
+       alert("Chưa có danh sách Dạng bài nào trong hệ thống để đối chiếu!");
+       return;
+    }
+
+    const emptyQs = questions.filter(q => !q.math_form);
+    if (emptyQs.length === 0) {
+       alert("Tất cả câu hỏi đã được gán Dạng bài!");
+       return;
+    }
+
+    setGeminiLoading(true);
+    try {
+        const { GoogleGenerativeAI } = await import('@google/generative-ai');
+        const genAI = new GoogleGenerativeAI(geminiKey);
+        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        
+        const globalTongHop = allForms.find(f => /tổng hợp/i.test(f));
+        const formListStr = formsToUse.map(f => `- ${f}`).join('\n') + (globalTongHop && !formsToUse.includes(globalTongHop) ? `\n- ${globalTongHop}` : '');
+
+        const prompt = `Bạn là một chuyên gia phân loại toán học. Phân loại các câu hỏi sau vào một trong các Dạng Bài (chính xác từng chữ) dưới đây.
+Dạng Bài có sẵn:
+${formListStr}
+
+Câu hỏi:
+${emptyQs.map(q => `ID: ${q.id}\nQuestionType: ${q.question_type}\nContent: ${q.content.substring(0, 500)}`).join('\n\n')}
+
+Quy tắc:
+1. Nếu câu hỏi có QuestionType là "true_false_cluster" (Đúng/Sai), ưu tiên chọn Dạng Bài "Toán tổng hợp" (nếu có trong danh sách).
+2. Trả về kết quả Dạng Bài phải TRÍCH XUẤT CHÍNH XÁC NGUYÊN VĂN từ danh sách có sẵn (không tự bịa ra dạng bài mới).
+3. Trả về MỘT chuỗi JSON ĐƠN GIẢN, định dạng:
+{
+  "id_câu_hỏi_1": "Tên Dạng Bài Khớp Nhất",
+  "id_câu_hỏi_2": "Tên Dạng Bài Khớp Nhất"
+}`;
+
+        const result = await model.generateContent(prompt);
+        const text = result.response.text();
+        const jsonStr = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+        if (!jsonStr) throw new Error("Không tìm thấy JSON hợp lệ trong phản hồi.");
+        const mapping = JSON.parse(jsonStr);
+        
+        let count = 0;
+        setQuestions(prev => prev.map(q => {
+             if (mapping[q.id]) {
+                 const matchedForm = allForms.find(f => f.trim().toLowerCase() === mapping[q.id].trim().toLowerCase());
+                 if (matchedForm && !q.math_form) {
+                     count++;
+                     return { ...q, math_form: matchedForm };
+                 }
+             }
+             return q;
+        }));
+        
+        setTimeout(() => alert(`✨ AI Gemini đã nhận diện và điền tự động Dạng bài cho ${count} câu hỏi!`), 100);
+    } catch (e: any) {
+        console.error(e);
+        alert("Lỗi khi gọi AI Gemini: " + e.message + ". Vui lòng kiểm tra lại API Key.");
+    } finally {
+        setGeminiLoading(false);
+    }
   };
 
   const handleUpdateField = (id: string, field: string, value: string) => {
@@ -618,12 +698,33 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                   <option value="Vận dụng cao">Tất cả Vận dụng cao</option>
                 </select>
 
-                <button 
-                  onClick={handleAutoDetectAll}
-                  style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', padding: '4px 10px', borderRadius: 6, fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s' }}
-                >
-                  ✨ Tự động nhận dạng Dạng bài
-                </button>
+                <div style={{ display: 'flex', gap: 6, alignItems: 'center', background: '#f8fafc', padding: '4px 6px', borderRadius: 8, border: '1px solid #e2e8f0' }}>
+                  <button 
+                    onClick={handleAutoDetectGemini}
+                    disabled={geminiLoading}
+                    style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', padding: '4px 10px', borderRadius: 6, fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s', opacity: geminiLoading ? 0.6 : 1 }}
+                  >
+                    {geminiLoading ? '⏳ Đang phân tích...' : '✨ Dùng AI (Gemini)'}
+                  </button>
+                  <input
+                    type="password"
+                    placeholder="Nhập API Key Gemini..."
+                    value={geminiKey}
+                    onChange={(e) => {
+                       setGeminiKey(e.target.value);
+                       if (typeof window !== 'undefined') localStorage.setItem('math_lms_gemini_key', e.target.value);
+                    }}
+                    style={{ padding: '4px 8px', fontSize: 11, border: '1px solid #cbd5e1', borderRadius: 6, width: 150, background: '#fff' }}
+                  />
+                  <div style={{ width: 1, height: 16, background: '#cbd5e1', margin: '0 4px' }}></div>
+                  <button 
+                    onClick={handleAutoDetectAll}
+                    style={{ background: 'none', border: 'none', color: '#475569', fontSize: 11, fontWeight: 600, cursor: 'pointer', textDecoration: 'underline' }}
+                    title="Dùng thuật toán cơ bản (Offline)"
+                  >
+                    Dùng thuật toán
+                  </button>
+                </div>
 
                 <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
                   <button onClick={expandAll} type="button" style={{ fontSize: 12, color: '#6366f1', fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>▼ Mở tất cả</button>
