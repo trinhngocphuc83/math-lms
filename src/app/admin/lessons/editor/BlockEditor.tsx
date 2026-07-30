@@ -27,6 +27,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const [focusMode, setFocusMode] = React.useState(true);
   const [isBankModalOpen, setIsBankModalOpen] = React.useState(false);
   const [insertIndex, setInsertIndex] = React.useState(-1);
+  const [selectedBlocks, setSelectedBlocks] = React.useState<Set<string>>(new Set());
 
   React.useEffect(() => {
      if (globalTriggerBankModal && globalTriggerBankModal > 0) {
@@ -225,11 +226,48 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
   return (
     <div className="flex flex-col gap-6 p-4 h-full overflow-y-auto bg-gray-100">
-       <div className="flex items-center justify-between mb-[-0.5rem]">
+       <div className="flex items-center justify-between mb-[-0.5rem] flex-wrap gap-3">
          <label className="flex items-center gap-2 text-[15px] font-bold text-indigo-700 cursor-pointer bg-indigo-50 px-4 py-2 rounded-lg border border-indigo-100 w-max shadow-sm transition-colors hover:bg-indigo-100">
             <input type="checkbox" checked={focusMode} onChange={e => setFocusMode(e.target.checked)} className="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500" />
             🎯 Chế độ Tập trung (Tự động thu gọn các khối khác khi làm việc)
          </label>
+
+         {selectedBlocks.size > 0 && (
+            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm animate-in fade-in slide-in-from-top-2">
+               <span className="text-sm font-bold text-gray-600 mr-2">Đã chọn {selectedBlocks.size} khối:</span>
+               <select 
+                  onChange={(e) => {
+                     const newType = e.target.value;
+                     if (!newType) return;
+                     const newBlocks = blocks.map(b => {
+                        if (selectedBlocks.has(b.id) && b.type === 'quiz') {
+                           let newContent = { ...b.content, type: newType };
+                           if (newType === 'true_false_cluster' && (!b.content.options || typeof b.content.options[0] === 'string')) {
+                              newContent.options = [
+                                 { id: 'a', content: '', isTrue: true },
+                                 { id: 'b', content: '', isTrue: false },
+                                 { id: 'c', content: '', isTrue: true },
+                                 { id: 'd', content: '', isTrue: false },
+                              ];
+                           }
+                           return { ...b, content: newContent };
+                        }
+                        return b;
+                     });
+                     onChangeBlocks(newBlocks);
+                     e.target.value = ""; // reset
+                  }}
+                  className="border border-indigo-200 rounded-md px-3 py-1.5 text-sm bg-indigo-50 font-bold text-indigo-700 outline-none cursor-pointer focus:ring-2 focus:ring-indigo-500/30"
+               >
+                  <option value="">-- Đổi dạng câu hỏi --</option>
+                  <option value="multiple_choice">Trắc nghiệm 4 lựa chọn</option>
+                  <option value="true_false_cluster">Đúng/Sai 4 Ý (Barem 2025)</option>
+                  <option value="short_answer">Trả lời ngắn / Điền khuyết</option>
+                  <option value="essay">Tự luận / Trình bày chi tiết</option>
+               </select>
+               <button onClick={() => setSelectedBlocks(new Set())} className="ml-2 text-xs font-bold text-gray-400 hover:text-gray-600 underline">Bỏ chọn</button>
+            </div>
+         )}
        </div>
 
        {blocks.length === 0 && (
@@ -243,6 +281,18 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
           <div key={block.id} onClickCapture={() => handleFocusBlock(block.id)} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden shrink-0 transition-all">
               <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center">
                   <div className="flex items-center gap-2 font-bold text-gray-700 text-[15px]">
+                     <input 
+                        type="checkbox" 
+                        checked={selectedBlocks.has(block.id)}
+                        onChange={(e) => {
+                           const newSet = new Set(selectedBlocks);
+                           if (e.target.checked) newSet.add(block.id);
+                           else newSet.delete(block.id);
+                           setSelectedBlocks(newSet);
+                        }}
+                        className="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mr-2 cursor-pointer"
+                        onClick={e => e.stopPropagation()}
+                     />
                      {block.type === 'md' ? <><Type className="w-4 h-4 text-indigo-500"/> Khối Lý Thuyết / Văn Bản</> : <><ListTodo className="w-4 h-4 text-teal-500"/> Khối Trắc Nghiệm Tương Tác</>}
                   </div>
                   <div className="flex gap-1.5">

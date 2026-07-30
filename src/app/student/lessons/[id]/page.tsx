@@ -215,7 +215,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                   key={optIdx}
                   disabled={isChecked}
                   onClick={() => setSelectedOpt(optIdx)}
-                  className={`w-full flex-1 text-center font-bold py-4 px-6 rounded-2xl border-2 transition-all ${
+                  className={`w-full flex-1 text-center font-bold text-[15px] py-3 px-4 rounded-xl border-2 transition-all ${
                      isSelected && !isChecked ? 'border-indigo-500 bg-indigo-500 text-white shadow-[4px_4px_0px_0px_rgba(129,140,248,1)] transform -translate-y-1' : ''
                   } ${
                      !isSelected && !isChecked ? 'border-slate-200 text-slate-600 bg-white hover:border-indigo-300 hover:bg-indigo-50 hover:-translate-y-0.5 shadow-sm' : ''
@@ -246,7 +246,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                   key={idx}
                   disabled={isChecked}
                   onClick={() => setSelectedOpt(idx)}
-                  className={`text-left p-4 rounded-2xl border-2 transition-all flex items-start gap-4
+                  className={`text-left p-3 rounded-xl border-2 transition-all flex items-start gap-3
                      ${isSelected && !isChecked ? 'border-indigo-400 bg-indigo-50 shadow-[4px_4px_0px_0px_rgba(129,140,248,1)] transform -translate-y-1' : ''}
                      ${!isSelected && !isChecked ? 'border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/30 hover:-translate-y-0.5 hover:shadow-sm' : ''}
                      ${isCorrect ? 'border-green-400 bg-green-50 shadow-[4px_4px_0px_0px_rgba(74,222,128,1)]' : ''}
@@ -262,7 +262,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                   `}>
                      {['A','B','C','D'][idx]}
                   </div>
-                  <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
+                  <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0 text-[15px]">
                      <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                   </div>
                </button>
@@ -284,7 +284,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                   <div key={idx} className={`flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl border-2 transition-all gap-4 ${st}`}>
                      <div className="flex items-start gap-3">
                         <div className="font-bold text-gray-500 w-6">{['A','B','C','D'][idx] || 'A'}.</div>
-                        <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0">
+                        <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0 text-[15px]">
                            <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(stmt.content || stmt.text || '').replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                         </div>
                      </div>

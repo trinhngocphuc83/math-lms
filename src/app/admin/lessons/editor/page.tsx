@@ -1960,7 +1960,8 @@ function EditorContent() {
             grade: courses.find(c => c.id === selectedCourseId)?.grade || "",
             subject: courses.find(c => c.id === selectedCourseId)?.subject || "",
             topic: chapters.find(c => c.id === selectedChapterId)?.title || "", 
-            lesson: title 
+            lesson: title,
+            courseName: courses.find(c => c.id === selectedCourseId)?.title || ""
           }} 
         />
       )}
