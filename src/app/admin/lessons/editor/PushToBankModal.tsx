@@ -174,52 +174,89 @@ function autoDetectGradeSubject(courseName: string): { grade: string; subject: s
   return { grade, subject };
 }
 
-/* ===== Thuật toán nhận dạng Dạng Toán tự động ===== */
-function autoDetectMathForm(content: string, explanation: string, forms: string[]): string {
+/* ===== Thuật toán nhận dạng Dạng Toán tự động (TF-IDF & N-grams) ===== */
+function autoDetectMathForm(content: string, explanation: string, forms: string[], questionType?: string): string {
   if (!forms || forms.length === 0) return '';
+  
+  // 1. Dạng bài Đúng/Sai 4 ý thường liên quan đến nhiều kiến thức tổng hợp
+  if (questionType === 'true_false_cluster') {
+     const tongHopForm = forms.find(f => /tổng hợp/i.test(f));
+     if (tongHopForm) return tongHopForm;
+  }
+
   const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s]/g, ""); 
   const text = normalize(content + ' ' + (explanation || ''));
   
+  // 2. Tính Tần suất xuất hiện (IDF) của các từ trong tất cả các forms
+  const stopWords = ['tim', 'tinh', 'cac', 'cua', 'va', 'cho', 'trong', 'la', 'mot', 'co', 'de', 'bai', 'toan'];
+  const idf: Record<string, number> = {};
+  for (const f of forms) {
+      if (!f) continue;
+      const ws = Array.from(new Set(normalize(f).split(/\s+/).filter(w => w.length > 1 && !stopWords.includes(w))));
+      for (const w of ws) idf[w] = (idf[w] || 0) + 1;
+  }
+  const totalForms = forms.length;
+  for (const w in idf) {
+      // Từ hiếm (đặc trưng) sẽ có trọng số cao, từ phổ biến (xuất hiện nhiều form) sẽ bị giảm trọng số
+      idf[w] = Math.log(totalForms / (idf[w] + 0.1)) + 1; 
+  }
+
   let bestForm = '';
   let maxScore = 0;
 
   for (const form of forms) {
     if (!form) continue;
     const formNorm = normalize(form);
-    // 1. Trùng khớp chính xác chuỗi tên dạng toán (sau khi chuẩn hóa)
-    if (text.includes(formNorm)) return form;
+    if (text.includes(formNorm)) return form; // Khớp chính xác 100%
     
-    // 2. Tính điểm dựa trên các từ khóa (loại bỏ stop words tiếng Việt cơ bản)
-    const stopWords = ['tim', 'tinh', 'cac', 'cua', 'va', 'cho', 'trong', 'la', 'mot', 'co', 'de'];
     const words = formNorm.split(/\s+/).filter(w => w.length > 1 && !stopWords.includes(w));
     if (words.length === 0) continue;
     
-    let matchCount = 0;
-    let nGramBonus = 0;
-
-    // Check cụm 2 từ (bigrams)
-    for (let i = 0; i < words.length - 1; i++) {
-        if (text.includes(words[i] + ' ' + words[i+1])) {
-            nGramBonus += 1.5; // Thưởng điểm nếu có cụm từ dính liền
-        }
-    }
-    // Check cụm 3 từ (trigrams)
-    for (let i = 0; i < words.length - 2; i++) {
-        if (text.includes(words[i] + ' ' + words[i+1] + ' ' + words[i+2])) {
-            nGramBonus += 3; // Thưởng điểm rất lớn
-        }
-    }
+    let score = 0;
+    let maxPossibleScore = 0;
 
     for (const w of words) {
-      if (text.includes(w)) matchCount++;
+      const weight = idf[w] || 1;
+      maxPossibleScore += weight;
+      if (text.includes(w)) {
+        score += weight;
+      }
     }
     
-    // Tổng điểm = Tỉ lệ từ + Bonus cụm từ
-    const score = (matchCount / words.length) + (nGramBonus / words.length);
+    // N-gram bonus (chỉ cộng nếu cụm từ dính liền có trong text)
+    let nGramBonus = 0;
+    for (let i = 0; i < words.length - 1; i++) {
+        if (text.includes(words[i] + ' ' + words[i+1])) {
+            const w1 = idf[words[i]] || 1;
+            const w2 = idf[words[i+1]] || 1;
+            nGramBonus += (w1 + w2) * 1.2;
+        }
+    }
+    for (let i = 0; i < words.length - 2; i++) {
+        if (text.includes(words[i] + ' ' + words[i+1] + ' ' + words[i+2])) {
+            const w1 = idf[words[i]] || 1;
+            const w2 = idf[words[i+1]] || 1;
+            const w3 = idf[words[i+2]] || 1;
+            nGramBonus += (w1 + w2 + w3) * 1.5;
+        }
+    }
     
-    // Ngưỡng 0.3 là đủ nếu có cụm từ
-    if (score > maxScore && score >= 0.3) { 
-       maxScore = score;
+    // Phạt (Penalty) nặng nếu Text thiếu từ khóa đặc trưng của Form:
+    let penalty = 0;
+    for (const w of words) {
+       if (!text.includes(w)) {
+          const weight = idf[w] || 1;
+          // Nếu từ này là từ khoá đặc trưng (trọng số cao) mà không có trong câu hỏi, thì khả năng cao không phải dạng này
+          if (weight > 1.5) penalty += weight * 2.0; 
+          else penalty += weight * 0.5;
+       }
+    }
+
+    const finalScore = (score + nGramBonus - penalty) / (maxPossibleScore || 1);
+    
+    // Ngưỡng tối thiểu để được gán (có thể điều chỉnh)
+    if (finalScore > maxScore && finalScore >= 0.15) { 
+       maxScore = finalScore;
        bestForm = form;
     }
   }
@@ -341,8 +378,8 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
          // Sau khi tải danh sách category, tự động nhận diện dạng bài cho những câu đang trống
          const formList = Array.from(new Set(data.map(c => c.math_form))).filter(Boolean) as string[];
          setQuestions(prev => prev.map(q => {
-            if (!q.math_form) {
-               const detected = autoDetectMathForm(q.content, q.explanation, formList);
+             if (!q.math_form) {
+               const detected = autoDetectMathForm(q.content, q.explanation, formList, q.question_type);
                if (detected) return { ...q, math_form: detected };
             }
             return q;
