@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/client";
 import { Plus, Users, BookOpen, Trash2, Edit2, Loader2, Calendar, DollarSign, Search, X, Download, FileWarning } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { getEnrollmentCounts } from "./[id]/actions";
+import { getEnrollmentCounts, getAllGlobalEnrollments } from "./[id]/actions";
 
 export default function AdminClassesPage() {
   const [classes, setClasses] = useState<any[]>([]);
@@ -176,13 +176,12 @@ export default function AdminClassesPage() {
 
     setIsExporting(true);
     try {
-      const [{ data: fees, error: feesError }, { data: enrollments, error: enrollError }] = await Promise.all([
+      const [{ data: fees, error: feesError }, enrollments] = await Promise.all([
         supabase.from('tuition_fees').select('*').eq('month', month).eq('year', year),
-        supabase.from('enrollments').select('class_id, student_id, profiles (id, full_name, student_phone, parent_name, parent_phone)')
+        getAllGlobalEnrollments()
       ]);
         
       if (feesError) throw feesError;
-      if (enrollError) throw enrollError;
       if (!fees) throw new Error("Không thể tải dữ liệu học phí");
 
       const XLSX = await import('xlsx');
@@ -292,13 +291,12 @@ export default function AdminClassesPage() {
 
     setIsExporting(true);
     try {
-      const [{ data: fees, error: feesError }, { data: enrollments, error: enrollError }] = await Promise.all([
+      const [{ data: fees, error: feesError }, enrollments] = await Promise.all([
         supabase.from('tuition_fees').select('*').eq('month', month).eq('year', year),
-        supabase.from('enrollments').select('class_id, student_id, profiles (id, full_name, student_phone, parent_name, parent_phone)')
+        getAllGlobalEnrollments()
       ]);
 
       if (feesError) throw feesError;
-      if (enrollError) throw enrollError;
       if (!enrollments) throw new Error("Không thể tải danh sách học sinh");
 
       const XLSX = await import('xlsx');

@@ -24,6 +24,21 @@ export async function getEnrollments(classId: string) {
   return data;
 }
 
+export async function getAllGlobalEnrollments() {
+  const { data, error } = await supabaseAdmin
+    .from('enrollments')
+    .select(`
+      class_id, student_id,
+      profiles (id, full_name, student_phone, parent_name, parent_phone)
+    `);
+    
+  if (error) {
+    console.error("Lỗi lấy danh sách học sinh toàn hệ thống:", error);
+    return [];
+  }
+  return data || [];
+}
+
 export async function addEnrollment(classId: string, studentId: string) {
   const { data: clsData } = await supabaseAdmin.from('classes').select('course_id').eq('id', classId).single();
   
