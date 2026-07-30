@@ -176,17 +176,18 @@ export default function AdminClassesPage() {
 
     setIsExporting(true);
     try {
-      const { data: fees, error } = await supabase
-        .from('tuition_fees')
-        .select('*')
-        .eq('month', month)
-        .eq('year', year);
+      const [{ data: fees, error: feesError }, { data: enrollments, error: enrollError }] = await Promise.all([
+        supabase.from('tuition_fees').select('*').eq('month', month).eq('year', year),
+        supabase.from('enrollments').select('class_id, student_id, profiles (id, full_name, student_phone, parent_name, parent_phone)')
+      ]);
         
-      if (error) throw error;
+      if (feesError) throw feesError;
+      if (enrollError) throw enrollError;
       if (!fees) throw new Error("Không thể tải dữ liệu học phí");
 
       const XLSX = await import('xlsx');
       
+      // ============ SHEET 1: TỔNG HỢP CÁC LỚP ============
       const exportData = classes.map((cls, idx) => {
         const classFees = fees.filter(f => f.class_id === cls.id);
         const totalPaid = classFees.reduce((sum, f) => sum + (f.paid_amount || 0), 0);
@@ -222,16 +223,56 @@ export default function AdminClassesPage() {
       } as any);
 
       const worksheet = XLSX.utils.json_to_sheet(exportData);
-      
-      // Auto-size columns
       const colWidths = [
         { wch: 5 }, { wch: 20 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, 
         { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 20 }
       ];
       worksheet['!cols'] = colWidths;
 
+      // ============ SHEET 2: CHI TIẾT TẤT CẢ HỌC SINH ============
+      const detailData: any[] = [];
+      let stt = 1;
+      (enrollments || []).forEach(en => {
+        const cls = classes.find(c => c.id === en.class_id);
+        if (!cls) return;
+
+        const profile = en.profiles as any;
+        if (!profile) return;
+
+        const feeRecord = (fees || []).find(f => f.class_id === en.class_id && f.student_id === profile.id);
+        const isPaid = feeRecord && (feeRecord.status === 'PAID' || (feeRecord.paid_amount || 0) > 0);
+        
+        let debtAmount = 0;
+        if (!isPaid) {
+          debtAmount = feeRecord 
+            ? ((feeRecord.base_fee || 0) + (feeRecord.old_debt || 0) - (feeRecord.discount || 0))
+            : (cls.tuition_fee || 0);
+        }
+
+        detailData.push({
+          "STT": stt++,
+          "Tên Học sinh": profile.full_name || "",
+          "SĐT Học sinh": profile.student_phone || "",
+          "Tên Phụ huynh": profile.parent_name || "",
+          "SĐT Phụ huynh": profile.parent_phone || "",
+          "Lớp đang học": cls.name,
+          "Khóa học": coursesMap.get(cls.course_id) || "",
+          "Trạng thái": isPaid ? "Đã nộp" : "Chưa nộp",
+          "Số tiền Đã Nộp": isPaid ? (feeRecord.paid_amount || 0) : 0,
+          "Học phí nợ (Dự kiến)": isPaid ? 0 : debtAmount,
+        });
+      });
+
+      const detailWorksheet = XLSX.utils.json_to_sheet(detailData);
+      detailWorksheet['!cols'] = [
+        { wch: 5 }, { wch: 25 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, 
+        { wch: 20 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 20 }
+      ];
+
       const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, `Học_Phí_T${month}_${year}`);
+      XLSX.utils.book_append_sheet(workbook, worksheet, `Tổng_Hợp_T${month}_${year}`);
+      XLSX.utils.book_append_sheet(workbook, detailWorksheet, `Chi_Tiet_HS_T${month}_${year}`);
+      
       XLSX.writeFile(workbook, `Bao_Cao_Hoc_Phi_Tat_Ca_Lop_T${month}_${year}.xlsx`);
     } catch (e: any) {
       alert("Lỗi xuất Excel: " + e.message);
@@ -251,11 +292,13 @@ export default function AdminClassesPage() {
 
     setIsExporting(true);
     try {
-      const [{ data: fees }, { data: enrollments }] = await Promise.all([
+      const [{ data: fees, error: feesError }, { data: enrollments, error: enrollError }] = await Promise.all([
         supabase.from('tuition_fees').select('*').eq('month', month).eq('year', year),
-        supabase.from('enrollments').select('class_id, profiles(id, full_name, phone, parent_name, parent_phone)')
+        supabase.from('enrollments').select('class_id, student_id, profiles (id, full_name, student_phone, parent_name, parent_phone)')
       ]);
 
+      if (feesError) throw feesError;
+      if (enrollError) throw enrollError;
       if (!enrollments) throw new Error("Không thể tải danh sách học sinh");
 
       const XLSX = await import('xlsx');
@@ -281,7 +324,7 @@ export default function AdminClassesPage() {
           exportData.push({
             "STT": stt++,
             "Tên Học sinh": profile.full_name || "",
-            "SĐT Học sinh": profile.phone || "",
+            "SĐT Học sinh": profile.student_phone || "",
             "Tên Phụ huynh": profile.parent_name || "",
             "SĐT Phụ huynh": profile.parent_phone || "",
             "Lớp đang học": cls.name,
