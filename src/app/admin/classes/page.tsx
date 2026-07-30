@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { Plus, Users, BookOpen, Trash2, Edit2, Loader2, Calendar, DollarSign, Search, X, Download } from "lucide-react";
+import { Plus, Users, BookOpen, Trash2, Edit2, Loader2, Calendar, DollarSign, Search, X, Download, FileWarning } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { getEnrollmentCounts } from "./[id]/actions";
@@ -239,6 +239,81 @@ export default function AdminClassesPage() {
     setIsExporting(false);
   };
 
+  const handleExportUnpaidStudents = async () => {
+    const monthStr = prompt("Nhập THÁNG cần xuất DS Nợ (VD: 7):", (new Date().getMonth() + 1).toString());
+    if (!monthStr) return;
+    const yearStr = prompt("Nhập NĂM cần xuất DS Nợ (VD: 2026):", new Date().getFullYear().toString());
+    if (!yearStr) return;
+    
+    const month = parseInt(monthStr);
+    const year = parseInt(yearStr);
+    if (isNaN(month) || isNaN(year) || month < 1 || month > 12) return alert("Tháng/Năm không hợp lệ!");
+
+    setIsExporting(true);
+    try {
+      const [{ data: fees }, { data: enrollments }] = await Promise.all([
+        supabase.from('tuition_fees').select('*').eq('month', month).eq('year', year),
+        supabase.from('enrollments').select('class_id, profiles(id, full_name, phone, parent_name, parent_phone)')
+      ]);
+
+      if (!enrollments) throw new Error("Không thể tải danh sách học sinh");
+
+      const XLSX = await import('xlsx');
+      
+      const exportData: any[] = [];
+      let stt = 1;
+
+      enrollments.forEach(en => {
+        const cls = classes.find(c => c.id === en.class_id);
+        if (!cls) return;
+
+        const profile = en.profiles as any;
+        if (!profile) return;
+
+        const feeRecord = (fees || []).find(f => f.class_id === en.class_id && f.student_id === profile.id);
+        const isPaid = feeRecord && (feeRecord.status === 'PAID' || (feeRecord.paid_amount || 0) > 0);
+        
+        if (!isPaid) {
+          const debtAmount = feeRecord 
+            ? ((feeRecord.base_fee || 0) + (feeRecord.old_debt || 0) - (feeRecord.discount || 0))
+            : (cls.tuition_fee || 0);
+
+          exportData.push({
+            "STT": stt++,
+            "Tên Học sinh": profile.full_name || "",
+            "SĐT Học sinh": profile.phone || "",
+            "Tên Phụ huynh": profile.parent_name || "",
+            "SĐT Phụ huynh": profile.parent_phone || "",
+            "Lớp đang học": cls.name,
+            "Khóa học": coursesMap.get(cls.course_id) || "",
+            "Học phí nợ (Dự kiến)": debtAmount,
+            "Ghi chú": ""
+          });
+        }
+      });
+
+      if (exportData.length === 0) {
+         alert("Tuyệt vời! Tất cả học sinh đã đóng đủ học phí trong tháng " + month);
+         setIsExporting(false);
+         return;
+      }
+
+      const worksheet = XLSX.utils.json_to_sheet(exportData);
+      const colWidths = [
+        { wch: 5 }, { wch: 25 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, 
+        { wch: 20 }, { wch: 25 }, { wch: 20 }, { wch: 20 }
+      ];
+      worksheet['!cols'] = colWidths;
+
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, `Nợ_HP_T${month}_${year}`);
+      XLSX.writeFile(workbook, `Danh_Sach_No_Hoc_Phi_Tat_Ca_Lop_T${month}_${year}.xlsx`);
+    } catch (e: any) {
+      alert("Lỗi xuất Excel DS Nợ: " + e.message);
+    }
+    setIsExporting(false);
+  };
+
   return (
     <div className="p-8 w-full">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
@@ -250,6 +325,15 @@ export default function AdminClassesPage() {
           <p className="text-gray-500 mt-2 font-medium">Tổ chức lớp học, sắp xếp học sinh và quản lý lịch học.</p>
         </div>
         <div className="flex items-center gap-3">
+          <button 
+            onClick={handleExportUnpaidStudents}
+            disabled={isExporting || classes.length === 0}
+            className="flex items-center gap-2 bg-red-50 text-red-600 border border-red-200 px-4 py-2.5 rounded-xl font-bold hover:bg-red-100 transition-all disabled:opacity-50"
+          >
+            {isExporting ? <Loader2 className="w-5 h-5 animate-spin" /> : <FileWarning className="w-5 h-5" />}
+            <span className="hidden sm:inline">Xuất HS Chưa Nộp</span>
+          </button>
+          
           <button 
             onClick={handleExportAllClasses}
             disabled={isExporting || classes.length === 0}
