@@ -231,8 +231,8 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
     // Bỏ N-gram bonus và chia maxScore vì nó gây lạm phát điểm cho những từ rác phổ biến
     const finalScore = score;
     
-    // Ngưỡng tối thiểu (3.0 là đủ để có 2 từ chuyên ngành hoặc 3-4 từ phổ thông)
-    if (finalScore > maxScore && finalScore >= 3.0) { 
+    // Ngưỡng tối thiểu (1.5 là đủ cho 2-3 từ khóa sau khi đã loại stop words)
+    if (finalScore > maxScore && finalScore >= 1.5) { 
        maxScore = finalScore;
        bestForm = form;
     }
@@ -318,15 +318,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   const [editCtx, setEditCtx] = useState({ grade: '', subject: '', topic: '', lesson: '' });
   const [categories, setCategories] = useState<any[]>([]); // Dạng toán từ DB
   const [mathFormFilter, setMathFormFilter] = useState(''); // Dropdown filter cho dạng toán chung
-  const [geminiKey, setGeminiKey] = useState('');
   const [geminiLoading, setGeminiLoading] = useState(false);
-  const [showAddCategoryModal, setShowAddCategoryModal] = useState<{isOpen: boolean, targetId: string}>({isOpen: false, targetId: ''});
-
-  useEffect(() => {
-     if (typeof window !== 'undefined') {
-        setGeminiKey(localStorage.getItem('math_lms_gemini_key') || '');
-     }
-  }, []);
   const [showAddCategoryModal, setShowAddCategoryModal] = useState<{isOpen: boolean, targetId: string}>({isOpen: false, targetId: ''});
   const hasParsedRef = useRef(false);
   const supabase = createClient();
@@ -362,9 +354,8 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
       const { data } = await supabase.from('question_categories').select('*');
       if (data) {
          setCategories(data);
-         // Sau khi tải danh sách category, tự động nhận diện dạng bài cho những câu đang trống
          const globalForms = Array.from(new Set(data.map(c => c.math_form))).filter(Boolean) as string[];
-         const globalTongHop = globalForms.find(f => /tổng hợp/i.test(f));
+         const globalTongHop = globalForms.find(f => /tổng hợp/i.test(f)) || "Toán tổng hợp";
          
          setQuestions(prev => prev.map(q => {
              if (!q.math_form) {
@@ -372,7 +363,17 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                if (q.question_type === 'true_false_cluster' && globalTongHop) {
                    return { ...q, math_form: globalTongHop };
                }
-               const detected = autoDetectMathForm(q.content, q.explanation, globalForms);
+               // Detect bằng formsToUse dựa trên bối cảnh hiện tại (nếu có)
+               const relevantCategories = data.filter(c =>
+                  (!editCtx.grade || c.grade === editCtx.grade) &&
+                  (!editCtx.subject || c.subject === editCtx.subject) &&
+                  (!editCtx.topic || c.topic === editCtx.topic) &&
+                  (!editCtx.lesson || c.lesson === editCtx.lesson)
+               );
+               const relevantForms = Array.from(new Set(relevantCategories.map(c => c.math_form))).filter(Boolean);
+               const formsToDetect = relevantForms.length > 0 ? relevantForms : globalForms;
+               
+               const detected = autoDetectMathForm(q.content, q.explanation, formsToDetect);
                if (detected) return { ...q, math_form: detected };
             }
             return q;
@@ -436,10 +437,6 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   };
 
   const handleAutoDetectGemini = async () => {
-    if (!geminiKey) {
-       alert("Vui lòng nhập API Key của Google Gemini vào ô bên cạnh để sử dụng tính năng này!");
-       return;
-    }
     const allForms = Array.from(new Set(categories.map(c => c.math_form))).filter(Boolean) as string[];
     const formsToUse = relevantForms.length > 0 ? relevantForms : allForms;
     
@@ -447,8 +444,13 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
        alert("Chưa có danh sách Dạng bài nào trong hệ thống để đối chiếu!");
        return;
     }
+    const globalTongHop = allForms.find(f => /tổng hợp/i.test(f)) || "Toán tổng hợp";
 
-    const emptyQs = questions.filter(q => !q.math_form);
+    // Chọn các câu đang trống, HOẶC đang gán một dạng bài không có trong Dropdown (loại trừ Toán tổng hợp)
+    const emptyQs = questions.filter(q => 
+       !q.math_form || 
+       (!formsToUse.includes(q.math_form) && q.math_form !== globalTongHop)
+    );
     if (emptyQs.length === 0) {
        alert("Tất cả câu hỏi đã được gán Dạng bài!");
        return;
@@ -456,40 +458,28 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
 
     setGeminiLoading(true);
     try {
-        const { GoogleGenerativeAI } = await import('@google/generative-ai');
-        const genAI = new GoogleGenerativeAI(geminiKey);
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const res = await fetch('/api/admin/detect-forms', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                questions: emptyQs.map(q => ({ id: q.id, question_type: q.question_type, content: q.content })),
+                formsToUse,
+                allForms
+            })
+        });
+
+        const data = await res.json();
         
-        const globalTongHop = allForms.find(f => /tổng hợp/i.test(f));
-        const formListStr = formsToUse.map(f => `- ${f}`).join('\n') + (globalTongHop && !formsToUse.includes(globalTongHop) ? `\n- ${globalTongHop}` : '');
+        if (!res.ok) {
+            throw new Error(data.error || "Lỗi máy chủ");
+        }
 
-        const prompt = `Bạn là một chuyên gia phân loại toán học. Phân loại các câu hỏi sau vào một trong các Dạng Bài (chính xác từng chữ) dưới đây.
-Dạng Bài có sẵn:
-${formListStr}
-
-Câu hỏi:
-${emptyQs.map(q => `ID: ${q.id}\nQuestionType: ${q.question_type}\nContent: ${q.content.substring(0, 500)}`).join('\n\n')}
-
-Quy tắc:
-1. Nếu câu hỏi có QuestionType là "true_false_cluster" (Đúng/Sai), ưu tiên chọn Dạng Bài "Toán tổng hợp" (nếu có trong danh sách).
-2. Trả về kết quả Dạng Bài phải TRÍCH XUẤT CHÍNH XÁC NGUYÊN VĂN từ danh sách có sẵn (không tự bịa ra dạng bài mới).
-3. Trả về MỘT chuỗi JSON ĐƠN GIẢN, định dạng:
-{
-  "id_câu_hỏi_1": "Tên Dạng Bài Khớp Nhất",
-  "id_câu_hỏi_2": "Tên Dạng Bài Khớp Nhất"
-}`;
-
-        const result = await model.generateContent(prompt);
-        const text = result.response.text();
-        const jsonStr = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
-        if (!jsonStr) throw new Error("Không tìm thấy JSON hợp lệ trong phản hồi.");
-        const mapping = JSON.parse(jsonStr);
-        
+        const mapping = data;
         let count = 0;
         setQuestions(prev => prev.map(q => {
              if (mapping[q.id]) {
                  const matchedForm = allForms.find(f => f.trim().toLowerCase() === mapping[q.id].trim().toLowerCase());
-                 if (matchedForm && !q.math_form) {
+                 if (matchedForm) {
                      count++;
                      return { ...q, math_form: matchedForm };
                  }
@@ -500,7 +490,7 @@ Quy tắc:
         setTimeout(() => alert(`✨ AI Gemini đã nhận diện và điền tự động Dạng bài cho ${count} câu hỏi!`), 100);
     } catch (e: any) {
         console.error(e);
-        alert("Lỗi khi gọi AI Gemini: " + e.message + ". Vui lòng kiểm tra lại API Key.");
+        alert("Lỗi khi gọi AI Gemini: " + e.message);
     } finally {
         setGeminiLoading(false);
     }
@@ -704,18 +694,8 @@ Quy tắc:
                     disabled={geminiLoading}
                     style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', padding: '4px 10px', borderRadius: 6, fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s', opacity: geminiLoading ? 0.6 : 1 }}
                   >
-                    {geminiLoading ? '⏳ Đang phân tích...' : '✨ Dùng AI (Gemini)'}
+                    {geminiLoading ? '⏳ Đang phân tích...' : '✨ Dùng AI (Hệ thống)'}
                   </button>
-                  <input
-                    type="password"
-                    placeholder="Nhập API Key Gemini..."
-                    value={geminiKey}
-                    onChange={(e) => {
-                       setGeminiKey(e.target.value);
-                       if (typeof window !== 'undefined') localStorage.setItem('math_lms_gemini_key', e.target.value);
-                    }}
-                    style={{ padding: '4px 8px', fontSize: 11, border: '1px solid #cbd5e1', borderRadius: 6, width: 150, background: '#fff' }}
-                  />
                   <div style={{ width: 1, height: 16, background: '#cbd5e1', margin: '0 4px' }}></div>
                   <button 
                     onClick={handleAutoDetectAll}
