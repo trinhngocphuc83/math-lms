@@ -159,20 +159,17 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
 
   if (!isOpen) return null;
 
-  // Lọc dạng toán phù hợp với chương/bài hiện tại
+  // Lọc dạng toán phù hợp với Bối cảnh hiện tại (Lớp, Môn, Chương, Bài)
   const relevantForms = Array.from(new Set(
     categories
       .filter(c =>
+        (!editCtx.grade || c.grade === editCtx.grade) &&
+        (!editCtx.subject || c.subject === editCtx.subject) &&
         (!editCtx.topic || c.topic === editCtx.topic) &&
         (!editCtx.lesson || c.lesson === editCtx.lesson)
       )
       .map(c => c.math_form)
   )).filter(Boolean).sort();
-
-  // Nếu không có dạng nào cho chương/bài, fallback lấy tất cả
-  const allForms = relevantForms.length > 0
-    ? relevantForms
-    : Array.from(new Set(categories.map(c => c.math_form))).filter(Boolean).sort();
 
   // === Handlers ===
   const handleUpdateField = (id: string, field: string, value: string) => {
@@ -313,7 +310,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                     style={{ border: '1px solid #cbd5e1', borderRadius: 6, padding: '3px 8px', fontSize: 12, minWidth: 180, background: '#fff', cursor: 'pointer' }}
                   >
                     <option value="">-- Chọn dạng bài --</option>
-                    {allForms.map(form => (
+                    {relevantForms.map(form => (
                       <option key={form} value={form}>{form}</option>
                     ))}
                     <option value="__custom__">✏️ Nhập dạng mới...</option>
@@ -430,7 +427,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                         }}
                           style={{ fontSize: 11, border: '1px solid #e2e8f0', borderRadius: 5, padding: '2px 4px', maxWidth: 140 }}>
                           <option value="">Dạng bài...</option>
-                          {allForms.map(f => <option key={f} value={f}>{f}</option>)}
+                          {relevantForms.map(f => <option key={f} value={f}>{f}</option>)}
                           <option value="__custom__">✏️ Nhập mới...</option>
                         </select>
                       </div>
