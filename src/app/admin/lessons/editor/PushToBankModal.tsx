@@ -157,19 +157,21 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
     } catch (e) { console.error('[PushToBank] Fetch categories error:', e); }
   };
 
-  if (!isOpen) return null;
-
   // Lọc dạng toán phù hợp với Bối cảnh hiện tại (Lớp, Môn, Chương, Bài)
-  const relevantForms = Array.from(new Set(
-    categories
-      .filter(c =>
-        (!editCtx.grade || c.grade === editCtx.grade) &&
-        (!editCtx.subject || c.subject === editCtx.subject) &&
-        (!editCtx.topic || c.topic === editCtx.topic) &&
-        (!editCtx.lesson || c.lesson === editCtx.lesson)
-      )
-      .map(c => c.math_form)
-  )).filter(Boolean).sort();
+  const relevantCategories = categories.filter(c =>
+    (!editCtx.grade || c.grade === editCtx.grade) &&
+    (!editCtx.subject || c.subject === editCtx.subject) &&
+    (!editCtx.topic || c.topic === editCtx.topic) &&
+    (!editCtx.lesson || c.lesson === editCtx.lesson)
+  );
+
+  const relevantForms = Array.from(new Set(relevantCategories.map(c => c.math_form))).filter(Boolean).sort();
+
+  // Tạo danh sách dropdown động (Datalist) cho các ô Lớp, Môn, Chương, Bài
+  const uniqueGrades = Array.from(new Set(categories.map(c => c.grade))).filter(Boolean).sort();
+  const uniqueSubjects = Array.from(new Set(categories.filter(c => !editCtx.grade || c.grade === editCtx.grade).map(c => c.subject))).filter(Boolean).sort();
+  const uniqueTopics = Array.from(new Set(categories.filter(c => (!editCtx.grade || c.grade === editCtx.grade) && (!editCtx.subject || c.subject === editCtx.subject)).map(c => c.topic))).filter(Boolean).sort();
+  const uniqueLessons = Array.from(new Set(categories.filter(c => (!editCtx.grade || c.grade === editCtx.grade) && (!editCtx.subject || c.subject === editCtx.subject) && (!editCtx.topic || c.topic === editCtx.topic)).map(c => c.lesson))).filter(Boolean).sort();
 
   // === Handlers ===
   const handleUpdateField = (id: string, field: string, value: string) => {
@@ -278,19 +280,26 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                 <div style={{ fontWeight: 600, marginBottom: 8 }}>Bối cảnh tự động (có thể chỉnh sửa):</div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 12px', alignItems: 'center' }}>
                   <label style={{ fontWeight: 700, fontSize: 12 }}>Lớp:</label>
-                  <input value={editCtx.grade} onChange={e => handleUpdateContext('grade', e.target.value)}
+                  <input list="gradesList" value={editCtx.grade} onChange={e => handleUpdateContext('grade', e.target.value)}
                     placeholder="VD: 10"
-                    style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 50, background: '#fff' }} />
+                    style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 80, background: '#fff' }} />
+                  <datalist id="gradesList">{uniqueGrades.map(g => <option key={g} value={g} />)}</datalist>
+
                   <label style={{ fontWeight: 700, fontSize: 12 }}>Môn:</label>
-                  <input value={editCtx.subject} onChange={e => handleUpdateContext('subject', e.target.value)}
+                  <input list="subjectsList" value={editCtx.subject} onChange={e => handleUpdateContext('subject', e.target.value)}
                     placeholder="VD: Toán"
-                    style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 70, background: '#fff' }} />
+                    style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 100, background: '#fff' }} />
+                  <datalist id="subjectsList">{uniqueSubjects.map(s => <option key={s} value={s} />)}</datalist>
+
                   <label style={{ fontWeight: 700, fontSize: 12 }}>Chương:</label>
-                  <input value={editCtx.topic} onChange={e => handleUpdateContext('topic', e.target.value)}
+                  <input list="topicsList" value={editCtx.topic} onChange={e => handleUpdateContext('topic', e.target.value)}
                     style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 220, background: '#fff' }} />
+                  <datalist id="topicsList">{uniqueTopics.map(t => <option key={t} value={t} />)}</datalist>
+
                   <label style={{ fontWeight: 700, fontSize: 12 }}>Bài:</label>
-                  <input value={editCtx.lesson} onChange={e => handleUpdateContext('lesson', e.target.value)}
+                  <input list="lessonsList" value={editCtx.lesson} onChange={e => handleUpdateContext('lesson', e.target.value)}
                     style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 220, background: '#fff' }} />
+                  <datalist id="lessonsList">{uniqueLessons.map(l => <option key={l} value={l} />)}</datalist>
                 </div>
               </div>
             </div>
