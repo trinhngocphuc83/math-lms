@@ -782,7 +782,7 @@ function EditorContent() {
   const [docList, setDocList] = useState<{id: string, title: string, url: string}[]>([]);
   const isDocumentModule = moduleType === 'document' || moduleTitle.toLowerCase().includes('tài liệu tham khảo');
   const isVideoModule = moduleType === 'solution_video' || moduleTitle.toLowerCase().includes('video');
-  const isPracticeModule = moduleType === 'practice' || moduleTitle.toLowerCase().includes('luyện tập');
+  const isPracticeModule = moduleType === 'practice' || moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('đề') || moduleTitle.toLowerCase().includes('phân dạng');
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(false);
   const [videoUrl, setVideoUrl] = useState("");
   const [attachmentUrl, setAttachmentUrl] = useState("");
@@ -1166,7 +1166,7 @@ function EditorContent() {
       const genAI = new GoogleGenerativeAI(keyData.key);
       const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
       
-      const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
+      const isPractice = isPracticeModule;
       const prompt = getPrompt(isPractice, activeTab === 'presentation');
 
       let finalPrompt = prompt;
@@ -1218,7 +1218,7 @@ function EditorContent() {
   };
 
   const handleCopyShortPrompt = () => {
-    const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
+    const isPractice = isPracticeModule;
     const prompt = getPrompt(isPractice, activeTab === 'presentation');
 
     navigator.clipboard.writeText(prompt);
@@ -1226,7 +1226,7 @@ function EditorContent() {
   };
 
   const handleCopyPrompt = () => {
-    const isPractice = moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng');
+    const isPractice = isPracticeModule;
     const prompt = getPrompt(isPractice, activeTab === 'presentation');
     const taskName = isPractice ? "bóc tách thành các câu hỏi trắc nghiệm/tự luận" : "soạn thành 1 bài giảng duy nhất";
 
@@ -1924,14 +1924,14 @@ function EditorContent() {
         <div className="fixed inset-0 bg-black/60 z-[80] flex items-center justify-center p-4 backdrop-blur-sm animate-in fade-in">
           <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[95vh] flex flex-col shadow-2xl overflow-hidden relative border border-gray-100">
             <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-emerald-50/50 shrink-0">
-              <h2 className="text-lg font-bold text-emerald-800 flex items-center gap-2"><Bot className="w-5 h-5" /> {moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng') ? 'Bóc tách đề bằng Gemini Web' : 'Tạo bài bằng Gemini Web'} (Thủ công)</h2>
+              <h2 className="text-lg font-bold text-emerald-800 flex items-center gap-2"><Bot className="w-5 h-5" /> {isPracticeModule ? 'Bóc tách đề bằng Gemini Web' : 'Tạo bài bằng Gemini Web'} (Thủ công)</h2>
               <button onClick={() => setIsBackupModalOpen(false)} className="p-2 hover:bg-gray-200 rounded-full transition-colors"><X className="w-5 h-5 text-gray-500" /></button>
             </div>
             
             <div className="p-6 flex flex-col gap-6 overflow-y-auto min-h-0">
               <div className="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-xl shadow-sm">
                 <p className="text-blue-900 text-[0.95rem] font-medium mb-3 leading-relaxed">
-                  <strong>Hướng dẫn {moduleTitle.toLowerCase().includes('luyện tập') || moduleTitle.toLowerCase().includes('kiểm tra') || moduleTitle.toLowerCase().includes('phân dạng') ? 'bóc tách đề' : 'soạn bài'} liền mạch:</strong>
+                  <strong>Hướng dẫn {isPracticeModule ? 'bóc tách đề' : 'soạn bài'} liền mạch:</strong>
                 </p>
                 <div className="flex flex-col gap-3">
                   <div className="bg-white p-3 rounded-lg border border-gray-200">
