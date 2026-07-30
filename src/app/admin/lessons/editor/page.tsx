@@ -817,6 +817,7 @@ function EditorContent() {
   // Live Preview Pagination & Gamification State (REMOVED - Now continuous scroll)
   // Gemini Web Backup Modal
   const [isBackupModalOpen, setIsBackupModalOpen] = useState(false);
+  const [isPushToBankModalOpen, setIsPushToBankModalOpen] = useState(false);
   const [manualGeminiInput, setManualGeminiInput] = useState("");
 
   useEffect(() => {
