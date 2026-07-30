@@ -64,6 +64,94 @@ function ComboBox({ value, onChange, options, placeholder, width }: { value: str
   );
 }
 
+/* ===== Component Modal Nhập Dạng Bài Mới ===== */
+function AddNewCategoryModal({
+  isOpen, onClose, onSave, 
+  initialContext, uniqueGrades, uniqueSubjects, uniqueTopics, uniqueLessons, supabase
+}: any) {
+  const [ctx, setCtx] = useState(initialContext);
+  const [formName, setFormName] = useState("");
+  const [isSaving, setIsSaving] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      setCtx(initialContext);
+      setFormName("");
+    }
+  }, [isOpen, initialContext]);
+
+  if (!isOpen) return null;
+
+  const handleSave = async () => {
+    if (!formName.trim()) return alert("Tên Dạng bài không được để trống!");
+    if (!ctx.grade || !ctx.subject || !ctx.topic) return alert("Vui lòng chọn đầy đủ Lớp, Môn, Chương!");
+    
+    setIsSaving(true);
+    try {
+      const payload = {
+        grade: ctx.grade,
+        subject: ctx.subject,
+        topic: ctx.topic,
+        lesson: ctx.lesson || '',
+        math_form: formName.trim()
+      };
+      
+      const { error } = await supabase.from('question_categories').upsert([payload], { onConflict: 'grade,subject,topic,lesson,math_form', ignoreDuplicates: true });
+      if (error) throw error;
+      
+      alert("Đã lưu Dạng bài mới thành công!");
+      onSave(formName.trim());
+      onClose();
+    } catch (e: any) {
+      alert("Lỗi lưu Dạng bài: " + e.message);
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  return (
+    <div style={{ position: 'fixed', inset: 0, zIndex: 100000, background: 'rgba(0,0,0,0.5)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+       <div style={{ background: '#fff', borderRadius: 12, padding: 24, width: '100%', maxWidth: 500, boxShadow: '0 20px 25px -5px rgba(0,0,0,0.1)' }}>
+         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+           <h3 style={{ margin: 0, fontSize: 18, color: '#1e293b' }}>Thêm Dạng bài mới</h3>
+           <button onClick={onClose} style={{ border: 'none', background: 'none', cursor: 'pointer' }}><X size={20} color="#64748b" /></button>
+         </div>
+         
+         <div style={{ display: 'flex', flexDirection: 'column', gap: 12, marginBottom: 20 }}>
+            <div>
+               <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: '#475569', marginBottom: 4 }}>Tên Dạng Bài Toán (*):</label>
+               <input 
+                 autoFocus
+                 value={formName} 
+                 onChange={e => setFormName(e.target.value)}
+                 placeholder="Ví dụ: Tìm khoảng biến thiên của mẫu số liệu ghép nhóm..."
+                 style={{ width: '100%', border: '1px solid #cbd5e1', borderRadius: 6, padding: '8px 12px', fontSize: 14 }}
+               />
+            </div>
+            
+            <div style={{ padding: 12, background: '#f8fafc', borderRadius: 8, border: '1px solid #e2e8f0' }}>
+               <div style={{ fontSize: 12, color: '#64748b', marginBottom: 8, fontWeight: 600 }}>Chỉ định vị trí lưu Dạng bài này trong Ngân hàng:</div>
+               <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+                  <ComboBox value={ctx.grade} onChange={v => setCtx((p:any) => ({...p, grade: v}))} options={uniqueGrades} placeholder="-- Lớp --" width={90} />
+                  <ComboBox value={ctx.subject} onChange={v => setCtx((p:any) => ({...p, subject: v}))} options={uniqueSubjects} placeholder="-- Môn --" width={110} />
+                  <ComboBox value={ctx.topic} onChange={v => setCtx((p:any) => ({...p, topic: v}))} options={uniqueTopics} placeholder="-- Chương --" width="100%" />
+                  <ComboBox value={ctx.lesson} onChange={v => setCtx((p:any) => ({...p, lesson: v}))} options={uniqueLessons} placeholder="-- Bài (Tùy chọn) --" width="100%" />
+               </div>
+            </div>
+         </div>
+
+         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+            <button onClick={onClose} style={{ padding: '8px 16px', border: '1px solid #cbd5e1', borderRadius: 6, background: '#fff', color: '#475569', fontWeight: 600, cursor: 'pointer' }}>Hủy</button>
+            <button onClick={handleSave} disabled={isSaving} style={{ padding: '8px 16px', border: 'none', borderRadius: 6, background: '#8b5cf6', color: '#fff', fontWeight: 600, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6 }}>
+              {isSaving ? <Loader2 size={16} className="animate-spin" /> : null}
+              Lưu vào Ngân Hàng
+            </button>
+         </div>
+       </div>
+    </div>
+  );
+}
+
 /* ===== Tự động detect Lớp và Môn từ tên khóa học ===== */
 function autoDetectGradeSubject(courseName: string): { grade: string; subject: string } {
   if (!courseName) return { grade: '', subject: '' };
@@ -107,12 +195,30 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
     if (words.length === 0) continue;
     
     let matchCount = 0;
+    let nGramBonus = 0;
+
+    // Check cụm 2 từ (bigrams)
+    for (let i = 0; i < words.length - 1; i++) {
+        if (text.includes(words[i] + ' ' + words[i+1])) {
+            nGramBonus += 1.5; // Thưởng điểm nếu có cụm từ dính liền
+        }
+    }
+    // Check cụm 3 từ (trigrams)
+    for (let i = 0; i < words.length - 2; i++) {
+        if (text.includes(words[i] + ' ' + words[i+1] + ' ' + words[i+2])) {
+            nGramBonus += 3; // Thưởng điểm rất lớn
+        }
+    }
+
     for (const w of words) {
       if (text.includes(w)) matchCount++;
     }
-    const score = matchCount / words.length;
-    // Nếu trùng khớp trên 45% từ khóa thì lấy (chọn cái cao điểm nhất)
-    if (score > maxScore && score >= 0.45) { 
+    
+    // Tổng điểm = Tỉ lệ từ + Bonus cụm từ
+    const score = (matchCount / words.length) + (nGramBonus / words.length);
+    
+    // Ngưỡng 0.3 là đủ nếu có cụm từ
+    if (score > maxScore && score >= 0.3) { 
        maxScore = score;
        bestForm = form;
     }
@@ -197,6 +303,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   const [editCtx, setEditCtx] = useState({ grade: '', subject: '', topic: '', lesson: '' });
   const [categories, setCategories] = useState<any[]>([]); // Dạng toán từ DB
   const [mathFormFilter, setMathFormFilter] = useState(''); // Dropdown filter cho dạng toán chung
+  const [showAddCategoryModal, setShowAddCategoryModal] = useState<{isOpen: boolean, targetId: string}>({isOpen: false, targetId: ''});
   const hasParsedRef = useRef(false);
   const supabase = createClient();
 
@@ -447,11 +554,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                     onChange={(e) => {
                       const val = e.target.value;
                       if (val === '__custom__') {
-                        const customVal = prompt("Nhập dạng bài mới:");
-                        if (customVal && customVal.trim()) {
-                          setMathFormFilter(customVal);
-                          setQuestions(prev => prev.map(q => ({ ...q, math_form: customVal })));
-                        }
+                        setShowAddCategoryModal({isOpen: true, targetId: 'all'});
                       } else {
                         setMathFormFilter(val);
                         setQuestions(prev => prev.map(q => ({ ...q, math_form: val })));
@@ -560,8 +663,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                         {/* Dạng bài - dropdown từ question_categories */}
                         <select value={q.math_form} onChange={e => {
                           if (e.target.value === '__custom__') {
-                            const custom = prompt('Nhập dạng bài mới:');
-                            if (custom) handleUpdateField(q.id, 'math_form', custom);
+                            setShowAddCategoryModal({isOpen: true, targetId: q.id});
                           } else {
                             handleUpdateField(q.id, 'math_form', e.target.value);
                           }
@@ -665,6 +767,32 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
           </button>
         </div>
       </div>
+      
+      <AddNewCategoryModal 
+        isOpen={showAddCategoryModal.isOpen} 
+        onClose={() => {
+            setShowAddCategoryModal({isOpen: false, targetId: ''});
+            setMathFormFilter(''); // reset select Áp dụng chung về rỗng để hiển thị đúng (tránh lỗi value không khớp nếu user hủy)
+        }} 
+        onSave={(newForm: string) => {
+           // Refetch data
+           fetchCategories(questions); // Cập nhật lại dropdown danh sách
+           
+           // Tự gán form mới cho target (hoặc all)
+           if (showAddCategoryModal.targetId === 'all') {
+              setMathFormFilter(newForm);
+              setQuestions(prev => prev.map(q => ({ ...q, math_form: newForm })));
+           } else {
+              handleUpdateField(showAddCategoryModal.targetId, 'math_form', newForm);
+           }
+        }} 
+        initialContext={editCtx} 
+        uniqueGrades={uniqueGrades} 
+        uniqueSubjects={uniqueSubjects} 
+        uniqueTopics={uniqueTopics} 
+        uniqueLessons={uniqueLessons} 
+        supabase={supabase}
+      />
     </div>
   );
 }
