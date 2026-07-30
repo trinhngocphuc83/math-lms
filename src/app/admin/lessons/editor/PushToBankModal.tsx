@@ -248,25 +248,16 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
             const w1 = idf[words[i]] || 1;
             const w2 = idf[words[i+1]] || 1;
             const w3 = idf[words[i+2]] || 1;
-            nGramBonus += (w1 + w2 + w3) * 1.5;
+            nGramBonus += (w1 + w2 + w3) * 2.0;
         }
     }
-    
-    // Phạt (Penalty) nặng nếu Text thiếu từ khóa đặc trưng của Form:
-    let penalty = 0;
-    for (const w of words) {
-       if (!text.includes(w)) {
-          const weight = idf[w] || 1;
-          // Nếu từ này là từ khoá đặc trưng (trọng số cao) mà không có trong câu hỏi, thì khả năng cao không phải dạng này
-          if (weight > 1.5) penalty += weight * 2.0; 
-          else penalty += weight * 0.5;
-       }
-    }
 
-    const finalScore = (score + nGramBonus - penalty) / (maxPossibleScore || 1);
+    // Không dùng Penalty vì tên dạng bài có thể quá dài, chứa những phần thừa không có trong text
+    // Jaccard TF-IDF (Score / MaxScore) kết hợp N-gram bonus là đủ để xếp hạng.
+    const finalScore = (score + nGramBonus) / (maxPossibleScore || 1);
     
-    // Ngưỡng tối thiểu để được gán (có thể điều chỉnh)
-    if (finalScore > maxScore && finalScore >= 0.15) { 
+    // Ngưỡng tối thiểu
+    if (finalScore > maxScore && finalScore >= 0.25) { 
        maxScore = finalScore;
        bestForm = form;
     }
@@ -428,7 +419,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
      setQuestions(prev => {
         const next = prev.map(q => {
            if (!q.math_form) {
-              const detected = autoDetectMathForm(q.content, q.explanation, formsToUse);
+              const detected = autoDetectMathForm(q.content, q.explanation, formsToUse, q.question_type);
               if (detected) {
                  count++;
                  return { ...q, math_form: detected };
