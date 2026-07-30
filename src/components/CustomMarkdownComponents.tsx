@@ -186,4 +186,111 @@ export const unifiedMarkdownComponents: any = {
 
 export const appMarkdownComponents = unifiedMarkdownComponents;
 export const customMarkdownComponents = unifiedMarkdownComponents;
+
+export const studentMarkdownComponents: any = {
+   div: ({node, style, children, ...props}: any) => {
+       return <div style={sanitizeStyle(style)} {...props}>{children}</div>;
+   },
+   span: ({node, style, children, ...props}: any) => {
+       return <span style={sanitizeStyle(style)} {...props}>{children}</span>;
+   },
+   h1: ({node, style, children, ...props}: any) => {
+       return (
+           <div className="not-prose mt-6 mb-4 flex items-center gap-3 w-full">
+               <div className="w-2 h-8 bg-blue-600 rounded-full shadow-sm shrink-0"></div>
+               <h1 style={sanitizeStyle(style)} className="text-2xl sm:text-3xl font-black text-blue-900 tracking-tight m-0 leading-tight" {...props}>{children}</h1>
+           </div>
+       );
+   },
+   h2: ({node, style, children, ...props}: any) => {
+       return (
+           <div className="not-prose mt-6 mb-4 flex justify-center w-full">
+               <div className="bg-orange-50 text-orange-700 px-4 py-2 rounded-r-2xl rounded-l-md border-l-[6px] border-orange-500 font-bold shadow-sm inline-block w-fit leading-relaxed max-w-[95%] break-words text-xl sm:text-2xl uppercase text-center" style={sanitizeStyle(style)} {...props}>
+                   {children}
+               </div>
+           </div>
+       );
+   },
+   h3: ({node, style, children, ...props}: any) => {
+       return (
+           <div className="not-prose mt-4 mb-2 flex items-center gap-2">
+               <div className="w-1.5 h-6 bg-indigo-500 rounded-full shrink-0"></div>
+               <h3 style={sanitizeStyle(style)} className="text-lg sm:text-xl font-bold text-slate-800 tracking-tight m-0 leading-tight" {...props}>{children}</h3>
+           </div>
+       );
+   },
+   strong: ({node, style, children, ...props}: any) => {
+       return <strong style={sanitizeStyle(style)} {...props} className="text-slate-900 font-bold">{children}</strong>;
+   },
+   li: ({node, style, children, ...props}: any) => {
+       return (
+           <li style={sanitizeStyle(style)} className="flex items-start gap-3 mb-2 relative group" {...props}>
+              <span className="mt-[6px] shrink-0 w-2 h-2 rounded-full bg-indigo-400 shadow-sm"></span>
+              <div className="flex-1 min-w-0 leading-[1.6] text-slate-700">{children}</div>
+           </li>
+       );
+   },
+   p: ({node, style, children, ...props}: any) => {
+       return <p style={sanitizeStyle(style)} className="mb-3 leading-[1.6] text-slate-800" {...props}>{children}</p>;
+   },
+   blockquote: ({node, style, children, ...props}: any) => {
+       const text = extractTextFromReactNode(children).trim();
+       const lowerText = text.toLowerCase().replace(/[:.,-]/g, '').trim();
+       
+       let type = 'default';
+       let icon = <Info className="w-4 h-4" />;
+       let bgClass = 'bg-gray-50';
+       let borderClass = 'border-gray-400';
+       let headerClass = 'bg-gray-200/50 text-gray-800 border-gray-300';
+       let headerText = 'NỘI DUNG';
+
+       if (lowerText.startsWith('ví dụ') || lowerText.startsWith('vd')) {
+           type = 'example';
+           icon = <span className="text-base leading-none">📌</span>;
+           bgClass = 'bg-emerald-50'; borderClass = 'border-emerald-500'; headerClass = 'bg-emerald-100/70 text-emerald-900 border-emerald-200';
+           headerText = 'VÍ DỤ';
+       } else if (lowerText.startsWith('phương pháp') || lowerText.startsWith('pp')) {
+           type = 'method';
+           icon = <span className="text-base leading-none">💡</span>;
+           bgClass = 'bg-amber-50'; borderClass = 'border-amber-500'; headerClass = 'bg-amber-100/70 text-amber-900 border-amber-200';
+           headerText = 'PHƯƠNG PHÁP';
+       } else if (lowerText.startsWith('lời giải') || lowerText.startsWith('hướng dẫn') || lowerText.startsWith('hd') || lowerText.startsWith('hdg')) {
+           type = 'solution';
+           icon = <span className="text-base leading-none">🎯</span>;
+           bgClass = 'bg-indigo-50'; borderClass = 'border-indigo-500'; headerClass = 'bg-indigo-100/70 text-indigo-900 border-indigo-200';
+           headerText = 'HƯỚNG DẪN GIẢI';
+       } else if (lowerText.startsWith('chú ý') || lowerText.startsWith('lưu ý')) {
+           type = 'note';
+           icon = <AlertTriangle className="w-4 h-4 text-red-600" />;
+           bgClass = 'bg-red-50'; borderClass = 'border-red-500'; headerClass = 'bg-red-100/70 text-red-900 border-red-200';
+           headerText = 'CHÚ Ý';
+       } else if (lowerText.startsWith('định lý') || lowerText.startsWith('định nghĩa') || lowerText.startsWith('tổng quát') || lowerText.startsWith('lý thuyết')) {
+           type = 'theorem';
+           icon = <span className="text-base leading-none">📖</span>;
+           bgClass = 'bg-blue-50'; borderClass = 'border-blue-500'; headerClass = 'bg-blue-100/70 text-blue-900 border-blue-200';
+           headerText = 'KIẾN THỨC TRỌNG TÂM';
+       }
+
+       if (type !== 'default') {
+           const processedChildren = stripTriggerPrefix(children);
+           return (
+               <div className={`not-prose my-4 rounded-xl border-2 ${borderClass} ${bgClass} shadow-sm overflow-hidden flex flex-col`}>
+                   <div className={`px-3 py-1.5 border-b ${headerClass} font-bold flex items-center gap-2 uppercase tracking-wide text-sm`}>
+                       {icon} <span>{headerText}</span>
+                   </div>
+                   <div className="px-4 py-3 flex-1 min-w-0 prose prose-slate prose-sm sm:prose-base max-w-none text-slate-800 leading-[1.6] font-medium [&>p:first-child]:mt-0 [&>p:last-child]:mb-0">
+                       {processedChildren}
+                   </div>
+               </div>
+           );
+       }
+
+       return (
+           <blockquote className="not-prose my-4 border-l-[4px] border-slate-400 bg-slate-50 px-4 py-3 rounded-r-xl italic text-slate-700 shadow-sm" {...props}>
+               <div className="prose prose-slate prose-sm sm:prose-base max-w-none text-inherit [&>p:first-child]:mt-0 [&>p:last-child]:mb-0">{children}</div>
+           </blockquote>
+       );
+   }
+};
+
 export const checkAndRenderSpecialBlock = () => null;

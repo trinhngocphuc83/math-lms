@@ -7,7 +7,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { appMarkdownComponents } from '@/components/CustomMarkdownComponents';
+import { studentMarkdownComponents as appMarkdownComponents } from '@/components/CustomMarkdownComponents';
 import ReactCrop, { type Crop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import { useRef } from 'react';
