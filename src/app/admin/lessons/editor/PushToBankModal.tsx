@@ -315,14 +315,38 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
         option_c: q.option_c, option_d: q.option_d, correct_answer: q.correct_answer,
         explanation: q.explanation, image_url: q.image_url, usage_count: 0
       }));
-      const newCats = inserts.filter(q => q.math_form).map(q => ({
+
+      // Kiểm tra trùng lặp dựa trên nội dung câu hỏi
+      const contents = inserts.map(q => q.content);
+      const { data: existingQs } = await supabase
+        .from('questions')
+        .select('content')
+        .in('content', contents);
+
+      const existingContents = new Set((existingQs || []).map(q => q.content));
+      const newInserts = inserts.filter(q => !existingContents.has(q.content));
+      const duplicateCount = inserts.length - newInserts.length;
+
+      if (newInserts.length === 0) {
+         alert(`⚠️ Bỏ qua: ${duplicateCount} câu hỏi này đã có sẵn trong Ngân hàng rồi!`);
+         setIsPushing(false);
+         return;
+      }
+
+      const newCats = newInserts.filter(q => q.math_form).map(q => ({
         grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson, math_form: q.math_form
       }));
       const uniqueNewCats = Array.from(new Set(newCats.map(c => JSON.stringify(c)))).map(s => JSON.parse(s));
-      if (uniqueNewCats.length > 0) await supabase.from('question_categories').insert(uniqueNewCats);
-      const { error } = await supabase.from('questions').insert(inserts);
+      
+      if (uniqueNewCats.length > 0) {
+         const { error: catErr } = await supabase.from('question_categories').upsert(uniqueNewCats, { onConflict: 'grade,subject,topic,lesson,math_form', ignoreDuplicates: true });
+         if (catErr) console.warn("Lỗi thêm category:", catErr);
+      }
+      
+      const { error } = await supabase.from('questions').insert(newInserts);
       if (error) throw error;
-      alert(`✅ Đã đưa thành công ${inserts.length} câu vào Ngân hàng!`);
+      
+      alert(`✅ Đã đẩy thành công ${newInserts.length} câu mới vào Ngân hàng!${duplicateCount > 0 ? ` (Bỏ qua ${duplicateCount} câu trùng lặp)` : ''}`);
       onClose();
     } catch (e: any) {
       console.error(e);
