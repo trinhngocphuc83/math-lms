@@ -8,6 +8,8 @@ interface RichTextareaProps extends Omit<React.ComponentProps<typeof TextareaAut
   value: string;
   onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onValueChange?: (value: string) => void;
+  collapsibleToolbar?: boolean;
+  defaultToolbarExpanded?: boolean;
 }
 
 const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => string) => {
@@ -26,12 +28,13 @@ const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => 
   }).join('\n');
 };
 
-export default function RichTextarea({ value, onChange, onValueChange, className = "", ...props }: RichTextareaProps) {
+export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = false, defaultToolbarExpanded = false, ...props }: RichTextareaProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [fontSize, setFontSize] = useState<string>("30");
   const [textColor, setTextColor] = useState<string>("#ef4444"); // Default red
   const [lineHeight, setLineHeight] = useState<string>("1.5");
   const [isClient, setIsClient] = useState(false);
+  const [isToolbarExpanded, setIsToolbarExpanded] = useState(defaultToolbarExpanded);
   
   const [showIconMenu, setShowIconMenu] = useState(false);
   const iconMenuRef = useRef<HTMLDivElement>(null);
@@ -508,6 +511,18 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       />
       
       {/* Toolbar */}
+      {collapsibleToolbar && (
+         <div className="bg-slate-50 border-t border-gray-200 px-3 py-1 flex justify-end">
+            <button 
+              type="button" 
+              onClick={() => setIsToolbarExpanded(!isToolbarExpanded)}
+              className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors flex items-center gap-1 bg-indigo-50 px-2 py-1 rounded"
+            >
+              {isToolbarExpanded ? '▲ Thu gọn công cụ' : '▼ Hiển thị công cụ định dạng'}
+            </button>
+         </div>
+      )}
+      {(!collapsibleToolbar || isToolbarExpanded) && (
       <div className="flex flex-wrap items-center gap-4 px-3 py-2 bg-slate-50 border-t border-gray-200">
         
         {/* Font Size Group */}
@@ -728,6 +743,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         </div>
 
       </div>
+      )}
     </div>
   );
 }

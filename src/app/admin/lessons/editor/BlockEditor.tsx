@@ -449,7 +449,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                      <input type="radio" name={`q_${block.id}`} checked={block.content.answerIndex === optIdx} onChange={() => updateBlockContent(idx, { ...block.content, answerIndex: optIdx })} className="text-teal-600" />
                                      Đáp án {['A','B','C','D'][optIdx]}
                                   </label>
-                                  <RichTextarea rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
+                                  <RichTextarea collapsibleToolbar={true} rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
                                      const newOpts = [...(block.content.options || ["","","",""])];
                                      newOpts[optIdx] = e.target.value;
                                      updateBlockContent(idx, { ...block.content, options: newOpts });
@@ -467,7 +467,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                      <input type="radio" name={`q_${block.id}`} checked={block.content.answerIndex === optIdx} onChange={() => updateBlockContent(idx, { ...block.content, answerIndex: optIdx })} className="text-teal-600" />
                                      Đáp án {['Đúng','Sai'][optIdx]}
                                   </label>
-                                  <RichTextarea rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
+                                  <RichTextarea collapsibleToolbar={true} rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
                                      const newOpts = [...(block.content.options || ["",""])];
                                      newOpts[optIdx] = e.target.value;
                                      updateBlockContent(idx, { ...block.content, options: newOpts });
@@ -499,6 +499,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                         </button>
                                      </div>
                                      <RichTextarea 
+                                        collapsibleToolbar={true}
                                         rows={2} 
                                         value={opt.content || ""} 
                                         onChange={e => {
