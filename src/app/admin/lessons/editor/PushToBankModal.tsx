@@ -96,8 +96,19 @@ function AddNewCategoryModal({
         math_form: formName.trim()
       };
       
-      const { error } = await supabase.from('question_categories').upsert([payload], { onConflict: 'grade,subject,topic,lesson,math_form', ignoreDuplicates: true });
-      if (error) throw error;
+      const { data: existing } = await supabase.from('question_categories')
+         .select('id')
+         .eq('grade', ctx.grade)
+         .eq('subject', ctx.subject)
+         .eq('topic', ctx.topic)
+         .eq('lesson', ctx.lesson || '')
+         .eq('math_form', formName.trim())
+         .maybeSingle();
+         
+      if (!existing) {
+         const { error } = await supabase.from('question_categories').insert([payload]);
+         if (error) throw error;
+      }
       
       alert("Đã lưu Dạng bài mới thành công!");
       onSave(formName.trim());
@@ -502,8 +513,14 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
       const uniqueNewCats = Array.from(new Set(newCats.map(c => JSON.stringify(c)))).map(s => JSON.parse(s));
       
       if (uniqueNewCats.length > 0) {
-         const { error: catErr } = await supabase.from('question_categories').upsert(uniqueNewCats, { onConflict: 'grade,subject,topic,lesson,math_form', ignoreDuplicates: true });
-         if (catErr) console.warn("Lỗi thêm category:", catErr);
+         const { data: existings } = await supabase.from('question_categories').select('grade,subject,topic,lesson,math_form');
+         const existSet = new Set((existings || []).map(c => `${c.grade}|${c.subject}|${c.topic}|${c.lesson}|${c.math_form}`));
+         const toInsert = uniqueNewCats.filter(c => !existSet.has(`${c.grade}|${c.subject}|${c.topic}|${c.lesson}|${c.math_form}`));
+         
+         if (toInsert.length > 0) {
+             const { error: catErr } = await supabase.from('question_categories').insert(toInsert);
+             if (catErr) console.warn("Lỗi thêm category:", catErr);
+         }
       }
       
       const { error } = await supabase.from('questions').insert(newInserts);
