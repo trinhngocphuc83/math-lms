@@ -218,42 +218,21 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
     if (words.length === 0) continue;
     
     let score = 0;
-    let maxPossibleScore = 0;
 
     // Tính MaxScore dựa trên từ vựng KHÔNG TRÙNG LẶP để không bị cộng lố
     const uniqueWords = Array.from(new Set(words));
     for (const w of uniqueWords) {
       const weight = idf[w] || 0;
-      maxPossibleScore += weight;
       if (text.includes(w)) {
         score += weight;
       }
     }
     
-    // N-gram bonus (chỉ cộng nếu cụm từ dính liền có trong text)
-    let nGramBonus = 0;
-    for (let i = 0; i < words.length - 1; i++) {
-        if (text.includes(words[i] + ' ' + words[i+1])) {
-            const w1 = idf[words[i]] || 0;
-            const w2 = idf[words[i+1]] || 0;
-            nGramBonus += (w1 + w2) * 1.5;
-        }
-    }
-    for (let i = 0; i < words.length - 2; i++) {
-        if (text.includes(words[i] + ' ' + words[i+1] + ' ' + words[i+2])) {
-            const w1 = idf[words[i]] || 0;
-            const w2 = idf[words[i+1]] || 0;
-            const w3 = idf[words[i+2]] || 0;
-            nGramBonus += (w1 + w2 + w3) * 2.0;
-        }
-    }
-
-    if (maxPossibleScore === 0) continue; // Nếu tất cả các từ trong dạng bài này đều là từ rác (weight = 0)
-
-    const finalScore = (score + nGramBonus) / maxPossibleScore;
+    // Bỏ N-gram bonus và chia maxScore vì nó gây lạm phát điểm cho những từ rác phổ biến
+    const finalScore = score;
     
-    // Ngưỡng tối thiểu. Tỉ lệ có thể vượt qua 1.0 do được cộng N-gram bonus.
-    if (finalScore > maxScore && finalScore >= 0.3) { 
+    // Ngưỡng tối thiểu (3.0 là đủ để có 2 từ chuyên ngành hoặc 3-4 từ phổ thông)
+    if (finalScore > maxScore && finalScore >= 3.0) { 
        maxScore = finalScore;
        bestForm = form;
     }
@@ -319,9 +298,10 @@ function parseQuizBlocks(blocks: any[], ctx: PushToBankModalProps['courseContext
       id: b.id || `q_${index}_${Date.now()}`,
       grade, subject,
       topic: ctx.topic || "", lesson: ctx.lesson || "",
-      math_form: "", // Sẽ được user chọn
+      math_form: "",
       difficulty: autoAssignDifficulty(index, quizBlocks.length),
       question_type: blockType,
+      type_label: typeLabels[blockType] || 'Khác',
       question_type_label: typeLabels[blockType] || blockType,
       content: questionText,
       option_a, option_b, option_c, option_d,
