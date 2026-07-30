@@ -3,7 +3,6 @@
 import Link from "next/link";
 
 import React, { useState, useEffect, useRef, Suspense, useMemo, useCallback } from "react";
-import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -16,9 +15,11 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import ReactCrop, { type Crop } from 'react-image-crop';
 import BlockEditor, { Block } from "./BlockEditor";
+import PushToBankModal from './PushToBankModal';
 import 'react-image-crop/dist/ReactCrop.css';
 import confetti from 'canvas-confetti';
 import { Document, Packer, Paragraph, TextRun } from "docx";
+import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
 
 interface PendingImage {
   id: string;
@@ -860,7 +861,7 @@ function EditorContent() {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const { data } = await supabase.from('courses').select('id, title').order('created_at', { ascending: false });
+      const { data } = await supabase.from('courses').select('id, title, grade, subject').order('created_at', { ascending: false });
       if (data) setCourses(data);
     };
     fetchCourses();
@@ -1713,6 +1714,7 @@ function EditorContent() {
               <button onClick={() => { if (lastAnalyzedImages.length > 0) setCropImageSrc(lastAnalyzedImages[0]); setIsCropModalOpen(true); }} className="flex items-center gap-1.5 text-xs font-medium bg-orange-50 border border-orange-200 text-orange-700 px-3 py-1.5 rounded-md hover:bg-orange-100 transition-colors shadow-sm"><CropIcon className="w-3.5 h-3.5" /> Cắt Ảnh & Chèn</button>
               <button onClick={() => setIsBackupModalOpen(true)} className="flex items-center gap-1.5 text-xs font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-md hover:bg-emerald-100 transition-colors shadow-sm" title="Sinh mẫu Prompt thủ công"><Bot className="w-3.5 h-3.5" /> Lấy Prompt Thủ Công</button>
               <button onClick={() => setGlobalTriggerBankModal(prev => prev + 1)} className="flex items-center gap-1.5 text-xs font-bold bg-amber-100 border border-amber-300 text-amber-800 px-3 py-1.5 rounded-md hover:bg-amber-200 transition-colors shadow-sm"><Database className="w-3.5 h-3.5" /> Rút từ Ngân hàng</button>
+              <button onClick={() => setIsPushToBankModalOpen(true)} className="flex items-center gap-1.5 text-xs font-bold bg-fuchsia-100 border border-fuchsia-300 text-fuchsia-800 px-3 py-1.5 rounded-md hover:bg-fuchsia-200 transition-colors shadow-sm"><UploadCloud className="w-3.5 h-3.5" /> Đưa vào Ngân hàng</button>
               <div className="relative">
                 <button onClick={() => setIsExportMenuOpen(!isExportMenuOpen)} className="flex items-center gap-1.5 text-xs font-bold bg-blue-600 text-white px-4 py-1.5 rounded-md hover:bg-blue-700 transition-colors shadow-[0_4px_10px_-2px_rgba(37,99,235,0.4)]">
                   <Download className="w-3.5 h-3.5" /> Xuất Giáo Án (Word) <ChevronDown className="w-3.5 h-3.5" />
@@ -1945,6 +1947,21 @@ function EditorContent() {
             </div>
           </div>
         </div>
+      )}
+
+      {/* PUSH TO BANK MODAL */}
+      {isPushToBankModalOpen && (
+        <PushToBankModal 
+          isOpen={isPushToBankModalOpen} 
+          onClose={() => setIsPushToBankModalOpen(false)} 
+          blocks={activeTab === 'elearning' ? elearningBlocks : presentationBlocks} 
+          courseContext={{ 
+            grade: courses.find(c => c.id === selectedCourseId)?.grade || "",
+            subject: courses.find(c => c.id === selectedCourseId)?.subject || "",
+            topic: chapters.find(c => c.id === selectedChapterId)?.title || "", 
+            lesson: title 
+          }} 
+        />
       )}
     </div>
   );
