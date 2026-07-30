@@ -319,18 +319,20 @@ export default function ExamsManagerPage() {
   };
 
   const getTypeName = (type: string) => {
-    if (['TN', 'NLC'].includes(type)) return 'Trắc nghiệm nhiều lựa chọn';
-    if (type === 'DS') return 'Trắc nghiệm Đúng/Sai';
-    if (type === 'TLN') return 'Trả lời ngắn';
-    if (type === 'TL') return 'Tự luận';
+    const t = type?.toLowerCase() || '';
+    if (['tn', 'nlc', 'multiple_choice'].includes(t)) return 'Trắc nghiệm nhiều lựa chọn';
+    if (['ds', 'true_false', 'true_false_cluster'].includes(t)) return 'Trắc nghiệm Đúng/Sai';
+    if (['tln', 'short_answer'].includes(t)) return 'Trả lời ngắn';
+    if (['tl', 'essay'].includes(t)) return 'Tự luận';
     return type || 'Khác';
   };
   
   const getDiffName = (level: string) => {
-    if (level === '1' || level === 'NB') return 'Mức 1';
-    if (level === '2' || level === 'TH') return 'Mức 2';
-    if (level === '3' || level === 'VD') return 'Mức 3';
-    if (level === '4' || level === 'VDC') return 'Mức 4';
+    const l = level?.toLowerCase() || '';
+    if (['1', 'nb', 'nhận biết'].includes(l)) return 'Mức 1 (Nhận biết)';
+    if (['2', 'th', 'thông hiểu'].includes(l)) return 'Mức 2 (Thông hiểu)';
+    if (['3', 'vd', 'vận dụng'].includes(l)) return 'Mức 3 (Vận dụng)';
+    if (['4', 'vdc', 'vận dụng cao'].includes(l)) return 'Mức 4 (Vận dụng cao)';
     return `Mức ${level}`;
   };
 
