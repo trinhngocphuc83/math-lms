@@ -111,8 +111,8 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
       if (text.includes(w)) matchCount++;
     }
     const score = matchCount / words.length;
-    // Nếu trùng khớp trên 60% từ khóa thì lấy (chọn cái cao điểm nhất)
-    if (score > maxScore && score >= 0.6) { 
+    // Nếu trùng khớp trên 45% từ khóa thì lấy (chọn cái cao điểm nhất)
+    if (score > maxScore && score >= 0.45) { 
        maxScore = score;
        bestForm = form;
     }
@@ -262,14 +262,33 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
 
   // === Handlers ===
   const handleAutoDetectAll = () => {
-     setQuestions(prev => prev.map(q => {
-        // Chỉ ghi đè khi math_form rỗng hoặc người dùng muốn quét lại
-        if (!q.math_form) {
-           const detected = autoDetectMathForm(q.content, q.explanation, relevantForms.length > 0 ? relevantForms : Array.from(new Set(categories.map(c=>c.math_form))) as string[]);
-           if (detected) return { ...q, math_form: detected };
-        }
-        return q;
-     }));
+     let count = 0;
+     const formsToUse = relevantForms.length > 0 ? relevantForms : (Array.from(new Set(categories.map(c => c.math_form))).filter(Boolean) as string[]);
+     
+     if (formsToUse.length === 0) {
+        alert("Chưa có danh sách Dạng bài nào trong hệ thống để đối chiếu!");
+        return;
+     }
+
+     setQuestions(prev => {
+        const next = prev.map(q => {
+           if (!q.math_form) {
+              const detected = autoDetectMathForm(q.content, q.explanation, formsToUse);
+              if (detected) {
+                 count++;
+                 return { ...q, math_form: detected };
+              }
+           }
+           return q;
+        });
+        
+        setTimeout(() => {
+           if (count > 0) alert(`✨ Đã nhận diện và điền tự động Dạng bài cho ${count} câu hỏi trống!`);
+           else alert("Không tìm thấy Dạng bài nào phù hợp với các câu hỏi đang trống.");
+        }, 100);
+        
+        return next;
+     });
   };
 
   const handleUpdateField = (id: string, field: string, value: string) => {
