@@ -185,20 +185,13 @@ function autoDetectGradeSubject(courseName: string): { grade: string; subject: s
   return { grade, subject };
 }
 
-/* ===== Thuật toán nhận dạng Dạng Toán tự động (TF-IDF & N-grams) ===== */
-function autoDetectMathForm(content: string, explanation: string, forms: string[], questionType?: string): string {
+/* ===== Thuật toán nhận dạng Dạng Toán tự động (TF-IDF chuẩn & N-grams) ===== */
+function autoDetectMathForm(content: string, explanation: string, forms: string[]): string {
   if (!forms || forms.length === 0) return '';
-  
-  // 1. Dạng bài Đúng/Sai 4 ý thường liên quan đến nhiều kiến thức tổng hợp
-  if (questionType === 'true_false_cluster') {
-     const tongHopForm = forms.find(f => /tổng hợp/i.test(f));
-     if (tongHopForm) return tongHopForm;
-  }
-
   const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s]/g, ""); 
   const text = normalize(content + ' ' + (explanation || ''));
   
-  // 2. Tính Tần suất xuất hiện (IDF) của các từ trong tất cả các forms
+  // Tính Tần suất xuất hiện (IDF) của các từ trong tất cả các forms
   const stopWords = ['tim', 'tinh', 'cac', 'cua', 'va', 'cho', 'trong', 'la', 'mot', 'co', 'de', 'bai', 'toan'];
   const idf: Record<string, number> = {};
   for (const f of forms) {
@@ -208,8 +201,8 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
   }
   const totalForms = forms.length;
   for (const w in idf) {
-      // Từ hiếm (đặc trưng) sẽ có trọng số cao, từ phổ biến (xuất hiện nhiều form) sẽ bị giảm trọng số
-      idf[w] = Math.log(totalForms / (idf[w] + 0.1)) + 1; 
+      // Công thức IDF chuẩn: Math.log(N/df). Từ phổ biến (xuất hiện trong mọi form) sẽ có điểm = 0 (bị loại).
+      idf[w] = Math.log(totalForms / idf[w]); 
   }
 
   let bestForm = '';
@@ -220,14 +213,17 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
     const formNorm = normalize(form);
     if (text.includes(formNorm)) return form; // Khớp chính xác 100%
     
+    // KHÔNG dùng Set ở đây để giữ nguyên thứ tự từ vựng cho tính toán N-gram
     const words = formNorm.split(/\s+/).filter(w => w.length > 1 && !stopWords.includes(w));
     if (words.length === 0) continue;
     
     let score = 0;
     let maxPossibleScore = 0;
 
-    for (const w of words) {
-      const weight = idf[w] || 1;
+    // Tính MaxScore dựa trên từ vựng KHÔNG TRÙNG LẶP để không bị cộng lố
+    const uniqueWords = Array.from(new Set(words));
+    for (const w of uniqueWords) {
+      const weight = idf[w] || 0;
       maxPossibleScore += weight;
       if (text.includes(w)) {
         score += weight;
@@ -238,26 +234,26 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
     let nGramBonus = 0;
     for (let i = 0; i < words.length - 1; i++) {
         if (text.includes(words[i] + ' ' + words[i+1])) {
-            const w1 = idf[words[i]] || 1;
-            const w2 = idf[words[i+1]] || 1;
-            nGramBonus += (w1 + w2) * 1.2;
+            const w1 = idf[words[i]] || 0;
+            const w2 = idf[words[i+1]] || 0;
+            nGramBonus += (w1 + w2) * 1.5;
         }
     }
     for (let i = 0; i < words.length - 2; i++) {
         if (text.includes(words[i] + ' ' + words[i+1] + ' ' + words[i+2])) {
-            const w1 = idf[words[i]] || 1;
-            const w2 = idf[words[i+1]] || 1;
-            const w3 = idf[words[i+2]] || 1;
+            const w1 = idf[words[i]] || 0;
+            const w2 = idf[words[i+1]] || 0;
+            const w3 = idf[words[i+2]] || 0;
             nGramBonus += (w1 + w2 + w3) * 2.0;
         }
     }
 
-    // Không dùng Penalty vì tên dạng bài có thể quá dài, chứa những phần thừa không có trong text
-    // Jaccard TF-IDF (Score / MaxScore) kết hợp N-gram bonus là đủ để xếp hạng.
-    const finalScore = (score + nGramBonus) / (maxPossibleScore || 1);
+    if (maxPossibleScore === 0) continue; // Nếu tất cả các từ trong dạng bài này đều là từ rác (weight = 0)
+
+    const finalScore = (score + nGramBonus) / maxPossibleScore;
     
-    // Ngưỡng tối thiểu
-    if (finalScore > maxScore && finalScore >= 0.25) { 
+    // Ngưỡng tối thiểu. Tỉ lệ có thể vượt qua 1.0 do được cộng N-gram bonus.
+    if (finalScore > maxScore && finalScore >= 0.3) { 
        maxScore = finalScore;
        bestForm = form;
     }
@@ -378,10 +374,16 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
       if (data) {
          setCategories(data);
          // Sau khi tải danh sách category, tự động nhận diện dạng bài cho những câu đang trống
-         const formList = Array.from(new Set(data.map(c => c.math_form))).filter(Boolean) as string[];
+         const globalForms = Array.from(new Set(data.map(c => c.math_form))).filter(Boolean) as string[];
+         const globalTongHop = globalForms.find(f => /tổng hợp/i.test(f));
+         
          setQuestions(prev => prev.map(q => {
              if (!q.math_form) {
-               const detected = autoDetectMathForm(q.content, q.explanation, formList, q.question_type);
+               // Dạng Đúng/Sai luôn ưu tiên gán Toán tổng hợp (nếu có trong hệ thống)
+               if (q.question_type === 'true_false_cluster' && globalTongHop) {
+                   return { ...q, math_form: globalTongHop };
+               }
+               const detected = autoDetectMathForm(q.content, q.explanation, globalForms);
                if (detected) return { ...q, math_form: detected };
             }
             return q;
@@ -409,17 +411,24 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   // === Handlers ===
   const handleAutoDetectAll = () => {
      let count = 0;
-     const formsToUse = relevantForms.length > 0 ? relevantForms : (Array.from(new Set(categories.map(c => c.math_form))).filter(Boolean) as string[]);
+     const allForms = Array.from(new Set(categories.map(c => c.math_form))).filter(Boolean) as string[];
+     const formsToUse = relevantForms.length > 0 ? relevantForms : allForms;
      
      if (formsToUse.length === 0) {
         alert("Chưa có danh sách Dạng bài nào trong hệ thống để đối chiếu!");
         return;
      }
+     
+     const globalTongHop = allForms.find(f => /tổng hợp/i.test(f));
 
      setQuestions(prev => {
         const next = prev.map(q => {
            if (!q.math_form) {
-              const detected = autoDetectMathForm(q.content, q.explanation, formsToUse, q.question_type);
+              if (q.question_type === 'true_false_cluster' && globalTongHop) {
+                 count++;
+                 return { ...q, math_form: globalTongHop };
+              }
+              const detected = autoDetectMathForm(q.content, q.explanation, formsToUse);
               if (detected) {
                  count++;
                  return { ...q, math_form: detected };
