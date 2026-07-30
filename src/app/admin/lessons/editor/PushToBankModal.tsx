@@ -86,6 +86,40 @@ function autoDetectGradeSubject(courseName: string): { grade: string; subject: s
   return { grade, subject };
 }
 
+/* ===== Thuật toán nhận dạng Dạng Toán tự động ===== */
+function autoDetectMathForm(content: string, explanation: string, forms: string[]): string {
+  if (!forms || forms.length === 0) return '';
+  const normalize = (s: string) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9\s]/g, ""); 
+  const text = normalize(content + ' ' + (explanation || ''));
+  
+  let bestForm = '';
+  let maxScore = 0;
+
+  for (const form of forms) {
+    if (!form) continue;
+    const formNorm = normalize(form);
+    // 1. Trùng khớp chính xác chuỗi tên dạng toán (sau khi chuẩn hóa)
+    if (text.includes(formNorm)) return form;
+    
+    // 2. Tính điểm dựa trên các từ khóa (loại bỏ stop words tiếng Việt cơ bản)
+    const stopWords = ['tim', 'tinh', 'cac', 'cua', 'va', 'cho', 'trong', 'la', 'mot', 'co', 'de'];
+    const words = formNorm.split(/\s+/).filter(w => w.length > 1 && !stopWords.includes(w));
+    if (words.length === 0) continue;
+    
+    let matchCount = 0;
+    for (const w of words) {
+      if (text.includes(w)) matchCount++;
+    }
+    const score = matchCount / words.length;
+    // Nếu trùng khớp trên 60% từ khóa thì lấy (chọn cái cao điểm nhất)
+    if (score > maxScore && score >= 0.6) { 
+       maxScore = score;
+       bestForm = form;
+    }
+  }
+  return bestForm;
+}
+
 /* ===== Tự gán mức độ dựa trên vị trí câu trong bài ===== */
 function autoAssignDifficulty(index: number, total: number): string {
   // Phân bổ: 25% đầu = Nhận biết, 25% tiếp = Thông hiểu, 30% tiếp = Vận dụng, 20% cuối = Vận dụng cao
@@ -184,18 +218,29 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
 
       setCollapsed({});
 
-      // Fetch danh mục dạng toán từ DB
-      fetchCategories();
+      // Fetch danh mục dạng toán từ DB và tự động nhận diện
+      fetchCategories(parsed);
     }
     if (!isOpen) {
       hasParsedRef.current = false;
     }
   }, [isOpen]);
 
-  const fetchCategories = async () => {
+  const fetchCategories = async (currentQs: any[]) => {
     try {
       const { data } = await supabase.from('question_categories').select('*');
-      if (data) setCategories(data);
+      if (data) {
+         setCategories(data);
+         // Sau khi tải danh sách category, tự động nhận diện dạng bài cho những câu đang trống
+         const formList = Array.from(new Set(data.map(c => c.math_form))).filter(Boolean) as string[];
+         setQuestions(prev => prev.map(q => {
+            if (!q.math_form) {
+               const detected = autoDetectMathForm(q.content, q.explanation, formList);
+               if (detected) return { ...q, math_form: detected };
+            }
+            return q;
+         }));
+      }
     } catch (e) { console.error('[PushToBank] Fetch categories error:', e); }
   };
 
@@ -216,6 +261,17 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   const uniqueLessons = Array.from(new Set(categories.filter(c => (!editCtx.grade || c.grade === editCtx.grade) && (!editCtx.subject || c.subject === editCtx.subject) && (!editCtx.topic || c.topic === editCtx.topic)).map(c => c.lesson))).filter(Boolean).sort();
 
   // === Handlers ===
+  const handleAutoDetectAll = () => {
+     setQuestions(prev => prev.map(q => {
+        // Chỉ ghi đè khi math_form rỗng hoặc người dùng muốn quét lại
+        if (!q.math_form) {
+           const detected = autoDetectMathForm(q.content, q.explanation, relevantForms.length > 0 ? relevantForms : Array.from(new Set(categories.map(c=>c.math_form))) as string[]);
+           if (detected) return { ...q, math_form: detected };
+        }
+        return q;
+     }));
+  };
+
   const handleUpdateField = (id: string, field: string, value: string) => {
     setQuestions(prev => prev.map(q => q.id === id ? { ...q, [field]: value } : q));
   };
@@ -339,15 +395,25 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
 
           {/* Toolbar: áp dụng chung + thống kê mức độ */}
           {questions.length > 0 && (
-            <div style={{ background: '#fff', padding: '10px 14px', borderRadius: 10, border: '1px solid #e2e8f0', marginBottom: 12 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap', fontSize: 13 }}>
-                <span style={{ fontWeight: 700, color: '#64748b', fontSize: 12 }}>Áp dụng chung:</span>
-
-                {/* Dropdown Dạng bài - lấy từ question_categories */}
+            <div style={{ background: '#fff', border: '1px solid #e2e8f0', borderRadius: 12, padding: '16px 20px', marginBottom: 20, display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: 16 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap' }}>
+                <span style={{ fontWeight: 600, fontSize: 13, color: '#475569' }}>Áp dụng chung:</span>
                 <div style={{ position: 'relative' }}>
                   <select
                     value={mathFormFilter}
-                    onChange={e => handleBatchMathForm(e.target.value)}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      if (val === '__custom__') {
+                        const customVal = prompt("Nhập dạng bài mới:");
+                        if (customVal && customVal.trim()) {
+                          setMathFormFilter(customVal);
+                          setQuestions(prev => prev.map(q => ({ ...q, math_form: customVal })));
+                        }
+                      } else {
+                        setMathFormFilter(val);
+                        setQuestions(prev => prev.map(q => ({ ...q, math_form: val })));
+                      }
+                    }}
                     style={{ border: '1px solid #cbd5e1', borderRadius: 6, padding: '3px 8px', fontSize: 12, minWidth: 180, background: '#fff', cursor: 'pointer' }}
                   >
                     <option value="">-- Chọn dạng bài --</option>
@@ -357,36 +423,27 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                     <option value="__custom__">✏️ Nhập dạng mới...</option>
                   </select>
                 </div>
-
-                {/* Input tùy chỉnh nếu chọn "Nhập dạng mới" */}
-                {mathFormFilter === '__custom__' && (
-                  <input
-                    type="text"
-                    placeholder="Nhập dạng bài mới..."
-                    autoFocus
-                    onBlur={e => {
-                      if (e.target.value) {
-                        handleBatchMathForm(e.target.value);
-                      }
-                    }}
-                    onKeyDown={e => {
-                      if (e.key === 'Enter') {
-                        const val = (e.target as HTMLInputElement).value;
-                        if (val) handleBatchMathForm(val);
-                      }
-                    }}
-                    style={{ border: '1px solid #a78bfa', borderRadius: 6, padding: '3px 8px', fontSize: 12, width: 180, background: '#faf5ff' }}
-                  />
-                )}
-
-                <select onChange={e => handleBatchDifficulty(e.target.value)}
-                  style={{ border: '1px solid #cbd5e1', borderRadius: 6, padding: '3px 6px', fontSize: 12 }}>
+                <select
+                  onChange={(e) => {
+                    const diff = e.target.value;
+                    if (diff) setQuestions(prev => prev.map(q => ({ ...q, difficulty: diff })));
+                    e.target.value = "";
+                  }}
+                  style={{ border: '1px solid #cbd5e1', borderRadius: 6, padding: '3px 8px', fontSize: 12, background: '#fff', cursor: 'pointer' }}
+                >
                   <option value="">Độ khó...</option>
-                  <option value="Nhận biết">Nhận biết</option>
-                  <option value="Thông hiểu">Thông hiểu</option>
-                  <option value="Vận dụng">Vận dụng</option>
-                  <option value="Vận dụng cao">Vận dụng cao</option>
+                  <option value="Nhận biết">Tất cả Nhận biết</option>
+                  <option value="Thông hiểu">Tất cả Thông hiểu</option>
+                  <option value="Vận dụng">Tất cả Vận dụng</option>
+                  <option value="Vận dụng cao">Tất cả Vận dụng cao</option>
                 </select>
+
+                <button 
+                  onClick={handleAutoDetectAll}
+                  style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', padding: '4px 10px', borderRadius: 6, fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s' }}
+                >
+                  ✨ Tự động nhận dạng Dạng bài
+                </button>
 
                 <div style={{ marginLeft: 'auto', display: 'flex', gap: 8 }}>
                   <button onClick={expandAll} type="button" style={{ fontSize: 12, color: '#6366f1', fontWeight: 600, background: 'none', border: 'none', cursor: 'pointer', textDecoration: 'underline' }}>▼ Mở tất cả</button>
