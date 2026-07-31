@@ -512,19 +512,9 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                 
                 {/* Header Top: Logo & Title */}
                 <div className="flex flex-col items-center mb-6 relative z-10 w-full">
-                   {/* Logo Text */}
-                   <div className="flex flex-col pb-3 mb-4 relative w-full items-center">
-                      <div className="absolute bottom-0 w-2/3 h-[3px] bg-gradient-to-r from-transparent via-orange-500 to-transparent rounded-full opacity-70"></div>
-                      <h2 className="text-4xl font-black text-orange-800 tracking-tight uppercase flex items-center gap-3">
-                        <span className="text-orange-400">✦</span>
-                        <span>
-                          <span className="text-red-600 text-5xl leading-none font-serif">T</span>OÁN
-                          <span className="text-red-600 text-5xl leading-none font-serif ml-1">T</span>HẦY
-                          <span className="text-red-600 text-5xl leading-none font-serif ml-1">P</span>HÚC
-                        </span>
-                        <span className="text-orange-400">✦</span>
-                      </h2>
-                      <div className="text-xs text-orange-700 tracking-[0.3em] font-bold mt-2 text-center whitespace-nowrap">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                   {/* Logo Image */}
+                   <div className="flex justify-center mb-6 w-full">
+                      <img src="/images/logo-digital-math.png" alt="DIGITAL MATH by Phuc" className="h-40 object-contain drop-shadow-md" />
                    </div>
                    
                    {/* Title & Info - Separated clearly */}
@@ -565,16 +555,15 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                           const totalDue = t.base_fee + t.old_debt - t.discount;
                           return (
                             <tr key={stId} className="hover:bg-gray-50/50 transition-colors">
-                              <td className="py-5 px-6 text-center font-bold text-gray-500">{idx + 1}</td>
-                              <td className="py-5 px-6">
+                              <td className="py-2.5 px-6 text-center font-bold text-gray-500">{idx + 1}</td>
+                              <td className="py-2.5 px-6">
                                 <div className="font-bold text-gray-800 text-lg uppercase">{en.profiles.full_name}</div>
-                                <div className="text-sm font-bold text-blue-700 mt-1 uppercase">{classInfo?.name || ''}</div>
                               </td>
-                              <td className="py-5 px-6 text-right font-black text-gray-800 text-lg">
+                              <td className="py-2.5 px-6 text-right font-black text-gray-800 text-lg">
                                 {totalDue.toLocaleString('vi-VN')} đ
                               </td>
-                              <td className="py-5 px-6 text-center">
-                                 <span className={`px-4 py-2 text-sm font-bold rounded-full border whitespace-nowrap inline-block ${
+                              <td className="py-2.5 px-6 text-center">
+                                 <span className={`px-4 py-1.5 text-sm font-bold rounded-full border whitespace-nowrap inline-block ${
                                     t.status === 'PAID' ? 'bg-emerald-100 text-emerald-700 border-emerald-200' : 
                                     t.status === 'PARTIAL' ? 'bg-orange-100 text-orange-700 border-orange-200' : 
                                     'bg-rose-100 text-rose-700 border-rose-200'
@@ -626,18 +615,9 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                 
                 {/* Header */}
                 <div className="flex flex-col items-center mb-6 relative z-10 w-full">
-                   <div className="flex flex-col pb-3 mb-4 relative w-full items-center">
-                      <div className="absolute bottom-0 w-2/3 h-[3px] bg-gradient-to-r from-transparent via-rose-500 to-transparent rounded-full opacity-70"></div>
-                      <h2 className="text-4xl font-black text-rose-800 tracking-tight uppercase flex items-center gap-3">
-                        <span className="text-rose-400">✦</span>
-                        <span>
-                          <span className="text-red-600 text-5xl leading-none font-serif">T</span>OÁN
-                          <span className="text-red-600 text-5xl leading-none font-serif ml-1">T</span>HẦY
-                          <span className="text-red-600 text-5xl leading-none font-serif ml-1">P</span>HÚC
-                        </span>
-                        <span className="text-rose-400">✦</span>
-                      </h2>
-                      <div className="text-xs text-rose-700 tracking-[0.3em] font-bold mt-2 text-center whitespace-nowrap">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                   {/* Logo Image */}
+                   <div className="flex justify-center mb-6 w-full">
+                      <img src="/images/logo-digital-math.png" alt="DIGITAL MATH by Phuc" className="h-40 object-contain drop-shadow-md" />
                    </div>
                    <div className="text-center mt-2">
                      <h1 className="text-3xl font-black text-gray-800 uppercase tracking-wider mb-4 whitespace-nowrap">
@@ -681,16 +661,15 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                           const remaining = totalDue - t.paid_amount;
                           return (
                             <tr key={stId} className="hover:bg-gray-50/50 transition-colors">
-                              <td className="py-5 px-6 text-center font-bold text-gray-500">{idx + 1}</td>
-                              <td className="py-5 px-6">
+                              <td className="py-2.5 px-6 text-center font-bold text-gray-500">{idx + 1}</td>
+                              <td className="py-2.5 px-6">
                                 <div className="font-bold text-gray-800 text-lg uppercase">{en.profiles.full_name}</div>
-                                <div className="text-sm font-bold text-blue-700 mt-1 uppercase">{classInfo?.name || ''}</div>
                               </td>
-                              <td className="py-5 px-6 text-right font-black text-rose-600 text-lg">
+                              <td className="py-2.5 px-6 text-right font-black text-rose-600 text-lg">
                                 {remaining.toLocaleString('vi-VN')} đ
                               </td>
-                              <td className="py-5 px-6 text-center">
-                                 <span className={`px-4 py-2 text-sm font-bold rounded-full border whitespace-nowrap inline-block ${
+                              <td className="py-2.5 px-6 text-center">
+                                 <span className={`px-4 py-1.5 text-sm font-bold rounded-full border whitespace-nowrap inline-block ${
                                     t.status === 'PARTIAL' ? 'bg-orange-100 text-orange-700 border-orange-200' : 
                                     'bg-rose-100 text-rose-700 border-rose-200'
                                  }`}>
@@ -744,18 +723,9 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                     <div className="absolute bottom-0 left-0 w-48 h-48 bg-amber-200/50 rounded-full mix-blend-multiply filter blur-2xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
                     
                     <div className="flex flex-col items-center mb-6 relative z-10 w-full">
-                       <div className="flex flex-col pb-3 mb-4 w-full items-center relative">
-                          <div className="absolute bottom-0 w-3/4 h-[2px] bg-gradient-to-r from-transparent via-orange-500 to-transparent rounded-full opacity-70"></div>
-                          <h2 className="text-2xl font-black text-orange-800 tracking-tight uppercase whitespace-nowrap flex items-center gap-2">
-                            <span className="text-orange-400">✦</span>
-                            <span>
-                              <span className="text-red-600 text-3xl leading-none font-serif">T</span>OÁN
-                              <span className="text-red-600 text-3xl leading-none font-serif ml-1">T</span>HẦY
-                              <span className="text-red-600 text-3xl leading-none font-serif ml-1">P</span>HÚC
-                            </span>
-                            <span className="text-orange-400">✦</span>
-                          </h2>
-                          <div className="text-[9px] text-orange-700 tracking-[0.2em] font-bold mt-1.5 text-center whitespace-nowrap">NƠI KHƠI NGUỒN ĐAM MÊ</div>
+                       {/* Logo Image */}
+                       <div className="flex justify-center mb-6 w-full">
+                          <img src="/images/logo-digital-math.png" alt="DIGITAL MATH by Phuc" className="h-32 object-contain drop-shadow-md" />
                        </div>
                        <div className="text-center w-full">
                          <h1 className="text-2xl sm:text-3xl font-black text-orange-600 uppercase tracking-wider mb-2 drop-shadow-sm whitespace-nowrap">
@@ -771,7 +741,6 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                       <div className="text-center mb-4">
                          <div className="text-sm font-bold text-gray-500 uppercase">Học sinh</div>
                          <div className="text-xl font-black text-gray-800 uppercase">{en.profiles.full_name}</div>
-                         <div className="text-xs font-bold text-blue-700 mt-1 uppercase">{classInfo?.name || ''}</div>
                       </div>
                       
                       <div className="space-y-3">
