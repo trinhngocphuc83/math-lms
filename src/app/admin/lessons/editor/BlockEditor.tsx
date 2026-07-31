@@ -278,8 +278,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
        )}
 
        {blocks.map((block, idx) => (
-          <div key={block.id} onClickCapture={() => handleFocusBlock(block.id)} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden shrink-0 transition-all">
-              <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center">
+          <div key={block.id} onClickCapture={() => handleFocusBlock(block.id)} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-visible shrink-0 transition-all relative">
+              <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center rounded-t-xl z-20 relative">
                   <div className="flex items-center gap-2 font-bold text-gray-700 text-[15px]">
                      <input 
                         type="checkbox" 
