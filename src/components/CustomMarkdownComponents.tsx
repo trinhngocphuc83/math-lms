@@ -107,6 +107,22 @@ export const unifiedMarkdownComponents: any = {
            </h3>
        );
    },
+   h4: ({node, style, children, ...props}: any) => {
+       return (
+           <h4 style={sanitizeStyle(style)} className="not-prose mt-6 mb-3 text-[36px] font-bold text-teal-800 tracking-tight flex items-start gap-3" {...props}>
+               <span className="text-teal-500 mt-1.5 text-[24px] leading-none">❖</span>
+               <span className="flex-1 min-w-0 border-b-2 border-teal-100 pb-1.5">{children}</span>
+           </h4>
+       );
+   },
+   h5: ({node, style, children, ...props}: any) => {
+       return (
+           <h5 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 text-[35px] font-bold text-slate-700 italic tracking-tight flex items-start gap-3" {...props}>
+               <span className="w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0 mt-3.5"></span>
+               <span className="flex-1 min-w-0">{children}</span>
+           </h5>
+       );
+   },
    strong: ({node, style, children, ...props}: any) => {
        return <strong style={sanitizeStyle(style)} {...props} className="text-slate-900 font-bold">{children}</strong>;
    },
@@ -213,6 +229,22 @@ export const studentMarkdownComponents: any = {
            <h3 style={sanitizeStyle(style)} className="not-prose mt-6 mb-4 text-xl sm:text-2xl font-bold text-indigo-900 tracking-tight leading-[1.35] pl-4 py-1.5 border-l-[6px] border-indigo-500 bg-indigo-50/50 rounded-r-lg shadow-sm" {...props}>
                {children}
            </h3>
+       );
+   },
+   h4: ({node, style, children, ...props}: any) => {
+       return (
+           <h4 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 text-lg sm:text-xl font-bold text-teal-800 tracking-tight flex items-start gap-2" {...props}>
+               <span className="text-teal-500 mt-1 text-sm leading-none">❖</span>
+               <span className="flex-1 min-w-0 border-b-2 border-teal-100 pb-1">{children}</span>
+           </h4>
+       );
+   },
+   h5: ({node, style, children, ...props}: any) => {
+       return (
+           <h5 style={sanitizeStyle(style)} className="not-prose mt-4 mb-2 text-base sm:text-lg font-bold text-slate-700 italic tracking-tight flex items-start gap-2.5" {...props}>
+               <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0 mt-2.5"></span>
+               <span className="flex-1 min-w-0">{children}</span>
+           </h5>
        );
    },
    strong: ({node, style, children, ...props}: any) => {
