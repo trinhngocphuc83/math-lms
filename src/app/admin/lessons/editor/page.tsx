@@ -750,6 +750,28 @@ function EditorContent() {
     }
   };
 
+  const applyFormatting = (prefix: string, suffix: string) => {
+    if (!textareaRef.current) return;
+    const textarea = textareaRef.current;
+    const start = textarea.selectionStart;
+    const end = textarea.selectionEnd;
+    if (start === end) {
+      alert("Vui lòng bôi đen đoạn chữ muốn định dạng trước!");
+      return;
+    }
+
+    const text = markdownContent;
+    const selectedText = text.substring(start, end);
+    const newText = text.substring(0, start) + prefix + selectedText + suffix + text.substring(end);
+    
+    setMarkdownContent(newText);
+    
+    setTimeout(() => {
+      textarea.focus();
+      textarea.setSelectionRange(start + prefix.length, end + prefix.length);
+    }, 0);
+  };
+
   const handleRawKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     const ta = e.currentTarget;
     const start = ta.selectionStart;
@@ -1819,6 +1841,17 @@ function EditorContent() {
                         </div>
                     );
                  })()}
+
+                 <div className="bg-indigo-50 border-b border-indigo-100 px-3 py-2 flex items-center gap-2 shrink-0 flex-wrap">
+                    <span className="text-xs font-bold text-indigo-800 uppercase mr-1">Bôi đen chữ rồi ấn:</span>
+                    <button onClick={() => applyFormatting('**', '**')} className="w-8 h-8 flex items-center justify-center bg-white border border-slate-300 rounded shadow-sm hover:bg-slate-100 text-slate-800 font-black text-sm" title="In đậm (Bold)">B</button>
+                    <button onClick={() => applyFormatting('<span style="color:red">', '</span>')} className="w-8 h-8 flex items-center justify-center bg-white border border-red-200 rounded shadow-sm hover:bg-red-50 text-red-600 font-black text-sm" title="Chữ Đỏ">A</button>
+                    <button onClick={() => applyFormatting('<span style="color:blue">', '</span>')} className="w-8 h-8 flex items-center justify-center bg-white border border-blue-200 rounded shadow-sm hover:bg-blue-50 text-blue-600 font-black text-sm" title="Chữ Xanh Dương">A</button>
+                    <button onClick={() => applyFormatting('<span style="color:green">', '</span>')} className="w-8 h-8 flex items-center justify-center bg-white border border-green-200 rounded shadow-sm hover:bg-green-50 text-green-600 font-black text-sm" title="Chữ Xanh Lá">A</button>
+                    <div className="w-px h-5 bg-indigo-200 mx-1"></div>
+                    <button onClick={() => applyFormatting('## ', '')} className="h-8 px-3 flex items-center justify-center bg-white border border-slate-300 rounded shadow-sm hover:bg-slate-100 text-slate-700 font-bold text-xs" title="Tiêu đề to">H2</button>
+                    <button onClick={() => applyFormatting('### ', '')} className="h-8 px-3 flex items-center justify-center bg-white border border-slate-300 rounded shadow-sm hover:bg-slate-100 text-slate-700 font-bold text-xs" title="Tiêu đề vừa">H3</button>
+                 </div>
 
                  <div className="flex-1 flex flex-row overflow-hidden">
                     <textarea 
