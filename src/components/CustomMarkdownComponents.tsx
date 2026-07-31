@@ -110,7 +110,7 @@ export const unifiedMarkdownComponents: any = {
    h4: ({node, style, children, ...props}: any) => {
        return (
            <h4 style={sanitizeStyle(style)} className="not-prose mt-6 mb-3 text-[36px] font-bold text-teal-800 tracking-tight flex items-start gap-3" {...props}>
-               <span className="text-teal-500 mt-1.5 text-[24px] leading-none">❖</span>
+               <span className="text-teal-500 mt-[0.2em] text-[24px] leading-none">❖</span>
                <span className="flex-1 min-w-0 border-b-2 border-teal-100 pb-1.5">{children}</span>
            </h4>
        );
@@ -129,7 +129,7 @@ export const unifiedMarkdownComponents: any = {
    li: ({node, style, children, ...props}: any) => {
        return (
            <li style={sanitizeStyle(style)} className="flex items-start gap-4 mb-4 relative group text-[35px]" {...props}>
-              <span className="mt-[15px] shrink-0 w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-sm"></span>
+              <span className="mt-[0.6em] shrink-0 w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-sm"></span>
               <div className="flex-1 min-w-0 leading-[1.6] text-slate-700">{children}</div>
            </li>
        );
@@ -234,7 +234,7 @@ export const studentMarkdownComponents: any = {
    h4: ({node, style, children, ...props}: any) => {
        return (
            <h4 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 text-lg sm:text-xl font-bold text-teal-800 tracking-tight flex items-start gap-2" {...props}>
-               <span className="text-teal-500 mt-1 text-sm leading-none">❖</span>
+               <span className="text-teal-500 mt-[0.2em] text-sm leading-none">❖</span>
                <span className="flex-1 min-w-0 border-b-2 border-teal-100 pb-1">{children}</span>
            </h4>
        );
@@ -253,7 +253,7 @@ export const studentMarkdownComponents: any = {
    li: ({node, style, children, ...props}: any) => {
        return (
            <li style={sanitizeStyle(style)} className="flex items-start gap-3 mb-2 relative group" {...props}>
-              <span className="mt-[6px] shrink-0 w-2 h-2 rounded-full bg-indigo-400 shadow-sm"></span>
+              <span className="mt-[0.6em] shrink-0 w-2 h-2 rounded-full bg-indigo-400 shadow-sm"></span>
               <div className="flex-1 min-w-0 leading-[1.6] text-slate-700">{children}</div>
            </li>
        );

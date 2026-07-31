@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, Image as ImageIcon, Loader2 } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, Image as ImageIcon, Loader2, Heading } from "lucide-react";
 import TextareaAutosize from 'react-textarea-autosize';
 
 interface RichTextareaProps extends Omit<React.ComponentProps<typeof TextareaAutosize>, 'onChange' | 'value'> {
@@ -89,6 +89,41 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       onChange(event);
     }
 
+    setTimeout(() => {
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
+      }
+    }, 0);
+  };
+
+  const handleApplyHeading = (level: number | '') => {
+    if (!level) return;
+    if (!textareaRef.current) return;
+    
+    const ta = textareaRef.current;
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    const val = ta.value;
+
+    const selectedText = val.substring(start, end);
+    const beforeText = val.substring(0, start);
+    const afterText = val.substring(end);
+
+    const prefix = '#'.repeat(level as number) + ' ';
+    const wrappedText = selectedText.split('\n').map(l => {
+        if (l.trim() === '') return l;
+        return prefix + l.replace(/^#+\s*/, '');
+    }).join('\n');
+    
+    const newValue = beforeText + wrappedText + afterText;
+    if (onValueChange) {
+      onValueChange(newValue);
+    } else {
+      const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+      onChange(event);
+    }
+    
     setTimeout(() => {
       if (textareaRef.current) {
         textareaRef.current.focus();
@@ -518,6 +553,27 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       {(!collapsibleToolbar || isToolbarExpanded) && (
       <div className="flex flex-wrap items-center gap-4 px-3 py-2 bg-slate-50 border-b border-gray-200 sticky top-0 z-40 shadow-sm">
         
+        {/* Heading Group */}
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded px-2 py-1 shadow-sm">
+            <Heading className="w-4 h-4 text-gray-500" />
+            <select
+              onChange={e => {
+                  handleApplyHeading(e.target.value ? parseInt(e.target.value) : '');
+                  e.target.value = "";
+              }}
+              className="border-none focus:ring-0 text-xs font-bold p-0 text-gray-700 bg-transparent h-5 cursor-pointer outline-none pl-1"
+            >
+              <option value="">Tiêu đề</option>
+              <option value="1">H1 (Tên Bài)</option>
+              <option value="2">H2 (Chương)</option>
+              <option value="3">H3 (Mục La Mã)</option>
+              <option value="4">H4 (Mục a, b..)</option>
+              <option value="5">H5 (Ý nhỏ)</option>
+            </select>
+          </div>
+        </div>
+
         {/* Font Size Group */}
         <div className="flex items-center gap-2">
           <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded px-2 py-1 shadow-sm">
