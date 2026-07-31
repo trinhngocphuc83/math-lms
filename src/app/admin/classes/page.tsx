@@ -228,49 +228,64 @@ export default function AdminClassesPage() {
       ];
       worksheet['!cols'] = colWidths;
 
-      // ============ SHEET 2: CHI TIẾT TẤT CẢ HỌC SINH ============
-      const detailData: any[] = [];
-      let stt = 1;
-      (enrollments || []).forEach(en => {
-        const cls = classes.find(c => c.id === en.class_id);
-        if (!cls) return;
-
-        const profile = en.profiles as any;
-        if (!profile) return;
-
-        const feeRecord = (fees || []).find(f => f.class_id === en.class_id && f.student_id === profile.id);
-        const isPaid = feeRecord && (feeRecord.status === 'PAID' || (feeRecord.paid_amount || 0) > 0);
-        
-        let debtAmount = 0;
-        if (!isPaid) {
-          debtAmount = feeRecord 
-            ? ((feeRecord.base_fee || 0) + (feeRecord.old_debt || 0) - (feeRecord.discount || 0))
-            : (cls.tuition_fee || 0);
-        }
-
-        detailData.push({
-          "STT": stt++,
-          "Tên Học sinh": profile.full_name || "",
-          "SĐT Học sinh": profile.student_phone || "",
-          "Tên Phụ huynh": profile.parent_name || "",
-          "SĐT Phụ huynh": profile.parent_phone || "",
-          "Lớp đang học": cls.name,
-          "Khóa học": coursesMap.get(cls.course_id) || "",
-          "Trạng thái": isPaid ? "Đã nộp" : "Chưa nộp",
-          "Số tiền Đã Nộp": isPaid ? (feeRecord.paid_amount || 0) : 0,
-          "Học phí nợ (Dự kiến)": isPaid ? 0 : debtAmount,
-        });
-      });
-
-      const detailWorksheet = XLSX.utils.json_to_sheet(detailData);
-      detailWorksheet['!cols'] = [
-        { wch: 5 }, { wch: 25 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, 
-        { wch: 20 }, { wch: 25 }, { wch: 15 }, { wch: 15 }, { wch: 20 }
-      ];
-
       const workbook = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(workbook, worksheet, `Tổng_Hợp_T${month}_${year}`);
-      XLSX.utils.book_append_sheet(workbook, detailWorksheet, `Chi_Tiet_HS_T${month}_${year}`);
+
+      // ============ CÁC SHEET CHI TIẾT THEO TỪNG LỚP ============
+      const classesToExport = classes.filter(cls => (enrollmentCounts.get(cls.id) || 0) > 0);
+      
+      classesToExport.forEach(cls => {
+        const classEnrollments = (enrollments || []).filter(en => en.class_id === cls.id);
+        if (classEnrollments.length === 0) return;
+
+        const detailData: any[] = [];
+        let stt = 1;
+        
+        classEnrollments.forEach(en => {
+          const profile = en.profiles as any;
+          if (!profile) return;
+
+          const feeRecord = (fees || []).find(f => f.class_id === en.class_id && f.student_id === profile.id);
+          const isPaid = feeRecord && (feeRecord.status === 'PAID' || (feeRecord.paid_amount || 0) > 0);
+          
+          let debtAmount = 0;
+          if (!isPaid) {
+            debtAmount = feeRecord 
+              ? ((feeRecord.base_fee || 0) + (feeRecord.old_debt || 0) - (feeRecord.discount || 0))
+              : (cls.tuition_fee || 0);
+          }
+
+          detailData.push({
+            "STT": stt++,
+            "Tên Học sinh": profile.full_name || "",
+            "SĐT Học sinh": profile.student_phone || "",
+            "Tên Phụ huynh": profile.parent_name || "",
+            "SĐT Phụ huynh": profile.parent_phone || "",
+            "Trạng thái": isPaid ? "Đã nộp" : "Chưa nộp",
+            "Số tiền Đã Nộp": isPaid ? (feeRecord.paid_amount || 0) : 0,
+            "Học phí nợ (Dự kiến)": isPaid ? 0 : debtAmount,
+          });
+        });
+
+        if (detailData.length > 0) {
+          const detailWorksheet = XLSX.utils.json_to_sheet(detailData);
+          detailWorksheet['!cols'] = [
+            { wch: 5 }, { wch: 25 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, 
+            { wch: 15 }, { wch: 15 }, { wch: 20 }
+          ];
+
+          let sheetName = cls.name.replace(/[\[\]\*\\\/\?]/g, '').trim(); 
+          if (sheetName.length > 30) sheetName = sheetName.substring(0, 30);
+          
+          let count = 1;
+          let finalSheetName = sheetName;
+          while (workbook.SheetNames.includes(finalSheetName)) {
+             finalSheetName = `${sheetName}_${count}`;
+             count++;
+          }
+          XLSX.utils.book_append_sheet(workbook, detailWorksheet, finalSheetName);
+        }
+      });
       
       XLSX.writeFile(workbook, `Bao_Cao_Hoc_Phi_Tat_Ca_Lop_T${month}_${year}.xlsx`);
     } catch (e: any) {
