@@ -12,6 +12,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
   const [tuitionData, setTuitionData] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);
   const [exportingImage, setExportingImage] = useState(false);
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const printRef = useRef<HTMLDivElement>(null);
   const printUnpaidRef = useRef<HTMLDivElement>(null);
 
@@ -232,10 +233,16 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
         pixelRatio: 2,
         skipFonts: true
       });
-      const link = document.createElement("a");
-      link.download = `Bao_cao_hoc_phi_Thang_${month}_${year}_Lop_${classInfo?.name}.png`;
-      link.href = dataUrl;
-      link.click();
+      
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isIOS) {
+         setPreviewImage(dataUrl);
+      } else {
+         const link = document.createElement("a");
+         link.download = `Bao_cao_hoc_phi_Thang_${month}_${year}_Lop_${classInfo?.name}.png`;
+         link.href = dataUrl;
+         link.click();
+      }
     } catch (err) {
       console.error(err);
       alert("Đã xảy ra lỗi khi xuất ảnh! Vui lòng thử lại.");
@@ -253,10 +260,15 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
         pixelRatio: 2,
         skipFonts: true
       });
-      const link = document.createElement("a");
-      link.download = `Chua_nop_Thang_${month}_${year}_Lop_${classInfo?.name}.png`;
-      link.href = dataUrl;
-      link.click();
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+      if (isIOS) {
+         setPreviewImage(dataUrl);
+      } else {
+         const link = document.createElement("a");
+         link.download = `Chua_nop_Thang_${month}_${year}_Lop_${classInfo?.name}.png`;
+         link.href = dataUrl;
+         link.click();
+      }
     } catch (err) {
       console.error(err);
       alert("Đã xảy ra lỗi khi xuất ảnh! Vui lòng thử lại.");
@@ -788,6 +800,23 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
           );
         })}
       </div>
+      {/* iOS Safari Image Preview Modal */}
+      {previewImage && (
+        <div className="fixed inset-0 z-[100] bg-black/90 flex flex-col items-center justify-center p-4">
+           <div className="flex justify-between items-center w-full max-w-2xl mb-4 bg-gray-900 rounded-2xl p-4 border border-gray-700 shadow-2xl">
+              <div className="flex-1">
+                 <h3 className="text-white font-black text-xl mb-1">Ảnh Báo Học Phí</h3>
+                 <p className="text-teal-400 font-bold text-sm">📱 Nhấn giữ vào ảnh bên dưới và chọn "Lưu hình ảnh" hoặc "Chia sẻ".</p>
+              </div>
+              <button onClick={() => setPreviewImage(null)} className="text-white bg-gray-700 hover:bg-gray-600 px-5 py-2.5 rounded-xl font-bold transition-colors shadow-sm ml-4 border border-gray-600 shrink-0">
+                 Đóng
+              </button>
+           </div>
+           <div className="overflow-y-auto w-full max-w-2xl max-h-[75vh] bg-white rounded-xl shadow-2xl relative">
+              <img src={previewImage} alt="Hoc Phi Preview" className="w-full object-contain" />
+           </div>
+        </div>
+      )}
     </div>
   );
 }
