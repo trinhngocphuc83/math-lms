@@ -273,6 +273,73 @@ export default function AdminClassesPage() {
         }
       });
 
+      // ============ SHEET NỢ HỌC PHÍ TỔNG ============
+      const uSheet = workbook.addWorksheet(`DS Nợ T${month}`);
+
+      uSheet.columns = [
+        { header: 'STT', key: 'stt', width: 6 },
+        { header: 'Tên Học sinh', key: 'name', width: 25 },
+        { header: 'SĐT Học sinh', key: 'phone', width: 15 },
+        { header: 'Tên Phụ huynh', key: 'parent', width: 25 },
+        { header: 'SĐT Phụ huynh', key: 'parentPhone', width: 15 },
+        { header: 'Lớp đang học', key: 'className', width: 20 },
+        { header: 'Khóa học', key: 'course', width: 25 },
+        { header: 'Học phí nợ (Dự kiến)', key: 'debt', width: 22 },
+        { header: 'Ghi chú', key: 'note', width: 20 },
+      ];
+
+      uSheet.getRow(1).eachCell((cell) => {
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFDC2626' } };
+        cell.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+        cell.alignment = { vertical: 'middle', horizontal: 'center' };
+        cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } };
+      });
+
+      let debtStt = 1;
+      (enrollments || []).forEach(en => {
+        const cls = classes.find(c => c.id === en.class_id);
+        if (!cls) return;
+
+        const profile = en.profiles as any;
+        if (!profile) return;
+
+        const feeRecord = (fees || []).find(f => f.class_id === en.class_id && f.student_id === profile.id);
+        const isPaid = feeRecord && (feeRecord.status === 'PAID' || (feeRecord.paid_amount || 0) > 0);
+        
+        if (!isPaid) {
+          const debtAmount = feeRecord 
+            ? ((feeRecord.base_fee || 0) + (feeRecord.old_debt || 0) - (feeRecord.discount || 0))
+            : (cls.tuition_fee || 0);
+
+          uSheet.addRow({
+            stt: debtStt++,
+            name: profile.full_name || "",
+            phone: profile.student_phone || "",
+            parent: profile.parent_name || "",
+            parentPhone: profile.parent_phone || "",
+            className: cls.name,
+            course: coursesMap.get(cls.course_id) || "",
+            debt: debtAmount,
+            note: ""
+          });
+        }
+      });
+
+      uSheet.eachRow((row, rowNumber) => {
+        if (rowNumber > 1) {
+          row.eachCell((cell, colNumber) => {
+            cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } };
+            if (colNumber === 8) {
+              cell.numFmt = '#,##0';
+              cell.font = { color: { argb: 'FFDC2626' }, bold: true };
+            }
+            if ([1, 6].includes(colNumber)) {
+              cell.alignment = { horizontal: 'center' };
+            }
+          });
+        }
+      });
+
       // ============ CÁC SHEET CHI TIẾT THEO TỪNG LỚP ============
       const classesToExport = classes.filter(cls => (enrollmentCounts.get(cls.id) || 0) > 0);
       
