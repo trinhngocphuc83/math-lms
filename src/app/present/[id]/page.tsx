@@ -437,8 +437,8 @@ export default function PresentationPage() {
                                             prose-h1:text-[1.8em] prose-h1:text-white prose-h1:bg-gradient-to-r prose-h1:from-indigo-600 prose-h1:to-blue-600 prose-h1:px-[0.8em] prose-h1:py-[0.4em] prose-h1:rounded-[0.4em] prose-h1:shadow-lg prose-h1:inline-block prose-h1:mb-[0.5em] prose-h1:mt-[0.1em] prose-h1:leading-tight prose-h1:border-2 prose-h1:border-white
                                             prose-h2:text-[1.4em] prose-h2:text-indigo-900 prose-h2:bg-indigo-50 prose-h2:px-[0.6em] prose-h2:py-[0.3em] prose-h2:rounded-[0.3em] prose-h2:border-l-[0.3em] prose-h2:border-indigo-600 prose-h2:shadow-sm prose-h2:inline-block prose-h2:mb-[0.5em] prose-h2:mt-[0.2em]
                                             prose-h3:text-[1.2em] prose-h3:text-blue-900 prose-h3:bg-blue-50 prose-h3:px-[0.5em] prose-h3:py-[0.2em] prose-h3:rounded-[0.2em] prose-h3:border-l-[0.2em] prose-h3:border-blue-500 prose-h3:inline-block prose-h3:mb-[0.4em] prose-h3:mt-[0.2em]
-                                            prose-p:text-[1em] prose-p:leading-[1.4] prose-p:text-slate-800 [&>p]:my-[0.3em] [&>p]:mb-[0.6em]
-                                            prose-li:text-[1em] prose-li:leading-[1.4] prose-li:my-[0.2em] [&>ul]:my-[0.3em] [&>ol]:my-[0.3em]
+                                            prose-p:text-[1em] prose-p:leading-[1.4] prose-p:text-slate-800 [&>p]:my-[0.1em] [&>p]:mb-[0.2em]
+                                            prose-li:text-[1em] prose-li:leading-[1.4] prose-li:my-[0.1em] [&>ul]:my-[0.1em] [&>ol]:my-[0.1em]
                                             prose-strong:text-indigo-900 prose-strong:font-black
                                             prose-blockquote:border-l-[0.3em] prose-blockquote:border-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:p-[0.8em] prose-blockquote:rounded-r-2xl prose-blockquote:text-slate-700 prose-blockquote:font-medium prose-blockquote:text-[1.1em]
                                             [&_.katex-display]:text-[1.1em] [&_.katex-display]:my-[0.5em]
