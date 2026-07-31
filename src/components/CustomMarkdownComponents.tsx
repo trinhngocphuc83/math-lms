@@ -102,10 +102,9 @@ export const unifiedMarkdownComponents: any = {
    },
    h3: ({node, style, children, ...props}: any) => {
        return (
-           <div className="not-prose mt-8 mb-4 flex items-center gap-3">
-               <div className="w-2 h-8 bg-indigo-500 rounded-full shrink-0"></div>
-               <h3 style={sanitizeStyle(style)} className="text-[40px] font-bold text-slate-800 tracking-tight m-0 leading-tight" {...props}>{children}</h3>
-           </div>
+           <h3 style={sanitizeStyle(style)} className="not-prose mt-8 mb-5 text-[40px] font-bold text-indigo-900 tracking-tight leading-[1.35] pl-5 py-2 border-l-[8px] border-indigo-500 bg-indigo-50/50 rounded-r-xl shadow-sm" {...props}>
+               {children}
+           </h3>
        );
    },
    strong: ({node, style, children, ...props}: any) => {
@@ -211,10 +210,9 @@ export const studentMarkdownComponents: any = {
    },
    h3: ({node, style, children, ...props}: any) => {
        return (
-           <div className="not-prose mt-4 mb-2 flex items-center gap-2">
-               <div className="w-1.5 h-6 bg-indigo-500 rounded-full shrink-0"></div>
-               <h3 style={sanitizeStyle(style)} className="text-lg sm:text-xl font-bold text-slate-800 tracking-tight m-0 leading-tight" {...props}>{children}</h3>
-           </div>
+           <h3 style={sanitizeStyle(style)} className="not-prose mt-6 mb-4 text-xl sm:text-2xl font-bold text-indigo-900 tracking-tight leading-[1.35] pl-4 py-1.5 border-l-[6px] border-indigo-500 bg-indigo-50/50 rounded-r-lg shadow-sm" {...props}>
+               {children}
+           </h3>
        );
    },
    strong: ({node, style, children, ...props}: any) => {
