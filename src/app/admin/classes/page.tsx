@@ -184,52 +184,94 @@ export default function AdminClassesPage() {
       if (feesError) throw feesError;
       if (!fees) throw new Error("Không thể tải dữ liệu học phí");
 
-      const XLSX = await import('xlsx');
+      const ExcelJS = (await import('exceljs')).default;
+      const { saveAs } = await import('file-saver');
+      
+      const workbook = new ExcelJS.Workbook();
       
       // ============ SHEET 1: TỔNG HỢP CÁC LỚP ============
-      const exportData = classes.map((cls, idx) => {
+      const sheet = workbook.addWorksheet(`Tổng Hợp T${month}`);
+
+      sheet.columns = [
+        { header: 'STT', key: 'stt', width: 6 },
+        { header: 'Tên Lớp', key: 'name', width: 20 },
+        { header: 'Khóa học', key: 'course', width: 25 },
+        { header: 'Sĩ số', key: 'total', width: 10 },
+        { header: 'Học phí cơ bản', key: 'base', width: 18 },
+        { header: 'HS đã nộp', key: 'paid', width: 12 },
+        { header: 'HS còn nợ', key: 'unpaid', width: 12 },
+        { header: 'Tổng tiền ĐÃ THU', key: 'totalPaid', width: 20 },
+        { header: '% trích TT (10%)', key: 'tt', width: 20 },
+        { header: 'Còn lại của GV', key: 'gv', width: 20 },
+      ];
+
+      // Format header
+      sheet.getRow(1).eachCell((cell) => {
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF0D9488' } };
+        cell.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+        cell.alignment = { vertical: 'middle', horizontal: 'center' };
+        cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } };
+      });
+
+      let sumPaid = 0;
+      let sumTotal = 0;
+      let sumPaidStudents = 0;
+      let sumUnpaidStudents = 0;
+
+      classes.forEach((cls, idx) => {
         const classFees = fees.filter(f => f.class_id === cls.id);
         const totalPaid = classFees.reduce((sum, f) => sum + (f.paid_amount || 0), 0);
         const totalPaidStudents = classFees.filter(f => (f.paid_amount || 0) > 0 || f.status === 'PAID').length;
         const totalStudents = enrollmentCounts.get(cls.id) || 0;
-        
-        return {
-          "STT": idx + 1,
-          "Tên Lớp": cls.name,
-          "Khóa học": coursesMap.get(cls.course_id) || "",
-          "Sĩ số thực tế": totalStudents,
-          "Học phí cơ bản (1 HS)": cls.tuition_fee || 0,
-          "Số HS đã nộp": totalPaidStudents,
-          "Số HS còn nợ": totalStudents - totalPaidStudents,
-          "Tổng tiền ĐÃ THU": totalPaid,
-          "% trích TT (10%)": totalPaid * 0.1,
-          "Còn lại của GV": totalPaid * 0.9,
-        };
+
+        sumPaid += totalPaid;
+        sumTotal += totalStudents;
+        sumPaidStudents += totalPaidStudents;
+        sumUnpaidStudents += (totalStudents - totalPaidStudents);
+
+        sheet.addRow({
+          stt: idx + 1,
+          name: cls.name,
+          course: coursesMap.get(cls.course_id) || "",
+          total: totalStudents,
+          base: cls.tuition_fee || 0,
+          paid: totalPaidStudents,
+          unpaid: totalStudents - totalPaidStudents,
+          totalPaid: totalPaid,
+          tt: totalPaid * 0.1,
+          gv: totalPaid * 0.9
+        });
       });
 
-      const sumPaid = exportData.reduce((sum, row) => sum + row["Tổng tiền ĐÃ THU"], 0);
-      exportData.push({
-        "STT": "",
-        "Tên Lớp": "TỔNG CỘNG",
-        "Khóa học": "",
-        "Sĩ số thực tế": exportData.reduce((sum, row) => sum + (row["Sĩ số thực tế"] as number || 0), 0),
-        "Học phí cơ bản (1 HS)": "",
-        "Số HS đã nộp": exportData.reduce((sum, row) => sum + (row["Số HS đã nộp"] as number || 0), 0),
-        "Số HS còn nợ": exportData.reduce((sum, row) => sum + (row["Số HS còn nợ"] as number || 0), 0),
-        "Tổng tiền ĐÃ THU": sumPaid,
-        "% trích TT (10%)": sumPaid * 0.1,
-        "Còn lại của GV": sumPaid * 0.9,
-      } as any);
+      // TỔNG CỘNG
+      const sumRow = sheet.addRow({
+        name: 'TỔNG CỘNG',
+        total: sumTotal,
+        paid: sumPaidStudents,
+        unpaid: sumUnpaidStudents,
+        totalPaid: sumPaid,
+        tt: sumPaid * 0.1,
+        gv: sumPaid * 0.9
+      });
+      sumRow.font = { bold: true };
+      sumRow.eachCell((cell) => {
+         cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFF3F4F6' } };
+      });
 
-      const worksheet = XLSX.utils.json_to_sheet(exportData);
-      const colWidths = [
-        { wch: 5 }, { wch: 20 }, { wch: 25 }, { wch: 15 }, { wch: 20 }, 
-        { wch: 15 }, { wch: 15 }, { wch: 20 }, { wch: 20 }, { wch: 20 }
-      ];
-      worksheet['!cols'] = colWidths;
-
-      const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, `Tổng_Hợp_T${month}_${year}`);
+      // Format các cell từ dòng 2
+      sheet.eachRow((row, rowNumber) => {
+        if (rowNumber > 1) {
+          row.eachCell((cell, colNumber) => {
+            cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } };
+            if ([5, 8, 9, 10].includes(colNumber)) {
+              cell.numFmt = '#,##0';
+            }
+            if ([1, 4, 6, 7].includes(colNumber)) {
+              cell.alignment = { horizontal: 'center' };
+            }
+          });
+        }
+      });
 
       // ============ CÁC SHEET CHI TIẾT THEO TỪNG LỚP ============
       const classesToExport = classes.filter(cls => (enrollmentCounts.get(cls.id) || 0) > 0);
@@ -237,10 +279,36 @@ export default function AdminClassesPage() {
       classesToExport.forEach(cls => {
         const classEnrollments = (enrollments || []).filter(en => en.class_id === cls.id);
         if (classEnrollments.length === 0) return;
-
-        const detailData: any[] = [];
-        let stt = 1;
         
+        let sheetName = cls.name.replace(/[\[\]\*\\\/\?]/g, '').trim(); 
+        if (sheetName.length > 30) sheetName = sheetName.substring(0, 30);
+        let count = 1;
+        let finalSheetName = sheetName;
+        while (workbook.getWorksheet(finalSheetName)) {
+           finalSheetName = `${sheetName}_${count}`;
+           count++;
+        }
+
+        const cSheet = workbook.addWorksheet(finalSheetName);
+        cSheet.columns = [
+          { header: 'STT', key: 'stt', width: 6 },
+          { header: 'Tên Học sinh', key: 'name', width: 25 },
+          { header: 'SĐT Học sinh', key: 'phone', width: 15 },
+          { header: 'Tên Phụ huynh', key: 'parent', width: 25 },
+          { header: 'SĐT Phụ huynh', key: 'parentPhone', width: 15 },
+          { header: 'Trạng thái', key: 'status', width: 15 },
+          { header: 'Số tiền Đã Nộp', key: 'paidAmount', width: 20 },
+          { header: 'Học phí nợ (Dự kiến)', key: 'debt', width: 22 },
+        ];
+
+        cSheet.getRow(1).eachCell((cell) => {
+          cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FF2563EB' } }; // bg-blue-600
+          cell.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+          cell.alignment = { vertical: 'middle', horizontal: 'center' };
+          cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } };
+        });
+
+        let stt = 1;
         classEnrollments.forEach(en => {
           const profile = en.profiles as any;
           if (!profile) return;
@@ -255,39 +323,41 @@ export default function AdminClassesPage() {
               : (cls.tuition_fee || 0);
           }
 
-          detailData.push({
-            "STT": stt++,
-            "Tên Học sinh": profile.full_name || "",
-            "SĐT Học sinh": profile.student_phone || "",
-            "Tên Phụ huynh": profile.parent_name || "",
-            "SĐT Phụ huynh": profile.parent_phone || "",
-            "Trạng thái": isPaid ? "Đã nộp" : "Chưa nộp",
-            "Số tiền Đã Nộp": isPaid ? (feeRecord.paid_amount || 0) : 0,
-            "Học phí nợ (Dự kiến)": isPaid ? 0 : debtAmount,
+          const row = cSheet.addRow({
+            stt: stt++,
+            name: profile.full_name || "",
+            phone: profile.student_phone || "",
+            parent: profile.parent_name || "",
+            parentPhone: profile.parent_phone || "",
+            status: isPaid ? "Đã nộp" : "Chưa nộp",
+            paidAmount: isPaid ? (feeRecord.paid_amount || 0) : 0,
+            debt: isPaid ? 0 : debtAmount,
           });
+          
+          if (!isPaid) {
+             row.getCell('status').font = { color: { argb: 'FFEF4444' }, bold: true };
+          } else {
+             row.getCell('status').font = { color: { argb: 'FF10B981' }, bold: true };
+          }
         });
 
-        if (detailData.length > 0) {
-          const detailWorksheet = XLSX.utils.json_to_sheet(detailData);
-          detailWorksheet['!cols'] = [
-            { wch: 5 }, { wch: 25 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, 
-            { wch: 15 }, { wch: 15 }, { wch: 20 }
-          ];
-
-          let sheetName = cls.name.replace(/[\[\]\*\\\/\?]/g, '').trim(); 
-          if (sheetName.length > 30) sheetName = sheetName.substring(0, 30);
-          
-          let count = 1;
-          let finalSheetName = sheetName;
-          while (workbook.SheetNames.includes(finalSheetName)) {
-             finalSheetName = `${sheetName}_${count}`;
-             count++;
+        cSheet.eachRow((row, rowNumber) => {
+          if (rowNumber > 1) {
+            row.eachCell((cell, colNumber) => {
+              cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } };
+              if ([7, 8].includes(colNumber)) {
+                cell.numFmt = '#,##0';
+              }
+              if ([1, 6].includes(colNumber)) {
+                cell.alignment = { horizontal: 'center' };
+              }
+            });
           }
-          XLSX.utils.book_append_sheet(workbook, detailWorksheet, finalSheetName);
-        }
+        });
       });
       
-      XLSX.writeFile(workbook, `Bao_Cao_Hoc_Phi_Tat_Ca_Lop_T${month}_${year}.xlsx`);
+      const buffer = await workbook.xlsx.writeBuffer();
+      saveAs(new Blob([buffer]), `Bao_Cao_Hoc_Phi_Tat_Ca_Lop_T${month}_${year}.xlsx`);
     } catch (e: any) {
       alert("Lỗi xuất Excel: " + e.message);
     }
@@ -314,10 +384,32 @@ export default function AdminClassesPage() {
       if (feesError) throw feesError;
       if (!enrollments) throw new Error("Không thể tải danh sách học sinh");
 
-      const XLSX = await import('xlsx');
-      
-      const exportData: any[] = [];
+      const ExcelJS = (await import('exceljs')).default;
+      const { saveAs } = await import('file-saver');
+      const workbook = new ExcelJS.Workbook();
+      const uSheet = workbook.addWorksheet(`Nợ HP T${month}`);
+
+      uSheet.columns = [
+        { header: 'STT', key: 'stt', width: 6 },
+        { header: 'Tên Học sinh', key: 'name', width: 25 },
+        { header: 'SĐT Học sinh', key: 'phone', width: 15 },
+        { header: 'Tên Phụ huynh', key: 'parent', width: 25 },
+        { header: 'SĐT Phụ huynh', key: 'parentPhone', width: 15 },
+        { header: 'Lớp đang học', key: 'className', width: 20 },
+        { header: 'Khóa học', key: 'course', width: 25 },
+        { header: 'Học phí nợ (Dự kiến)', key: 'debt', width: 22 },
+        { header: 'Ghi chú', key: 'note', width: 20 },
+      ];
+
+      uSheet.getRow(1).eachCell((cell) => {
+        cell.fill = { type: 'pattern', pattern: 'solid', fgColor: { argb: 'FFDC2626' } }; // bg-red-600
+        cell.font = { bold: true, color: { argb: 'FFFFFFFF' } };
+        cell.alignment = { vertical: 'middle', horizontal: 'center' };
+        cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } };
+      });
+
       let stt = 1;
+      let hasUnpaid = false;
 
       enrollments.forEach(en => {
         const cls = classes.find(c => c.id === en.class_id);
@@ -330,40 +422,48 @@ export default function AdminClassesPage() {
         const isPaid = feeRecord && (feeRecord.status === 'PAID' || (feeRecord.paid_amount || 0) > 0);
         
         if (!isPaid) {
+          hasUnpaid = true;
           const debtAmount = feeRecord 
             ? ((feeRecord.base_fee || 0) + (feeRecord.old_debt || 0) - (feeRecord.discount || 0))
             : (cls.tuition_fee || 0);
 
-          exportData.push({
-            "STT": stt++,
-            "Tên Học sinh": profile.full_name || "",
-            "SĐT Học sinh": profile.student_phone || "",
-            "Tên Phụ huynh": profile.parent_name || "",
-            "SĐT Phụ huynh": profile.parent_phone || "",
-            "Lớp đang học": cls.name,
-            "Khóa học": coursesMap.get(cls.course_id) || "",
-            "Học phí nợ (Dự kiến)": debtAmount,
-            "Ghi chú": ""
+          uSheet.addRow({
+            stt: stt++,
+            name: profile.full_name || "",
+            phone: profile.student_phone || "",
+            parent: profile.parent_name || "",
+            parentPhone: profile.parent_phone || "",
+            className: cls.name,
+            course: coursesMap.get(cls.course_id) || "",
+            debt: debtAmount,
+            note: ""
           });
         }
       });
 
-      if (exportData.length === 0) {
+      if (!hasUnpaid) {
          alert("Tuyệt vời! Tất cả học sinh đã đóng đủ học phí trong tháng " + month);
          setIsExporting(false);
          return;
       }
 
-      const worksheet = XLSX.utils.json_to_sheet(exportData);
-      const colWidths = [
-        { wch: 5 }, { wch: 25 }, { wch: 15 }, { wch: 25 }, { wch: 15 }, 
-        { wch: 20 }, { wch: 25 }, { wch: 20 }, { wch: 20 }
-      ];
-      worksheet['!cols'] = colWidths;
+      uSheet.eachRow((row, rowNumber) => {
+        if (rowNumber > 1) {
+          row.eachCell((cell, colNumber) => {
+            cell.border = { top: { style: 'thin' }, left: { style: 'thin' }, bottom: { style: 'thin' }, right: { style: 'thin' } };
+            if (colNumber === 8) {
+              cell.numFmt = '#,##0';
+              cell.font = { color: { argb: 'FFDC2626' }, bold: true };
+            }
+            if ([1, 6].includes(colNumber)) {
+              cell.alignment = { horizontal: 'center' };
+            }
+          });
+        }
+      });
 
-      const workbook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(workbook, worksheet, `Nợ_HP_T${month}_${year}`);
-      XLSX.writeFile(workbook, `Danh_Sach_No_Hoc_Phi_Tat_Ca_Lop_T${month}_${year}.xlsx`);
+      const buffer = await workbook.xlsx.writeBuffer();
+      saveAs(new Blob([buffer]), `Danh_Sach_No_Hoc_Phi_Tat_Ca_Lop_T${month}_${year}.xlsx`);
     } catch (e: any) {
       alert("Lỗi xuất Excel DS Nợ: " + e.message);
     }
