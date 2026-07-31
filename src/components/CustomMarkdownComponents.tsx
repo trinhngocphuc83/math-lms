@@ -27,8 +27,6 @@ const sanitizeStyle = (style: any) => {
     } else if (style) {
         parsedStyle = { ...style };
     }
-    delete parsedStyle.fontSize;
-    delete parsedStyle.lineHeight;
     return parsedStyle;
 };
 
