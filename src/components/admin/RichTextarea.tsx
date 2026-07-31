@@ -496,23 +496,10 @@ export default function RichTextarea({ value, onChange, onValueChange, className
   const innerClass = className.replace(/border-[a-zA-Z0-9-]+|rounded-[a-zA-Z0-9-]+|focus:[a-zA-Z0-9-]+|ring[a-zA-Z0-9-:]*/g, '').trim();
 
   return (
-    <div className={`relative flex flex-col border border-gray-300 rounded-lg focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all overflow-hidden bg-white ${className.includes('mt-') ? className.match(/mt-[0-9]+/)?.[0] : ''}`}>
-      {/* Textarea */}
-      <TextareaAutosize
-        ref={textareaRef}
-        value={value}
-        onChange={onChange}
-        onKeyDown={handleKeyDown}
-        onPaste={handlePaste}
-        minRows={props.rows || 3}
-        maxRows={30}
-        className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] bg-transparent ${innerClass}`}
-        {...props}
-      />
-      
+    <div className={`relative flex flex-col border border-gray-300 rounded-lg focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all bg-white ${className.includes('mt-') ? className.match(/mt-[0-9]+/)?.[0] : ''}`}>
       {/* Toolbar */}
       {collapsibleToolbar && (
-         <div className="bg-slate-50 border-t border-gray-200 px-3 py-1 flex justify-end">
+         <div className="bg-slate-50 border-b border-gray-200 px-3 py-1 sticky top-0 z-40 flex justify-end">
             <button 
               type="button" 
               onClick={() => setIsToolbarExpanded(!isToolbarExpanded)}
@@ -523,7 +510,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
          </div>
       )}
       {(!collapsibleToolbar || isToolbarExpanded) && (
-      <div className="flex flex-wrap items-center gap-4 px-3 py-2 bg-slate-50 border-t border-gray-200">
+      <div className="flex flex-wrap items-center gap-4 px-3 py-2 bg-slate-50 border-b border-gray-200 sticky top-0 z-40 shadow-sm">
         
         {/* Font Size Group */}
         <div className="flex items-center gap-2">
@@ -744,6 +731,20 @@ export default function RichTextarea({ value, onChange, onValueChange, className
 
       </div>
       )}
-    </div>
+    
+      {/* Textarea */}
+      <TextareaAutosize
+        ref={textareaRef}
+        value={value}
+        onChange={onChange}
+        onKeyDown={handleKeyDown}
+        onPaste={handlePaste}
+        minRows={props.rows || 3}
+        maxRows={30}
+        className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] bg-transparent ${innerClass}`}
+        {...props}
+      />
+      
+      </div>
   );
 }
