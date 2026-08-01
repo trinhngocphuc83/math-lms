@@ -43,6 +43,8 @@ export async function POST(request: Request) {
       - TRƯỜNG HỢP BẮT BUỘC TÁCH: Nếu một bài toán tự luận có các ý nhỏ (a, b, c...) hoàn toàn độc lập, không dùng chung biểu thức/dữ kiện phức tạp, không phụ thuộc nhau (Ví dụ: "Bài 1. Thực hiện phép tính: a) 1+1 b) 2+2"). Bạn BẮT BUỘC PHẢI TÁCH mỗi ý thành 1 object câu hỏi độc lập. Tự động ghép "dẫn chung" vào từng ý.
       - TRƯỜNG HỢP BẮT BUỘC GỘP (KHÔNG ĐƯỢC TÁCH): Nếu các ý nhỏ có liên quan mật thiết, dùng chung một biểu thức/dữ kiện gốc, hoặc ý sau phụ thuộc ý trước (Ví dụ: "Bài 3. Cho biểu thức P... a) Rút gọn P b) Tìm x để P > 0"). Bạn BẮT BUỘC KHÔNG ĐƯỢC TÁCH. Hãy GỘP CHUNG toàn bộ đề bài (dữ kiện gốc) và tất cả các ý nhỏ a, b... vào MỘT câu hỏi tự luận duy nhất.
       
+      LƯU Ý BẮT BUỘC VỀ LATEX: Bạn PHẢI escape tất cả các dấu backslash trong mã LaTeX bằng hai dấu backslash (\\\\). Ví dụ: phải viết là \\\\neq thay vì \\neq, \\\\Rightarrow thay vì \\Rightarrow, \\\\begin{cases} thay vì \\begin{cases}, và ký hiệu xuống dòng trong hệ phương trình phải viết là \\\\\\\\ thay vì \\\\. Nếu bạn quên, file JSON sẽ bị hỏng toàn bộ.
+      
       Mỗi câu hỏi phải là một object JSON với các trường:
       - "qIndex": Số thứ tự câu hỏi (ví dụ 1, 2, 3...)
       - "type": Loại câu hỏi. CHỈ MỘT TRONG CÁC GIÁ TRỊ: "multiple_choice" (Trắc nghiệm 4 chọn 1), "true_false" (Đúng/Sai có 4 ý a,b,c,d), "short_answer" (Trả lời ngắn), "essay" (Tự luận).
@@ -109,9 +111,18 @@ export async function POST(request: Request) {
         const result = await model.generateContent(parts);
         const text = result.response.text();
         
+        // Tiền xử lý: Sửa lỗi LLM quên escape các ký tự LaTeX thông dụng làm JSON parser nhầm thành ký tự điều khiển (newline, return, tab...)
+        // Lỗi phổ biến nhất: AI trả về "x \neq 0", JS parser nhận diện \n là ký tự ngắt dòng.
+        let preprocessedText = text
+            .replace(/\\n(?=eq|otin|abla|atural)/g, '\\\\n')
+            .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
+            .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
+            .replace(/\\b(?=egin)/g, '\\\\b')
+            .replace(/\\f(?=rac|orall)/g, '\\\\f');
+        
         let parsed;
         try {
-          parsed = JSON.parse(text);
+          parsed = JSON.parse(preprocessedText);
         } catch (parseErr: any) {
           console.warn("Lỗi JSON.parse lần 1, đang cố gắng sửa escape characters...");
           // Sửa lỗi AI trả về dấu backslash không hợp lệ (ví dụ: \sin thay vì \\sin)

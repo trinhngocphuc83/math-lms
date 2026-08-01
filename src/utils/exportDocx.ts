@@ -181,8 +181,10 @@ const fetchImageWithDimensions = async (url: string): Promise<{buffer: Uint8Arra
 
 const cleanHtmlNewlinesInTags = (html: string) => {
   if (!html) return "";
-  return sanitizeXml(html).replace(/\\{1,2}color\s*\{[^}]+\}/gi, '')
+  let cleaned = sanitizeXml(html).replace(/\\{1,2}color\s*\{[^}]+\}/gi, '')
              .replace(/<img[^>]+>/gi, (match) => match.replace(/\n|\r/g, ''));
+  // Hàn gắn dữ liệu cũ: Khôi phục dấu backslash nếu OCR lưu nhầm thành newline (\n)
+  return cleaned.replace(/\n(?=eq|otin|abla|atural|ightarrow|ho|angle|imes|heta|riangle|ext|egin|rac|orall|end|left|right)/g, '\\');
 };
 
 export const exportQuestionsToWord = async (questions: any[], exportType: 'student' | 'teacher', filePrefix: string = 'Ngan_Hang_Cau_Hoi') => {
