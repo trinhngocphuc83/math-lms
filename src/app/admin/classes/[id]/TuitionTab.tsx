@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { Loader2, DollarSign, CalendarDays, Download, CreditCard, Send, Edit, Save, ShieldAlert, ArrowRight, ImageIcon } from "lucide-react";
-import { toPng, toBlob } from "html-to-image";
+import html2canvas from "html2canvas-pro";
 import { getTuitionFees, updateTuitionFee, rolloverDebt } from "./tuitionActions";
 
 export default function TuitionTab({ classId, classInfo, enrollments }: { classId: string, classInfo: any, enrollments: any[] }) {
@@ -12,7 +12,6 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
   const [tuitionData, setTuitionData] = useState<Record<string, any>>({});
   const [loading, setLoading] = useState(true);
   const [exportingImage, setExportingImage] = useState(false);
-  const [previewImage, setPreviewImage] = useState<string | null>(null);
   const printRef = useRef<HTMLDivElement>(null);
   const printUnpaidRef = useRef<HTMLDivElement>(null);
 
@@ -223,29 +222,101 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     });
   };
 
+  // Helper functions for image export
+  async function imgToBase64(url: string): Promise<string> {
+    try {
+      const res = await fetch(url, { cache: 'no-store', mode: 'cors' });
+      const blob = await res.blob();
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    } catch (e) {
+      console.error('imgToBase64 error for', url, e);
+      return url; // Nếu lỗi, trả về url gốc
+    }
+  }
+
+  async function captureElement(element: HTMLElement): Promise<string> {
+    const imgs = element.querySelectorAll('img');
+    const base64Map = new Map<string, string>();
+    
+    await Promise.all(
+      Array.from(imgs).map(async (img) => {
+        const src = img.src;
+        if (src && !src.startsWith('data:') && !base64Map.has(src)) {
+          base64Map.set(src, await imgToBase64(src));
+        }
+      })
+    );
+
+    const elementHeight = element.offsetHeight || 2000;
+    const safeScale = elementHeight > 2000 ? 1 : 1.5;
+
+    const canvas = await html2canvas(element, {
+      scale: safeScale,
+      useCORS: true,
+      allowTaint: false,
+      backgroundColor: '#ffffff',
+      scrollX: 0,
+      scrollY: 0,
+      onclone: (clonedDoc, clonedEl) => {
+        clonedEl.style.position = 'static';
+        clonedEl.style.opacity = '1';
+        clonedEl.style.pointerEvents = 'auto';
+        clonedEl.style.overflow = 'visible';
+        
+        const clonedImgs = clonedEl.querySelectorAll('img');
+        clonedImgs.forEach((img: HTMLImageElement) => {
+          const b64 = base64Map.get(img.src);
+          if (b64) {
+            img.src = b64;
+            img.removeAttribute('crossorigin');
+            img.removeAttribute('crossOrigin');
+          }
+        });
+      }
+    });
+
+    return canvas.toDataURL('image/png');
+  }
+
+  async function downloadOrShare(dataUrl: string, fileName: string) {
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || 
+      (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+    
+    if (isIOS && navigator.share) {
+      try {
+        const res = await fetch(dataUrl);
+        const blob = await res.blob();
+        const file = new File([blob], fileName, { type: 'image/png' });
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({ files: [file], title: fileName });
+          return;
+        }
+      } catch (e) {
+        console.log('Share failed:', e);
+      }
+    }
+    
+    const link = document.createElement("a");
+    link.download = fileName;
+    link.href = dataUrl;
+    link.click();
+  }
+
   const exportImage = async () => {
     if (!printRef.current) return;
     setExportingImage(true); 
     try {
-      const dataUrl = await toPng(printRef.current, {
-        cacheBust: true,
-        backgroundColor: "#ffffff",
-        pixelRatio: 2,
-        skipFonts: true
-      });
-      
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      if (isIOS) {
-         setPreviewImage(dataUrl);
-      } else {
-         const link = document.createElement("a");
-         link.download = `Bao_cao_hoc_phi_Thang_${month}_${year}_Lop_${classInfo?.name}.png`;
-         link.href = dataUrl;
-         link.click();
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Đã xảy ra lỗi khi xuất ảnh! Vui lòng thử lại.");
+      const dataUrl = await captureElement(printRef.current);
+      const fileName = `Bao_cao_hoc_phi_Thang_${month}_${year}_Lop_${classInfo?.name}.png`;
+      await downloadOrShare(dataUrl, fileName);
+    } catch (err: any) {
+      console.error('Export image error:', err);
+      alert(`Đã xảy ra lỗi khi xuất ảnh! Chi tiết: ${err.message || 'Unknown error'}`);
     }
     setExportingImage(false);
   };
@@ -254,24 +325,12 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     if (!printUnpaidRef.current) return;
     setExportingImage(true); 
     try {
-      const dataUrl = await toPng(printUnpaidRef.current, {
-        cacheBust: true,
-        backgroundColor: "#ffffff",
-        pixelRatio: 2,
-        skipFonts: true
-      });
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-      if (isIOS) {
-         setPreviewImage(dataUrl);
-      } else {
-         const link = document.createElement("a");
-         link.download = `Chua_nop_Thang_${month}_${year}_Lop_${classInfo?.name}.png`;
-         link.href = dataUrl;
-         link.click();
-      }
-    } catch (err) {
-      console.error(err);
-      alert("Đã xảy ra lỗi khi xuất ảnh! Vui lòng thử lại.");
+      const dataUrl = await captureElement(printUnpaidRef.current);
+      const fileName = `Chua_nop_Thang_${month}_${year}_Lop_${classInfo?.name}.png`;
+      await downloadOrShare(dataUrl, fileName);
+    } catch (err: any) {
+      console.error('Export image error:', err);
+      alert(`Đã xảy ra lỗi khi xuất ảnh! Chi tiết: ${err.message || 'Unknown error'}`);
     }
     setExportingImage(false);
   };
@@ -294,12 +353,9 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     }
 
     try {
-      const blob = await toBlob(element, {
-        cacheBust: true,
-        backgroundColor: "#ffffff",
-        pixelRatio: 2,
-        skipFonts: true
-      });
+      const dataUrl = await captureElement(element);
+      const res = await fetch(dataUrl);
+      const blob = await res.blob();
       
       if (!blob) throw new Error("Không tạo được ảnh");
       
@@ -308,8 +364,6 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
       ]);
       
       const rawPhone = String(student.parent_phone).replace(/[^0-9]/g, '');
-      
-      // Sử dụng Deep link để mở trực tiếp Zalo PC, bỏ qua tab web trung gian
       window.location.href = `zalo://conversation?phone=${rawPhone}`;
       
     } catch (err) {
@@ -514,7 +568,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
       )}
 
       {/* GIAO DIỆN BÁO CÁO ẨN ĐỂ XUẤT ẢNH */}
-      <div className="fixed top-[200vh] left-0 pointer-events-none -z-50">
+      <div style={{ position: 'absolute', left: '-9999px', top: 0, zIndex: -50 }}>
         <div ref={printRef} className="w-[850px] bg-white p-0 font-sans border-0 relative">
           <div className="bg-orange-500 rounded-[2rem] p-3 shadow-xl">
              <div className="bg-orange-50 rounded-[1.5rem] p-8 border-4 border-white shadow-inner flex flex-col h-full relative overflow-hidden">
@@ -617,7 +671,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
       </div>
 
       {/* GIAO DIỆN BÁO CÁO ẨN: CHỈ HỌC SINH CHƯA NỘP */}
-      <div className="fixed top-[200vh] left-[200vw] pointer-events-none -z-50">
+      <div style={{ position: 'absolute', left: '-9999px', top: 0, zIndex: -50 }}>
         <div ref={printUnpaidRef} className="w-[850px] bg-white p-0 font-sans border-0 relative">
           <div className="bg-rose-500 rounded-[2rem] p-3 shadow-xl">
              <div className="bg-rose-50 rounded-[1.5rem] p-8 border-4 border-white shadow-inner flex flex-col h-full relative overflow-hidden">
@@ -721,7 +775,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
       </div>
 
       {/* KHỐI ẨN: GIAO DIỆN BÁO CÁO CÁ NHÂN TỪNG HỌC SINH */}
-      <div className="fixed top-[300vh] left-0 pointer-events-none -z-50 opacity-0">
+      <div style={{ position: 'absolute', left: '-9999px', top: 0, zIndex: -50 }}>
         {enrollments.map((en, idx) => {
           const stId = en.profiles.id;
           const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
@@ -800,23 +854,6 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
           );
         })}
       </div>
-      {/* iOS Safari Image Preview Modal */}
-      {previewImage && (
-        <div className="fixed inset-0 z-[100] bg-black/90 flex flex-col items-center justify-center p-4">
-           <div className="flex justify-between items-center w-full max-w-2xl mb-4 bg-gray-900 rounded-2xl p-4 border border-gray-700 shadow-2xl">
-              <div className="flex-1">
-                 <h3 className="text-white font-black text-xl mb-1">Ảnh Báo Học Phí</h3>
-                 <p className="text-teal-400 font-bold text-sm">📱 Nhấn giữ vào ảnh bên dưới và chọn "Lưu hình ảnh" hoặc "Chia sẻ".</p>
-              </div>
-              <button onClick={() => setPreviewImage(null)} className="text-white bg-gray-700 hover:bg-gray-600 px-5 py-2.5 rounded-xl font-bold transition-colors shadow-sm ml-4 border border-gray-600 shrink-0">
-                 Đóng
-              </button>
-           </div>
-           <div className="overflow-y-auto w-full max-w-2xl max-h-[75vh] bg-white rounded-xl shadow-2xl relative">
-              <img src={previewImage} alt="Hoc Phi Preview" className="w-full object-contain" />
-           </div>
-        </div>
-      )}
     </div>
   );
 }
