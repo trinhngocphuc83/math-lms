@@ -263,8 +263,19 @@ export default function AzotaExamUI({
     }
   };
   
+  // Xác định loại câu hỏi thực sự (xử lý essay ngầm)
+  const getQuestionType = (data: any): string => {
+    const type = data.type || 'multiple_choice';
+    if (type === 'essay') return 'essay';
+    if (type === 'short_answer') return 'short_answer';
+    if (type === 'true_false_cluster') return 'true_false_cluster';
+    // MC không có options → coi là essay
+    if (type === 'multiple_choice' && (!data.options || data.options.length === 0)) return 'essay';
+    return 'multiple_choice';
+  };
+
   // Parse content thành các phần (markdown + quiz)
-  const { parts, totalQuizzes } = useMemo(() => {
+  const { parts, totalQuizzes, groupedParts, availableTabs } = useMemo(() => {
      const res: any[] = [];
      const regex = /```quiz[ \t]*\r?\n([\s\S]*?)\r?\n```/g;
      let lastIndex = 0;
@@ -280,7 +291,7 @@ export default function AzotaExamUI({
         try {
            const data = JSON.parse(match[1].trim());
            qIndex++;
-           res.push({ type: 'quiz', content: data, id: `quiz-${qIndex}`, qIndex });
+           res.push({ type: 'quiz', content: data, id: `quiz-${qIndex}`, qIndex, realType: getQuestionType(data) });
         } catch (e) {
            res.push({ type: 'error', content: "Lỗi: Cấu trúc câu hỏi Quiz từ AI không hợp lệ.", id: `err-${lastIndex}` });
         }
@@ -289,19 +300,36 @@ export default function AzotaExamUI({
         const text = content.substring(lastIndex).trim();
         if (text) res.push({ type: 'md', content: text, id: `md-${lastIndex}` });
      }
-     return { parts: res, totalQuizzes: qIndex };
+
+     const groups = {
+        'multiple_choice': [] as any[],
+        'true_false_cluster': [] as any[],
+        'short_answer': [] as any[],
+        'essay': [] as any[]
+     };
+     
+     res.forEach(p => {
+        if (p.type === 'quiz' && p.realType && groups[p.realType as keyof typeof groups]) {
+           groups[p.realType as keyof typeof groups].push(p);
+        }
+     });
+
+     const tabs = [];
+     if (groups.multiple_choice.length > 0) tabs.push({ id: 'multiple_choice', title: 'Phần I. Trắc nghiệm' });
+     if (groups.true_false_cluster.length > 0) tabs.push({ id: 'true_false_cluster', title: 'Phần II. Đúng/Sai' });
+     if (groups.short_answer.length > 0) tabs.push({ id: 'short_answer', title: 'Phần III. Trả lời ngắn' });
+     if (groups.essay.length > 0) tabs.push({ id: 'essay', title: 'Phần IV. Tự luận' });
+
+     return { parts: res, totalQuizzes: qIndex, groupedParts: groups, availableTabs: tabs };
   }, [content]);
 
-  // Xác định loại câu hỏi thực sự (xử lý essay ngầm)
-  const getQuestionType = (data: any): string => {
-    const type = data.type || 'multiple_choice';
-    if (type === 'essay') return 'essay';
-    if (type === 'short_answer') return 'short_answer';
-    if (type === 'true_false_cluster') return 'true_false_cluster';
-    // MC không có options → coi là essay
-    if (type === 'multiple_choice' && (!data.options || data.options.length === 0)) return 'essay';
-    return 'multiple_choice';
-  };
+  const [activeTab, setActiveTab] = useState<string>('');
+
+  useEffect(() => {
+     if (availableTabs.length > 0 && (!activeTab || !availableTabs.find(t => t.id === activeTab))) {
+        setActiveTab(availableTabs[0].id);
+     }
+  }, [availableTabs, activeTab]);
 
   // Kiểm tra câu đã trả lời chưa
   const isQuestionAnswered = (qIndex: number, type: string, data: any) => {
@@ -694,16 +722,26 @@ export default function AzotaExamUI({
            </div>
         )}
 
-        {parts.map((p, idx) => {
-          if (p.type === 'md') {
-            return (
-              <div key={p.id} className="prose prose-indigo max-w-none text-gray-700 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
-                <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{p.content}</ReactMarkdown>
-              </div>
-            );
-          } else if (p.type === 'quiz') {
+        {/* HEADER TABS */}
+        {availableTabs.length > 0 && (
+           <div className="flex flex-wrap gap-2 mb-6">
+              {availableTabs.map(tab => (
+                 <button 
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-5 py-3 rounded-xl font-bold text-sm transition-all border-b-4 ${activeTab === tab.id ? 'bg-indigo-600 text-white border-indigo-800 shadow-md transform -translate-y-0.5' : 'bg-white text-slate-500 border-slate-200 hover:bg-indigo-50 hover:border-indigo-200'}`}
+                 >
+                    {tab.title}
+                 </button>
+              ))}
+           </div>
+        )}
+
+        {/* ACTIVE TAB CONTENT */}
+        {activeTab && groupedParts[activeTab as keyof typeof groupedParts].map((p, index) => {
             const data = p.content;
             const qIndex = p.qIndex;
+            const localIndex = index + 1;
             const type = data.type || 'multiple_choice';
             const realType = getQuestionType(data);
             const isEssay = realType === 'essay';
@@ -723,7 +761,7 @@ export default function AzotaExamUI({
               <div key={p.id} id={`question-${qIndex}`} className={`bg-white rounded-2xl p-6 shadow-sm border-2 transition-all ${isSubmitted ? 'border-gray-200' : 'border-slate-200 hover:border-indigo-300'}`}>
                  <div className="flex items-start gap-3 mb-6">
                     <div className="flex flex-col items-center shrink-0">
-                       <span className="bg-indigo-600 text-white font-bold px-3 py-1 rounded-lg text-sm mb-1 shadow-sm">Câu {qIndex}</span>
+                       <span className="bg-indigo-600 text-white font-bold px-3 py-1 rounded-lg text-sm mb-1 shadow-sm">Câu {localIndex}</span>
                        {isSubmitted && qScore && (
                          <span className={`text-xs font-bold px-2 py-0.5 rounded-full ${qScore.earned >= qScore.max * 0.8 ? 'bg-green-100 text-green-700' : qScore.earned > 0 ? 'bg-orange-100 text-orange-700' : 'bg-red-100 text-red-700'}`}>
                            {qScore.earned.toFixed(2)}/{qScore.max.toFixed(2)}
@@ -1107,8 +1145,6 @@ export default function AzotaExamUI({
                  )}
               </div>
             );
-          }
-          return null;
         })}
 
 
@@ -1120,66 +1156,77 @@ export default function AzotaExamUI({
            <h3 className="font-extrabold text-slate-800 mb-4 flex items-center gap-2 border-b border-slate-100 pb-3">
              <ListTodo className="w-5 h-5 text-indigo-600" /> Tiến độ làm bài
            </h3>
-           <div className="flex-1 overflow-y-auto no-scrollbar pr-1 pb-4">
-              <div className="grid grid-cols-5 gap-2">
-                 {Array.from({ length: totalQuizzes }).map((_, i) => {
-                    const qn = i + 1;
-                    const p = parts.find(part => part.type === 'quiz' && part.qIndex === qn);
-                    let isAnswered = false;
-                    let isCorrect = false;
-                    
-                    if (p && p.type === 'quiz') {
-                       isAnswered = isQuestionAnswered(qn, p.content.type || 'multiple_choice', p.content);
-                       
-                       if (isSubmitted) {
-                          const ans = answers[qn.toString()];
-                          const realType = getQuestionType(p.content);
-                          if (realType === 'multiple_choice') {
-                             isCorrect = ans === p.content.answerIndex;
-                          } else if (realType === 'true_false_cluster') {
-                             const items = p.content.options || p.content.statements || [];
-                             isCorrect = ans ? calculateTrueFalseScore(ans, items) === 1.0 : false;
-                          } else if (realType === 'short_answer') {
-                             isCorrect = normalizeAnswer(String(ans || '')) !== '' && normalizeAnswer(String(ans || '')) === normalizeAnswer(p.content.exactAnswer || p.content.correctAnswer || '');
-                          }
-                       }
-                    }
+           <div className="flex-1 overflow-y-auto no-scrollbar pr-1 pb-4 space-y-6">
+              {availableTabs.map(tab => {
+                 const items = groupedParts[tab.id as keyof typeof groupedParts] || [];
+                 if (items.length === 0) return null;
 
-                    let boxClass = "bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100";
-                    if (!isSubmitted) {
-                       if (isAnswered) boxClass = "bg-indigo-600 border-indigo-600 text-white shadow-sm";
-                    } else {
-                       const realType = p ? getQuestionType(p.content) : 'multiple_choice';
-                       
-                       if (realType === 'essay') {
-                          // Câu essay: xanh dương nếu đã trả lời, xám nếu chưa
-                          if (gradingStatus[qn]?.result) {
-                            boxClass = gradingStatus[qn].result.passed ? "bg-green-500 border-green-500 text-white" : "bg-orange-500 border-orange-500 text-white";
-                          } else {
-                            boxClass = isAnswered ? "bg-blue-500 border-blue-500 text-white" : "bg-slate-200 border-slate-300 text-slate-500";
-                          }
-                       } else {
-                          if (isCorrect) boxClass = "bg-green-500 border-green-500 text-white";
-                          else boxClass = "bg-red-500 border-red-500 text-white";
-                       }
-                    }
+                 return (
+                    <div key={tab.id}>
+                       <h4 className="font-bold text-xs text-slate-400 uppercase mb-3 px-1">{tab.title}</h4>
+                       <div className="grid grid-cols-5 gap-2">
+                          {items.map((p, index) => {
+                             const localIndex = index + 1;
+                             const qIndex = p.qIndex;
+                             let isAnswered = false;
+                             let isCorrect = false;
+                             
+                             if (p && p.type === 'quiz') {
+                                isAnswered = isQuestionAnswered(qIndex, p.content.type || 'multiple_choice', p.content);
+                                
+                                if (isSubmitted) {
+                                   const ans = answers[qIndex.toString()];
+                                   const realType = getQuestionType(p.content);
+                                   if (realType === 'multiple_choice') {
+                                      isCorrect = ans === p.content.answerIndex;
+                                   } else if (realType === 'true_false_cluster') {
+                                      const items = p.content.options || p.content.statements || [];
+                                      isCorrect = ans ? calculateTrueFalseScore(ans, items) === 1.0 : false;
+                                   } else if (realType === 'short_answer') {
+                                      isCorrect = normalizeAnswer(String(ans || '')) !== '' && normalizeAnswer(String(ans || '')) === normalizeAnswer(p.content.exactAnswer || p.content.correctAnswer || '');
+                                   }
+                                }
+                             }
 
-                    return (
-                       <button 
-                         key={qn} 
-                         onClick={() => {
-                            const el = document.getElementById(`question-${qn}`);
-                            if (el) {
-                               el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                            }
-                         }}
-                         className={`aspect-square rounded-lg border-2 font-bold text-sm flex items-center justify-center transition-colors ${boxClass}`}
-                       >
-                         {qn}
-                       </button>
-                    );
-                 })}
-              </div>
+                             let boxClass = "bg-slate-50 border-slate-200 text-slate-600 hover:bg-slate-100";
+                             if (!isSubmitted) {
+                                if (isAnswered) boxClass = "bg-indigo-600 border-indigo-600 text-white shadow-sm";
+                             } else {
+                                const realType = p ? getQuestionType(p.content) : 'multiple_choice';
+                                
+                                if (realType === 'essay') {
+                                   // Câu essay: xanh dương nếu đã trả lời, xám nếu chưa
+                                   if (gradingStatus[qIndex]?.result) {
+                                     boxClass = gradingStatus[qIndex].result.passed ? "bg-green-500 border-green-500 text-white" : "bg-orange-500 border-orange-500 text-white";
+                                   } else {
+                                     boxClass = isAnswered ? "bg-blue-500 border-blue-500 text-white" : "bg-slate-200 border-slate-300 text-slate-500";
+                                   }
+                                } else {
+                                   if (isCorrect) boxClass = "bg-green-500 border-green-500 text-white";
+                                   else boxClass = "bg-red-500 border-red-500 text-white";
+                                }
+                             }
+
+                             return (
+                                <button 
+                                  key={qIndex} 
+                                  onClick={() => {
+                                     if (activeTab !== tab.id) setActiveTab(tab.id);
+                                     setTimeout(() => {
+                                         const el = document.getElementById(`question-${qIndex}`);
+                                         if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                     }, 100);
+                                  }}
+                                  className={`aspect-square rounded-lg border-2 font-bold text-sm flex items-center justify-center transition-colors ${boxClass}`}
+                                >
+                                  {localIndex}
+                                </button>
+                             );
+                          })}
+                       </div>
+                    </div>
+                 );
+              })}
            </div>
            
            {!isSubmitted && (
