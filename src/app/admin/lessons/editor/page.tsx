@@ -532,7 +532,28 @@ const parseMarkdownToBlocks = (content: string): Block[] => {
           if (txt) res.push({ id: Math.random().toString(36).substring(7), type: 'md', content: txt });
       }
       try {
-          const data = JSON.parse(match[1].replace(/\n$/, ''));
+          let rawJson = match[1].replace(/\n$/, '');
+          // Tiền xử lý phục hồi lỗi LaTeX escape: AI quên escape nên JSON parse \n thành kí tự xuống dòng
+          rawJson = rawJson
+              .replace(/\\n(?=eq|otin|abla|atural)/g, '\\\\n')
+              .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
+              .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
+              .replace(/\\b(?=egin)/g, '\\\\b')
+              .replace(/\\f(?=rac|orall)/g, '\\\\f')
+              .replace(/\\e(?=nd)/g, '\\\\e');
+
+          let data;
+          try {
+             data = JSON.parse(rawJson);
+          } catch(e1) {
+             // Thử vá lỗi JSON bị AI cắt cụt do vượt max token
+             let patchedJson = rawJson.trim();
+             if (patchedJson.endsWith(',')) patchedJson = patchedJson.slice(0, -1);
+             if (patchedJson.endsWith('"')) patchedJson += '}]';
+             else if (patchedJson.endsWith('}')) patchedJson += ']';
+             else if (!patchedJson.endsWith(']')) patchedJson += '}]';
+             data = JSON.parse(patchedJson);
+          }
           if (Array.isArray(data)) {
               data.forEach(item => {
                   if (item.question) {
@@ -617,9 +638,10 @@ LOẠI 1: TRẮC NGHIỆM 4 LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
 \`\`\`
 
 GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
-- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$$.
-- TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Nếu không làm điều này, JSON sẽ BỊ LỖI và bóc tách sẽ hỏng.
-- ĐỪNG xuất ra bất kỳ giải thích chữ nào bên ngoài các khối \`\`\`quiz\`\`\`. Chỉ xuất các khối quiz.`;
+- [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$.
+- [BẮT BUỘC ESCAPE LATEX]: TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Ví dụ: \\\\neq, \\\\Rightarrow, \\\\begin{cases}. Kí hiệu xuống dòng của hệ phương trình cũng phải viết là \\\\\\\\. Nếu không, file JSON SẼ BỊ HỎNG HOÀN TOÀN và BẠN SẼ BỊ PHẠT!
+- [KHÔNG ĐƯỢC CẮT CỤT DỮ LIỆU]: BẠN BẮT BUỘC PHẢI TRẢ VỀ CHUỖI JSON HOÀN CHỈNH, ĐÓNG ĐẦY ĐỦ NGOẶC \`}\` HOẶC \`]\` Ở CUỐI! TUYỆT ĐỐI KHÔNG TRẢ VỀ DỮ LIỆU BỊ CẮT CỤT GIỮA CHỪNG!
+- ĐỪNG xuất ra bất kỳ giải thích chữ nào bên ngoài các khối ```quiz```. Chỉ xuất các khối quiz.`;
   }
 
   if (!isPresentation) {
