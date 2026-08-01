@@ -823,7 +823,7 @@ export default function AzotaExamUI({
                                 {['A','B','C','D'][optIdx]}
                              </div>
                              <div className="flex-1 min-w-0 prose prose-sm max-w-none text-slate-700 prose-p:my-0">
-                                <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{opt}</ReactMarkdown>
+                                <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{opt?.replace(/^(\s*-?\d+)\.(\s+|$)/, '$1\\.$2')}</ReactMarkdown>
                              </div>
                           </button>
                         );
