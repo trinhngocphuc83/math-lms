@@ -106,11 +106,28 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const end = ta.selectionEnd;
     const val = ta.value;
 
-    const selectedText = val.substring(start, end);
     const beforeText = val.substring(0, start);
     const afterText = val.substring(end);
-
     const prefix = '#'.repeat(level as number) + ' ';
+
+    if (start === end) {
+      const newValue = beforeText + prefix + afterText;
+      if (onValueChange) {
+        onValueChange(newValue);
+      } else {
+        const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+        onChange(event);
+      }
+      setTimeout(() => {
+        if (textareaRef.current) {
+          textareaRef.current.focus();
+          textareaRef.current.setSelectionRange(start + prefix.length, start + prefix.length);
+        }
+      }, 0);
+      return;
+    }
+
+    const selectedText = val.substring(start, end);
     const wrappedText = selectedText.split('\n').map(l => {
         if (l.trim() === '') return l;
         return prefix + l.replace(/^#+\s*/, '');
