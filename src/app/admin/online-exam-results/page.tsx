@@ -5,7 +5,7 @@ import { Loader2, Search, Filter, RefreshCw, Download, Image as ImageIcon, Troph
 import Link from "next/link";
 import { fetchOnlineExamResultsAdmin } from "./actions";
 import * as XLSX from "xlsx";
-import { toPng } from "html-to-image";
+import { captureElement, downloadOrShare } from "@/utils/imageExport";
 
 export default function OnlineExamResultsPage() {
   const [results, setResults] = useState<any[]>([]);
@@ -97,11 +97,9 @@ export default function OnlineExamResultsPage() {
     if (!leaderboardRef.current) return;
     setIsExportingImage(true);
     try {
-      const dataUrl = await toPng(leaderboardRef.current, { cacheBust: true, backgroundColor: 'transparent', pixelRatio: 2 });
-      const link = document.createElement('a');
-      link.href = dataUrl;
-      link.download = `BangVang_${new Date().getTime()}.png`;
-      link.click();
+      const dataUrl = await captureElement(leaderboardRef.current);
+      const fileName = `BangVang_${new Date().getTime()}.png`;
+      await downloadOrShare(dataUrl, fileName);
     } catch (err) {
       alert("Có lỗi khi xuất ảnh: " + err);
     }
@@ -121,11 +119,9 @@ export default function OnlineExamResultsPage() {
         return;
       }
       try {
-        const dataUrl = await toPng(certificateRef.current, { cacheBust: true, backgroundColor: 'transparent', pixelRatio: 2 });
-        const link = document.createElement('a');
-        link.href = dataUrl;
-        link.download = `PhieuDiem_${student.profiles?.full_name}_${new Date().getTime()}.png`;
-        link.click();
+        const dataUrl = await captureElement(certificateRef.current);
+        const fileName = `PhieuDiem_${student.profiles?.full_name}_${new Date().getTime()}.png`;
+        await downloadOrShare(dataUrl, fileName);
       } catch (err) {
         alert("Có lỗi khi xuất ảnh: " + err);
       }

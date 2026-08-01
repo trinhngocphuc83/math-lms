@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { toPng } from "html-to-image";
+import { captureElement, downloadOrShare } from "@/utils/imageExport";
 import { Loader2, ImageIcon } from "lucide-react";
 
 export default function ScoresTab({ classId, classInfo, enrollments }: { classId: string, classInfo: any, enrollments: any[] }) {
@@ -19,19 +19,12 @@ export default function ScoresTab({ classId, classInfo, enrollments }: { classId
     if (!printRef.current) return;
     setExportingImage(true); 
     try {
-      const dataUrl = await toPng(printRef.current, {
-        cacheBust: true,
-        backgroundColor: "#ffffff",
-        pixelRatio: 2,
-        skipFonts: true
-      });
-      const link = document.createElement("a");
-      link.download = `Bao_cao_diem_${classInfo?.name || 'Lop'}_${new Date().getTime()}.png`;
-      link.href = dataUrl;
-      link.click();
-    } catch (err) {
-      console.error(err);
-      alert("Đã xảy ra lỗi khi xuất ảnh! Vui lòng thử lại.");
+      const dataUrl = await captureElement(printRef.current);
+      const fileName = `Bao_cao_diem_${classInfo?.name || 'Lop'}_${new Date().getTime()}.png`;
+      await downloadOrShare(dataUrl, fileName);
+    } catch (err: any) {
+      console.error('Export image error:', err);
+      alert(`Đã xảy ra lỗi khi xuất ảnh! Chi tiết: ${err.message || 'Unknown error'}`);
     }
     setExportingImage(false);
   };

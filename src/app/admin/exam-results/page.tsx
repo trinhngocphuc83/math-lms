@@ -7,7 +7,7 @@ import { fetchExamResultsAdmin } from "./actions";
 import ReviewModal from './ReviewModal';
 import RemedialModal from './RemedialModal';
 import * as XLSX from 'xlsx';
-import { toPng } from 'html-to-image';
+import { captureElement, downloadOrShare } from "@/utils/imageExport";
 import ReportCardTemplate from './ReportCardTemplate';
 
 export default function ExamResultsPage() {
@@ -59,14 +59,12 @@ export default function ExamResultsPage() {
     
     setIsExportingImage(true);
     try {
-      const dataUrl = await toPng(reportCardRef.current, { cacheBust: true, pixelRatio: 2 });
-      const link = document.createElement('a');
-      link.download = `BangVang_${new Date().getTime()}.png`;
-      link.href = dataUrl;
-      link.click();
-    } catch (err) {
-      console.error(err);
-      alert("Lỗi khi xuất ảnh!");
+      const dataUrl = await captureElement(reportCardRef.current);
+      const fileName = `BangVang_${new Date().getTime()}.png`;
+      await downloadOrShare(dataUrl, fileName);
+    } catch (err: any) {
+      console.error('Export image error:', err);
+      alert(`Đã xảy ra lỗi khi xuất ảnh! Chi tiết: ${err.message || 'Unknown error'}`);
     } finally {
       setIsExportingImage(false);
     }

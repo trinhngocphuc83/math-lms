@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Trash2, Save, Loader2, Calendar, Check, AlertCircle, ImageIcon, Download } from "lucide-react";
 import { getSessions, createSession, deleteSession, getAttendance, saveBulkAttendance } from "./attendanceActions";
-import { toPng } from "html-to-image";
+import { captureElement, downloadOrShare } from "@/utils/imageExport";
 
 export default function AttendanceTab({ classId, enrollments, className }: { classId: string, enrollments: any[], className?: string }) {
   const printRef = useRef<HTMLDivElement>(null);
@@ -153,19 +153,12 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
     if (!printRef.current) return;
     setSaving(true); 
     try {
-      const dataUrl = await toPng(printRef.current, {
-        cacheBust: true,
-        backgroundColor: "#ffffff",
-        pixelRatio: 2,
-        skipFonts: true // Tránh lỗi load font nếu có
-      });
-      const link = document.createElement("a");
-      link.download = `Bao_cao_diem_danh_${className || 'Lop'}_${getTodayString()}.png`;
-      link.href = dataUrl;
-      link.click();
-    } catch (err) {
-      console.error(err);
-      alert("Đã xảy ra lỗi khi xuất ảnh! Vui lòng thử lại.");
+      const dataUrl = await captureElement(printRef.current);
+      const fileName = `Bao_cao_diem_danh_${className || 'Lop'}_${getTodayString()}.png`;
+      await downloadOrShare(dataUrl, fileName);
+    } catch (err: any) {
+      console.error('Export image error:', err);
+      alert(`Đã xảy ra lỗi khi xuất ảnh! Chi tiết: ${err.message || 'Unknown error'}`);
     }
     setSaving(false);
   };
@@ -306,7 +299,7 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
       </div>
 
       {/* GIAO DIỆN BÁO CÁO ẨN ĐỂ XUẤT ẢNH */}
-      <div className="fixed top-[200vh] left-0 pointer-events-none -z-50">
+      <div style={{ position: 'absolute', left: '-9999px', top: 0, zIndex: -50 }}>
         <div ref={printRef} className="w-[850px] bg-white p-0 font-sans border-0 relative">
           <div className="bg-emerald-500 rounded-[2rem] p-3 shadow-xl">
              <div className="bg-emerald-50 rounded-[1.5rem] p-8 border-4 border-white shadow-inner flex flex-col h-full relative overflow-hidden">
