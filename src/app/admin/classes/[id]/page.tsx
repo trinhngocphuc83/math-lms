@@ -18,7 +18,10 @@ export default function ClassDetailsPage() {
   const params = useParams();
   const router = useRouter();
   const classId = params.id as string;
-  const [activeTab, setActiveTab] = useState<'students' | 'attendance' | 'tuition' | 'scores'>('students');
+  const [activeTab, setActiveTab] = useState<'menu' | 'students' | 'attendance' | 'tuition' | 'scores'>('students');
+  useEffect(() => {
+    if (window.innerWidth < 768) setActiveTab('menu');
+  }, []);
 
   // Search Students
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
@@ -209,7 +212,7 @@ export default function ClassDetailsPage() {
       </div>
 
       {/* TABS */}
-      <div className="flex gap-2 overflow-x-auto custom-scrollbar mb-6 pb-2 border-b border-gray-100">
+      <div className="hidden md:flex gap-2 overflow-x-auto custom-scrollbar mb-6 pb-2 border-b border-gray-100">
         <button 
           onClick={() => setActiveTab('students')} 
           className={`flex items-center gap-2 px-5 py-3 font-bold rounded-t-xl transition-all border-b-2 ${activeTab === 'students' ? 'border-teal-600 text-teal-700 bg-teal-50/50' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'}`}
@@ -236,8 +239,35 @@ export default function ClassDetailsPage() {
         </button>
       </div>
 
+      
+      {/* MENU MOBILE */}
+      <div className="md:hidden grid grid-cols-2 gap-4 mb-6 px-2">
+        <button onClick={() => setActiveTab('students')} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
+          <div className="w-16 h-16 rounded-2xl bg-teal-50 flex items-center justify-center text-teal-600"><Users size={32}/></div>
+          <span className="font-bold text-gray-700 text-sm uppercase tracking-wide">Học sinh</span>
+        </button>
+        <button onClick={() => setActiveTab('attendance')} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
+          <div className="w-16 h-16 rounded-2xl bg-emerald-50 flex items-center justify-center text-emerald-600"><CheckSquare size={32}/></div>
+          <span className="font-bold text-gray-700 text-sm uppercase tracking-wide">Điểm danh</span>
+        </button>
+        <button onClick={() => setActiveTab('tuition')} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
+          <div className="w-16 h-16 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600"><DollarSign size={32}/></div>
+          <span className="font-bold text-gray-700 text-sm uppercase tracking-wide">Học phí</span>
+        </button>
+        <button onClick={() => setActiveTab('scores')} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
+          <div className="w-16 h-16 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600"><FileSpreadsheet size={32}/></div>
+          <span className="font-bold text-gray-700 text-sm uppercase tracking-wide">Báo điểm</span>
+        </button>
+      </div>
+
       {activeTab === 'students' && (
-        <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
+        <div className="fixed md:static inset-0 z-[100] md:z-auto bg-gray-50 md:bg-transparent flex flex-col h-[100dvh] md:h-auto overflow-hidden md:overflow-visible animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <div className="md:hidden bg-white px-4 py-3 border-b border-gray-200 flex items-center gap-3 shrink-0 shadow-sm z-[110]">
+             <button onClick={() => setActiveTab('menu')} className="p-2 -ml-2 bg-gray-100 rounded-full text-gray-600"><ArrowLeft size={20}/></button>
+             <h2 className="font-bold text-lg text-gray-800">Học sinh Lớp {classInfo?.name}</h2>
+          </div>
+          <div className="flex-1 overflow-y-auto custom-scrollbar md:overflow-visible md:h-auto p-3 md:p-0">
+
           <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
             <h2 className="text-xl md:text-2xl font-bold text-gray-800 flex items-center gap-2">
               <Users className="w-5 h-5 md:w-6 md:h-6 text-teal-600" />
@@ -359,24 +389,43 @@ export default function ClassDetailsPage() {
           </table>
         </div>
       </div>
-      </div>
+          </div>
+        </div>
       )}
 
       {activeTab === 'attendance' && (
-        <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-          <AttendanceTab classId={classId} enrollments={enrollments} className={classInfo.name} />
+        <div className="fixed md:static inset-0 z-[100] md:z-auto bg-gray-50 md:bg-transparent flex flex-col h-[100dvh] md:h-auto overflow-hidden md:overflow-visible animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <div className="md:hidden bg-white px-4 py-3 border-b border-gray-200 flex items-center gap-3 shrink-0 shadow-sm z-[110]">
+             <button onClick={() => setActiveTab('menu')} className="p-2 -ml-2 bg-gray-100 rounded-full text-gray-600"><ArrowLeft size={20}/></button>
+             <h2 className="font-bold text-lg text-gray-800">Điểm danh Lớp {classInfo?.name}</h2>
+          </div>
+          <div className="flex-1 overflow-y-auto custom-scrollbar md:overflow-visible md:h-auto p-3 md:p-0">
+            <AttendanceTab classId={classId} enrollments={enrollments} className={classInfo.name} />
+          </div>
         </div>
       )}
 
       {activeTab === 'tuition' && (
-        <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-          <TuitionTab classId={classId} classInfo={classInfo} enrollments={enrollments} />
+        <div className="fixed md:static inset-0 z-[100] md:z-auto bg-gray-50 md:bg-transparent flex flex-col h-[100dvh] md:h-auto overflow-hidden md:overflow-visible animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <div className="md:hidden bg-white px-4 py-3 border-b border-gray-200 flex items-center gap-3 shrink-0 shadow-sm z-[110]">
+             <button onClick={() => setActiveTab('menu')} className="p-2 -ml-2 bg-gray-100 rounded-full text-gray-600"><ArrowLeft size={20}/></button>
+             <h2 className="font-bold text-lg text-gray-800">Học phí Lớp {classInfo?.name}</h2>
+          </div>
+          <div className="flex-1 overflow-y-auto custom-scrollbar md:overflow-visible md:h-auto p-3 md:p-0">
+            <TuitionTab classId={classId} classInfo={classInfo} enrollments={enrollments} />
+          </div>
         </div>
       )}
 
       {activeTab === 'scores' && (
-        <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
-          <ScoresTab classId={classId} classInfo={classInfo} enrollments={enrollments} />
+        <div className="fixed md:static inset-0 z-[100] md:z-auto bg-gray-50 md:bg-transparent flex flex-col h-[100dvh] md:h-auto overflow-hidden md:overflow-visible animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <div className="md:hidden bg-white px-4 py-3 border-b border-gray-200 flex items-center gap-3 shrink-0 shadow-sm z-[110]">
+             <button onClick={() => setActiveTab('menu')} className="p-2 -ml-2 bg-gray-100 rounded-full text-gray-600"><ArrowLeft size={20}/></button>
+             <h2 className="font-bold text-lg text-gray-800">Báo điểm Lớp {classInfo?.name}</h2>
+          </div>
+          <div className="flex-1 overflow-y-auto custom-scrollbar md:overflow-visible md:h-auto p-3 md:p-0">
+            <ScoresTab classId={classId} classInfo={classInfo} enrollments={enrollments} />
+          </div>
         </div>
       )}
 
