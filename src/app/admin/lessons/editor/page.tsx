@@ -641,7 +641,7 @@ GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
 - [BẮT BUỘC VỀ TOÁN HỌC]: Tất cả công thức toán học trong JSON BẮT BUỘC phải được bọc trong cặp dấu $...$.
 - [BẮT BUỘC ESCAPE LATEX]: TẤT CẢ các ký tự gạch chéo (\\) bên trong chuỗi JSON BẮT BUỘC PHẢI NHÂN ĐÔI thành (\\\\). Ví dụ: \\\\neq, \\\\Rightarrow, \\\\begin{cases}. Kí hiệu xuống dòng của hệ phương trình cũng phải viết là \\\\\\\\. Nếu không, file JSON SẼ BỊ HỎNG HOÀN TOÀN và BẠN SẼ BỊ PHẠT!
 - [KHÔNG ĐƯỢC CẮT CỤT DỮ LIỆU]: BẠN BẮT BUỘC PHẢI TRẢ VỀ CHUỖI JSON HOÀN CHỈNH, ĐÓNG ĐẦY ĐỦ NGOẶC \`}\` HOẶC \`]\` Ở CUỐI! TUYỆT ĐỐI KHÔNG TRẢ VỀ DỮ LIỆU BỊ CẮT CỤT GIỮA CHỪNG!
-- ĐỪNG xuất ra bất kỳ giải thích chữ nào bên ngoài các khối ```quiz```. Chỉ xuất các khối quiz.`;
+- ĐỪNG xuất ra bất kỳ giải thích chữ nào bên ngoài các khối \`\`\`quiz\`\`\`. Chỉ xuất các khối quiz.`;
   }
 
   if (!isPresentation) {

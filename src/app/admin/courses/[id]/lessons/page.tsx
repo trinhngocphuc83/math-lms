@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { Plus, Edit2, Trash2, BookOpen, Layers, ArrowLeft, Loader2, ChevronDown, ChevronRight, FileEdit, Sparkles, Video, Pencil, FileText, Target } from "lucide-react";
+import { Plus, Edit2, Trash2, BookOpen, Layers, ArrowLeft, Loader2, ChevronDown, ChevronRight, FileEdit, Sparkles, Video, Pencil, FileText, Target, ArrowUp, ArrowDown } from "lucide-react";
 import { useRouter, useParams } from "next/navigation";
 import Link from "next/link";
 
@@ -21,12 +21,14 @@ export default function CourseStructurePage() {
   const [isChapterModalOpen, setIsChapterModalOpen] = useState(false);
   const [chapterTitle, setChapterTitle] = useState("");
   const [isSavingChapter, setIsSavingChapter] = useState(false);
+  const [editingChapterId, setEditingChapterId] = useState<string | null>(null);
 
   // Modal Thêm Bài Học
   const [isLessonModalOpen, setIsLessonModalOpen] = useState(false);
   const [activeChapterId, setActiveChapterId] = useState("");
   const [lessonTitle, setLessonTitle] = useState("");
   const [isSavingLesson, setIsSavingLesson] = useState(false);
+  const [editingLessonId, setEditingLessonId] = useState<string | null>(null);
 
   // Modal Thêm Mục (Module)
   const [isModuleModalOpen, setIsModuleModalOpen] = useState(false);
@@ -83,64 +85,134 @@ export default function CourseStructurePage() {
     );
   };
 
-  const handleCreateChapter = async () => {
+  const openChapterModal = (chapter?: any) => {
+    if (chapter) {
+      setEditingChapterId(chapter.id);
+      setChapterTitle(chapter.title);
+    } else {
+      setEditingChapterId(null);
+      setChapterTitle("");
+    }
+    setIsChapterModalOpen(true);
+  };
+
+  const handleSaveChapter = async () => {
     if (!chapterTitle) return alert("Vui lòng nhập tên chương!");
     setIsSavingChapter(true);
     
-    const { error } = await supabase.from('chapters').insert([{
-      course_id: courseId,
-      title: chapterTitle,
-      order_index: chapters.length + 1
-    }]);
-
-    setIsSavingChapter(false);
-    if (error) {
-      alert("Lỗi tạo chương: " + error.message);
+    if (editingChapterId) {
+      const { error } = await supabase.from('chapters').update({ title: chapterTitle }).eq('id', editingChapterId);
+      setIsSavingChapter(false);
+      if (error) alert("Lỗi sửa chương: " + error.message);
+      else { setIsChapterModalOpen(false); loadStructure(); }
     } else {
-      setIsChapterModalOpen(false);
-      setChapterTitle("");
+      const { error } = await supabase.from('chapters').insert([{
+        course_id: courseId,
+        title: chapterTitle,
+        order_index: chapters.length + 1
+      }]);
+
+      setIsSavingChapter(false);
+      if (error) {
+        alert("Lỗi tạo chương: " + error.message);
+      } else {
+        setIsChapterModalOpen(false);
+        setChapterTitle("");
+        loadStructure();
+      }
+    }
+  };
+
+  const handleMoveChapter = async (index: number, direction: 'up' | 'down', e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (direction === 'up' && index > 0) {
+      const current = chapters[index];
+      const prev = chapters[index - 1];
+      const tempOrder = current.order_index;
+      await supabase.from('chapters').update({ order_index: prev.order_index }).eq('id', current.id);
+      await supabase.from('chapters').update({ order_index: tempOrder }).eq('id', prev.id);
+      loadStructure();
+    } else if (direction === 'down' && index < chapters.length - 1) {
+      const current = chapters[index];
+      const next = chapters[index + 1];
+      const tempOrder = current.order_index;
+      await supabase.from('chapters').update({ order_index: next.order_index }).eq('id', current.id);
+      await supabase.from('chapters').update({ order_index: tempOrder }).eq('id', next.id);
       loadStructure();
     }
   };
 
-  const openLessonModal = (chapterId: string) => {
+  const openLessonModal = (chapterId: string, lesson?: any) => {
     setActiveChapterId(chapterId);
-    setLessonTitle("");
+    if (lesson) {
+      setEditingLessonId(lesson.id);
+      setLessonTitle(lesson.title);
+    } else {
+      setEditingLessonId(null);
+      setLessonTitle("");
+    }
     setIsLessonModalOpen(true);
   };
 
-  const handleCreateLesson = async () => {
+  const handleSaveLesson = async () => {
     if (!lessonTitle) return alert("Vui lòng nhập tên bài học!");
     setIsSavingLesson(true);
     
-    const chapterLessons = lessons.filter(l => l.chapter_id === activeChapterId);
-    
-    const { data: lessonData, error: lessonError } = await supabase.from('lessons').insert([{
-      course_id: courseId,
-      chapter_id: activeChapterId,
-      title: lessonTitle,
-      order_index: chapterLessons.length + 1,
-      content_jsonb: {}
-    }]).select().single();
-
-    if (lessonError) {
+    if (editingLessonId) {
+      const { error } = await supabase.from('lessons').update({ title: lessonTitle }).eq('id', editingLessonId);
       setIsSavingLesson(false);
-      return alert("Lỗi tạo bài học: " + lessonError.message);
-    }
+      if (error) alert("Lỗi sửa bài học: " + error.message);
+      else { setIsLessonModalOpen(false); loadStructure(); }
+    } else {
+      const chapterLessons = lessons.filter(l => l.chapter_id === activeChapterId);
+      
+      const { data: lessonData, error: lessonError } = await supabase.from('lessons').insert([{
+        course_id: courseId,
+        chapter_id: activeChapterId,
+        title: lessonTitle,
+        order_index: chapterLessons.length + 1,
+        content_jsonb: {}
+      }]).select().single();
 
-    // Tự động tạo 5 mô-đun
-    if (lessonData) {
-      const predefinedModules = [
-        { lesson_id: lessonData.id, type: 'theory', title: 'Lý thuyết & Phương pháp giải (Bài giảng tương tác)', order_index: 1 },
-        { lesson_id: lessonData.id, type: 'practice', title: 'Luyện tập', order_index: 2 },
-        { lesson_id: lessonData.id, type: 'document', title: 'Tài liệu & Video', order_index: 3 }
-      ];
-      await supabase.from('lesson_modules').insert(predefinedModules);
-    }
+      if (lessonError) {
+        setIsSavingLesson(false);
+        return alert("Lỗi tạo bài học: " + lessonError.message);
+      }
 
-    setIsSavingLesson(false);
-    setIsLessonModalOpen(false);
-    loadStructure();
+      // Tự động tạo 5 mô-đun
+      if (lessonData) {
+        const predefinedModules = [
+          { lesson_id: lessonData.id, type: 'theory', title: 'Lý thuyết & Phương pháp giải (Bài giảng tương tác)', order_index: 1 },
+          { lesson_id: lessonData.id, type: 'practice', title: 'Luyện tập', order_index: 2 },
+          { lesson_id: lessonData.id, type: 'document', title: 'Tài liệu & Video', order_index: 3 }
+        ];
+        await supabase.from('lesson_modules').insert(predefinedModules);
+      }
+
+      setIsSavingLesson(false);
+      setIsLessonModalOpen(false);
+      loadStructure();
+    }
+  };
+
+  const handleMoveLesson = async (chapterId: string, index: number, direction: 'up' | 'down', e: React.MouseEvent) => {
+    e.stopPropagation();
+    const chapterLessons = lessons.filter(l => l.chapter_id === chapterId);
+    if (direction === 'up' && index > 0) {
+      const current = chapterLessons[index];
+      const prev = chapterLessons[index - 1];
+      const tempOrder = current.order_index;
+      await supabase.from('lessons').update({ order_index: prev.order_index }).eq('id', current.id);
+      await supabase.from('lessons').update({ order_index: tempOrder }).eq('id', prev.id);
+      loadStructure();
+    } else if (direction === 'down' && index < chapterLessons.length - 1) {
+      const current = chapterLessons[index];
+      const next = chapterLessons[index + 1];
+      const tempOrder = current.order_index;
+      await supabase.from('lessons').update({ order_index: next.order_index }).eq('id', current.id);
+      await supabase.from('lessons').update({ order_index: tempOrder }).eq('id', next.id);
+      loadStructure();
+    }
   };
 
   const handleGenerateDefaultModules = async (lessonId: string) => {
@@ -245,7 +317,7 @@ export default function CourseStructurePage() {
             </p>
           </div>
           <button 
-            onClick={() => setIsChapterModalOpen(true)}
+            onClick={() => openChapterModal()}
             className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2.5 rounded-lg font-medium flex items-center gap-2 transition-colors shadow-sm"
           >
             <Plus className="w-5 h-5" /> Thêm Chương mới
@@ -278,13 +350,12 @@ export default function CourseStructurePage() {
                       {chapterLessons.length} bài
                     </span>
                   </div>
-                  <button 
-                    onClick={(e) => handleDeleteChapter(chapter.id, e)} 
-                    className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
-                    title="Xóa chương"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
+                  <div className="flex items-center gap-1">
+                    <button onClick={(e) => handleMoveChapter(chapters.indexOf(chapter), 'up', e)} disabled={chapters.indexOf(chapter) === 0} className="p-1.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors disabled:opacity-30" title="Di chuyển lên"><ArrowUp className="w-4 h-4" /></button>
+                    <button onClick={(e) => handleMoveChapter(chapters.indexOf(chapter), 'down', e)} disabled={chapters.indexOf(chapter) === chapters.length - 1} className="p-1.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors disabled:opacity-30" title="Di chuyển xuống"><ArrowDown className="w-4 h-4" /></button>
+                    <button onClick={(e) => { e.stopPropagation(); openChapterModal(chapter); }} className="p-1.5 text-gray-400 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors" title="Đổi tên chương"><Edit2 className="w-4 h-4" /></button>
+                    <button onClick={(e) => handleDeleteChapter(chapter.id, e)} className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Xóa chương"><Trash2 className="w-4 h-4" /></button>
+                  </div>
                 </div>
 
                 {isExpanded && (
@@ -309,13 +380,11 @@ export default function CourseStructurePage() {
                                   {isLessonExpanded ? <ChevronDown className="w-4 h-4 text-gray-500" /> : <ChevronRight className="w-4 h-4 text-gray-500" />}
                                   <span className="font-semibold text-gray-800">{lesson.title}</span>
                                 </div>
-                                <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                                  <button 
-                                    onClick={(e) => handleDeleteLesson(lesson.id, e)}
-                                    className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors" title="Xóa bài"
-                                  >
-                                    <Trash2 className="w-4 h-4" />
-                                  </button>
+                                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <button onClick={(e) => handleMoveLesson(chapter.id, chapterLessons.indexOf(lesson), 'up', e)} disabled={chapterLessons.indexOf(lesson) === 0} className="p-1.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-colors disabled:opacity-30" title="Lên"><ArrowUp className="w-4 h-4" /></button>
+                                  <button onClick={(e) => handleMoveLesson(chapter.id, chapterLessons.indexOf(lesson), 'down', e)} disabled={chapterLessons.indexOf(lesson) === chapterLessons.length - 1} className="p-1.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-colors disabled:opacity-30" title="Xuống"><ArrowDown className="w-4 h-4" /></button>
+                                  <button onClick={(e) => { e.stopPropagation(); openLessonModal(chapter.id, lesson); }} className="p-1.5 text-gray-400 hover:text-teal-600 hover:bg-teal-50 rounded-md transition-colors" title="Đổi tên"><Edit2 className="w-4 h-4" /></button>
+                                  <button onClick={(e) => handleDeleteLesson(lesson.id, e)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors" title="Xóa bài"><Trash2 className="w-4 h-4" /></button>
                                 </div>
                               </div>
                               
@@ -449,7 +518,7 @@ export default function CourseStructurePage() {
       {isChapterModalOpen && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-xl w-full max-w-md p-6 shadow-xl animate-in zoom-in-95 duration-200">
-            <h2 className="text-lg font-bold text-gray-800 mb-4">Tạo Chương mới</h2>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">{editingChapterId ? 'Đổi tên Chương' : 'Tạo Chương mới'}</h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Tên chương (Chuyên đề)</label>
@@ -466,10 +535,10 @@ export default function CourseStructurePage() {
                 Hủy bỏ
               </button>
               <button 
-                onClick={handleCreateChapter} disabled={isSavingChapter}
+                onClick={handleSaveChapter} disabled={isSavingChapter}
                 className="px-5 py-2 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors flex items-center gap-2"
               >
-                {isSavingChapter ? <Loader2 className="w-4 h-4 animate-spin"/> : 'Tạo mới'}
+                {isSavingChapter ? <Loader2 className="w-4 h-4 animate-spin"/> : (editingChapterId ? 'Lưu thay đổi' : 'Tạo mới')}
               </button>
             </div>
           </div>
@@ -480,7 +549,7 @@ export default function CourseStructurePage() {
       {isLessonModalOpen && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-xl w-full max-w-md p-6 shadow-xl animate-in zoom-in-95 duration-200">
-            <h2 className="text-lg font-bold text-gray-800 mb-4">Thêm Bài học mới</h2>
+            <h2 className="text-lg font-bold text-gray-800 mb-4">{editingLessonId ? 'Đổi tên Bài học' : 'Thêm Bài học mới'}</h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Tên Bài học</label>
@@ -497,10 +566,10 @@ export default function CourseStructurePage() {
                 Hủy bỏ
               </button>
               <button 
-                onClick={handleCreateLesson} disabled={isSavingLesson}
+                onClick={handleSaveLesson} disabled={isSavingLesson}
                 className="px-5 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2"
               >
-                {isSavingLesson ? <Loader2 className="w-4 h-4 animate-spin"/> : 'Tạo Bài học'}
+                {isSavingLesson ? <Loader2 className="w-4 h-4 animate-spin"/> : (editingLessonId ? 'Lưu thay đổi' : 'Tạo Bài học')}
               </button>
             </div>
           </div>
