@@ -363,26 +363,71 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
         </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-teal-500">
-          <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Sĩ số đóng phí</div>
-          <div className="text-2xl font-black text-gray-800">{enrollments.length}</div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-6">
+        <div className="bg-white p-3 md:p-5 rounded-xl md:rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-teal-500">
+          <div className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-0.5 md:mb-1 line-clamp-1">Sĩ số đóng phí</div>
+          <div className="text-lg md:text-2xl font-black text-gray-800">{enrollments.length}</div>
         </div>
-        <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-blue-500">
-          <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Tổng Cần Thu</div>
-          <div className="text-2xl font-black text-blue-600">{totalExpected.toLocaleString('vi-VN')} đ</div>
+        <div className="bg-white p-3 md:p-5 rounded-xl md:rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-blue-500">
+          <div className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-0.5 md:mb-1 line-clamp-1">Tổng Cần Thu</div>
+          <div className="text-lg md:text-2xl font-black text-blue-600">{totalExpected.toLocaleString('vi-VN')} đ</div>
         </div>
-        <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-green-500">
-          <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Thực Thu</div>
-          <div className="text-2xl font-black text-green-600">{totalCollected.toLocaleString('vi-VN')} đ</div>
+        <div className="bg-white p-3 md:p-5 rounded-xl md:rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-green-500">
+          <div className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-0.5 md:mb-1 line-clamp-1">Thực Thu</div>
+          <div className="text-lg md:text-2xl font-black text-green-600">{totalCollected.toLocaleString('vi-VN')} đ</div>
         </div>
-        <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-orange-500">
-          <div className="text-gray-500 text-xs font-bold uppercase tracking-wider mb-1">Còn Thiếu</div>
-          <div className="text-2xl font-black text-orange-600">{(totalExpected - totalCollected).toLocaleString('vi-VN')} đ</div>
+        <div className="bg-white p-3 md:p-5 rounded-xl md:rounded-2xl shadow-sm border border-gray-100 border-l-4 border-l-orange-500">
+          <div className="text-gray-500 text-[10px] md:text-xs font-bold uppercase tracking-wider mb-0.5 md:mb-1 line-clamp-1">Còn Thiếu</div>
+          <div className="text-lg md:text-2xl font-black text-orange-600">{(totalExpected - totalCollected).toLocaleString('vi-VN')} đ</div>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative">
+      {/* Mobile Card List */}
+      <div className="md:hidden space-y-3 mb-6 relative">
+        {loading && <div className="absolute inset-0 bg-white/50 backdrop-blur-[2px] z-10 flex items-center justify-center"><Loader2 className="animate-spin text-teal-600" /></div>}
+        {filteredEnrollments.map((en, idx) => {
+          const stId = en.profiles.id;
+          const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
+          const totalDue = t.base_fee + t.old_debt - t.discount;
+          
+          return (
+            <div key={stId} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col gap-3 relative overflow-hidden">
+              <div className={`absolute top-0 left-0 w-1 h-full ${t.status === 'PAID' ? 'bg-emerald-500' : t.status === 'PARTIAL' ? 'bg-orange-500' : 'bg-rose-500'}`}></div>
+              
+              <div className="flex justify-between items-start pl-2">
+                <div>
+                  <div className="font-bold text-gray-800 text-[15px]">{idx + 1}. {en.profiles.full_name}</div>
+                  {en.profiles.parent_name && <div className="text-gray-500 text-[12px] mt-0.5">PH: {en.profiles.parent_name} ({en.profiles.parent_phone})</div>}
+                </div>
+                <div className="text-right">
+                  <div className="font-black text-teal-700 text-lg">{totalDue.toLocaleString('vi-VN')} đ</div>
+                  <span className={`px-2 py-0.5 text-[10px] font-bold rounded-md uppercase ${t.status === 'PAID' ? 'bg-emerald-100 text-emerald-700' : t.status === 'PARTIAL' ? 'bg-orange-100 text-orange-700' : 'bg-rose-100 text-rose-700'}`}>
+                    {t.status === 'PAID' ? 'Đã thu' : t.status === 'PARTIAL' ? 'Thu lẻ' : 'Chưa thu'}
+                  </span>
+                </div>
+              </div>
+              
+              <div className="pl-2 flex justify-between items-end border-t border-gray-50 pt-3 mt-1">
+                <div className="flex items-center gap-3">
+                  <label className="relative inline-flex items-center cursor-pointer" title="Đánh dấu đã thu đủ">
+                    <input type="checkbox" className="sr-only peer" checked={t.status === 'PAID'} onChange={() => toggleFullPayment(stId)} />
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                  </label>
+                  <button onClick={() => sendZalo(en.profiles, t)} disabled={sendingZaloId === stId} className="p-2 bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white rounded-lg transition-colors disabled:opacity-50" title="Gửi Zalo">
+                    {sendingZaloId === stId ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                  </button>
+                </div>
+                <button onClick={() => handleEditClick(stId, t, en.profiles.full_name)} className="p-2 bg-teal-50 text-teal-600 hover:bg-teal-600 hover:text-white rounded-lg transition-colors flex items-center gap-1 text-sm font-bold">
+                  <Edit size={14} /> Sửa
+                </button>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Desktop Table */}
+      <div className="hidden md:block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden relative">
         {loading && <div className="absolute inset-0 bg-white/50 backdrop-blur-[2px] z-10 flex items-center justify-center"><Loader2 className="animate-spin text-teal-600" /></div>}
         <div className="overflow-x-auto">
           <table className="w-full text-left">
@@ -579,7 +624,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                 {/* THÔNG TIN CHUYỂN KHOẢN */}
                 <div className="bg-blue-50/50 border-2 border-dashed border-blue-300 rounded-3xl p-6 flex items-center justify-between relative z-10 shadow-sm mt-auto mb-4 mx-2">
                    <div className="flex-1 pr-6">
-                     <h3 className="text-2xl font-black text-blue-800 uppercase tracking-widest mb-6">Thông Tin Chuyển Khoản</h3>
+                     <h3 className="text-lg md:text-2xl font-black text-blue-800 uppercase tracking-widest mb-6">Thông Tin Chuyển Khoản</h3>
                      <div className="space-y-4 text-xl font-bold text-gray-700">
                        <p>Ngân hàng: <span className="text-blue-700">MBBank</span></p>
                        <p>Số tài khoản: <span className="text-blue-700 tracking-widest text-2xl">0793898911</span></p>
@@ -684,7 +729,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                 {/* THÔNG TIN CHUYỂN KHOẢN */}
                 <div className="bg-blue-50/50 border-2 border-dashed border-blue-300 rounded-3xl p-6 flex items-center justify-between relative z-10 shadow-sm mt-auto mb-4 mx-2">
                    <div className="flex-1 pr-6">
-                     <h3 className="text-2xl font-black text-blue-800 uppercase tracking-widest mb-6">Thông Tin Chuyển Khoản</h3>
+                     <h3 className="text-lg md:text-2xl font-black text-blue-800 uppercase tracking-widest mb-6">Thông Tin Chuyển Khoản</h3>
                      <div className="space-y-4 text-xl font-bold text-gray-700">
                        <p>Ngân hàng: <span className="text-blue-700">MBBank</span></p>
                        <p>Số tài khoản: <span className="text-blue-700 tracking-widest text-2xl">0793898911</span></p>

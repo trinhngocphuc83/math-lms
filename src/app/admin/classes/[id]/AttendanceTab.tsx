@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { Trash2, Save, Loader2, Calendar, Check, AlertCircle, ImageIcon, Download } from "lucide-react";
+import { Trash2, Save, Loader2, Calendar, Check, AlertCircle, ImageIcon, Download, MessageSquare, X } from "lucide-react";
 import { getSessions, createSession, deleteSession, getAttendance, saveBulkAttendance } from "./attendanceActions";
 import { captureElement, downloadOrShare } from "@/utils/imageExport";
 
@@ -12,8 +12,9 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
   const [attendance, setAttendance] = useState<Record<string, {status: string, note: string}>>({});
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [editingNoteId, setEditingNoteId] = useState<string | null>(null);
+  const [tempNote, setTempNote] = useState("");
 
-  // Lọc danh sách học sinh: Ẩn những hs vào học sau ngày điểm danh
   const getTodayString = () => {
     const tzoffset = (new Date()).getTimezoneOffset() * 60000;
     return (new Date(Date.now() - tzoffset)).toISOString().split('T')[0];
@@ -25,7 +26,6 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
 
   const filteredEnrollments = enrollments.filter(en => {
     if (!en.enrolled_at) return true;
-    
     const enrollDateStr = en.enrolled_at.split('T')[0];
     return enrollDateStr <= currentSessionDate;
   });
@@ -34,21 +34,17 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
     fetchSessions();
   }, [classId]);
 
-  // getTodayString is already defined above
-
   const fetchSessions = async () => {
     setLoading(true);
     const res = await getSessions(classId);
     if (res.success && res.data) {
       setSessions(res.data);
-      
       const todayStr = getTodayString();
       const todaySession = res.data.find((s: any) => s.session_date === todayStr);
 
       if (todaySession) {
         handleSelectSession(todaySession.id, res.data);
       } else {
-        // Nếu hôm nay chưa điểm danh, tự động focus vào chức năng Điểm danh hôm nay
         setSelectedSessionId("NEW_TODAY");
         initDefaultAttendance();
       }
@@ -130,7 +126,6 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
     setSaving(true);
     let targetSessionId = selectedSessionId;
     
-    // Nếu là điểm danh hôm nay (chưa có session), hệ thống tự động tạo session
     if (selectedSessionId === "NEW_TODAY") {
       const todayStr = getTodayString();
       const dateParts = todayStr.split('-');
@@ -177,20 +172,31 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
     setSaving(false);
   };
 
+  const setAllPresent = () => {
+    const attMap = { ...attendance };
+    filteredEnrollments.forEach(en => {
+      attMap[en.profiles.id] = { ...attMap[en.profiles.id], status: 'PRESENT' };
+    });
+    setAttendance(attMap);
+  };
+
   if (loading) return <div className="py-10 text-center"><Loader2 className="w-8 h-8 animate-spin text-teal-600 mx-auto" /></div>;
 
   const todayStr = getTodayString();
   const hasTodaySession = sessions.some(s => s.session_date === todayStr);
 
+  const countPresent = filteredEnrollments.filter(en => attendance[en.profiles.id]?.status === 'PRESENT').length;
+  const countLate = filteredEnrollments.filter(en => attendance[en.profiles.id]?.status === 'LATE').length;
+  const countExcused = filteredEnrollments.filter(en => attendance[en.profiles.id]?.status === 'EXCUSED_ABSENCE').length;
+  const countUnexcused = filteredEnrollments.filter(en => attendance[en.profiles.id]?.status === 'UNEXCUSED_ABSENCE').length;
+
   return (
     <div className="flex flex-col md:flex-row gap-6">
       {/* Sidebar: Danh sách Buổi học */}
-      <div className="w-full md:w-1/3 xl:w-1/4">
+      <div className="w-full md:w-1/3 xl:w-1/4 order-2 md:order-1">
         <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
           <div className="bg-gray-50 px-4 py-3 border-b border-gray-100 font-bold text-gray-700">Lịch sử điểm danh</div>
           <div className="max-h-[600px] overflow-y-auto">
-            
-            {/* Nút ảo cho Hôm nay nếu chưa điểm danh */}
             {!hasTodaySession && (
                <div 
                   onClick={() => handleSelectSession("NEW_TODAY")}
@@ -224,7 +230,7 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
                 <button 
                   onClick={(e) => { e.stopPropagation(); handleDeleteSession(session.id, session.title); }}
                   className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg opacity-0 group-hover:opacity-100 transition-all"
-                  title="Xóa dữ liệu điểm danh ngày này"
+                  title="Xóa dữ liệu"
                 >
                   <Trash2 size={16} />
                 </button>
@@ -234,100 +240,165 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
         </div>
       </div>
 
-      {/* Main Content: Điểm danh */}
-      <div className="w-full md:w-2/3 xl:w-3/4">
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full">
-          <div className="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-            <h3 className="font-bold text-gray-800 text-lg flex items-center gap-2">
-              <Check className="text-teal-600" /> 
-              {selectedSessionId === "NEW_TODAY" ? "Điểm danh lớp (Hôm nay)" : "Cập nhật điểm danh"}
-            </h3>
-            <div className="flex items-center gap-3">
-              <button 
-                onClick={handleExportImage}
-                disabled={saving}
-                className="bg-indigo-50 text-indigo-700 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-indigo-100 transition-colors disabled:opacity-50 border border-indigo-100 shadow-sm"
-              >
-                <ImageIcon size={18} />
-                Xuất ảnh báo cáo
-              </button>
+      {/* Main Content: Điểm danh (Mobile First) */}
+      <div className="w-full md:w-2/3 xl:w-3/4 order-1 md:order-2">
+        <div className="bg-white md:rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col h-full -mx-4 md:mx-0">
+          
+          {/* Header Mobile: Thống kê Sĩ số ngang */}
+          <div className="bg-[#18392b] text-white p-3 flex flex-wrap gap-2 justify-center text-xs sm:text-sm font-bold shadow-md z-10 sticky top-0">
+            <div className="px-2.5 py-1.5 bg-gray-600/50 rounded-lg whitespace-nowrap">Sĩ số: {filteredEnrollments.length}</div>
+            <div className="px-2.5 py-1.5 bg-emerald-600/80 rounded-lg whitespace-nowrap flex items-center gap-1">Có: {countPresent}</div>
+            <div className="px-2.5 py-1.5 bg-amber-500/80 rounded-lg whitespace-nowrap flex items-center gap-1">Trễ: {countLate}</div>
+            <div className="px-2.5 py-1.5 bg-orange-500/80 rounded-lg whitespace-nowrap flex items-center gap-1">Phép: {countExcused}</div>
+            <div className="px-2.5 py-1.5 bg-rose-600/80 rounded-lg whitespace-nowrap flex items-center gap-1">Vắng: {countUnexcused}</div>
+          </div>
+
+          {/* Action Toolbar */}
+          <div className="p-3 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+            <button onClick={setAllPresent} className="px-4 py-2 border border-emerald-200 text-emerald-700 bg-emerald-50 hover:bg-emerald-100 rounded-xl font-bold text-sm flex items-center gap-1.5 transition-colors">
+              <Check size={16} /> <span className="hidden sm:inline">Tất cả Có mặt</span><span className="sm:hidden">✓ Đủ</span>
+            </button>
+            <div className="flex items-center gap-2">
               <button 
                 onClick={handleSave} 
                 disabled={saving}
-                className="bg-teal-600 text-white px-6 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-teal-700 transition-colors disabled:opacity-50 shadow-sm shadow-teal-600/20"
+                className="bg-teal-600 text-white px-4 py-2 rounded-xl font-bold text-sm flex items-center gap-1.5 hover:bg-teal-700 transition-colors disabled:opacity-50"
               >
-                {saving ? <Loader2 size={18} className="animate-spin" /> : <Save size={18} />}
-                Lưu lại
+                {saving ? <Loader2 size={16} className="animate-spin" /> : <Save size={16} />}
+                <span className="hidden sm:inline">Lưu điểm danh</span><span className="sm:hidden">Lưu</span>
+              </button>
+              <button 
+                onClick={handleExportImage}
+                disabled={saving}
+                className="bg-indigo-50 border border-indigo-100 text-indigo-700 p-2 rounded-xl hover:bg-indigo-100 transition-colors disabled:opacity-50"
+                title="Xuất ảnh báo cáo"
+              >
+                <ImageIcon size={20} />
               </button>
             </div>
           </div>
           
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead className="bg-gray-50 text-gray-500 text-xs uppercase font-bold border-b border-gray-100">
-                <tr>
-                  <th className="px-4 py-3 w-10 text-center">STT</th>
-                  <th className="px-4 py-3">Học sinh</th>
-                  <th className="px-4 py-3 min-w-[320px]">Trạng thái</th>
-                  <th className="px-4 py-3 w-1/4">Ghi chú</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {filteredEnrollments.length === 0 ? (
-                  <tr>
-                    <td colSpan={4} className="px-6 py-12 text-center">
-                      <div className="text-gray-400 font-bold">Lớp chưa có học sinh trong thời điểm này.</div>
-                    </td>
-                  </tr>
-                ) : (
-                  filteredEnrollments.map((en, idx) => {
-                    const stId = en.profiles.id;
-                    const stat = attendance[stId]?.status || 'PRESENT';
-                    const note = attendance[stId]?.note || '';
-                    
-                    return (
-                      <tr key={stId} className="hover:bg-gray-50 transition-colors">
-                        <td className="px-4 py-3 text-center text-gray-500 font-medium">{idx + 1}</td>
-                        <td className="px-4 py-3 font-bold text-gray-800">{en.profiles.full_name}</td>
-                        <td className="px-4 py-3">
-                          <div className="flex gap-1">
-                            <button onClick={() => handleStatusChange(stId, 'PRESENT')} className={`px-2.5 py-1.5 text-xs font-bold rounded-lg border ${stat === 'PRESENT' ? 'bg-green-100 text-green-700 border-green-300' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}>CÓ MẶT</button>
-                            <button onClick={() => handleStatusChange(stId, 'LATE')} className={`px-2.5 py-1.5 text-xs font-bold rounded-lg border ${stat === 'LATE' ? 'bg-yellow-100 text-yellow-700 border-yellow-300' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}>ĐI TRỄ</button>
-                            <button onClick={() => handleStatusChange(stId, 'EXCUSED_ABSENCE')} className={`px-2.5 py-1.5 text-xs font-bold rounded-lg border ${stat === 'EXCUSED_ABSENCE' ? 'bg-orange-100 text-orange-700 border-orange-300' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}>VẮNG CÓ PHÉP</button>
-                            <button onClick={() => handleStatusChange(stId, 'UNEXCUSED_ABSENCE')} className={`px-2.5 py-1.5 text-xs font-bold rounded-lg border ${stat === 'UNEXCUSED_ABSENCE' ? 'bg-red-100 text-red-700 border-red-300' : 'bg-white text-gray-500 border-gray-200 hover:bg-gray-50'}`}>VẮNG K.PHÉP</button>
+          {/* List Điểm danh (Thay thế Table) */}
+          <div className="bg-white">
+            <div className="flex px-4 py-2 text-xs font-bold text-gray-500 uppercase bg-gray-50 border-b border-gray-100">
+              <div className="w-8 text-center hidden sm:block">#</div>
+              <div className="flex-1">Học sinh</div>
+              <div className="w-[180px] text-center">Trạng thái</div>
+            </div>
+            
+            <div className="divide-y divide-gray-100">
+              {filteredEnrollments.length === 0 ? (
+                <div className="p-10 text-center text-gray-400 font-bold">Lớp chưa có học sinh trong thời điểm này.</div>
+              ) : (
+                filteredEnrollments.map((en, idx) => {
+                  const stId = en.profiles.id;
+                  const stat = attendance[stId]?.status || 'PRESENT';
+                  const note = attendance[stId]?.note || '';
+                  const isEditingNote = editingNoteId === stId;
+                  
+                  return (
+                    <div key={stId} className="hover:bg-gray-50 transition-colors flex flex-col sm:flex-row items-stretch sm:items-center">
+                      <div className="flex items-center flex-1 p-3">
+                        <div className="w-8 text-center text-gray-400 font-medium text-sm hidden sm:block">{idx + 1}</div>
+                        <div className="flex flex-col ml-1">
+                          <span className="font-bold text-gray-800">{en.profiles.full_name}</span>
+                          {stat === 'PRESENT' && <span className="text-xs text-emerald-600 font-medium">Có mặt</span>}
+                          {stat === 'LATE' && <span className="text-xs text-amber-600 font-medium">Đi trễ</span>}
+                          {stat === 'EXCUSED_ABSENCE' && <span className="text-xs text-orange-600 font-medium">Vắng có phép</span>}
+                          {stat === 'UNEXCUSED_ABSENCE' && <span className="text-xs text-rose-600 font-medium">Vắng không phép</span>}
+                          {note && !isEditingNote && <span className="text-xs text-gray-500 italic mt-0.5 line-clamp-1">Ghi chú: {note}</span>}
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center justify-between sm:justify-end gap-1 px-4 pb-3 sm:pb-0 sm:py-3 w-full sm:w-[220px]">
+                        <div className="flex gap-1.5 ml-auto sm:ml-0 border-l border-gray-100 pl-4 sm:border-0 sm:pl-0">
+                          {/* Nút Có mặt */}
+                          <button 
+                            onClick={() => handleStatusChange(stId, 'PRESENT')}
+                            className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-all ${stat === 'PRESENT' ? 'bg-emerald-100 text-emerald-700 border-emerald-300 shadow-sm' : 'bg-white text-gray-300 border-gray-200 hover:border-emerald-300 hover:text-emerald-500'}`}
+                          >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                          </button>
+                          {/* Nút Đi trễ */}
+                          <button 
+                            onClick={() => handleStatusChange(stId, 'LATE')}
+                            title="Đi trễ"
+                            className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-all ${stat === 'LATE' ? 'bg-amber-100 text-amber-700 border-amber-300 shadow-sm' : 'bg-white text-gray-300 border-gray-200 hover:border-amber-300 hover:text-amber-500'}`}
+                          >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                          </button>
+                          {/* Nút Vắng Phép */}
+                          <button 
+                            onClick={() => handleStatusChange(stId, 'EXCUSED_ABSENCE')}
+                            title="Vắng có phép"
+                            className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-all ${stat === 'EXCUSED_ABSENCE' ? 'bg-orange-100 text-orange-700 border-orange-300 shadow-sm' : 'bg-white text-gray-300 border-gray-200 hover:border-orange-300 hover:text-orange-500'}`}
+                          >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                          </button>
+                          {/* Nút Vắng K.Phép */}
+                          <button 
+                            onClick={() => handleStatusChange(stId, 'UNEXCUSED_ABSENCE')}
+                            title="Vắng không phép"
+                            className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-all ${stat === 'UNEXCUSED_ABSENCE' ? 'bg-rose-100 text-rose-700 border-rose-300 shadow-sm' : 'bg-white text-gray-300 border-gray-200 hover:border-rose-300 hover:text-rose-500'}`}
+                          >
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                          </button>
+                          
+                          {/* Nút Ghi chú */}
+                          <button 
+                            onClick={() => {
+                              if (isEditingNote) {
+                                setEditingNoteId(null);
+                              } else {
+                                setTempNote(note);
+                                setEditingNoteId(stId);
+                              }
+                            }}
+                            className={`w-9 h-9 rounded-xl flex items-center justify-center border transition-all ml-1 ${note || isEditingNote ? 'bg-blue-50 text-blue-600 border-blue-200' : 'bg-white text-gray-300 border-gray-200 hover:border-blue-200 hover:text-blue-400'}`}
+                          >
+                            <MessageSquare size={16} />
+                          </button>
+                        </div>
+                      </div>
+
+                      {/* Modal nhập Note (inline) */}
+                      {isEditingNote && (
+                        <div className="w-full px-4 pb-3 sm:px-4 sm:py-2 bg-blue-50/30 border-t border-blue-50 sm:border-0 sm:mt-0">
+                          <div className="flex gap-2 items-center">
+                            <input 
+                              type="text" 
+                              placeholder="Nhập ghi chú..." 
+                              value={tempNote}
+                              onChange={(e) => setTempNote(e.target.value)}
+                              onBlur={() => { handleNoteChange(stId, tempNote); setEditingNoteId(null); }}
+                              onKeyDown={(e) => { if (e.key === 'Enter') { handleNoteChange(stId, tempNote); setEditingNoteId(null); } }}
+                              autoFocus
+                              className="flex-1 text-sm px-3 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 bg-white"
+                            />
+                            <button onClick={() => { handleNoteChange(stId, tempNote); setEditingNoteId(null); }} className="p-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200">
+                              <Check size={16} />
+                            </button>
                           </div>
-                        </td>
-                        <td className="px-4 py-3">
-                          <input 
-                            type="text" 
-                            placeholder="Ghi chú..." 
-                            value={note}
-                            onChange={(e) => handleNoteChange(stId, e.target.value)}
-                            className="w-full text-sm px-3 py-1.5 border border-gray-200 rounded-lg focus:outline-none focus:border-teal-500"
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })
-                )}
-              </tbody>
-            </table>
+                        </div>
+                      )}
+                    </div>
+                  );
+                })
+              )}
+            </div>
           </div>
         </div>
       </div>
 
-      {/* GIAO DIỆN BÁO CÁO ẨN ĐỂ XUẤT ẢNH */}
+      {/* GIAO DIỆN BÁO CÁO ẨN ĐỂ XUẤT ẢNH (GIỮ NGUYÊN) */}
       <div style={{ position: 'absolute', left: '-9999px', top: 0, zIndex: -50 }}>
         <div ref={printRef} className="w-[850px] bg-white p-0 font-sans border-0 relative">
           <div className="bg-emerald-500 rounded-[2rem] p-3 shadow-xl">
              <div className="bg-emerald-50 rounded-[1.5rem] p-8 border-4 border-white shadow-inner flex flex-col h-full relative overflow-hidden">
-                {/* Decoration */}
                 <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 translate-x-1/2 -translate-y-1/2"></div>
                 <div className="absolute bottom-0 left-0 w-64 h-64 bg-teal-100 rounded-full mix-blend-multiply filter blur-3xl opacity-50 -translate-x-1/2 translate-y-1/2"></div>
                 
-                {/* Header Top: Logo & Title */}
                 <div className="flex flex-col items-center mb-8 relative z-10 w-full">
-                   {/* Logo Text */}
                    <div className="flex flex-col pb-4 mb-6 relative w-full items-center">
                       <div className="absolute bottom-0 w-2/3 h-[3px] bg-gradient-to-r from-transparent via-emerald-500 to-transparent rounded-full opacity-70"></div>
                       <h2 className="text-4xl font-black text-emerald-800 tracking-tight uppercase flex items-center gap-3">
@@ -342,7 +413,6 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
                       <div className="text-xs text-emerald-700 tracking-[0.3em] font-bold mt-2 text-center whitespace-nowrap">NƠI KHƠI NGUỒN ĐAM MÊ</div>
                    </div>
                    
-                   {/* Title & Info */}
                    <div className="text-center">
                      <h1 className="text-5xl font-black text-teal-700 uppercase tracking-widest mb-4 drop-shadow-sm">
                        THÔNG BÁO ĐIỂM DANH
@@ -356,7 +426,6 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
                    </div>
                 </div>
 
-                {/* Summary Table */}
                 <div className="bg-white rounded-2xl shadow-sm border border-emerald-100 mb-6 overflow-hidden relative z-10">
                   <table className="w-full text-center">
                     <thead>
@@ -378,7 +447,6 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
                   </table>
                 </div>
 
-                {/* Student List */}
                 <div className="bg-white rounded-2xl shadow-sm border border-emerald-100 overflow-hidden relative z-10 mb-6">
                   <table className="w-full text-left">
                     <thead>
@@ -425,7 +493,6 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
                   </table>
                 </div>
 
-                {/* Footer */}
                 <div className="text-center text-gray-500 font-medium text-sm italic relative z-10 mt-auto pt-4">
                   Trân trọng thông báo đến quý phụ huynh để nắm bắt tình hình học tập của con em.
                 </div>
@@ -433,7 +500,6 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
           </div>
         </div>
       </div>
-
     </div>
   );
 }

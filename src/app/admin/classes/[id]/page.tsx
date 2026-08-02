@@ -239,27 +239,70 @@ export default function ClassDetailsPage() {
       {activeTab === 'students' && (
         <div className="animate-in fade-in slide-in-from-bottom-2 duration-300">
           <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-            <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-              <Users className="w-6 h-6 text-teal-600" />
-              Danh sách Học sinh
+            <h2 className="text-xl md:text-2xl font-bold text-gray-800 flex items-center gap-2">
+              <Users className="w-5 h-5 md:w-6 md:h-6 text-teal-600" />
+              <span className="hidden md:inline">Danh sách Học sinh</span>
+              <span className="md:hidden">Học sinh</span>
             </h2>
-        <div className="flex gap-3">
+        <div className="flex gap-2 md:gap-3">
           <button 
             onClick={() => setIsImportModalOpen(true)}
-            className="flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2.5 rounded-xl font-bold hover:bg-indigo-100 transition-colors"
+            className="flex items-center gap-1.5 md:gap-2 bg-indigo-50 text-indigo-700 px-3 md:px-4 py-2 md:py-2.5 rounded-xl font-bold hover:bg-indigo-100 transition-colors text-sm md:text-base"
           >
-            <Upload size={18} /> Nhập Excel
+            <Upload size={16} className="md:w-[18px] md:h-[18px]" /> <span className="hidden sm:inline">Nhập Excel</span><span className="sm:hidden">Excel</span>
           </button>
           <button 
             onClick={() => { setIsSearchModalOpen(true); setSearchResults([]); setSearchTerm(""); }}
-            className="flex items-center gap-2 bg-teal-600 text-white px-4 py-2.5 rounded-xl font-bold hover:bg-teal-700 transition-colors"
+            className="flex items-center gap-1.5 md:gap-2 bg-teal-600 text-white px-3 md:px-4 py-2 md:py-2.5 rounded-xl font-bold hover:bg-teal-700 transition-colors text-sm md:text-base"
           >
-            <UserPlus size={18} /> Thêm thủ công
+            <UserPlus size={16} className="md:w-[18px] md:h-[18px]" /> <span className="hidden sm:inline">Thêm thủ công</span><span className="sm:hidden">Thêm</span>
           </button>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      {/* Giao diện Mobile (Card List) */}
+      <div className="md:hidden space-y-3 mb-6">
+        {enrollments.length === 0 ? (
+          <div className="text-center py-10 bg-white rounded-xl border border-gray-100 text-gray-500">Lớp học chưa có học sinh nào.</div>
+        ) : (
+          enrollments.map((en, idx) => (
+            <div key={en.id} className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 flex flex-col gap-3 relative overflow-hidden">
+              <div className={`absolute top-0 left-0 w-1 h-full ${en.status === 'ACTIVE' ? 'bg-green-500' : 'bg-red-500'}`}></div>
+              <div className="flex justify-between items-start pl-2">
+                <div>
+                  <div className="font-bold text-gray-800 text-[15px]">{idx + 1}. {en.profiles?.full_name}</div>
+                  <div className="text-gray-500 text-[13px] mt-1 flex items-center gap-2">
+                    <span>TK: {en.profiles?.username}</span>
+                    {en.profiles?.student_phone && <span>• ĐT: {en.profiles.student_phone}</span>}
+                  </div>
+                </div>
+              </div>
+              <div className="pl-2 flex justify-between items-end border-t border-gray-50 pt-3 mt-1">
+                <div className="flex flex-col gap-0.5">
+                   {en.profiles?.parent_name ? (
+                     <>
+                       <div className="text-xs text-gray-500 uppercase font-bold tracking-wider">Phụ huynh</div>
+                       <div className="text-sm font-semibold text-gray-700">{en.profiles.parent_name}</div>
+                       <div className="text-[13px] text-gray-500">{en.profiles.parent_phone}</div>
+                     </>
+                   ) : <div className="text-xs text-gray-400 italic">Chưa có thông tin PH</div>}
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <button onClick={() => handleEditClick(en.profiles)} className="p-2 bg-teal-50 text-teal-600 rounded-lg" title="Sửa">
+                    <Edit2 className="w-4 h-4" />
+                  </button>
+                  <button onClick={() => handleRemoveStudent(en.id, en.profiles?.full_name)} className="p-2 bg-rose-50 text-rose-500 rounded-lg" title="Xóa">
+                    <Trash2 className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Giao diện Desktop (Table) */}
+      <div className="hidden md:block bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full text-left">
             <thead className="bg-gray-50 border-b border-gray-100 text-gray-500 text-xs uppercase font-bold tracking-wider">
