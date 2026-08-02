@@ -595,6 +595,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                           const stId = en.profiles.id;
                           const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
                           const totalDue = t.base_fee + t.old_debt - t.discount;
+                          const remaining = Math.max(0, totalDue - t.paid_amount);
                           return (
                             <tr key={stId} className="hover:bg-gray-50/50 transition-colors">
                               <td className="py-2.5 px-6 text-center font-bold text-gray-500">{idx + 1}</td>
@@ -602,7 +603,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                                 <div className="font-bold text-gray-800 text-lg uppercase">{en.profiles.full_name}</div>
                               </td>
                               <td className="py-2.5 px-6 text-right font-black text-gray-800 text-lg">
-                                {totalDue.toLocaleString('vi-VN')} đ
+                                {remaining.toLocaleString('vi-VN')} đ
                               </td>
                               <td className="py-2.5 px-6 text-center">
                                  <span className={`px-4 py-1.5 text-sm font-bold rounded-full border whitespace-nowrap inline-block ${
@@ -756,6 +757,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
           const stId = en.profiles.id;
           const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
           const totalDue = t.base_fee + t.old_debt - t.discount;
+          const remaining = Math.max(0, totalDue - t.paid_amount);
           
           return (
             <div key={`print-${stId}`} id={`print-tuition-${stId}`} className="w-[500px] bg-white p-0 font-sans border-0 relative mb-10">
@@ -802,9 +804,15 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                               <span className="font-bold text-orange-600">-{t.discount.toLocaleString('vi-VN')} đ</span>
                            </div>
                          )}
+                         {t.paid_amount > 0 && (
+                           <div className="flex justify-between items-center border-b border-gray-50 pb-2">
+                              <span className="text-gray-500 font-medium text-sm">Đã đóng</span>
+                              <span className="font-bold text-emerald-600">-{t.paid_amount.toLocaleString('vi-VN')} đ</span>
+                           </div>
+                         )}
                          <div className="flex justify-between items-center pt-2">
                             <span className="text-gray-800 font-black uppercase">Cần thanh toán</span>
-                            <span className="font-black text-orange-700 text-2xl">{totalDue.toLocaleString('vi-VN')} đ</span>
+                            <span className="font-black text-orange-700 text-2xl">{remaining.toLocaleString('vi-VN')} đ</span>
                          </div>
                       </div>
                     </div>
@@ -813,7 +821,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                        <h3 className="text-lg font-black text-blue-800 uppercase tracking-widest mb-3">Thông Tin Chuyển Khoản</h3>
                        <div className="shrink-0 bg-white border border-gray-200 rounded-xl p-2 shadow-sm w-36 mb-4 flex items-center justify-center flex-col">
                          <div className="text-rose-600 font-bold text-[10px] mb-1 uppercase">VietQR</div>
-                         <img src={`https://img.vietqr.io/image/MB-0793898911-compact2.png?amount=${totalDue}&addInfo=Hoc%20phi%20${en.profiles.full_name.replace(/ /g, '%20')}`} alt="QR Code" crossOrigin="anonymous" className="w-full object-contain rounded-lg" />
+                         <img src={`https://img.vietqr.io/image/MB-0793898911-compact2.png?amount=${remaining}&addInfo=Hoc%20phi%20${en.profiles.full_name.replace(/ /g, '%20')}`} alt="QR Code" crossOrigin="anonymous" className="w-full object-contain rounded-lg" />
                        </div>
                        <div className="space-y-1 text-sm font-bold text-gray-700 text-center mb-3">
                          <p>Ngân hàng: <span className="text-blue-700">MBBank</span></p>
