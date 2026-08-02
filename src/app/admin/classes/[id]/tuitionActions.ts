@@ -68,7 +68,7 @@ export async function rolloverDebt(classId: string, fromMonth: number, fromYear:
   // 2. Get all active enrollments with their enrollment date
   const { data: enrollments } = await supabaseAdmin
     .from('enrollments')
-    .select('student_id, profiles!inner(enrollment_date)')
+    .select('student_id, enrolled_at')
     .eq('class_id', classId)
     .eq('status', 'ACTIVE');
 
@@ -101,8 +101,7 @@ export async function rolloverDebt(classId: string, fromMonth: number, fromYear:
     } else {
       // Check if student was enrolled strictly AFTER fromMonth
       let shouldChargeDefault = true;
-      const profile = Array.isArray(en.profiles) ? en.profiles[0] : en.profiles;
-      const enrollDateStr = profile?.enrollment_date;
+      const enrollDateStr = en.enrolled_at;
       
       if (enrollDateStr) {
         const enrollDate = new Date(enrollDateStr);

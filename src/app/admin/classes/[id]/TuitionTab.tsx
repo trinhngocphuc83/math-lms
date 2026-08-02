@@ -17,10 +17,9 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
 
   // Lọc danh sách học sinh: Ẩn những hs vào học sau tháng/năm đang xem
   const filteredEnrollments = enrollments.filter(en => {
-    const profile = Array.isArray(en.profiles) ? en.profiles[0] : en.profiles;
-    if (!profile?.enrollment_date) return true;
+    if (!en.enrolled_at) return true;
     
-    const enrollDate = new Date(profile.enrollment_date);
+    const enrollDate = new Date(en.enrolled_at);
     const enrollM = enrollDate.getMonth() + 1;
     const enrollY = enrollDate.getFullYear();
     

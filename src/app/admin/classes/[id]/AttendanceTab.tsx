@@ -24,10 +24,9 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
     : sessions.find(s => s.id === selectedSessionId)?.session_date || getTodayString();
 
   const filteredEnrollments = enrollments.filter(en => {
-    const profile = Array.isArray(en.profiles) ? en.profiles[0] : en.profiles;
-    if (!profile?.enrollment_date) return true;
+    if (!en.enrolled_at) return true;
     
-    const enrollDateStr = profile.enrollment_date.split('T')[0];
+    const enrollDateStr = en.enrolled_at.split('T')[0];
     return enrollDateStr <= currentSessionDate;
   });
 
