@@ -61,7 +61,20 @@ export async function updateTuitionFee(
 
 // Chốt sổ tháng: Lấy phần còn nợ của tháng này chuyển sang nợ cũ của tháng sau
 export async function rolloverDebt(classId: string, fromMonth: number, fromYear: number, toMonth: number, toYear: number) {
-  // 1. Get all students enrolled in the class (or from current month's tuition)
+  // 1. Get class tuition fee
+  const { data: cls } = await supabaseAdmin.from('classes').select('tuition_fee').eq('id', classId).single();
+  const defaultFee = cls?.tuition_fee || 0;
+
+  // 2. Get all active enrollments with their enrollment date
+  const { data: enrollments } = await supabaseAdmin
+    .from('enrollments')
+    .select('student_id, profiles!inner(enrollment_date)')
+    .eq('class_id', classId)
+    .eq('status', 'ACTIVE');
+
+  if (!enrollments) return { success: false, error: 'Không tìm thấy học sinh nào trong lớp.' };
+
+  // 3. Get current month's tuition fees
   const { data: currentMonthFees, error: fetchError } = await supabaseAdmin
     .from('tuition_fees')
     .select('student_id, base_fee, discount, old_debt, paid_amount')
@@ -71,18 +84,51 @@ export async function rolloverDebt(classId: string, fromMonth: number, fromYear:
     
   if (fetchError) return { success: false, error: fetchError.message };
   
-  if (!currentMonthFees || currentMonthFees.length === 0) {
-    return { success: false, error: 'Không có dữ liệu thu phí của tháng này để chốt sổ.' };
-  }
+  const currentFeesMap = new Map();
+  currentMonthFees?.forEach(f => currentFeesMap.set(f.student_id, f));
 
-  // 2. Loop through and upsert next month's record
-  for (const fee of currentMonthFees) {
-    const totalDue = (fee.base_fee || 0) + (fee.old_debt || 0) - (fee.discount || 0);
-    const remainingDebt = totalDue - (fee.paid_amount || 0);
+  // 4. Loop through ALL active enrollments
+  for (const en of enrollments) {
+    const fee = currentFeesMap.get(en.student_id);
+    let totalDue = 0;
+    let paid = 0;
+    let baseFeeToPreserve = defaultFee;
+
+    if (fee) {
+      totalDue = (fee.base_fee || 0) + (fee.old_debt || 0) - (fee.discount || 0);
+      paid = fee.paid_amount || 0;
+      baseFeeToPreserve = fee.base_fee;
+    } else {
+      // Check if student was enrolled strictly AFTER fromMonth
+      let shouldChargeDefault = true;
+      const profile = Array.isArray(en.profiles) ? en.profiles[0] : en.profiles;
+      const enrollDateStr = profile?.enrollment_date;
+      
+      if (enrollDateStr) {
+        const enrollDate = new Date(enrollDateStr);
+        const enrollM = enrollDate.getMonth() + 1;
+        const enrollY = enrollDate.getFullYear();
+        if (enrollY > fromYear || (enrollY === fromYear && enrollM > fromMonth)) {
+          shouldChargeDefault = false; // Enrolled in future month, no debt for fromMonth
+        }
+      }
+
+      if (shouldChargeDefault) {
+        // Chưa có record tức là chưa nộp đồng nào và không có discount
+        totalDue = defaultFee;
+        paid = 0;
+      } else {
+        totalDue = 0;
+        paid = 0;
+      }
+      baseFeeToPreserve = defaultFee;
+    }
+
+    const remainingDebt = totalDue - paid;
     
-    // Always roll over to preserve base_fee!
-    await updateTuitionFee(classId, fee.student_id, toMonth, toYear, {
-      base_fee: fee.base_fee, // Kế thừa Học phí cơ bản (custom tuition)
+    // Always roll over to next month
+    await updateTuitionFee(classId, en.student_id, toMonth, toYear, {
+      base_fee: baseFeeToPreserve,
       old_debt: remainingDebt > 0 ? remainingDebt : 0
     });
   }

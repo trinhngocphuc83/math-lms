@@ -15,6 +15,23 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
   const printRef = useRef<HTMLDivElement>(null);
   const printUnpaidRef = useRef<HTMLDivElement>(null);
 
+  // Lọc danh sách học sinh: Ẩn những hs vào học sau tháng/năm đang xem
+  const filteredEnrollments = enrollments.filter(en => {
+    const profile = Array.isArray(en.profiles) ? en.profiles[0] : en.profiles;
+    if (!profile?.enrollment_date) return true;
+    
+    const enrollDate = new Date(profile.enrollment_date);
+    const enrollM = enrollDate.getMonth() + 1;
+    const enrollY = enrollDate.getFullYear();
+    
+    // Nếu năm vào học lớn hơn năm đang xem -> Ẩn
+    if (enrollY > year) return false;
+    // Nếu cùng năm, nhưng tháng vào học lớn hơn tháng đang xem -> Ẩn
+    if (enrollY === year && enrollM > month) return false;
+    
+    return true;
+  });
+
   // Edit Modal State
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editingStudent, setEditingStudent] = useState<any>(null);
@@ -63,7 +80,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     }
     
     // Áp dụng học phí mặc định nếu chưa có record
-    enrollments.forEach(en => {
+    filteredEnrollments.forEach(en => {
       const stId = en.profiles.id;
       if (!tMap[stId]) {
         const studentBaseFee = prevMap[stId]?.base_fee || defaultFee;
@@ -153,7 +170,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     
     const newTuitionData = { ...tuitionData };
     
-    for (const en of enrollments) {
+    for (const en of filteredEnrollments) {
       const stId = en.profiles.id;
       let missedBeforeEnrollment = 0;
       
@@ -190,7 +207,7 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
 
   const exportExcel = () => {
     import("xlsx").then((XLSX) => {
-      const data = enrollments.map((en, idx) => {
+      const data = filteredEnrollments.map((en, idx) => {
         const stId = en.profiles.id;
         const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
         return {
@@ -382,8 +399,8 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                 <th className="px-5 py-4 text-right">Sửa</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-50 text-sm">
-              {enrollments.map((en, idx) => {
+            <tbody className="divide-y divide-gray-200">
+              {filteredEnrollments.map((en, idx) => {
                 const stId = en.profiles.id;
                 const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
                 const totalDue = t.base_fee + t.old_debt - t.discount;
@@ -526,11 +543,11 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
                         <th className="py-4 px-6 text-gray-500 font-bold uppercase text-xs w-48 text-center">Trạng Thái</th>
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-gray-100">
-                      {enrollments.length === 0 ? (
+                    <tbody className="divide-y divide-gray-50 text-sm">
+                      {filteredEnrollments.length === 0 ? (
                         <tr><td colSpan={4} className="py-8 text-center text-gray-500">Chưa có học sinh</td></tr>
                       ) : (
-                        enrollments.map((en, idx) => {
+                        filteredEnrollments.map((en, idx) => {
                           const stId = en.profiles.id;
                           const t = tuitionData[stId] || { base_fee: 0, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
                           const totalDue = t.base_fee + t.old_debt - t.discount;

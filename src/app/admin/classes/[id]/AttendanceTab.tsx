@@ -13,14 +13,29 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    fetchSessions();
-  }, [classId]);
-
+  // Lọc danh sách học sinh: Ẩn những hs vào học sau ngày điểm danh
   const getTodayString = () => {
     const tzoffset = (new Date()).getTimezoneOffset() * 60000;
     return (new Date(Date.now() - tzoffset)).toISOString().split('T')[0];
   };
+
+  const currentSessionDate = selectedSessionId === "NEW_TODAY" 
+    ? getTodayString() 
+    : sessions.find(s => s.id === selectedSessionId)?.session_date || getTodayString();
+
+  const filteredEnrollments = enrollments.filter(en => {
+    const profile = Array.isArray(en.profiles) ? en.profiles[0] : en.profiles;
+    if (!profile?.enrollment_date) return true;
+    
+    const enrollDateStr = profile.enrollment_date.split('T')[0];
+    return enrollDateStr <= currentSessionDate;
+  });
+
+  useEffect(() => {
+    fetchSessions();
+  }, [classId]);
+
+  // getTodayString is already defined above
 
   const fetchSessions = async () => {
     setLoading(true);
@@ -44,7 +59,7 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
 
   const initDefaultAttendance = () => {
     const attMap: Record<string, {status: string, note: string}> = {};
-    enrollments.forEach(en => {
+    filteredEnrollments.forEach(en => {
       attMap[en.profiles.id] = { status: 'PRESENT', note: '' };
     });
     setAttendance(attMap);
@@ -61,7 +76,7 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
     const res = await getAttendance(sessionId);
     
     const attMap: Record<string, {status: string, note: string}> = {};
-    enrollments.forEach(en => {
+    filteredEnrollments.forEach(en => {
       attMap[en.profiles.id] = { status: 'PRESENT', note: '' };
     });
 
@@ -258,11 +273,15 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
                   <th className="px-4 py-3 w-1/4">Ghi chú</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-gray-50">
-                {enrollments.length === 0 ? (
-                  <tr><td colSpan={4} className="p-6 text-center text-gray-500">Lớp chưa có học sinh nào.</td></tr>
+              <tbody className="divide-y divide-gray-100">
+                {filteredEnrollments.length === 0 ? (
+                  <tr>
+                    <td colSpan={4} className="px-6 py-12 text-center">
+                      <div className="text-gray-400 font-bold">Lớp chưa có học sinh trong thời điểm này.</div>
+                    </td>
+                  </tr>
                 ) : (
-                  enrollments.map((en, idx) => {
+                  filteredEnrollments.map((en, idx) => {
                     const stId = en.profiles.id;
                     const stat = attendance[stId]?.status || 'PRESENT';
                     const note = attendance[stId]?.note || '';
@@ -330,11 +349,7 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
                        THÔNG BÁO ĐIỂM DANH
                      </h1>
                      <div className="flex items-center justify-center gap-4 text-xl font-bold text-gray-700 mb-4">
-                       Ngày: {
-                         selectedSessionId === "NEW_TODAY" 
-                           ? new Date().toLocaleDateString('vi-VN') 
-                           : new Date(sessions.find(s => s.id === selectedSessionId)?.session_date || Date.now()).toLocaleDateString('vi-VN')
-                       }
+                       Ngày: {new Date(currentSessionDate).toLocaleDateString('vi-VN')}
                      </div>
                      <div className="inline-block bg-emerald-100 text-emerald-800 px-8 py-2.5 rounded-2xl font-black text-2xl uppercase shadow-sm border border-emerald-200">
                        Lớp: {className || 'Chưa cập nhật'}
@@ -355,10 +370,10 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
                     </thead>
                     <tbody className="divide-x divide-gray-100 border-t border-gray-100">
                       <tr>
-                        <td className="py-4 text-3xl font-black text-gray-800">{enrollments.length}</td>
-                        <td className="py-4 text-3xl font-black text-teal-600">{enrollments.filter(en => attendance[en.profiles.id]?.status === 'PRESENT').length}</td>
-                        <td className="py-4 text-3xl font-black text-orange-500">{enrollments.filter(en => attendance[en.profiles.id]?.status === 'EXCUSED_ABSENCE').length}</td>
-                        <td className="py-4 text-3xl font-black text-rose-600">{enrollments.filter(en => attendance[en.profiles.id]?.status === 'UNEXCUSED_ABSENCE').length}</td>
+                        <td className="py-4 text-3xl font-black text-gray-800">{filteredEnrollments.length}</td>
+                        <td className="py-4 text-3xl font-black text-teal-600">{filteredEnrollments.filter(en => attendance[en.profiles.id]?.status === 'PRESENT').length}</td>
+                        <td className="py-4 text-3xl font-black text-orange-500">{filteredEnrollments.filter(en => attendance[en.profiles.id]?.status === 'EXCUSED_ABSENCE').length}</td>
+                        <td className="py-4 text-3xl font-black text-rose-600">{filteredEnrollments.filter(en => attendance[en.profiles.id]?.status === 'UNEXCUSED_ABSENCE').length}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -375,14 +390,14 @@ export default function AttendanceTab({ classId, enrollments, className }: { cla
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-100">
-                      {enrollments.filter(en => ['LATE', 'EXCUSED_ABSENCE', 'UNEXCUSED_ABSENCE'].includes(attendance[en.profiles.id]?.status)).length === 0 ? (
+                      {filteredEnrollments.filter(en => ['LATE', 'EXCUSED_ABSENCE', 'UNEXCUSED_ABSENCE'].includes(attendance[en.profiles.id]?.status)).length === 0 ? (
                         <tr>
                           <td colSpan={3} className="py-10 text-center text-emerald-600 font-bold text-lg bg-emerald-50/30">
                             🎉 Tuyệt vời! Buổi học hôm nay tất cả học sinh đều đi học đầy đủ và đúng giờ!
                           </td>
                         </tr>
                       ) : (
-                        enrollments.filter(en => ['LATE', 'EXCUSED_ABSENCE', 'UNEXCUSED_ABSENCE'].includes(attendance[en.profiles.id]?.status)).map((en, index) => {
+                        filteredEnrollments.filter(en => ['LATE', 'EXCUSED_ABSENCE', 'UNEXCUSED_ABSENCE'].includes(attendance[en.profiles.id]?.status)).map((en, index) => {
                           const stat = attendance[en.profiles.id]?.status;
                           const note = attendance[en.profiles.id]?.note;
                           return (
