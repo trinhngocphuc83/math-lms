@@ -8,7 +8,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
-import { fixLatexText, applyLatexFixToActiveElement } from "@/utils/latexFixer";
+import { fixLatexText, applyLatexFixToActiveElement , cleanObjectLatex } from "@/utils/latexFixer";
 import 'katex/dist/katex.min.css';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -513,7 +513,7 @@ const parseMarkdownToBlocks = (content: string): Block[] => {
     const trimmed = content.trim();
     if ((trimmed.startsWith('[') && trimmed.endsWith(']')) || (trimmed.startsWith('{') && trimmed.endsWith('}'))) {
         try {
-            const data = JSON.parse(trimmed);
+            let data = JSON.parse(trimmed);\n              data = cleanObjectLatex(data);
             if (Array.isArray(data)) {
                 const res: Block[] = [];
                 data.forEach(item => {
