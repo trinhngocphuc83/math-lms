@@ -173,6 +173,17 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
       const fixString = (str: string) => {
           if (!str) return str;
           let s = str;
+                    // Fix control characters caused by missing escape in JSON (e.g. \f becomes form feed)
+          s = s.replace(/\x0Crac/g, '\\frac');
+          s = s.replace(/\x0Bec/g, '\\vec');
+          s = s.replace(/\x0Aeq/g, '\\neq');
+          s = s.replace(/\x08eta/g, '\\beta');
+          s = s.replace(/\x08egin/g, '\\begin');
+          s = s.replace(/\x09an/g, '\\tan');
+          s = s.replace(/\x09heta/g, '\\theta');
+          s = s.replace(/\x0Dightarrow/g, '\\rightarrow');
+          s = s.replace(/\x0Dight/g, '\\right');
+
           // Fix JSON escaping for common LaTeX commands (e.g. \\vec -> \vec)
           s = s.replace(/\\\\(vec|frac|Rightarrow|rightarrow|leftrightarrow|Leftrightarrow|lim|log|sin|cos|tan|cot|sqrt|Delta|alpha|beta|gamma|pi|Omega|Sigma|sum|int|infty|to|text|begin|end|cases|le|ge|neq|pm|mp|cup|cap|subset|supset|in|notin|emptyset|mathbb|mathcal|mathbf|mathrm|widehat)/g, '\\$1');
           
