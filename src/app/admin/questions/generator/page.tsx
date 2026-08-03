@@ -8,6 +8,7 @@ import {
   ArrowLeft, Wand2, Copy, Save, Loader2, CheckCircle2, AlertCircle, ImageIcon, X, Eye, Edit3, Trash2, Database
 } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
@@ -580,7 +581,7 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
                                 <h3 className="font-bold text-indigo-900 mb-4 text-lg">Đề bài:</h3>
                                 {res.isPreviewMode !== false ? (
                                     <div className="w-full min-h-[100px] p-4 bg-white border border-indigo-200 rounded-xl mb-4 font-medium text-slate-800 prose prose-slate max-w-none">
-                                        <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>
+                                        <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]}>
                                             {preprocessLaTeX(res.content)}
                                         </ReactMarkdown>
                                     </div>
@@ -601,7 +602,7 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
                                             </div>
                                             {res.isPreviewMode !== false ? (
                                                 <div className="flex-1 min-h-[40px] font-medium text-slate-800 self-center py-1 overflow-x-auto">
-                                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>
+                                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]}>
                                                         {preprocessLaTeX(res[`option_${char.toLowerCase()}`])}
                                                     </ReactMarkdown>
                                                 </div>
@@ -633,7 +634,7 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
                                     <h3 className="font-bold text-slate-800 mb-3 text-lg">Hướng dẫn giải chi tiết:</h3>
                                     {res.isPreviewMode !== false ? (
                                         <div className="w-full min-h-[150px] p-4 bg-slate-50 border border-slate-200 rounded-xl font-medium text-slate-800 prose prose-slate max-w-none">
-                                            <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>
+                                            <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]}>
                                                 {preprocessLaTeX(res.explanation)}
                                             </ReactMarkdown>
                                         </div>

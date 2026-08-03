@@ -8,6 +8,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { ArrowLeft, Save, Sparkles, UploadCloud, Trash2, Edit2, Loader2, Image as ImageIcon, CheckCircle, Type, Image as LucideImage, CropIcon } from "lucide-react";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
@@ -440,7 +441,7 @@ Cấu trúc mỗi object:
                   
                   <div className="p-6">
                     <div className="prose prose-sm max-w-none text-gray-800 font-medium mb-6 prose-p:my-1">
-                      <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>
+                      <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]}>
                         {q.content || ""}
                       </ReactMarkdown>
                     </div>
@@ -453,7 +454,7 @@ Cấu trúc mỗi object:
                           return (
                             <div key={opt} className={`p-3 rounded-xl border-2 flex gap-3 items-start ${isCorrect ? 'bg-emerald-50 border-emerald-400' : 'bg-gray-50 border-gray-100'}`}>
                               <span className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-sm shrink-0 ${isCorrect ? 'bg-emerald-500 text-white' : 'bg-gray-200 text-gray-700'}`}>{opt}</span>
-                              <div className="prose prose-sm max-w-none mt-0.5"><ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{val || ""}</ReactMarkdown></div>
+                              <div className="prose prose-sm max-w-none mt-0.5"><ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>{val || ""}</ReactMarkdown></div>
                             </div>
                           );
                         })}
@@ -463,7 +464,7 @@ Cấu trúc mỗi object:
                     <div className="bg-indigo-50/50 rounded-xl p-4 border border-indigo-100">
                       <span className="text-xs font-bold text-indigo-800 uppercase tracking-wider mb-2 block">Lời giải chi tiết</span>
                       <div className="prose prose-sm max-w-none text-gray-700 prose-p:my-1">
-                        <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>
+                        <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]}>
                           {q.explanation || ""}
                         </ReactMarkdown>
                       </div>

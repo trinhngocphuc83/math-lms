@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { X, Search, Loader2, Database, CheckCircle2, ChevronLeft, ChevronRight, CheckSquare, Square, Eye } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import QuestionPreviewModal from "./QuestionPreviewModal";
@@ -359,7 +360,7 @@ export default function QuestionBankModal({ isOpen, onClose, onInsert, usedQuest
                            )}
                         </div>
                         <div className="text-[13px] text-gray-800 font-medium prose prose-sm max-w-none prose-p:my-1 line-clamp-3 leading-relaxed">
-                           <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{q.content || ""}</ReactMarkdown>
+                           <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>{q.content || ""}</ReactMarkdown>
                         </div>
                      </div>
                    </div>

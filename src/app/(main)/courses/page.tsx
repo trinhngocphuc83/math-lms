@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
@@ -75,7 +76,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
 
   const renderQuizContent = (text: string) => (
     <div className="prose prose-lg max-w-full break-words prose-p:my-0 leading-relaxed text-inherit overflow-hidden [&_code]:whitespace-pre-wrap [&_pre]:whitespace-pre-wrap [&_pre]:max-w-full [&_pre]:overflow-x-auto">
-      <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{text}</ReactMarkdown>
+      <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>{text}</ReactMarkdown>
     </div>
   );
 
@@ -394,7 +395,7 @@ export default function CoursePlayerPage() {
                         </div>
 
                         <div className="flex-1 prose prose-lg max-w-none prose-p:my-0 leading-relaxed text-gray-800 pb-10 animate-in slide-in-from-bottom-2 fade-in duration-300">
-                          <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} components={renderMarkdownComponent}>
+                          <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]} components={renderMarkdownComponent}>
                             {activeSlideContent}
                           </ReactMarkdown>
                         </div>

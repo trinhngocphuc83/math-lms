@@ -3,6 +3,7 @@
 import { useEffect, useState, useMemo } from "react";
 import { CheckCircle2, AlertCircle, Send, ListTodo, UploadCloud, X, Lightbulb, ListOrdered, Pin, Bot, Loader2, Image as ImageIcon } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
@@ -770,7 +771,7 @@ export default function AzotaExamUI({
                     </div>
                     <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-slate max-w-none prose-p:my-0 font-bold text-slate-800">
                        <ReactMarkdown components={appMarkdownComponents} 
-                          remarkPlugins={[remarkMath, remarkBreaks]} 
+                          remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} 
                           rehypePlugins={[rehypeKatex]}
                           urlTransform={(url) => url}
                           components={{
@@ -823,7 +824,7 @@ export default function AzotaExamUI({
                                 {['A','B','C','D'][optIdx]}
                              </div>
                              <div className="flex-1 min-w-0 prose prose-sm max-w-none text-slate-700 prose-p:my-0">
-                                <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{opt?.replace(/^(\s*-?\d+)\.(\s+|$)/, '$1\\.$2')}</ReactMarkdown>
+                                <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{opt?.replace(/^(\s*-?\d+)\.(\s+|$)/, '$1\\.$2')}</ReactMarkdown>
                              </div>
                           </button>
                         );
@@ -858,7 +859,7 @@ export default function AzotaExamUI({
                                       {['a','b','c','d'][optIdx] || 'a'}
                                    </div>
                                    <div className="flex-1 min-w-0 prose prose-sm max-w-none text-slate-700 prose-p:my-0">
-                                      <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>
+                                      <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>
                                          {(stmt.content || stmt.text)?.match(/^Mệnh đề [A-D]$/i) ? `Phát biểu ${['a','b','c','d'][optIdx]}` : (stmt.content || stmt.text)}
                                       </ReactMarkdown>
                                    </div>
@@ -1017,7 +1018,7 @@ export default function AzotaExamUI({
                              <div className="flex-1">
                                 <h4 className="text-lg font-extrabold text-blue-900 mb-2 uppercase tracking-wide text-sm">Phương pháp giải</h4>
                                 <div className="prose prose-sm sm:prose-base max-w-none text-blue-900 font-medium leading-relaxed">
-                                   <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{data.phuong_phap_giai}</ReactMarkdown>
+                                   <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{data.phuong_phap_giai}</ReactMarkdown>
                                 </div>
                              </div>
                           </div>
@@ -1036,7 +1037,7 @@ export default function AzotaExamUI({
                                          {sIdx + 1}
                                       </div>
                                       <div className="flex-1 min-w-0 prose prose-sm sm:prose-base max-w-none text-slate-700 leading-relaxed pt-0.5">
-                                         <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{step}</ReactMarkdown>
+                                         <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{step}</ReactMarkdown>
                                       </div>
                                    </div>
                                 ))}
@@ -1051,7 +1052,7 @@ export default function AzotaExamUI({
                                 💡 GỢI MỞ KIẾN THỨC
                              </h4>
                              <div className="prose prose-sm sm:prose-base max-w-none text-amber-900 font-medium leading-relaxed prose-p:my-1">
-                                <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{data.goi_y_nhanh}</ReactMarkdown>
+                                <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{data.goi_y_nhanh}</ReactMarkdown>
                              </div>
                           </div>
                        )}
@@ -1063,7 +1064,7 @@ export default function AzotaExamUI({
                                 <Lightbulb className="w-4 h-4" /> Hướng dẫn giải / Đáp án chi tiết
                              </h4>
                              <div className="prose prose-sm sm:prose-base max-w-none text-indigo-900">
-                                <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{data.sampleAnswer || data.answer}</ReactMarkdown>
+                                <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{data.sampleAnswer || data.answer}</ReactMarkdown>
                              </div>
                           </div>
                        )}
@@ -1114,7 +1115,7 @@ export default function AzotaExamUI({
                                       )}
                                    </div>
                                    <div className="prose prose-sm sm:prose-base max-w-none text-slate-700 bg-white p-5 rounded-xl border border-indigo-100 shadow-sm leading-relaxed">
-                                      <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{gradingStatus[qIndex].result.feedback || ''}</ReactMarkdown>
+                                      <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{gradingStatus[qIndex].result.feedback || ''}</ReactMarkdown>
                                    </div>
                                 </div>
                              ) : gradingStatus[qIndex]?.isGrading ? (

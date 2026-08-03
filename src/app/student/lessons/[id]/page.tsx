@@ -6,6 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
@@ -22,7 +23,7 @@ const normalizeAnswer = (s: string) => {
       .replace(/^[xy]=/, ''); // Bỏ qua x= hoặc y= ở đầu đáp án
 };
 
-import { appMarkdownComponents } from '@/components/CustomMarkdownComponents';
+import { appMarkdownComponents, preprocessMarkdown } from '@/components/CustomMarkdownComponents';
 
 const getYouTubeEmbedUrl = (url: string) => {
   if (!url) return '';
@@ -195,7 +196,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
              </span>
          </div>
          <div className="prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed text-slate-700">
-            <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]} urlTransform={(url) => url}>{cleanQuestion.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
+            <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]} urlTransform={(url) => url}>{preprocessMarkdown(cleanQuestion).replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
             {imgUrl && !cleanQuestion.includes(imgUrl) && !cleanQuestion.includes('![Hình vẽ]') && !cleanQuestion.includes('![Bảng biến thiên]') && (
                 <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
             )}
@@ -227,7 +228,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      isChecked && !isCorrect && !isWrong ? 'border-gray-200 bg-gray-50 text-gray-400 opacity-50' : ''
                   }`}
                >
-                  <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                  <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                </button>
              );
           })}
@@ -263,7 +264,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      {['A','B','C','D'][idx]}
                   </div>
                   <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0 text-[15px]">
-                     <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                     <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                   </div>
                </button>
              );
@@ -285,7 +286,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      <div className="flex items-start gap-3">
                         <div className="font-bold text-gray-500 w-6">{['A','B','C','D'][idx] || 'A'}.</div>
                         <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0 text-[15px]">
-                           <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(stmt.content || stmt.text || '').replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                           <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(stmt.content || stmt.text || '').replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                         </div>
                      </div>
                      <div className="flex items-center gap-2 shrink-0 md:ml-auto">
@@ -467,11 +468,11 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
                      [&_h2]:text-blue-700 [&_h2]:bg-blue-50 [&_h2]:px-4 [&_h2]:py-2 [&_h2]:rounded-xl [&_h2]:border-l-4 [&_h2]:border-blue-500 [&_h2]:block [&_h2]:w-fit [&_h2]:clear-both [&_h2]:shadow-sm [&_h2]:mb-4 [&_h2]:mt-8 [&_h3]:text-amber-700 [&_h3]:bg-amber-50 [&_h3]:px-3 [&_h3]:py-1.5 [&_h3]:rounded-lg [&_h3]:border-l-4 [&_h3]:border-amber-400 [&_h3]:block [&_h3]:w-fit [&_h3]:clear-both [&_h3]:shadow-sm [&_h3]:mt-6 [&_h3]:mb-3 [&_blockquote]:border-l-8 [&_blockquote]:border-dashed [&_blockquote]:border-emerald-400 [&_blockquote]:bg-gradient-to-r [&_blockquote]:from-emerald-50 [&_blockquote]:to-teal-50/30 [&_blockquote]:text-emerald-900 [&_blockquote]:px-6 [&_blockquote]:py-5 [&_blockquote]:rounded-[2rem] [&_blockquote]:shadow-sm [&_blockquote]:my-8 [&_blockquote_p]:m-0 [&_blockquote_p]:font-bold [&_blockquote_p]:leading-relaxed
                  ">
                    <ReactMarkdown 
-                      remarkPlugins={[remarkMath, remarkBreaks]} 
+                      remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} 
                       rehypePlugins={[rehypeKatex, rehypeRaw]}
                       components={appMarkdownComponents}
                    >
-                     {p.content.replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}
+                     {preprocessMarkdown(p.content).replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}
                    </ReactMarkdown>
                  </div>
                );

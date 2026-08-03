@@ -1,6 +1,7 @@
 import React from "react";
 import { X } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
@@ -48,7 +49,7 @@ export default function QuestionPreviewModal({ isOpen, onClose, question, onEdit
     let finalContent = String(content).replace(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi, '');
     return (
       <div className="prose prose-sm max-w-none prose-p:my-1 overflow-x-auto text-gray-800">
-        <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>
+        <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]}>
           {preprocessLaTeX(finalContent)}
         </ReactMarkdown>
       </div>
@@ -68,7 +69,7 @@ export default function QuestionPreviewModal({ isOpen, onClose, question, onEdit
     return (
       <div className="prose prose-sm max-w-none overflow-x-auto text-gray-800">
         <ReactMarkdown 
-          remarkPlugins={[remarkMath]} 
+          remarkPlugins={[remarkMath, remarkGfm]} 
           rehypePlugins={[rehypeKatex]}
           components={{
             p: ({node, ...props}) => (

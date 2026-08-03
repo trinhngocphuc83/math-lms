@@ -4,6 +4,7 @@ import { X, Wand2, Loader2 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useState, useEffect } from "react";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
@@ -135,7 +136,7 @@ export default function PreviewQuestionModal({ isOpen, onClose, question, onUpda
     let finalContent = String(content).replace(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi, '');
     return (
       <div className="prose prose-sm max-w-none prose-p:my-1 overflow-x-auto text-gray-800">
-        <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex]}>
+        <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]}>
           {preprocessLaTeX(finalContent)}
         </ReactMarkdown>
       </div>

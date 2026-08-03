@@ -124,6 +124,18 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
           remarkPlugins={[remarkMath, remarkBreaks]}
           rehypePlugins={[rehypeKatex, rehypeRaw]}
           components={{
+        table: ({node, style, children, ...props}: any) => (
+            <div className="overflow-x-auto my-6 not-prose">
+                <table className="w-full text-left border-collapse border-2 border-slate-400 text-base" style={style} {...props}>
+                    {children}
+                </table>
+            </div>
+        ),
+        thead: ({node, style, children, ...props}: any) => <thead className="bg-slate-100 font-bold" style={style} {...props}>{children}</thead>,
+        tbody: ({node, style, children, ...props}: any) => <tbody className="bg-white" style={style} {...props}>{children}</tbody>,
+        tr: ({node, style, children, ...props}: any) => <tr className="hover:bg-slate-50 transition-colors" style={style} {...props}>{children}</tr>,
+        th: ({node, style, children, ...props}: any) => <th className="px-4 py-2 border-2 border-slate-400 text-slate-800 font-bold" style={style} {...props}>{children}</th>,
+        td: ({node, style, children, ...props}: any) => <td className="px-4 py-2 border-2 border-slate-400 text-slate-700 align-top" style={style} {...props}>{children}</td>,
              span: ({node, style, children, ...props}: any) => {
                  let parsedStyle: any = {};
                  if (typeof style === 'string') {

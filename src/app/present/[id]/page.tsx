@@ -3,6 +3,7 @@ import { useEffect, useState, useMemo, useRef, useLayoutEffect } from 'react';
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
@@ -49,7 +50,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
             
             <div className="font-semibold text-slate-800 mb-[1.5em] drop-shadow-sm">
                 <div className="prose prose-slate max-w-none [&_.katex]:text-[1.1em] [&_.katex-display]:my-[0.5em]">
-                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                         {quizData.question || ""}
                     </ReactMarkdown>
                 </div>
@@ -80,7 +81,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                                 `}
                             >
                                 <div className="flex-1 min-w-0 text-center text-[1.2em] font-black uppercase text-gray-700">
-                                   <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                                   <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                                 </div>
                             </button>
                         );
@@ -122,7 +123,7 @@ function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: num
                                     {String.fromCharCode(65 + idx)}
                                 </div>
                                 <div className="font-medium flex-1 prose prose-slate max-w-none [&_.katex]:text-[1.1em]" style={{ fontSize: '0.9em' }}>
-                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                                 </div>
                             </button>
                         );
@@ -449,7 +450,7 @@ export default function PresentationPage() {
                                     >
                                         <ReactMarkdown 
                                             components={customMarkdownComponents}
-                                            remarkPlugins={[remarkMath, remarkBreaks]} 
+                                            remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} 
                                             rehypePlugins={[rehypeKatex, rehypeRaw]}
                                         >
                                             {frag}

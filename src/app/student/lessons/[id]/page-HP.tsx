@@ -6,6 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 import { Loader2, ArrowLeft, CheckCircle2, XCircle, AlertCircle } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import 'katex/dist/katex.min.css';
@@ -64,7 +65,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
     <div className="my-6 bg-white border-2 border-indigo-100 rounded-2xl p-5 md:p-8 shadow-sm">
       <h3 className="text-lg font-bold text-gray-800 mb-4 flex items-start gap-2">
          <span className="text-indigo-600 bg-indigo-100 px-2 py-0.5 rounded text-sm shrink-0">Câu hỏi</span> 
-         <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{data.question}</ReactMarkdown>
+         <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>{data.question}</ReactMarkdown>
       </h3>
 
       {/* RENDER DẠNG NHIỀU LỰA CHỌN */}
@@ -96,7 +97,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      {['A','B','C','D'][idx]}
                   </div>
                   <div className="prose prose-sm max-w-none text-gray-700">
-                     <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{opt}</ReactMarkdown>
+                     <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>{opt}</ReactMarkdown>
                   </div>
                </button>
              );
@@ -117,7 +118,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      <div className="flex items-start gap-3">
                         <div className="font-bold text-gray-500 w-6">{(opt.id || ['a','b','c','d'][idx]).toUpperCase()}.</div>
                         <div className="prose prose-sm max-w-none text-gray-700">
-                           <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{opt.content}</ReactMarkdown>
+                           <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>{opt.content}</ReactMarkdown>
                         </div>
                      </div>
                      <div className="flex items-center gap-2 shrink-0 md:ml-auto">
@@ -219,7 +220,7 @@ const RenderSmartMarkdown = ({ content }: { content: string }) => {
                   [&_code]:bg-indigo-50 [&_code]:text-indigo-600 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:rounded [&_code]:text-[0.9em]
                   [&_blockquote]:border-l-4 [&_blockquote]:border-indigo-500 [&_blockquote]:bg-indigo-50 [&_blockquote]:px-4 [&_blockquote]:py-2 [&_blockquote]:rounded-r-lg [&_blockquote]:italic [&_blockquote]:not-italic [&_blockquote_p]:m-0
                ">
-                 <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>{p.content}</ReactMarkdown>
+                 <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>{p.content}</ReactMarkdown>
                </div>
              );
          } else if (p.type === 'quiz') {

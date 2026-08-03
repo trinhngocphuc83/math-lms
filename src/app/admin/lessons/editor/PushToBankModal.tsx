@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from "@/utils/supabase/client";
 import { X, UploadCloud, Loader2, Database, Info, ChevronDown, ChevronUp, Tag } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
@@ -796,7 +797,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                       <div style={{ padding: '12px 16px', fontSize: 14, lineHeight: 1.7, color: '#1e293b' }}>
                         {q.content ? (
                           <div style={{ marginBottom: 10 }}>
-                            <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{q.content}</ReactMarkdown>
+                            <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{q.content}</ReactMarkdown>
                           </div>
                         ) : (
                           <div style={{ color: '#94a3b8', fontStyle: 'italic', marginBottom: 10 }}>(Chưa có nội dung)</div>
@@ -812,7 +813,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                                 <div key={letter} style={{ padding: '6px 10px', borderRadius: 7, fontSize: 13, border: isCorrect ? '2px solid #14b8a6' : '1px solid #e2e8f0', background: isCorrect ? '#f0fdfa' : '#fff', display: 'flex', gap: 5, alignItems: 'flex-start' }}>
                                   <strong style={{ color: isCorrect ? '#0d9488' : '#64748b' }}>{letter}.</strong>
                                   <span style={{ flex: 1 }}>
-                                    {val ? <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{val}</ReactMarkdown> : <span style={{ color: '#ccc' }}>—</span>}
+                                    {val ? <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{val}</ReactMarkdown> : <span style={{ color: '#ccc' }}>—</span>}
                                   </span>
                                   {isCorrect && <span style={{ color: '#0d9488', fontWeight: 700 }}>✓</span>}
                                 </div>
@@ -831,7 +832,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                               return (
                                 <div key={letter} style={{ padding: '5px 10px', borderRadius: 6, marginBottom: 4, border: '1px solid #e2e8f0', background: '#fff', display: 'flex', alignItems: 'center', gap: 8, fontSize: 13 }}>
                                   <strong style={{ color: '#64748b', minWidth: 18 }}>{letter}.</strong>
-                                  <span style={{ flex: 1 }}>{val ? <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{val}</ReactMarkdown> : '—'}</span>
+                                  <span style={{ flex: 1 }}>{val ? <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{val}</ReactMarkdown> : '—'}</span>
                                   <span style={{ fontSize: 11, fontWeight: 700, padding: '1px 7px', borderRadius: 4, background: isTrue ? '#d1fae5' : '#fee2e2', color: isTrue ? '#065f46' : '#991b1b' }}>{isTrue ? 'ĐÚNG' : 'SAI'}</span>
                                 </div>
                               );
@@ -850,7 +851,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                         {q.question_type === 'essay' && q.correct_answer && (
                           <div style={{ padding: '7px 12px', borderRadius: 7, marginTop: 6, background: '#fefce8', border: '1px solid #fde68a', fontSize: 12, color: '#854d0e' }}>
                             <strong>Lời giải mẫu:</strong>
-                            <div style={{ marginTop: 4 }}><ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{q.correct_answer}</ReactMarkdown></div>
+                            <div style={{ marginTop: 4 }}><ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{q.correct_answer}</ReactMarkdown></div>
                           </div>
                         )}
 
@@ -858,7 +859,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                         {q.explanation && q.question_type !== 'essay' && (
                           <div style={{ padding: '7px 12px', borderRadius: 7, marginTop: 6, background: '#fefce8', border: '1px solid #fde68a', fontSize: 12, color: '#854d0e' }}>
                             <strong>💡 Hướng dẫn giải:</strong>
-                            <div style={{ marginTop: 4 }}><ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{q.explanation}</ReactMarkdown></div>
+                            <div style={{ marginTop: 4 }}><ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{q.explanation}</ReactMarkdown></div>
                           </div>
                         )}
                       </div>

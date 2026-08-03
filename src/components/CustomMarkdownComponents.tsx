@@ -14,6 +14,28 @@ export const extractTextFromReactNode = (node: any): string => {
     return '';
 };
 
+// Hàm tự động chuẩn hóa văn bản Markdown, đặc biệt là bảng biểu thiếu dòng Header
+export const preprocessMarkdown = (text: string): string => {
+    if (typeof text !== 'string') return text;
+    const lines = text.split('\n');
+    for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        const isDelimiterRow = /^\|?[\s:\-]+\|[\s:\-|]*$/.test(line) && line.includes('-');
+        if (isDelimiterRow) {
+            const prevLine = i > 0 ? lines[i-1].trim() : '';
+            const isPrevRowTable = prevLine.includes('|');
+            if (!isPrevRowTable) {
+                const cols = line.split('|').filter(c => c.trim().length > 0).length;
+                let emptyHeader = '|';
+                for(let c = 0; c < cols; c++) emptyHeader += ' &nbsp; |';
+                lines.splice(i, 0, emptyHeader);
+                i++;
+            }
+        }
+    }
+    return lines.join('\n');
+};
+
 const sanitizeStyle = (style: any) => {
     let parsedStyle: any = {};
     if (typeof style === 'string') {
@@ -63,7 +85,7 @@ const stripTriggerPrefix = (children: any): any => {
         }
 
         if (React.isValidElement(node)) {
-            const props: any = { ...node.props };
+            const props: any = { ...(node.props || {}) };
             if (props.children) {
                 props.children = walk(props.children);
             }
@@ -194,7 +216,39 @@ export const unifiedMarkdownComponents: any = {
                <div className="prose prose-slate max-w-none text-inherit [&>p:first-child]:mt-0 [&>p:last-child]:mb-0 text-[35px]">{children}</div>
            </blockquote>
        );
-   }
+    },
+    table: ({node, style, children, ...props}: any) => (
+        <div className="overflow-x-auto my-6 not-prose">
+            <table className="w-full text-left border-collapse border-2 border-slate-400 text-[28px]" style={sanitizeStyle(style)} {...props}>
+                {children}
+            </table>
+        </div>
+    ),
+    thead: ({node, style, children, ...props}: any) => (
+        <thead className="bg-slate-100 font-bold" style={sanitizeStyle(style)} {...props}>
+            {children}
+        </thead>
+    ),
+    tbody: ({node, style, children, ...props}: any) => (
+        <tbody className="bg-white" style={sanitizeStyle(style)} {...props}>
+            {children}
+        </tbody>
+    ),
+    tr: ({node, style, children, ...props}: any) => (
+        <tr className="hover:bg-slate-50 transition-colors" style={sanitizeStyle(style)} {...props}>
+            {children}
+        </tr>
+    ),
+    th: ({node, style, children, ...props}: any) => (
+        <th className="px-5 py-3 border-2 border-slate-400 text-slate-800 font-bold" style={sanitizeStyle(style)} {...props}>
+            {children}
+        </th>
+    ),
+    td: ({node, style, children, ...props}: any) => (
+        <td className="px-5 py-3 border-2 border-slate-400 text-slate-700 align-top" style={sanitizeStyle(style)} {...props}>
+            {children}
+        </td>
+    )
 };
 
 export const appMarkdownComponents = unifiedMarkdownComponents;
@@ -250,6 +304,38 @@ export const studentMarkdownComponents: any = {
    strong: ({node, style, children, ...props}: any) => {
        return <strong style={sanitizeStyle(style)} {...props} className="text-slate-900 font-bold">{children}</strong>;
    },
+   table: ({node, style, children, ...props}: any) => (
+       <div className="overflow-x-auto my-6 not-prose">
+           <table className="w-full text-left border-collapse border border-slate-400 text-sm md:text-base" style={sanitizeStyle(style)} {...props}>
+               {children}
+           </table>
+       </div>
+   ),
+   thead: ({node, style, children, ...props}: any) => (
+       <thead className="bg-slate-100 font-bold" style={sanitizeStyle(style)} {...props}>
+           {children}
+       </thead>
+   ),
+   tbody: ({node, style, children, ...props}: any) => (
+       <tbody className="bg-white" style={sanitizeStyle(style)} {...props}>
+           {children}
+       </tbody>
+   ),
+   tr: ({node, style, children, ...props}: any) => (
+       <tr className="hover:bg-slate-50 transition-colors" style={sanitizeStyle(style)} {...props}>
+           {children}
+       </tr>
+   ),
+   th: ({node, style, children, ...props}: any) => (
+       <th className="px-4 py-2 border border-slate-400 text-slate-800 font-bold" style={sanitizeStyle(style)} {...props}>
+           {children}
+       </th>
+   ),
+   td: ({node, style, children, ...props}: any) => (
+       <td className="px-4 py-2 border border-slate-400 text-slate-700 align-top" style={sanitizeStyle(style)} {...props}>
+           {children}
+       </td>
+   ),
    li: ({node, style, children, ...props}: any) => {
        return (
            <li style={sanitizeStyle(style)} className="flex items-start gap-3 mb-2 relative group" {...props}>
