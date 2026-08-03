@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronUp, ChevronDown, ChevronRight, CheckCircle2 } from "lucide-react";
@@ -28,13 +28,6 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const [isBankModalOpen, setIsBankModalOpen] = React.useState(false);
   const [insertIndex, setInsertIndex] = React.useState(-1);
   const [selectedBlocks, setSelectedBlocks] = React.useState<Set<string>>(new Set());
-  const [activeBlockId, setActiveBlockId] = React.useState<string | null>(null);
-
-  React.useEffect(() => {
-    if (blocks.length > 0 && !activeBlockId) setActiveBlockId(blocks[0].id);
-    if (blocks.length > 0 && activeBlockId && !blocks.find(b => b.id === activeBlockId)) setActiveBlockId(blocks[0].id);
-  }, [blocks, activeBlockId]);
-
 
   React.useEffect(() => {
      if (globalTriggerBankModal && globalTriggerBankModal > 0) {
@@ -80,11 +73,11 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
          let questionContent = q.content || "";
          if (q.image_url) {
-             const placeholderRegex = /(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?BẢNG BIẾN THIÊN.*?\])/i;
+             const placeholderRegex = /(?:\[IMAGE_PLACEHOLDER\]|\[.*?CH├Ü ├¥.*?\]|\[.*?H├îNH Vß║╝.*?\]|\[.*?Bß║óNG BIß║╛N THI├èN.*?\])/i;
              if (placeholderRegex.test(questionContent)) {
-                 questionContent = questionContent.replace(new RegExp(placeholderRegex, 'ig'), `\n\n![Hình vẽ](${q.image_url})\n\n`);
+                 questionContent = questionContent.replace(new RegExp(placeholderRegex, 'ig'), `\n\n![H├¼nh vß║╜](${q.image_url})\n\n`);
              } else {
-                 questionContent += `\n\n![Hình vẽ](${q.image_url})\n\n`;
+                 questionContent += `\n\n![H├¼nh vß║╜](${q.image_url})\n\n`;
              }
          }
 
@@ -92,7 +85,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              type: blockType,
              question: questionContent,
              sampleAnswer: q.explanation || "",
-             sourceQuestionId: q.id // Lưu ID để đếm số lần sử dụng
+             sourceQuestionId: q.id // L╞░u ID ─æß╗â ─æß║┐m sß╗æ lß║ºn sß╗¡ dß╗Ñng
          };
 
          if (blockType === 'multiple_choice') {
@@ -107,18 +100,18 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              if (q.option_c) stmts.push({ id: 'c', content: q.option_c, isTrue: q.correct_answer?.charAt(2) === 'D' || q.correct_answer?.charAt(2) === 'T' });
              if (q.option_d) stmts.push({ id: 'd', content: q.option_d, isTrue: q.correct_answer?.charAt(3) === 'D' || q.correct_answer?.charAt(3) === 'T' });
              
-             // Nếu câu hỏi trong ngân hàng bị lỗi chỉ lưu 1-3 ý, tự động bù đủ 4 ý
+             // Nß║┐u c├óu hß╗Åi trong ng├ón h├áng bß╗ï lß╗ùi chß╗ë l╞░u 1-3 ├╜, tß╗▒ ─æß╗Öng b├╣ ─æß╗º 4 ├╜
              if (stmts.length > 0 && stmts.length < 4) {
                  const defaultIds = ['a', 'b', 'c', 'd'];
                  for (let i = stmts.length; i < 4; i++) {
-                     stmts.push({ id: defaultIds[i], content: `Phát biểu ${defaultIds[i]}`, isTrue: false });
+                     stmts.push({ id: defaultIds[i], content: `Ph├ít biß╗âu ${defaultIds[i]}`, isTrue: false });
                  }
              }
              content.options = stmts.length > 0 ? stmts : [
-                 { id: 'a', content: "Mệnh đề A", isTrue: true },
-                 { id: 'b', content: "Mệnh đề B", isTrue: false },
-                 { id: 'c', content: "Mệnh đề C", isTrue: true },
-                 { id: 'd', content: "Mệnh đề D", isTrue: false },
+                 { id: 'a', content: "Mß╗çnh ─æß╗ü A", isTrue: true },
+                 { id: 'b', content: "Mß╗çnh ─æß╗ü B", isTrue: false },
+                 { id: 'c', content: "Mß╗çnh ─æß╗ü C", isTrue: true },
+                 { id: 'd', content: "Mß╗çnh ─æß╗ü D", isTrue: false },
              ];
          }
 
@@ -169,7 +162,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   };
 
   const removeBlock = (index: number) => {
-      if (!confirm("Xóa khối này?")) return;
+      if (!confirm("X├│a khß╗æi n├áy?")) return;
       const newBlocks = [...blocks];
       newBlocks.splice(index, 1);
       onChangeBlocks(newBlocks);
@@ -231,7 +224,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   };
 
   const renderQuizContent = (text: string) => {
-    const formattedText = text.replace(/\\n/g, '\n').replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n');
+    const formattedText = text.replace(/\\n/g, '\n').replace(/^(?:\*\*)?H╞░ß╗¢ng\s+dß║½n\s+giß║úi:?(?:\*\*)?\s*/gim, '### ≡ƒÆí H╞░ß╗¢ng dß║½n giß║úi chi tiß║┐t:\n\n');
     return (
       <div className="prose prose-sm max-w-full break-words prose-p:my-0 leading-relaxed text-inherit overflow-hidden prose-strong:text-[#0e6263]
          prose-h2:text-[1.25rem] prose-h2:font-extrabold prose-h2:text-[#00529b] prose-h2:mt-6 prose-h2:mb-3 prose-h2:bg-[#e6f0fa] prose-h2:px-3 prose-h2:py-2 prose-h2:rounded-xl prose-h2:border-l-4 prose-h2:border-[#00529b] prose-h2:block prose-h2:w-fit prose-h2:clear-both
@@ -242,77 +235,17 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
     );
   };
 
-  // Phân loại các khối theo dạng câu hỏi cho sidebar bản đồ
-  const multipleChoiceBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && x.b.content?.type === 'multiple_choice');
-  const tfBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && x.b.content?.type === 'true_false_cluster');
-  const shortAnswerBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && ['short_answer', 'essay'].includes(x.b.content?.type));
-  const theoryBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'md');
-
   return (
-    <div className="flex flex-col md:flex-row h-full overflow-hidden bg-gray-100 relative">
-       {/* SIDEBAR BẢN ĐỒ CÂU HỎI (20%) */}
-       <div className="w-full md:w-[20%] md:min-w-[280px] border-r border-gray-200 bg-white overflow-y-auto flex flex-col shadow-sm z-10" style={{ maxHeight: 'calc(100vh - 120px)' }}>
-          <div className="p-3 border-b border-gray-100 bg-indigo-50/50 flex items-center justify-between sticky top-0 z-20">
-             <h3 className="font-black text-indigo-900 flex items-center gap-2 text-sm uppercase tracking-wider"><ListTodo className="w-4 h-4"/> Bản đồ</h3>
-          </div>
-          <div className="p-4 flex flex-col gap-6">
-
-             {theoryBlocks.length > 0 && (
-                <div>
-                   <div className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-3">Lý Thuyết / Văn Bản</div>
-                   <div className="flex flex-col gap-1.5">
-                      {theoryBlocks.map((item, idx) => (
-                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`text-left px-3 py-2 rounded-lg text-xs font-semibold truncate transition-colors ${activeBlockId === item.b.id ? 'bg-indigo-600 text-white shadow-md' : 'bg-gray-50 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600'}`}>
-                            {idx + 1}. Khối Văn bản
-                         </button>
-                      ))}
-                   </div>
-                </div>
-             )}
-
-             {multipleChoiceBlocks.length > 0 && (
-                <div>
-                   <div className="text-[11px] font-bold text-teal-600 uppercase tracking-widest mb-3">Phần 1. Trắc nghiệm</div>
-                   <div className="grid grid-cols-5 gap-1.5">
-                      {multipleChoiceBlocks.map((item, idx) => (
-                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-teal-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-teal-50 hover:text-teal-600'}`}>{idx + 1}</button>
-                      ))}
-                   </div>
-                </div>
-             )}
-
-             {tfBlocks.length > 0 && (
-                <div>
-                   <div className="text-[11px] font-bold text-orange-600 uppercase tracking-widest mb-3">Phần 2. Đúng/Sai</div>
-                   <div className="grid grid-cols-5 gap-1.5">
-                      {tfBlocks.map((item, idx) => (
-                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-orange-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600'}`}>{idx + 1}</button>
-                      ))}
-                   </div>
-                </div>
-             )}
-
-             {shortAnswerBlocks.length > 0 && (
-                <div>
-                   <div className="text-[11px] font-bold text-purple-600 uppercase tracking-widest mb-3">Phần 3. Trả lời ngắn</div>
-                   <div className="grid grid-cols-5 gap-1.5">
-                      {shortAnswerBlocks.map((item, idx) => (
-                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-purple-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-purple-50 hover:text-purple-600'}`}>{idx + 1}</button>
-                      ))}
-                   </div>
-                </div>
-             )}
-
-          </div>
-       </div>
-
-       {/* MAIN EDITOR (80%) */}
-       <div className="flex-1 flex flex-col p-4 md:p-6 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 120px)' }}>
+    <div className="flex flex-col gap-6 p-4 h-full overflow-y-auto bg-gray-100">
        <div className="flex items-center justify-between mb-[-0.5rem] flex-wrap gap-3">
+         <label className="flex items-center gap-2 text-[15px] font-bold text-indigo-700 cursor-pointer bg-indigo-50 px-4 py-2 rounded-lg border border-indigo-100 w-max shadow-sm transition-colors hover:bg-indigo-100">
+            <input type="checkbox" checked={focusMode} onChange={e => setFocusMode(e.target.checked)} className="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500" />
+            ≡ƒÄ» Chß║┐ ─æß╗Ö Tß║¡p trung (Tß╗▒ ─æß╗Öng thu gß╗ìn c├íc khß╗æi kh├íc khi l├ám viß╗çc)
+         </label>
 
          {selectedBlocks.size > 0 && (
             <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm animate-in fade-in slide-in-from-top-2">
-               <span className="text-sm font-bold text-gray-600 mr-2">Đã chọn {selectedBlocks.size} khối:</span>
+               <span className="text-sm font-bold text-gray-600 mr-2">─É├ú chß╗ìn {selectedBlocks.size} khß╗æi:</span>
                <select 
                   onChange={(e) => {
                      const newType = e.target.value;
@@ -337,27 +270,25 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                   }}
                   className="border border-indigo-200 rounded-md px-3 py-1.5 text-sm bg-indigo-50 font-bold text-indigo-700 outline-none cursor-pointer focus:ring-2 focus:ring-indigo-500/30"
                >
-                  <option value="">-- Đổi dạng câu hỏi --</option>
-                  <option value="multiple_choice">Trắc nghiệm 4 lựa chọn</option>
-                  <option value="true_false_cluster">Đúng/Sai 4 Ý (Barem 2025)</option>
-                  <option value="short_answer">Trả lời ngắn / Điền khuyết</option>
-                  <option value="essay">Tự luận / Trình bày chi tiết</option>
+                  <option value="">-- ─Éß╗òi dß║íng c├óu hß╗Åi --</option>
+                  <option value="multiple_choice">Trß║»c nghiß╗çm 4 lß╗▒a chß╗ìn</option>
+                  <option value="true_false_cluster">─É├║ng/Sai 4 ├¥ (Barem 2025)</option>
+                  <option value="short_answer">Trß║ú lß╗¥i ngß║»n / ─Éiß╗ün khuyß║┐t</option>
+                  <option value="essay">Tß╗▒ luß║¡n / Tr├¼nh b├áy chi tiß║┐t</option>
                </select>
-               <button onClick={() => setSelectedBlocks(new Set())} className="ml-2 text-xs font-bold text-gray-400 hover:text-gray-600 underline">Bỏ chọn</button>
+               <button onClick={() => setSelectedBlocks(new Set())} className="ml-2 text-xs font-bold text-gray-400 hover:text-gray-600 underline">Bß╗Å chß╗ìn</button>
             </div>
          )}
        </div>
 
        {blocks.length === 0 && (
           <div className="text-center py-10 flex flex-col items-center gap-4">
-             <button onClick={() => addBlock(-1, 'md')} className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 shadow-sm transition-colors">+ Thêm nội dung đầu tiên (Hoặc ấn Ctrl+V dán ảnh)</button>
-             <button onClick={() => { setInsertIndex(-1); setIsBankModalOpen(true); }} className="flex items-center gap-2 font-bold text-orange-600 bg-orange-50 hover:bg-orange-100 px-4 py-2 rounded-lg border border-orange-200 transition-colors shadow-sm"><Database className="w-4 h-4"/> Hoặc Rút Đề từ Ngân hàng</button>
+             <button onClick={() => addBlock(-1, 'md')} className="bg-teal-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-teal-700 shadow-sm transition-colors">+ Th├¬m nß╗Öi dung ─æß║ºu ti├¬n (Hoß║╖c ß║Ñn Ctrl+V d├ín ß║únh)</button>
+             <button onClick={() => { setInsertIndex(-1); setIsBankModalOpen(true); }} className="flex items-center gap-2 font-bold text-orange-600 bg-orange-50 hover:bg-orange-100 px-4 py-2 rounded-lg border border-orange-200 transition-colors shadow-sm"><Database className="w-4 h-4"/> Hoß║╖c R├║t ─Éß╗ü tß╗½ Ng├ón h├áng</button>
           </div>
        )}
 
-       {blocks.filter(b => b.id === activeBlockId).map((block) => {
-             const idx = blocks.findIndex(b => b.id === block.id);
-             return (
+       {blocks.map((block, idx) => (
           <div key={block.id} onClickCapture={() => handleFocusBlock(block.id)} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-visible shrink-0 transition-all relative">
               <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center rounded-t-xl z-20 relative">
                   <div className="flex items-center gap-2 font-bold text-gray-700 text-[15px]">
@@ -373,18 +304,18 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                         className="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mr-2 cursor-pointer"
                         onClick={e => e.stopPropagation()}
                      />
-                     {block.type === 'md' ? <><Type className="w-4 h-4 text-indigo-500"/> Khối Lý Thuyết / Văn Bản</> : <><ListTodo className="w-4 h-4 text-teal-500"/> Khối Trắc Nghiệm Tương Tác</>}
+                     {block.type === 'md' ? <><Type className="w-4 h-4 text-indigo-500"/> Khß╗æi L├╜ Thuyß║┐t / V─ân Bß║ún</> : <><ListTodo className="w-4 h-4 text-teal-500"/> Khß╗æi Trß║»c Nghiß╗çm T╞░╞íng T├íc</>}
                   </div>
                   <div className="flex gap-1.5">
                       <button onClick={() => moveBlock(idx, -1)} disabled={idx === 0} className="p-1.5 hover:bg-gray-200 rounded-md text-gray-500 disabled:opacity-30"><ArrowUp className="w-4 h-4"/></button>
                       <button onClick={() => moveBlock(idx, 1)} disabled={idx === blocks.length - 1} className="p-1.5 hover:bg-gray-200 rounded-md text-gray-500 disabled:opacity-30"><ArrowDown className="w-4 h-4"/></button>
-                      <button onClick={() => toggleCollapse(block.id)} className={`p-1.5 hover:bg-gray-200 rounded-md transition-colors ${collapsedBlocks.has(block.id) ? 'text-indigo-600 bg-indigo-50' : 'text-gray-500'}`} title={collapsedBlocks.has(block.id) ? "Mở rộng khối này" : "Thu gọn khối này"}>
+                      <button onClick={() => toggleCollapse(block.id)} className={`p-1.5 hover:bg-gray-200 rounded-md transition-colors ${collapsedBlocks.has(block.id) ? 'text-indigo-600 bg-indigo-50' : 'text-gray-500'}`} title={collapsedBlocks.has(block.id) ? "Mß╗ƒ rß╗Öng khß╗æi n├áy" : "Thu gß╗ìn khß╗æi n├áy"}>
                          {collapsedBlocks.has(block.id) ? <ChevronDown className="w-4 h-4"/> : <ChevronUp className="w-4 h-4"/>}
                       </button>
                       <div className="w-px h-4 bg-gray-300 mx-1 self-center"></div>
-                      <button onClick={() => handleFixLatex(idx)} className="flex items-center gap-1.5 px-2 py-1.5 bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 rounded-md text-[11px] font-bold transition-colors" title="Sửa nhanh các lỗi LaTeX (như dấu \\, dấu $$, v.v.)">🪄 Sửa lỗi LaTeX</button>
-                      <button onClick={() => togglePreview(block.id)} className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[11px] font-bold transition-colors ${previewBlocks.has(block.id) ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-200'}`} title="Bật/Tắt Xem trước kết quả hiển thị"><MonitorPlay className="w-3.5 h-3.5"/> Xem Trước</button>
-                      <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} className="flex items-center gap-1.5 px-2 py-1.5 bg-orange-50 hover:bg-orange-100 border border-orange-200 text-orange-700 rounded-md text-[11px] font-bold transition-colors" title="Chèn thêm ảnh vào khối này"><CropIcon className="w-3.5 h-3.5"/> Chèn Thêm Ảnh</button>
+                      <button onClick={() => handleFixLatex(idx)} className="flex items-center gap-1.5 px-2 py-1.5 bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 rounded-md text-[11px] font-bold transition-colors" title="Sß╗¡a nhanh c├íc lß╗ùi LaTeX (nh╞░ dß║Ñu \\, dß║Ñu $$, v.v.)">≡ƒ¬ä Sß╗¡a lß╗ùi LaTeX</button>
+                      <button onClick={() => togglePreview(block.id)} className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[11px] font-bold transition-colors ${previewBlocks.has(block.id) ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-200'}`} title="Bß║¡t/Tß║»t Xem tr╞░ß╗¢c kß║┐t quß║ú hiß╗ân thß╗ï"><MonitorPlay className="w-3.5 h-3.5"/> Xem Tr╞░ß╗¢c</button>
+                      <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} className="flex items-center gap-1.5 px-2 py-1.5 bg-orange-50 hover:bg-orange-100 border border-orange-200 text-orange-700 rounded-md text-[11px] font-bold transition-colors" title="Ch├¿n th├¬m ß║únh v├áo khß╗æi n├áy"><CropIcon className="w-3.5 h-3.5"/> Ch├¿n Th├¬m ß║ónh</button>
                       <button onClick={() => removeBlock(idx)} className="p-1.5 hover:bg-red-100 rounded-md text-red-500 hover:text-red-600 transition-colors"><Trash2 className="w-4 h-4"/></button>
                   </div>
               </div>
@@ -393,9 +324,9 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
               <div className="p-5 animate-in fade-in slide-in-from-top-1 duration-200">
                  {block.type === 'md' && (
                     <div className="flex flex-col gap-4">
-                       {/* CẢNH BÁO CHO KHỐI LÝ THUYẾT */}
+                       {/* Cß║óNH B├üO CHO KHß╗ÉI L├¥ THUYß║╛T */}
                        {(typeof block.content === 'string') && (() => {
-                          const placeholderRegex = /\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\]/i;
+                          const placeholderRegex = /\[IMAGE_PLACEHOLDER\]|\[.*?CH├Ü ├¥.*?\]|\[.*?H├îNH Vß║╝.*?\]|\[.*?H├îNH ß║óNH.*?\]|\[.*?Bß║óNG BIß╗éU.*?\]/i;
                           const hasPlaceholder = placeholderRegex.test(block.content);
                           const bboxMatch = block.content.match(/\{\s*"image_bbox"\s*:\s*\[([\d,\s]+)\]\s*\}/);
                           if (!hasPlaceholder && !bboxMatch) return null;
@@ -414,17 +345,17 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                <div className="flex-1">
                                   <h4 className={`font-bold flex items-center gap-2 mb-2 ${globalSourceImage ? 'text-orange-800' : 'text-red-700'}`}>
                                      {globalSourceImage ? <ImageIcon className="w-5 h-5"/> : <AlertTriangle className="w-5 h-5"/>} 
-                                     {globalSourceImage ? "AI phát hiện có ảnh cần cắt!" : "Cảnh báo: Có vị trí cần chèn ảnh thủ công!"}
+                                     {globalSourceImage ? "AI ph├ít hiß╗çn c├│ ß║únh cß║ºn cß║»t!" : "Cß║únh b├ío: C├│ vß╗ï tr├¡ cß║ºn ch├¿n ß║únh thß╗º c├┤ng!"}
                                   </h4>
                                   <p className={`text-[14px] mb-4 leading-relaxed ${globalSourceImage ? 'text-orange-700' : 'text-red-600'}`}>
-                                     {globalSourceImage ? "Hệ thống đã nhận diện khu vực ảnh từ dữ liệu gốc. Hãy dùng nút bên dưới để cắt phần ảnh chính xác." : "Hãy ấn nút bên dưới để tải file ảnh lên và cắt vào vị trí này."}
+                                     {globalSourceImage ? "Hß╗ç thß╗æng ─æ├ú nhß║¡n diß╗çn khu vß╗▒c ß║únh tß╗½ dß╗» liß╗çu gß╗æc. H├úy d├╣ng n├║t b├¬n d╞░ß╗¢i ─æß╗â cß║»t phß║ºn ß║únh ch├¡nh x├íc." : "H├úy ß║Ñn n├║t b├¬n d╞░ß╗¢i ─æß╗â tß║úi file ß║únh l├¬n v├á cß║»t v├áo vß╗ï tr├¡ n├áy."}
                                   </p>
-                                  <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage, ...bboxMeta } : bboxMeta, block.id)} className={`${globalSourceImage ? 'bg-orange-600 hover:bg-orange-700' : 'bg-red-600 hover:bg-red-700'} text-white px-4 py-2.5 rounded-lg font-bold shadow-sm transition-colors flex items-center gap-2 text-sm`}><CropIcon className="w-4 h-4"/> {globalSourceImage ? 'Cắt từ Ảnh Nguồn' : 'Cắt & Chèn Ảnh Mới'}</button>
+                                  <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage, ...bboxMeta } : bboxMeta, block.id)} className={`${globalSourceImage ? 'bg-orange-600 hover:bg-orange-700' : 'bg-red-600 hover:bg-red-700'} text-white px-4 py-2.5 rounded-lg font-bold shadow-sm transition-colors flex items-center gap-2 text-sm`}><CropIcon className="w-4 h-4"/> {globalSourceImage ? 'Cß║»t tß╗½ ß║ónh Nguß╗ôn' : 'Cß║»t & Ch├¿n ß║ónh Mß╗¢i'}</button>
                                </div>
                                {globalSourceImage && (
                                  <div className="w-full md:w-72 bg-white border border-orange-100 rounded-xl p-1.5 shadow-sm shrink-0 relative overflow-hidden">
                                     <img src={globalSourceImage} alt="Source" className="w-full max-h-48 object-contain rounded-lg opacity-60" />
-                                    {bboxMatch && <div className="absolute inset-0 flex items-center justify-center font-bold text-orange-900 drop-shadow-md text-sm"><CropIcon className="w-6 h-6 mr-1"/> Đã xác định toạ độ</div>}
+                                    {bboxMatch && <div className="absolute inset-0 flex items-center justify-center font-bold text-orange-900 drop-shadow-md text-sm"><CropIcon className="w-6 h-6 mr-1"/> ─É├ú x├íc ─æß╗ïnh toß║í ─æß╗Ö</div>}
                                  </div>
                                )}
                             </div>
@@ -435,7 +366,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                            value={block.content} 
                            onChange={e => updateBlockContent(idx, e.target.value)} 
                            className="w-full h-40 p-4 border border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none font-mono text-[15px] transition-all"
-                           placeholder="Nhập Markdown / LaTeX..."
+                           placeholder="Nhß║¡p Markdown / LaTeX..."
                        />
                        
                        {(() => {
@@ -446,59 +377,59 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                <div className="flex-1">
                                   <h4 className="font-bold flex items-center gap-2 mb-2 text-yellow-900">
                                      <AlertTriangle className="w-5 h-5 text-yellow-600"/> 
-                                     Phát hiện có Bảng Markdown / Bảng Biến Thiên!
+                                     Ph├ít hiß╗çn c├│ Bß║úng Markdown / Bß║úng Biß║┐n Thi├¬n!
                                   </h4>
                                   <p className="text-[14px] mb-4 leading-relaxed text-yellow-800 font-medium">
-                                     Bảng văn bản (như Bảng xét dấu, Bảng biến thiên) thường sẽ hiển thị không đẹp và bị lệch mũi tên trên Mobile. 
-                                     Bạn nên <strong>xoá đoạn mã bảng này</strong> và sử dụng chức năng <strong>Chèn Hình Ảnh</strong> để thay thế.
+                                     Bß║úng v─ân bß║ún (nh╞░ Bß║úng x├⌐t dß║Ñu, Bß║úng biß║┐n thi├¬n) th╞░ß╗¥ng sß║╜ hiß╗ân thß╗ï kh├┤ng ─æß║╣p v├á bß╗ï lß╗çch m┼⌐i t├¬n tr├¬n Mobile. 
+                                     Bß║ín n├¬n <strong>xo├í ─æoß║ín m├ú bß║úng n├áy</strong> v├á sß╗¡ dß╗Ñng chß╗⌐c n─âng <strong>Ch├¿n H├¼nh ß║ónh</strong> ─æß╗â thay thß║┐.
                                   </p>
                                   <button 
                                      onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} 
                                      className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2.5 rounded-lg font-bold shadow-sm transition-colors flex items-center gap-2 text-sm"
                                   >
-                                     <ImageIcon className="w-4 h-4"/> Chèn Ảnh Bảng Thay Thế
+                                     <ImageIcon className="w-4 h-4"/> Ch├¿n ß║ónh Bß║úng Thay Thß║┐
                                   </button>
                                </div>
                              </div>
                            );
                        })()}
 
-                       {/* Đã loại bỏ Mobile View cũ */}
+                       {/* ─É├ú loß║íi bß╗Å Mobile View c┼⌐ */}
                     </div>
                  )}
 
                  {block.type === 'quiz' && (
                     <div className="flex flex-col gap-5">
-                       {/* Cảnh báo hình ảnh & Smart Cropper tự động */}
+                       {/* Cß║únh b├ío h├¼nh ß║únh & Smart Cropper tß╗▒ ─æß╗Öng */}
                        {block.content.autoCropMetadata ? (
                           <div className="bg-orange-50 border border-orange-200 rounded-xl p-5 flex flex-col md:flex-row gap-5 items-start">
                              <div className="flex-1">
-                                <h4 className="text-orange-800 font-bold flex items-center gap-2 mb-2"><ImageIcon className="w-5 h-5"/> Ảnh Gốc Đính Kèm</h4>
-                                <p className="text-[14px] text-orange-700 mb-4 leading-relaxed">AI đã phát hiện và cắt ảnh từ tài liệu gốc. Bạn có thể sử dụng công cụ Cắt lại nếu AI cắt chưa chuẩn xác.</p>
-                                <button onClick={() => onTriggerCrop(block.content.autoCropMetadata, block.id)} className="bg-orange-600 text-white px-4 py-2.5 rounded-lg font-bold hover:bg-orange-700 shadow-sm transition-colors flex items-center gap-2 text-sm"><CropIcon className="w-4 h-4"/> Cắt lại Ảnh Này</button>
+                                <h4 className="text-orange-800 font-bold flex items-center gap-2 mb-2"><ImageIcon className="w-5 h-5"/> ß║ónh Gß╗æc ─É├¡nh K├¿m</h4>
+                                <p className="text-[14px] text-orange-700 mb-4 leading-relaxed">AI ─æ├ú ph├ít hiß╗çn v├á cß║»t ß║únh tß╗½ t├ái liß╗çu gß╗æc. Bß║ín c├│ thß╗â sß╗¡ dß╗Ñng c├┤ng cß╗Ñ Cß║»t lß║íi nß║┐u AI cß║»t ch╞░a chuß║⌐n x├íc.</p>
+                                <button onClick={() => onTriggerCrop(block.content.autoCropMetadata, block.id)} className="bg-orange-600 text-white px-4 py-2.5 rounded-lg font-bold hover:bg-orange-700 shadow-sm transition-colors flex items-center gap-2 text-sm"><CropIcon className="w-4 h-4"/> Cß║»t lß║íi ß║ónh N├áy</button>
                              </div>
                              <div className="w-full md:w-72 bg-white border border-orange-100 rounded-xl p-1.5 shadow-sm shrink-0">
                                 <img src={block.content.autoCropMetadata.originalUrl} alt="Source" className="w-full max-h-48 object-contain rounded-lg" />
                              </div>
                           </div>
-                       ) : (/(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\])/i.test(block.content.question || '')) && (
+                       ) : (/(?:\[IMAGE_PLACEHOLDER\]|\[.*?CH├Ü ├¥.*?\]|\[.*?H├îNH Vß║╝.*?\]|\[.*?H├îNH ß║óNH.*?\]|\[.*?Bß║óNG BIß╗éU.*?\])/i.test(block.content.question || '')) && (
                           <div className="bg-red-50 border border-red-200 px-5 py-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-pulse">
                              <div className="flex items-center gap-3 text-red-700">
                                 <AlertTriangle className="w-6 h-6 shrink-0" />
-                                <span className="text-[15px] font-bold">Cảnh báo: Phát hiện yêu cầu chèn ảnh từ AI. Hãy dùng nút bên phải để chèn!</span>
+                                <span className="text-[15px] font-bold">Cß║únh b├ío: Ph├ít hiß╗çn y├¬u cß║ºu ch├¿n ß║únh tß╗½ AI. H├úy d├╣ng n├║t b├¬n phß║úi ─æß╗â ch├¿n!</span>
                              </div>
-                             <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} className="bg-red-600 text-white px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-red-700 shadow-sm transition-colors flex items-center justify-center gap-2 shrink-0"><CropIcon className="w-4 h-4" /> Cắt & Chèn Ảnh Mới</button>
+                             <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} className="bg-red-600 text-white px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-red-700 shadow-sm transition-colors flex items-center justify-center gap-2 shrink-0"><CropIcon className="w-4 h-4" /> Cß║»t & Ch├¿n ß║ónh Mß╗¢i</button>
                           </div>
                        )}
 
                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-                          <label className="font-bold text-teal-800 text-[15px]">Nội dung câu hỏi</label>
+                          <label className="font-bold text-teal-800 text-[15px]">Nß╗Öi dung c├óu hß╗Åi</label>
                           <select 
                              value={block.content.type || 'multiple_choice'} 
                              onChange={e => {
                                const newType = e.target.value;
                                let newContent = { ...block.content, type: newType };
-                               // Nếu chuyển sang true_false_cluster mà options chưa đúng cấu trúc object
+                               // Nß║┐u chuyß╗ân sang true_false_cluster m├á options ch╞░a ─æ├║ng cß║Ñu tr├║c object
                                if (newType === 'true_false_cluster' && (!block.content.options || typeof block.content.options[0] === 'string')) {
                                   newContent.options = [
                                      { id: 'a', content: '', isTrue: true },
@@ -511,15 +442,15 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                              }} 
                              className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white font-medium text-gray-700 outline-none focus:ring-2 focus:ring-teal-500/20"
                           >
-                             <option value="multiple_choice">Trắc nghiệm 4 lựa chọn</option>
-                             <option value="true_false_cluster">Đúng/Sai 4 Ý (Barem 2025)</option>
-                             <option value="true_false">Đúng / Sai (Truyền thống)</option>
-                             <option value="short_answer">Trả lời ngắn / Điền khuyết</option>
-                             <option value="essay">Tự luận / Trình bày chi tiết</option>
+                             <option value="multiple_choice">Trß║»c nghiß╗çm 4 lß╗▒a chß╗ìn</option>
+                             <option value="true_false_cluster">─É├║ng/Sai 4 ├¥ (Barem 2025)</option>
+                             <option value="true_false">─É├║ng / Sai (Truyß╗ün thß╗æng)</option>
+                             <option value="short_answer">Trß║ú lß╗¥i ngß║»n / ─Éiß╗ün khuyß║┐t</option>
+                             <option value="essay">Tß╗▒ luß║¡n / Tr├¼nh b├áy chi tiß║┐t</option>
                           </select>
                        </div>
                        
-                       <RichTextarea rows={3} value={block.content.question || ""} onChange={e => updateBlockContent(idx, { ...block.content, question: e.target.value })} className="w-full border border-gray-200 rounded-xl p-4 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 font-mono text-[15px] transition-all" placeholder="Nhập câu hỏi... (Markdown hỗ trợ)" />
+                       <RichTextarea rows={3} value={block.content.question || ""} onChange={e => updateBlockContent(idx, { ...block.content, question: e.target.value })} className="w-full border border-gray-200 rounded-xl p-4 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 font-mono text-[15px] transition-all" placeholder="Nhß║¡p c├óu hß╗Åi... (Markdown hß╗ù trß╗ú)" />
 
                        {(block.content.type === 'multiple_choice' || !block.content.type) && (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -527,7 +458,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                <div key={optIdx} className="flex flex-col gap-1">
                                   <label className="text-xs font-bold text-gray-600 flex items-center gap-2">
                                      <input type="radio" name={`q_${block.id}`} checked={block.content.answerIndex === optIdx} onChange={() => updateBlockContent(idx, { ...block.content, answerIndex: optIdx })} className="text-teal-600" />
-                                     Đáp án {['A','B','C','D'][optIdx]}
+                                     ─É├íp ├ín {['A','B','C','D'][optIdx]}
                                   </label>
                                   <RichTextarea collapsibleToolbar={true} rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
                                      const newOpts = [...(block.content.options || ["","","",""])];
@@ -545,7 +476,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                <div key={optIdx} className="flex flex-col gap-1">
                                   <label className="text-xs font-bold text-gray-600 flex items-center gap-2">
                                      <input type="radio" name={`q_${block.id}`} checked={block.content.answerIndex === optIdx} onChange={() => updateBlockContent(idx, { ...block.content, answerIndex: optIdx })} className="text-teal-600" />
-                                     Đáp án {['Đúng','Sai'][optIdx]}
+                                     ─É├íp ├ín {['─É├║ng','Sai'][optIdx]}
                                   </label>
                                   <RichTextarea collapsibleToolbar={true} rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
                                      const newOpts = [...(block.content.options || ["",""])];
@@ -560,13 +491,13 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                        {block.content.type === 'true_false_cluster' && (
                           <div className="flex flex-col gap-4 mt-2">
                              <div className="text-xs font-bold text-teal-700 bg-teal-50 px-3 py-2 rounded-lg border border-teal-100">
-                                Cấu trúc Barem 2025: Một câu hỏi chung và 4 mệnh đề (A, B, C, D). Học sinh chọn Đ/S cho từng mệnh đề độc lập. Điểm được tính theo bậc (0.1đ, 0.25đ, 0.5đ, 1.0đ).
+                                Cß║Ñu tr├║c Barem 2025: Mß╗Öt c├óu hß╗Åi chung v├á 4 mß╗çnh ─æß╗ü (A, B, C, D). Hß╗ìc sinh chß╗ìn ─É/S cho tß╗½ng mß╗çnh ─æß╗ü ─æß╗Öc lß║¡p. ─Éiß╗âm ─æ╞░ß╗úc t├¡nh theo bß║¡c (0.1─æ, 0.25─æ, 0.5─æ, 1.0─æ).
                              </div>
                              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                {(block.content.options || []).map((opt: any, optIdx: number) => (
                                   <div key={optIdx} className="flex flex-col gap-2 p-3 border border-gray-200 rounded-xl bg-gray-50/50 hover:bg-gray-50 transition-colors">
                                      <div className="flex items-center justify-between">
-                                        <span className="font-bold text-gray-700 text-sm">Mệnh đề {opt.id?.toUpperCase() || ['A','B','C','D'][optIdx]}</span>
+                                        <span className="font-bold text-gray-700 text-sm">Mß╗çnh ─æß╗ü {opt.id?.toUpperCase() || ['A','B','C','D'][optIdx]}</span>
                                         <button 
                                            onClick={() => {
                                               const newOpts = [...block.content.options];
@@ -575,7 +506,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                            }}
                                            className={`px-3 py-1.5 text-xs font-bold rounded-lg transition-all ${opt.isTrue ? 'bg-green-100 text-green-700 border border-green-200 hover:bg-green-200' : 'bg-red-100 text-red-700 border border-red-200 hover:bg-red-200'}`}
                                         >
-                                           {opt.isTrue ? '✓ Mệnh đề Đúng' : '✕ Mệnh đề Sai'}
+                                           {opt.isTrue ? 'Γ£ô Mß╗çnh ─æß╗ü ─É├║ng' : 'Γ£ò Mß╗çnh ─æß╗ü Sai'}
                                         </button>
                                      </div>
                                      <RichTextarea 
@@ -588,7 +519,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                            updateBlockContent(idx, { ...block.content, options: newOpts });
                                         }} 
                                         className="w-full border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 transition-all" 
-                                        placeholder="Nhập nội dung mệnh đề..."
+                                        placeholder="Nhß║¡p nß╗Öi dung mß╗çnh ─æß╗ü..."
                                      />
                                   </div>
                                ))}
@@ -598,13 +529,13 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
                        {block.content.type === 'short_answer' && (
                           <div>
-                             <label className="text-xs font-bold text-gray-600 mb-1 block">Đáp án đúng chính xác (Text/Số)</label>
+                             <label className="text-xs font-bold text-gray-600 mb-1 block">─É├íp ├ín ─æ├║ng ch├¡nh x├íc (Text/Sß╗æ)</label>
                              <input type="text" value={block.content.exactAnswer || ""} onChange={e => updateBlockContent(idx, { ...block.content, exactAnswer: e.target.value })} className="w-full border p-2 rounded outline-none focus:border-teal-500 font-bold" />
                           </div>
                        )}
 
                        <div className="mt-4 pt-4 border-t border-gray-100">
-                          <label className="text-xs font-bold text-gray-600 mb-2 block text-indigo-700">✍️ Hướng dẫn giải / Lời giải chi tiết</label>
+                          <label className="text-xs font-bold text-gray-600 mb-2 block text-indigo-700">Γ£ì∩╕Å H╞░ß╗¢ng dß║½n giß║úi / Lß╗¥i giß║úi chi tiß║┐t</label>
                           <RichTextarea rows={4} value={block.content.answer || block.content.sampleAnswer || block.content.explanation || ""} onChange={e => updateBlockContent(idx, { ...block.content, answer: e.target.value, sampleAnswer: e.target.value })} className="w-full border p-2 rounded outline-none focus:border-teal-500" />
                        </div>
                     </div>
@@ -614,13 +545,13 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                      <div className="mt-5 pt-5 border-t-2 border-indigo-100 animate-in fade-in slide-in-from-top-2">
                         <div className="flex items-center justify-between mb-3">
                            <div className="text-[10px] font-black text-indigo-400 uppercase tracking-widest flex items-center gap-2">
-                              <MonitorPlay className="w-3 h-3" /> KẾT QUẢ XEM TRƯỚC:
+                              <MonitorPlay className="w-3 h-3" /> Kß║╛T QUß║ó XEM TR╞»ß╗ÜC:
                            </div>
                            <button onMouseDown={(e) => {
-                               e.preventDefault(); // Tránh làm mất focus của ô nhập liệu
+                               e.preventDefault(); // Tr├ính l├ám mß║Ñt focus cß╗ºa ├┤ nhß║¡p liß╗çu
                                const isFixedBySelection = applyLatexFixToActiveElement();
                                if (!isFixedBySelection) {
-                                  // Nếu không có vùng bôi đen nào, áp dụng cho toàn bộ khối
+                                  // Nß║┐u kh├┤ng c├│ v├╣ng b├┤i ─æen n├áo, ├íp dß╗Ñng cho to├án bß╗Ö khß╗æi
                                   try {
                                      let fixed = block.type === 'md' ? block.content : JSON.stringify(block.content);
                                      fixed = fixLatexText(fixed);
@@ -629,13 +560,13 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                   } catch(err) { console.error(err) }
                                }
                            }} className="flex items-center gap-1.5 text-xs font-bold bg-purple-50 text-purple-700 px-3 py-1.5 rounded-md hover:bg-purple-100 transition-colors border border-purple-200 shadow-sm">
-                              🪄 Sửa lỗi LaTeX ngay
+                              ≡ƒ¬ä Sß╗¡a lß╗ùi LaTeX ngay
                            </button>
                         </div>
                         <div className="bg-white p-6 rounded-xl shadow-md border-4 border-slate-700 aspect-video overflow-y-auto w-full max-w-4xl mx-auto relative prose prose-lg prose-indigo [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap prose-p:leading-[1.5] prose-li:leading-[1.5] prose-p:my-[0.3em] prose-li:my-[0.2em] prose-ul:my-[0.3em]">
                            {block.type === 'md' ? renderQuizContent(block.content) : (
                               <div className="flex flex-col gap-4">
-                                 {renderQuizContent(block.content.question || "*(Chưa có câu hỏi)*")}
+                                 {renderQuizContent(block.content.question || "*(Ch╞░a c├│ c├óu hß╗Åi)*")}
                                  {(block.content.type === 'multiple_choice' || !block.content.type) && (
                                     <div className="grid grid-cols-2 gap-3 mt-2">
                                        {[0,1,2,3].map(optIdx => (
@@ -650,10 +581,10 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                     <div className="grid grid-cols-2 gap-3 mt-2">
                                        {(block.content.options || []).map((opt: any, optIdx: number) => (
                                           <div key={optIdx} className="bg-gray-50 border border-gray-100 rounded-xl p-3 flex flex-col gap-2">
-                                             <span className="font-bold text-indigo-600 text-sm">Mệnh đề {opt.id?.toUpperCase() || ['A','B','C','D'][optIdx]}:</span>
+                                             <span className="font-bold text-indigo-600 text-sm">Mß╗çnh ─æß╗ü {opt.id?.toUpperCase() || ['A','B','C','D'][optIdx]}:</span>
                                              <div className="flex-1 text-sm">{renderQuizContent(opt.content || "")}</div>
                                              <div className="mt-1 pt-2 border-t border-gray-200">
-                                                {opt.isTrue ? <span className="text-xs font-bold text-green-600">✓ Đáp án: ĐÚNG</span> : <span className="text-xs font-bold text-red-500">✕ Đáp án: SAI</span>}
+                                                {opt.isTrue ? <span className="text-xs font-bold text-green-600">Γ£ô ─É├íp ├ín: ─É├ÜNG</span> : <span className="text-xs font-bold text-red-500">Γ£ò ─É├íp ├ín: SAI</span>}
                                              </div>
                                           </div>
                                        ))}
@@ -663,7 +594,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                  {(block.content.answer || block.content.sampleAnswer || block.content.explanation) && (
                                     <div className="mt-4 p-4 bg-emerald-50/50 border border-emerald-200 rounded-xl">
                                        <div className="text-sm font-bold text-emerald-800 mb-2 border-b border-emerald-200/50 pb-2 flex items-center gap-2">
-                                          <span className="text-lg">💡</span> Hướng dẫn giải:
+                                          <span className="text-lg">≡ƒÆí</span> H╞░ß╗¢ng dß║½n giß║úi:
                                        </div>
                                        <div className="text-[15px] text-gray-800">
                                           {renderQuizContent(block.content.answer || block.content.sampleAnswer || block.content.explanation || "")}
@@ -679,13 +610,12 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
               )}
               
               <div className="bg-gray-50 border-t border-gray-100 p-2 flex justify-center gap-3 flex-wrap">
-                 <button onClick={() => addBlock(idx, 'md')} className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-3 py-1.5 rounded-md"><PlusCircle className="w-3.5 h-3.5"/> Thêm Khối Lý thuyết xuống dưới</button>
-                 <button onClick={() => addBlock(idx, 'quiz')} className="flex items-center gap-1 text-xs font-bold text-teal-600 hover:text-teal-800 bg-teal-50 px-3 py-1.5 rounded-md"><PlusCircle className="w-3.5 h-3.5"/> Thêm Khối Trắc nghiệm xuống dưới</button>
-                 <button onClick={() => { setInsertIndex(idx); setIsBankModalOpen(true); }} className="flex items-center gap-1 text-xs font-bold text-orange-600 hover:text-orange-800 bg-orange-50 px-3 py-1.5 rounded-md border border-orange-100 shadow-sm"><Database className="w-3.5 h-3.5"/> Rút từ Ngân hàng</button>
+                 <button onClick={() => addBlock(idx, 'md')} className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-3 py-1.5 rounded-md"><PlusCircle className="w-3.5 h-3.5"/> Th├¬m Khß╗æi L├╜ thuyß║┐t xuß╗æng d╞░ß╗¢i</button>
+                 <button onClick={() => addBlock(idx, 'quiz')} className="flex items-center gap-1 text-xs font-bold text-teal-600 hover:text-teal-800 bg-teal-50 px-3 py-1.5 rounded-md"><PlusCircle className="w-3.5 h-3.5"/> Th├¬m Khß╗æi Trß║»c nghiß╗çm xuß╗æng d╞░ß╗¢i</button>
+                 <button onClick={() => { setInsertIndex(idx); setIsBankModalOpen(true); }} className="flex items-center gap-1 text-xs font-bold text-orange-600 hover:text-orange-800 bg-orange-50 px-3 py-1.5 rounded-md border border-orange-100 shadow-sm"><Database className="w-3.5 h-3.5"/> R├║t tß╗½ Ng├ón h├áng</button>
               </div>
            </div>
-             );
-          })}
+        ))}
 
         <QuestionBankModal 
            isOpen={isBankModalOpen} 
@@ -693,7 +623,6 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
            onInsert={handleInsertFromBank} 
            usedQuestionIds={blocks.map(b => b.type === 'quiz' && b.content.sourceQuestionId).filter(Boolean) as string[]}
         />
-     </div>
      </div>
    );
  }
