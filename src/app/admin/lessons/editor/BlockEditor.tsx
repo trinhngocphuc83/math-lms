@@ -28,6 +28,13 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const [isBankModalOpen, setIsBankModalOpen] = React.useState(false);
   const [insertIndex, setInsertIndex] = React.useState(-1);
   const [selectedBlocks, setSelectedBlocks] = React.useState<Set<string>>(new Set());
+  const [activeBlockId, setActiveBlockId] = React.useState<string | null>(null);
+
+  React.useEffect(() => {
+    if (blocks.length > 0 && !activeBlockId) setActiveBlockId(blocks[0].id);
+    if (blocks.length > 0 && activeBlockId && !blocks.find(b => b.id === activeBlockId)) setActiveBlockId(blocks[0].id);
+  }, [blocks, activeBlockId]);
+
 
   React.useEffect(() => {
      if (globalTriggerBankModal && globalTriggerBankModal > 0) {
@@ -225,23 +232,74 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
   const renderQuizContent = (text: string) => {
     const formattedText = text.replace(/\\n/g, '\n').replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n');
-    return (
-      <div className="prose prose-sm max-w-full break-words prose-p:my-0 leading-relaxed text-inherit overflow-hidden prose-strong:text-[#0e6263]
-         prose-h2:text-[1.25rem] prose-h2:font-extrabold prose-h2:text-[#00529b] prose-h2:mt-6 prose-h2:mb-3 prose-h2:bg-[#e6f0fa] prose-h2:px-3 prose-h2:py-2 prose-h2:rounded-xl prose-h2:border-l-4 prose-h2:border-[#00529b] prose-h2:block prose-h2:w-fit prose-h2:clear-both
-         prose-h3:text-[1.05rem] prose-h3:font-bold prose-h3:text-[#10b981] prose-h3:mt-5 prose-h3:mb-2 prose-h3:bg-emerald-50 prose-h3:px-3 prose-h3:py-1.5 prose-h3:rounded-lg prose-h3:border-l-4 prose-h3:border-emerald-500 prose-h3:block prose-h3:w-fit prose-h3:clear-both
-         [&_code]:whitespace-pre-wrap [&_pre]:whitespace-pre-wrap [&_pre]:max-w-full [&_pre]:overflow-x-auto">
-        <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{formattedText}</ReactMarkdown>
-      </div>
-    );
-  };
+      const multipleChoiceBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && x.b.content?.type === 'multiple_choice');
+  const tfBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && x.b.content?.type === 'true_false_cluster');
+  const shortAnswerBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && ['short_answer', 'essay'].includes(x.b.content?.type));
+  const theoryBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'md');
+  const activeIndex = blocks.findIndex(b => b.id === activeBlockId);
 
   return (
-    <div className="flex flex-col gap-6 p-4 h-full overflow-y-auto bg-gray-100">
+    <div className="flex flex-col md:flex-row h-full overflow-hidden bg-gray-100 relative">
+       {/* SIDEBAR BẢN ĐỒ CÂU HỎI (20%) */}
+       <div className="w-full md:w-[20%] md:min-w-[280px] border-r border-gray-200 bg-white overflow-y-auto flex flex-col shadow-sm z-10" style={{ maxHeight: 'calc(100vh - 120px)' }}>
+          <div className="p-3 border-b border-gray-100 bg-indigo-50/50 flex items-center justify-between sticky top-0 z-20">
+             <h3 className="font-black text-indigo-900 flex items-center gap-2 text-sm uppercase tracking-wider"><ListTodo className="w-4 h-4"/> Bản đồ</h3>
+          </div>
+          <div className="p-4 flex flex-col gap-6">
+             
+             {theoryBlocks.length > 0 && (
+                <div>
+                   <div className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-3">Lý Thuyết / Văn Bản</div>
+                   <div className="flex flex-col gap-1.5">
+                      {theoryBlocks.map((item, idx) => (
+                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`text-left px-3 py-2 rounded-lg text-xs font-semibold truncate transition-colors ${activeBlockId === item.b.id ? 'bg-indigo-600 text-white shadow-md' : 'bg-gray-50 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600'}`}>
+                            {idx + 1}. Khối Văn bản
+                         </button>
+                      ))}
+                   </div>
+                </div>
+             )}
+
+             {multipleChoiceBlocks.length > 0 && (
+                <div>
+                   <div className="text-[11px] font-bold text-teal-600 uppercase tracking-widest mb-3">Phần 1. Trắc nghiệm</div>
+                   <div className="grid grid-cols-5 gap-1.5">
+                      {multipleChoiceBlocks.map((item, idx) => (
+                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-teal-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-teal-50 hover:text-teal-600'}`}>{idx + 1}</button>
+                      ))}
+                   </div>
+                </div>
+             )}
+
+             {tfBlocks.length > 0 && (
+                <div>
+                   <div className="text-[11px] font-bold text-orange-600 uppercase tracking-widest mb-3">Phần 2. Đúng/Sai</div>
+                   <div className="grid grid-cols-5 gap-1.5">
+                      {tfBlocks.map((item, idx) => (
+                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-orange-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600'}`}>{idx + 1}</button>
+                      ))}
+                   </div>
+                </div>
+             )}
+
+             {shortAnswerBlocks.length > 0 && (
+                <div>
+                   <div className="text-[11px] font-bold text-purple-600 uppercase tracking-widest mb-3">Phần 3. Trả lời ngắn</div>
+                   <div className="grid grid-cols-5 gap-1.5">
+                      {shortAnswerBlocks.map((item, idx) => (
+                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-purple-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-purple-50 hover:text-purple-600'}`}>{idx + 1}</button>
+                      ))}
+                   </div>
+                </div>
+             )}
+
+          </div>
+       </div>
+
+       {/* MAIN EDITOR (80%) */}
+       <div className="flex-1 flex flex-col p-4 md:p-6 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 120px)' }}>
        <div className="flex items-center justify-between mb-[-0.5rem] flex-wrap gap-3">
-         <label className="flex items-center gap-2 text-[15px] font-bold text-indigo-700 cursor-pointer bg-indigo-50 px-4 py-2 rounded-lg border border-indigo-100 w-max shadow-sm transition-colors hover:bg-indigo-100">
-            <input type="checkbox" checked={focusMode} onChange={e => setFocusMode(e.target.checked)} className="w-4 h-4 text-indigo-600 rounded border-gray-300 focus:ring-indigo-500" />
-            🎯 Chế độ Tập trung (Tự động thu gọn các khối khác khi làm việc)
-         </label>
+         
 
          {selectedBlocks.size > 0 && (
             <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg border border-gray-200 shadow-sm animate-in fade-in slide-in-from-top-2">
@@ -288,8 +346,10 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
           </div>
        )}
 
-       {blocks.map((block, idx) => (
-          <div key={block.id} onClickCapture={() => handleFocusBlock(block.id)} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-visible shrink-0 transition-all relative">
+       {blocks.filter(b => b.id === activeBlockId).map((block) => {
+             const idx = blocks.findIndex(b => b.id === block.id);
+             return (
+          <div key={block.id + "_" + idx} onClickCapture={() => handleFocusBlock(block.id)} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-visible shrink-0 transition-all relative">
               <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center rounded-t-xl z-20 relative">
                   <div className="flex items-center gap-2 font-bold text-gray-700 text-[15px]">
                      <input 
@@ -615,7 +675,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                  <button onClick={() => { setInsertIndex(idx); setIsBankModalOpen(true); }} className="flex items-center gap-1 text-xs font-bold text-orange-600 hover:text-orange-800 bg-orange-50 px-3 py-1.5 rounded-md border border-orange-100 shadow-sm"><Database className="w-3.5 h-3.5"/> Rút từ Ngân hàng</button>
               </div>
            </div>
-        ))}
+             );
+          })}
 
         <QuestionBankModal 
            isOpen={isBankModalOpen} 
@@ -623,6 +684,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
            onInsert={handleInsertFromBank} 
            usedQuestionIds={blocks.map(b => b.type === 'quiz' && b.content.sourceQuestionId).filter(Boolean) as string[]}
         />
+     </div>
      </div>
    );
  }
