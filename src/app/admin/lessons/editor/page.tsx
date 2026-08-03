@@ -513,7 +513,8 @@ const parseMarkdownToBlocks = (content: string): Block[] => {
     const trimmed = content.trim();
     if ((trimmed.startsWith('[') && trimmed.endsWith(']')) || (trimmed.startsWith('{') && trimmed.endsWith('}'))) {
         try {
-            let data = JSON.parse(trimmed);\n              data = cleanObjectLatex(data);
+            let data = JSON.parse(trimmed);
+            data = cleanObjectLatex(data);
             if (Array.isArray(data)) {
                 const res: Block[] = [];
                 data.forEach(item => {
