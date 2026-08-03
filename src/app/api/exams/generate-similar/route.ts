@@ -116,9 +116,17 @@ export async function POST(request: Request) {
         const result = await model.generateContent(parts);
         const text = result.response.text();
         
+        // Fix \t LaTeX JSON parse bug
+        let preprocessedText = text
+            .replace(/\\n(?=eq|otin|abla|atural)/g, '\\\\n')
+            .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
+            .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
+            .replace(/\\b(?=egin)/g, '\\\\b')
+            .replace(/\\f(?=rac|orall)/g, '\\\\f');
+
         let parsed;
         try {
-          parsed = JSON.parse(text);
+          parsed = JSON.parse(preprocessedText);
         } catch (parseErr: any) {
           const sanitizedText = text.replace(/\\([^"\\/bfnrtu])/g, '\\\\$1');
           parsed = JSON.parse(sanitizedText);
