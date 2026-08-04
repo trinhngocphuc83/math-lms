@@ -412,8 +412,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           }
                           
                           return (
-                            <div className={`border px-5 py-4 rounded-xl flex flex-col md:flex-row gap-5 items-start ${globalSourceImage ? 'bg-orange-50 border-orange-200' : 'bg-red-50 border-red-200 animate-pulse'}`}>
-                               <div className="flex-1">
+                            <div className={`border px-3 py-2.5 rounded-lg flex flex-col md:flex-row gap-3 items-center ${globalSourceImage ? 'bg-orange-50/80 border-orange-200' : 'bg-red-50/80 border-red-200 animate-pulse'}`}>
+                               <div className="flex-1 flex flex-col sm:flex-row items-center gap-2">
                                   <h4 className={`font-bold flex items-center gap-2 mb-2 ${globalSourceImage ? 'text-orange-800' : 'text-red-700'}`}>
                                      {globalSourceImage ? <ImageIcon className="w-5 h-5"/> : <AlertTriangle className="w-5 h-5"/>} 
                                      {globalSourceImage ? "AI phát hiện có ảnh cần cắt!" : "Cảnh báo: Có vị trí cần chèn ảnh thủ công!"}
@@ -421,11 +421,11 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                   <p className={`text-[14px] mb-4 leading-relaxed ${globalSourceImage ? 'text-orange-700' : 'text-red-600'}`}>
                                      {globalSourceImage ? "Hệ thống đã nhận diện khu vực ảnh từ dữ liệu gốc. Hãy dùng nút bên dưới để cắt phần ảnh chính xác." : "Hãy ấn nút bên dưới để tải file ảnh lên và cắt vào vị trí này."}
                                   </p>
-                                  <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage, ...bboxMeta } : bboxMeta, block.id)} className={`${globalSourceImage ? 'bg-orange-600 hover:bg-orange-700' : 'bg-red-600 hover:bg-red-700'} text-white px-4 py-2.5 rounded-lg font-bold shadow-sm transition-colors flex items-center gap-2 text-sm`}><CropIcon className="w-4 h-4"/> {globalSourceImage ? 'Cắt từ Ảnh Nguồn' : 'Cắt & Chèn Ảnh Mới'}</button>
+                                  <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage, ...bboxMeta } : bboxMeta, block.id)} className={`${globalSourceImage ? 'bg-orange-600 hover:bg-orange-700' : 'bg-red-600 hover:bg-red-700'} text-white px-3 py-1.5 rounded-md font-semibold shadow-sm transition-colors flex items-center gap-1.5 text-xs whitespace-nowrap`}><CropIcon className="w-4 h-4"/> {globalSourceImage ? 'Cắt từ Ảnh Nguồn' : 'Cắt & Chèn Ảnh Mới'}</button>
                                </div>
                                {globalSourceImage && (
-                                 <div className="w-full md:w-72 bg-white border border-orange-100 rounded-xl p-1.5 shadow-sm shrink-0 relative overflow-hidden">
-                                    <img src={globalSourceImage} alt="Source" className="w-full max-h-48 object-contain rounded-lg opacity-60" />
+                                 <div className="w-full md:w-48 bg-white border border-orange-100 rounded-lg p-1 shadow-sm shrink-0 relative overflow-hidden">
+                                    <img src={globalSourceImage} alt="Source" className="w-full max-h-24 object-contain rounded-lg opacity-60" />
                                     {bboxMatch && <div className="absolute inset-0 flex items-center justify-center font-bold text-orange-900 drop-shadow-md text-sm"><CropIcon className="w-6 h-6 mr-1"/> Đã xác định toạ độ</div>}
                                  </div>
                                )}
@@ -445,7 +445,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                            if (!hasMarkdownTable) return null;
                            return (
                              <div className="mt-2 border px-5 py-4 rounded-xl flex flex-col md:flex-row gap-5 items-start bg-yellow-50 border-yellow-300 shadow-sm animate-in slide-in-from-top-2">
-                               <div className="flex-1">
+                               <div className="flex-1 flex flex-col sm:flex-row items-center gap-2">
                                   <h4 className="font-bold flex items-center gap-2 mb-2 text-yellow-900">
                                      <AlertTriangle className="w-5 h-5 text-yellow-600"/> 
                                      Phát hiện có Bảng Markdown / Bảng Biến Thiên!
@@ -456,7 +456,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                   </p>
                                   <button 
                                      onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} 
-                                     className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2.5 rounded-lg font-bold shadow-sm transition-colors flex items-center gap-2 text-sm"
+                                     className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1.5 rounded-md font-semibold shadow-sm transition-colors flex items-center gap-1.5 text-xs whitespace-nowrap"
                                   >
                                      <ImageIcon className="w-4 h-4"/> Chèn Ảnh Bảng Thay Thế
                                   </button>
@@ -474,13 +474,13 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                        {/* Cảnh báo hình ảnh & Smart Cropper tự động */}
                        {block.content.autoCropMetadata ? (
                           <div className="bg-orange-50 border border-orange-200 rounded-xl p-5 flex flex-col md:flex-row gap-5 items-start">
-                             <div className="flex-1">
+                             <div className="flex-1 flex flex-col sm:flex-row items-center gap-2">
                                 <h4 className="text-orange-800 font-bold flex items-center gap-2 mb-2"><ImageIcon className="w-5 h-5"/> Ảnh Gốc Đính Kèm</h4>
                                 <p className="text-[14px] text-orange-700 mb-4 leading-relaxed">AI đã phát hiện và cắt ảnh từ tài liệu gốc. Bạn có thể sử dụng công cụ Cắt lại nếu AI cắt chưa chuẩn xác.</p>
                                 <button onClick={() => onTriggerCrop(block.content.autoCropMetadata, block.id)} className="bg-orange-600 text-white px-4 py-2.5 rounded-lg font-bold hover:bg-orange-700 shadow-sm transition-colors flex items-center gap-2 text-sm"><CropIcon className="w-4 h-4"/> Cắt lại Ảnh Này</button>
                              </div>
                              <div className="w-full md:w-72 bg-white border border-orange-100 rounded-xl p-1.5 shadow-sm shrink-0">
-                                <img src={block.content.autoCropMetadata.originalUrl} alt="Source" className="w-full max-h-48 object-contain rounded-lg" />
+                                <img src={block.content.autoCropMetadata.originalUrl} alt="Source" className="w-full max-h-24 object-contain rounded-lg" />
                              </div>
                           </div>
                        ) : (/(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\])/i.test(block.content.question || '')) && (
@@ -643,7 +643,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                        {[0,1,2,3].map(optIdx => (
                                           <div key={optIdx} className="bg-gray-50 border border-gray-100 rounded-xl p-3 flex gap-2">
                                              <span className="font-bold text-indigo-600">{['A.','B.','C.','D.'][optIdx]}</span>
-                                             <div className="flex-1">{renderQuizContent(block.content.options?.[optIdx] || "")}</div>
+                                             <div className="flex-1 flex flex-col sm:flex-row items-center gap-2">{renderQuizContent(block.content.options?.[optIdx] || "")}</div>
                                           </div>
                                        ))}
                                     </div>

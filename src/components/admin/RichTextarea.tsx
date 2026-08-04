@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, Image as ImageIcon, Loader2, Heading } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, ChevronUp, Image as ImageIcon, Loader2, Heading } from "lucide-react";
 import TextareaAutosize from 'react-textarea-autosize';
 
 interface RichTextareaProps extends Omit<React.ComponentProps<typeof TextareaAutosize>, 'onChange' | 'value'> {
@@ -34,7 +34,7 @@ const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => 
   }).join('\n');
 };
 
-export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = false, defaultToolbarExpanded = false, ...props }: RichTextareaProps) {
+export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = true, defaultToolbarExpanded = false, ...props }: RichTextareaProps) {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [fontSize, setFontSize] = useState<string>("30");
   const [textColor, setTextColor] = useState<string>("#ef4444"); // Default red
@@ -557,18 +557,18 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     <div className={`relative flex flex-col border border-gray-300 rounded-lg focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all bg-white ${className.includes('mt-') ? className.match(/mt-[0-9]+/)?.[0] : ''}`}>
       {/* Toolbar */}
       {collapsibleToolbar && (
-         <div className="bg-slate-50 border-b border-gray-200 px-3 py-1 sticky top-0 z-40 flex justify-end">
+         <div className="bg-slate-50 border-b border-gray-200 px-2 py-0.5 sticky top-0 z-40 flex justify-end bg-gray-50 border-b border-gray-100">
             <button 
               type="button" 
               onClick={() => setIsToolbarExpanded(!isToolbarExpanded)}
-              className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors flex items-center gap-1 bg-indigo-50 px-2 py-1 rounded"
+              className="text-[11px] font-bold text-indigo-600 hover:text-indigo-800 transition-colors flex items-center gap-1 hover:bg-indigo-50 px-2 py-1 rounded"
             >
-              {isToolbarExpanded ? '▲ Thu gọn công cụ' : '▼ Hiển thị công cụ định dạng'}
+              {isToolbarExpanded ? <><ChevronUp className="w-3 h-3"/> <span>Thu gọn</span></> : <><ChevronDown className="w-3 h-3"/> <span>Định dạng</span></>}
             </button>
          </div>
       )}
       {(!collapsibleToolbar || isToolbarExpanded) && (
-      <div className="flex flex-wrap items-center gap-4 px-3 py-2 bg-slate-50 border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+      <div className="flex flex-wrap items-center gap-4 px-2 py-1.5 bg-slate-50/90 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40 shadow-sm">
         
         {/* Heading Group */}
         <div className="flex items-center gap-2">
