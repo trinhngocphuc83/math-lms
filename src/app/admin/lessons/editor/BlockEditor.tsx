@@ -412,7 +412,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           }
                           
                           return (
-                            <div className={`border px-3 py-2.5 rounded-lg flex flex-col md:flex-row gap-3 items-center ${globalSourceImage ? 'bg-orange-50/80 border-orange-200' : 'bg-red-50/80 border-red-200 animate-pulse'}`}>
+                            <div className={`border px-2 py-1.5 rounded flex items-center gap-2 justify-between ${globalSourceImage ? 'bg-orange-50/80 border-orange-200' : 'bg-red-50/80 border-red-200'}`}>
                                <div className="flex-1 flex flex-col sm:flex-row items-center gap-2">
                                   <h4 className={`font-bold flex items-center gap-2 mb-2 ${globalSourceImage ? 'text-orange-800' : 'text-red-700'}`}>
                                      {globalSourceImage ? <ImageIcon className="w-5 h-5"/> : <AlertTriangle className="w-5 h-5"/>} 
@@ -421,7 +421,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                   <p className={`text-[14px] mb-4 leading-relaxed ${globalSourceImage ? 'text-orange-700' : 'text-red-600'}`}>
                                      {globalSourceImage ? "Hệ thống đã nhận diện khu vực ảnh từ dữ liệu gốc. Hãy dùng nút bên dưới để cắt phần ảnh chính xác." : "Hãy ấn nút bên dưới để tải file ảnh lên và cắt vào vị trí này."}
                                   </p>
-                                  <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage, ...bboxMeta } : bboxMeta, block.id)} className={`${globalSourceImage ? 'bg-orange-600 hover:bg-orange-700' : 'bg-red-600 hover:bg-red-700'} text-white px-3 py-1.5 rounded-md font-semibold shadow-sm transition-colors flex items-center gap-1.5 text-xs whitespace-nowrap`}><CropIcon className="w-4 h-4"/> {globalSourceImage ? 'Cắt từ Ảnh Nguồn' : 'Cắt & Chèn Ảnh Mới'}</button>
+                                  <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage, ...bboxMeta } : bboxMeta, block.id)} className={`${globalSourceImage ? 'bg-orange-600 hover:bg-orange-700' : 'bg-red-600 hover:bg-red-700'} text-white px-2 py-1 rounded font-bold shadow-sm flex items-center gap-1 text-[11px] whitespace-nowrap shrink-0`}><CropIcon className="w-4 h-4"/> {globalSourceImage ? 'Cắt từ Ảnh Nguồn' : 'Cắt & Chèn Ảnh Mới'}</button>
                                </div>
                                {globalSourceImage && (
                                  <div className="w-full md:w-48 bg-white border border-orange-100 rounded-lg p-1 shadow-sm shrink-0 relative overflow-hidden">
@@ -456,7 +456,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                   </p>
                                   <button 
                                      onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} 
-                                     className="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1.5 rounded-md font-semibold shadow-sm transition-colors flex items-center gap-1.5 text-xs whitespace-nowrap"
+                                     className="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded font-bold shadow-sm flex items-center gap-1 text-[11px] whitespace-nowrap shrink-0"
                                   >
                                      <ImageIcon className="w-4 h-4"/> Chèn Ảnh Bảng Thay Thế
                                   </button>

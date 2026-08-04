@@ -568,250 +568,96 @@ export default function RichTextarea({ value, onChange, onValueChange, className
          </div>
       )}
       {(!collapsibleToolbar || isToolbarExpanded) && (
-      <div className="flex flex-wrap items-center gap-4 px-2 py-1.5 bg-slate-50/90 backdrop-blur-sm border-b border-gray-200 sticky top-0 z-40 shadow-sm">
+      <div className="flex items-center gap-2 px-2 py-1 bg-slate-50 border-b border-gray-200 sticky top-0 z-40 overflow-x-auto scrollbar-hide whitespace-nowrap text-gray-700 shadow-sm shrink-0">
         
-        {/* Heading Group */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded px-2 py-1 shadow-sm">
-            <Heading className="w-4 h-4 text-gray-500" />
-            <select
-              onChange={e => {
-                  handleApplyHeading(e.target.value ? parseInt(e.target.value) : '');
-                  e.target.value = "";
-              }}
-              className="border-none focus:ring-0 text-xs font-bold p-0 text-gray-700 bg-transparent h-5 cursor-pointer outline-none pl-1"
-            >
-              <option value="">Tiêu đề</option>
-              <option value="1">H1 (Tên Bài)</option>
-              <option value="2">H2 (Chương)</option>
-              <option value="3">H3 (Mục La Mã)</option>
-              <option value="4">H4 (Mục a, b..)</option>
-              <option value="5">H5 (Ý nhỏ)</option>
-            </select>
-          </div>
+        <select onChange={e => { handleApplyHeading(e.target.value ? parseInt(e.target.value) : ''); e.target.value = ""; }} className="border border-gray-200 rounded bg-white text-[11px] font-semibold py-0.5 px-1 outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer h-6 w-20">
+          <option value="">Tiêu đề</option>
+          <option value="1">H1</option>
+          <option value="2">H2</option>
+          <option value="3">H3</option>
+          <option value="4">H4</option>
+          <option value="5">H5</option>
+        </select>
+
+        <div className="w-px h-4 bg-gray-300 shrink-0"></div>
+
+        <div className="flex items-center gap-1 shrink-0">
+          <Type className="w-3.5 h-3.5 text-gray-400" />
+          <form onSubmit={handleApplySize} className="flex items-center">
+             <input ref={fontSizeRef} type="number" value={fontSize} onChange={e => setFontSize(e.target.value)} className="w-9 h-6 text-center border border-gray-200 rounded text-[11px] font-semibold p-0 text-indigo-700 bg-white" placeholder="px"/>
+          </form>
+          <button type="button" onClick={handleApplySize} className="bg-indigo-100 text-indigo-700 px-1.5 h-6 rounded border border-indigo-200 hover:bg-indigo-200 text-[10px] font-bold">Đổi</button>
         </div>
 
-        {/* Font Size Group */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded px-2 py-1 shadow-sm">
-            <Type className="w-4 h-4 text-gray-500" />
-            <span className="text-xs font-bold text-gray-600">Cỡ chữ:</span>
-            <form onSubmit={handleApplySize} className="flex items-center gap-1">
-              <input 
-                ref={fontSizeRef}
-                type="number" 
-                value={fontSize} 
-                onChange={e => setFontSize(e.target.value)}
-                className="w-14 text-center border-none focus:ring-0 text-sm font-bold p-0 text-indigo-700 bg-transparent h-5"
-                placeholder="px"
-              />
-              <span className="text-xs font-medium text-gray-400">px</span>
-            </form>
-          </div>
-          <button 
-            type="button"
-            onClick={handleApplySize}
-            className="bg-indigo-50 hover:bg-indigo-100 text-indigo-700 px-3 py-1.5 rounded text-xs font-bold transition-colors border border-indigo-200"
-          >
-            Đổi cỡ
-          </button>
+        <div className="w-px h-4 bg-gray-300 shrink-0"></div>
+
+        <div className="flex items-center gap-1 shrink-0">
+          <Palette className="w-3.5 h-3.5 text-gray-400" />
+          <select ref={textColorRef} value={textColor} onChange={e => setTextColor(e.target.value)} className="border border-gray-200 rounded bg-white text-[11px] font-bold px-1 outline-none h-6 cursor-pointer w-20" style={{ color: textColor }}>
+            <option value="#ef4444" style={{ color: '#ef4444' }}>Đỏ</option>
+            <option value="#3b82f6" style={{ color: '#3b82f6' }}>Xanh</option>
+            <option value="#22c55e" style={{ color: '#22c55e' }}>Lá</option>
+            <option value="#eab308" style={{ color: '#eab308' }}>Vàng</option>
+            <option value="#f97316" style={{ color: '#f97316' }}>Cam</option>
+            <option value="#a855f7" style={{ color: '#a855f7' }}>Tím</option>
+            <option value="#ec4899" style={{ color: '#ec4899' }}>Hồng</option>
+            <option value="#000000" style={{ color: '#000000' }}>Đen</option>
+          </select>
+          <button type="button" onClick={handleApplyColor} className="bg-orange-100 text-orange-700 px-1.5 h-6 rounded border border-orange-200 hover:bg-orange-200 text-[10px] font-bold">Đổi</button>
         </div>
 
-        {/* Text Color Group */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded px-2 py-1 shadow-sm">
-            <Palette className="w-4 h-4 text-gray-500" />
-            <span className="text-xs font-bold text-gray-600">Màu chữ:</span>
-            <select
-              ref={textColorRef}
-              value={textColor}
-              onChange={e => setTextColor(e.target.value)}
-              className="border-none focus:ring-0 text-sm font-bold p-0 text-gray-700 bg-transparent h-5 cursor-pointer outline-none pl-1"
-              style={{ color: textColor }}
-            >
-              <option value="#ef4444" style={{ color: '#ef4444' }}>Đỏ</option>
-              <option value="#3b82f6" style={{ color: '#3b82f6' }}>Xanh dương</option>
-              <option value="#22c55e" style={{ color: '#22c55e' }}>Xanh lá</option>
-              <option value="#eab308" style={{ color: '#eab308' }}>Vàng</option>
-              <option value="#f97316" style={{ color: '#f97316' }}>Cam</option>
-              <option value="#a855f7" style={{ color: '#a855f7' }}>Tím</option>
-              <option value="#ec4899" style={{ color: '#ec4899' }}>Hồng</option>
-              <option value="#000000" style={{ color: '#000000' }}>Đen</option>
-              <option value="#ffffff" style={{ color: '#000000', backgroundColor: '#e5e7eb' }}>Trắng</option>
-            </select>
-          </div>
-          <button 
-            type="button"
-            onClick={handleApplyColor}
-            className="bg-orange-50 hover:bg-orange-100 text-orange-700 px-3 py-1.5 rounded text-xs font-bold transition-colors border border-orange-200"
-          >
-            Đổi màu
-          </button>
+        <div className="w-px h-4 bg-gray-300 shrink-0"></div>
+
+        <div className="flex items-center gap-1 shrink-0">
+          <span className="text-[10px] text-gray-500">Giãn:</span>
+          <select value={lineHeight} onChange={e => setLineHeight(e.target.value)} className="border border-gray-200 rounded bg-white text-[11px] font-bold px-1 outline-none h-6 cursor-pointer w-12 text-teal-700">
+             <option value="1.0">1.0</option><option value="1.15">1.15</option><option value="1.5">1.5</option><option value="2.0">2.0</option>
+          </select>
+          <button type="button" onClick={handleApplyLineSpacing} className="bg-teal-100 text-teal-700 px-1.5 h-6 rounded border border-teal-200 hover:bg-teal-200 text-[10px] font-bold">Đổi</button>
         </div>
 
-        {/* Line Spacing Group */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded px-2 py-1 shadow-sm">
-            <span className="text-xs font-bold text-gray-600">Giãn dòng:</span>
-            <select
-              value={lineHeight}
-              onChange={e => setLineHeight(e.target.value)}
-              className="border-none focus:ring-0 text-sm font-bold p-0 text-teal-700 bg-transparent h-5 cursor-pointer outline-none pl-1"
-            >
-              <option value="1.0">1.0</option>
-              <option value="1.15">1.15</option>
-              <option value="1.5">1.5</option>
-              <option value="2.0">2.0</option>
-              <option value="2.5">2.5</option>
-              <option value="3.0">3.0</option>
-            </select>
-          </div>
-          <button 
-            type="button"
-            onClick={handleApplyLineSpacing}
-            className="bg-teal-50 hover:bg-teal-100 text-teal-700 px-3 py-1.5 rounded text-xs font-bold transition-colors border border-teal-200"
-          >
-            Đổi giãn dòng
-          </button>
+        <div className="w-px h-4 bg-gray-300 shrink-0"></div>
+
+        <div className="flex items-center gap-0.5 shrink-0 bg-white border border-gray-200 rounded p-0.5">
+           <button type="button" onClick={e => handleFormat('bold', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600"><Bold className="w-3 h-3" /></button>
+           <button type="button" onClick={e => handleFormat('italic', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600 italic"><Italic className="w-3 h-3" /></button>
+           <button type="button" onClick={e => handleFormat('underline', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600 underline"><UnderlineIcon className="w-3 h-3" /></button>
         </div>
 
-        {/* Formatting Group */}
-        <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded p-1 shadow-sm">
-          <button 
-            type="button"
-            onClick={(e) => handleFormat('bold', e)}
-            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors font-bold"
-            title="In đậm"
-          >
-            <Bold className="w-4 h-4" />
-          </button>
-          <button 
-            type="button"
-            onClick={(e) => handleFormat('italic', e)}
-            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors italic"
-            title="In nghiêng"
-          >
-            <Italic className="w-4 h-4" />
-          </button>
-          <button 
-            type="button"
-            onClick={(e) => handleFormat('underline', e)}
-            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors underline"
-            title="Gạch chân"
-          >
-            <UnderlineIcon className="w-4 h-4" />
-          </button>
+        <div className="flex items-center gap-0.5 shrink-0 bg-white border border-gray-200 rounded p-0.5">
+           <button type="button" onClick={e => handleApplyAlign('left', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600"><AlignLeft className="w-3 h-3" /></button>
+           <button type="button" onClick={e => handleApplyAlign('center', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600"><AlignCenter className="w-3 h-3" /></button>
+           <button type="button" onClick={e => handleApplyAlign('right', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600"><AlignRight className="w-3 h-3" /></button>
+           <button type="button" onClick={e => handleApplyAlign('justify', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600"><AlignJustify className="w-3 h-3" /></button>
         </div>
 
-        {/* Icon Group */}
-        <div className="flex items-center gap-1 bg-white border border-gray-300 rounded p-1 shadow-sm relative" ref={iconMenuRef}>
-          <button 
-            type="button"
-            onClick={() => setShowIconMenu(!showIconMenu)}
-            className="flex items-center gap-1 px-2 py-1.5 text-gray-600 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
-            title="Thêm Icon"
-          >
-            <Smile className="w-4 h-4" /> <ChevronDown className="w-3 h-3" />
-          </button>
-          
-          {showIconMenu && (
-            <div className="absolute bottom-full left-0 mb-2 p-2 bg-white border border-gray-200 rounded-lg shadow-xl grid grid-cols-4 gap-2 z-50">
+        <div className="flex items-center gap-1 shrink-0 relative" ref={iconMenuRef}>
+           <button type="button" onClick={() => setShowIconMenu(!showIconMenu)} className="flex items-center gap-0.5 px-1.5 h-6 bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 rounded">
+             <Smile className="w-3 h-3" /> <ChevronDown className="w-3 h-3" />
+           </button>
+           {showIconMenu && (
+            <div className="absolute top-full left-0 mt-1 p-1.5 bg-white border border-gray-200 rounded shadow-xl grid grid-cols-4 gap-1 z-50">
               {EMOJIS.map(emoji => (
-                <button
-                  key={emoji}
-                  type="button"
-                  onClick={() => handleInsertIcon(emoji)}
-                  className="w-8 h-8 flex items-center justify-center text-lg hover:bg-indigo-50 rounded transition-colors"
-                >
-                  {emoji}
-                </button>
+                <button key={emoji} type="button" onClick={() => handleInsertIcon(emoji)} className="w-6 h-6 flex items-center justify-center hover:bg-indigo-50 rounded text-sm">{emoji}</button>
               ))}
             </div>
-          )}
-
-          <button 
-            type="button"
-            onClick={handleRemoveAutoIcon}
-            className="px-2 py-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 rounded transition-colors"
-            title="Xoá Icon tự động ở dòng này"
-          >
-            <Eraser className="w-4 h-4" />
-          </button>
+           )}
+           <button type="button" onClick={handleRemoveAutoIcon} className="px-1.5 h-6 bg-white border border-gray-200 text-red-500 hover:bg-red-50 rounded"><Eraser className="w-3 h-3" /></button>
         </div>
 
-        {/* Alignment Group */}
-        <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded p-1 shadow-sm">
-          <button 
-            type="button"
-            onClick={(e) => handleApplyAlign('left', e)}
-            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
-            title="Canh trái"
-          >
-            <AlignLeft className="w-4 h-4" />
-          </button>
-          <button 
-            type="button"
-            onClick={(e) => handleApplyAlign('center', e)}
-            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
-            title="Canh giữa"
-          >
-            <AlignCenter className="w-4 h-4" />
-          </button>
-          <button 
-            type="button"
-            onClick={(e) => handleApplyAlign('right', e)}
-            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
-            title="Canh phải"
-          >
-            <AlignRight className="w-4 h-4" />
-          </button>
-          <button 
-            type="button"
-            onClick={(e) => handleApplyAlign('justify', e)}
-            className="p-1.5 text-gray-500 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors"
-            title="Canh đều 2 bên"
-          >
-            <AlignJustify className="w-4 h-4" />
-          </button>
-        </div>
+        <button type="button" onClick={handleApplyBox} className="flex items-center gap-1 px-2 h-6 bg-white border border-gray-200 text-indigo-700 font-bold hover:bg-indigo-50 rounded shrink-0 text-[11px]">
+          <Frame className="w-3 h-3" /> Khung
+        </button>
 
-        {/* Box Group */}
-        <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded p-1 shadow-sm">
-          <button 
-            type="button"
-            onClick={handleApplyBox}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-indigo-700 font-bold hover:bg-indigo-50 rounded transition-colors"
-            title="Đóng khung đoạn văn bản"
-          >
-            <Frame className="w-4 h-4" /> Đóng khung
-          </button>
-        </div>
-
-        {/* Image Upload Group */}
-        <div className="flex items-center gap-1.5 bg-white border border-gray-300 rounded p-1 shadow-sm ml-auto">
-          <input 
-            type="file" 
-            ref={fileInputRef} 
-            onChange={handleFileChange} 
-            accept="image/*" 
-            className="hidden" 
-          />
-          <button 
-            type="button"
-            onClick={() => fileInputRef.current?.click()}
-            disabled={isUploading}
-            className="flex items-center gap-1.5 px-3 py-1.5 text-pink-700 font-bold hover:bg-pink-50 rounded transition-colors disabled:opacity-50"
-            title="Chèn Hình Ảnh (Có thể dùng Ctrl+V để dán trực tiếp)"
-          >
-            {isUploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <ImageIcon className="w-4 h-4" />} 
-            {isUploading ? "Đang tải..." : "Chèn Ảnh"}
-          </button>
+        <div className="ml-auto shrink-0 flex items-center">
+           <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
+           <button type="button" onClick={() => fileInputRef.current?.click()} disabled={isUploading} className="flex items-center gap-1 px-2 h-6 bg-pink-50 text-pink-700 border border-pink-200 hover:bg-pink-100 font-bold rounded text-[11px]">
+             {isUploading ? <Loader2 className="w-3 h-3 animate-spin"/> : <ImageIcon className="w-3 h-3" />} Ảnh
+           </button>
         </div>
 
       </div>
       )}
-    
-      {/* Textarea */}
       <TextareaAutosize
         ref={textareaRef}
         value={value}
