@@ -6,7 +6,7 @@ import TextareaAutosize from 'react-textarea-autosize';
 
 interface RichTextareaProps extends Omit<React.ComponentProps<typeof TextareaAutosize>, 'onChange' | 'value'> {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
   onValueChange?: (value: string) => void;
   collapsibleToolbar?: boolean;
   defaultToolbarExpanded?: boolean;
@@ -35,6 +35,12 @@ const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => 
 };
 
 export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = true, defaultToolbarExpanded = false, ...props }: RichTextareaProps) {
+  // Fallback: Nếu không truyền onChange, tạo handler tự động từ onValueChange
+  const resolvedOnChange = React.useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (onChange) onChange(e);
+    if (onValueChange) onValueChange(e.target.value);
+  }, [onChange, onValueChange]);
+
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const [fontSize, setFontSize] = useState<string>("30");
   const [textColor, setTextColor] = useState<string>("#ef4444"); // Default red
@@ -86,7 +92,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       onValueChange(newValue);
     } else {
       const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      onChange(event);
+      resolvedOnChange(event);
     }
 
     setTimeout(() => {
@@ -116,7 +122,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         onValueChange(newValue);
       } else {
         const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-        onChange(event);
+        resolvedOnChange(event);
       }
       setTimeout(() => {
         if (textareaRef.current) {
@@ -138,7 +144,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       onValueChange(newValue);
     } else {
       const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      onChange(event);
+      resolvedOnChange(event);
     }
     
     setTimeout(() => {
@@ -173,7 +179,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       onValueChange(newValue);
     } else {
       const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      onChange(event);
+      resolvedOnChange(event);
     }
 
     setTimeout(() => {
@@ -208,7 +214,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       onValueChange(newValue);
     } else {
       const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      onChange(event);
+      resolvedOnChange(event);
     }
 
     setTimeout(() => {
@@ -243,7 +249,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       onValueChange(newValue);
     } else {
       const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      onChange(event);
+      resolvedOnChange(event);
     }
 
     setTimeout(() => {
@@ -278,7 +284,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       onValueChange(newValue);
     } else {
       const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      onChange(event);
+      resolvedOnChange(event);
     }
 
     setTimeout(() => {
@@ -317,7 +323,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       onValueChange(newValue);
     } else {
       const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      onChange(event);
+      resolvedOnChange(event);
     }
 
     setTimeout(() => {
@@ -339,7 +345,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     if (onValueChange) onValueChange(newValue);
     else {
       const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      onChange(event);
+      resolvedOnChange(event);
     }
 
     setShowIconMenu(false);
@@ -363,7 +369,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     if (onValueChange) onValueChange(newValue);
     else {
       const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      onChange(event);
+      resolvedOnChange(event);
     }
 
     setTimeout(() => {
@@ -424,7 +430,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         if (onValueChange) onValueChange(newValue);
         else {
           const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-          onChange(event);
+          resolvedOnChange(event);
         }
         setTimeout(() => {
           if (textareaRef.current) textareaRef.current.setSelectionRange(start + 4, start + 4);
@@ -439,7 +445,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         if (onValueChange) onValueChange(newValue);
         else {
           const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-          onChange(event);
+          resolvedOnChange(event);
         }
         setTimeout(() => {
           if (textareaRef.current) textareaRef.current.setSelectionRange(start - deleteCount, start - deleteCount);
@@ -455,7 +461,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
           if (onValueChange) onValueChange(newValue);
           else {
             const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-            onChange(event);
+            resolvedOnChange(event);
           }
           setTimeout(() => {
             if (textareaRef.current) textareaRef.current.setSelectionRange(start - deleteCount, start - deleteCount);
@@ -479,7 +485,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     if (onValueChange) onValueChange(tempText);
     else {
        const event = { target: { value: tempText } } as React.ChangeEvent<HTMLTextAreaElement>;
-       onChange(event);
+       resolvedOnChange(event);
     }
 
     try {
@@ -500,7 +506,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
        if (onValueChange) onValueChange(newValue);
        else {
           const ev = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-          onChange(ev);
+          resolvedOnChange(ev);
        }
        
        setTimeout(() => {
@@ -514,7 +520,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
        if (onValueChange) onValueChange(value);
        else {
           const ev = { target: { value: value } } as React.ChangeEvent<HTMLTextAreaElement>;
-          onChange(ev);
+          resolvedOnChange(ev);
        }
     } finally {
        setIsUploading(false);
@@ -548,7 +554,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     e.target.value = '';
   };
 
-  if (!isClient) return <TextareaAutosize minRows={props.rows || 3} maxRows={30} value={value} onChange={onChange} className={className} {...props} />;
+  if (!isClient) return <TextareaAutosize minRows={props.rows || 3} maxRows={30} value={value} onChange={resolvedOnChange} className={className} {...props} />;
 
   // Lọc bớt class border/focus từ bên ngoài truyền vào vì ta đã có border ở thẻ bọc ngoài
   const innerClass = className.replace(/border-[a-zA-Z0-9-]+|rounded-[a-zA-Z0-9-]+|focus:[a-zA-Z0-9-]+|ring[a-zA-Z0-9-:]*/g, '').trim();
@@ -661,7 +667,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       <TextareaAutosize
         ref={textareaRef}
         value={value}
-        onChange={onChange}
+        onChange={resolvedOnChange}
         onKeyDown={handleKeyDown}
         onPaste={handlePaste}
         minRows={props.rows || 3}

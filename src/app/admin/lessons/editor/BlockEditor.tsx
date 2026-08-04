@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronUp, ChevronDown, ChevronRight, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronUp, ChevronDown, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -30,6 +30,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const [insertIndex, setInsertIndex] = React.useState(-1);
   const [selectedBlocks, setSelectedBlocks] = React.useState<Set<string>>(new Set());
   const [activeBlockId, setActiveBlockId] = React.useState<string | null>(null);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(false);
 
   React.useEffect(() => {
     if (blocks.length > 0 && !activeBlockId) setActiveBlockId(blocks[0].id);

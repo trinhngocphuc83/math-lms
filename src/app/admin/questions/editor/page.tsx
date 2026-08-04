@@ -4,12 +4,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import { 
+import {
   ArrowLeft, Image as ImageIcon, Trash2, Code2, Bot, Eye,
-  Wand2, AlertCircle, Loader2, Copy, SaveAll, Edit, Trash, CloudUpload, X, Save, Info
+  Wand2, AlertCircle, Loader2, Copy, SaveAll, Edit, Trash, CloudUpload, X, Save, Info,
+  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, CropIcon, Type, ListTodo
 } from "lucide-react";
-import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import QuestionPreviewModal from "@/components/admin/QuestionPreviewModal";
+import RichTextarea from "@/components/admin/RichTextarea";
 
 interface QuestionData {
   temp_id?: string;
@@ -59,8 +60,40 @@ export default function BatchAIEditorPage() {
   const [isSavingAll, setIsSavingAll] = useState(false);
 
   // Edit Modal States
-  const [editingQuestion, setEditingQuestion] = useState<QuestionData | null>(null);
   const [previewingQuestion, setPreviewingQuestion] = useState<QuestionData | null>(null);
+  const [collapsedQuestions, setCollapsedQuestions] = useState<Set<string>>(new Set());
+  const [activeQuestionIdx, setActiveQuestionIdx] = useState<number>(0);
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(false);
+
+  // Keyboard Navigation for Active Question
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (parsedQuestions.length === 0) return;
+      if (e.altKey && e.key === 'ArrowLeft') {
+        e.preventDefault();
+        setActiveQuestionIdx(prev => Math.max(0, prev - 1));
+      } else if (e.altKey && e.key === 'ArrowRight') {
+        e.preventDefault();
+        setActiveQuestionIdx(prev => Math.min(parsedQuestions.length - 1, prev + 1));
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [parsedQuestions.length]);
+
+  const updateParsedQuestion = (tempId: string, field: keyof QuestionData, value: any) => {
+    setParsedQuestions(prev => prev.map(q => q.temp_id === tempId ? { ...q, [field]: value } : q));
+  };
+
+  const toggleCollapse = (tempId: string) => {
+    setCollapsedQuestions(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(tempId)) newSet.delete(tempId);
+      else newSet.add(tempId);
+      return newSet;
+    });
+  };
+
 
   const [categories, setCategories] = useState<any[]>([]);
 
@@ -395,7 +428,16 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
 
   // --- ACTIONS ---
   const handleRemoveQuestion = (tempId: string) => {
-    setParsedQuestions(prev => prev.filter(q => q.temp_id !== tempId));
+    setParsedQuestions(prev => {
+      const remaining = prev.filter(q => q.temp_id !== tempId);
+      // Điều chỉnh active index
+      setActiveQuestionIdx(oldIdx => {
+        if (remaining.length === 0) return 0;
+        if (oldIdx >= remaining.length) return remaining.length - 1;
+        return oldIdx;
+      });
+      return remaining;
+    });
   };
 
   const handleSaveAll = async () => {
@@ -544,8 +586,14 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
   return (
     <div className="flex h-screen bg-[#f3f4f6] overflow-hidden text-gray-800">
       
-      {/* CỘT TRÁI: ĐIỀU KHIỂN & AI (35%) */}
-      <div className="w-[380px] flex flex-col bg-white border-r border-gray-200 shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-10 flex-shrink-0">
+      {/* CỘT TRÁI: ĐIỀU KHIỂN & AI / BẢN ĐỒ CÂU HỎI */}
+      <div className={`flex flex-col bg-white border-r border-gray-200 shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-10 flex-shrink-0 transition-all duration-300 ${
+         parsedQuestions.length > 0 
+            ? (isSidebarCollapsed ? 'w-12 md:min-w-[48px]' : 'w-[280px]') 
+            : 'w-[320px]'
+      }`}>
+        {parsedQuestions.length === 0 ? (
+          <>
         
         {/* Header */}
         <div className="p-4 border-b border-gray-100 bg-white flex items-center gap-3 shrink-0">
@@ -679,6 +727,95 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
           </div>
           
         </div>
+          </>
+        ) : (
+          // Bảng câu hỏi (Sidebar Bản đồ câu hỏi) tương tự BlockEditor
+          <div className="flex flex-col h-full bg-white animate-in slide-in-from-left duration-200 relative">
+             <div className="p-4 border-b border-gray-100 bg-indigo-50/50 flex items-center justify-between shrink-0">
+                {!isSidebarCollapsed && (
+                   <h3 className="font-black text-indigo-950 flex items-center gap-2 text-sm uppercase tracking-wider truncate">
+                      <ListTodo className="w-4 h-4 text-indigo-600 shrink-0"/> Bản đồ câu hỏi
+                   </h3>
+                )}
+                <button 
+                   onClick={() => setIsSidebarCollapsed(!isSidebarCollapsed)} 
+                   className="p-1 hover:bg-indigo-100 rounded text-indigo-700 mx-auto" 
+                   title={isSidebarCollapsed ? "Mở rộng Bản đồ" : "Thu gọn Bản đồ"}
+                >
+                   {isSidebarCollapsed ? <ChevronRight className="w-5 h-5"/> : <ChevronLeft className="w-5 h-5"/>}
+                </button>
+             </div>
+             
+             {!isSidebarCollapsed && (
+             <div className="flex-1 flex flex-col overflow-hidden">
+             <div className="flex-1 overflow-y-auto p-4">
+                <div className="grid grid-cols-4 gap-2">
+                   {parsedQuestions.map((q, idx) => {
+                      const isSelected = activeQuestionIdx === idx;
+                      const hasWarning = q.isDuplicate || (!q.image_url && (q.content.includes("HÌNH VẼ") || q.content.includes("ĐỒ THỊ") || q.content.includes("như hình") || q.content.includes("BẢNG BIẾN THIÊN")));
+                      return (
+                         <button
+                            key={q.temp_id}
+                            onClick={() => setActiveQuestionIdx(idx)}
+                            className={`h-10 rounded-lg text-xs font-black transition-all flex items-center justify-center relative border ${
+                               isSelected 
+                                  ? 'bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-105' 
+                                  : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-gray-200 hover:border-indigo-300'
+                            }`}
+                         >
+                            {idx + 1}
+                            {hasWarning && (
+                               <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-orange-500 ring-1 ring-white animate-pulse" />
+                            )}
+                         </button>
+                      );
+                   })}
+                </div>
+
+                <div className="mt-6 border-t border-gray-100 pt-4 space-y-2">
+                   <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
+                      <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 block shadow-sm"></span>
+                      <span>Đang chỉnh sửa</span>
+                   </div>
+                   <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
+                      <span className="w-2.5 h-2.5 rounded-full bg-orange-500 block animate-pulse"></span>
+                      <span>Cần lưu ý</span>
+                   </div>
+                </div>
+
+                <div className="mt-8 bg-gray-50 rounded-xl p-3.5 border border-gray-100">
+                   <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-wider mb-2">Phím tắt nhanh</h4>
+                   <div className="space-y-1.5 text-xs text-gray-600">
+                      <div className="flex justify-between"><span className="font-medium">Câu trước:</span><kbd className="px-1.5 py-0.5 bg-white border rounded text-[10px] shadow-sm font-sans font-bold">Alt + ←</kbd></div>
+                      <div className="flex justify-between"><span className="font-medium">Câu tiếp theo:</span><kbd className="px-1.5 py-0.5 bg-white border rounded text-[10px] shadow-sm font-sans font-bold">Alt + →</kbd></div>
+                   </div>
+                </div>
+             </div>
+
+             <div className="p-4 border-t border-gray-100 bg-gray-50 shrink-0">
+                <button 
+                   onClick={() => {
+                      if (confirm("Bạn có chắc muốn xoá hết và quét đề mới?")) {
+                         setParsedQuestions([]);
+                         setActiveQuestionIdx(0);
+                      }
+                   }} 
+                   className="w-full mb-2 border border-red-200 text-red-700 bg-red-50 hover:bg-red-100 font-bold py-2 rounded-xl text-xs transition-colors"
+                >
+                   Quét Đề Mới (Hủy hết)
+                </button>
+                <button 
+                   onClick={handleSaveAll} 
+                   disabled={parsedQuestions.length === 0 || isSavingAll} 
+                   className="w-full bg-emerald-600 text-white font-black py-2.5 rounded-xl hover:bg-emerald-700 transition-all shadow-md disabled:opacity-50 flex items-center justify-center gap-2 text-xs"
+                >
+                   {isSavingAll ? <Loader2 className="w-4 h-4 animate-spin" /> : <SaveAll className="w-4.5 h-4.5" />} LƯU TẤT CẢ VÀO NGÂN HÀNG
+                </button>
+             </div>
+             </div>
+             )}
+          </div>
+        )}
       </div>
 
       {/* CỘT PHẢI: KẾT QUẢ & DANH SÁCH (65%) */}
@@ -686,11 +823,43 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
         
         {/* Header Right */}
         <div className="p-4 border-b border-gray-200 bg-white flex justify-between items-center shadow-sm shrink-0 z-10 relative">
-          <h2 className="text-lg font-black text-gray-800 flex items-center gap-2">
-            <Bot className="w-5 h-5 text-indigo-600" /> Kết quả nhận diện ({parsedQuestions.length} câu)
-          </h2>
+          <div className="flex items-center gap-3">
+            {parsedQuestions.length > 0 && (
+              <button onClick={() => { if(confirm("Quay lại nhập đề mới sẽ hủy các câu chưa lưu. Đồng ý?")) { setParsedQuestions([]); setActiveQuestionIdx(0); } }} className="p-1.5 hover:bg-gray-100 rounded-lg text-gray-500" title="Quay lại nhập đề mới">
+                <ArrowLeft className="w-5 h-5" />
+              </button>
+            )}
+            <h2 className="text-lg font-black text-gray-800 flex items-center gap-2">
+              <Bot className="w-5 h-5 text-indigo-600" /> Kết quả nhận diện ({parsedQuestions.length} câu)
+            </h2>
+          </div>
+          
+          {parsedQuestions.length > 0 && (
+             <div className="flex items-center gap-3 bg-gray-50 px-3 py-1.5 border border-gray-200 rounded-xl">
+                <button 
+                   onClick={() => setActiveQuestionIdx(prev => Math.max(0, prev - 1))}
+                   disabled={activeQuestionIdx === 0}
+                   className="p-1 hover:bg-gray-200 rounded text-gray-600 disabled:opacity-30 transition-colors"
+                   title="Câu trước"
+                >
+                   <ChevronLeft className="w-5 h-5" />
+                </button>
+                <span className="text-[13px] font-black text-indigo-900 min-w-[80px] text-center">
+                   Câu {activeQuestionIdx + 1} / {parsedQuestions.length}
+                </span>
+                <button 
+                   onClick={() => setActiveQuestionIdx(prev => Math.min(parsedQuestions.length - 1, prev + 1))}
+                   disabled={activeQuestionIdx === parsedQuestions.length - 1}
+                   className="p-1 hover:bg-gray-200 rounded text-gray-600 disabled:opacity-30 transition-colors"
+                   title="Câu sau"
+                >
+                   <ChevronRight className="w-5 h-5" />
+                </button>
+             </div>
+          )}
+          
           <button onClick={handleSaveAll} disabled={parsedQuestions.length === 0 || isSavingAll} className="bg-emerald-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-emerald-700 transition-all shadow-md disabled:opacity-50 flex items-center gap-2">
-            {isSavingAll ? <Loader2 className="w-5 h-5 animate-spin" /> : <SaveAll className="w-5 h-5" />} Lưu tất cả vào Ngân hàng
+            {isSavingAll ? <Loader2 className="w-5 h-5 animate-spin" /> : <SaveAll className="w-5 h-5" />} Lưu tất cả
           </button>
         </div>
 
@@ -702,151 +871,235 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
               <p className="text-xl font-bold text-gray-500">Chưa có dữ liệu. Hãy quét ảnh ở cột bên trái!</p>
             </div>
           ) : (
-            <div className="space-y-6 max-w-4xl mx-auto">
-              {parsedQuestions.map((q, idx) => (
-                <div key={q.temp_id} className="bg-white rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden group hover:border-indigo-200 transition-colors">
-                  
-                  {/* Alerts area */}
-                  {q.isDuplicate && (
-                    <div className="bg-red-50 text-red-700 p-3 text-[13px] font-bold border-b border-red-100 flex gap-2">
-                      <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" /> CẢNH BÁO: Nội dung tương tự với một câu đã tồn tại trong Ngân hàng! Bạn nên "Bỏ câu này".
-                    </div>
-                  )}
-                  
-                  {(!q.image_url && (q.content.includes("HÌNH VẼ") || q.content.includes("ĐỒ THỊ") || q.content.includes("như hình") || q.content.includes("BẢNG BIẾN THIÊN"))) && (
-                    <div className="bg-orange-50 text-orange-700 p-3 text-[13px] font-bold border-b border-orange-100 flex gap-2">
-                      <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" /> CẢNH BÁO: Câu hỏi thiếu [chưa chèn ảnh/đồ thị (đề bài có từ khóa [HÌNH VẼ / BẢNG BIẾN THIÊN])]. Hãy bấm "Sửa" bổ sung trước khi lưu!
-                    </div>
-                  )}
-
-                  {q.image_url && (
-                    <div className="bg-blue-50 text-blue-700 p-3 text-[13px] font-bold border-b border-blue-100 flex gap-2">
-                      <Info className="w-4 h-4 shrink-0 mt-0.5" /> INFO: Câu hỏi này có chứa hình ảnh tự động cắt. Vui lòng bấm "Sửa" và kiểm tra lại xem ảnh cắt đã chuẩn chưa (có thể dùng chức năng Cắt xén lại nếu cần).
-                    </div>
-                  )}
-
-                  {/* Body area */}
-                  <div className="p-5">
-                    {/* Header info */}
-                    <div className="grid grid-cols-3 gap-2 mb-3">
-                      <select value={q.grade} onChange={e => handleMapCategory(q.temp_id!, 'grade', e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs font-bold text-gray-700 bg-white text-center truncate outline-none focus:border-indigo-500 cursor-pointer">
-                         {uniqueGrades.map(g => <option key={g as string} value={g as string}>{g as string}</option>)}
-                      </select>
-                      <select value={q.subject} onChange={e => handleMapCategory(q.temp_id!, 'subject', e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs font-bold text-gray-700 bg-white text-center truncate outline-none focus:border-indigo-500 cursor-pointer">
-                         {uniqueSubjects.map(s => <option key={s as string} value={s as string}>{s as string}</option>)}
-                      </select>
-                      <select value={q.topic} onChange={e => handleMapCategory(q.temp_id!, 'topic', e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs font-bold text-gray-700 bg-white text-center truncate outline-none focus:border-indigo-500 cursor-pointer">
-                         {uniqueTopics.map(t => <option key={t as string} value={t as string}>{t as string}</option>)}
-                      </select>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 mb-4">
-                      <div className={`border rounded-lg px-3 py-2 flex flex-col justify-center gap-2 ${q.isNewLesson ? 'bg-red-50 border-red-200 shadow-inner' : 'bg-gray-50 border-gray-200'}`}>
-                         <div className="flex items-center gap-1.5">
-                            {q.isNewLesson && <AlertCircle className="w-3.5 h-3.5 text-red-600 shrink-0" />}
-                            {!q.isNewLesson ? (
-                              <select value={q.lesson} onChange={e => handleMapCategory(q.temp_id!, 'lesson', e.target.value)} className="w-full bg-transparent text-[11px] font-bold text-gray-700 outline-none cursor-pointer truncate">
-                                <option value={q.lesson}>{q.lesson}</option>
-                                {uniqueLessons.filter(l => l !== q.lesson).map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
-                              </select>
-                            ) : (
-                              <span className="text-[11px] font-bold line-clamp-2 text-red-700">{q.lesson || 'Chưa phân bài học'}</span>
-                            )}
-                         </div>
-                         {q.isNewLesson && (
-                            <div className="flex flex-col gap-1.5 mt-1 border-t border-red-100 pt-1.5">
-                              <select onChange={e => handleMapCategory(q.temp_id!, 'lesson', e.target.value)} className="w-full text-[10px] p-1.5 border border-red-200 rounded-md bg-white text-gray-700 outline-none focus:border-red-500 font-medium shadow-sm cursor-pointer">
-                                 <option value="">-- Ép về Tên Bài có sẵn --</option>
-                                 {uniqueLessons.map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
-                              </select>
-                              <input 
-                                type="text" 
-                                value={q.lesson} 
-                                onChange={e => setParsedQuestions(prev => prev.map(item => item.temp_id === q.temp_id ? {...item, lesson: e.target.value} : item))}
-                                placeholder="Nhập tên bài mới..." 
-                                className="w-full text-[10px] p-1.5 border border-red-200 rounded-md bg-white text-gray-700 outline-none focus:border-red-500 font-medium shadow-sm"
-                              />
-                              <button onClick={() => handleApproveNewCategory(q.temp_id!, 'lesson', q.lesson)} className="w-full py-1 text-[10px] font-black tracking-wide bg-red-100 text-red-700 border border-red-200 rounded hover:bg-red-200 transition-colors uppercase">Duyệt Tạo Mới</button>
-                            </div>
-                         )}
-                      </div>
-                      
-                      <div className={`border rounded-lg px-3 py-2 flex flex-col justify-center gap-2 ${q.isNewMathForm ? 'bg-orange-50 border-orange-200 shadow-inner' : 'bg-gray-50 border-gray-200'}`}>
-                         <div className="flex items-center gap-1.5">
-                            {q.isNewMathForm && <AlertCircle className="w-3.5 h-3.5 text-orange-600 shrink-0" />}
-                            {!q.isNewMathForm ? (
-                              <select value={q.math_form} onChange={e => handleMapCategory(q.temp_id!, 'math_form', e.target.value)} className="w-full bg-transparent text-[11px] font-bold text-gray-700 outline-none cursor-pointer truncate">
-                                <option value={q.math_form}>{q.math_form}</option>
-                                {uniqueForms.filter(f => f !== q.math_form).map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
-                              </select>
-                            ) : (
-                              <span className="text-[11px] font-bold line-clamp-2 text-orange-700">{q.math_form || 'Chưa phân dạng toán'}</span>
-                            )}
-                         </div>
-                         {q.isNewMathForm && (
-                           <div className="flex flex-col gap-1.5 mt-1 border-t border-orange-100 pt-1.5">
-                             <select onChange={e => handleMapCategory(q.temp_id!, 'math_form', e.target.value)} className="w-full text-[10px] p-1.5 border border-orange-200 rounded-md bg-white text-gray-700 outline-none focus:border-orange-500 font-medium shadow-sm cursor-pointer">
-                                <option value="">-- Ép về Dạng Toán có sẵn --</option>
-                                {uniqueForms.map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
-                             </select>
-                             <input 
-                               type="text" 
-                               value={q.math_form} 
-                               onChange={e => setParsedQuestions(prev => prev.map(item => item.temp_id === q.temp_id ? {...item, math_form: e.target.value} : item))}
-                               placeholder="Nhập dạng toán mới..." 
-                               className="w-full text-[10px] p-1.5 border border-orange-200 rounded-md bg-white text-gray-700 outline-none focus:border-orange-500 font-medium shadow-sm"
-                             />
-                             <button onClick={() => handleApproveNewCategory(q.temp_id!, 'math_form', q.math_form)} className="w-full py-1 text-[10px] font-black tracking-wide bg-orange-100 text-orange-700 border border-orange-200 rounded hover:bg-orange-200 transition-colors uppercase">Duyệt Tạo Mới</button>
-                           </div>
-                         )}
-                      </div>
-                    </div>
-
-                    {/* Preview Text */}
-                    <div className="space-y-1.5 mb-4">
-                      <p className="text-sm flex items-center gap-2">
-                        <span><span className="font-bold text-indigo-700">Loại:</span> {q.question_type} | <span className="font-bold text-indigo-700">Mức độ:</span> {q.difficulty}</span>
-                        {q.content.includes('[CÓ HÌNH ẢNH KÈM THEO]') && !q.image_url && (
-                          <span className="inline-flex items-center gap-1 bg-red-100 text-red-700 font-bold px-2 py-0.5 rounded shadow-sm animate-pulse border border-red-200 text-xs">
-                            <AlertCircle className="w-3.5 h-3.5" /> BÁO ĐỘNG: CẦN CHÈN ẢNH
-                          </span>
+            <div className="max-w-4xl mx-auto space-y-6">
+               {(() => {
+                  const q = parsedQuestions[activeQuestionIdx];
+                  if (!q) return null;
+                  return (
+                     <div key={q.temp_id} className="bg-white rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden group hover:border-indigo-200 transition-colors animate-in fade-in duration-200">
+                        
+                        {/* Alerts area */}
+                        {q.isDuplicate && (
+                          <div className="bg-red-50 text-red-700 p-3 text-[13px] font-bold border-b border-red-100 flex gap-2">
+                            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" /> CẢNH BÁO: Nội dung tương tự với một câu đã tồn tại trong Ngân hàng! Bạn nên "Bỏ câu này".
+                          </div>
                         )}
-                      </p>
-                      <p className="text-sm text-gray-800 font-mono leading-relaxed line-clamp-3 bg-gray-50 p-2 rounded border"><span className="font-bold text-indigo-700 font-sans">Nội dung:</span> {q.content}</p>
-                      <p className="text-sm"><span className="font-bold text-emerald-600">Đáp án đúng:</span> <span className="font-bold text-emerald-700">{q.correct_answer}</span></p>
+                        
+                        {(!q.image_url && (q.content.includes("HÌNH VẼ") || q.content.includes("ĐỒ THỊ") || q.content.includes("như hình") || q.content.includes("BẢNG BIẾN THIÊN"))) && (
+                          <div className="bg-orange-50 text-orange-700 p-3 text-[13px] font-bold border-b border-orange-100 flex gap-2">
+                            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" /> CẢNH BÁO: Câu hỏi thiếu [chưa chèn ảnh/đồ thị (đề bài có từ khóa [HÌNH VẼ / BẢNG BIẾN THIÊN])]. Hãy bổ sung trước khi lưu!
+                          </div>
+                        )}
+
+                        {q.image_url && (
+                          <div className="bg-blue-50 text-blue-700 p-3 text-[13px] font-bold border-b border-blue-100 flex gap-2">
+                            <Info className="w-4 h-4 shrink-0 mt-0.5" /> INFO: Câu hỏi này có chứa hình ảnh tự động cắt. Vui lòng kiểm tra lại xem ảnh cắt đã chuẩn chưa (có thể dùng chức năng Cắt xén lại nếu cần).
+                          </div>
+                        )}
+
+                        {/* Header: Toolbar & Toggle */}
+                        <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center rounded-t-2xl z-20 relative">
+                           <div className="flex items-center gap-2 font-bold text-gray-700 text-[15px]">
+                              <ListTodo className="w-4 h-4 text-teal-500"/> Soạn thảo câu hỏi {activeQuestionIdx + 1}
+                           </div>
+                           <div className="flex gap-1.5">
+                              <button onClick={() => setPreviewingQuestion(q)} className="flex items-center gap-1.5 px-2 py-1.5 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200 text-indigo-700 rounded-md text-[11px] font-bold transition-colors">
+                                 <Eye className="w-3.5 h-3.5"/> Xem trước
+                              </button>
+                              <button onClick={() => handleSaveSingle(q.temp_id!)} className="flex items-center gap-1.5 px-2 py-1.5 bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 text-emerald-700 rounded-md text-[11px] font-bold transition-colors">
+                                 <Save className="w-3.5 h-3.5"/> Lưu câu này
+                              </button>
+                              <button onClick={() => handleRemoveQuestion(q.temp_id!)} className="p-1.5 hover:bg-red-100 rounded-md text-red-500 transition-colors">
+                                 <Trash className="w-4 h-4"/>
+                              </button>
+                           </div>
+                        </div>
+
+                        <div className="p-6 space-y-6">
+                    {/* PHẦN 1: CẤU TRÚC DANH MỤC & PHÂN LOẠI */}
+                    <div className="bg-indigo-50/40 border border-indigo-100 rounded-2xl p-4 shadow-inner">
+                       <h3 className="text-xs font-black text-indigo-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                          📂 Cấu trúc Chương / Bài / Dạng
+                       </h3>
+                       
+                       <div className="grid grid-cols-3 gap-2.5 mb-3">
+                          <select value={q.grade} onChange={e => handleMapCategory(q.temp_id!, 'grade', e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs font-bold text-gray-700 bg-white text-center truncate outline-none focus:border-indigo-500 cursor-pointer shadow-sm">
+                             {uniqueGrades.map(g => <option key={g as string} value={g as string}>{g as string}</option>)}
+                          </select>
+                          <select value={q.subject} onChange={e => handleMapCategory(q.temp_id!, 'subject', e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs font-bold text-gray-700 bg-white text-center truncate outline-none focus:border-indigo-500 cursor-pointer shadow-sm">
+                             {uniqueSubjects.map(s => <option key={s as string} value={s as string}>{s as string}</option>)}
+                          </select>
+                          <select value={q.topic} onChange={e => handleMapCategory(q.temp_id!, 'topic', e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs font-bold text-gray-700 bg-white text-center truncate outline-none focus:border-indigo-500 cursor-pointer shadow-sm">
+                             {uniqueTopics.map(t => <option key={t as string} value={t as string}>{t as string}</option>)}
+                          </select>
+                       </div>
+                       
+                       <div className="grid grid-cols-2 gap-3">
+                          <div className={`border rounded-xl px-3 py-2 flex flex-col justify-center gap-2 ${q.isNewLesson ? 'bg-red-50 border-red-200 shadow-sm' : 'bg-white border-gray-200 shadow-sm'}`}>
+                             <div className="flex items-center gap-1.5">
+                                {q.isNewLesson && <AlertCircle className="w-3.5 h-3.5 text-red-600 shrink-0" />}
+                                {!q.isNewLesson ? (
+                                  <select value={q.lesson} onChange={e => handleMapCategory(q.temp_id!, 'lesson', e.target.value)} className="w-full bg-transparent text-[11px] font-bold text-gray-700 outline-none cursor-pointer truncate">
+                                    <option value={q.lesson}>{q.lesson}</option>
+                                    {uniqueLessons.filter(l => l !== q.lesson).map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
+                                  </select>
+                                ) : (
+                                  <span className="text-[11px] font-bold line-clamp-2 text-red-700">{q.lesson || 'Chưa phân bài học'}</span>
+                                )}
+                             </div>
+                             {q.isNewLesson && (
+                                <div className="flex flex-col gap-1.5 mt-1 border-t border-red-100 pt-1.5">
+                                  <select onChange={e => handleMapCategory(q.temp_id!, 'lesson', e.target.value)} className="w-full text-[10px] p-1.5 border border-red-200 rounded-md bg-white text-gray-700 outline-none focus:border-red-500 font-medium shadow-sm cursor-pointer">
+                                     <option value="">-- Ép về Tên Bài có sẵn --</option>
+                                     {uniqueLessons.map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
+                                  </select>
+                                  <input 
+                                    type="text" 
+                                    value={q.lesson} 
+                                    onChange={e => updateParsedQuestion(q.temp_id!, 'lesson', e.target.value)}
+                                    placeholder="Nhập tên bài mới..." 
+                                    className="w-full text-[10px] p-1.5 border border-red-200 rounded-md bg-white text-gray-700 outline-none focus:border-red-500 font-medium shadow-sm"
+                                  />
+                                  <button onClick={() => handleApproveNewCategory(q.temp_id!, 'lesson', q.lesson)} className="w-full py-1 text-[10px] font-black tracking-wide bg-red-100 text-red-700 border border-red-200 rounded hover:bg-red-200 transition-colors uppercase">Duyệt Tạo Mới</button>
+                                </div>
+                             )}
+                          </div>
+                          
+                          <div className={`border rounded-xl px-3 py-2 flex flex-col justify-center gap-2 ${q.isNewMathForm ? 'bg-orange-50 border-orange-200 shadow-sm' : 'bg-white border-gray-200 shadow-sm'}`}>
+                             <div className="flex items-center gap-1.5">
+                                {q.isNewMathForm && <AlertCircle className="w-3.5 h-3.5 text-orange-600 shrink-0" />}
+                                {!q.isNewMathForm ? (
+                                  <select value={q.math_form} onChange={e => handleMapCategory(q.temp_id!, 'math_form', e.target.value)} className="w-full bg-transparent text-[11px] font-bold text-gray-700 outline-none cursor-pointer truncate">
+                                    <option value={q.math_form}>{q.math_form}</option>
+                                    {uniqueForms.filter(f => f !== q.math_form).map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
+                                  </select>
+                                ) : (
+                                  <span className="text-[11px] font-bold line-clamp-2 text-orange-700">{q.math_form || 'Chưa phân dạng toán'}</span>
+                                )}
+                             </div>
+                             {q.isNewMathForm && (
+                               <div className="flex flex-col gap-1.5 mt-1 border-t border-orange-100 pt-1.5">
+                                 <select onChange={e => handleMapCategory(q.temp_id!, 'math_form', e.target.value)} className="w-full text-[10px] p-1.5 border border-orange-200 rounded-md bg-white text-gray-700 outline-none focus:border-orange-500 font-medium shadow-sm cursor-pointer">
+                                    <option value="">-- Ép về Dạng Toán có sẵn --</option>
+                                    {uniqueForms.map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
+                                 </select>
+                                 <input 
+                                   type="text" 
+                                   value={q.math_form} 
+                                   onChange={e => updateParsedQuestion(q.temp_id!, 'math_form', e.target.value)}
+                                   placeholder="Nhập dạng toán mới..." 
+                                   className="w-full text-[10px] p-1.5 border border-orange-200 rounded-md bg-white text-gray-700 outline-none focus:border-orange-500 font-medium shadow-sm"
+                                 />
+                                 <button onClick={() => handleApproveNewCategory(q.temp_id!, 'math_form', q.math_form)} className="w-full py-1 text-[10px] font-black tracking-wide bg-orange-100 text-orange-700 border border-orange-200 rounded hover:bg-orange-200 transition-colors uppercase">Duyệt Tạo Mới</button>
+                               </div>
+                             )}
+                          </div>
+                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex flex-wrap gap-2 pt-4 border-t border-gray-100">
-                      <button onClick={() => setPreviewingQuestion(q)} className="flex items-center gap-1.5 bg-orange-50 text-orange-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-orange-100 transition-colors border border-orange-200">
-                        <Eye className="w-4 h-4" /> Xem trước
-                      </button>
-                      <button onClick={() => setEditingQuestion(q)} className="flex items-center gap-1.5 bg-blue-50 text-blue-700 px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-100 transition-colors border border-blue-200">
-                        <Edit className="w-4 h-4" /> Sửa
-                      </button>
-                      <button onClick={() => handleSaveSingle(q.temp_id!)} className="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 px-4 py-2 rounded-lg text-sm font-bold hover:bg-emerald-100 transition-colors border border-emerald-200">
-                        <Save className="w-4 h-4" /> Lưu câu này
-                      </button>
-                      <div className="flex-1"></div>
-                      <button onClick={() => handleRemoveQuestion(q.temp_id!)} className="flex items-center gap-1.5 bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-red-100 transition-colors border border-red-200">
-                        <Trash className="w-4 h-4" /> Bỏ câu này
-                      </button>
+                    {/* PHẦN 2: THỂ LOẠI & ĐỘ KHÓ */}
+                    <div className="bg-blue-50/30 border border-blue-100 rounded-2xl p-4 shadow-sm">
+                       <h3 className="text-xs font-black text-blue-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                          ⚙️ Cấu hình câu hỏi
+                       </h3>
+                       <div className="flex gap-3">
+                          <select value={q.question_type} onChange={e => updateParsedQuestion(q.temp_id!, 'question_type', e.target.value)} className="border border-gray-200 rounded-lg p-2 text-sm font-bold bg-white outline-none focus:border-indigo-500 flex-1 shadow-sm cursor-pointer">
+                            <option value="NLC">Trắc nghiệm 4 lựa chọn</option>
+                            <option value="DS">Đúng/Sai (4 Ý - Barem 2025)</option>
+                            <option value="TLN">Trả lời ngắn / Điền khuyết</option>
+                            <option value="TL">Tự luận / Trình bày chi tiết</option>
+                          </select>
+                          <select value={q.difficulty} onChange={e => updateParsedQuestion(q.temp_id!, 'difficulty', e.target.value)} className="border border-gray-200 rounded-lg p-2 text-sm font-bold bg-white outline-none focus:border-indigo-500 w-36 shadow-sm cursor-pointer">
+                            <option value="Nhận biết">Nhận biết</option>
+                            <option value="Thông hiểu">Thông hiểu</option>
+                            <option value="Vận dụng">Vận dụng</option>
+                            <option value="Vận dụng cao">Vận dụng cao</option>
+                          </select>
+                       </div>
+                    </div>
+
+                    {/* PHẦN 3: ĐỀ BÀI */}
+                    <div className="bg-violet-50/20 border border-violet-100 rounded-2xl p-4 shadow-sm">
+                       <label className="block text-xs font-black text-violet-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                          📝 Đề bài
+                       </label>
+                       <RichTextarea value={q.content} onValueChange={(v) => updateParsedQuestion(q.temp_id!, 'content', v)} minRows={4} />
+                    </div>
+
+                    {/* PHẦN 4: ĐÁP ÁN */}
+                    <div className="bg-emerald-50/20 border border-emerald-100 rounded-2xl p-4 shadow-sm">
+                       <label className="block text-xs font-black text-emerald-800 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+                          🎯 Đáp án
+                       </label>
+                       
+                       {q.question_type === 'NLC' && (
+                        <div className="grid grid-cols-2 gap-4 bg-white/70 p-4 rounded-xl border border-emerald-100/50 shadow-sm">
+                           {['A', 'B', 'C', 'D'].map(opt => {
+                              const key = `option_${opt.toLowerCase()}` as keyof QuestionData;
+                              return (
+                                <div key={opt} className="flex flex-col gap-1.5">
+                                   <div className="flex items-center gap-2">
+                                     <input type="radio" name={`correct_${q.temp_id}`} checked={q.correct_answer === opt} onChange={() => updateParsedQuestion(q.temp_id!, 'correct_answer', opt)} className="w-4.5 h-4.5 text-emerald-600 focus:ring-emerald-500 cursor-pointer" />
+                                     <span className={`font-black text-sm ${q.correct_answer === opt ? 'text-emerald-700' : 'text-gray-500'}`}>Đáp án {opt}</span>
+                                   </div>
+                                   <RichTextarea value={q[key] as string || ''} onValueChange={(v) => updateParsedQuestion(q.temp_id!, key, v)} minRows={2} collapsibleToolbar={true} className="border-gray-200" />
+                                </div>
+                              );
+                           })}
+                        </div>
+                      )}
+                      
+                      {q.question_type === 'DS' && (
+                        <div className="grid grid-cols-1 gap-3 bg-white/70 p-4 rounded-xl border border-emerald-100/50 shadow-sm">
+                           {['a', 'b', 'c', 'd'].map((opt, idx) => {
+                              const key = `option_${opt}` as keyof QuestionData;
+                              const isTrue = q.correct_answer?.charAt(idx) === 'D' || q.correct_answer?.charAt(idx) === 'T';
+                              const toggleStatus = () => {
+                                 let ansArr = (q.correct_answer || "SSSS").split('');
+                                 while(ansArr.length < 4) ansArr.push('S');
+                                 ansArr[idx] = isTrue ? 'S' : 'D';
+                                 updateParsedQuestion(q.temp_id!, 'correct_answer', ansArr.join(''));
+                              };
+                              return (
+                                <div key={opt} className="flex flex-col gap-1.5">
+                                   <div className="flex justify-between items-center bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-200 shadow-inner">
+                                      <span className="font-black text-sm text-gray-700">Mệnh đề {opt.toUpperCase()}</span>
+                                      <button onClick={toggleStatus} className={`px-3 py-1 rounded-lg text-xs font-black transition-colors shadow-sm ${isTrue ? 'bg-emerald-100 text-emerald-700 border border-emerald-300 hover:bg-emerald-200' : 'bg-red-100 text-red-700 border border-red-300 hover:bg-red-200'}`}>
+                                        {isTrue ? "ĐÚNG (Sửa thành Sai)" : "SAI (Sửa thành Đúng)"}
+                                      </button>
+                                   </div>
+                                   <RichTextarea value={q[key] as string || ''} onValueChange={(v) => updateParsedQuestion(q.temp_id!, key, v)} minRows={2} collapsibleToolbar={true} className="border-gray-200" />
+                                </div>
+                              );
+                           })}
+                        </div>
+                      )}
+
+                      {(q.question_type === 'TLN' || q.question_type === 'TL') && (
+                        <div className="bg-white/70 p-4 rounded-xl border border-emerald-100/50 shadow-sm">
+                           <input type="text" value={q.correct_answer} onChange={(e) => updateParsedQuestion(q.temp_id!, 'correct_answer', e.target.value)} placeholder={q.question_type === 'TLN' ? "Nhập kết quả cuối cùng (VD: 12.5)" : "Nhập đáp án ngắn gọn (tùy chọn)"} className="w-full border border-gray-300 rounded-lg p-2.5 text-sm font-bold bg-white outline-none focus:border-emerald-500 shadow-sm" />
+                        </div>
+                      )}
+                    </div>
+
+                    {/* PHẦN 5: LỜI GIẢI CHI TIẾT */}
+                    <div className="bg-amber-50/20 border border-amber-100 rounded-2xl p-4 shadow-sm">
+                       <label className="block text-xs font-black text-amber-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                          💡 Hướng dẫn giải chi tiết
+                       </label>
+                       <RichTextarea value={q.explanation} onValueChange={(v) => updateParsedQuestion(q.temp_id!, 'explanation', v)} minRows={4} />
                     </div>
                   </div>
-                  
-                </div>
-              ))}
+                     </div>
+                  );
+               })()}
             </div>
           )}
         </div>
 
       </div>
 
-      <QuestionEditorModal 
-        isOpen={!!editingQuestion} 
-        onClose={() => setEditingQuestion(null)} 
-        question={editingQuestion} 
-        onSave={handleModalSave} 
-      />
+      
       
       <QuestionPreviewModal 
         isOpen={!!previewingQuestion}
