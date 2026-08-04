@@ -118,7 +118,7 @@ export async function POST(request: Request) {
         
         // Fix \t LaTeX JSON parse bug
         let preprocessedText = text
-            .replace(/\\n(?=eq|otin|abla|atural)/g, '\\\\n')
+            .replace(/\\n(?=eq|otin|exists|eg|abla|u|i|earrow|atural|parallel)/g, '\\\\n')
             .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
             .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
             .replace(/\\b(?=egin)/g, '\\\\b')

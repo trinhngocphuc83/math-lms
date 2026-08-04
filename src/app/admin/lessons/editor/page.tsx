@@ -548,7 +548,7 @@ const parseMarkdownToBlocks = (content: string): Block[] => {
           let rawJson = match[1].replace(/\n$/, '');
           // Tiền xử lý phục hồi lỗi LaTeX escape: AI quên escape nên JSON parse \n thành kí tự xuống dòng
           rawJson = rawJson
-              .replace(/\\n(?=eq|otin|abla|atural)/g, '\\\\n')
+              .replace(/\\n(?=eq|otin|exists|eg|abla|u|i|earrow|atural|parallel)/g, '\\\\n')
               .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
               .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
               .replace(/\\b(?=egin)/g, '\\\\b')

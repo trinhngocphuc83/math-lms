@@ -114,7 +114,7 @@ export async function POST(request: Request) {
         // Tiền xử lý: Sửa lỗi LLM quên escape các ký tự LaTeX thông dụng làm JSON parser nhầm thành ký tự điều khiển (newline, return, tab...)
         // Lỗi phổ biến nhất: AI trả về "x \neq 0", JS parser nhận diện \n là ký tự ngắt dòng.
         let preprocessedText = text
-            .replace(/\\n(?=eq|otin|abla|atural)/g, '\\\\n')
+            .replace(/\\n(?=eq|otin|exists|eg|abla|u|i|earrow|atural|parallel)/g, '\\\\n')
             .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
             .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
             .replace(/\\b(?=egin)/g, '\\\\b')
