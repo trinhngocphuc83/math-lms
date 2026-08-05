@@ -919,7 +919,17 @@ function EditorContent() {
 
   useEffect(() => {
     const fetchCourses = async () => {
-      const { data } = await supabase.from('courses').select('id, title, grade, subject').order('created_at', { ascending: false });
+      // Bảng courses chỉ có cột grade_level, KHÔNG có cột grade/subject.
+      // Trước đây chọn nhầm 2 cột này nên truy vấn lỗi, danh sách khóa học rỗng,
+      // kéo theo ô "Thuộc khóa học" luôn trống và câu hỏi đẩy sang bị mất Lớp.
+      const { data, error } = await supabase
+        .from('courses')
+        .select('id, title, grade_level')
+        .order('created_at', { ascending: false });
+      if (error) {
+        console.error('Lỗi tải danh sách khóa học:', error.message);
+        return;
+      }
       if (data) setCourses(data);
     };
     fetchCourses();
@@ -2060,13 +2070,21 @@ function EditorContent() {
           isOpen={isPushToBankModalOpen} 
           onClose={() => setIsPushToBankModalOpen(false)} 
           blocks={activeTab === 'elearning' ? elearningBlocks : presentationBlocks} 
-          courseContext={{ 
-            grade: courses.find(c => c.id === selectedCourseId)?.grade || "",
-            subject: courses.find(c => c.id === selectedCourseId)?.subject || "",
-            topic: chapters.find(c => c.id === selectedChapterId)?.title || "", 
-            lesson: title,
-            courseName: courses.find(c => c.id === selectedCourseId)?.title || ""
-          }} 
+          courseContext={(() => {
+            const course = courses.find(c => c.id === selectedCourseId);
+            // Một số khóa học để grade_level = 0 (chưa đặt); khi đó trả về rỗng
+            // để modal tự đoán Lớp từ tên khóa học.
+            const gradeLevel = Number(course?.grade_level) || 0;
+            return {
+              grade: gradeLevel > 0 ? String(gradeLevel) : "",
+              // Bảng courses không lưu Môn - giáo viên chọn trong modal,
+              // và bước kiểm tra trước khi lưu sẽ chặn nếu còn bỏ trống.
+              subject: "",
+              topic: chapters.find(c => c.id === selectedChapterId)?.title || "",
+              lesson: title,
+              courseName: course?.title || ""
+            };
+          })()}
         />
       )}
     </div>

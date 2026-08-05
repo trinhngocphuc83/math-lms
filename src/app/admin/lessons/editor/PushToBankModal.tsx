@@ -191,16 +191,11 @@ function autoDetectGradeSubject(courseName: string): { grade: string; subject: s
   const gradeMatch = name.match(/(?:lớp|lop|khối|khoi|l)\s*(\d{1,2})/i) || name.match(/\b(10|11|12|[6-9])\b/);
   if (gradeMatch) grade = gradeMatch[1];
 
-  // Detect Môn: tìm tên môn phổ biến
-  let subject = '';
-  if (/toán|toan|math/i.test(name)) subject = 'Toán';
-  else if (/lý|ly|vật lý|physics/i.test(name)) subject = 'Vật lý';
-  else if (/hóa|hoa|hoá|chemistry/i.test(name)) subject = 'Hóa học';
-  else if (/sinh|biology/i.test(name)) subject = 'Sinh học';
-  else if (/văn|van|ngữ văn|ngu van/i.test(name)) subject = 'Ngữ văn';
-  else if (/anh|english/i.test(name)) subject = 'Tiếng Anh';
-
-  return { grade, subject };
+  // KHÔNG tự đoán Môn nữa. Tên khóa học chỉ cho biết "Toán", trong khi ngân hàng
+  // phân theo phân môn ("Đại số", "Hình học"). Đoán bừa sẽ đẻ ra môn thứ ba và
+  // làm phân mảnh danh mục. Để giáo viên chọn từ danh sách môn đang có,
+  // bước kiểm tra trước khi lưu sẽ chặn nếu còn bỏ trống.
+  return { grade, subject: '' };
 }
 
 /* ===== Thuật toán nhận dạng Dạng Toán tự động (TF-IDF chuẩn & N-grams) ===== */
@@ -554,6 +549,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
     add('lesson', 'Thiếu Tên bài', q => !String(q.lesson || '').trim());
     add('topic', 'Thiếu Chuyên đề (Chương)', q => !String(q.topic || '').trim());
     add('grade', 'Thiếu Lớp', q => !String(q.grade || '').trim());
+    add('subject', 'Thiếu Môn', q => !String(q.subject || '').trim());
     add('math_form', 'Thiếu Dạng toán', q => !String(q.math_form || '').trim());
     add('difficulty', 'Chưa chọn Mức độ', q => !toDifficultyCode(q.difficulty));
     add('answer', 'Chưa có đáp án đúng', q =>
