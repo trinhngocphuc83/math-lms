@@ -34,7 +34,7 @@ const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => 
   }).join('\n');
 };
 
-export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = true, defaultToolbarExpanded = false, ...props }: RichTextareaProps) {
+export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = true, defaultToolbarExpanded = true, ...props }: RichTextareaProps) {
   // Fallback: Nếu không truyền onChange, tạo handler tự động từ onValueChange
   const resolvedOnChange = React.useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) onChange(e);
@@ -53,6 +53,8 @@ export default function RichTextarea({ value, onChange, onValueChange, className
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textColorRef = useRef<HTMLSelectElement>(null);
   const fontSizeRef = useRef<HTMLInputElement>(null);
+  // Ghi lại cỡ chữ lúc bắt đầu bấm vào ô, để khi rời ô mà số không đổi thì không áp dụng lại
+  const sizeOnFocus = useRef<string>("30");
   const [isUploading, setIsUploading] = useState(false);
   const EMOJIS = ["💡", "📌", "🎯", "🚀", "📝", "⚙️", "✅", "❌", "🔥", "✨", "👉", "⚠️"];
 
@@ -67,7 +69,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const handleApplySize = (e?: React.MouseEvent | React.FormEvent) => {
+  const handleApplySize = (e?: React.MouseEvent | React.FormEvent | null, sizeOverride?: string) => {
     if (e) e.preventDefault();
     if (!textareaRef.current) return;
     
@@ -84,7 +86,8 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
 
-    const sizePx = fontSize ? `${fontSize}px` : '40px';
+    const effectiveSize = sizeOverride ?? fontSize;
+    const sizePx = effectiveSize ? `${effectiveSize}px` : '40px';
     const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="font-size: ${sizePx}">${l}</span>`, 'font-size');
     const newValue = beforeText + wrappedText + afterText;
 
@@ -155,7 +158,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }, 0);
   };
 
-  const handleApplyColor = (e?: React.MouseEvent | React.FormEvent) => {
+  const handleApplyColor = (e?: React.MouseEvent | React.FormEvent | null, colorOverride?: string) => {
     if (e) e.preventDefault();
     if (!textareaRef.current) return;
     
@@ -172,7 +175,8 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
 
-    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="color: ${textColor}">${l}</span>`, 'color');
+    const effectiveColor = colorOverride ?? textColor;
+    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="color: ${effectiveColor}">${l}</span>`, 'color');
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
@@ -190,7 +194,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }, 0);
   };
 
-  const handleApplyLineSpacing = (e?: React.MouseEvent | React.FormEvent) => {
+  const handleApplyLineSpacing = (e?: React.MouseEvent | React.FormEvent | null, lineHeightOverride?: string) => {
     if (e) e.preventDefault();
     if (!textareaRef.current) return;
     
@@ -207,7 +211,8 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
 
-    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="line-height: ${lineHeight}">${l}</span>`, 'line-height');
+    const effectiveLineHeight = lineHeightOverride ?? lineHeight;
+    const wrappedText = wrapMultiLineSelection(selectedText, l => `<span style="line-height: ${effectiveLineHeight}">${l}</span>`, 'line-height');
     const newValue = beforeText + wrappedText + afterText;
 
     if (onValueChange) {
@@ -561,15 +566,15 @@ export default function RichTextarea({ value, onChange, onValueChange, className
 
   return (
     <div className={`relative flex flex-col border border-gray-300 rounded-lg focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all bg-white ${className.includes('mt-') ? className.match(/mt-[0-9]+/)?.[0] : ''}`}>
-      {/* Toolbar */}
-      {collapsibleToolbar && (
+      {/* Toolbar - khi đang mở, nút thu gọn nằm luôn trong thanh công cụ để không tốn thêm một dòng */}
+      {collapsibleToolbar && !isToolbarExpanded && (
          <div className="bg-slate-50 border-b border-gray-200 px-2 py-0.5 sticky top-0 z-40 flex justify-end bg-gray-50 border-b border-gray-100">
-            <button 
-              type="button" 
-              onClick={() => setIsToolbarExpanded(!isToolbarExpanded)}
+            <button
+              type="button"
+              onClick={() => setIsToolbarExpanded(true)}
               className="text-[11px] font-bold text-indigo-600 hover:text-indigo-800 transition-colors flex items-center gap-1 hover:bg-indigo-50 px-2 py-1 rounded"
             >
-              {isToolbarExpanded ? <><ChevronUp className="w-3 h-3"/> <span>Thu gọn</span></> : <><ChevronDown className="w-3 h-3"/> <span>Định dạng</span></>}
+              <ChevronDown className="w-3 h-3"/> <span>Định dạng</span>
             </button>
          </div>
       )}
@@ -590,16 +595,50 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         <div className="flex items-center gap-1 shrink-0">
           <Type className="w-3.5 h-3.5 text-gray-400" />
           <form onSubmit={handleApplySize} className="flex items-center">
-             <input ref={fontSizeRef} type="number" value={fontSize} onChange={e => setFontSize(e.target.value)} className="w-9 h-6 text-center border border-gray-200 rounded text-[11px] font-semibold p-0 text-indigo-700 bg-white" placeholder="px"/>
+             <input
+               ref={fontSizeRef}
+               type="number"
+               list="rt-font-sizes"
+               value={fontSize}
+               onChange={e => setFontSize(e.target.value)}
+               onFocus={e => { sizeOnFocus.current = e.target.value; }}
+               onBlur={e => {
+                 const ta = textareaRef.current;
+                 // Chỉ áp dụng khi có vùng bôi đen VÀ cỡ chữ thực sự đổi
+                 if (!ta || ta.selectionStart === ta.selectionEnd) return;
+                 if (!e.target.value || e.target.value === sizeOnFocus.current) return;
+                 handleApplySize(null, e.target.value);
+               }}
+               title="Bôi đen chữ, nhập cỡ rồi ấn Enter"
+               className="w-11 h-6 text-center border border-gray-200 rounded text-[11px] font-semibold p-0 text-indigo-700 bg-white"
+               placeholder="px"
+             />
+             <datalist id="rt-font-sizes">
+               <option value="16"></option><option value="18"></option><option value="20"></option>
+               <option value="24"></option><option value="30"></option><option value="36"></option><option value="48"></option>
+             </datalist>
           </form>
-          <button type="button" onClick={handleApplySize} className="bg-indigo-100 text-indigo-700 px-1.5 h-6 rounded border border-indigo-200 hover:bg-indigo-200 text-[10px] font-bold">Đổi</button>
         </div>
 
         <div className="w-px h-4 bg-gray-300 shrink-0"></div>
 
         <div className="flex items-center gap-1 shrink-0">
           <Palette className="w-3.5 h-3.5 text-gray-400" />
-          <select ref={textColorRef} value={textColor} onChange={e => setTextColor(e.target.value)} className="border border-gray-200 rounded bg-white text-[11px] font-bold px-1 outline-none h-6 cursor-pointer w-20" style={{ color: textColor }}>
+          <select
+            ref={textColorRef}
+            value=""
+            onChange={e => {
+              const picked = e.target.value;
+              e.target.value = ""; // trả về nhãn gốc để lần sau chọn lại cùng màu vẫn ăn
+              if (!picked) return;
+              setTextColor(picked);
+              handleApplyColor(null, picked);
+            }}
+            title="Bôi đen chữ rồi chọn màu"
+            className="border border-gray-200 rounded bg-white text-[11px] font-bold px-1 outline-none h-6 cursor-pointer w-20"
+            style={{ color: textColor }}
+          >
+            <option value="">Màu chữ</option>
             <option value="#ef4444" style={{ color: '#ef4444' }}>Đỏ</option>
             <option value="#3b82f6" style={{ color: '#3b82f6' }}>Xanh</option>
             <option value="#22c55e" style={{ color: '#22c55e' }}>Lá</option>
@@ -609,17 +648,27 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             <option value="#ec4899" style={{ color: '#ec4899' }}>Hồng</option>
             <option value="#000000" style={{ color: '#000000' }}>Đen</option>
           </select>
-          <button type="button" onClick={handleApplyColor} className="bg-orange-100 text-orange-700 px-1.5 h-6 rounded border border-orange-200 hover:bg-orange-200 text-[10px] font-bold">Đổi</button>
         </div>
 
         <div className="w-px h-4 bg-gray-300 shrink-0"></div>
 
         <div className="flex items-center gap-1 shrink-0">
           <span className="text-[10px] text-gray-500">Giãn:</span>
-          <select value={lineHeight} onChange={e => setLineHeight(e.target.value)} className="border border-gray-200 rounded bg-white text-[11px] font-bold px-1 outline-none h-6 cursor-pointer w-12 text-teal-700">
+          <select
+            value=""
+            onChange={e => {
+              const picked = e.target.value;
+              e.target.value = ""; // trả về nhãn gốc để lần sau chọn lại cùng mức vẫn ăn
+              if (!picked) return;
+              setLineHeight(picked);
+              handleApplyLineSpacing(null, picked);
+            }}
+            title="Bôi đen chữ rồi chọn độ giãn dòng"
+            className="border border-gray-200 rounded bg-white text-[11px] font-bold px-1 outline-none h-6 cursor-pointer w-14 text-teal-700"
+          >
+             <option value="">{lineHeight}</option>
              <option value="1.0">1.0</option><option value="1.15">1.15</option><option value="1.5">1.5</option><option value="2.0">2.0</option>
           </select>
-          <button type="button" onClick={handleApplyLineSpacing} className="bg-teal-100 text-teal-700 px-1.5 h-6 rounded border border-teal-200 hover:bg-teal-200 text-[10px] font-bold">Đổi</button>
         </div>
 
         <div className="w-px h-4 bg-gray-300 shrink-0"></div>
@@ -655,11 +704,21 @@ export default function RichTextarea({ value, onChange, onValueChange, className
           <Frame className="w-3 h-3" /> Khung
         </button>
 
-        <div className="ml-auto shrink-0 flex items-center">
+        <div className="ml-auto shrink-0 flex items-center gap-1">
            <input type="file" ref={fileInputRef} onChange={handleFileChange} accept="image/*" className="hidden" />
            <button type="button" onClick={() => fileInputRef.current?.click()} disabled={isUploading} className="flex items-center gap-1 px-2 h-6 bg-pink-50 text-pink-700 border border-pink-200 hover:bg-pink-100 font-bold rounded text-[11px]">
              {isUploading ? <Loader2 className="w-3 h-3 animate-spin"/> : <ImageIcon className="w-3 h-3" />} Ảnh
            </button>
+           {collapsibleToolbar && (
+             <button
+               type="button"
+               onClick={() => setIsToolbarExpanded(false)}
+               title="Thu gọn thanh định dạng"
+               className="flex items-center justify-center w-6 h-6 text-gray-400 hover:text-indigo-700 hover:bg-indigo-50 rounded border border-transparent hover:border-indigo-200 transition-colors"
+             >
+               <ChevronUp className="w-3.5 h-3.5" />
+             </button>
+           )}
         </div>
 
       </div>

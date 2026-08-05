@@ -37,6 +37,21 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
     if (blocks.length > 0 && activeBlockId && !blocks.find(b => b.id === activeBlockId)) setActiveBlockId(blocks[0].id);
   }, [blocks, activeBlockId]);
 
+  // Bản đồ câu hỏi: nhớ trạng thái thu gọn để lần sau mở lên vẫn giữ nguyên
+  React.useEffect(() => {
+    try {
+      if (localStorage.getItem('lessonEditor.mapCollapsed') === '1') setIsSidebarCollapsed(true);
+    } catch {}
+  }, []);
+
+  const toggleSidebar = () => {
+    setIsSidebarCollapsed(prev => {
+      const next = !prev;
+      try { localStorage.setItem('lessonEditor.mapCollapsed', next ? '1' : '0'); } catch {}
+      return next;
+    });
+  };
+
 
   React.useEffect(() => {
      if (globalTriggerBankModal && globalTriggerBankModal > 0) {
@@ -253,11 +268,50 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
   return (
     <div className="flex flex-col md:flex-row h-full overflow-hidden bg-gray-100 relative">
-       {/* SIDEBAR BẢN ĐỒ CÂU HỎI (20%) */}
-       <div className="w-full md:w-[20%] md:min-w-[280px] border-r border-gray-200 bg-white overflow-y-auto flex flex-col shadow-sm z-10" style={{ maxHeight: 'calc(100vh - 120px)' }}>
-          <div className="p-3 border-b border-gray-100 bg-indigo-50/50 flex items-center justify-between sticky top-0 z-20">
-             <h3 className="font-black text-indigo-900 flex items-center gap-2 text-sm uppercase tracking-wider"><ListTodo className="w-4 h-4"/> Bản đồ</h3>
+       {/* SIDEBAR BẢN ĐỒ CÂU HỎI - thu gọn được (240px ↔ 52px) */}
+       <div
+          className={`${isSidebarCollapsed ? 'md:w-[52px]' : 'md:w-[240px]'} w-full border-r border-gray-200 bg-white overflow-y-auto overflow-x-hidden flex flex-col shadow-sm z-10 shrink-0 transition-[width] duration-300 ease-out`}
+          style={{ maxHeight: 'calc(100vh - 120px)' }}
+       >
+          <div className={`p-3 border-b border-gray-100 bg-indigo-50/50 flex items-center sticky top-0 z-20 ${isSidebarCollapsed ? 'justify-center px-0' : 'justify-between'}`}>
+             {!isSidebarCollapsed && (
+                <h3 className="font-black text-indigo-900 flex items-center gap-2 text-sm uppercase tracking-wider whitespace-nowrap"><ListTodo className="w-4 h-4"/> Bản đồ</h3>
+             )}
+             <button
+                type="button"
+                onClick={toggleSidebar}
+                title={isSidebarCollapsed ? 'Mở rộng Bản đồ câu hỏi' : 'Thu gọn Bản đồ câu hỏi'}
+                className="p-1 rounded-md text-indigo-500 hover:text-indigo-800 hover:bg-indigo-100 transition-colors shrink-0"
+             >
+                {isSidebarCollapsed ? <ChevronRight className="w-4 h-4"/> : <ChevronLeft className="w-4 h-4"/>}
+             </button>
           </div>
+
+          {/* Dạng thu gọn: dải số dọc, rê chuột hiện tên đầy đủ */}
+          {isSidebarCollapsed && (
+             <div className="flex flex-col items-center gap-1 py-2">
+                {[
+                   { items: theoryBlocks, short: 'LT', label: 'Khối Văn bản', on: 'bg-indigo-600 text-white shadow-md', off: 'bg-gray-100 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600', tone: 'text-gray-500' },
+                   { items: multipleChoiceBlocks, short: 'P1', label: 'Trắc nghiệm câu', on: 'bg-teal-500 text-white shadow-md', off: 'bg-gray-100 text-gray-600 hover:bg-teal-50 hover:text-teal-600', tone: 'text-teal-600' },
+                   { items: tfBlocks, short: 'P2', label: 'Đúng/Sai câu', on: 'bg-orange-500 text-white shadow-md', off: 'bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600', tone: 'text-orange-600' },
+                   { items: shortAnswerBlocks, short: 'P3', label: 'Trả lời ngắn câu', on: 'bg-purple-500 text-white shadow-md', off: 'bg-gray-100 text-gray-600 hover:bg-purple-50 hover:text-purple-600', tone: 'text-purple-600' },
+                ].map(sec => sec.items.length === 0 ? null : (
+                   <div key={sec.short} className="flex flex-col items-center gap-1 w-full">
+                      <div className={`text-[9px] font-black uppercase tracking-wider ${sec.tone} mt-1`}>{sec.short}</div>
+                      {sec.items.map((item, idx) => (
+                         <button
+                            key={item.b.id}
+                            onClick={() => setActiveBlockId(item.b.id)}
+                            title={`${sec.label} ${idx + 1}`}
+                            className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[12px] transition-all shrink-0 ${activeBlockId === item.b.id ? sec.on : sec.off}`}
+                         >{idx + 1}</button>
+                      ))}
+                   </div>
+                ))}
+             </div>
+          )}
+
+          {!isSidebarCollapsed && (
           <div className="p-4 flex flex-col gap-6">
 
              {theoryBlocks.length > 0 && (
@@ -307,10 +361,11 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              )}
 
           </div>
+          )}
        </div>
 
-       {/* MAIN EDITOR (80%) */}
-       <div className="flex-1 flex flex-col p-4 md:p-6 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 120px)' }}>
+       {/* MAIN EDITOR - chiếm toàn bộ phần còn lại */}
+       <div className="flex-1 min-w-0 flex flex-col p-4 md:p-6 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 120px)' }}>
        <div className="flex items-center justify-between mb-[-0.5rem] flex-wrap gap-3">
 
          {selectedBlocks.size > 0 && (
@@ -377,6 +432,36 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                         onClick={e => e.stopPropagation()}
                      />
                      {block.type === 'md' ? <><Type className="w-4 h-4 text-indigo-500"/> Khối Lý Thuyết / Văn Bản</> : <><ListTodo className="w-4 h-4 text-teal-500"/> Khối Trắc Nghiệm Tương Tác</>}
+
+                     {/* Chọn dạng câu hỏi - gộp vào đây để không tốn thêm một dòng riêng bên dưới */}
+                     {block.type !== 'md' && (
+                        <select
+                           value={block.content.type || 'multiple_choice'}
+                           onClick={e => e.stopPropagation()}
+                           onChange={e => {
+                             const newType = e.target.value;
+                             let newContent = { ...block.content, type: newType };
+                             // Nếu chuyển sang true_false_cluster mà options chưa đúng cấu trúc object
+                             if (newType === 'true_false_cluster' && (!block.content.options || typeof block.content.options[0] === 'string')) {
+                                newContent.options = [
+                                   { id: 'a', content: '', isTrue: true },
+                                   { id: 'b', content: '', isTrue: false },
+                                   { id: 'c', content: '', isTrue: true },
+                                   { id: 'd', content: '', isTrue: false },
+                                ];
+                             }
+                             updateBlockContent(idx, newContent);
+                           }}
+                           title="Dạng câu hỏi"
+                           className="ml-2 border border-gray-300 rounded-lg px-2 py-1 text-[12px] bg-white font-medium text-gray-700 outline-none focus:ring-2 focus:ring-teal-500/20 cursor-pointer"
+                        >
+                           <option value="multiple_choice">Trắc nghiệm 4 lựa chọn</option>
+                           <option value="true_false_cluster">Đúng/Sai 4 Ý (Barem 2025)</option>
+                           <option value="true_false">Đúng / Sai (Truyền thống)</option>
+                           <option value="short_answer">Trả lời ngắn / Điền khuyết</option>
+                           <option value="essay">Tự luận / Trình bày chi tiết</option>
+                        </select>
+                     )}
                   </div>
                   <div className="flex gap-1.5">
                       <button onClick={() => moveBlock(idx, -1)} disabled={idx === 0} className="p-1.5 hover:bg-gray-200 rounded-md text-gray-500 disabled:opacity-30"><ArrowUp className="w-4 h-4"/></button>
@@ -494,34 +579,6 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           </div>
                        )}
 
-                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
-                          <label className="font-bold text-teal-800 text-[15px]">Nội dung câu hỏi</label>
-                          <select 
-                             value={block.content.type || 'multiple_choice'} 
-                             onChange={e => {
-                               const newType = e.target.value;
-                               let newContent = { ...block.content, type: newType };
-                               // Nếu chuyển sang true_false_cluster mà options chưa đúng cấu trúc object
-                               if (newType === 'true_false_cluster' && (!block.content.options || typeof block.content.options[0] === 'string')) {
-                                  newContent.options = [
-                                     { id: 'a', content: '', isTrue: true },
-                                     { id: 'b', content: '', isTrue: false },
-                                     { id: 'c', content: '', isTrue: true },
-                                     { id: 'd', content: '', isTrue: false },
-                                  ];
-                               }
-                               updateBlockContent(idx, newContent);
-                             }} 
-                             className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white font-medium text-gray-700 outline-none focus:ring-2 focus:ring-teal-500/20"
-                          >
-                             <option value="multiple_choice">Trắc nghiệm 4 lựa chọn</option>
-                             <option value="true_false_cluster">Đúng/Sai 4 Ý (Barem 2025)</option>
-                             <option value="true_false">Đúng / Sai (Truyền thống)</option>
-                             <option value="short_answer">Trả lời ngắn / Điền khuyết</option>
-                             <option value="essay">Tự luận / Trình bày chi tiết</option>
-                          </select>
-                       </div>
-                       
                        <RichTextarea rows={3} value={block.content.question || ""} onChange={e => updateBlockContent(idx, { ...block.content, question: e.target.value })} className="w-full border border-gray-200 rounded-xl p-4 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 font-mono text-[15px] transition-all" placeholder="Nhập câu hỏi... (Markdown hỗ trợ)" />
 
                        {(block.content.type === 'multiple_choice' || !block.content.type) && (
