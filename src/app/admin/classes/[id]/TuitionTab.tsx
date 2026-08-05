@@ -70,9 +70,10 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
 
     if (res.success && res.data) {
       res.data.forEach((t: any) => {
-        // FIX BUG: Nếu base_fee = 0 (do lỗi tạo tự động trước đó), tự sửa thành defaultFee hoặc kế thừa tháng trước
-        if (!t.base_fee || t.base_fee === 0) {
-           t.base_fee = prevMap[t.student_id]?.base_fee || defaultFee;
+        // FIX BUG: Nếu base_fee chưa được thiết lập (null hoặc undefined), tự sửa thành defaultFee hoặc kế thừa tháng trước
+        if (t.base_fee === null || t.base_fee === undefined) {
+           const prevFee = prevMap[t.student_id]?.base_fee;
+           t.base_fee = (prevFee !== undefined && prevFee !== null) ? prevFee : defaultFee;
         }
         tMap[t.student_id] = t;
       });
@@ -82,7 +83,8 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     filteredEnrollments.forEach(en => {
       const stId = en.profiles.id;
       if (!tMap[stId]) {
-        const studentBaseFee = prevMap[stId]?.base_fee || defaultFee;
+        const prevFee = prevMap[stId]?.base_fee;
+        const studentBaseFee = (prevFee !== undefined && prevFee !== null) ? prevFee : defaultFee;
         tMap[stId] = { base_fee: studentBaseFee, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
       }
     });
