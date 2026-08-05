@@ -1,8 +1,12 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, ChevronUp, Image as ImageIcon, Loader2, Heading } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, ChevronUp, Image as ImageIcon, Loader2, Heading, Sigma, AlertTriangle } from "lucide-react";
 import TextareaAutosize from 'react-textarea-autosize';
+import katex from "katex";
+import "katex/dist/katex.min.css";
+import LatexPalette from "./LatexPalette";
+import { CURSOR_TOKEN, getMathAtCursor, isInsideMath } from "@/utils/mathText";
 
 interface RichTextareaProps extends Omit<React.ComponentProps<typeof TextareaAutosize>, 'onChange' | 'value'> {
   value: string;
@@ -49,7 +53,12 @@ export default function RichTextarea({ value, onChange, onValueChange, className
   const [isToolbarExpanded, setIsToolbarExpanded] = useState(defaultToolbarExpanded);
   
   const [showIconMenu, setShowIconMenu] = useState(false);
+  const [showLatexPalette, setShowLatexPalette] = useState(false);
+  // Vị trí con trỏ, dùng để biết đang đứng trong công thức nào mà hiện xem trước
+  const [cursorPos, setCursorPos] = useState(0);
   const iconMenuRef = useRef<HTMLDivElement>(null);
+  // Nút mở bảng công thức - dùng làm mốc neo vị trí cho bảng
+  const [latexButton, setLatexButton] = useState<HTMLButtonElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textColorRef = useRef<HTMLSelectElement>(null);
   const fontSizeRef = useRef<HTMLInputElement>(null);
@@ -362,6 +371,53 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }, 0);
   };
 
+  /**
+   * Chèn một mẫu LaTeX vào ô soạn thảo.
+   * - Nếu con trỏ chưa nằm trong công thức thì tự bọc thêm cặp $...$
+   * - Nếu đang bôi đen thì đưa phần bôi đen vào đúng ô cần điền của mẫu
+   * - Con trỏ nhảy tới vị trí đánh dấu bằng CURSOR_TOKEN trong mẫu
+   */
+  const handleInsertLatex = (snippet: string) => {
+    const ta = textareaRef.current;
+    if (!ta) return;
+
+    const start = ta.selectionStart;
+    const end = ta.selectionEnd;
+    const selected = value.substring(start, end);
+
+    // Đang ở giữa cặp $...$ rồi thì không bọc thêm nữa
+    const alreadyInMath = isInsideMath(value, start);
+
+    let body = snippet;
+    if (selected) {
+      body = snippet.includes(CURSOR_TOKEN)
+        ? snippet.replace(CURSOR_TOKEN, selected)
+        : snippet + selected;
+    }
+
+    const inserted = alreadyInMath ? body : `$${body}$`;
+    const tokenIndex = inserted.indexOf(CURSOR_TOKEN);
+    const cleanText = inserted.split(CURSOR_TOKEN).join('');
+    const caretAt = tokenIndex === -1 ? start + cleanText.length : start + tokenIndex;
+
+    const newValue = value.substring(0, start) + cleanText + value.substring(end);
+
+    if (onValueChange) onValueChange(newValue);
+    else {
+      const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
+      resolvedOnChange(event);
+    }
+
+    setShowLatexPalette(false);
+    setTimeout(() => {
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+        textareaRef.current.setSelectionRange(caretAt, caretAt);
+        setCursorPos(caretAt);
+      }
+    }, 0);
+  };
+
   const handleRemoveAutoIcon = () => {
     if (!textareaRef.current) return;
     const ta = textareaRef.current;
@@ -404,6 +460,14 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       if (key === 'x') { e.preventDefault(); handleRemoveAutoIcon(); return; }
       if (key === 'c') { e.preventDefault(); textColorRef.current?.focus(); return; }
       if (key === 's') { e.preventDefault(); fontSizeRef.current?.focus(); return; }
+      if (key === 'f') { e.preventDefault(); handleInsertLatex(`\\frac{${CURSOR_TOKEN}}{}`); return; }
+    }
+
+    // Ctrl + M: chèn nhanh cặp $...$ để gõ công thức
+    if (e.ctrlKey && !e.shiftKey && !e.altKey && e.key.toLowerCase() === 'm') {
+      e.preventDefault();
+      handleInsertLatex(CURSOR_TOKEN);
+      return;
     }
     
     if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'i') {
@@ -559,10 +623,37 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     e.target.value = '';
   };
 
+  // Công thức đang chứa con trỏ (nếu có) và kết quả vẽ thử.
+  // Phải đặt TRƯỚC lệnh return sớm bên dưới, nếu không thứ tự hook sẽ đổi giữa các lần render.
+  const mathPreview = React.useMemo(() => {
+    if (!isClient) return null;
+
+    const region = getMathAtCursor(value, cursorPos);
+    if (!region || !region.content.trim()) return null;
+
+    try {
+      const html = katex.renderToString(region.content, {
+        throwOnError: true,
+        displayMode: region.display,
+      });
+      return { html, error: null as string | null };
+    } catch (err: any) {
+      const raw = typeof err?.message === 'string' ? err.message : 'không đọc được';
+      // Bỏ tiền tố kỹ thuật của KaTeX cho gọn
+      const message = raw.replace(/^KaTeX parse error:\s*/i, '');
+      return { html: null as string | null, error: message };
+    }
+  }, [value, cursorPos, isClient]);
+
   if (!isClient) return <TextareaAutosize minRows={props.rows || 3} maxRows={30} value={value} onChange={resolvedOnChange} className={className} {...props} />;
 
   // Lọc bớt class border/focus từ bên ngoài truyền vào vì ta đã có border ở thẻ bọc ngoài
   const innerClass = className.replace(/border-[a-zA-Z0-9-]+|rounded-[a-zA-Z0-9-]+|focus:[a-zA-Z0-9-]+|ring[a-zA-Z0-9-:]*/g, '').trim();
+
+  // Theo dõi vị trí con trỏ để biết đang đứng trong công thức nào
+  const handleSelectionChange = (e: React.SyntheticEvent<HTMLTextAreaElement>) => {
+    setCursorPos(e.currentTarget.selectionStart ?? 0);
+  };
 
   return (
     <div className={`relative flex flex-col border border-gray-300 rounded-lg focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20 transition-all bg-white ${className.includes('mt-') ? className.match(/mt-[0-9]+/)?.[0] : ''}`}>
@@ -686,6 +777,33 @@ export default function RichTextarea({ value, onChange, onValueChange, className
            <button type="button" onClick={e => handleApplyAlign('justify', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600"><AlignJustify className="w-3 h-3" /></button>
         </div>
 
+        <div className="w-px h-4 bg-gray-300 shrink-0"></div>
+
+        {/* Bảng ký hiệu Toán */}
+        <div className="flex items-center shrink-0">
+           <button
+             ref={setLatexButton}
+             type="button"
+             onMouseDown={e => e.preventDefault()}
+             onClick={() => setShowLatexPalette(v => !v)}
+             title="Bảng công thức Toán (Ctrl+M chèn nhanh $...$, Ctrl+Shift+F phân số)"
+             className={`flex items-center gap-1 px-2 h-6 rounded border font-bold text-[11px] transition-colors ${
+               showLatexPalette
+                 ? 'bg-indigo-600 text-white border-indigo-600'
+                 : 'bg-white border-gray-200 text-indigo-700 hover:bg-indigo-50'
+             }`}
+           >
+             <Sigma className="w-3 h-3" /> Công thức <ChevronDown className="w-3 h-3" />
+           </button>
+           {showLatexPalette && (
+             <LatexPalette
+               anchor={latexButton}
+               onPick={handleInsertLatex}
+               onClose={() => setShowLatexPalette(false)}
+             />
+           )}
+        </div>
+
         <div className="flex items-center gap-1 shrink-0 relative" ref={iconMenuRef}>
            <button type="button" onClick={() => setShowIconMenu(!showIconMenu)} className="flex items-center gap-0.5 px-1.5 h-6 bg-white border border-gray-200 text-gray-600 hover:bg-gray-50 rounded">
              <Smile className="w-3 h-3" /> <ChevronDown className="w-3 h-3" />
@@ -729,12 +847,41 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         onChange={resolvedOnChange}
         onKeyDown={handleKeyDown}
         onPaste={handlePaste}
+        onSelect={handleSelectionChange}
+        onClick={handleSelectionChange}
+        onFocus={handleSelectionChange}
         minRows={props.rows || 3}
         maxRows={30}
         className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] bg-transparent ${innerClass}`}
         {...props}
       />
-      
+
+      {/* Xem trước công thức ngay tại chỗ khi con trỏ đang đứng trong cặp $...$ */}
+      {mathPreview && (
+        <div className={`flex items-start gap-2 px-3 py-1.5 border-t text-[13px] ${
+          mathPreview.error
+            ? 'bg-red-50 border-red-100'
+            : 'bg-emerald-50/60 border-emerald-100'
+        }`}>
+          {mathPreview.error ? (
+            <>
+              <AlertTriangle className="w-3.5 h-3.5 text-red-500 shrink-0 mt-0.5" />
+              <span className="text-red-700 text-[12px] leading-snug">
+                Công thức chưa hợp lệ: {mathPreview.error}
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-wide shrink-0 mt-1">Xem trước</span>
+              <span
+                className="overflow-x-auto text-gray-900"
+                dangerouslySetInnerHTML={{ __html: mathPreview.html as string }}
+              />
+            </>
+          )}
+        </div>
+      )}
+
       </div>
   );
 }
