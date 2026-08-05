@@ -95,9 +95,10 @@ export async function rolloverDebt(classId: string, fromMonth: number, fromYear:
     let baseFeeToPreserve = defaultFee;
 
     if (fee) {
-      totalDue = (fee.base_fee || 0) + (fee.old_debt || 0) - (fee.discount || 0);
+      const studentBaseFee = (fee.base_fee !== null && fee.base_fee !== undefined) ? fee.base_fee : defaultFee;
+      totalDue = studentBaseFee + (fee.old_debt || 0) - (fee.discount || 0);
       paid = fee.paid_amount || 0;
-      baseFeeToPreserve = fee.base_fee;
+      baseFeeToPreserve = studentBaseFee;
     } else {
       // Check if student was enrolled strictly AFTER fromMonth
       let shouldChargeDefault = true;
