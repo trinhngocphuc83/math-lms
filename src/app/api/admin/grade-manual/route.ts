@@ -2,9 +2,13 @@ import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getAllAIKeys } from '@/utils/aiKeys';
 import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
+import { requireStaff } from '@/utils/auth/guard';
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const { imageUrls = [], customPrompt, question, sampleAnswer, maxScore = 10, type, studentAnswer, correctAnswer, options } = await request.json();
 
     if ((!imageUrls || imageUrls.length === 0) && type === 'essay') {

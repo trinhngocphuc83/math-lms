@@ -1,23 +1,33 @@
 import { NextResponse } from 'next/server';
 import { getAllAIKeys, getCustomKeys, saveCustomKeys } from '@/utils/aiKeys';
+import { requireAdmin, requireUser } from '@/utils/auth/guard';
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const action = url.searchParams.get('action');
 
   if (action === 'totalCount') {
-    // Trả về tổng số Cổng AI đang khả dụng (Cả .env và json) để Học Sinh chọn
+    // Chỉ trả về SỐ LƯỢNG cổng AI khả dụng - mọi tài khoản đã đăng nhập đều xem được
+    const countGuard = await requireUser();
+    if (!countGuard.ok) return countGuard.response;
+
     const allKeys = getAllAIKeys();
     return NextResponse.json({ count: allKeys.length });
   }
 
-  // Mặc định trả về Danh sách các Khóa Tuỳ chỉnh của Admin (ẩn đi một phần cho an toàn nếu cần, nhưng Admin thì cho xem)
+  // Danh sách Key thật chỉ dành cho Quản trị viên
+  const guard = await requireAdmin();
+  if (!guard.ok) return guard.response;
+
   const customKeys = getCustomKeys();
   return NextResponse.json({ customKeys });
 }
 
 export async function POST(req: Request) {
   try {
+    const guard = await requireAdmin();
+    if (!guard.ok) return guard.response;
+
     const body = await req.json();
     const { keys } = body; // mảng các chuỗi API Key
 

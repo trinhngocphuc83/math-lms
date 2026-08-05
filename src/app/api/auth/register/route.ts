@@ -91,52 +91,13 @@ export async function POST(request: Request) {
       if (courseReqErr) console.error('Course Request Error:', courseReqErr);
     }
 
-    // ==========================================
-    // 2. TẠO TÀI KHOẢN PHỤ HUYNH (tự động)
-    // ==========================================
-    const parentPhoneClean = parent_phone.trim().replace(/\s/g, '');
-    const parentEmail = `ph_${parentPhoneClean}@edu.local`;
-    const parentDefaultPassword = '123456';
+    // Ghi chú: hệ thống KHÔNG tự tạo tài khoản phụ huynh nữa.
+    // Thông tin phụ huynh (tên, số điện thoại) vẫn được lưu trong hồ sơ học sinh.
+    // Khi nào cần cổng dành cho phụ huynh sẽ phát triển riêng, có mật khẩu do PH tự đặt.
 
-    // Kiểm tra xem tài khoản PH đã tồn tại chưa (tránh trùng lặp)
-    const { data: existingParent } = await supabaseAdmin.auth.admin.listUsers();
-    const parentExists = existingParent?.users?.find(u => u.email === parentEmail);
-
-    if (!parentExists) {
-      // Tạo tài khoản mới cho phụ huynh
-      const { data: parentAuthData, error: parentAuthError } = await supabaseAdmin.auth.admin.createUser({
-        email: parentEmail,
-        password: parentDefaultPassword,
-        email_confirm: true,
-        user_metadata: {
-          role: 'parent',
-          full_name: parent_name.trim(),
-          username: parentPhoneClean,
-        }
-      });
-
-      if (!parentAuthError && parentAuthData?.user) {
-        // Lưu hồ sơ phụ huynh
-        const { error: parentProfileErr } = await supabaseAdmin.from('profiles').insert({
-          id: parentAuthData.user.id,
-          role: 'parent',
-          full_name: parent_name.trim(),
-          parent_phone: parentPhoneClean,
-          username: parentPhoneClean,
-          is_active: false // Cũng cần kích hoạt
-        });
-        if (parentProfileErr) {
-          console.error('Profile Error (Parent):', parentProfileErr);
-        }
-      } else {
-        console.error('Auth Error (Parent):', parentAuthError?.message);
-        // Không rollback tài khoản HS — PH có thể tạo sau
-      }
-    }
-
-    return NextResponse.json({ 
-      success: true, 
-      message: 'Đăng ký thành công! Tài khoản học sinh và phụ huynh đã được tạo. Vui lòng chờ Giáo viên / Quản trị viên kích hoạt.' 
+    return NextResponse.json({
+      success: true,
+      message: 'Đăng ký thành công! Vui lòng chờ Giáo viên / Quản trị viên kích hoạt tài khoản.'
     });
 
   } catch (error: any) {

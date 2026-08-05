@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireAdmin } from '@/utils/auth/guard';
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireAdmin();
+    if (!guard.ok) return guard.response;
+
     const formData = await request.formData();
     const file = formData.get('file') as File;
     const courseId = formData.get('courseId') as string;
@@ -28,12 +32,10 @@ export async function POST(request: Request) {
     const results = {
       success: 0,
       failed: 0,
-      parentCreated: 0,
       errors: [] as string[]
     };
 
     // Theo dõi danh sách PH đã tạo trong lần import này (tránh trùng lặp)
-    const createdParentPhones = new Set<string>();
 
     for (const [index, row] of data.entries()) {
       // Mapping cột Excel → trường DB
@@ -108,53 +110,14 @@ export async function POST(request: Request) {
 
       results.success++;
 
-      // ========================================
-      // TẠO TÀI KHOẢN PHỤ HUYNH (tự động)
-      // ========================================
-      if (parentPhone) {
-        const phoneClean = parentPhone.toString().trim().replace(/\s/g, '');
-        
-        // Chỉ tạo nếu chưa tạo trong lần import này
-        if (phoneClean && !createdParentPhones.has(phoneClean)) {
-          const parentEmail = `ph_${phoneClean}@edu.local`;
-          const parentPw = '123456';
-
-          const { data: parentAuth, error: parentAuthErr } = await supabaseAdmin.auth.admin.createUser({
-            email: parentEmail,
-            password: parentPw,
-            email_confirm: true,
-            user_metadata: {
-              role: 'parent',
-              full_name: parentName || `PH của ${studentName}`,
-              username: phoneClean,
-            }
-          });
-
-          if (!parentAuthErr && parentAuth?.user) {
-            const { error: parentProfileErr } = await supabaseAdmin.from('profiles').insert({
-              id: parentAuth.user.id,
-              role: 'parent',
-              full_name: parentName || `PH của ${studentName}`,
-              parent_phone: phoneClean,
-              username: phoneClean,
-              is_active: true
-            });
-            if (parentProfileErr) console.error('Profile Error (Parent):', parentProfileErr);
-
-            createdParentPhones.add(phoneClean);
-            results.parentCreated++;
-          } else if (parentAuthErr?.message?.includes('already registered')) {
-            // PH đã có tài khoản → bỏ qua, không báo lỗi
-            createdParentPhones.add(phoneClean);
-          }
-        }
-      }
+      // Không tạo tài khoản đăng nhập cho Phụ huynh.
+      // Tên và SĐT phụ huynh đã được lưu trong hồ sơ học sinh ở bước trên.
     }
 
-    return NextResponse.json({ 
-      success: true, 
-      message: `Import hoàn tất. HS: ${results.success} thành công, ${results.failed} thất bại. PH: ${results.parentCreated} tài khoản mới.`,
-      results 
+    return NextResponse.json({
+      success: true,
+      message: `Import hoàn tất. HS: ${results.success} thành công, ${results.failed} thất bại.`,
+      results
     });
 
   } catch (error: any) {

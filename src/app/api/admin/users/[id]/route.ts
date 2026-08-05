@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireAdmin } from '@/utils/auth/guard';
 
 // Khởi tạo Supabase Admin Client
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -15,6 +16,9 @@ const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey, {
 // XÓA TÀI KHOẢN
 export async function DELETE(request: Request, context: any) {
   try {
+    const guard = await requireAdmin();
+    if (!guard.ok) return guard.response;
+
     // Next.js 15 compatibility: params might be a Promise, or we can just extract from URL
     const url = new URL(request.url);
     const userId = url.pathname.split('/').pop();
@@ -48,6 +52,9 @@ export async function DELETE(request: Request, context: any) {
 // CHỈNH SỬA TÀI KHOẢN
 export async function PUT(request: Request, context: any) {
   try {
+    const guard = await requireAdmin();
+    if (!guard.ok) return guard.response;
+
     const url = new URL(request.url);
     const userId = url.pathname.split('/').pop();
     if (!userId) {

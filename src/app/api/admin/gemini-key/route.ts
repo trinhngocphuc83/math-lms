@@ -1,7 +1,13 @@
 import { NextResponse } from 'next/server';
+import { requireStaff } from '@/utils/auth/guard';
 
 export async function GET() {
   try {
+    // API này trả về API Key thật của máy chủ nên chỉ Quản trị viên / Giáo viên
+    // (những người dùng trang soạn bài, soạn câu hỏi) mới được gọi.
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     // 1. Thu thập tất cả các key từ biến môi trường
     const keys: string[] = [];
     

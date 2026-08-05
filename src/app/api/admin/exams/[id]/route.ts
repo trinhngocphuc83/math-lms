@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { requireStaff } from "@/utils/auth/guard";
 
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,6 +9,9 @@ const supabaseAdmin = createClient(
 
 export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const { id } = await params;
     
     const { data, error } = await supabaseAdmin
@@ -25,6 +29,9 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
 export async function PUT(req: Request, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const { id } = await params;
     const body = await req.json();
     

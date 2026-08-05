@@ -400,14 +400,14 @@ export default function UsersTable({ initialUsers, courses }: { initialUsers: Us
                   </select>
                 </div>
                 <div className="sm:col-span-2 border-t pt-2 mt-2">
-                  <h3 className="font-bold text-sm text-gray-600 mb-2">Thông tin Phụ huynh (Tự động tạo tài khoản PH)</h3>
+                  <h3 className="font-bold text-sm text-gray-600 mb-2">Thông tin Phụ huynh (để liên hệ)</h3>
                 </div>
                 <div>
                   <label className="block text-xs font-semibold mb-1">Họ tên PH</label>
                   <input value={newUser.parent_name || ''} onChange={e => setNewUser({...newUser, parent_name: e.target.value})} className="w-full border p-2 rounded text-sm"/>
                 </div>
                 <div>
-                  <label className="block text-xs font-semibold mb-1">SĐT PH (Dùng làm Tài khoản PH)</label>
+                  <label className="block text-xs font-semibold mb-1">SĐT PH</label>
                   <input value={newUser.parent_phone || ''} onChange={e => setNewUser({...newUser, parent_phone: e.target.value})} className="w-full border p-2 rounded text-sm"/>
                 </div>
               </div>

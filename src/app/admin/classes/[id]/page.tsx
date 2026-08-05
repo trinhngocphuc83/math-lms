@@ -604,9 +604,8 @@ export default function ClassDetailsPage() {
                   <div className="text-center p-6 bg-green-50 rounded-2xl border border-green-100">
                     <div className="text-green-600 font-bold text-lg mb-2">Hoàn tất quá trình nhập liệu!</div>
                     <div className="text-sm text-gray-700">
-                      Thành công: <b>{importResults.success}</b> | 
-                      Thất bại: <b className="text-red-500">{importResults.failed}</b> |
-                      Tạo tài khoản PH: <b>{importResults.parentCreated}</b>
+                      Thành công: <b>{importResults.success}</b> |
+                      Thất bại: <b className="text-red-500">{importResults.failed}</b>
                     </div>
                   </div>
 

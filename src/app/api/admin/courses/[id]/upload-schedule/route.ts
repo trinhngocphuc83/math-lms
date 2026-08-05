@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireStaff } from '@/utils/auth/guard';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -7,7 +8,10 @@ const BUCKET_NAME = 'system-assets';
 
 export async function POST(req: Request, context: any) {
   try {
-    // Trong Next.js 15+, params có thể là Promise. 
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
+    // Trong Next.js 15+, params có thể là Promise.
     // Để an toàn 100%, ta cắt trực tiếp từ đường dẫn URL.
     const url = new URL(req.url);
     const pathSegments = url.pathname.split('/');

@@ -140,7 +140,7 @@ export default function RegisterForm({ courses }: { courses: Course[] }) {
           <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
           <div>
             <p className="font-bold">{success}</p>
-            <p className="text-green-600 text-xs mt-1">Tài khoản phụ huynh đã được tạo tự động theo SĐT phụ huynh (mật khẩu mặc định: 123456).</p>
+            <p className="text-green-600 text-xs mt-1">Thông tin phụ huynh đã được lưu vào hồ sơ học sinh.</p>
           </div>
         </div>
       )}
@@ -278,7 +278,7 @@ export default function RegisterForm({ courses }: { courses: Course[] }) {
         <p className="font-bold">📌 Lưu ý quan trọng:</p>
         <ul className="list-disc list-inside text-xs space-y-0.5 text-amber-600">
           <li>Sau khi đăng ký, tài khoản cần được <strong>Giáo viên kích hoạt</strong> mới sử dụng được.</li>
-          <li>Tài khoản <strong>Phụ huynh</strong> sẽ được tạo tự động theo SĐT PH (mật khẩu mặc định: <strong>123456</strong>).</li>
+          <li>Thông tin <strong>Phụ huynh</strong> dùng để Giáo viên liên hệ, không tạo tài khoản đăng nhập riêng.</li>
           <li>Tên tài khoản không được trùng với tài khoản đã tồn tại trong hệ thống.</li>
         </ul>
       </div>

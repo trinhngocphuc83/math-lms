@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from '@supabase/supabase-js';
+import { assertStaff } from '@/utils/auth/guard';
 
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,6 +9,7 @@ const supabaseAdmin = createClient(
 );
 
 export async function fetchExamResultsAdmin() {
+  await assertStaff();
   // 1. Fetch classes
   const { data: classes } = await supabaseAdmin
     .from('classes')

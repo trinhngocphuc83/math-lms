@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient as createAdminClient } from '@supabase/supabase-js';
+import { requireStaff } from '@/utils/auth/guard';
 
 const supabaseAdmin = createAdminClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,6 +9,9 @@ const supabaseAdmin = createAdminClient(
 
 export async function POST(req: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const body = await req.json();
     const { exam_result_id, student_id, lesson_id, questions_data } = body;
 

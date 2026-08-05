@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from '@supabase/supabase-js';
+import { assertStaff } from '@/utils/auth/guard';
 
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,6 +9,7 @@ const supabaseAdmin = createClient(
 );
 
 export async function getSessions(classId: string) {
+  await assertStaff();
   const { data, error } = await supabaseAdmin
     .from('sessions')
     .select('*')
@@ -20,6 +22,7 @@ export async function getSessions(classId: string) {
 }
 
 export async function createSession(classId: string, title: string, sessionDate: string) {
+  await assertStaff();
   const { data, error } = await supabaseAdmin
     .from('sessions')
     .insert({ class_id: classId, title, session_date: sessionDate })
@@ -31,6 +34,7 @@ export async function createSession(classId: string, title: string, sessionDate:
 }
 
 export async function deleteSession(sessionId: string) {
+  await assertStaff();
   const { error } = await supabaseAdmin
     .from('sessions')
     .delete()
@@ -41,6 +45,7 @@ export async function deleteSession(sessionId: string) {
 }
 
 export async function getAttendance(sessionId: string) {
+  await assertStaff();
   const { data, error } = await supabaseAdmin
     .from('attendance')
     .select('*')
@@ -51,6 +56,7 @@ export async function getAttendance(sessionId: string) {
 }
 
 export async function saveBulkAttendance(sessionId: string, updates: any[]) {
+  await assertStaff();
   // updates is an array of { student_id, status, note }
   // We can upsert
   const payload = updates.map(u => ({

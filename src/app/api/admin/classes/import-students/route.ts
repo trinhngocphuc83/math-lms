@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireStaff } from '@/utils/auth/guard';
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const formData = await request.formData();
     const file = formData.get('file') as File;
     const classId = formData.get('classId') as string;
@@ -30,11 +34,8 @@ export async function POST(request: Request) {
     const results = {
       success: 0,
       failed: 0,
-      parentCreated: 0,
       errors: [] as string[]
     };
-
-    const createdParentPhones = new Set<string>();
 
     for (const [index, row] of data.entries()) {
       const studentName = row['Họ tên'] || row['Họ và tên'] || row['Họ tên HS'] || row['Ho ten HS'];
@@ -139,42 +140,8 @@ export async function POST(request: Request) {
 
       results.success++;
 
-      // Create Parent if doesn't exist
-      if (parentPhone) {
-        const phoneClean = parentPhone.toString().trim().replace(/\s/g, '');
-        if (phoneClean && !createdParentPhones.has(phoneClean)) {
-          const { data: existParent } = await supabaseAdmin.from('profiles').select('id').eq('username', phoneClean);
-          
-          if (!existParent || existParent.length === 0) {
-            const parentEmail = `ph_${phoneClean}@edu.local`;
-            const { data: parentAuth, error: parentAuthErr } = await supabaseAdmin.auth.admin.createUser({
-              email: parentEmail,
-              password: '123456',
-              email_confirm: true,
-              user_metadata: {
-                role: 'parent',
-                full_name: parentName || `PH của ${studentName}`,
-                username: phoneClean,
-              }
-            });
-
-            if (!parentAuthErr && parentAuth?.user) {
-              await supabaseAdmin.from('profiles').insert({
-                id: parentAuth.user.id,
-                role: 'parent',
-                full_name: parentName || `PH của ${studentName}`,
-                parent_phone: phoneClean,
-                username: phoneClean,
-                is_active: true
-              });
-              createdParentPhones.add(phoneClean);
-              results.parentCreated++;
-            } else if (parentAuthErr?.message?.includes('already registered')) {
-              createdParentPhones.add(phoneClean);
-            }
-          }
-        }
-      }
+      // Không tạo tài khoản đăng nhập cho Phụ huynh.
+      // Tên và SĐT phụ huynh đã được lưu trong hồ sơ học sinh ở bước trên.
     }
 
     return NextResponse.json({

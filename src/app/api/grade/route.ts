@@ -2,9 +2,13 @@ import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getAllAIKeys } from '@/utils/aiKeys';
 import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
+import { requireUser } from '@/utils/auth/guard';
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireUser();
+    if (!guard.ok) return guard.response;
+
     const { image, images, textAnswer, question, sampleAnswer, maxScore = 10 } = await request.json();
 
     if (!image && (!images || images.length === 0) && (!textAnswer || !textAnswer.trim())) {

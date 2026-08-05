@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { requireStaff } from "@/utils/auth/guard";
 
 function getRotatedApiKeys() {
   const keys: string[] = [];
@@ -23,6 +24,9 @@ export const maxDuration = 60; // 60s trên Vercel
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const body = await request.json();
     const { baseQuestion, targetCount, targetDifficulty, targetFormat, contextMode } = body;
 

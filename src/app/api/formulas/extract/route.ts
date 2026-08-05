@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { requireStaff } from '@/utils/auth/guard';
 
 // Lấy tất cả API key từ biến môi trường
 function getAllApiKeys(): string[] {
@@ -19,6 +20,9 @@ let globalKeyIndex = 0;
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const { images, categories, apiKeyIndex } = await request.json();
 
     if (!images || !Array.isArray(images) || images.length === 0) {

@@ -1,14 +1,16 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireStaff } from '@/utils/auth/guard';
 
 export async function DELETE(request: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     // Khởi tạo Supabase Admin Client với quyền tối cao (Bypass RLS)
     const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
     const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
     const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
-    
-    // Giả sử có role validation ở đây, nhưng tạm thời pass
 
     const { id } = await request.json();
     if (!id) return NextResponse.json({ error: 'Missing ID' }, { status: 400 });

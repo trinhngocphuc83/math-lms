@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+import { requireStaff } from "@/utils/auth/guard";
 
 // Sử dụng Service Role Key để bypass RLS, giải quyết triệt để lỗi INSERT policy do thiếu quyền read profiles ở Browser.
 const supabaseAdmin = createClient(
@@ -9,6 +10,9 @@ const supabaseAdmin = createClient(
 
 export async function POST(req: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const body = await req.json();
     
     const { data, error } = await supabaseAdmin
@@ -31,6 +35,9 @@ export async function POST(req: Request) {
 
 export async function GET() {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const { data, error } = await supabaseAdmin
       .from('online_exams')
       .select(`
@@ -48,6 +55,9 @@ export async function GET() {
 
 export async function DELETE(req: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const url = new URL(req.url);
     const id = url.searchParams.get("id");
     if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });

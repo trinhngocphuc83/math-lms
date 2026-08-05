@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireAdmin } from '@/utils/auth/guard';
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireAdmin();
+    if (!guard.ok) return guard.response;
+
     const body = await request.json();
     const { 
       full_name, 
@@ -93,37 +97,8 @@ export async function POST(request: Request) {
         });
     }
 
-    // 5. Tự động tạo tài khoản Phụ huynh nếu có SĐT
-    if (parent_phone) {
-        const phoneClean = parent_phone.toString().trim().replace(/\s/g, '');
-        if (phoneClean) {
-            const parentEmail = `ph_${phoneClean}@edu.local`;
-            const parentPw = '123456';
-
-            const { data: parentAuth, error: parentAuthErr } = await supabaseAdmin.auth.admin.createUser({
-                email: parentEmail,
-                password: parentPw,
-                email_confirm: true,
-                user_metadata: {
-                    role: 'parent',
-                    full_name: parent_name || `PH của ${full_name}`,
-                    username: phoneClean,
-                }
-            });
-
-            if (!parentAuthErr && parentAuth?.user) {
-                const { error: parentProfileErr } = await supabaseAdmin.from('profiles').insert({
-                    id: parentAuth.user.id,
-                    role: 'parent',
-                    full_name: parent_name || `PH của ${full_name}`,
-                    parent_phone: phoneClean,
-                    username: phoneClean,
-                    is_active: true
-                });
-                if (parentProfileErr) console.error('Profile Error (Parent):', parentProfileErr);
-            }
-        }
-    }
+    // Không tạo tài khoản đăng nhập cho Phụ huynh.
+    // Tên và SĐT phụ huynh đã được lưu trong hồ sơ học sinh ở bước trên.
 
     return NextResponse.json({ success: true, user_id: userId });
 

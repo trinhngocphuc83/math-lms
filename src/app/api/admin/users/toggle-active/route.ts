@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import { requireAdmin } from '@/utils/auth/guard';
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireAdmin();
+    if (!guard.ok) return guard.response;
+
     const { userId, isActive } = await request.json();
 
     if (!userId) {
@@ -36,11 +40,11 @@ export async function POST(request: Request) {
       oneYearLater.setFullYear(oneYearLater.getFullYear() + 1);
       expirationDate = oneYearLater.toISOString();
 
-      // Check if we need to create a parent account
+      // Không tự tạo tài khoản phụ huynh nữa (mật khẩu mặc định gây mất an toàn).
+      // Chỉ liên kết nếu tài khoản phụ huynh đã tồn tại sẵn từ trước.
       if (student.parent_phone && !parentId) {
         const parentPhoneStr = student.parent_phone.trim().replace(/\s+/g, '');
-        
-        // 1. Check if a parent profile with this phone already exists (as username)
+
         const { data: existingParent } = await supabaseAdmin
           .from('profiles')
           .select('id')
@@ -50,36 +54,6 @@ export async function POST(request: Request) {
 
         if (existingParent) {
           parentId = existingParent.id;
-        } else {
-          // 2. Create new parent auth user
-          const parentDummyEmail = `${parentPhoneStr}@edu.local`;
-          const { data: authData, error: authError } = await supabaseAdmin.auth.admin.createUser({
-            email: parentDummyEmail,
-            password: '123456', // Mật khẩu mặc định
-            email_confirm: true,
-            user_metadata: {
-              role: 'parent',
-              full_name: student.parent_name || 'Phụ huynh của ' + student.full_name,
-              username: parentPhoneStr,
-            }
-          });
-
-          if (authError && !authError.message.includes('already registered')) {
-            console.error('Lỗi tạo tài khoản phụ huynh:', authError);
-          } else if (authData?.user) {
-            parentId = authData.user.id;
-            // 3. Create parent profile
-            await supabaseAdmin.from('profiles').insert({
-              id: parentId,
-              role: 'parent',
-              full_name: student.parent_name || 'Phụ huynh của ' + student.full_name,
-              username: parentPhoneStr,
-              student_phone: parentPhoneStr,
-              is_active: true, // Parent account is active immediately
-              activated_at: activatedAt,
-              expiration_date: expirationDate
-            });
-          }
         }
       }
     } else {

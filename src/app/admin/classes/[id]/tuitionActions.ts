@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from '@supabase/supabase-js';
+import { assertStaff } from '@/utils/auth/guard';
 
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,6 +9,7 @@ const supabaseAdmin = createClient(
 );
 
 export async function getTuitionFees(classId: string, month: number, year: number) {
+  await assertStaff();
   const { data, error } = await supabaseAdmin
     .from('tuition_fees')
     .select('*')
@@ -26,6 +28,7 @@ export async function updateTuitionFee(
   year: number, 
   updates: any
 ) {
+  await assertStaff();
   // First, check if record exists
   const { data: existing } = await supabaseAdmin
     .from('tuition_fees')
@@ -61,6 +64,7 @@ export async function updateTuitionFee(
 
 // Chốt sổ tháng: Lấy phần còn nợ của tháng này chuyển sang nợ cũ của tháng sau
 export async function rolloverDebt(classId: string, fromMonth: number, fromYear: number, toMonth: number, toYear: number) {
+  await assertStaff();
   // 1. Get class tuition fee
   const { data: cls } = await supabaseAdmin.from('classes').select('tuition_fee').eq('id', classId).single();
   const defaultFee = cls?.tuition_fee || 0;

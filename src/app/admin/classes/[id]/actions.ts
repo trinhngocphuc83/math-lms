@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from '@supabase/supabase-js';
+import { assertStaff } from '@/utils/auth/guard';
 
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,6 +9,7 @@ const supabaseAdmin = createClient(
 );
 
 export async function getEnrollments(classId: string) {
+  await assertStaff();
   const { data, error } = await supabaseAdmin
     .from('enrollments')
     .select(`
@@ -25,6 +27,7 @@ export async function getEnrollments(classId: string) {
 }
 
 export async function getAllGlobalEnrollments() {
+  await assertStaff();
   const { data, error } = await supabaseAdmin
     .from('enrollments')
     .select(`
@@ -40,6 +43,7 @@ export async function getAllGlobalEnrollments() {
 }
 
 export async function addEnrollment(classId: string, studentId: string) {
+  await assertStaff();
   const { data: clsData } = await supabaseAdmin.from('classes').select('course_id').eq('id', classId).single();
   
   const { error } = await supabaseAdmin.from('enrollments').insert({
@@ -72,6 +76,7 @@ export async function addEnrollment(classId: string, studentId: string) {
 }
 
 export async function removeEnrollment(enrollmentId: string) {
+  await assertStaff();
   const { error } = await supabaseAdmin.from('enrollments').delete().eq('id', enrollmentId);
   
   if (error) {
@@ -81,6 +86,7 @@ export async function removeEnrollment(enrollmentId: string) {
 }
 
 export async function getEnrollmentCounts() {
+  await assertStaff();
   const { data, error } = await supabaseAdmin.from('enrollments').select('class_id');
   if (error) {
     console.error("Lỗi lấy sĩ số:", error);
@@ -90,6 +96,7 @@ export async function getEnrollmentCounts() {
 }
 
 export async function updateStudentProfile(profileId: string, updates: any) {
+  await assertStaff();
   const { error } = await supabaseAdmin.from('profiles').update(updates).eq('id', profileId);
   if (error) {
     return { success: false, error: error.message };
@@ -98,6 +105,7 @@ export async function updateStudentProfile(profileId: string, updates: any) {
 }
 
 export async function searchStudents(searchTerm: string) {
+  await assertStaff();
   const { data, error } = await supabaseAdmin
     .from('profiles')
     .select('id, full_name, username, student_phone')
@@ -113,6 +121,7 @@ export async function searchStudents(searchTerm: string) {
 }
 
 export async function createAndEnrollNewStudent(classId: string, studentData: any) {
+  await assertStaff();
   try {
     const { full_name, username, password, student_phone, parent_name, parent_phone, school, class_name } = studentData;
 
@@ -175,37 +184,8 @@ export async function createAndEnrollNewStudent(classId: string, studentData: an
       });
     }
 
-    // 6. Tạo tài khoản Phụ huynh nếu có SĐT
-    if (parent_phone) {
-      const phoneClean = parent_phone.toString().trim().replace(/\s/g, '');
-      if (phoneClean) {
-        const { data: existParent } = await supabaseAdmin.from('profiles').select('id').eq('username', phoneClean);
-        if (!existParent || existParent.length === 0) {
-          const parentEmail = `ph_${phoneClean}@edu.local`;
-          const { data: parentAuth, error: parentAuthErr } = await supabaseAdmin.auth.admin.createUser({
-            email: parentEmail,
-            password: '123456',
-            email_confirm: true,
-            user_metadata: {
-              role: 'parent',
-              full_name: parent_name || `PH của ${full_name}`,
-              username: phoneClean,
-            }
-          });
-
-          if (!parentAuthErr && parentAuth?.user) {
-            await supabaseAdmin.from('profiles').insert({
-              id: parentAuth.user.id,
-              role: 'parent',
-              full_name: parent_name || `PH của ${full_name}`,
-              parent_phone: phoneClean,
-              username: phoneClean,
-              is_active: true
-            });
-          }
-        }
-      }
-    }
+    // Không tạo tài khoản đăng nhập cho Phụ huynh.
+    // Tên và SĐT phụ huynh đã được lưu trong hồ sơ học sinh ở bước trên.
 
     return { success: true };
   } catch (err: any) {

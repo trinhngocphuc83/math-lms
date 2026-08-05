@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { createClient as createAdminClient } from '@supabase/supabase-js';
+import { requireUser } from '@/utils/auth/guard';
 
 const supabaseAdmin = createAdminClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,6 +9,9 @@ const supabaseAdmin = createAdminClient(
 
 export async function POST(req: Request) {
   try {
+    const guard = await requireUser();
+    if (!guard.ok) return guard.response;
+
     const body = await req.json();
     const { remedialId, score, globalImages, gradingDetails } = body;
 
@@ -24,6 +28,12 @@ export async function POST(req: Request) {
 
     if (remedialErr || !remedial) {
       return NextResponse.json({ success: false, error: 'Không tìm thấy bài luyện tập.' }, { status: 404 });
+    }
+
+    // Học sinh chỉ được nộp bài gỡ điểm của chính mình
+    const isStaff = guard.user.role === 'admin' || guard.user.role === 'teacher';
+    if (!isStaff && remedial.student_id !== guard.user.id) {
+      return NextResponse.json({ success: false, error: 'Bạn không có quyền nộp bài luyện tập này.' }, { status: 403 });
     }
 
     if (remedial.status === 'completed') {

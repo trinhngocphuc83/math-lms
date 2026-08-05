@@ -1,8 +1,12 @@
 import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { requireStaff } from '@/utils/auth/guard';
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const { categoryName, parentCategoryName, apiKeyIndex } = await request.json();
 
     if (!categoryName) {

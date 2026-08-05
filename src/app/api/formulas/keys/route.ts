@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server';
+import { requireStaff } from '@/utils/auth/guard';
 
 // API trả về số lượng key Gemini có sẵn (không trả về giá trị key để bảo mật)
 export async function GET() {
+  const guard = await requireStaff();
+  if (!guard.ok) return guard.response;
+
   const keys: string[] = [];
   if (process.env.GEMINI_API_KEY) keys.push('GEMINI_API_KEY');
   for (let i = 1; i <= 20; i++) {

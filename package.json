@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "node node_modules/next/dist/bin/next dev",
     "backup": "node scripts/backup.js",
+    "smoke": "node scripts/smoke-test-auth.js",
     "dev:safe": "npm run backup && node node_modules/next/dist/bin/next dev",
     "build": "node node_modules/next/dist/bin/next build",
     "start": "node node_modules/next/dist/bin/next start",

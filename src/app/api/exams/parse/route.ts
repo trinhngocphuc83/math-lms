@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import { requireStaff } from "@/utils/auth/guard";
 
 // Hàm lấy tất cả API keys từ environment và trộn ngẫu nhiên
 function getRotatedApiKeys() {
@@ -25,6 +26,9 @@ export const maxDuration = 60; // Cho phép API chạy tối đa 60s trên Verce
 
 export async function POST(request: Request) {
   try {
+    const guard = await requireStaff();
+    if (!guard.ok) return guard.response;
+
     const body = await request.json();
     const { prompt, rawHtml, fileData } = body;
 

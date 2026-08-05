@@ -1,6 +1,7 @@
 "use server";
 
 import { createClient } from '@supabase/supabase-js';
+import { assertStaff } from '@/utils/auth/guard';
 
 const supabaseAdmin = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -8,6 +9,7 @@ const supabaseAdmin = createClient(
 );
 
 export async function getFinanceStats(month: number, year: number) {
+  await assertStaff();
   // Get all tuition fees for the month
   const { data: fees, error: feeErr } = await supabaseAdmin
     .from('tuition_fees')
@@ -41,6 +43,7 @@ export async function getFinanceStats(month: number, year: number) {
 }
 
 export async function addExpense(title: string, amount: number, date: string, category: string, month: number, year: number) {
+  await assertStaff();
   const { data, error } = await supabaseAdmin
     .from('expenses')
     .insert({
@@ -57,6 +60,7 @@ export async function addExpense(title: string, amount: number, date: string, ca
 }
 
 export async function deleteExpense(expenseId: string) {
+  await assertStaff();
   const { error } = await supabaseAdmin.from('expenses').delete().eq('id', expenseId);
   if (error) return { success: false, error: error.message };
   return { success: true };
