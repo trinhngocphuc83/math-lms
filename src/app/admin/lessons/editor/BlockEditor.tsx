@@ -9,6 +9,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import { fixLatexText, applyLatexFixToActiveElement } from "@/utils/latexFixer";
+import { bankTypeToBlockType } from "@/utils/questionTypes";
 import 'katex/dist/katex.min.css';
 import QuestionBankModal from "@/components/admin/QuestionBankModal";
 import RichTextarea from "@/components/admin/RichTextarea";
@@ -90,10 +91,9 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const handleInsertFromBank = (questions: any[]) => {
       const newBlocks = [...blocks];
       const itemsToInsert: Block[] = questions.map(q => {
-         let blockType = 'multiple_choice';
-         if (q.question_type === 'TL') blockType = 'essay';
-         else if (q.question_type === 'TLN') blockType = 'short_answer';
-         else if (q.question_type === 'DS') blockType = 'true_false_cluster';
+         // Dùng bảng quy đổi chung để không sai dạng khi rút câu hỏi về bài giảng.
+         // Trước đây chỉ nhận 3 mã TL/TLN/DS, còn lại rơi hết vào trắc nghiệm.
+         const blockType = bankTypeToBlockType(q.question_type);
 
          let questionContent = q.content || "";
          if (q.image_url) {

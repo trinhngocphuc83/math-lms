@@ -13,6 +13,14 @@ import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import PreviewQuestionModal from "@/components/admin/PreviewQuestionModal";
 import { exportQuestionsToWord } from "@/utils/exportDocx";
 import CategoryManagerModal from "@/components/admin/CategoryManagerModal";
+import {
+  bankTypeLabel,
+  difficultyLabel,
+  toBankType,
+  toDifficultyCode,
+  bankTypeSynonyms,
+  difficultySynonyms,
+} from "@/utils/questionTypes";
 
 export default function QuestionsPage() {
   const supabase = createClient();
@@ -110,8 +118,16 @@ export default function QuestionsPage() {
       if (filters.topic) query = query.eq('topic', filters.topic);
       if (filters.lesson) query = query.eq('lesson', filters.lesson);
       if (filters.math_form) query = query.eq('math_form', filters.math_form);
-      if (filters.difficulty) query = query.eq('difficulty', filters.difficulty);
-      if (filters.question_type) query = query.eq('question_type', filters.question_type);
+      // Lọc theo TẤT CẢ cách viết từng dùng, để tìm được cả câu hỏi lưu theo quy ước cũ
+      // (ví dụ "multiple_choice", "TN" đều thuộc nhóm Trắc nghiệm).
+      if (filters.difficulty) {
+        const code = toDifficultyCode(filters.difficulty);
+        query = code ? query.in('difficulty', difficultySynonyms(code)) : query.eq('difficulty', filters.difficulty);
+      }
+      if (filters.question_type) {
+        const code = toBankType(filters.question_type);
+        query = code ? query.in('question_type', bankTypeSynonyms(code)) : query.eq('question_type', filters.question_type);
+      }
       
       const { data, count, error } = await query
         .order("created_at", { ascending: false })
@@ -511,10 +527,10 @@ export default function QuestionsPage() {
                     <div className="flex flex-col items-start gap-1">
                       <div className="flex gap-1">
                         <span className="px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 text-[10px] font-bold border border-indigo-100">
-                          {q.question_type}
+                          {bankTypeLabel(q.question_type)}
                         </span>
                         <span className="px-2 py-0.5 rounded-md bg-orange-50 text-orange-700 text-[10px] font-bold border border-orange-100">
-                          {DIFFICULTY_LABELS[q.difficulty] || `Mức ${q.difficulty}`}
+                          {difficultyLabel(q.difficulty)}
                         </span>
                       </div>
                       <span className="text-[11px] text-gray-500 bg-gray-50 px-2 py-0.5 rounded border border-gray-100">

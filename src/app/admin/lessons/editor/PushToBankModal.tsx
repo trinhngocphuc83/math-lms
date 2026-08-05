@@ -1,7 +1,12 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from "@/utils/supabase/client";
-import { X, UploadCloud, Loader2, Database, Info, ChevronDown, ChevronUp, Tag } from 'lucide-react';
+import { X, UploadCloud, Loader2, Database, Info, ChevronDown, ChevronUp, Tag, AlertTriangle, Copy } from 'lucide-react';
+import {
+  blockTypeToBankType,
+  toDifficultyCode,
+  normalizeQuestionForCompare,
+} from '@/utils/questionTypes';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -40,7 +45,19 @@ function ComboBox({ value, onChange, options, placeholder, width }: { value: str
                   placeholder={placeholder}
                   style={{ border: '1px solid #93c5fd', borderRadius: 6, padding: '3px 8px', fontSize: 12, width, background: '#fff' }} 
               />
-              <button title="Quay lại chọn danh sách" onClick={() => { setIsCustom(false); onChange(''); }} style={{ background: 'none', border: 'none', fontSize: 13, color: '#ef4444', cursor: 'pointer', padding: 2 }}>✕</button>
+              {/* Nút này XOÁ giá trị để quay lại danh sách chọn. Trước đây tooltip chỉ ghi
+                  "Quay lại chọn danh sách" nên dễ hiểu nhầm, trong khi nó xoá Tên bài của
+                  mọi câu hỏi cùng lúc. Nay ghi rõ và có hỏi lại. */}
+              <button
+                type="button"
+                title="Xoá nội dung đang gõ để chọn lại từ danh sách"
+                onClick={() => {
+                  if (value && !confirm(`Xoá "${value}" khỏi tất cả câu hỏi trong danh sách?`)) return;
+                  setIsCustom(false);
+                  onChange('');
+                }}
+                style={{ background: 'none', border: 'none', fontSize: 13, color: '#ef4444', cursor: 'pointer', padding: 2 }}
+              >✕</button>
           </div>
       );
   }
@@ -242,14 +259,9 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
 }
 
 /* ===== Tự gán mức độ dựa trên vị trí câu trong bài ===== */
-function autoAssignDifficulty(index: number, total: number): string {
-  // Phân bổ: 25% đầu = Nhận biết, 25% tiếp = Thông hiểu, 30% tiếp = Vận dụng, 20% cuối = Vận dụng cao
-  const ratio = index / total;
-  if (ratio < 0.25) return 'Nhận biết';
-  if (ratio < 0.50) return 'Thông hiểu';
-  if (ratio < 0.80) return 'Vận dụng';
-  return 'Vận dụng cao';
-}
+// Trước đây hàm này gán mức độ theo VỊ TRÍ trong danh sách (25% đầu = Nhận biết...),
+// nên câu khó xếp đầu bị gán "Nhận biết" còn câu dễ xếp cuối bị gán "Vận dụng cao".
+// Nay để trống và bắt giáo viên chọn (có nút gán hàng loạt ở thanh trên).
 
 /* ===== Parse quiz blocks ===== */
 function parseQuizBlocks(blocks: any[], ctx: PushToBankModalProps['courseContext']) {
@@ -300,7 +312,7 @@ function parseQuizBlocks(blocks: any[], ctx: PushToBankModalProps['courseContext
       grade, subject,
       topic: ctx.topic || "", lesson: ctx.lesson || "",
       math_form: "",
-      difficulty: autoAssignDifficulty(index, quizBlocks.length),
+      difficulty: '',
       question_type: blockType,
       type_label: typeLabels[blockType] || 'Khác',
       question_type_label: typeLabels[blockType] || blockType,
@@ -528,39 +540,121 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
 
   const expandAll = () => setCollapsed({});
 
+  /**
+   * Soát lỗi trước khi đẩy. Mỗi mục gồm nhãn và danh sách id câu bị thiếu,
+   * dùng cả cho bảng cảnh báo lẫn việc tô đỏ từng câu trong danh sách.
+   */
+  const blockingIssues = React.useMemo(() => {
+    const issues: { key: string; label: string; ids: string[] }[] = [];
+    const add = (key: string, label: string, filter: (q: any) => boolean) => {
+      const ids = questions.filter(filter).map(q => q.id);
+      if (ids.length) issues.push({ key, label, ids });
+    };
+
+    add('lesson', 'Thiếu Tên bài', q => !String(q.lesson || '').trim());
+    add('topic', 'Thiếu Chuyên đề (Chương)', q => !String(q.topic || '').trim());
+    add('grade', 'Thiếu Lớp', q => !String(q.grade || '').trim());
+    add('math_form', 'Thiếu Dạng toán', q => !String(q.math_form || '').trim());
+    add('difficulty', 'Chưa chọn Mức độ', q => !toDifficultyCode(q.difficulty));
+    add('answer', 'Chưa có đáp án đúng', q =>
+      q.question_type !== 'essay' && !String(q.correct_answer || '').trim());
+    add('options', 'Thiếu phương án trả lời', q =>
+      (q.question_type === 'multiple_choice' || q.question_type === 'true_false_cluster') &&
+      ![q.option_a, q.option_b, q.option_c, q.option_d].every(o => String(o || '').trim()));
+
+    return issues;
+  }, [questions]);
+
+  /** Tập hợp id các câu đang có vấn đề, để tô đỏ trong danh sách */
+  const problemIds = React.useMemo(
+    () => new Set(blockingIssues.flatMap(i => i.ids)),
+    [blockingIssues]
+  );
+
+  /** Các câu trùng nhau ngay trong đợt đẩy này */
+  const duplicateInBatchIds = React.useMemo(() => {
+    const seen = new Map<string, string>();
+    const dups = new Set<string>();
+    for (const q of questions) {
+      const key = normalizeQuestionForCompare(q.content);
+      if (!key) continue;
+      if (seen.has(key)) dups.add(q.id);
+      else seen.set(key, q.id);
+    }
+    return dups;
+  }, [questions]);
+
   const handlePushAll = async () => {
     if (questions.length === 0) return alert("Không có câu hỏi nào.");
+
+    // Chặn lưu khi còn thiếu thông tin bắt buộc - trước đây ghi thẳng vào CSDL
+    // nên sinh ra hàng loạt câu mất Tên bài, mất Dạng toán, chưa chọn đáp án.
+    if (blockingIssues.length > 0) {
+      alert(
+        '⚠️ Chưa thể đẩy vào Ngân hàng vì còn thiếu thông tin:\n\n' +
+        blockingIssues.map(i => `• ${i.label}: ${i.ids.length} câu`).join('\n') +
+        '\n\nCác câu thiếu đã được tô đỏ trong danh sách bên dưới.'
+      );
+      return;
+    }
+
     setIsPushing(true);
     try {
       const inserts = questions.map(q => ({
         question_id: `CH_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
         grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson,
-        math_form: q.math_form, question_type: q.question_type, difficulty: q.difficulty,
+        math_form: q.math_form,
+        // Quy đổi sang mã chuẩn của ngân hàng (NLC/DS/TLN/TL và mức độ 1-4).
+        // Trước đây ghi thẳng mã tiếng Anh nên câu hỏi lọt khỏi mọi bộ lọc.
+        question_type: blockTypeToBankType(q.question_type),
+        difficulty: toDifficultyCode(q.difficulty) ?? '',
         content: q.content, option_a: q.option_a, option_b: q.option_b,
         option_c: q.option_c, option_d: q.option_d, correct_answer: q.correct_answer,
         explanation: q.explanation, image_url: q.image_url, usage_count: 0
       }));
 
-      // Kiểm tra trùng lặp dựa trên nội dung câu hỏi
-      const contents = inserts.map(q => q.content);
-      const { data: existingQs } = await supabase
+      // Bỏ câu trùng nhau NGAY TRONG đợt đẩy này (giữ câu đầu tiên)
+      const seen = new Set<string>();
+      const deduped = inserts.filter(q => {
+        const key = normalizeQuestionForCompare(q.content);
+        if (!key || seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+      const dupInBatch = inserts.length - deduped.length;
+
+      // Đối chiếu với toàn bộ ngân hàng theo nội dung đã chuẩn hoá
+      // (trước đây chỉ so khớp tuyệt đối nên lệch một dấu cách là lọt).
+      const { data: bankRows } = await supabase
         .from('questions')
         .select('content')
-        .in('content', contents);
+        .eq('grade', deduped[0]?.grade || '')
+        .eq('subject', deduped[0]?.subject || '');
 
-      const existingContents = new Set((existingQs || []).map(q => q.content));
-      const newInserts = inserts.filter(q => !existingContents.has(q.content));
-      const duplicateCount = inserts.length - newInserts.length;
+      const bankKeys = new Set(
+        (bankRows || []).map(r => normalizeQuestionForCompare(r.content)).filter(Boolean)
+      );
+      const newInserts = deduped.filter(q => !bankKeys.has(normalizeQuestionForCompare(q.content)));
+      const dupInBank = deduped.length - newInserts.length;
+      const duplicateCount = dupInBatch + dupInBank;
 
       if (newInserts.length === 0) {
-         alert(`⚠️ Bỏ qua: ${duplicateCount} câu hỏi này đã có sẵn trong Ngân hàng rồi!`);
+         alert(
+           `⚠️ Không có câu nào mới để đẩy.\n\n` +
+           `• Trùng trong chính đợt này: ${dupInBatch} câu\n` +
+           `• Đã có sẵn trong Ngân hàng: ${dupInBank} câu`
+         );
          setIsPushing(false);
          return;
       }
 
-      const newCats = newInserts.filter(q => q.math_form).map(q => ({
-        grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson, math_form: q.math_form
-      }));
+      // Chỉ tạo danh mục khi có ĐỦ 5 thành phần - trước đây thiếu tên bài vẫn tạo,
+      // sinh ra các danh mục rỗng nằm rác trong hệ thống.
+      const newCats = newInserts
+        .filter(q => q.grade && q.subject && q.topic && q.lesson && q.math_form)
+        .map(q => ({
+          grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson, math_form: q.math_form
+        }));
       const uniqueNewCats = Array.from(new Set(newCats.map(c => JSON.stringify(c)))).map(s => JSON.parse(s));
       
       if (uniqueNewCats.length > 0) {
@@ -577,7 +671,11 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
       const { error } = await supabase.from('questions').insert(newInserts);
       if (error) throw error;
       
-      alert(`✅ Đã đẩy thành công ${newInserts.length} câu mới vào Ngân hàng!${duplicateCount > 0 ? ` (Bỏ qua ${duplicateCount} câu trùng lặp)` : ''}`);
+      alert(
+        `✅ Đã đẩy ${newInserts.length} câu mới vào Ngân hàng!` +
+        (dupInBatch > 0 ? `\n• Bỏ qua ${dupInBatch} câu trùng nhau trong đợt này` : '') +
+        (dupInBank > 0 ? `\n• Bỏ qua ${dupInBank} câu đã có sẵn trong Ngân hàng` : '')
+      );
       onClose();
     } catch (e: any) {
       console.error(e);
@@ -747,8 +845,11 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                 const badgeText: Record<string, string> = { 'Trắc nghiệm': '#1d4ed8', 'Đúng/Sai': '#92400e', 'Đúng/Sai 4 ý': '#92400e', 'Trả lời ngắn': '#065f46', 'Tự luận': '#5b21b6' };
                 const diffColors: Record<string, string> = { 'Nhận biết': '#3b82f6', 'Thông hiểu': '#10b981', 'Vận dụng': '#f59e0b', 'Vận dụng cao': '#ef4444' };
 
+                const hasProblem = problemIds.has(q.id);
+                const isDuplicate = duplicateInBatchIds.has(q.id);
+
                 return (
-                  <div key={q.id || `fb-${idx}`} style={{ background: '#fff', borderRadius: 10, border: '1px solid #e2e8f0', marginBottom: 10, boxShadow: '0 1px 2px rgba(0,0,0,0.04)' }}>
+                  <div key={q.id || `fb-${idx}`} style={{ background: '#fff', borderRadius: 10, border: `1px solid ${hasProblem ? '#fca5a5' : isDuplicate ? '#fde68a' : '#e2e8f0'}`, marginBottom: 10, boxShadow: hasProblem ? '0 0 0 2px rgba(248,113,113,0.15)' : '0 1px 2px rgba(0,0,0,0.04)' }}>
                     {/* CARD HEADER */}
                     <div style={{ padding: '8px 12px', background: '#fafafa', borderBottom: isCollapsed ? 'none' : '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: 6, minHeight: 38 }}>
                       <button type="button" onClick={() => toggleCollapse(q.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 2, display: 'flex', flexShrink: 0 }}>
@@ -758,6 +859,19 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                       <span style={{ fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 4, background: badgeBg[q.question_type_label] || '#f1f5f9', color: badgeText[q.question_type_label] || '#475569', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
                         {q.question_type_label}
                       </span>
+
+                      {isDuplicate && (
+                        <span title="Trùng nội dung với một câu khác trong đợt này, sẽ được bỏ qua khi đẩy"
+                          style={{ fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 4, background: '#fef3c7', color: '#92400e', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 3 }}>
+                          <Copy style={{ width: 10, height: 10 }} /> TRÙNG
+                        </span>
+                      )}
+                      {hasProblem && (
+                        <span title="Câu này còn thiếu thông tin bắt buộc"
+                          style={{ fontSize: 10, fontWeight: 700, padding: '1px 6px', borderRadius: 4, background: '#fee2e2', color: '#b91c1c', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 3 }}>
+                          <AlertTriangle style={{ width: 10, height: 10 }} /> THIẾU
+                        </span>
+                      )}
 
                       {/* Preview khi thu gọn */}
                       {isCollapsed && (
@@ -770,7 +884,8 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                       <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }} onClick={e => e.stopPropagation()}>
                         {/* Mức độ */}
                         <select value={q.difficulty} onChange={e => handleUpdateField(q.id, 'difficulty', e.target.value)}
-                          style={{ fontSize: 11, border: '1px solid #e2e8f0', borderRadius: 5, padding: '2px 4px', color: diffColors[q.difficulty] || '#64748b', fontWeight: 700 }}>
+                          style={{ fontSize: 11, border: `1px solid ${q.difficulty ? '#e2e8f0' : '#fca5a5'}`, borderRadius: 5, padding: '2px 4px', color: diffColors[q.difficulty] || '#dc2626', fontWeight: 700 }}>
+                          <option value="">-- Chọn mức độ --</option>
                           <option value="Nhận biết">Nhận biết</option>
                           <option value="Thông hiểu">Thông hiểu</option>
                           <option value="Vận dụng">Vận dụng</option>
@@ -872,15 +987,43 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
         </div>
 
         {/* ===== FOOTER ===== */}
-        <div style={{ padding: '12px 20px', background: '#fff', borderTop: '1px solid #e2e8f0', display: 'flex', justifyContent: 'flex-end', gap: 10, alignItems: 'center' }}>
-          <button onClick={onClose} type="button" style={{ padding: '8px 22px', background: '#f1f5f9', border: '1px solid #cbd5e1', borderRadius: 10, fontWeight: 700, fontSize: 14, color: '#475569', cursor: 'pointer' }}>
-            Đóng
-          </button>
-          <button onClick={handlePushAll} type="button" disabled={isPushing || questions.length === 0}
-            style={{ padding: '8px 22px', background: '#a21caf', border: 'none', borderRadius: 10, fontWeight: 700, fontSize: 14, color: '#fff', cursor: isPushing ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', gap: 8, opacity: questions.length === 0 ? 0.5 : 1, boxShadow: '0 2px 8px rgba(162,28,175,0.25)' }}>
-            {isPushing ? <Loader2 style={{ width: 16, height: 16 }} /> : <UploadCloud style={{ width: 16, height: 16 }} />}
-            Đồng ý đưa {questions.length} câu vào Ngân hàng
-          </button>
+        <div style={{ padding: '12px 20px', background: '#fff', borderTop: '1px solid #e2e8f0' }}>
+
+          {/* Bảng soát lỗi trước khi lưu */}
+          {(blockingIssues.length > 0 || duplicateInBatchIds.size > 0) && (
+            <div style={{ marginBottom: 10, display: 'flex', flexDirection: 'column', gap: 6 }}>
+              {blockingIssues.length > 0 && (
+                <div style={{ background: '#fef2f2', border: '1px solid #fecaca', borderRadius: 8, padding: '8px 12px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6, fontWeight: 700, fontSize: 12.5, color: '#b91c1c', marginBottom: 4 }}>
+                    <AlertTriangle style={{ width: 14, height: 14 }} />
+                    Chưa thể đẩy vào Ngân hàng — còn thiếu thông tin
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 14px', fontSize: 12, color: '#7f1d1d' }}>
+                    {blockingIssues.map(i => (
+                      <span key={i.key}>• {i.label}: <b>{i.ids.length}</b> câu</span>
+                    ))}
+                  </div>
+                </div>
+              )}
+              {duplicateInBatchIds.size > 0 && (
+                <div style={{ background: '#fffbeb', border: '1px solid #fde68a', borderRadius: 8, padding: '8px 12px', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, color: '#92400e' }}>
+                  <Copy style={{ width: 14, height: 14, flexShrink: 0 }} />
+                  Có <b>{duplicateInBatchIds.size}</b> câu trùng nội dung với câu khác ngay trong đợt này — sẽ tự động bỏ qua, chỉ giữ câu đầu tiên.
+                </div>
+              )}
+            </div>
+          )}
+
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 10, alignItems: 'center' }}>
+            <button onClick={onClose} type="button" style={{ padding: '8px 22px', background: '#f1f5f9', border: '1px solid #cbd5e1', borderRadius: 10, fontWeight: 700, fontSize: 14, color: '#475569', cursor: 'pointer' }}>
+              Đóng
+            </button>
+            <button onClick={handlePushAll} type="button" disabled={isPushing || questions.length === 0 || blockingIssues.length > 0}
+              style={{ padding: '8px 22px', background: blockingIssues.length > 0 ? '#cbd5e1' : '#a21caf', border: 'none', borderRadius: 10, fontWeight: 700, fontSize: 14, color: '#fff', cursor: (isPushing || blockingIssues.length > 0) ? 'not-allowed' : 'pointer', display: 'flex', alignItems: 'center', gap: 8, opacity: questions.length === 0 ? 0.5 : 1, boxShadow: blockingIssues.length > 0 ? 'none' : '0 2px 8px rgba(162,28,175,0.25)' }}>
+              {isPushing ? <Loader2 style={{ width: 16, height: 16 }} /> : <UploadCloud style={{ width: 16, height: 16 }} />}
+              Đồng ý đưa {Math.max(0, questions.length - duplicateInBatchIds.size)} câu vào Ngân hàng
+            </button>
+          </div>
         </div>
       </div>
       
