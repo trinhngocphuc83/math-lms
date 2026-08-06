@@ -7,6 +7,7 @@ import {
   toDifficultyCode,
   normalizeQuestionForCompare,
 } from '@/utils/questionTypes';
+import { findMatchingChapterTitle } from '@/utils/topicMatch';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -253,6 +254,34 @@ function autoDetectMathForm(content: string, explanation: string, forms: string[
   return bestForm;
 }
 
+/**
+ * Xác định Dạng toán cho một câu hỏi, kể cả câu Đúng/Sai 4 mệnh đề.
+ *
+ * Trước đây MỌI câu Đúng/Sai đều bị gán cứng "Toán tổng hợp" ngay khi mở modal,
+ * bất kể 4 mệnh đề có thực sự thuộc nhiều dạng khác nhau hay không. Nay xét
+ * riêng từng mệnh đề: cùng 1 dạng thì gán đúng dạng đó, khác dạng thì mới gán
+ * "Tổng hợp", không nhận diện được ý nào thì để trống cho AI/giáo viên xử lý.
+ */
+function resolveMathForm(q: any, forms: string[], tongHopLabel: string): string {
+  if (q.question_type === 'true_false_cluster') {
+    const statements = [q.option_a, q.option_b, q.option_c, q.option_d]
+      .map((s: string) => String(s || '').trim())
+      .filter(Boolean);
+    if (statements.length === 0) return '';
+
+    const detected = statements
+      .map((s: string) => autoDetectMathForm(s, '', forms))
+      .filter(Boolean);
+    const unique = Array.from(new Set(detected));
+
+    if (unique.length === 0) return ''; // không nhận diện được mệnh đề nào
+    if (unique.length === 1) return unique[0] as string; // cả 4 ý cùng 1 dạng
+    return tongHopLabel; // các ý thuộc nhiều dạng khác nhau
+  }
+
+  return autoDetectMathForm(q.content, q.explanation, forms);
+}
+
 /* ===== Tự gán mức độ dựa trên vị trí câu trong bài ===== */
 // Trước đây hàm này gán mức độ theo VỊ TRÍ trong danh sách (25% đầu = Nhận biết...),
 // nên câu khó xếp đầu bị gán "Nhận biết" còn câu dễ xếp cuối bị gán "Vận dụng cao".
@@ -328,6 +357,9 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   const [mathFormFilter, setMathFormFilter] = useState(''); // Dropdown filter cho dạng toán chung
   const [geminiLoading, setGeminiLoading] = useState(false);
   const [showAddCategoryModal, setShowAddCategoryModal] = useState<{isOpen: boolean, targetId: string}>({isOpen: false, targetId: ''});
+  // Dạng toán MỚI do AI đề xuất (chưa có trong Ngân hàng) - chờ giáo viên duyệt tại chỗ,
+  // không tự áp dụng ngay để tránh sinh danh mục rác nếu AI đặt tên chưa chuẩn.
+  const [pendingFormSuggestions, setPendingFormSuggestions] = useState<Record<string, string>>({});
   const hasParsedRef = useRef(false);
   const supabase = createClient();
 
@@ -362,29 +394,40 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
       const { data } = await supabase.from('question_categories').select('*');
       if (data) {
          setCategories(data);
+
+         // Bảng chapters (nguồn của courseContext.topic) và question_categories.topic
+         // dùng khác định dạng (số La Mã/số thường, viết hoa toàn bộ/đầu câu...) nên
+         // so khớp tuyệt đối luôn thất bại. Đối chiếu mờ để nhận ra cùng một Chương,
+         // rồi dùng lại đúng chuỗi đã có trong ngân hàng - nhờ vậy dropdown Chương/Bài
+         // không còn hiện dạng "khoá" (input tự do) và phạm vi Dạng toán đối chiếu
+         // đúng chương đang soạn thay vì phải dò trên toàn bộ ngân hàng.
+         setEditCtx(prevCtx => {
+            if (!prevCtx.topic) return prevCtx;
+            const sameGradeTopics = Array.from(new Set(
+               data.filter(c => !prevCtx.grade || c.grade === prevCtx.grade).map(c => c.topic)
+            )).filter(Boolean) as string[];
+            const matched = findMatchingChapterTitle(prevCtx.topic, sameGradeTopics);
+            return matched && matched !== prevCtx.topic ? { ...prevCtx, topic: matched } : prevCtx;
+         });
+
          const globalForms = Array.from(new Set(data.map(c => c.math_form))).filter(Boolean) as string[];
          const globalTongHop = globalForms.find(f => /tổng hợp/i.test(f)) || "Toán tổng hợp";
-         
+
          setQuestions(prev => prev.map(q => {
-             if (!q.math_form) {
-               // Dạng Đúng/Sai luôn ưu tiên gán Toán tổng hợp (nếu có trong hệ thống)
-               if (q.question_type === 'true_false_cluster' && globalTongHop) {
-                   return { ...q, math_form: globalTongHop };
-               }
-               // Detect bằng formsToUse dựa trên bối cảnh hiện tại (nếu có)
-               const relevantCategories = data.filter(c =>
-                  (!editCtx.grade || c.grade === editCtx.grade) &&
-                  (!editCtx.subject || c.subject === editCtx.subject) &&
-                  (!editCtx.topic || c.topic === editCtx.topic) &&
-                  (!editCtx.lesson || c.lesson === editCtx.lesson)
-               );
-               const relevantForms = Array.from(new Set(relevantCategories.map(c => c.math_form))).filter(Boolean);
-               const formsToDetect = relevantForms.length > 0 ? relevantForms : globalForms;
-               
-               const detected = autoDetectMathForm(q.content, q.explanation, formsToDetect);
-               if (detected) return { ...q, math_form: detected };
-            }
-            return q;
+             if (q.math_form) return q;
+
+             // Detect bằng formsToUse dựa trên bối cảnh hiện tại (nếu có)
+             const relevantCategories = data.filter(c =>
+                (!editCtx.grade || c.grade === editCtx.grade) &&
+                (!editCtx.subject || c.subject === editCtx.subject) &&
+                (!editCtx.topic || c.topic === editCtx.topic) &&
+                (!editCtx.lesson || c.lesson === editCtx.lesson)
+             );
+             const relevantForms = Array.from(new Set(relevantCategories.map(c => c.math_form))).filter(Boolean) as string[];
+             const formsToDetect = relevantForms.length > 0 ? relevantForms : globalForms;
+
+             const detected = resolveMathForm(q, formsToDetect, globalTongHop);
+             return detected ? { ...q, math_form: detected } : q;
          }));
       }
     } catch (e) { console.error('[PushToBank] Fetch categories error:', e); }
@@ -417,16 +460,14 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
         return;
      }
      
-     const globalTongHop = allForms.find(f => /tổng hợp/i.test(f));
+     const globalTongHop = allForms.find(f => /tổng hợp/i.test(f)) || "Toán tổng hợp";
 
      setQuestions(prev => {
         const next = prev.map(q => {
            if (!q.math_form) {
-              if (q.question_type === 'true_false_cluster' && globalTongHop) {
-                 count++;
-                 return { ...q, math_form: globalTongHop };
-              }
-              const detected = autoDetectMathForm(q.content, q.explanation, formsToUse);
+              // Câu Đúng/Sai: xét riêng từng mệnh đề, chỉ gán "Tổng hợp" khi các
+              // mệnh đề THỰC SỰ thuộc nhiều dạng khác nhau (không gán cứng nữa).
+              const detected = resolveMathForm(q, formsToUse, globalTongHop);
               if (detected) {
                  count++;
                  return { ...q, math_form: detected };
@@ -434,7 +475,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
            }
            return q;
         });
-        
+
         setTimeout(() => {
            if (count > 0) alert(`✨ Đã nhận diện và điền tự động Dạng bài cho ${count} câu hỏi trống!`);
            else alert("Không tìm thấy Dạng bài nào phù hợp với các câu hỏi đang trống.");
@@ -447,16 +488,11 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   const handleAutoDetectGemini = async () => {
     const allForms = Array.from(new Set(categories.map(c => c.math_form))).filter(Boolean) as string[];
     const formsToUse = relevantForms.length > 0 ? relevantForms : allForms;
-    
-    if (formsToUse.length === 0) {
-       alert("Chưa có danh sách Dạng bài nào trong hệ thống để đối chiếu!");
-       return;
-    }
     const globalTongHop = allForms.find(f => /tổng hợp/i.test(f)) || "Toán tổng hợp";
 
     // Chọn các câu đang trống, HOẶC đang gán một dạng bài không có trong Dropdown (loại trừ Toán tổng hợp)
-    const emptyQs = questions.filter(q => 
-       !q.math_form || 
+    const emptyQs = questions.filter(q =>
+       !q.math_form ||
        (!formsToUse.includes(q.math_form) && q.math_form !== globalTongHop)
     );
     if (emptyQs.length === 0) {
@@ -470,38 +506,88 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                questions: emptyQs.map(q => ({ id: q.id, question_type: q.question_type, content: q.content })),
+                questions: emptyQs.map(q => ({
+                  id: q.id,
+                  question_type: q.question_type,
+                  content: q.content,
+                  // Với câu Đúng/Sai, gửi kèm 4 mệnh đề để AI xét xem có thực sự
+                  // thuộc nhiều dạng khác nhau hay không, thay vì gán cứng "Tổng hợp".
+                  statements: q.question_type === 'true_false_cluster'
+                    ? [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean)
+                    : undefined,
+                })),
                 formsToUse,
-                allForms
+                allForms,
+                tongHopLabel: globalTongHop,
             })
         });
 
         const data = await res.json();
-        
+
         if (!res.ok) {
             throw new Error(data.error || "Lỗi máy chủ");
         }
 
-        const mapping = data;
-        let count = 0;
+        // Mỗi câu trả về { form, isNew }. Dạng đã có trong Ngân hàng thì áp dụng
+        // ngay; dạng MỚI do AI tự đề xuất thì chỉ đưa vào hàng chờ duyệt tại chỗ,
+        // không tự ý ghi - tránh sinh danh mục rác nếu AI đặt tên chưa ổn.
+        let appliedCount = 0;
+        const newSuggestions: Record<string, string> = {};
+
         setQuestions(prev => prev.map(q => {
-             if (mapping[q.id]) {
-                 const matchedForm = allForms.find(f => f.trim().toLowerCase() === mapping[q.id].trim().toLowerCase());
+             const result = data[q.id];
+             if (!result) return q;
+
+             if (!result.isNew) {
+                 const matchedForm = allForms.find(f => f.trim().toLowerCase() === String(result.form).trim().toLowerCase());
                  if (matchedForm) {
-                     count++;
+                     appliedCount++;
                      return { ...q, math_form: matchedForm };
                  }
+             } else if (result.form) {
+                 newSuggestions[q.id] = result.form;
              }
              return q;
         }));
-        
-        setTimeout(() => alert(`✨ AI Gemini đã nhận diện và điền tự động Dạng bài cho ${count} câu hỏi!`), 100);
+
+        if (Object.keys(newSuggestions).length > 0) {
+          setPendingFormSuggestions(prev => ({ ...prev, ...newSuggestions }));
+        }
+
+        setTimeout(() => {
+          const parts: string[] = [];
+          if (appliedCount > 0) parts.push(`đã điền ${appliedCount} câu theo Dạng có sẵn`);
+          const newCount = Object.keys(newSuggestions).length;
+          if (newCount > 0) parts.push(`đề xuất ${newCount} Dạng toán MỚI đang chờ Thầy duyệt (xem khung màu cam dưới mỗi câu)`);
+          alert(parts.length ? `✨ AI Gemini ${parts.join(', ')}.` : 'AI Gemini không nhận diện được câu nào.');
+        }, 100);
     } catch (e: any) {
         console.error(e);
         alert("Lỗi khi gọi AI Gemini: " + e.message);
     } finally {
         setGeminiLoading(false);
     }
+  };
+
+  /** Duyệt một Dạng toán mới do AI đề xuất -> áp dụng cho câu hỏi đó. */
+  const approveNewForm = (questionId: string, formName: string) => {
+    const name = formName.trim();
+    if (!name) return;
+    setQuestions(prev => prev.map(q => q.id === questionId ? { ...q, math_form: name } : q));
+    setPendingFormSuggestions(prev => {
+      const next = { ...prev };
+      delete next[questionId];
+      return next;
+    });
+  };
+
+  /** Bỏ đề xuất Dạng toán mới, để trống cho giáo viên tự chọn. */
+  const rejectNewForm = (questionId: string) => {
+    setPendingFormSuggestions(prev => {
+      const next = { ...prev };
+      delete next[questionId];
+      return next;
+    });
   };
 
   const handleUpdateField = (id: string, field: string, value: string) => {
@@ -895,13 +981,36 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                             handleUpdateField(q.id, 'math_form', e.target.value);
                           }
                         }}
-                          style={{ fontSize: 11, border: '1px solid #e2e8f0', borderRadius: 5, padding: '2px 4px', maxWidth: 140 }}>
-                          <option value="">Dạng bài...</option>
+                          style={{ fontSize: 11, border: `1px solid ${q.math_form ? '#e2e8f0' : '#fca5a5'}`, borderRadius: 5, padding: '2px 4px', maxWidth: 140, color: q.math_form ? undefined : '#dc2626', fontWeight: q.math_form ? undefined : 700 }}>
+                          <option value="">-- Chọn dạng bài --</option>
                           {relevantForms.map(f => <option key={f} value={f}>{f}</option>)}
                           <option value="__custom__">✏️ Nhập mới...</option>
                         </select>
                       </div>
                     </div>
+
+                    {/* Đề xuất Dạng toán MỚI từ AI - chờ duyệt tại chỗ, chưa tự ghi vào ngân hàng */}
+                    {pendingFormSuggestions[q.id] && (
+                      <div onClick={e => e.stopPropagation()} style={{ margin: '0 16px 10px', padding: '8px 12px', background: '#fff7ed', border: '1px solid #fed7aa', borderRadius: 8, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                        <span style={{ fontSize: 11, fontWeight: 700, color: '#c2410c', whiteSpace: 'nowrap' }}>🆕 AI đề xuất Dạng mới:</span>
+                        <input
+                          value={pendingFormSuggestions[q.id]}
+                          onChange={e => setPendingFormSuggestions(prev => ({ ...prev, [q.id]: e.target.value }))}
+                          style={{ flex: 1, minWidth: 140, fontSize: 12, border: '1px solid #fdba74', borderRadius: 6, padding: '3px 8px', background: '#fff' }}
+                        />
+                        <button type="button" onClick={() => approveNewForm(q.id, pendingFormSuggestions[q.id])}
+                          style={{ fontSize: 11, fontWeight: 700, color: '#fff', background: '#16a34a', border: 'none', borderRadius: 6, padding: '4px 10px', cursor: 'pointer' }}>
+                          ✓ Duyệt
+                        </button>
+                        <button type="button" onClick={() => rejectNewForm(q.id)}
+                          style={{ fontSize: 11, fontWeight: 700, color: '#64748b', background: '#fff', border: '1px solid #cbd5e1', borderRadius: 6, padding: '4px 10px', cursor: 'pointer' }}>
+                          Bỏ
+                        </button>
+                        <span style={{ fontSize: 10, color: '#9a3412', width: '100%' }}>
+                          Chưa có trong Ngân hàng - Thầy có thể sửa tên trước khi duyệt. Duyệt xong sẽ tự tạo Dạng toán mới này khi đẩy vào Ngân hàng.
+                        </span>
+                      </div>
+                    )}
 
                     {/* CARD BODY */}
                     {!isCollapsed && (
