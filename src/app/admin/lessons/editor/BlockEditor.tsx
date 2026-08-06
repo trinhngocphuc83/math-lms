@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronUp, ChevronDown, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -25,8 +25,6 @@ import { unifiedMarkdownComponents as customMarkdownComponents, preprocessMarkdo
 export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, globalSourceImage, globalTriggerBankModal }: { blocks: Block[], onChangeBlocks: (b: Block[]) => void, onTriggerCrop: (meta: any, targetBlockId: string) => void, globalSourceImage?: string, globalTriggerBankModal?: number }) {
 
   const [previewBlocks, setPreviewBlocks] = React.useState<Set<string>>(new Set());
-  const [collapsedBlocks, setCollapsedBlocks] = React.useState<Set<string>>(new Set());
-  const [focusMode, setFocusMode] = React.useState(true);
   const [isBankModalOpen, setIsBankModalOpen] = React.useState(false);
   const [insertIndex, setInsertIndex] = React.useState(-1);
   const [selectedBlocks, setSelectedBlocks] = React.useState<Set<string>>(new Set());
@@ -60,33 +58,6 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
         setIsBankModalOpen(true);
      }
   }, [globalTriggerBankModal]);
-
-  React.useEffect(() => {
-     if (!focusMode) {
-        setCollapsedBlocks(new Set());
-     }
-  }, [focusMode]);
-
-  const handleFocusBlock = (id: string) => {
-      if (!focusMode) return;
-      setCollapsedBlocks(prev => {
-          if (!prev.has(id) && prev.size === blocks.length - 1) return prev;
-          const newSet = new Set<string>();
-          blocks.forEach(b => {
-              if (b.id !== id) newSet.add(b.id);
-          });
-          return newSet;
-      });
-  };
-
-  const toggleCollapse = (id: string) => {
-      setCollapsedBlocks(prev => {
-          const newSet = new Set(prev);
-          if (newSet.has(id)) newSet.delete(id);
-          else newSet.add(id);
-          return newSet;
-      });
-  };
 
   const handleInsertFromBank = (questions: any[]) => {
       const newBlocks = [...blocks];
@@ -416,7 +387,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
        {blocks.filter(b => b.id === activeBlockId).map((block) => {
              const idx = blocks.findIndex(b => b.id === block.id);
              return (
-          <div key={block.id} onClickCapture={() => handleFocusBlock(block.id)} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-visible shrink-0 transition-all relative">
+          <div key={block.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-visible shrink-0 transition-all relative">
               <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center rounded-t-xl z-20 relative">
                   <div className="flex items-center gap-2 font-bold text-gray-700 text-[15px]">
                      <input 
@@ -466,19 +437,17 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                   <div className="flex gap-1.5">
                       <button onClick={() => moveBlock(idx, -1)} disabled={idx === 0} className="p-1.5 hover:bg-gray-200 rounded-md text-gray-500 disabled:opacity-30"><ArrowUp className="w-4 h-4"/></button>
                       <button onClick={() => moveBlock(idx, 1)} disabled={idx === blocks.length - 1} className="p-1.5 hover:bg-gray-200 rounded-md text-gray-500 disabled:opacity-30"><ArrowDown className="w-4 h-4"/></button>
-                      <button onClick={() => toggleCollapse(block.id)} className={`p-1.5 hover:bg-gray-200 rounded-md transition-colors ${collapsedBlocks.has(block.id) ? 'text-indigo-600 bg-indigo-50' : 'text-gray-500'}`} title={collapsedBlocks.has(block.id) ? "Mở rộng khối này" : "Thu gọn khối này"}>
-                         {collapsedBlocks.has(block.id) ? <ChevronDown className="w-4 h-4"/> : <ChevronUp className="w-4 h-4"/>}
-                      </button>
                       <div className="w-px h-4 bg-gray-300 mx-1 self-center"></div>
                       <button onClick={() => handleFixLatex(idx)} className="flex items-center gap-1.5 px-2 py-1.5 bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 rounded-md text-[11px] font-bold transition-colors" title="Sửa nhanh các lỗi LaTeX (như dấu \\, dấu $$, v.v.)">🪄 Sửa lỗi LaTeX</button>
-                      <button onClick={() => togglePreview(block.id)} className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[11px] font-bold transition-colors ${previewBlocks.has(block.id) ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-200'}`} title="Bật/Tắt Xem trước kết quả hiển thị"><MonitorPlay className="w-3.5 h-3.5"/> Xem Trước</button>
+                      <button onClick={() => togglePreview(block.id)} className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[11px] font-bold transition-colors ${previewBlocks.has(block.id) ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-200'}`} title="Bật/Tắt chế độ chia đôi màn hình: sửa bên trái, xem trước bên phải"><MonitorPlay className="w-3.5 h-3.5"/> Xem Trước</button>
                       <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} className="flex items-center gap-1.5 px-2 py-1.5 bg-orange-50 hover:bg-orange-100 border border-orange-200 text-orange-700 rounded-md text-[11px] font-bold transition-colors" title="Chèn thêm ảnh vào khối này"><CropIcon className="w-3.5 h-3.5"/> Chèn Thêm Ảnh</button>
                       <button onClick={() => removeBlock(idx)} className="p-1.5 hover:bg-red-100 rounded-md text-red-500 hover:text-red-600 transition-colors"><Trash2 className="w-4 h-4"/></button>
                   </div>
               </div>
 
-              {!collapsedBlocks.has(block.id) && (
               <div className="p-5 animate-in fade-in slide-in-from-top-1 duration-200">
+                <div className={previewBlocks.has(block.id) ? "grid grid-cols-1 xl:grid-cols-2 gap-6 items-start" : ""}>
+                <div className="min-w-0 flex flex-col gap-5">
                  {block.type === 'md' && (
                     <div className="flex flex-col gap-4">
                        {/* CẢNH BÁO CHO KHỐI LÝ THUYẾT */}
@@ -670,8 +639,10 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                     </div>
                  )}
 
-                  {previewBlocks.has(block.id) && (
-                     <div className="mt-5 pt-5 border-t-2 border-indigo-100 animate-in fade-in slide-in-from-top-2">
+                </div>
+
+                {previewBlocks.has(block.id) && (
+                     <div className="xl:sticky xl:top-3 min-w-0 animate-in fade-in slide-in-from-top-2">
                         <div className="flex items-center justify-between mb-3">
                            <div className="text-[10px] font-black text-indigo-400 uppercase tracking-widest flex items-center gap-2">
                               <MonitorPlay className="w-3 h-3" /> KẾT QUẢ XEM TRƯỚC:
@@ -692,7 +663,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                               🪄 Sửa lỗi LaTeX ngay
                            </button>
                         </div>
-                        <div className="bg-white p-6 rounded-xl shadow-md border-4 border-slate-700 aspect-video overflow-y-auto w-full max-w-4xl mx-auto relative prose prose-lg prose-indigo [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap prose-p:leading-[1.5] prose-li:leading-[1.5] prose-p:my-[0.3em] prose-li:my-[0.2em] prose-ul:my-[0.3em]">
+                        <div className="bg-white p-6 rounded-xl shadow-md border-4 border-slate-700 overflow-y-auto w-full max-h-[75vh] relative prose prose-lg prose-indigo [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap prose-p:leading-[1.5] prose-li:leading-[1.5] prose-p:my-[0.3em] prose-li:my-[0.2em] prose-ul:my-[0.3em]">
                            {block.type === 'md' ? renderQuizContent(block.content) : (
                               <div className="flex flex-col gap-4">
                                  {renderQuizContent(block.content.question || "*(Chưa có câu hỏi)*")}
@@ -734,10 +705,10 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                            )}
                         </div>
                      </div>
-                  )}
-               </div>
-              )}
-              
+                )}
+                </div>
+              </div>
+
               <div className="bg-gray-50 border-t border-gray-100 p-2 flex justify-center gap-3 flex-wrap">
                  <button onClick={() => addBlock(idx, 'md')} className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 px-3 py-1.5 rounded-md"><PlusCircle className="w-3.5 h-3.5"/> Thêm Khối Lý thuyết xuống dưới</button>
                  <button onClick={() => addBlock(idx, 'quiz')} className="flex items-center gap-1 text-xs font-bold text-teal-600 hover:text-teal-800 bg-teal-50 px-3 py-1.5 rounded-md"><PlusCircle className="w-3.5 h-3.5"/> Thêm Khối Trắc nghiệm xuống dưới</button>
