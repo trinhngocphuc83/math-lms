@@ -5,7 +5,7 @@ import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { 
   FileEdit, Search, Plus, Upload, Loader2, Database,
-  Filter, ChevronLeft, ChevronRight, CheckCircle2,
+  Filter, ChevronLeft, ChevronRight, ChevronUp, CheckCircle2,
   AlertCircle, X, Trash2, ChevronDown, FileDown, Eye, Wand2, RefreshCw
 } from "lucide-react";
 import Papa from "papaparse";
@@ -49,6 +49,20 @@ export default function QuestionsPage() {
   const [isCategoryModalOpen, setIsCategoryModalOpen] = useState(false);
   const [isChangeTypeMenuOpen, setIsChangeTypeMenuOpen] = useState(false);
   const [isChangingType, setIsChangingType] = useState(false);
+  const [isAiMenuOpen, setIsAiMenuOpen] = useState(false);
+
+  // Thanh lọc/thao tác: mặc định thu gọn để đỡ chiếm chỗ, nhớ trạng thái lần mở gần nhất
+  const [isFilterExpanded, setIsFilterExpanded] = useState(false);
+  useEffect(() => {
+    try { setIsFilterExpanded(localStorage.getItem('questionsPage.filterExpanded') === '1'); } catch {}
+  }, []);
+  const toggleFilterExpanded = () => {
+    setIsFilterExpanded(prev => {
+      const next = !prev;
+      try { localStorage.setItem('questionsPage.filterExpanded', next ? '1' : '0'); } catch {}
+      return next;
+    });
+  };
 
   // Categories & Filters State
   const [categories, setCategories] = useState<any[]>([]);
@@ -329,149 +343,165 @@ export default function QuestionsPage() {
     setCurrentPage(1);
   };
 
+  const activeFilterCount = Object.values(filters).filter(v => v).length;
+  const clearAllFilters = () => {
+    setFilters({ grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: "", question_type: "" });
+    setCurrentPage(1);
+  };
+
   return (
     <div className="h-full flex flex-col p-6 animate-in fade-in zoom-in-95 duration-300">
       {/* Header */}
-      <div className="flex justify-between items-center mb-8">
+      <div className="flex justify-between items-center mb-4">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 flex items-center gap-3">
-            <Database className="w-8 h-8 text-indigo-600" />
+          <h1 className="text-2xl font-bold text-gray-900 flex items-center gap-2">
+            <Database className="w-6 h-6 text-indigo-600" />
             Ngân hàng Câu hỏi
           </h1>
-          <p className="text-gray-500 mt-2 font-medium">Quản lý và tra cứu kho câu hỏi trắc nghiệm, tự luận.</p>
+          <p className="text-gray-500 mt-1 text-sm font-medium">Quản lý và tra cứu kho câu hỏi trắc nghiệm, tự luận.</p>
         </div>
       </div>
 
-      {/* Top Bar - Filters & Actions */}
-      <div className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 space-y-4 mb-6">
-        
-        {/* Row 1: Filters */}
-        <div className="flex flex-col gap-3">
-          <div className="flex gap-3">
-            <select value={filters.grade} onChange={e => handleFilterChange('grade', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 w-40 font-medium text-gray-700 bg-white">
-              <option value="">-- Lớp --</option>
-              {uniqueGrades.map(g => <option key={g as string} value={g as string}>{g as string}</option>)}
-            </select>
-            <select value={filters.subject} onChange={e => handleFilterChange('subject', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 w-48 font-medium text-gray-700 bg-white">
-              <option value="">-- Phân môn --</option>
-              {uniqueSubjects.map(s => <option key={s as string} value={s as string}>{s as string}</option>)}
-            </select>
-            <select value={filters.topic} onChange={e => handleFilterChange('topic', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 flex-1 font-medium text-gray-700 bg-white">
-              <option value="">-- Chuyên đề --</option>
-              {uniqueTopics.map(t => <option key={t as string} value={t as string}>{t as string}</option>)}
-            </select>
-          </div>
-          
-          <div className="flex gap-3">
-            <select value={filters.lesson} onChange={e => handleFilterChange('lesson', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 flex-1 font-medium text-gray-700 bg-white">
-              <option value="">-- Tên bài --</option>
-              {uniqueLessons.map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
-            </select>
-            <select value={filters.difficulty} onChange={e => handleFilterChange('difficulty', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 w-40 font-medium text-gray-700 bg-white">
-              <option value="">-- Mức độ --</option>
-              <option value="1">Nhận biết</option>
-              <option value="2">Thông hiểu</option>
-              <option value="3">Vận dụng</option>
-              <option value="4">Vận dụng cao</option>
-            </select>
-          </div>
-
-          <div className="flex gap-3">
-            <select value={filters.math_form} onChange={e => handleFilterChange('math_form', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 flex-1 font-medium text-gray-700 bg-white">
-              <option value="">-- Dạng toán --</option>
-              {uniqueForms.map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
-            </select>
-            <select value={filters.question_type} onChange={e => handleFilterChange('question_type', e.target.value)} className="border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-indigo-500 w-48 font-medium text-gray-700 bg-white">
-              <option value="">-- Dạng thức --</option>
-              <option value="NLC">Trắc nghiệm</option>
-              <option value="DS">Đúng/Sai</option>
-              <option value="TLN">Trả lời ngắn</option>
-              <option value="TL">Tự luận</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Row 2: Search & Buttons */}
-        <div className="flex gap-3 items-center">
-          <div className="flex-1 relative">
-            <Search className="w-5 h-5 text-gray-400 absolute left-4 top-1/2 -translate-y-1/2" />
-            <input 
-              type="text" 
-              placeholder="Tìm kiếm (Nội dung, Mã CH, Dạng toán, Chuyên đề...)" 
+      {/* Top Bar - Filters & Actions: gọn 1 dòng, bấm "Bộ lọc" để mở rộng khi cần */}
+      <div className="bg-white p-2.5 rounded-xl shadow-sm border border-gray-100 mb-4">
+        <div className="flex gap-2 items-center flex-wrap">
+          <div className="flex-1 min-w-[180px] relative">
+            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              placeholder="Tìm kiếm (Nội dung, Mã CH, Dạng toán, Chuyên đề...)"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              className="w-full pl-11 pr-4 py-3 bg-white border border-gray-300 shadow-sm rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-gray-800 font-medium transition-all"
+              className="w-full pl-9 pr-3 py-2 bg-white border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-gray-800 text-sm font-medium transition-all"
             />
           </div>
 
+          <button
+            onClick={toggleFilterExpanded}
+            className={`flex items-center gap-1.5 px-3 py-2 rounded-lg font-bold text-xs transition-colors border ${isFilterExpanded ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-indigo-700 border-indigo-200 hover:bg-indigo-50'}`}
+          >
+            <Filter className="w-3.5 h-3.5" /> Bộ lọc
+            {activeFilterCount > 0 && (
+              <span className={`text-[10px] font-black rounded-full w-4 h-4 flex items-center justify-center ${isFilterExpanded ? 'bg-white text-indigo-700' : 'bg-indigo-600 text-white'}`}>{activeFilterCount}</span>
+            )}
+            {isFilterExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+          </button>
+
           <div className="relative">
-            <button 
+            <button
               onClick={() => setIsExportMenuOpen(!isExportMenuOpen)}
-              className="flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm"
+              className="flex items-center gap-1.5 bg-blue-600 text-white hover:bg-blue-700 px-3 py-2 rounded-lg font-bold transition-all text-xs shadow-sm"
             >
-              <FileDown className="w-4 h-4" /> Xuất Word <ChevronDown className="w-4 h-4" />
+              <FileDown className="w-3.5 h-3.5" /> Xuất Word <ChevronDown className="w-3.5 h-3.5" />
             </button>
             {isExportMenuOpen && (
-              <div className="absolute top-full mt-2 left-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
-                <button onClick={() => handleExportDocx('student')} className="w-full text-left px-4 py-2 hover:bg-indigo-50 font-medium text-gray-700">Bản Học Sinh (Chỉ Đề)</button>
-                <button onClick={() => handleExportDocx('teacher')} className="w-full text-left px-4 py-2 hover:bg-indigo-50 font-medium text-gray-700">Bản Giáo Viên (Có Lời giải)</button>
+              <div className="absolute top-full mt-2 right-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                <button onClick={() => handleExportDocx('student')} className="w-full text-left px-4 py-2 hover:bg-indigo-50 font-medium text-gray-700 text-sm">Bản Học Sinh (Chỉ Đề)</button>
+                <button onClick={() => handleExportDocx('teacher')} className="w-full text-left px-4 py-2 hover:bg-indigo-50 font-medium text-gray-700 text-sm">Bản Giáo Viên (Có Lời giải)</button>
               </div>
             )}
           </div>
 
           {selectedQuestions.length > 0 && (
             <div className="relative animate-in fade-in zoom-in duration-200">
-              <button 
+              <button
                 onClick={() => setIsChangeTypeMenuOpen(!isChangeTypeMenuOpen)}
                 disabled={isChangingType}
-                className="flex items-center gap-2 bg-amber-600 text-white hover:bg-amber-700 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm disabled:opacity-50"
+                className="flex items-center gap-1.5 bg-amber-600 text-white hover:bg-amber-700 px-3 py-2 rounded-lg font-bold transition-all text-xs shadow-sm disabled:opacity-50"
               >
-                {isChangingType ? <Loader2 className="w-4 h-4 animate-spin" /> : <RefreshCw className="w-4 h-4" />} 
-                Đổi Dạng ({selectedQuestions.length}) <ChevronDown className="w-4 h-4" />
+                {isChangingType ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <RefreshCw className="w-3.5 h-3.5" />}
+                Đổi Dạng ({selectedQuestions.length}) <ChevronDown className="w-3.5 h-3.5" />
               </button>
               {isChangeTypeMenuOpen && (
-                <div className="absolute top-full mt-2 left-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                <div className="absolute top-full mt-2 right-0 w-48 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
                   <div className="px-4 py-1.5 text-xs font-bold text-gray-400 uppercase tracking-wider">Chọn dạng mới</div>
-                  <button onClick={() => handleChangeBulkType('NLC')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700">Trắc nghiệm (NLC)</button>
-                  <button onClick={() => handleChangeBulkType('DS')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700">Đúng/Sai (DS)</button>
-                  <button onClick={() => handleChangeBulkType('TLN')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700">Trả lời ngắn (TLN)</button>
-                  <button onClick={() => handleChangeBulkType('TL')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700">Tự luận (TL)</button>
+                  <button onClick={() => handleChangeBulkType('NLC')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700 text-sm">Trắc nghiệm (NLC)</button>
+                  <button onClick={() => handleChangeBulkType('DS')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700 text-sm">Đúng/Sai (DS)</button>
+                  <button onClick={() => handleChangeBulkType('TLN')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700 text-sm">Trả lời ngắn (TLN)</button>
+                  <button onClick={() => handleChangeBulkType('TL')} className="w-full text-left px-4 py-2 hover:bg-amber-50 font-medium text-gray-700 text-sm">Tự luận (TL)</button>
                 </div>
               )}
             </div>
           )}
 
-          <button 
-            onClick={() => setIsCategoryModalOpen(true)} 
-            className="flex items-center gap-2 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-4 py-3 rounded-xl font-bold transition-colors text-sm shadow-sm bg-white"
+          <button
+            onClick={() => setIsCategoryModalOpen(true)}
+            className="flex items-center gap-1.5 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-3 py-2 rounded-lg font-bold transition-colors text-xs shadow-sm bg-white"
           >
-            <Database className="w-4 h-4" /> Danh mục
+            <Database className="w-3.5 h-3.5" /> Danh mục
           </button>
-          <button 
+          <button
             onClick={() => setEditingQuestion({ grade: "12", subject: "Đại số", topic: "", lesson: "", math_form: "", question_type: "NLC", difficulty: "1", content: "", option_a: "", option_b: "", option_c: "", option_d: "", correct_answer: "", explanation: "" })}
-            className="flex items-center gap-2 bg-teal-700 text-white hover:bg-teal-800 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm"
+            className="flex items-center gap-1.5 bg-teal-700 text-white hover:bg-teal-800 px-3 py-2 rounded-lg font-bold transition-all text-xs shadow-sm"
           >
-            <Plus className="w-4 h-4" /> Thêm câu hỏi
+            <Plus className="w-3.5 h-3.5" /> Thêm câu hỏi
           </button>
-          <Link 
-            href="/admin/questions/editor" 
-            className="flex items-center gap-2 bg-orange-600 text-white hover:bg-orange-700 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm"
-          >
-            <Database className="w-4 h-4" /> Thêm hàng loạt (AI)
-          </Link>
-          <Link 
-            href="/admin/questions/generator" 
-            className="flex items-center gap-2 bg-purple-600 text-white hover:bg-purple-700 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm"
-          >
-            <Wand2 className="w-4 h-4" /> Sinh trắc nghiệm (AI)
-          </Link>
-          <Link 
-            href="/admin/questions/similar-generator" 
-            className="flex items-center gap-2 bg-pink-600 text-white hover:bg-pink-700 px-4 py-3 rounded-xl font-bold transition-all text-sm shadow-sm"
-          >
-            <Wand2 className="w-4 h-4" /> Sinh câu tương tự (AI)
-          </Link>
+
+          <div className="relative">
+            <button
+              onClick={() => setIsAiMenuOpen(!isAiMenuOpen)}
+              className="flex items-center gap-1.5 bg-gradient-to-r from-orange-600 to-pink-600 text-white hover:opacity-90 px-3 py-2 rounded-lg font-bold transition-all text-xs shadow-sm"
+            >
+              <Wand2 className="w-3.5 h-3.5" /> Công cụ AI <ChevronDown className="w-3.5 h-3.5" />
+            </button>
+            {isAiMenuOpen && (
+              <div className="absolute top-full mt-2 right-0 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                <Link href="/admin/questions/editor" onClick={() => setIsAiMenuOpen(false)} className="flex items-center gap-2 px-4 py-2 hover:bg-orange-50 font-medium text-gray-700 text-sm">
+                  <Database className="w-4 h-4 text-orange-600" /> Thêm hàng loạt (AI)
+                </Link>
+                <Link href="/admin/questions/generator" onClick={() => setIsAiMenuOpen(false)} className="flex items-center gap-2 px-4 py-2 hover:bg-purple-50 font-medium text-gray-700 text-sm">
+                  <Wand2 className="w-4 h-4 text-purple-600" /> Sinh trắc nghiệm (AI)
+                </Link>
+                <Link href="/admin/questions/similar-generator" onClick={() => setIsAiMenuOpen(false)} className="flex items-center gap-2 px-4 py-2 hover:bg-pink-50 font-medium text-gray-700 text-sm">
+                  <Wand2 className="w-4 h-4 text-pink-600" /> Sinh câu tương tự (AI)
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
+
+        {/* Bộ lọc chi tiết - chỉ hiện khi bấm "Bộ lọc" */}
+        {isFilterExpanded && (
+          <div className="flex flex-wrap gap-2 mt-2.5 pt-2.5 border-t border-gray-100 animate-in fade-in slide-in-from-top-1 duration-150">
+            <select value={filters.grade} onChange={e => handleFilterChange('grade', e.target.value)} className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-indigo-500 font-medium text-gray-700 bg-white">
+              <option value="">-- Lớp --</option>
+              {uniqueGrades.map(g => <option key={g as string} value={g as string}>{g as string}</option>)}
+            </select>
+            <select value={filters.subject} onChange={e => handleFilterChange('subject', e.target.value)} className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-indigo-500 font-medium text-gray-700 bg-white">
+              <option value="">-- Phân môn --</option>
+              {uniqueSubjects.map(s => <option key={s as string} value={s as string}>{s as string}</option>)}
+            </select>
+            <select value={filters.topic} onChange={e => handleFilterChange('topic', e.target.value)} className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-indigo-500 font-medium text-gray-700 bg-white max-w-[170px]">
+              <option value="">-- Chuyên đề --</option>
+              {uniqueTopics.map(t => <option key={t as string} value={t as string}>{t as string}</option>)}
+            </select>
+            <select value={filters.lesson} onChange={e => handleFilterChange('lesson', e.target.value)} className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-indigo-500 font-medium text-gray-700 bg-white max-w-[170px]">
+              <option value="">-- Tên bài --</option>
+              {uniqueLessons.map(l => <option key={l as string} value={l as string}>{l as string}</option>)}
+            </select>
+            <select value={filters.difficulty} onChange={e => handleFilterChange('difficulty', e.target.value)} className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-indigo-500 font-medium text-gray-700 bg-white">
+              <option value="">-- Mức độ --</option>
+              <option value="1">Nhận biết</option>
+              <option value="2">Thông hiểu</option>
+              <option value="3">Vận dụng</option>
+              <option value="4">Vận dụng cao</option>
+            </select>
+            <select value={filters.math_form} onChange={e => handleFilterChange('math_form', e.target.value)} className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-indigo-500 font-medium text-gray-700 bg-white max-w-[170px]">
+              <option value="">-- Dạng toán --</option>
+              {uniqueForms.map(f => <option key={f as string} value={f as string}>{f as string}</option>)}
+            </select>
+            <select value={filters.question_type} onChange={e => handleFilterChange('question_type', e.target.value)} className="border border-gray-200 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-indigo-500 font-medium text-gray-700 bg-white">
+              <option value="">-- Dạng thức --</option>
+              <option value="NLC">Trắc nghiệm</option>
+              <option value="DS">Đúng/Sai</option>
+              <option value="TLN">Trả lời ngắn</option>
+              <option value="TL">Tự luận</option>
+            </select>
+            {activeFilterCount > 0 && (
+              <button onClick={clearAllFilters} className="text-xs font-bold text-gray-400 hover:text-red-600 underline px-1">Xoá lọc ({activeFilterCount})</button>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Table Data */}
