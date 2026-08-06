@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { requireStaff } from '@/utils/auth/guard';
 
+// Cho phép API chạy tối đa 60s trên Vercel, phòng khi vượt giới hạn mặc định.
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   try {
     const guard = await requireStaff();

@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { requireUser } from '@/utils/auth/guard';
 
+// Cho phép API chạy tối đa 60s trên Vercel - chấm nhiều ảnh cùng lúc rất dễ
+// vượt giới hạn mặc định, khi đó hàm bị cắt ngang mà không báo lỗi rõ ràng.
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   try {
     const guard = await requireUser();

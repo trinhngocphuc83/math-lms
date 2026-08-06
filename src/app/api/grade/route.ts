@@ -4,6 +4,10 @@ import { getAllAIKeys } from '@/utils/aiKeys';
 import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
 import { requireUser } from '@/utils/auth/guard';
 
+// Cho phép API chạy tối đa 60s trên Vercel - chấm bài kèm ảnh dễ vượt giới hạn
+// mặc định của Vercel, khi đó hàm bị cắt ngang mà không báo lỗi rõ ràng.
+export const maxDuration = 60;
+
 export async function POST(request: Request) {
   try {
     const guard = await requireUser();

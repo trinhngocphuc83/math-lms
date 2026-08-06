@@ -2,6 +2,10 @@ import { NextResponse } from 'next/server';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { requireStaff } from '@/utils/auth/guard';
 
+// Cho phép API chạy tối đa 60s trên Vercel - trích xuất công thức từ ảnh dễ
+// vượt giới hạn mặc định, khi đó hàm bị cắt ngang mà không báo lỗi rõ ràng.
+export const maxDuration = 60;
+
 // Lấy tất cả API key từ biến môi trường
 function getAllApiKeys(): string[] {
   const keys: string[] = [];

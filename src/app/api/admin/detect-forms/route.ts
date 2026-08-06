@@ -1,8 +1,41 @@
 import { NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
 import { getAllAIKeys } from '@/utils/aiKeys';
 import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
 import { requireStaff } from '@/utils/auth/guard';
+
+const VALID_DIFFICULTIES = ['Nhận biết', 'Thông hiểu', 'Vận dụng', 'Vận dụng cao'] as const;
+
+/**
+ * Ép cứng cấu trúc JSON trả về bằng responseSchema của Gemini, thay vì chỉ dặn
+ * bằng lời trong prompt. Trước đây prompt yêu cầu "difficulty" bắt buộc nhưng AI
+ * vẫn bỏ trống trường này ở MỌI câu, và vẫn bỏ sót nhiều ID dù đã ghi "bắt buộc
+ * trả đủ". Dùng schema với `required` thì mỗi phần tử AI trả về LUÔN có đủ 4
+ * trường - Gemini không thể lách qua được như với chỉ dẫn bằng văn bản.
+ */
+const responseSchema = {
+  type: SchemaType.ARRAY,
+  items: {
+    type: SchemaType.OBJECT,
+    properties: {
+      id: { type: SchemaType.STRING, description: 'ID câu hỏi, chép nguyên văn từ đề bài, không tự đổi' },
+      form: { type: SchemaType.STRING, description: 'Tên Dạng toán' },
+      isNew: { type: SchemaType.BOOLEAN, description: 'true nếu là dạng toán tự đề xuất, false nếu khớp dạng đã có sẵn' },
+      difficulty: {
+        type: SchemaType.STRING,
+        format: 'enum',
+        enum: [...VALID_DIFFICULTIES],
+        description: 'Mức độ nhận thức của câu hỏi',
+      },
+    },
+    required: ['id', 'form', 'isNew', 'difficulty'],
+  },
+};
+
+// Cho phép API chạy tối đa 60s trên Vercel. Thiếu dòng này thì hàm bị Vercel cắt
+// ngang theo giới hạn mặc định (thường 10s) mà KHÔNG trả lỗi rõ ràng về client -
+// nút "Đang phân tích..." treo vô thời hạn, trông như hệ thống không hoạt động.
+export const maxDuration = 60;
 
 interface IncomingQuestion {
   id: string;
@@ -74,15 +107,9 @@ QUY TẮC VỀ MỨC ĐỘ (đánh giá theo NỘI DUNG câu hỏi, không theo 
 - "Vận dụng cao": bài toán phức tạp, nhiều tầng lập luận, toán thực tế khó, hoặc cần ý tưởng đặc biệt.
 
 QUY TẮC BẮT BUỘC VỀ KẾT QUẢ:
-- PHẢI trả về đầy đủ kết quả cho TẤT CẢ ${questions.length} ID được liệt kê ở trên, KHÔNG được bỏ sót ID nào.
-- Nếu một câu quá mơ hồ, vẫn phải đưa ra phương án hợp lý nhất chứ tuyệt đối KHÔNG bỏ trống hay bỏ qua ID đó.
-- Trường "difficulty" chỉ được nhận đúng 1 trong 4 giá trị: "Nhận biết", "Thông hiểu", "Vận dụng", "Vận dụng cao".
-
-Trả về DUY NHẤT một chuỗi JSON, định dạng:
-{
-  "id_câu_hỏi_1": { "form": "Tên Dạng Bài", "isNew": false, "difficulty": "Thông hiểu" },
-  "id_câu_hỏi_2": { "form": "Tên Dạng Bài Mới Do Bạn Đề Xuất", "isNew": true, "difficulty": "Vận dụng" }
-}`;
+- Trả về đúng ${questions.length} phần tử trong mảng kết quả, MỖI ID ở trên phải có đúng 1 phần tử tương ứng, không bỏ sót ID nào và không tự thêm ID không có trong đề.
+- Nếu một câu quá mơ hồ, vẫn phải đưa ra phương án hợp lý nhất, tuyệt đối không được thiếu phần tử cho ID đó.
+- Giữ nguyên ID y hệt như đã cho, không rút gọn hay đổi khác.`;
 
     let lastError: any = null;
 
@@ -92,7 +119,8 @@ Trả về DUY NHẤT một chuỗi JSON, định dạng:
         const model = genAI.getGenerativeModel({
           model: "gemini-3.6-flash",
           generationConfig: {
-            responseMimeType: "application/json"
+            responseMimeType: "application/json",
+            responseSchema: responseSchema as any,
           }
         });
 
@@ -100,36 +128,33 @@ Trả về DUY NHẤT một chuỗi JSON, định dạng:
         const text = result.response.text();
 
         let jsonStr = text;
-        if (text.includes('{')) {
-          jsonStr = text.substring(text.indexOf('{'), text.lastIndexOf('}') + 1);
+        if (text.includes('[')) {
+          jsonStr = text.substring(text.indexOf('['), text.lastIndexOf(']') + 1);
         }
 
-        const parsed = JSON.parse(jsonStr);
+        const parsedArray = JSON.parse(jsonStr);
+        if (!Array.isArray(parsedArray)) throw new Error('AI không trả về mảng như yêu cầu');
 
-        // Chuẩn hoá kết quả, phòng khi AI trả sai định dạng.
-        // isNew luôn tự xác định lại bằng cách đối chiếu với danh sách thật, không tin
-        // hoàn toàn vào cờ AI trả về (AI hay báo nhầm dạng đã có thành dạng mới).
-        const VALID_DIFFICULTIES = ['Nhận biết', 'Thông hiểu', 'Vận dụng', 'Vận dụng cao'];
+        // Chuẩn hoá kết quả. isNew luôn tự xác định lại bằng cách đối chiếu với danh
+        // sách thật, không tin hoàn toàn vào cờ AI trả về (AI hay báo nhầm dạng đã có
+        // thành dạng mới). Nhờ responseSchema, "difficulty" giờ LUÔN có mặt và chỉ
+        // nhận đúng 1 trong 4 giá trị hợp lệ - không cần lọc lại như trước.
         const normalized: Record<string, { form: string; isNew: boolean; difficulty: string }> = {};
 
-        for (const [id, value] of Object.entries(parsed)) {
-          const raw = typeof value === 'string' ? { form: value } : (value as any);
-          if (!raw || typeof raw !== 'object') continue;
-
-          const form = String(raw.form || '').trim();
-          if (!form) continue;
+        for (const item of parsedArray) {
+          if (!item || typeof item !== 'object') continue;
+          const id = String(item.id || '').trim();
+          const form = String(item.form || '').trim();
+          if (!id || !form) continue;
 
           // Nếu tên dạng trùng (không phân biệt hoa/thường) với dạng đã có -> dùng
           // NGUYÊN VĂN bản trong ngân hàng để không tạo ra bản sao lệch chính tả.
           const existing = allForms?.find(f => f.trim().toLowerCase() === form.toLowerCase());
-          const difficulty = VALID_DIFFICULTIES.includes(String(raw.difficulty || '').trim())
-            ? String(raw.difficulty).trim()
-            : '';
 
           normalized[id] = {
             form: existing || form,
             isNew: !existing,
-            difficulty,
+            difficulty: String(item.difficulty || ''),
           };
         }
 
