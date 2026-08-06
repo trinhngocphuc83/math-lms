@@ -1,13 +1,14 @@
 "use client";
 import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from "@/utils/supabase/client";
-import { X, UploadCloud, Loader2, Database, Info, ChevronDown, ChevronUp, Tag, AlertTriangle, Copy } from 'lucide-react';
+import { X, UploadCloud, Loader2, Database, Info, ChevronDown, ChevronUp, Tag, AlertTriangle, Copy, ClipboardPaste, CheckCircle2 } from 'lucide-react';
 import {
   blockTypeToBankType,
   toDifficultyCode,
   normalizeQuestionForCompare,
 } from '@/utils/questionTypes';
 import { findMatchingChapterTitle } from '@/utils/topicMatch';
+import { buildDetectFormsPrompt, parseDetectFormsResponse, type DetectFormsResultItem } from '@/utils/detectFormsPrompt';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -360,6 +361,13 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   // Dạng toán MỚI do AI đề xuất (chưa có trong Ngân hàng) - chờ giáo viên duyệt tại chỗ,
   // không tự áp dụng ngay để tránh sinh danh mục rác nếu AI đặt tên chưa chuẩn.
   const [pendingFormSuggestions, setPendingFormSuggestions] = useState<Record<string, string>>({});
+  // Phòng khi Cổng AI của hệ thống báo lỗi (hết quota, quá tải 503...): giáo viên
+  // tự copy prompt dán vào Gemini Web/ChatGPT, rồi dán kết quả JSON ngược lại đây.
+  const [showManualDetectModal, setShowManualDetectModal] = useState(false);
+  const [manualDetectPrompt, setManualDetectPrompt] = useState('');
+  const [manualDetectInput, setManualDetectInput] = useState('');
+  const [manualDetectError, setManualDetectError] = useState('');
+  const [manualDetectCopied, setManualDetectCopied] = useState(false);
   const hasParsedRef = useRef(false);
   const supabase = createClient();
 
@@ -503,18 +511,97 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
      });
   };
 
-  const handleAutoDetectGemini = async () => {
+  /**
+   * Bối cảnh dùng chung cho cả luồng AI tự động lẫn luồng dán tay: danh sách Dạng
+   * toán trong phạm vi chương, nhãn "Tổng hợp", và các câu còn thiếu Dạng toán
+   * hoặc Mức độ (kèm câu đang gán dạng ngoài phạm vi chương đang soạn).
+   */
+  const getDetectFormsContext = () => {
     const allForms = Array.from(new Set(categories.map(c => c.math_form))).filter(Boolean) as string[];
     const formsToUse = relevantForms.length > 0 ? relevantForms : allForms;
     const globalTongHop = allForms.find(f => /tổng hợp/i.test(f)) || "Toán tổng hợp";
 
-    // Gửi cho AI mọi câu còn THIẾU Dạng toán HOẶC còn THIẾU Mức độ,
-    // kèm cả câu đang gán một dạng nằm ngoài phạm vi chương đang soạn.
     const emptyQs = questions.filter(q =>
        !q.math_form ||
        !q.difficulty ||
        (!formsToUse.includes(q.math_form) && q.math_form !== globalTongHop)
     );
+
+    return { allForms, formsToUse, globalTongHop, emptyQs };
+  };
+
+  /**
+   * Áp dụng kết quả { id: { form, isNew, difficulty } } vào danh sách câu hỏi.
+   * Dùng chung cho cả kết quả gọi AI tự động lẫn kết quả dán tay từ Gemini Web -
+   * cùng một quy tắc áp dụng (dạng có sẵn thì điền ngay, dạng mới thì chờ duyệt,
+   * Mức độ chỉ điền vào ô đang trống) để hai luồng không bao giờ lệch nhau.
+   */
+  const applyDetectFormsResult = (
+    data: Record<string, DetectFormsResultItem>,
+    expectedIds: string[]
+  ) => {
+    let formCount = 0;
+    let difficultyCount = 0;
+    let missingCount = 0;
+    const newSuggestions: Record<string, string> = {};
+
+    // Tính trước danh sách câu hỏi mới trên một bản chụp `questions` hiện tại
+    // (KHÔNG dùng updater `prev => ...` của setQuestions) vì React chạy updater
+    // đó bất đồng bộ ở lần render sau - nếu đếm formCount/difficultyCount/
+    // newSuggestions bên trong updater rồi return ngay sau setQuestions() thì
+    // các biến đếm luôn bằng 0 khi đọc, và newSuggestions luôn rỗng nên đề xuất
+    // Dạng toán MỚI không bao giờ được đưa vào hàng chờ duyệt.
+    const nextQuestions = questions.map(q => {
+         if (!expectedIds.includes(q.id)) return q;
+
+         const result = data[q.id];
+         if (!result) {
+            missingCount++;
+            return q;
+         }
+
+         const patch: any = {};
+
+         if (result.form) {
+            if (result.isNew) {
+               // Dạng mới -> chờ duyệt, chưa gán vào câu hỏi
+               newSuggestions[q.id] = result.form;
+            } else {
+               patch.math_form = result.form;
+               formCount++;
+            }
+         }
+
+         // Chỉ điền vào ô Mức độ đang trống để không đè lên lựa chọn giáo viên
+         // đã tự đặt trước đó.
+         if (result.difficulty && !q.difficulty) {
+            patch.difficulty = result.difficulty;
+            difficultyCount++;
+         }
+
+         return Object.keys(patch).length > 0 ? { ...q, ...patch } : q;
+    });
+
+    setQuestions(nextQuestions);
+
+    if (Object.keys(newSuggestions).length > 0) {
+      setPendingFormSuggestions(prev => ({ ...prev, ...newSuggestions }));
+    }
+
+    return { formCount, difficultyCount, missingCount, newCount: Object.keys(newSuggestions).length };
+  };
+
+  const reportDetectFormsResult = (source: string, r: { formCount: number; difficultyCount: number; missingCount: number; newCount: number }) => {
+    const parts: string[] = [];
+    if (r.formCount > 0) parts.push(`điền Dạng toán cho ${r.formCount} câu`);
+    if (r.difficultyCount > 0) parts.push(`điền Mức độ cho ${r.difficultyCount} câu`);
+    if (r.newCount > 0) parts.push(`đề xuất ${r.newCount} Dạng toán MỚI đang chờ Thầy duyệt (khung màu cam dưới câu hỏi)`);
+    if (r.missingCount > 0) parts.push(`còn ${r.missingCount} câu chưa xử lý được, Thầy chọn tay giúp`);
+    alert(parts.length ? `✨ ${source} đã ${parts.join('; ')}.` : `${source} không nhận diện được câu nào.`);
+  };
+
+  const handleAutoDetectGemini = async () => {
+    const { allForms, formsToUse, globalTongHop, emptyQs } = getDetectFormsContext();
     if (emptyQs.length === 0) {
        alert("Tất cả câu hỏi đã có đủ Dạng toán và Mức độ!");
        return;
@@ -548,61 +635,75 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
             throw new Error(data.error || "Lỗi máy chủ");
         }
 
-        // Mỗi câu trả về { form, isNew, difficulty }. Dạng đã có trong Ngân hàng thì
-        // áp dụng ngay; dạng MỚI do AI tự đề xuất thì chỉ đưa vào hàng chờ duyệt tại
-        // chỗ, không tự ý ghi - tránh sinh danh mục rác nếu AI đặt tên chưa ổn.
-        let formCount = 0;
-        let difficultyCount = 0;
-        let missingCount = 0;
-        const newSuggestions: Record<string, string> = {};
-
-        setQuestions(prev => prev.map(q => {
-             const result = data[q.id];
-             if (!result) {
-                missingCount++;
-                return q;
-             }
-
-             const patch: any = {};
-
-             if (result.form) {
-                if (result.isNew) {
-                   // Dạng mới -> chờ duyệt, chưa gán vào câu hỏi
-                   newSuggestions[q.id] = result.form;
-                } else {
-                   patch.math_form = result.form;
-                   formCount++;
-                }
-             }
-
-             // AI gán Mức độ theo NỘI DUNG câu hỏi. Chỉ điền vào ô đang trống để không
-             // đè lên lựa chọn giáo viên đã tự đặt trước đó.
-             if (result.difficulty && !q.difficulty) {
-                patch.difficulty = result.difficulty;
-                difficultyCount++;
-             }
-
-             return Object.keys(patch).length > 0 ? { ...q, ...patch } : q;
-        }));
-
-        if (Object.keys(newSuggestions).length > 0) {
-          setPendingFormSuggestions(prev => ({ ...prev, ...newSuggestions }));
-        }
-
-        setTimeout(() => {
-          const parts: string[] = [];
-          if (formCount > 0) parts.push(`điền Dạng toán cho ${formCount} câu`);
-          if (difficultyCount > 0) parts.push(`điền Mức độ cho ${difficultyCount} câu`);
-          const newCount = Object.keys(newSuggestions).length;
-          if (newCount > 0) parts.push(`đề xuất ${newCount} Dạng toán MỚI đang chờ Thầy duyệt (khung màu cam dưới câu hỏi)`);
-          if (missingCount > 0) parts.push(`còn ${missingCount} câu AI chưa xử lý được, Thầy chọn tay giúp`);
-          alert(parts.length ? `✨ AI Gemini đã ${parts.join('; ')}.` : 'AI Gemini không nhận diện được câu nào.');
-        }, 100);
+        const result = applyDetectFormsResult(data, emptyQs.map(q => q.id));
+        setTimeout(() => reportDetectFormsResult('AI Gemini', result), 100);
     } catch (e: any) {
         console.error(e);
-        alert("Lỗi khi gọi AI Gemini: " + e.message);
+        // Gọi AI tự động thất bại (hết quota, quá tải, mất mạng...) - gợi ý ngay
+        // lối thoát bằng tay thay vì chỉ báo lỗi rồi thôi.
+        if (confirm("Lỗi khi gọi AI Gemini: " + e.message + "\n\nDùng cách THỦ CÔNG (dán tay vào Gemini Web) luôn không?")) {
+          openManualDetectModal();
+        }
     } finally {
         setGeminiLoading(false);
+    }
+  };
+
+  /** Mở hộp thoại thủ công: sinh sẵn prompt để giáo viên copy dán vào Gemini Web/ChatGPT. */
+  const openManualDetectModal = () => {
+    const { formsToUse, globalTongHop, emptyQs } = getDetectFormsContext();
+    if (emptyQs.length === 0) {
+       alert("Tất cả câu hỏi đã có đủ Dạng toán và Mức độ!");
+       return;
+    }
+
+    const prompt = buildDetectFormsPrompt({
+      questions: emptyQs.map(q => ({
+        id: q.id,
+        question_type: q.question_type,
+        content: q.content,
+        statements: q.question_type === 'true_false_cluster'
+          ? [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean)
+          : undefined,
+      })),
+      formsToUse,
+      globalTongHop,
+      forManualCopy: true,
+    });
+
+    setManualDetectPrompt(prompt);
+    setManualDetectInput('');
+    setManualDetectError('');
+    setManualDetectCopied(false);
+    setShowManualDetectModal(true);
+  };
+
+  const handleCopyManualPrompt = async () => {
+    try {
+      await navigator.clipboard.writeText(manualDetectPrompt);
+      setManualDetectCopied(true);
+      setTimeout(() => setManualDetectCopied(false), 2000);
+    } catch {
+      alert("Không copy được tự động. Thầy bôi đen và copy thủ công đoạn văn bản bên dưới giúp.");
+    }
+  };
+
+  /** Đọc kết quả JSON dán tay từ Gemini Web/ChatGPT rồi áp dụng như luồng tự động. */
+  const applyManualDetectInput = () => {
+    if (!manualDetectInput.trim()) {
+      setManualDetectError('Chưa dán nội dung kết quả vào ô bên dưới.');
+      return;
+    }
+
+    const { allForms, emptyQs } = getDetectFormsContext();
+
+    try {
+      const data = parseDetectFormsResponse(manualDetectInput, allForms);
+      const result = applyDetectFormsResult(data, emptyQs.map(q => q.id));
+      setShowManualDetectModal(false);
+      setTimeout(() => reportDetectFormsResult('Kết quả dán tay', result), 100);
+    } catch (e: any) {
+      setManualDetectError('Không đọc được kết quả: ' + e.message + '. Kiểm tra lại đã dán đúng và đủ đoạn JSON AI trả về chưa.');
     }
   };
 
@@ -915,12 +1016,21 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                     {geminiLoading ? '⏳ Đang phân tích...' : '✨ Dùng AI (Hệ thống)'}
                   </button>
                   <div style={{ width: 1, height: 16, background: '#cbd5e1', margin: '0 4px' }}></div>
-                  <button 
+                  <button
                     onClick={handleAutoDetectAll}
                     style={{ background: 'none', border: 'none', color: '#475569', fontSize: 11, fontWeight: 600, cursor: 'pointer', textDecoration: 'underline' }}
                     title="Dùng thuật toán cơ bản (Offline)"
                   >
                     Dùng thuật toán
+                  </button>
+                  <div style={{ width: 1, height: 16, background: '#cbd5e1', margin: '0 4px' }}></div>
+                  <button
+                    type="button"
+                    onClick={openManualDetectModal}
+                    title="Dùng khi Cổng AI của hệ thống báo lỗi (hết quota, quá tải...) - tự dán vào Gemini Web/ChatGPT"
+                    style={{ background: 'none', border: 'none', color: '#7c3aed', fontSize: 11, fontWeight: 600, cursor: 'pointer', textDecoration: 'underline', display: 'flex', alignItems: 'center', gap: 4 }}
+                  >
+                    <ClipboardPaste style={{ width: 12, height: 12 }} /> Thủ công
                   </button>
                 </div>
 
@@ -1193,13 +1303,80 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
               handleUpdateField(showAddCategoryModal.targetId, 'math_form', newForm);
            }
         }} 
-        initialContext={editCtx} 
-        uniqueGrades={uniqueGrades} 
-        uniqueSubjects={uniqueSubjects} 
-        uniqueTopics={uniqueTopics} 
-        uniqueLessons={uniqueLessons} 
+        initialContext={editCtx}
+        uniqueGrades={uniqueGrades}
+        uniqueSubjects={uniqueSubjects}
+        uniqueTopics={uniqueTopics}
+        uniqueLessons={uniqueLessons}
         supabase={supabase}
       />
+
+      {/* Hộp thoại Thủ công: dùng khi Cổng AI của hệ thống báo lỗi (hết quota,
+          quá tải 503...). Giáo viên tự copy prompt dán vào Gemini Web/ChatGPT
+          rồi dán kết quả JSON ngược lại - không phụ thuộc server đang gặp sự cố. */}
+      {showManualDetectModal && (
+        <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.6)', zIndex: 90, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 16 }}>
+          <div style={{ background: '#fff', borderRadius: 16, width: '100%', maxWidth: 640, maxHeight: '92vh', display: 'flex', flexDirection: 'column', boxShadow: '0 20px 60px rgba(0,0,0,0.3)' }}>
+            <div style={{ padding: '16px 20px', borderBottom: '1px solid #e2e8f0', background: '#faf5ff', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: '16px 16px 0 0' }}>
+              <h2 style={{ fontSize: 16, fontWeight: 700, color: '#6b21a8', display: 'flex', alignItems: 'center', gap: 8, margin: 0 }}>
+                <ClipboardPaste style={{ width: 18, height: 18 }} /> Phân tích Dạng toán &amp; Mức độ - Thủ công
+              </h2>
+              <button onClick={() => setShowManualDetectModal(false)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 4 }}>
+                <X style={{ width: 18, height: 18, color: '#94a3b8' }} />
+              </button>
+            </div>
+
+            <div style={{ padding: 20, overflowY: 'auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
+              <div style={{ background: '#eff6ff', border: '1px solid #bfdbfe', borderRadius: 10, padding: '12px 14px', fontSize: 12.5, color: '#1e40af', lineHeight: 1.6 }}>
+                Dùng khi nút &quot;Dùng AI (Hệ thống)&quot; báo lỗi (hết quota, quá tải 503...).
+                <br />
+                <b>Bước 1:</b> Copy prompt bên dưới. <b>Bước 2:</b> Dán vào Gemini Web, ChatGPT hoặc AI Studio bất kỳ. <b>Bước 3:</b> Dán kết quả JSON AI trả về vào ô cuối, rồi bấm Áp dụng.
+              </div>
+
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+                  <label style={{ fontSize: 12.5, fontWeight: 700, color: '#374151' }}>Bước 1 · Prompt (đã kèm sẵn nội dung câu hỏi)</label>
+                  <button type="button" onClick={handleCopyManualPrompt}
+                    style={{ display: 'flex', alignItems: 'center', gap: 5, fontSize: 12, fontWeight: 700, padding: '4px 10px', borderRadius: 6, border: '1px solid #c4b5fd', background: manualDetectCopied ? '#f0fdf4' : '#f5f3ff', color: manualDetectCopied ? '#166534' : '#6d28d9', cursor: 'pointer' }}>
+                    {manualDetectCopied ? <><CheckCircle2 style={{ width: 13, height: 13 }} /> Đã copy</> : <><Copy style={{ width: 13, height: 13 }} /> Copy Prompt</>}
+                  </button>
+                </div>
+                <textarea
+                  readOnly
+                  value={manualDetectPrompt}
+                  style={{ width: '100%', height: 140, padding: 10, border: '1px solid #e2e8f0', borderRadius: 8, fontSize: 11.5, fontFamily: 'monospace', color: '#475569', background: '#f8fafc', resize: 'vertical' }}
+                  onClick={(e) => (e.target as HTMLTextAreaElement).select()}
+                />
+              </div>
+
+              <div>
+                <label style={{ fontSize: 12.5, fontWeight: 700, color: '#374151', marginBottom: 6, display: 'block' }}>Bước 2 · Dán kết quả JSON AI trả về vào đây</label>
+                <textarea
+                  value={manualDetectInput}
+                  onChange={(e) => { setManualDetectInput(e.target.value); setManualDetectError(''); }}
+                  placeholder='Dán nguyên văn câu trả lời của AI vào đây, ví dụ: [{"id": "...", "form": "...", "isNew": false, "difficulty": "Thông hiểu"}, ...]'
+                  style={{ width: '100%', height: 140, padding: 10, border: `1px solid ${manualDetectError ? '#fca5a5' : '#e2e8f0'}`, borderRadius: 8, fontSize: 12, fontFamily: 'monospace', resize: 'vertical' }}
+                />
+                {manualDetectError && (
+                  <div style={{ marginTop: 6, fontSize: 12, color: '#dc2626', display: 'flex', alignItems: 'flex-start', gap: 5 }}>
+                    <AlertTriangle style={{ width: 13, height: 13, flexShrink: 0, marginTop: 1 }} /> {manualDetectError}
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div style={{ padding: '14px 20px', borderTop: '1px solid #e2e8f0', display: 'flex', justifyContent: 'flex-end', gap: 10 }}>
+              <button onClick={() => setShowManualDetectModal(false)} style={{ padding: '8px 18px', background: '#f1f5f9', border: '1px solid #cbd5e1', borderRadius: 8, fontWeight: 700, fontSize: 13, color: '#475569', cursor: 'pointer' }}>
+                Đóng
+              </button>
+              <button onClick={applyManualDetectInput} disabled={!manualDetectInput.trim()}
+                style={{ padding: '8px 20px', background: manualDetectInput.trim() ? '#7c3aed' : '#cbd5e1', border: 'none', borderRadius: 8, fontWeight: 700, fontSize: 13, color: '#fff', cursor: manualDetectInput.trim() ? 'pointer' : 'not-allowed' }}>
+                Áp dụng kết quả
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
