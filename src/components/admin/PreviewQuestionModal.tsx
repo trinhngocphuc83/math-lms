@@ -1,6 +1,6 @@
 "use client";
 
-import { X, Wand2, Loader2, Eye } from "lucide-react";
+import { X, Wand2, Loader2 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useState, useEffect } from "react";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
@@ -135,32 +135,24 @@ export default function PreviewQuestionModal({ isOpen, onClose, question, onUpda
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 max-h-[92vh]">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
 
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-orange-500 to-amber-500 shrink-0">
-          <div className="flex items-center gap-3 min-w-0">
-            <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
-              <Eye className="w-5 h-5 text-white" />
-            </div>
-            <div className="min-w-0">
-              <div className="text-[11px] font-bold text-orange-100 uppercase tracking-widest">Xem trước câu hỏi</div>
-              <h2 className="text-base font-black text-white truncate">{localQuestion.question_id || localQuestion.temp_id}</h2>
-            </div>
-          </div>
-          <div className="flex items-center gap-2 shrink-0">
-            <button onClick={handleFixLatex} disabled={isFixing} className="flex items-center gap-1.5 px-3 py-1.5 bg-white/90 hover:bg-white text-orange-700 font-bold rounded-lg text-xs transition-colors shadow-sm disabled:opacity-60">
+        <div className="flex items-center justify-between p-4 border-b border-gray-100 bg-orange-50 shrink-0">
+          <h2 className="text-lg font-black text-orange-800">Xem trước: {localQuestion.question_id || localQuestion.temp_id}</h2>
+          <div className="flex items-center gap-2">
+            <button onClick={handleFixLatex} disabled={isFixing} className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold rounded-lg text-xs transition-colors border border-purple-200 disabled:opacity-60">
                {isFixing ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Wand2 className="w-3.5 h-3.5" />}
                Sửa lỗi LaTeX
             </button>
-            <button onClick={onClose} className="p-2 text-white/90 hover:bg-white/20 rounded-full transition-colors">
+            <button onClick={onClose} className="p-2 text-orange-500 hover:bg-orange-100 rounded-full transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
         {/* Body */}
-        <div className="p-6 overflow-y-auto bg-gray-50/70">
+        <div className="p-6 overflow-y-auto max-h-[85vh] bg-gray-50/50">
           <QuestionPreviewCard
             content={localQuestion.content}
             imageUrl={localQuestion.image_url}
@@ -172,7 +164,7 @@ export default function PreviewQuestionModal({ isOpen, onClose, question, onUpda
             statementsLayout={statementsLayout}
             correctAnswerDisplay={localQuestion.correct_answer || undefined}
             explanation={localQuestion.explanation}
-            size="lg"
+            size="md"
           />
         </div>
 

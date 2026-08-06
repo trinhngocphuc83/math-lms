@@ -706,11 +706,11 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                      const explanationText = !isMd ? (c.answer || c.sampleAnswer || c.explanation || '') : '';
 
                      return (
-                     <div className="xl:sticky xl:top-3 min-w-0 animate-in fade-in slide-in-from-top-2">
-                        <div className="flex items-center justify-between mb-3">
-                           <div className="text-[11px] font-black text-indigo-500 uppercase tracking-widest flex items-center gap-2">
-                              <MonitorPlay className="w-3.5 h-3.5" /> Xem trước
-                           </div>
+                     <div className="xl:sticky xl:top-3 min-w-0 animate-in fade-in slide-in-from-top-2 bg-white rounded-2xl border border-gray-200 shadow-md overflow-hidden">
+                        <div className="flex items-center justify-between p-4 border-b border-gray-100 bg-orange-50">
+                           <h3 className="text-base font-black text-orange-800 flex items-center gap-2">
+                              <MonitorPlay className="w-4 h-4" /> Xem trước
+                           </h3>
                            <button onMouseDown={(e) => {
                                e.preventDefault(); // Tránh làm mất focus của ô nhập liệu
                                const isFixedBySelection = applyLatexFixToActiveElement();
@@ -723,19 +723,20 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                      else updateBlockContent(idx, JSON.parse(fixed));
                                   } catch(err) { console.error(err) }
                                }
-                           }} className="flex items-center gap-1.5 text-xs font-bold bg-purple-50 text-purple-700 px-3 py-1.5 rounded-md hover:bg-purple-100 transition-colors border border-purple-200 shadow-sm">
+                           }} className="flex items-center gap-1.5 text-xs font-bold bg-purple-100 text-purple-700 px-3 py-1.5 rounded-lg hover:bg-purple-200 transition-colors border border-purple-200">
                               🪄 Sửa lỗi LaTeX ngay
                            </button>
                         </div>
-                        <QuestionPreviewCard
-                           content={isMd ? block.content : (c.question || "*(Chưa có câu hỏi)*")}
-                           statements={statements}
-                           statementsLayout={statementsLayout}
-                           correctAnswerDisplay={correctAnswerDisplay}
-                           explanation={explanationText}
-                           size="lg"
-                           className="w-full xl:max-h-[85vh] overflow-y-auto"
-                        />
+                        <div className="p-6 overflow-y-auto max-h-[85vh] bg-gray-50/50">
+                           <QuestionPreviewCard
+                              content={isMd ? block.content : (c.question || "*(Chưa có câu hỏi)*")}
+                              statements={statements}
+                              statementsLayout={statementsLayout}
+                              correctAnswerDisplay={correctAnswerDisplay}
+                              explanation={explanationText}
+                              size="md"
+                           />
+                        </div>
                      </div>
                      );
                 })()}

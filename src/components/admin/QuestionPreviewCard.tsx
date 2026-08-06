@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { CheckCircle2, XCircle } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -140,18 +139,18 @@ export default function QuestionPreviewCard({
   const { methodText, explanationText } = explanation ? splitExplanation(explanation) : { methodText: '', explanationText: '' };
 
   return (
-    <div className={`bg-white rounded-2xl border border-gray-200 shadow-sm ${isLg ? 'p-6' : 'p-5'} ${className}`}>
+    <div className={className}>
       {badges.length > 0 && (
         <div className="flex items-center gap-2 mb-4 flex-wrap">
           {badges.map((b, i) => (
-            <span key={i} className={`px-2.5 py-1 font-bold text-[11px] rounded-lg ${BADGE_COLORS[b.color || 'blue']}`}>
+            <span key={i} className={`px-3 py-1 font-bold text-xs rounded-lg ${BADGE_COLORS[b.color || 'blue']}`}>
               {b.label}: {b.value}
             </span>
           ))}
         </div>
       )}
 
-      <div className={`text-gray-800 font-medium mb-5 ${isLg ? 'text-lg' : 'text-base'}`}>
+      <div className={`text-gray-800 font-medium leading-relaxed mb-6 ${isLg ? 'text-lg' : 'text-base'}`}>
         {renderRich(content || "*(Chưa có nội dung)*")}
         {imageUrl && (
           <div className="my-4 text-center">
@@ -161,28 +160,27 @@ export default function QuestionPreviewCard({
       </div>
 
       {statements.length > 0 && statementsLayout === 'choice' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           {statements.map(st => (
-            <div key={st.key} className={`flex gap-2 p-3.5 rounded-xl border transition-colors ${st.isCorrect ? 'bg-emerald-50 border-emerald-300 ring-1 ring-emerald-200' : 'bg-white border-gray-200'}`}>
-              <span className={`font-black shrink-0 ${st.isCorrect ? 'text-emerald-700' : 'text-indigo-600'}`}>{st.label}.</span>
+            <div key={st.key} className="flex gap-2 p-3 bg-white border border-gray-200 rounded-xl">
+              <span className="font-bold text-indigo-600 shrink-0">{st.label}.</span>
               <div className="flex-1 min-w-0">{renderRich(st.content)}</div>
-              {st.isCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />}
             </div>
           ))}
         </div>
       )}
 
       {statements.length > 0 && statementsLayout === 'truefalse' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
           {statements.map(st => (
-            <div key={st.key} className="flex flex-col gap-1.5 p-3.5 rounded-xl border border-gray-200 bg-gray-50/60">
-              <span className="font-bold text-indigo-600 text-sm">Mệnh đề {st.label.toUpperCase()}</span>
+            <div key={st.key} className="flex flex-col gap-2 p-3 bg-white border border-gray-200 rounded-xl">
+              <span className="font-bold text-indigo-600 text-sm">Mệnh đề {st.label.toUpperCase()}:</span>
               <div className="flex-1 text-sm">{renderRich(st.content)}</div>
               {typeof st.isTrue === 'boolean' && (
                 <div className="mt-1 pt-2 border-t border-gray-200">
                   {st.isTrue
-                    ? <span className="flex items-center gap-1 text-xs font-bold text-emerald-600"><CheckCircle2 className="w-3.5 h-3.5" /> Đáp án: ĐÚNG</span>
-                    : <span className="flex items-center gap-1 text-xs font-bold text-red-500"><XCircle className="w-3.5 h-3.5" /> Đáp án: SAI</span>}
+                    ? <span className="text-xs font-bold text-green-600">✓ Đáp án: ĐÚNG</span>
+                    : <span className="text-xs font-bold text-red-500">✕ Đáp án: SAI</span>}
                 </div>
               )}
             </div>
@@ -191,28 +189,28 @@ export default function QuestionPreviewCard({
       )}
 
       {correctAnswerDisplay && (
-        <div className="bg-emerald-50 border border-emerald-200 p-4 rounded-xl mb-4">
-          <h4 className="font-bold text-emerald-800 mb-1 text-sm flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4" /> Đáp án đúng:</h4>
+        <div className="bg-emerald-50 border border-emerald-100 p-4 rounded-xl mb-4">
+          <h4 className="font-bold text-emerald-800 mb-1 text-sm">Đáp án đúng:</h4>
           <div className="text-emerald-700 font-black text-xl">{renderRich(correctAnswerDisplay)}</div>
         </div>
       )}
 
       {(methodText || explanationText) && (
-        <div className="space-y-3">
+        <div className="space-y-4">
           {methodText && (
             <div className="bg-blue-50 p-4 rounded-xl border border-blue-200">
-              <h4 className="font-bold text-blue-800 mb-2 text-[11px] uppercase tracking-wider flex items-center gap-2">
-                <span className="w-1.5 h-4 bg-blue-600 rounded-full" /> Phương pháp giải
+              <h4 className="font-bold text-blue-800 mb-2 text-sm uppercase tracking-wider flex items-center gap-2">
+                <span className="w-1.5 h-4 bg-blue-600 rounded-full"></span> Phương pháp giải:
               </h4>
-              {renderRich(methodText)}
+              <div className="text-blue-900 text-sm">{renderRich(methodText)}</div>
             </div>
           )}
           {explanationText && (
             <div className="bg-gray-100 p-4 rounded-xl border border-gray-200">
-              <h4 className="font-bold text-gray-700 mb-2 text-[11px] uppercase tracking-wider flex items-center gap-2">
-                <span className="w-1.5 h-4 bg-gray-500 rounded-full" /> Lời giải chi tiết
+              <h4 className="font-bold text-gray-700 mb-2 text-sm uppercase tracking-wider flex items-center gap-2">
+                <span className="w-1.5 h-4 bg-gray-500 rounded-full"></span> Lời giải chi tiết:
               </h4>
-              {renderRich(explanationText)}
+              <div className="text-gray-700 text-sm">{renderRich(explanationText)}</div>
             </div>
           )}
         </div>
