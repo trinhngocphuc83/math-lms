@@ -50,7 +50,7 @@ export async function POST(request: Request) {
       return `ID: ${q.id}\nQuestionType: ${q.question_type}\nContent: ${String(q.content).slice(0, 500)}`;
     }).join('\n\n');
 
-    const prompt = `Bạn là một chuyên gia phân loại đề Toán học, đang giúp giáo viên gắn "Dạng toán" (math_form) cho từng câu hỏi trước khi lưu vào Ngân hàng câu hỏi.
+    const prompt = `Bạn là một chuyên gia phân loại đề Toán học, đang giúp giáo viên gắn "Dạng toán" và "Mức độ" cho từng câu hỏi trước khi lưu vào Ngân hàng câu hỏi.
 
 DANH SÁCH DẠNG TOÁN ĐÃ CÓ SẴN TRONG NGÂN HÀNG (chỉ trong phạm vi Chương/Bài đang soạn):
 ${formListStr}
@@ -58,7 +58,7 @@ ${formListStr}
 CÂU HỎI CẦN PHÂN LOẠI:
 ${questionsBlock}
 
-QUY TẮC:
+QUY TẮC VỀ DẠNG TOÁN:
 1. Với câu KHÔNG phải Đúng/Sai: chọn 1 Dạng toán khớp nhất trong danh sách có sẵn. Nếu KHÔNG có dạng nào phù hợp, được phép TỰ ĐỀ XUẤT một tên Dạng toán mới, ngắn gọn, đúng văn phong các dạng đã có (ví dụ "Tìm khoảng đồng biến của hàm số", không viết câu đầy đủ, không có dấu chấm cuối).
 2. Với câu Đúng/Sai 4 mệnh đề: xét TỪNG mệnh đề a, b, c, d riêng biệt xem thuộc dạng toán nào.
    - Nếu CẢ 4 mệnh đề cùng thuộc một Dạng toán -> trả về đúng dạng đó (isNew=false nếu dạng đã có sẵn).
@@ -66,12 +66,22 @@ QUY TẮC:
    - Chỉ tự đề xuất Dạng toán mới cho câu Đúng/Sai khi cả 4 mệnh đề cùng một dạng NHƯNG dạng đó chưa có trong danh sách.
 3. Nếu Dạng toán trả về TRÙNG (không phân biệt hoa/thường) với một dạng đã có trong danh sách -> isNew=false và viết lại NGUYÊN VĂN đúng như trong danh sách.
 4. Nếu là dạng bạn tự đề xuất, hoàn toàn mới, chưa từng xuất hiện trong danh sách -> isNew=true.
-5. Nếu nội dung quá mơ hồ để phân loại, bỏ qua ID đó (không đưa vào kết quả).
+
+QUY TẮC VỀ MỨC ĐỘ (đánh giá theo NỘI DUNG câu hỏi, không theo thứ tự câu):
+- "Nhận biết": chỉ cần nhớ định nghĩa, công thức, nhận ra khái niệm. Không cần biến đổi.
+- "Thông hiểu": áp dụng trực tiếp một công thức/quy tắc quen thuộc, tính toán 1-2 bước.
+- "Vận dụng": phải kết hợp nhiều bước hoặc nhiều kiến thức, biến đổi không hiển nhiên.
+- "Vận dụng cao": bài toán phức tạp, nhiều tầng lập luận, toán thực tế khó, hoặc cần ý tưởng đặc biệt.
+
+QUY TẮC BẮT BUỘC VỀ KẾT QUẢ:
+- PHẢI trả về đầy đủ kết quả cho TẤT CẢ ${questions.length} ID được liệt kê ở trên, KHÔNG được bỏ sót ID nào.
+- Nếu một câu quá mơ hồ, vẫn phải đưa ra phương án hợp lý nhất chứ tuyệt đối KHÔNG bỏ trống hay bỏ qua ID đó.
+- Trường "difficulty" chỉ được nhận đúng 1 trong 4 giá trị: "Nhận biết", "Thông hiểu", "Vận dụng", "Vận dụng cao".
 
 Trả về DUY NHẤT một chuỗi JSON, định dạng:
 {
-  "id_câu_hỏi_1": { "form": "Tên Dạng Bài", "isNew": false },
-  "id_câu_hỏi_2": { "form": "Tên Dạng Bài Mới Do Bạn Đề Xuất", "isNew": true }
+  "id_câu_hỏi_1": { "form": "Tên Dạng Bài", "isNew": false, "difficulty": "Thông hiểu" },
+  "id_câu_hỏi_2": { "form": "Tên Dạng Bài Mới Do Bạn Đề Xuất", "isNew": true, "difficulty": "Vận dụng" }
 }`;
 
     let lastError: any = null;
@@ -96,15 +106,31 @@ Trả về DUY NHẤT một chuỗi JSON, định dạng:
 
         const parsed = JSON.parse(jsonStr);
 
-        // Chuẩn hoá kết quả: đảm bảo mỗi mục có đúng { form, isNew }, phòng khi AI trả sai định dạng
-        const normalized: Record<string, { form: string; isNew: boolean }> = {};
+        // Chuẩn hoá kết quả, phòng khi AI trả sai định dạng.
+        // isNew luôn tự xác định lại bằng cách đối chiếu với danh sách thật, không tin
+        // hoàn toàn vào cờ AI trả về (AI hay báo nhầm dạng đã có thành dạng mới).
+        const VALID_DIFFICULTIES = ['Nhận biết', 'Thông hiểu', 'Vận dụng', 'Vận dụng cao'];
+        const normalized: Record<string, { form: string; isNew: boolean; difficulty: string }> = {};
+
         for (const [id, value] of Object.entries(parsed)) {
-          if (typeof value === 'string') {
-            normalized[id] = { form: value, isNew: !allForms?.some(f => f.trim().toLowerCase() === value.trim().toLowerCase()) };
-          } else if (value && typeof value === 'object' && 'form' in value) {
-            const v = value as any;
-            normalized[id] = { form: String(v.form || ''), isNew: Boolean(v.isNew) };
-          }
+          const raw = typeof value === 'string' ? { form: value } : (value as any);
+          if (!raw || typeof raw !== 'object') continue;
+
+          const form = String(raw.form || '').trim();
+          if (!form) continue;
+
+          // Nếu tên dạng trùng (không phân biệt hoa/thường) với dạng đã có -> dùng
+          // NGUYÊN VĂN bản trong ngân hàng để không tạo ra bản sao lệch chính tả.
+          const existing = allForms?.find(f => f.trim().toLowerCase() === form.toLowerCase());
+          const difficulty = VALID_DIFFICULTIES.includes(String(raw.difficulty || '').trim())
+            ? String(raw.difficulty).trim()
+            : '';
+
+          normalized[id] = {
+            form: existing || form,
+            isNew: !existing,
+            difficulty,
+          };
         }
 
         return NextResponse.json(normalized);
