@@ -546,27 +546,44 @@ const parseMarkdownToBlocks = (content: string): Block[] => {
       }
       try {
           let rawJson = match[1].replace(/\n$/, '');
-          // Tiền xử lý phục hồi lỗi LaTeX escape: AI quên escape nên JSON parse \n thành kí tự xuống dòng
-          rawJson = rawJson
-              .replace(/\\n(?=eq|otin|exists|eg|abla|u|i|earrow|atural|parallel)/g, '\\\\n')
-              .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
-              .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
-              .replace(/\\b(?=egin)/g, '\\\\b')
-              .replace(/\\f(?=rac|orall)/g, '\\\\f')
-              .replace(/\\e(?=nd)/g, '\\\\e');
-
           let data;
+
+          // Thử parse THẲNG trước tiên. Nội dung đã lưu đúng (qua JSON.stringify chuẩn
+          // ở serializeBlocksToMarkdown) sẽ parse thành công ngay ở bước này.
           try {
-             data = JSON.parse(rawJson);
-          } catch(e1) {
-             // Thử vá lỗi JSON bị AI cắt cụt do vượt max token
-             let patchedJson = rawJson.trim();
-             if (patchedJson.endsWith(',')) patchedJson = patchedJson.slice(0, -1);
-             if (patchedJson.endsWith('"')) patchedJson += '}]';
-             else if (patchedJson.endsWith('}')) patchedJson += ']';
-             else if (!patchedJson.endsWith(']')) patchedJson += '}]';
-             data = JSON.parse(patchedJson);
+              data = JSON.parse(rawJson);
+          } catch {
+              // Chỉ khi parse thẳng thất bại (dấu hiệu AI quên nhân đôi dấu \ lúc mới
+              // sinh nội dung) mới áp dụng phục hồi escape. Bắt buộc kèm (?<!\\) để KHÔNG
+              // đụng vào các cặp \\ đã đúng sẵn - trước đây thiếu điều kiện này nên mỗi
+              // lần MỞ LẠI một bài đã lưu đúng, bộ phục hồi lại nhân ba dấu \ (\\forall
+              // -> \\\forall), khiến JSON.parse biến \f thành ký tự điều khiển và công
+              // thức hiện lỗi "\orall" dù dữ liệu trong CSDL vẫn hoàn toàn đúng.
+              const recovered = rawJson
+                  .replace(/(?<!\\)\\n(?=eq|otin|exists|eg|abla|u|i|earrow|atural|parallel)/g, '\\\\n')
+                  .replace(/(?<!\\)\\r(?=ightarrow|ho|angle)/g, '\\\\r')
+                  .replace(/(?<!\\)\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
+                  .replace(/(?<!\\)\\b(?=egin)/g, '\\\\b')
+                  .replace(/(?<!\\)\\f(?=rac|orall)/g, '\\\\f')
+                  .replace(/(?<!\\)\\e(?=nd)/g, '\\\\e');
+
+              try {
+                  data = JSON.parse(recovered);
+              } catch(e1) {
+                  // Thử vá lỗi JSON bị AI cắt cụt do vượt max token
+                  let patchedJson = recovered.trim();
+                  if (patchedJson.endsWith(',')) patchedJson = patchedJson.slice(0, -1);
+                  if (patchedJson.endsWith('"')) patchedJson += '}]';
+                  else if (patchedJson.endsWith('}')) patchedJson += ']';
+                  else if (!patchedJson.endsWith(']')) patchedJson += '}]';
+                  data = JSON.parse(patchedJson);
+              }
           }
+
+          // Dọn nốt ký tự điều khiển còn sót (nếu nội dung cũ đã lỡ bị lưu hỏng từ
+          // trước) - vô hại với nội dung vốn đã đúng vì không có gì để dọn.
+          data = cleanObjectLatex(data);
+
           if (Array.isArray(data)) {
               data.forEach(item => {
                   if (item.question) {
