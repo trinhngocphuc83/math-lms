@@ -237,6 +237,21 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const shortAnswerBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && ['short_answer', 'essay'].includes(x.b.content?.type));
   const theoryBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'md');
 
+  // Khối còn cần xử lý ảnh (chèn thủ công hoặc xác nhận cắt ảnh AI) - dùng để
+  // báo động trên Bản đồ để không bị bỏ sót khi có nhiều câu.
+  const IMAGE_PLACEHOLDER_REGEX = /\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\]/i;
+  const blockNeedsImage = (b: Block): boolean => {
+     if (b.type === 'md') {
+        if (typeof b.content !== 'string') return false;
+        return IMAGE_PLACEHOLDER_REGEX.test(b.content) || /\{\s*"image_bbox"\s*:\s*\[([\d,\s]+)\]\s*\}/.test(b.content);
+     }
+     if (b.type === 'quiz') {
+        if (b.content?.autoCropMetadata) return true;
+        return IMAGE_PLACEHOLDER_REGEX.test(b.content?.question || '');
+     }
+     return false;
+  };
+
   return (
     <div className="flex flex-col md:flex-row h-full overflow-hidden bg-gray-100 relative">
        {/* SIDEBAR BẢN ĐỒ CÂU HỎI - thu gọn được (240px ↔ 52px) */}
@@ -269,14 +284,21 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 ].map(sec => sec.items.length === 0 ? null : (
                    <div key={sec.short} className="flex flex-col items-center gap-1 w-full">
                       <div className={`text-[9px] font-black uppercase tracking-wider ${sec.tone} mt-1`}>{sec.short}</div>
-                      {sec.items.map((item, idx) => (
-                         <button
-                            key={item.b.id}
-                            onClick={() => setActiveBlockId(item.b.id)}
-                            title={`${sec.label} ${idx + 1}`}
-                            className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[12px] transition-all shrink-0 ${activeBlockId === item.b.id ? sec.on : sec.off}`}
-                         >{idx + 1}</button>
-                      ))}
+                      {sec.items.map((item, idx) => {
+                         const needsImage = blockNeedsImage(item.b);
+                         return (
+                         <div key={item.b.id} className="relative shrink-0">
+                            <button
+                               onClick={() => setActiveBlockId(item.b.id)}
+                               title={needsImage ? `${sec.label} ${idx + 1} - Còn thiếu ảnh!` : `${sec.label} ${idx + 1}`}
+                               className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[12px] transition-all shrink-0 ${activeBlockId === item.b.id ? sec.on : sec.off} ${needsImage ? 'ring-2 ring-red-400 ring-offset-1' : ''}`}
+                            >{idx + 1}</button>
+                            {needsImage && (
+                               <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" title="Còn thiếu ảnh"/>
+                            )}
+                         </div>
+                         );
+                      })}
                    </div>
                 ))}
              </div>
@@ -289,11 +311,15 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 <div>
                    <div className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-3">Lý Thuyết / Văn Bản</div>
                    <div className="flex flex-col gap-1.5">
-                      {theoryBlocks.map((item, idx) => (
-                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`text-left px-3 py-2 rounded-lg text-xs font-semibold truncate transition-colors ${activeBlockId === item.b.id ? 'bg-indigo-600 text-white shadow-md' : 'bg-gray-50 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600'}`}>
+                      {theoryBlocks.map((item, idx) => {
+                         const needsImage = blockNeedsImage(item.b);
+                         return (
+                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} title={needsImage ? 'Còn thiếu ảnh!' : undefined} className={`text-left px-3 py-2 rounded-lg text-xs font-semibold truncate transition-colors flex items-center gap-1.5 ${activeBlockId === item.b.id ? 'bg-indigo-600 text-white shadow-md' : needsImage ? 'bg-red-50 text-red-700 ring-1 ring-red-300 hover:bg-red-100' : 'bg-gray-50 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600'}`}>
                             {idx + 1}. Khối Văn bản
+                            {needsImage && <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" title="Còn thiếu ảnh"/>}
                          </button>
-                      ))}
+                         );
+                      })}
                    </div>
                 </div>
              )}
@@ -302,9 +328,15 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 <div>
                    <div className="text-[11px] font-bold text-teal-600 uppercase tracking-widest mb-3">Phần 1. Trắc nghiệm</div>
                    <div className="grid grid-cols-5 gap-1.5">
-                      {multipleChoiceBlocks.map((item, idx) => (
-                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-teal-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-teal-50 hover:text-teal-600'}`}>{idx + 1}</button>
-                      ))}
+                      {multipleChoiceBlocks.map((item, idx) => {
+                         const needsImage = blockNeedsImage(item.b);
+                         return (
+                         <div key={item.b.id} className="relative">
+                            <button onClick={() => setActiveBlockId(item.b.id)} title={needsImage ? `Câu ${idx + 1} - Còn thiếu ảnh!` : undefined} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-teal-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-teal-50 hover:text-teal-600'} ${needsImage ? 'ring-2 ring-red-400 ring-offset-1' : ''}`}>{idx + 1}</button>
+                            {needsImage && <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" title="Còn thiếu ảnh"/>}
+                         </div>
+                         );
+                      })}
                    </div>
                 </div>
              )}
@@ -313,9 +345,15 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 <div>
                    <div className="text-[11px] font-bold text-orange-600 uppercase tracking-widest mb-3">Phần 2. Đúng/Sai</div>
                    <div className="grid grid-cols-5 gap-1.5">
-                      {tfBlocks.map((item, idx) => (
-                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-orange-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600'}`}>{idx + 1}</button>
-                      ))}
+                      {tfBlocks.map((item, idx) => {
+                         const needsImage = blockNeedsImage(item.b);
+                         return (
+                         <div key={item.b.id} className="relative">
+                            <button onClick={() => setActiveBlockId(item.b.id)} title={needsImage ? `Câu ${idx + 1} - Còn thiếu ảnh!` : undefined} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-orange-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600'} ${needsImage ? 'ring-2 ring-red-400 ring-offset-1' : ''}`}>{idx + 1}</button>
+                            {needsImage && <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" title="Còn thiếu ảnh"/>}
+                         </div>
+                         );
+                      })}
                    </div>
                 </div>
              )}
@@ -324,9 +362,15 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 <div>
                    <div className="text-[11px] font-bold text-purple-600 uppercase tracking-widest mb-3">Phần 3. Trả lời ngắn</div>
                    <div className="grid grid-cols-5 gap-1.5">
-                      {shortAnswerBlocks.map((item, idx) => (
-                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-purple-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-purple-50 hover:text-purple-600'}`}>{idx + 1}</button>
-                      ))}
+                      {shortAnswerBlocks.map((item, idx) => {
+                         const needsImage = blockNeedsImage(item.b);
+                         return (
+                         <div key={item.b.id} className="relative">
+                            <button onClick={() => setActiveBlockId(item.b.id)} title={needsImage ? `Câu ${idx + 1} - Còn thiếu ảnh!` : undefined} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-purple-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-purple-50 hover:text-purple-600'} ${needsImage ? 'ring-2 ring-red-400 ring-offset-1' : ''}`}>{idx + 1}</button>
+                            {needsImage && <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" title="Còn thiếu ảnh"/>}
+                         </div>
+                         );
+                      })}
                    </div>
                 </div>
              )}
@@ -452,8 +496,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                     <div className="flex flex-col gap-4">
                        {/* CẢNH BÁO CHO KHỐI LÝ THUYẾT */}
                        {(typeof block.content === 'string') && (() => {
-                          const placeholderRegex = /\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\]/i;
-                          const hasPlaceholder = placeholderRegex.test(block.content);
+                          const hasPlaceholder = IMAGE_PLACEHOLDER_REGEX.test(block.content);
                           const bboxMatch = block.content.match(/\{\s*"image_bbox"\s*:\s*\[([\d,\s]+)\]\s*\}/);
                           if (!hasPlaceholder && !bboxMatch) return null;
                           
@@ -538,7 +581,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                 <img src={block.content.autoCropMetadata.originalUrl} alt="Source" className="w-full max-h-24 object-contain rounded-lg" />
                              </div>
                           </div>
-                       ) : (/(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\])/i.test(block.content.question || '')) && (
+                       ) : (IMAGE_PLACEHOLDER_REGEX.test(block.content.question || '')) && (
                           <div className="bg-red-50 border border-red-200 px-5 py-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-pulse">
                              <div className="flex items-center gap-3 text-red-700">
                                 <AlertTriangle className="w-6 h-6 shrink-0" />
