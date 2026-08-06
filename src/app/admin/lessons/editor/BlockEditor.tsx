@@ -2,25 +2,18 @@
 
 import React from "react";
 import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import rehypeRaw from 'rehype-raw';
-import remarkBreaks from 'remark-breaks';
 import { fixLatexText, applyLatexFixToActiveElement } from "@/utils/latexFixer";
 import { bankTypeToBlockType } from "@/utils/questionTypes";
 import 'katex/dist/katex.min.css';
 import QuestionBankModal from "@/components/admin/QuestionBankModal";
 import RichTextarea from "@/components/admin/RichTextarea";
+import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
 
 export interface Block {
   id: string;
   type: 'md' | 'quiz';
   content: any;
 }
-
-import { unifiedMarkdownComponents as customMarkdownComponents, preprocessMarkdown } from "@/components/CustomMarkdownComponents";
 
 export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, globalSourceImage, globalTriggerBankModal }: { blocks: Block[], onChangeBlocks: (b: Block[]) => void, onTriggerCrop: (meta: any, targetBlockId: string) => void, globalSourceImage?: string, globalTriggerBankModal?: number }) {
 
@@ -216,19 +209,6 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
           if (newContent.goi_y_nhanh) newContent.goi_y_nhanh = fixString(newContent.goi_y_nhanh);
           updateBlockContent(idx, newContent);
       }
-  };
-
-  const renderQuizContent = (text: string) => {
-    let formattedText = preprocessMarkdown(text);
-    formattedText = formattedText.replace(/\\n/g, '\n').replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n');
-    return (
-      <div className="prose prose-sm max-w-full break-words prose-p:my-0 leading-relaxed text-inherit overflow-hidden prose-strong:text-[#0e6263]
-         prose-h2:text-[1.25rem] prose-h2:font-extrabold prose-h2:text-[#00529b] prose-h2:mt-6 prose-h2:mb-3 prose-h2:bg-[#e6f0fa] prose-h2:px-3 prose-h2:py-2 prose-h2:rounded-xl prose-h2:border-l-4 prose-h2:border-[#00529b] prose-h2:block prose-h2:w-fit prose-h2:clear-both
-         prose-h3:text-[1.05rem] prose-h3:font-bold prose-h3:text-[#10b981] prose-h3:mt-5 prose-h3:mb-2 prose-h3:bg-emerald-50 prose-h3:px-3 prose-h3:py-1.5 prose-h3:rounded-lg prose-h3:border-l-4 prose-h3:border-emerald-500 prose-h3:block prose-h3:w-fit prose-h3:clear-both
-         [&_code]:whitespace-pre-wrap [&_pre]:whitespace-pre-wrap [&_pre]:max-w-full [&_pre]:overflow-x-auto">
-        <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{formattedText}</ReactMarkdown>
-      </div>
-    );
   };
 
   // Phân loại các khối theo dạng câu hỏi cho sidebar bản đồ
@@ -684,11 +664,52 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
                 </div>
 
-                {previewBlocks.has(block.id) && (
+                {previewBlocks.has(block.id) && (() => {
+                     const isMd = block.type === 'md';
+                     const c = block.content || {};
+                     let statements: PreviewStatement[] = [];
+                     let statementsLayout: 'choice' | 'truefalse' = 'choice';
+                     let correctAnswerDisplay: string | undefined;
+
+                     if (!isMd) {
+                        if (c.type === 'true_false_cluster') {
+                           statementsLayout = 'truefalse';
+                           statements = (c.options || []).map((opt: any, i: number) => ({
+                              key: opt.id || String(i),
+                              label: opt.id || ['a','b','c','d'][i],
+                              content: opt.content || '',
+                              isTrue: opt.isTrue,
+                           }));
+                        } else if (c.type === 'true_false') {
+                           statementsLayout = 'choice';
+                           statements = ['Đúng', 'Sai'].map((label, i) => ({
+                              key: String(i),
+                              label,
+                              content: c.options?.[i] || label,
+                              isCorrect: c.answerIndex === i,
+                           }));
+                           correctAnswerDisplay = c.answerIndex === 0 ? 'Đúng' : c.answerIndex === 1 ? 'Sai' : undefined;
+                        } else if (c.type === 'multiple_choice' || !c.type) {
+                           statementsLayout = 'choice';
+                           statements = [0,1,2,3].map(i => ({
+                              key: String(i),
+                              label: ['A','B','C','D'][i],
+                              content: c.options?.[i] || '',
+                              isCorrect: c.answerIndex === i,
+                           }));
+                           correctAnswerDisplay = typeof c.answerIndex === 'number' ? ['A','B','C','D'][c.answerIndex] : undefined;
+                        } else if (c.type === 'short_answer') {
+                           correctAnswerDisplay = c.exactAnswer || undefined;
+                        }
+                     }
+
+                     const explanationText = !isMd ? (c.answer || c.sampleAnswer || c.explanation || '') : '';
+
+                     return (
                      <div className="xl:sticky xl:top-3 min-w-0 animate-in fade-in slide-in-from-top-2">
                         <div className="flex items-center justify-between mb-3">
-                           <div className="text-[10px] font-black text-indigo-400 uppercase tracking-widest flex items-center gap-2">
-                              <MonitorPlay className="w-3 h-3" /> KẾT QUẢ XEM TRƯỚC:
+                           <div className="text-[11px] font-black text-indigo-500 uppercase tracking-widest flex items-center gap-2">
+                              <MonitorPlay className="w-3.5 h-3.5" /> Xem trước
                            </div>
                            <button onMouseDown={(e) => {
                                e.preventDefault(); // Tránh làm mất focus của ô nhập liệu
@@ -706,49 +727,18 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                               🪄 Sửa lỗi LaTeX ngay
                            </button>
                         </div>
-                        <div className="bg-white p-6 rounded-xl shadow-md border-4 border-slate-700 overflow-y-auto w-full max-h-[75vh] relative prose prose-lg prose-indigo [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap prose-p:leading-[1.5] prose-li:leading-[1.5] prose-p:my-[0.3em] prose-li:my-[0.2em] prose-ul:my-[0.3em]">
-                           {block.type === 'md' ? renderQuizContent(block.content) : (
-                              <div className="flex flex-col gap-4">
-                                 {renderQuizContent(block.content.question || "*(Chưa có câu hỏi)*")}
-                                 {(block.content.type === 'multiple_choice' || !block.content.type) && (
-                                    <div className="grid grid-cols-2 gap-3 mt-2">
-                                       {[0,1,2,3].map(optIdx => (
-                                          <div key={optIdx} className="bg-gray-50 border border-gray-100 rounded-xl p-3 flex gap-2">
-                                             <span className="font-bold text-indigo-600">{['A.','B.','C.','D.'][optIdx]}</span>
-                                             <div className="flex-1 flex flex-col sm:flex-row items-center gap-2">{renderQuizContent(block.content.options?.[optIdx] || "")}</div>
-                                          </div>
-                                       ))}
-                                    </div>
-                                 )}
-                                 {block.content.type === 'true_false_cluster' && (
-                                    <div className="grid grid-cols-2 gap-3 mt-2">
-                                       {(block.content.options || []).map((opt: any, optIdx: number) => (
-                                          <div key={optIdx} className="bg-gray-50 border border-gray-100 rounded-xl p-3 flex flex-col gap-2">
-                                             <span className="font-bold text-indigo-600 text-sm">Mệnh đề {opt.id?.toUpperCase() || ['A','B','C','D'][optIdx]}:</span>
-                                             <div className="flex-1 text-sm">{renderQuizContent(opt.content || "")}</div>
-                                             <div className="mt-1 pt-2 border-t border-gray-200">
-                                                {opt.isTrue ? <span className="text-xs font-bold text-green-600">✓ Đáp án: ĐÚNG</span> : <span className="text-xs font-bold text-red-500">✕ Đáp án: SAI</span>}
-                                             </div>
-                                          </div>
-                                       ))}
-                                    </div>
-                                 )}
-
-                                 {(block.content.answer || block.content.sampleAnswer || block.content.explanation) && (
-                                    <div className="mt-4 p-4 bg-emerald-50/50 border border-emerald-200 rounded-xl">
-                                       <div className="text-sm font-bold text-emerald-800 mb-2 border-b border-emerald-200/50 pb-2 flex items-center gap-2">
-                                          <span className="text-lg">💡</span> Hướng dẫn giải:
-                                       </div>
-                                       <div className="text-[15px] text-gray-800">
-                                          {renderQuizContent(block.content.answer || block.content.sampleAnswer || block.content.explanation || "")}
-                                       </div>
-                                    </div>
-                                 )}
-                              </div>
-                           )}
-                        </div>
+                        <QuestionPreviewCard
+                           content={isMd ? block.content : (c.question || "*(Chưa có câu hỏi)*")}
+                           statements={statements}
+                           statementsLayout={statementsLayout}
+                           correctAnswerDisplay={correctAnswerDisplay}
+                           explanation={explanationText}
+                           size="lg"
+                           className="w-full xl:max-h-[85vh] overflow-y-auto"
+                        />
                      </div>
-                )}
+                     );
+                })()}
                 </div>
               </div>
 

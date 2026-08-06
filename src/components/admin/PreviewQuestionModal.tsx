@@ -1,14 +1,10 @@
 "use client";
 
-import { X, Wand2, Loader2 } from "lucide-react";
+import { X, Wand2, Loader2, Eye } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useState, useEffect } from "react";
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import remarkMath from 'remark-math';
-import rehypeKatex from 'rehype-katex';
-import remarkBreaks from 'remark-breaks';
-import 'katex/dist/katex.min.css';
+import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
+import { toBankType, bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 
 interface PreviewQuestionModalProps {
   isOpen: boolean;
@@ -46,11 +42,11 @@ export default function PreviewQuestionModal({ isOpen, onClose, question, onUpda
 
           // Fix JSON escaping for common LaTeX commands (e.g. \\vec -> \vec)
       s = s.replace(/\\\\(vec|frac|Rightarrow|rightarrow|leftrightarrow|Leftrightarrow|lim|log|sin|cos|tan|cot|sqrt|Delta|alpha|beta|gamma|pi|Omega|Sigma|sum|int|infty|to|text|begin|end|cases|le|ge|neq|pm|mp|cup|cap|subset|supset|in|notin|emptyset|mathbb|mathcal|mathbf|mathrm|widehat)/g, '\\$1');
-      
+
       // Fix cases block shortcuts
       s = s.replace(/\{\{begincases/g, '\\begin{cases}').replace(/endcases\}\}/g, '\\end{cases}');
       s = s.replace(/(?<!\\)begincases/g, '\\begin{cases}').replace(/(?<!\\)endcases/g, '\\end{cases}');
-      
+
       // Convert Markdown math blocks to LaTeX math blocks
       s = s.replace(/\\\[/g, '$$$$').replace(/\\\]/g, '$$$$');
       s = s.replace(/\\\(/g, '$').replace(/\\\)/g, '$');
@@ -80,7 +76,7 @@ export default function PreviewQuestionModal({ isOpen, onClose, question, onUpda
     };
 
     setLocalQuestion(updated);
-    
+
     try {
       const supabase = createClient();
       await supabase.from('questions').update({
@@ -106,159 +102,78 @@ export default function PreviewQuestionModal({ isOpen, onClose, question, onUpda
     setIsFixing(false);
   };
 
-  // Helper function to make KaTeX render tabular and basic center environments
-  const preprocessLaTeX = (text: string) => {
-    if (!text) return "";
-    let processed = String(text);
-    
-    // Prevent Markdown from treating isolated "1.", "2.", etc. as an empty ordered list
-    processed = processed.replace(/^(\d+)\.\s*$/gm, '$1\\.');
+  // Chuẩn hoá dữ liệu ngân hàng (option_a/b/c/d, correct_answer dạng chữ cái hoặc
+  // chuỗi Đ/S 4 ký tự) về đúng props mà QuestionPreviewCard hiểu - dùng CHUNG bộ
+  // khung hiển thị với Xem trước bên Luyện tập để hai nơi không lệch giao diện.
+  const bankType = toBankType(localQuestion.question_type);
+  let statements: PreviewStatement[] = [];
+  let statementsLayout: 'choice' | 'truefalse' = 'choice';
 
-    // Strip center tags (KaTeX will center display math anyway)
-    processed = processed.replace(/\\begin\{center\}/g, '');
-    processed = processed.replace(/\\end\{center\}/g, '');
-
-    // Replace tabular with array and wrap in display math block
-    processed = processed.replace(/\\begin\{tabular\}(\{[^}]*\})/g, '$$$$ \\begin{array}$1');
-    processed = processed.replace(/\\end\{tabular\}/g, '\\end{array} $$$$');
-    
-    // Remove $ signs specifically inside the \begin{array} ... \end{array} blocks 
-    processed = processed.replace(/(\$\$\s*\\begin\{array\}[^]*?\\end\{array\}\s*\$\$)/g, (match) => {
-      let inner = match.substring(2, match.length - 2);
-      inner = inner.replace(/\$/g, '');
-      return `$$$$${inner}$$$$`;
-    });
-
-    return processed;
-  };
-
-  const renderContent = (content: string) => {
-    let finalContent = String(content).replace(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi, '');
-    return (
-      <div className="prose prose-sm max-w-none prose-p:my-1 overflow-x-auto text-gray-800">
-        <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]}>
-          {preprocessLaTeX(finalContent)}
-        </ReactMarkdown>
-      </div>
-    );
-  };
+  if (bankType === 'NLC') {
+    statementsLayout = 'choice';
+    const correctLetter = String(localQuestion.correct_answer || '').trim().toUpperCase();
+    statements = ['a', 'b', 'c', 'd']
+      .map(opt => {
+        const val = localQuestion[`option_${opt}`] || localQuestion[`answer_${opt}`];
+        if (!val) return null;
+        return { key: opt, label: opt.toUpperCase(), content: val, isCorrect: correctLetter === opt.toUpperCase() } as PreviewStatement;
+      })
+      .filter((s): s is PreviewStatement => !!s);
+  } else if (bankType === 'DS') {
+    statementsLayout = 'truefalse';
+    const correctStr = String(localQuestion.correct_answer || '');
+    statements = ['a', 'b', 'c', 'd']
+      .map((opt, i) => {
+        const val = localQuestion[`option_${opt}`] || localQuestion[`answer_${opt}`];
+        if (!val) return null;
+        const ch = correctStr.charAt(i);
+        const isTrue = ch ? (ch === 'D' || ch === 'T' || ch.toUpperCase() === 'Đ') : undefined;
+        return { key: opt, label: opt, content: val, isTrue } as PreviewStatement;
+      })
+      .filter((s): s is PreviewStatement => !!s);
+  }
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
-        
+      <div className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl flex flex-col overflow-hidden animate-in zoom-in-95 duration-200 max-h-[92vh]">
+
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-gray-100 bg-orange-50">
-          <h2 className="text-lg font-black text-orange-800">Xem trước: {localQuestion.question_id || localQuestion.temp_id}</h2>
-          <div className="flex items-center gap-2">
-            <button onClick={handleFixLatex} disabled={isFixing} className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 hover:bg-purple-200 text-purple-700 font-bold rounded-lg text-xs transition-colors border border-purple-200">
+        <div className="flex items-center justify-between px-6 py-4 bg-gradient-to-r from-orange-500 to-amber-500 shrink-0">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
+              <Eye className="w-5 h-5 text-white" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-[11px] font-bold text-orange-100 uppercase tracking-widest">Xem trước câu hỏi</div>
+              <h2 className="text-base font-black text-white truncate">{localQuestion.question_id || localQuestion.temp_id}</h2>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button onClick={handleFixLatex} disabled={isFixing} className="flex items-center gap-1.5 px-3 py-1.5 bg-white/90 hover:bg-white text-orange-700 font-bold rounded-lg text-xs transition-colors shadow-sm disabled:opacity-60">
                {isFixing ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Wand2 className="w-3.5 h-3.5" />}
                Sửa lỗi LaTeX
             </button>
-            <button onClick={onClose} className="p-2 text-orange-500 hover:bg-orange-100 rounded-full transition-colors">
+            <button onClick={onClose} className="p-2 text-white/90 hover:bg-white/20 rounded-full transition-colors">
               <X className="w-5 h-5" />
             </button>
           </div>
         </div>
 
         {/* Body */}
-        <div className="p-6 overflow-y-auto max-h-[70vh] bg-gray-50/50">
-          <div className="flex items-center gap-2 mb-4">
-            <span className="px-3 py-1 bg-blue-100 text-blue-800 font-bold text-xs rounded-lg">Loại: {localQuestion.question_type}</span>
-            <span className="px-3 py-1 bg-purple-100 text-purple-800 font-bold text-xs rounded-lg">Mức độ: {localQuestion.difficulty}</span>
-          </div>
-
-          <div className="text-gray-800 text-base font-medium leading-relaxed mb-6">
-            {renderContent(localQuestion.content)}
-            {localQuestion.image_url && (
-              <div className="my-4 text-center">
-                <img src={localQuestion.image_url} alt="Minh họa" className="max-w-full h-auto max-h-64 rounded-lg shadow-sm mx-auto border border-gray-200" />
-              </div>
-            )}
-          </div>
-
-          {(localQuestion.question_type === 'TN' || localQuestion.question_type === 'NLC' || localQuestion.question_type === 'DS') && (
-            <div className="grid grid-cols-2 gap-4 mb-6">
-              {['a', 'b', 'c', 'd'].map(opt => {
-                const val = localQuestion[`option_${opt}`] || localQuestion[`answer_${opt}`];
-                if (!val) return null;
-                const isDS = localQuestion.question_type === 'DS';
-                return (
-                  <div key={opt} className="flex gap-2 p-3 bg-white border border-gray-200 rounded-xl">
-                    <span className="font-bold text-indigo-600">{isDS ? `${opt})` : `${opt.toUpperCase()}.`}</span>
-                    <div className="flex-1">{renderContent(val)}</div>
-                  </div>
-                )
-              })}
-            </div>
-          )}
-
-          {localQuestion.correct_answer && (
-            <div className="bg-emerald-50 border border-emerald-100 p-4 rounded-xl mb-4">
-              <h4 className="font-bold text-emerald-800 mb-1 text-sm">Đáp án đúng:</h4>
-              <p className="text-emerald-700 font-black text-xl">{localQuestion.correct_answer}</p>
-            </div>
-          )}
-
-          {localQuestion.explanation && (() => {
-            let methodText = "";
-            let explanationText = localQuestion.explanation;
-
-            const lowerExp = localQuestion.explanation.toLowerCase();
-            const ppIndex = lowerExp.indexOf("phương pháp giải:");
-            const ppIndex2 = lowerExp.indexOf("phương pháp giải");
-            const lgIndex = lowerExp.indexOf("lời giải:");
-            const lgIndex2 = lowerExp.indexOf("lời giải");
-
-            let startPP = -1;
-            let startLG = -1;
-
-            if (ppIndex !== -1) startPP = ppIndex + "phương pháp giải:".length;
-            else if (ppIndex2 !== -1) startPP = ppIndex2 + "phương pháp giải".length;
-
-            if (lgIndex !== -1) startLG = lgIndex;
-            else if (lgIndex2 !== -1 && lgIndex2 > startPP) startLG = lgIndex2;
-
-            if (startPP !== -1 && startLG !== -1 && startPP < startLG) {
-              methodText = localQuestion.explanation.substring(startPP, startLG).trim();
-              let lgOffset = lgIndex !== -1 ? "lời giải:".length : "lời giải".length;
-              explanationText = localQuestion.explanation.substring(startLG + lgOffset).trim();
-            } else if (startPP !== -1 && startLG === -1) {
-              methodText = localQuestion.explanation.substring(startPP).trim();
-              explanationText = "";
-            } else if (startPP === -1 && startLG !== -1) {
-              let lgOffset = lgIndex !== -1 ? "lời giải:".length : "lời giải".length;
-              explanationText = localQuestion.explanation.substring(startLG + lgOffset).trim();
-            }
-
-            methodText = methodText.replace(/^\*\*/, "");
-            explanationText = explanationText.replace(/^\*\*/, "");
-
-            return (
-              <div className="space-y-4">
-                {methodText && (
-                  <div className="bg-blue-50 p-4 rounded-xl border border-blue-200">
-                    <h4 className="font-bold text-blue-800 mb-2 text-sm uppercase tracking-wider flex items-center gap-2">
-                      <span className="w-1.5 h-4 bg-blue-600 rounded-full"></span> Phương pháp giải:
-                    </h4>
-                    <div className="text-blue-900 text-sm">
-                      {renderContent(methodText)}
-                    </div>
-                  </div>
-                )}
-                {explanationText && (
-                  <div className="bg-gray-100 p-4 rounded-xl border border-gray-200">
-                    <h4 className="font-bold text-gray-700 mb-2 text-sm uppercase tracking-wider flex items-center gap-2">
-                      <span className="w-1.5 h-4 bg-gray-500 rounded-full"></span> Lời giải chi tiết:
-                    </h4>
-                    <div className="text-gray-700 text-sm">
-                      {renderContent(explanationText)}
-                    </div>
-                  </div>
-                )}
-              </div>
-            );
-          })()}
+        <div className="p-6 overflow-y-auto bg-gray-50/70">
+          <QuestionPreviewCard
+            content={localQuestion.content}
+            imageUrl={localQuestion.image_url}
+            badges={[
+              { label: 'Loại', value: bankTypeLabel(localQuestion.question_type), color: 'blue' },
+              { label: 'Mức độ', value: difficultyLabel(localQuestion.difficulty), color: 'purple' },
+            ]}
+            statements={statements}
+            statementsLayout={statementsLayout}
+            correctAnswerDisplay={localQuestion.correct_answer || undefined}
+            explanation={localQuestion.explanation}
+            size="lg"
+          />
         </div>
 
       </div>
