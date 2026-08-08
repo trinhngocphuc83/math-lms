@@ -22,22 +22,45 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
     // Lấy số vi phạm hiện tại
     const { data: sub, error: subError } = await supabaseAdmin
       .from('online_exam_submissions')
-      .select('cheat_warnings')
+      .select('cheat_warnings, status')
       .eq('id', submission_id)
       .eq('student_id', user.id)
+      .eq('exam_id', id)
       .single();
 
     if (subError || !sub) return NextResponse.json({ error: "Không tìm thấy bài thi" }, { status: 404 });
+    // Bài đã nộp thì không đếm vi phạm nữa
+    if (sub.status !== 'IN_PROGRESS') {
+      return NextResponse.json({ success: true, cheat_warnings: sub.cheat_warnings || 0, force_submit: false });
+    }
 
     // Cập nhật tăng thêm 1
     const newWarnings = (sub.cheat_warnings || 0) + 1;
-    
+
     await supabaseAdmin
       .from('online_exam_submissions')
       .update({ cheat_warnings: newWarnings })
-      .eq('id', submission_id);
+      .eq('id', submission_id)
+      .eq('student_id', user.id);
 
-    return NextResponse.json({ success: true, cheat_warnings: newWarnings });
+    // NGƯỠNG VI PHẠM DO SERVER QUYẾT ĐỊNH.
+    // Trước đây route này chỉ cộng số đếm, còn việc có buộc nộp bài hay không lại
+    // do client tự xử - chặn request hoặc sửa biến trong DevTools là vô hiệu hoá.
+    const { data: exam } = await supabaseAdmin
+      .from('online_exams')
+      .select('max_cheat_warnings')
+      .eq('id', id)
+      .single();
+
+    const nguong = exam?.max_cheat_warnings ?? 0;
+    const vuotNguong = nguong > 0 && newWarnings >= nguong;
+
+    return NextResponse.json({
+      success: true,
+      cheat_warnings: newWarnings,
+      max_cheat_warnings: nguong,
+      force_submit: vuotNguong,
+    });
 
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });

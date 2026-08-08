@@ -29,6 +29,15 @@ export default function StudentExamRoom() {
   // Result State
   const [finalScore, setFinalScore] = useState<number | null>(null);
 
+  // Số lần vi phạm đã ghi nhận (server trả về, khôi phục được khi vào lại)
+  const [cheatCount, setCheatCount] = useState(0);
+  // Các câu học sinh tự đánh dấu để quay lại xem sau
+  const [flagged, setFlagged] = useState<Record<number, boolean>>({});
+  // Trạng thái lưu tự động: '' | 'saving' | 'saved'
+  const [autoSaveState, setAutoSaveState] = useState<'' | 'saving' | 'saved'>('');
+  // Chốt để không nộp bài hai lần (hết giờ và bấm nộp cùng lúc)
+  const dangNopRef = React.useRef(false);
+
   // 1. Khởi tạo: Lấy thông tin cơ bản của đề thi
   useEffect(() => {
     const fetchExamInfo = async () => {
@@ -55,14 +64,23 @@ export default function StudentExamRoom() {
 
     const handleVisibilityChange = async () => {
       if (document.hidden && submissionId) {
-        // Học sinh chuyển tab hoặc thu nhỏ cửa sổ
-        alert("🚨 CẢNH BÁO GIAN LẬN: Bạn vừa thoát khỏi màn hình làm bài! Hệ thống đã ghi nhận vi phạm và gửi về cho Giáo viên.");
         try {
-          await fetch(`/api/student/exams/${params.id}/cheat`, {
+          const res = await fetch(`/api/student/exams/${params.id}/cheat`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ submission_id: submissionId })
           });
+          const data = await res.json();
+          if (data?.cheat_warnings) setCheatCount(data.cheat_warnings);
+
+          // Ngưỡng vi phạm do SERVER quyết định, client chỉ thi hành
+          if (data?.force_submit) {
+            alert(`🚨 Em đã vi phạm ${data.cheat_warnings}/${data.max_cheat_warnings} lần.\nBài thi bị dừng và hệ thống sẽ chấm phần em đã làm.`);
+            handleSubmitExam('cheat');
+            return;
+          }
+          const con = data?.max_cheat_warnings ? ` (${data.cheat_warnings}/${data.max_cheat_warnings} lần)` : '';
+          alert(`🚨 CẢNH BÁO: Em vừa rời khỏi màn hình làm bài!${con}\nHệ thống đã ghi nhận và gửi về cho Thầy/Cô.`);
         } catch (e) {}
       }
     };
@@ -87,6 +105,29 @@ export default function StudentExamRoom() {
     };
   }, [appState, submissionId, params.id]);
 
+  // 2.5 Tự động lưu bài làm lên server (chống mất bài khi rớt mạng / đóng nhầm tab,
+  // và để hệ thống chấm được phần đã làm khi hết giờ hoặc bị dừng vì vi phạm)
+  useEffect(() => {
+    if (appState !== 'PLAYING' || !submissionId) return;
+    if (Object.keys(answers).length === 0) return;
+
+    setAutoSaveState('saving');
+    const hen = setTimeout(async () => {
+      try {
+        await fetch(`/api/student/exams/${params.id}/save`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ submission_id: submissionId, answers })
+        });
+        setAutoSaveState('saved');
+      } catch (e) {
+        setAutoSaveState('');
+      }
+    }, 1200); // gộp nhiều thao tác liên tiếp thành một lần gửi
+
+    return () => clearTimeout(hen);
+  }, [answers, appState, submissionId, params.id]);
+
   // 3. Đồng hồ đếm ngược
   useEffect(() => {
     if (appState !== 'PLAYING') return;
@@ -95,7 +136,7 @@ export default function StudentExamRoom() {
       setTimeLeft(prev => {
         if (prev <= 1) {
           clearInterval(timer);
-          handleSubmitExam(); // Tự động nộp
+          handleSubmitExam('time_up'); // Hết giờ: server chốt bài và chấm phần đã làm
           return 0;
         }
         return prev - 1;
@@ -121,10 +162,15 @@ export default function StudentExamRoom() {
         setAppState('WAITING');
         return;
       }
-      
+
       setSubmissionId(data.submission_id);
       setQuestions(data.safe_exam_data);
-      setTimeLeft(data.exam_info.duration_minutes * 60);
+      // Thời gian còn lại do SERVER tính. Trước đây client tự đặt lại đủ
+      // duration_minutes mỗi lần vào nên chỉ cần tải lại trang là được thêm giờ.
+      setTimeLeft(data.remaining_seconds ?? (data.exam_info.duration_minutes * 60));
+      // Khôi phục bài làm dở và số lần cảnh báo đã ghi nhận
+      setAnswers(data.saved_answers || {});
+      setCheatCount(data.cheat_warnings || 0);
       setAppState('PLAYING');
 
       // Chế độ toàn màn hình (Tùy chọn)
@@ -138,20 +184,31 @@ export default function StudentExamRoom() {
   };
 
   // Hành động: Nộp bài
-  const handleSubmitExam = async () => {
-    if (!confirm("Bạn có chắc chắn muốn nộp bài? Sau khi nộp sẽ không thể sửa lại.")) return;
-    
+  const handleSubmitExam = async (reason: 'manual' | 'time_up' | 'cheat' = 'manual') => {
+    // Chỉ hỏi lại khi học sinh chủ động bấm nộp; hết giờ hoặc vi phạm thì chốt luôn
+    if (reason === 'manual') {
+      const chuaLam = questions.length - Object.keys(answers).length;
+      const loiNhac = chuaLam > 0
+        ? `Em còn ${chuaLam} câu chưa làm. Vẫn nộp bài chứ?`
+        : "Em có chắc chắn muốn nộp bài? Sau khi nộp sẽ không sửa lại được.";
+      if (!confirm(loiNhac)) return;
+    }
+    // Chặn gửi hai lần (ví dụ vừa hết giờ vừa bấm nộp)
+    if (dangNopRef.current) return;
+    dangNopRef.current = true;
+
     try {
       setAppState('LOADING');
       const res = await fetch(`/api/student/exams/${params.id}/submit`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ submission_id: submissionId, answers })
+        body: JSON.stringify({ submission_id: submissionId, answers, reason })
       });
       const data = await res.json();
-      
+
       if (!res.ok) {
         alert(data.error);
+        dangNopRef.current = false;
         setAppState('PLAYING');
         return;
       }
@@ -165,6 +222,7 @@ export default function StudentExamRoom() {
       }
     } catch (err) {
       alert("Lỗi nộp bài, vui lòng thử lại!");
+      dangNopRef.current = false;
       setAppState('PLAYING');
     }
   };
@@ -269,14 +327,28 @@ export default function StudentExamRoom() {
             </div>
           </div>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-3 sm:gap-5">
+            {/* Trạng thái lưu tự động - để học sinh yên tâm bài không bị mất */}
+            <span className={`hidden sm:flex items-center gap-1.5 text-xs font-bold transition-colors ${autoSaveState === 'saved' ? 'text-emerald-600' : 'text-slate-400'}`}>
+              <span className={`w-1.5 h-1.5 rounded-full ${autoSaveState === 'saving' ? 'bg-amber-400 animate-pulse' : autoSaveState === 'saved' ? 'bg-emerald-500' : 'bg-slate-300'}`} />
+              {autoSaveState === 'saving' ? 'Đang lưu…' : autoSaveState === 'saved' ? 'Đã lưu' : 'Tự động lưu'}
+            </span>
+
+            {/* Số lần vi phạm đã ghi nhận */}
+            {cheatCount > 0 && (
+              <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 text-red-600 font-bold text-xs border border-red-200">
+                <AlertTriangle className="w-3.5 h-3.5" /> Vi phạm: {cheatCount}
+                {examInfo?.max_cheat_warnings ? `/${examInfo.max_cheat_warnings}` : ''}
+              </span>
+            )}
+
             <div className={`flex items-center gap-2 px-4 py-2 rounded-xl font-black text-xl tracking-wider ${timeLeft < 300 ? 'bg-red-50 text-red-600 animate-pulse' : 'bg-slate-100 text-slate-700'}`}>
               <Clock className="w-5 h-5" />
               {formatTime(timeLeft)}
             </div>
-            <button 
-              onClick={handleSubmitExam}
-              className="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2 rounded-xl font-bold transition-colors shadow-sm"
+            <button
+              onClick={() => handleSubmitExam('manual')}
+              className="bg-emerald-500 hover:bg-emerald-600 text-white px-5 sm:px-6 py-2 rounded-xl font-bold transition-colors shadow-sm whitespace-nowrap"
             >
               Nộp Bài
             </button>
@@ -290,28 +362,47 @@ export default function StudentExamRoom() {
             <div className="p-4 border-b border-slate-100 bg-slate-50">
               <h3 className="font-bold text-slate-700 text-sm">Danh sách Câu hỏi</h3>
               <div className="text-xs text-slate-500 mt-1">Đã làm: {Object.keys(answers).length} / {questions.length}</div>
+              {/* Thanh tiến độ để nhìn phát biết còn bao nhiêu câu */}
+              <div className="h-1.5 bg-slate-200 rounded-full mt-2 overflow-hidden">
+                <div
+                  className="h-full bg-indigo-500 rounded-full transition-all duration-300"
+                  style={{ width: `${questions.length ? (Object.keys(answers).length / questions.length) * 100 : 0}%` }}
+                />
+              </div>
             </div>
             <div className="flex-1 overflow-y-auto p-4">
               <div className="grid grid-cols-5 gap-2">
                 {questions.map((q, idx) => {
                   const isAnswered = answers[idx] !== undefined;
                   const isCurrent = currentQuestionIdx === idx;
+                  const isFlagged = !!flagged[idx];
                   return (
                     <button
                       key={idx}
                       onClick={() => setCurrentQuestionIdx(idx)}
+                      title={isFlagged ? `Câu ${idx + 1} - đã đánh dấu xem lại` : `Câu ${idx + 1}`}
                       className={`
-                        aspect-square rounded-lg font-bold text-sm flex items-center justify-center transition-all
+                        relative aspect-square rounded-lg font-bold text-sm flex items-center justify-center transition-all
                         ${isCurrent ? 'ring-2 ring-indigo-500 ring-offset-1' : ''}
-                        ${isAnswered 
-                          ? (isCurrent ? 'bg-indigo-600 text-white' : 'bg-indigo-100 text-indigo-700 border border-indigo-200') 
+                        ${isAnswered
+                          ? (isCurrent ? 'bg-indigo-600 text-white' : 'bg-indigo-100 text-indigo-700 border border-indigo-200')
                           : (isCurrent ? 'bg-slate-800 text-white' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50')}
                       `}
                     >
                       {idx + 1}
+                      {isFlagged && (
+                        <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-amber-400 border-2 border-white" />
+                      )}
                     </button>
                   );
                 })}
+              </div>
+
+              {/* Chú giải màu */}
+              <div className="mt-5 pt-4 border-t border-slate-100 space-y-2 text-[11px] font-semibold text-slate-500">
+                <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-indigo-100 border border-indigo-200" /> Đã trả lời</div>
+                <div className="flex items-center gap-2"><span className="w-3 h-3 rounded bg-white border border-slate-200" /> Chưa làm</div>
+                <div className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-amber-400" /> Đánh dấu xem lại</div>
               </div>
             </div>
           </div>
@@ -342,8 +433,22 @@ export default function StudentExamRoom() {
                   );
                 })()}
 
-                <div className="inline-flex px-3 py-1 bg-indigo-50 text-indigo-700 font-bold text-sm rounded-lg mb-4">
-                  Câu hỏi {currentQuestionIdx + 1}
+                <div className="flex items-center justify-between gap-3 mb-4 flex-wrap">
+                  <div className="inline-flex px-3 py-1 bg-indigo-50 text-indigo-700 font-bold text-sm rounded-lg">
+                    Câu hỏi {currentQuestionIdx + 1}
+                  </div>
+                  {/* Đánh dấu câu để quay lại xem sau - thói quen làm bài thi phổ biến */}
+                  <button
+                    onClick={() => setFlagged(prev => ({ ...prev, [currentQuestionIdx]: !prev[currentQuestionIdx] }))}
+                    className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors ${
+                      flagged[currentQuestionIdx]
+                        ? 'bg-amber-50 text-amber-700 border-amber-300'
+                        : 'bg-white text-slate-500 border-slate-200 hover:bg-slate-50'
+                    }`}
+                  >
+                    <span className={`w-2 h-2 rounded-full ${flagged[currentQuestionIdx] ? 'bg-amber-400' : 'bg-slate-300'}`} />
+                    {flagged[currentQuestionIdx] ? 'Đã đánh dấu xem lại' : 'Đánh dấu xem lại'}
+                  </button>
                 </div>
                 
                 <div className="prose prose-slate max-w-none mb-8 text-lg text-slate-800">

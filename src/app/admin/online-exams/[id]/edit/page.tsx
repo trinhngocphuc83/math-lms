@@ -83,7 +83,10 @@ export default function EditOnlineExamPage() {
         if (data.password) setPassword(data.password);
         setShuffleQuestions(!!data.shuffle_questions);
         setShuffleOptions(!!data.shuffle_options);
-        setShowResults(!!data.show_results);
+        // show_results là chuỗi "IMMEDIATELY" | "LATER" chứ không phải cờ đúng/sai.
+        // Ép về boolean như trước làm hỏng lựa chọn khi mở đề cũ ra sửa, rồi lưu
+        // lại còn ghi sai kiểu dữ liệu xuống CSDL.
+        setShowResults(data.show_results === 'IMMEDIATELY' ? 'IMMEDIATELY' : 'LATER');
         setMaxCheatWarnings(data.max_cheat_warnings || 3);
         
         try {

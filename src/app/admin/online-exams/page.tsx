@@ -70,8 +70,10 @@ export default function OnlineExamsPage() {
     }
   };
 
+  // Khung layout của khu quản trị đã có sẵn lề (p-3 → p-8 theo màn hình),
+  // nên trang không tự thêm p-8 nữa để tránh lề chồng lề.
   return (
-    <div className="p-8 max-w-7xl mx-auto font-sans">
+    <div className="max-w-7xl mx-auto font-sans">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
         <div>
           <h1 className="text-3xl font-black text-slate-800 tracking-tight flex items-center gap-3">
