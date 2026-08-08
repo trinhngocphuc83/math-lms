@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useMemo, useRef, useLayoutEffect } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect, useCallback } from 'react';
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import ReactMarkdown from 'react-markdown';
@@ -9,15 +9,27 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, CheckCircle2, Lightbulb, Pin, BookOpen, Target, Type } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling } from 'lucide-react';
 import React from 'react';
-import { unifiedMarkdownComponents as customMarkdownComponents } from '@/components/CustomMarkdownComponents';
+import {
+    presentationMarkdownComponents,
+    CANVAS_WIDTH,
+    CANVAS_HEIGHT,
+} from '@/components/presentation/presentationTheme';
+
+/* Vùng nội dung bên trong canvas (đã trừ lề). Mọi phép đo auto-fit dựa trên đây. */
+const PAD_X = 84;
+const PAD_TOP = 54;
+const PAD_BOTTOM = 46;
+const CONTENT_HEIGHT = CANVAS_HEIGHT - PAD_TOP - PAD_BOTTOM;
+/** Không thu nhỏ quá mức này để chữ còn đọc được từ cuối lớp. */
+const MIN_CONTENT_SCALE = 0.45;
 
 // --- Slide Parser ---
 function parseSlides(markdown: string) {
     let parts = markdown.split(/(?:\n|^)\s*---\s*(?:\n|$)/);
     let slides: string[][] = [];
-    
+
     parts.forEach(part => {
         let subparts = part.split(/(?=(?:\n|^)##\s)/);
         subparts.forEach(sp => {
@@ -30,142 +42,136 @@ function parseSlides(markdown: string) {
             });
         });
     });
-    
+
     return slides;
 }
 
+/* Lớp tiện ích cho KaTeX dùng chung mọi nơi trong slide. */
+const KATEX_CLASS = '[&_.katex]:text-[#1e40af] [&_.katex-display]:my-4 [&_.katex-display]:text-[1.04em]';
+
 // --- Quiz Component for Presentation ---
-function PresentationQuiz({ quizData, fontSize }: { quizData: any, fontSize: number }) {
+function PresentationQuiz({ quizData }: { quizData: any }) {
     const [showAnswer, setShowAnswer] = useState(false);
     const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
     if (!quizData) return null;
-    
+
     const type = quizData.type || "multiple_choice";
-    
+
     return (
-        <div className="w-full flex flex-col" style={{ fontSize: `${fontSize}px` }}>
-            <h3 className="font-black text-indigo-800 mb-[1em] flex items-center gap-[0.5em]" style={{ fontSize: '1.2em' }}>
-                <span className="drop-shadow-md text-blue-500">🎯</span> Câu hỏi tương tác
-            </h3>
-            
-            <div className="font-semibold text-slate-800 mb-[1.5em] drop-shadow-sm">
-                <div className="prose prose-slate max-w-none [&_.katex]:text-[1.1em] [&_.katex-display]:my-[0.5em]">
-                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
-                        {quizData.question || ""}
-                    </ReactMarkdown>
-                </div>
+        <div className="w-full flex flex-col">
+            <div className="flex items-center gap-4 mb-7">
+                <span className="text-[34px] leading-none">🎯</span>
+                <h3 className="text-[36px] font-black text-indigo-800 tracking-tight m-0">Câu hỏi tương tác</h3>
+            </div>
+
+            <div className={`text-[34px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}`}>
+                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                    {quizData.question || ""}
+                </ReactMarkdown>
                 {quizData.img_url && (
-                    <img src={quizData.img_url} alt="Minh họa" className="block mx-auto rounded-[1em] shadow-xl mt-[1em] border border-slate-200" style={{ maxHeight: '40vh' }} />
+                    <img src={quizData.img_url} alt="Minh họa" className="block mx-auto rounded-2xl shadow-lg mt-5 border border-slate-200 max-h-[340px]" />
                 )}
             </div>
-            
+
             {type === 'true_false' && (
-                <div className="flex flex-col md:flex-row gap-[1em] pb-[1em] items-center w-full max-w-4xl mx-auto">
+                <div className="flex gap-6 items-stretch w-full max-w-[1100px] mx-auto">
                     {[0, 1].map((optIdx) => {
                         const isCorrect = optIdx === quizData.answerIndex;
                         const isSelected = optIdx === selectedIdx;
                         const text = (quizData.options && quizData.options[optIdx]) ? quizData.options[optIdx] : (optIdx === 0 ? 'ĐÚNG' : 'SAI');
+
+                        let cls = 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50/40';
+                        if (showAnswer && isCorrect) cls = 'border-emerald-500 bg-emerald-50';
+                        else if (showAnswer && isSelected) cls = 'border-red-400 bg-red-50';
+                        else if (showAnswer) cls = 'border-slate-200 bg-white opacity-45';
+                        else if (isSelected) cls = 'border-indigo-500 bg-indigo-50';
+
                         return (
                             <button
                                 key={optIdx}
                                 disabled={showAnswer}
-                                onClick={() => {
-                                    setSelectedIdx(optIdx);
-                                }}
-                                className={`flex-1 w-full text-center p-[1em] rounded-[1em] border-[0.2em] transition-all flex items-center gap-[1em]
-                                    ${isSelected && !showAnswer ? 'border-indigo-400 bg-indigo-50 shadow-[0_0.3em_0_0_rgba(129,140,248,1)] transform -translate-y-[0.2em]' : ''}
-                                    ${!isSelected && !showAnswer ? 'border-slate-200 hover:border-indigo-300 hover:bg-indigo-50/30 shadow-sm' : ''}
-                                    ${showAnswer && isCorrect ? 'border-green-400 bg-green-50 shadow-[0_0.3em_0_0_rgba(74,222,128,1)]' : ''}
-                                    ${showAnswer && isSelected && !isCorrect ? 'border-red-400 bg-red-50 shadow-[0_0.3em_0_0_rgba(248,113,113,1)]' : ''}
-                                    ${showAnswer && !isCorrect && !(isSelected && !isCorrect) ? 'border-gray-200 opacity-50' : ''}
-                                `}
+                                onClick={() => setSelectedIdx(optIdx)}
+                                className={`flex-1 rounded-2xl border-[3px] px-8 py-6 transition-all duration-200 ${cls}`}
                             >
-                                <div className="flex-1 min-w-0 text-center text-[1.2em] font-black uppercase text-gray-700">
-                                   <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                                <div className={`text-[34px] font-black uppercase text-slate-800 ${KATEX_CLASS}`}>
+                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                        {String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}
+                                    </ReactMarkdown>
                                 </div>
                             </button>
                         );
                     })}
                 </div>
             )}
-            
+
             {type === 'multiple_choice' && (
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-[0.8em] pb-[1em] items-start">
+                <div className="grid grid-cols-2 gap-5 items-stretch">
                     {(quizData.options || []).map((opt: string, idx: number) => {
                         const isCorrect = idx === quizData.answerIndex;
                         const isSelected = idx === selectedIdx;
-                        
-                        let bgColor = 'bg-white border-slate-200 text-slate-700 hover:border-indigo-300 hover:bg-indigo-50 hover:shadow-md hover:-translate-y-1 cursor-pointer';
-                        let circleColor = 'bg-slate-100 text-slate-500';
-                        
+
+                        let cardCls = 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50/40';
+                        let badgeCls = 'bg-slate-100 text-slate-500';
+
                         if (showAnswer) {
-                            if (isCorrect) {
-                                bgColor = 'bg-green-50 border-green-400 text-green-900 shadow-[0_0_20px_rgba(74,222,128,0.2)]';
-                                circleColor = 'bg-green-500 text-white shadow-lg';
-                            } else if (isSelected) {
-                                bgColor = 'bg-red-50 border-red-400 text-red-900 shadow-[0_0_20px_rgba(248,113,113,0.2)]';
-                                circleColor = 'bg-red-500 text-white shadow-lg';
-                            } else {
-                                bgColor = 'bg-slate-50 border-slate-200 text-slate-400 opacity-60';
-                            }
+                            if (isCorrect) { cardCls = 'border-emerald-500 bg-emerald-50'; badgeCls = 'bg-emerald-500 text-white'; }
+                            else if (isSelected) { cardCls = 'border-red-400 bg-red-50'; badgeCls = 'bg-red-500 text-white'; }
+                            else { cardCls = 'border-slate-200 bg-white opacity-45'; }
                         } else if (isSelected) {
-                            bgColor = 'bg-blue-50 border-blue-500 text-blue-900 shadow-md transform -translate-y-1';
-                            circleColor = 'bg-blue-500 text-white shadow-lg';
+                            cardCls = 'border-indigo-500 bg-indigo-50'; badgeCls = 'bg-indigo-500 text-white';
                         }
-                        
+
                         return (
-                            <button 
-                                key={idx} 
+                            <button
+                                key={idx}
                                 onClick={() => !showAnswer && setSelectedIdx(idx)}
-                                className={`w-full text-left py-[0.5em] px-[0.8em] rounded-[0.8em] border-2 md:border-4 ${bgColor} transition-all duration-300 ease-out flex items-center gap-[0.5em] min-h-[3em]`}
+                                className={`w-full text-left rounded-2xl border-[3px] px-6 py-5 flex items-start gap-5 transition-all duration-200 ${cardCls}`}
                             >
-                                <div className={`w-[1.8em] h-[1.8em] rounded-full flex items-center justify-center font-black shrink-0 transition-colors duration-500 ${circleColor}`} style={{ fontSize: '1em' }}>
+                                <div className={`w-[52px] h-[52px] rounded-full flex items-center justify-center text-[28px] font-black shrink-0 transition-colors ${badgeCls}`}>
                                     {String.fromCharCode(65 + idx)}
                                 </div>
-                                <div className="font-medium flex-1 prose prose-slate max-w-none [&_.katex]:text-[1.1em]" style={{ fontSize: '0.9em' }}>
-                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                                <div className={`flex-1 min-w-0 text-[30px] leading-[1.45] text-slate-800 ${KATEX_CLASS}`}>
+                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                        {String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}
+                                    </ReactMarkdown>
                                 </div>
                             </button>
                         );
                     })}
                 </div>
             )}
-            
+
             {type === 'short_answer' && (
-                <div className="w-full mb-[1em]">
-                    {!showAnswer && (
-                        <div className="flex flex-col gap-[0.5em] mt-[0.5em]">
-                            <label className="text-slate-600 font-semibold" style={{ fontSize: '0.9em' }}>Học sinh trả lời:</label>
-                            <input 
-                                type="text" 
+                <div className="w-full">
+                    {!showAnswer ? (
+                        <div className="flex flex-col gap-3">
+                            <label className="text-[28px] font-semibold text-slate-600">Học sinh trả lời:</label>
+                            <input
+                                type="text"
                                 placeholder="Nhập câu trả lời vào đây..."
-                                className="w-full px-[1.5em] py-[1em] rounded-[1em] border-4 border-indigo-200 focus:border-indigo-500 focus:ring-0 outline-none text-indigo-900 font-bold bg-indigo-50/50 shadow-inner"
-                                style={{ fontSize: '1em' }}
+                                className="w-full px-8 py-5 rounded-2xl border-[3px] border-indigo-200 focus:border-indigo-500 outline-none
+                                           text-[32px] font-bold text-indigo-900 bg-indigo-50/40"
                             />
                         </div>
-                    )}
-                    
-                    {showAnswer && (
-                        <div className="mt-[1em] p-[1.5em] bg-green-50 border-4 border-green-400 rounded-[1em] text-center shadow-lg">
-                            <h4 className="text-green-700 font-bold mb-[0.5em]" style={{ fontSize: '0.8em' }}>Đáp án chính xác:</h4>
-                            <div className="font-black text-green-600" style={{ fontSize: '1.5em' }}>{quizData.exactAnswer || quizData.correctAnswer || quizData.answerText}</div>
+                    ) : (
+                        <div className="p-8 bg-emerald-50 border-[3px] border-emerald-500 rounded-2xl text-center">
+                            <h4 className="text-[26px] font-bold text-emerald-700 mb-2 uppercase tracking-wider">Đáp án chính xác</h4>
+                            <div className={`text-[44px] font-black text-emerald-700 ${KATEX_CLASS}`}>
+                                {quizData.exactAnswer || quizData.correctAnswer || quizData.answerText}
+                            </div>
                         </div>
                     )}
                 </div>
             )}
-            
-            <div className="mt-[1em] flex justify-center pb-[1em]">
-                <button 
+
+            <div className="mt-8 flex justify-center">
+                <button
                     onClick={() => {
-                        if (showAnswer) {
-                            setShowAnswer(false);
-                            setSelectedIdx(null);
-                        } else {
-                            setShowAnswer(true);
-                        }
+                        if (showAnswer) { setShowAnswer(false); setSelectedIdx(null); }
+                        else setShowAnswer(true);
                     }}
-                    className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-[2em] py-[0.8em] rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-                    style={{ fontSize: '0.8em' }}
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-full text-[26px] font-bold
+                               shadow-lg transition-all duration-200 hover:-translate-y-0.5"
                 >
                     {showAnswer ? 'Làm lại' : 'Hiển thị đáp án'}
                 </button>
@@ -180,23 +186,31 @@ export default function PresentationPage() {
     const router = useRouter();
     const moduleId = searchParams.get('moduleId');
     const supabase = createClient();
-    
+
     const [moduleData, setModuleData] = useState<any>(null);
     const [slides, setSlides] = useState<string[][]>([]);
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const [currentFragmentIndex, setCurrentFragmentIndex] = useState(0);
     const [isFullscreen, setIsFullscreen] = useState(false);
-    
+
     // Resume states
     const [showRestorePrompt, setShowRestorePrompt] = useState(false);
     const [savedSlideIndex, setSavedSlideIndex] = useState(0);
-    
-    // Auto-fit text states
-    const [autoFitEnabled, setAutoFitEnabled] = useState(false);
-    const [baseFontSize, setBaseFontSize] = useState(40); // Start huge
-    const contentBoxRef = useRef<HTMLDivElement>(null);
+
+    /* Tỉ lệ phóng canvas theo màn hình. Đây là điểm mấu chốt: thay vì để chữ px
+       "chạy tự do" trong khung co giãn (gây tràn slide), ta giữ nguyên canvas
+       1600x900 rồi scale toàn bộ - giống reveal.js / Slidev / Marp. */
+    const [viewScale, setViewScale] = useState(1);
+    /* Tỉ lệ thu nhỏ riêng phần nội dung khi slide quá dài (auto-fit thật). */
+    const [contentScale, setContentScale] = useState(1);
+    /* Chiều cao thật của nội dung (chưa scale) - dùng để đặt đúng chiều cao khối
+       sau khi thu nhỏ, nhờ đó slide quá dài vẫn cuộn được thay vì bị cắt mất. */
+    const [naturalHeight, setNaturalHeight] = useState(0);
+    const [autoFitEnabled, setAutoFitEnabled] = useState(true);
+
+    const measureRef = useRef<HTMLDivElement>(null);
     const isFirstRender = useRef(true);
-    
+
     useEffect(() => {
         if (!moduleId) return;
         async function load() {
@@ -207,7 +221,7 @@ export default function PresentationPage() {
                 if (presentationContent) {
                     const parsed = parseSlides(presentationContent);
                     setSlides(parsed);
-                    
+
                     const savedIdxStr = localStorage.getItem(`present_slide_${moduleId}`);
                     if (savedIdxStr) {
                         const savedIdx = parseInt(savedIdxStr);
@@ -221,7 +235,7 @@ export default function PresentationPage() {
         }
         load();
     }, [moduleId]);
-    
+
     useEffect(() => {
         if (!moduleId) return;
         if (isFirstRender.current) {
@@ -234,120 +248,141 @@ export default function PresentationPage() {
             localStorage.removeItem(`present_slide_${moduleId}`);
         }
     }, [currentSlideIndex, moduleId]);
-    
+
+    /* Phóng canvas vừa khít màn hình, đồng bộ cả khi vào/ra toàn màn hình. */
+    useLayoutEffect(() => {
+        const update = () => {
+            setViewScale(Math.min(window.innerWidth / CANVAS_WIDTH, window.innerHeight / CANVAS_HEIGHT));
+            setIsFullscreen(!!document.fullscreenElement);
+        };
+        update();
+        window.addEventListener('resize', update);
+        document.addEventListener('fullscreenchange', update);
+        return () => {
+            window.removeEventListener('resize', update);
+            document.removeEventListener('fullscreenchange', update);
+        };
+    }, []);
+
+    /* AUTO-FIT THẬT: đo chiều cao thật của nội dung rồi thu nhỏ đúng một lần cho vừa khung.
+       Phần tử đo luôn giữ width 100% và KHÔNG bị transform, nên offsetHeight ổn định -
+       không có vòng lặp đo/co như cơ chế "Tự ép viền" cũ (vốn giảm font 2px mỗi vòng
+       nhưng chữ lại hardcode px nên không bao giờ vừa). */
+    useLayoutEffect(() => {
+        if (!autoFitEnabled) {
+            setContentScale(1);
+            setNaturalHeight(0);
+            return;
+        }
+        let cancelled = false;
+        const measure = () => {
+            if (cancelled) return;
+            const el = measureRef.current;
+            if (!el) return;
+            const natural = el.offsetHeight;
+            if (!natural) return;
+            const next = natural > CONTENT_HEIGHT
+                ? Math.max(MIN_CONTENT_SCALE, CONTENT_HEIGHT / natural)
+                : 1;
+            setNaturalHeight(natural);
+            setContentScale(prev => (Math.abs(prev - next) > 0.004 ? next : prev));
+        };
+        measure();
+        // Đo lại vài nhịp để bắt kịp lúc KaTeX và ảnh render xong.
+        const t1 = setTimeout(measure, 120);
+        const t2 = setTimeout(measure, 420);
+        return () => { cancelled = true; clearTimeout(t1); clearTimeout(t2); };
+    }, [currentSlideIndex, currentFragmentIndex, slides, autoFitEnabled]);
+
+    const currentFragments = slides[currentSlideIndex] || [];
+
+    const goNext = useCallback(() => {
+        const frags = slides[currentSlideIndex] || [];
+        if (currentFragmentIndex < frags.length - 1) {
+            setCurrentFragmentIndex(prev => prev + 1);
+        } else if (currentSlideIndex < slides.length - 1) {
+            setCurrentSlideIndex(prev => prev + 1);
+            setCurrentFragmentIndex(0);
+        }
+    }, [slides, currentSlideIndex, currentFragmentIndex]);
+
+    const goPrev = useCallback(() => {
+        if (currentFragmentIndex > 0) {
+            setCurrentFragmentIndex(prev => prev - 1);
+        } else if (currentSlideIndex > 0) {
+            const prevIdx = currentSlideIndex - 1;
+            setCurrentSlideIndex(prevIdx);
+            setCurrentFragmentIndex((slides[prevIdx] || []).length - 1);
+        }
+    }, [slides, currentSlideIndex, currentFragmentIndex]);
+
+    const toggleFullscreen = useCallback(() => {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(e => console.error(e));
+        } else if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }, []);
+
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
-            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Space' || e.key === 'Enter' || e.key === 'PageDown') {
-                if (e.key === ' ' || e.key === 'Space' || e.key === 'PageDown') e.preventDefault();
-                
-                const currentFragments = slides[currentSlideIndex] || [];
-                if (currentFragmentIndex < currentFragments.length - 1) {
-                    setCurrentFragmentIndex(prev => prev + 1);
-                } else if (currentSlideIndex < slides.length - 1) {
-                    setCurrentSlideIndex(prev => prev + 1);
-                    setCurrentFragmentIndex(0);
-                }
+            if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
+                if (e.key === ' ' || e.key === 'PageDown') e.preventDefault();
+                goNext();
             } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
                 if (e.key === 'PageUp') e.preventDefault();
-                
-                if (currentFragmentIndex > 0) {
-                    setCurrentFragmentIndex(prev => prev - 1);
-                } else if (currentSlideIndex > 0) {
-                    setCurrentSlideIndex(prev => prev - 1);
-                    setCurrentFragmentIndex(slides[currentSlideIndex - 1].length - 1);
-                }
+                goPrev();
             } else if (e.key === 'f' || e.key === 'F') {
                 toggleFullscreen();
             }
         };
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
-    }, [slides, currentSlideIndex, currentFragmentIndex]);
-    
-    const toggleFullscreen = () => {
-        if (!document.fullscreenElement) {
-            document.documentElement.requestFullscreen().catch(e => console.error(e));
-            setIsFullscreen(true);
-        } else {
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-                setIsFullscreen(false);
-            }
-        }
-    };
-    
-    // Reset font size when slide changes
-    useEffect(() => {
-        setBaseFontSize(autoFitEnabled ? 40 : 30); // Initial giant size if auto-fit, else 30
-    }, [currentSlideIndex, autoFitEnabled]);
-    
-    // Iterative font scaling based on overflow
-    useLayoutEffect(() => {
-        if (!autoFitEnabled) return;
-        if (!contentBoxRef.current) return;
-        const container = contentBoxRef.current;
-        
-        // Wait for rendering to stabilize
-        const timer = setTimeout(() => {
-            const isOverflowing = container.scrollHeight > container.clientHeight;
-            if (isOverflowing && baseFontSize > 20) { // Don't go smaller than 20px
-                setBaseFontSize(prev => prev - 2);
-            }
-        }, 10); // Small delay to let images/katex render
-        
-        return () => clearTimeout(timer);
-    }, [currentSlideIndex, baseFontSize, slides, autoFitEnabled]);
-    // Auto scroll when fragment index changes
-    useLayoutEffect(() => {
-        if (contentBoxRef.current) {
-            contentBoxRef.current.scrollTo({
-                top: contentBoxRef.current.scrollHeight,
-                behavior: 'smooth'
-            });
-        }
-    }, [currentFragmentIndex]);
+    }, [goNext, goPrev, toggleFullscreen]);
 
     if (!moduleData || slides.length === 0) {
-        return <div className="min-h-screen bg-slate-50 flex items-center justify-center text-indigo-600 text-3xl font-bold animate-pulse">Đang nạp bài giảng...</div>;
+        return (
+            <div className="min-h-screen bg-slate-900 flex items-center justify-center text-indigo-200 text-3xl font-bold animate-pulse">
+                Đang nạp bài giảng...
+            </div>
+        );
     }
-    
-    const currentFragments = slides[currentSlideIndex] || [];
+
     const isQuiz = currentFragments.length > 0 && currentFragments[0].startsWith('```quiz');
-    let quizData = null;
+    let quizData: any = null;
     if (isQuiz) {
         try {
             const jsonStr = currentFragments[0].replace(/^```quiz\s*/, '').replace(/\s*```$/, '');
             quizData = JSON.parse(jsonStr);
-        } catch (e) {}
+        } catch (e) { }
     }
+
     const handleSlideClick = (e: React.MouseEvent) => {
         const target = e.target as HTMLElement;
-        if (target.closest('button') || target.closest('a') || target.closest('input')) {
-            return;
-        }
-        if (currentFragmentIndex < currentFragments.length - 1) {
-            setCurrentFragmentIndex(prev => prev + 1);
-        } else if (currentSlideIndex < slides.length - 1) {
-            setCurrentSlideIndex(prev => prev + 1);
-            setCurrentFragmentIndex(0);
-        }
+        if (target.closest('button') || target.closest('a') || target.closest('input')) return;
+        goNext();
     };
 
+    const progressPct = ((currentSlideIndex + 1) / slides.length) * 100;
+
     return (
-        <div onClick={handleSlideClick} className="w-screen h-screen overflow-hidden bg-gradient-to-br from-slate-100 to-indigo-50 flex items-center justify-center selection:bg-indigo-500/30 relative">
-            
+        <div
+            onClick={handleSlideClick}
+            className="w-screen h-screen overflow-hidden flex items-center justify-center relative
+                       bg-[radial-gradient(ellipse_at_top,#1e293b_0%,#0f172a_60%,#020617_100%)] selection:bg-indigo-500/30"
+        >
             {showRestorePrompt && (
-                <div className="absolute inset-0 z-[100] flex items-center justify-center bg-slate-900/40 backdrop-blur-sm cursor-default" onClick={(e) => e.stopPropagation()}>
-                    <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 transform transition-all flex flex-col items-center animate-in zoom-in-95 duration-300">
-                        <div className="flex items-center justify-center w-16 h-16 bg-indigo-50 text-indigo-500 rounded-full mb-4 shadow-inner border border-indigo-100">
+                <div className="absolute inset-0 z-[100] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm cursor-default" onClick={(e) => e.stopPropagation()}>
+                    <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-8 flex flex-col items-center animate-in zoom-in-95 duration-300">
+                        <div className="flex items-center justify-center w-16 h-16 bg-indigo-50 text-indigo-500 rounded-full mb-4 border border-indigo-100">
                             <BookOpen className="w-8 h-8" />
                         </div>
                         <h2 className="text-2xl font-black text-slate-800 text-center mb-3">Tiếp tục trình chiếu?</h2>
                         <p className="text-slate-500 text-center mb-8 font-medium leading-relaxed">
-                            Hệ thống đã lưu lại vị trí lần trước Thầy/Cô đang xem ở <strong className="text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">Trang {savedSlideIndex + 1}</strong>.<br/>Thầy/Cô muốn tiếp tục hay bắt đầu lại?
+                            Hệ thống đã lưu lại vị trí lần trước Thầy/Cô đang xem ở <strong className="text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">Trang {savedSlideIndex + 1}</strong>.<br />Thầy/Cô muốn tiếp tục hay bắt đầu lại?
                         </p>
                         <div className="flex gap-4 w-full">
-                            <button 
+                            <button
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     localStorage.removeItem(`present_slide_${moduleId}`);
@@ -355,18 +390,18 @@ export default function PresentationPage() {
                                     setCurrentSlideIndex(0);
                                     setCurrentFragmentIndex(0);
                                 }}
-                                className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-2xl transition-all hover:shadow-md"
+                                className="flex-1 py-3 px-4 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded-2xl transition-all"
                             >
                                 Bắt đầu lại
                             </button>
-                            <button 
+                            <button
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     setCurrentSlideIndex(savedSlideIndex);
                                     setCurrentFragmentIndex(0);
                                     setShowRestorePrompt(false);
                                 }}
-                                className="flex-1 py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+                                className="flex-1 py-3 px-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl transition-all shadow-lg"
                             >
                                 Tiếp tục
                             </button>
@@ -374,128 +409,130 @@ export default function PresentationPage() {
                     </div>
                 </div>
             )}
-            
-            {/* Header / Controls (Auto-hides) */}
-            <div className="absolute top-0 left-0 right-0 p-6 flex justify-between items-center z-50 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-white/80 backdrop-blur-md shadow-sm border-b border-slate-200">
-                <div className="flex items-center gap-6">
-                    <button onClick={() => router.back()} className="p-3 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors text-slate-700">
-                        <ArrowLeft className="w-6 h-6" />
+
+            {/* Thanh điều khiển trên - tự ẩn */}
+            <div className="absolute top-0 left-0 right-0 px-6 py-4 flex justify-between items-center z-50
+                            opacity-0 hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300
+                            bg-slate-900/80 backdrop-blur-md border-b border-white/10">
+                <div className="flex items-center gap-5 min-w-0">
+                    <button onClick={() => router.back()} className="p-2.5 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-white shrink-0">
+                        <ArrowLeft className="w-5 h-5" />
                     </button>
-                    <h1 className="font-black text-2xl text-slate-800">{moduleData.title}</h1>
+                    <h1 className="font-bold text-lg text-white/90 truncate">{moduleData.title}</h1>
                 </div>
-                <div className="flex items-center gap-4">
-                    <button 
-                        onClick={() => setAutoFitEnabled(!autoFitEnabled)} 
-                        className={`flex items-center gap-2 px-4 py-2 rounded-full font-bold transition-colors ${autoFitEnabled ? 'bg-indigo-100 text-indigo-700 border border-indigo-300' : 'bg-slate-100 text-slate-600 border border-slate-200'}`}
-                        title="Tự động thu nhỏ cỡ chữ khi tràn slide"
+                <div className="flex items-center gap-3 shrink-0">
+                    <button
+                        onClick={() => setAutoFitEnabled(v => !v)}
+                        className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold transition-colors border ${autoFitEnabled
+                            ? 'bg-indigo-500/20 text-indigo-200 border-indigo-400/40'
+                            : 'bg-white/5 text-white/60 border-white/10'}`}
+                        title="Tự động thu nhỏ nội dung cho vừa khung slide"
                     >
-                        <Type className="w-5 h-5" /> {autoFitEnabled ? 'Tự ép viền: BẬT' : 'Tự ép viền: TẮT'}
+                        <Scaling className="w-4 h-4" />
+                        Tự vừa khung: {autoFitEnabled ? 'BẬT' : 'TẮT'}
+                        {autoFitEnabled && contentScale < 1 && (
+                            <span
+                                className={`ml-1 text-[11px] font-black px-1.5 py-0.5 rounded ${contentScale <= MIN_CONTENT_SCALE + 0.005
+                                    ? 'bg-amber-400/30 text-amber-200'
+                                    : 'bg-indigo-400/30'}`}
+                                title={contentScale <= MIN_CONTENT_SCALE + 0.005
+                                    ? 'Slide này quá dài, đã thu nhỏ hết mức cho phép - nên tách bớt nội dung sang slide mới'
+                                    : 'Đã tự thu nhỏ nội dung cho vừa khung slide'}
+                            >
+                                {Math.round(contentScale * 100)}%
+                            </span>
+                        )}
                     </button>
-                    <span className="text-slate-500 font-bold text-xl px-6 bg-slate-100 py-2 rounded-full border border-slate-200">
+                    <span className="text-white/80 font-bold text-base px-4 py-2 bg-white/10 rounded-full border border-white/10">
                         {currentSlideIndex + 1} / {slides.length}
                     </span>
-                    <button onClick={toggleFullscreen} className="p-3 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors text-slate-700" title="Phím F">
-                        {isFullscreen ? <Minimize2 className="w-6 h-6" /> : <Maximize2 className="w-6 h-6" />}
+                    <button onClick={toggleFullscreen} className="p-2.5 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-white" title="Phím F">
+                        {isFullscreen ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
                     </button>
                 </div>
             </div>
-            
-            {/* Slide Box (Locked to 16:9) */}
-            <div 
-                className="bg-white shadow-[0_30px_80px_-15px_rgba(0,0,0,0.15)] overflow-hidden relative flex flex-col mx-auto"
+
+            {/* CANVAS CỐ ĐỊNH 1600x900 - phóng nguyên khối theo màn hình */}
+            <div
+                className="bg-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.6)] rounded-[20px] overflow-hidden relative flex flex-col shrink-0"
                 style={{
-                    aspectRatio: '16 / 9',
-                    width: '100%',
-                    maxWidth: 'calc(100vh * 16 / 9)',
-                    maxHeight: '100vh'
+                    width: CANVAS_WIDTH,
+                    height: CANVAS_HEIGHT,
+                    transform: `scale(${viewScale})`,
+                    transformOrigin: 'center center',
                 }}
             >
-                {/* Progress Bar inside slide */}
-                <div className="absolute top-0 left-0 right-0 h-1.5 bg-slate-100 z-40">
-                    <div className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-500 ease-out" style={{ width: `${((currentSlideIndex + 1) / slides.length) * 100}%` }} />
+                {/* Thanh tiến độ */}
+                <div className="absolute top-0 left-0 right-0 h-[6px] bg-slate-100 z-40">
+                    <div
+                        className="h-full bg-gradient-to-r from-indigo-500 to-blue-500 transition-all duration-500 ease-out"
+                        style={{ width: `${progressPct}%` }}
+                    />
                 </div>
-                
-                {/* Inner Content Wrapper */}
-                <div 
-                    ref={contentBoxRef}
-                    className="flex-1 overflow-y-auto overflow-x-hidden w-full h-full px-[5%] pt-[2%] pb-[5%] flex flex-col scroll-smooth"
-                    style={{ scrollbarWidth: 'thin' }}
+
+                <div
+                    className="flex-1 overflow-y-auto overflow-x-hidden"
+                    style={{ paddingLeft: PAD_X, paddingRight: PAD_X, paddingTop: PAD_TOP, paddingBottom: PAD_BOTTOM }}
                 >
-                    <div 
-                        key={currentSlideIndex}
-                        className="animate-in fade-in duration-500 ease-out h-full w-full flex flex-col"
+                    {/* Lớp thu nhỏ auto-fit. Transform KHÔNG ảnh hưởng offsetHeight của phần tử đo bên trong.
+                        Chiều cao khối đặt đúng bằng chiều cao SAU khi thu nhỏ, nên slide dài bất thường
+                        (đã chạm sàn 45% mà vẫn dư) sẽ cuộn được thay vì bị cắt mất nội dung. */}
+                    <div
+                        style={{
+                            transform: `scale(${contentScale})`,
+                            transformOrigin: 'top center',
+                            height: naturalHeight ? naturalHeight * contentScale : CONTENT_HEIGHT,
+                        }}
                     >
-                        {isQuiz && quizData ? (
-                            <PresentationQuiz quizData={quizData} fontSize={baseFontSize} />
-                        ) : (
-                            <div className="w-full flex flex-col">
-                                {currentFragments.slice(0, currentFragmentIndex + 1).map((frag, idx) => (
-                                    <div 
-                                        key={`${currentSlideIndex}-${idx}`} 
-                                        className="animate-in fade-in slide-in-from-bottom-4 duration-700 ease-out w-full
-                                            prose prose-slate max-w-none [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap
-                                            prose-headings:font-black prose-headings:tracking-tight
-                                            prose-h1:text-[1.8em] prose-h1:text-white prose-h1:bg-gradient-to-r prose-h1:from-indigo-600 prose-h1:to-blue-600 prose-h1:px-[0.8em] prose-h1:py-[0.4em] prose-h1:rounded-[0.4em] prose-h1:shadow-lg prose-h1:inline-block prose-h1:mb-[0.5em] prose-h1:mt-[0.1em] prose-h1:leading-tight prose-h1:border-2 prose-h1:border-white
-                                            prose-h2:text-[1.4em] prose-h2:text-indigo-900 prose-h2:bg-indigo-50 prose-h2:px-[0.6em] prose-h2:py-[0.3em] prose-h2:rounded-[0.3em] prose-h2:border-l-[0.3em] prose-h2:border-indigo-600 prose-h2:shadow-sm prose-h2:inline-block prose-h2:mb-[0.5em] prose-h2:mt-[0.2em]
-                                            prose-h3:text-[1.2em] prose-h3:text-blue-900 prose-h3:bg-blue-50 prose-h3:px-[0.5em] prose-h3:py-[0.2em] prose-h3:rounded-[0.2em] prose-h3:border-l-[0.2em] prose-h3:border-blue-500 prose-h3:inline-block prose-h3:mb-[0.4em] prose-h3:mt-[0.2em]
-                                            prose-p:text-[1em] prose-p:leading-[1.4] prose-p:text-slate-800 [&>p]:my-[0.1em] [&>p]:mb-[0.2em]
-                                            prose-li:text-[1em] prose-li:leading-[1.4] prose-li:my-[0.1em] [&>ul]:my-[0.1em] [&>ol]:my-[0.1em]
-                                            prose-strong:text-indigo-900 prose-strong:font-black
-                                            prose-blockquote:border-l-[0.3em] prose-blockquote:border-indigo-400 prose-blockquote:bg-indigo-50 prose-blockquote:p-[0.8em] prose-blockquote:rounded-r-2xl prose-blockquote:text-slate-700 prose-blockquote:font-medium prose-blockquote:text-[1.1em]
-                                            [&_.katex-display]:text-[1.1em] [&_.katex-display]:my-[0.5em]
-                                            [&_.katex]:text-[1em] [&_.katex]:text-blue-900
-                                            [&_img]:max-h-[40vh] [&_img]:mx-auto [&_img]:rounded-2xl [&_img]:shadow-xl [&_img]:border [&_img]:border-slate-200
-                                        "
-                                        style={{ fontSize: `${baseFontSize}px` }}
-                                    >
-                                        <ReactMarkdown 
-                                            components={customMarkdownComponents}
-                                            remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} 
-                                            rehypePlugins={[rehypeKatex, rehypeRaw]}
+                        {/* flow-root: chặn margin-bottom của phần tử cuối "thoát" ra ngoài (margin collapse),
+                            nếu không offsetHeight đo thiếu ~8px khiến nội dung vẫn dôi ra khỏi khung. */}
+                        <div ref={measureRef} key={`${currentSlideIndex}-${currentFragmentIndex}`} className="w-full flow-root animate-in fade-in duration-300">
+                            {isQuiz && quizData ? (
+                                <PresentationQuiz quizData={quizData} />
+                            ) : (
+                                <div className="w-full">
+                                    {currentFragments.slice(0, currentFragmentIndex + 1).map((frag, idx) => (
+                                        <div
+                                            key={`${currentSlideIndex}-${idx}`}
+                                            className={`w-full animate-in fade-in slide-in-from-bottom-2 duration-500 ease-out
+                                                        [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap ${KATEX_CLASS}`}
                                         >
-                                            {frag}
-                                        </ReactMarkdown>
-                                    </div>
-                                ))}
-                            </div>
-                        )}
+                                            <ReactMarkdown
+                                                components={presentationMarkdownComponents}
+                                                remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}
+                                                rehypePlugins={[rehypeKatex, rehypeRaw]}
+                                            >
+                                                {frag}
+                                            </ReactMarkdown>
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-6 opacity-0 hover:opacity-100 transition-opacity duration-500 bg-white/90 backdrop-blur-md border border-slate-200 px-6 py-3 rounded-full shadow-xl z-50">
-                <button 
-                    onClick={() => {
-                        if (currentFragmentIndex > 0) {
-                            setCurrentFragmentIndex(prev => prev - 1);
-                        } else if (currentSlideIndex > 0) {
-                            setCurrentSlideIndex(prev => prev - 1);
-                            setCurrentFragmentIndex(slides[currentSlideIndex - 1].length - 1);
-                        }
-                    }}
+
+            {/* Thanh điều hướng dưới - tự ẩn */}
+            <div className="fixed bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-5 z-50
+                            opacity-0 hover:opacity-100 transition-opacity duration-300
+                            bg-slate-900/85 backdrop-blur-md border border-white/10 px-5 py-2.5 rounded-full shadow-2xl">
+                <button
+                    onClick={goPrev}
                     disabled={currentSlideIndex === 0 && currentFragmentIndex === 0}
-                    className="p-3 bg-slate-100 hover:bg-slate-200 rounded-full transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed text-slate-700 hover:scale-110 active:scale-95"
+                    className="p-2.5 bg-white/10 hover:bg-white/20 rounded-full transition-all disabled:opacity-25 disabled:cursor-not-allowed text-white hover:scale-105 active:scale-95"
                     title="Slide trước (Mũi tên trái)"
                 >
-                    <ChevronLeft className="w-8 h-8" />
+                    <ChevronLeft className="w-7 h-7" />
                 </button>
-                <div className="text-slate-400 font-bold tracking-widest text-sm uppercase">
-                    Điều khiển
-                </div>
-                <button 
-                    onClick={() => {
-                        if (currentFragmentIndex < currentFragments.length - 1) {
-                            setCurrentFragmentIndex(prev => prev + 1);
-                        } else if (currentSlideIndex < slides.length - 1) {
-                            setCurrentSlideIndex(prev => prev + 1);
-                            setCurrentFragmentIndex(0);
-                        }
-                    }}
+                <div className="text-white/50 font-bold tracking-widest text-xs uppercase select-none">Điều khiển</div>
+                <button
+                    onClick={goNext}
                     disabled={currentSlideIndex === slides.length - 1 && currentFragmentIndex === currentFragments.length - 1}
-                    className="p-3 bg-slate-100 hover:bg-slate-200 rounded-full transition-all duration-300 disabled:opacity-30 disabled:cursor-not-allowed text-slate-700 hover:scale-110 active:scale-95"
+                    className="p-2.5 bg-white/10 hover:bg-white/20 rounded-full transition-all disabled:opacity-25 disabled:cursor-not-allowed text-white hover:scale-105 active:scale-95"
                     title="Slide tiếp theo (Space / Mũi tên phải)"
                 >
-                    <ChevronRight className="w-8 h-8" />
+                    <ChevronRight className="w-7 h-7" />
                 </button>
             </div>
         </div>
