@@ -19,7 +19,8 @@ import {
   Library,
   ChevronUp,
   ChevronDown,
-  X
+  X,
+  Menu
 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
@@ -36,6 +37,11 @@ export default function AdminLayout({
   const [isSessionLoading, setIsSessionLoading] = useState(true);
   const [userName, setUserName] = useState("Admin");
   const [isTopbarHidden, setIsTopbarHidden] = useState(false);
+  /* Trên điện thoại, thanh bên chuyển thành ngăn kéo trượt (drawer) thay vì luôn
+     chiếm chỗ. Trước đây <aside> luôn rộng 80px kể cả trên máy 390px, cộng với
+     lề nội dung p-8 (32px mỗi bên) nên chỉ còn ~246px để hiển thị - chữ và nút
+     bị vỡ dòng liên tục. */
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const supabase = createClient();
 
@@ -119,44 +125,70 @@ export default function AdminLayout({
     };
   }).filter(group => group.items.length > 0);
 
+  // Bấm vào một mục là sang trang khác -> tự đóng ngăn kéo
+  useEffect(() => { setIsMobileNavOpen(false); }, [pathname]);
+
+  // Mở ngăn kéo thì khoá cuộn nền để không bị trôi trang phía sau
+  useEffect(() => {
+    if (!isMobileNavOpen) return;
+    const cu = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = cu; };
+  }, [isMobileNavOpen]);
+
   if (isSessionLoading) return <div className="h-screen bg-gray-50 flex items-center justify-center">Đang tải...</div>;
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
-      {/* Admin Sidebar (Màu Đen) với tính năng Thu gọn */}
-      <aside 
-        className={`${
-          isCollapsed ? "w-[80px]" : "w-[260px]"
-        } bg-zinc-900 text-zinc-300 flex flex-col transition-all duration-300 relative z-20`}
+      {/* Nền mờ phía sau ngăn kéo - chỉ có trên điện thoại */}
+      {isMobileNavOpen && (
+        <div
+          onClick={() => setIsMobileNavOpen(false)}
+          className="fixed inset-0 bg-black/50 z-40 md:hidden animate-in fade-in duration-200"
+        />
+      )}
+
+      {/* Admin Sidebar: ngăn kéo trượt trên điện thoại, cột cố định từ tablet trở lên */}
+      <aside
+        className={`bg-zinc-900 text-zinc-300 flex flex-col transition-transform duration-300 z-50
+          fixed inset-y-0 left-0 w-[262px] ${isMobileNavOpen ? 'translate-x-0' : '-translate-x-full'}
+          md:static md:translate-x-0 md:z-20 md:transition-all
+          ${isCollapsed ? "md:w-[80px]" : "md:w-[260px]"}`}
       >
-        {/* Toggle Button */}
-        <button 
+        {/* Nút thu gọn - chỉ dùng ở desktop */}
+        <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="absolute -right-3 top-6 bg-zinc-800 text-white p-1.5 rounded-full shadow-md border border-zinc-700 hover:bg-zinc-700 z-30 transition-colors"
+          className="hidden md:block absolute -right-3 top-6 bg-zinc-800 text-white p-1.5 rounded-full shadow-md border border-zinc-700 hover:bg-zinc-700 z-30 transition-colors"
         >
           {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
         </button>
 
-        <div className={`p-6 border-b border-white/10 flex items-center gap-3 text-white ${isCollapsed ? 'justify-center px-0' : ''}`}>
+        {/* Nút đóng ngăn kéo - chỉ trên điện thoại */}
+        <button
+          onClick={() => setIsMobileNavOpen(false)}
+          className="md:hidden absolute right-3 top-5 p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+          aria-label="Đóng menu"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        <div className={`p-6 border-b border-white/10 flex items-center gap-3 text-white ${isCollapsed ? 'md:justify-center md:px-0' : ''}`}>
           <div className="bg-teal-500 p-2 rounded-lg flex-shrink-0">
             <ShieldAlert className="w-5 h-5 text-white" />
           </div>
-          {!isCollapsed && (
-            <div className="overflow-hidden">
-              <h1 className="font-bold text-lg leading-tight whitespace-nowrap">Math LMS</h1>
-              <p className="text-[10px] text-teal-400 font-semibold uppercase tracking-widest mt-1 whitespace-nowrap">Dashboard</p>
-            </div>
-          )}
+          {/* Trên điện thoại luôn hiện chữ; chỉ ẩn khi thu gọn ở desktop */}
+          <div className={`overflow-hidden ${isCollapsed ? 'md:hidden' : ''}`}>
+            <h1 className="font-bold text-lg leading-tight whitespace-nowrap">Math LMS</h1>
+            <p className="text-[10px] text-teal-400 font-semibold uppercase tracking-widest mt-1 whitespace-nowrap">Dashboard</p>
+          </div>
         </div>
 
         <nav className="flex-1 overflow-y-auto mt-4 pb-10 overflow-x-hidden no-scrollbar">
           {filteredMenu.map((group, gIdx) => (
             <div key={gIdx} className="mb-6 px-4">
-              {!isCollapsed && (
-                <p className="text-[11px] font-bold text-zinc-500 uppercase tracking-wider mb-3 px-2 whitespace-nowrap">
-                  {group.group}
-                </p>
-              )}
+              <p className={`text-[11px] font-bold text-zinc-500 uppercase tracking-wider mb-3 px-2 whitespace-nowrap ${isCollapsed ? 'md:hidden' : ''}`}>
+                {group.group}
+              </p>
               <ul className="space-y-1">
                 {group.items.map((item) => {
                   const isActive = pathname === item.href || (pathname?.startsWith(item.href) && item.href !== '/admin/dashboard');
@@ -168,11 +200,11 @@ export default function AdminLayout({
                           isActive 
                             ? "bg-teal-600 text-white font-medium shadow-sm" 
                             : "hover:bg-white/5 hover:text-white"
-                        } ${isCollapsed ? 'justify-center' : ''}`}
+                        } ${isCollapsed ? 'md:justify-center' : ''}`}
                         title={isCollapsed ? item.name : ""}
                       >
                         <item.icon className="w-5 h-5 flex-shrink-0" />
-                        {!isCollapsed && <span className="whitespace-nowrap">{item.name}</span>}
+                        <span className={`whitespace-nowrap ${isCollapsed ? 'md:hidden' : ''}`}>{item.name}</span>
                       </Link>
                     </li>
                   );
@@ -187,10 +219,18 @@ export default function AdminLayout({
       <main className="flex-1 overflow-y-auto flex flex-col h-screen relative">
         {/* Topbar Admin */}
         {!isTopbarHidden && (
-          <header className="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center sticky top-0 z-10 shadow-sm transition-all">
-            <div className="flex items-center gap-3">
-              <h2 className="text-xl font-bold text-gray-800">Khu vực Quản trị</h2>
-              <button onClick={() => setIsTopbarHidden(true)} className="p-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-500 transition-colors" title="Thu gọn Topbar">
+          <header className="bg-white border-b border-gray-200 px-3 sm:px-6 lg:px-8 py-3 sm:py-4 flex justify-between items-center sticky top-0 z-10 shadow-sm transition-all">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+              {/* Nút mở menu - chỉ trên điện thoại */}
+              <button
+                onClick={() => setIsMobileNavOpen(true)}
+                className="md:hidden p-2 -ml-1 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors shrink-0"
+                aria-label="Mở menu"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+              <h2 className="text-base sm:text-xl font-bold text-gray-800 truncate">Khu vực Quản trị</h2>
+              <button onClick={() => setIsTopbarHidden(true)} className="hidden sm:block p-1.5 bg-gray-100 hover:bg-gray-200 rounded-full text-gray-500 transition-colors shrink-0" title="Thu gọn Topbar">
                 <X className="w-4 h-4" />
               </button>
             </div>
@@ -215,7 +255,8 @@ export default function AdminLayout({
         )}
 
         {/* Dynamic Content */}
-        <div className={`flex-1 bg-gray-50 ${(pathname.includes('/editor') || pathname.includes('/edit')) ? 'p-0' : 'p-8'}`}>
+        {/* Lề nội dung: trên điện thoại chỉ 12px thay vì 32px để nhường bề ngang cho bảng/thẻ */}
+        <div className={`flex-1 bg-gray-50 ${(pathname.includes('/editor') || pathname.includes('/edit')) ? 'p-0' : 'p-3 sm:p-5 lg:p-8'}`}>
           {children}
         </div>
       </main>

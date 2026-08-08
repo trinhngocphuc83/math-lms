@@ -579,10 +579,12 @@ export default function AdminClassesPage() {
               setMaxStudents("30");
               setIsModalOpen(true);
             }}
-            className="flex items-center gap-2 bg-teal-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-600/20 transition-all active:scale-95"
+            className="flex items-center gap-1.5 sm:gap-2 bg-teal-600 text-white px-3.5 sm:px-5 py-2.5 rounded-xl font-bold hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-600/20 transition-all active:scale-95 whitespace-nowrap shrink-0"
           >
-            <Plus size={20} strokeWidth={2.5} />
-            <span>Tạo lớp học mới</span>
+            <Plus size={20} strokeWidth={2.5} className="shrink-0" />
+            {/* Điện thoại dùng nhãn ngắn để nút không vỡ thành nhiều dòng */}
+            <span className="sm:hidden">Tạo lớp</span>
+            <span className="hidden sm:inline">Tạo lớp học mới</span>
           </button>
         </div>
       </div>
