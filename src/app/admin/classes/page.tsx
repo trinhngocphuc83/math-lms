@@ -547,11 +547,11 @@ export default function AdminClassesPage() {
           </h1>
           <p className="text-gray-500 mt-2 font-medium">Tổ chức lớp học, sắp xếp học sinh và quản lý lịch học.</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap justify-end shrink-0">
           <button 
             onClick={handleExportUnpaidStudents}
             disabled={isExporting || classes.length === 0}
-            className="flex items-center gap-2 bg-red-50 text-red-600 border border-red-200 px-4 py-2.5 rounded-xl font-bold hover:bg-red-100 transition-all disabled:opacity-50"
+            className="flex items-center gap-2 bg-red-50 text-red-600 border border-red-200 px-4 py-2.5 rounded-xl font-bold hover:bg-red-100 transition-all disabled:opacity-50 whitespace-nowrap shrink-0"
           >
             {isExporting ? <Loader2 className="w-5 h-5 animate-spin" /> : <FileWarning className="w-5 h-5" />}
             <span className="hidden sm:inline">Xuất HS Chưa Nộp</span>
@@ -560,7 +560,7 @@ export default function AdminClassesPage() {
           <button 
             onClick={handleExportAllClasses}
             disabled={isExporting || classes.length === 0}
-            className="flex items-center gap-2 bg-emerald-100 text-emerald-700 border border-emerald-200 px-4 py-2.5 rounded-xl font-bold hover:bg-emerald-200 transition-all disabled:opacity-50"
+            className="flex items-center gap-2 bg-emerald-100 text-emerald-700 border border-emerald-200 px-4 py-2.5 rounded-xl font-bold hover:bg-emerald-200 transition-all disabled:opacity-50 whitespace-nowrap shrink-0"
           >
             {isExporting ? <Loader2 className="w-5 h-5 animate-spin" /> : <Download className="w-5 h-5" />}
             <span className="hidden sm:inline">Xuất Excel Tổng</span>
@@ -698,9 +698,9 @@ export default function AdminClassesPage() {
                     </div>
                   </div>
 
-                  <Link 
+                  <Link
                     href={`/admin/classes/${cls.id}`}
-                    className="px-4 py-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-600 hover:text-white rounded-lg font-bold text-sm transition-colors"
+                    className="px-4 py-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-600 hover:text-white rounded-lg font-bold text-sm transition-colors whitespace-nowrap shrink-0"
                   >
                     Quản lý học sinh
                   </Link>

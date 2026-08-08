@@ -89,7 +89,8 @@ export default function AdminCoursesPage() {
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {courses.map(course => (
-            <div key={course.id} className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all group">
+            // h-full + flex-col: mọi thẻ trong một hàng cao bằng nhau, không còn so le
+            <div key={course.id} className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-xl hover:shadow-black/5 hover:-translate-y-1 transition-all group h-full flex flex-col">
               <div className="flex justify-between items-start mb-4">
                 <h3 className="font-bold text-xl text-gray-800 leading-tight line-clamp-2 pr-2">{course.title}</h3>
                 <span className={`px-3 py-1 rounded-full text-[11px] font-bold tracking-wide uppercase whitespace-nowrap ${course.status === 'published' ? 'bg-green-50 text-green-600 border border-green-200' : 'bg-amber-50 text-amber-600 border border-amber-200'}`}>
@@ -101,7 +102,8 @@ export default function AdminCoursesPage() {
                 {course.description || "Chưa có mô tả cho khóa học này..."}
               </div>
 
-              <div className="mb-6 flex flex-wrap gap-2">
+              {/* flex-1: đẩy hàng nút xuống sát đáy thẻ dù số nhãn phân loại nhiều hay ít */}
+              <div className="mb-6 flex flex-wrap gap-2 flex-1 content-start">
                 {course.grade_name && (
                   <span className="text-xs font-bold uppercase tracking-wider text-teal-600 bg-teal-50 px-3 py-1.5 rounded-lg border border-teal-100/50">
                     Khối: {course.grade_name}
@@ -119,14 +121,14 @@ export default function AdminCoursesPage() {
                 )}
               </div>
 
-              <div className="flex items-center justify-between pt-5 border-t border-gray-50">
-                <button 
+              <div className="flex items-center justify-between gap-2 pt-5 border-t border-gray-50 mt-auto">
+                <button
                   onClick={() => router.push(`/admin/courses/${course.id}/lessons`)}
-                  className="flex items-center gap-2 text-sm font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 hover:text-indigo-700 px-4 py-2 rounded-xl transition-colors"
+                  className="flex items-center gap-2 text-sm font-bold text-indigo-600 bg-indigo-50 hover:bg-indigo-100 hover:text-indigo-700 px-4 py-2 rounded-xl transition-colors whitespace-nowrap min-w-0"
                 >
-                  <ListVideo size={18} /> Quản lý bài giảng
+                  <ListVideo size={18} className="shrink-0" /> Quản lý bài giảng
                 </button>
-                <div className="flex gap-1">
+                <div className="flex gap-1 shrink-0">
                   <button 
                     onClick={() => router.push(`/admin/courses/${course.id}/edit`)}
                     className="p-2.5 text-gray-400 hover:text-blue-600 hover:bg-blue-50 rounded-xl transition-colors"

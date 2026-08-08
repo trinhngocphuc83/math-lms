@@ -6,6 +6,51 @@ import { BookOpen, Sparkles, UploadCloud, Plus, Edit2, Trash2, Library, ChevronR
 import 'katex/dist/katex.min.css';
 import { BlockMath } from 'react-katex';
 
+/**
+ * Khung công thức tự thu nhỏ cho vừa bề ngang.
+ *
+ * Công thức dài (ví dụ điều kiện đơn điệu của hàm số) rộng tới 963px trong khi
+ * cột nội dung chỉ 632px, trước đây tràn ra ngoài và bị cắt mất phần đuôi. Nay
+ * đo bề rộng thật rồi hạ cỡ chữ đúng một lần cho vừa - công thức ngắn vẫn giữ
+ * nguyên cỡ lớn, chỉ công thức dài mới bị thu.
+ *
+ * Đo ở trạng thái cỡ chữ gốc (cờ dangDo) rồi mới áp dụng, nên không có vòng lặp
+ * đo - đổi cỡ - đo lại.
+ */
+function KhungCongThucVuaKhung({ latex }: { latex: string }) {
+  const boxRef = useRef<HTMLDivElement>(null);
+  const [tiLe, setTiLe] = useState(1);
+  const dangDo = useRef(true);
+
+  useEffect(() => { dangDo.current = true; setTiLe(1); }, [latex]);
+
+  useEffect(() => {
+    if (!dangDo.current) return;
+    const box = boxRef.current;
+    if (!box) return;
+    // Chờ KaTeX dựng xong rồi mới đo
+    const t = setTimeout(() => {
+      const coCho = box.clientWidth;
+      const canCho = box.scrollWidth;
+      if (coCho > 0 && canCho > coCho + 2) {
+        setTiLe(Math.max(0.5, (coCho - 4) / canCho));
+      }
+      dangDo.current = false;
+    }, 150);
+    return () => clearTimeout(t);
+  }, [tiLe, latex]);
+
+  return (
+    <div
+      ref={boxRef}
+      className="formula-handwritten bg-slate-50 border border-slate-200 rounded-xl p-4 my-2 overflow-x-auto text-lg text-center"
+      style={{ fontSize: tiLe < 1 ? `${tiLe * 1.125}rem` : undefined }}
+    >
+      <BlockMath math={latex} />
+    </div>
+  );
+}
+
 export default function AdminHandbook() {
   const [categories, setCategories] = useState<any[]>([]);
   const [formulas, setFormulas] = useState<any[]>([]);
@@ -576,9 +621,7 @@ export default function AdminHandbook() {
                             </h4>
                             <div className="flex gap-4 items-start">
                               <div className="flex-1 min-w-0">
-                                <div className="formula-handwritten bg-slate-50 border border-slate-200 rounded-xl p-4 my-2 overflow-x-auto text-lg text-center">
-                                  <BlockMath math={formula.latex_content} />
-                                </div>
+                                <KhungCongThucVuaKhung latex={formula.latex_content} />
                               </div>
                               {formula.image_url && (
                                 <div className="shrink-0 border-2 border-violet-200 rounded-xl overflow-hidden bg-white shadow-sm">
