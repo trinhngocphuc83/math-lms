@@ -199,7 +199,7 @@ export const presentationMarkdownComponents: any = {
             <div className="w-[10px] self-stretch rounded-full bg-gradient-to-b from-indigo-500 to-blue-600 shrink-0" />
             <h1
                 style={sanitizeStyle(style)}
-                className="text-[62px] font-black text-slate-900 tracking-tight leading-[1.12] m-0"
+                className="text-[70px] font-black text-slate-900 tracking-tight leading-[1.12] m-0"
                 {...props}
             >
                 {children}
@@ -212,7 +212,7 @@ export const presentationMarkdownComponents: any = {
         <div className="not-prose mb-7 mt-2">
             <div
                 style={sanitizeStyle(style)}
-                className="inline-block max-w-full text-[50px] font-black tracking-tight leading-[1.2] text-indigo-900
+                className="inline-block max-w-full text-[58px] font-black tracking-tight leading-[1.2] text-indigo-900
                            bg-gradient-to-r from-indigo-50 to-transparent border-l-[10px] border-indigo-600
                            rounded-r-2xl pl-7 pr-9 py-3 break-words"
                 {...props}
@@ -225,10 +225,10 @@ export const presentationMarkdownComponents: any = {
     h3: ({ node, style, children, ...props }: any) => (
         <h3
             style={sanitizeStyle(style)}
-            className="not-prose flex items-start gap-4 text-[40px] font-bold text-blue-900 tracking-tight leading-[1.3] mb-5 mt-6"
+            className="not-prose flex items-start gap-4 text-[47px] font-bold text-blue-900 tracking-tight leading-[1.3] mb-5 mt-6"
             {...props}
         >
-            <span className="mt-[0.42em] w-[14px] h-[14px] rounded-full bg-blue-500 shrink-0" />
+            <span className="mt-[0.42em] w-[16px] h-[16px] rounded-full bg-blue-500 shrink-0" />
             <span className="flex-1 min-w-0">{children}</span>
         </h3>
     ),
@@ -236,10 +236,10 @@ export const presentationMarkdownComponents: any = {
     h4: ({ node, style, children, ...props }: any) => (
         <h4
             style={sanitizeStyle(style)}
-            className="not-prose flex items-start gap-3 text-[34px] font-bold text-teal-800 tracking-tight leading-[1.35] mb-4 mt-5"
+            className="not-prose flex items-start gap-3 text-[40px] font-bold text-teal-800 tracking-tight leading-[1.35] mb-4 mt-5"
             {...props}
         >
-            <span className="text-teal-500 mt-[0.15em] text-[26px] leading-none">❖</span>
+            <span className="text-teal-500 mt-[0.15em] text-[30px] leading-none">❖</span>
             <span className="flex-1 min-w-0">{children}</span>
         </h4>
     ),
@@ -247,7 +247,7 @@ export const presentationMarkdownComponents: any = {
     h5: ({ node, style, children, ...props }: any) => (
         <h5
             style={sanitizeStyle(style)}
-            className="not-prose text-[30px] font-bold text-slate-700 italic leading-[1.35] mb-3 mt-4"
+            className="not-prose text-[36px] font-bold text-slate-700 italic leading-[1.35] mb-3 mt-4"
             {...props}
         >
             {children}
@@ -255,7 +255,7 @@ export const presentationMarkdownComponents: any = {
     ),
 
     p: ({ node, style, children, ...props }: any) => (
-        <p style={sanitizeStyle(style)} className="text-[32px] leading-[1.55] text-slate-800 mb-4" {...props}>
+        <p style={sanitizeStyle(style)} className="text-[42px] leading-[1.55] text-slate-800 mb-4" {...props}>
             {children}
         </p>
     ),
@@ -270,10 +270,10 @@ export const presentationMarkdownComponents: any = {
     li: ({ node, style, children, ...props }: any) => (
         <li
             style={sanitizeStyle(style)}
-            className="not-prose flex items-start gap-4 text-[32px] leading-[1.55] text-slate-800 mb-2"
+            className="not-prose flex items-start gap-4 text-[42px] leading-[1.55] text-slate-800 mb-2"
             {...props}
         >
-            <span className="mt-[0.62em] w-[11px] h-[11px] rounded-full bg-indigo-400 shrink-0" />
+            <span className="mt-[0.62em] w-[13px] h-[13px] rounded-full bg-indigo-400 shrink-0" />
             <div className="flex-1 min-w-0">{children}</div>
         </li>
     ),
@@ -302,9 +302,9 @@ export const presentationMarkdownComponents: any = {
 
     code: ({ node, inline, className, children, ...props }: any) =>
         inline ? (
-            <code className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 text-[29px] font-mono" {...props}>{children}</code>
+            <code className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 text-[36px] font-mono" {...props}>{children}</code>
         ) : (
-            <code className="block p-5 rounded-2xl bg-slate-900 text-slate-100 text-[27px] font-mono overflow-x-auto" {...props}>{children}</code>
+            <code className="block p-5 rounded-2xl bg-slate-900 text-slate-100 text-[32px] font-mono overflow-x-auto" {...props}>{children}</code>
         ),
 
     // Thẻ nội dung (Ví dụ / Phương pháp / Lời giải / Chú ý / Kiến thức)
@@ -318,7 +318,7 @@ export const presentationMarkdownComponents: any = {
             return (
                 <blockquote
                     className="not-prose my-6 rounded-r-2xl border-l-[8px] border-slate-300 bg-slate-50 px-8 py-6
-                               text-[32px] leading-[1.55] italic text-slate-700"
+                               text-[42px] leading-[1.55] italic text-slate-700"
                     {...props}
                 >
                     {children}
@@ -332,15 +332,15 @@ export const presentationMarkdownComponents: any = {
                 style={{ border: `3px solid ${callout.accent}`, background: callout.bg }}
             >
                 <div
-                    className="flex items-center gap-3 px-7 py-3 text-[28px] font-black uppercase tracking-wider"
+                    className="flex items-center gap-3 px-7 py-3 text-[32px] font-black uppercase tracking-wider"
                     style={{ background: callout.headBg, color: callout.headText }}
                 >
                     {callout.icon
-                        ? <span className="text-[30px] leading-none">{callout.icon}</span>
-                        : <AlertTriangle className="w-[30px] h-[30px]" />}
+                        ? <span className="text-[34px] leading-none">{callout.icon}</span>
+                        : <AlertTriangle className="w-[34px] h-[34px]" />}
                     <span>{callout.label}</span>
                 </div>
-                <div className="px-8 py-6 text-[32px] leading-[1.55] text-slate-800 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+                <div className="px-8 py-6 text-[42px] leading-[1.55] text-slate-800 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
                     {stripTriggerPrefix(dropLabelHeading(children))}
                 </div>
             </div>
@@ -349,7 +349,7 @@ export const presentationMarkdownComponents: any = {
 
     table: ({ node, style, children, ...props }: any) => (
         <div className="not-prose my-6 overflow-x-auto rounded-2xl border-2 border-slate-300 shadow-sm">
-            <table className="w-full border-collapse text-[27px]" style={sanitizeStyle(style)} {...props}>{children}</table>
+            <table className="w-full border-collapse text-[32px]" style={sanitizeStyle(style)} {...props}>{children}</table>
         </div>
     ),
     thead: ({ node, style, children, ...props }: any) => (

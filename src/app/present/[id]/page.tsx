@@ -60,11 +60,11 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
     return (
         <div className="w-full flex flex-col">
             <div className="flex items-center gap-4 mb-7">
-                <span className="text-[34px] leading-none">🎯</span>
-                <h3 className="text-[36px] font-black text-indigo-800 tracking-tight m-0">Câu hỏi tương tác</h3>
+                <span className="text-[42px] leading-none">🎯</span>
+                <h3 className="text-[42px] font-black text-indigo-800 tracking-tight m-0">Câu hỏi tương tác</h3>
             </div>
 
-            <div className={`text-[34px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}`}>
+            <div className={`text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}`}>
                 <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                     {quizData.question || ""}
                 </ReactMarkdown>
@@ -93,7 +93,7 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
                                 onClick={() => setSelectedIdx(optIdx)}
                                 className={`flex-1 rounded-2xl border-[3px] px-8 py-6 transition-all duration-200 ${cls}`}
                             >
-                                <div className={`text-[34px] font-black uppercase text-slate-800 ${KATEX_CLASS}`}>
+                                <div className={`text-[42px] font-black uppercase text-slate-800 ${KATEX_CLASS}`}>
                                     <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                                         {String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}
                                     </ReactMarkdown>
@@ -127,10 +127,10 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
                                 onClick={() => !showAnswer && setSelectedIdx(idx)}
                                 className={`w-full text-left rounded-2xl border-[3px] px-6 py-5 flex items-start gap-5 transition-all duration-200 ${cardCls}`}
                             >
-                                <div className={`w-[52px] h-[52px] rounded-full flex items-center justify-center text-[28px] font-black shrink-0 transition-colors ${badgeCls}`}>
+                                <div className={`w-[62px] h-[62px] rounded-full flex items-center justify-center text-[34px] font-black shrink-0 transition-colors ${badgeCls}`}>
                                     {String.fromCharCode(65 + idx)}
                                 </div>
-                                <div className={`flex-1 min-w-0 text-[30px] leading-[1.45] text-slate-800 ${KATEX_CLASS}`}>
+                                <div className={`flex-1 min-w-0 text-[38px] leading-[1.45] text-slate-800 ${KATEX_CLASS}`}>
                                     <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                                         {String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}
                                     </ReactMarkdown>
@@ -145,18 +145,18 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
                 <div className="w-full">
                     {!showAnswer ? (
                         <div className="flex flex-col gap-3">
-                            <label className="text-[28px] font-semibold text-slate-600">Học sinh trả lời:</label>
+                            <label className="text-[34px] font-semibold text-slate-600">Học sinh trả lời:</label>
                             <input
                                 type="text"
                                 placeholder="Nhập câu trả lời vào đây..."
                                 className="w-full px-8 py-5 rounded-2xl border-[3px] border-indigo-200 focus:border-indigo-500 outline-none
-                                           text-[32px] font-bold text-indigo-900 bg-indigo-50/40"
+                                           text-[40px] font-bold text-indigo-900 bg-indigo-50/40"
                             />
                         </div>
                     ) : (
                         <div className="p-8 bg-emerald-50 border-[3px] border-emerald-500 rounded-2xl text-center">
-                            <h4 className="text-[26px] font-bold text-emerald-700 mb-2 uppercase tracking-wider">Đáp án chính xác</h4>
-                            <div className={`text-[44px] font-black text-emerald-700 ${KATEX_CLASS}`}>
+                            <h4 className="text-[32px] font-bold text-emerald-700 mb-2 uppercase tracking-wider">Đáp án chính xác</h4>
+                            <div className={`text-[52px] font-black text-emerald-700 ${KATEX_CLASS}`}>
                                 {quizData.exactAnswer || quizData.correctAnswer || quizData.answerText}
                             </div>
                         </div>
@@ -170,7 +170,7 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
                         if (showAnswer) { setShowAnswer(false); setSelectedIdx(null); }
                         else setShowAnswer(true);
                     }}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-full text-[26px] font-bold
+                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-full text-[32px] font-bold
                                shadow-lg transition-all duration-200 hover:-translate-y-0.5"
                 >
                     {showAnswer ? 'Làm lại' : 'Hiển thị đáp án'}
@@ -281,8 +281,10 @@ export default function PresentationPage() {
             if (!el) return;
             const natural = el.offsetHeight;
             if (!natural) return;
+            // Trừ 1px biên an toàn: tích natural*scale là số thực, làm tròn lên có thể
+            // dôi ra đúng 1px khiến khung vẫn xuất hiện thanh cuộn thừa.
             const next = natural > CONTENT_HEIGHT
-                ? Math.max(MIN_CONTENT_SCALE, CONTENT_HEIGHT / natural)
+                ? Math.max(MIN_CONTENT_SCALE, (CONTENT_HEIGHT - 1) / natural)
                 : 1;
             setNaturalHeight(natural);
             setContentScale(prev => (Math.abs(prev - next) > 0.004 ? next : prev));

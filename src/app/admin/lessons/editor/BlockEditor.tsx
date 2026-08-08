@@ -211,11 +211,82 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
       }
   };
 
-  // Phân loại các khối theo dạng câu hỏi cho sidebar bản đồ
-  const multipleChoiceBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && x.b.content?.type === 'multiple_choice');
-  const tfBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && x.b.content?.type === 'true_false_cluster');
-  const shortAnswerBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'quiz' && ['short_answer', 'essay'].includes(x.b.content?.type));
-  const theoryBlocks = blocks.map((b, i) => ({b, i})).filter(x => x.b.type === 'md');
+  /* ---------- BẢN ĐỒ THEO TRÌNH TỰ TRÌNH CHIẾU ----------
+     Trước đây Bản đồ gom khối theo LOẠI (Văn bản một cụm, Trắc nghiệm một cụm)
+     nên mất hẳn thứ tự tài liệu - nhìn vào không biết bài chạy theo mạch nào,
+     rất khó dò đúng chỗ cần sửa. Nay liệt kê đúng trình tự và gom theo từng
+     slide của bản trình chiếu. */
+
+  /** Nhãn + màu nhận diện cho từng loại khối. */
+  const blockKind = (b: Block): { label: string; dot: string; chip: string } => {
+     if (b.type === 'md') return { label: 'Văn bản', dot: 'bg-slate-400', chip: 'bg-slate-100 text-slate-600' };
+     switch (b.content?.type) {
+        case 'true_false_cluster':
+        case 'true_false':
+           return { label: 'Đúng/Sai', dot: 'bg-orange-500', chip: 'bg-orange-100 text-orange-700' };
+        case 'short_answer':
+           return { label: 'Trả lời ngắn', dot: 'bg-purple-500', chip: 'bg-purple-100 text-purple-700' };
+        case 'essay':
+           return { label: 'Tự luận', dot: 'bg-blue-500', chip: 'bg-blue-100 text-blue-700' };
+        default:
+           return { label: 'Trắc nghiệm', dot: 'bg-teal-500', chip: 'bg-teal-100 text-teal-700' };
+     }
+  };
+
+  /** Trích vài chữ đầu để nhận ra ngay khối nào là khối nào. */
+  const blockPreview = (b: Block): string => {
+     const raw = b.type === 'md'
+        ? (typeof b.content === 'string' ? b.content : '')
+        : (b.content?.question || '');
+     const line = String(raw)
+        .split('\n')
+        .map(l => l.trim())
+        .find(l => l && !/^-{3,}$/.test(l) && !/^\s*$/.test(l)) || '';
+     // Lược lặp lại các dấu đầu dòng vì hay lồng nhau ("> ### 📌 Ví dụ mẫu")
+     let s = line;
+     for (let k = 0; k < 4; k++) {
+        s = s.replace(/^\s*>\s*/, '').replace(/^\s*#{1,6}\s*/, '');
+     }
+     return s
+        .replace(/\*\*/g, '')
+        .replace(/<[^>]+>/g, '')
+        .replace(/\$[^$]*\$/g, '…')
+        .trim()
+        .slice(0, 46);
+  };
+
+  /**
+   * Số slide mà một đoạn markdown tạo ra - dùng ĐÚNG luật tách của trang trình
+   * chiếu (ngắt ở dòng '---', ở tiêu đề '##', và mỗi khối quiz là một slide riêng)
+   * để số hiệu trên Bản đồ khớp với số slide thầy thấy khi trình chiếu.
+   */
+  const countSlidesIn = (md: string): number => {
+     let n = 0;
+     md.split(/(?:\n|^)\s*---\s*(?:\n|$)/).forEach(part => {
+        part.split(/(?=(?:\n|^)##\s)/).forEach(sp => {
+           sp.split(/(```quiz[\s\S]*?```)/g).forEach(t => { if (t.trim()) n++; });
+        });
+     });
+     return n;
+  };
+
+  /** Với mỗi khối: slide bắt đầu và số slide nó chiếm. */
+  const blockSlideInfo = React.useMemo(() => {
+     let running = 0;
+     return blocks.map(b => {
+        const md = b.type === 'md'
+           ? (typeof b.content === 'string' ? b.content : '')
+           : '```quiz\n' + JSON.stringify(b.content) + '\n```';
+        const count = Math.max(1, countSlidesIn(md));
+        const start = running + 1;
+        running += count;
+        return { start, count };
+     });
+  }, [blocks]);
+
+  const tongSoSlide = blockSlideInfo.length > 0
+     ? blockSlideInfo[blockSlideInfo.length - 1].start + blockSlideInfo[blockSlideInfo.length - 1].count - 1
+     : 0;
 
   // Khối còn cần xử lý ảnh (chèn thủ công hoặc xác nhận cắt ảnh AI) - dùng để
   // báo động trên Bản đồ để không bị bỏ sót khi có nhiều câu.
@@ -253,108 +324,90 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              </button>
           </div>
 
-          {/* Dạng thu gọn: dải số dọc, rê chuột hiện tên đầy đủ */}
+          {/* Dạng thu gọn: dải ô dọc ĐÚNG TRÌNH TỰ, rê chuột hiện chi tiết */}
           {isSidebarCollapsed && (
              <div className="flex flex-col items-center gap-1 py-2">
-                {[
-                   { items: theoryBlocks, short: 'LT', label: 'Khối Văn bản', on: 'bg-indigo-600 text-white shadow-md', off: 'bg-gray-100 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600', tone: 'text-gray-500' },
-                   { items: multipleChoiceBlocks, short: 'P1', label: 'Trắc nghiệm câu', on: 'bg-teal-500 text-white shadow-md', off: 'bg-gray-100 text-gray-600 hover:bg-teal-50 hover:text-teal-600', tone: 'text-teal-600' },
-                   { items: tfBlocks, short: 'P2', label: 'Đúng/Sai câu', on: 'bg-orange-500 text-white shadow-md', off: 'bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600', tone: 'text-orange-600' },
-                   { items: shortAnswerBlocks, short: 'P3', label: 'Trả lời ngắn câu', on: 'bg-purple-500 text-white shadow-md', off: 'bg-gray-100 text-gray-600 hover:bg-purple-50 hover:text-purple-600', tone: 'text-purple-600' },
-                ].map(sec => sec.items.length === 0 ? null : (
-                   <div key={sec.short} className="flex flex-col items-center gap-1 w-full">
-                      <div className={`text-[9px] font-black uppercase tracking-wider ${sec.tone} mt-1`}>{sec.short}</div>
-                      {sec.items.map((item, idx) => {
-                         const needsImage = blockNeedsImage(item.b);
-                         return (
-                         <div key={item.b.id} className="relative shrink-0">
-                            <button
-                               onClick={() => setActiveBlockId(item.b.id)}
-                               title={needsImage ? `${sec.label} ${idx + 1} - Còn thiếu ảnh!` : `${sec.label} ${idx + 1}`}
-                               className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[12px] transition-all shrink-0 ${activeBlockId === item.b.id ? sec.on : sec.off} ${needsImage ? 'ring-2 ring-red-400 ring-offset-1' : ''}`}
-                            >{idx + 1}</button>
-                            {needsImage && (
-                               <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" title="Còn thiếu ảnh"/>
-                            )}
-                         </div>
-                         );
-                      })}
-                   </div>
-                ))}
+                {blocks.map((b, i) => {
+                   const kind = blockKind(b);
+                   const info = blockSlideInfo[i];
+                   const needsImage = blockNeedsImage(b);
+                   const nhanSlide = info.count > 1 ? `Slide ${info.start}-${info.start + info.count - 1}` : `Slide ${info.start}`;
+                   return (
+                      <div key={b.id} className="relative shrink-0">
+                         <button
+                            onClick={() => setActiveBlockId(b.id)}
+                            title={`${nhanSlide} · ${kind.label}${needsImage ? ' · Còn thiếu ảnh!' : ''}`}
+                            className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[12px] transition-all shrink-0 relative overflow-hidden ${activeBlockId === b.id
+                               ? 'bg-indigo-600 text-white shadow-md'
+                               : 'bg-gray-100 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600'} ${needsImage ? 'ring-2 ring-red-400 ring-offset-1' : ''}`}
+                         >
+                            {info.start}
+                            <span className={`absolute bottom-0 left-0 right-0 h-[3px] ${kind.dot}`} />
+                         </button>
+                         {needsImage && (
+                            <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" title="Còn thiếu ảnh"/>
+                         )}
+                      </div>
+                   );
+                })}
              </div>
           )}
 
           {!isSidebarCollapsed && (
-          <div className="p-4 flex flex-col gap-6">
-
-             {theoryBlocks.length > 0 && (
-                <div>
-                   <div className="text-[11px] font-bold text-gray-500 uppercase tracking-widest mb-3">Lý Thuyết / Văn Bản</div>
-                   <div className="flex flex-col gap-1.5">
-                      {theoryBlocks.map((item, idx) => {
-                         const needsImage = blockNeedsImage(item.b);
-                         return (
-                         <button key={item.b.id} onClick={() => setActiveBlockId(item.b.id)} title={needsImage ? 'Còn thiếu ảnh!' : undefined} className={`text-left px-3 py-2 rounded-lg text-xs font-semibold truncate transition-colors flex items-center gap-1.5 ${activeBlockId === item.b.id ? 'bg-indigo-600 text-white shadow-md' : needsImage ? 'bg-red-50 text-red-700 ring-1 ring-red-300 hover:bg-red-100' : 'bg-gray-50 text-gray-600 hover:bg-indigo-50 hover:text-indigo-600'}`}>
-                            {idx + 1}. Khối Văn bản
-                            {needsImage && <span className="w-2 h-2 rounded-full bg-red-500 shrink-0" title="Còn thiếu ảnh"/>}
-                         </button>
-                         );
-                      })}
-                   </div>
-                </div>
+          <div className="p-2.5 flex flex-col gap-1">
+             {blocks.length === 0 && (
+                <div className="text-[11px] text-gray-400 text-center py-8">Chưa có nội dung</div>
              )}
 
-             {multipleChoiceBlocks.length > 0 && (
-                <div>
-                   <div className="text-[11px] font-bold text-teal-600 uppercase tracking-widest mb-3">Phần 1. Trắc nghiệm</div>
-                   <div className="grid grid-cols-5 gap-1.5">
-                      {multipleChoiceBlocks.map((item, idx) => {
-                         const needsImage = blockNeedsImage(item.b);
-                         return (
-                         <div key={item.b.id} className="relative">
-                            <button onClick={() => setActiveBlockId(item.b.id)} title={needsImage ? `Câu ${idx + 1} - Còn thiếu ảnh!` : undefined} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-teal-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-teal-50 hover:text-teal-600'} ${needsImage ? 'ring-2 ring-red-400 ring-offset-1' : ''}`}>{idx + 1}</button>
-                            {needsImage && <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" title="Còn thiếu ảnh"/>}
-                         </div>
-                         );
-                      })}
-                   </div>
+             {blocks.map((b, i) => {
+                const kind = blockKind(b);
+                const info = blockSlideInfo[i];
+                const needsImage = blockNeedsImage(b);
+                const isActive = activeBlockId === b.id;
+                const preview = blockPreview(b);
+                const hetSlide = info.start + info.count - 1;
+                const nhanSlide = info.count > 1 ? `S${info.start}–${hetSlide}` : `S${info.start}`;
+                return (
+                   <button
+                      key={b.id}
+                      onClick={() => setActiveBlockId(b.id)}
+                      title={`Slide ${info.count > 1 ? `${info.start}-${hetSlide}` : info.start} · ${kind.label}${needsImage ? ' · CÒN THIẾU ẢNH' : ''}\n${preview}`}
+                      className={`w-full text-left rounded-lg px-2 py-1.5 border flex items-stretch gap-2 transition-colors ${isActive
+                         ? 'bg-indigo-600 border-indigo-600 shadow-sm'
+                         : needsImage
+                            ? 'bg-red-50 border-red-200 hover:bg-red-100'
+                            : 'bg-white border-gray-100 hover:bg-indigo-50 hover:border-indigo-200'}`}
+                   >
+                      {/* Vạch màu theo loại khối */}
+                      <span className={`w-1 rounded-full shrink-0 ${kind.dot}`} />
+                      <span className="flex-1 min-w-0">
+                         <span className="flex items-center gap-1.5">
+                            <span className={`text-[9.5px] font-black tabular-nums ${isActive ? 'text-white' : 'text-indigo-500'}`}>
+                               {nhanSlide}
+                            </span>
+                            <span className={`text-[9px] font-bold px-1.5 py-[1px] rounded ${isActive ? 'bg-white/20 text-white' : kind.chip}`}>
+                               {kind.label}
+                            </span>
+                            {needsImage && (
+                               <span className="w-2 h-2 rounded-full bg-red-500 shrink-0 animate-pulse ml-auto" title="Còn thiếu ảnh" />
+                            )}
+                         </span>
+                         <span className={`block text-[11px] leading-snug mt-0.5 truncate ${isActive ? 'text-white/90' : 'text-gray-600'}`}>
+                            {preview || '(trống)'}
+                         </span>
+                      </span>
+                   </button>
+                );
+             })}
+
+             {blocks.length > 0 && (
+                <div className="mt-2 pt-2.5 border-t border-gray-100 px-1 flex items-center justify-between text-[10px] font-bold text-gray-400">
+                   <span>{blocks.length} khối · {tongSoSlide} slide</span>
+                   {blocks.some(blockNeedsImage) && (
+                      <span className="text-red-500">{blocks.filter(blockNeedsImage).length} thiếu ảnh</span>
+                   )}
                 </div>
              )}
-
-             {tfBlocks.length > 0 && (
-                <div>
-                   <div className="text-[11px] font-bold text-orange-600 uppercase tracking-widest mb-3">Phần 2. Đúng/Sai</div>
-                   <div className="grid grid-cols-5 gap-1.5">
-                      {tfBlocks.map((item, idx) => {
-                         const needsImage = blockNeedsImage(item.b);
-                         return (
-                         <div key={item.b.id} className="relative">
-                            <button onClick={() => setActiveBlockId(item.b.id)} title={needsImage ? `Câu ${idx + 1} - Còn thiếu ảnh!` : undefined} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-orange-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-orange-50 hover:text-orange-600'} ${needsImage ? 'ring-2 ring-red-400 ring-offset-1' : ''}`}>{idx + 1}</button>
-                            {needsImage && <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" title="Còn thiếu ảnh"/>}
-                         </div>
-                         );
-                      })}
-                   </div>
-                </div>
-             )}
-
-             {shortAnswerBlocks.length > 0 && (
-                <div>
-                   <div className="text-[11px] font-bold text-purple-600 uppercase tracking-widest mb-3">Phần 3. Trả lời ngắn</div>
-                   <div className="grid grid-cols-5 gap-1.5">
-                      {shortAnswerBlocks.map((item, idx) => {
-                         const needsImage = blockNeedsImage(item.b);
-                         return (
-                         <div key={item.b.id} className="relative">
-                            <button onClick={() => setActiveBlockId(item.b.id)} title={needsImage ? `Câu ${idx + 1} - Còn thiếu ảnh!` : undefined} className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[13px] transition-all ${activeBlockId === item.b.id ? 'bg-purple-500 text-white shadow-md transform scale-110' : 'bg-gray-100 text-gray-600 hover:bg-purple-50 hover:text-purple-600'} ${needsImage ? 'ring-2 ring-red-400 ring-offset-1' : ''}`}>{idx + 1}</button>
-                            {needsImage && <span className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full border-2 border-white" title="Còn thiếu ảnh"/>}
-                         </div>
-                         );
-                      })}
-                   </div>
-                </div>
-             )}
-
           </div>
           )}
        </div>
