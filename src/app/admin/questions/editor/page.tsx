@@ -11,6 +11,14 @@ import {
 } from "lucide-react";
 import QuestionPreviewModal from "@/components/admin/QuestionPreviewModal";
 import RichTextarea from "@/components/admin/RichTextarea";
+import {
+  toBankType,
+  toDifficultyCode,
+  bankTypeLabel,
+  difficultyLabel,
+  BANK_TYPES,
+  DIFFICULTY_CODES,
+} from "@/utils/questionTypes";
 
 interface QuestionData {
   temp_id?: string;
@@ -215,12 +223,20 @@ export default function BatchAIEditorPage() {
         const isNewLesson = lesson !== "" && !uniqueLessons.includes(lesson);
         const isNewMathForm = math_form !== "" && !uniqueForms.includes(math_form);
 
-        let parsedQuestionType = data.loaiCauHoi || "NLC";
+        let parsedQuestionType = String(data.loaiCauHoi || "NLC");
         if (parsedQuestionType.toLowerCase().includes("trắc nghiệm")) parsedQuestionType = "NLC";
         else if (parsedQuestionType.toLowerCase().includes("đúng/sai") || parsedQuestionType.toLowerCase().includes("đúng sai")) parsedQuestionType = "DS";
         else if (parsedQuestionType.toLowerCase().includes("ngắn")) parsedQuestionType = "TLN";
         else if (parsedQuestionType.toLowerCase().includes("tự luận") || parsedQuestionType === "essay") parsedQuestionType = "TL";
-        else if (!["NLC", "DS", "TLN", "TL"].includes(parsedQuestionType)) parsedQuestionType = "NLC";
+        // Bảng quy đổi dùng chung bắt nốt các biến thể còn lại (TN, ĐS, multiple_choice...)
+        else parsedQuestionType = toBankType(parsedQuestionType) ?? "NLC";
+
+        // Prompt yêu cầu AI trả mucDo dạng mã "1|2|3|4", nhưng AI vẫn có lúc trả nhãn
+        // chữ ("Thông hiểu"). Trước đây gán thẳng data.mucDo vào state trong khi <select>
+        // lại dùng value là nhãn chữ -> không khớp option nào nên trình duyệt hiển thị
+        // option đầu tiên, khiến MỌI câu đều hiện "Nhận biết" dù AI nhận diện đúng.
+        // Quy về mã chuẩn 1-4 (đúng chuẩn đang lưu trong CSDL) cho cả hai kiểu đầu vào.
+        const parsedDifficulty = toDifficultyCode(data.mucDo) ?? "1";
 
         const questionData = {
           temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
@@ -232,7 +248,7 @@ export default function BatchAIEditorPage() {
           isNewLesson,
           isNewMathForm,
           question_type: parsedQuestionType,
-          difficulty: data.mucDo || "1",
+          difficulty: parsedDifficulty,
           content: qContent,
           option_a: data.dapAnA || "",
           option_b: data.dapAnB || "",
@@ -473,8 +489,9 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
         topic: q.topic,
         lesson: q.lesson,
         math_form: q.math_form,
-        question_type: q.question_type,
-        difficulty: q.difficulty,
+        // Chốt về mã chuẩn ngay trước khi ghi, tránh lọt nhãn chữ vào CSDL làm hỏng bộ lọc
+        question_type: toBankType(q.question_type) ?? 'NLC',
+        difficulty: toDifficultyCode(q.difficulty) ?? '1',
         content: q.content,
         option_a: q.option_a,
         option_b: q.option_b,
@@ -514,7 +531,10 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
       const qId = `CH_${Date.now()}_${Math.random().toString(36).substring(2,6)}`;
       const insertData = {
         question_id: qId, grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson,
-        math_form: q.math_form, question_type: q.question_type, difficulty: q.difficulty, content: q.content,
+        math_form: q.math_form,
+        question_type: toBankType(q.question_type) ?? 'NLC',
+        difficulty: toDifficultyCode(q.difficulty) ?? '1',
+        content: q.content,
         option_a: q.option_a, option_b: q.option_b, option_c: q.option_c, option_d: q.option_d,
         correct_answer: q.correct_answer, explanation: q.explanation, image_url: q.image_url, usage_count: 0
       };
@@ -582,6 +602,48 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     }
   };
 
+  /**
+   * Thống kê nhanh đợt quét: số câu theo từng Dạng thức và theo từng Mức độ,
+   * kèm bảng chéo Dạng thức × Mức độ để Thầy nắm cấu trúc đề ngay trên Bản đồ
+   * mà không phải bấm dò từng câu.
+   */
+  const scanSummary = React.useMemo(() => {
+    const byType: Record<string, number> = {};
+    const byDifficulty: Record<string, number> = {};
+    const matrix: Record<string, Record<string, number>> = {};
+
+    parsedQuestions.forEach(q => {
+      const t = toBankType(q.question_type) ?? 'NLC';
+      const d = toDifficultyCode(q.difficulty) ?? '1';
+      byType[t] = (byType[t] || 0) + 1;
+      byDifficulty[d] = (byDifficulty[d] || 0) + 1;
+      if (!matrix[t]) matrix[t] = {};
+      matrix[t][d] = (matrix[t][d] || 0) + 1;
+    });
+
+    return {
+      byType,
+      byDifficulty,
+      matrix,
+      typesPresent: BANK_TYPES.filter(t => byType[t] > 0),
+      total: parsedQuestions.length,
+    };
+  }, [parsedQuestions]);
+
+  /** Màu nhận diện theo Dạng thức - dùng chung cho ô số và bảng thống kê. */
+  const TYPE_STYLE: Record<string, { dot: string; chip: string; label: string }> = {
+    NLC: { dot: 'bg-teal-500', chip: 'bg-teal-50 text-teal-700 border-teal-200', label: 'Trắc nghiệm' },
+    DS: { dot: 'bg-orange-500', chip: 'bg-orange-50 text-orange-700 border-orange-200', label: 'Đúng/Sai' },
+    TLN: { dot: 'bg-purple-500', chip: 'bg-purple-50 text-purple-700 border-purple-200', label: 'Trả lời ngắn' },
+    TL: { dot: 'bg-blue-500', chip: 'bg-blue-50 text-blue-700 border-blue-200', label: 'Tự luận' },
+  };
+
+  const DIFF_STYLE: Record<string, string> = {
+    '1': 'bg-slate-100 text-slate-700 border-slate-200',
+    '2': 'bg-sky-50 text-sky-700 border-sky-200',
+    '3': 'bg-amber-50 text-amber-700 border-amber-200',
+    '4': 'bg-rose-50 text-rose-700 border-rose-200',
+  };
 
   return (
     <div className="flex h-screen bg-[#f3f4f6] overflow-hidden text-gray-800">
@@ -757,13 +819,16 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                          <button
                             key={q.temp_id}
                             onClick={() => setActiveQuestionIdx(idx)}
-                            className={`h-10 rounded-lg text-xs font-black transition-all flex items-center justify-center relative border ${
-                               isSelected 
-                                  ? 'bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-105' 
+                            title={`Câu ${idx + 1} · ${bankTypeLabel(q.question_type)} · ${difficultyLabel(q.difficulty)}`}
+                            className={`h-10 rounded-lg text-xs font-black transition-all flex items-center justify-center relative border overflow-hidden ${
+                               isSelected
+                                  ? 'bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-105'
                                   : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-gray-200 hover:border-indigo-300'
                             }`}
                          >
                             {idx + 1}
+                            {/* Vạch màu dưới đáy: nhận biết ngay Dạng thức của từng câu */}
+                            <span className={`absolute bottom-0 left-0 right-0 h-[3px] ${TYPE_STYLE[toBankType(q.question_type) ?? 'NLC']?.dot || 'bg-gray-300'}`} />
                             {hasWarning && (
                                <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-orange-500 ring-1 ring-white animate-pulse" />
                             )}
@@ -772,7 +837,67 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                    })}
                 </div>
 
-                <div className="mt-6 border-t border-gray-100 pt-4 space-y-2">
+                {/* TỔNG HỢP ĐỢT QUÉT: số câu theo Dạng thức và theo Mức độ */}
+                <div className="mt-5 border-t border-gray-100 pt-4">
+                   <h4 className="text-[11px] font-black text-gray-400 uppercase tracking-wider mb-2.5">
+                      Tổng hợp ({scanSummary.total} câu)
+                   </h4>
+
+                   <div className="space-y-1.5">
+                      {scanSummary.typesPresent.map(t => (
+                         <div key={t} className={`flex items-center justify-between px-2.5 py-1.5 rounded-lg border text-[11.5px] font-bold ${TYPE_STYLE[t].chip}`}>
+                            <span className="flex items-center gap-1.5 truncate">
+                               <span className={`w-2 h-2 rounded-full shrink-0 ${TYPE_STYLE[t].dot}`} />
+                               {TYPE_STYLE[t].label}
+                            </span>
+                            <span className="font-black shrink-0">{scanSummary.byType[t]}</span>
+                         </div>
+                      ))}
+                   </div>
+
+                   <div className="mt-3 grid grid-cols-2 gap-1.5">
+                      {DIFFICULTY_CODES.filter(d => scanSummary.byDifficulty[d] > 0).map(d => (
+                         <div key={d} className={`flex items-center justify-between px-2 py-1 rounded-md border text-[10.5px] font-bold ${DIFF_STYLE[d]}`}>
+                            <span className="truncate">{difficultyLabel(d)}</span>
+                            <span className="font-black shrink-0 ml-1">{scanSummary.byDifficulty[d]}</span>
+                         </div>
+                      ))}
+                   </div>
+
+                   {/* Bảng chéo Dạng thức × Mức độ - nắm cấu trúc đề trong một cái liếc */}
+                   {scanSummary.typesPresent.length > 0 && (
+                      <div className="mt-3 rounded-lg border border-gray-200 overflow-hidden">
+                         <table className="w-full text-[10px] text-center border-collapse">
+                            <thead className="bg-gray-50 text-gray-500">
+                               <tr>
+                                  <th className="px-1.5 py-1 text-left font-black">Dạng</th>
+                                  <th className="px-1 py-1 font-black" title="Nhận biết">NB</th>
+                                  <th className="px-1 py-1 font-black" title="Thông hiểu">TH</th>
+                                  <th className="px-1 py-1 font-black" title="Vận dụng">VD</th>
+                                  <th className="px-1 py-1 font-black" title="Vận dụng cao">VDC</th>
+                               </tr>
+                            </thead>
+                            <tbody>
+                               {scanSummary.typesPresent.map(t => (
+                                  <tr key={t} className="border-t border-gray-100">
+                                     <td className="px-1.5 py-1 text-left font-bold text-gray-700 whitespace-nowrap">
+                                        <span className={`inline-block w-1.5 h-1.5 rounded-full mr-1 align-middle ${TYPE_STYLE[t].dot}`} />
+                                        {t}
+                                     </td>
+                                     {DIFFICULTY_CODES.map(d => (
+                                        <td key={d} className={`px-1 py-1 font-bold ${scanSummary.matrix[t]?.[d] ? 'text-gray-800' : 'text-gray-300'}`}>
+                                           {scanSummary.matrix[t]?.[d] || '·'}
+                                        </td>
+                                     ))}
+                                  </tr>
+                               ))}
+                            </tbody>
+                         </table>
+                      </div>
+                   )}
+                </div>
+
+                <div className="mt-5 border-t border-gray-100 pt-4 space-y-2">
                    <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
                       <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 block shadow-sm"></span>
                       <span>Đang chỉnh sửa</span>
@@ -1009,11 +1134,12 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                             <option value="TLN">Trả lời ngắn / Điền khuyết</option>
                             <option value="TL">Tự luận / Trình bày chi tiết</option>
                           </select>
-                          <select value={q.difficulty} onChange={e => updateParsedQuestion(q.temp_id!, 'difficulty', e.target.value)} className="border border-gray-200 rounded-lg p-2 text-sm font-bold bg-white outline-none focus:border-indigo-500 w-36 shadow-sm cursor-pointer">
-                            <option value="Nhận biết">Nhận biết</option>
-                            <option value="Thông hiểu">Thông hiểu</option>
-                            <option value="Vận dụng">Vận dụng</option>
-                            <option value="Vận dụng cao">Vận dụng cao</option>
+                          {/* Value dùng MÃ 1-4 đúng như chuẩn lưu trong CSDL. Trước đây dùng
+                              nhãn chữ nên giá trị AI trả về ("2") không khớp option nào. */}
+                          <select value={toDifficultyCode(q.difficulty) ?? '1'} onChange={e => updateParsedQuestion(q.temp_id!, 'difficulty', e.target.value)} className="border border-gray-200 rounded-lg p-2 text-sm font-bold bg-white outline-none focus:border-indigo-500 w-36 shadow-sm cursor-pointer">
+                            {DIFFICULTY_CODES.map(code => (
+                              <option key={code} value={code}>{difficultyLabel(code)}</option>
+                            ))}
                           </select>
                        </div>
                     </div>
