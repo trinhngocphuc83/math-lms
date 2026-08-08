@@ -2,7 +2,7 @@
 
 import React from "react";
 import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
-import { fixLatexText, applyLatexFixToActiveElement } from "@/utils/latexFixer";
+import { fixLatexText, applyLatexFixToActiveElement, ensureMathDelimiters } from "@/utils/latexFixer";
 import { bankTypeToBlockType } from "@/utils/questionTypes";
 import 'katex/dist/katex.min.css';
 import QuestionBankModal from "@/components/admin/QuestionBankModal";
@@ -704,7 +704,16 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                        {block.content.type === 'short_answer' && (
                           <div>
                              <label className="text-xs font-bold text-gray-600 mb-1 block">Đáp án đúng chính xác (Text/Số)</label>
-                             <input type="text" value={block.content.exactAnswer || ""} onChange={e => updateBlockContent(idx, { ...block.content, exactAnswer: e.target.value })} className="w-full border p-2 rounded outline-none focus:border-teal-500 font-bold" />
+                             {/* Dùng RichTextarea để có bảng công thức + xem trước như mọi ô khác.
+                                 Trước đây là <input> thuần nên không gõ/nhìn được công thức toán. */}
+                             <RichTextarea
+                                collapsibleToolbar={true}
+                                rows={1}
+                                value={block.content.exactAnswer || ""}
+                                onChange={e => updateBlockContent(idx, { ...block.content, exactAnswer: e.target.value })}
+                                className="w-full border border-gray-200 rounded-lg p-2.5 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 font-bold transition-all"
+                                placeholder="VD: 12.5 hoặc $\frac{3\pi}{8}$"
+                             />
                           </div>
                        )}
 
@@ -752,7 +761,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                            }));
                            correctAnswerDisplay = typeof c.answerIndex === 'number' ? ['A','B','C','D'][c.answerIndex] : undefined;
                         } else if (c.type === 'short_answer') {
-                           correctAnswerDisplay = c.exactAnswer || undefined;
+                           correctAnswerDisplay = ensureMathDelimiters(c.exactAnswer) || undefined;
                         }
                      }
 

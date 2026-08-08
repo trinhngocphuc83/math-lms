@@ -28,6 +28,7 @@ const normalizeAnswer = (s: string) => {
 // rộng (h1 55px, p/li 35px) - nên trên điện thoại 375px chữ nội dung to gấp
 // hơn 2 lần tiêu đề trang, mỗi dòng chỉ vừa ~10 ký tự.
 import { studentMarkdownComponents as appMarkdownComponents, preprocessMarkdown } from '@/components/CustomMarkdownComponents';
+import { ensureMathDelimiters } from '@/utils/latexFixer';
 
 const getYouTubeEmbedUrl = (url: string) => {
   if (!url) return '';
@@ -349,7 +350,19 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
          <div className={`mt-5 p-4 rounded-xl flex items-start gap-3 ${(normalizeAnswer(shortAnswerText || '') !== '' && normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '')) ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`}>
             {(normalizeAnswer(shortAnswerText || '') !== '' && normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '')) ? <CheckCircle2 className="w-5 h-5 mt-0.5 shrink-0" /> : <XCircle className="w-5 h-5 mt-0.5 shrink-0" />}
             <div className="flex-1">
-               <p className="font-bold">{(normalizeAnswer(shortAnswerText || '') !== '' && normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '')) ? 'Tuyệt vời! Bạn đã điền chính xác.' : `Chưa đúng rồi! Đáp án đúng là: ${data.exactAnswer || data.correctAnswer || 'Chưa cập nhật'}`}</p>
+               {(normalizeAnswer(shortAnswerText || '') !== '' && normalizeAnswer(shortAnswerText || '') === normalizeAnswer(data.exactAnswer || data.correctAnswer || '')) ? (
+                  <p className="font-bold">Tuyệt vời! Bạn đã điền chính xác.</p>
+               ) : (
+                  /* Render KaTeX để đáp án dạng công thức hiện đúng thay vì chuỗi LaTeX thô */
+                  <div className="font-bold flex items-center gap-1.5 flex-wrap">
+                     Chưa đúng rồi! Đáp án đúng là:
+                     <span className="[&_p]:m-0 [&_.katex]:text-[1.05em]">
+                        <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>
+                           {ensureMathDelimiters(data.exactAnswer || data.correctAnswer) || 'Chưa cập nhật'}
+                        </ReactMarkdown>
+                     </span>
+                  </div>
+               )}
             </div>
             {normalizeAnswer(shortAnswerText || '') !== normalizeAnswer(data.exactAnswer || data.correctAnswer || '') && (
                <button onClick={() => { setIsChecked(false); setShortAnswerText(""); }} className="px-4 py-1.5 bg-red-100 hover:bg-red-200 text-red-700 font-bold rounded-lg text-sm transition-colors shrink-0 shadow-sm">Làm lại</button>

@@ -84,3 +84,20 @@ export function cleanObjectLatex(obj: any): any {
     }
     return obj;
 }
+
+/**
+ * Bọc cặp $...$ cho chuỗi viết bằng LaTeX nhưng thiếu dấu $.
+ *
+ * Dùng cho ô "Đáp án đúng chính xác" của câu Trả lời ngắn: dữ liệu cũ lưu dạng
+ * thô như "3\pi/8 + \sqrt{2}/4 + 6" nên KaTeX không nhận ra, hiển thị ra đúng
+ * chuỗi ký tự thay vì công thức. Chuỗi đã có $ thì giữ nguyên; chuỗi thuần
+ * số/chữ (ví dụ "12.5") cũng giữ nguyên để khỏi bị in nghiêng kiểu toán học.
+ */
+export function ensureMathDelimiters(raw: string | null | undefined): string {
+  const s = String(raw ?? '').trim();
+  if (!s) return '';
+  if (s.includes('$')) return s;
+  // Có lệnh LaTeX (\frac, \sqrt...) hoặc mũ/chỉ số thì mới cần bọc
+  const coKyHieuToan = /\[a-zA-Z]+|[\^_]|\{|\}/.test(s);
+  return coKyHieuToan ? `$${s}$` : s;
+}

@@ -10,6 +10,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling } from 'lucide-react';
+import { ensureMathDelimiters } from '@/utils/latexFixer';
 import React from 'react';
 import {
     presentationMarkdownComponents,
@@ -156,8 +157,12 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
                     ) : (
                         <div className="p-8 bg-emerald-50 border-[3px] border-emerald-500 rounded-2xl text-center">
                             <h4 className="text-[32px] font-bold text-emerald-700 mb-2 uppercase tracking-wider">Đáp án chính xác</h4>
+                            {/* Render qua KaTeX để đáp án dạng công thức hiện ra đúng, thay vì
+                                in nguyên chuỗi LaTeX thô như trước */}
                             <div className={`text-[52px] font-black text-emerald-700 ${KATEX_CLASS}`}>
-                                {quizData.exactAnswer || quizData.correctAnswer || quizData.answerText}
+                                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                    {ensureMathDelimiters(quizData.exactAnswer || quizData.correctAnswer || quizData.answerText)}
+                                </ReactMarkdown>
                             </div>
                         </div>
                     )}

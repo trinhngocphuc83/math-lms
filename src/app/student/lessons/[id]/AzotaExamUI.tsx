@@ -9,6 +9,7 @@ import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import { studentMarkdownComponents as appMarkdownComponents } from '@/components/CustomMarkdownComponents';
+import { ensureMathDelimiters } from '@/utils/latexFixer';
 import ReactCrop, { type Crop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import { useRef } from 'react';
@@ -770,12 +771,16 @@ export default function AzotaExamUI({
                        )}
                     </div>
                     <div className="flex-1 min-w-0 prose prose-sm sm:prose-base prose-slate max-w-none prose-p:my-0 font-bold text-slate-800">
-                       <ReactMarkdown components={appMarkdownComponents} 
-                          remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} 
+                       {/* Gộp một thuộc tính components duy nhất. Trước đây khai báo components
+                           hai lần nên cái sau ghi đè, làm appMarkdownComponents bị vứt bỏ và
+                           nội dung câu hỏi mất hết kiểu chữ (tiêu đề, danh sách, thẻ ví dụ...). */}
+                       <ReactMarkdown
+                          remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}
                           rehypePlugins={[rehypeKatex]}
                           urlTransform={(url) => url}
                           components={{
-                             img: ({node, ...props}) => <img {...props} className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm my-4 border border-slate-200" style={{ objectFit: 'contain' }} />
+                             ...appMarkdownComponents,
+                             img: ({node, ...props}: any) => <img {...props} className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm my-4 border border-slate-200" style={{ objectFit: 'contain' }} />
                           }}
                        >{cleanQuestion}</ReactMarkdown>
                        
@@ -932,7 +937,15 @@ export default function AzotaExamUI({
                              : <AlertCircle className="w-5 h-5 text-red-600 shrink-0" />}
                            <div>
                              <p className="font-bold text-slate-800">Bạn trả lời: <span className="text-indigo-700">{userAns || '(trống)'}</span></p>
-                             <p className="font-bold text-slate-600">Đáp án đúng: <span className="text-green-700">{data.exactAnswer || data.correctAnswer}</span></p>
+                             {/* Render KaTeX để đáp án dạng công thức hiện đúng, không in chuỗi LaTeX thô */}
+                             <div className="font-bold text-slate-600 flex items-center gap-1.5 flex-wrap">
+                               Đáp án đúng:
+                               <span className="text-green-700 [&_p]:m-0 [&_.katex]:text-[1.05em]">
+                                 <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>
+                                   {ensureMathDelimiters(data.exactAnswer || data.correctAnswer)}
+                                 </ReactMarkdown>
+                               </span>
+                             </div>
                            </div>
                          </div>
                        </div>
