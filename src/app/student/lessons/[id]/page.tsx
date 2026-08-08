@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight } from "lucide-react";
@@ -23,7 +23,11 @@ const normalizeAnswer = (s: string) => {
       .replace(/^[xy]=/, ''); // Bỏ qua x= hoặc y= ở đầu đáp án
 };
 
-import { appMarkdownComponents, preprocessMarkdown } from '@/components/CustomMarkdownComponents';
+// Dùng bộ chữ RESPONSIVE dành cho học sinh (giống AzotaExamUI bên Luyện tập).
+// Trước đây trang này lấy nhầm appMarkdownComponents - bộ hardcode px cho màn
+// rộng (h1 55px, p/li 35px) - nên trên điện thoại 375px chữ nội dung to gấp
+// hơn 2 lần tiêu đề trang, mỗi dòng chỉ vừa ~10 ký tự.
+import { studentMarkdownComponents as appMarkdownComponents, preprocessMarkdown } from '@/components/CustomMarkdownComponents';
 
 const getYouTubeEmbedUrl = (url: string) => {
   if (!url) return '';
@@ -451,21 +455,21 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
 
   if (pages.length === 0) return null;
 
+  // Trên điện thoại: bo góc nhỏ, bỏ đổ bóng dày và giảm lề để nhường bề rộng cho chữ.
+  // Từ tablet trở lên mới dùng lại kiểu thẻ nổi như cũ.
   return (
-    <div className="flex flex-col min-h-[50vh] bg-white rounded-[2.5rem] shadow-[12px_12px_0px_0px_rgba(203,213,225,0.4)] border-2 border-slate-200 p-6 sm:p-10 md:p-14">
+    <div className="flex flex-col min-h-[50vh] bg-white rounded-2xl sm:rounded-[2rem] border border-slate-200 sm:border-2 shadow-sm sm:shadow-[10px_10px_0px_0px_rgba(203,213,225,0.4)] px-4 py-6 sm:p-10 md:p-12">
       <div className="flex-1">
         {parts.map((p, idx) => {
            if (p.type === 'md') {
+               // Cỡ chữ nền theo chuẩn đọc trên thiết bị di động (16-18px). Các thẻ
+               // h1..h5, danh sách, bảng, thẻ nội dung đã tự lo kiểu dáng bên trong
+               // studentMarkdownComponents nên ở đây không đặt đè nữa.
+               // max-w-[72ch] giữ độ dài dòng trong khoảng dễ đọc (~50-75 ký tự).
                return (
-                 <div key={`md-${currentPage}-${idx}`} className="prose prose-lg prose-indigo max-w-none text-slate-800 leading-relaxed font-medium
-                    prose-h1:text-4xl prose-h1:font-black prose-h1:text-indigo-900 prose-h1:mb-10 prose-h1:text-center prose-h1:tracking-tight
-                    prose-h2:text-[1.5rem] prose-h2:font-black prose-h2:text-white prose-h2:bg-gradient-to-r prose-h2:from-indigo-600 prose-h2:via-blue-600 prose-h2:to-cyan-500 prose-h2:px-6 prose-h2:py-4 prose-h2:rounded-2xl prose-h2:mt-14 prose-h2:mb-8 prose-h2:uppercase prose-h2:tracking-wide prose-h2:shadow-[0_8px_30px_rgb(79,70,229,0.2)] prose-h2:border-l-8 prose-h2:border-l-yellow-400
-                    prose-h3:text-[1.2rem] prose-h3:font-bold prose-h3:text-white prose-h3:bg-gradient-to-r prose-h3:from-emerald-500 prose-h3:to-teal-400 prose-h3:px-5 prose-h3:py-3 prose-h3:rounded-xl prose-h3:mt-10 prose-h3:mb-5 prose-h3:shadow-md
-                    prose-p:mb-6 prose-p:text-[1.1rem] prose-p:leading-[1.8] prose-p:text-gray-700
-                    prose-strong:text-indigo-800 prose-strong:font-black prose-strong:bg-indigo-50/50 prose-strong:px-1.5 prose-strong:py-0.5 prose-strong:rounded-md
-                    prose-li:mb-3 prose-ul:list-none prose-ul:pl-0 
+                 <div key={`md-${currentPage}-${idx}`} className="max-w-[62ch] mx-auto text-[17px] sm:text-[18px] leading-[1.7] text-slate-800
                     [&_code]:bg-amber-100 [&_code]:text-amber-800 [&_code]:px-2 [&_code]:py-0.5 [&_code]:rounded-lg [&_code]:border [&_code]:border-amber-200 [&_code]:font-bold [&_code]:text-[0.9em]
-                     [&_h2]:text-blue-700 [&_h2]:bg-blue-50 [&_h2]:px-4 [&_h2]:py-2 [&_h2]:rounded-xl [&_h2]:border-l-4 [&_h2]:border-blue-500 [&_h2]:block [&_h2]:w-fit [&_h2]:clear-both [&_h2]:shadow-sm [&_h2]:mb-4 [&_h2]:mt-8 [&_h3]:text-amber-700 [&_h3]:bg-amber-50 [&_h3]:px-3 [&_h3]:py-1.5 [&_h3]:rounded-lg [&_h3]:border-l-4 [&_h3]:border-amber-400 [&_h3]:block [&_h3]:w-fit [&_h3]:clear-both [&_h3]:shadow-sm [&_h3]:mt-6 [&_h3]:mb-3 [&_blockquote]:border-l-8 [&_blockquote]:border-dashed [&_blockquote]:border-emerald-400 [&_blockquote]:bg-gradient-to-r [&_blockquote]:from-emerald-50 [&_blockquote]:to-teal-50/30 [&_blockquote]:text-emerald-900 [&_blockquote]:px-6 [&_blockquote]:py-5 [&_blockquote]:rounded-[2rem] [&_blockquote]:shadow-sm [&_blockquote]:my-8 [&_blockquote_p]:m-0 [&_blockquote_p]:font-bold [&_blockquote_p]:leading-relaxed
+                    [&_.katex-display]:overflow-x-auto [&_.katex-display]:overflow-y-hidden [&_.katex-display]:py-1
                  ">
                    <ReactMarkdown 
                       remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} 
@@ -555,6 +559,29 @@ export default function StudentLessonPage() {
     load();
   }, [lessonId, supabase]);
 
+  /* Thanh tiêu đề + tabs tự trượt lên khi cuộn xuống để nhường chỗ cho bài học,
+     cuộn ngược lên là hiện lại ngay. Trên điện thoại xoay ngang (cao 375px) ba
+     thanh cố định cũ chiếm tới ~43% màn hình, gần như không còn chỗ đọc. */
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [chromeHidden, setChromeHidden] = useState(false);
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el) return;
+    let lastY = el.scrollTop;
+    const onScroll = () => {
+      const y = el.scrollTop;
+      const delta = y - lastY;
+      // Bỏ qua rung nhỏ để thanh không nhấp nháy khi cuộn nhẹ
+      if (Math.abs(delta) < 6) return;
+      // Luôn hiện lại khi đã cuộn gần đầu trang
+      if (y < 80) setChromeHidden(false);
+      else setChromeHidden(delta > 0);
+      lastY = y;
+    };
+    el.addEventListener('scroll', onScroll, { passive: true });
+    return () => el.removeEventListener('scroll', onScroll);
+  }, [loading]);
+
   if (loading) return <div className="flex justify-center items-center h-screen bg-gray-50"><Loader2 className="w-10 h-10 animate-spin text-indigo-600" /></div>;
   if (!lesson) return <div className="p-8 text-center text-red-500 bg-gray-50 h-screen">Không tìm thấy bài giảng.</div>;
 
@@ -570,59 +597,64 @@ export default function StudentLessonPage() {
   const containerClass = isPracticeModule ? "max-w-7xl" : "max-w-4xl";
 
   return (
-    <div className="w-full flex-1 h-screen overflow-y-auto bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] bg-slate-50 pb-20">
-      {/* Header */}
-      <div className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-         <div className={`${containerClass} mx-auto px-4 py-4 flex items-center gap-4 transition-all duration-500`}>
-            <Link href="/student/dashboard" className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500"><ArrowLeft className="w-5 h-5"/></Link>
-            <h1 className="font-extrabold text-xl text-gray-800 line-clamp-1">{lesson.title}</h1>
-         </div>
-      </div>
-
-      {/* TABS */}
-      {lesson.modules && lesson.modules.length > 0 && (
-        <div className="bg-white border-b border-gray-200 sticky top-[69px] z-40 overflow-x-auto no-scrollbar shadow-sm">
-          <div className={`${containerClass} mx-auto px-4 flex items-center gap-2 py-3 transition-all duration-500`}>
-             {otherModules.map((mod: any) => (
-               <button
-                 key={mod.id}
-                 onClick={() => setActiveModuleId(mod.id)}
-                 className={`shrink-0 px-5 py-2 rounded-full text-sm font-bold transition-all ${activeModuleId === mod.id ? 'bg-indigo-600 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-               >
-                 {mod.title}
-               </button>
-             ))}
-             {practices.length > 0 && (
-               <button
-                 onClick={() => setActiveModuleId(practices[0].id)}
-                 className={`shrink-0 px-5 py-2 rounded-full text-sm font-bold transition-all ${isPracticeTabActive ? 'bg-orange-500 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-               >
-                 🎯 Luyện tập
-               </button>
-             )}
-          </div>
-        </div>
-      )}
-
-      {/* SUB-TABS CHO LUYỆN TẬP */}
-      {isPracticeTabActive && practices.length > 1 && (
-         <div className="bg-orange-50/50 border-b border-orange-100 sticky top-[125px] z-30 overflow-x-auto no-scrollbar">
-            <div className={`${containerClass} mx-auto px-4 flex items-center gap-2 py-2.5 transition-all duration-500`}>
-               {practices.map((p: any) => (
-                  <button
-                     key={p.id}
-                     onClick={() => setActiveModuleId(p.id)}
-                     className={`shrink-0 px-4 py-1.5 rounded-lg text-[13px] font-bold transition-all border ${activeModuleId === p.id ? 'bg-orange-100 border-orange-300 text-orange-700 shadow-sm' : 'bg-white border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-200'}`}
-                  >
-                     {p.title}
-                  </button>
-               ))}
+    <div ref={scrollRef} className="w-full flex-1 h-screen overflow-y-auto bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] bg-slate-50 pb-20">
+      {/* KHUNG ĐIỀU HƯỚNG - gộp tiêu đề + tabs + tab con vào MỘT khối sticky duy nhất
+          để tự trượt lên đồng bộ khi cuộn xuống. Trước đây ba thanh sticky xếp chồng
+          bằng toạ độ cứng (top-0 / top-69 / top-125) nên vừa dễ lệch vừa ăn hết chỗ. */}
+      <div className={`sticky top-0 z-50 transition-transform duration-300 ease-out will-change-transform ${chromeHidden ? '-translate-y-full' : 'translate-y-0'}`}>
+         <div className="bg-white/90 backdrop-blur-md border-b border-gray-200">
+            {/* Màn thấp (điện thoại xoay ngang) thì nén thanh lại để còn chỗ đọc */}
+            <div className={`${containerClass} mx-auto px-3 sm:px-4 py-2.5 sm:py-4 [@media(max-height:500px)]:py-1.5 flex items-center gap-2 sm:gap-4`}>
+               <Link href="/student/dashboard" className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500 shrink-0"><ArrowLeft className="w-5 h-5"/></Link>
+               <h1 className="font-extrabold text-base sm:text-xl text-gray-800 line-clamp-1">{lesson.title}</h1>
             </div>
          </div>
-      )}
+
+         {/* TABS */}
+         {lesson.modules && lesson.modules.length > 0 && (
+           <div className="bg-white border-b border-gray-200 overflow-x-auto no-scrollbar shadow-sm">
+             <div className={`${containerClass} mx-auto px-3 sm:px-4 flex items-center gap-2 py-2 sm:py-3 [@media(max-height:500px)]:py-1.5`}>
+                {otherModules.map((mod: any) => (
+                  <button
+                    key={mod.id}
+                    onClick={() => setActiveModuleId(mod.id)}
+                    className={`shrink-0 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[13px] sm:text-sm font-bold transition-all ${activeModuleId === mod.id ? 'bg-indigo-600 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                  >
+                    {mod.title}
+                  </button>
+                ))}
+                {practices.length > 0 && (
+                  <button
+                    onClick={() => setActiveModuleId(practices[0].id)}
+                    className={`shrink-0 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[13px] sm:text-sm font-bold transition-all ${isPracticeTabActive ? 'bg-orange-500 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                  >
+                    🎯 Luyện tập
+                  </button>
+                )}
+             </div>
+           </div>
+         )}
+
+         {/* SUB-TABS CHO LUYỆN TẬP */}
+         {isPracticeTabActive && practices.length > 1 && (
+            <div className="bg-orange-50/50 border-b border-orange-100 overflow-x-auto no-scrollbar">
+               <div className={`${containerClass} mx-auto px-3 sm:px-4 flex items-center gap-2 py-2`}>
+                  {practices.map((p: any) => (
+                     <button
+                        key={p.id}
+                        onClick={() => setActiveModuleId(p.id)}
+                        className={`shrink-0 px-3 sm:px-4 py-1.5 rounded-lg text-[12.5px] sm:text-[13px] font-bold transition-all border ${activeModuleId === p.id ? 'bg-orange-100 border-orange-300 text-orange-700 shadow-sm' : 'bg-white border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-200'}`}
+                     >
+                        {p.title}
+                     </button>
+                  ))}
+               </div>
+            </div>
+         )}
+      </div>
 
       {/* NỘI DUNG CHÍNH */}
-      <div className={`${containerClass} mx-auto px-4 py-10 transition-all duration-500`}>
+      <div className={`${containerClass} mx-auto px-2.5 sm:px-4 py-5 sm:py-10`}>
          {/* Chỉ render content_markdown của lesson nếu KHÔNG có module nào (để hỗ trợ bài giảng cũ) */}
          {(!lesson.modules || lesson.modules.length === 0) && lesson.content_markdown && (
            <InteractiveFlipbook content={lesson.content_markdown} />
