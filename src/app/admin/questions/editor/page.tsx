@@ -44,6 +44,16 @@ interface QuestionData {
   isNewMathForm?: boolean;
 }
 
+/**
+ * Dấu hiệu câu hỏi CẦN CHÈN ẢNH mà chưa có ảnh.
+ *
+ * Bản cũ chỉ dò "HÌNH VẼ | ĐỒ THỊ | như hình | BẢNG BIẾN THIÊN" nên bỏ sót hàng
+ * loạt câu AI trả về dạng "[CÓ HÌNH ẢNH KÈM THEO]" (chứa "HÌNH ẢNH" chứ không
+ * phải "HÌNH VẼ") - Bản đồ câu hỏi không báo động, giáo viên lưu vào ngân hàng
+ * mà thiếu ảnh. Gom về một biểu thức bao quát cả placeholder trong ngoặc vuông.
+ */
+const IMAGE_NEEDED_REGEX = /\[IMAGE_PLACEHOLDER\]|\[[^\]]*(?:HÌNH|ẢNH|BẢNG|ĐỒ THỊ|CHÚ Ý)[^\]]*\]|HÌNH VẼ|HÌNH ẢNH|ĐỒ THỊ|BẢNG BIẾN THIÊN|BẢNG BIỂU|như hình|hình bên/i;
+
 export default function BatchAIEditorPage() {
   const router = useRouter();
   const supabase = createClient();
@@ -611,6 +621,8 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     const byType: Record<string, number> = {};
     const byDifficulty: Record<string, number> = {};
     const matrix: Record<string, Record<string, number>> = {};
+    let thieuAnh = 0;
+    let trungLap = 0;
 
     parsedQuestions.forEach(q => {
       const t = toBankType(q.question_type) ?? 'NLC';
@@ -619,12 +631,16 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
       byDifficulty[d] = (byDifficulty[d] || 0) + 1;
       if (!matrix[t]) matrix[t] = {};
       matrix[t][d] = (matrix[t][d] || 0) + 1;
+      if (!q.image_url && IMAGE_NEEDED_REGEX.test(q.content || '')) thieuAnh++;
+      if (q.isDuplicate) trungLap++;
     });
 
     return {
       byType,
       byDifficulty,
       matrix,
+      thieuAnh,
+      trungLap,
       typesPresent: BANK_TYPES.filter(t => byType[t] > 0),
       total: parsedQuestions.length,
     };
@@ -814,23 +830,35 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                 <div className="grid grid-cols-4 gap-2">
                    {parsedQuestions.map((q, idx) => {
                       const isSelected = activeQuestionIdx === idx;
-                      const hasWarning = q.isDuplicate || (!q.image_url && (q.content.includes("HÌNH VẼ") || q.content.includes("ĐỒ THỊ") || q.content.includes("như hình") || q.content.includes("BẢNG BIẾN THIÊN")));
+                      // Tách bạch 2 loại cảnh báo để biết ngay phải xử lý gì
+                      const thieuAnh = !q.image_url && IMAGE_NEEDED_REGEX.test(q.content || '');
+                      const trungLap = !!q.isDuplicate;
                       return (
                          <button
                             key={q.temp_id}
                             onClick={() => setActiveQuestionIdx(idx)}
-                            title={`Câu ${idx + 1} · ${bankTypeLabel(q.question_type)} · ${difficultyLabel(q.difficulty)}`}
+                            title={[
+                               `Câu ${idx + 1} · ${bankTypeLabel(q.question_type)} · ${difficultyLabel(q.difficulty)}`,
+                               thieuAnh ? '⚠️ THIẾU ẢNH - cần chèn hình cho câu này' : '',
+                               trungLap ? '⚠️ Trùng với câu đã có trong Ngân hàng' : '',
+                            ].filter(Boolean).join('\n')}
                             className={`h-10 rounded-lg text-xs font-black transition-all flex items-center justify-center relative border overflow-hidden ${
                                isSelected
                                   ? 'bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-105'
-                                  : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-gray-200 hover:border-indigo-300'
+                                  : thieuAnh
+                                     ? 'bg-red-50 text-red-700 border-red-300 hover:bg-red-100'
+                                     : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-gray-200 hover:border-indigo-300'
                             }`}
                          >
                             {idx + 1}
                             {/* Vạch màu dưới đáy: nhận biết ngay Dạng thức của từng câu */}
                             <span className={`absolute bottom-0 left-0 right-0 h-[3px] ${TYPE_STYLE[toBankType(q.question_type) ?? 'NLC']?.dot || 'bg-gray-300'}`} />
-                            {hasWarning && (
-                               <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-orange-500 ring-1 ring-white animate-pulse" />
+                            {/* Chấm ĐỎ: còn thiếu ảnh. Chấm CAM: trùng lặp. */}
+                            {thieuAnh && (
+                               <span className="absolute top-0.5 right-0.5 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white animate-pulse" />
+                            )}
+                            {trungLap && (
+                               <span className="absolute top-0.5 left-0.5 w-2 h-2 rounded-full bg-orange-500 ring-2 ring-white" />
                             )}
                          </button>
                       );
@@ -897,14 +925,29 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                    )}
                 </div>
 
+                {/* Cảnh báo nổi bật: còn câu thiếu ảnh thì phải thấy ngay */}
+                {scanSummary.thieuAnh > 0 && (
+                   <div className="mt-3 flex items-start gap-2 px-3 py-2.5 rounded-lg bg-red-50 border border-red-300">
+                      <AlertCircle className="w-4 h-4 text-red-600 shrink-0 mt-0.5" />
+                      <div className="text-[11.5px] font-bold text-red-700 leading-snug">
+                         Còn <span className="font-black">{scanSummary.thieuAnh}</span> câu cần chèn ảnh
+                         <div className="font-semibold text-red-600/80 text-[10.5px] mt-0.5">Ô số viền đỏ · chấm đỏ góc phải</div>
+                      </div>
+                   </div>
+                )}
+
                 <div className="mt-5 border-t border-gray-100 pt-4 space-y-2">
                    <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
                       <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 block shadow-sm"></span>
                       <span>Đang chỉnh sửa</span>
                    </div>
                    <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
-                      <span className="w-2.5 h-2.5 rounded-full bg-orange-500 block animate-pulse"></span>
-                      <span>Cần lưu ý</span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-500 block animate-pulse"></span>
+                      <span>Thiếu ảnh {scanSummary.thieuAnh > 0 && <b className="text-red-600">({scanSummary.thieuAnh})</b>}</span>
+                   </div>
+                   <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
+                      <span className="w-2.5 h-2.5 rounded-full bg-orange-500 block"></span>
+                      <span>Trùng lặp {scanSummary.trungLap > 0 && <b className="text-orange-600">({scanSummary.trungLap})</b>}</span>
                    </div>
                 </div>
 
