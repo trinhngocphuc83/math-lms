@@ -1,12 +1,33 @@
-// Chuyển một biểu thức LaTeX (nội dung nằm giữa $...$ hoặc $$...$$) thành XML OMML
-// (Office Math Markup Language) để nhúng thẳng vào file Word dạng HTML (.doc).
-// Word hiểu <m:oMath>...</m:oMath> ngay trong HTML và hiển thị thành công thức toán
-// thật (căn, phân số, mũ, chỉ số...) chứ không cần cài thêm add-in MathType.
-//
-// Đây là một trình phân tích LaTeX rút gọn, chỉ hỗ trợ các cấu trúc thường gặp trong
-// nội dung bài giảng (căn thức, phân số, mũ/chỉ số, hệ phương trình, các ký hiệu so
-// sánh/toán tử phổ biến...). Lệnh không nhận diện được sẽ rơi về hiển thị tên lệnh dạng
-// chữ thường (không bao giờ để sót dấu \ thô ra ngoài).
+// Chuyển một biểu thức LaTeX (nội dung nằm giữa $...$ hoặc $$...$$) thành các đối tượng
+// Math của thư viện "docx" (MathRun, MathFraction, MathRadical, MathSuperScript...).
+// Đây chính là công thức Word/MathType THẬT (chuẩn OMML), học sinh/thầy cô có thể bấm
+// vào sửa trực tiếp trong Word như mọi công thức khác, không cần chuyển đổi thủ công.
+
+import {
+  Math as DocxMath,
+  MathRun,
+  MathFraction,
+  MathRadical,
+  MathSuperScript,
+  MathSubScript,
+  MathSubSuperScript,
+  MathRoundBrackets,
+  MathSquareBrackets,
+  MathCurlyBrackets,
+  MathAngledBrackets,
+} from "docx";
+
+type MathComponent =
+  | MathRun
+  | MathFraction
+  | MathRadical
+  | MathSuperScript
+  | MathSubScript
+  | MathSubSuperScript
+  | MathRoundBrackets
+  | MathSquareBrackets
+  | MathCurlyBrackets
+  | MathAngledBrackets;
 
 const SYMBOL_MAP: Record<string, string> = {
   cdot: "·",
@@ -62,8 +83,8 @@ const SYMBOL_MAP: Record<string, string> = {
   cot: "cot",
   min: "min",
   max: "max",
-  quad: "  ",
-  qquad: "    ",
+  quad: "  ",
+  qquad: "    ",
   alpha: "α", beta: "β", gamma: "γ", Gamma: "Γ",
   delta: "δ", Delta: "Δ", epsilon: "ε", varepsilon: "ε",
   zeta: "ζ", eta: "η", theta: "θ", Theta: "Θ",
@@ -80,19 +101,6 @@ const STRUCTURAL_COMMANDS = new Set([
 ]);
 
 const KNOWN_COMMANDS = new Set([...Object.keys(SYMBOL_MAP), ...STRUCTURAL_COMMANDS]);
-
-function escapeXml(text: string): string {
-  return text
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;");
-}
-
-function runXml(text: string, plainUpright: boolean = false): string {
-  if (!text) return "";
-  const rPr = plainUpright ? '<m:rPr><m:sty m:val="p"/></m:rPr>' : "";
-  return `<m:r>${rPr}<m:t xml:space="preserve">${escapeXml(text)}</m:t></m:r>`;
-}
 
 // Sửa lỗi dữ liệu cũ: chuỗi bị escape kép khiến lệnh LaTeX như "\\sqrt" biến thành
 // hai dấu \ liền nhau. Chỉ gộp về 1 dấu \ khi phần chữ theo sau khớp với một lệnh đã biết
@@ -134,43 +142,53 @@ function findMatchingBrace(s: string, openIdx: number): number {
   return s.length;
 }
 
-type ParseResult = { xml: string; i: number };
+type ParseResult = { nodes: MathComponent[]; i: number };
 
-function parseBraceRaw(s: string, i: number): ParseResult {
-  if (s[i] !== "{") return { xml: "", i };
+function nodesOf(text: string): MathComponent[] {
+  return text ? [new MathRun(text)] : [];
+}
+
+function parseBraceRaw(s: string, i: number): { text: string; i: number } {
+  if (s[i] !== "{") return { text: "", i };
   const close = findMatchingBrace(s, i);
-  return { xml: s.slice(i + 1, close), i: close + 1 };
+  return { text: s.slice(i + 1, close), i: close + 1 };
 }
 
 function parseArg(s: string, i: number): ParseResult {
   if (s[i] === "{") {
     const close = findMatchingBrace(s, i);
     const inner = s.slice(i + 1, close);
-    return { xml: parseSequence(inner), i: close + 1 };
+    return { nodes: parseSequence(inner), i: close + 1 };
   }
   return parseBaseUnit(s, i);
 }
 
 function readCommandName(s: string, i: number): { name: string; i: number } {
-  // i trỏ vào ký tự ngay sau dấu \
   if (/[A-Za-z]/.test(s[i] || "")) {
     let j = i;
     while (j < s.length && /[A-Za-z]/.test(s[j])) j++;
     return { name: s.slice(i, j), i: j };
   }
-  // Lệnh 1 ký tự đặc biệt: \{ \} \$ \% \& \# \_ \\ ...
   return { name: s[i] || "", i: i + 1 };
 }
 
 function parseDelimChar(s: string, i: number): { ch: string; i: number } {
   if (s[i] === "\\" && s[i + 1] === "{") return { ch: "{", i: i + 2 };
   if (s[i] === "\\" && s[i + 1] === "}") return { ch: "}", i: i + 2 };
-  if (s.slice(i, i + 2) === "\\|") return { ch: "‖", i: i + 2 };
+  if (s.slice(i, i + 2) === "\\|") return { ch: "|", i: i + 2 };
   if (s[i] === ".") return { ch: "", i: i + 1 };
   return { ch: s[i] || "", i: i + 1 };
 }
 
-function parseCasesBody(s: string, i: number): { xml: string; i: number } {
+function wrapBrackets(open: string, close: string, children: MathComponent[]): MathComponent[] {
+  if (!open && !close) return children; // dấu ngoặc vô hình \left. ... \right.
+  if (open === "(" || close === ")") return [new MathRoundBrackets({ children }) as unknown as MathComponent];
+  if (open === "[" || close === "]") return [new MathSquareBrackets({ children }) as unknown as MathComponent];
+  if (open === "{" || close === "}") return [new MathCurlyBrackets({ children }) as unknown as MathComponent];
+  return [new MathAngledBrackets({ children }) as unknown as MathComponent];
+}
+
+function parseCasesBody(s: string, i: number): ParseResult {
   // i trỏ ngay sau "\begin{cases}"
   const rows: string[] = [];
   let depth = 0;
@@ -181,13 +199,7 @@ function parseCasesBody(s: string, i: number): { xml: string; i: number } {
     if (s.slice(k, k + endMarker.length) === endMarker && depth === 0) {
       rows.push(s.slice(start, k));
       k += endMarker.length;
-      const rowsXml = rows
-        .map((row) => row.replace(/&/g, " "))
-        .filter((row) => row.trim().length > 0)
-        .map((row) => `<m:e>${parseSequence(row)}</m:e>`)
-        .join("");
-      const xml = `<m:d><m:dPr><m:begChr m:val="{"/><m:endChr m:val=""/></m:dPr><m:e><m:eqArr>${rowsXml}</m:eqArr></m:e></m:d>`;
-      return { xml, i: k };
+      break;
     }
     if (s[k] === "{") depth++;
     else if (s[k] === "}") depth--;
@@ -199,21 +211,23 @@ function parseCasesBody(s: string, i: number): { xml: string; i: number } {
     }
     k++;
   }
-  // Không tìm thấy \end{cases}: coi phần còn lại là 1 hàng duy nhất
-  rows.push(s.slice(start));
-  const rowsXml = rows
+  if (k >= s.length) rows.push(s.slice(start));
+
+  const rowNodes = rows
     .map((row) => row.replace(/&/g, " "))
     .filter((row) => row.trim().length > 0)
-    .map((row) => `<m:e>${parseSequence(row)}</m:e>`)
-    .join("");
-  return {
-    xml: `<m:d><m:dPr><m:begChr m:val="{"/><m:endChr m:val=""/></m:dPr><m:e><m:eqArr>${rowsXml}</m:eqArr></m:e></m:d>`,
-    i: s.length,
-  };
+    .map((row) => parseSequence(row));
+
+  const joined: MathComponent[] = [];
+  rowNodes.forEach((nodes, idx) => {
+    if (idx > 0) joined.push(new MathRun("   ;   "));
+    joined.push(...nodes);
+  });
+
+  return { nodes: wrapBrackets("{", "", joined), i: k };
 }
 
 function parseCommand(s: string, i: number): ParseResult {
-  // s[i] === '\\'
   const { name, i: afterName } = readCommandName(s, i + 1);
   let i2 = afterName;
 
@@ -223,70 +237,63 @@ function parseCommand(s: string, i: number): ParseResult {
     case "tfrac": {
       const num = parseArg(s, i2); i2 = num.i;
       const den = parseArg(s, i2); i2 = den.i;
-      return { xml: `<m:f><m:num>${num.xml}</m:num><m:den>${den.xml}</m:den></m:f>`, i: i2 };
+      return { nodes: [new MathFraction({ numerator: num.nodes, denominator: den.nodes })], i: i2 };
     }
     case "sqrt": {
-      let deg = "";
+      let degText = "";
       if (s[i2] === "[") {
         const close = s.indexOf("]", i2);
         const end = close === -1 ? s.length : close;
-        deg = s.slice(i2 + 1, end);
+        degText = s.slice(i2 + 1, end);
         i2 = end === s.length ? s.length : end + 1;
       }
       const body = parseArg(s, i2); i2 = body.i;
-      if (deg) {
-        return { xml: `<m:rad><m:radPr><m:degHide m:val="0"/></m:radPr><m:deg>${runXml(deg)}</m:deg><m:e>${body.xml}</m:e></m:rad>`, i: i2 };
-      }
-      return { xml: `<m:rad><m:radPr><m:degHide m:val="1"/></m:radPr><m:deg/><m:e>${body.xml}</m:e></m:rad>`, i: i2 };
+      const degree = degText ? nodesOf(degText) : undefined;
+      return { nodes: [new MathRadical({ children: body.nodes, degree })], i: i2 };
     }
     case "text":
     case "mathrm":
     case "operatorname": {
       const raw = parseBraceRaw(s, i2); i2 = raw.i;
-      return { xml: runXml(raw.xml, true), i: i2 };
+      return { nodes: nodesOf(raw.text), i: i2 };
     }
     case "left": {
       const open = parseDelimChar(s, i2); i2 = open.i;
-      let inner = "";
+      const startInner = i2;
       let depth = 0;
       while (i2 < s.length) {
-        if (s.slice(i2, i2 + 6) === "\\left" && !/[A-Za-z]/.test(s[i2 + 5] || "")) { depth++; }
+        if (s.slice(i2, i2 + 6) === "\\left" && !/[A-Za-z]/.test(s[i2 + 5] || "")) depth++;
         if (s.slice(i2, i2 + 7) === "\\right" && !/[A-Za-z]/.test(s[i2 + 6] || "")) {
           if (depth === 0) break;
           depth--;
         }
         i2++;
       }
-      inner = s.slice(open.i, i2);
+      const inner = s.slice(startInner, i2);
       let close = { ch: "", i: i2 };
-      if (s.slice(i2, i2 + 6) === "\\right") {
-        close = parseDelimChar(s, i2 + 6);
-      }
-      const innerXml = parseSequence(inner);
-      return {
-        xml: `<m:d><m:dPr><m:begChr m:val="${escapeXml(open.ch)}"/><m:endChr m:val="${escapeXml(close.ch)}"/></m:dPr><m:e>${innerXml}</m:e></m:d>`,
-        i: close.i,
-      };
+      if (s.slice(i2, i2 + 6) === "\\right") close = parseDelimChar(s, i2 + 6);
+      const innerNodes = parseSequence(inner);
+      return { nodes: wrapBrackets(open.ch, close.ch, innerNodes), i: close.i };
     }
     case "begin": {
-      if (s.slice(i2, i2 + 7) === "{cases}") {
-        return parseCasesBody(s, i2 + 7);
-      }
-      return { xml: runXml("begin"), i: i2 };
+      if (s.slice(i2, i2 + 7) === "{cases}") return parseCasesBody(s, i2 + 7);
+      return { nodes: nodesOf("begin"), i: i2 };
     }
     case "vec":
     case "overrightarrow": {
       const raw = parseBraceRaw(s, i2); i2 = raw.i;
-      const inner = raw.xml.replace(/\\/g, "");
-      return { xml: runXml(inner + "⃗"), i: i2 };
+      const inner = raw.text.replace(/\\/g, "");
+      return { nodes: nodesOf(inner + "⃗"), i: i2 };
     }
     case "overline": {
+      // Thư viện docx chưa hỗ trợ gạch ngang trên đầu (m:bar) qua API công khai,
+      // đành hiển thị nội dung bên trong mà không có gạch ngang.
       const arg = parseArg(s, i2); i2 = arg.i;
-      return { xml: `<m:bar><m:barPr><m:pos m:val="top"/></m:barPr><m:e>${arg.xml}</m:e></m:bar>`, i: i2 };
+      return { nodes: arg.nodes, i: i2 };
     }
     case "quad":
     case "qquad":
-      return { xml: runXml(SYMBOL_MAP[name]), i: i2 };
+      return { nodes: nodesOf(SYMBOL_MAP[name]), i: i2 };
     case "%":
     case "$":
     case "&":
@@ -294,35 +301,31 @@ function parseCommand(s: string, i: number): ParseResult {
     case "_":
     case "{":
     case "}":
-      return { xml: runXml(name), i: i2 };
+      return { nodes: nodesOf(name), i: i2 };
     default: {
       const sym = SYMBOL_MAP[name];
-      if (sym !== undefined) return { xml: runXml(sym, /^[a-z]+$/.test(name) === false), i: i2 };
-      // Lệnh lạ: hiển thị tên lệnh dạng chữ thường thay vì để lộ dấu \ thô
-      return { xml: runXml(name || "\\"), i: i2 };
+      if (sym !== undefined) return { nodes: nodesOf(sym), i: i2 };
+      return { nodes: nodesOf(name || "\\"), i: i2 };
     }
   }
 }
 
 function parseBaseUnit(s: string, i: number): ParseResult {
-  if (i >= s.length) return { xml: "", i };
+  if (i >= s.length) return { nodes: [], i };
   const c = s[i];
   if (c === "\\") return parseCommand(s, i);
   if (c === "{") {
     const close = findMatchingBrace(s, i);
-    return { xml: parseSequence(s.slice(i + 1, close)), i: close + 1 };
+    return { nodes: parseSequence(s.slice(i + 1, close)), i: close + 1 };
   }
-  if (c === "^" || c === "_") {
-    // Ký tự mũ/chỉ số đứng lẻ loi (không có cơ số phía trước) - bỏ qua để tránh vòng lặp vô hạn
-    return { xml: "", i: i + 1 };
-  }
-  return { xml: runXml(c), i: i + 1 };
+  if (c === "^" || c === "_") return { nodes: [], i: i + 1 };
+  return { nodes: nodesOf(c), i: i + 1 };
 }
 
 function parseScriptArg(s: string, i: number): ParseResult {
   if (s[i] === "{") {
     const close = findMatchingBrace(s, i);
-    return { xml: parseSequence(s.slice(i + 1, close)), i: close + 1 };
+    return { nodes: parseSequence(s.slice(i + 1, close)), i: close + 1 };
   }
   return parseBaseUnit(s, i);
 }
@@ -330,59 +333,60 @@ function parseScriptArg(s: string, i: number): ParseResult {
 function parseAtomWithScripts(s: string, i: number): ParseResult {
   const base = parseBaseUnit(s, i);
   let i2 = base.i;
-  let supXml: string | null = null;
-  let subXml: string | null = null;
+  let supNodes: MathComponent[] | null = null;
+  let subNodes: MathComponent[] | null = null;
 
   while (i2 < s.length && (s[i2] === "^" || s[i2] === "_")) {
     if (s[i2] === "^") {
       const arg = parseScriptArg(s, i2 + 1);
-      supXml = (supXml || "") + arg.xml;
+      supNodes = [...(supNodes || []), ...arg.nodes];
       i2 = arg.i;
     } else {
       const arg = parseScriptArg(s, i2 + 1);
-      subXml = (subXml || "") + arg.xml;
+      subNodes = [...(subNodes || []), ...arg.nodes];
       i2 = arg.i;
     }
   }
 
-  if (!base.xml && supXml === null && subXml === null) return { xml: "", i: i2 };
+  if (base.nodes.length === 0 && supNodes === null && subNodes === null) return { nodes: [], i: i2 };
 
-  if (supXml !== null && subXml !== null) {
-    return { xml: `<m:sSubSup><m:e>${base.xml}</m:e><m:sub>${subXml}</m:sub><m:sup>${supXml}</m:sup></m:sSubSup>`, i: i2 };
+  if (supNodes !== null && subNodes !== null) {
+    return { nodes: [new MathSubSuperScript({ children: base.nodes, subScript: subNodes, superScript: supNodes })], i: i2 };
   }
-  if (supXml !== null) {
-    return { xml: `<m:sSup><m:e>${base.xml}</m:e><m:sup>${supXml}</m:sup></m:sSup>`, i: i2 };
+  if (supNodes !== null) {
+    return { nodes: [new MathSuperScript({ children: base.nodes, superScript: supNodes })], i: i2 };
   }
-  if (subXml !== null) {
-    return { xml: `<m:sSub><m:e>${base.xml}</m:e><m:sub>${subXml}</m:sub></m:sSub>`, i: i2 };
+  if (subNodes !== null) {
+    return { nodes: [new MathSubScript({ children: base.nodes, subScript: subNodes })], i: i2 };
   }
-  return { xml: base.xml, i: i2 };
+  return { nodes: base.nodes, i: i2 };
 }
 
-function parseSequence(s: string): string {
+function parseSequence(s: string): MathComponent[] {
   let i = 0;
-  let out = "";
+  const out: MathComponent[] = [];
   let guard = 0;
   while (i < s.length && guard < 100000) {
     guard++;
     const before = i;
     const atom = parseAtomWithScripts(s, i);
-    out += atom.xml;
+    out.push(...atom.nodes);
     i = atom.i;
-    if (i <= before) i = before + 1; // an toàn: luôn tiến lên, không bao giờ treo
+    if (i <= before) i = before + 1;
   }
   return out;
 }
 
-// API chính: chuyển 1 biểu thức LaTeX (không kèm dấu $) thành "<m:oMath>...</m:oMath>"
-export function latexToOmmlXml(latex: string): string {
+// API chính: chuyển 1 biểu thức LaTeX (không kèm dấu $) thành đối tượng Math của docx,
+// sẵn sàng chèn vào children của Paragraph.
+export function latexToDocxMath(latex: string): InstanceType<typeof DocxMath> {
   const raw = (latex || "").trim();
-  if (!raw) return "";
+  if (!raw) return new DocxMath({ children: [] });
   try {
     const fixed = collapseDoubleBackslashBeforeKnownCommand(raw);
-    const inner = parseSequence(fixed);
-    return `<m:oMath>${inner}</m:oMath>`;
+    const nodes = parseSequence(fixed);
+    return new DocxMath({ children: nodes as any });
   } catch (e) {
-    return `<m:oMath>${runXml(raw)}</m:oMath>`;
+    return new DocxMath({ children: [new MathRun(raw)] as any });
   }
 }

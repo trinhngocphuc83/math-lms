@@ -10,7 +10,7 @@ const sanitizeXml = (text: string): string => {
   return text.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
 };
 
-const base64ToUint8Array = (base64: string) => {
+export const base64ToUint8Array = (base64: string) => {
   const binaryString = window.atob(base64);
   const len = binaryString.length;
   const bytes = new Uint8Array(len);
@@ -138,7 +138,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
   return elements.length > 0 ? elements : [new TextRun({ text: "" })];
 };
 
-const fetchImageWithDimensions = async (url: string): Promise<{buffer: Uint8Array, width: number, height: number} | null> => {
+export const fetchImageWithDimensions = async (url: string): Promise<{buffer: Uint8Array, width: number, height: number} | null> => {
   try {
     const response = await fetch(url);
     if (!response.ok) {
