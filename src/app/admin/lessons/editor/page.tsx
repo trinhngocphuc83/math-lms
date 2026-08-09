@@ -9,6 +9,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import { fixLatexText, applyLatexFixToActiveElement , cleanObjectLatex } from "@/utils/latexFixer";
+import { latexToOmmlXml } from "@/utils/latexToOmml";
 import 'katex/dist/katex.min.css';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useSearchParams, useRouter } from "next/navigation";
@@ -1036,10 +1037,30 @@ function EditorContent() {
       // 0. Xóa màu xanh khỏi LaTeX
       content = content.replace(/\\{1,2}color\s*\{[^}]+\}/gi, '');
 
+      // 0.5. Chữa các lỗi sai cú pháp LaTeX của AI (khối hệ phương trình viết tắt)
+      content = content.replace(/\{\{begincases/g, '\\begin{cases}').replace(/endcases\}\}/g, '\\end{cases}');
+
+      // 0.6. Bóc tách công thức $...$ / $$...$$ và đổi thành công thức Word thật (OMML)
+      // thay vì để MathType tự đoán (thường không nhận ra và hiện nguyên văn mã LaTeX).
+      const mathBlocks: string[] = [];
+      const protectMath = (text: string) => {
+        if (!text) return text;
+        text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_m: string, expr: string) => {
+          mathBlocks.push(latexToOmmlXml(expr));
+          return `__MATH_${mathBlocks.length - 1}__`;
+        });
+        text = text.replace(/\$([^\$\n]+?)\$/g, (_m: string, expr: string) => {
+          mathBlocks.push(latexToOmmlXml(expr));
+          return `__MATH_${mathBlocks.length - 1}__`;
+        });
+        return text;
+      };
+      content = protectMath(content);
+
       // 1. Lọc và bóc tách các câu hỏi trắc nghiệm JSON (Xóa bỏ JSON thô)
       let quizzesHtml: string[] = [];
       let questionCounter = 1;
-      
+
       content = content.replace(/```quiz\n([\s\S]*?)\n```/g, (match, jsonString) => {
           try {
               const quiz = JSON.parse(jsonString);
@@ -1140,11 +1161,8 @@ function EditorContent() {
           } catch(e) { return match; }
       });
 
-      // 2. Chữa các lỗi sai cú pháp LaTeX của AI để MathType/Word nhận diện được
-      content = content.replace(/\{\{begincases/g, '\\begin{cases}').replace(/endcases\}\}/g, '\\end{cases}');
-
-      // 3. Parser Markdown cơ bản sang HTML để MS Word hiểu được In đậm, Tiêu đề và Kéo dòng
-      let html = content.replace(/\\\\/g, '\\'); // Đưa dấu chéo kép về dấu chéo đơn chuẩn LaTeX cho MathType
+      // 2. Parser Markdown cơ bản sang HTML để MS Word hiểu được In đậm, Tiêu đề và Kéo dòng
+      let html = content;
       
       const spanBlocks: string[] = [];
       html = html.replace(/<span[^>]*>/gi, (match) => {
@@ -1211,8 +1229,13 @@ function EditorContent() {
       }
       html = newHtml;
 
+      // Khôi phục công thức: thay các placeholder __MATH_N__ bằng XML công thức thật (OMML)
+      mathBlocks.forEach((xml, index) => {
+        html = html.replace(`__MATH_${index}__`, () => xml);
+      });
+
       const documentHtml = `
-      <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+      <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns:m='http://schemas.openxmlformats.org/officeDocument/2006/math' xmlns='http://www.w3.org/TR/REC-html40'>
       <head>
       <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
       <style>
