@@ -2,9 +2,8 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { exportQuestionsToWord } from "@/utils/exportDocx";
-import { 
-  Sliders, Download, UploadCloud, Trash2, Printer, FileText, Settings, Database, Shuffle, CheckCircle, X, ChevronDown, ChevronRight, Folder, File, List
+import {
+  Sliders, Download, UploadCloud, Trash2, Settings, Database, Shuffle, X, ChevronDown, ChevronRight, Folder, File, List
 } from "lucide-react";
 import * as XLSX from "xlsx";
 
@@ -59,17 +58,12 @@ export default function ExamsManagerPage() {
   
   // Loading & Generating
   const [isLoadingTree, setIsLoadingTree] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
   
   // UI States
   const [expandedTopics, setExpandedTopics] = useState<Record<string, boolean>>({});
   const [expandedLessons, setExpandedLessons] = useState<Record<string, boolean>>({});
   const [expandedTypes, setExpandedTypes] = useState<Record<string, boolean>>({});
   const [isHeaderExpanded, setIsHeaderExpanded] = useState(true);
-
-  // Preview Modal
-  const [showPreviewModal, setShowPreviewModal] = useState(false);
-  const [generatedQuestions, setGeneratedQuestions] = useState<any[]>([]);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -214,91 +208,23 @@ export default function ExamsManagerPage() {
     if(confirm("Bạn có chắc chắn muốn xoá toàn bộ ma trận?")) setMatrixItems([]);
   };
 
-  const generateExam = async () => {
+  // Trước đây bấm nút này là hệ thống tự chọn ngẫu nhiên câu hỏi rồi hiện luôn
+  // kết quả để xem/xuất - không có cơ hội xem/đổi từng câu cụ thể trước khi chốt.
+  // Giờ chuyển sang mở một TAB RIÊNG, rộng rãi, liệt kê toàn bộ câu hỏi ứng viên
+  // của từng dòng ma trận (không chỉ số lượng đã chọn ngẫu nhiên) để thầy/cô tự
+  // tick chọn đúng câu muốn đưa vào đề, sửa trực tiếp và lưu lại vào ngân hàng
+  // ngay tại đó. Chỉ khi nào ok thì mới sang bước xem đề hoàn chỉnh/xuất/chốt đề.
+  const generateExam = () => {
     if (matrixItems.length === 0) {
       alert("Vui lòng thêm ít nhất 1 dạng toán vào ma trận!");
       return;
     }
-    setIsGenerating(true);
-    try {
-      let finalQuestions: any[] = [];
-      
-      for (const item of matrixItems) {
-        let query = supabase
-          .from('questions')
-          .select('*')
-          .eq('math_form', item.math_form)
-          .eq('question_type', item.question_type)
-          .eq('difficulty', item.difficulty);
-        
-        if (grade) query = query.eq('grade', grade);
-        if (subject) query = query.eq('subject', subject);
-        
-        const { data, error } = await query;
-        if (error) throw error;
-        
-        if (data && data.length > 0) {
-          // Bước 1: Trộn ngẫu nhiên
-          const shuffled = data.sort(() => 0.5 - Math.random());
-          // Bước 2: Ưu tiên các câu chưa dùng hoặc dùng ít
-          const sorted = shuffled.sort((a, b) => (a.usage_count || 0) - (b.usage_count || 0));
-          const selected = sorted.slice(0, item.count);
-          finalQuestions = [...finalQuestions, ...selected];
-        }
-      }
-      
-      if(finalQuestions.length === 0) {
-        alert("Không tìm thấy câu hỏi nào thoả mãn ma trận trong kho!");
-      } else {
-        setGeneratedQuestions(finalQuestions);
-        setShowPreviewModal(true);
-      }
-    } catch (error: any) {
-      alert("Lỗi khi sinh đề: " + error.message);
-    } finally {
-      setIsGenerating(false);
-    }
-  };
-
-  const [isFinalizing, setIsFinalizing] = useState(false);
-
-  const handleFinalizeExam = async () => {
-    if (generatedQuestions.length === 0) return alert("Không có câu hỏi nào để chốt!");
-    setIsFinalizing(true);
-    try {
-      for (const q of generatedQuestions) {
-        const newCount = (q.usage_count || 0) + 1;
-        await supabase.from('questions').update({ usage_count: newCount }).eq('id', q.id);
-      }
-      setGeneratedQuestions(prev => prev.map(q => ({...q, usage_count: (q.usage_count || 0) + 1})));
-      alert("Đã chốt đề thành công! Số lần sử dụng của các câu hỏi trong đề đã được cộng thêm 1.");
-    } catch (error: any) {
-      alert("Lỗi khi chốt đề: " + error.message);
-    } finally {
-      setIsFinalizing(false);
-    }
-  };
-
-  const handlePrint = () => {
-    window.print();
-  };
-
-  const handleExportWordStudent = async () => {
-    try {
-      if(generatedQuestions.length === 0) return alert("Chưa có đề thi nào được sinh!");
-      await exportQuestionsToWord(generatedQuestions, 'student');
-    } catch (e: any) {
-      alert("Lỗi xuất Word: " + e.message);
-    }
-  };
-
-  const handleExportWordTeacher = async () => {
-    try {
-      if(generatedQuestions.length === 0) return alert("Chưa có đề thi nào được sinh!");
-      await exportQuestionsToWord(generatedQuestions, 'teacher');
-    } catch (e: any) {
-      alert("Lỗi xuất Word: " + e.message);
-    }
+    const draftKey = `examDraft_${Date.now()}`;
+    localStorage.setItem(draftKey, JSON.stringify({
+      examType, grade, subject,
+      matrixItems: matrixItems.map(({ id, math_form, question_type, difficulty, count }) => ({ id, math_form, question_type, difficulty, count })),
+    }));
+    window.open(`/admin/exams/select?draft=${draftKey}`, '_blank');
   };
 
   const handleExportMatrix = () => {
@@ -616,13 +542,12 @@ export default function ExamsManagerPage() {
                 <div className="text-sm">
                   <span className="text-gray-500">Tổng số câu:</span> <span className="font-black text-lg text-emerald-600">{matrixItems.reduce((acc, curr) => acc + curr.count, 0)}</span>
                 </div>
-                <button 
+                <button
                   onClick={generateExam}
-                  disabled={isGenerating}
-                  className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-3 rounded-xl font-black shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center gap-2 disabled:opacity-50"
+                  className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-3 rounded-xl font-black shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center gap-2"
                 >
-                  {isGenerating ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Shuffle className="w-5 h-5" />}
-                  TIẾN HÀNH TRỘN ĐỀ
+                  <Shuffle className="w-5 h-5" />
+                  XEM TRƯỚC & CHỌN CÂU HỎI
                 </button>
               </div>
             </div>
@@ -631,65 +556,6 @@ export default function ExamsManagerPage() {
         </div>
       </div>
 
-      {/* Exam Preview Modal */}
-      {showPreviewModal && (
-        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm p-4 flex justify-center animate-in fade-in duration-200">
-          <div className="bg-white rounded-2xl w-full max-w-5xl h-full flex flex-col shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50">
-              <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
-                <FileText className="w-6 h-6 text-teal-600" /> Bản xem trước Đề thi
-              </h2>
-              <button onClick={() => setShowPreviewModal(false)} className="p-2 text-gray-400 hover:text-red-600 rounded-xl transition-colors">
-                <X className="w-6 h-6" />
-              </button>
-            </div>
-            <div className="p-4 bg-white border-b border-gray-100 flex items-center gap-3">
-              <button onClick={handlePrint} className="bg-teal-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-teal-700">
-                <Printer className="w-4 h-4" /> In trực tiếp Web
-              </button>
-              <button onClick={handleExportWordStudent} className="bg-blue-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-blue-700">
-                <Download className="w-4 h-4" /> Xuất Đề (Học Sinh)
-              </button>
-              <button onClick={handleExportWordTeacher} className="bg-indigo-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-indigo-700">
-                <Download className="w-4 h-4" /> Xuất Đề + Lời Giải (Giáo Viên)
-              </button>
-              <button onClick={handleFinalizeExam} disabled={isFinalizing} className="bg-emerald-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-emerald-700 disabled:opacity-50 ml-2">
-                {isFinalizing ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <CheckCircle className="w-4 h-4" />}
-                Chốt Đề (Lưu bộ đếm)
-              </button>
-              <span className="ml-auto text-sm text-gray-500">Đã tạo thành công {generatedQuestions.length} câu hỏi.</span>
-            </div>
-            <div id="print-area" className="flex-1 overflow-y-auto p-8 bg-gray-50" style={{ fontFamily: '"Times New Roman", Times, serif', fontSize: '12pt' }}>
-              <div className="text-center font-bold text-lg uppercase mb-6">{examType || "ĐỀ KIỂM TRA"}</div>
-              {generatedQuestions.map((q, i) => (
-                <div key={i} className="mb-4">
-                  <p className="font-bold inline-block">Câu {i + 1}. </p>
-                  <span className="ml-2 mr-2 inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200 align-text-bottom">
-                    Đã xuất hiện: {q.usage_count || 0} lần
-                  </span>
-                  <span dangerouslySetInnerHTML={{ __html: ' ' + q.content.replace(/\\n/g, '<br/>').replace(/\\[HINH VẼ ĐỒ THỊ\\]|\\[HÌNH VẼ ĐỒ THỊ\\]/gi, '').replace(/\$(.*?)\$/g, '<span class="math">\\($1\\)</span>') }} />
-                  {['TN', 'NLC'].includes(q.question_type) && (
-                    <div className="grid grid-cols-2 mt-2 gap-y-1">
-                      <div><b>A.</b> <span dangerouslySetInnerHTML={{ __html: (q.option_a || '').replace(/\$(.*?)\$/g, '<span class="math">\\($1\\)</span>') }} /></div>
-                      <div><b>B.</b> <span dangerouslySetInnerHTML={{ __html: (q.option_b || '').replace(/\$(.*?)\$/g, '<span class="math">\\($1\\)</span>') }} /></div>
-                      <div><b>C.</b> <span dangerouslySetInnerHTML={{ __html: (q.option_c || '').replace(/\$(.*?)\$/g, '<span class="math">\\($1\\)</span>') }} /></div>
-                      <div><b>D.</b> <span dangerouslySetInnerHTML={{ __html: (q.option_d || '').replace(/\$(.*?)\$/g, '<span class="math">\\($1\\)</span>') }} /></div>
-                    </div>
-                  )}
-                  {q.question_type === 'DS' && (
-                    <div className="mt-2 space-y-1">
-                      <div><b>a)</b> <span dangerouslySetInnerHTML={{ __html: (q.option_a || '').replace(/\$(.*?)\$/g, '<span class="math">\\($1\\)</span>') }} /></div>
-                      <div><b>b)</b> <span dangerouslySetInnerHTML={{ __html: (q.option_b || '').replace(/\$(.*?)\$/g, '<span class="math">\\($1\\)</span>') }} /></div>
-                      <div><b>c)</b> <span dangerouslySetInnerHTML={{ __html: (q.option_c || '').replace(/\$(.*?)\$/g, '<span class="math">\\($1\\)</span>') }} /></div>
-                      <div><b>d)</b> <span dangerouslySetInnerHTML={{ __html: (q.option_d || '').replace(/\$(.*?)\$/g, '<span class="math">\\($1\\)</span>') }} /></div>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

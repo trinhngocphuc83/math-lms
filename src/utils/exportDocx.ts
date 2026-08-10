@@ -21,28 +21,63 @@ export const base64ToUint8Array = (base64: string) => {
 };
 
 import { cleanLatexForWord } from "./latexToWord";
+import { latexToDocxMath } from "./latexToDocxMath";
+
+// Đánh dấu tạm cho công thức $...$/$$...$$ để không lẫn với ảnh/HTML khi quét dòng,
+// rồi thay lại bằng công thức Word thật (Equation/OMML) ở dưới - không còn hiện chữ
+// LaTeX thô ("\sqrt{...}") trong file .docx xuất ra nữa.
+const MATH_MARKER = " MATH";
+const extractMathPlaceholders = (text: string, store: string[]): string => {
+  if (!text) return text;
+  text = text.replace(/\$\$([\s\S]+?)\$\$/g, (_m: string, expr: string) => {
+    store.push(expr);
+    return `${MATH_MARKER}${store.length - 1} `;
+  });
+  text = text.replace(/\$([^\$\n]+?)\$/g, (_m: string, expr: string) => {
+    store.push(expr);
+    return `${MATH_MARKER}${store.length - 1} `;
+  });
+  return text;
+};
 
 const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
   if (!textLine) return [new TextRun({ text: "" })];
   textLine = cleanLatexForWord(textLine);
   textLine = sanitizeXml(textLine);
-  
+
   let decodedLine = textLine
     .replace(/&lt;/gi, '<')
     .replace(/&gt;/gi, '>')
     .replace(/&amp;/gi, '&')
     .replace(/&nbsp;/gi, ' ');
-  
+
+  const mathStore: string[] = [];
+  decodedLine = extractMathPlaceholders(decodedLine, mathStore);
+
   const elements: any[] = [];
   let remaining = decodedLine;
 
   while (remaining.length > 0) {
     const imgStart = remaining.toLowerCase().indexOf('<img');
     const mdStart = remaining.indexOf('![');
-    
+    const mathStart = remaining.indexOf(MATH_MARKER);
+
+    if (mathStart !== -1 && (imgStart === -1 || mathStart < imgStart) && (mdStart === -1 || mathStart < mdStart)) {
+      if (mathStart > 0) {
+        const before = remaining.slice(0, mathStart).replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
+        if (before) elements.push(new TextRun({ text: before, color: defaultColor, bold: defaultBold }));
+      }
+      const endIdx = remaining.indexOf(' ', mathStart + MATH_MARKER.length);
+      const nStr = remaining.slice(mathStart + MATH_MARKER.length, endIdx);
+      const n = parseInt(nStr, 10);
+      elements.push(latexToDocxMath(mathStore[n]));
+      remaining = remaining.slice(endIdx + 1);
+      continue;
+    }
+
     let nextType: 'html' | 'md' | null = null;
     let startIndex = -1;
-    
+
     if (imgStart !== -1 && mdStart !== -1) {
       if (imgStart < mdStart) {
         nextType = 'html';
