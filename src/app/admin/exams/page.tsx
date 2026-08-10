@@ -116,16 +116,26 @@ export default function ExamsManagerPage() {
       if (err1) throw err1;
       
       // 2. Quét kho
-      let qQuery = supabase.from('questions').select('topic, lesson, math_form, grade, subject, question_type, difficulty');
-      if (grade) qQuery = qQuery.eq('grade', grade);
-      if (subject) qQuery = qQuery.eq('subject', subject);
-      if (topicFilter) qQuery = qQuery.eq('topic', topicFilter);
-      if (lessonFilter) qQuery = qQuery.eq('lesson', lessonFilter);
-      if (formFilter) qQuery = qQuery.eq('math_form', formFilter);
-      if (qTypeFilter) qQuery = qQuery.eq('question_type', qTypeFilter);
+      // Supabase/PostgREST mặc định chỉ trả tối đa 1000 dòng cho 1 lần truy vấn.
+      // Với bộ lọc rộng (VD chỉ chọn Lớp/Phân môn), số câu trong kho dễ vượt 1000
+      // nên phải phân trang lấy hết, nếu không số "(Kho: N)" sẽ đếm thiếu.
+      const qSelect = 'topic, lesson, math_form, grade, subject, question_type, difficulty';
+      const qData: any[] = [];
+      const PAGE_SIZE = 1000;
+      for (let from = 0; ; from += PAGE_SIZE) {
+        let qQuery = supabase.from('questions').select(qSelect).range(from, from + PAGE_SIZE - 1);
+        if (grade) qQuery = qQuery.eq('grade', grade);
+        if (subject) qQuery = qQuery.eq('subject', subject);
+        if (topicFilter) qQuery = qQuery.eq('topic', topicFilter);
+        if (lessonFilter) qQuery = qQuery.eq('lesson', lessonFilter);
+        if (formFilter) qQuery = qQuery.eq('math_form', formFilter);
+        if (qTypeFilter) qQuery = qQuery.eq('question_type', qTypeFilter);
 
-      const { data: qData, error: err2 } = await qQuery;
-      if (err2) throw err2;
+        const { data: page, error: err2 } = await qQuery;
+        if (err2) throw err2;
+        qData.push(...(page || []));
+        if (!page || page.length < PAGE_SIZE) break;
+      }
 
       const counts: Record<string, number> = {};
       const extraCatsMap = new Map<string, CategoryData>();
