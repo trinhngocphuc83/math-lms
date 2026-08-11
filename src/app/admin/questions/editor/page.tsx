@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import {
   ArrowLeft, Image as ImageIcon, Trash2, Code2, Bot, Eye,
   Wand2, AlertCircle, Loader2, Copy, SaveAll, Edit, Trash, CloudUpload, X, Save, Info,
@@ -19,40 +18,13 @@ import {
   BANK_TYPES,
   DIFFICULTY_CODES,
 } from "@/utils/questionTypes";
-
-interface QuestionData {
-  temp_id?: string;
-  question_id?: string;
-  grade: string;
-  subject: string;
-  topic: string;
-  lesson: string;
-  math_form: string;
-  question_type: string;
-  difficulty: string;
-  content: string;
-  option_a: string;
-  option_b: string;
-  option_c: string;
-  option_d: string;
-  correct_answer: string;
-  explanation: string;
-  image_url?: string;
-  isDuplicate?: boolean;
-  duplicateId?: string;
-  isNewLesson?: boolean;
-  isNewMathForm?: boolean;
-}
-
-/**
- * Dấu hiệu câu hỏi CẦN CHÈN ẢNH mà chưa có ảnh.
- *
- * Bản cũ chỉ dò "HÌNH VẼ | ĐỒ THỊ | như hình | BẢNG BIẾN THIÊN" nên bỏ sót hàng
- * loạt câu AI trả về dạng "[CÓ HÌNH ẢNH KÈM THEO]" (chứa "HÌNH ẢNH" chứ không
- * phải "HÌNH VẼ") - Bản đồ câu hỏi không báo động, giáo viên lưu vào ngân hàng
- * mà thiếu ảnh. Gom về một biểu thức bao quát cả placeholder trong ngoặc vuông.
- */
-const IMAGE_NEEDED_REGEX = /\[IMAGE_PLACEHOLDER\]|\[[^\]]*(?:HÌNH|ẢNH|BẢNG|ĐỒ THỊ|CHÚ Ý)[^\]]*\]|HÌNH VẼ|HÌNH ẢNH|ĐỒ THỊ|BẢNG BIẾN THIÊN|BẢNG BIỂU|như hình|hình bên/i;
+import {
+  type QuestionData,
+  IMAGE_NEEDED_REGEX,
+  scanFilesForQuestions,
+  parseExtractedQuestionsJson,
+} from "@/utils/aiQuestionScan";
+import { saveQuestionsToBank } from "@/utils/questionBankSave";
 
 export default function BatchAIEditorPage() {
   const router = useRouter();
@@ -180,116 +152,15 @@ export default function BatchAIEditorPage() {
     }
   };
 
-  const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader(); reader.readAsDataURL(file);
-      reader.onload = () => resolve((reader.result as string).split(',')[1]);
-      reader.onerror = error => reject(error);
-    });
-  };
+  const scanCtx = () => ({
+    globalGrade, globalSubject, globalTopics, globalLesson,
+    uniqueTopics, uniqueLessons, uniqueForms,
+    existingQuestions,
+  });
 
   const processExtractedJson = (rawText: string) => {
     try {
-      let jsonStr = rawText;
-      const jsonMatch = rawText.match(/```json\n([\s\S]*?)\n```/) || rawText.match(/```\n([\s\S]*?)\n```/);
-      if (jsonMatch) jsonStr = jsonMatch[1];
-      
-      const firstBracket = jsonStr.indexOf('[');
-      const lastBracket = jsonStr.lastIndexOf(']');
-      
-      let parsedData: any[] = [];
-      
-      // 1. Cắt chuỗi JSON thuần tuý ra trước
-      if (firstBracket !== -1) {
-        jsonStr = jsonStr.substring(firstBracket, lastBracket + 1);
-      } else {
-        const firstBrace = jsonStr.indexOf('{');
-        const lastBrace = jsonStr.lastIndexOf('}');
-        if (firstBrace !== -1) {
-          jsonStr = '[' + jsonStr.substring(firstBrace, lastBrace + 1) + ']';
-        } else {
-          throw new Error("Không tìm thấy cấu trúc JSON");
-        }
-      }
-
-      try {
-        parsedData = JSON.parse(jsonStr);
-      } catch(e) {
-        console.error("Lỗi parse JSON:", e);
-        alert("Lỗi: AI trả về định dạng JSON không hợp lệ. Vui lòng thử lại.");
-        return;
-      }
-
-      const newQuestions: QuestionData[] = parsedData.map(data => {
-        let qContent = data.noiDung || "";
-        // Tự động xóa các tiền tố "Câu X.", "Bài Y.", "VD Z:" ở đầu câu hỏi
-        qContent = qContent.replace(/^(?:(?:Câu|Bài|VD|Ví\s*dụ)\s*\d+[a-zA-Z]?\s*[:.-]?\s*)+/i, "");
-
-        const normalizedContent = qContent.trim().toLowerCase().replace(/\s+/g, '');
-        const duplicateMatch = existingQuestions.find(eq => eq.content === normalizedContent && eq.content !== "");
-
-        const lesson = data.tenBai || "";
-        const math_form = data.dangToan || "";
-        const isNewLesson = lesson !== "" && !uniqueLessons.includes(lesson);
-        const isNewMathForm = math_form !== "" && !uniqueForms.includes(math_form);
-
-        let parsedQuestionType = String(data.loaiCauHoi || "NLC");
-        if (parsedQuestionType.toLowerCase().includes("trắc nghiệm")) parsedQuestionType = "NLC";
-        else if (parsedQuestionType.toLowerCase().includes("đúng/sai") || parsedQuestionType.toLowerCase().includes("đúng sai")) parsedQuestionType = "DS";
-        else if (parsedQuestionType.toLowerCase().includes("ngắn")) parsedQuestionType = "TLN";
-        else if (parsedQuestionType.toLowerCase().includes("tự luận") || parsedQuestionType === "essay") parsedQuestionType = "TL";
-        // Bảng quy đổi dùng chung bắt nốt các biến thể còn lại (TN, ĐS, multiple_choice...)
-        else parsedQuestionType = toBankType(parsedQuestionType) ?? "NLC";
-
-        // Prompt yêu cầu AI trả mucDo dạng mã "1|2|3|4", nhưng AI vẫn có lúc trả nhãn
-        // chữ ("Thông hiểu"). Trước đây gán thẳng data.mucDo vào state trong khi <select>
-        // lại dùng value là nhãn chữ -> không khớp option nào nên trình duyệt hiển thị
-        // option đầu tiên, khiến MỌI câu đều hiện "Nhận biết" dù AI nhận diện đúng.
-        // Quy về mã chuẩn 1-4 (đúng chuẩn đang lưu trong CSDL) cho cả hai kiểu đầu vào.
-        const parsedDifficulty = toDifficultyCode(data.mucDo) ?? "1";
-
-        const questionData = {
-          temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
-          grade: data.lop || globalGrade || "12",
-          subject: data.phanMon || globalSubject || "Đại số",
-          topic: data.chuyenDe || (globalTopics.length === 1 ? globalTopics[0] : ""),
-          lesson: lesson,
-          math_form: math_form,
-          isNewLesson,
-          isNewMathForm,
-          question_type: parsedQuestionType,
-          difficulty: parsedDifficulty,
-          content: qContent,
-          option_a: data.dapAnA || "",
-          option_b: data.dapAnB || "",
-          option_c: data.dapAnC || "",
-          option_d: data.dapAnD || "",
-          correct_answer: data.dapAnDung || "",
-          explanation: data.loiGiai || "",
-          image_url: data.image_url || "",
-          isDuplicate: !!duplicateMatch,
-          duplicateId: duplicateMatch ? duplicateMatch.id : undefined
-        };
-
-        const parsedItems = [];
-        parsedItems.push(questionData);
-
-        // Xử lý tự động nhân bản nếu là câu hỏi DS đa bài học
-        if (data.loaiCauHoi === "DS" && data.isMultiLesson === true) {
-           const cloneData = {
-             ...questionData,
-             temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}_clone`,
-             lesson: "Ôn tập chương",
-             isNewLesson: !uniqueLessons.includes("Ôn tập chương"),
-             isDuplicate: false, // Bỏ cảnh báo trùng lặp cho bản sao này
-             duplicateId: undefined
-           };
-           parsedItems.push(cloneData);
-        }
-
-        return parsedItems;
-      }).flat();
-
+      const newQuestions = parseExtractedQuestionsJson(rawText, scanCtx());
       setParsedQuestions(prev => [...prev, ...newQuestions]);
       alert(`Đã nhận diện thành công ${newQuestions.length} câu hỏi!`);
       setAiImageFiles([]); // Clear files after scan
@@ -305,95 +176,11 @@ export default function BatchAIEditorPage() {
 
     setIsScanning(true);
     try {
-      const keyRes = await fetch('/api/admin/gemini-key');
-      const keyData = await keyRes.json();
-      if (!keyRes.ok || !keyData.keys || keyData.keys.length === 0) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
-
-      const topicHint = globalTopics.length === 1 ? globalTopics[0] : 'Tự suy luận';
-      const topicComment = globalTopics.length === 1 ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, TUYỆT ĐỐI KHÔNG ĐƯỢC SỬA ĐỔI BẤT KỲ KÝ TỰ NÀO.' : '// BẮT BUỘC: Tên Chương hoặc Chủ đề (VD: Chương I. Phương trình). PHẢI LẤY TỪ DANH SÁCH BÊN DƯỚI.';
-
-      const contextCategories = `
-DANH SÁCH BÀI HỌC ĐÃ CÓ TRONG HỆ THỐNG:
-${uniqueLessons.map(l => `- ${l}`).join("\n")}
-
-DANH SÁCH DẠNG TOÁN ĐÃ CÓ TRONG HỆ THỐNG:
-${uniqueForms.map(f => `- ${f}`).join("\n")}
-`;
-
-      const prompt = `TRƯỚC KHI BẮT ĐẦU, BẠN PHẢI:
-1. Đọc THẬT KỸ TOÀN BỘ nội dung ảnh/file từ đầu đến cuối, không bỏ sót bất kỳ câu hỏi hay hình ảnh nào.
-2. Đọc kỹ TOÀN BỘ yêu cầu trong prompt này trước khi trả lời. Mỗi quy tắc đều quan trọng.
-3. Kiểm tra lại output JSON trước khi gửi để đảm bảo ĐÚNG cấu trúc, ĐÚNG nội dung và KHÔNG thiếu trường nào.
-
-Bạn là chuyên gia Toán học. Hãy đọc (các) ảnh/file PDF này và bóc tách TẤT CẢ các câu hỏi có trong đó. 
-Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc bằng ]) chứa các object theo cấu trúc:
-[
-  {
-    "lop": "${globalGrade || 'Tự suy luận'}",
-    "phanMon": "${globalSubject || 'Tự suy luận'}",
-    "chuyenDe": "${topicHint}", ${topicComment}
-    "tenBai": "${globalLesson || 'Tự suy luận'}", ${globalLesson ? '// BẮT BUỘC: GIỮ NGUYÊN CHUỖI NÀY, TUYỆT ĐỐI KHÔNG ĐƯỢC SỬA ĐỔI BẤT KỲ KÝ TỰ NÀO.' : '// SO KHỚP VỚI DANH SÁCH BÊN DƯỚI. Nếu có bài tương tự, PHẢI COPY CHÍNH XÁC.'}
-    "dangToan": "Tự suy luận", // SO KHỚP VỚI DANH SÁCH BÊN DƯỚI. Nếu có dạng tương tự, PHẢI COPY CHÍNH XÁC.
-    "loaiCauHoi": "Tự suy luận (CHỈ ĐIỀN 1 TRONG 4: NLC, DS, TLN, TL)", // NLC (Trắc nghiệm), DS (Đúng/Sai), TLN (Trả lời ngắn), TL (Tự luận)
-    "mucDo": "Tự suy luận (CHỈ ĐIỀN 1, 2, 3 HOẶC 4)", // 1(Nhận biết), 2(Thông hiểu), 3(Vận dụng), 4(Vận dụng cao)
-    "noiDung": "Đề bài (BẮT BUỘC dùng LaTeX bọc trong $...$)",
-    "dapAnA": "Nội dung A", "dapAnB": "Nội dung B", "dapAnC": "Nội dung C", "dapAnD": "Nội dung D",
-    "dapAnDung": "A",
-    "loiGiai": "Phương pháp giải:\\n[Ghi phương pháp ở đây]\\n\\nLời giải:\\n[Ghi lời giải chi tiết ở đây. BẮT BUỘC dùng ký tự \\n để xuống dòng cho từng ý/bước giải để dễ đọc!]",
-    "isMultiLesson": false // CHỈ GÁN TRUE NẾU LÀ CÂU HỎI ĐÚNG/SAI (DS) MÀ CÁC Ý NHỎ NẰM Ở NHIỀU BÀI HỌC KHÁC NHAU. MẶC ĐỊNH LÀ FALSE.
-  }
-]
-  YÊU CẦU CỰC QUAN TRỌNG VỀ BÓC TÁCH: Bạn phải phân tích và bóc tách RẠCH RÒI 3 trường "chuyenDe" (Chương), "tenBai" (Bài học), và "dangToan" (Dạng toán). Tuyệt đối không gộp chung nội dung của chúng vào nhau. ĐẶC BIỆT CHÚ Ý TRƯỜNG "loaiCauHoi", nếu là bài tự luận chứng minh/tính toán (không có ABCD), BẮT BUỘC phải điền "TL".
-  
-  CƠ SỞ DỮ LIỆU ĐỐI CHIẾU: 
-  Bạn BẮT BUỘC PHẢI PHÂN LOẠI câu hỏi vào các Tên bài học và Dạng toán có trong danh sách dưới đây nếu có sự tương đồng. TUYỆT ĐỐI HẠN CHẾ TẠO MỚI (Chỉ được tự suy luận ra Dạng toán mới nếu trong danh sách thực sự không có dạng nào liên quan).
-  ${contextCategories}
-
-  LƯU Ý CỰC KỲ QUAN TRỌNG VỀ ĐỊNH DẠNG VÀ TÁCH CÂU: 
-  1. QUY TẮC TÁCH HOẶC GỘP Ý NHỎ: 
-     - TRƯỜNG HỢP TÁCH: Nếu một bài toán tự luận có các ý nhỏ (a, b, c...) hoàn toàn độc lập, không phụ thuộc nhau (VD: "Bài 1. Tính: a) 1+1 b) 2+2"). BẮT BUỘC TÁCH mỗi ý thành 1 object câu hỏi độc lập. Tự động ghép thêm "dẫn chung" vào từng ý.
-     - TRƯỜNG HỢP GỘP (KHÔNG TÁCH): Nếu các ý nhỏ có liên quan mật thiết, dùng chung dữ kiện gốc, ý b phụ thuộc ý a (VD: "Cho biểu thức P... a) Rút gọn b) Tìm P max"). BẮT BUỘC GỘP CHUNG toàn bộ đề bài và các ý nhỏ thành MỘT câu hỏi tự luận duy nhất. Giữ nguyên các ký hiệu "a)", "b)".
-  2. QUY ĐỊNH ĐỐI VỚI CÂU HỎI ĐÚNG/SAI (DS) ĐA BÀI HỌC:
-     Nếu câu hỏi DS có 4 ý thuộc về nhiều bài học khác nhau trong chương:
-     - Bạn HÃY ĐẶT "isMultiLesson": true.
-     - Bạn PHẢI gán "tenBai" là tên bài học xa nhất/mới nhất trong chương trình mà câu hỏi đề cập tới (Ví dụ ý A thuộc Bài 1, ý C thuộc Bài 3 => Gán "tenBai": "Bài 3").
-     - Bạn PHẢI gán "dangToan": "Toán tổng hợp".
-  3. GIỮ NGUYÊN DANH MỤC: Nếu trường "chuyenDe" hoặc "tenBai" trong mẫu JSON đã được điền sẵn một giá trị (Không phải chữ "Tự suy luận"), BẠN PHẢI GIỮ NGUYÊN CHÍNH XÁC CHUỖI ĐÓ, KHÔNG ĐƯỢC TỰ Ý CẮT BỎ CÁC TIỀN TỐ (như "Chương I.", "Bài 2.") HAY THAY ĐỔI BẤT KỲ KÝ TỰ NÀO.
-  4. ĐỊNH DẠNG CÔNG THỨC TOÁN: Mọi công thức Toán học PHẢI được bọc trong $...$ (ví dụ: $\\frac{1}{2}$). Bạn cứ viết lệnh LaTeX chuẩn, KHÔNG ĐƯỢC dùng 2 dấu gạch chéo (\\\\) để escape lệnh trừ khi xuống dòng.
-  5. NẾU TRONG ĐỀ CÓ HÌNH VẼ, ĐỒ THỊ, BẢNG BIẾN THIÊN, HOẶC BẢNG XÉT DẤU: Tuyệt đối KHÔNG cố gắng vẽ lại bằng Markdown, ASCII hay LaTeX. Thay vào đó, hãy chỉ ghi đúng chữ "[HÌNH VẼ]" hoặc "[BẢNG BIẾN THIÊN]" vào vị trí đó trong nội dung. Người dùng sẽ tự chèn ảnh vào sau.
-  6. ÉP BUỘC TRƯỜNG ĐÁP ÁN ĐÚNG: Bạn TUYỆT ĐỐI KHÔNG ĐƯỢC BỎ TRỐNG trường "dapAnDung".
-     - Với câu Trắc nghiệm (NLC): Phải điền A, B, C hoặc D.
-     - Với câu Đúng/Sai (DS): Phải điền chuỗi 4 ký tự Đ và S (VD: "Đ S Đ S" hoặc "ĐĐSĐ"). Hãy đọc kỹ đề bài và lời giải để suy ra. TUYỆT ĐỐI KHÔNG ĐƯỢC ĐỂ TRỐNG.
-  7. XÓA TIỀN TỐ CÂU HỎI: TUYỆT ĐỐI KHÔNG đưa các chữ như "Câu 1.", "Bài 2:", "VD 3", "Ví dụ 4." vào trong nội dung của trường "noiDung". Bạn phải tự động loại bỏ các cụm từ này ở đầu câu hỏi.
-  8. CÂU HỎI PHẢI ĐỘC LẬP VÀ TỰ CHỨA ĐẦY ĐỦ GIẢ THUYẾT: Mỗi câu hỏi sẽ được lưu RIÊNG BIỆT trong ngân hàng đề, nên TUYỆT ĐỐI KHÔNG ĐƯỢC viết kiểu tham chiếu ngữ cảnh bên ngoài như "Với các giả thiết như trong Ví dụ 5...", "Trong tình huống mở đầu...", "Trong Ví dụ 7...", "Theo bảng số liệu trên...". Nếu câu hỏi gốc trong ảnh có tham chiếu đến dữ kiện ở phần khác, BẠN PHẢI tự chép/nhúng đầy đủ toàn bộ dữ kiện cần thiết (số liệu, điều kiện, giả thuyết) vào trong "noiDung" để câu hỏi có thể hiểu được khi đứng một mình. Nếu không thể trích xuất đủ dữ kiện (ví dụ thiếu hình vẽ, bảng số liệu gốc không có trong ảnh), hãy BỎ QUA câu hỏi đó hoàn toàn, KHÔNG TẠO.
-  9. NHẬN DẠNG HÌNH ẢNH ĐI KÈM CÂU HỎI: Nếu trong ảnh có đồ thị, hình vẽ, bảng số liệu hoặc sơ đồ ĐI KÈM một câu hỏi, TUYỆT ĐỐI KHÔNG mô tả chi tiết làm lệch nội dung gốc của câu hỏi. Thay vào đó, bạn chỉ cần quét kỹ và thêm một dòng thông báo "[CÓ HÌNH ẢNH KÈM THEO]" vào cuối trường "noiDung". CHỈ ĐƯỢC PHÉP can thiệp/sửa đổi nội dung gốc của câu hỏi nếu bạn phát hiện câu hỏi bị sai đề, và trong trường hợp đó, PHẢI thêm một dòng thông báo "[CÂU HỎI CÓ THỂ BỊ SAI ĐỀ, ĐÃ SỬA LẠI]" để thông báo.`;
-
-      const parts = await Promise.all(aiImageFiles.map(async file => {
-        const base64Data = await fileToBase64(file);
-        return { inlineData: { data: base64Data, mimeType: file.type } };
-      }));
-
-      let success = false;
-      let lastErrorMsg = "";
-
-      for (const apiKey of keyData.keys) {
-        try {
-          const genAI = new GoogleGenerativeAI(apiKey);
-          const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
-          const result = await model.generateContent([ prompt, ...parts ]);
-          const text = result.response.text();
-          processExtractedJson(text);
-          success = true;
-          break;
-        } catch (e: any) {
-          console.warn("API Key lỗi, thử key tiếp theo...", e.message);
-          lastErrorMsg = e.message;
-        }
-      }
-
-      if (!success) {
-        throw new Error("Tất cả các API key đều bị lỗi hoặc quá tải (503). Vui lòng thử lại sau. Lỗi cuối: " + lastErrorMsg);
-      }
+      const newQuestions = await scanFilesForQuestions(aiImageFiles, scanCtx());
+      setParsedQuestions(prev => [...prev, ...newQuestions]);
+      alert(`Đã nhận diện thành công ${newQuestions.length} câu hỏi!`);
+      setAiImageFiles([]);
+      setManualJsonInput("");
     } catch (error: any) {
       console.error(error);
       alert("Lỗi AI: " + error.message);
@@ -471,52 +258,13 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     setIsSavingAll(true);
 
     try {
-      // 1. Tự động loại bỏ các câu bị trùng lặp (isDuplicate = true)
-      const validQuestions = parsedQuestions.filter(q => !q.isDuplicate);
-      const duplicatesCount = parsedQuestions.length - validQuestions.length;
+      const result = await saveQuestionsToBank(supabase, parsedQuestions);
 
-      if (validQuestions.length === 0) {
-        setIsSavingAll(false);
+      if (result.insertedCount === 0) {
         return alert("Tất cả câu hỏi đều bị trùng lặp với Ngân hàng! Không có câu hỏi mới nào được thêm.");
       }
 
-      // 2. Lọc và chuẩn bị lưu các danh mục mới (nếu có) từ các câu hỏi HỢP LỆ
-      const newCats = validQuestions.filter(q => q.isNewLesson || q.isNewMathForm).map(q => ({
-        grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson, math_form: q.math_form
-      }));
-      // Loại bỏ trùng lặp trong mảng newCats
-      const uniqueNewCats = Array.from(new Set(newCats.map(c => JSON.stringify(c)))).map(s => JSON.parse(s));
-      
-      if (uniqueNewCats.length > 0) {
-        const { error: catError } = await supabase.from('question_categories').insert(uniqueNewCats);
-        if (catError) console.error("Lỗi thêm danh mục mới:", catError);
-      }
-
-      const inserts = validQuestions.map(q => ({
-        question_id: `CH_${Date.now()}_${Math.random().toString(36).substring(2,6)}`,
-        grade: q.grade,
-        subject: q.subject,
-        topic: q.topic,
-        lesson: q.lesson,
-        math_form: q.math_form,
-        // Chốt về mã chuẩn ngay trước khi ghi, tránh lọt nhãn chữ vào CSDL làm hỏng bộ lọc
-        question_type: toBankType(q.question_type) ?? 'NLC',
-        difficulty: toDifficultyCode(q.difficulty) ?? '1',
-        content: q.content,
-        option_a: q.option_a,
-        option_b: q.option_b,
-        option_c: q.option_c,
-        option_d: q.option_d,
-        correct_answer: q.correct_answer,
-        explanation: q.explanation,
-        image_url: q.image_url,
-        usage_count: 0
-      }));
-
-      const { error } = await supabase.from('questions').insert(inserts);
-      if (error) throw error;
-
-      alert(`Đã lưu thành công ${inserts.length} câu vào Ngân hàng!${duplicatesCount > 0 ? `\n(Đã tự động loại bỏ ${duplicatesCount} câu trùng lặp)` : ''}`);
+      alert(`Đã lưu thành công ${result.insertedCount} câu vào Ngân hàng!${result.duplicatesSkipped > 0 ? `\n(Đã tự động loại bỏ ${result.duplicatesSkipped} câu trùng lặp)` : ''}`);
       router.push("/admin/questions");
     } catch (e: any) {
       console.error(e);

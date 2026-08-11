@@ -449,6 +449,9 @@ export default function QuestionsPage() {
                 <Link href="/admin/questions/editor" onClick={() => setIsAiMenuOpen(false)} className="flex items-center gap-2 px-4 py-2 hover:bg-orange-50 font-medium text-gray-700 text-sm">
                   <Database className="w-4 h-4 text-orange-600" /> Thêm hàng loạt (AI)
                 </Link>
+                <Link href="/admin/questions/batch-queue" onClick={() => setIsAiMenuOpen(false)} className="flex items-center gap-2 px-4 py-2 hover:bg-emerald-50 font-medium text-gray-700 text-sm">
+                  <Database className="w-4 h-4 text-emerald-600" /> Hàng đợi tự động (cả bộ tài liệu)
+                </Link>
                 <Link href="/admin/questions/generator" onClick={() => setIsAiMenuOpen(false)} className="flex items-center gap-2 px-4 py-2 hover:bg-purple-50 font-medium text-gray-700 text-sm">
                   <Wand2 className="w-4 h-4 text-purple-600" /> Sinh trắc nghiệm (AI)
                 </Link>
