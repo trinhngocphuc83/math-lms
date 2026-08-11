@@ -431,7 +431,10 @@ export default function ClassDetailsPage() {
 
       {/* SEARCH MODAL */}
       {isSearchModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        // z-[200]: phải cao hơn panel toàn màn hình của các tab trên mobile (z-[100])
+        // và thanh tiêu đề trong panel (z-[110]). Nếu thấp hơn, modal vẫn mở nhưng bị
+        // panel che kín trên điện thoại - người dùng tưởng nút bấm không hoạt động.
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm" onClick={() => setIsSearchModalOpen(false)} />
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl relative animate-in zoom-in-95 duration-200 overflow-hidden flex flex-col max-h-[80vh]">
             <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50 shrink-0">
@@ -558,7 +561,7 @@ export default function ClassDetailsPage() {
 
       {/* IMPORT EXCEL MODAL */}
       {isImportModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm" onClick={() => setIsImportModalOpen(false)} />
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-lg relative animate-in zoom-in-95 duration-200 overflow-hidden flex flex-col">
             <div className="p-6 border-b border-gray-100 flex justify-between items-center bg-gray-50">
@@ -632,7 +635,7 @@ export default function ClassDetailsPage() {
       )}
       {/* Modal Chỉnh sửa thông tin Học sinh */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in p-4">
+        <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/60 backdrop-blur-sm animate-in fade-in p-4">
           <div className="bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-in zoom-in-95 duration-200">
             <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between bg-gray-50/50">
               <h3 className="text-xl font-bold text-gray-800">Chỉnh sửa Học sinh</h3>
