@@ -77,6 +77,14 @@ export default function SecurityGuard() {
   useEffect(() => {
     if (shouldBypass) return; // Không cài đặt sự kiện nếu được bypass
 
+    // Thiết bị cảm ứng (điện thoại/tablet) không có Snipping Tool hay PrintScreen,
+    // nhưng sự kiện window blur/focus lại bị trình duyệt di động bắn rất thất thường
+    // (mở bàn phím ảo, mở input file, thanh địa chỉ ẩn/hiện khi cuộn, chuyển app...).
+    // Nếu bắn đúng lúc người dùng chạm nút, overlay đen z-index cực cao bên dưới sẽ
+    // vô tình "nuốt" mất cú chạm trước khi tới được nút, khiến nút bấm như không phản hồi.
+    const isTouchDevice = typeof window !== 'undefined' &&
+      window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+
     // 1. Chặn chuột phải (Context Menu)
     const handleContextMenu = (e: MouseEvent) => {
       e.preventDefault();
@@ -202,8 +210,10 @@ export default function SecurityGuard() {
     document.addEventListener("dragstart", handleDragStart);
     window.addEventListener("keydown", handleKey);
     window.addEventListener("keyup", handleKey); // Bắt cả keyup vì PrintScreen thường nổ ở keyup
-    window.addEventListener("blur", handleBlur);
-    window.addEventListener("focus", handleFocus);
+    if (!isTouchDevice) {
+      window.addEventListener("blur", handleBlur);
+      window.addEventListener("focus", handleFocus);
+    }
 
     // CSS để chặn Print (Media Print) và User Select
     const style = document.createElement('style');
@@ -246,8 +256,10 @@ export default function SecurityGuard() {
       document.removeEventListener("dragstart", handleDragStart);
       window.removeEventListener("keydown", handleKey);
       window.removeEventListener("keyup", handleKey);
-      window.removeEventListener("blur", handleBlur);
-      window.removeEventListener("focus", handleFocus);
+      if (!isTouchDevice) {
+        window.removeEventListener("blur", handleBlur);
+        window.removeEventListener("focus", handleFocus);
+      }
       window.removeEventListener("beforeprint", beforePrint);
       document.head.removeChild(style);
       

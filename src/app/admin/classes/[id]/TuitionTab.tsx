@@ -49,6 +49,18 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     fetchTuition();
   }, [classId, month, year]);
 
+  // Số buổi coi như "chưa học" do nhập học giữa tháng (dùng chung cho khởi tạo học phí
+  // mặc định & nút "Tự động trừ phí") - quy đổi số ngày trước khi nhập học ra số buổi
+  // học tương ứng theo tỷ lệ số ngày trong tháng.
+  const calcMissedSessionsFromEnrollment = (enrollmentDateStr: string | null | undefined, m: number, y: number, sessions: number) => {
+    if (!enrollmentDateStr) return 0;
+    const enrollDate = new Date(enrollmentDateStr);
+    if (enrollDate.getMonth() + 1 !== m || enrollDate.getFullYear() !== y) return 0;
+    const dayEnrolled = enrollDate.getDate();
+    const daysInMonth = new Date(y, m, 0).getDate();
+    return Math.round((dayEnrolled - 1) / daysInMonth * sessions);
+  };
+
   const fetchTuition = async () => {
     setLoading(true);
     const res = await getTuitionFees(classId, month, year);
@@ -79,13 +91,17 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
       });
     }
     
-    // Áp dụng học phí mặc định nếu chưa có record
+    // Áp dụng học phí mặc định nếu chưa có record - tự động giảm trừ luôn nếu học
+    // sinh nhập học giữa tháng (không cần đợi admin bấm "Tự động trừ phí")
     filteredEnrollments.forEach(en => {
       const stId = en.profiles.id;
       if (!tMap[stId]) {
         const prevFee = prevMap[stId]?.base_fee;
         const studentBaseFee = (prevFee !== undefined && prevFee !== null) ? prevFee : defaultFee;
-        tMap[stId] = { base_fee: studentBaseFee, old_debt: 0, discount: 0, paid_amount: 0, status: 'UNPAID' };
+        const feePerSession = studentBaseFee / (standardSessions || 1);
+        const missedSessions = calcMissedSessionsFromEnrollment(en.profiles.enrollment_date, month, year, standardSessions);
+        const autoDiscount = Math.round(missedSessions * feePerSession);
+        tMap[stId] = { base_fee: studentBaseFee, old_debt: 0, discount: autoDiscount, paid_amount: 0, status: 'UNPAID' };
       }
     });
 
@@ -167,26 +183,16 @@ export default function TuitionTab({ classId, classInfo, enrollments }: { classI
     
     setIsApplyingDeduct(true);
     const feePerSession = (classInfo?.tuition_fee || 0) / standardSessions;
-    const currentMonthDays = new Date(year, month, 0).getDate();
-    
+
     const newTuitionData = { ...tuitionData };
-    
+
     for (const en of filteredEnrollments) {
       const stId = en.profiles.id;
-      let missedBeforeEnrollment = 0;
-      
-      if (en.profiles.enrollment_date) {
-        const enrollDate = new Date(en.profiles.enrollment_date);
-        if (enrollDate.getMonth() + 1 === month && enrollDate.getFullYear() === year) {
-          const dayEnrolled = enrollDate.getDate();
-          missedBeforeEnrollment = Math.round((dayEnrolled - 1) / currentMonthDays * standardSessions);
-        }
-      }
-      
+      const current = newTuitionData[stId] || { base_fee: classInfo?.tuition_fee || 0, old_debt: 0, paid_amount: 0, status: 'UNPAID' };
+      const missedBeforeEnrollment = calcMissedSessionsFromEnrollment(en.profiles.enrollment_date, month, year, standardSessions);
+
       const totalMissed = teacherAbsent + missedBeforeEnrollment;
       const calculatedDiscount = Math.round(totalMissed * feePerSession);
-      
-      const current = newTuitionData[stId] || { base_fee: classInfo?.tuition_fee || 0, old_debt: 0, paid_amount: 0, status: 'UNPAID' };
       
       let newStatus = current.status;
       const totalDue = current.base_fee + current.old_debt - calculatedDiscount;
