@@ -4,13 +4,14 @@
 //
 // Khác với trang "Soạn câu hỏi 1 lượt" (chỉ xử lý được 1 lượt ảnh nhỏ trong 1
 // lần gọi AI), trang này nhận NGUYÊN 1 bộ tài liệu (không giới hạn số ảnh/PDF),
-// tự chia thành nhiều lô nhỏ, xử lý tuần tự, và tự lưu ngay các câu sạch vào
-// ngân hàng sau mỗi lô - không cần ngồi canh từng đợt như trước.
+// tự chia thành nhiều lô nhỏ và quét tuần tự - không cần ngồi canh từng đợt.
 //
-// Câu có hình vẽ/đồ thị được TỰ ĐỘNG CẮT ẢNH (dựa vào khung tọa độ AI xác định
-// trong cùng 1 lần quét), nhưng vẫn qua 1 bước xác nhận nhanh trước khi lưu -
-// vì ảnh cắt sai/nhầm hình có thể khiến câu hỏi bị sai lệch nghiêm trọng hơn cả
-// việc thiếu ảnh.
+// NGUYÊN TẮC AN TOÀN: mặc định KHÔNG có câu nào tự lưu thẳng vào ngân hàng.
+// Mọi câu quét được đều dừng ở "Bàn kiểm duyệt" để xem lại đầy đủ (nội dung có
+// render công thức thật, đáp án, lời giải, phân loại, và nhất là ẢNH ĐÃ CẮT đặt
+// cạnh ảnh trang gốc có khung đánh dấu để đối chiếu). Chỉ những câu được tích
+// chọn mới được lưu. Ai muốn chạy nhanh như trước thì bật lại tuỳ chọn "Tự lưu
+// câu sạch" ở phần cấu hình.
 //
 // Câu có Chương/Bài/Dạng toán không khớp danh mục có sẵn KHÔNG tự thêm âm thầm
 // (khác trang "Soạn câu hỏi 1 lượt") - phải qua panel "Duyệt danh mục mới",
@@ -19,6 +20,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { createClient } from "@/utils/supabase/client";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
+import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
+import SourceImageWithBox from "@/components/admin/SourceImageWithBox";
 import {
   type QuestionData,
   IMAGE_NEEDED_REGEX,
@@ -26,11 +29,11 @@ import {
   scanFilesForQuestions,
 } from "@/utils/aiQuestionScan";
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
-import { autoCropImage } from "@/utils/autoCropImage";
+import { autoCropImage, type NormalizedBox } from "@/utils/autoCropImage";
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, UploadCloud, Play, Pause, RotateCcw, X, CheckCircle2, AlertTriangle,
-  FileText, Image as ImageIcon, ListChecks, ChevronRight, Trash2, Pencil,
+  FileText, Image as ImageIcon, ListChecks, Trash2, Pencil, Crop, EyeOff, ShieldCheck,
 } from "lucide-react";
 
 // ===== Kiểu dữ liệu nội bộ =====
@@ -48,12 +51,20 @@ interface ScanChunk {
   pdfSizeWarning?: boolean;
 }
 
-type ReviewReason = 'duplicate' | 'missing_image' | 'image_auto_cropped';
+type ReviewReason = 'duplicate' | 'missing_image' | 'image_auto_cropped' | 'clean';
 
 interface ReviewItem {
   review_id: string;
   question: QuestionData;
   reasons: ReviewReason[];
+  /** Tích chọn để lưu vào ngân hàng */
+  selected: boolean;
+  /** Ảnh trang gốc chứa câu này - để đối chiếu vùng AI đã cắt */
+  sourceFile?: File;
+  /** Khung tọa độ AI xác định (thang 0-1000) */
+  cropBox?: NormalizedBox;
+  /** Đã bấm xác nhận ảnh tự cắt hay chưa */
+  imageConfirmed?: boolean;
 }
 
 interface WorkingQuestion {
@@ -61,6 +72,8 @@ interface WorkingQuestion {
   q: QuestionData;
   autoCropped: boolean;
   pendingCategoryKeys: string[];
+  sourceFile?: File;
+  cropBox?: NormalizedBox;
 }
 
 interface CategoryProposal {
@@ -77,10 +90,21 @@ const LEVEL_LABEL: Record<CategoryProposal['level'], string> = {
 };
 
 const REASON_LABEL: Record<ReviewReason, { label: string; color: string }> = {
+  clean: { label: 'Sạch - sẵn sàng lưu', color: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
   duplicate: { label: 'Trùng lặp', color: 'bg-red-100 text-red-700 border-red-200' },
   missing_image: { label: 'Thiếu ảnh', color: 'bg-orange-100 text-orange-700 border-orange-200' },
-  image_auto_cropped: { label: 'Ảnh đã tự cắt - xác nhận nhanh', color: 'bg-blue-100 text-blue-700 border-blue-200' },
+  image_auto_cropped: { label: 'Ảnh tự cắt - cần đối chiếu', color: 'bg-blue-100 text-blue-700 border-blue-200' },
 };
+
+type ReviewFilter = 'all' | ReviewReason;
+
+const FILTER_TABS: { key: ReviewFilter; label: string }[] = [
+  { key: 'all', label: 'Tất cả' },
+  { key: 'image_auto_cropped', label: 'Ảnh tự cắt' },
+  { key: 'missing_image', label: 'Thiếu ảnh' },
+  { key: 'duplicate', label: 'Trùng lặp' },
+  { key: 'clean', label: 'Sạch' },
+];
 
 const CHUNK_SIZE = 7;
 const PDF_SIZE_WARNING_BYTES = 15 * 1024 * 1024;
@@ -124,6 +148,35 @@ function buildChunks(files: File[]): ScanChunk[] {
   flushBuffer();
 
   return chunks;
+}
+
+/** Dựng danh sách phương án/mệnh đề để xem trước theo đúng loại câu hỏi. */
+function buildStatements(q: QuestionData): PreviewStatement[] {
+  if (q.question_type === 'NLC') {
+    return ['A', 'B', 'C', 'D']
+      .map((opt) => ({
+        key: opt,
+        label: opt,
+        content: ((q as any)[`option_${opt.toLowerCase()}`] as string) || '',
+        isCorrect: q.correct_answer === opt,
+      }))
+      .filter((s) => s.content);
+  }
+  if (q.question_type === 'DS') {
+    return ['a', 'b', 'c', 'd']
+      .map((opt, idx) => {
+        const ch = q.correct_answer?.charAt(idx);
+        const isTrue = ch === 'D' || ch === 'T' ? true : ch === 'S' || ch === 'F' ? false : undefined;
+        return {
+          key: opt,
+          label: opt,
+          content: ((q as any)[`option_${opt}`] as string) || '',
+          isTrue,
+        };
+      })
+      .filter((s) => s.content);
+  }
+  return [];
 }
 
 export default function BatchQueuePage() {
@@ -181,12 +234,20 @@ export default function BatchQueuePage() {
   const stopRequestedRef = useRef(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const [autoSavedTotal, setAutoSavedTotal] = useState(0);
+  /** Mặc định TẮT: mọi câu đều phải qua bàn kiểm duyệt trước khi vào ngân hàng. */
+  const [autoSaveClean, setAutoSaveClean] = useState(false);
+  const autoSaveCleanRef = useRef(false);
+  useEffect(() => { autoSaveCleanRef.current = autoSaveClean; }, [autoSaveClean]);
+
+  const [savedTotal, setSavedTotal] = useState(0);
   const [reviewQueue, setReviewQueue] = useState<ReviewItem[]>([]);
   const [waitingForCategory, setWaitingForCategory] = useState<WorkingQuestion[]>([]);
   const [pendingProposals, setPendingProposals] = useState<Record<string, CategoryProposal>>({});
-  const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [isReviewOpen, setIsReviewOpen] = useState(false);
+  const [reviewFilter, setReviewFilter] = useState<ReviewFilter>('all');
+  const [expandedIds, setExpandedIds] = useState<Set<string>>(new Set());
   const [editingReviewId, setEditingReviewId] = useState<string | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleFilePick = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
@@ -199,7 +260,7 @@ export default function BatchQueuePage() {
     if (allFiles.length === 0) return alert("Vui lòng chọn ảnh/PDF trước!");
     setChunks(buildChunks(allFiles));
     setCurrentChunkIndex(-1);
-    setAutoSavedTotal(0);
+    setSavedTotal(0);
     setReviewQueue([]);
     setWaitingForCategory([]);
     setPendingProposals({});
@@ -228,7 +289,7 @@ export default function BatchQueuePage() {
     });
   };
 
-  // Phân loại các câu ĐÃ SẴN SÀNG (không còn chờ danh mục nào) -> tự lưu hoặc vào hàng chờ xem lại
+  /** Phân loại các câu ĐÃ SẴN SÀNG (không còn chờ danh mục) -> bàn kiểm duyệt (hoặc tự lưu nếu bật tuỳ chọn). */
   const routeReadyQuestions = async (ready: WorkingQuestion[]) => {
     if (ready.length === 0) return;
     const toAutoSave: QuestionData[] = [];
@@ -240,21 +301,32 @@ export default function BatchQueuePage() {
       if (w.autoCropped) reasons.push('image_auto_cropped');
       else if (!w.q.image_url && IMAGE_NEEDED_REGEX.test(w.q.content || '')) reasons.push('missing_image');
 
-      if (reasons.length === 0) toAutoSave.push(w.q);
-      else toReview.push({ review_id: w.id, question: w.q, reasons });
+      const isClean = reasons.length === 0;
+
+      // Chỉ câu thật sự sạch mới đủ điều kiện tự lưu, và chỉ khi người dùng bật tuỳ chọn
+      if (isClean && autoSaveCleanRef.current) {
+        toAutoSave.push(w.q);
+        continue;
+      }
+
+      toReview.push({
+        review_id: w.id,
+        question: w.q,
+        reasons: isClean ? ['clean'] : reasons,
+        selected: !w.q.isDuplicate, // câu trùng lặp không tích sẵn
+        sourceFile: w.sourceFile,
+        cropBox: w.cropBox,
+        imageConfirmed: false,
+      });
     }
 
     if (toAutoSave.length > 0) {
       try {
         const result = await saveQuestionsToBank(supabase, toAutoSave);
-        setAutoSavedTotal((prev) => prev + result.insertedCount);
-        // Câu bị trùng phát hiện muộn (hiếm, do 2 câu giống nhau trong cùng đợt) vẫn cần xem lại
-        if (result.duplicatesSkipped > 0) {
-          // saveQuestionsToBank tự lọc trùng theo isDuplicate đã gắn sẵn nên trường hợp này không xảy ra ở đây
-        }
+        setSavedTotal((prev) => prev + result.insertedCount);
       } catch (e: any) {
-        // Lỗi lưu (hiếm) - đưa tất cả về hàng chờ xem lại để không mất dữ liệu
-        toAutoSave.forEach((q) => toReview.push({ review_id: q.temp_id!, question: q, reasons: [] }));
+        // Lỗi lưu (hiếm) - đưa về bàn kiểm duyệt để không mất dữ liệu
+        toAutoSave.forEach((q) => toReview.push({ review_id: q.temp_id!, question: q, reasons: ['clean'], selected: true }));
       }
     }
     if (toReview.length > 0) {
@@ -270,6 +342,9 @@ export default function BatchQueuePage() {
 
       for (const q of questions) {
         let autoCropped = false;
+        let sourceFile: File | undefined;
+        let cropBox: NormalizedBox | undefined;
+
         if (chunk.kind === 'images' && q.viTriHinhAnh && !q.image_url) {
           const srcFile = chunk.files[q.viTriHinhAnh.fileIndex];
           if (srcFile) {
@@ -278,10 +353,19 @@ export default function BatchQueuePage() {
               q.image_url = url;
               q.content = q.content.replace(IMAGE_PLACEHOLDER_STRIP_REGEX, '').replace(/\s{2,}/g, ' ').trim();
               autoCropped = true;
+              sourceFile = srcFile;
+              cropBox = q.viTriHinhAnh;
             } catch (e) {
               // Cắt lỗi (khung tọa độ không hợp lý...) - để nguyên, coi như câu thiếu ảnh bình thường
             }
           }
+        }
+        // Câu thiếu ảnh nhưng AI vẫn chỉ được trang nào (chỉ hỏng ở bước cắt) thì
+        // giữ lại trang đó để người duyệt tự cắt tay. Nếu AI không xác định được
+        // trang nào thì để trống - thà không hiện còn hơn hiện nhầm trang khác.
+        if (!sourceFile && chunk.kind === 'images' && typeof q.viTriHinhAnh?.fileIndex === 'number') {
+          sourceFile = chunk.files[q.viTriHinhAnh.fileIndex];
+          cropBox = q.viTriHinhAnh;
         }
 
         const pendingKeys: string[] = [];
@@ -289,7 +373,7 @@ export default function BatchQueuePage() {
         if (q.isNewLesson) pendingKeys.push(proposalKey('lesson', q.lesson));
         if (q.isNewMathForm) pendingKeys.push(proposalKey('math_form', q.math_form));
 
-        working.push({ id: q.temp_id!, q, autoCropped, pendingCategoryKeys: pendingKeys });
+        working.push({ id: q.temp_id!, q, autoCropped, pendingCategoryKeys: pendingKeys, sourceFile, cropBox });
       }
 
       const waiting = working.filter((w) => w.pendingCategoryKeys.length > 0);
@@ -301,11 +385,12 @@ export default function BatchQueuePage() {
       }
       await routeReadyQuestions(ready);
 
+      const cleanCount = ready.filter((w) => !w.q.isDuplicate && !w.autoCropped && !(!w.q.image_url && IMAGE_NEEDED_REGEX.test(w.q.content || ''))).length;
       updateChunk(index, {
         status: 'success',
         foundCount: questions.length,
-        autoSavedCount: ready.filter((w) => !w.q.isDuplicate && !w.autoCropped && !(!w.q.image_url && IMAGE_NEEDED_REGEX.test(w.q.content || ''))).length,
-        reviewCount: ready.length - (ready.filter((w) => !w.q.isDuplicate && !w.autoCropped && !(!w.q.image_url && IMAGE_NEEDED_REGEX.test(w.q.content || ''))).length) + waiting.length,
+        autoSavedCount: autoSaveCleanRef.current ? cleanCount : 0,
+        reviewCount: questions.length - (autoSaveCleanRef.current ? cleanCount : 0),
       });
     } catch (e: any) {
       updateChunk(index, { status: 'error', errorMessage: e.message || 'Lỗi không xác định - cần thử lại' });
@@ -317,7 +402,6 @@ export default function BatchQueuePage() {
     stopRequestedRef.current = false;
     for (let i = startIndex; i < chunks.length; i++) {
       if (stopRequestedRef.current) break;
-      // Đọc trạng thái mới nhất (chunks state có thể đã cập nhật do resume)
       const current = chunks[i];
       if (current.status === 'success') continue;
       setCurrentChunkIndex(i);
@@ -389,9 +473,19 @@ export default function BatchQueuePage() {
     if (nowReady.length > 0) await routeReadyQuestions(nowReady);
   };
 
-  // ===== Hàng chờ xem lại =====
+  // ===== Bàn kiểm duyệt =====
+  const patchReviewItem = (reviewId: string, patch: Partial<ReviewItem>) => {
+    setReviewQueue((prev) => prev.map((r) => (r.review_id === reviewId ? { ...r, ...patch } : r)));
+  };
+
   const updateReviewQuestion = (reviewId: string, updated: QuestionData) => {
-    setReviewQueue((prev) => prev.map((r) => (r.review_id === reviewId ? { ...r, question: updated } : r)));
+    setReviewQueue((prev) => prev.map((r) => {
+      if (r.review_id !== reviewId) return r;
+      // Người dùng đã tự cắt/sửa ảnh trong trình soạn thảo -> coi như đã đối chiếu xong
+      const imageChanged = updated.image_url !== r.question.image_url;
+      const reasons = imageChanged ? r.reasons.filter((rs) => rs !== 'missing_image') : r.reasons;
+      return { ...r, question: updated, reasons, imageConfirmed: imageChanged ? true : r.imageConfirmed };
+    }));
   };
 
   const removeReviewItem = (reviewId: string) => {
@@ -402,22 +496,59 @@ export default function BatchQueuePage() {
     setReviewQueue((prev) => prev.map((r) => {
       if (r.review_id !== reviewId) return r;
       const updatedQuestion = keepImage ? r.question : { ...r.question, image_url: '' };
-      const remainingReasons = r.reasons.filter((rs) => rs !== 'image_auto_cropped');
-      return { ...r, question: updatedQuestion, reasons: remainingReasons };
+      return { ...r, question: updatedQuestion, imageConfirmed: true };
     }));
   };
 
-  const handleSaveReviewQueue = async () => {
-    const toSave = reviewQueue.filter((r) => !r.reasons.includes('duplicate'));
-    if (toSave.length === 0) return alert("Không có câu nào để lưu (còn lại toàn câu trùng lặp).");
+  const toggleExpanded = (reviewId: string) => {
+    setExpandedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(reviewId)) next.delete(reviewId);
+      else next.add(reviewId);
+      return next;
+    });
+  };
+
+  const matchesFilter = (item: ReviewItem, filter: ReviewFilter) =>
+    filter === 'all' ? true : item.reasons.includes(filter);
+
+  const filteredReview = reviewQueue.filter((r) => matchesFilter(r, reviewFilter));
+  const selectedItems = reviewQueue.filter((r) => r.selected);
+  /** Ảnh tự cắt đã chọn lưu nhưng chưa bấm đối chiếu - cần cảnh báo trước khi lưu */
+  const unconfirmedCropCount = selectedItems.filter((r) => r.reasons.includes('image_auto_cropped') && !r.imageConfirmed).length;
+
+  const setSelectionForFiltered = (selected: boolean) => {
+    const ids = new Set(filteredReview.map((r) => r.review_id));
+    setReviewQueue((prev) => prev.map((r) => (ids.has(r.review_id) ? { ...r, selected } : r)));
+  };
+
+  const handleSaveSelected = async () => {
+    if (selectedItems.length === 0) return alert("Chưa chọn câu nào để lưu.");
+    if (unconfirmedCropCount > 0) {
+      const ok = confirm(`Còn ${unconfirmedCropCount} câu có ảnh tự cắt mà thầy chưa bấm đối chiếu.\n\nẢnh cắt sai có thể làm câu hỏi sai lệch nghiêm trọng. Vẫn lưu?`);
+      if (!ok) return;
+    }
+    const dupSelected = selectedItems.filter((r) => r.reasons.includes('duplicate')).length;
+    if (dupSelected > 0) {
+      const ok = confirm(`Trong số đã chọn có ${dupSelected} câu bị đánh dấu TRÙNG với câu đã có trong ngân hàng.\n\nVẫn lưu (ngân hàng sẽ có 2 bản giống nhau)?`);
+      if (!ok) return;
+    }
+    if (!confirm(`Lưu ${selectedItems.length} câu đã chọn vào Ngân hàng câu hỏi?`)) return;
+
+    setIsSaving(true);
     try {
-      const result = await saveQuestionsToBank(supabase, toSave.map((r) => r.question));
-      setAutoSavedTotal((prev) => prev + result.insertedCount);
-      setReviewQueue((prev) => prev.filter((r) => r.reasons.includes('duplicate')));
-      alert(`Đã lưu ${result.insertedCount} câu từ hàng chờ xem lại vào Ngân hàng!`);
+      // Bỏ cờ isDuplicate: thầy đã tự tay tích chọn từng câu ở bàn kiểm duyệt nên
+      // tôn trọng lựa chọn đó, không để hàm lưu âm thầm loại bớt câu đã chọn.
+      const payload = selectedItems.map((r) => ({ ...r.question, isDuplicate: false }));
+      const result = await saveQuestionsToBank(supabase, payload);
+      setSavedTotal((prev) => prev + result.insertedCount);
+      const savedIds = new Set(selectedItems.map((r) => r.review_id));
+      setReviewQueue((prev) => prev.filter((r) => !savedIds.has(r.review_id)));
+      alert(`Đã lưu ${result.insertedCount} câu vào Ngân hàng!`);
     } catch (e: any) {
       alert("Lỗi khi lưu: " + e.message);
     }
+    setIsSaving(false);
   };
 
   const editingReviewItem = reviewQueue.find((r) => r.review_id === editingReviewId) || null;
@@ -436,7 +567,7 @@ export default function BatchQueuePage() {
         <h1 className="text-2xl font-black text-gray-800 flex items-center gap-2">
           <ListChecks className="w-7 h-7 text-emerald-600" /> Hàng đợi tự động - Bóc tách câu hỏi vào Ngân hàng
         </h1>
-        <p className="text-gray-500 text-sm mt-1">Tải lên cả bộ tài liệu, hệ thống tự chia lô, quét, tự lưu câu sạch và gom câu cần xem lại. Giữ tab này mở trong lúc chạy.</p>
+        <p className="text-gray-500 text-sm mt-1">Tải lên cả bộ tài liệu, hệ thống tự chia lô và quét. Mọi câu đều dừng ở Bàn kiểm duyệt để thầy xem trước khi lưu. Giữ tab này mở trong lúc chạy.</p>
       </div>
 
       {/* Phân loại gốc */}
@@ -464,6 +595,16 @@ export default function BatchQueuePage() {
             {uniqueLessons.map((l) => <option key={l as string} value={l as string}>{l as string}</option>)}
           </select>
         </div>
+
+        <label className="mt-4 flex items-start gap-2.5 cursor-pointer bg-gray-50 border border-gray-200 rounded-xl p-3">
+          <input type="checkbox" checked={autoSaveClean} onChange={(e) => setAutoSaveClean(e.target.checked)} className="mt-0.5 w-4 h-4 accent-emerald-600" />
+          <span className="text-sm">
+            <b className="text-gray-800">Tự lưu thẳng các câu sạch (chạy nhanh, không cần duyệt)</b>
+            <span className="block text-xs text-gray-500 mt-0.5">
+              Mặc định TẮT - mọi câu đều dừng ở Bàn kiểm duyệt để thầy kiểm tra. Chỉ bật khi cần chạy nhanh và chấp nhận không xem trước những câu không có dấu hiệu bất thường.
+            </span>
+          </span>
+        </label>
       </div>
 
       {/* Chọn file + xây hàng đợi */}
@@ -518,7 +659,7 @@ export default function BatchQueuePage() {
                     ? `Đã xử lý xong ${chunks.length} lô - tìm được ${totalFound} câu`
                     : `${chunks.length} lô sẵn sàng`}
               </p>
-              <p className="text-xs text-gray-400 mt-0.5">Đã tự lưu vào ngân hàng sẽ không mất; các câu chờ duyệt và lô chưa quét sẽ mất nếu đóng tab.</p>
+              <p className="text-xs text-gray-400 mt-0.5">Câu đã lưu vào ngân hàng sẽ không mất; các câu đang chờ duyệt và lô chưa quét sẽ mất nếu đóng tab.</p>
             </div>
             <div className="flex items-center gap-2">
               {!isQueueRunning && currentChunkIndex === -1 && totalProcessedChunks === 0 && (
@@ -563,7 +704,11 @@ export default function BatchQueuePage() {
                   {c.pdfSizeWarning && <span className="text-amber-600 text-[10px] font-bold shrink-0">⚠ PDF lớn</span>}
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  {c.status === 'success' && <span className="text-emerald-700 text-xs font-bold">{c.foundCount} câu · {c.autoSavedCount} tự lưu · {c.reviewCount} chờ xử lý</span>}
+                  {c.status === 'success' && (
+                    <span className="text-emerald-700 text-xs font-bold">
+                      {c.foundCount} câu{c.autoSavedCount ? ` · ${c.autoSavedCount} tự lưu` : ''}{c.reviewCount ? ` · ${c.reviewCount} chờ duyệt` : ''}
+                    </span>
+                  )}
                   {c.status === 'error' && (
                     <>
                       <span className="text-red-600 text-xs">{c.errorMessage}</span>
@@ -599,19 +744,19 @@ export default function BatchQueuePage() {
         </div>
       )}
 
-      {/* Thanh trạng thái tổng + mở hàng chờ xem lại */}
+      {/* Thanh trạng thái tổng + mở bàn kiểm duyệt */}
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 flex items-center justify-between flex-wrap gap-3">
         <div className="flex gap-6 text-sm">
-          <div><span className="text-gray-400">Đã tự lưu:</span> <b className="text-emerald-600 text-lg">{autoSavedTotal}</b></div>
+          <div><span className="text-gray-400">Đã lưu vào ngân hàng:</span> <b className="text-emerald-600 text-lg">{savedTotal}</b></div>
           <div><span className="text-gray-400">Đang chờ danh mục:</span> <b className="text-amber-600 text-lg">{waitingForCategory.length}</b></div>
-          <div><span className="text-gray-400">Cần xem lại:</span> <b className="text-red-600 text-lg">{reviewQueue.length}</b></div>
+          <div><span className="text-gray-400">Chờ kiểm duyệt:</span> <b className="text-indigo-600 text-lg">{reviewQueue.length}</b></div>
         </div>
         <button
-          onClick={() => setIsReviewModalOpen(true)}
+          onClick={() => setIsReviewOpen(true)}
           disabled={reviewQueue.length === 0}
-          className="bg-indigo-600 text-white px-4 py-2.5 rounded-lg font-bold text-sm disabled:opacity-40 hover:bg-indigo-700"
+          className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-bold text-sm disabled:opacity-40 hover:bg-indigo-700 flex items-center gap-2"
         >
-          Xem hàng chờ duyệt ({reviewQueue.length})
+          <ShieldCheck className="w-4 h-4" /> Mở bàn kiểm duyệt ({reviewQueue.length})
         </button>
       </div>
 
@@ -621,8 +766,8 @@ export default function BatchQueuePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
             <div className="bg-gray-50 rounded-xl p-3"><div className="text-gray-400 text-xs">Số lô đã xử lý</div><div className="text-xl font-black">{chunks.length}</div></div>
             <div className="bg-gray-50 rounded-xl p-3"><div className="text-gray-400 text-xs">Số câu tìm được</div><div className="text-xl font-black">{totalFound}</div></div>
-            <div className="bg-emerald-50 rounded-xl p-3"><div className="text-emerald-600 text-xs">Đã tự lưu</div><div className="text-xl font-black text-emerald-700">{autoSavedTotal}</div></div>
-            <div className="bg-red-50 rounded-xl p-3"><div className="text-red-500 text-xs">Cần xem lại</div><div className="text-xl font-black text-red-700">{reviewQueue.length}</div></div>
+            <div className="bg-emerald-50 rounded-xl p-3"><div className="text-emerald-600 text-xs">Đã lưu</div><div className="text-xl font-black text-emerald-700">{savedTotal}</div></div>
+            <div className="bg-indigo-50 rounded-xl p-3"><div className="text-indigo-500 text-xs">Chờ kiểm duyệt</div><div className="text-xl font-black text-indigo-700">{reviewQueue.length}</div></div>
           </div>
           {Object.keys(reasonCounts).length > 0 && (
             <div className="mt-3 flex gap-2 flex-wrap">
@@ -636,53 +781,151 @@ export default function BatchQueuePage() {
         </div>
       )}
 
-      {/* Modal Hàng chờ xem lại */}
-      {isReviewModalOpen && (
-        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm p-4 flex justify-center items-center">
-          <div className="bg-white rounded-2xl w-full max-w-6xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100 bg-gray-50/50 shrink-0">
-              <h2 className="text-lg font-black text-gray-800">Hàng chờ xem lại ({reviewQueue.length})</h2>
-              <button onClick={() => setIsReviewModalOpen(false)} className="p-2 text-gray-400 hover:text-red-600 rounded-full">
-                <X className="w-5 h-5" />
-              </button>
+      {/* ===== BÀN KIỂM DUYỆT ===== */}
+      {isReviewOpen && (
+        <div className="fixed inset-0 z-[200] bg-black/60 backdrop-blur-sm p-2 md:p-4 flex justify-center items-center">
+          <div className="bg-white rounded-2xl w-full max-w-[1400px] h-[95vh] flex flex-col shadow-2xl overflow-hidden">
+            {/* Đầu bàn duyệt */}
+            <div className="px-5 py-3 border-b border-gray-100 bg-gray-50/70 shrink-0">
+              <div className="flex items-center justify-between gap-3 flex-wrap">
+                <h2 className="text-lg font-black text-gray-800 flex items-center gap-2">
+                  <ShieldCheck className="w-5 h-5 text-indigo-600" /> Bàn kiểm duyệt ({reviewQueue.length} câu)
+                </h2>
+                <button onClick={() => setIsReviewOpen(false)} className="p-2 text-gray-400 hover:text-red-600 rounded-full">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="flex items-center gap-2 mt-3 flex-wrap">
+                {FILTER_TABS.map((tab) => {
+                  const count = tab.key === 'all' ? reviewQueue.length : (reasonCounts[tab.key] || 0);
+                  return (
+                    <button
+                      key={tab.key}
+                      onClick={() => setReviewFilter(tab.key)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors ${
+                        reviewFilter === tab.key ? 'bg-indigo-600 text-white border-indigo-600' : 'bg-white text-gray-600 border-gray-200 hover:bg-gray-50'
+                      }`}
+                    >
+                      {tab.label} ({count})
+                    </button>
+                  );
+                })}
+                <div className="w-px h-5 bg-gray-200 mx-1" />
+                <button onClick={() => setSelectionForFiltered(true)} className="text-xs font-bold text-indigo-600 hover:underline">Chọn tất cả</button>
+                <button onClick={() => setSelectionForFiltered(false)} className="text-xs font-bold text-gray-500 hover:underline">Bỏ chọn tất cả</button>
+              </div>
             </div>
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-gray-50/50">
-              {reviewQueue.length === 0 && <p className="text-center text-gray-400 py-10">Hàng chờ trống.</p>}
-              {reviewQueue.map((item) => (
-                <div key={item.review_id} className="bg-white border border-gray-200 rounded-xl p-4">
-                  <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
-                    <div className="flex gap-1.5 flex-wrap">
-                      {item.reasons.map((reason) => (
-                        <span key={reason} className={`px-2 py-0.5 rounded text-[11px] font-bold border ${REASON_LABEL[reason].color}`}>{REASON_LABEL[reason].label}</span>
-                      ))}
-                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-gray-100 text-gray-600">{bankTypeLabel(item.question.question_type)} · {difficultyLabel(item.question.difficulty)}</span>
-                    </div>
-                    <div className="flex items-center gap-2 shrink-0">
-                      <button onClick={() => setEditingReviewId(item.review_id)} className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:bg-indigo-50 px-2 py-1 rounded-lg border border-indigo-200">
-                        <Pencil className="w-3.5 h-3.5" /> Sửa
-                      </button>
-                      <button onClick={() => removeReviewItem(item.review_id)} className="flex items-center gap-1 text-xs font-bold text-red-600 hover:bg-red-50 px-2 py-1 rounded-lg border border-red-200">
-                        <Trash2 className="w-3.5 h-3.5" /> Xóa
-                      </button>
-                    </div>
-                  </div>
-                  <p className="text-sm text-gray-700 line-clamp-3">{item.question.content}</p>
-                  {item.reasons.includes('image_auto_cropped') && item.question.image_url && (
-                    <div className="mt-3 flex items-center gap-3 bg-blue-50/60 border border-blue-100 rounded-lg p-2.5">
-                      <img src={item.question.image_url} alt="Ảnh đã tự cắt" className="h-20 w-auto rounded border border-blue-200 shrink-0" />
-                      <div className="flex flex-col gap-1.5">
-                        <button onClick={() => confirmAutoCroppedImage(item.review_id, true)} className="text-xs font-bold bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-lg hover:bg-emerald-200 text-left">✅ Đồng ý dùng ảnh này</button>
-                        <button onClick={() => setEditingReviewId(item.review_id)} className="text-xs font-bold bg-white border border-gray-300 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-50 text-left">✂️ Cắt lại thủ công</button>
-                        <button onClick={() => confirmAutoCroppedImage(item.review_id, false)} className="text-xs font-bold bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 text-left">❌ Không có ảnh</button>
+
+            {/* Danh sách câu hỏi */}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/60">
+              {filteredReview.length === 0 && (
+                <p className="text-center text-gray-400 py-16">Không có câu nào trong mục này.</p>
+              )}
+              {filteredReview.map((item) => {
+                const q = item.question;
+                const expanded = expandedIds.has(item.review_id);
+                const needsCropCheck = item.reasons.includes('image_auto_cropped');
+                return (
+                  <div
+                    key={item.review_id}
+                    className={`bg-white border-2 rounded-2xl overflow-hidden transition-colors ${
+                      item.selected ? 'border-emerald-300' : 'border-gray-200 opacity-70'
+                    }`}
+                  >
+                    {/* Thanh đầu thẻ */}
+                    <div className="flex items-center justify-between gap-3 px-4 py-2.5 bg-gray-50/80 border-b border-gray-100 flex-wrap">
+                      <label className="flex items-center gap-2.5 cursor-pointer">
+                        <input
+                          type="checkbox"
+                          checked={item.selected}
+                          onChange={(e) => patchReviewItem(item.review_id, { selected: e.target.checked })}
+                          className="w-4 h-4 accent-emerald-600"
+                        />
+                        <span className="text-xs font-bold text-gray-600">{item.selected ? 'Sẽ lưu' : 'Bỏ qua'}</span>
+                      </label>
+
+                      <div className="flex gap-1.5 flex-wrap flex-1 min-w-0">
+                        {item.reasons.map((reason) => (
+                          <span key={reason} className={`px-2 py-0.5 rounded text-[11px] font-bold border ${REASON_LABEL[reason].color}`}>
+                            {REASON_LABEL[reason].label}
+                          </span>
+                        ))}
+                        {needsCropCheck && item.imageConfirmed && (
+                          <span className="px-2 py-0.5 rounded text-[11px] font-bold border bg-emerald-100 text-emerald-700 border-emerald-200">✓ Đã đối chiếu ảnh</span>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-2 shrink-0">
+                        <button onClick={() => toggleExpanded(item.review_id)} className="text-xs font-bold text-gray-600 hover:bg-gray-100 px-2 py-1 rounded-lg border border-gray-200">
+                          {expanded ? 'Thu gọn' : 'Xem đáp án & lời giải'}
+                        </button>
+                        <button onClick={() => setEditingReviewId(item.review_id)} className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:bg-indigo-50 px-2 py-1 rounded-lg border border-indigo-200">
+                          <Pencil className="w-3.5 h-3.5" /> Sửa
+                        </button>
+                        <button onClick={() => removeReviewItem(item.review_id)} className="flex items-center gap-1 text-xs font-bold text-red-600 hover:bg-red-50 px-2 py-1 rounded-lg border border-red-200">
+                          <Trash2 className="w-3.5 h-3.5" /> Xóa
+                        </button>
                       </div>
                     </div>
-                  )}
-                </div>
-              ))}
+
+                    {/* Phân loại */}
+                    <div className="px-4 pt-3 flex gap-1.5 flex-wrap text-[11px]">
+                      <span className="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold">Lớp {q.grade} · {q.subject}</span>
+                      <span className="px-2 py-0.5 rounded bg-purple-50 text-purple-700 font-bold">{q.topic || '(chưa có chương)'}</span>
+                      <span className="px-2 py-0.5 rounded bg-teal-50 text-teal-700 font-bold">{q.lesson || '(chưa có bài)'}</span>
+                      <span className="px-2 py-0.5 rounded bg-pink-50 text-pink-700 font-bold">{q.math_form || '(chưa có dạng)'}</span>
+                      <span className="px-2 py-0.5 rounded bg-gray-100 text-gray-600 font-bold">{bankTypeLabel(q.question_type)} · {difficultyLabel(q.difficulty)}</span>
+                    </div>
+
+                    {/* Nội dung câu hỏi - render công thức thật */}
+                    <div className="p-4">
+                      <QuestionPreviewCard
+                        content={q.content}
+                        imageUrl={q.image_url}
+                        statements={expanded ? buildStatements(q) : []}
+                        statementsLayout={q.question_type === 'DS' ? 'truefalse' : 'choice'}
+                        correctAnswerDisplay={expanded ? q.correct_answer : undefined}
+                        explanation={expanded ? q.explanation : undefined}
+                      />
+
+                      {/* Đối chiếu vùng cắt ảnh */}
+                      {needsCropCheck && (
+                        <CropReviewPanel
+                          item={item}
+                          onConfirm={() => confirmAutoCroppedImage(item.review_id, true)}
+                          onReject={() => confirmAutoCroppedImage(item.review_id, false)}
+                          onManualCrop={() => setEditingReviewId(item.review_id)}
+                        />
+                      )}
+
+                      {/* Câu thiếu ảnh - cho xem ảnh trang gốc để tự cắt */}
+                      {item.reasons.includes('missing_image') && (
+                        <MissingImagePanel item={item} onManualCrop={() => setEditingReviewId(item.review_id)} />
+                      )}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-            <div className="p-4 border-t border-gray-100 bg-white flex justify-between items-center shrink-0">
-              <span className="text-sm text-gray-500">{reviewQueue.filter((r) => !r.reasons.includes('duplicate')).length} câu sẽ được lưu (bỏ qua câu trùng lặp)</span>
-              <button onClick={handleSaveReviewQueue} className="bg-emerald-600 text-white px-5 py-2.5 rounded-lg font-bold hover:bg-emerald-700">Lưu vào ngân hàng</button>
+
+            {/* Chân bàn duyệt */}
+            <div className="p-4 border-t border-gray-100 bg-white flex justify-between items-center gap-3 shrink-0 flex-wrap">
+              <div className="text-sm">
+                <span className="font-black text-emerald-600 text-lg">{selectedItems.length}</span>
+                <span className="text-gray-500"> / {reviewQueue.length} câu được chọn để lưu</span>
+                {unconfirmedCropCount > 0 && (
+                  <span className="ml-3 text-amber-600 font-bold text-xs">⚠ {unconfirmedCropCount} câu có ảnh tự cắt chưa đối chiếu</span>
+                )}
+              </div>
+              <button
+                onClick={handleSaveSelected}
+                disabled={isSaving || selectedItems.length === 0}
+                className="bg-emerald-600 text-white px-6 py-2.5 rounded-lg font-bold hover:bg-emerald-700 disabled:opacity-40 flex items-center gap-2"
+              >
+                {isSaving ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+                Lưu {selectedItems.length} câu đã chọn vào ngân hàng
+              </button>
             </div>
           </div>
         </div>
@@ -697,6 +940,89 @@ export default function BatchQueuePage() {
           setEditingReviewId(null);
         }}
       />
+    </div>
+  );
+}
+
+/** Khối đối chiếu ảnh tự cắt: ảnh đã cắt đặt cạnh ảnh trang gốc có khung đánh dấu. */
+function CropReviewPanel({
+  item, onConfirm, onReject, onManualCrop,
+}: {
+  item: ReviewItem;
+  onConfirm: () => void;
+  onReject: () => void;
+  onManualCrop: () => void;
+}) {
+  const [showSource, setShowSource] = useState(false);
+
+  return (
+    <div className="mt-4 bg-blue-50/60 border border-blue-200 rounded-xl p-3">
+      <div className="flex items-center justify-between gap-2 mb-2 flex-wrap">
+        <h4 className="text-xs font-black text-blue-800 uppercase tracking-wider flex items-center gap-1.5">
+          <Crop className="w-4 h-4" /> Đối chiếu ảnh AI đã cắt
+        </h4>
+        <button onClick={() => setShowSource((v) => !v)} className="text-xs font-bold text-blue-700 hover:underline flex items-center gap-1">
+          {showSource ? <><EyeOff className="w-3.5 h-3.5" /> Ẩn ảnh trang gốc</> : <><ImageIcon className="w-3.5 h-3.5" /> Xem ảnh trang gốc (có khung đỏ vùng đã cắt)</>}
+        </button>
+      </div>
+
+      <div className="flex gap-4 items-start flex-wrap">
+        <div className="shrink-0">
+          <div className="text-[11px] font-bold text-gray-500 mb-1">Ảnh sẽ chèn vào câu hỏi:</div>
+          {item.question.image_url ? (
+            <a href={item.question.image_url} target="_blank" rel="noreferrer">
+              <img src={item.question.image_url} alt="Ảnh đã cắt" className="h-32 w-auto rounded border-2 border-blue-300 bg-white" />
+            </a>
+          ) : (
+            <div className="h-32 w-40 flex items-center justify-center rounded border-2 border-dashed border-gray-300 text-xs text-gray-400 text-center px-2">
+              Đã bỏ ảnh - câu hỏi chỉ còn chữ
+            </div>
+          )}
+        </div>
+
+        {showSource && (
+          <div className="min-w-0">
+            <div className="text-[11px] font-bold text-gray-500 mb-1">Ảnh trang gốc - khung đỏ là vùng AI đã cắt:</div>
+            <SourceImageWithBox file={item.sourceFile} box={item.cropBox} />
+          </div>
+        )}
+
+        <div className="flex flex-col gap-1.5 shrink-0">
+          <button onClick={onConfirm} className="text-xs font-bold bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-lg hover:bg-emerald-200 text-left">✅ Ảnh đúng - giữ nguyên</button>
+          <button onClick={onManualCrop} className="text-xs font-bold bg-white border border-gray-300 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-50 text-left">✂️ Cắt lại thủ công</button>
+          <button onClick={onReject} className="text-xs font-bold bg-red-100 text-red-700 px-3 py-1.5 rounded-lg hover:bg-red-200 text-left">❌ Bỏ ảnh này</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** Khối cho câu bị đánh dấu thiếu ảnh: hiện ảnh trang gốc để người duyệt tự cắt tay. */
+function MissingImagePanel({ item, onManualCrop }: { item: ReviewItem; onManualCrop: () => void }) {
+  const [showSource, setShowSource] = useState(false);
+
+  return (
+    <div className="mt-4 bg-orange-50/60 border border-orange-200 rounded-xl p-3">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <h4 className="text-xs font-black text-orange-800 uppercase tracking-wider flex items-center gap-1.5">
+          <AlertTriangle className="w-4 h-4" /> Câu này cần hình mà AI không xác định được vị trí
+        </h4>
+        <div className="flex items-center gap-2">
+          {item.sourceFile && (
+            <button onClick={() => setShowSource((v) => !v)} className="text-xs font-bold text-orange-700 hover:underline">
+              {showSource ? 'Ẩn ảnh trang gốc' : 'Xem ảnh trang gốc'}
+            </button>
+          )}
+          <button onClick={onManualCrop} className="text-xs font-bold bg-white border border-orange-300 text-orange-700 px-3 py-1.5 rounded-lg hover:bg-orange-50">
+            ✂️ Cắt ảnh thủ công
+          </button>
+        </div>
+      </div>
+      {showSource && (
+        <div className="mt-2">
+          <SourceImageWithBox file={item.sourceFile} />
+        </div>
+      )}
     </div>
   );
 }
