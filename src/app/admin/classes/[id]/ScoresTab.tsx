@@ -119,7 +119,6 @@ export default function ScoresTab({ classId, classInfo, enrollments }: { classId
                     value={scores[studentId] || ''}
                     onChange={e => handleScoreChange(studentId, e.target.value)}
                     className="w-full text-center py-1 bg-transparent border-b border-dashed border-gray-300 focus:outline-none focus:border-teal-500 font-bold text-gray-800"
-                    data-html2canvas-ignore="false"
                   />
                 </td>
                 <td className="p-2 border text-center bg-gray-50/50">
