@@ -19,7 +19,8 @@ export default function ScoresTab({ classId, classInfo, enrollments }: { classId
     if (!printRef.current) return;
     setExportingImage(true); 
     try {
-      const dataUrl = await captureElement(printRef.current);
+      // Ép khổ 860px để bảng điểm không bị bóp khi thầy xuất ảnh từ điện thoại
+      const dataUrl = await captureElement(printRef.current, { width: 860 });
       const fileName = `Bao_cao_diem_${classInfo?.name || 'Lop'}_${new Date().getTime()}.png`;
       await downloadOrShare(dataUrl, fileName);
     } catch (err: any) {
