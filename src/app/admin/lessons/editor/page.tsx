@@ -11,7 +11,6 @@ import remarkBreaks from 'remark-breaks';
 import { fixLatexText, applyLatexFixToActiveElement , cleanObjectLatex } from "@/utils/latexFixer";
 import { latexToDocxMath } from "@/utils/latexToDocxMath";
 import 'katex/dist/katex.min.css';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { useSearchParams, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import ReactCrop, { type Crop } from 'react-image-crop';
@@ -22,6 +21,8 @@ import confetti from 'canvas-confetti';
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun, BorderStyle } from "docx";
 import { saveAs } from "file-saver";
 import { fetchImageWithDimensions, base64ToUint8Array } from "@/utils/exportDocx";
+import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, callGeminiWithKeyFallback, filesToGeminiParts } from "@/utils/aiQuestionScan";
+import { autoCropImage, type NormalizedBox } from "@/utils/autoCropImage";
 import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
 
 interface PendingImage {
@@ -612,6 +613,86 @@ const parseMarkdownToBlocks = (content: string): Block[] => {
     return res.length > 0 ? res : [{ id: Math.random().toString(36).substring(7), type: 'md', content: "" }];
 };
 
+/**
+ * Khung toạ độ ảnh cho khối lý thuyết (md): AI ghi ngay sau marker, dạng
+ * `[IMAGE_PLACEHOLDER]{"fileIndex":0,"ymin":300,"xmin":250,"ymax":800,"xmax":750}`.
+ * Khối quiz thì mang khung trong trường JSON `viTriHinhAnh` nên không cần regex.
+ */
+const MD_IMAGE_BOX_REGEX = /\[IMAGE_PLACEHOLDER\]\s*(\{\s*"fileIndex"\s*:[^}]*\})/gi;
+
+/** Khung AI trả về có hợp lệ không (đủ 5 số, toạ độ thuận, nằm trong thang 0-1000). */
+const isValidImageBox = (box: any): box is NormalizedBox & { fileIndex: number } => {
+    if (!box || typeof box !== 'object') return false;
+    const nums = [box.fileIndex, box.ymin, box.xmin, box.ymax, box.xmax];
+    if (!nums.every((n) => typeof n === 'number' && Number.isFinite(n))) return false;
+    if (box.xmin >= box.xmax || box.ymin >= box.ymax) return false;
+    return box.xmin >= 0 && box.ymin >= 0 && box.xmax <= 1000 && box.ymax <= 1000;
+};
+
+/**
+ * Tự động cắt ảnh minh hoạ cho các khối vừa quét được, dùng đúng cỗ máy đang chạy bên
+ * Ngân hàng câu hỏi (`autoCropImage`: cắt theo khung 0-1000, phóng to + làm nét khi vùng
+ * cắt nhỏ, chặn khung vô lý), rồi thay marker bằng ảnh thật ngay trong nội dung.
+ *
+ * Cắt hỏng ở một khối thì bỏ qua đúng khối đó và giữ nguyên marker để rơi về luồng cắt
+ * tay như trước - không được làm hỏng cả lượt quét.
+ */
+const autoCropBlocksImages = async (
+    parsedBlocks: Block[],
+    sourceFiles: File[],
+    sourceUrls: string[],
+    supabase: any,
+): Promise<{ blocks: Block[]; croppedCount: number }> => {
+    let croppedCount = 0;
+
+    for (const b of parsedBlocks) {
+        try {
+            if (b.type === 'quiz' && b.content && typeof b.content === 'object') {
+                const box = b.content.viTriHinhAnh;
+                if (!isValidImageBox(box)) {
+                    if (box !== undefined) delete b.content.viTriHinhAnh;
+                    continue;
+                }
+                const file = sourceFiles[box.fileIndex];
+                if (!file) { delete b.content.viTriHinhAnh; continue; }
+
+                const url = await autoCropImage(supabase, file, box);
+                const imageMarkdown = `\n\n![Hình minh họa](${url})\n\n`;
+                const question = b.content.question || '';
+                const replaced = question.replace(IMAGE_PLACEHOLDER_STRIP_REGEX, imageMarkdown);
+                b.content.question = replaced !== question ? replaced : question + imageMarkdown;
+
+                // Giữ ảnh gốc + khung để còn đối chiếu và cắt lại thủ công nếu AI cắt lệch
+                b.content.autoCropMetadata = { originalUrl: sourceUrls[box.fileIndex] || '', box };
+                delete b.content.viTriHinhAnh; // đã dùng xong, không lưu vào CSDL cho rác
+                croppedCount++;
+                continue;
+            }
+
+            if (b.type === 'md' && typeof b.content === 'string') {
+                const matches = Array.from(b.content.matchAll(MD_IMAGE_BOX_REGEX));
+                for (const m of matches) {
+                    let box: any;
+                    try { box = JSON.parse(m[1]); } catch { continue; }
+                    if (!isValidImageBox(box)) continue;
+                    const file = sourceFiles[box.fileIndex];
+                    if (!file) continue;
+
+                    const url = await autoCropImage(supabase, file, box);
+                    b.content = b.content.replace(m[0], `\n\n![Hình minh họa](${url})\n\n`);
+                    croppedCount++;
+                }
+                // Khung nào cắt không nổi thì bỏ phần JSON đi, chỉ để lại marker cho cắt tay
+                b.content = b.content.replace(MD_IMAGE_BOX_REGEX, '[IMAGE_PLACEHOLDER]');
+            }
+        } catch (e) {
+            console.warn('Không tự cắt được ảnh cho 1 khối, giữ nguyên để cắt tay:', e);
+        }
+    }
+
+    return { blocks: parsedBlocks, croppedCount };
+};
+
 const serializeBlocksToMarkdown = (blocks: Block[]): string => {
     return blocks.map(b => {
         if (b.type === 'md') return b.content;
@@ -839,6 +920,7 @@ YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. [CẢNH BÁO LỖI ĐỀ]: Trách nhiệm cao nhất của bạn là giải thử từng câu. Nếu phát hiện câu hỏi bị sai đề, thiếu dữ kiện, mâu thuẫn toán học, hoặc không có đáp án đúng, hãy IN ĐẬM VÀ TÔ MÀU ĐỎ cảnh báo ngay trước đoạn mã \`\`\`quiz\`\`\` của câu hỏi đó (VD: **<span style="color:red">⚠️ LỖI ĐỀ BÀI: Câu hỏi này thiếu điều kiện m ≠ 0...</span>**).
 2. [KHÔNG BỎ SÓT BÀI TẬP]: Quét KỸ 100% tài liệu gốc. Tôi đưa lên bao nhiêu câu hỏi thì BẮT BUỘC bạn phải bóc tách bấy nhiêu câu. TUYỆT ĐỐI KHÔNG được qua loa hay bỏ sót bất kỳ câu nào, nếu vi phạm sẽ bị phạt nặng.
 3. [VỊ TRÍ HÌNH ẢNH/BẢNG BIỂU]: Nếu phát hiện câu hỏi trong tài liệu gốc có chứa hình vẽ, biểu đồ hoặc đồ thị, TUYỆT ĐỐI KHÔNG mô tả chi tiết làm lệch câu gốc. BẮT BUỘC phải chèn dòng chữ \`[CÓ HÌNH ẢNH KÈM THEO]\` vào ĐÚNG VỊ TRÍ mà hình ảnh đó xuất hiện trong câu hỏi gốc (ví dụ: ngay sau chữ "như hình vẽ bên:"). Tuyệt đối KHÔNG được tự ý vứt xuống cuối phần nội dung nếu nó nằm ở giữa câu.
+3b. [KHUNG TOẠ ĐỘ HÌNH ẢNH - ĐỂ HỆ THỐNG TỰ CẮT ẢNH]: Với MỖI câu hỏi có chèn \`[CÓ HÌNH ẢNH KÈM THEO]\`, BẮT BUỘC điền thêm trường \`"viTriHinhAnh"\` là object: {"fileIndex": (số thứ tự file ảnh chứa hình đó, ĐẾM TỪ 0 theo đúng thứ tự các file được gửi lên), "ymin": ..., "xmin": ..., "ymax": ..., "xmax": ...} - toạ độ khung bao quanh CHÍNH XÁC vùng hình vẽ/đồ thị/bảng của riêng câu đó trong ảnh gốc, chuẩn hoá theo thang 0-1000 (0 = mép trên/trái, 1000 = mép dưới/phải). Khung phải ôm trọn hình, không cắt cụt, không lấn sang hình của câu khác hay sang vùng chữ dài. Nếu KHÔNG xác định được rõ ràng vị trí, để \`"viTriHinhAnh": null\` - TUYỆT ĐỐI KHÔNG ĐOÁN BỪA vì cắt sai làm hỏng câu hỏi. Câu không có hình thì bỏ qua trường này.
 4. [KHÔNG VIẾT LÝ THUYẾT]: Tuyệt đối KHÔNG viết câu mở đầu, KHÔNG tóm tắt lý thuyết, KHÔNG giải thích. CHỈ ĐƯỢC PHÉP TRẢ VỀ CÁC ĐOẠN MÃ \`\`\`quiz\`\`\` (và các dòng cảnh báo lỗi đề nếu có).
 5. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
 - Bao bọc TẤT CẢ công thức bằng dấu $ (Ví dụ: $x^2 + y^2 = 25$). Tuyệt đối KHÔNG bao bọc chữ tiếng Việt bên trong dấu $ (Ví dụ SAI: $Ta có: x = 2$, ĐÚNG: Ta có $x = 2$).
@@ -856,7 +938,16 @@ LOẠI 1: TRẮC NGHIỆM 4 LỰA CHỌN (1 ĐÁP ÁN ĐÚNG)
     "question": "Đạo hàm của hàm số $y = x^2 + 2x$ là?",
     "options": ["$y' = 2x + 2$", "$y' = x + 2$", "$y' = 2x$", "$y' = 2$"],
     "answerIndex": 0,
-    "answer": "Sử dụng công thức đạo hàm cơ bản: $(x^n)' = n.x^{n-1}$. Ta có $y' = 2x + 2$"
+    "answer": "Sử dụng công thức đạo hàm cơ bản: $(x^n)' = n.x^{n-1}$. Ta có $y' = 2x + 2$",
+    "viTriHinhAnh": null
+  },
+  {
+    "type": "multiple_choice",
+    "question": "Cho hình chữ nhật $ABCD$ như hình vẽ bên [CÓ HÌNH ẢNH KÈM THEO]. Tính độ dài $AC$.",
+    "options": ["$10$", "$12$", "$14$", "$48$"],
+    "answerIndex": 0,
+    "answer": "Áp dụng định lí Pythagore: $AC = \\\\sqrt{8^2 + 6^2} = 10$.",
+    "viTriHinhAnh": { "fileIndex": 0, "ymin": 305, "xmin": 640, "ymax": 565, "xmax": 920 }
   },
   {
     "type": "true_false_cluster",
@@ -905,7 +996,8 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 - TẤT CẢ Tiêu đề Phần, Tên Dạng Bài phải là Heading 2 (##) kèm Emoji (Ví dụ: "## 💡 DẠNG 1: TÌM ĐIỀU KIỆN XÁC ĐỊNH").
 - TẤT CẢ Phương pháp giải phải là Heading 3 (###).
 - [QUY TẮC VÍ DỤ MẪU]: Trích lấy ví dụ bài tập. Toàn bộ nội dung của Ví dụ mẫu (bao gồm tiêu đề \`> ### 📌 Ví dụ mẫu\`, đề bài và lời giải) BẮT BUỘC phải được bọc trong thẻ trích dẫn Blockquote (thêm \`> \` vào đầu mỗi dòng). Ở phần lời giải, phải ghi chữ "> Hướng dẫn giải:" ngay trước khi giải.
-4. [TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Thỉnh thoảng hãy chèn một câu hỏi quiz ở dạng đoạn mã "quiz" chứa chuỗi JSON (như multiple_choice, true_false, short_answer) để học sinh tự làm.`;
+4. [TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Thỉnh thoảng hãy chèn một câu hỏi quiz ở dạng đoạn mã "quiz" chứa chuỗi JSON (như multiple_choice, true_false, short_answer) để học sinh tự làm.
+5. [HÌNH VẼ - CHÈN MARKER KÈM KHUNG TOẠ ĐỘ ĐỂ HỆ THỐNG TỰ CẮT ẢNH]: Nếu tài liệu gốc có hình vẽ, đồ thị, bảng biến thiên, TUYỆT ĐỐI KHÔNG vẽ lại bằng ký tự/ASCII và KHÔNG mô tả dài dòng. Hãy chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần hình, và NGAY SAU thẻ đó ghi liền một object JSON khung toạ độ: \`[IMAGE_PLACEHOLDER]{"fileIndex":0,"ymin":300,"xmin":250,"ymax":800,"xmax":750}\` - trong đó "fileIndex" là số thứ tự file ảnh chứa hình (ĐẾM TỪ 0 theo thứ tự file gửi lên), còn ymin/xmin/ymax/xmax là khung bao quanh CHÍNH XÁC vùng hình đó, chuẩn hoá theo thang 0-1000 (0 = mép trên/trái, 1000 = mép dưới/phải). Khung phải ôm trọn hình, không cắt cụt, không lấn sang vùng chữ. Nếu KHÔNG xác định được rõ vị trí thì chỉ ghi \`[IMAGE_PLACEHOLDER]\` và KHÔNG ghi JSON - tuyệt đối không đoán bừa toạ độ.`;
   }
 
   const unifiedPrompt = `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
@@ -930,7 +1022,7 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 - MỖI MỘT ĐỊNH NGHĨA, ĐỊNH LÝ, HAY GHI CHÚ PHẢI NẰM TRÊN 1 SLIDE RIÊNG BIỆT (phải ngắt trang \`---\` ngay sau đó).
 - MỖI VÍ DỤ HOẶC BÀI TẬP BẮT BUỘC NẰM TRÊN 1 SLIDE MỚI. 
 - KHÔNG GỘP QUÁ NHIỀU NỘI DUNG VÀO 1 SLIDE VÌ ĐÂY LÀ ĐỂ CHIẾU LÊN TIVI (Slide càng ngắn gọn càng tốt).
-5. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Hình vẽ, Bảng biến thiên... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ. THAY VÀO ĐÓ, BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ hình.
+5. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Hình vẽ, Bảng biến thiên... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ. THAY VÀO ĐÓ, BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ hình, và NGAY SAU thẻ đó ghi liền object JSON khung toạ độ để hệ thống tự cắt ảnh: \`[IMAGE_PLACEHOLDER]{"fileIndex":0,"ymin":300,"xmin":250,"ymax":800,"xmax":750}\` - "fileIndex" là số thứ tự file ảnh chứa hình (ĐẾM TỪ 0), ymin/xmin/ymax/xmax là khung bao quanh CHÍNH XÁC vùng hình, chuẩn hoá thang 0-1000 (0 = mép trên/trái, 1000 = mép dưới/phải), ôm trọn hình và không lấn sang vùng chữ. Nếu không xác định được rõ vị trí thì chỉ ghi \`[IMAGE_PLACEHOLDER]\`, TUYỆT ĐỐI không đoán bừa toạ độ.
 6. [TẠO CÂU HỎI TƯƠNG TÁC CHỐNG LƯỜI]: Ngay TRƯỚC mỗi lần bạn đặt dấu ngắt trang \`---\` , bạn HÃY TỰ NGHĨ RA HOẶC TRÍCH 1 CÂU HỎI TRẮC NGHIỆM từ tài liệu để kiểm tra học sinh. Học sinh phải làm đúng câu này thì mới được đọc trang tiếp theo.
 7. Mỗi câu hỏi trắc nghiệm PHẢI được xuất ra ĐÚNG DƯỚI DẠNG ĐOẠN MÃ NGÔN NGỮ "quiz" chứa chuỗi JSON chuẩn xác. Cấu trúc JSON có 2 loại:
 
@@ -1216,14 +1308,6 @@ function EditorContent() {
     if (error) alert("Lỗi lưu bài: " + error.message); else alert("Đã lưu thành công!");
   };
 
-  const fileToBase64 = (file: File): Promise<string> => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader(); reader.readAsDataURL(file);
-      reader.onload = () => resolve((reader.result as string).split(',')[1]);
-      reader.onerror = error => reject(error);
-    });
-  };
-
   const addToQueue = (file: File) => {
     setPendingImages(prev => [...prev, { id: Math.random().toString(36).substring(7), file, previewUrl: URL.createObjectURL(file) }]);
   };
@@ -1333,11 +1417,8 @@ function EditorContent() {
       // Tự động xin cấp phát khóa AI từ hệ thống Load Balancing
       const keyRes = await fetch('/api/admin/gemini-key');
       const keyData = await keyRes.json();
-      if (!keyRes.ok || !keyData.key) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
+      if (!keyRes.ok || !keyData.keys?.length) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
 
-      const genAI = new GoogleGenerativeAI(keyData.key);
-      const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
-      
       const isPractice = isPracticeModule;
       const prompt = getPrompt(isPractice, activeTab === 'presentation');
 
@@ -1346,25 +1427,39 @@ function EditorContent() {
           finalPrompt += "\n\n[NỘI DUNG VĂN BẢN TỪ FILE WORD]:\n" + pendingText;
       }
       
-      const imageParts = await Promise.all(
-        pendingImages.map(async (img) => {
-          const base64Data = await fileToBase64(img.file);
-          return { inlineData: { data: base64Data, mimeType: img.file.type } };
-        })
-      );
+      const imageParts = await filesToGeminiParts(pendingImages.map(img => img.file));
 
-      const result = await model.generateContent([finalPrompt, ...imageParts]);
-      const text = result.response.text();
-      
+      // Xoay vòng toàn bộ API key khi một key lỗi/quá tải, thay vì chết cả lượt quét
+      // vì đúng key đầu tiên bị 503 (bản cũ chỉ dùng keyData.key).
+      let text = await callGeminiWithKeyFallback(keyData.keys, finalPrompt, imageParts);
+
+      // TỰ ĐỘNG CẮT ẢNH ngay tại đây, khi File gốc còn trong bộ nhớ (bên dưới sẽ
+      // setPendingImages([]) làm mất File, lúc đó chỉ còn blob URL không cắt được nữa).
+      if (pendingImages.length > 0) {
+        try {
+          const parsed = parseMarkdownToBlocks(text);
+          const { blocks: croppedBlocks, croppedCount } = await autoCropBlocksImages(
+            parsed,
+            pendingImages.map(img => img.file),
+            pendingImages.map(img => img.previewUrl),
+            supabase,
+          );
+          if (croppedCount > 0) text = serializeBlocksToMarkdown(croppedBlocks);
+        } catch (e) {
+          console.warn('Bỏ qua bước tự cắt ảnh, giữ nguyên kết quả quét:', e);
+        }
+      }
+
       const separator = markdownContent.length > 0 && !markdownContent.endsWith('---') ? "\\n\\n---\\n\\n" : "\\n\\n";
+      const finalText = text;
       setMarkdownContent((prev: string) => {
-        const newMarkdown = prev ? prev + separator + text : text;
+        const newMarkdown = prev ? prev + separator + finalText : finalText;
         if (editorMode === 'form') {
            setBlocks(parseMarkdownToBlocks(newMarkdown));
         }
         return newMarkdown;
       });
-      
+
       if (pendingImages.length > 0) {
         setLastAnalyzedImages(pendingImages.map(img => img.previewUrl));
         // Giữ các ảnh trong blob memory để sử dụng cho crop
@@ -1543,19 +1638,19 @@ function EditorContent() {
         const bIndex = newBlocks.findIndex(b => b.id === targetCropBlockId);
         if (bIndex > -1) {
             const b = newBlocks[bIndex];
-            const placeholderRegex = /\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\]/i;
+            // So sánh trước/sau thay vì .test(): IMAGE_PLACEHOLDER_STRIP_REGEX mang cờ "g"
+            // nên .test() nhớ lastIndex giữa các lần gọi. Bản regex cũ ở đây còn thiếu cờ "g"
+            // nên chỉ thay được đúng 1 marker mỗi lần cắt.
+            const replaceMarker = (text: string): string => {
+                const replaced = (text || '').replace(IMAGE_PLACEHOLDER_STRIP_REGEX, imageMarkdown);
+                return replaced !== (text || '') ? replaced : (text || '') + imageMarkdown;
+            };
             if (b.type === 'md' && typeof b.content === 'string') {
-                if (placeholderRegex.test(b.content)) {
-                    b.content = b.content.replace(placeholderRegex, imageMarkdown);
-                } else {
-                    b.content += imageMarkdown;
-                }
+                b.content = replaceMarker(b.content);
             } else if (b.type === 'quiz') {
-                if (placeholderRegex.test(b.content.question || '')) {
-                    b.content.question = b.content.question.replace(placeholderRegex, imageMarkdown);
-                } else {
-                    b.content.question = (b.content.question || '') + imageMarkdown;
-                }
+                b.content.question = replaceMarker(b.content.question);
+                // Giữ nguyên autoCropMetadata để còn cắt lại được nhiều lần; chấm đỏ đã
+                // tự tắt nhờ blockNeedsImage kiểm tra "đã có ảnh trong nội dung hay chưa".
             }
             setBlocks(newBlocks);
         }
@@ -1983,7 +2078,9 @@ function EditorContent() {
 
                    {/* Cảnh báo Bảng/Ảnh */}
                    {(() => {
-                      const hasImageOrTable = /(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\|.*\|.*\n\s*\|[-\s:]+\|)/i.test(markdownContent);
+                      // Dùng regex chung (bản cũ ở đây thiếu nhánh "HÌNH ẢNH" nên không cảnh
+                      // báo với marker "[CÓ HÌNH ẢNH KÈM THEO]"); vẫn giữ thêm nhánh bảng Markdown.
+                      const hasImageOrTable = IMAGE_NEEDED_REGEX.test(markdownContent) || /\|.*\|.*\n\s*\|[-\s:]+\|/.test(markdownContent);
                       if (!hasImageOrTable) return null;
                       return (
                           <div className="bg-yellow-50 border-b border-yellow-200 px-4 py-3 shrink-0 flex items-center justify-between">

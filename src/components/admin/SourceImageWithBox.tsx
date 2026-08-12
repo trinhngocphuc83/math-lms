@@ -11,22 +11,27 @@ import type { NormalizedBox } from "@/utils/autoCropImage";
 export interface SourceImageWithBoxProps {
   /** Ảnh trang gốc (File còn giữ trong bộ nhớ từ lúc tải lên) */
   file?: File;
+  /** Hoặc đường dẫn ảnh gốc có sẵn (blob URL / URL Supabase) khi không còn giữ File */
+  src?: string;
   /** Khung tọa độ AI xác định, thang 0-1000. Bỏ trống thì chỉ hiện ảnh gốc. */
   box?: NormalizedBox;
   className?: string;
 }
 
-export default function SourceImageWithBox({ file, box, className = "" }: SourceImageWithBoxProps) {
-  const [url, setUrl] = useState("");
+export default function SourceImageWithBox({ file, src, box, className = "" }: SourceImageWithBoxProps) {
+  const [objectUrl, setObjectUrl] = useState("");
 
   useEffect(() => {
     if (!file) return;
-    const objectUrl = URL.createObjectURL(file);
-    setUrl(objectUrl);
-    return () => URL.revokeObjectURL(objectUrl);
+    const created = URL.createObjectURL(file);
+    setObjectUrl(created);
+    return () => URL.revokeObjectURL(created);
   }, [file]);
 
-  if (!file || !url) {
+  // Ưu tiên File (ảnh vừa tải lên, luôn đúng bản gốc), không có thì dùng src truyền vào
+  const url = file ? objectUrl : (src || "");
+
+  if (!url) {
     return <div className="text-xs text-gray-400 italic">Không còn ảnh trang gốc để đối chiếu.</div>;
   }
 

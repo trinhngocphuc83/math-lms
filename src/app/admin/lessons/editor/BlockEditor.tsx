@@ -8,6 +8,8 @@ import 'katex/dist/katex.min.css';
 import QuestionBankModal from "@/components/admin/QuestionBankModal";
 import RichTextarea from "@/components/admin/RichTextarea";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
+import SourceImageWithBox from "@/components/admin/SourceImageWithBox";
+import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX } from "@/utils/aiQuestionScan";
 
 export interface Block {
   id: string;
@@ -23,6 +25,19 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const [selectedBlocks, setSelectedBlocks] = React.useState<Set<string>>(new Set());
   const [activeBlockId, setActiveBlockId] = React.useState<string | null>(null);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(false);
+
+  // Trên điện thoại chỉ đủ chỗ cho MỘT trong hai: Bản đồ câu hỏi hoặc khu soạn.
+  // Trước đây cả hai cùng nằm trong flex-col, Bản đồ (shrink-0 + cao gần hết màn)
+  // đẩy khu soạn xuống vùng cao ~0 rồi bị overflow-hidden cắt mất - trên điện thoại
+  // không sửa được câu hỏi. Nay chạm 1 câu là sang màn soạn, có nút quay lại.
+  // State này KHÔNG ảnh hưởng desktop (từ md trở lên luôn hiện cả hai).
+  const [mobileView, setMobileView] = React.useState<'map' | 'editor'>('map');
+
+  /** Chọn 1 khối từ Bản đồ: trên điện thoại chuyển luôn sang màn soạn câu đó. */
+  const selectBlock = (blockId: string) => {
+    setActiveBlockId(blockId);
+    setMobileView('editor');
+  };
 
   React.useEffect(() => {
     if (blocks.length > 0 && !activeBlockId) setActiveBlockId(blocks[0].id);
@@ -61,12 +76,16 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
          let questionContent = q.content || "";
          if (q.image_url) {
-             const placeholderRegex = /(?:\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?BẢNG BIẾN THIÊN.*?\])/i;
-             if (placeholderRegex.test(questionContent)) {
-                 questionContent = questionContent.replace(new RegExp(placeholderRegex, 'ig'), `\n\n![Hình vẽ](${q.image_url})\n\n`);
-             } else {
-                 questionContent += `\n\n![Hình vẽ](${q.image_url})\n\n`;
-             }
+             // Dùng regex chung IMAGE_PLACEHOLDER_STRIP_REGEX: bản cũ ở đây thiếu nhánh
+             // "HÌNH ẢNH" nên câu ngân hàng chứa "[CÓ HÌNH ẢNH KÈM THEO]" không được thay
+             // bằng ảnh mà bị nối ảnh xuống cuối, marker nằm lại và báo chấm đỏ vĩnh viễn.
+             //
+             // So sánh trước/sau thay vì .test(): regex này mang cờ "g" nên .test() sẽ nhớ
+             // lastIndex giữa các lần gọi, chạy trong vòng lặp nhiều câu sẽ trả false sai
+             // xen kẽ. .replace() với cờ "g" thì luôn quét lại từ đầu nên an toàn.
+             const imageMarkdown = `\n\n![Hình vẽ](${q.image_url})\n\n`;
+             const replaced = questionContent.replace(IMAGE_PLACEHOLDER_STRIP_REGEX, imageMarkdown);
+             questionContent = replaced !== questionContent ? replaced : questionContent + imageMarkdown;
          }
 
          const content: any = {
@@ -290,15 +309,25 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
   // Khối còn cần xử lý ảnh (chèn thủ công hoặc xác nhận cắt ảnh AI) - dùng để
   // báo động trên Bản đồ để không bị bỏ sót khi có nhiều câu.
-  const IMAGE_PLACEHOLDER_REGEX = /\[IMAGE_PLACEHOLDER\]|\[.*?CHÚ Ý.*?\]|\[.*?HÌNH VẼ.*?\]|\[.*?HÌNH ẢNH.*?\]|\[.*?BẢNG BIỂU.*?\]/i;
+  //
+  // Dùng IMAGE_NEEDED_REGEX chung (không có cờ "g" nên .test() an toàn) thay cho bản
+  // chép riêng trước đây - trước có 4 bản regex lệch nhau giữa các file, sửa chỗ này
+  // quên chỗ kia.
+  const hasInsertedImage = (text: string) => /!\[[^\]]*\]\([^)]+\)/.test(text || '');
+
   const blockNeedsImage = (b: Block): boolean => {
      if (b.type === 'md') {
         if (typeof b.content !== 'string') return false;
-        return IMAGE_PLACEHOLDER_REGEX.test(b.content) || /\{\s*"image_bbox"\s*:\s*\[([\d,\s]+)\]\s*\}/.test(b.content);
+        return IMAGE_NEEDED_REGEX.test(b.content) || /\{\s*"image_bbox"\s*:\s*\[([\d,\s]+)\]\s*\}/.test(b.content);
      }
      if (b.type === 'quiz') {
+        const question = b.content?.question || '';
+        // Đã chèn được ảnh vào câu thì coi như xong, kể cả khi ảnh do AI tự cắt
+        // (autoCropMetadata vẫn được giữ để còn cắt lại). Bản cũ trả về true ngay khi
+        // thấy autoCropMetadata nên câu ĐÃ CÓ ẢNH vẫn bị báo đỏ "thiếu ảnh" vĩnh viễn.
+        if (hasInsertedImage(question)) return false;
         if (b.content?.autoCropMetadata) return true;
-        return IMAGE_PLACEHOLDER_REGEX.test(b.content?.question || '');
+        return IMAGE_NEEDED_REGEX.test(question);
      }
      return false;
   };
@@ -306,9 +335,9 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   return (
     <div className="flex flex-col md:flex-row h-full overflow-hidden bg-gray-100 relative">
        {/* SIDEBAR BẢN ĐỒ CÂU HỎI - thu gọn được (240px ↔ 52px) */}
+       {/* Điện thoại: chiếm trọn khung, chỉ hiện khi đang ở màn "map" (md trở lên luôn hiện) */}
        <div
-          className={`${isSidebarCollapsed ? 'md:w-[52px]' : 'md:w-[240px]'} w-full border-r border-gray-200 bg-white overflow-y-auto overflow-x-hidden flex flex-col shadow-sm z-10 shrink-0 transition-[width] duration-300 ease-out`}
-          style={{ maxHeight: 'calc(100vh - 120px)' }}
+          className={`${mobileView === 'map' ? 'flex' : 'hidden'} md:flex ${isSidebarCollapsed ? 'md:w-[52px]' : 'md:w-[240px]'} w-full flex-1 min-h-0 md:flex-none border-r border-gray-200 bg-white overflow-y-auto overflow-x-hidden flex-col shadow-sm z-10 md:shrink-0 transition-[width] duration-300 ease-out md:max-h-[calc(100vh-120px)]`}
        >
           <div className={`p-3 border-b border-gray-100 bg-indigo-50/50 flex items-center sticky top-0 z-20 ${isSidebarCollapsed ? 'justify-center px-0' : 'justify-between'}`}>
              {!isSidebarCollapsed && (
@@ -335,7 +364,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                    return (
                       <div key={b.id} className="relative shrink-0">
                          <button
-                            onClick={() => setActiveBlockId(b.id)}
+                            onClick={() => selectBlock(b.id)}
                             title={`${nhanSlide} · ${kind.label}${needsImage ? ' · Còn thiếu ảnh!' : ''}`}
                             className={`w-8 h-8 rounded-lg flex items-center justify-center font-bold text-[12px] transition-all shrink-0 relative overflow-hidden ${activeBlockId === b.id
                                ? 'bg-indigo-600 text-white shadow-md'
@@ -370,7 +399,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 return (
                    <button
                       key={b.id}
-                      onClick={() => setActiveBlockId(b.id)}
+                      onClick={() => selectBlock(b.id)}
                       title={`Slide ${info.count > 1 ? `${info.start}-${hetSlide}` : info.start} · ${kind.label}${needsImage ? ' · CÒN THIẾU ẢNH' : ''}\n${preview}`}
                       className={`w-full text-left rounded-lg px-2 py-1.5 border flex items-stretch gap-2 transition-colors ${isActive
                          ? 'bg-indigo-600 border-indigo-600 shadow-sm'
@@ -413,7 +442,32 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
        </div>
 
        {/* MAIN EDITOR - chiếm toàn bộ phần còn lại */}
-       <div className="flex-1 min-w-0 flex flex-col p-4 md:p-6 overflow-y-auto" style={{ maxHeight: 'calc(100vh - 120px)' }}>
+       {/* Điện thoại: chỉ hiện khi đang ở màn "editor" (md trở lên luôn hiện) */}
+       <div className={`${mobileView === 'editor' ? 'flex' : 'hidden'} md:flex flex-1 min-w-0 min-h-0 flex-col p-4 md:p-6 overflow-y-auto md:max-h-[calc(100vh-120px)]`}>
+
+       {/* Thanh điều hướng chỉ có trên điện thoại: quay lại Bản đồ + biết đang soạn câu nào */}
+       <div className="md:hidden flex items-center gap-2 mb-3 -mt-1 sticky top-0 bg-slate-50/95 backdrop-blur-sm py-2 z-20 border-b border-gray-200">
+          <button
+             type="button"
+             onClick={() => setMobileView('map')}
+             className="flex items-center gap-1.5 px-3 py-2 bg-indigo-50 text-indigo-700 rounded-lg font-bold text-sm shrink-0 hover:bg-indigo-100"
+          >
+             <ChevronLeft className="w-4 h-4" /> Bản đồ
+          </button>
+          {(() => {
+             const i = blocks.findIndex(b => b.id === activeBlockId);
+             if (i < 0) return null;
+             const info = blockSlideInfo[i];
+             const kind = blockKind(blocks[i]);
+             const nhan = info ? (info.count > 1 ? `Slide ${info.start}-${info.start + info.count - 1}` : `Slide ${info.start}`) : '';
+             return (
+                <span className="text-sm font-bold text-gray-700 truncate">
+                   {nhan} · <span className="text-gray-500">{kind.label}</span>
+                </span>
+             );
+          })()}
+       </div>
+
        <div className="flex items-center justify-between mb-[-0.5rem] flex-wrap gap-3">
 
          {selectedBlocks.size > 0 && (
@@ -465,7 +519,9 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              const idx = blocks.findIndex(b => b.id === block.id);
              return (
           <div key={block.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-visible shrink-0 transition-all relative">
-              <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center rounded-t-xl z-20 relative">
+              {/* overflow-x-auto: trên điện thoại hàng nút này rộng hơn màn hình (~660px),
+                  trước đây overflow visible nên các nút cuối bị cắt và không bấm tới được. */}
+              <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center gap-3 rounded-t-xl z-20 relative overflow-x-auto">
                   <div className="flex items-center gap-2 font-bold text-gray-700 text-[15px]">
                      <input 
                         type="checkbox" 
@@ -529,7 +585,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                     <div className="flex flex-col gap-4">
                        {/* CẢNH BÁO CHO KHỐI LÝ THUYẾT */}
                        {(typeof block.content === 'string') && (() => {
-                          const hasPlaceholder = IMAGE_PLACEHOLDER_REGEX.test(block.content);
+                          const hasPlaceholder = IMAGE_NEEDED_REGEX.test(block.content);
                           const bboxMatch = block.content.match(/\{\s*"image_bbox"\s*:\s*\[([\d,\s]+)\]\s*\}/);
                           if (!hasPlaceholder && !bboxMatch) return null;
                           
@@ -604,17 +660,11 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                     <div className="flex flex-col gap-5">
                        {/* Cảnh báo hình ảnh & Smart Cropper tự động */}
                        {block.content.autoCropMetadata ? (
-                          <div className="bg-orange-50 border border-orange-200 rounded-xl p-5 flex flex-col md:flex-row gap-5 items-start">
-                             <div className="flex-1 flex flex-col sm:flex-row items-center gap-2">
-                                <h4 className="text-orange-800 font-bold flex items-center gap-2 mb-2"><ImageIcon className="w-5 h-5"/> Ảnh Gốc Đính Kèm</h4>
-                                <p className="text-[14px] text-orange-700 mb-4 leading-relaxed">AI đã phát hiện và cắt ảnh từ tài liệu gốc. Bạn có thể sử dụng công cụ Cắt lại nếu AI cắt chưa chuẩn xác.</p>
-                                <button onClick={() => onTriggerCrop(block.content.autoCropMetadata, block.id)} className="bg-orange-600 text-white px-4 py-2.5 rounded-lg font-bold hover:bg-orange-700 shadow-sm transition-colors flex items-center gap-2 text-sm"><CropIcon className="w-4 h-4"/> Cắt lại Ảnh Này</button>
-                             </div>
-                             <div className="w-full md:w-72 bg-white border border-orange-100 rounded-xl p-1.5 shadow-sm shrink-0">
-                                <img src={block.content.autoCropMetadata.originalUrl} alt="Source" className="w-full max-h-24 object-contain rounded-lg" />
-                             </div>
-                          </div>
-                       ) : (IMAGE_PLACEHOLDER_REGEX.test(block.content.question || '')) && (
+                          <AutoCropReviewPanel
+                             meta={block.content.autoCropMetadata}
+                             onRecrop={() => onTriggerCrop(block.content.autoCropMetadata, block.id)}
+                          />
+                       ) : (IMAGE_NEEDED_REGEX.test(block.content.question || '')) && (
                           <div className="bg-red-50 border border-red-200 px-5 py-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-pulse">
                              <div className="flex items-center gap-3 text-red-700">
                                 <AlertTriangle className="w-6 h-6 shrink-0" />
@@ -814,13 +864,67 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              );
           })}
 
-        <QuestionBankModal 
-           isOpen={isBankModalOpen} 
-           onClose={() => setIsBankModalOpen(false)} 
-           onInsert={handleInsertFromBank} 
+        <QuestionBankModal
+           isOpen={isBankModalOpen}
+           onClose={() => setIsBankModalOpen(false)}
+           onInsert={handleInsertFromBank}
            usedQuestionIds={blocks.map(b => b.type === 'quiz' && b.content.sourceQuestionId).filter(Boolean) as string[]}
         />
      </div>
      </div>
    );
  }
+
+/**
+ * Khối đối chiếu ảnh AI tự cắt: cho xem ảnh trang gốc kèm KHUNG ĐỎ đúng vùng đã cắt,
+ * nhìn một cái là biết AI cắt đúng hình của câu này hay nhầm sang chỗ khác. Ảnh đã cắt
+ * nằm ngay trong nội dung câu hỏi phía dưới nên ở đây không lặp lại.
+ */
+function AutoCropReviewPanel({ meta, onRecrop }: { meta: any; onRecrop: () => void }) {
+   const [showSource, setShowSource] = React.useState(false);
+   const box = meta?.box;
+
+   return (
+      <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex flex-col gap-3">
+         <div className="flex items-start justify-between gap-3 flex-wrap">
+            <div className="flex-1 min-w-0">
+               <h4 className="text-orange-800 font-bold flex items-center gap-2 mb-1">
+                  <ImageIcon className="w-5 h-5"/> {box ? 'AI đã tự cắt ảnh và chèn vào câu hỏi' : 'Ảnh gốc đính kèm'}
+               </h4>
+               <p className="text-[13px] text-orange-700 leading-relaxed">
+                  {box
+                     ? 'Hãy đối chiếu với ảnh gốc để chắc chắn cắt đúng hình của câu này. Nếu lệch, bấm "Cắt lại" để tự chọn vùng.'
+                     : 'AI đã phát hiện ảnh từ tài liệu gốc. Dùng nút Cắt lại nếu chưa chuẩn xác.'}
+               </p>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+               {meta?.originalUrl && (
+                  <button
+                     type="button"
+                     onClick={() => setShowSource(v => !v)}
+                     className="bg-white border border-orange-300 text-orange-700 px-3 py-2 rounded-lg font-bold hover:bg-orange-50 text-sm flex items-center gap-1.5"
+                  >
+                     <ImageIcon className="w-4 h-4"/> {showSource ? 'Ẩn ảnh gốc' : box ? 'Xem ảnh gốc (khung đỏ)' : 'Xem ảnh gốc'}
+                  </button>
+               )}
+               <button
+                  type="button"
+                  onClick={onRecrop}
+                  className="bg-orange-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-700 shadow-sm transition-colors flex items-center gap-2 text-sm"
+               >
+                  <CropIcon className="w-4 h-4"/> Cắt lại Ảnh Này
+               </button>
+            </div>
+         </div>
+
+         {showSource && meta?.originalUrl && (
+            <div className="bg-white border border-orange-100 rounded-lg p-2">
+               <div className="text-[11px] font-bold text-gray-500 mb-1">
+                  {box ? 'Ảnh trang gốc - khung đỏ là vùng AI đã cắt:' : 'Ảnh trang gốc:'}
+               </div>
+               <SourceImageWithBox src={meta.originalUrl} box={box} />
+            </div>
+         )}
+      </div>
+   );
+}
