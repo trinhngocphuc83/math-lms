@@ -6,13 +6,16 @@ import { createClient } from "@/utils/supabase/client";
 import { 
   FileEdit, Search, Plus, Upload, Loader2, Database,
   Filter, ChevronLeft, ChevronRight, ChevronUp, CheckCircle2,
-  AlertCircle, X, Trash2, ChevronDown, FileDown, Eye, Wand2, RefreshCw
+  AlertCircle, X, Trash2, ChevronDown, FileDown, Eye, Wand2, RefreshCw, FileText
 } from "lucide-react";
 import Papa from "papaparse";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import PreviewQuestionModal from "@/components/admin/PreviewQuestionModal";
 import { exportQuestionsToWord } from "@/utils/exportDocx";
 import CategoryManagerModal from "@/components/admin/CategoryManagerModal";
+import ExportScopeModal, { khoaBai, type ThongKeNhanh, type PhamViChon } from "@/components/admin/ExportScopeModal";
+import { dungFileMarkdown, tenFileAnToan, uocLuongSoTuCuaCauHoi } from "@/utils/exportQuestionsMarkdown";
+import { saveAs } from "file-saver";
 import {
   bankTypeLabel,
   difficultyLabel,
@@ -50,6 +53,109 @@ export default function QuestionsPage() {
   const [isChangeTypeMenuOpen, setIsChangeTypeMenuOpen] = useState(false);
   const [isChangingType, setIsChangingType] = useState(false);
   const [isAiMenuOpen, setIsAiMenuOpen] = useState(false);
+
+  // Xuất ra file cho NotebookLM. Tải TOÀN BỘ kho một lần khi mở hộp thoại rồi giữ lại
+  // trong bộ nhớ: vừa dựng được cây kèm số câu/số từ chính xác, vừa xuất file ngay
+  // không phải gọi lại cơ sở dữ liệu lần hai.
+  const [isScopeModalOpen, setIsScopeModalOpen] = useState(false);
+  const [khoCauHoi, setKhoCauHoi] = useState<any[]>([]);
+  const [dangTaiKho, setDangTaiKho] = useState(false);
+  const [dangXuatFile, setDangXuatFile] = useState(false);
+  const [tienTrinhXuat, setTienTrinhXuat] = useState("");
+
+  const thongKeCay: ThongKeNhanh[] = React.useMemo(() => {
+    const gom = new Map<string, ThongKeNhanh>();
+    for (const q of khoCauHoi) {
+      const grade = q.grade || '(chưa rõ lớp)';
+      const topic = q.topic || '(chưa rõ chương)';
+      const lesson = q.lesson || '(chưa rõ bài)';
+      const k = khoaBai(grade, topic, lesson);
+      if (!gom.has(k)) gom.set(k, { grade, topic, lesson, soCau: 0, soTu: 0 });
+      const muc = gom.get(k)!;
+      muc.soCau += 1;
+      muc.soTu += uocLuongSoTuCuaCauHoi([q]);
+    }
+    return Array.from(gom.values());
+  }, [khoCauHoi]);
+
+  /** Tải toàn bộ câu hỏi, phân trang 1000 dòng/lần vì Supabase mặc định chỉ trả 1000. */
+  const taiToanBoKho = async () => {
+    setDangTaiKho(true);
+    try {
+      let tatCa: any[] = [];
+      let trang = 0;
+      const coTrang = 1000;
+      while (true) {
+        const { data, error } = await supabase
+          .from('questions')
+          .select('question_id, grade, subject, topic, lesson, math_form, question_type, difficulty, content, option_a, option_b, option_c, option_d, correct_answer, explanation, image_url')
+          .order('created_at', { ascending: false })
+          .range(trang * coTrang, (trang + 1) * coTrang - 1);
+        if (error) throw error;
+        if (!data || data.length === 0) break;
+        tatCa = tatCa.concat(data);
+        setTienTrinhXuat(`Đang đọc ${tatCa.length} câu...`);
+        if (data.length < coTrang) break;
+        trang++;
+      }
+      setKhoCauHoi(tatCa);
+    } catch (e: any) {
+      alert('Lỗi khi đọc ngân hàng câu hỏi: ' + (e.message || e));
+    } finally {
+      setDangTaiKho(false);
+      setTienTrinhXuat("");
+    }
+  };
+
+  const moHopThoaiXuat = () => {
+    setIsScopeModalOpen(true);
+    if (khoCauHoi.length === 0) taiToanBoKho();
+  };
+
+  const xuLyXuatFile = async (phamVi: PhamViChon) => {
+    const chon = new Set(phamVi.cacBai);
+    const thuocPhamVi = khoCauHoi.filter((q) =>
+      chon.has(khoaBai(q.grade || '(chưa rõ lớp)', q.topic || '(chưa rõ chương)', q.lesson || '(chưa rõ bài)'))
+    );
+    if (thuocPhamVi.length === 0) return alert('Chưa chọn câu hỏi nào để xuất.');
+
+    setDangXuatFile(true);
+    try {
+      const taiVe = (noiDung: string, ten: string) => {
+        // ﻿ (BOM) để Word/Notepad trên Windows mở file không bị lỗi phông tiếng Việt
+        const blob = new Blob(['﻿' + noiDung], { type: 'text/markdown;charset=utf-8' });
+        saveAs(blob, ten);
+      };
+
+      if (phamVi.tachTheoChuong) {
+        const theoChuong = new Map<string, any[]>();
+        for (const q of thuocPhamVi) {
+          const k = `${q.grade || 'X'} - ${q.topic || '(chưa rõ chương)'}`;
+          if (!theoChuong.has(k)) theoChuong.set(k, []);
+          theoChuong.get(k)!.push(q);
+        }
+        let i = 0;
+        for (const [tenChuong, ds] of theoChuong) {
+          i++;
+          setTienTrinhXuat(`Đang tạo file ${i}/${theoChuong.size}...`);
+          taiVe(dungFileMarkdown(ds, { kemLoiGiai: phamVi.kemLoiGiai, tieuDe: tenChuong }), `NganHang_${tenFileAnToan(tenChuong)}.md`);
+          await new Promise((r) => setTimeout(r, 400)); // giãn nhịp để trình duyệt không chặn tải nhiều file
+        }
+        alert(`Đã xuất ${theoChuong.size} file (${thuocPhamVi.length} câu).`);
+      } else {
+        const cacChuong = Array.from(new Set(thuocPhamVi.map((q) => q.topic).filter(Boolean)));
+        const tieuDe = cacChuong.length === 1 ? `${thuocPhamVi[0].grade ? 'Lớp ' + thuocPhamVi[0].grade + ' - ' : ''}${cacChuong[0]}` : `Ngân hàng câu hỏi (${cacChuong.length} chương)`;
+        taiVe(dungFileMarkdown(thuocPhamVi, { kemLoiGiai: phamVi.kemLoiGiai, tieuDe }), `NganHang_${tenFileAnToan(tieuDe)}.md`);
+        alert(`Đã xuất 1 file gồm ${thuocPhamVi.length} câu.`);
+      }
+      setIsScopeModalOpen(false);
+    } catch (e: any) {
+      alert('Lỗi khi xuất file: ' + (e.message || e));
+    } finally {
+      setDangXuatFile(false);
+      setTienTrinhXuat("");
+    }
+  };
 
   // Thanh lọc/thao tác: mặc định thu gọn để đỡ chiếm chỗ, nhớ trạng thái lần mở gần nhất
   const [isFilterExpanded, setIsFilterExpanded] = useState(false);
@@ -402,6 +508,14 @@ export default function QuestionsPage() {
             )}
           </div>
 
+          <button
+            onClick={moHopThoaiXuat}
+            title="Xuất câu hỏi theo chương/bài ra file .md để tải lên NotebookLM"
+            className="flex items-center gap-1.5 bg-slate-700 text-white hover:bg-slate-800 px-3 py-2 rounded-lg font-bold transition-all text-xs shadow-sm"
+          >
+            <FileText className="w-3.5 h-3.5" /> Xuất cho NotebookLM
+          </button>
+
           {selectedQuestions.length > 0 && (
             <div className="relative animate-in fade-in zoom-in duration-200">
               <button
@@ -719,6 +833,16 @@ export default function QuestionsPage() {
         isOpen={isCategoryModalOpen}
         onClose={() => setIsCategoryModalOpen(false)}
         onCategoriesUpdated={fetchCategories}
+      />
+
+      <ExportScopeModal
+        isOpen={isScopeModalOpen}
+        onClose={() => setIsScopeModalOpen(false)}
+        thongKe={thongKeCay}
+        dangTai={dangTaiKho}
+        dangXuat={dangXuatFile}
+        tienTrinh={tienTrinhXuat}
+        onExport={xuLyXuatFile}
       />
     </div>
   );
