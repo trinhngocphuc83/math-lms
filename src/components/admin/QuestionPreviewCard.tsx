@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { CheckCircle2, Image as ImageIcon } from "lucide-react";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -122,6 +123,21 @@ export default function QuestionPreviewCard({
 }: QuestionPreviewCardProps) {
   const isLg = size === 'lg';
 
+  /** Ảnh chèn giữa markdown (```![Hình minh họa](url)```) trôi lẫn với chữ nếu dùng
+   *  thẻ <img> mặc định - bọc lại thành 1 khối riêng, cùng kiểu khung với ảnh truyền
+   *  qua prop imageUrl để hai đường chèn ảnh (markdown lẫn prop riêng) trông giống nhau. */
+  const markdownComponents = {
+    ...customMarkdownComponents,
+    img: ({ src, alt }: any) => (
+      <span className="not-prose my-4 flex flex-col items-center gap-1.5">
+        <img src={src} alt={alt || 'Hình minh họa'} className={`max-w-full h-auto rounded-lg shadow-sm border border-gray-200 ${isLg ? 'max-h-96' : 'max-h-64'}`} />
+        <span className="flex items-center gap-1 text-[11px] font-semibold text-gray-400">
+          <ImageIcon className="w-3 h-3" /> {alt || 'Hình minh họa'}
+        </span>
+      </span>
+    ),
+  };
+
   const renderRich = (text: string, extraProseClass = '') => {
     const cleaned = String(text || '').replace(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi, '');
     let formatted = preprocessMarkdown(preprocessLatexQuirks(cleaned));
@@ -129,7 +145,7 @@ export default function QuestionPreviewCard({
     return (
       <div className={`prose ${isLg ? 'prose-base' : 'prose-sm'} max-w-none break-words prose-p:my-1 leading-relaxed text-gray-800 overflow-x-auto
         [&_code]:whitespace-pre-wrap [&_pre]:whitespace-pre-wrap [&_pre]:max-w-full [&_pre]:overflow-x-auto ${extraProseClass}`}>
-        <ReactMarkdown components={customMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+        <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
           {formatted}
         </ReactMarkdown>
       </div>
@@ -139,9 +155,9 @@ export default function QuestionPreviewCard({
   const { methodText, explanationText } = explanation ? splitExplanation(explanation) : { methodText: '', explanationText: '' };
 
   return (
-    <div className={className}>
+    <div className={`${className} space-y-5`}>
       {badges.length > 0 && (
-        <div className="flex items-center gap-2 mb-4 flex-wrap">
+        <div className="flex items-center gap-2 flex-wrap">
           {badges.map((b, i) => (
             <span key={i} className={`px-3 py-1 font-bold text-xs rounded-lg ${BADGE_COLORS[b.color || 'blue']}`}>
               {b.label}: {b.value}
@@ -150,47 +166,63 @@ export default function QuestionPreviewCard({
         </div>
       )}
 
-      <div className={`text-gray-800 font-medium leading-relaxed mb-6 ${isLg ? 'text-lg' : 'text-base'}`}>
+      <div className={`text-gray-800 font-medium leading-relaxed ${isLg ? 'text-lg' : 'text-base'}`}>
         {renderRich(content || "*(Chưa có nội dung)*")}
         {imageUrl && (
-          <div className="my-4 text-center">
-            <img src={imageUrl} alt="Minh họa" className={`max-w-full h-auto rounded-lg shadow-sm mx-auto border border-gray-200 ${isLg ? 'max-h-96' : 'max-h-64'}`} />
+          <div className="my-4 flex flex-col items-center gap-1.5">
+            <img src={imageUrl} alt="Hình minh họa" className={`max-w-full h-auto rounded-lg shadow-sm border border-gray-200 ${isLg ? 'max-h-96' : 'max-h-64'}`} />
+            <span className="flex items-center gap-1 text-[11px] font-semibold text-gray-400">
+              <ImageIcon className="w-3 h-3" /> Hình minh họa
+            </span>
           </div>
         )}
       </div>
 
       {statements.length > 0 && statementsLayout === 'choice' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {statements.map(st => (
-            <div key={st.key} className="flex gap-2 p-3 bg-white border border-gray-200 rounded-xl">
-              <span className="font-bold text-indigo-600 shrink-0">{st.label}.</span>
+            <div key={st.key} className={`relative flex gap-3 p-3 rounded-xl border transition-colors ${
+              st.isCorrect ? 'bg-emerald-50/60 border-emerald-300' : 'bg-white border-gray-200'
+            }`}>
+              <span className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black ${
+                st.isCorrect ? 'bg-emerald-500 text-white' : 'bg-indigo-100 text-indigo-700'
+              }`}>
+                {st.label}
+              </span>
               <div className="flex-1 min-w-0">{renderRich(st.content)}</div>
-            </div>
-          ))}
-        </div>
-      )}
-
-      {statements.length > 0 && statementsLayout === 'truefalse' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-          {statements.map(st => (
-            <div key={st.key} className="flex flex-col gap-2 p-3 bg-white border border-gray-200 rounded-xl">
-              <span className="font-bold text-indigo-600 text-sm">Mệnh đề {st.label.toUpperCase()}:</span>
-              <div className="flex-1 text-sm">{renderRich(st.content)}</div>
-              {typeof st.isTrue === 'boolean' && (
-                <div className="mt-1 pt-2 border-t border-gray-200">
-                  {st.isTrue
-                    ? <span className="text-xs font-bold text-green-600">✓ Đáp án: ĐÚNG</span>
-                    : <span className="text-xs font-bold text-red-500">✕ Đáp án: SAI</span>}
-                </div>
+              {st.isCorrect && (
+                <span className="absolute -top-2 -right-2 flex items-center gap-1 bg-emerald-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+                  <CheckCircle2 className="w-3 h-3" /> Đúng
+                </span>
               )}
             </div>
           ))}
         </div>
       )}
 
+      {statements.length > 0 && statementsLayout === 'truefalse' && (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {statements.map(st => (
+            <div key={st.key} className="flex flex-col gap-2 p-3 bg-white border border-gray-200 rounded-xl">
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-bold text-indigo-600 text-sm">Mệnh đề {st.label.toUpperCase()}</span>
+                {typeof st.isTrue === 'boolean' && (
+                  st.isTrue
+                    ? <span className="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">✓ ĐÚNG</span>
+                    : <span className="text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded-full">✕ SAI</span>
+                )}
+              </div>
+              <div className="flex-1 text-sm">{renderRich(st.content)}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
       {correctAnswerDisplay && (
-        <div className="bg-emerald-50 border border-emerald-100 p-4 rounded-xl mb-4">
-          <h4 className="font-bold text-emerald-800 mb-1 text-sm">Đáp án đúng:</h4>
+        <div className="bg-emerald-50 border border-emerald-100 p-4 rounded-xl">
+          <h4 className="font-bold text-emerald-800 mb-1 text-sm uppercase tracking-wider flex items-center gap-2">
+            <span className="w-1.5 h-4 bg-emerald-600 rounded-full"></span> Đáp án đúng:
+          </h4>
           <div className="text-emerald-700 font-black text-xl">{renderRich(correctAnswerDisplay)}</div>
         </div>
       )}
