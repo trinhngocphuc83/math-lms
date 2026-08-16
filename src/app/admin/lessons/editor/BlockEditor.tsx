@@ -332,6 +332,15 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
      return false;
   };
 
+  /** Khối đã có ảnh chèn sẵn (AI tự cắt hoặc chèn thủ công) - đánh dấu trên Bản đồ
+   *  để dễ lần ra câu nào có hình mà không phải mở từng câu ra xem. */
+  const blockHasImage = (b: Block): boolean => {
+     const text = b.type === 'md'
+        ? (typeof b.content === 'string' ? b.content : '')
+        : (b.content?.question || '');
+     return hasInsertedImage(text);
+  };
+
   return (
     <div className="flex flex-col md:flex-row h-full overflow-hidden bg-gray-100 relative">
        {/* SIDEBAR BẢN ĐỒ CÂU HỎI - thu gọn được (240px ↔ 52px) */}
@@ -392,6 +401,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 const kind = blockKind(b);
                 const info = blockSlideInfo[i];
                 const needsImage = blockNeedsImage(b);
+                const hasImage = !needsImage && blockHasImage(b);
                 const isActive = activeBlockId === b.id;
                 const preview = blockPreview(b);
                 const hetSlide = info.start + info.count - 1;
@@ -400,7 +410,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                    <button
                       key={b.id}
                       onClick={() => selectBlock(b.id)}
-                      title={`Slide ${info.count > 1 ? `${info.start}-${hetSlide}` : info.start} · ${kind.label}${needsImage ? ' · CÒN THIẾU ẢNH' : ''}\n${preview}`}
+                      title={`Slide ${info.count > 1 ? `${info.start}-${hetSlide}` : info.start} · ${kind.label}${needsImage ? ' · CÒN THIẾU ẢNH' : hasImage ? ' · Có hình ảnh' : ''}\n${preview}`}
                       className={`w-full text-left rounded-lg px-2 py-1.5 border flex items-stretch gap-2 transition-colors ${isActive
                          ? 'bg-indigo-600 border-indigo-600 shadow-sm'
                          : needsImage
@@ -420,6 +430,9 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                             {needsImage && (
                                <span className="w-2 h-2 rounded-full bg-red-500 shrink-0 animate-pulse ml-auto" title="Còn thiếu ảnh" />
                             )}
+                            {hasImage && (
+                               <ImageIcon className={`w-3 h-3 shrink-0 ml-auto ${isActive ? 'text-white/80' : 'text-emerald-500'}`} aria-label="Câu có hình ảnh" />
+                            )}
                          </span>
                          <span className={`block text-[11px] leading-snug mt-0.5 truncate ${isActive ? 'text-white/90' : 'text-gray-600'}`}>
                             {preview || '(trống)'}
@@ -432,9 +445,16 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              {blocks.length > 0 && (
                 <div className="mt-2 pt-2.5 border-t border-gray-100 px-1 flex items-center justify-between text-[10px] font-bold text-gray-400">
                    <span>{blocks.length} khối · {tongSoSlide} slide</span>
-                   {blocks.some(blockNeedsImage) && (
-                      <span className="text-red-500">{blocks.filter(blockNeedsImage).length} thiếu ảnh</span>
-                   )}
+                   <span className="flex items-center gap-2">
+                      {blocks.some(b => !blockNeedsImage(b) && blockHasImage(b)) && (
+                         <span className="text-emerald-500 flex items-center gap-0.5">
+                            <ImageIcon className="w-2.5 h-2.5" /> {blocks.filter(b => !blockNeedsImage(b) && blockHasImage(b)).length}
+                         </span>
+                      )}
+                      {blocks.some(blockNeedsImage) && (
+                         <span className="text-red-500">{blocks.filter(blockNeedsImage).length} thiếu ảnh</span>
+                      )}
+                   </span>
                 </div>
              )}
           </div>
