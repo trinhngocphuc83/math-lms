@@ -14,9 +14,11 @@ import { ensureMathDelimiters } from '@/utils/latexFixer';
 import React from 'react';
 import {
     presentationMarkdownComponents,
+    slideCoViDuMau,
     CANVAS_WIDTH,
     CANVAS_HEIGHT,
 } from '@/components/presentation/presentationTheme';
+import PresentationTimer from '@/components/presentation/PresentationTimer';
 
 /* Vùng nội dung bên trong canvas (đã trừ lề). Mọi phép đo auto-fit dựa trên đây. */
 const PAD_X = 84;
@@ -364,6 +366,10 @@ export default function PresentationPage() {
         } catch (e) { }
     }
 
+    // Đồng hồ đếm ngược chỉ hiện ở slide cần bấm giờ cho học sinh làm bài:
+    // slide câu hỏi tương tác, hoặc slide có thẻ Ví dụ mẫu.
+    const canBamGio = isQuiz || currentFragments.some(frag => slideCoViDuMau(frag));
+
     const handleSlideClick = (e: React.MouseEvent) => {
         const target = e.target as HTMLElement;
         if (target.closest('button') || target.closest('a') || target.closest('input')) return;
@@ -476,6 +482,10 @@ export default function PresentationPage() {
                         style={{ width: `${progressPct}%` }}
                     />
                 </div>
+
+                {/* Đồng hồ bấm giờ - đặt trong canvas nên co giãn cùng slide.
+                    key theo vị trí slide để chuyển sang slide khác thì đồng hồ về trạng thái ban đầu. */}
+                {canBamGio && <PresentationTimer key={`${currentSlideIndex}-${currentFragmentIndex}`} />}
 
                 <div
                     className="flex-1 overflow-y-auto overflow-x-hidden"

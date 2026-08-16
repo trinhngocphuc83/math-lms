@@ -185,6 +185,26 @@ const CALLOUTS = [
     },
 ];
 
+/**
+ * Slide này có thẻ VÍ DỤ MẪU hay không - dùng để tự hiện đồng hồ đếm ngược ở
+ * trang trình chiếu. Soi trên markdown thô (chưa dựng thành React) nên phải tự dò
+ * dòng blockquote, nhưng vẫn dùng lại đúng luật nhận nhãn của CALLOUTS bên trên
+ * để không lệch với thẻ màu đang hiển thị.
+ */
+export function slideCoViDuMau(markdown: string): boolean {
+    if (!markdown) return false;
+    const calloutViDu = CALLOUTS[0]; // thẻ "VÍ DỤ MẪU"
+    for (const dong of String(markdown).split('\n')) {
+        const d = dong.trim();
+        if (!d.startsWith('>')) continue;
+        // Bỏ dấu ">" (có thể lồng nhiều cấp) rồi chuẩn hoá y như lúc dựng thẻ
+        const noiDung = d.replace(/^>+\s*/, '').replace(/^#+\s*/, '');
+        const nhan = normalizeLabel(noiDung).replace(/-/g, '');
+        if (nhan && calloutViDu.match(nhan)) return true;
+    }
+    return false;
+}
+
 export const presentationMarkdownComponents: any = {
     div: ({ node, style, children, ...props }: any) => (
         <div style={sanitizeStyle(style)} {...props}>{children}</div>
@@ -193,13 +213,23 @@ export const presentationMarkdownComponents: any = {
         <span style={sanitizeStyle(style)} {...props}>{children}</span>
     ),
 
-    // Tiêu đề bài / chương: to nhất, có thanh nhấn màu bên trái
+    // Tiêu đề bài / chương: dải màu phủ hết chiều ngang slide, chữ trắng.
+    // Bản cũ chỉ là chữ đen kèm vạch màu mỏng - chiếu lên TV/máy chiếu trông nhạt,
+    // không tạo được điểm nhấn mở đầu bài.
     h1: ({ node, style, children, ...props }: any) => (
-        <div className="not-prose flex items-center gap-6 mb-8 mt-1">
-            <div className="w-[10px] self-stretch rounded-full bg-gradient-to-b from-indigo-500 to-blue-600 shrink-0" />
+        <div className="not-prose relative w-full mb-9 mt-1 rounded-[26px] overflow-hidden
+                        bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600
+                        shadow-[0_18px_45px_-14px_rgba(79,70,229,0.75)]">
+            {/* Hoạ tiết mờ cho dải màu đỡ phẳng */}
+            <div className="pointer-events-none absolute -right-16 -top-24 w-[340px] h-[340px] rounded-full bg-white/10" />
+            <div className="pointer-events-none absolute -right-4 top-16 w-[180px] h-[180px] rounded-full bg-white/[0.07]" />
+            {/* Vạch sáng chạy dọc mép trái làm điểm tựa thị giác */}
+            <div className="absolute left-0 top-0 bottom-0 w-[12px] bg-white/25" />
+
             <h1
-                style={sanitizeStyle(style)}
-                className="text-[70px] font-black text-slate-900 tracking-tight leading-[1.12] m-0"
+                style={{ ...sanitizeStyle(style), textShadow: '0 3px 14px rgba(15,23,42,0.35)' }}
+                className="relative text-[70px] font-black text-white tracking-tight leading-[1.14] m-0
+                           px-12 py-7 break-words"
                 {...props}
             >
                 {children}
