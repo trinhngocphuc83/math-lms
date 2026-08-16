@@ -446,8 +446,14 @@ export default function BatchQueuePage() {
       if (sample) {
         const insertData = { grade: sample.grade, subject: sample.subject, topic: sample.topic, lesson: sample.lesson, math_form: sample.math_form };
         const { error } = await supabase.from('question_categories').insert([insertData]);
+        // Một câu hỏi có thể sinh nhiều đề xuất cùng lúc (Chương mới + Bài mới + Dạng
+        // mới), nhưng cả ba đều ứng với ĐÚNG MỘT dòng danh mục. Duyệt cái đầu đã ghi
+        // dòng đó rồi, nên cái thứ hai chắc chắn đụng khoá trùng (mã 23505) - đây là
+        // chuyện bình thường, không phải lỗi. Trước đây bắt cứng mọi lỗi rồi thoát sớm
+        // nên đề xuất không bao giờ được gỡ, người dùng bấm mãi không hết.
+        const trungKhoa = (error as any)?.code === '23505';
         if (!error) setCategories((prev) => [...prev, insertData]);
-        else { alert("Lỗi thêm danh mục: " + error.message); return; }
+        else if (!trungKhoa) { alert("Lỗi thêm danh mục: " + error.message); return; }
       }
     } else {
       for (const w of affected) {
