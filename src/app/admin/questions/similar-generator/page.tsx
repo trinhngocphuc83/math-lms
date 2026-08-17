@@ -12,6 +12,7 @@ import {
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import QuestionPreviewModal from "@/components/admin/QuestionPreviewModal";
 import { exportQuestionsToWord } from "@/utils/exportDocx";
+import { targetFormatPrompt, CORRECT_ANSWER_FORMAT_HINT } from "@/utils/questionTypes";
 
 
 const cleanJsonString = (str: string) => {
@@ -409,10 +410,7 @@ export default function SimilarGeneratorPage() {
   };
 
   const handleCopySimilarPrompt = (baseQuestion: BaseQuestion) => {
-    let targetFormatStr = "giữ nguyên như câu gốc";
-    if (baseQuestion.target_format === "NLC") targetFormatStr = "Trắc nghiệm 4 đáp án (NLC)";
-    else if (baseQuestion.target_format === "TL") targetFormatStr = "Tự luận (TL) (Không có 4 đáp án)";
-    else if (baseQuestion.target_format === "DS") targetFormatStr = "Đúng/Sai (DS) (Mỗi câu có 4 ý a,b,c,d để xét đúng/sai)";
+    const targetFormatStr = targetFormatPrompt(baseQuestion.target_format);
 
     let targetDifficultyStr = "giữ nguyên độ khó như câu gốc";
     if (baseQuestion.target_difficulty === "harder") targetDifficultyStr = "nâng cao, khó hơn 1 chút so với câu gốc";
@@ -442,7 +440,7 @@ TRẢ VỀ MỘT MẢNG JSON CÓ CẤU TRÚC:
     "mucDo": "1, 2, 3 hoặc 4",
     "noiDung": "Nội dung câu hỏi (chứa LaTeX)...",
     "dapAnA": "...", "dapAnB": "...", "dapAnC": "...", "dapAnD": "...",
-    "dapAnDung": "A/B/C/D (nếu là NLC) hoặc Đ S Đ S (nếu là DS)",
+    "dapAnDung": "${CORRECT_ANSWER_FORMAT_HINT}",
     "loiGiai": "Phương pháp giải:\\n[...]\\n\\nLời giải:\\n[...]"
   }
 ]
@@ -545,10 +543,7 @@ Lời giải: ${baseQuestion.explanation}
     let totalTargetCount = 0;
 
     baseQuestions.forEach((bq, index) => {
-        let targetFormatStr = "giữ nguyên như câu gốc";
-        if (bq.target_format === "NLC") targetFormatStr = "Trắc nghiệm 4 đáp án (NLC)";
-        else if (bq.target_format === "TL") targetFormatStr = "Tự luận (TL) (Không có 4 đáp án)";
-        else if (bq.target_format === "DS") targetFormatStr = "Đúng/Sai (DS) (Mỗi câu có 4 ý a,b,c,d để xét đúng/sai)";
+        const targetFormatStr = targetFormatPrompt(bq.target_format);
 
         let targetDifficultyStr = "giữ nguyên độ khó như câu gốc";
         if (bq.target_difficulty === "harder") targetDifficultyStr = "nâng cao, khó hơn 1 chút so với câu gốc";
@@ -600,7 +595,7 @@ TRẢ VỀ MỘT MẢNG JSON CÓ CẤU TRÚC SAU:
     "mucDo": "1, 2, 3 hoặc 4",
     "noiDung": "Nội dung câu hỏi (chứa LaTeX)...",
     "dapAnA": "...", "dapAnB": "...", "dapAnC": "...", "dapAnD": "...",
-    "dapAnDung": "A/B/C/D (nếu là NLC) hoặc Đ S Đ S (nếu là DS)",
+    "dapAnDung": "${CORRECT_ANSWER_FORMAT_HINT}",
     "loiGiai": "Phương pháp giải:\\n[...]\\n\\nLời giải:\\n[...]"
   }
 ]
@@ -1040,6 +1035,7 @@ Tổng cộng bạn phải sinh ra ĐÚNG ${totalTargetCount} phần tử trong 
                             <select value={bq.target_format} onChange={e=>updateBaseQuestion(bq.temp_id!, { target_format: e.target.value })} className="border rounded-lg p-2 text-sm focus:border-pink-500 outline-none font-medium">
                                 <option value="same">Giữ nguyên</option>
                                 <option value="NLC">Chuyển sang Trắc nghiệm</option>
+                                <option value="TLN">Chuyển sang Trả lời ngắn</option>
                                 <option value="TL">Chuyển sang Tự luận</option>
                                 <option value="DS">Chuyển sang Đúng/Sai</option>
                             </select>

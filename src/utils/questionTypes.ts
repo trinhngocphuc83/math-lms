@@ -89,6 +89,32 @@ export function bankTypeSynonyms(code: BankType): string[] {
   return Object.keys(TO_BANK_TYPE).filter(key => TO_BANK_TYPE[key] === code);
 }
 
+/* ============ MÔ TẢ DẠNG THỨC GỬI CHO AI (Sinh câu tương tự) ============ */
+
+/**
+ * Mô tả "dạng thức đích" đưa vào câu lệnh gửi AI khi sinh câu tương tự.
+ *
+ * Gom về một chỗ vì trước đây chuỗi này bị chép ở BA nơi (hai chỗ trong trang
+ * Sinh tương tự, một chỗ trong API) - thêm dạng mới ở chỗ này quên chỗ kia,
+ * khiến dạng "Trả lời ngắn" (TLN) thiếu hẳn dù ngân hàng vẫn hỗ trợ đầy đủ.
+ *
+ * Giá trị "same" (giữ nguyên như câu gốc) không phải mã ngân hàng nên rơi
+ * vào nhánh mặc định.
+ */
+export function targetFormatPrompt(value: string | null | undefined): string {
+  switch (toBankType(value)) {
+    case 'NLC': return 'Trắc nghiệm 4 đáp án (NLC)';
+    case 'TL':  return 'Tự luận (TL) (Không có 4 đáp án)';
+    case 'DS':  return 'Đúng/Sai (DS) (Mỗi câu có 4 ý a,b,c,d để xét đúng/sai)';
+    case 'TLN': return 'Trả lời ngắn (TLN) (KHÔNG có 4 đáp án A/B/C/D - để trống dapAnA..dapAnD; đáp án là MỘT con số hoặc biểu thức ngắn gọn, ghi vào trường dapAnDung)';
+    default:    return 'giữ nguyên như câu gốc';
+  }
+}
+
+/** Mô tả trường "dapAnDung" trong mẫu JSON yêu cầu AI trả về. */
+export const CORRECT_ANSWER_FORMAT_HINT =
+  'A/B/C/D (nếu là NLC) hoặc Đ S Đ S (nếu là DS) hoặc đáp số/biểu thức ngắn gọn (nếu là TLN)';
+
 /* ===================== MỨC ĐỘ ===================== */
 
 export type DifficultyCode = '1' | '2' | '3' | '4';

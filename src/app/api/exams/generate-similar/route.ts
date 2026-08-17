@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import { requireStaff } from "@/utils/auth/guard";
+import { targetFormatPrompt, CORRECT_ANSWER_FORMAT_HINT } from "@/utils/questionTypes";
 
 function getRotatedApiKeys() {
   const keys: string[] = [];
@@ -36,10 +37,7 @@ export async function POST(request: Request) {
     }
 
     // Determine target format
-    let targetFormatStr = "giữ nguyên như câu gốc";
-    if (targetFormat === "NLC") targetFormatStr = "Trắc nghiệm 4 đáp án (NLC)";
-    else if (targetFormat === "TL") targetFormatStr = "Tự luận (TL) (Không có 4 đáp án)";
-    else if (targetFormat === "DS") targetFormatStr = "Đúng/Sai (DS) (Mỗi câu có 4 ý a,b,c,d để xét đúng/sai)";
+    const targetFormatStr = targetFormatPrompt(targetFormat);
 
     // Determine target difficulty
     let targetDifficultyStr = "giữ nguyên độ khó như câu gốc";
@@ -77,7 +75,7 @@ export async function POST(request: Request) {
           "mucDo": "1, 2, 3 hoặc 4",
           "noiDung": "Nội dung câu hỏi (chứa LaTeX)...",
           "dapAnA": "...", "dapAnB": "...", "dapAnC": "...", "dapAnD": "...",
-          "dapAnDung": "A/B/C/D (nếu là NLC) hoặc Đ S Đ S (nếu là DS)",
+          "dapAnDung": "${CORRECT_ANSWER_FORMAT_HINT}",
           "loiGiai": "Phương pháp giải:\\n[...]\\n\\nLời giải:\\n[...]"
         }
       ]
