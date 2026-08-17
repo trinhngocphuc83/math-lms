@@ -21,7 +21,8 @@ export const base64ToUint8Array = (base64: string) => {
 };
 
 import { cleanLatexForWord } from "./latexToWord";
-import { latexToDocxMath } from "./latexToDocxMath";
+import { cleanLatexControlChars } from "./latexFixer";
+import { latexToDocxElement } from "./latexToDocxMath";
 
 // Đánh dấu tạm cho công thức $...$/$$...$$ để không lẫn với ảnh/HTML khi quét dòng,
 // rồi thay lại bằng công thức Word thật (Equation/OMML) ở dưới - không còn hiện chữ
@@ -42,6 +43,10 @@ const extractMathPlaceholders = (text: string, store: string[]): string => {
 
 const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
   if (!textLine) return [new TextRun({ text: "" })];
+  // Khôi phục lệnh LaTeX bị AI lưu nhầm thành ký tự điều khiển ("\"+TAB+"ext" thay vì
+  // "\text"). Hàm này đã có sẵn và dùng ở nơi khác, nhưng đường xuất Word lại bỏ qua
+  // nên các câu đó ra file .docx với công thức hỏng.
+  textLine = cleanLatexControlChars(textLine);
   textLine = cleanLatexForWord(textLine);
   textLine = sanitizeXml(textLine);
 
@@ -70,7 +75,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
       const endIdx = remaining.indexOf(' ', mathStart + MATH_MARKER.length);
       const nStr = remaining.slice(mathStart + MATH_MARKER.length, endIdx);
       const n = parseInt(nStr, 10);
-      elements.push(latexToDocxMath(mathStore[n]));
+      elements.push(latexToDocxElement(mathStore[n], { color: defaultColor, bold: defaultBold }));
       remaining = remaining.slice(endIdx + 1);
       continue;
     }
@@ -216,7 +221,9 @@ export const fetchImageWithDimensions = async (url: string): Promise<{buffer: Ui
 
 const cleanHtmlNewlinesInTags = (html: string) => {
   if (!html) return "";
-  let cleaned = sanitizeXml(html).replace(/\\{1,2}color\s*\{[^}]+\}/gi, '')
+  // Khôi phục lệnh LaTeX trước, rồi mới dọn ký tự lạ - làm ngược lại thì mã điều khiển
+  // (chính là dấu vết của lệnh hỏng) bị xoá mất, không khôi phục được nữa.
+  let cleaned = sanitizeXml(cleanLatexControlChars(html)).replace(/\\{1,2}color\s*\{[^}]+\}/gi, '')
              .replace(/<img[^>]+>/gi, (match) => match.replace(/\n|\r/g, ''));
   // Hàn gắn dữ liệu cũ: Khôi phục dấu backslash nếu OCR lưu nhầm thành newline (\n)
   return cleaned.replace(/\n(?=eq|otin|abla|atural|ightarrow|ho|angle|imes|heta|riangle|ext|egin|rac|orall|end|left|right)/g, '\\');
@@ -345,7 +352,10 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
       // Teacher Solution
       if (exportType === 'teacher' && q.explanation) {
         let methodText = "";
-        const sanitizedExplanation = sanitizeXml(q.explanation);
+        // Khôi phục lệnh LaTeX TRƯỚC khi dọn ký tự lạ: sanitizeXml xoá các mã điều khiển,
+        // mà lệnh hỏng lại nằm chính ở đó ("\" + mã 0x0C + "orall"). Dọn trước thì mã bị
+        // xoá mất, chỉ còn "\orall" - không còn dấu vết để khôi phục thành "\forall".
+        const sanitizedExplanation = sanitizeXml(cleanLatexControlChars(q.explanation));
         let explanationText = sanitizedExplanation;
 
         // Smart parsing

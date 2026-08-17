@@ -15,6 +15,7 @@ import {
   MathSquareBrackets,
   MathCurlyBrackets,
   MathAngledBrackets,
+  TextRun,
 } from "docx";
 
 type MathComponent =
@@ -93,14 +94,102 @@ const SYMBOL_MAP: Record<string, string> = {
   pi: "π", Pi: "Π", rho: "ρ", sigma: "σ", Sigma: "Σ",
   tau: "τ", phi: "φ", varphi: "φ", Phi: "Φ",
   chi: "χ", psi: "ψ", Psi: "Ψ", omega: "ω", Omega: "Ω",
+  vartheta: "ϑ", varsigma: "ς", varrho: "ϱ", varpi: "ϖ", upsilon: "υ", Upsilon: "Υ",
+
+  // Bổ sung sau khi rà 8215 câu hỏi thật trong ngân hàng: những lệnh dưới đây đang
+  // được dùng nhiều nhưng chưa có trong bảng nên bị xuất ra Word thành CHỮ TRẦN
+  // ("B setminus A" thay vì "B ∖ A").
+  setminus: "∖",
+  backslash: "\\",
+  iff: "⟺",
+  implies: "⟹",
+  impliedby: "⟸",
+  leftrightarrow: "↔",
+  longleftrightarrow: "⟷",
+  Longleftrightarrow: "⟺",
+  Longrightarrow: "⟹",
+  Longleftarrow: "⟸",
+  longleftarrow: "⟵",
+  uparrow: "↑", downarrow: "↓", updownarrow: "↕",
+  mapsto: "↦", hookrightarrow: "↪", rightleftharpoons: "⇌",
+  nearrow: "↗", searrow: "↘", nwarrow: "↖", swarrow: "↙",
+  mid: "∣", nmid: "∤", vert: "|", Vert: "‖", nparallel: "∦",
+  vdots: "⋮", ddots: "⋱",
+  bullet: "•", square: "□", blacksquare: "■", triangleq: "≜",
+  prime: "′",
+  langle: "⟨", rangle: "⟩",
+  propto: "∝", oplus: "⊕", ominus: "⊖", otimes: "⊗", odot: "⊙",
+  subsetneq: "⊊", supseteq: "⊇", nsubseteq: "⊈", nsubset: "⊄",
+  cong: "≅", simeq: "≃", ll: "≪", gg: "≫",
+  star: "⋆", ast: "∗", dagger: "†", ddagger: "‡",
+  degree: "°", partial: "∂", nabla: "∇",
+  aleph: "ℵ", hbar: "ℏ", ell: "ℓ", wp: "℘",
+  top: "⊤", bot: "⊥",
+  vee: "∨", wedge: "∧", lor: "∨", land: "∧", neg: "¬", lnot: "¬",
+  oint: "∮", iint: "∬", iiint: "∭", surd: "√",
+  measuredangle: "∡", sphericalangle: "∢",
+  doteq: "≐", asymp: "≍", bowtie: "⋈",
+  therefore: "∴", because: "∵",
+  colon: ":", cdotp: "·",
+  // Hàm/toán tử viết đứng - LaTeX in dạng chữ đứng, giữ nguyên tên là đúng
+  arcsin: "arcsin", arccos: "arccos", arctan: "arctan", arccot: "arccot",
+  sinh: "sinh", cosh: "cosh", tanh: "tanh", coth: "coth",
+  sec: "sec", csc: "csc", exp: "exp", det: "det", dim: "dim", ker: "ker",
+  deg: "deg", gcd: "gcd", lcm: "lcm", sup: "sup", inf: "inf", arg: "arg",
+  limsup: "lim sup", liminf: "lim inf", bmod: "mod",
 };
+
+/** Chữ hoa kiểu "bảng đen" (\mathbb) - dùng nhiều cho các tập số ℕ ℤ ℚ ℝ ℂ. */
+const MATHBB_MAP: Record<string, string> = {
+  N: "ℕ", Z: "ℤ", Q: "ℚ", R: "ℝ", C: "ℂ", P: "ℙ", H: "ℍ", E: "𝔼", F: "𝔽", K: "𝕂",
+};
+
+/** Dấu phụ đặt trên ký tự (Unicode combining) cho \tilde, \dot, \bar... */
+const ACCENT_MAP: Record<string, string> = {
+  tilde: "̃", widetilde: "̃",
+  dot: "̇", ddot: "̈",
+  breve: "̆", check: "̌",
+  acute: "́", grave: "̀",
+  bar: "̄",
+};
+
+/**
+ * Lệnh chỉ điều khiển cách TRÌNH BÀY, không mang nội dung toán học: cỡ dấu ngoặc,
+ * vị trí chỉ số, kiểu hiển thị, khoảng trắng, kẻ ngang trong bảng. Bỏ qua hoàn toàn
+ * (không có tham số kèm theo) - trước đây rơi vào nhánh mặc định nên bị in ra thành
+ * chữ ("displaystyle", "limits", "hline") ngay giữa công thức.
+ */
+const IGNORED_COMMANDS = new Set([
+  "limits", "nolimits", "displaystyle", "textstyle", "scriptstyle", "scriptscriptstyle",
+  "big", "Big", "bigg", "Bigg", "bigl", "bigr", "Bigl", "Bigr", "biggl", "biggr", "Biggl", "Biggr",
+  "hline", "nonumber", "notag", "smallskip", "medskip", "bigskip", "noindent",
+]);
+
+/** Lệnh đổi kiểu chữ: giữ nội dung, bỏ phần trang trí (Word không cần). */
+const FONT_STYLE_COMMANDS = new Set([
+  "mathbf", "mathcal", "mathfrak", "mathsf", "mathtt", "mathit", "boldsymbol", "bm",
+  "textbf", "textit", "textrm", "textsf", "texttt", "emph", "underline",
+]);
 
 const STRUCTURAL_COMMANDS = new Set([
   "frac", "dfrac", "tfrac", "sqrt", "text", "mathrm", "operatorname",
   "left", "right", "begin", "end", "vec", "overrightarrow", "overline",
+  "widehat", "hat", "mathbb", "color", "textcolor", "underbrace", "overbrace",
+  "pmod", "substack", "hspace", "vspace", "phantom",
+  ...IGNORED_COMMANDS, ...FONT_STYLE_COMMANDS, ...Object.keys(ACCENT_MAP),
 ]);
 
 const KNOWN_COMMANDS = new Set([...Object.keys(SYMBOL_MAP), ...STRUCTURAL_COMMANDS]);
+
+/**
+ * Bật lên khi gặp lệnh LaTeX chưa dịch được trong lần parse hiện tại.
+ *
+ * Trước đây lệnh lạ bị in ra dưới dạng CHỮ TRẦN (mất dấu \), nên trong file Word
+ * hiện "B setminus A", "mathbbN" - người đọc tưởng đề sai. Nay nơi gọi dựa vào cờ
+ * này để xuất nguyên biểu thức LaTeX trong cặp $...$: đọc được và sửa được, thay vì
+ * một công thức trông như hỏng.
+ */
+let coLenhChuaDich = false;
 
 // Sửa lỗi dữ liệu cũ: chuỗi bị escape kép khiến lệnh LaTeX như "\\sqrt" biến thành
 // hai dấu \ liền nhau. Chỉ gộp về 1 dấu \ khi phần chữ theo sau khớp với một lệnh đã biết
@@ -261,9 +350,12 @@ function parseCommand(s: string, i: number): ParseResult {
       const open = parseDelimChar(s, i2); i2 = open.i;
       const startInner = i2;
       let depth = 0;
+      // "\left" dài 5 ký tự, "\right" dài 6 - bản cũ cắt dư 1 ký tự (6 và 7) nên phép
+      // so sánh KHÔNG BAO GIỜ đúng: vòng lặp chạy hết chuỗi, dấu ngoặc nuốt trọn phần
+      // còn lại của biểu thức và chữ "\right" lọt xuống nhánh lệnh-không-biết.
       while (i2 < s.length) {
-        if (s.slice(i2, i2 + 6) === "\\left" && !/[A-Za-z]/.test(s[i2 + 5] || "")) depth++;
-        if (s.slice(i2, i2 + 7) === "\\right" && !/[A-Za-z]/.test(s[i2 + 6] || "")) {
+        if (s.slice(i2, i2 + 5) === "\\left" && !/[A-Za-z]/.test(s[i2 + 5] || "")) depth++;
+        if (s.slice(i2, i2 + 6) === "\\right" && !/[A-Za-z]/.test(s[i2 + 6] || "")) {
           if (depth === 0) break;
           depth--;
         }
@@ -277,13 +369,70 @@ function parseCommand(s: string, i: number): ParseResult {
     }
     case "begin": {
       if (s.slice(i2, i2 + 7) === "{cases}") return parseCasesBody(s, i2 + 7);
-      return { nodes: nodesOf("begin"), i: i2 };
+      // Các môi trường khác (array, aligned, matrix...) chưa dựng được sang Word.
+      // Bản cũ in thẳng chữ "begin" ra giữa công thức; nay báo lên để cả biểu thức
+      // được xuất nguyên dạng $...$ - giáo viên đọc và sửa lại được.
+      coLenhChuaDich = true;
+      const ten = parseBraceRaw(s, i2);
+      return { nodes: [], i: ten.i };
+    }
+    case "end": {
+      coLenhChuaDich = true;
+      const ten = parseBraceRaw(s, i2);
+      return { nodes: [], i: ten.i };
     }
     case "vec":
     case "overrightarrow": {
       const raw = parseBraceRaw(s, i2); i2 = raw.i;
       const inner = raw.text.replace(/\\/g, "");
       return { nodes: nodesOf(inner + "⃗"), i: i2 };
+    }
+    case "widehat":
+    case "hat": {
+      // Trong đề Toán phổ thông, \widehat{ABC} luôn là KÝ HIỆU GÓC (7229 lần trong
+      // ngân hàng, đều là góc: \widehat{COA}, \widehat{BOC}...). Xuất thành "∠ABC"
+      // đọc hiểu ngay; nếu dùng dấu mũ Unicode thì nó bám vào chữ CUỐI (COÂ) chứ
+      // không nằm trên đỉnh góc như quy ước viết tay, nhìn dễ hiểu nhầm hơn.
+      const raw = parseBraceRaw(s, i2); i2 = raw.i;
+      const inner = raw.text.replace(/\\/g, "").trim();
+      return { nodes: nodesOf("∠" + inner), i: i2 };
+    }
+    case "mathbb": {
+      const raw = parseBraceRaw(s, i2); i2 = raw.i;
+      const inner = raw.text.trim();
+      const mapped = [...inner].map((ch) => MATHBB_MAP[ch] ?? ch).join("");
+      return { nodes: nodesOf(mapped), i: i2 };
+    }
+    case "color": {
+      // Chỉ đổi màu chữ (1796 lần trong ngân hàng) - nuốt tham số màu, giữ nội dung
+      // phía sau nguyên vẹn. Trước đây in ra chữ "color" ngay giữa công thức.
+      const raw = parseBraceRaw(s, i2);
+      return { nodes: [], i: raw.i };
+    }
+    case "textcolor": {
+      const mau = parseBraceRaw(s, i2); i2 = mau.i;   // bỏ tên màu
+      const noiDung = parseArg(s, i2); i2 = noiDung.i;
+      return { nodes: noiDung.nodes, i: i2 };
+    }
+    case "underbrace":
+    case "overbrace": {
+      // Word (qua thư viện docx) chưa có dấu ngoặc nhọn ngang; giữ lại nội dung.
+      const arg = parseArg(s, i2); i2 = arg.i;
+      return { nodes: arg.nodes, i: i2 };
+    }
+    case "pmod": {
+      const raw = parseBraceRaw(s, i2); i2 = raw.i;
+      return { nodes: nodesOf(" (mod " + raw.text.trim() + ")"), i: i2 };
+    }
+    case "hspace":
+    case "vspace":
+    case "phantom": {
+      const raw = parseBraceRaw(s, i2);
+      return { nodes: nodesOf(" "), i: raw.i };
+    }
+    case "substack": {
+      const raw = parseBraceRaw(s, i2); i2 = raw.i;
+      return { nodes: parseSequence(raw.text.replace(/\\\\/g, " ")), i: i2 };
     }
     case "overline": {
       // Thư viện docx chưa hỗ trợ gạch ngang trên đầu (m:bar) qua API công khai,
@@ -305,7 +454,35 @@ function parseCommand(s: string, i: number): ParseResult {
     default: {
       const sym = SYMBOL_MAP[name];
       if (sym !== undefined) return { nodes: nodesOf(sym), i: i2 };
-      return { nodes: nodesOf(name || "\\"), i: i2 };
+
+      // Lệnh chỉ điều khiển trình bày (\displaystyle, \limits, \Big, \hline...):
+      // bỏ hẳn, không sinh chữ nào.
+      if (IGNORED_COMMANDS.has(name)) return { nodes: [], i: i2 };
+
+      // Lệnh đổi kiểu chữ (\mathbf{...}, \boldsymbol{...}): giữ nội dung bên trong.
+      if (FONT_STYLE_COMMANDS.has(name)) {
+        const arg = parseArg(s, i2);
+        return { nodes: arg.nodes, i: arg.i };
+      }
+
+      // Dấu phụ đặt trên ký tự (\bar{x}, \tilde{u}, \dot{y}...)
+      const accent = ACCENT_MAP[name];
+      if (accent !== undefined) {
+        const raw = parseBraceRaw(s, i2);
+        if (raw.i > i2) return { nodes: nodesOf(raw.text.replace(/\\/g, "") + accent), i: raw.i };
+        const base = parseBaseUnit(s, i2);
+        return { nodes: base.nodes, i: base.i };
+      }
+
+      // Khoảng trắng LaTeX: \, \; \! \: \ (dấu cách sau dấu chéo)
+      if (name === "," || name === ";" || name === ":" || name === " ") return { nodes: nodesOf(" "), i: i2 };
+      if (name === "!") return { nodes: [], i: i2 };
+
+      // Không nhận ra: KHÔNG đổ tên lệnh ra dạng chữ trần nữa (đó chính là nguyên nhân
+      // file Word hiện "B setminus A"). Báo lên để nơi gọi xuất nguyên biểu thức LaTeX
+      // trong cặp $...$ - vừa đọc được, vừa sửa lại được bằng tay.
+      coLenhChuaDich = true;
+      return { nodes: nodesOf("\\" + name), i: i2 };
     }
   }
 }
@@ -388,5 +565,32 @@ export function latexToDocxMath(latex: string): InstanceType<typeof DocxMath> {
     return new DocxMath({ children: nodes as any });
   } catch (e) {
     return new DocxMath({ children: [new MathRun(raw)] as any });
+  }
+}
+
+/**
+ * Bản dùng khi XUẤT FILE WORD: trả về công thức Word thật nếu dịch trọn vẹn, còn nếu
+ * gặp lệnh LaTeX chưa hỗ trợ thì trả về đoạn chữ "$...$" giữ nguyên LaTeX gốc.
+ *
+ * Lý do: một công thức dịch thiếu trông như đề bị sai (chữ "setminus" nằm giữa dòng),
+ * trong khi "$B \setminus A$" thì giáo viên đọc hiểu ngay và sửa lại được. Thà thấy
+ * LaTeX thô còn hơn thấy công thức hỏng.
+ */
+export function latexToDocxElement(
+  latex: string,
+  opts?: { color?: string; bold?: boolean },
+): InstanceType<typeof DocxMath> | InstanceType<typeof TextRun> {
+  const raw = (latex || "").trim();
+  if (!raw) return new DocxMath({ children: [] });
+  try {
+    const fixed = collapseDoubleBackslashBeforeKnownCommand(raw);
+    coLenhChuaDich = false;
+    const nodes = parseSequence(fixed);
+    if (coLenhChuaDich) {
+      return new TextRun({ text: `$${raw}$`, color: opts?.color, bold: opts?.bold });
+    }
+    return new DocxMath({ children: nodes as any });
+  } catch (e) {
+    return new TextRun({ text: `$${raw}$`, color: opts?.color, bold: opts?.bold });
   }
 }

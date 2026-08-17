@@ -9,7 +9,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import { fixLatexText, applyLatexFixToActiveElement , cleanObjectLatex } from "@/utils/latexFixer";
-import { latexToDocxMath } from "@/utils/latexToDocxMath";
+import { latexToDocxElement } from "@/utils/latexToDocxMath";
 import 'katex/dist/katex.min.css';
 import { useSearchParams, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
@@ -796,7 +796,7 @@ const buildRunsFromLine = async (line: string, opts: { color?: string; bold?: bo
             const endIdx = remaining.indexOf(' ', next.idx + MATH_MARKER.length);
             const nStr = remaining.slice(next.idx + MATH_MARKER.length, endIdx);
             const n = parseInt(nStr, 10);
-            runs.push(latexToDocxMath(mathStore[n]));
+            runs.push(latexToDocxElement(mathStore[n], opts));
             remaining = remaining.slice(endIdx + 1);
         } else if (next.type === 'img') {
             const end = remaining.indexOf('>', next.idx);

@@ -68,6 +68,10 @@ export function cleanLatexControlChars(s: string): string {
     res = res.replace(/\x09an/g, '\\tan');
     res = res.replace(/\x09heta/g, '\\theta');
     res = res.replace(/\x09imes/g, '\\times');
+    // \text{...} là lệnh hay dùng nhất nhưng lại thiếu ở đây: trong ngân hàng có câu
+    // lưu thành "\" + TAB + "ext{ là số chẵn }", xuất ra Word thành công thức hỏng.
+    res = res.replace(/\x09ext/g, '\\text');
+    res = res.replace(/\x09frac/g, '\\tfrac');
     res = res.replace(/\x0Dightarrow/g, '\\rightarrow');
     res = res.replace(/\x0Dight/g, '\\right');
     res = res.replace(/\x0Dho/g, '\\rho');
