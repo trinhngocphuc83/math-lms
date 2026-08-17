@@ -22,7 +22,7 @@ export const base64ToUint8Array = (base64: string) => {
 
 import { cleanLatexForWord } from "./latexToWord";
 import { cleanLatexControlChars } from "./latexFixer";
-import { latexToDocxElement } from "./latexToDocxMath";
+import { latexToDocxElement, latexToDocxTable, laBangKeO } from "./latexToDocxMath";
 
 // Đánh dấu tạm cho công thức $...$/$$...$$ để không lẫn với ảnh/HTML khi quét dòng,
 // rồi thay lại bằng công thức Word thật (Equation/OMML) ở dưới - không còn hiện chữ
@@ -39,6 +39,64 @@ const extractMathPlaceholders = (text: string, store: string[]): string => {
     return `${MATH_MARKER}${store.length - 1} `;
   });
   return text;
+};
+
+/**
+ * Dựng một dòng nội dung, tách riêng BẢNG KẺ Ô (\begin{array} kèm \hline) thành bảng
+ * Word thật thay vì nhồi vào công thức.
+ *
+ * Trong dữ liệu thật, bảng số liệu thường nằm NGOÀI cặp $...$ (ví dụ "... = 20$.
+ * \begin{array}{|c|c|} \hline ..."), nên phải dò ở mức văn bản chứ không thể chỉ dò
+ * bên trong công thức.
+ */
+/**
+ * Gộp mỗi bảng \begin{array}...\end{array} về ĐÚNG MỘT DÒNG.
+ *
+ * Trong dữ liệu thật, các hàng của bảng nằm trên nhiều dòng khác nhau. Nội dung được
+ * cắt theo dấu xuống dòng trước khi dựng, nên không dòng nào chứa trọn cả bảng - bảng
+ * bị vỡ thành từng mảnh "\begin{array}{|c|c|}", "\hline ... \\", mỗi mảnh một dòng
+ * kèm dấu ➤ riêng. Gộp trước khi cắt thì mỗi bảng mới nhận diện được nguyên khối.
+ */
+const gopBangVeMotDong = (text: string): string => {
+  if (!text || !text.includes('begin{array}')) return text;
+  return text.replace(/\\begin\s*\{array\}[\s\S]*?\\end\s*\{array\}/g,
+    (bang) => bang.replace(/[\r\n]+/g, ' '));
+};
+
+const dungDongCoTheCoBang = async (
+  line: string,
+  opts: { color?: string; bold?: boolean; icon?: TextRun } = {},
+): Promise<any[]> => {
+  const ra: any[] = [];
+  let conLai = line;
+  const RE_BANG = /\$?\s*\\begin\s*\{array\}[\s\S]*?\\end\s*\{array\}\s*\$?/;
+  let iconConLai = opts.icon;
+
+  // Dấu ➤ chỉ gắn vào đoạn văn ĐẦU TIÊN của dòng; nếu dòng mở đầu bằng bảng thì
+  // gắn vào đoạn ngay sau bảng để không mất mốc đầu dòng.
+  const themDoanVan = async (text: string) => {
+    const runs = await processTextLine(text, opts.color, opts.bold);
+    if (iconConLai) { runs.unshift(iconConLai); iconConLai = undefined; }
+    ra.push(new Paragraph({ children: runs }));
+  };
+
+  while (true) {
+    const m = conLai.match(RE_BANG);
+    if (!m || !laBangKeO(m[0])) break;
+
+    const truoc = conLai.slice(0, m.index).trim();
+    if (truoc) await themDoanVan(truoc);
+
+    const bang = latexToDocxTable(m[0]);
+    if (bang) {
+      ra.push(bang);
+      ra.push(new Paragraph({ children: [new TextRun({ text: "" })] })); // giãn cách sau bảng
+    }
+    conLai = conLai.slice((m.index || 0) + m[0].length);
+  }
+
+  if (conLai.trim() || ra.length === 0) await themDoanVan(conLai);
+  return ra;
 };
 
 const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
@@ -249,7 +307,7 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
       }
 
       let rawContent = cleanHtmlNewlinesInTags(q.content || "");
-      const contentLines = rawContent.split('\n');
+      const contentLines = gopBangVeMotDong(rawContent).split('\n');
       let imageInserted = false;
 
       const titleLineText = contentLines[0].replace(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi, '').trim();
@@ -298,10 +356,10 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
             
             const textWithoutMarker = line.replace(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi, '').trim();
             if (textWithoutMarker) {
-               childrenElements.push(new Paragraph({ children: await processTextLine(textWithoutMarker) }));
+               childrenElements.push(...await dungDongCoTheCoBang(textWithoutMarker));
             }
          } else {
-            childrenElements.push(new Paragraph({ children: await processTextLine(line) }));
+            childrenElements.push(...await dungDongCoTheCoBang(line));
          }
       }
 
@@ -401,13 +459,13 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
         // 2. Output Method lines with icons
         if (methodText) {
           methodText = methodText.replace(/^\*\*/, "");
-          const mLines = cleanHtmlNewlinesInTags(methodText).split('\n');
+          const mLines = gopBangVeMotDong(cleanHtmlNewlinesInTags(methodText)).split('\n');
           for (const line of mLines) {
             const trimmedLine = line.trim();
             if (trimmedLine) {
-              const elements = await processTextLine(cleanLine(trimmedLine));
-              elements.unshift(new TextRun({ text: "➤ ", color: "E67E22", bold: true })); // Orange icon
-              childrenElements.push(new Paragraph({ children: elements }));
+              childrenElements.push(...await dungDongCoTheCoBang(cleanLine(trimmedLine), {
+                icon: new TextRun({ text: "➤ ", color: "E67E22", bold: true }),
+              }));
             }
           }
         }
@@ -424,13 +482,13 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
         // 4. Output Explanation lines with icons
         if (explanationText) {
           explanationText = explanationText.replace(/^\*\*/, "");
-          const eLines = cleanHtmlNewlinesInTags(explanationText).split('\n');
+          const eLines = gopBangVeMotDong(cleanHtmlNewlinesInTags(explanationText)).split('\n');
           for (const line of eLines) {
             const trimmedLine = line.trim();
             if (trimmedLine) {
-              const elements = await processTextLine(cleanLine(trimmedLine));
-              elements.unshift(new TextRun({ text: "➤ ", color: "27AE60", bold: true })); // Green icon
-              childrenElements.push(new Paragraph({ children: elements }));
+              childrenElements.push(...await dungDongCoTheCoBang(cleanLine(trimmedLine), {
+                icon: new TextRun({ text: "➤ ", color: "27AE60", bold: true }),
+              }));
             }
           }
         }

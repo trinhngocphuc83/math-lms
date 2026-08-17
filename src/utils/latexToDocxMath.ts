@@ -16,6 +16,12 @@ import {
   MathCurlyBrackets,
   MathAngledBrackets,
   TextRun,
+  Table,
+  TableRow,
+  TableCell,
+  Paragraph,
+  WidthType,
+  AlignmentType,
 } from "docx";
 
 type MathComponent =
@@ -277,13 +283,32 @@ function wrapBrackets(open: string, close: string, children: MathComponent[]): M
   return [new MathAngledBrackets({ children }) as unknown as MathComponent];
 }
 
-function parseCasesBody(s: string, i: number): ParseResult {
-  // i trỏ ngay sau "\begin{cases}"
+/**
+ * Dấu ngoặc bao ngoài của từng môi trường nhiều dòng.
+ * Chuỗi rỗng nghĩa là không có dấu ngoặc bên đó.
+ */
+const MOI_TRUONG_NHIEU_DONG: Record<string, { mo: string; dong: string }> = {
+  cases: { mo: "{", dong: "" },
+  bmatrix: { mo: "[", dong: "]" },
+  Bmatrix: { mo: "{", dong: "}" },
+  pmatrix: { mo: "(", dong: ")" },
+  vmatrix: { mo: "|", dong: "|" },
+  matrix: { mo: "", dong: "" },
+  smallmatrix: { mo: "", dong: "" },
+  array: { mo: "", dong: "" },
+  aligned: { mo: "", dong: "" },
+  align: { mo: "", dong: "" },
+  gathered: { mo: "", dong: "" },
+  split: { mo: "", dong: "" },
+};
+
+function parseCasesBody(s: string, i: number, tenMoiTruong = "cases"): ParseResult {
+  // i trỏ ngay sau "\begin{<tên>}"
   const rows: string[] = [];
   let depth = 0;
   let start = i;
   let k = i;
-  const endMarker = "\\end{cases}";
+  const endMarker = `\\end{${tenMoiTruong}}`;
   while (k < s.length) {
     if (s.slice(k, k + endMarker.length) === endMarker && depth === 0) {
       rows.push(s.slice(start, k));
@@ -303,7 +328,9 @@ function parseCasesBody(s: string, i: number): ParseResult {
   if (k >= s.length) rows.push(s.slice(start));
 
   const rowNodes = rows
-    .map((row) => row.replace(/&/g, " "))
+    // "&" chỉ để căn cột trong LaTeX; ở đây thay bằng khoảng trắng. Bỏ luôn \hline
+    // (kẻ ngang) vì dựng inline không có đường kẻ - bảng thật do exportDocx lo.
+    .map((row) => row.replace(/\\hline/g, " ").replace(/&/g, " "))
     .filter((row) => row.trim().length > 0)
     .map((row) => parseSequence(row));
 
@@ -313,7 +340,8 @@ function parseCasesBody(s: string, i: number): ParseResult {
     joined.push(...nodes);
   });
 
-  return { nodes: wrapBrackets("{", "", joined), i: k };
+  const ngoac = MOI_TRUONG_NHIEU_DONG[tenMoiTruong] || { mo: "", dong: "" };
+  return { nodes: wrapBrackets(ngoac.mo, ngoac.dong, joined), i: k };
 }
 
 function parseCommand(s: string, i: number): ParseResult {
@@ -368,17 +396,24 @@ function parseCommand(s: string, i: number): ParseResult {
       return { nodes: wrapBrackets(open.ch, close.ch, innerNodes), i: close.i };
     }
     case "begin": {
-      if (s.slice(i2, i2 + 7) === "{cases}") return parseCasesBody(s, i2 + 7);
-      // Các môi trường khác (array, aligned, matrix...) chưa dựng được sang Word.
-      // Bản cũ in thẳng chữ "begin" ra giữa công thức; nay báo lên để cả biểu thức
-      // được xuất nguyên dạng $...$ - giáo viên đọc và sửa lại được.
+      const ten = parseBraceRaw(s, i2); i2 = ten.i;
+      const tenMT = ten.text.trim();
+      if (MOI_TRUONG_NHIEU_DONG[tenMT]) {
+        // \begin{array}{|c|c|} có thêm phần khai báo cột ngay sau tên - bỏ qua,
+        // vì dựng inline thì không kẻ cột được.
+        if (tenMT === "array" && s[i2] === "{") i2 = parseBraceRaw(s, i2).i;
+        return parseCasesBody(s, i2, tenMT);
+      }
+      // Môi trường lạ: báo lên để cả biểu thức xuất nguyên dạng $...$ (bản cũ in
+      // thẳng chữ "begin" ra giữa công thức).
       coLenhChuaDich = true;
-      const ten = parseBraceRaw(s, i2);
-      return { nodes: [], i: ten.i };
+      return { nodes: [], i: i2 };
     }
     case "end": {
-      coLenhChuaDich = true;
+      // \end đã được parseCasesBody nuốt cùng thân môi trường; còn sót lại nghĩa là
+      // môi trường không dựng được.
       const ten = parseBraceRaw(s, i2);
+      if (!MOI_TRUONG_NHIEU_DONG[ten.text.trim()]) coLenhChuaDich = true;
       return { nodes: [], i: ten.i };
     }
     case "vec":
@@ -566,6 +601,72 @@ export function latexToDocxMath(latex: string): InstanceType<typeof DocxMath> {
   } catch (e) {
     return new DocxMath({ children: [new MathRun(raw)] as any });
   }
+}
+
+/* ==================== BẢNG BIẾN THIÊN / BẢNG SỐ LIỆU ==================== */
+
+/**
+ * Nhận diện một biểu thức LaTeX là BẢNG CÓ KẺ Ô, tức \begin{array} kèm \hline.
+ * Chỉ loại này mới dựng thành bảng Word; \begin{array}{l} không có \hline chỉ là
+ * danh sách nhiều dòng nên vẫn để trong công thức.
+ */
+export function laBangKeO(latex: string): boolean {
+  const s = String(latex || "");
+  return /\\begin\s*\{array\}/.test(s) && /\\hline/.test(s);
+}
+
+/** Tách thân bảng thành mảng hàng, mỗi hàng là mảng ô (theo dấu & và \\). */
+function tachOBang(than: string): string[][] {
+  const hang: string[][] = [];
+  let o: string[] = [];
+  let batDau = 0;
+  let depth = 0;
+  const chotO = (den: number) => { o.push(than.slice(batDau, den)); batDau = den; };
+  for (let k = 0; k < than.length; k++) {
+    if (than[k] === "{") depth++;
+    else if (than[k] === "}") depth--;
+    else if (depth === 0 && than[k] === "&") { chotO(k); batDau = k + 1; }
+    else if (depth === 0 && than[k] === "\\" && than[k + 1] === "\\") {
+      chotO(k); batDau = k + 2; k++;
+      hang.push(o); o = [];
+    }
+  }
+  o.push(than.slice(batDau));
+  hang.push(o);
+  return hang
+    .map((h) => h.map((c) => c.replace(/\\hline/g, "").trim()))
+    .filter((h) => h.some((c) => c.length > 0));
+}
+
+/**
+ * Dựng bảng Word thật từ \begin{array}{|c|c|}...\hline...\end{array}.
+ *
+ * Dùng bảng Word (có đường kẻ, chỉnh được độ rộng cột) thay vì nhét vào công thức:
+ * bảng số liệu ghép nhóm và bảng biến thiên vốn là BẢNG, để trong công thức thì mất
+ * hết đường kẻ, các số dồn thành một dòng dài không đọc được.
+ *
+ * Nội dung từng ô vẫn đi qua trình dịch công thức nên $\frac{a}{b}$ trong ô vẫn ra
+ * công thức Word bình thường.
+ */
+export function latexToDocxTable(latex: string): InstanceType<typeof Table> | null {
+  const s = String(latex || "");
+  const m = s.match(/\\begin\s*\{array\}\s*(\{[^}]*\})?([\s\S]*?)\\end\s*\{array\}/);
+  if (!m) return null;
+  const hang = tachOBang(m[2] || "");
+  if (hang.length === 0) return null;
+  const soCot = Math.max(...hang.map((h) => h.length));
+
+  const rows = hang.map((h) => new TableRow({
+    children: Array.from({ length: soCot }, (_, c) => new TableCell({
+      children: [new Paragraph({
+        alignment: AlignmentType.CENTER,
+        children: [latexToDocxElement(h[c] ?? "")] as any,
+      })],
+      width: { size: Math.floor(100 / soCot), type: WidthType.PERCENTAGE },
+    })),
+  }));
+
+  return new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE } });
 }
 
 /**
