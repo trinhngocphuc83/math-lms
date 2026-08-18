@@ -57,8 +57,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Không có câu hỏi nào cần phân loại." }, { status: 400 });
     }
 
-    const allKeys = getAllAIKeys();
-    const cleanKeys = filterCleanKeys(allKeys);
+    const allKeys = await getAllAIKeys();
+    const cleanKeys = await filterCleanKeys(allKeys);
 
     if (cleanKeys.length === 0) {
        return NextResponse.json({
@@ -93,7 +93,7 @@ export async function POST(request: Request) {
         const msg = (err.message || '').toLowerCase();
 
         if (msg.includes('quota') || msg.includes('429') || msg.includes('exceeded') || msg.includes('too many requests') || msg.includes('resource has been exhausted')) {
-          blockKey(apiKey, err.message);
+          await blockKey(apiKey, err.message);
           console.log(`[Auto-Fallback Detect Forms] Key ***${apiKey.slice(-4)} đã cạn quota -> Chuyển Key tiếp theo...`);
           continue;
         }

@@ -7,6 +7,9 @@ export default function AdminAIKeysPage() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
+  // Khoá đã cạn hạn mức trong ngày sẽ bị treo 24 giờ - hiện ra để biết vì sao số cổng
+  // dùng được ít hơn tổng số đang có.
+  const [blockedCount, setBlockedCount] = useState(0);
 
   useEffect(() => {
     fetchData();
@@ -21,6 +24,11 @@ export default function AdminAIKeysPage() {
       const resTotal = await fetch('/api/settings/ai-keys?action=totalCount');
       const dataTotal = await resTotal.json();
       setTotalCount(dataTotal.count || 0);
+
+      // Hỏi luôn đường cấp khoá để biết bao nhiêu khoá đang bị treo vì cạn hạn mức
+      const resKeys = await fetch('/api/admin/gemini-key');
+      const dataKeys = await resKeys.json();
+      setBlockedCount(dataKeys.soKhoaBiTreo || 0);
     } catch (err) {
       alert('Không thể tải dữ liệu Cổng AI');
     } finally {
@@ -74,7 +82,7 @@ export default function AdminAIKeysPage() {
             <h1 className="text-3xl font-black bg-clip-text text-transparent bg-gradient-to-r from-indigo-200 to-white">
               TRẠM KIỂM SOÁT CỔNG A.I
             </h1>
-            <p className="text-indigo-200/80 font-medium">Trung tâm năng lượng Trí Tuệ Nhân Tạo (Gemini 3.5 Flash)</p>
+            <p className="text-indigo-200/80 font-medium">Trung tâm năng lượng Trí Tuệ Nhân Tạo (Gemini 3.7 Flash)</p>
           </div>
         </div>
 
@@ -84,7 +92,14 @@ export default function AdminAIKeysPage() {
             <h3 className="text-xl font-bold text-yellow-500">Tổng Năng Lượng Đang Có</h3>
           </div>
           <p className="text-slate-300 mb-2">Hệ thống đang sở hữu tổng cộng <strong className="text-white text-2xl px-2">{totalCount}</strong> Cổng Máy Chủ A.I có sẵn để Chấm Thi.</p>
+          {blockedCount > 0 && (
+            <p className="text-amber-300 font-bold mb-2">
+              ⚠️ Đang tạm khoá {blockedCount}/{totalCount} cổng do hết hạn mức trong ngày — chỉ còn {totalCount - blockedCount} cổng dùng được.
+              Các cổng này tự mở lại sau 24 giờ.
+            </p>
+          )}
           <p className="text-sm text-slate-400 italic">* Lưu ý: Số lượng này đã bao gồm các Mã Khóa cài sẵn ở Lõi hệ thống (.env.local) và các Mã Khóa cộng dồn được thêm ở bên dưới.</p>
+          <p className="text-sm text-slate-400 italic mt-1">* Gói miễn phí của Google giới hạn <strong className="text-slate-300">20 lượt/ngày cho mỗi khoá</strong>. Cần quét nhiều thì thêm nhiều khoá, hoặc nâng cấp gói trả phí.</p>
         </div>
 
         <div className="mb-6 relative z-10">

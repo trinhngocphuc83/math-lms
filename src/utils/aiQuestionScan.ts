@@ -272,23 +272,78 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
   9. NHẬN DẠNG HÌNH ẢNH ĐI KÈM CÂU HỎI: Nếu trong ảnh có đồ thị, hình vẽ, bảng số liệu hoặc sơ đồ ĐI KÈM một câu hỏi, TUYỆT ĐỐI KHÔNG mô tả chi tiết làm lệch nội dung gốc của câu hỏi. Thay vào đó, bạn chỉ cần quét kỹ và thêm một dòng thông báo "[CÓ HÌNH ẢNH KÈM THEO]" vào cuối trường "noiDung", VÀ điền trường "viTriHinhAnh". CHỈ ĐƯỢC PHÉP can thiệp/sửa đổi nội dung gốc của câu hỏi nếu bạn phát hiện câu hỏi bị sai đề, và trong trường hợp đó, PHẢI thêm một dòng thông báo "[CÂU HỎI CÓ THỂ BỊ SAI ĐỀ, ĐÃ SỬA LẠI]" để thông báo.`;
 }
 
-/** Gọi Gemini, tự xoay vòng qua các API key khi 1 key lỗi/quá tải. Ném lỗi gộp nếu TẤT CẢ key đều fail. */
+/** Khoá đã dùng hết hạn mức của Google (429) - đổi sang khoá khác mới có tác dụng. */
+const laLoiCanHanMuc = (msg: string): boolean =>
+  /429|quota|exceeded|too many requests|resource has been exhausted/i.test(msg);
+
+/** Model đang quá tải (503) - lỗi nằm ở phía Google, đổi khoá cũng vô ích. */
+const laLoiQuaTai = (msg: string): boolean =>
+  /503|service unavailable|overloaded|high demand/i.test(msg);
+
+/** Báo về máy chủ để treo khoá đã cạn 24 giờ, lần quét sau khỏi thử lại cho mất thời gian. */
+async function baoKhoaDaCan(key: string, reason: string) {
+  try {
+    await fetch('/api/admin/gemini-key', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key, reason }),
+    });
+  } catch { /* báo được thì tốt, không thì thôi - không để việc này chặn luồng quét */ }
+}
+
+/**
+ * Gọi Gemini, tự xoay vòng qua các API key. Ném lỗi gộp nếu TẤT CẢ key đều hỏng.
+ *
+ * Phân biệt hai loại lỗi thay vì gộp chung như bản cũ:
+ *   - 429 (khoá cạn hạn mức): đổi khoá NGAY, đồng thời treo khoá đó lại để lần sau bỏ qua.
+ *   - 503 (model quá tải): lỗi ở phía Google chứ không phải khoá, nên đổi khoá vô ích -
+ *     chờ một nhịp ngắn rồi thử lại chính khoá đó, chỉ bỏ cuộc sau vài lần.
+ */
 export async function callGeminiWithKeyFallback(keys: string[], prompt: string, parts: any[]): Promise<string> {
   // Import động để tránh kéo thư viện Google AI vào những nơi không cần (VD trang chỉ hiển thị).
   const { GoogleGenerativeAI } = await import("@google/generative-ai");
+  const SO_LAN_THU_LAI_QUA_TAI = 2;
+  const CHO_MS = 2500;
   let lastErrorMsg = "";
+  let soKhoaCan = 0;
+
   for (const apiKey of keys) {
-    try {
-      const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
-      const result = await model.generateContent([prompt, ...parts]);
-      return result.response.text();
-    } catch (e: any) {
-      console.warn("API Key lỗi, thử key tiếp theo...", e.message);
-      lastErrorMsg = e.message;
+    for (let lan = 0; lan <= SO_LAN_THU_LAI_QUA_TAI; lan++) {
+      try {
+        const genAI = new GoogleGenerativeAI(apiKey);
+        const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
+        const result = await model.generateContent([prompt, ...parts]);
+        return result.response.text();
+      } catch (e: any) {
+        lastErrorMsg = e?.message || String(e);
+
+        if (laLoiCanHanMuc(lastErrorMsg)) {
+          soKhoaCan++;
+          console.warn(`Khoá ***${apiKey.slice(-4)} đã cạn hạn mức, chuyển khoá khác.`);
+          void baoKhoaDaCan(apiKey, lastErrorMsg);
+          break; // sang khoá tiếp theo
+        }
+
+        if (laLoiQuaTai(lastErrorMsg) && lan < SO_LAN_THU_LAI_QUA_TAI) {
+          console.warn(`Model đang quá tải, chờ ${CHO_MS}ms rồi thử lại (lần ${lan + 1})...`);
+          await new Promise(r => setTimeout(r, CHO_MS));
+          continue; // thử lại chính khoá này
+        }
+
+        console.warn("Khoá lỗi, thử khoá tiếp theo...", lastErrorMsg);
+        break;
+      }
     }
   }
-  throw new Error("Tất cả các API key đều bị lỗi hoặc quá tải (503). Vui lòng thử lại sau. Lỗi cuối: " + lastErrorMsg);
+
+  if (soKhoaCan > 0 && soKhoaCan === keys.length) {
+    throw new Error(
+      `Cả ${keys.length} khoá AI đều đã dùng hết hạn mức trong ngày `
+      + '(gói miễn phí của Google chỉ cho 20 lượt/ngày mỗi khoá). '
+      + 'Vui lòng chờ sang ngày mới, thêm khoá mới ở trang Cài đặt Cổng A.I, hoặc nâng cấp gói trả phí.',
+    );
+  }
+  throw new Error("Tất cả các API key đều bị lỗi hoặc quá tải. Vui lòng thử lại sau. Lỗi cuối: " + lastErrorMsg);
 }
 
 export interface ParseContext {

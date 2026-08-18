@@ -20,8 +20,8 @@ export async function POST(request: Request) {
     }
 
     // Lấy toàn bộ Keys (.env + JSON cộng dồn) rồi lọc bỏ Keys đang nằm trong Sổ Đen
-    const allKeys = getAllAIKeys();
-    const cleanKeys = filterCleanKeys(allKeys);
+    const allKeys = await getAllAIKeys();
+    const cleanKeys = await filterCleanKeys(allKeys);
     
     if (cleanKeys.length === 0) {
        return NextResponse.json({ 
@@ -103,7 +103,7 @@ YÊU CẦU:
         
         // Phát hiện Lỗi Quota/429 -> Quăng Key vào Sổ Đen, nhảy sang Key tiếp
         if (msg.includes('quota') || msg.includes('429') || msg.includes('exceeded') || msg.includes('too many requests') || msg.includes('resource has been exhausted')) {
-          blockKey(apiKey, err.message);
+          await blockKey(apiKey, err.message);
           console.log(`[Auto-Fallback] Key ***${apiKey.slice(-4)} đã cạn quota -> Chuyển Key tiếp theo...`);
           continue; // NHẢY SANG KEY TIẾP THEO NGAY LẬP TỨC
         }

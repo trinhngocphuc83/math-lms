@@ -11,7 +11,7 @@ export async function GET(req: Request) {
     const countGuard = await requireUser();
     if (!countGuard.ok) return countGuard.response;
 
-    const allKeys = getAllAIKeys();
+    const allKeys = await getAllAIKeys();
     return NextResponse.json({ count: allKeys.length });
   }
 
@@ -19,7 +19,7 @@ export async function GET(req: Request) {
   const guard = await requireAdmin();
   if (!guard.ok) return guard.response;
 
-  const customKeys = getCustomKeys();
+  const customKeys = await getCustomKeys();
   return NextResponse.json({ customKeys });
 }
 
@@ -35,7 +35,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Định dạng dữ liệu không hợp lệ.' }, { status: 400 });
     }
 
-    const success = saveCustomKeys(keys);
+    const success = await saveCustomKeys(keys);
     if (success) {
       return NextResponse.json({ message: 'Đã lưu Cổng Máy chủ Trí tuệ Nhân tạo thành công!' });
     } else {
