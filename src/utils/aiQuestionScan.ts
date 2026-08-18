@@ -75,6 +75,72 @@ export const canChenAnh = (
   return IMAGE_NEEDED_REGEX.test(text || '');
 };
 
+/* ============ CÂU ĐÚNG/SAI: TÁCH 4 Ý RA 4 MỆNH ĐỀ ============ */
+
+/**
+ * Đưa đáp án đúng của câu Đúng/Sai về chuỗi 4 ký tự Đ/S.
+ *
+ * AI hay trả về đủ kiểu: "a) Đ, b) S, c) Đ, d) Đ", "Đ S Đ S", "ĐSĐĐ", "DSDD"...
+ * Nơi chấm điểm và nơi hiển thị đều mong đợi đúng 4 ký tự liền nhau, nên phải gom
+ * về một dạng - nếu không, ô đáp án hiện lộn xộn ("SD D, b) Đ, c) S, d) Đ").
+ */
+export function chuanHoaDapAnDungSai(raw: string | null | undefined): string {
+  const s = String(raw || '');
+  if (!s.trim()) return '';
+  // Ưu tiên dạng có nhãn ý: lấy chữ Đ/S (hoặc "Đúng"/"Sai") đứng ngay sau "a)", "b)"...
+  //
+  // Không dùng \b sau chữ Đ: "Đ" nằm ngoài bảng chữ Latin nên JS không coi là ký tự từ,
+  // "c) Đ," không hề khớp - lúc đó chỉ nhặt được vài ý rồi trả về chuỗi cụt ("SS").
+  const theoNhan = [...s.matchAll(/(?:^|[^A-Za-z])([a-dA-D])\s*[).:-]\s*([ĐđDdSs])/g)];
+  if (theoNhan.length >= 2) {
+    const map: Record<string, string> = {};
+    theoNhan.forEach(m => { map[m[1].toLowerCase()] = /[ĐđDd]/.test(m[2]) ? 'Đ' : 'S'; });
+    const ra = ['a', 'b', 'c', 'd'].map(k => map[k] || '').join('');
+    // Chỉ nhận khi gom đủ cả 4 ý; thiếu ý nào thì để nhánh dưới nhặt lại cho chắc.
+    if (ra.length === 4) return ra;
+  }
+  // Còn lại: nhặt mọi ký tự Đ/S theo thứ tự xuất hiện
+  const chu = s.replace(/[^ĐđDdSs]/g, '');
+  return [...chu].map(c => (/[ĐđDd]/.test(c) ? 'Đ' : 'S')).join('').slice(0, 4);
+}
+
+/**
+ * Tách 4 ý a) b) c) d) đang nằm lẫn trong đề bài của câu Đúng/Sai.
+ *
+ * AI thường trả nguyên cả 4 ý trong "noiDung" và bỏ trống dapAnA..D, khiến 4 ô Mệnh đề
+ * trống trơn còn đề bài thì dài dòng lặp lại. Hàm này gỡ 4 ý ra, trả về phần dẫn đã
+ * sạch để không hiển thị trùng hai lần.
+ *
+ * Trả về null nếu không tách được đủ 4 ý (không đoán bừa, giữ nguyên nội dung gốc).
+ */
+export function tachYDungSai(content: string | null | undefined): { dan: string; y: string[] } | null {
+  const s = String(content || '');
+  if (!s.trim()) return null;
+
+  // Mỗi ý bắt đầu bằng "a)" / "a." / "a:" ở ĐẦU DÒNG để không cắt nhầm chữ "a)" nằm
+  // giữa câu văn. Chấp nhận cả dấu xuống dòng THẬT lẫn "\n" viết dạng chữ (hai ký tự) -
+  // rất nhiều câu trong ngân hàng lưu theo kiểu sau, bỏ sót thì không tách được ý nào.
+  const re = /(?:^|\n|\\n)\s*([a-d])\s*[).:]\s*/g;
+  const moc: { chu: string; batDau: number; ketThuc: number }[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(s)) !== null) {
+    moc.push({ chu: m[1], batDau: m.index, ketThuc: m.index + m[0].length });
+  }
+  if (moc.length < 4) return null;
+
+  // Chỉ nhận đúng bộ a→b→c→d liên tiếp (phòng đề có nhiều cụm a) rải rác)
+  const bo = moc.filter((x, i) => x.chu === ['a', 'b', 'c', 'd'][i % 4]).slice(0, 4);
+  if (bo.length < 4 || bo.map(x => x.chu).join('') !== 'abcd') return null;
+
+  const y = bo.map((x, i) => {
+    const het = i < 3 ? bo[i + 1].batDau : s.length;
+    return s.slice(x.ketThuc, het).trim();
+  });
+  if (y.some(t => !t)) return null;
+
+  return { dan: s.slice(0, bo[0].batDau).trim(), y };
+}
+
 export const fileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -151,6 +217,10 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
   1. QUY TẮC TÁCH HOẶC GỘP Ý NHỎ:
      - TRƯỜNG HỢP TÁCH: Nếu một bài toán tự luận có các ý nhỏ (a, b, c...) hoàn toàn độc lập, không phụ thuộc nhau (VD: "Bài 1. Tính: a) 1+1 b) 2+2"). BẮT BUỘC TÁCH mỗi ý thành 1 object câu hỏi độc lập. Tự động ghép thêm "dẫn chung" vào từng ý.
      - TRƯỜNG HỢP GỘP (KHÔNG TÁCH): Nếu các ý nhỏ có liên quan mật thiết, dùng chung dữ kiện gốc, ý b phụ thuộc ý a (VD: "Cho biểu thức P... a) Rút gọn b) Tìm P max"). BẮT BUỘC GỘP CHUNG toàn bộ đề bài và các ý nhỏ thành MỘT câu hỏi tự luận duy nhất. Giữ nguyên các ký hiệu "a)", "b)".
+  1b. CÂU ĐÚNG/SAI (DS) - TÁCH 4 Ý RA 4 Ô RIÊNG (RẤT QUAN TRỌNG):
+     - 4 ý a), b), c), d) PHẢI nằm ở "dapAnA", "dapAnB", "dapAnC", "dapAnD" - mỗi ý một ô, và KHÔNG chép lại ký hiệu "a)", "b)" vào trong ô.
+     - "noiDung" CHỈ giữ phần dẫn chung (câu mở đầu + dữ kiện + hình ảnh nếu có). TUYỆT ĐỐI KHÔNG để 4 ý đó lặp lại trong "noiDung".
+     - Ví dụ đúng: noiDung = "Chọn đúng sai khi nói về cấu tạo chất:", dapAnA = "Các chất được cấu tạo từ các hạt riêng...", dapAnB = "...".
   2. QUY ĐỊNH ĐỐI VỚI CÂU HỎI ĐÚNG/SAI (DS) ĐA BÀI HỌC:
      Nếu câu hỏi DS có 4 ý thuộc về nhiều bài học khác nhau trong chương:
      - Bạn HÃY ĐẶT "isMultiLesson": true.
@@ -259,6 +329,12 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
         }
       }
 
+      // Câu Đúng/Sai mà AI để nguyên 4 ý trong đề bài và bỏ trống 4 ô mệnh đề: tự gỡ
+      // 4 ý ra. Chỉ làm khi 4 ô ĐỀU trống, để không ghi đè kết quả AI đã tách đúng.
+      const dsChuaTach = parsedQuestionType === "DS"
+        && !data.dapAnA && !data.dapAnB && !data.dapAnC && !data.dapAnD;
+      const dsTach = dsChuaTach ? tachYDungSai(qContent) : null;
+
       const questionData: QuestionData = {
         temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
         grade: data.lop || globalGrade || "12",
@@ -271,12 +347,14 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
         isNewMathForm,
         question_type: parsedQuestionType,
         difficulty: parsedDifficulty,
-        content: qContent,
-        option_a: data.dapAnA || "",
-        option_b: data.dapAnB || "",
-        option_c: data.dapAnC || "",
-        option_d: data.dapAnD || "",
-        correct_answer: data.dapAnDung || "",
+        content: dsTach ? dsTach.dan : qContent,
+        option_a: dsTach ? dsTach.y[0] : (data.dapAnA || ""),
+        option_b: dsTach ? dsTach.y[1] : (data.dapAnB || ""),
+        option_c: dsTach ? dsTach.y[2] : (data.dapAnC || ""),
+        option_d: dsTach ? dsTach.y[3] : (data.dapAnD || ""),
+        correct_answer: parsedQuestionType === "DS"
+          ? chuanHoaDapAnDungSai(data.dapAnDung)
+          : (data.dapAnDung || ""),
         explanation: data.loiGiai || "",
         image_url: data.image_url || "",
         isDuplicate: !!duplicateMatch,
