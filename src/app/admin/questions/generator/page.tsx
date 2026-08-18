@@ -223,12 +223,12 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
           
           try {
             // Nếu 3.1 lỗi (Quota 429, 503...), thử fallback sang 3.5-flash bằng chính key đó
-            const fallbackModel = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
+            const fallbackModel = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
             result = await fallbackModel.generateContent(parts);
             success = true;
             break; // Thành công thì thoát vòng lặp
           } catch (fallbackErr: any) {
-            console.warn(`[Key ${i+1}] Lỗi cả fallback gemini-3.6-flash:`, fallbackErr.message);
+            console.warn(`[Key ${i+1}] Lỗi cả fallback gemini-3.7-flash:`, fallbackErr.message);
             lastError = fallbackErr;
             // Tiếp tục vòng lặp để thử Key tiếp theo
           }

@@ -88,7 +88,7 @@ Ví dụ định dạng trả về:
       try {
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({ 
-          model: "gemini-3.6-flash", 
+          model: "gemini-3.7-flash", 
           generationConfig: {
             responseMimeType: "application/json"
           }

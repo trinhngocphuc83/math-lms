@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
 
     const context = parentCategoryName ? `${parentCategoryName} -> ${categoryName}` : categoryName;
 

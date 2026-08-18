@@ -242,7 +242,7 @@ export default function SimilarGeneratorPage() {
       for (const apiKey of keyData.keys) {
         try {
           const genAI = new GoogleGenerativeAI(apiKey);
-          const model = genAI.getGenerativeModel({ model: "gemini-3.5-flash" });
+          const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
           const result = await model.generateContent([ prompt, ...parts ]);
           processExtractedJson(result.response.text());
           success = true;
@@ -342,7 +342,7 @@ export default function SimilarGeneratorPage() {
         try {
           const genAI = new GoogleGenerativeAI(apiKey);
           const model = genAI.getGenerativeModel({ 
-            model: "gemini-3.6-flash",
+            model: "gemini-3.7-flash",
             generationConfig: { responseMimeType: "application/json", temperature: 0.7 }
           });
           const result = await model.generateContent([ prompt ]);

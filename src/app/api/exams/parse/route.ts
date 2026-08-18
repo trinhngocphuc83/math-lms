@@ -105,7 +105,7 @@ export async function POST(request: Request) {
         const genAI = new GoogleGenerativeAI(apiKey);
         // Dùng mô hình mạnh mẽ và hỗ trợ native PDF (Gemini 1.5 Pro hoặc Flash)
         const model = genAI.getGenerativeModel({ 
-          model: "gemini-3.6-flash", // Phải dùng bản 3.5 theo cấu hình server
+          model: "gemini-3.7-flash",
           generationConfig: {
             responseMimeType: "application/json",
             temperature: 0.1

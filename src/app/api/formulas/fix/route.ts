@@ -33,7 +33,7 @@ export async function POST(request: Request) {
       apiKey = apiKeys[apiKeyIndex];
     }
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-3-flash-preview" });
+    const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
 
     const prompt = `Bạn là chuyên gia về mã LaTeX Toán học.
 Dưới đây là một đoạn mã LaTeX bị lỗi cú pháp hoặc trình bày chưa đẹp, thuộc công thức có tên: "${title || 'Không rõ'}".

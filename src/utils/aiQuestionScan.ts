@@ -245,7 +245,7 @@ export async function callGeminiWithKeyFallback(keys: string[], prompt: string, 
   for (const apiKey of keys) {
     try {
       const genAI = new GoogleGenerativeAI(apiKey);
-      const model = genAI.getGenerativeModel({ model: "gemini-3.6-flash" });
+      const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
       const result = await model.generateContent([prompt, ...parts]);
       return result.response.text();
     } catch (e: any) {
