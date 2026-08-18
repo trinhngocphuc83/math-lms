@@ -9,7 +9,7 @@ import QuestionBankModal from "@/components/admin/QuestionBankModal";
 import RichTextarea from "@/components/admin/RichTextarea";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
 import SourceImageWithBox from "@/components/admin/SourceImageWithBox";
-import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, daChenAnh, canChenAnh } from "@/utils/aiQuestionScan";
+import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, daChenAnh, canChenAnh, coCanhBaoAI } from "@/utils/aiQuestionScan";
 
 export interface Block {
   id: string;
@@ -339,6 +339,13 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
      return daChenAnh(text);
   };
 
+  /** Khối bị AI cảnh báo sai đề / đã tự sửa - phải rà lại bằng mắt vì nội dung
+   *  không còn đúng nguyên bản đề gốc. */
+  const blockCoCanhBao = (b: Block): boolean => {
+     if (b.type === 'md') return coCanhBaoAI(typeof b.content === 'string' ? b.content : '');
+     return coCanhBaoAI(b.content?.question, b.content?.answer || b.content?.explanation);
+  };
+
   return (
     <div className="flex flex-col md:flex-row h-full overflow-hidden bg-gray-100 relative">
        {/* SIDEBAR BẢN ĐỒ CÂU HỎI - thu gọn được (240px ↔ 52px) */}
@@ -400,6 +407,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 const info = blockSlideInfo[i];
                 const needsImage = blockNeedsImage(b);
                 const hasImage = !needsImage && blockHasImage(b);
+                const coCanhBao = blockCoCanhBao(b);
                 const isActive = activeBlockId === b.id;
                 const preview = blockPreview(b);
                 const hetSlide = info.start + info.count - 1;
@@ -408,12 +416,14 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                    <button
                       key={b.id}
                       onClick={() => selectBlock(b.id)}
-                      title={`Slide ${info.count > 1 ? `${info.start}-${hetSlide}` : info.start} · ${kind.label}${needsImage ? ' · CÒN THIẾU ẢNH' : hasImage ? ' · Có hình ảnh' : ''}\n${preview}`}
+                      title={`Slide ${info.count > 1 ? `${info.start}-${hetSlide}` : info.start} · ${kind.label}${needsImage ? ' · CÒN THIẾU ẢNH' : hasImage ? ' · Có hình ảnh' : ''}${coCanhBao ? '\n🛠️ AI ĐÃ SỬA/NGHI SAI ĐỀ - cần kiểm tra lại' : ''}\n${preview}`}
                       className={`w-full text-left rounded-lg px-2 py-1.5 border flex items-stretch gap-2 transition-colors ${isActive
                          ? 'bg-indigo-600 border-indigo-600 shadow-sm'
                          : needsImage
                             ? 'bg-red-50 border-red-200 hover:bg-red-100'
-                            : 'bg-white border-gray-100 hover:bg-indigo-50 hover:border-indigo-200'}`}
+                            : coCanhBao
+                               ? 'bg-amber-50 border-amber-200 hover:bg-amber-100'
+                               : 'bg-white border-gray-100 hover:bg-indigo-50 hover:border-indigo-200'}`}
                    >
                       {/* Vạch màu theo loại khối */}
                       <span className={`w-1 rounded-full shrink-0 ${kind.dot}`} />
@@ -431,6 +441,9 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                             {hasImage && (
                                <ImageIcon className={`w-3 h-3 shrink-0 ml-auto ${isActive ? 'text-white/80' : 'text-emerald-500'}`} aria-label="Câu có hình ảnh" />
                             )}
+                            {coCanhBao && (
+                               <AlertTriangle className={`w-3 h-3 shrink-0 ${needsImage || hasImage ? '' : 'ml-auto'} ${isActive ? 'text-amber-300' : 'text-amber-500'}`} strokeWidth={3} aria-label="AI đã sửa hoặc nghi sai đề" />
+                            )}
                          </span>
                          <span className={`block text-[11px] leading-snug mt-0.5 truncate ${isActive ? 'text-white/90' : 'text-gray-600'}`}>
                             {preview || '(trống)'}
@@ -447,6 +460,11 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                       {blocks.some(b => !blockNeedsImage(b) && blockHasImage(b)) && (
                          <span className="text-emerald-500 flex items-center gap-0.5">
                             <ImageIcon className="w-2.5 h-2.5" /> {blocks.filter(b => !blockNeedsImage(b) && blockHasImage(b)).length}
+                         </span>
+                      )}
+                      {blocks.some(blockCoCanhBao) && (
+                         <span className="text-amber-500 flex items-center gap-0.5" title="AI đã sửa hoặc nghi sai đề - cần kiểm tra">
+                            <AlertTriangle className="w-2.5 h-2.5" strokeWidth={3} /> {blocks.filter(blockCoCanhBao).length}
                          </span>
                       )}
                       {blocks.some(blockNeedsImage) && (

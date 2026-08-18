@@ -6,7 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 import {
   ArrowLeft, Image as ImageIcon, Trash2, Code2, Bot, Eye,
   Wand2, AlertCircle, Loader2, Copy, SaveAll, Edit, Trash, CloudUpload, X, Save, Info,
-  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, CropIcon, Type, ListTodo
+  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, CropIcon, Type, ListTodo, AlertTriangle
 } from "lucide-react";
 import QuestionPreviewModal from "@/components/admin/QuestionPreviewModal";
 import RichTextarea from "@/components/admin/RichTextarea";
@@ -22,6 +22,8 @@ import {
   type QuestionData,
   canChenAnh,
   daChenAnh,
+  coCanhBaoAI,
+  layCanhBaoAI,
   scanFilesForQuestions,
   parseExtractedQuestionsJson,
 } from "@/utils/aiQuestionScan";
@@ -373,6 +375,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     let thieuAnh = 0;
     let daCoAnh = 0;
     let trungLap = 0;
+    let aiSuaDe = 0;
 
     parsedQuestions.forEach(q => {
       const t = toBankType(q.question_type) ?? 'NLC';
@@ -384,6 +387,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
       if (canChenAnh(q.content, q.image_url)) thieuAnh++;
       if (q.image_url || daChenAnh(q.content)) daCoAnh++;
       if (q.isDuplicate) trungLap++;
+      if (coCanhBaoAI(q.content, q.explanation)) aiSuaDe++;
     });
 
     return {
@@ -393,6 +397,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
       thieuAnh,
       daCoAnh,
       trungLap,
+      aiSuaDe,
       typesPresent: BANK_TYPES.filter(t => byType[t] > 0),
       total: parsedQuestions.length,
     };
@@ -589,6 +594,9 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                       // câu vốn không cần ảnh).
                       const daCoAnh = !!q.image_url || daChenAnh(q.content);
                       const trungLap = !!q.isDuplicate;
+                      // AI tự sửa đề hoặc nghi đề sai: phải rà lại bằng mắt trước khi lưu,
+                      // vì nội dung không còn đúng nguyên bản đề gốc nữa.
+                      const aiSuaDe = coCanhBaoAI(q.content, q.explanation);
                       return (
                          <button
                             key={q.temp_id}
@@ -598,20 +606,23 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                                thieuAnh ? '⚠️ THIẾU ẢNH - cần chèn hình cho câu này' : '',
                                daCoAnh ? '🖼️ Đã có hình ảnh' : '',
                                trungLap ? '⚠️ Trùng với câu đã có trong Ngân hàng' : '',
+                               aiSuaDe ? `🛠️ AI ĐÃ SỬA/NGHI SAI ĐỀ - cần kiểm tra lại:\n${layCanhBaoAI(q.content, q.explanation)}` : '',
                             ].filter(Boolean).join('\n')}
                             className={`h-10 rounded-lg text-xs font-black transition-all flex items-center justify-center relative border overflow-hidden ${
                                isSelected
                                   ? 'bg-indigo-600 border-indigo-600 text-white shadow-md shadow-indigo-600/20 scale-105'
                                   : thieuAnh
                                      ? 'bg-red-50 text-red-700 border-red-300 hover:bg-red-100'
-                                     : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-gray-200 hover:border-indigo-300'
+                                     : aiSuaDe
+                                        ? 'bg-amber-50 text-amber-800 border-amber-300 hover:bg-amber-100'
+                                        : 'bg-gray-50 hover:bg-gray-100 text-gray-700 border-gray-200 hover:border-indigo-300'
                             }`}
                          >
                             {idx + 1}
                             {/* Vạch màu dưới đáy: nhận biết ngay Dạng thức của từng câu */}
                             <span className={`absolute bottom-0 left-0 right-0 h-[3px] ${TYPE_STYLE[toBankType(q.question_type) ?? 'NLC']?.dot || 'bg-gray-300'}`} />
                             {/* Chấm ĐỎ nhấp nháy: còn thiếu ảnh. Chấm XANH LÁ: đã chèn ảnh xong.
-                                Chấm CAM: trùng lặp. */}
+                                Chấm CAM: trùng lặp. Tam giác VÀNG: AI đã sửa/nghi sai đề. */}
                             {thieuAnh && (
                                <span className="absolute top-0.5 right-0.5 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white animate-pulse" />
                             )}
@@ -620,6 +631,11 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                             )}
                             {trungLap && (
                                <span className="absolute top-0.5 left-0.5 w-2 h-2 rounded-full bg-orange-500 ring-2 ring-white" />
+                            )}
+                            {/* Dùng hình TAM GIÁC (khác hẳn các chấm tròn) để không lẫn với
+                                dấu hiệu ảnh/trùng lặp khi một câu dính nhiều lỗi cùng lúc. */}
+                            {aiSuaDe && (
+                               <AlertTriangle className={`absolute bottom-1 left-0.5 w-2.5 h-2.5 ${isSelected ? 'text-amber-300' : 'text-amber-500'}`} strokeWidth={3} />
                             )}
                          </button>
                       );
@@ -713,6 +729,10 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                    <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
                       <span className="w-2.5 h-2.5 rounded-full bg-orange-500 block"></span>
                       <span>Trùng lặp {scanSummary.trungLap > 0 && <b className="text-orange-600">({scanSummary.trungLap})</b>}</span>
+                   </div>
+                   <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
+                      <AlertTriangle className="w-2.5 h-2.5 text-amber-500 shrink-0" strokeWidth={3} />
+                      <span>AI sửa/nghi sai đề {scanSummary.aiSuaDe > 0 && <b className="text-amber-600">({scanSummary.aiSuaDe})</b>}</span>
                    </div>
                 </div>
 

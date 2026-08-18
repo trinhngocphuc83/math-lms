@@ -40,8 +40,13 @@ export interface QuestionData {
  * loạt câu AI trả về dạng "[CÓ HÌNH ẢNH KÈM THEO]" (chứa "HÌNH ẢNH" chứ không
  * phải "HÌNH VẼ") - Bản đồ câu hỏi không báo động, giáo viên lưu vào ngân hàng
  * mà thiếu ảnh. Gom về một biểu thức bao quát cả placeholder trong ngoặc vuông.
+ *
+ * CỐ Ý KHÔNG dò riêng từ "ẢNH" trong ngoặc vuông: chữ "CẢNH" (trong "[CẢNH BÁO LỖI
+ * ĐỀ]") chứa sẵn chuỗi con "ẢNH" nên mọi câu bị AI cảnh báo đều bị báo nhầm là thiếu
+ * ảnh - và tệ hơn, STRIP bên dưới xóa luôn cả dòng cảnh báo đó khỏi đề bài. Rà ngân
+ * hàng thật: mọi marker ảnh đều có chữ "HÌNH", nên chỉ cần "HÌNH" là đủ, không sót.
  */
-export const IMAGE_NEEDED_REGEX = /\[IMAGE_PLACEHOLDER\]|\[[^\]]*(?:HÌNH|ẢNH|BẢNG|ĐỒ THỊ|CHÚ Ý)[^\]]*\]|HÌNH VẼ|HÌNH ẢNH|ĐỒ THỊ|BẢNG BIẾN THIÊN|BẢNG BIỂU|như hình|hình bên/i;
+export const IMAGE_NEEDED_REGEX = /\[IMAGE_PLACEHOLDER\]|\[[^\]]*(?:HÌNH|BẢNG|ĐỒ THỊ|CHÚ Ý)[^\]]*\]|HÌNH VẼ|HÌNH ẢNH|ĐỒ THỊ|BẢNG BIẾN THIÊN|BẢNG BIỂU|như hình|hình bên/i;
 
 /**
  * Chỉ khớp marker dạng NGOẶC VUÔNG ("[HÌNH VẼ]", "[CÓ HÌNH ẢNH KÈM THEO]"...) - dùng
@@ -52,7 +57,7 @@ export const IMAGE_NEEDED_REGEX = /\[IMAGE_PLACEHOLDER\]|\[[^\]]*(?:HÌNH|ẢNH|
  * đến marker ngoặc vuông thật sự ở cuối câu, làm hỏng văn bản đề bài. Có cờ "g" vì
  * .replace() không cờ "g" chỉ xóa đúng 1 lần khớp đầu tiên tìm thấy.
  */
-export const IMAGE_PLACEHOLDER_STRIP_REGEX = /\[IMAGE_PLACEHOLDER\]|\[[^\]]*(?:HÌNH|ẢNH|BẢNG|ĐỒ THỊ|CHÚ Ý)[^\]]*\]/gi;
+export const IMAGE_PLACEHOLDER_STRIP_REGEX = /\[IMAGE_PLACEHOLDER\]|\[[^\]]*(?:HÌNH|BẢNG|ĐỒ THỊ|CHÚ Ý)[^\]]*\]/gi;
 
 /** Nội dung đã có ảnh chèn sẵn dạng markdown `![...](...)` hay chưa. */
 export const daChenAnh = (text: string | null | undefined): boolean =>
@@ -73,6 +78,36 @@ export const canChenAnh = (
   if (imageUrl) return false;
   if (daChenAnh(text)) return false;
   return IMAGE_NEEDED_REGEX.test(text || '');
+};
+
+/* ============ CẢNH BÁO AI ĐÃ SỬA / NGHI SAI ĐỀ ============ */
+
+/**
+ * Dấu hiệu AI đã can thiệp vào đề gốc hoặc nghi đề bị sai.
+ *
+ * Câu lệnh chỉ dặn AI dùng đúng "[CÂU HỎI CÓ THỂ BỊ SAI ĐỀ, ĐÃ SỬA LẠI]", nhưng rà
+ * ngân hàng thật thì AI còn tự đặt ra nhiều kiểu khác: "[CẢNH BÁO LỖI ĐỀ]" (hay gặp
+ * nhất), "[CẢNH BÁO LỖI GIẢI]", hoặc kèm mô tả sau dấu hai chấm. Dò cứng đúng một
+ * chuỗi thì bỏ sót quá nửa, nên bắt theo TỪ KHOÁ bên trong ngoặc vuông.
+ *
+ * Không đưa "CHÚ Ý" vào đây: từ đó đã thuộc nhóm marker ảnh (IMAGE_NEEDED_REGEX).
+ */
+export const AI_WARNING_REGEX =
+  /\[[^\]]*(?:SAI ĐỀ|SỬA LẠI|CẢNH BÁO|LỖI ĐỀ|LỖI GIẢI)[^\]]*\]/i;
+
+/** Câu hỏi có bị AI cảnh báo sai đề / đã sửa lại hay không (soi cả đề bài lẫn lời giải). */
+export const coCanhBaoAI = (
+  content: string | null | undefined,
+  explanation?: string | null,
+): boolean => AI_WARNING_REGEX.test(`${content || ''}\n${explanation || ''}`);
+
+/** Lấy nguyên câu cảnh báo để hiện lên chú thích, giúp biết ngay AI đã sửa gì. */
+export const layCanhBaoAI = (
+  content: string | null | undefined,
+  explanation?: string | null,
+): string => {
+  const m = `${content || ''}\n${explanation || ''}`.match(AI_WARNING_REGEX);
+  return m ? m[0].replace(/^\[|\]$/g, '').trim() : '';
 };
 
 /* ============ CÂU ĐÚNG/SAI: TÁCH 4 Ý RA 4 MỆNH ĐỀ ============ */
