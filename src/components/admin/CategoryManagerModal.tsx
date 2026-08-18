@@ -48,8 +48,8 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
   };
 
   const handleUpdate = async () => {
-    if (!newCategory.grade || !newCategory.subject || !newCategory.topic || !newCategory.math_form) {
-      return alert("Vui lòng điền đủ Lớp, Phân môn, Chuyên đề và Dạng toán!");
+    if (!newCategory.grade || !newCategory.subject || !newCategory.topic) {
+      return alert("Vui lòng điền đủ Lớp, Phân môn và Chuyên đề!");
     }
     try {
       setIsImporting(true); // use isImporting to disable UI
@@ -69,7 +69,10 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
         if (lessonChanged) {
             updateLesson = confirm(`Bạn đã thay đổi tên Bài từ "${editingCatData.lesson}" thành "${newCategory.lesson.trim()}".\n\nBạn có muốn đổi tên Bài này cho TẤT CẢ các Dạng toán khác đang thuộc Bài này không (bao gồm cả các câu hỏi)?`);
         }
-        if (mathFormChanged) {
+        // Chỉ hỏi khi thực sự ĐỔI TÊN một dạng đã có. Nếu trước đó bỏ trống thì đây là
+        // lần đầu đặt dạng cho danh mục - không có tên cũ nào để đổi, mà hỏi thì dễ khiến
+        // người dùng bấm đồng ý rồi gán nhầm dạng này cho mọi câu chưa phân dạng của bài.
+        if (mathFormChanged && editingCatData.math_form) {
             updateMathForm = confirm(`Bạn đã đổi tên Dạng toán từ "${editingCatData.math_form}" thành "${newCategory.math_form.trim()}".\n\nBạn có muốn áp dụng tên mới này cho tất cả câu hỏi trong Ngân hàng đang thuộc dạng này không?`);
         }
 
@@ -146,24 +149,43 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
 
   const processImportedData = async (rows: any[]) => {
     try {
+      // Cột "Tên bài" và "Dạng toán" để trống vẫn nhập được: thầy cô dựng khung
+      // Lớp/Chuyên đề trước, phần còn lại bổ sung sau hoặc để AI tự phân dạng khi quét đề.
       const insertData = rows.map(row => ({
         grade: String(row['Lớp'] || row['grade'] || '').trim(),
         subject: String(row['Phân môn'] || row['subject'] || '').trim(),
         topic: String(row['Chuyên đề'] || row['topic'] || '').trim(),
         lesson: String(row['Tên bài'] || row['lesson'] || '').trim(),
         math_form: String(row['Dạng toán'] || row['math_form'] || '').trim()
-      })).filter(r => r.grade && r.subject && r.topic && r.math_form);
+      })).filter(r => r.grade && r.subject && r.topic);
+
+      // Bỏ các dòng lặp y hệt nhau trong cùng file. Trước đây Dạng toán là bắt buộc nên
+      // mỗi dòng gần như luôn khác nhau; nay để trống được thì nhiều dòng chỉ còn
+      // Lớp/Chuyên đề/Bài, rất dễ trùng - mà bảng danh mục không tự chặn trùng.
+      const daThay = new Set<string>();
+      const insertDataGon = insertData.filter(r => {
+        const khoa = [r.grade, r.subject, r.topic, r.lesson, r.math_form].join('|');
+        if (daThay.has(khoa)) return false;
+        daThay.add(khoa);
+        return true;
+      });
+      const soDongLap = insertData.length - insertDataGon.length;
 
       if (insertData.length === 0) {
-        alert("File không có dữ liệu hợp lệ. Vui lòng đảm bảo các cột có tên là: Lớp, Phân môn, Chuyên đề, Tên bài, Dạng toán.");
+        alert("File không có dữ liệu hợp lệ. Vui lòng đảm bảo có các cột: Lớp, Phân môn, Chuyên đề (cột Tên bài và Dạng toán có thể để trống).");
         setIsImporting(false);
         return;
       }
 
-      const { error } = await supabase.from('question_categories').insert(insertData);
+      const { error } = await supabase.from('question_categories').insert(insertDataGon);
       if (error) throw error;
 
-      alert(`Đã nhập thành công ${insertData.length} dạng toán!`);
+      const soChuaCoDang = insertDataGon.filter(r => !r.math_form).length;
+      alert(
+        `Đã nhập thành công ${insertDataGon.length} dòng danh mục!`
+        + (soDongLap > 0 ? `\nĐã bỏ qua ${soDongLap} dòng lặp lại trong file.` : '')
+        + (soChuaCoDang > 0 ? `\nCó ${soChuaCoDang} dòng chưa đặt Dạng toán - bổ sung sau cũng được.` : '')
+      );
       fetchCategories();
       onCategoriesUpdated();
     } catch (err: any) {
@@ -213,8 +235,12 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
   };
 
   const handleDownloadTemplate = () => {
+    // Dòng thứ hai để trống Tên bài và Dạng toán, cho thấy ngay là hai cột này
+    // không bắt buộc - dựng khung chương trước, chi tiết bổ sung sau cũng được.
     const ws = XLSX.utils.json_to_sheet([{
       "Lớp": "12", "Phân môn": "Đại số", "Chuyên đề": "Chương 1. Ứng dụng đạo hàm", "Tên bài": "Bài 1. Tính đơn điệu", "Dạng toán": "Tìm khoảng đơn điệu dựa vào BBT"
+    }, {
+      "Lớp": "12", "Phân môn": "Đại số", "Chuyên đề": "Chương 2. Vectơ trong không gian", "Tên bài": "", "Dạng toán": ""
     }]);
     const wb = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, "Mau");
@@ -222,8 +248,10 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
   };
 
   const handleManualAdd = async () => {
-    if (!newCategory.grade || !newCategory.subject || !newCategory.topic || !newCategory.math_form) {
-      return alert("Vui lòng điền đủ Lớp, Phân môn, Chuyên đề và Dạng toán!");
+    // Dạng toán KHÔNG bắt buộc: cho phép dựng khung Lớp/Chuyên đề/Bài trước, dạng toán
+    // điền sau (hoặc để hệ thống tự phân dạng khi quét đề bằng AI).
+    if (!newCategory.grade || !newCategory.subject || !newCategory.topic) {
+      return alert("Vui lòng điền đủ Lớp, Phân môn và Chuyên đề!");
     }
     try {
       const { error } = await supabase.from('question_categories').insert([{
@@ -337,7 +365,7 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
               <input value={newCategory.lesson} onChange={e => setNewCategory({...newCategory, lesson: e.target.value})} placeholder="Bài 1. Sự đồng biến..." className="border border-blue-200 rounded-lg p-2 text-sm outline-none focus:border-blue-500" />
             </div>
             <div className="flex flex-col gap-1 flex-1 min-w-[200px]">
-              <label className="text-xs font-bold text-blue-800">Dạng toán *</label>
+              <label className="text-xs font-bold text-blue-800">Dạng toán <span className="font-medium text-blue-400">(có thể bổ sung sau)</span></label>
               <input value={newCategory.math_form} onChange={e => setNewCategory({...newCategory, math_form: e.target.value})} placeholder="Tìm khoảng đơn điệu..." className="border border-blue-200 rounded-lg p-2 text-sm outline-none focus:border-blue-500" />
             </div>
             {editingId ? (
@@ -357,7 +385,7 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
             <div className="h-full flex flex-col items-center justify-center p-12 text-center">
               <Database className="w-16 h-16 text-gray-200 mb-4" />
               <h3 className="text-lg font-bold text-gray-700 mb-2">Chưa có dữ liệu danh mục</h3>
-              <p className="text-gray-500 max-w-sm mx-auto mb-6 text-sm">Bạn có thể sử dụng file Excel (.xlsx) với 5 cột: Lớp, Phân môn, Chuyên đề, Tên bài, Dạng toán để nhập hàng loạt.</p>
+              <p className="text-gray-500 max-w-sm mx-auto mb-6 text-sm">Bạn có thể dùng file Excel (.xlsx) để nhập hàng loạt. Bắt buộc 3 cột: <b>Lớp, Phân môn, Chuyên đề</b>; còn <b>Tên bài</b> và <b>Dạng toán</b> để trống cũng được, bổ sung sau.</p>
               <button onClick={() => fileInputRef.current?.click()} className="bg-emerald-50 text-emerald-700 font-bold px-5 py-2.5 rounded-xl hover:bg-emerald-100 transition-colors flex items-center gap-2 text-sm border border-emerald-200/50">
                 <FileSpreadsheet className="w-4 h-4" /> Import từ Excel
               </button>
@@ -388,9 +416,17 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
                       <p className="text-gray-500 text-xs mt-0.5">{cat.lesson}</p>
                     </td>
                     <td className="p-4">
-                      <span className="inline-flex items-center px-2 py-1 rounded-md bg-indigo-50 text-indigo-700 font-medium text-xs border border-indigo-100">
-                        {cat.math_form}
-                      </span>
+                      {/* Dạng toán để trống là hợp lệ (điền sau hoặc để AI tự phân dạng),
+                          nhưng phải nhìn ra ngay dòng nào còn thiếu chứ không phải chip rỗng. */}
+                      {cat.math_form ? (
+                        <span className="inline-flex items-center px-2 py-1 rounded-md bg-indigo-50 text-indigo-700 font-medium text-xs border border-indigo-100">
+                          {cat.math_form}
+                        </span>
+                      ) : (
+                        <span className="inline-flex items-center px-2 py-1 rounded-md bg-gray-50 text-gray-400 font-medium text-xs border border-dashed border-gray-300 italic">
+                          Chưa đặt dạng
+                        </span>
+                      )}
                     </td>
                     <td className="p-4 pr-6 text-right flex items-center justify-end gap-1">
                       <button onClick={() => startEditing(cat)} className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors opacity-0 group-hover:opacity-100">
