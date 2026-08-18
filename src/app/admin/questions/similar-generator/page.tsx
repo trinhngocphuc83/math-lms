@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { goiGeminiTrenTrinhDuyet, layCauHinhAI } from "@/utils/geminiBrowser";
 import { 
   ArrowLeft, Image as ImageIcon, Trash2, Code2, Bot, Eye, Search,
   Wand2, AlertCircle, Loader2, Copy, SaveAll, Edit, Trash, CloudUpload, X, Save, Info, Plus,
@@ -203,9 +203,7 @@ export default function SimilarGeneratorPage() {
     if (aiImageFiles.length === 0) return alert("Vui lòng dán/chọn file đề bài!");
     setIsScanningBase(true);
     try {
-      const keyRes = await fetch('/api/admin/gemini-key');
-      const keyData = await keyRes.json();
-      if (!keyRes.ok || !keyData.keys || keyData.keys.length === 0) throw new Error("Không thể lấy khóa AI.");
+      const cauHinh = await layCauHinhAI();
 
       const categoryTree = categories.map(c => `Lớp: ${c.grade} | Phân môn: ${c.subject} | Chuyên đề: ${c.topic} | Bài: ${c.lesson} | Dạng: ${c.math_form}`).join('\\n');
 
@@ -238,20 +236,9 @@ export default function SimilarGeneratorPage() {
         return { inlineData: { data: base64Data, mimeType: file.type } };
       }));
 
-      let success = false;
-      for (const apiKey of keyData.keys) {
-        try {
-          const genAI = new GoogleGenerativeAI(apiKey);
-          const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
-          const result = await model.generateContent([ prompt, ...parts ]);
-          processExtractedJson(result.response.text());
-          success = true;
-          break;
-        } catch (e) {
-          console.warn("Key error", e);
-        }
-      }
-      if (!success) throw new Error("Tất cả khóa API đều quá tải.");
+      const kq = await goiGeminiTrenTrinhDuyet(cauHinh, [prompt, ...parts]);
+      console.log(`[AI] Quét đề gốc bằng model ${kq.model}`);
+      processExtractedJson(kq.text);
     } catch (error: any) {
       alert("Lỗi: " + error.message);
     } finally {
@@ -332,28 +319,16 @@ export default function SimilarGeneratorPage() {
     if (!freePromptInput) return alert("Vui lòng nhập yêu cầu!");
     setIsScanningBase(true);
     try {
-      const keyRes = await fetch('/api/admin/gemini-key');
-      const keyData = await keyRes.json();
-      if (!keyRes.ok || !keyData.keys || keyData.keys.length === 0) throw new Error("Không thể lấy khóa AI.");
+      const cauHinh = await layCauHinhAI();
 
       const prompt = generateFreePromptText();
-      let success = false;
-      for (const apiKey of keyData.keys) {
-        try {
-          const genAI = new GoogleGenerativeAI(apiKey);
-          const model = genAI.getGenerativeModel({ 
-            model: "gemini-3.7-flash",
-            generationConfig: { responseMimeType: "application/json", temperature: 0.7 }
-          });
-          const result = await model.generateContent([ prompt ]);
-          processExtractedJson(result.response.text());
-          success = true;
-          break;
-        } catch (e) {
-          console.warn("Key error", e);
-        }
-      }
-      if (!success) throw new Error("Tất cả khóa API đều quá tải.");
+      const kq = await goiGeminiTrenTrinhDuyet(
+        cauHinh,
+        [prompt],
+        { responseMimeType: "application/json", temperature: 0.7 },
+      );
+      console.log(`[AI] Sinh câu hỏi bằng model ${kq.model}`);
+      processExtractedJson(kq.text);
     } catch (error: any) {
       alert("Lỗi: " + error.message);
     } finally {

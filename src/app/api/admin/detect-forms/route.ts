@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { GoogleGenerativeAI, SchemaType } from "@google/generative-ai";
+import { SchemaType } from "@google/generative-ai";
 import { getAllAIKeys } from '@/utils/aiKeys';
-import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
+import { goiGemini } from '@/utils/geminiRunner';
 import { requireStaff } from '@/utils/auth/guard';
 import {
   VALID_DIFFICULTIES,
@@ -57,60 +57,35 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Không có câu hỏi nào cần phân loại." }, { status: 400 });
     }
 
+    // Lọc khoá bị treo nay nằm trong goiGemini(), vì treo tính riêng theo từng model.
     const allKeys = await getAllAIKeys();
-    const cleanKeys = await filterCleanKeys(allKeys);
-
-    if (cleanKeys.length === 0) {
+    if (allKeys.length === 0) {
        return NextResponse.json({
-         error: "Toàn bộ Cổng AI đã cạn kiệt dung lượng (bị khóa 24h). Vui lòng nạp thêm Key mới, hoặc dùng nút \"Thủ công\" để tự dán vào Gemini Web!"
-       }, { status: 503 });
+         error: "Máy chủ chưa được cấu hình API Key nào. Vui lòng thêm ở trang Trạm kiểm soát Cổng A.I!"
+       }, { status: 500 });
     }
 
     const globalTongHop = tongHopLabel || allForms?.find((f: string) => /tổng hợp/i.test(f)) || "Toán tổng hợp";
     const prompt = buildDetectFormsPrompt({ questions, formsToUse: formsToUse || [], globalTongHop });
 
-    let lastError: any = null;
-
-    for (const apiKey of cleanKeys) {
-      try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({
-          model: "gemini-3.7-flash",
-          generationConfig: {
-            responseMimeType: "application/json",
-            responseSchema: responseSchema as any,
-          }
-        });
-
-        const result = await model.generateContent(prompt);
-        const text = result.response.text();
-        const normalized = parseDetectFormsResponse(text, allForms || []);
-
-        return NextResponse.json(normalized);
-
-      } catch (err: any) {
-        lastError = err;
-        const msg = (err.message || '').toLowerCase();
-
-        if (msg.includes('quota') || msg.includes('429') || msg.includes('exceeded') || msg.includes('too many requests') || msg.includes('resource has been exhausted')) {
-          await blockKey(apiKey, err.message);
-          console.log(`[Auto-Fallback Detect Forms] Key ***${apiKey.slice(-4)} đã cạn quota -> Chuyển Key tiếp theo...`);
-          continue;
-        }
-
-        if (msg.includes('503') || msg.includes('service unavailable') || msg.includes('overloaded')) {
-          console.log(`[Auto-Fallback Detect Forms] Key ***${apiKey.slice(-4)} bị 503 -> Thử key khác...`);
-          continue;
-        }
-
-        console.error(`[Auto-Fallback Detect Forms] Lỗi không xác định với Key ***${apiKey.slice(-4)}:`, err.message);
-        continue;
-      }
+    // Xoay khoá rồi xoay model - xem geminiRunner.ts
+    try {
+      const kq = await goiGemini({
+        keys: allKeys,
+        parts: [prompt],
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseSchema: responseSchema as any,
+        },
+      });
+      console.log(`[Phân dạng] Dùng model ${kq.model}`);
+      return NextResponse.json(parseDetectFormsResponse(kq.text, allForms || []));
+    } catch (err: any) {
+      return NextResponse.json({
+        error: (err?.message || 'Không gọi được AI.')
+          + ' Hoặc dùng nút "Thủ công" để tự dán vào Gemini Web.',
+      }, { status: 503 });
     }
-
-    return NextResponse.json({
-      error: `Tất cả ${cleanKeys.length} Cổng AI đều đã cạn kiệt hoặc báo lỗi. Vui lòng nạp thêm Key mới, hoặc dùng nút "Thủ công" để tự dán vào Gemini Web.\nChi tiết: ${lastError?.message || 'Không rõ'}`
-    }, { status: 503 });
 
   } catch (error: any) {
     console.error("Detect Forms Error:", error);

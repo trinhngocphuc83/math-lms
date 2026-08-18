@@ -5,6 +5,7 @@
 // copy lại prompt hàng trăm dòng - sửa 1 nơi, cả 2 trang cùng được sửa.
 
 import { toBankType, toDifficultyCode } from "./questionTypes";
+import { goiGeminiTrenTrinhDuyet, layCauHinhAI, type CauHinhAI } from "./geminiBrowser";
 
 export interface QuestionData {
   temp_id?: string;
@@ -272,78 +273,17 @@ Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc b
   9. NHẬN DẠNG HÌNH ẢNH ĐI KÈM CÂU HỎI: Nếu trong ảnh có đồ thị, hình vẽ, bảng số liệu hoặc sơ đồ ĐI KÈM một câu hỏi, TUYỆT ĐỐI KHÔNG mô tả chi tiết làm lệch nội dung gốc của câu hỏi. Thay vào đó, bạn chỉ cần quét kỹ và thêm một dòng thông báo "[CÓ HÌNH ẢNH KÈM THEO]" vào cuối trường "noiDung", VÀ điền trường "viTriHinhAnh". CHỈ ĐƯỢC PHÉP can thiệp/sửa đổi nội dung gốc của câu hỏi nếu bạn phát hiện câu hỏi bị sai đề, và trong trường hợp đó, PHẢI thêm một dòng thông báo "[CÂU HỎI CÓ THỂ BỊ SAI ĐỀ, ĐÃ SỬA LẠI]" để thông báo.`;
 }
 
-/** Khoá đã dùng hết hạn mức của Google (429) - đổi sang khoá khác mới có tác dụng. */
-const laLoiCanHanMuc = (msg: string): boolean =>
-  /429|quota|exceeded|too many requests|resource has been exhausted/i.test(msg);
-
-/** Model đang quá tải (503) - lỗi nằm ở phía Google, đổi khoá cũng vô ích. */
-const laLoiQuaTai = (msg: string): boolean =>
-  /503|service unavailable|overloaded|high demand/i.test(msg);
-
-/** Báo về máy chủ để treo khoá đã cạn 24 giờ, lần quét sau khỏi thử lại cho mất thời gian. */
-async function baoKhoaDaCan(key: string, reason: string) {
-  try {
-    await fetch('/api/admin/gemini-key', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ key, reason }),
-    });
-  } catch { /* báo được thì tốt, không thì thôi - không để việc này chặn luồng quét */ }
-}
-
 /**
- * Gọi Gemini, tự xoay vòng qua các API key. Ném lỗi gộp nếu TẤT CẢ key đều hỏng.
+ * Gọi Gemini từ trang quét đề, tự xoay khoá rồi xoay model.
  *
- * Phân biệt hai loại lỗi thay vì gộp chung như bản cũ:
- *   - 429 (khoá cạn hạn mức): đổi khoá NGAY, đồng thời treo khoá đó lại để lần sau bỏ qua.
- *   - 503 (model quá tải): lỗi ở phía Google chứ không phải khoá, nên đổi khoá vô ích -
- *     chờ một nhịp ngắn rồi thử lại chính khoá đó, chỉ bỏ cuộc sau vài lần.
+ * Ruột nằm ở geminiBrowser.ts để trang soạn bài và trang sinh câu tương tự dùng chung
+ * cùng một cơ chế. Bản cũ ghi cứng tên model vào đây nên khi Google để model đó quá tải
+ * là cả việc quét đề đứng hẳn.
  */
-export async function callGeminiWithKeyFallback(keys: string[], prompt: string, parts: any[]): Promise<string> {
-  // Import động để tránh kéo thư viện Google AI vào những nơi không cần (VD trang chỉ hiển thị).
-  const { GoogleGenerativeAI } = await import("@google/generative-ai");
-  const SO_LAN_THU_LAI_QUA_TAI = 2;
-  const CHO_MS = 2500;
-  let lastErrorMsg = "";
-  let soKhoaCan = 0;
-
-  for (const apiKey of keys) {
-    for (let lan = 0; lan <= SO_LAN_THU_LAI_QUA_TAI; lan++) {
-      try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
-        const result = await model.generateContent([prompt, ...parts]);
-        return result.response.text();
-      } catch (e: any) {
-        lastErrorMsg = e?.message || String(e);
-
-        if (laLoiCanHanMuc(lastErrorMsg)) {
-          soKhoaCan++;
-          console.warn(`Khoá ***${apiKey.slice(-4)} đã cạn hạn mức, chuyển khoá khác.`);
-          void baoKhoaDaCan(apiKey, lastErrorMsg);
-          break; // sang khoá tiếp theo
-        }
-
-        if (laLoiQuaTai(lastErrorMsg) && lan < SO_LAN_THU_LAI_QUA_TAI) {
-          console.warn(`Model đang quá tải, chờ ${CHO_MS}ms rồi thử lại (lần ${lan + 1})...`);
-          await new Promise(r => setTimeout(r, CHO_MS));
-          continue; // thử lại chính khoá này
-        }
-
-        console.warn("Khoá lỗi, thử khoá tiếp theo...", lastErrorMsg);
-        break;
-      }
-    }
-  }
-
-  if (soKhoaCan > 0 && soKhoaCan === keys.length) {
-    throw new Error(
-      `Cả ${keys.length} khoá AI đều đã dùng hết hạn mức trong ngày `
-      + '(gói miễn phí của Google chỉ cho 20 lượt/ngày mỗi khoá). '
-      + 'Vui lòng chờ sang ngày mới, thêm khoá mới ở trang Cài đặt Cổng A.I, hoặc nâng cấp gói trả phí.',
-    );
-  }
-  throw new Error("Tất cả các API key đều bị lỗi hoặc quá tải. Vui lòng thử lại sau. Lỗi cuối: " + lastErrorMsg);
+export async function callGeminiWithKeyFallback(cauHinh: CauHinhAI, prompt: string, parts: any[]): Promise<string> {
+  const kq = await goiGeminiTrenTrinhDuyet(cauHinh, [prompt, ...parts]);
+  console.log(`[AI] Quét đề bằng model ${kq.model}`);
+  return kq.text;
 }
 
 export interface ParseContext {
@@ -477,14 +417,10 @@ export interface ScanContext extends ScanPromptContext, ParseContext {}
 
 /** Hàm gộp: quét 1 lô file (ảnh/PDF) và trả về danh sách câu hỏi đã bóc tách. */
 export async function scanFilesForQuestions(files: File[], ctx: ScanContext): Promise<QuestionData[]> {
-  const keyRes = await fetch('/api/admin/gemini-key');
-  const keyData = await keyRes.json();
-  if (!keyRes.ok || !keyData.keys || keyData.keys.length === 0) {
-    throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
-  }
+  const cauHinh = await layCauHinhAI();
 
   const prompt = buildScanPrompt(ctx);
   const parts = await filesToGeminiParts(files);
-  const text = await callGeminiWithKeyFallback(keyData.keys, prompt, parts);
+  const text = await callGeminiWithKeyFallback(cauHinh, prompt, parts);
   return parseExtractedQuestionsJson(text, ctx);
 }

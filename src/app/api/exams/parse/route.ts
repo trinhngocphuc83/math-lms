@@ -1,26 +1,7 @@
 import { NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getAllAIKeys } from '@/utils/aiKeys';
+import { goiGemini } from '@/utils/geminiRunner';
 import { requireStaff } from "@/utils/auth/guard";
-
-// Hàm lấy tất cả API keys từ environment và trộn ngẫu nhiên
-function getRotatedApiKeys() {
-  const keys: string[] = [];
-  if (process.env.GEMINI_API_KEY) keys.push(process.env.GEMINI_API_KEY);
-  
-  let i = 1;
-  while (process.env[`GEMINI_API_KEY_${i}`]) {
-    keys.push(process.env[`GEMINI_API_KEY_${i}`] as string);
-    i++;
-  }
-  
-  if (keys.length === 0) return [];
-  // Trộn ngẫu nhiên (Fisher-Yates shuffle)
-  for (let idx = keys.length - 1; idx > 0; idx--) {
-    const j = Math.floor(Math.random() * (idx + 1));
-    [keys[idx], keys[j]] = [keys[j], keys[idx]];
-  }
-  return keys;
-}
 
 export const maxDuration = 60; // Cho phép API chạy tối đa 60s trên Vercel
 
@@ -32,8 +13,10 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { prompt, rawHtml, fileData } = body;
 
-    const rotatedKeys = getRotatedApiKeys();
-    if (rotatedKeys.length === 0) {
+    // Lấy cả khoá trong biến môi trường lẫn khoá thầy cô tự thêm ở trang Trạm kiểm soát
+    // Cổng A.I. Bản cũ chỉ đọc biến môi trường nên khoá thêm tay không bao giờ được dùng.
+    const keys = await getAllAIKeys();
+    if (keys.length === 0) {
       throw new Error("Chưa cấu hình GEMINI_API_KEY trong hệ thống.");
     }
 
@@ -97,56 +80,38 @@ export async function POST(request: Request) {
       parts.push({ text: "Nội dung văn bản (đã trích xuất ảnh): \n" + cleanedHtml });
     }
 
-    let lastError = null;
+    // Xoay khoá rồi xoay model - xem geminiRunner.ts
+    const kq = await goiGemini({
+      keys,
+      parts,
+      generationConfig: { responseMimeType: "application/json", temperature: 0.1 },
+    });
+    console.log(`[Bóc đề] Dùng model ${kq.model}`);
+    const text = kq.text;
 
-    // Vòng lặp xoay vòng API Keys để chống lỗi 503/429
-    for (const apiKey of rotatedKeys) {
-      try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        // Dùng mô hình mạnh mẽ và hỗ trợ native PDF (Gemini 1.5 Pro hoặc Flash)
-        const model = genAI.getGenerativeModel({ 
-          model: "gemini-3.7-flash",
-          generationConfig: {
-            responseMimeType: "application/json",
-            temperature: 0.1
-          }
-        });
-
-        const result = await model.generateContent(parts);
-        const text = result.response.text();
-        
-        // Tiền xử lý: Sửa lỗi LLM quên escape các ký tự LaTeX thông dụng làm JSON parser nhầm thành ký tự điều khiển (newline, return, tab...)
-        // Lỗi phổ biến nhất: AI trả về "x \neq 0", JS parser nhận diện \n là ký tự ngắt dòng.
-        let preprocessedText = text
-            .replace(/\\n(?=eq|otin|exists|eg|abla|u|i|earrow|atural|parallel)/g, '\\\\n')
-            .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
-            .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
-            .replace(/\\b(?=egin)/g, '\\\\b')
-            .replace(/\\f(?=rac|orall)/g, '\\\\f');
-        
-        let parsed;
-        try {
-          parsed = JSON.parse(preprocessedText);
-        } catch (parseErr: any) {
-          console.warn("Lỗi JSON.parse lần 1, đang cố gắng sửa escape characters...");
-          // Sửa lỗi AI trả về dấu backslash không hợp lệ (ví dụ: \sin thay vì \\sin)
-          const sanitizedText = text.replace(/\\([^"\\/bfnrtu])/g, '\\\\$1');
-          parsed = JSON.parse(sanitizedText);
-        }
-
-        // Đảm bảo trả về mảng. Nếu AI trả về object { questions: [...] }, lấy mảng đó.
-        const finalArray = Array.isArray(parsed) ? parsed : (parsed.questions || []);
-
-        return NextResponse.json({ questions: finalArray });
-
-      } catch (err: any) {
-        lastError = err;
-        console.error("Lỗi AI Parse Exam, chuyển key...", err.message);
-        continue; // Lỗi thì thử key tiếp theo
-      }
+    // Tiền xử lý: Sửa lỗi LLM quên escape các ký tự LaTeX thông dụng làm JSON parser nhầm thành ký tự điều khiển (newline, return, tab...)
+    // Lỗi phổ biến nhất: AI trả về "x \neq 0", JS parser nhận diện \n là ký tự ngắt dòng.
+    let preprocessedText = text
+        .replace(/\\n(?=eq|otin|exists|eg|abla|u|i|earrow|atural|parallel)/g, '\\\\n')
+        .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
+        .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
+        .replace(/\\b(?=egin)/g, '\\\\b')
+        .replace(/\\f(?=rac|orall)/g, '\\\\f');
+    
+    let parsed;
+    try {
+      parsed = JSON.parse(preprocessedText);
+    } catch (parseErr: any) {
+      console.warn("Lỗi JSON.parse lần 1, đang cố gắng sửa escape characters...");
+      // Sửa lỗi AI trả về dấu backslash không hợp lệ (ví dụ: \sin thay vì \\sin)
+      const sanitizedText = text.replace(/\\([^"\\/bfnrtu])/g, '\\\\$1');
+      parsed = JSON.parse(sanitizedText);
     }
 
-    throw new Error(lastError?.message || "Tất cả API keys đều báo lỗi hoặc quá tải (503).");
+    // Đảm bảo trả về mảng. Nếu AI trả về object { questions: [...] }, lấy mảng đó.
+    const finalArray = Array.isArray(parsed) ? parsed : (parsed.questions || []);
+
+    return NextResponse.json({ questions: finalArray });
 
   } catch (error: any) {
     console.error("Lỗi API Parse:", error);

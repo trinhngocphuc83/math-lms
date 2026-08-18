@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getAllAIKeys } from '@/utils/aiKeys';
-import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
+import { goiGemini } from '@/utils/geminiRunner';
 import { requireStaff } from '@/utils/auth/guard';
 
 // Cho phép API chạy tối đa 60s trên Vercel - chấm bài kèm ảnh dễ vượt giới hạn
@@ -19,14 +18,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Vui lòng chọn ít nhất 1 ảnh bài làm!" }, { status: 400 });
     }
 
-    // Lấy toàn bộ Keys rồi lọc bỏ Keys đang nằm trong Sổ Đen
+    // Lọc khoá bị treo nay nằm trong goiGemini(), vì treo tính riêng theo từng model.
     const allKeys = await getAllAIKeys();
-    const cleanKeys = await filterCleanKeys(allKeys);
-    
-    if (cleanKeys.length === 0) {
-       return NextResponse.json({ 
-         error: "Hệ thống AI hiện đang quá tải hoặc hết Key. Vui lòng thử lại sau!" 
-       }, { status: 503 });
+    if (allKeys.length === 0) {
+       return NextResponse.json({
+         error: "Máy chủ chưa được cấu hình API Key nào. Vui lòng thêm ở trang Trạm kiểm soát Cổng A.I!"
+       }, { status: 500 });
     }
 
     // Chuẩn bị Prompt chấm bài
@@ -86,51 +83,18 @@ ${question}
        return NextResponse.json({ error: "Không thể tải được dữ liệu ảnh để chấm." }, { status: 400 });
     }
 
-    // ====== CỖ MÁY AUTO-FALLBACK: Vòng lặp Xoay Key Tự Động ======
-    let lastError: any = null;
-    
-    for (const apiKey of cleanKeys) {
-      try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ 
-          model: "gemini-3.7-flash", 
-          generationConfig: {
-            responseMimeType: "application/json"
-          }
-        });
-
-        const result = await model.generateContent(parts);
-        const text = result.response.text();
-        const parsed = JSON.parse(text);
-        
-        // CHẤM THÀNH CÔNG -> TRẢ VỀ NGAY LẬP TỨC
-        return NextResponse.json(parsed);
-
-      } catch (err: any) {
-        lastError = err;
-        const msg = (err.message || '').toLowerCase();
-        
-        // Phát hiện Lỗi Quota/429
-        if (msg.includes('quota') || msg.includes('429') || msg.includes('exceeded') || msg.includes('too many requests') || msg.includes('resource has been exhausted')) {
-          await blockKey(apiKey, err.message);
-          console.log(`[Auto-Fallback Admin] Key ***${apiKey.slice(-4)} đã cạn quota -> Chuyển Key tiếp theo...`);
-          continue; 
-        }
-        
-        // Lỗi 503
-        if (msg.includes('503') || msg.includes('service unavailable') || msg.includes('overloaded')) {
-          continue;
-        }
-
-        console.error(`[Auto-Fallback Admin] Lỗi không xác định với Key ***${apiKey.slice(-4)}:`, err.message);
-        continue;
-      }
+    // Xoay khoá rồi xoay model - xem geminiRunner.ts
+    try {
+      const kq = await goiGemini({
+        keys: allKeys,
+        parts,
+        generationConfig: { responseMimeType: "application/json" },
+      });
+      console.log(`[Chấm tay] Dùng model ${kq.model}`);
+      return NextResponse.json(JSON.parse(kq.text));
+    } catch (err: any) {
+      return NextResponse.json({ error: err?.message || 'Không gọi được AI.' }, { status: 503 });
     }
-
-    // Hết sạch Key mà không chấm được
-    return NextResponse.json({ 
-      error: `Chấm thất bại do lỗi Hệ thống AI: ${lastError?.message || 'Không rõ'}` 
-    }, { status: 503 });
 
   } catch (error: any) {
     console.error("Lỗi AI Chấm điểm thủ công:", error);

@@ -22,6 +22,7 @@ import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, Imag
 import { saveAs } from "file-saver";
 import { fetchImageWithDimensions, base64ToUint8Array } from "@/utils/exportDocx";
 import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, callGeminiWithKeyFallback, filesToGeminiParts } from "@/utils/aiQuestionScan";
+import { layCauHinhAI } from "@/utils/geminiBrowser";
 import { autoCropImage, type NormalizedBox } from "@/utils/autoCropImage";
 import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
 
@@ -1414,10 +1415,8 @@ function EditorContent() {
     
     setIsAnalyzing(true);
     try {
-      // Tự động xin cấp phát khóa AI từ hệ thống Load Balancing
-      const keyRes = await fetch('/api/admin/gemini-key');
-      const keyData = await keyRes.json();
-      if (!keyRes.ok || !keyData.keys?.length) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
+      // Tự động xin cấp phát khóa AI và danh sách model từ hệ thống
+      const cauHinh = await layCauHinhAI();
 
       const isPractice = isPracticeModule;
       const prompt = getPrompt(isPractice, activeTab === 'presentation');
@@ -1429,9 +1428,9 @@ function EditorContent() {
       
       const imageParts = await filesToGeminiParts(pendingImages.map(img => img.file));
 
-      // Xoay vòng toàn bộ API key khi một key lỗi/quá tải, thay vì chết cả lượt quét
-      // vì đúng key đầu tiên bị 503 (bản cũ chỉ dùng keyData.key).
-      let text = await callGeminiWithKeyFallback(keyData.keys, finalPrompt, imageParts);
+      // Xoay vòng toàn bộ API key, hết key thì tụt xuống model kế tiếp - thay vì chết
+      // cả lượt soạn bài vì đúng model đầu tiên đang bị Google quá tải.
+      let text = await callGeminiWithKeyFallback(cauHinh, finalPrompt, imageParts);
 
       // TỰ ĐỘNG CẮT ẢNH ngay tại đây, khi File gốc còn trong bộ nhớ (bên dưới sẽ
       // setPendingImages([]) làm mất File, lúc đó chỉ còn blob URL không cắt được nữa).

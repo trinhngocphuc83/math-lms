@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import { getAllAIKeys } from '@/utils/aiKeys';
-import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
+import { goiGemini } from '@/utils/geminiRunner';
 import { requireUser } from '@/utils/auth/guard';
 
 // Cho phép API chạy tối đa 60s trên Vercel - chấm bài kèm ảnh dễ vượt giới hạn
@@ -19,16 +18,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Vui lòng nhập câu trả lời hoặc đính kèm ảnh bài làm!" }, { status: 400 });
     }
 
-    // Lấy toàn bộ Keys (.env + JSON cộng dồn) rồi lọc bỏ Keys đang nằm trong Sổ Đen
+    // Lấy toàn bộ khoá (.env + khoá thêm tay). Việc lọc khoá đang bị treo do cạn hạn
+    // mức nay nằm trong goiGemini(), vì hạn mức tính riêng cho từng cặp khoá + model.
     const allKeys = await getAllAIKeys();
-    const cleanKeys = await filterCleanKeys(allKeys);
-    
-    if (cleanKeys.length === 0) {
-       return NextResponse.json({ 
-         error: allKeys.length === 0 
-           ? "Máy chủ chưa được cấu hình API Key nào. Vui lòng báo Giáo viên!" 
-           : "Toàn bộ Cổng AI đã cạn kiệt dung lượng (bị khóa 24h). Vui lòng nạp thêm Key mới ở trang Admin!" 
-       }, { status: 503 });
+    if (allKeys.length === 0) {
+      return NextResponse.json({
+        error: "Máy chủ chưa được cấu hình API Key nào. Vui lòng báo Giáo viên!",
+      }, { status: 500 });
     }
 
     // Chuẩn bị Prompt chấm bài
@@ -77,53 +73,18 @@ YÊU CẦU:
       });
     }
 
-    // ====== CỖ MÁY AUTO-FALLBACK: Vòng lặp Xoay Key Tự Động ======
-    let lastError: any = null;
-    
-    for (const apiKey of cleanKeys) {
-      try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ 
-          model: "gemini-3.7-flash", 
-          generationConfig: {
-            responseMimeType: "application/json"
-          }
-        });
-
-        const result = await model.generateContent(parts);
-        const text = result.response.text();
-        const parsed = JSON.parse(text);
-        
-        // CHẤM THÀNH CÔNG -> TRẢ VỀ NGAY LẬP TỨC
-        return NextResponse.json(parsed);
-
-      } catch (err: any) {
-        lastError = err;
-        const msg = (err.message || '').toLowerCase();
-        
-        // Phát hiện Lỗi Quota/429 -> Quăng Key vào Sổ Đen, nhảy sang Key tiếp
-        if (msg.includes('quota') || msg.includes('429') || msg.includes('exceeded') || msg.includes('too many requests') || msg.includes('resource has been exhausted')) {
-          await blockKey(apiKey, err.message);
-          console.log(`[Auto-Fallback] Key ***${apiKey.slice(-4)} đã cạn quota -> Chuyển Key tiếp theo...`);
-          continue; // NHẢY SANG KEY TIẾP THEO NGAY LẬP TỨC
-        }
-        
-        // Lỗi 503 (Service Unavailable) -> cũng thử key khác
-        if (msg.includes('503') || msg.includes('service unavailable') || msg.includes('overloaded')) {
-          console.log(`[Auto-Fallback] Key ***${apiKey.slice(-4)} bị 503 -> Thử key khác...`);
-          continue;
-        }
-
-        // Lỗi khác (parse, network...) -> cũng thử key khác cho an toàn
-        console.error(`[Auto-Fallback] Lỗi không xác định với Key ***${apiKey.slice(-4)}:`, err.message);
-        continue;
-      }
+    // Xoay khoá rồi xoay model - xem geminiRunner.ts
+    try {
+      const kq = await goiGemini({
+        keys: allKeys,
+        parts,
+        generationConfig: { responseMimeType: "application/json" },
+      });
+      console.log(`[Chấm điểm] Dùng model ${kq.model}`);
+      return NextResponse.json(JSON.parse(kq.text));
+    } catch (err: any) {
+      return NextResponse.json({ error: err?.message || 'Không gọi được AI.' }, { status: 503 });
     }
-
-    // Hết sạch Key mà không chấm được -> Trả về lỗi cuối cùng
-    return NextResponse.json({ 
-      error: `Tất cả ${cleanKeys.length} Cổng AI đều đã cạn kiệt hoặc báo lỗi. Vui lòng nạp thêm Key mới ở trang Admin hoặc chờ 24h để Key được mở lại.\nChi tiết: ${lastError?.message || 'Không rõ'}` 
-    }, { status: 503 });
 
   } catch (error: any) {
     console.error("Lỗi AI Chấm điểm:", error);

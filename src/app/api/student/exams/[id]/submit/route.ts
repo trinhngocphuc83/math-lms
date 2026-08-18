@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { createClient as createServerClient } from "@/utils/supabase/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getAllAIKeys } from '@/utils/aiKeys';
+import { goiGemini } from '@/utils/geminiRunner';
 import { chamTuDong } from "@/utils/examGrading";
 
 const supabaseAdmin = createClient(
@@ -9,21 +10,6 @@ const supabaseAdmin = createClient(
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
-function getRotatedApiKeys() {
-  const keys: string[] = [];
-  if (process.env.GEMINI_API_KEY) keys.push(process.env.GEMINI_API_KEY);
-  let i = 1;
-  while (process.env[`GEMINI_API_KEY_${i}`]) {
-    keys.push(process.env[`GEMINI_API_KEY_${i}`] as string);
-    i++;
-  }
-  if (keys.length === 0) return [];
-  for (let idx = keys.length - 1; idx > 0; idx--) {
-    const j = Math.floor(Math.random() * (idx + 1));
-    [keys[idx], keys[j]] = [keys[j], keys[idx]];
-  }
-  return keys;
-}
 
 export const maxDuration = 60; // Tăng thời gian xử lý cho Vercel (lên 60s) để AI có đủ thời gian chấm tự luận
 
@@ -87,7 +73,8 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 
     // Nếu có câu Tự luận -> Khởi động AI Gemini để chấm điểm dựa trên ảnh và văn bản HS gửi lên
     if (essayTasks.length > 0) {
-       const keys = getRotatedApiKeys();
+       // Lấy cả khoá biến môi trường lẫn khoá thầy cô tự thêm ở Trạm kiểm soát Cổng A.I.
+       const keys = await getAllAIKeys();
        if (keys.length > 0) {
           try {
              const systemPrompt = `
@@ -114,26 +101,16 @@ TRẢ VỀ DUY NHẤT một chuỗi JSON (KHÔNG bọc trong \`\`\`json):
                 parts.push({ text: `\nCâu hỏi Index: ${task.qIndex}\nĐề bài: ${task.question}\nĐáp án chuẩn: ${task.answerText}\nBài làm HS: ${htmlAns}` });
              });
 
-             let aiResult = null;
-             for (const apiKey of keys) {
-                try {
-                   const genAI = new GoogleGenerativeAI(apiKey);
-                   // Dùng bản flash mạnh và hỗ trợ đa phương tiện
-                   const model = genAI.getGenerativeModel({
-                      model: "gemini-3.7-flash",
-                      generationConfig: { responseMimeType: "application/json" }
-                   });
-                   aiResult = await model.generateContent(parts);
-                   break;
-                } catch(e:any) {
-                   // Tính năng xoay vòng key khi bị quá tải 429
-                   if(e.status === 429 || e.status === 503) continue;
-                   else throw e;
-                }
-             }
+             // Xoay khoá rồi xoay model - xem geminiRunner.ts
+             const kq = await goiGemini({
+                keys,
+                parts,
+                generationConfig: { responseMimeType: "application/json" },
+             });
+             console.log(`[Chấm tự luận] Dùng model ${kq.model}`);
 
-             if (aiResult) {
-                const parsed = JSON.parse(aiResult.response.text());
+             {
+                const parsed = JSON.parse(kq.text);
                 parsed.forEach((res: any) => {
                    correctPoints += Number(res.score) || 0;
                    aiFeedback[res.qIndex] = res.feedback;

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getAllAIKeys } from '@/utils/aiKeys';
+import { goiGemini } from '@/utils/geminiRunner';
 import { requireStaff } from '@/utils/auth/guard';
 
 // Cho phép API chạy tối đa 60s trên Vercel, phòng khi vượt giới hạn mặc định.
@@ -16,24 +17,15 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing latex code" }, { status: 400 });
     }
 
-    const apiKeys = [
-      process.env.GEMINI_API_KEY,
-      process.env.GEMINI_API_KEY_1,
-      process.env.GEMINI_API_KEY_2,
-      process.env.GEMINI_API_KEY_3,
-      process.env.GEMINI_API_KEY_4
-    ].filter(Boolean) as string[];
-
-    if (apiKeys.length === 0) {
+    // Lấy cả khoá biến môi trường lẫn khoá thầy cô tự thêm ở Trạm kiểm soát Cổng A.I.
+    const tatCaKhoa = await getAllAIKeys();
+    if (tatCaKhoa.length === 0) {
       return NextResponse.json({ error: "API Key chưa được cấu hình" }, { status: 500 });
     }
-
-    let apiKey = apiKeys[Math.floor(Math.random() * apiKeys.length)];
-    if (typeof apiKeyIndex === 'number' && apiKeyIndex >= 0 && apiKeyIndex < apiKeys.length) {
-      apiKey = apiKeys[apiKeyIndex];
-    }
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
+    // Client có thể chỉ định bắt đầu từ khoá nào để chia tải; vẫn xoay tiếp các khoá còn lại.
+    const batDau = (typeof apiKeyIndex === 'number' && apiKeyIndex >= 0 && apiKeyIndex < tatCaKhoa.length)
+      ? apiKeyIndex : 0;
+    const keys = [...tatCaKhoa.slice(batDau), ...tatCaKhoa.slice(0, batDau)];
 
     const prompt = `Bạn là chuyên gia về mã LaTeX Toán học.
 Dưới đây là một đoạn mã LaTeX bị lỗi cú pháp hoặc trình bày chưa đẹp, thuộc công thức có tên: "${title || 'Không rõ'}".
@@ -46,8 +38,10 @@ Nhiệm vụ của bạn là: Sửa lại đoạn mã LaTeX này sao cho:
 3. KHÔNG THAY ĐỔI bản chất Toán học của công thức.
 4. Chỉ trả về DUY NHẤT chuỗi LaTeX đã sửa. KHÔNG bọc trong \`\`\`latex hay $$. KHÔNG giải thích gì thêm.`;
 
-    const result = await model.generateContent(prompt);
-    let text = result.response.text().trim();
+    // Xoay khoá rồi xoay model - xem geminiRunner.ts
+    const kq = await goiGemini({ keys, parts: [prompt] });
+    console.log(`[Sửa công thức] Dùng model ${kq.model}`);
+    let text = kq.text.trim();
     
     // Remove markdown code blocks if the AI still outputs them
     if (text.startsWith('```latex')) {

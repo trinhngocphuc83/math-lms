@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getAllAIKeys } from '@/utils/aiKeys';
+import { goiGemini } from '@/utils/geminiRunner';
 import { requireStaff } from '@/utils/auth/guard';
 
 // Cho phép API chạy tối đa 60s trên Vercel, phòng khi vượt giới hạn mặc định.
@@ -16,25 +17,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing category name" }, { status: 400 });
     }
 
-    const apiKeys = [
-      process.env.GEMINI_API_KEY,
-      process.env.GEMINI_API_KEY_1,
-      process.env.GEMINI_API_KEY_2,
-      process.env.GEMINI_API_KEY_3,
-      process.env.GEMINI_API_KEY_4
-    ].filter(Boolean) as string[];
-
-    if (apiKeys.length === 0) {
+    // Lấy cả khoá biến môi trường lẫn khoá thầy cô tự thêm ở Trạm kiểm soát Cổng A.I.
+    const tatCaKhoa = await getAllAIKeys();
+    if (tatCaKhoa.length === 0) {
       return NextResponse.json({ error: "API Key chưa được cấu hình" }, { status: 500 });
     }
-
-    let apiKey = apiKeys[Math.floor(Math.random() * apiKeys.length)];
-    if (typeof apiKeyIndex === 'number' && apiKeyIndex >= 0 && apiKeyIndex < apiKeys.length) {
-      apiKey = apiKeys[apiKeyIndex];
-    }
-
-    const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
+    const batDau = (typeof apiKeyIndex === 'number' && apiKeyIndex >= 0 && apiKeyIndex < tatCaKhoa.length)
+      ? apiKeyIndex : 0;
+    const keys = [...tatCaKhoa.slice(batDau), ...tatCaKhoa.slice(0, batDau)];
 
     const context = parentCategoryName ? `${parentCategoryName} -> ${categoryName}` : categoryName;
 
@@ -58,8 +48,10 @@ YÊU CẦU QUAN TRỌNG:
 5. CHÚ Ý: "latex_content" phải là mã LaTeX hợp lệ. KHÔNG bọc trong $$ hoặc \\(, chỉ xuất chuỗi bên trong. Chú ý escape dấu backslash cẩn thận trong chuỗi JSON (dùng \\\\ cho các lệnh latex).
 6. KHÔNG trả lời gì thêm ngoài đoạn mã JSON nằm trong \`\`\`json.`;
 
-    const result = await model.generateContent(prompt);
-    const text = result.response.text();
+    // Xoay khoá rồi xoay model - xem geminiRunner.ts
+    const kq = await goiGemini({ keys, parts: [prompt] });
+    console.log(`[Sinh công thức] Dùng model ${kq.model}`);
+    const text = kq.text;
     
     const jsonMatch = text.match(/```json\n([\s\S]*?)\n```/);
     if (jsonMatch && jsonMatch[1]) {

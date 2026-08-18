@@ -1,23 +1,12 @@
 import { NextResponse } from 'next/server';
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getAllAIKeys } from '@/utils/aiKeys';
+import { goiGemini } from '@/utils/geminiRunner';
 import { requireStaff } from '@/utils/auth/guard';
 
 // Cho phép API chạy tối đa 60s trên Vercel - trích xuất công thức từ ảnh dễ
 // vượt giới hạn mặc định, khi đó hàm bị cắt ngang mà không báo lỗi rõ ràng.
 export const maxDuration = 60;
 
-// Lấy tất cả API key từ biến môi trường
-function getAllApiKeys(): string[] {
-  const keys: string[] = [];
-  // Key chính
-  if (process.env.GEMINI_API_KEY) keys.push(process.env.GEMINI_API_KEY);
-  // Các key phụ: GEMINI_API_KEY_1, _2, ... _20
-  for (let i = 1; i <= 20; i++) {
-    const key = process.env[`GEMINI_API_KEY_${i}`];
-    if (key) keys.push(key);
-  }
-  return keys;
-}
 
 // Biến toàn cục để lưu index key đang dùng (xoay vòng round-robin giữa các request)
 let globalKeyIndex = 0;
@@ -33,25 +22,22 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing image data" }, { status: 400 });
     }
 
-    const apiKeys = getAllApiKeys();
-    console.log(`[Bóc tách] Tổng số API Key có sẵn: ${apiKeys.length}`);
-
-    if (apiKeys.length === 0) {
+    // Lấy cả khoá biến môi trường lẫn khoá thầy cô tự thêm ở Trạm kiểm soát Cổng A.I.
+    const tatCaKhoa = await getAllAIKeys();
+    console.log(`[Bóc tách] Tổng số API Key có sẵn: ${tatCaKhoa.length}`);
+    if (tatCaKhoa.length === 0) {
       return NextResponse.json({ error: "API Key chưa được cấu hình. Hãy thêm GEMINI_API_KEY vào file .env.local" }, { status: 500 });
     }
 
-    // Xác định key bắt đầu: dùng round-robin toàn cục hoặc key chỉ định
+    // Client có thể chỉ định khoá bắt đầu; nếu không thì xoay vòng toàn cục để chia tải.
     let startIndex: number;
-    let isSpecificKey = false;
-
-    if (typeof apiKeyIndex === 'number' && apiKeyIndex >= 0 && apiKeyIndex < apiKeys.length) {
+    if (typeof apiKeyIndex === 'number' && apiKeyIndex >= 0 && apiKeyIndex < tatCaKhoa.length) {
       startIndex = apiKeyIndex;
-      isSpecificKey = true;
     } else {
-      startIndex = globalKeyIndex % apiKeys.length;
-      // Tăng index toàn cục cho request tiếp theo (round-robin)
-      globalKeyIndex = (globalKeyIndex + 1) % apiKeys.length;
+      startIndex = globalKeyIndex % tatCaKhoa.length;
+      globalKeyIndex = (globalKeyIndex + 1) % tatCaKhoa.length;
     }
+    const keys = [...tatCaKhoa.slice(startIndex), ...tatCaKhoa.slice(0, startIndex)];
 
     // Tạo danh sách categories dạng text cho prompt
     const categoriesString = JSON.stringify(categories, null, 2);
@@ -84,70 +70,30 @@ Nhiệm vụ của bạn là:
       inlineData: { data: img, mimeType: "image/jpeg" }
     }));
 
-    let lastError: any = null;
-    const maxTries = isSpecificKey ? 1 : apiKeys.length;
+    // Xoay khoá rồi xoay model - xem geminiRunner.ts
+    try {
+      const kq = await goiGemini({ keys, parts: [prompt, ...imageParts] });
+      console.log(`[Bóc tách] Dùng model ${kq.model}`);
+      const text = kq.text;
 
-    // Thử lần lượt từng API key
-    for (let i = 0; i < maxTries; i++) {
-      const currentIndex = (startIndex + i) % apiKeys.length;
-      const apiKey = apiKeys[currentIndex];
-      const keyLabel = `Key #${currentIndex} (${apiKey.substring(0, 8)}...)`;
-
-      console.log(`[Bóc tách] Đang thử ${keyLabel} (lần ${i + 1}/${maxTries})`);
-
-      try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        // Sử dụng gemini-3.7-flash — model mới nhất, thông minh nhất (ra 20/05/2026)
-        const model = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
-
-        // Timeout 45 giây
-        const timeoutPromise = new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('⏱️ Timeout: API không phản hồi sau 45 giây')), 45000)
-        );
-
-        const result = await Promise.race([
-          model.generateContent([prompt, ...imageParts]),
-          timeoutPromise
-        ]) as any;
-
-        const text = result.response.text();
-
-        // Parse kết quả JSON
-        const jsonMatch = text.match(/```json\n([\s\S]*?)\n```/);
-        if (jsonMatch && jsonMatch[1]) {
-          const parsed = JSON.parse(jsonMatch[1]);
-          console.log(`[Bóc tách] ✅ Thành công với ${keyLabel}, tìm được ${parsed.length} công thức`);
-          return NextResponse.json(parsed);
-        } else {
-          // Thử parse trực tiếp nếu AI trả về JSON không có code fence
-          const fallbackMatch = text.match(/\[[\s\S]*\]/);
-          if (fallbackMatch) {
-            const parsed = JSON.parse(fallbackMatch[0]);
-            console.log(`[Bóc tách] ✅ Thành công (fallback) với ${keyLabel}, tìm được ${parsed.length} công thức`);
-            return NextResponse.json(parsed);
-          }
-          throw new Error("Không thể đọc kết quả JSON từ AI.");
-        }
-      } catch (err: any) {
-        lastError = err;
-        const errMsg = err.message || '';
-        console.warn(`[Bóc tách] ❌ ${keyLabel} thất bại: ${errMsg.substring(0, 150)}`);
-
-        // Nếu là lỗi 503 hoặc 429 (quá tải), chờ 2 giây rồi thử key tiếp
-        if (errMsg.includes('503') || errMsg.includes('429') || errMsg.includes('overloaded') || errMsg.includes('Resource has been exhausted')) {
-          console.log(`[Bóc tách] ⏳ Chờ 2 giây trước khi thử key tiếp theo...`);
-          await new Promise(resolve => setTimeout(resolve, 2000));
-        }
-        // Tiếp tục vòng lặp sang key khác
+      // Parse kết quả JSON
+      const jsonMatch = text.match(/```json\n([\s\S]*?)\n```/);
+      if (jsonMatch && jsonMatch[1]) {
+        const parsed = JSON.parse(jsonMatch[1]);
+        console.log(`[Bóc tách] Tìm được ${parsed.length} công thức`);
+        return NextResponse.json(parsed);
       }
+      // AI trả về JSON không bọc trong code fence
+      const fallbackMatch = text.match(/\[[\s\S]*\]/);
+      if (fallbackMatch) {
+        const parsed = JSON.parse(fallbackMatch[0]);
+        console.log(`[Bóc tách] Tìm được ${parsed.length} công thức (không có code fence)`);
+        return NextResponse.json(parsed);
+      }
+      throw new Error("Không thể đọc kết quả JSON từ AI.");
+    } catch (err: any) {
+      return NextResponse.json({ error: err?.message || 'Không gọi được AI.' }, { status: 503 });
     }
-
-    // Tất cả key đều thất bại
-    const errorMsg = maxTries > 1
-      ? `Đã thử tất cả ${maxTries} API Key nhưng đều thất bại. Lỗi cuối: ${lastError?.message || 'Không xác định'}. Vui lòng thử lại sau vài phút.`
-      : (lastError?.message || "API Key được chọn đang bận. Hãy chuyển sang chế độ Tự động.");
-    
-    return NextResponse.json({ error: errorMsg }, { status: 503 });
 
   } catch (error: any) {
     console.error("[Bóc tách] Lỗi hệ thống:", error);

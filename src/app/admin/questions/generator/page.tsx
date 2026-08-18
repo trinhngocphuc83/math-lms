@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { goiGeminiTrenTrinhDuyet, layCauHinhAI } from "@/utils/geminiBrowser";
 import { 
   ArrowLeft, Wand2, Copy, Save, Loader2, CheckCircle2, AlertCircle, ImageIcon, X, Eye, Edit3, Trash2, Database
 } from "lucide-react";
@@ -184,17 +184,11 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
     setIsGenerating(true);
     setGeneratedResults([]);
     try {
-      const keyRes = await fetch('/api/admin/gemini-key');
-      const keyData = await keyRes.json();
-      if (!keyRes.ok || !keyData.keys || keyData.keys.length === 0) throw new Error(keyData.error || "Không thể cấp phát khóa AI.");
-
-      const keys = keyData.keys;
-      if (!keys || keys.length === 0) throw new Error("Không tìm thấy danh sách khóa API.");
-      
-      const shuffledKeys = [...keys].sort(() => Math.random() - 0.5);
-      let result;
-      let success = false;
-      let lastError;
+      // Xoay cả khoá lẫn model theo thứ tự ưu tiên trong Trạm kiểm soát Cổng A.I.
+      // Bản cũ ghi cứng gemini-3.1-pro-preview rồi mới lùi về 3.7-flash - từ tháng 4/2026
+      // Google đã chuyển dòng Pro sang trả phí nên lượt gọi đầu luôn hỏng, mỗi khoá phải
+      // chờ hai lần lỗi mới đi tiếp.
+      const cauHinh = await layCauHinhAI();
 
       const prompt = generatePrompt();
       const parts: any[] = [{ text: prompt }];
@@ -208,38 +202,10 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
         }
       }
 
-      for (let i = 0; i < shuffledKeys.length; i++) {
-        const key = shuffledKeys[i];
-        const genAI = new GoogleGenerativeAI(key);
-        
-        try {
-          // Thử model 3.1 trước
-          const model = genAI.getGenerativeModel({ model: "gemini-3.1-pro-preview" });
-          result = await model.generateContent(parts);
-          success = true;
-          break; // Thành công thì thoát vòng lặp
-        } catch (err: any) {
-          console.warn(`[Key ${i+1}] Lỗi với gemini-3.1-pro-preview:`, err.message);
-          
-          try {
-            // Nếu 3.1 lỗi (Quota 429, 503...), thử fallback sang 3.5-flash bằng chính key đó
-            const fallbackModel = genAI.getGenerativeModel({ model: "gemini-3.7-flash" });
-            result = await fallbackModel.generateContent(parts);
-            success = true;
-            break; // Thành công thì thoát vòng lặp
-          } catch (fallbackErr: any) {
-            console.warn(`[Key ${i+1}] Lỗi cả fallback gemini-3.7-flash:`, fallbackErr.message);
-            lastError = fallbackErr;
-            // Tiếp tục vòng lặp để thử Key tiếp theo
-          }
-        }
-      }
+      const kq = await goiGeminiTrenTrinhDuyet(cauHinh, parts);
+      console.log(`[AI] Sinh câu hỏi bằng model ${kq.model}`);
 
-      if (!success || !result) {
-        throw new Error(lastError?.message || "Tất cả các key API đều đã quá tải (503/429). Hệ thống tạm thời không thể xử lý.");
-      }
-
-      let text = result.response.text();
+      let text = kq.text;
       
       // Cleanup JSON markdown if any
       text = text.replace(/```json/g, "").replace(/```/g, "").trim();

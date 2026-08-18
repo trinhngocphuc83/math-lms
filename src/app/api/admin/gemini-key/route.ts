@@ -1,16 +1,19 @@
 import { NextResponse } from 'next/server';
 import { requireStaff } from '@/utils/auth/guard';
 import { getAllAIKeys } from '@/utils/aiKeys';
-import { filterCleanKeys, blockKey } from '@/utils/aiKeyManager';
+import { getBlockedKeys, blockKey } from '@/utils/aiKeyManager';
+import { layDanhSachModel } from '@/utils/geminiRunner';
 
 /**
- * Cấp danh sách khoá Gemini cho các trang chạy AI phía trình duyệt (quét đề, soạn bài).
+ * Cấp khoá Gemini VÀ danh sách model cho các trang chạy AI phía trình duyệt
+ * (quét đề, soạn bài, sinh câu tương tự).
  *
- * Bản cũ liệt kê CỨNG GEMINI_API_KEY_1..5 từ biến môi trường nên có hai lỗ hổng:
- *   - Bỏ qua hoàn toàn khoá thầy cô tự thêm ở trang "Trạm kiểm soát Cổng A.I": thêm vào
- *     thì trang đó đếm tăng, nhưng lúc quét đề vẫn không hề dùng tới.
- *   - Không lọc khoá đã cạn hạn mức, nên mỗi lần quét lại thử tuần tự đúng những khoá
- *     hỏng đó, mỗi khoá phải chờ Google trả lỗi - chính là lý do quét lâu.
+ * Bản trước chỉ trả khoá và ghi cứng tên model ở từng trang, nên khi Google để model đó
+ * quá tải là các trang này đứng hẳn. Nay trả kèm danh sách model theo đúng thứ tự ưu tiên
+ * thầy cô đặt trong bảng ai_models, để trình duyệt tự tụt xuống model kế tiếp.
+ *
+ * Việc lọc khoá bị treo phải làm ở phía trình duyệt chứ không lọc sẵn ở đây, vì hạn mức
+ * tính riêng cho từng cặp khoá + model: một khoá cạn ở model này vẫn dùng tốt ở model kia.
  */
 export async function GET() {
   try {
@@ -24,21 +27,22 @@ export async function GET() {
       return NextResponse.json({ error: 'Không tìm thấy cấu hình Gemini API Key nào trên Server.' }, { status: 500 });
     }
 
-    const cleanKeys = await filterCleanKeys(allKeys);
-    if (cleanKeys.length === 0) {
-      return NextResponse.json({
-        error: `Cả ${allKeys.length} khoá AI đều đã dùng hết hạn mức trong ngày (gói miễn phí của Google chỉ cho 20 lượt/ngày mỗi khoá). `
-          + 'Vui lòng chờ sang ngày mới, thêm khoá mới ở trang Cài đặt Cổng A.I, hoặc nâng cấp gói trả phí.',
-      }, { status: 429 });
-    }
+    const models = await layDanhSachModel();
+    const treo = await getBlockedKeys(); // gộp mọi model, khoá ghi dạng "key|model"
+    const danhSachTreo = Object.entries(treo).map(([ghep, tt]) => ({
+      key: ghep.split('|')[0],
+      model: tt.model,
+    }));
 
     // Xáo trộn để chia đều tải giữa các khoá
-    const shuffledKeys = [...cleanKeys].sort(() => 0.5 - Math.random());
+    const shuffledKeys = [...allKeys].sort(() => 0.5 - Math.random());
     return NextResponse.json({
       keys: shuffledKeys,
       key: shuffledKeys[0],
+      models,
+      treo: danhSachTreo,
       tongSoKhoa: allKeys.length,
-      soKhoaBiTreo: allKeys.length - cleanKeys.length,
+      soKhoaBiTreo: danhSachTreo.length,
     });
   } catch (error) {
     console.error('Lỗi khi lấy Gemini API Key:', error);
@@ -47,9 +51,9 @@ export async function GET() {
 }
 
 /**
- * Trình duyệt báo về khoá vừa bị Google từ chối vì cạn hạn mức, để treo lại 24 giờ.
+ * Trình duyệt báo về cặp khoá + model vừa bị Google từ chối vì cạn hạn mức, để treo 24 giờ.
  *
- * Các trang chạy AI ở phía trình duyệt không đụng được vào sổ đen (nằm trong CSDL, chỉ
+ * Các trang chạy AI ở phía trình duyệt không đụng được vào sổ treo (nằm trong CSDL, chỉ
  * máy chủ mới có quyền), nên cần đường báo riêng này - nếu không, lần quét sau vẫn thử
  * lại đúng khoá đã hỏng.
  */
@@ -58,11 +62,14 @@ export async function POST(request: Request) {
     const guard = await requireStaff();
     if (!guard.ok) return guard.response;
 
-    const { key, reason } = await request.json();
+    const { key, reason, model } = await request.json();
     if (!key || typeof key !== 'string') {
       return NextResponse.json({ error: 'Thiếu khoá cần treo.' }, { status: 400 });
     }
-    await blockKey(key, String(reason || 'Cạn hạn mức'));
+    if (!model || typeof model !== 'string') {
+      return NextResponse.json({ error: 'Thiếu tên model cần treo.' }, { status: 400 });
+    }
+    await blockKey(key, String(reason || 'Cạn hạn mức'), model);
     return NextResponse.json({ ok: true });
   } catch (error: any) {
     return NextResponse.json({ error: error?.message || 'Lỗi máy chủ nội bộ' }, { status: 500 });

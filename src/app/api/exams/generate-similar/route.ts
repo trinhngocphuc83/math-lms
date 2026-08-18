@@ -1,25 +1,9 @@
 import { NextResponse } from "next/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { getAllAIKeys } from '@/utils/aiKeys';
+import { goiGemini } from '@/utils/geminiRunner';
 import { requireStaff } from "@/utils/auth/guard";
 import { targetFormatPrompt, CORRECT_ANSWER_FORMAT_HINT } from "@/utils/questionTypes";
 
-function getRotatedApiKeys() {
-  const keys: string[] = [];
-  if (process.env.GEMINI_API_KEY) keys.push(process.env.GEMINI_API_KEY);
-  
-  let i = 1;
-  while (process.env[`GEMINI_API_KEY_${i}`]) {
-    keys.push(process.env[`GEMINI_API_KEY_${i}`] as string);
-    i++;
-  }
-  
-  if (keys.length === 0) return [];
-  for (let idx = keys.length - 1; idx > 0; idx--) {
-    const j = Math.floor(Math.random() * (idx + 1));
-    [keys[idx], keys[j]] = [keys[j], keys[idx]];
-  }
-  return keys;
-}
 
 export const maxDuration = 60; // 60s trên Vercel
 
@@ -31,8 +15,9 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { baseQuestion, targetCount, targetDifficulty, targetFormat, contextMode } = body;
 
-    const rotatedKeys = getRotatedApiKeys();
-    if (rotatedKeys.length === 0) {
+    // Lấy cả khoá biến môi trường lẫn khoá thầy cô tự thêm ở Trạm kiểm soát Cổng A.I.
+    const keys = await getAllAIKeys();
+    if (keys.length === 0) {
       throw new Error("Chưa cấu hình GEMINI_API_KEY trong hệ thống.");
     }
 
@@ -102,85 +87,72 @@ export async function POST(request: Request) {
       { text: baseQuestionContext }
     ];
 
-    let lastError = null;
+    // Xoay khoá rồi xoay model - xem geminiRunner.ts
+    const kq = await goiGemini({
+      keys,
+      parts,
+      generationConfig: {
+        responseMimeType: "application/json",
+        temperature: 0.7, // Nhiệt độ cao hơn chút để sinh ra sự đa dạng
+      },
+    });
+    console.log(`[Sinh câu tương tự] Dùng model ${kq.model}`);
+    const text = kq.text;
 
-    for (const apiKey of rotatedKeys) {
-      try {
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ 
-          model: "gemini-3.7-flash",
-          generationConfig: {
-            responseMimeType: "application/json",
-            temperature: 0.7 // Nhiệt độ cao hơn chút để sinh ra sự đa dạng
-          }
-        });
+    // Fix \t LaTeX JSON parse bug
+    let preprocessedText = text
+        .replace(/\\n(?=eq|otin|exists|eg|abla|u|i|earrow|atural|parallel)/g, '\\\\n')
+        .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
+        .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
+        .replace(/\\b(?=egin)/g, '\\\\b')
+        .replace(/\\f(?=rac|orall)/g, '\\\\f');
 
-        const result = await model.generateContent(parts);
-        const text = result.response.text();
-        
-        // Fix \t LaTeX JSON parse bug
-        let preprocessedText = text
-            .replace(/\\n(?=eq|otin|exists|eg|abla|u|i|earrow|atural|parallel)/g, '\\\\n')
-            .replace(/\\r(?=ightarrow|ho|angle)/g, '\\\\r')
-            .replace(/\\t(?=imes|heta|riangle|ext)/g, '\\\\t')
-            .replace(/\\b(?=egin)/g, '\\\\b')
-            .replace(/\\f(?=rac|orall)/g, '\\\\f');
-
-        let parsed;
-        try {
-          parsed = JSON.parse(preprocessedText);
-        } catch (parseErr: any) {
-          const sanitizedText = text.replace(/\\([^"\\/bfnrtu])/g, '\\\\$1');
-          parsed = JSON.parse(sanitizedText);
-        }
-
-        const finalArray = Array.isArray(parsed) ? parsed : (parsed.questions || []);
-
-        // Chuyển đổi định dạng trả về của AI thành định dạng chuẩn của QuestionData (trừ các ID)
-        const variants = finalArray.map((data: any) => {
-           let parsedQuestionType = String(data.loaiCauHoi || targetFormat || "NLC");
-           if (targetFormat && targetFormat !== "same") parsedQuestionType = targetFormat; // Ép kiểu nếu có yêu cầu
-           
-           if (parsedQuestionType.toLowerCase().includes("trắc nghiệm")) parsedQuestionType = "NLC";
-           else if (parsedQuestionType.toLowerCase().includes("đúng/sai") || parsedQuestionType.toLowerCase().includes("đúng sai")) parsedQuestionType = "DS";
-           else if (parsedQuestionType.toLowerCase().includes("ngắn")) parsedQuestionType = "TLN";
-           else if (parsedQuestionType.toLowerCase().includes("tự luận") || parsedQuestionType === "essay") parsedQuestionType = "TL";
-           
-           let difficulty = data.mucDo || baseQuestion.difficulty;
-           if (targetDifficulty === "harder") difficulty = Math.min(4, parseInt(baseQuestion.difficulty) + 1).toString();
-           if (targetDifficulty === "easier") difficulty = Math.max(1, parseInt(baseQuestion.difficulty) - 1).toString();
-
-           return {
-              temp_id: `TEMP_VAR_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
-              parent_id: baseQuestion.question_id || baseQuestion.temp_id, // Lưu vết họ hàng
-              grade: baseQuestion.grade,
-              subject: baseQuestion.subject,
-              topic: baseQuestion.topic,
-              lesson: baseQuestion.lesson,
-              math_form: baseQuestion.math_form,
-              question_type: parsedQuestionType,
-              difficulty: difficulty,
-              content: data.noiDung || "",
-              option_a: data.dapAnA || "",
-              option_b: data.dapAnB || "",
-              option_c: data.dapAnC || "",
-              option_d: data.dapAnD || "",
-              correct_answer: data.dapAnDung || "",
-              explanation: data.loiGiai || "",
-              image_url: "" // Bắt buộc giáo viên phải tự upload nếu có ảnh
-           };
-        });
-
-        return NextResponse.json({ variants });
-
-      } catch (err: any) {
-        lastError = err;
-        console.error("Lỗi AI Sinh tương tự, chuyển key...", err.message);
-        continue;
-      }
+    let parsed;
+    try {
+      parsed = JSON.parse(preprocessedText);
+    } catch (parseErr: any) {
+      const sanitizedText = text.replace(/\\([^"\\/bfnrtu])/g, '\\\\$1');
+      parsed = JSON.parse(sanitizedText);
     }
 
-    throw new Error(lastError?.message || "Tất cả API keys đều báo lỗi hoặc quá tải (503).");
+    const finalArray = Array.isArray(parsed) ? parsed : (parsed.questions || []);
+
+    // Chuyển đổi định dạng trả về của AI thành định dạng chuẩn của QuestionData (trừ các ID)
+    const variants = finalArray.map((data: any) => {
+       let parsedQuestionType = String(data.loaiCauHoi || targetFormat || "NLC");
+       if (targetFormat && targetFormat !== "same") parsedQuestionType = targetFormat; // Ép kiểu nếu có yêu cầu
+       
+       if (parsedQuestionType.toLowerCase().includes("trắc nghiệm")) parsedQuestionType = "NLC";
+       else if (parsedQuestionType.toLowerCase().includes("đúng/sai") || parsedQuestionType.toLowerCase().includes("đúng sai")) parsedQuestionType = "DS";
+       else if (parsedQuestionType.toLowerCase().includes("ngắn")) parsedQuestionType = "TLN";
+       else if (parsedQuestionType.toLowerCase().includes("tự luận") || parsedQuestionType === "essay") parsedQuestionType = "TL";
+       
+       let difficulty = data.mucDo || baseQuestion.difficulty;
+       if (targetDifficulty === "harder") difficulty = Math.min(4, parseInt(baseQuestion.difficulty) + 1).toString();
+       if (targetDifficulty === "easier") difficulty = Math.max(1, parseInt(baseQuestion.difficulty) - 1).toString();
+
+       return {
+          temp_id: `TEMP_VAR_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
+          parent_id: baseQuestion.question_id || baseQuestion.temp_id, // Lưu vết họ hàng
+          grade: baseQuestion.grade,
+          subject: baseQuestion.subject,
+          topic: baseQuestion.topic,
+          lesson: baseQuestion.lesson,
+          math_form: baseQuestion.math_form,
+          question_type: parsedQuestionType,
+          difficulty: difficulty,
+          content: data.noiDung || "",
+          option_a: data.dapAnA || "",
+          option_b: data.dapAnB || "",
+          option_c: data.dapAnC || "",
+          option_d: data.dapAnD || "",
+          correct_answer: data.dapAnDung || "",
+          explanation: data.loiGiai || "",
+          image_url: "" // Bắt buộc giáo viên phải tự upload nếu có ảnh
+       };
+    });
+
+    return NextResponse.json({ variants });
 
   } catch (error: any) {
     console.error("Lỗi API Generate Similar:", error);
