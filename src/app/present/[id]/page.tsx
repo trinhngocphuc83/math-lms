@@ -335,6 +335,12 @@ export default function PresentationPage() {
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
+            // Đang gõ trong ô nhập (ví dụ ô phút/giây của đồng hồ đặt giờ) thì không chuyển slide,
+            // nếu không vừa gõ số vừa bị nhảy sang slide khác.
+            const o = e.target as HTMLElement | null;
+            const the = o?.tagName;
+            if (the === 'INPUT' || the === 'TEXTAREA' || the === 'SELECT' || o?.isContentEditable) return;
+
             if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
                 if (e.key === ' ' || e.key === 'PageDown') e.preventDefault();
                 goNext();

@@ -1,13 +1,18 @@
 "use client";
 
-// Đồng hồ đếm ngược cho tiết dạy, hiện ở góc phải trong khung slide.
+// Đồng hồ đếm ngược cho tiết dạy, hiện ở góc DƯỚI phải trong khung slide.
 //
 // Dùng khi cho học sinh làm câu hỏi tương tác hoặc ví dụ mẫu: thầy đặt giờ ngay
-// trên màn hình đang chiếu (bấm nhanh 1/2/3/5 phút, gõ bàn phím, hoặc bấm micro
-// rồi nói "hai phút"), 10 giây cuối có tiếng bíp báo để cả lớp biết sắp hết giờ.
+// trên màn hình đang chiếu (bấm phím T, bấm nhanh 1/2/3/5 phút, gõ bàn phím, hoặc
+// bấm micro rồi nói "hai phút"), 10 giây cuối có tiếng bíp báo để cả lớp biết sắp hết giờ.
 //
 // Đặt absolute TRONG canvas 1600x900 (không dùng fixed theo màn hình) để đồng hồ
 // co giãn cùng slide khi phóng to/thu nhỏ cửa sổ.
+//
+// Vì sao nằm ở GÓC DƯỚI: trước đây để góc trên, nhưng thanh điều khiển trình chiếu
+// (tên bài, số slide, nút phóng to) nằm đè lên đỉnh màn hình nên vừa bấm mở bảng đặt
+// giờ là bị thanh đó che mất. Chuyển xuống dưới và cho bảng bung LÊN TRÊN thì tránh
+// được cả thanh trên lẫn mép dưới canvas.
 
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Timer, Mic, Play, Pause, RotateCcw, X, Volume2, VolumeX, Loader2 } from "lucide-react";
@@ -153,11 +158,35 @@ export default function PresentationTimer() {
     }
   };
 
+  // Phím tắt T: mở nhanh bảng đặt giờ (khi chưa đặt) hoặc tạm dừng / chạy tiếp (khi đang chạy),
+  // đúng như bấm vào nút. Esc để đóng bảng. Bỏ qua khi con trỏ đang ở trong ô nhập, nếu không
+  // gõ số phút xong bấm phải chữ nào cũng làm đồng hồ nhảy lung tung.
+  useEffect(() => {
+    const dangGoTrongO = (e: KeyboardEvent) => {
+      const el = e.target as HTMLElement | null;
+      const the = el?.tagName;
+      return the === 'INPUT' || the === 'TEXTAREA' || the === 'SELECT' || !!el?.isContentEditable;
+    };
+    const batPhim = (e: KeyboardEvent) => {
+      if (e.ctrlKey || e.altKey || e.metaKey || dangGoTrongO(e)) return;
+      if (e.key === 't' || e.key === 'T') {
+        e.preventDefault();
+        if (tongGiay > 0) tamDung();
+        else setDangMoBang((v) => !v);
+      } else if (e.key === 'Escape' && dangMoBang) {
+        setDangMoBang(false);
+      }
+    };
+    window.addEventListener('keydown', batPhim);
+    return () => window.removeEventListener('keydown', batPhim);
+  }, [tongGiay, dangChay, conLai, dangMoBang]);
+
   const sapHet = dangChay && conLai > 0 && conLai <= MOC_CANH_BAO;
   const hetGio = tongGiay > 0 && conLai === 0 && !dangChay;
 
   return (
-    <div className="absolute top-6 right-7 z-50 flex flex-col items-end gap-2">
+    // flex-col-reverse: nút nằm dưới cùng, bảng đặt giờ bung NGƯỢC LÊN TRÊN nút
+    <div className="absolute bottom-6 right-7 z-50 flex flex-col-reverse items-end gap-2">
       {/* Nút / mặt đồng hồ */}
       <button
         onClick={() => (tongGiay > 0 ? tamDung() : setDangMoBang((v) => !v))}
@@ -169,7 +198,9 @@ export default function PresentationTimer() {
               : tongGiay > 0
                 ? 'bg-white border-indigo-500 text-indigo-700'
                 : 'bg-white/95 border-slate-300 text-slate-600 hover:border-indigo-400 hover:text-indigo-600'}`}
-        title={tongGiay > 0 ? (dangChay ? 'Tạm dừng' : 'Chạy tiếp') : 'Đặt giờ cho học sinh làm bài'}
+        title={tongGiay > 0
+          ? (dangChay ? 'Tạm dừng (phím T)' : 'Chạy tiếp (phím T)')
+          : 'Đặt giờ cho học sinh làm bài (phím T)'}
       >
         {dangChay ? <Pause className="w-[26px] h-[26px]" /> : <Timer className="w-[26px] h-[26px]" />}
         <span className={`font-black tabular-nums ${tongGiay > 0 ? 'text-[34px]' : 'text-[26px]'}`}>
@@ -191,7 +222,10 @@ export default function PresentationTimer() {
       {dangMoBang && tongGiay === 0 && (
         <div className="bg-white rounded-2xl shadow-2xl border-2 border-slate-200 p-5 w-[430px]">
           <div className="flex items-center justify-between mb-3">
-            <h4 className="text-[24px] font-black text-slate-800">Đặt thời gian làm bài</h4>
+            <div>
+              <h4 className="text-[24px] font-black text-slate-800">Đặt thời gian làm bài</h4>
+              <p className="text-[15px] text-slate-400 font-semibold">Phím tắt: T để mở/đóng nhanh, Esc để đóng</p>
+            </div>
             <div className="flex items-center gap-1">
               <button
                 onClick={() => setTatTieng((v) => !v)}
