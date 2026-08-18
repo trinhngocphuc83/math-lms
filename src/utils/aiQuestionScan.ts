@@ -54,6 +54,27 @@ export const IMAGE_NEEDED_REGEX = /\[IMAGE_PLACEHOLDER\]|\[[^\]]*(?:HÌNH|ẢNH|
  */
 export const IMAGE_PLACEHOLDER_STRIP_REGEX = /\[IMAGE_PLACEHOLDER\]|\[[^\]]*(?:HÌNH|ẢNH|BẢNG|ĐỒ THỊ|CHÚ Ý)[^\]]*\]/gi;
 
+/** Nội dung đã có ảnh chèn sẵn dạng markdown `![...](...)` hay chưa. */
+export const daChenAnh = (text: string | null | undefined): boolean =>
+  /!\[[^\]]*\]\([^)]+\)/.test(text || '');
+
+/**
+ * Câu hỏi này CÒN CẦN chèn ảnh hay không.
+ *
+ * Phải kiểm tra "đã có ảnh" TRƯỚC khi dò dấu hiệu cần ảnh, vì chính đoạn markdown ảnh
+ * vừa chèn - `![Hình ảnh](https://...)` - lại khớp luôn IMAGE_NEEDED_REGEX (nó chứa
+ * "[Hình ảnh]"). Thiếu bước này thì câu ĐÃ chèn ảnh xong vẫn bị báo đỏ "thiếu ảnh"
+ * vĩnh viễn, người dùng không biết còn câu nào thật sự cần xử lý.
+ */
+export const canChenAnh = (
+  text: string | null | undefined,
+  imageUrl?: string | null,
+): boolean => {
+  if (imageUrl) return false;
+  if (daChenAnh(text)) return false;
+  return IMAGE_NEEDED_REGEX.test(text || '');
+};
+
 export const fileToBase64 = (file: File): Promise<string> => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();

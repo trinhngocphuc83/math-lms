@@ -9,7 +9,7 @@ import QuestionBankModal from "@/components/admin/QuestionBankModal";
 import RichTextarea from "@/components/admin/RichTextarea";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
 import SourceImageWithBox from "@/components/admin/SourceImageWithBox";
-import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX } from "@/utils/aiQuestionScan";
+import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, daChenAnh, canChenAnh } from "@/utils/aiQuestionScan";
 
 export interface Block {
   id: string;
@@ -313,8 +313,6 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   // Dùng IMAGE_NEEDED_REGEX chung (không có cờ "g" nên .test() an toàn) thay cho bản
   // chép riêng trước đây - trước có 4 bản regex lệch nhau giữa các file, sửa chỗ này
   // quên chỗ kia.
-  const hasInsertedImage = (text: string) => /!\[[^\]]*\]\([^)]+\)/.test(text || '');
-
   const blockNeedsImage = (b: Block): boolean => {
      if (b.type === 'md') {
         if (typeof b.content !== 'string') return false;
@@ -325,7 +323,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
         // Đã chèn được ảnh vào câu thì coi như xong, kể cả khi ảnh do AI tự cắt
         // (autoCropMetadata vẫn được giữ để còn cắt lại). Bản cũ trả về true ngay khi
         // thấy autoCropMetadata nên câu ĐÃ CÓ ẢNH vẫn bị báo đỏ "thiếu ảnh" vĩnh viễn.
-        if (hasInsertedImage(question)) return false;
+        if (daChenAnh(question)) return false;
         if (b.content?.autoCropMetadata) return true;
         return IMAGE_NEEDED_REGEX.test(question);
      }
@@ -338,7 +336,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
      const text = b.type === 'md'
         ? (typeof b.content === 'string' ? b.content : '')
         : (b.content?.question || '');
-     return hasInsertedImage(text);
+     return daChenAnh(text);
   };
 
   return (
@@ -684,7 +682,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                              meta={block.content.autoCropMetadata}
                              onRecrop={() => onTriggerCrop(block.content.autoCropMetadata, block.id)}
                           />
-                       ) : (IMAGE_NEEDED_REGEX.test(block.content.question || '')) && (
+                       ) : (canChenAnh(block.content.question)) && (
                           <div className="bg-red-50 border border-red-200 px-5 py-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-pulse">
                              <div className="flex items-center gap-3 text-red-700">
                                 <AlertTriangle className="w-6 h-6 shrink-0" />

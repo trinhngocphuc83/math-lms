@@ -24,7 +24,7 @@ import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/Q
 import SourceImageWithBox from "@/components/admin/SourceImageWithBox";
 import {
   type QuestionData,
-  IMAGE_NEEDED_REGEX,
+  canChenAnh,
   IMAGE_PLACEHOLDER_STRIP_REGEX,
   scanFilesForQuestions,
 } from "@/utils/aiQuestionScan";
@@ -299,7 +299,7 @@ export default function BatchQueuePage() {
       const reasons: ReviewReason[] = [];
       if (w.q.isDuplicate) reasons.push('duplicate');
       if (w.autoCropped) reasons.push('image_auto_cropped');
-      else if (!w.q.image_url && IMAGE_NEEDED_REGEX.test(w.q.content || '')) reasons.push('missing_image');
+      else if (canChenAnh(w.q.content, w.q.image_url)) reasons.push('missing_image');
 
       const isClean = reasons.length === 0;
 
@@ -385,7 +385,7 @@ export default function BatchQueuePage() {
       }
       await routeReadyQuestions(ready);
 
-      const cleanCount = ready.filter((w) => !w.q.isDuplicate && !w.autoCropped && !(!w.q.image_url && IMAGE_NEEDED_REGEX.test(w.q.content || ''))).length;
+      const cleanCount = ready.filter((w) => !w.q.isDuplicate && !w.autoCropped && !canChenAnh(w.q.content, w.q.image_url)).length;
       updateChunk(index, {
         status: 'success',
         foundCount: questions.length,

@@ -20,7 +20,8 @@ import {
 } from "@/utils/questionTypes";
 import {
   type QuestionData,
-  IMAGE_NEEDED_REGEX,
+  canChenAnh,
+  daChenAnh,
   scanFilesForQuestions,
   parseExtractedQuestionsJson,
 } from "@/utils/aiQuestionScan";
@@ -370,6 +371,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     const byDifficulty: Record<string, number> = {};
     const matrix: Record<string, Record<string, number>> = {};
     let thieuAnh = 0;
+    let daCoAnh = 0;
     let trungLap = 0;
 
     parsedQuestions.forEach(q => {
@@ -379,7 +381,8 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
       byDifficulty[d] = (byDifficulty[d] || 0) + 1;
       if (!matrix[t]) matrix[t] = {};
       matrix[t][d] = (matrix[t][d] || 0) + 1;
-      if (!q.image_url && IMAGE_NEEDED_REGEX.test(q.content || '')) thieuAnh++;
+      if (canChenAnh(q.content, q.image_url)) thieuAnh++;
+      if (q.image_url || daChenAnh(q.content)) daCoAnh++;
       if (q.isDuplicate) trungLap++;
     });
 
@@ -388,6 +391,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
       byDifficulty,
       matrix,
       thieuAnh,
+      daCoAnh,
       trungLap,
       typesPresent: BANK_TYPES.filter(t => byType[t] > 0),
       total: parsedQuestions.length,
@@ -579,7 +583,11 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                    {parsedQuestions.map((q, idx) => {
                       const isSelected = activeQuestionIdx === idx;
                       // Tách bạch 2 loại cảnh báo để biết ngay phải xử lý gì
-                      const thieuAnh = !q.image_url && IMAGE_NEEDED_REGEX.test(q.content || '');
+                      const thieuAnh = canChenAnh(q.content, q.image_url);
+                      // Đã chèn ảnh xong: đổi dấu hiệu sang màu khác để thấy ngay câu nào
+                      // đã bổ sung ảnh, thay vì dấu đỏ tắt hẳn (không phân biệt được với
+                      // câu vốn không cần ảnh).
+                      const daCoAnh = !!q.image_url || daChenAnh(q.content);
                       const trungLap = !!q.isDuplicate;
                       return (
                          <button
@@ -588,6 +596,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                             title={[
                                `Câu ${idx + 1} · ${bankTypeLabel(q.question_type)} · ${difficultyLabel(q.difficulty)}`,
                                thieuAnh ? '⚠️ THIẾU ẢNH - cần chèn hình cho câu này' : '',
+                               daCoAnh ? '🖼️ Đã có hình ảnh' : '',
                                trungLap ? '⚠️ Trùng với câu đã có trong Ngân hàng' : '',
                             ].filter(Boolean).join('\n')}
                             className={`h-10 rounded-lg text-xs font-black transition-all flex items-center justify-center relative border overflow-hidden ${
@@ -601,9 +610,13 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                             {idx + 1}
                             {/* Vạch màu dưới đáy: nhận biết ngay Dạng thức của từng câu */}
                             <span className={`absolute bottom-0 left-0 right-0 h-[3px] ${TYPE_STYLE[toBankType(q.question_type) ?? 'NLC']?.dot || 'bg-gray-300'}`} />
-                            {/* Chấm ĐỎ: còn thiếu ảnh. Chấm CAM: trùng lặp. */}
+                            {/* Chấm ĐỎ nhấp nháy: còn thiếu ảnh. Chấm XANH LÁ: đã chèn ảnh xong.
+                                Chấm CAM: trùng lặp. */}
                             {thieuAnh && (
                                <span className="absolute top-0.5 right-0.5 w-2 h-2 rounded-full bg-red-500 ring-2 ring-white animate-pulse" />
+                            )}
+                            {daCoAnh && (
+                               <span className="absolute top-0.5 right-0.5 w-2 h-2 rounded-full bg-emerald-500 ring-2 ring-white" />
                             )}
                             {trungLap && (
                                <span className="absolute top-0.5 left-0.5 w-2 h-2 rounded-full bg-orange-500 ring-2 ring-white" />
@@ -692,6 +705,10 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                    <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
                       <span className="w-2.5 h-2.5 rounded-full bg-red-500 block animate-pulse"></span>
                       <span>Thiếu ảnh {scanSummary.thieuAnh > 0 && <b className="text-red-600">({scanSummary.thieuAnh})</b>}</span>
+                   </div>
+                   <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 block"></span>
+                      <span>Đã có ảnh {scanSummary.daCoAnh > 0 && <b className="text-emerald-600">({scanSummary.daCoAnh})</b>}</span>
                    </div>
                    <div className="flex items-center gap-2 text-[11px] font-semibold text-gray-500">
                       <span className="w-2.5 h-2.5 rounded-full bg-orange-500 block"></span>
