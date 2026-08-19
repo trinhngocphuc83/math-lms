@@ -8,8 +8,12 @@
 // đồng thời ước lượng số từ ngay lúc chọn để biết trước có vượt ngưỡng hay không.
 
 import React, { useMemo, useState } from "react";
-import { X, ChevronRight, ChevronDown, FileText, AlertTriangle, Loader2 } from "lucide-react";
+import { X, ChevronRight, ChevronDown, FileText, AlertTriangle, Loader2, Search, ListTree } from "lucide-react";
 import { NGUONG_TU_AN_TOAN } from "@/utils/exportQuestionsMarkdown";
+
+/** Bỏ dấu tiếng Việt để tìm "phuong trinh" cũng ra "phương trình". */
+const boDau = (s: string) =>
+  (s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[đĐ]/g, 'd').toLowerCase();
 
 /** Một dòng thống kê để dựng cây: mỗi (lớp, chương, bài) kèm số câu và số từ ước lượng. */
 export interface ThongKeNhanh {
@@ -44,13 +48,27 @@ export default function ExportScopeModal({
 }: ExportScopeModalProps) {
   const [daChon, setDaChon] = useState<Set<string>>(new Set());
   const [moRong, setMoRong] = useState<Set<string>>(new Set());
+  // Ô tìm nhanh: gõ tên chương/bài để thu hẹp cây, khỏi phải cuộn qua hàng chục chương.
+  const [tuKhoa, setTuKhoa] = useState('');
   const [kemLoiGiai, setKemLoiGiai] = useState(true);
   const [tachTheoChuong, setTachTheoChuong] = useState(false);
+
+  /**
+   * Lọc theo từ khoá trước khi dựng cây. Khớp ở cấp nào cũng giữ lại: gõ tên chương thì
+   * giữ trọn chương, gõ tên bài thì chỉ giữ những bài khớp.
+   */
+  const thongKeLoc = useMemo(() => {
+    const tk = boDau(tuKhoa.trim());
+    if (!tk) return thongKe;
+    return thongKe.filter(d =>
+      boDau(d.topic).includes(tk) || boDau(d.lesson).includes(tk) || boDau('lop ' + d.grade).includes(tk)
+    );
+  }, [thongKe, tuKhoa]);
 
   // Dựng cây Lớp -> Chương -> Bài từ thống kê
   const cay = useMemo(() => {
     const goc = new Map<string, Map<string, ThongKeNhanh[]>>();
-    for (const d of thongKe) {
+    for (const d of thongKeLoc) {
       const lop = d.grade || '(chưa rõ lớp)';
       const chuong = d.topic || '(chưa rõ chương)';
       if (!goc.has(lop)) goc.set(lop, new Map());
@@ -59,7 +77,7 @@ export default function ExportScopeModal({
       mapChuong.get(chuong)!.push(d);
     }
     return goc;
-  }, [thongKe]);
+  }, [thongKeLoc]);
 
   const tongTheoNhanh = useMemo(() => {
     const m = new Map<string, { soCau: number; soTu: number }>();
@@ -105,6 +123,17 @@ export default function ExportScopeModal({
 
   const demCau = (khoa: string[]) => khoa.reduce((s, k) => s + (tongTheoNhanh.get(k)?.soCau || 0), 0);
 
+  // Mọi khoá mở rộng có thể có (mỗi lớp và mỗi chương), để nút "Mở tất cả" bung trọn cây.
+  const moiKhoaMoRong: string[] = [];
+  cay.forEach((mapChuong, lop) => {
+    moiKhoaMoRong.push(lop);
+    mapChuong.forEach((_, chuong) => moiKhoaMoRong.push(`${lop}||${chuong}`));
+  });
+  // Đang tìm kiếm thì bung sẵn cây, nếu không thầy cô gõ xong vẫn phải bấm mở từng lớp.
+  const dangTimKiem = tuKhoa.trim().length > 0;
+  const moTatCa = dangTimKiem || (moiKhoaMoRong.length > 0 && moiKhoaMoRong.every((k) => moRong.has(k)));
+  const dangMoRong = (k: string) => dangTimKiem || moRong.has(k);
+
   const vuotNguong = tongDaChon.soTu > NGUONG_TU_AN_TOAN;
   const dangBan = dangTai || dangXuat;
 
@@ -126,11 +155,43 @@ export default function ExportScopeModal({
           </button>
         </div>
 
+        {/* Thanh tìm nhanh + mở/thu gọn cây */}
+        <div className="px-5 py-3 border-b border-gray-100 flex items-center gap-3 shrink-0 flex-wrap">
+          <div className="relative flex-1 min-w-[220px]">
+            <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={tuKhoa}
+              onChange={(e) => setTuKhoa(e.target.value)}
+              placeholder="Tìm nhanh tên chương hoặc bài (gõ không dấu cũng được)..."
+              className="w-full border border-gray-200 rounded-xl pl-9 pr-8 py-2 text-sm outline-none focus:border-blue-500"
+            />
+            {tuKhoa && (
+              <button onClick={() => setTuKhoa('')} className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-red-600">
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+          <button
+            onClick={() => setMoRong(moTatCa ? new Set() : new Set(moiKhoaMoRong))}
+            className="flex items-center gap-1.5 text-xs font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-3 py-2 rounded-xl hover:bg-indigo-100 shrink-0"
+          >
+            <ListTree className="w-4 h-4" /> {moTatCa ? 'Thu gọn tất cả' : 'Mở tất cả chương / bài'}
+          </button>
+        </div>
+
         {/* Cây chọn */}
         <div className="flex-1 overflow-y-auto p-4 bg-gray-50/40">
           {dangTai ? (
             <div className="flex items-center justify-center py-16 text-gray-500 gap-2">
               <Loader2 className="w-5 h-5 animate-spin" /> Đang đọc ngân hàng câu hỏi...
+            </div>
+          ) : thongKeLoc.length === 0 && tuKhoa.trim() ? (
+            <div className="text-center py-16">
+              <p className="text-gray-500 font-bold">Không có chương hay bài nào khớp “{tuKhoa}”.</p>
+              <button onClick={() => setTuKhoa('')} className="mt-2 text-sm font-bold text-blue-600 hover:underline">
+                Xoá từ khoá để xem lại toàn bộ
+              </button>
             </div>
           ) : thongKe.length === 0 ? (
             <p className="text-center text-gray-400 py-16">Chưa có câu hỏi nào trong ngân hàng.</p>
@@ -139,27 +200,34 @@ export default function ExportScopeModal({
               {Array.from(cay.keys()).sort().map((lop) => {
                 const khoaLop = khoaCuaLop(lop);
                 const tt = trangThaiNhom(khoaLop);
-                const dangMo = moRong.has(lop);
+                const dangMo = dangMoRong(lop);
                 return (
                   <div key={lop} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
-                    <div className="flex items-center gap-2 px-3 py-2.5 bg-gray-50/80">
-                      <button
-                        onClick={() => setMoRong((p) => { const n = new Set(p); n.has(lop) ? n.delete(lop) : n.add(lop); return n; })}
-                        className="p-1 text-gray-500 hover:text-indigo-600 shrink-0"
-                      >
+                    {/* Bấm bất cứ đâu trên dòng đều mở/đóng - trước đây chỉ mũi tên nhỏ mới mở
+                        được, nên nhìn vào tưởng chỉ chọn được nguyên lớp. Ô tick chặn lan lên
+                        để tick không làm đóng cây. */}
+                    <div
+                      onClick={() => setMoRong((p) => { const n = new Set(p); n.has(lop) ? n.delete(lop) : n.add(lop); return n; })}
+                      className="flex items-center gap-2 px-3 py-2.5 bg-gray-50/80 cursor-pointer hover:bg-indigo-50/60"
+                    >
+                      <span className="p-1 text-gray-500 shrink-0">
                         {dangMo ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
-                      </button>
-                      <label className="flex items-center gap-2 cursor-pointer flex-1 min-w-0">
-                        <input
-                          type="checkbox"
-                          checked={tt.tatCa}
-                          ref={(el) => { if (el) el.indeterminate = tt.motPhan; }}
-                          onChange={(e) => doiChon(khoaLop, e.target.checked)}
-                          className="w-4 h-4 accent-blue-600"
-                        />
-                        <span className="font-black text-gray-800">Lớp {lop}</span>
-                        <span className="text-xs text-gray-500">({demCau(khoaLop)} câu)</span>
-                      </label>
+                      </span>
+                      <input
+                        type="checkbox"
+                        checked={tt.tatCa}
+                        ref={(el) => { if (el) el.indeterminate = tt.motPhan; }}
+                        onClick={(e) => e.stopPropagation()}
+                        onChange={(e) => doiChon(khoaLop, e.target.checked)}
+                        className="w-4 h-4 accent-blue-600 cursor-pointer"
+                      />
+                      <span className="font-black text-gray-800">Lớp {lop}</span>
+                      <span className="text-xs text-gray-500">
+                        ({demCau(khoaLop)} câu · {cay.get(lop)!.size} chương)
+                      </span>
+                      {!dangMo && (
+                        <span className="ml-auto text-[11px] font-bold text-indigo-600 shrink-0">Bấm để chọn từng chương / bài</span>
+                      )}
                     </div>
 
                     {dangMo && (
@@ -168,27 +236,28 @@ export default function ExportScopeModal({
                           const khoaCh = khoaCuaChuong(lop, chuong);
                           const ttCh = trangThaiNhom(khoaCh);
                           const khoaMoChuong = `${lop}||${chuong}`;
-                          const moChuong = moRong.has(khoaMoChuong);
+                          const moChuong = dangMoRong(khoaMoChuong);
                           return (
                             <div key={chuong} className="border border-gray-100 rounded-lg">
-                              <div className="flex items-center gap-2 px-2.5 py-2">
-                                <button
-                                  onClick={() => setMoRong((p) => { const n = new Set(p); n.has(khoaMoChuong) ? n.delete(khoaMoChuong) : n.add(khoaMoChuong); return n; })}
-                                  className="p-0.5 text-gray-400 hover:text-indigo-600 shrink-0"
-                                >
+                              <div
+                                onClick={() => setMoRong((p) => { const n = new Set(p); n.has(khoaMoChuong) ? n.delete(khoaMoChuong) : n.add(khoaMoChuong); return n; })}
+                                className="flex items-center gap-2 px-2.5 py-2 cursor-pointer hover:bg-indigo-50/50 rounded-lg"
+                              >
+                                <span className="p-0.5 text-gray-400 shrink-0">
                                   {moChuong ? <ChevronDown className="w-3.5 h-3.5" /> : <ChevronRight className="w-3.5 h-3.5" />}
-                                </button>
-                                <label className="flex items-center gap-2 cursor-pointer flex-1 min-w-0">
-                                  <input
-                                    type="checkbox"
-                                    checked={ttCh.tatCa}
-                                    ref={(el) => { if (el) el.indeterminate = ttCh.motPhan; }}
-                                    onChange={(e) => doiChon(khoaCh, e.target.checked)}
-                                    className="w-4 h-4 accent-blue-600"
-                                  />
-                                  <span className="font-bold text-sm text-gray-700 truncate">{chuong}</span>
-                                  <span className="text-xs text-gray-400 shrink-0">({demCau(khoaCh)} câu)</span>
-                                </label>
+                                </span>
+                                <input
+                                  type="checkbox"
+                                  checked={ttCh.tatCa}
+                                  ref={(el) => { if (el) el.indeterminate = ttCh.motPhan; }}
+                                  onClick={(e) => e.stopPropagation()}
+                                  onChange={(e) => doiChon(khoaCh, e.target.checked)}
+                                  className="w-4 h-4 accent-blue-600 cursor-pointer"
+                                />
+                                <span className="font-bold text-sm text-gray-700 truncate">{chuong}</span>
+                                <span className="text-xs text-gray-400 shrink-0">
+                                  ({demCau(khoaCh)} câu · {(cay.get(lop)!.get(chuong) || []).length} bài)
+                                </span>
                               </div>
 
                               {moChuong && (
