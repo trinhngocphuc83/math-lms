@@ -30,6 +30,7 @@ import {
 } from "@/utils/aiQuestionScan";
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
 import { autoCropImage, type NormalizedBox } from "@/utils/autoCropImage";
+import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, UploadCloud, Play, Pause, RotateCcw, X, CheckCircle2, AlertTriangle,
@@ -228,6 +229,9 @@ export default function BatchQueuePage() {
 
   // Hàng đợi lô
   const [allFiles, setAllFiles] = useState<File[]>([]);
+  // Lời nhắc trong lúc dựng trang PDF thành ảnh - mỗi trang mất vài giây nên phải cho
+  // thấy máy đang chạy chứ không phải bị treo.
+  const [dangDungPdf, setDangDungPdf] = useState('');
   const [chunks, setChunks] = useState<ScanChunk[]>([]);
   const [isQueueRunning, setIsQueueRunning] = useState(false);
   const [currentChunkIndex, setCurrentChunkIndex] = useState(-1);
@@ -249,11 +253,32 @@ export default function BatchQueuePage() {
   const [editingReviewId, setEditingReviewId] = useState<string | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
-  const handleFilePick = (e: React.ChangeEvent<HTMLInputElement>) => {
+  /**
+   * Nhận tệp nguồn. PDF được dựng thành từng trang ảnh ngay tại đây, nhờ vậy mọi khâu
+   * phía sau (chia lô, gửi AI, tự cắt hình) chỉ còn phải làm việc với ảnh - trước đây
+   * lô PDF bị bỏ qua hẳn bước tự cắt hình vì không vẽ được lên canvas.
+   */
+  const handleFilePick = async (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
     const picked = Array.from(e.target.files);
-    setAllFiles((prev) => [...prev, ...picked]);
     e.target.value = '';
+
+    if (!picked.some(laFilePdf)) {
+      setAllFiles((prev) => [...prev, ...picked]);
+      return;
+    }
+
+    setDangDungPdf('Đang dựng trang từ tệp PDF...');
+    try {
+      const anh = await chuanHoaNguonThanhAnh(
+        picked,
+        (moTa) => setDangDungPdf(moTa),
+        (f, loi) => alert(`Không đọc được tệp ${f.name}: ${loi}`),
+      );
+      setAllFiles((prev) => [...prev, ...anh]);
+    } finally {
+      setDangDungPdf('');
+    }
   };
 
   const handleBuildQueue = () => {
@@ -623,8 +648,14 @@ export default function BatchQueuePage() {
           >
             <UploadCloud className="w-10 h-10 text-emerald-500 mb-2" />
             <p className="font-bold text-gray-700">Click để chọn TOÀN BỘ ảnh/PDF của tài liệu (không giới hạn số lượng)</p>
-            <p className="text-xs text-gray-400 mt-1">Hệ thống sẽ tự chia thành các lô nhỏ để AI quét chính xác hơn.</p>
+            <p className="text-xs text-gray-400 mt-1">Hệ thống sẽ tự chia thành các lô nhỏ để AI quét chính xác hơn. Tệp PDF được dựng sẵn thành từng trang ảnh.</p>
           </div>
+
+          {dangDungPdf && (
+            <div className="mt-4 flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl px-4 py-3 text-sm font-bold">
+              <Loader2 className="w-4 h-4 animate-spin" /> {dangDungPdf}
+            </div>
+          )}
 
           {allFiles.length > 0 && (
             <div className="mt-4">

@@ -51,6 +51,27 @@ function sharpenCanvas(ctx: CanvasRenderingContext2D, w: number, h: number) {
   ctx.putImageData(imageData, 0, 0);
 }
 
+/**
+ * Đẩy các điểm gần trắng về trắng tinh để nền giấy hết ngả vàng/xám khi chụp ảnh đề.
+ *
+ * Ngưỡng đặt cao (mỗi kênh màu đều ≥ 200) nên chỉ nền giấy bị làm trắng; nét mực đen,
+ * chữ và các mảng xám (ví dụ quả cầu tô xám trong hình đường sức) giữ nguyên.
+ */
+function lamTrangNen(ctx: CanvasRenderingContext2D, w: number, h: number) {
+  const NGUONG = 200;
+  const imageData = ctx.getImageData(0, 0, w, h);
+  const d = imageData.data;
+  for (let i = 0; i < d.length; i += 4) {
+    if (d[i] >= NGUONG && d[i + 1] >= NGUONG && d[i + 2] >= NGUONG) {
+      d[i] = 255; d[i + 1] = 255; d[i + 2] = 255;
+    }
+  }
+  ctx.putImageData(imageData, 0, 0);
+}
+
+/** Nới thêm mỗi phía bao nhiêu phần khung, để không lẹm mất chữ hay đầu mũi tên sát mép. */
+const BIEN_DEM = 0.03;
+
 /** Cắt vùng ảnh theo khung tọa độ chuẩn hóa, phóng to + làm nét nếu vùng cắt nhỏ. */
 export async function cropImageFromBoundingBox(sourceFile: File, box: NormalizedBox): Promise<Blob> {
   const img = await loadImageFromFile(sourceFile);
@@ -58,10 +79,19 @@ export async function cropImageFromBoundingBox(sourceFile: File, box: Normalized
     const w = img.naturalWidth;
     const h = img.naturalHeight;
 
-    const x = Math.max(0, Math.round((box.xmin / 1000) * w));
-    const y = Math.max(0, Math.round((box.ymin / 1000) * h));
-    const x2 = Math.min(w, Math.round((box.xmax / 1000) * w));
-    const y2 = Math.min(h, Math.round((box.ymax / 1000) * h));
+    // AI hay trả khung bám sát hình nên cắt ra bị lẹm chữ chú thích và cụt đầu mũi tên.
+    // Nới mỗi phía một chút rồi kẹp lại trong mép ảnh.
+    const demNgang = ((box.xmax - box.xmin) * BIEN_DEM);
+    const demDoc = ((box.ymax - box.ymin) * BIEN_DEM);
+    const xminNoi = Math.max(0, box.xmin - demNgang);
+    const yminNoi = Math.max(0, box.ymin - demDoc);
+    const xmaxNoi = Math.min(1000, box.xmax + demNgang);
+    const ymaxNoi = Math.min(1000, box.ymax + demDoc);
+
+    const x = Math.max(0, Math.round((xminNoi / 1000) * w));
+    const y = Math.max(0, Math.round((yminNoi / 1000) * h));
+    const x2 = Math.min(w, Math.round((xmaxNoi / 1000) * w));
+    const y2 = Math.min(h, Math.round((ymaxNoi / 1000) * h));
     const cropW = Math.max(1, x2 - x);
     const cropH = Math.max(1, y2 - y);
 
@@ -85,6 +115,7 @@ export async function cropImageFromBoundingBox(sourceFile: File, box: Normalized
     ctx.drawImage(img, x, y, cropW, cropH, 0, 0, outW, outH);
 
     if (needsUpscale) sharpenCanvas(ctx, outW, outH);
+    lamTrangNen(ctx, outW, outH);
 
     return await new Promise<Blob>((resolve, reject) => {
       canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("Không tạo được ảnh đã cắt"))), 'image/png');
@@ -101,6 +132,36 @@ export async function uploadCroppedImage(supabase: any, blob: Blob): Promise<str
   if (error) throw error;
   const { data } = supabase.storage.from('lesson_images').getPublicUrl(filePath);
   return data.publicUrl as string;
+}
+
+/**
+ * Tải ẢNH TRANG GỐC lên Storage, trả về URL công khai.
+ *
+ * Trước đây phần "ảnh nguồn" của mỗi câu lưu địa chỉ `blob:` do trình duyệt cấp. Loại
+ * địa chỉ đó chỉ sống trong đúng một phiên mở trang, nên hôm sau mở lại bài là khung
+ * Smart Cropper hiện ảnh vỡ và không cắt lại tay được nữa. Lưu hẳn lên Storage thì ảnh
+ * nguồn còn mãi.
+ *
+ * Cùng một tệp gọi nhiều lần chỉ tải lên một lần, nhờ bộ nhớ đệm theo tên+cỡ tệp.
+ */
+const boNhoDemAnhNguon = new Map<string, string>();
+
+export async function uploadSourceImage(supabase: any, file: File): Promise<string> {
+  const khoa = `${file.name}|${file.size}|${file.lastModified}`;
+  const daCo = boNhoDemAnhNguon.get(khoa);
+  if (daCo) return daCo;
+
+  const duoi = file.type === 'image/png' ? 'png' : 'jpg';
+  const filePath = `sources/page_${Date.now()}_${Math.random().toString(36).slice(2, 8)}.${duoi}`;
+  const { error } = await supabase.storage
+    .from('lesson_images')
+    .upload(filePath, file, { contentType: file.type || 'image/jpeg' });
+  if (error) throw error;
+
+  const { data } = supabase.storage.from('lesson_images').getPublicUrl(filePath);
+  const url = data.publicUrl as string;
+  boNhoDemAnhNguon.set(khoa, url);
+  return url;
 }
 
 /** Hàm gộp: cắt + tải lên, trả về URL ảnh đã cắt. */

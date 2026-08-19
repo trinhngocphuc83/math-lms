@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
+import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { goiGeminiTrenTrinhDuyet, layCauHinhAI } from "@/utils/geminiBrowser";
 import { 
   ArrowLeft, Image as ImageIcon, Trash2, Code2, Bot, Eye, Search,
@@ -67,6 +68,8 @@ export default function SimilarGeneratorPage() {
   // AI Scanning States (For Base Question)
   const [isScanningBase, setIsScanningBase] = useState(false);
   const [aiImageFiles, setAiImageFiles] = useState<File[]>([]);
+  // Lời nhắc trong lúc dựng trang PDF thành ảnh, để không tưởng là máy bị treo.
+  const [dangDungPdf, setDangDungPdf] = useState('');
   const [manualJsonInput, setManualJsonInput] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [aiTab, setAiTab] = useState<"api" | "manual" | "free">("api");
@@ -113,10 +116,31 @@ export default function SimilarGeneratorPage() {
     }
   };
 
-  const handleAIFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const newFiles = Array.from(e.target.files);
+  /**
+   * Nhận tệp nguồn. Tệp PDF được dựng thành từng trang ảnh ngay lúc chọn, nhờ vậy các
+   * khâu sau (gửi AI, tự cắt hình minh hoạ, cắt tay) chỉ còn phải làm việc với ảnh -
+   * canvas không vẽ được PDF nên trước đây nạp PDF là mất hẳn phần hình.
+   */
+  const handleAIFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    const newFiles = Array.from(e.target.files);
+    e.target.value = '';
+
+    if (!newFiles.some(laFilePdf)) {
       setAiImageFiles(prev => [...prev, ...newFiles]);
+      return;
+    }
+
+    setDangDungPdf('Đang dựng trang từ tệp PDF...');
+    try {
+      const anh = await chuanHoaNguonThanhAnh(
+        newFiles,
+        (moTa) => setDangDungPdf(moTa),
+        (f, loi) => alert(`Không đọc được tệp ${f.name}: ${loi}`),
+      );
+      setAiImageFiles(prev => [...prev, ...anh]);
+    } finally {
+      setDangDungPdf('');
     }
   };
 
@@ -848,6 +872,11 @@ Tổng cộng bạn phải sinh ra ĐÚNG ${totalTargetCount} phần tử trong 
                       tabIndex={0} onPaste={handleAIPaste} onClick={() => fileInputRef.current?.click()}
                     >
                       <input type="file" multiple accept="image/*,application/pdf" className="hidden" ref={fileInputRef} onChange={handleAIFileUpload} />
+                      {dangDungPdf && (
+                      <div className="mt-2 flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2">
+                      <Loader2 className="w-3.5 h-3.5 animate-spin" /> {dangDungPdf}
+                      </div>
+                      )}
                       
                       {aiImageFiles.length === 0 ? (
                         <div className="py-2">

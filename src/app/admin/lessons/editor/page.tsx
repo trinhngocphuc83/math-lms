@@ -23,7 +23,8 @@ import { saveAs } from "file-saver";
 import { fetchImageWithDimensions, base64ToUint8Array } from "@/utils/exportDocx";
 import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, callGeminiWithKeyFallback, filesToGeminiParts } from "@/utils/aiQuestionScan";
 import { layCauHinhAI } from "@/utils/geminiBrowser";
-import { autoCropImage, type NormalizedBox } from "@/utils/autoCropImage";
+import { autoCropImage, uploadSourceImage, type NormalizedBox } from "@/utils/autoCropImage";
+import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
 
 interface PendingImage {
@@ -641,10 +642,10 @@ const isValidImageBox = (box: any): box is NormalizedBox & { fileIndex: number }
 const autoCropBlocksImages = async (
     parsedBlocks: Block[],
     sourceFiles: File[],
-    sourceUrls: string[],
     supabase: any,
-): Promise<{ blocks: Block[]; croppedCount: number }> => {
+): Promise<{ blocks: Block[]; croppedCount: number; failedCount: number }> => {
     let croppedCount = 0;
+    let failedCount = 0;
 
     for (const b of parsedBlocks) {
         try {
@@ -663,8 +664,13 @@ const autoCropBlocksImages = async (
                 const replaced = question.replace(IMAGE_PLACEHOLDER_STRIP_REGEX, imageMarkdown);
                 b.content.question = replaced !== question ? replaced : question + imageMarkdown;
 
-                // Giữ ảnh gốc + khung để còn đối chiếu và cắt lại thủ công nếu AI cắt lệch
-                b.content.autoCropMetadata = { originalUrl: sourceUrls[box.fileIndex] || '', box };
+                // Giữ ảnh gốc + khung để còn đối chiếu và cắt lại thủ công nếu AI cắt lệch.
+                // Phải là địa chỉ thật trên Storage: địa chỉ blob: chỉ sống trong đúng phiên
+                // mở trang, hôm sau mở lại bài là mất ảnh nguồn.
+                let urlAnhGoc = '';
+                try { urlAnhGoc = await uploadSourceImage(supabase, file); }
+                catch (e) { console.warn('Không tải được ảnh trang gốc lên Storage:', e); }
+                b.content.autoCropMetadata = { originalUrl: urlAnhGoc, box };
                 delete b.content.viTriHinhAnh; // đã dùng xong, không lưu vào CSDL cho rác
                 croppedCount++;
                 continue;
@@ -687,11 +693,12 @@ const autoCropBlocksImages = async (
                 b.content = b.content.replace(MD_IMAGE_BOX_REGEX, '[IMAGE_PLACEHOLDER]');
             }
         } catch (e) {
+            failedCount++;
             console.warn('Không tự cắt được ảnh cho 1 khối, giữ nguyên để cắt tay:', e);
         }
     }
 
-    return { blocks: parsedBlocks, croppedCount };
+    return { blocks: parsedBlocks, croppedCount, failedCount };
 };
 
 const serializeBlocksToMarkdown = (blocks: Block[]): string => {
@@ -1168,6 +1175,13 @@ function EditorContent() {
   const [videoUrl, setVideoUrl] = useState("");
   const [attachmentUrl, setAttachmentUrl] = useState("");
   const [pendingImages, setPendingImages] = useState<PendingImage[]>([]);
+  // Lời nhắc tiến trình khi đang dựng trang PDF thành ảnh - việc này mất vài giây mỗi
+  // trang nên phải cho thầy cô thấy máy đang chạy, không phải bị treo.
+  const [trangThaiNguon, setTrangThaiNguon] = useState('');
+  // Ảnh nguồn của các bài soạn trước có thể không mở được nữa (bản cũ lưu địa chỉ blob:
+  // chỉ sống trong một phiên). Bắt sự kiện lỗi để giải thích cho thầy cô thay vì để
+  // trình duyệt hiện một ô ảnh vỡ không rõ lý do.
+  const [anhNguonHong, setAnhNguonHong] = useState(false);
   const [pendingText, setPendingText] = useState("");
   const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
 
@@ -1426,24 +1440,34 @@ function EditorContent() {
           finalPrompt += "\n\n[NỘI DUNG VĂN BẢN TỪ FILE WORD]:\n" + pendingText;
       }
       
-      const imageParts = await filesToGeminiParts(pendingImages.map(img => img.file));
+      // PDF phải dựng thành ảnh trước: cỗ máy tự cắt hình vẽ lên canvas nên chỉ nhận ảnh,
+      // và khung Smart Cropper cũng không hiển thị được tệp PDF.
+      const anhNguon = await chuanHoaNguonThanhAnh(
+        pendingImages.map(img => img.file),
+        (moTa) => setTrangThaiNguon(moTa),
+        (f, loi) => alert(`Không đọc được tệp ${f.name}: ${loi}`),
+      );
+      setTrangThaiNguon('');
+      let ketQuaCatAnh: { daCat: number; hong: number } | null = null;
+
+      const imageParts = await filesToGeminiParts(anhNguon);
 
       // Xoay vòng toàn bộ API key, hết key thì tụt xuống model kế tiếp - thay vì chết
       // cả lượt soạn bài vì đúng model đầu tiên đang bị Google quá tải.
       let text = await callGeminiWithKeyFallback(cauHinh, finalPrompt, imageParts);
 
       // TỰ ĐỘNG CẮT ẢNH ngay tại đây, khi File gốc còn trong bộ nhớ (bên dưới sẽ
-      // setPendingImages([]) làm mất File, lúc đó chỉ còn blob URL không cắt được nữa).
-      if (pendingImages.length > 0) {
+      // setPendingImages([]) làm mất File).
+      if (anhNguon.length > 0) {
         try {
           const parsed = parseMarkdownToBlocks(text);
-          const { blocks: croppedBlocks, croppedCount } = await autoCropBlocksImages(
+          const { blocks: croppedBlocks, croppedCount, failedCount } = await autoCropBlocksImages(
             parsed,
-            pendingImages.map(img => img.file),
-            pendingImages.map(img => img.previewUrl),
+            anhNguon,
             supabase,
           );
           if (croppedCount > 0) text = serializeBlocksToMarkdown(croppedBlocks);
+          ketQuaCatAnh = { daCat: croppedCount, hong: failedCount };
         } catch (e) {
           console.warn('Bỏ qua bước tự cắt ảnh, giữ nguyên kết quả quét:', e);
         }
@@ -1459,9 +1483,18 @@ function EditorContent() {
         return newMarkdown;
       });
 
-      if (pendingImages.length > 0) {
-        setLastAnalyzedImages(pendingImages.map(img => img.previewUrl));
-        // Giữ các ảnh trong blob memory để sử dụng cho crop
+      if (anhNguon.length > 0) {
+        // Giữ lại ảnh nguồn (đã dựng từ PDF nếu cần) để còn cắt tay trong phiên này
+        setLastAnalyzedImages(anhNguon.map(f => URL.createObjectURL(f)));
+      }
+      if (ketQuaCatAnh && (ketQuaCatAnh.daCat > 0 || ketQuaCatAnh.hong > 0)) {
+        alert(
+          `Đã tự cắt và chèn ${ketQuaCatAnh.daCat} ảnh minh hoạ.`
+          + (ketQuaCatAnh.hong > 0
+              ? `
+${ketQuaCatAnh.hong} câu không cắt được, đã giữ dấu [CÓ HÌNH ẢNH KÈM THEO] để thầy cô cắt tay.`
+              : '')
+        );
       }
       setPendingImages([]);
       setPendingText("");
@@ -2006,7 +2039,7 @@ function EditorContent() {
                  {editorMode === 'form' ? <Code2 className="w-3.5 h-3.5" /> : <ListTodo className="w-3.5 h-3.5" />} {editorMode === 'form' ? 'Chế độ Code' : 'Chế độ Form'}
               </button>
             <div className="flex gap-2">
-              <input type="file" ref={fileInputRef} multiple onChange={handleQueueFileUpload} accept="image/*" className="hidden" />
+              <input type="file" ref={fileInputRef} multiple onChange={handleQueueFileUpload} accept="image/*,application/pdf" className="hidden" />
               <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-1.5 text-xs font-medium bg-white border border-indigo-200 text-indigo-700 px-3 py-1.5 rounded-md hover:bg-indigo-50 transition-colors shadow-sm"><ImageIcon className="w-3.5 h-3.5" /> Tải File / Dán Ảnh (Ctrl+V)</button>
               <button onClick={() => { if (lastAnalyzedImages.length > 0) setCropImageSrc(lastAnalyzedImages[0]); setIsCropModalOpen(true); }} className="flex items-center gap-1.5 text-xs font-medium bg-orange-50 border border-orange-200 text-orange-700 px-3 py-1.5 rounded-md hover:bg-orange-100 transition-colors shadow-sm"><CropIcon className="w-3.5 h-3.5" /> Cắt Ảnh & Chèn</button>
               <button onClick={() => setIsBackupModalOpen(true)} className="flex items-center gap-1.5 text-xs font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-md hover:bg-emerald-100 transition-colors shadow-sm" title="Sinh mẫu Prompt thủ công"><Bot className="w-3.5 h-3.5" /> Lấy Prompt Thủ Công</button>
@@ -2134,7 +2167,9 @@ function EditorContent() {
             {isAnalyzing && (
               <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center z-10">
                 <Loader2 className="w-10 h-10 animate-spin text-indigo-600 mb-3" />
-                <p className="text-indigo-700 font-semibold animate-pulse">✨ Cỗ máy AI đang biên soạn Bài giảng & Trắc nghiệm...</p>
+                <p className="text-indigo-700 font-semibold animate-pulse">
+                  {trangThaiNguon || '✨ Cỗ máy AI đang biên soạn Bài giảng & Trắc nghiệm...'}
+                </p>
               </div>
             )}
           </div>
@@ -2168,7 +2203,7 @@ function EditorContent() {
                         return availableSourceImages.map((src, i) => (
                             <div 
                                 key={i} 
-                                onClick={() => setCropImageSrc(src)}
+                                onClick={() => { setAnhNguonHong(false); setCropImageSrc(src); }}
                                 className={`cursor-pointer border-2 rounded-xl overflow-hidden transition-all hover:border-orange-400 hover:-translate-y-0.5 ${cropImageSrc === src ? 'border-orange-600 shadow-md ring-4 ring-orange-100' : 'border-gray-200 opacity-70 hover:opacity-100'}`}
                             >
                                 <img src={src} className="w-full h-auto block object-cover bg-white" alt={`Trang ${i+1}`} />
@@ -2186,9 +2221,31 @@ function EditorContent() {
                       <p className="text-gray-500 mb-4">Hoặc ấn Ctrl + V để dán ảnh mới vào đây</p>
                       <label className="bg-orange-600 text-white px-5 py-2.5 rounded-lg cursor-pointer hover:bg-orange-700 font-medium inline-flex items-center gap-2"><Upload className="w-4 h-4" /> Hoặc tải từ máy <input type="file" className="hidden" accept="image/*" onChange={handleFileSelectForCrop} /></label>
                     </div>
+                  ) : anhNguonHong ? (
+                    <div className="text-center p-10 border-2 border-dashed border-amber-300 rounded-2xl bg-amber-50 w-full max-w-lg">
+                      <div className="w-16 h-16 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4"><AlertTriangle className="w-8 h-8" /></div>
+                      <h3 className="text-lg font-bold text-amber-900 mb-2">Không mở được ảnh nguồn</h3>
+                      <p className="text-amber-800 mb-4 text-sm leading-relaxed">
+                        Bài này được soạn bằng bản cũ, ảnh nguồn khi đó chỉ lưu tạm trong phiên làm việc
+                        nên nay không còn. Thầy cô tải lại ảnh (hoặc tệp PDF) của trang đề để cắt tiếp.
+                      </p>
+                      <label className="bg-orange-600 text-white px-5 py-2.5 rounded-lg cursor-pointer hover:bg-orange-700 font-medium inline-flex items-center gap-2">
+                        <Upload className="w-4 h-4" /> Tải ảnh nguồn từ máy
+                        <input type="file" className="hidden" accept="image/*" onChange={handleFileSelectForCrop} />
+                      </label>
+                    </div>
                   ) : (
                     <div className="max-h-full max-w-full overflow-auto rounded-lg shadow-sm border border-gray-200 bg-white p-2">
-                      <ReactCrop crop={crop} onChange={c => setCrop(c)}><img ref={imgRef} src={cropImageSrc} alt="Crop" className="max-w-none block" /></ReactCrop>
+                      <ReactCrop crop={crop} onChange={c => setCrop(c)}>
+                        <img
+                          ref={imgRef}
+                          src={cropImageSrc}
+                          alt="Ảnh nguồn để cắt"
+                          className="max-w-none block"
+                          onLoad={() => setAnhNguonHong(false)}
+                          onError={() => setAnhNguonHong(true)}
+                        />
+                      </ReactCrop>
                     </div>
                   )}
                 </div>

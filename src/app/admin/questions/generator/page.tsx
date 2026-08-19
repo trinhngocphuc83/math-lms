@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
+import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { goiGeminiTrenTrinhDuyet, layCauHinhAI } from "@/utils/geminiBrowser";
 import { 
   ArrowLeft, Wand2, Copy, Save, Loader2, CheckCircle2, AlertCircle, ImageIcon, X, Eye, Edit3, Trash2, Database
@@ -32,6 +33,8 @@ export default function QuestionGeneratorPage() {
   const [essayExplanation, setEssayExplanation] = useState("");
   const [difficulty, setDifficulty] = useState("2"); // 1-4
   const [aiImageFiles, setAiImageFiles] = useState<File[]>([]);
+  // Lời nhắc trong lúc dựng trang PDF thành ảnh, để không tưởng là máy bị treo.
+  const [dangDungPdf, setDangDungPdf] = useState('');
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
   // Output State
@@ -153,10 +156,31 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
       .toLowerCase();
   };
 
-  const handleAIFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length > 0) {
-      const newFiles = Array.from(e.target.files);
+  /**
+   * Nhận tệp nguồn. Tệp PDF được dựng thành từng trang ảnh ngay lúc chọn, nhờ vậy các
+   * khâu sau (gửi AI, tự cắt hình minh hoạ, cắt tay) chỉ còn phải làm việc với ảnh -
+   * canvas không vẽ được PDF nên trước đây nạp PDF là mất hẳn phần hình.
+   */
+  const handleAIFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    const newFiles = Array.from(e.target.files);
+    e.target.value = '';
+
+    if (!newFiles.some(laFilePdf)) {
       setAiImageFiles(prev => [...prev, ...newFiles]);
+      return;
+    }
+
+    setDangDungPdf('Đang dựng trang từ tệp PDF...');
+    try {
+      const anh = await chuanHoaNguonThanhAnh(
+        newFiles,
+        (moTa) => setDangDungPdf(moTa),
+        (f, loi) => alert(`Không đọc được tệp ${f.name}: ${loi}`),
+      );
+      setAiImageFiles(prev => [...prev, ...anh]);
+    } finally {
+      setDangDungPdf('');
     }
   };
 
@@ -404,6 +428,11 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
                         
                         <div className="flex flex-wrap gap-2 items-center border-t border-slate-100 pt-3">
                             <input type="file" multiple accept="image/*,application/pdf" className="hidden" ref={fileInputRef} onChange={handleAIFileUpload} />
+                            {dangDungPdf && (
+                            <div className="mt-2 flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2">
+                            <Loader2 className="w-3.5 h-3.5 animate-spin" /> {dangDungPdf}
+                            </div>
+                            )}
                             <button 
                                 onClick={() => fileInputRef.current?.click()}
                                 className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-50 text-indigo-600 font-bold rounded-lg hover:bg-indigo-100 text-sm"
