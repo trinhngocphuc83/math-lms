@@ -52,6 +52,10 @@ export default function BatchAIEditorPage() {
 
   // Questions List States
   const [parsedQuestions, setParsedQuestions] = useState<QuestionData[]>([]);
+  // Bản nháp phiên soạn: giữ lại bài đang làm dở để hôm sau mở lại làm tiếp, khỏi quét
+  // lại từ đầu. Lưu trong cơ sở dữ liệu nên đổi máy vẫn còn.
+  const [dangLuuNhap, setDangLuuNhap] = useState(false);
+  const [nhapCu, setNhapCu] = useState<any>(null);
   const [existingQuestions, setExistingQuestions] = useState<{id: string; content: string; option_a?: string; option_b?: string; option_c?: string; option_d?: string}[]>([]);
   const [isSavingAll, setIsSavingAll] = useState(false);
 
@@ -288,6 +292,66 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     });
   };
 
+  /** Lưu bài đang soạn dở vào hệ thống. Chỉ chạy khi thầy cô bấm nút. */
+  const luuNhap = async () => {
+    if (parsedQuestions.length === 0) return alert("Chưa có câu hỏi nào để lưu nháp!");
+    setDangLuuNhap(true);
+    try {
+      const res = await fetch('/api/admin/ban-nhap', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          loai: 'ngan_hang',
+          ten: `${parsedQuestions.length} câu · ${globalGrade || '?'} ${globalSubject || ''}`,
+          soCau: parsedQuestions.length,
+          duLieu: { parsedQuestions, globalGrade, globalSubject, globalTopics, globalLesson },
+        }),
+      });
+      const data = await res.json();
+      if (res.ok) alert("Đã lưu nháp " + parsedQuestions.length + " câu. Lần sau mở trang này sẽ có nút mở lại.");
+      else alert("Không lưu được nháp: " + (data.error || 'lỗi không rõ'));
+    } catch {
+      alert("Lỗi kết nối khi lưu nháp.");
+    } finally {
+      setDangLuuNhap(false);
+    }
+  };
+
+  /** Mở lại bản nháp lần trước. */
+  const moLaiNhap = () => {
+    if (!nhapCu?.du_lieu) return;
+    if (parsedQuestions.length > 0 &&
+        !confirm("Mở bản nháp cũ sẽ thay thế danh sách câu đang có trên màn hình. Tiếp tục?")) return;
+    const d = nhapCu.du_lieu;
+    setParsedQuestions(d.parsedQuestions || []);
+    if (d.globalGrade) setGlobalGrade(d.globalGrade);
+    if (d.globalSubject) setGlobalSubject(d.globalSubject);
+    if (d.globalTopics) setGlobalTopics(d.globalTopics);
+    if (d.globalLesson) setGlobalLesson(d.globalLesson);
+    setNhapCu(null);
+  };
+
+  /** Bỏ bản nháp (sau khi đã lưu hẳn vào ngân hàng, hoặc thầy cô không cần nữa). */
+  const boNhap = async (hoi = true) => {
+    if (!nhapCu?.id) return;
+    if (hoi && !confirm("Bỏ hẳn bản nháp này?")) return;
+    try {
+      await fetch('/api/admin/ban-nhap?id=' + nhapCu.id, { method: 'DELETE' });
+      setNhapCu(null);
+    } catch { /* bỏ không được cũng không chặn việc chính */ }
+  };
+
+  // Hỏi hệ thống xem có bản nháp lần trước không, để mời thầy cô mở lại
+  useEffect(() => {
+    fetch('/api/admin/ban-nhap?loai=ngan_hang')
+      .then(r => r.json())
+      .then(d => {
+        const b = (d.danhSach || [])[0];
+        if (b && b.du_lieu?.parsedQuestions?.length) setNhapCu(b);
+      })
+      .catch(() => { /* không có nháp cũng không sao */ });
+  }, []);
+
   const handleSaveAll = async () => {
     if (parsedQuestions.length === 0) return alert("Chưa có câu hỏi nào để lưu!");
     setIsSavingAll(true);
@@ -311,6 +375,8 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
       alert(`Đã lưu thành công ${result.insertedCount} câu vào Ngân hàng!`
         + (result.duplicatesSkipped > 0 ? `\n(Đã tự động loại bỏ ${result.duplicatesSkipped} câu trùng lặp)` : '')
         + nhacThieu);
+      // Đã vào ngân hàng rồi thì bản nháp không cần giữ nữa
+      if (result.insertedCount > 0) await boNhap(false);
       if (result.thieuPhanLoai.length === 0) router.push("/admin/questions");
     } catch (e: any) {
       console.error(e);
@@ -859,10 +925,36 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
              </div>
           )}
           
+          <button
+            onClick={luuNhap}
+            disabled={parsedQuestions.length === 0 || dangLuuNhap}
+            title="Giữ lại bài đang soạn dở để hôm sau mở lại làm tiếp"
+            className="bg-white border-2 border-amber-500 text-amber-700 px-5 py-2.5 rounded-xl font-bold hover:bg-amber-50 transition-all disabled:opacity-50 flex items-center gap-2"
+          >
+            {dangLuuNhap ? <Loader2 className="w-5 h-5 animate-spin" /> : <ListTodo className="w-5 h-5" />} Lưu nháp
+          </button>
+
           <button onClick={handleSaveAll} disabled={parsedQuestions.length === 0 || isSavingAll} className="bg-emerald-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-emerald-700 transition-all shadow-md disabled:opacity-50 flex items-center gap-2">
             {isSavingAll ? <Loader2 className="w-5 h-5 animate-spin" /> : <SaveAll className="w-5 h-5" />} Lưu tất cả
           </button>
         </div>
+
+        {/* Nhắc có bản nháp lần trước, mời mở lại làm tiếp */}
+        {nhapCu && (
+          <div className="mx-6 mt-4 rounded-xl border-2 border-amber-300 bg-amber-50 px-4 py-3 flex items-center gap-3 flex-wrap">
+            <ListTodo className="w-5 h-5 text-amber-600 shrink-0" />
+            <span className="text-sm text-amber-900 flex-1 min-w-[220px]">
+              Có bản nháp đang soạn dở: <b>{nhapCu.ten || (nhapCu.so_cau + ' câu')}</b>
+              <span className="text-amber-700"> · lưu lúc {new Date(nhapCu.updated_at).toLocaleString('vi-VN')}</span>
+            </span>
+            <button onClick={moLaiNhap} className="bg-amber-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-amber-700">
+              Mở lại làm tiếp
+            </button>
+            <button onClick={() => boNhap(true)} className="text-sm font-bold text-amber-700 hover:underline px-2">
+              Bỏ nháp
+            </button>
+          </div>
+        )}
 
         {/* List of Questions */}
         <div className="flex-1 overflow-y-auto p-6">
