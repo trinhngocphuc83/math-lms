@@ -234,6 +234,8 @@ export default function BatchQueuePage() {
     globalGrade, globalSubject, globalTopics, globalLesson,
     uniqueTopics, uniqueLessons, uniqueForms,
     existingQuestions,
+    // Danh mục đầy đủ để suy ngược Chương/Bài khi AI trả thiếu
+    danhMuc: categories,
   }), [globalGrade, globalSubject, globalTopics, globalLesson, uniqueTopics, uniqueLessons, uniqueForms, existingQuestions]);
 
   // Hàng đợi lô
@@ -584,7 +586,11 @@ export default function BatchQueuePage() {
       setSavedTotal((prev) => prev + result.insertedCount);
       const savedIds = new Set(selectedItems.map((r) => r.review_id));
       setReviewQueue((prev) => prev.filter((r) => !savedIds.has(r.review_id)));
-      alert(`Đã lưu ${result.insertedCount} câu vào Ngân hàng!`);
+      alert(`Đã lưu ${result.insertedCount} câu vào Ngân hàng!`
+        + (result.thieuPhanLoai.length > 0
+            ? `\n\nCÒN ${result.thieuPhanLoai.length} CÂU CHƯA LƯU vì chưa rõ Chương hoặc Bài.`
+              + ' Thầy cô mở từng câu bấm "Sửa" để bổ sung rồi lưu lại.'
+            : ''));
     } catch (e: any) {
       alert("Lỗi khi lưu: " + e.message);
     }

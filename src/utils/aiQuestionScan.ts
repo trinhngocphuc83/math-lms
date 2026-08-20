@@ -6,6 +6,7 @@
 
 import { toBankType, toDifficultyCode } from "./questionTypes";
 import { taoKhoaSoSanh, timCauTrung, type KetQuaSoTrung, type KhoaSoSanh } from "./questionFingerprint";
+import { chotPhanLoai, moTaPhanLoai, type DongDanhMuc } from "./phanLoaiCauHoi";
 import { goiGeminiTrenTrinhDuyet, layCauHinhAI, type CauHinhAI } from "./geminiBrowser";
 
 export interface QuestionData {
@@ -28,6 +29,9 @@ export interface QuestionData {
   image_url?: string;
   isDuplicate?: boolean;
   duplicateId?: string;
+  /** Còn thiếu Chương/Bài/Dạng nào, và trường nào phải tự suy ra - để cảnh báo. */
+  thieuPhanLoai?: string[];
+  ghiChuPhanLoai?: string;
   /** Mức độ nghi trùng và câu chữ giải thích, để hiện cảnh báo cho thầy cô tự quyết. */
   mucDoTrung?: KetQuaSoTrung['mucDo'];
   lyDoTrung?: string;
@@ -311,6 +315,13 @@ export interface ParseContext {
   globalGrade: string;
   globalSubject: string;
   globalTopics: string[];
+  /** Bài học thầy cô đang chọn ở panel phân loại gốc. */
+  globalLesson?: string;
+  /**
+   * Toàn bộ danh mục đã duyệt (lớp, môn, chương, bài, dạng), để suy ngược Chương/Bài khi
+   * AI trả thiếu và để đối chiếu tên về đúng tên chuẩn.
+   */
+  danhMuc?: DongDanhMuc[];
 }
 
 /** Bóc tách JSON thô AI trả về thành danh sách câu hỏi đã chuẩn hóa. Ném lỗi nếu JSON hỏng (không tự alert). */
@@ -342,7 +353,7 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
     throw new Error("AI trả về định dạng JSON không hợp lệ. Vui lòng thử lại.");
   }
 
-  const { existingQuestions, uniqueTopics, uniqueLessons, uniqueForms, globalGrade, globalSubject, globalTopics } = ctx;
+  const { existingQuestions, uniqueTopics, uniqueLessons, uniqueForms, globalGrade, globalSubject, globalTopics, globalLesson, danhMuc } = ctx;
 
   // Rút gọn kho câu hỏi thành các khoá so sánh MỘT LẦN cho cả lô, thay vì mỗi câu lại
   // chuẩn hoá lại toàn kho.
@@ -370,9 +381,22 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
         [...khoSoSanh, ...khoaTrongLo],
       );
 
-      const topic = data.chuyenDe || (globalTopics.length === 1 ? globalTopics[0] : "");
-      const lesson = data.tenBai || "";
-      const math_form = data.dangToan || "";
+      // Chốt Chương / Bài / Dạng theo nhiều tầng dự phòng và đối chiếu về tên chuẩn
+      // trong danh mục - xem phanLoaiCauHoi.ts. Bản cũ chỉ lấy đúng giá trị AI trả về,
+      // AI quên trả là để trống rồi lưu thẳng vào kho.
+      const kqPhanLoai = chotPhanLoai({
+        chuyenDe: data.chuyenDe,
+        tenBai: data.tenBai,
+        dangToan: data.dangToan,
+        globalTopics,
+        globalLesson,
+        globalGrade,
+        globalSubject,
+        danhMuc: danhMuc || [],
+      });
+      const topic = kqPhanLoai.topic;
+      const lesson = kqPhanLoai.lesson;
+      const math_form = kqPhanLoai.math_form;
       const isNewTopic = topic !== "" && !uniqueTopics.includes(topic);
       const isNewLesson = lesson !== "" && !uniqueLessons.includes(lesson);
       const isNewMathForm = math_form !== "" && !uniqueForms.includes(math_form);
@@ -407,6 +431,8 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
         topic,
         lesson,
         math_form,
+        thieuPhanLoai: kqPhanLoai.conThieu,
+        ghiChuPhanLoai: moTaPhanLoai(kqPhanLoai),
         isNewTopic,
         isNewLesson,
         isNewMathForm,

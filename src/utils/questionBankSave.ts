@@ -10,7 +10,13 @@ export interface SaveResult {
   insertedCount: number;
   duplicatesSkipped: number;
   newCategoriesCreated: number;
+  /** Câu bị giữ lại vì chưa rõ Chương hoặc Bài - KHÔNG ghi vào kho. */
+  thieuPhanLoai: QuestionData[];
 }
+
+/** Câu chưa đủ Chương và Bài thì không được vào kho. */
+const thieuChuongBai = (q: QuestionData): boolean =>
+  !String(q.topic || '').trim() || !String(q.lesson || '').trim();
 
 /**
  * Lưu các câu hỏi hợp lệ (chưa trùng) vào bảng `questions`, tự thêm Bài học/Dạng
@@ -22,11 +28,17 @@ export interface SaveResult {
  * TRƯỚC khi gọi hàm này.
  */
 export async function saveQuestionsToBank(supabase: any, questions: QuestionData[]): Promise<SaveResult> {
-  const validQuestions = questions.filter((q) => !q.isDuplicate);
-  const duplicatesSkipped = questions.length - validQuestions.length;
+  const chuaTrung = questions.filter((q) => !q.isDuplicate);
+  const duplicatesSkipped = questions.length - chuaTrung.length;
+
+  // Chặn ngay tại cửa lưu: thiếu Chương hoặc Bài thì giữ lại để hỏi thầy cô, thay vì ghi
+  // chuỗi rỗng vào kho. Đo trên kho Toán trước khi có chốt này: 60 câu không có chương và
+  // 139 câu không có bài đã lọt vào, riêng 60 câu kia lọt cùng MỘT lượt lưu.
+  const thieuPhanLoai = chuaTrung.filter(thieuChuongBai);
+  const validQuestions = chuaTrung.filter((q) => !thieuChuongBai(q));
 
   if (validQuestions.length === 0) {
-    return { insertedCount: 0, duplicatesSkipped, newCategoriesCreated: 0 };
+    return { insertedCount: 0, duplicatesSkipped, newCategoriesCreated: 0, thieuPhanLoai };
   }
 
   const newCats = validQuestions
@@ -63,5 +75,5 @@ export async function saveQuestionsToBank(supabase: any, questions: QuestionData
   const { error } = await supabase.from('questions').insert(inserts);
   if (error) throw error;
 
-  return { insertedCount: inserts.length, duplicatesSkipped, newCategoriesCreated: uniqueNewCats.length };
+  return { insertedCount: inserts.length, duplicatesSkipped, newCategoriesCreated: uniqueNewCats.length, thieuPhanLoai };
 }

@@ -189,6 +189,8 @@ export default function BatchAIEditorPage() {
     globalGrade, globalSubject, globalTopics, globalLesson,
     uniqueTopics, uniqueLessons, uniqueForms,
     existingQuestions,
+    // Danh mục đầy đủ để suy ngược Chương/Bài khi AI trả thiếu
+    danhMuc: categories,
   });
 
   const processExtractedJson = (rawText: string) => {
@@ -293,12 +295,23 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     try {
       const result = await saveQuestionsToBank(supabase, parsedQuestions);
 
+      // Câu chưa rõ Chương/Bài bị giữ lại, không cho vào kho - nói rõ để thầy cô bổ sung
+      const nhacThieu = result.thieuPhanLoai.length > 0
+        ? `\n\nCÒN ${result.thieuPhanLoai.length} CÂU CHƯA LƯU vì chưa rõ Chương hoặc Bài.`
+          + ' Thầy cô chọn Chương/Bài ở phần phân loại rồi bấm lưu lại, hoặc sửa từng câu.'
+        : '';
+
       if (result.insertedCount === 0) {
-        return alert("Tất cả câu hỏi đều bị trùng lặp với Ngân hàng! Không có câu hỏi mới nào được thêm.");
+        return alert(
+          (result.duplicatesSkipped > 0 ? "Tất cả câu hỏi đều bị trùng lặp với Ngân hàng!" : "Chưa lưu được câu nào.")
+          + nhacThieu
+        );
       }
 
-      alert(`Đã lưu thành công ${result.insertedCount} câu vào Ngân hàng!${result.duplicatesSkipped > 0 ? `\n(Đã tự động loại bỏ ${result.duplicatesSkipped} câu trùng lặp)` : ''}`);
-      router.push("/admin/questions");
+      alert(`Đã lưu thành công ${result.insertedCount} câu vào Ngân hàng!`
+        + (result.duplicatesSkipped > 0 ? `\n(Đã tự động loại bỏ ${result.duplicatesSkipped} câu trùng lặp)` : '')
+        + nhacThieu);
+      if (result.thieuPhanLoai.length === 0) router.push("/admin/questions");
     } catch (e: any) {
       console.error(e);
       alert("Lỗi khi lưu: " + e.message);
