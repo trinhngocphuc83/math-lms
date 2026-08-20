@@ -92,7 +92,7 @@ const LEVEL_LABEL: Record<CategoryProposal['level'], string> = {
 
 const REASON_LABEL: Record<ReviewReason, { label: string; color: string }> = {
   clean: { label: 'Sạch - sẵn sàng lưu', color: 'bg-emerald-100 text-emerald-700 border-emerald-200' },
-  duplicate: { label: 'Trùng lặp', color: 'bg-red-100 text-red-700 border-red-200' },
+  duplicate: { label: 'Trùng / nghi trùng', color: 'bg-red-100 text-red-700 border-red-200' },
   missing_image: { label: 'Thiếu ảnh', color: 'bg-orange-100 text-orange-700 border-orange-200' },
   image_auto_cropped: { label: 'Ảnh tự cắt - cần đối chiếu', color: 'bg-blue-100 text-blue-700 border-blue-200' },
 };
@@ -190,7 +190,7 @@ export default function BatchQueuePage() {
   const [globalLesson, setGlobalLesson] = useState("");
 
   const [categories, setCategories] = useState<any[]>([]);
-  const [existingQuestions, setExistingQuestions] = useState<{ id: string; content: string }[]>([]);
+  const [existingQuestions, setExistingQuestions] = useState<{ id: string; content: string; option_a?: string; option_b?: string; option_c?: string; option_d?: string }[]>([]);
   const [isLoadingContext, setIsLoadingContext] = useState(true);
 
   useEffect(() => {
@@ -202,13 +202,22 @@ export default function BatchQueuePage() {
       let page = 0;
       const pageSize = 1000;
       while (true) {
-        const { data: qPage } = await supabase.from('questions').select('question_id, content').range(page * pageSize, (page + 1) * pageSize - 1);
+        const { data: qPage } = await supabase.from('questions').select('question_id, content, option_a, option_b, option_c, option_d').range(page * pageSize, (page + 1) * pageSize - 1);
         if (!qPage || qPage.length === 0) break;
         allData = [...allData, ...qPage];
         if (qPage.length < pageSize) break;
         page++;
       }
-      setExistingQuestions(allData.map((d) => ({ id: d.question_id, content: (d.content || "").trim().toLowerCase().replace(/\s+/g, '') })));
+      // Truyền nội dung GỐC kèm phương án; việc chuẩn hoá để so trùng do
+      // questionFingerprint.ts lo.
+      setExistingQuestions(allData.map((d) => ({
+        id: d.question_id,
+        content: d.content || "",
+        option_a: d.option_a || "",
+        option_b: d.option_b || "",
+        option_c: d.option_c || "",
+        option_d: d.option_d || "",
+      })));
       setIsLoadingContext(false);
     };
     load();
@@ -888,6 +897,18 @@ export default function BatchQueuePage() {
                             {REASON_LABEL[reason].label}
                           </span>
                         ))}
+                        {/* Nói rõ vì sao bị coi là trùng, để thầy cô đủ căn cứ quyết bỏ hay giữ */}
+                        {item.question.lyDoTrung && (
+                          <span className={`px-2 py-0.5 rounded text-[11px] font-semibold border ${
+                            item.question.mucDoTrung === 'trung'
+                              ? 'bg-red-50 text-red-700 border-red-200'
+                              : item.question.mucDoTrung === 'khac-so-lieu'
+                                ? 'bg-sky-50 text-sky-700 border-sky-200'
+                                : 'bg-amber-50 text-amber-800 border-amber-200'
+                          }`}>
+                            {item.question.lyDoTrung}
+                          </span>
+                        )}
                         {needsCropCheck && item.imageConfirmed && (
                           <span className="px-2 py-0.5 rounded text-[11px] font-bold border bg-emerald-100 text-emerald-700 border-emerald-200">✓ Đã đối chiếu ảnh</span>
                         )}

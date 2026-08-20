@@ -52,7 +52,7 @@ export default function BatchAIEditorPage() {
 
   // Questions List States
   const [parsedQuestions, setParsedQuestions] = useState<QuestionData[]>([]);
-  const [existingQuestions, setExistingQuestions] = useState<{id: string, content: string}[]>([]);
+  const [existingQuestions, setExistingQuestions] = useState<{id: string; content: string; option_a?: string; option_b?: string; option_c?: string; option_d?: string}[]>([]);
   const [isSavingAll, setIsSavingAll] = useState(false);
 
   // Edit Modal States
@@ -114,7 +114,7 @@ export default function BatchAIEditorPage() {
       
       while (true) {
          const { data } = await supabase.from('questions')
-           .select('question_id, content')
+           .select('question_id, content, option_a, option_b, option_c, option_d')
            .range(page * pageSize, (page + 1) * pageSize - 1);
            
          if (!data || data.length === 0) break;
@@ -124,9 +124,15 @@ export default function BatchAIEditorPage() {
       }
       
       if (allData.length > 0) {
+        // Truyền nội dung GỐC kèm phương án; chuẩn hoá để so trùng do
+        // questionFingerprint.ts lo.
         setExistingQuestions(allData.map(d => ({
           id: d.question_id,
-          content: (d.content || "").trim().toLowerCase().replace(/\s+/g, '')
+          content: d.content || "",
+          option_a: d.option_a || "",
+          option_b: d.option_b || "",
+          option_c: d.option_c || "",
+          option_d: d.option_d || "",
         })));
       }
     };
@@ -861,9 +867,25 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                      <div key={q.temp_id} className="bg-white rounded-2xl shadow-[0_2px_12px_rgba(0,0,0,0.04)] border border-gray-100 overflow-hidden group hover:border-indigo-200 transition-colors animate-in fade-in duration-200">
                         
                         {/* Alerts area */}
+                        {/* Cảnh báo trùng: đỏ khi giống hệt, vàng khi mới nghi ngờ - thầy cô tự
+                            quyết bỏ hay giữ, hệ thống không tự xoá. */}
                         {q.isDuplicate && (
-                          <div className="bg-red-50 text-red-700 p-3 text-[13px] font-bold border-b border-red-100 flex gap-2">
-                            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" /> CẢNH BÁO: Nội dung tương tự với một câu đã tồn tại trong Ngân hàng! Bạn nên "Bỏ câu này".
+                          <div className={q.mucDoTrung === 'trung'
+                            ? "bg-red-50 text-red-700 p-3 text-[13px] font-bold border-b border-red-100 flex gap-2"
+                            : "bg-amber-50 text-amber-800 p-3 text-[13px] font-bold border-b border-amber-100 flex gap-2"}>
+                            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                            <span>
+                              {q.mucDoTrung === 'trung' ? 'TRÙNG CÂU ĐÃ CÓ: ' : 'NGHI TRÙNG: '}
+                              {q.lyDoTrung || 'Nội dung tương tự một câu đã có trong Ngân hàng.'}
+                              {' '}Thầy cô xem lại rồi quyết định bỏ hay vẫn lưu.
+                            </span>
+                          </div>
+                        )}
+
+                        {q.mucDoTrung === 'khac-so-lieu' && (
+                          <div className="bg-sky-50 text-sky-800 p-3 text-[13px] font-bold border-b border-sky-100 flex gap-2">
+                            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                            <span>{q.lyDoTrung} Không cần bỏ, chỉ để thầy cô biết.</span>
                           </div>
                         )}
                         

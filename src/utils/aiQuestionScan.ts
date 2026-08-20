@@ -5,6 +5,7 @@
 // copy lại prompt hàng trăm dòng - sửa 1 nơi, cả 2 trang cùng được sửa.
 
 import { toBankType, toDifficultyCode } from "./questionTypes";
+import { taoKhoaSoSanh, timCauTrung, type KetQuaSoTrung, type KhoaSoSanh } from "./questionFingerprint";
 import { goiGeminiTrenTrinhDuyet, layCauHinhAI, type CauHinhAI } from "./geminiBrowser";
 
 export interface QuestionData {
@@ -27,6 +28,10 @@ export interface QuestionData {
   image_url?: string;
   isDuplicate?: boolean;
   duplicateId?: string;
+  /** Mức độ nghi trùng và câu chữ giải thích, để hiện cảnh báo cho thầy cô tự quyết. */
+  mucDoTrung?: KetQuaSoTrung['mucDo'];
+  lyDoTrung?: string;
+  diemTrung?: number;
   isNewTopic?: boolean;
   isNewLesson?: boolean;
   isNewMathForm?: boolean;
@@ -287,7 +292,19 @@ export async function callGeminiWithKeyFallback(cauHinh: CauHinhAI, prompt: stri
 }
 
 export interface ParseContext {
-  existingQuestions: { id: string; content: string }[];
+  /**
+   * Kho câu hỏi sẵn có. Truyền NỘI DUNG GỐC (kể cả phương án) - việc chuẩn hoá do
+   * questionFingerprint.ts lo. Trước đây nơi gọi tự chuẩn hoá bằng cách bỏ khoảng trắng
+   * rồi so khớp tuyệt đối, nên chỉ cần lệch một dấu là bỏ sót.
+   */
+  existingQuestions: {
+    id: string;
+    content: string;
+    option_a?: string;
+    option_b?: string;
+    option_c?: string;
+    option_d?: string;
+  }[];
   uniqueTopics: string[];
   uniqueLessons: string[];
   uniqueForms: string[];
@@ -327,13 +344,31 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
 
   const { existingQuestions, uniqueTopics, uniqueLessons, uniqueForms, globalGrade, globalSubject, globalTopics } = ctx;
 
+  // Rút gọn kho câu hỏi thành các khoá so sánh MỘT LẦN cho cả lô, thay vì mỗi câu lại
+  // chuẩn hoá lại toàn kho.
+  const khoSoSanh: KhoaSoSanh[] = existingQuestions
+    .map(eq => taoKhoaSoSanh({ id: eq.id, content: eq.content, option_a: eq.option_a, option_b: eq.option_b, option_c: eq.option_c, option_d: eq.option_d }))
+    .filter(k => k.vanTay);
+  const khoaTrongLo: KhoaSoSanh[] = [];
+
   const newQuestions: QuestionData[] = parsedData
     .map((data) => {
       let qContent = data.noiDung || "";
       qContent = qContent.replace(/^(?:(?:Câu|Bài|VD|Ví\s*dụ)\s*\d+[a-zA-Z]?\s*[:.-]?\s*)+/i, "");
 
-      const normalizedContent = qContent.trim().toLowerCase().replace(/\s+/g, '');
-      const duplicateMatch = existingQuestions.find((eq) => eq.content === normalizedContent && eq.content !== "");
+      // So với kho sẵn có VÀ với những câu vừa bóc ra trong cùng lô này - bản cũ chỉ so
+      // với kho nên hai câu trùng nhau nằm cùng một lô vẫn lọt cả hai.
+      const ketQuaTrung = timCauTrung(
+        {
+          id: '',
+          content: qContent,
+          option_a: data.dapAnA,
+          option_b: data.dapAnB,
+          option_c: data.dapAnC,
+          option_d: data.dapAnD,
+        },
+        [...khoSoSanh, ...khoaTrongLo],
+      );
 
       const topic = data.chuyenDe || (globalTopics.length === 1 ? globalTopics[0] : "");
       const lesson = data.tenBai || "";
@@ -387,10 +422,24 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
           : (data.dapAnDung || ""),
         explanation: data.loiGiai || "",
         image_url: data.image_url || "",
-        isDuplicate: !!duplicateMatch,
-        duplicateId: duplicateMatch ? duplicateMatch.id : undefined,
+        isDuplicate: ketQuaTrung.mucDo === 'trung' || ketQuaTrung.mucDo === 'nghi',
+        duplicateId: ketQuaTrung.idCauGiong,
+        mucDoTrung: ketQuaTrung.mucDo,
+        lyDoTrung: ketQuaTrung.lyDo,
+        diemTrung: ketQuaTrung.diem,
         viTriHinhAnh,
       };
+
+      // Ghi khoá của câu vừa bóc vào danh sách của lô, để câu sau trong cùng lô còn
+      // đối chiếu được với nó.
+      khoaTrongLo.push(taoKhoaSoSanh({
+        id: questionData.temp_id || '',
+        content: questionData.content,
+        option_a: questionData.option_a,
+        option_b: questionData.option_b,
+        option_c: questionData.option_c,
+        option_d: questionData.option_d,
+      }));
 
       const parsedItems: QuestionData[] = [questionData];
 
