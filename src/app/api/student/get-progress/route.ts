@@ -50,7 +50,24 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ data: data && data.length > 0 ? data[0] : null });
+    // Kèm theo bài ĐÃ NỘP của đúng đề này (nếu có), để mở lại còn biết mình đã nộp
+    // và được bao nhiêu điểm. Từ khi mỗi đề có khung làm bài riêng, chuyển tab rồi quay
+    // lại là khung dựng mới hoàn toàn, không có chỗ này thì học sinh tưởng mất bài.
+    let qNop = db
+      .from('exam_results')
+      .select('score, attempt_number, created_at')
+      .eq('student_id', user.id)
+      .eq('lesson_id', lessonId)
+      .gt('attempt_number', 0)
+      .order('created_at', { ascending: false })
+      .limit(1);
+    qNop = moduleId ? qNop.eq('module_id', moduleId) : qNop.is('module_id', null);
+    const { data: daNop } = await qNop;
+
+    return NextResponse.json({
+      data: data && data.length > 0 ? data[0] : null,
+      daNop: daNop && daNop.length > 0 ? daNop[0] : null,
+    });
   } catch (error: any) {
     console.error('Get progress error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });

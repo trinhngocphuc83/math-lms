@@ -213,6 +213,8 @@ export default function AzotaExamUI({
   const [gradingStatus, setGradingStatus] = useState<Record<string, { isGrading: boolean; result?: any }>>({});
   const [isGradingAll, setIsGradingAll] = useState(false);
   const [isSavingDraft, setIsSavingDraft] = useState(false);
+  // Điểm của lần nộp trước ở đúng đề này (null nghĩa là chưa nộp lần nào)
+  const [diemDaNop, setDiemDaNop] = useState<number | null>(null);
   // Lưu điểm từng câu sau khi chấm
   const [questionScores, setQuestionScores] = useState<Record<string, { earned: number; max: number }>>({});
   
@@ -235,6 +237,10 @@ export default function AzotaExamUI({
           if (data && data.data && data.data.answers?.rawAnswers) {
              setAnswers(data.data.answers.rawAnswers);
           }
+          // Nhớ điểm của lần nộp trước cho ĐÚNG đề này. Mỗi đề nay có khung làm bài
+          // riêng nên chuyển tab rồi quay lại là khung dựng mới - thiếu chỗ này thì
+          // học sinh không thấy điểm cũ đâu nữa và tưởng mất bài.
+          if (data && data.daNop) setDiemDaNop(data.daNop.score);
         } catch (e) {
           console.error("Failed to fetch draft:", e);
         }
@@ -1247,6 +1253,17 @@ export default function AzotaExamUI({
               })}
            </div>
            
+           {/* Mở lại một đề đã từng nộp: nhắc điểm cũ để không tưởng là mất bài */}
+           {!isSubmitted && diemDaNop !== null && (
+              <div className="mt-4 rounded-xl border-2 border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-900 flex items-center gap-2 flex-wrap">
+                 <CheckCircle2 className="w-5 h-5 shrink-0 text-emerald-600" />
+                 <span>
+                    Em đã nộp đề này rồi, được <b className="font-black">{diemDaNop}/10</b> điểm.
+                    Làm lại và nộp thì hệ thống giữ lần điểm cao nhất.
+                 </span>
+              </div>
+           )}
+
            {!isSubmitted && (
               <div className="mt-auto pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
                  <button 
