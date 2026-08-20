@@ -24,14 +24,17 @@ export async function POST(request: Request) {
     }
 
     // Lấy số lần thi (attempt) hiện tại của học sinh cho bài này
-    const { data: attempts, error: fetchError } = await supabase
+    // Phải dùng .is() khi module_id trống: trong SQL "module_id = NULL" luôn sai, nên bản
+    // cũ đếm nhầm số lần làm bài của những đề chưa gắn mã đề.
+    let attemptQuery = supabaseAdmin
       .from('exam_results')
       .select('attempt_number')
       .eq('student_id', user.id)
       .eq('lesson_id', lessonId)
-      .eq('module_id', moduleId || null)
       .order('attempt_number', { ascending: false })
       .limit(1);
+    attemptQuery = moduleId ? attemptQuery.eq('module_id', moduleId) : attemptQuery.is('module_id', null);
+    const { data: attempts, error: fetchError } = await attemptQuery;
 
     if (fetchError && fetchError.code !== '42P01') { // Bỏ qua lỗi table not found tạm thời nếu admin chưa chạy SQL
       console.error('Error fetching attempts:', fetchError);

@@ -683,7 +683,10 @@ export default function StudentLessonPage() {
                {(isVideoModule || isDocumentModule) ? (
                   <DocAndVideoUI content={activeModule.content_markdown || ""} />
                ) : isPracticeModule ? (
-                  <AzotaExamUI content={activeModule.content_markdown || ""} title={activeModule.title} lessonId={lesson.id} moduleId={activeModule.id} />
+                  // key theo mã đề: đổi sang đề luyện tập khác thì React DỰNG LẠI khung làm
+                  // bài. Thiếu key thì React giữ nguyên khung cũ và chỉ thay nội dung, nên
+                  // điểm, bài làm và trạng thái "đã nộp" của đề trước còn nguyên ở đề sau.
+                  <AzotaExamUI key={activeModule.id} content={activeModule.content_markdown || ""} title={activeModule.title} lessonId={lesson.id} moduleId={activeModule.id} />
                ) : (
                   <InteractiveFlipbook content={activeModule.content_markdown || ""} />
                )}

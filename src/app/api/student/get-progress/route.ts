@@ -1,6 +1,17 @@
 import { NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
+import { createAdminClient } from '@/utils/supabase/admin';
 
+/**
+ * Đọc bài tạm của học sinh để mở lại đúng chỗ đang làm dở.
+ *
+ * Dùng khoá máy chủ vì bảng exam_results bật bảo vệ dòng (xem chú thích ở save-progress),
+ * nhưng luôn ràng buộc student_id = user.id nên chỉ đọc được bài của chính mình.
+ *
+ * Bắt buộc phải sắp xếp theo thời gian: bản cũ chỉ .limit(1) mà không sắp xếp, nếu lỡ có
+ * hai bản nháp thì cơ sở dữ liệu trả về bản nào cũng được - học sinh mở lại có thể nhận
+ * đúng bản CŨ và mất phần làm thêm.
+ */
 export async function GET(request: Request) {
   try {
     const supabase = await createClient();
@@ -18,35 +29,28 @@ export async function GET(request: Request) {
       return NextResponse.json({ error: 'Missing lessonId' }, { status: 400 });
     }
 
-    // Lấy bản nháp (attempt_number = 0)
-    let query = supabase
+    const db = createAdminClient();
+
+    let query = db
       .from('exam_results')
-      .select('answers, cheat_warnings')
+      .select('answers, cheat_warnings, created_at')
       .eq('student_id', user.id)
       .eq('lesson_id', lessonId)
       .eq('attempt_number', 0)
+      .order('created_at', { ascending: false })
       .limit(1);
-      
-    if (moduleId) {
-      query = query.eq('module_id', moduleId);
-    } else {
-      query = query.is('module_id', null);
-    }
+
+    // "module_id = NULL" luôn sai trong SQL, phải dùng .is() cho trường hợp trống
+    query = moduleId ? query.eq('module_id', moduleId) : query.is('module_id', null);
 
     const { data, error } = await query;
 
     if (error) {
-      if (error.code === '42P01') {
-        return NextResponse.json({ data: null });
-      }
+      if (error.code === '42P01') return NextResponse.json({ data: null });
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    if (data && data.length > 0) {
-      return NextResponse.json({ data: data[0] });
-    }
-
-    return NextResponse.json({ data: null });
+    return NextResponse.json({ data: data && data.length > 0 ? data[0] : null });
   } catch (error: any) {
     console.error('Get progress error:', error);
     return NextResponse.json({ error: error.message }, { status: 500 });
