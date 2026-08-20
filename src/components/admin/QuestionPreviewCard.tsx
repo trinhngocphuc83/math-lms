@@ -43,7 +43,7 @@ export interface QuestionPreviewCardProps {
   statementsLayout?: 'choice' | 'truefalse';
   correctAnswerDisplay?: string;
   explanation?: string;
-  size?: 'md' | 'lg';
+  size?: 'sm' | 'md' | 'lg';
   className?: string;
 }
 
@@ -121,7 +121,31 @@ export default function QuestionPreviewCard({
   size = 'md',
   className = '',
 }: QuestionPreviewCardProps) {
-  const isLg = size === 'lg';
+  /**
+   * Ba cỡ hiển thị. Thêm cỡ "sm" vì màn chọn câu xếp hai cột và mỗi dạng có cả chục câu:
+   * để cỡ vừa thì mỗi câu chiếm gần trọn màn hình, phải cuộn rất nhiều mới xem hết.
+   */
+  const co = {
+    sm: { prose: 'prose-sm', chuHoi: 'text-sm', anh: 'max-h-48', dong: 'space-y-3', oDapAn: 'p-2', khe: 'gap-2', soTt: 'w-5 h-5 text-[11px]' },
+    md: { prose: 'prose-sm', chuHoi: 'text-base', anh: 'max-h-64', dong: 'space-y-5', oDapAn: 'p-3', khe: 'gap-3', soTt: 'w-6 h-6 text-xs' },
+    lg: { prose: 'prose-base', chuHoi: 'text-lg', anh: 'max-h-96', dong: 'space-y-5', oDapAn: 'p-3', khe: 'gap-3', soTt: 'w-6 h-6 text-xs' },
+  }[size];
+
+  /**
+   * Ghi đè cỡ chữ của bộ thành phần markdown dùng chung.
+   *
+   * CustomMarkdownComponents.tsx đặt cứng 35px cho đoạn văn, mục danh sách, tiêu đề nhỏ...
+   * - cỡ đó dành cho màn trình chiếu chiếu lên bảng cho cả lớp nhìn. Thẻ xem trước này
+   * dùng lại đúng bộ đó nên mọi màn quản trị (chọn câu, ngân hàng câu hỏi, xem trước đề)
+   * đều bị chữ to gấp đôi bình thường, mỗi câu chiếm gần trọn màn hình.
+   *
+   * Ghi đè tại đây thay vì sửa file dùng chung, để màn trình chiếu giữ nguyên cỡ chữ lớn.
+   */
+  const chuGon = {
+    sm: '[&_p]:!text-[15px] [&_li]:!text-[15px] [&_blockquote]:!text-[15px] [&_blockquote_div]:!text-[15px] [&_h4]:!text-[19px] [&_h5]:!text-[17px] [&_table]:!text-[14px] [&_p]:!mb-2 [&_li]:!mb-1',
+    md: '[&_p]:!text-[17px] [&_li]:!text-[17px] [&_blockquote]:!text-[17px] [&_blockquote_div]:!text-[17px] [&_h4]:!text-[21px] [&_h5]:!text-[19px] [&_table]:!text-[16px] [&_p]:!mb-2 [&_li]:!mb-1',
+    lg: '[&_p]:!text-[20px] [&_li]:!text-[20px] [&_blockquote]:!text-[20px] [&_blockquote_div]:!text-[20px] [&_h4]:!text-[25px] [&_h5]:!text-[22px] [&_table]:!text-[19px] [&_p]:!mb-3 [&_li]:!mb-1.5',
+  }[size];
 
   /** Ảnh chèn giữa markdown (```![Hình minh họa](url)```) trôi lẫn với chữ nếu dùng
    *  thẻ <img> mặc định - bọc lại thành 1 khối riêng, cùng kiểu khung với ảnh truyền
@@ -130,7 +154,7 @@ export default function QuestionPreviewCard({
     ...customMarkdownComponents,
     img: ({ src, alt }: any) => (
       <span className="not-prose my-4 flex flex-col items-center gap-1.5">
-        <img src={src} alt={alt || 'Hình minh họa'} className={`max-w-full h-auto rounded-lg shadow-sm border border-gray-200 ${isLg ? 'max-h-96' : 'max-h-64'}`} />
+        <img src={src} alt={alt || 'Hình minh họa'} className={`max-w-full h-auto rounded-lg shadow-sm border border-gray-200 ${co.anh}`} />
         <span className="flex items-center gap-1 text-[11px] font-semibold text-gray-400">
           <ImageIcon className="w-3 h-3" /> {alt || 'Hình minh họa'}
         </span>
@@ -143,7 +167,7 @@ export default function QuestionPreviewCard({
     let formatted = preprocessMarkdown(preprocessLatexQuirks(cleaned));
     formatted = formatted.replace(/\\n/g, '\n').replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '');
     return (
-      <div className={`prose ${isLg ? 'prose-base' : 'prose-sm'} max-w-none break-words prose-p:my-1 leading-relaxed text-gray-800 overflow-x-auto
+      <div className={`prose ${co.prose} ${chuGon} max-w-none break-words prose-p:my-1 leading-relaxed text-gray-800 overflow-x-auto
         [&_code]:whitespace-pre-wrap [&_pre]:whitespace-pre-wrap [&_pre]:max-w-full [&_pre]:overflow-x-auto ${extraProseClass}`}>
         <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
           {formatted}
@@ -155,7 +179,7 @@ export default function QuestionPreviewCard({
   const { methodText, explanationText } = explanation ? splitExplanation(explanation) : { methodText: '', explanationText: '' };
 
   return (
-    <div className={`${className} space-y-5`}>
+    <div className={`${className} ${co.dong}`}>
       {badges.length > 0 && (
         <div className="flex items-center gap-2 flex-wrap">
           {badges.map((b, i) => (
@@ -166,11 +190,11 @@ export default function QuestionPreviewCard({
         </div>
       )}
 
-      <div className={`text-gray-800 font-medium leading-relaxed ${isLg ? 'text-lg' : 'text-base'}`}>
+      <div className={`text-gray-800 font-medium leading-relaxed ${co.chuHoi}`}>
         {renderRich(content || "*(Chưa có nội dung)*")}
         {imageUrl && (
           <div className="my-4 flex flex-col items-center gap-1.5">
-            <img src={imageUrl} alt="Hình minh họa" className={`max-w-full h-auto rounded-lg shadow-sm border border-gray-200 ${isLg ? 'max-h-96' : 'max-h-64'}`} />
+            <img src={imageUrl} alt="Hình minh họa" className={`max-w-full h-auto rounded-lg shadow-sm border border-gray-200 ${co.anh}`} />
             <span className="flex items-center gap-1 text-[11px] font-semibold text-gray-400">
               <ImageIcon className="w-3 h-3" /> Hình minh họa
             </span>
@@ -179,12 +203,12 @@ export default function QuestionPreviewCard({
       </div>
 
       {statements.length > 0 && statementsLayout === 'choice' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${co.khe}`}>
           {statements.map(st => (
-            <div key={st.key} className={`relative flex gap-3 p-3 rounded-xl border transition-colors ${
+            <div key={st.key} className={`relative flex ${co.khe} ${co.oDapAn} rounded-xl border transition-colors ${
               st.isCorrect ? 'bg-emerald-50/60 border-emerald-300' : 'bg-white border-gray-200'
             }`}>
-              <span className={`shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-black ${
+              <span className={`shrink-0 ${co.soTt} rounded-full flex items-center justify-center font-black ${
                 st.isCorrect ? 'bg-emerald-500 text-white' : 'bg-indigo-100 text-indigo-700'
               }`}>
                 {st.label}
@@ -201,9 +225,9 @@ export default function QuestionPreviewCard({
       )}
 
       {statements.length > 0 && statementsLayout === 'truefalse' && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+        <div className={`grid grid-cols-1 sm:grid-cols-2 ${co.khe}`}>
           {statements.map(st => (
-            <div key={st.key} className="flex flex-col gap-2 p-3 bg-white border border-gray-200 rounded-xl">
+            <div key={st.key} className={`flex flex-col gap-2 ${co.oDapAn} bg-white border border-gray-200 rounded-xl`}>
               <div className="flex items-center justify-between gap-2">
                 <span className="font-bold text-indigo-600 text-sm">Mệnh đề {st.label.toUpperCase()}</span>
                 {typeof st.isTrue === 'boolean' && (

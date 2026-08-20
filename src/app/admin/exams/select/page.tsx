@@ -9,7 +9,7 @@ import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/Q
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, Pencil, Shuffle, ArrowLeft, ArrowRight, Printer, Download,
-  CheckCircle, FileText, CheckSquare, Square, RotateCcw
+  CheckCircle, FileText, CheckSquare, Square, RotateCcw, Type
 } from "lucide-react";
 
 interface MatrixItemDraft {
@@ -66,6 +66,19 @@ function SelectContent() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
   const [step, setStep] = useState<'select' | 'final'>('select');
+  // Cỡ chữ xem trước. Mặc định "nhỏ gọn" vì màn chọn câu xếp hai cột, để cỡ vừa thì mỗi
+  // câu chiếm gần trọn màn hình. Ghi nhớ lựa chọn để lần sau mở lại vẫn đúng ý thầy cô.
+  const [coChu, setCoChu] = useState<'sm' | 'md' | 'lg'>('sm');
+
+  useEffect(() => {
+    const daLuu = localStorage.getItem('exam_select_co_chu');
+    if (daLuu === 'sm' || daLuu === 'md' || daLuu === 'lg') setCoChu(daLuu);
+  }, []);
+
+  const doiCoChu = (c: 'sm' | 'md' | 'lg') => {
+    setCoChu(c);
+    localStorage.setItem('exam_select_co_chu', c);
+  };
   const [editingQuestion, setEditingQuestion] = useState<any>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [isFinalized, setIsFinalized] = useState(false);
@@ -153,6 +166,15 @@ function SelectContent() {
   const totalTarget = lines.reduce((acc, l) => acc + l.item.count, 0);
   const finalQuestions = lines.flatMap(l => l.candidates.filter(q => l.selectedIds.has(q.id)));
 
+  /**
+   * Số thứ tự của mỗi câu ĐANG ĐƯỢC CHỌN trong đề hoàn chỉnh.
+   *
+   * Ở màn chọn câu trước đây các thẻ không đánh số, nên khi xem đề hoàn chỉnh thấy "Câu 7"
+   * cần đổi thì quay lại phải dò lại từ đầu. Đánh đúng số của đề vào từng thẻ để tìm ngay.
+   */
+  const soThuTuTrongDe = new Map<string, number>();
+  finalQuestions.forEach((q, i) => soThuTuTrongDe.set(q.id, i + 1));
+
   const handlePrint = () => window.print();
 
   const handleExportWordStudent = async () => {
@@ -223,6 +245,23 @@ function SelectContent() {
               )}
             </p>
           </div>
+          <div className="flex items-center gap-3 flex-wrap print:hidden">
+            {/* Chọn cỡ chữ: xem trên máy thì để nhỏ gọn, trình chiếu cho lớp thì phóng to */}
+            <div className="flex items-center gap-1 bg-gray-100 border border-gray-200 rounded-lg p-1">
+              <Type className="w-3.5 h-3.5 text-gray-500 ml-1" />
+              {([['sm', 'Nhỏ gọn'], ['md', 'Vừa'], ['lg', 'Lớn']] as const).map(([ma, ten]) => (
+                <button
+                  key={ma}
+                  onClick={() => doiCoChu(ma)}
+                  className={`px-2.5 py-1 rounded-md text-xs font-bold transition-colors ${
+                    coChu === ma ? 'bg-white text-indigo-700 shadow-sm' : 'text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  {ten}
+                </button>
+              ))}
+            </div>
+
           {step === 'select' ? (
             <button
               onClick={() => setStep('final')}
@@ -251,6 +290,7 @@ function SelectContent() {
               </button>
             </div>
           )}
+          </div>
         </div>
       </div>
 
@@ -294,6 +334,7 @@ function SelectContent() {
                   )}
                   {line.candidates.map(q => {
                     const isChecked = line.selectedIds.has(q.id);
+                    const soThuTu = soThuTuTrongDe.get(q.id);
                     const { statements, layout } = questionStatements(q);
                     return (
                       <div key={q.id} className={`rounded-xl border-2 transition-colors ${isChecked ? 'border-indigo-300 bg-indigo-50/30' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
@@ -305,13 +346,21 @@ function SelectContent() {
                             className="mt-1.5 w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 shrink-0 cursor-pointer"
                           />
                           <div className="flex-1 min-w-0">
+                            {/* Số của câu trong đề hoàn chỉnh, để từ đề quay lại đây tìm đúng câu cần đổi */}
+                            {soThuTu && (
+                              <div className="mb-1.5">
+                                <span className="inline-flex items-center gap-1 bg-emerald-600 text-white text-[11px] font-black px-2 py-0.5 rounded-md">
+                                  Câu {soThuTu} của đề
+                                </span>
+                              </div>
+                            )}
                             <QuestionPreviewCard
                               content={q.content}
                               imageUrl={q.image_url}
                               statements={statements}
                               statementsLayout={layout}
                               correctAnswerDisplay={q.question_type === 'TLN' || q.question_type === 'TL' ? (q.correct_answer || undefined) : undefined}
-                              size="md"
+                              size={coChu}
                             />
                           </div>
                           <div className="flex flex-col items-end gap-2 shrink-0">
@@ -353,7 +402,7 @@ function SelectContent() {
                   statements={statements}
                   statementsLayout={layout}
                   correctAnswerDisplay={q.question_type === 'TLN' || q.question_type === 'TL' ? (q.correct_answer || undefined) : undefined}
-                  size="md"
+                  size={coChu}
                 />
               </div>
             );
