@@ -9,7 +9,7 @@ import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/Q
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, Pencil, Shuffle, ArrowLeft, ArrowRight, Printer, Download,
-  CheckCircle, FileText, CheckSquare, Square, RotateCcw, Type
+  CheckCircle, FileText, CheckSquare, Square, RotateCcw, Type, Replace, Plus, ListChecks, X
 } from "lucide-react";
 
 interface MatrixItemDraft {
@@ -79,6 +79,22 @@ function SelectContent() {
     setCoChu(c);
     localStorage.setItem('exam_select_co_chu', c);
   };
+  /**
+   * Dòng ma trận đang mở khung đổi câu (chỉ số trong `lines`), và câu đang muốn thay.
+   *
+   * Màn chính chỉ bày đúng số câu của đề cho gọn. Muốn đổi câu nào thì bấm vào câu đó,
+   * khung này mở ra với TOÀN BỘ câu trong kho cùng dạng - cùng mức độ - cùng dạng thức
+   * để chọn lại. Dùng khung mở đè thay vì mở tab mới vì dữ liệu ma trận nằm trong bộ nhớ
+   * của tab hiện tại, mở tab mới là mất hết lựa chọn đang làm dở.
+   */
+  const [dongDangDoi, setDongDangDoi] = useState<number | null>(null);
+  const [cauDangDoi, setCauDangDoi] = useState<string | null>(null);
+
+  const moKhungDoiCau = (lineIdx: number, questionId: string | null) => {
+    setDongDangDoi(lineIdx);
+    setCauDangDoi(questionId);
+  };
+
   const [editingQuestion, setEditingQuestion] = useState<any>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [isFinalized, setIsFinalized] = useState(false);
@@ -325,6 +341,9 @@ function SelectContent() {
                     <button onClick={() => selectAll(lineIdx, false)} className="flex items-center gap-1.5 text-xs font-bold border border-gray-300 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-100">
                       <Square className="w-3.5 h-3.5" /> Bỏ chọn hết
                     </button>
+                    <button onClick={() => moKhungDoiCau(lineIdx, null)} className="flex items-center gap-1.5 text-xs font-bold bg-indigo-600 text-white px-3 py-1.5 rounded-lg hover:bg-indigo-700">
+                      <ListChecks className="w-3.5 h-3.5" /> Xem cả {line.candidates.length} câu cùng dạng
+                    </button>
                   </div>
                 </div>
 
@@ -332,19 +351,15 @@ function SelectContent() {
                   {line.candidates.length === 0 && (
                     <div className="col-span-full text-center text-gray-400 py-6 text-sm">Không có câu hỏi nào trong kho khớp dạng này.</div>
                   )}
-                  {line.candidates.map(q => {
-                    const isChecked = line.selectedIds.has(q.id);
+                  {/* Chỉ bày những câu ĐANG nằm trong đề. Muốn xem các câu khác cùng dạng
+                      thì bấm "Đổi câu khác" - đỡ phải cuộn qua hàng chục câu không dùng tới. */}
+                  {line.candidates.filter(q => line.selectedIds.has(q.id)).map(q => {
+                    const isChecked = true;
                     const soThuTu = soThuTuTrongDe.get(q.id);
                     const { statements, layout } = questionStatements(q);
                     return (
                       <div key={q.id} className={`rounded-xl border-2 transition-colors ${isChecked ? 'border-indigo-300 bg-indigo-50/30' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
                         <div className="p-3 flex items-start gap-3">
-                          <input
-                            type="checkbox"
-                            checked={isChecked}
-                            onChange={() => toggleCandidate(lineIdx, q.id)}
-                            className="mt-1.5 w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 shrink-0 cursor-pointer"
-                          />
                           <div className="flex-1 min-w-0">
                             {/* Số của câu trong đề hoàn chỉnh, để từ đề quay lại đây tìm đúng câu cần đổi */}
                             {soThuTu && (
@@ -368,6 +383,12 @@ function SelectContent() {
                               Đã dùng: {q.usage_count || 0} lần
                             </span>
                             <button
+                              onClick={() => moKhungDoiCau(lineIdx, q.id)}
+                              className="flex items-center gap-1 text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-700 px-2.5 py-1 rounded-lg whitespace-nowrap"
+                            >
+                              <Replace className="w-3.5 h-3.5" /> Đổi câu khác
+                            </button>
+                            <button
                               onClick={() => setEditingQuestion(q)}
                               className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:bg-indigo-50 px-2 py-1 rounded-lg border border-indigo-200"
                             >
@@ -378,6 +399,26 @@ function SelectContent() {
                       </div>
                     );
                   })}
+
+                  {/* Chưa đủ số câu mục tiêu thì mời chọn thêm ngay tại chỗ */}
+                  {selectedCount < line.item.count && line.candidates.length > 0 && (
+                    <button
+                      onClick={() => moKhungDoiCau(lineIdx, null)}
+                      className="min-h-[120px] rounded-xl border-2 border-dashed border-indigo-300 bg-indigo-50/40 hover:bg-indigo-50 text-indigo-700 font-bold flex flex-col items-center justify-center gap-1.5 transition-colors"
+                    >
+                      <Plus className="w-6 h-6" />
+                      Chọn thêm {line.item.count - selectedCount} câu
+                      <span className="text-xs font-medium text-indigo-500">
+                        Kho có {line.candidates.length} câu cùng dạng này
+                      </span>
+                    </button>
+                  )}
+
+                  {selectedCount === 0 && line.candidates.length === 0 && (
+                    <div className="col-span-full text-center text-gray-400 py-6 text-sm">
+                      Chưa chọn câu nào cho dạng này.
+                    </div>
+                  )}
                 </div>
               </div>
             );
@@ -409,6 +450,122 @@ function SelectContent() {
           })}
         </div>
       )}
+
+      {/* ===== Khung đổi câu: toàn bộ câu cùng dạng - cùng mức độ - cùng dạng thức ===== */}
+      {dongDangDoi !== null && lines[dongDangDoi] && (() => {
+        const line = lines[dongDangDoi];
+        const daChon = line.selectedIds.size;
+        const duMucTieu = daChon === line.item.count;
+        const dongIdx = dongDangDoi;
+        return (
+          <div className="fixed inset-0 z-[150] bg-black/60 backdrop-blur-sm p-3 md:p-5 flex items-center justify-center">
+            <div className="bg-white rounded-2xl w-full max-w-[1500px] h-[92vh] flex flex-col shadow-2xl overflow-hidden">
+              <div className="px-5 py-4 border-b border-gray-100 bg-gray-50/70 flex items-start justify-between gap-4 shrink-0 flex-wrap">
+                <div className="min-w-0">
+                  <h2 className="text-lg font-black text-gray-800">{line.item.math_form}</h2>
+                  <div className="flex items-center gap-2 mt-1 flex-wrap">
+                    <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-indigo-100 text-indigo-700">{bankTypeLabel(line.item.question_type)}</span>
+                    <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-teal-100 text-teal-700">{difficultyLabel(line.item.difficulty)}</span>
+                    <span className={`px-2 py-0.5 rounded text-[11px] font-bold ${duMucTieu ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}`}>
+                      Đã chọn: {daChon} / mục tiêu {line.item.count}
+                    </span>
+                    <span className="text-[11px] font-bold text-gray-400">
+                      Kho có {line.candidates.length} câu cùng dạng, cùng mức độ, cùng dạng thức
+                    </span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 shrink-0 flex-wrap">
+                  <button onClick={() => reroll(dongIdx)} className="flex items-center gap-1.5 text-xs font-bold border border-gray-300 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-100">
+                    <RotateCcw className="w-3.5 h-3.5" /> Chọn ngẫu nhiên lại
+                  </button>
+                  <button onClick={() => selectAll(dongIdx, false)} className="flex items-center gap-1.5 text-xs font-bold border border-gray-300 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-100">
+                    <Square className="w-3.5 h-3.5" /> Bỏ chọn hết
+                  </button>
+                  <button onClick={() => { setDongDangDoi(null); setCauDangDoi(null); }} className="p-2 text-gray-400 hover:text-red-600 rounded-full">
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex-1 overflow-y-auto p-4 bg-gray-50/40">
+                <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
+                  {line.candidates.map(q => {
+                    const isChecked = line.selectedIds.has(q.id);
+                    const laCauDangDoi = q.id === cauDangDoi;
+                    const soThuTu = soThuTuTrongDe.get(q.id);
+                    const { statements, layout } = questionStatements(q);
+                    return (
+                      <div
+                        key={q.id}
+                        ref={laCauDangDoi ? (el) => { el?.scrollIntoView({ block: 'center' }); } : undefined}
+                        className={`rounded-xl border-2 transition-colors ${
+                          laCauDangDoi ? 'border-amber-400 bg-amber-50/40'
+                            : isChecked ? 'border-indigo-300 bg-indigo-50/30'
+                            : 'border-gray-200 bg-white hover:border-gray-300'
+                        }`}
+                      >
+                        <div className="p-3 flex items-start gap-3">
+                          <input
+                            type="checkbox"
+                            checked={isChecked}
+                            onChange={() => toggleCandidate(dongIdx, q.id)}
+                            className="mt-1.5 w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 shrink-0 cursor-pointer"
+                          />
+                          <div className="flex-1 min-w-0">
+                            <div className="mb-1.5 flex items-center gap-2 flex-wrap">
+                              {soThuTu && (
+                                <span className="inline-flex items-center gap-1 bg-emerald-600 text-white text-[11px] font-black px-2 py-0.5 rounded-md">
+                                  Câu {soThuTu} của đề
+                                </span>
+                              )}
+                              {laCauDangDoi && (
+                                <span className="inline-flex items-center gap-1 bg-amber-500 text-white text-[11px] font-black px-2 py-0.5 rounded-md">
+                                  Câu đang muốn đổi
+                                </span>
+                              )}
+                            </div>
+                            <QuestionPreviewCard
+                              content={q.content}
+                              imageUrl={q.image_url}
+                              statements={statements}
+                              statementsLayout={layout}
+                              correctAnswerDisplay={q.question_type === 'TLN' || q.question_type === 'TL' ? (q.correct_answer || undefined) : undefined}
+                              size={coChu}
+                            />
+                          </div>
+                          <div className="flex flex-col items-end gap-2 shrink-0">
+                            <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200 whitespace-nowrap">
+                              Đã dùng: {q.usage_count || 0} lần
+                            </span>
+                            <button
+                              onClick={() => setEditingQuestion(q)}
+                              className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:bg-indigo-50 px-2 py-1 rounded-lg border border-indigo-200"
+                            >
+                              <Pencil className="w-3.5 h-3.5" /> Sửa
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="border-t border-gray-100 px-5 py-3 flex items-center justify-between gap-3 flex-wrap shrink-0">
+                <span className={`text-sm font-bold ${duMucTieu ? 'text-emerald-600' : 'text-amber-600'}`}>
+                  {duMucTieu ? 'Đã đủ số câu mục tiêu.' : `Còn thiếu ${line.item.count - daChon} câu so với mục tiêu.`}
+                </span>
+                <button
+                  onClick={() => { setDongDangDoi(null); setCauDangDoi(null); }}
+                  className="bg-emerald-600 text-white px-6 py-2.5 rounded-lg font-bold hover:bg-emerald-700 flex items-center gap-2"
+                >
+                  <CheckCircle className="w-4 h-4" /> Xong
+                </button>
+              </div>
+            </div>
+          </div>
+        );
+      })()}
 
       <QuestionEditorModal
         isOpen={!!editingQuestion}
