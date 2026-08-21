@@ -7,6 +7,8 @@
 import { toBankType, toDifficultyCode } from "./questionTypes";
 import { taoKhoaSoSanh, timCauTrung, type KetQuaSoTrung, type KhoaSoSanh } from "./questionFingerprint";
 import { chotPhanLoai, moTaPhanLoai, type DongDanhMuc } from "./phanLoaiCauHoi";
+import { chuanHoaCauHoi } from "./chuanHoaCauHoi";
+import { docJsonCauHoi } from "./vaJson";
 import { goiGeminiTrenTrinhDuyet, layCauHinhAI, type CauHinhAI } from "./geminiBrowser";
 
 export interface QuestionData {
@@ -32,6 +34,8 @@ export interface QuestionData {
   /** Còn thiếu Chương/Bài/Dạng nào, và trường nào phải tự suy ra - để cảnh báo. */
   thieuPhanLoai?: string[];
   ghiChuPhanLoai?: string;
+  /** Những chỗ máy đã tự chỉnh lại (tách ý, làm tròn đáp án...) để thầy cô soát lại. */
+  canhBaoChuanHoa?: string[];
   /** Mức độ nghi trùng và câu chữ giải thích, để hiện cảnh báo cho thầy cô tự quyết. */
   mucDoTrung?: KetQuaSoTrung['mucDo'];
   lyDoTrung?: string;
@@ -208,7 +212,8 @@ export interface ScanPromptContext {
   globalGrade: string;
   globalSubject: string;
   globalTopics: string[];
-  globalLesson: string;
+  /** Bài học thầy cô đang chọn ở panel phân loại gốc (có thể bỏ trống). */
+  globalLesson?: string;
   uniqueLessons: string[];
   uniqueForms: string[];
 }
@@ -232,6 +237,26 @@ ${uniqueForms.map((f) => `- ${f}`).join("\n")}
 1. Đọc THẬT KỸ TOÀN BỘ nội dung ảnh/file từ đầu đến cuối, không bỏ sót bất kỳ câu hỏi hay hình ảnh nào.
 2. Đọc kỹ TOÀN BỘ yêu cầu trong prompt này trước khi trả lời. Mỗi quy tắc đều quan trọng.
 3. Kiểm tra lại output JSON trước khi gửi để đảm bảo ĐÚNG cấu trúc, ĐÚNG nội dung và KHÔNG thiếu trường nào.
+
+QUY TẮC VỀ ĐỊNH DẠNG JSON - VI PHẠM LÀ HỎNG CẢ LÔ, PHẢI TUÂN THỦ TUYỆT ĐỐI:
+J1. Mọi dấu gạch chéo ngược trong công thức PHẢI được nhân đôi. Viết "\\\\frac{1}{2}" CHỨ KHÔNG PHẢI "\\frac{1}{2}".
+    Tương tự: \\\\sqrt, \\\\text, \\\\cdot, \\\\times, \\\\pi, \\\\Delta.
+J2. TUYỆT ĐỐI KHÔNG xuống dòng thật bên trong một chuỗi. Cần xuống dòng thì viết \\\\n.
+J3. KHÔNG để dấu phẩy thừa trước dấu ] hoặc }.
+J4. KHÔNG viết thêm bất kỳ lời dẫn, lời chào hay giải thích nào ngoài mảng JSON.
+J5. Mỗi chuỗi phải mở và đóng bằng dấu nháy kép thẳng ("), không dùng nháy cong.
+
+QUY TẮC RIÊNG THEO TỪNG LOẠI CÂU:
+L1. Câu ĐÚNG/SAI (DS): BẮT BUỘC tách 4 ý ra 4 trường dapAnA, dapAnB, dapAnC, dapAnD.
+    Trường noiDung CHỈ chứa phần dẫn chung, TUYỆT ĐỐI KHÔNG lặp lại 4 ý trong đó.
+    Bốn trường dapAnA..D KHÔNG được mang tiền tố "a)", "b)", "c)", "d)" - chỉ ghi nội dung mệnh đề.
+L2. Câu TRẢ LỜI NGẮN (TLN): đáp án phải tô vừa 4 ô của phiếu, tức TỐI ĐA 4 KÝ TỰ,
+    chỉ gồm chữ số, dấu phẩy thập phân và dấu trừ. Ví dụ hợp lệ: "12", "1,25", "-0,5", "480".
+    Nếu kết quả thật dài hơn (VD 475,72) hoặc ở dạng luỹ thừa (VD 2,23.10^-4) thì PHẢI
+    sửa lại ĐỀ BÀI cho khớp - ghi rõ "làm tròn đến ... chữ số thập phân" hoặc "tính theo
+    đơn vị 10^-4" - rồi mới điền đáp án ngắn tương ứng. KHÔNG được để đáp án quá 4 ký tự.
+L3. Câu TỰ LUẬN (TL): mọi công thức trong đáp án và lời giải PHẢI bọc trong cặp $...$
+    để hiển thị đúng kiểu MathType. Không để công thức trần giữa câu văn.
 
 Bạn là chuyên gia Toán học. Hãy đọc (các) ảnh/file PDF này và bóc tách TẤT CẢ các câu hỏi có trong đó.
 Trả về MỘT MẢNG JSON duy nhất (bắt đầu bằng [ và kết thúc bằng ]) chứa các object theo cấu trúc:
@@ -326,31 +351,13 @@ export interface ParseContext {
 
 /** Bóc tách JSON thô AI trả về thành danh sách câu hỏi đã chuẩn hóa. Ném lỗi nếu JSON hỏng (không tự alert). */
 export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext): QuestionData[] {
-  let jsonStr = rawText;
-  const jsonMatch = rawText.match(/```json\n([\s\S]*?)\n```/) || rawText.match(/```\n([\s\S]*?)\n```/);
-  if (jsonMatch) jsonStr = jsonMatch[1];
-
-  const firstBracket = jsonStr.indexOf('[');
-  const lastBracket = jsonStr.lastIndexOf(']');
-
-  let parsedData: any[] = [];
-
-  if (firstBracket !== -1) {
-    jsonStr = jsonStr.substring(firstBracket, lastBracket + 1);
-  } else {
-    const firstBrace = jsonStr.indexOf('{');
-    const lastBrace = jsonStr.lastIndexOf('}');
-    if (firstBrace !== -1) {
-      jsonStr = '[' + jsonStr.substring(firstBrace, lastBrace + 1) + ']';
-    } else {
-      throw new Error("Không tìm thấy cấu trúc JSON");
-    }
-  }
-
-  try {
-    parsedData = JSON.parse(jsonStr);
-  } catch (e) {
-    throw new Error("AI trả về định dạng JSON không hợp lệ. Vui lòng thử lại.");
+  // Đọc JSON kèm tự vá các lỗi hay gặp (gạch chéo LaTeX chưa nhân đôi, dấu phẩy thừa,
+  // xuống dòng giữa chuỗi). Bản cũ gọi JSON.parse đúng một lần, hỏng là mất trắng cả lô
+  // vài chục câu - xem vaJson.ts.
+  const kqJson = docJsonCauHoi(rawText);
+  const parsedData: any[] = kqJson.items;
+  if (kqJson.soCauBoQua > 0) {
+    console.warn(`[Quét đề] Bỏ qua ${kqJson.soCauBoQua} câu vì nội dung hỏng nặng, giữ lại ${parsedData.length} câu.`);
   }
 
   const { existingQuestions, uniqueTopics, uniqueLessons, uniqueForms, globalGrade, globalSubject, globalTopics, globalLesson, danhMuc } = ctx;
@@ -418,11 +425,22 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
         }
       }
 
-      // Câu Đúng/Sai mà AI để nguyên 4 ý trong đề bài và bỏ trống 4 ô mệnh đề: tự gỡ
-      // 4 ý ra. Chỉ làm khi 4 ô ĐỀU trống, để không ghi đè kết quả AI đã tách đúng.
-      const dsChuaTach = parsedQuestionType === "DS"
-        && !data.dapAnA && !data.dapAnB && !data.dapAnC && !data.dapAnD;
-      const dsTach = dsChuaTach ? tachYDungSai(qContent) : null;
+      // Chuẩn hoá theo từng loại câu - xem chuanHoaCauHoi.ts:
+      //   Đúng/Sai   : gỡ 4 ý còn nằm trong đề bài, bỏ tiền tố "a)" thừa ở mệnh đề.
+      //   Trả lời ngắn: đưa đáp án về đúng số ô tô được, sửa đề cho khớp.
+      //   Tự luận    : bọc công thức để trần vào $...$.
+      // Mọi chỗ sửa đều kèm cảnh báo, không sửa lặng lẽ.
+      const kqChuan = chuanHoaCauHoi({
+        question_type: parsedQuestionType,
+        content: qContent,
+        option_a: data.dapAnA,
+        option_b: data.dapAnB,
+        option_c: data.dapAnC,
+        option_d: data.dapAnD,
+        correct_answer: parsedQuestionType === "DS"
+          ? chuanHoaDapAnDungSai(data.dapAnDung)
+          : (data.dapAnDung || ""),
+      });
 
       const questionData: QuestionData = {
         temp_id: `TEMP_${Math.random().toString(36).substring(2, 9)}_${Date.now()}`,
@@ -431,6 +449,7 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
         topic,
         lesson,
         math_form,
+        canhBaoChuanHoa: kqChuan.canhBao,
         thieuPhanLoai: kqPhanLoai.conThieu,
         ghiChuPhanLoai: moTaPhanLoai(kqPhanLoai),
         isNewTopic,
@@ -438,14 +457,12 @@ export function parseExtractedQuestionsJson(rawText: string, ctx: ParseContext):
         isNewMathForm,
         question_type: parsedQuestionType,
         difficulty: parsedDifficulty,
-        content: dsTach ? dsTach.dan : qContent,
-        option_a: dsTach ? dsTach.y[0] : (data.dapAnA || ""),
-        option_b: dsTach ? dsTach.y[1] : (data.dapAnB || ""),
-        option_c: dsTach ? dsTach.y[2] : (data.dapAnC || ""),
-        option_d: dsTach ? dsTach.y[3] : (data.dapAnD || ""),
-        correct_answer: parsedQuestionType === "DS"
-          ? chuanHoaDapAnDungSai(data.dapAnDung)
-          : (data.dapAnDung || ""),
+        content: kqChuan.content,
+        option_a: kqChuan.option_a,
+        option_b: kqChuan.option_b,
+        option_c: kqChuan.option_c,
+        option_d: kqChuan.option_d,
+        correct_answer: kqChuan.correct_answer,
         explanation: data.loiGiai || "",
         image_url: data.image_url || "",
         isDuplicate: ketQuaTrung.mucDo === 'trung' || ketQuaTrung.mucDo === 'nghi',

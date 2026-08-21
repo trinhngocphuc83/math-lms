@@ -987,6 +987,19 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                           </div>
                         )}
 
+                        {/* Máy đã tự chỉnh câu này (tách ý, làm tròn đáp án, bọc công thức) */}
+                        {(q.canhBaoChuanHoa?.length ?? 0) > 0 && (
+                          <div className="bg-violet-50 text-violet-800 p-3 text-[13px] font-bold border-b border-violet-100 flex gap-2">
+                            <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
+                            <span>
+                              MÁY ĐÃ TỰ CHỈNH:
+                              <ul className="list-disc ml-4 mt-1 font-medium">
+                                {q.canhBaoChuanHoa!.map((c, i) => <li key={i}>{c}</li>)}
+                              </ul>
+                            </span>
+                          </div>
+                        )}
+
                         {q.mucDoTrung === 'khac-so-lieu' && (
                           <div className="bg-sky-50 text-sky-800 p-3 text-[13px] font-bold border-b border-sky-100 flex gap-2">
                             <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />

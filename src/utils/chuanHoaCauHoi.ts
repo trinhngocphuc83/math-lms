@@ -1,0 +1,251 @@
+// Chuẩn hoá câu hỏi ngay sau khi AI bóc tách, trước khi đưa vào ngân hàng.
+//
+// AI trả về kết quả không phải lúc nào cũng đúng khuôn. Ba chỗ hay sai nhất, đo trên
+// kho Vật lí 1066 câu:
+//   - Câu Đúng/Sai: 19 câu có mệnh đề còn dính tiền tố "a)", và có câu để nguyên cả 4 ý
+//     trong đề bài nên đề bị lặp hai lần.
+//   - Câu Trả lời ngắn: 15/181 câu có đáp án không tô được vào 4 ô của phiếu (dài quá
+//     4 ký tự, hoặc viết dạng khoa học "2,23.10^-4").
+//   - Đáp án tự luận: công thức để trần, không bọc $...$ nên hiển thị ra chữ thô.
+//
+// Mọi chỗ sửa đều kèm câu chữ cảnh báo để thầy cô soát lại, KHÔNG sửa lặng lẽ.
+
+/** Ký tự tối đa học sinh tô được ở phần Trả lời ngắn (Barem 2025). */
+export const SO_KY_TU_TRA_LOI_NGAN = 4;
+
+export interface KetQuaChuanHoa {
+  content: string;
+  option_a: string;
+  option_b: string;
+  option_c: string;
+  option_d: string;
+  correct_answer: string;
+  /** Những chỗ đã tự sửa, để hiện cảnh báo cho thầy cô soát lại. */
+  canhBao: string[];
+}
+
+/* ===================== CÂU ĐÚNG / SAI ===================== */
+
+const RE_MOC_Y = /(?:^|\n|\\n)\s*([a-d])\s*[).:]\s*/g;
+
+/** Bỏ tiền tố "a)" / "b." / "c:" ở đầu mệnh đề - phần nhãn đã có sẵn trên giao diện. */
+export const boTienToY = (s: string | null | undefined): string =>
+  String(s || '').replace(/^\s*[a-dA-D]\s*[).:]\s*/, '').trim();
+
+/**
+ * Tách 4 ý a) b) c) d) đang nằm lẫn trong đề bài.
+ * Trả về null nếu không tách được đủ 4 ý (không đoán bừa).
+ */
+export function tachBonY(content: string | null | undefined): { dan: string; y: string[] } | null {
+  const s = String(content || '');
+  if (!s.trim()) return null;
+
+  const re = new RegExp(RE_MOC_Y.source, 'g');
+  const moc: { chu: string; batDau: number; ketThuc: number }[] = [];
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(s)) !== null) {
+    moc.push({ chu: m[1], batDau: m.index, ketThuc: m.index + m[0].length });
+  }
+  if (moc.length < 4) return null;
+
+  const bo = moc.filter((x, i) => x.chu === ['a', 'b', 'c', 'd'][i % 4]).slice(0, 4);
+  if (bo.length < 4 || bo.map(x => x.chu).join('') !== 'abcd') return null;
+
+  const y = bo.map((x, i) => s.slice(x.ketThuc, i < 3 ? bo[i + 1].batDau : s.length).trim());
+  if (y.some(t => !t)) return null;
+
+  return { dan: s.slice(0, bo[0].batDau).trim(), y };
+}
+
+/* ===================== CÂU TRẢ LỜI NGẮN ===================== */
+
+/** Đáp án tô được vào 4 ô: chỉ chữ số, tối đa một dấu phẩy, có thể có dấu trừ đứng đầu. */
+export const dapAnNganHopLe = (s: string | null | undefined): boolean => {
+  const t = String(s || '').trim();
+  return t.length > 0 && t.length <= SO_KY_TU_TRA_LOI_NGAN && /^-?\d+(,\d+)?$/.test(t);
+};
+
+/**
+ * Gỡ phần trình bày để còn lại con số.
+ *
+ * Phải xử lý cả cách viết dấu phẩy kiểu LaTeX "{,}" - đây là dạng AI hay dùng nhất
+ * ("$1{,}5$"), thiếu bước này thì một đáp án vốn hợp lệ vẫn bị coi là không tô được.
+ */
+function gonSo(raw: string): string {
+  let t = String(raw || '').trim();
+  t = t.replace(/\{\s*,\s*\}/g, ',');            // $1{,}5$ -> 1,5
+  t = t.replace(/\$/g, '');
+  t = t.replace(/\\text\s*\{[^}]*\}/g, '');   // bỏ đơn vị
+  t = t.replace(/\\,|\\;|\\!|\\ |~/g, ' '); // dấu cách LaTeX
+  t = t.replace(/\\cdot|\\times/g, '*');
+  return t.replace(/\s+/g, ' ').trim();
+}
+
+/** Đưa số quá dài về dạng a x 10^n để tô vừa số ô cho phép. */
+function tachLuyThua(so: number): { dinhTri: string; soMu: number } | null {
+  if (!Number.isFinite(so) || so === 0) return null;
+  for (let mu = 1; mu <= 12; mu++) {
+    const rut = so / Math.pow(10, mu);
+    for (let le = 3; le >= 0; le--) {
+      const t = rut.toFixed(le).replace('.', ',');
+      // Chỉ nhận khi rút gọn xong dựng lại vẫn gần đúng số ban đầu (sai lệch dưới 0,5%)
+      const dungLai = Number(t.replace(',', '.')) * Math.pow(10, mu);
+      if (dapAnNganHopLe(t) && Math.abs(dungLai - so) <= Math.abs(so) * 0.005) {
+        return { dinhTri: t, soMu: mu };
+      }
+    }
+  }
+  return null;
+}
+
+/**
+ * Đưa đáp án Trả lời ngắn về đúng khuôn 4 ký tự, và SỬA ĐỀ cho khớp.
+ *
+ * Hai cách xử lý, ưu tiên cách không làm mất độ chính xác:
+ *   1. Viết dạng khoa học ("2,23.10^-4") -> giữ phần định trị làm đáp án, đưa luỹ thừa
+ *      vào đề bài dưới dạng đơn vị: "(kết quả tính theo đơn vị 10^-4)".
+ *   2. Vẫn dài quá 4 ký tự ("475,72") -> làm tròn vừa đủ số ô, và ghi rõ trong đề bài
+ *      làm tròn đến đâu.
+ *
+ * Không xử lý được thì trả nguyên trạng kèm cảnh báo để thầy cô tự sửa.
+ */
+export function chuanHoaTraLoiNgan(content: string, dapAn: string): {
+  content: string; correct_answer: string; canhBao: string[];
+} {
+  const canhBao: string[] = [];
+  let de = String(content || '');
+  let da = gonSo(dapAn);
+
+  if (dapAnNganHopLe(da)) return { content: de, correct_answer: da, canhBao };
+  if (!da) return { content: de, correct_answer: '', canhBao: ['Câu trả lời ngắn chưa có đáp án.'] };
+
+  // --- Cách 1: tách luỹ thừa 10 ra khỏi đáp án ---
+  const mKhoaHoc = da.match(/^(-?[\d.,]+)\s*(?:\*|x|×)?\s*10\s*\^?\s*\{?\s*(-?\d+)\s*\}?/i);
+  if (mKhoaHoc) {
+    const dinhTri = mKhoaHoc[1].replace(/\./g, ',');
+    const soMu = mKhoaHoc[2];
+    if (dapAnNganHopLe(dinhTri)) {
+      de = de.trimEnd() + ` (Kết quả tính theo đơn vị $10^{${soMu}}$.)`;
+      canhBao.push(`Đáp án viết dạng khoa học nên đã chuyển luỹ thừa $10^{${soMu}}$ vào đề bài, đáp án còn "${dinhTri}". Thầy cô soát lại đơn vị.`);
+      return { content: de, correct_answer: dinhTri, canhBao };
+    }
+    da = dinhTri; // còn dài thì để bước làm tròn bên dưới lo tiếp
+  }
+
+  // --- Cách 2: làm tròn cho vừa số ô ---
+  const so = Number(da.replace(/\./g, '').replace(',', '.'));
+  if (Number.isFinite(so)) {
+    for (let le = 3; le >= 0; le--) {
+      const lamTron = so.toFixed(le).replace('.', ',');
+      if (dapAnNganHopLe(lamTron)) {
+        if (lamTron !== da) {
+          de = de.trimEnd() + (le > 0
+            ? ` (Làm tròn kết quả đến ${le} chữ số sau dấu phẩy.)`
+            : ' (Làm tròn kết quả đến số nguyên.)');
+          canhBao.push(`Đáp án "${da}" dài quá ${SO_KY_TU_TRA_LOI_NGAN} ô nên đã làm tròn thành "${lamTron}" và ghi rõ trong đề. Thầy cô soát lại.`);
+        }
+        return { content: de, correct_answer: lamTron, canhBao };
+      }
+    }
+  }
+
+  // --- Cách 3: số quá lớn hoặc quá dài -> rút về a x 10^n, đưa luỹ thừa vào đề ---
+  if (Number.isFinite(so)) {
+    const rut = tachLuyThua(so);
+    if (rut) {
+      de = de.trimEnd() + ` (Kết quả tính theo đơn vị $10^{${rut.soMu}}$.)`;
+      canhBao.push(`Đáp án "${da}" không tô vừa ${SO_KY_TU_TRA_LOI_NGAN} ô nên đã rút về "${rut.dinhTri}" kèm đơn vị $10^{${rut.soMu}}$ ghi trong đề. Thầy cô soát lại.`);
+      return { content: de, correct_answer: rut.dinhTri, canhBao };
+    }
+  }
+
+  canhBao.push(`Đáp án "${String(dapAn).trim()}" không tô được vào ${SO_KY_TU_TRA_LOI_NGAN} ô của phiếu trả lời và máy không tự sửa được. Thầy cô sửa lại đề hoặc đáp án.`);
+  return { content: de, correct_answer: String(dapAn).trim(), canhBao };
+}
+
+/* ===================== ĐÁP ÁN TỰ LUẬN ===================== */
+
+/**
+ * Bọc công thức để trần vào cặp $...$ cho hiển thị đúng kiểu MathType.
+ *
+ * Chỉ đụng vào phần NẰM NGOÀI các cặp $...$ sẵn có, để không bọc chồng lên công thức
+ * đã đúng. Bọc theo từng cụm liền mạch chứ không bọc từng lệnh rời, tránh cắt vụn
+ * "\frac{a}{b}" thành nhiều đoạn.
+ */
+export function bocCongThucTuLuan(raw: string | null | undefined): { text: string; daSua: boolean } {
+  const s = String(raw || '');
+  if (!s.trim()) return { text: s, daSua: false };
+
+  const phan = s.split(/(\$[^$]*\$)/g); // giữ nguyên những đoạn đã có $...$
+  let daSua = false;
+
+  const ra = phan.map(doan => {
+    if (doan.startsWith('$') && doan.endsWith('$')) return doan;
+    // Cụm công thức: bắt đầu bằng lệnh LaTeX, kéo theo ngoặc/chỉ số/luỹ thừa liền sau
+    return doan.replace(
+      /(\\(?:d?frac|sqrt|text|times|cdot|vec|overline|sum|int|alpha|beta|pi|Delta|Omega|mu|lambda|omega)\b[^\s,.;:)]*(?:\{[^{}]*\}|\^\{?[^\s{}]*\}?|_\{?[^\s{}]*\}?)*)/g,
+      (m) => { daSua = true; return `$${m}$`; },
+    );
+  }).join('');
+
+  return { text: ra, daSua };
+}
+
+/* ===================== GỌI CHUNG ===================== */
+
+/**
+ * Chuẩn hoá một câu hỏi vừa bóc tách. Trả về bản đã sửa kèm danh sách cảnh báo.
+ */
+export function chuanHoaCauHoi(q: {
+  question_type: string;
+  content: string;
+  option_a?: string; option_b?: string; option_c?: string; option_d?: string;
+  correct_answer?: string;
+}): KetQuaChuanHoa {
+  const canhBao: string[] = [];
+  let content = String(q.content || '');
+  let [a, b, c, d] = [q.option_a || '', q.option_b || '', q.option_c || '', q.option_d || ''];
+  let correct = String(q.correct_answer || '');
+
+  if (q.question_type === 'DS') {
+    const thieuMenhDe = ![a, b, c, d].every(x => String(x).trim());
+
+    // Đề bài còn nguyên 4 ý -> gỡ ra
+    const tach = tachBonY(content);
+    if (tach) {
+      if (thieuMenhDe) {
+        [a, b, c, d] = tach.y;
+        canhBao.push('Bốn ý a, b, c, d còn nằm trong đề bài nên máy đã tách ra thành 4 mệnh đề.');
+      } else {
+        canhBao.push('Bốn ý a, b, c, d bị lặp cả trong đề bài lẫn ô mệnh đề nên máy đã bỏ phần trong đề bài.');
+      }
+      content = tach.dan;
+    } else if (thieuMenhDe) {
+      canhBao.push('Câu Đúng/Sai còn thiếu mệnh đề mà máy không tách được từ đề bài. Thầy cô bổ sung.');
+    }
+
+    // Mệnh đề còn tiền tố "a)" -> bỏ, vì giao diện đã có sẵn nhãn
+    const truoc = [a, b, c, d].join('|');
+    [a, b, c, d] = [a, b, c, d].map(boTienToY);
+    if ([a, b, c, d].join('|') !== truoc) {
+      canhBao.push('Đã bỏ tiền tố "a)", "b)"... thừa ở đầu các mệnh đề.');
+    }
+  }
+
+  if (q.question_type === 'TLN') {
+    const kq = chuanHoaTraLoiNgan(content, correct);
+    content = kq.content;
+    correct = kq.correct_answer;
+    canhBao.push(...kq.canhBao);
+  }
+
+  if (q.question_type === 'TL') {
+    const kq = bocCongThucTuLuan(correct);
+    if (kq.daSua) {
+      correct = kq.text;
+      canhBao.push('Đáp án tự luận có công thức để trần nên máy đã bọc lại cho hiển thị đúng.');
+    }
+  }
+
+  return { content, option_a: a, option_b: b, option_c: c, option_d: d, correct_answer: correct, canhBao };
+}
