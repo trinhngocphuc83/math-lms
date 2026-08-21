@@ -10,6 +10,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import { unifiedMarkdownComponents as customMarkdownComponents, preprocessMarkdown } from "@/components/CustomMarkdownComponents";
+import { toBankType } from "@/utils/questionTypes";
 
 /**
  * Thẻ hiển thị Xem trước câu hỏi dùng CHUNG cho cả Ngân hàng câu hỏi
@@ -108,6 +109,49 @@ function splitExplanation(raw: string): { methodText: string; explanationText: s
   methodText = methodText.replace(/^\*\*/, "");
   explanationText = explanationText.replace(/^\*\*/, "");
   return { methodText, explanationText };
+}
+
+/**
+ * Dựng danh sách phương án cho thẻ xem trước từ MỘT bản ghi câu hỏi bất kỳ
+ * (ngân hàng dùng option_a..d, vài nơi cũ dùng answer_a..d; đáp án đúng có thể
+ * là chữ cái "A" hoặc chuỗi 4 ký tự Đ/S). Trước đây mỗi hộp thoại tự viết lại
+ * đoạn này nên nơi sửa nơi không - gom về đây để dùng chung.
+ */
+export function taoStatements(q: any): { statements: PreviewStatement[]; statementsLayout: 'choice' | 'truefalse' } {
+  const bankType = toBankType(q?.question_type);
+  const layPhuongAn = (opt: string) => q?.[`option_${opt}`] || q?.[`answer_${opt}`] || '';
+
+  if (bankType === 'NLC') {
+    const dungLa = String(q?.correct_answer || '').trim().toUpperCase();
+    return {
+      statementsLayout: 'choice',
+      statements: ['a', 'b', 'c', 'd']
+        .map(opt => {
+          const val = layPhuongAn(opt);
+          if (!val) return null;
+          return { key: opt, label: opt.toUpperCase(), content: val, isCorrect: dungLa === opt.toUpperCase() } as PreviewStatement;
+        })
+        .filter((x): x is PreviewStatement => !!x),
+    };
+  }
+
+  if (bankType === 'DS') {
+    const chuoi = String(q?.correct_answer || '');
+    return {
+      statementsLayout: 'truefalse',
+      statements: ['a', 'b', 'c', 'd']
+        .map((opt, i) => {
+          const val = layPhuongAn(opt);
+          if (!val) return null;
+          const ch = chuoi.charAt(i);
+          const isTrue = ch ? (ch === 'D' || ch === 'T' || ch.toUpperCase() === 'Đ') : undefined;
+          return { key: opt, label: opt, content: val, isTrue } as PreviewStatement;
+        })
+        .filter((x): x is PreviewStatement => !!x),
+    };
+  }
+
+  return { statements: [], statementsLayout: 'choice' };
 }
 
 export default function QuestionPreviewCard({

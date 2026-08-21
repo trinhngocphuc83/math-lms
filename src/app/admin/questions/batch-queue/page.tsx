@@ -34,8 +34,9 @@ import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, UploadCloud, Play, Pause, RotateCcw, X, CheckCircle2, AlertTriangle,
-  FileText, Image as ImageIcon, ListChecks, Trash2, Pencil, Crop, EyeOff, ShieldCheck,
+  FileText, Image as ImageIcon, ListChecks, Trash2, Pencil, Crop, EyeOff, ShieldCheck, Columns2,
 } from "lucide-react";
+import DuplicateCompareModal from "@/components/admin/DuplicateCompareModal";
 
 // ===== Kiểu dữ liệu nội bộ =====
 
@@ -190,6 +191,8 @@ export default function BatchQueuePage() {
   const [globalLesson, setGlobalLesson] = useState("");
 
   const [categories, setCategories] = useState<any[]>([]);
+  // Câu đang đem ra đối chiếu song song với câu giống nó trong kho.
+  const [cauDoiChieu, setCauDoiChieu] = useState<any>(null);
   const [existingQuestions, setExistingQuestions] = useState<{ id: string; content: string; option_a?: string; option_b?: string; option_c?: string; option_d?: string }[]>([]);
   const [isLoadingContext, setIsLoadingContext] = useState(true);
 
@@ -915,6 +918,14 @@ export default function BatchQueuePage() {
                             {item.question.lyDoTrung}
                           </span>
                         )}
+                        {item.question.duplicateId && (
+                          <button
+                            onClick={() => setCauDoiChieu(item.question)}
+                            className="px-2 py-0.5 rounded text-[11px] font-bold border bg-white border-amber-300 text-amber-800 hover:bg-amber-50 flex items-center gap-1 transition-colors"
+                          >
+                            <Columns2 className="w-3 h-3" /> Đối chiếu 2 câu
+                          </button>
+                        )}
                         {needsCropCheck && item.imageConfirmed && (
                           <span className="px-2 py-0.5 rounded text-[11px] font-bold border bg-emerald-100 text-emerald-700 border-emerald-200">✓ Đã đối chiếu ảnh</span>
                         )}
@@ -1004,6 +1015,16 @@ export default function BatchQueuePage() {
           setEditingReviewId(null);
         }}
       />
+
+      {/* Đặt câu vừa quét cạnh câu giống nó để thầy cô tự quyết bỏ hay giữ. */}
+      {cauDoiChieu && (
+        <DuplicateCompareModal
+          isOpen={true}
+          onClose={() => setCauDoiChieu(null)}
+          cauMoi={cauDoiChieu}
+          cauTrongLo={reviewQueue.map((r) => r.question)}
+        />
+      )}
     </div>
   );
 }

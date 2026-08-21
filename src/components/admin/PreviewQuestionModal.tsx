@@ -3,8 +3,8 @@
 import { X, Wand2, Loader2 } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 import { useState, useEffect } from "react";
-import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
-import { toBankType, bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
+import QuestionPreviewCard, { taoStatements } from "@/components/admin/QuestionPreviewCard";
+import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 
 interface PreviewQuestionModalProps {
   isOpen: boolean;
@@ -104,34 +104,9 @@ export default function PreviewQuestionModal({ isOpen, onClose, question, onUpda
 
   // Chuẩn hoá dữ liệu ngân hàng (option_a/b/c/d, correct_answer dạng chữ cái hoặc
   // chuỗi Đ/S 4 ký tự) về đúng props mà QuestionPreviewCard hiểu - dùng CHUNG bộ
-  // khung hiển thị với Xem trước bên Luyện tập để hai nơi không lệch giao diện.
-  const bankType = toBankType(localQuestion.question_type);
-  let statements: PreviewStatement[] = [];
-  let statementsLayout: 'choice' | 'truefalse' = 'choice';
-
-  if (bankType === 'NLC') {
-    statementsLayout = 'choice';
-    const correctLetter = String(localQuestion.correct_answer || '').trim().toUpperCase();
-    statements = ['a', 'b', 'c', 'd']
-      .map(opt => {
-        const val = localQuestion[`option_${opt}`] || localQuestion[`answer_${opt}`];
-        if (!val) return null;
-        return { key: opt, label: opt.toUpperCase(), content: val, isCorrect: correctLetter === opt.toUpperCase() } as PreviewStatement;
-      })
-      .filter((s): s is PreviewStatement => !!s);
-  } else if (bankType === 'DS') {
-    statementsLayout = 'truefalse';
-    const correctStr = String(localQuestion.correct_answer || '');
-    statements = ['a', 'b', 'c', 'd']
-      .map((opt, i) => {
-        const val = localQuestion[`option_${opt}`] || localQuestion[`answer_${opt}`];
-        if (!val) return null;
-        const ch = correctStr.charAt(i);
-        const isTrue = ch ? (ch === 'D' || ch === 'T' || ch.toUpperCase() === 'Đ') : undefined;
-        return { key: opt, label: opt, content: val, isTrue } as PreviewStatement;
-      })
-      .filter((s): s is PreviewStatement => !!s);
-  }
+  // khung hiển thị với Xem trước bên Luyện tập và hộp Đối chiếu câu trùng, để ba
+  // nơi không lệch giao diện.
+  const { statements, statementsLayout } = taoStatements(localQuestion);
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">

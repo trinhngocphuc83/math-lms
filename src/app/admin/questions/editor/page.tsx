@@ -7,9 +7,10 @@ import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import {
   ArrowLeft, Image as ImageIcon, Trash2, Code2, Bot, Eye,
   Wand2, AlertCircle, Loader2, Copy, SaveAll, Edit, Trash, CloudUpload, X, Save, Info,
-  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, CropIcon, Type, ListTodo, AlertTriangle
+  ChevronDown, ChevronUp, ChevronLeft, ChevronRight, CropIcon, Type, ListTodo, AlertTriangle, Columns2
 } from "lucide-react";
 import QuestionPreviewModal from "@/components/admin/QuestionPreviewModal";
+import DuplicateCompareModal from "@/components/admin/DuplicateCompareModal";
 import RichTextarea from "@/components/admin/RichTextarea";
 import {
   toBankType,
@@ -56,6 +57,8 @@ export default function BatchAIEditorPage() {
   // lại từ đầu. Lưu trong cơ sở dữ liệu nên đổi máy vẫn còn.
   const [dangLuuNhap, setDangLuuNhap] = useState(false);
   const [nhapCu, setNhapCu] = useState<any>(null);
+  // Câu đang đem ra đối chiếu song song với câu giống nó trong kho.
+  const [cauDoiChieu, setCauDoiChieu] = useState<QuestionData | null>(null);
   const [existingQuestions, setExistingQuestions] = useState<{id: string; content: string; option_a?: string; option_b?: string; option_c?: string; option_d?: string}[]>([]);
   const [isSavingAll, setIsSavingAll] = useState(false);
 
@@ -984,6 +987,16 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                               {q.lyDoTrung || 'Nội dung tương tự một câu đã có trong Ngân hàng.'}
                               {' '}Thầy cô xem lại rồi quyết định bỏ hay vẫn lưu.
                             </span>
+                            {q.duplicateId && (
+                              <button
+                                onClick={() => setCauDoiChieu(q)}
+                                className={q.mucDoTrung === 'trung'
+                                  ? "ml-auto shrink-0 self-start flex items-center gap-1 px-2.5 py-1 rounded-md bg-white border border-red-300 text-red-700 hover:bg-red-100 text-[12px] font-bold transition-colors"
+                                  : "ml-auto shrink-0 self-start flex items-center gap-1 px-2.5 py-1 rounded-md bg-white border border-amber-300 text-amber-800 hover:bg-amber-100 text-[12px] font-bold transition-colors"}
+                              >
+                                <Columns2 className="w-3.5 h-3.5" /> Đối chiếu 2 câu
+                              </button>
+                            )}
                           </div>
                         )}
 
@@ -1004,6 +1017,14 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                           <div className="bg-sky-50 text-sky-800 p-3 text-[13px] font-bold border-b border-sky-100 flex gap-2">
                             <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
                             <span>{q.lyDoTrung} Không cần bỏ, chỉ để thầy cô biết.</span>
+                            {q.duplicateId && (
+                              <button
+                                onClick={() => setCauDoiChieu(q)}
+                                className="ml-auto shrink-0 self-start flex items-center gap-1 px-2.5 py-1 rounded-md bg-white border border-sky-300 text-sky-700 hover:bg-sky-100 text-[12px] font-bold transition-colors"
+                              >
+                                <Columns2 className="w-3.5 h-3.5" /> Đối chiếu 2 câu
+                              </button>
+                            )}
                           </div>
                         )}
                         
@@ -1229,6 +1250,17 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
         onClose={() => setPreviewingQuestion(null)}
         question={previewingQuestion}
       />
+
+      {/* Đặt câu đang soạn cạnh câu giống nó để thầy cô tự quyết bỏ hay giữ. */}
+      {cauDoiChieu && (
+        <DuplicateCompareModal
+          isOpen={true}
+          onClose={() => setCauDoiChieu(null)}
+          cauMoi={cauDoiChieu}
+          cauTrongLo={parsedQuestions}
+          onBoCau={cauDoiChieu.temp_id ? () => handleRemoveQuestion(cauDoiChieu.temp_id!) : undefined}
+        />
+      )}
     </div>
   );
 }
