@@ -1,6 +1,6 @@
 import {
   Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun,
-  Table, TableRow, TableCell, WidthType, BorderStyle,
+  Table, TableRow, TableCell, WidthType, BorderStyle, PageOrientation,
 } from "docx";
 import { saveAs } from "file-saver";
 
@@ -26,7 +26,7 @@ export const base64ToUint8Array = (base64: string) => {
 import { cleanLatexForWord } from "./latexToWord";
 import { cleanLatexControlChars } from "./latexFixer";
 import { latexToDocxElement, latexToDocxTable, laBangKeO } from "./latexToDocxMath";
-import { type DauDe, chiaPhanDeThi, type PhanDeThi } from "./deThi";
+import { soDiemVN, type DauDe, chiaPhanDeThi, type PhanDeThi } from "./deThi";
 
 // Đánh dấu tạm cho công thức $...$/$$...$$ để không lẫn với ảnh/HTML khi quét dòng,
 // rồi thay lại bằng công thức Word thật (Equation/OMML) ở dưới - không còn hiện chữ
@@ -291,16 +291,8 @@ const cleanHtmlNewlinesInTags = (html: string) => {
   return cleaned.replace(/\n(?=eq|otin|abla|atural|ightarrow|ho|angle|imes|heta|riangle|ext|egin|rac|orall|end|left|right)/g, '\\');
 };
 
-/**
- * Số điểm kiểu Việt Nam: 3 -> "3,0"; 2,5 -> "2,5"; 0,75 -> "0,75".
- *
- * Không dùng toFixed(1) suông: nó làm tròn 0,75 thành "0,8" - sai số điểm của phần.
- * Điểm tròn một chữ số thập phân thì vẫn ghi đủ "3,0" cho đúng lối trình bày của Bộ.
- */
-const soDiem = (x: number) => {
-  const r = Math.round(x * 100) / 100;
-  return (Number.isInteger(r * 10) ? r.toFixed(1) : String(r)).replace('.', ',');
-};
+/** Số điểm kiểu Việt Nam, dùng chung một bản với hai trang ra đề. */
+const soDiem = soDiemVN;
 
 const KHONG_VIEN = {
   top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
@@ -371,6 +363,13 @@ export interface KhuonXuatDe {
   chiaPhan: boolean;
   /** Điểm từng phần, khoá theo mã loại câu (NLC/DS/TLN/TL). */
   diemPhan?: Record<string, number>;
+  /**
+   * Bảng Ma trận và Bản đặc tả, in ở các trang đầu theo KHỔ NGANG.
+   *
+   * Phải tách thành section riêng: hai bảng có 19 và 16 cột nên khổ dọc bóp chữ
+   * đến mức không đọc nổi, còn đề thi thì bắt buộc khổ dọc.
+   */
+  phuLuc?: any[];
 }
 
 /**
@@ -634,10 +633,19 @@ export const exportQuestionsToWord = async (
           }
         }
       },
-      sections: [{
-        properties: {},
-        children: childrenElements
-      }]
+      sections: [
+        // Phụ lục (nếu có) đi riêng một section khổ ngang; đề thi giữ khổ dọc
+        ...(khuonDe?.phuLuc?.length
+          ? [{
+              properties: { page: { size: { orientation: PageOrientation.LANDSCAPE } } },
+              children: khuonDe.phuLuc,
+            }]
+          : []),
+        {
+          properties: {},
+          children: childrenElements
+        },
+      ]
     });
 
     const buffer = await Packer.toBuffer(doc);
@@ -647,7 +655,9 @@ export const exportQuestionsToWord = async (
     a.href = url;
     // Đề in cho học sinh và đề kèm lời giải cho giáo viên phải khác tên để không ghi đè nhau
     const hauTo = khuonDe
-      ? (exportType === 'teacher' ? 'de_va_loi_giai' : 'de')
+      ? (khuonDe.phuLuc?.length
+          ? 'tron_goi'
+          : exportType === 'teacher' ? 'de_va_loi_giai' : 'de')
       : exportType;
     a.download = `${filePrefix}_${hauTo}.docx`;
     document.body.appendChild(a);

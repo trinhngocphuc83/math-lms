@@ -95,9 +95,16 @@ export function lamTron(x: number): number {
   return Math.round(x * 100) / 100;
 }
 
-/** Điểm hiển thị kiểu Việt Nam: 0.25 -> "0,25"; 3 -> "3". */
+/**
+ * Điểm hiển thị kiểu Việt Nam: 0,25 -> "0,25"; 2 -> "2,0"; 0,75 -> "0,75".
+ *
+ * Điểm tròn vẫn ghi đủ một chữ số thập phân ("2,0" chứ không phải "2") cho đúng lối
+ * trình bày của Công văn 7991. Không dùng toFixed(1) suông: nó làm tròn 0,75 thành
+ * "0,8", sai số điểm của phần.
+ */
 export function soDiemVN(x: number): string {
-  return String(lamTron(x)).replace('.', ',');
+  const r = lamTron(x);
+  return (Number.isInteger(r * 10) ? r.toFixed(1) : String(r)).replace('.', ',');
 }
 
 export function tinhTongDiem(dong: DongMaTran[]): number {

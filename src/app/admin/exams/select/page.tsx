@@ -4,6 +4,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { exportQuestionsToWord } from "@/utils/exportDocx";
+import { dungPhuLucBang } from "@/utils/exportBangDeThi";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
@@ -106,6 +107,12 @@ function SelectContent() {
   const [editingQuestion, setEditingQuestion] = useState<any>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [isFinalized, setIsFinalized] = useState(false);
+
+  /**
+   * Yêu cầu cần đạt của từng dạng, khoá là tên dạng. Dùng cho cột cùng tên trong
+   * Bản đặc tả. Dạng nào thầy cô chưa soạn thì bảng tạm lấy chính tên dạng.
+   */
+  const [yeuCauCanDat, setYeuCauCanDat] = useState<Map<string, string>>(new Map());
 
   // Đầu đề in trên giấy và khuôn cấu trúc đề, nhận từ trang ma trận
   const [khuonDe, setKhuonDe] = useState("");
@@ -371,6 +378,23 @@ function SelectContent() {
     return () => window.removeEventListener('beforeunload', chan);
   }, [chuaLuu]);
 
+  // Nạp yêu cầu cần đạt một lần khi mở trang; cột chưa có thì bỏ qua, không chặn việc chính
+  useEffect(() => {
+    (async () => {
+      const { data, error } = await supabase
+        .from('question_categories')
+        .select('math_form, yeu_cau_can_dat');
+      if (error || !data) return;
+      const m = new Map<string, string>();
+      for (const c of data) {
+        const dang = String(c.math_form || '').trim();
+        const yc = String((c as any).yeu_cau_can_dat || '').trim();
+        if (dang && yc) m.set(dang, yc);
+      }
+      setYeuCauCanDat(m);
+    })();
+  }, []);
+
   const handlePrint = () => window.print();
 
   const handleExportWordStudent = async () => {
@@ -385,6 +409,22 @@ function SelectContent() {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
       await exportQuestionsToWord(finalQuestions, 'teacher', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan });
     } catch (e: any) { alert("Lỗi xuất Word: " + e.message); }
+  };
+
+  /**
+   * Trọn gói một tệp: Ma trận + Bản đặc tả (khổ ngang) rồi tới Đề và Lời giải.
+   *
+   * Hai bảng dựng từ CÁC CÂU ĐANG CHỌN chứ không từ ma trận đã cấu hình, nên bảng in
+   * ra luôn khớp với đề đang cầm - kể cả khi thầy cô chọn lệch so với mục tiêu.
+   */
+  const handleExportTronGoi = async () => {
+    try {
+      if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
+      const phuLuc = dungPhuLucBang(finalQuestions, dongMaTran, yeuCauCanDat);
+      await exportQuestionsToWord(finalQuestions, 'teacher', tenTepDe(dauDe), {
+        dauDe, chiaPhan: true, diemPhan, phuLuc,
+      });
+    } catch (e: any) { alert("Lỗi xuất trọn gói: " + e.message); }
   };
 
   /**
@@ -489,6 +529,9 @@ function SelectContent() {
               </button>
               <button onClick={handleExportWordTeacher} className="bg-indigo-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-indigo-700">
                 <Download className="w-4 h-4" /> Xuất Đề + Lời Giải (Giáo Viên)
+              </button>
+              <button onClick={handleExportTronGoi} title="Ma trận + Bản đặc tả theo mẫu Công văn 7991, kèm đề và lời giải, trong một tệp" className="bg-violet-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-violet-700">
+                <Download className="w-4 h-4" /> Xuất trọn gói (Ma trận + Đặc tả + Đề)
               </button>
               <button onClick={() => luuBoDe(false)} disabled={dangLuuBoDe} className="bg-purple-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-purple-700 disabled:opacity-50" title="Lưu đề vào hệ thống, mở lại được sau này">
                 {dangLuuBoDe ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu bộ đề

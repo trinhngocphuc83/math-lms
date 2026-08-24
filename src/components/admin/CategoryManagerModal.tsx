@@ -13,6 +13,7 @@ interface CategoryData {
   topic: string;
   lesson: string;
   math_form: string;
+  yeu_cau_can_dat?: string;
 }
 
 interface CategoryManagerModalProps {
@@ -30,7 +31,7 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
   
   // New States
   const [isManualAdding, setIsManualAdding] = useState(false);
-  const [newCategory, setNewCategory] = useState({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
+  const [newCategory, setNewCategory] = useState({ grade: "", subject: "", topic: "", lesson: "", math_form: "", yeu_cau_can_dat: "" });
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingCatData, setEditingCatData] = useState<CategoryData | null>(null);
 
@@ -42,7 +43,8 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
       subject: cat.subject || "",
       topic: cat.topic || "",
       lesson: cat.lesson || "",
-      math_form: cat.math_form || ""
+      math_form: cat.math_form || "",
+      yeu_cau_can_dat: cat.yeu_cau_can_dat || ""
     });
     setIsManualAdding(true);
   };
@@ -106,11 +108,12 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
         subject: newCategory.subject.trim(),
         topic: newCategory.topic.trim(),
         lesson: newCategory.lesson.trim(),
-        math_form: newCategory.math_form.trim()
+        math_form: newCategory.math_form.trim(),
+        yeu_cau_can_dat: newCategory.yeu_cau_can_dat.trim() || null
       }).eq('id', editingId);
       
       if (error) throw error;
-      setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
+      setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "", yeu_cau_can_dat: "" });
       setEditingId(null);
       setEditingCatData(null);
       setIsManualAdding(false);
@@ -127,7 +130,7 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
   const cancelEditing = () => {
     setEditingId(null);
     setEditingCatData(null);
-    setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
+    setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "", yeu_cau_can_dat: "" });
     setIsManualAdding(false);
   };
 
@@ -259,10 +262,11 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
         subject: newCategory.subject.trim(),
         topic: newCategory.topic.trim(),
         lesson: newCategory.lesson.trim(),
-        math_form: newCategory.math_form.trim()
+        math_form: newCategory.math_form.trim(),
+        yeu_cau_can_dat: newCategory.yeu_cau_can_dat.trim() || null
       }]);
       if (error) throw error;
-      setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "" });
+      setNewCategory({ grade: "", subject: "", topic: "", lesson: "", math_form: "", yeu_cau_can_dat: "" });
       setIsManualAdding(false);
       fetchCategories();
       onCategoriesUpdated();
@@ -368,6 +372,18 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
               <label className="text-xs font-bold text-blue-800">Dạng toán <span className="font-medium text-blue-400">(có thể bổ sung sau)</span></label>
               <input value={newCategory.math_form} onChange={e => setNewCategory({...newCategory, math_form: e.target.value})} placeholder="Tìm khoảng đơn điệu..." className="border border-blue-200 rounded-lg p-2 text-sm outline-none focus:border-blue-500" />
             </div>
+            <div className="flex flex-col gap-1 flex-1 min-w-[280px]">
+              <label className="text-xs font-bold text-blue-800">
+                Yêu cầu cần đạt <span className="font-medium text-blue-400">(in ở Bản đặc tả)</span>
+              </label>
+              <input
+                value={newCategory.yeu_cau_can_dat}
+                onChange={e => setNewCategory({ ...newCategory, yeu_cau_can_dat: e.target.value })}
+                placeholder="Nhận biết được tính đồng biến, nghịch biến..."
+                title="Câu mô tả in ở cột Yêu cầu cần đạt của Bản đặc tả đề kiểm tra. Để trống thì bản đặc tả tạm lấy chính tên dạng."
+                className="border border-blue-200 rounded-lg p-2 text-sm outline-none focus:border-blue-500"
+              />
+            </div>
             {editingId ? (
               <div className="flex gap-2 shrink-0">
                 <button onClick={handleUpdate} className="bg-emerald-600 text-white font-bold px-5 py-2.5 rounded-lg hover:bg-emerald-700 transition-colors shadow-sm text-sm h-[42px]">Cập nhật</button>
@@ -426,6 +442,13 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
                         <span className="inline-flex items-center px-2 py-1 rounded-md bg-gray-50 text-gray-400 font-medium text-xs border border-dashed border-gray-300 italic">
                           Chưa đặt dạng
                         </span>
+                      )}
+                      {/* Yêu cầu cần đạt in ở Bản đặc tả; chưa soạn thì bảng tạm lấy tên dạng,
+                          nên phải nhìn ra ngay dòng nào còn thiếu để soạn dần. */}
+                      {cat.math_form && (
+                        <p className={`text-xs mt-1 ${cat.yeu_cau_can_dat ? "text-gray-500" : "text-amber-600 italic"}`}>
+                          {cat.yeu_cau_can_dat || "Chưa soạn yêu cầu cần đạt"}
+                        </p>
                       )}
                     </td>
                     <td className="p-4 pr-6 text-right flex items-center justify-end gap-1">
