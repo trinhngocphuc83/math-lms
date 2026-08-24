@@ -5,13 +5,15 @@ import { useSearchParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { exportQuestionsToWord } from "@/utils/exportDocx";
 import { dungPhuLucBang } from "@/utils/exportBangDeThi";
+import { taoCacMaDe } from "@/utils/tronMaDe";
+import { dungGoiDeOnline, timCauThieuDapAn } from "@/utils/dayDeSangOnline";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, Pencil, Shuffle, ArrowLeft, ArrowRight, Printer, Download,
   CheckCircle, FileText, CheckSquare, Square, RotateCcw, Type, Replace, Plus, ListChecks, X,
-  Save, AlertTriangle
+  Save, AlertTriangle, Send
 } from "lucide-react";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
@@ -107,6 +109,13 @@ function SelectContent() {
   const [editingQuestion, setEditingQuestion] = useState<any>(null);
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [isFinalized, setIsFinalized] = useState(false);
+
+  /**
+   * Số mã đề sinh ra khi xuất. Mã đầu giữ nguyên bản đang xem trên màn hình, các mã
+   * sau đảo thứ tự câu trong từng phần và đảo phương án, đáp án dời theo.
+   */
+  const [soMaDe, setSoMaDe] = useState(1);
+  const [dangDayOnline, setDangDayOnline] = useState(false);
 
   /**
    * Yêu cầu cần đạt của từng dạng, khoá là tên dạng. Dùng cho cột cùng tên trong
@@ -395,19 +404,70 @@ function SelectContent() {
     })();
   }, []);
 
+  /**
+   * Đẩy đề sang Kỳ thi Online. Trộn mã thì mỗi mã thành một kỳ thi riêng cùng nhóm.
+   *
+   * Tạo ở trạng thái BẢN NHÁP: kỳ thi còn thiếu lớp được giao và giờ mở/đóng, phát
+   * hành luôn là học sinh thấy đề trước khi thầy cô kịp đặt giờ.
+   */
+  const handleDaySangOnline = async () => {
+    if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
+
+    // Câu thiếu đáp án mà đẩy lên là máy chấm sai âm thầm: câu Đúng/Sai thành bốn ý
+    // đều Sai, câu trắc nghiệm thành không phương án nào đúng. Phải hỏi lại cho rõ.
+    const thieu = timCauThieuDapAn(finalQuestions);
+    if (thieu.length > 0) {
+      const ds = thieu.map(t => `  Câu ${t.viTri} (${t.loai}): ${t.trichDe}...`).join("\n");
+      if (!confirm(`${thieu.length} câu CHƯA CÓ ĐÁP ÁN trong ngân hàng:\n\n${ds}\n\nĐẩy lên thì máy vẫn chấm, và cả lớp sẽ mất điểm những câu này. Nên sửa đáp án trong ngân hàng trước.\n\nVẫn tiếp tục?`)) return;
+    }
+
+    const cacMa = soMaDe > 1 ? taoCacMaDe(finalQuestions, soMaDe, dauDe.maDe || "101") : null;
+    const soKy = cacMa ? cacMa.length : 1;
+    if (!confirm(`Tạo ${soKy} kỳ thi online ở dạng BẢN NHÁP từ đề này?\n\nSau đó thầy cô vào Kỳ thi Online để giao lớp và đặt giờ mở/đóng rồi mới phát hành.`)) return;
+
+    setDangDayOnline(true);
+    try {
+      const goi = cacMa
+        ? cacMa.map(md => dungGoiDeOnline(md.cauHoi, dauDe, md.ma))
+        : [dungGoiDeOnline(finalQuestions, dauDe)];
+
+      let xong = 0;
+      for (const g of goi) {
+        const res = await fetch("/api/admin/exams", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(g),
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Lỗi tạo kỳ thi");
+        xong++;
+      }
+      if (confirm(`Đã tạo ${xong} kỳ thi ở dạng bản nháp.\n\nMở trang Kỳ thi Online để giao lớp và đặt giờ ngay bây giờ?`)) {
+        window.open("/admin/online-exams", "_blank");
+      }
+    } catch (e: any) {
+      alert("Không đẩy được sang Kỳ thi Online: " + (e?.message || "lỗi không rõ"));
+    } finally {
+      setDangDayOnline(false);
+    }
+  };
+
   const handlePrint = () => window.print();
+
+  /** Trộn mã ngay lúc xuất chứ không giữ trong bộ nhớ: mỗi lần xuất là một bộ mã mới. */
+  const dungMaDe = () => (soMaDe > 1 ? taoCacMaDe(finalQuestions, soMaDe, dauDe.maDe || "101") : undefined);
 
   const handleExportWordStudent = async () => {
     try {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
-      await exportQuestionsToWord(finalQuestions, 'student', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan });
+      await exportQuestionsToWord(finalQuestions, 'student', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan, maDe: dungMaDe() });
     } catch (e: any) { alert("Lỗi xuất Word: " + e.message); }
   };
 
   const handleExportWordTeacher = async () => {
     try {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
-      await exportQuestionsToWord(finalQuestions, 'teacher', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan });
+      await exportQuestionsToWord(finalQuestions, 'teacher', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan, maDe: dungMaDe() });
     } catch (e: any) { alert("Lỗi xuất Word: " + e.message); }
   };
 
@@ -422,7 +482,7 @@ function SelectContent() {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
       const phuLuc = dungPhuLucBang(finalQuestions, dongMaTran, yeuCauCanDat);
       await exportQuestionsToWord(finalQuestions, 'teacher', tenTepDe(dauDe), {
-        dauDe, chiaPhan: true, diemPhan, phuLuc,
+        dauDe, chiaPhan: true, diemPhan, phuLuc, maDe: dungMaDe(),
       });
     } catch (e: any) { alert("Lỗi xuất trọn gói: " + e.message); }
   };
@@ -521,6 +581,17 @@ function SelectContent() {
               <button onClick={() => setStep('select')} className="flex items-center gap-2 border border-gray-300 text-gray-700 px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-gray-50">
                 <ArrowLeft className="w-4 h-4" /> Quay lại chọn câu
               </button>
+              <label className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm font-bold text-gray-700" title="Mã đầu giữ nguyên bản đang xem; các mã sau đảo thứ tự câu và phương án, đáp án dời theo">
+                <Shuffle className="w-4 h-4 text-violet-600" />
+                Số mã đề
+                <select
+                  value={soMaDe}
+                  onChange={e => setSoMaDe(Number(e.target.value) || 1)}
+                  className="border border-gray-200 rounded-md px-2 py-1 text-sm font-bold outline-none"
+                >
+                  {[1, 2, 3, 4].map(n => <option key={n} value={n}>{n}</option>)}
+                </select>
+              </label>
               <button onClick={handlePrint} className="bg-teal-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-teal-700">
                 <Printer className="w-4 h-4" /> In trực tiếp Web
               </button>
@@ -535,6 +606,15 @@ function SelectContent() {
               </button>
               <button onClick={() => luuBoDe(false)} disabled={dangLuuBoDe} className="bg-purple-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-purple-700 disabled:opacity-50" title="Lưu đề vào hệ thống, mở lại được sau này">
                 {dangLuuBoDe ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu bộ đề
+              </button>
+              <button
+                onClick={handleDaySangOnline}
+                disabled={dangDayOnline}
+                title="Tạo kỳ thi online ở dạng bản nháp từ chính đề này, khỏi phải dán lại từng câu"
+                className="bg-sky-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-sky-700 disabled:opacity-50"
+              >
+                {dangDayOnline ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                Đẩy sang Kỳ thi Online
               </button>
               <button onClick={handleFinalizeExam} disabled={isFinalizing || isFinalized} className="bg-emerald-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-emerald-700 disabled:opacity-50">
                 {isFinalizing ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle className="w-4 h-4" />}

@@ -1,6 +1,6 @@
 import {
   Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun,
-  Table, TableRow, TableCell, WidthType, BorderStyle, PageOrientation,
+  Table, TableRow, TableCell, WidthType, BorderStyle, PageOrientation, VerticalAlign,
 } from "docx";
 import { saveAs } from "file-saver";
 
@@ -27,6 +27,7 @@ import { cleanLatexForWord } from "./latexToWord";
 import { cleanLatexControlChars } from "./latexFixer";
 import { latexToDocxElement, latexToDocxTable, laBangKeO } from "./latexToDocxMath";
 import { soDiemVN, type DauDe, chiaPhanDeThi, type PhanDeThi } from "./deThi";
+import { bangDapAn, type MaDe } from "./tronMaDe";
 
 // Đánh dấu tạm cho công thức $...$/$$...$$ để không lẫn với ảnh/HTML khi quét dòng,
 // rồi thay lại bằng công thức Word thật (Equation/OMML) ở dưới - không còn hiện chữ
@@ -358,6 +359,49 @@ const dungTieuDePhan = (phan: PhanDeThi, diem?: number): Paragraph[] => [
   }),
 ];
 
+/**
+ * Bảng đáp án của tất cả các mã đề, in ở cuối bản dành cho giáo viên.
+ *
+ * Mỗi mã một cột riêng vì câu đã bị đảo thứ tự - dùng chung một cột đáp án cho mọi mã
+ * là chấm sai cả tập bài mà không ai phát hiện cho tới lúc trả bài.
+ */
+const dungBangDapAn = (cacMa: MaDe[]): any[] => {
+  const cot = bangDapAn(cacMa);
+  const soCau = Math.max(...cot.map(c => c.dapAn.length), 0);
+  if (soCau === 0) return [];
+
+  const oNho = (chu: string, dam = false) => new TableCell({
+    verticalAlign: VerticalAlign.CENTER,
+    margins: { top: 40, bottom: 40, left: 60, right: 60 },
+    children: [new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: [new TextRun({ text: chu, bold: dam, size: 20 })],
+    })],
+  });
+
+  const hangTieuDe = new TableRow({
+    tableHeader: true,
+    children: [oNho("Câu", true), ...cot.map(c => oNho("Mã " + c.ma, true))],
+  });
+
+  const hangCau = Array.from({ length: soCau }, (_, i) => new TableRow({
+    children: [oNho(String(i + 1), true), ...cot.map(c => oNho(c.dapAn[i] || "—"))],
+  }));
+
+  return [
+    new Paragraph({ text: "", pageBreakBefore: true }),
+    new Paragraph({
+      alignment: AlignmentType.CENTER,
+      spacing: { after: 200 },
+      children: [new TextRun({ text: "BẢNG ĐÁP ÁN CÁC MÃ ĐỀ", bold: true, size: 26 })],
+    }),
+    new Table({
+      width: { size: 100, type: WidthType.PERCENTAGE },
+      rows: [hangTieuDe, ...hangCau],
+    }),
+  ];
+};
+
 export interface KhuonXuatDe {
   dauDe: DauDe;
   chiaPhan: boolean;
@@ -370,6 +414,11 @@ export interface KhuonXuatDe {
    * đến mức không đọc nổi, còn đề thi thì bắt buộc khổ dọc.
    */
   phuLuc?: any[];
+  /**
+   * Nhiều mã đề in trong CÙNG MỘT TỆP, mỗi mã sang trang mới, cuối tệp có bảng
+   * đáp án của tất cả các mã. Bỏ trống thì in một đề như cũ.
+   */
+  maDe?: MaDe[];
 }
 
 /**
@@ -386,25 +435,38 @@ export const exportQuestionsToWord = async (
   khuonDe?: KhuonXuatDe,
 ) => {
   try {
-    const childrenElements: any[] = khuonDe
-      ? [dungDauDe(khuonDe.dauDe), new Paragraph({ text: "", spacing: { after: 200 } })]
-      : [
-          new Paragraph({
-            text: "NGÂN HÀNG CÂU HỎI",
-            heading: HeadingLevel.HEADING_1,
-            alignment: AlignmentType.CENTER,
-            spacing: { after: 400 }
-          })
-        ];
+    const childrenElements: any[] = [];
+
+    // Không trộn mã thì vẫn chạy đúng một vòng, giữ nguyên hành vi cũ
+    const cacMa: MaDe[] = khuonDe?.maDe?.length
+      ? khuonDe.maDe
+      : [{ ma: khuonDe?.dauDe?.maDe || "", cauHoi: questions }];
+
+    for (let iMa = 0; iMa < cacMa.length; iMa++) {
+      const maHienTai = cacMa[iMa];
+
+      if (khuonDe) {
+        // Mã thứ hai trở đi sang trang mới, để in ra là tách được thành từng tập
+        if (iMa > 0) childrenElements.push(new Paragraph({ text: "", pageBreakBefore: true }));
+        childrenElements.push(dungDauDe({ ...khuonDe.dauDe, maDe: maHienTai.ma }));
+        childrenElements.push(new Paragraph({ text: "", spacing: { after: 200 } }));
+      } else {
+        childrenElements.push(new Paragraph({
+          text: "NGÂN HÀNG CÂU HỎI",
+          heading: HeadingLevel.HEADING_1,
+          alignment: AlignmentType.CENTER,
+          spacing: { after: 400 }
+        }));
+      }
 
     /**
      * Sắp câu theo thứ tự PHẦN và ghi lại mốc chèn tiêu đề phần.
      * Không chia phần thì giữ nguyên thứ tự đầu vào.
      */
-    let dsCau = questions;
+    let dsCau = maHienTai.cauHoi;
     const mocPhan = new Map<number, PhanDeThi>();
     if (khuonDe?.chiaPhan) {
-      const cacPhan = chiaPhanDeThi(questions);
+      const cacPhan = chiaPhanDeThi(maHienTai.cauHoi);
       dsCau = cacPhan.flatMap(p => p.cauHoi);
       let n = 0;
       for (const p of cacPhan) { mocPhan.set(n, p); n += p.cauHoi.length; }
@@ -614,12 +676,18 @@ export const exportQuestionsToWord = async (
       }
     }
 
-    if (khuonDe) {
-      childrenElements.push(new Paragraph({
-        alignment: AlignmentType.CENTER,
-        spacing: { before: 400 },
-        children: [new TextRun({ text: "--- HẾT ---", italics: true })],
-      }));
+      if (khuonDe) {
+        childrenElements.push(new Paragraph({
+          alignment: AlignmentType.CENTER,
+          spacing: { before: 400 },
+          children: [new TextRun({ text: "--- HẾT ---", italics: true })],
+        }));
+      }
+    }
+
+    // Bảng đáp án của mọi mã, chỉ in khi có trộn mã và là bản dành cho giáo viên
+    if (khuonDe?.maDe?.length && exportType === 'teacher') {
+      childrenElements.push(...dungBangDapAn(khuonDe.maDe));
     }
 
     const doc = new Document({

@@ -4,10 +4,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
 import {
   Sliders, Download, UploadCloud, Trash2, Settings, Database, Shuffle, X, ChevronDown, ChevronRight,
-  Folder, File, List, Save, Layers, AlertTriangle, Loader2, FileText, Wand2
+  Folder, File, List, Save, Layers, AlertTriangle, Loader2, FileText, Wand2, Sparkles
 } from "lucide-react";
 import * as XLSX from "xlsx";
 import NapMaTranModal, { type DongNapMaTran } from "@/components/admin/NapMaTranModal";
+import SinhBuModal from "@/components/admin/SinhBuModal";
 import { toBankType, bankTypeLabel, type BankType } from "@/utils/questionTypes";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem, tinhTongCau,
@@ -92,6 +93,9 @@ export default function ExamsManagerPage() {
 
   // Hộp thoại nạp ma trận từ ảnh/PDF/Word bằng AI.
   const [moNapMaTran, setMoNapMaTran] = useState(false);
+
+  // Ô ma trận đang nhờ AI soạn bù cho đủ số câu.
+  const [oSinhBu, setOSinhBu] = useState<any>(null);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -250,8 +254,11 @@ export default function ExamsManagerPage() {
     setMatrixItems(matrixItems.map(item => {
       if (item.id !== id) return item;
       if (field === 'count') {
-        const n = Math.max(1, Math.min(Number(value) || 1, item.max_count || 1));
-        return { ...item, count: n };
+        // CỐ Ý không kẹp theo số câu kho đang có. Kẹp là đúng hồi lối thoát duy nhất
+        // là hạ số câu xuống cho khớp kho - tức là để cái kho quyết định đề thi. Giờ
+        // đã có nút nhờ AI soạn bù, thầy cô phải nói được "tôi cần 5 câu" rồi mới thấy
+        // cảnh báo đỏ và nút soạn bù; kẹp lại thì cảnh báo không bao giờ hiện.
+        return { ...item, count: Math.max(1, Number(value) || 1) };
       }
       if (field === 'diemMoiCau') {
         return { ...item, diemMoiCau: Math.max(0, Number(value) || 0) };
@@ -382,7 +389,7 @@ export default function ExamsManagerPage() {
           topic: cat?.topic || '',
           question_type: loai,
           difficulty: String(inv.difficulty),
-          count: Math.max(1, Math.min(soCau, inv.count)),
+          count: Math.max(1, soCau),   // giữ đúng số trong tệp, thiếu thì cảnh báo và mời AI soạn bù
           max_count: inv.count,
           diemMoiCau: diemO !== '' ? Number(diemO) || diemMacDinh(loai) : diemMacDinh(loai),
         });
@@ -427,6 +434,20 @@ export default function ExamsManagerPage() {
   const demKho = (dang: string, loai: BankType, mucDo: string): number =>
     inventory.find(i => i.math_form === dang && i.question_type === loai && String(i.difficulty) === String(mucDo))?.count || 0;
 
+  /** Dựng yêu cầu soạn bù từ một dòng ma trận đang thiếu câu. */
+  const moSinhBu = (item: MatrixItem) => {
+    const cat = categories.find(c => c.math_form === item.math_form);
+    setOSinhBu({
+      grade, subject,
+      topic: cat?.topic || item.topic || '',
+      lesson: cat?.lesson || '',
+      math_form: item.math_form,
+      question_type: item.question_type as BankType,
+      difficulty: String(item.difficulty),
+      soCanThem: Math.max(1, item.count - item.max_count),
+    });
+  };
+
   const moHopNapMaTran = () => {
     if (inventory.length === 0) {
       alert('Hãy bấm "Tải & Quét Kho" trước để máy biết kho đang có những dạng nào mà đối chiếu.');
@@ -450,7 +471,7 @@ export default function ExamsManagerPage() {
         const key = `${d.dangTrongKho}_${d.loaiCau}_${d.mucDo}`;
         const cu = ra.findIndex(x => x.id === key);
         if (cu >= 0) {
-          ra[cu] = { ...ra[cu], count: Math.min(ra[cu].count + d.soCau, soKho || ra[cu].count) };
+          ra[cu] = { ...ra[cu], count: ra[cu].count + d.soCau };
           continue;
         }
         const cat = categories.find(c => c.math_form === d.dangTrongKho);
@@ -1090,6 +1111,17 @@ export default function ExamsManagerPage() {
                             <span className={thieuKho ? "text-[10px] font-bold text-red-600 mt-1" : "text-[10px] text-gray-400 mt-1"}>
                               {thieuKho ? `Kho chỉ có ${item.max_count} câu` : `(Kho: ${item.max_count})`}
                             </span>
+                            {/* Kho thiếu thì cho nhờ AI soạn bù, thay vì bắt hạ số câu
+                                xuống cho khớp kho - tức là để kho quyết định đề thi. */}
+                            {thieuKho && (
+                              <button
+                                onClick={() => moSinhBu(item)}
+                                title="Nhờ AI soạn thêm câu cùng dạng, cùng mức độ; thầy cô duyệt rồi mới vào kho"
+                                className="mt-1 inline-flex items-center gap-1 px-1.5 py-0.5 rounded bg-violet-50 border border-violet-300 text-violet-700 text-[10px] font-bold hover:bg-violet-100 transition-colors"
+                              >
+                                <Sparkles className="w-3 h-3" /> Nhờ AI soạn {item.count - item.max_count} câu
+                              </button>
+                            )}
                           </div>
                         </td>
                         <td className="p-3">
@@ -1185,6 +1217,14 @@ export default function ExamsManagerPage() {
       </div>
 
       {/* Đọc bảng ma trận có sẵn từ ảnh/PDF/Word, có bảng soát lại trước khi nạp. */}
+      {/* Nhờ AI soạn bù khi kho không đủ; lưu xong thì quét lại kho cho số câu cập nhật. */}
+      <SinhBuModal
+        isOpen={!!oSinhBu}
+        onClose={() => setOSinhBu(null)}
+        yeuCau={oSinhBu}
+        onDaLuu={() => fetchTreeAndInventory()}
+      />
+
       <NapMaTranModal
         isOpen={moNapMaTran}
         onClose={() => setMoNapMaTran(false)}
