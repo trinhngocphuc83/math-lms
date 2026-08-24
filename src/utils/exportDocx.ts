@@ -1,4 +1,7 @@
-import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun } from "docx";
+import {
+  Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun,
+  Table, TableRow, TableCell, WidthType, BorderStyle,
+} from "docx";
 import { saveAs } from "file-saver";
 
 // Loại bỏ ký tự không hợp lệ trong XML (control characters)
@@ -23,6 +26,7 @@ export const base64ToUint8Array = (base64: string) => {
 import { cleanLatexForWord } from "./latexToWord";
 import { cleanLatexControlChars } from "./latexFixer";
 import { latexToDocxElement, latexToDocxTable, laBangKeO } from "./latexToDocxMath";
+import { type DauDe, chiaPhanDeThi, type PhanDeThi } from "./deThi";
 
 // Đánh dấu tạm cho công thức $...$/$$...$$ để không lẫn với ảnh/HTML khi quét dòng,
 // rồi thay lại bằng công thức Word thật (Equation/OMML) ở dưới - không còn hiện chữ
@@ -287,19 +291,135 @@ const cleanHtmlNewlinesInTags = (html: string) => {
   return cleaned.replace(/\n(?=eq|otin|abla|atural|ightarrow|ho|angle|imes|heta|riangle|ext|egin|rac|orall|end|left|right)/g, '\\');
 };
 
-export const exportQuestionsToWord = async (questions: any[], exportType: 'student' | 'teacher', filePrefix: string = 'Ngan_Hang_Cau_Hoi') => {
-  try {
-    const childrenElements: any[] = [
-      new Paragraph({ 
-        text: "NGÂN HÀNG CÂU HỎI", 
-        heading: HeadingLevel.HEADING_1, 
-        alignment: AlignmentType.CENTER,
-        spacing: { after: 400 }
-      })
-    ];
+/**
+ * Số điểm kiểu Việt Nam: 3 -> "3,0"; 2,5 -> "2,5"; 0,75 -> "0,75".
+ *
+ * Không dùng toFixed(1) suông: nó làm tròn 0,75 thành "0,8" - sai số điểm của phần.
+ * Điểm tròn một chữ số thập phân thì vẫn ghi đủ "3,0" cho đúng lối trình bày của Bộ.
+ */
+const soDiem = (x: number) => {
+  const r = Math.round(x * 100) / 100;
+  return (Number.isInteger(r * 10) ? r.toFixed(1) : String(r)).replace('.', ',');
+};
 
-    for (let i = 0; i < questions.length; i++) {
-      const q = questions[i];
+const KHONG_VIEN = {
+  top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+  right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+};
+
+const dongGiua = (chu: string, dam = false) =>
+  new Paragraph({ alignment: AlignmentType.CENTER, children: [new TextRun({ text: chu, bold: dam })] });
+
+/**
+ * Đầu đề hai cột như đề in thật: tên lớp học bên trái, thông tin kỳ thi bên phải.
+ *
+ * Dùng bảng KHÔNG VIỀN thay vì hai đoạn căn lề, vì chỉ bảng mới giữ được hai khối chữ
+ * nằm ngang hàng nhau khi số dòng hai bên khác nhau.
+ */
+const dungDauDe = (dauDe: DauDe): Table => new Table({
+  width: { size: 100, type: WidthType.PERCENTAGE },
+  borders: KHONG_VIEN,
+  rows: [
+    new TableRow({
+      children: [
+        new TableCell({
+          borders: KHONG_VIEN,
+          width: { size: 45, type: WidthType.PERCENTAGE },
+          children: [
+            dongGiua((dauDe.tenLopHoc || "").toUpperCase(), true),
+            dongGiua("ĐỀ CHÍNH THỨC", true),
+          ],
+        }),
+        new TableCell({
+          borders: KHONG_VIEN,
+          width: { size: 55, type: WidthType.PERCENTAGE },
+          children: [
+            dongGiua((dauDe.tenKyThi || "ĐỀ KIỂM TRA").toUpperCase(), true),
+            ...(dauDe.monLop ? [dongGiua(`Môn: ${dauDe.monLop}`, true)] : []),
+            ...(dauDe.namHoc ? [dongGiua(`Năm học: ${dauDe.namHoc}`)] : []),
+            ...(dauDe.thoiGian ? [dongGiua(`Thời gian làm bài: ${dauDe.thoiGian}`)] : []),
+            ...(dauDe.maDe ? [dongGiua(`Mã đề: ${dauDe.maDe}`, true)] : []),
+          ],
+        }),
+      ],
+    }),
+  ],
+});
+
+/** Tiêu đề một PHẦN kèm câu dẫn chuẩn và số điểm của phần. */
+const dungTieuDePhan = (phan: PhanDeThi, diem?: number): Paragraph[] => [
+  new Paragraph({
+    spacing: { before: 320, after: 60 },
+    children: [
+      new TextRun({ text: `PHẦN ${phan.soLaMa}. `, bold: true, color: "0000FF" }),
+      new TextRun({ text: phan.tieuDe, bold: true }),
+      ...(typeof diem === 'number' && diem > 0
+        ? [new TextRun({ text: ` (${soDiem(diem)} điểm)`, bold: true })]
+        : []),
+    ],
+  }),
+  new Paragraph({
+    spacing: { after: 160 },
+    children: [new TextRun({ text: phan.cauDan, italics: true })],
+  }),
+];
+
+export interface KhuonXuatDe {
+  dauDe: DauDe;
+  chiaPhan: boolean;
+  /** Điểm từng phần, khoá theo mã loại câu (NLC/DS/TLN/TL). */
+  diemPhan?: Record<string, number>;
+}
+
+/**
+ * Xuất câu hỏi ra Word.
+ *
+ * Không truyền `khuonDe` thì giữ đúng hành vi cũ (tiêu đề "NGÂN HÀNG CÂU HỎI", các câu
+ * xếp liền một mạch) để những nơi đang gọi không phải sửa. Truyền `khuonDe` thì dựng
+ * đầu đề và chia PHẦN I/II/III theo khuôn 2025.
+ */
+export const exportQuestionsToWord = async (
+  questions: any[],
+  exportType: 'student' | 'teacher',
+  filePrefix: string = 'Ngan_Hang_Cau_Hoi',
+  khuonDe?: KhuonXuatDe,
+) => {
+  try {
+    const childrenElements: any[] = khuonDe
+      ? [dungDauDe(khuonDe.dauDe), new Paragraph({ text: "", spacing: { after: 200 } })]
+      : [
+          new Paragraph({
+            text: "NGÂN HÀNG CÂU HỎI",
+            heading: HeadingLevel.HEADING_1,
+            alignment: AlignmentType.CENTER,
+            spacing: { after: 400 }
+          })
+        ];
+
+    /**
+     * Sắp câu theo thứ tự PHẦN và ghi lại mốc chèn tiêu đề phần.
+     * Không chia phần thì giữ nguyên thứ tự đầu vào.
+     */
+    let dsCau = questions;
+    const mocPhan = new Map<number, PhanDeThi>();
+    if (khuonDe?.chiaPhan) {
+      const cacPhan = chiaPhanDeThi(questions);
+      dsCau = cacPhan.flatMap(p => p.cauHoi);
+      let n = 0;
+      for (const p of cacPhan) { mocPhan.set(n, p); n += p.cauHoi.length; }
+    }
+
+    for (let i = 0; i < dsCau.length; i++) {
+      const q = dsCau[i];
+
+      // Sang một PHẦN mới thì chèn tiêu đề phần trước khi in câu đầu của phần đó
+      const phanMoi = mocPhan.get(i);
+      if (phanMoi) {
+        childrenElements.push(...dungTieuDePhan(phanMoi, khuonDe?.diemPhan?.[phanMoi.ma]));
+      }
+
       let imageData: {buffer: Uint8Array, width: number, height: number} | null = null;
       
       if (q.image_url) {
@@ -495,6 +615,14 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
       }
     }
 
+    if (khuonDe) {
+      childrenElements.push(new Paragraph({
+        alignment: AlignmentType.CENTER,
+        spacing: { before: 400 },
+        children: [new TextRun({ text: "--- HẾT ---", italics: true })],
+      }));
+    }
+
     const doc = new Document({
       styles: {
         default: {
@@ -517,7 +645,11 @@ export const exportQuestionsToWord = async (questions: any[], exportType: 'stude
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = `${filePrefix}_${exportType}.docx`;
+    // Đề in cho học sinh và đề kèm lời giải cho giáo viên phải khác tên để không ghi đè nhau
+    const hauTo = khuonDe
+      ? (exportType === 'teacher' ? 'de_va_loi_giai' : 'de')
+      : exportType;
+    a.download = `${filePrefix}_${hauTo}.docx`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

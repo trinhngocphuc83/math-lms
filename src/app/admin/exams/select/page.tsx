@@ -9,15 +9,22 @@ import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/Q
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, Pencil, Shuffle, ArrowLeft, ArrowRight, Printer, Download,
-  CheckCircle, FileText, CheckSquare, Square, RotateCcw, Type, Replace, Plus, ListChecks, X
+  CheckCircle, FileText, CheckSquare, Square, RotateCcw, Type, Replace, Plus, ListChecks, X,
+  Save, AlertTriangle
 } from "lucide-react";
+import {
+  type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
+  chiaPhanDeThi, sapCauTheoPhan, diemCuaPhan, tenTepDe, soDiemVN,
+} from "@/utils/deThi";
 
 interface MatrixItemDraft {
   id: string;
   math_form: string;
+  topic?: string;
   question_type: string;
   difficulty: string;
   count: number;
+  diemMoiCau?: number;
 }
 
 interface LineState {
@@ -57,6 +64,7 @@ function questionStatements(q: any): { statements: PreviewStatement[]; layout: '
 function SelectContent() {
   const searchParams = useSearchParams();
   const draftKey = searchParams.get('draft');
+  const boDeParam = searchParams.get('boDe');
   const supabase = createClient();
 
   const [examType, setExamType] = useState("");
@@ -99,7 +107,24 @@ function SelectContent() {
   const [isFinalizing, setIsFinalizing] = useState(false);
   const [isFinalized, setIsFinalized] = useState(false);
 
+  // Đầu đề in trên giấy và khuôn cấu trúc đề, nhận từ trang ma trận
+  const [khuonDe, setKhuonDe] = useState("");
+  const [dauDe, setDauDe] = useState<DauDe>(() => dauDeMacDinh());
+
+  // Bộ đề đã lưu: có id thì lần lưu sau là cập nhật đúng bộ đó, không tạo bản mới
+  const [boDeId, setBoDeId] = useState<string | null>(null);
+  const [dangLuuBoDe, setDangLuuBoDe] = useState(false);
+  const [dangLuuNhap, setDangLuuNhap] = useState(false);
+  // Có thay đổi chưa lưu thì chặn đóng tab, tránh mất công chọn câu
+  const [chuaLuu, setChuaLuu] = useState(false);
+
+  /**
+   * Nạp dữ liệu: hoặc từ ma trận vừa dựng (?draft=...), hoặc mở lại một bộ đề đã lưu
+   * (?boDe=...). Mở lại bộ đề đã lưu thì đọc thẳng từ cơ sở dữ liệu, không cần đi qua
+   * bộ nhớ trình duyệt - nhờ vậy đổi máy vẫn mở được đúng đề đã ra.
+   */
   useEffect(() => {
+    if (boDeParam) { moLaiBoDe(boDeParam); return; }
     if (!draftKey) { setIsLoading(false); setLoadError("Thiếu thông tin ma trận (draft key)."); return; }
     const raw = localStorage.getItem(draftKey);
     if (!raw) { setIsLoading(false); setLoadError("Không tìm thấy dữ liệu ma trận - có thể tab này đã hết hạn, hãy quay lại trang trước và bấm lại."); return; }
@@ -108,13 +133,59 @@ function SelectContent() {
       setExamType(draft.examType || "");
       setGrade(draft.grade || "");
       setSubject(draft.subject || "");
+      setKhuonDe(draft.khuonDe || "");
+      if (draft.dauDe) setDauDe(draft.dauDe);
       loadCandidates(draft.matrixItems || [], draft.grade, draft.subject);
     } catch (e) {
       setIsLoading(false);
       setLoadError("Dữ liệu ma trận bị lỗi.");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [draftKey]);
+  }, [draftKey, boDeParam]);
+
+  /** Mở lại một bộ đề đã lưu: dựng lại các dòng từ bản chụp câu hỏi trong đề. */
+  const moLaiBoDe = async (id: string) => {
+    setIsLoading(true);
+    try {
+      const res = await fetch('/api/admin/bo-de?id=' + id);
+      const d = await res.json();
+      if (!res.ok) throw new Error(d.error || 'không đọc được bộ đề');
+
+      const bd = d.boDe;
+      setBoDeId(bd.id);
+      setExamType(bd.loai_de || "");
+      setGrade(bd.grade || "");
+      setSubject(bd.subject || "");
+      setKhuonDe(bd.khuon_de || "");
+      if (bd.dau_de) setDauDe(bd.dau_de);
+      setIsFinalized(!!bd.da_chot);
+
+      // Dựng lại từng dòng ma trận, ứng viên chính là các câu đã chụp trong đề.
+      // Cố ý KHÔNG đọc lại từ ngân hàng: đề đã lưu phải giữ đúng nội dung lúc in.
+      const cauHoi: any[] = bd.cau_hoi || [];
+      const maTran: MatrixItemDraft[] = bd.ma_tran || [];
+      const dong: LineState[] = maTran.length
+        ? maTran.map(item => {
+            const thuoc = cauHoi.filter(q =>
+              q.math_form === item.math_form &&
+              String(q.question_type) === String(item.question_type) &&
+              String(q.difficulty) === String(item.difficulty));
+            return { item, candidates: thuoc, selectedIds: new Set(thuoc.map(q => q.id)) };
+          })
+        : [{
+            item: { id: 'tatca', math_form: '(đề đã lưu)', question_type: 'NLC', difficulty: '1', count: cauHoi.length },
+            candidates: cauHoi,
+            selectedIds: new Set(cauHoi.map(q => q.id)),
+          }];
+      setLines(dong);
+      setStep('final');
+      setChuaLuu(false);
+    } catch (e: any) {
+      setLoadError("Không mở được bộ đề đã lưu: " + (e?.message || 'lỗi không rõ'));
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const defaultSelect = (candidates: any[], count: number): Set<string> => {
     const shuffled = [...candidates].sort(() => 0.5 - Math.random());
@@ -126,16 +197,25 @@ function SelectContent() {
     setIsLoading(true);
     try {
       const results: LineState[] = [];
+      const PAGE_SIZE = 1000;
       for (const item of matrixItems) {
-        let query = supabase.from('questions').select('*')
-          .eq('math_form', item.math_form)
-          .eq('question_type', item.question_type)
-          .eq('difficulty', item.difficulty);
-        if (gradeVal) query = query.eq('grade', gradeVal);
-        if (subjectVal) query = query.eq('subject', subjectVal);
-        const { data, error } = await query;
-        if (error) throw error;
-        const candidates = data || [];
+        // Supabase/PostgREST mặc định chỉ trả tối đa 1000 dòng một lần. Dạng toán nào
+        // có hơn 1000 câu thì bản cũ bị thiếu ứng viên mà không hề báo gì.
+        const candidates: any[] = [];
+        for (let from = 0; ; from += PAGE_SIZE) {
+          let query = supabase.from('questions').select('*')
+            .eq('math_form', item.math_form)
+            .eq('question_type', item.question_type)
+            .eq('difficulty', item.difficulty)
+            .range(from, from + PAGE_SIZE - 1);
+          if (gradeVal) query = query.eq('grade', gradeVal);
+          if (subjectVal) query = query.eq('subject', subjectVal);
+          const { data, error } = await query;
+          if (error) throw error;
+          const page = data || [];
+          candidates.push(...page);
+          if (page.length < PAGE_SIZE) break;
+        }
         results.push({ item, candidates, selectedIds: defaultSelect(candidates, item.count) });
       }
       setLines(results);
@@ -147,6 +227,7 @@ function SelectContent() {
   };
 
   const toggleCandidate = (lineIdx: number, qid: string) => {
+    setChuaLuu(true);
     setLines(prev => prev.map((l, i) => {
       if (i !== lineIdx) return l;
       const next = new Set(l.selectedIds);
@@ -156,10 +237,12 @@ function SelectContent() {
   };
 
   const reroll = (lineIdx: number) => {
+    setChuaLuu(true);
     setLines(prev => prev.map((l, i) => i === lineIdx ? { ...l, selectedIds: defaultSelect(l.candidates, l.item.count) } : l));
   };
 
   const selectAll = (lineIdx: number, on: boolean) => {
+    setChuaLuu(true);
     setLines(prev => prev.map((l, i) => i === lineIdx ? { ...l, selectedIds: on ? new Set(l.candidates.map(q => q.id)) : new Set<string>() } : l));
   };
 
@@ -180,53 +263,144 @@ function SelectContent() {
 
   const totalSelected = lines.reduce((acc, l) => acc + l.selectedIds.size, 0);
   const totalTarget = lines.reduce((acc, l) => acc + l.item.count, 0);
-  const finalQuestions = lines.flatMap(l => l.candidates.filter(q => l.selectedIds.has(q.id)));
 
   /**
-   * Số thứ tự của mỗi câu ĐANG ĐƯỢC CHỌN trong đề hoàn chỉnh.
+   * Câu hỏi của đề, ĐÃ xếp theo thứ tự phần (trắc nghiệm trước, tự luận sau).
    *
-   * Ở màn chọn câu trước đây các thẻ không đánh số, nên khi xem đề hoàn chỉnh thấy "Câu 7"
-   * cần đổi thì quay lại phải dò lại từ đầu. Đánh đúng số của đề vào từng thẻ để tìm ngay.
+   * Trước đây thứ tự là thứ tự dòng ma trận nên trắc nghiệm và tự luận nằm xen kẽ,
+   * in ra không dùng được. Số thứ tự câu phải lấy theo thứ tự này, không theo ma trận.
    */
+  const cauDaChon = lines.flatMap(l => l.candidates.filter(q => l.selectedIds.has(q.id)));
+  const finalQuestions = sapCauTheoPhan(cauDaChon);
+  const cacPhan = chiaPhanDeThi(cauDaChon);
+
+  const dongMaTran: DongMaTran[] = lines.map(l => ({
+    id: l.item.id,
+    math_form: l.item.math_form,
+    topic: l.item.topic,
+    question_type: l.item.question_type,
+    difficulty: l.item.difficulty,
+    count: l.selectedIds.size,
+    max_count: l.candidates.length,
+    diemMoiCau: l.item.diemMoiCau ?? diemMacDinh(l.item.question_type),
+  }));
+  const tongDiemDe = tinhTongDiem(dongMaTran);
+
+  /** Điểm từng phần, để in vào tiêu đề "PHẦN I. ... (3,0 điểm)". */
+  const diemPhan: Record<string, number> = Object.fromEntries(
+    cacPhan.map(p => [p.ma, diemCuaPhan(p, dongMaTran)])
+  );
+
   const soThuTuTrongDe = new Map<string, number>();
   finalQuestions.forEach((q, i) => soThuTuTrongDe.set(q.id, i + 1));
+
+  /* ===================== LƯU BỘ ĐỀ ===================== */
+
+  const tenDeGoiY = () =>
+    [examType || 'Đề kiểm tra', subject, grade && `Lớp ${grade}`, dauDe.maDe && `mã ${dauDe.maDe}`]
+      .filter(Boolean).join(' · ');
+
+  /** Lưu bộ đề vào hệ thống. `chotDe` = true thì cộng thêm lượt dùng cho từng câu. */
+  const luuBoDe = async (chotDe = false) => {
+    if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
+    if (chotDe) setIsFinalizing(true); else setDangLuuBoDe(true);
+    try {
+      const res = await fetch('/api/admin/bo-de', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: boDeId, ten: tenDeGoiY(), loaiDe: examType, grade, subject, khuonDe,
+          dauDe, maTran: lines.map(l => ({ ...l.item, count: l.selectedIds.size })),
+          cauHoi: finalQuestions, tongDiem: tongDiemDe, chotDe,
+        }),
+      });
+      const d = await res.json();
+      if (!res.ok) { alert('Không lưu được bộ đề: ' + (d.error || 'lỗi không rõ')); return; }
+
+      setBoDeId(d.id);
+      setChuaLuu(false);
+      if (chotDe) {
+        setIsFinalized(true);
+        if (draftKey) localStorage.removeItem(draftKey);
+      }
+      if (d.canhBao) alert(d.canhBao);
+      else if (d.boQuaChot) alert('Đề này đã chốt trước đó rồi, đã lưu lại nội dung mới nhưng KHÔNG cộng lượt dùng lần hai.');
+      else if (chotDe) alert(`Đã chốt đề và cộng lượt dùng cho ${d.daCong} câu.`);
+      else alert('Đã lưu bộ đề. Đóng tab rồi mở lại từ danh sách vẫn còn nguyên.');
+    } catch {
+      alert('Lỗi kết nối khi lưu bộ đề.');
+    } finally {
+      setIsFinalizing(false);
+      setDangLuuBoDe(false);
+    }
+  };
+
+  /** Lưu tạm phiên chọn câu, dùng chung bảng bản nháp với trang ma trận. */
+  const luuNhap = async () => {
+    if (lines.length === 0) return alert('Chưa có gì để lưu tạm!');
+    setDangLuuNhap(true);
+    try {
+      const res = await fetch('/api/admin/ban-nhap', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          loai: 'ra_de', khoa: 'chon-cau',
+          ten: `${examType || 'Đề'} · ${totalSelected} câu đã chọn`,
+          soCau: totalSelected,
+          duLieu: {
+            examType, grade, subject, khuonDe, dauDe,
+            matrixItems: lines.map(l => ({ ...l.item, count: l.selectedIds.size })),
+            idDaChon: lines.map(l => [...l.selectedIds]),
+          },
+        }),
+      });
+      const d = await res.json();
+      alert(res.ok ? 'Đã lưu tạm phiên chọn câu.' : 'Không lưu tạm được: ' + (d.error || 'lỗi không rõ'));
+    } catch {
+      alert('Lỗi kết nối khi lưu tạm.');
+    } finally {
+      setDangLuuNhap(false);
+    }
+  };
+
+  // Chặn đóng tab khi còn thay đổi chưa lưu - tránh mất công chọn câu
+  useEffect(() => {
+    if (!chuaLuu) return;
+    const chan = (e: BeforeUnloadEvent) => { e.preventDefault(); e.returnValue = ''; };
+    window.addEventListener('beforeunload', chan);
+    return () => window.removeEventListener('beforeunload', chan);
+  }, [chuaLuu]);
 
   const handlePrint = () => window.print();
 
   const handleExportWordStudent = async () => {
     try {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
-      await exportQuestionsToWord(finalQuestions, 'student');
+      await exportQuestionsToWord(finalQuestions, 'student', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan });
     } catch (e: any) { alert("Lỗi xuất Word: " + e.message); }
   };
 
   const handleExportWordTeacher = async () => {
     try {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
-      await exportQuestionsToWord(finalQuestions, 'teacher');
+      await exportQuestionsToWord(finalQuestions, 'teacher', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan });
     } catch (e: any) { alert("Lỗi xuất Word: " + e.message); }
   };
 
+  /**
+   * Chốt đề: LƯU bộ đề rồi mới cộng lượt dùng, cả hai việc làm ở máy chủ.
+   *
+   * Bản cũ chỉ cộng usage_count ngay tại trình duyệt, await từng câu trong vòng lặp và
+   * không hề đọc error - đề 40 câu là 40 lượt gọi, lỗi bị nuốt im lặng, và bản đề thì
+   * KHÔNG được lưu ở đâu cả nên đóng tab là mất trắng.
+   */
   const handleFinalizeExam = async () => {
-    if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào để chốt!");
-    setIsFinalizing(true);
-    try {
-      for (const q of finalQuestions) {
-        const newCount = (q.usage_count || 0) + 1;
-        await supabase.from('questions').update({ usage_count: newCount }).eq('id', q.id);
-      }
-      setLines(prev => prev.map(l => ({
-        ...l,
-        candidates: l.candidates.map(q => l.selectedIds.has(q.id) ? { ...q, usage_count: (q.usage_count || 0) + 1 } : q),
-      })));
-      setIsFinalized(true);
-      if (draftKey) localStorage.removeItem(draftKey);
-      alert("Đã chốt đề thành công! Số lần sử dụng của các câu hỏi trong đề đã được cộng thêm 1.");
-    } catch (e: any) {
-      alert("Lỗi khi chốt đề: " + e.message);
-    } finally {
-      setIsFinalizing(false);
-    }
+    await luuBoDe(true);
+    // Cập nhật lại số lượt dùng đang hiện trên thẻ cho khớp
+    setLines(prev => prev.map(l => ({
+      ...l,
+      candidates: l.candidates.map(q => l.selectedIds.has(q.id) ? { ...q, usage_count: (q.usage_count || 0) + 1 } : q),
+    })));
   };
 
   if (isLoading) {
@@ -278,6 +452,22 @@ function SelectContent() {
               ))}
             </div>
 
+            {/* Lưu tạm: giữ phiên chọn câu đang làm dở, hiện ở cả hai bước */}
+            <button
+              onClick={luuNhap}
+              disabled={dangLuuNhap}
+              title="Giữ phiên chọn câu đang làm dở để lần sau mở lại"
+              className="flex items-center gap-1.5 border border-amber-500 text-amber-700 hover:bg-amber-50 px-3 py-2 rounded-lg font-bold text-sm bg-white disabled:opacity-50"
+            >
+              {dangLuuNhap ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu tạm
+            </button>
+
+            {chuaLuu && (
+              <span className="flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-2 py-1">
+                <AlertTriangle className="w-3.5 h-3.5" /> Có thay đổi chưa lưu
+              </span>
+            )}
+
           {step === 'select' ? (
             <button
               onClick={() => setStep('final')}
@@ -299,6 +489,9 @@ function SelectContent() {
               </button>
               <button onClick={handleExportWordTeacher} className="bg-indigo-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-indigo-700">
                 <Download className="w-4 h-4" /> Xuất Đề + Lời Giải (Giáo Viên)
+              </button>
+              <button onClick={() => luuBoDe(false)} disabled={dangLuuBoDe} className="bg-purple-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-purple-700 disabled:opacity-50" title="Lưu đề vào hệ thống, mở lại được sau này">
+                {dangLuuBoDe ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu bộ đề
               </button>
               <button onClick={handleFinalizeExam} disabled={isFinalizing || isFinalized} className="bg-emerald-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-emerald-700 disabled:opacity-50">
                 {isFinalizing ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle className="w-4 h-4" />}
@@ -426,28 +619,57 @@ function SelectContent() {
         </div>
       ) : (
         <div id="print-area" className="max-w-5xl mx-auto px-8 py-8 bg-white" style={{ fontFamily: '"Times New Roman", Times, serif', fontSize: '12pt' }}>
-          <div className="text-center font-bold text-lg uppercase mb-6">{examType || "ĐỀ KIỂM TRA"}</div>
-          {finalQuestions.map((q, i) => {
-            const { statements, layout } = questionStatements(q);
-            return (
-              <div key={q.id} className="mb-6">
-                <div className="flex items-baseline gap-2 mb-1">
-                  <span className="font-bold">Câu {i + 1}.</span>
-                  <span className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
-                    Đã xuất hiện: {q.usage_count || 0} lần
-                  </span>
-                </div>
-                <QuestionPreviewCard
-                  content={q.content}
-                  imageUrl={q.image_url}
-                  statements={statements}
-                  statementsLayout={layout}
-                  correctAnswerDisplay={q.question_type === 'TLN' || q.question_type === 'TL' ? (q.correct_answer || undefined) : undefined}
-                  size={coChu}
-                />
+
+          {/* Đầu đề hai cột như đề in thật: lớp học bên trái, thông tin kỳ thi bên phải */}
+          <div className="flex justify-between items-start gap-8 mb-6">
+            <div className="text-center font-bold uppercase leading-relaxed">
+              <div>{dauDe.tenLopHoc}</div>
+              <div className="mt-2 inline-block border border-black px-3 py-0.5 text-[11pt]">ĐỀ CHÍNH THỨC</div>
+            </div>
+            <div className="text-center font-bold leading-relaxed">
+              <div className="uppercase">{dauDe.tenKyThi || "ĐỀ KIỂM TRA"}</div>
+              {dauDe.monLop && <div className="font-normal">Môn: {dauDe.monLop}</div>}
+              {dauDe.namHoc && <div className="font-normal">Năm học: {dauDe.namHoc}</div>}
+              {dauDe.thoiGian && <div className="font-normal">Thời gian làm bài: {dauDe.thoiGian}</div>}
+              {dauDe.maDe && <div className="font-normal">Mã đề: {dauDe.maDe}</div>}
+            </div>
+          </div>
+
+          {/* Chia PHẦN I / II / III theo khuôn 2025: trắc nghiệm trước, tự luận sau */}
+          {cacPhan.map(phan => (
+            <div key={phan.ma} className="mb-6">
+              <div className="font-bold mb-1">
+                PHẦN {phan.soLaMa}. {phan.tieuDe}
+                <span className="font-normal"> ({soDiemVN(diemCuaPhan(phan, dongMaTran))} điểm)</span>
               </div>
-            );
-          })}
+              <div className="italic mb-3 text-[11pt]">{phan.cauDan}</div>
+
+              {phan.cauHoi.map(q => {
+                const { statements, layout } = questionStatements(q);
+                return (
+                  <div key={q.id} className="mb-5">
+                    <div className="flex items-baseline gap-2 mb-1">
+                      <span className="font-bold">Câu {soThuTuTrongDe.get(q.id)}.</span>
+                      {/* Nhãn nội bộ: KHÔNG in ra giấy */}
+                      <span className="print:hidden inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
+                        Đã xuất hiện: {q.usage_count || 0} lần
+                      </span>
+                    </div>
+                    <QuestionPreviewCard
+                      content={q.content}
+                      imageUrl={q.image_url}
+                      statements={statements}
+                      statementsLayout={layout}
+                      correctAnswerDisplay={q.question_type === 'TLN' || q.question_type === 'TL' ? (q.correct_answer || undefined) : undefined}
+                      size={coChu}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+
+          <div className="text-center italic text-[11pt] mt-8">--- HẾT ---</div>
         </div>
       )}
 
