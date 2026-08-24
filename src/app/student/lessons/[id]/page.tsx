@@ -27,7 +27,7 @@ const normalizeAnswer = (s: string) => {
 // Trước đây trang này lấy nhầm appMarkdownComponents - bộ hardcode px cho màn
 // rộng (h1 55px, p/li 35px) - nên trên điện thoại 375px chữ nội dung to gấp
 // hơn 2 lần tiêu đề trang, mỗi dòng chỉ vừa ~10 ký tự.
-import { studentMarkdownComponents as appMarkdownComponents, preprocessMarkdown } from '@/components/CustomMarkdownComponents';
+import { studentMarkdownComponents as appMarkdownComponents, preprocessMarkdown , chuyenDiaChiAnh } from '@/components/CustomMarkdownComponents';
 import { ensureMathDelimiters } from '@/utils/latexFixer';
 
 const getYouTubeEmbedUrl = (url: string) => {
@@ -233,7 +233,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      isChecked && !isCorrect && !isWrong ? 'border-gray-200 bg-gray-50 text-gray-400 opacity-50' : ''
                   }`}
                >
-                  <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                  <ReactMarkdown urlTransform={chuyenDiaChiAnh} components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                </button>
              );
           })}
@@ -269,7 +269,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      {['A','B','C','D'][idx]}
                   </div>
                   <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0 text-[15px]">
-                     <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                     <ReactMarkdown urlTransform={chuyenDiaChiAnh} components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                   </div>
                </button>
              );
@@ -291,7 +291,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                      <div className="flex items-start gap-3">
                         <div className="font-bold text-gray-500 w-6">{['A','B','C','D'][idx] || 'A'}.</div>
                         <div className="flex-1 min-w-0 prose prose-sm max-w-none text-gray-700 prose-p:my-0 text-[15px]">
-                           <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(stmt.content || stmt.text || '').replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
+                           <ReactMarkdown urlTransform={chuyenDiaChiAnh} components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>{String(stmt.content || stmt.text || '').replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}</ReactMarkdown>
                         </div>
                      </div>
                      <div className="flex items-center gap-2 shrink-0 md:ml-auto">
@@ -357,7 +357,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
                   <div className="font-bold flex items-center gap-1.5 flex-wrap">
                      Chưa đúng rồi! Đáp án đúng là:
                      <span className="[&_p]:m-0 [&_.katex]:text-[1.05em]">
-                        <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>
+                        <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>
                            {ensureMathDelimiters(data.exactAnswer || data.correctAnswer) || 'Chưa cập nhật'}
                         </ReactMarkdown>
                      </span>
@@ -484,7 +484,7 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
                     [&_code]:bg-amber-100 [&_code]:text-amber-800 [&_code]:px-2 [&_code]:py-0.5 [&_code]:rounded-lg [&_code]:border [&_code]:border-amber-200 [&_code]:font-bold [&_code]:text-[0.9em]
                     [&_.katex-display]:overflow-x-auto [&_.katex-display]:overflow-y-hidden [&_.katex-display]:py-1
                  ">
-                   <ReactMarkdown 
+                   <ReactMarkdown urlTransform={chuyenDiaChiAnh} 
                       remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} 
                       rehypePlugins={[rehypeKatex, rehypeRaw]}
                       components={appMarkdownComponents}

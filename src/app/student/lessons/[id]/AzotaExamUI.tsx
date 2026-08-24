@@ -8,7 +8,7 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { studentMarkdownComponents as appMarkdownComponents } from '@/components/CustomMarkdownComponents';
+import { studentMarkdownComponents as appMarkdownComponents , chuyenDiaChiAnh } from '@/components/CustomMarkdownComponents';
 import { ensureMathDelimiters } from '@/utils/latexFixer';
 import ReactCrop, { type Crop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
@@ -951,7 +951,7 @@ export default function AzotaExamUI({
                              <div className="font-bold text-slate-600 flex items-center gap-1.5 flex-wrap">
                                Đáp án đúng:
                                <span className="text-green-700 [&_p]:m-0 [&_.katex]:text-[1.05em]">
-                                 <ReactMarkdown remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>
+                                 <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]}>
                                    {ensureMathDelimiters(data.exactAnswer || data.correctAnswer)}
                                  </ReactMarkdown>
                                </span>

@@ -3,6 +3,7 @@ import { useEffect, useState, useRef, useLayoutEffect, useCallback } from 'react
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import ReactMarkdown from 'react-markdown';
+import { chuyenDiaChiAnh } from '@/components/CustomMarkdownComponents';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -68,7 +69,7 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
             </div>
 
             <div className={`text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}`}>
-                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                     {quizData.question || ""}
                 </ReactMarkdown>
                 {quizData.img_url && (
@@ -97,7 +98,7 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
                                 className={`flex-1 rounded-2xl border-[3px] px-8 py-6 transition-all duration-200 ${cls}`}
                             >
                                 <div className={`text-[42px] font-black uppercase text-slate-800 ${KATEX_CLASS}`}>
-                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                    <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                                         {String(text).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}
                                     </ReactMarkdown>
                                 </div>
@@ -134,7 +135,7 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
                                     {String.fromCharCode(65 + idx)}
                                 </div>
                                 <div className={`flex-1 min-w-0 text-[38px] leading-[1.45] text-slate-800 ${KATEX_CLASS}`}>
-                                    <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                    <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                                         {String(opt).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.')}
                                     </ReactMarkdown>
                                 </div>
@@ -162,7 +163,7 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
                             {/* Render qua KaTeX để đáp án dạng công thức hiện ra đúng, thay vì
                                 in nguyên chuỗi LaTeX thô như trước */}
                             <div className={`text-[52px] font-black text-emerald-700 ${KATEX_CLASS}`}>
-                                <ReactMarkdown remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                                     {ensureMathDelimiters(quizData.exactAnswer || quizData.correctAnswer || quizData.answerText)}
                                 </ReactMarkdown>
                             </div>
@@ -520,7 +521,7 @@ export default function PresentationPage() {
                                             className={`w-full animate-in fade-in slide-in-from-bottom-2 duration-500 ease-out
                                                         [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap ${KATEX_CLASS}`}
                                         >
-                                            <ReactMarkdown
+                                            <ReactMarkdown urlTransform={chuyenDiaChiAnh}
                                                 components={presentationMarkdownComponents}
                                                 remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}
                                                 rehypePlugins={[rehypeKatex, rehypeRaw]}

@@ -1,3 +1,4 @@
+import { defaultUrlTransform } from "react-markdown";
 import React from 'react';
 import { AlertTriangle, Info } from 'lucide-react';
 
@@ -15,6 +16,24 @@ export const extractTextFromReactNode = (node: any): string => {
 };
 
 // Hàm tự động chuẩn hóa văn bản Markdown, đặc biệt là bảng biểu thiếu dòng Header
+
+/**
+ * Ảnh nhúng thẳng dạng data: được phép hiển thị.
+ *
+ * react-markdown chỉ cho qua https, http, irc, mailto, xmpp - gặp "data:image/jpeg;base64,..."
+ * là XOÁ TRẮNG thuộc tính src, thẻ ảnh vẫn dựng ra nhưng rỗng nên hiện thành ảnh vỡ.
+ * Đo trên kho Toán: 219 câu chèn ảnh kiểu này (do dán thẳng từ Word hoặc chụp màn hình)
+ * đều mất ảnh ở mọi màn hình - kể cả bài luyện tập phía học sinh.
+ *
+ * CỐ Ý không cho qua svg+xml: tệp SVG chứa được mã chạy, mà ảnh minh hoạ toán lý chỉ
+ * cần ảnh thường. Mọi thứ khác vẫn để react-markdown lọc như cũ.
+ */
+const ANH_NHUNG_AN_TOAN = /^data:image\/(png|jpe?g|gif|webp|bmp|avif)[;,]/i;
+
+export const chuyenDiaChiAnh = (url: string): string => {
+  if (ANH_NHUNG_AN_TOAN.test(String(url || ''))) return url;
+  return defaultUrlTransform(url);
+};
 
 export const preprocessMarkdown = (text: string): string => {
     if (typeof text !== 'string') return text;

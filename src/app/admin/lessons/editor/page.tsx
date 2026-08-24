@@ -3,6 +3,7 @@
 import Link from "next/link";
 
 import React, { useState, useEffect, useRef, Suspense, useMemo, useCallback } from "react";
+import { chuyenDiaChiAnh } from '@/components/CustomMarkdownComponents';
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -126,7 +127,7 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
   const renderQuizContent = (content: string) => {
     return (
       <div className="prose prose-slate max-w-none prose-p:leading-relaxed prose-p:my-2 prose-pre:bg-slate-800 prose-pre:text-slate-100 prose-img:rounded-xl prose-img:shadow-md">
-        <ReactMarkdown
+        <ReactMarkdown urlTransform={chuyenDiaChiAnh}
           remarkPlugins={[remarkMath, remarkBreaks]}
           rehypePlugins={[rehypeKatex, rehypeRaw]}
           components={{
@@ -1708,7 +1709,7 @@ ${ketQuaCatAnh.hong} câu không cắt được, đã giữ dấu [CÓ HÌNH Ả
 
 
   const renderMarkdown = (content: string) => (
-    <ReactMarkdown 
+    <ReactMarkdown urlTransform={chuyenDiaChiAnh} 
       remarkPlugins={[remarkMath]} 
       rehypePlugins={[rehypeKatex, rehypeRaw]}
       components={{

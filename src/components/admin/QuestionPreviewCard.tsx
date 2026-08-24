@@ -9,7 +9,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { unifiedMarkdownComponents as customMarkdownComponents, preprocessMarkdown } from "@/components/CustomMarkdownComponents";
+import { unifiedMarkdownComponents as customMarkdownComponents, preprocessMarkdown , chuyenDiaChiAnh } from '@/components/CustomMarkdownComponents';
 import { toBankType } from "@/utils/questionTypes";
 
 /**
@@ -213,7 +213,7 @@ export default function QuestionPreviewCard({
     return (
       <div className={`prose ${co.prose} ${chuGon} max-w-none break-words prose-p:my-1 leading-relaxed text-gray-800 overflow-x-auto
         [&_code]:whitespace-pre-wrap [&_pre]:whitespace-pre-wrap [&_pre]:max-w-full [&_pre]:overflow-x-auto ${extraProseClass}`}>
-        <ReactMarkdown components={markdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+        <ReactMarkdown urlTransform={chuyenDiaChiAnh} components={markdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
           {formatted}
         </ReactMarkdown>
       </div>
