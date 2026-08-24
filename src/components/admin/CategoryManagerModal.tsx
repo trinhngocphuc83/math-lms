@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
+import SoanYeuCauModal, { type DangTrong } from "@/components/admin/SoanYeuCauModal";
 import { 
-  Database, UploadCloud, Download, Trash2, Search, X, FileSpreadsheet, Edit2
+  Database, UploadCloud, Download, Trash2, Search, X, FileSpreadsheet, Edit2, Sparkles
 } from "lucide-react";
 import Papa from "papaparse";
 import * as XLSX from "xlsx";
@@ -32,6 +33,8 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
   // New States
   const [isManualAdding, setIsManualAdding] = useState(false);
   const [newCategory, setNewCategory] = useState({ grade: "", subject: "", topic: "", lesson: "", math_form: "", yeu_cau_can_dat: "" });
+  // Hộp thoại nhờ AI soạn Yêu cầu cần đạt hàng loạt.
+  const [moSoanYeuCau, setMoSoanYeuCau] = useState(false);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editingCatData, setEditingCatData] = useState<CategoryData | null>(null);
 
@@ -289,6 +292,20 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
 
   if (!isOpen) return null;
 
+  /**
+   * Các dạng còn trống Yêu cầu cần đạt trong phạm vi đang lọc.
+   *
+   * Chỉ lấy dòng ĐÃ CÓ tên dạng: danh mục chưa đặt dạng thì chưa có gì để mô tả.
+   * Tính theo ô tìm kiếm chứ không theo cả kho, để thầy cô soạn dần từng chương thay
+   * vì bấm một cái ra cả trăm dòng đọc không xuể.
+   */
+  const dangConTrong = (): DangTrong[] => filteredCategories
+    .filter(c => String(c.math_form || '').trim() && !String(c.yeu_cau_can_dat || '').trim())
+    .map(c => ({
+      id: c.id, grade: c.grade, subject: c.subject,
+      topic: c.topic, lesson: c.lesson, math_form: c.math_form,
+    }));
+
   const filteredCategories = categories.filter(c => 
     c.topic.toLowerCase().includes(searchTerm.toLowerCase()) || 
     c.math_form.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -326,6 +343,17 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
             />
           </div>
           <div className="flex items-center gap-3">
+            {/* Soạn Yêu cầu cần đạt cho các dạng còn trống, in ở Bản đặc tả */}
+            <button
+              onClick={() => {
+                if (dangConTrong().length === 0) return alert('Mọi dạng trong danh sách đang lọc đều đã có Yêu cầu cần đạt.');
+                setMoSoanYeuCau(true);
+              }}
+              title="Nhờ AI soạn câu Yêu cầu cần đạt cho các dạng còn trống, dùng cho Bản đặc tả đề kiểm tra"
+              className="flex items-center gap-2 bg-emerald-50 text-emerald-700 hover:bg-emerald-100 px-4 py-2.5 rounded-xl font-bold transition-all text-sm border border-emerald-200"
+            >
+              <Sparkles className="w-4 h-4" /> AI soạn Yêu cầu cần đạt
+            </button>
             <button 
               onClick={handleDownloadTemplate}
               className="flex items-center gap-2 bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-4 py-2.5 rounded-xl font-bold transition-all text-sm border border-indigo-200"
@@ -466,6 +494,14 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
           )}
         </div>
       </div>
+
+      {/* Nhờ AI soạn Yêu cầu cần đạt cho các dạng còn trống trong phạm vi đang lọc. */}
+      <SoanYeuCauModal
+        isOpen={moSoanYeuCau}
+        onClose={() => setMoSoanYeuCau(false)}
+        dangTrong={dangConTrong()}
+        onDaLuu={fetchCategories}
+      />
     </div>
   );
 }
