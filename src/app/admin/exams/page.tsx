@@ -9,6 +9,8 @@ import {
 import * as XLSX from "xlsx";
 import NapMaTranModal, { type DongNapMaTran } from "@/components/admin/NapMaTranModal";
 import SinhBuModal from "@/components/admin/SinhBuModal";
+import SoanMaTranModal from "@/components/admin/SoanMaTranModal";
+import type { ODeChon, DongMaTranAI } from "@/utils/soanMaTranAI";
 import { toBankType, bankTypeLabel, type BankType } from "@/utils/questionTypes";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem, tinhTongCau,
@@ -96,6 +98,9 @@ export default function ExamsManagerPage() {
 
   // Ô ma trận đang nhờ AI soạn bù cho đủ số câu.
   const [oSinhBu, setOSinhBu] = useState<any>(null);
+
+  // Hộp thoại nhờ AI soạn ma trận từ đầu.
+  const [moSoanMaTran, setMoSoanMaTran] = useState(false);
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -433,6 +438,53 @@ export default function ExamsManagerPage() {
   /** Kho có bao nhiêu câu cho đúng bộ ba này. Hộp thoại gọi để báo đủ/thiếu ngay tại dòng. */
   const demKho = (dang: string, loai: BankType, mucDo: string): number =>
     inventory.find(i => i.math_form === dang && i.question_type === loai && String(i.difficulty) === String(mucDo))?.count || 0;
+
+  /**
+   * Các ô kho đang có câu, để AI chỉ được chọn trong đây chứ không bịa dạng mới.
+   * Ghép inventory (có số câu theo loại và mức) với categories (có chương và bài).
+   */
+  const oKhoChoAI = (): ODeChon[] => {
+    const ra: ODeChon[] = [];
+    for (const inv of inventory) {
+      const cat = categories.find(c => c.math_form === inv.math_form);
+      ra.push({
+        topic: cat?.topic || '',
+        lesson: cat?.lesson || '',
+        math_form: inv.math_form,
+        question_type: (toBankType(inv.question_type) || 'NLC') as BankType,
+        difficulty: String(inv.difficulty),
+        soCau: inv.count,
+      });
+    }
+    return ra.filter(x => x.lesson && x.math_form);
+  };
+
+  const moHopSoanMaTran = () => {
+    if (inventory.length === 0) {
+      alert('Hãy bấm "Tải & Quét Kho" trước để máy biết kho đang có những dạng nào mà phân bổ.');
+      return;
+    }
+    setMoSoanMaTran(true);
+  };
+
+  /** Nhận ma trận AI vừa soạn, thay hẳn bảng đang có. */
+  const nhanMaTranAI = (ds: DongMaTranAI[]) => {
+    setMatrixItems(ds.map(d => {
+      const cat = categories.find(c => c.math_form === d.math_form);
+      const soKho = demKho(d.math_form, d.question_type, d.difficulty);
+      return {
+        id: `${d.math_form}_${d.question_type}_${d.difficulty}`,
+        category_id: cat?.id || `auto_${d.math_form}`,
+        math_form: d.math_form,
+        topic: d.topic || cat?.topic || '',
+        question_type: d.question_type,
+        difficulty: d.difficulty,
+        count: Math.max(1, d.soCau),
+        max_count: soKho,
+        diemMoiCau: diemMacDinh(d.question_type),
+      };
+    }));
+  };
 
   /** Dựng yêu cầu soạn bù từ một dòng ma trận đang thiếu câu. */
   const moSinhBu = (item: MatrixItem) => {
@@ -930,6 +982,9 @@ export default function ExamsManagerPage() {
               <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-2 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-4 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white" title="Nạp ma trận từ tệp Excel đã xuất ra trước đó">
                 <UploadCloud className="w-4 h-4" /> Import Excel
               </button>
+              <button onClick={moHopSoanMaTran} className="flex items-center gap-2 border border-fuchsia-600 text-fuchsia-700 hover:bg-fuchsia-50 px-4 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white" title="Chưa có ma trận nào thì để AI tự phân bổ số câu theo cấu trúc đề đã chọn">
+                <Sparkles className="w-4 h-4" /> AI soạn ma trận
+              </button>
               <button onClick={moHopNapMaTran} className="flex items-center gap-2 border border-teal-600 text-teal-700 hover:bg-teal-50 px-4 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white" title="Đọc bảng ma trận từ ảnh chụp, tệp PDF hoặc tệp Word">
                 <Wand2 className="w-4 h-4" /> Nạp từ ảnh/tệp (AI)
               </button>
@@ -1217,6 +1272,16 @@ export default function ExamsManagerPage() {
       </div>
 
       {/* Đọc bảng ma trận có sẵn từ ảnh/PDF/Word, có bảng soát lại trước khi nạp. */}
+      {/* Chưa có ma trận nào thì để AI tự soạn, chỉ chọn trong dạng kho đang có câu. */}
+      <SoanMaTranModal
+        isOpen={moSoanMaTran}
+        onClose={() => setMoSoanMaTran(false)}
+        oKho={oKhoChoAI()}
+        khuon={KHUON_DE[khuonDe]}
+        tenKhuon={KHUON_DE[khuonDe]?.ten || khuonDe}
+        onNhan={nhanMaTranAI}
+      />
+
       {/* Nhờ AI soạn bù khi kho không đủ; lưu xong thì quét lại kho cho số câu cập nhật. */}
       <SinhBuModal
         isOpen={!!oSinhBu}

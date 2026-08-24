@@ -29,6 +29,19 @@ export type CauHinhAI = {
 /** Xin khoá và danh sách model từ máy chủ. Ném lỗi kèm nguyên nhân thật nếu không cấp được. */
 export async function layCauHinhAI(): Promise<CauHinhAI> {
   const res = await fetch('/api/admin/gemini-key');
+
+  // Máy chủ trả về HTML chứ không phải JSON khi phiên đăng nhập hết hạn hoặc đường dẫn
+  // hỏng. Gọi thẳng res.json() lúc đó ném ra "Unexpected token '<', \"<!DOCTYPE\"..." -
+  // câu này người dùng đọc không hiểu gì mà cũng chẳng biết phải làm sao.
+  const kieu = res.headers.get('content-type') || '';
+  if (!kieu.includes('application/json')) {
+    throw new Error(
+      res.status === 401 || res.status === 403
+        ? 'Phiên đăng nhập đã hết hạn. Hãy tải lại trang và đăng nhập lại.'
+        : `Không hỏi được cấu hình AI (máy chủ trả mã ${res.status}). Hãy tải lại trang; nếu vẫn vậy thì báo quản trị.`
+    );
+  }
+
   const data = await res.json();
   if (!res.ok || !data.keys || data.keys.length === 0) {
     throw new Error(data.error || 'Không thể cấp phát khoá AI.');
