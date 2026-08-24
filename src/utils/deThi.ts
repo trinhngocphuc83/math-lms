@@ -296,3 +296,27 @@ export function tenTepDe(dauDe: DauDe, hauTo = ""): string {
     .replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_+|_+$/g, "");
   return (sach || "De_kiem_tra") + (hauTo ? "_" + hauTo : "");
 }
+
+/**
+ * Tên có làm đứt truy vấn tới ngân hàng không.
+ *
+ * Tường lửa đứng trước Supabase coi chuỗi "${{" là dấu hiệu tấn công template
+ * injection nên chặn thẳng mọi địa chỉ truy vấn có chứa nó, trả về trang chặn 403
+ * KHÔNG kèm cờ CORS. Trình duyệt do đó chỉ báo được "TypeError: Failed to fetch",
+ * giấu mất lý do thật, và cả trang chọn câu chết chứ không riêng dòng ma trận đó.
+ *
+ * Đã xảy ra thật ở app Lý: 13 dạng bị gõ sai LaTeX thành "${{X}}$" thay vì "$X$".
+ * Dữ liệu đã nắn lại, nhưng thầy cô vẫn gõ tên dạng bằng tay và AI vẫn sinh tên mới,
+ * nên giữ lối thoát này: tên nào dính thì bỏ lọc ở máy chủ, lọc lại tại máy người dùng.
+ */
+export const tenLamDutTruyVan = (ten: string): boolean =>
+  String(ten ?? "").includes("${{");
+
+/**
+ * Nắn tên viết sai LaTeX "${{X}}$" về "$X$".
+ *
+ * Nắn THEO CẶP chứ không thay rời từng vế: tên đúng sẵn có kết thúc bằng "}}$" khi công
+ * thức lồng nhau (ví dụ $\sqrt{\overline{v^2}}$) sẽ bị cắt cụt nếu thay rời.
+ */
+export const nanTenPhanLoai = (ten: string): string =>
+  String(ten ?? "").replace(/\$\{\{([\s\S]*?)\}\}\$/g, "$$$1$$");

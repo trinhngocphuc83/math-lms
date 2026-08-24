@@ -14,8 +14,7 @@ import type { ODeChon, DongMaTranAI } from "@/utils/soanMaTranAI";
 import { toBankType, bankTypeLabel, type BankType } from "@/utils/questionTypes";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem, tinhTongCau,
-  gomTheoLoai, lamTron, soDiemVN, KHUON_DE, MA_KHUON_DE,
-} from "@/utils/deThi";
+  gomTheoLoai, lamTron, soDiemVN, KHUON_DE, MA_KHUON_DE, tenLamDutTruyVan } from "@/utils/deThi";
 
 interface CategoryData {
   id: string;
@@ -141,15 +140,24 @@ export default function ExamsManagerPage() {
   const fetchTreeAndInventory = async () => {
     setIsLoadingTree(true);
     try {
+      // Ba tên dưới đây do thầy cô gõ hoặc do AI sinh, có thể dính chuỗi "${{" - thứ làm
+      // tường lửa chặn nguyên truy vấn và trang chết câm (xem tenLamDutTruyVan). Gặp thì
+      // bỏ lọc ở máy chủ, lọc lại tại đây.
+      const locTaiCho = [topicFilter, lessonFilter, formFilter].some(tenLamDutTruyVan);
+      const dungTen = (r: any) => (!topicFilter || r.topic === topicFilter)
+        && (!lessonFilter || r.lesson === lessonFilter)
+        && (!formFilter || r.math_form === formFilter);
+
       // 1. Lấy danh mục
       let query = supabase.from('question_categories').select('*').order('topic').order('lesson');
       if (grade) query = query.eq('grade', grade);
       if (subject) query = query.eq('subject', subject);
-      if (topicFilter) query = query.eq('topic', topicFilter);
-      if (lessonFilter) query = query.eq('lesson', lessonFilter);
-      if (formFilter) query = query.eq('math_form', formFilter);
+      if (topicFilter && !locTaiCho) query = query.eq('topic', topicFilter);
+      if (lessonFilter && !locTaiCho) query = query.eq('lesson', lessonFilter);
+      if (formFilter && !locTaiCho) query = query.eq('math_form', formFilter);
       
-      const { data: cats, error: err1 } = await query;
+      const { data: catsTho, error: err1 } = await query;
+      const cats = locTaiCho ? (catsTho || []).filter(dungTen) : catsTho;
       if (err1) throw err1;
       
       // 2. Quét kho
@@ -163,14 +171,14 @@ export default function ExamsManagerPage() {
         let qQuery = supabase.from('questions').select(qSelect).range(from, from + PAGE_SIZE - 1);
         if (grade) qQuery = qQuery.eq('grade', grade);
         if (subject) qQuery = qQuery.eq('subject', subject);
-        if (topicFilter) qQuery = qQuery.eq('topic', topicFilter);
-        if (lessonFilter) qQuery = qQuery.eq('lesson', lessonFilter);
-        if (formFilter) qQuery = qQuery.eq('math_form', formFilter);
+        if (topicFilter && !locTaiCho) qQuery = qQuery.eq('topic', topicFilter);
+        if (lessonFilter && !locTaiCho) qQuery = qQuery.eq('lesson', lessonFilter);
+        if (formFilter && !locTaiCho) qQuery = qQuery.eq('math_form', formFilter);
         if (qTypeFilter) qQuery = qQuery.eq('question_type', qTypeFilter);
 
         const { data: page, error: err2 } = await qQuery;
         if (err2) throw err2;
-        qData.push(...(page || []));
+        qData.push(...(locTaiCho ? (page || []).filter(dungTen) : (page || [])));
         if (!page || page.length < PAGE_SIZE) break;
       }
 

@@ -6,6 +6,7 @@
 import type { QuestionData } from "./aiQuestionScan";
 import { toBankType, toDifficultyCode } from "./questionTypes";
 import { docDapAnDungSai, dapAnDungSaiDungKhuon } from "./chuanHoaCauHoi";
+import { nanTenPhanLoai } from "./deThi";
 
 export interface SaveResult {
   insertedCount: number;
@@ -88,6 +89,25 @@ export async function saveQuestionsToBank(supabase: any, questions: QuestionData
 
   if (validQuestions.length === 0) {
     return { insertedCount: 0, duplicatesSkipped, newCategoriesCreated: 0, thieuPhanLoai, daNan, conKhuyet };
+  }
+
+  /*
+   * Nắn tên Chương/Bài/Dạng viết sai LaTeX kiểu "${{X}}$" về "$X$".
+   *
+   * Không phải chuyện thẩm mỹ: chuỗi "${{" bị tường lửa của Supabase coi là dấu hiệu
+   * tấn công template injection nên chặn nguyên truy vấn, trả về trang chặn không kèm
+   * cờ CORS. Trang chọn câu vì thế chỉ báo được "Failed to fetch" rồi chết câm. App Lý
+   * đã dính đúng lỗi này với 13 dạng. Chặn ngay từ cửa lưu để không tái diễn.
+   */
+  for (const q of validQuestions) {
+    for (const cot of ['topic', 'lesson', 'math_form'] as const) {
+      const cu = String((q as any)[cot] ?? '');
+      const moi = nanTenPhanLoai(cu);
+      if (moi !== cu) {
+        (q as any)[cot] = moi;
+        daNan.push(`Tên viết sai LaTeX: "${cu}" -> "${moi}"`);
+      }
+    }
   }
 
   /*

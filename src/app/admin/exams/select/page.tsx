@@ -17,8 +17,7 @@ import {
 } from "lucide-react";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
-  chiaPhanDeThi, sapCauTheoPhan, diemCuaPhan, tenTepDe, soDiemVN,
-} from "@/utils/deThi";
+  chiaPhanDeThi, sapCauTheoPhan, diemCuaPhan, tenTepDe, soDiemVN, tenLamDutTruyVan } from "@/utils/deThi";
 
 interface MatrixItemDraft {
   id: string;
@@ -218,18 +217,21 @@ function SelectContent() {
         // Supabase/PostgREST mặc định chỉ trả tối đa 1000 dòng một lần. Dạng toán nào
         // có hơn 1000 câu thì bản cũ bị thiếu ứng viên mà không hề báo gì.
         const candidates: any[] = [];
+        // Tên dạng dính "${{" làm tường lửa chặn cả truy vấn (xem tenLamDutTruyVan).
+        // Gặp tên như vậy thì lọc theo dạng ngay tại đây thay vì nhờ máy chủ lọc.
+        const locTaiCho = tenLamDutTruyVan(item.math_form);
         for (let from = 0; ; from += PAGE_SIZE) {
           let query = supabase.from('questions').select('*')
-            .eq('math_form', item.math_form)
             .eq('question_type', item.question_type)
             .eq('difficulty', item.difficulty)
             .range(from, from + PAGE_SIZE - 1);
+          if (!locTaiCho) query = query.eq('math_form', item.math_form);
           if (gradeVal) query = query.eq('grade', gradeVal);
           if (subjectVal) query = query.eq('subject', subjectVal);
           const { data, error } = await query;
           if (error) throw error;
           const page = data || [];
-          candidates.push(...page);
+          candidates.push(...(locTaiCho ? page.filter((q: any) => q.math_form === item.math_form) : page));
           if (page.length < PAGE_SIZE) break;
         }
         results.push({ item, candidates, selectedIds: defaultSelect(candidates, item.count) });
