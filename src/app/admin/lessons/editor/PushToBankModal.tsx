@@ -7,6 +7,7 @@ import {
   toDifficultyCode,
   normalizeQuestionForCompare,
 } from '@/utils/questionTypes';
+import { saveQuestionsToBank } from "@/utils/questionBankSave";
 import { findMatchingChapterTitle } from '@/utils/topicMatch';
 import { buildDetectFormsPrompt, parseDetectFormsResponse, type DetectFormsResultItem } from '@/utils/detectFormsPrompt';
 import ReactMarkdown from 'react-markdown';
@@ -868,31 +869,30 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
          return;
       }
 
-      // Chỉ tạo danh mục khi có ĐỦ 5 thành phần - trước đây thiếu tên bài vẫn tạo,
-      // sinh ra các danh mục rỗng nằm rác trong hệ thống.
-      const newCats = newInserts
-        .filter(q => q.grade && q.subject && q.topic && q.lesson && q.math_form)
-        .map(q => ({
-          grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson, math_form: q.math_form
-        }));
-      const uniqueNewCats = Array.from(new Set(newCats.map(c => JSON.stringify(c)))).map(s => JSON.parse(s));
-      
-      if (uniqueNewCats.length > 0) {
-         const { data: existings } = await supabase.from('question_categories').select('grade,subject,topic,lesson,math_form');
-         const existSet = new Set((existings || []).map(c => `${c.grade}|${c.subject}|${c.topic}|${c.lesson}|${c.math_form}`));
-         const toInsert = uniqueNewCats.filter(c => !existSet.has(`${c.grade}|${c.subject}|${c.topic}|${c.lesson}|${c.math_form}`));
-         
-         if (toInsert.length > 0) {
-             const { error: catErr } = await supabase.from('question_categories').insert(toInsert);
-             if (catErr) console.warn("Lỗi thêm category:", catErr);
-         }
+      /*
+       * Đẩy qua saveQuestionsToBank thay vì tự ghi thẳng.
+       *
+       * Bản cũ tự dựng câu lệnh ghi nên bỏ qua hết các chốt của cửa lưu chung: không
+       * chặn câu thiếu Dạng, không nắn đáp án Đúng/Sai về khuôn ĐSSĐ, không chuẩn hoá
+       * loại câu và mức độ. Câu đẩy từ Luyện tập sang vì thế hay lệch khuôn so với câu
+       * soạn thẳng trong Ngân hàng, mà tới lúc ra đề mới lòi ra.
+       */
+      const kq = await saveQuestionsToBank(supabase, newInserts as any[]);
+
+      if (kq.insertedCount === 0 && kq.thieuPhanLoai.length > 0) {
+        alert(
+          kq.thieuPhanLoai.length + ' câu chưa đẩy được vì thiếu Chương, Bài hoặc Dạng.' +
+          ' Hãy bổ sung phân loại cho các câu đó rồi đẩy lại.'
+        );
+        setIsPushing(false);
+        return;
       }
       
-      const { error } = await supabase.from('questions').insert(newInserts);
-      if (error) throw error;
-      
       alert(
-        `✅ Đã đẩy ${newInserts.length} câu mới vào Ngân hàng!` +
+        `✅ Đã đẩy ${kq.insertedCount} câu mới vào Ngân hàng!` +
+        (kq.newCategoriesCreated > 0 ? `\nĐã bổ sung ${kq.newCategoriesCreated} dòng danh mục.` : "") +
+        (kq.daNan.length ? `\n\nMÁY ĐÃ TỰ NẮN ${kq.daNan.length} chỗ:\n- ` + kq.daNan.slice(0, 6).join("\n- ") : "") +
+        (kq.conKhuyet.length ? `\n\nCÒN KHUYẾT ${kq.conKhuyet.length} chỗ (vẫn lưu, nhưng ra đề sẽ hỏng):\n- ` + kq.conKhuyet.slice(0, 6).join("\n- ") : "") +
         (dupInBatch > 0 ? `\n• Bỏ qua ${dupInBatch} câu trùng nhau trong đợt này` : '') +
         (dupInBank > 0 ? `\n• Bỏ qua ${dupInBank} câu đã có sẵn trong Ngân hàng` : '')
       );

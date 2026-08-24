@@ -196,6 +196,46 @@ export function bocCongThucTuLuan(raw: string | null | undefined): { text: strin
 /**
  * Chuẩn hoá một câu hỏi vừa bóc tách. Trả về bản đã sửa kèm danh sách cảnh báo.
  */
+/** Đáp án Đúng/Sai đã đúng khuôn 4 ký tự chưa (chấp nhận cả D, T, F lẫn Đ, S). */
+export const dapAnDungSaiDungKhuon = (s: string | null | undefined): boolean =>
+  /^[ĐDTSF]{4}$/i.test(String(s || '').trim());
+
+/**
+ * Đọc đáp án Đúng/Sai viết theo đủ kiểu về dạng chuẩn "ĐSSĐ".
+ *
+ * Kho ghi lẫn lộn tới tám kiểu: "Đ, Đ, Đ, S" / "A-Đ, B-S, C-S, D-Đ" / "1-S, 2-Đ, 3-S,
+ * 4-Đ" / "a) Sai, b) Đúng, c) Đúng, d) Sai" / "Đúng, Sai, Đúng, Sai" / xuống dòng từng
+ * ý / "A: Đ, B: S..." / và cả "$2+xy$: Sai; $3xy^2z$: Đúng..." có LaTeX lẫn dấu hai
+ * chấm. Tất cả đều nói đủ bốn trạng thái nên đọc ra được, không phải đoán.
+ *
+ * Trả về null khi KHÔNG chắc chắn - lúc đó phải để nguyên cho thầy cô tự sửa, vì đoán
+ * sai một ký tự là chấm sai cả tập bài mà không ai phát hiện.
+ */
+export function docDapAnDungSai(raw: string | null | undefined): string | null {
+  const s = String(raw || '').trim();
+  if (!s) return null;
+  if (dapAnDungSaiDungKhuon(s)) {
+    return s.split('').map(c => (/[ĐDT]/i.test(c) ? 'Đ' : 'S')).join('');
+  }
+
+  const phan = s.split(/[,;\n]+/).map(x => x.trim()).filter(Boolean);
+  if (phan.length !== 4) return null;
+
+  const ra: string[] = [];
+  for (const p of phan) {
+    // Bỏ nhãn "a)", "1-", "A:", hoặc mọi thứ đứng trước dấu hai chấm cuối cùng
+    let v = p.includes(':') ? p.slice(p.lastIndexOf(':') + 1) : p.replace(/^\s*[a-dA-D1-4]\s*[).:\-–]\s*/, '');
+    v = v.trim();
+
+    const chu = v.match(/(đúng|dung|sai|true|false)\s*$/i);
+    if (chu) ra.push(/đúng|dung|true/i.test(chu[1]) ? 'Đ' : 'S');
+    else if (/^[ĐDT]$/i.test(v)) ra.push('Đ');
+    else if (/^[SF]$/i.test(v)) ra.push('S');
+    else return null;
+  }
+  return ra.join('');
+}
+
 export function chuanHoaCauHoi(q: {
   question_type: string;
   content: string;
@@ -229,6 +269,21 @@ export function chuanHoaCauHoi(q: {
     [a, b, c, d] = [a, b, c, d].map(boTienToY);
     if ([a, b, c, d].join('|') !== truoc) {
       canhBao.push('Đã bỏ tiền tố "a)", "b)"... thừa ở đầu các mệnh đề.');
+    }
+
+    // Đáp án viết tự do -> gom về khuôn 4 ký tự. Không gom thì mọi nơi đọc đáp án
+    // (chấm bài, trộn mã đề, đẩy sang Kỳ thi Online) đều coi như câu này chưa có đáp án.
+    if (!dapAnDungSaiDungKhuon(correct)) {
+      const doc = docDapAnDungSai(correct);
+      if (doc) {
+        canhBao.push(`Đáp án Đúng/Sai viết là "${correct.slice(0, 30)}" nên máy đã gom về "${doc}".`);
+        correct = doc;
+      } else if (correct.trim()) {
+        canhBao.push('Đáp án Đúng/Sai không đọc ra được đủ bốn trạng thái. Thầy cô sửa lại theo khuôn ĐSSĐ.');
+      }
+    } else {
+      const doc = docDapAnDungSai(correct);
+      if (doc && doc !== correct) correct = doc;   // gom D/T về Đ cho thống nhất
     }
   }
 
