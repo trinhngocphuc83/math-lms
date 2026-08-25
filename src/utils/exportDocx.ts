@@ -402,6 +402,98 @@ const dungBangDapAn = (cacMa: MaDe[]): any[] => {
   ];
 };
 
+/**
+ * Ước lượng bề rộng một phương án khi in ra giấy.
+ *
+ * Đếm theo ký tự nhưng KHÔNG đếm phần cú pháp LaTeX: "$\dfrac{a}{b}$" in ra chỉ là một
+ * phân số bé, mà đếm thô thì thành 14 ký tự nên bị xếp nhầm sang một cột. Bỏ dấu $, bỏ
+ * tên lệnh và dấu ngoặc nhọn rồi mới đếm.
+ */
+const beRongPhuongAn = (s: string): number => {
+  const tho = String(s ?? "")
+    .replace(/\$\$?([\s\S]*?)\$\$?/g, "$1")     // bỏ dấu $ bọc ngoài
+    .replace(/\\[a-zA-Z]+\s*/g, "x")            // \dfrac, \sqrt... coi như một ký tự
+    .replace(/[{}\\]/g, "")
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, "IMG")    // ảnh trong phương án: coi là dài
+    .trim();
+  return tho.length;
+};
+
+/**
+ * Xếp 4 phương án trắc nghiệm thành 4 / 2 / 1 cột cho thẳng hàng, đúng lối trình bày
+ * của đề thi Việt Nam.
+ *
+ * Bản cũ nhồi cả bốn phương án vào MỘT đoạn văn, ngăn nhau bằng bốn dấu cách. Word tự
+ * ngắt dòng ở đâu tuỳ nó, nên phương án dài ngắn khác nhau là các cột so le hết, đọc
+ * rất rối - đúng chỗ thầy cô phàn nàn. Dùng bảng KHÔNG KẺ VIỀN thì các cột thẳng tăm
+ * tắp mà in ra vẫn không thấy đường kẻ nào.
+ *
+ * Chọn số cột theo phương án DÀI NHẤT, không theo trung bình: chỉ cần một phương án dài
+ * là cả hàng bị đội cao, nên phải để nó quyết định.
+ */
+const dungPhuongAnNLC = async (
+  q: any,
+  doiChu: (s: string) => Promise<any[]>,
+): Promise<any[]> => {
+  const nhan = ["A", "B", "C", "D"] as const;
+  const noiDung = [q.option_a, q.option_b, q.option_c, q.option_d].map(x => String(x ?? ""));
+
+  // Phương án rỗng thì bỏ hẳn cột, đỡ chừa một khoảng trống vô nghĩa giữa đề
+  const dsCo = nhan.map((n, i) => ({ nhan: n, noiDung: noiDung[i] })).filter(x => x.noiDung.trim());
+  if (dsCo.length === 0) return [];
+
+  const daiNhat = Math.max(...dsCo.map(x => beRongPhuongAn(x.noiDung)));
+  const coAnh = dsCo.some(x => /!\[|<img/i.test(x.noiDung));
+  const soCot = coAnh ? 1 : daiNhat <= 14 ? 4 : daiNhat <= 34 ? 2 : 1;
+
+  const oPhuongAn = async (x: { nhan: string; noiDung: string }) => new TableCell({
+    // Không kẻ viền: chỉ mượn bảng để canh cột, in ra phải trông như đoạn văn thường
+    borders: {
+      top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+      bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+      left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+      right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+    },
+    margins: { top: 20, bottom: 20, left: 0, right: 120 },
+    children: [new Paragraph({
+      children: [
+        new TextRun({ text: `${x.nhan}. `, bold: true, color: "0000FF" }),
+        ...(await doiChu(cleanHtmlNewlinesInTags(x.noiDung))),
+      ],
+    })],
+  });
+
+  const hang: any[] = [];
+  for (let i = 0; i < dsCo.length; i += soCot) {
+    const trongHang = dsCo.slice(i, i + soCot);
+    const o = [];
+    for (const x of trongHang) o.push(await oPhuongAn(x));
+    // Hàng cuối thiếu ô thì chèn ô rỗng, không thì Word kéo giãn ô cuối chiếm hết bề ngang
+    while (o.length < soCot) {
+      o.push(new TableCell({
+        borders: {
+          top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+          bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+          left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+          right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
+        },
+        children: [new Paragraph({ text: "" })],
+      }));
+    }
+    hang.push(new TableRow({ children: o }));
+  }
+
+  return [
+    new Table({
+      width: { size: 100, type: WidthType.PERCENTAGE },
+      columnWidths: Array.from({ length: soCot }, () => Math.floor(9000 / soCot)),
+      rows: hang,
+    }),
+    // Bảng dính sát câu sau nếu không chừa một dòng trống phía dưới
+    new Paragraph({ text: "", spacing: { after: 120 } }),
+  ];
+};
+
 export interface KhuonXuatDe {
   dauDe: DauDe;
   chiaPhan: boolean;
@@ -561,21 +653,7 @@ export const exportQuestionsToWord = async (
       // Options
       const qType = q.question_type;
       if (qType === 'TN' || qType === 'NLC') {
-        childrenElements.push(
-          new Paragraph({
-            children: [
-              new TextRun({ text: `A. `, bold: true, color: "0000FF" }),
-              ...(await processTextLine(cleanHtmlNewlinesInTags(`${q.option_a || ""}    `))),
-              new TextRun({ text: `B. `, bold: true, color: "0000FF" }),
-              ...(await processTextLine(cleanHtmlNewlinesInTags(`${q.option_b || ""}    `))),
-              new TextRun({ text: `C. `, bold: true, color: "0000FF" }),
-              ...(await processTextLine(cleanHtmlNewlinesInTags(`${q.option_c || ""}    `))),
-              new TextRun({ text: `D. `, bold: true, color: "0000FF" }),
-              ...(await processTextLine(cleanHtmlNewlinesInTags(`${q.option_d || ""}`))),
-            ],
-            spacing: { before: 100, after: 200 }
-          })
-        );
+        childrenElements.push(...await dungPhuongAnNLC(q, processTextLine));
       } else if (qType === 'DS') {
         childrenElements.push(new Paragraph({ children: [new TextRun({ text: `a) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_a || "")))] }));
         childrenElements.push(new Paragraph({ children: [new TextRun({ text: `b) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_b || "")))] }));

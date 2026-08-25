@@ -10,11 +10,12 @@ import { dungGoiDeOnline, timCauThieuDapAn } from "@/utils/dayDeSangOnline";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
 import MenuGon, { MucMenu, NhomMenu, NganMenu } from "@/components/admin/MenuGon";
+import SoanLaiCauModal, { type OSoanLai } from "@/components/admin/SoanLaiCauModal";
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, Pencil, Shuffle, ArrowLeft, ArrowRight, Printer, Download,
   CheckCircle, FileText, CheckSquare, Square, RotateCcw, Type, Replace, Plus, ListChecks, X,
-  Save, AlertTriangle, Send
+  Save, AlertTriangle, Send, Sparkles
 } from "lucide-react";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
@@ -104,6 +105,40 @@ function SelectContent() {
   const moKhungDoiCau = (lineIdx: number, questionId: string | null) => {
     setDongDangDoi(lineIdx);
     setCauDangDoi(questionId);
+  };
+
+  /** Câu đang nhờ AI soạn lại theo yêu cầu riêng. */
+  const [oSoanLai, setOSoanLai] = useState<OSoanLai | null>(null);
+
+  /**
+   * Thay một câu trong đề bằng câu AI vừa soạn.
+   *
+   * Nhét câu mới vào chính danh sách ứng viên của dòng đó rồi đổi lựa chọn sang nó, chứ
+   * không nạp lại cả trang: nạp lại là mất hết những câu thầy cô đã tick ở các dòng khác.
+   * Câu mới đã được lưu vào ngân hàng trước khi gọi tới đây nên nó có id thật.
+   */
+  const thayCauDaSoanLai = (lineIdx: number, idCauCu: string, cauMoi: any) => {
+    setChuaLuu(true);
+    setLines(prev => prev.map((l, i) => {
+      if (i !== lineIdx) return l;
+      const moi = {
+        ...cauMoi,
+        id: cauMoi.id || cauMoi.temp_id,
+        usage_count: 0,
+        question_type: l.item.question_type,
+        difficulty: l.item.difficulty,
+        math_form: l.item.math_form,
+      };
+      // Đặt đúng chỗ câu cũ để thứ tự câu trong đề không nhảy lung tung
+      const viTri = l.candidates.findIndex(q => q.id === idCauCu);
+      const dsMoi = [...l.candidates];
+      if (viTri >= 0) dsMoi.splice(viTri, 0, moi); else dsMoi.push(moi);
+
+      const chon = new Set(l.selectedIds);
+      chon.delete(idCauCu);
+      chon.add(moi.id);
+      return { ...l, candidates: dsMoi, selectedIds: chon };
+    }));
   };
 
   const [editingQuestion, setEditingQuestion] = useState<any>(null);
@@ -762,6 +797,16 @@ function SelectContent() {
                             >
                               <Replace className="w-3.5 h-3.5" /> Đổi câu khác
                             </button>
+                            {/* Kho không có câu nào vừa ý thì nhờ AI soạn hẳn câu mới theo
+                                yêu cầu - "Đổi câu khác" chỉ xoay vòng trong đúng những câu
+                                đang có, dạng nào kho nghèo thì bấm mãi vẫn thế. */}
+                            <button
+                              onClick={() => setOSoanLai({ dongIdx: lineIdx, cauGoc: q, grade, subject })}
+                              title="Kho không có câu vừa ý thì nhờ AI soạn câu mới theo yêu cầu"
+                              className="flex items-center gap-1 text-xs font-bold text-violet-700 hover:bg-violet-50 px-2 py-1 rounded-lg border border-violet-300 whitespace-nowrap"
+                            >
+                              <Sparkles className="w-3.5 h-3.5" /> Soạn lại theo ý
+                            </button>
                             <button
                               onClick={() => setEditingQuestion(q)}
                               className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:bg-indigo-50 px-2 py-1 rounded-lg border border-indigo-200"
@@ -839,6 +884,16 @@ function SelectContent() {
                       <span className="print:hidden inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
                         Đã xuất hiện: {q.usage_count || 0} lần
                       </span>
+                      <button
+                        onClick={() => {
+                          const lineIdx = dongCuaCau.get(q.id);
+                          if (lineIdx !== undefined) setOSoanLai({ dongIdx: lineIdx, cauGoc: q, grade, subject });
+                        }}
+                        title="Kho không có câu vừa ý thì nhờ AI soạn câu mới theo yêu cầu"
+                        className="print:hidden inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-violet-50 text-violet-700 border border-violet-300 hover:bg-violet-100"
+                      >
+                        <Sparkles className="w-3 h-3" /> Soạn lại theo ý
+                      </button>
                       <button
                         onClick={() => {
                           const lineIdx = dongCuaCau.get(q.id);
@@ -989,6 +1044,14 @@ function SelectContent() {
         onClose={() => setEditingQuestion(null)}
         question={editingQuestion}
         onSave={handleSaveEdit}
+      />
+
+      {/* Kho không có câu vừa ý thì nhờ AI soạn hẳn câu mới theo yêu cầu, ngay tại câu đó. */}
+      <SoanLaiCauModal
+        isOpen={!!oSoanLai}
+        onClose={() => setOSoanLai(null)}
+        o={oSoanLai}
+        onThay={thayCauDaSoanLai}
       />
     </div>
   );
