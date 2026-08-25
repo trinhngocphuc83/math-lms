@@ -713,6 +713,16 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                 const url = layAnhTrongCau(block.content.question);
                                 if (url) setOVeLai({ idx, urlCu: url });
                              }}
+                             onQuayVeAnhChup={() => {
+                                const cu = layAnhTrongCau(block.content.question);
+                                const anhChup = block.content.autoCropMetadata?.urlAnhCat;
+                                if (!cu || !anhChup) return;
+                                updateBlockContent(idx, {
+                                   ...block.content,
+                                   question: String(block.content.question || '').split(cu).join(anhChup),
+                                   autoCropMetadata: { ...block.content.autoCropMetadata, daVeLai: false },
+                                });
+                             }}
                           />
                        ) : (canChenAnh(block.content.question)) && (
                           <div className="bg-red-50 border border-red-200 px-5 py-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-pulse">
@@ -933,7 +943,16 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
               if (!b || b.type !== 'quiz') return;
               // Thay đúng địa chỉ ảnh cũ trong nội dung câu, giữ nguyên mọi thứ khác
               const moi = String(b.content.question || '').split(oVeLai.urlCu).join(urlMoi);
-              updateBlockContent(oVeLai.idx, { ...b.content, question: moi });
+              updateBlockContent(oVeLai.idx, {
+                 ...b.content,
+                 question: moi,
+                 // Ghi nhớ ảnh chụp cũ để còn quay về, và đánh dấu đây là bản vẽ lại
+                 autoCropMetadata: {
+                    ...(b.content.autoCropMetadata || {}),
+                    urlAnhCat: b.content.autoCropMetadata?.urlAnhCat || oVeLai.urlCu,
+                    daVeLai: true,
+                 },
+              });
               setOVeLai(null);
            }}
         />
@@ -947,12 +966,14 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
  * nhìn một cái là biết AI cắt đúng hình của câu này hay nhầm sang chỗ khác. Ảnh đã cắt
  * nằm ngay trong nội dung câu hỏi phía dưới nên ở đây không lặp lại.
  */
-function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai }: {
+function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnhChup }: {
    meta: any;
    onRecrop: () => void;
    /** Ảnh đã cắt đang nằm trong nội dung câu - để chấm độ nét và vẽ lại. */
    urlAnhDaCat?: string;
    onVeLai?: () => void;
+   /** Bỏ bản vẽ lại, dùng lại đúng ảnh chụp đã cắt. */
+   onQuayVeAnhChup?: () => void;
 }) {
    const [showSource, setShowSource] = React.useState(false);
    const box = meta?.box;
@@ -964,24 +985,38 @@ function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai }: {
     */
    const [doNet, setDoNet] = React.useState<{ diem: number; beRong: number; nenVeLai: boolean; moTa: string } | null>(null);
    React.useEffect(() => {
-      if (!urlAnhDaCat) { setDoNet(null); return; }
+      // Lúc quét đề đã chấm sẵn rồi thì dùng lại, khỏi tải ảnh về chấm lần nữa
+      if (meta?.doNet) { setDoNet(meta.doNet); return; }
+      if (!urlAnhDaCat || meta?.daVeLai) { setDoNet(null); return; }
       let con = true;
       chamDoNetAnh(urlAnhDaCat).then(k => { if (con) setDoNet(k); }).catch(() => { if (con) setDoNet(null); });
       return () => { con = false; };
-   }, [urlAnhDaCat]);
+   }, [urlAnhDaCat, meta?.doNet, meta?.daVeLai]);
 
    return (
       <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex flex-col gap-3">
          <div className="flex items-start justify-between gap-3 flex-wrap">
             <div className="flex-1 min-w-0">
-               <h4 className="text-orange-800 font-bold flex items-center gap-2 mb-1">
-                  <ImageIcon className="w-5 h-5"/> {box ? 'AI đã tự cắt ảnh và chèn vào câu hỏi' : 'Ảnh gốc đính kèm'}
+               <h4 className="text-orange-800 font-bold flex items-center gap-2 mb-1 flex-wrap">
+                  <ImageIcon className="w-5 h-5"/> {box ? 'AI đã xử lý hình và chèn vào câu hỏi' : 'Ảnh gốc đính kèm'}
+                  {meta?.daVeLai && (
+                     <span className="px-2 py-0.5 rounded-full text-[11px] font-black bg-sky-100 text-sky-700 border border-sky-300">
+                        Máy đã VẼ LẠI bằng nét vector
+                     </span>
+                  )}
                </h4>
                <p className="text-[13px] text-orange-700 leading-relaxed">
-                  {box
+                  {meta?.daVeLai
+                     ? 'Hình này máy vẽ lại nên in cỡ nào cũng sắc. Máy VẼ LẠI chứ không làm sạch - hãy soi kỹ từng con số, sai thì quay về ảnh chụp.'
+                     : box
                      ? 'Hãy đối chiếu với ảnh gốc để chắc chắn cắt đúng hình của câu này. Nếu lệch, bấm "Cắt lại" để tự chọn vùng.'
                      : 'AI đã phát hiện ảnh từ tài liệu gốc. Dùng nút Cắt lại nếu chưa chuẩn xác.'}
                </p>
+               {!meta?.daVeLai && meta?.lyDoKhongVeLai && (
+                  <p className="text-[12px] text-gray-500 mt-1">
+                     Máy không vẽ lại được hình này: {meta.lyDoKhongVeLai}
+                  </p>
+               )}
             </div>
             <div className="flex items-center gap-2 shrink-0">
                {meta?.originalUrl && (
@@ -993,6 +1028,18 @@ function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai }: {
                      <ImageIcon className="w-4 h-4"/> {showSource ? 'Ẩn ảnh gốc' : box ? 'Xem ảnh gốc (khung đỏ)' : 'Xem ảnh gốc'}
                   </button>
                )}
+               {/* Bản vẽ lại sai số liệu thì phải có đường lui - ảnh chụp vẫn giữ nguyên
+                   trên Storage nên chỉ việc trỏ lại vào nó. */}
+               {meta?.daVeLai && meta?.urlAnhCat && onQuayVeAnhChup && (
+                  <button
+                     type="button"
+                     onClick={onQuayVeAnhChup}
+                     title="Bản vẽ lại sai thì quay về đúng ảnh chụp cắt ra từ tài liệu"
+                     className="bg-white border border-gray-300 text-gray-700 px-3 py-2 rounded-lg font-bold hover:bg-gray-50 text-sm flex items-center gap-1.5"
+                  >
+                     <ImageIcon className="w-4 h-4"/> Quay về ảnh chụp
+                  </button>
+               )}
                {urlAnhDaCat && onVeLai && (
                   <button
                      type="button"
@@ -1000,7 +1047,7 @@ function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai }: {
                      title="Ảnh chụp mờ thì nhờ AI vẽ lại bằng nét vector, in cỡ nào cũng sắc"
                      className="bg-white border border-sky-400 text-sky-700 px-3 py-2 rounded-lg font-bold hover:bg-sky-50 text-sm flex items-center gap-1.5"
                   >
-                     <Sparkles className="w-4 h-4"/> Nhờ AI vẽ lại
+                     <Sparkles className="w-4 h-4"/> {meta?.daVeLai ? 'Vẽ lại lượt khác' : 'Nhờ AI vẽ lại'}
                   </button>
                )}
                <button

@@ -85,6 +85,114 @@ export function chuanHoaKhungSvg(svg: string): string {
   return s;
 }
 
+/* ===================== VẼ LẠI TỰ ĐỘNG NGAY SAU KHI QUÉT ===================== */
+
+const LOI_DAN_TU_DONG = `Bạn nhìn thấy một HÌNH ẢNH cắt từ đề thi. Làm hai việc:
+
+VIỆC 1 - THẨM ĐỊNH: hình này có vẽ lại được bằng SVG cho giống hệt không?
+  VẼ LẠI ĐƯỢC: đồ thị, hệ trục, bảng số liệu, sơ đồ mạch điện, hình hình học, bảng biến
+  thiên, sơ đồ khối - tức là những hình chỉ gồm đường nét, chữ và hình khối đơn giản.
+  KHÔNG VẼ LẠI ĐƯỢC: ảnh chụp thật (đồ vật, thí nghiệm, người), tranh vẽ nhiều màu có
+  đổ bóng, hình có kết cấu/vân phức tạp, ảnh quá mờ không đọc nổi chi tiết.
+
+VIỆC 2 - nếu vẽ lại được thì vẽ, theo đúng các quy tắc sau:
+  1. TUYỆT ĐỐI KHÔNG đổi bất kỳ con số, chữ, nhãn, đơn vị nào. Chép y nguyên. Nhìn không
+     rõ chỗ nào thì coi như KHÔNG vẽ lại được, chứ đừng đoán bừa.
+  2. Giữ đúng bố cục, tỉ lệ và vị trí tương đối của mọi thành phần.
+  3. Nét đen (#000) trên nền trắng, trừ khi hình gốc có màu thì giữ đúng màu đó.
+  4. Chữ dùng font-family="Times New Roman, serif", cỡ vừa phải so với hình.
+  5. Có viewBox, KHÔNG đặt width/height cố định.
+  6. KHÔNG dùng <script>, <foreignObject>, <image>, hay liên kết ra ngoài.
+
+TRẢ VỀ ĐÚNG KHUÔN SAU, không giải thích gì thêm, không bọc trong JSON hay dấu nháy:
+
+VELAIDUOC: co
+<svg ...>...</svg>
+
+hoặc, nếu không vẽ lại được:
+
+VELAIDUOC: khong
+LYDO: <nói ngắn gọn vì sao>`;
+
+export interface KetQuaThamDinh {
+  veLaiDuoc: boolean;
+  lyDo: string;
+  svg: string;
+  chuTrongHinh: string[];
+  model: string;
+}
+
+/** Đọc base64 của một Blob, bỏ phần tiền tố "data:...;base64,". */
+async function blobSangBase64(blob: Blob): Promise<string> {
+  return new Promise<string>((ok, hong) => {
+    const fr = new FileReader();
+    fr.onload = () => ok(String(fr.result).split(",")[1] || "");
+    fr.onerror = () => hong(new Error("Không đọc được ảnh"));
+    fr.readAsDataURL(blob);
+  });
+}
+
+/**
+ * Vừa thẩm định vừa vẽ, trong MỘT lượt gọi.
+ *
+ * Gộp hai việc vào một lượt chứ không hỏi trước rồi vẽ sau: quét một tài liệu có chục
+ * hình thì mỗi lượt gọi thêm là thêm nửa phút chờ. Máy nhìn hình một lần là đủ để vừa
+ * biết có vẽ lại nổi không, vừa vẽ luôn.
+ *
+ * Máy tự nhận "không vẽ được" khi gặp ảnh chụp thật hoặc hình quá mờ - đó là điều mong
+ * muốn: thà rơi về ảnh cắt còn hơn vẽ bừa rồi sai số liệu.
+ */
+export async function thamDinhVaVeLai(
+  cauHinh: CauHinhAI,
+  anhCat: Blob,
+): Promise<KetQuaThamDinh> {
+  const base64 = await blobSangBase64(anhCat);
+  /*
+   * CỐ Ý không xin JSON.
+   *
+   * Bản đầu bắt máy trả JSON có trường "svg". Chạy thử trên ảnh thật thì hỏng 1/3 số
+   * lượt: mã SVG dài nhiều dòng, nhét vào một chuỗi JSON là phải thoát hết dấu xuống
+   * dòng, máy làm không chuẩn nên JSON.parse gãy. Khuôn phẳng "VELAIDUOC: co" rồi tới
+   * thẳng thẻ <svg> thì không có gì để hỏng.
+   */
+  const kq = await goiGeminiTrenTrinhDuyet(
+    cauHinh,
+    [{ text: LOI_DAN_TU_DONG }, { inlineData: { data: base64, mimeType: anhCat.type || "image/png" } }],
+    { temperature: 0.2 },
+  );
+
+  const tho = (kq.text.match(/<svg[\s\S]*<\/svg>/i) || [])[0] || "";
+  const noiKhong = /VELAIDUOC\s*:\s*khong/i.test(kq.text);
+  const lyDoMay = (kq.text.match(/LYDO\s*:\s*([^\n]+)/i) || [])[1] || "";
+
+  // Máy nói không vẽ được, HOẶC nói được mà chẳng có thẻ svg nào - đều rơi về ảnh cắt
+  if (noiKhong || !tho.trim()) {
+    return {
+      veLaiDuoc: false,
+      lyDo: (lyDoMay || "máy không vẽ lại được hình này").trim(),
+      svg: "", chuTrongHinh: [], model: kq.model,
+    };
+  }
+
+  const { sach } = locSvgAnToan(tho);
+  const svg = chuanHoaKhungSvg(sach);
+
+  /*
+   * Chốt cuối: SVG phải thật sự có hình.
+   *
+   * Máy đôi khi trả về khung <svg> rỗng hoặc chỉ có mỗi nền trắng mà vẫn báo vẽ được.
+   * Nhận bừa thì hình biến mất khỏi câu hỏi mà không ai hay, nên đếm số nét: dưới 3
+   * thành phần vẽ thì coi như hỏng, rơi về ảnh cắt.
+   */
+  const soNet = (svg.match(/<(line|polyline|path|rect|circle|ellipse|polygon|text)[\s>]/g) || []).length;
+  if (soNet < 3) {
+    return { veLaiDuoc: false, lyDo: "bản vẽ máy trả về gần như rỗng", svg: "", chuTrongHinh: [], model: kq.model };
+  }
+
+  const chuTrongHinh = [...svg.matchAll(/<text[^>]*>([^<]*)<\/text>/g)].map(m => m[1].trim()).filter(Boolean);
+  return { veLaiDuoc: true, lyDo: "", svg, chuTrongHinh, model: kq.model };
+}
+
 /** Nhờ AI đọc một ảnh hình vẽ rồi trả về mã SVG đã lọc sạch. */
 export async function veLaiHinhBangAI(
   cauHinh: CauHinhAI,
@@ -208,7 +316,26 @@ export async function chamDoNetAnh(urlAnh: string): Promise<DiemNetAnh> {
     i.onerror = () => hong(new Error("Không đọc được ảnh để chấm độ nét"));
     i.src = urlAnh;
   });
+  return chamDoNetTuAnh(img);
+}
 
+/** Chấm độ nét ngay trên ảnh vừa cắt, chưa cần tải lên Storage. */
+export async function chamDoNetTuBlob(blob: Blob): Promise<DiemNetAnh> {
+  const url = URL.createObjectURL(blob);
+  try {
+    const img = await new Promise<HTMLImageElement>((ok, hong) => {
+      const i = new Image();
+      i.onload = () => ok(i);
+      i.onerror = () => hong(new Error("Không đọc được ảnh để chấm độ nét"));
+      i.src = url;
+    });
+    return chamDoNetTuAnh(img);
+  } finally {
+    URL.revokeObjectURL(url);
+  }
+}
+
+function chamDoNetTuAnh(img: HTMLImageElement): DiemNetAnh {
   const w = img.naturalWidth, h = img.naturalHeight;
   const canvas = document.createElement("canvas");
   canvas.width = w; canvas.height = h;

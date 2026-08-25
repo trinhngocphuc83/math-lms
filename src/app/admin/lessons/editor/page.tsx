@@ -24,7 +24,8 @@ import { saveAs } from "file-saver";
 import { fetchImageWithDimensions, base64ToUint8Array } from "@/utils/exportDocx";
 import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, callGeminiWithKeyFallback, filesToGeminiParts } from "@/utils/aiQuestionScan";
 import { layCauHinhAI } from "@/utils/geminiBrowser";
-import { autoCropImage, uploadSourceImage, type NormalizedBox } from "@/utils/autoCropImage";
+import { autoCropImage, uploadSourceImage, cropImageFromBoundingBox, uploadCroppedImage, type NormalizedBox } from "@/utils/autoCropImage";
+import { thamDinhVaVeLai, svgSangPng, chamDoNetTuBlob } from "@/utils/veLaiHinhAI";
 import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
 
@@ -644,9 +645,11 @@ const autoCropBlocksImages = async (
     parsedBlocks: Block[],
     sourceFiles: File[],
     supabase: any,
-): Promise<{ blocks: Block[]; croppedCount: number; failedCount: number }> => {
+    cauHinhAI: any | null,
+): Promise<{ blocks: Block[]; croppedCount: number; failedCount: number; redrawnCount: number }> => {
     let croppedCount = 0;
     let failedCount = 0;
+    let redrawnCount = 0;
 
     for (const b of parsedBlocks) {
         try {
@@ -659,7 +662,50 @@ const autoCropBlocksImages = async (
                 const file = sourceFiles[box.fileIndex];
                 if (!file) { delete b.content.viTriHinhAnh; continue; }
 
-                const url = await autoCropImage(supabase, file, box);
+                /*
+                 * Ưu tiên VẼ LẠI, cắt ảnh chỉ là phương án dự phòng.
+                 *
+                 * Ảnh chụp từ sách cắt ra thì nét chỉ đến thế, in lên A4 hay rỗ. Hình nào
+                 * chỉ gồm đường nét và chữ (đồ thị, bảng, mạch điện, hình học) thì máy vẽ
+                 * lại được bằng SVG, nét vector in cỡ nào cũng sắc. Máy tự nhận "không vẽ
+                 * được" với ảnh chụp thật hay hình quá mờ - lúc đó mới dùng ảnh cắt, và
+                 * chấm độ nét để cảnh báo nếu mờ.
+                 */
+                const anhCat = await cropImageFromBoundingBox(file, box);
+
+                let url = '';
+                let daVeLai = false;
+                let lyDoKhongVeLai = '';
+                let svgVeLai = '';
+                let doNet: any = null;
+
+                if (cauHinhAI) {
+                  try {
+                    const td = await thamDinhVaVeLai(cauHinhAI, anhCat);
+                    if (td.veLaiDuoc) {
+                      const png = await svgSangPng(td.svg);
+                      url = await uploadCroppedImage(supabase, png);
+                      daVeLai = true;
+                      svgVeLai = td.svg;
+                      redrawnCount++;
+                    } else {
+                      lyDoKhongVeLai = td.lyDo;
+                    }
+                  } catch (e: any) {
+                    lyDoKhongVeLai = 'gọi máy vẽ lại không được: ' + (e?.message || 'lỗi không rõ');
+                  }
+                } else {
+                  lyDoKhongVeLai = 'chưa lấy được khoá AI';
+                }
+
+                // Luôn lưu ảnh cắt: hoặc để dùng luôn, hoặc để đối chiếu và quay về khi
+                // bản vẽ lại sai số liệu.
+                const urlAnhCat = await uploadCroppedImage(supabase, anhCat);
+                if (!url) {
+                  url = urlAnhCat;
+                  try { doNet = await chamDoNetTuBlob(anhCat); } catch { /* chấm hỏng thì thôi */ }
+                }
+
                 const imageMarkdown = `\n\n![Hình minh họa](${url})\n\n`;
                 const question = b.content.question || '';
                 const replaced = question.replace(IMAGE_PLACEHOLDER_STRIP_REGEX, imageMarkdown);
@@ -671,7 +717,11 @@ const autoCropBlocksImages = async (
                 let urlAnhGoc = '';
                 try { urlAnhGoc = await uploadSourceImage(supabase, file); }
                 catch (e) { console.warn('Không tải được ảnh trang gốc lên Storage:', e); }
-                b.content.autoCropMetadata = { originalUrl: urlAnhGoc, box };
+                b.content.autoCropMetadata = {
+                  originalUrl: urlAnhGoc, box,
+                  urlAnhCat, daVeLai, lyDoKhongVeLai, svgVeLai,
+                  doNet: doNet ? { diem: doNet.diem, beRong: doNet.beRong, nenVeLai: doNet.nenVeLai, moTa: doNet.moTa } : null,
+                };
                 delete b.content.viTriHinhAnh; // đã dùng xong, không lưu vào CSDL cho rác
                 croppedCount++;
                 continue;
@@ -699,7 +749,7 @@ const autoCropBlocksImages = async (
         }
     }
 
-    return { blocks: parsedBlocks, croppedCount, failedCount };
+    return { blocks: parsedBlocks, croppedCount, failedCount, redrawnCount };
 };
 
 const serializeBlocksToMarkdown = (blocks: Block[]): string => {
@@ -1449,7 +1499,7 @@ function EditorContent() {
         (f, loi) => alert(`Không đọc được tệp ${f.name}: ${loi}`),
       );
       setTrangThaiNguon('');
-      let ketQuaCatAnh: { daCat: number; hong: number } | null = null;
+      let ketQuaCatAnh: { daCat: number; hong: number; veLai: number } | null = null;
 
       const imageParts = await filesToGeminiParts(anhNguon);
 
@@ -1462,13 +1512,16 @@ function EditorContent() {
       if (anhNguon.length > 0) {
         try {
           const parsed = parseMarkdownToBlocks(text);
-          const { blocks: croppedBlocks, croppedCount, failedCount } = await autoCropBlocksImages(
+          setTrangThaiNguon('Đang xử lý hình minh hoạ (ưu tiên vẽ lại bằng nét vector)...');
+          const { blocks: croppedBlocks, croppedCount, failedCount, redrawnCount } = await autoCropBlocksImages(
             parsed,
             anhNguon,
             supabase,
+            cauHinh,
           );
           if (croppedCount > 0) text = serializeBlocksToMarkdown(croppedBlocks);
-          ketQuaCatAnh = { daCat: croppedCount, hong: failedCount };
+          ketQuaCatAnh = { daCat: croppedCount, hong: failedCount, veLai: redrawnCount };
+          setTrangThaiNguon('');
         } catch (e) {
           console.warn('Bỏ qua bước tự cắt ảnh, giữ nguyên kết quả quét:', e);
         }
@@ -1489,11 +1542,20 @@ function EditorContent() {
         setLastAnalyzedImages(anhNguon.map(f => URL.createObjectURL(f)));
       }
       if (ketQuaCatAnh && (ketQuaCatAnh.daCat > 0 || ketQuaCatAnh.hong > 0)) {
+        const soCatAnh = ketQuaCatAnh.daCat - ketQuaCatAnh.veLai;
         alert(
-          `Đã tự cắt và chèn ${ketQuaCatAnh.daCat} ảnh minh hoạ.`
+          `Đã xử lý ${ketQuaCatAnh.daCat} hình minh hoạ:`
+          + `
+  - ${ketQuaCatAnh.veLai} hình máy VẼ LẠI bằng nét vector (in cỡ nào cũng sắc)`
+          + `
+  - ${soCatAnh} hình dùng ảnh cắt (máy không vẽ lại được)`
+          + `
+
+Hình nào máy vẽ lại, hãy soi kỹ các con số trước khi dùng - máy vẽ lại chứ không phải làm sạch.`
           + (ketQuaCatAnh.hong > 0
               ? `
-${ketQuaCatAnh.hong} câu không cắt được, đã giữ dấu [CÓ HÌNH ẢNH KÈM THEO] để thầy cô cắt tay.`
+
+${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH ẢNH KÈM THEO] để thầy cô cắt tay.`
               : '')
         );
       }
