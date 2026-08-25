@@ -1038,6 +1038,20 @@ export default function BatchQueuePage() {
           onClose={() => setCauDoiChieu(null)}
           cauMoi={cauDoiChieu}
           cauTrongLo={reviewQueue.map((r) => r.question)}
+          onGiuCau={() => {
+            // Gỡ cờ để nhãn "Trùng / nghi trùng" biến mất và câu tự được tick lại.
+            // Đường lưu ở đây vốn đã bỏ cờ cho câu thầy cô tự tick, nhưng để nguyên nhãn
+            // đỏ thì lần sau mở lại vẫn tưởng câu chưa được soi.
+            const id = cauDoiChieu.temp_id;
+            setReviewQueue((prev) => prev.map((r) => r.question.temp_id !== id ? r : {
+              ...r,
+              selected: true,
+              reasons: r.reasons.filter((x) => x !== 'duplicate').length
+                ? r.reasons.filter((x) => x !== 'duplicate')
+                : ['clean'],
+              question: { ...r.question, isDuplicate: false, mucDoTrung: undefined, lyDoTrung: undefined, duplicateId: undefined },
+            }));
+          }}
         />
       )}
     </div>

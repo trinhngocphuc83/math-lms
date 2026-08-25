@@ -30,6 +30,15 @@ interface DuplicateCompareModalProps {
   cauTrongLo?: any[];
   /** Bỏ hẳn câu đang soạn. Không truyền thì ẩn nút. */
   onBoCau?: () => void;
+  /**
+   * Thầy cô đã soi hai câu và quyết GIỮ - gỡ hẳn cờ nghi trùng cho câu đang soạn.
+   *
+   * Bắt buộc phải có việc này chứ không chỉ đóng hộp thoại: cửa lưu chung loại thẳng
+   * mọi câu còn mang cờ isDuplicate, nên bấm "Vẫn giữ" xong đi lưu vẫn bị báo "câu này
+   * bị bỏ qua vì trùng" - đúng cái bẫy thầy cô gặp. Hai câu dùng chung dữ liệu nhưng
+   * hỏi khác nhau là chuyện bình thường, máy chỉ báo chứ không được quyết thay.
+   */
+  onGiuCau?: () => void;
 }
 
 type CheDoXem = "dung" | "soi";
@@ -37,7 +46,7 @@ type CheDoXem = "dung" | "soi";
 const O_TRONG = "—";
 
 export default function DuplicateCompareModal({
-  isOpen, onClose, cauMoi, cauTrongLo = [], onBoCau,
+  isOpen, onClose, cauMoi, cauTrongLo = [], onBoCau, onGiuCau,
 }: DuplicateCompareModalProps) {
   const [cauCu, setCauCu] = useState<any>(null);
   const [dangTai, setDangTai] = useState(false);
@@ -261,8 +270,10 @@ export default function DuplicateCompareModal({
                 <Trash2 className="w-4 h-4" /> Bỏ câu đang soạn
               </button>
             )}
+            {/* Giữ câu thì phải GỠ CỜ nghi trùng, không chỉ đóng hộp thoại - xem onGiuCau */}
             <button
-              onClick={onClose}
+              onClick={() => { onGiuCau?.(); onClose(); }}
+              title={onGiuCau ? "Bỏ dấu nghi trùng, câu này lưu vào kho bình thường" : undefined}
               className="flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg text-sm transition-colors"
             >
               <Check className="w-4 h-4" /> Vẫn giữ câu này

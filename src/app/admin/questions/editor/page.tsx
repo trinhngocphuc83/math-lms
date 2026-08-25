@@ -412,14 +412,35 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     const q = parsedQuestions.find(q => q.temp_id === tempId);
     if (!q) return;
 
+    /*
+     * Bấm lưu ĐÚNG MỘT câu là hành động có chủ đích, không phải lưu hàng loạt.
+     *
+     * Bản cũ cứ thế đưa vào cửa lưu chung, cửa đó loại thẳng câu còn cờ nghi trùng rồi
+     * trả về 0, và trang báo "câu này bị bỏ qua vì trùng" - bấm bao nhiêu lần cũng thế,
+     * không có đường nào lưu được. Mà hai câu dùng chung một dữ kiện (cùng đồ thị, cùng
+     * bảng số liệu) nhưng hỏi khác nhau là chuyện thường gặp. Nay hỏi lại một câu rồi
+     * lưu theo ý thầy cô, đúng tinh thần "máy chỉ báo, thầy cô quyết".
+     */
+    let canLuu = q;
+    if (q.isDuplicate) {
+      const mucDo = q.mucDoTrung === 'trung' ? 'TRÙNG' : 'NGHI TRÙNG';
+      if (!confirm(
+        `Máy đánh dấu câu này ${mucDo} với một câu đã có trong kho`
+        + (q.diemTrung ? ` (giống ${Math.round(q.diemTrung)}%)` : '')
+        + '.\n\nThầy cô đã đối chiếu và vẫn muốn lưu chứ?\n\n'
+        + 'Bấm OK thì câu được lưu và bỏ hẳn dấu nghi trùng.'
+      )) return;
+      canLuu = { ...q, isDuplicate: false };
+      boCoNghiTrung(tempId);
+    }
+
     try {
-      const kq = await saveQuestionsToBank(supabase, [q]);
+      const kq = await saveQuestionsToBank(supabase, [canLuu]);
 
       if (kq.insertedCount === 0) {
-        const thieu = kq.thieuPhanLoai.length
+        alert(kq.thieuPhanLoai.length
           ? 'Câu này chưa đủ Chương / Bài / Dạng nên chưa lưu được. Hãy chọn đủ ở khung phân loại rồi lưu lại.'
-          : 'Câu này bị bỏ qua vì trùng với câu đã có trong kho.';
-        alert(thieu);
+          : 'Chưa lưu được câu này. Hãy thử lại, nếu vẫn không được thì báo lại để kiểm tra.');
         return;
       }
 
@@ -433,6 +454,20 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     } catch (e: any) {
       alert("Lỗi khi lưu câu hỏi: " + e.message);
     }
+  };
+
+  /**
+   * Thầy cô đã soi hai câu và quyết giữ - gỡ hẳn cờ nghi trùng.
+   *
+   * Không gỡ thì cửa lưu chung loại thẳng câu này, mà lại báo chung chung "câu bị bỏ qua
+   * vì trùng" nên thầy cô tưởng app hỏng. Hai câu dùng chung một dữ kiện (cùng đồ thị,
+   * cùng bảng số liệu) nhưng hỏi khác nhau là chuyện thường gặp, máy chỉ được báo chứ
+   * không được quyết thay.
+   */
+  const boCoNghiTrung = (tempId: string) => {
+    setParsedQuestions(prev => prev.map(q => q.temp_id === tempId
+      ? { ...q, isDuplicate: false, mucDoTrung: undefined, lyDoTrung: undefined, duplicateId: undefined }
+      : q));
   };
 
   const handleModalSave = (updated: QuestionData) => {
@@ -1290,6 +1325,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
           cauMoi={cauDoiChieu}
           cauTrongLo={parsedQuestions}
           onBoCau={cauDoiChieu.temp_id ? () => handleRemoveQuestion(cauDoiChieu.temp_id!) : undefined}
+          onGiuCau={cauDoiChieu.temp_id ? () => boCoNghiTrung(cauDoiChieu.temp_id!) : undefined}
         />
       )}
     </div>
