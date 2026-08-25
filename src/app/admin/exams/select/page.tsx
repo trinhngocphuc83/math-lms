@@ -312,6 +312,11 @@ function SelectContent() {
   const soThuTuTrongDe = new Map<string, number>();
   finalQuestions.forEach((q, i) => soThuTuTrongDe.set(q.id, i + 1));
 
+  /** Dòng ma trận của mỗi câu đã chọn, để màn "Xem đề hoàn chỉnh" bỏ được một câu mà
+   * không cần mở khung đổi câu - bấm bỏ là gọi thẳng toggleCandidate(lineIdx, id). */
+  const dongCuaCau = new Map<string, number>();
+  lines.forEach((l, i) => l.candidates.forEach(q => { if (l.selectedIds.has(q.id)) dongCuaCau.set(q.id, i); }));
+
   /* ===================== LƯU BỘ ĐỀ ===================== */
 
   const tenDeGoiY = () =>
@@ -725,9 +730,13 @@ function SelectContent() {
                       className="min-h-[120px] rounded-xl border-2 border-dashed border-indigo-300 bg-indigo-50/40 hover:bg-indigo-50 text-indigo-700 font-bold flex flex-col items-center justify-center gap-1.5 transition-colors"
                     >
                       <Plus className="w-6 h-6" />
-                      Chọn thêm {line.item.count - selectedCount} câu
+                      {/* Nút MỜI bấm để tự tay chọn - không phải câu tự sinh ra. Sau "Bỏ chọn
+                          hết" (selectedCount = 0), đổi chữ để khỏi tưởng nhầm là máy tự thêm lại. */}
+                      {selectedCount === 0 ? `Bấm để chọn ${line.item.count} câu` : `Chọn thêm ${line.item.count - selectedCount} câu`}
                       <span className="text-xs font-medium text-indigo-500">
-                        Kho có {line.candidates.length} câu cùng dạng này
+                        {selectedCount === 0
+                          ? `Chưa chọn câu nào - kho có ${line.candidates.length} câu cùng dạng này`
+                          : `Kho có ${line.candidates.length} câu cùng dạng này`}
                       </span>
                     </button>
                   )}
@@ -775,10 +784,20 @@ function SelectContent() {
                   <div key={q.id} className="mb-5">
                     <div className="flex items-baseline gap-2 mb-1">
                       <span className="font-bold">Câu {soThuTuTrongDe.get(q.id)}.</span>
-                      {/* Nhãn nội bộ: KHÔNG in ra giấy */}
+                      {/* Nhãn và nút dưới đây: KHÔNG in ra giấy */}
                       <span className="print:hidden inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
                         Đã xuất hiện: {q.usage_count || 0} lần
                       </span>
+                      <button
+                        onClick={() => {
+                          const lineIdx = dongCuaCau.get(q.id);
+                          if (lineIdx !== undefined) toggleCandidate(lineIdx, q.id);
+                        }}
+                        title="Bỏ câu này khỏi đề"
+                        className="print:hidden inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-red-50 text-red-600 border border-red-200 hover:bg-red-100"
+                      >
+                        <X className="w-3 h-3" /> Bỏ câu này
+                      </button>
                     </div>
                     <QuestionPreviewCard
                       content={q.content}

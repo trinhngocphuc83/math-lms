@@ -13,7 +13,7 @@ import SoanMaTranModal from "@/components/admin/SoanMaTranModal";
 import type { ODeChon, DongMaTranAI } from "@/utils/soanMaTranAI";
 import { toBankType, bankTypeLabel, type BankType } from "@/utils/questionTypes";
 import {
-  type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem, tinhTongCau,
+  type DauDe, type DongMaTran, type KhuonDe, type ChiTieuLoai, dauDeMacDinh, diemMacDinh, tinhTongDiem, tinhTongCau,
   gomTheoLoai, lamTron, soDiemVN, KHUON_DE, MA_KHUON_DE, tenLamDutTruyVan } from "@/utils/deThi";
 
 interface CategoryData {
@@ -79,6 +79,13 @@ export default function ExamsManagerPage() {
   // Khuôn cấu trúc đề (3-2-2-3, 4-6, 7-3, 100% trắc nghiệm...) và đầu đề in trên giấy
   const [khuonDe, setKhuonDe] = useState("3-2-2-3");
   const [dauDe, setDauDe] = useState<DauDe>(() => dauDeMacDinh("Kiểm tra Giữa kỳ I", "12", "Đại số"));
+
+  // Khuôn đề TỰ LƯU: ngoài 5 khuôn dựng sẵn, thầy cô tự dựng cơ cấu số câu/điểm khác
+  // rồi lưu lại để chọn nhanh những lần sau. Mỗi khuôn tự lưu mang khoá "tc_<id>" để
+  // không đụng khoá của 5 khuôn dựng sẵn.
+  const [khuonTuyChinhList, setKhuonTuyChinhList] = useState<any[]>([]);
+  const [dangLuuKhuon, setDangLuuKhuon] = useState(false);
+  const [chuaTaoBangKhuon, setChuaTaoBangKhuon] = useState(false);
 
   // Ma trận mẫu đã lưu, để năm sau khỏi tick lại từ đầu
   const [mauList, setMauList] = useState<any[]>([]);
@@ -333,7 +340,7 @@ export default function ExamsManagerPage() {
    */
   const apKhuonDe = (ma: string) => {
     setKhuonDe(ma);
-    const chiTieu = KHUON_DE[ma]?.chiTieu || {};
+    const chiTieu = KHUON_TAT_CA[ma]?.chiTieu || {};
     setMatrixItems(prev => prev.map(item => {
       const loai = toBankType(item.question_type);
       const ct = loai ? (chiTieu as any)[loai] : null;
@@ -550,6 +557,89 @@ export default function ExamsManagerPage() {
       return ra;
     });
   };
+  /* ===================== KHUÔN ĐỀ TỰ LƯU ===================== */
+
+  /** Nạp danh sách khuôn đề tự lưu của chính mình. Không lọc theo lớp/phân môn vì
+   * cơ cấu số câu/điểm không gắn với một lớp cụ thể - khuôn 3-2-2-3 dùng được cho
+   * mọi lớp. */
+  const taiDanhSachKhuon = async () => {
+    try {
+      const res = await fetch('/api/admin/khuon-de');
+      const d = await res.json();
+      setChuaTaoBangKhuon(!!d.chuaTaoBang);
+      setKhuonTuyChinhList(d.danhSach || []);
+    } catch {
+      /* không lấy được danh sách khuôn cũng không chặn việc chính */
+    }
+  };
+
+  useEffect(() => { taiDanhSachKhuon(); }, []);
+
+  /** Bảng khuôn gộp: 5 khuôn dựng sẵn + khuôn tự lưu, để mọi chỗ tra cứu chỉ cần một
+   * bảng duy nhất thay vì rẽ hai nhánh built-in/tự lưu ở khắp nơi. */
+  const KHUON_TAT_CA: Record<string, KhuonDe> = {
+    ...KHUON_DE,
+    ...Object.fromEntries(khuonTuyChinhList.map(k => [
+      'tc_' + k.id,
+      { ten: '⭐ ' + k.ten, moTa: k.mo_ta || `${k.so_cau} câu · ${soDiemVN(Number(k.tong_diem) || 0)}đ`, chiTieu: k.chi_tieu } as KhuonDe,
+    ])),
+  };
+
+  /** Lưu cơ cấu số câu/điểm ĐANG CÓ trong ma trận thành một khuôn dùng lại. Điểm mỗi
+   * câu của từng loại lấy theo bình quân (tổng điểm loại / tổng số câu loại) - các
+   * dòng cùng loại trong một ma trận thực tế hầu như luôn cùng điểm mỗi câu, nên
+   * bình quân ra đúng con số thầy cô đang thấy trên bảng. */
+  const luuKhuonTuyChinh = async () => {
+    if (matrixItems.length === 0) return alert('Chưa có dòng nào trong ma trận để lưu khuôn!');
+    const ten = prompt('Đặt tên cho khuôn đề này:', '');
+    if (!ten) return;
+
+    const chiTieu: Partial<Record<BankType, ChiTieuLoai>> = {};
+    for (const loai of ['NLC', 'DS', 'TLN', 'TL'] as const) {
+      const { soCau, diem } = theoLoai[loai];
+      if (soCau > 0) chiTieu[loai] = { soCau, diemMoiCau: lamTron(diem / soCau) };
+    }
+    if (Object.keys(chiTieu).length === 0) return alert('Ma trận chưa có câu nào thuộc NLC/DS/TLN/TL để lưu khuôn!');
+
+    setDangLuuKhuon(true);
+    try {
+      const res = await fetch('/api/admin/khuon-de', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ten, chiTieu, soCau: tongCau, tongDiem }),
+      });
+      const d = await res.json();
+      if (res.ok) {
+        alert(d.ghiDe ? `Đã ghi đè khuôn "${ten}".` : `Đã lưu khuôn "${ten}". Lần sau chỉ cần chọn lại trong ô Khuôn đề.`);
+        taiDanhSachKhuon();
+        setKhuonDe('tc_' + d.id);
+      } else {
+        alert('Không lưu được khuôn: ' + (d.error || 'lỗi không rõ'));
+      }
+    } catch {
+      alert('Lỗi kết nối khi lưu khuôn.');
+    } finally {
+      setDangLuuKhuon(false);
+    }
+  };
+
+  const xoaKhuonTuyChinh = async (id: string) => {
+    const k = khuonTuyChinhList.find(x => x.id === id);
+    if (!k) return;
+    if (!confirm(`Xoá khuôn "${k.ten}"?`)) return;
+    try {
+      const res = await fetch('/api/admin/khuon-de?id=' + id, { method: 'DELETE' });
+      const d = await res.json();
+      if (res.ok) {
+        alert('Đã xoá khuôn.');
+        if (khuonDe === 'tc_' + id) setKhuonDe('3-2-2-3');
+        taiDanhSachKhuon();
+      } else alert('Không xoá được: ' + (d.error || 'lỗi không rõ'));
+    } catch {
+      alert('Lỗi kết nối khi xoá khuôn.');
+    }
+  };
+
   /* ===================== MA TRẬN MẪU ===================== */
 
   /** Nạp danh sách ma trận mẫu của chính mình, lọc theo lớp/phân môn đang chọn. */
@@ -750,7 +840,7 @@ export default function ExamsManagerPage() {
   const tongCau = tinhTongCau(dongMaTran);
   const tongDiem = tinhTongDiem(dongMaTran);
   const theoLoai = gomTheoLoai(dongMaTran);
-  const chiTieuKhuon = (KHUON_DE[khuonDe]?.chiTieu || {}) as Record<string, { soCau: number; diemMoiCau: number }>;
+  const chiTieuKhuon = (KHUON_TAT_CA[khuonDe]?.chiTieu || {}) as Record<string, { soCau: number; diemMoiCau: number }>;
   const soDongThieuKho = matrixItems.filter(i => i.count > i.max_count).length;
 
   // Đầu đề bám theo kỳ kiểm tra / lớp / phân môn đang chọn, giữ nguyên các ô thầy đã sửa
@@ -846,11 +936,37 @@ export default function ExamsManagerPage() {
               <select
                 value={khuonDe}
                 onChange={e => apKhuonDe(e.target.value)}
-                title={KHUON_DE[khuonDe]?.moTa}
+                title={KHUON_TAT_CA[khuonDe]?.moTa}
                 className="border border-gray-200 rounded-xl px-4 py-2.5 font-bold text-purple-700 bg-purple-50 outline-none focus:ring-2 focus:ring-purple-500 text-sm"
               >
-                {MA_KHUON_DE.map(ma => <option key={ma} value={ma}>{KHUON_DE[ma].ten}</option>)}
+                <optgroup label="Khuôn dựng sẵn">
+                  {MA_KHUON_DE.map(ma => <option key={ma} value={ma}>{KHUON_DE[ma].ten}</option>)}
+                </optgroup>
+                {khuonTuyChinhList.length > 0 && (
+                  <optgroup label="Khuôn tự lưu">
+                    {khuonTuyChinhList.map(k => (
+                      <option key={k.id} value={'tc_' + k.id}>{k.ten} ({k.so_cau} câu · {soDiemVN(Number(k.tong_diem) || 0)}đ)</option>
+                    ))}
+                  </optgroup>
+                )}
               </select>
+              <button
+                onClick={luuKhuonTuyChinh}
+                disabled={dangLuuKhuon}
+                title="Lưu cơ cấu số câu/điểm đang có trong ma trận thành một khuôn dùng lại"
+                className="flex items-center gap-1.5 border border-purple-300 text-purple-700 hover:bg-purple-50 px-3 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white disabled:opacity-50"
+              >
+                {dangLuuKhuon ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu khuôn này
+              </button>
+              {khuonDe.startsWith('tc_') && (
+                <button
+                  onClick={() => xoaKhuonTuyChinh(khuonDe.slice(3))}
+                  title="Xoá khuôn tự lưu đang chọn"
+                  className="flex items-center gap-1.5 border border-red-200 text-red-600 hover:bg-red-50 px-3 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white"
+                >
+                  <Trash2 className="w-4 h-4" /> Xoá khuôn
+                </button>
+              )}
               <div className="w-px h-6 bg-gray-200 mx-1"></div>
               <select value={grade} onChange={e=>setGrade(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white">
                 <option value="">-- Khối Lớp --</option>
@@ -1285,8 +1401,8 @@ export default function ExamsManagerPage() {
         isOpen={moSoanMaTran}
         onClose={() => setMoSoanMaTran(false)}
         oKho={oKhoChoAI()}
-        khuon={KHUON_DE[khuonDe]}
-        tenKhuon={KHUON_DE[khuonDe]?.ten || khuonDe}
+        khuon={KHUON_TAT_CA[khuonDe]}
+        tenKhuon={KHUON_TAT_CA[khuonDe]?.ten || khuonDe}
         onNhan={nhanMaTranAI}
       />
 
