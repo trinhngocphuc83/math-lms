@@ -24,48 +24,102 @@ function loadImageFromFile(file: File): Promise<HTMLImageElement> {
   });
 }
 
-/** Làm nét cơ bản (unsharp mask 3x3) - chỉ nên dùng cho ảnh đã phóng to vì cắt nhỏ. */
-function sharpenCanvas(ctx: CanvasRenderingContext2D, w: number, h: number) {
-  const imageData = ctx.getImageData(0, 0, w, h);
-  const src = imageData.data;
-  const output = new Uint8ClampedArray(src.length);
-  const kernel = [0, -1, 0, -1, 5, -1, 0, -1, 0];
+/** Độ sáng cảm nhận của một điểm ảnh. */
+const doSang = (r: number, g: number, b: number) => 0.299 * r + 0.587 * g + 0.114 * b;
 
-  for (let y = 0; y < h; y++) {
-    for (let x = 0; x < w; x++) {
-      for (let c = 0; c < 3; c++) {
-        let sum = 0;
-        for (let ky = -1; ky <= 1; ky++) {
-          for (let kx = -1; kx <= 1; kx++) {
-            const px = Math.min(w - 1, Math.max(0, x + kx));
-            const py = Math.min(h - 1, Math.max(0, y + ky));
-            sum += src[(py * w + px) * 4 + c] * kernel[(ky + 1) * 3 + (kx + 1)];
-          }
-        }
-        output[(y * w + x) * 4 + c] = sum;
-      }
-      output[(y * w + x) * 4 + 3] = src[(y * w + x) * 4 + 3];
-    }
+/**
+ * Kéo giãn mức sáng để nền giấy về trắng tinh và nét mực về đen đậm.
+ *
+ * Bản cũ dùng ngưỡng CỨNG: điểm nào cả ba kênh ≥ 200 thì ép về trắng. Ảnh chụp bằng
+ * điện thoại trong phòng thiếu sáng thì nền giấy chỉ tầm 150-180, không điểm nào chạm
+ * ngưỡng, nên ảnh cắt ra vẫn xám xịt y như cũ - đúng chỗ thầy cô phàn nàn.
+ *
+ * Nay đo trên CHÍNH ảnh đó rồi kéo giãn tuyến tính về 0-255, nên ảnh sáng hay tối đều
+ * ra nền trắng và nét rõ như nhau. Hai mốc đo lấy theo hai cách khác nhau, có lý do:
+ *
+ *   - Nền giấy: lấy ĐỈNH biểu đồ ở nửa sáng, tức mức xám xuất hiện nhiều nhất. Nền luôn
+ *     chiếm phần lớn diện tích nên nó chính là đỉnh đó.
+ *   - Nét mực: lấy phân vị 0,5% chứ KHÔNG lấy phân vị vài phần trăm. Hình vẽ toán lý chỉ
+ *     là mấy đường kẻ mảnh, nét mực thường chiếm 2-3% điểm ảnh - lấy phân vị 4% là rơi
+ *     trúng nền, ra dải sáng hẹp và hàm tưởng nhầm "ảnh gần một màu" rồi bỏ qua.
+ *
+ * Kéo giãn theo ĐỘ SÁNG rồi áp cùng một hệ số cho cả ba kênh, chứ không xử riêng từng
+ * kênh - xử riêng sẽ làm lệch màu, hình vẽ có nét màu xanh đỏ bị đổi sắc.
+ */
+function canBangSang(ctx: CanvasRenderingContext2D, w: number, h: number) {
+  const imageData = ctx.getImageData(0, 0, w, h);
+  const d = imageData.data;
+  const soDiem = w * h;
+
+  const bieuDo = new Uint32Array(256);
+  for (let i = 0; i < d.length; i += 4) bieuDo[Math.round(doSang(d[i], d[i + 1], d[i + 2]))]++;
+
+  const phanVi = (p: number) => {
+    let dem = 0;
+    const moc = soDiem * p;
+    for (let v = 0; v < 256; v++) { dem += bieuDo[v]; if (dem >= moc) return v; }
+    return 255;
+  };
+
+  // Đỉnh biểu đồ ở nửa sáng = mức của nền giấy
+  const giua = phanVi(0.5);
+  let mucGiay = giua, dinh = -1;
+  for (let v = giua; v < 256; v++) if (bieuDo[v] > dinh) { dinh = bieuDo[v]; mucGiay = v; }
+
+  const mucMuc = phanVi(0.005);
+
+  // Ảnh gần như một màu (hình đã trắng sẵn, hoặc vùng cắt hỏng) thì đừng đụng vào,
+  // kéo giãn một dải quá hẹp chỉ tổ khuếch đại nhiễu thành lốm đốm.
+  if (mucGiay - mucMuc < 40) return;
+
+  const heSo = 255 / (mucGiay - mucMuc);
+  const bang = new Uint8ClampedArray(256);
+  for (let v = 0; v < 256; v++) bang[v] = Math.round((v - mucMuc) * heSo);
+
+  for (let i = 0; i < d.length; i += 4) {
+    const cu = doSang(d[i], d[i + 1], d[i + 2]);
+    const moi = bang[Math.round(cu)];
+    // Giữ nguyên tương quan màu: nhân cùng một tỉ lệ cho ba kênh
+    const ti = cu > 0 ? moi / cu : 0;
+    d[i] = Math.min(255, d[i] * ti);
+    d[i + 1] = Math.min(255, d[i + 1] * ti);
+    d[i + 2] = Math.min(255, d[i + 2] * ti);
   }
-  imageData.data.set(output);
   ctx.putImageData(imageData, 0, 0);
 }
 
 /**
- * Đẩy các điểm gần trắng về trắng tinh để nền giấy hết ngả vàng/xám khi chụp ảnh đề.
+ * Làm nét bằng unsharp mask: lấy ảnh trừ đi bản làm mờ của chính nó rồi cộng ngược lại.
  *
- * Ngưỡng đặt cao (mỗi kênh màu đều ≥ 200) nên chỉ nền giấy bị làm trắng; nét mực đen,
- * chữ và các mảng xám (ví dụ quả cầu tô xám trong hình đường sức) giữ nguyên.
+ * Bản cũ dùng nhân chập cứng [0,-1,0,-1,5,-1,0,-1,0] và CHỈ chạy khi ảnh bị phóng to.
+ * Hai chỗ dở: ảnh cắt to sẵn thì không được làm nét lần nào, còn ảnh nhỏ thì bị làm nét
+ * quá tay nên nét mực viền trắng lấp lánh. Nay lúc nào cũng làm nét, nhưng có tham số
+ * `muc` để ảnh phóng to thì mạnh tay hơn ảnh vốn đã sắc.
  */
-function lamTrangNen(ctx: CanvasRenderingContext2D, w: number, h: number) {
-  const NGUONG = 200;
+function lamNet(ctx: CanvasRenderingContext2D, w: number, h: number, muc: number) {
   const imageData = ctx.getImageData(0, 0, w, h);
-  const d = imageData.data;
-  for (let i = 0; i < d.length; i += 4) {
-    if (d[i] >= NGUONG && d[i + 1] >= NGUONG && d[i + 2] >= NGUONG) {
-      d[i] = 255; d[i + 1] = 255; d[i + 2] = 255;
+  const src = imageData.data;
+  const ra = new Uint8ClampedArray(src.length);
+
+  for (let y = 0; y < h; y++) {
+    for (let x = 0; x < w; x++) {
+      const vt = (y * w + x) * 4;
+      for (let c = 0; c < 3; c++) {
+        let tong = 0;
+        for (let ky = -1; ky <= 1; ky++) {
+          for (let kx = -1; kx <= 1; kx++) {
+            const px = Math.min(w - 1, Math.max(0, x + kx));
+            const py = Math.min(h - 1, Math.max(0, y + ky));
+            tong += src[(py * w + px) * 4 + c];
+          }
+        }
+        const mo = tong / 9;
+        ra[vt + c] = src[vt + c] + muc * (src[vt + c] - mo);
+      }
+      ra[vt + 3] = src[vt + 3];
     }
   }
+  imageData.data.set(ra);
   ctx.putImageData(imageData, 0, 0);
 }
 
@@ -100,8 +154,11 @@ export async function cropImageFromBoundingBox(sourceFile: File, box: Normalized
     if (areaRatio > 0.9) throw new Error("Vùng ảnh AI xác định gần như cả trang - có thể sai vị trí");
     if (areaRatio < 0.004) throw new Error("Vùng ảnh AI xác định quá nhỏ - có thể sai vị trí");
 
-    const needsUpscale = cropW < 500;
-    const scale = needsUpscale ? Math.min(3, 700 / cropW) : 1;
+    // Phóng to rộng tay hơn bản cũ (ngưỡng 500 -> 900, trần 3x -> 4x): hình vẽ cắt ra
+    // thường chỉ rộng 300-600px, in lên giấy A4 là rỗ hết. Phóng to trước rồi mới làm
+    // nét thì nét mực dày dặn, in ra sắc.
+    const needsUpscale = cropW < 900;
+    const scale = needsUpscale ? Math.min(4, 1200 / cropW) : 1;
     const outW = Math.max(1, Math.round(cropW * scale));
     const outH = Math.max(1, Math.round(cropH * scale));
 
@@ -114,8 +171,10 @@ export async function cropImageFromBoundingBox(sourceFile: File, box: Normalized
     ctx.imageSmoothingQuality = 'high';
     ctx.drawImage(img, x, y, cropW, cropH, 0, 0, outW, outH);
 
-    if (needsUpscale) sharpenCanvas(ctx, outW, outH);
-    lamTrangNen(ctx, outW, outH);
+    // Thứ tự có ý nghĩa: cân sáng TRƯỚC rồi mới làm nét. Làm nét trước thì nhiễu của nền
+    // giấy cũng được khuếch đại lên, cân sáng sau sẽ đẩy đám nhiễu đó thành lốm đốm đen.
+    canBangSang(ctx, outW, outH);
+    lamNet(ctx, outW, outH, needsUpscale ? 0.9 : 0.45);
 
     return await new Promise<Blob>((resolve, reject) => {
       canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("Không tạo được ảnh đã cắt"))), 'image/png');

@@ -190,7 +190,16 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
   cleanQuestion = cleanQuestion.replace(/<br\s*\/?>/gi, '\n\n');
   cleanQuestion = cleanQuestion.replace(/<img[^>]+src=["']([^"']+)["'][^>]*>/gi, '\n\n![Hình vẽ]($1)\n\n');
   
-  const imgUrl = data.imageUrl || data.autoCropMetadata?.originalUrl;
+  /*
+   * Ảnh minh hoạ của câu: CHỈ lấy imageUrl.
+   *
+   * Bản cũ còn rơi về autoCropMetadata.originalUrl khi imageUrl trống. Nhưng originalUrl
+   * là ẢNH NGUYÊN TRANG SÁCH, chỉ dùng cho khung "Cắt lại" bên phía thầy cô. Ảnh AI cắt
+   * xong được chèn thẳng vào nội dung câu dưới dạng markdown chứ không đặt vào imageUrl,
+   * nên imageUrl trống là chuyện thường - và học sinh nhìn thấy nguyên trang sách nằm
+   * dưới câu hỏi, lộ luôn mấy câu khác cùng trang.
+   */
+  const imgUrl = data.imageUrl;
 
   return (
     <div className="my-8 bg-white border-2 border-indigo-200 rounded-[2rem] p-6 md:p-8 shadow-[6px_6px_0px_0px_rgba(199,210,254,1)] relative transition-all hover:-translate-y-1 hover:shadow-[8px_8px_0px_0px_rgba(199,210,254,1)]">
@@ -202,7 +211,11 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
          </div>
          <div className="prose prose-sm sm:prose-base prose-indigo max-w-none prose-p:my-0 font-bold leading-relaxed text-slate-700">
             <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]} urlTransform={(url) => url}>{preprocessMarkdown(cleanQuestion).replace(/^(?:\*\*)?Hướng\s+dẫn\s+giải:?(?:\*\*)?\s*/gim, '### 💡 Hướng dẫn giải chi tiết:\n\n')}</ReactMarkdown>
-            {imgUrl && !cleanQuestion.includes(imgUrl) && !cleanQuestion.includes('![Hình vẽ]') && !cleanQuestion.includes('![Bảng biến thiên]') && (
+            {/* Nội dung câu đã có sẵn ảnh markdown nào rồi thì thôi, đừng bày thêm ảnh
+                nữa. Bản cũ chỉ dò đúng hai nhãn "Hình vẽ" và "Bảng biến thiên", trong khi
+                đường AI tự cắt chèn nhãn "Hình minh họa" - nên câu vừa có ảnh trong nội
+                dung vừa bị treo thêm một ảnh nữa bên dưới. */}
+            {imgUrl && !cleanQuestion.includes(imgUrl) && !/!\[[^\]]*\]\(/.test(cleanQuestion) && (
                 <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
             )}
          </div>

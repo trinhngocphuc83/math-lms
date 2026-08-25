@@ -763,7 +763,17 @@ export default function AzotaExamUI({
             
             const qScore = questionScores[qIndex];
 
-            const imgUrl = data.imageUrl || data.autoCropMetadata?.originalUrl;
+            /*
+             * Ảnh minh hoạ của câu: CHỈ lấy imageUrl.
+             *
+             * Bản cũ còn rơi về autoCropMetadata.originalUrl khi imageUrl trống. Nhưng
+             * originalUrl là ẢNH NGUYÊN TRANG SÁCH, chỉ dùng cho khung "Cắt lại" bên phía
+             * thầy cô. Ảnh AI cắt xong được chèn thẳng vào nội dung câu dưới dạng markdown
+             * chứ không đặt vào imageUrl, nên imageUrl trống là chuyện thường - và học
+             * sinh nhìn thấy nguyên trang sách nằm dưới câu hỏi, lộ luôn mấy câu khác
+             * cùng trang.
+             */
+            const imgUrl = data.imageUrl;
             
             return (
               <div key={p.id} id={`question-${qIndex}`} className={`bg-white rounded-2xl p-6 shadow-sm border-2 transition-all ${isSubmitted ? 'border-gray-200' : 'border-slate-200 hover:border-indigo-300'}`}>
@@ -795,7 +805,10 @@ export default function AzotaExamUI({
                        >{cleanQuestion}</ReactMarkdown>
                        
                        {/* Hỗ trợ hiển thị ảnh fallback nếu MD chưa có */}
-                       {imgUrl && !cleanQuestion.includes(imgUrl) && !cleanQuestion.includes('![Hình vẽ]') && !cleanQuestion.includes('![Bảng biến thiên]') && (
+                       {/* Nội dung câu đã có sẵn ảnh markdown nào rồi thì thôi, đừng bày
+                           thêm ảnh nữa. Bản cũ chỉ dò đúng hai nhãn "Hình vẽ" và "Bảng biến
+                           thiên", trong khi đường AI tự cắt chèn nhãn "Hình minh họa". */}
+                       {imgUrl && !cleanQuestion.includes(imgUrl) && !/!\[[^\]]*\]\(/.test(cleanQuestion) && (
                            <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
                        )}
                     </div>
