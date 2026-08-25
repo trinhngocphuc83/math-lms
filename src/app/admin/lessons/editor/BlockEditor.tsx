@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2 } from "lucide-react";
+import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2, Sparkles } from "lucide-react";
 import { fixLatexText, applyLatexFixToActiveElement, ensureMathDelimiters } from "@/utils/latexFixer";
 import { bankTypeToBlockType } from "@/utils/questionTypes";
 import 'katex/dist/katex.min.css';
@@ -10,6 +10,8 @@ import RichTextarea from "@/components/admin/RichTextarea";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
 import SourceImageWithBox from "@/components/admin/SourceImageWithBox";
 import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, daChenAnh, canChenAnh, coCanhBaoAI } from "@/utils/aiQuestionScan";
+import VeLaiHinhModal from "@/components/admin/VeLaiHinhModal";
+import { chamDoNetAnh } from "@/utils/veLaiHinhAI";
 
 export interface Block {
   id: string;
@@ -141,6 +143,13 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
        return newSet;
     });
   };
+
+  /** Địa chỉ ảnh markdown đầu tiên trong nội dung câu - chính là ảnh AI vừa cắt chèn vào. */
+  const layAnhTrongCau = (noiDung: any): string | undefined =>
+    (String(noiDung || "").match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/) || [])[1];
+
+  /** Khối đang nhờ AI vẽ lại hình, kèm địa chỉ ảnh cũ để còn thay đúng chỗ. */
+  const [oVeLai, setOVeLai] = React.useState<{ idx: number; urlCu: string } | null>(null);
 
   const updateBlockContent = (index: number, newContent: any) => {
       const newBlocks = [...blocks];
@@ -699,6 +708,11 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           <AutoCropReviewPanel
                              meta={block.content.autoCropMetadata}
                              onRecrop={() => onTriggerCrop(block.content.autoCropMetadata, block.id)}
+                             urlAnhDaCat={layAnhTrongCau(block.content.question)}
+                             onVeLai={() => {
+                                const url = layAnhTrongCau(block.content.question);
+                                if (url) setOVeLai({ idx, urlCu: url });
+                             }}
                           />
                        ) : (canChenAnh(block.content.question)) && (
                           <div className="bg-red-50 border border-red-200 px-5 py-4 rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4 animate-pulse">
@@ -906,6 +920,23 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
            onInsert={handleInsertFromBank}
            usedQuestionIds={blocks.map(b => b.type === 'quiz' && b.content.sourceQuestionId).filter(Boolean) as string[]}
         />
+
+        {/* Ảnh chụp mờ thì nhờ AI vẽ lại bằng nét vector. Bản vẽ lại chỉ thay vào bài sau
+            khi thầy cô soi hai hình cạnh nhau và bấm nhận - xem VeLaiHinhModal. */}
+        <VeLaiHinhModal
+           isOpen={!!oVeLai}
+           onClose={() => setOVeLai(null)}
+           urlAnhGoc={oVeLai?.urlCu || null}
+           onNhan={(urlMoi) => {
+              if (!oVeLai) return;
+              const b = blocks[oVeLai.idx];
+              if (!b || b.type !== 'quiz') return;
+              // Thay đúng địa chỉ ảnh cũ trong nội dung câu, giữ nguyên mọi thứ khác
+              const moi = String(b.content.question || '').split(oVeLai.urlCu).join(urlMoi);
+              updateBlockContent(oVeLai.idx, { ...b.content, question: moi });
+              setOVeLai(null);
+           }}
+        />
      </div>
      </div>
    );
@@ -916,9 +947,28 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
  * nhìn một cái là biết AI cắt đúng hình của câu này hay nhầm sang chỗ khác. Ảnh đã cắt
  * nằm ngay trong nội dung câu hỏi phía dưới nên ở đây không lặp lại.
  */
-function AutoCropReviewPanel({ meta, onRecrop }: { meta: any; onRecrop: () => void }) {
+function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai }: {
+   meta: any;
+   onRecrop: () => void;
+   /** Ảnh đã cắt đang nằm trong nội dung câu - để chấm độ nét và vẽ lại. */
+   urlAnhDaCat?: string;
+   onVeLai?: () => void;
+}) {
    const [showSource, setShowSource] = React.useState(false);
    const box = meta?.box;
+
+   /*
+    * Tự chấm độ nét ảnh đã cắt để MỜI thầy cô vẽ lại, thay vì để thầy cô tự phát hiện
+    * lúc in ra mới thấy rỗ. Chấm hỏng (ảnh chặn CORS, địa chỉ chết) thì lặng lẽ bỏ qua -
+    * không được để việc phụ này chặn việc soạn bài.
+    */
+   const [doNet, setDoNet] = React.useState<{ diem: number; beRong: number; nenVeLai: boolean; moTa: string } | null>(null);
+   React.useEffect(() => {
+      if (!urlAnhDaCat) { setDoNet(null); return; }
+      let con = true;
+      chamDoNetAnh(urlAnhDaCat).then(k => { if (con) setDoNet(k); }).catch(() => { if (con) setDoNet(null); });
+      return () => { con = false; };
+   }, [urlAnhDaCat]);
 
    return (
       <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex flex-col gap-3">
@@ -943,6 +993,16 @@ function AutoCropReviewPanel({ meta, onRecrop }: { meta: any; onRecrop: () => vo
                      <ImageIcon className="w-4 h-4"/> {showSource ? 'Ẩn ảnh gốc' : box ? 'Xem ảnh gốc (khung đỏ)' : 'Xem ảnh gốc'}
                   </button>
                )}
+               {urlAnhDaCat && onVeLai && (
+                  <button
+                     type="button"
+                     onClick={onVeLai}
+                     title="Ảnh chụp mờ thì nhờ AI vẽ lại bằng nét vector, in cỡ nào cũng sắc"
+                     className="bg-white border border-sky-400 text-sky-700 px-3 py-2 rounded-lg font-bold hover:bg-sky-50 text-sm flex items-center gap-1.5"
+                  >
+                     <Sparkles className="w-4 h-4"/> Nhờ AI vẽ lại
+                  </button>
+               )}
                <button
                   type="button"
                   onClick={onRecrop}
@@ -952,6 +1012,23 @@ function AutoCropReviewPanel({ meta, onRecrop }: { meta: any; onRecrop: () => vo
                </button>
             </div>
          </div>
+
+         {/* Ảnh mờ hoặc quá nhỏ thì mời vẽ lại ngay tại đây, khỏi đợi in ra mới thấy rỗ */}
+         {doNet?.nenVeLai && onVeLai && (
+            <div className="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2.5 flex flex-wrap items-center justify-between gap-2">
+               <span className="text-[13px] font-bold text-sky-800 flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 shrink-0" />
+                  {doNet.moTa} (độ nét {doNet.diem}, rộng {doNet.beRong}px) - nên nhờ AI vẽ lại bằng nét vector.
+               </span>
+               <button
+                  type="button"
+                  onClick={onVeLai}
+                  className="bg-sky-600 text-white px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 text-[13px] flex items-center gap-1.5 shrink-0"
+               >
+                  <Sparkles className="w-4 h-4"/> Vẽ lại hình này
+               </button>
+            </div>
+         )}
 
          {showSource && meta?.originalUrl && (
             <div className="bg-white border border-orange-100 rounded-lg p-2">
