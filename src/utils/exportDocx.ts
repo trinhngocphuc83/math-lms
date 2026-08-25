@@ -1,6 +1,7 @@
 import {
   Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun,
   Table, TableRow, TableCell, WidthType, BorderStyle, PageOrientation, VerticalAlign,
+  Tab, TabStopType,
 } from "docx";
 import { saveAs } from "file-saver";
 
@@ -423,14 +424,24 @@ const beRongPhuongAn = (s: string): number => {
  * Xếp 4 phương án trắc nghiệm thành 4 / 2 / 1 cột cho thẳng hàng, đúng lối trình bày
  * của đề thi Việt Nam.
  *
- * Bản cũ nhồi cả bốn phương án vào MỘT đoạn văn, ngăn nhau bằng bốn dấu cách. Word tự
- * ngắt dòng ở đâu tuỳ nó, nên phương án dài ngắn khác nhau là các cột so le hết, đọc
- * rất rối - đúng chỗ thầy cô phàn nàn. Dùng bảng KHÔNG KẺ VIỀN thì các cột thẳng tăm
- * tắp mà in ra vẫn không thấy đường kẻ nào.
+ * Canh cột bằng ĐIỂM DỪNG TAB trên đoạn văn thường, KHÔNG dùng bảng.
+ *
+ * Bản đầu tôi làm bằng bảng không kẻ viền: cột thẳng thật, nhưng thầy cô mở ra sửa lại
+ * rất cực - chọn chữ, đổi cỡ, thêm bớt phương án trong ô bảng đều vướng. Đề thi in ra
+ * còn phải sửa tay nhiều lần nên tính dễ sửa quan trọng hơn. Tab cho ra đúng cột như
+ * bảng mà vẫn là đoạn văn bình thường, muốn sửa gì cũng được.
+ *
+ * Bản cũ hơn nữa thì nhồi cả bốn phương án vào một đoạn ngăn nhau bằng bốn dấu cách -
+ * Word tự ngắt dòng tuỳ nó nên phương án dài ngắn khác nhau là cột so le hết.
  *
  * Chọn số cột theo phương án DÀI NHẤT, không theo trung bình: chỉ cần một phương án dài
  * là cả hàng bị đội cao, nên phải để nó quyết định.
  */
+
+/* Khổ A4 lề 1 inch còn khoảng 9000 twip bề ngang. Chia đều cho 4 và cho 2 cột. */
+const MOC_TAB_4_COT = [2250, 4500, 6750];
+const MOC_TAB_2_COT = [4500];
+
 const dungPhuongAnNLC = async (
   q: any,
   doiChu: (s: string) => Promise<any[]>,
@@ -438,7 +449,7 @@ const dungPhuongAnNLC = async (
   const nhan = ["A", "B", "C", "D"] as const;
   const noiDung = [q.option_a, q.option_b, q.option_c, q.option_d].map(x => String(x ?? ""));
 
-  // Phương án rỗng thì bỏ hẳn cột, đỡ chừa một khoảng trống vô nghĩa giữa đề
+  // Phương án rỗng thì bỏ hẳn, đỡ chừa một khoảng trống vô nghĩa giữa đề
   const dsCo = nhan.map((n, i) => ({ nhan: n, noiDung: noiDung[i] })).filter(x => x.noiDung.trim());
   if (dsCo.length === 0) return [];
 
@@ -446,52 +457,32 @@ const dungPhuongAnNLC = async (
   const coAnh = dsCo.some(x => /!\[|<img/i.test(x.noiDung));
   const soCot = coAnh ? 1 : daiNhat <= 14 ? 4 : daiNhat <= 34 ? 2 : 1;
 
-  const oPhuongAn = async (x: { nhan: string; noiDung: string }) => new TableCell({
-    // Không kẻ viền: chỉ mượn bảng để canh cột, in ra phải trông như đoạn văn thường
-    borders: {
-      top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-      bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-      left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-      right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-    },
-    margins: { top: 20, bottom: 20, left: 0, right: 120 },
-    children: [new Paragraph({
-      children: [
-        new TextRun({ text: `${x.nhan}. `, bold: true, color: "0000FF" }),
-        ...(await doiChu(cleanHtmlNewlinesInTags(x.noiDung))),
-      ],
-    })],
-  });
+  const mocTab = soCot === 4 ? MOC_TAB_4_COT : soCot === 2 ? MOC_TAB_2_COT : [];
+  const tabStops = mocTab.map(v => ({ type: TabStopType.LEFT, position: v }));
 
-  const hang: any[] = [];
+  /** Một phương án: nhãn "A. " đậm xanh rồi tới nội dung đã dựng công thức. */
+  const motPhuongAn = async (x: { nhan: string; noiDung: string }) => ([
+    new TextRun({ text: `${x.nhan}. `, bold: true, color: "0000FF" }),
+    ...(await doiChu(cleanHtmlNewlinesInTags(x.noiDung))),
+  ]);
+
+  const doan: any[] = [];
   for (let i = 0; i < dsCo.length; i += soCot) {
     const trongHang = dsCo.slice(i, i + soCot);
-    const o = [];
-    for (const x of trongHang) o.push(await oPhuongAn(x));
-    // Hàng cuối thiếu ô thì chèn ô rỗng, không thì Word kéo giãn ô cuối chiếm hết bề ngang
-    while (o.length < soCot) {
-      o.push(new TableCell({
-        borders: {
-          top: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-          bottom: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-          left: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-          right: { style: BorderStyle.NONE, size: 0, color: "FFFFFF" },
-        },
-        children: [new Paragraph({ text: "" })],
-      }));
+    const con: any[] = [];
+    for (let k = 0; k < trongHang.length; k++) {
+      // Tab đặt TRƯỚC phương án thứ hai trở đi, để phương án đầu bám sát lề trái
+      if (k > 0) con.push(new TextRun({ children: [new Tab()] }));
+      con.push(...await motPhuongAn(trongHang[k]));
     }
-    hang.push(new TableRow({ children: o }));
+    doan.push(new Paragraph({
+      children: con,
+      tabStops: tabStops.length ? tabStops : undefined,
+      spacing: { before: i === 0 ? 60 : 0, after: i + soCot >= dsCo.length ? 200 : 0 },
+    }));
   }
 
-  return [
-    new Table({
-      width: { size: 100, type: WidthType.PERCENTAGE },
-      columnWidths: Array.from({ length: soCot }, () => Math.floor(9000 / soCot)),
-      rows: hang,
-    }),
-    // Bảng dính sát câu sau nếu không chừa một dòng trống phía dưới
-    new Paragraph({ text: "", spacing: { after: 120 } }),
-  ];
+  return doan;
 };
 
 export interface KhuonXuatDe {
