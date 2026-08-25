@@ -10,6 +10,7 @@ import * as XLSX from "xlsx";
 import NapMaTranModal, { type DongNapMaTran } from "@/components/admin/NapMaTranModal";
 import SinhBuModal from "@/components/admin/SinhBuModal";
 import SoanMaTranModal from "@/components/admin/SoanMaTranModal";
+import MenuGon, { MucMenu, NhomMenu, NganMenu } from "@/components/admin/MenuGon";
 import type { ODeChon, DongMaTranAI } from "@/utils/soanMaTranAI";
 import { toBankType, bankTypeLabel, type BankType } from "@/utils/questionTypes";
 import {
@@ -911,20 +912,26 @@ export default function ExamsManagerPage() {
         )}
 
         {/* Header & Filter */}
-        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-5 flex flex-col gap-4 flex-shrink-0">
+        <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-3.5 flex flex-col gap-3 flex-shrink-0">
           <div className="flex justify-between items-center cursor-pointer select-none" onClick={() => setIsHeaderExpanded(!isHeaderExpanded)}>
-            <h2 className="text-xl font-bold text-teal-800 flex items-center gap-2">
-              <Sliders className="w-6 h-6" /> Thiết lập Ma trận Đề thi chuẩn 2025
+            <h2 className="text-[15px] font-black text-teal-800 flex items-center gap-2">
+              <Sliders className="w-4 h-4" /> Thiết lập Ma trận Đề thi chuẩn 2025
             </h2>
             <button className="text-gray-400 hover:text-teal-600 transition-colors p-1 bg-gray-50 rounded-lg hover:bg-teal-50">
-              {isHeaderExpanded ? <ChevronDown className="w-5 h-5" /> : <ChevronRight className="w-5 h-5" />}
+              {isHeaderExpanded ? <ChevronDown className="w-4 h-4" /> : <ChevronRight className="w-4 h-4" />}
             </button>
           </div>
           
           {isHeaderExpanded && (
-            <div className="flex flex-col gap-4 animate-in fade-in slide-in-from-top-2">
-              <div className="flex flex-wrap items-center gap-3">
-              <select value={examType} onChange={e=>setExamType(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 font-bold text-indigo-700 bg-indigo-50 outline-none focus:ring-2 focus:ring-indigo-500 text-sm">
+            <div className="flex flex-col gap-3 animate-in fade-in slide-in-from-top-2">
+              {/*
+                * Hàng đầu chỉ giữ những thứ LUÔN phải đặt trước khi làm gì: kỳ kiểm tra,
+                * khuôn đề, lớp, phân môn, rồi nút quét kho. Bốn ô lọc thu hẹp phạm vi
+                * (chuyên đề / bài / dạng / dạng thức) gom vào một bảng chọn kèm số đang
+                * bật, vì chúng chỉ dùng khi cần dò nhanh chứ không phải mỗi lần ra đề.
+                */}
+              <div className="flex flex-wrap items-center gap-2">
+              <select value={examType} onChange={e=>setExamType(e.target.value)} className="border border-gray-200 rounded-lg px-2.5 py-1.5 font-bold text-indigo-700 bg-indigo-50 outline-none focus:ring-2 focus:ring-indigo-500 text-[13px]">
                 <option>Kiểm tra Giữa kỳ I</option>
                 <option>Kiểm tra Cuối kỳ I</option>
                 <option>Kiểm tra Giữa kỳ II</option>
@@ -937,7 +944,7 @@ export default function ExamsManagerPage() {
                 value={khuonDe}
                 onChange={e => apKhuonDe(e.target.value)}
                 title={KHUON_TAT_CA[khuonDe]?.moTa}
-                className="border border-gray-200 rounded-xl px-4 py-2.5 font-bold text-purple-700 bg-purple-50 outline-none focus:ring-2 focus:ring-purple-500 text-sm"
+                className="border border-gray-200 rounded-lg px-2.5 py-1.5 font-bold text-purple-700 bg-purple-50 outline-none focus:ring-2 focus:ring-purple-500 text-[13px] max-w-[230px]"
               >
                 <optgroup label="Khuôn dựng sẵn">
                   {MA_KHUON_DE.map(ma => <option key={ma} value={ma}>{KHUON_DE[ma].ten}</option>)}
@@ -950,52 +957,85 @@ export default function ExamsManagerPage() {
                   </optgroup>
                 )}
               </select>
-              <button
-                onClick={luuKhuonTuyChinh}
-                disabled={dangLuuKhuon}
-                title="Lưu cơ cấu số câu/điểm đang có trong ma trận thành một khuôn dùng lại"
-                className="flex items-center gap-1.5 border border-purple-300 text-purple-700 hover:bg-purple-50 px-3 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white disabled:opacity-50"
-              >
-                {dangLuuKhuon ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu khuôn này
-              </button>
-              {khuonDe.startsWith('tc_') && (
-                <button
-                  onClick={() => xoaKhuonTuyChinh(khuonDe.slice(3))}
-                  title="Xoá khuôn tự lưu đang chọn"
-                  className="flex items-center gap-1.5 border border-red-200 text-red-600 hover:bg-red-50 px-3 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white"
-                >
-                  <Trash2 className="w-4 h-4" /> Xoá khuôn
-                </button>
-              )}
-              <div className="w-px h-6 bg-gray-200 mx-1"></div>
-              <select value={grade} onChange={e=>setGrade(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white">
+              <MenuGon nhan="Khuôn" icon={<Sliders className="w-4 h-4 text-purple-600" />} rong="w-[300px]" title="Lưu hoặc xoá khuôn đề tự lưu">
+                <MucMenu
+                  icon={dangLuuKhuon ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4 text-purple-600" />}
+                  nhan="Lưu khuôn này"
+                  moTa="Chụp lại cơ cấu số câu/điểm đang có trong ma trận thành một khuôn dùng lại"
+                  disabled={dangLuuKhuon}
+                  onClick={luuKhuonTuyChinh}
+                />
+                {khuonDe.startsWith('tc_') && (
+                  <MucMenu
+                    icon={<Trash2 className="w-4 h-4" />}
+                    nhan="Xoá khuôn đang chọn"
+                    moTa={KHUON_TAT_CA[khuonDe]?.ten}
+                    nguyHiem
+                    onClick={() => xoaKhuonTuyChinh(khuonDe.slice(3))}
+                  />
+                )}
+              </MenuGon>
+              <div className="w-px h-6 bg-gray-200 mx-0.5"></div>
+              <select value={grade} onChange={e=>setGrade(e.target.value)} className="border border-gray-200 rounded-lg px-2.5 py-1.5 outline-none focus:ring-2 focus:ring-teal-500 text-[13px] font-medium bg-white">
                 <option value="">-- Khối Lớp --</option>
                 {uniqueGrades.map(g => <option key={g} value={g}>{g}</option>)}
               </select>
-              <select value={subject} onChange={e=>setSubject(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white">
+              <select value={subject} onChange={e=>setSubject(e.target.value)} className="border border-gray-200 rounded-lg px-2.5 py-1.5 outline-none focus:ring-2 focus:ring-teal-500 text-[13px] font-medium bg-white">
                 <option value="">-- Phân môn --</option>
                 {uniqueSubjects.map(s => <option key={s} value={s}>{s}</option>)}
               </select>
-              <select value={topicFilter} onChange={e=>setTopicFilter(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white max-w-[200px]">
-                <option value="">-- Chuyên đề (Tất cả) --</option>
-                {topicList.map(t => <option key={t} value={t}>{t}</option>)}
-              </select>
-              <select value={lessonFilter} onChange={e=>setLessonFilter(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white max-w-[200px]">
-                <option value="">-- Bài học (Tất cả) --</option>
-                {lessonList.map(l => <option key={l} value={l}>{l}</option>)}
-              </select>
-              <select value={formFilter} onChange={e=>setFormFilter(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white max-w-[200px]">
-                <option value="">-- Dạng toán (Tất cả) --</option>
-                {formList.map(f => <option key={f} value={f}>{f}</option>)}
-              </select>
-              <select value={qTypeFilter} onChange={e=>setQTypeFilter(e.target.value)} className="border border-gray-200 rounded-xl px-4 py-2.5 outline-none focus:ring-2 focus:ring-teal-500 text-sm font-medium bg-white max-w-[200px]">
-                <option value="">-- Dạng thức (Tất cả) --</option>
-                <option value="NLC">Trắc nghiệm</option>
-                <option value="DS">Đúng/Sai</option>
-                <option value="TLN">Trả lời ngắn</option>
-                <option value="TL">Tự luận</option>
-              </select>
-              <button onClick={fetchTreeAndInventory} disabled={isLoadingTree} className="bg-teal-600 text-white px-5 py-2.5 rounded-xl font-bold hover:bg-teal-700 transition-colors text-sm shadow-sm disabled:opacity-50 flex items-center gap-2">
+
+              <MenuGon
+                nhan="Lọc kho"
+                icon={<List className="w-4 h-4 text-teal-600" />}
+                dem={[topicFilter, lessonFilter, formFilter, qTypeFilter].filter(Boolean).length}
+                rong="w-[340px]"
+                title="Thu hẹp phạm vi cây dạng bên dưới"
+              >
+                <NhomMenu nhan="Chuyên đề" />
+                <div className="px-1 pb-1">
+                  <select value={topicFilter} onChange={e=>setTopicFilter(e.target.value)} className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-teal-400 text-[13px] font-medium bg-white">
+                    <option value="">Tất cả chuyên đề</option>
+                    {topicList.map(t => <option key={t} value={t}>{t}</option>)}
+                  </select>
+                </div>
+                <NhomMenu nhan="Bài học" />
+                <div className="px-1 pb-1">
+                  <select value={lessonFilter} onChange={e=>setLessonFilter(e.target.value)} className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-teal-400 text-[13px] font-medium bg-white">
+                    <option value="">Tất cả bài học</option>
+                    {lessonList.map(l => <option key={l} value={l}>{l}</option>)}
+                  </select>
+                </div>
+                <NhomMenu nhan="Dạng toán" />
+                <div className="px-1 pb-1">
+                  <select value={formFilter} onChange={e=>setFormFilter(e.target.value)} className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-teal-400 text-[13px] font-medium bg-white">
+                    <option value="">Tất cả dạng toán</option>
+                    {formList.map(f => <option key={f} value={f}>{f}</option>)}
+                  </select>
+                </div>
+                <NhomMenu nhan="Dạng thức câu hỏi" />
+                <div className="px-1 pb-1">
+                  <select value={qTypeFilter} onChange={e=>setQTypeFilter(e.target.value)} className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-teal-400 text-[13px] font-medium bg-white">
+                    <option value="">Tất cả dạng thức</option>
+                    <option value="NLC">Trắc nghiệm</option>
+                    <option value="DS">Đúng/Sai</option>
+                    <option value="TLN">Trả lời ngắn</option>
+                    <option value="TL">Tự luận</option>
+                  </select>
+                </div>
+                {[topicFilter, lessonFilter, formFilter, qTypeFilter].some(Boolean) && (
+                  <>
+                    <NganMenu />
+                    <MucMenu
+                      icon={<X className="w-4 h-4" />}
+                      nhan="Bỏ hết bộ lọc"
+                      onClick={() => { setTopicFilter(''); setLessonFilter(''); setFormFilter(''); setQTypeFilter(''); }}
+                    />
+                  </>
+                )}
+              </MenuGon>
+
+              <button onClick={fetchTreeAndInventory} disabled={isLoadingTree} className="bg-teal-600 text-white px-3 py-1.5 rounded-lg font-bold hover:bg-teal-700 transition-colors text-[13px] shadow-sm disabled:opacity-50 flex items-center gap-1.5">
                 {isLoadingTree ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Database className="w-4 h-4" />}
                 Tải & Quét Kho
               </button>
@@ -1037,80 +1077,143 @@ export default function ExamsManagerPage() {
               )}
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 border-t border-gray-100 pt-3 mt-1">
-              {/* Ma trận mẫu: dựng một lần, năm sau chọn lại là ra nguyên bảng */}
-              <Layers className="w-4 h-4 text-gray-400" />
-              <select
-                onChange={e => { if (e.target.value) chonMau(e.target.value); e.target.value = ''; }}
-                defaultValue=""
-                className="border border-gray-200 rounded-xl px-3 py-2.5 outline-none focus:ring-2 focus:ring-purple-500 text-sm font-medium bg-white max-w-[240px]"
+            {/*
+              * Hàng công cụ gom lại còn bốn nút.
+              *
+              * Bản cũ bày 10 ô chọn và nút ra ngoài (mẫu, xoá mẫu, bộ đề, xoá bộ đề, lưu
+              * tạm, xuất Excel, nhập Excel, hai nút AI...) - tràn hai hàng, chiếm gần hết
+              * phần đầu trang trong khi phần lớn chỉ dùng thi thoảng. Nay gom theo nhóm
+              * việc, chỉ để ngoài "Lưu tạm" vì đó là việc bấm thường xuyên nhất.
+              */}
+            <div className="flex flex-wrap items-center gap-2 border-t border-gray-100 pt-2.5 mt-1">
+              <MenuGon
+                nhan="Ma trận mẫu"
+                icon={<Layers className="w-4 h-4 text-purple-600" />}
+                dem={mauList.length}
+                rong="w-[320px]"
+                title="Dựng ma trận một lần, năm sau chọn lại là ra nguyên bảng"
               >
-                <option value="">
-                  {chuaTaoBang ? '-- Chưa tạo bảng ma trận mẫu --'
-                    : mauList.length ? `-- Chọn ma trận mẫu (${mauList.length}) --`
-                    : '-- Chưa có mẫu nào --'}
-                </option>
-                {mauList.map(m => (
-                  <option key={m.id} value={m.id}>{m.ten} ({m.so_cau} câu · {soDiemVN(Number(m.tong_diem) || 0)}đ)</option>
-                ))}
-              </select>
-              <button onClick={luuMau} disabled={dangLuuMau} className="flex items-center gap-2 border border-purple-600 text-purple-700 hover:bg-purple-50 px-3 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white disabled:opacity-50">
-                {dangLuuMau ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu mẫu này
-              </button>
-              {mauList.length > 0 && (
-                <select
-                  onChange={e => { if (e.target.value) xoaMau(e.target.value); e.target.value = ''; }}
-                  defaultValue=""
-                  className="border border-red-200 text-red-600 rounded-xl px-3 py-2.5 outline-none text-sm font-medium bg-white max-w-[160px]"
-                >
-                  <option value="">-- Xoá mẫu --</option>
-                  {mauList.map(m => <option key={m.id} value={m.id}>{m.ten}</option>)}
-                </select>
-              )}
+                <NhomMenu nhan="Dùng lại mẫu đã lưu" />
+                <div className="px-1 pb-1">
+                  <select
+                    onChange={e => { if (e.target.value) { chonMau(e.target.value); } e.target.value = ''; }}
+                    defaultValue=""
+                    disabled={mauList.length === 0}
+                    className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-purple-400 text-[13px] font-medium bg-white disabled:opacity-50"
+                  >
+                    <option value="">
+                      {chuaTaoBang ? 'Chưa tạo bảng ma trận mẫu'
+                        : mauList.length ? `Chọn một trong ${mauList.length} mẫu...`
+                        : 'Chưa có mẫu nào'}
+                    </option>
+                    {mauList.map(m => (
+                      <option key={m.id} value={m.id}>{m.ten} ({m.so_cau} câu · {soDiemVN(Number(m.tong_diem) || 0)}đ)</option>
+                    ))}
+                  </select>
+                </div>
+                <NganMenu />
+                <MucMenu
+                  icon={dangLuuMau ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4 text-purple-600" />}
+                  nhan="Lưu ma trận này thành mẫu"
+                  moTa="Lưu cả dòng ma trận, đầu đề và khuôn đề"
+                  disabled={dangLuuMau}
+                  onClick={luuMau}
+                />
+                {mauList.length > 0 && (
+                  <>
+                    <NhomMenu nhan="Xoá mẫu" />
+                    <div className="px-1 pb-1">
+                      <select
+                        onChange={e => { if (e.target.value) { xoaMau(e.target.value); } e.target.value = ''; }}
+                        defaultValue=""
+                        className="w-full border border-red-200 text-red-600 rounded-lg px-2 py-1.5 outline-none text-[13px] font-medium bg-white"
+                      >
+                        <option value="">Chọn mẫu cần xoá...</option>
+                        {mauList.map(m => <option key={m.id} value={m.id}>{m.ten}</option>)}
+                      </select>
+                    </div>
+                  </>
+                )}
+              </MenuGon>
 
               {/* Bộ đề đã lưu: mở lại để in lại đúng đề đã phát cho học sinh */}
-              {boDeList.length > 0 && (
-                <>
+              <MenuGon
+                nhan="Bộ đề đã lưu"
+                icon={<FileText className="w-4 h-4 text-blue-600" />}
+                dem={boDeList.length}
+                disabled={boDeList.length === 0}
+                rong="w-[340px]"
+                title={boDeList.length === 0 ? 'Chưa lưu bộ đề nào' : 'Mở lại đề đã ra để in lại đúng bản đã phát'}
+              >
+                <NhomMenu nhan="Mở lại bộ đề" />
+                <div className="px-1 pb-1">
                   <select
-                    onChange={e => { if (e.target.value) moBoDe(e.target.value); e.target.value = ''; }}
+                    onChange={e => { if (e.target.value) { moBoDe(e.target.value); } e.target.value = ''; }}
                     defaultValue=""
-                    className="border border-gray-200 rounded-xl px-3 py-2.5 outline-none focus:ring-2 focus:ring-blue-500 text-sm font-medium bg-white max-w-[260px]"
+                    className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-blue-400 text-[13px] font-medium bg-white"
                   >
-                    <option value="">-- Mở bộ đề đã lưu ({boDeList.length}) --</option>
+                    <option value="">Chọn một trong {boDeList.length} bộ đề...</option>
                     {boDeList.map(b => (
                       <option key={b.id} value={b.id}>
                         {b.ten} · {b.so_cau} câu{b.da_chot ? ' · đã chốt' : ''}
                       </option>
                     ))}
                   </select>
+                </div>
+                <NganMenu />
+                <NhomMenu nhan="Xoá bộ đề" />
+                <div className="px-1 pb-1">
                   <select
-                    onChange={e => { if (e.target.value) xoaBoDe(e.target.value); e.target.value = ''; }}
+                    onChange={e => { if (e.target.value) { xoaBoDe(e.target.value); } e.target.value = ''; }}
                     defaultValue=""
-                    className="border border-red-200 text-red-600 rounded-xl px-3 py-2.5 outline-none text-sm font-medium bg-white max-w-[150px]"
+                    className="w-full border border-red-200 text-red-600 rounded-lg px-2 py-1.5 outline-none text-[13px] font-medium bg-white"
                   >
-                    <option value="">-- Xoá bộ đề --</option>
+                    <option value="">Chọn bộ đề cần xoá...</option>
                     {boDeList.map(b => <option key={b.id} value={b.id}>{b.ten}</option>)}
                   </select>
-                </>
-              )}
+                </div>
+              </MenuGon>
+
+              <input ref={fileInputRef} type="file" accept=".xlsx,.xls,.csv" onChange={handleImportMatrix} className="hidden" />
+              <MenuGon nhan="Nhập & Xuất" icon={<UploadCloud className="w-4 h-4 text-emerald-600" />} rong="w-[300px]">
+                <MucMenu
+                  icon={<Download className="w-4 h-4 text-teal-600" />}
+                  nhan="Xuất Excel mẫu"
+                  moTa="Tải bảng ma trận đang dựng ra tệp Excel"
+                  onClick={handleExportMatrix}
+                />
+                <MucMenu
+                  icon={<UploadCloud className="w-4 h-4 text-emerald-600" />}
+                  nhan="Nhập từ Excel"
+                  moTa="Nạp ma trận từ tệp Excel đã xuất ra trước đó"
+                  onClick={() => fileInputRef.current?.click()}
+                />
+              </MenuGon>
+
+              <MenuGon nhan="Nhờ AI" icon={<Sparkles className="w-4 h-4 text-fuchsia-600" />} rong="w-[320px]">
+                <MucMenu
+                  icon={<Sparkles className="w-4 h-4 text-fuchsia-600" />}
+                  nhan="AI soạn ma trận"
+                  moTa="Chưa có ma trận nào thì để AI tự phân bổ số câu theo cấu trúc đề đã chọn"
+                  onClick={moHopSoanMaTran}
+                />
+                <MucMenu
+                  icon={<Wand2 className="w-4 h-4 text-teal-600" />}
+                  nhan="Nạp từ ảnh hoặc tệp"
+                  moTa="Đọc bảng ma trận từ ảnh chụp, tệp PDF hoặc tệp Word"
+                  onClick={moHopNapMaTran}
+                />
+              </MenuGon>
 
               <div className="flex-1" />
 
-              <button onClick={luuNhap} disabled={dangLuuNhap} className="flex items-center gap-2 border border-amber-500 text-amber-700 hover:bg-amber-50 px-4 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white disabled:opacity-50" title="Giữ bài đang làm dở để lần sau mở lại làm tiếp">
+              <button
+                onClick={luuNhap}
+                disabled={dangLuuNhap}
+                className="flex items-center gap-1.5 border border-amber-500 text-amber-700 hover:bg-amber-50 px-2.5 py-1.5 rounded-lg font-bold transition-colors text-[13px] bg-white disabled:opacity-50"
+                title="Giữ bài đang làm dở để lần sau mở lại làm tiếp"
+              >
                 {dangLuuNhap ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu tạm
-              </button>
-              <button onClick={handleExportMatrix} className="flex items-center gap-2 border border-teal-600 text-teal-700 hover:bg-teal-50 px-4 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white">
-                <Download className="w-4 h-4" /> Xuất Excel mẫu
-              </button>
-              <input ref={fileInputRef} type="file" accept=".xlsx,.xls,.csv" onChange={handleImportMatrix} className="hidden" />
-              <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-2 border border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-4 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white" title="Nạp ma trận từ tệp Excel đã xuất ra trước đó">
-                <UploadCloud className="w-4 h-4" /> Import Excel
-              </button>
-              <button onClick={moHopSoanMaTran} className="flex items-center gap-2 border border-fuchsia-600 text-fuchsia-700 hover:bg-fuchsia-50 px-4 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white" title="Chưa có ma trận nào thì để AI tự phân bổ số câu theo cấu trúc đề đã chọn">
-                <Sparkles className="w-4 h-4" /> AI soạn ma trận
-              </button>
-              <button onClick={moHopNapMaTran} className="flex items-center gap-2 border border-teal-600 text-teal-700 hover:bg-teal-50 px-4 py-2.5 rounded-xl font-bold transition-colors text-sm bg-white" title="Đọc bảng ma trận từ ảnh chụp, tệp PDF hoặc tệp Word">
-                <Wand2 className="w-4 h-4" /> Nạp từ ảnh/tệp (AI)
               </button>
             </div>
           </div>

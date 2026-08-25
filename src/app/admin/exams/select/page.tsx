@@ -9,6 +9,7 @@ import { taoCacMaDe } from "@/utils/tronMaDe";
 import { dungGoiDeOnline, timCauThieuDapAn } from "@/utils/dayDeSangOnline";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
+import MenuGon, { MucMenu, NhomMenu, NganMenu } from "@/components/admin/MenuGon";
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, Pencil, Shuffle, ArrowLeft, ArrowRight, Printer, Download,
@@ -532,29 +533,31 @@ function SelectContent() {
     <div className="min-h-screen bg-[#f8fafc]">
       {/* Thanh trên cùng */}
       <div className="sticky top-0 z-20 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-[1600px] mx-auto px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
-          <div>
-            <h1 className="text-xl font-black text-gray-800">{examType || "Đề thi"}</h1>
-            <p className="text-sm text-gray-500">
+        <div className="max-w-[1600px] mx-auto px-5 py-2.5 flex items-center justify-between gap-3 flex-wrap">
+          <div className="min-w-0">
+            <h1 className="text-base font-black text-gray-800 leading-tight truncate">{examType || "Đề thi"}</h1>
+            <p className="text-[12px] text-gray-500 leading-tight">
               {grade ? `Lớp ${grade}` : ""}{grade && subject ? " · " : ""}{subject}
               {step === 'select' && (
                 <> · Đã chọn <b className={totalSelected === totalTarget ? "text-emerald-600" : "text-amber-600"}>{totalSelected}</b> / mục tiêu {totalTarget} câu</>
               )}
             </p>
           </div>
-          <div className="flex items-center gap-3 flex-wrap print:hidden">
-            {/* Chọn cỡ chữ: xem trên máy thì để nhỏ gọn, trình chiếu cho lớp thì phóng to */}
-            <div className="flex items-center gap-1 bg-gray-100 border border-gray-200 rounded-lg p-1">
-              <Type className="w-3.5 h-3.5 text-gray-500 ml-1" />
-              {([['sm', 'Nhỏ gọn'], ['md', 'Vừa'], ['lg', 'Lớn']] as const).map(([ma, ten]) => (
+          <div className="flex items-center gap-2 flex-wrap print:hidden">
+            {/* Cỡ chữ: xem trên máy để nhỏ gọn, trình chiếu cho lớp thì phóng to. Chỉ còn
+                ba chữ A to nhỏ dần - đủ hiểu mà không ăn mất một mảng thanh công cụ. */}
+            <div className="flex items-center gap-0.5 bg-gray-100 border border-gray-200 rounded-lg p-0.5" title="Cỡ chữ hiển thị">
+              <Type className="w-3.5 h-3.5 text-gray-400 mx-1" />
+              {([['sm', 'A', 'Nhỏ gọn'], ['md', 'A', 'Vừa'], ['lg', 'A', 'Lớn']] as const).map(([ma, chu, ten], i) => (
                 <button
                   key={ma}
                   onClick={() => doiCoChu(ma)}
-                  className={`px-2.5 py-1 rounded-md text-xs font-bold transition-colors ${
-                    coChu === ma ? 'bg-white text-indigo-700 shadow-sm' : 'text-gray-500 hover:text-gray-700'
-                  }`}
+                  title={ten}
+                  className={`w-6 h-6 rounded-md font-black transition-colors leading-none ${
+                    i === 0 ? 'text-[10px]' : i === 1 ? 'text-[12px]' : 'text-[14px]'
+                  } ${coChu === ma ? 'bg-white text-indigo-700 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}
                 >
-                  {ten}
+                  {chu}
                 </button>
               ))}
             </div>
@@ -563,15 +566,18 @@ function SelectContent() {
             <button
               onClick={luuNhap}
               disabled={dangLuuNhap}
-              title="Giữ phiên chọn câu đang làm dở để lần sau mở lại"
-              className="flex items-center gap-1.5 border border-amber-500 text-amber-700 hover:bg-amber-50 px-3 py-2 rounded-lg font-bold text-sm bg-white disabled:opacity-50"
+              title="Lưu tạm - giữ phiên chọn câu đang làm dở để lần sau mở lại"
+              className="flex items-center gap-1.5 border border-amber-500 text-amber-700 hover:bg-amber-50 px-2.5 py-1.5 rounded-lg font-bold text-[13px] bg-white disabled:opacity-50"
             >
               {dangLuuNhap ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu tạm
             </button>
 
             {chuaLuu && (
-              <span className="flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-2 py-1">
-                <AlertTriangle className="w-3.5 h-3.5" /> Có thay đổi chưa lưu
+              <span
+                title="Có thay đổi chưa lưu"
+                className="flex items-center gap-1 text-[11px] font-bold text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-1.5 py-1"
+              >
+                <AlertTriangle className="w-3.5 h-3.5" /> Chưa lưu
               </span>
             )}
 
@@ -579,53 +585,98 @@ function SelectContent() {
             <button
               onClick={() => setStep('final')}
               disabled={totalSelected === 0}
-              className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-6 py-3 rounded-xl font-black shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center gap-2 disabled:opacity-50 disabled:hover:translate-y-0"
+              className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-4 py-2 rounded-lg font-black text-[13px] shadow-md hover:shadow-lg transition-all flex items-center gap-1.5 disabled:opacity-50"
             >
-              Xem đề hoàn chỉnh ({totalSelected} câu) <ArrowRight className="w-5 h-5" />
+              Xem đề hoàn chỉnh ({totalSelected} câu) <ArrowRight className="w-4 h-4" />
             </button>
           ) : (
-            <div className="flex items-center gap-3 flex-wrap print:hidden">
-              <button onClick={() => setStep('select')} className="flex items-center gap-2 border border-gray-300 text-gray-700 px-4 py-2.5 rounded-lg font-bold text-sm hover:bg-gray-50">
-                <ArrowLeft className="w-4 h-4" /> Quay lại chọn câu
+            /*
+             * Thanh công cụ gom lại còn một hàng.
+             *
+             * Bản cũ bày cả 9 nút to ra ngoài, xếp thành hai hàng và đẩy nội dung đề
+             * xuống quá nửa màn hình - đúng cái làm thầy cô không soi được đề. Nay chỉ
+             * giữ ngoài việc dùng nhiều nhất (quay lại, chốt đề), còn lại gom theo nhóm.
+             */
+            <div className="flex items-center gap-2 flex-wrap print:hidden">
+              <button
+                onClick={() => setStep('select')}
+                title="Quay lại màn chọn câu"
+                className="flex items-center gap-1.5 border border-gray-300 text-gray-700 px-2.5 py-1.5 rounded-lg font-bold text-[13px] hover:bg-gray-50"
+              >
+                <ArrowLeft className="w-4 h-4" /> Chọn câu
               </button>
-              <label className="flex items-center gap-2 px-3 py-2 rounded-lg border border-gray-300 bg-white text-sm font-bold text-gray-700" title="Mã đầu giữ nguyên bản đang xem; các mã sau đảo thứ tự câu và phương án, đáp án dời theo">
-                <Shuffle className="w-4 h-4 text-violet-600" />
-                Số mã đề
+
+              {/* Số mã đề để ngoài vì nó đổi kết quả của CẢ xuất tệp lẫn đẩy sang thi
+                  online - giấu vào một menu thì menu kia dùng nhầm mà không hay. */}
+              <label
+                className="flex items-center gap-1.5 px-2 py-1 rounded-lg border border-gray-300 bg-white text-[13px] font-bold text-gray-700"
+                title="Mã đầu giữ nguyên bản đang xem; các mã sau đảo thứ tự câu và phương án, đáp án dời theo"
+              >
+                <Shuffle className="w-3.5 h-3.5 text-violet-600" />
+                Mã đề
                 <select
                   value={soMaDe}
                   onChange={e => setSoMaDe(Number(e.target.value) || 1)}
-                  className="border border-gray-200 rounded-md px-2 py-1 text-sm font-bold outline-none"
+                  className="border border-gray-200 rounded-md px-1.5 py-0.5 text-[13px] font-bold outline-none"
                 >
                   {[1, 2, 3, 4].map(n => <option key={n} value={n}>{n}</option>)}
                 </select>
               </label>
-              <button onClick={handlePrint} className="bg-teal-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-teal-700">
-                <Printer className="w-4 h-4" /> In trực tiếp Web
-              </button>
-              <button onClick={handleExportWordStudent} className="bg-blue-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-blue-700">
-                <Download className="w-4 h-4" /> Xuất Đề (Học Sinh)
-              </button>
-              <button onClick={handleExportWordTeacher} className="bg-indigo-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-indigo-700">
-                <Download className="w-4 h-4" /> Xuất Đề + Lời Giải (Giáo Viên)
-              </button>
-              <button onClick={handleExportTronGoi} title="Ma trận + Bản đặc tả theo mẫu Công văn 7991, kèm đề và lời giải, trong một tệp" className="bg-violet-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-violet-700">
-                <Download className="w-4 h-4" /> Xuất trọn gói (Ma trận + Đặc tả + Đề)
-              </button>
-              <button onClick={() => luuBoDe(false)} disabled={dangLuuBoDe} className="bg-purple-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-purple-700 disabled:opacity-50" title="Lưu đề vào hệ thống, mở lại được sau này">
-                {dangLuuBoDe ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />} Lưu bộ đề
-              </button>
+
+              <MenuGon nhan="In & Xuất" icon={<Download className="w-4 h-4" />} rong="w-[300px]">
+                <MucMenu
+                  icon={<Printer className="w-4 h-4 text-teal-600" />}
+                  nhan="In trực tiếp trên web"
+                  moTa="Mở hộp in của trình duyệt"
+                  onClick={handlePrint}
+                />
+                <NganMenu />
+                <NhomMenu nhan="Xuất tệp Word" />
+                <MucMenu
+                  icon={<Download className="w-4 h-4 text-blue-600" />}
+                  nhan="Đề cho học sinh"
+                  moTa="Chỉ đề, không kèm đáp án"
+                  onClick={handleExportWordStudent}
+                />
+                <MucMenu
+                  icon={<Download className="w-4 h-4 text-indigo-600" />}
+                  nhan="Đề kèm lời giải"
+                  moTa="Bản của giáo viên"
+                  onClick={handleExportWordTeacher}
+                />
+                <MucMenu
+                  icon={<Download className="w-4 h-4 text-violet-600" />}
+                  nhan="Trọn gói"
+                  moTa="Ma trận + Bản đặc tả theo mẫu Công văn 7991, kèm đề và lời giải, trong một tệp"
+                  onClick={handleExportTronGoi}
+                />
+              </MenuGon>
+
+              <MenuGon nhan="Lưu & Gửi" icon={<Save className="w-4 h-4" />} rong="w-[300px]">
+                <MucMenu
+                  icon={dangLuuBoDe ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4 text-purple-600" />}
+                  nhan="Lưu bộ đề"
+                  moTa="Lưu vào hệ thống, mở lại được sau này"
+                  disabled={dangLuuBoDe}
+                  onClick={() => luuBoDe(false)}
+                />
+                <MucMenu
+                  icon={dangDayOnline ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4 text-sky-600" />}
+                  nhan="Đẩy sang Kỳ thi Online"
+                  moTa="Tạo kỳ thi ở dạng bản nháp từ chính đề này"
+                  disabled={dangDayOnline}
+                  onClick={handleDaySangOnline}
+                />
+              </MenuGon>
+
               <button
-                onClick={handleDaySangOnline}
-                disabled={dangDayOnline}
-                title="Tạo kỳ thi online ở dạng bản nháp từ chính đề này, khỏi phải dán lại từng câu"
-                className="bg-sky-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-sky-700 disabled:opacity-50"
+                onClick={handleFinalizeExam}
+                disabled={isFinalizing || isFinalized}
+                title="Cộng số lần đã dùng cho từng câu trong ngân hàng"
+                className="bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-bold flex items-center gap-1.5 text-[13px] shadow-sm hover:bg-emerald-700 disabled:opacity-50"
               >
-                {dangDayOnline ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
-                Đẩy sang Kỳ thi Online
-              </button>
-              <button onClick={handleFinalizeExam} disabled={isFinalizing || isFinalized} className="bg-emerald-600 text-white px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 text-sm shadow-sm hover:bg-emerald-700 disabled:opacity-50">
                 {isFinalizing ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle className="w-4 h-4" />}
-                {isFinalized ? "Đã chốt đề" : "Chốt Đề (Lưu bộ đếm)"}
+                {isFinalized ? "Đã chốt đề" : "Chốt đề"}
               </button>
             </div>
           )}
