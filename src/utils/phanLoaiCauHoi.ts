@@ -26,14 +26,36 @@ export interface DongDanhMuc {
   math_form?: string;
 }
 
-/** So tên không phân biệt hoa thường, dấu tiếng Việt và khoảng trắng thừa. */
+/**
+ * So tên bỏ qua những khác biệt vặt: hoa thường, dấu tiếng Việt, khoảng trắng thừa,
+ * dấu chấm/phẩy cuối câu, và ngoặc nhọn thừa quanh công thức.
+ *
+ * Hai vế cuối là bài học từ kho thật. AI mỗi lượt quét lại viết tên dạng lệch nhau một
+ * chút, mà bản cũ chỉ bỏ qua hoa thường với dấu nên coi chúng là dạng MỚI, đề xuất thêm
+ * dòng danh mục, thầy cô bấm duyệt là kho có thêm một dạng song sinh. Kho Lý đã sinh ra
+ * ba biến thể của cùng một dạng chỉ vì lệch một dấu chấm và một cặp ngoặc nhọn:
+ *
+ *   Vận dụng công thức định luật I Nhiệt động lực học (${\Delta U = A + Q}$)
+ *   Vận dụng công thức định luật I Nhiệt động lực học ($\Delta U = A + Q$).
+ *   Vận dụng công thức định luật I Nhiệt động lực học ($\Delta U = A + Q$)
+ *
+ * Câu bị xé lẻ ra ba dạng, ra đề theo dạng nào cũng hụt câu. "${X}$" và "$X$" in ra
+ * giống hệt nhau nên gộp chung là an toàn.
+ */
 export const chuanTen = (s: string | null | undefined): string =>
   String(s || '')
+    .replace(/\$\{+([\s\S]*?)\}+\$/g, '$$$1$$')
     .normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[đĐ]/g, 'd')
-    .toLowerCase().replace(/\s+/g, ' ').trim();
+    .toLowerCase().replace(/\s+/g, ' ')
+    .replace(/^[\s.,;:]+|[\s.,;:]+$/g, '');
 
-/** Tìm trong danh mục tên chuẩn ứng với một tên do AI trả về (khớp mờ theo dấu và hoa thường). */
-function doiVeTenChuan(ten: string, dsChuan: string[]): string | null {
+/**
+ * Tìm trong danh mục tên chuẩn ứng với một tên do AI trả về.
+ *
+ * Xuất ra dùng chung: mọi chỗ sắp thêm một dòng danh mục đều phải hỏi hàm này trước,
+ * không thì tên chỉ lệch một dấu chấm cũng thành dạng mới.
+ */
+export function doiVeTenChuan(ten: string, dsChuan: string[]): string | null {
   const t = chuanTen(ten);
   if (!t) return null;
   const khop = dsChuan.find(x => chuanTen(x) === t);

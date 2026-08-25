@@ -29,6 +29,7 @@ import {
   scanFilesForQuestions,
 } from "@/utils/aiQuestionScan";
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
+import { doiVeTenChuan } from "@/utils/phanLoaiCauHoi";
 import { autoCropImage, type NormalizedBox } from "@/utils/autoCropImage";
 import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
@@ -483,6 +484,19 @@ export default function BatchQueuePage() {
     if (action.type === 'approve') {
       const sample = affected[0]?.q;
       if (sample) {
+        /*
+         * Duyệt là thêm dòng mới, nhưng trước đó phải soi xem danh mục đã có tên nào y
+         * hệt chưa - chỉ lệch dấu chấm cuối, hoa thường hay một cặp ngoặc nhọn trong
+         * công thức. Có thì kéo mọi câu đang chờ về tên cũ, không đẻ thêm dạng song sinh:
+         * kho bị xé lẻ như vậy thì ra đề theo dạng nào cũng hụt câu.
+         */
+        const dsCoSan = categories
+          .filter((c) => String(c.grade) === String(sample.grade) && c.subject === sample.subject)
+          .map((c) => String((c as any)[proposal.level] || '')).filter(Boolean);
+        const tenCu = doiVeTenChuan(String((sample as any)[proposal.level] || ''), dsCoSan);
+        if (tenCu) {
+          for (const w of affected) (w.q as any)[proposal.level] = tenCu;
+        } else {
         const insertData = { grade: sample.grade, subject: sample.subject, topic: sample.topic, lesson: sample.lesson, math_form: sample.math_form };
         const { error } = await supabase.from('question_categories').insert([insertData]);
         // Một câu hỏi có thể sinh nhiều đề xuất cùng lúc (Chương mới + Bài mới + Dạng
@@ -493,6 +507,7 @@ export default function BatchQueuePage() {
         const trungKhoa = (error as any)?.code === '23505';
         if (!error) setCategories((prev) => [...prev, insertData]);
         else if (!trungKhoa) { alert("Lỗi thêm danh mục: " + error.message); return; }
+        }
       }
     } else {
       for (const w of affected) {

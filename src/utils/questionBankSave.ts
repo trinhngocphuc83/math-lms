@@ -7,6 +7,7 @@ import type { QuestionData } from "./aiQuestionScan";
 import { toBankType, toDifficultyCode } from "./questionTypes";
 import { docDapAnDungSai, dapAnDungSaiDungKhuon } from "./chuanHoaCauHoi";
 import { nanTenPhanLoai } from "./deThi";
+import { doiVeTenChuan } from "./phanLoaiCauHoi";
 
 export interface SaveResult {
   insertedCount: number;
@@ -124,6 +125,30 @@ export async function saveQuestionsToBank(supabase: any, questions: QuestionData
   const { data: dmHienCo } = await supabase
     .from('question_categories').select('grade, subject, topic, lesson, math_form');
   const daCo = new Set((dmHienCo || []).map(khoa));
+
+  /*
+   * Bám vào tên ĐÃ CÓ thay vì đẻ thêm tên song sinh.
+   *
+   * Tên chỉ lệch dấu chấm cuối, hoa thường hay một cặp ngoặc nhọn trong công thức thì
+   * với khoá ở trên vẫn là tổ hợp mới, thế là kho có thêm một dạng y hệt dạng cũ và câu
+   * bị xé lẻ ra hai chỗ - ra đề theo dạng nào cũng hụt câu. Kho Lý đã sinh ra ba biến
+   * thể của cùng một dạng đúng theo lối đó. Ở đây kéo tên câu về đúng tên trong danh mục
+   * (xem chuanTen trong phanLoaiCauHoi.ts), và báo cho thầy cô biết đã kéo chỗ nào.
+   */
+  for (const q of validQuestions) {
+    for (const cot of ['topic', 'lesson', 'math_form'] as const) {
+      const cu = String((q as any)[cot] ?? '').trim();
+      if (!cu) continue;
+      const dsCoSan = (dmHienCo || [])
+        .filter((d: any) => String(d.grade) === String(q.grade) && d.subject === q.subject)
+        .map((d: any) => String(d[cot] || '')).filter(Boolean);
+      const chuan = doiVeTenChuan(cu, dsCoSan);
+      if (chuan && chuan !== cu) {
+        (q as any)[cot] = chuan;
+        daNan.push(`Tên trùng dạng đã có, đã gộp lại: "${cu}" -> "${chuan}"`);
+      }
+    }
+  }
 
   const uniqueNewCats: any[] = [];
   for (const q of validQuestions) {

@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import Papa from "papaparse";
 import * as XLSX from "xlsx";
+import { doiVeTenChuan, chuanTen } from "@/utils/phanLoaiCauHoi";
 
 interface CategoryData {
   id: string;
@@ -170,12 +171,20 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
       // Lớp/Chuyên đề/Bài, rất dễ trùng - mà bảng danh mục không tự chặn trùng.
       const daThay = new Set<string>();
       const insertDataGon = insertData.filter(r => {
-        const khoa = [r.grade, r.subject, r.topic, r.lesson, r.math_form].join('|');
+        const khoa = [r.grade, r.subject, r.topic, r.lesson, r.math_form].map(chuanTen).join('|');
         if (daThay.has(khoa)) return false;
         daThay.add(khoa);
         return true;
       });
       const soDongLap = insertData.length - insertDataGon.length;
+
+      // Dòng nào trùng dạng ĐÃ CÓ trong kho (chỉ khác vài dấu chấm hay cặp ngoặc nhọn)
+      // thì bỏ qua, không nhập thêm bản song sinh - và kể tên ra để thầy cô đối chiếu.
+      const khoaDaCo = new Set(categories.map(c =>
+        [c.grade, c.subject, c.topic, c.lesson, c.math_form].map(chuanTen).join('|')));
+      const daCoSan = insertDataGon.filter(r =>
+        khoaDaCo.has([r.grade, r.subject, r.topic, r.lesson, r.math_form].map(chuanTen).join('|')));
+      const insertDataMoi = insertDataGon.filter(r => !daCoSan.includes(r));
 
       if (insertData.length === 0) {
         alert("File không có dữ liệu hợp lệ. Vui lòng đảm bảo có các cột: Lớp, Phân môn, Chuyên đề (cột Tên bài và Dạng toán có thể để trống).");
@@ -183,13 +192,19 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
         return;
       }
 
-      const { error } = await supabase.from('question_categories').insert(insertDataGon);
-      if (error) throw error;
+      if (insertDataMoi.length > 0) {
+        const { error } = await supabase.from('question_categories').insert(insertDataMoi);
+        if (error) throw error;
+      }
 
-      const soChuaCoDang = insertDataGon.filter(r => !r.math_form).length;
+      const soChuaCoDang = insertDataMoi.filter(r => !r.math_form).length;
       alert(
-        `Đã nhập thành công ${insertDataGon.length} dòng danh mục!`
+        `Đã nhập thành công ${insertDataMoi.length} dòng danh mục!`
         + (soDongLap > 0 ? `\nĐã bỏ qua ${soDongLap} dòng lặp lại trong file.` : '')
+        + (daCoSan.length > 0
+          ? `\nĐã bỏ qua ${daCoSan.length} dòng vì kho đã có dạng y hệt (chỉ khác vài dấu):\n- `
+            + daCoSan.slice(0, 5).map(r => r.math_form || r.lesson || r.topic).join('\n- ')
+          : '')
         + (soChuaCoDang > 0 ? `\nCó ${soChuaCoDang} dòng chưa đặt Dạng toán - bổ sung sau cũng được.` : '')
       );
       fetchCategories();
@@ -260,6 +275,28 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
       return alert("Vui lòng điền đủ Lớp, Phân môn và Chuyên đề!");
     }
     try {
+      /*
+       * Chặn thêm tên chỉ khác dạng đã có vài dấu chấm hay một cặp ngoặc nhọn.
+       *
+       * Không tự ý dùng lại tên cũ như các đường AI - đây là thầy cô gõ tay nên phải để
+       * thầy cô quyết: chỉ ra dạng đã có rồi dừng, muốn đổi tên thì sửa thẳng dòng cũ.
+       */
+      const trung = doiVeTenChuan(
+        newCategory.math_form,
+        categories
+          .filter(c => String(c.grade) === String(newCategory.grade.trim())
+            && c.subject === newCategory.subject.trim()
+            && c.lesson === newCategory.lesson.trim())
+          .map(c => String(c.math_form || '')),
+      );
+      if (trung && trung !== newCategory.math_form.trim()) {
+        return alert(
+          `Bài này đã có một Dạng gần như y hệt, chỉ khác vài dấu:\n\n"${trung}"\n\n`
+          + 'Thêm nữa sẽ thành hai dạng song sinh, câu hỏi bị xé lẻ ra hai chỗ và ra đề '
+          + 'theo dạng nào cũng hụt câu.\nMuốn đổi cách viết thì sửa thẳng dòng đã có.'
+        );
+      }
+
       const { error } = await supabase.from('question_categories').insert([{
         grade: newCategory.grade.trim(),
         subject: newCategory.subject.trim(),

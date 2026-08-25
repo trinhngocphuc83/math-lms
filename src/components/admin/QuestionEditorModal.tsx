@@ -3,6 +3,7 @@ import { X, Save, Image as ImageIcon, Trash, Wand2, Crop, UploadCloud, Loader2 }
 import { createClient } from "@/utils/supabase/client";
 import ReactCrop, { type Crop as CropType } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
+import { doiVeTenChuan, chuanTen } from "@/utils/phanLoaiCauHoi";
 
 interface QuestionData {
   temp_id?: string;
@@ -73,9 +74,10 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
 
   useEffect(() => {
     if (formData?.math_form && categories.length > 0) {
-      const exists = categories.some(c => 
-        c.math_form.toLowerCase() === formData.math_form.trim().toLowerCase()
-      );
+      // So tên qua chuanTen chứ không chỉ hạ hoa thường: tên lệch một dấu chấm cuối hay
+      // một cặp ngoặc nhọn trong công thức vẫn là dạng CŨ, báo "dạng mới" là dụ người
+      // dùng thêm một dòng danh mục song sinh.
+      const exists = !!doiVeTenChuan(formData.math_form, categories.map(c => String(c.math_form || '')));
       setIsCategoryWarning(!exists);
     } else {
       setIsCategoryWarning(false);
@@ -88,6 +90,21 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
     }
     setIsAddingCategory(true);
     try {
+      // Danh mục đã có tên y hệt (chỉ khác vài dấu) thì dùng lại tên cũ, không thêm dòng
+      // mới - thêm là kho có hai dạng song sinh, câu bị xé lẻ ra hai chỗ.
+      const tenCu = doiVeTenChuan(
+        formData.math_form,
+        categories
+          .filter(c => String(c.grade) === String(formData.grade) && c.subject === formData.subject)
+          .map(c => String(c.math_form || '')),
+      );
+      if (tenCu) {
+        setFormData({ ...formData, math_form: tenCu });
+        alert(`Danh mục đã có Dạng này rồi (chỉ khác vài dấu), đã dùng lại tên cũ:\n"${tenCu}"`);
+        setIsAddingCategory(false);
+        return;
+      }
+
       const { error } = await supabase.from('question_categories').insert([{
         grade: formData.grade.trim(),
         subject: formData.subject.trim(),

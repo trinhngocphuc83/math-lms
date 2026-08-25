@@ -30,6 +30,7 @@ import {
   parseExtractedQuestionsJson,
 } from "@/utils/aiQuestionScan";
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
+import { doiVeTenChuan } from "@/utils/phanLoaiCauHoi";
 
 export default function BatchAIEditorPage() {
   const router = useRouter();
@@ -456,32 +457,50 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
     if (!q || !newValue.trim()) return;
     
     try {
-      const insertData = {
-        grade: q.grade, 
-        subject: q.subject, 
-        topic: q.topic, 
-        lesson: field === 'lesson' ? newValue.trim() : q.lesson, 
-        math_form: field === 'math_form' ? newValue.trim() : (q.math_form || '')
-      };
-      
-      const { error } = await supabase.from('question_categories').insert([insertData]);
-      if (error) throw error;
-      
-      // Update local categories list
-      setCategories(prev => [...prev, insertData as any]);
-      
+      /*
+       * Trước khi thêm, soi xem danh mục đã có tên nào y hệt chưa - chỉ lệch dấu chấm
+       * cuối, hoa thường hay một cặp ngoặc nhọn trong công thức. Có thì DÙNG LẠI tên cũ,
+       * không thêm dòng mới. Bản cũ so tên bằng đúng từng ký tự nên mỗi lượt quét AI viết
+       * lệch một chút là kho lại mọc thêm một dạng song sinh, câu bị xé lẻ ra hai chỗ và
+       * ra đề theo dạng nào cũng hụt câu.
+       */
+      const dsCoSan = categories
+        .filter(c => String(c.grade) === String(q.grade) && c.subject === q.subject)
+        .map(c => String((c as any)[field] || '')).filter(Boolean);
+      const tenCu = doiVeTenChuan(newValue.trim(), dsCoSan);
+      const tenDung = tenCu || newValue.trim();
+
+      if (!tenCu) {
+        const insertData = {
+          grade: q.grade,
+          subject: q.subject,
+          topic: q.topic,
+          lesson: field === 'lesson' ? tenDung : q.lesson,
+          math_form: field === 'math_form' ? tenDung : (q.math_form || '')
+        };
+
+        const { error } = await supabase.from('question_categories').insert([insertData]);
+        if (error) throw error;
+
+        // Update local categories list
+        setCategories(prev => [...prev, insertData as any]);
+      }
+
       // Apply the new category to the question and dismiss the alert
       setParsedQuestions(prev => prev.map(item => {
         if (item.temp_id !== tempId) return item;
         return {
           ...item,
-          [field]: newValue.trim(),
+          [field]: tenDung,
           ...(field === 'lesson' ? { isNewLesson: false } : {}),
           ...(field === 'math_form' ? { isNewMathForm: false } : {})
         };
       }));
-      
-      alert(`Đã thêm ${field === 'lesson' ? 'Tên Bài' : 'Dạng Toán'} mới vào danh mục!`);
+
+      const nhan = field === 'lesson' ? 'Tên Bài' : 'Dạng Toán';
+      alert(tenCu
+        ? `Danh mục đã có ${nhan} này rồi (chỉ khác vài dấu), đã dùng lại tên cũ:\n"${tenCu}"`
+        : `Đã thêm ${nhan} mới vào danh mục!`);
     } catch (e: any) {
       alert("Lỗi khi thêm danh mục: " + e.message);
     }
