@@ -213,6 +213,8 @@ export default function AzotaExamUI({
   const [gradingStatus, setGradingStatus] = useState<Record<string, { isGrading: boolean; result?: any }>>({});
   const [isGradingAll, setIsGradingAll] = useState(false);
   const [isSavingDraft, setIsSavingDraft] = useState(false);
+  /** Thu gọn thanh tiến độ để nhường chỗ cho đề và hình. */
+  const [gonTienDo, setGonTienDo] = useState(false);
   // Điểm của lần nộp trước ở đúng đề này (null nghĩa là chưa nộp lần nào)
   const [diemDaNop, setDiemDaNop] = useState<number | null>(null);
   // Lưu điểm từng câu sau khi chấm
@@ -665,8 +667,15 @@ export default function AzotaExamUI({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  /*
+   * Thanh tiến độ nay nằm NGANG TRÊN ĐẦU chứ không còn là cột bên phải.
+   *
+   * Cột bên phải ăn mất 288px bề ngang, mà đúng chỗ đó là chỗ cần để đặt hình minh hoạ
+   * cạnh đề bài. Xếp dọc rồi cho thanh tiến độ dính trên đầu thì vừa luôn nhìn thấy,
+   * vừa trả lại toàn bộ bề ngang cho câu hỏi.
+   */
   return (
-    <div className="flex flex-col-reverse md:flex-row gap-6 relative">
+    <div className="flex flex-col gap-4 relative">
       {/* Loading overlay khi đang chấm toàn bài */}
       {isGradingAll && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center backdrop-blur-sm">
@@ -774,7 +783,25 @@ export default function AzotaExamUI({
              * cùng trang.
              */
             const imgUrl = data.imageUrl;
-            
+
+            /*
+             * Đề một bên, hình một bên - theo vị trí thầy cô đã đặt lúc soạn bài.
+             *
+             * Hình nằm sẵn trong nội dung câu dưới dạng markdown, nên muốn đặt cạnh đề thì
+             * phải TÁCH nó ra khỏi dòng chảy chữ rồi dựng riêng một cột. Chỉ tách đúng ảnh
+             * đầu tiên: câu có nhiều ảnh thì để nguyên như cũ cho khỏi xáo trộn thứ tự.
+             *
+             * Màn hẹp vẫn xếp dọc (đề trên, hình dưới) - chia đôi trên điện thoại thì cả
+             * chữ lẫn hình đều bé đến mức không đọc nổi.
+             */
+            const viTriAnh = data.viTriAnh || 'duoi';
+            const anhTrongDe = (cleanQuestion.match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/) || [])[1];
+            const soAnhTrongDe = (cleanQuestion.match(/!\[[^\]]*\]\(/g) || []).length;
+            const canhNhau = viTriAnh !== 'duoi' && !!anhTrongDe && soAnhTrongDe === 1;
+            const deKhongAnh = canhNhau
+              ? cleanQuestion.replace(/!\[[^\]]*\]\([^)\s]+[^)]*\)/, '').trim()
+              : cleanQuestion;
+
             return (
               <div key={p.id} id={`question-${qIndex}`} className={`bg-white rounded-2xl p-6 shadow-sm border-2 transition-all ${isSubmitted ? 'border-gray-200' : 'border-slate-200 hover:border-indigo-300'}`}>
                  <div className="flex items-start gap-3 mb-6">
@@ -790,26 +817,43 @@ export default function AzotaExamUI({
                         được KaTeX dựng thành khối không xuống dòng được; không cho cuộn thì
                         nó tràn khỏi thẻ và đẩy rộng cả trang, khiến chữ ở các câu khác bị
                         cắt mất mép trái trên điện thoại. */}
-                    <div className="flex-1 min-w-0 overflow-x-auto prose prose-sm sm:prose-base prose-slate max-w-none prose-p:my-0 font-bold text-slate-800">
-                       {/* Gộp một thuộc tính components duy nhất. Trước đây khai báo components
-                           hai lần nên cái sau ghi đè, làm appMarkdownComponents bị vứt bỏ và
-                           nội dung câu hỏi mất hết kiểu chữ (tiêu đề, danh sách, thẻ ví dụ...). */}
-                       <ReactMarkdown
-                          remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}
-                          rehypePlugins={[rehypeKatex]}
-                          urlTransform={(url) => url}
-                          components={{
-                             ...appMarkdownComponents,
-                             img: ({node, ...props}: any) => <img {...props} className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm my-4 border border-slate-200" style={{ objectFit: 'contain' }} />
-                          }}
-                       >{cleanQuestion}</ReactMarkdown>
-                       
-                       {/* Hỗ trợ hiển thị ảnh fallback nếu MD chưa có */}
-                       {/* Nội dung câu đã có sẵn ảnh markdown nào rồi thì thôi, đừng bày
-                           thêm ảnh nữa. Bản cũ chỉ dò đúng hai nhãn "Hình vẽ" và "Bảng biến
-                           thiên", trong khi đường AI tự cắt chèn nhãn "Hình minh họa". */}
-                       {imgUrl && !cleanQuestion.includes(imgUrl) && !/!\[[^\]]*\]\(/.test(cleanQuestion) && (
-                           <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
+                    <div className={`flex-1 min-w-0 flex flex-col gap-4 md:flex-row md:items-start ${
+                       canhNhau && viTriAnh === 'trai' ? 'md:flex-row-reverse' : ''
+                    }`}>
+                       <div className="flex-1 min-w-0 overflow-x-auto prose prose-sm sm:prose-base prose-slate max-w-none prose-p:my-0 font-bold text-slate-800">
+                          {/* Gộp một thuộc tính components duy nhất. Trước đây khai báo components
+                              hai lần nên cái sau ghi đè, làm appMarkdownComponents bị vứt bỏ và
+                              nội dung câu hỏi mất hết kiểu chữ (tiêu đề, danh sách, thẻ ví dụ...). */}
+                          <ReactMarkdown
+                             remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}
+                             rehypePlugins={[rehypeKatex]}
+                             urlTransform={(url) => url}
+                             components={{
+                                ...appMarkdownComponents,
+                                img: ({node, ...props}: any) => <img {...props} className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm my-4 border border-slate-200" style={{ objectFit: 'contain' }} />
+                             }}
+                          >{deKhongAnh}</ReactMarkdown>
+
+                          {/* Hỗ trợ hiển thị ảnh fallback nếu MD chưa có */}
+                          {/* Nội dung câu đã có sẵn ảnh markdown nào rồi thì thôi, đừng bày
+                              thêm ảnh nữa. Bản cũ chỉ dò đúng hai nhãn "Hình vẽ" và "Bảng biến
+                              thiên", trong khi đường AI tự cắt chèn nhãn "Hình minh họa". */}
+                          {imgUrl && !cleanQuestion.includes(imgUrl) && !/!\[[^\]]*\]\(/.test(cleanQuestion) && (
+                              <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
+                          )}
+                       </div>
+
+                       {/* Cột hình khi thầy cô đặt ảnh sang bên. Dính lại khi cuộn để đọc
+                           phương án ở dưới vẫn còn thấy hình. */}
+                       {canhNhau && (
+                          <div className="w-full md:w-[42%] shrink-0 md:sticky md:top-24">
+                             <img
+                                src={anhTrongDe}
+                                alt="Hình minh họa"
+                                className="w-full h-auto rounded-lg shadow-sm border border-slate-200 bg-white"
+                                style={{ objectFit: 'contain' }}
+                             />
+                          </div>
                        )}
                     </div>
                  </div>
@@ -1187,21 +1231,47 @@ export default function AzotaExamUI({
 
       </div>
 
-      {/* Phần phải: Sidebar (Sticky) */}
-      <div className="w-full md:w-72 shrink-0 relative">
-        <div className="sticky top-24 bg-white rounded-2xl shadow-sm border border-slate-200 p-5 flex flex-col max-h-[calc(100vh-120px)]">
-           <h3 className="font-extrabold text-slate-800 mb-4 flex items-center gap-2 border-b border-slate-100 pb-3">
-             <ListTodo className="w-5 h-5 text-indigo-600" /> Tiến độ làm bài
-           </h3>
-           <div className="flex-1 overflow-y-auto no-scrollbar pr-1 pb-4 space-y-6">
+      {/* Thanh tiến độ: nằm ngang, dính trên đầu, gập lại được cho gọn */}
+      <div className="order-first sticky top-0 z-30 -mx-2 px-2 pt-2 pb-1 bg-slate-50/95 backdrop-blur">
+        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 px-4 py-2.5">
+           <div className="flex items-center justify-between gap-3 flex-wrap">
+              <button
+                 type="button"
+                 onClick={() => setGonTienDo(v => !v)}
+                 className="font-extrabold text-slate-800 flex items-center gap-2 text-sm hover:text-indigo-700"
+                 title={gonTienDo ? 'Mở bảng tiến độ' : 'Thu gọn bảng tiến độ'}
+              >
+                 <ListTodo className="w-4 h-4 text-indigo-600" /> Tiến độ làm bài
+                 <span className="text-[11px] font-bold text-slate-400">{gonTienDo ? '(bấm để mở)' : '(bấm để thu gọn)'}</span>
+              </button>
+              {!isSubmitted && (
+                 <div className="flex items-center gap-2">
+                    <button
+                       onClick={handleSaveDraft}
+                       disabled={isSavingDraft || isGradingAll}
+                       className="bg-white border-2 border-indigo-600 text-indigo-700 hover:bg-indigo-50 font-black px-3 py-1.5 rounded-lg text-[13px] shadow-sm transition-all flex items-center gap-1.5 disabled:opacity-50"
+                    >
+                       {isSavingDraft ? <Loader2 className="w-4 h-4 animate-spin" /> : <ListTodo className="w-4 h-4" />} LƯU BÀI TẠM
+                    </button>
+                    <button
+                       onClick={handleSubmit}
+                       disabled={isGradingAll}
+                       className="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-4 py-1.5 rounded-lg text-[13px] shadow-md transition-all flex items-center gap-1.5 disabled:opacity-50"
+                    >
+                       <Send className="w-4 h-4" /> NỘP BÀI
+                    </button>
+                 </div>
+              )}
+           </div>
+           <div className={`${gonTienDo ? 'hidden' : 'flex'} flex-wrap items-start gap-x-6 gap-y-2 mt-2 pt-2 border-t border-slate-100`}>
               {availableTabs.map(tab => {
                  const items = groupedParts[tab.id as keyof typeof groupedParts] || [];
                  if (items.length === 0) return null;
 
                  return (
-                    <div key={tab.id}>
-                       <h4 className="font-bold text-xs text-slate-400 uppercase mb-3 px-1">{tab.title}</h4>
-                       <div className="grid grid-cols-5 gap-2">
+                    <div key={tab.id} className="flex items-center gap-2">
+                       <h4 className="font-bold text-[10px] text-slate-400 uppercase shrink-0 max-w-[120px] leading-tight">{tab.title}</h4>
+                       <div className="flex flex-wrap gap-1.5">
                           {items.map((p, index) => {
                              const localIndex = index + 1;
                              const qIndex = p.qIndex;
@@ -1277,24 +1347,7 @@ export default function AzotaExamUI({
               </div>
            )}
 
-           {!isSubmitted && (
-              <div className="mt-auto pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-3">
-                 <button 
-                    onClick={handleSaveDraft}
-                    disabled={isSavingDraft || isGradingAll}
-                    className="flex-1 bg-white border-2 border-indigo-600 text-indigo-700 hover:bg-indigo-50 font-black py-3.5 rounded-xl shadow-sm transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                 >
-                    {isSavingDraft ? <Loader2 className="w-5 h-5 animate-spin" /> : <ListTodo className="w-5 h-5" />} LƯU BÀI TẠM
-                 </button>
-                 <button 
-                    onClick={handleSubmit}
-                    disabled={isGradingAll}
-                    className="flex-1 bg-indigo-600 hover:bg-indigo-700 text-white font-black py-3.5 rounded-xl shadow-[0_4px_14px_0_rgba(79,70,229,0.39)] transition-all flex justify-center items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                 >
-                    <Send className="w-5 h-5" /> NỘP BÀI
-                 </button>
-              </div>
-           )}
+           {/* Hai nút Lưu tạm / Nộp bài đã dời lên hàng trên của thanh này */}
         </div>
       </div>
       

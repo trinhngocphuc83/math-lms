@@ -7,6 +7,7 @@ import { bankTypeToBlockType } from "@/utils/questionTypes";
 import 'katex/dist/katex.min.css';
 import QuestionBankModal from "@/components/admin/QuestionBankModal";
 import RichTextarea from "@/components/admin/RichTextarea";
+import OSuaTaiCho from "@/components/admin/OSuaTaiCho";
 import QuestionPreviewCard, { type PreviewStatement } from "@/components/admin/QuestionPreviewCard";
 import SourceImageWithBox from "@/components/admin/SourceImageWithBox";
 import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, daChenAnh, canChenAnh, coCanhBaoAI } from "@/utils/aiQuestionScan";
@@ -707,6 +708,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                        {block.content.autoCropMetadata ? (
                           <AutoCropReviewPanel
                              meta={block.content.autoCropMetadata}
+                             viTriAnh={block.content.viTriAnh || 'duoi'}
+                             onDoiViTri={(v) => updateBlockContent(idx, { ...block.content, viTriAnh: v })}
                              onRecrop={() => onTriggerCrop(block.content.autoCropMetadata, block.id)}
                              urlAnhDaCat={layAnhTrongCau(block.content.question)}
                              onVeLai={() => {
@@ -734,7 +737,12 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           </div>
                        )}
 
-                       <RichTextarea rows={3} value={block.content.question || ""} onChange={e => updateBlockContent(idx, { ...block.content, question: e.target.value })} className="w-full border border-gray-200 rounded-xl p-4 outline-none focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 font-mono text-[15px] transition-all" placeholder="Nhập câu hỏi... (Markdown hỗ trợ)" />
+                       <OSuaTaiCho
+                          rows={3}
+                          value={block.content.question || ""}
+                          onChange={v => updateBlockContent(idx, { ...block.content, question: v })}
+                          placeholder="Bấm để nhập câu hỏi... (Markdown hỗ trợ)"
+                       />
 
                        {(block.content.type === 'multiple_choice' || !block.content.type) && (
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
@@ -744,11 +752,18 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                      <input type="radio" name={`q_${block.id}`} checked={block.content.answerIndex === optIdx} onChange={() => updateBlockContent(idx, { ...block.content, answerIndex: optIdx })} className="text-teal-600" />
                                      Đáp án {['A','B','C','D'][optIdx]}
                                   </label>
-                                  <RichTextarea collapsibleToolbar={true} rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
-                                     const newOpts = [...(block.content.options || ["","","",""])];
-                                     newOpts[optIdx] = e.target.value;
-                                     updateBlockContent(idx, { ...block.content, options: newOpts });
-                                  }} className="border rounded p-2 text-sm outline-none focus:border-teal-500" />
+                                  <OSuaTaiCho
+                                     co="nho"
+                                     rows={2}
+                                     value={block.content.options?.[optIdx] || ""}
+                                     onChange={v => {
+                                        const newOpts = [...(block.content.options || ["","","",""])];
+                                        newOpts[optIdx] = v;
+                                        updateBlockContent(idx, { ...block.content, options: newOpts });
+                                     }}
+                                     placeholder="Bấm để nhập phương án..."
+                                     className="w-full border border-teal-400 rounded p-2 text-sm outline-none ring-2 ring-teal-500/10"
+                                  />
                                </div>
                              ))}
                           </div>
@@ -762,11 +777,18 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                      <input type="radio" name={`q_${block.id}`} checked={block.content.answerIndex === optIdx} onChange={() => updateBlockContent(idx, { ...block.content, answerIndex: optIdx })} className="text-teal-600" />
                                      Đáp án {['Đúng','Sai'][optIdx]}
                                   </label>
-                                  <RichTextarea collapsibleToolbar={true} rows={2} value={block.content.options?.[optIdx] || ""} onChange={e => {
-                                     const newOpts = [...(block.content.options || ["",""])];
-                                     newOpts[optIdx] = e.target.value;
-                                     updateBlockContent(idx, { ...block.content, options: newOpts });
-                                  }} className="border rounded p-2 text-sm outline-none focus:border-teal-500" />
+                                  <OSuaTaiCho
+                                     co="nho"
+                                     rows={2}
+                                     value={block.content.options?.[optIdx] || ""}
+                                     onChange={v => {
+                                        const newOpts = [...(block.content.options || ["",""])];
+                                        newOpts[optIdx] = v;
+                                        updateBlockContent(idx, { ...block.content, options: newOpts });
+                                     }}
+                                     placeholder="Bấm để nhập phương án..."
+                                     className="w-full border border-teal-400 rounded p-2 text-sm outline-none ring-2 ring-teal-500/10"
+                                  />
                                </div>
                              ))}
                           </div>
@@ -793,17 +815,17 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                            {opt.isTrue ? '✓ Mệnh đề Đúng' : '✕ Mệnh đề Sai'}
                                         </button>
                                      </div>
-                                     <RichTextarea 
-                                        collapsibleToolbar={true}
-                                        rows={2} 
-                                        value={opt.content || ""} 
-                                        onChange={e => {
+                                     <OSuaTaiCho
+                                        co="nho"
+                                        rows={2}
+                                        value={opt.content || ""}
+                                        onChange={v => {
                                            const newOpts = [...block.content.options];
-                                           newOpts[optIdx] = { ...opt, content: e.target.value };
+                                           newOpts[optIdx] = { ...opt, content: v };
                                            updateBlockContent(idx, { ...block.content, options: newOpts });
-                                        }} 
-                                        className="w-full border border-gray-200 rounded-lg p-2.5 text-sm outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 transition-all" 
-                                        placeholder="Nhập nội dung mệnh đề..."
+                                        }}
+                                        placeholder="Bấm để nhập nội dung mệnh đề..."
+                                        className="w-full border border-teal-400 rounded-lg p-2.5 text-sm outline-none ring-2 ring-teal-500/10"
                                      />
                                   </div>
                                ))}
@@ -816,20 +838,25 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                              <label className="text-xs font-bold text-gray-600 mb-1 block">Đáp án đúng chính xác (Text/Số)</label>
                              {/* Dùng RichTextarea để có bảng công thức + xem trước như mọi ô khác.
                                  Trước đây là <input> thuần nên không gõ/nhìn được công thức toán. */}
-                             <RichTextarea
-                                collapsibleToolbar={true}
+                             <OSuaTaiCho
                                 rows={1}
                                 value={block.content.exactAnswer || ""}
-                                onChange={e => updateBlockContent(idx, { ...block.content, exactAnswer: e.target.value })}
-                                className="w-full border border-gray-200 rounded-lg p-2.5 outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/10 font-bold transition-all"
-                                placeholder="VD: 12.5 hoặc $\frac{3\pi}{8}$"
+                                onChange={v => updateBlockContent(idx, { ...block.content, exactAnswer: v })}
+                                placeholder="Bấm để nhập đáp án. VD: 12.5 hoặc $\frac{3\pi}{8}$"
+                                className="w-full border border-teal-400 rounded-lg p-2.5 outline-none ring-2 ring-teal-500/10 font-bold"
                              />
                           </div>
                        )}
 
                        <div className="mt-4 pt-4 border-t border-gray-100">
                           <label className="text-xs font-bold text-gray-600 mb-2 block text-indigo-700">✍️ Hướng dẫn giải / Lời giải chi tiết</label>
-                          <RichTextarea rows={4} value={block.content.answer || block.content.sampleAnswer || block.content.explanation || ""} onChange={e => updateBlockContent(idx, { ...block.content, answer: e.target.value, sampleAnswer: e.target.value })} className="w-full border p-2 rounded outline-none focus:border-teal-500" />
+                          <OSuaTaiCho
+                             rows={4}
+                             value={block.content.answer || block.content.sampleAnswer || block.content.explanation || ""}
+                             onChange={v => updateBlockContent(idx, { ...block.content, answer: v, sampleAnswer: v })}
+                             placeholder="Bấm để nhập hướng dẫn giải..."
+                             className="w-full border border-teal-400 p-2 rounded outline-none ring-2 ring-teal-500/10"
+                          />
                        </div>
                     </div>
                  )}
@@ -966,9 +993,12 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
  * nhìn một cái là biết AI cắt đúng hình của câu này hay nhầm sang chỗ khác. Ảnh đã cắt
  * nằm ngay trong nội dung câu hỏi phía dưới nên ở đây không lặp lại.
  */
-function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnhChup }: {
+function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnhChup, viTriAnh, onDoiViTri }: {
    meta: any;
    onRecrop: () => void;
+   /** Ảnh đặt ở đâu so với đề bài khi học sinh làm bài. */
+   viTriAnh?: string;
+   onDoiViTri?: (v: string) => void;
    /** Ảnh đã cắt đang nằm trong nội dung câu - để chấm độ nét và vẽ lại. */
    urlAnhDaCat?: string;
    onVeLai?: () => void;
@@ -1018,7 +1048,29 @@ function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnh
                   </p>
                )}
             </div>
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-2 shrink-0 flex-wrap">
+               {/*
+                  Vị trí ảnh so với đề bài. Hình vuông vắn như đồ thị, bảng biến thiên đặt
+                  bên cạnh đề thì học sinh vừa đọc vừa nhìn hình, khỏi cuộn lên cuộn xuống.
+                  CHỈ đổi cách bày trên màn hình; xuất Word vẫn để ảnh dưới đề, vì Word chỉ
+                  xếp cạnh nhau được bằng bảng mà bảng thì khó sửa tay.
+               */}
+               {onDoiViTri && (
+                  <div className="flex items-center gap-0.5 bg-white border border-orange-200 rounded-lg p-0.5" title="Ảnh nằm ở đâu so với đề bài">
+                     {([['duoi', 'Dưới đề'], ['phai', 'Bên phải'], ['trai', 'Bên trái']] as const).map(([ma, ten]) => (
+                        <button
+                           key={ma}
+                           type="button"
+                           onClick={() => onDoiViTri(ma)}
+                           className={`px-2 py-1 rounded-md text-[11px] font-bold transition-colors ${
+                              (viTriAnh || 'duoi') === ma ? 'bg-orange-600 text-white' : 'text-orange-700 hover:bg-orange-50'
+                           }`}
+                        >
+                           {ten}
+                        </button>
+                     ))}
+                  </div>
+               )}
                {meta?.originalUrl && (
                   <button
                      type="button"
