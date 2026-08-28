@@ -94,7 +94,23 @@ export default function OSuaTaiCho({
       {trong ? (
         <span className="text-gray-400 italic text-sm">{placeholder || "Bấm để nhập..."}</span>
       ) : (
-        <div className={`prose max-w-none prose-p:my-1 overflow-x-auto ${co === "nho" ? "prose-sm" : "prose-sm sm:prose-base"}`}>
+        /*
+         * Cỡ chữ ép nhỏ lại cho vừa khung soạn bài.
+         *
+         * appMarkdownComponents dựng thẻ <p> ở text-[35px] và tiêu đề tới 55px - cỡ đó
+         * dành cho chế độ Trình chiếu lên máy chiếu, đúng chỗ nó thì đẹp. Nhưng đem nguyên
+         * vào khung soạn bài thì một câu hỏi ăn hết màn hình, phải cuộn mới đọc hết. Không
+         * sửa thẳng appMarkdownComponents vì trình chiếu đang cần cỡ đó; chỉ đè trong
+         * phạm vi khung này.
+         */
+        <div className={`prose max-w-none overflow-x-auto ${co === "nho" ? "prose-sm" : "prose-sm sm:prose-base"}
+          [&_p]:!text-[15px] [&_p]:!mb-2 [&_p]:!leading-relaxed
+          [&_li]:!text-[15px] [&_li]:!mb-1 [&_li]:!gap-2
+          [&_h1]:!text-[20px] [&_h2]:!text-[18px] [&_h3]:!text-[17px] [&_h4]:!text-[16px] [&_h5]:!text-[15px]
+          [&_h2]:!px-3 [&_h2]:!py-1.5 [&_h3]:!mt-3 [&_h3]:!mb-2 [&_h3]:!py-1 [&_h4]:!mt-2 [&_h4]:!mb-1
+          [&_blockquote]:!text-[15px] [&_blockquote]:!px-3 [&_blockquote]:!py-2 [&_blockquote_*]:!text-[15px]
+          [&_div.prose]:!text-[15px]
+          [&_img]:!max-h-[240px] [&_img]:!w-auto [&_img]:!my-2`}>
           <ReactMarkdown
             components={appMarkdownComponents}
             remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}

@@ -708,7 +708,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                        {block.content.autoCropMetadata ? (
                           <AutoCropReviewPanel
                              meta={block.content.autoCropMetadata}
-                             viTriAnh={block.content.viTriAnh || 'duoi'}
+                             viTriAnh={block.content.viTriAnh || 'phai'}
                              onDoiViTri={(v) => updateBlockContent(idx, { ...block.content, viTriAnh: v })}
                              onRecrop={() => onTriggerCrop(block.content.autoCropMetadata, block.id)}
                              urlAnhDaCat={layAnhTrongCau(block.content.question)}
@@ -1063,7 +1063,7 @@ function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnh
                            type="button"
                            onClick={() => onDoiViTri(ma)}
                            className={`px-2 py-1 rounded-md text-[11px] font-bold transition-colors ${
-                              (viTriAnh || 'duoi') === ma ? 'bg-orange-600 text-white' : 'text-orange-700 hover:bg-orange-50'
+                              (viTriAnh || 'phai') === ma ? 'bg-orange-600 text-white' : 'text-orange-700 hover:bg-orange-50'
                            }`}
                         >
                            {ten}

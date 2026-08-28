@@ -794,7 +794,10 @@ export default function AzotaExamUI({
              * Màn hẹp vẫn xếp dọc (đề trên, hình dưới) - chia đôi trên điện thoại thì cả
              * chữ lẫn hình đều bé đến mức không đọc nổi.
              */
-            const viTriAnh = data.viTriAnh || 'duoi';
+            // Mặc định để ảnh BÊN PHẢI. Đặt ảnh dưới đề thì học sinh phải cuộn lên cuộn
+            // xuống giữa hình và phương án; đặt cạnh nhau thì nhìn một lượt là đủ. Thầy cô
+            // vẫn đổi được về "Dưới đề" cho từng câu ở trang soạn bài.
+            const viTriAnh = data.viTriAnh || 'phai';
             const anhTrongDe = (cleanQuestion.match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/) || [])[1];
             const soAnhTrongDe = (cleanQuestion.match(/!\[[^\]]*\]\(/g) || []).length;
             const canhNhau = viTriAnh !== 'duoi' && !!anhTrongDe && soAnhTrongDe === 1;
