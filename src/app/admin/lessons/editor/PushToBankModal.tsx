@@ -613,43 +613,94 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
     alert(parts.length ? `✨ ${source} đã ${parts.join('; ')}.` : `${source} không nhận diện được câu nào.`);
   };
 
+  /**
+   * Xếp TỪNG câu về đúng Chương / Bài / Dạng đã có trong danh mục.
+   *
+   * Bản cũ chỉ đoán Dạng, còn Chương và Bài thì lấy từ "bối cảnh chung" đọc được ở đầu
+   * tài liệu. Tài liệu đưa vào lại thường là một ĐỀ KIỂM TRA nên bối cảnh đó ra những thứ
+   * như "Chương = BÀI KIỂM TRA, Bài = GKI" - không có trong danh mục, đẩy vào kho là mọc
+   * thêm nhánh rác, mà cả 22 câu bị nhét chung một chỗ dù chúng thuộc nhiều chương.
+   *
+   * Nay đưa cả cây danh mục thật cho máy, mỗi câu tự tìm về nhánh của nó. Dạng nào máy
+   * phải đề xuất mới thì hiện khung cam chờ thầy cô duyệt, không tự thêm vào danh mục.
+   */
   const handleAutoDetectGemini = async () => {
-    const { allForms, formsToUse, globalTongHop, emptyQs } = getDetectFormsContext();
+    const { emptyQs } = getDetectFormsContext();
     if (emptyQs.length === 0) {
        alert("Tất cả câu hỏi đã có đủ Dạng toán và Mức độ!");
        return;
     }
 
+    const gr = editCtx.grade || '';
+    const su = editCtx.subject || '';
+    const danhMucLop = categories.filter(c =>
+      (!gr || String(c.grade) === String(gr)) && (!su || c.subject === su));
+
+    if (!gr || !su) {
+      alert('Hãy chọn Lớp và Phân môn ở khung "Bối cảnh tự động" trước, để máy biết tra cây danh mục nào.');
+      return;
+    }
+    if (danhMucLop.length === 0) {
+      alert(`Danh mục của lớp ${gr} - ${su} còn trống. Hãy dựng Chương/Bài/Dạng ở trang "Khối lớp & Danh mục" trước.`);
+      return;
+    }
+
     setGeminiLoading(true);
     try {
-        const res = await fetch('/api/admin/detect-forms', {
+        const res = await fetch('/api/admin/phan-bo-cau-hoi', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
+                grade: gr,
+                subject: su,
+                danhMuc: danhMucLop.map(c => ({ topic: c.topic, lesson: c.lesson, math_form: c.math_form })),
                 questions: emptyQs.map(q => ({
                   id: q.id,
                   question_type: q.question_type,
-                  content: q.content,
-                  // Với câu Đúng/Sai, gửi kèm 4 mệnh đề để AI xét xem có thực sự
-                  // thuộc nhiều dạng khác nhau hay không, thay vì gán cứng "Tổng hợp".
-                  statements: q.question_type === 'true_false_cluster'
-                    ? [q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean)
-                    : undefined,
+                  // Câu Đúng/Sai: gửi kèm 4 mệnh đề, vì nội dung chính nằm ở đó chứ không
+                  // phải ở câu dẫn - chỉ gửi câu dẫn thì máy không đủ căn cứ xếp chỗ.
+                  content: q.question_type === 'true_false_cluster'
+                    ? [q.content, q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean).join(' | ')
+                    : q.content,
                 })),
-                formsToUse,
-                allForms,
-                tongHopLabel: globalTongHop,
             })
         });
 
         const data = await res.json();
+        if (!res.ok) throw new Error(data.error || "Lỗi máy chủ");
 
-        if (!res.ok) {
-            throw new Error(data.error || "Lỗi máy chủ");
+        const xepDuoc: any[] = data.xepDuoc || [];
+        const khongXep: any[] = data.khongXep || [];
+        const deXuatDangMoi: Record<string, string> = {};
+        let soXep = 0;
+
+        setQuestions(prev => prev.map(q => {
+          const kq = xepDuoc.find(x => x.id === q.id);
+          if (!kq) return q;
+          soXep++;
+          // Dạng máy phải tự đặt thì CHƯA gán vào câu - để khung cam chờ duyệt, y như
+          // đường cũ. Gán thẳng là danh mục mọc thêm dạng mà thầy cô chưa hề xem.
+          if (kq.dangMoi) {
+            deXuatDangMoi[q.id] = kq.math_form;
+            return { ...q, topic: kq.topic, lesson: kq.lesson, difficulty: kq.difficulty };
+          }
+          return { ...q, topic: kq.topic, lesson: kq.lesson, math_form: kq.math_form, difficulty: kq.difficulty };
+        }));
+
+        if (Object.keys(deXuatDangMoi).length > 0) {
+          setPendingFormSuggestions(prev => ({ ...prev, ...deXuatDangMoi }));
         }
 
-        const result = applyDetectFormsResult(data, emptyQs.map(q => q.id));
-        setTimeout(() => reportDetectFormsResult('AI Gemini', result), 100);
+        const soChuong = new Set(xepDuoc.map(x => x.topic)).size;
+        const phan: string[] = [];
+        if (soXep > 0) phan.push(`xếp ${soXep} câu vào ${soChuong} chương của danh mục`);
+        if (Object.keys(deXuatDangMoi).length > 0) {
+          phan.push(`đề xuất ${Object.keys(deXuatDangMoi).length} Dạng MỚI đang chờ Thầy cô duyệt (khung cam dưới câu hỏi)`);
+        }
+        if (khongXep.length > 0) phan.push(`còn ${khongXep.length} câu máy không xếp được, Thầy cô chọn tay giúp`);
+        setTimeout(() => alert(phan.length
+          ? `✨ AI đã ${phan.join('; ')}.`
+          : 'AI không xếp được câu nào vào danh mục. Kiểm tra lại Lớp / Phân môn đã chọn đúng chưa.'), 100);
     } catch (e: any) {
         console.error(e);
         // Gọi AI tự động thất bại (hết quota, quá tải, mất mạng...) - gợi ý ngay
