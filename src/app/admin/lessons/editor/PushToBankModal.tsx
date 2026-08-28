@@ -434,18 +434,43 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
             lesson: courseContext.lesson || '',
          };
 
+         // Phân môn của khóa học cũng phải có thật trong danh mục mới giữ. Giữ một tên
+         // không có thật thì mọi bộ lọc bên dưới (Chương, Bài, Dạng) đều lọc ra rỗng.
+         const monCoThat = data.some(c => c.grade === baseCtx.grade && c.subject === baseCtx.subject);
+         if (baseCtx.subject && !monCoThat) baseCtx.subject = '';
+
          const sameGradeTopics = Array.from(new Set(
             data.filter(c => !baseCtx.grade || c.grade === baseCtx.grade).map(c => c.topic)
          )).filter(Boolean) as string[];
+
+         // Chương/Bài của KHÓA HỌC không phải lúc nào cũng là một nhánh của ngân hàng.
+         // Bài đang soạn tên "BÀI KIỂM TRA / GKI" thì hai chữ đó chỉ là tên tài liệu -
+         // giữ lại là đóng khung sai ngay từ đầu: bộ lọc Dạng lọc theo một chương không
+         // tồn tại nên ra rỗng, và mọi câu bị đóng dấu Chương rác trước khi đẩy vào kho.
+         // Đối chiếu được với danh mục thì dùng đúng tên trong danh mục, không thì BỎ
+         // TRỐNG để máy tự xếp từng câu (hoặc Thầy cô chọn tay), chứ không giữ tên rác.
          const matchedTopic = baseCtx.topic
-            ? (findMatchingChapterTitle(baseCtx.topic, sameGradeTopics) || baseCtx.topic)
+            ? (findMatchingChapterTitle(baseCtx.topic, sameGradeTopics) || '')
             : '';
 
-         const effectiveCtx = { ...baseCtx, topic: matchedTopic };
+         // Bài chỉ giữ khi nó thật sự nằm trong Chương vừa khớp
+         const matchedLesson = matchedTopic && baseCtx.lesson
+            ? (data.find(c => c.grade === baseCtx.grade && c.topic === matchedTopic
+                 && chuanTen(c.lesson) === chuanTen(baseCtx.lesson))?.lesson || '')
+            : '';
 
-         setEditCtx(prevCtx => (
-            matchedTopic && matchedTopic !== prevCtx.topic ? { ...prevCtx, topic: matchedTopic } : prevCtx
-         ));
+         const effectiveCtx = { ...baseCtx, topic: matchedTopic, lesson: matchedLesson };
+
+         setEditCtx(prevCtx => ({ ...prevCtx, subject: baseCtx.subject, topic: matchedTopic, lesson: matchedLesson }));
+
+         // Gỡ luôn khỏi từng câu: parseQuizBlocks đã đóng dấu bối cảnh của khóa học lên
+         // mọi câu trước khi danh mục kịp tải về.
+         if (matchedTopic !== baseCtx.topic || matchedLesson !== baseCtx.lesson
+             || baseCtx.subject !== (courseContext.subject || '')) {
+            setQuestions(prev => prev.map(q => ({
+               ...q, subject: baseCtx.subject, topic: matchedTopic, lesson: matchedLesson,
+            })));
+         }
 
          const globalForms = Array.from(new Set(data.map(c => c.math_form))).filter(Boolean) as string[];
          const globalTongHop = globalForms.find(f => /tổng hợp/i.test(f)) || "Toán tổng hợp";
@@ -632,16 +657,20 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
     }
 
     const gr = editCtx.grade || '';
-    const su = editCtx.subject || '';
-    const danhMucLop = categories.filter(c =>
-      (!gr || String(c.grade) === String(gr)) && (!su || c.subject === su));
-
-    if (!gr || !su) {
-      alert('Hãy chọn Lớp và Phân môn ở khung "Bối cảnh tự động" trước, để máy biết tra cây danh mục nào.');
+    if (!gr) {
+      alert('Hãy chọn Lớp ở khung "Bối cảnh tự động" trước, để máy biết tra cây danh mục nào.');
       return;
     }
+
+    // Gửi cây danh mục của CẢ LỚP, gồm mọi phân môn - trừ khi Thầy cô đã tự chốt một
+    // phân môn. Một đề cuối kỳ có cả câu Đại số lẫn Hình học và Thống kê; ép sẵn một
+    // phân môn cho cả lô thì câu Hình bị dồn vào nhánh Đại số ngay từ đầu.
+    const su = editCtx.subject || '';
+    const danhMucLop = categories.filter(c =>
+      String(c.grade) === String(gr) && (!su || c.subject === su));
+
     if (danhMucLop.length === 0) {
-      alert(`Danh mục của lớp ${gr} - ${su} còn trống. Hãy dựng Chương/Bài/Dạng ở trang "Khối lớp & Danh mục" trước.`);
+      alert(`Danh mục của lớp ${gr}${su ? ' - ' + su : ''} còn trống. Hãy dựng Chương/Bài/Dạng ở trang "Khối lớp & Danh mục" trước.`);
       return;
     }
 
@@ -652,8 +681,9 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 grade: gr,
-                subject: su,
-                danhMuc: danhMucLop.map(c => ({ topic: c.topic, lesson: c.lesson, math_form: c.math_form })),
+                danhMuc: danhMucLop.map(c => ({
+                  subject: c.subject, topic: c.topic, lesson: c.lesson, math_form: c.math_form,
+                })),
                 questions: emptyQs.map(q => ({
                   id: q.id,
                   question_type: q.question_type,
@@ -680,11 +710,13 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
           soXep++;
           // Dạng máy phải tự đặt thì CHƯA gán vào câu - để khung cam chờ duyệt, y như
           // đường cũ. Gán thẳng là danh mục mọc thêm dạng mà thầy cô chưa hề xem.
+          // Phân môn lấy theo từng câu, vì đề có thể trải trên nhiều phân môn
+          const nhanh = { subject: kq.subject, topic: kq.topic, lesson: kq.lesson, difficulty: kq.difficulty };
           if (kq.dangMoi) {
             deXuatDangMoi[q.id] = kq.math_form;
-            return { ...q, topic: kq.topic, lesson: kq.lesson, difficulty: kq.difficulty };
+            return { ...q, ...nhanh };
           }
-          return { ...q, topic: kq.topic, lesson: kq.lesson, math_form: kq.math_form, difficulty: kq.difficulty };
+          return { ...q, ...nhanh, math_form: kq.math_form };
         }));
 
         if (Object.keys(deXuatDangMoi).length > 0) {
@@ -692,8 +724,12 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
         }
 
         const soChuong = new Set(xepDuoc.map(x => x.topic)).size;
+        const dsMon = Array.from(new Set(xepDuoc.map(x => x.subject).filter(Boolean)));
         const phan: string[] = [];
-        if (soXep > 0) phan.push(`xếp ${soXep} câu vào ${soChuong} chương của danh mục`);
+        if (soXep > 0) {
+          phan.push(`xếp ${soXep} câu vào ${soChuong} chương`
+            + (dsMon.length > 1 ? ` thuộc ${dsMon.length} phân môn (${dsMon.join(', ')})` : ' của danh mục'));
+        }
         if (Object.keys(deXuatDangMoi).length > 0) {
           phan.push(`đề xuất ${Object.keys(deXuatDangMoi).length} Dạng MỚI đang chờ Thầy cô duyệt (khung cam dưới câu hỏi)`);
         }

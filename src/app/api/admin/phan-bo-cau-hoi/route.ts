@@ -6,6 +6,7 @@ import { requireStaff } from '@/utils/auth/guard';
 import { chuanTen } from '@/utils/phanLoaiCauHoi';
 import {
   MUC_DO_HOP_LE,
+  demChuong,
   dungCayDanhMuc,
   vietCayThanhChu,
   dungPromptPhanBo,
@@ -28,6 +29,7 @@ const responseSchema = {
     type: SchemaType.OBJECT,
     properties: {
       id: { type: SchemaType.STRING, description: 'ID câu hỏi, chép nguyên văn, không tự đổi' },
+      subject: { type: SchemaType.STRING, description: 'Tên Phân môn, chép NGUYÊN VĂN từ danh mục đã cho' },
       topic: { type: SchemaType.STRING, description: 'Tên Chương, chép NGUYÊN VĂN từ danh mục đã cho' },
       lesson: { type: SchemaType.STRING, description: 'Tên Bài, chép NGUYÊN VĂN từ danh mục đã cho' },
       math_form: { type: SchemaType.STRING, description: 'Tên Dạng, ưu tiên chọn trong danh sách dạng của bài đó' },
@@ -40,7 +42,7 @@ const responseSchema = {
       },
       lyDo: { type: SchemaType.STRING, description: 'Vì sao xếp vào đó, dưới 15 từ' },
     },
-    required: ['id', 'topic', 'lesson', 'math_form', 'dangMoi', 'difficulty'],
+    required: ['id', 'subject', 'topic', 'lesson', 'math_form', 'dangMoi', 'difficulty'],
   },
 };
 
@@ -53,11 +55,12 @@ export async function POST(request: Request) {
     const guard = await requireStaff();
     if (!guard.ok) return guard.response;
 
-    const { questions, danhMuc, grade, subject } = await request.json() as {
+    // Không nhận "subject" nữa: Phân môn là một tầng của cây danh mục, để máy tự xếp
+    // từng câu. Đề cuối kỳ có cả Đại số lẫn Hình học, chốt sẵn một môn cho cả lô là sai.
+    const { questions, danhMuc, grade } = await request.json() as {
       questions: CauCanPhanBo[];
       danhMuc: DongDanhMucGon[];
       grade?: string;
-      subject?: string;
     };
 
     if (!questions?.length) {
@@ -65,14 +68,14 @@ export async function POST(request: Request) {
     }
     if (!danhMuc?.length) {
       return NextResponse.json({
-        error: 'Chưa chọn Lớp / Phân môn, hoặc danh mục của lớp đó còn trống.'
-          + ' Hãy chọn Lớp và Phân môn trước, hoặc dựng danh mục ở trang Khối lớp & Danh mục.',
+        error: 'Chưa chọn Lớp, hoặc danh mục của lớp đó còn trống.'
+          + ' Hãy chọn Lớp trước, hoặc dựng danh mục ở trang Khối lớp & Danh mục.',
       }, { status: 400 });
     }
 
     const cay = dungCayDanhMuc(danhMuc);
-    if (cay.size === 0) {
-      return NextResponse.json({ error: 'Danh mục của lớp/phân môn này chưa có Chương và Bài nào.' }, { status: 400 });
+    if (demChuong(cay) === 0) {
+      return NextResponse.json({ error: 'Danh mục của lớp này chưa có Chương và Bài nào.' }, { status: 400 });
     }
 
     const allKeys = await getAllAIKeys();
@@ -86,7 +89,7 @@ export async function POST(request: Request) {
       cauHoi: questions,
       cayChu: vietCayThanhChu(cay),
       grade: grade || '',
-      subject: subject || '',
+      dsMon: [...cay.keys()],
     });
 
     try {
