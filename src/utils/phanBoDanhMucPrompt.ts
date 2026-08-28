@@ -72,15 +72,21 @@ export function demChuong(cay: CayDanhMuc): number {
   return n;
 }
 
-/** Viết cây danh mục thành văn bản đánh số, để máy trích dẫn lại cho chính xác. */
+/**
+ * Viết cây danh mục thành văn bản để máy trích dẫn lại cho chính xác.
+ *
+ * KHÔNG tự đánh số chương. Bản đầu ghi "CHƯƠNG 2: Chương 1. Ứng dụng đạo hàm..." vì nghĩ
+ * đánh số cho dễ nhìn, nhưng tên thật vốn đã mở đầu bằng "Chương N." nên hai con số chồng
+ * lên nhau; máy chép lại nguyên cụm rồi trả về "Chương 2. Chương 1. Ứng dụng đạo hàm..." -
+ * không khớp nhánh nào, cả 4 câu của lô cuối rơi hết vào diện "không xếp được". Đo được
+ * trên máy thật khi chạy 22 câu, không phải phòng xa.
+ */
 export function vietCayThanhChu(cay: CayDanhMuc): string {
   const dong: string[] = [];
   for (const [mon, chuongs] of cay) {
     dong.push(`PHÂN MÔN: ${mon}`);
-    let iC = 0;
     for (const [chuong, bais] of chuongs) {
-      iC++;
-      dong.push(`  CHƯƠNG ${iC}: ${chuong}`);
+      dong.push(`  CHƯƠNG: ${chuong}`);
       for (const [bai, dangs] of bais) {
         dong.push(`    BÀI: ${bai}`);
         if (dangs.size === 0) dong.push('      (bài này chưa có dạng nào)');
@@ -120,7 +126,9 @@ ${nhacNhieuMon}
 NHIỆM VỤ: với TỪNG câu hỏi dưới đây, xếp nó về đúng một nhánh trong danh mục trên.
 
 QUY TẮC BẮT BUỘC:
-1. "subject", "topic" và "lesson" PHẢI chép NGUYÊN VĂN từ danh mục trên, và phải cùng
+1. "subject", "topic" và "lesson" PHẢI chép NGUYÊN VĂN phần SAU dấu hai chấm của dòng
+   tương ứng trong danh mục - chỉ chép TÊN, không kèm các chữ "PHÂN MÔN:", "CHƯƠNG:",
+   "BÀI:" và không tự thêm số thứ tự nào vào trước tên. Ba tên phải cùng
    nằm trên MỘT nhánh (Bài đó phải thuộc Chương đó, Chương đó phải thuộc Phân môn đó).
    TUYỆT ĐỐI không tự đặt tên mới, không ghi những thứ như "Bài kiểm tra", "Giữa kỳ I",
    "Đề số 1" - đó là tên của tài liệu, không phải nhánh kiến thức.
@@ -140,6 +148,52 @@ ${dsCau}`;
 }
 
 /**
+ * Đọc mảng JSON, CỨU LẤY phần đã về được nếu câu trả lời bị cắt ngang.
+ *
+ * Google cắt ngang khi câu trả lời chạm trần số chữ (finishReason = MAX_TOKENS), và
+ * thư viện vẫn trả về đoạn dở dang chứ không hề báo lỗi. Bản cũ JSON.parse hỏng là
+ * ném hết cả lô đi rồi trả về mảng rỗng KHÔNG KÈM LÝ DO - giao diện đành báo "AI không
+ * xếp được câu nào, kiểm tra lại Lớp/Phân môn", đổ oan cho thầy cô trong khi thật ra
+ * máy đã xếp đúng 15 câu đầu rồi mới bị cắt.
+ *
+ * Nay cắt tới đâu giữ tới đó: gom các phần tử ĐẦY ĐỦ (đếm ngoặc, bỏ qua ngoặc nằm
+ * trong chuỗi) rồi đọc từng cái một. Phần tử dở dang cuối cùng thì bỏ.
+ */
+export function docMangJson(raw: string): { dsCau: any[]; loi?: string } {
+  const batDau = raw.indexOf('[');
+  if (batDau < 0) return { dsCau: [], loi: 'máy không trả về dữ liệu nào đọc được' };
+
+  // Nguyên vẹn thì đọc thẳng, nhanh và chắc nhất
+  const tron = raw.slice(batDau, raw.lastIndexOf(']') + 1);
+  if (tron.endsWith(']')) {
+    try { return { dsCau: JSON.parse(tron) }; } catch { /* đứt ở giữa, cứu bên dưới */ }
+  }
+
+  const dsCau: any[] = [];
+  let sau = 0, dau = -1, trongChuoi = false, thoat = false;
+  for (let i = batDau + 1; i < raw.length; i++) {
+    const c = raw[i];
+    if (thoat) { thoat = false; continue; }
+    if (c === '\\') { thoat = true; continue; }
+    if (c === '"') { trongChuoi = !trongChuoi; continue; }
+    if (trongChuoi) continue;
+    if (c === '{') { if (sau === 0) dau = i; sau++; }
+    else if (c === '}') {
+      sau--;
+      if (sau === 0 && dau >= 0) {
+        try { dsCau.push(JSON.parse(raw.slice(dau, i + 1))); } catch { /* bỏ phần tử hỏng */ }
+        dau = -1;
+      }
+    }
+  }
+
+  if (dsCau.length === 0) {
+    return { dsCau: [], loi: 'câu trả lời của máy bị cắt ngang ngay từ đầu, không đọc nổi phần tử nào' };
+  }
+  return { dsCau, loi: `câu trả lời của máy bị cắt ngang, chỉ cứu được ${dsCau.length} câu đầu` };
+}
+
+/**
  * Đọc kết quả và SOÁT LẠI với cây danh mục thật.
  *
  * Không tin thẳng những gì máy trả về: máy vẫn có lúc bịa tên chương hoặc ghi sai chính
@@ -154,13 +208,9 @@ export function docKetQuaPhanBo(
   raw: string,
   cay: CayDanhMuc,
   chuanTen: (s: string) => string,
-): { xepDuoc: KetQuaPhanBo[]; khongXep: { id: string; lyDo: string }[] } {
-  let tho: any[] = [];
-  try {
-    tho = JSON.parse((raw.match(/\[[\s\S]*\]/) || ['[]'])[0]);
-  } catch {
-    return { xepDuoc: [], khongXep: [] };
-  }
+): { xepDuoc: KetQuaPhanBo[]; khongXep: { id: string; lyDo: string }[]; loi?: string } {
+  const { dsCau: tho, loi } = docMangJson(raw);
+  if (tho.length === 0) return { xepDuoc: [], khongXep: [], loi };
 
   // Bảng tra theo tên đã chuẩn hoá, để lệch dấu hay hoa thường vẫn khớp.
   // Một tên Chương có thể (hiếm) xuất hiện ở hai phân môn, nên giữ cả danh sách.
@@ -180,7 +230,20 @@ export function docKetQuaPhanBo(
     const id = String(r?.id ?? '').trim();
     if (!id) continue;
 
-    const ungVien = traChuong.get(chuanTen(String(r?.topic ?? ''))) || [];
+    const tenChuongMay = chuanTen(String(r?.topic ?? ''));
+    let ungVien = traChuong.get(tenChuongMay) || [];
+
+    // Máy đôi khi dính thêm chữ vào đầu tên chương. Tên chương vốn dài và đặc thù, nên
+    // nếu cụm máy ghi CHỨA đúng một tên có thật thì nhận - còn khớp từ hai nhánh trở lên
+    // thì thà để "chưa xếp được" cho Thầy cô chọn, hơn là đoán rồi xếp nhầm chương.
+    if (ungVien.length === 0 && tenChuongMay) {
+      const chua: { mon: string; chuong: string }[] = [];
+      for (const [ten, ds] of traChuong) {
+        if (ten && tenChuongMay.includes(ten)) chua.push(...ds);
+      }
+      if (chua.length === 1) ungVien = chua;
+    }
+
     if (ungVien.length === 0) {
       khongXep.push({ id, lyDo: `máy ghi Chương "${r?.topic}" - không có trong danh mục` });
       continue;
@@ -224,5 +287,5 @@ export function docKetQuaPhanBo(
     });
   }
 
-  return { xepDuoc, khongXep };
+  return { xepDuoc, khongXep, loi };
 }

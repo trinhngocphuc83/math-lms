@@ -99,11 +99,26 @@ export async function POST(request: Request) {
         generationConfig: {
           responseMimeType: 'application/json',
           responseSchema: responseSchema as any,
+          // Nới trần số chữ. Model có suy nghĩ tiêu tốn thêm vài nghìn chữ cho phần
+          // nghĩ, mà phần nghĩ cũng tính vào trần này - để mặc định thì lô đông câu bị
+          // cắt ngang giữa chừng, JSON đứt đôi và cả lô mất trắng.
+          maxOutputTokens: 32768,
         },
       });
-      console.log(`[Phân bổ danh mục] Dùng model ${kq.model}`);
-      const { xepDuoc, khongXep } = docKetQuaPhanBo(kq.text, cay, chuanTen);
-      return NextResponse.json({ xepDuoc, khongXep, model: kq.model });
+      console.log(`[Phân bổ danh mục] Dùng model ${kq.model}, ${questions.length} câu`);
+
+      const { xepDuoc, khongXep, loi } = docKetQuaPhanBo(kq.text, cay, chuanTen);
+
+      // Không cứu được câu nào thì phải nói ĐÚNG nguyên nhân. Bản cũ nuốt lỗi rồi trả
+      // mảng rỗng, giao diện đành đoán bừa là "sai Lớp/Phân môn" - đổ oan cho thầy cô.
+      if (xepDuoc.length === 0 && khongXep.length === 0) {
+        return NextResponse.json({
+          error: `AI trả về kết quả không đọc được (${loi || 'không rõ nguyên nhân'}).`
+            + ' Thử lại, hoặc chia nhỏ số câu mỗi lượt.',
+        }, { status: 502 });
+      }
+
+      return NextResponse.json({ xepDuoc, khongXep, loi, model: kq.model });
     } catch (err: any) {
       return NextResponse.json({
         error: (err?.message || 'Không gọi được AI.') + ' Thử lại, hoặc tự chọn Dạng cho từng câu.',

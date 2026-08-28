@@ -9,6 +9,7 @@ import {
   normalizeQuestionForCompare,
 } from '@/utils/questionTypes';
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
+import BangSoatPhanBo from '@/components/admin/BangSoatPhanBo';
 import { findMatchingChapterTitle } from '@/utils/topicMatch';
 import { buildDetectFormsPrompt, parseDetectFormsResponse, type DetectFormsResultItem } from '@/utils/detectFormsPrompt';
 import ReactMarkdown from 'react-markdown';
@@ -368,12 +369,21 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({});
   const [editCtx, setEditCtx] = useState({ grade: '', subject: '', topic: '', lesson: '' });
   const [categories, setCategories] = useState<any[]>([]); // Dạng toán từ DB
+  /** Danh mục đang tải dở khác hẳn danh mục rỗng thật - phải nói đúng cái nào. */
+  const [dangTaiDanhMuc, setDangTaiDanhMuc] = useState(true);
   const [mathFormFilter, setMathFormFilter] = useState(''); // Dropdown filter cho dạng toán chung
   const [geminiLoading, setGeminiLoading] = useState(false);
   const [showAddCategoryModal, setShowAddCategoryModal] = useState<{isOpen: boolean, targetId: string}>({isOpen: false, targetId: ''});
   // Dạng toán MỚI do AI đề xuất (chưa có trong Ngân hàng) - chờ giáo viên duyệt tại chỗ,
   // không tự áp dụng ngay để tránh sinh danh mục rác nếu AI đặt tên chưa chuẩn.
   const [pendingFormSuggestions, setPendingFormSuggestions] = useState<Record<string, string>>({});
+  /** Tiến độ khi AI đang chạy từng lô, để Thầy cô thấy nó không treo. */
+  const [tienDoAI, setTienDoAI] = useState<{ xong: number; tong: number } | null>(null);
+  /** Kết quả lượt xếp chỗ gần nhất - dùng cho bảng soát lại sau khi AI chạy xong. */
+  const [ketQuaSoat, setKetQuaSoat] = useState<{
+    xepDuoc: any[]; khongXep: any[]; canhBao: string[];
+  } | null>(null);
+  const [hienBangSoat, setHienBangSoat] = useState(false);
   // Phòng khi Cổng AI của hệ thống báo lỗi (hết quota, quá tải 503...): giáo viên
   // tự copy prompt dán vào Gemini Web/ChatGPT, rồi dán kết quả JSON ngược lại đây.
   const [showManualDetectModal, setShowManualDetectModal] = useState(false);
@@ -411,6 +421,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   }, [isOpen]);
 
   const fetchCategories = async (currentQs: any[]) => {
+    setDangTaiDanhMuc(true);
     try {
       const { data } = await supabase.from('question_categories').select('*');
       if (data) {
@@ -486,7 +497,11 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
             ).map(c => c.math_form)
          )).filter(Boolean) as string[];
 
-         if (scopedForms.length > 0) {
+         // Chỉ dò khi thật sự BIẾT đang ở chương nào. Chương để trống thì bộ lọc bên trên
+         // lọt hết, scopedForms thành toàn bộ dạng của cả lớp, và hàm dò sẽ gán bừa dạng
+         // của chương khác - đúng cái bẫy ghi trong chú thích ngay trên. Để trống cho AI
+         // xếp hoặc Thầy cô chọn còn hơn gán sai mà không ai để ý.
+         if (scopedForms.length > 0 && effectiveCtx.topic) {
             setQuestions(prev => prev.map(q => {
                if (q.math_form) return q;
                const detected = resolveMathForm(q, scopedForms, globalTongHop);
@@ -495,6 +510,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
          }
       }
     } catch (e) { console.error('[PushToBank] Fetch categories error:', e); }
+    finally { setDangTaiDanhMuc(false); }
   };
 
   // Lọc dạng toán phù hợp với Bối cảnh hiện tại (Lớp, Môn, Chương, Bài)
@@ -669,38 +685,69 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
     const danhMucLop = categories.filter(c =>
       String(c.grade) === String(gr) && (!su || c.subject === su));
 
+    if (dangTaiDanhMuc) {
+      alert('Danh mục đang tải, Thầy cô đợi một chút rồi bấm lại giúp.');
+      return;
+    }
     if (danhMucLop.length === 0) {
       alert(`Danh mục của lớp ${gr}${su ? ' - ' + su : ''} còn trống. Hãy dựng Chương/Bài/Dạng ở trang "Khối lớp & Danh mục" trước.`);
       return;
     }
 
+    // Chia lô nhỏ thay vì gửi một cục. Ba lý do đo được, không phải phòng xa:
+    //  - Một lượt 22 câu mất tới 37 giây, trong khi Vercel cắt hàm ở 60 giây; cộng thêm
+    //    thời gian xoay khoá khi model đầu đã cạn hạn mức là chạm trần.
+    //  - Câu trả lời dài dễ chạm trần số chữ rồi bị cắt ngang giữa chừng.
+    //  - Lô nào hỏng thì chỉ mất lô đó, các lô khác vẫn giữ được kết quả.
+    const CO_LO = 8;
+    const cacLo: any[][] = [];
+    for (let i = 0; i < emptyQs.length; i += CO_LO) cacLo.push(emptyQs.slice(i, i + CO_LO));
+
     setGeminiLoading(true);
+    setTienDoAI({ xong: 0, tong: emptyQs.length });
     try {
-        const res = await fetch('/api/admin/phan-bo-cau-hoi', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                grade: gr,
-                danhMuc: danhMucLop.map(c => ({
-                  subject: c.subject, topic: c.topic, lesson: c.lesson, math_form: c.math_form,
-                })),
-                questions: emptyQs.map(q => ({
-                  id: q.id,
-                  question_type: q.question_type,
-                  // Câu Đúng/Sai: gửi kèm 4 mệnh đề, vì nội dung chính nằm ở đó chứ không
-                  // phải ở câu dẫn - chỉ gửi câu dẫn thì máy không đủ căn cứ xếp chỗ.
-                  content: q.question_type === 'true_false_cluster'
-                    ? [q.content, q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean).join(' | ')
-                    : q.content,
-                })),
-            })
-        });
+        const xepDuoc: any[] = [];
+        const khongXep: any[] = [];
+        const canhBao: string[] = [];
 
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error || "Lỗi máy chủ");
+        for (let iLo = 0; iLo < cacLo.length; iLo++) {
+          const lo = cacLo[iLo];
+          try {
+            const res = await fetch('/api/admin/phan-bo-cau-hoi', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    grade: gr,
+                    danhMuc: danhMucLop.map(c => ({
+                      subject: c.subject, topic: c.topic, lesson: c.lesson, math_form: c.math_form,
+                    })),
+                    questions: lo.map((q: any) => ({
+                      id: q.id,
+                      question_type: q.question_type,
+                      // Câu Đúng/Sai: gửi kèm 4 mệnh đề, vì nội dung chính nằm ở đó chứ không
+                      // phải ở câu dẫn - chỉ gửi câu dẫn thì máy không đủ căn cứ xếp chỗ.
+                      content: q.question_type === 'true_false_cluster'
+                        ? [q.content, q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean).join(' | ')
+                        : q.content,
+                    })),
+                })
+            });
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Lỗi máy chủ');
+            xepDuoc.push(...(data.xepDuoc || []));
+            khongXep.push(...(data.khongXep || []));
+            if (data.loi) canhBao.push(`Lô ${iLo + 1}: ${data.loi}`);
+          } catch (loiLo: any) {
+            // Một lô hỏng thì báo rõ lô nào rồi đi tiếp, không bỏ cả lượt
+            canhBao.push(`Lô ${iLo + 1} (${lo.length} câu) không chạy được: ${loiLo?.message || loiLo}`);
+          }
+          setTienDoAI({ xong: Math.min((iLo + 1) * CO_LO, emptyQs.length), tong: emptyQs.length });
+        }
 
-        const xepDuoc: any[] = data.xepDuoc || [];
-        const khongXep: any[] = data.khongXep || [];
+        if (xepDuoc.length === 0) {
+          throw new Error(canhBao.length ? canhBao.join('\n') : 'AI không trả về kết quả nào.');
+        }
+
         const deXuatDangMoi: Record<string, string> = {};
         let soXep = 0;
 
@@ -734,9 +781,11 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
           phan.push(`đề xuất ${Object.keys(deXuatDangMoi).length} Dạng MỚI đang chờ Thầy cô duyệt (khung cam dưới câu hỏi)`);
         }
         if (khongXep.length > 0) phan.push(`còn ${khongXep.length} câu máy không xếp được, Thầy cô chọn tay giúp`);
-        setTimeout(() => alert(phan.length
-          ? `✨ AI đã ${phan.join('; ')}.`
-          : 'AI không xếp được câu nào vào danh mục. Kiểm tra lại Lớp / Phân môn đã chọn đúng chưa.'), 100);
+
+        // Mở bảng soát thay vì chỉ báo một câu rồi thôi: máy xếp chỗ cho hàng chục câu,
+        // Thầy cô cần nhìn thấy từng câu đã về Chương/Bài/Dạng nào mới yên tâm đẩy vào kho.
+        setKetQuaSoat({ xepDuoc, khongXep, canhBao });
+        setHienBangSoat(true);
     } catch (e: any) {
         console.error(e);
         // Gọi AI tự động thất bại (hết quota, quá tải, mất mạng...) - gợi ý ngay
@@ -746,6 +795,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
         }
     } finally {
         setGeminiLoading(false);
+        setTienDoAI(null);
     }
   };
 
@@ -1112,7 +1162,9 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                     disabled={geminiLoading}
                     style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', padding: '4px 10px', borderRadius: 6, fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s', opacity: geminiLoading ? 0.6 : 1 }}
                   >
-                    {geminiLoading ? '⏳ Đang phân tích...' : '✨ Dùng AI (Hệ thống)'}
+                    {geminiLoading
+                      ? (tienDoAI ? `⏳ Đang xếp ${tienDoAI.xong}/${tienDoAI.tong} câu...` : '⏳ Đang phân tích...')
+                      : '✨ Dùng AI (Hệ thống)'}
                   </button>
                   <div style={{ width: 1, height: 16, background: '#cbd5e1', margin: '0 4px' }}></div>
                   <button
@@ -1177,7 +1229,7 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                 const isDuplicate = duplicateInBatchIds.has(q.id);
 
                 return (
-                  <div key={q.id || `fb-${idx}`} style={{ background: '#fff', borderRadius: 10, border: `1px solid ${hasProblem ? '#fca5a5' : isDuplicate ? '#fde68a' : '#e2e8f0'}`, marginBottom: 10, boxShadow: hasProblem ? '0 0 0 2px rgba(248,113,113,0.15)' : '0 1px 2px rgba(0,0,0,0.04)' }}>
+                  <div key={q.id || `fb-${idx}`} id={`cau-${q.id}`} style={{ background: '#fff', borderRadius: 10, border: `1px solid ${hasProblem ? '#fca5a5' : isDuplicate ? '#fde68a' : '#e2e8f0'}`, marginBottom: 10, boxShadow: hasProblem ? '0 0 0 2px rgba(248,113,113,0.15)' : '0 1px 2px rgba(0,0,0,0.04)' }}>
                     {/* CARD HEADER */}
                     <div style={{ padding: '8px 12px', background: '#fafafa', borderBottom: isCollapsed ? 'none' : '1px solid #e2e8f0', display: 'flex', alignItems: 'center', gap: 6, minHeight: 38 }}>
                       <button type="button" onClick={() => toggleCollapse(q.id)} style={{ background: 'none', border: 'none', cursor: 'pointer', padding: 2, display: 'flex', flexShrink: 0 }}>
@@ -1384,6 +1436,23 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
         </div>
       </div>
       
+      <BangSoatPhanBo
+        isOpen={hienBangSoat && !!ketQuaSoat}
+        onClose={() => setHienBangSoat(false)}
+        questions={questions}
+        xepDuoc={ketQuaSoat?.xepDuoc || []}
+        khongXep={ketQuaSoat?.khongXep || []}
+        canhBao={ketQuaSoat?.canhBao || []}
+        onXemCau={(id) => {
+          // Đóng bảng rồi mở câu đó ra và cuộn tới - soát thấy câu lạc chỗ thì sửa được ngay
+          setHienBangSoat(false);
+          setCollapsed(prev => ({ ...prev, [id]: false }));
+          setTimeout(() => {
+            document.getElementById(`cau-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 60);
+        }}
+      />
+
       <AddNewCategoryModal 
         isOpen={showAddCategoryModal.isOpen} 
         onClose={() => {
