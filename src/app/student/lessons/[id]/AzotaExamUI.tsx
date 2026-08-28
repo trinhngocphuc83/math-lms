@@ -13,6 +13,7 @@ import { ensureMathDelimiters } from '@/utils/latexFixer';
 import ReactCrop, { type Crop } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import { useRef } from 'react';
+import TraCuuCongThuc from "@/components/student/TraCuuCongThuc";
 
 
 // Hàm tính điểm câu Đúng/Sai theo Barem 2025
@@ -676,6 +677,8 @@ export default function AzotaExamUI({
    */
   return (
     <div className="flex flex-col gap-4 relative">
+      {/* Quên công thức thì tra ngay tại chỗ, khỏi mở tab khác rồi mất bài đang làm */}
+      <TraCuuCongThuc />
       {/* Loading overlay khi đang chấm toàn bài */}
       {isGradingAll && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center backdrop-blur-sm">
@@ -807,6 +810,18 @@ export default function AzotaExamUI({
 
             return (
               <div key={p.id} id={`question-${qIndex}`} className={`bg-white rounded-2xl p-6 shadow-sm border-2 transition-all ${isSubmitted ? 'border-gray-200' : 'border-slate-200 hover:border-indigo-300'}`}>
+               {/*
+                 * Ảnh sang một bên thì CẢ đề lẫn phương án cùng dồn sang bên kia.
+                 *
+                 * Bản trước mới đưa mỗi đề bài sang cột trái, còn phương án vẫn trải hết bề
+                 * ngang bên dưới tấm ảnh - nhìn rời rạc, mắt phải nhảy qua nhảy lại. Nay gói
+                 * đề và mọi kiểu phương án (trắc nghiệm, Đúng/Sai, trả lời ngắn, tự luận)
+                 * vào chung một cột, ảnh đứng riêng cột còn lại.
+                 */}
+               <div className={canhNhau
+                  ? `flex flex-col gap-5 md:flex-row md:items-start ${viTriAnh === 'trai' ? 'md:flex-row-reverse' : ''}`
+                  : ''}>
+                <div className="flex-1 min-w-0">
                  <div className="flex items-start gap-3 mb-6">
                     <div className="flex flex-col items-center shrink-0">
                        <span className="bg-indigo-600 text-white font-bold px-3 py-1 rounded-lg text-sm mb-1 shadow-sm">Câu {localIndex}</span>
@@ -820,10 +835,7 @@ export default function AzotaExamUI({
                         được KaTeX dựng thành khối không xuống dòng được; không cho cuộn thì
                         nó tràn khỏi thẻ và đẩy rộng cả trang, khiến chữ ở các câu khác bị
                         cắt mất mép trái trên điện thoại. */}
-                    <div className={`flex-1 min-w-0 flex flex-col gap-4 md:flex-row md:items-start ${
-                       canhNhau && viTriAnh === 'trai' ? 'md:flex-row-reverse' : ''
-                    }`}>
-                       <div className="flex-1 min-w-0 overflow-x-auto prose prose-sm sm:prose-base prose-slate max-w-none prose-p:my-0 font-bold text-slate-800">
+                    <div className="flex-1 min-w-0 overflow-x-auto prose prose-sm sm:prose-base prose-slate max-w-none prose-p:my-0 font-bold text-slate-800">
                           {/* Gộp một thuộc tính components duy nhất. Trước đây khai báo components
                               hai lần nên cái sau ghi đè, làm appMarkdownComponents bị vứt bỏ và
                               nội dung câu hỏi mất hết kiểu chữ (tiêu đề, danh sách, thẻ ví dụ...). */}
@@ -844,20 +856,6 @@ export default function AzotaExamUI({
                           {imgUrl && !cleanQuestion.includes(imgUrl) && !/!\[[^\]]*\]\(/.test(cleanQuestion) && (
                               <img src={imgUrl} alt="Minh họa" className="block max-h-[400px] w-auto max-w-full rounded-lg shadow-sm mt-4 border border-slate-200" style={{ objectFit: 'contain' }} />
                           )}
-                       </div>
-
-                       {/* Cột hình khi thầy cô đặt ảnh sang bên. Dính lại khi cuộn để đọc
-                           phương án ở dưới vẫn còn thấy hình. */}
-                       {canhNhau && (
-                          <div className="w-full md:w-[42%] shrink-0 md:sticky md:top-24">
-                             <img
-                                src={anhTrongDe}
-                                alt="Hình minh họa"
-                                className="w-full h-auto rounded-lg shadow-sm border border-slate-200 bg-white"
-                                style={{ objectFit: 'contain' }}
-                             />
-                          </div>
-                       )}
                     </div>
                  </div>
 
@@ -1089,6 +1087,21 @@ export default function AzotaExamUI({
                        )}
                     </div>
                  )}
+
+                </div>
+
+                {/* Cột hình. Dính lại khi cuộn để đọc phương án ở dưới vẫn còn thấy hình. */}
+                {canhNhau && (
+                   <div className="w-full md:w-[38%] shrink-0 md:sticky md:top-28">
+                      <img
+                         src={anhTrongDe}
+                         alt="Hình minh họa"
+                         className="w-full h-auto rounded-lg shadow-sm border border-slate-200 bg-white"
+                         style={{ objectFit: 'contain' }}
+                      />
+                   </div>
+                )}
+               </div>
 
                  {/* === PHẦN HƯỚNG DẪN GIẢI (Hiện sau khi nộp) === */}
                  {isSubmitted && showExplanations && (
