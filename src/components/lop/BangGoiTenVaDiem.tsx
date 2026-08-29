@@ -9,7 +9,8 @@ import {
   layTrangThaiQuay, ghiDaGoi, congDiem, layDsLop, layLopTheoBai, daChotThang,
 } from "@/app/actions/goiTenVaDiem";
 import { LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from "@/utils/goiTenVaDiem";
-import { doiTen, type CachDoc } from "@/utils/giongDocAI";
+import { chuanBiMoiEm, noiCongDiem, noiNgay, type CachDoc } from "@/utils/giongDocAI";
+import VongQuayTen from "./VongQuayTen";
 
 /**
  * Bảng "Gọi tên & Điểm" - MỘT bảng dùng chung, mở được ở bất cứ đâu.
@@ -42,12 +43,16 @@ export default function BangGoiTenVaDiem({
   const [daChot, setDaChot] = React.useState(false);
 
   const [dangQuay, setDangQuay] = React.useState(false);
-  const [tenChay, setTenChay] = React.useState('');
+  /** Người trúng được bốc TRƯỚC rồi băng mới dừng vào đó - xem VongQuayTen. */
+  const [seTrung, setSeTrung] = React.useState<HocSinh | null>(null);
   const [trungAi, setTrungAi] = React.useState<HocSinh | null>(null);
   const [cachDoc, setCachDoc] = React.useState<CachDoc | null>(null);
 
   /** Em vắng - chỉ bỏ qua trong BUỔI NÀY, không ghi vào CSDL, không tính là đã gọi. */
   const [vangHomNay, setVangHomNay] = React.useState<Set<string>>(new Set());
+
+  /** Tiếng đọc tên đã lấy sẵn, chờ băng cuộn dừng là phát. */
+  const tiengCho = React.useRef<Promise<{ phat: () => Promise<CachDoc> }> | null>(null);
 
   const [emKhac, setEmKhac] = React.useState('');
   const [vuaCong, setVuaCong] = React.useState('');
@@ -105,34 +110,55 @@ export default function BangGoiTenVaDiem({
   const dsQuay: HocSinh[] = (trangThai?.conLai || []).filter(h => !vangHomNay.has(h.id));
 
   /* ------------------------------------------------------------------- quay */
-  const quay = async () => {
+  const quay = () => {
     if (dangQuay || dsQuay.length === 0 || !trangThai) return;
-    setDangQuay(true); setTrungAi(null); setCachDoc(null);
-
     const trung = dsQuay[Math.floor(Math.random() * dsQuay.length)];
+    setTrungAi(null); setCachDoc(null);
+    setSeTrung(trung);
+    setDangQuay(true);
 
-    // Chạy tên nhanh rồi chậm dần cho ra dáng vòng quay
-    const batDau = Date.now();
-    const KEO_DAI = 2200;
-    await new Promise<void>((xong) => {
-      const buoc = () => {
-        const troi = Date.now() - batDau;
-        if (troi >= KEO_DAI) { setTenChay(trung.ten); xong(); return; }
-        setTenChay(dsQuay[Math.floor(Math.random() * dsQuay.length)].ten);
-        // chậm dần: 40ms -> 260ms
-        setTimeout(buoc, 40 + (troi / KEO_DAI) ** 2 * 220);
-      };
-      buoc();
-    });
+    /*
+     * ĐI LẤY TIẾNG NGAY TỪ LÚC NÀY, chạy song song với lúc băng đang cuộn.
+     *
+     * Gọi giọng AI mất mấy giây. Bản trước đợi quay xong mới gọi nên tiếng ra trễ hẳn -
+     * Thầy nghe như phải bấm nút cộng điểm thì mới đọc. Nay quay dừng là phát liền.
+     */
+    const tiengDaSan = chuanBiMoiEm(trung.id, trung.ten);
+
+    /* Ghi nhận đã gọi, cũng làm luôn trong lúc quay cho khỏi chờ thêm. */
+    ghiDaGoi(lopId, trung.id, trangThai.vong, lessonId).catch(() => { /* vẫn quay tiếp được */ });
+
+    tiengCho.current = tiengDaSan;
+  };
+
+  /** Băng cuộn dừng: hiện tên, nổ pháo giấy, và ĐỌC NGAY. */
+  const quayXong = async () => {
+    const trung = seTrung;
+    setDangQuay(false);
+    if (!trung) return;
 
     setTrungAi(trung);
-    setDangQuay(false);
-    try { confetti({ particleCount: 90, spread: 75, origin: { y: 0.35 } }); } catch { /* thôi */ }
-
-    try { await ghiDaGoi(lopId, trung.id, trangThai.vong, lessonId); } catch { /* vẫn quay tiếp được */ }
+    try { confetti({ particleCount: 110, spread: 80, origin: { y: 0.35 } }); } catch { /* thôi */ }
     setTrangThai(t => t ? { ...t, conLai: t.conLai.filter(h => h.id !== trung.id) } : t);
 
-    setCachDoc(await doiTen(trung.id, trung.ten));
+    /*
+     * CHỜ GIỌNG AI TỐI ĐA 1,2 GIÂY rồi thôi.
+     *
+     * Lần đầu đọc một cái tên, gọi Google mất mấy giây - đo trên máy là quá 6 giây vẫn
+     * chưa xong. Quay dừng mà im lặng chừng ấy thì cả lớp cụt hứng. Nên chờ một nhịp
+     * ngắn, không kịp thì để giọng máy đọc ngay. Lần sau đã có bản nhớ nên tức thì.
+     */
+    try {
+      const kip = await Promise.race([
+        tiengCho.current,
+        new Promise<null>(x => setTimeout(() => x(null), 1200)),
+      ]);
+      if (kip) {
+        setCachDoc(await kip.phat());
+      } else {
+        setCachDoc(noiNgay(`Mời em ${trung.ten}`));
+      }
+    } catch { /* im tiếng thì thôi, không được vỡ giao diện lúc đang dạy */ }
   };
 
   /** Em vắng: KHÔNG tính là đã gọi, chỉ bỏ qua trong buổi này. */
@@ -156,6 +182,8 @@ export default function BangGoiTenVaDiem({
       setVuaCong(duoc
         ? `${diem > 0 ? '+' : ''}${diem} cho ${hs.ten}`
         : 'Tháng này đã chốt, không cộng thêm được.');
+      /* Nói ra cho cả lớp nghe, không phải chỉ mình thầy cô thấy con số nhảy. */
+      if (duoc) noiCongDiem(hs.id, hs.ten, diem).catch(() => { /* im tiếng thì thôi */ });
     } catch (e: any) {
       setVuaCong(e?.message === LOI_CHUA_TAO_BANG ? 'Chưa tạo bảng điểm.' : 'Không cộng được điểm.');
     }
@@ -217,22 +245,22 @@ export default function BangGoiTenVaDiem({
                 </div>
               )}
 
-              {/* Ô quay */}
-              <div className="rounded-2xl border-2 border-violet-200 bg-violet-50/40 py-7 px-4 text-center">
-                <div className={`font-black text-violet-900 leading-tight break-words transition-all ${
-                  trungAi ? 'text-[30px]' : 'text-[24px] opacity-70'
-                }`}>
-                  {tenChay || 'Bấm QUAY để gọi tên'}
+              {/* Vòng quay */}
+              <VongQuayTen
+                dsTen={dsQuay.map(h => h.ten)}
+                trungTen={seTrung?.ten || null}
+                dangQuay={dangQuay}
+                onXong={quayXong}
+              />
+              {trungAi && (
+                <div className="mt-1.5 text-center text-[12.5px] font-bold text-violet-500">
+                  {cachDoc === 'ai' && '🔊 giọng AI'}
+                  {cachDoc === 'da-nho' && '🔊 giọng đã nhớ'}
+                  {cachDoc === 'giong-may' && '🔊 giọng máy'}
+                  {cachDoc === 'chuong' && '🔔 không có giọng, dùng chuông'}
+                  {cachDoc === null && '🔊 đang lấy giọng...'}
                 </div>
-                {trungAi && (
-                  <div className="mt-1.5 text-[12.5px] font-bold text-violet-500">
-                    {cachDoc === 'ai' && '🔊 giọng AI'}
-                    {cachDoc === 'da-nho' && '🔊 giọng đã nhớ'}
-                    {cachDoc === 'giong-may' && '🔊 giọng máy'}
-                    {cachDoc === 'chuong' && '🔔 không có giọng, dùng chuông'}
-                  </div>
-                )}
-              </div>
+              )}
 
               <button onClick={quay} disabled={dangQuay || dsQuay.length === 0}
                       className="mt-3 w-full bg-violet-600 hover:bg-violet-700 disabled:opacity-50

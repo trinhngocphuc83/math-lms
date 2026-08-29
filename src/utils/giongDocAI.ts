@@ -2,7 +2,7 @@ import { createClient } from "@/utils/supabase/client";
 import { layCauHinhAI } from "@/utils/geminiBrowser";
 
 /**
- * Đọc tên học sinh khi quay trúng: "Mời em ...".
+ * Giọng đọc cho vòng quay gọi tên.
  *
  * BA LỚP DỰ PHÒNG, tụt dần chứ không bao giờ im lặng:
  *   1. Giọng AI của Google (gemini-2.5-flash-preview-tts) - hay nhất.
@@ -10,6 +10,11 @@ import { layCauHinhAI } from "@/utils/geminiBrowser";
  *      bộ: lần sau đọc tức thì, không tốn hạn mức, và MẤT MẠNG VẪN ĐỌC ĐƯỢC. Cất ở kho
  *      chung thay vì nhớ trong máy để thầy cô đổi máy vẫn còn.
  *   3. Giọng máy của trình duyệt; máy không có giọng Việt thì chuông báo.
+ *
+ * TÁCH LÀM HAI NHỊP - CHUẨN BỊ rồi mới PHÁT. Gọi giọng AI mất mấy giây, nếu đợi quay xong
+ * mới gọi thì tiếng ra trễ hẳn, nghe như lúc bấm nút cộng điểm mới đọc. Nay bốc trúng ai
+ * là đi lấy tiếng ngay, để nó chạy song song với lúc vòng quay đang xoay, quay dừng là
+ * phát liền.
  */
 
 const MODEL_TTS = 'gemini-2.5-flash-preview-tts';
@@ -17,6 +22,11 @@ const KHO = 'system-assets';
 const THU_MUC = 'giong-goi-ten';
 
 export type CachDoc = 'ai' | 'da-nho' | 'giong-may' | 'chuong';
+
+/** Đã chuẩn bị xong, gọi `phat()` là ra tiếng ngay. */
+export interface GiongDaSan {
+  phat: () => Promise<CachDoc>;
+}
 
 /**
  * Google trả tiếng nói dạng PCM thô (audio/L16 24kHz), trình duyệt không phát thẳng được.
@@ -55,33 +65,33 @@ const base64SangByte = (b64: string): Uint8Array => {
   return ra;
 };
 
-const duongTep = (studentId: string) => `${THU_MUC}/${studentId}.wav`;
+const duongTep = (khoa: string) => `${THU_MUC}/${khoa}.wav`;
 
 /** Địa chỉ bản đã nhớ, nếu có. */
-async function timBanDaNho(studentId: string): Promise<string | null> {
+async function timBanDaNho(khoa: string): Promise<string | null> {
   try {
     const supabase = createClient();
     const { data, error } = await supabase.storage.from(KHO)
-      .list(THU_MUC, { search: `${studentId}.wav`, limit: 1 });
+      .list(THU_MUC, { search: `${khoa}.wav`, limit: 1 });
     if (error || !data || data.length === 0) return null;
-    return supabase.storage.from(KHO).getPublicUrl(duongTep(studentId)).data.publicUrl;
+    return supabase.storage.from(KHO).getPublicUrl(duongTep(khoa)).data.publicUrl;
   } catch {
     return null;
   }
 }
 
-/** Cất bản vừa đọc để lần sau khỏi gọi lại - hỏng thì bỏ qua, không làm gián đoạn giờ dạy. */
-async function nhoLai(studentId: string, wav: Blob): Promise<void> {
+/** Cất bản vừa đọc - hỏng thì bỏ qua, không làm gián đoạn giờ dạy. */
+async function nhoLai(khoa: string, wav: Blob): Promise<void> {
   try {
     const supabase = createClient();
     await supabase.storage.from(KHO)
-      .upload(duongTep(studentId), wav, { contentType: 'audio/wav', upsert: true });
+      .upload(duongTep(khoa), wav, { contentType: 'audio/wav', upsert: true });
   } catch (e) {
     console.warn('Không cất được giọng đọc, lần sau sẽ gọi lại:', e);
   }
 }
 
-function phat(url: string): Promise<void> {
+function phatUrl(url: string): Promise<void> {
   return new Promise((xong) => {
     const a = new Audio(url);
     a.onended = () => xong();
@@ -120,20 +130,19 @@ function chuong(): void {
 }
 
 /**
- * Đọc "Mời em <tên>". Trả về đã đọc bằng cách nào, để giao diện nói cho thầy cô biết.
- * KHÔNG bao giờ ném lỗi ra ngoài - đang dạy mà vỡ giao diện thì phiền hơn nhiều.
+ * Đi lấy tiếng nói NGAY, trả về hàm phát để gọi đúng lúc cần.
+ *
+ * `khoa` là tên tệp đem cất, nên phải khác nhau theo từng câu: tên em thì một khoá, câu
+ * "được cộng 1 điểm" lại một khoá khác - nếu không thì đọc nhầm câu.
  */
-export async function doiTen(studentId: string, ten: string): Promise<CachDoc> {
-  const cau = `Mời em ${ten}`;
-
-  // 1. Bản đã nhớ - nhanh nhất, và mất mạng vẫn còn (nếu trình duyệt đã tải về)
-  const daNho = await timBanDaNho(studentId);
+export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSan> {
+  // 1. Bản đã nhớ - nhanh nhất, và mất mạng vẫn còn nếu trình duyệt đã tải về
+  const daNho = await timBanDaNho(khoa);
   if (daNho) {
-    await phat(daNho);
-    return 'da-nho';
+    return { phat: async () => { await phatUrl(daNho); return 'da-nho'; } };
   }
 
-  // 2. Giọng AI
+  // 2. Giọng AI - lấy sẵn về, chưa phát vội
   try {
     const cauHinh = await layCauHinhAI();
     for (const key of cauHinh.keys) {
@@ -158,16 +167,54 @@ export async function doiTen(studentId: string, ten: string): Promise<CachDoc> {
 
         const wav = bocDauWav(base64SangByte(phan.data));
         const url = URL.createObjectURL(wav);
-        await phat(url);
-        URL.revokeObjectURL(url);
-        nhoLai(studentId, wav);      // cất lại, không cần chờ
-        return 'ai';
+        nhoLai(khoa, wav);           // cất lại, không cần chờ
+        return {
+          phat: async () => {
+            await phatUrl(url);
+            URL.revokeObjectURL(url);
+            return 'ai';
+          },
+        };
       } catch { /* thử khoá kế tiếp */ }
     }
   } catch { /* không lấy được khoá - xuống lớp dự phòng */ }
 
   // 3. Giọng máy, rồi chuông
+  return {
+    phat: async () => {
+      if (giongMay(cau)) return 'giong-may';
+      chuong();
+      return 'chuong';
+    },
+  };
+}
+
+/**
+ * Nói NGAY LẬP TỨC bằng giọng máy (hoặc chuông) - không chờ mạng.
+ *
+ * Dùng khi giọng AI lấy chưa kịp: quay dừng mà im lặng mấy giây thì cả lớp cụt hứng,
+ * thà giọng máy đọc đúng lúc còn hơn giọng hay mà đọc trễ.
+ */
+export function noiNgay(cau: string): CachDoc {
   if (giongMay(cau)) return 'giong-may';
   chuong();
   return 'chuong';
 }
+
+/** Tiện dụng: chuẩn bị rồi phát luôn. */
+export async function doc(khoa: string, cau: string): Promise<CachDoc> {
+  return (await chuanBiGiong(khoa, cau)).phat();
+}
+
+/** "Mời em ..." */
+export const chuanBiMoiEm = (studentId: string, ten: string) =>
+  chuanBiGiong(studentId, `Mời em ${ten}`);
+
+/** "Em ... được cộng 1 điểm" / "Em ... bị trừ 1 điểm" */
+export const noiCongDiem = (studentId: string, ten: string, diem: number) =>
+  doc(
+    `${studentId}-${diem > 0 ? 'cong' : 'tru'}${Math.abs(diem)}`,
+    diem > 0
+      ? `Em ${ten} được cộng ${Math.abs(diem)} điểm`
+      : `Em ${ten} bị trừ ${Math.abs(diem)} điểm`,
+  );
