@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { ArrowLeft, Users, UserPlus, Upload, Trash2, Loader2, Search, X, FileSpreadsheet, Download, Plus, Edit2, CheckSquare, DollarSign } from "lucide-react";
+import { ArrowLeft, Users, UserPlus, Upload, Trash2, Loader2, Search, X, FileSpreadsheet, Download, Plus, Edit2, CheckSquare, DollarSign, Dices } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useParams } from "next/navigation";
 import { getEnrollments, addEnrollment, removeEnrollment, updateStudentProfile, searchStudents, createAndEnrollNewStudent } from "./actions";
 import AttendanceTab from "./AttendanceTab";
 import TuitionTab from "./TuitionTab";
 import ScoresTab from "./ScoresTab";
+import BangGoiTenVaDiem from "@/components/lop/BangGoiTenVaDiem";
 
 export default function ClassDetailsPage() {
   const [classInfo, setClassInfo] = useState<any>(null);
@@ -19,6 +20,8 @@ export default function ClassDetailsPage() {
   const router = useRouter();
   const classId = params.id as string;
   const [activeTab, setActiveTab] = useState<'menu' | 'students' | 'attendance' | 'tuition' | 'scores'>('students');
+  /* Gọi tên & Điểm mở thẳng từ đây - dùng được cả khi không chiếu bài nào. */
+  const [moGoiTen, setMoGoiTen] = useState(false);
   useEffect(() => {
     if (window.innerWidth < 768) setActiveTab('menu');
   }, []);
@@ -209,6 +212,18 @@ export default function ClassDetailsPage() {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Gọi tên & Điểm mở thẳng từ trang lớp, dùng được cả khi không chiếu bài nào -
+          vòng quay và điểm khoá theo LỚP nên vẫn đúng một mạch với lúc trình chiếu. */}
+      <div className="mb-4">
+        <button
+          onClick={() => setMoGoiTen(true)}
+          className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2.5 rounded-xl font-bold
+                     flex items-center gap-2 shadow-sm transition-colors"
+        >
+          <Dices className="w-4 h-4" /> Gọi tên & Điểm
+        </button>
       </div>
 
       {/* TABS */}
@@ -687,6 +702,11 @@ export default function ClassDetailsPage() {
         </div>
       )}
 
+      <BangGoiTenVaDiem
+        isOpen={moGoiTen}
+        onClose={() => setMoGoiTen(false)}
+        lopGoiY={classId}
+      />
     </div>
   );
 }

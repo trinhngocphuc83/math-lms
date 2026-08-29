@@ -10,7 +10,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling, Dices } from 'lucide-react';
 import { ensureMathDelimiters } from '@/utils/latexFixer';
 import React from 'react';
 import {
@@ -20,6 +20,7 @@ import {
     CANVAS_HEIGHT,
 } from '@/components/presentation/presentationTheme';
 import PresentationTimer from '@/components/presentation/PresentationTimer';
+import BangGoiTenVaDiem from '@/components/lop/BangGoiTenVaDiem';
 
 /* Vùng nội dung bên trong canvas (đã trừ lề). Mọi phép đo auto-fit dựa trên đây. */
 const PAD_X = 84;
@@ -200,6 +201,8 @@ export default function PresentationPage() {
     const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
     const [currentFragmentIndex, setCurrentFragmentIndex] = useState(0);
     const [isFullscreen, setIsFullscreen] = useState(false);
+    /* Bảng gọi tên & điểm - mở được ngay giữa giờ dạy, phím tắt G. */
+    const [moGoiTen, setMoGoiTen] = useState(false);
 
     // Resume states
     const [showRestorePrompt, setShowRestorePrompt] = useState(false);
@@ -350,6 +353,9 @@ export default function PresentationPage() {
                 goPrev();
             } else if (e.key === 'f' || e.key === 'F') {
                 toggleFullscreen();
+            } else if (e.key === 'g' || e.key === 'G') {
+                /* Gọi tên & Điểm - đang giảng, với tay bấm một phím là xong. */
+                setMoGoiTen(true);
             }
         };
         window.addEventListener('keydown', handleKeyDown);
@@ -549,6 +555,13 @@ export default function PresentationPage() {
                 >
                     <ChevronLeft className="w-7 h-7" />
                 </button>
+                <button
+                    onClick={() => setMoGoiTen(true)}
+                    className="p-2.5 bg-violet-500/25 hover:bg-violet-500/45 rounded-full transition-all text-white hover:scale-105 active:scale-95"
+                    title="Gọi tên & Điểm (phím G)"
+                >
+                    <Dices className="w-7 h-7" />
+                </button>
                 <div className="text-white/50 font-bold tracking-widest text-xs uppercase select-none">Điều khiển</div>
                 <button
                     onClick={goNext}
@@ -559,6 +572,14 @@ export default function PresentationPage() {
                     <ChevronRight className="w-7 h-7" />
                 </button>
             </div>
+
+            {/* Gọi tên & Điểm. Đây là đường trình chiếu DÙNG CHUNG cho cả bài giảng lẫn
+                luyện tập, nên gắn ở đây là phủ được cả hai. */}
+            <BangGoiTenVaDiem
+                isOpen={moGoiTen}
+                onClose={() => setMoGoiTen(false)}
+                lessonId={typeof params?.id === 'string' ? params.id : undefined}
+            />
         </div>
     );
 }
