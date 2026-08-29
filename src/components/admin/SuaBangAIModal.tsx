@@ -3,7 +3,7 @@
 import React from "react";
 import { X, Loader2, Sparkles, Mic, MicOff, AlertTriangle, CheckCircle2 } from "lucide-react";
 import { useNhanGiongNoi } from "@/hooks/useNhanGiongNoi";
-import { suaCauTheoYeuCau, type CauDangSoan } from "@/utils/suaCauTheoYeuCau";
+import { suaCauTheoYeuCau, suaBaiGiangTheoYeuCau, type CauDangSoan } from "@/utils/suaCauTheoYeuCau";
 import { layCauHinhAI } from "@/utils/geminiBrowser";
 
 /**
@@ -13,11 +13,19 @@ import { layCauHinhAI } from "@/utils/geminiBrowser";
  * đọc rồi mới bấm nhận. Sửa thẳng thì máy đổi lệch một con số cũng không ai biết.
  */
 
-const GOI_Y = [
+const GOI_Y_CAU_HOI = [
   'Đổi đáp án đúng thành C',
   'Làm các phương án nhiễu khó hơn',
   'Viết lại đề cho ngắn gọn',
   'Thêm lời giải chi tiết từng bước',
+];
+
+/* Bài giảng là văn xuôi nên gợi ý phải khác hẳn câu hỏi. */
+const GOI_Y_BAI_GIANG = [
+  'Viết lại đoạn này ngắn gọn hơn',
+  'Chia thành 3 ý gạch đầu dòng',
+  'Thêm một ví dụ minh hoạ',
+  'Giải thích lại cho dễ hiểu hơn',
 ];
 
 /** So sánh hai đoạn chữ, rút gọn để bày trong bảng đối chiếu. */
@@ -31,9 +39,16 @@ export default function SuaBangAIModal({
 }: {
   isOpen: boolean;
   onClose: () => void;
-  cau: CauDangSoan | null;
-  onNhan: (cauMoi: CauDangSoan) => void;
+  /**
+   * Khối trắc nghiệm truyền vào một ĐỐI TƯỢNG câu hỏi; khối lý thuyết truyền vào CHUỖI
+   * Markdown. Hai thứ khác hẳn nhau nên phải nhận diện rồi đi hai đường riêng.
+   */
+  cau: CauDangSoan | string | null;
+  onNhan: (cauMoi: any) => void;
 }) {
+  const laBaiGiang = typeof cau === 'string';
+  const cauHoi = laBaiGiang ? null : (cau as CauDangSoan | null);
+  const GOI_Y = laBaiGiang ? GOI_Y_BAI_GIANG : GOI_Y_CAU_HOI;
   const [yeuCau, setYeuCau] = React.useState('');
   const [dangChay, setDangChay] = React.useState(false);
   const [loi, setLoi] = React.useState('');
@@ -62,7 +77,12 @@ export default function SuaBangAIModal({
     setDangChay(true); setLoi(''); setKetQua(null);
     try {
       const cauHinh = await layCauHinhAI();
-      setKetQua(await suaCauTheoYeuCau(cau, yeuCau.trim(), cauHinh));
+      if (laBaiGiang) {
+        const kq = await suaBaiGiangTheoYeuCau(cau as string, yeuCau.trim(), cauHinh);
+        setKetQua({ cauMoi: { question: kq.noiDungMoi } as any, daSua: kq.daSua });
+      } else {
+        setKetQua(await suaCauTheoYeuCau(cauHoi!, yeuCau.trim(), cauHinh));
+      }
     } catch (e: any) {
       setLoi(e?.message || 'Không gọi được AI.');
     } finally {
@@ -95,7 +115,9 @@ export default function SuaBangAIModal({
 
         <div className="flex items-center gap-2 px-4 py-3 border-b border-violet-100 bg-violet-50 shrink-0 sm:rounded-t-2xl">
           <Sparkles className="w-5 h-5 text-violet-600 shrink-0" />
-          <h2 className="text-[15px] font-black text-violet-900">Nhờ AI sửa câu này</h2>
+          <h2 className="text-[15px] font-black text-violet-900">
+            {laBaiGiang ? 'Nhờ AI sửa bài giảng' : 'Nhờ AI sửa câu này'}
+          </h2>
           <button onClick={onClose} className="ml-auto p-1.5 text-violet-600 hover:bg-violet-100 rounded-full">
             <X className="w-5 h-5" />
           </button>
@@ -153,18 +175,26 @@ export default function SuaBangAIModal({
               <div className="text-[11px] font-black text-gray-400 uppercase tracking-wide mb-1">
                 Đối chiếu trước / sau — đọc kỹ rồi mới nhận
               </div>
-              <Dong ten="Đề bài" cu={cau.question} moi={ketQua.cauMoi.question} />
-              {(cau.options || []).map((o: any, i: number) => (
+              <Dong ten={laBaiGiang ? 'Nội dung bài giảng' : 'Đề bài'}
+                    cu={laBaiGiang ? (cau as string) : cauHoi?.question}
+                    moi={ketQua.cauMoi.question} />
+              {(cauHoi?.options || []).map((o: any, i: number) => (
                 <Dong key={i} ten={`Phương án ${['A', 'B', 'C', 'D'][i]}`}
                       cu={chuPhuongAn(o, i)} moi={chuPhuongAn((ketQua.cauMoi.options || [])[i], i)} />
               ))}
-              <Dong ten="Đáp án đúng"
-                    cu={cau.answerIndex !== undefined ? ['A', 'B', 'C', 'D'][cau.answerIndex] : cau.exactAnswer}
-                    moi={ketQua.cauMoi.answerIndex !== undefined ? ['A', 'B', 'C', 'D'][ketQua.cauMoi.answerIndex] : ketQua.cauMoi.exactAnswer} />
-              <Dong ten="Lời giải" cu={cau.explanation} moi={ketQua.cauMoi.explanation} />
+              {!laBaiGiang && (
+                <>
+                  <Dong ten="Đáp án đúng"
+                        cu={cauHoi?.answerIndex !== undefined ? ['A', 'B', 'C', 'D'][cauHoi.answerIndex] : cauHoi?.exactAnswer}
+                        moi={ketQua.cauMoi.answerIndex !== undefined ? ['A', 'B', 'C', 'D'][ketQua.cauMoi.answerIndex] : ketQua.cauMoi.exactAnswer} />
+                  <Dong ten="Lời giải" cu={cauHoi?.explanation} moi={ketQua.cauMoi.explanation} />
+                </>
+              )}
 
               <div className="text-[12px] text-gray-500 mt-2 bg-gray-50 rounded-lg px-3 py-2">
-                Ảnh trong đề được giữ nguyên từ bản gốc, máy không được phép đổi.
+                {laBaiGiang
+                  ? 'Ảnh và các khối câu hỏi trong bài được giữ nguyên - máy trả về thiếu một khối câu hỏi nào là hệ thống từ chối luôn bản đó.'
+                  : 'Ảnh trong đề được giữ nguyên từ bản gốc, máy không được phép đổi.'}
               </div>
             </div>
           )}
@@ -175,7 +205,7 @@ export default function SuaBangAIModal({
             <button onClick={onClose} className="px-4 py-2 rounded-xl font-bold text-sm bg-white border border-gray-300 text-gray-600 hover:bg-gray-100">
               Bỏ, giữ bản cũ
             </button>
-            <button onClick={() => { onNhan(ketQua.cauMoi); onClose(); }}
+            <button onClick={() => { onNhan(laBaiGiang ? ketQua.cauMoi.question : ketQua.cauMoi); onClose(); }}
                     className="px-5 py-2 rounded-xl font-black text-sm bg-emerald-600 text-white hover:bg-emerald-700 shadow-sm">
               Dùng bản mới
             </button>

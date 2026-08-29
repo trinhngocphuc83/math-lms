@@ -132,3 +132,62 @@ export async function suaCauTheoYeuCau(
 
   return { cauMoi, daSua: String(tho.daSua || '').trim() || 'Máy không nói rõ đã sửa gì.' };
 }
+
+/**
+ * Sửa một ĐOẠN BÀI GIẢNG (văn xuôi) theo yêu cầu, khác với sửa câu hỏi ở trên.
+ *
+ * Bài giảng là chuỗi Markdown dài chứ không phải đối tượng có đề/phương án/đáp án, nên
+ * phải có đường riêng: giữ nguyên cấu trúc tiêu đề, khối ```quiz``` và ảnh, chỉ sửa đúng
+ * chỗ thầy cô dặn.
+ */
+export async function suaBaiGiangTheoYeuCau(
+  noiDung: string,
+  yeuCau: string,
+  cauHinh: CauHinhAI,
+): Promise<{ noiDungMoi: string; daSua: string }> {
+  const prompt = `Bạn là giáo viên đang sửa một đoạn bài giảng. Sửa theo đúng yêu cầu bên dưới.
+
+YÊU CẦU CỦA THẦY CÔ: ${yeuCau}
+
+QUY TẮC BẮT BUỘC:
+1. CHỈ sửa đúng thứ được yêu cầu. Phần khác giữ NGUYÊN VĂN, không tự viết lại cho hay.
+2. TUYỆT ĐỐI KHÔNG đụng vào các khối \`\`\`quiz ... \`\`\` - chép lại y nguyên, đúng vị trí cũ.
+3. TUYỆT ĐỐI KHÔNG đụng vào ảnh dạng ![...](...) - chép y nguyên, không đổi địa chỉ.
+4. Giữ nguyên cấp tiêu đề (#, ##, ###) và dấu ngắt trang ---, trừ khi được yêu cầu đổi.
+5. Công thức viết bằng LaTeX bọc trong $...$ như bản gốc.
+6. Trả về ĐÚNG một đối tượng JSON, không kèm lời dẫn:
+{ "noiDung": "toàn bộ đoạn sau khi sửa", "daSua": "một câu ngắn nói rõ đã sửa gì" }
+
+ĐOẠN BÀI GIẢNG:
+
+${String(noiDung || '')}`;
+
+  const kq = await goiGeminiTrenTrinhDuyet(cauHinh, [{ text: prompt }], {
+    responseMimeType: 'application/json',
+    temperature: 0.3,
+  });
+
+  let tho: any;
+  try {
+    tho = JSON.parse((kq.text.match(/\{[\s\S]*\}/) || ['{}'])[0]);
+  } catch {
+    throw new Error('Máy trả về dữ liệu không đọc được. Thử nói lại yêu cầu ngắn gọn hơn.');
+  }
+  if (!tho.noiDung || typeof tho.noiDung !== 'string') {
+    throw new Error('Máy không trả về nội dung bài giảng nào.');
+  }
+
+  /*
+   * Soát lại khối quiz: máy hay "gọn lại" bằng cách nuốt mất câu hỏi. Số khối phải y
+   * nguyên, thiếu là không nhận - thà bắt làm lại còn hơn mất câu.
+   */
+  const demQuiz = (t: string) => (t.match(/```quiz/g) || []).length;
+  if (demQuiz(tho.noiDung) !== demQuiz(noiDung)) {
+    throw new Error(
+      `Máy làm mất câu hỏi trong bài (${demQuiz(noiDung)} → ${demQuiz(tho.noiDung)} khối). `
+      + 'Không nhận bản này. Thử dặn ngắn gọn hơn, hoặc sửa tay.',
+    );
+  }
+
+  return { noiDungMoi: tho.noiDung, daSua: String(tho.daSua || '').trim() || 'Máy không nói rõ đã sửa gì.' };
+}

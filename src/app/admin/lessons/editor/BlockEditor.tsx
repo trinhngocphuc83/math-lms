@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2, Sparkles } from "lucide-react";
+import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2, Sparkles, Library } from "lucide-react";
 import { fixLatexText, applyLatexFixToActiveElement, ensureMathDelimiters } from "@/utils/latexFixer";
 import { bankTypeToBlockType } from "@/utils/questionTypes";
 import 'katex/dist/katex.min.css';
@@ -15,6 +15,8 @@ import VeLaiHinhModal from "@/components/admin/VeLaiHinhModal";
 import { chamDoNetAnh } from "@/utils/veLaiHinhAI";
 import MenuGon, { MucMenu, NganMenu } from "@/components/admin/MenuGon";
 import SuaBangAIModal from "@/components/admin/SuaBangAIModal";
+import DayCongThucVaoSoTayModal from "@/components/admin/DayCongThucVaoSoTayModal";
+import { coMucCongThuc } from "@/utils/congThucCuoiBai";
 import { docCoAnh, datCoAnh, demAnh, dangXepNgang, datXepAnh } from "@/utils/coAnhTrongCau";
 
 export interface Block {
@@ -30,6 +32,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   /** Id khối đang mở hộp "Sửa bằng AI"; null là chưa mở. */
 
   const [oSuaAI, setOSuaAI] = React.useState<string | null>(null);
+  /** Id khối đang mở hộp "Đưa công thức vào Sổ tay". */
+  const [oDayCongThuc, setODayCongThuc] = React.useState<string | null>(null);
   const [isBankModalOpen, setIsBankModalOpen] = React.useState(false);
   const [insertIndex, setInsertIndex] = React.useState(-1);
   const [selectedBlocks, setSelectedBlocks] = React.useState<Set<string>>(new Set());
@@ -625,15 +629,30 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                      )}
                   </div>
                   <div className="flex gap-1 items-center shrink-0">
-                      {block.type !== 'md' && (
+                      {/* Đưa mục "CÔNG THỨC CẦN NHỚ" của bài vào Sổ tay bằng một nút - khỏi
+                          phải sang trang Sổ tay gõ lại từng công thức. */}
+                      {block.type === 'md' && (
                          <button
-                            onClick={() => setOSuaAI(block.id)}
-                            className="flex items-center gap-1 px-2 py-1 bg-violet-50 hover:bg-violet-100 border border-violet-200 text-violet-700 rounded-md text-[11px] font-bold transition-colors"
-                            title="Nhờ AI sửa đề hoặc đáp án theo yêu cầu - gõ hoặc nói"
+                            onClick={() => setODayCongThuc(block.id)}
+                            className={`flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-bold transition-colors border ${
+                               coMucCongThuc(typeof block.content === 'string' ? block.content : '')
+                                  ? 'bg-indigo-50 hover:bg-indigo-100 border-indigo-200 text-indigo-700'
+                                  : 'bg-white hover:bg-gray-50 border-gray-200 text-gray-500'
+                            }`}
+                            title="Đưa mục CÔNG THỨC CẦN NHỚ của bài này vào Sổ tay công thức"
                          >
-                            <Sparkles className="w-3.5 h-3.5"/> <span className="hidden lg:inline">Sửa bằng AI</span>
+                            <Library className="w-3.5 h-3.5"/> <span className="hidden lg:inline">Vào Sổ tay</span>
                          </button>
                       )}
+                      <button
+                         onClick={() => setOSuaAI(block.id)}
+                         className="flex items-center gap-1 px-2 py-1 bg-violet-50 hover:bg-violet-100 border border-violet-200 text-violet-700 rounded-md text-[11px] font-bold transition-colors"
+                         title={block.type === 'md'
+                            ? "Nhờ AI sửa bài giảng theo yêu cầu - gõ hoặc nói"
+                            : "Nhờ AI sửa đề hoặc đáp án theo yêu cầu - gõ hoặc nói"}
+                      >
+                         <Sparkles className="w-3.5 h-3.5"/> <span className="hidden lg:inline">Sửa bằng AI</span>
+                      </button>
                       <button onClick={() => togglePreview(block.id)} className={`flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-bold transition-colors ${previewBlocks.has(block.id) ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-200'}`} title="Bật/Tắt chế độ chia đôi màn hình: sửa bên trái, xem trước bên phải"><MonitorPlay className="w-3.5 h-3.5"/> <span className="hidden lg:inline">Xem Trước</span></button>
 
                       {/* Các việc còn lại gom vào menu ba chấm - trước đây bày hết ra hàng
@@ -698,11 +717,16 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           );
                        })()}
 
-                       <RichTextarea 
-                           value={block.content} 
-                           onChange={e => updateBlockContent(idx, e.target.value)} 
-                           className="w-full h-40 p-4 border border-gray-200 rounded-lg focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/10 outline-none font-mono text-[15px] transition-all"
-                           placeholder="Nhập Markdown / LaTeX..."
+                       {/*
+                         * HIỆN TƯỜNG MINH, nhấp vào mới sửa - đúng cách khối trắc nghiệm đang
+                         * làm. Bài lý thuyết trung bình 8.767 ký tự, nhìn thấy thành phẩm ngay
+                         * thì soát nhanh hơn hẳn đọc mã Markdown thô.
+                         */}
+                       <OSuaTaiCho
+                           rows={10}
+                           value={typeof block.content === 'string' ? block.content : ''}
+                           onChange={v => updateBlockContent(idx, v)}
+                           placeholder="Bấm để soạn bài giảng... (Markdown, LaTeX)"
                        />
                        
                        {(() => {
@@ -994,6 +1018,17 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
         {/* Nhờ AI sửa đề/đáp án theo lời dặn - gõ hoặc nói. Bản sửa KHÔNG tự thay vào
             khối: hộp bày bảng đối chiếu trước/sau, thầy cô bấm nhận mới thay. */}
+        {/* Đưa công thức cuối bài vào Sổ tay. Cái nào đã có trong kho thì bỏ tick sẵn,
+            dùng chính cơ chế chống trùng toàn kho. */}
+        <DayCongThucVaoSoTayModal
+           isOpen={!!oDayCongThuc}
+           onClose={() => setODayCongThuc(null)}
+           noiDungBai={(() => {
+              const b = blocks.find(x => x.id === oDayCongThuc);
+              return typeof b?.content === 'string' ? b.content : '';
+           })()}
+        />
+
         <SuaBangAIModal
            isOpen={!!oSuaAI}
            onClose={() => setOSuaAI(null)}
