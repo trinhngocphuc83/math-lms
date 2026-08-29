@@ -379,11 +379,19 @@ export default function AdminHandbook() {
     if (j < 0 || j >= formulas.length) return;
     const a = formulas[i], b = formulas[j];
     const tta = a.thu_tu ?? i, ttb = b.thu_tu ?? j;
-    const { error } = await supabase.from('formulas').upsert([
-      { id: a.id, thu_tu: ttb },
-      { id: b.id, thu_tu: tta },
+    /*
+     * Phai dung UPDATE tung ban, khong dung upsert.
+     *
+     * upsert voi moi { id, thu_tu } bi Postgres hieu la ghi ca dong: cac cot khong
+     * truyen thanh NULL, va title la NOT NULL nen bi chan luon. Do duoc bang du lieu
+     * that: 'null value in column "title" of relation "formulas"'.
+     */
+    const [r1, r2] = await Promise.all([
+      supabase.from('formulas').update({ thu_tu: ttb }).eq('id', a.id),
+      supabase.from('formulas').update({ thu_tu: tta }).eq('id', b.id),
     ]);
-    if (error) { alert('Khong doi cho duoc: ' + error.message); return; }
+    const loi = r1.error || r2.error;
+    if (loi) { alert('Không đổi chỗ được: ' + loi.message); return; }
     if (selectedCategory) fetchFormulas(selectedCategory.id);
   };
 
