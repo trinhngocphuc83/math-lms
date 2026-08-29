@@ -49,9 +49,17 @@ export default function AdminLayout({
     const initSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
-        // Thiếu vai trò thì coi như KHÔNG có quyền. Bản cũ ghi `|| 'admin'` - dữ liệu thiếu
-        // mà lại mở toang cửa, đúng chiều ngược với cái cần làm.
-        const role = session.user.user_metadata?.role || '';
+        /*
+         * Vai trò lấy từ bảng profiles, không lấy từ user_metadata.
+         *
+         * Đo trên dữ liệu thật: tài khoản "Quản trị viên" có profiles.role = 'admin' nhưng
+         * user_metadata KHÔNG có role - đó là lý do bản cũ phải viết `|| 'admin'`, mà cái
+         * mặc định đó lại mở cửa cho mọi tài khoản thiếu vai trò. profiles là nơi giữ vai
+         * trò thật; đọc hỏng thì mới lùi về user_metadata, thiếu cả hai thì không có quyền.
+         */
+        const { data: hoSo } = await supabase
+          .from('profiles').select('role').eq('id', session.user.id).single();
+        const role = hoSo?.role || session.user.user_metadata?.role || '';
         setUserRole(role);
         setUserPermissions(session.user.user_metadata?.permissions || []);
         setUserName(session.user.user_metadata?.full_name || (role === 'admin' ? 'Admin' : 'Giáo viên'));
