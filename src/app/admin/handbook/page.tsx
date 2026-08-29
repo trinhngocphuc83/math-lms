@@ -148,7 +148,12 @@ export default function AdminHandbook() {
 
   const fetchFormulas = async (categoryId: string) => {
     const { data } = await supabase.from('formulas').select('*').eq('category_id', categoryId).order('created_at');
-    setFormulas(data || []);
+    /* Co cot thu_tu thi xep theo no truoc; ban chua danh so thi bam nguyen thu tu cu. */
+    const ds = (data || []).slice();
+    if (ds.some((f: any) => f.thu_tu != null)) {
+      ds.sort((x: any, y: any) => (x.thu_tu ?? 1e9) - (y.thu_tu ?? 1e9));
+    }
+    setFormulas(ds);
     setIsLoading(false);
   };
 
@@ -286,12 +291,28 @@ export default function AdminHandbook() {
     setIsFormulaModalOpen(true);
   };
 
+  /*
+   * Chuong dich khi SUA mot cong thuc.
+   *
+   * Truoc gio hop sua khong co o chon chuong, nen muon doi chuong chi con cach cheps
+   * sang chuong moi roi xoa ban cu - lam tat thi thanh ra trung. Nay doi thang duoc.
+   */
+  const [fChuong, setFChuong] = useState<string>("");
+
+  /* Bang formulas chua co cot thu tu; do mot lan roi an/hien nut mui ten cho dung. */
+  const [coCotThuTu, setCoCotThuTu] = useState(false);
+  useEffect(() => {
+    supabase.from('formulas').select('thu_tu').limit(1)
+      .then(({ error }) => setCoCotThuTu(!error));
+  }, []);
+
   const openEditFormulaModal = (formula: any) => {
     setEditingFormulaId(formula.id);
     setFTitle(formula.title);
     setFLatex(formula.latex_content);
     setFDesc(formula.description || "");
     setFImageUrl(formula.image_url || "");
+    setFChuong(formula.category_id || "");
     setIsFormulaModalOpen(true);
   };
 
@@ -300,8 +321,10 @@ export default function AdminHandbook() {
     if (!fTitle || !fLatex || !selectedCategory) return;
     setIsSavingFormula(true);
 
+    /* Sua thi theo chuong Thay chon trong hop; them moi thi vao chuong dang mo. */
+    const chuongDich = (editingFormulaId && fChuong) ? fChuong : selectedCategory.id;
     const formulaData = {
-      category_id: selectedCategory.id,
+      category_id: chuongDich,
       title: fTitle,
       latex_content: fLatex,
       description: fDesc,
@@ -343,6 +366,25 @@ export default function AdminHandbook() {
       }
     }
     setIsSavingFormula(false);
+  };
+
+  /**
+   * Doi cho mot cong thuc voi cong thuc lien ke - chi chay khi bang da co cot thu_tu.
+   *
+   * Danh sach dang xep theo created_at nen khong the keo tha; day so thu_tu cho hai ban
+   * roi nap lai, that hon nhung khong dung den du lieu khac.
+   */
+  const doiChoCongThuc = async (i: number, huong: -1 | 1) => {
+    const j = i + huong;
+    if (j < 0 || j >= formulas.length) return;
+    const a = formulas[i], b = formulas[j];
+    const tta = a.thu_tu ?? i, ttb = b.thu_tu ?? j;
+    const { error } = await supabase.from('formulas').upsert([
+      { id: a.id, thu_tu: ttb },
+      { id: b.id, thu_tu: tta },
+    ]);
+    if (error) { alert('Khong doi cho duoc: ' + error.message); return; }
+    if (selectedCategory) fetchFormulas(selectedCategory.id);
   };
 
   const handleDeleteFormula = async (id: string) => {
@@ -676,7 +718,7 @@ export default function AdminHandbook() {
                   <div className="p-12 text-center text-gray-400">Đang tải...</div>
                 ) : formulas.length > 0 ? (
                   <div className="divide-y divide-gray-100">
-                    {formulas.map(formula => (
+                    {formulas.map((formula, index) => (
                       <div key={formula.id} className="p-5 hover:bg-violet-50/30 transition-colors border-l-4 border-l-violet-300">
                         <div className="flex justify-between items-start gap-4">
                           <div className="flex-1 min-w-0">
@@ -703,6 +745,21 @@ export default function AdminHandbook() {
                             )}
                           </div>
                           <div className="flex items-center gap-1 shrink-0">
+                            {/* Chỉ hiện khi bảng đã có cột thu_tu - xem scratch/them-cot-thutu-formulas.sql */}
+                            {coCotThuTu && (
+                              <div className="flex flex-col">
+                                <button onClick={() => doiChoCongThuc(index, -1)} disabled={index === 0}
+                                        title="Đưa lên trên"
+                                        className="px-1.5 text-gray-400 hover:text-indigo-600 disabled:opacity-25 leading-none">
+                                  ▲
+                                </button>
+                                <button onClick={() => doiChoCongThuc(index, 1)} disabled={index === formulas.length - 1}
+                                        title="Đưa xuống dưới"
+                                        className="px-1.5 text-gray-400 hover:text-indigo-600 disabled:opacity-25 leading-none">
+                                  ▼
+                                </button>
+                              </div>
+                            )}
                             <button 
                               onClick={() => openEditFormulaModal(formula)}
                               className="p-2 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
@@ -798,6 +855,27 @@ export default function AdminHandbook() {
             </div>
             <div className="p-6 overflow-y-auto flex-1">
               <form id="formulaForm" onSubmit={handleSaveFormula} className="space-y-4">
+                {/*
+                  * CHUYEN SANG CHUONG KHAC. Thieu o nay nen truoc gio muon doi chuong chi
+                  * con cach chep sang chuong moi roi xoa ban cu - lam tat thi thanh trung.
+                  */}
+                {editingFormulaId && (
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Thuộc chương</label>
+                    <select value={fChuong} onChange={e => setFChuong(e.target.value)}
+                            className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none bg-white">
+                      {categories.map((c: any) => (
+                        <option key={c.id} value={c.id}>{c.name}</option>
+                      ))}
+                    </select>
+                    {fChuong && selectedCategory && fChuong !== selectedCategory.id && (
+                      <p className="text-[12px] text-amber-700 font-bold mt-1">
+                        Lưu xong công thức này sẽ CHUYỂN sang chương khác, không còn ở đây nữa.
+                      </p>
+                    )}
+                  </div>
+                )}
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Tên công thức</label>
                   <input required value={fTitle} onChange={e => setFTitle(e.target.value)} type="text" className="w-full px-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none" placeholder="VD: Cosin góc giữa hai vectơ..." />
