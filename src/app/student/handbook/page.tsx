@@ -3,7 +3,8 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { BlockMath } from "react-katex";
 import "katex/dist/katex.min.css";
-import { Library, ChevronRight, ChevronLeft, Search, BookOpen, Bookmark, ArrowLeft, ArrowRight, Home } from "lucide-react";
+import { Library, ChevronRight, ChevronLeft, Search, BookOpen, Bookmark, ArrowLeft, ArrowRight, Home, Mic, MicOff } from "lucide-react";
+import { useNhanGiongNoi } from "@/hooks/useNhanGiongNoi";
 import Link from "next/link";
 
 export default function StudentHandbook() {
@@ -13,6 +14,11 @@ export default function StudentHandbook() {
   const [formulas, setFormulas] = useState<any[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Nói tới đâu điền tới đó - học sinh khỏi gõ tên công thức dài trên điện thoại
+  const { hoTro: hoTroMic, dangNghe, loi: loiMic, batDauNghe } = useNhanGiongNoi(
+    useCallback((chu: string) => setSearchQuery(chu), []),
+  );
   const [expandedCats, setExpandedCats] = useState<string[]>([]);
 
   // Global search states
@@ -310,15 +316,29 @@ export default function StudentHandbook() {
                 <Library className="w-3.5 h-3.5" /> <span className="hidden lg:inline">Mục Lục</span><span className="lg:inline">Mục Lục (Cuộn để xem thêm)</span>
               </h2>
               
-              {/* Ô tìm kiếm */}
-              <div className="relative mb-3">
-                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
-                <input
-                  value={searchQuery}
-                  onChange={e => setSearchQuery(e.target.value)}
-                  placeholder="Tìm công thức..."
-                  className="w-full pl-9 pr-3 py-2 text-xs border border-gray-200 rounded-xl focus:ring-2 focus:ring-violet-500/30 focus:border-violet-400 outline-none bg-gray-50/50"
-                />
+              {/* Ô tìm kiếm - gõ hoặc nói */}
+              <div className="mb-3">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400" />
+                  <input
+                    value={searchQuery}
+                    onChange={e => setSearchQuery(e.target.value)}
+                    placeholder={dangNghe ? "Đang nghe, em nói đi..." : "Tìm công thức (gõ hoặc bấm micro)..."}
+                    className={`w-full pl-9 py-2 text-xs border rounded-xl outline-none bg-gray-50/50 transition-colors ${hoTroMic ? 'pr-9' : 'pr-3'} ${dangNghe ? 'border-red-400 ring-2 ring-red-100' : 'border-gray-200 focus:ring-2 focus:ring-violet-500/30 focus:border-violet-400'}`}
+                  />
+                  {/* Chỉ hiện khi trình duyệt thật sự làm được - không bày nút bấm vào chỗ chết */}
+                  {hoTroMic && (
+                    <button
+                      type="button"
+                      onClick={batDauNghe}
+                      title={dangNghe ? "Đang nghe, bấm để dừng" : "Bấm rồi nói tên công thức"}
+                      className={`absolute right-1.5 top-1/2 -translate-y-1/2 p-1.5 rounded-full transition-colors ${dangNghe ? 'bg-red-500 text-white animate-pulse' : 'text-violet-600 hover:bg-violet-50'}`}
+                    >
+                      {dangNghe ? <MicOff className="w-3.5 h-3.5" /> : <Mic className="w-3.5 h-3.5" />}
+                    </button>
+                  )}
+                </div>
+                {loiMic && <p className="text-[11px] text-red-600 font-bold mt-1 px-1">{loiMic}</p>}
               </div>
 
               <div className="space-y-1">

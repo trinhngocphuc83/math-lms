@@ -572,10 +572,17 @@ export default function StudentLessonPage() {
   useEffect(() => {
     async function load() {
       const { data: lessonData } = await supabase.from('lessons').select('*').eq('id', lessonId).single();
+      // Lớp của khoá học - dùng để Sổ tay công thức chỉ hiện công thức đúng lớp.
+      // Nhiều khoá đang để grade_level = 0 (chưa đặt), nên chỉ nhận giá trị thật sự có nghĩa.
+      let lopKhoa = '';
+      if (lessonData?.course_id) {
+        const { data: kh } = await supabase.from('courses').select('grade_level').eq('id', lessonData.course_id).single();
+        if (kh?.grade_level && Number(kh.grade_level) > 0) lopKhoa = String(kh.grade_level);
+      }
       const { data: modulesData } = await supabase.from('lesson_modules').select('*').eq('lesson_id', lessonId).order('order_index', { ascending: true });
       
       if (lessonData) {
-        setLesson({ ...lessonData, modules: modulesData || [] });
+        setLesson({ ...lessonData, modules: modulesData || [], lopKhoa });
         if (modulesData && modulesData.length > 0) {
           setActiveModuleId(modulesData[0].id);
         }
@@ -730,7 +737,7 @@ export default function StudentLessonPage() {
                   // key theo mã đề: đổi sang đề luyện tập khác thì React DỰNG LẠI khung làm
                   // bài. Thiếu key thì React giữ nguyên khung cũ và chỉ thay nội dung, nên
                   // điểm, bài làm và trạng thái "đã nộp" của đề trước còn nguyên ở đề sau.
-                  <AzotaExamUI key={activeModule.id} content={activeModule.content_markdown || ""} title={activeModule.title} lessonId={lesson.id} moduleId={activeModule.id} />
+                  <AzotaExamUI key={activeModule.id} content={activeModule.content_markdown || ""} title={activeModule.title} lessonId={lesson.id} moduleId={activeModule.id} grade={lesson.lopKhoa} />
                ) : (
                   <InteractiveFlipbook content={activeModule.content_markdown || ""} />
                )}

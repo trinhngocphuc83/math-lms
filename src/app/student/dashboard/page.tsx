@@ -27,6 +27,32 @@ import {
 
 type TabType = 'info' | 'courses' | 'exams' | 'schedule' | 'finance';
 
+/**
+ * Sáu mục của khu học sinh, dùng chung cho lưới biểu tượng và thanh dưới.
+ * Gom vào một chỗ để hai nơi không bao giờ lệch nhau.
+ *
+ * `duong` chỉ có ở mục Sổ tay - mục đó dẫn sang trang riêng chứ không đổi tab.
+ */
+interface MucHocSinh {
+  tab: TabType | '';
+  nhan: string;
+  Icon: React.ComponentType<{ className?: string }>;
+  mau: string;
+  duong?: string;
+}
+
+const MUC_HOC_SINH: MucHocSinh[] = [
+  { tab: 'schedule', nhan: 'Lịch học',   Icon: CalendarDays,  mau: 'bg-sky-50 text-sky-600' },
+  { tab: 'courses',  nhan: 'Khóa học',   Icon: BookOpen,      mau: 'bg-teal-50 text-teal-600' },
+  { tab: 'exams',    nhan: 'Kiểm tra',   Icon: ClipboardList, mau: 'bg-rose-50 text-rose-600' },
+  { tab: 'finance',  nhan: 'Tài chính',  Icon: DollarSign,    mau: 'bg-amber-50 text-amber-600' },
+  { tab: 'info',     nhan: 'Hồ sơ',      Icon: User,          mau: 'bg-violet-50 text-violet-600' },
+  { tab: '',         nhan: 'Sổ tay',     Icon: Library,       mau: 'bg-indigo-50 text-indigo-600', duong: '/student/handbook' },
+];
+
+/** Bốn mục hay dùng nhất, đặt ở thanh dưới cho vừa tay. */
+const MUC_THANH_DUOI: string[] = ['courses', 'exams', 'schedule', 'info'];
+
 export default function StudentDashboardPage() {
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
@@ -190,13 +216,13 @@ export default function StudentDashboardPage() {
 
   // 2. Trạng thái Đã kích hoạt -> Dashboard Chính
   return (
-    <div className="w-full flex-1 min-h-screen overflow-y-auto bg-gray-50 pb-20 font-sans">
+    <div className="w-full flex-1 min-h-screen overflow-y-auto bg-gray-50 pb-24 md:pb-20 font-sans">
       
       {/* Topbar Header */}
       <header className="bg-white border-b border-gray-200 sticky top-0 z-20 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
-          <div className="flex items-center -ml-2">
-            <img src="/logo.jpg" alt="Digital Math by Phuc" className="h-16 sm:h-20 w-auto object-contain mix-blend-multiply scale-[1.15] origin-left drop-shadow-sm" />
+        <div className="max-w-7xl mx-auto px-3 sm:px-8 h-14 sm:h-20 flex items-center justify-between">
+          <div className="flex items-center -ml-1 sm:-ml-2">
+            <img src="/logo.jpg" alt="Digital Math by Phuc" className="h-11 sm:h-20 w-auto object-contain mix-blend-multiply scale-[1.15] origin-left drop-shadow-sm" />
           </div>
           <div className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-2 bg-gray-50 px-4 py-2 rounded-full border border-gray-100">
@@ -210,15 +236,25 @@ export default function StudentDashboardPage() {
         </div>
       </header>
 
-      <div className="p-6 sm:p-8 max-w-[1400px] mx-auto space-y-8">
+      <div className="p-3 sm:p-8 max-w-[1400px] mx-auto space-y-4 sm:space-y-8">
         
-        {/* Tiêu đề trang */}
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        {/*
+          * Tiêu đề trang.
+          *
+          * Bản cũ chiếm 152px đo được trên màn 375x812: một dòng "Tổng Quan Học Tập" cỡ
+          * text-3xl, một dòng chào, cộng một ô ngày riêng - ba tầng cho thông tin mà một
+          * dòng là đủ. Trên điện thoại nay gộp thành một dòng nhỏ; máy tính giữ nguyên.
+          */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 md:gap-4">
           <div>
-            <h1 className="text-3xl font-extrabold text-gray-800 tracking-tight">Tổng Quan Học Tập</h1>
-            <p className="text-gray-500 mt-1.5 font-medium">Chào mừng <span className="font-bold text-teal-600">{profile?.full_name}</span> trở lại với góc học tập!</p>
+            <h1 className="hidden md:block text-3xl font-extrabold text-gray-800 tracking-tight">Tổng Quan Học Tập</h1>
+            <p className="text-[13px] md:text-base text-gray-500 md:mt-1.5 font-medium">
+              Chào <span className="font-bold text-teal-600">{profile?.full_name}</span>
+              <span className="md:hidden text-gray-400"> · {new Date().toLocaleDateString('vi-VN', { weekday: 'long', day: 'numeric', month: 'numeric' })}</span>
+              <span className="hidden md:inline"> trở lại với góc học tập!</span>
+            </p>
           </div>
-          <div className="flex items-center gap-3 bg-white px-5 py-3 rounded-2xl border border-gray-200 shadow-sm">
+          <div className="hidden md:flex items-center gap-3 bg-white px-5 py-3 rounded-2xl border border-gray-200 shadow-sm">
             <Calendar className="w-5 h-5 text-gray-400" />
             <span className="text-sm font-semibold text-gray-600">
               {new Date().toLocaleDateString('vi-VN', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
@@ -226,8 +262,16 @@ export default function StudentDashboardPage() {
           </div>
         </div>
 
-        {/* Thanh Điều Hướng Ngang (Tabs) */}
-        <div className="bg-white p-2.5 rounded-2xl border border-gray-100 shadow-sm flex flex-row overflow-x-auto no-scrollbar gap-2 items-stretch justify-start md:justify-between relative z-10">
+        {/*
+          * Dải mục nằm ngang - CHỈ trên máy tính.
+          *
+          * Trên màn 375px, dải này cần 764px chiều ngang: đo lúc vừa bấm "Khóa học bài giảng"
+          * thì mục đang chọn nằm ở toạ độ 329-519 trong khi khung nhìn chỉ 24-351, tức là mục
+          * vừa bấm trôi hẳn ra ngoài màn - học sinh không biết mình đang ở đâu, cũng không có
+          * dấu hiệu nào cho biết còn 4 mục nữa bên phải. Điện thoại nay dùng thanh dưới và
+          * lưới biểu tượng ở mục Trang chủ; màn rộng thì 6 mục hiện hết nên giữ nguyên.
+          */}
+        <div className="hidden md:flex bg-white p-2.5 rounded-2xl border border-gray-100 shadow-sm flex-row overflow-x-auto no-scrollbar gap-2 items-stretch justify-start md:justify-between relative z-10">
           <button 
             onClick={() => setActiveTab('schedule')} 
             className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap ${activeTab === 'schedule' ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-lg shadow-teal-500/20' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`}
@@ -269,6 +313,25 @@ export default function StudentDashboardPage() {
           >
             <Library className="w-5 h-5 text-indigo-500" /> Sổ tay Toán học
           </Link>
+        </div>
+
+        {/* LƯỚI BIỂU TƯỢNG - chỉ trên điện thoại, thay cho dải cuộn ngang */}
+        <div className="md:hidden grid grid-cols-3 gap-2.5">
+          {MUC_HOC_SINH.map(m => {
+            const dangChon = m.tab === activeTab;
+            const noiDung = (
+              <>
+                <div className={`w-9 h-9 rounded-xl flex items-center justify-center mb-1 transition-colors ${dangChon ? 'bg-gradient-to-br from-teal-500 to-emerald-600 text-white shadow-md shadow-teal-500/25' : m.mau}`}>
+                  <m.Icon className="w-[18px] h-[18px]" />
+                </div>
+                <span className={`text-[11px] font-bold leading-tight text-center ${dangChon ? 'text-teal-700' : 'text-gray-600'}`}>{m.nhan}</span>
+              </>
+            );
+            const lop = "flex flex-col items-center bg-white rounded-xl border border-gray-100 shadow-sm px-1 py-2 active:scale-95 transition-transform";
+            return m.duong
+              ? <Link key={m.nhan} href={m.duong} className={lop}>{noiDung}</Link>
+              : <button key={m.nhan} onClick={() => setActiveTab(m.tab as TabType)} className={lop}>{noiDung}</button>;
+          })}
         </div>
 
         {/* KHU VỰC NỘI DUNG CHÍNH (FULL WIDTH) */}
@@ -318,13 +381,13 @@ export default function StudentDashboardPage() {
           {/* 2. THÔNG TIN HỌC SINH */}
           {activeTab === 'info' && (
             <div className="bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden max-w-5xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-500">
-              <div className="bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-teal-600 relative p-10 sm:p-14 text-white flex items-center gap-8 overflow-hidden">
+              <div className="bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-teal-600 relative p-5 sm:p-14 text-white flex items-center gap-4 sm:gap-8 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-br from-teal-600/90 to-emerald-800/90 mix-blend-multiply"></div>
                 <div className="w-32 h-32 bg-white/10 backdrop-blur-md rounded-full flex items-center justify-center text-5xl font-extrabold border-4 border-white/30 shrink-0 relative z-10 shadow-xl">
                   {profile?.full_name?.charAt(0).toUpperCase()}
                 </div>
                 <div className="relative z-10">
-                  <h2 className="text-4xl font-black mb-2 tracking-tight">{profile?.full_name}</h2>
+                  <h2 className="text-xl sm:text-4xl font-black mb-1 sm:mb-2 tracking-tight">{profile?.full_name}</h2>
                   <div className="inline-flex items-center gap-2 bg-black/20 backdrop-blur-sm px-4 py-1.5 rounded-full border border-white/10">
                     <User className="w-4 h-4 text-teal-200" /> 
                     <span className="font-semibold text-teal-50">Hồ sơ Học sinh</span>
@@ -333,7 +396,7 @@ export default function StudentDashboardPage() {
               </div>
               
               <div className="p-10 sm:p-14">
-                <h3 className="text-xl font-black text-gray-800 mb-8 flex items-center gap-3 border-b border-gray-100 pb-4">
+                <h3 className="text-base sm:text-xl font-black text-gray-800 mb-4 sm:mb-8 flex items-center gap-2.5 border-b border-gray-100 pb-3 sm:pb-4">
                   <User className="text-teal-600 w-6 h-6"/> Thông tin cá nhân (Chỉ xem)
                 </h3>
                 
@@ -425,12 +488,12 @@ export default function StudentDashboardPage() {
           {/* 3. KHÓA HỌC BÀI GIẢNG */}
           {activeTab === 'courses' && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-6xl mx-auto">
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-2.5 mb-4 sm:mb-8">
                 <div className="p-3 bg-teal-100 rounded-2xl text-teal-600">
                   <BookOpen className="w-8 h-8" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-black text-gray-800">Khóa học của bạn</h2>
+                  <h2 className="text-xl sm:text-3xl font-black text-gray-800">Khóa học của bạn</h2>
                   <p className="text-gray-500 font-medium">Truy cập vào các bài giảng và tài liệu học tập.</p>
                 </div>
               </div>
@@ -444,20 +507,20 @@ export default function StudentDashboardPage() {
                   <p className="text-gray-400 mt-2">Vui lòng liên hệ Giáo viên để nhận thông tin vào lớp.</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-3 sm:gap-8">
                   {courses.map((course) => (
                     <div key={course.id} className="bg-white rounded-[2rem] border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-teal-900/5 transition-all duration-300 hover:-translate-y-2 overflow-hidden group flex flex-col">
                       <div className="h-3 bg-gradient-to-r from-teal-500 to-emerald-500 w-full"></div>
-                      <div className="p-8 sm:p-10 flex flex-col flex-1">
+                      <div className="p-4 sm:p-10 flex flex-col flex-1">
                         <div className="flex justify-between items-start mb-6">
                           <span className="bg-teal-50 text-teal-700 px-4 py-1.5 rounded-full text-sm font-black border border-teal-100 tracking-wide uppercase">
                             Lớp {course.grade_level}
                           </span>
                         </div>
-                        <h3 className="text-2xl font-black text-gray-800 mb-3 group-hover:text-teal-600 transition-colors line-clamp-2 leading-tight">
+                        <h3 className="text-base sm:text-2xl font-black text-gray-800 mb-2 sm:mb-3 group-hover:text-teal-600 transition-colors line-clamp-2 leading-tight">
                           {course.title}
                         </h3>
-                        <p className="text-gray-500 mb-8 flex-1 line-clamp-3 text-justify">
+                        <p className="text-[13px] sm:text-base text-gray-500 mb-4 sm:mb-8 flex-1 line-clamp-2 sm:line-clamp-3 text-justify">
                           {course.description || "Khóa học này chưa có mô tả chi tiết."}
                         </p>
                         
@@ -527,12 +590,12 @@ export default function StudentDashboardPage() {
           {/* 4. KIỂM TRA ONLINE */}
           {activeTab === 'exams' && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-6xl mx-auto">
-              <div className="flex items-center gap-3 mb-8">
+              <div className="flex items-center gap-2.5 mb-4 sm:mb-8">
                 <div className="p-3 bg-rose-100 rounded-2xl text-rose-600">
                   <ClipboardList className="w-8 h-8" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-black text-gray-800">Trung tâm Thi Cử</h2>
+                  <h2 className="text-xl sm:text-3xl font-black text-gray-800">Trung tâm Thi Cử</h2>
                   <p className="text-gray-500 font-medium">Tham gia các kỳ thi trực tuyến và đánh giá năng lực của bạn.</p>
                 </div>
               </div>
@@ -551,20 +614,20 @@ export default function StudentDashboardPage() {
                   <p className="text-gray-500">Hiện tại chưa có bài kiểm tra nào được mở cho khóa học của bạn. Vui lòng quay lại sau.</p>
                 </div>
               ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-8">
                   {exams.map((exam) => (
                     <div key={exam.id} className="bg-white border border-gray-100 rounded-[2rem] overflow-hidden hover:shadow-2xl hover:shadow-rose-900/5 hover:-translate-y-2 transition-all duration-300 group flex flex-col h-full">
-                      <div className="bg-gradient-to-br from-rose-500 to-pink-600 p-8 flex flex-col justify-end min-h-[160px] relative overflow-hidden">
+                      <div className="bg-gradient-to-br from-rose-500 to-pink-600 p-4 sm:p-8 flex flex-col justify-end min-h-[96px] sm:min-h-[160px] relative overflow-hidden">
                         <div className="absolute -top-4 -right-4 p-4 opacity-20 transform rotate-12">
                           <ClipboardList className="w-32 h-32 text-white" />
                         </div>
-                        <h3 className="text-2xl font-black text-white relative z-10 drop-shadow-md line-clamp-2 leading-tight">
+                        <h3 className="text-base sm:text-2xl font-black text-white relative z-10 drop-shadow-md line-clamp-2 leading-tight">
                           {exam.exam_group_name ? `${exam.exam_group_name} - ${exam.variant_name || exam.title}` : exam.title}
                         </h3>
                       </div>
                       
-                      <div className="p-8 flex-1 flex flex-col">
-                        <div className="space-y-4 mb-8">
+                      <div className="p-4 sm:p-8 flex-1 flex flex-col">
+                        <div className="space-y-2.5 sm:space-y-4 mb-4 sm:mb-8">
                           <div className="flex items-center text-sm text-gray-600 font-medium">
                             <Clock className="w-5 h-5 mr-3 text-rose-500" />
                             Thời gian làm bài: <span className="font-bold text-gray-800 ml-1">{exam.duration_minutes} phút</span>
@@ -599,7 +662,7 @@ export default function StudentDashboardPage() {
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-6xl mx-auto">
               
               {/* Lịch sử Học phí */}
-              <div className="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-8">
+              <div className="bg-white rounded-2xl sm:rounded-[2rem] border border-gray-100 shadow-sm p-4 sm:p-8">
                 <div className="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
                   <div className="p-3 bg-teal-100 rounded-xl text-teal-600">
                     <DollarSign className="w-6 h-6" />
@@ -654,7 +717,7 @@ export default function StudentDashboardPage() {
               </div>
 
               {/* Lịch sử Điểm danh */}
-              <div className="bg-white rounded-[2rem] border border-gray-100 shadow-sm p-8">
+              <div className="bg-white rounded-2xl sm:rounded-[2rem] border border-gray-100 shadow-sm p-4 sm:p-8">
                 <div className="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
                   <div className="p-3 bg-blue-100 rounded-xl text-blue-600">
                     <CheckSquare className="w-6 h-6" />
@@ -696,6 +759,34 @@ export default function StudentDashboardPage() {
 
         </div>
       </div>
+      {/*
+        * THANH ĐIỀU HƯỚNG DƯỚI - chỉ trên điện thoại.
+        *
+        * Thay cho dải cuộn ngang 764px: bốn mục hay dùng nhất luôn nằm trong tầm ngón cái,
+        * không phải vuốt đi tìm. Mục còn lại (Tài chính, Sổ tay) vẫn có ở lưới biểu tượng.
+        */}
+      <nav className="md:hidden fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur border-t border-gray-200 pb-[env(safe-area-inset-bottom)]">
+        <div className="flex items-stretch">
+          {MUC_HOC_SINH.filter(m => MUC_THANH_DUOI.includes(m.tab)).map(m => {
+            const dangChon = m.tab === activeTab;
+            return (
+              <button
+                key={m.nhan}
+                onClick={() => { setActiveTab(m.tab as TabType); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                className={`flex-1 flex flex-col items-center gap-0.5 py-2 transition-colors ${dangChon ? 'text-teal-600' : 'text-gray-400'}`}
+              >
+                <m.Icon className="w-[19px] h-[19px]" />
+                <span className="text-[10.5px] font-bold leading-none">{m.nhan}</span>
+              </button>
+            );
+          })}
+          <Link href="/student/handbook" className="flex-1 flex flex-col items-center gap-0.5 py-2 text-gray-400">
+            <Library className="w-[19px] h-[19px]" />
+            <span className="text-[10.5px] font-bold leading-none">Sổ tay</span>
+          </Link>
+        </div>
+      </nav>
+
     </div>
   );
 }

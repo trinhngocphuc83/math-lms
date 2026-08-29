@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { CheckCircle2, AlertCircle, Send, ListTodo, UploadCloud, X, Lightbulb, ListOrdered, Pin, Bot, Loader2, Image as ImageIcon, LayoutGrid } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -86,7 +86,8 @@ export default function AzotaExamUI({
   lessonId, 
   moduleId,
   submitUrl = "/api/student/save-score",
-  remedialId
+  remedialId,
+  grade
 }: { 
   content: string; 
   title: string; 
@@ -94,6 +95,8 @@ export default function AzotaExamUI({
   moduleId?: string;
   submitUrl?: string;
   remedialId?: string;
+  /** Lớp của khoá học, để Sổ tay chỉ hiện công thức đúng lớp. Không biết thì bỏ trống. */
+  grade?: string;
 }) {
   const [crop, setCrop] = useState<Crop>({ unit: '%', width: 90, height: 90, x: 5, y: 5 });
   const [cropImageSrc, setCropImageSrc] = useState<string>('');
@@ -376,6 +379,40 @@ export default function AzotaExamUI({
     }
     return n;
   }, [parts, answers, gradingStatus]);
+
+  /** Bấm nút trên dải thì cuộn tới phần đó, thay vì lọc bỏ các phần khác như bản cũ. */
+  const nhayToiPhan = (idPhan: string) => {
+    setActiveTab(idPhan);
+    document.getElementById(`phan-${idPhan}`)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  /**
+   * Cuộn tay tới đâu thì dải trên đầu tự sáng phần đó.
+   *
+   * rootMargin cắt bớt 140px trên đỉnh để trừ chỗ hai thanh dính (điều hướng + tiến độ);
+   * không trừ thì mốc phần vừa chui xuống dưới thanh đã bị tính là "đang đọc".
+   */
+  useEffect(() => {
+    if (availableTabs.length < 2) return;
+    const moc = availableTabs
+      .map(t => document.getElementById(`phan-${t.id}`))
+      .filter(Boolean) as HTMLElement[];
+    if (moc.length === 0) return;
+
+    const theoDoi = new IntersectionObserver(
+      entries => {
+        const dangHien = entries.filter(e => e.isIntersecting);
+        if (dangHien.length === 0) return;
+        // Lấy mốc nằm cao nhất trong vùng nhìn thấy
+        const tren = dangHien.sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        const id = (tren.target as HTMLElement).dataset.phan;
+        if (id) setActiveTab(prev => (prev === id ? prev : id));
+      },
+      { rootMargin: '-140px 0px -60% 0px', threshold: 0 },
+    );
+    moc.forEach(m => theoDoi.observe(m));
+    return () => theoDoi.disconnect();
+  }, [availableTabs, parts]);
 
   const handleAnswerChange = (qIndex: number, type: string, value: any) => {
     if (isSubmitted) return;
@@ -769,7 +806,7 @@ export default function AzotaExamUI({
               {availableTabs.map(tab => (
                  <button
                     key={tab.id}
-                    onClick={() => setActiveTab(tab.id)}
+                    onClick={() => nhayToiPhan(tab.id)}
                     className={`shrink-0 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-[12.5px] sm:text-sm transition-all border-b-4 ${activeTab === tab.id ? 'bg-indigo-600 text-white border-indigo-800 shadow-md' : 'bg-white text-slate-500 border-slate-200 hover:bg-indigo-50 hover:border-indigo-200'}`}
                  >
                     {tab.title}
@@ -778,8 +815,32 @@ export default function AzotaExamUI({
            </div>
         )}
 
-        {/* ACTIVE TAB CONTENT */}
-        {activeTab && groupedParts[activeTab as keyof typeof groupedParts].map((p, index) => {
+        {/*
+          * DỰNG HẾT CÁC PHẦN, NỐI TIẾP NHAU.
+          *
+          * Bản cũ chỉ dựng nhóm của tab đang chọn, nên làm xong câu 12 là hết trang: học sinh
+          * phải cuộn ngược lên đầu bấm tab "Phần II" mới làm tiếp được. Nay cuộn thẳng một mạch
+          * từ Trắc nghiệm sang Đúng/Sai sang Trả lời ngắn, có dòng tiêu đề phần chen giữa.
+          */}
+        {availableTabs.map(phan => (
+         <React.Fragment key={phan.id}>
+          {/* Mốc neo để nút trên dải nhảy tới, và để biết đang đọc phần nào */}
+          <div
+            id={`phan-${phan.id}`}
+            data-phan={phan.id}
+            className="scroll-mt-32 flex items-center gap-3 pt-2 pb-1"
+          >
+             <span className="h-px flex-1 bg-slate-200" />
+             <span className="text-[11.5px] sm:text-[13px] font-black text-indigo-700 uppercase tracking-wide whitespace-nowrap">
+                {phan.title}
+             </span>
+             <span className="text-[11px] font-bold text-slate-400 whitespace-nowrap">
+                {groupedParts[phan.id as keyof typeof groupedParts].length} câu
+             </span>
+             <span className="h-px flex-1 bg-slate-200" />
+          </div>
+
+          {groupedParts[phan.id as keyof typeof groupedParts].map((p, index) => {
             const data = p.content;
             const qIndex = p.qIndex;
             const localIndex = index + 1;
@@ -1263,7 +1324,9 @@ export default function AzotaExamUI({
                  )}
               </div>
             );
-        })}
+          })}
+         </React.Fragment>
+        ))}
 
 
       </div>
@@ -1306,7 +1369,7 @@ export default function AzotaExamUI({
            </button>
 
            {/* Sổ tay công thức: nút biểu tượng nằm ĐÂY thay vì viên thuốc nổi đè lên phương án */}
-           <TraCuuCongThuc kieu="nutNho" />
+           <TraCuuCongThuc kieu="nutNho" grade={grade} />
 
            {!isSubmitted && (
               <button
@@ -1399,7 +1462,7 @@ export default function AzotaExamUI({
                                 <button 
                                   key={qIndex} 
                                   onClick={() => {
-                                     if (activeTab !== tab.id) setActiveTab(tab.id);
+                                     // Mọi phần đều đã dựng sẵn nên cuộn thẳng, không phải đổi tab trước
                                      setGonTienDo(true); // đóng tấm trượt để thấy ngay câu vừa chọn
                                      setTimeout(() => {
                                          const el = document.getElementById(`question-${qIndex}`);
