@@ -71,6 +71,67 @@ export const preprocessMarkdown = (text: string): string => {
     return lines.join('\n');
 };
 
+/**
+ * Cỡ ảnh - đọc từ TIÊU ĐỀ ảnh của Markdown chuẩn: `![Hình ảnh](url "nho|vua|to")`.
+ *
+ * Dùng tiêu đề chứ không bịa cú pháp riêng: `title` là thứ Markdown vốn có, nên chỗ nào
+ * chưa hiểu quy ước này thì ảnh vẫn hiện bình thường, không vỡ gì.
+ *
+ * Vì sao cần: đo 14 ảnh thật đang dùng trong kho thì nhỏ nhất 211x228px, lớn nhất
+ * 3124x1376px - chênh 15 lần bề rộng. Trước đây KHÔNG có quy tắc nào cho thẻ ảnh nên ảnh
+ * to nhỏ tuỳ file: ảnh 211px hiện bé đến mức không đọc nổi vạch chia của đồ thị, còn ảnh
+ * 3124px thì tràn cả khung.
+ */
+const CO_ANH: Record<string, string> = {
+  nho: 'max-h-[180px]',
+  vua: 'max-h-[320px]',
+  to: 'max-h-[520px]',
+};
+
+/** Lớp CSS cho một thẻ ảnh trong nội dung bài. `title` là cỡ Thầy cô chọn (nếu có). */
+export const docCoTuTitle = (title?: string): 'nho' | 'vua' | 'to' => {
+  const t = String(title || '').trim().toLowerCase();
+  return (t === 'nho' || t === 'to') ? t : 'vua';
+};
+
+export const lopAnhNoiDung = (title?: string): string => {
+  const co = CO_ANH[String(title || '').trim().toLowerCase()] || CO_ANH.vua;
+  // min-w: ảnh bé quá thì phóng lên cho đọc được, nhưng chỉ ở màn rộng - điện thoại mà ép
+  // rộng 240px thì ảnh lại tràn ra ngoài.
+  // .anh-noi-dung: dấu để globals.css bỏ qua, khỏi bị luật !important của nó đè cỡ ảnh
+  return `anh-noi-dung ${co} w-auto max-w-full sm:min-w-[240px] object-contain rounded-lg border border-slate-200 bg-white`;
+};
+
+/**
+ * Đoạn văn chỉ chứa toàn ảnh thì xếp NGANG.
+ *
+ * Markdown gộp các dòng liền nhau vào một đoạn, nên hai dòng ảnh sát nhau (không có dòng
+ * trống ở giữa) sẽ nằm chung một đoạn -> xếp ngang. Cách nhau một dòng trống thì thành hai
+ * đoạn riêng -> xếp dọc như cũ. Không phải học cú pháp mới.
+ *
+ * Dự án có bật remarkBreaks nên giữa hai ảnh còn có thẻ xuống dòng - phải bỏ qua nó, nếu
+ * không thì không đoạn nào được coi là "chỉ toàn ảnh".
+ */
+export const demAnhTrongDoan = (children: any): number => {
+  const ds = React.Children.toArray(children);
+  let soAnh = 0;
+  for (const c of ds) {
+    if (typeof c === 'string') {
+      if (c.trim()) return 0;   // còn chữ thì không phải đoạn ảnh
+      continue;
+    }
+    // Nhận ra ảnh bằng thuộc tính src, KHÔNG dựa vào tên thẻ: thẻ img đã bị thay bằng
+    // thành phần riêng nên `type` là hàm của mình chứ không còn là chuỗi 'img'.
+    const props = (c as any)?.props || {};
+    if (props.src) { soAnh++; continue; }
+    const the = (c as any)?.type;
+    const ten = typeof the === 'string' ? the : (the?.name || '');
+    if (ten === 'br') continue;  // remarkBreaks chèn vào giữa hai dòng ảnh
+    return 0;
+  }
+  return soAnh;
+};
+
 const sanitizeStyle = (style: any) => {
     let parsedStyle: any = {};
     if (typeof style === 'string') {
@@ -191,7 +252,22 @@ export const unifiedMarkdownComponents: any = {
            </li>
        );
    },
+   img: ({node, src, alt, title, ...props}: any) => (
+       // data-co: để nơi khác (VD ô sửa tại chỗ) thu nhỏ ảnh theo tỉ lệ mà vẫn phân biệt
+       // được ba cỡ; nếu đè cứng một chiều cao thì bấm Nhỏ/Vừa/To đều như nhau.
+       <img src={src} alt={alt || 'Hình ảnh'} title={title} loading="lazy" data-co={docCoTuTitle(title)}
+            className={`inline-block my-2 ${lopAnhNoiDung(title)}`} {...props} />
+   ),
    p: ({node, style, children, ...props}: any) => {
+       // Đoạn chỉ toàn ảnh (hai dòng ảnh sát nhau) thì xếp ngang cho dễ đối chiếu
+       const soAnh = demAnhTrongDoan(children);
+       if (soAnh > 1) {
+           return (
+               <div style={sanitizeStyle(style)} className="mb-6 flex flex-wrap items-start justify-center gap-4">
+                   {children}
+               </div>
+           );
+       }
        return <p style={sanitizeStyle(style)} className="mb-6 text-[35px] leading-[1.6] text-slate-800" {...props}>{children}</p>;
    },
    blockquote: ({node, style, children, ...props}: any) => {
@@ -379,7 +455,21 @@ export const studentMarkdownComponents: any = {
            </li>
        );
    },
+   img: ({node, src, alt, title, ...props}: any) => (
+       // data-co: để nơi khác (VD ô sửa tại chỗ) thu nhỏ ảnh theo tỉ lệ mà vẫn phân biệt
+       // được ba cỡ; nếu đè cứng một chiều cao thì bấm Nhỏ/Vừa/To đều như nhau.
+       <img src={src} alt={alt || 'Hình ảnh'} title={title} loading="lazy" data-co={docCoTuTitle(title)}
+            className={`inline-block my-2 ${lopAnhNoiDung(title)}`} {...props} />
+   ),
    p: ({node, style, children, ...props}: any) => {
+       const soAnh = demAnhTrongDoan(children);
+       if (soAnh > 1) {
+           return (
+               <div style={sanitizeStyle(style)} className="mb-3 flex flex-wrap items-start justify-center gap-3">
+                   {children}
+               </div>
+           );
+       }
        return <p style={sanitizeStyle(style)} className="mb-3 leading-[1.6] text-slate-800" {...props}>{children}</p>;
    },
    blockquote: ({node, style, children, ...props}: any) => {

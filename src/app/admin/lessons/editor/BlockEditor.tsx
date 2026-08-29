@@ -13,6 +13,9 @@ import SourceImageWithBox from "@/components/admin/SourceImageWithBox";
 import { IMAGE_NEEDED_REGEX, IMAGE_PLACEHOLDER_STRIP_REGEX, daChenAnh, canChenAnh, coCanhBaoAI } from "@/utils/aiQuestionScan";
 import VeLaiHinhModal from "@/components/admin/VeLaiHinhModal";
 import { chamDoNetAnh } from "@/utils/veLaiHinhAI";
+import MenuGon, { MucMenu, NganMenu } from "@/components/admin/MenuGon";
+import SuaBangAIModal from "@/components/admin/SuaBangAIModal";
+import { docCoAnh, datCoAnh, demAnh, dangXepNgang, datXepAnh } from "@/utils/coAnhTrongCau";
 
 export interface Block {
   id: string;
@@ -23,6 +26,10 @@ export interface Block {
 export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, globalSourceImage, globalTriggerBankModal }: { blocks: Block[], onChangeBlocks: (b: Block[]) => void, onTriggerCrop: (meta: any, targetBlockId: string) => void, globalSourceImage?: string, globalTriggerBankModal?: number }) {
 
   const [previewBlocks, setPreviewBlocks] = React.useState<Set<string>>(new Set());
+
+  /** Id khối đang mở hộp "Sửa bằng AI"; null là chưa mở. */
+
+  const [oSuaAI, setOSuaAI] = React.useState<string | null>(null);
   const [isBankModalOpen, setIsBankModalOpen] = React.useState(false);
   const [insertIndex, setInsertIndex] = React.useState(-1);
   const [selectedBlocks, setSelectedBlocks] = React.useState<Set<string>>(new Set());
@@ -567,8 +574,10 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
           <div key={block.id} className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-visible shrink-0 transition-all relative">
               {/* overflow-x-auto: trên điện thoại hàng nút này rộng hơn màn hình (~660px),
                   trước đây overflow visible nên các nút cuối bị cắt và không bấm tới được. */}
-              <div className="bg-gray-50 border-b border-gray-200 px-4 py-3 flex justify-between items-center gap-3 rounded-t-xl z-20 relative overflow-x-auto">
-                  <div className="flex items-center gap-2 font-bold text-gray-700 text-[15px]">
+              {/* Đầu khối: đo được 93px, nay rút còn ~44px. Bốn nút gom vào menu ba chấm,
+                  chỉ chừa "Xem Trước" ra ngoài vì hay dùng nhất. */}
+              <div className="bg-gray-50 border-b border-gray-200 px-3 py-1.5 flex justify-between items-center gap-2 rounded-t-xl z-20 relative overflow-x-auto">
+                  <div className="flex items-center gap-2 font-bold text-gray-700 text-[13px] whitespace-nowrap">
                      <input 
                         type="checkbox" 
                         checked={selectedBlocks.has(block.id)}
@@ -581,7 +590,9 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                         className="w-4 h-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500 mr-2 cursor-pointer"
                         onClick={e => e.stopPropagation()}
                      />
-                     {block.type === 'md' ? <><Type className="w-4 h-4 text-indigo-500"/> Khối Lý Thuyết / Văn Bản</> : <><ListTodo className="w-4 h-4 text-teal-500"/> Khối Trắc Nghiệm Tương Tác</>}
+                     {block.type === 'md'
+                        ? <><Type className="w-4 h-4 text-indigo-500 shrink-0"/> <span className="hidden sm:inline">Khối Lý Thuyết</span></>
+                        : <><ListTodo className="w-4 h-4 text-teal-500 shrink-0"/> <span className="hidden sm:inline">Câu hỏi</span></>}
 
                      {/* Chọn dạng câu hỏi - gộp vào đây để không tốn thêm một dòng riêng bên dưới */}
                      {block.type !== 'md' && (
@@ -603,7 +614,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                              updateBlockContent(idx, newContent);
                            }}
                            title="Dạng câu hỏi"
-                           className="ml-2 border border-gray-300 rounded-lg px-2 py-1 text-[12px] bg-white font-medium text-gray-700 outline-none focus:ring-2 focus:ring-teal-500/20 cursor-pointer"
+                           className="ml-1 border border-gray-300 rounded-md px-1.5 py-0.5 text-[12px] bg-white font-medium text-gray-700 outline-none focus:ring-2 focus:ring-teal-500/20 cursor-pointer max-w-[190px]"
                         >
                            <option value="multiple_choice">Trắc nghiệm 4 lựa chọn</option>
                            <option value="true_false_cluster">Đúng/Sai 4 Ý (Barem 2025)</option>
@@ -613,20 +624,41 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                         </select>
                      )}
                   </div>
-                  <div className="flex gap-1.5">
-                      <button onClick={() => moveBlock(idx, -1)} disabled={idx === 0} className="p-1.5 hover:bg-gray-200 rounded-md text-gray-500 disabled:opacity-30"><ArrowUp className="w-4 h-4"/></button>
-                      <button onClick={() => moveBlock(idx, 1)} disabled={idx === blocks.length - 1} className="p-1.5 hover:bg-gray-200 rounded-md text-gray-500 disabled:opacity-30"><ArrowDown className="w-4 h-4"/></button>
-                      <div className="w-px h-4 bg-gray-300 mx-1 self-center"></div>
-                      <button onClick={() => handleFixLatex(idx)} className="flex items-center gap-1.5 px-2 py-1.5 bg-purple-50 hover:bg-purple-100 border border-purple-200 text-purple-700 rounded-md text-[11px] font-bold transition-colors" title="Sửa nhanh các lỗi LaTeX (như dấu \\, dấu $$, v.v.)">🪄 Sửa lỗi LaTeX</button>
-                      <button onClick={() => togglePreview(block.id)} className={`flex items-center gap-1.5 px-2 py-1.5 rounded-md text-[11px] font-bold transition-colors ${previewBlocks.has(block.id) ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-200'}`} title="Bật/Tắt chế độ chia đôi màn hình: sửa bên trái, xem trước bên phải"><MonitorPlay className="w-3.5 h-3.5"/> Xem Trước</button>
-                      <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} className="flex items-center gap-1.5 px-2 py-1.5 bg-orange-50 hover:bg-orange-100 border border-orange-200 text-orange-700 rounded-md text-[11px] font-bold transition-colors" title="Chèn thêm ảnh vào khối này"><CropIcon className="w-3.5 h-3.5"/> Chèn Thêm Ảnh</button>
-                      <button onClick={() => removeBlock(idx)} className="p-1.5 hover:bg-red-100 rounded-md text-red-500 hover:text-red-600 transition-colors"><Trash2 className="w-4 h-4"/></button>
+                  <div className="flex gap-1 items-center shrink-0">
+                      {block.type !== 'md' && (
+                         <button
+                            onClick={() => setOSuaAI(block.id)}
+                            className="flex items-center gap-1 px-2 py-1 bg-violet-50 hover:bg-violet-100 border border-violet-200 text-violet-700 rounded-md text-[11px] font-bold transition-colors"
+                            title="Nhờ AI sửa đề hoặc đáp án theo yêu cầu - gõ hoặc nói"
+                         >
+                            <Sparkles className="w-3.5 h-3.5"/> <span className="hidden lg:inline">Sửa bằng AI</span>
+                         </button>
+                      )}
+                      <button onClick={() => togglePreview(block.id)} className={`flex items-center gap-1 px-2 py-1 rounded-md text-[11px] font-bold transition-colors ${previewBlocks.has(block.id) ? 'bg-indigo-600 text-white hover:bg-indigo-700' : 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100 border border-indigo-200'}`} title="Bật/Tắt chế độ chia đôi màn hình: sửa bên trái, xem trước bên phải"><MonitorPlay className="w-3.5 h-3.5"/> <span className="hidden lg:inline">Xem Trước</span></button>
+
+                      {/* Các việc còn lại gom vào menu ba chấm - trước đây bày hết ra hàng
+                          ngang nên đầu khối cao 93px và trên điện thoại còn tràn khỏi màn. */}
+                      <MenuGon nhan="⋯" title="Việc khác" canhPhai rong="w-[230px]">
+                         <MucMenu nhan="Đưa lên trên" icon={<ArrowUp className="w-4 h-4"/>}
+                                  onClick={() => moveBlock(idx, -1)} disabled={idx === 0} />
+                         <MucMenu nhan="Đưa xuống dưới" icon={<ArrowDown className="w-4 h-4"/>}
+                                  onClick={() => moveBlock(idx, 1)} disabled={idx === blocks.length - 1} />
+                         <NganMenu />
+                         <MucMenu nhan="Sửa lỗi LaTeX" icon={<span>🪄</span>}
+                                  moTa="Dọn dấu \ và $$ bị lỗi"
+                                  onClick={() => handleFixLatex(idx)} />
+                         <MucMenu nhan="Chèn thêm ảnh" icon={<CropIcon className="w-4 h-4"/>}
+                                  onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} />
+                         <NganMenu />
+                         <MucMenu nhan="Xoá khối này" icon={<Trash2 className="w-4 h-4"/>} nguyHiem
+                                  onClick={() => removeBlock(idx)} />
+                      </MenuGon>
                   </div>
               </div>
 
-              <div className="p-5 animate-in fade-in slide-in-from-top-1 duration-200">
-                <div className={previewBlocks.has(block.id) ? "grid grid-cols-1 xl:grid-cols-2 gap-6 items-start" : ""}>
-                <div className="min-w-0 flex flex-col gap-5">
+              <div className="p-3 animate-in fade-in slide-in-from-top-1 duration-200">
+                <div className={previewBlocks.has(block.id) ? "grid grid-cols-1 xl:grid-cols-2 gap-4 items-start" : ""}>
+                <div className="min-w-0 flex flex-col gap-3">
                  {block.type === 'md' && (
                     <div className="flex flex-col gap-4">
                        {/* CẢNH BÁO CHO KHỐI LÝ THUYẾT */}
@@ -710,6 +742,15 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                              meta={block.content.autoCropMetadata}
                              viTriAnh={block.content.viTriAnh || 'phai'}
                              onDoiViTri={(v) => updateBlockContent(idx, { ...block.content, viTriAnh: v })}
+                             coAnh={docCoAnh(block.content.question)}
+                             onDoiCoAnh={(v) => updateBlockContent(idx, {
+                                ...block.content, question: datCoAnh(block.content.question, v as any),
+                             })}
+                             soAnhTrongCau={demAnh(block.content.question)}
+                             xepNgang={dangXepNgang(block.content.question)}
+                             onDoiXepAnh={(ngang) => updateBlockContent(idx, {
+                                ...block.content, question: datXepAnh(block.content.question, ngang),
+                             })}
                              onRecrop={() => onTriggerCrop(block.content.autoCropMetadata, block.id)}
                              urlAnhDaCat={layAnhTrongCau(block.content.question)}
                              onVeLai={() => {
@@ -951,6 +992,18 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              );
           })}
 
+        {/* Nhờ AI sửa đề/đáp án theo lời dặn - gõ hoặc nói. Bản sửa KHÔNG tự thay vào
+            khối: hộp bày bảng đối chiếu trước/sau, thầy cô bấm nhận mới thay. */}
+        <SuaBangAIModal
+           isOpen={!!oSuaAI}
+           onClose={() => setOSuaAI(null)}
+           cau={oSuaAI ? (blocks.find(b => b.id === oSuaAI)?.content ?? null) : null}
+           onNhan={(cauMoi) => {
+              const i = blocks.findIndex(b => b.id === oSuaAI);
+              if (i >= 0) updateBlockContent(i, cauMoi);
+           }}
+        />
+
         <QuestionBankModal
            isOpen={isBankModalOpen}
            onClose={() => setIsBankModalOpen(false)}
@@ -993,12 +1046,20 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
  * nhìn một cái là biết AI cắt đúng hình của câu này hay nhầm sang chỗ khác. Ảnh đã cắt
  * nằm ngay trong nội dung câu hỏi phía dưới nên ở đây không lặp lại.
  */
-function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnhChup, viTriAnh, onDoiViTri }: {
+function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnhChup, viTriAnh, onDoiViTri,
+                              coAnh, onDoiCoAnh, soAnhTrongCau = 0, xepNgang, onDoiXepAnh }: {
    meta: any;
    onRecrop: () => void;
    /** Ảnh đặt ở đâu so với đề bài khi học sinh làm bài. */
    viTriAnh?: string;
    onDoiViTri?: (v: string) => void;
+   /** Cỡ ảnh hiện tại ('nho' | 'vua' | 'to'), đọc từ tiêu đề ảnh trong nội dung câu. */
+   coAnh?: string;
+   onDoiCoAnh?: (v: string) => void;
+   /** Số ảnh trong câu, và hai ảnh có đang nằm ngang không (liền dòng, không dòng trống). */
+   soAnhTrongCau?: number;
+   xepNgang?: boolean;
+   onDoiXepAnh?: (ngang: boolean) => void;
    /** Ảnh đã cắt đang nằm trong nội dung câu - để chấm độ nét và vẽ lại. */
    urlAnhDaCat?: string;
    onVeLai?: () => void;
@@ -1023,32 +1084,29 @@ function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnh
       return () => { con = false; };
    }, [urlAnhDaCat, meta?.doNet, meta?.daVeLai]);
 
+   // Khung báo ảnh: đo được 133px, nay rút còn MỘT hàng ~40px. Lời dặn dài và các nút ít
+   // dùng gom vào menu ⋯; chỉ chừa ra ngoài thứ hay bấm nhất là ô chọn vị trí ảnh.
    return (
-      <div className="bg-orange-50 border border-orange-200 rounded-xl p-4 flex flex-col gap-3">
-         <div className="flex items-start justify-between gap-3 flex-wrap">
-            <div className="flex-1 min-w-0">
-               <h4 className="text-orange-800 font-bold flex items-center gap-2 mb-1 flex-wrap">
-                  <ImageIcon className="w-5 h-5"/> {box ? 'AI đã xử lý hình và chèn vào câu hỏi' : 'Ảnh gốc đính kèm'}
-                  {meta?.daVeLai && (
-                     <span className="px-2 py-0.5 rounded-full text-[11px] font-black bg-sky-100 text-sky-700 border border-sky-300">
-                        Máy đã VẼ LẠI bằng nét vector
-                     </span>
-                  )}
-               </h4>
-               <p className="text-[13px] text-orange-700 leading-relaxed">
-                  {meta?.daVeLai
-                     ? 'Hình này máy vẽ lại nên in cỡ nào cũng sắc. Máy VẼ LẠI chứ không làm sạch - hãy soi kỹ từng con số, sai thì quay về ảnh chụp.'
-                     : box
-                     ? 'Hãy đối chiếu với ảnh gốc để chắc chắn cắt đúng hình của câu này. Nếu lệch, bấm "Cắt lại" để tự chọn vùng.'
-                     : 'AI đã phát hiện ảnh từ tài liệu gốc. Dùng nút Cắt lại nếu chưa chuẩn xác.'}
-               </p>
-               {!meta?.daVeLai && meta?.lyDoKhongVeLai && (
-                  <p className="text-[12px] text-gray-500 mt-1">
-                     Máy không vẽ lại được hình này: {meta.lyDoKhongVeLai}
-                  </p>
+      <div className="bg-orange-50 border border-orange-200 rounded-lg px-2.5 py-1.5 flex flex-col gap-2">
+         <div className="flex items-center justify-between gap-2 flex-wrap">
+            <div className="flex items-center gap-1.5 min-w-0 text-orange-800 font-bold text-[12.5px] whitespace-nowrap">
+               <ImageIcon className="w-4 h-4 shrink-0"/>
+               {meta?.daVeLai ? 'Hình máy vẽ lại' : box ? 'Ảnh đã cắt' : 'Ảnh gốc'}
+               {meta?.daVeLai && (
+                  <span className="px-1.5 py-0.5 rounded-full text-[10px] font-black bg-sky-100 text-sky-700 border border-sky-300">
+                     nét vector
+                  </span>
                )}
+               <span
+                  className="text-[11px] font-medium text-orange-600/80 hidden xl:inline truncate max-w-[280px]"
+                  title={meta?.daVeLai
+                     ? 'Máy VẼ LẠI chứ không làm sạch - soi kỹ từng con số, sai thì quay về ảnh chụp.'
+                     : 'Đối chiếu với ảnh gốc để chắc chắn cắt đúng hình của câu này.'}
+               >
+                  · {meta?.daVeLai ? 'soi kỹ từng con số' : 'nên đối chiếu ảnh gốc'}
+               </span>
             </div>
-            <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            <div className="flex items-center gap-1.5 shrink-0 flex-wrap">
                {/*
                   Vị trí ảnh so với đề bài. Hình vuông vắn như đồ thị, bảng biến thiên đặt
                   bên cạnh đề thì học sinh vừa đọc vừa nhìn hình, khỏi cuộn lên cuộn xuống.
@@ -1071,60 +1129,95 @@ function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnh
                      ))}
                   </div>
                )}
-               {meta?.originalUrl && (
+               {/* Cỡ ảnh: ghi vào TIÊU ĐỀ của cú pháp ảnh Markdown chuẩn `![...](url "vua")`.
+                   Đo 14 ảnh thật trong kho thì nhỏ nhất 211px, lớn nhất 3124px - chênh 15
+                   lần bề rộng, nên không thể để một cỡ chung cho tất cả. */}
+               {onDoiCoAnh && (
+                  <div className="flex items-center gap-0.5 bg-white border border-orange-200 rounded-lg p-0.5" title="Cỡ ảnh khi hiện ra">
+                     {([['nho', 'Nhỏ'], ['vua', 'Vừa'], ['to', 'To']] as const).map(([ma, ten]) => (
+                        <button
+                           key={ma}
+                           type="button"
+                           onClick={() => onDoiCoAnh(ma)}
+                           className={`px-2 py-1 rounded-md text-[11px] font-bold transition-colors ${
+                              (coAnh || 'vua') === ma ? 'bg-orange-600 text-white' : 'text-orange-700 hover:bg-orange-50'
+                           }`}
+                        >
+                           {ten}
+                        </button>
+                     ))}
+                  </div>
+               )}
+
+               {/* Từ hai ảnh trở lên mới có chuyện xếp ngang hay dọc */}
+               {onDoiXepAnh && soAnhTrongCau > 1 && (
                   <button
                      type="button"
-                     onClick={() => setShowSource(v => !v)}
-                     className="bg-white border border-orange-300 text-orange-700 px-3 py-2 rounded-lg font-bold hover:bg-orange-50 text-sm flex items-center gap-1.5"
+                     onClick={() => onDoiXepAnh(!xepNgang)}
+                     title={xepNgang ? 'Đang xếp ngang - bấm để chuyển sang xếp dọc' : 'Đang xếp dọc - bấm để hai ảnh nằm ngang'}
+                     className="px-2 py-1 rounded-lg text-[11px] font-bold bg-white border border-orange-200 text-orange-700 hover:bg-orange-50 transition-colors whitespace-nowrap"
                   >
-                     <ImageIcon className="w-4 h-4"/> {showSource ? 'Ẩn ảnh gốc' : box ? 'Xem ảnh gốc (khung đỏ)' : 'Xem ảnh gốc'}
+                     {xepNgang ? '⇄ Xếp ngang' : '⇅ Xếp dọc'}
                   </button>
                )}
-               {/* Bản vẽ lại sai số liệu thì phải có đường lui - ảnh chụp vẫn giữ nguyên
-                   trên Storage nên chỉ việc trỏ lại vào nó. */}
-               {meta?.daVeLai && meta?.urlAnhCat && onQuayVeAnhChup && (
-                  <button
-                     type="button"
-                     onClick={onQuayVeAnhChup}
-                     title="Bản vẽ lại sai thì quay về đúng ảnh chụp cắt ra từ tài liệu"
-                     className="bg-white border border-gray-300 text-gray-700 px-3 py-2 rounded-lg font-bold hover:bg-gray-50 text-sm flex items-center gap-1.5"
-                  >
-                     <ImageIcon className="w-4 h-4"/> Quay về ảnh chụp
-                  </button>
-               )}
-               {urlAnhDaCat && onVeLai && (
-                  <button
-                     type="button"
-                     onClick={onVeLai}
-                     title="Ảnh chụp mờ thì nhờ AI vẽ lại bằng nét vector, in cỡ nào cũng sắc"
-                     className="bg-white border border-sky-400 text-sky-700 px-3 py-2 rounded-lg font-bold hover:bg-sky-50 text-sm flex items-center gap-1.5"
-                  >
-                     <Sparkles className="w-4 h-4"/> {meta?.daVeLai ? 'Vẽ lại lượt khác' : 'Nhờ AI vẽ lại'}
-                  </button>
-               )}
-               <button
-                  type="button"
-                  onClick={onRecrop}
-                  className="bg-orange-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-orange-700 shadow-sm transition-colors flex items-center gap-2 text-sm"
-               >
-                  <CropIcon className="w-4 h-4"/> Cắt lại Ảnh Này
-               </button>
+
+               <MenuGon nhan="⋯" title="Việc với ảnh" canhPhai rong="w-[250px]">
+                  {meta?.originalUrl && (
+                     <MucMenu
+                        nhan={showSource ? 'Ẩn ảnh gốc' : 'Xem ảnh gốc'}
+                        moTa={box ? 'Có khung đỏ đánh dấu vùng đã cắt' : undefined}
+                        icon={<ImageIcon className="w-4 h-4"/>}
+                        onClick={() => setShowSource(v => !v)}
+                     />
+                  )}
+                  {urlAnhDaCat && onVeLai && (
+                     <MucMenu
+                        nhan={meta?.daVeLai ? 'Vẽ lại lượt khác' : 'Nhờ AI vẽ lại'}
+                        moTa="Ảnh mờ thì vẽ bằng nét vector, in cỡ nào cũng sắc"
+                        icon={<Sparkles className="w-4 h-4"/>}
+                        onClick={onVeLai}
+                     />
+                  )}
+                  {/* Bản vẽ lại sai số liệu thì phải có đường lui - ảnh chụp vẫn giữ nguyên
+                      trên Storage nên chỉ việc trỏ lại vào nó. */}
+                  {meta?.daVeLai && meta?.urlAnhCat && onQuayVeAnhChup && (
+                     <MucMenu
+                        nhan="Quay về ảnh chụp"
+                        moTa="Dùng lại đúng ảnh cắt ra từ tài liệu"
+                        icon={<ImageIcon className="w-4 h-4"/>}
+                        onClick={onQuayVeAnhChup}
+                     />
+                  )}
+                  <NganMenu />
+                  <MucMenu
+                     nhan="Cắt lại ảnh này"
+                     moTa="Tự chọn lại vùng cắt nếu AI cắt lệch"
+                     icon={<CropIcon className="w-4 h-4"/>}
+                     onClick={onRecrop}
+                  />
+               </MenuGon>
             </div>
          </div>
 
+         {!meta?.daVeLai && meta?.lyDoKhongVeLai && (
+            <p className="text-[11.5px] text-gray-500">
+               Máy không vẽ lại được hình này: {meta.lyDoKhongVeLai}
+            </p>
+         )}
+
          {/* Ảnh mờ hoặc quá nhỏ thì mời vẽ lại ngay tại đây, khỏi đợi in ra mới thấy rỗ */}
          {doNet?.nenVeLai && onVeLai && (
-            <div className="bg-sky-50 border border-sky-200 rounded-lg px-3 py-2.5 flex flex-wrap items-center justify-between gap-2">
-               <span className="text-[13px] font-bold text-sky-800 flex items-center gap-2">
-                  <AlertTriangle className="w-4 h-4 shrink-0" />
-                  {doNet.moTa} (độ nét {doNet.diem}, rộng {doNet.beRong}px) - nên nhờ AI vẽ lại bằng nét vector.
+            <div className="bg-sky-50 border border-sky-200 rounded-lg px-2.5 py-1.5 flex flex-wrap items-center justify-between gap-2">
+               <span className="text-[12px] font-bold text-sky-800 flex items-center gap-1.5 min-w-0">
+                  <AlertTriangle className="w-3.5 h-3.5 shrink-0" />
+                  <span className="truncate">{doNet.moTa} (độ nét {doNet.diem}, rộng {doNet.beRong}px)</span>
                </span>
                <button
                   type="button"
                   onClick={onVeLai}
-                  className="bg-sky-600 text-white px-3 py-1.5 rounded-lg font-bold hover:bg-sky-700 text-[13px] flex items-center gap-1.5 shrink-0"
+                  className="bg-sky-600 text-white px-2.5 py-1 rounded-lg font-bold hover:bg-sky-700 text-[12px] flex items-center gap-1.5 shrink-0"
                >
-                  <Sparkles className="w-4 h-4"/> Vẽ lại hình này
+                  <Sparkles className="w-3.5 h-3.5"/> Vẽ lại
                </button>
             </div>
          )}

@@ -102,6 +102,14 @@ export default function OSuaTaiCho({
          * vào khung soạn bài thì một câu hỏi ăn hết màn hình, phải cuộn mới đọc hết. Không
          * sửa thẳng appMarkdownComponents vì trình chiếu đang cần cỡ đó; chỉ đè trong
          * phạm vi khung này.
+         *
+         * Ảnh: thu theo TỈ LỆ chứ không đè cứng một chiều cao.
+         *
+         * Trước có `[&_img]:!max-h-[240px]`, dấu ! đè cả cỡ Thầy cô vừa chọn nên bấm
+         * Nhỏ/Vừa/To ảnh đều y như nhau - không biết mình đang chọn gì. Nhưng để nguyên cỡ
+         * thật (180/320/520) thì trong trình soạn ảnh 320px đẩy "Đáp án D" xuống y=798,
+         * quá mép màn 768. Nên thu cả ba cỡ theo tỉ lệ: 140/240/340 - vẫn phân biệt được,
+         * mà cả câu vẫn lọt một màn.
          */
         <div className={`prose max-w-none overflow-x-auto ${co === "nho" ? "prose-sm" : "prose-sm sm:prose-base"}
           [&_p]:!text-[15px] [&_p]:!mb-2 [&_p]:!leading-relaxed
@@ -110,7 +118,8 @@ export default function OSuaTaiCho({
           [&_h2]:!px-3 [&_h2]:!py-1.5 [&_h3]:!mt-3 [&_h3]:!mb-2 [&_h3]:!py-1 [&_h4]:!mt-2 [&_h4]:!mb-1
           [&_blockquote]:!text-[15px] [&_blockquote]:!px-3 [&_blockquote]:!py-2 [&_blockquote_*]:!text-[15px]
           [&_div.prose]:!text-[15px]
-          [&_img]:!max-h-[240px] [&_img]:!w-auto [&_img]:!my-2`}>
+          [&_img]:!w-auto [&_img]:!my-2
+          [&_img[data-co=nho]]:!max-h-[140px] [&_img[data-co=vua]]:!max-h-[240px] [&_img[data-co=to]]:!max-h-[340px]`}>
           <ReactMarkdown
             components={appMarkdownComponents}
             remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}
