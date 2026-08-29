@@ -584,7 +584,16 @@ export default function StudentLessonPage() {
       if (lessonData) {
         setLesson({ ...lessonData, modules: modulesData || [], lopKhoa });
         if (modulesData && modulesData.length > 0) {
-          setActiveModuleId(modulesData[0].id);
+          /*
+           * Địa chỉ có ?moduleId= thì mở thẳng mục đó.
+           *
+           * Nút "Demo" bên trình soạn trước đây chỉ mở /student/lessons/{id}, tức về đầu
+           * bài (phần Lý thuyết). Thầy cô vừa lưu một đề luyện tập rồi bấm Demo, thấy màn
+           * Lý thuyết nên tưởng đề chưa lưu được - trong khi đề đã nằm sẵn trong kho.
+           */
+          const idTrenDiaChi = new URLSearchParams(window.location.search).get('moduleId');
+          const coThat = idTrenDiaChi && modulesData.some((m: any) => m.id === idTrenDiaChi);
+          setActiveModuleId(coThat ? idTrenDiaChi! : modulesData[0].id);
         }
       }
       setLoading(false);
@@ -683,15 +692,46 @@ export default function StudentLessonPage() {
                       </button>
                     )}
 
-                    {/* Chọn đề: nút xổ xuống, chỉ hiện khi đang ở Luyện tập và có nhiều đề */}
+                    {/*
+                      * CHỌN ĐỀ.
+                      *
+                      * Màn rộng thì bày thẳng từng đề ra - đề mới lưu phải nhìn thấy ngay.
+                      * Đợt trước tôi gói cả hàng này vào một nút xổ để tiết kiệm 40px, hoá ra
+                      * trên máy tính không cần tiết kiệm chỗ đó, mà gói lại thì đề mới bị giấu
+                      * sau hai lần bấm - thầy cô nhìn vào tưởng lưu hỏng.
+                      */}
                     {isPracticeTabActive && practices.length > 1 && (
-                       <div className="relative shrink-0" ref={hopChonDe}>
+                       <div className="hidden lg:flex items-center gap-1.5 shrink-0 border-l border-gray-200 pl-1.5 ml-0.5">
+                          {practices.map((pr: any) => (
+                             <button
+                                key={pr.id}
+                                onClick={() => setActiveModuleId(pr.id)}
+                                title={pr.title}
+                                className={`shrink-0 px-2.5 py-1.5 rounded-full text-xs font-bold transition-all max-w-[170px] truncate ${
+                                   activeModuleId === pr.id
+                                      ? 'bg-orange-500 text-white shadow-sm'
+                                      : 'bg-orange-50 border border-orange-200 text-orange-700 hover:bg-orange-100'
+                                }`}
+                             >
+                                {pr.title}
+                             </button>
+                          ))}
+                       </div>
+                    )}
+
+                    {/* Màn hẹp thì vẫn phải gói lại, nhưng ghi rõ đang là đề mấy trên mấy để
+                        biết còn đề khác bên trong. */}
+                    {isPracticeTabActive && practices.length > 1 && (
+                       <div className="relative shrink-0 lg:hidden" ref={hopChonDe}>
                           <button
                              onClick={() => setMoChonDe(v => !v)}
                              title={activeModule?.title}
-                             className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-orange-50 border border-orange-200 text-orange-700 hover:bg-orange-100 transition-all max-w-[110px] sm:max-w-[260px]"
+                             className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold bg-orange-50 border border-orange-200 text-orange-700 hover:bg-orange-100 transition-all max-w-[150px]"
                           >
                              <span className="truncate">{activeModule?.title || 'Chọn đề'}</span>
+                             <span className="shrink-0 text-[10px] font-black bg-orange-200 text-orange-800 rounded-full px-1.5">
+                                {practices.findIndex((pr: any) => pr.id === activeModuleId) + 1}/{practices.length}
+                             </span>
                              <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform ${moChonDe ? 'rotate-180' : ''}`} />
                           </button>
                           {moChonDe && (

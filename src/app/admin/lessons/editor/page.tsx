@@ -1925,7 +1925,12 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
                  <button onClick={async (e) => { 
                    e.stopPropagation(); 
                    await handleSaveToDB(); 
-                   window.open(`/student/lessons/${lessonId}`, '_blank'); 
+                   // Kèm moduleId để mở thẳng đúng mục vừa soạn. Thiếu nó thì trang học
+                   // sinh mở ở mục đầu tiên (Lý thuyết), Thầy cô tưởng đề chưa lưu được.
+                   window.open(
+                     `/student/lessons/${lessonId}` + (moduleId ? `?moduleId=${moduleId}` : ''),
+                     '_blank',
+                   );
                  }} className="bg-indigo-600 text-white px-3 py-1.5 rounded-md text-xs font-bold hover:bg-indigo-700 shadow-sm flex items-center gap-1.5">
                    <MonitorPlay className="w-3.5 h-3.5" /> Demo
                  </button>
