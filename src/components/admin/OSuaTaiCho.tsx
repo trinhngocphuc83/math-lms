@@ -10,6 +10,7 @@ import rehypeKatex from "rehype-katex";
 // THÀNH CHỮ trong ô xem trước - xem trước một đằng, học sinh thấy một nẻo.
 import rehypeRaw from "rehype-raw";
 import { Pencil } from "lucide-react";
+import { timViTriTrongNguon } from "@/utils/timViTriDoan";
 import RichTextarea from "@/components/admin/RichTextarea";
 import { appMarkdownComponents, preprocessMarkdown, chuyenDiaChiAnh } from "@/components/CustomMarkdownComponents";
 
@@ -65,11 +66,13 @@ export default function OSuaTaiCho({
     };
   }, [dangSua]);
 
+  const [viTriMo, setViTriMo] = React.useState<number | undefined>(undefined);
+
   if (dangSua) {
     return (
       <div ref={boc}>
         <RichTextarea
-          autoFocus
+          viTriBanDau={viTriMo}
           rows={rows}
           collapsibleToolbar={collapsibleToolbar}
           value={value}
@@ -88,8 +91,27 @@ export default function OSuaTaiCho({
 
   return (
     <div
-      onClick={() => setDangSua(true)}
-      title="Bấm để sửa"
+      onClick={(e) => {
+        /*
+         * Nhấp vào đoạn nào thì mở ô soạn NGAY ĐOẠN ĐÓ. Lấy chữ của khối gần nhất rồi
+         * dò ngược về vị trí trong mã gốc - xem utils/timViTriDoan.
+         */
+        const khoi = (e.target as HTMLElement)?.closest?.('p, li, h1, h2, h3, h4, h5, h6, td, th, blockquote');
+        /*
+         * PHẢI bỏ phần MathML ẩn của KaTeX trước khi đọc chữ: textContent gộp cả thẻ
+         * <annotation> chứa NGUYÊN mã LaTeX gốc, nên chuỗi đọc ra thành
+         * "Trong đó a,b,c\color{blue} a,..." - lẫn lộn, dò không ra chỗ nào cả.
+         */
+        let chu = '';
+        if (khoi) {
+          const ban = khoi.cloneNode(true) as HTMLElement;
+          ban.querySelectorAll('.katex-mathml, annotation').forEach(n => n.remove());
+          chu = ban.textContent || '';
+        }
+        setViTriMo(timViTriTrongNguon(String(value || ''), chu));
+        setDangSua(true);
+      }}
+      title="Bấm để sửa - con trỏ mở ngay đoạn vừa bấm"
       className={`group relative cursor-text rounded-xl border border-transparent hover:border-teal-300 hover:bg-teal-50/30 transition-colors px-3 py-2 ${
         trong ? "min-h-[44px] flex items-center" : ""
       }`}

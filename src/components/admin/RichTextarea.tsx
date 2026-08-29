@@ -39,7 +39,7 @@ const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => 
   }).join('\n');
 };
 
-export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = true, defaultToolbarExpanded = true, ...props }: RichTextareaProps) {
+export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = true, defaultToolbarExpanded = true, viTriBanDau, ...props }: RichTextareaProps & { viTriBanDau?: number }) {
   // Fallback: Nếu không truyền onChange, tạo handler tự động từ onValueChange
   const resolvedOnChange = React.useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) onChange(e);
@@ -215,6 +215,32 @@ export default function RichTextarea({ value, onChange, onValueChange, className
 
   /** Hẹn đặt con trỏ - sẽ áp ngay sau khi React vẽ xong, xem viTriCho ở trên. */
   const datConTro = (tu: number, den?: number) => { viTriCho.current = [tu, den ?? tu]; };
+
+  /*
+   * Mở ô soạn ở ĐÚNG CHỖ thầy cô vừa nhấp.
+   *
+   * autoFocus của trình duyệt luôn đặt con trỏ ở CUỐI. Khối lý thuyết trung bình 8.767
+   * ký tự nên nhấp vào đoạn nào cũng rơi xuống đáy rồi phải cuộn ngược lên mò.
+   */
+  useEffect(() => {
+    if (viTriBanDau === undefined) return;
+    const ta = textareaRef.current;
+    if (!ta) return;
+    const v = Math.max(0, Math.min(viTriBanDau, ta.value.length));
+    ta.focus();
+    ta.setSelectionRange(v, v);
+    /* Kéo dòng đó vào tầm nhìn: ước lượng theo tỉ lệ ký tự, đủ dùng cho chữ đều dòng. */
+    if (ta.scrollHeight > ta.clientHeight && ta.value.length > 0) {
+      ta.scrollTop = Math.max(0, (v / ta.value.length) * ta.scrollHeight - ta.clientHeight / 2);
+    }
+    /*
+     * Phụ thuộc isClient chứ KHÔNG phải mảng rỗng.
+     *
+     * Lần vẽ đầu tiên component trả về nhánh chưa gắn ref (còn chờ isClient), nên hiệu
+     * ứng chạy lúc textareaRef vẫn null rồi thôi luôn - con trỏ không bao giờ được đặt.
+     */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isClient]);
 
   const datGiaTri = (giaTri: string, chonTu?: number, chonDen?: number) => {
     if (chonTu !== undefined) viTriCho.current = [chonTu, chonDen ?? chonTu];
