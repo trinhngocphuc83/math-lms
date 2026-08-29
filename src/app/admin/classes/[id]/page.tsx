@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
-import { ArrowLeft, Users, UserPlus, Upload, Trash2, Loader2, Search, X, FileSpreadsheet, Download, Plus, Edit2, CheckSquare, DollarSign, Dices } from "lucide-react";
+import { ArrowLeft, Users, UserPlus, Upload, Trash2, Loader2, Search, X, FileSpreadsheet, Download, Plus, Edit2, CheckSquare, DollarSign, Dices, Trophy } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useParams } from "next/navigation";
 import { getEnrollments, addEnrollment, removeEnrollment, updateStudentProfile, searchStudents, createAndEnrollNewStudent } from "./actions";
@@ -10,6 +10,7 @@ import AttendanceTab from "./AttendanceTab";
 import TuitionTab from "./TuitionTab";
 import ScoresTab from "./ScoresTab";
 import BangGoiTenVaDiem from "@/components/lop/BangGoiTenVaDiem";
+import SanKhauVinhDanh from "@/components/lop/SanKhauVinhDanh";
 
 export default function ClassDetailsPage() {
   const [classInfo, setClassInfo] = useState<any>(null);
@@ -22,6 +23,8 @@ export default function ClassDetailsPage() {
   const [activeTab, setActiveTab] = useState<'menu' | 'students' | 'attendance' | 'tuition' | 'scores'>('students');
   /* Gọi tên & Điểm mở thẳng từ đây - dùng được cả khi không chiếu bài nào. */
   const [moGoiTen, setMoGoiTen] = useState(false);
+  /* Sân khấu vinh danh - chiếu tivi cuối tháng. */
+  const [moSanKhau, setMoSanKhau] = useState(false);
   useEffect(() => {
     if (window.innerWidth < 768) setActiveTab('menu');
   }, []);
@@ -216,13 +219,20 @@ export default function ClassDetailsPage() {
 
       {/* Gọi tên & Điểm mở thẳng từ trang lớp, dùng được cả khi không chiếu bài nào -
           vòng quay và điểm khoá theo LỚP nên vẫn đúng một mạch với lúc trình chiếu. */}
-      <div className="mb-4">
+      <div className="mb-4 flex flex-wrap gap-2">
         <button
           onClick={() => setMoGoiTen(true)}
           className="bg-violet-600 hover:bg-violet-700 text-white px-4 py-2.5 rounded-xl font-bold
                      flex items-center gap-2 shadow-sm transition-colors"
         >
           <Dices className="w-4 h-4" /> Gọi tên & Điểm
+        </button>
+        <button
+          onClick={() => setMoSanKhau(true)}
+          className="bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600
+                     text-amber-950 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-sm transition-colors"
+        >
+          <Trophy className="w-4 h-4" /> Sân khấu vinh danh
         </button>
       </div>
 
@@ -706,6 +716,11 @@ export default function ClassDetailsPage() {
         isOpen={moGoiTen}
         onClose={() => setMoGoiTen(false)}
         lopGoiY={classId}
+      />
+      <SanKhauVinhDanh
+        isOpen={moSanKhau}
+        onClose={() => setMoSanKhau(false)}
+        lopId={classId}
       />
     </div>
   );

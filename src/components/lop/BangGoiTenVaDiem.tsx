@@ -2,7 +2,7 @@
 
 import React from "react";
 import confetti from "canvas-confetti";
-import { X, Loader2, RefreshCw, Volume2, UserX, Plus, Minus, Dices, AlertTriangle } from "lucide-react";
+import { X, Loader2, RefreshCw, Volume2, Download, UserX, Plus, Minus, Dices, AlertTriangle } from "lucide-react";
 /* Việc của thầy cô phải đi qua máy chủ: bảng enrollments có RLS chặn, trình duyệt đọc
    thẳng ra 0 dòng dù lớp có 16 em. Trang lớp học cũng đi đường này. */
 import {
@@ -53,6 +53,9 @@ export default function BangGoiTenVaDiem({
 
   /** Tiếng đọc tên đã lấy sẵn, chờ băng cuộn dừng là phát. */
   const tiengCho = React.useRef<Promise<{ phat: () => Promise<CachDoc> }> | null>(null);
+
+  /** Tải sẵn giọng cả lớp trước buổi dạy - xem nút "Tải sẵn giọng". */
+  const [dangTaiGiong, setDangTaiGiong] = React.useState(0);
 
   const [emKhac, setEmKhac] = React.useState('');
   const [vuaCong, setVuaCong] = React.useState('');
@@ -190,6 +193,39 @@ export default function BangGoiTenVaDiem({
     setTimeout(() => setVuaCong(''), 2600);
   };
 
+  /**
+   * Lấy trước giọng đọc tên cho CẢ LỚP.
+   *
+   * Lần đầu đọc một cái tên, gọi Google mất mấy giây - quay xong phải chờ, hoặc rơi vào
+   * giọng máy. Bấm nút này một lần trước buổi dạy là cả buổi đọc tức thì, và mạng chập
+   * chờn cũng không sao vì đã có bản nhớ.
+   */
+  const taiSanGiong = async () => {
+    const ds = trangThai?.caLop || [];
+    if (dangTaiGiong || ds.length === 0) return;
+    let xong = 0, hong = 0;
+    for (let i = 0; i < ds.length; i++) {
+      setDangTaiGiong(i + 1);
+      try {
+        const g = await chuanBiMoiEm(ds[i].id, ds[i].ten);
+        if (g.nguon === 'du-phong') hong++; else { xong++; hong = 0; }
+      } catch { hong++; }
+      /*
+       * HẾT HẠN MỨC THÌ DỪNG, đừng cố chạy hết.
+       *
+       * Đo trên máy: tải liền 16 tên là cạn sạch hạn mức giọng AI trong ngày của cả 5
+       * khoá. Hỏng ba lần liên tiếp gần như chắc chắn là hết hạn mức, chạy tiếp cũng
+       * không được gì mà còn mất thời gian.
+       */
+      if (hong >= 3) break;
+    }
+    setDangTaiGiong(0);
+    setVuaCong(hong >= 3
+      ? `Hết hạn mức giọng AI hôm nay. Đã tải được ${xong}/${ds.length} em - mai bấm tiếp, số đã tải vẫn đọc ngay.`
+      : `Đã tải sẵn giọng cho ${xong}/${ds.length} em - cả buổi sẽ đọc ngay.`);
+    setTimeout(() => setVuaCong(''), 6000);
+  };
+
   const emDuocChon = trangThai?.caLop.find(h => h.id === emKhac) || null;
 
   return (
@@ -293,8 +329,19 @@ export default function BangGoiTenVaDiem({
 
               {/* Cộng cho em xung phong, không cần quay */}
               <div className="mt-4 pt-3 border-t border-slate-100">
-                <div className="text-[11px] font-black text-slate-400 uppercase tracking-wide mb-1.5">
-                  Cộng cho em xung phong (không cần quay)
+                <div className="flex items-center gap-2 mb-1.5">
+                  <div className="text-[11px] font-black text-slate-400 uppercase tracking-wide">
+                    Cộng cho em xung phong (không cần quay)
+                  </div>
+                  <button onClick={taiSanGiong} disabled={dangTaiGiong > 0}
+                          title="Lấy trước giọng đọc tên cả lớp - bấm một lần trước buổi dạy thì cả buổi đọc ngay"
+                          className="ml-auto shrink-0 px-2 py-1 rounded-md text-[11px] font-bold border
+                                     bg-white border-slate-200 text-slate-600 hover:bg-slate-50 disabled:opacity-60
+                                     flex items-center gap-1">
+                    {dangTaiGiong > 0
+                      ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> {dangTaiGiong}/{trangThai?.caLop.length}</>
+                      : <><Download className="w-3.5 h-3.5" /> Tải sẵn giọng</>}
+                  </button>
                 </div>
                 <div className="flex items-center gap-2">
                   <select value={emKhac} onChange={e => setEmKhac(e.target.value)}

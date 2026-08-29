@@ -2,7 +2,7 @@
 
 import { createClient } from '@supabase/supabase-js';
 import { assertStaff } from '@/utils/auth/guard';
-import { thangNay, LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from '@/utils/goiTenVaDiem';
+import { thangNay, thangTruoc, LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from '@/utils/goiTenVaDiem';
 
 /**
  * Vòng quay gọi tên và điểm thưởng - phần chạy trên máy chủ.
@@ -165,4 +165,110 @@ export async function layTongDiemLop(
   return caLop
     .map(hs => ({ hs, tong: cong[hs.id] || 0 }))
     .sort((a, b) => b.tong - a.tong || a.hs.ten.localeCompare(b.hs.ten, 'vi'));
+}
+
+/* ────────────────────────────────────────────────── SÂN KHẤU VINH DANH ─── */
+
+export interface DongVinhDanh {
+  hs: HocSinh;
+  tong: number;
+  /** Tổng của tháng trước - để tính mức tiến bộ */
+  truoc: number;
+  tang: number;
+}
+
+export interface BangVinhDanh {
+  tenLop: string;
+  thang: string;
+  /** Xếp theo TỔNG điểm tháng này */
+  theoTong: DongVinhDanh[];
+  /** Xếp theo MỨC TĂNG so với tháng trước */
+  theoTienBo: DongVinhDanh[];
+  /** Tháng trước chưa có dữ liệu -> bảng tiến bộ không có nghĩa, phải ẩn đi */
+  coThangTruoc: boolean;
+}
+
+/**
+ * Hai bảng vinh danh của một lớp trong một tháng.
+ *
+ * Chỉ tính những em CÒN TRONG DANH SÁCH LỚP: em đã rời lớp không lên bảng, em mới vào
+ * hiện với 0 điểm. Điểm cũ không mất - nhận lại em đó là hiện về đủ.
+ */
+export async function layBangVinhDanh(
+  classId: string, thang?: string,
+): Promise<BangVinhDanh> {
+  await assertStaff();
+  const t = thang || thangNay();
+  const tTruoc = thangTruoc(t);
+
+  const caLop = await layDsHocSinh(classId);
+  const { data: lop } = await quanTri.from('classes').select('name').eq('id', classId).maybeSingle();
+
+  const { data, error } = await quanTri
+    .from('diem_thuong').select('student_id, diem, thang')
+    .eq('class_id', classId).in('thang', [t, tTruoc]);
+  if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+
+  const nay: Record<string, number> = {};
+  const truoc: Record<string, number> = {};
+  for (const r of data || []) {
+    const o = r.thang === t ? nay : truoc;
+    o[r.student_id] = (o[r.student_id] || 0) + Number(r.diem || 0);
+  }
+
+  const dong: DongVinhDanh[] = caLop.map(hs => {
+    const a = nay[hs.id] || 0;
+    const b = truoc[hs.id] || 0;
+    return { hs, tong: a, truoc: b, tang: a - b };
+  });
+
+  const theoTen = (x: DongVinhDanh, y: DongVinhDanh) => x.hs.ten.localeCompare(y.hs.ten, 'vi');
+
+  return {
+    tenLop: lop?.name || 'Lớp',
+    thang: t,
+    theoTong: [...dong].sort((a, b) => b.tong - a.tong || theoTen(a, b)),
+    theoTienBo: [...dong].sort((a, b) => b.tang - a.tang || theoTen(a, b)),
+    coThangTruoc: Object.keys(truoc).length > 0,
+  };
+}
+
+/* ──────────────────────────────────────────────── KHO GIỌNG ĐỌC ĐÃ NHỚ ─── */
+
+const KHO_GIONG = 'system-assets';
+const THU_MUC_GIONG = 'giong-goi-ten';
+
+/**
+ * Cất bản giọng vừa đọc vào kho chung.
+ *
+ * PHẢI đi qua máy chủ: trình duyệt ghi vào kho bị chặn - đo trên máy thì sau cả buổi thử
+ * vẫn 0 tệp được nhớ, nên lần nào cũng phải gọi Google lại từ đầu và hay lỡ nhịp.
+ */
+export async function catGiongVaoKho(khoa: string, wavBase64: string): Promise<boolean> {
+  await assertStaff();
+  try {
+    const bytes = Buffer.from(wavBase64, 'base64');
+    const { error } = await quanTri.storage.from(KHO_GIONG)
+      .upload(`${THU_MUC_GIONG}/${khoa}.wav`, bytes, {
+        contentType: 'audio/wav', upsert: true,
+      });
+    return !error;
+  } catch {
+    return false;
+  }
+}
+
+/** Địa chỉ bản đã nhớ, nếu có. Không có thì trả rỗng. */
+export async function timGiongDaNho(khoa: string): Promise<string> {
+  await assertStaff();
+  try {
+    const { data, error } = await quanTri.storage.from(KHO_GIONG)
+      .list(THU_MUC_GIONG, { search: `${khoa}.wav`, limit: 1 });
+    if (error || !data || data.length === 0) return '';
+    const { data: ky } = await quanTri.storage.from(KHO_GIONG)
+      .createSignedUrl(`${THU_MUC_GIONG}/${khoa}.wav`, 60 * 60 * 6);
+    return ky?.signedUrl || '';
+  } catch {
+    return '';
+  }
 }

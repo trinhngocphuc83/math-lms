@@ -1,5 +1,7 @@
-import { createClient } from "@/utils/supabase/client";
 import { layCauHinhAI } from "@/utils/geminiBrowser";
+/* Đọc/ghi kho giọng phải qua máy chủ: trình duyệt ghi vào kho bị chặn - đo trên máy thì
+   sau cả buổi thử vẫn 0 tệp được nhớ, nên lần nào cũng gọi Google lại từ đầu. */
+import { catGiongVaoKho, timGiongDaNho } from "@/app/actions/goiTenVaDiem";
 
 /**
  * Giọng đọc cho vòng quay gọi tên.
@@ -18,14 +20,14 @@ import { layCauHinhAI } from "@/utils/geminiBrowser";
  */
 
 const MODEL_TTS = 'gemini-2.5-flash-preview-tts';
-const KHO = 'system-assets';
-const THU_MUC = 'giong-goi-ten';
 
 export type CachDoc = 'ai' | 'da-nho' | 'giong-may' | 'chuong';
 
 /** Đã chuẩn bị xong, gọi `phat()` là ra tiếng ngay. */
 export interface GiongDaSan {
   phat: () => Promise<CachDoc>;
+  /** Lấy được từ đâu - để bên gọi biết mà dừng khi hết hạn mức. */
+  nguon: 'da-nho' | 'ai' | 'du-phong';
 }
 
 /**
@@ -65,16 +67,10 @@ const base64SangByte = (b64: string): Uint8Array => {
   return ra;
 };
 
-const duongTep = (khoa: string) => `${THU_MUC}/${khoa}.wav`;
-
 /** Địa chỉ bản đã nhớ, nếu có. */
 async function timBanDaNho(khoa: string): Promise<string | null> {
   try {
-    const supabase = createClient();
-    const { data, error } = await supabase.storage.from(KHO)
-      .list(THU_MUC, { search: `${khoa}.wav`, limit: 1 });
-    if (error || !data || data.length === 0) return null;
-    return supabase.storage.from(KHO).getPublicUrl(duongTep(khoa)).data.publicUrl;
+    return (await timGiongDaNho(khoa)) || null;
   } catch {
     return null;
   }
@@ -83,9 +79,10 @@ async function timBanDaNho(khoa: string): Promise<string | null> {
 /** Cất bản vừa đọc - hỏng thì bỏ qua, không làm gián đoạn giờ dạy. */
 async function nhoLai(khoa: string, wav: Blob): Promise<void> {
   try {
-    const supabase = createClient();
-    await supabase.storage.from(KHO)
-      .upload(duongTep(khoa), wav, { contentType: 'audio/wav', upsert: true });
+    const bo = new Uint8Array(await wav.arrayBuffer());
+    let nhi = '';
+    for (let i = 0; i < bo.length; i++) nhi += String.fromCharCode(bo[i]);
+    await catGiongVaoKho(khoa, btoa(nhi));
   } catch (e) {
     console.warn('Không cất được giọng đọc, lần sau sẽ gọi lại:', e);
   }
@@ -139,7 +136,7 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
   // 1. Bản đã nhớ - nhanh nhất, và mất mạng vẫn còn nếu trình duyệt đã tải về
   const daNho = await timBanDaNho(khoa);
   if (daNho) {
-    return { phat: async () => { await phatUrl(daNho); return 'da-nho'; } };
+    return { nguon: 'da-nho', phat: async () => { await phatUrl(daNho); return 'da-nho'; } };
   }
 
   // 2. Giọng AI - lấy sẵn về, chưa phát vội
@@ -169,6 +166,7 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
         const url = URL.createObjectURL(wav);
         nhoLai(khoa, wav);           // cất lại, không cần chờ
         return {
+          nguon: 'ai',
           phat: async () => {
             await phatUrl(url);
             URL.revokeObjectURL(url);
@@ -181,6 +179,7 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
 
   // 3. Giọng máy, rồi chuông
   return {
+    nguon: 'du-phong',
     phat: async () => {
       if (giongMay(cau)) return 'giong-may';
       chuong();
