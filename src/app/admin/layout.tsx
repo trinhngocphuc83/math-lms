@@ -49,11 +49,28 @@ export default function AdminLayout({
     const initSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session?.user) {
-        const role = session.user.user_metadata?.role || 'admin';
+        // Thiếu vai trò thì coi như KHÔNG có quyền. Bản cũ ghi `|| 'admin'` - dữ liệu thiếu
+        // mà lại mở toang cửa, đúng chiều ngược với cái cần làm.
+        const role = session.user.user_metadata?.role || '';
         setUserRole(role);
         setUserPermissions(session.user.user_metadata?.permissions || []);
         setUserName(session.user.user_metadata?.full_name || (role === 'admin' ? 'Admin' : 'Giáo viên'));
-        
+
+        /*
+         * Chỉ admin và giáo viên mới được vào khu Quản trị.
+         *
+         * Bản cũ chỉ có đúng một câu chặn cho 'teacher', nên tài khoản học sinh đi thẳng
+         * qua: đăng nhập bằng tài khoản học sinh rồi gõ /admin/lessons/editor là vào được
+         * và đọc được nội dung bài soạn (đã thử trên máy, 94 tài khoản học sinh đều vậy).
+         *
+         * Máy chủ cũng chặn ở middleware; chặn thêm ở đây để lỡ đường nào lọt qua thì trang
+         * cũng không dựng ra.
+         */
+        if (role !== 'admin' && role !== 'teacher') {
+          router.replace('/student/dashboard');
+          return;
+        }
+
         // Simple Route Protection
         if (role === 'teacher' && pathname !== '/admin/dashboard') {
            const allowed = session.user.user_metadata?.permissions || [];
