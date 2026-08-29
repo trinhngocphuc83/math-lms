@@ -274,12 +274,22 @@ export default function TraCuuCongThuc({ grade, kieu = 'noi' }: { grade?: string
               )}
               {loi && <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm font-bold">{loi}</div>}
 
+              {/* Kho chưa có gì thì nói thẳng. Không nói thì học sinh nhìn thấy dòng
+                  "Chọn chương để xem" với danh sách trống rồi tưởng app hỏng. */}
+              {daTai && dsCongThuc.length === 0 && !loi && (
+                <div className="text-center text-gray-400 py-10 text-sm px-4">
+                  <BookOpen className="w-8 h-8 mx-auto mb-2 text-gray-300" />
+                  Sổ tay chưa có công thức nào.
+                  <div className="text-[12px] mt-1">Thầy cô sẽ bổ sung sau, em cứ làm bài bình thường nhé.</div>
+                </div>
+              )}
+
               {/*
                 * Chưa gõ gì thì DUYỆT, không đổ bừa 40 công thức đầu theo thứ tự cơ sở dữ
                 * liệu như bản cũ - một lát cắt vô nghĩa. Học sinh không nhớ tên công thức vẫn
                 * tìm được đường qua chương, hoặc lấy lại thứ vừa xem.
                 */}
-              {daTai && dangDuyet && (
+              {daTai && dangDuyet && dsCongThuc.length > 0 && (
                 <>
                   {dsGanDay.length > 0 && (
                     <div className="mb-3">
