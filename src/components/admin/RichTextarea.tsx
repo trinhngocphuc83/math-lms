@@ -129,8 +129,18 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       .map(l => (l.trim() === '' ? l : prefix + l.replace(/^\s*#{1,6}\s*/, '')))
       .join('\n');
 
-    // Con trỏ về CUỐI DÒNG vừa đặt, để gõ tiếp được ngay
-    datGiaTri(val.slice(0, dauDong) + moi + val.slice(cuoiDong), dauDong + moi.length);
+    /*
+     * Con trỏ ĐỨNG NGUYÊN CHỖ CŨ, chỉ dịch theo phần dấu # vừa thêm/bớt ở đầu dòng.
+     * Nhảy về cuối dòng thì đang gõ dở giữa câu lại phải bấm chuột về chỗ cũ.
+     */
+    const ta = textareaRef.current;
+    const dongCu = doan.split('\n')[0];
+    const dongMoi = moi.split('\n')[0];
+    const lech = dongMoi.length - dongCu.length;
+    const cu = ta.selectionStart;
+    const conTro = Math.max(dauDong, Math.min(cu + lech, dauDong + dongMoi.length));
+
+    datGiaTri(val.slice(0, dauDong) + moi + val.slice(cuoiDong), conTro);
   };
 
   const handleApplyColor = (e?: React.MouseEvent | React.FormEvent | null, colorOverride?: string) => {
@@ -204,17 +214,27 @@ export default function RichTextarea({ value, onChange, onValueChange, className
    * đúng cái cảm giác "chọn tiêu đề xong con trỏ nhảy về cuối khối". useLayoutEffect chạy
    * ngay sau khi DOM cập nhật nên đặt lại là ăn chắc.
    */
-  const viTriCho = useRef<[number, number] | null>(null);
+  const viTriCho = useRef<{ tu: number; den: number; cuon: number } | null>(null);
   React.useLayoutEffect(() => {
     const v = viTriCho.current;
-    if (!v || !textareaRef.current) return;
+    const ta = textareaRef.current;
+    if (!v || !ta) return;
     viTriCho.current = null;
-    textareaRef.current.focus();
-    textareaRef.current.setSelectionRange(v[0], v[1]);
+    /*
+     * preventScroll + đặt lại scrollTop: GIỮ NGUYÊN CHỖ ĐANG NHÌN.
+     *
+     * Không có hai thứ này thì bấm một nút định dạng là ô soạn nhảy tuốt xuống cuối
+     * khối - trình duyệt tự cuộn khi ô được focus lại và khi giá trị bị thay cả chuỗi.
+     */
+    ta.focus({ preventScroll: true });
+    ta.setSelectionRange(v.tu, v.den);
+    ta.scrollTop = v.cuon;
   });
 
   /** Hẹn đặt con trỏ - sẽ áp ngay sau khi React vẽ xong, xem viTriCho ở trên. */
-  const datConTro = (tu: number, den?: number) => { viTriCho.current = [tu, den ?? tu]; };
+  const datConTro = (tu: number, den?: number) => {
+    viTriCho.current = { tu, den: den ?? tu, cuon: textareaRef.current?.scrollTop ?? 0 };
+  };
 
   /*
    * Mở ô soạn ở ĐÚNG CHỖ thầy cô vừa nhấp.
@@ -227,7 +247,8 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     const ta = textareaRef.current;
     if (!ta) return;
     const v = Math.max(0, Math.min(viTriBanDau, ta.value.length));
-    ta.focus();
+    /* preventScroll: chỉ cuộn BÊN TRONG ô, không kéo cả trang nhảy theo. */
+    ta.focus({ preventScroll: true });
     ta.setSelectionRange(v, v);
     /* Kéo dòng đó vào tầm nhìn: ước lượng theo tỉ lệ ký tự, đủ dùng cho chữ đều dòng. */
     if (ta.scrollHeight > ta.clientHeight && ta.value.length > 0) {
@@ -243,7 +264,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
   }, [isClient]);
 
   const datGiaTri = (giaTri: string, chonTu?: number, chonDen?: number) => {
-    if (chonTu !== undefined) viTriCho.current = [chonTu, chonDen ?? chonTu];
+    if (chonTu !== undefined) datConTro(chonTu, chonDen);
     if (onValueChange) onValueChange(giaTri);
     else resolvedOnChange({ target: { value: giaTri } } as React.ChangeEvent<HTMLTextAreaElement>);
   };
