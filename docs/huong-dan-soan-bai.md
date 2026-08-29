@@ -24,6 +24,29 @@ trang soạn.
 | **Khung** | Bọc đoạn vào khung | |
 | **Ảnh** | Chèn ảnh | |
 
+### Nút ở đầu mỗi khối
+
+| Nút | Việc |
+|---|---|
+| **Vào Sổ tay** | Đưa mục 📌 CÔNG THỨC CẦN NHỚ của bài vào Sổ tay công thức |
+| **Sửa bằng AI** | Nhờ AI sửa khối này — gõ hoặc nói |
+| **Xem Trước** | Chia đôi màn hình: sửa bên trái, xem kết quả bên phải |
+| **⋯** | Đưa lên / xuống, sửa lỗi LaTeX, chèn thêm ảnh |
+| **🗑️** | Xoá khối này (có hỏi lại trước) |
+
+### Thanh ảnh (hiện khi khối có ảnh)
+
+| Nút | Việc |
+|---|---|
+| **Nhỏ / Vừa / To** | Đổi cỡ mọi ảnh trong khối |
+| **⇄ Xếp ngang / ⇅ Xếp dọc** | Chỉ hiện khi có từ 2 ảnh trở lên |
+| **✨ Vẽ lại** | Nhờ AI vẽ lại hình bằng **nét vector** — in cỡ nào cũng sắc. Nút **tô vàng** nghĩa là máy chấm ảnh đó hơi mờ, nên vẽ lại. Nhiều ảnh thì nút đánh số theo thứ tự ảnh |
+| **Chèn thêm ảnh** | Cắt và chèn thêm một ảnh nữa |
+
+> Khi soạn bài bằng AI, hình trong bài **tự động** được cắt và ưu tiên vẽ lại bằng nét
+> vector — đúng cỗ máy phần Luyện tập và Ngân hàng câu hỏi đang dùng. Nút *Vẽ lại* ở trên
+> là để làm lại thủ công khi cần.
+
 ### Phím tắt
 
 | Phím | Việc |
