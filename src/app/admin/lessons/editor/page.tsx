@@ -27,7 +27,8 @@ import { layCauHinhAI } from "@/utils/geminiBrowser";
 import { autoCropImage, uploadSourceImage, cropImageFromBoundingBox, uploadCroppedImage, type NormalizedBox } from "@/utils/autoCropImage";
 import { thamDinhVaVeLai, svgSangPng, chamDoNetTuBlob } from "@/utils/veLaiHinhAI";
 import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
-import { ArrowLeft, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
+import HuongDanSoanBaiModal from "@/components/admin/HuongDanSoanBaiModal";
+import { ArrowLeft, HelpCircle, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
 
 interface PendingImage {
   id: string;
@@ -1123,6 +1124,7 @@ function EditorContent() {
 
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isSavingDB, setIsSavingDB] = useState(false);
+  const [moHuongDan, setMoHuongDan] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
   const [globalTriggerBankModal, setGlobalTriggerBankModal] = useState(0);
   
@@ -1944,6 +1946,11 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
                    <Presentation className="w-3.5 h-3.5" /> Trình chiếu
                  </button>
                )}
+               <button onClick={(e) => { e.stopPropagation(); setMoHuongDan(true); }}
+                       title="Bảng tra lệnh soạn bài"
+                       className="bg-white border border-gray-300 text-gray-600 px-3 py-1.5 rounded-md text-xs font-bold hover:bg-gray-50 shadow-sm flex items-center gap-1.5 ml-2">
+                 <HelpCircle className="w-3.5 h-3.5" /> Hướng dẫn
+               </button>
                <div className="p-1 bg-gray-200 rounded-md ml-2"><ChevronDown className="w-4 h-4 text-gray-600" /></div>
              </div>
            </div>
@@ -2013,6 +2020,12 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
           <div className="flex justify-between items-center pt-3 border-t border-gray-50">
             <div className="text-xs text-gray-400 font-medium">Bản nháp được lưu tại: <span className="text-teal-600 font-bold">{title}</span></div>
             <div className="flex items-center gap-3">
+
+              <button onClick={() => setMoHuongDan(true)}
+                      title="Bảng tra lệnh soạn bài"
+                      className="bg-white border border-gray-300 text-gray-600 px-4 py-2.5 rounded-lg font-bold flex items-center gap-2 hover:bg-gray-50 transition-colors">
+                <HelpCircle className="w-4 h-4" /> Hướng dẫn
+              </button>
 
               <button onClick={handleSaveToDB} disabled={isSavingDB} className="bg-teal-600 text-white px-6 py-2.5 rounded-lg font-bold flex items-center gap-2 hover:bg-teal-700 transition-colors shadow-[0_5px_15px_-5px_rgba(13,148,136,0.4)] hover:-translate-y-0.5 disabled:opacity-50">
                 {isSavingDB ? <Loader2 className="w-4 h-4 animate-spin"/> : <Save className="w-4 h-4" />} Lưu
@@ -2413,6 +2426,8 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
           })()}
         />
       )}
+
+      <HuongDanSoanBaiModal isOpen={moHuongDan} onClose={() => setMoHuongDan(false)} />
     </div>
   );
 }

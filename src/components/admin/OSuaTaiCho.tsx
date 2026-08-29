@@ -6,6 +6,9 @@ import remarkMath from "remark-math";
 import remarkGfm from "remark-gfm";
 import remarkBreaks from "remark-breaks";
 import rehypeKatex from "rehype-katex";
+// Giao diện học sinh dùng rehypeRaw; thiếu nó ở đây thì thẻ HTML gõ tay hiện ra
+// THÀNH CHỮ trong ô xem trước - xem trước một đằng, học sinh thấy một nẻo.
+import rehypeRaw from "rehype-raw";
 import { Pencil } from "lucide-react";
 import RichTextarea from "@/components/admin/RichTextarea";
 import { appMarkdownComponents, preprocessMarkdown, chuyenDiaChiAnh } from "@/components/CustomMarkdownComponents";
@@ -123,7 +126,7 @@ export default function OSuaTaiCho({
           <ReactMarkdown
             components={appMarkdownComponents}
             remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}
-            rehypePlugins={[rehypeKatex]}
+            rehypePlugins={[rehypeKatex, rehypeRaw]}
             urlTransform={chuyenDiaChiAnh}
           >
             {preprocessMarkdown(String(value))}
