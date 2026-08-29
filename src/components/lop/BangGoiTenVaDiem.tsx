@@ -3,10 +3,12 @@
 import React from "react";
 import confetti from "canvas-confetti";
 import { X, Loader2, RefreshCw, Volume2, UserX, Plus, Minus, Dices, AlertTriangle } from "lucide-react";
+/* Việc của thầy cô phải đi qua máy chủ: bảng enrollments có RLS chặn, trình duyệt đọc
+   thẳng ra 0 dòng dù lớp có 16 em. Trang lớp học cũng đi đường này. */
 import {
-  docTrangThaiQuay, ghiDaGoi, congDiem, dsLop, timLopTheoBai, daChotThang,
-  LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay,
-} from "@/utils/goiTenVaDiem";
+  layTrangThaiQuay, ghiDaGoi, congDiem, layDsLop, layLopTheoBai, daChotThang,
+} from "@/app/actions/goiTenVaDiem";
+import { LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from "@/utils/goiTenVaDiem";
 import { doiTen, type CachDoc } from "@/utils/giongDocAI";
 
 /**
@@ -54,12 +56,12 @@ export default function BangGoiTenVaDiem({
   React.useEffect(() => {
     if (!isOpen) return;
     (async () => {
-      const tatCa = await dsLop();
+      const tatCa = await layDsLop();
       setDsCacLop(tatCa);
 
       let chon = lopGoiY || '';
       if (!chon && lessonId) {
-        const theoBai = await timLopTheoBai(lessonId);
+        const theoBai = await layLopTheoBai(lessonId);
         if (theoBai.length > 0) chon = theoBai[0].id;
       }
       if (!chon) chon = localStorage.getItem(NHO_LOP) || '';
@@ -73,7 +75,7 @@ export default function BangGoiTenVaDiem({
     if (!lopId) return;
     setDangTai(true); setLoi(''); setChuaTaoBang(false);
     try {
-      setTrangThai(await docTrangThaiQuay(lopId));
+      setTrangThai(await layTrangThaiQuay(lopId));
       setDaChot(await daChotThang(lopId));
     } catch (e: any) {
       if (e?.message === LOI_CHUA_TAO_BANG) setChuaTaoBang(true);
