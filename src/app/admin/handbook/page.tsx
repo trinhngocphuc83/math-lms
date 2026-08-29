@@ -2,6 +2,8 @@
 
 import { useState, useEffect, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
+import { doTrung, gomNhomTrung, locLoMoi, type CongThucGon } from "@/utils/trungCongThuc";
+import DonTrungCongThucModal from "@/components/admin/DonTrungCongThucModal";
 import { BookOpen, Sparkles, UploadCloud, Plus, Edit2, Trash2, Library, ChevronRight, X, Save, Loader2 } from "lucide-react";
 import 'katex/dist/katex.min.css';
 import { BlockMath } from 'react-katex';
@@ -54,6 +56,16 @@ function KhungCongThucVuaKhung({ latex }: { latex: string }) {
 export default function AdminHandbook() {
   const [categories, setCategories] = useState<any[]>([]);
   const [formulas, setFormulas] = useState<any[]>([]);
+  /*
+   * TOÀN KHO công thức, không riêng chương đang mở.
+   *
+   * Bộ lọc trùng cũ chỉ so trong chương đang chọn, mà đo trên kho thật thì 3/4 nhóm trùng
+   * lại nằm KHÁC chương (VD "Tọa độ trọng tâm tứ diện" có ở cả "Vectơ..." lẫn "Toán 12") -
+   * nên nó không thể bắt được. Phải giữ cả kho mới dò đủ.
+   */
+  const [toanKho, setToanKho] = useState<CongThucGon[]>([]);
+  const [nhomTrung, setNhomTrung] = useState<any[]>([]);
+  const [moDonTrung, setMoDonTrung] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   
@@ -140,6 +152,21 @@ export default function AdminHandbook() {
     setIsLoading(false);
   };
 
+  /**
+   * Nạp TOÀN KHO công thức để dò trùng, và gom sẵn các nhóm đang trùng.
+   *
+   * Phải là toàn kho chứ không riêng chương đang mở: đo trên kho thật thì 3/4 nhóm trùng
+   * nằm khác chương, bộ lọc cũ (chỉ so trong chương) không thể bắt được.
+   */
+  const napToanKho = async () => {
+    const { data } = await supabase.from('formulas').select('id, title, latex_content, category_id');
+    setToanKho(data || []);
+    setNhomTrung(gomNhomTrung(data || []));
+    return data || [];
+  };
+
+  useEffect(() => { napToanKho(); }, []);
+
   const handleAIGenerate = async () => {
     if (!selectedCategory) return;
     setIsGenerating(true);
@@ -164,20 +191,24 @@ export default function AdminHandbook() {
 
       // Nhận được mảng công thức JSON, insert vào supabase
       if (Array.isArray(data) && data.length > 0) {
-        // Lọc trùng lặp bằng cách so sánh title hoặc latex_content với các công thức hiện tại
-        const existingTitles = formulas.map(f => f.title.toLowerCase());
-        const existingLatex = formulas.map(f => f.latex_content.replace(/\\s/g, ''));
-        
-        const formulasToInsert = data.filter((item: any) => {
-          const isTitleDup = existingTitles.includes(item.title.toLowerCase());
-          const isLatexDup = existingLatex.includes(item.latex_content.replace(/\\s/g, ''));
-          return !isTitleDup && !isLatexDup;
-        }).map((item: any) => ({
-          category_id: selectedCategory.id,
-          title: item.title,
-          latex_content: item.latex_content,
-          description: item.description
-        }));
+        /*
+         * Dò trùng trên TOÀN KHO bằng hàm dùng chung.
+         *
+         * Bản cũ so bằng `latex_content.replace(/\\s/g, '')` - biểu thức đó cắt đúng hai
+         * ký tự `\s`, tức biến `\sin x` thành `in x`, nên vừa bỏ lọt vừa gộp nhầm. Nó lại
+         * chỉ so trong chương đang mở, mà 3/4 nhóm trùng thật lại nằm khác chương.
+         */
+        const kho = await napToanKho();
+        const { giuLai, boQua } = locLoMoi(
+          data.map((item: any) => ({
+            category_id: selectedCategory.id,
+            title: item.title,
+            latex_content: item.latex_content,
+            description: item.description,
+          })),
+          kho,
+        );
+        const formulasToInsert = giuLai;
 
         if (formulasToInsert.length === 0) {
           alert('Tất cả công thức do AI sinh ra đều đã tồn tại trong danh mục này (Chống trùng lặp).');
@@ -189,7 +220,13 @@ export default function AdminHandbook() {
         if (error) throw error;
         
         await fetchFormulas(selectedCategory.id);
-        alert(`Đã tạo thành công ${formulasToInsert.length} công thức mới! (Đã bỏ qua ${data.length - formulasToInsert.length} công thức trùng)`);
+        alert(
+          `Đã thêm ${formulasToInsert.length} công thức mới.` +
+          (boQua.length
+            ? `\n\nBỏ qua ${boQua.length} công thức đã có trong kho:\n` +
+              boQua.slice(0, 8).map((b: any) => `• ${b.cauMoi.title} (${b.lyDo} với "${b.trungVoi.title}")`).join('\n')
+            : '')
+        );
       } else {
         alert('AI không trả về công thức nào hợp lệ.');
       }
@@ -280,12 +317,29 @@ export default function AdminHandbook() {
         fetchFormulas(selectedCategory.id);
       }
     } else {
-      // Insert
+      /*
+       * Thêm tay TRƯỚC GIỜ KHÔNG KIỂM GÌ CẢ - gõ lại một công thức đã có là kho lập tức
+       * mọc thêm bản trùng. Nay có cảnh báo, và chỉ rõ bản đã có nằm ở chương nào.
+       * Vẫn cho lưu nếu Thầy cô cố ý (hai chương thật sự cần nhắc lại cùng công thức).
+       */
+      const kho = await napToanKho();
+      const kq = doTrung(formulaData, kho);
+      if (kq.trungVoi) {
+        const tenChuong = categories.find((c: any) => c.id === kq.trungVoi!.category_id)?.name || 'chương khác';
+        const dongY = confirm(
+          `Công thức này đã có trong Sổ tay rồi:\n\n` +
+          `   "${kq.trungVoi.title}"  —  ở chương: ${tenChuong}\n` +
+          `   (${kq.lyDo === 'latex' ? 'trùng công thức' : 'trùng tên'})\n\n` +
+          `Vẫn muốn thêm một bản nữa?`
+        );
+        if (!dongY) { setIsSavingFormula(false); return; }
+      }
       const { error } = await supabase.from('formulas').insert([formulaData]);
       if (error) alert("Lỗi: " + error.message);
       else {
         setIsFormulaModalOpen(false);
         fetchFormulas(selectedCategory.id);
+        napToanKho();
       }
     }
     setIsSavingFormula(false);
@@ -308,18 +362,17 @@ export default function AdminHandbook() {
       return;
     }
 
-    const { data: allFormulas } = await supabase.from('formulas').select('title, latex_content');
-    const existingTitles = (allFormulas || []).map(f => f.title.toLowerCase());
-    const existingLatex = (allFormulas || []).map(f => f.latex_content.replace(/\s/g, ''));
-    
+    const kho = await napToanKho();
+
     const formulasToReview = data.map((item: any) => {
-      const isTitleDup = existingTitles.includes(item.title?.toLowerCase());
-      const isLatexDup = existingLatex.includes(item.latex_content?.replace(/\s/g, ''));
+      // Dùng chung MỘT hàm dò trùng với mọi chỗ khác, và dò trên TOÀN kho
+      const kq = doTrung(item, kho);
       return {
         ...item,
+        trungVoi: kq.trungVoi,
         id: `TEMP_${Date.now()}_${Math.random().toString(36).substring(7)}`,
         category_id: item.category_id || selectedCategory?.id,
-        isDuplicate: isTitleDup || isLatexDup,
+        isDuplicate: !!kq.trungVoi,
         image_url: item.image_url || null,
         needs_image: item.needs_image || false
       };
@@ -596,12 +649,24 @@ export default function AdminHandbook() {
                     <UploadCloud className="w-4 h-4" /> 
                     Bóc tách Ảnh/File
                   </button>
-                  <button 
+                  <button
                     onClick={openAddFormulaModal}
                     className="bg-white border border-gray-200 text-gray-700 px-4 py-2 rounded-xl font-semibold hover:bg-gray-50 transition-all flex items-center gap-2"
                   >
                     <Plus className="w-4 h-4" /> Soạn thủ công
                   </button>
+
+                  {/* Chỉ hiện khi kho THẬT SỰ đang có bản trùng - không bày một nút vô việc */}
+                  {nhomTrung.length > 0 && (
+                    <button
+                      onClick={() => setMoDonTrung(true)}
+                      title="Kho đang có công thức bị nhập trùng - xem và dọn"
+                      className="bg-rose-50 border border-rose-300 text-rose-700 px-4 py-2 rounded-xl font-semibold hover:bg-rose-100 transition-all flex items-center gap-2"
+                    >
+                      <Trash2 className="w-4 h-4" /> Dọn trùng
+                      <span className="bg-rose-600 text-white text-[11px] font-black rounded-full px-1.5">{nhomTrung.length}</span>
+                    </button>
+                  )}
                 </div>
               </div>
 
@@ -1192,6 +1257,23 @@ export default function AdminHandbook() {
           </div>
         </div>
       )}
+
+      {/* Dọn các công thức đã lỡ nhập trùng. KHÔNG tự xoá - bày ra cho Thầy cô chọn giữ
+          bản nào, đúng cách đã dùng cho mọi lần dọn dữ liệu trước đây. */}
+      <DonTrungCongThucModal
+        isOpen={moDonTrung}
+        onClose={() => setMoDonTrung(false)}
+        nhomTrung={nhomTrung}
+        tenChuong={(id) => categories.find((c: any) => c.id === id)?.name || 'Chưa xếp chương'}
+        onXoa={async (ids) => {
+          const { data, error } = await supabase.from('formulas').delete().in('id', ids).select('id');
+          if (error) throw error;
+          await napToanKho();
+          if (selectedCategory) fetchFormulas(selectedCategory.id);
+          return (data || []).length;
+        }}
+      />
+
     </div>
   );
 }

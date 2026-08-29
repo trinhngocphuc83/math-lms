@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, ChevronUp, Image as ImageIcon, Loader2, Heading, Sigma, AlertTriangle } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, ChevronUp, Image as ImageIcon, Loader2, Heading, Sigma, AlertTriangle, IndentIncrease, IndentDecrease, List, ListOrdered, Wand2 } from "lucide-react";
+import { donTheThua } from "@/utils/donTheThua";
 import TextareaAutosize from 'react-textarea-autosize';
 import katex from "katex";
 import "katex/dist/katex.min.css";
@@ -237,6 +238,93 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         textareaRef.current.setSelectionRange(start, start + wrappedText.length);
       }
     }, 0);
+  };
+
+  /** Ghi giá trị mới vào ô soạn, dùng chung cho mấy nút mới bên dưới. */
+  const datGiaTri = (giaTri: string, chonTu?: number, chonDen?: number) => {
+    if (onValueChange) onValueChange(giaTri);
+    else resolvedOnChange({ target: { value: giaTri } } as React.ChangeEvent<HTMLTextAreaElement>);
+    setTimeout(() => {
+      const ta = textareaRef.current;
+      if (!ta) return;
+      ta.focus();
+      if (chonTu !== undefined) ta.setSelectionRange(chonTu, chonDen ?? chonTu);
+    }, 0);
+  };
+
+  /** Phạm vi dòng đang được chọn (hoặc dòng đang đặt con trỏ). */
+  const layVungDong = () => {
+    const ta = textareaRef.current!;
+    const val = ta.value;
+    const dauDong = val.lastIndexOf('\n', ta.selectionStart - 1) + 1;
+    let cuoiDong = val.indexOf('\n', ta.selectionEnd);
+    if (cuoiDong === -1) cuoiDong = val.length;
+    return { val, dauDong, cuoiDong };
+  };
+
+  /**
+   * Thụt dòng vào / ra.
+   *
+   * Thụt theo cấp DANH SÁCH THẬT của Markdown (thêm/bớt 2 dấu cách trước dấu gạch đầu
+   * dòng), không đẻ thêm cú pháp riêng - nhờ vậy xuất Word, trình chiếu, giao diện học
+   * sinh đều hiểu. Thanh công cụ trước đây không hề có nút này.
+   */
+  const handleThutDong = (vao: boolean, e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (!textareaRef.current) return;
+    const { val, dauDong, cuoiDong } = layVungDong();
+    const doan = val.slice(dauDong, cuoiDong);
+    const moiDoan = doan.split('\n').map(d => {
+      if (!d.trim()) return d;
+      if (vao) return '  ' + d;
+      return d.replace(/^ {1,2}/, '');
+    }).join('\n');
+    datGiaTri(val.slice(0, dauDong) + moiDoan + val.slice(cuoiDong), dauDong, dauDong + moiDoan.length);
+  };
+
+  /** Biến các dòng đang chọn thành danh sách gạch đầu dòng hoặc đánh số. */
+  const handleDanhSach = (kieu: 'cham' | 'so', e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    if (!textareaRef.current) return;
+    const { val, dauDong, cuoiDong } = layVungDong();
+    const cacDong = val.slice(dauDong, cuoiDong).split('\n');
+    // Đang là danh sách rồi thì bấm lần nữa là bỏ - một nút làm cả hai chiều
+    const dangLa = cacDong.filter(d => d.trim()).every(d => /^\s*(?:[-*]|\d+\.)\s/.test(d));
+    let dem = 0;
+    const moiDoan = cacDong.map(d => {
+      if (!d.trim()) return d;
+      const khongDau = d.replace(/^(\s*)(?:[-*]|\d+\.)\s+/, '$1');
+      if (dangLa) return khongDau;
+      dem++;
+      const le = (khongDau.match(/^\s*/) || [''])[0];
+      return le + (kieu === 'cham' ? '- ' : `${dem}. `) + khongDau.trimStart();
+    }).join('\n');
+    datGiaTri(val.slice(0, dauDong) + moiDoan + val.slice(cuoiDong), dauDong, dauDong + moiDoan.length);
+  };
+
+  /**
+   * Dọn thẻ HTML gõ tay trong cả ô soạn.
+   *
+   * Đo trên 29 bài thật: 63 thẻ gõ tay rải trong 8 bài, và có bài tiêu đề phải bọc ba lớp
+   * span lồng nhau. Có xem trước rồi mới đổi - đây là đụng vào bài giảng đã soạn công phu.
+   */
+  const handleDonThe = (e?: React.MouseEvent) => {
+    if (e) e.preventDefault();
+    const kq = donTheThua(value);
+    if (kq.soTheTruoc === 0) {
+      alert('Nội dung này không có thẻ HTML gõ tay nào - không cần dọn.');
+      return;
+    }
+    if (kq.daLam.length === 0) {
+      alert(`Có ${kq.soTheTruoc} thẻ HTML nhưng đều đang dùng đúng việc (đặt màu/cỡ chữ) - không có gì để dọn.`);
+      return;
+    }
+    const dongY = confirm(
+      `Sẽ dọn ${kq.soTheTruoc - kq.soTheSau} thẻ HTML thừa:\n\n` +
+      kq.daLam.map(v => `   • ${v}`).join('\n') +
+      `\n\nCâu hỏi, công thức và ảnh giữ nguyên. Đồng ý?`
+    );
+    if (dongY) datGiaTri(kq.noiDungMoi);
   };
 
   const handleApplyAlign = (align: 'left' | 'center' | 'right' | 'justify', e?: React.MouseEvent) => {
@@ -673,12 +761,14 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       <div className="flex items-center gap-2 px-2 py-1 bg-slate-50 border-b border-gray-200 sticky top-0 z-40 overflow-x-auto scrollbar-hide whitespace-nowrap text-gray-700 shadow-sm shrink-0">
         
         <select onChange={e => { handleApplyHeading(e.target.value ? parseInt(e.target.value) : ''); e.target.value = ""; }} className="border border-gray-200 rounded bg-white text-[11px] font-semibold py-0.5 px-1 outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer h-6 w-20">
+          {/* Đặt tên theo việc chứ không theo H1..H5: bộ chữ của hệ thống đã tô sẵn màu
+              và khung cho từng cấp, nên chỉ cần chọn ở đây, KHÔNG phải gõ thẻ span. */}
           <option value="">Tiêu đề</option>
-          <option value="1">H1</option>
-          <option value="2">H2</option>
-          <option value="3">H3</option>
-          <option value="4">H4</option>
-          <option value="5">H5</option>
+          <option value="1">Tiêu đề bài</option>
+          <option value="2">Mục lớn</option>
+          <option value="3">Mục nhỏ</option>
+          <option value="4">Ý phụ</option>
+          <option value="5">Ý phụ nhỏ</option>
         </select>
 
         <div className="w-px h-4 bg-gray-300 shrink-0"></div>
@@ -771,6 +861,14 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         </div>
 
         <div className="flex items-center gap-0.5 shrink-0 bg-white border border-gray-200 rounded p-0.5">
+           {/* Thụt dòng và danh sách - thanh công cụ trước đây thiếu hẳn hai nhóm này */}
+           <button type="button" onClick={e => handleDanhSach('cham', e)} title="Danh sách gạch đầu dòng" className="p-1 hover:bg-gray-100 rounded text-gray-600"><List className="w-3 h-3" /></button>
+           <button type="button" onClick={e => handleDanhSach('so', e)} title="Danh sách đánh số" className="p-1 hover:bg-gray-100 rounded text-gray-600"><ListOrdered className="w-3 h-3" /></button>
+           <button type="button" onClick={e => handleThutDong(true, e)} title="Thụt vào (hoặc nhấn Tab)" className="p-1 hover:bg-gray-100 rounded text-gray-600"><IndentIncrease className="w-3 h-3" /></button>
+           <button type="button" onClick={e => handleThutDong(false, e)} title="Thụt ra (hoặc nhấn Shift+Tab)" className="p-1 hover:bg-gray-100 rounded text-gray-600"><IndentDecrease className="w-3 h-3" /></button>
+           <div className="w-px h-4 bg-gray-300 shrink-0"></div>
+           <button type="button" onClick={handleDonThe} title="Dọn thẻ HTML gõ tay, đổi về Markdown chuẩn" className="p-1 hover:bg-amber-100 rounded text-amber-700"><Wand2 className="w-3 h-3" /></button>
+           <div className="w-px h-4 bg-gray-300 shrink-0"></div>
            <button type="button" onClick={e => handleApplyAlign('left', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600"><AlignLeft className="w-3 h-3" /></button>
            <button type="button" onClick={e => handleApplyAlign('center', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600"><AlignCenter className="w-3 h-3" /></button>
            <button type="button" onClick={e => handleApplyAlign('right', e)} className="p-1 hover:bg-gray-100 rounded text-gray-600"><AlignRight className="w-3 h-3" /></button>
