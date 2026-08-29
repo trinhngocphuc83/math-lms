@@ -25,6 +25,26 @@ export interface Block {
   content: any;
 }
 
+/** Liệt kê mọi ảnh Markdown trong một đoạn chữ, theo đúng thứ tự. */
+const dsAnhTrongChu = (chu: string): string[] =>
+  Array.from(String(chu || '').matchAll(/!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g)).map(m => m[1]);
+
+/**
+ * Đọc chú thích `<!--anh {...}-->` mà cỗ máy cắt ảnh ghi kèm mỗi hình.
+ *
+ * Khối lý thuyết lưu xuống CSDL là Markdown thuần, không có chỗ đặt metadata như khối
+ * trắc nghiệm, nên phải nhờ chú thích HTML - nó không hiện ra màn hình.
+ */
+const docGhiChuAnh = (chu: string): Record<number, { veLai?: boolean; moNet?: boolean }> => {
+  const ra: Record<number, { veLai?: boolean; moNet?: boolean }> = {};
+  let i = 0;
+  for (const m of String(chu || '').matchAll(/!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\)\s*(?:<!--anh\s*(\{[^>]*?\})\s*-->)?/g)) {
+    if (m[1]) { try { ra[i] = JSON.parse(m[1]); } catch { /* chú thích hỏng thì bỏ qua */ } }
+    i++;
+  }
+  return ra;
+};
+
 export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, globalSourceImage, globalTriggerBankModal }: { blocks: Block[], onChangeBlocks: (b: Block[]) => void, onTriggerCrop: (meta: any, targetBlockId: string) => void, globalSourceImage?: string, globalTriggerBankModal?: number }) {
 
   const [previewBlocks, setPreviewBlocks] = React.useState<Set<string>>(new Set());
@@ -668,10 +688,19 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                   onClick={() => handleFixLatex(idx)} />
                          <MucMenu nhan="Chèn thêm ảnh" icon={<CropIcon className="w-4 h-4"/>}
                                   onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} />
-                         <NganMenu />
-                         <MucMenu nhan="Xoá khối này" icon={<Trash2 className="w-4 h-4"/>} nguyHiem
-                                  onClick={() => removeBlock(idx)} />
                       </MenuGon>
+
+                      {/* Xoá để NGOÀI, không giấu trong menu ba chấm: nằm trong đó thì tìm
+                          không ra. Vẫn hỏi lại trước khi xoá như cũ. */}
+                      <button
+                         onClick={() => removeBlock(idx)}
+                         title="Xoá khối này"
+                         className="flex items-center gap-1 px-2 py-1 bg-white hover:bg-rose-50
+                                    border border-gray-200 hover:border-rose-300 text-gray-400
+                                    hover:text-rose-600 rounded-md transition-colors"
+                      >
+                         <Trash2 className="w-3.5 h-3.5"/>
+                      </button>
                   </div>
               </div>
 
@@ -760,6 +789,30 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                      {ngang ? '⇄ Xếp ngang' : '⇅ Xếp dọc'}
                                   </button>
                                )}
+                               {/* Vẽ lại bằng nét vector - đúng cỗ máy khối trắc nghiệm dùng.
+                                   Ảnh nào máy chấm là mờ thì tô vàng để nhắc. */}
+                               {(() => {
+                                  const ds = dsAnhTrongChu(chu);
+                                  const ghi = docGhiChuAnh(chu);
+                                  return ds.map((u, i) => {
+                                     const g = ghi[i] || {};
+                                     if (g.veLai) return null;
+                                     return (
+                                       <button key={u + i}
+                                          onClick={() => setOVeLai({ idx, urlCu: u })}
+                                          title={g.moNet
+                                             ? 'Máy chấm ảnh này hơi mờ - nên nhờ AI vẽ lại bằng nét vector'
+                                             : 'Nhờ AI vẽ lại hình này bằng nét vector, in cỡ nào cũng sắc'}
+                                          className={`px-2 py-1 rounded-md text-[11px] font-bold border transition-colors flex items-center gap-1 ${
+                                             g.moNet
+                                                ? 'bg-amber-50 border-amber-300 text-amber-700 hover:bg-amber-100'
+                                                : 'bg-white border-sky-200 text-sky-700 hover:bg-sky-100'
+                                          }`}>
+                                          ✨ Vẽ lại{ds.length > 1 ? ` ${i + 1}` : ''}
+                                       </button>
+                                     );
+                                  });
+                               })()}
                                <button
                                   onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)}
                                   title="Cắt và chèn thêm một ảnh nữa vào khối này"
@@ -1108,7 +1161,30 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
            onNhan={(urlMoi) => {
               if (!oVeLai) return;
               const b = blocks[oVeLai.idx];
-              if (!b || b.type !== 'quiz') return;
+              if (!b) return;
+
+              /* Khối lý thuyết là chuỗi Markdown: thay đúng địa chỉ ảnh cũ, và đánh dấu
+                 vào chú thích để lần sau không mời vẽ lại nữa. */
+              if (b.type === 'md') {
+                 const cu = String(b.content || '');
+                 let moi = cu.split(oVeLai.urlCu).join(urlMoi);
+                 const chuThich = `<!--anh {"veLai":true}-->`;
+                 const daCo = new RegExp(
+                    '!\\[[^\\]]*\\]\\(' + urlMoi.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+                    + '(?:\\s+"[^"]*")?\\)\\s*<!--anh',
+                 ).test(moi);
+                 if (!daCo) {
+                    moi = moi.replace(
+                       new RegExp('(!\\[[^\\]]*\\]\\(' + urlMoi.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '(?:\\s+"[^"]*")?\\))'),
+                       `$1\n${chuThich}`,
+                    );
+                 }
+                 updateBlockContent(oVeLai.idx, moi);
+                 setOVeLai(null);
+                 return;
+              }
+
+              if (b.type !== 'quiz') return;
               // Thay đúng địa chỉ ảnh cũ trong nội dung câu, giữ nguyên mọi thứ khác
               const moi = String(b.content.question || '').split(oVeLai.urlCu).join(urlMoi);
               updateBlockContent(oVeLai.idx, {

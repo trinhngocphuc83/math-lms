@@ -737,8 +737,50 @@ const autoCropBlocksImages = async (
                     const file = sourceFiles[box.fileIndex];
                     if (!file) continue;
 
-                    const url = await autoCropImage(supabase, file, box);
-                    b.content = b.content.replace(m[0], `\n\n![Hình minh họa](${url})\n\n`);
+                    /*
+                     * DUNG CHUNG CO MAY VOI KHOI TRAC NGHIEM.
+                     *
+                     * Truoc gio nhanh nay chi goi autoCropImage - cat tron, khong nho ve
+                     * lai, khong cham do net. Hinh trong bai giang vi the van la anh chup
+                     * cat ra, in len A4 la ro; trong khi cung mot trang tai lieu thi hinh
+                     * cua cau trac nghiem lai duoc ve lai bang net vector.
+                     */
+                    const anhCat = await cropImageFromBoundingBox(file, box);
+
+                    let url = '';
+                    let daVeLai = false;
+                    let doNet: any = null;
+
+                    if (cauHinhAI) {
+                      try {
+                        const td = await thamDinhVaVeLai(cauHinhAI, anhCat);
+                        if (td.veLaiDuoc) {
+                          url = await uploadCroppedImage(supabase, await svgSangPng(td.svg));
+                          daVeLai = true;
+                          redrawnCount++;
+                        }
+                      } catch (e) {
+                        console.warn('Khong ve lai duoc hinh trong bai giang, dung anh cat:', e);
+                      }
+                    }
+
+                    if (!url) {
+                      url = await uploadCroppedImage(supabase, anhCat);
+                      try { doNet = await chamDoNetTuBlob(anhCat); } catch { /* cham hong thi thoi */ }
+                    }
+
+                    /*
+                     * Ghi kem mot chu thich HTML de con VE LAI hoac CAT LAI ve sau.
+                     *
+                     * Khoi ly thuyet luu xuong CSDL duoi dang Markdown thuan, khong co cho
+                     * dat doi tuong metadata nhu khoi trac nghiem. Chu thich HTML thi nam
+                     * ngay canh anh, song sot qua moi lan luu, va khong hien ra man hinh.
+                     */
+                    const ghiChu = JSON.stringify({ veLai: daVeLai, moNet: !!doNet?.nenVeLai });
+                    b.content = b.content.replace(
+                      m[0],
+                      `\n\n![Hình minh họa](${url})\n<!--anh ${ghiChu}-->\n\n`,
+                    );
                     croppedCount++;
                 }
                 // Khung nào cắt không nổi thì bỏ phần JSON đi, chỉ để lại marker cho cắt tay
