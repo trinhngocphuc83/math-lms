@@ -76,6 +76,14 @@ export default function DayCongThucVaoSoTayModal({
     })();
   }, [isOpen, noiDungBai]);
 
+  /* Mọi hộp khác trong app đều đóng được bằng Esc - hộp này thiếu, thêm cho đồng bộ. */
+  React.useEffect(() => {
+    if (!isOpen) return;
+    const phim = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+    document.addEventListener('keydown', phim);
+    return () => document.removeEventListener('keydown', phim);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   /** Bài chưa có mục cuối bài thì nhờ AI rút ra, vẫn theo đúng khuôn dòng đó. */
