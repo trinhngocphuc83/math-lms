@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
-import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight } from "lucide-react";
+import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -590,6 +590,8 @@ export default function StudentLessonPage() {
      thanh cố định cũ chiếm tới ~43% màn hình, gần như không còn chỗ đọc. */
   const scrollRef = useRef<HTMLDivElement>(null);
   const [chromeHidden, setChromeHidden] = useState(false);
+  const [moChonDe, setMoChonDe] = useState(false);
+  const hopChonDe = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -608,6 +610,16 @@ export default function StudentLessonPage() {
     return () => el.removeEventListener('scroll', onScroll);
   }, [loading]);
 
+  // Đóng menu chọn đề khi bấm ra ngoài - menu đè lên đề bài thì học sinh không đọc được
+  useEffect(() => {
+    if (!moChonDe) return;
+    const bamNgoai = (e: MouseEvent) => {
+      if (hopChonDe.current && !hopChonDe.current.contains(e.target as Node)) setMoChonDe(false);
+    };
+    document.addEventListener('mousedown', bamNgoai);
+    return () => document.removeEventListener('mousedown', bamNgoai);
+  }, [moChonDe]);
+
   if (loading) return <div className="flex justify-center items-center h-screen bg-gray-50"><Loader2 className="w-10 h-10 animate-spin text-indigo-600" /></div>;
   if (!lesson) return <div className="p-8 text-center text-red-500 bg-gray-50 h-screen">Không tìm thấy bài giảng.</div>;
 
@@ -623,64 +635,81 @@ export default function StudentLessonPage() {
   const containerClass = isPracticeModule ? "max-w-7xl" : "max-w-4xl";
 
   return (
-    <div ref={scrollRef} className="w-full flex-1 h-screen overflow-y-auto bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] bg-slate-50 pb-20">
-      {/* KHUNG ĐIỀU HƯỚNG - gộp tiêu đề + tabs + tab con vào MỘT khối sticky duy nhất
-          để tự trượt lên đồng bộ khi cuộn xuống. Trước đây ba thanh sticky xếp chồng
-          bằng toạ độ cứng (top-0 / top-69 / top-125) nên vừa dễ lệch vừa ăn hết chỗ. */}
+    <div ref={scrollRef} className="w-full flex-1 h-[100dvh] overflow-y-auto bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] bg-slate-50 pb-20">
+      {/*
+        * KHUNG ĐIỀU HƯỚNG - MỘT hàng duy nhất.
+        *
+        * Đo trên máy học sinh thật (375x812): ba tầng cũ (tên bài / tabs / hàng chọn đề)
+        * chiếm 148px, cộng khối tiêu đề module lặp lại 123px và bảng tiến độ 237px là 508px
+        * - 63% màn hình đầu tiên, chưa đọc được câu nào. Khổ ngang còn tệ hơn: 292px trên
+        * 375px, tức 78%.
+        *
+        * Nay tên bài, tabs và nút chọn đề nằm CHUNG một hàng cao 52px. Hàng chọn đề vốn chỉ
+        * có vài lựa chọn, không đáng chiếm trọn một tầng - gói vào một nút xổ xuống.
+        */}
       <div className={`sticky top-0 z-50 transition-transform duration-300 ease-out will-change-transform ${chromeHidden ? '-translate-y-full' : 'translate-y-0'}`}>
-         <div className="bg-white/90 backdrop-blur-md border-b border-gray-200">
-            {/* Màn thấp (điện thoại xoay ngang) thì nén thanh lại để còn chỗ đọc */}
-            <div className={`${containerClass} mx-auto px-3 sm:px-4 py-2.5 sm:py-4 [@media(max-height:500px)]:py-1.5 flex items-center gap-2 sm:gap-4`}>
-               <Link href="/student/dashboard" className="p-2 hover:bg-gray-100 rounded-full transition-colors text-gray-500 shrink-0"><ArrowLeft className="w-5 h-5"/></Link>
-               <h1 className="font-extrabold text-base sm:text-xl text-gray-800 line-clamp-1">{lesson.title}</h1>
+         <div className="bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm">
+            <div className={`${containerClass} mx-auto px-2 sm:px-4 h-[52px] sm:h-16 [@media(max-height:500px)]:h-11 flex items-center gap-1.5 sm:gap-3`}>
+               <Link href="/student/dashboard" className="p-1.5 hover:bg-gray-100 rounded-full transition-colors text-gray-500 shrink-0"><ArrowLeft className="w-5 h-5"/></Link>
+
+               {/* Tên bài nhường chỗ cho tabs khi màn hẹp, nhưng không biến mất hẳn */}
+               <h1 className="font-extrabold text-sm sm:text-lg text-gray-800 truncate shrink min-w-0 max-w-[32%] sm:max-w-none">{lesson.title}</h1>
+
+               {lesson.modules && lesson.modules.length > 0 && (
+                 <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar ml-auto">
+                    {otherModules.map((mod: any) => (
+                      <button
+                        key={mod.id}
+                        onClick={() => setActiveModuleId(mod.id)}
+                        title={mod.title}
+                        className={`shrink-0 px-2.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold transition-all max-w-[110px] sm:max-w-[220px] truncate ${activeModuleId === mod.id ? 'bg-indigo-600 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                      >
+                        {mod.title}
+                      </button>
+                    ))}
+                    {practices.length > 0 && (
+                      <button
+                        onClick={() => setActiveModuleId(practices[0].id)}
+                        className={`shrink-0 px-2.5 sm:px-4 py-1.5 rounded-full text-xs sm:text-sm font-bold transition-all ${isPracticeTabActive ? 'bg-orange-500 text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
+                      >
+                        🎯 Luyện tập
+                      </button>
+                    )}
+
+                    {/* Chọn đề: nút xổ xuống, chỉ hiện khi đang ở Luyện tập và có nhiều đề */}
+                    {isPracticeTabActive && practices.length > 1 && (
+                       <div className="relative shrink-0" ref={hopChonDe}>
+                          <button
+                             onClick={() => setMoChonDe(v => !v)}
+                             title={activeModule?.title}
+                             className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-orange-50 border border-orange-200 text-orange-700 hover:bg-orange-100 transition-all max-w-[110px] sm:max-w-[260px]"
+                          >
+                             <span className="truncate">{activeModule?.title || 'Chọn đề'}</span>
+                             <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform ${moChonDe ? 'rotate-180' : ''}`} />
+                          </button>
+                          {moChonDe && (
+                             <div className="absolute right-0 top-full mt-1.5 w-64 max-h-[60vh] overflow-y-auto bg-white rounded-xl shadow-xl border border-gray-200 py-1 z-50">
+                                {practices.map((pr: any) => (
+                                   <button
+                                      key={pr.id}
+                                      onClick={() => { setActiveModuleId(pr.id); setMoChonDe(false); }}
+                                      className={`w-full text-left px-3 py-2 text-[13px] font-bold transition-colors ${activeModuleId === pr.id ? 'bg-orange-50 text-orange-700' : 'text-gray-600 hover:bg-gray-50'}`}
+                                   >
+                                      {pr.title}
+                                   </button>
+                                ))}
+                             </div>
+                          )}
+                       </div>
+                    )}
+                 </div>
+               )}
             </div>
          </div>
-
-         {/* TABS */}
-         {lesson.modules && lesson.modules.length > 0 && (
-           <div className="bg-white border-b border-gray-200 overflow-x-auto no-scrollbar shadow-sm">
-             <div className={`${containerClass} mx-auto px-3 sm:px-4 flex items-center gap-2 py-2 sm:py-3 [@media(max-height:500px)]:py-1.5`}>
-                {otherModules.map((mod: any) => (
-                  <button
-                    key={mod.id}
-                    onClick={() => setActiveModuleId(mod.id)}
-                    className={`shrink-0 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[13px] sm:text-sm font-bold transition-all ${activeModuleId === mod.id ? 'bg-indigo-600 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-                  >
-                    {mod.title}
-                  </button>
-                ))}
-                {practices.length > 0 && (
-                  <button
-                    onClick={() => setActiveModuleId(practices[0].id)}
-                    className={`shrink-0 px-3.5 sm:px-5 py-1.5 sm:py-2 rounded-full text-[13px] sm:text-sm font-bold transition-all ${isPracticeTabActive ? 'bg-orange-500 text-white shadow-md' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}`}
-                  >
-                    🎯 Luyện tập
-                  </button>
-                )}
-             </div>
-           </div>
-         )}
-
-         {/* SUB-TABS CHO LUYỆN TẬP */}
-         {isPracticeTabActive && practices.length > 1 && (
-            <div className="bg-orange-50/50 border-b border-orange-100 overflow-x-auto no-scrollbar">
-               <div className={`${containerClass} mx-auto px-3 sm:px-4 flex items-center gap-2 py-2`}>
-                  {practices.map((p: any) => (
-                     <button
-                        key={p.id}
-                        onClick={() => setActiveModuleId(p.id)}
-                        className={`shrink-0 px-3 sm:px-4 py-1.5 rounded-lg text-[12.5px] sm:text-[13px] font-bold transition-all border ${activeModuleId === p.id ? 'bg-orange-100 border-orange-300 text-orange-700 shadow-sm' : 'bg-white border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-200'}`}
-                     >
-                        {p.title}
-                     </button>
-                  ))}
-               </div>
-            </div>
-         )}
       </div>
 
       {/* NỘI DUNG CHÍNH */}
-      <div className={`${containerClass} mx-auto px-2.5 sm:px-4 py-5 sm:py-10`}>
+      <div className={`${containerClass} mx-auto px-2.5 sm:px-4 py-3 sm:py-8 [@media(max-height:500px)]:py-2`}>
          {/* Chỉ render content_markdown của lesson nếu KHÔNG có module nào (để hỗ trợ bài giảng cũ) */}
          {(!lesson.modules || lesson.modules.length === 0) && lesson.content_markdown && (
            <InteractiveFlipbook content={lesson.content_markdown} />
@@ -689,9 +718,11 @@ export default function StudentLessonPage() {
          {/* Render Active Module */}
          {activeModule && (
             <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-               <div className="flex items-center gap-2 mb-8">
-                 <span className={`w-2 h-8 rounded-full ${isPracticeModule ? 'bg-orange-500' : 'bg-indigo-600'}`}></span>
-                 <h2 className="text-2xl font-bold text-gray-800">{activeModule.title}</h2>
+               {/* Ẩn trên điện thoại: đúng tên này đã sáng ở tab ngay phía trên, lặp lại
+                   mà tốn 123px đo được. Máy tính giữ nhưng hạ cỡ chữ. */}
+               <div className="hidden md:flex [@media(max-height:500px)]:!hidden items-center gap-2 mb-4">
+                 <span className={`w-2 h-7 rounded-full ${isPracticeModule ? 'bg-orange-500' : 'bg-indigo-600'}`}></span>
+                 <h2 className="text-lg font-bold text-gray-800">{activeModule.title}</h2>
                </div>
                {(isVideoModule || isDocumentModule) ? (
                   <DocAndVideoUI content={activeModule.content_markdown || ""} />

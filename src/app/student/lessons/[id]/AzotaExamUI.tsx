@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import { CheckCircle2, AlertCircle, Send, ListTodo, UploadCloud, X, Lightbulb, ListOrdered, Pin, Bot, Loader2, Image as ImageIcon } from "lucide-react";
+import { CheckCircle2, AlertCircle, Send, ListTodo, UploadCloud, X, Lightbulb, ListOrdered, Pin, Bot, Loader2, Image as ImageIcon, LayoutGrid } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -215,7 +215,8 @@ export default function AzotaExamUI({
   const [isGradingAll, setIsGradingAll] = useState(false);
   const [isSavingDraft, setIsSavingDraft] = useState(false);
   /** Thu gọn thanh tiến độ để nhường chỗ cho đề và hình. */
-  const [gonTienDo, setGonTienDo] = useState(false);
+  // Mặc định ĐÓNG: bảng câu hỏi là thứ tra lúc cần, không phải thứ nhìn liên tục.
+  const [gonTienDo, setGonTienDo] = useState(true);
   // Điểm của lần nộp trước ở đúng đề này (null nghĩa là chưa nộp lần nào)
   const [diemDaNop, setDiemDaNop] = useState<number | null>(null);
   // Lưu điểm từng câu sau khi chấm
@@ -359,6 +360,22 @@ export default function AzotaExamUI({
     }
     return false;
   };
+
+  /**
+   * Đếm số câu đã làm - để thanh tiến độ mỏng nói được "3/22" mà không cần xổ cả lưới số
+   * câu ra. Lưới đó đo được 237px trên màn 375x812, tức 29% màn hình, chỉ để hiện một
+   * thông tin mà một dòng chữ là đủ.
+   *
+   * Phải đặt SAU isQuestionAnswered: hàm đó khai bằng const nên gọi trước là vỡ trang
+   * ("Cannot access before initialization") - đã dính đúng lỗi này lúc chạy thử.
+   */
+  const demDaLam = useMemo(() => {
+    let n = 0;
+    for (const pt of parts) {
+      if (pt && pt.type === 'quiz' && isQuestionAnswered(pt.qIndex, pt.content.type || 'multiple_choice', pt.content)) n++;
+    }
+    return n;
+  }, [parts, answers, gradingStatus]);
 
   const handleAnswerChange = (qIndex: number, type: string, value: any) => {
     if (isSubmitted) return;
@@ -678,7 +695,8 @@ export default function AzotaExamUI({
   return (
     <div className="flex flex-col gap-4 relative">
       {/* Quên công thức thì tra ngay tại chỗ, khỏi mở tab khác rồi mất bài đang làm */}
-      <TraCuuCongThuc />
+      {/* Nút Sổ tay đã dời vào thanh tiến độ mỏng - viên thuốc nổi 198x48 ở góc trái dưới
+          che mất nửa trái của phương án nằm cuối màn, thấy rõ trên máy thật. */}
       {/* Loading overlay khi đang chấm toàn bài */}
       {isGradingAll && (
         <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center backdrop-blur-sm">
@@ -742,14 +760,17 @@ export default function AzotaExamUI({
            </div>
         )}
 
-        {/* HEADER TABS */}
+        {/* HEADER TABS - một hàng trượt ngang, KHÔNG xuống dòng.
+            Nhãn dài ("Phần III. Trả lời ngắn") gặp flex-wrap thì tự bẻ thành hai hàng,
+            đo được 104px trên màn 375px - tốn bằng hai phương án. Cho trượt ngang thì
+            luôn gọn trong một hàng 44px, thừa thì học sinh vuốt. */}
         {availableTabs.length > 0 && (
-           <div className="flex flex-wrap gap-2 mb-6">
+           <div className="flex gap-2 mb-3 sm:mb-5 overflow-x-auto no-scrollbar -mx-0.5 px-0.5">
               {availableTabs.map(tab => (
-                 <button 
+                 <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-5 py-3 rounded-xl font-bold text-sm transition-all border-b-4 ${activeTab === tab.id ? 'bg-indigo-600 text-white border-indigo-800 shadow-md transform -translate-y-0.5' : 'bg-white text-slate-500 border-slate-200 hover:bg-indigo-50 hover:border-indigo-200'}`}
+                    className={`shrink-0 px-3 sm:px-5 py-2 sm:py-2.5 rounded-xl font-bold text-[12.5px] sm:text-sm transition-all border-b-4 ${activeTab === tab.id ? 'bg-indigo-600 text-white border-indigo-800 shadow-md' : 'bg-white text-slate-500 border-slate-200 hover:bg-indigo-50 hover:border-indigo-200'}`}
                  >
                     {tab.title}
                  </button>
@@ -809,7 +830,7 @@ export default function AzotaExamUI({
               : cleanQuestion;
 
             return (
-              <div key={p.id} id={`question-${qIndex}`} className={`bg-white rounded-2xl p-6 shadow-sm border-2 transition-all ${isSubmitted ? 'border-gray-200' : 'border-slate-200 hover:border-indigo-300'}`}>
+              <div key={p.id} id={`question-${qIndex}`} className={`bg-white rounded-2xl p-4 sm:p-6 shadow-sm border-2 transition-all ${isSubmitted ? 'border-gray-200' : 'border-slate-200 hover:border-indigo-300'}`}>
                {/*
                  * Ảnh sang một bên thì CẢ đề lẫn phương án cùng dồn sang bên kia.
                  *
@@ -822,7 +843,7 @@ export default function AzotaExamUI({
                   ? `flex flex-col gap-5 md:flex-row md:items-start ${viTriAnh === 'trai' ? 'md:flex-row-reverse' : ''}`
                   : ''}>
                 <div className="flex-1 min-w-0">
-                 <div className="flex items-start gap-3 mb-6">
+                 <div className="flex items-start gap-3 mb-4">
                     <div className="flex flex-col items-center shrink-0">
                        <span className="bg-indigo-600 text-white font-bold px-3 py-1 rounded-lg text-sm mb-1 shadow-sm">Câu {localIndex}</span>
                        {isSubmitted && qScore && (
@@ -861,7 +882,7 @@ export default function AzotaExamUI({
 
                  {/* === TRẮC NGHIỆM === */}
                  {realType === 'multiple_choice' && (
-                   <div className="flex flex-col gap-3 ml-0 md:ml-12">
+                   <div className="flex flex-col gap-2 ml-0 md:ml-12">
                      {(data.options || []).map((opt: string, optIdx: number) => {
                         const isSelected = userAns === optIdx;
                         let btnClass = "border-slate-200 hover:border-slate-400 bg-white hover:bg-slate-50";
@@ -891,12 +912,12 @@ export default function AzotaExamUI({
                              key={optIdx}
                              disabled={isSubmitted}
                              onClick={() => handleAnswerChange(qIndex, type, optIdx)}
-                             className={`text-left p-4 rounded-xl border-2 transition-all flex items-start gap-3 ${btnClass}`}
+                             className={`text-left px-3.5 py-2.5 rounded-xl border-2 transition-all flex items-center gap-3 min-h-[44px] ${btnClass}`}
                           >
-                             <div className={`w-7 h-7 shrink-0 rounded-full border-2 flex items-center justify-center font-bold text-sm transition-colors ${circleClass}`}>
+                             <div className={`w-6 h-6 shrink-0 rounded-full border-2 flex items-center justify-center font-bold text-xs transition-colors ${circleClass}`}>
                                 {['A','B','C','D'][optIdx]}
                              </div>
-                             <div className="flex-1 min-w-0 overflow-x-auto prose prose-sm max-w-none text-slate-700 prose-p:my-0">
+                             <div className="flex-1 min-w-0 overflow-x-auto prose prose-sm max-w-none text-slate-700 [&_p]:!my-0 [&_li]:!mb-1">
                                 <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{opt?.replace(/^(\s*-?\d+)\.(\s+|$)/, '$1\\.$2')}</ReactMarkdown>
                              </div>
                           </button>
@@ -907,7 +928,7 @@ export default function AzotaExamUI({
 
                  {/* === ĐÚNG/SAI === */}
                  {type === 'true_false_cluster' && (
-                    <div className="flex flex-col gap-4 ml-0 md:ml-12">
+                    <div className="flex flex-col gap-2 ml-0 md:ml-12">
                        {(data.options || data.statements || []).map((stmt: any, optIdx: number) => {
                           const key = optIdx.toString();
                           const isUserTrue = userAns ? userAns[key] : undefined;
@@ -926,12 +947,12 @@ export default function AzotaExamUI({
                           }
 
                           return (
-                             <div key={optIdx} className={`flex flex-col md:flex-row md:items-center justify-between p-4 rounded-xl border-2 transition-all gap-4 ${wrapperClass}`}>
+                             <div key={optIdx} className={`flex flex-col md:flex-row md:items-center justify-between px-3.5 py-2.5 rounded-xl border-2 transition-all gap-2 md:gap-4 ${wrapperClass}`}>
                                 <div className="flex items-center gap-3">
-                                   <div className="font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
+                                   <div className="font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 w-6 h-6 text-xs rounded-full flex items-center justify-center shrink-0">
                                       {['a','b','c','d'][optIdx] || 'a'}
                                    </div>
-                                   <div className="flex-1 min-w-0 overflow-x-auto prose prose-sm max-w-none text-slate-700 prose-p:my-0">
+                                   <div className="flex-1 min-w-0 overflow-x-auto prose prose-sm max-w-none text-slate-700 [&_p]:!my-0">
                                       <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>
                                          {(stmt.content || stmt.text)?.match(/^Mệnh đề [A-D]$/i) ? `Phát biểu ${['a','b','c','d'][optIdx]}` : (stmt.content || stmt.text)}
                                       </ReactMarkdown>
@@ -942,13 +963,13 @@ export default function AzotaExamUI({
                                       <>
                                          <button
                                             onClick={() => handleAnswerChange(qIndex, type, { [key]: true })}
-                                            className={`px-4 py-2 font-bold rounded-lg text-sm border-2 transition-all ${isUserTrue === true ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-white text-slate-600 border-slate-300 hover:border-indigo-400 hover:bg-indigo-50'}`}
+                                            className={`px-4 py-1.5 font-bold rounded-lg text-sm border-2 transition-all min-h-[36px] ${isUserTrue === true ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-white text-slate-600 border-slate-300 hover:border-indigo-400 hover:bg-indigo-50'}`}
                                          >
                                             ĐÚNG
                                          </button>
                                          <button
                                             onClick={() => handleAnswerChange(qIndex, type, { [key]: false })}
-                                            className={`px-4 py-2 font-bold rounded-lg text-sm border-2 transition-all ${isUserTrue === false ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-white text-slate-600 border-slate-300 hover:border-indigo-400 hover:bg-indigo-50'}`}
+                                            className={`px-4 py-1.5 font-bold rounded-lg text-sm border-2 transition-all min-h-[36px] ${isUserTrue === false ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm' : 'bg-white text-slate-600 border-slate-300 hover:border-indigo-400 hover:bg-indigo-50'}`}
                                          >
                                             SAI
                                          </button>
@@ -1247,39 +1268,83 @@ export default function AzotaExamUI({
 
       </div>
 
-      {/* Thanh tiến độ: nằm ngang, dính trên đầu, gập lại được cho gọn */}
-      <div className="order-first sticky top-0 z-30 -mx-2 px-2 pt-2 pb-1 bg-slate-50/95 backdrop-blur">
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200 px-4 py-2.5">
-           <div className="flex items-center justify-between gap-3 flex-wrap">
+      {/*
+        * THANH TIẾN ĐỘ MỎNG.
+        *
+        * Bản cũ luôn xổ đủ lưới số câu (12 + 4 + 6 ô) nên chiếm 237px đo được trên màn
+        * 375x812 - 29% màn hình, mà thứ học sinh cần thấy liên tục chỉ là "đã làm mấy câu".
+        * Nay thanh chỉ còn một hàng ~44px; lưới số câu là thứ TRA LÚC CẦN nên chuyển thành
+        * tấm trượt bấm mới mở, giống cách các trang thi hiện đại vẫn làm.
+        */}
+      {/* KHÔNG dùng backdrop-blur ở đây: thẻ có backdrop-filter trở thành gốc toạ độ cho
+          mọi con position:fixed, nên tấm trượt bảng câu bám vào thanh này thay vì bám đáy
+          màn hình - thấy rõ khi chạy thử. Nền đục cũng đủ che nội dung trượt bên dưới. */}
+      <div className="order-first sticky top-0 z-30 -mx-2 px-2 pt-1.5 pb-1 bg-slate-50">
+        <div className="bg-white rounded-xl shadow-sm border border-slate-200 px-2.5 sm:px-3 py-1.5 flex items-center gap-2 sm:gap-3">
+           {/* Số câu đã làm + thanh chạy - gọn trong một dòng */}
+           <div className="flex items-center gap-2 min-w-0 flex-1">
+              <span className="font-extrabold text-slate-800 text-[13px] sm:text-sm whitespace-nowrap">
+                 <span className="text-indigo-600">{demDaLam}</span>/{totalQuizzes}
+                 <span className="hidden sm:inline font-bold text-slate-400 text-xs"> câu</span>
+              </span>
+              <div className="h-1.5 flex-1 min-w-[40px] max-w-[180px] bg-slate-100 rounded-full overflow-hidden">
+                 <div
+                    className="h-full bg-indigo-600 rounded-full transition-all duration-300"
+                    style={{ width: `${totalQuizzes ? Math.round(demDaLam / totalQuizzes * 100) : 0}%` }}
+                 />
+              </div>
+           </div>
+
+           <button
+              type="button"
+              onClick={() => setGonTienDo(v => !v)}
+              title="Bảng câu hỏi"
+              className="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12.5px] font-bold text-slate-600 bg-slate-50 border border-slate-200 hover:bg-slate-100 transition-colors"
+           >
+              <LayoutGrid className="w-4 h-4 text-indigo-600" />
+              <span className="hidden sm:inline">Bảng câu</span>
+           </button>
+
+           {/* Sổ tay công thức: nút biểu tượng nằm ĐÂY thay vì viên thuốc nổi đè lên phương án */}
+           <TraCuuCongThuc kieu="nutNho" />
+
+           {!isSubmitted && (
               <button
-                 type="button"
-                 onClick={() => setGonTienDo(v => !v)}
-                 className="font-extrabold text-slate-800 flex items-center gap-2 text-sm hover:text-indigo-700"
-                 title={gonTienDo ? 'Mở bảng tiến độ' : 'Thu gọn bảng tiến độ'}
+                 onClick={handleSubmit}
+                 disabled={isGradingAll}
+                 className="shrink-0 bg-indigo-600 hover:bg-indigo-700 text-white font-black px-3 sm:px-4 py-1.5 rounded-lg text-[12.5px] sm:text-[13px] shadow-sm transition-all flex items-center gap-1.5 disabled:opacity-50"
               >
-                 <ListTodo className="w-4 h-4 text-indigo-600" /> Tiến độ làm bài
-                 <span className="text-[11px] font-bold text-slate-400">{gonTienDo ? '(bấm để mở)' : '(bấm để thu gọn)'}</span>
+                 <Send className="w-4 h-4" /> <span className="hidden [@media(min-width:380px)]:inline">NỘP BÀI</span>
               </button>
-              {!isSubmitted && (
-                 <div className="flex items-center gap-2">
+           )}
+        </div>
+
+        {/* TẤM TRƯỢT BẢNG CÂU HỎI - bấm "Bảng câu" mới mở */}
+        {!gonTienDo && (
+         <>
+          <div className="fixed inset-0 bg-black/30 z-40 sm:hidden" onClick={() => setGonTienDo(true)} />
+          <div className="fixed sm:absolute inset-x-0 bottom-0 sm:inset-x-auto sm:bottom-auto sm:right-2 sm:top-full sm:mt-1.5 sm:w-[420px] z-50 bg-white rounded-t-2xl sm:rounded-xl shadow-2xl border border-slate-200 max-h-[70vh] overflow-y-auto animate-in slide-in-from-bottom-4 sm:slide-in-from-top-2 duration-200">
+           <div className="flex items-center justify-between px-4 py-2.5 border-b border-slate-100 sticky top-0 bg-white">
+              <span className="font-extrabold text-slate-800 text-sm flex items-center gap-2">
+                 <ListTodo className="w-4 h-4 text-indigo-600" /> Bảng câu hỏi
+              </span>
+              <div className="flex items-center gap-2">
+                 {!isSubmitted && (
                     <button
                        onClick={handleSaveDraft}
                        disabled={isSavingDraft || isGradingAll}
-                       className="bg-white border-2 border-indigo-600 text-indigo-700 hover:bg-indigo-50 font-black px-3 py-1.5 rounded-lg text-[13px] shadow-sm transition-all flex items-center gap-1.5 disabled:opacity-50"
+                       className="bg-white border-2 border-indigo-600 text-indigo-700 hover:bg-indigo-50 font-black px-2.5 py-1 rounded-lg text-[12px] transition-all flex items-center gap-1.5 disabled:opacity-50"
                     >
-                       {isSavingDraft ? <Loader2 className="w-4 h-4 animate-spin" /> : <ListTodo className="w-4 h-4" />} LƯU BÀI TẠM
+                       {isSavingDraft ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <ListTodo className="w-3.5 h-3.5" />} LƯU TẠM
                     </button>
-                    <button
-                       onClick={handleSubmit}
-                       disabled={isGradingAll}
-                       className="bg-indigo-600 hover:bg-indigo-700 text-white font-black px-4 py-1.5 rounded-lg text-[13px] shadow-md transition-all flex items-center gap-1.5 disabled:opacity-50"
-                    >
-                       <Send className="w-4 h-4" /> NỘP BÀI
-                    </button>
-                 </div>
-              )}
+                 )}
+                 <button onClick={() => setGonTienDo(true)} className="p-1 rounded-lg hover:bg-slate-100 text-slate-500">
+                    <X className="w-4 h-4" />
+                 </button>
+              </div>
            </div>
-           <div className={`${gonTienDo ? 'hidden' : 'flex'} flex-wrap items-start gap-x-6 gap-y-2 mt-2 pt-2 border-t border-slate-100`}>
+           <div className="px-4 py-3">
+           <div className="flex flex-wrap items-start gap-x-6 gap-y-3">
               {availableTabs.map(tab => {
                  const items = groupedParts[tab.id as keyof typeof groupedParts] || [];
                  if (items.length === 0) return null;
@@ -1335,6 +1400,7 @@ export default function AzotaExamUI({
                                   key={qIndex} 
                                   onClick={() => {
                                      if (activeTab !== tab.id) setActiveTab(tab.id);
+                                     setGonTienDo(true); // đóng tấm trượt để thấy ngay câu vừa chọn
                                      setTimeout(() => {
                                          const el = document.getElementById(`question-${qIndex}`);
                                          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -1363,8 +1429,10 @@ export default function AzotaExamUI({
               </div>
            )}
 
-           {/* Hai nút Lưu tạm / Nộp bài đã dời lên hàng trên của thanh này */}
-        </div>
+           </div>
+          </div>
+         </>
+        )}
       </div>
       
       {cropImageSrc && (

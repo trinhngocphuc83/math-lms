@@ -33,7 +33,7 @@ const boDau = (s: string) =>
     .normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[đĐ]/g, "d")
     .toLowerCase().replace(/\s+/g, " ").trim();
 
-export default function TraCuuCongThuc({ grade }: { grade?: string }) {
+export default function TraCuuCongThuc({ grade, kieu = 'noi' }: { grade?: string; kieu?: 'noi' | 'nutNho' }) {
   const supabase = createClient();
   const [mo, setMo] = React.useState(false);
   const [dangTai, setDangTai] = React.useState(false);
@@ -86,15 +86,33 @@ export default function TraCuuCongThuc({ grade }: { grade?: string }) {
 
   return (
     <>
-      {/* Nút nổi góc dưới bên trái - không đè lên nút Nộp bài ở góc phải */}
-      <button
-        type="button"
-        onClick={() => setMo(true)}
-        title="Quên công thức thì bấm vào đây tra nhanh (không mất bài đang làm)"
-        className="fixed bottom-5 left-5 z-40 flex items-center gap-2 bg-white border-2 border-indigo-600 text-indigo-700 hover:bg-indigo-50 font-black px-4 py-2.5 rounded-full shadow-lg transition-all print:hidden"
-      >
-        <BookOpen className="w-5 h-5" /> Sổ tay công thức
-      </button>
+      {/*
+        * Hai kiểu nút mở sổ tay.
+        *
+        * "nutNho" là kiểu mặc định dùng trong màn làm bài: nút nằm gọn trong thanh tiến độ.
+        * Kiểu nổi cũ là viên thuốc 198x48 dán cứng ở góc trái dưới, đo trên máy thật thì nó
+        * che mất nửa trái của phương án nằm cuối màn - học sinh không đọc được đáp án.
+        */}
+      {kieu === 'nutNho' ? (
+        <button
+          type="button"
+          onClick={() => setMo(true)}
+          title="Quên công thức thì bấm vào đây tra nhanh (không mất bài đang làm)"
+          className="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[12.5px] font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 transition-colors print:hidden"
+        >
+          <BookOpen className="w-4 h-4" />
+          <span className="hidden md:inline">Sổ tay</span>
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setMo(true)}
+          title="Quên công thức thì bấm vào đây tra nhanh (không mất bài đang làm)"
+          className="fixed bottom-5 left-5 z-40 flex items-center gap-2 bg-white border-2 border-indigo-600 text-indigo-700 hover:bg-indigo-50 font-black px-4 py-2.5 rounded-full shadow-lg transition-all print:hidden"
+        >
+          <BookOpen className="w-5 h-5" /> Sổ tay công thức
+        </button>
+      )}
 
       {mo && (
         <div className="fixed inset-0 z-[70] flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm p-0 sm:p-4">
