@@ -121,5 +121,10 @@ Nếu máy trả về thiếu một khối câu hỏi, hệ thống **từ chố
   đã có `\frac{a}{b}` vẫn bị bắt, vì hệ thống so **ý nghĩa công thức** chứ không so chữ.
 - **Thêm tay cũng được kiểm**: trùng thì báo rõ bản đã có nằm ở chương nào. Thầy cô vẫn được
   lưu nếu cố ý.
+- **Chuyển công thức sang chương khác**: mở nút sửa ✏️ → ô **Thuộc chương** → chọn chương
+  mới → Lưu. Trước đây thiếu ô này nên phải chép sang rồi xoá bản cũ, quên xoá là thành trùng.
+- **Sắp thứ tự** bằng mũi tên ▲ ▼ ở mỗi công thức. Cần bật một lần: chạy
+  `scratch/them-cot-thutu-formulas.sql` trong Supabase → SQL Editor. Chưa chạy thì không có
+  mũi tên, mọi thứ khác vẫn bình thường.
 - Nút **Dọn trùng** (chỉ hiện khi kho thật sự có bản trùng): bày từng nhóm cạnh nhau, chọn
   bản muốn giữ rồi mới xoá.
