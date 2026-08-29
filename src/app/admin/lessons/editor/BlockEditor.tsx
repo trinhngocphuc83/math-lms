@@ -718,6 +718,59 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                        })()}
 
                        {/*
+                         * CHỈNH ẢNH NGAY TRONG KHỐI LÝ THUYẾT.
+                         *
+                         * Khối trắc nghiệm đã có mấy nút này trong AutoCropReviewPanel, còn
+                         * khối lý thuyết thì chưa - muốn đổi cỡ ảnh phải tự gõ tay
+                         * ![...](url "nho"). Chỉ hiện khi trong khối thật sự có ảnh.
+                         */}
+                       {(() => {
+                          const chu = typeof block.content === 'string' ? block.content : '';
+                          const soAnh = demAnh(chu);
+                          if (soAnh === 0) return null;
+                          const co = docCoAnh(chu);
+                          const ngang = dangXepNgang(chu);
+                          return (
+                            <div className="flex flex-wrap items-center gap-2 px-2.5 py-1.5 rounded-lg bg-sky-50 border border-sky-200">
+                               <span className="text-[11px] font-black text-sky-700 uppercase tracking-wide">
+                                  {soAnh} ảnh
+                               </span>
+                               <div className="flex items-center gap-1">
+                                  {([['nho', 'Nhỏ'], ['vua', 'Vừa'], ['to', 'To']] as const).map(([ma, ten]) => (
+                                     <button key={ma}
+                                        onClick={() => updateBlockContent(idx, datCoAnh(chu, ma))}
+                                        title={`Đổi mọi ảnh trong khối sang cỡ ${ten.toLowerCase()}`}
+                                        className={`px-2 py-1 rounded-md text-[11px] font-bold transition-colors border ${
+                                           co === ma
+                                              ? 'bg-sky-600 text-white border-sky-600'
+                                              : 'bg-white text-sky-700 border-sky-200 hover:bg-sky-100'
+                                        }`}>
+                                        {ten}
+                                     </button>
+                                  ))}
+                               </div>
+                               {/* Xếp ngang chỉ có nghĩa khi có từ 2 ảnh trở lên */}
+                               {soAnh > 1 && (
+                                  <button
+                                     onClick={() => updateBlockContent(idx, datXepAnh(chu, !ngang))}
+                                     title={ngang
+                                        ? 'Đang xếp ngang - bấm để xếp dọc, mỗi ảnh một dòng'
+                                        : 'Đang xếp dọc - bấm để hai ảnh nằm ngang song song'}
+                                     className="px-2 py-1 rounded-md text-[11px] font-bold border bg-white text-sky-700 border-sky-200 hover:bg-sky-100">
+                                     {ngang ? '⇄ Xếp ngang' : '⇅ Xếp dọc'}
+                                  </button>
+                               )}
+                               <button
+                                  onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)}
+                                  title="Cắt và chèn thêm một ảnh nữa vào khối này"
+                                  className="ml-auto px-2 py-1 rounded-md text-[11px] font-bold border bg-white text-sky-700 border-sky-200 hover:bg-sky-100 flex items-center gap-1">
+                                  <CropIcon className="w-3.5 h-3.5"/> Chèn thêm ảnh
+                               </button>
+                            </div>
+                          );
+                       })()}
+
+                       {/*
                          * HIỆN TƯỜNG MINH, nhấp vào mới sửa - đúng cách khối trắc nghiệm đang
                          * làm. Bài lý thuyết trung bình 8.767 ký tự, nhìn thấy thành phẩm ngay
                          * thì soát nhanh hơn hẳn đọc mã Markdown thô.
