@@ -252,21 +252,29 @@ export const presentationMarkdownComponents: any = {
         </div>
     ),
 
+    /*
+     * Muc nho: PHAI CO KHUNG.
+     *
+     * Ben trinh soan va ben hoc sinh, cap nay la khung vien trai cham + nen nhat. Rieng
+     * trinh chieu lai chi la mot cham tron - cung mot bai ma soan thao thay dong khung
+     * con chieu len bang thi khong. Nay dung chung mot kieu, chi phong to cho vua slide.
+     */
     h3: ({ node, style, children, ...props }: any) => (
         <h3
             style={sanitizeStyle(style)}
-            className="not-prose flex items-start gap-4 text-[47px] font-bold text-blue-900 tracking-tight leading-[1.3] mb-5 mt-6"
+            className="not-prose text-[47px] font-bold text-indigo-900 tracking-tight leading-[1.3]
+                       mb-5 mt-7 pl-7 pr-6 py-3 border-l-[10px] border-indigo-500
+                       bg-indigo-50/60 rounded-r-2xl shadow-sm"
             {...props}
         >
-            <span className="mt-[0.42em] w-[16px] h-[16px] rounded-full bg-blue-500 shrink-0" />
-            <span className="flex-1 min-w-0">{children}</span>
+            {children}
         </h3>
     ),
 
     h4: ({ node, style, children, ...props }: any) => (
         <h4
             style={sanitizeStyle(style)}
-            className="not-prose flex items-start gap-3 text-[40px] font-bold text-teal-800 tracking-tight leading-[1.35] mb-4 mt-5"
+            className="not-prose flex items-start gap-3 ml-10 text-[40px] font-bold text-teal-800 tracking-tight leading-[1.35] mb-4 mt-5"
             {...props}
         >
             <span className="text-teal-500 mt-[0.15em] text-[30px] leading-none">❖</span>
@@ -277,7 +285,7 @@ export const presentationMarkdownComponents: any = {
     h5: ({ node, style, children, ...props }: any) => (
         <h5
             style={sanitizeStyle(style)}
-            className="not-prose text-[36px] font-bold text-slate-700 italic leading-[1.35] mb-3 mt-4"
+            className="not-prose text-[36px] font-bold text-slate-700 italic leading-[1.35] mb-3 mt-4 ml-20"
             {...props}
         >
             {children}

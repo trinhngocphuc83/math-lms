@@ -227,7 +227,7 @@ export const unifiedMarkdownComponents: any = {
    },
    h4: ({node, style, children, ...props}: any) => {
        return (
-           <h4 style={sanitizeStyle(style)} className="not-prose mt-6 mb-3 text-[36px] font-bold text-teal-800 tracking-tight flex items-start gap-3" {...props}>
+           <h4 style={sanitizeStyle(style)} className="not-prose mt-6 mb-3 ml-8 text-[36px] font-bold text-teal-800 tracking-tight flex items-start gap-3" {...props}>
                <span className="text-teal-500 mt-[0.2em] text-[24px] leading-none">❖</span>
                <span className="flex-1 min-w-0 border-b-2 border-teal-100 pb-1.5">{children}</span>
            </h4>
@@ -235,7 +235,7 @@ export const unifiedMarkdownComponents: any = {
    },
    h5: ({node, style, children, ...props}: any) => {
        return (
-           <h5 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 text-[35px] font-bold text-slate-700 italic tracking-tight flex items-start gap-3" {...props}>
+           <h5 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 ml-16 text-[35px] font-bold text-slate-700 italic tracking-tight flex items-start gap-3" {...props}>
                <span className="w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0 mt-3.5"></span>
                <span className="flex-1 min-w-0">{children}</span>
            </h5>
@@ -398,7 +398,7 @@ export const studentMarkdownComponents: any = {
    },
    h4: ({node, style, children, ...props}: any) => {
        return (
-           <h4 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 text-lg sm:text-xl font-bold text-teal-800 tracking-tight flex items-start gap-2" {...props}>
+           <h4 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 ml-4 sm:ml-6 text-lg sm:text-xl font-bold text-teal-800 tracking-tight flex items-start gap-2" {...props}>
                <span className="text-teal-500 mt-[0.2em] text-sm leading-none">❖</span>
                <span className="flex-1 min-w-0 border-b-2 border-teal-100 pb-1">{children}</span>
            </h4>
@@ -406,7 +406,7 @@ export const studentMarkdownComponents: any = {
    },
    h5: ({node, style, children, ...props}: any) => {
        return (
-           <h5 style={sanitizeStyle(style)} className="not-prose mt-4 mb-2 text-base sm:text-lg font-bold text-slate-700 italic tracking-tight flex items-start gap-2.5" {...props}>
+           <h5 style={sanitizeStyle(style)} className="not-prose mt-4 mb-2 ml-8 sm:ml-12 text-base sm:text-lg font-bold text-slate-700 italic tracking-tight flex items-start gap-2.5" {...props}>
                <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0 mt-2.5"></span>
                <span className="flex-1 min-w-0">{children}</span>
            </h5>

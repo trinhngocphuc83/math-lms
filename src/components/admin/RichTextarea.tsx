@@ -108,64 +108,29 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       resolvedOnChange(event);
     }
 
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
-      }
-    }, 0);
+    datConTro(start, start + wrappedText.length);
   };
 
+  /**
+   * Đặt cấp tiêu đề cho DÒNG đang đứng (hoặc mọi dòng đang bôi đen).
+   *
+   * Bản cũ có hai chỗ hỏng:
+   *  - Không bôi đen thì nó chèn dấu # NGAY TẠI CON TRỎ, nên đang đứng giữa dòng là ra
+   *    "Trong mặt### phẳng". Phải áp cho cả dòng.
+   *  - Đang là ### mà chọn ## thì cũ chồng thêm dấu #. Phải thay cấp, không cộng dồn.
+   */
   const handleApplyHeading = (level: number | '') => {
-    if (!level) return;
-    if (!textareaRef.current) return;
-    
-    const ta = textareaRef.current;
-    const start = ta.selectionStart;
-    const end = ta.selectionEnd;
-    const val = ta.value;
-
-    const beforeText = val.substring(0, start);
-    const afterText = val.substring(end);
+    if (!level || !textareaRef.current) return;
+    const { val, dauDong, cuoiDong } = layVungDong();
     const prefix = '#'.repeat(level as number) + ' ';
 
-    if (start === end) {
-      const newValue = beforeText + prefix + afterText;
-      if (onValueChange) {
-        onValueChange(newValue);
-      } else {
-        const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-        resolvedOnChange(event);
-      }
-      setTimeout(() => {
-        if (textareaRef.current) {
-          textareaRef.current.focus();
-          textareaRef.current.setSelectionRange(start + prefix.length, start + prefix.length);
-        }
-      }, 0);
-      return;
-    }
+    const doan = val.slice(dauDong, cuoiDong);
+    const moi = doan.split('\n')
+      .map(l => (l.trim() === '' ? l : prefix + l.replace(/^\s*#{1,6}\s*/, '')))
+      .join('\n');
 
-    const selectedText = val.substring(start, end);
-    const wrappedText = selectedText.split('\n').map(l => {
-        if (l.trim() === '') return l;
-        return prefix + l.replace(/^#+\s*/, '');
-    }).join('\n');
-    
-    const newValue = beforeText + wrappedText + afterText;
-    if (onValueChange) {
-      onValueChange(newValue);
-    } else {
-      const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
-      resolvedOnChange(event);
-    }
-    
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
-      }
-    }, 0);
+    // Con trỏ về CUỐI DÒNG vừa đặt, để gõ tiếp được ngay
+    datGiaTri(val.slice(0, dauDong) + moi + val.slice(cuoiDong), dauDong + moi.length);
   };
 
   const handleApplyColor = (e?: React.MouseEvent | React.FormEvent | null, colorOverride?: string) => {
@@ -196,12 +161,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       resolvedOnChange(event);
     }
 
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
-      }
-    }, 0);
+    datConTro(start, start + wrappedText.length);
   };
 
   const handleApplyLineSpacing = (e?: React.MouseEvent | React.FormEvent | null, lineHeightOverride?: string) => {
@@ -232,24 +192,34 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       resolvedOnChange(event);
     }
 
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
-      }
-    }, 0);
+    datConTro(start, start + wrappedText.length);
   };
 
   /** Ghi giá trị mới vào ô soạn, dùng chung cho mấy nút mới bên dưới. */
+  /*
+   * Vị trí con trỏ phải đặt lại SAU khi React vẽ xong giá trị mới.
+   *
+   * Ô soạn là controlled: React gán lại thuộc tính value, và trình duyệt tự đẩy con trỏ
+   * về CUỐI. setTimeout(...,0) có khi chạy trước lượt vẽ đó nên vị trí vừa đặt bị xoá -
+   * đúng cái cảm giác "chọn tiêu đề xong con trỏ nhảy về cuối khối". useLayoutEffect chạy
+   * ngay sau khi DOM cập nhật nên đặt lại là ăn chắc.
+   */
+  const viTriCho = useRef<[number, number] | null>(null);
+  React.useLayoutEffect(() => {
+    const v = viTriCho.current;
+    if (!v || !textareaRef.current) return;
+    viTriCho.current = null;
+    textareaRef.current.focus();
+    textareaRef.current.setSelectionRange(v[0], v[1]);
+  });
+
+  /** Hẹn đặt con trỏ - sẽ áp ngay sau khi React vẽ xong, xem viTriCho ở trên. */
+  const datConTro = (tu: number, den?: number) => { viTriCho.current = [tu, den ?? tu]; };
+
   const datGiaTri = (giaTri: string, chonTu?: number, chonDen?: number) => {
+    if (chonTu !== undefined) viTriCho.current = [chonTu, chonDen ?? chonTu];
     if (onValueChange) onValueChange(giaTri);
     else resolvedOnChange({ target: { value: giaTri } } as React.ChangeEvent<HTMLTextAreaElement>);
-    setTimeout(() => {
-      const ta = textareaRef.current;
-      if (!ta) return;
-      ta.focus();
-      if (chonTu !== undefined) ta.setSelectionRange(chonTu, chonDen ?? chonTu);
-    }, 0);
   };
 
   /** Phạm vi dòng đang được chọn (hoặc dòng đang đặt con trỏ). */
@@ -354,12 +324,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       resolvedOnChange(event);
     }
 
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
-      }
-    }, 0);
+    datConTro(start, start + wrappedText.length);
   };
 
   const handleApplyBox = (e?: React.MouseEvent) => {
@@ -389,12 +354,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       resolvedOnChange(event);
     }
 
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
-      }
-    }, 0);
+    datConTro(start, start + wrappedText.length);
   };
 
   const handleFormat = (formatType: 'bold' | 'italic' | 'underline', e?: React.MouseEvent) => {
@@ -428,12 +388,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       resolvedOnChange(event);
     }
 
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(start, start + wrappedText.length);
-      }
-    }, 0);
+    datConTro(start, start + wrappedText.length);
   };
 
   const handleInsertIcon = (icon: string) => {
@@ -451,12 +406,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }
 
     setShowIconMenu(false);
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(start + icon.length, start + icon.length);
-      }
-    }, 0);
+    datConTro(start + icon.length, start + icon.length);
   };
 
   /**
@@ -497,13 +447,8 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }
 
     setShowLatexPalette(false);
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(caretAt, caretAt);
-        setCursorPos(caretAt);
-      }
-    }, 0);
+    datConTro(caretAt);
+    setCursorPos(caretAt);
   };
 
   const handleRemoveAutoIcon = () => {
@@ -521,12 +466,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       resolvedOnChange(event);
     }
 
-    setTimeout(() => {
-      if (textareaRef.current) {
-        textareaRef.current.focus();
-        textareaRef.current.setSelectionRange(start + 6, start + 6);
-      }
-    }, 0);
+    datConTro(start + 6, start + 6);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -589,9 +529,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
           const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
           resolvedOnChange(event);
         }
-        setTimeout(() => {
-          if (textareaRef.current) textareaRef.current.setSelectionRange(start + 4, start + 4);
-        }, 0);
+        datConTro(start + 4);
       }
     } else if (e.key === 'Backspace' && start === end && start > 0) {
       const textBeforeCursor = val.substring(0, start);
@@ -604,9 +542,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
           const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
           resolvedOnChange(event);
         }
-        setTimeout(() => {
-          if (textareaRef.current) textareaRef.current.setSelectionRange(start - deleteCount, start - deleteCount);
-        }, 0);
+        datConTro(start - deleteCount);
       } else {
         // Fallback for regular spaces deletion at the beginning of a line
         const lineStart = val.lastIndexOf('\n', start - 1) + 1;
@@ -620,9 +556,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
             const event = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
             resolvedOnChange(event);
           }
-          setTimeout(() => {
-            if (textareaRef.current) textareaRef.current.setSelectionRange(start - deleteCount, start - deleteCount);
-          }, 0);
+          datConTro(start - deleteCount);
         }
       }
     }
@@ -666,12 +600,7 @@ export default function RichTextarea({ value, onChange, onValueChange, className
           resolvedOnChange(ev);
        }
        
-       setTimeout(() => {
-         if (textareaRef.current) {
-           textareaRef.current.focus();
-           textareaRef.current.setSelectionRange(start + imgMd.length, start + imgMd.length);
-         }
-       }, 0);
+       datConTro(start + imgMd.length, start + imgMd.length);
     } catch(err) {
        alert("Lỗi tải ảnh lên!");
        if (onValueChange) onValueChange(value);
