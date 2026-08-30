@@ -2,7 +2,7 @@
 
 import React from "react";
 import confetti from "canvas-confetti";
-import { X, Loader2, RefreshCw, Volume2, VolumeX, Download, UserX, Undo2, Plus, Minus, Dices, AlertTriangle, RotateCcw } from "lucide-react";
+import { X, Loader2, RefreshCw, Volume2, VolumeX, Download, UserX, Undo2, Plus, Minus, Dices, AlertTriangle, RotateCcw, ArrowLeftRight } from "lucide-react";
 /* Việc của thầy cô phải đi qua máy chủ: bảng enrollments có RLS chặn, trình duyệt đọc
    thẳng ra 0 dòng dù lớp có 16 em. Trang lớp học cũng đi đường này. */
 import {
@@ -24,12 +24,24 @@ import { NhacNen } from "@/utils/amThanhSanKhau";
  */
 
 const NHO_LOP = 'lop-goi-ten-lan-truoc';
+const NHO_BEN = 'ben-bang-goi-ten';
 
 export default function BangGoiTenVaDiem({
-  isOpen, onClose, lopGoiY, lessonId, lenhTuXa, onDoiTrangThai,
+  isOpen, onClose, lopGoiY, lessonId, lenhTuXa, onDoiTrangThai, benCanh, onDoiBen,
 }: {
   isOpen: boolean;
   onClose: () => void;
+  /**
+   * Nép sang một BÊN thay vì che giữa màn hình.
+   *
+   * Lúc trình chiếu, bảng này bung ra giữa và phủ nền mờ lên toàn bộ - cả lớp không còn
+   * nhìn thấy câu hỏi để mà trả lời, trong khi gọi tên chính là để hỏi bài. Bật cờ này
+   * thì bảng nép về một mép, bỏ nền mờ, slide vẫn đọc được. Bấm nút ⇄ để đổi bên khi
+   * bảng che mất phần đang giảng.
+   */
+  benCanh?: boolean;
+  /** Báo đang nép bên nào, để trang trình chiếu đẩy slide sang bên kia cho khỏi bị che */
+  onDoiBen?: (ben: 'trai' | 'phai') => void;
   /** Lớp muốn dùng sẵn (mở từ trang lớp học thì truyền vào đây) */
   lopGoiY?: string;
   /** Chỉ để ghi nhớ đã gọi ở bài nào - không dùng để lọc */
@@ -68,6 +80,18 @@ export default function BangGoiTenVaDiem({
 
   /** Tải sẵn giọng cả lớp trước buổi dạy - xem nút "Tải sẵn giọng". */
   const [dangTaiGiong, setDangTaiGiong] = React.useState(0);
+
+  const [ben, setBen] = React.useState<'trai' | 'phai'>('phai');
+  React.useEffect(() => {
+    const nho = localStorage.getItem(NHO_BEN);
+    if (nho === 'trai' || nho === 'phai') setBen(nho);
+  }, []);
+  React.useEffect(() => { onDoiBen?.(ben); }, [ben, onDoiBen]);
+  const doiBen = () => setBen(b => {
+    const moi = b === 'phai' ? 'trai' : 'phai';
+    localStorage.setItem(NHO_BEN, moi);
+    return moi;
+  });
 
   const [emKhac, setEmKhac] = React.useState('');
   const [vuaCong, setVuaCong] = React.useState('');
@@ -329,40 +353,56 @@ export default function BangGoiTenVaDiem({
   const emDuocChon = trangThai?.caLop.find(h => h.id === emKhac) || null;
 
   return (
-    <div className="fixed inset-0 z-[120] bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-3"
-         onClick={onClose}>
+    <div className={benCanh
+            /* Nép một bên: KHÔNG phủ nền mờ và không bắt chuột ở khoảng trống, để thầy cô
+               vẫn bấm được vào slide phía sau (chuyển trang, chọn đáp án). */
+            ? `fixed inset-y-0 z-[120] p-3 flex items-center pointer-events-none ${
+                ben === 'phai' ? 'right-0' : 'left-0'}`
+            : 'fixed inset-0 z-[120] bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-3'}
+         onClick={benCanh ? undefined : onClose}>
       <div onClick={e => e.stopPropagation()}
-           className="bg-white w-full max-w-[560px] rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+           className={`bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] ${
+             benCanh ? 'w-[410px] pointer-events-auto ring-1 ring-black/10' : 'w-full max-w-[560px]'}`}>
 
         {/* Đầu bảng */}
-        <div className="shrink-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 px-4 py-3 flex items-center gap-3">
-          <Dices className="w-6 h-6 text-white shrink-0" />
+        <div className={`shrink-0 bg-gradient-to-r from-violet-600 to-fuchsia-600 flex items-center ${
+          benCanh ? 'px-2.5 py-2 gap-1.5' : 'px-4 py-3 gap-3'}`}>
+          {!benCanh && <Dices className="w-6 h-6 text-white shrink-0" />}
           <div className="min-w-0">
-            <h2 className="text-[15px] font-black text-white leading-tight">Gọi tên &amp; Điểm</h2>
+            <h2 className={`font-black text-white leading-tight whitespace-nowrap ${
+              benCanh ? 'text-[13.5px]' : 'text-[15px]'}`}>Gọi tên &amp; Điểm</h2>
             {trangThai && (
-              <p className="text-[11.5px] text-violet-50/90 leading-tight">
-                Vòng {trangThai.vong} · còn {dsQuay.length}/{trangThai.caLop.length} em chưa gọi
+              <p className="text-[11.5px] text-violet-50/90 leading-tight whitespace-nowrap">
+                Vòng {trangThai.vong} · còn {dsQuay.length}/{trangThai.caLop.length}
+                {!benCanh && ' em chưa gọi'}
               </p>
             )}
           </div>
           <select value={lopId} onChange={e => setLopId(e.target.value)}
-                  className="ml-auto max-w-[150px] px-2 py-1.5 rounded-lg bg-white/15 border border-white/25
-                             text-[12.5px] text-white outline-none focus:bg-white/25">
+                  className={`ml-auto rounded-lg bg-white/15 border border-white/25 text-white
+                              outline-none focus:bg-white/25 ${
+                    benCanh ? 'max-w-[86px] px-1 py-1 text-[11.5px]' : 'max-w-[150px] px-2 py-1.5 text-[12.5px]'}`}>
             {dsCacLop.map(l => (
               <option key={l.id} value={l.id} className="text-slate-800">{l.name}</option>
             ))}
           </select>
           <button onClick={() => { setBatNhac(v => !v); if (batNhac) { nhacQuay.current?.tat(true); nhacQuay.current = null; } }}
                   title={batNhac ? 'Đang bật nhạc quay số - bấm để tắt' : 'Đang tắt nhạc quay số - bấm để bật'}
-                  className="p-1.5 text-white/80 hover:text-white hover:bg-white/20 rounded-lg shrink-0">
+                  className={`text-white/80 hover:text-white hover:bg-white/20 rounded-lg shrink-0 ${benCanh ? 'p-1' : 'p-1.5'}`}>
             {batNhac ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
           </button>
+          {benCanh && (
+            <button onClick={doiBen} title="Đổi sang bên kia màn hình"
+                    className={`text-white/80 hover:text-white hover:bg-white/20 rounded-lg shrink-0 ${benCanh ? 'p-1' : 'p-1.5'}`}>
+              <ArrowLeftRight className="w-4 h-4" />
+            </button>
+          )}
           <button onClick={napLai} title="Tải lại danh sách lớp"
-                  className="p-1.5 text-white/80 hover:text-white hover:bg-white/20 rounded-lg shrink-0">
+                  className={`text-white/80 hover:text-white hover:bg-white/20 rounded-lg shrink-0 ${benCanh ? 'p-1' : 'p-1.5'}`}>
             <RefreshCw className={`w-4 h-4 ${dangTai ? 'animate-spin' : ''}`} />
           </button>
           <button onClick={onClose} title="Đóng (Esc)"
-                  className="p-1.5 text-white/80 hover:text-white hover:bg-white/20 rounded-lg shrink-0">
+                  className={`text-white/80 hover:text-white hover:bg-white/20 rounded-lg shrink-0 ${benCanh ? 'p-1' : 'p-1.5'}`}>
             <X className="w-5 h-5" />
           </button>
         </div>

@@ -265,6 +265,15 @@ export default function PresentationPage() {
        "chạy tự do" trong khung co giãn (gây tràn slide), ta giữ nguyên canvas
        1600x900 rồi scale toàn bộ - giống reveal.js / Slidev / Marp. */
     const [viewScale, setViewScale] = useState(1);
+    /**
+     * Bảng Gọi tên nép bên nào - để chừa chỗ cho nó.
+     *
+     * Trước đây bảng bung ra giữa và phủ nền mờ, cả lớp không còn nhìn thấy câu hỏi để
+     * trả lời. Nay bảng nép một bên, và slide THU NHỎ vừa phần còn lại rồi dịch sang bên
+     * kia - không bị che chữ nào.
+     */
+    const [benBang, setBenBang] = useState<'trai' | 'phai'>('phai');
+    const CHO_BANG = 434; // bề ngang bảng 410 + lề
     /* Tỉ lệ thu nhỏ riêng phần nội dung khi slide quá dài (auto-fit thật). */
     const [contentScale, setContentScale] = useState(1);
     /* Chiều cao thật của nội dung (chưa scale) - dùng để đặt đúng chiều cao khối
@@ -316,7 +325,8 @@ export default function PresentationPage() {
     /* Phóng canvas vừa khít màn hình, đồng bộ cả khi vào/ra toàn màn hình. */
     useLayoutEffect(() => {
         const update = () => {
-            setViewScale(Math.min(window.innerWidth / CANVAS_WIDTH, window.innerHeight / CANVAS_HEIGHT));
+            const beRong = Math.max(320, window.innerWidth - (moGoiTen ? CHO_BANG : 0));
+            setViewScale(Math.min(beRong / CANVAS_WIDTH, window.innerHeight / CANVAS_HEIGHT));
             setIsFullscreen(!!document.fullscreenElement);
         };
         update();
@@ -326,7 +336,8 @@ export default function PresentationPage() {
             window.removeEventListener('resize', update);
             document.removeEventListener('fullscreenchange', update);
         };
-    }, []);
+        /* Mở/đóng bảng Gọi tên cũng phải tính lại: chỗ trống cho slide đổi. */
+    }, [moGoiTen]);
 
     /* AUTO-FIT THẬT: đo chiều cao thật của nội dung rồi thu nhỏ đúng một lần cho vừa khung.
        Phần tử đo luôn giữ width 100% và KHÔNG bị transform, nên offsetHeight ổn định -
@@ -646,8 +657,11 @@ export default function PresentationPage() {
                 style={{
                     width: CANVAS_WIDTH,
                     height: CANVAS_HEIGHT,
-                    transform: `scale(${viewScale})`,
+                    /* translate ĐỨNG TRƯỚC scale nên dịch đúng số điểm ảnh thật,
+                       không bị nhân thêm tỉ lệ phóng. */
+                    transform: `translateX(${moGoiTen ? (benBang === 'phai' ? -CHO_BANG / 2 : CHO_BANG / 2) : 0}px) scale(${viewScale})`,
                     transformOrigin: 'center center',
+                    transition: 'transform 220ms ease-out',
                 }}
             >
                 {/* Thanh tiến độ */}
@@ -766,6 +780,8 @@ export default function PresentationPage() {
             <BangGoiTenVaDiem
                 isOpen={moGoiTen}
                 onClose={() => setMoGoiTen(false)}
+                benCanh
+                onDoiBen={setBenBang}
                 lessonId={typeof params?.id === 'string' ? params.id : undefined}
                 lenhTuXa={lenhChoBang}
                 onDoiTrangThai={(tt) => phatTrangThai.current?.({
