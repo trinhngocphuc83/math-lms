@@ -20,8 +20,7 @@ import {
   ChevronUp,
   ChevronDown,
   X,
-  Menu
-} from "lucide-react";
+  Menu, Smartphone } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
 export default function AdminLayout({
@@ -111,6 +110,7 @@ export default function AdminLayout({
         { name: "Khóa học & Bài giảng", href: "/admin/courses", icon: BookOpen },
         { name: "Sổ Tay Công Thức", href: "/admin/handbook", icon: Library },
         { name: "Soạn bài bằng AI", href: "/admin/lessons/editor", icon: Sparkles },
+        { name: "Điều khiển trình chiếu", href: "/admin/dieu-khien", icon: Smartphone },
         { name: "Lớp học (Classes)", href: "/admin/classes", icon: Users },
         { name: "Ngân hàng Câu hỏi", href: "/admin/questions", icon: FileEdit },
         { name: "Quản lý Đề thi", href: "/admin/exams", icon: LayoutDashboard },

@@ -20,7 +20,12 @@ import { docThoiLuongTiengViet, dinhDangMMSS } from "@/utils/parseVietnameseDura
 
 const MOC_CANH_BAO = 10; // giây cuối bắt đầu bíp
 
-export default function PresentationTimer() {
+export default function PresentationTimer({ lenhNgoai, onDoi }: {
+  /** Lệnh đặt giờ bấm từ điện thoại; `dem` tăng mỗi lần bấm nên bấm lại là chạy lại. */
+  lenhNgoai?: { viec: string; phut?: number; dem: number; luc: number } | null;
+  /** Báo số giây còn lại ra ngoài để máy chiếu phát xuống điện thoại */
+  onDoi?: (conLai: number) => void;
+} = {}) {
   const [dangMoBang, setDangMoBang] = useState(false);
   const [tongGiay, setTongGiay] = useState(0);      // thời lượng đã đặt
   const [conLai, setConLai] = useState(0);          // giây còn lại
@@ -180,6 +185,29 @@ export default function PresentationTimer() {
     window.addEventListener('keydown', batPhim);
     return () => window.removeEventListener('keydown', batPhim);
   }, [tongGiay, dangChay, conLai, dangMoBang]);
+
+  /* Nhận lệnh đặt giờ từ điện thoại.
+     Khởi đầu bộ đếm bằng ĐÚNG số lệnh hiện có chứ không phải 0: đồng hồ được dựng lại
+     mỗi lần sang slide (có `key`), nếu đếm từ 0 thì vừa sang slide mới là nó tưởng có
+     lệnh chưa làm và tự bấm giờ lại. */
+  const demDaLam = useRef(
+    /* Lệnh vừa bấm xong (dưới 3 giây) thì để 0 cho hiệu ứng bên dưới chạy: slide thường
+       vốn không có đồng hồ, lệnh đặt giờ từ điện thoại làm đồng hồ mọc ra - nó dựng mới
+       nên nếu ghi luôn số lệnh hiện tại thì tưởng đã làm rồi, bấm mà không thấy gì. */
+    lenhNgoai && Date.now() - lenhNgoai.luc < 3000 ? 0 : (lenhNgoai?.dem ?? 0)
+  );
+  useEffect(() => {
+    if (!lenhNgoai || lenhNgoai.dem === demDaLam.current) return;
+    demDaLam.current = lenhNgoai.dem;
+    if (lenhNgoai.viec === 'dat-gio') batDau(Math.round((lenhNgoai.phut || 0) * 60));
+    else if (lenhNgoai.viec === 'dung-gio') datLai();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [lenhNgoai]);
+
+  useEffect(() => {
+    onDoi?.(dangChay ? conLai : 0);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [conLai, dangChay]);
 
   const sapHet = dangChay && conLai > 0 && conLai <= MOC_CANH_BAO;
   const hetGio = tongGiay > 0 && conLai === 0 && !dangChay;

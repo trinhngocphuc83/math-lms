@@ -42,9 +42,38 @@ const parseSlides = tachSlide;
 const KATEX_CLASS = '[&_.katex]:text-[#1e40af] [&_.katex-display]:my-4 [&_.katex-display]:text-[1.04em]';
 
 // --- Quiz Component for Presentation ---
-function PresentationQuiz({ quizData }: { quizData: any }) {
+function PresentationQuiz({ quizData, lenhNgoai, onDoi }: {
+    quizData: any;
+    /** Lệnh bấm từ điện thoại; `dem` tăng mỗi lần bấm nên bấm mấy lần chạy mấy lần. */
+    lenhNgoai?: { viec: string; chon?: number; chu?: string; dem: number } | null;
+    /** Báo ngược ra để máy chiếu phát xuống điện thoại */
+    onDoi?: (tt: { hienDapAn: boolean; dangChon: number | null }) => void;
+}) {
     const [showAnswer, setShowAnswer] = useState(false);
     const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
+    const [chuNhap, setChuNhap] = useState('');
+
+    /* Nhận lệnh từ điện thoại. Phải nằm TRƯỚC dòng thoát sớm bên dưới, nếu không React
+       đếm số hook lệch giữa hai lần vẽ và vỡ trang. */
+    const demDaLam = useRef(lenhNgoai?.dem ?? 0);
+    useEffect(() => {
+        if (!lenhNgoai || lenhNgoai.dem === demDaLam.current) return;
+        demDaLam.current = lenhNgoai.dem;
+        if (lenhNgoai.viec === 'chon-dap-an' && typeof lenhNgoai.chon === 'number') {
+            if (!showAnswer) setSelectedIdx(lenhNgoai.chon);
+        } else if (lenhNgoai.viec === 'hien-dap-an') {
+            setShowAnswer(v => { if (v) setSelectedIdx(null); return !v; });
+        } else if (lenhNgoai.viec === 'nhap-dap-an') {
+            setChuNhap(lenhNgoai.chu || '');
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [lenhNgoai]);
+
+    useEffect(() => {
+        onDoi?.({ hienDapAn: showAnswer, dangChon: selectedIdx });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [showAnswer, selectedIdx]);
+
     if (!quizData) return null;
 
     const type = quizData.type || "multiple_choice";
@@ -140,6 +169,8 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
                             <label className="text-[34px] font-semibold text-slate-600">Học sinh trả lời:</label>
                             <input
                                 type="text"
+                                value={chuNhap}
+                                onChange={e => setChuNhap(e.target.value)}
                                 placeholder="Nhập câu trả lời vào đây..."
                                 className="w-full px-8 py-5 rounded-2xl border-[3px] border-indigo-200 focus:border-indigo-500 outline-none
                                            text-[40px] font-bold text-indigo-900 bg-indigo-50/40"
@@ -176,6 +207,17 @@ function PresentationQuiz({ quizData }: { quizData: any }) {
     );
 }
 
+/**
+ * Đọc khối ```quiz``` ở đầu slide. Trả về null nếu slide không phải câu hỏi tương tác,
+ * hoặc khối JSON viết sai - lúc đó điện thoại chỉ hiện nội dung như slide thường.
+ */
+function docQuiz(manh?: string): any {
+    if (!manh || !manh.startsWith('```quiz')) return null;
+    try {
+        return JSON.parse(manh.replace(/^```quiz\s*/, '').replace(/\s*```$/, ''));
+    } catch { return null; }
+}
+
 export default function PresentationPage() {
     const params = useParams();
     const searchParams = useSearchParams();
@@ -200,6 +242,14 @@ export default function PresentationPage() {
     const [dtDaNoi, setDtDaNoi] = useState(false);
     /* Lệnh gửi xuống bảng Gọi tên - tăng số đếm là bảng đó biết có việc mới. */
     const [lenhChoBang, setLenhChoBang] = useState<{ viec: string; diem?: number; dem: number } | null>(null);
+    /* Lệnh điện thoại bấm thẳng lên câu hỏi tương tác và đồng hồ đang chiếu. */
+    const [lenhChoQuiz, setLenhChoQuiz] = useState<{ viec: string; chon?: number; chu?: string; dem: number } | null>(null);
+    const [lenhChoGio, setLenhChoGio] = useState<{ viec: string; phut?: number; dem: number; luc: number } | null>(null);
+    /* Điện thoại đặt giờ ở slide thường (vốn không có đồng hồ) thì cho đồng hồ hiện ra. */
+    const [moGioTuXa, setMoGioTuXa] = useState(false);
+    /* Câu hỏi đang chiếu ở trạng thái nào - để điện thoại tô đúng phương án Thầy đã chọn. */
+    const [trangThaiQuiz, setTrangThaiQuiz] = useState<{ hienDapAn: boolean; dangChon: number | null }>({ hienDapAn: false, dangChon: null });
+    const [gioConLai, setGioConLai] = useState(0);
     const phatTrangThai = useRef<((tt: TrangThaiChieu) => void) | null>(null);
     /* Luôn giữ hàm dựng trạng thái MỚI NHẤT. Bộ nghe lệnh chỉ tạo một lần nên nếu gọi
        thẳng vào biến state thì nó đọc phải giá trị cũ của lần vẽ đầu. */
@@ -404,6 +454,19 @@ export default function PresentationPage() {
                     setLenhChoBang(v => ({ viec: l.viec, dem: (v?.dem || 0) + 1 })); break;
                 case 'diem':
                     setLenhChoBang(v => ({ viec: 'diem', diem: l.diem, dem: (v?.dem || 0) + 1 })); break;
+                /* Thao tác thẳng trên câu hỏi tương tác đang chiếu */
+                case 'chon-dap-an':
+                    setLenhChoQuiz(v => ({ viec: 'chon-dap-an', chon: l.chon, dem: (v?.dem || 0) + 1 })); break;
+                case 'hien-dap-an':
+                    setLenhChoQuiz(v => ({ viec: 'hien-dap-an', dem: (v?.dem || 0) + 1 })); break;
+                case 'nhap-dap-an':
+                    setLenhChoQuiz(v => ({ viec: 'nhap-dap-an', chu: l.chu, dem: (v?.dem || 0) + 1 })); break;
+                case 'dat-gio':
+                    setMoGioTuXa(true);
+                    setLenhChoGio(v => ({ viec: 'dat-gio', phut: l.phut, dem: (v?.dem || 0) + 1, luc: Date.now() })); break;
+                case 'dung-gio':
+                    setMoGioTuXa(false);
+                    setLenhChoGio(v => ({ viec: 'dung-gio', dem: (v?.dem || 0) + 1, luc: Date.now() })); break;
             }
         };
     });
@@ -420,6 +483,13 @@ export default function PresentationPage() {
         layTrangThai.current = () => {
             const nay = slides[currentSlideIndex] || [];
             const ke = slides[currentSlideIndex + 1] || [];
+            /* Slide này là câu hỏi tương tác thì gửi kèm đề và phương án, để điện thoại
+               bày ra mấy nút A B C D thay vì hiện nguyên khối ```quiz``` khó đọc. */
+            const cauHoi = docQuiz(nay[0]);
+            const loai = cauHoi?.type || 'multiple_choice';
+            /* Cụm mệnh đề Đúng/Sai để phương án dưới dạng đối tượng {id, content, isTrue},
+               không phải chuỗi - cứ đưa thẳng cho KaTeX là vỡ trang. Nắn hết về chuỗi. */
+            const cumMenhDe = loai === 'true_false_cluster';
             return {
                 slide: currentSlideIndex,
                 tongSlide: slides.length,
@@ -429,10 +499,30 @@ export default function PresentationPage() {
                 moGoiTen,
                 trungAi: '',
                 tomTatQuay: '',
+                cauHoi: cauHoi && {
+                    loai,
+                    de: cauHoi.question || '',
+                    phuongAn: cumMenhDe
+                        ? (cauHoi.options || []).map((o: any) => `${o?.id ? o.id + ') ' : ''}${o?.content ?? o}`)
+                        : loai === 'true_false'
+                            ? (cauHoi.options?.length ? cauHoi.options.map(String) : ['ĐÚNG', 'SAI'])
+                            : (cauHoi.options || []).map((o: any) => String(o?.content ?? o)),
+                    bamDuoc: !cumMenhDe,
+                    hienDapAn: trangThaiQuiz.hienDapAn,
+                    dangChon: trangThaiQuiz.dangChon,
+                    /* Gửi luôn đáp án đúng: đây là điện thoại của Thầy cô (đã đăng nhập
+                       tài khoản quản trị), có sẵn đáp án trong tay thì khỏi phải ngoái
+                       nhìn bảng mới biết em trả lời đúng hay sai. */
+                    dapAn: typeof cauHoi.answerIndex === 'number' ? cauHoi.answerIndex : null,
+                    dapAnChu: cumMenhDe
+                        ? (cauHoi.options || []).map((o: any) => `${o?.id || ''}: ${o?.isTrue ? 'Đúng' : 'Sai'}`).join(' · ')
+                        : String(cauHoi.exactAnswer || cauHoi.correctAnswer || cauHoi.answerText || ''),
+                },
+                gioConLai,
             };
         };
         if (phatTrangThai.current) phatTrangThai.current(layTrangThai.current());
-    }, [currentSlideIndex, currentFragmentIndex, slides, moGoiTen]);
+    }, [currentSlideIndex, currentFragmentIndex, slides, moGoiTen, trangThaiQuiz, gioConLai]);
 
     if (!moduleData || slides.length === 0) {
         return (
@@ -453,7 +543,7 @@ export default function PresentationPage() {
 
     // Đồng hồ đếm ngược chỉ hiện ở slide cần bấm giờ cho học sinh làm bài:
     // slide câu hỏi tương tác, hoặc slide có thẻ Ví dụ mẫu.
-    const canBamGio = isQuiz || currentFragments.some(frag => slideCoViDuMau(frag));
+    const canBamGio = isQuiz || moGioTuXa || currentFragments.some(frag => slideCoViDuMau(frag));
 
     const handleSlideClick = (e: React.MouseEvent) => {
         const target = e.target as HTMLElement;
@@ -570,7 +660,13 @@ export default function PresentationPage() {
 
                 {/* Đồng hồ bấm giờ - đặt trong canvas nên co giãn cùng slide.
                     key theo vị trí slide để chuyển sang slide khác thì đồng hồ về trạng thái ban đầu. */}
-                {canBamGio && <PresentationTimer key={`${currentSlideIndex}-${currentFragmentIndex}`} />}
+                {canBamGio && (
+                    <PresentationTimer
+                        key={`${currentSlideIndex}-${currentFragmentIndex}`}
+                        lenhNgoai={lenhChoGio}
+                        onDoi={setGioConLai}
+                    />
+                )}
 
                 <div
                     className="flex-1 overflow-y-auto overflow-x-hidden"
@@ -590,7 +686,12 @@ export default function PresentationPage() {
                             nếu không offsetHeight đo thiếu ~8px khiến nội dung vẫn dôi ra khỏi khung. */}
                         <div ref={measureRef} key={`${currentSlideIndex}-${currentFragmentIndex}`} className="w-full flow-root animate-in fade-in duration-300">
                             {isQuiz && quizData ? (
-                                <PresentationQuiz quizData={quizData} />
+                                <PresentationQuiz
+                                    key={currentSlideIndex}
+                                    quizData={quizData}
+                                    lenhNgoai={lenhChoQuiz}
+                                    onDoi={(t) => setTrangThaiQuiz(t)}
+                                />
                             ) : (
                                 <div className="w-full">
                                     {currentFragments.slice(0, currentFragmentIndex + 1).map((frag, idx) => (

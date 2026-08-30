@@ -258,13 +258,39 @@ Thả tệp đúng tên vào là hệ thống tự ưu tiên dùng tệp thật.
 ## 10. Điều khiển bằng điện thoại
 
 Đang trình chiếu, bấm nút **📱** trên thanh điều khiển → hiện **mã QR** và **mã 6 ký tự**.
-Lấy điện thoại quét là xong. Lần đầu sẽ hỏi đăng nhập — dùng đúng tài khoản của thầy cô.
 
-Trên điện thoại có ba tầng:
+Trên điện thoại có **hai đường vào**, thầy cô dùng đường nào cũng được:
 
-1. **Slide đang chiếu**
-2. **Slide kế tiếp** — biết sắp giảng gì mà không phải quay đầu nhìn bảng
-3. **Hàng nút** — ◀ ▶ to nhất; thêm 🎲 Gọi tên · 🏆 Vinh danh · ⛶ Toàn màn hình
+- **Trong app**: menu trái → **Điều khiển trình chiếu** → bấm **Quét mã QR**, hoặc gõ
+  thẳng **mã 6 ký tự** rồi bấm mũi tên.
+- **Ngoài app**: mở camera của điện thoại quét mã QR trên bảng.
+
+Lần đầu sẽ hỏi đăng nhập — dùng đúng tài khoản của thầy cô.
+
+Màn hình điều khiển có ba phần:
+
+1. **Thanh trên** — slide thứ mấy trên tổng bao nhiêu, và **đồng hồ** nếu đang đếm ngược
+2. **Khung giữa** — gạt qua lại giữa **Đang chiếu** và **Tiếp theo**, biết sắp giảng gì
+   mà không phải quay đầu nhìn bảng
+3. **Hàng nút** — ◀ ▶ to nhất; thêm ⏱ Đặt giờ · 🎲 Gọi tên · 🏆 Vinh danh · ⛶ Toàn màn hình
+
+**Đặt giờ ngay trên tay**: bấm ⏱ rồi chọn 1 · 2 · 3 · 5 phút. Đồng hồ hiện lên góc bảng
+và đếm ngược, số giây còn lại chạy luôn trên điện thoại. Bấm **Dừng và xoá đồng hồ** để
+tắt. Đặt được ở **mọi slide**, không riêng slide câu hỏi.
+
+**Slide câu hỏi tương tác thì điều khiển được cả câu hỏi.** Khung giữa tự đổi thành đề
+bài và các phương án **A B C D bấm được**:
+
+- Bấm một phương án → trên bảng phương án đó sáng lên, đúng như thầy cô bấm chuột.
+- **Hiển thị đáp án** → bảng tô xanh đáp án đúng, đỏ phương án chọn sai; bấm lần nữa là
+  **Làm lại**.
+- **Câu trả lời ngắn**: gõ thẳng vào ô trên điện thoại rồi bấm ➤ — chữ hiện lên ô trả lời
+  trên bảng.
+- **Cụm mệnh đề Đúng/Sai** chỉ để đọc (không bấm chọn được), nhưng bấm *Hiển thị đáp án*
+  là có ngay bảng đáp án `a: Đúng · b: Sai · …` trên máy thầy cô.
+
+> Đáp án đúng hiện sẵn trên điện thoại của thầy cô (viền xanh mảnh) — khỏi phải ngoái
+> nhìn bảng mới biết em trả lời đúng hay sai. Học sinh không thấy gì cả.
 
 Mở vòng quay thì hàng nút **đổi hẳn** thành **QUAY** to kèm **+1 · −1 · Vắng · Bỏ lại**.
 Bấm nút có **rung nhẹ** báo đã ăn — lớp ồn, nhìn màn hình không kịp.

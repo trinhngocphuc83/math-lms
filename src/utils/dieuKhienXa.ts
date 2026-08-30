@@ -25,6 +25,12 @@ export type Lenh =
   | { viec: 'vang' }
   | { viec: 'bo-lai' }
   | { viec: 'mo-san-khau' }
+  /* Thao tác ngay trên câu hỏi tương tác đang chiếu */
+  | { viec: 'chon-dap-an'; chon: number }
+  | { viec: 'hien-dap-an' }
+  | { viec: 'nhap-dap-an'; chu: string }
+  | { viec: 'dat-gio'; phut: number }
+  | { viec: 'dung-gio' }
   /** Điện thoại vừa vào, xin máy chiếu phát lại trạng thái */
   | { viec: 'xin-trang-thai' };
 
@@ -42,6 +48,27 @@ export interface TrangThaiChieu {
   trungAi: string;
   /** "Vòng 2 · còn 5/16" */
   tomTatQuay: string;
+  /**
+   * Slide đang chiếu là CÂU HỎI TƯƠNG TÁC thì gửi kèm đề và phương án, để điện thoại bày
+   * đúng mấy nút A B C D - Thầy cô chọn đáp án ngay trên tay, không phải về chỗ máy tính.
+   */
+  cauHoi?: {
+    loai: string;
+    de: string;
+    phuongAn: string[];
+    /** Chọn một phương án có nghĩa không. Cụm mệnh đề Đúng/Sai thì không - chỉ để đọc. */
+    bamDuoc: boolean;
+    /** Đã bấm hiện đáp án chưa */
+    hienDapAn: boolean;
+    /** Đang chọn phương án nào */
+    dangChon: number | null;
+    /** Phương án đúng - gửi cho điện thoại của Thầy cô, không gửi cho học sinh */
+    dapAn: number | null;
+    /** Đáp án của câu trả lời ngắn */
+    dapAnChu: string;
+  } | null;
+  /** Giây còn lại của đồng hồ, 0 là không chạy */
+  gioConLai?: number;
 }
 
 const TEN_KENH = (ma: string) => `dieu-khien-${ma}`;
