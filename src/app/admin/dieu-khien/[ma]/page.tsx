@@ -42,15 +42,22 @@ export default function TrangDieuKhien() {
   const [noiDuoc, setNoiDuoc] = React.useState(false);
   const [chuaThayChieu, setChuaThayChieu] = React.useState(false);
   const guiRef = React.useRef<((l: any) => void) | null>(null);
+  /* Đã nghe được máy chiếu lần nào chưa. Phải dùng ref chứ không dùng state: bộ đếm
+     4 giây bên dưới chỉ chạy một lần nên nó đọc phải giá trị của lần vẽ đầu, lúc đó
+     tất nhiên là chưa nhận được gì - thành ra lúc nào cũng báo "không thấy máy chiếu". */
+  const daNhan = React.useRef(false);
 
   React.useEffect(() => {
     if (!ma) return;
-    const k = moKenhDienThoai(ma, (t) => { setTt(t); setChuaThayChieu(false); }, setNoiDuoc);
+    const k = moKenhDienThoai(ma, (t) => {
+      daNhan.current = true;
+      setTt(t); setChuaThayChieu(false);
+    }, setNoiDuoc);
     guiRef.current = k.gui;
 
     /* Vào kênh rồi mà 4 giây không nghe máy chiếu nói gì thì gần như chắc là máy chiếu đã
        tải lại trang (mã phiên đổi) hoặc đã tắt - phải báo chứ đừng để Thầy bấm mãi. */
-    const hen = setTimeout(() => setChuaThayChieu(v => (tt ? false : true)), 4000);
+    const hen = setTimeout(() => { if (!daNhan.current) setChuaThayChieu(true); }, 4000);
 
     return () => { clearTimeout(hen); k.dong(); guiRef.current = null; };
     // eslint-disable-next-line react-hooks/exhaustive-deps

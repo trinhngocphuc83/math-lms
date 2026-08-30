@@ -199,6 +199,11 @@ export default function PresentationPage() {
     /* Lệnh gửi xuống bảng Gọi tên - tăng số đếm là bảng đó biết có việc mới. */
     const [lenhChoBang, setLenhChoBang] = useState<{ viec: string; diem?: number; dem: number } | null>(null);
     const phatTrangThai = useRef<((tt: TrangThaiChieu) => void) | null>(null);
+    /* Luôn giữ hàm dựng trạng thái MỚI NHẤT. Bộ nghe lệnh chỉ tạo một lần nên nếu gọi
+       thẳng vào biến state thì nó đọc phải giá trị cũ của lần vẽ đầu. */
+    const layTrangThai = useRef<(() => TrangThaiChieu) | null>(null);
+    /* Hàm xử lý lệnh, luôn giữ bản mới nhất - xem chú thích ở chỗ mở kênh. */
+    const xuLyLenh = useRef<((l: Lenh) => void) | null>(null);
 
     // Resume states
     const [showRestorePrompt, setShowRestorePrompt] = useState(false);
@@ -364,9 +369,24 @@ export default function PresentationPage() {
      * Máy chiếu là nơi giữ trạng thái thật, điện thoại chỉ ra lệnh. Nhờ vậy điện thoại rớt
      * mạng giữa chừng thì bài giảng không hề bị ảnh hưởng.
      */
+    /*
+     * KÊNH CHỈ MỞ ĐÚNG MỘT LẦN cho mỗi mã phiên.
+     *
+     * Bản đầu cho hiệu ứng phụ thuộc cả goNext/goPrev - mà hai hàm đó đổi mỗi lần sang
+     * slide, nên kênh bị đóng rồi mở lại liên tục. Đo trên máy: bấm ▶ xong bấm tiếp "Gọi
+     * tên" là lệnh rơi mất vì rơi đúng lúc kênh đang dựng lại. Nay việc xử lý lệnh để
+     * trong ref, đổi bao nhiêu lần cũng không đụng tới kênh.
+     */
     useEffect(() => {
-        const k = moKenhMayChieu(maPhien, (l: Lenh) => {
+        xuLyLenh.current = (l: Lenh) => {
             setDtDaNoi(true);
+            /* Điện thoại vừa vào thì phát ngay trạng thái, đừng bắt Thầy bấm một cái
+               mới biết đang ở slide nào. */
+            if (l.viec === 'xin-trang-thai') {
+                const tt = layTrangThai.current?.();
+                if (tt) phatTrangThai.current?.(tt);
+                return;
+            }
             switch (l.viec) {
                 case 'sau': goNext(); break;
                 case 'truoc': goPrev(); break;
@@ -381,28 +401,33 @@ export default function PresentationPage() {
                 case 'diem':
                     setLenhChoBang(v => ({ viec: 'diem', diem: l.diem, dem: (v?.dem || 0) + 1 })); break;
             }
-        });
+        };
+    });
+
+    useEffect(() => {
+        const k = moKenhMayChieu(maPhien, (l: Lenh) => xuLyLenh.current?.(l));
         phatTrangThai.current = k.phat;
         return () => { phatTrangThai.current = null; k.dong(); };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [maPhien, goNext, goPrev, toggleFullscreen]);
+    }, [maPhien]);
 
     /* Đổi slide thì phát ngay xuống điện thoại, để ô "Slide n/23" và phần xem trước
        luôn khớp với những gì đang chiếu trên bảng. */
     useEffect(() => {
-        if (!phatTrangThai.current) return;
-        const nay = slides[currentSlideIndex] || [];
-        const ke = slides[currentSlideIndex + 1] || [];
-        phatTrangThai.current({
-            slide: currentSlideIndex,
-            tongSlide: slides.length,
-            /* Chỉ gửi các mảnh ĐANG hiện, đúng như trên bảng */
-            dangChieu: nay.slice(0, currentFragmentIndex + 1).join('\n\n'),
-            keTiep: ke.join('\n\n'),
-            moGoiTen,
-            trungAi: '',
-            tomTatQuay: '',
-        });
+        layTrangThai.current = () => {
+            const nay = slides[currentSlideIndex] || [];
+            const ke = slides[currentSlideIndex + 1] || [];
+            return {
+                slide: currentSlideIndex,
+                tongSlide: slides.length,
+                /* Chỉ gửi các mảnh ĐANG hiện, đúng như trên bảng */
+                dangChieu: nay.slice(0, currentFragmentIndex + 1).join('\n\n'),
+                keTiep: ke.join('\n\n'),
+                moGoiTen,
+                trungAi: '',
+                tomTatQuay: '',
+            };
+        };
+        if (phatTrangThai.current) phatTrangThai.current(layTrangThai.current());
     }, [currentSlideIndex, currentFragmentIndex, slides, moGoiTen]);
 
     if (!moduleData || slides.length === 0) {

@@ -119,7 +119,6 @@ export default function BangGoiTenVaDiem({
     return () => document.removeEventListener('keydown', phim);
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
 
   /** Những em thật sự được đưa vào vòng quay lúc này. */
   const dsQuay: HocSinh[] = (trangThai?.conLai || []).filter(h => !vangHomNay.has(h.id));
@@ -289,6 +288,15 @@ export default function BangGoiTenVaDiem({
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen, trungAi, trangThai, vangHomNay]);
+
+  /*
+   * Thoát sớm phải nằm SAU HẾT MỌI HOOK.
+   *
+   * Bản trước đặt dòng này ở trên, rồi tôi thêm hai hook nhận lệnh từ điện thoại xuống
+   * dưới nó - React đếm số hook lệch giữa hai lần vẽ và ném "Rendered more hooks than
+   * during the previous render", vỡ trắng cả trang trình chiếu.
+   */
+  if (!isOpen) return null;
 
   const emDuocChon = trangThai?.caLop.find(h => h.id === emKhac) || null;
 
