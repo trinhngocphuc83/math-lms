@@ -164,8 +164,11 @@ export default function AdminLayout({
 
   if (isSessionLoading) return <div className="h-screen bg-gray-50 flex items-center justify-center">Đang tải...</div>;
 
+  /* flex-1 min-w-0: <body> là một khung flex, khối này không ghi flex-1 thì nó co theo
+     nội dung. Đo trên màn 1366: cả khu quản trị chỉ rộng 823px, dư hơn 500px trống bên
+     phải ở MỌI trang, chứ không riêng trang nào. */
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden font-sans">
+    <div className="flex flex-1 min-w-0 h-screen bg-gray-50 overflow-hidden font-sans">
       {/* Nền mờ phía sau ngăn kéo - chỉ có trên điện thoại */}
       {isMobileNavOpen && (
         <div

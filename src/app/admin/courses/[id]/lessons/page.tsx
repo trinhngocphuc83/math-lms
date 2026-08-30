@@ -62,7 +62,8 @@ export default function CourseStructurePage() {
     const chData = (chRaw || []).filter((c: any) => c.loai !== 'on-tap');
     if (chData) {
       setChapters(chData);
-      if (expandedChapters.length === 0) setExpandedChapters(chData.map(c => c.id));
+      /* KHÔNG mở sẵn mọi chương nữa. Khoá 12 có 5 chương, mở hết là một trang dài lê thê
+         phải cuộn mãi mới tới chương cần sửa. Bấm chương nào thì mở chương đó. */
     }
 
     const { data: lsData } = await supabase.from('lessons').select('id, title, chapter_id, order_index').eq('course_id', courseId).order('order_index', { ascending: true });
@@ -80,13 +81,13 @@ export default function CourseStructurePage() {
   };
 
   const toggleChapter = (chapterId: string) => {
-    setExpandedChapters(prev => 
+    setExpandedChapters(prev =>
       prev.includes(chapterId) ? prev.filter(id => id !== chapterId) : [...prev, chapterId]
     );
   };
 
   const toggleLesson = (lessonId: string) => {
-    setExpandedLessons(prev => 
+    setExpandedLessons(prev =>
       prev.includes(lessonId) ? prev.filter(id => id !== lessonId) : [...prev, lessonId]
     );
   };
@@ -105,7 +106,7 @@ export default function CourseStructurePage() {
   const handleSaveChapter = async () => {
     if (!chapterTitle) return alert("Vui lòng nhập tên chương!");
     setIsSavingChapter(true);
-    
+
     if (editingChapterId) {
       const { error } = await supabase.from('chapters').update({ title: chapterTitle }).eq('id', editingChapterId);
       setIsSavingChapter(false);
@@ -163,7 +164,7 @@ export default function CourseStructurePage() {
   const handleSaveLesson = async () => {
     if (!lessonTitle) return alert("Vui lòng nhập tên bài học!");
     setIsSavingLesson(true);
-    
+
     if (editingLessonId) {
       const { error } = await supabase.from('lessons').update({ title: lessonTitle }).eq('id', editingLessonId);
       setIsSavingLesson(false);
@@ -171,7 +172,7 @@ export default function CourseStructurePage() {
       else { setIsLessonModalOpen(false); loadStructure(); }
     } else {
       const chapterLessons = lessons.filter(l => l.chapter_id === activeChapterId);
-      
+
       const { data: lessonData, error: lessonError } = await supabase.from('lessons').insert([{
         course_id: courseId,
         chapter_id: activeChapterId,
@@ -230,7 +231,7 @@ export default function CourseStructurePage() {
     ];
     const { error } = await supabase.from('lesson_modules').insert(predefinedModules);
     setIsSavingLesson(false);
-    
+
     if (error) {
       alert("Lỗi khi tạo mục (Có thể bạn chưa chạy lệnh SQL tạo bảng lesson_modules): " + error.message);
       console.error("Insert modules error:", error);
@@ -274,7 +275,7 @@ export default function CourseStructurePage() {
   const handleSaveModule = async () => {
     if (!moduleTitle) return alert("Vui lòng nhập tên mục!");
     setIsSavingModule(true);
-    
+
     if (editingModuleId) {
       const { error } = await supabase.from('lesson_modules').update({
         title: moduleTitle,
@@ -309,29 +310,46 @@ export default function CourseStructurePage() {
     return <div className="flex justify-center items-center h-64"><Loader2 className="w-8 h-8 animate-spin text-teal-600" /></div>;
   }
 
+  /* Rộng gần hết khu nội dung: bản cũ khóa ở max-w-4xl (896px) nên màn hình 1366 còn
+     dư hơn 400px trống bên phải, mà tên chương dài thì lại bị bó chật. */
   return (
-    <div className="max-w-4xl mx-auto pb-20">
-      <div className="mb-6">
-        <Link href="/admin/courses" className="text-teal-600 text-sm font-medium flex items-center gap-1 hover:underline mb-3">
-          <ArrowLeft className="w-4 h-4" /> Quay lại danh sách Khóa học
+    <div className="max-w-[1240px] mx-auto pb-16">
+      {/* Đầu trang dồn về MỘT hàng: tên khoá, số chương/bài, rồi tới các nút. */}
+      <div className="mb-3 flex flex-wrap items-center gap-x-3 gap-y-2">
+        <Link href="/admin/courses" title="Quay lại danh sách Khóa học"
+              className="p-1.5 -ml-1.5 rounded-lg text-gray-400 hover:text-teal-600 hover:bg-teal-50 transition-colors">
+          <ArrowLeft className="w-4 h-4" />
         </Link>
-        <div className="flex justify-between items-end">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-800">Cấu trúc Khóa học</h1>
-            <p className="text-gray-500 mt-1 flex items-center gap-2">
-              <BookOpen className="w-4 h-4 text-teal-600" /> {course?.title || 'Đang tải...'}
-            </p>
-          </div>
-          <button 
+        <div className="min-w-0">
+          <h1 className="text-[17px] font-black text-gray-800 leading-tight truncate">
+            {course?.title || 'Đang tải...'}
+          </h1>
+          <p className="text-[12px] text-gray-400 leading-tight">
+            {chapters.length} chương · {lessons.length} bài học
+          </p>
+        </div>
+
+        <div className="ml-auto flex items-center gap-1.5">
+          {chapters.length > 0 && (
+            <button
+              onClick={() => setExpandedChapters(expandedChapters.length ? [] : chapters.map(c => c.id))}
+              className="px-2.5 py-1.5 rounded-lg border border-gray-200 text-gray-500 hover:text-teal-700
+                         hover:border-teal-300 text-[12.5px] font-bold transition-colors"
+            >
+              {expandedChapters.length ? 'Thu hết' : 'Mở hết'}
+            </button>
+          )}
+          <button
             onClick={() => openChapterModal()}
-            className="bg-teal-600 hover:bg-teal-700 text-white px-4 py-2.5 rounded-lg font-medium flex items-center gap-2 transition-colors shadow-sm"
+            className="bg-teal-600 hover:bg-teal-700 text-white px-3 py-1.5 rounded-lg text-[12.5px] font-bold
+                       flex items-center gap-1.5 transition-colors shadow-sm"
           >
-            <Plus className="w-5 h-5" /> Thêm Chương mới
+            <Plus className="w-4 h-4" /> Thêm Chương
           </button>
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-1.5">
         {chapters.length === 0 ? (
           <div className="bg-white p-10 rounded-xl border border-gray-200 text-center text-gray-500 shadow-sm">
             <Layers className="w-12 h-12 text-gray-300 mx-auto mb-3" />
@@ -344,31 +362,37 @@ export default function CourseStructurePage() {
             const chapterLessons = lessons.filter(l => l.chapter_id === chapter.id);
 
             return (
-              <div key={chapter.id} className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-                <div 
-                  className="bg-gray-50 p-4 border-b border-gray-100 flex items-center justify-between cursor-pointer hover:bg-gray-100 transition-colors"
+              <div key={chapter.id} className="bg-white rounded-lg border border-gray-200 overflow-hidden">
+                <div
+                  className={`px-3 py-2 flex items-center justify-between cursor-pointer transition-colors group/ch ${
+                    isExpanded ? 'bg-teal-50/70 border-b border-teal-100' : 'bg-white hover:bg-gray-50'
+                  }`}
                   onClick={() => toggleChapter(chapter.id)}
                 >
-                  <div className="flex items-center gap-3">
-                    {isExpanded ? <ChevronDown className="w-5 h-5 text-gray-500" /> : <ChevronRight className="w-5 h-5 text-gray-500" />}
-                    <h3 className="font-bold text-gray-800 text-lg">{chapter.title}</h3>
-                    <span className="bg-teal-100 text-teal-700 text-xs font-bold px-2 py-0.5 rounded-full">
-                      {chapterLessons.length} bài
+                  <div className="flex items-center gap-2 min-w-0">
+                    {isExpanded ? <ChevronDown className="w-4 h-4 text-teal-600 shrink-0" /> : <ChevronRight className="w-4 h-4 text-gray-400 shrink-0" />}
+                    <h3 className="font-bold text-gray-800 text-[14px] truncate">{chapter.title}</h3>
+                    <span className="shrink-0 bg-teal-100 text-teal-700 text-[11px] font-bold px-1.5 py-0.5 rounded-full">
+                      {chapterLessons.length}
                     </span>
                   </div>
-                  <div className="flex items-center gap-1">
-                    <button onClick={(e) => handleMoveChapter(chapters.indexOf(chapter), 'up', e)} disabled={chapters.indexOf(chapter) === 0} className="p-1.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors disabled:opacity-30" title="Di chuyển lên"><ArrowUp className="w-4 h-4" /></button>
-                    <button onClick={(e) => handleMoveChapter(chapters.indexOf(chapter), 'down', e)} disabled={chapters.indexOf(chapter) === chapters.length - 1} className="p-1.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors disabled:opacity-30" title="Di chuyển xuống"><ArrowDown className="w-4 h-4" /></button>
-                    <button onClick={(e) => { e.stopPropagation(); openChapterModal(chapter); }} className="p-1.5 text-gray-400 hover:text-teal-600 hover:bg-teal-50 rounded-lg transition-colors" title="Đổi tên chương"><Edit2 className="w-4 h-4" /></button>
-                    <button onClick={(e) => handleDeleteChapter(chapter.id, e)} className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="Xóa chương"><Trash2 className="w-4 h-4" /></button>
+                  {/* Nút sửa/xoá chỉ hiện khi rê chuột - để luôn thì bốn biểu tượng nhân với năm
+                      chương thành hai mươi cái, rối mắt mà chẳng dùng mấy khi. */}
+                  <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover/ch:opacity-100 focus-within:opacity-100 transition-opacity">
+                    <button onClick={(e) => handleMoveChapter(chapters.indexOf(chapter), 'up', e)} disabled={chapters.indexOf(chapter) === 0} className="p-1 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors disabled:opacity-25" title="Di chuyển lên"><ArrowUp className="w-3.5 h-3.5" /></button>
+                    <button onClick={(e) => handleMoveChapter(chapters.indexOf(chapter), 'down', e)} disabled={chapters.indexOf(chapter) === chapters.length - 1} className="p-1 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors disabled:opacity-25" title="Di chuyển xuống"><ArrowDown className="w-3.5 h-3.5" /></button>
+                    <button onClick={(e) => { e.stopPropagation(); openChapterModal(chapter); }} className="p-1 text-gray-400 hover:text-teal-600 hover:bg-teal-50 rounded transition-colors" title="Đổi tên chương"><Edit2 className="w-3.5 h-3.5" /></button>
+                    <button onClick={(e) => handleDeleteChapter(chapter.id, e)} className="p-1 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors" title="Xóa chương"><Trash2 className="w-3.5 h-3.5" /></button>
                   </div>
                 </div>
 
                 {isExpanded && (
-                  <div className="p-4 bg-white">
-                    <ul className="space-y-2">
+                  <div className="p-2.5 bg-white">
+                    {/* Màn rộng thì xếp bài học làm hai cột, đỡ phải cuộn. Bài nào đang mở ra xem
+                        mục con thì chiếm trọn bề ngang cho dễ đọc. */}
+                    <ul className="grid gap-1.5 xl:grid-cols-2 items-start">
                       {chapterLessons.length === 0 ? (
-                        <li className="text-sm text-gray-500 italic p-3 text-center bg-gray-50/50 rounded-lg border border-dashed border-gray-200">
+                        <li className="xl:col-span-2 text-[12.5px] text-gray-400 italic px-3 py-2 text-center bg-gray-50/50 rounded border border-dashed border-gray-200">
                           Chưa có bài học nào trong chương này.
                         </li>
                       ) : (
@@ -377,29 +401,29 @@ export default function CourseStructurePage() {
                           const lessonModules = modules.filter(m => m.lesson_id === lesson.id).sort((a, b) => a.order_index - b.order_index);
 
                           return (
-                            <div key={lesson.id} className="border border-gray-100 rounded-lg overflow-hidden bg-white hover:border-teal-200 transition-all">
-                              <div 
-                                className="flex items-center justify-between p-3 cursor-pointer hover:bg-gray-50 group"
+                            <div key={lesson.id} className={`border border-gray-100 rounded-lg overflow-hidden bg-white hover:border-teal-200 transition-all ${isLessonExpanded ? 'xl:col-span-2' : ''}`}>
+                              <div
+                                className="flex items-center justify-between px-2.5 py-1.5 cursor-pointer hover:bg-gray-50 group"
                                 onClick={() => toggleLesson(lesson.id)}
                               >
-                                <div className="flex items-center gap-3">
-                                  {isLessonExpanded ? <ChevronDown className="w-4 h-4 text-gray-500" /> : <ChevronRight className="w-4 h-4 text-gray-500" />}
-                                  <span className="font-semibold text-gray-800">{lesson.title}</span>
+                                <div className="flex items-center gap-1.5 min-w-0">
+                                  {isLessonExpanded ? <ChevronDown className="w-3.5 h-3.5 text-teal-600 shrink-0" /> : <ChevronRight className="w-3.5 h-3.5 text-gray-400 shrink-0" />}
+                                  <span className="font-bold text-[13px] text-gray-800 truncate">{lesson.title}</span>
                                 </div>
-                                <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                  <button onClick={(e) => handleMoveLesson(chapter.id, chapterLessons.indexOf(lesson), 'up', e)} disabled={chapterLessons.indexOf(lesson) === 0} className="p-1.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-colors disabled:opacity-30" title="Lên"><ArrowUp className="w-4 h-4" /></button>
-                                  <button onClick={(e) => handleMoveLesson(chapter.id, chapterLessons.indexOf(lesson), 'down', e)} disabled={chapterLessons.indexOf(lesson) === chapterLessons.length - 1} className="p-1.5 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-md transition-colors disabled:opacity-30" title="Xuống"><ArrowDown className="w-4 h-4" /></button>
-                                  <button onClick={(e) => { e.stopPropagation(); openLessonModal(chapter.id, lesson); }} className="p-1.5 text-gray-400 hover:text-teal-600 hover:bg-teal-50 rounded-md transition-colors" title="Đổi tên"><Edit2 className="w-4 h-4" /></button>
-                                  <button onClick={(e) => handleDeleteLesson(lesson.id, e)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors" title="Xóa bài"><Trash2 className="w-4 h-4" /></button>
+                                <div className="flex items-center gap-0.5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                                  <button onClick={(e) => handleMoveLesson(chapter.id, chapterLessons.indexOf(lesson), 'up', e)} disabled={chapterLessons.indexOf(lesson) === 0} className="p-1 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors disabled:opacity-25" title="Lên"><ArrowUp className="w-3.5 h-3.5" /></button>
+                                  <button onClick={(e) => handleMoveLesson(chapter.id, chapterLessons.indexOf(lesson), 'down', e)} disabled={chapterLessons.indexOf(lesson) === chapterLessons.length - 1} className="p-1 text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 rounded transition-colors disabled:opacity-25" title="Xuống"><ArrowDown className="w-3.5 h-3.5" /></button>
+                                  <button onClick={(e) => { e.stopPropagation(); openLessonModal(chapter.id, lesson); }} className="p-1 text-gray-400 hover:text-teal-600 hover:bg-teal-50 rounded transition-colors" title="Đổi tên"><Edit2 className="w-3.5 h-3.5" /></button>
+                                  <button onClick={(e) => handleDeleteLesson(lesson.id, e)} className="p-1 text-red-500 hover:bg-red-50 rounded transition-colors" title="Xóa bài"><Trash2 className="w-3.5 h-3.5" /></button>
                                 </div>
                               </div>
-                              
+
                               {isLessonExpanded && (
                                 <div className="bg-gray-50/50 p-2 border-t border-gray-100">
                                   {lessonModules.length === 0 ? (
                                     <div className="flex items-center justify-between p-2">
                                       <span className="text-xs text-gray-500 italic">Bài học này chưa có mục nào (dữ liệu cũ).</span>
-                                      <button 
+                                      <button
                                         onClick={() => handleGenerateDefaultModules(lesson.id)}
                                         className="text-xs font-bold text-teal-600 hover:text-teal-700 bg-teal-50 hover:bg-teal-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1"
                                       >
@@ -407,90 +431,88 @@ export default function CourseStructurePage() {
                                       </button>
                                     </div>
                                   ) : (
-                                    <ul className="space-y-1 pl-6 border-l-2 border-teal-100 ml-4 py-1">
+                                    <ul className="space-y-0.5 pl-3 border-l-2 border-teal-100 ml-2 py-0.5">
                                       {lessonModules.filter(m => m.type !== 'practice').map(mod => {
                                         let icon = <></>;
                                         if (mod.type === 'theory') icon = <BookOpen className="w-3.5 h-3.5 text-blue-500" />;
                                         if (mod.type === 'practice') icon = <Target className="w-3.5 h-3.5 text-rose-500" />;
                                         if (mod.type === 'document') icon = <FileText className="w-3.5 h-3.5 text-gray-500" />;
-                                        
+
                                         return (
-                                            <li key={mod.id} className="flex items-center justify-between p-2.5 rounded-md hover:bg-gray-50 border border-transparent hover:border-gray-200 transition-colors">
-                                              <div className="flex items-center gap-2">
+                                            <li className="flex items-center justify-between px-2 py-1 rounded hover:bg-gray-50 border border-transparent hover:border-gray-200 transition-colors" key={mod.id}>
+                                              <div className="flex items-center gap-1.5 min-w-0">
                                                 {icon}
-                                                <span className="text-sm font-medium text-gray-700">{mod.title}</span>
+                                                <span className="text-[12.5px] font-medium text-gray-700 truncate">{mod.title}</span>
                                               </div>
-                                              <div className="flex items-center gap-2">
-                                                <button 
+                                              <div className="flex items-center gap-1 shrink-0">
+                                                <button
                                                   onClick={() => openEditModuleModal(mod)}
-                                                  className="px-2.5 py-1.5 text-xs font-bold bg-gray-100 text-gray-700 hover:bg-gray-200 rounded-md transition-colors flex items-center gap-1 border border-gray-200" title="Đổi tên Tab"
+                                                  className="p-1 text-gray-400 hover:text-gray-700 hover:bg-gray-100 rounded transition-colors" title="Đổi tên Tab"
                                                 >
                                                   <Pencil className="w-3.5 h-3.5" />
                                                 </button>
-                                                <Link 
+                                                <Link
                                                   href={`/admin/lessons/editor?lessonId=${lesson.id}&moduleId=${mod.id}`}
-                                                  className="px-3 py-1.5 text-xs font-bold bg-teal-50 text-teal-700 hover:bg-teal-100 rounded-md transition-colors flex items-center gap-1 border border-teal-100"
+                                                  className="px-2 py-1 text-[11.5px] font-bold bg-teal-50 text-teal-700 hover:bg-teal-100 rounded transition-colors flex items-center gap-1 border border-teal-100"
                                                 >
-                                                  <Edit2 className="w-3.5 h-3.5" /> Soạn bài
+                                                  <Edit2 className="w-3 h-3" /> Soạn bài
                                                 </Link>
-                                                <button 
+                                                <button
                                                   onClick={(e) => handleDeleteModule(mod.id, e)}
-                                                  className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors" title="Xóa Mục"
+                                                  className="p-1 text-red-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors" title="Xóa Mục"
                                                 >
-                                                  <Trash2 className="w-4 h-4" />
+                                                  <Trash2 className="w-3.5 h-3.5" />
                                                 </button>
                                               </div>
                                             </li>
                                         );
                                       })}
-                                      
+
                                       {/* Thư mục Luyện tập */}
                                       {lessonModules.filter(m => m.type === 'practice').length > 0 && (
-                                        <div className="mt-3 border border-orange-100 rounded-xl overflow-hidden bg-orange-50/30">
-                                           <div className="bg-orange-100/50 p-3 flex items-center justify-between border-b border-orange-100/50">
-                                              <div className="flex items-center gap-2">
-                                                 <Layers className="w-4 h-4 text-orange-600" />
-                                                 <span className="font-bold text-orange-800 text-sm">🎯 Luyện tập ({lessonModules.filter(m => m.type === 'practice').length} phần)</span>
-                                              </div>
+                                        <div className="mt-1.5 border border-orange-100 rounded-lg overflow-hidden bg-orange-50/30">
+                                           <div className="bg-orange-100/50 px-2 py-1 flex items-center gap-1.5 border-b border-orange-100/50">
+                                              <Layers className="w-3.5 h-3.5 text-orange-600 shrink-0" />
+                                              <span className="font-bold text-orange-800 text-[12px]">Luyện tập ({lessonModules.filter(m => m.type === 'practice').length} phần)</span>
                                            </div>
-                                           <ul className="space-y-1 p-2">
+                                           <ul className="space-y-0.5 p-1">
                                               {lessonModules.filter(m => m.type === 'practice').map(mod => (
-                                                <li key={mod.id} className="flex items-center justify-between p-2.5 rounded-md hover:bg-white border border-transparent hover:border-orange-200 transition-colors bg-white/60 shadow-sm mb-1">
-                                                  <div className="flex items-center gap-3">
-                                                    <span className="w-2 h-2 rounded-full bg-orange-500"></span>
-                                                    <span className="text-sm font-bold text-gray-700">{mod.title}</span>
+                                                <li key={mod.id} className="flex items-center justify-between px-2 py-1 rounded hover:bg-white border border-transparent hover:border-orange-200 transition-colors bg-white/60">
+                                                  <div className="flex items-center gap-1.5 min-w-0">
+                                                    <span className="w-1.5 h-1.5 rounded-full bg-orange-500 shrink-0"></span>
+                                                    <span className="text-[12.5px] font-bold text-gray-700 truncate">{mod.title}</span>
                                                   </div>
-                                                  <div className="flex items-center gap-2">
-                                                    <button onClick={() => openEditModuleModal(mod)} className="px-2.5 py-1.5 text-xs font-bold bg-orange-100/50 text-orange-700 hover:bg-orange-200 rounded-md transition-colors flex items-center gap-1 border border-orange-200 shadow-sm" title="Đổi tên">
+                                                  <div className="flex items-center gap-1 shrink-0">
+                                                    <button onClick={() => openEditModuleModal(mod)} className="p-1 text-orange-500 hover:text-orange-700 hover:bg-orange-100 rounded transition-colors" title="Đổi tên">
                                                       <Pencil className="w-3.5 h-3.5" />
                                                     </button>
-                                                    <Link href={`/admin/lessons/editor?lessonId=${lesson.id}&moduleId=${mod.id}`} className="px-3 py-1.5 text-xs font-bold bg-orange-50 text-orange-700 hover:bg-orange-100 border border-orange-200 shadow-sm rounded-md transition-colors flex items-center gap-1">
-                                                      <Edit2 className="w-3.5 h-3.5" /> Soạn bài
+                                                    <Link href={`/admin/lessons/editor?lessonId=${lesson.id}&moduleId=${mod.id}`} className="px-2 py-1 text-[11.5px] font-bold bg-orange-50 text-orange-700 hover:bg-orange-100 border border-orange-200 rounded transition-colors flex items-center gap-1">
+                                                      <Edit2 className="w-3 h-3" /> Soạn bài
                                                     </Link>
-                                                    <button onClick={(e) => handleDeleteModule(mod.id, e)} className="p-1.5 text-red-500 hover:bg-red-50 rounded-md transition-colors">
-                                                      <Trash2 className="w-4 h-4" />
+                                                    <button onClick={(e) => handleDeleteModule(mod.id, e)} className="p-1 text-red-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors" title="Xóa">
+                                                      <Trash2 className="w-3.5 h-3.5" />
                                                     </button>
                                                   </div>
                                                 </li>
                                               ))}
-                                              <li className="flex justify-center p-1 mt-1">
-                                                <button 
+                                              <li className="flex justify-center pt-0.5">
+                                                <button
                                                   onClick={() => openModuleModal(lesson.id, true)}
-                                                  className="text-xs font-bold text-orange-600 hover:text-orange-800 bg-white hover:bg-orange-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 w-full justify-center border border-dashed border-orange-300"
+                                                  className="text-[11.5px] font-bold text-orange-600 hover:text-orange-800 bg-white hover:bg-orange-100 px-2 py-1 rounded transition-colors flex items-center gap-1 w-full justify-center border border-dashed border-orange-300"
                                                 >
-                                                  <Plus className="w-3.5 h-3.5" /> Thêm Bài luyện tập
+                                                  <Plus className="w-3 h-3" /> Thêm Bài luyện tập
                                                 </button>
                                               </li>
                                            </ul>
                                         </div>
                                       )}
 
-                                      <li className="flex justify-center p-1 mt-3">
-                                        <button 
+                                      <li className="flex justify-center pt-1">
+                                        <button
                                           onClick={() => openModuleModal(lesson.id, false)}
-                                          className="text-xs font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 w-full justify-center border border-dashed border-indigo-200"
+                                          className="text-[11.5px] font-bold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-2 py-1 rounded transition-colors flex items-center gap-1 w-full justify-center border border-dashed border-indigo-200"
                                         >
-                                          <Plus className="w-3.5 h-3.5" /> Thêm Mục con (Tab)
+                                          <Plus className="w-3 h-3" /> Thêm Mục con (Tab)
                                         </button>
                                       </li>
                                     </ul>
@@ -504,12 +526,12 @@ export default function CourseStructurePage() {
                     </ul>
 
                     {/* Nút Tạo Bài Học */}
-                    <div className="mt-4 border-t border-gray-100 pt-3">
-                      <button 
+                    <div className="mt-1.5 pt-1.5 border-t border-gray-100">
+                      <button
                         onClick={() => openLessonModal(chapter.id)}
-                        className="text-sm font-medium text-teal-600 hover:text-teal-700 flex items-center gap-1.5 p-2 hover:bg-teal-50 w-max rounded-lg transition-colors"
+                        className="text-[12.5px] font-bold text-teal-600 hover:text-teal-700 flex items-center gap-1 px-2 py-1 hover:bg-teal-50 w-max rounded transition-colors"
                       >
-                        <Plus className="w-4 h-4" /> Thêm Bài học mới
+                        <Plus className="w-3.5 h-3.5" /> Thêm Bài học mới
                       </button>
                     </div>
                   </div>
@@ -528,11 +550,11 @@ export default function CourseStructurePage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Tên chương (Chuyên đề)</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={chapterTitle} onChange={e => setChapterTitle(e.target.value)}
-                  placeholder="VD: Chương 1: Căn bậc hai, Căn bậc ba" 
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500" 
+                  placeholder="VD: Chương 1: Căn bậc hai, Căn bậc ba"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500"
                 />
               </div>
             </div>
@@ -540,7 +562,7 @@ export default function CourseStructurePage() {
               <button onClick={() => setIsChapterModalOpen(false)} className="px-4 py-2 font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
                 Hủy bỏ
               </button>
-              <button 
+              <button
                 onClick={handleSaveChapter} disabled={isSavingChapter}
                 className="px-5 py-2 bg-teal-600 text-white font-medium rounded-lg hover:bg-teal-700 transition-colors flex items-center gap-2"
               >
@@ -559,11 +581,11 @@ export default function CourseStructurePage() {
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Tên Bài học</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={lessonTitle} onChange={e => setLessonTitle(e.target.value)}
-                  placeholder="VD: Bài 1: Sự đồng biến và nghịch biến của hàm số" 
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500" 
+                  placeholder="VD: Bài 1: Sự đồng biến và nghịch biến của hàm số"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-teal-500/20 focus:border-teal-500"
                 />
               </div>
             </div>
@@ -571,7 +593,7 @@ export default function CourseStructurePage() {
               <button onClick={() => setIsLessonModalOpen(false)} className="px-4 py-2 font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
                 Hủy bỏ
               </button>
-              <button 
+              <button
                 onClick={handleSaveLesson} disabled={isSavingLesson}
                 className="px-5 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2"
               >
@@ -591,7 +613,7 @@ export default function CourseStructurePage() {
               {!isAddingPracticeChild && (
                 <div>
                   <label className="block text-sm font-semibold text-gray-700 mb-2">Loại mục (Tab)</label>
-                  <select 
+                  <select
                     value={moduleType} onChange={e => setModuleType(e.target.value)}
                     className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 font-medium"
                   >
@@ -603,11 +625,11 @@ export default function CourseStructurePage() {
               )}
               <div>
                 <label className="block text-sm font-semibold text-gray-700 mb-2">Tên hiển thị (Tên Tab)</label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   value={moduleTitle} onChange={e => setModuleTitle(e.target.value)}
-                  placeholder="VD: Luyện tập Cơ bản" 
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500" 
+                  placeholder="VD: Luyện tập Cơ bản"
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500"
                 />
               </div>
             </div>
@@ -615,7 +637,7 @@ export default function CourseStructurePage() {
               <button onClick={() => setIsModuleModalOpen(false)} className="px-4 py-2 font-medium text-gray-600 hover:bg-gray-100 rounded-lg transition-colors">
                 Hủy bỏ
               </button>
-              <button 
+              <button
                 onClick={handleSaveModule} disabled={isSavingModule}
                 className="px-5 py-2 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 transition-colors flex items-center gap-2"
               >
