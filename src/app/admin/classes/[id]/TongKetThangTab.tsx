@@ -1,16 +1,17 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   Loader2, ImageIcon, FileSpreadsheet, Lock, Unlock, RefreshCw, Trophy,
   TrendingUp, AlertTriangle, FileText,
 } from "lucide-react";
 import { captureElement, downloadOrShare } from "@/utils/imageExport";
 import {
-  layBangVinhDanh, quetDiemTuDong, chotThang, boChotThang, daChotThang, layChiTietThang,
+  layBangVinhDanh, quetDiemTuDong, chotThang, boChotThang, daChotThang,
   type BangVinhDanh,
 } from "@/app/actions/goiTenVaDiem";
 import { LOI_CHUA_TAO_BANG, thangNay, thangTruoc } from "@/utils/goiTenVaDiem";
+import PhieuPhuHuynhModal from "./PhieuPhuHuynhModal";
 
 /**
  * Tổng kết điểm thưởng theo tháng: hai bảng xếp hạng, chốt tháng, và xuất báo cáo.
@@ -20,13 +21,6 @@ import { LOI_CHUA_TAO_BANG, thangNay, thangTruoc } from "@/utils/goiTenVaDiem";
  * một bảng rỗng khó hiểu.
  */
 
-const TEN_NGUON: Record<string, string> = {
-  tuong_tac: 'Phát biểu trên lớp',
-  kiem_tra: 'Bài kiểm tra',
-  luyen_tap: 'Bài luyện tập',
-  thi_online: 'Thi online',
-  tien_bo: 'Thưởng tiến bộ',
-};
 
 export default function TongKetThangTab({ classId, classInfo }: { classId: string; classInfo: any }) {
   const [thang, setThang] = React.useState(thangNay());
@@ -37,6 +31,9 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
   const [chuaTaoBang, setChuaTaoBang] = React.useState(false);
   const [bao, setBao] = React.useState('');
   const khungAnh = useRef<HTMLDivElement>(null);
+  /* Phiếu phụ huynh tách ra hộp riêng: có trang trí và xuất ẢNH, vì phụ huynh nhận qua
+     Zalo thì một tấm ảnh mở ra là thấy ngay. */
+  const [moPhieu, setMoPhieu] = useState(false);
 
   const cacThang = React.useMemo(() => {
     const ra = [thangNay()];
@@ -123,51 +120,6 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
     setDangLam('');
   };
 
-  /** Phiếu riêng từng em, gộp trong một tệp Excel - mỗi em một trang. */
-  const xuatPhieu = async () => {
-    setDangLam('phieu');
-    try {
-      const chiTiet = await layChiTietThang(classId, thang);
-      const ExcelJS = (await import('exceljs')).default;
-      const wb = new ExcelJS.Workbook();
-
-      for (const d of bang?.theoTong || []) {
-        const ws = wb.addWorksheet(d.hs.ten.slice(0, 30).replace(/[\\/*?:[\]]/g, ' '));
-        ws.columns = [
-          { header: 'Ngày', key: 'ngay', width: 12 },
-          { header: 'Nội dung', key: 'noi', width: 46 },
-          { header: 'Loại', key: 'loai', width: 20 },
-          { header: 'Điểm', key: 'diem', width: 8 },
-        ];
-        ws.getRow(1).font = { bold: true };
-        for (const r of chiTiet[d.hs.id] || []) {
-          ws.addRow({
-            ngay: new Date(r.luc).toLocaleDateString('vi-VN'),
-            noi: r.ly_do || TEN_NGUON[r.nguon] || r.nguon,
-            loai: TEN_NGUON[r.nguon] || r.nguon,
-            diem: r.diem,
-          });
-        }
-        const tong = ws.addRow({ noi: 'TỔNG ĐIỂM THÁNG', diem: d.tong });
-        tong.font = { bold: true };
-        if (bang?.coThangTruoc) {
-          ws.addRow({ noi: 'Tháng trước', diem: d.truoc });
-          const t = ws.addRow({ noi: 'Mức tiến bộ', diem: d.tang });
-          t.font = { bold: true };
-        }
-      }
-
-      const buf = await wb.xlsx.writeBuffer();
-      const blob = new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `Phieu_phu_huynh_${classInfo?.name || 'Lop'}_${thang}.xlsx`;
-      a.click();
-      URL.revokeObjectURL(a.href);
-    } catch (e: any) { nhac('Không xuất được phiếu: ' + (e?.message || '')); }
-    setDangLam('');
-  };
-
   if (chuaTaoBang) {
     return (
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
@@ -218,10 +170,10 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
                   className="bg-emerald-50 text-emerald-700 border border-emerald-100 px-3.5 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-emerald-100 disabled:opacity-50">
             {nut('excel') ? <Loader2 size={17} className="animate-spin" /> : <FileSpreadsheet size={17} />} Excel
           </button>
-          <button onClick={xuatPhieu} disabled={!!dangLam}
-                  title="Mỗi em một trang, gửi riêng cho từng phụ huynh"
+          <button onClick={() => setMoPhieu(true)} disabled={!!dangLam}
+                  title="Phiếu riêng từng em, có trang trí - xuất ảnh gửi Zalo cho phụ huynh"
                   className="bg-amber-50 text-amber-800 border border-amber-100 px-3.5 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-amber-100 disabled:opacity-50">
-            {nut('phieu') ? <Loader2 size={17} className="animate-spin" /> : <FileText size={17} />} Phiếu phụ huynh
+            <FileText size={17} /> Phiếu phụ huynh
           </button>
         </div>
       </div>
@@ -280,6 +232,15 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
           </div>
         </div>
       )}
+
+      <PhieuPhuHuynhModal
+        isOpen={moPhieu}
+        onClose={() => setMoPhieu(false)}
+        classId={classId}
+        classInfo={classInfo}
+        thang={thang}
+        bang={bang}
+      />
     </div>
   );
 }
