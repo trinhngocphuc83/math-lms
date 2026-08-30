@@ -53,7 +53,13 @@ export default function CourseStructurePage() {
     const { data: courseData } = await supabase.from('courses').select('title').eq('id', courseId).single();
     if (courseData) setCourse(courseData);
 
-    const { data: chData } = await supabase.from('chapters').select('*').eq('course_id', courseId).order('order_index', { ascending: true });
+    /* Bỏ chương thuộc khu Ôn tập & Kiểm tra - đề ôn tập có trang riêng /admin/on-tap,
+       để cả hai nơi thì sửa một chỗ lại quên chỗ kia.
+       Lọc bằng JS chứ không lọc trong câu truy vấn: máy nào chưa chạy tệp SQL thì cột
+       `loai` chưa có, lọc trong truy vấn là hỏng cả câu và cây bài giảng trống trơn. */
+    const { data: chRaw } = await supabase.from('chapters').select('*')
+      .eq('course_id', courseId).order('order_index', { ascending: true });
+    const chData = (chRaw || []).filter((c: any) => c.loai !== 'on-tap');
     if (chData) {
       setChapters(chData);
       if (expandedChapters.length === 0) setExpandedChapters(chData.map(c => c.id));

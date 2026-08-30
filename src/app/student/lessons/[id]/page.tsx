@@ -3,7 +3,7 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
-import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight, ChevronDown } from "lucide-react";
+import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight, ChevronDown, X } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -580,10 +580,23 @@ export default function StudentLessonPage() {
         if (kh?.grade_level && Number(kh.grade_level) > 0) lopKhoa = String(kh.grade_level);
       }
       const { data: modulesData } = await supabase.from('lesson_modules').select('*').eq('lesson_id', lessonId).order('order_index', { ascending: true });
-      
+
+      /* Bài thuộc khu Ôn tập & Kiểm tra thì chỉ bày các ĐỀ.
+         Mỗi bài vốn tự sinh kèm hai mục "Lý thuyết" và "Tài liệu & Video"; ở năm bài kiểm
+         tra đang có, mười mục đó rỗng trơn - bày ra chỉ tổ làm học sinh bấm nhầm. */
+      let laOnTap = false;
+      if (lessonData?.chapter_id) {
+        const { data: ch } = await supabase.from('chapters').select('loai').eq('id', lessonData.chapter_id).single();
+        laOnTap = ch?.loai === 'on-tap';
+      }
+      const dsMuc = laOnTap
+        ? (modulesData || []).filter((m: any) => m.type === 'practice')
+        : (modulesData || []);
+
       if (lessonData) {
-        setLesson({ ...lessonData, modules: modulesData || [], lopKhoa });
-        if (modulesData && modulesData.length > 0) {
+        setLesson({ ...lessonData, modules: dsMuc, lopKhoa, laOnTap });
+        const modulesData2 = dsMuc;
+        if (modulesData2 && modulesData2.length > 0) {
           /*
            * Địa chỉ có ?moduleId= thì mở thẳng mục đó.
            *
@@ -592,8 +605,8 @@ export default function StudentLessonPage() {
            * Lý thuyết nên tưởng đề chưa lưu được - trong khi đề đã nằm sẵn trong kho.
            */
           const idTrenDiaChi = new URLSearchParams(window.location.search).get('moduleId');
-          const coThat = idTrenDiaChi && modulesData.some((m: any) => m.id === idTrenDiaChi);
-          setActiveModuleId(coThat ? idTrenDiaChi! : modulesData[0].id);
+          const coThat = idTrenDiaChi && modulesData2.some((m: any) => m.id === idTrenDiaChi);
+          setActiveModuleId(coThat ? idTrenDiaChi! : modulesData2[0].id);
         }
       }
       setLoading(false);
@@ -607,6 +620,8 @@ export default function StudentLessonPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [chromeHidden, setChromeHidden] = useState(false);
   const [moChonDe, setMoChonDe] = useState(false);
+  /** Đang mở khung xem video sửa đề của đề hiện tại. */
+  const [xemVideoSua, setXemVideoSua] = useState(false);
   const hopChonDe = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = scrollRef.current;
@@ -771,6 +786,47 @@ export default function StudentLessonPage() {
                  <span className={`w-2 h-7 rounded-full ${isPracticeModule ? 'bg-orange-500' : 'bg-indigo-600'}`}></span>
                  <h2 className="text-lg font-bold text-gray-800">{activeModule.title}</h2>
                </div>
+
+               {/* Tải đề và video sửa đề của CHÍNH đề này - để em nào vừa nộp xong là xem
+                   được lời chữa ngay, không phải quay ra ngoài tìm. */}
+               {(activeModule.attachment_url || activeModule.video_url) && (
+                 <div className="flex flex-wrap gap-2 mb-4">
+                   {activeModule.attachment_url && (
+                     <a href={activeModule.attachment_url} target="_blank" rel="noopener noreferrer"
+                        className="px-3.5 py-2 rounded-xl border border-indigo-200 bg-indigo-50 text-indigo-700
+                                   font-bold text-[13px] hover:bg-indigo-100 transition-colors flex items-center gap-1.5">
+                       <FileText className="w-4 h-4" /> Tải đề
+                     </a>
+                   )}
+                   {activeModule.video_url && (
+                     <button onClick={() => setXemVideoSua(true)}
+                             className="px-3.5 py-2 rounded-xl border border-rose-200 bg-rose-50 text-rose-700
+                                        font-bold text-[13px] hover:bg-rose-100 transition-colors flex items-center gap-1.5">
+                       <PlayCircle className="w-4 h-4" /> Video sửa đề
+                     </button>
+                   )}
+                 </div>
+               )}
+
+               {xemVideoSua && activeModule.video_url && (
+                 <div className="fixed inset-0 z-[90] bg-slate-900/70 backdrop-blur-sm flex items-center justify-center p-4"
+                      onClick={() => setXemVideoSua(false)}>
+                   <div onClick={e => e.stopPropagation()}
+                        className="bg-white w-full max-w-[860px] rounded-2xl shadow-2xl overflow-hidden">
+                     <div className="px-5 py-3.5 bg-rose-600 flex items-center gap-2.5">
+                       <PlayCircle className="w-5 h-5 text-white shrink-0" />
+                       <h3 className="text-[15px] font-black text-white truncate">Video sửa đề — {activeModule.title}</h3>
+                       <button onClick={() => setXemVideoSua(false)} className="ml-auto p-1 text-white/80 hover:text-white shrink-0">
+                         <X className="w-5 h-5" />
+                       </button>
+                     </div>
+                     <div className="relative w-full pb-[56.25%] bg-black">
+                       <iframe src={getYouTubeEmbedUrl(activeModule.video_url)} allowFullScreen
+                               className="absolute inset-0 w-full h-full border-none" />
+                     </div>
+                   </div>
+                 </div>
+               )}
                {(isVideoModule || isDocumentModule) ? (
                   <DocAndVideoUI content={activeModule.content_markdown || ""} />
                ) : isPracticeModule ? (

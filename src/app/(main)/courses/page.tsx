@@ -207,7 +207,8 @@ export default function CoursePlayerPage() {
         supabase.from('lessons').select('*').eq('course_id', courseId).order('order_index', { ascending: true })
       ]);
 
-      if (chaptersData) setChapters(chaptersData);
+      // Chương thuộc khu Ôn tập & Kiểm tra có lối vào riêng, không bày lẫn vào bài giảng
+      if (chaptersData) setChapters(chaptersData.filter((c: any) => c.loai !== 'on-tap'));
       
       if (lessonsData && lessonsData.length > 0) {
         setLessons(lessonsData);

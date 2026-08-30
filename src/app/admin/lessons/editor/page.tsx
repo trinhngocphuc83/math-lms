@@ -1374,8 +1374,10 @@ function EditorContent() {
       return;
     }
     const fetchChapters = async () => {
-      const { data } = await supabase.from('chapters').select('id, title').eq('course_id', selectedCourseId).order('order_index', { ascending: true });
-      if (data) setChapters(data);
+      const { data } = await supabase.from('chapters').select('id, title, loai')
+        .eq('course_id', selectedCourseId).order('order_index', { ascending: true });
+      // Chương thuộc khu Ôn tập & Kiểm tra soạn ở /admin/on-tap, không bày trong ô này
+      if (data) setChapters(data.filter((c: any) => c.loai !== 'on-tap'));
     };
     fetchChapters();
   }, [selectedCourseId]);

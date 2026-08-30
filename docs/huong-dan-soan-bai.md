@@ -300,7 +300,37 @@ hai số lệch nhau). Trên điện thoại cũng có ô y hệt.
 
 ---
 
-## 11. Điều khiển bằng điện thoại
+## 11. Khu Ôn tập & Kiểm tra
+
+Đề ôn tập có chỗ riêng, không nằm lẫn cuối cây bài giảng nữa: menu trái →
+**Ôn tập & Kiểm tra**. Xếp theo **Khối → Hình thức kiểm tra → từng đề**.
+
+### Soạn đề
+
+1. Chọn **khối** ở dải nút trên cùng (nhớ khối vừa chọn cho lần sau).
+2. Chọn **hình thức kiểm tra** ở cột trái, hoặc bấm **+ Thêm hình thức** — có sẵn năm
+   chip *Cuối chương · Giữa kì I · Cuối kì I · Giữa kì II · Cuối kì II*, bấm một cái là
+   xong; muốn tên khác (*Thi thử*, *Ôn hè*, *Cuối chương 2*) thì gõ vào ô bên dưới.
+3. Bấm **Thêm đề** → **Soạn đề**. Trình soạn mở ra y hệt phần luyện tập, mọi lệnh dùng
+   như cũ. Bấm **Chữa bài** để chiếu đề lên bảng và chữa từng câu.
+
+Mỗi đề có thêm nút 📄 để **gắn link tải đề** (Google Drive) và **link video sửa đề**
+(YouTube). Học sinh bấm là tải được đề về in, và xem video chữa ngay trong app.
+
+### Học sinh vào thế nào
+
+Trang chủ học sinh → **Ôn tập & Kiểm tra**. Không phải chọn khối — hệ thống biết em học
+khối nào. Bấm hình thức, bấm đề, là đang làm bài: **hai lần bấm** thay cho năm lần lần
+theo khoá học → chương → bài → thẻ Luyện tập.
+
+Làm bài, chấm điểm, làm lại **y hệt phần luyện tập**, và điểm vẫn chạy vào *Kết quả bài
+tập*, *điểm thưởng* và *báo điểm tháng* như thường.
+
+> Đề ôn tập **không hiện trong cây bài giảng** nữa — sửa ở một chỗ thôi cho khỏi lẫn.
+
+---
+
+## 12. Điều khiển bằng điện thoại
 
 Đang trình chiếu, bấm nút **📱** trên thanh điều khiển → hiện **mã QR** và **mã 6 ký tự**.
 
