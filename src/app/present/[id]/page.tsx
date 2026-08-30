@@ -10,7 +10,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling, Dices, Smartphone } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling, Dices, Smartphone, HelpCircle } from 'lucide-react';
 import { ensureMathDelimiters } from '@/utils/latexFixer';
 import React from 'react';
 import {
@@ -22,6 +22,7 @@ import {
 import PresentationTimer from '@/components/presentation/PresentationTimer';
 import BangGoiTenVaDiem from '@/components/lop/BangGoiTenVaDiem';
 import GhepDienThoaiModal from '@/components/presentation/GhepDienThoaiModal';
+import HuongDanSoanBaiModal from '@/components/admin/HuongDanSoanBaiModal';
 import { moKenhMayChieu, taoMaPhien, type Lenh, type TrangThaiChieu } from '@/utils/dieuKhienXa';
 import { tachSlide } from '@/utils/tachSlide';
 
@@ -195,6 +196,7 @@ export default function PresentationPage() {
        trang là mã đổi, nên điện thoại cũ mất quyền, phải quét lại. */
     const [maPhien] = useState(() => taoMaPhien());
     const [moGhepDT, setMoGhepDT] = useState(false);
+    const [moHuongDan, setMoHuongDan] = useState(false);
     const [dtDaNoi, setDtDaNoi] = useState(false);
     /* Lệnh gửi xuống bảng Gọi tên - tăng số đếm là bảng đó biết có việc mới. */
     const [lenhChoBang, setLenhChoBang] = useState<{ viec: string; diem?: number; dem: number } | null>(null);
@@ -354,6 +356,8 @@ export default function PresentationPage() {
                 goPrev();
             } else if (e.key === 'f' || e.key === 'F') {
                 toggleFullscreen();
+            } else if (e.key === 'h' || e.key === 'H') {
+                setMoHuongDan(true);
             } else if (e.key === 'g' || e.key === 'G') {
                 /* Gọi tên & Điểm - đang giảng, với tay bấm một phím là xong. */
                 setMoGoiTen(true);
@@ -624,6 +628,13 @@ export default function PresentationPage() {
                     <ChevronLeft className="w-7 h-7" />
                 </button>
                 <button
+                    onClick={() => setMoHuongDan(true)}
+                    className="p-2.5 bg-white/10 hover:bg-white/20 rounded-full transition-all text-white hover:scale-105 active:scale-95"
+                    title="Hướng dẫn sử dụng (phím H)"
+                >
+                    <HelpCircle className="w-7 h-7" />
+                </button>
+                <button
                     onClick={() => setMoGhepDT(true)}
                     className={`p-2.5 rounded-full transition-all text-white hover:scale-105 active:scale-95 ${
                         dtDaNoi ? 'bg-emerald-500/40 hover:bg-emerald-500/60' : 'bg-white/10 hover:bg-white/20'}`}
@@ -668,6 +679,8 @@ export default function PresentationPage() {
             />
 
             {/* Ghép điện thoại: mã QR dựng từ chính địa chỉ đang mở nên chạy ở đâu cũng đúng. */}
+            <HuongDanSoanBaiModal isOpen={moHuongDan} onClose={() => setMoHuongDan(false)} />
+
             <GhepDienThoaiModal
                 isOpen={moGhepDT}
                 onClose={() => setMoGhepDT(false)}

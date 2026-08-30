@@ -1,7 +1,10 @@
-# Hướng dẫn soạn bài giảng điện tử
+# Hướng dẫn sử dụng
 
-Bảng tra nhanh cho trình soạn bài. Mở lại bất cứ lúc nào bằng nút **❓ Hướng dẫn** ở đầu
-trang soạn.
+Bảng tra nhanh. Mở lại bất cứ lúc nào bằng nút **❓ Hướng dẫn** — có ở **trang soạn bài**,
+**trang lớp học** và **màn hình trình chiếu**.
+
+Phần 1–5 nói về soạn bài và Sổ tay. Phần 6–10 nói về lúc đứng lớp: gọi tên, cộng điểm,
+vinh danh và điều khiển bằng điện thoại.
 
 ---
 
@@ -151,3 +154,123 @@ Nếu máy trả về thiếu một khối câu hỏi, hệ thống **từ chố
   mũi tên, mọi thứ khác vẫn bình thường.
 - Nút **Dọn trùng** (chỉ hiện khi kho thật sự có bản trùng): bày từng nhóm cạnh nhau, chọn
   bản muốn giữ rồi mới xoá.
+
+---
+
+## 6. Gọi tên học sinh (vòng quay)
+
+Mở bằng nút **🎲 Gọi tên & Điểm** ở **trang lớp học**, hoặc nút cùng tên trên thanh điều
+khiển lúc **trình chiếu** (phím tắt **G**).
+
+| Nút | Việc |
+|---|---|
+| **QUAY** | Băng tên cuộn rồi dừng, nổ pháo giấy và đọc tên "Mời em ..." |
+| **+ Đúng** | Cộng 1 điểm, và nói "Em ... được cộng 1 điểm" |
+| **− Chưa được** | Trừ 1 điểm, và nói "Em ... bị trừ 1 điểm" |
+| **Vắng** | Em này **đã được gọi** nhưng hôm nay không có mặt → bỏ qua trong buổi này thôi |
+| **Bỏ lại** | **Quay nhầm** → coi như chưa từng gọi, em vẫn nằm nguyên trong vòng |
+| **Tải sẵn giọng** | Lấy trước giọng đọc cả lớp — bấm một lần trước buổi dạy |
+| 🔊 | Tắt/bật nhạc quay số |
+| 🔄 | Tải lại danh sách lớp (vừa thêm học sinh ở tab khác) |
+
+**Không gọi trùng:** quay trúng ai thì em đó **tạm ẩn**, hết cả lớp mới sang vòng mới. Số
+đếm *"Vòng 2 · còn 5/16"* cho biết đang ở đâu.
+
+**Nhớ xuyên suốt:** trạng thái khoá theo **lớp**, không theo bài. Quay ở bài A rồi mở bài
+B, hay mở từ trang lớp học, vẫn nối liền một mạch.
+
+**Thêm / bớt học sinh thì tự cập nhật.** Thêm em mới giữa vòng là em đó vào ngay vòng đang
+chạy; bớt em là biến khỏi vòng quay và khỏi số đếm. Không phải dọn gì.
+
+### Giọng đọc
+
+Ba lớp dự phòng, **không bao giờ im lặng**: giọng AI → bản đã đọc lần trước (đọc tức thì,
+**mất mạng vẫn được**) → giọng máy → chuông. Dưới tên có ghi đang dùng giọng nào.
+
+> **Lần đầu đọc một cái tên mất vài giây** vì phải gọi Google. Bấm **Tải sẵn giọng** một
+> lần trước buổi dạy thì cả buổi đọc ngay. Hạn mức giọng AI mỗi ngày có giới hạn — tải hết
+> thì nút tự dừng và báo *"mai bấm tiếp"*, số đã tải vẫn dùng được.
+
+---
+
+## 7. Điểm thưởng — điểm ở đâu ra
+
+| Nguồn | Cách cộng |
+|---|---|
+| **Phát biểu trên lớp** | Đúng `+1` · chưa được `−1` (thầy cô bấm ở vòng quay) |
+| **Luyện tập · Kiểm tra · Thi online** | từ **7** → `+1` · từ **8** → `+2` · từ **9** → `+3` · **10** → `+4` |
+| **Thưởng tiến bộ** | Bài sau hơn bài trước **từ 1,5 điểm** → `+1` |
+
+Bốn quy tắc phụ:
+
+- Bài **dưới 7 điểm được 0, KHÔNG bị trừ**. Chỉ trừ ở phần phát biểu trên lớp.
+- Làm lại nhiều lần thì lấy **lần điểm cao nhất** — khuyến khích làm lại cho tốt.
+- **Bài 0 điểm coi như bỏ dở**, bỏ qua hẳn, không tính là một lần làm bài.
+- **Mỗi bài chỉ cộng một lần** dù bấm quét lại bao nhiêu lượt.
+
+**Điểm không tự chạy nền.** Bấm **"Cập nhật điểm từ bài làm"** ở tab Tổng kết tháng, hoặc
+nó tự chạy mỗi khi thầy cô **lưu điểm kiểm tra**.
+
+**Học sinh xem được** ở mục **Điểm thưởng** trên màn hình của em: tổng điểm tháng, so với
+tháng trước, và từng lần cộng/trừ kèm lý do.
+
+---
+
+## 8. Nhập điểm kiểm tra và tổng kết tháng
+
+**Tab Báo điểm:** gõ điểm từng em rồi bấm **Lưu điểm**. Ô **"Bài đã lưu"** cho mở lại bài
+cũ để sửa. Ô để trống nghĩa là em đó chưa có điểm. Lưu xong hệ thống cộng điểm thưởng luôn.
+
+**Tab Tổng kết tháng:**
+
+| Nút | Việc |
+|---|---|
+| **Cập nhật điểm từ bài làm** | Quét bài luyện tập và kiểm tra, cộng cho bài chưa cộng |
+| **Chốt tháng** | Khoá lại, không cộng/trừ được nữa. Quét nốt trước khi khoá. **Mở khoá lại được** nếu chốt nhầm |
+| **Ảnh** · **Excel** | Bảng cả lớp |
+| **Phiếu phụ huynh** | Phiếu riêng từng em, có trang trí — **xuất ảnh** gửi Zalo, hoặc Excel để lưu hồ sơ |
+
+Hai bảng xếp hạng tách riêng: **Tổng điểm** để nhìn toàn cảnh, **Tiến bộ** để khen thưởng.
+Tháng đầu chưa có gì để so thì bảng tiến bộ tự ẩn.
+
+---
+
+## 9. Sân khấu vinh danh
+
+Mở bằng nút **🏆 Sân khấu vinh danh** ở trang lớp học. Chiếu lên tivi cuối tháng.
+
+Bấm **BẮT ĐẦU LỄ VINH DANH** rồi để đó: trống dồn → lộ hạng ba → hạng nhì → hạng nhất,
+mỗi lần một tràng pháo giấy và xướng tên, kết bằng tiếng kèn. Xong mới hiện bảng cả lớp.
+
+**Nhạc** để trong thư mục `public/am-thanh/`:
+
+| Tệp | Dùng cho |
+|---|---|
+| `vinh-danh.mp3` | Nhạc nền sân khấu |
+| `quay-so.mp3` | Nhạc lúc vòng quay đang quay |
+| `fanfare.mp3` | Tiếng kèn — **chưa có thì hệ thống tự tạo** |
+| `trong.mp3` | Trống dồn — **chưa có thì hệ thống tự tạo** |
+
+Thả tệp đúng tên vào là hệ thống tự ưu tiên dùng tệp thật.
+
+---
+
+## 10. Điều khiển bằng điện thoại
+
+Đang trình chiếu, bấm nút **📱** trên thanh điều khiển → hiện **mã QR** và **mã 6 ký tự**.
+Lấy điện thoại quét là xong. Lần đầu sẽ hỏi đăng nhập — dùng đúng tài khoản của thầy cô.
+
+Trên điện thoại có ba tầng:
+
+1. **Slide đang chiếu**
+2. **Slide kế tiếp** — biết sắp giảng gì mà không phải quay đầu nhìn bảng
+3. **Hàng nút** — ◀ ▶ to nhất; thêm 🎲 Gọi tên · 🏆 Vinh danh · ⛶ Toàn màn hình
+
+Mở vòng quay thì hàng nút **đổi hẳn** thành **QUAY** to kèm **+1 · −1 · Vắng · Bỏ lại**.
+Bấm nút có **rung nhẹ** báo đã ăn — lớp ồn, nhìn màn hình không kịp.
+
+> **Điện thoại rớt mạng không ảnh hưởng bài giảng** — máy chiếu vẫn chạy, cắm lại là tự
+> khớp. Ngược lại, **tải lại trang trình chiếu thì mã đổi**, phải quét lại mã mới.
+>
+> **Đang trình chiếu thì để cửa sổ đó nổi lên trước.** Vòng quay dùng hiệu ứng mà trình
+> duyệt tự tạm dừng khi cửa sổ nằm ở nền — băng tên sẽ đứng im.

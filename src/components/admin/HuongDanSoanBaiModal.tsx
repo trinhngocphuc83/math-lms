@@ -142,9 +142,9 @@ export default function HuongDanSoanBaiModal({
             <HelpCircle className="w-[18px] h-[18px] text-white" />
           </div>
           <div className="min-w-0">
-            <h2 className="text-[15px] font-black text-white leading-tight">Hướng dẫn soạn bài</h2>
+            <h2 className="text-[15px] font-black text-white leading-tight">Hướng dẫn sử dụng</h2>
             <p className="text-[11.5px] text-teal-50/90 leading-tight hidden sm:block">
-              Bảng tra nhanh các lệnh và quy ước của trình soạn
+              Soạn bài · Sổ tay · Gọi tên · Điểm thưởng · Vinh danh · Điện thoại
             </p>
           </div>
           <div className="relative ml-auto w-[150px] sm:w-[230px] shrink-0">
