@@ -140,3 +140,76 @@ export function MucMenu({
 export function NganMenu() {
   return <div className="my-1 border-t border-gray-100" />;
 }
+
+/**
+ * Danh sách chọn NHIỀU mục, dùng trong menu "Lọc kho".
+ *
+ * Trước đây mỗi ô lọc là một thẻ select chỉ chọn được một, nên muốn ra đề gộp hai
+ * chương thì phải làm hai lần rồi ghép tay. Danh sách dạng toán có thể tới hàng trăm dòng
+ * nên kèm luôn ô tìm nhanh; không có thì cuộn mỏi tay.
+ */
+export function DanhSachTick({ ds, chon, datChon, tenGoi, nhanCua }: {
+  ds: string[];
+  chon: string[];
+  datChon: (v: string[]) => void;
+  /** Tên gọi để ghi trong ô tìm, ví dụ "chuyên đề". */
+  tenGoi: string;
+  /** Đổi mã sang chữ dễ đọc, ví dụ NLC -> Trắc nghiệm. */
+  nhanCua?: (m: string) => string;
+}) {
+  const [tim, setTim] = useState("");
+  const hien = tim.trim()
+    ? ds.filter((x) => (nhanCua ? nhanCua(x) : x).toLowerCase().includes(tim.trim().toLowerCase()))
+    : ds;
+
+  const bat = (x: string) =>
+    datChon(chon.includes(x) ? chon.filter((y) => y !== x) : [...chon, x]);
+
+  return (
+    <div className="px-1 pb-1.5">
+      {ds.length > 8 && (
+        <input
+          value={tim}
+          onChange={(e) => setTim(e.target.value)}
+          placeholder={`Tìm ${tenGoi}...`}
+          className="w-full mb-1 border border-gray-200 rounded-lg px-2 py-1 outline-none focus:border-teal-400 text-[12.5px]"
+        />
+      )}
+
+      <div className="max-h-[190px] overflow-y-auto rounded-lg border border-gray-100">
+        {hien.length === 0 && (
+          <div className="px-2 py-3 text-[12px] text-gray-400 text-center">Không có {tenGoi} nào khớp.</div>
+        )}
+        {hien.map((x) => (
+          <label
+            key={x}
+            className="flex items-start gap-2 px-2 py-1.5 hover:bg-gray-50 cursor-pointer border-b border-gray-50 last:border-b-0"
+          >
+            <input
+              type="checkbox"
+              checked={chon.includes(x)}
+              onChange={() => bat(x)}
+              className="mt-0.5 w-3.5 h-3.5 accent-teal-600 shrink-0"
+            />
+            <span className={`text-[12.5px] leading-snug ${chon.includes(x) ? "font-bold text-teal-800" : "text-gray-600"}`}>
+              {nhanCua ? nhanCua(x) : x}
+            </span>
+          </label>
+        ))}
+      </div>
+
+      <div className="flex items-center gap-2 mt-1 px-0.5">
+        <button type="button" onClick={() => datChon(hien)} className="text-[11.5px] font-bold text-teal-600 hover:underline">
+          Chọn hết
+        </button>
+        <button type="button" onClick={() => datChon([])} className="text-[11.5px] font-bold text-gray-400 hover:underline">
+          Bỏ hết
+        </button>
+        {chon.length > 0 && (
+          <span className="ml-auto text-[11.5px] font-bold text-teal-700">đang chọn {chon.length}</span>
+        )}
+      </div>
+    </div>
+  );
+}
+

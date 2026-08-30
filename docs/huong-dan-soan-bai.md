@@ -330,7 +330,46 @@ tập*, *điểm thưởng* và *báo điểm tháng* như thường.
 
 ---
 
-## 12. Điều khiển bằng điện thoại
+## 12. Ra đề: đọc đề mẫu, lọc kho, yêu cầu cần đạt
+
+### Có đề mẫu trong tay là ra được ma trận
+
+Vào **Quản lý Đề thi** → **Nhờ AI** → **Nạp từ ảnh hoặc tệp**. Hộp mở ra có hai nút gạt:
+
+- **Bảng ma trận** — bảng tổ chuyên môn phát, như trước nay.
+- **Đề mẫu** *(mới)* — một **đề kiểm tra thật**. Máy đọc từng câu, xếp vào đúng dạng trong
+  kho của Thầy cô, đoán loại câu và mức độ, rồi gộp thành ma trận.
+
+Bảng soát hiện ra để Thầy cô sửa trước khi nạp. Nhận xong bấm **Tạo đề** là máy **tự rút
+đủ số câu** cho từng dòng — ưu tiên câu ít dùng nhất nên đề nào cũng khác nhau, không phải
+tick tay câu nào.
+
+> **Dán nhanh**: ở hộp này bấm **Ctrl+V** là dán thẳng ảnh vào, hoặc **kéo tệp thả** vào
+> khung. Không cần bấm chọn tệp nữa.
+
+### Cột Yêu cầu cần đạt
+
+Hai bảng soát ma trận (AI soạn và nạp từ tệp) đều có cột **Yêu cầu cần đạt**. Đây là chỗ
+Thầy cô nhìn để biết ma trận đã phủ đủ yêu cầu chưa, **trước khi** cho máy rút câu.
+
+- Ô **tô vàng** là dạng đó chưa có yêu cầu — gõ vào là lưu luôn vào danh mục.
+- Chữ này chính là cột cùng tên trong **Bảng đặc tả** xuất ra Word.
+
+**Từ nay câu nào lưu vào ngân hàng cũng có yêu cầu cần đạt.** Trước đây năm đường lưu câu
+đều sinh danh mục rỗng; nay dạng mới nào sinh ra cũng được soạn sẵn yêu cầu, bám theo chính
+mấy câu vừa lưu. Máy soạn không được thì dựng tạm theo tên dạng và đánh dấu để soát — chứ
+không bao giờ chặn việc lưu câu.
+
+Muốn dọn các dạng cũ còn trống thì vào **Khối lớp & Danh mục** → **AI soạn Yêu cầu cần đạt**.
+
+### Lọc kho chọn được nhiều
+
+Nút **Lọc kho** giờ mỗi mục là một danh sách **tick nhiều** — chọn hai ba chương, dăm bài
+một lúc để ra đề gộp. Danh sách dài thì có ô tìm nhanh, kèm **Chọn hết / Bỏ hết**.
+
+---
+
+## 13. Điều khiển bằng điện thoại
 
 Đang trình chiếu, bấm nút **📱** trên thanh điều khiển → hiện **mã QR** và **mã 6 ký tự**.
 

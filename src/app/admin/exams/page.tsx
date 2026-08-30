@@ -10,7 +10,7 @@ import * as XLSX from "xlsx";
 import NapMaTranModal, { type DongNapMaTran } from "@/components/admin/NapMaTranModal";
 import SinhBuModal from "@/components/admin/SinhBuModal";
 import SoanMaTranModal from "@/components/admin/SoanMaTranModal";
-import MenuGon, { MucMenu, NhomMenu, NganMenu } from "@/components/admin/MenuGon";
+import MenuGon, { MucMenu, NhomMenu, NganMenu, DanhSachTick } from "@/components/admin/MenuGon";
 import type { ODeChon, DongMaTranAI } from "@/utils/soanMaTranAI";
 import { toBankType, bankTypeLabel, type BankType } from "@/utils/questionTypes";
 import {
@@ -52,13 +52,27 @@ export default function ExamsManagerPage() {
   const [examType, setExamType] = useState("Kiểm tra Giữa kỳ I");
   const [grade, setGrade] = useState("12");
   const [subject, setSubject] = useState("Đại số");
-  const [topicFilter, setTopicFilter] = useState("");
+  /**
+   * Bốn ô lọc kho giờ chọn được NHIỀU mục.
+   *
+   * Trước đây mỗi ô là một chuỗi, nên muốn ra đề gộp hai chương là chịu - phải ra hai
+   * đề rồi ghép tay. Mảng rỗng nghĩa là "tất cả", giống hệt chuỗi rỗng ngày trước.
+   */
+  const [topicFilter, setTopicFilter] = useState<string[]>([]);
+  /**
+   * Yêu cầu cần đạt của từng dạng, khoá là tên dạng.
+   *
+   * Lấy từ chính bảng danh mục đã tải sẵn ở bước quét kho, không phải gọi thêm. Dùng cho cột
+   * cùng tên trong hai bảng soát ma trận - đó là chỗ Thầy cô nhìn để biết ma trận đã phủ đủ
+   * yêu cầu chưa, trước khi cho máy rút câu.
+   */
+  const [yeuCauCanDat, setYeuCauCanDat] = useState<Map<string, string>>(new Map());
   const [topicList, setTopicList] = useState<string[]>([]);
-  const [lessonFilter, setLessonFilter] = useState("");
+  const [lessonFilter, setLessonFilter] = useState<string[]>([]);
   const [lessonList, setLessonList] = useState<string[]>([]);
-  const [formFilter, setFormFilter] = useState("");
+  const [formFilter, setFormFilter] = useState<string[]>([]);
   const [formList, setFormList] = useState<string[]>([]);
-  const [qTypeFilter, setQTypeFilter] = useState("");
+  const [qTypeFilter, setQTypeFilter] = useState<string[]>([]);
   const [uniqueGrades, setUniqueGrades] = useState<string[]>([]);
   const [uniqueSubjects, setUniqueSubjects] = useState<string[]>([]);
   
@@ -134,11 +148,11 @@ export default function ExamsManagerPage() {
         setTopicList(Array.from(new Set(data.map(d => d.topic))).filter(Boolean) as string[]);
         
         let lessonData = data;
-        if (topicFilter) lessonData = data.filter(d => d.topic === topicFilter);
+        if (topicFilter.length) lessonData = data.filter(d => topicFilter.includes(d.topic));
         setLessonList(Array.from(new Set(lessonData.map(d => d.lesson))).filter(Boolean) as string[]);
 
         let formData = lessonData;
-        if (lessonFilter) formData = lessonData.filter(d => d.lesson === lessonFilter);
+        if (lessonFilter.length) formData = lessonData.filter(d => lessonFilter.includes(d.lesson));
         setFormList(Array.from(new Set(formData.map(d => d.math_form))).filter(Boolean) as string[]);
       }
     };
@@ -151,18 +165,18 @@ export default function ExamsManagerPage() {
       // Ba tên dưới đây do thầy cô gõ hoặc do AI sinh, có thể dính chuỗi "${{" - thứ làm
       // tường lửa chặn nguyên truy vấn và trang chết câm (xem tenLamDutTruyVan). Gặp thì
       // bỏ lọc ở máy chủ, lọc lại tại đây.
-      const locTaiCho = [topicFilter, lessonFilter, formFilter].some(tenLamDutTruyVan);
-      const dungTen = (r: any) => (!topicFilter || r.topic === topicFilter)
-        && (!lessonFilter || r.lesson === lessonFilter)
-        && (!formFilter || r.math_form === formFilter);
+      const locTaiCho = [...topicFilter, ...lessonFilter, ...formFilter].some(tenLamDutTruyVan);
+      const dungTen = (r: any) => (!topicFilter.length || topicFilter.includes(r.topic))
+        && (!lessonFilter.length || lessonFilter.includes(r.lesson))
+        && (!formFilter.length || formFilter.includes(r.math_form));
 
       // 1. Lấy danh mục
       let query = supabase.from('question_categories').select('*').order('topic').order('lesson');
       if (grade) query = query.eq('grade', grade);
       if (subject) query = query.eq('subject', subject);
-      if (topicFilter && !locTaiCho) query = query.eq('topic', topicFilter);
-      if (lessonFilter && !locTaiCho) query = query.eq('lesson', lessonFilter);
-      if (formFilter && !locTaiCho) query = query.eq('math_form', formFilter);
+      if (topicFilter.length && !locTaiCho) query = query.in('topic', topicFilter);
+      if (lessonFilter.length && !locTaiCho) query = query.in('lesson', lessonFilter);
+      if (formFilter.length && !locTaiCho) query = query.in('math_form', formFilter);
       
       const { data: catsTho, error: err1 } = await query;
       const cats = locTaiCho ? (catsTho || []).filter(dungTen) : catsTho;
@@ -179,10 +193,10 @@ export default function ExamsManagerPage() {
         let qQuery = supabase.from('questions').select(qSelect).range(from, from + PAGE_SIZE - 1);
         if (grade) qQuery = qQuery.eq('grade', grade);
         if (subject) qQuery = qQuery.eq('subject', subject);
-        if (topicFilter && !locTaiCho) qQuery = qQuery.eq('topic', topicFilter);
-        if (lessonFilter && !locTaiCho) qQuery = qQuery.eq('lesson', lessonFilter);
-        if (formFilter && !locTaiCho) qQuery = qQuery.eq('math_form', formFilter);
-        if (qTypeFilter) qQuery = qQuery.eq('question_type', qTypeFilter);
+        if (topicFilter.length && !locTaiCho) qQuery = qQuery.in('topic', topicFilter);
+        if (lessonFilter.length && !locTaiCho) qQuery = qQuery.in('lesson', lessonFilter);
+        if (formFilter.length && !locTaiCho) qQuery = qQuery.in('math_form', formFilter);
+        if (qTypeFilter.length) qQuery = qQuery.in('question_type', qTypeFilter);
 
         const { data: page, error: err2 } = await qQuery;
         if (err2) throw err2;
@@ -230,6 +244,16 @@ export default function ExamsManagerPage() {
       
       setCategories(finalCats);
       setInventory(inv);
+
+      /* Bản đồ yêu cầu cần đạt theo tên dạng - dữ liệu đã nằm sẵn trong `cats` vì truy vấn
+         danh mục lấy select('*'), không phải gọi thêm lần nào. */
+      const bdYeuCau = new Map<string, string>();
+      for (const c of (cats || [])) {
+        const dang = String((c as any).math_form || '').trim();
+        const yc = String((c as any).yeu_cau_can_dat || '').trim();
+        if (dang && yc) bdYeuCau.set(dang, yc);
+      }
+      setYeuCauCanDat(bdYeuCau);
     } catch (e: any) {
       alert("Lỗi tải cây thư mục: " + e.message);
     } finally {
@@ -298,6 +322,22 @@ export default function ExamsManagerPage() {
   // của từng dòng ma trận (không chỉ số lượng đã chọn ngẫu nhiên) để thầy/cô tự
   // tick chọn đúng câu muốn đưa vào đề, sửa trực tiếp và lưu lại vào ngân hàng
   // ngay tại đó. Chỉ khi nào ok thì mới sang bước xem đề hoàn chỉnh/xuất/chốt đề.
+  /**
+   * Lưu yêu cầu cần đạt Thầy cô vừa sửa tại bảng ma trận vào danh mục.
+   *
+   * Ghi theo TÊN DẠNG chứ không theo một dòng cụ thể: cùng một dạng có thể nằm ở nhiều bài,
+   * mà cột này trong bảng đặc tả cũng tra theo tên dạng.
+   */
+  const luuYeuCauCanDat = async (dang: string, chu: string) => {
+    const ten = String(dang || '').trim();
+    const noi = String(chu || '').trim();
+    if (!ten || !noi) return;
+    setYeuCauCanDat((cu) => new Map(cu).set(ten, noi));
+    const { error } = await supabase
+      .from('question_categories').update({ yeu_cau_can_dat: noi }).eq('math_form', ten);
+    if (error) console.error('Lỗi lưu yêu cầu cần đạt:', error);
+  };
+
   const generateExam = () => {
     if (matrixItems.length === 0) {
       alert("Vui lòng thêm ít nhất 1 dạng toán vào ma trận!");
@@ -988,48 +1028,29 @@ export default function ExamsManagerPage() {
               <MenuGon
                 nhan="Lọc kho"
                 icon={<List className="w-4 h-4 text-teal-600" />}
-                dem={[topicFilter, lessonFilter, formFilter, qTypeFilter].filter(Boolean).length}
+                dem={topicFilter.length + lessonFilter.length + formFilter.length + qTypeFilter.length}
                 rong="w-[340px]"
                 title="Thu hẹp phạm vi cây dạng bên dưới"
               >
                 <NhomMenu nhan="Chuyên đề" />
-                <div className="px-1 pb-1">
-                  <select value={topicFilter} onChange={e=>setTopicFilter(e.target.value)} className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-teal-400 text-[13px] font-medium bg-white">
-                    <option value="">Tất cả chuyên đề</option>
-                    {topicList.map(t => <option key={t} value={t}>{t}</option>)}
-                  </select>
-                </div>
+                <DanhSachTick ds={topicList} chon={topicFilter} datChon={setTopicFilter} tenGoi="chuyên đề" />
                 <NhomMenu nhan="Bài học" />
-                <div className="px-1 pb-1">
-                  <select value={lessonFilter} onChange={e=>setLessonFilter(e.target.value)} className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-teal-400 text-[13px] font-medium bg-white">
-                    <option value="">Tất cả bài học</option>
-                    {lessonList.map(l => <option key={l} value={l}>{l}</option>)}
-                  </select>
-                </div>
+                <DanhSachTick ds={lessonList} chon={lessonFilter} datChon={setLessonFilter} tenGoi="bài học" />
                 <NhomMenu nhan="Dạng toán" />
-                <div className="px-1 pb-1">
-                  <select value={formFilter} onChange={e=>setFormFilter(e.target.value)} className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-teal-400 text-[13px] font-medium bg-white">
-                    <option value="">Tất cả dạng toán</option>
-                    {formList.map(f => <option key={f} value={f}>{f}</option>)}
-                  </select>
-                </div>
+                <DanhSachTick ds={formList} chon={formFilter} datChon={setFormFilter} tenGoi="dạng toán" />
                 <NhomMenu nhan="Dạng thức câu hỏi" />
-                <div className="px-1 pb-1">
-                  <select value={qTypeFilter} onChange={e=>setQTypeFilter(e.target.value)} className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-teal-400 text-[13px] font-medium bg-white">
-                    <option value="">Tất cả dạng thức</option>
-                    <option value="NLC">Trắc nghiệm</option>
-                    <option value="DS">Đúng/Sai</option>
-                    <option value="TLN">Trả lời ngắn</option>
-                    <option value="TL">Tự luận</option>
-                  </select>
-                </div>
-                {[topicFilter, lessonFilter, formFilter, qTypeFilter].some(Boolean) && (
+                <DanhSachTick
+                  ds={['NLC', 'DS', 'TLN', 'TL']}
+                  nhanCua={(m) => bankTypeLabel(m)}
+                  chon={qTypeFilter} datChon={setQTypeFilter} tenGoi="dạng thức"
+                />
+                {(topicFilter.length + lessonFilter.length + formFilter.length + qTypeFilter.length > 0) && (
                   <>
                     <NganMenu />
                     <MucMenu
                       icon={<X className="w-4 h-4" />}
                       nhan="Bỏ hết bộ lọc"
-                      onClick={() => { setTopicFilter(''); setLessonFilter(''); setFormFilter(''); setQTypeFilter(''); }}
+                      onClick={() => { setTopicFilter([]); setLessonFilter([]); setFormFilter([]); setQTypeFilter([]); }}
                     />
                   </>
                 )}
@@ -1507,6 +1528,8 @@ export default function ExamsManagerPage() {
         khuon={KHUON_TAT_CA[khuonDe]}
         tenKhuon={KHUON_TAT_CA[khuonDe]?.ten || khuonDe}
         onNhan={nhanMaTranAI}
+        yeuCau={yeuCauCanDat}
+        onLuuYeuCau={luuYeuCauCanDat}
       />
 
       {/* Nhờ AI soạn bù khi kho không đủ; lưu xong thì quét lại kho cho số câu cập nhật. */}
@@ -1522,6 +1545,8 @@ export default function ExamsManagerPage() {
         onClose={() => setMoNapMaTran(false)}
         kho={{ danhSachBai: danhSachBaiTrongKho, danhSachDang: danhSachDangTrongKho, dangCuaBai, demKho }}
         onNap={napTuAI}
+        yeuCau={yeuCauCanDat}
+        onLuuYeuCau={luuYeuCauCanDat}
       />
 
     </div>

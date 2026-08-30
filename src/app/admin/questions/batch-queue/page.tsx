@@ -38,6 +38,7 @@ import {
   FileText, Image as ImageIcon, ListChecks, Trash2, Pencil, Crop, EyeOff, ShieldCheck, Columns2,
 } from "lucide-react";
 import DuplicateCompareModal from "@/components/admin/DuplicateCompareModal";
+import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
 
 // ===== Kiểu dữ liệu nội bộ =====
 
@@ -497,7 +498,9 @@ export default function BatchQueuePage() {
         if (tenCu) {
           for (const w of affected) (w.q as any)[proposal.level] = tenCu;
         } else {
-        const insertData = { grade: sample.grade, subject: sample.subject, topic: sample.topic, lesson: sample.lesson, math_form: sample.math_form };
+        const insertDataGoc = { grade: sample.grade, subject: sample.subject, topic: sample.topic, lesson: sample.lesson, math_form: sample.math_form };
+        /* Dạng mới phải kèm "Yêu cầu cần đạt" - xem src/utils/yeuCauCanDat.ts */
+        const [insertData] = await boSungYeuCauCanDat([insertDataGoc]);
         const { error } = await supabase.from('question_categories').insert([insertData]);
         // Một câu hỏi có thể sinh nhiều đề xuất cùng lúc (Chương mới + Bài mới + Dạng
         // mới), nhưng cả ba đều ứng với ĐÚNG MỘT dòng danh mục. Duyệt cái đầu đã ghi

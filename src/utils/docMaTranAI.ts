@@ -86,6 +86,56 @@ QUY TẮC QUAN TRỌNG:
 6. Nếu ảnh mờ hoặc không đọc chắc được một ô nào, cứ bỏ ô đó chứ TUYỆT ĐỐI KHÔNG đoán bừa số câu.${keDang}`;
 }
 
+/**
+ * Prompt cho chế độ ĐỌC ĐỀ MẪU: đầu vào là một đề kiểm tra thật, không phải bảng ma trận.
+ *
+ * Khác hẳn việc đọc bảng: ở đây máy phải TỰ XẾP từng câu vào đúng dạng trong kho rồi mới
+ * gộp lại thành ma trận. Vì thế danh sách dạng là bắt buộc chứ không phải gợi ý - dạng nào
+ * kho không có thì để trống cho Thầy cô chọn tay, tuyệt đối không bịa tên mới.
+ */
+function taoPromptDeMau(danhSachDang: string[]): string {
+  const keDang = danhSachDang.length
+    ? `\n\nDANH SÁCH DẠNG TOÁN ĐANG CÓ TRONG NGÂN HÀNG (chép CHÍNH XÁC tên từ đây):\n- ${danhSachDang.join("\n- ")}`
+    : "";
+
+  return `Bạn đang đọc một ĐỀ KIỂM TRA TOÁN của giáo viên Việt Nam và phải lập BẢNG MA TRẬN cho đề đó (theo Công văn 7991/BGDĐT-GDTrH).
+
+Nhiệm vụ:
+1. Đọc lần lượt TỪNG CÂU trong đề.
+2. Với mỗi câu, xác định: câu đó thuộc DẠNG TOÁN nào, thuộc LOẠI CÂU nào, ở MỨC ĐỘ nào.
+3. GỘP các câu cùng (dạng, loại, mức) thành MỘT dòng và đếm số câu.
+
+CHỈ trả về JSON, không giải thích gì thêm - một mảng, mỗi phần tử một dòng ma trận:
+[
+  {
+    "chuong": "chương/chủ đề của dạng đó, để chuỗi rỗng nếu không rõ",
+    "dangToan": "tên dạng toán",
+    "loaiCau": "NLC hoặc DS hoặc TLN hoặc TL",
+    "mucDo": "1 hoặc 2 hoặc 3",
+    "soCau": 2,
+    "diemMoiCau": 0.25
+  }
+]
+
+QUY ƯỚC LOẠI CÂU (nhìn cách trình bày câu hỏi mà đoán):
+- "NLC" = trắc nghiệm có các phương án A, B, C, D chọn một
+- "DS" = câu có nhiều mệnh đề a) b) c) d) và học sinh phán Đúng/Sai từng mệnh đề
+- "TLN" = trả lời ngắn, học sinh điền một số hoặc một đáp số, không có phương án
+- "TL" = tự luận, học sinh trình bày lời giải
+
+QUY ƯỚC MỨC ĐỘ:
+- "1" = Biết: chỉ cần nhớ định nghĩa, công thức, đọc thẳng từ đề hoặc từ bảng/đồ thị
+- "2" = Hiểu: phải biến đổi một hai bước, áp dụng công thức quen thuộc
+- "3" = Vận dụng: nhiều bước, ghép nhiều kiến thức, hoặc bài toán thực tiễn
+
+QUY TẮC QUAN TRỌNG:
+1. Tên dạng phải CHÉP NGUYÊN VĂN từ danh sách dưới đây. Câu nào không tìm được dạng khớp thì vẫn trả về dòng đó nhưng "dangToan" ghi mô tả ngắn gọn nội dung câu - hệ thống sẽ để Thầy cô chọn tay.
+2. TUYỆT ĐỐI KHÔNG bỏ sót câu nào: tổng "soCau" của mọi dòng phải bằng đúng số câu trong đề.
+3. Không tạo dòng có "soCau" bằng 0.
+4. Nếu đề có ghi thang điểm từng câu thì điền "diemMoiCau", không có thì để 0.
+5. Bỏ qua phần đầu đề (tên trường, thời gian làm bài), chỉ đọc các câu hỏi.${keDang}`;
+}
+
 /** Bóc mảng JSON ra khỏi phần chữ AI trả về (hay bị bọc trong dấu nháy ba). */
 function bocMangJson(raw: string): any[] {
   let t = String(raw || "").trim();
@@ -114,19 +164,22 @@ export async function docMaTranTuTep(
   cauHinh: CauHinhAI,
   danhSachDang: string[],
   onTienDo?: (moTa: string) => void,
+  /** 'bang' = đọc bảng ma trận có sẵn; 'de-mau' = đọc một đề thật rồi tự lập ma trận. */
+  cheDo: 'bang' | 'de-mau' = 'bang',
 ): Promise<KetQuaDocMaTran> {
   if (files.length === 0) throw new Error("Chưa chọn tệp nào.");
 
   const tepWord = files.filter(laFileWord);
   const tepKhac = files.filter(f => !laFileWord(f));
 
-  const parts: any[] = [{ text: taoPrompt(danhSachDang) }];
+  const laDeMau = cheDo === 'de-mau';
+  const parts: any[] = [{ text: (laDeMau ? taoPromptDeMau : taoPrompt)(danhSachDang) }];
 
   for (const f of tepWord) {
     onTienDo?.(`Đang đọc chữ trong ${f.name}...`);
     const html = await docChuTuWord(f);
     if (!html.trim()) throw new Error(`Không đọc được nội dung trong ${f.name}.`);
-    parts.push({ text: `\n\nNỘI DUNG BẢNG (dạng HTML lấy từ tệp Word "${f.name}"):\n${html}` });
+    parts.push({ text: `\n\n${laDeMau ? 'NỘI DUNG ĐỀ' : 'NỘI DUNG BẢNG'} (dạng HTML lấy từ tệp Word "${f.name}"):\n${html}` });
   }
 
   if (tepKhac.length > 0) {
@@ -138,10 +191,12 @@ export async function docMaTranTuTep(
     parts.push(...(await filesToGeminiParts(anh)));
   }
 
-  onTienDo?.("Máy đang đọc bảng...");
+  onTienDo?.(laDeMau ? "Máy đang đọc đề và xếp từng câu vào dạng..." : "Máy đang đọc bảng...");
   const kq = await goiGeminiTrenTrinhDuyet(cauHinh, parts, {
     responseMimeType: "application/json",
-    temperature: 0,   // đọc bảng là việc chép lại, không được sáng tạo
+    // Đọc bảng là việc chép lại, không được sáng tạo. Đọc đề mẫu thì phải phán đoán mức
+    // độ nên nới nhẹ, nhưng vẫn để thấp cho kết quả ổn định giữa các lần chạy.
+    temperature: laDeMau ? 0.15 : 0,
   });
 
   const tho = bocMangJson(kq.text);

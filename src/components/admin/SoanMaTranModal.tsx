@@ -29,9 +29,13 @@ interface Props {
   khuon: KhuonDe;
   tenKhuon: string;
   onNhan: (dong: DongMaTranAI[]) => void;
+  /** Yêu cầu cần đạt của từng dạng, khoá là tên dạng. */
+  yeuCau?: Map<string, string>;
+  /** Lưu yêu cầu vừa sửa ngược vào danh mục. */
+  onLuuYeuCau?: (dang: string, chu: string) => void;
 }
 
-export default function SoanMaTranModal({ isOpen, onClose, oKho, khuon, tenKhuon, onNhan }: Props) {
+export default function SoanMaTranModal({ isOpen, onClose, oKho, khuon, tenKhuon, onNhan, yeuCau, onLuuYeuCau }: Props) {
   const [ghiChu, setGhiChu] = useState("");
   const [dangChay, setDangChay] = useState(false);
   const [tienDo, setTienDo] = useState("");
@@ -39,11 +43,13 @@ export default function SoanMaTranModal({ isOpen, onClose, oKho, khuon, tenKhuon
   const [dong, setDong] = useState<DongMaTranAI[] | null>(null);
   const [biLoai, setBiLoai] = useState<string[]>([]);
   const [model, setModel] = useState("");
+  /** Yêu cầu cần đạt Thầy cô vừa sửa tại bảng, khoá là tên dạng. */
+  const [yeuCauSua, setYeuCauSua] = useState<Record<string, string>>({});
 
   if (!isOpen) return null;
 
   const dongLai = () => {
-    setDong(null); setLoi(""); setTienDo(""); setModel(""); setBiLoai([]);
+    setDong(null); setLoi(""); setTienDo(""); setModel(""); setBiLoai([]); setYeuCauSua({});
     onClose();
   };
 
@@ -237,6 +243,7 @@ export default function SoanMaTranModal({ isOpen, onClose, oKho, khuon, tenKhuon
                       <th className="p-2 text-left w-[180px]">Loại câu</th>
                       <th className="p-2 text-left w-[160px]">Mức độ</th>
                       <th className="p-2 text-center w-24">Số câu</th>
+                      <th className="p-2 text-left w-[250px]">Yêu cầu cần đạt</th>
                       <th className="p-2 w-14"></th>
                     </tr>
                   </thead>
@@ -299,6 +306,21 @@ export default function SoanMaTranModal({ isOpen, onClose, oKho, khuon, tenKhuon
                             />
                             <div className={`text-[10px] font-bold mt-0.5 ${thieu ? "text-red-600" : "text-gray-400"}`}>kho: {kho}</div>
                           </td>
+                          {/* Yêu cầu cần đạt: đây là chỗ Thầy cô soát xem ma trận đã phủ đủ yêu cầu
+                              chưa. Ô trống tô nhạt cho dễ thấy chỗ hổng; gõ vào là lưu luôn vào danh mục. */}
+                          <td className="p-2 align-top">
+                            <textarea
+                              rows={2}
+                              value={yeuCauSua[d.math_form] ?? (yeuCau?.get(d.math_form) || "")}
+                              onChange={e => setYeuCauSua(v => ({ ...v, [d.math_form]: e.target.value }))}
+                              placeholder="Chưa có — gõ vào đây để lưu vào danh mục"
+                              className={`w-full px-2 py-1.5 rounded-lg border text-[12px] outline-none resize-y ${
+                                (yeuCauSua[d.math_form] ?? (yeuCau?.get(d.math_form) || "")).trim()
+                                  ? "border-gray-200"
+                                  : "border-amber-300 bg-amber-50/60"
+                              }`}
+                            />
+                          </td>
                           <td className="p-2 text-center align-top">
                             <button onClick={() => xoaDong(i)} className="text-red-500 hover:bg-red-50 rounded px-2 py-1 text-xs font-bold">Xoá</button>
                           </td>
@@ -316,11 +338,20 @@ export default function SoanMaTranModal({ isOpen, onClose, oKho, khuon, tenKhuon
           <div className="shrink-0 flex flex-wrap items-center justify-between gap-2 px-5 py-3 border-t border-gray-100 bg-gray-50">
             <p className="text-[12px] text-gray-500 font-medium">
               Máy chỉ đề xuất. Thầy cô sửa lại Bài, Dạng, Loại câu, Mức độ, số câu rồi hãy nhận.
+              Ô <b>Yêu cầu cần đạt</b> tô vàng là dạng đó chưa có yêu cầu — gõ vào sẽ lưu luôn vào danh mục.
             </p>
             <div className="flex items-center gap-2">
               <button onClick={dongLai} className="px-4 py-2 rounded-lg border border-gray-300 text-gray-700 hover:bg-white text-sm font-bold">Huỷ</button>
               <button
-                onClick={() => { onNhan(dong); dongLai(); }}
+                onClick={() => {
+                  /* Lưu chữ Thầy cô vừa sửa vào danh mục trước, rồi mới nhận ma trận. */
+                  for (const [dang, chu] of Object.entries(yeuCauSua)) {
+                    if (chu.trim() && chu.trim() !== (yeuCau?.get(dang) || "").trim()) {
+                      onLuuYeuCau?.(dang, chu.trim());
+                    }
+                  }
+                  onNhan(dong); dongLai();
+                }}
                 disabled={dong.length === 0 || soDongTrung > 0}
                 title={soDongTrung > 0 ? "Còn dòng trùng nhau, sửa xong mới nhận được" : undefined}
                 className="flex items-center gap-1.5 px-5 py-2 bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-bold rounded-lg text-sm disabled:opacity-40 transition-colors"

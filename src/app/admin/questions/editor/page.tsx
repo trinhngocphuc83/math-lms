@@ -31,6 +31,7 @@ import {
 } from "@/utils/aiQuestionScan";
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
 import { doiVeTenChuan } from "@/utils/phanLoaiCauHoi";
+import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
 
 export default function BatchAIEditorPage() {
   const router = useRouter();
@@ -514,11 +515,13 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
           math_form: field === 'math_form' ? tenDung : (q.math_form || '')
         };
 
-        const { error } = await supabase.from('question_categories').insert([insertData]);
+        /* Dạng mới phải kèm "Yêu cầu cần đạt" - xem src/utils/yeuCauCanDat.ts */
+        const [coYeuCau] = await boSungYeuCauCanDat([insertData]);
+        const { error } = await supabase.from('question_categories').insert([coYeuCau]);
         if (error) throw error;
 
         // Update local categories list
-        setCategories(prev => [...prev, insertData as any]);
+        setCategories(prev => [...prev, coYeuCau as any]);
       }
 
       // Apply the new category to the question and dismiss the alert

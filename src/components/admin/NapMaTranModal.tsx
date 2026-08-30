@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { X, UploadCloud, Loader2, Wand2, AlertTriangle, CheckCircle2, FileText, Image as ImageIcon } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { X, UploadCloud, Loader2, Wand2, AlertTriangle, CheckCircle2, FileText, Image as ImageIcon, Table2, FileQuestion } from "lucide-react";
 import { layCauHinhAI } from "@/utils/geminiBrowser";
 import {
   docMaTranTuTep, khopDongMaTran, laFileWord, laFileAnh,
@@ -40,9 +40,13 @@ interface Props {
   /** Bài học, dạng toán và số câu kho đang có. */
   kho: NguonKho;
   onNap: (dong: DongNapMaTran[]) => void;
+  /** Yêu cầu cần đạt của từng dạng, khoá là tên dạng. */
+  yeuCau?: Map<string, string>;
+  /** Lưu yêu cầu vừa sửa ngược vào danh mục. */
+  onLuuYeuCau?: (dang: string, chu: string) => void;
 }
 
-export default function NapMaTranModal({ isOpen, onClose, kho, onNap }: Props) {
+export default function NapMaTranModal({ isOpen, onClose, kho, onNap, yeuCau, onLuuYeuCau }: Props) {
   const { danhSachDang, demKho } = kho;
   const [tepDaChon, setTepDaChon] = useState<File[]>([]);
   const [dangDoc, setDangDoc] = useState(false);
@@ -50,12 +54,43 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap }: Props) {
   const [loi, setLoi] = useState("");
   const [dong, setDong] = useState<DongNapMaTran[] | null>(null);
   const [modelDaDung, setModelDaDung] = useState("");
+  /**
+   * Đọc BẢNG ma trận có sẵn, hay đọc thẳng một ĐỀ MẪU rồi tự lập ma trận.
+   *
+   * Thầy cô hay có đề mẫu trong tay hơn là có bảng ma trận; trước đây phải tự đếm từng
+   * câu xem thuộc dạng nào, mức nào rồi gõ tay vào ma trận.
+   */
+  const [cheDo, setCheDo] = useState<'bang' | 'de-mau'>('bang');
+  const [dangKeo, setDangKeo] = useState(false);
+  /** Yêu cầu cần đạt Thầy cô vừa sửa tại bảng, khoá là tên dạng. */
+  const [yeuCauSua, setYeuCauSua] = useState<Record<string, string>>({});
   const inputRef = useRef<HTMLInputElement>(null);
+  /* Dạng ref để bộ nghe `paste` cấp cửa sổ luôn gọi đúng bản mới nhất. */
+  const nhanTepRef = useRef<(f: File[]) => void>(() => {});
+
+  /**
+   * Dán nhanh bằng Ctrl+V.
+   *
+   * Nghe ở cấp cửa sổ chứ không gắn vào một ô nào: hộp này không có ô nhập để đặt con
+   * trỏ, nên gắn vào thẻ thì phải bấm vào đó trước mới dán được - thành ra như không có.
+   */
+  useEffect(() => {
+    if (!isOpen) return;
+    const khiDan = (e: ClipboardEvent) => {
+      const f = Array.from(e.clipboardData?.files || []);
+      if (f.length === 0) return;
+      e.preventDefault();
+      nhanTepRef.current(f);
+    };
+    window.addEventListener('paste', khiDan);
+    return () => window.removeEventListener('paste', khiDan);
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
   const dongLai = () => {
     setTepDaChon([]); setDong(null); setLoi(""); setTienDo(""); setModelDaDung("");
+    setYeuCauSua({}); setDangKeo(false);
     onClose();
   };
 
@@ -80,9 +115,11 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap }: Props) {
     setDangDoc(true); setLoi(""); setDong(null); setTienDo("Đang xin khoá AI...");
     try {
       const cauHinh = await layCauHinhAI();
-      const kq = await docMaTranTuTep(files, cauHinh, danhSachDang, setTienDo);
+      const kq = await docMaTranTuTep(files, cauHinh, danhSachDang, setTienDo, cheDo);
       if (kq.dong.length === 0) {
-        setLoi("Máy không đọc được dòng nào có số câu. Thử chụp lại rõ hơn, hoặc dùng tệp Word thay cho ảnh.");
+        setLoi(cheDo === 'de-mau'
+          ? "Máy không đọc được câu nào trong đề. Thử chụp lại rõ hơn, hoặc kiểm lại xem có chọn nhầm chế độ không."
+          : "Máy không đọc được dòng nào có số câu. Thử chụp lại rõ hơn, hoặc dùng tệp Word thay cho ảnh.");
       } else {
         setDong(dungBangSoat(kq.dong));
         setModelDaDung(kq.model);
@@ -94,12 +131,18 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap }: Props) {
     }
   };
 
+  /** Một cửa cho cả ba đường vào: bấm chọn, dán Ctrl+V, kéo thả. */
+  const nhanTep = (f: File[]) => {
+    if (f.length === 0 || dangDoc) return;
+    setTepDaChon(f);
+    batDauDoc(f);
+  };
+  nhanTepRef.current = nhanTep;
+
   const chonTep = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = Array.from(e.target.files || []);
     e.target.value = "";
-    if (f.length === 0) return;
-    setTepDaChon(f);
-    batDauDoc(f);
+    nhanTep(f);
   };
 
   const sua = (i: number, patch: Partial<DongNapMaTran>) => {
@@ -147,7 +190,9 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap }: Props) {
         <div className="flex items-center justify-between gap-3 px-5 py-3 border-b border-teal-100 bg-teal-50 shrink-0">
           <div className="flex items-center gap-2 min-w-0">
             <Wand2 className="w-5 h-5 text-teal-600 shrink-0" />
-            <h2 className="text-base sm:text-lg font-black text-teal-900 truncate">Nạp ma trận từ ảnh hoặc tệp</h2>
+            <h2 className="text-base sm:text-lg font-black text-teal-900 truncate">
+              {cheDo === 'de-mau' ? 'Lập ma trận từ đề mẫu' : 'Nạp ma trận từ ảnh hoặc tệp'}
+            </h2>
             {modelDaDung && (
               <span className="shrink-0 px-2 py-0.5 rounded-full text-[11px] font-bold bg-white border border-teal-300 text-teal-700">
                 {modelDaDung}
@@ -164,21 +209,59 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap }: Props) {
           {/* Chọn tệp */}
           {!dong && (
             <div>
+              {/* Hai chế độ: đọc bảng ma trận có sẵn, hay đọc thẳng một đề mẫu */}
+              <div className="flex gap-2 mb-4">
+                {([
+                  ['bang', 'Bảng ma trận', 'Bảng tổ chuyên môn phát', Table2],
+                  ['de-mau', 'Đề mẫu', 'Một đề kiểm tra thật', FileQuestion],
+                ] as const).map(([ma, nhan, moTa, Icon]) => (
+                  <button
+                    key={ma}
+                    onClick={() => setCheDo(ma)}
+                    disabled={dangDoc}
+                    className={`flex-1 rounded-xl border-2 px-4 py-3 text-left transition-colors disabled:opacity-60 ${
+                      cheDo === ma
+                        ? 'border-teal-500 bg-teal-50'
+                        : 'border-gray-200 hover:border-teal-300'
+                    }`}
+                  >
+                    <div className={`flex items-center gap-2 font-black text-[14px] ${cheDo === ma ? 'text-teal-800' : 'text-gray-600'}`}>
+                      <Icon className="w-4 h-4" /> {nhan}
+                    </div>
+                    <div className="text-[11.5px] text-gray-500 mt-0.5">{moTa}</div>
+                  </button>
+                ))}
+              </div>
+
               <button
                 onClick={() => inputRef.current?.click()}
                 disabled={dangDoc}
-                className="w-full border-2 border-dashed border-teal-300 rounded-2xl py-10 flex flex-col items-center gap-2 hover:bg-teal-50/60 transition-colors disabled:opacity-60"
+                onDragOver={(e) => { e.preventDefault(); setDangKeo(true); }}
+                onDragLeave={() => setDangKeo(false)}
+                onDrop={(e) => {
+                  e.preventDefault(); setDangKeo(false);
+                  nhanTep(Array.from(e.dataTransfer.files || []));
+                }}
+                className={`w-full border-2 border-dashed rounded-2xl py-10 flex flex-col items-center gap-2 transition-colors disabled:opacity-60 ${
+                  dangKeo ? 'border-teal-500 bg-teal-100/70' : 'border-teal-300 hover:bg-teal-50/60'
+                }`}
               >
                 {dangDoc
                   ? <Loader2 className="w-10 h-10 text-teal-500 animate-spin" />
                   : <UploadCloud className="w-10 h-10 text-teal-400" />}
                 <span className="font-black text-teal-800">
-                  {dangDoc ? (tienDo || "Đang xử lý...") : "Chọn ảnh chụp, tệp PDF hoặc tệp Word"}
+                  {dangDoc
+                    ? (tienDo || "Đang xử lý...")
+                    : dangKeo
+                      ? "Thả tệp vào đây"
+                      : cheDo === 'de-mau'
+                        ? "Chọn đề mẫu — ảnh chụp, PDF hoặc Word"
+                        : "Chọn ảnh chụp, tệp PDF hoặc tệp Word"}
                 </span>
                 {!dangDoc && (
                   <span className="text-xs text-gray-500 max-w-lg text-center">
-                    Chọn được nhiều tệp một lúc. Tệp Word cho kết quả chính xác nhất vì máy đọc thẳng chữ,
-                    không phải đoán chữ từ ảnh.
+                    <b>Dán thẳng bằng Ctrl+V</b> hoặc kéo tệp thả vào đây cũng được. Chọn nhiều tệp một lúc
+                    được. Tệp Word cho kết quả chính xác nhất vì máy đọc thẳng chữ, không phải đoán chữ từ ảnh.
                   </span>
                 )}
               </button>
@@ -267,6 +350,7 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap }: Props) {
                       <th className="p-2 text-left w-[150px]">Mức độ</th>
                       <th className="p-2 text-center w-20">Số câu</th>
                       <th className="p-2 text-center w-24">Điểm/câu</th>
+                      <th className="p-2 text-left w-[260px]">Yêu cầu cần đạt</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
@@ -358,6 +442,25 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap }: Props) {
                               className="w-20 px-2 py-1.5 rounded-lg border border-gray-200 text-center font-bold outline-none"
                             />
                           </td>
+                          {/* Yêu cầu cần đạt: đây là chỗ Thầy cô nhìn để biết ma trận đã phủ đủ yêu cầu
+                              chưa, TRƯỚC khi cho máy rút câu. Ô trống tô nhạt cho dễ thấy chỗ hổng. */}
+                          <td className="p-2">
+                            {d.dangTrongKho ? (
+                              <textarea
+                                rows={2}
+                                value={yeuCauSua[d.dangTrongKho] ?? (yeuCau?.get(d.dangTrongKho) || "")}
+                                onChange={(e) => setYeuCauSua((v) => ({ ...v, [d.dangTrongKho]: e.target.value }))}
+                                placeholder="Chưa có — gõ vào đây để lưu vào danh mục"
+                                className={`w-full px-2 py-1.5 rounded-lg border text-[12px] outline-none resize-y ${
+                                  (yeuCauSua[d.dangTrongKho] ?? (yeuCau?.get(d.dangTrongKho) || "")).trim()
+                                    ? "border-gray-200"
+                                    : "border-amber-300 bg-amber-50/60"
+                                }`}
+                              />
+                            ) : (
+                              <span className="text-[11px] text-gray-400">chọn dạng trước</span>
+                            )}
+                          </td>
                         </tr>
                       );
                     })}
@@ -381,7 +484,15 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap }: Props) {
                 Huỷ
               </button>
               <button
-                onClick={() => { onNap(daChon); dongLai(); }}
+                onClick={() => {
+                  /* Lưu chữ Thầy cô vừa sửa vào danh mục trước, rồi mới nạp ma trận. */
+                  for (const [dang, chu] of Object.entries(yeuCauSua)) {
+                    if (chu.trim() && chu.trim() !== (yeuCau?.get(dang) || "").trim()) {
+                      onLuuYeuCau?.(dang, chu.trim());
+                    }
+                  }
+                  onNap(daChon); dongLai();
+                }}
                 disabled={daChon.length === 0}
                 className="flex items-center gap-1.5 px-5 py-2 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-lg text-sm disabled:opacity-40 transition-colors"
               >

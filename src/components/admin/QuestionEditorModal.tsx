@@ -4,6 +4,7 @@ import { createClient } from "@/utils/supabase/client";
 import ReactCrop, { type Crop as CropType } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
 import { doiVeTenChuan, chuanTen } from "@/utils/phanLoaiCauHoi";
+import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
 
 interface QuestionData {
   temp_id?: string;
@@ -105,13 +106,15 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
         return;
       }
 
-      const { error } = await supabase.from('question_categories').insert([{
+      /* Dạng mới phải kèm "Yêu cầu cần đạt" - xem src/utils/yeuCauCanDat.ts */
+      const [dongMoi] = await boSungYeuCauCanDat([{
         grade: formData.grade.trim(),
         subject: formData.subject.trim(),
         topic: formData.topic.trim(),
         lesson: formData.lesson?.trim() || "",
         math_form: formData.math_form.trim()
       }]);
+      const { error } = await supabase.from('question_categories').insert([dongMoi]);
       if (error) throw error;
       alert("Đã thêm Dạng toán vào Danh mục thành công!");
       fetchCategories();

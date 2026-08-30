@@ -20,6 +20,7 @@ import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import { doiVeTenChuan, chuanTen } from "@/utils/phanLoaiCauHoi";
+import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
 
 interface PushToBankModalProps {
   isOpen: boolean;
@@ -138,7 +139,9 @@ function AddNewCategoryModal({
       const tenCu = doiVeTenChuan(formName.trim(), (cungBai || []).map((c: any) => String(c.math_form || '')));
 
       if (!tenCu) {
-         const { error } = await supabase.from('question_categories').insert([payload]);
+         /* Dạng mới phải kèm "Yêu cầu cần đạt" - xem src/utils/yeuCauCanDat.ts */
+         const [coYeuCau] = await boSungYeuCauCanDat([payload]);
+         const { error } = await supabase.from('question_categories').insert([coYeuCau]);
          if (error) throw error;
       }
 

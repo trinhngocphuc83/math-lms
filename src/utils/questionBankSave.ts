@@ -8,6 +8,7 @@ import { toBankType, toDifficultyCode } from "./questionTypes";
 import { docDapAnDungSai, dapAnDungSaiDungKhuon } from "./chuanHoaCauHoi";
 import { nanTenPhanLoai } from "./deThi";
 import { doiVeTenChuan } from "./phanLoaiCauHoi";
+import { boSungYeuCauCanDat } from "./yeuCauCanDat";
 
 export interface SaveResult {
   insertedCount: number;
@@ -160,7 +161,16 @@ export async function saveQuestionsToBank(supabase: any, questions: QuestionData
   }
 
   if (uniqueNewCats.length > 0) {
-    const { error: catError } = await supabase.from('question_categories').insert(uniqueNewCats);
+    /* Dạng mới phải có "Yêu cầu cần đạt" ngay từ lúc sinh ra. Trước đây chỗ này ghi
+       danh mục trống, nên bảng đặc tả in ra phải lấy tạm tên dạng thay cho yêu cầu. */
+    /* Truyền kèm vài câu THẬT của dạng đó - máy soạn yêu cầu bám câu thật sát hơn hẳn
+       so với chỉ nhìn tên dạng. */
+    const coYeuCau = await boSungYeuCauCanDat(uniqueNewCats, (c) =>
+      validQuestions
+        .filter((q) => q.topic === c.topic && q.lesson === c.lesson && q.math_form === c.math_form)
+        .map((q) => String(q.content || ''))
+        .filter(Boolean));
+    const { error: catError } = await supabase.from('question_categories').insert(coYeuCau);
     if (catError) console.error("Lỗi thêm danh mục mới:", catError);
   }
 
