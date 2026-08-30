@@ -290,6 +290,12 @@ export default function ClassDetailsPage() {
           <div className="w-16 h-16 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600"><FileSpreadsheet size={32}/></div>
           <span className="font-bold text-gray-700 text-sm uppercase tracking-wide">Báo điểm</span>
         </button>
+        {/* Thanh tab ở trên bị ẩn trên điện thoại nên mục mới phải có mặt ở đây, không thì
+            trên máy nhỏ không có đường nào vào Tổng kết tháng. */}
+        <button onClick={() => setActiveTab('tongket')} className="bg-white p-5 rounded-3xl border border-gray-100 shadow-sm flex flex-col items-center justify-center gap-3 hover:bg-gray-50 transition-colors">
+          <div className="w-16 h-16 rounded-2xl bg-amber-50 flex items-center justify-center text-amber-600"><Trophy size={32}/></div>
+          <span className="font-bold text-gray-700 text-sm uppercase tracking-wide">Tổng kết tháng</span>
+        </button>
       </div>
 
       {activeTab === 'students' && (
