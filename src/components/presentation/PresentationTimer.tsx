@@ -19,6 +19,7 @@ import { Timer, Mic, Play, Pause, RotateCcw, X, Volume2, VolumeX, Loader2 } from
 import { docThoiLuongTiengViet, dinhDangMMSS } from "@/utils/parseVietnameseDuration";
 
 const MOC_CANH_BAO = 10; // giây cuối bắt đầu bíp
+const NHO_GIAY = 'thoi-luong-dat-gio-lan-truoc';
 
 export default function PresentationTimer({ lenhNgoai, onDoi }: {
   /** Lệnh đặt giờ bấm từ điện thoại; `dem` tăng mỗi lần bấm nên bấm lại là chạy lại. */
@@ -34,6 +35,17 @@ export default function PresentationTimer({ lenhNgoai, onDoi }: {
   const [dangNgheMic, setDangNgheMic] = useState(false);
   const [loiMic, setLoiMic] = useState("");
   const [nhapPhut, setNhapPhut] = useState("");
+  /**
+   * Thời lượng vừa dùng, nhớ sang câu sau.
+   *
+   * Đồng hồ được dựng lại mỗi lần sang slide nên chữa một đề 22 câu là phải mở bảng chọn
+   * "2 phút" đúng 22 lần. Nhớ lại thì mặt đồng hồ hiện sẵn 2:00, bấm một cái là chạy.
+   */
+  const [nhoGiay, setNhoGiay] = useState(0);
+  useEffect(() => {
+    const n = parseInt(localStorage.getItem(NHO_GIAY) || '0', 10);
+    if (n > 0) setNhoGiay(n);
+  }, []);
   const [nhapGiay, setNhapGiay] = useState("");
 
   // Mốc thời gian thực để không bị trôi khi trình duyệt giảm nhịp lúc chuyển tab
@@ -95,6 +107,8 @@ export default function PresentationTimer({ lenhNgoai, onDoi }: {
 
   const batDau = (giay: number) => {
     if (!giay || giay <= 0) return;
+    setNhoGiay(giay);
+    try { localStorage.setItem(NHO_GIAY, String(giay)); } catch { /* trình duyệt chặn thì thôi */ }
     setTongGiay(giay);
     setConLai(giay);
     giayDaBipRef.current = null;
@@ -217,7 +231,12 @@ export default function PresentationTimer({ lenhNgoai, onDoi }: {
     <div className="absolute bottom-6 right-7 z-50 flex flex-col-reverse items-end gap-2">
       {/* Nút / mặt đồng hồ */}
       <button
-        onClick={() => (tongGiay > 0 ? tamDung() : setDangMoBang((v) => !v))}
+        onClick={() => {
+          if (tongGiay > 0) return tamDung();
+          /* Đã có thời lượng quen dùng thì bấm phát chạy luôn, khỏi mở bảng chọn lại. */
+          if (nhoGiay > 0 && !dangMoBang) return batDau(nhoGiay);
+          setDangMoBang((v) => !v);
+        }}
         className={`flex items-center gap-2.5 rounded-full border-[3px] px-5 py-2.5 shadow-lg transition-all duration-200
           ${hetGio
             ? 'bg-red-600 border-red-700 text-white animate-pulse'
@@ -228,13 +247,25 @@ export default function PresentationTimer({ lenhNgoai, onDoi }: {
                 : 'bg-white/95 border-slate-300 text-slate-600 hover:border-indigo-400 hover:text-indigo-600'}`}
         title={tongGiay > 0
           ? (dangChay ? 'Tạm dừng (phím T)' : 'Chạy tiếp (phím T)')
-          : 'Đặt giờ cho học sinh làm bài (phím T)'}
+          : nhoGiay > 0
+            ? `Bấm để chạy ${dinhDangMMSS(nhoGiay)} như câu trước (phím T)`
+            : 'Đặt giờ cho học sinh làm bài (phím T)'}
       >
         {dangChay ? <Pause className="w-[26px] h-[26px]" /> : <Timer className="w-[26px] h-[26px]" />}
         <span className={`font-black tabular-nums ${tongGiay > 0 ? 'text-[34px]' : 'text-[26px]'}`}>
-          {tongGiay > 0 ? dinhDangMMSS(conLai) : 'Đặt giờ'}
+          {tongGiay > 0 ? dinhDangMMSS(conLai) : nhoGiay > 0 ? dinhDangMMSS(nhoGiay) : 'Đặt giờ'}
         </span>
       </button>
+
+      {tongGiay === 0 && nhoGiay > 0 && (
+        <button
+          onClick={() => setDangMoBang((v) => !v)}
+          className="flex items-center gap-1.5 bg-white/95 border-2 border-slate-300 text-slate-600 hover:text-indigo-600
+                     hover:border-indigo-400 rounded-full px-3.5 py-1.5 text-[19px] font-bold shadow"
+        >
+          <Timer className="w-[17px] h-[17px]" /> Đổi giờ
+        </button>
+      )}
 
       {tongGiay > 0 && (
         <button

@@ -267,7 +267,46 @@ Thả tệp đúng tên vào là hệ thống tự ưu tiên dùng tệp thật.
 
 ---
 
-## 10. Điều khiển bằng điện thoại
+## 10. Chữa bài luyện tập và kiểm tra
+
+Vẫn **chính nút Trình chiếu** đó — mở đề luyện tập hay bài kiểm tra là chữa được ngay,
+không có màn hình nào khác phải nhớ.
+
+### Một nút, ba bước
+
+Bấm nút giữa màn hình thì đi tiếp một bước, hết thì vòng lại:
+
+| Bước | Trên bảng hiện gì |
+|---|---|
+| **Đề** | Câu hỏi như học sinh nhìn thấy lúc làm bài |
+| **Hiển thị đáp án** | Trắc nghiệm tô đáp án đúng · trả lời ngắn hiện số · **cụm Đúng/Sai chấm từng ý** · **tự luận hiện bài giải mẫu** |
+| **Xem lời giải** | Lời giải chi tiết, kèm *phương pháp giải* và *các bước thực hiện* nếu đề có |
+
+> Trước đây bấm "Hiển thị đáp án" ở câu **tự luận** và **cụm Đúng/Sai** thì không ra gì,
+> và lời giải chi tiết chưa bao giờ được hiện dù đề nào cũng có sẵn. Nay đủ cả bốn kiểu câu.
+
+**Cụm mệnh đề Đúng/Sai:** mỗi ý có hai nút **Đ / S** — bấm theo lớp trả lời trước, rồi mới
+lật đáp án, cả lớp thấy ngay ý nào sai.
+
+**Câu tự luận:** hiện **bài giải mẫu** để cả lớp đối chiếu; thầy cô gọi em lên rồi cộng
+điểm bằng tay (hệ thống không tự chấm tự luận).
+
+### Nhảy thẳng tới câu cần chữa
+
+Trên thanh trên cùng có ô **\`Câu ⬚ / 21\`** — gõ số rồi Enter là nhảy tới đúng câu đó, khỏi
+bấm ▶ hai chục lần. Ô này đếm **số câu**, không phải số slide (đề nào có xen slide chữ thì
+hai số lệch nhau). Trên điện thoại cũng có ô y hệt.
+
+### Gọi tên và bấm giờ ngay tại câu
+
+- Nút **🎲 Gọi tên** nằm ngay cạnh nút đáp án — mở bảng vòng quay **nép sang một bên**,
+  slide thu nhỏ vừa phần còn lại nên **không che câu hỏi**. Bấm ⇄ để đổi bên.
+- **Đồng hồ nhớ thời lượng vừa dùng**: đặt 2 phút ở câu 1 thì sang câu 2 mặt đồng hồ đã
+  sẵn *2:00*, bấm một cái là chạy. Muốn đổi thì bấm **Đổi giờ**.
+
+---
+
+## 11. Điều khiển bằng điện thoại
 
 Đang trình chiếu, bấm nút **📱** trên thanh điều khiển → hiện **mã QR** và **mã 6 ký tự**.
 
@@ -299,8 +338,11 @@ ngược, số giây còn lại chạy luôn trên điện thoại. Bấm **Dừ
 bài và các phương án **A B C D bấm được**:
 
 - Bấm một phương án → trên bảng phương án đó sáng lên, đúng như thầy cô bấm chuột.
-- **Hiển thị đáp án** → bảng tô xanh đáp án đúng, đỏ phương án chọn sai; bấm lần nữa là
-  **Làm lại**.
+- **Hiển thị đáp án** → bảng tô xanh đáp án đúng, đỏ phương án chọn sai; bấm lần nữa ra
+  **Xem lời giải**, rồi mới tới **Làm lại**.
+- **Lời giải hiện luôn trên điện thoại** — thầy cô đọc trên tay trong khi cả lớp nhìn đề
+  trên bảng, không phải quay lưng lại nhìn màn chiếu.
+- Ô **Câu ⬚/21** trên thanh trên cùng: gõ số rồi Enter là bảng nhảy tới câu đó.
 - **Câu trả lời ngắn**: gõ thẳng vào ô trên điện thoại rồi bấm ➤ — chữ hiện lên ô trả lời
   trên bảng.
 - **Cụm mệnh đề Đúng/Sai** chỉ để đọc (không bấm chọn được), nhưng bấm *Hiển thị đáp án*

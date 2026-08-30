@@ -29,6 +29,8 @@ export type Lenh =
   | { viec: 'chon-dap-an'; chon: number }
   | { viec: 'hien-dap-an' }
   | { viec: 'nhap-dap-an'; chu: string }
+  | { viec: 'xem-loi-giai' }
+  | { viec: 'nhay-cau'; cau: number }
   | { viec: 'dat-gio'; phut: number }
   | { viec: 'dung-gio' }
   /** Điện thoại vừa vào, xin máy chiếu phát lại trạng thái */
@@ -66,9 +68,16 @@ export interface TrangThaiChieu {
     dapAn: number | null;
     /** Đáp án của câu trả lời ngắn */
     dapAnChu: string;
+    /** Đang ở bước nào: 0 đề · 1 đáp án · 2 lời giải */
+    buoc: number;
+    /** Lời giải chi tiết, để Thầy cô đọc ngay trên tay lúc chữa bài */
+    loiGiai: string;
   } | null;
   /** Giây còn lại của đồng hồ, 0 là không chạy */
   gioConLai?: number;
+  /** Đang chữa câu thứ mấy trên tổng bao nhiêu câu (0 nếu slide này không phải câu hỏi) */
+  soCau?: number;
+  tongCau?: number;
 }
 
 const TEN_KENH = (ma: string) => `dieu-khien-${ma}`;

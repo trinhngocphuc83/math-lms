@@ -24,7 +24,7 @@ import BangGoiTenVaDiem from '@/components/lop/BangGoiTenVaDiem';
 import GhepDienThoaiModal from '@/components/presentation/GhepDienThoaiModal';
 import HuongDanSoanBaiModal from '@/components/admin/HuongDanSoanBaiModal';
 import { moKenhMayChieu, taoMaPhien, type Lenh, type TrangThaiChieu } from '@/utils/dieuKhienXa';
-import { tachSlide } from '@/utils/tachSlide';
+import { tachSlide, viTriCauHoi, slideCuaCau } from '@/utils/tachSlide';
 
 /* Vùng nội dung bên trong canvas (đã trừ lề). Mọi phép đo auto-fit dựa trên đây. */
 const PAD_X = 84;
@@ -42,16 +42,29 @@ const parseSlides = tachSlide;
 const KATEX_CLASS = '[&_.katex]:text-[#1e40af] [&_.katex-display]:my-4 [&_.katex-display]:text-[1.04em]';
 
 // --- Quiz Component for Presentation ---
-function PresentationQuiz({ quizData, lenhNgoai, onDoi }: {
+function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen }: {
     quizData: any;
     /** Lệnh bấm từ điện thoại; `dem` tăng mỗi lần bấm nên bấm mấy lần chạy mấy lần. */
     lenhNgoai?: { viec: string; chon?: number; chu?: string; dem: number } | null;
     /** Báo ngược ra để máy chiếu phát xuống điện thoại */
-    onDoi?: (tt: { hienDapAn: boolean; dangChon: number | null }) => void;
+    onDoi?: (tt: { hienDapAn: boolean; dangChon: number | null; buoc: number; loiGiai: string }) => void;
+    /** Mở bảng Gọi tên & Điểm ngay tại câu đang chữa */
+    onGoiTen?: () => void;
 }) {
-    const [showAnswer, setShowAnswer] = useState(false);
+    /**
+     * BA BƯỚC cho một câu, đi bằng đúng một nút: đề → đáp án → lời giải → về lại đề.
+     *
+     * Trước đây chỉ có hai trạng thái đúng/sai và chỉ ba kiểu câu có nhánh vẽ, nên bấm
+     * "Hiển thị đáp án" ở câu TỰ LUẬN hay CỤM ĐÚNG/SAI thì không ra gì - đo trên đề thật
+     * của Thầy là 453/1949 câu (23%). Lời giải chi tiết thì đề nào cũng có sẵn trong
+     * `answer`/`sampleAnswer` nhưng chưa bao giờ được hiện.
+     */
+    const [buoc, setBuoc] = useState(0);
+    const showAnswer = buoc >= 1;
     const [selectedIdx, setSelectedIdx] = useState<number | null>(null);
     const [chuNhap, setChuNhap] = useState('');
+    /** Cụm mệnh đề: thầy bấm Đ/S theo lớp trả lời trước khi lật đáp án. */
+    const [chonCum, setChonCum] = useState<Record<number, boolean>>({});
 
     /* Nhận lệnh từ điện thoại. Phải nằm TRƯỚC dòng thoát sớm bên dưới, nếu không React
        đếm số hook lệch giữa hai lần vẽ và vỡ trang. */
@@ -62,17 +75,33 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi }: {
         if (lenhNgoai.viec === 'chon-dap-an' && typeof lenhNgoai.chon === 'number') {
             if (!showAnswer) setSelectedIdx(lenhNgoai.chon);
         } else if (lenhNgoai.viec === 'hien-dap-an') {
-            setShowAnswer(v => { if (v) setSelectedIdx(null); return !v; });
+            doiBuoc();
+        } else if (lenhNgoai.viec === 'xem-loi-giai') {
+            setBuoc(2);
         } else if (lenhNgoai.viec === 'nhap-dap-an') {
             setChuNhap(lenhNgoai.chu || '');
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lenhNgoai]);
 
+    /* Lời giải: câu do AI soạn để ở `answer`, câu lấy từ ngân hàng để ở `sampleAnswer`.
+       Phải đọc cả hai - đo trên đề thật thì hai bên gần như không trùng nhau. */
+    const loiGiai: string = String(quizData?.answer || quizData?.sampleAnswer || '').trim();
+    const coLoiGiai = !!loiGiai || !!quizData?.phuong_phap_giai
+        || (Array.isArray(quizData?.cac_buoc_thuc_hien) && quizData.cac_buoc_thuc_hien.length > 0);
+
+    /** Một nút đi hết ba bước; hết bước thì vòng về đề và xoá lựa chọn cũ. */
+    const doiBuoc = () => setBuoc(b => {
+        if (b === 0) return 1;
+        if (b === 1 && coLoiGiai) return 2;
+        setSelectedIdx(null); setChonCum({});
+        return 0;
+    });
+
     useEffect(() => {
-        onDoi?.({ hienDapAn: showAnswer, dangChon: selectedIdx });
+        onDoi?.({ hienDapAn: showAnswer, dangChon: selectedIdx, buoc, loiGiai });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [showAnswer, selectedIdx]);
+    }, [showAnswer, selectedIdx, buoc, loiGiai]);
 
     if (!quizData) return null;
 
@@ -162,6 +191,66 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi }: {
                 </div>
             )}
 
+            {/* CỤM MỆNH ĐỀ ĐÚNG/SAI - 263 câu trong đề của Thầy, trước đây bấm hiện đáp
+                án không ra gì vì không có nhánh nào vẽ kiểu này. */}
+            {type === 'true_false_cluster' && (
+                <div className="w-full flex flex-col gap-4">
+                    {(quizData.options || []).map((menh: any, i: number) => {
+                        const dung = !!menh?.isTrue;
+                        const thayChon = chonCum[i];
+                        const daChon = thayChon !== undefined;
+                        let cls = 'border-slate-200 bg-white';
+                        if (showAnswer) cls = dung ? 'border-emerald-500 bg-emerald-50' : 'border-red-300 bg-red-50/60';
+                        else if (daChon) cls = 'border-indigo-500 bg-indigo-50';
+                        return (
+                            <div key={i} className={`rounded-2xl border-[3px] px-7 py-5 flex items-center gap-6 ${cls}`}>
+                                <span className="shrink-0 w-[54px] h-[54px] rounded-xl bg-slate-100 text-slate-600
+                                                 text-[30px] font-black flex items-center justify-center uppercase">
+                                    {menh?.id || String.fromCharCode(97 + i)}
+                                </span>
+                                <div className={`flex-1 min-w-0 text-[34px] leading-[1.45] font-semibold text-slate-900 ${KATEX_CLASS}`}>
+                                    <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                        {ensureMathDelimiters(String(menh?.content ?? menh ?? ''))}
+                                    </ReactMarkdown>
+                                </div>
+                                {showAnswer ? (
+                                    <span className={`shrink-0 px-6 py-2 rounded-xl text-[30px] font-black ${
+                                        dung ? 'bg-emerald-600 text-white' : 'bg-red-500 text-white'}`}>
+                                        {dung ? 'ĐÚNG' : 'SAI'}
+                                    </span>
+                                ) : (
+                                    <div className="shrink-0 flex gap-2">
+                                        {[true, false].map(v => (
+                                            <button key={String(v)}
+                                                    onClick={() => setChonCum(c => ({ ...c, [i]: v }))}
+                                                    className={`w-[62px] h-[54px] rounded-xl text-[28px] font-black border-[3px] transition-colors ${
+                                                      thayChon === v
+                                                        ? 'bg-indigo-600 border-indigo-600 text-white'
+                                                        : 'bg-white border-slate-300 text-slate-500 hover:border-indigo-400'}`}>
+                                                {v ? 'Đ' : 'S'}
+                                            </button>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        );
+                    })}
+                </div>
+            )}
+
+            {/* TỰ LUẬN - 190 câu. Không tự chấm được, nên chỉ bày bài giải mẫu rồi Thầy
+                gọi em lên và cộng điểm bằng tay. */}
+            {type === 'essay' && showAnswer && (
+                <div className="w-full rounded-2xl border-[3px] border-emerald-500 bg-emerald-50/60 px-8 py-6">
+                    <h4 className="text-[30px] font-black text-emerald-700 mb-3 uppercase tracking-wider">Bài giải mẫu</h4>
+                    <div className={`text-[34px] leading-[1.5] font-medium text-slate-900 ${KATEX_CLASS}`}>
+                        <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                            {ensureMathDelimiters(loiGiai || '(Đề này chưa có bài giải mẫu)')}
+                        </ReactMarkdown>
+                    </div>
+                </div>
+            )}
+
             {type === 'short_answer' && (
                 <div className="w-full">
                     {!showAnswer ? (
@@ -191,17 +280,74 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi }: {
                 </div>
             )}
 
-            <div className="mt-8 flex justify-center">
+            {/* LỜI GIẢI CHI TIẾT - có sẵn trong đề từ lâu mà trình chiếu chưa bao giờ
+                đọc tới. Bước này mới là lúc chữa bài thật sự. Tự luận đã bày bài giải mẫu
+                ở trên rồi nên không lặp lại. */}
+            {buoc === 2 && (
+                <div className="mt-7 w-full rounded-2xl border-[3px] border-indigo-200 bg-indigo-50/40 px-8 py-6
+                                max-h-[430px] overflow-y-auto">
+                    <h4 className="text-[30px] font-black text-indigo-700 mb-3 uppercase tracking-wider">Lời giải chi tiết</h4>
+
+                    {quizData.phuong_phap_giai && (
+                        <div className={`text-[31px] leading-[1.5] text-slate-800 mb-4 ${KATEX_CLASS}`}>
+                            <b className="text-indigo-700">Phương pháp: </b>
+                            <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                {ensureMathDelimiters(String(quizData.phuong_phap_giai))}
+                            </ReactMarkdown>
+                        </div>
+                    )}
+
+                    {type !== 'essay' && loiGiai && (
+                        <div className={`text-[32px] leading-[1.5] text-slate-900 ${KATEX_CLASS}`}>
+                            <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                {ensureMathDelimiters(loiGiai)}
+                            </ReactMarkdown>
+                        </div>
+                    )}
+
+                    {Array.isArray(quizData.cac_buoc_thuc_hien) && quizData.cac_buoc_thuc_hien.length > 0 && (
+                        <ol className="mt-4 space-y-2.5">
+                            {quizData.cac_buoc_thuc_hien.map((b: string, i: number) => (
+                                <li key={i} className="flex gap-4">
+                                    <span className="shrink-0 w-[42px] h-[42px] rounded-full bg-indigo-600 text-white
+                                                     text-[24px] font-black flex items-center justify-center mt-1">{i + 1}</span>
+                                    <div className={`flex-1 text-[31px] leading-[1.45] text-slate-800 ${KATEX_CLASS}`}>
+                                        <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                                            {ensureMathDelimiters(String(b))}
+                                        </ReactMarkdown>
+                                    </div>
+                                </li>
+                            ))}
+                        </ol>
+                    )}
+
+                    {quizData.goi_y_nhanh && (
+                        <div className="mt-4 px-5 py-3 rounded-xl bg-amber-50 border-l-[6px] border-amber-400
+                                        text-[29px] leading-[1.45] text-amber-900">
+                            <b>Mẹo: </b>{String(quizData.goi_y_nhanh)}
+                        </div>
+                    )}
+                </div>
+            )}
+
+            <div className="mt-8 flex justify-center items-center gap-4">
                 <button
-                    onClick={() => {
-                        if (showAnswer) { setShowAnswer(false); setSelectedIdx(null); }
-                        else setShowAnswer(true);
-                    }}
+                    onClick={doiBuoc}
                     className="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-full text-[32px] font-bold
                                shadow-lg transition-all duration-200 hover:-translate-y-0.5"
                 >
-                    {showAnswer ? 'Làm lại' : 'Hiển thị đáp án'}
+                    {buoc === 0 ? 'Hiển thị đáp án' : buoc === 1 && coLoiGiai ? 'Xem lời giải' : 'Làm lại'}
                 </button>
+
+                {/* Gọi tên ngay tại câu - trước phải với xuống thanh dưới cùng màn hình */}
+                {onGoiTen && (
+                    <button onClick={onGoiTen} title="Gọi tên & cộng điểm cho câu này (phím G)"
+                            className="bg-violet-600 hover:bg-violet-700 text-white px-8 py-4 rounded-full text-[32px]
+                                       font-bold shadow-lg transition-all duration-200 hover:-translate-y-0.5
+                                       flex items-center gap-3">
+                        <Dices className="w-[34px] h-[34px]" /> Gọi tên
+                    </button>
+                )}
             </div>
         </div>
     );
@@ -249,7 +395,12 @@ export default function PresentationPage() {
     const [moGioTuXa, setMoGioTuXa] = useState(false);
     /* Câu hỏi đang chiếu ở trạng thái nào - để điện thoại tô đúng phương án Thầy đã chọn. */
     const [trangThaiQuiz, setTrangThaiQuiz] = useState<{ hienDapAn: boolean; dangChon: number | null }>({ hienDapAn: false, dangChon: null });
+    /** Câu đang chiếu đang ở bước nào (0 đề · 1 đáp án · 2 lời giải) và lời giải của nó. */
+    const [buocQuiz, setBuocQuiz] = useState(0);
+    const [loiGiaiQuiz, setLoiGiaiQuiz] = useState('');
     const [gioConLai, setGioConLai] = useState(0);
+    /** Ô gõ số câu trên thanh trên cùng - để nhảy thẳng tới câu cần chữa. */
+    const [oNhayCau, setONhayCau] = useState('');
     const phatTrangThai = useRef<((tt: TrangThaiChieu) => void) | null>(null);
     /* Luôn giữ hàm dựng trạng thái MỚI NHẤT. Bộ nghe lệnh chỉ tạo một lần nên nếu gọi
        thẳng vào biến state thì nó đọc phải giá trị cũ của lần vẽ đầu. */
@@ -456,6 +607,13 @@ export default function PresentationPage() {
                 case 'sau': goNext(); break;
                 case 'truoc': goPrev(); break;
                 case 'nhay': setCurrentSlideIndex(l.slide); setCurrentFragmentIndex(0); break;
+                case 'nhay-cau': {
+                    const i = slideCuaCau(slides, l.cau);
+                    if (i >= 0) { setCurrentSlideIndex(i); setCurrentFragmentIndex(0); }
+                    break;
+                }
+                case 'xem-loi-giai':
+                    setLenhChoQuiz(v => ({ viec: 'xem-loi-giai', dem: (v?.dem || 0) + 1 })); break;
                 case 'toan-man-hinh': toggleFullscreen(); break;
                 case 'mo-goi-ten': setMoGoiTen(true); break;
                 case 'dong-goi-ten': setMoGoiTen(false); break;
@@ -497,6 +655,7 @@ export default function PresentationPage() {
             /* Slide này là câu hỏi tương tác thì gửi kèm đề và phương án, để điện thoại
                bày ra mấy nút A B C D thay vì hiện nguyên khối ```quiz``` khó đọc. */
             const cauHoi = docQuiz(nay[0]);
+            const dem = viTriCauHoi(slides, currentSlideIndex);
             const loai = cauHoi?.type || 'multiple_choice';
             /* Cụm mệnh đề Đúng/Sai để phương án dưới dạng đối tượng {id, content, isTrue},
                không phải chuỗi - cứ đưa thẳng cho KaTeX là vỡ trang. Nắn hết về chuỗi. */
@@ -525,15 +684,24 @@ export default function PresentationPage() {
                        tài khoản quản trị), có sẵn đáp án trong tay thì khỏi phải ngoái
                        nhìn bảng mới biết em trả lời đúng hay sai. */
                     dapAn: typeof cauHoi.answerIndex === 'number' ? cauHoi.answerIndex : null,
+                    buoc: buocQuiz,
+                    loiGiai: loiGiaiQuiz,
                     dapAnChu: cumMenhDe
                         ? (cauHoi.options || []).map((o: any) => `${o?.id || ''}: ${o?.isTrue ? 'Đúng' : 'Sai'}`).join(' · ')
                         : String(cauHoi.exactAnswer || cauHoi.correctAnswer || cauHoi.answerText || ''),
                 },
                 gioConLai,
+                soCau: dem.soCau,
+                tongCau: dem.tongCau,
             };
         };
         if (phatTrangThai.current) phatTrangThai.current(layTrangThai.current());
-    }, [currentSlideIndex, currentFragmentIndex, slides, moGoiTen, trangThaiQuiz, gioConLai]);
+    }, [currentSlideIndex, currentFragmentIndex, slides, moGoiTen, trangThaiQuiz, gioConLai, buocQuiz, loiGiaiQuiz]);
+
+    /* Ô số câu bám theo câu đang chiếu - trừ lúc Thầy cô đang gõ dở để nhảy đi chỗ khác. */
+    useEffect(() => {
+        setONhayCau(String(viTriCauHoi(slides, currentSlideIndex).soCau || ''));
+    }, [slides, currentSlideIndex]);
 
     if (!moduleData || slides.length === 0) {
         return (
@@ -563,6 +731,7 @@ export default function PresentationPage() {
     };
 
     const progressPct = ((currentSlideIndex + 1) / slides.length) * 100;
+    const demCau = viTriCauHoi(slides, currentSlideIndex);
 
     return (
         <div
@@ -642,6 +811,29 @@ export default function PresentationPage() {
                             </span>
                         )}
                     </button>
+                    {/* Số CÂU, tách khỏi số slide: chữa bài là nhảy tới "câu 7", mà 3 đề
+                        trong kho có xen slide chữ nên hai số này lệch nhau. */}
+                    {demCau.tongCau > 0 && (
+                        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 rounded-full border border-white/10"
+                             title="Gõ số câu rồi Enter để nhảy tới câu đó">
+                            <span className="text-white/70 font-bold text-base">Câu</span>
+                            <input
+                                value={oNhayCau}
+                                onChange={e => setONhayCau(e.target.value.replace(/\D/g, '').slice(0, 3))}
+                                onFocus={e => e.currentTarget.select()}
+                                onBlur={() => setONhayCau(String(demCau.soCau || ''))}
+                                onKeyDown={e => {
+                                    if (e.key !== 'Enter') return;
+                                    const i = slideCuaCau(slides, parseInt(oNhayCau || '0', 10));
+                                    if (i >= 0) { setCurrentSlideIndex(i); setCurrentFragmentIndex(0); }
+                                    e.currentTarget.blur();
+                                }}
+                                className="w-[46px] bg-white/15 border border-white/20 rounded-md px-1.5 py-0.5
+                                           text-center text-white font-black text-base outline-none focus:border-indigo-300"
+                            />
+                            <span className="text-white/60 font-bold text-base">/ {demCau.tongCau}</span>
+                        </div>
+                    )}
                     <span className="text-white/80 font-bold text-base px-4 py-2 bg-white/10 rounded-full border border-white/10">
                         {currentSlideIndex + 1} / {slides.length}
                     </span>
@@ -704,7 +896,12 @@ export default function PresentationPage() {
                                     key={currentSlideIndex}
                                     quizData={quizData}
                                     lenhNgoai={lenhChoQuiz}
-                                    onDoi={(t) => setTrangThaiQuiz(t)}
+                                    onDoi={(t) => {
+                                        setTrangThaiQuiz({ hienDapAn: t.hienDapAn, dangChon: t.dangChon });
+                                        setBuocQuiz(t.buoc);
+                                        setLoiGiaiQuiz(t.loiGiai);
+                                    }}
+                                    onGoiTen={() => setMoGoiTen(true)}
                                 />
                             ) : (
                                 <div className="w-full">

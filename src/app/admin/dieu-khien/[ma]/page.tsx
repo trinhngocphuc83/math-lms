@@ -12,6 +12,7 @@ import "katex/dist/katex.min.css";
 import {
   ChevronLeft, ChevronRight, Dices, Trophy, Maximize2, Wifi, WifiOff,
   Plus, Minus, UserX, Undo2, X, Timer, Eye, EyeOff, Send, Check, LogOut, Mic, Loader2,
+  BookOpen,
 } from "lucide-react";
 import { studentMarkdownComponents } from "@/components/CustomMarkdownComponents";
 import { moKenhDienThoai, type TrangThaiChieu } from "@/utils/dieuKhienXa";
@@ -71,6 +72,7 @@ export default function TrangDieuKhien() {
   const [xemKeTiep, setXemKeTiep] = React.useState(false);
   const [moBangGio, setMoBangGio] = React.useState(false);
   const [chuTraLoi, setChuTraLoi] = React.useState('');
+  const [oCau, setOCau] = React.useState('');
   const [dangNgheMic, setDangNgheMic] = React.useState(false);
   const [loiMic, setLoiMic] = React.useState('');
   const guiRef = React.useRef<((l: any) => void) | null>(null);
@@ -108,6 +110,8 @@ export default function TrangDieuKhien() {
 
   /* Slide đổi thì xoá ô nhập của câu trước, khỏi gửi nhầm sang câu sau. */
   React.useEffect(() => { setChuTraLoi(''); }, [tt?.slide]);
+  /* Ô số câu bám theo câu máy chiếu đang chiếu, trừ lúc Thầy cô đang gõ dở. */
+  React.useEffect(() => { setOCau(String(tt?.soCau || '')); }, [tt?.soCau]);
 
   const dinhGio = (g: number) =>
     `${Math.floor(g / 60)}:${String(g % 60).padStart(2, '0')}`;
@@ -172,6 +176,28 @@ export default function TrangDieuKhien() {
           }`}>
             ⏱ {dinhGio(conLai)}
           </span>
+        )}
+        {/* Chữa bài là nhảy tới đúng câu lớp làm sai, nên số câu phải gõ được ngay đây */}
+        {!!tt?.tongCau && (
+          <div className="flex items-center gap-1 ml-1">
+            <span className="text-[12px] font-bold text-slate-400">Câu</span>
+            <input
+              value={oCau}
+              onChange={e => setOCau(e.target.value.replace(/\D/g, '').slice(0, 3))}
+              onFocus={e => e.currentTarget.select()}
+              onBlur={() => setOCau(String(tt?.soCau || ''))}
+              onKeyDown={e => {
+                if (e.key !== 'Enter') return;
+                const n = parseInt(oCau || '0', 10);
+                if (n > 0) gui({ viec: 'nhay-cau', cau: n });
+                e.currentTarget.blur();
+              }}
+              inputMode="numeric"
+              className="w-[38px] bg-white/10 border border-white/20 rounded-md px-1 py-0.5 text-center
+                         text-white font-black text-[13px] outline-none focus:border-indigo-400"
+            />
+            <span className="text-[12px] font-bold text-slate-500">/{tt.tongCau}</span>
+          </div>
         )}
         <span className="ml-auto text-[11px] font-mono text-slate-500 tracking-widest">{ma}</span>
         <button onClick={() => router.push('/admin/dieu-khien')} title="Thoát"
@@ -411,17 +437,38 @@ function BangCauHoi({ cauHoi, chu, datChu, traLoiNgan, gui }: {
         </div>
       )}
 
+      {/* Một nút đi hết ba bước, đúng như trên bảng: đề → đáp án → lời giải */}
       <button onClick={() => gui({ viec: 'hien-dap-an' })}
               className={`w-full mt-2.5 py-3 rounded-xl font-black text-[15px] flex items-center
                           justify-center gap-2 ${
-                cauHoi.hienDapAn
-                  ? 'bg-white/10 active:bg-white/20 text-slate-200'
-                  : 'bg-emerald-600 active:bg-emerald-700 text-white'
+                cauHoi.buoc === 0
+                  ? 'bg-emerald-600 active:bg-emerald-700 text-white'
+                  : cauHoi.buoc === 1 && cauHoi.loiGiai
+                    ? 'bg-indigo-600 active:bg-indigo-700 text-white'
+                    : 'bg-white/10 active:bg-white/20 text-slate-200'
               }`}>
-        {cauHoi.hienDapAn
-          ? <><EyeOff className="w-5 h-5" /> Làm lại</>
-          : <><Eye className="w-5 h-5" /> Hiển thị đáp án</>}
+        {cauHoi.buoc === 0
+          ? <><Eye className="w-5 h-5" /> Hiển thị đáp án</>
+          : cauHoi.buoc === 1 && cauHoi.loiGiai
+            ? <><BookOpen className="w-5 h-5" /> Xem lời giải</>
+            : <><EyeOff className="w-5 h-5" /> Làm lại</>}
       </button>
+
+      {/*
+        LỜI GIẢI NGAY TRÊN TAY.
+        Đọc được lời giải trên điện thoại trong khi cả lớp nhìn đề trên bảng - Thầy cô
+        không phải quay lưng lại đọc màn chiếu. Hiện từ bước đáp án, không chờ tới bước
+        lời giải, vì lúc chữa là lúc cần đọc.
+      */}
+      {cauHoi.buoc >= 1 && !!cauHoi.loiGiai && (
+        <div className="mt-2.5 rounded-2xl bg-white text-slate-800 px-3 py-2.5 max-h-[34vh] overflow-auto
+                        [&_*]:!text-[13px]">
+          <div className="text-[11px] font-black text-indigo-600 uppercase tracking-widest mb-1">
+            Lời giải
+          </div>
+          <ReactMarkdown {...BO_DUNG}>{cauHoi.loiGiai}</ReactMarkdown>
+        </div>
+      )}
     </>
   );
 }
