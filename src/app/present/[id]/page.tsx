@@ -42,8 +42,11 @@ const parseSlides = tachSlide;
 const KATEX_CLASS = '[&_.katex]:text-[#1e40af] [&_.katex-display]:my-4 [&_.katex-display]:text-[1.04em]';
 
 // --- Quiz Component for Presentation ---
-function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen }: {
+function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau }: {
     quizData: any;
+    /** Số thứ tự câu trong đề, để trên bảng ghi đúng "Câu 7" như tờ đề học sinh cầm. */
+    soCau?: number;
+    tongCau?: number;
     /** Lệnh bấm từ điện thoại; `dem` tăng mỗi lần bấm nên bấm mấy lần chạy mấy lần. */
     lenhNgoai?: { viec: string; chon?: number; chu?: string; dem: number } | null;
     /** Báo ngược ra để máy chiếu phát xuống điện thoại */
@@ -109,9 +112,16 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen }: {
 
     return (
         <div className="w-full flex flex-col">
-            <div className="flex items-center gap-4 mb-7">
-                <span className="text-[42px] leading-none">🎯</span>
-                <h3 className="text-[42px] font-black text-indigo-800 tracking-tight m-0">Câu hỏi tương tác</h3>
+            {/* Ghi ĐÚNG SỐ CÂU như trong đề. Trước đây câu nào cũng đề "Câu hỏi tương tác"
+                nên chữa bài không biết đang ở câu nào, học sinh dò trên tờ đề cũng chịu. */}
+            <div className="flex items-baseline gap-4 mb-7">
+                <span className="text-[42px] leading-none self-center">🎯</span>
+                <h3 className="text-[42px] font-black text-indigo-800 tracking-tight m-0">
+                    {soCau ? `Câu ${soCau}` : 'Câu hỏi tương tác'}
+                </h3>
+                {!!soCau && !!tongCau && (
+                    <span className="text-[26px] font-bold text-slate-400">/ {tongCau} câu</span>
+                )}
             </div>
 
             <div className={`text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}`}>
@@ -902,6 +912,8 @@ export default function PresentationPage() {
                                         setLoiGiaiQuiz(t.loiGiai);
                                     }}
                                     onGoiTen={() => setMoGoiTen(true)}
+                                    soCau={demCau.soCau}
+                                    tongCau={demCau.tongCau}
                                 />
                             ) : (
                                 <div className="w-full">
