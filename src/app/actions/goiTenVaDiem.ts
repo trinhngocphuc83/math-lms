@@ -124,6 +124,19 @@ export async function boGoiTen(
   if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
 }
 
+/**
+ * Xoá sạch lượt đã gọi của lớp - cả lớp trở lại vòng 1, ai cũng còn trong vòng quay.
+ *
+ * Cần vì buổi đầu thầy cô hay quay thử vài lần cho quen, xong vào dạy thật thì đã mất
+ * mấy em: các em đó nằm ngoài vòng cho tới hết vòng hiện tại. Chỉ xoá lượt gọi, KHÔNG
+ * đụng tới điểm thưởng đã cộng.
+ */
+export async function datLaiVongQuay(classId: string): Promise<void> {
+  await assertStaff();
+  const { error } = await quanTri.from('luot_goi_ten').delete().eq('class_id', classId);
+  if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+}
+
 /** Tháng này của lớp đã chốt chưa. */
 export async function daChotThang(classId: string, thang?: string): Promise<boolean> {
   await assertStaff();

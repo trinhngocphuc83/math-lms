@@ -175,12 +175,18 @@ khiển lúc **trình chiếu** (phím tắt **G**).
 | **− Chưa được** | Trừ 1 điểm, và nói "Em ... bị trừ 1 điểm" |
 | **Vắng** | Em này **đã được gọi** nhưng hôm nay không có mặt → bỏ qua trong buổi này thôi |
 | **Bỏ lại** | **Quay nhầm** → coi như chưa từng gọi, em vẫn nằm nguyên trong vòng |
+| **Đưa cả lớp trở lại vòng quay** | Xoá dấu *đã gọi* của **cả lớp**, về lại vòng 1 |
 | **Tải sẵn giọng** | Lấy trước giọng đọc cả lớp — bấm một lần trước buổi dạy |
 | 🔊 | Tắt/bật nhạc quay số |
 | 🔄 | Tải lại danh sách lớp (vừa thêm học sinh ở tab khác) |
 
 **Không gọi trùng:** quay trúng ai thì em đó **tạm ẩn**, hết cả lớp mới sang vòng mới. Số
 đếm *"Vòng 2 · còn 5/16"* cho biết đang ở đâu.
+
+**Quay thử xong nhớ đưa cả lớp về lại.** Quay thử vài lần cho quen tay là mấy em đó đã bị
+tính là *đã gọi*, vào dạy thật thì thiếu người. Nút **Đưa cả lớp trở lại vòng quay** ngay
+dưới nút QUAY xoá hết dấu đó — nút chỉ hiện khi thật sự có em đã được gọi, và **điểm
+thưởng đã cộng vẫn giữ nguyên**. Muốn trả lại **một em thôi** thì dùng **Bỏ lại**.
 
 **Nhớ xuyên suốt:** trạng thái khoá theo **lớp**, không theo bài. Quay ở bài A rồi mở bài
 B, hay mở từ trang lớp học, vẫn nối liền một mạch.
@@ -280,9 +286,14 @@ Màn hình điều khiển có ba phần:
    mà không phải quay đầu nhìn bảng
 3. **Hàng nút** — ◀ ▶ to nhất; thêm ⏱ Đặt giờ · 🎲 Gọi tên · 🏆 Vinh danh · ⛶ Toàn màn hình
 
-**Đặt giờ ngay trên tay**: bấm ⏱ rồi chọn 1 · 2 · 3 · 5 phút. Đồng hồ hiện lên góc bảng
-và đếm ngược, số giây còn lại chạy luôn trên điện thoại. Bấm **Dừng và xoá đồng hồ** để
-tắt. Đặt được ở **mọi slide**, không riêng slide câu hỏi.
+**Đặt giờ ngay trên tay**: bấm ⏱ rồi chọn 1 · 2 · 3 · 5 phút, hoặc bấm **🎤 Bấm rồi nói
+thời gian** và nói *"hai phút"*, *"chín mươi giây"*. Đồng hồ hiện lên góc bảng và đếm
+ngược, số giây còn lại chạy luôn trên điện thoại. Bấm **Dừng và xoá đồng hồ** để tắt. Đặt
+được ở **mọi slide**, không riêng slide câu hỏi.
+
+> Micro nghe **ngay trên điện thoại** chứ không nhờ máy chiếu nghe — thầy cô đứng giữa lớp
+> nói thì micro ở bàn giáo viên không nghe rõ. Máy nào trình duyệt không nghe được (iPhone)
+> thì nút này tự ẩn, vẫn bấm 1 · 2 · 3 · 5 phút như thường.
 
 **Slide câu hỏi tương tác thì điều khiển được cả câu hỏi.** Khung giữa tự đổi thành đề
 bài và các phương án **A B C D bấm được**:

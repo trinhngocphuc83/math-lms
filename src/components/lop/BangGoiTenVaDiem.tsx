@@ -2,11 +2,11 @@
 
 import React from "react";
 import confetti from "canvas-confetti";
-import { X, Loader2, RefreshCw, Volume2, VolumeX, Download, UserX, Undo2, Plus, Minus, Dices, AlertTriangle } from "lucide-react";
+import { X, Loader2, RefreshCw, Volume2, VolumeX, Download, UserX, Undo2, Plus, Minus, Dices, AlertTriangle, RotateCcw } from "lucide-react";
 /* Việc của thầy cô phải đi qua máy chủ: bảng enrollments có RLS chặn, trình duyệt đọc
    thẳng ra 0 dòng dù lớp có 16 em. Trang lớp học cũng đi đường này. */
 import {
-  layTrangThaiQuay, ghiDaGoi, boGoiTen, congDiem, layDsLop, layLopTheoBai, daChotThang,
+  layTrangThaiQuay, ghiDaGoi, boGoiTen, datLaiVongQuay, congDiem, layDsLop, layLopTheoBai, daChotThang,
 } from "@/app/actions/goiTenVaDiem";
 import { LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from "@/utils/goiTenVaDiem";
 import { chuanBiMoiEm, noiCongDiem, noiNgay, type CachDoc } from "@/utils/giongDocAI";
@@ -203,6 +203,34 @@ export default function BangGoiTenVaDiem({
     setTrungAi(null); setCachDoc(null);
   };
 
+  /**
+   * Xoá sạch lượt đã gọi, cả lớp trở lại vòng 1.
+   *
+   * Buổi đầu thầy cô hay quay thử vài lần cho quen tay, đến lúc dạy thật thì mấy em đó
+   * đã nằm ngoài vòng cho tới hết vòng hiện tại. Nút này đưa tất cả về lại. Điểm thưởng
+   * đã cộng KHÔNG bị đụng tới - chỉ xoá dấu "đã gọi".
+   */
+  const datLaiCaLop = async () => {
+    if (!lopId || !trangThai) return;
+    const daGoi = trangThai.caLop.length - trangThai.conLai.length;
+    const ten = dsCacLop.find(l => l.id === lopId)?.name || 'lớp này';
+    if (!window.confirm(
+      `Đưa cả ${trangThai.caLop.length} em của ${ten} trở lại vòng quay?
+
+` +
+      `Đang có ${daGoi} em được đánh dấu là đã gọi - xoá hết dấu đó, quay lại vòng 1.
+` +
+      `Điểm thưởng đã cộng vẫn giữ nguyên, không mất.`
+    )) return;
+    try {
+      await datLaiVongQuay(lopId);
+      setTrungAi(null); setCachDoc(null); setVangHomNay(new Set());
+      await napLai();
+      setVuaCong('Đã đưa cả lớp trở lại vòng quay.');
+      setTimeout(() => setVuaCong(''), 3000);
+    } catch (e: any) { setVuaCong(e?.message || 'Không đặt lại được.'); }
+  };
+
   /** Em vắng: KHÔNG tính là đã gọi, chỉ bỏ qua trong buổi này. */
   const danhDauVang = () => {
     if (!trungAi) return;
@@ -382,6 +410,19 @@ export default function BangGoiTenVaDiem({
                   : dsQuay.length === 0 ? 'Lớp chưa có học sinh nào'
                   : <><Dices className="w-5 h-5" /> QUAY</>}
               </button>
+
+              {/* Quay thử xong thì đưa cả lớp về lại - nếu không, mấy em quay thử coi như
+                  đã gọi và phải chờ hết vòng mới được gọi lại */}
+              {trangThai && trangThai.conLai.length < trangThai.caLop.length && (
+                <button onClick={datLaiCaLop}
+                        title="Xoá dấu đã gọi của cả lớp, quay lại vòng 1 - điểm thưởng vẫn giữ nguyên"
+                        className="mt-2 w-full py-2 rounded-xl border border-slate-200 text-slate-500
+                                   hover:border-violet-300 hover:text-violet-700 hover:bg-violet-50
+                                   font-bold text-[12.5px] flex items-center justify-center gap-1.5 transition-colors">
+                  <RotateCcw className="w-3.5 h-3.5" />
+                  Đưa cả lớp trở lại vòng quay ({trangThai.caLop.length - trangThai.conLai.length} em đã gọi)
+                </button>
+              )}
 
               {/* Cộng điểm cho em vừa quay trúng */}
               {trungAi && (

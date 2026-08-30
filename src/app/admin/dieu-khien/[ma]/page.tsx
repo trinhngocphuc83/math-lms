@@ -11,10 +11,11 @@ import rehypeRaw from "rehype-raw";
 import "katex/dist/katex.min.css";
 import {
   ChevronLeft, ChevronRight, Dices, Trophy, Maximize2, Wifi, WifiOff,
-  Plus, Minus, UserX, Undo2, X, Timer, Eye, EyeOff, Send, Check, LogOut,
+  Plus, Minus, UserX, Undo2, X, Timer, Eye, EyeOff, Send, Check, LogOut, Mic, Loader2,
 } from "lucide-react";
 import { studentMarkdownComponents } from "@/components/CustomMarkdownComponents";
 import { moKenhDienThoai, type TrangThaiChieu } from "@/utils/dieuKhienXa";
+import { docThoiLuongTiengViet } from "@/utils/parseVietnameseDuration";
 
 /**
  * Trang điều khiển trên ĐIỆN THOẠI.
@@ -70,6 +71,8 @@ export default function TrangDieuKhien() {
   const [xemKeTiep, setXemKeTiep] = React.useState(false);
   const [moBangGio, setMoBangGio] = React.useState(false);
   const [chuTraLoi, setChuTraLoi] = React.useState('');
+  const [dangNgheMic, setDangNgheMic] = React.useState(false);
+  const [loiMic, setLoiMic] = React.useState('');
   const guiRef = React.useRef<((l: any) => void) | null>(null);
   /* Đã nghe được máy chiếu lần nào chưa. Phải dùng ref chứ không dùng state: bộ đếm
      4 giây bên dưới chỉ chạy một lần nên nó đọc phải giá trị của lần vẽ đầu, lúc đó
@@ -108,6 +111,47 @@ export default function TrangDieuKhien() {
 
   const dinhGio = (g: number) =>
     `${Math.floor(g / 60)}:${String(g % 60).padStart(2, '0')}`;
+
+  const hoTroMic = typeof window !== 'undefined' &&
+    !!((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
+
+  /**
+   * Bấm rồi nói thời lượng, ví dụ "hai phút" hay "chín mươi giây".
+   *
+   * Nghe ngay trên ĐIỆN THOẠI chứ không nhờ máy chiếu nghe: micro của máy chiếu ở tận
+   * bàn giáo viên, thầy cô đang đứng giữa lớp nói thì nó không nghe rõ. Nghe xong mới
+   * gửi số phút lên bảng.
+   */
+  const ngheMic = () => {
+    const Nhan = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!Nhan) return;
+    setLoiMic('');
+    try {
+      const nd = new Nhan();
+      nd.lang = 'vi-VN';
+      nd.interimResults = false;
+      nd.maxAlternatives = 3;
+      nd.onstart = () => setDangNgheMic(true);
+      nd.onend = () => setDangNgheMic(false);
+      nd.onerror = (e: any) => {
+        setDangNgheMic(false);
+        setLoiMic(e?.error === 'not-allowed' ? 'Chưa cho phép dùng micro' : 'Không nghe được, thử lại');
+      };
+      nd.onresult = (e: any) => {
+        for (let i = 0; i < e.results[0].length; i++) {
+          const giay = docThoiLuongTiengViet(e.results[0][i].transcript);
+          if (giay) {
+            /* Máy chiếu nhận theo PHÚT, nên chia ra - "chín mươi giây" thành 1,5 phút. */
+            gui({ viec: 'dat-gio', phut: giay / 60 });
+            setMoBangGio(false);
+            return;
+          }
+        }
+        setLoiMic(`Chưa hiểu “${e.results[0][0]?.transcript || ''}”, nói lại nhé`);
+      };
+      nd.start();
+    } catch { setLoiMic('Không mở được micro'); }
+  };
 
   return (
     <div className="fixed inset-0 z-[80] bg-slate-900 text-white flex flex-col">
@@ -189,6 +233,23 @@ export default function TrangDieuKhien() {
               </button>
             ))}
           </div>
+          {/* Nói thời gian - ẩn hẳn nếu trình duyệt không nghe được */}
+          {hoTroMic && (
+            <button onClick={ngheMic} disabled={dangNgheMic}
+                    className={`w-full mt-2 py-3 rounded-xl font-black text-[14px] flex items-center
+                                justify-center gap-2 border ${
+                      dangNgheMic
+                        ? 'bg-rose-500/15 border-rose-500/40 text-rose-200'
+                        : 'bg-white/5 border-white/15 text-slate-200 active:bg-white/15'
+                    }`}>
+              {dangNgheMic
+                ? <><Loader2 className="w-5 h-5 animate-spin" /> Đang nghe… nói “hai phút”</>
+                : <><Mic className="w-5 h-5" /> Bấm rồi nói thời gian</>}
+            </button>
+          )}
+
+          {loiMic && <p className="mt-2 text-[12.5px] text-rose-300 font-bold text-center">{loiMic}</p>}
+
           <button onClick={() => { gui({ viec: 'dung-gio' }); setMoBangGio(false); }}
                   className="w-full mt-2 py-2.5 rounded-xl bg-white/10 active:bg-white/20 text-slate-200 font-bold text-[13.5px]">
             Dừng và xoá đồng hồ
