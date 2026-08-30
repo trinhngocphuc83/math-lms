@@ -5,13 +5,17 @@
  *   - không dính bản quyền của ai,
  *   - chạy được cả khi mất mạng,
  *   - không phải quản lý thêm tệp nào, cũng không tốn dung lượng.
- * Thầy cô tìm được bản ưng ý hơn thì cứ thả tệp vào public/nhac-vinh-danh/ theo đúng tên
+ * Thầy cô tìm được bản ưng ý hơn thì cứ thả tệp vào public/am-thanh/ theo đúng tên
  * (fanfare.mp3, trong.mp3) - hệ thống TỰ ƯU TIÊN dùng tệp thật, không cần sửa mã.
  *
- * Nhạc nền thì dùng tệp Thầy cô đã chuẩn bị: public/nhac-vinh-danh/nen.mp3
+ * MỌI ÂM THANH CỦA APP ĐỀU NẰM TRONG public/am-thanh/:
+ *   vinh-danh.mp3  nhạc nền sân khấu vinh danh
+ *   quay-so.mp3    nhạc chạy trong lúc vòng quay đang quay
+ *   fanfare.mp3    tiếng kèn chào (chưa có thì hệ thống tự tạo bằng mã)
+ *   trong.mp3      trống dồn (chưa có thì hệ thống tự tạo bằng mã)
  */
 
-const THU_MUC = '/nhac-vinh-danh';
+const THU_MUC = '/am-thanh';
 
 let boAm: AudioContext | null = null;
 
@@ -151,11 +155,17 @@ export async function trongDon(giay = 2.2): Promise<void> {
 export class NhacNen {
   private a: HTMLAudioElement | null = null;
 
-  /** Bật nhạc nền, to dần cho êm. Không có tệp thì im lặng, không báo lỗi. */
+  /**
+   * @param tep tên tệp trong public/am-thanh (mặc định là nhạc sân khấu vinh danh)
+   * @param lap có lặp lại không - nhạc vòng quay chỉ chạy vài giây nên vẫn nên lặp
+   */
+  constructor(private tep = 'vinh-danh.mp3', private lap = true) {}
+
+  /** Bật nhạc, to dần cho êm. Không có tệp thì im lặng, không báo lỗi. */
   async bat(amLuong = 0.45): Promise<boolean> {
-    if (!(await coTep(`${THU_MUC}/nen.mp3`))) return false;
-    this.a = new Audio(`${THU_MUC}/nen.mp3`);
-    this.a.loop = true;
+    if (!(await coTep(`${THU_MUC}/${this.tep}`))) return false;
+    this.a = new Audio(`${THU_MUC}/${this.tep}`);
+    this.a.loop = this.lap;
     this.a.volume = 0;
     try {
       await this.a.play();
@@ -181,13 +191,16 @@ export class NhacNen {
     if (this.a) this.a.volume = muc;
   }
 
-  tat() {
+  /** @param nhanh true = tắt gọn trong ~0,3 giây, dùng khi vòng quay vừa dừng. */
+  tat(nhanh = false) {
     if (!this.a) return;
     const a = this.a;
     this.a = null;
+    const buoc_ = nhanh ? 0.14 : 0.05;
+    const nhip = nhanh ? 30 : 60;
     const buoc = () => {
-      a.volume = Math.max(0, a.volume - 0.05);
-      if (a.volume > 0.01) setTimeout(buoc, 60);
+      a.volume = Math.max(0, a.volume - buoc_);
+      if (a.volume > 0.01) setTimeout(buoc, nhip);
       else { a.pause(); a.currentTime = 0; }
     };
     buoc();

@@ -2,15 +2,16 @@
 
 import React from "react";
 import confetti from "canvas-confetti";
-import { X, Loader2, RefreshCw, Volume2, Download, UserX, Plus, Minus, Dices, AlertTriangle } from "lucide-react";
+import { X, Loader2, RefreshCw, Volume2, VolumeX, Download, UserX, Undo2, Plus, Minus, Dices, AlertTriangle } from "lucide-react";
 /* Việc của thầy cô phải đi qua máy chủ: bảng enrollments có RLS chặn, trình duyệt đọc
    thẳng ra 0 dòng dù lớp có 16 em. Trang lớp học cũng đi đường này. */
 import {
-  layTrangThaiQuay, ghiDaGoi, congDiem, layDsLop, layLopTheoBai, daChotThang,
+  layTrangThaiQuay, ghiDaGoi, boGoiTen, congDiem, layDsLop, layLopTheoBai, daChotThang,
 } from "@/app/actions/goiTenVaDiem";
 import { LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from "@/utils/goiTenVaDiem";
 import { chuanBiMoiEm, noiCongDiem, noiNgay, type CachDoc } from "@/utils/giongDocAI";
 import VongQuayTen from "./VongQuayTen";
+import { NhacNen } from "@/utils/amThanhSanKhau";
 
 /**
  * Bảng "Gọi tên & Điểm" - MỘT bảng dùng chung, mở được ở bất cứ đâu.
@@ -50,6 +51,10 @@ export default function BangGoiTenVaDiem({
 
   /** Em vắng - chỉ bỏ qua trong BUỔI NÀY, không ghi vào CSDL, không tính là đã gọi. */
   const [vangHomNay, setVangHomNay] = React.useState<Set<string>>(new Set());
+
+  /** Nhạc chạy trong lúc quay - tắt gọn khi dừng để nghe rõ tiếng đọc tên. */
+  const nhacQuay = React.useRef<NhacNen | null>(null);
+  const [batNhac, setBatNhac] = React.useState(true);
 
   /** Tiếng đọc tên đã lấy sẵn, chờ băng cuộn dừng là phát. */
   const tiengCho = React.useRef<Promise<{ phat: () => Promise<CachDoc> }> | null>(null);
@@ -128,6 +133,12 @@ export default function BangGoiTenVaDiem({
      */
     const tiengDaSan = chuanBiMoiEm(trung.id, trung.ten);
 
+    /* Nhạc quay số cho có không khí. Tắt gọn ngay khi băng dừng để không át tiếng đọc tên. */
+    if (batNhac) {
+      nhacQuay.current = new NhacNen('quay-so.mp3', true);
+      nhacQuay.current.bat(0.5);
+    }
+
     /* Ghi nhận đã gọi, cũng làm luôn trong lúc quay cho khỏi chờ thêm. */
     ghiDaGoi(lopId, trung.id, trangThai.vong, lessonId).catch(() => { /* vẫn quay tiếp được */ });
 
@@ -139,6 +150,9 @@ export default function BangGoiTenVaDiem({
     const trung = seTrung;
     setDangQuay(false);
     if (!trung) return;
+
+    nhacQuay.current?.tat(true);   // tắt gọn, nhường chỗ cho tiếng đọc tên
+    nhacQuay.current = null;
 
     setTrungAi(trung);
     try { confetti({ particleCount: 110, spread: 80, origin: { y: 0.35 } }); } catch { /* thôi */ }
@@ -162,6 +176,25 @@ export default function BangGoiTenVaDiem({
         setCachDoc(noiNgay(`Mời em ${trung.ten}`));
       }
     } catch { /* im tiếng thì thôi, không được vỡ giao diện lúc đang dạy */ }
+  };
+
+  /**
+   * QUAY NHẦM: bỏ em vừa trúng ra khỏi danh sách đã gọi, trả lại vòng quay.
+   *
+   * Khác hẳn nút "Vắng": vắng là em đó CÓ được gọi rồi nhưng hôm nay không có mặt nên bỏ
+   * qua trong buổi này; còn quay nhầm thì coi như chưa từng gọi, em vẫn nằm nguyên trong
+   * vòng và lần sau vẫn quay ra được.
+   */
+  const boLaiVaoVong = async () => {
+    if (!trungAi || !trangThai) return;
+    try {
+      await boGoiTen(lopId, trungAi.id, trangThai.vong);
+      setTrangThai(t => t && !t.conLai.some(h => h.id === trungAi.id)
+        ? { ...t, conLai: [...t.conLai, trungAi] } : t);
+      setVuaCong(`Đã bỏ lại ${trungAi.ten} vào vòng quay.`);
+      setTimeout(() => setVuaCong(''), 3000);
+    } catch { setVuaCong('Không bỏ lại được.'); }
+    setTrungAi(null); setCachDoc(null);
   };
 
   /** Em vắng: KHÔNG tính là đã gọi, chỉ bỏ qua trong buổi này. */
@@ -252,6 +285,11 @@ export default function BangGoiTenVaDiem({
               <option key={l.id} value={l.id} className="text-slate-800">{l.name}</option>
             ))}
           </select>
+          <button onClick={() => { setBatNhac(v => !v); if (batNhac) { nhacQuay.current?.tat(true); nhacQuay.current = null; } }}
+                  title={batNhac ? 'Đang bật nhạc quay số - bấm để tắt' : 'Đang tắt nhạc quay số - bấm để bật'}
+                  className="p-1.5 text-white/80 hover:text-white hover:bg-white/20 rounded-lg shrink-0">
+            {batNhac ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+          </button>
           <button onClick={napLai} title="Tải lại danh sách lớp"
                   className="p-1.5 text-white/80 hover:text-white hover:bg-white/20 rounded-lg shrink-0">
             <RefreshCw className={`w-4 h-4 ${dangTai ? 'animate-spin' : ''}`} />
@@ -323,6 +361,12 @@ export default function BangGoiTenVaDiem({
                           className="px-3 py-2.5 rounded-xl border border-slate-300 text-slate-500 hover:bg-slate-50
                                      font-bold text-sm flex items-center gap-1.5">
                     <UserX className="w-4 h-4" /> Vắng
+                  </button>
+                  <button onClick={boLaiVaoVong}
+                          title="Quay nhầm - bỏ em này lại vào vòng quay, coi như chưa từng gọi"
+                          className="px-3 py-2.5 rounded-xl border border-amber-300 text-amber-700 hover:bg-amber-50
+                                     font-bold text-sm flex items-center gap-1.5">
+                    <Undo2 className="w-4 h-4" /> Bỏ lại
                   </button>
                 </div>
               )}

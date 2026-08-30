@@ -108,6 +108,22 @@ export async function ghiDaGoi(
   if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
 }
 
+/**
+ * Bỏ một em ra khỏi danh sách đã gọi, trả em đó lại vòng quay.
+ *
+ * Dùng khi quay nhầm - Thầy cô bấm QUAY lúc chưa định gọi, hoặc gọi trúng em vừa mới trả
+ * lời xong. Chỉ xoá lượt gọi Ở VÒNG ĐANG CHẠY, không đụng tới lịch sử các vòng trước và
+ * cũng không đụng tới điểm đã cộng.
+ */
+export async function boGoiTen(
+  classId: string, studentId: string, vong: number,
+): Promise<void> {
+  await assertStaff();
+  const { error } = await quanTri.from('luot_goi_ten').delete()
+    .eq('class_id', classId).eq('student_id', studentId).eq('vong', vong);
+  if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+}
+
 /** Tháng này của lớp đã chốt chưa. */
 export async function daChotThang(classId: string, thang?: string): Promise<boolean> {
   await assertStaff();
