@@ -22,10 +22,12 @@ import {
   CheckSquare,
   Library,
   Clock,
-  PlayCircle
+  PlayCircle,
+  Trophy,
 } from "lucide-react";
+import DiemThuongCuaToi from "@/components/hocsinh/DiemThuongCuaToi";
 
-type TabType = 'info' | 'courses' | 'exams' | 'schedule' | 'finance';
+type TabType = 'info' | 'courses' | 'exams' | 'schedule' | 'finance' | 'diem';
 
 /**
  * Sáu mục của khu học sinh, dùng chung cho lưới biểu tượng và thanh dưới.
@@ -47,6 +49,7 @@ const MUC_HOC_SINH: MucHocSinh[] = [
   { tab: 'exams',    nhan: 'Kiểm tra',   Icon: ClipboardList, mau: 'bg-rose-50 text-rose-600' },
   { tab: 'finance',  nhan: 'Tài chính',  Icon: DollarSign,    mau: 'bg-amber-50 text-amber-600' },
   { tab: 'info',     nhan: 'Hồ sơ',      Icon: User,          mau: 'bg-violet-50 text-violet-600' },
+  { tab: 'diem',     nhan: 'Điểm thưởng', Icon: Trophy,       mau: 'bg-fuchsia-50 text-fuchsia-600' },
   { tab: '',         nhan: 'Sổ tay',     Icon: Library,       mau: 'bg-indigo-50 text-indigo-600', duong: '/student/handbook' },
 ];
 
@@ -658,6 +661,12 @@ export default function StudentDashboardPage() {
           )}
 
           {/* 5. TÀI CHÍNH & ĐIỂM DANH */}
+          {activeTab === 'diem' && (
+            <div className="animate-in fade-in duration-300">
+              <DiemThuongCuaToi />
+            </div>
+          )}
+
           {activeTab === 'finance' && (
             <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 max-w-6xl mx-auto">
               

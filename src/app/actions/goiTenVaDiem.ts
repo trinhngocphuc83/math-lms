@@ -3,6 +3,7 @@
 import { createClient } from '@supabase/supabase-js';
 import { assertStaff } from '@/utils/auth/guard';
 import { thangNay, thangTruoc, LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from '@/utils/goiTenVaDiem';
+import { gopLanLamLai, tinhCacLanCong, type BaiDaLam } from '@/utils/diemThuong';
 
 /**
  * Vòng quay gọi tên và điểm thưởng - phần chạy trên máy chủ.
@@ -271,4 +272,282 @@ export async function timGiongDaNho(khoa: string): Promise<string> {
   } catch {
     return '';
   }
+}
+
+/* ────────────────────────────────────── QUÉT ĐIỂM TỪ BÀI LÀM (tự động) ─── */
+
+/** Trong tháng 'YYYY-MM' thì từ ngày nào tới ngày nào. */
+function khoangThang(thang: string): { tu: string; den: string } {
+  const [n, t] = thang.split('-').map(Number);
+  const tu = new Date(Date.UTC(n, t - 1, 1));
+  const den = new Date(Date.UTC(t === 12 ? n + 1 : n, t === 12 ? 0 : t, 1));
+  return { tu: tu.toISOString(), den: den.toISOString() };
+}
+
+export interface KetQuaQuet {
+  /** Số lần cộng mới ghi nhận */
+  themMoi: number;
+  /** Tổng điểm vừa cộng thêm */
+  themDiem: number;
+  daChot: boolean;
+}
+
+/**
+ * Quét bài làm trong tháng rồi cộng điểm cho những bài CHƯA cộng.
+ *
+ * Chạy lại bao nhiêu lần cũng không sao: mỗi bài đã cộng thì cột `lesson_id` giữ đúng
+ * khoá của bài đó, lượt sau thấy có rồi là bỏ qua. Quy tắc quy đổi nằm ở utils/diemThuong
+ * (có 27 phép thử), ở đây chỉ lo đọc/ghi.
+ */
+export async function quetDiemTuDong(
+  classId: string, thang?: string,
+): Promise<KetQuaQuet> {
+  const nguoi = await assertStaff();
+  const t = thang || thangNay();
+  if (await daChotThang(classId, t)) return { themMoi: 0, themDiem: 0, daChot: true };
+
+  const caLop = await layDsHocSinh(classId);
+  if (caLop.length === 0) return { themMoi: 0, themDiem: 0, daChot: false };
+  const ids = caLop.map(h => h.id);
+  const { tu, den } = khoangThang(t);
+
+  /* Những gì đã cộng rồi - khoá theo cặp (nguồn, khoá bài). */
+  const { data: daCo, error: loiDaCo } = await quanTri
+    .from('diem_thuong').select('student_id, nguon, lesson_id')
+    .eq('class_id', classId).eq('thang', t);
+  if (loiDaCo) throw new Error(thieuBang(loiDaCo) ? LOI_CHUA_TAO_BANG : loiDaCo.message);
+
+  const daCong = (hsId: string) => new Set(
+    (daCo || [])
+      .filter((r: any) => r.student_id === hsId && r.lesson_id)
+      .map((r: any) => `${r.nguon}|${r.lesson_id}`),
+  );
+
+  const canGhi: any[] = [];
+
+  /* ---------------------------------------------------------- 1. LUYỆN TẬP */
+  const { data: kq } = await quanTri
+    .from('exam_results').select('student_id, module_id, score, created_at')
+    .in('student_id', ids).gte('created_at', tu).lt('created_at', den);
+
+  const idMuc = [...new Set((kq || []).map((r: any) => r.module_id).filter(Boolean))];
+  const { data: muc } = idMuc.length
+    ? await quanTri.from('lesson_modules').select('id, title').in('id', idMuc)
+    : { data: [] as any[] };
+  const tenMuc: Record<string, string> = {};
+  for (const m of muc || []) tenMuc[m.id] = m.title || 'Bài luyện tập';
+
+  for (const hs of caLop) {
+    const bai: BaiDaLam[] = (kq || [])
+      .filter((r: any) => r.student_id === hs.id && r.module_id)
+      .map((r: any) => ({
+        khoa: r.module_id,
+        ten: `Luyện tập: ${tenMuc[r.module_id] || 'Bài luyện tập'}`,
+        diem: Number(r.score),
+        luc: r.created_at,
+      }));
+    if (bai.length === 0) continue;
+
+    const da = daCong(hs.id);
+    for (const lan of tinhCacLanCong(gopLanLamLai(bai), 'luyen_tap', new Set(
+      [...da].filter(k => k.startsWith('luyen_tap|') || k.startsWith('tien_bo|'))
+             .map(k => k.split('|')[1]),
+    ))) {
+      if (da.has(`${lan.nguon}|${lan.khoa}`)) continue;
+      canGhi.push({
+        student_id: hs.id, class_id: classId, thang: t,
+        nguon: lan.nguon, diem: lan.diem, ly_do: lan.ly_do,
+        lesson_id: lan.khoa, nguoi_tao: (nguoi as any)?.id || null,
+      });
+    }
+  }
+
+  /* ------------------------------------------------- 2. KIỂM TRA THẦY NHẬP */
+  const { data: bd } = await quanTri
+    .from('bang_diem').select('id, ten_bai, ngay')
+    .eq('class_id', classId).gte('ngay', tu.slice(0, 10)).lt('ngay', den.slice(0, 10));
+
+  if (bd && bd.length > 0) {
+    const { data: ct } = await quanTri
+      .from('bang_diem_chi_tiet').select('bang_diem_id, student_id, diem')
+      .in('bang_diem_id', bd.map((b: any) => b.id));
+
+    const tenBai: Record<string, { ten: string; ngay: string }> = {};
+    for (const b of bd) tenBai[b.id] = { ten: b.ten_bai, ngay: b.ngay };
+
+    for (const hs of caLop) {
+      const bai: BaiDaLam[] = (ct || [])
+        .filter((r: any) => r.student_id === hs.id && r.diem != null)
+        .map((r: any) => ({
+          khoa: r.bang_diem_id,
+          ten: `Kiểm tra: ${tenBai[r.bang_diem_id]?.ten || 'Bài kiểm tra'}`,
+          diem: Number(r.diem),
+          luc: tenBai[r.bang_diem_id]?.ngay || '',
+        }));
+      if (bai.length === 0) continue;
+
+      const da = daCong(hs.id);
+      for (const lan of tinhCacLanCong(gopLanLamLai(bai), 'kiem_tra', new Set(
+        [...da].filter(k => k.startsWith('kiem_tra|') || k.startsWith('tien_bo|'))
+               .map(k => k.split('|')[1]),
+      ))) {
+        if (da.has(`${lan.nguon}|${lan.khoa}`)) continue;
+        canGhi.push({
+          student_id: hs.id, class_id: classId, thang: t,
+          nguon: lan.nguon, diem: lan.diem, ly_do: lan.ly_do,
+          lesson_id: lan.khoa, nguoi_tao: (nguoi as any)?.id || null,
+        });
+      }
+    }
+  }
+
+  if (canGhi.length === 0) return { themMoi: 0, themDiem: 0, daChot: false };
+
+  const { error } = await quanTri.from('diem_thuong').insert(canGhi);
+  if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+
+  return {
+    themMoi: canGhi.length,
+    themDiem: canGhi.reduce((s, r) => s + Number(r.diem), 0),
+    daChot: false,
+  };
+}
+
+/* ─────────────────────────────────── BẢNG ĐIỂM KIỂM TRA THẦY CÔ NHẬP ─── */
+
+export interface BaiKiemTra {
+  id: string;
+  ten_bai: string;
+  diem_dat: number;
+  ngay: string;
+  /** student_id -> điểm */
+  diem: Record<string, number>;
+}
+
+/** Các bài kiểm tra của lớp, mới nhất trước. */
+export async function layDsBaiKiemTra(classId: string): Promise<BaiKiemTra[]> {
+  await assertStaff();
+  const { data, error } = await quanTri
+    .from('bang_diem').select('id, ten_bai, diem_dat, ngay')
+    .eq('class_id', classId).order('ngay', { ascending: false });
+  if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+  if (!data || data.length === 0) return [];
+
+  const { data: ct } = await quanTri
+    .from('bang_diem_chi_tiet').select('bang_diem_id, student_id, diem')
+    .in('bang_diem_id', data.map((b: any) => b.id));
+
+  return data.map((b: any) => {
+    const diem: Record<string, number> = {};
+    for (const r of ct || []) if (r.bang_diem_id === b.id && r.diem != null) diem[r.student_id] = Number(r.diem);
+    return { id: b.id, ten_bai: b.ten_bai, diem_dat: Number(b.diem_dat ?? 5), ngay: b.ngay, diem };
+  });
+}
+
+/**
+ * Lưu một bài kiểm tra và điểm từng em.
+ *
+ * Trước đây ScoresTab KHÔNG hề nhập supabase dòng nào - điểm chỉ nằm trong bộ nhớ trang,
+ * Thầy cô nhập xong tải lại trang là mất trắng. Đây là chỗ lưu thật.
+ */
+export async function luuBaiKiemTra(
+  classId: string,
+  bai: { id?: string; ten_bai: string; diem_dat: number; ngay?: string },
+  diem: Record<string, number | null>,
+): Promise<string> {
+  const nguoi = await assertStaff();
+
+  let id = bai.id || '';
+  if (id) {
+    const { error } = await quanTri.from('bang_diem')
+      .update({ ten_bai: bai.ten_bai, diem_dat: bai.diem_dat }).eq('id', id);
+    if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+  } else {
+    const { data, error } = await quanTri.from('bang_diem').insert([{
+      class_id: classId, ten_bai: bai.ten_bai, diem_dat: bai.diem_dat,
+      ngay: bai.ngay || new Date().toISOString().slice(0, 10),
+      nguoi_tao: (nguoi as any)?.id || null,
+    }]).select('id').single();
+    if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+    id = data.id;
+  }
+
+  /* Ô để trống nghĩa là em đó chưa có điểm - xoá dòng cũ đi chứ đừng giữ số cũ. */
+  const coDiem = Object.entries(diem).filter(([, d]) => d != null && Number.isFinite(Number(d)));
+  const khongDiem = Object.entries(diem).filter(([, d]) => d == null || !Number.isFinite(Number(d)));
+
+  if (khongDiem.length > 0) {
+    await quanTri.from('bang_diem_chi_tiet').delete()
+      .eq('bang_diem_id', id).in('student_id', khongDiem.map(([k]) => k));
+  }
+  if (coDiem.length > 0) {
+    const { error } = await quanTri.from('bang_diem_chi_tiet').upsert(
+      coDiem.map(([sid, d]) => ({ bang_diem_id: id, student_id: sid, diem: Number(d) })),
+      { onConflict: 'bang_diem_id,student_id' },
+    );
+    if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+  }
+
+  return id;
+}
+
+export async function xoaBaiKiemTra(baiId: string): Promise<void> {
+  await assertStaff();
+  await quanTri.from('bang_diem').delete().eq('id', baiId);
+}
+
+/* ───────────────────────────────────────────────────── CHỐT THÁNG ─── */
+
+/**
+ * Chốt tháng: khoá lại, không cộng/trừ thêm được nữa.
+ *
+ * Quét nốt điểm từ bài làm TRƯỚC khi khoá, để không sót bài nào Thầy cô vừa chấm.
+ */
+export async function chotThang(classId: string, thang?: string): Promise<{ daQuet: number }> {
+  const nguoi = await assertStaff();
+  const t = thang || thangNay();
+
+  const quet = await quetDiemTuDong(classId, t);
+
+  const { error } = await quanTri.from('chot_thang').insert([{
+    class_id: classId, thang: t, nguoi_chot: (nguoi as any)?.id || null,
+  }]);
+  if (error && !/duplicate|unique/i.test(error.message)) {
+    throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+  }
+  return { daQuet: quet.themMoi };
+}
+
+/** Mở khoá lại một tháng đã chốt - phòng khi Thầy cô chốt nhầm. */
+export async function boChotThang(classId: string, thang?: string): Promise<void> {
+  await assertStaff();
+  await quanTri.from('chot_thang').delete()
+    .eq('class_id', classId).eq('thang', thang || thangNay());
+}
+
+/** Chi tiết từng lần cộng/trừ của cả lớp trong tháng - dùng để xuất phiếu phụ huynh. */
+export async function layChiTietThang(
+  classId: string, thang?: string,
+): Promise<Record<string, { diem: number; nguon: string; ly_do: string; luc: string }[]>> {
+  await assertStaff();
+  const t = thang || thangNay();
+  const caLop = await layDsHocSinh(classId);
+  const ids = new Set(caLop.map(h => h.id));
+
+  const { data, error } = await quanTri
+    .from('diem_thuong').select('student_id, diem, nguon, ly_do, created_at')
+    .eq('class_id', classId).eq('thang', t)
+    .order('created_at', { ascending: true });
+  if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+
+  const ra: Record<string, { diem: number; nguon: string; ly_do: string; luc: string }[]> = {};
+  for (const hs of caLop) ra[hs.id] = [];
+  for (const r of data || []) {
+    if (!ids.has(r.student_id)) continue;   // em đã rời lớp thì không lên phiếu
+    ra[r.student_id].push({
+      diem: Number(r.diem), nguon: r.nguon,
+      ly_do: r.ly_do || '', luc: r.created_at,
+    });
+  }
+  return ra;
 }

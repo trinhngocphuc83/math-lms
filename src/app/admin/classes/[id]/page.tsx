@@ -9,6 +9,7 @@ import { getEnrollments, addEnrollment, removeEnrollment, updateStudentProfile, 
 import AttendanceTab from "./AttendanceTab";
 import TuitionTab from "./TuitionTab";
 import ScoresTab from "./ScoresTab";
+import TongKetThangTab from "./TongKetThangTab";
 import BangGoiTenVaDiem from "@/components/lop/BangGoiTenVaDiem";
 import SanKhauVinhDanh from "@/components/lop/SanKhauVinhDanh";
 
@@ -20,7 +21,7 @@ export default function ClassDetailsPage() {
   const params = useParams();
   const router = useRouter();
   const classId = params.id as string;
-  const [activeTab, setActiveTab] = useState<'menu' | 'students' | 'attendance' | 'tuition' | 'scores'>('students');
+  const [activeTab, setActiveTab] = useState<'menu' | 'students' | 'attendance' | 'tuition' | 'scores' | 'tongket'>('students');
   /* Gọi tên & Điểm mở thẳng từ đây - dùng được cả khi không chiếu bài nào. */
   const [moGoiTen, setMoGoiTen] = useState(false);
   /* Sân khấu vinh danh - chiếu tivi cuối tháng. */
@@ -262,6 +263,12 @@ export default function ClassDetailsPage() {
         >
           <CheckSquare size={18} /> Báo điểm
         </button>
+        <button
+          onClick={() => setActiveTab('tongket')}
+          className={`flex items-center gap-2 px-5 py-3 font-bold rounded-t-xl transition-all border-b-2 ${activeTab === 'tongket' ? 'border-teal-600 text-teal-700 bg-teal-50/50' : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-50'}`}
+        >
+          <Trophy size={18} /> Tổng kết tháng
+        </button>
       </div>
 
       
@@ -438,6 +445,18 @@ export default function ClassDetailsPage() {
           </div>
           <div className="flex-1 overflow-y-auto custom-scrollbar md:overflow-visible md:h-auto p-3 md:p-0">
             <TuitionTab classId={classId} classInfo={classInfo} enrollments={enrollments} />
+          </div>
+        </div>
+      )}
+
+      {activeTab === 'tongket' && (
+        <div className="fixed md:static inset-0 z-[100] md:z-auto bg-gray-50 md:bg-transparent flex flex-col h-[100dvh] md:h-auto overflow-hidden md:overflow-visible animate-in fade-in slide-in-from-bottom-2 duration-300">
+          <div className="md:hidden bg-white px-4 py-3 border-b border-gray-200 flex items-center gap-3 shrink-0 shadow-sm z-[110]">
+             <button onClick={() => setActiveTab('menu')} className="p-2 -ml-2 bg-gray-100 rounded-full text-gray-600"><ArrowLeft size={20}/></button>
+             <h2 className="font-bold text-lg text-gray-800">Tổng kết tháng · {classInfo?.name}</h2>
+          </div>
+          <div className="flex-1 overflow-y-auto custom-scrollbar md:overflow-visible md:h-auto p-3 md:p-0">
+            <TongKetThangTab classId={classId} classInfo={classInfo} />
           </div>
         </div>
       )}
