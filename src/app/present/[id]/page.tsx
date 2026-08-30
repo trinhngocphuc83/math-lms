@@ -10,7 +10,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling, Dices } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling, Dices, Smartphone } from 'lucide-react';
 import { ensureMathDelimiters } from '@/utils/latexFixer';
 import React from 'react';
 import {
@@ -21,6 +21,9 @@ import {
 } from '@/components/presentation/presentationTheme';
 import PresentationTimer from '@/components/presentation/PresentationTimer';
 import BangGoiTenVaDiem from '@/components/lop/BangGoiTenVaDiem';
+import GhepDienThoaiModal from '@/components/presentation/GhepDienThoaiModal';
+import { moKenhMayChieu, taoMaPhien, type Lenh, type TrangThaiChieu } from '@/utils/dieuKhienXa';
+import { tachSlide } from '@/utils/tachSlide';
 
 /* Vùng nội dung bên trong canvas (đã trừ lề). Mọi phép đo auto-fit dựa trên đây. */
 const PAD_X = 84;
@@ -30,26 +33,9 @@ const CONTENT_HEIGHT = CANVAS_HEIGHT - PAD_TOP - PAD_BOTTOM;
 /** Không thu nhỏ quá mức này để chữ còn đọc được từ cuối lớp. */
 const MIN_CONTENT_SCALE = 0.45;
 
-// --- Slide Parser ---
-function parseSlides(markdown: string) {
-    let parts = markdown.split(/(?:\n|^)\s*---\s*(?:\n|$)/);
-    let slides: string[][] = [];
-
-    parts.forEach(part => {
-        let subparts = part.split(/(?=(?:\n|^)##\s)/);
-        subparts.forEach(sp => {
-            let tokens = sp.split(/(```quiz[\s\S]*?```)/g);
-            tokens.forEach(t => {
-                if (t.trim()) {
-                    let fragments = t.split(/(?:\n|^)\s*\*\*\*\s*(?:\n|$)/).filter(f => f.trim());
-                    if (fragments.length > 0) slides.push(fragments);
-                }
-            });
-        });
-    });
-
-    return slides;
-}
+/* Hàm tách slide chuyển sang utils/tachSlide để TRANG ĐIỀU KHIỂN trên điện thoại tách y
+   hệt - hai nơi tách lệch nhau một chút là số slide đã khác, bấm nút ra nhầm slide. */
+const parseSlides = tachSlide;
 
 /* Lớp tiện ích cho KaTeX dùng chung mọi nơi trong slide. */
 const KATEX_CLASS = '[&_.katex]:text-[#1e40af] [&_.katex-display]:my-4 [&_.katex-display]:text-[1.04em]';
@@ -203,6 +189,16 @@ export default function PresentationPage() {
     const [isFullscreen, setIsFullscreen] = useState(false);
     /* Bảng gọi tên & điểm - mở được ngay giữa giờ dạy, phím tắt G. */
     const [moGoiTen, setMoGoiTen] = useState(false);
+    const [moSanKhau, setMoSanKhau] = useState(false);
+
+    /* Điều khiển bằng điện thoại. Mã phiên sinh MỘT LẦN cho mỗi lần mở trang - tải lại
+       trang là mã đổi, nên điện thoại cũ mất quyền, phải quét lại. */
+    const [maPhien] = useState(() => taoMaPhien());
+    const [moGhepDT, setMoGhepDT] = useState(false);
+    const [dtDaNoi, setDtDaNoi] = useState(false);
+    /* Lệnh gửi xuống bảng Gọi tên - tăng số đếm là bảng đó biết có việc mới. */
+    const [lenhChoBang, setLenhChoBang] = useState<{ viec: string; diem?: number; dem: number } | null>(null);
+    const phatTrangThai = useRef<((tt: TrangThaiChieu) => void) | null>(null);
 
     // Resume states
     const [showRestorePrompt, setShowRestorePrompt] = useState(false);
@@ -361,6 +357,53 @@ export default function PresentationPage() {
         window.addEventListener('keydown', handleKeyDown);
         return () => window.removeEventListener('keydown', handleKeyDown);
     }, [goNext, goPrev, toggleFullscreen]);
+
+    /*
+     * ĐIỆN THOẠI ĐIỀU KHIỂN.
+     *
+     * Máy chiếu là nơi giữ trạng thái thật, điện thoại chỉ ra lệnh. Nhờ vậy điện thoại rớt
+     * mạng giữa chừng thì bài giảng không hề bị ảnh hưởng.
+     */
+    useEffect(() => {
+        const k = moKenhMayChieu(maPhien, (l: Lenh) => {
+            setDtDaNoi(true);
+            switch (l.viec) {
+                case 'sau': goNext(); break;
+                case 'truoc': goPrev(); break;
+                case 'nhay': setCurrentSlideIndex(l.slide); setCurrentFragmentIndex(0); break;
+                case 'toan-man-hinh': toggleFullscreen(); break;
+                case 'mo-goi-ten': setMoGoiTen(true); break;
+                case 'dong-goi-ten': setMoGoiTen(false); break;
+                case 'mo-san-khau': setMoSanKhau(true); break;
+                /* Mấy việc bên dưới là của bảng Gọi tên, chuyển thẳng xuống cho nó lo. */
+                case 'quay': case 'vang': case 'bo-lai':
+                    setLenhChoBang(v => ({ viec: l.viec, dem: (v?.dem || 0) + 1 })); break;
+                case 'diem':
+                    setLenhChoBang(v => ({ viec: 'diem', diem: l.diem, dem: (v?.dem || 0) + 1 })); break;
+            }
+        });
+        phatTrangThai.current = k.phat;
+        return () => { phatTrangThai.current = null; k.dong(); };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [maPhien, goNext, goPrev, toggleFullscreen]);
+
+    /* Đổi slide thì phát ngay xuống điện thoại, để ô "Slide n/23" và phần xem trước
+       luôn khớp với những gì đang chiếu trên bảng. */
+    useEffect(() => {
+        if (!phatTrangThai.current) return;
+        const nay = slides[currentSlideIndex] || [];
+        const ke = slides[currentSlideIndex + 1] || [];
+        phatTrangThai.current({
+            slide: currentSlideIndex,
+            tongSlide: slides.length,
+            /* Chỉ gửi các mảnh ĐANG hiện, đúng như trên bảng */
+            dangChieu: nay.slice(0, currentFragmentIndex + 1).join('\n\n'),
+            keTiep: ke.join('\n\n'),
+            moGoiTen,
+            trungAi: '',
+            tomTatQuay: '',
+        });
+    }, [currentSlideIndex, currentFragmentIndex, slides, moGoiTen]);
 
     if (!moduleData || slides.length === 0) {
         return (
@@ -556,6 +599,14 @@ export default function PresentationPage() {
                     <ChevronLeft className="w-7 h-7" />
                 </button>
                 <button
+                    onClick={() => setMoGhepDT(true)}
+                    className={`p-2.5 rounded-full transition-all text-white hover:scale-105 active:scale-95 ${
+                        dtDaNoi ? 'bg-emerald-500/40 hover:bg-emerald-500/60' : 'bg-white/10 hover:bg-white/20'}`}
+                    title={dtDaNoi ? 'Điện thoại đã kết nối' : 'Dùng điện thoại điều khiển'}
+                >
+                    <Smartphone className="w-7 h-7" />
+                </button>
+                <button
                     onClick={() => setMoGoiTen(true)}
                     className="p-2.5 bg-violet-500/25 hover:bg-violet-500/45 rounded-full transition-all text-white hover:scale-105 active:scale-95"
                     title="Gọi tên & Điểm (phím G)"
@@ -579,6 +630,26 @@ export default function PresentationPage() {
                 isOpen={moGoiTen}
                 onClose={() => setMoGoiTen(false)}
                 lessonId={typeof params?.id === 'string' ? params.id : undefined}
+                lenhTuXa={lenhChoBang}
+                onDoiTrangThai={(tt) => phatTrangThai.current?.({
+                    slide: currentSlideIndex,
+                    tongSlide: slides.length,
+                    dangChieu: (slides[currentSlideIndex] || []).slice(0, currentFragmentIndex + 1).join('\n\n'),
+                    keTiep: (slides[currentSlideIndex + 1] || []).join('\n\n'),
+                    moGoiTen: true,
+                    trungAi: tt.trungAi,
+                    tomTatQuay: tt.tomTat,
+                })}
+            />
+
+            {/* Ghép điện thoại: mã QR dựng từ chính địa chỉ đang mở nên chạy ở đâu cũng đúng. */}
+            <GhepDienThoaiModal
+                isOpen={moGhepDT}
+                onClose={() => setMoGhepDT(false)}
+                ma={maPhien}
+                daNoi={dtDaNoi}
+                lessonId={typeof params?.id === 'string' ? params.id : undefined}
+                moduleId={moduleId || undefined}
             />
         </div>
     );
