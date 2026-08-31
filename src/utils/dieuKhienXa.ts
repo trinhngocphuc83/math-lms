@@ -33,6 +33,14 @@ export type Lenh =
   | { viec: 'nhay-cau'; cau: number }
   | { viec: 'dat-gio'; phut: number }
   | { viec: 'dung-gio' }
+  /**
+   * Cuộn nội dung đang chiếu lên/xuống.
+   *
+   * Lời giải chi tiết dài hơn một màn thì phần dưới bị khuất. Thầy cô đang đứng giữa lớp
+   * cầm điện thoại, không với tới chuột máy chiếu để cuộn - nên cuộn từ đây.
+   * `huong` = 1 là xuống, -1 là lên.
+   */
+  | { viec: 'cuon'; huong: 1 | -1 }
   /** Điện thoại vừa vào, xin máy chiếu phát lại trạng thái */
   | { viec: 'xin-trang-thai' };
 

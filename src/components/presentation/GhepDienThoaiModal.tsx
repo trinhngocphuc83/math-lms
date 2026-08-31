@@ -42,6 +42,19 @@ export default function GhepDienThoaiModal({
       .catch(() => setAnhQR(''));
   }, [isOpen, duongDan]);
 
+  /*
+   * Ghép xong thì TỰ ĐÓNG sau 3 giây, trả màn hình lại cho bài giảng.
+   *
+   * Trước đây khung này nằm lại che kín slide cho tới khi thầy cô bấm ✕ - mà lúc ấy thầy
+   * cô đang cầm điện thoại, phải quay lại máy tính bấm một cái rồi mới dạy tiếp được.
+   * Ba giây đủ để nhìn thấy dấu tích xanh mà không phải chờ lâu.
+   */
+  React.useEffect(() => {
+    if (!isOpen || !daNoi) return;
+    const hen = setTimeout(onClose, 3000);
+    return () => clearTimeout(hen);
+  }, [isOpen, daNoi, onClose]);
+
   React.useEffect(() => {
     if (!isOpen) return;
     const phim = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
@@ -73,7 +86,7 @@ export default function GhepDienThoaiModal({
               </div>
               <p className="text-[18px] font-black text-emerald-800">Điện thoại đã kết nối</p>
               <p className="text-[13.5px] text-emerald-700 mt-1">
-                Thầy cô đóng khung này lại và điều khiển từ điện thoại được rồi.
+                Khung này tự đóng sau 3 giây — Thầy cô điều khiển từ điện thoại được rồi.
               </p>
             </div>
           ) : (

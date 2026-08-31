@@ -12,6 +12,7 @@ import "katex/dist/katex.min.css";
 import {
   ChevronLeft, ChevronRight, Dices, Trophy, Maximize2, Wifi, WifiOff,
   Plus, Minus, UserX, Undo2, X, Timer, Eye, EyeOff, Send, Check, LogOut, Mic, Loader2,
+  ChevronUp, ChevronDown,
   BookOpen,
 } from "lucide-react";
 import { studentMarkdownComponents } from "@/components/CustomMarkdownComponents";
@@ -315,6 +316,22 @@ export default function TrangDieuKhien() {
                 <ChevronRight className="w-9 h-9" />
               </button>
             </div>
+            {/* Cuộn phần đang chiếu trên bảng. Đặt ở hàng nút LUÔN THẤY chứ không đặt
+                dưới ô xem trước: slide câu hỏi thay chỗ ô đó, mà lời giải dài bị khuất
+                lại đúng là ở slide câu hỏi. */}
+            <div className="grid grid-cols-2 gap-2.5 mt-2">
+              <button onClick={() => gui({ viec: 'cuon', huong: -1 })}
+                      className="py-2.5 rounded-xl bg-white/10 active:bg-white/20 text-slate-200
+                                 font-bold text-[13px] flex items-center justify-center gap-1.5">
+                <ChevronUp className="w-4 h-4" /> Cuộn lên
+              </button>
+              <button onClick={() => gui({ viec: 'cuon', huong: 1 })}
+                      className="py-2.5 rounded-xl bg-white/10 active:bg-white/20 text-slate-200
+                                 font-bold text-[13px] flex items-center justify-center gap-1.5">
+                <ChevronDown className="w-4 h-4" /> Cuộn xuống
+              </button>
+            </div>
+
             <div className="grid grid-cols-4 gap-2 mt-2">
               <NutPhu onClick={() => setMoBangGio(v => !v)}
                       mau={moBangGio ? 'bg-indigo-600 text-white' : 'bg-white/10 active:bg-white/20 text-slate-200'}>

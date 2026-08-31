@@ -29,7 +29,9 @@ import { tachSlide, viTriCauHoi, slideCuaCau } from '@/utils/tachSlide';
 /* Vùng nội dung bên trong canvas (đã trừ lề). Mọi phép đo auto-fit dựa trên đây. */
 const PAD_X = 84;
 const PAD_TOP = 54;
-const PAD_BOTTOM = 46;
+/* Chừa chỗ cho thanh điều khiển nổi ở đáy màn (fixed bottom-6, cao ~60px).
+   Trước để 46 thì thanh này đè lên đúng dòng cuối của lời giải - xem ảnh Thầy cô gửi. */
+const PAD_BOTTOM = 118;
 const CONTENT_HEIGHT = CANVAS_HEIGHT - PAD_TOP - PAD_BOTTOM;
 /** Không thu nhỏ quá mức này để chữ còn đọc được từ cuối lớp. */
 const MIN_CONTENT_SCALE = 0.45;
@@ -443,6 +445,8 @@ export default function PresentationPage() {
     const [autoFitEnabled, setAutoFitEnabled] = useState(true);
 
     const measureRef = useRef<HTMLDivElement>(null);
+    /** Vùng cuộn của slide - để điện thoại cuộn được phần bị khuất. */
+    const vungCuon = useRef<HTMLDivElement>(null);
     const isFirstRender = useRef(true);
 
     useEffect(() => {
@@ -646,6 +650,30 @@ export default function PresentationPage() {
                 case 'dung-gio':
                     setMoGioTuXa(false);
                     setLenhChoGio(v => ({ viec: 'dung-gio', dem: (v?.dem || 0) + 1, luc: Date.now() })); break;
+                /* Cuộn phần đang chiếu - lời giải dài hơn một màn thì đuôi bị khuất, mà
+                   thầy cô đang đứng giữa lớp không với tới chuột máy chiếu. */
+                case 'cuon': {
+                    /*
+                     * Cuộn Ô TRONG CÙNG còn cuộn được, rồi mới tới khung ngoài.
+                     *
+                     * Nội dung bị khuất có thể nằm trong ô "Lời giải chi tiết" (ô đó có
+                     * max-h riêng và tự cuộn), cũng có thể nằm ngoài khung slide khi cả
+                     * slide dài quá. Cuộn nhầm ô thì bấm mãi không thấy gì nhúc nhích.
+                     */
+                    const ngoai = vungCuon.current;
+                    if (!ngoai) break;
+                    const buoc = (o: HTMLElement) => l.huong * Math.round(o.clientHeight * 0.7);
+                    const conCuonDuoc = (o: HTMLElement) => (l.huong > 0
+                        ? o.scrollTop + o.clientHeight < o.scrollHeight - 2
+                        : o.scrollTop > 2);
+                    const ben = Array.from(ngoai.querySelectorAll<HTMLElement>('*'))
+                        .filter(o => o.scrollHeight - o.clientHeight > 8
+                            && /auto|scroll/.test(getComputedStyle(o).overflowY))
+                        .reverse();   // trong cùng trước
+                    const o = [...ben, ngoai].find(conCuonDuoc) || ngoai;
+                    o.scrollBy({ top: buoc(o), behavior: 'smooth' });
+                    break;
+                }
             }
         };
     });
@@ -885,6 +913,7 @@ export default function PresentationPage() {
                 )}
 
                 <div
+                    ref={vungCuon}
                     className="flex-1 overflow-y-auto overflow-x-hidden"
                     style={{ paddingLeft: PAD_X, paddingRight: PAD_X, paddingTop: PAD_TOP, paddingBottom: PAD_BOTTOM }}
                 >
