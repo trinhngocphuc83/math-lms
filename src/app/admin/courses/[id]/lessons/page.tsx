@@ -3,13 +3,20 @@
 import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { Plus, Edit2, Trash2, BookOpen, Layers, ArrowLeft, Loader2, ChevronDown, ChevronRight, FileEdit, Sparkles, Video, Pencil, FileText, Target, ArrowUp, ArrowDown } from "lucide-react";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter, useParams, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function CourseStructurePage() {
   const router = useRouter();
   const params = useParams();
   const courseId = params.id as string;
+  /**
+   * Mã bài cần mở sẵn, do trình soạn bài truyền sang khi bấm nút lui.
+   *
+   * Cây bài giảng nay thu gọn hết, nên soạn xong bấm lui mà về một trang đóng kín thì
+   * Thầy cô phải mò lại từng chương - đúng kiểu "văng hẳn ra ngoài".
+   */
+  const baiCanMo = useSearchParams().get('bai');
   const supabase = createClient();
 
   const [course, setCourse] = useState<any>(null);
@@ -69,6 +76,20 @@ export default function CourseStructurePage() {
     const { data: lsData } = await supabase.from('lessons').select('id, title, chapter_id, order_index').eq('course_id', courseId).order('order_index', { ascending: true });
     if (lsData) {
       setLessons(lsData);
+
+      /* Vừa soạn xong bài nào rồi bấm lui thì mở sẵn đúng chương, đúng bài đó và cuộn
+         tới - để Thầy cô nhìn ra ngay mình đang ở đâu, thay vì thấy một trang đóng kín. */
+      if (baiCanMo) {
+        const bai = lsData.find(l => l.id === baiCanMo);
+        if (bai) {
+          if (bai.chapter_id) setExpandedChapters(cu => cu.includes(bai.chapter_id) ? cu : [...cu, bai.chapter_id]);
+          setExpandedLessons(cu => cu.includes(bai.id) ? cu : [...cu, bai.id]);
+          setTimeout(() => {
+            document.getElementById(`bai-${bai.id}`)
+              ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 260);
+        }
+      }
       // Fetch modules for all these lessons
       if (lsData.length > 0) {
         const lessonIds = lsData.map(l => l.id);
@@ -401,7 +422,9 @@ export default function CourseStructurePage() {
                           const lessonModules = modules.filter(m => m.lesson_id === lesson.id).sort((a, b) => a.order_index - b.order_index);
 
                           return (
-                            <div key={lesson.id} className={`border border-gray-100 rounded-lg overflow-hidden bg-white hover:border-teal-200 transition-all ${isLessonExpanded ? 'xl:col-span-2' : ''}`}>
+                            <div key={lesson.id} id={`bai-${lesson.id}`} className={`border rounded-lg overflow-hidden bg-white transition-all ${
+                              isLessonExpanded ? 'xl:col-span-2 border-teal-300' : 'border-gray-100 hover:border-teal-200'
+                            }`}>
                               <div
                                 className="flex items-center justify-between px-2.5 py-1.5 cursor-pointer hover:bg-gray-50 group"
                                 onClick={() => toggleLesson(lesson.id)}

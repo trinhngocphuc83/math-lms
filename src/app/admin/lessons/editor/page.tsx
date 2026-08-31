@@ -1160,6 +1160,13 @@ function EditorContent() {
   const router = useRouter();
   const lessonId = searchParams.get('lessonId');
   const moduleId = searchParams.get('moduleId');
+  /**
+   * Nơi cần quay về khi bấm nút lui, do trang gọi truyền sang.
+   *
+   * Khu Ôn tập gọi tới đây thì phải lui về khu Ôn tập, chứ không phải về cây bài giảng -
+   * về đó là lạc hẳn sang nhánh khác, tìm đường vào lại mệt.
+   */
+  const quayVe = searchParams.get('quayVe');
   const [moduleTitle, setModuleTitle] = useState<string>('');
   const [moduleType, setModuleType] = useState<string>('');
   const supabase = createClient();
@@ -1308,6 +1315,23 @@ function EditorContent() {
   // Gemini Web Backup Modal
   const [isBackupModalOpen, setIsBackupModalOpen] = useState(false);
   const [isPushToBankModalOpen, setIsPushToBankModalOpen] = useState(false);
+
+  /**
+   * Lui MỘT BẬC chứ không văng hẳn ra ngoài.
+   *
+   * Bản cũ khi chưa kịp biết bài này thuộc khoá nào thì gọi router.back(), mà trang soạn
+   * hay được mở trong thẻ mới nên lịch sử rỗng - bấm lui là nhảy đi đâu không biết.
+   * Nay luôn về đúng cây bài giảng của khoá đó, kèm mã bài để cây tự mở sẵn đúng chương,
+   * đúng bài vừa soạn.
+   */
+  const luiMotBac = () => {
+    if (quayVe) { router.push(quayVe); return; }
+    if (selectedCourseId) {
+      router.push(`/admin/courses/${selectedCourseId}/lessons${lessonId ? `?bai=${lessonId}` : ''}`);
+      return;
+    }
+    router.back();
+  };
   const [manualGeminiInput, setManualGeminiInput] = useState("");
 
   useEffect(() => {
@@ -1944,7 +1968,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
             Tạo Bản Nháp Mới Trống
           </button>
           <button 
-            onClick={() => { if (selectedCourseId) { router.push(`/admin/courses/${selectedCourseId}/lessons`); } else { router.back(); } }} 
+            onClick={luiMotBac} 
             className="w-full py-4 px-6 bg-gray-50 border-2 border-gray-200 text-gray-600 rounded-2xl font-bold hover:bg-gray-100 hover:text-gray-800 transition-colors text-lg"
           >
             Quay lại Danh sách
@@ -1960,7 +1984,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
         {!isHeaderExpanded ? (
            <div className="flex justify-between items-center px-3 py-1.5 bg-gray-50/80 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors" onClick={() => setIsHeaderExpanded(true)}>
              <div className="flex items-center gap-3">
-               <button onClick={(e) => { e.stopPropagation(); if (selectedCourseId) { router.push(`/admin/courses/${selectedCourseId}/lessons`); } else { router.back(); } }} className="p-1.5 text-gray-500 hover:bg-white hover:text-indigo-600 rounded-lg transition-colors border border-transparent hover:border-gray-200 shadow-sm"><ArrowLeft className="w-4 h-4" /></button>
+               <button onClick={(e) => { e.stopPropagation(); luiMotBac(); }} title="Quay lại một bậc" className="p-1.5 text-gray-500 hover:bg-white hover:text-indigo-600 rounded-lg transition-colors border border-transparent hover:border-gray-200 shadow-sm"><ArrowLeft className="w-4 h-4" /></button>
                <span className="font-bold text-sm text-gray-700 flex items-center gap-2"><Edit2 className="w-4 h-4 text-indigo-500" /> <span className="hidden sm:inline">Cài đặt:</span> <span className="text-teal-700 truncate max-w-[200px] sm:max-w-xs">{title || 'Đang tải...'}</span> {moduleTitle && <><span className="text-gray-300">/</span><span className="text-orange-700 bg-orange-50 px-2.5 py-0.5 rounded-md text-xs border border-orange-200 uppercase tracking-wide shrink-0 shadow-sm">{moduleTitle}</span></>}</span>
              </div>
              <div className="flex items-center gap-3">
@@ -2001,7 +2025,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
         ) : (
            <div className="p-4 relative">
              <div className="absolute top-3 left-4 z-10 flex items-center gap-2">
-               <button onClick={(e) => { e.stopPropagation(); router.back(); }} className="flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-indigo-600 transition-colors bg-gray-50 px-2 py-1 rounded-md border border-gray-200 hover:bg-white shadow-sm"><ArrowLeft className="w-3.5 h-3.5" /> Trở về</button>
+               <button onClick={(e) => { e.stopPropagation(); luiMotBac(); }} className="flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-indigo-600 transition-colors bg-gray-50 px-2 py-1 rounded-md border border-gray-200 hover:bg-white shadow-sm"><ArrowLeft className="w-3.5 h-3.5" /> Trở về</button>
              </div>
              <button onClick={() => setIsHeaderExpanded(false)} className="absolute top-3 right-3 text-gray-500 hover:text-red-500 bg-gray-100 hover:bg-red-50 rounded-full p-1.5 transition-colors z-10"><ChevronUp className="w-4 h-4" /></button>
              <div className="flex flex-col gap-4 mb-2 mt-5">

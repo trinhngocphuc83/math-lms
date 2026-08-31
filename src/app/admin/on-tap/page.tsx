@@ -360,7 +360,8 @@ export default function KhuOnTap() {
                 </div>
 
                 <div className="flex items-center gap-1.5 shrink-0">
-                  <Link href={`/admin/lessons/editor?lessonId=${hinhThucId}&moduleId=${de.id}`}
+                  {/* Kèm quayVe: soạn xong bấm lui là về đúng khu Ôn tập, không lạc sang cây bài giảng */}
+                  <Link href={`/admin/lessons/editor?lessonId=${hinhThucId}&moduleId=${de.id}&quayVe=${encodeURIComponent('/admin/on-tap')}`}
                         className="px-3 py-1.5 rounded-lg bg-orange-50 text-orange-700 border border-orange-200
                                    text-[12.5px] font-bold hover:bg-orange-100 flex items-center gap-1.5">
                     <Pencil className="w-3.5 h-3.5" /> Soạn đề
