@@ -9,7 +9,7 @@ import {
   layTrangThaiQuay, ghiDaGoi, boGoiTen, datLaiVongQuay, congDiem, layDsLop, layLopTheoBai, daChotThang,
 } from "@/app/actions/goiTenVaDiem";
 import { LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from "@/utils/goiTenVaDiem";
-import { chuanBiMoiEm, noiCongDiem, noiNgay, type CachDoc } from "@/utils/giongDocAI";
+import { chuanBiMoiEm, noiCongDiem, noiNgay, lyDoKhongCoGiongAI, type CachDoc } from "@/utils/giongDocAI";
 import VongQuayTen from "./VongQuayTen";
 import { NhacNen } from "@/utils/amThanhSanKhau";
 
@@ -440,6 +440,13 @@ export default function BangGoiTenVaDiem({
                   {cachDoc === 'giong-may' && '🔊 giọng máy'}
                   {cachDoc === 'chuong' && '🔔 không có giọng, dùng chuông'}
                   {cachDoc === null && '🔊 đang lấy giọng...'}
+                  {/* Tụt xuống giọng máy thì nói rõ vì sao. Trước đây im lặng đổi giọng,
+                      thầy cô chỉ nghe tiếng robot mà không biết đường nào mà lần. */}
+                  {(cachDoc === 'giong-may' || cachDoc === 'chuong') && lyDoKhongCoGiongAI() && (
+                    <span className="block font-medium text-slate-400 text-[11.5px] mt-0.5">
+                      Giọng AI không dùng được: {lyDoKhongCoGiongAI()}
+                    </span>
+                  )}
                 </div>
               )}
 

@@ -21,6 +21,32 @@ import { catGiongVaoKho, timGiongDaNho } from "@/app/actions/goiTenVaDiem";
 
 const MODEL_TTS = 'gemini-2.5-flash-preview-tts';
 
+/**
+ * Bọc lời dặn quanh câu cần đọc.
+ *
+ * Gửi trơ mỗi câu "Mời em An" thì model thỉnh thoảng tưởng đây là câu hỏi phải TRẢ LỜI
+ * chứ không phải câu phải ĐỌC LÊN, rồi trả về lỗi 400 kèm đúng dòng này:
+ *   "Model tried to generate text, but it should only be used for TTS. Make sure your
+ *    instructions are clear to only generate audio from a given text transcript."
+ * Lúc đó app im tiếng AI và tụt xuống giọng máy mà không ai biết vì sao.
+ *
+ * Đo ngày 31/08/2026 trên 6 câu thật (mời em, cộng điểm, trừ điểm, vinh danh): kèm lời
+ * dặn vẫn ra tiếng 6/6, và chép ngược lại bằng AI thì LỜI DẶN KHÔNG BỊ ĐỌC LÊN - nghe ra
+ * đúng câu gốc. Nên bọc là lãi, không mất gì.
+ */
+const bocLoiDan = (cau: string) =>
+  `Đọc to, rõ ràng, giọng thân thiện đúng nguyên văn câu sau: ${cau}`;
+
+/** Khoá đã cạn hạn mức giọng đọc trong phiên này - khỏi thử lại cho mất thì giờ. */
+const khoaCanTts = new Set<string>();
+
+let vuongMacGanNhat = '';
+/**
+ * Vì sao lần gần nhất không dùng được giọng AI - để trang gọi tên bày ra cho thầy cô biết.
+ * Chuỗi rỗng nghĩa là lần gần nhất vẫn đọc bằng giọng AI bình thường.
+ */
+export const lyDoKhongCoGiongAI = (): string => vuongMacGanNhat;
+
 export type CachDoc = 'ai' | 'da-nho' | 'giong-may' | 'chuong';
 
 /** Đã chuẩn bị xong, gọi `phat()` là ra tiếng ngay. */
@@ -140,9 +166,13 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
   }
 
   // 2. Giọng AI - lấy sẵn về, chưa phát vội
+  let vuongMac = '';
   try {
     const cauHinh = await layCauHinhAI();
-    for (const key of cauHinh.keys) {
+    /* Bỏ qua khoá đã biết là cạn: mỗi khoá chết ngốn nửa giây đến một giây, mà máy chủ
+       xáo khoá ngẫu nhiên nên gần như lần gọi tên nào cũng đụng phải. */
+    const conDung = cauHinh.keys.filter(k => !khoaCanTts.has(k));
+    for (const key of (conDung.length ? conDung : cauHinh.keys)) {
       try {
         const res = await fetch(
           `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_TTS}:generateContent?key=${key}`,
@@ -150,7 +180,7 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              contents: [{ parts: [{ text: cau }] }],
+              contents: [{ parts: [{ text: bocLoiDan(cau) }] }],
               generationConfig: {
                 responseModalities: ['AUDIO'],
                 speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } } },
@@ -160,8 +190,18 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
         );
         const j = await res.json();
         const phan = j?.candidates?.[0]?.content?.parts?.[0]?.inlineData;
-        if (!phan?.data) continue;   // khoá này không ra tiếng, thử khoá kế tiếp
+        if (!phan?.data) {
+          /* Cạn hạn mức thì nhớ lại, đừng thử khoá này nữa trong buổi dạy. */
+          if (res.status === 429) {
+            khoaCanTts.add(key);
+            vuongMac = 'Khoá AI đã hết lượt đọc trong ngày';
+          } else {
+            vuongMac = String(j?.error?.message || j?.candidates?.[0]?.finishReason || 'không rõ').slice(0, 120);
+          }
+          continue;   // khoá này không ra tiếng, thử khoá kế tiếp
+        }
 
+        vuongMacGanNhat = '';
         const wav = bocDauWav(base64SangByte(phan.data));
         const url = URL.createObjectURL(wav);
         nhoLai(khoa, wav);           // cất lại, không cần chờ
@@ -173,9 +213,15 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
             return 'ai';
           },
         };
-      } catch { /* thử khoá kế tiếp */ }
+      } catch (e: any) { vuongMac = String(e?.message || 'không gọi được').slice(0, 120); }
     }
-  } catch { /* không lấy được khoá - xuống lớp dự phòng */ }
+  } catch (e: any) {
+    vuongMac = String(e?.message || 'không xin được khoá AI').slice(0, 120);
+  }
+
+  /* Xuống tới đây là KHÔNG có giọng AI. Ghi lại lý do để trang gọi tên bày ra - trước đây
+     im lặng tụt xuống giọng máy, thầy cô chỉ thấy giọng robot mà không hiểu vì sao. */
+  vuongMacGanNhat = vuongMac || 'không rõ';
 
   // 3. Giọng máy, rồi chuông
   return {
