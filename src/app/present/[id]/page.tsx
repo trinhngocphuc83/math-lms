@@ -112,6 +112,25 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
 
     const type = quizData.type || "multiple_choice";
 
+    /*
+     * VỊ TRÍ ẢNH - đọc đúng cái thầy cô chọn trong trang soạn bài (Dưới đề / Bên phải /
+     * Bên trái), giống hệt trang làm bài của học sinh.
+     *
+     * Trước đây màn chiếu không hề biết tới viTriAnh: ảnh cứ nằm giữa dòng, phương án
+     * trải hết bề ngang bên dưới, nên bảng biến thiên và bốn phương án phải nhìn hai
+     * lượt. Nay ảnh sang một bên thì ĐỀ và MỌI KIỂU PHƯƠNG ÁN cùng dồn sang bên kia.
+     *
+     * Chỉ xếp cạnh nhau khi câu có ĐÚNG MỘT ảnh - nhiều ảnh thì chia cột là vỡ bố cục.
+     */
+    const deGoc = String(quizData.question || '');
+    const viTriAnh = quizData.viTriAnh || 'phai';
+    const anhTrongDe = (deGoc.match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)/) || [])[1];
+    const soAnhTrongDe = (deGoc.match(/!\[[^\]]*\]\(/g) || []).length;
+    const canhNhau = viTriAnh !== 'duoi' && !!anhTrongDe && soAnhTrongDe === 1;
+    const deKhongAnh = canhNhau
+        ? deGoc.replace(/!\[[^\]]*\]\([^)\s]+[^)]*\)/, '').trim()
+        : deGoc;
+
     return (
         <div className="w-full flex flex-col">
             {/* Ghi ĐÚNG SỐ CÂU như trong đề. Trước đây câu nào cũng đề "Câu hỏi tương tác"
@@ -126,9 +145,15 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
                 )}
             </div>
 
+            {/* Ảnh sang một bên thì CẢ đề lẫn phương án cùng dồn sang bên kia - đúng cách
+                trang làm bài của học sinh đang làm, để mắt chỉ nhìn một lượt. */}
+            <div className={canhNhau
+                ? `flex gap-10 items-start ${viTriAnh === 'trai' ? 'flex-row-reverse' : ''}`
+                : 'contents'}>
+            <div className={canhNhau ? 'flex-1 min-w-0' : 'contents'}>
             <div className={`text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}`}>
                 <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
-                    {quizData.question || ""}
+                    {deKhongAnh}
                 </ReactMarkdown>
                 {quizData.img_url && (
                     <img src={quizData.img_url} alt="Minh họa" className="block mx-auto rounded-2xl shadow-lg mt-5 border border-slate-200 max-h-[340px]" />
@@ -291,6 +316,18 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
                     )}
                 </div>
             )}
+
+            </div>
+
+            {/* Cột hình. Chỉ có khi thầy cô để ảnh sang bên. */}
+            {canhNhau && (
+               <div className="w-[38%] shrink-0">
+                  <img src={anhTrongDe} alt="Hình minh họa"
+                       className="w-full h-auto rounded-2xl border border-slate-200 bg-white shadow-sm"
+                       style={{ objectFit: 'contain' }} />
+               </div>
+            )}
+            </div>
 
             {/* LỜI GIẢI CHI TIẾT - có sẵn trong đề từ lâu mà trình chiếu chưa bao giờ
                 đọc tới. Bước này mới là lúc chữa bài thật sự. Tự luận đã bày bài giải mẫu

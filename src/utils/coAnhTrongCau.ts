@@ -51,3 +51,45 @@ export function datXepAnh(noiDung: string, ngang: boolean): string {
   const anhRoiXuongDong = /(!\[[^\]]*\]\([^)\s]+(?:\s+"[^"]*")?\))[ \t]*\n+[ \t]*(?=!\[)/g;
   return s.replace(anhRoiXuongDong, (_, anh) => (ngang ? `${anh}\n` : `${anh}\n\n`));
 }
+
+/**
+ * Chuyển một ảnh lên trên / xuống dưới một đoạn.
+ *
+ * Dán ảnh vào thì nó rơi đúng chỗ con trỏ đang đứng, thường là giữa câu hoặc cuối bài -
+ * muốn đưa lên đầu đề thì phải tự cắt dòng `![...](...)` rồi dán lại, mò trong đống mã
+ * Markdown rất dễ hỏng. Hàm này đổi chỗ ảnh với ĐOẠN kề nó, giữ nguyên mọi thứ khác.
+ *
+ * "Đoạn" ở đây tính theo cách Markdown vẫn tính: các dòng liền nhau, ngăn nhau bằng một
+ * dòng trống. Nhờ vậy ảnh nhảy qua trọn một đoạn văn chứ không nhích từng dòng.
+ *
+ * @param chiSoAnh Ảnh thứ mấy trong câu, đếm từ 0.
+ * @param huong    -1 là lên, 1 là xuống.
+ * @returns Nội dung mới; không nhúc nhích được thì trả lại nguyên văn.
+ */
+export function chuyenAnh(noiDung: string, chiSoAnh: number, huong: -1 | 1): string {
+  const s = String(noiDung || '');
+  const doan = s.split(/\n[ \t]*\n/);
+
+  /* Tìm đoạn chứa ảnh thứ chiSoAnh. Một đoạn có thể chứa nhiều ảnh (khi xếp ngang) -
+     lúc đó cả cụm ảnh đi cùng nhau, đúng ý người dùng chứ không xé lẻ hàng ngang. */
+  let dem = 0;
+  let viTri = -1;
+  for (let i = 0; i < doan.length; i++) {
+    const so = demAnh(doan[i]);
+    if (so === 0) continue;
+    if (chiSoAnh < dem + so) { viTri = i; break; }
+    dem += so;
+  }
+  if (viTri === -1) return s;
+
+  const dich = viTri + huong;
+  if (dich < 0 || dich >= doan.length) return s;
+
+  [doan[viTri], doan[dich]] = [doan[dich], doan[viTri]];
+  return doan.join('\n\n');
+}
+
+/** Ảnh này còn nhích được theo hướng đó không - để làm mờ nút khi đã hết đường. */
+export function chuyenAnhDuoc(noiDung: string, chiSoAnh: number, huong: -1 | 1): boolean {
+  return chuyenAnh(noiDung, chiSoAnh, huong) !== String(noiDung || '');
+}

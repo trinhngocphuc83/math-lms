@@ -17,7 +17,7 @@ import MenuGon, { MucMenu, NganMenu } from "@/components/admin/MenuGon";
 import SuaBangAIModal from "@/components/admin/SuaBangAIModal";
 import DayCongThucVaoSoTayModal from "@/components/admin/DayCongThucVaoSoTayModal";
 import { coMucCongThuc } from "@/utils/congThucCuoiBai";
-import { docCoAnh, datCoAnh, demAnh, dangXepNgang, datXepAnh } from "@/utils/coAnhTrongCau";
+import { docCoAnh, datCoAnh, demAnh, dangXepNgang, datXepAnh, chuyenAnh, chuyenAnhDuoc } from "@/utils/coAnhTrongCau";
 
 export interface Block {
   id: string;
@@ -26,6 +26,46 @@ export interface Block {
 }
 
 /** Liệt kê mọi ảnh Markdown trong một đoạn chữ, theo đúng thứ tự. */
+/**
+ * Nút chuyển ảnh lên / xuống một đoạn.
+ *
+ * Dán ảnh vào thì nó rơi đúng chỗ con trỏ đang đứng - thường là giữa câu hoặc cuối bài.
+ * Muốn đưa lên đầu đề thì phải tự cắt dòng ![...](...) trong đống mã Markdown rồi dán
+ * lại, mò rất dễ hỏng. Hai nút này làm thay, xem utils/coAnhTrongCau.chuyenAnh.
+ *
+ * Nhiều ảnh thì mỗi ảnh một cặp nút, đánh số theo đúng thứ tự ảnh trong bài.
+ */
+function NutChuyenAnh({ chu, onDoi, mau = 'xanh' }: {
+   chu: string;
+   onDoi: (moi: string) => void;
+   mau?: 'xanh' | 'cam';
+}) {
+   const so = demAnh(chu);
+   if (so === 0) return null;
+   const nen = mau === 'cam'
+      ? 'bg-white border-orange-200 text-orange-700 hover:bg-orange-50'
+      : 'bg-white border-sky-200 text-sky-700 hover:bg-sky-100';
+   return (
+      <>
+         {Array.from({ length: so }, (_, i) => (
+            <div key={i} className={`flex items-center gap-0.5 rounded-lg border p-0.5 ${nen}`}
+                 title={`Chuyển ${so > 1 ? `ảnh ${i + 1}` : 'ảnh'} lên trên hoặc xuống dưới một đoạn`}>
+               {so > 1 && <span className="px-1 text-[10px] font-black opacity-60">{i + 1}</span>}
+               {([[-1, '↑'], [1, '↓']] as const).map(([huong, mui]) => (
+                  <button key={mui} type="button"
+                     onClick={() => onDoi(chuyenAnh(chu, i, huong))}
+                     disabled={!chuyenAnhDuoc(chu, i, huong)}
+                     className="px-1.5 py-0.5 rounded-md text-[13px] font-black leading-none
+                                disabled:opacity-25 disabled:cursor-not-allowed">
+                     {mui}
+                  </button>
+               ))}
+            </div>
+         ))}
+      </>
+   );
+}
+
 const dsAnhTrongChu = (chu: string): string[] =>
   Array.from(String(chu || '').matchAll(/!\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)/g)).map(m => m[1]);
 
@@ -945,6 +985,7 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                <span className="text-[11px] font-black text-sky-700 uppercase tracking-wide">
                                   {soAnh} ảnh
                                </span>
+                               <NutChuyenAnh chu={chu} onDoi={v => updateBlockContent(idx, v)} />
                                <div className="flex items-center gap-1">
                                   {([['nho', 'Nhỏ'], ['vua', 'Vừa'], ['to', 'To']] as const).map(([ma, ten]) => (
                                      <button key={ma}
@@ -1059,6 +1100,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                                 ...block.content, question: datCoAnh(block.content.question, v as any),
                              })}
                              soAnhTrongCau={demAnh(block.content.question)}
+                             chuCauHoi={block.content.question || ''}
+                             onDoiCauHoi={(q) => updateBlockContent(idx, { ...block.content, question: q })}
                              xepNgang={dangXepNgang(block.content.question)}
                              onDoiXepAnh={(ngang) => updateBlockContent(idx, {
                                 ...block.content, question: datXepAnh(block.content.question, ngang),
@@ -1089,6 +1132,62 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                              <button onClick={() => onTriggerCrop(globalSourceImage ? { originalUrl: globalSourceImage } : {}, block.id)} className="bg-red-600 text-white px-4 py-2.5 rounded-lg text-sm font-bold hover:bg-red-700 shadow-sm transition-colors flex items-center justify-center gap-2 shrink-0"><CropIcon className="w-4 h-4" /> Cắt & Chèn Ảnh Mới</button>
                           </div>
                        )}
+
+                       {/* Ảnh DÁN thẳng vào đề bài thì không có autoCropMetadata nên thanh
+                           chỉnh ảnh ở trên không hiện - trước đây dán xong là chịu, không
+                           đổi cỡ cũng không xê dịch được. Bày thanh gọn ngay tại đây. */}
+                       {!block.content.autoCropMetadata && demAnh(block.content.question || '') > 0 && (() => {
+                          const chu = String(block.content.question || '');
+                          const co = docCoAnh(chu);
+                          const ngang = dangXepNgang(chu);
+                          const datLai = (q: string) => updateBlockContent(idx, { ...block.content, question: q });
+                          return (
+                            <div className="flex flex-wrap items-center gap-2 px-2.5 py-1.5 rounded-lg bg-sky-50 border border-sky-200">
+                               <span className="text-[11px] font-black text-sky-700 uppercase tracking-wide">
+                                  {demAnh(chu)} ảnh
+                               </span>
+                               <NutChuyenAnh chu={chu} onDoi={datLai} />
+                               <div className="flex items-center gap-1">
+                                  {([['nho', 'Nhỏ'], ['vua', 'Vừa'], ['to', 'To']] as const).map(([ma, ten]) => (
+                                     <button key={ma} onClick={() => datLai(datCoAnh(chu, ma))}
+                                        title={`Đổi mọi ảnh trong câu sang cỡ ${ten.toLowerCase()}`}
+                                        className={`px-2 py-1 rounded-md text-[11px] font-bold transition-colors border ${
+                                           co === ma ? 'bg-sky-600 text-white border-sky-600'
+                                                     : 'bg-white text-sky-700 border-sky-200 hover:bg-sky-100'}`}>
+                                        {ten}
+                                     </button>
+                                  ))}
+                               </div>
+                               {demAnh(chu) > 1 && (
+                                  <button onClick={() => datLai(datXepAnh(chu, !ngang))}
+                                     title={ngang ? 'Đang xếp ngang - bấm để xếp dọc' : 'Đang xếp dọc - bấm để xếp ngang'}
+                                     className="px-2 py-1 rounded-md text-[11px] font-bold border bg-white text-sky-700 border-sky-200 hover:bg-sky-100">
+                                     {ngang ? '⇄ Xếp ngang' : '⇅ Xếp dọc'}
+                                  </button>
+                               )}
+
+                               {/* VỊ TRÍ ẢNH so với đề bài, thứ học sinh thật sự nhìn thấy.
+                                   Giao diện làm bài vốn đã đọc block.content.viTriAnh cho MỌI
+                                   câu một ảnh, nhưng nút đổi lại chỉ nằm trong thanh của ảnh
+                                   cắt bằng công cụ cắt - dán ảnh vào thì không có đường nào
+                                   đổi. Chỉ có nghĩa khi câu có ĐÚNG một ảnh. */}
+                               {demAnh(chu) === 1 && (
+                                  <div className="flex items-center gap-0.5 bg-white border border-sky-200 rounded-lg p-0.5"
+                                       title="Ảnh nằm ở đâu so với đề bài khi học sinh làm bài">
+                                     {([['duoi', 'Dưới đề'], ['phai', 'Bên phải'], ['trai', 'Bên trái']] as const).map(([ma, ten]) => (
+                                        <button key={ma}
+                                           onClick={() => updateBlockContent(idx, { ...block.content, viTriAnh: ma })}
+                                           className={`px-2 py-1 rounded-md text-[11px] font-bold transition-colors ${
+                                              (block.content.viTriAnh || 'phai') === ma
+                                                 ? 'bg-sky-600 text-white' : 'text-sky-700 hover:bg-sky-50'}`}>
+                                           {ten}
+                                        </button>
+                                     ))}
+                                  </div>
+                               )}
+                            </div>
+                          );
+                       })()}
 
                        <OSuaTaiCho
                           rows={3}
@@ -1447,7 +1546,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
  * nằm ngay trong nội dung câu hỏi phía dưới nên ở đây không lặp lại.
  */
 function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnhChup, viTriAnh, onDoiViTri,
-                              coAnh, onDoiCoAnh, soAnhTrongCau = 0, xepNgang, onDoiXepAnh }: {
+                              coAnh, onDoiCoAnh, soAnhTrongCau = 0, xepNgang, onDoiXepAnh,
+                              chuCauHoi = '', onDoiCauHoi }: {
    meta: any;
    onRecrop: () => void;
    /** Ảnh đặt ở đâu so với đề bài khi học sinh làm bài. */
@@ -1458,6 +1558,9 @@ function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnh
    onDoiCoAnh?: (v: string) => void;
    /** Số ảnh trong câu, và hai ảnh có đang nằm ngang không (liền dòng, không dòng trống). */
    soAnhTrongCau?: number;
+   /** Nội dung đề bài và cách ghi lại - để nút chuyển ảnh sửa thẳng vào đó. */
+   chuCauHoi?: string;
+   onDoiCauHoi?: (q: string) => void;
    xepNgang?: boolean;
    onDoiXepAnh?: (ngang: boolean) => void;
    /** Ảnh đã cắt đang nằm trong nội dung câu - để chấm độ nét và vẽ lại. */
@@ -1548,6 +1651,8 @@ function AutoCropReviewPanel({ meta, onRecrop, urlAnhDaCat, onVeLai, onQuayVeAnh
                      ))}
                   </div>
                )}
+
+               {onDoiCauHoi && <NutChuyenAnh chu={chuCauHoi} onDoi={onDoiCauHoi} mau="cam" />}
 
                {/* Từ hai ảnh trở lên mới có chuyện xếp ngang hay dọc */}
                {onDoiXepAnh && soAnhTrongCau > 1 && (
