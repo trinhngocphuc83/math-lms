@@ -173,7 +173,7 @@ export async function dungLaiCauHoiBangAI(
   txt: string,
   onTienDo?: (moTa: string) => void,
 ): Promise<any[]> {
-  const { layCauHinhAI, goiGeminiTrenTrinhDuyet } = await import('./geminiBrowser');
+  const { layCauHinhAI, goiGeminiTrenTrinhDuyet, GIAY_CHO_VIEC_NHO } = await import('./geminiBrowser');
   onTienDo?.('Đang xin khoá AI...');
   const cauHinh = await layCauHinhAI();
 
@@ -197,7 +197,7 @@ ${txt}`;
   const kq = await goiGeminiTrenTrinhDuyet(cauHinh, [{ text: prompt }], {
     responseMimeType: 'application/json',
     temperature: 0,
-  });
+  }, GIAY_CHO_VIEC_NHO);
 
   const doc = docJsonCauHoi(kq.text);
   const items = doc.items.filter((x: any) => x && x.type && x.question);

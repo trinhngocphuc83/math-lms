@@ -13,6 +13,10 @@
 export const laLoiCanHanMuc = (msg: string): boolean =>
   /429|quota|exceeded|too many requests|resource has been exhausted/i.test(msg);
 
+/** Lỗi do CHÍNH TA cắt vì model ngồi im quá lâu - xem choToiDa. */
+export const laLoiQuaHan = (msg: string): boolean =>
+  /không trả lời trong \d+ giây/.test(msg);
+
 export const laLoiQuaTai = (msg: string): boolean =>
   /503|service unavailable|overloaded|high demand/i.test(msg);
 
@@ -69,6 +73,43 @@ async function baoKhoaDaCan(key: string, model: string, reason: string): Promise
 export type KetQuaGoiGemini = { text: string; model: string };
 
 /**
+ * Hạn giờ cho việc NHỎ (đọc một câu, dựng lại một khối).
+ *
+ * Đo ngày 31/08/2026 trên cùng MỘT ảnh câu hỏi thật, mỗi model hai lượt:
+ *   gemini-3.6-flash (đang xếp thứ nhất): 93,4s rồi 9,8s - thất thường
+ *   gemini-3.5-flash (thứ hai):            6,4s rồi 4,9s - đều đặn
+ *   gemini-3.7-flash (thứ ba):             lỗi cả hai lượt, có lượt treo 305s
+ * Model chạy được trả lời trong 5-13 giây, nên quá 25 giây coi như đang treo: bỏ để tụt
+ * xuống model kế tiếp, mất thêm ~5 giây còn hơn bắt thầy cô ngồi nhìn vòng quay 93 giây.
+ *
+ * KHÔNG đặt làm mặc định cho mọi lượt gọi: đường bóc cả đề 25-30 câu kèm lời giải vốn
+ * lâu thật, cắt ngang nó là hỏng việc đang chạy tốt. Chỗ nào biết chắc việc nhỏ thì
+ * truyền số này vào.
+ */
+export const GIAY_CHO_VIEC_NHO = 25;
+
+/**
+ * Đặt hạn giờ cho một lượt gọi model.
+ *
+ * Đo ngày 31/08/2026: có model ngồi im 305 giây rồi mới báo lỗi mạng. Không có hạn giờ
+ * thì thầy cô ngồi nhìn vòng quay suốt chừng ấy, trong khi model kế tiếp trong danh sách
+ * trả lời chỉ trong 1,6-1,8 giây. Hết hạn thì coi như model đó hỏng và tụt xuống model
+ * sau - đúng cách vẫn xử lý khi model cạn hạn mức hay quá tải.
+ *
+ * KHÔNG huỷ được lượt gọi đã bay đi (SDK không nhận tín hiệu huỷ), nhưng bỏ mặc nó thì
+ * cũng chỉ tốn một lượt hạn mức, còn hơn giữ người dùng chờ.
+ */
+function choToiDa<T>(viec: Promise<T>, giay: number, modelId: string): Promise<T> {
+  if (!giay || giay <= 0) return viec;
+  return Promise.race([
+    viec,
+    new Promise<T>((_, tuChoi) =>
+      setTimeout(() => tuChoi(new Error(`${modelId} không trả lời trong ${giay} giây`)), giay * 1000),
+    ),
+  ]);
+}
+
+/**
  * Gọi Gemini, tự xoay khoá rồi xoay model cho tới khi có kết quả.
  *
  * @param cauHinh Kết quả của layCauHinhAI(). Truyền sẵn để một lượt quét nhiều ảnh
@@ -78,6 +119,8 @@ export async function goiGeminiTrenTrinhDuyet(
   cauHinh: CauHinhAI,
   parts: any[],
   generationConfig?: Record<string, any>,
+  /** 0 (mặc định) là chờ đến khi nào có; xem GIAY_CHO_VIEC_NHO. */
+  giayChoToiDa: number = 0,
 ): Promise<KetQuaGoiGemini> {
   const { GoogleGenerativeAI } = await import('@google/generative-ai');
 
@@ -98,16 +141,27 @@ export async function goiGeminiTrenTrinhDuyet(
     let coLoiQuaTai = false;
 
     for (const apiKey of keys) {
+      const batDau = Date.now();
       try {
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({
           model: modelId,
           ...(generationConfig ? { generationConfig } : {}),
         });
-        const result = await model.generateContent(parts);
+        const result = await choToiDa(model.generateContent(parts), giayChoToiDa, modelId);
+        console.log(`[AI] ${modelId} trả lời sau ${((Date.now() - batDau) / 1000).toFixed(1)}s`);
         return { text: result.response.text(), model: modelId };
       } catch (e: any) {
         loiCuoi = e?.message || String(e);
+        console.warn(`[AI] ${modelId} hỏng sau ${((Date.now() - batDau) / 1000).toFixed(1)}s: ${loiCuoi.slice(0, 80)}`);
+
+        /* Quá hạn giờ là MODEL đang treo chứ không phải khoá hỏng - đổi khoá cũng treo y
+           như vậy. Bỏ hẳn model này, sang model kế tiếp. Đo 31/08/2026: không làm thế thì
+           một model treo ăn 5 khoá x 25 giây = 125 giây rồi mới chịu tụt xuống. */
+        if (laLoiQuaHan(loiCuoi)) {
+          console.warn(`[AI] ${modelId} treo, bỏ luôn model này chứ không thử khoá khác.`);
+          break;
+        }
 
         if (laLoiCanHanMuc(loiCuoi)) {
           soKhoaCan++;

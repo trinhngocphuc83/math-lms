@@ -12,7 +12,7 @@
 
 import { docJsonCauHoi } from './vaJson';
 import { filesToGeminiParts } from './aiQuestionScan';
-import { goiGeminiTrenTrinhDuyet, layCauHinhAI } from './geminiBrowser';
+import { goiGeminiTrenTrinhDuyet, layCauHinhAI, GIAY_CHO_VIEC_NHO } from './geminiBrowser';
 
 /** Chỗ AI đánh dấu "câu này có hình" để ta thay bằng chính tấm ảnh vừa dán. */
 export const DAU_CO_HINH = '[CÓ HÌNH ẢNH KÈM THEO]';
@@ -79,10 +79,12 @@ export async function docCauHoiTuAnh(
 
   onTienDo?.('Máy đang đọc ảnh...');
   const parts = await filesToGeminiParts(files);
+  // Đọc MỘT câu thì model chạy được trả lời trong 5-13 giây (đo 31/08/2026). Model nào
+  // quá hạn coi như đang treo, bỏ để tụt xuống model kế tiếp - xem GIAY_CHO_VIEC_NHO.
   const kq = await goiGeminiTrenTrinhDuyet(cauHinh, [{ text: LOI_DAN }, ...parts], {
     responseMimeType: 'application/json',
     temperature: 0,
-  });
+  }, GIAY_CHO_VIEC_NHO);
 
   const doc = docJsonCauHoi(kq.text);
   const items = doc.items.filter((x: any) => x && x.type && x.question);
