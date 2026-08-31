@@ -37,8 +37,37 @@ const MODEL_TTS = 'gemini-2.5-flash-preview-tts';
 const bocLoiDan = (cau: string) =>
   `Đọc to, rõ ràng, giọng thân thiện đúng nguyên văn câu sau: ${cau}`;
 
+/** Lời dặn dùng cho lượt THỬ LẠI: nói thẳng là chỉ được đọc, cấm trả lời. */
+const bocLoiDanGat = (cau: string) =>
+  'Bạn là máy đọc văn bản. Chỉ đọc thành tiếng, TUYỆT ĐỐI KHÔNG trả lời, không bình luận, '
+  + `không thêm bớt chữ nào. Đọc nguyên văn: ${cau}`;
+
 /** Khoá đã cạn hạn mức giọng đọc trong phiên này - khỏi thử lại cho mất thì giờ. */
 const khoaCanTts = new Set<string>();
+
+/**
+ * Lỗi "model trả lời bằng chữ thay vì đọc thành tiếng".
+ *
+ * Google trả HTTP 400 kèm đúng câu: "Model tried to generate text, but it should only be
+ * used for TTS." Đo 01/09/2026: gặp ở MỌI khoá chứ không riêng khoá nào, và CHẬP CHỜN -
+ * cùng một câu, lượt trước ra tiếng lượt sau lại hỏng. Nên đây là lỗi ĐÁNG THỬ LẠI, khác
+ * hẳn cạn hạn mức (thử lại chỉ tốn thêm thời gian).
+ */
+const laLoiTraLoiBangChu = (msg: string): boolean =>
+  /should only be used for TTS|tried to generate text/i.test(msg);
+
+/** Báo về máy chủ để treo khoá 24 giờ. Hỏng thì bỏ qua, không chặn giờ dạy. */
+async function baoKhoaCanTts(key: string, lyDo: string): Promise<void> {
+  try {
+    await fetch('/api/admin/gemini-key', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key, model: MODEL_TTS, reason: lyDo.slice(0, 300) }),
+    });
+  } catch {
+    // Không treo được thì lần sau thử lại khoá này, chỉ tốn một lượt chứ không hỏng gì.
+  }
+}
 
 let vuongMacGanNhat = '';
 /**
@@ -170,8 +199,11 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
   try {
     const cauHinh = await layCauHinhAI();
     /* Bỏ qua khoá đã biết là cạn: mỗi khoá chết ngốn nửa giây đến một giây, mà máy chủ
-       xáo khoá ngẫu nhiên nên gần như lần gọi tên nào cũng đụng phải. */
-    const conDung = cauHinh.keys.filter(k => !khoaCanTts.has(k));
+       xáo khoá ngẫu nhiên nên gần như lần gọi tên nào cũng đụng phải.
+       Đọc CẢ SỔ TREO CHUNG của máy chủ chứ không chỉ nhớ trong phiên: tải lại trang là
+       trí nhớ trong phiên mất sạch, lại đi thử đúng mấy khoá đã chết từ sáng. */
+    const daTreo = new Set(cauHinh.treo.filter(t => t.model === MODEL_TTS).map(t => t.key));
+    const conDung = cauHinh.keys.filter(k => !khoaCanTts.has(k) && !daTreo.has(k));
     for (const key of (conDung.length ? conDung : cauHinh.keys)) {
       try {
         const res = await fetch(
@@ -188,12 +220,41 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
             }),
           },
         );
-        const j = await res.json();
-        const phan = j?.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+        let j = await res.json();
+        let phan = j?.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+        /* Mã của lượt gọi CUỐI CÙNG - có thử lại thì phải xét lượt sau, không thì lượt
+           thử lại dính hạn mức mà khoá vẫn không được ghi vào sổ treo. */
+        let maCuoi = res.status;
+
+        /* Model trả lời bằng chữ thay vì đọc - lỗi chập chờn, thử lại CHÍNH khoá này một
+           lượt với lời dặn gắt hơn. Đo 01/09/2026: khoá nào cũng dính, mà lượt sau
+           thường lại ra tiếng, nên bỏ khoá ngay là phí oan một khoá còn tốt. */
+        const loiLan1 = String(j?.error?.message || '');
+        if (!phan?.data && laLoiTraLoiBangChu(loiLan1)) {
+          const res2 = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_TTS}:generateContent?key=${key}`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                contents: [{ parts: [{ text: bocLoiDanGat(cau) }] }],
+                generationConfig: {
+                  responseModalities: ['AUDIO'],
+                  speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } } },
+                },
+              }),
+            },
+          );
+          j = await res2.json();
+          phan = j?.candidates?.[0]?.content?.parts?.[0]?.inlineData;
+          maCuoi = res2.status;
+        }
+
         if (!phan?.data) {
-          /* Cạn hạn mức thì nhớ lại, đừng thử khoá này nữa trong buổi dạy. */
-          if (res.status === 429) {
+          /* Cạn hạn mức thì nhớ lại VÀ ghi vào sổ treo chung, đừng thử khoá này nữa. */
+          if (maCuoi === 429) {
             khoaCanTts.add(key);
+            void baoKhoaCanTts(key, 'Cạn hạn mức giọng đọc');
             vuongMac = 'Khoá AI đã hết lượt đọc trong ngày';
           } else {
             vuongMac = String(j?.error?.message || j?.candidates?.[0]?.finishReason || 'không rõ').slice(0, 120);
