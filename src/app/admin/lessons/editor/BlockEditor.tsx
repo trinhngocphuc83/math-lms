@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2, Sparkles, Library, Wand2, Loader2 } from "lucide-react";
+import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2, Sparkles, Library, Wand2, Loader2, X } from "lucide-react";
 import { fixLatexText, applyLatexFixToActiveElement, ensureMathDelimiters, cleanObjectLatex } from "@/utils/latexFixer";
 import { bankTypeToBlockType } from "@/utils/questionTypes";
 import 'katex/dist/katex.min.css';
@@ -73,6 +73,10 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const traLoiAnhDan = React.useRef<((daXuLy: boolean) => void) | null>(null);
   /** Chữ báo đang làm tới đâu khi đọc ảnh; null là không đọc gì cả. */
   const [dangDocAnh, setDangDocAnh] = React.useState<string | null>(null);
+  /** Đã bấm Dừng lại: kết quả AI về sau đó thì bỏ, không chèn vào bài nữa. */
+  const daBoDocAnh = React.useRef(false);
+  /** Ảnh và khối của lượt đọc đang chạy, để lỡ bấm nhầm còn quay về chèn ảnh được. */
+  const anhDangDoc = React.useRef<{ file: File; idx: number } | null>(null);
 
   /**
    * Ô soạn thảo nào cũng gọi cái này khi có ảnh dán vào: dừng lại hỏi Thầy cô ảnh đó là
@@ -100,13 +104,19 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
    * chèn xuống DƯỚI, không đụng vào bài đang soạn.
    */
   const docAnhThanhCauHoi = async (file: File, idx: number) => {
+    daBoDocAnh.current = false;
+    anhDangDoc.current = { file, idx };
     setDangDocAnh('Đang đọc ảnh...');
     try {
-      const items = await docCauHoiTuAnh([file], setDangDocAnh);
+      const items = await docCauHoiTuAnh([file], (moTa) => {
+        if (!daBoDocAnh.current) setDangDocAnh(moTa);
+      });
+      if (daBoDocAnh.current) return;
 
       if (coCauCanAnh(items)) {
         setDangDocAnh('Đang tải hình vẽ lên...');
         ganAnhVaoCau(items, await taiAnhLenKho(file));
+        if (daBoDocAnh.current) return;
       }
 
       const moi: Block[] = items.map((it) => ({
@@ -125,7 +135,45 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
 
       alert(`Đã đọc ảnh ra ${items.length} câu hỏi.\n\nThầy/Cô soát lại đề và đáp án rồi bấm Lưu.`);
     } catch (e: any) {
-      alert('Không đọc được ảnh này: ' + (e?.message || 'lỗi không rõ'));
+      if (!daBoDocAnh.current) alert('Không đọc được ảnh này: ' + (e?.message || 'lỗi không rõ'));
+    } finally {
+      anhDangDoc.current = null;
+      if (!daBoDocAnh.current) setDangDocAnh(null);
+    }
+  };
+
+  /**
+   * Bấm Dừng lại giữa chừng.
+   *
+   * Không huỷ được lượt gọi đã bay sang Google, nhưng bỏ hẳn kết quả và trả màn hình lại
+   * ngay - thầy cô không phải ngồi chờ hết mới làm được việc khác.
+   *
+   * Lý do hay bấm nhầm nhất là chọn "đọc thành câu hỏi" trong khi chỉ muốn chèn hình minh
+   * hoạ, nên hỏi luôn có chèn ảnh vào bài không, khỏi phải dán lại từ đầu.
+   */
+  const dungDocAnh = async () => {
+    daBoDocAnh.current = true;
+    const cho = anhDangDoc.current;
+    anhDangDoc.current = null;
+    setDangDocAnh(null);
+    if (!cho) return;
+
+    if (!window.confirm('Đã dừng đọc ảnh.\n\nChèn tấm ảnh này vào bài như hình minh hoạ?')) return;
+
+    setDangDocAnh('Đang chèn ảnh vào bài...');
+    try {
+      const anhMd = `\n\n![Hình ảnh](${await taiAnhLenKho(cho.file)})\n\n`;
+      const ra = [...blocks];
+      const b = ra[cho.idx];
+      if (!b) return;
+      if (b.type === 'md') {
+        ra[cho.idx] = { ...b, content: (typeof b.content === 'string' ? b.content : '') + anhMd };
+      } else {
+        ra[cho.idx] = { ...b, content: { ...b.content, question: (b.content?.question || '') + anhMd } };
+      }
+      onChangeBlocks(ra);
+    } catch (e: any) {
+      alert('Không chèn được ảnh: ' + (e?.message || 'lỗi không rõ'));
     } finally {
       setDangDocAnh(null);
     }
@@ -1313,12 +1361,22 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
            </div>
         )}
 
-        {/* Chắn màn lúc máy đang đọc ảnh: bấm lung tung giữa chừng dễ đổi mất khối đích. */}
+        {/* Chắn màn lúc máy đang đọc ảnh: bấm lung tung giữa chừng dễ đổi mất khối đích.
+            Luôn có nút Dừng lại - bấm nhầm mà phải ngồi chờ hết thì quá phiền. */}
         {dangDocAnh && (
            <div className="fixed inset-0 z-[85] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-              <div className="bg-white rounded-2xl shadow-2xl px-6 py-5 flex items-center gap-3">
-                 <Loader2 className="w-5 h-5 text-teal-600 animate-spin shrink-0" />
-                 <span className="font-bold text-gray-700 text-sm">{dangDocAnh}</span>
+              <div className="bg-white rounded-2xl shadow-2xl px-6 py-5 flex flex-col items-center gap-3">
+                 <div className="flex items-center gap-3">
+                    <Loader2 className="w-5 h-5 text-teal-600 animate-spin shrink-0" />
+                    <span className="font-bold text-gray-700 text-sm">{dangDocAnh}</span>
+                 </div>
+                 <button
+                    onClick={dungDocAnh}
+                    className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg border border-gray-300 bg-white
+                               hover:bg-gray-50 text-gray-600 text-[13px] font-bold transition-colors"
+                 >
+                    <X className="w-3.5 h-3.5" /> Dừng lại
+                 </button>
               </div>
            </div>
         )}
