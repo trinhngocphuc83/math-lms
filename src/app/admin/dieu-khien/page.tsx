@@ -10,8 +10,13 @@ import { Smartphone, ScanLine, ArrowRight, CameraOff, Loader2 } from "lucide-rea
  * Trước đây chỉ vào được bằng cách quét QR bằng camera của điện thoại. Thầy cô mở app
  * lên thì không thấy đường nào vào cả - đây là chỗ vào đó.
  *
- * Quét bằng BarcodeDetector có sẵn trong trình duyệt, KHÔNG thêm thư viện. Máy nào không
- * có (iPhone, trình duyệt cũ) thì phần quét tự ẩn, gõ tay vẫn vào bình thường.
+ * Quét mã theo HAI đường:
+ *   - BarcodeDetector có sẵn trong trình duyệt (Android Chrome): nhanh, máy tự lo.
+ *   - Không có thì đọc bằng jsQR ngay trong trang. iPhone/Safari KHÔNG có BarcodeDetector
+ *     nên trước đây phần quét tự ẩn hẳn, Thầy cô cầm iPhone chỉ còn cách gõ tay 6 ký tự.
+ *
+ * Trên iPhone thẻ <video> BẮT BUỘC có playsInline và muted, thiếu là Safari bung video ra
+ * toàn màn hình rồi play() văng lỗi.
  */
 
 export default function VaoDieuKhien() {
@@ -22,9 +27,11 @@ export default function VaoDieuKhien() {
   const [quetDuoc, setQuetDuoc] = React.useState<boolean | null>(null);
   const video = React.useRef<HTMLVideoElement>(null);
   const dong = React.useRef<MediaStream | null>(null);
+  const khungVe = React.useRef<HTMLCanvasElement | null>(null);
 
   React.useEffect(() => {
-    setQuetDuoc(typeof window !== 'undefined' && 'BarcodeDetector' in window);
+    /* Chỉ cần máy có camera là quét được: không có BarcodeDetector thì đã có jsQR. */
+    setQuetDuoc(typeof navigator !== 'undefined' && !!navigator.mediaDevices?.getUserMedia);
     return () => { dong.current?.getTracks().forEach(t => t.stop()); };
   }, []);
 
@@ -32,6 +39,17 @@ export default function VaoDieuKhien() {
     const s = m.trim().toUpperCase();
     if (s.length !== 6) { setLoi('Mã gồm đúng 6 ký tự.'); return; }
     router.push(`/admin/dieu-khien/${s}`);
+  };
+
+  /** Đọc được mã rồi thì tắt camera và đi tiếp; mã lạ thì báo chứ không đi đâu cả. */
+  const nhanMaQuetDuoc = (chuTrongMa: string) => {
+    dong.current?.getTracks().forEach(t => t.stop());
+    dong.current = null;
+    setDangQuet(false);
+    /* Mã QR chứa cả đường dẫn - lấy đúng đoạn mã 6 ký tự trong đó. */
+    const m = chuTrongMa.match(/dieu-khien\/([A-Z2-9]{6})/i);
+    if (m) { router.push(`/admin/dieu-khien/${m[1].toUpperCase()}`); return; }
+    setLoi('Mã này không phải mã điều khiển trình chiếu.');
   };
 
   const batQuet = async () => {
@@ -43,25 +61,39 @@ export default function VaoDieuKhien() {
       dong.current = luong;
       if (video.current) {
         video.current.srcObject = luong;
+        // iPhone cần hai thuộc tính này đặt THẲNG lên thẻ, đặt qua React thôi chưa chắc ăn
+        video.current.setAttribute('playsinline', 'true');
+        video.current.muted = true;
         await video.current.play();
       }
 
+      /* Đường 1: máy có sẵn bộ đọc mã (Android Chrome). */
       const Bo = (window as any).BarcodeDetector;
-      const bo = new Bo({ formats: ['qr_code'] });
+      const boMay = Bo ? new Bo({ formats: ['qr_code'] }) : null;
+
+      /* Đường 2: đọc bằng jsQR - dành cho iPhone/Safari và trình duyệt cũ. */
+      const jsQR = boMay ? null : (await import('jsqr')).default;
 
       const doc = async () => {
         if (!video.current || !dong.current) return;
         try {
-          const kq = await bo.detect(video.current);
-          if (kq && kq[0]?.rawValue) {
-            /* Mã QR chứa cả đường dẫn - lấy đúng đoạn mã 6 ký tự trong đó. */
-            const m = String(kq[0].rawValue).match(/dieu-khien\/([A-Z2-9]{6})/i);
-            dong.current.getTracks().forEach(t => t.stop());
-            dong.current = null;
-            if (m) { router.push(`/admin/dieu-khien/${m[1].toUpperCase()}`); return; }
-            setLoi('Mã này không phải mã điều khiển trình chiếu.');
-            setDangQuet(false);
-            return;
+          if (boMay) {
+            const kq = await boMay.detect(video.current);
+            if (kq && kq[0]?.rawValue) { nhanMaQuetDuoc(String(kq[0].rawValue)); return; }
+          } else if (jsQR && video.current.videoWidth > 0) {
+            /* Thu nhỏ khung hình trước khi dò: đọc thẳng ảnh 1920px trên iPhone thì mỗi
+               khung mất cả trăm mili-giây, camera giật và khó bắt được mã. */
+            const rong = 480;
+            const cao = Math.round(video.current.videoHeight * (rong / video.current.videoWidth));
+            const khung = khungVe.current || (khungVe.current = document.createElement('canvas'));
+            khung.width = rong; khung.height = cao;
+            const ve = khung.getContext('2d', { willReadFrequently: true });
+            if (ve) {
+              ve.drawImage(video.current, 0, 0, rong, cao);
+              const anh = ve.getImageData(0, 0, rong, cao);
+              const kq = jsQR(anh.data, rong, cao, { inversionAttempts: 'dontInvert' });
+              if (kq?.data) { nhanMaQuetDuoc(kq.data); return; }
+            }
           }
         } catch { /* khung này không đọc được thì thử khung sau */ }
         requestAnimationFrame(doc);
@@ -113,8 +145,7 @@ export default function VaoDieuKhien() {
         ) : quetDuoc === false ? (
           <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-500 text-[12.5px] flex items-center gap-2">
             <CameraOff className="w-4 h-4 shrink-0" />
-            Máy này không quét được trong app — Thầy cô dùng camera của điện thoại quét mã
-            QR, hoặc gõ mã bên dưới.
+            Máy này không có camera dùng được — Thầy cô gõ mã 6 ký tự bên dưới nhé.
           </div>
         ) : (
           <div className="py-3 flex justify-center"><Loader2 className="w-5 h-5 animate-spin text-gray-300" /></div>

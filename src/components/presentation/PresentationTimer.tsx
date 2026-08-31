@@ -17,6 +17,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Timer, Mic, Play, Pause, RotateCcw, X, Volume2, VolumeX, Loader2 } from "lucide-react";
 import { docThoiLuongTiengViet, dinhDangMMSS } from "@/utils/parseVietnameseDuration";
+import { useNhanGiongNoi } from "@/hooks/useNhanGiongNoi";
 
 const MOC_CANH_BAO = 10; // giây cuối bắt đầu bíp
 const NHO_GIAY = 'thoi-luong-dat-gio-lan-truoc';
@@ -32,8 +33,8 @@ export default function PresentationTimer({ lenhNgoai, onDoi }: {
   const [conLai, setConLai] = useState(0);          // giây còn lại
   const [dangChay, setDangChay] = useState(false);
   const [tatTieng, setTatTieng] = useState(false);
-  const [dangNgheMic, setDangNgheMic] = useState(false);
-  const [loiMic, setLoiMic] = useState("");
+  /** Nghe được câu nhưng không ra được số phút - khác với lỗi micro của bộ nghe. */
+  const [loiHieu, setLoiHieu] = useState("");
   const [nhapPhut, setNhapPhut] = useState("");
   /**
    * Thời lượng vừa dùng, nhớ sang câu sau.
@@ -52,10 +53,7 @@ export default function PresentationTimer({ lenhNgoai, onDoi }: {
   const mocKetThucRef = useRef<number | null>(null);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const giayDaBipRef = useRef<number | null>(null);
-  const nhanDangRef = useRef<any>(null);
 
-  const hoTroMic = typeof window !== 'undefined' &&
-    !!((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
 
   /** Tạo tiếng bíp bằng Web Audio, không cần file âm thanh. */
   const bip = useCallback((tanSo: number, thoiLuong: number) => {
@@ -143,39 +141,21 @@ export default function PresentationTimer({ lenhNgoai, onDoi }: {
     batDau(p * 60 + g);
   };
 
-  /** Bấm micro rồi nói thời lượng. Chỉ hiện nút này nếu trình duyệt hỗ trợ. */
-  const ngheMic = () => {
-    const Nhan = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!Nhan) return;
-    setLoiMic("");
-    try {
-      const nd = new Nhan();
-      nhanDangRef.current = nd;
-      nd.lang = 'vi-VN';
-      nd.interimResults = false;
-      nd.maxAlternatives = 3;
+  /**
+   * Bấm micro rồi nói thời lượng.
+   *
+   * Dùng bộ nghe chung: máy nào Web Speech không chạy (iPhone thêm vào Màn hình chính)
+   * thì bộ chung tự chuyển sang ghi âm rồi nhờ AI chép - xem hooks/useNhanGiongNoi.
+   */
+  const { hoTro: hoTroMic, dangNghe: dangNgheMic, loi: loiBoNghe, batDauNghe: ngheMic } =
+    useNhanGiongNoi((chu, xong) => {
+      if (!xong) return;
+      const giay = docThoiLuongTiengViet(chu);
+      if (giay) { setLoiHieu(""); batDau(giay); return; }
+      setLoiHieu(`Chưa hiểu "${chu}", nói lại nhé`);
+    });
 
-      nd.onstart = () => setDangNgheMic(true);
-      nd.onerror = (e: any) => {
-        setDangNgheMic(false);
-        setLoiMic(e?.error === 'not-allowed' ? 'Chưa cho phép dùng micro' : 'Không nghe được, thử lại');
-      };
-      nd.onend = () => setDangNgheMic(false);
-      nd.onresult = (e: any) => {
-        // Duyệt các phương án nhận dạng, lấy phương án đầu tiên đọc ra được thời lượng
-        for (let i = 0; i < e.results[0].length; i++) {
-          const cau = e.results[0][i].transcript;
-          const giay = docThoiLuongTiengViet(cau);
-          if (giay) { batDau(giay); return; }
-        }
-        setLoiMic(`Chưa hiểu "${e.results[0][0]?.transcript || ''}", nói lại nhé`);
-      };
-
-      nd.start();
-    } catch {
-      setLoiMic('Không mở được micro');
-    }
-  };
+  const loiMic = loiBoNghe || loiHieu;
 
   // Phím tắt T: mở nhanh bảng đặt giờ (khi chưa đặt) hoặc tạm dừng / chạy tiếp (khi đang chạy),
   // đúng như bấm vào nút. Esc để đóng bảng. Bỏ qua khi con trỏ đang ở trong ô nhập, nếu không
@@ -346,8 +326,7 @@ export default function PresentationTimer({ lenhNgoai, onDoi }: {
           {/* Nói bằng micro - ẩn hẳn nếu trình duyệt không hỗ trợ */}
           {hoTroMic && (
             <button
-              onClick={ngheMic}
-              disabled={dangNgheMic}
+              onClick={() => { setLoiHieu(""); ngheMic(); }}
               className={`w-full rounded-xl py-2.5 text-[21px] font-bold flex items-center justify-center gap-2 border-2 transition-colors
                 ${dangNgheMic
                   ? 'bg-red-50 border-red-400 text-red-600'

@@ -17,6 +17,7 @@ import {
 import { studentMarkdownComponents } from "@/components/CustomMarkdownComponents";
 import { moKenhDienThoai, type TrangThaiChieu } from "@/utils/dieuKhienXa";
 import { docThoiLuongTiengViet } from "@/utils/parseVietnameseDuration";
+import { useNhanGiongNoi } from "@/hooks/useNhanGiongNoi";
 
 /**
  * Trang điều khiển trên ĐIỆN THOẠI.
@@ -73,8 +74,8 @@ export default function TrangDieuKhien() {
   const [moBangGio, setMoBangGio] = React.useState(false);
   const [chuTraLoi, setChuTraLoi] = React.useState('');
   const [oCau, setOCau] = React.useState('');
-  const [dangNgheMic, setDangNgheMic] = React.useState(false);
-  const [loiMic, setLoiMic] = React.useState('');
+  /** Nghe được câu nhưng không ra được số phút - khác với lỗi micro của bộ nghe. */
+  const [loiHieu, setLoiHieu] = React.useState('');
   const guiRef = React.useRef<((l: any) => void) | null>(null);
   /* Đã nghe được máy chiếu lần nào chưa. Phải dùng ref chứ không dùng state: bộ đếm
      4 giây bên dưới chỉ chạy một lần nên nó đọc phải giá trị của lần vẽ đầu, lúc đó
@@ -116,46 +117,31 @@ export default function TrangDieuKhien() {
   const dinhGio = (g: number) =>
     `${Math.floor(g / 60)}:${String(g % 60).padStart(2, '0')}`;
 
-  const hoTroMic = typeof window !== 'undefined' &&
-    !!((window as any).SpeechRecognition || (window as any).webkitSpeechRecognition);
-
   /**
    * Bấm rồi nói thời lượng, ví dụ "hai phút" hay "chín mươi giây".
    *
    * Nghe ngay trên ĐIỆN THOẠI chứ không nhờ máy chiếu nghe: micro của máy chiếu ở tận
    * bàn giáo viên, thầy cô đang đứng giữa lớp nói thì nó không nghe rõ. Nghe xong mới
    * gửi số phút lên bảng.
+   *
+   * Dùng bộ nghe chung: iPhone thêm vào Màn hình chính không nhận được giọng nói bằng
+   * Web Speech, bộ chung tự chuyển sang ghi âm rồi nhờ AI chép - xem hooks/useNhanGiongNoi.
    */
-  const ngheMic = () => {
-    const Nhan = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!Nhan) return;
-    setLoiMic('');
-    try {
-      const nd = new Nhan();
-      nd.lang = 'vi-VN';
-      nd.interimResults = false;
-      nd.maxAlternatives = 3;
-      nd.onstart = () => setDangNgheMic(true);
-      nd.onend = () => setDangNgheMic(false);
-      nd.onerror = (e: any) => {
-        setDangNgheMic(false);
-        setLoiMic(e?.error === 'not-allowed' ? 'Chưa cho phép dùng micro' : 'Không nghe được, thử lại');
-      };
-      nd.onresult = (e: any) => {
-        for (let i = 0; i < e.results[0].length; i++) {
-          const giay = docThoiLuongTiengViet(e.results[0][i].transcript);
-          if (giay) {
-            /* Máy chiếu nhận theo PHÚT, nên chia ra - "chín mươi giây" thành 1,5 phút. */
-            gui({ viec: 'dat-gio', phut: giay / 60 });
-            setMoBangGio(false);
-            return;
-          }
-        }
-        setLoiMic(`Chưa hiểu “${e.results[0][0]?.transcript || ''}”, nói lại nhé`);
-      };
-      nd.start();
-    } catch { setLoiMic('Không mở được micro'); }
-  };
+  const { hoTro: hoTroMic, dangNghe: dangNgheMic, loi: loiBoNghe, batDauNghe: ngheMic } =
+    useNhanGiongNoi((chu, xong) => {
+      if (!xong) return;
+      const giay = docThoiLuongTiengViet(chu);
+      if (giay) {
+        /* Máy chiếu nhận theo PHÚT, nên chia ra - "chín mươi giây" thành 1,5 phút. */
+        setLoiHieu('');
+        gui({ viec: 'dat-gio', phut: giay / 60 });
+        setMoBangGio(false);
+        return;
+      }
+      setLoiHieu(`Chưa hiểu “${chu}”, nói lại nhé`);
+    });
+
+  const loiMic = loiBoNghe || loiHieu;
 
   return (
     <div className="fixed inset-0 z-[80] bg-slate-900 text-white flex flex-col">
@@ -261,7 +247,7 @@ export default function TrangDieuKhien() {
           </div>
           {/* Nói thời gian - ẩn hẳn nếu trình duyệt không nghe được */}
           {hoTroMic && (
-            <button onClick={ngheMic} disabled={dangNgheMic}
+            <button onClick={() => { setLoiHieu(''); ngheMic(); }}
                     className={`w-full mt-2 py-3 rounded-xl font-black text-[14px] flex items-center
                                 justify-center gap-2 border ${
                       dangNgheMic
