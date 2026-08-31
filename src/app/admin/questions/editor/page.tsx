@@ -32,6 +32,7 @@ import {
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
 import { doiVeTenChuan } from "@/utils/phanLoaiCauHoi";
 import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
+import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep } from "@/utils/noiTiepJson";
 
 export default function BatchAIEditorPage() {
   const router = useRouter();
@@ -50,6 +51,8 @@ export default function BatchAIEditorPage() {
   // Lời nhắc trong lúc dựng trang PDF thành ảnh, để không tưởng là máy bị treo.
   const [dangDungPdf, setDangDungPdf] = useState('');
   const [manualJsonInput, setManualJsonInput] = useState("");
+  /** Đợt vừa dán có bị Gemini cắt cụt không, và đã lấy được bao nhiêu câu. */
+  const [daCatCut, setDaCatCut] = useState<{ soCau: number; cauBiCut: string } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [aiTab, setAiTab] = useState<"api" | "manual">("api");
 
@@ -235,7 +238,13 @@ export default function BatchAIEditorPage() {
 
   const handleManualJson = () => {
     if (!manualJsonInput) return alert("Vui lòng dán JSON!");
-    processExtractedJson(manualJsonInput);
+
+    /* Gemini Web có trần độ dài mỗi câu trả lời. Bóc đề dài là chuỗi JSON đứt giữa một
+       câu; báo cho Thầy cô biết để còn lấy nốt, chứ im lặng là mất câu mà không ai hay. */
+    const soat = soatKhoiQuiz(manualJsonInput);
+    setDaCatCut(soat.biCatCut ? { soCau: soat.soCau, cauBiCut: soat.cauBiCut } : null);
+
+    processExtractedJson(soat.biCatCut ? soat.banSach : manualJsonInput);
   };
 
   const handleCopyPrompt = () => {
@@ -279,7 +288,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
   5. KHÔNG vẽ lại hình/bảng. Nếu có hình/bảng, bắt buộc làm theo quy tắc 7.
   6. CÂU HỎI PHẢI ĐỘC LẬP: Không tham chiếu ngữ cảnh bên ngoài. Tự nhúng đầy đủ giả thuyết vào "noiDung".
   7. VỊ TRÍ HÌNH ẢNH/BẢNG BIỂU: Nếu câu hỏi có đồ thị, hình vẽ hoặc bảng số liệu ĐI KÈM, TUYỆT ĐỐI KHÔNG mô tả chi tiết làm lệch câu gốc. BẮT BUỘC chèn đoạn text "[CÓ HÌNH ẢNH KÈM THEO]" vào ĐÚNG VỊ TRÍ mà hình ảnh đó xuất hiện trong tài liệu gốc (Ví dụ: ngay sau chữ "như hình vẽ bên:"). Tuyệt đối KHÔNG được tự ý vứt xuống cuối câu hỏi nếu không đúng vị trí gốc. CHỈ ĐƯỢC sửa nội dung câu gốc nếu sai đề, khi đó phải thêm "[CÂU HỎI CÓ THỂ BỊ SAI ĐỀ, ĐÃ SỬA LẠI]".`;
-    navigator.clipboard.writeText(prompt);
+    navigator.clipboard.writeText(prompt + LUAT_KHONG_CAT_CUT);
     alert("Đã Copy Prompt Chuẩn!");
   };
 
@@ -739,6 +748,27 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                     <Copy className="w-4 h-4" /> Copy Prompt Chuẩn
                   </button>
                   <textarea value={manualJsonInput} onChange={e=>setManualJsonInput(e.target.value)} className="w-full h-32 border rounded-lg p-2 text-xs font-mono bg-gray-50 outline-none focus:border-emerald-500" placeholder="Dán mảng JSON [...] vào đây" />
+
+                  {/* Đợt vừa dán bị đứt giữa chừng thì bày sẵn lệnh bảo Gemini làm nốt */}
+                  {daCatCut && (
+                    <div className="bg-amber-50 border-l-4 border-amber-500 p-3 rounded-r-lg">
+                      <p className="text-[12.5px] text-amber-900 font-bold mb-1">
+                        Đợt vừa dán bị cắt cụt — đã lấy {daCatCut.soCau} câu trọn vẹn
+                      </p>
+                      <p className="text-[11.5px] text-amber-800 leading-snug mb-2">
+                        Dán lệnh dưới sang Gemini để nó làm nốt từ câu {daCatCut.soCau + 1}, rồi dán kết quả vào đây.
+                      </p>
+                      <button
+                        onClick={() => {
+                          navigator.clipboard.writeText(lenhNoiTiep(daCatCut.soCau, daCatCut.cauBiCut));
+                          alert("Đã copy lệnh nối tiếp! Dán vào đúng cuộc trò chuyện Gemini đang mở.");
+                        }}
+                        className="w-full py-1.5 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg text-xs flex items-center justify-center gap-1.5"
+                      >
+                        <Copy className="w-3.5 h-3.5" /> Copy lệnh nối tiếp (từ câu {daCatCut.soCau + 1})
+                      </button>
+                    </div>
+                  )}
                   <button onClick={handleManualJson} className="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl hover:bg-emerald-700 flex items-center justify-center gap-2">
                     <Code2 className="w-5 h-5" /> Nhận Diện JSON
                   </button>

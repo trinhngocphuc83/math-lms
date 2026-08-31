@@ -14,6 +14,7 @@ import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import QuestionPreviewModal from "@/components/admin/QuestionPreviewModal";
 import { exportQuestionsToWord } from "@/utils/exportDocx";
 import { targetFormatPrompt, CORRECT_ANSWER_FORMAT_HINT } from "@/utils/questionTypes";
+import { LUAT_KHONG_CAT_CUT } from "@/utils/noiTiepJson";
 
 
 const cleanJsonString = (str: string) => {
@@ -300,7 +301,7 @@ export default function SimilarGeneratorPage() {
       - ĐẶC BIỆT CHÚ Ý TRƯỜNG "loaiCauHoi", nếu là bài tự luận chứng minh/tính toán (không có ABCD), BẮT BUỘC phải điền "TL".
       - Phải trả về JSON thuần túy, mảng các object. Không kèm text dư thừa.
       `;
-      navigator.clipboard.writeText(prompt);
+      navigator.clipboard.writeText(prompt + LUAT_KHONG_CAT_CUT);
       alert("Đã copy prompt!");
   };
 
@@ -335,7 +336,7 @@ export default function SimilarGeneratorPage() {
 
   const handleCopyFreePrompt = () => {
       if (!freePromptInput) return alert("Vui lòng nhập yêu cầu của bạn trước!");
-      navigator.clipboard.writeText(generateFreePromptText());
+      navigator.clipboard.writeText(generateFreePromptText() + LUAT_KHONG_CAT_CUT);
       alert("Đã copy prompt tự sinh! Bạn có thể dán vào Claude, ChatGPT hoặc Gemini để tạo câu hỏi, sau đó copy JSON dán vào tab 'Dán Thủ Công'.");
   };
 
@@ -458,7 +459,7 @@ Loại câu hỏi: ${baseQuestion.question_type}
 Lời giải: ${baseQuestion.explanation}
 -------------------`;
 
-    navigator.clipboard.writeText(prompt);
+    navigator.clipboard.writeText(prompt + LUAT_KHONG_CAT_CUT);
     alert(`Đã copy prompt cho Câu gốc!\nHãy dán vào Claude/Gemini để sinh ${baseQuestion.target_count} câu, sau đó bấm nút "Dán kết quả JSON" kế bên.`);
   };
 
@@ -601,7 +602,7 @@ TRẢ VỀ MỘT MẢNG JSON CÓ CẤU TRÚC SAU:
 Lưu ý: Trường "cauGocSo" (kiểu số nguyên) BẮT BUỘC phải có để hệ thống biết biến thể này thuộc về CÂU GỐC số mấy.
 Tổng cộng bạn phải sinh ra ĐÚNG ${totalTargetCount} phần tử trong mảng JSON theo đúng yêu cầu số lượng của từng câu gốc. Chỉ trả về JSON thuần tuý, không chứa ký tự markdown json ở đầu/cuối.`;
 
-    navigator.clipboard.writeText(prompt);
+    navigator.clipboard.writeText(prompt + LUAT_KHONG_CAT_CUT);
     alert(`Đã copy prompt TỔNG HỢP cho ${baseQuestions.length} Câu gốc!\nHãy dán vào Claude/Gemini để sinh tổng cộng ${totalTargetCount} câu, sau đó bấm nút "Dán Tất Cả JSON" trên cùng.`);
   };
 

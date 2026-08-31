@@ -27,6 +27,7 @@ import { layCauHinhAI } from "@/utils/geminiBrowser";
 import { autoCropImage, uploadSourceImage, cropImageFromBoundingBox, uploadCroppedImage, type NormalizedBox } from "@/utils/autoCropImage";
 import { thamDinhVaVeLai, svgSangPng, chamDoNetTuBlob } from "@/utils/veLaiHinhAI";
 import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
+import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep } from "@/utils/noiTiepJson";
 import HuongDanSoanBaiModal from "@/components/admin/HuongDanSoanBaiModal";
 import { ArrowLeft, HelpCircle, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
 
@@ -1333,6 +1334,8 @@ function EditorContent() {
     router.back();
   };
   const [manualGeminiInput, setManualGeminiInput] = useState("");
+  /** Đợt vừa dán có bị cắt cụt không, và đã lấy được bao nhiêu câu trước khi đứt. */
+  const [daCatCut, setDaCatCut] = useState<{ soCau: number; cauBiCut: string } | null>(null);
 
   useEffect(() => {
     if (!lessonId) return;
@@ -1651,7 +1654,9 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
 
   const handleCopyShortPrompt = () => {
     const isPractice = isPracticeModule;
-    const prompt = getPrompt(isPractice, activeTab === 'presentation');
+    /* Kèm luật chống đứt giữa chừng: bài "ngắn" vẫn thừa sức chạm trần độ dài nếu mỗi câu
+       kèm lời giải chi tiết. Trước đây chỉ lệnh "Bắt đầu xử lý" mới có dặn. */
+    const prompt = getPrompt(isPractice, activeTab === 'presentation') + LUAT_KHONG_CAT_CUT;
 
     navigator.clipboard.writeText(prompt);
     alert("Đã Copy Prompt Chuẩn cho bài NGẮN!\n\nThầy/Cô hãy mở gemini.google.com, kéo thả CÁC ẢNH VÀO, sau đó dán văn bản này vào và ấn Gửi.");
@@ -1662,7 +1667,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
     const prompt = getPrompt(isPractice, activeTab === 'presentation');
     const taskName = isPractice ? "bóc tách thành các câu hỏi trắc nghiệm/tự luận" : "soạn thành 1 bài giảng duy nhất";
 
-    navigator.clipboard.writeText(`TÔI ĐÃ TẢI XONG TOÀN BỘ ẢNH.\nBây giờ hãy BẮT ĐẦU tổng hợp TẤT CẢ các ảnh tôi đã gửi từ nãy đến giờ và ${taskName} theo định dạng sau:\n\n${prompt}\n\nLƯU Ý: Nếu dữ liệu dài quá dung lượng 1 tin nhắn, hãy dừng lại và in '[CÒN TIẾP]', tôi sẽ gõ 'Tiếp tục' để bạn làm nốt.`);
+    navigator.clipboard.writeText(`TÔI ĐÃ TẢI XONG TOÀN BỘ ẢNH.\nBây giờ hãy BẮT ĐẦU tổng hợp TẤT CẢ các ảnh tôi đã gửi từ nãy đến giờ và ${taskName} theo định dạng sau:\n\n${prompt}\n\n${LUAT_KHONG_CAT_CUT}`);
     alert(`Đã copy lệnh BẮT ĐẦU ${isPractice ? 'BÓC TÁCH ĐỀ' : 'SOẠN BÀI'}!\n\nThầy/Cô dán lệnh này vào Gemini (không kèm ảnh) để yêu cầu nó bắt đầu tổng hợp xuyên suốt nhé.`);
   };
 
@@ -1671,18 +1676,41 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
       alert("Vui lòng dán nội dung từ Gemini vào khung trước!");
       return;
     }
+
+    /* Chèn BẢN ĐÃ DỌN chứ không chèn nguyên văn: câu trả lời của Gemini hay đứt giữa một
+       chuỗi, để nguyên thì cả khối quiz hỏng mà nhìn mắt thường không thấy đứt ở đâu. */
+    const soat = soatKhoiQuiz(manualGeminiInput);
+    const noiDungChen = soat.coJson && soat.biCatCut ? soat.banSach : manualGeminiInput;
+
     const separator = markdownContent.length > 0 && !markdownContent.endsWith('---') ? "\n\n---\n\n" : "\n\n";
     setMarkdownContent((prev: string) => {
-        const newMarkdown = prev ? prev + separator + manualGeminiInput : manualGeminiInput;
+        const newMarkdown = prev ? prev + separator + noiDungChen : noiDungChen;
         if (editorMode === 'form') {
            setBlocks(parseMarkdownToBlocks(newMarkdown));
         }
         return newMarkdown;
     });
     setManualGeminiInput("");
+
+    /* Bị cắt cụt thì KHÔNG đóng hộp: Thầy cô còn phải bấm "Copy lệnh nối tiếp" rồi dán
+       đợt sau vào đây. Đóng lại là mất luôn mấy câu còn thiếu mà không ai biết. */
+    if (soat.biCatCut) {
+      setDaCatCut({ soCau: soat.soCau, cauBiCut: soat.cauBiCut });
+      alert(
+        `⚠️ Gemini trả lời BỊ CẮT CỤT giữa chừng.\n\n`
+        + `Đã lấy được ${soat.soCau} câu trọn vẹn và chèn vào bài; câu đang dở bị bỏ đi.\n\n`
+        + `Hộp vẫn mở: Thầy/Cô bấm "Copy lệnh nối tiếp" ở ngay trên, dán sang Gemini để nó làm `
+        + `nốt từ câu ${soat.soCau + 1}, rồi dán kết quả vào đây như cũ.`,
+      );
+      return;
+    }
+
+    setDaCatCut(null);
     if (closeModal) {
       setIsBackupModalOpen(false);
-      alert("Đã chèn nội dung thành công!");
+      alert(soat.coJson
+        ? `Đã chèn ${soat.soCau} câu vào bài.`
+        : "Đã chèn nội dung thành công!");
     } else {
       alert("Đã chèn xong đợt này! Khung chữ đã được xóa trắng, Thầy/Cô có thể dán tiếp nội dung của đợt ảnh tiếp theo vào đây.");
     }
@@ -2417,7 +2445,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
           <div className="bg-white rounded-2xl w-full max-w-2xl max-h-[95vh] flex flex-col shadow-2xl overflow-hidden relative border border-gray-100">
             <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-emerald-50/50 shrink-0">
               <h2 className="text-lg font-bold text-emerald-800 flex items-center gap-2"><Bot className="w-5 h-5" /> {isPracticeModule ? 'Bóc tách đề bằng Gemini Web' : 'Tạo bài bằng Gemini Web'} (Thủ công)</h2>
-              <button onClick={() => setIsBackupModalOpen(false)} className="p-2 hover:bg-gray-200 rounded-full transition-colors"><X className="w-5 h-5 text-gray-500" /></button>
+              <button onClick={() => { setIsBackupModalOpen(false); setDaCatCut(null); }} className="p-2 hover:bg-gray-200 rounded-full transition-colors"><X className="w-5 h-5 text-gray-500" /></button>
             </div>
             
             <div className="p-6 flex flex-col gap-6 overflow-y-auto min-h-0">
@@ -2447,6 +2475,37 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
                   </div>
                 </div>
               </div>
+
+              {/*
+                Dải nối tiếp: hiện khi đợt vừa dán bị đứt giữa chừng.
+                Gemini Web có trần độ dài cho mỗi câu trả lời; bóc đề 25-30 câu kèm lời giải là
+                chạm trần, chuỗi JSON đứt ngay giữa một câu. Trước đây app không hề biết, cứ chèn
+                nguyên văn vào bài rồi hỏng cả khối mà nhìn không ra đứt ở đâu.
+              */}
+              {daCatCut && (
+                <div className="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl">
+                  <p className="text-amber-900 text-sm font-bold flex items-center gap-2 mb-1">
+                    <AlertTriangle className="w-4 h-4 shrink-0" /> Đợt vừa dán bị cắt cụt — đã lấy {daCatCut.soCau} câu trọn vẹn
+                  </p>
+                  <p className="text-[12.5px] text-amber-800 leading-relaxed mb-2">
+                    {daCatCut.cauBiCut
+                      ? <>Câu bị đứt bắt đầu bằng: <i>“{daCatCut.cauBiCut.slice(0, 70)}…”</i>. </>
+                      : null}
+                    Bấm nút dưới, dán sang Gemini để nó làm nốt từ câu {daCatCut.soCau + 1}, rồi dán kết quả
+                    vào khung dưới đây như cũ.
+                  </p>
+                  <button
+                    onClick={() => {
+                      navigator.clipboard.writeText(lenhNoiTiep(daCatCut.soCau, daCatCut.cauBiCut));
+                      alert(`Đã copy lệnh nối tiếp!\n\nDán vào đúng cuộc trò chuyện Gemini đang mở (không kèm ảnh), `
+                        + `nó sẽ làm nốt từ câu ${daCatCut.soCau + 1}.`);
+                    }}
+                    className="flex items-center justify-center gap-2 w-full py-2 bg-amber-500 hover:bg-amber-600 text-white font-bold rounded-lg transition-all text-sm"
+                  >
+                    <Copy className="w-4 h-4" /> Copy lệnh nối tiếp (từ câu {daCatCut.soCau + 1})
+                  </button>
+                </div>
+              )}
 
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2"><Code2 className="w-4 h-4 text-emerald-500"/> Dán mã JSON/Markdown từ Gemini vào đây...</label>
