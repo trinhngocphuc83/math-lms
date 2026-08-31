@@ -28,6 +28,7 @@ import { autoCropImage, uploadSourceImage, cropImageFromBoundingBox, uploadCropp
 import { thamDinhVaVeLai, svgSangPng, chamDoNetTuBlob } from "@/utils/veLaiHinhAI";
 import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep } from "@/utils/noiTiepJson";
+import { docJsonCauHoi } from "@/utils/vaJson";
 import HuongDanSoanBaiModal from "@/components/admin/HuongDanSoanBaiModal";
 import { ArrowLeft, HelpCircle, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
 
@@ -45,10 +46,10 @@ const playSound = (type: 'correct' | 'wrong') => {
     const ctx = new AudioContext();
     const osc = ctx.createOscillator();
     const gainNode = ctx.createGain();
-    
+
     osc.connect(gainNode);
     gainNode.connect(ctx.destination);
-    
+
     if (type === 'correct') {
       osc.type = 'sine';
       osc.frequency.setValueAtTime(659.25, ctx.currentTime); // E5
@@ -205,7 +206,7 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
           </div>
           <h3 className="text-[15px] font-bold text-slate-700 tracking-wide">Nội dung câu hỏi</h3>
         </div>
-        
+
         <div className="text-[17px] font-medium text-slate-800 leading-relaxed relative z-10">
           {renderQuizContent(data.question)}
         </div>
@@ -250,7 +251,7 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
               let btnClass = "bg-white text-slate-700 hover:bg-slate-50 border-slate-200 hover:border-[#0e6263]/50 shadow-sm";
               let iconClass = "bg-slate-100 text-[#0e6263] border-slate-200";
               let scaleClass = "scale-100 hover:scale-[1.01]";
-              
+
               if (isSelected) {
                 btnClass = "bg-[#f0f9ff] border-[#3b82f6] shadow-md z-10";
                 iconClass = "bg-white/20 text-[#3b82f6] border-[#3b82f6] shadow-inner";
@@ -265,7 +266,7 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
                 iconClass = "bg-rose-500 text-white border-rose-500 shadow-inner";
                 scaleClass = "scale-[0.98]";
               }
-              
+
               return (
                 <button key={i} onClick={() => handleSelect(i)} disabled={isCorrect !== null} className={`text-left p-4 rounded-xl border-2 transition-all duration-300 flex items-center gap-4 w-full ${btnClass} ${scaleClass} ${isCorrect !== null ? 'cursor-default' : 'cursor-pointer'}`}>
                   <div className={`w-10 h-10 rounded-full border-2 flex items-center justify-center font-bold shrink-0 transition-colors text-base shadow-sm font-serif ${iconClass}`}>
@@ -280,15 +281,15 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
 
         {type === "short_answer" && (
           <div className="flex flex-col gap-4 w-full max-w-xl mx-auto mt-2">
-            <input 
-              type="text" 
-              value={shortAnswerText} 
+            <input
+              type="text"
+              value={shortAnswerText}
               onChange={(e) => setShortAnswerText(e.target.value)}
               disabled={isCorrect !== null}
-              placeholder="Nhập đáp án của bạn..." 
+              placeholder="Nhập đáp án của bạn..."
               className={`w-full px-5 py-4 rounded-xl border-2 focus:ring-4 text-center text-xl font-bold outline-none transition-all shadow-inner ${isCorrect === true ? 'bg-[#ecfdf5] border-[#10b981] text-[#10b981]' : isCorrect === false ? 'bg-[#fff1f2] border-[#f43f5e] text-[#f43f5e]' : 'bg-white border-slate-300 focus:border-[#3b82f6] focus:ring-[#3b82f6]/20 text-slate-700'}`}
             />
-            <button 
+            <button
               onClick={handleCheckShortAnswer}
               disabled={isCorrect !== null || !shortAnswerText.trim()}
               className="w-full bg-[#3b82f6] text-white px-4 py-4 rounded-xl font-bold text-base hover:bg-blue-700 transition-colors disabled:opacity-50 shadow-md hover:shadow-lg"
@@ -303,9 +304,9 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
             <p className="text-slate-500 text-sm text-center font-medium leading-relaxed">
               Giải ra nháp, chụp ảnh và tải lên đây để AI chấm.
             </p>
-            
+
             <input type="file" ref={fileInputRef} onChange={handleImageSelect} accept="image/*, application/pdf, .docx" capture="environment" className="hidden" />
-            
+
             {essayImageUrl && (
               <div className="relative w-full aspect-square rounded-xl overflow-hidden border-2 border-slate-200 shadow-inner group">
                 <img src={essayImageUrl} alt="Bài làm" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -313,7 +314,7 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
               </div>
             )}
 
-            <button 
+            <button
               onClick={() => fileInputRef.current?.click()}
               disabled={isCorrect !== null}
               className="w-full bg-white border-2 border-indigo-200 text-indigo-700 flex items-center justify-center gap-2 px-4 py-3 rounded-xl font-bold hover:bg-indigo-50 transition-colors text-sm"
@@ -321,8 +322,8 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
               <Upload className="w-4 h-4" /> {essayImage ? "Đổi ảnh" : "Chọn ảnh"}
             </button>
 
-            <select 
-              value={serverId} 
+            <select
+              value={serverId}
               onChange={e => setServerId(Number(e.target.value))}
               disabled={isCorrect !== null}
               className="w-full bg-slate-50 border-2 border-slate-200 text-slate-600 px-3 py-2 rounded-lg font-medium text-sm outline-none focus:border-indigo-500"
@@ -331,9 +332,9 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
               <option value={2}>Máy AI 2</option>
               <option value={3}>Máy AI 3</option>
             </select>
-            
+
             {essayImage && (
-              <button 
+              <button
                 onClick={handleGradeEssay}
                 disabled={isGrading || isCorrect === true}
                 className="w-full bg-gradient-to-r from-blue-500 to-indigo-500 text-white px-4 py-3 rounded-xl font-bold hover:from-blue-600 hover:to-indigo-600 transition-colors disabled:opacity-50 shadow-md flex items-center justify-center gap-2 text-sm"
@@ -424,7 +425,7 @@ const VisualQuizEditor = ({ quizzes, onUpdateQuiz, onTriggerCrop }: { quizzes: a
                    </div>
                    <textarea rows={3} value={quiz.question || ""} onChange={e => onUpdateQuiz(idx, { ...quiz, question: e.target.value })} placeholder="VD: Tìm x biết $2x = 4$" className="w-full border border-gray-200 rounded-xl p-3 text-[15px] focus:border-teal-500 focus:ring-4 focus:ring-teal-500/10 outline-none transition-all font-mono" />
                 </div>
-                
+
                 {type === 'multiple_choice' && (
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                      {[0,1,2,3].map(optIdx => (
@@ -517,9 +518,40 @@ const VisualQuizEditor = ({ quizzes, onUpdateQuiz, onTriggerCrop }: { quizzes: a
 
 
 
+/**
+ * Cứu một khối CHỮ thực ra là khối câu hỏi bị hỏng rào mã.
+ *
+ * Dán từ Gemini về hay gặp: câu trả lời bị cắt cụt nên thiếu dấu \`\`\` đóng, hoặc dán
+ * hai đợt liền nhau thành số dấu rào lẻ. Khi đó bộ tách khối không nhận ra đây là câu
+ * hỏi, đẩy nguyên đoạn JSON thành khối Văn bản - trên màn hiện ra một đống
+ * "type": "multiple_choice"... và công thức vỡ hết (\\ge thành "ge", \\frac thành "frac").
+ *
+ * Ở đây gỡ rào, vá JSON bằng đúng bộ vá đang dùng cho đường quét AI, rồi trả về danh
+ * sách câu. Chỉ nhận khi đọc ra câu có đủ "type" và "question" - khối lý thuyết lỡ có
+ * đoạn JSON minh hoạ thì không bị bắt nhầm.
+ */
+const cuuKhoiQuizHong = (txt: string): any[] | null => {
+    const t = String(txt || '').trim();
+    if (!/"question"\s*:/.test(t) || !/"type"\s*:/.test(t)) return null;
+
+    const than = t
+        .replace(/^`{3,}\s*(?:quiz|json)?\s*/i, '')   // rào mở còn sót
+        .replace(/^(?:quiz|json)\s*/i, '')            // chữ "quiz" trơ lại sau khi rào bị ăn
+        .replace(/`{3,}\s*$/, '')                     // rào đóng còn sót
+        .trim();
+
+    try {
+        const kq = docJsonCauHoi(than);
+        const items = kq.items.filter((x: any) => x && x.type && x.question);
+        return items.length > 0 ? items : null;
+    } catch {
+        return null;
+    }
+};
+
 const parseMarkdownToBlocks = (content: string): Block[] => {
     if (!content) return [];
-    
+
     const trimmed = content.trim();
     if ((trimmed.startsWith('[') && trimmed.endsWith(']')) || (trimmed.startsWith('{') && trimmed.endsWith('}'))) {
         try {
@@ -546,13 +578,28 @@ const parseMarkdownToBlocks = (content: string): Block[] => {
     }
 
     const res: Block[] = [];
+
+    /* Mọi đoạn sắp thành khối CHỮ đều thử cứu trước: đoạn nào thực ra là câu hỏi bị hỏng
+       rào mã thì đổi thành khối câu hỏi đàng hoàng, chứ không bắt Thầy cô nhìn JSON thô. */
+    const themKhoiChu = (ra: Block[], txt: string) => {
+        const cuu = cuuKhoiQuizHong(txt);
+        if (cuu) {
+            cuu.forEach((item) => {
+                if (item.question) item.question = item.question.replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '');
+                ra.push({ id: Math.random().toString(36).substring(7), type: 'quiz', content: cleanObjectLatex(item) });
+            });
+            return;
+        }
+        ra.push({ id: Math.random().toString(36).substring(7), type: 'md', content: txt });
+    };
+
     const regex = /```(?:quiz|json)[ \t]*\r?\n([\s\S]*?)\r?\n```/g;
     let lastIndex = 0;
     let match;
     while ((match = regex.exec(content)) !== null) {
       if (match.index > lastIndex) {
           const txt = content.substring(lastIndex, match.index).trim();
-          if (txt) res.push({ id: Math.random().toString(36).substring(7), type: 'md', content: txt });
+          if (txt) themKhoiChu(res, txt);
       }
       try {
           let rawJson = match[1].replace(/\n$/, '');
@@ -608,13 +655,13 @@ const parseMarkdownToBlocks = (content: string): Block[] => {
               res.push({ id: Math.random().toString(36).substring(7), type: 'quiz', content: data });
           }
       } catch(e) {
-          res.push({ id: Math.random().toString(36).substring(7), type: 'md', content: match[0] });
+          themKhoiChu(res, match[0]);
       }
       lastIndex = match.index + match[0].length;
     }
     if (lastIndex < content.length) {
         const txt = content.substring(lastIndex).trim();
-        if (txt) res.push({ id: Math.random().toString(36).substring(7), type: 'md', content: txt });
+        if (txt) themKhoiChu(res, txt);
     }
     return res.length > 0 ? res : [{ id: Math.random().toString(36).substring(7), type: 'md', content: "" }];
 };
@@ -1017,7 +1064,7 @@ const renderQuizToParagraphs = async (quiz: any, questionNumber: number, type: '
 
 const getPrompt = (isPractice: boolean, isPresentation: boolean) => {
   if (isPractice) {
-      return `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
+      return `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới.
 Hãy phân tích nội dung các ảnh/tài liệu này và BÓC TÁCH TOÀN BỘ CÁC CÂU HỎI BÀI TẬP thành các khối mã \`\`\`quiz\`\`\` định dạng JSON.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. [CẢNH BÁO LỖI ĐỀ]: Trách nhiệm cao nhất của bạn là giải thử từng câu. Nếu phát hiện câu hỏi bị sai đề, thiếu dữ kiện, mâu thuẫn toán học, hoặc không có đáp án đúng, hãy IN ĐẬM VÀ TÔ MÀU ĐỎ cảnh báo ngay trước đoạn mã \`\`\`quiz\`\`\` của câu hỏi đó (VD: **<span style="color:red">⚠️ LỖI ĐỀ BÀI: Câu hỏi này thiếu điều kiện m ≠ 0...</span>**).
@@ -1083,7 +1130,7 @@ GHI CHÚ TUYỆT ĐỐI QUAN TRỌNG VỀ JSON:
   }
 
   if (!isPresentation) {
-      return `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
+      return `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới.
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, CHI TIẾT, DỄ HIỂU.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
@@ -1103,7 +1150,7 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 5. [HÌNH VẼ - CHÈN MARKER KÈM KHUNG TOẠ ĐỘ ĐỂ HỆ THỐNG TỰ CẮT ẢNH]: Nếu tài liệu gốc có hình vẽ, đồ thị, bảng biến thiên, TUYỆT ĐỐI KHÔNG vẽ lại bằng ký tự/ASCII và KHÔNG mô tả dài dòng. Hãy chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần hình, và NGAY SAU thẻ đó ghi liền một object JSON khung toạ độ: \`[IMAGE_PLACEHOLDER]{"fileIndex":0,"ymin":300,"xmin":250,"ymax":800,"xmax":750}\` - trong đó "fileIndex" là số thứ tự file ảnh chứa hình (ĐẾM TỪ 0 theo thứ tự file gửi lên), còn ymin/xmin/ymax/xmax là khung bao quanh CHÍNH XÁC vùng hình đó, chuẩn hoá theo thang 0-1000 (0 = mép trên/trái, 1000 = mép dưới/phải). Khung phải ôm trọn hình, không cắt cụt, không lấn sang vùng chữ. Nếu KHÔNG xác định được rõ vị trí thì chỉ ghi \`[IMAGE_PLACEHOLDER]\` và KHÔNG ghi JSON - tuyệt đối không đoán bừa toạ độ.`;
   }
 
-  const unifiedPrompt = `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới. 
+  const unifiedPrompt = `Bạn là một chuyên gia giáo dục Toán học xuất sắc hàng đầu thế giới.
 Hãy phân tích nội dung các ảnh tài liệu này và biên soạn lại thành một bài giảng Toán học HOÀN CHỈNH, GỒM LÝ THUYẾT VÀ CÁC DẠNG BÀI TẬP, TRÌNH BÀY SIÊU ĐẸP, CỰC KỲ THU HÚT.
 YÊU CẦU ĐỊNH DẠNG TUYỆT ĐỐI (LÀM SAI SẼ BỊ PHẠT):
 1. Dạng Markdown. [CHUẨN HÓA TOÁN HỌC LATEX TỐI ƯU NHƯ MATHTYPE]:
@@ -1118,12 +1165,12 @@ Bài giảng bắt buộc phải có 2 phần chính liên tiếp nhau:
 3. [PHÂN BIỆT RẠCH RÒI BẰNG HEADING VÀ BLOCKQUOTE]:
 - TẤT CẢ Tiêu đề Phần, Tên Dạng Bài phải là Heading 2 (##) kèm Emoji (Ví dụ: "## 💡 DẠNG 1: TÌM ĐIỀU KIỆN XÁC ĐỊNH").
 - TẤT CẢ Phương pháp giải phải là Heading 3 (###) (Ví dụ: "### 💡 Phương pháp giải").
-- [QUY TẮC VÍ DỤ MẪU]: Mỗi dạng lấy 1 bài tập mức CƠ BẢN làm Ví dụ mẫu có lời giải đầy đủ, rồi thêm các câu tương tác theo quy tắc số câu bên dưới. 
+- [QUY TẮC VÍ DỤ MẪU]: Mỗi dạng lấy 1 bài tập mức CƠ BẢN làm Ví dụ mẫu có lời giải đầy đủ, rồi thêm các câu tương tác theo quy tắc số câu bên dưới.
 - [RẤT QUAN TRỌNG]: Toàn bộ nội dung của Ví dụ mẫu (bao gồm tiêu đề \`> ### 📌 Ví dụ mẫu\`, đề bài và lời giải) BẮT BUỘC phải được bọc trong thẻ trích dẫn Blockquote (thêm \`> \` vào đầu mỗi dòng). Ở phần lời giải, phải ghi chữ "> Hướng dẫn giải:" ngay trước khi giải để hệ thống lên màu chuẩn mực.
 - [KIỂM TRA TÍNH CHÍNH XÁC & CẢNH BÁO LỖI]: Phải tự động giải lại toàn bộ bài tập/ví dụ. Nếu phát hiện đề bài sai, thiếu dữ kiện hoặc mâu thuẫn, hãy IN ĐẬM VÀ TÔ MÀU ĐỎ một dòng cảnh báo (VD: **<span style="color:red">⚠️ LỖI ĐỀ BÀI: Bài toán này thiếu điều kiện...</span>**) ngay trước ví dụ/bài tập đó, đồng thời tự động sửa lại số liệu cho đúng rồi mới giải.
 4. [PHÂN TRANG KHOA HỌC ĐỂ TRÌNH CHIẾU]: Sử dụng ĐÚNG 3 dấu gạch ngang \`---\` để ngắt trang (tạo slide mới).
 - MỖI MỘT ĐỊNH NGHĨA, ĐỊNH LÝ, HAY GHI CHÚ PHẢI NẰM TRÊN 1 SLIDE RIÊNG BIỆT (phải ngắt trang \`---\` ngay sau đó).
-- MỖI VÍ DỤ HOẶC BÀI TẬP BẮT BUỘC NẰM TRÊN 1 SLIDE MỚI. 
+- MỖI VÍ DỤ HOẶC BÀI TẬP BẮT BUỘC NẰM TRÊN 1 SLIDE MỚI.
 - KHÔNG GỘP QUÁ NHIỀU NỘI DUNG VÀO 1 SLIDE VÌ ĐÂY LÀ ĐỂ CHIẾU LÊN TIVI (Slide càng ngắn gọn càng tốt).
 5. [QUY TẮC BẢNG BIẾN THIÊN & HÌNH VẼ]: Nếu bài toán có Hình vẽ, Bảng biến thiên... TUYỆT ĐỐI KHÔNG giải thích dài dòng bằng chữ. THAY VÀO ĐÓ, BẮT BUỘC chèn thẻ \`[IMAGE_PLACEHOLDER]\` vào đúng vị trí cần vẽ hình, và NGAY SAU thẻ đó ghi liền object JSON khung toạ độ để hệ thống tự cắt ảnh: \`[IMAGE_PLACEHOLDER]{"fileIndex":0,"ymin":300,"xmin":250,"ymax":800,"xmax":750}\` - "fileIndex" là số thứ tự file ảnh chứa hình (ĐẾM TỪ 0), ymin/xmin/ymax/xmax là khung bao quanh CHÍNH XÁC vùng hình, chuẩn hoá thang 0-1000 (0 = mép trên/trái, 1000 = mép dưới/phải), ôm trọn hình và không lấn sang vùng chữ. Nếu không xác định được rõ vị trí thì chỉ ghi \`[IMAGE_PLACEHOLDER]\`, TUYỆT ĐỐI không đoán bừa toạ độ.
 6. [TẠO CÂU HỎI TƯƠNG TÁC]: Học sinh phải làm đúng câu hỏi thì mới được đọc trang tiếp theo, nên câu hỏi là phần bắt buộc chứ không phải thêm cho vui.\n- [SỐ CÂU TƯƠNG TÁC THEO TỪNG DẠNG - RẤT QUAN TRỌNG]: MỖI Dạng bài BẮT BUỘC phải có ÍT NHẤT 2 câu hỏi tương tác (đoạn mã \`quiz\`) đặt ngay sau phần Phương pháp giải của dạng đó. Dạng nào nhiều bước tính hoặc nhiều trường hợp thì phải 3-4 câu. TUYỆT ĐỐI KHÔNG có dạng nào chỉ 1 câu hoặc không câu nào.\n- [CÂU HỎI PHẢI ĐÚNG TRỌNG TÂM DẠNG]: Câu hỏi phải giải được bằng ĐÚNG phương pháp vừa trình bày của dạng đó, không hỏi sang dạng khác, không hỏi lý thuyết suông kiểu \"định nghĩa nào sau đây đúng\".\n- [ƯU TIÊN KỸ NĂNG TÍNH TOÁN]: Phải là bài TÍNH ra được con số hoặc biểu thức cụ thể - tính giá trị, giải phương trình, tìm toạ độ, tính diện tích... Đây là những bài tập mẫu để học sinh cầm tay chỉ việc, làm xong là tự làm được phần Tự luyện.\n- [XẾP TỪ DỄ ĐẾN KHÓ]: Câu đầu áp dụng thẳng công thức, các câu sau thêm một bước biến đổi hoặc một trường hợp cần xét.
@@ -1177,12 +1224,12 @@ function EditorContent() {
   const [moHuongDan, setMoHuongDan] = useState(false);
   const [isCreating, setIsCreating] = useState(false);
   const [globalTriggerBankModal, setGlobalTriggerBankModal] = useState(0);
-  
+
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const [title, setTitle] = useState("Đang tải...");
-  
+
   const [activeTab, setActiveTab] = useState<'elearning' | 'presentation'>('elearning');
   const [elearningMarkdown, setElearningMarkdown] = useState("");
   const [presentationMarkdown, setPresentationMarkdown] = useState("");
@@ -1196,7 +1243,7 @@ function EditorContent() {
     if (activeTab === 'elearning') setElearningMarkdown(prev => typeof updater === 'function' ? updater(prev) : updater);
     else setPresentationMarkdown(prev => typeof updater === 'function' ? updater(prev) : updater);
   };
-  
+
   const blocks = activeTab === 'elearning' ? elearningBlocks : presentationBlocks;
   const setBlocks = (updater: any) => {
     if (activeTab === 'elearning') setElearningBlocks(prev => typeof updater === 'function' ? updater(prev) : updater);
@@ -1232,9 +1279,9 @@ function EditorContent() {
     const text = markdownContent;
     const selectedText = text.substring(start, end);
     const newText = text.substring(0, start) + prefix + selectedText + suffix + text.substring(end);
-    
+
     setMarkdownContent(newText);
-    
+
     setTimeout(() => {
       textarea.focus();
       textarea.setSelectionRange(start + prefix.length, end + prefix.length);
@@ -1346,7 +1393,7 @@ function EditorContent() {
         if (lessonData.course_id) setSelectedCourseId(lessonData.course_id);
         if (lessonData.chapter_id) setSelectedChapterId(lessonData.chapter_id);
       }
-      
+
       if (moduleId) {
           const { data: modData } = await supabase.from('lesson_modules').select('*').eq('id', moduleId).single();
           if (modData) {
@@ -1426,23 +1473,23 @@ function EditorContent() {
             attachment_url: attachmentUrl
         }).eq('id', moduleId);
         error = modError;
-        
+
         await supabase.from('lessons').update({
             title, course_id: selectedCourseId || null, chapter_id: selectedChapterId || null
         }).eq('id', lessonId);
     } else {
         const { error: lesError } = await supabase.from('lessons').update({
-          title, 
-          content_markdown: finalElearning, 
-          presentation_markdown: finalPresentation, 
-          video_url: videoUrl, 
+          title,
+          content_markdown: finalElearning,
+          presentation_markdown: finalPresentation,
+          video_url: videoUrl,
           attachment_url: attachmentUrl,
           course_id: selectedCourseId || null,
           chapter_id: selectedChapterId || null
         }).eq('id', lessonId);
         error = lesError;
     }
-    
+
     setIsSavingDB(false);
     if (error) alert("Lỗi lưu bài: " + error.message); else alert("Đã lưu thành công!");
   };
@@ -1550,7 +1597,7 @@ function EditorContent() {
 
   const handleAnalyzeQueue = async () => {
     if (pendingImages.length === 0 && pendingText.trim().length === 0) return alert("Hàng đợi rỗng!");
-    
+
     setIsAnalyzing(true);
     try {
       // Tự động xin cấp phát khóa AI và danh sách model từ hệ thống
@@ -1563,7 +1610,7 @@ function EditorContent() {
       if (pendingText.trim().length > 0) {
           finalPrompt += "\n\n[NỘI DUNG VĂN BẢN TỪ FILE WORD]:\n" + pendingText;
       }
-      
+
       // PDF phải dựng thành ảnh trước: cỗ máy tự cắt hình vẽ lên canvas nên chỉ nhận ảnh,
       // và khung Smart Cropper cũng không hiển thị được tệp PDF.
       const anhNguon = await chuanHoaNguonThanhAnh(
@@ -1634,9 +1681,9 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
       }
       setPendingImages([]);
       setPendingText("");
-      
+
     } catch (error: any) {
-      console.error(error); 
+      console.error(error);
       if (error.message && error.message.includes("429")) {
         alert("Lỗi AI: Vượt quá giới hạn (Quota) của API Key (Lỗi 429). Vui lòng chờ 1 lát rồi thử lại, hoặc sử dụng API Key Google khác!");
       } else {
@@ -1747,7 +1794,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
   useEffect(() => {
     const handleGlobalPaste = (e: ClipboardEvent) => {
       if (isCropModalOpen) return; // Nếu đang mở crop modal, để modal tự lo
-      
+
       const target = e.target as HTMLElement;
       // Bỏ qua nếu người dùng đang nhập liệu vào ô text (tránh xung đột copy-paste văn bản)
       if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) return;
@@ -1758,9 +1805,9 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
       for (let i = 0; i < items.length; i++) {
         if (items[i].type.indexOf('image') !== -1) {
           const file = items[i].getAsFile();
-          if (file) { 
-             addToQueue(file); 
-             hasImage = true; 
+          if (file) {
+             addToQueue(file);
+             hasImage = true;
           }
         }
       }
@@ -1869,8 +1916,8 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
 
 
   const renderMarkdown = (content: string) => (
-    <ReactMarkdown urlTransform={chuyenDiaChiAnh} 
-      remarkPlugins={[remarkMath]} 
+    <ReactMarkdown urlTransform={chuyenDiaChiAnh}
+      remarkPlugins={[remarkMath]}
       rehypePlugins={[rehypeKatex, rehypeRaw]}
       components={{
         span: ({node, style, children, ...props}: any) => {
@@ -1938,7 +1985,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
           const {children, className, node, ...rest} = props
           const match = /language-(\w+)/.exec(className || '')
           if (!match?.length) return <code className="bg-gray-100 text-pink-600 px-1.5 py-0.5 rounded-md font-mono text-sm" {...rest}>{children}</code>;
-          
+
           if (match[1] === 'quiz' || match[1] === 'json') {
             try {
               const data = JSON.parse(String(children).replace(/\n$/, ''));
@@ -1985,18 +2032,18 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
         </div>
         <h2 className="text-3xl font-extrabold text-gray-800 mb-4 tracking-tight">AI Studio</h2>
         <p className="text-gray-500 mb-10 leading-relaxed text-lg px-4">Bạn chưa chọn Bài giảng cụ thể. Khởi tạo một Bản Nháp mới để thỏa sức sáng tạo với AI ngay bây giờ?</p>
-        
+
         <div className="flex flex-col gap-4">
-          <button 
-            onClick={handleCreateNewLesson} 
+          <button
+            onClick={handleCreateNewLesson}
             disabled={isCreating}
             className="w-full py-4 px-6 bg-gradient-to-r from-indigo-600 to-violet-600 text-white rounded-2xl font-bold hover:from-indigo-700 hover:to-violet-700 transition-all shadow-[0_10px_20px_-10px_rgba(79,70,229,0.5)] hover:shadow-[0_15px_30px_-10px_rgba(79,70,229,0.6)] hover:-translate-y-1 flex items-center justify-center gap-3 disabled:opacity-70 text-lg"
           >
             {isCreating ? <Loader2 className="w-6 h-6 animate-spin" /> : <Sparkles className="w-6 h-6" />}
             Tạo Bản Nháp Mới Trống
           </button>
-          <button 
-            onClick={luiMotBac} 
+          <button
+            onClick={luiMotBac}
             className="w-full py-4 px-6 bg-gray-50 border-2 border-gray-200 text-gray-600 rounded-2xl font-bold hover:bg-gray-100 hover:text-gray-800 transition-colors text-lg"
           >
             Quay lại Danh sách
@@ -2020,9 +2067,9 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
                   {isSavingDB ? <Loader2 className="w-3.5 h-3.5 animate-spin"/> : <Save className="w-3.5 h-3.5" />} Lưu
                </button>
                {lessonId && (
-                 <button onClick={async (e) => { 
-                   e.stopPropagation(); 
-                   await handleSaveToDB(); 
+                 <button onClick={async (e) => {
+                   e.stopPropagation();
+                   await handleSaveToDB();
                    // Kèm moduleId để mở thẳng đúng mục vừa soạn. Thiếu nó thì trang học
                    // sinh mở ở mục đầu tiên (Lý thuyết), Thầy cô tưởng đề chưa lưu được.
                    window.open(
@@ -2034,10 +2081,10 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
                  </button>
                )}
                {lessonId && moduleId && (
-                 <button onClick={async (e) => { 
-                   e.stopPropagation(); 
-                   await handleSaveToDB(); 
-                   window.open(`/present/${lessonId}?moduleId=${moduleId}`, '_blank'); 
+                 <button onClick={async (e) => {
+                   e.stopPropagation();
+                   await handleSaveToDB();
+                   window.open(`/present/${lessonId}?moduleId=${moduleId}`, '_blank');
                  }} className="bg-amber-500 text-white px-3 py-1.5 rounded-md text-xs font-bold hover:bg-amber-600 shadow-sm flex items-center gap-1.5 ml-2">
                    <Presentation className="w-3.5 h-3.5" /> Trình chiếu
                  </button>
@@ -2060,14 +2107,14 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
           <div className="flex gap-4 items-start">
             <div className="flex-[2]">
               <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 flex items-center gap-2">Tên Bài Giảng {moduleTitle && <span className="text-orange-600 bg-orange-50 px-2 py-0.5 rounded border border-orange-100 normal-case tracking-normal">Mục: {moduleTitle}</span>}</label>
-              <input 
+              <input
                 type="text" value={title} onChange={(e) => setTitle(e.target.value)}
                 className="w-full text-xl font-bold text-gray-800 bg-transparent border-b border-gray-200 focus:border-teal-500 focus:outline-none pb-1 transition-colors"
               />
             </div>
             <div className="flex-1 min-w-[150px]">
               <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 block">Thuộc Khóa học</label>
-              <select 
+              <select
                 value={selectedCourseId} onChange={e => { setSelectedCourseId(e.target.value); setSelectedChapterId(""); }}
                 className="w-full text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg p-2 focus:border-teal-500 focus:outline-none cursor-pointer"
               >
@@ -2077,7 +2124,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
             </div>
             <div className="flex-1 min-w-[150px]">
               <label className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1 block">Thuộc Chương</label>
-              <select 
+              <select
                 value={selectedChapterId} onChange={e => setSelectedChapterId(e.target.value)}
                 disabled={!selectedCourseId}
                 className="w-full text-sm font-medium text-gray-700 bg-gray-50 border border-gray-200 rounded-lg p-2 focus:border-teal-500 focus:outline-none disabled:opacity-50 cursor-pointer"
@@ -2093,7 +2140,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
               <div className="flex-1">
                 <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
                   <Video className="w-4 h-4 text-rose-500 shrink-0" />
-                  <input 
+                  <input
                     type="text" value={videoUrl} onChange={(e) => setVideoUrl(e.target.value)}
                     placeholder="Link Video YouTube (VD: https://youtube.com/...)"
                     className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
@@ -2103,7 +2150,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
               <div className="flex-1">
                 <div className="flex items-center gap-2 bg-gray-50 border border-gray-200 rounded-lg px-3 py-1.5 focus-within:border-teal-500 transition-colors shadow-sm">
                   <FileText className="w-4 h-4 text-blue-500 shrink-0" />
-                  <input 
+                  <input
                     type="text" value={attachmentUrl} onChange={(e) => setAttachmentUrl(e.target.value)}
                     placeholder="Link Tài liệu tải xuống (Google Drive, PDF...)"
                     className="w-full bg-transparent border-none text-sm font-medium focus:outline-none focus:ring-0 text-gray-700"
@@ -2112,7 +2159,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
               </div>
             </div>
           )}
-          
+
           <div className="flex justify-between items-center pt-3 border-t border-gray-50">
             <div className="text-xs text-gray-400 font-medium">Bản nháp được lưu tại: <span className="text-teal-600 font-bold">{title}</span></div>
             <div className="flex items-center gap-3">
@@ -2235,7 +2282,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
               </div>
             </div>
           </div>
-          
+
           {(pendingImages.length > 0 || pendingText.length > 0) && (
               <div className="bg-indigo-50/50 border-b border-indigo-100 p-3 max-h-64 overflow-y-auto shrink-0 shadow-inner">
                 <div className="flex justify-between items-center mb-2">
@@ -2269,7 +2316,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
           <div className="flex-1 flex flex-col relative min-h-[75vh]">
             {editorMode === 'raw' ? (
               <div className="flex flex-col flex-1 relative min-h-0">
-                 
+
                  <div className="sticky top-0 z-40 flex flex-col shadow-sm">
                    {/* Thanh công cụ phụ cho RAW */}
                    <div className="bg-gray-100 border-b border-gray-200 px-3 py-2 flex items-center justify-between shrink-0">
@@ -2316,7 +2363,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
                  </div>
 
                  <div className="flex-1 flex flex-row overflow-hidden relative min-h-[65vh]">
-                    <textarea 
+                    <textarea
                       ref={textareaRef} value={markdownContent} onChange={(e) => setMarkdownContent(e.target.value)} onPaste={handlePaste} onKeyDown={handleRawKeyDown}
                       placeholder="Bắt đầu gõ hoặc Ấn Ctrl + V để dán bài tập vào đây."
                       className={`h-full w-full p-4 resize-none outline-none text-gray-700 font-mono text-[14px] leading-relaxed scroll-smooth ${showRawPreview ? 'w-1/2 border-r border-gray-200 bg-white' : 'bg-white'}`}
@@ -2340,7 +2387,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
                  }} globalSourceImage={lastAnalyzedImages.length > 0 ? lastAnalyzedImages[0] : (pendingImages.length > 0 ? pendingImages[0].previewUrl : undefined)} globalTriggerBankModal={globalTriggerBankModal} />
               </div>
             )}
-            
+
             {isAnalyzing && (
               <div className="absolute inset-0 bg-white/80 backdrop-blur-sm flex flex-col items-center justify-center z-10">
                 <Loader2 className="w-10 h-10 animate-spin text-indigo-600 mb-3" />
@@ -2362,7 +2409,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
               <h2 className="text-lg font-bold text-gray-800 flex items-center gap-2"><CropIcon className="w-5 h-5 text-orange-600" /> Smart Cropper</h2>
               <button onClick={() => { setIsCropModalOpen(false); setCropImageSrc(''); }} className="p-2 hover:bg-gray-200 rounded-full transition-colors"><X className="w-5 h-5 text-gray-500" /></button>
             </div>
-            
+
             <div className="flex flex-1 overflow-hidden">
                 {/* SIDEBAR SOURCE IMAGES */}
                 <div className="w-44 bg-gray-50 border-r border-gray-200 p-3 flex flex-col gap-3 overflow-y-auto shrink-0 shadow-inner">
@@ -2378,8 +2425,8 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
                         }
 
                         return availableSourceImages.map((src, i) => (
-                            <div 
-                                key={i} 
+                            <div
+                                key={i}
                                 onClick={() => { setAnhNguonHong(false); setCropImageSrc(src); }}
                                 className={`cursor-pointer border-2 rounded-xl overflow-hidden transition-all hover:border-orange-400 hover:-translate-y-0.5 ${cropImageSrc === src ? 'border-orange-600 shadow-md ring-4 ring-orange-100' : 'border-gray-200 opacity-70 hover:opacity-100'}`}
                             >
@@ -2447,7 +2494,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
               <h2 className="text-lg font-bold text-emerald-800 flex items-center gap-2"><Bot className="w-5 h-5" /> {isPracticeModule ? 'Bóc tách đề bằng Gemini Web' : 'Tạo bài bằng Gemini Web'} (Thủ công)</h2>
               <button onClick={() => { setIsBackupModalOpen(false); setDaCatCut(null); }} className="p-2 hover:bg-gray-200 rounded-full transition-colors"><X className="w-5 h-5 text-gray-500" /></button>
             </div>
-            
+
             <div className="p-6 flex flex-col gap-6 overflow-y-auto min-h-0">
               <div className="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-r-xl shadow-sm">
                 <p className="text-blue-900 text-[0.95rem] font-medium mb-3 leading-relaxed">
@@ -2509,7 +2556,7 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
 
               <div>
                 <label className="block text-sm font-bold text-gray-700 mb-2 flex items-center gap-2"><Code2 className="w-4 h-4 text-emerald-500"/> Dán mã JSON/Markdown từ Gemini vào đây...</label>
-                <textarea 
+                <textarea
                   value={manualGeminiInput}
                   onChange={(e) => setManualGeminiInput(e.target.value)}
                   className="w-full h-56 p-4 border-2 border-gray-200 rounded-xl focus:ring-0 focus:border-emerald-500 outline-none resize-none font-mono text-sm text-gray-700 bg-gray-50 shadow-inner"
@@ -2532,10 +2579,10 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
 
       {/* PUSH TO BANK MODAL */}
       {isPushToBankModalOpen && (
-        <PushToBankModal 
-          isOpen={isPushToBankModalOpen} 
-          onClose={() => setIsPushToBankModalOpen(false)} 
-          blocks={activeTab === 'elearning' ? elearningBlocks : presentationBlocks} 
+        <PushToBankModal
+          isOpen={isPushToBankModalOpen}
+          onClose={() => setIsPushToBankModalOpen(false)}
+          blocks={activeTab === 'elearning' ? elearningBlocks : presentationBlocks}
           courseContext={(() => {
             const course = courses.find(c => c.id === selectedCourseId);
             // Một số khóa học để grade_level = 0 (chưa đặt); khi đó trả về rỗng
