@@ -39,10 +39,16 @@ interface Props {
   collapsibleToolbar?: boolean;
   /** Chữ nhỏ hơn cho ô phương án, to hơn cho ô đề bài. */
   co?: "nho" | "vua";
+  /**
+   * Chặn ảnh dán vào ô: trả true là bên ngoài đã lo xong (đọc ảnh thành câu hỏi),
+   * trả false thì ô chèn ảnh như thường. Xem RichTextarea.
+   */
+  xuLyAnhDan?: (file: File) => Promise<boolean>;
 }
 
 export default function OSuaTaiCho({
   value, onChange, placeholder, rows = 3, className = "", collapsibleToolbar = true, co = "vua",
+  xuLyAnhDan,
 }: Props) {
   const [dangSua, setDangSua] = React.useState(false);
   const boc = React.useRef<HTMLDivElement>(null);
@@ -73,6 +79,7 @@ export default function OSuaTaiCho({
       <div ref={boc}>
         <RichTextarea
           viTriBanDau={viTriMo}
+          xuLyAnhDan={xuLyAnhDan}
           rows={rows}
           collapsibleToolbar={collapsibleToolbar}
           value={value}

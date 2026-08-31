@@ -15,6 +15,13 @@ interface RichTextareaProps extends Omit<React.ComponentProps<typeof TextareaAut
   onValueChange?: (value: string) => void;
   collapsibleToolbar?: boolean;
   defaultToolbarExpanded?: boolean;
+  /**
+   * Chặn trước khi ô tự chèn ảnh dán vào.
+   *
+   * Trả về true nghĩa là bên ngoài đã xử lý xong tấm ảnh (ví dụ đọc nó thành câu hỏi),
+   * ô KHÔNG chèn ảnh nữa. Trả về false thì ô chèn ảnh như xưa nay vẫn làm.
+   */
+  xuLyAnhDan?: (file: File) => Promise<boolean>;
 }
 
 const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => string, stylePropToClean?: string) => {
@@ -39,7 +46,7 @@ const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => 
   }).join('\n');
 };
 
-export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = true, defaultToolbarExpanded = true, viTriBanDau, ...props }: RichTextareaProps & { viTriBanDau?: number }) {
+export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = true, defaultToolbarExpanded = true, viTriBanDau, xuLyAnhDan, ...props }: RichTextareaProps & { viTriBanDau?: number }) {
   // Fallback: Nếu không truyền onChange, tạo handler tự động từ onValueChange
   const resolvedOnChange = React.useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) onChange(e);
@@ -609,11 +616,18 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }
   };
 
-  const uploadAndInsertImage = async (file: File) => {
+  /**
+   * @param viTri Chỗ chèn đã đo SẴN từ lúc dán.
+   *
+   * Cần tham số này vì đường "hỏi ảnh là gì rồi mới chèn": bấm nút trong hộp hỏi là ô
+   * soạn thảo đóng lại (OSuaTaiCho đóng khi bấm ra ngoài), textareaRef thành null, đọc
+   * vị trí lúc đó thì hàm lặng lẽ thoát ra và ảnh không bao giờ được chèn.
+   */
+  const uploadAndInsertImage = async (file: File, viTri?: { start: number; end: number }) => {
     const ta = textareaRef.current;
-    if (!ta) return;
-    const start = ta.selectionStart;
-    const end = ta.selectionEnd;
+    if (!ta && !viTri) return;
+    const start = viTri ? viTri.start : ta!.selectionStart;
+    const end = viTri ? viTri.end : ta!.selectionEnd;
     const beforeText = value.substring(0, start);
     const afterText = value.substring(end);
     
@@ -627,17 +641,11 @@ export default function RichTextarea({ value, onChange, onValueChange, className
     }
 
     try {
-       const { createClient } = await import("@/utils/supabase/client");
-       const supabase = createClient();
-       const fileName = `${Math.random().toString(36).substring(2, 15)}_${Date.now()}.jpg`;
-       const filePath = `editor_images/${fileName}`;
-       
-       const { error } = await supabase.storage.from('lesson_images').upload(filePath, file);
-       if (error) throw error;
-       
-       const { data: publicUrlData } = supabase.storage.from('lesson_images').getPublicUrl(filePath);
-       const publicUrl = publicUrlData.publicUrl;
-       
+       // Dùng chung lối tải với đường "dán ảnh ra câu hỏi" (utils/docCauHoiTuAnh)
+       // để hai bên cùng một kho, một kiểu đặt tên tệp.
+       const { taiAnhLenKho } = await import("@/utils/docCauHoiTuAnh");
+       const publicUrl = await taiAnhLenKho(file);
+
        const imgMd = `\n![Hình ảnh](${publicUrl})\n`;
        const newValue = beforeText + imgMd + afterText;
        
@@ -670,9 +678,18 @@ export default function RichTextarea({ value, onChange, onValueChange, className
       if (items[i].type.indexOf("image") !== -1) {
         const file = items[i].getAsFile();
         if (file) {
+          // preventDefault phải gọi NGAY, trước mọi await: chờ xong rồi mới gọi thì
+          // trình duyệt đã dán xong địa chỉ ảnh vào ô mất rồi.
           e.preventDefault();
           e.stopPropagation();
-          uploadAndInsertImage(file);
+          if (xuLyAnhDan) {
+            // Đo chỗ chèn NGAY BÂY GIỜ: hỏi xong thì ô soạn thảo có thể đã đóng.
+            const ta = textareaRef.current;
+            const viTri = { start: ta?.selectionStart ?? value.length, end: ta?.selectionEnd ?? value.length };
+            xuLyAnhDan(file).then(daXuLy => { if (!daXuLy) uploadAndInsertImage(file, viTri); });
+          } else {
+            uploadAndInsertImage(file);
+          }
         }
         break;
       }

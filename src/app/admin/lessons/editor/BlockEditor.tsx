@@ -46,6 +46,7 @@ const docGhiChuAnh = (chu: string): Record<number, { veLai?: boolean; moNet?: bo
 };
 
 import { laKhoiQuizHong, cuuKhoiQuizHong, dungLaiCauHoiBangAI } from "@/utils/noiTiepJson";
+import { docCauHoiTuAnh, ganAnhVaoCau, coCauCanAnh, taiAnhLenKho } from "@/utils/docCauHoiTuAnh";
 
 export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, globalSourceImage, globalTriggerBankModal }: { blocks: Block[], onChangeBlocks: (b: Block[]) => void, onTriggerCrop: (meta: any, targetBlockId: string) => void, globalSourceImage?: string, globalTriggerBankModal?: number }) {
 
@@ -63,6 +64,72 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(false);
   /** Khối đang được dựng lại thành câu hỏi (để hiện vòng quay chờ trên đúng nút đó). */
   const [dangDungLai, setDangDungLai] = React.useState<string | null>(null);
+
+  /* ---- Dán ảnh một câu hỏi vào ô soạn thảo thì ra khối câu hỏi ---- */
+
+  /** Ảnh vừa dán và khối nhận nó, đang chờ Thầy cô chọn làm gì với ảnh đó. */
+  const [anhVuaDan, setAnhVuaDan] = React.useState<{ file: File; idx: number } | null>(null);
+  /** Chỗ trả lời cho ô soạn thảo biết ảnh đã được xử lý hay chưa (xem RichTextarea). */
+  const traLoiAnhDan = React.useRef<((daXuLy: boolean) => void) | null>(null);
+  /** Chữ báo đang làm tới đâu khi đọc ảnh; null là không đọc gì cả. */
+  const [dangDocAnh, setDangDocAnh] = React.useState<string | null>(null);
+
+  /**
+   * Ô soạn thảo nào cũng gọi cái này khi có ảnh dán vào: dừng lại hỏi Thầy cô ảnh đó là
+   * một CÂU HỎI hay chỉ là HÌNH MINH HOẠ.
+   *
+   * Không tự đoán: hai việc trái ngược nhau, đoán sai một cái là mất công gỡ.
+   */
+  const hoiVeAnhDan = (idx: number) => (file: File) => new Promise<boolean>((tra) => {
+    traLoiAnhDan.current = tra;
+    setAnhVuaDan({ file, idx });
+  });
+
+  /** Chốt câu trả lời cho ô soạn thảo rồi đóng hộp hỏi. */
+  const chotAnhDan = (daXuLy: boolean) => {
+    traLoiAnhDan.current?.(daXuLy);
+    traLoiAnhDan.current = null;
+    setAnhVuaDan(null);
+  };
+
+  /**
+   * Đọc ảnh thành khối câu hỏi và đặt vào đúng chỗ.
+   *
+   * Khối đang trống, hoặc đang là JSON hỏng, hoặc vốn đã là khối câu hỏi thì THAY HẲN -
+   * đây chính là lúc Thầy cô muốn chữa một câu ra sai. Khối lý thuyết đang có chữ thì
+   * chèn xuống DƯỚI, không đụng vào bài đang soạn.
+   */
+  const docAnhThanhCauHoi = async (file: File, idx: number) => {
+    setDangDocAnh('Đang đọc ảnh...');
+    try {
+      const items = await docCauHoiTuAnh([file], setDangDocAnh);
+
+      if (coCauCanAnh(items)) {
+        setDangDocAnh('Đang tải hình vẽ lên...');
+        ganAnhVaoCau(items, await taiAnhLenKho(file));
+      }
+
+      const moi: Block[] = items.map((it) => ({
+        id: Math.random().toString(36).substring(7),
+        type: 'quiz',
+        content: cleanObjectLatex(it),
+      }));
+
+      const ra = [...blocks];
+      const cu = ra[idx];
+      const chuCu = typeof cu?.content === 'string' ? cu.content : '';
+      const thayHan = !cu || cu.type === 'quiz' || !chuCu.trim() || laKhoiQuizHong(chuCu);
+      if (thayHan) ra.splice(idx, 1, ...moi);
+      else ra.splice(idx + 1, 0, ...moi);
+      onChangeBlocks(ra);
+
+      alert(`Đã đọc ảnh ra ${items.length} câu hỏi.\n\nThầy/Cô soát lại đề và đáp án rồi bấm Lưu.`);
+    } catch (e: any) {
+      alert('Không đọc được ảnh này: ' + (e?.message || 'lỗi không rõ'));
+    } finally {
+      setDangDocAnh(null);
+    }
+  };
 
   /**
    * Dựng một khối Văn bản lỡ chứa JSON câu hỏi thành các KHỐI CÂU HỎI đàng hoàng.
@@ -898,7 +965,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                            rows={10}
                            value={typeof block.content === 'string' ? block.content : ''}
                            onChange={v => updateBlockContent(idx, v)}
-                           placeholder="Bấm để soạn bài giảng... (Markdown, LaTeX)"
+                           xuLyAnhDan={hoiVeAnhDan(idx)}
+                           placeholder="Bấm để soạn bài giảng... (Markdown, LaTeX - dán ảnh câu hỏi để đọc thành câu)"
                        />
                        
                        {(() => {
@@ -978,7 +1046,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                           rows={3}
                           value={block.content.question || ""}
                           onChange={v => updateBlockContent(idx, { ...block.content, question: v })}
-                          placeholder="Bấm để nhập câu hỏi... (Markdown hỗ trợ)"
+                          xuLyAnhDan={hoiVeAnhDan(idx)}
+                          placeholder="Bấm để nhập câu hỏi... (Markdown hỗ trợ - dán ảnh đề để máy đọc lại cả câu)"
                        />
 
                        {(block.content.type === 'multiple_choice' || !block.content.type) && (
@@ -1210,6 +1279,49 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
               if (i >= 0) updateBlockContent(i, cauMoi);
            }}
         />
+
+        {/* Dán ảnh vào ô soạn thảo: hỏi ảnh đó là câu hỏi hay hình minh hoạ.
+            Hai việc trái ngược nhau nên KHÔNG tự đoán - đoán sai là mất công gỡ. */}
+        {anhVuaDan && (
+           <div className="fixed inset-0 z-[80] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4"
+                onClick={() => chotAnhDan(true)}>
+              <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-5" onClick={e => e.stopPropagation()}>
+                 <h3 className="font-bold text-gray-800 text-lg mb-1">Ảnh vừa dán là gì?</h3>
+                 <p className="text-[13px] text-gray-500 mb-4 leading-relaxed">
+                    Nếu là ảnh chụp một câu hỏi, máy sẽ đọc ra thành khối câu hỏi đầy đủ đề,
+                    phương án và lời giải — dùng để chữa những câu bị hỏng mã.
+                 </p>
+                 <div className="flex flex-col gap-2">
+                    <button
+                       onClick={() => { const { file, idx } = anhVuaDan; chotAnhDan(true); docAnhThanhCauHoi(file, idx); }}
+                       className="flex items-center gap-2 w-full px-4 py-3 bg-teal-600 hover:bg-teal-700 text-white rounded-xl font-bold text-sm transition-colors"
+                    >
+                       <Wand2 className="w-4 h-4 shrink-0" /> Ảnh một câu hỏi — đọc thành khối câu hỏi
+                    </button>
+                    <button
+                       onClick={() => chotAnhDan(false)}
+                       className="flex items-center gap-2 w-full px-4 py-3 bg-white hover:bg-gray-50 border border-gray-300 text-gray-700 rounded-xl font-bold text-sm transition-colors"
+                    >
+                       <ImageIcon className="w-4 h-4 shrink-0" /> Hình minh hoạ — chèn ảnh vào bài
+                    </button>
+                    <button onClick={() => chotAnhDan(true)}
+                            className="w-full py-2 text-gray-500 hover:text-gray-700 text-[13px] font-medium">
+                       Huỷ, không làm gì cả
+                    </button>
+                 </div>
+              </div>
+           </div>
+        )}
+
+        {/* Chắn màn lúc máy đang đọc ảnh: bấm lung tung giữa chừng dễ đổi mất khối đích. */}
+        {dangDocAnh && (
+           <div className="fixed inset-0 z-[85] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+              <div className="bg-white rounded-2xl shadow-2xl px-6 py-5 flex items-center gap-3">
+                 <Loader2 className="w-5 h-5 text-teal-600 animate-spin shrink-0" />
+                 <span className="font-bold text-gray-700 text-sm">{dangDocAnh}</span>
+              </div>
+           </div>
+        )}
 
         <QuestionBankModal
            isOpen={isBankModalOpen}
