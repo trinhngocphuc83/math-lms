@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2, Sparkles, Library } from "lucide-react";
-import { fixLatexText, applyLatexFixToActiveElement, ensureMathDelimiters } from "@/utils/latexFixer";
+import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2, Sparkles, Library, Wand2, Loader2 } from "lucide-react";
+import { fixLatexText, applyLatexFixToActiveElement, ensureMathDelimiters, cleanObjectLatex } from "@/utils/latexFixer";
 import { bankTypeToBlockType } from "@/utils/questionTypes";
 import 'katex/dist/katex.min.css';
 import QuestionBankModal from "@/components/admin/QuestionBankModal";
@@ -45,6 +45,8 @@ const docGhiChuAnh = (chu: string): Record<number, { veLai?: boolean; moNet?: bo
   return ra;
 };
 
+import { laKhoiQuizHong, cuuKhoiQuizHong, dungLaiCauHoiBangAI } from "@/utils/noiTiepJson";
+
 export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, globalSourceImage, globalTriggerBankModal }: { blocks: Block[], onChangeBlocks: (b: Block[]) => void, onTriggerCrop: (meta: any, targetBlockId: string) => void, globalSourceImage?: string, globalTriggerBankModal?: number }) {
 
   const [previewBlocks, setPreviewBlocks] = React.useState<Set<string>>(new Set());
@@ -59,6 +61,55 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const [selectedBlocks, setSelectedBlocks] = React.useState<Set<string>>(new Set());
   const [activeBlockId, setActiveBlockId] = React.useState<string | null>(null);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(false);
+  /** Khối đang được dựng lại thành câu hỏi (để hiện vòng quay chờ trên đúng nút đó). */
+  const [dangDungLai, setDangDungLai] = React.useState<string | null>(null);
+
+  /**
+   * Dựng một khối Văn bản lỡ chứa JSON câu hỏi thành các KHỐI CÂU HỎI đàng hoàng.
+   *
+   * Hai nước: vá tại chỗ trước (tức thì, không tốn lượt AI); vá không nổi mới nhờ AI dựng
+   * lại. AI chỉ được sửa ĐỊNH DẠNG, không được viết thêm câu hay đổi nội dung.
+   */
+  const dungLaiThanhCauHoi = async (blockId: string) => {
+    const idx = blocks.findIndex(b => b.id === blockId);
+    if (idx < 0 || blocks[idx].type !== 'md') return;
+    const chu = typeof blocks[idx].content === 'string' ? blocks[idx].content : '';
+
+    /* Dọn đúng như đường dán vẫn dọn: bỏ chữ "Câu 3." dính ở đầu đề (số thứ tự do khối
+       tự đánh lại) và vá công thức LaTeX vỡ trong JSON. */
+    const apDung = (items: any[], nguon: string) => {
+      const moi: Block[] = items.map((it) => {
+        if (it.question) it.question = String(it.question).replace(/^(Câu|Bài)\s*\d+[\.\:\-\s]*/i, '');
+        return {
+          id: Math.random().toString(36).substring(7),
+          type: 'quiz' as const,
+          content: cleanObjectLatex(it),
+        };
+      });
+      const ra = [...blocks];
+      ra.splice(idx, 1, ...moi);
+      onChangeBlocks(ra);
+      alert(`Đã dựng lại thành ${items.length} câu hỏi (${nguon}).\n\nThầy/Cô soát lại nội dung rồi bấm Lưu.`);
+    };
+
+    const taiCho = cuuKhoiQuizHong(chu);
+    if (taiCho) { apDung(taiCho, 'vá tại chỗ'); return; }
+
+    if (!window.confirm(
+      'Khối này hỏng nặng, vá tại chỗ không được.\n\nNhờ AI dựng lại không? '
+      + 'AI chỉ sửa định dạng, giữ nguyên nội dung từng câu.',
+    )) return;
+
+    setDangDungLai(blockId);
+    try {
+      const items = await dungLaiCauHoiBangAI(chu);
+      apDung(items, 'AI dựng lại');
+    } catch (e: any) {
+      alert('Không dựng lại được: ' + (e?.message || 'lỗi không rõ'));
+    } finally {
+      setDangDungLai(null);
+    }
+  };
 
   // Trên điện thoại chỉ đủ chỗ cho MỘT trong hai: Bản đồ câu hỏi hoặc khu soạn.
   // Trước đây cả hai cùng nằm trong flex-col, Bản đồ (shrink-0 + cao gần hết màn)
@@ -662,6 +713,21 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                             title="Đưa mục CÔNG THỨC CẦN NHỚ của bài này vào Sổ tay công thức"
                          >
                             <Library className="w-3.5 h-3.5"/> <span className="hidden lg:inline">Vào Sổ tay</span>
+                         </button>
+                      )}
+                      {/* Khối chữ mà bên trong lại là JSON câu hỏi: dấu hiệu đợt dán bị hỏng rào
+                          mã. Bày nút dựng lại ngay tại đây, khỏi phải xóa đi dán lại từ đầu. */}
+                      {block.type === 'md' && laKhoiQuizHong(typeof block.content === 'string' ? block.content : '') && (
+                         <button
+                            onClick={() => dungLaiThanhCauHoi(block.id)}
+                            disabled={dangDungLai === block.id}
+                            title="Khối này thực ra là câu hỏi bị hỏng rào mã - bấm để dựng lại thành các câu đúng"
+                            className="flex items-center gap-1 px-2 py-1 bg-amber-500 hover:bg-amber-600 disabled:opacity-60 text-white rounded-md text-[11px] font-bold transition-colors"
+                         >
+                            {dangDungLai === block.id
+                               ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                               : <Wand2 className="w-3.5 h-3.5" />}
+                            <span className="hidden lg:inline">Dựng lại thành câu hỏi</span>
                          </button>
                       )}
                       <button

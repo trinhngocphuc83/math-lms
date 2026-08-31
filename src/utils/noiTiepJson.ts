@@ -119,6 +119,92 @@ export function soatKhoiQuiz(raw: string): KetQuaSoatDan {
   };
 }
 
+/* ============================ CỨU KHỐI CÂU HỎI HỎNG RÀO ============================ */
+
+/**
+ * Đoạn chữ này có phải khối câu hỏi bị hỏng rào mã không.
+ *
+ * Dùng để quyết định có bày nút "Dựng lại thành câu hỏi" trên khối hay không, nên phải
+ * nhẹ: chỉ nhìn dấu hiệu, không thử đọc cả JSON.
+ */
+export function laKhoiQuizHong(txt: string): boolean {
+  const t = String(txt || '').trim();
+  return /"question"\s*:/.test(t) && /"type"\s*:/.test(t);
+}
+
+/**
+ * Cứu một khối CHỮ thực ra là khối câu hỏi bị hỏng rào mã.
+ *
+ * Dán từ Gemini về hay gặp: câu trả lời bị cắt cụt nên thiếu dấu ``` đóng, hoặc dán hai
+ * đợt liền nhau thành số dấu rào lẻ. Khi đó bộ tách khối không nhận ra đây là câu hỏi,
+ * đẩy nguyên đoạn JSON thành khối Văn bản - trên màn hiện ra một đống "type":
+ * "multiple_choice"... và công thức vỡ hết (\ge thành "ge", \frac thành "frac").
+ *
+ * Gỡ rào, vá JSON bằng đúng bộ vá đang dùng cho đường quét AI, rồi trả về danh sách câu.
+ * Chỉ nhận khi đọc ra câu có đủ "type" và "question" - khối lý thuyết lỡ có đoạn JSON
+ * minh hoạ thì không bị bắt nhầm.
+ */
+export function cuuKhoiQuizHong(txt: string): any[] | null {
+  const t = String(txt || '').trim();
+  if (!laKhoiQuizHong(t)) return null;
+
+  const than = t
+    .replace(/^`{3,}\s*(?:quiz|json)?\s*/i, '')   // rào mở còn sót
+    .replace(/^(?:quiz|json)\s*/i, '')            // chữ "quiz" trơ lại sau khi rào bị ăn
+    .replace(/`{3,}\s*$/, '')                     // rào đóng còn sót
+    .trim();
+
+  try {
+    const kq = docJsonCauHoi(than);
+    const items = kq.items.filter((x: any) => x && x.type && x.question);
+    return items.length > 0 ? items : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Nhờ AI dựng lại khi hỏng nặng quá, bộ vá tại chỗ chịu thua.
+ *
+ * Chỉ bảo AI SỬA LẠI ĐỊNH DẠNG, tuyệt đối không cho nó viết thêm câu mới hay đổi nội
+ * dung - thầy cô cần đúng đề gốc, không cần đề do máy nghĩ ra.
+ */
+export async function dungLaiCauHoiBangAI(
+  txt: string,
+  onTienDo?: (moTa: string) => void,
+): Promise<any[]> {
+  const { layCauHinhAI, goiGeminiTrenTrinhDuyet } = await import('./geminiBrowser');
+  onTienDo?.('Đang xin khoá AI...');
+  const cauHinh = await layCauHinhAI();
+
+  const prompt = `Đoạn dưới đây LẼ RA là một mảng JSON các câu hỏi, nhưng đã bị hỏng định dạng
+(thiếu ngoặc, thiếu dấu nháy, dấu gạch chéo LaTeX chưa nhân đôi, hoặc bị cắt cụt).
+
+NHIỆM VỤ: dựng lại thành MẢNG JSON HỢP LỆ.
+
+QUY TẮC BẮT BUỘC:
+- GIỮ NGUYÊN nội dung từng câu: đề bài, phương án, đáp án, lời giải. TUYỆT ĐỐI KHÔNG viết
+  thêm câu mới, KHÔNG sửa nội dung toán học, KHÔNG bỏ bớt câu nào đọc được.
+- Câu nào bị cắt cụt giữa chừng, không đủ dữ kiện để khôi phục, thì BỎ HẲN câu đó chứ
+  KHÔNG bịa thêm cho đủ.
+- Công thức LaTeX trong JSON phải nhân đôi dấu gạch chéo (\\frac, \\ge...).
+- CHỈ trả về mảng JSON, không rào mã, không lời dẫn.
+
+ĐOẠN CẦN DỰNG LẠI:
+${txt}`;
+
+  onTienDo?.('Máy đang dựng lại các câu...');
+  const kq = await goiGeminiTrenTrinhDuyet(cauHinh, [{ text: prompt }], {
+    responseMimeType: 'application/json',
+    temperature: 0,
+  });
+
+  const doc = docJsonCauHoi(kq.text);
+  const items = doc.items.filter((x: any) => x && x.type && x.question);
+  if (items.length === 0) throw new Error('Máy cũng không dựng lại được đoạn này.');
+  return items;
+}
+
 /**
  * Câu lệnh dán sang Gemini để nó làm nốt phần còn lại.
  *

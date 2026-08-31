@@ -27,7 +27,7 @@ import { layCauHinhAI } from "@/utils/geminiBrowser";
 import { autoCropImage, uploadSourceImage, cropImageFromBoundingBox, uploadCroppedImage, type NormalizedBox } from "@/utils/autoCropImage";
 import { thamDinhVaVeLai, svgSangPng, chamDoNetTuBlob } from "@/utils/veLaiHinhAI";
 import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
-import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep } from "@/utils/noiTiepJson";
+import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep, cuuKhoiQuizHong } from "@/utils/noiTiepJson";
 import { docJsonCauHoi } from "@/utils/vaJson";
 import HuongDanSoanBaiModal from "@/components/admin/HuongDanSoanBaiModal";
 import { ArrowLeft, HelpCircle, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
@@ -517,37 +517,6 @@ const VisualQuizEditor = ({ quizzes, onUpdateQuiz, onTriggerCrop }: { quizzes: a
 
 
 
-
-/**
- * Cứu một khối CHỮ thực ra là khối câu hỏi bị hỏng rào mã.
- *
- * Dán từ Gemini về hay gặp: câu trả lời bị cắt cụt nên thiếu dấu \`\`\` đóng, hoặc dán
- * hai đợt liền nhau thành số dấu rào lẻ. Khi đó bộ tách khối không nhận ra đây là câu
- * hỏi, đẩy nguyên đoạn JSON thành khối Văn bản - trên màn hiện ra một đống
- * "type": "multiple_choice"... và công thức vỡ hết (\\ge thành "ge", \\frac thành "frac").
- *
- * Ở đây gỡ rào, vá JSON bằng đúng bộ vá đang dùng cho đường quét AI, rồi trả về danh
- * sách câu. Chỉ nhận khi đọc ra câu có đủ "type" và "question" - khối lý thuyết lỡ có
- * đoạn JSON minh hoạ thì không bị bắt nhầm.
- */
-const cuuKhoiQuizHong = (txt: string): any[] | null => {
-    const t = String(txt || '').trim();
-    if (!/"question"\s*:/.test(t) || !/"type"\s*:/.test(t)) return null;
-
-    const than = t
-        .replace(/^`{3,}\s*(?:quiz|json)?\s*/i, '')   // rào mở còn sót
-        .replace(/^(?:quiz|json)\s*/i, '')            // chữ "quiz" trơ lại sau khi rào bị ăn
-        .replace(/`{3,}\s*$/, '')                     // rào đóng còn sót
-        .trim();
-
-    try {
-        const kq = docJsonCauHoi(than);
-        const items = kq.items.filter((x: any) => x && x.type && x.question);
-        return items.length > 0 ? items : null;
-    } catch {
-        return null;
-    }
-};
 
 const parseMarkdownToBlocks = (content: string): Block[] => {
     if (!content) return [];
