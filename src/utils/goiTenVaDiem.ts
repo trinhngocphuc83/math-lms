@@ -50,6 +50,34 @@ export interface DongDiem {
  * Điểm của CHÍNH học sinh đang đăng nhập, trong một tháng.
  * Đọc thẳng ở trình duyệt được nhờ quyền đã mở cho chính chủ.
  */
+/**
+ * Tổng điểm thưởng TÍCH LUỸ từ trước tới nay của chính em đang đăng nhập.
+ *
+ * Khác `diemCuaToi` - hàm đó chỉ đọc một tháng. Em nhìn con số tháng này thì không thấy
+ * được cả chặng đường mình đã đi, mà đó mới là thứ đáng khoe.
+ */
+export async function tongDiemTichLuy(): Promise<{ tong: number; soLan: number } | null> {
+  const supabase = createClient();
+  const { data: nguoi } = await supabase.auth.getUser();
+  const id = nguoi?.user?.id;
+  if (!id) return null;
+
+  const { data, error } = await supabase
+    .from('diem_thuong')
+    .select('diem')
+    .eq('student_id', id);
+
+  if (error) {
+    if (/schema cache|does not exist|Could not find the table/i.test(error.message)) {
+      throw new Error(LOI_CHUA_TAO_BANG);
+    }
+    throw error;
+  }
+
+  const ds = data || [];
+  return { tong: ds.reduce((t, d: any) => t + Number(d.diem || 0), 0), soLan: ds.length };
+}
+
 export async function diemCuaToi(thang = thangNay()): Promise<{ tong: number; dong: DongDiem[] }> {
   const supabase = createClient();
   const { data: nguoi } = await supabase.auth.getUser();

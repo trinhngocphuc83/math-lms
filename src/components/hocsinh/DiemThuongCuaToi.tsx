@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Trophy, Loader2, Sparkles, ClipboardList, Dumbbell, TrendingUp, Globe } from "lucide-react";
-import { diemCuaToi, thangNay, thangTruoc, LOI_CHUA_TAO_BANG, type DongDiem } from "@/utils/goiTenVaDiem";
+import { diemCuaToi, tongDiemTichLuy, thangNay, thangTruoc, LOI_CHUA_TAO_BANG, type DongDiem } from "@/utils/goiTenVaDiem";
 
 /**
  * Điểm thưởng của chính học sinh đang đăng nhập.
@@ -26,6 +26,14 @@ export default function DiemThuongCuaToi() {
   const [dong, setDong] = React.useState<DongDiem[]>([]);
   const [dangTai, setDangTai] = React.useState(true);
   const [chuaTaoBang, setChuaTaoBang] = React.useState(false);
+  /** Tổng từ trước tới nay - con số này mới cho em thấy cả chặng đường đã đi. */
+  const [tichLuy, setTichLuy] = React.useState<{ tong: number; soLan: number } | null>(null);
+
+  React.useEffect(() => {
+    let bo = false;
+    tongDiemTichLuy().then(r => { if (!bo) setTichLuy(r); }).catch(() => { /* chưa bật bảng thì thôi */ });
+    return () => { bo = true; };
+  }, []);
 
   React.useEffect(() => {
     let bo = false;
@@ -97,6 +105,22 @@ export default function DiemThuongCuaToi() {
           </select>
         </div>
       </div>
+
+      {/* Điểm TÍCH LUỸ từ trước tới nay - ô tháng ở trên chỉ nói được một tháng. */}
+      {tichLuy && tichLuy.soLan > 0 && (
+        <div className="rounded-2xl border-2 border-amber-200 bg-amber-50 px-5 py-4 flex items-center gap-4">
+          <div className="w-11 h-11 rounded-2xl bg-amber-500 flex items-center justify-center shrink-0">
+            <Trophy className="w-6 h-6 text-white" />
+          </div>
+          <div className="min-w-0">
+            <div className="text-[12.5px] font-bold text-amber-800">Điểm tích luỹ từ trước tới nay</div>
+            <div className="text-[32px] leading-none font-black text-amber-700 mt-0.5">{tichLuy.tong}</div>
+            <div className="text-[12.5px] text-amber-700/80 mt-1">
+              Qua {tichLuy.soLan} lần được cộng / trừ điểm
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Từng lần cộng/trừ */}
       <div className="rounded-2xl border border-gray-200 bg-white overflow-hidden">

@@ -91,7 +91,11 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
 
     /* Lời giải: câu do AI soạn để ở `answer`, câu lấy từ ngân hàng để ở `sampleAnswer`.
        Phải đọc cả hai - đo trên đề thật thì hai bên gần như không trùng nhau. */
-    const loiGiai: string = String(quizData?.answer || quizData?.sampleAnswer || '').trim();
+    /* Đọc CẢ `explanation`: đo 01/09/2026 có 18 câu trong bài giảng cất lời giải ở đúng
+       trường đó, mà bản cũ chỉ nhìn `answer`/`sampleAnswer` nên nút "Xem lời giải" không
+       hiện - bấm xong đáp án là nhảy thẳng sang "Làm lại". Ô soạn thảo vốn đã đọc cả ba
+       trường này rồi, chỉ màn chiếu là bỏ sót. */
+    const loiGiai: string = String(quizData?.answer || quizData?.sampleAnswer || quizData?.explanation || '').trim();
     const coLoiGiai = !!loiGiai || !!quizData?.phuong_phap_giai
         || (Array.isArray(quizData?.cac_buoc_thuc_hien) && quizData.cac_buoc_thuc_hien.length > 0);
 
