@@ -339,3 +339,57 @@ img[alt="Minh họa"]:not(.anh-noi-dung) {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+/* ===== BA BẬC Ý: gạch đầu dòng "–", "+", "•" =====
+   Thầy cô chọn cấp ở hộp "Cấp" trên thanh công cụ; trong bài vẫn là danh sách "-" chuẩn
+   của Markdown, chỉ khác độ thụt lề. Dấu hiện ra do đây vẽ.
+
+   MỌI SỐ ĐO ĐỀU THEO em, KHÔNG theo px: nhờ vậy một bộ luật này chạy đúng ở cả ba nơi -
+   ô soạn thảo (15px), trang học sinh (16-18px) và trình chiếu (42px trên khung 1600x900).
+   Trước đây mỗi nơi tự vẽ dấu đầu dòng riêng nên nhìn ba kiểu khác nhau. */
+.ds-y { list-style: none; padding-left: 0; }
+.ds-y > li { position: relative; padding-left: 1.15em; }
+.ds-y > li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: #64748b;          /* slate-500 */
+  font-weight: 700;
+}
+
+/* Bậc 2 - Ý nhỏ */
+.ds-y .ds-y { margin-left: 1.1em; margin-top: 0.25em; }
+.ds-y .ds-y > li::before { content: "+"; color: #6366f1; }   /* indigo-500 */
+
+/* Bậc 3 - Ý phụ. Chấm tròn nhỏ hơn dấu + ở trên. */
+.ds-y .ds-y .ds-y > li::before {
+  content: "";
+  width: 0.3em;
+  height: 0.3em;
+  border-radius: 9999px;
+  background: #94a3b8;     /* slate-400 */
+  top: 0.62em;
+}
+
+/* Chữ trong ba bậc ý: thường, không đậm không nghiêng - đúng yêu cầu của Thầy cô. */
+.ds-y > li { font-weight: 400; font-style: normal; }
+
+/* ===== HỘP HƯỚNG DẪN GIẢI: bớt giãn dòng, mỗi ý một dấu =====
+   Trước đây mỗi ý giải là một đoạn <p> cách nhau cả dòng trống, học sinh nhìn rời rạc
+   không biết ý nào nối ý nào. Nay thu khoảng cách lại và đánh dấu ▸ ở đầu mỗi ý.
+
+   Dòng chỉ có CÔNG THỨC thì KHÔNG đánh dấu: công thức là phần tiếp theo của ý phía trên,
+   gắn thêm dấu vào là hoá ra hai ý. */
+.hop-giai > p { margin-top: 0; margin-bottom: 0.4em; }
+.hop-giai > p:last-child { margin-bottom: 0; }
+
+.hop-giai > p:not(:has(.katex-display)) { padding-left: 1.05em; position: relative; }
+.hop-giai > p:not(:has(.katex-display))::before {
+  content: "▸";
+  position: absolute;
+  left: 0;
+  color: #6366f1;          /* indigo-500 */
+  font-weight: 700;
+}
+
+/* Công thức đứng riêng một dòng: kéo sát vào ý ngay trên nó. */
+.hop-giai .katex-display { margin-top: 0.15em; margin-bottom: 0.35em; }

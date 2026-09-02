@@ -203,16 +203,18 @@ export const unifiedMarkdownComponents: any = {
    },
    h1: ({node, style, children, ...props}: any) => {
        return (
-           <div className="not-prose mt-12 mb-6 flex items-center gap-4 w-full">
-               <div className="w-3 h-10 bg-blue-600 rounded-full shadow-sm shrink-0"></div>
+           /* Tiêu đề bài CANH GIỮA - đây là dòng mở đầu cả bài, đặt lệch trái nhìn như
+              một mục con. Thanh xanh chuyển xuống thành gạch chân cho cân. */
+           <div className="not-prose mt-12 mb-7 w-full text-center">
                <h1 style={sanitizeStyle(style)} className="text-[55px] font-black text-blue-900 tracking-tight m-0 leading-tight" {...props}>{children}</h1>
+               <div className="mx-auto mt-3 h-[6px] w-24 bg-blue-600 rounded-full"></div>
            </div>
        );
    },
    h2: ({node, style, children, ...props}: any) => {
        return (
            <div className="not-prose mt-10 mb-6 flex justify-center w-full">
-               <div className="bg-orange-50 text-orange-700 px-6 py-3 rounded-r-3xl rounded-l-lg border-l-[8px] border-orange-500 font-bold shadow-sm inline-block w-fit leading-relaxed max-w-[95%] break-words text-[45px] uppercase text-center" style={sanitizeStyle(style)} {...props}>
+               <div className="bg-red-50 text-red-700 px-6 py-3 rounded-r-3xl rounded-l-lg border-l-[8px] border-red-600 font-bold shadow-sm inline-block w-fit leading-relaxed max-w-[95%] break-words text-[45px] uppercase text-center" style={sanitizeStyle(style)} {...props}>
                    {children}
                </div>
            </div>
@@ -227,16 +229,18 @@ export const unifiedMarkdownComponents: any = {
    },
    h4: ({node, style, children, ...props}: any) => {
        return (
-           <h4 style={sanitizeStyle(style)} className="not-prose mt-6 mb-3 ml-8 text-[36px] font-bold text-teal-800 tracking-tight flex items-start gap-3" {...props}>
-               <span className="text-teal-500 mt-[0.2em] text-[24px] leading-none">❖</span>
-               <span className="flex-1 min-w-0 border-b-2 border-teal-100 pb-1.5">{children}</span>
+           /* Mục con a) b) c) - BỎ dấu ❖ theo yêu cầu, giữ nguyên màu và gạch chân. */
+           <h4 style={sanitizeStyle(style)} className="not-prose mt-6 mb-3 ml-8 text-[36px] font-bold text-teal-800 tracking-tight" {...props}>
+               <span className="inline-block border-b-2 border-teal-100 pb-1.5">{children}</span>
            </h4>
        );
    },
    h5: ({node, style, children, ...props}: any) => {
        return (
-           <h5 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 ml-16 text-[35px] font-bold text-slate-700 italic tracking-tight flex items-start gap-3" {...props}>
-               <span className="w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0 mt-3.5"></span>
+           /* ##### của bài cũ: nay hiện y như Ý lớn (chữ thường, gạch "–") để bài cũ và
+              bài mới nhìn cùng một kiểu. Đo được chỉ 33 dòng trong 6 mục nên đổi an toàn. */
+           <h5 style={sanitizeStyle(style)} className="not-prose mt-3 mb-2 ml-12 text-[35px] font-normal text-slate-700 leading-[1.55] flex items-start gap-3" {...props}>
+               <span className="shrink-0 font-bold text-slate-500">–</span>
                <span className="flex-1 min-w-0">{children}</span>
            </h5>
        );
@@ -244,11 +248,15 @@ export const unifiedMarkdownComponents: any = {
    strong: ({node, style, children, ...props}: any) => {
        return <strong style={sanitizeStyle(style)} {...props} className="text-slate-900 font-bold">{children}</strong>;
    },
+   /* Ba bậc ý dùng chung lớp .ds-y (globals.css): dấu "–", "+", "•" và độ thụt lề đo
+      bằng em nên tự co theo cỡ chữ của từng nơi. */
+   ul: ({node, style, children, ...props}: any) => (
+       <ul style={sanitizeStyle(style)} className="ds-y not-prose mb-4 space-y-1.5" {...props}>{children}</ul>
+   ),
    li: ({node, style, children, ...props}: any) => {
        return (
-           <li style={sanitizeStyle(style)} className="flex items-start gap-4 mb-4 relative group text-[35px]" {...props}>
-              <span className="mt-[0.6em] shrink-0 w-2.5 h-2.5 rounded-full bg-indigo-400 shadow-sm"></span>
-              <div className="flex-1 min-w-0 leading-[1.6] text-slate-700">{children}</div>
+           <li style={sanitizeStyle(style)} className="mb-2 text-[35px] leading-[1.55] text-slate-700" {...props}>
+              {children}
            </li>
        );
    },
@@ -315,7 +323,7 @@ export const unifiedMarkdownComponents: any = {
                    <div className={`px-4 py-2 border-b ${headerClass} font-bold flex items-center gap-2 uppercase tracking-wide text-[35px]`}>
                        {icon} <span>{headerText}</span>
                    </div>
-                   <div className="px-5 py-4 flex-1 min-w-0 prose prose-slate max-w-none text-slate-800 leading-[1.6] font-medium [&>p:first-child]:mt-0 [&>p:last-child]:mb-0 text-[35px]">
+                   <div className="hop-giai px-5 py-4 flex-1 min-w-0 prose prose-slate max-w-none text-slate-800 leading-[1.55] font-medium text-[35px]">
                        {processedChildren}
                    </div>
                </div>
@@ -374,16 +382,17 @@ export const studentMarkdownComponents: any = {
    },
    h1: ({node, style, children, ...props}: any) => {
        return (
-           <div className="not-prose mt-6 mb-4 flex items-center gap-3 w-full">
-               <div className="w-2 h-8 bg-blue-600 rounded-full shadow-sm shrink-0"></div>
+           /* Tiêu đề bài CANH GIỮA - xem chú thích ở bộ unified. */
+           <div className="not-prose mt-6 mb-5 w-full text-center">
                <h1 style={sanitizeStyle(style)} className="text-2xl sm:text-3xl font-black text-blue-900 tracking-tight m-0 leading-tight" {...props}>{children}</h1>
+               <div className="mx-auto mt-2 h-1 w-16 bg-blue-600 rounded-full"></div>
            </div>
        );
    },
    h2: ({node, style, children, ...props}: any) => {
        return (
            <div className="not-prose mt-6 mb-4 flex justify-center w-full">
-               <div className="bg-orange-50 text-orange-700 px-4 py-2 rounded-r-2xl rounded-l-md border-l-[6px] border-orange-500 font-bold shadow-sm inline-block w-fit leading-relaxed max-w-[95%] break-words text-xl sm:text-2xl uppercase text-center" style={sanitizeStyle(style)} {...props}>
+               <div className="bg-red-50 text-red-700 px-4 py-2 rounded-r-2xl rounded-l-md border-l-[6px] border-red-600 font-bold shadow-sm inline-block w-fit leading-relaxed max-w-[95%] break-words text-xl sm:text-2xl uppercase text-center" style={sanitizeStyle(style)} {...props}>
                    {children}
                </div>
            </div>
@@ -398,16 +407,17 @@ export const studentMarkdownComponents: any = {
    },
    h4: ({node, style, children, ...props}: any) => {
        return (
-           <h4 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 ml-4 sm:ml-6 text-lg sm:text-xl font-bold text-teal-800 tracking-tight flex items-start gap-2" {...props}>
-               <span className="text-teal-500 mt-[0.2em] text-sm leading-none">❖</span>
-               <span className="flex-1 min-w-0 border-b-2 border-teal-100 pb-1">{children}</span>
+           /* Mục con a) b) c) - bỏ dấu ❖. */
+           <h4 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 ml-4 sm:ml-6 text-lg sm:text-xl font-bold text-teal-800 tracking-tight" {...props}>
+               <span className="inline-block border-b-2 border-teal-100 pb-1">{children}</span>
            </h4>
        );
    },
    h5: ({node, style, children, ...props}: any) => {
        return (
-           <h5 style={sanitizeStyle(style)} className="not-prose mt-4 mb-2 ml-8 sm:ml-12 text-base sm:text-lg font-bold text-slate-700 italic tracking-tight flex items-start gap-2.5" {...props}>
-               <span className="w-1.5 h-1.5 rounded-full bg-slate-400 shrink-0 mt-2.5"></span>
+           /* ##### của bài cũ: hiện như Ý lớn. */
+           <h5 style={sanitizeStyle(style)} className="not-prose mt-2 mb-1.5 ml-6 sm:ml-8 text-base sm:text-lg font-normal text-slate-700 leading-[1.55] flex items-start gap-2" {...props}>
+               <span className="shrink-0 font-bold text-slate-500">–</span>
                <span className="flex-1 min-w-0">{children}</span>
            </h5>
        );
@@ -447,11 +457,14 @@ export const studentMarkdownComponents: any = {
            {children}
        </td>
    ),
+   /* Ba bậc ý dùng chung lớp .ds-y - xem globals.css. */
+   ul: ({node, style, children, ...props}: any) => (
+       <ul style={sanitizeStyle(style)} className="ds-y not-prose mb-3 space-y-1" {...props}>{children}</ul>
+   ),
    li: ({node, style, children, ...props}: any) => {
        return (
-           <li style={sanitizeStyle(style)} className="flex items-start gap-3 mb-2 relative group" {...props}>
-              <span className="mt-[0.6em] shrink-0 w-2 h-2 rounded-full bg-indigo-400 shadow-sm"></span>
-              <div className="flex-1 min-w-0 leading-[1.6] text-slate-700">{children}</div>
+           <li style={sanitizeStyle(style)} className="mb-1.5 leading-[1.6] text-slate-700" {...props}>
+              {children}
            </li>
        );
    },
@@ -517,7 +530,7 @@ export const studentMarkdownComponents: any = {
                    <div className={`px-3 py-1.5 border-b ${headerClass} font-bold flex items-center gap-2 uppercase tracking-wide text-sm`}>
                        {icon} <span>{headerText}</span>
                    </div>
-                   <div className="px-4 py-3 flex-1 min-w-0 prose prose-slate prose-sm sm:prose-base max-w-none text-slate-800 leading-[1.6] font-medium [&>p:first-child]:mt-0 [&>p:last-child]:mb-0">
+                   <div className="hop-giai px-4 py-3 flex-1 min-w-0 prose prose-slate prose-sm sm:prose-base max-w-none text-slate-800 leading-[1.55] font-medium">
                        {processedChildren}
                    </div>
                </div>

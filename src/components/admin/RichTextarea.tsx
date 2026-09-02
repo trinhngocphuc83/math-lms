@@ -126,14 +126,25 @@ export default function RichTextarea({ value, onChange, onValueChange, className
    *    "Trong mặt### phẳng". Phải áp cho cả dòng.
    *  - Đang là ### mà chọn ## thì cũ chồng thêm dấu #. Phải thay cấp, không cộng dồn.
    */
+  /**
+   * Áp một trong BẢY cấp cho (các) dòng đang chọn.
+   *
+   * Cấp 1-4 là TIÊU ĐỀ (# ## ### ####). Cấp 5-7 là BA BẬC GẠCH ĐẦU DÒNG lồng nhau -
+   * Markdown vốn có sẵn ba bậc này nên chạy đúng ở cả ba nơi (soạn thảo, học sinh, trình
+   * chiếu), không phải chế thêm cú pháp. Dấu hiện ra ("–", "+", "•") do bộ định dạng vẽ,
+   * chứ trong bài vẫn là "-" chuẩn.
+   */
   const handleApplyHeading = (level: number | '') => {
     if (!level || !textareaRef.current) return;
     const { val, dauDong, cuoiDong } = layVungDong();
-    const prefix = '#'.repeat(level as number) + ' ';
+    const c = level as number;
+    const prefix = c <= 4 ? '#'.repeat(c) + ' ' : '  '.repeat(c - 5) + '- ';
 
     const doan = val.slice(dauDong, cuoiDong);
+    /* Gỡ mọi dấu cấp cũ (cả # lẫn gạch đầu dòng có thụt lề) rồi mới đặt dấu mới, để đổi
+       qua đổi lại giữa các cấp không bị chồng dấu. */
     const moi = doan.split('\n')
-      .map(l => (l.trim() === '' ? l : prefix + l.replace(/^\s*#{1,6}\s*/, '')))
+      .map(l => (l.trim() === '' ? l : prefix + l.replace(/^\s*(?:#{1,6}\s*|[-*+]\s+)/, '')))
       .join('\n');
 
     /*
@@ -756,12 +767,14 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         <select onChange={e => { handleApplyHeading(e.target.value ? parseInt(e.target.value) : ''); e.target.value = ""; }} className="border border-gray-200 rounded bg-white text-[11px] font-semibold py-0.5 px-1 outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer h-6 w-20">
           {/* Đặt tên theo việc chứ không theo H1..H5: bộ chữ của hệ thống đã tô sẵn màu
               và khung cho từng cấp, nên chỉ cần chọn ở đây, KHÔNG phải gõ thẻ span. */}
-          <option value="">Tiêu đề</option>
-          <option value="1">Tiêu đề bài</option>
-          <option value="2">Mục lớn</option>
-          <option value="3">Mục nhỏ</option>
-          <option value="4">Ý phụ</option>
-          <option value="5">Ý phụ nhỏ</option>
+          <option value="">Cấp</option>
+          <option value="1">Đề bài</option>
+          <option value="2">I, II, III</option>
+          <option value="3">1. 2. 3.</option>
+          <option value="4">a) b) c)</option>
+          <option value="5">–  Ý lớn</option>
+          <option value="6">+  Ý nhỏ</option>
+          <option value="7">•  Ý phụ</option>
         </select>
 
         <div className="w-px h-4 bg-gray-300 shrink-0"></div>

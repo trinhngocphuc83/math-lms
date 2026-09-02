@@ -3,7 +3,7 @@ import { useEffect, useState, useRef, useLayoutEffect, useCallback } from 'react
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import ReactMarkdown from 'react-markdown';
-import { chuyenDiaChiAnh } from '@/components/CustomMarkdownComponents';
+import { chuyenDiaChiAnh, preprocessMarkdown } from '@/components/CustomMarkdownComponents';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
@@ -338,7 +338,7 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
                     <h4 className="text-[30px] font-black text-indigo-700 mb-3 uppercase tracking-wider">Lời giải chi tiết</h4>
 
                     {quizData.phuong_phap_giai && (
-                        <div className={`text-[31px] leading-[1.5] text-slate-800 mb-4 ${KATEX_CLASS}`}>
+                        <div className={`hop-giai text-[31px] leading-[1.5] text-slate-800 mb-3 ${KATEX_CLASS}`}>
                             <b className="text-indigo-700">Phương pháp: </b>
                             <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                                 {ensureMathDelimiters(String(quizData.phuong_phap_giai))}
@@ -347,7 +347,9 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
                     )}
 
                     {type !== 'essay' && loiGiai && (
-                        <div className={`text-[32px] leading-[1.5] text-slate-900 ${KATEX_CLASS}`}>
+                        /* hop-giai: thu khoảng cách giữa các ý và đánh dấu ▸ đầu mỗi ý -
+                           xem globals.css. Dòng chỉ có công thức thì không đánh dấu. */
+                        <div className={`hop-giai text-[32px] leading-[1.5] text-slate-900 ${KATEX_CLASS}`}>
                             <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                                 {ensureMathDelimiters(loiGiai)}
                             </ReactMarkdown>
@@ -994,7 +996,12 @@ export default function PresentationPage() {
                                                 remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]}
                                                 rehypePlugins={[rehypeKatex, rehypeRaw]}
                                             >
-                                                {frag}
+                                                {/* Dọn chữ TRƯỚC khi dựng, y như ô soạn thảo và
+                                                    trang học sinh vẫn làm. Trình chiếu trước đây
+                                                    bỏ qua bước này nên bảng Markdown gõ thiếu
+                                                    dòng kẻ và mấy ký tự LaTeX hỏng vẫn trơ ra -
+                                                    thành ra soạn thì đẹp mà chiếu lên lại khác. */}
+                                                {preprocessMarkdown(frag)}
                                             </ReactMarkdown>
                                         </div>
                                     ))}

@@ -15,8 +15,9 @@ import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
 import {
   Loader2, Pencil, Shuffle, ArrowLeft, ArrowRight, Printer, Download,
   CheckCircle, FileText, CheckSquare, Square, RotateCcw, Type, Replace, Plus, ListChecks, X,
-  Save, AlertTriangle, Send, Sparkles
+  Save, AlertTriangle, Send, Sparkles, Trash2, Copy, ShieldCheck
 } from "lucide-react";
+import { taoKhoaSoSanh, doGiongNhau, NGUONG_NGHI_TRUNG } from "@/utils/questionFingerprint";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
   chiaPhanDeThi, sapCauTheoPhan, diemCuaPhan, tenTepDe, soDiemVN, tenLamDutTruyVan } from "@/utils/deThi";
@@ -75,6 +76,10 @@ function SelectContent() {
   const [grade, setGrade] = useState("");
   const [subject, setSubject] = useState("");
   const [lines, setLines] = useState<LineState[]>([]);
+  /** Các cặp câu nghi trùng vừa rà được, khoá theo id câu để tô viền cảnh báo. */
+  const [nghiTrung, setNghiTrung] = useState<Map<string, { doGiong: number; cungVoi: string }>>(new Map());
+  const [dangRaSoat, setDangRaSoat] = useState(false);
+  const [dangXoa, setDangXoa] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
   const [step, setStep] = useState<'select' | 'final'>('select');
@@ -235,6 +240,87 @@ function SelectContent() {
       setLoadError("Không mở được bộ đề đã lưu: " + (e?.message || 'lỗi không rõ'));
     } finally {
       setIsLoading(false);
+    }
+  };
+
+  /**
+   * Rà soát các câu ĐANG CHỌN xem có cặp nào na ná nhau.
+   *
+   * Dùng lại đúng bộ so trong utils/questionFingerprint - cùng cỗ máy đang canh trùng lúc
+   * bóc câu mới vào kho, nên ngưỡng và cách chấm giống hệt, không có chuyện chỗ này bảo
+   * trùng chỗ kia bảo không.
+   *
+   * Chỉ SO các câu đang chọn với nhau: đó là những câu sắp in ra đề, trùng ở đây mới là
+   * trùng thật sự đáng lo.
+   */
+  const raSoatTrung = () => {
+    setDangRaSoat(true);
+    try {
+      const dsCau: any[] = [];
+      lines.forEach(l => l.candidates.forEach(q => { if (l.selectedIds.has(q.id)) dsCau.push(q); }));
+
+      const khoa = dsCau.map(q => taoKhoaSoSanh({
+        id: q.id, content: q.content,
+        option_a: q.option_a, option_b: q.option_b, option_c: q.option_c, option_d: q.option_d,
+      }));
+
+      const ra = new Map<string, { doGiong: number; cungVoi: string }>();
+      for (let i = 0; i < khoa.length; i++) {
+        for (let j = i + 1; j < khoa.length; j++) {
+          const diem = doGiongNhau(khoa[i].khuonChu, khoa[j].khuonChu);
+          if (diem < NGUONG_NGHI_TRUNG) continue;
+          const nhan = (a: number, b: number) => {
+            const cu = ra.get(dsCau[a].id);
+            if (!cu || cu.doGiong < diem) {
+              ra.set(dsCau[a].id, { doGiong: diem, cungVoi: String(dsCau[b].content || '').slice(0, 80) });
+            }
+          };
+          nhan(i, j); nhan(j, i);
+        }
+      }
+      setNghiTrung(ra);
+      alert(ra.size === 0
+        ? `Đã rà ${dsCau.length} câu đang chọn — không thấy câu nào nghi trùng.`
+        : `Đã rà ${dsCau.length} câu đang chọn — ${ra.size} câu nghi trùng, đã tô viền đỏ.\n\n`
+          + 'Thầy/Cô xem lại rồi bấm "Đổi câu khác" hoặc "Xoá khỏi ngân hàng".');
+    } finally {
+      setDangRaSoat(false);
+    }
+  };
+
+  /**
+   * Xoá HẲN một câu khỏi ngân hàng, ngay từ màn chọn câu.
+   *
+   * Soát đề mới là lúc nhìn ra câu trùng, mà trước đây phải nhớ rồi sang trang Ngân hàng
+   * câu hỏi tìm lại - dễ quên. Xoá xong thì bỏ câu khỏi danh sách và chọn bù câu khác cho
+   * đủ số, không để hụt câu.
+   */
+  const xoaKhoiNganHang = async (q: any, lineIdx: number) => {
+    const de = String(q.content || '').replace(/\s+/g, ' ').slice(0, 120);
+    if (!window.confirm(`Xoá HẲN câu này khỏi ngân hàng câu hỏi?\n\n"${de}..."\n\nXoá rồi không lấy lại được.`)) return;
+
+    setDangXoa(q.id);
+    try {
+      const { error } = await supabase.from('questions').delete().eq('id', q.id);
+      if (error) throw error;
+
+      setLines(prev => prev.map((l, i) => {
+        if (i !== lineIdx) return l;
+        const conLai = l.candidates.filter(c => c.id !== q.id);
+        const chon = new Set(l.selectedIds); chon.delete(q.id);
+        /* Chọn bù cho đủ số câu của dòng ma trận, ưu tiên câu ít dùng nhất. */
+        if (chon.size < l.item.count) {
+          const bu = conLai.filter(c => !chon.has(c.id))
+            .sort((a, b) => (a.usage_count || 0) - (b.usage_count || 0));
+          for (const c of bu) { if (chon.size >= l.item.count) break; chon.add(c.id); }
+        }
+        return { ...l, candidates: conLai, selectedIds: chon };
+      }));
+      setNghiTrung(prev => { const m = new Map(prev); m.delete(q.id); return m; });
+    } catch (e: any) {
+      alert('Không xoá được: ' + (e?.message || 'lỗi không rõ'));
+    } finally {
+      setDangXoa(null);
     }
   };
 
@@ -616,6 +702,22 @@ function SelectContent() {
               </span>
             )}
 
+          {/* Rà câu nghi trùng TRƯỚC khi chốt đề. Bộ so đã có sẵn trong app (dùng lúc bóc
+              câu mới vào kho), soi bằng mắt qua mấy chục câu thì không ra. */}
+          {step === 'select' && (
+            <button
+              onClick={raSoatTrung}
+              disabled={dangRaSoat || totalSelected < 2}
+              title="Rà các câu đang chọn xem có cặp nào na ná nhau"
+              className="bg-white border border-rose-300 text-rose-700 hover:bg-rose-50 disabled:opacity-50
+                         px-3 py-2 rounded-lg font-black text-[13px] flex items-center gap-1.5"
+            >
+              {dangRaSoat
+                ? <Loader2 className="w-4 h-4 animate-spin" />
+                : <ShieldCheck className="w-4 h-4" />} Rà câu trùng
+            </button>
+          )}
+
           {step === 'select' ? (
             <button
               onClick={() => setStep('final')}
@@ -767,7 +869,21 @@ function SelectContent() {
                     const soThuTu = soThuTuTrongDe.get(q.id);
                     const { statements, layout } = questionStatements(q);
                     return (
-                      <div key={q.id} className={`rounded-xl border-2 transition-colors ${isChecked ? 'border-indigo-300 bg-indigo-50/30' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
+                      <div key={q.id} className={`rounded-xl border-2 transition-colors ${
+                        nghiTrung.has(q.id)
+                          ? 'border-rose-400 bg-rose-50/50'
+                          : isChecked ? 'border-indigo-300 bg-indigo-50/30' : 'border-gray-200 bg-white hover:border-gray-300'}`}>
+                        {/* Câu bị bộ rà chấm là na ná câu khác trong cùng đề - nói rõ giống
+                            câu nào để Thầy cô tự quyết giữ hay bỏ. */}
+                        {nghiTrung.has(q.id) && (
+                          <div className="flex items-start gap-2 px-3 pt-2.5 text-[11.5px] font-bold text-rose-700">
+                            <Copy className="w-3.5 h-3.5 shrink-0 mt-[1px]" />
+                            <span>
+                              Nghi trùng {Math.round((nghiTrung.get(q.id)!.doGiong) * 100)}% với:{' '}
+                              <i className="font-medium">“{nghiTrung.get(q.id)!.cungVoi}…”</i>
+                            </span>
+                          </div>
+                        )}
                         <div className="p-3 flex items-start gap-3">
                           <div className="flex-1 min-w-0">
                             {/* Số của câu trong đề hoàn chỉnh, để từ đề quay lại đây tìm đúng câu cần đổi */}
@@ -812,6 +928,18 @@ function SelectContent() {
                               className="flex items-center gap-1 text-xs font-bold text-indigo-600 hover:bg-indigo-50 px-2 py-1 rounded-lg border border-indigo-200"
                             >
                               <Pencil className="w-3.5 h-3.5" /> Sửa
+                            </button>
+                            {/* Soát đề mới là lúc nhìn ra câu trùng - xoá được ngay tại đây,
+                                khỏi phải nhớ rồi sang trang Ngân hàng tìm lại. */}
+                            <button
+                              onClick={() => xoaKhoiNganHang(q, lineIdx)}
+                              disabled={dangXoa === q.id}
+                              title="Xoá hẳn câu này khỏi ngân hàng câu hỏi"
+                              className="flex items-center gap-1 text-xs font-bold text-rose-600 hover:bg-rose-50 disabled:opacity-50 px-2 py-1 rounded-lg border border-rose-200 whitespace-nowrap"
+                            >
+                              {dangXoa === q.id
+                                ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                                : <Trash2 className="w-3.5 h-3.5" />} Xoá khỏi kho
                             </button>
                           </div>
                         </div>

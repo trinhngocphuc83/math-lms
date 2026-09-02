@@ -229,7 +229,7 @@ export const presentationMarkdownComponents: any = {
             <h1
                 style={{ ...sanitizeStyle(style), textShadow: '0 3px 14px rgba(15,23,42,0.35)' }}
                 className="relative text-[70px] font-black text-white tracking-tight leading-[1.14] m-0
-                           px-12 py-7 break-words"
+                           px-12 py-7 break-words text-center"
                 {...props}
             >
                 {children}
@@ -242,7 +242,7 @@ export const presentationMarkdownComponents: any = {
         <div className="not-prose mb-7 mt-2">
             <div
                 style={sanitizeStyle(style)}
-                className="inline-block max-w-full text-[58px] font-black tracking-tight leading-[1.2] text-indigo-900
+                className="inline-block max-w-full text-[58px] font-black tracking-tight leading-[1.2] text-red-700
                            bg-gradient-to-r from-indigo-50 to-transparent border-l-[10px] border-indigo-600
                            rounded-r-2xl pl-7 pr-9 py-3 break-words"
                 {...props}
@@ -271,24 +271,27 @@ export const presentationMarkdownComponents: any = {
         </h3>
     ),
 
+    /* Mục con a) b) c) - BỎ dấu ❖ theo yêu cầu, giữ nguyên màu và lề. */
     h4: ({ node, style, children, ...props }: any) => (
         <h4
             style={sanitizeStyle(style)}
-            className="not-prose flex items-start gap-3 ml-10 text-[40px] font-bold text-teal-800 tracking-tight leading-[1.35] mb-4 mt-5"
-            {...props}
-        >
-            <span className="text-teal-500 mt-[0.15em] text-[30px] leading-none">❖</span>
-            <span className="flex-1 min-w-0">{children}</span>
-        </h4>
-    ),
-
-    h5: ({ node, style, children, ...props }: any) => (
-        <h5
-            style={sanitizeStyle(style)}
-            className="not-prose text-[36px] font-bold text-slate-700 italic leading-[1.35] mb-3 mt-4 ml-20"
+            className="not-prose ml-10 text-[40px] font-bold text-teal-800 tracking-tight leading-[1.35] mb-4 mt-5"
             {...props}
         >
             {children}
+        </h4>
+    ),
+
+    /* ##### của bài cũ: hiện như Ý lớn (chữ thường, gạch "–") cho bài cũ và bài mới
+       nhìn cùng một kiểu. */
+    h5: ({ node, style, children, ...props }: any) => (
+        <h5
+            style={sanitizeStyle(style)}
+            className="not-prose flex items-start gap-3 text-[40px] font-normal text-slate-800 leading-[1.55] mb-2 mt-2 ml-14"
+            {...props}
+        >
+            <span className="shrink-0 font-bold text-slate-500">–</span>
+            <span className="flex-1 min-w-0">{children}</span>
         </h5>
     ),
 
@@ -298,21 +301,25 @@ export const presentationMarkdownComponents: any = {
         </p>
     ),
 
+    /* Ba bậc ý dùng chung lớp .ds-y (globals.css) - đo bằng em nên tự co theo cỡ chữ
+       42px của khung chiếu, không phải vẽ riêng một kiểu như trước. */
     ul: ({ node, style, children, ...props }: any) => (
-        <ul style={sanitizeStyle(style)} className="not-prose list-none pl-0 mb-4 space-y-1" {...props}>{children}</ul>
+        <ul style={sanitizeStyle(style)} className="ds-y not-prose mb-4 space-y-1" {...props}>{children}</ul>
     ),
     ol: ({ node, style, children, ...props }: any) => (
         <ol style={sanitizeStyle(style)} className="not-prose list-none pl-0 mb-4 space-y-1 [counter-reset:item]" {...props}>{children}</ol>
     ),
 
+    /* Bỏ lề dưới của <p> nằm trong ý: Markdown gói mỗi ý thành một <p>, mà <p> đang có
+       mb-4 nên mỗi gạch đầu dòng đội thêm một khoảng trống - nhìn rời rạc, đúng chỗ Thầy
+       cô kêu giãn dòng nhiều quá. */
     li: ({ node, style, children, ...props }: any) => (
         <li
             style={sanitizeStyle(style)}
-            className="not-prose flex items-start gap-4 text-[42px] leading-[1.55] text-slate-800 mb-2"
+            className="not-prose text-[42px] leading-[1.5] text-slate-800 mb-1.5 [&>p]:mb-0 [&>p]:text-[42px]"
             {...props}
         >
-            <span className="mt-[0.62em] w-[13px] h-[13px] rounded-full bg-indigo-400 shrink-0" />
-            <div className="flex-1 min-w-0">{children}</div>
+            {children}
         </li>
     ),
 
@@ -378,7 +385,7 @@ export const presentationMarkdownComponents: any = {
                         : <AlertTriangle className="w-[34px] h-[34px]" />}
                     <span>{callout.label}</span>
                 </div>
-                <div className="px-8 py-6 text-[42px] leading-[1.55] text-slate-800 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+                <div className="hop-giai px-8 py-5 text-[42px] leading-[1.5] text-slate-800">
                     {stripTriggerPrefix(dropLabelHeading(children))}
                 </div>
             </div>
