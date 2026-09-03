@@ -18,6 +18,8 @@ import {
   Save, AlertTriangle, Send, Sparkles, Trash2, Copy, ShieldCheck
 } from "lucide-react";
 import { taoKhoaSoSanh, doGiongNhau, NGUONG_NGHI_TRUNG } from "@/utils/questionFingerprint";
+import KiemThuDeModal from "@/components/admin/KiemThuDeModal";
+import { gomTheoLoai } from "@/utils/deThi";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
   chiaPhanDeThi, sapCauTheoPhan, soCauTheoPhan, diemCuaPhan, tenTepDe, soDiemVN,
@@ -81,6 +83,9 @@ function SelectContent() {
   const [nghiTrung, setNghiTrung] = useState<Map<string, { doGiong: number; cungVoi: string }>>(new Map());
   const [dangRaSoat, setDangRaSoat] = useState(false);
   const [dangXoa, setDangXoa] = useState<string | null>(null);
+  /* Khung kiểm thử đề - soi cấu trúc, công thức, lời giải, thẩm mỹ; và soi cả nội
+     dung bằng AI nếu Thầy cô bấm thêm. */
+  const [moKiemThu, setMoKiemThu] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState("");
   const [step, setStep] = useState<'select' | 'final'>('select');
@@ -723,6 +728,19 @@ function SelectContent() {
             </button>
           )}
 
+          {/* Kiểm thử đề: soi cấu trúc - công thức - lời giải - thẩm mỹ ngay tức thì, và
+              soi được cả nội dung bằng AI. Đặt cạnh nút rà trùng vì cùng một việc: soát
+              đề trước khi in. */}
+          <button
+            onClick={() => setMoKiemThu(true)}
+            disabled={totalSelected === 0}
+            title="Rà toàn bộ đề theo Sổ tay Kiểm thử: cấu trúc, công thức, lời giải, định dạng"
+            className="bg-white border border-teal-300 text-teal-700 hover:bg-teal-50 disabled:opacity-50
+                       px-3 py-2 rounded-lg font-black text-[13px] flex items-center gap-1.5"
+          >
+            <ShieldCheck className="w-4 h-4" /> Kiểm thử đề
+          </button>
+
           {step === 'select' ? (
             <button
               onClick={() => setStep('final')}
@@ -1174,6 +1192,22 @@ function SelectContent() {
           </div>
         );
       })()}
+
+      <KiemThuDeModal
+        mo={moKiemThu}
+        onDong={() => setMoKiemThu(false)}
+        cacPhan={cacPhan}
+        chiTieu={Object.fromEntries(Object.entries(gomTheoLoai(dongMaTran))
+          .filter(([, v]) => v.soCau > 0)
+          .map(([k, v]) => [k, { soCau: v.soCau, diemMoiCau: v.soCau ? v.diem / v.soCau : 0 }])) as any}
+        diemPhan={diemPhan}
+        tenKhuon={khuonDe}
+        dongMaTran={lines.map(l => ({
+          ten: l.item.topic || l.item.math_form || 'Dạng',
+          can: l.item.count || 0,
+          co: l.selectedIds.size,
+        }))}
+      />
 
       <QuestionEditorModal
         isOpen={!!editingQuestion}
