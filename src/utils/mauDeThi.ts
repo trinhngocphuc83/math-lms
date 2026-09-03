@@ -38,8 +38,17 @@ import {
  * in ra êm mắt khi tô cả mảng tiêu đề bảng, và hợp tông slate/indigo của app.
  */
 export const NAVY = "1B365D";
-/** Nền hộp lời giải. */
-export const NEN_HOP = "F5F7FA";
+/**
+ * Nền hộp lời giải.
+ *
+ * Lấy đúng con số trong tệp .docx Thầy cô đang dùng (đề chuyên đề Vectơ 12) chứ không lấy
+ * F5F7FA như bản mô tả trong prompt - bản mô tả và tệp thật lệch nhau một chút, tệp thật
+ * mới là thứ Thầy cô nhìn hằng ngày.
+ */
+export const NEN_HOP = "F2F4F8";
+/** Đỏ của dòng "Kết luận: Chọn C." - cũng lấy từ tệp thật. */
+export const DO_KET_LUAN = "B42828";
+export const TRANG = "FFFFFF";
 /** Nền hàng tiêu đề bảng. */
 export const NEN_TIEU_DE = "F2F2F2";
 /** Xám nhạt cho dòng kẻ chấm và chữ mờ trong ô tô - đủ thấy mà không cắt nét chữ viết. */
@@ -124,7 +133,8 @@ export function hopKyThuat(noiDung: any[]): Table {
       children: [new TableCell({
         borders: VIEN_HOP_GIAI,
         shading: { type: ShadingType.CLEAR, fill: NEN_HOP, color: "auto" },
-        margins: { top: 120, bottom: 120, left: 180, right: 120 },
+        /* Lề trong ô lấy đúng tệp .docx thật của Thầy cô: 140/140/200/180. */
+        margins: { top: 140, bottom: 140, left: 200, right: 180 },
         children: noiDung.length ? noiDung : [new Paragraph({ text: "" })],
       })],
     })],
@@ -150,13 +160,125 @@ export function nhanCau(chu: string): TextRun {
 }
 
 /**
- * Mã câu in nhỏ, mờ, ngay sau nhãn: "I.7".
+ * Dòng chốt đáp án cuối hộp lời giải: "➜ Kết luận: Chọn C."
  *
- * Vừa để Thầy cô dò nhanh giữa đề - phiếu - barem, vừa là chỗ bám cho máy chấm ảnh sau
- * này. Chữ nhỏ và xám nên không làm rối mặt đề.
+ * Học từ tệp .docx Thầy cô đang dùng - nhìn phát thấy ngay đáp án, khỏi dò lại cả hộp.
+ * Chỉ có ở bản dành cho giáo viên.
  */
-export function maCauNho(ma: string): TextRun {
-  return new TextRun({ text: ` [${ma}] `, size: CO_GHI_CHU, color: XAM_MO });
+export function dongKetLuan(dapAn: string): Paragraph {
+  return new Paragraph({
+    spacing: { before: 80, after: 40 },
+    children: [
+      new TextRun({ text: "➜ Kết luận: ", bold: true, color: DO_KET_LUAN }),
+      new TextRun({ text: dapAn, bold: true }),
+    ],
+  });
+}
+
+/**
+ * Bảng thông tin thí sinh và ô điểm ở đầu đề - dựng theo đúng tệp .docx của Thầy cô.
+ *
+ * Số cột điểm chạy theo SỐ PHẦN THẬT của đề, nên khuôn nào cũng đúng: đề 3-2-2-3 ra bốn
+ * ô điểm phần, đề toàn trắc nghiệm ra một ô, đề tự luận ra một ô.
+ *
+ * @param cotDiem Nhãn từng ô điểm, ví dụ ["Điểm Phần I|(3,0 điểm)", "TỔNG ĐIỂM|(10,0 điểm)"].
+ *                Dấu "|" là chỗ xuống dòng trong ô.
+ */
+export function bangDauDeThiSinh(cotDiem: string[]): Table {
+  const soCot = Math.max(cotDiem.length, 1);
+  const vienNavy = vien(NAVY, 4);
+  const khungBang = {
+    top: vienNavy, bottom: vienNavy, left: vienNavy, right: vienNavy,
+    insideHorizontal: vienNavy, insideVertical: vienNavy,
+  };
+  const leO = { top: 60, bottom: 60, left: 80, right: 80 };
+
+  const dongThongTin = (chu: string) => new TableRow({
+    children: [new TableCell({
+      columnSpan: soCot,
+      margins: leO,
+      children: [new Paragraph({ children: [new TextRun({ text: chu, bold: true })] })],
+    })],
+  });
+
+  const oTieuDe = (nhan: string) => new TableCell({
+    shading: { type: ShadingType.CLEAR, fill: NAVY, color: "auto" },
+    margins: leO,
+    children: [new Paragraph({
+      alignment: AlignmentType.CENTER,
+      children: nhan.split('|').flatMap((d, i) => [
+        ...(i ? [new TextRun({ break: 1 })] : []),
+        new TextRun({ text: d, bold: true, color: TRANG, size: 19 }),
+      ]),
+    })],
+  });
+
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: khungBang,
+    rows: [
+      dongThongTin("Họ và tên thí sinh: ................................................  Số báo danh: ......................"),
+      dongThongTin("Lớp: ....................  Phòng thi số: ..............  Chữ ký cán bộ coi thi: ......................"),
+      new TableRow({ children: cotDiem.map(oTieuDe) }),
+      /* Hàng để trống cho giáo viên ghi điểm - chừa cao gấp đôi dòng thường. */
+      new TableRow({
+        height: { value: 560, rule: 'atLeast' as any },
+        children: cotDiem.map(() => new TableCell({ margins: leO, children: [new Paragraph({ text: "" })] })),
+      }),
+    ],
+  });
+}
+
+/**
+ * Bốn ý a) b) c) d) của câu Đúng/Sai, dựng thành BẢNG "Lệnh khẳng định | Đúng | Sai".
+ *
+ * Học từ tệp .docx Thầy cô đang dùng. Hơn hẳn cách in bốn đoạn văn rời như trước ở hai
+ * điểm: học sinh có chỗ đánh dấu ngay trên đề, và - quan trọng cho việc chấm ảnh sau này
+ * - hai ô Đúng/Sai là ô bảng có viền, máy dò ô đen trong lưới dễ hơn dò dấu tích viết tay
+ * nằm lửng lơ giữa dòng.
+ *
+ * @param y Bốn (hoặc ít hơn) mệnh đề, đã dựng sẵn thành các đoạn văn.
+ */
+export function bangDungSai(y: { nhan: string; noiDung: any[] }[]): Table {
+  const vienO = vien(NAVY, 4);
+  const khung = {
+    top: vienO, bottom: vienO, left: vienO, right: vienO,
+    insideHorizontal: vienO, insideVertical: vienO,
+  };
+  const leO = { top: 60, bottom: 60, left: 100, right: 80 };
+
+  const oTieuDe = (chu: string, canGiua = false) => new TableCell({
+    shading: { type: ShadingType.CLEAR, fill: NEN_TIEU_DE, color: "auto" },
+    margins: leO,
+    children: [new Paragraph({
+      alignment: canGiua ? AlignmentType.CENTER : AlignmentType.LEFT,
+      children: [new TextRun({ text: chu, bold: true, color: NAVY })],
+    })],
+  });
+
+  return new Table({
+    width: { size: 100, type: WidthType.PERCENTAGE },
+    borders: khung,
+    columnWidths: [Math.round(BE_NGANG_IN * 0.76), Math.round(BE_NGANG_IN * 0.12), Math.round(BE_NGANG_IN * 0.12)],
+    rows: [
+      new TableRow({
+        tableHeader: true,
+        children: [oTieuDe("Lệnh khẳng định"), oTieuDe("Đúng", true), oTieuDe("Sai", true)],
+      }),
+      ...y.map(m => new TableRow({
+        children: [
+          new TableCell({
+            margins: leO,
+            children: m.noiDung.length ? m.noiDung : [new Paragraph({ text: "" })],
+          }),
+          /* Hai ô trống để học sinh đánh dấu [X]. Nền TRẮNG tuyệt đối - đây là chỗ máy
+             sẽ soi độ đen khi chấm bằng ảnh chụp. */
+          new TableCell({ margins: leO, children: [new Paragraph({ text: "" })] }),
+          new TableCell({ margins: leO, children: [new Paragraph({ text: "" })] }),
+        ],
+      })),
+    ],
+  });
 }
 
 /* ===================== ẢNH TRONG WORD ===================== */

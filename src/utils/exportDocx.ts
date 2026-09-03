@@ -1,7 +1,7 @@
 import {
   Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun,
   Table, TableRow, TableCell, WidthType, BorderStyle, PageOrientation, VerticalAlign,
-  Tab, TabStopType, Header, Footer,
+  Tab, TabStopType, Header, Footer, PageNumber,
 } from "docx";
 import { saveAs } from "file-saver";
 
@@ -27,12 +27,13 @@ export const base64ToUint8Array = (base64: string) => {
 import { cleanLatexForWord } from "./latexToWord";
 import { cleanLatexControlChars } from "./latexFixer";
 import { latexToDocxElement, latexToDocxTable, laBangKeO } from "./latexToDocxMath";
-import { soDiemVN, type DauDe, chiaPhanDeThi, maCauTrongDe, type PhanDeThi } from "./deThi";
+import { soDiemVN, type DauDe, chiaPhanDeThi, type PhanDeThi } from "./deThi";
 import { bangDapAn, type MaDe } from "./tronMaDe";
 import {
-  NAVY, XAM_MO, CO_TIEU_DE_PHU, CO_TIEU_DE_CHINH, KIEU_MAC_DINH, TRANG_CHUAN,
-  BE_NGANG_IN, LE_TRANG, hopKyThuat, nhanTrongHop, nhanCau, maCauNho, daiNeo,
-  daiNeoDauTrang, anhQR, noiDungQR, anhWord,
+  NAVY, XAM_MO, CO_TIEU_DE_PHU, CO_TIEU_DE_CHINH, CO_GHI_CHU as CO_GHI_CHU_DAUDE,
+  KIEU_MAC_DINH, TRANG_CHUAN,
+  BE_NGANG_IN, LE_TRANG, hopKyThuat, nhanTrongHop, nhanCau, daiNeo,
+  daiNeoDauTrang, anhQR, noiDungQR, anhWord, bangDauDeThiSinh, bangDungSai, dongKetLuan,
 } from "./mauDeThi";
 
 // Đánh dấu tạm cho công thức $...$/$$...$$ để không lẫn với ảnh/HTML khi quét dòng,
@@ -76,7 +77,7 @@ const gopBangVeMotDong = (text: string): string => {
 
 const dungDongCoTheCoBang = async (
   line: string,
-  opts: { color?: string; bold?: boolean; icon?: TextRun } = {},
+  opts: { color?: string; bold?: boolean; italics?: boolean; icon?: TextRun } = {},
 ): Promise<any[]> => {
   const ra: any[] = [];
   let conLai = line;
@@ -86,7 +87,7 @@ const dungDongCoTheCoBang = async (
   // Dấu ➤ chỉ gắn vào đoạn văn ĐẦU TIÊN của dòng; nếu dòng mở đầu bằng bảng thì
   // gắn vào đoạn ngay sau bảng để không mất mốc đầu dòng.
   const themDoanVan = async (text: string) => {
-    const runs = await processTextLine(text, opts.color, opts.bold);
+    const runs = await processTextLine(text, opts.color, opts.bold, opts.italics);
     if (iconConLai) { runs.unshift(iconConLai); iconConLai = undefined; }
     ra.push(new Paragraph({ children: runs }));
   };
@@ -110,7 +111,7 @@ const dungDongCoTheCoBang = async (
   return ra;
 };
 
-const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false) => {
+const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false, defaultItalics: boolean = false) => {
   if (!textLine) return [new TextRun({ text: "" })];
   // Khôi phục lệnh LaTeX bị AI lưu nhầm thành ký tự điều khiển ("\"+TAB+"ext" thay vì
   // "\text"). Hàm này đã có sẵn và dùng ở nơi khác, nhưng đường xuất Word lại bỏ qua
@@ -139,7 +140,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
     if (mathStart !== -1 && (imgStart === -1 || mathStart < imgStart) && (mdStart === -1 || mathStart < mdStart)) {
       if (mathStart > 0) {
         const before = remaining.slice(0, mathStart).replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
-        if (before) elements.push(new TextRun({ text: before, color: defaultColor, bold: defaultBold }));
+        if (before) elements.push(new TextRun({ text: before, color: defaultColor, bold: defaultBold, italics: defaultItalics }));
       }
       const endIdx = remaining.indexOf(' ', mathStart + MATH_MARKER.length);
       const nStr = remaining.slice(mathStart + MATH_MARKER.length, endIdx);
@@ -171,7 +172,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
     if (startIndex === -1) {
       let plainText = remaining.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
       if (plainText) {
-         elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
+         elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold, italics: defaultItalics }));
       }
       break;
     }
@@ -180,7 +181,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
       const textBefore = remaining.substring(0, startIndex);
       let plainText = textBefore.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
       if (plainText) {
-         elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
+         elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold, italics: defaultItalics }));
       }
     }
     
@@ -192,7 +193,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
       if (imgEnd === -1) {
         let plainText = afterStart.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
         if (plainText) {
-           elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold }));
+           elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold, italics: defaultItalics }));
         }
         break;
       }
@@ -213,13 +214,13 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
     } else if (nextType === 'md') {
       const bracketEnd = afterStart.indexOf('](');
       if (bracketEnd === -1) {
-         elements.push(new TextRun({ text: "![", color: defaultColor, bold: defaultBold }));
+         elements.push(new TextRun({ text: "![", color: defaultColor, bold: defaultBold, italics: defaultItalics }));
          remaining = afterStart.substring(2);
          continue;
       }
       const parenEnd = afterStart.indexOf(')', bracketEnd);
       if (parenEnd === -1) {
-         elements.push(new TextRun({ text: "![", color: defaultColor, bold: defaultBold }));
+         elements.push(new TextRun({ text: "![", color: defaultColor, bold: defaultBold, italics: defaultItalics }));
          remaining = afterStart.substring(2);
          continue;
       }
@@ -323,6 +324,16 @@ const dungDauDe = (dauDe: DauDe, qr?: any): Table => new Table({
           children: [
             dongGiua((dauDe.tenLopHoc || "").toUpperCase(), true),
             dongGiua("ĐỀ CHÍNH THỨC", true),
+            /* "(Đề thi có 04 trang)" - học từ tệp .docx của Thầy cô. Số trang lấy bằng
+               trường đánh số của Word nên tự đúng, khỏi phải đếm tay. */
+            new Paragraph({
+              alignment: AlignmentType.CENTER,
+              children: [
+                new TextRun({ text: "(Đề thi có ", italics: true, size: CO_GHI_CHU_DAUDE }),
+                new TextRun({ children: [PageNumber.TOTAL_PAGES], italics: true, size: CO_GHI_CHU_DAUDE }),
+                new TextRun({ text: " trang)", italics: true, size: CO_GHI_CHU_DAUDE }),
+              ],
+            }),
           ],
         }),
         new TableCell({
@@ -545,7 +556,24 @@ export const exportQuestionsToWord = async (
           boDeId: khuonDe.boDeId, maDe: maHienTai.ma, loai: 'de', trang: 1,
         }), 74);
         childrenElements.push(dungDauDe({ ...khuonDe.dauDe, maDe: maHienTai.ma }, qrDauDe));
-        childrenElements.push(new Paragraph({ text: "", spacing: { after: 200 } }));
+        childrenElements.push(new Paragraph({ text: "", spacing: { after: 120 } }));
+
+        /* Bảng thông tin thí sinh và ô điểm - học từ tệp .docx Thầy cô đang dùng. Trước
+           đây đề in ra không có chỗ nào ghi tên, ghi điểm, phải kẻ tay.
+
+           Số ô điểm chạy theo SỐ PHẦN THẬT của đề nên khuôn nào cũng đúng. */
+        if (khuonDe.chiaPhan) {
+          const phanCuaMa = chiaPhanDeThi(maHienTai.cauHoi);
+          const cotDiem = phanCuaMa.map(ph => {
+            const d = khuonDe.diemPhan?.[ph.ma];
+            return `Điểm Phần ${ph.soLaMa}` + (typeof d === 'number' && d > 0 ? `|(${soDiem(d)} điểm)` : '');
+          });
+          const tong = phanCuaMa.reduce((t, ph) => t + (khuonDe.diemPhan?.[ph.ma] || 0), 0);
+          cotDiem.push(`TỔNG ĐIỂM|(${soDiem(tong || 10)} điểm)`);
+          cotDiem.push("Lời phê của giáo viên");
+          childrenElements.push(bangDauDeThiSinh(cotDiem));
+          childrenElements.push(new Paragraph({ text: "", spacing: { after: 160 } }));
+        }
       } else {
         childrenElements.push(new Paragraph({
           text: "NGÂN HÀNG CÂU HỎI",
@@ -585,9 +613,10 @@ export const exportQuestionsToWord = async (
       }
       soTrongPhan++;
       const soCauIn = phanDangIn ? soTrongPhan : i + 1;
-      /* Mã "I.7" - chỗ duy nhất phân biệt được bốn câu cùng mang số 1 trong một đề, và
-         là chỗ bám cho việc chấm bài bằng ảnh chụp sau này. */
-      const maCau = phanDangIn ? maCauTrongDe(phanDangIn, soTrongPhan) : "";
+      /* KHÔNG in mã câu "I.7" lên đề: Thầy cô phải ngồi xoá tay từng chỗ trước khi phát
+         cho học sinh. Mã vẫn còn trong deThi.maCauTrongDe, dành cho phiếu trả lời và
+         hướng dẫn chấm - hai chỗ đó vốn phải ghi số câu, ghi kèm mã là tự nhiên. Bản
+         thân tờ đề cũng không cần: mã QR ở đầu đề đã nhận dạng đủ. */
 
       let imageData: {buffer: Uint8Array, width: number, height: number} | null = null;
       
@@ -606,7 +635,6 @@ export const exportQuestionsToWord = async (
         new Paragraph({
           children: [
             nhanCau(`Câu ${soCauIn}. `),
-            ...(maCau ? [maCauNho(maCau)] : []),
             ...(await processTextLine(titleLineText))
           ],
           spacing: { before: 200 }
@@ -663,10 +691,28 @@ export const exportQuestionsToWord = async (
       if (qType === 'TN' || qType === 'NLC') {
         childrenElements.push(...await dungPhuongAnNLC(q, processTextLine));
       } else if (qType === 'DS') {
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `a) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_a || "")))] }));
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `b) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_b || "")))] }));
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `c) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_c || "")))] }));
-        childrenElements.push(new Paragraph({ children: [new TextRun({ text: `d) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_d || "")))], spacing: { after: 200 } }));
+        /* Bốn ý dựng thành BẢNG có hai cột Đúng/Sai để học sinh đánh dấu - học từ tệp
+           .docx của Thầy cô. Bản cũ in bốn đoạn văn rời, học sinh không có chỗ tích. */
+        const nhanY = ['a', 'b', 'c', 'd'] as const;
+        const noiDungY = [q.option_a, q.option_b, q.option_c, q.option_d];
+        const dsY: { nhan: string; noiDung: any[] }[] = [];
+        for (let k = 0; k < 4; k++) {
+          const chu = String(noiDungY[k] ?? '');
+          if (!chu.trim()) continue;
+          dsY.push({
+            nhan: nhanY[k],
+            noiDung: [new Paragraph({
+              children: [
+                new TextRun({ text: `${nhanY[k]}) `, bold: true }),
+                ...(await processTextLine(cleanHtmlNewlinesInTags(chu))),
+              ],
+            })],
+          });
+        }
+        if (dsY.length) {
+          childrenElements.push(bangDungSai(dsY));
+          childrenElements.push(new Paragraph({ text: "", spacing: { after: 160 } }));
+        }
       } else if (qType === 'TLN') {
         childrenElements.push(new Paragraph({
           children: [new TextRun({ text: "Kết quả: .......................................", bold: true, color: NAVY })],
@@ -722,31 +768,41 @@ export const exportQuestionsToWord = async (
         const trongHop: any[] = [];
 
         if (methodText) {
-          trongHop.push(nhanTrongHop("💡 Gợi mở của giáo viên", true));
+          trongHop.push(nhanTrongHop("💡 Gợi mở của giáo viên:"));
           methodText = methodText.replace(/^\*\*/, "");
           const mLines = gopBangVeMotDong(cleanHtmlNewlinesInTags(methodText)).split('\n');
           for (const line of mLines) {
             const trimmedLine = line.trim();
             if (trimmedLine) {
+              /* Gợi mở in NGHIÊNG, dấu chấm tròn - đúng tệp .docx của Thầy cô. */
               trongHop.push(...await dungDongCoTheCoBang(cleanLine(trimmedLine), {
-                icon: new TextRun({ text: "– ", color: NAVY, bold: true }),
+                italics: true,
+                icon: new TextRun({ text: "• ", bold: true }),
               }));
             }
           }
         }
 
         if (explanationText) {
-          trongHop.push(nhanTrongHop("📝 Lời giải chi tiết"));
+          trongHop.push(nhanTrongHop("📝 Lời giải chi tiết:"));
           explanationText = explanationText.replace(/^\*\*/, "");
           const eLines = gopBangVeMotDong(cleanHtmlNewlinesInTags(explanationText)).split('\n');
           for (const line of eLines) {
             const trimmedLine = line.trim();
             if (trimmedLine) {
               trongHop.push(...await dungDongCoTheCoBang(cleanLine(trimmedLine), {
-                icon: new TextRun({ text: "– ", color: NAVY, bold: true }),
+                icon: new TextRun({ text: "- " }),
               }));
             }
           }
+        }
+
+        /* Dòng chốt "➜ Kết luận: Chọn C." - nhìn phát thấy đáp án, khỏi dò lại cả hộp. */
+        const dapAn = String(q.correct_answer ?? '').trim();
+        if (dapAn) {
+          trongHop.push(dongKetLuan(
+            (qType === 'TN' || qType === 'NLC') ? `Chọn ${dapAn}.` : dapAn,
+          ));
         }
 
         if (trongHop.length) {

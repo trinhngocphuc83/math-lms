@@ -1013,7 +1013,9 @@ function SelectContent() {
                   <div key={q.id} className="mb-5">
                     <div className="flex items-baseline gap-2 mb-1">
                       <span className="font-bold">Câu {soThuTuTrongDe.get(q.id)}.</span>
-                      <span className="text-[10px] text-gray-400 font-mono">[{soCau.get(q.id)?.ma}]</span>
+                      {/* Mã câu chỉ để Thầy cô dò trên màn hình - IN RA THÌ ẨN, cả khi in
+                          thẳng từ trình duyệt lẫn khi xuất Word. */}
+                      <span className="print:hidden text-[10px] text-gray-400 font-mono">[{soCau.get(q.id)?.ma}]</span>
                       {/* Nhãn và nút dưới đây: KHÔNG in ra giấy */}
                       <span className="print:hidden inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
                         Đã xuất hiện: {q.usage_count || 0} lần
