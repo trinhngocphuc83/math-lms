@@ -12,6 +12,23 @@
 
 export type NguonDiem = 'tuong_tac' | 'kiem_tra' | 'luyen_tap' | 'thi_online' | 'tien_bo';
 
+/**
+ * Điểm thưởng chỉ tính từ tháng này trở đi.
+ *
+ * Thầy cô chốt: hệ điểm thưởng bắt đầu áp dụng từ tháng 09/2026. Bài làm của những tháng
+ * trước đó KHÔNG quy ra điểm - lúc ấy học sinh chưa biết có luật này nên cộng lùi lại là
+ * không công bằng, mà bảng xếp hạng cũng lệch hẳn.
+ *
+ * Máy quét tự bỏ qua mọi tháng cũ hơn mốc này. Thầy cô vẫn xem lại được các tháng cũ và
+ * vẫn cộng/trừ tay bình thường nếu muốn.
+ */
+export const THANG_BAT_DAU_TINH_DIEM = '2026-09';
+
+/** Tháng 'YYYY-MM' này đã tới mốc bắt đầu tính điểm chưa. So chuỗi là đủ vì dạng cố định. */
+export function thangDuocTinhDiem(thang: string): boolean {
+  return String(thang || '') >= THANG_BAT_DAU_TINH_DIEM;
+}
+
 /** Bài dưới mốc thì được 0, KHÔNG bị trừ - trừ điểm vì bài kém dễ làm học sinh nản. */
 export function quyDoiDiemBai(diemBai: number): number {
   const d = Number(diemBai);

@@ -4,7 +4,8 @@ import { createClient } from '@supabase/supabase-js';
 import { assertStaff } from '@/utils/auth/guard';
 import { thangNay, thangTruoc, LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from '@/utils/goiTenVaDiem';
 import {
-  gopLanLamLai, tinhCacLanCong, khoangThangVN, ngayVN, type BaiDaLam, type NguonDiem,
+  gopLanLamLai, tinhCacLanCong, khoangThangVN, ngayVN, thangDuocTinhDiem,
+  THANG_BAT_DAU_TINH_DIEM, type BaiDaLam, type NguonDiem,
 } from '@/utils/diemThuong';
 
 /**
@@ -331,6 +332,9 @@ export async function quetDiemTuDong(
   const nguoi = await assertStaff();
   const t = thang || thangNay();
   if (await daChotThang(classId, t)) return { themMoi: 0, themDiem: 0, daChot: true };
+  /* Hệ điểm thưởng chỉ áp dụng từ THANG_BAT_DAU_TINH_DIEM trở đi - bài làm của những
+     tháng trước đó không quy ra điểm. */
+  if (!thangDuocTinhDiem(t)) return { themMoi: 0, themDiem: 0, daChot: false };
 
   const caLop = await layDsHocSinh(classId);
   if (caLop.length === 0) return { themMoi: 0, themDiem: 0, daChot: false };
@@ -498,6 +502,8 @@ export async function quetBuNhieuThang(
   let themMoi = 0, themDiem = 0;
   const boQua: string[] = [];
   for (let i = 0; i < Math.max(1, soThang); i++) {
+    /* Dừng ở mốc bắt đầu áp dụng - không lùi về trước tháng 09/2026. */
+    if (!thangDuocTinhDiem(t)) break;
     const q = await quetDiemTuDong(classId, t);
     if (q.daChot) boQua.push(t);
     themMoi += q.themMoi;

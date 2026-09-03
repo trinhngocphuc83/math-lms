@@ -11,6 +11,7 @@ import {
   type BangVinhDanh,
 } from "@/app/actions/goiTenVaDiem";
 import { LOI_CHUA_TAO_BANG, thangNay, thangTruoc } from "@/utils/goiTenVaDiem";
+import { THANG_BAT_DAU_TINH_DIEM } from "@/utils/diemThuong";
 import PhieuPhuHuynhModal from "./PhieuPhuHuynhModal";
 import LichSuDiemModal from "./LichSuDiemModal";
 
@@ -37,6 +38,9 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
   const [moPhieu, setMoPhieu] = useState(false);
   /* Bấm vào tên một em để xem em ấy được cộng những gì. */
   const [emDangXem, setEmDangXem] = useState<{ id: string; ten: string } | null>(null);
+
+  /* Mốc bắt đầu áp dụng hệ điểm thưởng, viết theo kiểu 09/2026 cho dễ đọc. */
+  const MOC_BAT_DAU = THANG_BAT_DAU_TINH_DIEM.split('-').reverse().join("/");
 
   const cacThang = React.useMemo(() => {
     const ra = [thangNay()];
@@ -87,14 +91,16 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
   const nhac = (chu: string) => { setBao(chu); setTimeout(() => setBao(''), 6000); };
 
   /**
-   * Quét bù 12 tháng gần đây.
+   * Quét bù các tháng gần đây, dừng ở mốc bắt đầu áp dụng hệ điểm thưởng.
    *
    * Nút "Cập nhật điểm từ bài làm" chỉ quét ĐÚNG tháng đang mở. Tháng nào chưa từng ai
-   * bấm thì bài làm tháng ấy không bao giờ thành điểm - đo trên kho Toán 12 có 9 lượt bài
-   * từ 7 điểm trở lên của tháng 6, 7, 8 nằm im như vậy.
+   * bấm thì bài làm tháng ấy không bao giờ thành điểm. Nút này quét lại cả loạt, nhưng
+   * dừng ở THANG_BAT_DAU_TINH_DIEM - trước mốc ấy học sinh chưa biết có luật điểm
+   * thưởng nên không cộng lùi.
    */
   const quetBu = async () => {
-    if (!confirm('Quét lại 12 tháng gần đây và cộng bù những bài chưa được tính?\n\nMỗi bài vẫn chỉ cộng một lần. Tháng đã chốt được giữ nguyên.')) return;
+    if (!confirm(`Quét lại các tháng gần đây và cộng bù những bài chưa được tính?\n\n`
+      + `Chỉ tính từ tháng ${MOC_BAT_DAU} trở đi. Mỗi bài vẫn chỉ cộng một lần, tháng đã chốt giữ nguyên.`)) return;
     setDangLam('bu');
     try {
       const q = await quetBuNhieuThang(classId, 12);
@@ -202,7 +208,7 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
         </button>
 
         <button onClick={quetBu} disabled={!!dangLam}
-                title="Quét lại 12 tháng gần đây, cộng bù những bài chưa được tính điểm"
+                title={`Quét lại các tháng gần đây (từ ${MOC_BAT_DAU} trở đi), cộng bù những bài chưa được tính điểm`}
                 className="bg-white border border-amber-300 text-amber-700 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-amber-50 disabled:opacity-50">
           {nut('bu') ? <Loader2 size={17} className="animate-spin" /> : <History size={17} />}
           Quét bù tháng trước
