@@ -64,11 +64,19 @@ export interface LanCong {
 /**
  * Từ danh sách bài một em đã làm trong tháng, tính ra các lần cần cộng.
  *
- * `daCong` là những khoá đã ghi nhận trước đó - bỏ qua để MỖI BÀI CHỈ CỘNG MỘT LẦN dù
- * quét lại bao nhiêu lượt.
+ * `daCongCoBan` là SỐ ĐIỂM đã cộng cho từng bài ở lượt quét trước (khoá bài -> điểm), chứ
+ * không phải chỉ đánh dấu "đã cộng rồi". Nhờ vậy em làm lại tốt hơn thì được cộng BÙ phần
+ * chênh: trước đây bài 7 điểm cộng 1, sau em làm lại được 10 vẫn chỉ có 1 - trái hẳn với
+ * việc gộp lần làm lại lấy điểm cao nhất mà chính chỗ này đang làm.
+ *
+ * `daTienBo` là những bài đã được thưởng tiến bộ rồi - đếm riêng vì dòng tiến bộ mang
+ * cùng khoá bài với dòng điểm gốc.
  */
 export function tinhCacLanCong(
-  dsBai: BaiDaLam[], nguon: NguonDiem, daCong: Set<string>,
+  dsBai: BaiDaLam[],
+  nguon: NguonDiem,
+  daCongCoBan: Map<string, number>,
+  daTienBo: Set<string> = new Set(),
 ): LanCong[] {
   const ra: LanCong[] = [];
 
@@ -78,21 +86,22 @@ export function tinhCacLanCong(
     .sort((a, b) => a.luc.localeCompare(b.luc));
 
   bai.forEach((b, i) => {
-    if (daCong.has(b.khoa)) return;
-
-    const d = quyDoiDiemBai(b.diem);
-    if (d > 0) {
+    const canCo = quyDoiDiemBai(b.diem);
+    const daCo = Number(daCongCoBan.get(b.khoa) || 0);
+    if (canCo > daCo) {
       ra.push({
         nguon,
-        diem: d,
-        ly_do: `${b.ten} — ${b.diem} điểm`,
+        diem: canCo - daCo,
+        ly_do: daCo > 0
+          ? `Làm lại tốt hơn: ${b.ten} — ${b.diem} điểm`
+          : `${b.ten} — ${b.diem} điểm`,
         khoa: b.khoa,
       });
     }
 
     /* Thưởng tiến bộ: so với bài LIỀN TRƯỚC trong tháng, kể cả bài đó dưới mốc. */
     const truoc = bai[i - 1];
-    if (truoc && duocThuongTienBo(truoc.diem, b.diem)) {
+    if (!daTienBo.has(b.khoa) && truoc && duocThuongTienBo(truoc.diem, b.diem)) {
       ra.push({
         nguon: 'tien_bo',
         diem: 1,
@@ -103,6 +112,30 @@ export function tinhCacLanCong(
   });
 
   return ra;
+}
+
+/**
+ * Một tháng 'YYYY-MM' bắt đầu và kết thúc lúc nào, TÍNH THEO GIỜ VIỆT NAM.
+ *
+ * Trước đây tính theo giờ UTC, lệch 7 tiếng: em làm bài lúc 22 giờ ngày cuối tháng thì
+ * theo UTC đã sang tháng sau, còn em làm lúc 6 giờ sáng ngày mùng 1 thì vẫn bị xếp vào
+ * tháng trước. Mà máy chỉ quét tháng đang xem, nên mấy bài rơi lệch tháng như thế dễ
+ * không bao giờ được cộng.
+ */
+export const MUI_GIO_VN = 7;
+
+export function khoangThangVN(thang: string): { tu: string; den: string } {
+  const [n, t] = thang.split('-').map(Number);
+  /* 00:00 ngày 1 giờ VN = 17:00 ngày cuối tháng trước theo UTC. */
+  const tu = new Date(Date.UTC(n, t - 1, 1, -MUI_GIO_VN));
+  const den = new Date(Date.UTC(t === 12 ? n + 1 : n, t === 12 ? 0 : t, 1, -MUI_GIO_VN));
+  return { tu: tu.toISOString(), den: den.toISOString() };
+}
+
+/** Ngày (theo giờ VN) của một mốc thời gian ISO - dùng cho cột kiểu `date`. */
+export function ngayVN(luc: string | Date): string {
+  const d = new Date(luc);
+  return new Date(d.getTime() + MUI_GIO_VN * 3600_000).toISOString().slice(0, 10);
 }
 
 /**

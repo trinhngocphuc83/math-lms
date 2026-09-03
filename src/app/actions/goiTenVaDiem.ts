@@ -3,7 +3,9 @@
 import { createClient } from '@supabase/supabase-js';
 import { assertStaff } from '@/utils/auth/guard';
 import { thangNay, thangTruoc, LOI_CHUA_TAO_BANG, type HocSinh, type TrangThaiQuay } from '@/utils/goiTenVaDiem';
-import { gopLanLamLai, tinhCacLanCong, type BaiDaLam } from '@/utils/diemThuong';
+import {
+  gopLanLamLai, tinhCacLanCong, khoangThangVN, ngayVN, type BaiDaLam, type NguonDiem,
+} from '@/utils/diemThuong';
 
 /**
  * Vòng quay gọi tên và điểm thưởng - phần chạy trên máy chủ.
@@ -305,13 +307,8 @@ export async function timGiongDaNho(khoa: string): Promise<string> {
 
 /* ────────────────────────────────────── QUÉT ĐIỂM TỪ BÀI LÀM (tự động) ─── */
 
-/** Trong tháng 'YYYY-MM' thì từ ngày nào tới ngày nào. */
-function khoangThang(thang: string): { tu: string; den: string } {
-  const [n, t] = thang.split('-').map(Number);
-  const tu = new Date(Date.UTC(n, t - 1, 1));
-  const den = new Date(Date.UTC(t === 12 ? n + 1 : n, t === 12 ? 0 : t, 1));
-  return { tu: tu.toISOString(), den: den.toISOString() };
-}
+/* Khoảng thời gian của tháng tính theo GIỜ VIỆT NAM - xem utils/diemThuong.khoangThangVN. */
+const khoangThang = khoangThangVN;
 
 export interface KetQuaQuet {
   /** Số lần cộng mới ghi nhận */
@@ -340,19 +337,47 @@ export async function quetDiemTuDong(
   const ids = caLop.map(h => h.id);
   const { tu, den } = khoangThang(t);
 
-  /* Những gì đã cộng rồi - khoá theo cặp (nguồn, khoá bài). */
+  /* Những gì đã cộng rồi. Giữ cả SỐ ĐIỂM chứ không chỉ đánh dấu "đã cộng", để em làm
+     lại tốt hơn thì được cộng bù phần chênh (xem utils/diemThuong.tinhCacLanCong). */
+  /* Soát theo HỌC SINH chứ không theo lớp: một em học hai lớp thì quét lớp này rồi quét
+     lớp kia sẽ cộng hai lần cho cùng một bài, vì mỗi lớp chỉ nhìn dòng của lớp mình. Hiện
+     chưa em nào học hai lớp, nhưng đây là chỗ hỏng chỉ chờ ngày xảy ra. */
   const { data: daCo, error: loiDaCo } = await quanTri
-    .from('diem_thuong').select('student_id, nguon, lesson_id')
-    .eq('class_id', classId).eq('thang', t);
+    .from('diem_thuong').select('student_id, nguon, lesson_id, diem')
+    .in('student_id', ids).eq('thang', t);
   if (loiDaCo) throw new Error(thieuBang(loiDaCo) ? LOI_CHUA_TAO_BANG : loiDaCo.message);
 
-  const daCong = (hsId: string) => new Set(
+  /** Điểm đã cộng cho từng bài, theo một nguồn. */
+  const diemDaCong = (hsId: string, nguon: NguonDiem) => {
+    const m = new Map<string, number>();
+    for (const r of daCo || []) {
+      if (r.student_id !== hsId || !r.lesson_id || r.nguon !== nguon) continue;
+      m.set(r.lesson_id, (m.get(r.lesson_id) || 0) + Number(r.diem || 0));
+    }
+    return m;
+  };
+  /** Bài đã được thưởng tiến bộ - dòng tiến bộ mang cùng khoá bài với dòng điểm gốc. */
+  const daThuongTienBo = (hsId: string) => new Set(
     (daCo || [])
-      .filter((r: any) => r.student_id === hsId && r.lesson_id)
-      .map((r: any) => `${r.nguon}|${r.lesson_id}`),
+      .filter((r: any) => r.student_id === hsId && r.lesson_id && r.nguon === 'tien_bo')
+      .map((r: any) => String(r.lesson_id)),
   );
 
   const canGhi: any[] = [];
+
+  /** Ghi các lần cộng của một em cho một nguồn, gộp lần làm lại và cộng bù. */
+  const gomChoEm = (hsId: string, bai: BaiDaLam[], nguon: NguonDiem) => {
+    if (bai.length === 0) return;
+    for (const lan of tinhCacLanCong(
+      gopLanLamLai(bai), nguon, diemDaCong(hsId, nguon), daThuongTienBo(hsId),
+    )) {
+      canGhi.push({
+        student_id: hsId, class_id: classId, thang: t,
+        nguon: lan.nguon, diem: lan.diem, ly_do: lan.ly_do,
+        lesson_id: lan.khoa, nguoi_tao: (nguoi as any)?.id || null,
+      });
+    }
+  };
 
   /* ---------------------------------------------------------- 1. LUYỆN TẬP */
   const { data: kq } = await quanTri
@@ -375,26 +400,15 @@ export async function quetDiemTuDong(
         diem: Number(r.score),
         luc: r.created_at,
       }));
-    if (bai.length === 0) continue;
-
-    const da = daCong(hs.id);
-    for (const lan of tinhCacLanCong(gopLanLamLai(bai), 'luyen_tap', new Set(
-      [...da].filter(k => k.startsWith('luyen_tap|') || k.startsWith('tien_bo|'))
-             .map(k => k.split('|')[1]),
-    ))) {
-      if (da.has(`${lan.nguon}|${lan.khoa}`)) continue;
-      canGhi.push({
-        student_id: hs.id, class_id: classId, thang: t,
-        nguon: lan.nguon, diem: lan.diem, ly_do: lan.ly_do,
-        lesson_id: lan.khoa, nguoi_tao: (nguoi as any)?.id || null,
-      });
-    }
+    gomChoEm(hs.id, bai, 'luyen_tap');
   }
 
   /* ------------------------------------------------- 2. KIỂM TRA THẦY NHẬP */
   const { data: bd } = await quanTri
     .from('bang_diem').select('id, ten_bai, ngay')
-    .eq('class_id', classId).gte('ngay', tu.slice(0, 10)).lt('ngay', den.slice(0, 10));
+    /* `ngay` là cột kiểu date nên so theo NGÀY GIỜ VIỆT NAM, không cắt chuỗi UTC:
+       mốc đầu tháng theo giờ VN nằm ở 17 giờ ngày cuối tháng trước tính theo UTC. */
+    .eq('class_id', classId).gte('ngay', ngayVN(tu)).lt('ngay', ngayVN(den));
 
   if (bd && bd.length > 0) {
     const { data: ct } = await quanTri
@@ -413,20 +427,44 @@ export async function quetDiemTuDong(
           diem: Number(r.diem),
           luc: tenBai[r.bang_diem_id]?.ngay || '',
         }));
-      if (bai.length === 0) continue;
+      gomChoEm(hs.id, bai, 'kiem_tra');
+    }
+  }
 
-      const da = daCong(hs.id);
-      for (const lan of tinhCacLanCong(gopLanLamLai(bai), 'kiem_tra', new Set(
-        [...da].filter(k => k.startsWith('kiem_tra|') || k.startsWith('tien_bo|'))
-               .map(k => k.split('|')[1]),
-      ))) {
-        if (da.has(`${lan.nguon}|${lan.khoa}`)) continue;
-        canGhi.push({
-          student_id: hs.id, class_id: classId, thang: t,
-          nguon: lan.nguon, diem: lan.diem, ly_do: lan.ly_do,
-          lesson_id: lan.khoa, nguoi_tao: (nguoi as any)?.id || null,
-        });
-      }
+  /* --------------------------------------------------------- 3. THI ONLINE */
+  /* Nguồn này bảng hệ số có ghi tên từ đầu nhưng CHƯA HỀ được cộng: đo trên kho thì
+     bảng điểm thưởng không có lấy một dòng `thi_online` nào. Em thi online xong coi như
+     không được gì, trong khi bài luyện tập nhẹ hơn lại có điểm. */
+  const { data: deLop } = await quanTri
+    .from('online_exam_classes').select('exam_id').eq('class_id', classId);
+  const idDe = [...new Set((deLop || []).map((r: any) => r.exam_id).filter(Boolean))];
+
+  if (idDe.length > 0) {
+    const { data: de } = await quanTri
+      .from('online_exams').select('id, title').in('id', idDe);
+    const tenDe: Record<string, string> = {};
+    for (const d of de || []) tenDe[d.id] = d.title || 'Đề thi online';
+
+    const { data: nop } = await quanTri
+      .from('online_exam_submissions')
+      .select('student_id, exam_id, score, submit_time, created_at')
+      .in('exam_id', idDe).in('student_id', ids)
+      .not('score', 'is', null);
+
+    for (const hs of caLop) {
+      const bai: BaiDaLam[] = (nop || [])
+        .filter((r: any) => {
+          if (r.student_id !== hs.id || !r.exam_id) return false;
+          const luc = r.submit_time || r.created_at;
+          return !!luc && luc >= tu && luc < den;
+        })
+        .map((r: any) => ({
+          khoa: r.exam_id,
+          ten: `Thi online: ${tenDe[r.exam_id] || 'Đề thi online'}`,
+          diem: Number(r.score),
+          luc: r.submit_time || r.created_at,
+        }));
+      gomChoEm(hs.id, bai, 'thi_online');
     }
   }
 
@@ -440,6 +478,104 @@ export async function quetDiemTuDong(
     themDiem: canGhi.reduce((s, r) => s + Number(r.diem), 0),
     daChot: false,
   };
+}
+
+/**
+ * Quét bù cho nhiều tháng gần đây, không chỉ tháng đang xem.
+ *
+ * Vì sao cần: máy chỉ cộng điểm khi Thầy cô bấm quét, mà mỗi lần bấm chỉ quét ĐÚNG tháng
+ * đang mở. Tháng nào không ai bấm thì bài làm tháng đó không bao giờ thành điểm. Đo trên
+ * kho Toán 12: 9 lượt bài luyện tập từ 7 điểm trở lên trong tháng 6, 7, 8 chưa hề được
+ * cộng, vì lượt quét duy nhất chạy vào tháng 9 và chỉ nhìn tháng 9.
+ *
+ * Tháng đã chốt thì bỏ qua, không phá số đã chốt.
+ */
+export async function quetBuNhieuThang(
+  classId: string, soThang = 6,
+): Promise<{ themMoi: number; themDiem: number; boQua: string[] }> {
+  await assertStaff();
+  let t = thangNay();
+  let themMoi = 0, themDiem = 0;
+  const boQua: string[] = [];
+  for (let i = 0; i < Math.max(1, soThang); i++) {
+    const q = await quetDiemTuDong(classId, t);
+    if (q.daChot) boQua.push(t);
+    themMoi += q.themMoi;
+    themDiem += q.themDiem;
+    t = thangTruoc(t);
+  }
+  return { themMoi, themDiem, boQua };
+}
+
+/* ────────────────────────────────── LỊCH SỬ ĐIỂM CỦA TỪNG EM ─── */
+
+export interface DongLichSu {
+  id: string;
+  thang: string;
+  nguon: string;
+  diem: number;
+  ly_do: string;
+  lop: string;
+  luc: string;
+  /** Tên người đã cộng - dòng máy tự quét thì để rỗng. */
+  nguoiTao: string;
+}
+
+/**
+ * Toàn bộ lịch sử cộng/trừ điểm của MỘT em, mọi tháng, mọi lớp.
+ *
+ * Trước đây Thầy cô chỉ nhìn được TỔNG điểm tháng của cả lớp; em nào kêu "sao con ít
+ * điểm thế" thì không có chỗ nào tra ra em ấy được cộng những gì. Đây là chỗ tra.
+ */
+export async function layLichSuDiem(studentId: string): Promise<DongLichSu[]> {
+  await assertStaff();
+  const { data, error } = await quanTri
+    .from('diem_thuong')
+    .select('id, thang, nguon, diem, ly_do, class_id, nguoi_tao, created_at')
+    .eq('student_id', studentId)
+    .order('created_at', { ascending: false });
+  if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
+  const ds = data || [];
+  if (ds.length === 0) return [];
+
+  const idLop = [...new Set(ds.map((r: any) => r.class_id).filter(Boolean))];
+  const idNguoi = [...new Set(ds.map((r: any) => r.nguoi_tao).filter(Boolean))];
+  const { data: lop } = idLop.length
+    ? await quanTri.from('classes').select('id, name').in('id', idLop) : { data: [] as any[] };
+  const { data: nguoi } = idNguoi.length
+    ? await quanTri.from('profiles').select('id, full_name').in('id', idNguoi) : { data: [] as any[] };
+  const tenLop = Object.fromEntries((lop || []).map((l: any) => [l.id, l.name]));
+  const tenNguoi = Object.fromEntries((nguoi || []).map((p: any) => [p.id, p.full_name]));
+
+  return ds.map((r: any) => ({
+    id: r.id,
+    thang: r.thang,
+    nguon: r.nguon,
+    diem: Number(r.diem || 0),
+    ly_do: r.ly_do || '',
+    lop: tenLop[r.class_id] || '',
+    luc: r.created_at,
+    nguoiTao: tenNguoi[r.nguoi_tao] || '',
+  }));
+}
+
+/**
+ * Xoá một dòng điểm đã cộng nhầm.
+ *
+ * Tháng đã chốt thì không cho xoá - chốt rồi mà số vẫn đổi được thì phiếu đã gửi phụ
+ * huynh hoá ra sai.
+ */
+export async function xoaDongDiem(id: string): Promise<{ xoaDuoc: boolean; vi?: string }> {
+  await assertStaff();
+  const { data: dong } = await quanTri
+    .from('diem_thuong').select('class_id, thang').eq('id', id).maybeSingle();
+  if (!dong) return { xoaDuoc: false, vi: 'Không tìm thấy dòng điểm này.' };
+  if (await daChotThang(dong.class_id, dong.thang)) {
+    return { xoaDuoc: false, vi: `Tháng ${dong.thang} đã chốt — mở khoá tháng rồi mới xoá được.` };
+  }
+  const { error } = await quanTri.from('diem_thuong').delete().eq('id', id);
+  if (error) return { xoaDuoc: false, vi: error.message };
+  return { xoaDuoc: true };
 }
 
 /* ─────────────────────────────────── BẢNG ĐIỂM KIỂM TRA THẦY CÔ NHẬP ─── */

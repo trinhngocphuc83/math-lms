@@ -160,8 +160,8 @@ export default function DiemThuongCuaToi() {
       </div>
 
       <p className="text-[11.5px] text-gray-400 leading-relaxed px-1">
-        Điểm thưởng cộng từ: phát biểu đúng trên lớp, bài luyện tập và bài kiểm tra đạt từ 7
-        điểm trở lên, và thưởng thêm khi bài sau tiến bộ hơn bài trước.
+        Điểm thưởng cộng từ: phát biểu đúng trên lớp, bài luyện tập, bài kiểm tra và bài thi
+        online đạt từ 7 điểm trở lên, và thưởng thêm khi bài sau tiến bộ hơn bài trước.
       </p>
     </div>
   );

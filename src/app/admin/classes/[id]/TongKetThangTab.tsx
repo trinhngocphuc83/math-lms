@@ -3,15 +3,16 @@
 import React, { useRef, useState } from "react";
 import {
   Loader2, ImageIcon, FileSpreadsheet, Lock, Unlock, RefreshCw, Trophy,
-  TrendingUp, AlertTriangle, FileText,
+  TrendingUp, AlertTriangle, FileText, History,
 } from "lucide-react";
 import { captureElement, downloadOrShare } from "@/utils/imageExport";
 import {
-  layBangVinhDanh, quetDiemTuDong, chotThang, boChotThang, daChotThang,
+  layBangVinhDanh, quetDiemTuDong, quetBuNhieuThang, chotThang, boChotThang, daChotThang,
   type BangVinhDanh,
 } from "@/app/actions/goiTenVaDiem";
 import { LOI_CHUA_TAO_BANG, thangNay, thangTruoc } from "@/utils/goiTenVaDiem";
 import PhieuPhuHuynhModal from "./PhieuPhuHuynhModal";
+import LichSuDiemModal from "./LichSuDiemModal";
 
 /**
  * Tổng kết điểm thưởng theo tháng: hai bảng xếp hạng, chốt tháng, và xuất báo cáo.
@@ -34,6 +35,8 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
   /* Phiếu phụ huynh tách ra hộp riêng: có trang trí và xuất ẢNH, vì phụ huynh nhận qua
      Zalo thì một tấm ảnh mở ra là thấy ngay. */
   const [moPhieu, setMoPhieu] = useState(false);
+  /* Bấm vào tên một em để xem em ấy được cộng những gì. */
+  const [emDangXem, setEmDangXem] = useState<{ id: string; ten: string } | null>(null);
 
   const cacThang = React.useMemo(() => {
     const ra = [thangNay()];
@@ -56,7 +59,53 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
 
   React.useEffect(() => { nap(); }, [nap]);
 
+  /**
+   * Mở tab lên là quét luôn, khỏi phải nhớ bấm nút.
+   *
+   * Trước đây điểm từ bài làm CHỈ xuất hiện khi Thầy cô bấm "Cập nhật điểm từ bài làm".
+   * Không ai bấm thì em làm bài tốt vẫn 0 điểm, mà nhìn vào bảng thì tưởng em chưa làm gì
+   * - đúng cảnh "app tổng có điểm mà app học sinh không thấy". Quét lại nhiều lần không
+   * sao: mỗi bài chỉ cộng một lần, làm lại tốt hơn thì cộng bù phần chênh.
+   */
+  const daQuetChoThang = useRef<Set<string>>(new Set());
+  React.useEffect(() => {
+    const khoa = `${classId}|${thang}`;
+    if (daQuetChoThang.current.has(khoa)) return;
+    daQuetChoThang.current.add(khoa);
+    (async () => {
+      try {
+        const q = await quetDiemTuDong(classId, thang);
+        if (q.themMoi > 0) {
+          setBao(`Vừa cộng thêm ${q.themDiem} điểm từ ${q.themMoi} lượt bài làm chưa được tính.`);
+          setTimeout(() => setBao(''), 6000);
+          await nap();
+        }
+      } catch { /* chưa tạo bảng hoặc lỗi mạng thì thôi, nút quét tay vẫn còn đó */ }
+    })();
+  }, [classId, thang, nap]);
+
   const nhac = (chu: string) => { setBao(chu); setTimeout(() => setBao(''), 6000); };
+
+  /**
+   * Quét bù 12 tháng gần đây.
+   *
+   * Nút "Cập nhật điểm từ bài làm" chỉ quét ĐÚNG tháng đang mở. Tháng nào chưa từng ai
+   * bấm thì bài làm tháng ấy không bao giờ thành điểm - đo trên kho Toán 12 có 9 lượt bài
+   * từ 7 điểm trở lên của tháng 6, 7, 8 nằm im như vậy.
+   */
+  const quetBu = async () => {
+    if (!confirm('Quét lại 12 tháng gần đây và cộng bù những bài chưa được tính?\n\nMỗi bài vẫn chỉ cộng một lần. Tháng đã chốt được giữ nguyên.')) return;
+    setDangLam('bu');
+    try {
+      const q = await quetBuNhieuThang(classId, 12);
+      nhac(q.themMoi > 0
+        ? `Đã cộng bù ${q.themDiem} điểm từ ${q.themMoi} lượt bài làm.`
+          + (q.boQua.length ? ` Bỏ qua ${q.boQua.length} tháng đã chốt.` : '')
+        : 'Không có bài nào bị bỏ sót.');
+      await nap();
+    } catch (e: any) { nhac('Không quét bù được: ' + (e?.message || '')); }
+    setDangLam('');
+  };
 
   const quet = async () => {
     setDangLam('quet');
@@ -152,6 +201,13 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
           Cập nhật điểm từ bài làm
         </button>
 
+        <button onClick={quetBu} disabled={!!dangLam}
+                title="Quét lại 12 tháng gần đây, cộng bù những bài chưa được tính điểm"
+                className="bg-white border border-amber-300 text-amber-700 px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 hover:bg-amber-50 disabled:opacity-50">
+          {nut('bu') ? <Loader2 size={17} className="animate-spin" /> : <History size={17} />}
+          Quét bù tháng trước
+        </button>
+
         <button onClick={doiKhoa} disabled={!!dangLam}
                 className={`px-4 py-2.5 rounded-xl font-bold flex items-center gap-2 disabled:opacity-50 ${
                   daChot ? 'bg-white border border-amber-300 text-amber-700 hover:bg-amber-50'
@@ -208,12 +264,12 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-            <BangXep ten="TỔNG ĐIỂM THÁNG" Icon={Trophy}
-                     ds={(bang?.theoTong || []).map(d => ({ ten: d.hs.ten, so: d.tong }))} />
+            <BangXep ten="TỔNG ĐIỂM THÁNG" Icon={Trophy} onChon={setEmDangXem}
+                     ds={(bang?.theoTong || []).map(d => ({ id: d.hs.id, ten: d.hs.ten, so: d.tong }))} />
             {bang?.coThangTruoc ? (
-              <BangXep ten="TIẾN BỘ NHẤT" Icon={TrendingUp}
+              <BangXep ten="TIẾN BỘ NHẤT" Icon={TrendingUp} onChon={setEmDangXem}
                        ds={(bang?.theoTienBo || []).map(d => ({
-                         ten: d.hs.ten, so: d.tang, phu: `${d.truoc} → ${d.tong}`,
+                         id: d.hs.id, ten: d.hs.ten, so: d.tang, phu: `${d.truoc} → ${d.tong}`,
                        }))} />
             ) : (
               <div className="rounded-xl border border-gray-200 bg-gray-50 p-5 flex items-center">
@@ -227,11 +283,13 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
           </div>
 
           <div className="mt-4 text-right text-xs text-gray-400 italic">
-            * Điểm thưởng gồm: phát biểu trên lớp, bài luyện tập và kiểm tra đạt từ 7 điểm,
-            và thưởng tiến bộ. Báo cáo xuất tự động từ hệ thống.
+            * Điểm thưởng gồm: phát biểu trên lớp, bài luyện tập, bài kiểm tra và thi online
+            đạt từ 7 điểm, và thưởng tiến bộ. Báo cáo xuất tự động từ hệ thống.
           </div>
         </div>
       )}
+
+      <LichSuDiemModal hs={emDangXem} onClose={() => setEmDangXem(null)} />
 
       <PhieuPhuHuynhModal
         isOpen={moPhieu}
@@ -245,9 +303,12 @@ export default function TongKetThangTab({ classId, classInfo }: { classId: strin
   );
 }
 
-function BangXep({ ten, Icon, ds }: {
+function BangXep({ ten, Icon, ds, onChon }: {
   ten: string; Icon: any;
-  ds: { ten: string; so: number; phu?: string }[];
+  ds: { id?: string; ten: string; so: number; phu?: string }[];
+  /* Bấm vào một dòng để xem em ấy được cộng những gì. Dùng div chứ không dùng button:
+     bảng này còn được chụp thành ẢNH để gửi phụ huynh, thêm thẻ nút vào là ảnh lệch. */
+  onChon?: (hs: { id: string; ten: string }) => void;
 }) {
   const huy = ['🥇', '🥈', '🥉'];
   return (
@@ -261,7 +322,10 @@ function BangXep({ ten, Icon, ds }: {
       ) : (
         <div className="divide-y divide-gray-100">
           {ds.map((d, i) => (
-            <div key={d.ten + i} className="flex items-center gap-3 px-4 py-2">
+            <div key={d.ten + i}
+                 onClick={() => { if (onChon && d.id) onChon({ id: d.id, ten: d.ten }); }}
+                 title={onChon && d.id ? 'Xem em này được cộng những gì' : undefined}
+                 className={`flex items-center gap-3 px-4 py-2 ${onChon && d.id ? 'cursor-pointer hover:bg-teal-50/60' : ''}`}>
               <span className="w-7 text-center font-black text-gray-400">{huy[i] || i + 1}</span>
               <span className="flex-1 min-w-0 font-bold text-gray-800 truncate">{d.ten}</span>
               {d.phu && <span className="text-[12px] text-gray-400 shrink-0">{d.phu}</span>}
