@@ -204,7 +204,7 @@ export interface PhanDeThi {
   tieuDe: string;
   cauDan: string;
   cauHoi: any[];
-  /** Số thứ tự câu đầu tiên của phần này trong toàn đề. */
+  /** Số thứ tự câu đầu tiên của phần. Luôn là 1 - mỗi phần đánh lại từ đầu. */
   batDau: number;
 }
 
@@ -251,23 +251,50 @@ export function chiaPhanDeThi(cauHoi: any[]): PhanDeThi[] {
   }
 
   const ra: PhanDeThi[] = [];
-  let stt = 1;
   let chiSoPhan = 1;
   for (const ma of THU_TU_PHAN) {
     const ds = nhom[ma];
     if (!ds.length) continue;
-    const batDau = stt;
-    const ketThuc = stt + ds.length - 1;
+    /* MỖI PHẦN ĐÁNH LẠI TỪ CÂU 1 - đúng khuôn đề 2025 và đúng ba bản mẫu của Thầy cô.
+       Cần thiết cho cả việc chấm bằng ảnh chụp sau này: lưới tô của từng phần trên
+       phiếu trả lời vốn đánh số riêng, đề mà đánh liên tục thì đề một đằng phiếu một
+       nẻo, máy dò xong không biết ô nào ứng với câu nào. */
     ra.push({
       ma,
       soLaMa: soLaMa(chiSoPhan),
       tieuDe: TEN_PHAN[ma],
-      cauDan: cauDanCuaPhan(ma, batDau, ketThuc),
+      cauDan: cauDanCuaPhan(ma, 1, ds.length),
       cauHoi: ds,
-      batDau,
+      batDau: 1,
     });
-    stt = ketThuc + 1;
     chiSoPhan++;
+  }
+  return ra;
+}
+
+/**
+ * Mã nhận dạng DUY NHẤT của một câu trong cả tệp: "I.7", "IV.2".
+ *
+ * Mỗi phần đánh lại từ Câu 1 nên riêng số câu không còn phân biệt được - cả đề có tới
+ * bốn "Câu 1". Mã này ghép số La Mã của phần với số câu trong phần, in nhỏ bên cạnh
+ * nhãn câu trên đề, trên phiếu trả lời và trên hướng dẫn chấm.
+ *
+ * Đây chính là chỗ bám của việc chấm bài bằng ảnh chụp: máy cắt được một khung bài làm
+ * rồi đọc mã ở góc khung là biết ngay phải chấm theo barem của câu nào.
+ *
+ * @param viTri Vị trí câu trong phần, đếm từ 1.
+ */
+export function maCauTrongDe(phan: PhanDeThi, viTri: number): string {
+  return `${phan.soLaMa}.${viTri}`;
+}
+
+/** Số thứ tự hiển thị của từng câu, khoá theo id câu. Dùng chung cho màn chọn câu và bản in. */
+export function soCauTheoPhan(cauHoi: any[]): Map<string, { so: number; ma: string }> {
+  const ra = new Map<string, { so: number; ma: string }>();
+  for (const phan of chiaPhanDeThi(cauHoi)) {
+    phan.cauHoi.forEach((q: any, i: number) => {
+      if (q?.id) ra.set(q.id, { so: i + 1, ma: maCauTrongDe(phan, i + 1) });
+    });
   }
   return ra;
 }

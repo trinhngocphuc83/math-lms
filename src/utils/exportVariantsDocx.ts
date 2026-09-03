@@ -1,5 +1,6 @@
 import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun, ShadingType } from "docx";
 import { saveAs } from "file-saver";
+import { anhWord } from "./mauDeThi";
 
 const base64ToUint8Array = (base64: string) => {
   const binaryString = window.atob(base64);
@@ -86,10 +87,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
         try {
           const base64Data = srcMatch[3].replace(/\s+/g, '');
           const buffer = base64ToUint8Array(base64Data);
-          elements.push(new ImageRun({
-            data: buffer,
-            transformation: { width: 300, height: 200 }
-          } as any));
+          elements.push(anhWord(buffer, 300, 200));
         } catch(e) {
           console.error("Lỗi parse ảnh base64:", e);
         }
@@ -114,10 +112,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
       try {
          const imgData = await fetchImageWithDimensions(url);
          if (imgData) {
-            elements.push(new ImageRun({
-               data: imgData.buffer,
-               transformation: { width: imgData.width, height: imgData.height }
-            } as any));
+            elements.push(anhWord(imgData.buffer, imgData.width, imgData.height));
          }
       } catch(e) {
          console.error("Lỗi fetch MD ảnh:", e);
@@ -257,10 +252,7 @@ export const exportVariantsToWord = async (baseQuestions: any[]) => {
            childrenElements.push(
               new Paragraph({
                 children: [
-                  new ImageRun({
-                    data: imageData.buffer,
-                    transformation: { width: imageData.width, height: imageData.height },
-                  } as any),
+                  anhWord(imageData.buffer, imageData.width, imageData.height),
                 ],
                 alignment: AlignmentType.CENTER,
               })
@@ -271,7 +263,7 @@ export const exportVariantsToWord = async (baseQuestions: any[]) => {
         for (let j = 1; j < contentLines.length; j++) {
             const line = contentLines[j];
             if (imageData && line.match(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi)) {
-                childrenElements.push(new Paragraph({ children: [new ImageRun({ data: imageData.buffer, transformation: { width: imageData.width, height: imageData.height } } as any)], alignment: AlignmentType.CENTER }));
+                childrenElements.push(new Paragraph({ children: [anhWord(imageData.buffer, imageData.width, imageData.height)], alignment: AlignmentType.CENTER }));
                 imageInserted = true;
                 
                 const textWithoutMarker = line.replace(/\[HÌNH VẼ.*\]|\[HINH VẼ.*\]|\[BẢNG BIẾN THIÊN\]/gi, '').trim();
@@ -285,10 +277,7 @@ export const exportVariantsToWord = async (baseQuestions: any[]) => {
            childrenElements.push(
               new Paragraph({
                 children: [
-                  new ImageRun({
-                    data: imageData.buffer,
-                    transformation: { width: imageData.width, height: imageData.height },
-                  } as any),
+                  anhWord(imageData.buffer, imageData.width, imageData.height),
                 ],
                 alignment: AlignmentType.CENTER,
               })

@@ -1,7 +1,7 @@
 import {
   Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, ImageRun,
   Table, TableRow, TableCell, WidthType, BorderStyle, PageOrientation, VerticalAlign,
-  Tab, TabStopType,
+  Tab, TabStopType, Header, Footer,
 } from "docx";
 import { saveAs } from "file-saver";
 
@@ -27,8 +27,13 @@ export const base64ToUint8Array = (base64: string) => {
 import { cleanLatexForWord } from "./latexToWord";
 import { cleanLatexControlChars } from "./latexFixer";
 import { latexToDocxElement, latexToDocxTable, laBangKeO } from "./latexToDocxMath";
-import { soDiemVN, type DauDe, chiaPhanDeThi, type PhanDeThi } from "./deThi";
+import { soDiemVN, type DauDe, chiaPhanDeThi, maCauTrongDe, type PhanDeThi } from "./deThi";
 import { bangDapAn, type MaDe } from "./tronMaDe";
+import {
+  NAVY, XAM_MO, CO_TIEU_DE_PHU, CO_TIEU_DE_CHINH, KIEU_MAC_DINH, TRANG_CHUAN,
+  BE_NGANG_IN, LE_TRANG, hopKyThuat, nhanTrongHop, nhanCau, maCauNho, daiNeo,
+  daiNeoDauTrang, anhQR, noiDungQR, anhWord,
+} from "./mauDeThi";
 
 // Đánh dấu tạm cho công thức $...$/$$...$$ để không lẫn với ảnh/HTML khi quét dòng,
 // rồi thay lại bằng công thức Word thật (Equation/OMML) ở dưới - không còn hiện chữ
@@ -200,10 +205,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
         try {
           const base64Data = srcMatch[3].replace(/\s+/g, '');
           const buffer = base64ToUint8Array(base64Data);
-          elements.push(new ImageRun({
-            data: buffer,
-            transformation: { width: 300, height: 200 }
-          } as any));
+          elements.push(anhWord(buffer, 300, 200));
         } catch(e) {
           console.error("Lỗi parse ảnh base64:", e);
         }
@@ -228,10 +230,7 @@ const processTextLine = async (textLine: string, defaultColor?: string, defaultB
       try {
          const imgData = await fetchImageWithDimensions(url);
          if (imgData) {
-            elements.push(new ImageRun({
-               data: imgData.buffer,
-               transformation: { width: imgData.width, height: imgData.height }
-            } as any));
+            elements.push(anhWord(imgData.buffer, imgData.width, imgData.height));
          }
       } catch(e) {
          console.error("Lỗi fetch MD ảnh:", e);
@@ -312,7 +311,7 @@ const dongGiua = (chu: string, dam = false) =>
  * Dùng bảng KHÔNG VIỀN thay vì hai đoạn căn lề, vì chỉ bảng mới giữ được hai khối chữ
  * nằm ngang hàng nhau khi số dòng hai bên khác nhau.
  */
-const dungDauDe = (dauDe: DauDe): Table => new Table({
+const dungDauDe = (dauDe: DauDe, qr?: any): Table => new Table({
   width: { size: 100, type: WidthType.PERCENTAGE },
   borders: KHONG_VIEN,
   rows: [
@@ -337,6 +336,13 @@ const dungDauDe = (dauDe: DauDe): Table => new Table({
             ...(dauDe.maDe ? [dongGiua(`Mã đề: ${dauDe.maDe}`, true)] : []),
           ],
         }),
+        /* Ô mã QR - chỉ hiện khi dựng được mã. Đây là chỗ app chấm bài bằng ảnh chụp
+           đọc ra "đang chấm đề nào, mã đề nào", khỏi bắt Thầy cô chọn tay. */
+        ...(qr ? [new TableCell({
+          borders: KHONG_VIEN,
+          width: { size: 16, type: WidthType.PERCENTAGE },
+          children: [new Paragraph({ alignment: AlignmentType.RIGHT, children: [qr] })],
+        })] : []),
       ],
     }),
   ],
@@ -347,8 +353,8 @@ const dungTieuDePhan = (phan: PhanDeThi, diem?: number): Paragraph[] => [
   new Paragraph({
     spacing: { before: 320, after: 60 },
     children: [
-      new TextRun({ text: `PHẦN ${phan.soLaMa}. `, bold: true, color: "0000FF" }),
-      new TextRun({ text: phan.tieuDe, bold: true }),
+      new TextRun({ text: `PHẦN ${phan.soLaMa}. `, bold: true, color: NAVY, size: CO_TIEU_DE_PHU }),
+      new TextRun({ text: phan.tieuDe, bold: true, color: NAVY, size: CO_TIEU_DE_PHU }),
       ...(typeof diem === 'number' && diem > 0
         ? [new TextRun({ text: ` (${soDiem(diem)} điểm)`, bold: true })]
         : []),
@@ -438,9 +444,11 @@ const beRongPhuongAn = (s: string): number => {
  * là cả hàng bị đội cao, nên phải để nó quyết định.
  */
 
-/* Khổ A4 lề 1 inch còn khoảng 9000 twip bề ngang. Chia đều cho 4 và cho 2 cột. */
-const MOC_TAB_4_COT = [2250, 4500, 6750];
-const MOC_TAB_2_COT = [4500];
+/* Chia đều bề ngang vùng in cho 4 và cho 2 cột. Bề ngang lấy từ LỀ THẬT của khuôn mẫu
+   (mauDeThi.BE_NGANG_IN) chứ không đoán bằng con số 9000 như bản cũ - lề đổi thì cột
+   phương án phải đổi theo, không thì cột chót tràn ra ngoài mép giấy. */
+const MOC_TAB_4_COT = [1, 2, 3].map(k => Math.round((BE_NGANG_IN * k) / 4));
+const MOC_TAB_2_COT = [Math.round(BE_NGANG_IN / 2)];
 
 const dungPhuongAnNLC = async (
   q: any,
@@ -462,7 +470,7 @@ const dungPhuongAnNLC = async (
 
   /** Một phương án: nhãn "A. " đậm xanh rồi tới nội dung đã dựng công thức. */
   const motPhuongAn = async (x: { nhan: string; noiDung: string }) => ([
-    new TextRun({ text: `${x.nhan}. `, bold: true, color: "0000FF" }),
+    nhanCau(`${x.nhan}. `),
     ...(await doiChu(cleanHtmlNewlinesInTags(x.noiDung))),
   ]);
 
@@ -502,6 +510,8 @@ export interface KhuonXuatDe {
    * đáp án của tất cả các mã. Bỏ trống thì in một đề như cũ.
    */
   maDe?: MaDe[];
+  /** Id bộ đề đã lưu - nhét vào mã QR để app chấm ảnh biết đang chấm đề nào. */
+  boDeId?: string;
 }
 
 /**
@@ -531,7 +541,10 @@ export const exportQuestionsToWord = async (
       if (khuonDe) {
         // Mã thứ hai trở đi sang trang mới, để in ra là tách được thành từng tập
         if (iMa > 0) childrenElements.push(new Paragraph({ text: "", pageBreakBefore: true }));
-        childrenElements.push(dungDauDe({ ...khuonDe.dauDe, maDe: maHienTai.ma }));
+        const qrDauDe = await anhQR(noiDungQR({
+          boDeId: khuonDe.boDeId, maDe: maHienTai.ma, loai: 'de', trang: 1,
+        }), 74);
+        childrenElements.push(dungDauDe({ ...khuonDe.dauDe, maDe: maHienTai.ma }, qrDauDe));
         childrenElements.push(new Paragraph({ text: "", spacing: { after: 200 } }));
       } else {
         childrenElements.push(new Paragraph({
@@ -555,6 +568,11 @@ export const exportQuestionsToWord = async (
       for (const p of cacPhan) { mocPhan.set(n, p); n += p.cauHoi.length; }
     }
 
+    /* Phần đang in và số câu TRONG PHẦN ĐÓ. Mỗi phần đánh lại từ Câu 1, nên không thể
+       lấy chỉ số i của cả đề làm số câu nữa. Không chia phần thì đánh liền như cũ. */
+    let phanDangIn: PhanDeThi | null = null;
+    let soTrongPhan = 0;
+
     for (let i = 0; i < dsCau.length; i++) {
       const q = dsCau[i];
 
@@ -562,7 +580,14 @@ export const exportQuestionsToWord = async (
       const phanMoi = mocPhan.get(i);
       if (phanMoi) {
         childrenElements.push(...dungTieuDePhan(phanMoi, khuonDe?.diemPhan?.[phanMoi.ma]));
+        phanDangIn = phanMoi;
+        soTrongPhan = 0;
       }
+      soTrongPhan++;
+      const soCauIn = phanDangIn ? soTrongPhan : i + 1;
+      /* Mã "I.7" - chỗ duy nhất phân biệt được bốn câu cùng mang số 1 trong một đề, và
+         là chỗ bám cho việc chấm bài bằng ảnh chụp sau này. */
+      const maCau = phanDangIn ? maCauTrongDe(phanDangIn, soTrongPhan) : "";
 
       let imageData: {buffer: Uint8Array, width: number, height: number} | null = null;
       
@@ -580,7 +605,8 @@ export const exportQuestionsToWord = async (
       childrenElements.push(
         new Paragraph({
           children: [
-            new TextRun({ text: `Câu ${i + 1}. `, bold: true, color: "0000FF" }),
+            nhanCau(`Câu ${soCauIn}. `),
+            ...(maCau ? [maCauNho(maCau)] : []),
             ...(await processTextLine(titleLineText))
           ],
           spacing: { before: 200 }
@@ -591,10 +617,7 @@ export const exportQuestionsToWord = async (
          childrenElements.push(
             new Paragraph({
               children: [
-                new ImageRun({
-                  data: imageData.buffer,
-                  transformation: { width: imageData.width, height: imageData.height },
-                } as any),
+                anhWord(imageData.buffer, imageData.width, imageData.height),
               ],
               alignment: AlignmentType.CENTER,
             })
@@ -608,10 +631,7 @@ export const exportQuestionsToWord = async (
             childrenElements.push(
               new Paragraph({
                 children: [
-                  new ImageRun({
-                    data: imageData.buffer,
-                    transformation: { width: imageData.width, height: imageData.height },
-                  } as any),
+                  anhWord(imageData.buffer, imageData.width, imageData.height),
                 ],
                 alignment: AlignmentType.CENTER,
               })
@@ -631,10 +651,7 @@ export const exportQuestionsToWord = async (
          childrenElements.push(
             new Paragraph({
               children: [
-                new ImageRun({
-                  data: imageData.buffer,
-                  transformation: { width: imageData.width, height: imageData.height },
-                } as any),
+                anhWord(imageData.buffer, imageData.width, imageData.height),
               ],
               alignment: AlignmentType.CENTER,
             })
@@ -652,7 +669,7 @@ export const exportQuestionsToWord = async (
         childrenElements.push(new Paragraph({ children: [new TextRun({ text: `d) `}), ...(await processTextLine(cleanHtmlNewlinesInTags(q.option_d || "")))], spacing: { after: 200 } }));
       } else if (qType === 'TLN') {
         childrenElements.push(new Paragraph({
-          children: [new TextRun({ text: "Kết quả: .......................................", bold: true, color: "0000FF" })],
+          children: [new TextRun({ text: "Kết quả: .......................................", bold: true, color: NAVY })],
           spacing: { before: 100, after: 200 }
         }));
       }
@@ -697,50 +714,45 @@ export const exportQuestionsToWord = async (
         // Clean leading symbols like '-', '+', '*'
         const cleanLine = (line: string) => line.replace(/^[\-\+\*]\s*/, '');
 
-        // 1. Output "Phương pháp giải" header
-        childrenElements.push(
-          new Paragraph({
-            children: [new TextRun({ text: "Phương pháp giải", bold: true, color: "0000FF" })],
-            alignment: AlignmentType.CENTER,
-            spacing: { before: 200, after: 100 }
-          })
-        );
+        /* HỘP KỸ THUẬT: bảng một cột, viền trái 3pt Navy, nền xám nhạt - đúng khối mà
+           cả ba bản mẫu mô tả. Bản cũ in hai dòng tiêu đề canh giữa rồi thả các dòng ➤
+           trôi nổi, nên lời giải lẫn vào câu hỏi kế tiếp, nhìn không ra khối.
 
-        // 2. Output Method lines with icons
+           Mỗi bước một dòng riêng (luật "Một dòng - Một chi tiết") giữ nguyên như cũ. */
+        const trongHop: any[] = [];
+
         if (methodText) {
+          trongHop.push(nhanTrongHop("💡 Gợi mở của giáo viên", true));
           methodText = methodText.replace(/^\*\*/, "");
           const mLines = gopBangVeMotDong(cleanHtmlNewlinesInTags(methodText)).split('\n');
           for (const line of mLines) {
             const trimmedLine = line.trim();
             if (trimmedLine) {
-              childrenElements.push(...await dungDongCoTheCoBang(cleanLine(trimmedLine), {
-                icon: new TextRun({ text: "➤ ", color: "E67E22", bold: true }),
+              trongHop.push(...await dungDongCoTheCoBang(cleanLine(trimmedLine), {
+                icon: new TextRun({ text: "– ", color: NAVY, bold: true }),
               }));
             }
           }
         }
 
-        // 3. Output "Lời giải" header
-        childrenElements.push(
-          new Paragraph({
-            children: [new TextRun({ text: "Lời giải", bold: true, color: "0000FF" })],
-            alignment: AlignmentType.CENTER,
-            spacing: { before: 100, after: 200 }
-          })
-        );
-
-        // 4. Output Explanation lines with icons
         if (explanationText) {
+          trongHop.push(nhanTrongHop("📝 Lời giải chi tiết"));
           explanationText = explanationText.replace(/^\*\*/, "");
           const eLines = gopBangVeMotDong(cleanHtmlNewlinesInTags(explanationText)).split('\n');
           for (const line of eLines) {
             const trimmedLine = line.trim();
             if (trimmedLine) {
-              childrenElements.push(...await dungDongCoTheCoBang(cleanLine(trimmedLine), {
-                icon: new TextRun({ text: "➤ ", color: "27AE60", bold: true }),
+              trongHop.push(...await dungDongCoTheCoBang(cleanLine(trimmedLine), {
+                icon: new TextRun({ text: "– ", color: NAVY, bold: true }),
               }));
             }
           }
+        }
+
+        if (trongHop.length) {
+          childrenElements.push(hopKyThuat(trongHop));
+          /* Word cần một đoạn trống sau bảng, không thì bảng kế tiếp dính liền vào. */
+          childrenElements.push(new Paragraph({ text: "", spacing: { after: 120 } }));
         }
       }
     }
@@ -759,28 +771,38 @@ export const exportQuestionsToWord = async (
       childrenElements.push(...dungBangDapAn(khuonDe.maDe));
     }
 
+    /**
+     * Đầu trang và chân trang mang DẤU NEO GÓC, lặp lại trên mọi trang.
+     *
+     * Bốn dấu vuông đen ở bốn góc để app chấm bài bằng ảnh chụp nắn phẳng được ảnh -
+     * ảnh chụp bằng điện thoại luôn nghiêng ít nhiều, không có neo thì mọi toạ độ đều
+     * vô nghĩa. Giữa đầu trang là dòng chữ nhận dạng để người vẫn đọc được.
+     *
+     * Chỉ gắn khi in ĐỀ THI THẬT (có khuôn đề); bản "ngân hàng câu hỏi" không cần.
+     */
+    const nhanDang = khuonDe
+      ? { maDe: khuonDe.dauDe?.maDe, loai: 'de' as const }
+      : null;
+
     const doc = new Document({
-      styles: {
-        default: {
-          document: {
-            run: {
-              size: 24,
-              font: "Times New Roman"
-            }
-          }
-        }
-      },
+      styles: KIEU_MAC_DINH,
       sections: [
         // Phụ lục (nếu có) đi riêng một section khổ ngang; đề thi giữ khổ dọc
         ...(khuonDe?.phuLuc?.length
           ? [{
-              properties: { page: { size: { orientation: PageOrientation.LANDSCAPE } } },
+              properties: {
+                page: { size: { orientation: PageOrientation.LANDSCAPE }, margin: LE_TRANG },
+              },
               children: khuonDe.phuLuc,
             }]
           : []),
         {
-          properties: {},
-          children: childrenElements
+          properties: TRANG_CHUAN,
+          ...(nhanDang ? {
+            headers: { default: new Header({ children: [daiNeoDauTrang(nhanDang)] }) },
+            footers: { default: new Footer({ children: [daiNeo()] }) },
+          } : {}),
+          children: childrenElements,
         },
       ]
     });

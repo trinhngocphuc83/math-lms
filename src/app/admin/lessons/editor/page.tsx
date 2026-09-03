@@ -31,6 +31,7 @@ import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep, cuuKhoiQuizHong } from "
 import { chenAnhTheoNeo } from "@/utils/chenAnhVaoChu";
 import { nghenAnhVuaChen } from "@/utils/tinAnhVuaChen";
 import { docJsonCauHoi } from "@/utils/vaJson";
+import { anhWord } from "@/utils/mauDeThi";
 import HuongDanSoanBaiModal from "@/components/admin/HuongDanSoanBaiModal";
 import { ArrowLeft, HelpCircle, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
 
@@ -928,7 +929,7 @@ const buildRunsFromLine = async (line: string, opts: { color?: string; bold?: bo
             if (srcMatch && srcMatch[3]) {
                 try {
                     const buffer = base64ToUint8Array(srcMatch[3].replace(/\s+/g, ''));
-                    runs.push(new ImageRun({ data: buffer, transformation: { width: 300, height: 200 } } as any));
+                    runs.push(anhWord(buffer, 300, 200));
                 } catch (e) { /* bỏ qua ảnh lỗi */ }
             }
         } else {
@@ -942,7 +943,7 @@ const buildRunsFromLine = async (line: string, opts: { color?: string; bold?: bo
                 remaining = remaining.slice(parenEnd + 1);
                 try {
                     const imgData = await fetchImageWithDimensions(url);
-                    if (imgData) runs.push(new ImageRun({ data: imgData.buffer, transformation: { width: imgData.width, height: imgData.height } } as any));
+                    if (imgData) runs.push(anhWord(imgData.buffer, imgData.width, imgData.height));
                 } catch (e) { /* bỏ qua ảnh lỗi */ }
             }
         }

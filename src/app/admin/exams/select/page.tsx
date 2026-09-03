@@ -20,7 +20,8 @@ import {
 import { taoKhoaSoSanh, doGiongNhau, NGUONG_NGHI_TRUNG } from "@/utils/questionFingerprint";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
-  chiaPhanDeThi, sapCauTheoPhan, diemCuaPhan, tenTepDe, soDiemVN, tenLamDutTruyVan } from "@/utils/deThi";
+  chiaPhanDeThi, sapCauTheoPhan, soCauTheoPhan, diemCuaPhan, tenTepDe, soDiemVN,
+  tenLamDutTruyVan } from "@/utils/deThi";
 
 interface MatrixItemDraft {
   id: string;
@@ -431,8 +432,12 @@ function SelectContent() {
     cacPhan.map(p => [p.ma, diemCuaPhan(p, dongMaTran)])
   );
 
+  /* Số câu hiển thị lấy đúng cách đánh số của BẢN IN: mỗi phần đánh lại từ Câu 1,
+     kèm mã "I.7" phân biệt bốn câu cùng mang số 1 trong một đề. Màn này và tệp Word
+     dùng chung một hàm nên không thể lệch nhau. */
+  const soCau = soCauTheoPhan(cauDaChon);
   const soThuTuTrongDe = new Map<string, number>();
-  finalQuestions.forEach((q, i) => soThuTuTrongDe.set(q.id, i + 1));
+  soCau.forEach((v, id) => soThuTuTrongDe.set(id, v.so));
 
   /** Dòng ma trận của mỗi câu đã chọn, để màn "Xem đề hoàn chỉnh" bỏ được một câu mà
    * không cần mở khung đổi câu - bấm bỏ là gọi thẳng toggleCandidate(lineIdx, id). */
@@ -589,14 +594,14 @@ function SelectContent() {
   const handleExportWordStudent = async () => {
     try {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
-      await exportQuestionsToWord(finalQuestions, 'student', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan, maDe: dungMaDe() });
+      await exportQuestionsToWord(finalQuestions, 'student', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan, maDe: dungMaDe(), boDeId: boDeId || undefined });
     } catch (e: any) { alert("Lỗi xuất Word: " + e.message); }
   };
 
   const handleExportWordTeacher = async () => {
     try {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
-      await exportQuestionsToWord(finalQuestions, 'teacher', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan, maDe: dungMaDe() });
+      await exportQuestionsToWord(finalQuestions, 'teacher', tenTepDe(dauDe), { dauDe, chiaPhan: true, diemPhan, maDe: dungMaDe(), boDeId: boDeId || undefined });
     } catch (e: any) { alert("Lỗi xuất Word: " + e.message); }
   };
 
@@ -611,7 +616,7 @@ function SelectContent() {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
       const phuLuc = dungPhuLucBang(finalQuestions, dongMaTran, yeuCauCanDat);
       await exportQuestionsToWord(finalQuestions, 'teacher', tenTepDe(dauDe), {
-        dauDe, chiaPhan: true, diemPhan, phuLuc, maDe: dungMaDe(),
+        dauDe, chiaPhan: true, diemPhan, phuLuc, maDe: dungMaDe(), boDeId: boDeId || undefined,
       });
     } catch (e: any) { alert("Lỗi xuất trọn gói: " + e.message); }
   };
@@ -1008,6 +1013,7 @@ function SelectContent() {
                   <div key={q.id} className="mb-5">
                     <div className="flex items-baseline gap-2 mb-1">
                       <span className="font-bold">Câu {soThuTuTrongDe.get(q.id)}.</span>
+                      <span className="text-[10px] text-gray-400 font-mono">[{soCau.get(q.id)?.ma}]</span>
                       {/* Nhãn và nút dưới đây: KHÔNG in ra giấy */}
                       <span className="print:hidden inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-amber-100 text-amber-800 border border-amber-200">
                         Đã xuất hiện: {q.usage_count || 0} lần
