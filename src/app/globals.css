@@ -347,7 +347,7 @@ img[alt="Minh họa"]:not(.anh-noi-dung) {
    ô soạn thảo (15px), trang học sinh (16-18px) và trình chiếu (42px trên khung 1600x900).
    Trước đây mỗi nơi tự vẽ dấu đầu dòng riêng nên nhìn ba kiểu khác nhau. */
 .ds-y { list-style: none; padding-left: 0; }
-.ds-y > li { position: relative; padding-left: 1.15em; }
+.ds-y > li { position: relative; padding-left: 0.95em; }
 .ds-y > li::before {
   content: "–";
   position: absolute;
@@ -357,7 +357,8 @@ img[alt="Minh họa"]:not(.anh-noi-dung) {
 }
 
 /* Bậc 2 - Ý nhỏ */
-.ds-y .ds-y { margin-left: 1.1em; margin-top: 0.25em; }
+/* Thut le mot cap con: giu vua du de thay ro bac, khong day chu vao qua sau. */
+.ds-y .ds-y { margin-left: 0.45em; margin-top: 0.25em; }
 .ds-y .ds-y > li::before { content: "+"; color: #6366f1; }   /* indigo-500 */
 
 /* Bậc 3 - Ý phụ. Chấm tròn nhỏ hơn dấu + ở trên. */
@@ -372,6 +373,12 @@ img[alt="Minh họa"]:not(.anh-noi-dung) {
 
 /* Chữ trong ba bậc ý: thường, không đậm không nghiêng - đúng yêu cầu của Thầy cô. */
 .ds-y > li { font-weight: 400; font-style: normal; }
+
+/* Ý có ẢNH (hoặc có dòng trống) thì Markdown gói MỖI ý vào một <p> - lúc ấy lề của <p>
+   cộng thêm vào lề của ý, cả danh sách giãn ra gấp đôi và dấu "–" rời hẳn khỏi chữ.
+   Thu lề của <p> nằm trong ý về 0 để ý có ảnh nhìn y hệt ý không ảnh. */
+.ds-y > li > p { margin-top: 0; margin-bottom: 0.25em; }
+.ds-y > li > p:last-child { margin-bottom: 0; }
 
 /* ===== HỘP HƯỚNG DẪN GIẢI: bớt giãn dòng, mỗi ý một dấu =====
    Trước đây mỗi ý giải là một đoạn <p> cách nhau cả dòng trống, học sinh nhìn rời rạc

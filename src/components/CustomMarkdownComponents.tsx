@@ -230,7 +230,7 @@ export const unifiedMarkdownComponents: any = {
    h4: ({node, style, children, ...props}: any) => {
        return (
            /* Mục con a) b) c) - BỎ dấu ❖ theo yêu cầu, giữ nguyên màu và gạch chân. */
-           <h4 style={sanitizeStyle(style)} className="not-prose mt-6 mb-3 ml-8 text-[36px] font-bold text-teal-800 tracking-tight" {...props}>
+           <h4 style={sanitizeStyle(style)} className="not-prose mt-6 mb-3 ml-5 text-[36px] font-bold text-teal-800 tracking-tight" {...props}>
                <span className="inline-block border-b-2 border-teal-100 pb-1.5">{children}</span>
            </h4>
        );
@@ -239,7 +239,7 @@ export const unifiedMarkdownComponents: any = {
        return (
            /* ##### của bài cũ: nay hiện y như Ý lớn (chữ thường, gạch "–") để bài cũ và
               bài mới nhìn cùng một kiểu. Đo được chỉ 33 dòng trong 6 mục nên đổi an toàn. */
-           <h5 style={sanitizeStyle(style)} className="not-prose mt-3 mb-2 ml-12 text-[35px] font-normal text-slate-700 leading-[1.55] flex items-start gap-3" {...props}>
+           <h5 style={sanitizeStyle(style)} className="not-prose mt-3 mb-2 ml-8 text-[35px] font-normal text-slate-700 leading-[1.55] flex items-start gap-3" {...props}>
                <span className="shrink-0 font-bold text-slate-500">–</span>
                <span className="flex-1 min-w-0">{children}</span>
            </h5>
@@ -408,7 +408,7 @@ export const studentMarkdownComponents: any = {
    h4: ({node, style, children, ...props}: any) => {
        return (
            /* Mục con a) b) c) - bỏ dấu ❖. */
-           <h4 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 ml-4 sm:ml-6 text-lg sm:text-xl font-bold text-teal-800 tracking-tight" {...props}>
+           <h4 style={sanitizeStyle(style)} className="not-prose mt-5 mb-2 ml-2 sm:ml-3 text-lg sm:text-xl font-bold text-teal-800 tracking-tight" {...props}>
                <span className="inline-block border-b-2 border-teal-100 pb-1">{children}</span>
            </h4>
        );
@@ -416,7 +416,7 @@ export const studentMarkdownComponents: any = {
    h5: ({node, style, children, ...props}: any) => {
        return (
            /* ##### của bài cũ: hiện như Ý lớn. */
-           <h5 style={sanitizeStyle(style)} className="not-prose mt-2 mb-1.5 ml-6 sm:ml-8 text-base sm:text-lg font-normal text-slate-700 leading-[1.55] flex items-start gap-2" {...props}>
+           <h5 style={sanitizeStyle(style)} className="not-prose mt-2 mb-1.5 ml-4 sm:ml-5 text-base sm:text-lg font-normal text-slate-700 leading-[1.55] flex items-start gap-2" {...props}>
                <span className="shrink-0 font-bold text-slate-500">–</span>
                <span className="flex-1 min-w-0">{children}</span>
            </h5>

@@ -28,6 +28,8 @@ import { autoCropImage, uploadSourceImage, cropImageFromBoundingBox, uploadCropp
 import { thamDinhVaVeLai, svgSangPng, chamDoNetTuBlob } from "@/utils/veLaiHinhAI";
 import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep, cuuKhoiQuizHong } from "@/utils/noiTiepJson";
+import { chenAnhTheoNeo } from "@/utils/chenAnhVaoChu";
+import { nghenAnhVuaChen } from "@/utils/tinAnhVuaChen";
 import { docJsonCauHoi } from "@/utils/vaJson";
 import HuongDanSoanBaiModal from "@/components/admin/HuongDanSoanBaiModal";
 import { ArrowLeft, HelpCircle, Save, Sparkles, Image as ImageIcon, Key, Loader2, RefreshCw, Video, Link as LinkIcon, FileText, X, CropIcon, Upload, ChevronLeft, ChevronRight, Maximize2, Minimize2, MonitorPlay, Presentation, CheckCircle2, XCircle, Edit2, Download, PlayCircle, Eye, ChevronRightCircle, RefreshCcw, Bot, Copy, Code2, ListTodo, ChevronUp, ChevronDown, AlertTriangle, Database, UploadCloud } from "lucide-react";
@@ -1227,6 +1229,82 @@ function EditorContent() {
 
   const [showRawPreview, setShowRawPreview] = useState(false);
 
+  /* ===== Ảnh chèn ở bản này phải sang được bản kia =====
+     E-learning và Trình chiếu là HAI bản chữ riêng của cùng một mục. Dán ảnh ở bản đang mở
+     thì bản kia không hề có, mà màn trình chiếu đọc bản Trình chiếu - nên dán ảnh xong bấm
+     "Trình chiếu" là không thấy ảnh đâu. Đo trên kho: Toán 10 mục / Lý 12 mục có đủ cả hai
+     bản, trong đó 3 mục đang lệch số ảnh giữa hai bên - đúng cảnh Thầy cô gặp.
+
+     Cách chèn: lấy dòng NEO (dòng ngay trên tấm ảnh ở bản vừa dán) tìm sang bản kia. Khớp
+     đúng một lần thì chèn ngay dưới nó; không khớp hoặc khớp nhiều chỗ thì KHÔNG đoán bừa,
+     chỉ báo để Thầy cô tự dán. */
+  const [tinGuongAnh, setTinGuongAnh] = useState<{ chu: string; xong: boolean } | null>(null);
+  const banHienTai = useRef<any>({});
+  banHienTai.current = {
+    activeTab, elearningMarkdown, presentationMarkdown, elearningBlocks, presentationBlocks,
+  };
+
+  useEffect(() => {
+    /** Chèn ảnh vào đúng MỘT khối văn bản của bản kia. Hai khối cùng khớp thì bỏ, khỏi đặt nhầm. */
+    const chenVaoKhoi = (ds: Block[], neo: string, anhMd: string): Block[] | null => {
+      let dung = -1;
+      let chuMoi = '';
+      for (let i = 0; i < ds.length; i++) {
+        const b = ds[i];
+        if (b.type !== 'md' || typeof b.content !== 'string') continue;
+        const ra = chenAnhTheoNeo(b.content, neo, anhMd);
+        if (ra === null || ra === b.content) continue;
+        if (dung >= 0) return null;
+        dung = i;
+        chuMoi = ra;
+      }
+      if (dung < 0) return null;
+      const ra = [...ds];
+      ra[dung] = { ...ra[dung], content: chuMoi };
+      return ra;
+    };
+
+    return nghenAnhVuaChen(({ anhMd, neo }) => {
+      const s = banHienTai.current;
+      const sangTrinhChieu = s.activeTab === 'elearning';
+      const tenBanKia = sangTrinhChieu ? 'Trình chiếu' : 'E-learning';
+      const mdKia: string = (sangTrinhChieu ? s.presentationMarkdown : s.elearningMarkdown) || '';
+      const khoiKia: Block[] = (sangTrinhChieu ? s.presentationBlocks : s.elearningBlocks) || [];
+
+      // Bản kia còn trống thì thôi: màn trình chiếu tự lấy bản đang soạn.
+      if (!mdKia.trim() && khoiKia.length === 0) return;
+
+      const mdMoi = chenAnhTheoNeo(mdKia, neo, anhMd);
+      const khoiMoi = chenVaoKhoi(khoiKia, neo, anhMd);
+      const coMd = mdMoi !== null && mdMoi !== mdKia;
+      const coKhoi = khoiMoi !== null;
+
+      if (!coMd && !coKhoi) {
+        setTinGuongAnh({
+          xong: false,
+          chu: `Ảnh mới chỉ nằm ở bản đang mở. Bản ${tenBanKia} không tìm được chỗ tương ứng`
+            + ` — Thầy/Cô mở tab ${tenBanKia} rồi dán ảnh thêm một lần nữa.`,
+        });
+        return;
+      }
+
+      if (sangTrinhChieu) {
+        if (coMd) setPresentationMarkdown(mdMoi as string);
+        if (coKhoi) setPresentationBlocks(khoiMoi as Block[]);
+      } else {
+        if (coMd) setElearningMarkdown(mdMoi as string);
+        if (coKhoi) setElearningBlocks(khoiMoi as Block[]);
+      }
+      setTinGuongAnh({ xong: true, chu: `Đã chèn tấm ảnh này vào cả bản ${tenBanKia}.` });
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!tinGuongAnh) return;
+    const h = setTimeout(() => setTinGuongAnh(null), tinGuongAnh.xong ? 4000 : 9000);
+    return () => clearTimeout(h);
+  }, [tinGuongAnh]);
+
   const handleFixRawLatex = (e?: React.MouseEvent) => {
     if (e) e.preventDefault(); // Tránh làm mất focus của ô nhập liệu
     const isFixedBySelection = applyLatexFixToActiveElement();
@@ -2024,12 +2102,34 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
 
   return (
     <div className="w-full h-[calc(100vh-80px)] flex flex-col gap-2 relative">
+      {/* Báo ngắn về việc chèn ảnh sang bản còn lại - tự tắt, không chặn tay Thầy cô. */}
+      {tinGuongAnh && (
+        <div className={`fixed bottom-6 right-6 z-[100] max-w-sm px-4 py-3 rounded-xl shadow-lg border text-[13px] font-semibold
+                         ${tinGuongAnh.xong
+                            ? 'bg-emerald-50 border-emerald-300 text-emerald-900'
+                            : 'bg-amber-50 border-amber-300 text-amber-900'}`}>
+          {tinGuongAnh.chu}
+        </div>
+      )}
       <div className="bg-white rounded-xl shadow-sm border border-gray-100 flex-shrink-0 transition-all duration-300 z-20">
         {!isHeaderExpanded ? (
            <div className="flex justify-between items-center px-3 py-1.5 bg-gray-50/80 rounded-xl cursor-pointer hover:bg-gray-100 transition-colors" onClick={() => setIsHeaderExpanded(true)}>
              <div className="flex items-center gap-3">
                <button onClick={(e) => { e.stopPropagation(); luiMotBac(); }} title="Quay lại một bậc" className="p-1.5 text-gray-500 hover:bg-white hover:text-indigo-600 rounded-lg transition-colors border border-transparent hover:border-gray-200 shadow-sm"><ArrowLeft className="w-4 h-4" /></button>
                <span className="font-bold text-sm text-gray-700 flex items-center gap-2"><Edit2 className="w-4 h-4 text-indigo-500" /> <span className="hidden sm:inline">Cài đặt:</span> <span className="text-teal-700 truncate max-w-[200px] sm:max-w-xs">{title || 'Đang tải...'}</span> {moduleTitle && <><span className="text-gray-300">/</span><span className="text-orange-700 bg-orange-50 px-2.5 py-0.5 rounded-md text-xs border border-orange-200 uppercase tracking-wide shrink-0 shadow-sm">{moduleTitle}</span></>}</span>
+               {/* Đang soạn bản nào. Thu gọn thanh đầu trang thì hai tab biến mất, mà mỗi
+                   bản là một bài chữ riêng - không biết mình đang ở bản nào là dán ảnh
+                   vào bản này rồi đi tìm ở bản kia. Bấm để đổi bản ngay tại đây. */}
+               <button
+                 onClick={(e) => { e.stopPropagation(); setActiveTab(activeTab === 'elearning' ? 'presentation' : 'elearning'); }}
+                 title="Đang soạn bản này — bấm để chuyển sang bản còn lại"
+                 className={`px-2.5 py-0.5 rounded-md text-xs font-bold border shrink-0 shadow-sm whitespace-nowrap
+                   ${activeTab === 'elearning'
+                      ? 'bg-indigo-50 border-indigo-200 text-indigo-700 hover:bg-indigo-100'
+                      : 'bg-amber-50 border-amber-300 text-amber-800 hover:bg-amber-100'}`}
+               >
+                 {activeTab === 'elearning' ? '📱 Bản App' : '📺 Bản Trình chiếu'}
+               </button>
              </div>
              <div className="flex items-center gap-3">
                <button onClick={(e) => { e.stopPropagation(); handleSaveToDB(); }} disabled={isSavingDB} className="bg-teal-600 text-white px-4 py-1.5 rounded-md text-xs font-bold shadow-sm hover:bg-teal-700 flex items-center gap-1.5">

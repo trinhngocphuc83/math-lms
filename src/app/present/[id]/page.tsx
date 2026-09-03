@@ -989,11 +989,16 @@ export default function PresentationPage() {
                                 />
                             ) : (
                                 <div className="w-full">
+                                    {/* whitespace-pre-wrap chỉ đặt cho <p>, KHÔNG đặt cho <li>: một ý có ảnh
+                                        (hoặc có dòng trống) thì bên trong <li> là mấy khối rời nhau, giữa
+                                        chúng còn sót ký tự xuống dòng - để pre-wrap thì mấy ký tự ấy hiện
+                                        thành dòng trống thật, đẩy dấu đầu dòng rời hẳn khỏi chữ và giãn
+                                        dòng vống lên. Đo trên slide "Sự chuyển thể": thừa 30px mỗi ý. */}
                                     {currentFragments.slice(0, currentFragmentIndex + 1).map((frag, idx) => (
                                         <div
                                             key={`${currentSlideIndex}-${idx}`}
                                             className={`w-full animate-in fade-in slide-in-from-bottom-2 duration-500 ease-out
-                                                        [&_p]:whitespace-pre-wrap [&_li]:whitespace-pre-wrap ${KATEX_CLASS}`}
+                                                        [&_p]:whitespace-pre-wrap ${KATEX_CLASS}`}
                                         >
                                             <ReactMarkdown urlTransform={chuyenDiaChiAnh}
                                                 components={presentationMarkdownComponents}

@@ -275,7 +275,7 @@ export const presentationMarkdownComponents: any = {
     h4: ({ node, style, children, ...props }: any) => (
         <h4
             style={sanitizeStyle(style)}
-            className="not-prose ml-10 text-[40px] font-bold text-teal-800 tracking-tight leading-[1.35] mb-4 mt-5"
+            className="not-prose ml-6 text-[40px] font-bold text-teal-800 tracking-tight leading-[1.35] mb-4 mt-5"
             {...props}
         >
             {children}
@@ -287,7 +287,7 @@ export const presentationMarkdownComponents: any = {
     h5: ({ node, style, children, ...props }: any) => (
         <h5
             style={sanitizeStyle(style)}
-            className="not-prose flex items-start gap-3 text-[40px] font-normal text-slate-800 leading-[1.55] mb-2 mt-2 ml-14"
+            className="not-prose flex items-start gap-3 text-[40px] font-normal text-slate-800 leading-[1.55] mb-2 mt-2 ml-9"
             {...props}
         >
             <span className="shrink-0 font-bold text-slate-500">–</span>

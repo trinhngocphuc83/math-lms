@@ -8,6 +8,8 @@ import katex from "katex";
 import "katex/dist/katex.min.css";
 import LatexPalette from "./LatexPalette";
 import { CURSOR_TOKEN, getMathAtCursor, isInsideMath } from "@/utils/mathText";
+import { chenAnhGiuCap } from "@/utils/chenAnhVaoChu";
+import { baoAnhVuaChen } from "@/utils/tinAnhVuaChen";
 
 interface RichTextareaProps extends Omit<React.ComponentProps<typeof TextareaAutosize>, 'onChange' | 'value'> {
   value: string;
@@ -657,16 +659,21 @@ export default function RichTextarea({ value, onChange, onValueChange, className
        const { taiAnhLenKho } = await import("@/utils/docCauHoiTuAnh");
        const publicUrl = await taiAnhLenKho(file);
 
-       const imgMd = `\n![Hình ảnh](${publicUrl})\n`;
-       const newValue = beforeText + imgMd + afterText;
-       
+       /* Đặt ảnh thành một dòng riêng, thụt lề theo ý đang chứa nó - xem
+          utils/chenAnhVaoChu. Dán thẳng ở cột 0 như trước là cắt đôi danh sách,
+          mấy ý con phía dưới tuột lên cấp 1. */
+       const imgMd = `![Hình ảnh](${publicUrl})`;
+       const { chu: newValue, conTro, neo } = chenAnhGiuCap(value, start, imgMd);
+
        if (onValueChange) onValueChange(newValue);
        else {
           const ev = { target: { value: newValue } } as React.ChangeEvent<HTMLTextAreaElement>;
           resolvedOnChange(ev);
        }
-       
-       datConTro(start + imgMd.length, start + imgMd.length);
+
+       datConTro(conTro, conTro);
+       /* Báo cho trang soạn bài biết, để nó chèn luôn sang bản còn lại. */
+       baoAnhVuaChen({ anhMd: imgMd, neo });
     } catch(err) {
        alert("Lỗi tải ảnh lên!");
        if (onValueChange) onValueChange(value);
