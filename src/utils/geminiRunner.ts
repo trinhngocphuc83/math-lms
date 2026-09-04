@@ -40,9 +40,14 @@ export const laLoiHetGio = (msg: string): boolean => /\[hết giờ\]/.test(msg)
  * phía giao diện chỉ đọc được "Unexpected token 'A'" - không ai đoán ra là do quá tải.
  *
  * Ngân sách để dưới 60 giây của Vercel, chừa chỗ cho phần dựng câu trả lời.
+ *
+ * Con số lấy từ đo thật, không phải ước chừng: một lần xếp 8 câu THÀNH CÔNG mất 16,3 giây
+ * (gemini-3.5-flash, đo 04/09/2026). Nên hạn giờ mỗi lần gọi phải rộng hơn hẳn con số đó,
+ * nếu không là tự giết chính lần gọi đang chạy được. Ngân sách 50 giây vừa đủ cho hai
+ * đường: một lần treo hết hạn rồi vẫn còn chỗ cho một lần chạy thật.
  */
-export const GIAY_MOI_LAN_GOI = 20;
-export const GIAY_CA_LUOT = 45;
+export const GIAY_MOI_LAN_GOI = 25;
+export const GIAY_CA_LUOT = 50;
 
 /** Bọc một lời hứa bằng hạn giờ; quá hạn thì ném lỗi có dấu [hết giờ] để phân biệt. */
 function chanGio<T>(viec: Promise<T>, giay: number, nhan: string): Promise<T> {
@@ -119,7 +124,8 @@ export async function goiGemini(thamSo: ThamSoGoiGemini): Promise<KetQuaGoiGemin
   const conGio = () => Date.now() < hanChot;
   let hetNganSach = false;
 
-  for (const modelId of models) {
+  for (let iModel = 0; iModel < models.length; iModel++) {
+    const modelId = models[iModel];
     if (!conGio()) { hetNganSach = true; break; }
     // Khoá bị treo được tính riêng cho từng model, nên phải lọc lại ở mỗi vòng.
     const keys = await filterCleanKeys(thamSo.keys, modelId);
@@ -128,12 +134,24 @@ export async function goiGemini(thamSo: ThamSoGoiGemini): Promise<KetQuaGoiGemin
       continue;
     }
 
+    /*
+     * KHÔNG chia đều ngân sách cho từng model.
+     *
+     * Đã thử cách chia rồi bỏ: một lần xếp thành công mất 16,3 giây, mà chia 50 giây cho
+     * ba model thì mỗi model chỉ được ~17 giây - hạn giờ hoá ra ngắn hơn cả lần gọi đang
+     * chạy được, tự tay giết mất kết quả. Thay vào đó dựa vào hai chốt rẻ hơn: lần gọi
+     * TREO thì bỏ luôn model ấy (xem chỗ bắt lỗi bên dưới), còn 503 thì cứ thử tiếp khoá
+     * khác vì gần như không tốn giờ. Nhờ vậy vẫn giữ đúng lời hứa ghi trên trang Trạm
+     * kiểm soát Cổng A.I: model đầu thử hết mọi khoá rồi mới tụt xuống model kế tiếp.
+     */
     let soKhoaCan = 0;
     let coLoiQuaTai = false;
-    let soLanQuaTai = 0;
+    let coTreo = false;
+    let soKhoaDaThu = 0;
 
     for (const apiKey of keys) {
       if (!conGio()) { hetNganSach = true; break; }
+      soKhoaDaThu++;
       try {
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({
@@ -141,17 +159,28 @@ export async function goiGemini(thamSo: ThamSoGoiGemini): Promise<KetQuaGoiGemin
           ...(thamSo.generationConfig ? { generationConfig: thamSo.generationConfig } : {}),
         });
         // Chặn giờ ở đây chứ không tin vào thư viện: gọi treo là cả lượt treo theo.
-        // Không quá nửa số giây còn lại, để còn kịp thử một đường khác.
         const conLai = Math.max(3, Math.floor((hanChot - Date.now()) / 1000));
+        const bd = Date.now();
         const result = await chanGio(model.generateContent(thamSo.parts),
           Math.min(giayMoiLan, conLai), modelId);
+        console.log(`[geminiRunner] ${modelId} trả lời sau ${((Date.now() - bd) / 1000).toFixed(1)}s (khoá ***${apiKey.slice(-4)}).`);
         return { text: result.response.text(), model: modelId };
       } catch (e: any) {
         loiCuoi = e?.message || String(e);
 
         if (laLoiHetGio(loiCuoi)) {
-          console.warn(`[geminiRunner] ${modelId}: khoá ***${apiKey.slice(-4)} quá hạn giờ, bỏ sang đường khác.`);
-          continue;
+          /*
+           * TREO là chuyện của model, không phải của khoá - và đắt hơn hẳn mọi lỗi khác.
+           *
+           * Lỗi 503 bị Google từ chối gần như tức thì nên thử thêm khoá gần như không mất
+           * gì; còn một lần treo ngốn trọn hạn giờ. Đo trong app 04/09/2026: cả ba model
+           * đều treo, mỗi model thử thêm khoá thứ hai là hết sạch phần giờ, model ổn định
+           * xếp cuối không bao giờ tới lượt. Nên treo thì bỏ model đó ngay, đổi model khác
+           * còn hơn ngồi chờ thêm một lần treo nữa trên cùng một model.
+           */
+          console.warn(`[geminiRunner] ${modelId}: khoá ***${apiKey.slice(-4)} treo quá hạn giờ, bỏ model này luôn.`);
+          coTreo = true;
+          break;
         }
 
         if (laLoiCanHanMuc(loiCuoi)) {
@@ -163,18 +192,9 @@ export async function goiGemini(thamSo: ThamSoGoiGemini): Promise<KetQuaGoiGemin
 
         if (laLoiQuaTai(loiCuoi)) {
           coLoiQuaTai = true;
-          soLanQuaTai++;
           console.warn(`[geminiRunner] ${modelId} đang quá tải ở khoá ***${apiKey.slice(-4)}.`);
-          /*
-           * 503 là chuyện của MODEL, không phải của khoá - đổi khoá cũng vẫn 503. Hai khoá
-           * liên tiếp báo quá tải là đủ kết luận, sang model khác ngay cho kịp ngân sách.
-           * Đo trong app 04/09/2026: kho có 5 khoá, thử hết cả 5 rồi mới chuyển model thì
-           * ngân sách 45 giây cạn trước khi kịp chạm tới model thứ ba - đúng model ổn định.
-           */
-          if (soLanQuaTai >= 2) {
-            console.warn(`[geminiRunner] ${modelId} quá tải ở ${soLanQuaTai} khoá, bỏ qua model này.`);
-            break;
-          }
+          // Vẫn thử nốt các khoá còn lại - 503 bị từ chối gần như tức thì nên gần như
+          // không tốn giờ, mà khoá của dự án Google khác đôi khi vẫn qua được.
           continue;
         }
 
@@ -183,8 +203,8 @@ export async function goiGemini(thamSo: ThamSoGoiGemini): Promise<KetQuaGoiGemin
     }
 
     if (soKhoaCan === keys.length) modelDaCan.push(modelId);
-    else if (coLoiQuaTai) modelQuaTai.push(modelId);
-    console.warn(`[geminiRunner] ${modelId} không dùng được, chuyển sang model kế tiếp.`);
+    else if (coLoiQuaTai || coTreo) modelQuaTai.push(modelId);
+    console.warn(`[geminiRunner] ${modelId} không dùng được sau ${soKhoaDaThu}/${keys.length} khoá, chuyển sang model kế tiếp.`);
     if (hetNganSach) break;
   }
 
