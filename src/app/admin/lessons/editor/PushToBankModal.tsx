@@ -592,27 +592,24 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
      
      const globalTongHop = allForms.find(f => /tổng hợp/i.test(f)) || "Toán tổng hợp";
 
-     setQuestions(prev => {
-        const next = prev.map(q => {
-           if (!q.math_form) {
-              // Câu Đúng/Sai: xét riêng từng mệnh đề, chỉ gán "Tổng hợp" khi các
-              // mệnh đề THỰC SỰ thuộc nhiều dạng khác nhau (không gán cứng nữa).
-              const detected = resolveMathForm(q, formsToUse, globalTongHop);
-              if (detected) {
-                 count++;
-                 return { ...q, math_form: detected };
-              }
+     /* Cùng lý do như đường AI ở trên: đếm xong rồi mới đặt state, không nhét việc phụ
+        (đếm, hẹn giờ báo) vào bên trong hàm cập nhật. */
+     const next = questions.map(q => {
+        if (!q.math_form) {
+           // Câu Đúng/Sai: xét riêng từng mệnh đề, chỉ gán "Tổng hợp" khi các
+           // mệnh đề THỰC SỰ thuộc nhiều dạng khác nhau (không gán cứng nữa).
+           const detected = resolveMathForm(q, formsToUse, globalTongHop);
+           if (detected) {
+              count++;
+              return { ...q, math_form: detected };
            }
-           return q;
-        });
-
-        setTimeout(() => {
-           if (count > 0) alert(`✨ Đã nhận diện và điền tự động Dạng bài cho ${count} câu hỏi trống!`);
-           else alert("Không tìm thấy Dạng bài nào phù hợp với các câu hỏi đang trống.");
-        }, 100);
-        
-        return next;
+        }
+        return q;
      });
+
+     setQuestions(next);
+     if (count > 0) alert(`✨ Đã nhận diện và điền tự động Dạng bài cho ${count} câu hỏi trống!`);
+     else alert("Không tìm thấy Dạng bài nào phù hợp với các câu hỏi đang trống.");
   };
 
   /**
@@ -853,10 +850,19 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
           throw new Error(canhBao.length ? canhBao.join('\n') : 'AI không trả về kết quả nào.');
         }
 
+        /*
+         * Tính XONG rồi mới đặt state, KHÔNG gom kết quả phụ bên trong hàm cập nhật.
+         *
+         * Bản cũ điền deXuatDangMoi ngay trong setQuestions(prev => ...). React chạy hàm
+         * đó lúc dựng lại giao diện chứ không phải ngay tại chỗ, nên dòng ngay sau đọc
+         * deXuatDangMoi thì nó vẫn rỗng - khung cam "AI đề xuất Dạng mới" không bao giờ
+         * hiện. Bảng soát lại đếm thẳng từ xepDuoc nên vẫn báo "2 Dạng mới chờ duyệt",
+         * thành ra máy báo có mà đóng bảng ra thì không thấy đâu mà duyệt.
+         */
         const deXuatDangMoi: Record<string, string> = {};
         let soXep = 0;
 
-        setQuestions(prev => prev.map(q => {
+        const cauSauKhiXep = questions.map(q => {
           const kq = xepDuoc.find(x => x.id === q.id);
           if (!kq) return q;
           soXep++;
@@ -864,13 +870,15 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
           // đường cũ. Gán thẳng là danh mục mọc thêm dạng mà thầy cô chưa hề xem.
           // Phân môn lấy theo từng câu, vì đề có thể trải trên nhiều phân môn
           const nhanh = { subject: kq.subject, topic: kq.topic, lesson: kq.lesson, difficulty: kq.difficulty };
-          if (kq.dangMoi) {
-            deXuatDangMoi[q.id] = kq.math_form;
+          const tenDangMoi = String(kq.math_form || '').trim();
+          if (kq.dangMoi && tenDangMoi) {
+            deXuatDangMoi[q.id] = tenDangMoi;
             return { ...q, ...nhanh };
           }
           return { ...q, ...nhanh, math_form: kq.math_form };
-        }));
+        });
 
+        setQuestions(cauSauKhiXep);
         if (Object.keys(deXuatDangMoi).length > 0) {
           setPendingFormSuggestions(prev => ({ ...prev, ...deXuatDangMoi }));
         }
