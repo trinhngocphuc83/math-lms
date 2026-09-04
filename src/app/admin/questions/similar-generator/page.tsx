@@ -16,11 +16,23 @@ import { exportQuestionsToWord } from "@/utils/exportDocx";
 import { targetFormatPrompt, CORRECT_ANSWER_FORMAT_HINT } from "@/utils/questionTypes";
 import { LUAT_KHONG_CAT_CUT } from "@/utils/noiTiepJson";
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
+import { docJsonCauHoi } from "@/utils/vaJson";
+import { MathRenderer } from "@/components/MathRenderer";
 
 
-const cleanJsonString = (str: string) => {
-  return str.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
-};
+/**
+ * Trang này TỪNG tự đọc JSON bằng cách chỉ gỡ rào ```json rồi JSON.parse thẳng.
+ *
+ * Hỏng ở chỗ: JSON.parse KHÔNG hề báo lỗi khi gặp "\text{ km/h}" - vì "\t" là mã thoát
+ * hợp lệ (dấu tab). Nó lặng lẽ trả về dấu tab rồi "ext{ km/h}", in ra màn hình thành
+ * "$24\ ext{ km/h}$". Công thức vỡ mà không có lỗi nào để lần ra. Cùng lối đó: "\frac"
+ * thành "\f"+"rac", "\right" thành "\r"+"ight" - đo trên kho: 36.657 lượt dùng bốn lệnh
+ * họ này.
+ *
+ * Nay dùng chung docJsonCauHoi (utils/vaJson) như bảy chỗ đọc JSON khác trong app: ở đó
+ * đã có bước cứu lệnh LaTeX bị nuốt, và còn cứu được từng câu khi cả lô hỏng.
+ */
+const docJson = (str: string): any[] => docJsonCauHoi(str).items;
 
 interface QuestionData {
   temp_id?: string;
@@ -175,7 +187,7 @@ export default function SimilarGeneratorPage() {
         }
       }
 
-      const parsedData = JSON.parse(cleanJsonString(jsonStr));
+      const parsedData = docJson(jsonStr);
 
       const newBaseQuestions: BaseQuestion[] = parsedData.map((data: any) => {
         let qContent = data.noiDung || data.noidung || data.content || data.question || data.deBai || "";
@@ -488,8 +500,8 @@ Lời giải: ${baseQuestion.explanation}
         }
       }
 
-      const parsed = JSON.parse(cleanJsonString(jsonStr));
-      const finalArray = Array.isArray(parsed) ? parsed : (parsed.questions || []);
+      /* docJson luôn trả về MẢNG, kể cả khi AI gói trong { questions: [...] }. */
+      const finalArray = docJson(jsonStr);
 
       const variants = finalArray.map((data: any) => {
          let parsedQuestionType = String(data.loaiCauHoi || baseQuestion.target_format || "NLC");
@@ -627,8 +639,8 @@ Tổng cộng bạn phải sinh ra ĐÚNG ${totalTargetCount} phần tử trong 
         throw new Error("Không tìm thấy mảng JSON trong văn bản (phải bọc trong [...])");
       }
 
-      const parsed = JSON.parse(cleanJsonString(jsonStr));
-      const finalArray = Array.isArray(parsed) ? parsed : (parsed.questions || []);
+      /* docJson luôn trả về MẢNG, kể cả khi AI gói trong { questions: [...] }. */
+      const finalArray = docJson(jsonStr);
 
       let successCount = 0;
 
@@ -1024,8 +1036,10 @@ Tổng cộng bạn phải sinh ra ĐÚNG ${totalTargetCount} phần tử trong 
                         {bq.lesson && <span className="bg-emerald-50 text-emerald-700 text-[10px] font-semibold px-2 py-0.5 rounded border border-emerald-100 line-clamp-1 max-w-[200px]" title={bq.lesson}>{bq.lesson}</span>}
                         {bq.math_form && <span className="bg-amber-50 text-amber-700 text-[10px] font-semibold px-2 py-0.5 rounded border border-amber-100 line-clamp-1 max-w-[200px]" title={bq.math_form}>{bq.math_form}</span>}
                     </div>
+                    {/* Dựng công thức thay vì đổ mã LaTeX: soát đề mà nhìn "$rac{7\pi}{18}$"
+                        thì không ai kiểm được nhanh. */}
                     <div className="text-sm font-medium text-gray-800 bg-white p-3 border border-gray-200 rounded-lg max-h-32 overflow-y-auto">
-                        {bq.content}
+                        <MathRenderer htmlContent={bq.content} />
                     </div>
                     
                     {/* CẤU HÌNH SINH */}
@@ -1099,8 +1113,10 @@ Tổng cộng bạn phải sinh ra ĐÚNG ${totalTargetCount} phần tử trong 
                                       </div>
                                   )}
                                   
-                                  <div className="text-sm font-medium text-gray-800 mt-2 line-clamp-3">
-                                      {v.content}
+                                  {/* Biến thể cũng dựng công thức. Bỏ line-clamp vì cắt cụt
+                                      giữa một công thức thì nhìn còn khó hiểu hơn. */}
+                                  <div className="text-sm font-medium text-gray-800 mt-2 max-h-40 overflow-y-auto">
+                                      <MathRenderer htmlContent={v.content} />
                                   </div>
                               </div>
                           ))}

@@ -32,6 +32,36 @@ function vaGachCheo(s: string): string {
   return ra;
 }
 
+/**
+ * Cứu những lệnh LaTeX bị JSON nuốt mất chữ cái đầu.
+ *
+ * Đây là loại hỏng ÂM THẦM, khó thấy nhất: "\text{ km/h}" viết thẳng vào JSON thì "\t"
+ * là mã thoát HỢP LỆ (dấu tab), nên JSON.parse KHÔNG báo lỗi - nó lặng lẽ trả về một dấu
+ * tab rồi "ext{ km/h}". In ra màn hình thành "$24\ ext{ km/h}$", công thức vỡ mà không
+ * ai biết vì sao. Cùng lối đó: "\frac" thành "\f" + "rac", "\right" thành "\r" + "ight",
+ * "\binom" thành "\b" + "inom".
+ *
+ * Vá trước khi phân tích, vì các bước sau chỉ chạy KHI JSON.parse ném lỗi - mà ở đây nó
+ * không hề ném.
+ *
+ * Chỉ đụng khi chuỗi có dấu $ (tức là có LaTeX), và chỉ với bốn chữ t f b r kèm ít nhất
+ * hai chữ cái nữa phía sau. Cố ý KHÔNG đụng "\n": xuống dòng là mã thoát dùng thật và
+ * dùng nhiều, "...xong.\next..." mà sửa là hỏng ngược.
+ */
+function cuuLenhLatex(s: string): string {
+  if (!s.includes('$')) return s;
+  // (?<!\\) để không đụng chuỗi AI đã escape đúng chuẩn: "\\text" phải giữ nguyên,
+  // sửa nữa là thành ba dấu gạch chéo rồi hỏng ngược.
+  return s
+    .replace(/(?<!\\)\\([tfbr])([a-zA-Z]{2,})/g, '\\\\$1$2')
+    // Chữ "n" thì chỉ cứu đúng mấy lệnh gọi tên đầy đủ, không cứu theo kiểu chung chung.
+    // Đếm trên kho Toán: "\n" + chữ cái gần như luôn là XUỐNG DÒNG rồi tới chữ tiếng Việt
+    // (\nLời giải, \nVậy, \nTa có, \nSuy ra, \nGiải...), cứu bừa là phá sạch xuống dòng của
+    // mọi lời giải. Nhưng \neq (867 lượt) và \notin (86 lượt) lại là lệnh thật, mà "eq" hay
+    // "otin" thì không bao giờ mở đầu một dòng tiếng Việt nên nhận diện được chắc chắn.
+    .replace(/(?<!\\)\\n(eq|otin|abla|earrow)\b/g, '\\\\n$1');
+}
+
 /** Bỏ dấu phẩy thừa ngay trước dấu đóng ngoặc. */
 const boPhayThua = (s: string): string => s.replace(/,(\s*[}\]])/g, '$1');
 
@@ -100,10 +130,15 @@ export function docJsonCauHoi(raw: string): KetQuaVaJson {
   const than = layThanJson(raw);
 
   const cacBuoc: { ten: string; ham: (s: string) => string }[] = [
+    /* Cứu lệnh LaTeX ĐẶT TRƯỚC "nguyên trạng": kiểu hỏng này không làm JSON.parse ném lỗi
+       nên nếu để sau thì không bao giờ tới lượt. Và phải GHÉP vào mọi bước sau nữa - mỗi
+       bước dựng lại từ chuỗi gốc, không nối tiếp nhau, nên bước sau mà quên cứu thì lệnh
+       LaTeX lại bị nuốt y như cũ. */
+    { ten: 'cứu lệnh LaTeX bị nuốt', ham: cuuLenhLatex },
     { ten: 'nguyên trạng', ham: (s) => s },
-    { ten: 'bỏ dấu phẩy thừa', ham: boPhayThua },
-    { ten: 'vá xuống dòng trong chuỗi', ham: (s) => vaXuongDongTrongChuoi(boPhayThua(s)) },
-    { ten: 'nhân đôi gạch chéo LaTeX', ham: (s) => vaGachCheo(vaXuongDongTrongChuoi(boPhayThua(s))) },
+    { ten: 'bỏ dấu phẩy thừa', ham: (s) => boPhayThua(cuuLenhLatex(s)) },
+    { ten: 'vá xuống dòng trong chuỗi', ham: (s) => vaXuongDongTrongChuoi(boPhayThua(cuuLenhLatex(s))) },
+    { ten: 'nhân đôi gạch chéo LaTeX', ham: (s) => vaGachCheo(vaXuongDongTrongChuoi(boPhayThua(cuuLenhLatex(s)))) },
   ];
 
   for (let i = 0; i < cacBuoc.length; i++) {
