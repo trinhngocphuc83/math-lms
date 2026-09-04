@@ -7,6 +7,7 @@ import type { QuestionData } from "./aiQuestionScan";
 import { toBankType, toDifficultyCode } from "./questionTypes";
 import { docDapAnDungSai, dapAnDungSaiDungKhuon } from "./chuanHoaCauHoi";
 import { nanTenPhanLoai } from "./deThi";
+import { tachChuKhoiCongThuc } from "./tachChuKhoiCongThuc";
 import { doiVeTenChuan } from "./phanLoaiCauHoi";
 import { findMatchingChapterTitle, findMatchingLessonTitle } from "./topicMatch";
 import { boSungYeuCauCanDat } from "./yeuCauCanDat";
@@ -149,6 +150,27 @@ export async function saveQuestionsToBank(supabase: any, questions: QuestionData
         (q as any)[cot] = moi;
         daNan.push(`Tên viết sai LaTeX: "${cu}" -> "${moi}"`);
       }
+    }
+  }
+
+  /*
+   * Đưa chữ ra khỏi công thức trước khi ghi.
+   *
+   * Bộ dựng công thức không có phông cho chữ tiếng Việt có dấu, nên "$30\text{ km}$" hay
+   * "$\text{Tổng thời gian}$" in ra bị vỡ chữ, mất dấu, có chỗ còn bị cắt cụt. Chữ nằm
+   * NGOÀI $...$ thì trình duyệt tự lo, chưa hỏng bao giờ. Xem tachChuKhoiCongThuc.ts để
+   * biết ba chỗ tuyệt đối không được tách.
+   *
+   * Đo trên kho trước khi bật: Toán 641 trường sẽ đổi, Lý 1.495 trường - và cả hai kho đều
+   * KHÔNG mất một chữ nào sau khi tách.
+   */
+  for (const q of validQuestions) {
+    for (const cot of ['content', 'option_a', 'option_b', 'option_c', 'option_d',
+                       'correct_answer', 'explanation'] as const) {
+      const cu = String((q as any)[cot] ?? '');
+      if (!cu.includes('$')) continue;
+      const moi = tachChuKhoiCongThuc(cu);
+      if (moi !== cu) (q as any)[cot] = moi;
     }
   }
 
