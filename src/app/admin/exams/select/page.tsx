@@ -20,6 +20,7 @@ import {
 import { taoKhoaSoSanh, doGiongNhau, NGUONG_NGHI_TRUNG } from "@/utils/questionFingerprint";
 import KiemThuDeModal from "@/components/admin/KiemThuDeModal";
 import { gomTheoLoai } from "@/utils/deThi";
+import { exportPhieuTraLoi } from "@/utils/phieuTraLoi";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
   chiaPhanDeThi, sapCauTheoPhan, soCauTheoPhan, diemCuaPhan, tenTepDe, soDiemVN,
@@ -616,6 +617,22 @@ function SelectContent() {
    * Hai bảng dựng từ CÁC CÂU ĐANG CHỌN chứ không từ ma trận đã cấu hình, nên bảng in
    * ra luôn khớp với đề đang cầm - kể cả khi thầy cô chọn lệch so với mục tiêu.
    */
+  /**
+   * Phiếu trả lời - tờ giấy học sinh làm bài.
+   *
+   * Dựng theo đúng các phần CÓ THẬT trong đề, số ô bằng số câu, và số dòng kẻ chấm của
+   * mỗi câu tự luận tính từ độ dài lời giải nên không chừa thiếu cũng không phí giấy.
+   */
+  const handleExportPhieu = async () => {
+    try {
+      if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
+      await exportPhieuTraLoi(
+        { dauDe, cacPhan, diemPhan, boDeId: boDeId || undefined },
+        tenTepDe(dauDe),
+      );
+    } catch (e: any) { alert("Lỗi xuất phiếu: " + e.message); }
+  };
+
   const handleExportTronGoi = async () => {
     try {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
@@ -803,6 +820,12 @@ function SelectContent() {
                   nhan="Đề kèm lời giải"
                   moTa="Bản của giáo viên"
                   onClick={handleExportWordTeacher}
+                />
+                <MucMenu
+                  icon={<Download className="w-4 h-4 text-teal-600" />}
+                  nhan="Phiếu trả lời"
+                  moTa="Tờ giấy học sinh làm bài: lưới trắc nghiệm và dòng kẻ chấm tự luận"
+                  onClick={handleExportPhieu}
                 />
                 <MucMenu
                   icon={<Download className="w-4 h-4 text-violet-600" />}

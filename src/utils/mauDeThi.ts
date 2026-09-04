@@ -48,6 +48,12 @@ export const NAVY = "1B365D";
 export const NEN_HOP = "F2F4F8";
 /** Đỏ của dòng "Kết luận: Chọn C." - cũng lấy từ tệp thật. */
 export const DO_KET_LUAN = "B42828";
+/** Nền hàng tiêu đề của các bảng trong phiếu trả lời. */
+export const NEN_BANG_PHIEU = "EAECEE";
+/** Nền ô điểm ở đầu phiếu trả lời. */
+export const NEN_O_DIEM = "F4F6F9";
+/** Đỏ của dòng "TỔNG ĐIỂM" trên phiếu trả lời. */
+export const DO_TONG_DIEM = "C0392B";
 export const TRANG = "FFFFFF";
 /** Nền hàng tiêu đề bảng. */
 export const NEN_TIEU_DE = "F2F2F2";
