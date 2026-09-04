@@ -309,6 +309,7 @@ export async function soiNoiDungBangAI(
           moTa: `Giải độc lập HAI lần đều ra "${b.dapAn}" nhưng kho ghi đáp án "${dapAnKho}".`
             + (b.vi ? ` AI lập luận: ${b.vi}` : ''),
           cachSua: 'Giải tay lại câu này. Nếu AI đúng thì sửa đáp án trong ngân hàng.',
+          deXuat: { correct_answer: b.dapAn },
         });
       } else {
         ra.push({

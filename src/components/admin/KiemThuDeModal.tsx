@@ -2,7 +2,7 @@
 
 import React from "react";
 import {
-  X, ShieldCheck, AlertTriangle, AlertCircle, Info, Loader2, Bot, CheckCircle2,
+  X, ShieldCheck, AlertTriangle, AlertCircle, Info, Loader2, Bot, CheckCircle2, Wrench,
 } from "lucide-react";
 import {
   soatCaDe, chamDiem, loiKetLuan, TIEU_CHI,
@@ -12,6 +12,9 @@ import { soiNoiDungBangAI, type CauSoiNoiDung, type TienDoSoi } from "@/utils/so
 import { nhanViTri } from "@/utils/kiemThuDe";
 import type { PhanDeThi } from "@/utils/deThi";
 import type { BankType } from "@/utils/questionTypes";
+import { suaDuocBang, suaBangMay, suaBangAI, type BanVa } from "@/utils/suaLoiKiemThu";
+import type { CauDeSoat } from "@/utils/kiemThuDe";
+import SuaLoiModal from "./SuaLoiModal";
 
 /**
  * Bảng kiểm thử đề thi - theo Sổ tay Kiểm thử của Thầy cô.
@@ -56,6 +59,12 @@ export default function KiemThuDeModal({
   const [dangSoiAI, setDangSoiAI] = React.useState(false);
   const [tienDo, setTienDo] = React.useState<TienDoSoi | null>(null);
   const [baoAI, setBaoAI] = React.useState('');
+  /* Bản vá đang chờ Thầy cô soi trước khi lưu. */
+  const [banVa, setBanVa] = React.useState<{ cau: CauDeSoat; va: BanVa; ghiChu: string[]; moTa: string } | null>(null);
+  const [dangSuaMa, setDangSuaMa] = React.useState('');
+  const [baoSua, setBaoSua] = React.useState('');
+  /* Những câu đã sửa và lưu trong phiên này - vá luôn vào bản đang cầm để soi lại cho đúng. */
+  const [daVa, setDaVa] = React.useState<Record<string, BanVa>>({});
 
   React.useEffect(() => {
     if (!mo) return;
@@ -94,6 +103,52 @@ export default function KiemThuDeModal({
     }
   };
 
+  /** Câu hỏi ứng với một dòng lỗi, đã vá những gì vừa lưu trong phiên này. */
+  const timCau = (cauId?: string): CauDeSoat | null => {
+    if (!cauId) return null;
+    for (const phan of cacPhan) {
+      const q = (phan.cauHoi as any[]).find(x => x?.id === cauId);
+      if (q) return { ...q, ...(daVa[cauId] || {}) };
+    }
+    return null;
+  };
+
+  /**
+   * Bấm "Sửa" ở một dòng lỗi.
+   *
+   * Lỗi máy tự sửa được thì ra bản vá ngay; lỗi phải nhờ AI thì gọi một lượt. Cả hai
+   * đường đều KHÔNG ghi thẳng vào ngân hàng - chỉ mở bảng so sánh cho Thầy cô gật đầu.
+   */
+  const chaySua = async (l: LoiKiemThu) => {
+    const cau = timCau(l.cauId);
+    if (!cau) return;
+    const khoa = `${l.ma}|${l.cauId}`;
+    setDangSuaMa(khoa); setBaoSua('');
+    try {
+      const cach = suaDuocBang(l.ma);
+      const r = cach === 'ai' ? await suaBangAI(cau, l.ma) : suaBangMay(cau, l.ma, l.deXuat);
+      if (!r) { setBaoSua(`${l.viTri}: không tự sửa được chỗ này, Thầy/Cô sửa tay giúp.`); return; }
+      setBanVa({ cau, va: r.va, ghiChu: r.ghiChu, moTa: `${l.viTri} — ${l.moTa}` });
+    } catch (e: any) {
+      setBaoSua('Không sửa được: ' + (e?.message || 'lỗi không rõ'));
+    } finally {
+      setDangSuaMa('');
+    }
+  };
+
+  const daLuuXong = (cauId: string, va: BanVa) => {
+    /* Vá vào bản đang cầm rồi soi lại từ đầu, để dòng lỗi vừa sửa tự biến mất. */
+    const moi = { ...daVa, [cauId]: { ...(daVa[cauId] || {}), ...va } };
+    setDaVa(moi);
+    for (const phan of cacPhan) {
+      const q = (phan.cauHoi as any[]).find(x => x?.id === cauId);
+      if (q) Object.assign(q, va);
+    }
+    setKq(soatCaDe({ cacPhan, chiTieu, diemPhan, tenKhuon, dongMaTran }));
+    setLoiAI(cu => (cu ? cu.filter(x => x.cauId !== cauId) : cu));
+    setBaoSua('Đã lưu vào ngân hàng câu hỏi.');
+  };
+
   const theoMuc = (m: 'loi' | 'canhBao' | 'nhac') => tatCaLoi.filter(l => l.muc === m);
 
   const KhoiLoi = ({ muc }: { muc: 'loi' | 'canhBao' | 'nhac' }) => {
@@ -112,10 +167,28 @@ export default function KiemThuDeModal({
                 <span className="shrink-0 text-[11px] font-black bg-white/70 border border-current/20 rounded px-1.5 py-0.5 mt-[1px]">
                   {l.viTri}
                 </span>
-                <div className="min-w-0">
+                <div className="min-w-0 flex-1">
                   <div className="text-[13.5px] font-semibold text-slate-800">{l.moTa}</div>
                   <div className="text-[12.5px] text-slate-500 mt-0.5">→ {l.cachSua}</div>
                 </div>
+                {/* Sửa được thì cho bấm ngay tại dòng. Nhờ AI thì ghi rõ để Thầy cô biết
+                    là sẽ tốn lượt và mất mấy giây. */}
+                {l.cauId && suaDuocBang(l.ma) && (
+                  <button
+                    onClick={() => chaySua(l)}
+                    disabled={!!dangSuaMa}
+                    title={suaDuocBang(l.ma) === 'ai'
+                      ? 'Nhờ AI sửa chỗ này rồi cho xem trước'
+                      : 'Máy tự sửa chỗ này rồi cho xem trước'}
+                    className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-lg text-[11.5px] font-black
+                               bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 disabled:opacity-40"
+                  >
+                    {dangSuaMa === `${l.ma}|${l.cauId}`
+                      ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      : suaDuocBang(l.ma) === 'ai' ? <Bot className="w-3.5 h-3.5" /> : <Wrench className="w-3.5 h-3.5" />}
+                    {suaDuocBang(l.ma) === 'ai' ? 'Nhờ AI sửa' : 'Sửa'}
+                  </button>
+                )}
               </div>
             </div>
           ))}
@@ -218,10 +291,25 @@ export default function KiemThuDeModal({
           )}
         </div>
 
+        {baoSua && (
+          <div className="mx-5 mb-2 px-3 py-2 rounded-xl bg-slate-100 border border-slate-200 text-slate-700 text-[12.5px] font-bold">
+            {baoSua}
+          </div>
+        )}
+
         <div className="px-5 py-3 border-t border-gray-200 text-[11.5px] text-gray-400">
-          Bộ kiểm thử chỉ chỉ ra chỗ hỏng, không tự sửa gì cả. Quyền quyết định là của Thầy/Cô.
+          Sửa xong đều hiện bảng so sánh trước/sau, có gật đầu mới ghi vào ngân hàng câu hỏi.
         </div>
       </div>
+
+      <SuaLoiModal
+        cau={banVa?.cau || null}
+        va={banVa?.va || null}
+        moTaLoi={banVa?.moTa || ''}
+        ghiChu={banVa?.ghiChu || []}
+        onDong={() => setBanVa(null)}
+        onDaLuu={daLuuXong}
+      />
     </div>
   );
 }

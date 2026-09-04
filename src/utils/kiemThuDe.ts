@@ -39,6 +39,13 @@ export interface LoiKiemThu {
   cauId?: string;
   moTa: string;
   cachSua: string;
+  /**
+   * Bản AI đã tính sẵn cho lỗi này, nếu có.
+   *
+   * Dùng cho lỗi "đáp án sai": AI giải xong đã biết đáp án đúng, đính luôn vào đây thì
+   * lúc Thầy cô bấm Sửa là thay được ngay, khỏi gọi AI thêm lượt nữa.
+   */
+  deXuat?: Record<string, string>;
 }
 
 export interface KetQuaKiemThu {

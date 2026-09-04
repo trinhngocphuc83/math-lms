@@ -78,7 +78,67 @@ function gonSo(raw: string): string {
   t = t.replace(/\\text\s*\{[^}]*\}/g, '');   // bỏ đơn vị
   t = t.replace(/\\,|\\;|\\!|\\ |~/g, ' '); // dấu cách LaTeX
   t = t.replace(/\\cdot|\\times/g, '*');
-  return t.replace(/\s+/g, ' ').trim();
+  t = t.replace(/\s+/g, ' ').trim();
+  return doiDauThapPhan(t);
+}
+
+/**
+ * Đưa dấu thập phân kiểu Anh về kiểu Việt: "102.1" -> "102,1".
+ *
+ * Ta viết số thập phân bằng dấu PHẨY, dấu chấm là để ngăn nhóm nghìn. Nhưng AI bóc câu
+ * hay viết kiểu Anh, nên trong kho có cả hai lối.
+ *
+ * Trước đây mọi dấu chấm đều bị coi là ngăn nghìn rồi xoá đi, nên "102.1" hoá thành
+ * "1021" - đáp án sai gấp mười lần mà nhìn vẫn đúng khuôn bốn ô, không ai phát hiện.
+ * Đo trên kho: 58 câu Trả lời ngắn bên Toán và 32 câu bên Lý viết theo kiểu này.
+ *
+ * Cách phân biệt: chỉ coi là ngăn nghìn khi MỌI nhóm sau dấu chấm đều đúng ba chữ số
+ * ("1.000", "12.345.678"); còn lại là dấu thập phân.
+ */
+function doiDauThapPhan(t: string): string {
+  if (t.includes(',') || !t.includes('.')) return t;   // có phẩy rồi thì chấm là ngăn nghìn
+  if (/^-?\d{1,3}(\.\d{3})+$/.test(t)) return t;       // đúng khuôn ngăn nghìn, để yên
+  if (/^-?\d+\.\d+$/.test(t)) return t.replace('.', ',');
+  return t;
+}
+
+/**
+ * Ghi thêm một lời dặn vào đề bài ("Làm tròn…", "Kết quả tính theo đơn vị…").
+ *
+ * Hai chỗ phải cẩn thận, đều lộ ra khi soi bản vá thật:
+ *
+ *   1. Đề đã có sẵn lời dặn làm tròn thì phải THAY, không được cộng thêm cái thứ hai -
+ *      đề mà vừa bảo "làm tròn đến hàng phần chục" vừa bảo "làm tròn đến số nguyên" thì
+ *      học sinh biết nghe ai.
+ *   2. Đề kết thúc bằng ảnh minh hoạ thì lời dặn phải chèn TRƯỚC ảnh. Nối vào cuối chuỗi
+ *      là chữ rơi xuống dưới hình, không ai đọc.
+ */
+function themGhiChuVaoDe(de: string, ghiChu: string): string {
+  let s = String(de || '');
+  s = s.replace(/\s*\((?:kết quả\s*)?làm tròn[^)]*\)\s*\.?/gi, ' ');
+  s = s.replace(/\s*\(kết quả tính theo đơn vị[^)]*\)\s*\.?/gi, ' ');
+
+  const viTriAnh = s.search(/\n*!\[[^\]]*\]\([^)]*\)\s*$/);
+  if (viTriAnh >= 0) {
+    const truoc = s.slice(0, viTriAnh).replace(/\s+$/, '');
+    const anh = s.slice(viTriAnh).replace(/^\n+/, '');
+    return `${truoc} ${ghiChu}\n\n${anh}`;
+  }
+  return s.replace(/\s+$/, '') + ' ' + ghiChu;
+}
+
+/**
+ * Tách đơn vị đo dính sau con số: "1,44V" -> { so: "1,44", donVi: "V" }.
+ *
+ * Đơn vị không tô được vào ô số của phiếu, nhưng bỏ đi mà không nói gì thì học sinh mất
+ * căn cứ. Nên tách ra rồi ghi vào đề bài, giống cách đang làm với luỹ thừa 10.
+ */
+function tachDonVi(t: string): { so: string; donVi: string } | null {
+  const m = t.match(/^(-?[\d.,]+)\s*([A-Za-zÀ-ỹ%°]{1,6})$/);
+  if (!m) return null;
+  const so = doiDauThapPhan(m[1]);
+  if (!/^-?\d+(,\d+)?$/.test(so)) return null;
+  return { so, donVi: m[2] };
 }
 
 /** Đưa số quá dài về dạng a x 10^n để tô vừa số ô cho phép. */
@@ -119,13 +179,22 @@ export function chuanHoaTraLoiNgan(content: string, dapAn: string): {
   if (dapAnNganHopLe(da)) return { content: de, correct_answer: da, canhBao };
   if (!da) return { content: de, correct_answer: '', canhBao: ['Câu trả lời ngắn chưa có đáp án.'] };
 
+  // --- Cách 0: đơn vị đo dính sau số ("1,44 V") -> đưa đơn vị vào đề, giữ nguyên con số ---
+  const coDonVi = tachDonVi(da);
+  if (coDonVi && dapAnNganHopLe(coDonVi.so)) {
+    de = themGhiChuVaoDe(de, `(Kết quả tính theo đơn vị ${coDonVi.donVi}.)`);
+    canhBao.push(`Đáp án có kèm đơn vị "${coDonVi.donVi}" nên đã chuyển đơn vị vào đề bài, đáp án còn "${coDonVi.so}". Thầy cô soát lại.`);
+    return { content: de, correct_answer: coDonVi.so, canhBao };
+  }
+  if (coDonVi) da = coDonVi.so;
+
   // --- Cách 1: tách luỹ thừa 10 ra khỏi đáp án ---
   const mKhoaHoc = da.match(/^(-?[\d.,]+)\s*(?:\*|x|×)?\s*10\s*\^?\s*\{?\s*(-?\d+)\s*\}?/i);
   if (mKhoaHoc) {
     const dinhTri = mKhoaHoc[1].replace(/\./g, ',');
     const soMu = mKhoaHoc[2];
     if (dapAnNganHopLe(dinhTri)) {
-      de = de.trimEnd() + ` (Kết quả tính theo đơn vị $10^{${soMu}}$.)`;
+      de = themGhiChuVaoDe(de, `(Kết quả tính theo đơn vị $10^{${soMu}}$.)`);
       canhBao.push(`Đáp án viết dạng khoa học nên đã chuyển luỹ thừa $10^{${soMu}}$ vào đề bài, đáp án còn "${dinhTri}". Thầy cô soát lại đơn vị.`);
       return { content: de, correct_answer: dinhTri, canhBao };
     }
@@ -139,9 +208,9 @@ export function chuanHoaTraLoiNgan(content: string, dapAn: string): {
       const lamTron = so.toFixed(le).replace('.', ',');
       if (dapAnNganHopLe(lamTron)) {
         if (lamTron !== da) {
-          de = de.trimEnd() + (le > 0
-            ? ` (Làm tròn kết quả đến ${le} chữ số sau dấu phẩy.)`
-            : ' (Làm tròn kết quả đến số nguyên.)');
+          de = themGhiChuVaoDe(de, le > 0
+            ? `(Làm tròn kết quả đến ${le} chữ số sau dấu phẩy.)`
+            : '(Làm tròn kết quả đến số nguyên.)');
           canhBao.push(`Đáp án "${da}" dài quá ${SO_KY_TU_TRA_LOI_NGAN} ô nên đã làm tròn thành "${lamTron}" và ghi rõ trong đề. Thầy cô soát lại.`);
         }
         return { content: de, correct_answer: lamTron, canhBao };
@@ -153,7 +222,7 @@ export function chuanHoaTraLoiNgan(content: string, dapAn: string): {
   if (Number.isFinite(so)) {
     const rut = tachLuyThua(so);
     if (rut) {
-      de = de.trimEnd() + ` (Kết quả tính theo đơn vị $10^{${rut.soMu}}$.)`;
+      de = themGhiChuVaoDe(de, `(Kết quả tính theo đơn vị $10^{${rut.soMu}}$.)`);
       canhBao.push(`Đáp án "${da}" không tô vừa ${SO_KY_TU_TRA_LOI_NGAN} ô nên đã rút về "${rut.dinhTri}" kèm đơn vị $10^{${rut.soMu}}$ ghi trong đề. Thầy cô soát lại.`);
       return { content: de, correct_answer: rut.dinhTri, canhBao };
     }
