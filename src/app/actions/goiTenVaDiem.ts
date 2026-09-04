@@ -385,7 +385,7 @@ export async function quetDiemTuDong(
 
   /* ---------------------------------------------------------- 1. LUYỆN TẬP */
   const { data: kq } = await quanTri
-    .from('exam_results').select('student_id, module_id, score, created_at')
+    .from('exam_results').select('student_id, module_id, score, created_at, answers')
     .in('student_id', ids).gte('created_at', tu).lt('created_at', den);
 
   const idMuc = [...new Set((kq || []).map((r: any) => r.module_id).filter(Boolean))];
@@ -397,7 +397,10 @@ export async function quetDiemTuDong(
 
   for (const hs of caLop) {
     const bai: BaiDaLam[] = (kq || [])
-      .filter((r: any) => r.student_id === hs.id && r.module_id)
+      /* Bỏ lượt còn câu tự luận chờ thầy cô chấm: điểm đang có mới là phần máy chấm
+         được, cộng vội là em làm tốt phần tự luận bị thiệt oan. */
+      .filter((r: any) => r.student_id === hs.id && r.module_id
+        && !((r.answers as any)?._choChamTuLuan > 0))
       .map((r: any) => ({
         khoa: r.module_id,
         ten: `Luyện tập: ${tenMuc[r.module_id] || 'Bài luyện tập'}`,
@@ -453,7 +456,15 @@ export async function quetDiemTuDong(
       .from('online_exam_submissions')
       .select('student_id, exam_id, score, submit_time, created_at')
       .in('exam_id', idDe).in('student_id', ids)
-      .not('score', 'is', null);
+      .not('score', 'is', null)
+      /*
+       * CHỈ nhận bài đã chấm xong.
+       *
+       * Bài có câu tự luận nay dừng ở "SUBMITTED" với điểm phần trắc nghiệm, chờ thầy cô
+       * chấm. Lấy cả bài đó là cộng điểm thưởng trên một nửa bài - em làm tốt phần tự luận
+       * bị thiệt oan. Thầy cô chấm xong, bài chuyển sang GRADED thì lượt quét sau tự cộng.
+       */
+      .in('status', ['GRADED', 'PUBLISHED']);
 
     for (const hs of caLop) {
       const bai: BaiDaLam[] = (nop || [])

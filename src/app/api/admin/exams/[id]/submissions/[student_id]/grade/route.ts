@@ -14,11 +14,21 @@ export async function POST(req: Request, { params }: { params: Promise<{ id: str
 
     const { id, student_id } = await params;
     const body = await req.json();
-    const { score, answers } = body;
+    const { score, answers, xongTuLuan } = body;
+
+    /*
+     * Chấm đủ mọi câu tự luận thì bài mới rời hàng chờ.
+     *
+     * Bản cũ chỉ ghi điểm mà KHÔNG đụng tới status, nên không có gì phân biệt bài đã chấm
+     * xong với bài mới chấm dở - hàng chờ không dựng được, và điểm cộng thì không biết lúc
+     * nào được tính. Chấm dở thì giữ nguyên SUBMITTED để bài vẫn nằm trong danh sách chờ.
+     */
+    const capNhat: Record<string, any> = { score, answers };
+    if (xongTuLuan) capNhat.status = 'GRADED';
 
     const { error } = await supabaseAdmin
       .from('online_exam_submissions')
-      .update({ score, answers })
+      .update(capNhat)
       .eq('exam_id', id)
       .eq('student_id', student_id);
 

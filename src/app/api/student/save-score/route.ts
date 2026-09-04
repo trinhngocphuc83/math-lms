@@ -17,7 +17,7 @@ export async function POST(request: Request) {
     }
 
     const body = await request.json();
-    const { lessonId, moduleId, score, passed, cheatWarnings = 0, globalImages = [], gradingDetails = [] } = body;
+    const { lessonId, moduleId, score, passed, cheatWarnings = 0, globalImages = [], gradingDetails = [], soCauTuLuan = 0 } = body;
 
     if (!lessonId) {
       return NextResponse.json({ error: 'Missing lessonId' }, { status: 400 });
@@ -102,7 +102,11 @@ export async function POST(request: Request) {
           passed: passed,
           attempt_number: nextAttempt,
           cheat_warnings: cheatWarnings,
-          answers: answersData
+          /* Lượt có câu tự luận thì điểm này mới là phần máy chấm được. Đánh dấu để
+             điểm cộng không tính vội - xem goiTenVaDiem.quetDiemTuDong. */
+          answers: Number(soCauTuLuan) > 0
+            ? { ...answersData, _choChamTuLuan: Number(soCauTuLuan) }
+            : answersData
         }
       ])
       .select()

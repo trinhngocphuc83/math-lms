@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getAllAIKeys } from '@/utils/aiKeys';
 import { goiGemini } from '@/utils/geminiRunner';
-import { requireUser } from '@/utils/auth/guard';
+import { requireStaff } from '@/utils/auth/guard';
 
 // Cho phép API chạy tối đa 60s trên Vercel - chấm bài kèm ảnh dễ vượt giới hạn
 // mặc định của Vercel, khi đó hàm bị cắt ngang mà không báo lỗi rõ ràng.
@@ -9,7 +9,16 @@ export const maxDuration = 60;
 
 export async function POST(request: Request) {
   try {
-    const guard = await requireUser();
+    /*
+     * CHỈ nhân viên được gọi, không phải "ai đăng nhập cũng được".
+     *
+     * Trước đây đây là cửa học sinh tiêu khoá API: khu Luyện tập gọi MỖI CÂU TỰ LUẬN một
+     * lượt. Đo trên kho Toán: 448 câu tự luận trong 58 khối bài, 84 lượt ghi danh - tối đa
+     * 37.632 lượt gọi. Hạn mức miễn phí của Google là 20 lượt/ngày mỗi khoá, 5 khoá là 100
+     * lượt/ngày cho cả app; một lớp làm một khối bài là cháy sạch hạn mức, rồi chính thầy
+     * cô không bóc được câu, không soạn được đề. Nay tự luận chuyển sang thầy cô chấm tay.
+     */
+    const guard = await requireStaff();
     if (!guard.ok) return guard.response;
 
     const { image, images, textAnswer, question, sampleAnswer, maxScore = 10 } = await request.json();

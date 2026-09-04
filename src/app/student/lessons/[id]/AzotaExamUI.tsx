@@ -431,33 +431,33 @@ export default function AzotaExamUI({
     });
   };
 
-  // Chấm 1 câu tự luận bằng AI
+  /**
+   * Câu tự luận: KHÔNG chấm bằng AI nữa, chuyển sang tự đối chiếu.
+   *
+   * Đây từng là cửa học sinh tiêu khoá API nặng nhất: mỗi câu tự luận một lượt gọi. Đo
+   * trên kho Toán ngày 04/09/2026: 448 câu tự luận trong 58 khối bài, 84 lượt ghi danh -
+   * tối đa 37.632 lượt. Hạn mức miễn phí của Google là 20 lượt/ngày mỗi khoá; 5 khoá là
+   * 100 lượt/ngày cho cả app. Một lớp làm một khối bài là cháy sạch hạn mức ngày, rồi
+   * chính thầy cô không bóc được câu, không soạn được đề.
+   *
+   * Nay: hiện lời giải mẫu để em tự soát, không cho điểm. Điểm của lượt làm chỉ tính phần
+   * máy chấm được, và lượt nào có tự luận thì đánh dấu chờ thầy cô xem lại - điểm cộng
+   * chỉ tính sau khi thầy cô chốt (xem goiTenVaDiem.quetDiemTuDong).
+   */
   const gradeOneEssay = async (qIndex: number, data: any, maxScoreForQ: number): Promise<any> => {
-    const userAns = answers[qIndex.toString()];
-    if (!userAns || (!userAns.text && !userAns.image && (!userAns.images || userAns.images.length === 0))) {
-      return { scoreNumber: 0, passed: false, feedback: "Học sinh không nộp bài.", score: `0/${maxScoreForQ.toFixed(2)}` };
-    }
-
-    const sampleAnswer = data.answer || (data.phuong_phap_giai
+    const sampleAnswer0 = data.answer || (data.phuong_phap_giai
       ? `PP Giải: ${data.phuong_phap_giai}\nCác bước: ${(data.cac_buoc_thuc_hien || []).join('\n')}`
       : '');
-
-    const response = await fetch('/api/grade', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        question: data.question,
-        sampleAnswer,
-        image: userAns?.image,
-        images: userAns?.images || [],
-        textAnswer: userAns?.text,
-        maxScore: maxScoreForQ
-      })
-    });
-
-    const result = await response.json();
-    if (!response.ok) throw new Error(result.error || 'Có lỗi xảy ra');
-    return result;
+    return {
+      scoreNumber: null,
+      passed: null,
+      choThayCham: true,
+      sampleAnswer: sampleAnswer0,
+      feedback: sampleAnswer0
+        ? 'Câu tự luận — em đối chiếu với lời giải mẫu bên dưới. Thầy cô sẽ xem lại và cho điểm.'
+        : 'Câu tự luận — Thầy cô sẽ xem lại và cho điểm.',
+      score: `–/${maxScoreForQ.toFixed(2)}`,
+    };
   };
 
   const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
@@ -471,7 +471,12 @@ export default function AzotaExamUI({
       fetch('/api/student/save-score', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings })
+        body: JSON.stringify({
+          lessonId, moduleId, score: finalScore, passed: finalScore >= 7, cheatWarnings,
+          /* Lượt có tự luận thì đây mới là điểm phần máy chấm được - báo cho máy chủ
+             đánh dấu chờ chấm, để điểm cộng không tính vội. */
+          soCauTuLuan: Object.values(gradingStatus).filter((g: any) => g?.result?.choThayCham).length,
+        })
       }).catch(e => console.error("Error saving score:", e));
     }
   };

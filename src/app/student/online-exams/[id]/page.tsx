@@ -28,6 +28,8 @@ export default function StudentExamRoom() {
   
   // Result State
   const [finalScore, setFinalScore] = useState<number | null>(null);
+  /* Số câu tự luận đang chờ thầy cô chấm - máy không chấm tự luận nữa. */
+  const [soCauChoCham, setSoCauChoCham] = useState(0);
 
   // Số lần vi phạm đã ghi nhận (server trả về, khôi phục được khi vào lại)
   const [cheatCount, setCheatCount] = useState(0);
@@ -214,6 +216,7 @@ export default function StudentExamRoom() {
       }
 
       setFinalScore(data.score);
+      setSoCauChoCham(Number(data.soCauTuLuan) || 0);
       setSubmissionStatus(data.status);
       setAppState('FINISHED');
       
@@ -593,7 +596,22 @@ export default function StudentExamRoom() {
           <h1 className="text-3xl font-black text-slate-800 mb-2">Đã Nộp Bài Thành Công!</h1>
           <p className="text-slate-500 mb-8 font-medium">Hệ thống đã ghi nhận bài làm của bạn.</p>
 
-          {submissionStatus === 'PUBLISHED' ? (
+          {soCauChoCham > 0 ? (
+            /*
+             * Bài có tự luận: máy chấm xong phần trắc nghiệm, phần tự luận chờ thầy cô.
+             * Nói rõ điểm đang thấy là điểm của phần nào, để em không tưởng mình bị mất
+             * điểm oan rồi thắc mắc.
+             */
+            <div className="bg-slate-50 rounded-2xl p-6 mb-8 border border-slate-100">
+              <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Điểm phần trắc nghiệm</div>
+              <div className="text-6xl font-black text-indigo-600">{finalScore !== null ? finalScore : '-'}</div>
+              <div className="text-slate-500 font-medium mt-1">/ 10 điểm</div>
+              <div className="mt-5 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-amber-800 font-medium text-sm">
+                Còn <b>{soCauChoCham}</b> câu tự luận đang chờ Thầy cô chấm. Chấm xong em sẽ thấy
+                <b> điểm tổng</b> và nhận xét từng câu.
+              </div>
+            </div>
+          ) : submissionStatus === 'PUBLISHED' ? (
             <div className="bg-slate-50 rounded-2xl p-6 mb-8 border border-slate-100">
               <div className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">Điểm số của bạn</div>
               <div className="text-6xl font-black text-indigo-600">{finalScore !== null ? finalScore : '-'}</div>
