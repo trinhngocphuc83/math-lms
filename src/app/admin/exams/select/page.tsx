@@ -341,6 +341,10 @@ function SelectContent() {
   const loadCandidates = async (matrixItems: MatrixItemDraft[], gradeVal: string, subjectVal: string) => {
     setIsLoading(true);
     try {
+      /* Phân môn có thể là nhiều môn gộp lại ("Đại số + Hình học") vì đề kiểm tra định
+         kỳ thường có cả hai. So bằng dấu bằng với chuỗi gộp thì không khớp câu nào -
+         phải tách ra rồi so theo danh sách. */
+      const dsPhanMon = String(subjectVal || '').split('+').map(x => x.trim()).filter(Boolean);
       const results: LineState[] = [];
       const PAGE_SIZE = 1000;
       for (const item of matrixItems) {
@@ -357,7 +361,7 @@ function SelectContent() {
             .range(from, from + PAGE_SIZE - 1);
           if (!locTaiCho) query = query.eq('math_form', item.math_form);
           if (gradeVal) query = query.eq('grade', gradeVal);
-          if (subjectVal) query = query.eq('subject', subjectVal);
+          if (dsPhanMon.length) query = query.in('subject', dsPhanMon);
           const { data, error } = await query;
           if (error) throw error;
           const page = data || [];
@@ -981,7 +985,7 @@ function SelectContent() {
                                 yêu cầu - "Đổi câu khác" chỉ xoay vòng trong đúng những câu
                                 đang có, dạng nào kho nghèo thì bấm mãi vẫn thế. */}
                             <button
-                              onClick={() => setOSoanLai({ dongIdx: lineIdx, cauGoc: q, grade, subject })}
+                              onClick={() => setOSoanLai({ dongIdx: lineIdx, cauGoc: q, grade, subject: q.subject || subject })}
                               title="Kho không có câu vừa ý thì nhờ AI soạn câu mới theo yêu cầu"
                               className="flex items-center gap-1 text-xs font-bold text-violet-700 hover:bg-violet-50 px-2 py-1 rounded-lg border border-violet-300 whitespace-nowrap"
                             >
@@ -1082,7 +1086,7 @@ function SelectContent() {
                       <button
                         onClick={() => {
                           const lineIdx = dongCuaCau.get(q.id);
-                          if (lineIdx !== undefined) setOSoanLai({ dongIdx: lineIdx, cauGoc: q, grade, subject });
+                          if (lineIdx !== undefined) setOSoanLai({ dongIdx: lineIdx, cauGoc: q, grade, subject: q.subject || subject });
                         }}
                         title="Kho không có câu vừa ý thì nhờ AI soạn câu mới theo yêu cầu"
                         className="print:hidden inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-bold bg-violet-50 text-violet-700 border border-violet-300 hover:bg-violet-100"

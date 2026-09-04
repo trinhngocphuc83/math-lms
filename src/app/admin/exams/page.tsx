@@ -51,7 +51,17 @@ export default function ExamsManagerPage() {
   // Filters
   const [examType, setExamType] = useState("Kiểm tra Giữa kỳ I");
   const [grade, setGrade] = useState("12");
-  const [subject, setSubject] = useState("Đại số");
+  /**
+   * Phân môn - chọn được NHIỀU.
+   *
+   * Đề kiểm tra định kỳ thường có cả Đại số lẫn Hình học, mà ô này trước đây chỉ chọn
+   * được một, nên phải quét kho hai lượt rồi ghép ma trận bằng tay.
+   *
+   * Giữ luôn `subject` là chuỗi gộp để mọi chỗ CHỈ ĐỌC (đầu đề in trên giấy, tên gợi ý
+   * khi lưu) không phải sửa gì.
+   */
+  const [subjects, setSubjects] = useState<string[]>(["Đại số"]);
+  const subject = subjects.join(" + ");
   /**
    * Bốn ô lọc kho giờ chọn được NHIỀU mục.
    *
@@ -162,11 +172,12 @@ export default function ExamsManagerPage() {
 
   useEffect(() => {
     const fetchTreeFilters = async () => {
-      if (!grade || !subject) {
+      if (!grade || subjects.length === 0) {
         setTopicList([]); setLessonList([]); setFormList([]);
         return;
       }
-      let query = supabase.from('question_categories').select('topic, lesson, math_form').eq('grade', grade).eq('subject', subject);
+      let query = supabase.from('question_categories').select('topic, lesson, math_form')
+        .eq('grade', grade).in('subject', subjects);
       const { data } = await query;
       if (data) {
         setTopicList(Array.from(new Set(data.map(d => d.topic))).filter(Boolean) as string[]);
@@ -197,7 +208,7 @@ export default function ExamsManagerPage() {
       // 1. Lấy danh mục
       let query = supabase.from('question_categories').select('*').order('topic').order('lesson');
       if (grade) query = query.eq('grade', grade);
-      if (subject) query = query.eq('subject', subject);
+      if (subjects.length) query = query.in('subject', subjects);
       if (topicFilter.length && !locTaiCho) query = query.in('topic', topicFilter);
       if (lessonFilter.length && !locTaiCho) query = query.in('lesson', lessonFilter);
       if (formFilter.length && !locTaiCho) query = query.in('math_form', formFilter);
@@ -216,7 +227,7 @@ export default function ExamsManagerPage() {
       for (let from = 0; ; from += PAGE_SIZE) {
         let qQuery = supabase.from('questions').select(qSelect).range(from, from + PAGE_SIZE - 1);
         if (grade) qQuery = qQuery.eq('grade', grade);
-        if (subject) qQuery = qQuery.eq('subject', subject);
+        if (subjects.length) qQuery = qQuery.in('subject', subjects);
         if (topicFilter.length && !locTaiCho) qQuery = qQuery.in('topic', topicFilter);
         if (lessonFilter.length && !locTaiCho) qQuery = qQuery.in('lesson', lessonFilter);
         if (formFilter.length && !locTaiCho) qQuery = qQuery.in('math_form', formFilter);
@@ -245,7 +256,7 @@ export default function ExamsManagerPage() {
             extraCatsMap.set(form, {
               id: `auto_${form}`,
               grade: q.grade || grade,
-              subject: q.subject || subject,
+              subject: q.subject || subjects[0] || '',
               topic: q.topic || 'Chưa phân loại',
               lesson: q.lesson || 'Chưa phân loại',
               math_form: form
@@ -570,7 +581,11 @@ export default function ExamsManagerPage() {
   const moSinhBu = (item: MatrixItem) => {
     const cat = categories.find(c => c.math_form === item.math_form);
     setOSinhBu({
-      grade, subject,
+      grade,
+      /* Lấy phân môn của CHÍNH dạng này, không lấy chuỗi gộp "Đại số + Hình học" -
+         câu soạn bù được ghi thẳng vào kho, ghi chuỗi gộp là sinh ra một phân môn ma
+         trong danh mục. */
+      subject: cat?.subject || subjects[0] || '',
       topic: cat?.topic || item.topic || '',
       lesson: cat?.lesson || '',
       math_form: item.math_form,
@@ -712,7 +727,9 @@ export default function ExamsManagerPage() {
     try {
       const p = new URLSearchParams();
       if (grade) p.set('grade', grade);
-      if (subject) p.set('subject', subject);
+      /* Chọn nhiều phân môn thì thôi không lọc theo phân môn - lọc theo chuỗi gộp
+         là không khớp dòng nào. */
+      if (subjects.length === 1) p.set('subject', subjects[0]);
       const res = await fetch('/api/admin/ma-tran-mau?' + p.toString());
       const d = await res.json();
       setChuaTaoBang(!!d.chuaTaoBang);
@@ -809,7 +826,9 @@ export default function ExamsManagerPage() {
     try {
       const p = new URLSearchParams();
       if (grade) p.set('grade', grade);
-      if (subject) p.set('subject', subject);
+      /* Chọn nhiều phân môn thì thôi không lọc theo phân môn - lọc theo chuỗi gộp
+         là không khớp dòng nào. */
+      if (subjects.length === 1) p.set('subject', subjects[0]);
       const res = await fetch('/api/admin/bo-de?' + p.toString());
       const d = await res.json();
       setBoDeList(d.danhSach || []);
@@ -853,7 +872,7 @@ export default function ExamsManagerPage() {
           loai: 'ra_de',
           ten: `${examType} · ${subject || '?'} ${grade || ''} · ${tinhTongCau(matrixItems as DongMaTran[])} câu`,
           soCau: tinhTongCau(matrixItems as DongMaTran[]),
-          duLieu: { matrixItems, examType, grade, subject, khuonDe, dauDe },
+          duLieu: { matrixItems, examType, grade, subject, subjects, khuonDe, dauDe },
         }),
       });
       const d = await res.json();
@@ -885,7 +904,8 @@ export default function ExamsManagerPage() {
     }))));
     if (d.examType) setExamType(d.examType);
     if (d.grade) setGrade(d.grade);
-    if (d.subject) setSubject(d.subject);
+    if (d.subjects?.length) setSubjects(d.subjects);
+    else if (d.subject) setSubjects(String(d.subject).split(/\s*\+\s*/).filter(Boolean));
     if (d.khuonDe) setKhuonDe(d.khuonDe);
     if (d.dauDe) setDauDe(d.dauDe);
     setNhapCu(null);
@@ -1044,10 +1064,24 @@ export default function ExamsManagerPage() {
                 <option value="">-- Khối Lớp --</option>
                 {uniqueGrades.map(g => <option key={g} value={g}>{g}</option>)}
               </select>
-              <select value={subject} onChange={e=>setSubject(e.target.value)} className="border border-gray-200 rounded-lg px-2.5 py-1.5 outline-none focus:ring-2 focus:ring-teal-500 text-[13px] font-medium bg-white">
-                <option value="">-- Phân môn --</option>
-                {uniqueSubjects.map(s => <option key={s} value={s}>{s}</option>)}
-              </select>
+              {/* Phân môn chọn NHIỀU: đề kiểm tra định kỳ thường có cả Đại số lẫn Hình
+                  học. Nhãn hiện thẳng tên khi chọn một hoặc hai môn, nhiều hơn thì rút
+                  gọn thành số cho khỏi tràn thanh công cụ. */}
+              <MenuGon
+                nhan={subjects.length === 0 ? 'Phân môn'
+                  : subjects.length <= 2 ? subjects.join(' + ')
+                  : `${subjects.length} phân môn`}
+                icon={<Layers className="w-4 h-4 text-teal-600" />}
+                rong="w-[240px]"
+                title="Chọn một hoặc nhiều phân môn để quét kho"
+              >
+                <DanhSachTick
+                  ds={uniqueSubjects}
+                  chon={subjects}
+                  datChon={setSubjects}
+                  tenGoi="phân môn"
+                />
+              </MenuGon>
 
               <MenuGon
                 nhan="Lọc kho"
