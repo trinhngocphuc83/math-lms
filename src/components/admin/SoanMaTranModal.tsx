@@ -32,7 +32,7 @@ interface Props {
   /** Yêu cầu cần đạt của từng dạng, khoá là tên dạng. */
   yeuCau?: Map<string, string>;
   /** Lưu yêu cầu vừa sửa ngược vào danh mục. */
-  onLuuYeuCau?: (dang: string, chu: string) => void;
+  onLuuYeuCau?: (dang: string, chu: string, bai?: string) => void;
 }
 
 export default function SoanMaTranModal({ isOpen, onClose, oKho, khuon, tenKhuon, onNhan, yeuCau, onLuuYeuCau }: Props) {
@@ -347,7 +347,9 @@ export default function SoanMaTranModal({ isOpen, onClose, oKho, khuon, tenKhuon
                   /* Lưu chữ Thầy cô vừa sửa vào danh mục trước, rồi mới nhận ma trận. */
                   for (const [dang, chu] of Object.entries(yeuCauSua)) {
                     if (chu.trim() && chu.trim() !== (yeuCau?.get(dang) || "").trim()) {
-                      onLuuYeuCau?.(dang, chu.trim());
+                      /* Kèm tên bài để chỉ ghi đúng bài đó, không đè sang chương khác
+                         cùng tên dạng. */
+                      onLuuYeuCau?.(dang, chu.trim(), (dong || []).find(x => x.math_form === dang)?.lesson);
                     }
                   }
                   onNhan(dong); dongLai();

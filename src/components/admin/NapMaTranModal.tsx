@@ -43,7 +43,7 @@ interface Props {
   /** Yêu cầu cần đạt của từng dạng, khoá là tên dạng. */
   yeuCau?: Map<string, string>;
   /** Lưu yêu cầu vừa sửa ngược vào danh mục. */
-  onLuuYeuCau?: (dang: string, chu: string) => void;
+  onLuuYeuCau?: (dang: string, chu: string, bai?: string) => void;
 }
 
 export default function NapMaTranModal({ isOpen, onClose, kho, onNap, yeuCau, onLuuYeuCau }: Props) {
@@ -105,7 +105,7 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap, yeuCau, on
         baiTrongKho: k.bai || "",
         nguonKhop: k.nguon,
         diemKhop: k.diem,
-        soCauKho: dangTrongKho ? demKho(dangTrongKho, d.loaiCau, d.mucDo) : 0,
+        soCauKho: dangTrongKho ? demKho(dangTrongKho, d.loaiCau, d.mucDo, k.bai || undefined) : 0,
         chon: !!dangTrongKho,
       };
     });
@@ -152,7 +152,7 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap, yeuCau, on
       const d = { ...ra[i], ...patch };
       // Đổi dạng / loại / mức thì phải đếm lại kho, nếu không con số cũ sẽ nói dối.
       if (patch.dangTrongKho !== undefined || patch.loaiCau !== undefined || patch.mucDo !== undefined) {
-        d.soCauKho = d.dangTrongKho ? demKho(d.dangTrongKho, d.loaiCau, d.mucDo) : 0;
+        d.soCauKho = d.dangTrongKho ? demKho(d.dangTrongKho, d.loaiCau, d.mucDo, d.baiTrongKho || undefined) : 0;
         if (patch.loaiCau !== undefined) d.diemMoiCau = diemMacDinh(patch.loaiCau);
         if (patch.dangTrongKho !== undefined) { d.diemKhop = 1; d.nguonKhop = "dang"; d.chon = !!patch.dangTrongKho; }
       }
@@ -387,7 +387,7 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap, yeuCau, on
                                 <>
                                   <optgroup label={`Dạng của ${d.baiTrongKho}`}>
                                     {kho.dangCuaBai(d.baiTrongKho).map((t) => (
-                                      <option key={t} value={t}>{t} ({demKho(t, d.loaiCau, d.mucDo)} câu)</option>
+                                      <option key={t} value={t}>{t} ({demKho(t, d.loaiCau, d.mucDo, d.baiTrongKho || undefined)} câu)</option>
                                     ))}
                                   </optgroup>
                                   <optgroup label="Tất cả dạng khác">
@@ -488,7 +488,9 @@ export default function NapMaTranModal({ isOpen, onClose, kho, onNap, yeuCau, on
                   /* Lưu chữ Thầy cô vừa sửa vào danh mục trước, rồi mới nạp ma trận. */
                   for (const [dang, chu] of Object.entries(yeuCauSua)) {
                     if (chu.trim() && chu.trim() !== (yeuCau?.get(dang) || "").trim()) {
-                      onLuuYeuCau?.(dang, chu.trim());
+                      /* Kèm tên bài để chỉ ghi đúng bài đó, không đè sang chương khác
+                         cùng tên dạng. */
+                      onLuuYeuCau?.(dang, chu.trim(), (dong || []).find(x => x.dangTrongKho === dang)?.baiTrongKho);
                     }
                   }
                   onNap(daChon); dongLai();

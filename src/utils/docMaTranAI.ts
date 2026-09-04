@@ -295,8 +295,11 @@ export interface NguonKho {
   danhSachDang: string[];
   /** Các dạng toán thuộc một bài. */
   dangCuaBai: (bai: string) => string[];
-  /** Kho có bao nhiêu câu cho đúng bộ ba (dạng, loại, mức). */
-  demKho: (dang: string, loai: BankType, mucDo: string) => number;
+  /**
+   * Kho có bao nhiêu câu cho một ô. Truyền kèm tên bài thì đếm đúng bài đó; bỏ trống là
+   * cộng gộp mọi chương, vì tên dạng không duy nhất trong kho.
+   */
+  demKho: (dang: string, loai: BankType, mucDo: string, bai?: string) => number;
 }
 
 export type NguonKhop = 'bai' | 'dang' | 'khong';

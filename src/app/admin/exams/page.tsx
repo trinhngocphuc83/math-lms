@@ -27,18 +27,33 @@ interface CategoryData {
   math_form: string;
 }
 
+/**
+ * Một Ô KHO: kho đang có bao nhiêu câu cho đúng bộ (chương, bài, dạng, loại câu, mức độ).
+ *
+ * Phải có cả chương và bài chứ không chỉ tên dạng. Tên dạng KHÔNG duy nhất trong kho -
+ * "Toán thực tế" đang nằm ở 28 chương. Bản cũ khoá ô kho bằng mỗi tên dạng nên số câu của
+ * mọi chương bị cộng dồn vào làm một: cây hiện thừa câu, ma trận tưởng đủ, mà lúc rút câu
+ * thì lấy nhầm sang câu của chương khác.
+ */
 interface InventoryData {
+  topic: string;
+  lesson: string;
   math_form: string;
   question_type: string;
   difficulty: string;
   count: number;
 }
 
+/** Danh tính một ô kho, dùng làm khoá gom và làm id dòng ma trận. */
+const khoaOKho = (o: { topic?: string; lesson?: string; math_form: string; question_type: string; difficulty: string }) =>
+  [o.topic ?? '', o.lesson ?? '', o.math_form, o.question_type, o.difficulty].join('');
+
 interface MatrixItem {
   id: string; // unique id in matrix
   category_id: string;
   math_form: string;
   topic: string;
+  lesson: string;
   question_type: string; // TN, DS, TLN, TL
   difficulty: string; // 1, 2, 3, 4
   count: number;
@@ -240,40 +255,42 @@ export default function ExamsManagerPage() {
         if (!page || page.length < PAGE_SIZE) break;
       }
 
-      const counts: Record<string, number> = {};
+      /* Gom theo ĐỦ năm trường. Bản cũ gom theo mỗi (dạng, loại, mức) nên hai chương dùng
+         chung một tên dạng thì số câu cộng dồn vào nhau. */
+      const counts = new Map<string, InventoryData>();
       const extraCatsMap = new Map<string, CategoryData>();
 
       qData.forEach(q => {
         const form = q.math_form;
+        if (!form) return;
         // Quy về mã chuẩn NLC/DS/TLN/TL; dữ liệu cũ còn ghi 'TN' nên phải đi qua toBankType
         const qType = toBankType(q.question_type) || 'NLC';
         const qDiff = q.difficulty || '1';
-        
-        if (form) {
-          const key = `${form}||${qType}||${qDiff}`;
-          counts[key] = (counts[key] || 0) + 1;
-          
-          if (!extraCatsMap.has(form)) {
-            extraCatsMap.set(form, {
-              id: `auto_${form}`,
-              grade: q.grade || grade,
-              subject: q.subject || subjects[0] || '',
-              topic: q.topic || 'Chưa phân loại',
-              lesson: q.lesson || 'Chưa phân loại',
-              math_form: form
-            });
-          }
+        const topic = q.topic || 'Chưa phân loại';
+        const lesson = q.lesson || 'Chưa phân loại';
+
+        const o = { topic, lesson, math_form: form, question_type: qType, difficulty: qDiff };
+        const key = khoaOKho(o);
+        const cu = counts.get(key);
+        if (cu) cu.count += 1;
+        else counts.set(key, { ...o, count: 1 });
+
+        const khoaCat = [topic, lesson, form].join('');
+        if (!extraCatsMap.has(khoaCat)) {
+          extraCatsMap.set(khoaCat, {
+            id: `auto_${khoaCat}`,
+            grade: q.grade || grade,
+            subject: q.subject || subjects[0] || '',
+            topic, lesson, math_form: form,
+          });
         }
       });
 
-      const inv: InventoryData[] = Object.keys(counts).map(k => {
-        const [math_form, question_type, difficulty] = k.split('||');
-        return { math_form, question_type, difficulty, count: counts[k] };
-      });
-      
+      const inv: InventoryData[] = Array.from(counts.values());
+
       let finalCats = [...(cats || [])];
-      extraCatsMap.forEach((val, key) => {
-        if (!finalCats.find(c => c.math_form === key)) {
+      extraCatsMap.forEach((val) => {
+        if (!finalCats.find(c => c.topic === val.topic && c.lesson === val.lesson && c.math_form === val.math_form)) {
           finalCats.push(val);
         }
       });
@@ -302,7 +319,7 @@ export default function ExamsManagerPage() {
   const toggleType = (key: string) => setExpandedTypes(prev => ({ ...prev, [key]: !prev[key] }));
 
   const toggleMatrixItem = (cat: CategoryData, inv: InventoryData) => {
-    const key = `${cat.math_form}_${inv.question_type}_${inv.difficulty}`;
+    const key = khoaOKho(inv);
     const existing = matrixItems.find(m => m.id === key);
     if (existing) {
       doiMaTran(matrixItems.filter(item => item.id !== key));
@@ -310,8 +327,9 @@ export default function ExamsManagerPage() {
       doiMaTran([...matrixItems, {
         id: key,
         category_id: cat.id,
-        math_form: cat.math_form,
-        topic: cat.topic,
+        math_form: inv.math_form,
+        topic: inv.topic,
+        lesson: inv.lesson,
         question_type: inv.question_type,
         difficulty: inv.difficulty,
         count: 1,
@@ -361,16 +379,21 @@ export default function ExamsManagerPage() {
   /**
    * Lưu yêu cầu cần đạt Thầy cô vừa sửa tại bảng ma trận vào danh mục.
    *
-   * Ghi theo TÊN DẠNG chứ không theo một dòng cụ thể: cùng một dạng có thể nằm ở nhiều bài,
-   * mà cột này trong bảng đặc tả cũng tra theo tên dạng.
+   * Ghi ĐÚNG PHẠM VI đang làm việc. Bản cũ ghi theo mỗi tên dạng, mà tên dạng không duy
+   * nhất trong kho: sửa yêu cầu của "Toán thực tế" ở Chương 1 Lớp 8 là đè luôn lên 28
+   * chương khác, cả những lớp không liên quan. Biết bài nào thì ghi đúng bài đó; không
+   * biết thì ít nhất cũng bó trong lớp và phân môn đang mở.
    */
-  const luuYeuCauCanDat = async (dang: string, chu: string) => {
+  const luuYeuCauCanDat = async (dang: string, chu: string, bai?: string) => {
     const ten = String(dang || '').trim();
     const noi = String(chu || '').trim();
     if (!ten || !noi) return;
     setYeuCauCanDat((cu) => new Map(cu).set(ten, noi));
-    const { error } = await supabase
-      .from('question_categories').update({ yeu_cau_can_dat: noi }).eq('math_form', ten);
+    let q = supabase.from('question_categories').update({ yeu_cau_can_dat: noi }).eq('math_form', ten);
+    if (grade) q = q.eq('grade', grade);
+    if (subjects.length) q = q.in('subject', subjects);
+    if (bai) q = q.eq('lesson', bai);
+    const { error } = await q;
     if (error) console.error('Lỗi lưu yêu cầu cần đạt:', error);
   };
 
@@ -382,8 +405,8 @@ export default function ExamsManagerPage() {
     const draftKey = `examDraft_${Date.now()}`;
     localStorage.setItem(draftKey, JSON.stringify({
       examType, grade, subject, khuonDe, dauDe,
-      matrixItems: matrixItems.map(({ id, math_form, topic, question_type, difficulty, count, diemMoiCau }) =>
-        ({ id, math_form, topic, question_type, difficulty, count, diemMoiCau })),
+      matrixItems: matrixItems.map(({ id, math_form, topic, lesson, question_type, difficulty, count, diemMoiCau }) =>
+        ({ id, math_form, topic, lesson, question_type, difficulty, count, diemMoiCau })),
     }));
     window.open(`/admin/exams/select?draft=${draftKey}`, '_blank');
   };
@@ -391,9 +414,11 @@ export default function ExamsManagerPage() {
   const handleExportMatrix = () => {
     // Có cột Điểm mỗi câu để xuất ra rồi nhập lại vẫn khớp
     const wsData = [
-      ["STT", "Dạng Toán", "Loại Câu", "Mức độ", "Số Câu", "Điểm mỗi câu"],
+      ["STT", "Chương", "Bài", "Dạng Toán", "Loại Câu", "Mức độ", "Số Câu", "Điểm mỗi câu"],
       ...matrixItems.map((item, i) => [
         i + 1,
+        item.topic || '',
+        item.lesson || '',
         item.math_form,
         item.question_type,
         item.difficulty,
@@ -462,28 +487,44 @@ export default function ExamsManagerPage() {
         const dang = String(nhan(r, 'Dạng Toán', 'Dang Toan', 'math_form')).trim();
         const loaiTho = String(nhan(r, 'Loại Câu', 'Loai Cau', 'question_type')).trim();
         const mucTho = String(nhan(r, 'Mức độ', 'Muc do', 'difficulty')).trim();
+        const chuongTho = String(nhan(r, 'Chương', 'Chuong', 'topic')).trim();
+        const baiTho = String(nhan(r, 'Bài', 'Bai', 'lesson')).trim();
         const soCau = Number(nhan(r, 'Số Câu', 'So Cau', 'count')) || 1;
         const diemO = nhan(r, 'Điểm mỗi câu', 'Diem moi cau', 'diemMoiCau');
         if (!dang) continue;
 
         const loai = toBankType(loaiTho) || 'NLC';
-        const inv = inventory.find(i =>
-          i.math_form === dang && i.question_type === loai && String(i.difficulty) === mucTho);
+        /*
+         * Tệp có cột Chương/Bài thì khớp đúng ô kho đó. Tệp cũ không có hai cột ấy: dạng
+         * nào chỉ nằm ở một chỗ thì vẫn nạp được, nằm ở nhiều chỗ thì KHÔNG đoán bừa -
+         * đoán sai là đề lấy câu của chương khác mà không ai biết.
+         */
+        const hop = inventory.filter(i =>
+          i.math_form === dang && i.question_type === loai && String(i.difficulty) === mucTho
+          && (!chuongTho || i.topic === chuongTho) && (!baiTho || i.lesson === baiTho));
 
-        if (!inv) {
-          khongKhop.push(`${dang} · ${bankTypeLabel(loai)} · mức ${mucTho || '?'}`);
+        if (hop.length === 0) {
+          khongKhop.push(`${dang} · ${bankTypeLabel(loai)} · mức ${mucTho || '?'} (kho không có)`);
           continue;
         }
+        if (hop.length > 1) {
+          khongKhop.push(`${dang} · ${bankTypeLabel(loai)} · mức ${mucTho || '?'}`
+            + ` (nằm ở ${hop.length} chương: ${hop.map(i => i.topic).join(', ')} - tệp cần có cột Chương và Bài)`);
+          continue;
+        }
+        const inv = hop[0];
 
-        const cat = categories.find(c => c.math_form === dang);
-        const key = `${dang}_${loai}_${inv.difficulty}`;
+        const cat = categories.find(c =>
+          c.math_form === dang && c.topic === inv.topic && c.lesson === inv.lesson);
+        const key = khoaOKho(inv);
         if (themVao.some(x => x.id === key)) continue;
 
         themVao.push({
           id: key,
           category_id: cat?.id || `auto_${dang}`,
           math_form: dang,
-          topic: cat?.topic || '',
+          topic: inv.topic,
+          lesson: inv.lesson,
           question_type: loai,
           difficulty: String(inv.difficulty),
           count: Math.max(1, soCau),   // giữ đúng số trong tệp, thiếu thì cảnh báo và mời AI soạn bù
@@ -514,22 +555,36 @@ export default function ExamsManagerPage() {
   /** Tên các dạng toán kho đang có, để hộp thoại đối chiếu tên máy đọc được. */
   const danhSachDangTrongKho = Array.from(new Set(inventory.map(i => i.math_form))).sort();
 
+  /** Chương của một (bài, dạng) trong kho. Rỗng nếu kho không có, hoặc có ở nhiều chương. */
+  const chuongCuaODang = (bai: string, dang: string): string => {
+    const cs = Array.from(new Set(inventory
+      .filter(i => i.lesson === bai && i.math_form === dang).map(i => i.topic)));
+    return cs.length === 1 ? cs[0] : '';
+  };
+
   /**
    * Tên các BÀI HỌC kho đang có. Bảng ma trận theo Công văn 7991 ghi tên bài ở cột
    * "Nội dung / đơn vị kiến thức", nên đây mới là thứ cần đem ra khớp trước tiên.
    */
-  const danhSachBaiTrongKho = Array.from(new Set(
-    categories.filter(c => c.lesson && danhSachDangTrongKho.includes(c.math_form)).map(c => c.lesson)
-  )).sort();
+  const danhSachBaiTrongKho = Array.from(new Set(inventory.map(i => i.lesson).filter(Boolean))).sort();
 
   /** Các dạng toán thuộc một bài, và kho phải đang có câu cho dạng đó. */
   const dangCuaBai = (bai: string): string[] => Array.from(new Set(
-    categories.filter(c => c.lesson === bai && danhSachDangTrongKho.includes(c.math_form)).map(c => c.math_form)
+    inventory.filter(i => i.lesson === bai).map(i => i.math_form)
   )).sort();
 
-  /** Kho có bao nhiêu câu cho đúng bộ ba này. Hộp thoại gọi để báo đủ/thiếu ngay tại dòng. */
-  const demKho = (dang: string, loai: BankType, mucDo: string): number =>
-    inventory.find(i => i.math_form === dang && i.question_type === loai && String(i.difficulty) === String(mucDo))?.count || 0;
+  /**
+   * Kho có bao nhiêu câu cho một ô.
+   *
+   * Bỏ trống bài (và chương) thì CỘNG GỘP mọi chương - chỉ dùng ở chỗ chưa biết bài, như
+   * hộp nạp ma trận lúc thầy cô còn đang chọn. Mọi chỗ đã biết bài đều phải truyền vào,
+   * nếu không số câu của những chương khác cũng bị tính vào.
+   */
+  const demKho = (dang: string, loai: BankType, mucDo: string, bai?: string, chuong?: string): number =>
+    inventory
+      .filter(i => i.math_form === dang && i.question_type === loai && String(i.difficulty) === String(mucDo)
+        && (!bai || i.lesson === bai) && (!chuong || i.topic === chuong))
+      .reduce((t, i) => t + i.count, 0);
 
   /**
    * Các ô kho đang có câu, để AI chỉ được chọn trong đây chứ không bịa dạng mới.
@@ -538,10 +593,9 @@ export default function ExamsManagerPage() {
   const oKhoChoAI = (): ODeChon[] => {
     const ra: ODeChon[] = [];
     for (const inv of inventory) {
-      const cat = categories.find(c => c.math_form === inv.math_form);
       ra.push({
-        topic: cat?.topic || '',
-        lesson: cat?.lesson || '',
+        topic: inv.topic,
+        lesson: inv.lesson,
         math_form: inv.math_form,
         question_type: (toBankType(inv.question_type) || 'NLC') as BankType,
         difficulty: String(inv.difficulty),
@@ -562,13 +616,15 @@ export default function ExamsManagerPage() {
   /** Nhận ma trận AI vừa soạn, thay hẳn bảng đang có. */
   const nhanMaTranAI = (ds: DongMaTranAI[]) => {
     doiMaTran(ds.map(d => {
-      const cat = categories.find(c => c.math_form === d.math_form);
-      const soKho = demKho(d.math_form, d.question_type, d.difficulty);
+      const cat = categories.find(c =>
+        c.math_form === d.math_form && c.lesson === d.lesson && c.topic === d.topic);
+      const soKho = demKho(d.math_form, d.question_type, d.difficulty, d.lesson, d.topic);
       return {
-        id: `${d.math_form}_${d.question_type}_${d.difficulty}`,
+        id: khoaOKho(d),
         category_id: cat?.id || `auto_${d.math_form}`,
         math_form: d.math_form,
         topic: d.topic || cat?.topic || '',
+        lesson: d.lesson || cat?.lesson || '',
         question_type: d.question_type,
         difficulty: d.difficulty,
         count: Math.max(1, d.soCau),
@@ -580,7 +636,9 @@ export default function ExamsManagerPage() {
 
   /** Dựng yêu cầu soạn bù từ một dòng ma trận đang thiếu câu. */
   const moSinhBu = (item: MatrixItem) => {
-    const cat = categories.find(c => c.math_form === item.math_form);
+    const cat = categories.find(c =>
+      c.math_form === item.math_form && c.lesson === item.lesson && c.topic === item.topic)
+      || categories.find(c => c.math_form === item.math_form);
     setOSinhBu({
       grade,
       /* Lấy phân môn của CHÍNH dạng này, không lấy chuỗi gộp "Đại số + Hình học" -
@@ -615,19 +673,23 @@ export default function ExamsManagerPage() {
     doiMaTran(prev => {
       const ra = [...prev];
       for (const d of dsNap) {
-        const soKho = demKho(d.dangTrongKho, d.loaiCau, d.mucDo);
-        const key = `${d.dangTrongKho}_${d.loaiCau}_${d.mucDo}`;
+        const bai = d.baiTrongKho || '';
+        const chuong = bai ? chuongCuaODang(bai, d.dangTrongKho) : '';
+        const soKho = demKho(d.dangTrongKho, d.loaiCau, d.mucDo, bai, chuong);
+        const key = khoaOKho({ topic: chuong, lesson: bai, math_form: d.dangTrongKho,
+          question_type: d.loaiCau, difficulty: d.mucDo });
         const cu = ra.findIndex(x => x.id === key);
         if (cu >= 0) {
           ra[cu] = { ...ra[cu], count: ra[cu].count + d.soCau };
           continue;
         }
-        const cat = categories.find(c => c.math_form === d.dangTrongKho);
+        const cat = categories.find(c => c.math_form === d.dangTrongKho && c.lesson === bai);
         ra.push({
           id: key,
           category_id: cat?.id || `auto_${d.dangTrongKho}`,
           math_form: d.dangTrongKho,
-          topic: cat?.topic || '',
+          topic: chuong || cat?.topic || '',
+          lesson: bai || cat?.lesson || '',
           question_type: d.loaiCau,
           difficulty: d.mucDo,
           count: Math.max(1, d.soCau),
@@ -812,13 +874,12 @@ export default function ExamsManagerPage() {
    */
   const lamMoiSoKho = (dong: MatrixItem[]): MatrixItem[] => {
     if (inventory.length === 0) return dong;
-    return dong.map(d => {
-      const inv = inventory.find(i =>
-        i.math_form === d.math_form &&
-        i.question_type === d.question_type &&
-        String(i.difficulty) === String(d.difficulty));
-      return inv ? { ...d, max_count: inv.count } : { ...d, max_count: 0 };
-    });
+    /* Ma trận lưu từ trước khi ô kho có chương/bài thì không có hai trường đó - vẫn phải
+       đếm được, nên chỗ nào trống thì bỏ qua điều kiện ấy (đúng như cách cũ). */
+    return dong.map(d => ({
+      ...d,
+      max_count: demKho(d.math_form, d.question_type as BankType, d.difficulty, d.lesson, d.topic),
+    }));
   };
 
   /* ===================== BỘ ĐỀ ĐÃ LƯU ===================== */
@@ -971,7 +1032,10 @@ export default function ExamsManagerPage() {
   const baiCua = (c: any) => tenBaiChung.get(String(c.lesson || '')) || c.lesson;
 
   categories.forEach(cat => {
-    const invItems = inventory.filter(i => i.math_form === cat.math_form);
+    /* Khớp ĐÚNG ô kho, không chỉ tên dạng: "Toán thực tế" nằm ở 28 chương, khớp theo tên
+       thì chương nào cũng hiện đủ số câu của cả 28 chỗ. */
+    const invItems = inventory.filter(i =>
+      i.math_form === cat.math_form && i.topic === cat.topic && i.lesson === cat.lesson);
     if (invItems.length === 0) return; // Chỉ hiển thị dạng toán có trong kho
 
     const chuong = chuongCua(cat);
@@ -1392,7 +1456,7 @@ export default function ExamsManagerPage() {
                                                   </div>
                                                   <div className="p-2.5 flex flex-wrap gap-2">
                                                     {(items as any[]).map(({cat, inv}: any, subIdx: number) => {
-                                                      const formKey = `${cat.math_form}_${inv.question_type}_${inv.difficulty}`;
+                                                      const formKey = khoaOKho(inv);
                                                       const isChecked = matrixItems.some(m => m.id === formKey);
                                                       return (
                                                         <label 

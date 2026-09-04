@@ -31,6 +31,8 @@ interface MatrixItemDraft {
   id: string;
   math_form: string;
   topic?: string;
+  /** Bài học của ô kho. Ma trận lưu từ trước khi có trường này thì bỏ trống. */
+  lesson?: string;
   question_type: string;
   difficulty: string;
   count: number;
@@ -362,6 +364,16 @@ function SelectContent() {
           if (!locTaiCho) query = query.eq('math_form', item.math_form);
           if (gradeVal) query = query.eq('grade', gradeVal);
           if (dsPhanMon.length) query = query.in('subject', dsPhanMon);
+          /*
+           * Rút câu theo ĐÚNG ô kho, không chỉ theo tên dạng.
+           *
+           * Tên dạng không duy nhất trong kho - "Toán thực tế" nằm ở 28 chương. Bản cũ chỉ
+           * lọc theo tên dạng nên một dòng ma trận thuộc Chương 1 vẫn rút được câu của
+           * Chương 5, đề ra sai chương mà không ai biết. Ma trận lưu từ trước chưa có hai
+           * trường này thì bỏ qua, giữ nguyên cách cũ để đề cũ vẫn mở được.
+           */
+          if (item.topic) query = query.eq('topic', item.topic);
+          if (item.lesson) query = query.eq('lesson', item.lesson);
           const { data, error } = await query;
           if (error) throw error;
           const page = data || [];
