@@ -52,14 +52,22 @@ export interface ParsedChapterTitle {
   raw: string;
 }
 
+/** Cấp danh mục đang so: chương hay bài. Hai cấp chỉ khác nhau ở chữ mở đầu. */
+export type CapDanhMuc = 'chuong' | 'bai';
+
+const MO_DAU: Record<CapDanhMuc, RegExp> = {
+  chuong: /^ch[uư][oơ][nư]g\s*([ivxlcdm]+|\d+)\s*[.:)-]?\s*(.*)$/i,
+  bai: /^b[aà]i\s*([ivxlcdm]+|\d+)\s*[.:)-]?\s*(.*)$/i,
+};
+
 /**
  * Tách "CHƯƠNG I. ỨNG DỤNG..." hay "Chương 4. Nguyên hàm..." thành số thứ tự
- * và phần tiêu đề còn lại đã chuẩn hoá.
+ * và phần tiêu đề còn lại đã chuẩn hoá. Đặt `cap` là 'bai' để tách tên bài.
  */
-export function parseChapterTitle(raw: string): ParsedChapterTitle {
+export function parseChapterTitle(raw: string, cap: CapDanhMuc = 'chuong'): ParsedChapterTitle {
   const text = String(raw || '').trim();
-  // "Chương" / "CHƯƠNG" + số (La Mã hoặc thường) + dấu . hoặc : + phần còn lại
-  const match = text.match(/^ch[uư][oơ][nư]g\s*([ivxlcdm]+|\d+)\s*[.:)-]?\s*(.*)$/i);
+  // "Chương" / "CHƯƠNG" (hoặc "Bài") + số (La Mã hoặc thường) + dấu . hoặc : + phần còn lại
+  const match = text.match(MO_DAU[cap]);
 
   if (!match) {
     return { number: null, textKey: stripDiacritics(text), raw: text };
@@ -82,6 +90,25 @@ function wordOverlap(a: string, b: string): number {
   return common / new Set([...wordsA, ...wordsB]).size;
 }
 
+/**
+ * Tên ngắn có nằm gọn trong tên dài không?
+ *
+ * Cần thêm lối so này vì Jaccard phạt oan tên ngắn: "Bài 2. Tập hợp" và "Bài 2. Tập hợp
+ * và các phép toán trên tập hợp" cùng chỉ một bài, nhưng Jaccard chỉ được 2/7 = 0,29 nên
+ * trượt ngưỡng, thế là cây thư mục hiện hai "Bài 2".
+ *
+ * Đòi ÍT NHẤT HAI từ chung để một từ trùng lặt vặt không kéo nhầm hai tên khác nhau lại:
+ * "Chương 3. Hàm số" và "Chương 3. Số phức" chỉ chung mỗi từ "số".
+ */
+function chuaTronVen(a: string, b: string): boolean {
+  const wordsA = new Set(a.split(' ').filter((w) => w.length > 1));
+  const wordsB = new Set(b.split(' ').filter((w) => w.length > 1));
+  if (wordsA.size === 0 || wordsB.size === 0) return false;
+  let common = 0;
+  for (const w of wordsA) if (wordsB.has(w)) common++;
+  return common >= 2 && common / Math.min(wordsA.size, wordsB.size) >= 0.6;
+}
+
 /** Ngưỡng trùng từ vựng tối thiểu để coi là "cùng một chương" khi số thứ tự khớp. */
 const MATCH_THRESHOLD = 0.5;
 
@@ -90,9 +117,11 @@ const MATCH_THRESHOLD = 0.5;
  * bất kể khác định dạng số La Mã/số thường hay viết hoa/thường.
  * Trả về nguyên văn của candidate khớp nhất, hoặc null nếu không đủ tin cậy.
  */
-export function findMatchingChapterTitle(target: string, candidates: string[]): string | null {
+export function findMatchingChapterTitle(
+  target: string, candidates: string[], cap: CapDanhMuc = 'chuong',
+): string | null {
   if (!target?.trim()) return null;
-  const parsedTarget = parseChapterTitle(target);
+  const parsedTarget = parseChapterTitle(target, cap);
 
   let best: { raw: string; score: number } | null = null;
 
@@ -100,18 +129,73 @@ export function findMatchingChapterTitle(target: string, candidates: string[]): 
     if (!candidate?.trim()) continue;
     if (candidate === target) return candidate; // khớp tuyệt đối, khỏi so mờ
 
-    const parsedCandidate = parseChapterTitle(candidate);
+    const parsedCandidate = parseChapterTitle(candidate, cap);
 
     // Số chương phải khớp nếu cả hai bên đều tách được số
     if (parsedTarget.number !== null && parsedCandidate.number !== null) {
       if (parsedTarget.number !== parsedCandidate.number) continue;
     }
 
-    const score = wordOverlap(parsedTarget.textKey, parsedCandidate.textKey);
+    const jaccard = wordOverlap(parsedTarget.textKey, parsedCandidate.textKey);
+    const gonTrong = chuaTronVen(parsedTarget.textKey, parsedCandidate.textKey);
+    const score = gonTrong ? Math.max(jaccard, MATCH_THRESHOLD) : jaccard;
     if (score >= MATCH_THRESHOLD && (!best || score > best.score)) {
       best = { raw: candidate, score };
     }
   }
 
   return best?.raw ?? null;
+}
+
+/**
+ * Y hệt findMatchingChapterTitle nhưng cho tên BÀI.
+ *
+ * Cần riêng vì hai bộ sách đánh số bài khác nhau: Lớp 8 chương Hằng đẳng thức đang có
+ * "Bài 2. Phân tích đa thức thành nhân tử" và "Bài 2. Lập phương của một tổng hay một
+ * hiệu" - cùng số 2 mà là hai bài khác hẳn. Ngưỡng trùng từ vựng giữ nguyên 0.5 nên cặp
+ * đó không khớp (không chung từ nào), còn cặp thật sự cùng bài thì khớp:
+ *
+ *   "Bài 2. Giá trị lớn nhất - nhỏ nhất"
+ *   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số"
+ */
+export function findMatchingLessonTitle(target: string, candidates: string[]): string | null {
+  return findMatchingChapterTitle(target, candidates, 'bai');
+}
+
+/**
+ * Gom một danh sách tên về tên đại diện: tên nào cùng chỉ một chương (hoặc một bài) thì
+ * cùng trỏ về MỘT tên.
+ *
+ * Trả về bản đồ tên gốc -> tên đại diện. Tên đại diện là tên hợp lối viết chung của kho
+ * ("Chương 3." chứ không "CHƯƠNG III.", không viết hoa toàn bộ); cùng lối thì lấy tên
+ * dài hơn vì thường là tên đầy đủ hơn.
+ *
+ * Dùng cho cây thư mục: kho lỡ có hai cách viết cùng một chương thì cây vẫn chỉ hiện một
+ * nhánh, thay vì bổ đôi số câu ra hai chỗ.
+ */
+export function gomTenSongSinh(dsTen: string[], cap: CapDanhMuc = 'chuong'): Map<string, string> {
+  const sach = Array.from(new Set(dsTen.map((x) => String(x || '').trim()).filter(Boolean)));
+  const nhom: string[][] = [];
+
+  for (const ten of sach) {
+    const cungNhom = nhom.find((g) => findMatchingChapterTitle(ten, g, cap) !== null);
+    if (cungNhom) cungNhom.push(ten);
+    else nhom.push([ten]);
+  }
+
+  const diem = (ten: string): number => {
+    let d = 0;
+    if (/^(Chương|Bài)\s+\d/.test(ten)) d += 2;
+    if (/^(CHƯƠNG|BÀI)|^(Chương|Bài)\s+[IVX]+/.test(ten)) d -= 2;
+    const chu = ten.replace(/[^\p{L}]/gu, '');
+    if (chu && chu === chu.toUpperCase()) d -= 2;
+    return d;
+  };
+
+  const banDo = new Map<string, string>();
+  for (const g of nhom) {
+    const dep = [...g].sort((a, b) => diem(b) - diem(a) || b.length - a.length)[0];
+    for (const ten of g) banDo.set(ten, dep);
+  }
+  return banDo;
 }

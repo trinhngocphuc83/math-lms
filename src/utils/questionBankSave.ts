@@ -8,6 +8,7 @@ import { toBankType, toDifficultyCode } from "./questionTypes";
 import { docDapAnDungSai, dapAnDungSaiDungKhuon } from "./chuanHoaCauHoi";
 import { nanTenPhanLoai } from "./deThi";
 import { doiVeTenChuan } from "./phanLoaiCauHoi";
+import { findMatchingChapterTitle, findMatchingLessonTitle } from "./topicMatch";
 import { boSungYeuCauCanDat } from "./yeuCauCanDat";
 
 export interface SaveResult {
@@ -174,6 +175,11 @@ export async function saveQuestionsToBank(supabase: any, questions: QuestionData
    * bị xé lẻ ra hai chỗ - ra đề theo dạng nào cũng hụt câu. Kho Lý đã sinh ra ba biến
    * thể của cùng một dạng đúng theo lối đó. Ở đây kéo tên câu về đúng tên trong danh mục
    * (xem chuanTen trong phanLoaiCauHoi.ts), và báo cho thầy cô biết đã kéo chỗ nào.
+   *
+   * Riêng Chương và Bài còn so thêm THEO SỐ THỨ TỰ, vì chuanTen chỉ bỏ qua hoa thường và
+   * dấu, không bỏ qua số La Mã. Kho Toán vì thiếu chốt này mà có "CHƯƠNG I. ỨNG DỤNG ĐẠO
+   * HÀM..." nằm cạnh "Chương 1. Ứng dụng đạo hàm..." - cùng một chương, 731 câu bị xé làm
+   * hai nhánh trên cây chọn dạng.
    */
   for (const q of validQuestions) {
     for (const cot of ['topic', 'lesson', 'math_form'] as const) {
@@ -182,7 +188,9 @@ export async function saveQuestionsToBank(supabase: any, questions: QuestionData
       const dsCoSan = (dmHienCo || [])
         .filter((d: any) => String(d.grade) === String(q.grade) && d.subject === q.subject)
         .map((d: any) => String(d[cot] || '')).filter(Boolean);
-      const chuan = doiVeTenChuan(cu, dsCoSan);
+      const chuan = doiVeTenChuan(cu, dsCoSan)
+        || (cot === 'topic' ? findMatchingChapterTitle(cu, dsCoSan) : null)
+        || (cot === 'lesson' ? findMatchingLessonTitle(cu, dsCoSan) : null);
       if (chuan && chuan !== cu) {
         (q as any)[cot] = chuan;
         daNan.push(`Tên trùng dạng đã có, đã gộp lại: "${cu}" -> "${chuan}"`);

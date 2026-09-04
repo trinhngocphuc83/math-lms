@@ -13,6 +13,7 @@ import SoanMaTranModal from "@/components/admin/SoanMaTranModal";
 import MenuGon, { MucMenu, NhomMenu, NganMenu, DanhSachTick } from "@/components/admin/MenuGon";
 import type { ODeChon, DongMaTranAI } from "@/utils/soanMaTranAI";
 import { toBankType, bankTypeLabel, type BankType } from "@/utils/questionTypes";
+import { gomTenSongSinh } from "@/utils/topicMatch";
 import {
   type DauDe, type DongMaTran, type KhuonDe, type ChiTieuLoai, dauDeMacDinh, diemMacDinh, tinhTongDiem, tinhTongCau,
   gomTheoLoai, lamTron, soDiemVN, KHUON_DE, MA_KHUON_DE, tenLamDutTruyVan } from "@/utils/deThi";
@@ -957,20 +958,36 @@ export default function ExamsManagerPage() {
 
   // Group Categories & Inventory for UI Tree
   const groupedCategories: Record<string, Record<string, Record<string, any[]>>> = {};
-  
+
+  /*
+   * Kho lỡ có hai cách viết cùng một chương ("Chương 1. Ứng dụng đạo hàm..." và
+   * "CHƯƠNG I. ỨNG DỤNG ĐẠO HÀM...") thì cây phải hiện MỘT nhánh, không bổ đôi số câu ra
+   * hai chỗ - ra đề theo nhánh nào cũng tưởng hụt câu. Gộp ở đây là chốt cuối; cửa lưu đã
+   * kéo tên mới về tên cũ nên bình thường bản đồ này chẳng gộp gì.
+   */
+  const tenChuongChung = gomTenSongSinh(categories.map(c => String(c.topic || '')), 'chuong');
+  const tenBaiChung = gomTenSongSinh(categories.map(c => String(c.lesson || '')), 'bai');
+  const chuongCua = (c: any) => tenChuongChung.get(String(c.topic || '')) || c.topic;
+  const baiCua = (c: any) => tenBaiChung.get(String(c.lesson || '')) || c.lesson;
+
   categories.forEach(cat => {
     const invItems = inventory.filter(i => i.math_form === cat.math_form);
     if (invItems.length === 0) return; // Chỉ hiển thị dạng toán có trong kho
 
-    if (!groupedCategories[cat.topic]) groupedCategories[cat.topic] = {};
-    if (!groupedCategories[cat.topic][cat.lesson]) groupedCategories[cat.topic][cat.lesson] = {};
-    
+    const chuong = chuongCua(cat);
+    const bai = baiCua(cat);
+    if (!groupedCategories[chuong]) groupedCategories[chuong] = {};
+    if (!groupedCategories[chuong][bai]) groupedCategories[chuong][bai] = {};
+
     invItems.forEach(inv => {
       const typeName = getTypeName(inv.question_type);
-      if (!groupedCategories[cat.topic][cat.lesson][typeName]) {
-        groupedCategories[cat.topic][cat.lesson][typeName] = [];
+      if (!groupedCategories[chuong][bai][typeName]) {
+        groupedCategories[chuong][bai][typeName] = [];
       }
-      groupedCategories[cat.topic][cat.lesson][typeName].push({ cat, inv });
+      /* Dạng trùng tên trong cùng một bài thì chỉ giữ một dòng, không bày hai lần. */
+      const daCo = groupedCategories[chuong][bai][typeName].some(
+        (x: any) => x.cat.math_form === cat.math_form && x.inv === inv);
+      if (!daCo) groupedCategories[chuong][bai][typeName].push({ cat, inv });
     });
   });
 
