@@ -16,6 +16,7 @@ import rehypeKatex from 'rehype-katex';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import QuestionBankModal from "@/components/admin/QuestionBankModal";
+import { saveQuestionsToBank } from "@/utils/questionBankSave";
 
 export default function QuestionGeneratorPage() {
   const router = useRouter();
@@ -302,7 +303,6 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
         existingNormalized.push(normContent);
         
         inserts.push({
-          question_id: `CH_${Date.now()}_${i}`,
           grade: globalGrade,
           subject: globalSubject,
           topic: res.topic,
@@ -317,16 +317,30 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
           option_d: res.option_d,
           correct_answer: res.correct_answer,
           explanation: res.explanation,
-          created_at: new Date().toISOString()
         });
       }
 
+      /*
+       * Đi qua saveQuestionsToBank chứ không ghi thẳng vào bảng questions nữa.
+       *
+       * Ghi thẳng là bỏ qua toàn bộ chốt ở cửa lưu: câu thiếu Chương/Bài/Dạng vẫn lọt,
+       * tên viết sai LaTeX kiểu "${{X}}$" vẫn vào (chuỗi đó làm tường lửa Supabase chặn
+       * nguyên truy vấn, trang chọn câu chết câm), tên lệch dấu chấm cuối vẫn đẻ thêm một
+       * dạng song sinh, và quan trọng nhất là KHÔNG có dòng danh mục tương ứng - câu nằm
+       * trong kho mà cây chọn dạng ở trang ra đề không bao giờ hiện, coi như mất câu.
+       */
+      let daLuu = 0;
       if (inserts.length > 0) {
-        const { error } = await supabase.from('questions').insert(inserts);
-        if (error) throw error;
+        const kq = await saveQuestionsToBank(supabase, inserts as any[]);
+        daLuu = kq.insertedCount;
+        if (kq.thieuPhanLoai.length) {
+          alert(`${kq.thieuPhanLoai.length} câu chưa đủ Chương/Bài/Dạng nên chưa lưu được. Thầy cô chọn lại phân loại ở khung trên rồi lưu lại.`);
+        }
+        if (kq.daNan.length) console.warn('[Soạn câu bằng AI] Đã nắn:', kq.daNan);
+        if (kq.conKhuyet.length) console.warn('[Soạn câu bằng AI] Còn khuyết:', kq.conKhuyet);
       }
 
-      alert(`Lưu thành công: ${inserts.length} câu.\nBỏ qua: ${duplicateCount} câu (do trùng lặp với dữ liệu trong Ngân hàng).`);
+      alert(`Lưu thành công: ${daLuu} câu.\nBỏ qua: ${duplicateCount} câu (do trùng lặp với dữ liệu trong Ngân hàng).`);
       setGeneratedResults([]);
       setEssayContent("");
       setEssayExplanation("");

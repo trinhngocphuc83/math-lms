@@ -68,6 +68,45 @@ function nanDapAn(q: QuestionData, loai: string): { correct: string; nan?: strin
 }
 
 /**
+ * Bảo đảm mỗi tổ hợp (lớp, môn, chương, bài, dạng) của các câu này ĐỀU CÓ dòng danh mục.
+ *
+ * Tách riêng ra để những đường KHÔNG đi qua saveQuestionsToBank vẫn gọi được - đường sửa
+ * câu trong Ngân hàng và đường nạp dữ liệu từ Excel. Thiếu dòng danh mục thì câu vẫn nằm
+ * trong kho nhưng cây chọn dạng ở trang ra đề không hiện, coi như mất câu.
+ *
+ * Trả về số dòng vừa thêm.
+ */
+export async function baoDamCoDongDanhMuc(supabase: any, cacCau: any[]): Promise<number> {
+  const khoa = (c: any) =>
+    [c.grade, c.subject, c.topic, c.lesson, c.math_form].map((x) => String(x || '').trim()).join('|');
+
+  const dayDu = cacCau.filter(
+    (q) => String(q.topic || '').trim() && String(q.lesson || '').trim() && String(q.math_form || '').trim());
+  if (dayDu.length === 0) return 0;
+
+  const { data: dmHienCo } = await supabase
+    .from('question_categories').select('grade, subject, topic, lesson, math_form');
+  const daCo = new Set((dmHienCo || []).map(khoa));
+
+  const canThem: any[] = [];
+  for (const q of dayDu) {
+    const c = { grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson, math_form: q.math_form };
+    const k = khoa(c);
+    if (daCo.has(k)) continue;
+    daCo.add(k);
+    canThem.push(c);
+  }
+  if (canThem.length === 0) return 0;
+
+  const coYeuCau = await boSungYeuCauCanDat(canThem, (c) =>
+    dayDu.filter((q) => q.topic === c.topic && q.lesson === c.lesson && q.math_form === c.math_form)
+      .map((q) => String(q.content || '')).filter(Boolean));
+  const { error } = await supabase.from('question_categories').insert(coYeuCau);
+  if (error) { console.error('Lỗi thêm danh mục mới:', error); return 0; }
+  return canThem.length;
+}
+
+/**
  * Lưu các câu hỏi hợp lệ (chưa trùng) vào bảng `questions`, tự thêm Bài học/Dạng
  * toán mới vào `question_categories` nếu câu hỏi đánh dấu isNewLesson/isNewMathForm.
  *

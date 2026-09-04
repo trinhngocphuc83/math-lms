@@ -15,6 +15,7 @@ import QuestionPreviewModal from "@/components/admin/QuestionPreviewModal";
 import { exportQuestionsToWord } from "@/utils/exportDocx";
 import { targetFormatPrompt, CORRECT_ANSWER_FORMAT_HINT } from "@/utils/questionTypes";
 import { LUAT_KHONG_CAT_CUT } from "@/utils/noiTiepJson";
+import { saveQuestionsToBank } from "@/utils/questionBankSave";
 
 
 const cleanJsonString = (str: string) => {
@@ -775,17 +776,23 @@ Tổng cộng bạn phải sinh ra ĐÚNG ${totalTargetCount} phần tử trong 
     setIsSavingAll(true);
     try {
       const inserts = allVariants.map(q => ({
-        question_id: `CH_${Date.now()}_${Math.random().toString(36).substring(2,6)}`,
         grade: q.grade, subject: q.subject, topic: q.topic, lesson: q.lesson,
         math_form: q.math_form, question_type: q.question_type, difficulty: q.difficulty,
         content: q.content, option_a: q.option_a, option_b: q.option_b, option_c: q.option_c, option_d: q.option_d,
-        correct_answer: q.correct_answer, explanation: q.explanation, image_url: q.image_url, usage_count: 0
+        correct_answer: q.correct_answer, explanation: q.explanation, image_url: q.image_url,
       }));
 
-      const { error } = await supabase.from('questions').insert(inserts);
-      if (error) throw error;
+      /* Đi qua cửa lưu chung thay vì ghi thẳng - xem chú thích ở generator/page.tsx.
+         Riêng đường này còn một cái lợi nữa: biến thể do máy sinh hay lệch khuôn đáp án
+         (Đúng/Sai ghi "Đ, S, Đ, S"), cửa lưu sẽ nắn về đúng khuôn ĐSSĐ. */
+      const kq = await saveQuestionsToBank(supabase, inserts as any[]);
+      if (kq.thieuPhanLoai.length) {
+        alert(`${kq.thieuPhanLoai.length} câu chưa đủ Chương/Bài/Dạng nên chưa lưu được.`);
+      }
+      if (kq.daNan.length) console.warn('[Soạn câu tương tự] Đã nắn:', kq.daNan);
+      if (kq.conKhuyet.length) console.warn('[Soạn câu tương tự] Còn khuyết:', kq.conKhuyet);
 
-      alert(`Đã lưu ${inserts.length} câu vào Ngân hàng!`);
+      alert(`Đã lưu ${kq.insertedCount} câu vào Ngân hàng!`);
       
       // Xoá các variant đã lưu
       setBaseQuestions(prev => prev.map(q => ({ ...q, generatedVariants: [] })));

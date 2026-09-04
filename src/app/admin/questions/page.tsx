@@ -16,6 +16,7 @@ import CategoryManagerModal from "@/components/admin/CategoryManagerModal";
 import ExportScopeModal, { khoaBai, type ThongKeNhanh, type PhamViChon } from "@/components/admin/ExportScopeModal";
 import { dungFileMarkdown, tenFileAnToan, uocLuongSoTuCuaCauHoi } from "@/utils/exportQuestionsMarkdown";
 import { saveAs } from "file-saver";
+import { baoDamCoDongDanhMuc } from "@/utils/questionBankSave";
 import {
   bankTypeLabel,
   difficultyLabel,
@@ -391,6 +392,16 @@ export default function QuestionsPage() {
         const { error } = await supabase.from('questions').upsert(record);
         if (error) throw error;
       }
+
+      /*
+       * Câu vừa ghi phải CÓ dòng danh mục tương ứng.
+       *
+       * Sửa Chương/Bài/Dạng của một câu, hay thêm câu mới ngay tại đây, đều có thể sinh
+       * ra một tổ hợp chưa từng có dòng nào - nhất là bản sao tự tạo sang bài "Ôn tập
+       * chương" ở ngay trên. Thiếu dòng thì câu nằm trong kho mà cây chọn dạng ở trang
+       * ra đề không hiện, coi như mất câu.
+       */
+      await baoDamCoDongDanhMuc(supabase, recordsToSave);
       
       alert("Lưu câu hỏi thành công!" + (recordsToSave.length > 1 ? " (Đã tự động tạo thêm 1 bản sao vào bài Ôn tập chương)" : ""));
       setEditingQuestion(null);

@@ -84,6 +84,11 @@ interface CategoryProposal {
   key: string;
   level: 'topic' | 'lesson' | 'math_form';
   value: string;
+  /** Chỗ đứng của đề xuất - để thầy cô biết đang duyệt danh mục của lớp nào, chương nào. */
+  grade: string;
+  subject: string;
+  topic: string;
+  lesson: string;
   waitingIds: string[];
 }
 
@@ -113,8 +118,20 @@ const FILTER_TABS: { key: ReviewFilter; label: string }[] = [
 const CHUNK_SIZE = 7;
 const PDF_SIZE_WARNING_BYTES = 15 * 1024 * 1024;
 
-function proposalKey(level: CategoryProposal['level'], value: string): string {
-  return `${level}::${value}`;
+/**
+ * Khoá gom đề xuất danh mục - phải kèm ĐƯỜNG DẪN (lớp · môn · chương · bài), không chỉ tên.
+ *
+ * Bản cũ gom theo mỗi tên, nên câu Lớp 10 chương Mệnh đề, câu Lớp 11 chương Lượng giác và
+ * câu Lớp 12 chương Đạo hàm cùng đề xuất dạng "Toán tổng hợp" thì dồn chung MỘT thẻ; một
+ * lần bấm "Gộp" đóng dấu một tên dạng lên câu của cả ba lớp. Kho Toán đã hỏng đúng lối đó:
+ * 29 câu Đúng/Sai của ba lớp cùng mang tên "Tổng hợp phương pháp tọa độ không gian (mặt
+ * phẳng, đường thẳng, mặt cầu)" - vốn là một dạng của Hình học 12.
+ */
+function proposalKey(level: CategoryProposal['level'], q: QuestionData): string {
+  const duong: string[] = [String(q.grade ?? ''), String(q.subject ?? '')];
+  if (level !== 'topic') duong.push(String(q.topic ?? ''));
+  if (level === 'math_form') duong.push(String(q.lesson ?? ''));
+  return [level, duong.join('|'), String((q as any)[level] ?? '')].join('::');
 }
 
 function buildChunks(files: File[]): ScanChunk[] {
@@ -321,8 +338,18 @@ export default function BatchQueuePage() {
           if (existing) {
             next[key] = { ...existing, waitingIds: [...existing.waitingIds, w.id] };
           } else {
-            const [level, value] = key.split('::');
-            next[key] = { key, level: level as CategoryProposal['level'], value, waitingIds: [w.id] };
+            // Khoá nay có ba đoạn (cấp :: đường dẫn :: tên) nên đọc thẳng từ câu hỏi cho chắc.
+            const level = key.slice(0, key.indexOf('::')) as CategoryProposal['level'];
+            next[key] = {
+              key,
+              level,
+              value: String((w.q as any)[level] ?? ''),
+              grade: String(w.q.grade ?? ''),
+              subject: String(w.q.subject ?? ''),
+              topic: String(w.q.topic ?? ''),
+              lesson: String(w.q.lesson ?? ''),
+              waitingIds: [w.id],
+            };
           }
         }
       }
@@ -410,9 +437,9 @@ export default function BatchQueuePage() {
         }
 
         const pendingKeys: string[] = [];
-        if (q.isNewTopic) pendingKeys.push(proposalKey('topic', q.topic));
-        if (q.isNewLesson) pendingKeys.push(proposalKey('lesson', q.lesson));
-        if (q.isNewMathForm) pendingKeys.push(proposalKey('math_form', q.math_form));
+        if (q.isNewTopic) pendingKeys.push(proposalKey('topic', q));
+        if (q.isNewLesson) pendingKeys.push(proposalKey('lesson', q));
+        if (q.isNewMathForm) pendingKeys.push(proposalKey('math_form', q));
 
         working.push({ id: q.temp_id!, q, autoCropped, pendingCategoryKeys: pendingKeys, sourceFile, cropBox });
       }
@@ -471,6 +498,23 @@ export default function BatchQueuePage() {
     if (isQueueRunning) return;
     setIsQueueRunning(true);
     processChunk(index, chunks[index]).finally(() => setIsQueueRunning(false));
+  };
+
+  /**
+   * Những mục CÙNG CHỖ với đề xuất, để gợi ý gộp vào.
+   *
+   * Bản cũ bày cả kho: ô "Gộp vào mục có sẵn" của một dạng Lớp 10 vẫn liệt kê đủ 552 tên
+   * dạng của mọi lớp, mọi phân môn, không sắp xếp. Chọn nhầm sang tên của lớp khác là
+   * chuyện sớm muộn - và đó chính là cách 29 câu Đúng/Sai bị gán tên dạng của Hình học 12.
+   */
+  const mucCungCho = (p: CategoryProposal): string[] => {
+    const cungCho = categories.filter((c: any) =>
+      String(c.grade ?? '') === p.grade &&
+      String(c.subject ?? '') === p.subject &&
+      (p.level === 'topic' || String(c.topic ?? '') === p.topic) &&
+      (p.level !== 'math_form' || String(c.lesson ?? '') === p.lesson));
+    return Array.from(new Set(cungCho.map((c: any) => String(c[p.level] ?? '')).filter(Boolean)))
+      .sort((a, b) => a.localeCompare(b, 'vi'));
   };
 
   // ===== Duyệt danh mục mới =====
@@ -808,7 +852,7 @@ export default function BatchQueuePage() {
               <CategoryProposalCard
                 key={p.key}
                 proposal={p}
-                existingOptions={p.level === 'topic' ? uniqueTopics : p.level === 'lesson' ? uniqueLessons : uniqueForms}
+                existingOptions={mucCungCho(p)}
                 onApprove={() => resolveProposal(p.key, { type: 'approve' })}
                 onRemap={(to) => resolveProposal(p.key, { type: 'remap', to })}
               />
@@ -1161,6 +1205,11 @@ function CategoryProposalCard({
         <span className="text-[10px] font-black uppercase text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded mr-2">{LEVEL_LABEL[proposal.level]} mới</span>
         <span className="font-bold text-gray-800">{proposal.value}</span>
         <span className="text-xs text-gray-500 ml-2">({proposal.waitingIds.length} câu đang chờ)</span>
+        {/* Đường dẫn: không thấy chỗ đứng thì gộp nhầm sang danh mục của lớp khác lúc nào không hay. */}
+        <div className="text-[11px] text-gray-500 mt-0.5">
+          {['Lớp ' + proposal.grade, proposal.subject, proposal.level !== 'topic' ? proposal.topic : '', proposal.level === 'math_form' ? proposal.lesson : '']
+            .filter(Boolean).join(' · ')}
+        </div>
       </div>
       <div className="flex items-center gap-2">
         <select value={remapTarget} onChange={(e) => setRemapTarget(e.target.value)} className="border rounded-lg px-2 py-1.5 text-xs bg-white">
