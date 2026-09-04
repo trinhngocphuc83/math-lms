@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
 import {
   Sliders, Download, UploadCloud, Trash2, Settings, Database, Shuffle, X, ChevronDown, ChevronRight,
-  Folder, File, List, Save, Layers, AlertTriangle, Loader2, FileText, Wand2, Sparkles
+  Folder, File, List, Save, Layers, AlertTriangle, Loader2, FileText, Wand2, Sparkles, Undo2
 } from "lucide-react";
 import * as XLSX from "xlsx";
 import NapMaTranModal, { type DongNapMaTran } from "@/components/admin/NapMaTranModal";
@@ -80,6 +80,30 @@ export default function ExamsManagerPage() {
   const [categories, setCategories] = useState<CategoryData[]>([]);
   const [inventory, setInventory] = useState<InventoryData[]>([]);
   const [matrixItems, setMatrixItems] = useState<MatrixItem[]>([]);
+  /**
+   * Mấy bước ma trận vừa rồi, để bấm lùi lại được.
+   *
+   * Cần nhất khi nhờ AI phân bổ: AI thay sạch bảng đang có, không ưng thì trước đây phải
+   * ngồi tick lại từng dạng từ đầu. Ghi nhớ MƯỜI bước gần nhất - đủ để lùi qua vài lần
+   * thử, mà không phình bộ nhớ.
+   *
+   * CỐ Ý không ghi nhớ lúc gõ số câu / sửa điểm: gõ một con số là mấy lần đổi, ghi hết
+   * thì bấm lùi mười cái vẫn chưa ra khỏi một ô nhập.
+   */
+  const [lichSuMaTran, setLichSuMaTran] = useState<MatrixItem[][]>([]);
+  const SO_BUOC_NHO = 10;
+
+  /** Đổi ma trận và ghi lại bước trước đó để hoàn tác được. */
+  const doiMaTran = (moi: MatrixItem[] | ((truoc: MatrixItem[]) => MatrixItem[])) => {
+    setLichSuMaTran(ls => [...ls, matrixItems].slice(-SO_BUOC_NHO));
+    setMatrixItems(moi as any);
+  };
+
+  const hoanTacMaTran = () => {
+    if (lichSuMaTran.length === 0) return;
+    setMatrixItems(lichSuMaTran[lichSuMaTran.length - 1]);
+    setLichSuMaTran(ls => ls.slice(0, -1));
+  };
   
   // Loading & Generating
   const [isLoadingTree, setIsLoadingTree] = useState(false);
@@ -269,9 +293,9 @@ export default function ExamsManagerPage() {
     const key = `${cat.math_form}_${inv.question_type}_${inv.difficulty}`;
     const existing = matrixItems.find(m => m.id === key);
     if (existing) {
-      setMatrixItems(matrixItems.filter(item => item.id !== key));
+      doiMaTran(matrixItems.filter(item => item.id !== key));
     } else {
-      setMatrixItems([...matrixItems, {
+      doiMaTran([...matrixItems, {
         id: key,
         category_id: cat.id,
         math_form: cat.math_form,
@@ -286,7 +310,7 @@ export default function ExamsManagerPage() {
   };
 
   const removeMatrixItem = (id: string) => {
-    setMatrixItems(matrixItems.filter(item => item.id !== id));
+    doiMaTran(matrixItems.filter(item => item.id !== id));
   };
 
   /**
@@ -313,7 +337,7 @@ export default function ExamsManagerPage() {
   };
 
   const clearMatrix = () => {
-    if(confirm("Bạn có chắc chắn muốn xoá toàn bộ ma trận?")) setMatrixItems([]);
+    if(confirm("Bạn có chắc chắn muốn xoá toàn bộ ma trận?")) doiMaTran([]);
   };
 
   // Trước đây bấm nút này là hệ thống tự chọn ngẫu nhiên câu hỏi rồi hiện luôn
@@ -462,7 +486,7 @@ export default function ExamsManagerPage() {
         return;
       }
 
-      setMatrixItems(themVao);
+      doiMaTran(themVao);
       let tb = `Đã nạp ${themVao.length} dòng vào ma trận.`;
       if (khongKhop.length) {
         tb += `\n\nCÓ ${khongKhop.length} DÒNG KHÔNG NẠP ĐƯỢC (kho không có dạng/loại/mức này):\n- ` + khongKhop.join('\n- ');
@@ -525,7 +549,7 @@ export default function ExamsManagerPage() {
 
   /** Nhận ma trận AI vừa soạn, thay hẳn bảng đang có. */
   const nhanMaTranAI = (ds: DongMaTranAI[]) => {
-    setMatrixItems(ds.map(d => {
+    doiMaTran(ds.map(d => {
       const cat = categories.find(c => c.math_form === d.math_form);
       const soKho = demKho(d.math_form, d.question_type, d.difficulty);
       return {
@@ -572,7 +596,7 @@ export default function ExamsManagerPage() {
    * dòng ma trận là bộ ba đó nên không thể có hai dòng giống nhau.
    */
   const napTuAI = (dsNap: DongNapMaTran[]) => {
-    setMatrixItems(prev => {
+    doiMaTran(prev => {
       const ra = [...prev];
       for (const d of dsNap) {
         const soKho = demKho(d.dangTrongKho, d.loaiCau, d.mucDo);
@@ -738,7 +762,7 @@ export default function ExamsManagerPage() {
     const m = mauList.find(x => x.id === id);
     if (!m) return;
     const dong = m.du_lieu?.dongMaTran || [];
-    setMatrixItems(lamMoiSoKho(dong.map((d: any) => ({
+    doiMaTran(lamMoiSoKho(dong.map((d: any) => ({
       ...d,
       diemMoiCau: d.diemMoiCau ?? diemMacDinh(d.question_type),
     }))));
@@ -856,7 +880,7 @@ export default function ExamsManagerPage() {
   const moLaiNhap = () => {
     const d = nhapCu?.du_lieu;
     if (!d) return;
-    setMatrixItems(lamMoiSoKho((d.matrixItems || []).map((x: any) => ({
+    doiMaTran(lamMoiSoKho((d.matrixItems || []).map((x: any) => ({
       ...x, diemMoiCau: x.diemMoiCau ?? diemMacDinh(x.question_type),
     }))));
     if (d.examType) setExamType(d.examType);
@@ -1362,9 +1386,28 @@ export default function ExamsManagerPage() {
           <div className="w-[55%] bg-white rounded-2xl shadow-sm border border-gray-100 flex flex-col overflow-hidden">
             <div className="p-3 bg-emerald-50 border-b border-emerald-100 flex justify-between items-center shrink-0">
               <h3 className="font-bold text-emerald-800 text-[15px]">2. Cấu hình Ma Trận</h3>
-              <button onClick={clearMatrix} className="text-xs text-red-600 font-bold hover:bg-red-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
-                <Trash2 className="w-3.5 h-3.5" /> Xóa bảng
-              </button>
+              <div className="flex items-center gap-1">
+                {/* Lùi lại bảng ma trận trước đó - cần nhất sau khi nhờ AI phân bổ, vì AI
+                    thay sạch bảng đang có, không ưng thì phải tick lại từ đầu. */}
+                <button
+                  onClick={hoanTacMaTran}
+                  disabled={lichSuMaTran.length === 0}
+                  title={lichSuMaTran.length === 0
+                    ? 'Chưa có bước nào để lùi'
+                    : `Lùi lại bảng ma trận trước đó (còn ${lichSuMaTran.length} bước)`}
+                  className="text-xs text-slate-700 font-bold hover:bg-white px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 disabled:opacity-40 disabled:hover:bg-transparent"
+                >
+                  <Undo2 className="w-3.5 h-3.5" /> Hoàn tác
+                  {lichSuMaTran.length > 0 && (
+                    <span className="text-[10px] font-black bg-slate-200 text-slate-600 rounded px-1">
+                      {lichSuMaTran.length}
+                    </span>
+                  )}
+                </button>
+                <button onClick={clearMatrix} className="text-xs text-red-600 font-bold hover:bg-red-100 px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1">
+                  <Trash2 className="w-3.5 h-3.5" /> Xóa bảng
+                </button>
+              </div>
             </div>
             
             <div className="flex-1 overflow-y-auto relative scrollbar-thin">

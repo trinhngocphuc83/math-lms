@@ -151,14 +151,32 @@ export interface KhuonDe {
  * tổng điểm 3,0 / 2,0 / 2,0 / 3,0 ứng với tỉ lệ 30 / 20 / 20 / 30.
  */
 export const KHUON_DE: Record<string, KhuonDe> = {
+  /**
+   * Phần tự luận của khuôn 3-2-2-3 được ra theo HAI cách, Thầy cô chọn cách nào cũng
+   * tròn 3,0 điểm:
+   *   - 3 câu, mỗi câu MỘT ý  -> mỗi câu 1,0 điểm
+   *   - 2 câu, trong đó MỘT câu có hai ý a) b) -> mỗi câu 1,5 điểm
+   * Tách thành hai khuôn riêng chứ không để Thầy cô tự sửa tay: chọn khuôn là điểm mỗi
+   * câu và chỉ tiêu số câu tự đặt đúng, thanh tiến độ đối chiếu cũng đúng theo.
+   */
   "3-2-2-3": {
-    ten: "3-2-2-3 (chuẩn Công văn 7991)",
-    moTa: "12 câu trắc nghiệm · 2 câu Đúng/Sai · 4 câu trả lời ngắn · 3,0 điểm tự luận",
+    ten: "3-2-2-3 · tự luận 3 câu (chuẩn Công văn 7991)",
+    moTa: "12 câu trắc nghiệm · 2 câu Đúng/Sai · 4 câu trả lời ngắn · 3 câu tự luận, mỗi câu 1 ý (1,0 điểm/câu)",
     chiTieu: {
       NLC: { soCau: 12, diemMoiCau: 0.25 },
       DS: { soCau: 2, diemMoiCau: 1 },
       TLN: { soCau: 4, diemMoiCau: 0.5 },
       TL: { soCau: 3, diemMoiCau: 1 },
+    },
+  },
+  "3-2-2-3-tl2": {
+    ten: "3-2-2-3 · tự luận 2 câu (chuẩn Công văn 7991)",
+    moTa: "12 câu trắc nghiệm · 2 câu Đúng/Sai · 4 câu trả lời ngắn · 2 câu tự luận, một câu có hai ý a) b) (1,5 điểm/câu)",
+    chiTieu: {
+      NLC: { soCau: 12, diemMoiCau: 0.25 },
+      DS: { soCau: 2, diemMoiCau: 1 },
+      TLN: { soCau: 4, diemMoiCau: 0.5 },
+      TL: { soCau: 2, diemMoiCau: 1.5 },
     },
   },
   "4-6": {
