@@ -28,6 +28,31 @@ export const laLoiCanHanMuc = (msg: string): boolean =>
 export const laLoiQuaTai = (msg: string): boolean =>
   /503|service unavailable|overloaded|high demand/i.test(msg);
 
+/** Lỗi do CHÍNH TA bỏ cuộc vì hết giờ, không phải Google trả về. */
+export const laLoiHetGio = (msg: string): boolean => /\[hết giờ\]/.test(msg);
+
+/**
+ * Hạn giờ cho MỘT lần gọi model, và ngân sách cho CẢ lượt gọi.
+ *
+ * Đo trong app ngày 04/09/2026: model đầu bảng bị Google quá tải, vòng lặp chạy qua từng
+ * khoá mà không có hạn giờ nào, nên một lượt xếp 8 câu treo hơn 5 phút và không có cách
+ * dừng. Trên Vercel hàm bị cắt ở 60 giây, trả về trang lỗi HTML chứ không phải JSON, nên
+ * phía giao diện chỉ đọc được "Unexpected token 'A'" - không ai đoán ra là do quá tải.
+ *
+ * Ngân sách để dưới 60 giây của Vercel, chừa chỗ cho phần dựng câu trả lời.
+ */
+export const GIAY_MOI_LAN_GOI = 20;
+export const GIAY_CA_LUOT = 45;
+
+/** Bọc một lời hứa bằng hạn giờ; quá hạn thì ném lỗi có dấu [hết giờ] để phân biệt. */
+function chanGio<T>(viec: Promise<T>, giay: number, nhan: string): Promise<T> {
+  return new Promise<T>((nhan_, tuChoi) => {
+    const dongHo = setTimeout(() => tuChoi(new Error(`[hết giờ] ${nhan} không trả lời trong ${giay} giây.`)), giay * 1000);
+    viec.then((v) => { clearTimeout(dongHo); nhan_(v); },
+              (e) => { clearTimeout(dongHo); tuChoi(e); });
+  });
+}
+
 /**
  * Danh sách model đang bật, xếp theo thứ tự ưu tiên.
  * Bảng chưa có (hoặc lỗi kết nối) thì lùi về danh sách mặc định thay vì làm hỏng cả lượt gọi.
@@ -67,6 +92,10 @@ export type ThamSoGoiGemini = {
   generationConfig?: Record<string, any>;
   /** Ghi đè danh sách model (chủ yếu để kiểm thử). */
   models?: string[];
+  /** Hạn giờ cho mỗi lần gọi một model, giây. Mặc định GIAY_MOI_LAN_GOI. */
+  giayMoiLanGoi?: number;
+  /** Ngân sách cho cả lượt, giây. Hết ngân sách thì dừng ngay, không thử tiếp. */
+  giayCaLuot?: number;
 };
 
 /**
@@ -85,7 +114,13 @@ export async function goiGemini(thamSo: ThamSoGoiGemini): Promise<KetQuaGoiGemin
   const modelDaCan: string[] = [];   // model mà mọi khoá đều cạn hạn mức
   const modelQuaTai: string[] = [];  // model Google đang để quá tải
 
+  const giayMoiLan = thamSo.giayMoiLanGoi ?? GIAY_MOI_LAN_GOI;
+  const hanChot = Date.now() + (thamSo.giayCaLuot ?? GIAY_CA_LUOT) * 1000;
+  const conGio = () => Date.now() < hanChot;
+  let hetNganSach = false;
+
   for (const modelId of models) {
+    if (!conGio()) { hetNganSach = true; break; }
     // Khoá bị treo được tính riêng cho từng model, nên phải lọc lại ở mỗi vòng.
     const keys = await filterCleanKeys(thamSo.keys, modelId);
     if (keys.length === 0) {
@@ -95,18 +130,29 @@ export async function goiGemini(thamSo: ThamSoGoiGemini): Promise<KetQuaGoiGemin
 
     let soKhoaCan = 0;
     let coLoiQuaTai = false;
+    let soLanQuaTai = 0;
 
     for (const apiKey of keys) {
+      if (!conGio()) { hetNganSach = true; break; }
       try {
         const genAI = new GoogleGenerativeAI(apiKey);
         const model = genAI.getGenerativeModel({
           model: modelId,
           ...(thamSo.generationConfig ? { generationConfig: thamSo.generationConfig } : {}),
         });
-        const result = await model.generateContent(thamSo.parts);
+        // Chặn giờ ở đây chứ không tin vào thư viện: gọi treo là cả lượt treo theo.
+        // Không quá nửa số giây còn lại, để còn kịp thử một đường khác.
+        const conLai = Math.max(3, Math.floor((hanChot - Date.now()) / 1000));
+        const result = await chanGio(model.generateContent(thamSo.parts),
+          Math.min(giayMoiLan, conLai), modelId);
         return { text: result.response.text(), model: modelId };
       } catch (e: any) {
         loiCuoi = e?.message || String(e);
+
+        if (laLoiHetGio(loiCuoi)) {
+          console.warn(`[geminiRunner] ${modelId}: khoá ***${apiKey.slice(-4)} quá hạn giờ, bỏ sang đường khác.`);
+          continue;
+        }
 
         if (laLoiCanHanMuc(loiCuoi)) {
           soKhoaCan++;
@@ -117,7 +163,18 @@ export async function goiGemini(thamSo: ThamSoGoiGemini): Promise<KetQuaGoiGemin
 
         if (laLoiQuaTai(loiCuoi)) {
           coLoiQuaTai = true;
+          soLanQuaTai++;
           console.warn(`[geminiRunner] ${modelId} đang quá tải ở khoá ***${apiKey.slice(-4)}.`);
+          /*
+           * 503 là chuyện của MODEL, không phải của khoá - đổi khoá cũng vẫn 503. Hai khoá
+           * liên tiếp báo quá tải là đủ kết luận, sang model khác ngay cho kịp ngân sách.
+           * Đo trong app 04/09/2026: kho có 5 khoá, thử hết cả 5 rồi mới chuyển model thì
+           * ngân sách 45 giây cạn trước khi kịp chạm tới model thứ ba - đúng model ổn định.
+           */
+          if (soLanQuaTai >= 2) {
+            console.warn(`[geminiRunner] ${modelId} quá tải ở ${soLanQuaTai} khoá, bỏ qua model này.`);
+            break;
+          }
           continue;
         }
 
@@ -128,6 +185,15 @@ export async function goiGemini(thamSo: ThamSoGoiGemini): Promise<KetQuaGoiGemin
     if (soKhoaCan === keys.length) modelDaCan.push(modelId);
     else if (coLoiQuaTai) modelQuaTai.push(modelId);
     console.warn(`[geminiRunner] ${modelId} không dùng được, chuyển sang model kế tiếp.`);
+    if (hetNganSach) break;
+  }
+
+  if (hetNganSach) {
+    throw new Error(
+      `[hết giờ] Đã thử ${(thamSo.giayCaLuot ?? GIAY_CA_LUOT)} giây mà chưa model nào trả lời. `
+      + 'Thường là do model đầu bảng đang bị Google quá tải. Hãy thử lại, '
+      + 'hoặc vào Cài đặt Cổng A.I đưa model ổn định lên trước. Lỗi cuối: ' + loiCuoi,
+    );
   }
 
   // Báo đúng nguyên nhân để thầy cô biết nên chờ, nên thêm khoá, hay nên bật thêm model.

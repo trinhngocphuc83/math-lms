@@ -21,6 +21,7 @@ import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
 import { doiVeTenChuan, chuanTen } from "@/utils/phanLoaiCauHoi";
 import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
+import MenuGon, { NhomMenu, DanhSachTick } from "@/components/admin/MenuGon";
 
 interface PushToBankModalProps {
   isOpen: boolean;
@@ -526,6 +527,52 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
 
   const relevantForms = Array.from(new Set(relevantCategories.map(c => c.math_form))).filter(Boolean).sort();
 
+  /**
+   * Những chương CÓ TRONG ĐỀ, do thầy cô tick.
+   *
+   * Đề kiểm tra định kỳ trải nhiều chương nên ô "Chương" ở Bối cảnh (chọn một) phải để
+   * trống, thế là cây gửi lên AI gồm cả khối - vừa chậm vừa dễ xếp nhầm sang chương chưa
+   * học. Tick sẵn mấy chương có trong đề thì cây hẹp lại đúng phạm vi. Để trống = cả khối,
+   * y như cũ.
+   */
+  const [phamViChuong, setPhamViChuong] = useState<string[]>([]);
+
+  /**
+   * Danh sách Dạng cho MỘT câu, bám theo Chương/Bài của chính câu đó.
+   *
+   * Bản cũ dùng chung relevantForms - lọc theo ô "Bối cảnh tự động" ở đầu hộp. Đề kiểm tra
+   * định kỳ trải nhiều chương nên buộc phải để trống Chương/Bài, thế là ô dạng của mọi câu
+   * đều phình ra cả trăm tên của toàn khối, xếp theo vần, không nhóm - đo trên kho Toán
+   * Lớp 11: 90 tên trong một ô. Tệ hơn, câu đã được xếp vào "Chương 1 › Bài 1" rồi mà ô
+   * dạng vẫn liệt kê đủ 90 tên thay vì 4 tên của bài ấy.
+   *
+   * Nay: câu đã biết Bài thì chỉ hiện dạng của Bài đó; mới biết Chương thì hiện dạng của
+   * Chương, nhóm theo Bài; chưa biết gì thì nhóm theo "Chương › Bài" để còn dò được.
+   */
+  const dangChoCau = (q: any): { nhan: string; dang: string[] }[] => {
+    const trong = (c: any) =>
+      (!editCtx.grade || c.grade === editCtx.grade)
+      && (!q.subject || c.subject === q.subject)
+      && (!q.topic || c.topic === q.topic)
+      && (!q.lesson || c.lesson === q.lesson);
+    let ds = categories.filter(trong);
+    // Câu chưa có chương/bài mà bối cảnh chung có chốt thì theo bối cảnh chung.
+    if (!q.topic && !q.lesson && relevantCategories.length) ds = relevantCategories;
+    if (!ds.length) ds = relevantCategories.length ? relevantCategories : categories;
+
+    const nhom = new Map<string, Set<string>>();
+    for (const c of ds) {
+      const dang = String(c.math_form || '').trim();
+      if (!dang) continue;
+      const nhan = q.lesson ? '' : (q.topic ? String(c.lesson || '') : `${c.topic || ''} › ${c.lesson || ''}`);
+      if (!nhom.has(nhan)) nhom.set(nhan, new Set());
+      nhom.get(nhan)!.add(dang);
+    }
+    return [...nhom.entries()]
+      .map(([nhan, tap]) => ({ nhan, dang: [...tap].sort((a, b) => a.localeCompare(b, 'vi')) }))
+      .sort((a, b) => a.nhan.localeCompare(b.nhan, 'vi'));
+  };
+
   // Tạo danh sách dropdown động (Datalist) cho các ô Lớp, Môn, Chương, Bài
   const uniqueGrades = Array.from(new Set(categories.map(c => c.grade))).filter(Boolean).sort();
   const uniqueSubjects = Array.from(new Set(categories.filter(c => !editCtx.grade || c.grade === editCtx.grade).map(c => c.subject))).filter(Boolean).sort();
@@ -578,10 +625,17 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
     const formsToUse = relevantForms.length > 0 ? relevantForms : allForms;
     const globalTongHop = allForms.find(f => /tổng hợp/i.test(f)) || "Toán tổng hợp";
 
+    /*
+     * Câu coi là CHƯA XONG khi thiếu Dạng, thiếu Mức độ, hoặc mang một tên dạng không có
+     * thật trong kho. So với allForms (mọi dạng trong kho) chứ không phải formsToUse (đã
+     * lọc theo Bối cảnh): đề định kỳ trải nhiều chương, câu xếp đúng sang chương khác mà
+     * so với danh sách hẹp thì bị coi là chưa xong rồi đem chạy lại - vừa tốn lượt gọi
+     * vừa có thể xếp lại sai.
+     */
     const emptyQs = questions.filter(q =>
        !q.math_form ||
        !q.difficulty ||
-       (!formsToUse.includes(q.math_form) && q.math_form !== globalTongHop)
+       (!allForms.includes(q.math_form) && q.math_form !== globalTongHop)
     );
 
     return { allForms, formsToUse, globalTongHop, emptyQs };
@@ -686,7 +740,9 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
     // phân môn cho cả lô thì câu Hình bị dồn vào nhánh Đại số ngay từ đầu.
     const su = editCtx.subject || '';
     const danhMucLop = categories.filter(c =>
-      String(c.grade) === String(gr) && (!su || c.subject === su));
+      String(c.grade) === String(gr) && (!su || c.subject === su)
+      // Thầy cô đã tick chương có trong đề thì chỉ gửi bấy nhiêu, cây hẹp lại đúng phạm vi.
+      && (phamViChuong.length === 0 || phamViChuong.includes(String(c.topic || ''))));
 
     if (dangTaiDanhMuc) {
       alert('Danh mục đang tải, Thầy cô đợi một chút rồi bấm lại giúp.');
@@ -713,36 +769,82 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
         const khongXep: any[] = [];
         const canhBao: string[] = [];
 
+        /**
+         * Gọi một lô. Đọc CHỮ trước rồi mới phân tích JSON.
+         *
+         * Bản cũ gọi thẳng res.json(): hàm bị Vercel cắt ở 60 giây thì thứ trả về là trang
+         * lỗi HTML, nên chỗ này ném ra "Unexpected token 'A', "An error o"... is not valid
+         * JSON" - không ai đoán được là do model quá tải. Nay báo đúng mã lỗi và đoạn đầu.
+         */
+        const goiMotLo = async (lo: any[]) => {
+          const res = await fetch('/api/admin/phan-bo-cau-hoi', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              grade: gr,
+              danhMuc: danhMucLop.map(c => ({
+                subject: c.subject, topic: c.topic, lesson: c.lesson, math_form: c.math_form,
+              })),
+              questions: lo.map((q: any) => ({
+                id: q.id,
+                question_type: q.question_type,
+                // Câu Đúng/Sai: gửi kèm 4 mệnh đề, vì nội dung chính nằm ở đó chứ không
+                // phải ở câu dẫn - chỉ gửi câu dẫn thì máy không đủ căn cứ xếp chỗ.
+                content: q.question_type === 'true_false_cluster'
+                  ? [q.content, q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean).join(' | ')
+                  : q.content,
+              })),
+            }),
+          });
+          const chu = await res.text();
+          let data: any = null;
+          try { data = JSON.parse(chu); } catch {
+            const dau = chu.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 90);
+            throw new Error(res.status === 504 || /timeout|timed out/i.test(chu)
+              ? `máy chủ cắt ngang vì quá lâu (mã ${res.status}). Model đang bị quá tải - thử lại sau ít phút, hoặc đưa model ổn định lên đầu ở Cài đặt Cổng A.I.`
+              : `máy chủ trả về thứ không đọc được (mã ${res.status}): ${dau}`);
+          }
+          if (!res.ok) throw new Error(data?.error || `Lỗi máy chủ (mã ${res.status})`);
+          return data;
+        };
+
         for (let iLo = 0; iLo < cacLo.length; iLo++) {
           const lo = cacLo[iLo];
           try {
-            const res = await fetch('/api/admin/phan-bo-cau-hoi', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    grade: gr,
-                    danhMuc: danhMucLop.map(c => ({
-                      subject: c.subject, topic: c.topic, lesson: c.lesson, math_form: c.math_form,
-                    })),
-                    questions: lo.map((q: any) => ({
-                      id: q.id,
-                      question_type: q.question_type,
-                      // Câu Đúng/Sai: gửi kèm 4 mệnh đề, vì nội dung chính nằm ở đó chứ không
-                      // phải ở câu dẫn - chỉ gửi câu dẫn thì máy không đủ căn cứ xếp chỗ.
-                      content: q.question_type === 'true_false_cluster'
-                        ? [q.content, q.option_a, q.option_b, q.option_c, q.option_d].filter(Boolean).join(' | ')
-                        : q.content,
-                    })),
-                })
-            });
-            const data = await res.json();
-            if (!res.ok) throw new Error(data.error || 'Lỗi máy chủ');
+            const data = await goiMotLo(lo);
             xepDuoc.push(...(data.xepDuoc || []));
             khongXep.push(...(data.khongXep || []));
             if (data.loi) canhBao.push(`Lô ${iLo + 1}: ${data.loi}`);
           } catch (loiLo: any) {
-            // Một lô hỏng thì báo rõ lô nào rồi đi tiếp, không bỏ cả lượt
-            canhBao.push(`Lô ${iLo + 1} (${lo.length} câu) không chạy được: ${loiLo?.message || loiLo}`);
+            /*
+             * Lô hỏng thì CHIA ĐÔI THỬ LẠI trước khi bỏ.
+             *
+             * Nguyên nhân hỏng hay gặp nhất là hết giờ, mà lô nhỏ thì nhanh hơn hẳn - chia
+             * đôi thường cứu được cả 8 câu. Bản cũ bỏ luôn cả lô, thầy cô phải tự bấm lại.
+             */
+            let cuuDuoc = false;
+            if (lo.length > 2) {
+              const giua = Math.ceil(lo.length / 2);
+              const nua = [lo.slice(0, giua), lo.slice(giua)];
+              const raNua: any[] = [];
+              let hongNua = 0;
+              for (const n of nua) {
+                try {
+                  const d = await goiMotLo(n);
+                  raNua.push(...(d.xepDuoc || []));
+                  khongXep.push(...(d.khongXep || []));
+                } catch { hongNua++; }
+              }
+              if (raNua.length) {
+                xepDuoc.push(...raNua);
+                cuuDuoc = true;
+                canhBao.push(`Lô ${iLo + 1}: lần đầu hỏng, chia đôi chạy lại thì xếp được ${raNua.length}/${lo.length} câu.`);
+              }
+              if (hongNua === nua.length) cuuDuoc = false;
+            }
+            if (!cuuDuoc) {
+              canhBao.push(`Lô ${iLo + 1} (${lo.length} câu) không chạy được: ${loiLo?.message || loiLo}`);
+            }
           }
           setTienDoAI({ xong: Math.min((iLo + 1) * CO_LO, emptyQs.length), tong: emptyQs.length });
         }
@@ -1114,6 +1216,25 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                   <label style={{ fontWeight: 700, fontSize: 12 }}>Bài:</label>
                   <ComboBox value={editCtx.lesson} onChange={v => handleUpdateContext('lesson', v)} options={uniqueLessons} placeholder="-- Bài --" width={220} />
                 </div>
+
+                {/* Đề định kỳ trải nhiều chương: tick sẵn để AI khỏi dò cả khối. */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap', marginTop: 10 }}>
+                  <label style={{ fontWeight: 700, fontSize: 12 }}>Chương có trong đề:</label>
+                  <MenuGon
+                    nhan={phamViChuong.length === 0 ? 'Cả khối'
+                      : phamViChuong.length <= 2 ? phamViChuong.map(x => x.replace(/^Chương\s*/i, 'C.')).join(' + ')
+                      : `${phamViChuong.length} chương`}
+                    rong="w-[420px]"
+                    dem={phamViChuong.length || undefined}
+                    title="Tick những chương có câu trong đề. Để trống là dò cả khối như cũ."
+                  >
+                    <NhomMenu nhan="Chương có trong đề" />
+                    <DanhSachTick ds={uniqueTopics as string[]} chon={phamViChuong} datChon={setPhamViChuong} tenGoi="chương" />
+                  </MenuGon>
+                  <span style={{ fontSize: 11, color: '#64748b' }}>
+                    Để trống là dò cả khối. Tick đúng chương thì máy xếp nhanh và ít nhầm hơn.
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -1167,7 +1288,14 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                   >
                     {geminiLoading
                       ? (tienDoAI ? `⏳ Đang xếp ${tienDoAI.xong}/${tienDoAI.tong} câu...` : '⏳ Đang phân tích...')
-                      : '✨ Dùng AI (Hệ thống)'}
+                      : (() => {
+                          /* Nói rõ nút chỉ chạy phần CÒN THIẾU, để bấm lại sau lượt hỏng thì
+                             thầy cô biết là chạy tiếp chứ không làm lại từ đầu. */
+                          const con = getDetectFormsContext().emptyQs.length;
+                          return con > 0 && con < questions.length
+                            ? `✨ Xếp nốt ${con} câu còn thiếu`
+                            : '✨ Dùng AI (Hệ thống)';
+                        })()}
                   </button>
                   <div style={{ width: 1, height: 16, background: '#cbd5e1', margin: '0 4px' }}></div>
                   <button
@@ -1284,13 +1412,25 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                         }}
                           style={{ fontSize: 11, border: `1px solid ${q.math_form ? '#e2e8f0' : '#fca5a5'}`, borderRadius: 5, padding: '2px 4px', maxWidth: 140, color: q.math_form ? undefined : '#dc2626', fontWeight: q.math_form ? undefined : 700 }}>
                           <option value="">-- Chọn dạng bài --</option>
-                          {/* Dạng đang gán nhưng thuộc chương khác vẫn phải hiện ra, nếu không
-                              ô sẽ trông như trống dù thực tế đã có giá trị (gây hiểu nhầm là
-                              AI không chạy). Có ghi chú rõ để giáo viên biết mà đổi lại. */}
-                          {q.math_form && !relevantForms.includes(q.math_form) && (
-                            <option value={q.math_form}>{q.math_form} (khác chương)</option>
-                          )}
-                          {relevantForms.map(f => <option key={f} value={f}>{f}</option>)}
+                          {(() => {
+                            const nhomDang = dangChoCau(q);
+                            const daCo = nhomDang.some(n => n.dang.includes(q.math_form));
+                            return (
+                              <>
+                                {/* Dạng đang gán nhưng thuộc chương khác vẫn phải hiện ra, nếu không
+                                    ô sẽ trông như trống dù thực tế đã có giá trị (gây hiểu nhầm là
+                                    AI không chạy). Có ghi chú rõ để giáo viên biết mà đổi lại. */}
+                                {q.math_form && !daCo && (
+                                  <option value={q.math_form}>{q.math_form} (khác chương)</option>
+                                )}
+                                {nhomDang.map(n => n.nhan
+                                  ? <optgroup key={n.nhan} label={n.nhan}>
+                                      {n.dang.map(f => <option key={f} value={f}>{f}</option>)}
+                                    </optgroup>
+                                  : n.dang.map(f => <option key={f} value={f}>{f}</option>))}
+                              </>
+                            );
+                          })()}
                           <option value="__custom__">✏️ Nhập mới...</option>
                         </select>
                       </div>
