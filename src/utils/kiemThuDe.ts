@@ -13,7 +13,7 @@
  */
 
 import { toBankType, type BankType } from './questionTypes';
-import { dapAnNganHopLe, docDapAnDungSai, SO_KY_TU_TRA_LOI_NGAN } from './chuanHoaCauHoi';
+import { dapAnNganHopLe, docDapAnDungSai, gonSo, SO_KY_TU_TRA_LOI_NGAN } from './chuanHoaCauHoi';
 import { taoKhoaSoSanh, doGiongNhau, NGUONG_NGHI_TRUNG } from './questionFingerprint';
 import type { PhanDeThi } from './deThi';
 
@@ -200,7 +200,15 @@ export function soatMotCau(q: CauDeSoat, viTri: string): LoiKiemThu[] {
   }
 
   if (loai === 'TLN') {
-    if (dapAn && !dapAnNganHopLe(dapAn)) {
+    /*
+     * Nắn đáp án về khuôn số TRƯỚC KHI xét, y như lúc lưu vào kho.
+     *
+     * Bản cũ xét thẳng chuỗi thô nên "-0.8" bị báo là không tô được, trong khi phiếu có
+     * bốn ô và ô nào cũng tô được dấu trừ hay dấu phẩy: "-0,8" vừa khít bốn ô. Cái sai
+     * chỉ là dấu chấm thập phân - thứ mà chuanHoaCauHoi.gonSo đã đổi sẵn thành dấu phẩy.
+     * Báo oan kiểu này còn tệ hơn không báo: thầy cô đi sửa một câu vốn không hỏng.
+     */
+    if (dapAn && !dapAnNganHopLe(dapAn) && !dapAnNganHopLe(gonSo(dapAn))) {
       them('tlnKhongToDuoc', 'cauTruc', 'loi',
         `Đáp án "${trichDe(dapAn)}" không tô được vào ${SO_KY_TU_TRA_LOI_NGAN} ô của phiếu`
         + ' - học sinh có giải đúng cũng không có chỗ điền.',

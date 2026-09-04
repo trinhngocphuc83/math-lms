@@ -13,6 +13,7 @@ import { nhanViTri } from "@/utils/kiemThuDe";
 import type { PhanDeThi } from "@/utils/deThi";
 import type { BankType } from "@/utils/questionTypes";
 import { suaDuocBang, suaBangMay, suaBangAI, type BanVa } from "@/utils/suaLoiKiemThu";
+import SuaHangLoatModal, { type MucSuaHangLoat } from "@/components/admin/SuaHangLoatModal";
 import type { CauDeSoat } from "@/utils/kiemThuDe";
 import SuaLoiModal from "./SuaLoiModal";
 
@@ -65,6 +66,11 @@ export default function KiemThuDeModal({
   const [baoSua, setBaoSua] = React.useState('');
   /* Những câu đã sửa và lưu trong phiên này - vá luôn vào bản đang cầm để soi lại cho đúng. */
   const [daVa, setDaVa] = React.useState<Record<string, BanVa>>({});
+
+  /* Những lỗi đang được tick để sửa hàng loạt, khoá là "mã lỗi|id câu". */
+  const [dsTick, setDsTick] = React.useState<Set<string>>(new Set());
+  const [dsHangLoat, setDsHangLoat] = React.useState<MucSuaHangLoat[] | null>(null);
+  const [dangChayLoat, setDangChayLoat] = React.useState(0);
 
   React.useEffect(() => {
     if (!mo) return;
@@ -151,6 +157,65 @@ export default function KiemThuDeModal({
 
   const theoMuc = (m: 'loi' | 'canhBao' | 'nhac') => tatCaLoi.filter(l => l.muc === m);
 
+  const khoaLoi = (l: LoiKiemThu) => `${l.ma}|${l.cauId}`;
+  const suaDuoc = (l: LoiKiemThu) => !!l.cauId && !!suaDuocBang(l.ma);
+  const doiTick = (l: LoiKiemThu) => setDsTick(prev => {
+    const n = new Set(prev); const k = khoaLoi(l);
+    n.has(k) ? n.delete(k) : n.add(k); return n;
+  });
+  const tickCaKhoi = (ds: LoiKiemThu[], bat: boolean) => setDsTick(prev => {
+    const n = new Set(prev);
+    ds.filter(suaDuoc).forEach(l => (bat ? n.add(khoaLoi(l)) : n.delete(khoaLoi(l))));
+    return n;
+  });
+
+  /**
+   * Sửa hàng loạt những lỗi đang tick.
+   *
+   * Hai điều phải giữ đúng, khác hẳn việc chạy vòng lặp bấm từng nút:
+   *  - Nhiều lỗi có thể cùng trỏ vào MỘT câu (lời giải dồn dòng + đáp án lệch chẳng hạn).
+   *    Phải GỘP bản vá theo từng câu rồi mới ghi, không thì bản sau đè mất bản trước.
+   *  - Máy vẫn không tự ghi. Chạy xong mở bảng duyệt chung, gật đầu mới lưu.
+   */
+  const chayHangLoat = async () => {
+    const ds = tatCaLoi.filter(l => suaDuoc(l) && dsTick.has(khoaLoi(l)));
+    if (ds.length === 0) return;
+    setBaoSua(''); setDangChayLoat(1);
+    const gom = new Map<string, MucSuaHangLoat>();
+    const hong: string[] = [];
+    for (let i = 0; i < ds.length; i++) {
+      const l = ds[i];
+      setDangChayLoat(i + 1);
+      const goc = timCau(l.cauId);
+      if (!goc) continue;
+      /* Lỗi thứ hai của cùng một câu phải nhìn thấy bản vá của lỗi trước, không thì hai
+         bản vá dựng trên hai gốc khác nhau rồi đè nhau. */
+      const dangCo = gom.get(l.cauId!);
+      const cauHienTai = dangCo ? { ...goc, ...dangCo.va } : goc;
+      try {
+        const cach = suaDuocBang(l.ma);
+        const r = cach === 'ai' ? await suaBangAI(cauHienTai, l.ma) : suaBangMay(cauHienTai, l.ma, l.deXuat);
+        if (!r) { hong.push(l.viTri); continue; }
+        gom.set(l.cauId!, {
+          cau: goc,
+          va: { ...(dangCo?.va || {}), ...r.va },
+          ghiChu: [...(dangCo?.ghiChu || []), ...r.ghiChu],
+          moTa: [...(dangCo?.moTa || []), `${l.viTri} — ${l.moTa}`],
+        });
+      } catch (e: any) {
+        hong.push(`${l.viTri} (${e?.message || 'lỗi'})`);
+      }
+    }
+    setDangChayLoat(0);
+    const ra = [...gom.values()];
+    if (ra.length === 0) {
+      setBaoSua('Không tự sửa được chỗ nào trong số đã chọn, Thầy/Cô sửa tay giúp.');
+      return;
+    }
+    if (hong.length) setBaoSua(`${hong.length} chỗ không tự sửa được: ${hong.slice(0, 3).join('; ')}`);
+    setDsHangLoat(ra);
+  };
+
   const KhoiLoi = ({ muc }: { muc: 'loi' | 'canhBao' | 'nhac' }) => {
     const ds = theoMuc(muc);
     if (ds.length === 0) return null;
@@ -159,11 +224,33 @@ export default function KiemThuDeModal({
       <div className="mb-5">
         <div className={`flex items-center gap-2 mb-2 font-black text-[13px] ${chu}`}>
           <Icon className="w-4 h-4" /> {ten} ({ds.length})
+          {/* Sửa hàng loạt: tick nhiều chỗ rồi sửa một lượt, đỡ phải bấm từng nút. */}
+          {ds.some(suaDuoc) && (
+            <span className="ml-auto flex items-center gap-1.5 font-bold text-[11.5px] text-slate-500">
+              <button onClick={() => tickCaKhoi(ds, true)}
+                      className="px-2 py-0.5 rounded border border-slate-300 bg-white hover:bg-slate-50">
+                Chọn hết
+              </button>
+              <button onClick={() => tickCaKhoi(ds, false)}
+                      className="px-2 py-0.5 rounded border border-slate-300 bg-white hover:bg-slate-50">
+                Bỏ hết
+              </button>
+            </span>
+          )}
         </div>
         <div className="space-y-1.5">
           {ds.map((l, i) => (
             <div key={i} className={`rounded-xl border px-3 py-2 ${nen}`}>
               <div className="flex items-start gap-2">
+                {suaDuoc(l) && (
+                  <input
+                    type="checkbox"
+                    checked={dsTick.has(khoaLoi(l))}
+                    onChange={() => doiTick(l)}
+                    title="Chọn để sửa hàng loạt"
+                    className="mt-1 w-4 h-4 accent-emerald-600 shrink-0"
+                  />
+                )}
                 <span className="shrink-0 text-[11px] font-black bg-white/70 border border-current/20 rounded px-1.5 py-0.5 mt-[1px]">
                   {l.viTri}
                 </span>
@@ -297,8 +384,22 @@ export default function KiemThuDeModal({
           </div>
         )}
 
-        <div className="px-5 py-3 border-t border-gray-200 text-[11.5px] text-gray-400">
-          Sửa xong đều hiện bảng so sánh trước/sau, có gật đầu mới ghi vào ngân hàng câu hỏi.
+        <div className="px-5 py-3 border-t border-gray-200 flex items-center gap-3">
+          <span className="text-[11.5px] text-gray-400 flex-1 min-w-0">
+            Sửa xong đều hiện bảng so sánh trước/sau, có gật đầu mới ghi vào ngân hàng câu hỏi.
+          </span>
+          {dsTick.size > 0 && (
+            <button
+              onClick={chayHangLoat}
+              disabled={dangChayLoat > 0 || !!dangSuaMa}
+              className="shrink-0 bg-slate-800 text-white px-4 py-2 rounded-xl font-bold text-[13px]
+                         flex items-center gap-2 hover:bg-slate-900 disabled:opacity-50"
+            >
+              {dangChayLoat > 0
+                ? <><Loader2 className="w-4 h-4 animate-spin" /> Đang sửa {dangChayLoat}/{dsTick.size}...</>
+                : <><Wrench className="w-4 h-4" /> Sửa {dsTick.size} chỗ đã chọn</>}
+            </button>
+          )}
         </div>
       </div>
 
@@ -310,6 +411,14 @@ export default function KiemThuDeModal({
         onDong={() => setBanVa(null)}
         onDaLuu={daLuuXong}
       />
+
+      {dsHangLoat && (
+        <SuaHangLoatModal
+          ds={dsHangLoat}
+          onDong={() => { setDsHangLoat(null); setDsTick(new Set()); }}
+          onDaLuu={daLuuXong}
+        />
+      )}
     </div>
   );
 }

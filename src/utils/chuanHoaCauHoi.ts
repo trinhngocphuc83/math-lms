@@ -71,7 +71,7 @@ export const dapAnNganHopLe = (s: string | null | undefined): boolean => {
  * Phải xử lý cả cách viết dấu phẩy kiểu LaTeX "{,}" - đây là dạng AI hay dùng nhất
  * ("$1{,}5$"), thiếu bước này thì một đáp án vốn hợp lệ vẫn bị coi là không tô được.
  */
-function gonSo(raw: string): string {
+export function gonSo(raw: string): string {
   let t = String(raw || '').trim();
   t = t.replace(/\{\s*,\s*\}/g, ',');            // $1{,}5$ -> 1,5
   t = t.replace(/\$/g, '');

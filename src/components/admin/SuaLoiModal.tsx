@@ -1,7 +1,8 @@
 "use client";
 
 import React from "react";
-import { X, Loader2, Save, ArrowRight, AlertCircle } from "lucide-react";
+import { X, Loader2, Save, ArrowRight, AlertCircle, Code2, Eye } from "lucide-react";
+import { MathRenderer } from "@/components/MathRenderer";
 import { createClient } from "@/utils/supabase/client";
 import { cacChoDoi, type BanVa } from "@/utils/suaLoiKiemThu";
 import type { CauDeSoat } from "@/utils/kiemThuDe";
@@ -14,15 +15,26 @@ import type { CauDeSoat } from "@/utils/kiemThuDe";
  * kiểm thử để nó cập nhật câu đang cầm trên tay, khỏi phải tải lại cả trang.
  */
 
-function KhungChu({ nhan, chu, mau }: { nhan: string; chu: string; mau: 'cu' | 'moi' }) {
+/**
+ * Một ô trong bảng so sánh trước/sau.
+ *
+ * Mặc định HIỆN CÔNG THỨC đã dựng, không phải mã nguồn LaTeX: thầy cô soát bản sửa là
+ * soát nội dung toán, mà nhìn "$\frac{7\pi}{18}$" thì không ai kiểm được nhanh. Vẫn
+ * giữ nút xem mã nguồn, vì có những lỗi nằm ngay ở mã - ví dụ lời giải dồn một dòng thì
+ * chỗ khác nhau chính là dấu xuống dòng, dựng ra công thức lại không thấy.
+ */
+function KhungChu({ nhan, chu, mau, hienMa }: { nhan: string; chu: string; mau: 'cu' | 'moi'; hienMa: boolean }) {
   return (
     <div className="min-w-0 flex-1">
       <div className={`text-[11px] font-black uppercase tracking-wide mb-1 ${
         mau === 'cu' ? 'text-rose-500' : 'text-emerald-600'}`}>{nhan}</div>
-      <div className={`rounded-xl border px-3 py-2 text-[13px] whitespace-pre-wrap break-words max-h-52 overflow-y-auto ${
+      <div className={`rounded-xl border px-3 py-2 text-[13px] break-words max-h-52 overflow-y-auto ${
+        hienMa ? 'whitespace-pre-wrap font-mono text-[12px]' : ''} ${
         mau === 'cu' ? 'bg-rose-50/60 border-rose-200 text-slate-700'
                      : 'bg-emerald-50/60 border-emerald-200 text-slate-800'}`}>
-        {chu || <span className="italic text-slate-400">(trống)</span>}
+        {!chu ? <span className="italic text-slate-400">(trống)</span>
+              : hienMa ? chu
+              : <MathRenderer htmlContent={chu} />}
       </div>
     </div>
   );
@@ -39,6 +51,8 @@ export default function SuaLoiModal({
   onDaLuu: (cauId: string, va: BanVa) => void;
 }) {
   const [dangLuu, setDangLuu] = React.useState(false);
+  /* Mặc định hiện công thức đã dựng; bật sang mã nguồn khi cần soi đúng chỗ LaTeX. */
+  const [hienMa, setHienMa] = React.useState(false);
   const [loi, setLoi] = React.useState('');
 
   if (!cau || !va) return null;
@@ -69,6 +83,14 @@ export default function SuaLoiModal({
             <div className="font-black text-gray-800">Xem lại trước khi lưu</div>
             <div className="text-[12.5px] text-gray-500 mt-0.5">{moTaLoi}</div>
           </div>
+          <button
+            onClick={() => setHienMa(v => !v)}
+            title={hienMa ? 'Xem công thức đã dựng' : 'Xem mã nguồn LaTeX'}
+            className="shrink-0 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-gray-300
+                       text-gray-600 text-[12px] font-bold hover:bg-gray-50">
+            {hienMa ? <><Eye className="w-3.5 h-3.5" /> Xem công thức</>
+                    : <><Code2 className="w-3.5 h-3.5" /> Xem mã nguồn</>}
+          </button>
           <button onClick={onDong} className="p-2 rounded-lg hover:bg-gray-100 text-gray-500 shrink-0">
             <X size={18} />
           </button>
@@ -88,11 +110,11 @@ export default function SuaLoiModal({
             <div key={d.truong}>
               <div className="text-[12.5px] font-black text-slate-700 mb-1.5">{d.ten}</div>
               <div className="flex flex-col sm:flex-row gap-3 items-stretch">
-                <KhungChu nhan="Hiện tại" chu={d.cu} mau="cu" />
+                <KhungChu nhan="Hiện tại" chu={d.cu} mau="cu" hienMa={hienMa} />
                 <div className="hidden sm:flex items-center text-slate-300 shrink-0">
                   <ArrowRight className="w-5 h-5" />
                 </div>
-                <KhungChu nhan="Sau khi sửa" chu={d.moi} mau="moi" />
+                <KhungChu nhan="Sau khi sửa" chu={d.moi} mau="moi" hienMa={hienMa} />
               </div>
             </div>
           ))}
