@@ -21,6 +21,7 @@ import { taoKhoaSoSanh, doGiongNhau, NGUONG_NGHI_TRUNG } from "@/utils/questionF
 import KiemThuDeModal from "@/components/admin/KiemThuDeModal";
 import { gomTheoLoai } from "@/utils/deThi";
 import { exportPhieuTraLoi } from "@/utils/phieuTraLoi";
+import { exportHuongDanCham } from "@/utils/huongDanCham";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
   chiaPhanDeThi, sapCauTheoPhan, soCauTheoPhan, diemCuaPhan, tenTepDe, soDiemVN,
@@ -633,6 +634,17 @@ function SelectContent() {
     } catch (e: any) { alert("Lỗi xuất phiếu: " + e.message); }
   };
 
+  /** Bản hướng dẫn chấm và biểu điểm - tệp giáo viên cầm khi ngồi chấm. */
+  const handleExportHuongDanCham = async () => {
+    try {
+      if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
+      await exportHuongDanCham(
+        { dauDe, cacPhan, diemPhan, boDeId: boDeId || undefined },
+        tenTepDe(dauDe),
+      );
+    } catch (e: any) { alert("Lỗi xuất hướng dẫn chấm: " + e.message); }
+  };
+
   const handleExportTronGoi = async () => {
     try {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
@@ -826,6 +838,12 @@ function SelectContent() {
                   nhan="Phiếu trả lời"
                   moTa="Tờ giấy học sinh làm bài: lưới trắc nghiệm và dòng kẻ chấm tự luận"
                   onClick={handleExportPhieu}
+                />
+                <MucMenu
+                  icon={<Download className="w-4 h-4 text-rose-600" />}
+                  nhan="Hướng dẫn chấm"
+                  moTa="Đáp án các phần, bảng lũy tiến Đúng/Sai và biểu điểm tự luận"
+                  onClick={handleExportHuongDanCham}
                 />
                 <MucMenu
                   icon={<Download className="w-4 h-4 text-violet-600" />}
