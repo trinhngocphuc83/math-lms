@@ -20,7 +20,7 @@ import {
   ChevronUp,
   ChevronDown,
   X,
-  Menu, Smartphone, ClipboardList, ClipboardCheck } from "lucide-react";
+  Menu, Smartphone, ClipboardList, ClipboardCheck, ScanLine } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
 export default function AdminLayout({
@@ -120,6 +120,8 @@ export default function AdminLayout({
         /* Tự luận nay do thầy cô chấm tay, nên phải có một chỗ gom mọi bài đang chờ -
            không thì phải vào từng đề dò từng em, đề nhiều là bỏ sót. */
         { name: "Chờ chấm", href: "/admin/cho-cham", icon: ClipboardCheck },
+        /* Bài làm trên GIẤY: nạp ảnh phiếu trả lời, máy đọc lưới tô tròn rồi chấm. */
+        { name: "Chấm bài quét ảnh", href: "/admin/cham-quet", icon: ScanLine },
         { name: "Kết quả Bài tập", href: "/admin/exam-results", icon: FileEdit },
       ]
     },

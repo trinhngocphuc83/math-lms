@@ -21,6 +21,7 @@ import { taoKhoaSoSanh, doGiongNhau, NGUONG_NGHI_TRUNG } from "@/utils/questionF
 import KiemThuDeModal from "@/components/admin/KiemThuDeModal";
 import { gomTheoLoai } from "@/utils/deThi";
 import { exportPhieuTraLoi } from "@/utils/phieuTraLoi";
+import { soatDeTruocKhiInPhieu } from "@/utils/chamPhieuQuet";
 import { exportHuongDanCham } from "@/utils/huongDanCham";
 import {
   type DauDe, type DongMaTran, dauDeMacDinh, diemMacDinh, tinhTongDiem,
@@ -643,6 +644,30 @@ function SelectContent() {
   const handleExportPhieu = async () => {
     try {
       if (finalQuestions.length === 0) return alert("Chưa chọn câu hỏi nào!");
+
+      /* Phiếu tô tròn chỉ có bốn ô cho mỗi câu Trả lời ngắn. Đáp số dài hơn, có chữ, hay
+         đáp án Đúng/Sai không đủ bốn ý thì HỌC SINH KHÔNG CÓ CHỖ MÀ TÔ - phải nói ngay
+         lúc còn trên màn hình, chứ phát đề ra lớp rồi mới biết thì muộn. */
+      const vuong = soatDeTruocKhiInPhieu(
+        cacPhan
+          .filter(p => ['NLC', 'DS', 'TLN'].includes(p.ma))
+          .map(p => ({
+            ma: p.ma,
+            cauHoi: p.cauHoi,
+            diemMoiCau: p.cauHoi.length ? (diemPhan[p.ma] || 0) / p.cauHoi.length : 0,
+          })),
+      );
+      if (vuong.length > 0) {
+        const ds = vuong.slice(0, 8)
+          .map(v => `• ${v.phan} · Câu ${v.cau}: ${v.viSao}${v.dapAn ? ` (đang là "${v.dapAn}")` : ''}`)
+          .join('\n');
+        const tiep = confirm(
+          `${vuong.length} câu học sinh KHÔNG TÔ ĐƯỢC lên phiếu:\n\n${ds}`
+          + (vuong.length > 8 ? `\n… và ${vuong.length - 8} câu nữa.` : '')
+          + '\n\nNên quay lại sửa đáp án hoặc đổi câu khác. Vẫn in phiếu?');
+        if (!tiep) return;
+      }
+
       await exportPhieuTraLoi(
         { dauDe, cacPhan, diemPhan, boDeId: boDeId || undefined },
         tenTepDe(dauDe),

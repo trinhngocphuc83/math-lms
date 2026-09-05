@@ -29,9 +29,10 @@ import {
   NAVY, NEN_BANG_PHIEU, NEN_O_DIEM, DO_TONG_DIEM, XAM_MO, DEN,
   CO_NOI_DUNG, CO_TIEU_DE_PHU, CO_TIEU_DE_CHINH, CO_GHI_CHU,
   BE_NGANG_IN, KHONG_VIEN, VIEN_LUOI, KIEU_MAC_DINH, TRANG_CHUAN,
-  daiNeo, daiNeoDauTrang, dongKeCham, anhQR, noiDungQR,
+  daiNeo, daiNeoDauTrang, dongKeCham, anhQR, noiDungQR, anhWord,
 } from "./mauDeThi";
 import { soDiemVN, type DauDe, type PhanDeThi } from "./deThi";
+import { dungLuoi, anhLuoiPNG, RONG_MM, type BanDoLuoi, type KhoiPhieu } from "./luoiToTron";
 
 const chu = (x: any) => String(x ?? '');
 
@@ -104,109 +105,8 @@ function chiaKhuc<T>(ds: T[], moiKhuc: number): T[][] {
 
 /* ===================== TỪNG PHẦN ===================== */
 
-/** PHẦN TRẮC NGHIỆM: lưới C1..Cn, học sinh điền chữ cái vào ô dưới. */
-function khoiTracNghiem(soCau: number): any[] {
-  const MOI_HANG = 12;                      // quá 12 cột thì ô hẹp, viết không lọt
-  const ra: any[] = [];
-  for (const khuc of chiaKhuc(Array.from({ length: soCau }, (_, i) => i + 1), MOI_HANG)) {
-    /* Bề rộng ô tính theo SỐ CỘT ĐẦY của một hàng, không theo số cột của khúc này -
-       khúc cuối ít cột hơn mà để bảng rộng 100% thì ô phình to, nhìn so le với hàng trên. */
-    const rongCot = Math.floor(BE_NGANG_IN / Math.min(soCau, MOI_HANG));
-    ra.push(new Table({
-      width: { size: rongCot * khuc.length, type: WidthType.DXA },
-      borders: VIEN_LUOI,
-      columnWidths: khuc.map(() => rongCot),
-      rows: [
-        new TableRow({ tableHeader: true, children: khuc.map(n => oTieuDe(`C${n}`, rongCot)) }),
-        /* Ô trả lời cao gấp đôi dòng thường để học sinh viết thoải mái - và để máy chấm
-           ảnh có đủ chỗ nhận ra chữ cái. */
-        new TableRow({ height: { value: 576, rule: 'atLeast' as any }, children: khuc.map(() => oTrong(1, rongCot)) }),
-      ],
-    }));
-    ra.push(new Paragraph({ text: "", spacing: { after: 80 } }));
-  }
-  return ra;
-}
 
-/**
- * PHẦN ĐÚNG/SAI: mỗi câu một khối bốn dòng a) b) c) d), hai câu xếp cạnh nhau cho gọn
- * giấy - đúng cách tệp mẫu làm.
- */
-function khoiDungSai(soCau: number, batDau = 1): any[] {
-  const Y = ['a)', 'b)', 'c)', 'd)'];
-  /* Bề ngang một nửa bảng: Câu hỏi | Ý | Đúng (X) | Sai (X). Tỉ lệ lấy từ tệp mẫu. */
-  const nua = BE_NGANG_IN / 2;
-  const cot = [0.286, 0.171, 0.271, 0.271].map(t => Math.floor(nua * t));
-  const ra: any[] = [];
 
-  for (const cap of chiaKhuc(Array.from({ length: soCau }, (_, i) => batDau + i), 2)) {
-    const hangTieuDe = new TableRow({
-      tableHeader: true,
-      children: cap.flatMap(() => [
-        oTieuDe('Câu hỏi', cot[0]), oTieuDe('Ý', cot[1]),
-        oTieuDe('Đúng (X)', cot[2]), oTieuDe('Sai (X)', cot[3]),
-      ]),
-    });
-
-    const hangY = Y.map((y, i) => new TableRow({
-      height: { value: 400, rule: 'atLeast' as any },
-      children: cap.flatMap(soCauNay => [
-        /* Ô tên câu gộp dọc bốn dòng - chỉ dựng ở dòng đầu. */
-        ...(i === 0 ? [new TableCell({
-          rowSpan: 4,
-          verticalAlign: VerticalAlign.CENTER,
-          width: { size: cot[0], type: WidthType.DXA },
-          margins: { top: 60, bottom: 60, left: 60, right: 60 },
-          children: [new Paragraph({
-            alignment: AlignmentType.CENTER,
-            children: [new TextRun({ text: `Câu ${soCauNay}`, bold: true, size: 21 })],
-          })],
-        })] : []),
-        new TableCell({
-          verticalAlign: VerticalAlign.CENTER,
-          width: { size: cot[1], type: WidthType.DXA },
-          margins: { top: 60, bottom: 60, left: 60, right: 60 },
-          children: [new Paragraph({
-            alignment: AlignmentType.CENTER,
-            children: [new TextRun({ text: y, bold: true, size: 21 })],
-          })],
-        }),
-        oTrong(1, cot[2]),
-        oTrong(1, cot[3]),
-      ]),
-    }));
-
-    ra.push(new Table({
-      /* Số câu lẻ thì khối cuối chỉ chiếm nửa trang, không kéo giãn cho đầy. */
-      width: { size: cot.reduce((t, x) => t + x, 0) * cap.length, type: WidthType.DXA },
-      borders: VIEN_LUOI,
-      columnWidths: cap.flatMap(() => cot),
-      rows: [hangTieuDe, ...hangY],
-    }));
-    ra.push(new Paragraph({ text: "", spacing: { after: 80 } }));
-  }
-  return ra;
-}
-
-/** PHẦN TRẢ LỜI NGẮN: mỗi câu một ô rộng để ghi kết quả. */
-function khoiTraLoiNgan(soCau: number, batDau = 1): any[] {
-  const MOI_HANG = 4;
-  const ra: any[] = [];
-  for (const khuc of chiaKhuc(Array.from({ length: soCau }, (_, i) => batDau + i), MOI_HANG)) {
-    const rongCot = Math.floor(BE_NGANG_IN / Math.min(soCau, MOI_HANG));
-    ra.push(new Table({
-      width: { size: rongCot * khuc.length, type: WidthType.DXA },
-      borders: VIEN_LUOI,
-      columnWidths: khuc.map(() => rongCot),
-      rows: [
-        new TableRow({ tableHeader: true, children: khuc.map(n => oTieuDe(`Câu ${n}`, rongCot)) }),
-        new TableRow({ height: { value: 620, rule: 'atLeast' as any }, children: khuc.map(() => oTrong(1, rongCot)) }),
-      ],
-    }));
-    ra.push(new Paragraph({ text: "", spacing: { after: 80 } }));
-  }
-  return ra;
-}
 
 /** Khung nét đứt cho câu bắt vẽ hình - cao 6cm theo bản Master Prompt THCS v6. */
 function khungVeHinh(): Table {
@@ -310,9 +210,9 @@ function bangDauPhieu(dauDe: DauDe, cacPhan: PhanDeThi[], diemPhan: Record<strin
 /* ===================== DỰNG CẢ PHIẾU ===================== */
 
 const HUONG_DAN: Record<string, string> = {
-  NLC: 'Thí sinh chọn phương án trả lời đúng nhất và điền chữ cái A, B, C hoặc D tương ứng vào ô.',
-  DS: 'Thí sinh đánh dấu (X) vào ô Đúng hoặc Sai cho mỗi ý a), b), c), d) tương ứng.',
-  TLN: 'Thí sinh tính toán và ghi kết quả (số hoặc biểu thức) vào các ô tương ứng.',
+  TO_TRON: 'Tô KÍN Ô TRÒN bằng bút chì 2B. Mỗi câu chỉ tô một ô; muốn đổi thì tẩy thật'
+    + ' sạch rồi mới tô ô khác. Phần Trả lời ngắn: mỗi cột tô một ký tự, dấu trừ và dấu'
+    + ' phẩy cũng phải tô.',
   TL: 'Thí sinh trình bày chi tiết các bước lập luận, chứng minh và lời giải vào phần giấy kẻ sẵn dưới đây.',
 };
 
@@ -330,8 +230,32 @@ export interface KhuonPhieu {
   boDeId?: string;
 }
 
-/** Dựng toàn bộ nội dung phiếu. Tách riêng để chỗ khác dùng lại được (xem trước, gộp tệp). */
-export function dungNoiDungPhieu(k: KhuonPhieu): any[] {
+/**
+ * Ba phần trắc nghiệm của đề, theo đúng thứ tự in - dùng chung cho CẢ HAI đầu:
+ * lúc in phiếu và lúc quét ảnh chấm bài.
+ *
+ * Bản đồ lưới dựng ra từ đây là một hàm thuần của danh sách này, nên máy chấm chỉ cần
+ * biết bộ đề là dựng lại được đúng bản đồ đã in - không phải lưu ảnh hay toạ độ ở đâu cả.
+ */
+export function khoiPhieuTuCacPhan(cacPhan: PhanDeThi[]): KhoiPhieu[] {
+  const ra: KhoiPhieu[] = [];
+  for (const ma of ['NLC', 'DS', 'TLN'] as const) {
+    const phan = cacPhan.find(p => p.ma === ma);
+    if (phan && phan.cauHoi.length > 0) ra.push({ loai: ma, soCau: phan.cauHoi.length });
+  }
+  return ra;
+}
+
+/** Bản đồ lưới tô tròn của một đề - máy chấm gọi hàm này để biết tâm từng ô nằm đâu. */
+export const banDoLuoiCuaDe = (cacPhan: PhanDeThi[]): BanDoLuoi[] =>
+  dungLuoi(khoiPhieuTuCacPhan(cacPhan));
+
+/**
+ * Dựng toàn bộ nội dung phiếu. Tách riêng để chỗ khác dùng lại được (xem trước, gộp tệp).
+ *
+ * Bất đồng bộ vì phần lưới tô tròn phải vẽ ra ảnh PNG bằng canvas rồi mới nhúng vào Word.
+ */
+export async function dungNoiDungPhieu(k: KhuonPhieu): Promise<any[]> {
   const ra: any[] = [bangDauPhieu(k.dauDe, k.cacPhan, k.diemPhan)];
 
   const coTuLuan = k.cacPhan.some(p => p.ma === 'TL');
@@ -344,18 +268,32 @@ export function dungNoiDungPhieu(k: KhuonPhieu): any[] {
     })],
   }));
 
-  for (const phan of k.cacPhan) {
-    const soCau = phan.cauHoi.length;
-    /* Phần tự luận sang trang mới - giữ trọn phần trắc nghiệm trong một tờ để chấm nhanh. */
-    if (phan.ma === 'TL') ra.push(new Paragraph({ text: "", pageBreakBefore: true }));
+  /* Cả ba phần trắc nghiệm nằm chung MỘT lưới tô tròn, vẽ thành ảnh rồi nhúng vào. Chung
+     một lưới thì mỗi trang chỉ cần một bộ bốn dấu neo, và máy chấm đọc một lượt là xong. */
+  const khoi = khoiPhieuTuCacPhan(k.cacPhan);
+  if (khoi.length > 0) {
+    ra.push(dongHuongDan(HUONG_DAN.TO_TRON));
+    const cacTrang = dungLuoi(khoi);
+    for (const luoi of cacTrang) {
+      if (luoi.trang > 1) ra.push(new Paragraph({ text: "", pageBreakBefore: true }));
+      /* Nhúng đúng bề ngang vùng in: ảnh vẽ ở 12px/mm, Word tính theo 96dpi. */
+      const rongWord = Math.round((RONG_MM / 25.4) * 96);
+      ra.push(new Paragraph({
+        alignment: AlignmentType.CENTER,
+        spacing: { after: 100 },
+        children: [anhWord(await anhLuoiPNG(luoi), rongWord,
+          Math.round(rongWord * luoi.cao / luoi.rong))],
+      }));
+    }
+  }
 
-    ra.push(tieuDePhan(phan.soLaMa, TEN_PHAN_PHIEU[phan.ma] || phan.tieuDe, soCau, k.diemPhan[phan.ma]));
-    ra.push(dongHuongDan(HUONG_DAN[phan.ma] || ''));
-
-    if (phan.ma === 'NLC') ra.push(...khoiTracNghiem(soCau));
-    else if (phan.ma === 'DS') ra.push(...khoiDungSai(soCau));
-    else if (phan.ma === 'TLN') ra.push(...khoiTraLoiNgan(soCau));
-    else ra.push(...khoiTuLuan(phan, soCau > 0 ? (k.diemPhan[phan.ma] || 0) / soCau : 0));
+  /* Phần tự luận sang trang mới - giữ trọn phần tô tròn trong tờ riêng để quét cho gọn. */
+  const phanTL = k.cacPhan.find(p => p.ma === 'TL');
+  if (phanTL && phanTL.cauHoi.length > 0) {
+    ra.push(new Paragraph({ text: "", pageBreakBefore: true }));
+    ra.push(tieuDePhan(phanTL.soLaMa, TEN_PHAN_PHIEU.TL, phanTL.cauHoi.length, k.diemPhan.TL));
+    ra.push(dongHuongDan(HUONG_DAN.TL));
+    ra.push(...khoiTuLuan(phanTL, (k.diemPhan.TL || 0) / phanTL.cauHoi.length));
   }
 
   return ra;
@@ -377,7 +315,7 @@ export async function exportPhieuTraLoi(k: KhuonPhieu, tenTep: string): Promise<
         /* Mã QR đặt ngay đầu phiếu, canh phải - máy chấm ảnh đọc ra ngay đây là phiếu
            của đề nào, mã đề nào, khỏi bắt Thầy cô chọn tay. */
         ...(qr ? [new Paragraph({ alignment: AlignmentType.RIGHT, children: [qr] })] : []),
-        ...dungNoiDungPhieu(k),
+        ...(await dungNoiDungPhieu(k)),
       ],
     }],
   });

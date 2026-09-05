@@ -3,8 +3,8 @@
  *
  * Vì sao không dựng bằng bảng của Word: muốn đo độ đen từng ô thì máy phải biết tâm mỗi
  * ô nằm đâu, mà vị trí cuối cùng của bảng Word do Word tự tính - mình không biết trước.
- * Nên lưới được VẼ THÀNH MỘT ẢNH rồi nhúng vào Word: toạ độ do mình đặt nên mình biết
- * chính xác, và ảnh tự mang bốn dấu neo riêng ở bốn góc để nắn lại ảnh chụp.
+ * Nên lưới được VẼ THÀNH ẢNH rồi nhúng vào Word: toạ độ do mình đặt nên mình biết chính
+ * xác, và mỗi ảnh tự mang bốn dấu neo riêng ở bốn góc để nắn lại ảnh chụp.
  *
  * Tệp này chia làm hai phần rạch ròi:
  *
@@ -15,6 +15,10 @@
  *
  * Bộ đọc ảnh (docPhieuQuet.ts) dùng lại ĐÚNG bản đồ ở mục 1, nên hai bên không thể lệch
  * nhau: sửa lưới là bộ đọc tự biết.
+ *
+ * TỰ CHIA TRANG: đề 22 câu đã cần lưới cao 334mm, quá khổ A4. Nên `dungLuoi` trả về MỘT
+ * DÃY trang, mỗi trang một ảnh riêng với bốn dấu neo và mốc chuẩn của riêng nó - chụp
+ * trang nào đọc trang ấy, không phụ thuộc trang khác.
  *
  * Khuôn ô theo phiếu thi tốt nghiệp 2025 để học sinh quen tay với tờ giấy kỳ thi thật.
  */
@@ -31,16 +35,17 @@ export const RONG_MM = 170;
 const BAN_KINH_O_MM = 2.25;          // ô tròn đường kính 4,5mm - vừa đầu bút chì 2B
 const BUOC_NGANG_MM = 7.5;           // tâm hai ô liền nhau cách nhau 7,5mm
 const BUOC_DOC_MM = 7.5;
+const BUOC_DOC_TLN_MM = 6.2;         // cột Trả lời ngắn có 12 hàng nên xếp khít hơn
 const CANH_NEO_MM = 6;               // dấu neo góc: ô vuông đen đặc 6x6mm
 const LE_MM = 6;                     // lề trong của ảnh lưới
+const CAO_DAI_MOC_MM = 12;           // dải đầu ảnh chứa dấu neo và mốc chuẩn
 
 /* ===================== KIỂU DỮ LIỆU ===================== */
 
 /** Một ô tròn để học sinh tô. `ma` là khoá dùng chung giữa bộ vẽ và bộ đọc. */
 export interface OTron {
-  /** Khoá duy nhất: "NLC:3:B", "DS:2:c:D", "TLN:1:0:7". */
+  /** Khoá duy nhất: "NLC:3:B", "DS:2:c:Đ", "TLN:1:0:7". */
   ma: string;
-  /** Câu số mấy (đánh theo từng phần, đúng như bản in đề). */
   cau: number;
   /** Chữ in trong ô: A B C D · Đ S · - , 0..9 */
   nhan: string;
@@ -50,7 +55,7 @@ export interface OTron {
 /** Ô vuông đen đặc ở góc, dùng để nắn phẳng ảnh chụp. */
 export interface DauNeo { x: number; y: number; canh: number }
 
-/** Mốc chuẩn màu: ô đã tô sẵn 100% (đen) và vùng để trắng - xem docPhieuQuet. */
+/** Mốc chuẩn màu: ô đã tô sẵn 100% (đen) và ô để trắng - xem docPhieuQuet. */
 export interface MocChuan { x: number; y: number; r: number }
 
 export interface KhoiPhieu {
@@ -59,6 +64,8 @@ export interface KhoiPhieu {
 }
 
 export interface BanDoLuoi {
+  /** Trang thứ mấy của lưới, đếm từ 1. */
+  trang: number;
   rong: number;
   cao: number;
   neo: DauNeo[];
@@ -71,152 +78,221 @@ export interface BanDoLuoi {
   khung: { x: number; y: number; rong: number; cao: number }[];
 }
 
-/* ===================== DỰNG BẢN ĐỒ ===================== */
+/* ===================== CỤM: ĐƠN VỊ XẾP TRANG ===================== */
+
+interface VeRa {
+  o: OTron[];
+  chu: BanDoLuoi['chu'];
+  khung: BanDoLuoi['khung'];
+}
+
+/**
+ * Một mảng nhỏ của lưới, vẽ được ở bất cứ độ cao nào.
+ *
+ * Chia thành cụm rồi mới xếp trang, chứ không dựng liền một dải rồi cắt ngang: cắt ngang
+ * thì một câu có thể bị xẻ làm đôi, nửa trên trang này nửa dưới trang kia.
+ */
+interface Cum {
+  cao: number;
+  ve: (y: number) => VeRa;
+}
 
 const CHU_SO = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 /** Bốn ô của phần Trả lời ngắn: ô đầu có thêm dấu trừ, ba ô đầu có dấu phẩy. */
 const HANG_TLN = ['-', ',', ...CHU_SO];
 
-/**
- * Dựng bản đồ lưới cho một danh sách khối.
- *
- * Xếp theo chiều dọc, khối nào có câu thì mới có khối ấy - đề toàn trắc nghiệm ra lưới
- * chỉ có phần trắc nghiệm, không chừa chỗ trống vô ích.
- */
-export function dungLuoi(cacKhoi: KhoiPhieu[]): BanDoLuoi {
-  const o: OTron[] = [];
-  const chu: BanDoLuoi['chu'] = [];
-  const khung: BanDoLuoi['khung'] = [];
+const TEN_KHOI: Record<KhoiPhieu['loai'], string> = {
+  NLC: 'PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN - tô kín ô tròn bằng bút chì',
+  DS: 'PHẦN II. ĐÚNG / SAI - mỗi ý tô một ô',
+  TLN: 'PHẦN III. TRẢ LỜI NGẮN - mỗi cột tô một ký tự',
+};
 
-  const rong = mm(RONG_MM);
-  const le = mm(LE_MM);
-  const r = mm(BAN_KINH_O_MM);
-  const buocX = mm(BUOC_NGANG_MM);
-  const buocY = mm(BUOC_DOC_MM);
-  const canhNeo = mm(CANH_NEO_MM);
-
-  /* Chừa chỗ cho dấu neo và dải mốc chuẩn ở đầu ảnh. */
-  let y = le + canhNeo + mm(6);
-
-  const tieuDe = (t: string) => {
-    chu.push({ x: le, y: y + mm(3), noiDung: t, co: mm(3.6), dam: true });
-    y += mm(7);
+/** Cụm tiêu đề của một phần. */
+function cumTieuDe(chuTieuDe: string): Cum {
+  return {
+    cao: mm(8),
+    ve: (y) => ({
+      o: [], khung: [],
+      chu: [{ x: mm(LE_MM), y: y + mm(4), noiDung: chuTieuDe, co: mm(3.6), dam: true }],
+    }),
   };
+}
 
-  for (const khoi of cacKhoi) {
-    if (khoi.soCau <= 0) continue;
+/** Cắt danh sách thành từng khúc đều nhau. */
+function chiaKhuc<T>(ds: T[], moiKhuc: number): T[][] {
+  const ra: T[][] = [];
+  for (let i = 0; i < ds.length; i += moiKhuc) ra.push(ds.slice(i, i + moiKhuc));
+  return ra;
+}
 
-    if (khoi.loai === 'NLC') {
-      tieuDe('PHẦN I. TRẮC NGHIỆM NHIỀU LỰA CHỌN');
-      /* Mỗi cột: nhãn "Câu n" rồi bốn ô A B C D. Chia cột sao cho vừa bề ngang. */
-      const rongNhan = mm(13);
-      const rongCot = rongNhan + buocX * 4;
-      const soCot = Math.max(1, Math.min(3, Math.floor((rong - le * 2) / rongCot)));
-      const soHang = Math.ceil(khoi.soCau / soCot);
-      const dauKhoi = y;
+/** Số cột vừa bề ngang cho một khối có bề rộng cột cho trước. */
+const soCotVua = (rongCot: number, toiDa: number) =>
+  Math.max(1, Math.min(toiDa, Math.floor((mm(RONG_MM) - mm(LE_MM) * 2) / rongCot)));
 
-      for (let i = 0; i < khoi.soCau; i++) {
-        const cot = Math.floor(i / soHang);
-        const hang = i % soHang;
-        const x0 = le + cot * rongCot;
-        const yc = dauKhoi + hang * buocY + r;
-        chu.push({ x: x0, y: yc + mm(1.2), noiDung: `Câu ${i + 1}`, co: mm(3) });
-        ['A', 'B', 'C', 'D'].forEach((ch, k) => {
-          o.push({ ma: `NLC:${i + 1}:${ch}`, cau: i + 1, nhan: ch,
-                   x: x0 + rongNhan + k * buocX + r, y: yc, r });
+function cumTracNghiem(soCau: number): Cum[] {
+  const r = mm(BAN_KINH_O_MM), buocX = mm(BUOC_NGANG_MM), buocY = mm(BUOC_DOC_MM);
+  const rongNhan = mm(13);
+  const rongCot = rongNhan + buocX * 4 + mm(4);
+  const soCot = soCotVua(rongCot, 3);
+
+  /* Mỗi cụm là MỘT HÀNG NGANG gồm `soCot` câu - cắt trang ở đây thì không câu nào bị xẻ. */
+  return chiaKhuc(Array.from({ length: soCau }, (_, i) => i + 1), soCot).map(khuc => ({
+    cao: buocY,
+    ve: (y) => {
+      const o: OTron[] = []; const chu: BanDoLuoi['chu'] = [];
+      khuc.forEach((cau, k) => {
+        const x0 = mm(LE_MM) + k * rongCot;
+        const yc = y + r;
+        chu.push({ x: x0, y: yc + mm(1.2), noiDung: `Câu ${cau}`, co: mm(3) });
+        ['A', 'B', 'C', 'D'].forEach((ch, j) => {
+          o.push({ ma: `NLC:${cau}:${ch}`, cau, nhan: ch, x: x0 + rongNhan + j * buocX + r, y: yc, r });
         });
-      }
-      y = dauKhoi + soHang * buocY + mm(4);
-      khung.push({ x: le - mm(2), y: dauKhoi - mm(2), rong: rong - le * 2 + mm(4), cao: y - dauKhoi });
-      y += mm(4);
-      continue;
-    }
+      });
+      return { o, chu, khung: [] };
+    },
+  }));
+}
 
-    if (khoi.loai === 'DS') {
-      tieuDe('PHẦN II. ĐÚNG / SAI');
-      /* Mỗi câu một khối bốn dòng a) b) c) d), mỗi dòng hai ô Đ và S. */
-      const rongNhan = mm(13);
-      const rongY = mm(6);
-      const rongCot = rongNhan + rongY + buocX * 2 + mm(4);
-      const soCot = Math.max(1, Math.min(4, Math.floor((rong - le * 2) / rongCot)));
-      const soHangKhoi = Math.ceil(khoi.soCau / soCot);
-      const caoKhoi = buocY * 4;
-      const dauKhoi = y;
+function cumDungSai(soCau: number): Cum[] {
+  const r = mm(BAN_KINH_O_MM), buocX = mm(BUOC_NGANG_MM), buocY = mm(BUOC_DOC_MM);
+  const rongNhan = mm(13), rongY = mm(6);
+  const rongCot = rongNhan + rongY + buocX * 2 + mm(5);
+  const soCot = soCotVua(rongCot, 4);
+  const caoKhoi = buocY * 4 + mm(5);
 
-      for (let i = 0; i < khoi.soCau; i++) {
-        const cot = Math.floor(i / soHangKhoi);
-        const hang = i % soHangKhoi;
-        const x0 = le + cot * rongCot;
-        const y0 = dauKhoi + hang * (caoKhoi + mm(3));
-        chu.push({ x: x0, y: y0 + mm(3), noiDung: `Câu ${i + 1}`, co: mm(3), dam: true });
-        ['a', 'b', 'c', 'd'].forEach((yNho, k) => {
-          const yc = y0 + k * buocY + r + mm(2);
+  return chiaKhuc(Array.from({ length: soCau }, (_, i) => i + 1), soCot).map(khuc => ({
+    cao: caoKhoi + mm(3),
+    ve: (y) => {
+      const o: OTron[] = []; const chu: BanDoLuoi['chu'] = []; const khung: BanDoLuoi['khung'] = [];
+      khuc.forEach((cau, k) => {
+        const x0 = mm(LE_MM) + k * rongCot;
+        chu.push({ x: x0, y: y + mm(3.5), noiDung: `Câu ${cau}`, co: mm(3), dam: true });
+        khung.push({ x: x0 - mm(1), y: y - mm(1), rong: rongCot - mm(3), cao: caoKhoi });
+        ['a', 'b', 'c', 'd'].forEach((yNho, i) => {
+          const yc = y + mm(5) + i * buocY + r;
           chu.push({ x: x0 + rongNhan, y: yc + mm(1.2), noiDung: `${yNho})`, co: mm(3) });
           ['Đ', 'S'].forEach((ch, j) => {
-            o.push({ ma: `DS:${i + 1}:${yNho}:${ch}`, cau: i + 1, nhan: ch,
+            o.push({ ma: `DS:${cau}:${yNho}:${ch}`, cau, nhan: ch,
                      x: x0 + rongNhan + rongY + j * buocX + r, y: yc, r });
           });
         });
-      }
-      y = dauKhoi + soHangKhoi * (caoKhoi + mm(3)) + mm(4);
-      khung.push({ x: le - mm(2), y: dauKhoi - mm(2), rong: rong - le * 2 + mm(4), cao: y - dauKhoi });
-      y += mm(4);
-      continue;
-    }
-
-    /* TLN: mỗi câu một bảng bốn cột, mỗi cột tô một ký tự. Dấu trừ chỉ có ở cột đầu,
-       dấu phẩy không có ở cột cuối - đúng khuôn phiếu thi tốt nghiệp. */
-    tieuDe('PHẦN III. TRẢ LỜI NGẮN');
-    const rongBang = buocX * 4 + mm(2);
-    const soCot = Math.max(1, Math.floor((rong - le * 2) / (rongBang + mm(6))));
-    const soHangKhoi = Math.ceil(khoi.soCau / soCot);
-    const caoBang = buocY * HANG_TLN.length + mm(6);
-    const dauKhoi = y;
-
-    for (let i = 0; i < khoi.soCau; i++) {
-      const cot = i % soCot;
-      const hang = Math.floor(i / soCot);
-      const x0 = le + cot * (rongBang + mm(6));
-      const y0 = dauKhoi + hang * (caoBang + mm(4));
-      chu.push({ x: x0, y: y0 + mm(3), noiDung: `Câu ${i + 1}`, co: mm(3), dam: true });
-      for (let c = 0; c < 4; c++) {
-        HANG_TLN.forEach((ky, h) => {
-          if (ky === '-' && c !== 0) return;          // dấu trừ chỉ ở ô đầu
-          if (ky === ',' && c === 3) return;          // ô cuối không có dấu phẩy
-          const xc = x0 + c * buocX + r;
-          const yc = y0 + mm(5) + h * buocY + r;
-          o.push({ ma: `TLN:${i + 1}:${c}:${ky}`, cau: i + 1, nhan: ky, x: xc, y: yc, r });
-        });
-      }
-      khung.push({ x: x0 - mm(1), y: y0 + mm(4), rong: rongBang, cao: caoBang - mm(2) });
-    }
-    y = dauKhoi + soHangKhoi * (caoBang + mm(4)) + mm(4);
-  }
-
-  const cao = y + canhNeo + le;
-
-  /* Bốn dấu neo góc - bộ đọc tìm chúng để nắn phẳng ảnh chụp. */
-  const neo: DauNeo[] = [
-    { x: le, y: le, canh: canhNeo },
-    { x: rong - le - canhNeo, y: le, canh: canhNeo },
-    { x: rong - le - canhNeo, y: cao - le - canhNeo, canh: canhNeo },
-    { x: le, y: cao - le - canhNeo, canh: canhNeo },
-  ];
-
-  /* Mốc chuẩn màu: ba ô ĐÃ TÔ SẴN 100% và ba vùng để trắng, nằm trên dải đầu ảnh.
-     Bộ đọc lấy hai mốc này làm chuẩn đen/trắng cho CHÍNH tờ giấy đó, nên bút chì đậm
-     nhạt, máy photo cũ hay đèn vàng đều không làm lệch ngưỡng. */
-  const yMoc = le + canhNeo / 2;
-  const mocDen: MocChuan[] = [0, 1, 2].map(k => ({ x: rong / 2 - mm(14) + k * mm(9), y: yMoc, r }));
-  const mocTrang: MocChuan[] = [0, 1, 2].map(k => ({ x: rong / 2 + mm(6) + k * mm(9), y: yMoc, r }));
-
-  return { rong, cao, neo, mocDen, mocTrang, o, chu, khung };
+      });
+      return { o, chu, khung };
+    },
+  }));
 }
+
+function cumTraLoiNgan(soCau: number): Cum[] {
+  const r = mm(BAN_KINH_O_MM), buocX = mm(BUOC_NGANG_MM), buocY = mm(BUOC_DOC_TLN_MM);
+  const rongBang = buocX * 4 + mm(3);
+  const rongCot = rongBang + mm(7);
+  const soCot = soCotVua(rongCot, 5);
+  const caoBang = buocY * HANG_TLN.length + mm(7);
+
+  return chiaKhuc(Array.from({ length: soCau }, (_, i) => i + 1), soCot).map(khuc => ({
+    cao: caoBang + mm(4),
+    ve: (y) => {
+      const o: OTron[] = []; const chu: BanDoLuoi['chu'] = []; const khung: BanDoLuoi['khung'] = [];
+      khuc.forEach((cau, k) => {
+        const x0 = mm(LE_MM) + k * rongCot;
+        chu.push({ x: x0, y: y + mm(3.5), noiDung: `Câu ${cau}`, co: mm(3), dam: true });
+        khung.push({ x: x0 - mm(1.5), y: y + mm(4.5), rong: rongBang, cao: caoBang - mm(4) });
+        for (let c = 0; c < 4; c++) {
+          HANG_TLN.forEach((ky, h) => {
+            if (ky === '-' && c !== 0) return;          // dấu trừ chỉ ở ô đầu
+            if (ky === ',' && c === 3) return;          // ô cuối không có dấu phẩy
+            o.push({
+              ma: `TLN:${cau}:${c}:${ky}`, cau, nhan: ky,
+              x: x0 + c * buocX + r, y: y + mm(6) + h * buocY + r, r,
+            });
+          });
+        }
+      });
+      return { o, chu, khung };
+    },
+  }));
+}
+
+/* ===================== DỰNG BẢN ĐỒ ===================== */
+
+/**
+ * Dựng bản đồ lưới, tự chia trang.
+ *
+ * @param caoTrangDauMM Chiều cao còn lại của trang ĐẦU - trang này còn bảng thông tin
+ *   học sinh và tiêu đề nên hẹp hơn các trang sau.
+ */
+export function dungLuoi(
+  cacKhoi: KhoiPhieu[],
+  caoTrangDauMM = 165,
+  caoTrangSauMM = 235,
+): BanDoLuoi[] {
+  /* Xếp mọi khối thành một dãy cụm liên tiếp. */
+  const cum: Cum[] = [];
+  for (const khoi of cacKhoi) {
+    if (khoi.soCau <= 0) continue;
+    cum.push(cumTieuDe(TEN_KHOI[khoi.loai]));
+    cum.push(...(khoi.loai === 'NLC' ? cumTracNghiem(khoi.soCau)
+              : khoi.loai === 'DS' ? cumDungSai(khoi.soCau)
+              : cumTraLoiNgan(khoi.soCau)));
+  }
+  if (cum.length === 0) return [];
+
+  const rong = mm(RONG_MM);
+  const le = mm(LE_MM);
+  const canhNeo = mm(CANH_NEO_MM);
+  const daiMoc = mm(CAO_DAI_MOC_MM);
+  const r = mm(BAN_KINH_O_MM);
+
+  const trang: BanDoLuoi[] = [];
+  let dangXep: Cum[] = [];
+  let caoDangXep = 0;
+
+  const chotTrang = () => {
+    if (dangXep.length === 0) return;
+    const soTrang = trang.length + 1;
+    let y = le + daiMoc;
+    const o: OTron[] = []; const chu: BanDoLuoi['chu'] = []; const khung: BanDoLuoi['khung'] = [];
+    for (const c of dangXep) {
+      const ve = c.ve(y);
+      o.push(...ve.o); chu.push(...ve.chu); khung.push(...ve.khung);
+      y += c.cao;
+    }
+    const cao = y + le + canhNeo;
+
+    const neo: DauNeo[] = [
+      { x: le, y: le, canh: canhNeo },
+      { x: rong - le - canhNeo, y: le, canh: canhNeo },
+      { x: rong - le - canhNeo, y: cao - le - canhNeo, canh: canhNeo },
+      { x: le, y: cao - le - canhNeo, canh: canhNeo },
+    ];
+    /* Mốc chuẩn màu: ô ĐÃ TÔ SẴN 100% và ô để trắng, nằm giữa dải đầu ảnh. Bộ đọc lấy
+       hai mốc này làm chuẩn đen/trắng cho CHÍNH tờ giấy đó, nên bút chì đậm nhạt, máy
+       photo cũ hay đèn vàng đều không làm lệch ngưỡng. */
+    const yMoc = le + canhNeo / 2;
+    const mocDen: MocChuan[] = [0, 1, 2].map(k => ({ x: rong / 2 - mm(16) + k * mm(9), y: yMoc, r }));
+    const mocTrang: MocChuan[] = [0, 1, 2].map(k => ({ x: rong / 2 + mm(6) + k * mm(9), y: yMoc, r }));
+
+    trang.push({ trang: soTrang, rong, cao, neo, mocDen, mocTrang, o, chu, khung });
+    dangXep = []; caoDangXep = 0;
+  };
+
+  for (const c of cum) {
+    const budget = mm(trang.length === 0 ? caoTrangDauMM : caoTrangSauMM) - le * 2 - daiMoc - canhNeo;
+    if (caoDangXep + c.cao > budget && dangXep.length > 0) chotTrang();
+    dangXep.push(c);
+    caoDangXep += c.cao;
+  }
+  chotTrang();
+  return trang;
+}
+
+/** Mọi ô tròn của cả phiếu, gộp từ mọi trang - tiện cho việc chấm. */
+export const moiOCuaPhieu = (trang: BanDoLuoi[]): OTron[] => trang.flatMap(t => t.o);
 
 /* ===================== VẼ RA ẢNH ===================== */
 
 /**
- * Vẽ bản đồ lên canvas. Chỉ hàm này cần trình duyệt.
+ * Vẽ bản đồ của MỘT trang lên canvas. Chỉ hàm này cần trình duyệt.
  *
  * @param nen Ngữ cảnh vẽ 2D đã có sẵn kích thước bằng luoi.rong × luoi.cao.
  */
@@ -224,7 +300,7 @@ export function veLuoi(nen: CanvasRenderingContext2D, luoi: BanDoLuoi): void {
   nen.fillStyle = '#ffffff';
   nen.fillRect(0, 0, luoi.rong, luoi.cao);
 
-  /* Khung nhạt cho dễ nhìn - không ảnh hưởng gì tới việc đọc. */
+  /* Khung nhạt cho dễ nhìn - bộ đọc không nhìn tới. */
   nen.strokeStyle = '#c8d0dc';
   nen.lineWidth = Math.max(1, mm(0.25));
   for (const k of luoi.khung) nen.strokeRect(k.x, k.y, k.rong, k.cao);
@@ -259,7 +335,7 @@ export function veLuoi(nen: CanvasRenderingContext2D, luoi: BanDoLuoi): void {
   }
 }
 
-/** Vẽ lưới rồi trả về ảnh PNG - dùng để nhúng vào tệp Word. */
+/** Vẽ một trang lưới rồi trả về ảnh PNG - dùng để nhúng vào tệp Word. */
 export async function anhLuoiPNG(luoi: BanDoLuoi): Promise<Uint8Array> {
   const canvas = document.createElement('canvas');
   canvas.width = luoi.rong;
