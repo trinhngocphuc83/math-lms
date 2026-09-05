@@ -22,7 +22,60 @@ import {
   Paragraph,
   WidthType,
   AlignmentType,
+  XmlComponent,
+  XmlAttributeComponent,
+  createMathAccentCharacter,
+  createMathBase,
 } from "docx";
+
+/* ===================== DẤU ĐỘI ĐẦU: VECTƠ, GẠCH NGANG, DẤU MŨ =====================
+
+   Trước đây dấu được NỐI THẲNG vào chữ dưới dạng ký tự Unicode tổ hợp:
+   \overrightarrow{AB} -> "AB" + U+20D7. Trên trình duyệt thì chồng đúng lên chữ,
+   nhưng trong Word ký tự tổ hợp KHÔNG chồng - nó đứng riêng ra một ô. Nên
+   $\overrightarrow{SA}$ in ra thành "SA" kèm một dấu gạch nhỏ bên cạnh: mũi tên
+   vectơ mất hẳn. Trong kho Toán có 6107 lệnh vectơ ở 372 câu, kho Lý 711 lệnh ở
+   172 câu - nghĩa là mọi đề hình học không gian in ra đều sai ký hiệu.
+
+   Word có phần tử riêng cho việc này:
+     <m:acc> dấu đội đầu (mũi tên vectơ, dấu ngã, dấu chấm, dấu ngang ngắn)
+     <m:bar> gạch ngang KÉO DÀI hết biểu thức (dùng cho \overline)
+   Thư viện docx chưa mở hai thẻ này ra qua API công khai nên dựng tay bằng
+   XmlComponent. Vẫn là OMML chuẩn: mở trong Word bấm vào sửa được như mọi công
+   thức khác, không phải ảnh hay chữ chết. */
+
+/** Thẻ OMML tự dựng - thư viện docx chưa có sẵn. */
+class TheOMML extends XmlComponent {
+  constructor(ten: string, con: readonly any[] = []) {
+    super(ten);
+    con.forEach((c) => this.root.push(c));
+  }
+}
+
+class ThuocTinhMVal extends XmlAttributeComponent<{ readonly val: string }> {
+  protected readonly xmlKeys = { val: "m:val" };
+}
+
+/** <m:acc>: đội một dấu lên trên cả biểu thức. */
+class MathAccent extends TheOMML {
+  constructor(dau: string, children: readonly any[]) {
+    super("m:acc", [
+      new TheOMML("m:accPr", [createMathAccentCharacter({ accent: dau })]),
+      createMathBase({ children: children as any }),
+    ]);
+  }
+}
+
+/** <m:bar>: gạch ngang kéo dài hết biểu thức, dùng cho \overline{abc}. */
+class MathBar extends TheOMML {
+  constructor(children: readonly any[]) {
+    super("m:bar", [
+      // Không ghi m:pos thì Word mặc định gạch DƯỚI - phải nói rõ "top".
+      new TheOMML("m:barPr", [new TheOMML("m:pos", [new ThuocTinhMVal({ val: "top" })])]),
+      createMathBase({ children: children as any }),
+    ]);
+  }
+}
 
 type MathComponent =
   | MathRun
@@ -34,7 +87,9 @@ type MathComponent =
   | MathRoundBrackets
   | MathSquareBrackets
   | MathCurlyBrackets
-  | MathAngledBrackets;
+  | MathAngledBrackets
+  | MathAccent
+  | MathBar;
 
 const SYMBOL_MAP: Record<string, string> = {
   cdot: "·",
@@ -418,9 +473,10 @@ function parseCommand(s: string, i: number): ParseResult {
     }
     case "vec":
     case "overrightarrow": {
-      const raw = parseBraceRaw(s, i2); i2 = raw.i;
-      const inner = raw.text.replace(/\\/g, "");
-      return { nodes: nodesOf(inner + "⃗"), i: i2 };
+      // Dựng cả biểu thức bên trong rồi mới đội mũi tên lên, để \vec{a_1} hay
+      // \overrightarrow{AB} + \overrightarrow{CD} đều đúng, không chỉ mỗi chữ trần.
+      const arg = parseArg(s, i2); i2 = arg.i;
+      return { nodes: [new MathAccent("⃗", arg.nodes)], i: i2 };
     }
     case "widehat":
     case "hat": {
@@ -470,10 +526,11 @@ function parseCommand(s: string, i: number): ParseResult {
       return { nodes: parseSequence(raw.text.replace(/\\\\/g, " ")), i: i2 };
     }
     case "overline": {
-      // Thư viện docx chưa hỗ trợ gạch ngang trên đầu (m:bar) qua API công khai,
-      // đành hiển thị nội dung bên trong mà không có gạch ngang.
+      // Gạch ngang KÉO DÀI hết biểu thức - \overline{abc} là số có ba chữ số, mất
+      // gạch là đọc thành tích a·b·c. Trước đây bỏ hẳn gạch vì thư viện docx không
+      // có m:bar; nay dựng thẻ ấy tay (xem MathBar ở đầu tệp).
       const arg = parseArg(s, i2); i2 = arg.i;
-      return { nodes: arg.nodes, i: i2 };
+      return { nodes: [new MathBar(arg.nodes)], i: i2 };
     }
     case "quad":
     case "qquad":
@@ -500,13 +557,14 @@ function parseCommand(s: string, i: number): ParseResult {
         return { nodes: arg.nodes, i: arg.i };
       }
 
-      // Dấu phụ đặt trên ký tự (\bar{x}, \tilde{u}, \dot{y}...)
+      // Dấu phụ đặt trên ký tự (\bar{x}, \tilde{u}, \dot{y}...) - cũng đội bằng
+      // <m:acc> chứ không nối ký tự tổ hợp vào chữ, cùng lý do với vectơ.
       const accent = ACCENT_MAP[name];
       if (accent !== undefined) {
-        const raw = parseBraceRaw(s, i2);
-        if (raw.i > i2) return { nodes: nodesOf(raw.text.replace(/\\/g, "") + accent), i: raw.i };
+        const arg = parseArg(s, i2);
+        if (arg.i > i2) return { nodes: [new MathAccent(accent, arg.nodes)], i: arg.i };
         const base = parseBaseUnit(s, i2);
-        return { nodes: base.nodes, i: base.i };
+        return { nodes: [new MathAccent(accent, base.nodes)], i: base.i };
       }
 
       // Khoảng trắng LaTeX: \, \; \! \: \ (dấu cách sau dấu chéo)
