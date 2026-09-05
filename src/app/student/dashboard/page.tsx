@@ -24,8 +24,11 @@ import {
   Clock,
   PlayCircle,
   Trophy,
+  HelpCircle,
 } from "lucide-react";
 import DiemThuongCuaToi from "@/components/hocsinh/DiemThuongCuaToi";
+import HuongDanSoanBaiModal from "@/components/admin/HuongDanSoanBaiModal";
+import { NOI_DUNG_HUONG_DAN_HOC_SINH } from "@/utils/noiDungHuongDanHocSinh";
 
 type TabType = 'info' | 'courses' | 'exams' | 'schedule' | 'finance' | 'diem';
 
@@ -74,6 +77,8 @@ export default function StudentDashboardPage() {
   const [courses, setCourses] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<TabType>('schedule');
+  /* Hộp hướng dẫn dùng app. Đặt ở thanh đầu trang nên hiện trên CẢ điện thoại lẫn máy tính. */
+  const [moHuongDan, setMoHuongDan] = useState(false);
   const [expandedCourseId, setExpandedCourseId] = useState<string | null>(null);
   const [tuitionRecords, setTuitionRecords] = useState<any[]>([]);
   const [attendanceRecords, setAttendanceRecords] = useState<any[]>([]);
@@ -248,6 +253,15 @@ export default function StudentDashboardPage() {
               <User className="w-4 h-4 text-teal-600" />
               <span className="text-sm font-bold text-gray-700">{profile?.full_name}</span>
             </div>
+            {/* Nút hướng dẫn: chữ "Hướng dẫn" ẩn trên màn hẹp cho khỏi chật, giữ lại dấu ? */}
+            <button
+              onClick={() => setMoHuongDan(true)}
+              title="Hướng dẫn dùng app"
+              className="flex items-center gap-2 text-sm font-bold text-teal-700 hover:text-teal-800
+                         bg-teal-50 hover:bg-teal-100 px-3 py-2 rounded-lg transition-colors"
+            >
+              <HelpCircle className="w-4 h-4" /> <span className="hidden sm:inline">Hướng dẫn</span>
+            </button>
             <button onClick={handleLogout} className="flex items-center gap-2 text-sm font-bold text-gray-500 hover:text-red-600 transition-colors bg-white hover:bg-red-50 px-3 py-2 rounded-lg">
               <LogOut className="w-4 h-4" /> Thoát
             </button>
@@ -793,6 +807,15 @@ export default function StudentDashboardPage() {
           </Link>
         </div>
       </nav>
+
+      <HuongDanSoanBaiModal
+        isOpen={moHuongDan}
+        onClose={() => setMoHuongDan(false)}
+        noiDung={NOI_DUNG_HUONG_DAN_HOC_SINH}
+        tieuDe="Hướng dẫn dùng app"
+        phuDe="Học bài · Thi online · Điểm thưởng · Sổ tay · Cài vào điện thoại"
+        goiYTim="Tìm: thi, điểm cộng, tự luận…"
+      />
 
     </div>
   );

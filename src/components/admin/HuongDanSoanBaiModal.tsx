@@ -100,8 +100,19 @@ const THE = {
 };
 
 export default function HuongDanSoanBaiModal({
-  isOpen, onClose,
-}: { isOpen: boolean; onClose: () => void }) {
+  isOpen, onClose, noiDung, tieuDe, phuDe, goiYTim, mau,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  /* Bốn tham số dưới đây để hộp này dùng chung được cho nhiều bài hướng dẫn - hiện có bài
+     cho thầy cô và bài cho học sinh. Bỏ trống thì ra đúng bài soạn bài như trước. */
+  noiDung?: string;
+  tieuDe?: string;
+  phuDe?: string;
+  goiYTim?: string;
+  /* Lớp nền của dải đầu hộp, để mỗi bài một màu cho dễ phân biệt. */
+  mau?: string;
+}) {
   const [tim, setTim] = React.useState('');
   const thanRef = React.useRef<HTMLDivElement>(null);
 
@@ -113,7 +124,8 @@ export default function HuongDanSoanBaiModal({
     return () => document.removeEventListener('keydown', phim);
   }, [isOpen, onClose]);
 
-  const { moDau, muc } = React.useMemo(() => cheMuc(NOI_DUNG_HUONG_DAN), []);
+  const { moDau, muc } = React.useMemo(
+    () => cheMuc(noiDung ?? NOI_DUNG_HUONG_DAN), [noiDung]);
 
   /* Lọc theo từ khoá: giữ nguyên cả mục nào có chứa từ đó. */
   const hienThi = React.useMemo(() => {
@@ -136,22 +148,24 @@ export default function HuongDanSoanBaiModal({
            className="bg-white w-full sm:max-w-[920px] rounded-t-2xl sm:rounded-2xl shadow-2xl flex flex-col max-h-[92vh] overflow-hidden">
 
         {/* Đầu hộp */}
-        <div className="shrink-0 bg-gradient-to-r from-teal-600 to-teal-500 px-5 py-3.5
-                        flex items-center gap-3">
+        <div className={`shrink-0 px-5 py-3.5 flex items-center gap-3 ${
+          mau || 'bg-gradient-to-r from-teal-600 to-teal-500'}`}>
           <div className="w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
             <HelpCircle className="w-[18px] h-[18px] text-white" />
           </div>
           <div className="min-w-0">
-            <h2 className="text-[15px] font-black text-white leading-tight">Hướng dẫn sử dụng</h2>
-            <p className="text-[11.5px] text-teal-50/90 leading-tight hidden sm:block">
-              Soạn bài · Sổ tay · Gọi tên · Điểm thưởng · Vinh danh · Điện thoại
+            <h2 className="text-[15px] font-black text-white leading-tight">
+              {tieuDe || 'Hướng dẫn sử dụng'}
+            </h2>
+            <p className="text-[11.5px] text-white/90 leading-tight hidden sm:block">
+              {phuDe || 'Soạn bài · Sổ tay · Gọi tên · Điểm thưởng · Vinh danh · Điện thoại'}
             </p>
           </div>
           <div className="relative ml-auto w-[150px] sm:w-[230px] shrink-0">
             <Search className="w-3.5 h-3.5 text-white/70 absolute left-2.5 top-1/2 -translate-y-1/2" />
             <input
               value={tim} onChange={e => setTim(e.target.value)}
-              placeholder="Tìm: ảnh, Tab, AI…"
+              placeholder={goiYTim || 'Tìm: ảnh, Tab, AI…'}
               className="w-full pl-8 pr-2.5 py-1.5 rounded-lg bg-white/15 border border-white/25
                          text-[12.5px] text-white placeholder:text-white/60 outline-none
                          focus:bg-white/25 focus:border-white/50 transition-colors"
