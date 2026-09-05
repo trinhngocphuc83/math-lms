@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, CheckCircle2, Sparkles, Library, Wand2, Loader2, X } from "lucide-react";
+import { AlertTriangle, CropIcon, PlusCircle, Trash2, ArrowUp, ArrowDown, ListTodo, Type, Image as ImageIcon, MonitorPlay, Database, ChevronRight, ChevronLeft, ChevronUp, ChevronDown, CheckCircle2, Sparkles, Library, Wand2, Loader2, X } from "lucide-react";
 import { fixLatexText, applyLatexFixToActiveElement, ensureMathDelimiters, cleanObjectLatex } from "@/utils/latexFixer";
 import { bankTypeToBlockType } from "@/utils/questionTypes";
 import 'katex/dist/katex.min.css';
@@ -586,6 +586,104 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
      return daChenAnh(text);
   };
 
+  /* ---------- PHẦN CỦA BÀI ----------
+     Bài chia phần bằng tiêu đề Heading 2 - "## 💡 DẠNG 1: …", đúng khuôn mà prompt
+     soạn bài bắt AI viết ra. Khối chữ nào MỞ ĐẦU bằng một dòng như thế thì coi là mở
+     một phần mới; các khối sau nó thuộc phần ấy cho tới khối mở phần kế tiếp.
+
+     Biết ranh giới phần để hai việc dưới đây không nhảy lung tung: đi lên/xuống giữa
+     các câu, và đổi thứ tự câu ngay trên Bản đồ. Bài chưa có tiêu đề ## nào thì cả bài
+     là một phần, hai việc ấy chạy suốt từ đầu đến cuối. */
+
+  /**
+   * Các dòng tiêu đề Heading 2 trong một khối chữ.
+   *
+   * Khối chữ là cả đoạn nằm GIỮA hai khối câu hỏi, nên tiêu đề "##" hay nằm ở giữa
+   * khối chứ không phải dòng đầu - đòi nó phải đứng đầu thì cả bài gom thành một phần.
+   */
+  const cacTieuDePhan = (b: Block): string[] => {
+     if (b.type !== 'md' || typeof b.content !== 'string') return [];
+     // Sau ## phải là khoảng trắng nên "###" (Phương pháp giải) không bị tính là phần.
+     return b.content.split('\n').filter(l => /^\s*##\s/.test(l));
+  };
+
+  /** Khối này có mở đầu một phần mới không. */
+  const moDauPhan = (b: Block): boolean => cacTieuDePhan(b).length > 0;
+
+  /** Số hiệu phần của từng khối, kèm tên phần để hiện trong lời nhắc. */
+  const phanCuaKhoi = React.useMemo(() => {
+     let phan = 0;
+     const ten: string[] = ['Đầu bài'];
+     return blocks.map(b => {
+        const td = cacTieuDePhan(b);
+        if (td.length) {
+           phan++;
+           /* Lấy tiêu đề CUỐI trong khối: các khối đứng sau nằm dưới tiêu đề ấy. */
+           ten[phan] = td[td.length - 1].replace(/^\s*##\s*/, '').replace(/\*\*/g, '').trim().slice(0, 40)
+              || `Phần ${phan}`;
+        }
+        return { phan, tenPhan: ten[phan] || `Phần ${phan}` };
+     });
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [blocks]);
+
+  /** Khối liền trước / liền sau TRONG CÙNG PHẦN. `null` là đã hết phần. */
+  const khoiKeTrongPhan = (i: number, huong: 1 | -1): number | null => {
+     const k = i + huong;
+     if (k < 0 || k >= blocks.length) return null;
+     return phanCuaKhoi[k]?.phan === phanCuaKhoi[i]?.phan ? k : null;
+  };
+
+  /** Thứ tự của khối trong phần của nó, dạng "3/8" - để biết đang đứng ở đâu. */
+  const choDungTrongPhan = (i: number): { thu: number; tong: number } => {
+     const cung = blocks.map((_, k) => k).filter(k => phanCuaKhoi[k]?.phan === phanCuaKhoi[i]?.phan);
+     return { thu: cung.indexOf(i) + 1, tong: cung.length };
+  };
+
+  /** Nhảy sang câu liền trước / liền sau trong cùng phần. */
+  const diToiKhoiKe = (huong: 1 | -1) => {
+     const i = blocks.findIndex(b => b.id === activeBlockId);
+     if (i < 0) return;
+     const k = khoiKeTrongPhan(i, huong);
+     if (k !== null) selectBlock(blocks[k].id);
+  };
+
+  /* Alt + ↑/↓ cũng nhảy được. Dùng Alt để không giẫm lên phím mũi tên đang đưa con
+     trỏ chạy trong ô soạn thảo. */
+  React.useEffect(() => {
+     const nghe = (e: KeyboardEvent) => {
+        if (!e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+        if (e.key !== 'ArrowUp' && e.key !== 'ArrowDown') return;
+        if (!activeBlockId) return;
+        e.preventDefault();
+        diToiKhoiKe(e.key === 'ArrowDown' ? 1 : -1);
+     };
+     window.addEventListener('keydown', nghe);
+     return () => window.removeEventListener('keydown', nghe);
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeBlockId, blocks]);
+
+  /**
+   * Đổi chỗ được với khối liền kề trong cùng phần không.
+   *
+   * Khối mở đầu phần thì KHÔNG: kéo cái tiêu đề đi là gãy cả phần. Muốn chuyển hẳn
+   * nó sang chỗ khác thì vẫn còn "Đưa lên trên / Đưa xuống dưới" trong menu ⋯.
+   */
+  const doiChoDuocTrongPhan = (i: number, huong: 1 | -1): boolean =>
+     !moDauPhan(blocks[i]) && khoiKeTrongPhan(i, huong) !== null;
+
+  const doiChoTrongPhan = (i: number, huong: 1 | -1) => {
+     if (doiChoDuocTrongPhan(i, huong)) moveBlock(i, huong);
+  };
+
+  /** Lời nhắc cho hai nút ▲▼ - nói rõ vì sao bấm không được. */
+  const nhacDoiCho = (i: number, huong: 1 | -1): string => {
+     const huongChu = huong === -1 ? 'lên trên' : 'xuống dưới';
+     if (moDauPhan(blocks[i])) return 'Đây là tiêu đề mở đầu một phần - dùng menu ⋯ nếu thật sự muốn chuyển';
+     if (khoiKeTrongPhan(i, huong) === null) return `Đã ở ${huong === -1 ? 'đầu' : 'cuối'} phần "${phanCuaKhoi[i]?.tenPhan}"`;
+     return `Đưa ${huongChu} một bậc, trong phần "${phanCuaKhoi[i]?.tenPhan}"`;
+  };
+
   /** Khối bị AI cảnh báo sai đề / đã tự sửa - phải rà lại bằng mắt vì nội dung
    *  không còn đúng nguyên bản đề gốc. */
   const blockCoCanhBao = (b: Block): boolean => {
@@ -659,12 +757,16 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 const preview = blockPreview(b);
                 const hetSlide = info.start + info.count - 1;
                 const nhanSlide = info.count > 1 ? `S${info.start}–${hetSlide}` : `S${info.start}`;
+                const laTieuDePhan = moDauPhan(b);
                 return (
+                   /* Hàng có thêm hai nút đổi chỗ nên không lồng được nút trong nút:
+                      thẻ chọn khối vẫn là <button>, hai mũi tên là anh em nằm đè lên
+                      mép phải. */
+                   <div key={b.id} className={`relative ${laTieuDePhan && i > 0 ? 'mt-2 pt-2 border-t-2 border-dashed border-indigo-200' : ''}`}>
                    <button
-                      key={b.id}
                       onClick={() => selectBlock(b.id)}
                       title={`Slide ${info.count > 1 ? `${info.start}-${hetSlide}` : info.start} · ${kind.label}${needsImage ? ' · CÒN THIẾU ẢNH' : hasImage ? ' · Có hình ảnh' : ''}${coCanhBao ? '\n🛠️ AI ĐÃ SỬA/NGHI SAI ĐỀ - cần kiểm tra lại' : ''}\n${preview}`}
-                      className={`w-full text-left rounded-lg px-2 py-1.5 border flex items-stretch gap-2 transition-colors ${isActive
+                      className={`w-full text-left rounded-lg px-2 py-1.5 pr-7 border flex items-stretch gap-2 transition-colors ${isActive
                          ? 'bg-indigo-600 border-indigo-600 shadow-sm'
                          : needsImage
                             ? 'bg-red-50 border-red-200 hover:bg-red-100'
@@ -697,6 +799,33 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                          </span>
                       </span>
                    </button>
+
+                   {/* Đổi thứ tự ngay tại Bản đồ, không phải mở khối ra rồi tìm trong
+                       menu ⋯. Chỉ chạy trong phần của nó: câu không nhảy sang phần khác,
+                       và tiêu đề phần thì đứng yên. */}
+                   <span className="absolute right-0.5 top-1/2 -translate-y-1/2 flex flex-col leading-none">
+                      {([[-1, ChevronUp], [1, ChevronDown]] as const).map(([huong, Mui]) => {
+                         const duoc = doiChoDuocTrongPhan(i, huong);
+                         return (
+                            <button
+                               key={huong}
+                               type="button"
+                               onClick={() => doiChoTrongPhan(i, huong)}
+                               disabled={!duoc}
+                               title={nhacDoiCho(i, huong)}
+                               /* Điện thoại để ô bấm to hơn cho vừa đầu ngón tay; màn rộng
+                                  thu lại cho gọn vì Bản đồ chỉ có 240px. */
+                               className={`w-7 h-[19px] md:w-5 md:h-[15px] flex items-center justify-center rounded transition-colors
+                                  ${!duoc ? 'opacity-20 cursor-not-allowed' : isActive
+                                     ? 'text-white/80 hover:text-white hover:bg-white/20'
+                                     : 'text-gray-400 hover:text-indigo-700 hover:bg-indigo-100'}`}
+                            >
+                               <Mui className="w-3.5 h-3.5" strokeWidth={3} />
+                            </button>
+                         );
+                      })}
+                   </span>
+                   </div>
                 );
              })}
 
@@ -853,6 +982,39 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                            <option value="essay">Tự luận / Trình bày chi tiết</option>
                         </select>
                      )}
+
+                     {/* Nhảy sang câu liền trước / liền sau TRONG CÙNG PHẦN.
+                         Khung soạn chỉ mở đúng một khối, nên trước đây muốn xem câu kế
+                         tiếp là phải quay lại Bản đồ - trên điện thoại Bản đồ còn chiếm
+                         trọn màn, mỗi lần đổi câu mất hai lần bấm và một lần cuộn tìm. */}
+                     {(() => {
+                        const cho = choDungTrongPhan(idx);
+                        return (
+                           <span className="flex items-center gap-0.5 ml-1 pl-2 border-l border-gray-200 shrink-0">
+                              {([[-1, ChevronUp, 'trước'], [1, ChevronDown, 'sau']] as const).map(([huong, Mui, chu]) => (
+                                 <button
+                                    key={huong}
+                                    type="button"
+                                    onClick={() => diToiKhoiKe(huong)}
+                                    disabled={khoiKeTrongPhan(idx, huong) === null}
+                                    title={khoiKeTrongPhan(idx, huong) === null
+                                       ? `Đã ở ${huong === -1 ? 'đầu' : 'cuối'} phần "${phanCuaKhoi[idx]?.tenPhan}"`
+                                       : `Sang câu ${chu} trong phần "${phanCuaKhoi[idx]?.tenPhan}"  (Alt+${huong === -1 ? '↑' : '↓'})`}
+                                    className="w-6 h-6 flex items-center justify-center rounded-md border border-gray-200
+                                               bg-white text-gray-500 hover:text-indigo-700 hover:bg-indigo-50
+                                               hover:border-indigo-300 transition-colors
+                                               disabled:opacity-25 disabled:cursor-not-allowed disabled:hover:bg-white"
+                                 >
+                                    <Mui className="w-3.5 h-3.5" strokeWidth={3} />
+                                 </button>
+                              ))}
+                              <span className="text-[10.5px] font-bold text-gray-400 tabular-nums ml-0.5"
+                                    title={`Câu thứ ${cho.thu} trong ${cho.tong} khối của phần "${phanCuaKhoi[idx]?.tenPhan}"`}>
+                                 {cho.thu}/{cho.tong}
+                              </span>
+                           </span>
+                        );
+                     })()}
                   </div>
                   <div className="flex gap-1 items-center shrink-0">
                       {/* Đưa mục "CÔNG THỨC CẦN NHỚ" của bài vào Sổ tay bằng một nút - khỏi
