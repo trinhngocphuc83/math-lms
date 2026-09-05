@@ -9,7 +9,7 @@
  * Barem chỉ là GỢI Ý: thầy cô tick những bước học sinh làm được thì điểm tự cộng, nhưng
  * vẫn gõ tay đè lên được. Máy không tự chấm thay.
  */
-import { chiaDiemTungBuoc, gomBuoc, tachLuuY } from './huongDanCham';
+import { cacBuocCham } from './huongDanCham';
 
 export interface BuocBarem {
   /** Số thứ tự bước, bắt đầu từ 1. */
@@ -24,49 +24,35 @@ export interface Barem {
   buoc: BuocBarem[];
   /** Phần "Lưu ý / Sai lầm thường gặp" cắt ra từ lời giải, nếu có. */
   luuY: string;
+  /**
+   * Khối "Phương pháp giải" cắt ra khỏi barem - lời dặn cho người chấm, KHÔNG có điểm.
+   * Học sinh không viết câu ấy ra bài nên không thể là một bước để tick.
+   */
+  phuongPhap: string;
   /** Tổng điểm của các bước - luôn khớp điểm tối đa của câu khi dựng được barem. */
   tong: number;
 }
-
-/** Số bước hợp lý cho một câu: quá ít thì chấm thô, quá nhiều thì rối mắt. */
-const IT_NHAT = 2;
-const NHIEU_NHAT = 8;
-
-const dong = (s: string): string[] =>
-  String(s ?? '')
-    .replace(/<br\s*\/?>/gi, '\n')
-    .replace(/<\/(p|div|li)>/gi, '\n')
-    .replace(/<[^>]+>/g, ' ')
-    .split('\n')
-    .map((d) => d.replace(/^\s*[-+*•➤]\s*/, '').trim())
-    .filter(Boolean);
 
 const lamTron = (x: number) => Math.round(x * 100) / 100;
 
 /**
  * Dựng barem từ lời giải mẫu và điểm tối đa của câu.
  *
+ * Chỉ đánh số lại các bước mà cacBuocCham() đã chia - KHÔNG tự chia kiểu khác. Trước đây
+ * hàm này chia riêng nên bản in giấy và màn hình vênh nhau ở những câu lời giải dài.
+ *
  * Không có lời giải thì trả về barem rỗng - màn chấm sẽ nói thẳng "câu này chưa có lời
  * giải mẫu nên chưa dựng được barem", thay vì bịa ra mấy bước trống rồi để thầy cô tick
  * vào chỗ không có nội dung.
  */
 export function dungBarem(loiGiai: string, diemToiDa: number): Barem {
-  const diem = Math.max(0, Number(diemToiDa) || 0);
-  const { giai, luuY } = tachLuuY(String(loiGiai ?? ''));
-  const dsDong = dong(giai);
-  if (dsDong.length === 0 || diem <= 0) return { buoc: [], luuY, tong: 0 };
-
-  const soBuoc = Math.max(IT_NHAT, Math.min(NHIEU_NHAT, dsDong.length));
-  const dsDiem = chiaDiemTungBuoc(diem, soBuoc);
-  if (dsDiem.length === 0) return { buoc: [], luuY, tong: 0 };
-
-  const nhom = gomBuoc(dsDong, dsDiem.length);
-  const buoc: BuocBarem[] = dsDiem.map((d, i) => ({
-    thu: i + 1,
-    noiDung: (nhom[i] || []).join(' ').trim() || `Bước ${i + 1}`,
-    diem: d,
-  }));
-  return { buoc, luuY, tong: lamTron(buoc.reduce((t, b) => t + b.diem, 0)) };
+  const { buoc, phuongPhap, luuY, tong } = cacBuocCham(String(loiGiai ?? ''), diemToiDa);
+  return {
+    buoc: buoc.map((b, i) => ({ thu: i + 1, noiDung: b.noiDung, diem: b.diem })),
+    luuY,
+    phuongPhap,
+    tong: lamTron(tong),
+  };
 }
 
 /** Cộng điểm của những bước đang được tick. */

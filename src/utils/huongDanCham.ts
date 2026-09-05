@@ -87,6 +87,105 @@ function dongLapLuan(loiGiai: string): string[] {
     .filter(Boolean);
 }
 
+/* ===================== DÒNG DẪN & PHƯƠNG PHÁP GIẢI ===================== */
+
+/** Nhãn dẫn dắt đứng trơ một mình, không kèm dấu hai chấm. */
+const NHAN_TRON =
+  /^(?:lời giải|bài giải|cách giải|giải|chứng minh|nhận xét|kết luận|đáp số|ta có|suy ra|do đó|khi đó|vậy|cách \d+|bước \d+|trường hợp \d+)$/i;
+
+/**
+ * Dòng chỉ để DẪN DẮT, không mang bước lập luận nào: "Lời giải:", "Ta có:", "Suy ra:".
+ *
+ * Trước đây mỗi dòng như vậy được tính thành MỘT BƯỚC và được chia điểm. Đo trên kho
+ * Toán: 85,6% câu tự luận dính, và 31,4% tổng điểm tự luận rơi vào những dòng rỗng ấy -
+ * tick vào là học sinh có điểm mà chưa làm gì. Nay dồn vào dòng ngay sau để thành một
+ * bước có nội dung thật.
+ */
+export function laDongDan(d: string): boolean {
+  const g = chu(d).replace(/\*\*/g, '').replace(/[*_`]/g, '').trim();
+  if (!g || g.length > 40) return false;
+  if (/[$\\=]/.test(g)) return false;              // có công thức thì là nội dung thật
+  if (/[:：]\s*$/.test(g)) return true;
+  return NHAN_TRON.test(g.replace(/[.。]\s*$/, ''));
+}
+
+/** Dồn mọi dòng dẫn vào dòng ngay sau. Dòng dẫn ở cuối thì đứng lại một mình. */
+export function donDongDan(ds: string[]): string[] {
+  const ra: string[] = [];
+  let treo: string[] = [];
+  for (const d of ds) {
+    if (laDongDan(d)) { treo.push(d); continue; }
+    ra.push([...treo, d].join(' ').trim());
+    treo = [];
+  }
+  if (treo.length) ra.push(treo.join(' ').trim());
+  return ra;
+}
+
+/**
+ * Cắt khối "Phương pháp giải" ra khỏi lời giải - làm y như tachLuuY cắt khối "Lưu ý".
+ *
+ * Phương pháp giải là lời dặn cho NGƯỜI CHẤM: học sinh không viết câu ấy ra bài, nên nó
+ * không được là một bước có điểm. Vẫn giữ lại để in thành dòng dẫn phía trên bảng.
+ *
+ * Cắt xong mà chẳng còn gì thì thôi, giữ nguyên: thà barem thô còn hơn không có barem.
+ */
+export function tachPhuongPhap(loiGiai: string): { giai: string; phuongPhap: string } {
+  const s = chu(loiGiai);
+  const ds = s.split('\n');
+  const sach = (d: string) => d.replace(/\*\*/g, '').replace(/[*_`]/g, '').trim().toLowerCase();
+
+  const iMo = ds.findIndex(d => /^(?:phương pháp giải|hướng dẫn giải)\s*[:：]/.test(sach(d)));
+  if (iMo === -1) return { giai: s, phuongPhap: '' };
+
+  let iKet = -1;
+  for (let i = iMo + 1; i < ds.length; i++) {
+    if (/^(?:lời giải|bài giải)\b/.test(sach(ds[i]))) { iKet = i; break; }
+  }
+  const phuongPhap = ds.slice(iMo, iKet === -1 ? ds.length : iKet).join('\n').trim();
+  const giai = [...ds.slice(0, iMo), ...(iKet === -1 ? [] : ds.slice(iKet))].join('\n').trim();
+  return giai ? { giai, phuongPhap } : { giai: s, phuongPhap: '' };
+}
+
+/* ===================== CÁC BƯỚC CHẤM - NGUỒN DUY NHẤT ===================== */
+
+export interface BuocCham {
+  /** Nội dung bước, đã gộp các dòng thuộc bước đó. */
+  noiDung: string;
+  /** Điểm của riêng bước này. */
+  diem: number;
+}
+
+/** Nhiều bước quá thì bảng biểu điểm rối mắt, thầy cô dò không xuể. */
+export const NHIEU_NHAT_BUOC = 8;
+
+/**
+ * Các bước chấm của MỘT câu tự luận, kèm điểm từng bước.
+ *
+ * NGUỒN DUY NHẤT cho cả ba nơi: bảng biểu điểm in ra giấy, hộp barem trên màn chấm tay,
+ * và màn chấm bài quét ảnh. Trước đây bản in tính MỖI DÒNG một bước còn màn hình gom tối
+ * đa 8 bước, nên câu nào lời giải dài thì hai bản ghi điểm khác nhau - học sinh cầm biểu
+ * điểm đối chiếu là thấy vênh.
+ *
+ * Số bước không bao giờ vượt quá số dòng thật, nên không còn bước trống mà vẫn mang điểm.
+ */
+export function cacBuocCham(loiGiai: string, diemCau: number): {
+  buoc: BuocCham[]; phuongPhap: string; luuY: string; tong: number;
+} {
+  const { giai, luuY } = tachLuuY(chu(loiGiai));
+  const { giai: than, phuongPhap } = tachPhuongPhap(giai);
+  const ds = donDongDan(dongLapLuan(than));
+  const diem = Math.max(0, Number(diemCau) || 0);
+  if (ds.length === 0 || diem <= 0) return { buoc: [], phuongPhap, luuY, tong: 0 };
+
+  const dsDiem = chiaDiemTungBuoc(diem, Math.min(NHIEU_NHAT_BUOC, ds.length));
+  if (dsDiem.length === 0) return { buoc: [], phuongPhap, luuY, tong: 0 };
+
+  const nhom = gomBuoc(ds, dsDiem.length);
+  const buoc = dsDiem.map((d, i) => ({ noiDung: (nhom[i] || []).join(' ').trim(), diem: d }));
+  return { buoc, phuongPhap, luuY, tong: lamTron(buoc.reduce((t, b) => t + b.diem, 0)) };
+}
+
 /* ===================== KHỐI DÙNG CHUNG ===================== */
 
 const oTieuDe = (nhan: string, rong?: number) => new TableCell({
@@ -289,12 +388,8 @@ function bangTraLoiNgan(phan: PhanDeThi): Table {
  * Biểu điểm một câu tự luận: bảng HAI cột theo bản Master Prompt v6.
  * Cột nội dung chiếm 80% bề ngang, cột biểu điểm 20%.
  */
-function bangBieuDiem(loiGiai: string, diemCau: number): Table | null {
-  const dsDong = dongLapLuan(loiGiai);
-  if (dsDong.length === 0) return null;
-
-  const diemBuoc = chiaDiemTungBuoc(diemCau, dsDong.length);
-  const nhom = gomBuoc(dsDong, diemBuoc.length || 1);
+function bangBieuDiem(cacBuoc: BuocCham[]): Table | null {
+  if (cacBuoc.length === 0) return null;
   const cot = [Math.floor(BE_NGANG_IN * 0.8), Math.floor(BE_NGANG_IN * 0.2)];
 
   return new Table({
@@ -309,11 +404,11 @@ function bangBieuDiem(loiGiai: string, diemCau: number): Table | null {
           oTieuDe('Biểu điểm', cot[1]),
         ],
       }),
-      ...nhom.map((cacDong, i) => new TableRow({
+      ...cacBuoc.map(b => new TableRow({
         children: [
-          oChu(cacDong.map(d => dong(d)), { rong: cot[0] }),
-          oChu([dong(diemBuoc[i] !== undefined ? `${soDiemVN(diemBuoc[i])} điểm` : '',
-            { dam: true, mau: NAVY, canGiua: true })], { rong: cot[1] }),
+          oChu([dong(b.noiDung)], { rong: cot[0] }),
+          oChu([dong(`${soDiemVN(b.diem)} điểm`, { dam: true, mau: NAVY, canGiua: true })],
+            { rong: cot[1] }),
         ],
       })),
     ],
@@ -335,8 +430,16 @@ function khoiTuLuan(phan: PhanDeThi, diemMoiCau: number): any[] {
       ],
     }));
 
-    const { giai, luuY } = tachLuuY(chu(q?.explanation));
-    const bang = bangBieuDiem(giai, diemMoiCau);
+    const { buoc, phuongPhap, luuY } = cacBuocCham(chu(q?.explanation), diemMoiCau);
+
+    /* Phương pháp giải in thành DÒNG DẪN phía trên bảng, KHÔNG có ô điểm: đó là lời dặn
+       cho người chấm, học sinh không viết câu ấy ra bài nên không thể là bước có điểm. */
+    if (phuongPhap) {
+      ra.push(dong(gon(phuongPhap), { nghieng: true, mau: XAM_MO }));
+      ra.push(new Paragraph({ text: "", spacing: { after: 60 } }));
+    }
+
+    const bang = bangBieuDiem(buoc);
     if (bang) {
       ra.push(bang);
       ra.push(new Paragraph({ text: "", spacing: { after: 100 } }));

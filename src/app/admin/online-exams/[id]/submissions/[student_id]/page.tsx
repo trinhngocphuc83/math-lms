@@ -273,6 +273,30 @@ export default function GradeSubmissionPage() {
                             ))}
                           </div>
                         )}
+                        {/* Lời giải mẫu chỉ có một dòng thì barem chỉ được một bước: tick là
+                            trọn điểm, không có nấc giữa. Nói thẳng ra để Thầy cô biết mà gõ
+                            tay khi muốn cho điểm từng phần. */}
+                        {barem.buoc.length > 0 && barem.buoc.length <= 2 && (
+                          <p className="mt-3 text-sm text-slate-600 bg-white border border-sky-100 rounded-lg px-3 py-2">
+                            Lời giải mẫu của câu này ngắn nên barem chỉ có {barem.buoc.length} bước
+                            {barem.buoc.length === 1 ? ' — tick là trọn điểm' : ''}. Muốn cho điểm
+                            từng phần thì gõ thẳng vào ô điểm.
+                          </p>
+                        )}
+
+                        {/* Phương pháp giải KHÔNG phải một bước có điểm - học sinh không viết
+                            câu ấy ra bài. Để riêng, mở ra xem khi cần. */}
+                        {barem.phuongPhap && (
+                          <details className="mt-3 text-sm">
+                            <summary className="cursor-pointer font-bold text-sky-700 hover:text-sky-900">
+                              Xem phương pháp giải (không tính điểm)
+                            </summary>
+                            <div className="mt-2 text-slate-700 bg-white border border-sky-100 rounded-lg px-3 py-2">
+                              <MathRenderer htmlContent={barem.phuongPhap} />
+                            </div>
+                          </details>
+                        )}
+
                         {barem.luuY && (
                           <p className="mt-3 text-sm text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
                             {barem.luuY}
