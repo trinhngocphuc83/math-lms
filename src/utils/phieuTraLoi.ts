@@ -275,7 +275,16 @@ export async function dungNoiDungPhieu(k: KhuonPhieu): Promise<any[]> {
     ra.push(dongHuongDan(HUONG_DAN.TO_TRON));
     const cacTrang = dungLuoi(khoi);
     for (const luoi of cacTrang) {
-      if (luoi.trang > 1) ra.push(new Paragraph({ text: "", pageBreakBefore: true }));
+      if (luoi.trang > 1) {
+        ra.push(new Paragraph({ text: "", pageBreakBefore: true }));
+        /* MỖI TRANG MỘT MÃ QR riêng, mang đúng số trang của nó. Trước đây chỉ trang đầu
+           có mã, nên ảnh chụp trang 2 không có gì để máy nhận ra là trang mấy của đề nào -
+           phải đoán, mà đoán là sai. */
+        const qrTrang = await anhQR(noiDungQR({
+          boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: luoi.trang,
+        }), 74);
+        if (qrTrang) ra.push(new Paragraph({ alignment: AlignmentType.RIGHT, children: [qrTrang] }));
+      }
       /* Nhúng đúng bề ngang vùng in: ảnh vẽ ở 12px/mm, Word tính theo 96dpi. */
       const rongWord = Math.round((RONG_MM / 25.4) * 96);
       ra.push(new Paragraph({
