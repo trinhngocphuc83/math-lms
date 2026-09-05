@@ -179,7 +179,11 @@ export default function HuongDanSoanBaiModal({
 
         {/* Hàng nhảy nhanh tới từng mục */}
         {!tim && (
-          <div className="shrink-0 flex gap-1.5 overflow-x-auto px-5 py-2 bg-slate-50 border-b border-slate-200
+          /* Man rong: cho XUONG DONG. Truoc day cuon ngang ma thanh cuon lai bi giau di,
+             nen o 1400px chi thay 6/10 muc, bon muc cuoi troi khoi khung khong dau hieu gi.
+             Dien thoai van vuot ngang - quen tay, va xuong dong o do thi mat nam hang. */
+          <div className="shrink-0 flex gap-1.5 overflow-x-auto md:flex-wrap md:overflow-x-visible
+                          px-5 py-2 bg-slate-50 border-b border-slate-200
                           [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
             {muc.map((m, i) => (
               <button key={i} onClick={() => nhay(i)}
