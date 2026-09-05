@@ -66,6 +66,12 @@ function catRuot(ruot: string): Manh[] | null {
          * dấu gạch dưới, ngoặc nhọn hay $ thì để nguyên, không đụng tới.
          */
         if (/[\\^_{}$]/.test(trongNgoac)) { dem += c; continue; }
+        /*
+         * Ngay sau dấu } mà là "_" hoặc "^" thì cụm chữ ấy đang ĐEO chỉ số dưới / số mũ -
+         * kéo ra là chỉ số rơi lại một mình. Gặp thật trong kho Lý: "\text{CO}_2" mà tách
+         * thì ra "CO $_2$", số 2 rớt khỏi chữ CO.
+         */
+        if (/^[_^]/.test(ruot.slice(j))) { dem += c; continue; }
         manh.push({ loai: 'toan', noiDung: dem });
         manh.push({ loai: 'chu', noiDung: trongNgoac });
         dem = '';
@@ -104,6 +110,13 @@ function ghepManh(manh: Manh[]): string {
      */
     const t = m.noiDung.replace(/\\[,;:!]?\s*$/, '').trim();
     if (!t) continue;                       // khối toán rỗng thì bỏ hẳn, khỏi để "$$"
+    /*
+     * Khối chỉ còn dấu câu thì để trần, đừng bọc "$".
+     *
+     * "$400\ \text{K}.$" kéo chữ ra rồi thì dấu chấm cuối câu còn lại một mình, bọc vào
+     * thành "$400$ K $.$" - vừa xấu vừa làm hai phương án A và C thành giống hệt nhau.
+     */
+    if (/^[.,;:!?)\]}]+$/.test(t)) { ra.push(t); continue; }
     ra.push('$' + t + '$');
   }
   /*
