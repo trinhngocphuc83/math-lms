@@ -3,8 +3,12 @@
 /**
  * CHẤM BÀI QUÉT ẢNH - nạp ảnh phiếu trả lời rồi máy đọc lưới tô tròn và chấm.
  *
- * Bản này làm tới bảng soát: nạp ảnh, đọc, chấm, sửa tay từng câu. CHƯA ghi điểm vào sổ -
- * việc đó để đợt sau, khi có bảng lưu bài quét trong cơ sở dữ liệu.
+ * Cả chuỗi: in phiếu cho từng em -> nạp ảnh -> máy đọc lưới -> chấm -> soát và sửa tay
+ * -> chốt điểm vào sổ của lớp.
+ *
+ * Ghép bài với học sinh đi bằng MÃ HỌC SINH trong ô QR của phiếu in theo lớp. Máy không
+ * đọc tên viết tay để đoán: chữ xấu hay hai em trùng tên là gán nhầm điểm cho em khác,
+ * tai hại hơn mọi lỗi chấm. Tờ nào không có mã thì Thầy cô chọn tay.
  *
  * Không tốn khoá AI: phần trắc nghiệm đọc bằng hình học thuần (xem docPhieuQuet.ts).
  *
@@ -23,6 +27,9 @@ import { khoiPhieuTuCacPhan } from "@/utils/phieuTraLoi";
 import { dungLuoi, type BanDoLuoi } from "@/utils/luoiToTron";
 import { docPhieuQuet, type KetQuaDocPhieu } from "@/utils/docPhieuQuet";
 import { chamPhieuQuet, type CauTrongDe, type KetQuaChamPhieu } from "@/utils/chamPhieuQuet";
+import { maHocSinhNgan } from "@/utils/mauDeThi";
+import { exportPhieuTheoLop } from "@/utils/phieuTraLoi";
+import { layDsLop, layDsHocSinh, luuBaiKiemTra } from "@/app/actions/goiTenVaDiem";
 
 interface BoDe {
   id: string; ten: string; grade: string; subject: string;
@@ -58,6 +65,8 @@ interface TrangDaDoc {
   /** Trang thứ mấy của phiếu - CHỈ có khi đọc được mã QR. Không có thì để 0, không đoán. */
   trang: number;
   tuQR: boolean;
+  /** Mã ngắn của học sinh, đọc từ QR của phiếu in theo lớp. */
+  maHS?: string;
   doc?: KetQuaDocPhieu;
   loi?: string;
 }
@@ -66,6 +75,8 @@ interface TrangDaDoc {
 interface BaiQuet {
   /** Nhãn Thầy cô đặt cho bài, thường là tên em - để trống thì đánh số. */
   ten: string;
+  /** Học sinh của bài này; rỗng là chưa gán ai. */
+  studentId: string;
   trang: TrangDaDoc[];
   suaTay: Record<string, string | null>;
 }
@@ -99,21 +110,28 @@ async function anhTuTep(f: File): Promise<{ anh: ImageData; url: string }> {
   return { anh: nen.getImageData(0, 0, canvas.width, canvas.height), url };
 }
 
-/** Đọc mã QR trên ảnh phiếu: "LTP|1|<bộ đề>|<mã đề>|pt|<trang>". */
-async function docQR(anh: ImageData): Promise<{ boDeId: string; maDe: string; trang: number } | null> {
+/** Đọc mã QR trên ảnh phiếu: "LTP|1|<bộ đề>|<mã đề>|pt|<trang>|<mã học sinh>". */
+async function docQR(anh: ImageData):
+  Promise<{ boDeId: string; maDe: string; trang: number; hs?: string } | null> {
   try {
     const jsQR = (await import('jsqr')).default;
     const kq = jsQR(anh.data as any, anh.width, anh.height, { inversionAttempts: 'attemptBoth' });
     if (!kq?.data) return null;
     const p = String(kq.data).split('|');
     if (p[0] !== 'LTP' || p[4] !== 'pt') return null;
-    return { boDeId: p[2], maDe: p[3], trang: Number(p[5]) || 1 };
+    /* Ô thứ bảy chỉ có ở phiếu in theo lớp - phiếu trắng in trước đó vẫn đọc được. */
+    return { boDeId: p[2], maDe: p[3], trang: Number(p[5]) || 1, hs: p[6] || undefined };
   } catch { return null; }
 }
 
 export default function ChamQuetPage() {
   const [dsBoDe, setDsBoDe] = React.useState<BoDe[]>([]);
   const [boDeId, setBoDeId] = React.useState('');
+  const [dsLop, setDsLop] = React.useState<{ id: string; name: string }[]>([]);
+  const [classId, setClassId] = React.useState('');
+  const [dsHocSinh, setDsHocSinh] = React.useState<{ id: string; ten: string }[]>([]);
+  const [dangChot, setDangChot] = React.useState(false);
+  const [daChot, setDaChot] = React.useState('');
   const [dangNap, setDangNap] = React.useState(true);
   const [dangDoc, setDangDoc] = React.useState('');
   const [bai, setBai] = React.useState<BaiQuet[]>([]);
@@ -135,6 +153,12 @@ export default function ChamQuetPage() {
       setDangNap(false);
     })();
   }, []);
+
+  React.useEffect(() => { layDsLop().then(setDsLop).catch(() => setDsLop([])); }, []);
+  React.useEffect(() => {
+    if (!classId) { setDsHocSinh([]); return; }
+    layDsHocSinh(classId).then(setDsHocSinh).catch(() => setDsHocSinh([]));
+  }, [classId]);
 
   /* Nội dung bộ đề đang chọn - tải riêng vì cột cau_hoi nặng. */
   const [boDe, setBoDe] = React.useState<BoDe | null>(null);
@@ -214,7 +238,7 @@ export default function ChamQuetPage() {
         }
         const kq = docPhieuQuet(anh, luoi);
         daDoc.push({
-          ...chung, trang: qr.trang, tuQR: true, doc: kq,
+          ...chung, trang: qr.trang, tuQR: true, maHS: qr.hs, doc: kq,
           vai: kq.timDuocNeo ? 'luoi' : 'luoiHong',
           loi: kq.timDuocNeo ? undefined : kq.loi,
         });
@@ -224,10 +248,26 @@ export default function ChamQuetPage() {
          mới. Tờ nào không xếp được thì vào khay chưa gán, không nhét bừa vào bài nào. */
       const raBai: BaiQuet[] = [];
       const raKhay: TrangDaDoc[] = [];
+      /* Có mã học sinh thì gom theo mã - đúng tuyệt đối, không phụ thuộc thứ tự nạp.
+         Không có mã thì mới quay về lối cũ: gặp trang 1 là mở bài mới. */
+      const theoMa = new Map<string, BaiQuet>();
       for (const t of daDoc) {
         if (t.vai === 'giayKhac') { raKhay.push(t); continue; }
-        if (t.trang === 1 || raBai.length === 0) raBai.push({ ten: '', trang: [], suaTay: {} });
-        raBai[raBai.length - 1].trang.push(t);
+        if (t.maHS) {
+          let b = theoMa.get(t.maHS);
+          if (!b) {
+            const hs = dsHocSinh.find(h => maHocSinhNgan(h.id) === t.maHS);
+            b = { ten: hs?.ten || '', studentId: hs?.id || '', trang: [], suaTay: {} };
+            theoMa.set(t.maHS, b);
+            raBai.push(b);
+          }
+          b.trang.push(t);
+          continue;
+        }
+        const cuoi = raBai[raBai.length - 1];
+        if (t.trang === 1 || !cuoi || cuoi.trang.some(x => !!x.maHS)) {
+          raBai.push({ ten: '', studentId: '', trang: [t], suaTay: {} });
+        } else cuoi.trang.push(t);
       }
       setBai(b => [...b, ...raBai]);
       setKhay(k => [...k, ...raKhay]);
@@ -255,15 +295,20 @@ export default function ChamQuetPage() {
     if (!to) return;
     setKhay(k => k.filter((_, i) => i !== iKhay));
     setBai(ds => iBai === 'moi'
-      ? [...ds, { ten: '', trang: [to], suaTay: {} }]
+      ? [...ds, { ten: '', studentId: '', trang: [to], suaTay: {} }]
       : ds.map((b, i) => i === iBai ? { ...b, trang: [...b.trang, to] } : b));
   };
 
   /** Bài của em làm hoàn toàn ra giấy khác: mở bài trống rồi nhập tay. */
   const themBaiGiayKhac = () => {
-    setBai(ds => [...ds, { ten: '', trang: [], suaTay: {} }]);
+    setBai(ds => [...ds, { ten: '', studentId: '', trang: [], suaTay: {} }]);
     setMoBai(bai.length);
   };
+
+  const ganHocSinh = (iBai: number, studentId: string) =>
+    setBai(ds => ds.map((b, i) => i === iBai
+      ? { ...b, studentId, ten: dsHocSinh.find(h => h.id === studentId)?.ten || '' }
+      : b));
 
   const doiTenBai = (iBai: number, ten: string) =>
     setBai(ds => ds.map((b, i) => i === iBai ? { ...b, ten } : b));
@@ -271,6 +316,57 @@ export default function ChamQuetPage() {
   const xoaBai = (iBai: number) => {
     setBai(ds => ds.filter((_, i) => i !== iBai));
     setMoBai(null);
+  };
+
+  /**
+   * Chốt điểm vào SỔ ĐIỂM LỚP.
+   *
+   * Ghi qua luuBaiKiemTra - đúng đường mà bảng điểm của lớp vẫn dùng, nên điểm này nằm
+   * chung một chỗ với điểm Thầy cô nhập tay, và bộ quét điểm thưởng tự lấy sang mục
+   * "Bài kiểm tra" mà không phải làm gì thêm.
+   *
+   * BỐN CHỐT trước khi ghi - gán nhầm điểm cho em khác còn tai hại hơn chấm sai một câu.
+   */
+  const chotDiem = async () => {
+    if (!classId) { alert('Chọn lớp trước đã.'); return; }
+    if (!boDe) return;
+
+    const coDiem = bai.filter(b => b.studentId);
+    const chuaGan = bai.length - coDiem.length;
+    const conVuong = coDiem.filter(b => chamBai(b).soCauVuong > 0).length;
+    const trung = coDiem.map(b => b.studentId)
+      .filter((v, i, a) => a.indexOf(v) !== i);
+    const thieuEm = dsHocSinh.filter(h => !coDiem.some(b => b.studentId === h.id));
+
+    const canNhac: string[] = [];
+    if (chuaGan > 0) canNhac.push(`${chuaGan} bài CHƯA GÁN cho em nào - sẽ bỏ qua.`);
+    if (trung.length > 0) canNhac.push(`${trung.length} em có HAI bài - phải bỏ bớt một.`);
+    if (conVuong > 0) canNhac.push(`${conVuong} bài còn câu máy chưa dám chấm - nên soi lại.`);
+    if (khay.length > 0) canNhac.push(`${khay.length} tờ còn nằm trong khay chưa gán.`);
+    if (thieuEm.length > 0) {
+      canNhac.push(`${thieuEm.length} em trong lớp CHƯA CÓ BÀI: `
+        + thieuEm.slice(0, 5).map(h => h.ten).join(', ')
+        + (thieuEm.length > 5 ? '…' : ''));
+    }
+    /* Một em hai bài là chặn hẳn, không cho chốt: ghi đè lên nhau thì mất một bài mà
+       không ai biết. Mấy cảnh còn lại chỉ nhắc, Thầy cô tự quyết. */
+    if (trung.length > 0) { alert('Không chốt được:\n\n' + canNhac.join('\n')); return; }
+    if (coDiem.length === 0) { alert('Chưa bài nào được gán cho học sinh.'); return; }
+
+    const tenBai = `${boDe.ten}`.slice(0, 120);
+    const loiNhac = (canNhac.length ? canNhac.join('\n') + '\n\n' : '')
+      + `Ghi ${coDiem.length} điểm vào sổ của lớp, dưới tên bài "${tenBai}"?`;
+    if (!confirm(loiNhac)) return;
+
+    setDangChot(true);
+    try {
+      const diem: Record<string, number> = {};
+      for (const b of coDiem) diem[b.studentId] = chamBai(b).diem;
+      await luuBaiKiemTra(classId, { ten_bai: tenBai, diem_dat: 5 }, diem);
+      setDaChot(`Đã ghi ${coDiem.length} điểm vào sổ lớp.`);
+    } catch (e: any) {
+      alert('Không ghi được vào sổ: ' + (e?.message || e));
+    } finally { setDangChot(false); }
   };
 
   const doiSuaTay = (iBai: number, ma: string, giaTri: string) => {
@@ -330,6 +426,48 @@ export default function ChamQuetPage() {
         )}
       </div>
 
+      {/* Bước 1b: chọn lớp - để in phiếu sẵn tên và để chốt điểm vào sổ */}
+      <div className="bg-white rounded-2xl border border-slate-200 p-5 mb-5">
+        <label className="block font-bold text-slate-700 mb-2">
+          2. Chọn lớp <span className="font-medium text-slate-500">(để máy ghép đúng bài với đúng em)</span>
+        </label>
+        <div className="flex flex-col sm:flex-row gap-3">
+          <select
+            value={classId}
+            onChange={e => setClassId(e.target.value)}
+            className="flex-1 border border-slate-300 rounded-xl px-3 py-2.5 font-medium"
+          >
+            <option value="">— Chọn lớp —</option>
+            {dsLop.map(l => <option key={l.id} value={l.id}>{l.name}</option>)}
+          </select>
+          <button
+            disabled={!boDe || dsHocSinh.length === 0 || !!dangDoc}
+            onClick={async () => {
+              if (!boDe) return;
+              try {
+                setDangDoc('Đang dựng phiếu cho từng em…');
+                const { soPhieu } = await exportPhieuTheoLop(
+                  { dauDe: boDe.dau_de || {}, cacPhan, diemPhan: diemMoiCauTheoPhan(cacPhan, Number(boDe.tong_diem) || 0),
+                    boDeId: boDe.id },
+                  dsHocSinh, boDe.ten.replace(/[^\p{L}\d]+/gu, '_').slice(0, 60),
+                  (da, tong) => setDangDoc(`Đang dựng phiếu ${da}/${tong}…`),
+                );
+                alert(`Đã dựng ${soPhieu} phiếu, mỗi em một tờ có sẵn tên và mã riêng.`);
+              } catch (e: any) { alert('Không in được: ' + (e?.message || e)); }
+              finally { setDangDoc(''); }
+            }}
+            className="px-4 py-2.5 rounded-xl bg-slate-800 text-white font-bold text-sm
+                       hover:bg-slate-900 disabled:opacity-40 whitespace-nowrap"
+          >
+            In phiếu cả lớp ({dsHocSinh.length} em)
+          </button>
+        </div>
+        <p className="mt-2 text-[12.5px] text-slate-500">
+          Phiếu in theo lớp có sẵn tên em và mã riêng trong ô QR, nên lúc quét máy ghép đúng
+          bài với đúng em - không phải đọc chữ viết tay.
+        </p>
+      </div>
+
       {/* Bước 2: nạp ảnh */}
       <div
         onDragOver={e => { e.preventDefault(); setKeo(true); }}
@@ -339,7 +477,7 @@ export default function ChamQuetPage() {
           keo ? 'border-teal-500 bg-teal-50' : 'border-slate-300 bg-white'}`}
       >
         <Upload className="w-8 h-8 mx-auto text-slate-400 mb-2" />
-        <p className="font-bold text-slate-700">2. Kéo ảnh phiếu vào đây</p>
+        <p className="font-bold text-slate-700">3. Kéo ảnh phiếu vào đây</p>
         <p className="text-[13px] text-slate-500 mb-3">
           Ảnh chụp điện thoại hoặc tệp PDF nhiều trang đều được. Chụp thấy trọn bốn góc lưới.
         </p>
@@ -412,7 +550,7 @@ export default function ChamQuetPage() {
       {(bai.length > 0 || khay.length > 0) && !baiDangMo && (
         <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
           <div className="px-5 py-3 border-b border-slate-100 flex items-center justify-between">
-            <span className="font-black text-slate-800">3. Bảng soát — {bai.length} bài</span>
+            <span className="font-black text-slate-800">4. Bảng soát — {bai.length} bài</span>
             <div className="flex items-center gap-3">
               {/* Em nào làm hẳn ra giấy khác thì mở bài trống rồi nhập tay đáp án. */}
               <button onClick={themBaiGiayKhac}
@@ -443,14 +581,22 @@ export default function ChamQuetPage() {
                 return (
                   <tr key={i} className="border-t border-slate-100 hover:bg-slate-50">
                     <td className="px-5 py-2.5">
-                      <input
-                        value={b.ten}
-                        onChange={e => doiTenBai(i, e.target.value)}
-                        placeholder={`Bài ${i + 1}`}
-                        title="Ghi tên em để sau này dò lại cho nhanh"
-                        className="w-36 border border-transparent hover:border-slate-300 focus:border-slate-400
-                                   rounded-md px-2 py-1 font-bold text-slate-700 outline-none"
-                      />
+                      {/* Gán bài cho đúng em. Phiếu in theo lớp thì máy tự gán qua mã QR;
+                          còn lại Thầy cô chọn tay - máy không đoán theo tên viết tay. */}
+                      <select
+                        value={b.studentId}
+                        onChange={e => ganHocSinh(i, e.target.value)}
+                        className={`w-44 border rounded-lg px-2 py-1 font-bold text-[13px] ${
+                          b.studentId ? 'border-slate-300 text-slate-700'
+                                      : 'border-amber-400 bg-amber-50 text-amber-800'}`}
+                      >
+                        <option value="">— chưa gán em nào —</option>
+                        {dsHocSinh.map(h => (
+                          <option key={h.id} value={h.id}>
+                            {h.ten}{bai.some((x, k) => k !== i && x.studentId === h.id) ? ' (đã có bài)' : ''}
+                          </option>
+                        ))}
+                      </select>
                     </td>
                     <td className="px-3 py-2.5 text-slate-500">
                       {b.trang.length === 0
@@ -489,9 +635,24 @@ export default function ChamQuetPage() {
               })}
             </tbody>
           </table>
-          <p className="px-5 py-3 text-[12.5px] text-slate-500 border-t border-slate-100">
-            Bản này chưa ghi điểm vào sổ - đang là bước soát. Việc chốt điểm làm ở đợt sau.
-          </p>
+          <div className="px-5 py-4 border-t border-slate-100 flex flex-col sm:flex-row
+                          sm:items-center gap-3">
+            <div className="text-[12.5px] text-slate-500 flex-1">
+              {!classId
+                ? 'Chọn lớp ở bước 2 thì mới chốt điểm vào sổ được.'
+                : `Chốt là ghi điểm vào sổ của lớp, mục "Bài kiểm tra" - điểm thưởng tự quét sang sau.`}
+              {daChot && <span className="ml-2 font-bold text-emerald-700">{daChot}</span>}
+            </div>
+            <button
+              onClick={chotDiem}
+              disabled={!classId || dangChot || bai.every(b => !b.studentId)}
+              className="px-5 py-2.5 rounded-xl bg-emerald-600 text-white font-bold
+                         hover:bg-emerald-700 disabled:opacity-40 flex items-center gap-2"
+            >
+              {dangChot ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
+              Chốt điểm vào sổ
+            </button>
+          </div>
         </div>
       )}
 

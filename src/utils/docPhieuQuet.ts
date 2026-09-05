@@ -139,7 +139,41 @@ function cacVungToi(xam: Float32Array, rong: number, cao: number, nen: Float32Ar
  * Lọc theo hình dạng chứ không theo vị trí: ảnh chụp có thể lệch nhiều, mà giấy còn có
  * chữ đen của đề bài lẫn vào, nên phải chọn bằng đặc điểm riêng của dấu neo.
  */
-type KetQuaTimNeo = { neo: { x: number; y: number }[] } | { viSao: string };
+type KetQuaTimNeo = { boNeo: { x: number; y: number }[][] } | { viSao: string };
+
+/** Bốn góc của một nhóm ứng viên: cực trị của x+y và x-y nên không sợ ảnh nghiêng. */
+function bonGocCua(nhom: Vung[]): Vung[] | null {
+  if (nhom.length < 4) return null;
+  const chon = (f: (v: Vung) => number) => nhom.reduce((a, b) => (f(b) < f(a) ? b : a));
+  const bon = [chon(v => v.x + v.y), chon(v => -(v.x - v.y)),
+               chon(v => -(v.x + v.y)), chon(v => v.x - v.y)];
+  return new Set(bon.map(v => `${Math.round(v.x)},${Math.round(v.y)}`)).size === 4 ? bon : null;
+}
+
+/** Bốn dấu có làm thành khung giống khung lưới đã in không. */
+function khungHopLe(bon: Vung[], rong: number, cao: number, tiLeLuoi: number): boolean {
+  const dt = bon.map(v => (v.x1 - v.x0 + 1) * (v.y1 - v.y0 + 1));
+  if (Math.max(...dt) / Math.min(...dt) > 2.2) return false;
+
+  const bx = bon.map(v => v.x), by = bon.map(v => v.y);
+  const spanX = Math.max(...bx) - Math.min(...bx);
+  const spanY = Math.max(...by) - Math.min(...by);
+  if (spanX < rong * 0.12 || spanY < cao * 0.12) return false;
+
+  const tiLeThay = spanX / Math.max(1, spanY);
+  if (tiLeThay < tiLeLuoi * 0.6 || tiLeThay > tiLeLuoi * 1.65) return false;
+
+  const dai = (a: Vung, b: Vung) => Math.hypot(a.x - b.x, a.y - b.y);
+  const canh = [dai(bon[0], bon[1]), dai(bon[1], bon[2]), dai(bon[2], bon[3]), dai(bon[3], bon[0])];
+  const lech = (a: number, b: number) => Math.abs(a - b) / Math.max(a, b, 1);
+  if (lech(canh[0], canh[2]) > 0.45 || lech(canh[1], canh[3]) > 0.45) return false;
+
+  const dienTich = Math.abs(bon.reduce((s, q, i) => {
+    const r = bon[(i + 1) % 4];
+    return s + (q.x * r.y - r.x * q.y);
+  }, 0) / 2);
+  return dienTich >= spanX * spanY * 0.45;
+}
 
 function timDauNeo(vung: Vung[], rong: number, cao: number, tiLeLuoi: number): KetQuaTimNeo {
   /* Cỡ dấu neo đo bằng ĐIỂM ẢNH THẬT, không theo bề ngang ảnh: Thầy cô chụp lùi xa thì
@@ -168,66 +202,32 @@ function timDauNeo(vung: Vung[], rong: number, cao: number, tiLeLuoi: number): K
     .sort((a, b) => b.so - a.so)
     .slice(0, 30);
 
-  /* Bốn góc: lấy cực trị của x+y và x-y nên không phụ thuộc ảnh nghiêng bao nhiêu. */
-  const chon = (f: (v: Vung) => number) =>
-    ungVien.reduce((a, b) => (f(b) < f(a) ? b : a));
-  const tt = chon(v => v.x + v.y);
-  const pd = chon(v => -(v.x + v.y));
-  const pt = chon(v => -(v.x - v.y));
-  const td = chon(v => v.x - v.y);
-
-  const bon = [tt, pt, pd, td];
-  const rieng = new Set(bon.map(v => `${Math.round(v.x)},${Math.round(v.y)}`));
-  if (rieng.size < 4) return { viSao: 'bon goc doi vao cung mot vat' };
-
-  /* SOI LẠI BỐN CÁI VỪA CHỌN. Thiếu một dấu neo - giấy gấp mất góc, chụp hụt mép - thì
-     phép cực trị ở trên vẫn trả về bốn vật nào đó, và ảnh sẽ bị nắn bừa rồi chấm sai mà
-     không ai biết. Ba điều kiện dưới đây bắt đúng cảnh ấy. */
-
-  /* 1. Bốn dấu neo in ra bằng nhau, nên diện tích không được chênh nhau quá. */
-  const dt = bon.map(v => (v.x1 - v.x0 + 1) * (v.y1 - v.y0 + 1));
-  if (Math.max(...dt) / Math.min(...dt) > 2.2) {
-    return { viSao: 'bon dau chon duoc to nho khac nhau qua - co cai khong phai dau neo' };
+  /* Trên tờ giấy thật còn có MÃ QR, mà ba ô vuông định vị của nó to gần bằng dấu neo
+     (6,3mm so với 6mm) - lấy cực trị trên cả đống là bắt nhầm chúng làm góc lưới, cả
+     trang thành không đọc được. Nên gom ứng viên thành từng NHÓM CÙNG CỠ rồi thử từng
+     nhóm; chốt mốc chuẩn ở docPhieuQuet sẽ loại nhóm sai. */
+  const theoCo = [...ungVien].sort((a, b) => b.so - a.so);
+  const nhom: Vung[][] = [];
+  for (const v of theoCo) {
+    const cuoi = nhom[nhom.length - 1];
+    if (cuoi && cuoi[0].so / v.so <= 1.7) cuoi.push(v);
+    else nhom.push([v]);
   }
-
-  /* 2. Không co cụm lại một chỗ. Ngưỡng để rất rộng vì Thầy cô có thể chụp lùi xa, tờ
-        giấy chỉ chiếm một phần khung hình - siết chặt ở đây là từ chối oan ảnh tốt. */
-  const bx = bon.map(v => v.x), by = bon.map(v => v.y);
-  const spanX = Math.max(...bx) - Math.min(...bx);
-  const spanY = Math.max(...by) - Math.min(...by);
-  if (spanX < rong * 0.12 || spanY < cao * 0.12) {
-    return { viSao: 'bon dau co cum lai mot cho' };
+  /* Thử từng nhóm cùng cỡ trước, rồi mới thử gộp cả đống - phòng khi dấu neo bị chia
+     nhầm sang hai nhóm vì ảnh mờ. */
+  const boNeo: { x: number; y: number }[][] = [];
+  for (const n of [...nhom, ungVien]) {
+    const bon = bonGocCua(n);
+    if (!bon || !khungHopLe(bon, rong, cao, tiLeLuoi)) continue;
+    const diem = bon.map(v => ({ x: v.x, y: v.y }));
+    if (!boNeo.some(cu => cu.every((c, k) => Math.abs(c.x - diem[k].x) < 2 && Math.abs(c.y - diem[k].y) < 2))) {
+      boNeo.push(diem);
+    }
   }
-
-  /* 3. Khung bốn dấu phải cùng dáng với khung lưới đã in - lệch quá là nhặt nhầm vật.
-        Biên rộng đủ cho ảnh nghiêng tới chừng 25°. */
-  const tiLeThay = spanX / Math.max(1, spanY);
-  if (tiLeThay < tiLeLuoi * 0.6 || tiLeThay > tiLeLuoi * 1.65) {
-    return { viSao: `khung bon dau lech dang so voi luoi (${tiLeThay.toFixed(3)} vs ${tiLeLuoi.toFixed(3)})` };
+  if (boNeo.length === 0) {
+    return { viSao: 'không nhóm nào làm thành khung giống khung lưới đã in' };
   }
-
-  /* 4. Bốn điểm phải làm thành một khung TỨ GIÁC ĐÀNG HOÀNG: hai cạnh đối dài xấp xỉ
-        nhau, và diện tích chiếm phần lớn khung bao. Bắt nhầm một vật lạ làm góc thì
-        khung méo hẳn đi, chốt này thấy ngay. */
-  const dai = (a: Vung, b: Vung) => Math.hypot(a.x - b.x, a.y - b.y);
-  const canh = [dai(bon[0], bon[1]), dai(bon[1], bon[2]), dai(bon[2], bon[3]), dai(bon[3], bon[0])];
-  const lech = (a: number, b: number) => Math.abs(a - b) / Math.max(a, b, 1);
-  if (lech(canh[0], canh[2]) > 0.45 || lech(canh[1], canh[3]) > 0.45) {
-    return { viSao: 'hai canh doi cua khung dai ngan khac nhau qua' };
-  }
-
-  const dienTich = Math.abs(
-    bon.reduce((t, p, i) => {
-      const q = bon[(i + 1) % 4];
-      return t + (p.x * q.y - q.x * p.y);
-    }, 0) / 2);
-  /* Ngưỡng 0,45 cho phép ảnh nghiêng tới chừng 25° - hình chữ nhật xoay thì khung bao
-     nở ra nên tỉ lệ này tụt xuống. Bắt nhầm vật thì khung méo hẳn, tụt sâu hơn nhiều. */
-  if (dienTich < spanX * spanY * 0.45) {
-    return { viSao: `khung bon dau qua meo (chiem ${(dienTich / (spanX * spanY) * 100).toFixed(0)}% khung bao)` };
-  }
-
-  return { neo: bon.map(v => ({ x: v.x, y: v.y })) };
+  return { boNeo };
 }
 
 /**
@@ -237,7 +237,7 @@ function timDauNeo(vung: Vung[], rong: number, cao: number, tiLeLuoi: number): K
  * chụp lại mười lần vẫn hỏng. Màn soát dùng hàm này để vẽ đè bốn dấu máy bắt được lên ảnh.
  */
 export function chanDoanNeo(anh: AnhTho, luoi: BanDoLuoi): {
-  soVungToi: number; soUngVien: number;
+  soVungToi: number; soUngVien: number; soBo?: number;
   bon?: { x: number; y: number }[]; viSao?: string;
 } {
   const xam = anhXam(anh);
@@ -249,7 +249,10 @@ export function chanDoanNeo(anh: AnhTho, luoi: BanDoLuoi): {
       && w / h >= 0.72 && w / h <= 1.38 && v.so / (w * h) > 0.52;
   }).length;
   const kq = timDauNeo(vung, anh.width, anh.height, luoi.rong / luoi.cao);
-  return { soVungToi: vung.length, soUngVien, ...('neo' in kq ? { bon: kq.neo } : { viSao: kq.viSao }) };
+  return {
+    soVungToi: vung.length, soUngVien,
+    ...('boNeo' in kq ? { soBo: kq.boNeo.length, bon: kq.boNeo[0] } : { viSao: kq.viSao }),
+  };
 }
 
 /* ===================== NẮN PHỐI CẢNH ===================== */
@@ -348,38 +351,39 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
       o: [], traLoi: {}, khongChac: [],
     };
   }
-  const neo = timNeo.neo;
-
   const nCanh = luoi.neo[0].canh / 2;
   const goc = luoi.neo.map(n => ({ x: n.x + nCanh, y: n.y + nCanh }));
-  const h = matranNan(goc, neo);
-  if (!h) {
-    return {
-      timDuocNeo: false,
-      loi: 'Bốn dấu neo nằm lệch bất thường, không nắn phẳng được ảnh. Chụp lại thẳng hơn.',
-      o: [], traLoi: {}, khongChac: [],
+  const tb = (a: number[]) => a.reduce((t, x) => t + x, 0) / (a.length || 1);
+
+  /* THỬ TỪNG BỘ BỐN DẤU, để chốt mốc chuẩn tự chọn bộ đúng.
+     Trên tờ giấy thật còn có mã QR mà ba ô vuông định vị của nó to gần bằng dấu neo, nên
+     không thể chọn bừa một bộ rồi tin. Mốc đen là ô in đặc, mốc trắng là ô để trắng tinh -
+     cả hai do ta in ra nên biết chắc phải đọc thành gì. Bộ nào nắn xong mà hai mốc ấy ra
+     đúng đen và đúng trắng thì mới là bộ thật. */
+  let h: number[] | null = null;
+  let neo: { x: number; y: number }[] | null = null;
+  let tpDen = 0;
+  let viSaoTruot = 'không bộ nào nắn ra được mốc chuẩn đúng đen/trắng';
+
+  for (const bo of timNeo.boNeo) {
+    const hThu = matranNan(goc, bo);
+    if (!hThu) { viSaoTruot = 'bốn dấu nằm lệch bất thường, không dựng được phép nắn'; continue; }
+    const tuongPhan = (m: { x: number; y: number; r: number }) => {
+      const d = doO(xam, rong, cao, hThu, m);
+      return d.nen - d.ruot;
     };
+    const den = tb(luoi.mocDen.map(tuongPhan));
+    const trang = tb(luoi.mocTrang.map(tuongPhan));
+    if (den < 0.22 || trang > den * 0.4) continue;
+    h = hThu; neo = bo; tpDen = den;
+    break;
   }
 
-  /* Chuẩn đen và chuẩn trắng lấy từ mốc in sẵn TRÊN CHÍNH TỜ NÀY, và cũng đo theo kiểu
-     so với nền quanh nó - nên hai chuẩn không bị đèn lệch kéo đi. */
-  const tb = (a: number[]) => a.reduce((t, x) => t + x, 0) / (a.length || 1);
-  const tuongPhan = (m: { x: number; y: number; r: number }) => {
-    const d = doO(xam, rong, cao, h, m);
-    return d.nen - d.ruot;
-  };
-  const tpDen = tb(luoi.mocDen.map(tuongPhan));
-  const tpTrang = tb(luoi.mocTrang.map(tuongPhan));
-
-  /* CHỐT CUỐI. Mốc đen là ô in đặc, mốc trắng là ô để trắng tinh - cả hai đều do ta in
-     ra nên biết chắc phải đọc thành gì. Nắn đúng thì hai mốc phải cách nhau rõ rệt; đọc
-     ra na ná nhau nghĩa là bốn dấu neo bắt nhầm, tấm ảnh đang bị nắn về sai chỗ. Thà báo
-     không đọc được còn hơn chấm cả tờ theo một phép nắn sai. */
-  if (tpDen < 0.22 || tpTrang > tpDen * 0.4) {
+  if (!h || !neo) {
     return {
       timDuocNeo: false,
       loi: 'Nắn ảnh xong nhưng mốc chuẩn in sẵn không đọc ra đúng đen/trắng - nhiều khả năng'
-        + ' bắt nhầm dấu neo. Chụp lại cho thấy trọn bốn góc lưới, đủ sáng, không bị che.',
+        + ` bắt nhầm dấu neo. Chụp lại cho thấy trọn bốn góc lưới, đủ sáng. (${viSaoTruot})`,
       o: [], traLoi: {}, khongChac: [],
     };
   }

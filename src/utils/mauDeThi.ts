@@ -375,9 +375,25 @@ export const PHIEN_BAN_MAU = 1;
 
 export function noiDungQR(x: {
   boDeId?: string; maDe?: string; loai: 'de' | 'pt' | 'hd'; trang: number;
+  /** Mã ngắn của học sinh khi in phiếu theo lớp - xem maHocSinhNgan. */
+  hs?: string;
 }): string {
-  return ['LTP', PHIEN_BAN_MAU, x.boDeId || '-', x.maDe || '-', x.loai, x.trang].join('|');
+  const goc = ['LTP', PHIEN_BAN_MAU, x.boDeId || '-', x.maDe || '-', x.loai, x.trang];
+  /* Chỉ nối thêm khi CÓ mã học sinh, để mã QR của phiếu trắng vẫn y như trước và bộ đọc
+     cũ vẫn hiểu. Bộ đọc mới tách theo dấu '|' nên thừa một ô cũng không sao. */
+  return (x.hs ? [...goc, x.hs] : goc).join('|');
 }
+
+/**
+ * Mã ngắn của một học sinh để nhét vào QR.
+ *
+ * KHÔNG dùng cả mã dài 36 ký tự: nhồi vào QR thì ô mã dày đặc, in ra 2,6cm là ảnh chụp
+ * điện thoại đọc không nổi. Sáu ký tự đầu là đủ, vì lúc quét ta chỉ dò trong DANH SÁCH
+ * MỘT LỚP - vài chục em, trùng sáu ký tự đầu gần như không thể, mà lỡ trùng thì bộ ghép
+ * bài thấy hai em cùng khớp sẽ bắt Thầy cô chọn tay chứ không đoán.
+ */
+export const maHocSinhNgan = (id: string): string =>
+  String(id ?? '').replace(/-/g, '').slice(0, 6).toLowerCase();
 
 /**
  * Chữ người đọc được, in ở đầu trang phòng khi mã QR bị mờ hoặc bị gấp mất.

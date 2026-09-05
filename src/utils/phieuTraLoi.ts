@@ -29,7 +29,7 @@ import {
   NAVY, NEN_BANG_PHIEU, NEN_O_DIEM, DO_TONG_DIEM, XAM_MO, DEN,
   CO_NOI_DUNG, CO_TIEU_DE_PHU, CO_TIEU_DE_CHINH, CO_GHI_CHU,
   BE_NGANG_IN, KHONG_VIEN, VIEN_LUOI, KIEU_MAC_DINH, TRANG_CHUAN,
-  daiNeo, daiNeoDauTrang, dongKeCham, anhQR, noiDungQR, anhWord,
+  daiNeo, daiNeoDauTrang, dongKeCham, anhQR, noiDungQR, anhWord, maHocSinhNgan,
 } from "./mauDeThi";
 import { soDiemVN, type DauDe, type PhanDeThi } from "./deThi";
 import { dungLuoi, anhLuoiPNG, RONG_MM, type BanDoLuoi, type KhoiPhieu } from "./luoiToTron";
@@ -153,10 +153,16 @@ function khoiTuLuan(phan: PhanDeThi, diemMoiCau: number): any[] {
 
 /* ===================== ĐẦU PHIẾU ===================== */
 
-function bangDauPhieu(dauDe: DauDe, cacPhan: PhanDeThi[], diemPhan: Record<string, number>): Table {
+function bangDauPhieu(dauDe: DauDe, cacPhan: PhanDeThi[], diemPhan: Record<string, number>,
+                      hocSinh?: { ten: string }): Table {
   const trai: Paragraph[] = [
     new Paragraph({ children: [new TextRun({ text: chu(dauDe.tenLopHoc).toUpperCase(), bold: true, size: CO_TIEU_DE_PHU, color: NAVY })] }),
-    new Paragraph({ children: [new TextRun({ text: 'Họ và tên học sinh: ..................................', size: 21 })] }),
+    /* In sẵn tên em khi in theo lớp: máy khỏi phải đọc chữ viết tay, mà em cũng khỏi
+       ghi nhầm sang phiếu của bạn. */
+    new Paragraph({ children: hocSinh
+      ? [new TextRun({ text: 'Họ và tên học sinh: ', size: 21 }),
+         new TextRun({ text: chu(hocSinh.ten), bold: true, size: 23, color: NAVY })]
+      : [new TextRun({ text: 'Họ và tên học sinh: ..................................', size: 21 })] }),
     new Paragraph({ children: [new TextRun({ text: 'Lớp: ......................   SBD: ......................', size: 21 })] }),
     new Paragraph({
       children: [new TextRun({
@@ -228,6 +234,8 @@ export interface KhuonPhieu {
   cacPhan: PhanDeThi[];
   diemPhan: Record<string, number>;
   boDeId?: string;
+  /** Có khi in phiếu THEO LỚP: tên in sẵn, mã học sinh nhét vào QR để máy ghép bài. */
+  hocSinh?: { id: string; ten: string };
 }
 
 /**
@@ -256,7 +264,7 @@ export const banDoLuoiCuaDe = (cacPhan: PhanDeThi[]): BanDoLuoi[] =>
  * Bất đồng bộ vì phần lưới tô tròn phải vẽ ra ảnh PNG bằng canvas rồi mới nhúng vào Word.
  */
 export async function dungNoiDungPhieu(k: KhuonPhieu): Promise<any[]> {
-  const ra: any[] = [bangDauPhieu(k.dauDe, k.cacPhan, k.diemPhan)];
+  const ra: any[] = [bangDauPhieu(k.dauDe, k.cacPhan, k.diemPhan, k.hocSinh)];
 
   const coTuLuan = k.cacPhan.some(p => p.ma === 'TL');
   ra.push(new Paragraph({
@@ -282,6 +290,7 @@ export async function dungNoiDungPhieu(k: KhuonPhieu): Promise<any[]> {
            phải đoán, mà đoán là sai. */
         const qrTrang = await anhQR(noiDungQR({
           boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: luoi.trang,
+          hs: k.hocSinh ? maHocSinhNgan(k.hocSinh.id) : undefined,
         }), 74);
         if (qrTrang) ra.push(new Paragraph({ alignment: AlignmentType.RIGHT, children: [qrTrang] }));
       }
@@ -312,6 +321,7 @@ export async function dungNoiDungPhieu(k: KhuonPhieu): Promise<any[]> {
 export async function exportPhieuTraLoi(k: KhuonPhieu, tenTep: string): Promise<boolean> {
   const qr = await anhQR(noiDungQR({
     boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: 1,
+    hs: k.hocSinh ? maHocSinhNgan(k.hocSinh.id) : undefined,
   }), 74);
 
   const doc = new Document({
@@ -342,4 +352,73 @@ export async function exportPhieuTraLoi(k: KhuonPhieu, tenTep: string): Promise<
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
   return true;
+}
+
+/**
+ * In phiếu CHO CẢ LỚP: mỗi em một phiếu, tên in sẵn và mã học sinh nhét trong QR.
+ *
+ * Đây là đường chính để máy ghép đúng bài với đúng em. Đọc tên viết tay chỉ là đường lui
+ * cho tờ in từ trước - chữ xấu hay hai em trùng tên là dò sai, mà gán nhầm điểm cho em
+ * khác thì tai hại hơn mọi lỗi chấm.
+ *
+ * Gộp vào MỘT tệp: Thầy cô mở một lần, in một lượt, không phải tải mấy chục tệp rời.
+ */
+export async function exportPhieuTheoLop(
+  k: KhuonPhieu,
+  dsHocSinh: { id: string; ten: string }[],
+  tenTep: string,
+  onTienDo?: (da: number, tong: number) => void,
+): Promise<{ soPhieu: number }> {
+  if (dsHocSinh.length === 0) throw new Error('Lớp này chưa có em nào đang học.');
+
+  /* Mã ngắn phải phân biệt được nhau TRONG LỚP, không thì lúc quét máy không biết của ai. */
+  const ma = new Map<string, string[]>();
+  for (const h of dsHocSinh) {
+    const m = maHocSinhNgan(h.id);
+    ma.set(m, [...(ma.get(m) || []), h.ten]);
+  }
+  const trung = [...ma.entries()].filter(([, ds]) => ds.length > 1);
+  if (trung.length > 0) {
+    throw new Error('Hai em có mã trùng nhau nên máy sẽ không phân biệt được: '
+      + trung.map(([, ds]) => ds.join(' và ')).join('; ')
+      + '. Báo giúp tôi để đổi cách sinh mã.');
+  }
+
+  const con: any[] = [];
+  for (let i = 0; i < dsHocSinh.length; i++) {
+    onTienDo?.(i, dsHocSinh.length);
+    const hs = dsHocSinh[i];
+    /* Phiếu của em thứ hai trở đi sang trang mới, để cắt ra là trọn tờ của từng em. */
+    if (i > 0) con.push(new Paragraph({ text: "", pageBreakBefore: true }));
+    const qr = await anhQR(noiDungQR({
+      boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: 1, hs: maHocSinhNgan(hs.id),
+    }), 74);
+    if (qr) con.push(new Paragraph({ alignment: AlignmentType.RIGHT, children: [qr] }));
+    con.push(...(await dungNoiDungPhieu({ ...k, hocSinh: hs })));
+  }
+  onTienDo?.(dsHocSinh.length, dsHocSinh.length);
+
+  const doc = new Document({
+    styles: KIEU_MAC_DINH,
+    sections: [{
+      properties: TRANG_CHUAN,
+      headers: { default: new Header({ children: [daiNeoDauTrang({ maDe: k.dauDe?.maDe, loai: 'pt' })] }) },
+      footers: { default: new Footer({ children: [daiNeo()] }) },
+      children: con,
+    }],
+  });
+
+  const buffer = await Packer.toBuffer(doc);
+  const blob = new Blob([buffer as any], {
+    type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+  });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = `${tenTep}_phieu_ca_lop.docx`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  return { soPhieu: dsHocSinh.length };
 }
