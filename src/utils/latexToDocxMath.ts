@@ -480,13 +480,14 @@ function parseCommand(s: string, i: number): ParseResult {
     }
     case "widehat":
     case "hat": {
-      // Trong đề Toán phổ thông, \widehat{ABC} luôn là KÝ HIỆU GÓC (7229 lần trong
-      // ngân hàng, đều là góc: \widehat{COA}, \widehat{BOC}...). Xuất thành "∠ABC"
-      // đọc hiểu ngay; nếu dùng dấu mũ Unicode thì nó bám vào chữ CUỐI (COÂ) chứ
-      // không nằm trên đỉnh góc như quy ước viết tay, nhìn dễ hiểu nhầm hơn.
-      const raw = parseBraceRaw(s, i2); i2 = raw.i;
-      const inner = raw.text.replace(/\\/g, "").trim();
-      return { nodes: nodesOf("∠" + inner), i: i2 };
+      // Ký hiệu góc trong sách giáo khoa: dấu mũ ĐỘI LÊN cả cụm chữ - $\widehat{ABC}$
+      // ra "ABC" có mũ nằm vắt ngang bên trên, đúng như Thầy cô viết tay.
+      //
+      // Trước đây xuất thành "∠ABC" vì cách cũ nối ký tự tổ hợp vào chữ, mà làm vậy
+      // thì dấu mũ bám vào chữ CUỐI ("COÂ") chứ không nằm trên đỉnh góc. Nay có
+      // <m:acc>, Word tự kéo dãn dấu mũ cho vừa hết cụm chữ nên không còn vướng đó.
+      const arg = parseArg(s, i2); i2 = arg.i;
+      return { nodes: [new MathAccent("̂", arg.nodes)], i: i2 };
     }
     case "mathbb": {
       const raw = parseBraceRaw(s, i2); i2 = raw.i;
