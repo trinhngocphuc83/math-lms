@@ -82,8 +82,14 @@ const RE_PHUONG_AN_TONG_HOP =
 /** Chỗ chờ hình còn sót trong lời văn. */
 const RE_CHO_HINH = /\[HÌNH VẼ[^\]]*\]|\[HINH VE[^\]]*\]|\[BẢNG BIẾN THIÊN\]|\[CÓ HÌNH ẢNH[^\]]*\]/i;
 
-/** Thẻ HTML còn sót - in ra giấy thành chữ thô. */
-const RE_THE_HTML = /<img\b|<br\b|<div\b|<span\b|<p\b|&nbsp;|&lt;|&gt;/i;
+/**
+ * Thẻ HTML còn sót - in ra giấy thành chữ thô.
+ *
+ * KHÔNG tính thẻ <img>: ảnh là nội dung thật của câu, và bộ xuất Word đọc được thẻ này
+ * rồi chèn ảnh vào tệp (exportDocx.ts) chứ không in ra chữ thô. Trước đây có tính, nên
+ * 218 câu có hình bị báo lỗi oan, mà bản máy sửa lại xoá sạch thẻ - tức là xoá luôn hình.
+ */
+const RE_THE_HTML = /<br\b|<div\b|<span\b|<p\b|&nbsp;|&lt;|&gt;/i;
 
 /* ===================== SOÁT MỘT CÂU ===================== */
 
@@ -267,7 +273,10 @@ export function soatMotCau(q: CauDeSoat, viTri: string): LoiKiemThu[] {
   }
 
   if (RE_CHO_HINH.test(moiThu)) {
-    if (!q.image_url) {
+    /* Ảnh của câu nằm được ở hai chỗ: cột image_url, hoặc thẻ <img> ngay trong lời văn.
+       Chỉ nhìn cột thì 12 câu có hình sẵn trong bài vẫn bị báo là "chưa gắn ảnh" - mà lỗi
+       ấy máy không tự sửa được, nên nó nằm đó chặn không cho in đề. */
+    if (!q.image_url && !/<img\b/i.test(moiThu)) {
       them('choHinhChuaCoAnh', 'thamMy', 'loi',
         'Đề ghi có hình vẽ nhưng chưa gắn ảnh - in ra học sinh không có gì để nhìn.',
         'Chèn ảnh vào câu, hoặc bỏ chỗ chờ hình nếu không cần.');

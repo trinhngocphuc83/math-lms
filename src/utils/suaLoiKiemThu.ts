@@ -55,11 +55,80 @@ export function suaDuocBang(maLoi: string): CachSua {
 const chu = (x: any) => String(x ?? '');
 const CAC_O = ['content', 'option_a', 'option_b', 'option_c', 'option_d'] as const;
 
+/* ===================== GIỮ HÌNH VẼ ===================== */
+
+/**
+ * Hình vẽ của câu nằm THẲNG trong nội dung, dạng <img src="data:image/…;base64,…">,
+ * mỗi thẻ cỡ 7KB. Sửa lỗi mà đánh rơi thẻ ấy là mất hẳn hình - trong kho Toán có 218
+ * câu như vậy, và câu nào cũng kèm thẻ <br> nên lần nào cũng đi qua đường sửa này.
+ *
+ * Nên mọi bản vá đều phải qua `giuAnh`: bản sửa thiếu hình nào thì trả lại hình ấy.
+ */
+const RE_ANH = /<img\b[^>]*>/gi;
+
+/** Moc tam thay cho the anh trong luc quet the HTML - chuoi khong ai go vao bai. */
+const MOC_ANH = '@@ANH';
+
+/** Địa chỉ ảnh - dùng để nhận ra hai thẻ là một, dù AI có viết lại dấu nháy. */
+function srcAnh(the: string): string {
+  const m = the.match(/\bsrc\s*=\s*["']?([^"'\s>]+)/i);
+  return m ? m[1] : the;
+}
+
+/**
+ * Trả lại những hình mà bản sửa đánh rơi. Hình bị rơi thì nối xuống cuối - đặt sai chỗ
+ * còn hơn mất hẳn, và Thầy cô nhìn bảng so sánh sẽ thấy ngay để kéo về đúng chỗ.
+ */
+function giuAnh(cu: string, moi: string): string {
+  const dsCu = chu(cu).match(RE_ANH);
+  if (!dsCu?.length) return moi;
+  const thieu = dsCu.filter(a => !moi.includes(srcAnh(a)));
+  if (!thieu.length) return moi;
+  return (moi.trimEnd() + '\n' + thieu.join('\n')).trim();
+}
+
+/** Đếm số hình mà bản vá suýt đánh rơi - để nói rõ với Thầy cô. */
+function demAnhCuu(q: CauDeSoat, va: BanVa): number {
+  let n = 0;
+  for (const o of Object.keys(va) as (keyof BanVa)[]) {
+    const dsCu = chu((q as any)[o]).match(RE_ANH);
+    if (!dsCu?.length) continue;
+    n += dsCu.filter(a => !chu(va[o]).includes(srcAnh(a))).length;
+  }
+  return n;
+}
+
+/**
+ * Cho cả bản vá đi qua `giuAnh`, rồi bỏ những trường hoá ra không đổi gì.
+ * Gọi ở CẢ hai đường sửa - máy và AI - nên không đường nào lọt.
+ */
+function vaGiuAnh(q: CauDeSoat, va: BanVa, ghiChu: string[]): BanVa {
+  const cuu = demAnhCuu(q, va);
+  for (const o of Object.keys(va) as (keyof BanVa)[]) {
+    const cu = chu((q as any)[o]);
+    const moi = giuAnh(cu, chu(va[o]));
+    if (moi === cu) delete va[o];
+    else (va as any)[o] = moi;
+  }
+  if (cuu) {
+    ghiChu.push(`Bản sửa làm rơi ${cuu} hình vẽ, đã trả lại vào cuối phần đó - `
+      + 'Thầy cô xem có phải kéo về đúng chỗ không.');
+  }
+  return va;
+}
+
 /* ===================== MÁY TỰ SỬA ===================== */
 
-/** Bỏ thẻ HTML còn sót, đổi <br> thành xuống dòng thật. */
+/**
+ * Bỏ thẻ HTML còn sót, đổi <br> thành xuống dòng thật.
+ *
+ * Cất thẻ <img> ra chỗ khác trước khi quét, vì "xoá mọi thẻ" mà quét thẳng thì xoá luôn
+ * hình vẽ của câu. Xong thì đặt lại đúng vị trí cũ.
+ */
 function boTheHTML(s: string): string {
-  return chu(s)
+  const anh: string[] = [];
+  const cat = chu(s).replace(RE_ANH, the => { anh.push(the); return `${MOC_ANH}${anh.length - 1}#`; });
+  const quet = cat
     .replace(/<br\s*\/?>/gi, '\n')
     .replace(/<\/p>/gi, '\n')
     .replace(/<[^>]+>/g, '')
@@ -67,6 +136,7 @@ function boTheHTML(s: string): string {
     .replace(/&lt;/gi, '<').replace(/&gt;/gi, '>').replace(/&amp;/gi, '&')
     .replace(/[ \t]+\n/g, '\n')
     .trim();
+  return quet.replace(new RegExp(MOC_ANH + '(\\d+)#', 'g'), (_, i) => anh[Number(i)] ?? '');
 }
 
 /** Xoá cụm chờ hình khi câu đã có ảnh thật. */
@@ -153,6 +223,7 @@ export function suaBangMay(q: CauDeSoat, maLoi: string, deXuat?: BanVa): KetQuaS
     }
   }
 
+  vaGiuAnh(q, va, ghiChu);
   return Object.keys(va).length ? { va, ghiChu } : null;
 }
 
@@ -197,6 +268,15 @@ export async function suaBangAI(q: CauDeSoat, maLoi: string): Promise<KetQuaSua 
   const viec = VIEC_AI[maLoi];
   if (!viec) return null;
 
+  /* Hình vẽ là thẻ <img> base64 cỡ 7KB. Gửi cả đống ấy cho AI thì vừa tốn lượt vô ích,
+     vừa dễ bị nó chép thiếu hay bỏ luôn - mà bỏ là mất hình. Nên thay bằng cái mốc ngắn,
+     dặn AI giữ nguyên, rồi đặt hình lại sau khi nhận về. */
+  const anh: string[] = [];
+  const catAnh = (s: any) =>
+    chu(s).replace(RE_ANH, the => { anh.push(the); return `${MOC_ANH}${anh.length - 1}#`; });
+  const datAnhLai = (s: string) =>
+    s.replace(new RegExp(MOC_ANH + '(\\d+)#', 'g'), (_, i) => anh[Number(i)] ?? '');
+
   const prompt = `Bạn là biên tập viên đề thi. Dưới đây là MỘT câu hỏi cần sửa đúng MỘT chỗ.
 
 VIỆC CẦN LÀM: ${viec}
@@ -206,14 +286,16 @@ NGUYÊN TẮC BẤT DI BẤT DỊCH:
 - KHÔNG đổi số liệu, KHÔNG đổi đáp án đúng, KHÔNG đổi ý nghĩa câu hỏi.
 - Mọi công thức toán phải nằm trong cặp $…$.
 - Chỉ trả về những trường THỰC SỰ có thay đổi.
+- Những mốc dạng ${MOC_ANH}0# là HÌNH VẼ của câu. Chép lại y nguyên, đúng chỗ cũ.
+  Tuyệt đối không xoá, không đổi số, không mô tả thay cho hình.
 
 CÂU HỎI HIỆN TẠI (JSON):
 ${JSON.stringify({
-    content: chu(q.content),
-    option_a: chu(q.option_a), option_b: chu(q.option_b),
-    option_c: chu(q.option_c), option_d: chu(q.option_d),
-    correct_answer: chu(q.correct_answer),
-    explanation: chu(q.explanation),
+    content: catAnh(q.content),
+    option_a: catAnh(q.option_a), option_b: catAnh(q.option_b),
+    option_c: catAnh(q.option_c), option_d: catAnh(q.option_d),
+    correct_answer: catAnh(q.correct_answer),
+    explanation: catAnh(q.explanation),
   }, null, 1)}
 
 Chỉ trả về JSON thuần, không kèm lời nào khác, chứa CÁC TRƯỜNG ĐÃ ĐỔI:
@@ -233,12 +315,16 @@ Chỉ trả về JSON thuần, không kèm lời nào khác, chứa CÁC TRƯỜ
   }
 
   const va: BanVa = {};
+  const ghiChu: string[] = [];
   for (const o of [...CAC_O, 'correct_answer', 'explanation'] as const) {
     const moi = doc?.[o];
     if (typeof moi !== 'string') continue;
-    if (moi.trim() && moi !== chu((q as any)[o])) (va as any)[o] = moi;
+    const dat = datAnhLai(moi);
+    if (dat.trim() && dat !== chu((q as any)[o])) (va as any)[o] = dat;
   }
-  return Object.keys(va).length ? { va, ghiChu: [] } : null;
+  /* AI có thể nuốt luôn cái mốc: lưới cuối cùng, thiếu hình nào thì trả lại hình ấy. */
+  vaGiuAnh(q, va, ghiChu);
+  return Object.keys(va).length ? { va, ghiChu } : null;
 }
 
 /* ===================== SO SÁNH TRƯỚC / SAU ===================== */
