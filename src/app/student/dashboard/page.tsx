@@ -37,21 +37,32 @@ type TabType = 'info' | 'courses' | 'exams' | 'schedule' | 'finance' | 'diem';
  */
 interface MucHocSinh {
   tab: TabType | '';
+  /** Nhãn ngắn - dùng cho lưới biểu tượng trên điện thoại. */
   nhan: string;
+  /** Nhãn dài cho thanh ngang ở màn rộng; bỏ trống thì dùng luôn nhãn ngắn. */
+  nhanDai?: string;
   Icon: React.ComponentType<{ className?: string }>;
   mau: string;
   duong?: string;
 }
 
+/**
+ * MỘT danh sách mục dùng cho CẢ HAI cỡ màn hình.
+ *
+ * Trước đây điện thoại dựng từ mảng này, còn màn rộng lại là sáu nút gõ tay riêng - hai
+ * bên trôi khỏi nhau lúc nào không biết: mục "Điểm thưởng" thêm vào mảng thì điện thoại
+ * có ngay, còn máy tính thì không, dù nội dung tab ấy đã dựng sẵn. Học sinh mở trên máy
+ * tính là không có đường nào vào xem điểm cộng của mình.
+ */
 const MUC_HOC_SINH: MucHocSinh[] = [
-  { tab: 'schedule', nhan: 'Lịch học',   Icon: CalendarDays,  mau: 'bg-sky-50 text-sky-600' },
-  { tab: 'courses',  nhan: 'Khóa học',   Icon: BookOpen,      mau: 'bg-teal-50 text-teal-600' },
-  { tab: 'exams',    nhan: 'Kiểm tra',   Icon: ClipboardList, mau: 'bg-rose-50 text-rose-600' },
-  { tab: 'finance',  nhan: 'Tài chính',  Icon: DollarSign,    mau: 'bg-amber-50 text-amber-600' },
-  { tab: 'info',     nhan: 'Hồ sơ',      Icon: User,          mau: 'bg-violet-50 text-violet-600' },
-  { tab: 'diem',     nhan: 'Điểm thưởng', Icon: Trophy,       mau: 'bg-fuchsia-50 text-fuchsia-600' },
-  { tab: '',         nhan: 'Ôn tập',     Icon: ClipboardList, mau: 'bg-indigo-50 text-indigo-600', duong: '/student/on-tap' },
-  { tab: '',         nhan: 'Sổ tay',     Icon: Library,       mau: 'bg-indigo-50 text-indigo-600', duong: '/student/handbook' },
+  { tab: 'schedule', nhan: 'Lịch học',    nhanDai: 'Lịch học',              Icon: CalendarDays,  mau: 'bg-sky-50 text-sky-600' },
+  { tab: 'info',     nhan: 'Hồ sơ',       nhanDai: 'Hồ sơ học sinh',        Icon: User,          mau: 'bg-violet-50 text-violet-600' },
+  { tab: 'courses',  nhan: 'Khóa học',    nhanDai: 'Khóa học bài giảng',    Icon: BookOpen,      mau: 'bg-teal-50 text-teal-600' },
+  { tab: 'exams',    nhan: 'Kiểm tra',    nhanDai: 'Kiểm tra Online',       Icon: ClipboardList, mau: 'bg-rose-50 text-rose-600' },
+  { tab: 'diem',     nhan: 'Điểm thưởng', nhanDai: 'Điểm thưởng',           Icon: Trophy,        mau: 'bg-fuchsia-50 text-fuchsia-600' },
+  { tab: 'finance',  nhan: 'Tài chính',   nhanDai: 'Tài chính & Điểm danh', Icon: DollarSign,    mau: 'bg-amber-50 text-amber-600' },
+  { tab: '',         nhan: 'Ôn tập',      nhanDai: 'Ôn tập & Kiểm tra',     Icon: ClipboardList, mau: 'bg-indigo-50 text-indigo-600', duong: '/student/on-tap' },
+  { tab: '',         nhan: 'Sổ tay',      nhanDai: 'Sổ tay Toán học',       Icon: Library,       mau: 'bg-indigo-50 text-indigo-600', duong: '/student/handbook' },
 ];
 
 /** Bốn mục hay dùng nhất, đặt ở thanh dưới cho vừa tay. */
@@ -279,55 +290,30 @@ export default function StudentDashboardPage() {
           * dấu hiệu nào cho biết còn 4 mục nữa bên phải. Điện thoại nay dùng thanh dưới và
           * lưới biểu tượng ở mục Trang chủ; màn rộng thì 6 mục hiện hết nên giữ nguyên.
           */}
-        <div className="hidden md:flex bg-white p-2.5 rounded-2xl border border-gray-100 shadow-sm flex-row overflow-x-auto no-scrollbar gap-2 items-stretch justify-start md:justify-between relative z-10">
-          <button 
-            onClick={() => setActiveTab('schedule')} 
-            className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap ${activeTab === 'schedule' ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-lg shadow-teal-500/20' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`}
-          >
-            <CalendarDays className={`w-5 h-5 ${activeTab === 'schedule' ? 'text-white' : 'text-gray-400'}`} /> Lịch học
-          </button>
-
-          <button 
-            onClick={() => setActiveTab('info')} 
-            className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap ${activeTab === 'info' ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-lg shadow-teal-500/20' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`}
-          >
-            <User className={`w-5 h-5 ${activeTab === 'info' ? 'text-white' : 'text-gray-400'}`} /> Hồ sơ học sinh
-          </button>
-
-          <button 
-            onClick={() => setActiveTab('courses')} 
-            className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap ${activeTab === 'courses' ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-lg shadow-teal-500/20' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`}
-          >
-            <BookOpen className={`w-5 h-5 ${activeTab === 'courses' ? 'text-white' : 'text-gray-400'}`} /> Khóa học bài giảng
-          </button>
-
-          <button 
-            onClick={() => setActiveTab('exams')} 
-            className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap ${activeTab === 'exams' ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-lg shadow-teal-500/20' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`}
-          >
-            <ClipboardList className={`w-5 h-5 ${activeTab === 'exams' ? 'text-white' : 'text-gray-400'}`} /> Kiểm tra Online
-          </button>
-
-          <button 
-            onClick={() => setActiveTab('finance')} 
-            className={`flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap ${activeTab === 'finance' ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-lg shadow-teal-500/20' : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`}
-          >
-            <DollarSign className={`w-5 h-5 ${activeTab === 'finance' ? 'text-white' : 'text-gray-400'}`} /> Tài chính & Điểm danh
-          </button>
-
-          <Link
-            href="/student/on-tap"
-            className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap text-gray-500 hover:bg-gray-50 hover:text-gray-800 border-l border-gray-200 ml-2 pl-6"
-          >
-            <ClipboardList className="w-5 h-5 text-indigo-500" /> Ôn tập &amp; Kiểm tra
-          </Link>
-
-          <Link 
-            href="/student/handbook" 
-            className="flex-1 flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap text-gray-500 hover:bg-gray-50 hover:text-gray-800 border-l border-gray-200 ml-2 pl-6"
-          >
-            <Library className="w-5 h-5 text-indigo-500" /> Sổ tay Toán học
-          </Link>
+        {/* Màn rộng: cho XUỐNG DÒNG chứ không cuộn ngang. Cuộn ngang thì mục bên phải trôi
+            khỏi màn, học sinh không biết là còn - đúng cái đã bỏ ở bản điện thoại. Nay có
+            tám mục nên ở màn 1024px là chắc chắn không đủ một hàng. */}
+        <div className="hidden md:flex bg-white p-2.5 rounded-2xl border border-gray-100 shadow-sm flex-row flex-wrap gap-2 items-stretch justify-start relative z-10">
+          {MUC_HOC_SINH.map((m, i) => {
+            const dangChon = !m.duong && m.tab === activeTab;
+            /* Hai mục dẫn sang trang riêng nằm cuối, ngăn bằng một vạch cho khỏi lẫn với
+               các thẻ đổi nội dung tại chỗ. */
+            const laDuongDan = !!m.duong;
+            const vach = laDuongDan && !MUC_HOC_SINH[i - 1]?.duong ? ' border-l border-gray-200 ml-2 pl-6' : '';
+            const lop = `flex-1 basis-[calc(25%-0.5rem)] flex items-center justify-center gap-2 py-3.5 px-4 rounded-xl font-bold transition-all text-sm sm:text-base whitespace-nowrap${vach} ${
+              dangChon
+                ? 'bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-lg shadow-teal-500/20'
+                : 'text-gray-500 hover:bg-gray-50 hover:text-gray-800'}`;
+            const noiDung = (
+              <>
+                <m.Icon className={`w-5 h-5 ${dangChon ? 'text-white' : laDuongDan ? 'text-indigo-500' : 'text-gray-400'}`} />
+                {' '}{m.nhanDai || m.nhan}
+              </>
+            );
+            return m.duong
+              ? <Link key={m.nhan} href={m.duong} className={lop}>{noiDung}</Link>
+              : <button key={m.nhan} onClick={() => setActiveTab(m.tab as TabType)} className={lop}>{noiDung}</button>;
+          })}
         </div>
 
         {/* LƯỚI BIỂU TƯỢNG - chỉ trên điện thoại, thay cho dải cuộn ngang */}
