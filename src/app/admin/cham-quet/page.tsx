@@ -30,6 +30,7 @@ import { chamPhieuQuet, type CauTrongDe, type KetQuaChamPhieu } from "@/utils/ch
 import { maHocSinhNgan } from "@/utils/mauDeThi";
 import { exportPhieuTheoLop } from "@/utils/phieuTraLoi";
 import { layDsLop, layDsHocSinh, luuBaiKiemTra } from "@/app/actions/goiTenVaDiem";
+import { luuBaiQuet, layDsBaiQuet, layMotBaiQuet, type DongBaiQuet } from "@/app/actions/baiQuet";
 
 interface BoDe {
   id: string; ten: string; grade: string; subject: string;
@@ -61,6 +62,8 @@ export const TEN_VAI: Record<VaiTro, string> = {
 interface TrangDaDoc {
   tenTep: string;
   anhUrl: string;
+  /** Bản thu nhỏ dạng nhúng, để cất làm bằng chứng khi chốt điểm. */
+  anhNho?: string;
   vai: VaiTro;
   /** Trang thứ mấy của phiếu - CHỈ có khi đọc được mã QR. Không có thì để 0, không đoán. */
   trang: number;
@@ -110,6 +113,25 @@ async function anhTuTep(f: File): Promise<{ anh: ImageData; url: string }> {
   return { anh: nen.getImageData(0, 0, canvas.width, canvas.height), url };
 }
 
+/**
+ * Thu nhỏ ảnh trước khi cất làm bằng chứng.
+ *
+ * Ảnh chụp điện thoại 3-4MB mỗi tấm; một lớp 40 em hai trang là gần 300MB cho MỘT lần
+ * kiểm tra. Thu về bề ngang 1400px là vẫn nhìn rõ từng ô tô để đối chiếu, mà nhẹ đi
+ * hơn mười lần. Bản gốc thì tờ giấy thật vẫn còn trong tay Thầy cô.
+ */
+async function anhNhoDeCat(anh: ImageData, rongToiDa = 1400): Promise<string> {
+  const tiLe = Math.min(1, rongToiDa / anh.width);
+  const w = Math.round(anh.width * tiLe), h = Math.round(anh.height * tiLe);
+  const goc = document.createElement('canvas');
+  goc.width = anh.width; goc.height = anh.height;
+  goc.getContext('2d')!.putImageData(anh, 0, 0);
+  const nho = document.createElement('canvas');
+  nho.width = w; nho.height = h;
+  nho.getContext('2d')!.drawImage(goc, 0, 0, w, h);
+  return nho.toDataURL('image/jpeg', 0.72);
+}
+
 /** Đọc mã QR trên ảnh phiếu: "LTP|1|<bộ đề>|<mã đề>|pt|<trang>|<mã học sinh>". */
 async function docQR(anh: ImageData):
   Promise<{ boDeId: string; maDe: string; trang: number; hs?: string } | null> {
@@ -139,6 +161,10 @@ export default function ChamQuetPage() {
   const [khay, setKhay] = React.useState<TrangDaDoc[]>([]);
   const [moBai, setMoBai] = React.useState<number | null>(null);
   const [keo, setKeo] = React.useState(false);
+  /** Bài đã chấm những lần trước, đọc từ bảng lưu vết. */
+  const [daQuet, setDaQuet] = React.useState<DongBaiQuet[]>([]);
+  const [chuaTaoBangVet, setChuaTaoBangVet] = React.useState(false);
+  const [xemVet, setXemVet] = React.useState<{ bai: any; anh: any[]; hocSinh: string } | null>(null);
 
   /* Bộ đề đọc QUA API máy chủ chứ không đọc thẳng từ trình duyệt: bảng bo_de_thi chỉ mở
      cho khoá máy chủ, và cả app vẫn đi đường này (xem api/admin/bo-de). Danh sách không
@@ -153,6 +179,14 @@ export default function ChamQuetPage() {
       setDangNap(false);
     })();
   }, []);
+
+  const taiLaiDaQuet = React.useCallback(() => {
+    if (!classId) { setDaQuet([]); return; }
+    layDsBaiQuet(classId)
+      .then(r => { setDaQuet(r.ds); setChuaTaoBangVet(r.chuaTaoBang); })
+      .catch(() => setDaQuet([]));
+  }, [classId]);
+  React.useEffect(() => { taiLaiDaQuet(); }, [taiLaiDaQuet]);
 
   React.useEffect(() => { layDsLop().then(setDsLop).catch(() => setDsLop([])); }, []);
   React.useEffect(() => {
@@ -204,7 +238,7 @@ export default function ChamQuetPage() {
         setDangDoc(`Đang đọc ảnh ${i + 1}/${anhTep.length}…`);
         const { anh, url } = await anhTuTep(anhTep[i]);
         const qr = await docQR(anh);
-        const chung = { tenTep: anhTep[i].name, anhUrl: url };
+        const chung = { tenTep: anhTep[i].name, anhUrl: url, anhNho: await anhNhoDeCat(anh) };
 
         /* Không đọc được mã QR - phiếu in từ bản cũ chỉ có mã ở trang đầu, hoặc ảnh chụp
            hụt mất góc có mã. THỬ KHỚP với bản đồ của từng trang: bản nào sai thì chốt mốc
@@ -362,8 +396,35 @@ export default function ChamQuetPage() {
     try {
       const diem: Record<string, number> = {};
       for (const b of coDiem) diem[b.studentId] = chamBai(b).diem;
-      await luuBaiKiemTra(classId, { ten_bai: tenBai, diem_dat: 5 }, diem);
-      setDaChot(`Đã ghi ${coDiem.length} điểm vào sổ lớp.`);
+      const bangDiemId = await luuBaiKiemTra(classId, { ten_bai: tenBai, diem_dat: 5 }, diem);
+
+      /* LƯU VẾT: cất ảnh phiếu và đáp án máy đọc từng câu, để sau này còn tra. Cất
+         KHÔNG ĐƯỢC thì cũng không sao - điểm đã vào sổ rồi, chỉ báo cho Thầy cô biết. */
+      let veChuThich = '';
+      try {
+        const kq = await luuBaiQuet(coDiem.map(b => {
+          const c = chamBai(b);
+          const doDam: Record<string, number> = {};
+          for (const tr of b.trang) for (const o of tr.doc?.o || []) doDam[o.ma] = Math.round(o.dam * 100) / 100;
+          return {
+            boDeId: boDe.id, tenDe: boDe.ten, maDe: boDe.dau_de?.maDe,
+            classId, studentId: b.studentId,
+            trangAnh: b.trang.filter(tr => tr.anhNho)
+              .map(tr => ({ anhBase64: tr.anhNho!, trang: tr.trang, vai: tr.vai })),
+            oDaDoc: c.cau, doDam, suaTay: b.suaTay,
+            diem: c.diem, diemToiDa: c.diemToiDa, soCauVuong: c.soCauVuong,
+          };
+        }), bangDiemId);
+        veChuThich = kq.chuaTaoBang
+          ? ' (chưa lưu được bằng chứng - bảng bai_quet chưa tạo)'
+          : kq.loi ? ` (không lưu được bằng chứng: ${kq.loi})`
+          : ` Đã lưu bằng chứng ${kq.daLuu} bài.`;
+      } catch (e: any) {
+        veChuThich = ` (không lưu được bằng chứng: ${e?.message || e})`;
+      }
+
+      setDaChot(`Đã ghi ${coDiem.length} điểm vào sổ lớp.${veChuThich}`);
+      taiLaiDaQuet();
     } catch (e: any) {
       alert('Không ghi được vào sổ: ' + (e?.message || e));
     } finally { setDangChot(false); }
@@ -652,6 +713,142 @@ export default function ChamQuetPage() {
               {dangChot ? <Loader2 className="w-4 h-4 animate-spin" /> : <CheckCircle2 className="w-4 h-4" />}
               Chốt điểm vào sổ
             </button>
+          </div>
+        </div>
+      )}
+
+      {/* Bài đã chấm những lần trước - mở lại được để đối chiếu khi có ai hỏi */}
+      {classId && !baiDangMo && (daQuet.length > 0 || chuaTaoBangVet) && (
+        <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden mt-5">
+          <div className="px-5 py-3 border-b border-slate-100 font-black text-slate-800">
+            Bài đã quét của lớp này
+          </div>
+          {chuaTaoBangVet ? (
+            <p className="px-5 py-4 text-[13px] text-slate-600">
+              Chưa bật phần lưu vết. Chạy tệp{" "}
+              <code className="bg-slate-100 px-1.5 py-0.5 rounded">scratch/tao-bang-bai-quet.sql</code>{" "}
+              trong Supabase là bài chấm từ đó về sau được cất lại - ảnh phiếu, đáp án máy đọc
+              từng câu, chỗ Thầy cô sửa tay. Chưa chạy thì vẫn chấm và chốt điểm bình thường.
+            </p>
+          ) : (
+            <table className="w-full text-sm">
+              <thead className="bg-slate-50 text-slate-600">
+                <tr>
+                  <th className="text-left px-5 py-2 font-bold">Học sinh</th>
+                  <th className="text-left px-3 py-2 font-bold">Đề</th>
+                  <th className="text-right px-3 py-2 font-bold">Điểm</th>
+                  <th className="text-center px-3 py-2 font-bold">Ảnh</th>
+                  <th className="text-left px-3 py-2 font-bold">Chấm lúc</th>
+                  <th className="px-3 py-2" />
+                </tr>
+              </thead>
+              <tbody>
+                {daQuet.map(d => (
+                  <tr key={d.id} className="border-t border-slate-100 hover:bg-slate-50">
+                    <td className="px-5 py-2 font-bold text-slate-700">{d.hocSinh}</td>
+                    <td className="px-3 py-2 text-slate-500 truncate max-w-[280px]">{d.ten_de}</td>
+                    <td className="px-3 py-2 text-right font-black tabular-nums">
+                      {d.diem == null ? "—" : soDiemVN(Number(d.diem))}
+                      <span className="text-slate-400 font-medium"> / {soDiemVN(Number(d.diem_toi_da || 0))}</span>
+                    </td>
+                    <td className="px-3 py-2 text-center text-slate-500">{d.soAnh}</td>
+                    <td className="px-3 py-2 text-slate-500">
+                      {new Date(d.created_at).toLocaleString("vi-VN")}
+                    </td>
+                    <td className="px-3 py-2 text-right">
+                      <button
+                        onClick={() => layMotBaiQuet(d.id).then(r => setXemVet(r as any))}
+                        className="px-3 py-1.5 rounded-lg border border-slate-300 font-bold
+                                   text-[13px] text-slate-600 hover:bg-white"
+                      >
+                        Mở lại
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
+      )}
+
+      {/* Mở lại một bài đã lưu: ảnh gốc bên trái, từng câu bên phải */}
+      {xemVet?.bai && (
+        <div className="fixed inset-0 z-[90] bg-black/60 flex items-center justify-center p-4"
+             onClick={() => setXemVet(null)}>
+          <div className="bg-white rounded-2xl w-full max-w-5xl max-h-[92vh] flex flex-col"
+               onClick={e => e.stopPropagation()}>
+            <div className="px-5 py-3 border-b border-slate-200 flex items-center gap-3">
+              <span className="font-black text-slate-800">
+                {xemVet.hocSinh || "(chưa gán em nào)"} — {xemVet.bai.ten_de}
+              </span>
+              <span className="ml-auto font-black text-teal-700">
+                {soDiemVN(Number(xemVet.bai.diem || 0))} / {soDiemVN(Number(xemVet.bai.diem_toi_da || 0))}
+              </span>
+              <button onClick={() => setXemVet(null)}
+                      className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-500">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 p-5 overflow-y-auto">
+              <div className="space-y-3">
+                {xemVet.anh.length === 0 && (
+                  <p className="text-[13px] text-slate-500">Bài này không cất ảnh nào.</p>
+                )}
+                {xemVet.anh.map((a: any, i: number) => (
+                  <div key={i} className="rounded-xl border border-slate-200 overflow-hidden">
+                    <div className="px-3 py-1.5 bg-slate-50 text-[12.5px] font-bold text-slate-600">
+                      Trang {a.trang} · {TEN_VAI[a.vai as VaiTro] || a.vai}
+                    </div>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={a.url} alt={`Trang ${a.trang}`} className="w-full" />
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-1.5">
+                {(xemVet.bai.o_da_doc || []).map((c: any) => {
+                  const daSua = xemVet.bai.sua_tay?.[c.ma] !== undefined
+                    || ["a", "b", "c", "d"].some(y => xemVet.bai.sua_tay?.[`${c.ma}:${y}`] !== undefined);
+                  return (
+                    <div key={c.ma}
+                         className={`flex items-center gap-2 rounded-lg px-3 py-1.5 border text-sm ${
+                           c.diem === null ? "bg-amber-50 border-amber-300"
+                           : c.diem === c.diemToiDa ? "bg-emerald-50/60 border-emerald-200"
+                           : c.diem === 0 ? "bg-rose-50/60 border-rose-200"
+                           : "bg-sky-50/60 border-sky-200"}`}>
+                      <span className="font-bold text-slate-700 w-24 shrink-0">
+                        {c.loai === "NLC" ? "Câu" : c.loai === "DS" ? "Đ/S câu" : "TLN câu"} {c.cau}
+                      </span>
+                      <span className="font-bold text-slate-800">{c.hocSinh ?? "(trống)"}</span>
+                      <span className="text-slate-400 text-[12.5px]">đáp án</span>
+                      <span className="font-bold text-slate-700">{c.dapAn || "—"}</span>
+                      {daSua && (
+                        <span className="text-[11px] font-bold text-indigo-700 bg-indigo-50
+                                         px-1.5 py-0.5 rounded">Thầy cô sửa tay</span>
+                      )}
+                      <span className="ml-auto font-black tabular-nums text-slate-800">
+                        {c.diem === null ? "—" : soDiemVN(c.diem)}
+                      </span>
+                    </div>
+                  );
+                })}
+                {/* Độ đậm đo được: trả lời được câu "vì sao máy không dám đọc ô đó" */}
+                {xemVet.bai.do_dam && Object.keys(xemVet.bai.do_dam).length > 0 && (
+                  <details className="mt-3 text-[12.5px]">
+                    <summary className="cursor-pointer font-bold text-slate-600 hover:text-slate-900">
+                      Xem độ đậm máy đo được từng ô
+                    </summary>
+                    <div className="mt-2 max-h-48 overflow-y-auto grid grid-cols-3 gap-1
+                                    text-slate-600 font-mono text-[11.5px]">
+                      {Object.entries(xemVet.bai.do_dam as Record<string, number>)
+                        .filter(([, v]) => v > 0.12)
+                        .sort((a, b) => b[1] - a[1])
+                        .map(([k, v]) => <span key={k}>{k} = {v}</span>)}
+                    </div>
+                  </details>
+                )}
+              </div>
+            </div>
           </div>
         </div>
       )}
