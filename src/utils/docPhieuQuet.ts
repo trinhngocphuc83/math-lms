@@ -305,8 +305,10 @@ const nanDiem = (h: number[], x: number, y: number) => {
  * có góc sáng góc tối, mà hai ô cách nhau nửa gang tay thì nền giấy đã khác nhau rồi.
  * So ruột với nền của chính nó thì đèn lệch cỡ nào cũng không ảnh hưởng.
  *
- * Vành lấy nền nằm từ 1,3r đến 1,95r - ra ngoài vòng tròn in sẵn, nhưng chưa chạm ô bên
- * cạnh (tâm hai ô cách nhau 7,5mm trong khi r chỉ 2,25mm).
+ * Vành lấy nền nằm từ 1,15r đến 1,42r - ra ngoài vòng tròn in sẵn nhưng CHƯA CHẠM ô bên
+ * cạnh. Con số này bám sát bố cục thật: phiếu thu gọn có ô r = 1,75mm, bước dọc phần Trả
+ * lời ngắn chỉ 4,4mm, nên mép ô kế tiếp đã ở 1,51r. Để vành tới 1,95r như bản trước là
+ * vành của ô này liếm sang ruột ô kia, đo ra số vô nghĩa.
  */
 function doO(xam: Float32Array, rong: number, cao: number,
              h: number[], o: { x: number; y: number; r: number }): { ruot: number; nen: number } {
@@ -314,7 +316,7 @@ function doO(xam: Float32Array, rong: number, cao: number,
   const mep = nanDiem(h, o.x + o.r, o.y);
   const r = Math.max(1.5, Math.hypot(mep.x - giua.x, mep.y - giua.y));
 
-  const rRuot = r * 0.72, rTrong = r * 1.3, rNgoai = r * 1.95;
+  const rRuot = r * 0.72, rTrong = r * 1.15, rNgoai = r * 1.42;
   let tRuot = 0, sRuot = 0, tNen = 0, sNen = 0;
   const x0 = Math.max(0, Math.floor(giua.x - rNgoai)), x1 = Math.min(rong - 1, Math.ceil(giua.x + rNgoai));
   const y0 = Math.max(0, Math.floor(giua.y - rNgoai)), y1 = Math.min(cao - 1, Math.ceil(giua.y + rNgoai));

@@ -91,6 +91,9 @@ export function vuaBonO(dapAn: string): { duoc: boolean; viSao?: string } {
   if (s.indexOf('-') > 0) return { duoc: false, viSao: 'dấu trừ không nằm ở ô đầu' };
   if ((s.match(/,/g) || []).length > 1) return { duoc: false, viSao: 'có hơn một dấu phẩy' };
   if (s.endsWith(',')) return { duoc: false, viSao: 'dấu phẩy rơi vào ô cuối' };
+  /* Phiếu chỉ in ô dấu phẩy ở cột hai và cột ba - đúng khuôn phiếu thi, và cũng đúng
+     thực tế vì đáp số không bao giờ mở đầu bằng dấu phẩy. */
+  if (s.startsWith(',')) return { duoc: false, viSao: 'dấu phẩy rơi vào ô đầu' };
   return { duoc: true };
 }
 

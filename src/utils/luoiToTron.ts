@@ -29,16 +29,22 @@
 export const PX_MOI_MM = 12;
 const mm = (x: number) => Math.round(x * PX_MOI_MM);
 
-/** Bề ngang vùng in của khổ A4 sau khi trừ lề - khớp với BE_NGANG_IN của mauDeThi. */
-export const RONG_MM = 170;
+/**
+ * Bề ngang vùng in THẬT của khổ A4: 21cm trừ lề trái 2,5cm và lề phải 2cm = 16,5cm.
+ * Trước để 170mm nên ảnh lưới rộng hơn vùng in, Word phải co lại hoặc tràn ra lề.
+ */
+export const RONG_MM = 165;
 
-const BAN_KINH_O_MM = 2.25;          // ô tròn đường kính 4,5mm - vừa đầu bút chì 2B
-const BUOC_NGANG_MM = 7.5;           // tâm hai ô liền nhau cách nhau 7,5mm
-const BUOC_DOC_MM = 7.5;
-const BUOC_DOC_TLN_MM = 6.2;         // cột Trả lời ngắn có 12 hàng nên xếp khít hơn
-const CANH_NEO_MM = 6;               // dấu neo góc: ô vuông đen đặc 6x6mm
-const LE_MM = 6;                     // lề trong của ảnh lưới
-const CAO_DAI_MOC_MM = 12;           // dải đầu ảnh chứa dấu neo và mốc chuẩn
+/* Cỡ ô và bước nhảy lấy theo khuôn phiếu thi tốt nghiệp: nhỏ và khít, để cả ba phần
+   của một đề 40 + 8 + 6 câu nằm gọn trong MỘT TRANG. Bản trước ô 4,5mm bước 7,5mm nên
+   một đề 22 câu đã tràn sang trang thứ hai - thầy cô phải in và quét gấp đôi số tờ. */
+const BAN_KINH_O_MM = 1.75;          // ô tròn đường kính 3,5mm
+const BUOC_NGANG_MM = 5.0;           // tâm hai ô liền nhau cách nhau 5mm
+const BUOC_DOC_MM = 5.0;
+const BUOC_DOC_TLN_MM = 4.4;         // cột Trả lời ngắn có 12 hàng nên xếp khít hơn nữa
+const CANH_NEO_MM = 6;               // dấu neo góc: ô vuông đen đặc 6x6mm - GIỮ NGUYÊN
+const LE_MM = 5;                     // lề trong của ảnh lưới
+const CAO_DAI_MOC_MM = 11;           // dải đầu ảnh chứa dấu neo và mốc chuẩn
 
 /* ===================== KIỂU DỮ LIỆU ===================== */
 
@@ -129,88 +135,169 @@ function chiaKhuc<T>(ds: T[], moiKhuc: number): T[][] {
 const soCotVua = (rongCot: number, toiDa: number) =>
   Math.max(1, Math.min(toiDa, Math.floor((mm(RONG_MM) - mm(LE_MM) * 2) / rongCot)));
 
+/**
+ * PHẦN I - bốn cột, mỗi cột mười câu, đúng khuôn phiếu thi.
+ *
+ * Bốn cột chứ không ba: đề 40 câu xếp ba cột thành 14 hàng, xếp bốn cột chỉ còn 10 hàng.
+ * Riêng chỗ này đã tiết kiệm được gần 2cm chiều cao.
+ */
 function cumTracNghiem(soCau: number): Cum[] {
   const r = mm(BAN_KINH_O_MM), buocX = mm(BUOC_NGANG_MM), buocY = mm(BUOC_DOC_MM);
-  const rongNhan = mm(13);
-  const rongCot = rongNhan + buocX * 4 + mm(4);
-  const soCot = soCotVua(rongCot, 3);
+  const rongNhan = mm(7);
+  const rongCot = Math.floor((mm(RONG_MM) - mm(LE_MM) * 2) / 4);
+  const soCot = 4;
+  const soHang = Math.ceil(soCau / soCot);
 
-  /* Mỗi cụm là MỘT HÀNG NGANG gồm `soCot` câu - cắt trang ở đây thì không câu nào bị xẻ. */
-  return chiaKhuc(Array.from({ length: soCau }, (_, i) => i + 1), soCot).map(khuc => ({
-    cao: buocY,
+  /* Hàng tiêu đề A B C D, in một lần trên đầu mỗi cột. */
+  const tieuDeCot: Cum = {
+    cao: mm(4.5),
     ve: (y) => {
-      const o: OTron[] = []; const chu: BanDoLuoi['chu'] = [];
-      khuc.forEach((cau, k) => {
-        const x0 = mm(LE_MM) + k * rongCot;
-        const yc = y + r;
-        chu.push({ x: x0, y: yc + mm(1.2), noiDung: `Câu ${cau}`, co: mm(3) });
-        ['A', 'B', 'C', 'D'].forEach((ch, j) => {
-          o.push({ ma: `NLC:${cau}:${ch}`, cau, nhan: ch, x: x0 + rongNhan + j * buocX + r, y: yc, r });
+      const chu: BanDoLuoi['chu'] = [];
+      for (let c = 0; c < soCot; c++) {
+        if (c * soHang >= soCau) break;
+        const x0 = mm(LE_MM) + c * rongCot;
+        ['A', 'B', 'C', 'D'].forEach((ch, k) => {
+          chu.push({ x: x0 + rongNhan + k * buocX + r - mm(0.8), y: y + mm(3), noiDung: ch, co: mm(2.6) });
         });
-      });
-      return { o, chu, khung: [] };
+      }
+      return { o: [], chu, khung: [] };
     },
-  }));
+  };
+
+  /* Mỗi cụm là MỘT HÀNG NGANG gồm bốn câu - cắt trang ở đây thì không câu nào bị xẻ. */
+  const hang: Cum[] = [];
+  for (let h = 0; h < soHang; h++) {
+    const cauCuaHang: { cot: number; so: number }[] = [];
+    for (let c = 0; c < soCot; c++) {
+      const so = c * soHang + h + 1;
+      if (so <= soCau) cauCuaHang.push({ cot: c, so });
+    }
+    hang.push({
+      cao: buocY,
+      ve: (y) => {
+        const o: OTron[] = []; const chu: BanDoLuoi['chu'] = [];
+        for (const { cot, so } of cauCuaHang) {
+          const x0 = mm(LE_MM) + cot * rongCot;
+          const yc = y + r;
+          chu.push({ x: x0, y: yc + mm(1), noiDung: String(so), co: mm(2.8), dam: true });
+          ['A', 'B', 'C', 'D'].forEach((ch, k) => {
+            o.push({ ma: `NLC:${so}:${ch}`, cau: so, nhan: ch,
+                     x: x0 + rongNhan + k * buocX + r, y: yc, r });
+          });
+        }
+        return { o, chu, khung: [] };
+      },
+    });
+  }
+
+  /* Khung bao quanh cả phần, vẽ cùng cụm tiêu đề cho khỏi rối. */
+  return [tieuDeCot, ...hang];
 }
 
+/**
+ * PHẦN II - mỗi khối chứa HAI câu đứng cạnh nhau, bốn khối một hàng.
+ *
+ * Tám câu Đúng/Sai vì thế nằm gọn trong MỘT băng bốn dòng a) b) c) d), thay vì hai băng
+ * như bản trước. Đúng khuôn phiếu thi: "Câu 1 | Câu 2" chung một khung.
+ */
 function cumDungSai(soCau: number): Cum[] {
   const r = mm(BAN_KINH_O_MM), buocX = mm(BUOC_NGANG_MM), buocY = mm(BUOC_DOC_MM);
-  const rongNhan = mm(13), rongY = mm(6);
-  const rongCot = rongNhan + rongY + buocX * 2 + mm(5);
-  const soCot = soCotVua(rongCot, 4);
-  const caoKhoi = buocY * 4 + mm(5);
+  const rongNhan = mm(5);
+  const rongCot = Math.floor((mm(RONG_MM) - mm(LE_MM) * 2) / 4);
+  const soKhoi = Math.ceil(soCau / 2);
+  const khoiMoiHang = 4;
+  const caoKhoi = mm(8) + buocY * 4;
 
-  return chiaKhuc(Array.from({ length: soCau }, (_, i) => i + 1), soCot).map(khuc => ({
-    cao: caoKhoi + mm(3),
-    ve: (y) => {
-      const o: OTron[] = []; const chu: BanDoLuoi['chu'] = []; const khung: BanDoLuoi['khung'] = [];
-      khuc.forEach((cau, k) => {
-        const x0 = mm(LE_MM) + k * rongCot;
-        chu.push({ x: x0, y: y + mm(3.5), noiDung: `Câu ${cau}`, co: mm(3), dam: true });
-        khung.push({ x: x0 - mm(1), y: y - mm(1), rong: rongCot - mm(3), cao: caoKhoi });
-        ['a', 'b', 'c', 'd'].forEach((yNho, i) => {
-          const yc = y + mm(5) + i * buocY + r;
-          chu.push({ x: x0 + rongNhan, y: yc + mm(1.2), noiDung: `${yNho})`, co: mm(3) });
-          ['Đ', 'S'].forEach((ch, j) => {
-            o.push({ ma: `DS:${cau}:${yNho}:${ch}`, cau, nhan: ch,
-                     x: x0 + rongNhan + rongY + j * buocX + r, y: yc, r });
-          });
-        });
-      });
-      return { o, chu, khung };
-    },
-  }));
-}
+  const ra: Cum[] = [];
+  for (let h = 0; h < Math.ceil(soKhoi / khoiMoiHang); h++) {
+    const khoiCuaHang: { cot: number; cauTrai: number }[] = [];
+    for (let k = 0; k < khoiMoiHang; k++) {
+      const iKhoi = h * khoiMoiHang + k;
+      if (iKhoi < soKhoi) khoiCuaHang.push({ cot: k, cauTrai: iKhoi * 2 + 1 });
+    }
+    ra.push({
+      cao: caoKhoi + mm(2.5),
+      ve: (y) => {
+        const o: OTron[] = []; const chu: BanDoLuoi['chu'] = []; const khung: BanDoLuoi['khung'] = [];
+        for (const { cot, cauTrai } of khoiCuaHang) {
+          const x0 = mm(LE_MM) + cot * rongCot;
+          khung.push({ x: x0 - mm(1), y: y - mm(0.5), rong: rongCot - mm(2.5), cao: caoKhoi });
 
-function cumTraLoiNgan(soCau: number): Cum[] {
-  const r = mm(BAN_KINH_O_MM), buocX = mm(BUOC_NGANG_MM), buocY = mm(BUOC_DOC_TLN_MM);
-  const rongBang = buocX * 4 + mm(3);
-  const rongCot = rongBang + mm(7);
-  const soCot = soCotVua(rongCot, 5);
-  const caoBang = buocY * HANG_TLN.length + mm(7);
-
-  return chiaKhuc(Array.from({ length: soCau }, (_, i) => i + 1), soCot).map(khuc => ({
-    cao: caoBang + mm(4),
-    ve: (y) => {
-      const o: OTron[] = []; const chu: BanDoLuoi['chu'] = []; const khung: BanDoLuoi['khung'] = [];
-      khuc.forEach((cau, k) => {
-        const x0 = mm(LE_MM) + k * rongCot;
-        chu.push({ x: x0, y: y + mm(3.5), noiDung: `Câu ${cau}`, co: mm(3), dam: true });
-        khung.push({ x: x0 - mm(1.5), y: y + mm(4.5), rong: rongBang, cao: caoBang - mm(4) });
-        for (let c = 0; c < 4; c++) {
-          HANG_TLN.forEach((ky, h) => {
-            if (ky === '-' && c !== 0) return;          // dấu trừ chỉ ở ô đầu
-            if (ky === ',' && c === 3) return;          // ô cuối không có dấu phẩy
-            o.push({
-              ma: `TLN:${cau}:${c}:${ky}`, cau, nhan: ky,
-              x: x0 + c * buocX + r, y: y + mm(6) + h * buocY + r, r,
+          [0, 1].forEach(nua => {
+            const cau = cauTrai + nua;
+            if (cau > soCau) return;
+            const xNua = x0 + rongNhan + nua * buocX * 2;
+            chu.push({ x: xNua + mm(0.5), y: y + mm(3), noiDung: `Câu ${cau}`, co: mm(2.6), dam: true });
+            ['Đúng', 'Sai'].forEach((nh, k) => {
+              chu.push({ x: xNua + k * buocX - mm(0.6), y: y + mm(6.5), noiDung: nh, co: mm(2.2) });
+            });
+            ['a', 'b', 'c', 'd'].forEach((yNho, i2) => {
+              const yc = y + mm(8) + i2 * buocY + r;
+              if (nua === 0) chu.push({ x: x0, y: yc + mm(1), noiDung: `${yNho})`, co: mm(2.6) });
+              ['Đ', 'S'].forEach((ch, k) => {
+                o.push({ ma: `DS:${cau}:${yNho}:${ch}`, cau, nhan: ch,
+                         x: xNua + k * buocX + r, y: yc, r });
+              });
             });
           });
         }
-      });
-      return { o, chu, khung };
-    },
-  }));
+        return { o, chu, khung };
+      },
+    });
+  }
+  return ra;
+}
+
+/**
+ * PHẦN III - sáu khối một hàng, mỗi khối là bốn cột ký tự.
+ *
+ * Dấu trừ chỉ có ở cột ĐẦU, dấu phẩy chỉ có ở cột hai và cột ba - đúng khuôn phiếu thi,
+ * và cũng đúng thực tế: đáp số bốn ký tự thì dấu phẩy không bao giờ rơi vào ô đầu hay ô
+ * cuối. Bỏ được hai ô thừa mỗi câu.
+ */
+function cumTraLoiNgan(soCau: number): Cum[] {
+  const r = mm(BAN_KINH_O_MM), buocX = mm(BUOC_NGANG_MM), buocY = mm(BUOC_DOC_TLN_MM);
+  const rongNhan = mm(3.6);
+  const rongCot = Math.floor((mm(RONG_MM) - mm(LE_MM) * 2) / 6);
+  const khoiMoiHang = 6;
+  const caoBang = mm(5) + buocY * HANG_TLN.length;
+
+  const ra: Cum[] = [];
+  for (let h = 0; h < Math.ceil(soCau / khoiMoiHang); h++) {
+    const cauCuaHang: { cot: number; so: number }[] = [];
+    for (let k = 0; k < khoiMoiHang; k++) {
+      const so = h * khoiMoiHang + k + 1;
+      if (so <= soCau) cauCuaHang.push({ cot: k, so });
+    }
+    ra.push({
+      cao: caoBang + mm(3),
+      ve: (y) => {
+        const o: OTron[] = []; const chu: BanDoLuoi['chu'] = []; const khung: BanDoLuoi['khung'] = [];
+        for (const { cot, so } of cauCuaHang) {
+          const x0 = mm(LE_MM) + cot * rongCot;
+          chu.push({ x: x0, y: y + mm(3), noiDung: `Câu ${so}`, co: mm(2.6), dam: true });
+          khung.push({ x: x0 - mm(1), y: y - mm(0.5), rong: rongCot - mm(2), cao: caoBang });
+
+          HANG_TLN.forEach((ky, hg) => {
+            const yc = y + mm(5) + hg * buocY + r;
+            chu.push({ x: x0, y: yc + mm(1), noiDung: ky, co: mm(2.6) });
+            for (let c = 0; c < 4; c++) {
+              if (ky === '-' && c !== 0) continue;        // dấu trừ chỉ ở ô đầu
+              if (ky === ',' && (c === 0 || c === 3)) continue;  // dấu phẩy chỉ ở ô hai và ba
+              o.push({
+                /* nhan PHẢI giữ đúng ký tự: bộ đọc lấy chính trường này làm đáp án.
+                   Bỏ chữ in trong ô là việc của bộ VẼ, không phải của bản đồ. */
+                ma: `TLN:${so}:${c}:${ky}`, cau: so, nhan: ky,
+                x: x0 + rongNhan + c * buocX + r, y: yc, r,
+              });
+            }
+          });
+        }
+        return { o, chu, khung };
+      },
+    });
+  }
+  return ra;
 }
 
 /* ===================== DỰNG BẢN ĐỒ ===================== */
@@ -223,8 +310,8 @@ function cumTraLoiNgan(soCau: number): Cum[] {
  */
 export function dungLuoi(
   cacKhoi: KhoiPhieu[],
-  caoTrangDauMM = 165,
-  caoTrangSauMM = 235,
+  caoTrangDauMM = 208,
+  caoTrangSauMM = 245,
 ): BanDoLuoi[] {
   /* Xếp mọi khối thành một dãy cụm liên tiếp. */
   const cum: Cum[] = [];
@@ -320,11 +407,10 @@ export function veLuoi(nen: CanvasRenderingContext2D, luoi: BanDoLuoi): void {
   /* Ô tô: viền tròn, giữa in chữ mờ để học sinh biết đang tô ô nào. */
   nen.textAlign = 'center';
   nen.textBaseline = 'middle';
+  /* Ô nay nhỏ hơn nên KHÔNG in chữ vào trong nữa: chữ chen trong ô 3,5mm vừa khó đọc
+     vừa làm ô trông như đã tô. Nhãn đã nằm ở đầu hàng và đầu cột rồi. */
   for (const x of luoi.o) {
     nen.beginPath(); nen.arc(x.x, x.y, x.r, 0, Math.PI * 2); nen.stroke();
-    nen.fillStyle = '#9aa4b2';
-    nen.font = `${Math.round(x.r * 1.05)}px Arial`;
-    nen.fillText(x.nhan, x.x, x.y + 1);
   }
 
   nen.fillStyle = '#1f2937';

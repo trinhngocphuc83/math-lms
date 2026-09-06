@@ -154,7 +154,7 @@ function khoiTuLuan(phan: PhanDeThi, diemMoiCau: number): any[] {
 /* ===================== ĐẦU PHIẾU ===================== */
 
 function bangDauPhieu(dauDe: DauDe, cacPhan: PhanDeThi[], diemPhan: Record<string, number>,
-                      hocSinh?: { ten: string }): Table {
+                      hocSinh?: { ten: string }, qr?: any): Table {
   const trai: Paragraph[] = [
     new Paragraph({ children: [new TextRun({ text: chu(dauDe.tenLopHoc).toUpperCase(), bold: true, size: CO_TIEU_DE_PHU, color: NAVY })] }),
     /* In sẵn tên em khi in theo lớp: máy khỏi phải đọc chữ viết tay, mà em cũng khỏi
@@ -193,6 +193,9 @@ function bangDauPhieu(dauDe: DauDe, cacPhan: PhanDeThi[], diemPhan: Record<strin
           shading: { type: ShadingType.CLEAR, fill: NEN_O_DIEM, color: "auto" },
           margins: { top: 100, bottom: 100, left: 100, right: 100 },
           children: [
+            /* Mã QR nhét vào ngay ô điểm thay vì đứng riêng một dòng: dòng riêng ngốn
+               gần 2cm chiều cao, mà cả tờ phải gói gọn trong một trang. */
+            ...(qr ? [new Paragraph({ alignment: AlignmentType.RIGHT, children: [qr] })] : []),
             new Paragraph({
               alignment: AlignmentType.CENTER,
               children: [new TextRun({ text: 'ĐIỂM SỐ CHI TIẾT', bold: true, color: NAVY, size: 21 })],
@@ -263,16 +266,18 @@ export const banDoLuoiCuaDe = (cacPhan: PhanDeThi[]): BanDoLuoi[] =>
  *
  * Bất đồng bộ vì phần lưới tô tròn phải vẽ ra ảnh PNG bằng canvas rồi mới nhúng vào Word.
  */
-export async function dungNoiDungPhieu(k: KhuonPhieu): Promise<any[]> {
-  const ra: any[] = [bangDauPhieu(k.dauDe, k.cacPhan, k.diemPhan, k.hocSinh)];
+export async function dungNoiDungPhieu(k: KhuonPhieu, qrDauTrang?: any): Promise<any[]> {
+  const ra: any[] = [bangDauPhieu(k.dauDe, k.cacPhan, k.diemPhan, k.hocSinh, qrDauTrang)];
 
   const coTuLuan = k.cacPhan.some(p => p.ma === 'TL');
+  /* Tiêu đề ép sát lại: cả ba phần tô tròn phải nằm gọn trong một trang, mỗi mi-li-mét
+     ở đầu tờ là một mi-li-mét bớt đi của lưới. */
   ra.push(new Paragraph({
     alignment: AlignmentType.CENTER,
-    spacing: { before: 200, after: 160 },
+    spacing: { before: 80, after: 60 },
     children: [new TextRun({
       text: 'PHIẾU TRẢ LỜI' + (coTuLuan ? ' TRẮC NGHIỆM & TỰ LUẬN' : ' TRẮC NGHIỆM'),
-      bold: true, color: NAVY, size: CO_TIEU_DE_CHINH,
+      bold: true, color: NAVY, size: CO_TIEU_DE_PHU,
     })],
   }));
 
@@ -330,12 +335,8 @@ export async function exportPhieuTraLoi(k: KhuonPhieu, tenTep: string): Promise<
       properties: TRANG_CHUAN,
       headers: { default: new Header({ children: [daiNeoDauTrang({ maDe: k.dauDe?.maDe, loai: 'pt' })] }) },
       footers: { default: new Footer({ children: [daiNeo()] }) },
-      children: [
-        /* Mã QR đặt ngay đầu phiếu, canh phải - máy chấm ảnh đọc ra ngay đây là phiếu
-           của đề nào, mã đề nào, khỏi bắt Thầy cô chọn tay. */
-        ...(qr ? [new Paragraph({ alignment: AlignmentType.RIGHT, children: [qr] })] : []),
-        ...(await dungNoiDungPhieu(k)),
-      ],
+      /* Mã QR nay nằm trong bảng thông tin ở đầu phiếu, không đứng riêng một dòng nữa. */
+      children: await dungNoiDungPhieu(k, qr),
     }],
   });
 
@@ -393,8 +394,7 @@ export async function exportPhieuTheoLop(
     const qr = await anhQR(noiDungQR({
       boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: 1, hs: maHocSinhNgan(hs.id),
     }), 74);
-    if (qr) con.push(new Paragraph({ alignment: AlignmentType.RIGHT, children: [qr] }));
-    con.push(...(await dungNoiDungPhieu({ ...k, hocSinh: hs })));
+    con.push(...(await dungNoiDungPhieu({ ...k, hocSinh: hs }, qr)));
   }
   onTienDo?.(dsHocSinh.length, dsHocSinh.length);
 
