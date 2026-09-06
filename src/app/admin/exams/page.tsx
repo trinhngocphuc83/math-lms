@@ -10,7 +10,8 @@ import * as XLSX from "xlsx";
 import NapMaTranModal, { type DongNapMaTran } from "@/components/admin/NapMaTranModal";
 import SinhBuModal from "@/components/admin/SinhBuModal";
 import SoanMaTranModal from "@/components/admin/SoanMaTranModal";
-import MenuGon, { MucMenu, NhomMenu, NganMenu, DanhSachTick } from "@/components/admin/MenuGon";
+import MenuGon, { MucMenu, NhomMenu, NganMenu, DanhSachTick, useDongMenu } from "@/components/admin/MenuGon";
+import ChonBoDe from "@/components/admin/ChonBoDe";
 import type { ODeChon, DongMaTranAI } from "@/utils/soanMaTranAI";
 import { toBankType, bankTypeLabel, type BankType } from "@/utils/questionTypes";
 import { gomTenSongSinh } from "@/utils/topicMatch";
@@ -1302,35 +1303,12 @@ export default function ExamsManagerPage() {
                 icon={<FileText className="w-4 h-4 text-blue-600" />}
                 dem={boDeList.length}
                 disabled={boDeList.length === 0}
-                rong="w-[340px]"
+                rong="w-[480px]"
                 title={boDeList.length === 0 ? 'Chưa lưu bộ đề nào' : 'Mở lại đề đã ra để in lại đúng bản đã phát'}
               >
-                <NhomMenu nhan="Mở lại bộ đề" />
-                <div className="px-1 pb-1">
-                  <select
-                    onChange={e => { if (e.target.value) { moBoDe(e.target.value); } e.target.value = ''; }}
-                    defaultValue=""
-                    className="w-full border border-gray-200 rounded-lg px-2 py-1.5 outline-none focus:border-blue-400 text-[13px] font-medium bg-white"
-                  >
-                    <option value="">Chọn một trong {boDeList.length} bộ đề...</option>
-                    {boDeList.map(b => (
-                      <option key={b.id} value={b.id}>
-                        {b.ten} · {b.so_cau} câu{b.da_chot ? ' · đã chốt' : ''}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <NganMenu />
-                <NhomMenu nhan="Xoá bộ đề" />
-                <div className="px-1 pb-1">
-                  <select
-                    onChange={e => { if (e.target.value) { xoaBoDe(e.target.value); } e.target.value = ''; }}
-                    defaultValue=""
-                    className="w-full border border-red-200 text-red-600 rounded-lg px-2 py-1.5 outline-none text-[13px] font-medium bg-white"
-                  >
-                    <option value="">Chọn bộ đề cần xoá...</option>
-                    {boDeList.map(b => <option key={b.id} value={b.id}>{b.ten}</option>)}
-                  </select>
+                <NhomMenu nhan="Bấm vào một bộ để mở lại ở thẻ mới" />
+                <div className="px-1.5 pb-1.5">
+                  <HopBoDeDaLuu ds={boDeList} moBoDe={moBoDe} xoaBoDe={xoaBoDe} />
                 </div>
               </MenuGon>
 
@@ -1708,5 +1686,39 @@ export default function ExamsManagerPage() {
       />
 
     </div>
+  );
+}
+
+/**
+ * Bảng "Bộ đề đã lưu" trong thanh công cụ.
+ *
+ * Trước đây là hai ô <select> - một để mở, một để xoá. Tên bộ đề tự sinh nên nhiều bộ
+ * trùng tên khít nhau, mà ô select thì không cho gõ tìm, không nói ngày, không phân biệt
+ * bản nháp với bản đã chốt: chọn nhầm rồi in nhầm ra lớp là hỏng buổi kiểm tra.
+ *
+ * Tách riêng thành component vì phải gọi useDongMenu() - hook ấy chỉ chạy được bên trong
+ * bảng chọn.
+ */
+function HopBoDeDaLuu({ ds, moBoDe, xoaBoDe }: {
+  ds: any[]; moBoDe: (id: string) => void; xoaBoDe: (id: string) => void;
+}) {
+  const dong = useDongMenu();
+  return (
+    <ChonBoDe
+      ds={ds}
+      giaTri=""
+      chieuCao="max-h-[300px]"
+      trong="Chưa lưu bộ đề nào. Ra đề xong bấm Lưu & Gửi › Lưu bộ đề."
+      onChon={id => { moBoDe(id); dong(); }}
+      hanhDong={b => (
+        <button
+          onClick={() => { xoaBoDe(b.id); dong(); }}
+          title="Xoá bộ đề này"
+          className="p-1.5 rounded-lg text-slate-400 hover:text-red-600 hover:bg-red-50"
+        >
+          <Trash2 className="w-4 h-4" />
+        </button>
+      )}
+    />
   );
 }

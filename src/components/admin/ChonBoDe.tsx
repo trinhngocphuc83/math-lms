@@ -30,6 +30,8 @@ export interface DongChonBoDe {
   so_cau?: number | null;
   tong_diem?: number | null;
   updated_at?: string | null;
+  /** Chưa chốt là bản còn dở - phải nói rõ, in nhầm bản nháp ra lớp là hỏng buổi kiểm tra. */
+  da_chot?: boolean | null;
   dau_de?: any;
 }
 
@@ -123,12 +125,18 @@ function OLoc({ nhan, giaTri, dat, muc }: {
 
 /* ===================== HỘP CHỌN ===================== */
 
-export default function ChonBoDe({ ds, giaTri, onChon, chieuCao = "max-h-[320px]" }: {
+export default function ChonBoDe({
+  ds, giaTri, onChon, chieuCao = "max-h-[320px]", hanhDong, trong,
+}: {
   ds: DongChonBoDe[];
   giaTri: string;
   onChon: (id: string) => void;
   /** Lớp Tailwind giới hạn chiều cao vùng cuộn. */
   chieuCao?: string;
+  /** Nút riêng gài vào mép phải mỗi thẻ, VD nút xoá bộ đề. */
+  hanhDong?: (b: DongChonBoDe) => React.ReactNode;
+  /** Lời nhắn khi cả kho chưa có bộ đề nào. */
+  trong?: string;
 }) {
   const [tim, setTim] = React.useState("");
   const [lop, setLop] = React.useState("");
@@ -210,7 +218,7 @@ export default function ChonBoDe({ ds, giaTri, onChon, chieuCao = "max-h-[320px]
         {loc.length === 0 ? (
           <p className="p-5 text-center text-[13px] text-slate-500">
             {ds.length === 0
-              ? "Chưa có bộ đề nào đã chốt. Vào Quản lý Đề thi ra đề rồi bấm Lưu bộ đề."
+              ? (trong ?? "Chưa có bộ đề nào đã chốt. Vào Quản lý Đề thi ra đề rồi bấm Lưu bộ đề.")
               : "Không có bộ đề nào khớp. Thử bỏ bớt điều kiện lọc."}
           </p>
         ) : nhom.map(({ ten, ds: dsNhom }) => (
@@ -222,34 +230,48 @@ export default function ChonBoDe({ ds, giaTri, onChon, chieuCao = "max-h-[320px]
             {dsNhom.map(b => {
               const chon = b.id === giaTri;
               return (
-                <button
+                /* Thẻ là <div> chứ không phải <button>: chỗ gọi còn gài thêm nút riêng
+                   (xoá bộ đề) vào mỗi thẻ, mà nút lồng trong nút là HTML hỏng. */
+                <div
                   key={b.id}
-                  onClick={() => onChon(b.id)}
-                  className={`w-full text-left px-3 py-2.5 border-b border-slate-200/70 last:border-b-0
-                              flex items-start gap-2.5 transition-colors
-                              ${chon ? "bg-teal-50" : "bg-white hover:bg-slate-50"}`}
+                  className={`border-b border-slate-200/70 last:border-b-0 flex items-stretch
+                              transition-colors ${chon ? "bg-teal-50" : "bg-white hover:bg-slate-50"}`}
                 >
-                  <span className={`mt-0.5 w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0
-                                    ${chon ? "border-teal-600 bg-teal-600" : "border-slate-300"}`}>
-                    {chon && <Check className="w-2.5 h-2.5 text-white" strokeWidth={4} />}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className={`block font-bold text-[13.5px] leading-snug
-                                      ${chon ? "text-teal-900" : "text-slate-800"}`}>
-                      {b.ten}
+                  <button
+                    onClick={() => onChon(b.id)}
+                    className="flex-1 min-w-0 text-left px-3 py-2.5 flex items-start gap-2.5"
+                  >
+                    <span className={`mt-0.5 w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0
+                                      ${chon ? "border-teal-600 bg-teal-600" : "border-slate-300"}`}>
+                      {chon && <Check className="w-2.5 h-2.5 text-white" strokeWidth={4} />}
                     </span>
-                    {/* Dòng phụ nói đủ những thứ phân biệt hai bộ trùng tên nhau */}
-                    <span className="block text-[12px] text-slate-500 mt-0.5">
-                      {[
-                        ngayVN(b.updated_at),
-                        b.so_cau ? `${b.so_cau} câu` : "",
-                        b.tong_diem != null ? `${soDiemVN(Number(b.tong_diem))} điểm` : "",
-                        b.dau_de?.maDe ? `mã ${b.dau_de.maDe}` : "",
-                        b.dau_de?.namHoc || "",
-                      ].filter(Boolean).join(" · ")}
+                    <span className="min-w-0 flex-1">
+                      <span className={`block font-bold text-[13.5px] leading-snug
+                                        ${chon ? "text-teal-900" : "text-slate-800"}`}>
+                        {b.ten}
+                      </span>
+                      {/* Dòng phụ nói đủ những thứ phân biệt hai bộ trùng tên nhau */}
+                      <span className="block text-[12px] text-slate-500 mt-0.5">
+                        {b.da_chot === false && (
+                          <span className="mr-1.5 px-1.5 py-px rounded-full bg-amber-100 text-amber-700
+                                           text-[10px] font-black whitespace-nowrap">
+                            CHƯA CHỐT
+                          </span>
+                        )}
+                        {[
+                          ngayVN(b.updated_at),
+                          b.so_cau ? `${b.so_cau} câu` : "",
+                          b.tong_diem != null ? `${soDiemVN(Number(b.tong_diem))} điểm` : "",
+                          b.dau_de?.maDe ? `mã ${b.dau_de.maDe}` : "",
+                          b.dau_de?.namHoc || "",
+                        ].filter(Boolean).join(" · ")}
+                      </span>
                     </span>
-                  </span>
-                </button>
+                  </button>
+                  {hanhDong && (
+                    <div className="flex items-center pr-2 shrink-0">{hanhDong(b)}</div>
+                  )}
+                </div>
               );
             })}
           </div>
@@ -258,7 +280,7 @@ export default function ChonBoDe({ ds, giaTri, onChon, chieuCao = "max-h-[320px]
 
       <p className="mt-1.5 text-[12px] text-slate-500 flex items-center gap-1.5">
         <FileText className="w-3.5 h-3.5" />
-        {coLoc ? `Hiện ${loc.length} trong ${ds.length} bộ đề` : `${ds.length} bộ đề đã chốt`}
+        {coLoc ? `Hiện ${loc.length} trong ${ds.length} bộ đề` : `${ds.length} bộ đề`}
       </p>
 
       {/* Đề đang chọn mà bị điều kiện lọc giấu đi thì phải nói ra: không thấy thẻ nào sáng
