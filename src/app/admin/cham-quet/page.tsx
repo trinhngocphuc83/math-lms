@@ -31,9 +31,11 @@ import { maHocSinhNgan } from "@/utils/mauDeThi";
 import { exportPhieuTheoLop } from "@/utils/phieuTraLoi";
 import { layDsLop, layDsHocSinh, luuBaiKiemTra } from "@/app/actions/goiTenVaDiem";
 import { luuBaiQuet, layDsBaiQuet, layMotBaiQuet, type DongBaiQuet } from "@/app/actions/baiQuet";
+import ChonBoDe from "@/components/admin/ChonBoDe";
 
 interface BoDe {
   id: string; ten: string; grade: string; subject: string;
+  loai_de?: string | null; updated_at?: string | null;
   tong_diem: number; so_cau: number; da_chot?: boolean; dau_de?: any;
   /** Chỉ có khi tải riêng một bộ - danh sách không kèm cột này vì nó rất nặng. */
   cau_hoi?: any[];
@@ -462,18 +464,13 @@ export default function ChamQuetPage() {
       {/* Bước 1: chọn bộ đề */}
       <div className="bg-white rounded-2xl border border-slate-200 p-5 mb-5">
         <label className="block font-bold text-slate-700 mb-2">1. Chọn bộ đề đã chốt</label>
-        <select
-          value={boDeId}
-          onChange={e => { setBoDeId(e.target.value); setBai([]); setMoBai(null); }}
-          className="w-full border border-slate-300 rounded-xl px-3 py-2.5 font-medium"
-        >
-          <option value="">— Chọn bộ đề —</option>
-          {dsBoDe.map(b => (
-            <option key={b.id} value={b.id}>
-              {b.ten} · {b.so_cau} câu · {soDiemVN(Number(b.tong_diem) || 0)} điểm
-            </option>
-          ))}
-        </select>
+        {/* Danh sách có lọc và tìm nhanh: tên bộ đề tự sinh nên nhiều bộ trùng tên, cuộn
+            một ô select toàn dòng giống nhau thì không tìm nổi đúng đề vừa in. */}
+        <ChonBoDe
+          ds={dsBoDe}
+          giaTri={boDeId}
+          onChon={id => { setBoDeId(id === boDeId ? '' : id); setBai([]); setMoBai(null); }}
+        />
         {dangTaiDe && (
           <p className="mt-2 text-[13px] text-slate-500 flex items-center gap-2">
             <Loader2 className="w-3.5 h-3.5 animate-spin" /> Đang tải nội dung bộ đề…
