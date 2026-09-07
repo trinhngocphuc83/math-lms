@@ -43,6 +43,10 @@ export function suaDuocBang(maLoi: string): CachSua {
     case 'khongCoLoiGiai':
     case 'thieuPhuongPhap':
     case 'latexTran':
+    /* Hai lỗi dấu chéo phải để AI sửa chứ không thay bằng máy: "\\" trong \begin{cases}
+       là xuống dòng THẬT, thay bừa là hỏng hệ phương trình. */
+    case 'cheoDoi':
+    case 'matDauCheo':
     case 'phuongAnTrungNhau':
     case 'phuongAnLechDai':
     case 'phuongAnTongHop':
@@ -245,6 +249,17 @@ const VIEC_AI: Record<string, string> = {
   latexTran:
     'Có công thức toán đang để trần ngoài cặp $…$, in ra sẽ thành chữ thô. Hãy bọc mọi biểu'
     + ' thức, biến số, phép tính vào cặp $…$. KHÔNG đổi nội dung toán học.',
+  cheoDoi:
+    'Các lệnh LaTeX đang bị GẤP ĐÔI dấu chéo ngược: viết "\\\\alpha", "\\\\frac", "\\\\Leftrightarrow"'
+    + ' thay vì "\\alpha", "\\frac", "\\Leftrightarrow". Trình dựng công thức đọc hai dấu chéo là'
+    + ' lệnh XUỐNG DÒNG nên công thức đứt giữa chừng. Hãy bỏ bớt một dấu chéo ở MỌI tên lệnh.'
+    + ' NGOẠI LỆ: dấu chéo đôi dùng để xuống dòng thật bên trong \\begin{cases}, \\begin{array},'
+    + ' \\begin{aligned} thì GIỮ NGUYÊN. KHÔNG đổi số liệu, không đổi kết quả.',
+  matDauCheo:
+    'Có tên lệnh LaTeX bị MẤT dấu chéo ngược ở đầu: viết "frac{1}{2}", "sqrt{5}", "widehat{A}"'
+    + ' thay vì "\\frac{1}{2}", "\\sqrt{5}", "\\widehat{A}". In ra thành chữ thô. Hãy trả lại dấu'
+    + ' chéo cho mọi tên lệnh bị thiếu, và bọc cả cụm công thức vào cặp $…$ nếu nó đang nằm'
+    + ' ngoài. KHÔNG đổi số liệu, không đổi kết quả.',
   phuongAnTrungNhau:
     'Có hai phương án giống hệt nhau. Hãy sửa MỘT trong hai cho khác đi, thành một phương án'
     + ' nhiễu hợp lý (sai theo một lỗi học sinh hay mắc). KHÔNG được đụng vào phương án đúng.',
@@ -324,6 +339,19 @@ Chỉ trả về JSON thuần, không kèm lời nào khác, chứa CÁC TRƯỜ
   }
   /* AI có thể nuốt luôn cái mốc: lưới cuối cùng, thiếu hình nào thì trả lại hình ấy. */
   vaGiuAnh(q, va, ghiChu);
+
+  /* Lưới an toàn cho dấu $: AI sửa công thức rất hay đánh rơi một dấu $ đóng - đo tận mắt
+     một lần trên câu "S = \{3; -\frac{1}{2}\}$." thành "…\}." Số dấu $ lẻ là công thức hở,
+     in ra vỡ. Không tự thêm lại vì không đoán được thiếu ở đâu, nhưng phải nói to lên để
+     Thầy cô nhìn kỹ chỗ đó trước khi gật đầu. */
+  for (const o of Object.keys(va) as (keyof BanVa)[]) {
+    const cu = (chu((q as any)[o]).match(/\$/g) || []).length;
+    const moi = (chu(va[o]).match(/\$/g) || []).length;
+    if (cu % 2 === 0 && moi % 2 === 1) {
+      ghiChu.push(`AI làm lệch số dấu $ ở ô "${TEN_TRUONG[o] || o}" (${cu} → ${moi}).`
+        + ' Số lẻ nghĩa là có công thức chưa đóng - xem kỹ chỗ này trước khi lưu.');
+    }
+  }
   return Object.keys(va).length ? { va, ghiChu } : null;
 }
 

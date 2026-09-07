@@ -18,6 +18,10 @@ import SuaBangAIModal from "@/components/admin/SuaBangAIModal";
 import DayCongThucVaoSoTayModal from "@/components/admin/DayCongThucVaoSoTayModal";
 import { coMucCongThuc } from "@/utils/congThucCuoiBai";
 import { docCoAnh, datCoAnh, demAnh, dangXepNgang, datXepAnh, chuyenAnh, chuyenAnhDuoc } from "@/utils/coAnhTrongCau";
+import KiemThuDeModal from "@/components/admin/KiemThuDeModal";
+import { cacCauTrongBai, dapVaVaoKhoi, type BanVaCau } from "@/utils/khoiSangCauHoi";
+import { taoKhoaSoSanh, doGiongNhau, NGUONG_NGHI_TRUNG } from "@/utils/questionFingerprint";
+import type { PhanDeThi } from "@/utils/deThi";
 
 export interface Block {
   id: string;
@@ -104,6 +108,87 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
   const [isSidebarCollapsed, setIsSidebarCollapsed] = React.useState(false);
   /** Khối đang được dựng lại thành câu hỏi (để hiện vòng quay chờ trên đúng nút đó). */
   const [dangDungLai, setDangDungLai] = React.useState<string | null>(null);
+
+  /* ---------- SOÁT CẢ BÀI: rà câu trùng và kiểm thử ----------
+     Hai việc này vốn chỉ có ở Quản lý Đề thi, nhưng bài ôn tập và bài kiểm tra cũng là đề
+     - và còn dễ lọt lỗi hơn vì soạn nhanh từ prompt. Đo trên kho Toán: 2.860 câu trong 158
+     bài soạn thì 94 câu dính lỗi công thức, phần lớn là LaTeX để trần ngoài cặp $…$ và dấu
+     chéo đôi "\\alpha" - đúng những lỗi bộ kiểm thử bên kia bắt được và sửa được. */
+
+  /** Câu nghi trùng: khoá là id khối, kèm độ giống và câu bị trùng với nó. */
+  const [nghiTrung, setNghiTrung] = React.useState<Map<string, { doGiong: number; cungVoi: string }>>(new Map());
+  const [dangRaSoat, setDangRaSoat] = React.useState(false);
+  const [moKiemThu, setMoKiemThu] = React.useState(false);
+
+  /** Mọi câu hỏi trong bài, đã đổi sang dạng ngân hàng để dùng chung bộ soát. */
+  const cauTrongBai = React.useMemo(() => cacCauTrongBai(blocks), [blocks]);
+
+  /**
+   * Bài soạn bày cho bộ kiểm thử dưới dạng MỘT phần, câu đánh số một mạch.
+   *
+   * Không gom theo loại như đề thi: bài ôn tập xếp câu theo dạng toán, gom lại thì số câu
+   * lệch hẳn với Bản đồ, Thầy cô đọc lỗi "Phần II · Câu 3" không lần ra khối nào.
+   */
+  const phanCuaBai: PhanDeThi[] = React.useMemo(() => ([{
+    ma: 'NLC', soLaMa: '', tieuDe: 'CÂU HỎI TRONG BÀI', cauDan: '',
+    cauHoi: cauTrongBai, batDau: 1,
+  }]), [cauTrongBai]);
+
+  /**
+   * Rà các câu trong bài xem có cặp nào na ná nhau.
+   *
+   * Chạy ngay trên máy, không gọi AI: so khuôn chữ đã bỏ dấu và bỏ số của từng câu.
+   */
+  const raSoatTrung = () => {
+    setDangRaSoat(true);
+    try {
+      const khoa = cauTrongBai.map(q => taoKhoaSoSanh({
+        id: q.id, content: q.content,
+        option_a: q.option_a ?? undefined, option_b: q.option_b ?? undefined,
+        option_c: q.option_c ?? undefined, option_d: q.option_d ?? undefined,
+      }));
+      const ra = new Map<string, { doGiong: number; cungVoi: string }>();
+      for (let i = 0; i < khoa.length; i++) {
+        for (let j = i + 1; j < khoa.length; j++) {
+          const diem = doGiongNhau(khoa[i].khuonChu, khoa[j].khuonChu);
+          if (diem < NGUONG_NGHI_TRUNG) continue;
+          const nhan = (a: number, b: number) => {
+            const cu = ra.get(cauTrongBai[a].id);
+            if (!cu || cu.doGiong < diem) {
+              ra.set(cauTrongBai[a].id, {
+                doGiong: diem,
+                cungVoi: `Câu ${cauTrongBai[b].soCau}: ${String(cauTrongBai[b].content || '').slice(0, 70)}`,
+              });
+            }
+          };
+          nhan(i, j); nhan(j, i);
+        }
+      }
+      setNghiTrung(ra);
+      alert(ra.size === 0
+        ? `Đã rà ${cauTrongBai.length} câu trong bài — không thấy câu nào nghi trùng.`
+        : `Đã rà ${cauTrongBai.length} câu trong bài — ${ra.size} câu nghi trùng, đã đánh dấu trên Bản đồ.\n\n`
+          + 'Rê chuột lên ô có dấu để xem nó trùng với câu nào.');
+    } finally {
+      setDangRaSoat(false);
+    }
+  };
+
+  /**
+   * Ghi bản sửa của bộ kiểm thử NGƯỢC VÀO KHỐI, thay vì vào ngân hàng câu hỏi.
+   *
+   * Câu trong bài soạn chưa có trong bảng `questions`; ghi theo id vào đó là ghi trượt,
+   * hoặc tệ hơn là đè lên một câu khác. Xem utils/khoiSangCauHoi.
+   */
+  const luuVaVaoKhoi = (cauId: string, va: BanVaCau) => {
+    const cau = cauTrongBai.find(c => c.id === cauId);
+    if (!cau) return;
+    const moi = [...blocks];
+    const khoi = moi[cau.viTriKhoi];
+    if (!khoi || khoi.type !== 'quiz') return;
+    moi[cau.viTriKhoi] = { ...khoi, content: dapVaVaoKhoi(khoi.content, va) };
+    onChangeBlocks(moi);
+  };
 
   /* ---- Dán ảnh một câu hỏi vào ô soạn thảo thì ra khối câu hỏi ---- */
 
@@ -712,6 +797,41 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
              </button>
           </div>
 
+          {/* Soát cả bài trước khi cho học sinh làm - cùng bộ luật với Quản lý Đề thi,
+              nên bài ôn tập và đề thi không bị soi bằng hai thước đo khác nhau. */}
+          {!isSidebarCollapsed && cauTrongBai.length > 0 && (
+             <div className="px-2 py-2 border-b border-gray-100 flex flex-col gap-1.5 bg-white">
+                <button
+                   type="button"
+                   onClick={() => setMoKiemThu(true)}
+                   title="Rà cả bài: cấu trúc, công thức, lời giải, định dạng - và sửa được bằng AI ngay tại chỗ"
+                   className="w-full flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg
+                              border border-teal-300 text-teal-700 bg-white hover:bg-teal-50
+                              font-black text-[12px] transition-colors"
+                >
+                   <CheckCircle2 className="w-3.5 h-3.5" /> Kiểm thử bài ({cauTrongBai.length} câu)
+                </button>
+                <button
+                   type="button"
+                   onClick={raSoatTrung}
+                   disabled={dangRaSoat || cauTrongBai.length < 2}
+                   title="Rà các câu trong bài xem có cặp nào na ná nhau"
+                   className="w-full flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-lg
+                              border border-rose-300 text-rose-700 bg-white hover:bg-rose-50
+                              disabled:opacity-40 font-black text-[12px] transition-colors"
+                >
+                   {dangRaSoat
+                      ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      : <AlertTriangle className="w-3.5 h-3.5" />} Rà câu trùng
+                   {nghiTrung.size > 0 && (
+                      <span className="ml-0.5 px-1.5 rounded-full bg-rose-100 text-rose-700 text-[10px]">
+                         {nghiTrung.size}
+                      </span>
+                   )}
+                </button>
+             </div>
+          )}
+
           {/* Dạng thu gọn: dải ô dọc ĐÚNG TRÌNH TỰ, rê chuột hiện chi tiết */}
           {isSidebarCollapsed && (
              <div className="flex flex-col items-center gap-1 py-2">
@@ -753,6 +873,8 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                 const needsImage = blockNeedsImage(b);
                 const hasImage = !needsImage && blockHasImage(b);
                 const coCanhBao = blockCoCanhBao(b);
+                /* Kết quả lần rà câu trùng gần nhất; Map rỗng khi chưa rà lần nào. */
+                const trung = nghiTrung.get(b.id);
                 const isActive = activeBlockId === b.id;
                 const preview = blockPreview(b);
                 const hetSlide = info.start + info.count - 1;
@@ -765,11 +887,13 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                    <div key={b.id} className={`relative ${laTieuDePhan && i > 0 ? 'mt-2 pt-2 border-t-2 border-dashed border-indigo-200' : ''}`}>
                    <button
                       onClick={() => selectBlock(b.id)}
-                      title={`Slide ${info.count > 1 ? `${info.start}-${hetSlide}` : info.start} · ${kind.label}${needsImage ? ' · CÒN THIẾU ẢNH' : hasImage ? ' · Có hình ảnh' : ''}${coCanhBao ? '\n🛠️ AI ĐÃ SỬA/NGHI SAI ĐỀ - cần kiểm tra lại' : ''}\n${preview}`}
+                      title={`Slide ${info.count > 1 ? `${info.start}-${hetSlide}` : info.start} · ${kind.label}${needsImage ? ' · CÒN THIẾU ẢNH' : hasImage ? ' · Có hình ảnh' : ''}${coCanhBao ? '\n🛠️ AI ĐÃ SỬA/NGHI SAI ĐỀ - cần kiểm tra lại' : ''}${trung ? `\n⚠️ NGHI TRÙNG (${Math.round(trung.doGiong * 100)}% giống) với ${trung.cungVoi}` : ''}\n${preview}`}
                       className={`w-full text-left rounded-lg px-2 py-1.5 pr-7 border flex items-stretch gap-2 transition-colors ${isActive
                          ? 'bg-indigo-600 border-indigo-600 shadow-sm'
                          : needsImage
                             ? 'bg-red-50 border-red-200 hover:bg-red-100'
+                            : trung
+                               ? 'bg-rose-50 border-rose-300 ring-1 ring-rose-300 hover:bg-rose-100'
                             : coCanhBao
                                ? 'bg-amber-50 border-amber-200 hover:bg-amber-100'
                                : 'bg-white border-gray-100 hover:bg-indigo-50 hover:border-indigo-200'}`}
@@ -792,6 +916,12 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
                             )}
                             {coCanhBao && (
                                <AlertTriangle className={`w-3 h-3 shrink-0 ${needsImage || hasImage ? '' : 'ml-auto'} ${isActive ? 'text-amber-300' : 'text-amber-500'}`} strokeWidth={3} aria-label="AI đã sửa hoặc nghi sai đề" />
+                            )}
+                            {trung && (
+                               <span
+                                  className={`text-[9px] font-black px-1 rounded shrink-0 ${needsImage || hasImage || coCanhBao ? '' : 'ml-auto'} ${isActive ? 'bg-white/20 text-white' : 'bg-rose-100 text-rose-700'}`}
+                                  aria-label="Nghi trùng với câu khác"
+                               >TRÙNG</span>
                             )}
                          </span>
                          <span className={`block text-[11px] leading-snug mt-0.5 truncate ${isActive ? 'text-white/90' : 'text-gray-600'}`}>
@@ -1696,6 +1826,15 @@ export default function BlockEditor({ blocks, onChangeBlocks, onTriggerCrop, glo
               });
               setOVeLai(null);
            }}
+        />
+
+        {/* Kiểm thử cả bài - cùng bộ luật với Quản lý Đề thi. Bản sửa ghi NGƯỢC vào khối
+            của bài chứ không vào ngân hàng: câu ở đây chưa có trong bảng questions. */}
+        <KiemThuDeModal
+           mo={moKiemThu}
+           onDong={() => setMoKiemThu(false)}
+           cacPhan={phanCuaBai}
+           luuThayThe={(cauId, va) => luuVaVaoKhoi(cauId, va as BanVaCau)}
         />
      </div>
      </div>

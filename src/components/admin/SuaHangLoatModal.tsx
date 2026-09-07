@@ -27,11 +27,13 @@ export interface MucSuaHangLoat {
  * nằm ngay ở mã, ví dụ lời giải dồn một dòng thì chỗ khác nhau chính là dấu xuống dòng.
  */
 export default function SuaHangLoatModal({
-  ds, onDong, onDaLuu,
+  ds, onDong, onDaLuu, luuThayThe,
 }: {
   ds: MucSuaHangLoat[];
   onDong: () => void;
   onDaLuu: (cauId: string, va: BanVa) => void;
+  /** Đường ghi khác thay cho ngân hàng - xem chú thích cùng tên ở SuaLoiModal. */
+  luuThayThe?: (cauId: string, va: BanVa) => void | Promise<void>;
 }) {
   const [hienMa, setHienMa] = React.useState(false);
   const [dangLuu, setDangLuu] = React.useState(false);
@@ -56,8 +58,12 @@ export default function SuaHangLoatModal({
     for (let i = 0; i < dsChon.length; i++) {
       const m = dsChon[i];
       try {
-        const { error } = await supabase.from('questions').update(m.va).eq('id', m.cau.id!);
-        if (error) throw error;
+        if (luuThayThe) {
+          await luuThayThe(m.cau.id!, m.va);
+        } else {
+          const { error } = await supabase.from('questions').update(m.va).eq('id', m.cau.id!);
+          if (error) throw error;
+        }
         onDaLuu(m.cau.id!, m.va);
         daXong.push(m.cau.id!);
       } catch (e: any) {

@@ -41,7 +41,7 @@ function KhungChu({ nhan, chu, mau, hienMa }: { nhan: string; chu: string; mau: 
 }
 
 export default function SuaLoiModal({
-  cau, va, moTaLoi, ghiChu = [], onDong, onDaLuu,
+  cau, va, moTaLoi, ghiChu = [], onDong, onDaLuu, luuThayThe,
 }: {
   cau: CauDeSoat | null;
   va: BanVa | null;
@@ -49,6 +49,14 @@ export default function SuaLoiModal({
   ghiChu?: string[];
   onDong: () => void;
   onDaLuu: (cauId: string, va: BanVa) => void;
+  /**
+   * Đường ghi khác thay cho ghi thẳng vào ngân hàng.
+   *
+   * Câu trong bài ôn tập / kiểm tra nằm ở khối `quiz` của bài, chưa có trong bảng
+   * `questions`, nên ghi theo id vào ngân hàng là ghi trượt - hoặc tệ hơn, đè lên một
+   * câu khác trùng id. Khu soạn bài truyền hàm này vào để tự đắp bản vá về đúng khối.
+   */
+  luuThayThe?: (cauId: string, va: BanVa) => void | Promise<void>;
 }) {
   const [dangLuu, setDangLuu] = React.useState(false);
   /* Mặc định hiện công thức đã dựng; bật sang mã nguồn khi cần soi đúng chỗ LaTeX. */
@@ -59,12 +67,16 @@ export default function SuaLoiModal({
   const choDoi = cacChoDoi(cau, va);
 
   const luu = async () => {
-    if (!cau.id) { setLoi('Câu này chưa có trong ngân hàng nên không lưu được.'); return; }
+    if (!cau.id) { setLoi('Câu này không có mã nên không biết ghi vào đâu.'); return; }
     setDangLuu(true); setLoi('');
     try {
-      const supabase = createClient();
-      const { error } = await supabase.from('questions').update(va).eq('id', cau.id);
-      if (error) throw error;
+      if (luuThayThe) {
+        await luuThayThe(cau.id, va);
+      } else {
+        const supabase = createClient();
+        const { error } = await supabase.from('questions').update(va).eq('id', cau.id);
+        if (error) throw error;
+      }
       onDaLuu(cau.id, va);
       onDong();
     } catch (e: any) {
@@ -131,7 +143,9 @@ export default function SuaLoiModal({
 
         <div className="px-5 py-3 border-t border-gray-200 flex items-center gap-3">
           <span className="text-[11.5px] text-gray-400 flex-1 min-w-0">
-            Lưu là ghi đè câu này trong Ngân hàng câu hỏi, mọi đề dùng lại câu ấy về sau đều theo bản mới.
+            {luuThayThe
+              ? 'Lưu là ghi vào chính bài đang soạn. Ngân hàng câu hỏi không đổi, và phải bấm Lưu ở đầu trang thì bài mới được cất xuống.'
+              : 'Lưu là ghi đè câu này trong Ngân hàng câu hỏi, mọi đề dùng lại câu ấy về sau đều theo bản mới.'}
           </span>
           <button onClick={onDong}
                   className="px-4 py-2 rounded-xl font-bold text-[13px] border border-gray-300 text-gray-600 hover:bg-gray-50">
@@ -141,7 +155,7 @@ export default function SuaLoiModal({
                   className="bg-emerald-600 text-white px-4 py-2 rounded-xl font-bold text-[13px]
                              flex items-center gap-2 hover:bg-emerald-700 disabled:opacity-50">
             {dangLuu ? <Loader2 className="w-4 h-4 animate-spin" /> : <Save className="w-4 h-4" />}
-            Lưu vào ngân hàng
+            {luuThayThe ? 'Lưu vào bài' : 'Lưu vào ngân hàng'}
           </button>
         </div>
       </div>

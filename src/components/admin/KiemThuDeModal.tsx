@@ -45,11 +45,18 @@ function ThanhDiem({ diem }: { diem: number }) {
 }
 
 export default function KiemThuDeModal({
-  mo, onDong, cacPhan, chiTieu, diemPhan, tenKhuon, dongMaTran,
+  mo, onDong, cacPhan, chiTieu, diemPhan, tenKhuon, dongMaTran, luuThayThe,
 }: {
   mo: boolean;
   onDong: () => void;
   cacPhan: PhanDeThi[];
+  /**
+   * Duong ghi khac thay cho ghi thang vao ngan hang cau hoi.
+   *
+   * Khu soan bai (on tap / kiem tra) giu cau trong khoi `quiz` cua bai chu khong o bang
+   * `questions`, nen phai tu dap ban va ve dung khoi. Xem SuaLoiModal.
+   */
+  luuThayThe?: (cauId: string, va: BanVa) => void | Promise<void>;
   chiTieu?: Partial<Record<BankType, ChiTieuLoaiSoat>>;
   diemPhan?: Record<string, number>;
   tenKhuon?: string;
@@ -410,6 +417,7 @@ export default function KiemThuDeModal({
         ghiChu={banVa?.ghiChu || []}
         onDong={() => setBanVa(null)}
         onDaLuu={daLuuXong}
+        luuThayThe={luuThayThe}
       />
 
       {dsHangLoat && (
@@ -417,6 +425,7 @@ export default function KiemThuDeModal({
           ds={dsHangLoat}
           onDong={() => { setDsHangLoat(null); setDsTick(new Set()); }}
           onDaLuu={daLuuXong}
+          luuThayThe={luuThayThe}
         />
       )}
     </div>

@@ -69,6 +69,21 @@ const LENH_LATEX = ['frac', 'sqrt', 'left', 'right', 'begin', 'overrightarrow', 
 const RE_LATEX_TRAN = new RegExp('(' + LENH_LATEX.map(x => BS + BS + x).join('|') + ')');
 const boCongThuc = (s: string) => chu(s).replace(/\$[^$]*\$/g, '');
 
+/** Dấu chéo đôi ngay trước tên lệnh - "\\alpha", "\\frac". */
+const RE_CHEO_DOI = new RegExp(BS + BS + BS + BS + '[A-Za-z]');
+
+/**
+ * Tên lệnh LaTeX mất hẳn dấu chéo đầu.
+ *
+ * Chỉ nhận diện những lệnh LUÔN đi kèm ngoặc nhọn hoặc con số - "frac{", "sqrt3". Lệnh
+ * kiểu "alpha" đứng trần thì bỏ qua: chữ ấy có thể là lời văn nói về chữ cái Hy Lạp, bắt
+ * vào là báo oan.
+ */
+const LENH_CO_NGOAC = ['frac', 'dfrac', 'tfrac', 'sqrt', 'overrightarrow', 'overline',
+  'widehat', 'vec', 'begin', 'end', 'mathbb'];
+const RE_MAT_DAU_CHEO = new RegExp(
+  '(?<![' + BS + BS + 'A-Za-z])(' + LENH_CO_NGOAC.join('|') + ')' + BS + 's*[{' + BS + 'd]');
+
 /**
  * Phương án tổng hợp bị cấm.
  *
@@ -124,10 +139,26 @@ export function soatMotCau(q: CauDeSoat, viTri: string): LoiKiemThu[] {
   const giai = chu(q.explanation);
   const moiThu = [de, ...pa].join('\n');
 
-  /* ---------- KHOA HỌC & CÔNG THỨC ---------- */
+  /* ---------- KHOA HỌC & CÔNG THỨC ----------
+     Soi CẢ LỜI GIẢI chứ không riêng đề bài và phương án.
 
-  // Công thức rỗng "$ $" - đo được 17 câu Toán, 2 câu Lý
-  const capCongThuc = moiThu.match(/\$[^$]*\$/g) || [];
+     Bản đầu chỉ soi [đề + phương án], nên với câu tự luận - đề vỏn vẹn một dòng, công thức
+     dồn hết vào lời giải - thì gần như không soi được gì. Đo trên một bài kiểm tra thật:
+     câu 1 in ra vỡ thành "Leftrightarrow x=-frac12" ngay trước mắt mà bảng kiểm thử vẫn
+     báo sạch, vì chỗ hỏng nằm trong lời giải.
+
+     Soi cả ĐÁP ÁN nữa: với câu tự luận thì đáp án mẫu CHÍNH LÀ lời giải, và bài soạn giữ
+     nó ở trường đáp án chứ không phải trường lời giải. Chính câu 1 nói trên có hai bản -
+     bản ở trường lời giải thì sạch, bản ở trường đáp án mới là bản hỏng, mà bản in ra cho
+     học sinh lại lấy đúng bản hỏng. Với trắc nghiệm thì đáp án chỉ là "A" hay "ĐSĐS" nên
+     thêm vào cũng không sinh báo oan. */
+  const moiThuKeCaGiai = [de, ...pa, dapAn, giai].join('\n');
+
+  /* Công thức rỗng "$ $" - đo được 17 câu Toán, 2 câu Lý.
+     Phải bỏ khối $$…$$ (công thức trình bày riêng dòng) TRƯỚC khi tìm: regex cặp $…$ nhìn
+     hai dấu $ liền nhau thành một cặp rỗng. Lời giải rất hay dùng $$, nên lúc mở rộng sang
+     soi lời giải thì 22/23 câu mới dính đều là báo oan vì đúng chuyện này. */
+  const capCongThuc = moiThuKeCaGiai.replace(/\$\$[\s\S]*?\$\$/g, ' ').match(/\$[^$]*\$/g) || [];
   if (capCongThuc.some(c => c.slice(1, -1).trim() === '')) {
     them('congThucRong', 'khoaHoc', 'loi',
       'Có cặp $…$ rỗng, in ra chỉ là khoảng trắng vô nghĩa.',
@@ -135,17 +166,38 @@ export function soatMotCau(q: CauDeSoat, viTri: string): LoiKiemThu[] {
   }
 
   // Số dấu $ lẻ -> công thức hở
-  if ((moiThu.match(/\$/g) || []).length % 2 === 1) {
+  if ((moiThuKeCaGiai.match(/\$/g) || []).length % 2 === 1) {
     them('doLaLe', 'khoaHoc', 'loi',
       'Số dấu $ lẻ - có một công thức chưa đóng, in ra sẽ vỡ.',
       'Tìm chỗ thiếu dấu $ và đóng lại.');
   }
 
   // Lệnh LaTeX để trần ngoài $…$ - đo được 38 câu Toán
-  if (RE_LATEX_TRAN.test(boCongThuc(moiThu))) {
+  if (RE_LATEX_TRAN.test(boCongThuc(moiThuKeCaGiai))) {
     them('latexTran', 'khoaHoc', 'loi',
       'Có lệnh LaTeX nằm ngoài cặp $…$, in ra thành chữ thô kiểu "\\frac{1}{2}".',
       'Bọc đoạn công thức đó vào cặp $…$.');
+  }
+
+  /* Dấu chéo ĐÔI ngay trước tên lệnh: "\\alpha", "\\frac".
+     KaTeX đọc "\\" là lệnh XUỐNG DÒNG, nên công thức đứt ngay giữa chừng rồi in nốt phần
+     sau thành chữ thô. Đây là vết của đề đi qua một vòng JSON bị thoát dấu hai lần - đo
+     trên kho Toán: 36 câu trong bài soạn đang dính.
+     Không tự sửa bằng máy: trong \begin{cases}…\end{cases} thì "\\" là xuống dòng THẬT,
+     thay bừa là hỏng hệ phương trình. Để AI nhìn ngữ cảnh rồi Thầy cô duyệt. */
+  if (RE_CHEO_DOI.test(moiThuKeCaGiai)) {
+    them('cheoDoi', 'khoaHoc', 'loi',
+      'Có dấu chéo đôi trước tên lệnh (kiểu "\\\\alpha"), KaTeX hiểu là xuống dòng nên công thức vỡ.',
+      'Bỏ bớt một dấu chéo, trừ chỗ xuống dòng thật trong \\begin{cases}.');
+  }
+
+  /* Tên lệnh LaTeX MẤT hẳn dấu chéo: "frac{6}{3,5}" thay vì "\frac{6}{3,5}".
+     Chỉ bắt khi tên lệnh đi liền dấu { hoặc chữ số - đó là bằng chứng chắc chắn, chứ bắt
+     cả chữ "alpha" đứng trần thì oan cho câu chỉ nhắc tới tên chữ cái Hy Lạp. */
+  if (RE_MAT_DAU_CHEO.test(moiThuKeCaGiai)) {
+    them('matDauCheo', 'khoaHoc', 'loi',
+      'Có tên lệnh LaTeX mất dấu chéo đầu (kiểu "frac{6}{3,5}"), in ra thành chữ thô.',
+      'Trả lại dấu chéo và bọc cả cụm vào cặp $…$.');
   }
 
   /* ---------- SƯ PHẠM: PHƯƠNG ÁN & ĐÁP ÁN ---------- */
@@ -313,7 +365,10 @@ export interface DauVaoKiemThu {
 
 /** Nhãn vị trí của một câu: "Phần II · Câu 3". */
 export function nhanViTri(phan: PhanDeThi, viTri: number): string {
-  return `Phần ${phan.soLaMa} · Câu ${viTri}`;
+  /* Bài ôn tập / kiểm tra soạn trong khu Bài giảng không chia phần - câu đánh số một mạch
+     theo Bản đồ. Chỗ ấy truyền soLaMa rỗng để nhãn ra thẳng "Câu 7", khớp đúng số Thầy cô
+     nhìn thấy trên Bản đồ, chứ "Phần  · Câu 7" thì thừa và khó lần. */
+  return phan.soLaMa ? `Phần ${phan.soLaMa} · Câu ${viTri}` : `Câu ${viTri}`;
 }
 
 export function soatCaDe(dv: DauVaoKiemThu): KetQuaKiemThu {
