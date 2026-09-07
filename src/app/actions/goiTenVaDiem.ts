@@ -156,10 +156,10 @@ export async function congDiem(
   lan: { student_id: string; diem: number; ly_do?: string; nguon?: string },
   lessonId?: string | null,
   thang?: string,
-): Promise<boolean> {
+): Promise<{ duoc: boolean; tong: number }> {
   const nguoi = await assertStaff();
   const t = thang || thangNay();
-  if (await daChotThang(classId, t)) return false;
+  if (await daChotThang(classId, t)) return { duoc: false, tong: 0 };
 
   const { error } = await quanTri.from('diem_thuong').insert([{
     student_id: lan.student_id,
@@ -172,7 +172,18 @@ export async function congDiem(
     nguoi_tao: (nguoi as any)?.id || null,
   }]);
   if (error) throw new Error(thieuBang(error) ? LOI_CHUA_TAO_BANG : error.message);
-  return true;
+
+  /* ĐỌC LẠI TỔNG TỪ CƠ SỞ DỮ LIỆU, không để màn hình tự cộng lấy.
+     Màn hình tự cộng thì con số nhìn thấy chỉ là phép tính trong đầu nó - ghi hụt hay ghi
+     trượt tháng vẫn hiện y như đã cộng xong. Đọc lại ngay sau khi ghi thì con số hiện lên
+     là con số THẬT trong sổ, cộng mà không vào là thấy ngay. */
+  const { data, error: loiDoc } = await quanTri
+    .from('diem_thuong').select('diem')
+    .eq('class_id', classId).eq('thang', t).eq('student_id', lan.student_id);
+  if (loiDoc) throw new Error(thieuBang(loiDoc) ? LOI_CHUA_TAO_BANG : loiDoc.message);
+
+  const tong = (data || []).reduce((s, r) => s + Number(r.diem || 0), 0);
+  return { duoc: true, tong };
 }
 
 /**

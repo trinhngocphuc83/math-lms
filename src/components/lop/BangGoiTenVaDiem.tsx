@@ -94,6 +94,9 @@ export default function BangGoiTenVaDiem({
   });
 
   const [emKhac, setEmKhac] = React.useState('');
+  /* Số điểm cộng cho em xung phong. Trước đây đóng cứng 1 điểm nên câu khó câu dễ đều như
+     nhau; nay Thầy cô tự chọn, mặc định vẫn 1 để thao tác nhanh vẫn như cũ. */
+  const [diemChon, setDiemChon] = React.useState(1);
   const [vuaCong, setVuaCong] = React.useState('');
 
   /* ------------------------------------------------------------------ nạp lớp */
@@ -268,13 +271,15 @@ export default function BangGoiTenVaDiem({
   const cong = async (hs: HocSinh | null, diem: number) => {
     if (!hs) return;
     try {
-      const duoc = await congDiem(lopId, {
+      const { duoc, tong } = await congDiem(lopId, {
         student_id: hs.id, diem,
         ly_do: diem > 0 ? 'Trả lời đúng trên lớp' : 'Chưa trả lời được',
         nguon: 'tuong_tac',
       }, lessonId);
+      /* Hiện TỔNG đọc lại từ sổ, không phải con số màn hình tự cộng: cộng mà không vào sổ
+         thì tổng đứng yên, Thầy cô thấy ngay chứ không phải mở Sân khấu vinh danh mới biết. */
       setVuaCong(duoc
-        ? `${diem > 0 ? '+' : ''}${diem} cho ${hs.ten}`
+        ? `${diem > 0 ? '+' : ''}${diem} cho ${hs.ten} — tháng này ${tong} điểm`
         : 'Tháng này đã chốt, không cộng thêm được.');
       /* Nói ra cho cả lớp nghe, không phải chỉ mình thầy cô thấy con số nhảy. */
       if (duoc) noiCongDiem(hs.id, hs.ten, diem).catch(() => { /* im tiếng thì thôi */ });
@@ -522,13 +527,25 @@ export default function BangGoiTenVaDiem({
                       <option key={h.id} value={h.id}>{h.ten}</option>
                     ))}
                   </select>
-                  <button onClick={() => cong(emDuocChon, 1)} disabled={!emDuocChon || daChot}
-                          className="px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700
+                  {/* Số điểm: câu khó cho nhiều, câu dễ cho ít. Dấu của nút quyết định
+                      cộng hay trừ, nên ô này chỉ cần số dương. */}
+                  <select value={diemChon} onChange={e => setDiemChon(Number(e.target.value))}
+                          title="Số điểm cộng hoặc trừ"
+                          className="shrink-0 w-[62px] px-2 py-2 rounded-xl border border-slate-200
+                                     text-[13px] font-bold text-slate-700 outline-none focus:border-violet-400">
+                    {Array.from({ length: 10 }, (_, i) => i + 1).map(n => (
+                      <option key={n} value={n}>{n}đ</option>
+                    ))}
+                  </select>
+                  <button onClick={() => cong(emDuocChon, diemChon)} disabled={!emDuocChon || daChot}
+                          title={`Cộng ${diemChon} điểm`}
+                          className="shrink-0 px-3 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-700
                                      font-black disabled:opacity-40">
                     <Plus className="w-4 h-4" />
                   </button>
-                  <button onClick={() => cong(emDuocChon, -1)} disabled={!emDuocChon || daChot}
-                          className="px-3 py-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-600
+                  <button onClick={() => cong(emDuocChon, -diemChon)} disabled={!emDuocChon || daChot}
+                          title={`Trừ ${diemChon} điểm`}
+                          className="shrink-0 px-3 py-2 rounded-xl bg-rose-50 border border-rose-200 text-rose-600
                                      font-black disabled:opacity-40">
                     <Minus className="w-4 h-4" />
                   </button>
