@@ -22,6 +22,19 @@ import { catGiongVaoKho, timGiongDaNho } from "@/app/actions/goiTenVaDiem";
 const MODEL_TTS = 'gemini-2.5-flash-preview-tts';
 
 /**
+ * Giọng đọc. Đổi đúng MỘT dòng này là cả app đổi giọng theo.
+ *
+ * Trước dùng 'Kore' - trong bộ giọng của Google nó thuộc nhóm "Firm": chắc, nghiêm, hợp
+ * đọc bản tin hơn là gọi tên học sinh trong lớp. Nghe khô.
+ *
+ * Vài giọng hợp lớp học hơn, ghi ra đây để sau này muốn đổi khỏi phải tra lại:
+ *   Leda (trẻ trung) · Achernar (mềm nhẹ) · Sulafat (ấm áp)
+ *   Aoede (thoáng, tự nhiên) · Laomedeia (vui tươi) · Zephyr (tươi sáng)
+ * Google có 30 giọng dựng sẵn; sáu giọng trên là nhóm trẻ trung và mềm.
+ */
+const GIONG_DOC = 'Leda';
+
+/**
  * Bọc lời dặn quanh câu cần đọc.
  *
  * Gửi trơ mỗi câu "Mời em An" thì model thỉnh thoảng tưởng đây là câu hỏi phải TRẢ LỜI
@@ -187,7 +200,16 @@ function chuong(): void {
  * `khoa` là tên tệp đem cất, nên phải khác nhau theo từng câu: tên em thì một khoá, câu
  * "được cộng 1 điểm" lại một khoá khác - nếu không thì đọc nhầm câu.
  */
-export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSan> {
+export async function chuanBiGiong(khoaGoc: string, cau: string): Promise<GiongDaSan> {
+  /* TÊN GIỌNG PHẢI NẰM TRONG KHOÁ KHO.
+     Kho nhớ lại từng câu đã đọc để lần sau phát ngay. Nếu khoá chỉ theo mã học sinh thì
+     đổi giọng xong app vẫn lôi bản CŨ ra phát - nghe y như chưa đổi gì, mà không ai hiểu
+     vì sao. Đo lúc đổi giọng: kho đang giữ 127 tệp đọc bằng giọng cũ.
+     Gài tên giọng vào khoá thì bản cũ tự bị bỏ qua, bản mới cất riêng, và đổi giọng lần
+     nữa cũng đúng ngay. Bộ giọng cũ nằm lại trong kho, chốt xong giọng thì xoá tay
+     thư mục giong-goi-ten cho gọn. */
+  const khoa = `${khoaGoc}-${GIONG_DOC}`;
+
   // 1. Bản đã nhớ - nhanh nhất, và mất mạng vẫn còn nếu trình duyệt đã tải về
   const daNho = await timBanDaNho(khoa);
   if (daNho) {
@@ -215,7 +237,7 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
               contents: [{ parts: [{ text: bocLoiDan(cau) }] }],
               generationConfig: {
                 responseModalities: ['AUDIO'],
-                speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } } },
+                speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: GIONG_DOC } } },
               },
             }),
           },
@@ -240,7 +262,7 @@ export async function chuanBiGiong(khoa: string, cau: string): Promise<GiongDaSa
                 contents: [{ parts: [{ text: bocLoiDanGat(cau) }] }],
                 generationConfig: {
                   responseModalities: ['AUDIO'],
-                  speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: 'Kore' } } },
+                  speechConfig: { voiceConfig: { prebuiltVoiceConfig: { voiceName: GIONG_DOC } } },
                 },
               }),
             },
