@@ -1,4 +1,5 @@
 import { goiGeminiTrenTrinhDuyet, type CauHinhAI } from "@/utils/geminiBrowser";
+import { QUY_TAC_CONG_THUC } from './quyTacCongThuc';
 
 /**
  * Sửa MỘT câu hỏi đang soạn theo yêu cầu của thầy cô, bằng lời.
@@ -51,6 +52,8 @@ QUY TẮC BẮT BUỘC:
 2. TUYỆT ĐỐI KHÔNG đụng vào các đoạn ảnh dạng ![...](...) - chép lại y nguyên, đúng vị trí cũ.
    Không thêm ảnh mới, không đổi địa chỉ ảnh.
 3. Công thức viết bằng LaTeX bọc trong dấu $...$ như câu gốc.
+
+${QUY_TAC_CONG_THUC}
 4. Sửa đề thì phải soát lại đáp án và lời giải cho khớp - đừng để đề một đằng đáp án một nẻo.
 5. Trả về ĐÚNG một đối tượng JSON, không kèm lời dẫn:
 {
@@ -155,6 +158,8 @@ QUY TẮC BẮT BUỘC:
 3. TUYỆT ĐỐI KHÔNG đụng vào ảnh dạng ![...](...) - chép y nguyên, không đổi địa chỉ.
 4. Giữ nguyên cấp tiêu đề (#, ##, ###) và dấu ngắt trang ---, trừ khi được yêu cầu đổi.
 5. Công thức viết bằng LaTeX bọc trong $...$ như bản gốc.
+
+${QUY_TAC_CONG_THUC}
 6. Trả về ĐÚNG một đối tượng JSON, không kèm lời dẫn:
 { "noiDung": "toàn bộ đoạn sau khi sửa", "daSua": "một câu ngắn nói rõ đã sửa gì" }
 

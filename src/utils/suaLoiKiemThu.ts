@@ -299,7 +299,9 @@ VIỆC CẦN LÀM: ${viec}
 NGUYÊN TẮC BẤT DI BẤT DỊCH:
 - Chỉ sửa đúng chỗ được yêu cầu. Mọi thứ khác giữ nguyên từng chữ.
 - KHÔNG đổi số liệu, KHÔNG đổi đáp án đúng, KHÔNG đổi ý nghĩa câu hỏi.
-- Mọi công thức toán phải nằm trong cặp $…$.
+- Mọi công thức toán phải nằm trong cặp $…$, và lệnh LaTeX viết MỘT dấu gạch chéo
+  ($\\frac, $\\alpha). Không nhân đôi thành $\\\\frac - hai gạch chéo là lệnh xuống dòng,
+  công thức sẽ đứt. Cũng không bỏ rơi gạch chéo thành "frac{1}{2}".
 - Chỉ trả về những trường THỰC SỰ có thay đổi.
 - Những mốc dạng ${MOC_ANH}0# là HÌNH VẼ của câu. Chép lại y nguyên, đúng chỗ cũ.
   Tuyệt đối không xoá, không đổi số, không mô tả thay cho hình.

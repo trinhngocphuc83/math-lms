@@ -17,6 +17,7 @@ import {
   CORRECT_ANSWER_FORMAT_HINT, type BankType,
 } from "./questionTypes";
 import type { QuestionData } from "./aiQuestionScan";
+import { QUY_TAC_CONG_THUC } from './quyTacCongThuc';
 
 export interface YeuCauSinhBu {
   grade: string;
@@ -65,6 +66,8 @@ YÊU CẦU PHÂN LOẠI - mọi câu đều phải đúng:
 - ${targetFormatPrompt(yc.question_type)}
 
 ${CORRECT_ANSWER_FORMAT_HINT}
+
+${QUY_TAC_CONG_THUC}
 
 CHỈ trả về một mảng JSON, không giải thích gì thêm:
 [

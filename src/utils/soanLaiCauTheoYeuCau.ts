@@ -18,6 +18,7 @@ import {
   CORRECT_ANSWER_FORMAT_HINT, type BankType,
 } from "./questionTypes";
 import type { QuestionData } from "./aiQuestionScan";
+import { QUY_TAC_CONG_THUC } from './quyTacCongThuc';
 
 export interface YeuCauSoanLai {
   /** Câu đang muốn thay - dùng làm mốc để AI giữ đúng chủ đề và độ khó. */
@@ -62,6 +63,8 @@ ${taMotCau(yc.cauGoc)}
 """
 ${yc.yeuCau.trim()}
 """
+
+${QUY_TAC_CONG_THUC}
 
 YÊU CẦU PHÂN LOẠI - mọi câu đều phải giữ đúng như câu cũ:
 - Lớp: ${yc.grade}

@@ -239,8 +239,11 @@ ${uniqueForms.map((f) => `- ${f}`).join("\n")}
 3. Kiểm tra lại output JSON trước khi gửi để đảm bảo ĐÚNG cấu trúc, ĐÚNG nội dung và KHÔNG thiếu trường nào.
 
 QUY TẮC VỀ ĐỊNH DẠNG JSON - VI PHẠM LÀ HỎNG CẢ LÔ, PHẢI TUÂN THỦ TUYỆT ĐỐI:
-J1. Mọi dấu gạch chéo ngược trong công thức PHẢI được nhân đôi. Viết "\\\\frac{1}{2}" CHỨ KHÔNG PHẢI "\\frac{1}{2}".
-    Tương tự: \\\\sqrt, \\\\text, \\\\cdot, \\\\times, \\\\pi, \\\\Delta.
+J1. Công thức viết LaTeX CHUẨN, MỘT dấu gạch chéo: "$\\frac{1}{2}$", "$\\sqrt{5}$", "$\\alpha$".
+    TUYỆT ĐỐI KHÔNG nhân đôi gạch chéo thành "$\\\\frac{1}{2}$" hay "$\\\\alpha$" - hai gạch
+    chéo là lệnh XUỐNG DÒNG, công thức sẽ đứt ngay giữa chừng và in ra thành chữ thô.
+    Chỉ giữ hai gạch chéo ở đúng một chỗ: xuống dòng thật bên trong \\begin{cases},
+    \\begin{array}, \\begin{aligned}.
 J2. TUYỆT ĐỐI KHÔNG xuống dòng thật bên trong một chuỗi. Cần xuống dòng thì viết \\\\n.
 J3. KHÔNG để dấu phẩy thừa trước dấu ] hoặc }.
 J4. KHÔNG viết thêm bất kỳ lời dẫn, lời chào hay giải thích nào ngoài mảng JSON.

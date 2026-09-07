@@ -187,7 +187,10 @@ QUY TẮC BẮT BUỘC:
   thêm câu mới, KHÔNG sửa nội dung toán học, KHÔNG bỏ bớt câu nào đọc được.
 - Câu nào bị cắt cụt giữa chừng, không đủ dữ kiện để khôi phục, thì BỎ HẲN câu đó chứ
   KHÔNG bịa thêm cho đủ.
-- Công thức LaTeX trong JSON phải nhân đôi dấu gạch chéo (\\frac, \\ge...).
+- Lệnh LaTeX sau khi đọc JSON ra phải còn ĐÚNG MỘT dấu gạch chéo: "\\frac", "\\ge", "\\alpha".
+  Chỗ nào trong đoạn gốc đang có hai gạch chéo ("\\\\frac", "\\\\alpha") thì chính là chỗ
+  hỏng - bỏ bớt một. Ngoại lệ duy nhất được giữ hai gạch chéo: xuống dòng thật bên trong
+  \\begin{cases}, \\begin{array}, \\begin{aligned}.
 - CHỈ trả về mảng JSON, không rào mã, không lời dẫn.
 
 ĐOẠN CẦN DỰNG LẠI:
