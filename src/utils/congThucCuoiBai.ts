@@ -46,8 +46,27 @@ export function rutCongThucCuoiBai(noiDung: string): CongThucRut[] {
     const d = dong.trim();
     if (!d.startsWith('-') && !d.startsWith('*')) continue;
 
-    // Tách theo dấu | : tên | công thức | dùng khi nào
-    const phan = d.replace(/^[-*]\s*/, '').split('|').map(x => x.trim());
+    /* Tách theo dấu | : tên | công thức | dùng khi nào
+     *
+     * NHƯNG dấu | còn là GIÁ TRỊ TUYỆT ĐỐI trong công thức. Bản đầu cứ split('|') nên
+     * $\int \frac{1}{x}dx = \ln|x| + C$ bị cắt làm ba, công thức cụt còn "\ln" và chữ
+     * "x" rơi sang cột mô tả. Đo trên app: 4/21 công thức đang hỏng vì chuyện này, toàn
+     * công thức hay dùng - quãng đường $\int|v(t)|dt$, diện tích $\int|f(x)|dx$.
+     *
+     * Nên chỉ cắt ở dấu | NẰM NGOÀI cặp $…$: đi từng ký tự, gặp $ thì lật cờ trong/ngoài
+     * công thức, chỉ cắt khi đang ở ngoài. */
+    const cat = (s: string): string[] => {
+      const ra: string[] = [];
+      let dem = '', trongCongThuc = false;
+      for (const c of s) {
+        if (c === '$') trongCongThuc = !trongCongThuc;
+        if (c === '|' && !trongCongThuc) { ra.push(dem); dem = ''; continue; }
+        dem += c;
+      }
+      ra.push(dem);
+      return ra;
+    };
+    const phan = cat(d.replace(/^[-*]\s*/, '')).map(x => x.trim());
     if (phan.length < 2) continue;
 
     const ten = phan[0].replace(/\*\*/g, '').trim();
