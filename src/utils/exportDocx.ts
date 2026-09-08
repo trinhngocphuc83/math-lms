@@ -3,7 +3,6 @@ import {
   Table, TableRow, TableCell, WidthType, BorderStyle, PageOrientation, VerticalAlign,
   Tab, TabStopType, Header, Footer, PageNumber,
 } from "docx";
-import { saveAs } from "file-saver";
 
 // Loại bỏ ký tự không hợp lệ trong XML (control characters)
 // File .docx là XML bên trong, nếu chứa các ký tự này sẽ bị hỏng
@@ -532,13 +531,19 @@ export interface KhuonXuatDe {
  * xếp liền một mạch) để những nơi đang gọi không phải sửa. Truyền `khuonDe` thì dựng
  * đầu đề và chia PHẦN I/II/III theo khuôn 2025.
  */
-export const exportQuestionsToWord = async (
+/**
+ * Dựng TÀI LIỆU Word, chưa tải xuống.
+ *
+ * Tách khỏi `exportQuestionsToWord` để chỗ khác dùng lại được ĐÚNG bộ định dạng này -
+ * cách đánh số câu, phương án xếp 4 cột hay 2 cột theo độ dài, câu Đúng/Sai dựng thành
+ * bảng có ô tích, hộp lời giải viền trái. Trước đây muốn xuất Word từ nơi khác thì phải
+ * chép lại toàn bộ cách trình bày, mà chép là sớm muộn cũng lệch.
+ */
+export const dungNoiDungWord = async (
   questions: any[],
   exportType: 'student' | 'teacher',
-  filePrefix: string = 'Ngan_Hang_Cau_Hoi',
   khuonDe?: KhuonXuatDe,
-) => {
-  try {
+): Promise<any[]> => {
     const childrenElements: any[] = [];
 
     // Không trộn mã thì vẫn chạy đúng một vòng, giữ nguyên hành vi cũ
@@ -836,11 +841,22 @@ export const exportQuestionsToWord = async (
      *
      * Chỉ gắn khi in ĐỀ THI THẬT (có khuôn đề); bản "ngân hàng câu hỏi" không cần.
      */
+    return childrenElements;
+};
+
+/**
+ * Dựng cả tài liệu Word hoàn chỉnh (có kiểu chữ, lề, dấu neo góc). Chưa tải xuống.
+ */
+export const dungTaiLieuWord = async (
+  questions: any[],
+  exportType: 'student' | 'teacher',
+  khuonDe?: KhuonXuatDe,
+): Promise<InstanceType<typeof Document>> => {
+    const childrenElements = await dungNoiDungWord(questions, exportType, khuonDe);
     const nhanDang = khuonDe
       ? { maDe: khuonDe.dauDe?.maDe, loai: 'de' as const }
       : null;
-
-    const doc = new Document({
+    return new Document({
       styles: KIEU_MAC_DINH,
       sections: [
         // Phụ lục (nếu có) đi riêng một section khổ ngang; đề thi giữ khổ dọc
@@ -862,7 +878,23 @@ export const exportQuestionsToWord = async (
         },
       ]
     });
+};
 
+/**
+ * Xuất câu hỏi ra Word rồi tải xuống. Chạy trên trình duyệt.
+ *
+ * Không truyền `khuonDe` thì giữ đúng hành vi cũ (tiêu đề "NGÂN HÀNG CÂU HỎI", các câu
+ * xếp liền một mạch) để những nơi đang gọi không phải sửa. Truyền `khuonDe` thì dựng
+ * đầu đề và chia PHẦN I/II/III theo khuôn 2025.
+ */
+export const exportQuestionsToWord = async (
+  questions: any[],
+  exportType: 'student' | 'teacher',
+  filePrefix: string = 'Ngan_Hang_Cau_Hoi',
+  khuonDe?: KhuonXuatDe,
+) => {
+  try {
+    const doc = await dungTaiLieuWord(questions, exportType, khuonDe);
     const buffer = await Packer.toBuffer(doc);
     const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.wordprocessingml.document" });
     const url = URL.createObjectURL(blob);
