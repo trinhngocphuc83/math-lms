@@ -74,7 +74,8 @@ const gopBangVeMotDong = (text: string): string => {
     (bang) => bang.replace(/[\r\n]+/g, ' '));
 };
 
-const dungDongCoTheCoBang = async (
+/** Một dòng có thể chứa bảng LaTeX (môi trường array) -> các đoạn Word. */
+export const dungDongCoTheCoBang = async (
   line: string,
   opts: { color?: string; bold?: boolean; italics?: boolean; icon?: TextRun } = {},
 ): Promise<any[]> => {
@@ -110,7 +111,9 @@ const dungDongCoTheCoBang = async (
   return ra;
 };
 
-const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false, defaultItalics: boolean = false) => {
+/** Một dòng chữ có thể lẫn công thức, in đậm, ảnh -> các phần tử của Word.
+ *  Export để chỗ khác dựng tài liệu cũng đi qua đúng bộ xử lý này. */
+export const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false, defaultItalics: boolean = false) => {
   if (!textLine) return [new TextRun({ text: "" })];
   // Khôi phục lệnh LaTeX bị AI lưu nhầm thành ký tự điều khiển ("\"+TAB+"ext" thay vì
   // "\text"). Hàm này đã có sẵn và dùng ở nơi khác, nhưng đường xuất Word lại bỏ qua
