@@ -24,13 +24,18 @@ const MODEL_TTS = 'gemini-2.5-flash-preview-tts';
 /**
  * Giọng đọc. Đổi đúng MỘT dòng này là cả app đổi giọng theo.
  *
+ * Thầy cô nghe thử bảy giọng rồi chọn 'Leda' (nhóm Youthful - trẻ trung).
+ *
  * Trước dùng 'Kore' - trong bộ giọng của Google nó thuộc nhóm "Firm": chắc, nghiêm, hợp
  * đọc bản tin hơn là gọi tên học sinh trong lớp. Nghe khô.
  *
- * Vài giọng hợp lớp học hơn, ghi ra đây để sau này muốn đổi khỏi phải tra lại:
- *   Leda (trẻ trung) · Achernar (mềm nhẹ) · Sulafat (ấm áp)
- *   Aoede (thoáng, tự nhiên) · Laomedeia (vui tươi) · Zephyr (tươi sáng)
- * Google có 30 giọng dựng sẵn; sáu giọng trên là nhóm trẻ trung và mềm.
+ * Mấy giọng còn lại đã thử, ghi ra đây để sau này muốn đổi khỏi phải tra lại:
+ *   Achernar (mềm nhẹ) · Sulafat (ấm áp) · Aoede (thoáng, tự nhiên)
+ *   Laomedeia (vui tươi) · Zephyr (tươi sáng)
+ * Google có 30 giọng dựng sẵn; mấy giọng trên là nhóm trẻ trung và mềm.
+ *
+ * Đổi giọng thì bộ đã nhớ trong kho thành vô dụng (khoá có gài tên giọng, xem chuanBiGiong)
+ * - dọn bằng scratch/don-kho-giong.mjs, nó tải về rồi mới xoá.
  */
 const GIONG_DOC = 'Leda';
 
