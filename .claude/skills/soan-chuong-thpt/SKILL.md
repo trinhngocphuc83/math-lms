@@ -157,6 +157,13 @@ liệu 200 câu thì không ai đọc hết:
 | LaTeX thô | Công thức không dựng được, ra chữ `\frac{...}` |
 | dấu sao | Dấu nhấn mạnh markdown chưa dựng thành chữ đậm |
 | chữ màu | Màu trên màn hình lọt vào bản in (bản in để chữ đen) |
+| gạch đứng | Bảng markdown in ra nguyên dấu `|` thay vì thành bảng thật |
+
+Cột **bảng** phải khác 0 nếu bài có bảng. Đây là chỗ từng hỏng im lặng: bộ dựng giáo án
+không biết bảng markdown, nên mọi dòng `| Bước | Bấm |` rơi xuống nhánh chữ thường và in
+ra nguyên một mớ dấu gạch đứng. Trên màn hình app thì vẫn đẹp — app có bộ dựng bảng riêng
+— nên chỉ mở tệp Word ra mới thấy. **Có bảng trong bài thì bắt buộc mở tệp Word xem lại**,
+đừng tin mỗi màn hình.
 
 Số `<m:oMath>` phải xấp xỉ số công thức trong nội dung; bằng 0 nghĩa là công thức hỏng hết.
 

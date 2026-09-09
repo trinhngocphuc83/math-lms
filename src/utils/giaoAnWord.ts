@@ -9,7 +9,10 @@
  * Khác với `exportDocx.ts` - bộ ấy dựng ĐỀ THI từ ngân hàng câu hỏi; bộ này dựng BÀI
  * GIẢNG từ markdown (lý thuyết, phân dạng, ví dụ mẫu, câu hỏi tương tác).
  */
-import { Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle } from "docx";
+import {
+  Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle,
+  Table, TableRow, TableCell, WidthType, ShadingType,
+} from "docx";
 import { latexToDocxElement } from "./latexToDocxMath";
 import { fetchImageWithDimensions, base64ToUint8Array } from "./exportDocx";
 import { anhWord } from "./mauDeThi";
@@ -167,6 +170,62 @@ const buildRunsFromLine = async (line: string, opts: { color?: string; bold?: bo
     return runs;
 };
 
+/* ===================== BẢNG MARKDOWN ===================== */
+
+/**
+ * Cắt một dòng bảng thành các ô, KHÔNG cắt nhầm dấu `|` nằm trong công thức.
+ *
+ * Bài giảng đầy trị tuyệt đối và tập hợp: `$\ln|x|$`, `$\{x \mid x>0\}$`. Cắt thô theo
+ * mọi dấu `|` thì một công thức vỡ thành ba ô, bảng lệch cột và công thức hỏng luôn.
+ * Nên bỏ qua dấu `|` khi đang ở trong `$...$`, trong dấu nháy ngược, hoặc đã bị `\` chặn.
+ */
+function catODong(dong: string): string[] {
+  const s = dong.trim().replace(/^\|/, '').replace(/\|$/, '');
+  const o: string[] = [];
+  let hienTai = '', trongMath = false, trongMa = false;
+  for (let i = 0; i < s.length; i++) {
+    const c = s[i];
+    if (c === '\\' && i + 1 < s.length) { hienTai += c + s[i + 1]; i++; continue; }
+    if (c === '$') trongMath = !trongMath;
+    if (c === '`') trongMa = !trongMa;
+    if (c === '|' && !trongMath && !trongMa) { o.push(hienTai.trim()); hienTai = ''; continue; }
+    hienTai += c;
+  }
+  o.push(hienTai.trim());
+  return o;
+}
+
+/** Dòng `|---|:--:|---|` ngăn giữa hàng tiêu đề và phần thân của bảng markdown. */
+const LA_DONG_NGAN = (d: string) => /^\s*\|?\s*:?-{2,}:?\s*(\|\s*:?-{2,}:?\s*)*\|?\s*$/.test(d);
+
+/**
+ * Dựng BẢNG WORD THẬT từ bảng markdown.
+ *
+ * Vì sao cần: bản trước không có bộ này, mọi dòng `| Bước | Bấm |` rơi xuống nhánh chữ
+ * thường và IN RA NGUYÊN DẤU GẠCH ĐỨNG - thầy cô mở tài liệu ra thấy một mớ ký tự. Mục
+ * bấm máy Casio nào cũng có bảng, nên hỏng là hỏng khắp bài.
+ */
+const dungBangWord = async (dongBang: string[]): Promise<Table> => {
+  const hang = dongBang.filter(d => !LA_DONG_NGAN(d)).map(catODong);
+  const soCot = Math.max(...hang.map(h => h.length));
+
+  const rows: TableRow[] = [];
+  for (let r = 0; r < hang.length; r++) {
+    const laTieuDe = r === 0;
+    const cells: TableCell[] = [];
+    for (let c = 0; c < soCot; c++) {
+      const runs = await buildRunsFromLine(hang[r][c] ?? '', { bold: laTieuDe });
+      cells.push(new TableCell({
+        children: [new Paragraph({ children: runs, spacing: { before: 40, after: 40 } })],
+        shading: laTieuDe ? { type: ShadingType.CLEAR, fill: 'F2F2F2' } : undefined,
+        width: { size: Math.round(100 / soCot), type: WidthType.PERCENTAGE },
+      }));
+    }
+    rows.push(new TableRow({ children: cells, tableHeader: laTieuDe }));
+  }
+  return new Table({ rows, width: { size: 100, type: WidthType.PERCENTAGE } });
+};
+
 // Tách 1 khối text dài (nhiều dòng, ví dụ lời giải) theo từng dòng, gộp mỗi dòng
 // thành 1 Paragraph có icon mũi tên màu ở đầu dòng.
 const buildBulletParagraphs = async (text: string): Promise<Paragraph[]> => {
@@ -259,7 +318,7 @@ const renderQuizToParagraphs = async (quiz: any, questionNumber: number, type: '
 export async function noiDungGiaoAnSangWord(
     content: string,
     type: 'student' | 'teacher' = 'teacher',
-): Promise<Paragraph[]> {
+): Promise<(Paragraph | Table)[]> {
     let noiDung = String(content || '');
 
     if (type === 'student') {
@@ -282,15 +341,35 @@ export async function noiDungGiaoAnSangWord(
         } catch (e) { return match; }
     });
 
-    const bodyParagraphs: Paragraph[] = [];
+    const bodyParagraphs: (Paragraph | Table)[] = [];
     const lines = noiDung.split('\n');
     let questionCounter = 1;
 
-    for (const rawLine of lines) {
+    for (let iDong = 0; iDong < lines.length; iDong++) {
+        const rawLine = lines[iDong];
         // Gỡ thẻ trang trí trước khi xét, để dòng chỉ có mỗi `<div class="...">` thành
         // rỗng và bị bỏ qua, không đẻ ra đoạn trắng giữa bài.
         const trimmed = boTheTrangTri(rawLine);
         if (!trimmed) continue;
+
+        /* BẢNG MARKDOWN: dòng bắt đầu bằng `|` và dòng ngay sau là dòng ngăn `|---|---|`.
+           Phải đòi đủ hai dấu hiệu, vì một dòng lẻ có dấu `|` (công thức trị tuyệt đối
+           đứng đầu dòng chẳng hạn) không phải là bảng. */
+        if (trimmed.startsWith('|') && LA_DONG_NGAN(boTheTrangTri(lines[iDong + 1] || ''))) {
+            const dongBang: string[] = [];
+            let j = iDong;
+            while (j < lines.length) {
+                const d = boTheTrangTri(lines[j]);
+                if (!d.startsWith('|')) break;
+                dongBang.push(d);
+                j++;
+            }
+            bodyParagraphs.push(await dungBangWord(dongBang));
+            /* Word dán bảng sát đoạn kế tiếp trông rất chật, chèn một dòng trắng. */
+            bodyParagraphs.push(new Paragraph({ children: [], spacing: { after: 120 } }));
+            iDong = j - 1;
+            continue;
+        }
         // Dấu ngắt slide của bài giảng. Tài liệu in đọc liền mạch nên bỏ qua.
         if (/^-{3,}$/.test(trimmed)) continue;
 

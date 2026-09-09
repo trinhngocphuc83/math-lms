@@ -156,3 +156,8 @@ tay đã, rồi mới biết máy giúp được khúc nào.
 
 Phím viết trong dấu nháy ngược: `SHIFT`, `MENU` `8`, `Ans`. Đừng viết "bấm nút màu vàng" —
 thầy cô đọc trên bảng chiếu không thấy màu.
+
+**Bảng phải là bảng markdown thật** — đủ hàng tiêu đề và hàng ngăn `|---|---|`, có dòng
+trắng phía trên. Viết đúng khuôn thì cả app lẫn bản Word đều dựng ra bảng; viết thiếu hàng
+ngăn thì bản Word in ra nguyên dấu gạch đứng. Xuất Word xong nhớ soi cột **bảng** và cột
+**gạch đứng** trong `soi-word.mjs`.

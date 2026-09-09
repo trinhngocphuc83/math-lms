@@ -48,10 +48,10 @@ const dsTep = statSync(DUONG).isDirectory()
   ? readdirSync(DUONG).filter(x => x.endsWith('.docx') && !x.startsWith('~$')).sort().map(x => join(DUONG, x))
   : [DUONG];
 
-let tThe = 0, tLatex = 0, tSao = 0, tMau = 0, tCT = 0, tAnh = 0;
+let tThe = 0, tLatex = 0, tSao = 0, tMau = 0, tCT = 0, tAnh = 0, tBang = 0, tGachDung = 0;
 const viDu = [];
 console.log(`${DUONG}\n`);
-console.log('    KB | công thức |  thẻ | LaTeX thô | dấu sao | chữ màu | tệp');
+console.log('    KB | công thức |  thẻ | LaTeX thô | dấu sao | chữ màu | bảng | gạch đứng | tệp');
 for (const tep of dsTep) {
   const { xml, kieu, anh, kb } = docXml(tep);
   const chu = [...xml.matchAll(/<w:t[^>]*>([^<]*)<\/w:t>/g)].map(m => goXml(m[1]));
@@ -66,14 +66,22 @@ for (const tep of dsTep) {
   const mau = [...lt.matchAll(/<w:color w:val="([0-9A-Fa-f]{6})"\s*\/>/g)]
     .map(m => m[1].toUpperCase()).filter(m => m !== '000000' && !MAU_TIEU_DE.has(m));
 
+  /* BẢNG. Bộ dựng giáo án trước đây không biết bảng markdown, nên mọi dòng "| Bước |
+     Bấm |" in ra nguyên dấu gạch đứng giữa bài - mục bấm máy Casio nào cũng có bảng nên
+     hỏng là hỏng khắp. Đếm cả hai chiều: bảng dựng thật, và chữ còn dấu gạch đứng. */
+  const bang = (xml.match(/<w:tbl>/g) || []).length;
+  const gachDung = chu.filter(c => /\|[^|]*\|/.test(c));
+
   const ct = (xml.match(/<m:oMath[ >]/g) || []).length;
   tThe += the.length; tLatex += latex.length; tSao += sao.length; tMau += mau.length;
+  tBang += bang; tGachDung += gachDung.length;
   tCT += ct; tAnh += anh.length;
   for (const [nhan, ds] of [['thẻ', the], ['LaTeX thô', latex], ['dấu sao', sao]])
     if (ds.length && viDu.length < 8) viDu.push(`${nhan} · ${tep.split(/[\\/]/).pop()} · ${ds[0].slice(0, 80)}`);
 
   console.log(`${String(kb).padStart(6)} | ${String(ct).padStart(9)} | ${String(the.length).padStart(4)} | `
     + `${String(latex.length).padStart(9)} | ${String(sao.length).padStart(7)} | ${String(mau.length).padStart(7)} | `
+    + `${String(bang).padStart(4)} | ${String(gachDung.length).padStart(9)} | `
     + tep.split(/[\\/]/).pop());
   if (!kieu.includes('Times New Roman'))
     console.log('        ⚠ phông mặc định không phải Times New Roman - có truyền KIEU_MAC_DINH chưa?');
@@ -86,5 +94,7 @@ console.log(`   thẻ HTML lọt ra thành chữ       : ${tThe}`);
 console.log(`   chữ thô còn lệnh LaTeX          : ${tLatex}`);
 console.log(`   dấu sao markdown còn sót        : ${tSao}`);
 console.log(`   chữ còn tô màu ở phần lý thuyết : ${tMau}`);
+console.log(`   bảng dựng thật (<w:tbl>)        : ${tBang}`);
+console.log(`   dòng còn in ra dấu gạch đứng    : ${tGachDung}`);
 for (const v of viDu) console.log(`      ${v}`);
 console.log(tThe + tLatex + tSao + tMau === 0 ? '\n   ✓ sạch' : '\n   ✗ còn rác, xem ví dụ bên trên');
