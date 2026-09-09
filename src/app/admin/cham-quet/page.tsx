@@ -33,6 +33,7 @@ import { exportPhieuTheoLop } from "@/utils/phieuTraLoi";
 import { layDsLop, layDsHocSinh, luuBaiKiemTra } from "@/app/actions/goiTenVaDiem";
 import { luuBaiQuet, layDsBaiQuet, layMotBaiQuet, type DongBaiQuet } from "@/app/actions/baiQuet";
 import ChonBoDe from "@/components/admin/ChonBoDe";
+import AnhPhieuKhoanh from "@/components/admin/AnhPhieuKhoanh";
 
 interface BoDe {
   id: string; ten: string; grade: string; subject: string;
@@ -961,8 +962,7 @@ function ChiTietBai({ bai, kq, ten, onDong, onSua, onXoa }: {
                 Trang {t.trang}{t.tuQR ? '' : ' (đoán theo thứ tự nạp)'}
                 {t.loi && <span className="text-rose-600 font-bold">· {t.loi}</span>}
               </div>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={t.anhUrl} alt={t.tenTep} className="w-full" />
+              <AnhPhieuKhoanh anhUrl={t.anhUrl} tenTep={t.tenTep} doc={t.doc} cau={kq.cau} />
             </div>
           ))}
         </div>

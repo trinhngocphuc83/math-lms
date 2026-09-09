@@ -43,6 +43,14 @@ export interface KetQuaDocPhieu {
   traLoi: Record<string, string>;
   /** Câu máy KHÔNG DÁM đọc, kèm lý do - thầy cô phải nhìn. */
   khongChac: { ma: string; viSao: string }[];
+  /**
+   * Vị trí từng ô tròn TRÊN ẢNH CHỤP, tính bằng điểm ảnh của chính tấm ảnh ấy.
+   *
+   * Để giao diện khoanh được đáp án lên đúng ô: xanh nếu em chọn đúng, đỏ nếu chọn sai.
+   * Toạ độ trong bản đồ lưới thì vô dụng ở đây - ảnh chụp nghiêng, méo, xa gần khác nhau,
+   * phải là toạ độ đã nắn về đúng tấm ảnh Thầy cô đang nhìn.
+   */
+  viTriO?: { ma: string; x: number; y: number; r: number }[];
 }
 
 /* ===================== ẢNH XÁM & NGƯỠNG ===================== */
@@ -421,6 +429,12 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
     Math.min(1.4, Math.max(0, (d.nen - d.ruot) / tpDen));
 
   const o: DoODoc[] = luoi.o.map(x => ({ ma: x.ma, dam: chuanHoa(doO(xam, rong, cao, h, x)) }));
+  /* Cùng phép nắn mà `doO` dùng để đo, nên vòng khoanh rơi đúng chỗ đã đo. */
+  const viTriO = luoi.o.map(x => {
+    const giua = nanDiem(h, x.x, x.y);
+    const mep = nanDiem(h, x.x + x.r, x.y);
+    return { ma: x.ma, x: giua.x, y: giua.y, r: Math.max(2, Math.hypot(mep.x - giua.x, mep.y - giua.y)) };
+  });
   const damCua = new Map(o.map(x => [x.ma, x.dam]));
 
   /* Gom ô theo từng câu để chọn đáp án, và để bắt trường hợp tô hai ô. */
@@ -508,5 +522,5 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
   /* Đã báo theo từng cột rồi thì bỏ dòng báo lẻ đi, chỉ giữ dòng của cả câu. */
   const gonKhongChac = khongChac.filter(k => !/^TLN:\d+:\d+$/.test(k.ma));
 
-  return { timDuocNeo: true, neo, o, traLoi, khongChac: gonKhongChac };
+  return { timDuocNeo: true, neo, o, viTriO, traLoi, khongChac: gonKhongChac };
 }
