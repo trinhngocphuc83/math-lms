@@ -347,36 +347,21 @@ const SAN_NGHI_TO = 0.18;
 const CACH_BIET = 0.18;
 
 /**
- * Ngưỡng "đã tô" tính riêng cho TỪNG TỜ, thay vì một con số cứng cho mọi tờ.
+ * SÀN của một tờ: dưới mức này thì dù đậm hơn các ô cùng câu vẫn coi là vết bẩn.
  *
- * Trên một tờ giấy, ô đã tô và ô để trắng tách thành hai cụm rõ rệt; chỗ hở rộng nhất
- * giữa hai cụm chính là ngưỡng đúng của tờ ấy. Bút chì nhạt hay tô không kín ô thì cả
- * cụm "đã tô" tụt xuống, ngưỡng cứng 0,42 chặn hết - đo trên phiếu dựng thử: nét tô đậm
- * 0,35 hoặc chỉ chấm giữa ô làm mất trắng cả 34 câu.
+ * Vì sao không dùng một con số cứng: đo trên phiếu thật của học sinh, có em tô bút chì
+ * nhạt tới mức MỌI nét đều nằm trong 0,30-0,52, không nét nào vượt 0,6. Ngưỡng cứng 0,42
+ * cắt đúng giữa cụm nét tô của em ấy - đọc được sáu câu, sáu câu còn lại rơi im lặng.
  *
- * Chỉ hạ ngưỡng chứ không nâng: trần vẫn là 0,42 để một vết bẩn đậm không thành đáp án.
+ * Sàn lấy theo NỬA mức tô điển hình của chính tờ ấy (trung vị của ô đậm nhất mỗi câu).
  */
-function nguongCuaTo(dam: number[]): number {
-  /* Phải xét CẢ ô trắng: khe cần tìm nằm GIỮA cụm trắng và cụm đã tô. Lọc bỏ ô trắng
-     trước là mất một bên của khe, còn lại toàn ô đã tô xấp xỉ nhau nên không thấy khe
-     nào - đó là lỗi tôi vừa mắc, và hậu quả là ngưỡng không bao giờ hạ xuống. */
-  const ds = [...dam].sort((a, b) => a - b);
-  if (ds.length < 8) return MUC_DA_TO;
-
-  let hoRong = 0, giua = MUC_DA_TO, soTrenKhe = 0;
-  for (let i = 1; i < ds.length; i++) {
-    const duoi = ds[i - 1], tren = ds[i];
-    /* Ranh giới chỉ có nghĩa khi bên dưới còn nhạt hơn mức chắc chắn, và bên trên đã
-       đậm hơn mức nghi có vết. */
-    if (duoi >= MUC_DA_TO || tren < SAN_NGHI_TO) continue;
-    const ho = tren - duoi;
-    if (ho > hoRong) { hoRong = ho; giua = (tren + duoi) / 2; soTrenKhe = ds.length - i; }
-  }
-
-  /* Khe phải đủ rộng, và bên trên khe phải có đủ ô để tin đó là cụm "đã tô" chứ không
-     phải một vết bẩn lẻ. */
-  if (hoRong < 0.15 || soTrenKhe < 3) return MUC_DA_TO;
-  return Math.min(MUC_DA_TO, Math.max(SAN_NGHI_TO + 0.04, giua));
+function sanCuaTo(damNhatMoiCau: number[]): number {
+  const co = damNhatMoiCau.filter(d => d >= SAN_NGHI_TO).sort((a, b) => a - b);
+  if (co.length < 3) return SAN_NGHI_TO;
+  const giua = co[Math.floor(co.length / 2)];
+  /* Nửa mức tô điển hình: bút chì nhạt thì sàn tụt theo, bút đậm thì sàn nâng lên nên
+     một vết bẩn mờ không lọt. Không bao giờ thấp hơn sàn nghi có vết. */
+  return Math.max(SAN_NGHI_TO, giua * 0.5);
 }
 
 export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
@@ -452,30 +437,44 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
   const khongChac: KetQuaDocPhieu['khongChac'] = [];
   const chonTrongNhom = new Map<string, string | null>();
 
-  /* Ngưỡng của CHÍNH tờ này, dựa trên phân bố độ đậm của mọi ô trên tờ. */
-  const nguong = nguongCuaTo(o.map(x => x.dam));
-
+  /* Ô đậm nhất của từng câu - vừa để chọn đáp án, vừa để biết mức tô điển hình của tờ. */
+  const xepCua = new Map<string, { nhan: string; dam: number }[]>();
   for (const [khoa, ds] of nhom) {
-    const xep = ds.map(x => ({ nhan: x.nhan, dam: damCua.get(x.ma) ?? 0 }))
-                  .sort((a, b) => b.dam - a.dam);
+    xepCua.set(khoa, ds.map(x => ({ nhan: x.nhan, dam: damCua.get(x.ma) ?? 0 }))
+                       .sort((a, b) => b.dam - a.dam));
+  }
+  const san = sanCuaTo([...xepCua.values()].map(x => x[0]?.dam ?? 0));
+
+  /*
+   * Quyết định theo TƯƠNG PHẢN TRONG CHÍNH CÂU ĐÓ, không theo một mức đậm tuyệt đối.
+   *
+   * Học sinh tô bốn ô của một câu bằng cùng cây bút, cùng lực tay - nên ô đã tô bao giờ
+   * cũng đậm hơn hẳn ba ô để trắng bên cạnh, dù cây bút ấy nhạt cỡ nào. Đo trên phiếu
+   * thật: có em mọi nét chỉ 0,30-0,52; ngưỡng tuyệt đối 0,42 cắt đúng giữa cụm nét của
+   * em ấy, đọc được sáu câu và đánh rơi sáu câu. So tương phản thì cả mười hai câu đều
+   * rõ ràng.
+   *
+   * Sàn vẫn giữ để một vết bẩn lẻ trên tờ để trắng không thành đáp án.
+   */
+  for (const [khoa, xep] of xepCua) {
     const nhat = xep[0], nhi = xep[1];
-    if (!nhat || nhat.dam < nguong) {
+    if (!nhat || nhat.dam < san) {
       chonTrongNhom.set(khoa, null);
-      /* Có vết mà chưa đủ đậm thì PHẢI báo. Im lặng bỏ qua là kiểu hỏng tệ nhất: bảng
+      /* Có vết mà chưa tới sàn thì PHẢI báo. Im lặng bỏ qua là kiểu hỏng tệ nhất: bảng
          điểm hiện "(bỏ trống)" y như em không làm bài, thầy cô không có cách nào biết. */
       if (nhat && nhat.dam >= SAN_NGHI_TO) {
         khongChac.push({ ma: khoa, viSao: `có vết mờ ở ${nhat.nhan} nhưng chưa đủ đậm để chắc - Thầy cô nhìn giúp` });
       }
       continue;
     }
-    if (nhi && nhi.dam >= nguong && nhat.dam - nhi.dam < CACH_BIET) {
-      chonTrongNhom.set(khoa, null);
-      khongChac.push({ ma: khoa, viSao: `tô hơn một ô (${nhat.nhan} và ${nhi.nhan})` });
-      continue;
-    }
     if (nhi && nhat.dam - nhi.dam < CACH_BIET) {
       chonTrongNhom.set(khoa, null);
-      khongChac.push({ ma: khoa, viSao: 'nét tô quá mờ, không phân biệt được' });
+      khongChac.push({
+        ma: khoa,
+        viSao: nhi.dam >= san
+          ? `tô hơn một ô (${nhat.nhan} và ${nhi.nhan})`
+          : 'nét tô quá mờ, không phân biệt được',
+      });
       continue;
     }
     chonTrongNhom.set(khoa, nhat.nhan);
