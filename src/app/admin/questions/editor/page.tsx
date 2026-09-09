@@ -11,7 +11,10 @@ import {
 } from "lucide-react";
 import QuestionPreviewModal from "@/components/admin/QuestionPreviewModal";
 import DuplicateCompareModal from "@/components/admin/DuplicateCompareModal";
-import RichTextarea from "@/components/admin/RichTextarea";
+/* Ô hiện BẢN THẬT, bấm vào mới thành ô sửa - cùng ô mà trang soạn bài đang dùng.
+   Khung soạn trong ngân hàng trước đây bày chữ thô: công thức ra "$\dfrac{a}{b}$", ảnh ra
+   một dòng địa chỉ dài ngoằng, phải tự dịch trong đầu mới biết câu hỏi gì. */
+import OSuaTaiCho from "@/components/admin/OSuaTaiCho";
 import {
   toBankType,
   toDifficultyCode,
@@ -1344,7 +1347,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                        <label className="block text-xs font-black text-violet-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                           📝 Đề bài
                        </label>
-                       <RichTextarea value={q.content} onValueChange={(v) => updateParsedQuestion(q.temp_id!, 'content', v)} minRows={4} />
+                       <OSuaTaiCho value={q.content} onChange={(v) => updateParsedQuestion(q.temp_id!, 'content', v)} rows={4} placeholder="Bấm để nhập đề bài..." />
                     </div>
 
                     {/* PHẦN 4: ĐÁP ÁN */}
@@ -1363,7 +1366,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                                      <input type="radio" name={`correct_${q.temp_id}`} checked={q.correct_answer === opt} onChange={() => updateParsedQuestion(q.temp_id!, 'correct_answer', opt)} className="w-4.5 h-4.5 text-emerald-600 focus:ring-emerald-500 cursor-pointer" />
                                      <span className={`font-black text-sm ${q.correct_answer === opt ? 'text-emerald-700' : 'text-gray-500'}`}>Đáp án {opt}</span>
                                    </div>
-                                   <RichTextarea value={q[key] as string || ''} onValueChange={(v) => updateParsedQuestion(q.temp_id!, key, v)} minRows={2} collapsibleToolbar={true} className="border-gray-200" />
+                                   <OSuaTaiCho value={q[key] as string || ''} onChange={(v) => updateParsedQuestion(q.temp_id!, key, v)} rows={2} co="nho" placeholder="Bấm để nhập phương án..." className="border-gray-200" />
                                 </div>
                               );
                            })}
@@ -1389,7 +1392,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                                         {isTrue ? "ĐÚNG (Sửa thành Sai)" : "SAI (Sửa thành Đúng)"}
                                       </button>
                                    </div>
-                                   <RichTextarea value={q[key] as string || ''} onValueChange={(v) => updateParsedQuestion(q.temp_id!, key, v)} minRows={2} collapsibleToolbar={true} className="border-gray-200" />
+                                   <OSuaTaiCho value={q[key] as string || ''} onChange={(v) => updateParsedQuestion(q.temp_id!, key, v)} rows={2} co="nho" placeholder="Bấm để nhập phương án..." className="border-gray-200" />
                                 </div>
                               );
                            })}
@@ -1408,7 +1411,7 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
                        <label className="block text-xs font-black text-amber-800 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                           💡 Hướng dẫn giải chi tiết
                        </label>
-                       <RichTextarea value={q.explanation} onValueChange={(v) => updateParsedQuestion(q.temp_id!, 'explanation', v)} minRows={4} />
+                       <OSuaTaiCho value={q.explanation} onChange={(v) => updateParsedQuestion(q.temp_id!, 'explanation', v)} rows={4} placeholder="Bấm để nhập lời giải chi tiết..." />
                     </div>
                   </div>
                      </div>
