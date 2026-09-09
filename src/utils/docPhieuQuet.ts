@@ -333,10 +333,51 @@ function doO(xam: Float32Array, rong: number, cao: number,
 
 /* ===================== ĐỌC MỘT PHIẾU ===================== */
 
-/** Ô coi là ĐÃ TÔ khi độ đậm vượt mức này (0 = trắng giấy, 1 = mực in đặc). */
+/** Mức trần: đậm tới đây thì chắc chắn là đã tô, khỏi bàn. */
 const MUC_DA_TO = 0.42;
+/**
+ * Sàn nghi có vết: dưới mức này coi như giấy trắng thật, học sinh bỏ trống.
+ *
+ * Khoảng giữa sàn và ngưỡng quyết định là VÙNG NGỜ - có vết nhưng chưa đủ chắc. Trước
+ * đây vùng này bị lặng lẽ tính là bỏ trống, không một dòng cảnh báo; thầy cô nhìn bảng
+ * chỉ thấy "(bỏ trống)" và 0 điểm, không biết là máy đọc hụt hay em ấy không làm.
+ */
+const SAN_NGHI_TO = 0.18;
 /** Ô đậm nhì phải kém ô đậm nhất ít nhất chừng này, không thì coi như tô hai ô. */
 const CACH_BIET = 0.18;
+
+/**
+ * Ngưỡng "đã tô" tính riêng cho TỪNG TỜ, thay vì một con số cứng cho mọi tờ.
+ *
+ * Trên một tờ giấy, ô đã tô và ô để trắng tách thành hai cụm rõ rệt; chỗ hở rộng nhất
+ * giữa hai cụm chính là ngưỡng đúng của tờ ấy. Bút chì nhạt hay tô không kín ô thì cả
+ * cụm "đã tô" tụt xuống, ngưỡng cứng 0,42 chặn hết - đo trên phiếu dựng thử: nét tô đậm
+ * 0,35 hoặc chỉ chấm giữa ô làm mất trắng cả 34 câu.
+ *
+ * Chỉ hạ ngưỡng chứ không nâng: trần vẫn là 0,42 để một vết bẩn đậm không thành đáp án.
+ */
+function nguongCuaTo(dam: number[]): number {
+  /* Phải xét CẢ ô trắng: khe cần tìm nằm GIỮA cụm trắng và cụm đã tô. Lọc bỏ ô trắng
+     trước là mất một bên của khe, còn lại toàn ô đã tô xấp xỉ nhau nên không thấy khe
+     nào - đó là lỗi tôi vừa mắc, và hậu quả là ngưỡng không bao giờ hạ xuống. */
+  const ds = [...dam].sort((a, b) => a - b);
+  if (ds.length < 8) return MUC_DA_TO;
+
+  let hoRong = 0, giua = MUC_DA_TO, soTrenKhe = 0;
+  for (let i = 1; i < ds.length; i++) {
+    const duoi = ds[i - 1], tren = ds[i];
+    /* Ranh giới chỉ có nghĩa khi bên dưới còn nhạt hơn mức chắc chắn, và bên trên đã
+       đậm hơn mức nghi có vết. */
+    if (duoi >= MUC_DA_TO || tren < SAN_NGHI_TO) continue;
+    const ho = tren - duoi;
+    if (ho > hoRong) { hoRong = ho; giua = (tren + duoi) / 2; soTrenKhe = ds.length - i; }
+  }
+
+  /* Khe phải đủ rộng, và bên trên khe phải có đủ ô để tin đó là cụm "đã tô" chứ không
+     phải một vết bẩn lẻ. */
+  if (hoRong < 0.15 || soTrenKhe < 3) return MUC_DA_TO;
+  return Math.min(MUC_DA_TO, Math.max(SAN_NGHI_TO + 0.04, giua));
+}
 
 export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
   const { width: rong, height: cao } = anh;
@@ -411,12 +452,23 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
   const khongChac: KetQuaDocPhieu['khongChac'] = [];
   const chonTrongNhom = new Map<string, string | null>();
 
+  /* Ngưỡng của CHÍNH tờ này, dựa trên phân bố độ đậm của mọi ô trên tờ. */
+  const nguong = nguongCuaTo(o.map(x => x.dam));
+
   for (const [khoa, ds] of nhom) {
     const xep = ds.map(x => ({ nhan: x.nhan, dam: damCua.get(x.ma) ?? 0 }))
                   .sort((a, b) => b.dam - a.dam);
     const nhat = xep[0], nhi = xep[1];
-    if (!nhat || nhat.dam < MUC_DA_TO) { chonTrongNhom.set(khoa, null); continue; }
-    if (nhi && nhi.dam >= MUC_DA_TO && nhat.dam - nhi.dam < CACH_BIET) {
+    if (!nhat || nhat.dam < nguong) {
+      chonTrongNhom.set(khoa, null);
+      /* Có vết mà chưa đủ đậm thì PHẢI báo. Im lặng bỏ qua là kiểu hỏng tệ nhất: bảng
+         điểm hiện "(bỏ trống)" y như em không làm bài, thầy cô không có cách nào biết. */
+      if (nhat && nhat.dam >= SAN_NGHI_TO) {
+        khongChac.push({ ma: khoa, viSao: `có vết mờ ở ${nhat.nhan} nhưng chưa đủ đậm để chắc - Thầy cô nhìn giúp` });
+      }
+      continue;
+    }
+    if (nhi && nhi.dam >= nguong && nhat.dam - nhi.dam < CACH_BIET) {
       chonTrongNhom.set(khoa, null);
       khongChac.push({ ma: khoa, viSao: `tô hơn một ô (${nhat.nhan} và ${nhi.nhan})` });
       continue;

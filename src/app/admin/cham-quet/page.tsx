@@ -17,6 +17,7 @@
  */
 
 import React from "react";
+import { docQRPhieu } from "@/utils/docQRPhieu";
 import Link from "next/link";
 import {
   Upload, Loader2, ScanLine, CheckCircle2, AlertTriangle, X, ChevronLeft, FileImage,
@@ -148,17 +149,19 @@ async function anhNhoDeCat(anh: ImageData, rongToiDa = 1400): Promise<string> {
   return nho.toDataURL('image/jpeg', 0.72);
 }
 
-/** Đọc mã QR trên ảnh phiếu: "LTP|1|<bộ đề>|<mã đề>|pt|<trang>|<mã học sinh>". */
+/**
+ * Đọc mã QR trên ảnh phiếu: "LTP|1|<bộ đề>|<mã đề>|pt|<trang>|<mã học sinh>".
+ *
+ * Việc thử nhiều lượt nằm ở `docQRPhieu` để thử được bằng máy ngoài trình duyệt. Bản cũ
+ * gọi jsQR đúng một lần trên ảnh gốc; trượt là tờ phiếu mất mã học sinh và rơi vào khay
+ * "chưa gán em nào" dù trên giấy có in sẵn tên em.
+ */
 async function docQR(anh: ImageData):
   Promise<{ boDeId: string; maDe: string; trang: number; hs?: string } | null> {
   try {
     const jsQR = (await import('jsqr')).default;
-    const kq = jsQR(anh.data as any, anh.width, anh.height, { inversionAttempts: 'attemptBoth' });
-    if (!kq?.data) return null;
-    const p = String(kq.data).split('|');
-    if (p[0] !== 'LTP' || p[4] !== 'pt') return null;
-    /* Ô thứ bảy chỉ có ở phiếu in theo lớp - phiếu trắng in trước đó vẫn đọc được. */
-    return { boDeId: p[2], maDe: p[3], trang: Number(p[5]) || 1, hs: p[6] || undefined };
+    const kq = docQRPhieu(anh, jsQR as any);
+    return kq ? kq.ma : null;
   } catch { return null; }
 }
 
@@ -209,6 +212,31 @@ export default function ChamQuetPage() {
     if (!classId) { setDsHocSinh([]); return; }
     layDsHocSinh(classId).then(setDsHocSinh).catch(() => setDsHocSinh([]));
   }, [classId]);
+
+  /**
+   * Có danh sách lớp thì gán lại những bài đã đọc được mã học sinh mà chưa gán ai.
+   *
+   * Trang không bắt chọn lớp trước khi nạp ảnh, và nhiều khi Thầy cô nạp ảnh xong mới
+   * chọn lớp. Lúc nạp, `dsHocSinh` còn rỗng nên dù mã QR đọc ra mã em rồi vẫn không tra
+   * được tên - mọi tờ rơi vào "chưa gán em nào" và phải gán tay từng tờ, đúng như bảng
+   * soát 15 bài trắng trơn. Mã đã nằm sẵn trong bài, chỉ việc tra lại khi có danh sách.
+   */
+  React.useEffect(() => {
+    if (dsHocSinh.length === 0) return;
+    setBai(ds => {
+      let doi = false;
+      const moi = ds.map(b => {
+        if (b.studentId) return b;
+        const ma = b.trang.find(t => t.maHS)?.maHS;
+        if (!ma) return b;
+        const hs = dsHocSinh.find(h => maHocSinhNgan(h.id) === ma);
+        if (!hs) return b;
+        doi = true;
+        return { ...b, studentId: hs.id, ten: hs.ten };
+      });
+      return doi ? moi : ds;
+    });
+  }, [dsHocSinh]);
 
   /* Nội dung bộ đề đang chọn - tải riêng vì cột cau_hoi nặng. */
   const [boDe, setBoDe] = React.useState<BoDe | null>(null);
@@ -669,6 +697,15 @@ export default function ChamQuetPage() {
                           </option>
                         ))}
                       </select>
+                      {/* Máy ĐỌC ĐƯỢC mã trên phiếu mà vẫn không gán được nghĩa là mã ấy
+                          không thuộc lớp đang chọn - nói thẳng ra, đừng để Thầy cô tưởng
+                          máy đọc hỏng rồi ngồi gán tay cả lớp. */}
+                      {!b.studentId && b.trang.some(t => t.maHS) && (
+                        <div className="mt-1 text-[11px] font-semibold text-amber-700">
+                          Đọc được mã <code className="bg-amber-100 px-1 rounded">{b.trang.find(t => t.maHS)?.maHS}</code> nhưng
+                          {dsHocSinh.length === 0 ? ' chưa chọn lớp' : ' mã này không có trong lớp đang chọn'}
+                        </div>
+                      )}
                     </td>
                     <td className="px-3 py-2.5 text-slate-500">
                       {b.trang.length === 0
