@@ -8,7 +8,7 @@
  *   node --experimental-strip-types scratch/cat-o-ngo.mjs [tên tệp ảnh]
  *   (không truyền tên thì chạy hết cả thư mục)
  */
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, rmSync, existsSync } from 'fs';
 import { pathToFileURL } from 'url';
 import { join } from 'path';
 import { createClient } from '@supabase/supabase-js';
@@ -47,8 +47,16 @@ const sb = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_
 const boCache = new Map();
 const maCau = (ma) => { const p = ma.split(':'); return p[0]==='NLC'?`NLC:${p[1]}`:p[0]==='DS'?`DS:${p[1]}:${p[2]}`:`TLN:${p[1]}:${p[2]}`; };
 
-rmSync(RA, { recursive: true, force: true });
+/* Dọn ảnh cắt cũ, NHƯNG GIỮ LẠI phan-xu.json.
+   Trước đây chỗ này xoá cả thư mục: soi xong mấy chục ảnh, lỡ chạy lại bước 1 một cái là
+   bay sạch phán xử mà không báo tiếng nào. Chỉ xoá thứ do chính script này sinh ra. */
 mkdirSync(RA, { recursive: true });
+for (const t of readdirSync(RA)) {
+  if (t.endsWith('.png') || t === 'so-tay.json') rmSync(join(RA, t), { force: true });
+}
+if (existsSync(join(RA, 'phan-xu.json'))) {
+  console.log('Giữ lại phan-xu.json của lần soi trước - xoá tay nếu muốn soi lại từ đầu.');
+}
 
 const chon = process.argv[3];
 const dsAnh = readdirSync(THU_MUC).filter(t => /\.jpe?g$/i.test(t)).filter(t => !chon || t === chon);
@@ -108,9 +116,13 @@ for (const ten of dsAnh) {
       const cx = (v.x - x0) * ti, cy = (v.y - y0) * ti, rr = v.r * ti;
       const tx = xepDoc ? cx - rr * 2.1 : cx;
       const ty = xepDoc ? cy + rr * 0.38 : cy - rr * 1.55;
+      /* Quầng trắng sau chữ: nhãn của cột dọc buộc phải nằm đè lên ô của cột bên cạnh
+         (các cột chỉ cách nhau chừng hai lần rưỡi bán kính), không có quầng thì chữ đỏ
+         lẫn vào nét tô của ô ấy, nhìn ra một đống chẳng biết chữ thuộc về đâu. */
       return `<circle cx="${cx.toFixed(1)}" cy="${cy.toFixed(1)}" r="${(rr * 1.28).toFixed(1)}"`
         + ` fill="none" stroke="#e11d48" stroke-width="${Math.max(1, rr * 0.09).toFixed(1)}"/>`
         + `<text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" fill="#e11d48"`
+        + ` stroke="#ffffff" stroke-width="${Math.max(1.5, rr * 0.28).toFixed(1)}" paint-order="stroke"`
         + ` font-size="${(rr * 1.05).toFixed(1)}" font-family="sans-serif" font-weight="bold"`
         + ` text-anchor="middle">${ten2 === '&' ? '&amp;' : ten2}</text>`;
     }).join('');

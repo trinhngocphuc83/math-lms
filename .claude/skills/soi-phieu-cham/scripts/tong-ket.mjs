@@ -27,14 +27,18 @@ const soTay = JSON.parse(readFileSync(tepSo, 'utf8'));
 const phanXu = JSON.parse(readFileSync(tepPX, 'utf8'));
 const pxCua = new Map(phanXu.map(p => [p.tep, p]));
 
-const khop = [], lech = [], phanVan = [], thieu = [];
+const khop = [], lech = [], boSung = [], phanVan = [], thieu = [];
 for (const m of soTay) {
   const px = pxCua.get(m.tep);
   if (!px) { thieu.push(m); continue; }
   const may = String(m.mayDoc ?? '');
   const nguoi = String(px.nguoiDoc ?? '');
-  if (px.chac === false) phanVan.push({ m, px, may, nguoi });
-  else if (may === nguoi) khop.push({ m, px, may, nguoi });
+  if (px.chac === false) { phanVan.push({ m, px, may, nguoi }); continue; }
+  if (may === nguoi) { khop.push({ m, px, may, nguoi }); continue; }
+  /* Câu `khongChac` là câu máy CỐ Ý không chấm, để trống chờ người. Người đọc ra được thì
+     đó là ĐIỀN THÊM, không phải máy chấm sai - xếp vào LỆCH là vu oan cho bộ đo, mà còn
+     làm Thầy cô tưởng máy hỏng trong khi nó đang làm đúng việc được giao. */
+  if (m.kieu === 'ngờ' && may === '') boSung.push({ m, px, may, nguoi });
   else lech.push({ m, px, may, nguoi });
 }
 
@@ -45,6 +49,7 @@ console.log(`Đã soi ${soTay.length} chỗ máy gắn cờ.`);
 console.log('');
 console.log(`  KHỚP          ${String(khop.length).padStart(3)}  - mắt đọc giống máy, không phải làm gì`);
 console.log(`  LỆCH          ${String(lech.length).padStart(3)}  - MÁY CHẤM SAI, phải sửa tay trong app`);
+console.log(`  ĐIỀN THÊM     ${String(boSung.length).padStart(3)}  - máy để trống chờ người, mắt đọc ra được, nhập giúp em`);
 console.log(`  CÒN PHÂN VÂN  ${String(phanVan.length).padStart(3)}  - chỉ những mục này mới cần Thầy cô ngó`);
 if (thieu.length) console.log(`  CHƯA SOI      ${String(thieu.length).padStart(3)}  - còn thiếu phán xử`);
 
@@ -52,6 +57,11 @@ if (lech.length) {
   console.log('');
   console.log('---- LỆCH: sửa tay những câu này trong trang Chấm bài quét ảnh ----');
   for (const x of lech) console.log(`   ${dong(x)}`);
+}
+if (boSung.length) {
+  console.log('');
+  console.log('---- ĐIỀN THÊM: máy để trống, nhập đáp án này giúp em ----');
+  for (const x of boSung) console.log(`   ${dong(x)}`);
 }
 if (phanVan.length) {
   console.log('');
@@ -63,7 +73,7 @@ if (thieu.length) {
   console.log('---- CHƯA SOI ----');
   for (const m of thieu) console.log(`   ${m.tep}`);
 }
-if (!lech.length && !phanVan.length && !thieu.length) {
+if (!lech.length && !boSung.length && !phanVan.length && !thieu.length) {
   console.log('');
   console.log('Không chỗ nào lệch. Máy chấm đúng cả tập này.');
 }

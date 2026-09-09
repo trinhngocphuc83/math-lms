@@ -38,10 +38,18 @@ mỗi chỗ một ảnh PNG phóng to, kèm `so-tay.json` ghi máy đọc ra gì
 
 Không có chỗ nào bị gắn cờ thì script báo luôn - **xong việc, không cần soi gì cả.**
 
+Chạy lại bước 1 thì ảnh cắt cũ bị dọn, nhưng `phan-xu.json` được **giữ nguyên** - soi dở
+mấy chục ảnh mà lỡ chạy lại thì không mất công. Muốn soi lại từ đầu thì xoá tay tệp ấy.
+
 ### Bước 2 - nhìn từng ảnh mà phân xử
 
 Đọc `scratch/o-ngo/so-tay.json`, rồi **mở TỪNG ảnh PNG bằng công cụ Read** và tự trả lời:
 em ấy đánh dấu ô nào, hay bỏ trống?
+
+**Chỉ xét những ô có VÒNG ĐỎ.** Ảnh cắt cố ý lấy rộng ra một chút nên có cả ô của câu
+trên, câu dưới, cột bên cạnh lọt vào rìa - mấy ô đó không liên quan, đừng đọc nhầm sang.
+Chữ đỏ cạnh mỗi vòng là tên ô (A B C D · Đ S · chữ số); ở cột dọc chữ nằm bên trái vòng và
+có quầng trắng để khỏi lẫn vào cột kế bên.
 
 Nhìn cái gì:
 
@@ -72,14 +80,16 @@ Ghi phán xử vào `scratch/o-ngo/phan-xu.json`, một phần tử cho mỗi m�
 node --experimental-strip-types .claude/skills/soi-phieu-cham/scripts/tong-ket.mjs
 ```
 
-In ra ba nhóm:
+In ra bốn nhóm:
 
 - **KHỚP** - mắt đọc giống máy. Không phải làm gì.
-- **LỆCH** - mắt đọc khác máy. Đây là chỗ máy chấm sai, phải sửa tay trong app.
+- **LỆCH** - máy có chấm nhưng mắt đọc ra khác. Đây là chỗ máy chấm sai, phải sửa tay.
+- **ĐIỀN THÊM** - câu `khongChac`: máy cố ý để trống chờ người, mắt đọc ra được. Không
+  phải máy sai, chỉ là nhập giúp em cho đủ.
 - **CÒN PHÂN VÂN** - `chac: false`. Chỉ những mục này mới cần thầy cô ngó.
 
-Báo lại cho thầy cô đúng ba con số ấy, và liệt kê chi tiết nhóm LỆCH cùng nhóm CÒN PHÂN VÂN
-(tờ nào, câu nào, máy đọc gì, mình đọc gì). Nhóm KHỚP thì chỉ cần một dòng tổng số.
+Báo lại cho thầy cô đúng bốn con số ấy, và liệt kê chi tiết ba nhóm LỆCH · ĐIỀN THÊM ·
+CÒN PHÂN VÂN (tờ nào, câu nào, máy đọc gì, mình đọc gì). Nhóm KHỚP chỉ cần một dòng tổng số.
 
 ## Sửa lại trong app
 
