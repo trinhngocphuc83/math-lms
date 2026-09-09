@@ -111,6 +111,44 @@ export const dungDongCoTheCoBang = async (
   return ra;
 };
 
+/**
+ * Một mẩu chữ thường -> các TextRun, dựng `**đậm**` và `*nghiêng*`.
+ *
+ * Ngân hàng câu hỏi có chỗ nhấn mạnh bằng dấu sao - "Mệnh đề nào dưới đây **sai**?".
+ * Bản cũ đẩy thẳng cả mẩu vào một TextRun nên in ra nguyên dấu sao. Đo trên chương IV:
+ * 4 chỗ trong phần bài tập và đề.
+ *
+ * Dấu đậm chạy như CÔNG TẮC chứ không dò theo cặp, vì mỗi công thức cắt dòng ra làm
+ * nhiều mẩu - "**tích phân từ $a$ đến $b$**" có dấu mở và dấu đóng nằm ở hai mẩu khác
+ * nhau. Trạng thái đậm được trả ra để mẩu sau nhận tiếp.
+ */
+const chuThanhRuns = (
+  chu: string,
+  kieu: { color?: string; bold?: boolean; italics?: boolean },
+): { runs: any[]; dam: boolean } => {
+  const damVao = kieu.bold ?? false;
+  if (!chu) return { runs: [], dam: damVao };
+  const runs: any[] = [];
+  let dam = damVao;
+  chu.split('**').forEach((manh, i) => {
+    if (i > 0) dam = !dam;
+    if (!manh) return;
+    let con = manh;
+    while (con.length > 0) {
+      const d = con.indexOf('*');
+      const c = d === -1 ? -1 : con.indexOf('*', d + 1);
+      if (d === -1 || c === -1) {
+        runs.push(new TextRun({ ...kieu, text: con, bold: dam }));
+        break;
+      }
+      if (d > 0) runs.push(new TextRun({ ...kieu, text: con.slice(0, d), bold: dam }));
+      runs.push(new TextRun({ ...kieu, text: con.slice(d + 1, c), bold: dam, italics: true }));
+      con = con.slice(c + 1);
+    }
+  });
+  return { runs, dam };
+};
+
 /** Một dòng chữ có thể lẫn công thức, in đậm, ảnh -> các phần tử của Word.
  *  Export để chỗ khác dựng tài liệu cũng đi qua đúng bộ xử lý này. */
 export const processTextLine = async (textLine: string, defaultColor?: string, defaultBold: boolean = false, defaultItalics: boolean = false) => {
@@ -133,6 +171,13 @@ export const processTextLine = async (textLine: string, defaultColor?: string, d
 
   const elements: any[] = [];
   let remaining = decodedLine;
+  /* Trạng thái chữ đậm phải đi xuyên qua các mẩu bị công thức cắt ra. */
+  let dam = defaultBold;
+  const dayChu = (t: string) => {
+    const kq = chuThanhRuns(t, { color: defaultColor, bold: dam, italics: defaultItalics });
+    dam = kq.dam;
+    elements.push(...kq.runs);
+  };
 
   while (remaining.length > 0) {
     const imgStart = remaining.toLowerCase().indexOf('<img');
@@ -142,12 +187,12 @@ export const processTextLine = async (textLine: string, defaultColor?: string, d
     if (mathStart !== -1 && (imgStart === -1 || mathStart < imgStart) && (mdStart === -1 || mathStart < mdStart)) {
       if (mathStart > 0) {
         const before = remaining.slice(0, mathStart).replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
-        if (before) elements.push(new TextRun({ text: before, color: defaultColor, bold: defaultBold, italics: defaultItalics }));
+        if (before) dayChu(before);
       }
       const endIdx = remaining.indexOf(' ', mathStart + MATH_MARKER.length);
       const nStr = remaining.slice(mathStart + MATH_MARKER.length, endIdx);
       const n = parseInt(nStr, 10);
-      elements.push(latexToDocxElement(mathStore[n], { color: defaultColor, bold: defaultBold }));
+      elements.push(latexToDocxElement(mathStore[n], { color: defaultColor, bold: dam }));
       remaining = remaining.slice(endIdx + 1);
       continue;
     }
@@ -174,7 +219,7 @@ export const processTextLine = async (textLine: string, defaultColor?: string, d
     if (startIndex === -1) {
       let plainText = remaining.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
       if (plainText) {
-         elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold, italics: defaultItalics }));
+         dayChu(plainText);
       }
       break;
     }
@@ -183,7 +228,7 @@ export const processTextLine = async (textLine: string, defaultColor?: string, d
       const textBefore = remaining.substring(0, startIndex);
       let plainText = textBefore.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
       if (plainText) {
-         elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold, italics: defaultItalics }));
+         dayChu(plainText);
       }
     }
     
@@ -195,7 +240,7 @@ export const processTextLine = async (textLine: string, defaultColor?: string, d
       if (imgEnd === -1) {
         let plainText = afterStart.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '');
         if (plainText) {
-           elements.push(new TextRun({ text: plainText, color: defaultColor, bold: defaultBold, italics: defaultItalics }));
+           dayChu(plainText);
         }
         break;
       }
