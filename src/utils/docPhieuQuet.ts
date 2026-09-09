@@ -30,6 +30,8 @@ export interface DoODoc {
   ma: string;
   /** Độ đen đã chuẩn hoá theo mốc của chính tờ giấy: 0 là trắng giấy, 1 là mực in đặc. */
   dam: number;
+  /** Phần lòng ô thật sự có mực, 0..1. Nét mảnh hay chì loang lổ vẫn hiện rõ ở đây. */
+  phu: number;
 }
 
 export interface KetQuaDocPhieu {
@@ -327,7 +329,8 @@ const nanDiem = (h: number[], x: number, y: number) => {
  * vành của ô này liếm sang ruột ô kia, đo ra số vô nghĩa.
  */
 function doO(xam: Float32Array, rong: number, cao: number,
-             h: number[], o: { x: number; y: number; r: number }): { ruot: number; nen: number } {
+             h: number[], o: { x: number; y: number; r: number },
+             mucCoMuc = 0): { ruot: number; nen: number; phu: number } {
   const giua = nanDiem(h, o.x, o.y);
   const mep = nanDiem(h, o.x + o.r, o.y);
   const r = Math.max(1.5, Math.hypot(mep.x - giua.x, mep.y - giua.y));
@@ -336,15 +339,24 @@ function doO(xam: Float32Array, rong: number, cao: number,
   let tRuot = 0, sRuot = 0, tNen = 0, sNen = 0;
   const x0 = Math.max(0, Math.floor(giua.x - rNgoai)), x1 = Math.min(rong - 1, Math.ceil(giua.x + rNgoai));
   const y0 = Math.max(0, Math.floor(giua.y - rNgoai)), y1 = Math.min(cao - 1, Math.ceil(giua.y + rNgoai));
+  const ruotV: number[] = [];
   for (let y = y0; y <= y1; y++) {
     for (let x = x0; x <= x1; x++) {
       const d2 = (x - giua.x) ** 2 + (y - giua.y) ** 2;
       const v = xam[y * rong + x];
-      if (d2 <= rRuot * rRuot) { tRuot += v; sRuot++; }
+      if (d2 <= rRuot * rRuot) { tRuot += v; sRuot++; if (mucCoMuc > 0) ruotV.push(v); }
       else if (d2 >= rTrong * rTrong && d2 <= rNgoai * rNgoai) { tNen += v; sNen++; }
     }
   }
-  return { ruot: sRuot ? tRuot / sRuot : 1, nen: sNen ? tNen / sNen : 1 };
+  const nen = sNen ? tNen / sNen : 1;
+  /* PHỦ NÉT: bao nhiêu phần lòng ô thật sự có mực, đếm từng điểm một.
+     Trung bình lòng ô gộp cả điểm có mực lẫn điểm giấy trắng thành một con số, nên nét
+     mảnh (vòng bút bi) hay nét chì ăn sáng loang lổ đều bị dìm xuống - đo trên 15 tờ
+     thật thì cách này tách nhóm CÓ TÔ khỏi nhóm TRẮNG xa gấp đôi trung bình. */
+  const phu = mucCoMuc > 0 && ruotV.length
+    ? ruotV.filter(v => nen - v >= mucCoMuc).length / ruotV.length
+    : 0;
+  return { ruot: sRuot ? tRuot / sRuot : 1, nen, phu };
 }
 
 /* ===================== ĐỌC MỘT PHIẾU ===================== */
@@ -380,6 +392,15 @@ const HE_SO_NET_RO = 0.55;
  * tờ đáng ngờ nhất lại im lặng nhất. Đo ra đúng như vậy: tờ toàn nét 0,16 báo mờ 0 câu.
  */
 const SAN_NET_RO = 0.25;
+
+/**
+ * Lượng mực phủ trong lòng ô mà trên mức này thì khỏi bàn - chắc chắn em có đánh dấu.
+ *
+ * Đo trên 15 tờ thật (573 ô đã tô · 4497 ô để trắng): ô đã tô phủ thấp nhất 0,47, 99% ô
+ * để trắng phủ dưới 0,26 - hai nhóm cách nhau gấp đôi so với đo bằng độ đen trung bình.
+ * Lấy 0,45 là nằm ngay dưới mép dưới của nhóm đã tô.
+ */
+const PHU_DUT_KHOAT = 0.45;
 
 /** Ô đậm nhì phải kém ô đậm nhất chừng này thì mới chắc em chỉ tô một ô. */
 const CACH_BIET = 0.18;
@@ -454,7 +475,13 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
   const chuanHoa = (d: { ruot: number; nen: number }) =>
     Math.min(1.4, Math.max(0, (d.nen - d.ruot) / tpDen));
 
-  const o: DoODoc[] = luoi.o.map(x => ({ ma: x.ma, dam: chuanHoa(doO(xam, rong, cao, h, x)) }));
+  /* Ngưỡng "điểm này có mực": đậm bằng 1/4 mực in của chính tờ ấy. Quy theo mốc đen in
+     sẵn nên ảnh chụp sáng hay tối, máy in đậm hay nhạt đều không lệch. */
+  const mucCoMuc = tpDen * 0.25;
+  const o: DoODoc[] = luoi.o.map(x => {
+    const d = doO(xam, rong, cao, h, x, mucCoMuc);
+    return { ma: x.ma, dam: chuanHoa(d), phu: d.phu };
+  });
   /* Cùng phép nắn mà `doO` dùng để đo, nên vòng khoanh rơi đúng chỗ đã đo. */
   const viTriO = luoi.o.map(x => {
     const giua = nanDiem(h, x.x, x.y);
@@ -462,6 +489,7 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
     return { ma: x.ma, x: giua.x, y: giua.y, r: Math.max(2, Math.hypot(mep.x - giua.x, mep.y - giua.y)) };
   });
   const damCua = new Map(o.map(x => [x.ma, x.dam]));
+  const phuCua = new Map(o.map(x => [x.ma, x.phu]));
 
   /* Gom ô theo từng câu để chọn đáp án, và để bắt trường hợp tô hai ô. */
   const nhom = new Map<string, OTron[]>();
@@ -479,9 +507,10 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
   const chonTrongNhom = new Map<string, string | null>();
 
   /* Ô đậm nhất của từng câu - vừa để chọn đáp án, vừa để biết mức tô điển hình của tờ. */
-  const xepCua = new Map<string, { nhan: string; dam: number }[]>();
+  const xepCua = new Map<string, { nhan: string; dam: number; phu: number }[]>();
   for (const [khoa, ds] of nhom) {
-    xepCua.set(khoa, ds.map(x => ({ nhan: x.nhan, dam: damCua.get(x.ma) ?? 0 }))
+    xepCua.set(khoa, ds.map(x => ({ nhan: x.nhan, dam: damCua.get(x.ma) ?? 0,
+                                    phu: phuCua.get(x.ma) ?? 0 }))
                        .sort((a, b) => b.dam - a.dam));
   }
   const netRo = mucNetRo([...xepCua.values()].map(x => x[0]?.dam ?? 0));
@@ -517,8 +546,16 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
       });
       continue;
     }
-    if (nhat.dam < netRo) {
-      netMo.push({ ma: khoa, viSao: `nét tô ở ${nhat.nhan} khá mờ (${nhat.dam.toFixed(2)}) - đã chấm, Thầy cô liếc lại giúp` });
+    /* Mờ theo độ đen TRUNG BÌNH thì chưa chắc là đáng ngờ: vòng bút bi mảnh và nét chì ăn
+       sáng đều bị trung bình dìm xuống, mà nhìn mắt thì rõ mồn một. Lượng mực phủ trong lòng ô
+       mới là thứ nói đúng: đo trên 15 tờ thật, ô đã tô có phủ từ 0,47 lên, còn ô để trắng
+       99% nằm dưới 0,26. Nên chỉ phiền Thầy cô khi CẢ HAI phép đo đều đuối. */
+    if (nhat.dam < netRo && nhat.phu < PHU_DUT_KHOAT) {
+      netMo.push({
+        ma: khoa,
+        viSao: `nét tô ở ${nhat.nhan} khá mờ (đậm ${nhat.dam.toFixed(2)}, mực phủ ${(nhat.phu * 100).toFixed(0)}%)`
+          + ' - đã chấm, Thầy cô liếc lại giúp',
+      });
     }
     chonTrongNhom.set(khoa, nhat.nhan);
   }

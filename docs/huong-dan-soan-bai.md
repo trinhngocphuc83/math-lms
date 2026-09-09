@@ -422,3 +422,59 @@ Bấm nút có **rung nhẹ** báo đã ăn — lớp ồn, nhìn màn hình kh�
 >
 > **Đang trình chiếu thì để cửa sổ đó nổi lên trước.** Vòng quay dùng hiệu ứng mà trình
 > duyệt tự tạm dừng khi cửa sổ nằm ở nền — băng tên sẽ đứng im.
+
+---
+
+## 14. Nhờ Claude làm giúp — các skill có sẵn
+
+Có những việc lặp đi lặp lại mà làm tay thì mất buổi: soạn trọn một chương, hay soi lại
+những câu máy chấm chưa chắc. Mấy việc đó đã được **đóng thành skill** — thầy cô chỉ cần
+gõ tên vào Claude Code, không phải nhớ các bước.
+
+Gõ dấu `/` rồi tên skill là xong. Đang có hai skill:
+
+### `/soan-chuong-thpt` — soạn trọn một chương
+
+Soạn cả chương theo mạch: **lý thuyết → phân dạng → bài luyện tập → đề kiểm tra**, đúng
+hạn ngạch từng khối (lớp 12 chỉ 20 trắc nghiệm + 4 Đúng/Sai + 6 trả lời ngắn, không tự
+luận; lớp 10–11 mới có 4 câu tự luận).
+
+Nói thẳng tên chương là được, ví dụ:
+
+> `/soan-chuong-thpt` chương Nguyên hàm – Tích phân, Toán 12
+
+Skill tự soi kho xem chương ấy đã có gì, soạn phần còn thiếu, rồi **xuất ra Word** với
+công thức MathType (OMML) — mở bằng Word là sửa được ngay, không phải chuyển đổi gì.
+
+### `/soi-phieu-cham` — soi lại chỗ máy chấm chưa chắc
+
+Dùng **sau khi** đã quét xong một tập phiếu trong trang *Chấm bài quét ảnh*.
+
+Bộ chấm tự gắn cờ những câu nó thấy mình đuối — nét tô quá nhạt, hoặc em tô hai ô. Skill
+này cắt ảnh phóng to **đúng những chỗ đó** (có vẽ nhãn A B C D / Đ S / chữ số lên ảnh cho
+khỏi nhìn nhầm ô), soi từng cái bằng mắt, rồi báo lại gọn ba con số:
+
+| | Nghĩa |
+|---|---|
+| **Khớp** | mắt đọc giống máy — không phải làm gì |
+| **Lệch** | máy chấm sai câu này, sửa tay trong app |
+| **Còn phân vân** | nhìn ảnh vẫn không dám chắc — **chỉ những câu này mới cần thầy cô ngó** |
+
+Chỉ cần đưa thư mục ảnh:
+
+> `/soi-phieu-cham` thư mục `G:\My Drive\Ảnh chấm toán 12`
+
+Đo trên 15 phiếu thật của lớp 12: máy đọc đúng **468/468** vết tô, gắn cờ **11 câu**
+(0,7 câu mỗi tờ), soi lại thì **cả 11 đều khớp** — không câu nào máy chấm sai.
+
+> **Skill không tự sửa điểm.** Cố ý như vậy: điểm là thứ không được đổi sau lưng thầy cô.
+> Chỗ lệch thì skill chỉ ra tờ nào câu nào, thầy cô sửa trong trang *Chấm bài quét ảnh* —
+> ô chọn đáp án ở cột bên phải sửa được ngay, điểm tự tính lại.
+
+### Cái skill **không** làm thay được
+
+Đừng nhờ Claude **đọc thẳng cả tờ phiếu bằng mắt** thay cho máy chấm. Máy đo thì chạy lại
+bao nhiêu lần cũng ra đúng một con số, sai chỗ nào kiểm ra chỗ ấy; mắt nhìn thì lần nào
+cũng có thể khác. Một lớp 40 em là hơn 1.300 quyết định — sai vài câu rải rác thì không
+biết đường nào mà tìm. Thứ tự đúng là **máy chấm trước, mắt chỉ soi lại chỗ máy đã tự
+khoanh vùng**.
