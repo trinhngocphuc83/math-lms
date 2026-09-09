@@ -277,6 +277,8 @@ export default function BatchQueuePage() {
   useEffect(() => { autoSaveCleanRef.current = autoSaveClean; }, [autoSaveClean]);
 
   const [savedTotal, setSavedTotal] = useState(0);
+  /** Số chỗ còn khuyết (thiếu đáp án, thiếu mệnh đề) mà hàng đợi vẫn lưu vào kho. */
+  const [khuyetTotal, setKhuyetTotal] = useState(0);
   const [reviewQueue, setReviewQueue] = useState<ReviewItem[]>([]);
   const [waitingForCategory, setWaitingForCategory] = useState<WorkingQuestion[]>([]);
   const [pendingProposals, setPendingProposals] = useState<Record<string, CategoryProposal>>({});
@@ -392,6 +394,10 @@ export default function BatchQueuePage() {
       try {
         const result = await saveQuestionsToBank(supabase, toAutoSave);
         setSavedTotal((prev) => prev + result.insertedCount);
+        /* Hàng đợi chạy nền nên không bật hộp thoại được - nhưng cũng không được im lặng.
+           Đếm rồi bày ngay bảng trạng thái, vì đây là đường đã âm thầm đẩy vào kho những
+           câu trắc nghiệm không có đáp án. */
+        if (result.conKhuyet.length) setKhuyetTotal((prev) => prev + result.conKhuyet.length);
       } catch (e: any) {
         // Lỗi lưu (hiếm) - đưa về bàn kiểm duyệt để không mất dữ liệu
         toAutoSave.forEach((q) => toReview.push({ review_id: q.temp_id!, question: q, reasons: ['clean'], selected: true }));
@@ -659,6 +665,16 @@ export default function BatchQueuePage() {
         + (result.thieuPhanLoai.length > 0
             ? `\n\nCÒN ${result.thieuPhanLoai.length} CÂU CHƯA LƯU vì chưa rõ Chương hoặc Bài.`
               + ' Thầy cô mở từng câu bấm "Sửa" để bổ sung rồi lưu lại.'
+            : '')
+        /* Câu thiếu đáp án vẫn lưu được, nhưng học sinh chọn đúng vẫn báo sai mà không có
+           dấu hiệu gì. Bản trước bỏ qua cảnh báo này nên kho tích lại 193 câu như vậy. */
+        + (result.daNan.length > 0
+            ? `\n\nMÁY ĐÃ TỰ NẮN ${result.daNan.length} chỗ:\n- ` + result.daNan.slice(0, 6).join('\n- ')
+            : '')
+        + (result.conKhuyet.length > 0
+            ? `\n\nCÒN KHUYẾT ${result.conKhuyet.length} chỗ (vẫn lưu, nhưng ra đề sẽ hỏng):\n- `
+              + result.conKhuyet.slice(0, 6).join('\n- ')
+              + '\n\nMở Ngân hàng câu hỏi, lọc "Thiếu đáp án" để bổ sung.'
             : ''));
     } catch (e: any) {
       alert("Lỗi khi lưu: " + e.message);
@@ -869,6 +885,13 @@ export default function BatchQueuePage() {
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 flex items-center justify-between flex-wrap gap-3">
         <div className="flex gap-6 text-sm">
           <div><span className="text-gray-400">Đã lưu vào ngân hàng:</span> <b className="text-emerald-600 text-lg">{savedTotal}</b></div>
+          {khuyetTotal > 0 && (
+            <div title="Câu vẫn lưu nhưng thiếu đáp án hoặc thiếu mệnh đề - ra đề sẽ hỏng">
+              <span className="text-gray-400">Còn khuyết:</span>{" "}
+              <b className="text-amber-600 text-lg">{khuyetTotal}</b>{" "}
+              <span className="text-amber-700 text-xs">lọc &quot;Thiếu đáp án&quot; trong Ngân hàng để bổ sung</span>
+            </div>
+          )}
           <div><span className="text-gray-400">Đang chờ danh mục:</span> <b className="text-amber-600 text-lg">{waitingForCategory.length}</b></div>
           <div><span className="text-gray-400">Chờ kiểm duyệt:</span> <b className="text-indigo-600 text-lg">{reviewQueue.length}</b></div>
         </div>

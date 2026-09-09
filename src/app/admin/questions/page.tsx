@@ -175,7 +175,11 @@ export default function QuestionsPage() {
   // Categories & Filters State
   const [categories, setCategories] = useState<any[]>([]);
   const [filters, setFilters] = useState({
-    grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: "", question_type: ""
+    grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: "", question_type: "",
+    /* Lọc "câu hỏng": chỗ để Thầy cô dọn kho. Đo trên kho thật có 193 câu trắc nghiệm,
+       Đúng/Sai, trả lời ngắn đang TRỐNG đáp án - học sinh chọn đúng vẫn báo sai mà không
+       có dấu hiệu gì. Không có ô lọc này thì không có đường nào tìm ra chúng. */
+    thieuDapAn: ""
   });
 
   const DIFFICULTY_LABELS: Record<string, string> = {
@@ -249,6 +253,11 @@ export default function QuestionsPage() {
       if (filters.question_type) {
         const code = toBankType(filters.question_type);
         query = code ? query.in('question_type', bankTypeSynonyms(code)) : query.eq('question_type', filters.question_type);
+      }
+      /* Tự luận chấm tay theo barem nên không cần `correct_answer` - lọc thiếu đáp án mà
+         gộp cả tự luận vào thì ra hơn hai trăm câu bình thường, nhìn là nản, không ai dọn. */
+      if (filters.thieuDapAn === 'thieu') {
+        query = query.in('question_type', ['NLC', 'DS', 'TLN']).or('correct_answer.is.null,correct_answer.eq.');
       }
       
       const { data, count, error } = await query
@@ -463,7 +472,7 @@ export default function QuestionsPage() {
 
   const activeFilterCount = Object.values(filters).filter(v => v).length;
   const clearAllFilters = () => {
-    setFilters({ grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: "", question_type: "" });
+    setFilters({ grade: "", subject: "", topic: "", lesson: "", math_form: "", difficulty: "", question_type: "", thieuDapAn: "" });
     setCurrentPage(1);
   };
 
@@ -625,6 +634,12 @@ export default function QuestionsPage() {
               <option value="DS">Đúng/Sai</option>
               <option value="TLN">Trả lời ngắn</option>
               <option value="TL">Tự luận</option>
+            </select>
+            <select value={filters.thieuDapAn} onChange={e => handleFilterChange('thieuDapAn', e.target.value)}
+                    title="Câu trắc nghiệm, Đúng/Sai, trả lời ngắn đang trống đáp án - học sinh chọn đúng vẫn báo sai"
+                    className="border border-amber-300 rounded-lg px-2 py-1.5 text-xs outline-none focus:border-amber-500 font-medium text-amber-700 bg-amber-50">
+              <option value="">-- Tình trạng --</option>
+              <option value="thieu">Thiếu đáp án</option>
             </select>
             {activeFilterCount > 0 && (
               <button onClick={clearAllFilters} className="text-xs font-bold text-gray-400 hover:text-red-600 underline px-1">Xoá lọc ({activeFilterCount})</button>

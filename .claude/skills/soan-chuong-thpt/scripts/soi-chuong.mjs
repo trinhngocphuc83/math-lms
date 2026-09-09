@@ -19,6 +19,9 @@ const LOP = lay('lop', '12');
 const TEN_CHUONG = lay('chuong', null);
 if (!TEN_CHUONG) { console.error('Thiếu --chuong'); process.exit(1); }
 
+/** Khối ```quiz``` trong nội dung bài. Dùng chung cho cả phép đo phủ dạng và phép đo answerIndex. */
+const MAU_QUIZ = /^```quiz[ \t]*\r?\n([\s\S]*?)^```/gm;
+
 const env = {};
 for (const l of readFileSync('.env.local', 'utf8').split('\n')) {
   const m = l.match(/^([A-Z0-9_]+)=(.*)$/); if (m) env[m[1]] = m[2].trim();
@@ -39,6 +42,8 @@ console.log(`${ch[0].title} · ${kh[0].title}\n`);
 
 /* ---------- 1. Phủ dạng ---------- */
 console.log('═══ PHỦ DẠNG: kho có dạng nào mà bài giảng chưa dạy? ═══');
+console.log('   ·  bài giảng đã rút câu của dạng này   ~  có nhắc tên nhưng chưa rút câu nào'
+  + '   ✗  không thấy dấu vết');
 for (const b of dsBai) {
   const { data: lt } = await sb.from('lesson_modules').select('content_markdown')
     .eq('lesson_id', b.id).eq('type', 'theory').maybeSingle();
@@ -60,11 +65,38 @@ for (const b of dsBai) {
   console.log(`     bài giảng: ${dangTrongBai} dạng · kho: ${dem.length} dạng, ${tongCau} câu`
     + (dangTrongBai < dem.length ? `   ⚠ hụt ${dem.length - dangTrongBai} dạng` : '   ✓'));
   if (thieuYeuCau) console.log(`     ⚠ ${thieuYeuCau} dạng trong kho chưa có yêu cầu cần đạt`);
+  /*
+   * PHỦ DẠNG ĐO BẰNG CÂU ĐÃ RÚT, KHÔNG ĐO BẰNG TÊN.
+   *
+   * Bản trước dò tên dạng trong bài giảng, nên đặt tên hay hơn tên kho là bị báo thiếu:
+   * dạng kho tên "Tự suy luận" mà bài giảng gọi đúng bản chất là "Bài toán thực tế" thì
+   * máy kêu ✗, trong khi bài giảng dạy đủ. Báo động giả kiểu ấy làm người soạn quen tay
+   * bỏ qua dấu ✗ - hỏng luôn cái chuông.
+   *
+   * Nay đo bằng BẰNG CHỨNG: câu hỏi tương tác trong bài giảng có `sourceQuestionId`, tra
+   * ngược ra dạng của câu ấy trong kho là biết chắc bài giảng có dạy dạng đó hay không.
+   * Còn dò tên chỉ giữ làm dấu hiệu phụ, cho dạng chưa rút được câu nào.
+   */
+  const idTrongBai = new Set();
+  for (const kh3 of md.matchAll(MAU_QUIZ)) {
+    let d; try { d = JSON.parse(kh3[1]); } catch { continue; }
+    for (const q of Array.isArray(d) ? d : [d]) if (q.sourceQuestionId) idTrongBai.add(q.sourceQuestionId);
+  }
+  const dangCoCau = new Set();
+  if (idTrongBai.size) {
+    const ids = [...idTrongBai];
+    for (let i = 0; i < ids.length; i += 200) {
+      const { data } = await sb.from('questions').select('math_form').in('id', ids.slice(i, i + 200));
+      for (const x of data || []) dangCoCau.add(x.math_form);
+    }
+  }
+
   for (const d of dem) {
-    /* dò thô theo mấy chữ đầu của tên dạng - đủ để biết bài giảng có nhắc tới hay chưa */
     const khoa = d.ten.toLowerCase().split(/\s+/).slice(0, 3).join(' ');
-    const co = md.toLowerCase().includes(khoa);
-    console.log(`       ${co ? '·' : '✗'} ${String(d.so).padStart(3)} câu  ${d.ten}`);
+    const coCau = dangCoCau.has(d.ten);
+    const coTen = md.toLowerCase().includes(khoa);
+    /* · đã rút câu của dạng này  ~ chỉ thấy tên, chưa rút câu nào  ✗ không thấy dấu vết */
+    console.log(`       ${coCau ? '·' : coTen ? '~' : '✗'} ${String(d.so).padStart(3)} câu  ${d.ten}`);
   }
 }
 
@@ -74,7 +106,7 @@ const idBai = (dsBaiTatCa || []).map(b => b.id);
 const { data: mods } = await sb.from('lesson_modules').select('id,title,lesson_id,content_markdown').in('lesson_id', idBai);
 let tongKhoi = 0, hong = 0;
 for (const m of mods || []) {
-  for (const kh2 of (m.content_markdown || '').matchAll(/^```quiz[ \t]*\r?\n([\s\S]*?)^```/gm)) {
+  for (const kh2 of (m.content_markdown || '').matchAll(MAU_QUIZ)) {
     let d; try { d = JSON.parse(kh2[1]); } catch { continue; }
     for (const q of Array.isArray(d) ? d : [d]) {
       const loai = q.type || 'multiple_choice';

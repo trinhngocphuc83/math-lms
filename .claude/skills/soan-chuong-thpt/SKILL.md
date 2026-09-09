@@ -45,8 +45,21 @@ Cho ra ba thứ:
 - **Phủ dạng** — kho có bao nhiêu dạng cho từng bài, bài giảng đã dạy mấy dạng, dạng nào
   còn bỏ trống. Đây là chỗ dễ hụt nhất: Bài 3 chương IV từng chỉ có **2 dạng** trong khi
   kho có **7 dạng · 215 câu** — ba dạng đông câu nhất (54, 48, 22 câu) không được nhắc tới
-  dòng nào. Dấu `✗` là gợi ý chứ chưa phải kết luận (dò thô theo tên dạng), phải mở bài
-  giảng xem lại; nhưng hụt nhiều thì gần như chắc là thiếu thật.
+  dòng nào.
+
+  Phủ dạng đo bằng **câu đã rút**, không đo bằng tên: câu tương tác trong bài giảng có
+  `sourceQuestionId`, tra ngược ra dạng của nó trong kho là biết chắc. Ba dấu:
+
+  | Dấu | Nghĩa |
+  |---|---|
+  | `·` | bài giảng đã rút câu của dạng này — yên tâm |
+  | `~` | có nhắc tên nhưng chưa rút câu nào — thường vì kho chỉ có câu tự luận |
+  | `✗` | không thấy dấu vết, gần như chắc là thiếu thật |
+
+  Bản trước dò theo tên nên đặt tên hay hơn tên kho là bị báo thiếu — dạng kho tên
+  *"Tự suy luận"* mà bài giảng gọi đúng bản chất là *"Bài toán thực tế"* thì máy kêu `✗`
+  trong khi bài giảng dạy đủ. Báo động giả kiểu ấy làm người soạn quen tay bỏ qua dấu `✗`,
+  hỏng luôn cái chuông.
 - **Khối trắc nghiệm thiếu `answerIndex`** — phải bằng 0.
 - **Hạn ngạch bài tập tự luyện** — đủ số câu chưa, cơ cấu loại và mức có đúng không.
 

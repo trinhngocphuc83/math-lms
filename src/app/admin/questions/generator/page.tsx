@@ -330,6 +330,10 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
        * trong kho mà cây chọn dạng ở trang ra đề không bao giờ hiện, coi như mất câu.
        */
       let daLuu = 0;
+      /* Cảnh báo "còn khuyết" phải hiện ra cho Thầy cô đọc, không phải chỉ ghi vào console.
+         Đo trên kho thật: 193 câu đang trống đáp án - trắc nghiệm chọn đúng vẫn báo sai,
+         mà không ai biết, đúng vì hai đường lưu tự động nuốt mất cảnh báo này. */
+      let nhacKhuyet = '';
       if (inserts.length > 0) {
         const kq = await saveQuestionsToBank(supabase, inserts as any[]);
         daLuu = kq.insertedCount;
@@ -338,9 +342,18 @@ Trả về DUY NHẤT một mảng JSON (không bọc trong markdown tick \`\`\`
         }
         if (kq.daNan.length) console.warn('[Soạn câu bằng AI] Đã nắn:', kq.daNan);
         if (kq.conKhuyet.length) console.warn('[Soạn câu bằng AI] Còn khuyết:', kq.conKhuyet);
+        nhacKhuyet = (kq.daNan.length
+            ? `\n\nMÁY ĐÃ TỰ NẮN ${kq.daNan.length} chỗ:\n- ` + kq.daNan.slice(0, 6).join('\n- ')
+            : '')
+          + (kq.conKhuyet.length
+            ? `\n\nCÒN KHUYẾT ${kq.conKhuyet.length} chỗ (vẫn lưu, nhưng ra đề sẽ hỏng):\n- `
+              + kq.conKhuyet.slice(0, 6).join('\n- ')
+              + '\n\nMở Ngân hàng câu hỏi, lọc "Thiếu đáp án" để bổ sung.'
+            : '');
       }
 
-      alert(`Lưu thành công: ${daLuu} câu.\nBỏ qua: ${duplicateCount} câu (do trùng lặp với dữ liệu trong Ngân hàng).`);
+      alert(`Lưu thành công: ${daLuu} câu.\nBỏ qua: ${duplicateCount} câu (do trùng lặp với dữ liệu trong Ngân hàng).`
+        + nhacKhuyet);
       setGeneratedResults([]);
       setEssayContent("");
       setEssayExplanation("");
