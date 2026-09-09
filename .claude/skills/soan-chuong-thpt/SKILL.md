@@ -59,6 +59,7 @@ Mỗi bài cần đủ các dạng mà kho đang có. Mỗi dạng gồm:
 ### 🛠 Phương pháp giải
 #### Bước 1: ...
 #### Bước 2: ...
+### 🖩 Bấm máy Casio fx-580VN X   ← chỉ những dạng bấm được, xem tài liệu riêng
 ---
 > ### 📌 Ví dụ mẫu
 > đề bài
@@ -68,6 +69,16 @@ Mỗi bài cần đủ các dạng mà kho đang có. Mỗi dạng gồm:
 
 ```quiz   ← hai câu tương tác RÚT TỪ KHO, có answerIndex và sourceQuestionId
 ```
+
+**Kĩ năng bấm máy** — đọc [references/ky-nang-casio-fx580.md](references/ky-nang-casio-fx580.md).
+Ở đó có tổ hợp phím, cú pháp, và quan trọng nhất là **giới hạn** của từng công cụ (SOLVE
+không giải nổi phương trình có `Σ`, TABLE không nhận công thức truy hồi, PreAns bay sạch khi
+đổi phương thức) — mấy chỗ ấy máy không báo gì cho ra hồn, học sinh chỉ thấy sai mà không
+hiểu vì sao.
+
+Tài liệu ấy cũng nói rõ **khi nào KHÔNG được ghi mục bấm máy**: dạng chứng minh, dạng hỏi
+điều kiện đúng với mọi $n$, và dạng bấm máy còn lâu hơn làm tay. Nhét mục bấm máy vào dạng
+chứng minh là dạy học sinh thay lời giải bằng vài số hạng đầu.
 
 Mỗi dạng ít nhất hai câu tương tác, xếp từ dễ đến khó. Câu phải giải được bằng **đúng**
 phương pháp vừa trình bày, và phải tính ra con số cụ thể — hỏi lý thuyết suông thì học
