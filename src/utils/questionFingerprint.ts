@@ -193,3 +193,27 @@ export function timCauTrung(cauMoi: CauDeSoSanh, khoCu: KhoaSoSanh[]): KetQuaSoT
 
   return { mucDo: 'khong', diem: 0, lyDo: '' };
 }
+
+/**
+ * Rà trùng cho CẢ MỘT LÔ câu vừa soạn, so với kho cũ và so với chính các câu trong lô.
+ *
+ * Đường quét bằng AI đã dò trùng ngay lúc bóc câu, nhưng sau đó thầy cô còn sửa đề, gộp
+ * câu, dán thêm câu tay - lúc ấy kết quả cũ không còn đúng. Hàm này để bấm rà lại bất cứ
+ * lúc nào mà không phải quét lại từ đầu.
+ *
+ * So cả trong lô là chuyện phải làm: hai câu giống nhau nằm cùng một lô thì so với kho
+ * không phát hiện được, cả hai cùng lọt vào ngân hàng.
+ *
+ * @param cacCau  các câu đang soạn, theo đúng thứ tự đang hiển thị
+ * @param khoCu   khoá so sánh của kho câu hỏi hiện có
+ * @returns       mảng cùng độ dài với `cacCau`, phần tử thứ i là kết quả của câu thứ i
+ */
+export function raSoatCaLo(cacCau: CauDeSoSanh[], khoCu: KhoaSoSanh[]): KetQuaSoTrung[] {
+  const daXet: KhoaSoSanh[] = [];
+  return cacCau.map((cau) => {
+    const kq = timCauTrung(cau, [...khoCu, ...daXet]);
+    const khoa = taoKhoaSoSanh(cau);
+    if (khoa.vanTay) daXet.push(khoa);
+    return kq;
+  });
+}

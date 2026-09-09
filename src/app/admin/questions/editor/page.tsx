@@ -33,6 +33,10 @@ import { saveQuestionsToBank } from "@/utils/questionBankSave";
 import { doiVeTenChuan } from "@/utils/phanLoaiCauHoi";
 import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
 import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep } from "@/utils/noiTiepJson";
+import KiemThuDeModal from "@/components/admin/KiemThuDeModal";
+import { raSoatCaLo, taoKhoaSoSanh, type KhoaSoSanh } from "@/utils/questionFingerprint";
+import { chiaPhanDeThi } from "@/utils/deThi";
+import type { BanVa } from "@/utils/suaLoiKiemThu";
 
 export default function BatchAIEditorPage() {
   const router = useRouter();
@@ -66,6 +70,9 @@ export default function BatchAIEditorPage() {
   const [cauDoiChieu, setCauDoiChieu] = useState<QuestionData | null>(null);
   const [existingQuestions, setExistingQuestions] = useState<{id: string; content: string; option_a?: string; option_b?: string; option_c?: string; option_d?: string}[]>([]);
   const [isSavingAll, setIsSavingAll] = useState(false);
+  // Kiểm thử và rà câu trùng cho cả lô đang soạn, giống hai nút bên Quản lý Đề thi.
+  const [moKiemThu, setMoKiemThu] = useState(false);
+  const [dangRaTrung, setDangRaTrung] = useState(false);
 
   // Edit Modal States
   const [previewingQuestion, setPreviewingQuestion] = useState<QuestionData | null>(null);
@@ -290,6 +297,56 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
   7. VỊ TRÍ HÌNH ẢNH/BẢNG BIỂU: Nếu câu hỏi có đồ thị, hình vẽ hoặc bảng số liệu ĐI KÈM, TUYỆT ĐỐI KHÔNG mô tả chi tiết làm lệch câu gốc. BẮT BUỘC chèn đoạn text "[CÓ HÌNH ẢNH KÈM THEO]" vào ĐÚNG VỊ TRÍ mà hình ảnh đó xuất hiện trong tài liệu gốc (Ví dụ: ngay sau chữ "như hình vẽ bên:"). Tuyệt đối KHÔNG được tự ý vứt xuống cuối câu hỏi nếu không đúng vị trí gốc. CHỈ ĐƯỢC sửa nội dung câu gốc nếu sai đề, khi đó phải thêm "[CÂU HỎI CÓ THỂ BỊ SAI ĐỀ, ĐÃ SỬA LẠI]".`;
     navigator.clipboard.writeText(prompt + LUAT_KHONG_CAT_CUT);
     alert("Đã Copy Prompt Chuẩn!");
+  };
+
+  /**
+   * Rà lại câu trùng cho cả lô đang soạn.
+   *
+   * Đường quét bằng AI đã dò trùng ngay lúc bóc câu, nhưng sau đó Thầy cô còn sửa đề,
+   * gộp câu, dán thêm câu tay - lúc ấy kết quả cũ không còn đúng. Nút này rà lại mà
+   * không phải quét lại từ đầu.
+   */
+  const handleRaTrung = () => {
+    if (!parsedQuestions.length) return;
+    setDangRaTrung(true);
+    try {
+      const khoCu: KhoaSoSanh[] = existingQuestions
+        .map(eq => taoKhoaSoSanh(eq))
+        .filter(k => k.vanTay);
+      const kq = raSoatCaLo(parsedQuestions.map(q => ({
+        id: q.temp_id || '',
+        content: q.content,
+        option_a: q.option_a, option_b: q.option_b, option_c: q.option_c, option_d: q.option_d,
+      })), khoCu);
+      setParsedQuestions(prev => prev.map((q, i) => {
+        const r = kq[i];
+        const nghi = r.mucDo === 'trung' || r.mucDo === 'nghi';
+        return {
+          ...q,
+          isDuplicate: nghi,
+          mucDoTrung: r.mucDo === 'khong' ? undefined : r.mucDo,
+          lyDoTrung: r.lyDo || undefined,
+          duplicateId: r.idCauGiong,
+        };
+      }));
+      const soTrung = kq.filter(r => r.mucDo === 'trung' || r.mucDo === 'nghi').length;
+      alert(soTrung
+        ? `Rà xong ${parsedQuestions.length} câu: ${soTrung} câu trùng hoặc nghi trùng, đã đánh dấu cam trong danh sách.`
+        : `Rà xong ${parsedQuestions.length} câu: không câu nào trùng với kho (${existingQuestions.length} câu) hay trùng nhau trong lô.`);
+    } finally { setDangRaTrung(false); }
+  };
+
+  /**
+   * Bản vá từ Kiểm thử ghi NGƯỢC vào câu đang soạn, vì lô này chưa có trong ngân hàng.
+   *
+   * Chỉ đắp những trường bản vá thật sự có chữ: trường để trống nghĩa là "không đụng tới",
+   * đắp thẳng cả bản vá sẽ xoá trắng nội dung cũ.
+   */
+  const vaVaoCauDangSoan = (cauId: string, va: BanVa) => {
+    const dap = Object.fromEntries(
+      Object.entries(va).filter(([, v]) => typeof v === 'string' && v !== ''),
+    ) as Partial<QuestionData>;
+    setParsedQuestions(prev => prev.map(q => (q.temp_id === cauId ? { ...q, ...dap } : q)));
   };
 
   // --- ACTIONS ---
@@ -962,7 +1019,28 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
              </div>
 
              <div className="p-4 border-t border-gray-100 bg-gray-50 shrink-0">
-                <button 
+                {/* Hai phép soi trước khi lưu vào kho, cùng bộ luật với Quản lý Đề thi:
+                    kiểm thử soi cấu trúc - công thức - lời giải, rà trùng so với kho và
+                    so các câu trong lô với nhau. */}
+                <div className="grid grid-cols-2 gap-2 mb-2">
+                   <button
+                      onClick={() => setMoKiemThu(true)}
+                      disabled={parsedQuestions.length === 0}
+                      title="Soi cấu trúc, công thức, lời giải của cả lô trước khi lưu"
+                      className="border border-indigo-200 text-indigo-700 bg-indigo-50 hover:bg-indigo-100 font-bold py-2 rounded-xl text-xs transition-colors disabled:opacity-50 flex items-center justify-center gap-1.5"
+                   >
+                      <Eye className="w-3.5 h-3.5" /> Kiểm thử ({parsedQuestions.length})
+                   </button>
+                   <button
+                      onClick={handleRaTrung}
+                      disabled={parsedQuestions.length === 0 || dangRaTrung}
+                      title="Rà lại câu trùng: so với ngân hàng và so các câu trong lô với nhau"
+                      className="border border-orange-200 text-orange-700 bg-orange-50 hover:bg-orange-100 font-bold py-2 rounded-xl text-xs transition-colors disabled:opacity-50 flex items-center justify-center gap-1.5"
+                   >
+                      {dangRaTrung ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <AlertTriangle className="w-3.5 h-3.5" />} Rà câu trùng
+                   </button>
+                </div>
+                <button
                    onClick={() => {
                       if (confirm("Bạn có chắc muốn xoá hết và quét đề mới?")) {
                          setParsedQuestions([]);
@@ -1344,10 +1422,19 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
 
       
       
-      <QuestionPreviewModal 
+      <QuestionPreviewModal
         isOpen={!!previewingQuestion}
         onClose={() => setPreviewingQuestion(null)}
         question={previewingQuestion}
+      />
+
+      {/* Kiểm thử cả lô - cùng bộ luật với Quản lý Đề thi. Bản vá ghi ngược vào câu đang
+          soạn chứ không ghi thẳng vào ngân hàng, vì lô này chưa lưu. */}
+      <KiemThuDeModal
+        mo={moKiemThu}
+        onDong={() => setMoKiemThu(false)}
+        cacPhan={chiaPhanDeThi(parsedQuestions.map(q => ({ ...q, id: q.temp_id })) as any)}
+        luuThayThe={vaVaoCauDangSoan}
       />
 
       {/* Đặt câu đang soạn cạnh câu giống nó để thầy cô tự quyết bỏ hay giữ. */}
