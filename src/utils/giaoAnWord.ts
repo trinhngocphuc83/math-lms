@@ -16,6 +16,26 @@ import { anhWord } from "./mauDeThi";
 
 const MATH_MARKER = ' MATH';
 
+/**
+ * Bỏ các thẻ HTML mà app dùng để trang trí trên màn hình.
+ *
+ * Nội dung bài giảng không phải markdown thuần: nó có `<span style="text-align:center;
+ * display:block">` để canh giữa và `<div class="border-2 border-indigo-400 ...">` để vẽ
+ * khung màu. Trên giấy thì không có khung màu, mà bộ dựng chỉ hiểu span MÀU CHỮ - mấy
+ * thẻ còn lại rơi xuống nhánh chữ thường và IN RA NGUYÊN THẺ.
+ *
+ * Bỏ thẻ nhưng GIỮ chữ bên trong. Riêng `<img>` để nguyên vì bước sau còn dựng ảnh.
+ *
+ * Không dừng ở dấu `>` đầu tiên: lớp Tailwind của khung màu có dấu `>` nằm ngay trong
+ * thuộc tính - `class="... [&>p:last-child]:mb-0"` - nên cắt tới `>` đầu tiên sẽ chừa
+ * lại đuôi `p:last-child]:mb-0">` in ra giữa bài. Phải nhảy qua cả đoạn trong dấu nháy.
+ */
+const boTheTrangTri = (dong: string): string =>
+    String(dong || '')
+        .replace(/<\/?(?:span|div|p|section|figure|figcaption|small|u|mark)\b(?:[^>"']|"[^"]*"|'[^']*')*>/gi, '')
+        .replace(/<br\s*\/?>/gi, ' ')
+        .trim();
+
 // Bóc tách công thức $...$ / $$...$$ thành các placeholder vô hại (  không bao giờ
 // xuất hiện trong nội dung thật) để không bị lẫn với ảnh/in đậm khi tách dòng thành runs.
 const extractMathPlaceholders = (text: string, store: string[]): string => {
@@ -31,57 +51,65 @@ const extractMathPlaceholders = (text: string, store: string[]): string => {
     return text;
 };
 
-// Tách 1 đoạn text thường (không còn ảnh/công thức) thành các TextRun, xử lý **in đậm**
-// và <span style="color:...">...</span> (không lồng nhau - đúng với cách nội dung AI sinh ra).
-const textToRuns = (text: string, opts: { color?: string; bold?: boolean } = {}): TextRun[] => {
-    if (!text) return [];
-    const boldItalicRuns = (t: string): TextRun[] => {
-        const runs: TextRun[] = [];
-        let remaining = t;
-        while (remaining.length > 0) {
-            const boldIdx = remaining.indexOf('**');
-            if (boldIdx !== -1) {
-                const endBold = remaining.indexOf('**', boldIdx + 2);
-                if (endBold !== -1) {
-                    if (boldIdx > 0) runs.push(new TextRun({ text: remaining.slice(0, boldIdx), color: opts.color, bold: opts.bold }));
-                    runs.push(new TextRun({ text: remaining.slice(boldIdx + 2, endBold), color: opts.color, bold: true }));
-                    remaining = remaining.slice(endBold + 2);
-                    continue;
-                }
-            }
-            runs.push(new TextRun({ text: remaining, color: opts.color, bold: opts.bold }));
-            break;
-        }
-        return runs;
-    };
+// Tách 1 đoạn text thường (không còn ảnh/công thức) thành các TextRun, xử lý **in đậm**.
+//
+// Bản cũ còn đọc màu chữ từ <span style="color:...">. Bản in giấy để chữ ĐEN HẾT: màu
+// trên màn hình là để gây chú ý khi đọc trên máy, in ra thì rối và tốn mực. Thẻ span
+// nay đã bị `boTheTrangTri` gỡ từ trước, nên ở đây chỉ còn chữ.
+const textToRuns = (
+    text: string,
+    opts: { color?: string; bold?: boolean } = {},
+): { runs: TextRun[]; dam: boolean } => {
+    const damVao = opts.bold ?? false;
+    if (!text) return { runs: [], dam: damVao };
 
-    const spanRegex = /<span[^>]*style="[^"]*color:\s*([^;"]+)[^"]*"[^>]*>([\s\S]*?)<\/span>/gi;
+    /* Dấu đậm hoạt động như CÔNG TẮC chứ không phải cặp đóng mở tìm được trong một đoạn.
+       Lý do: một dòng bị cắt nhỏ ở mỗi công thức, nên "**tích phân từ $a$ đến $b$**" có
+       dấu mở nằm ở mẩu này còn dấu đóng nằm ở mẩu kia - dò theo cặp thì không bao giờ
+       khớp, và cả hai dấu sao in ra giữa bài. Bật tắt theo công tắc thì khớp được, miễn
+       là mẩu sau nhận lại trạng thái của mẩu trước. */
     const runs: TextRun[] = [];
-    let lastIndex = 0;
-    let m: RegExpExecArray | null;
-    let hasSpan = false;
-    while ((m = spanRegex.exec(text)) !== null) {
-        hasSpan = true;
-        if (m.index > lastIndex) runs.push(...boldItalicRuns(text.slice(lastIndex, m.index)));
-        const color = m[1].trim().replace('#', '').toUpperCase();
-        runs.push(...textToRuns(m[2], { ...opts, color }));
-        lastIndex = m.index + m[0].length;
-    }
-    if (hasSpan) {
-        if (lastIndex < text.length) runs.push(...boldItalicRuns(text.slice(lastIndex)));
-        return runs;
-    }
-    return boldItalicRuns(text);
+    let dam = damVao;
+    const manh = text.split('**');
+    manh.forEach((m, i) => {
+        if (i > 0) dam = !dam;
+        if (!m) return;
+        /* Trong mỗi mẩu, dấu sao ĐƠN là chữ nghiêng - dò theo cặp vì chữ nghiêng không
+           bắc cầu qua công thức như chữ đậm. */
+        let con = m;
+        while (con.length > 0) {
+            const d = con.indexOf('*');
+            const c = d === -1 ? -1 : con.indexOf('*', d + 1);
+            if (d === -1 || c === -1) {
+                runs.push(new TextRun({ text: con, color: opts.color, bold: dam }));
+                break;
+            }
+            if (d > 0) runs.push(new TextRun({ text: con.slice(0, d), color: opts.color, bold: dam }));
+            runs.push(new TextRun({ text: con.slice(d + 1, c), color: opts.color, bold: dam, italics: true }));
+            con = con.slice(c + 1);
+        }
+    });
+    return { runs, dam };
 };
 
-// Chuyển 1 dòng nội dung (có thể chứa ảnh, công thức, in đậm, span màu) thành mảng
-// children cho Paragraph của docx: TextRun | Math | ImageRun.
+// Chuyển 1 dòng nội dung (có thể chứa ảnh, công thức, in đậm) thành mảng children cho
+// Paragraph của docx: TextRun | Math | ImageRun.
+//
+// Gỡ thẻ trang trí ngay tại đây vì đây là cửa duy nhất mọi chữ đi qua - chữ trong bài
+// giảng, trong câu hỏi tương tác, trong lời giải đều vào đường này.
 const buildRunsFromLine = async (line: string, opts: { color?: string; bold?: boolean } = {}): Promise<any[]> => {
     const mathStore: string[] = [];
-    const withPlaceholders = extractMathPlaceholders(line, mathStore);
+    const withPlaceholders = extractMathPlaceholders(boTheTrangTri(line), mathStore);
 
     const runs: any[] = [];
     let remaining = withPlaceholders;
+    /* Trạng thái chữ đậm phải đi xuyên qua các mẩu bị công thức cắt ra. */
+    let dam = opts.bold ?? false;
+    const dungChu = (s: string) => {
+        const kq = textToRuns(s, { ...opts, bold: dam });
+        dam = kq.dam;
+        return kq.runs;
+    };
     while (remaining.length > 0) {
         const imgIdx = remaining.toLowerCase().indexOf('<img');
         const mdIdx = remaining.indexOf('![');
@@ -94,23 +122,23 @@ const buildRunsFromLine = async (line: string, opts: { color?: string; bold?: bo
         ].filter((c): c is { type: string; idx: number } => c !== null);
 
         if (candidates.length === 0) {
-            runs.push(...textToRuns(remaining, opts));
+            runs.push(...dungChu(remaining));
             break;
         }
         candidates.sort((a, b) => a.idx - b.idx);
         const next = candidates[0];
 
-        if (next.idx > 0) runs.push(...textToRuns(remaining.slice(0, next.idx), opts));
+        if (next.idx > 0) runs.push(...dungChu(remaining.slice(0, next.idx)));
 
         if (next.type === 'math') {
             const endIdx = remaining.indexOf(' ', next.idx + MATH_MARKER.length);
             const nStr = remaining.slice(next.idx + MATH_MARKER.length, endIdx);
             const n = parseInt(nStr, 10);
-            runs.push(latexToDocxElement(mathStore[n], opts));
+            runs.push(latexToDocxElement(mathStore[n], { ...opts, bold: dam }));
             remaining = remaining.slice(endIdx + 1);
         } else if (next.type === 'img') {
             const end = remaining.indexOf('>', next.idx);
-            if (end === -1) { runs.push(...textToRuns(remaining.slice(next.idx), opts)); break; }
+            if (end === -1) { runs.push(...dungChu(remaining.slice(next.idx))); break; }
             const tag = remaining.slice(next.idx, end + 1);
             remaining = remaining.slice(end + 1);
             const srcMatch = tag.match(/src="(data:image\/([^;]+);base64,([^"]+))"/i) || tag.match(/src='(data:image\/([^;]+);base64,([^']+))'/i);
@@ -141,14 +169,14 @@ const buildRunsFromLine = async (line: string, opts: { color?: string; bold?: bo
 
 // Tách 1 khối text dài (nhiều dòng, ví dụ lời giải) theo từng dòng, gộp mỗi dòng
 // thành 1 Paragraph có icon mũi tên màu ở đầu dòng.
-const buildBulletParagraphs = async (text: string, bulletColor: string): Promise<Paragraph[]> => {
+const buildBulletParagraphs = async (text: string): Promise<Paragraph[]> => {
     const cleaned = text.replace(/^(?:\*\*)?(?:Phương pháp giải|Lời giải|Hướng dẫn giải|Giải thích):?(?:\*\*)?\s*/i, '');
     const lines = cleaned.split('\n').map(l => l.replace(/^[\-\+\*]\s*/, '').trim()).filter(Boolean);
     const paragraphs: Paragraph[] = [];
     for (const line of lines) {
         const runs = await buildRunsFromLine(line);
         paragraphs.push(new Paragraph({
-            children: [new TextRun({ text: '➤ ', color: bulletColor, bold: true }), ...runs],
+            children: [new TextRun({ text: '➤ ', bold: true }), ...runs],
             spacing: { before: 40, after: 40 },
         }));
     }
@@ -161,7 +189,7 @@ const renderQuizToParagraphs = async (quiz: any, questionNumber: number, type: '
 
     const questionRuns = await buildRunsFromLine((quiz.question || '').replace(/\\n/g, ' '));
     paragraphs.push(new Paragraph({
-        children: [new TextRun({ text: `Câu ${questionNumber}. `, bold: true, color: '0000FF' }), ...questionRuns],
+        children: [new TextRun({ text: `Câu ${questionNumber}. `, bold: true }), ...questionRuns],
         spacing: { before: 160, after: 60 },
     }));
 
@@ -172,7 +200,7 @@ const renderQuizToParagraphs = async (quiz: any, questionNumber: number, type: '
             const label = String.fromCharCode(65 + i);
             const optRuns = await buildRunsFromLine((optText || '').replace(/\\n/g, ' '));
             paragraphs.push(new Paragraph({
-                children: [new TextRun({ text: `${label}. `, bold: true, color: '0000FF' }), ...optRuns],
+                children: [new TextRun({ text: `${label}. `, bold: true }), ...optRuns],
                 spacing: { before: 20, after: 20 },
             }));
         }
@@ -203,19 +231,19 @@ const renderQuizToParagraphs = async (quiz: any, questionNumber: number, type: '
 
         if (methodText) {
             paragraphs.push(new Paragraph({
-                children: [new TextRun({ text: 'Phương pháp giải', bold: true, color: '0000FF' })],
+                children: [new TextRun({ text: 'Phương pháp giải', bold: true })],
                 alignment: AlignmentType.CENTER,
                 spacing: { before: 160, after: 60 },
             }));
-            paragraphs.push(...(await buildBulletParagraphs(methodText, 'E67E22')));
+            paragraphs.push(...(await buildBulletParagraphs(methodText)));
         }
         if (explanationText) {
             paragraphs.push(new Paragraph({
-                children: [new TextRun({ text: 'Lời giải', bold: true, color: '0000FF' })],
+                children: [new TextRun({ text: 'Lời giải', bold: true })],
                 alignment: AlignmentType.CENTER,
                 spacing: { before: 100, after: 60 },
             }));
-            paragraphs.push(...(await buildBulletParagraphs(explanationText, '27AE60')));
+            paragraphs.push(...(await buildBulletParagraphs(explanationText)));
         }
     }
 
@@ -259,7 +287,9 @@ export async function noiDungGiaoAnSangWord(
     let questionCounter = 1;
 
     for (const rawLine of lines) {
-        const trimmed = rawLine.trim();
+        // Gỡ thẻ trang trí trước khi xét, để dòng chỉ có mỗi `<div class="...">` thành
+        // rỗng và bị bỏ qua, không đẻ ra đoạn trắng giữa bài.
+        const trimmed = boTheTrangTri(rawLine);
         if (!trimmed) continue;
         // Dấu ngắt slide của bài giảng. Tài liệu in đọc liền mạch nên bỏ qua.
         if (/^-{3,}$/.test(trimmed)) continue;
@@ -295,14 +325,18 @@ export async function noiDungGiaoAnSangWord(
         const mTieuDe = text.match(/^(#{1,6})\s+([\s\S]*)$/);
         if (mTieuDe) { headingLevel = CAP_TIEU_DE[mTieuDe[1].length - 1]; text = mTieuDe[2]; }
 
-        text = text.replace(/^[\-\+\*]\s*/, isQuote ? '' : '- ');
+        /* Gạch đầu dòng: dấu phải có KHOẢNG TRẮNG theo sau, và dòng không phải tiêu đề.
+           Bản cũ nhận cả dấu sao dính liền chữ, nên tiêu đề "### **Định nghĩa**" bị ăn
+           mất một dấu sao thành "- *Định nghĩa**" - vừa hỏng chữ đậm vừa thành gạch đầu
+           dòng. Đo trên chương IV: dính 11 dòng mỗi bài. */
+        text = text.replace(/^[-+*]\s+/, headingLevel || isQuote ? '' : '- ');
 
-        const runs = await buildRunsFromLine(text, isQuote ? { color: '555555' } : {});
+        const runs = await buildRunsFromLine(text);
         bodyParagraphs.push(new Paragraph({
             heading: headingLevel,
             children: runs,
             indent: isQuote ? { left: 480 } : undefined,
-            border: isQuote ? { left: { style: BorderStyle.SINGLE, size: 12, color: '6366F1', space: 8 } } : undefined,
+            border: isQuote ? { left: { style: BorderStyle.SINGLE, size: 12, color: '000000', space: 8 } } : undefined,
             spacing: { before: headingLevel ? 240 : 80, after: 80 },
         }));
     }
