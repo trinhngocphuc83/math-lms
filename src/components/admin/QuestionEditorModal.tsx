@@ -4,7 +4,7 @@ import ChuCoCongThuc from "./ChuCoCongThuc";
 import { createClient } from "@/utils/supabase/client";
 import ReactCrop, { type Crop as CropType } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
-import { doiVeTenChuan, chuanTen } from "@/utils/phanLoaiCauHoi";
+import { doiVeTenChuan, chuanTen, doiVeTenDangChuan} from "@/utils/phanLoaiCauHoi";
 import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
 
 interface QuestionData {
@@ -79,7 +79,7 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
       // So tên qua chuanTen chứ không chỉ hạ hoa thường: tên lệch một dấu chấm cuối hay
       // một cặp ngoặc nhọn trong công thức vẫn là dạng CŨ, báo "dạng mới" là dụ người
       // dùng thêm một dòng danh mục song sinh.
-      const exists = !!doiVeTenChuan(formData.math_form, categories.map(c => String(c.math_form || '')));
+      const exists = !!doiVeTenDangChuan(formData.math_form, categories.map(c => String(c.math_form || '')));
       setIsCategoryWarning(!exists);
     } else {
       setIsCategoryWarning(false);

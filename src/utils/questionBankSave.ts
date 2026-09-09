@@ -8,7 +8,7 @@ import { toBankType, toDifficultyCode } from "./questionTypes";
 import { docDapAnDungSai, dapAnDungSaiDungKhuon } from "./chuanHoaCauHoi";
 import { nanTenPhanLoai } from "./deThi";
 import { tachChuKhoiCongThuc } from "./tachChuKhoiCongThuc";
-import { doiVeTenChuan } from "./phanLoaiCauHoi";
+import { doiVeTenChuan, doiVeTenDangChuan} from "./phanLoaiCauHoi";
 import { findMatchingChapterTitle, findMatchingLessonTitle } from "./topicMatch";
 import { boSungYeuCauCanDat } from "./yeuCauCanDat";
 
@@ -210,7 +210,7 @@ export async function saveQuestionsToBank(supabase: any, questions: QuestionData
       const dsCoSan = (dmHienCo || [])
         .filter((d: any) => String(d.grade) === String(q.grade) && d.subject === q.subject)
         .map((d: any) => String(d[cot] || '')).filter(Boolean);
-      const chuan = doiVeTenChuan(cu, dsCoSan)
+      const chuan = (cot === 'math_form' ? doiVeTenDangChuan(cu, dsCoSan) : doiVeTenChuan(cu, dsCoSan))
         || (cot === 'topic' ? findMatchingChapterTitle(cu, dsCoSan) : null)
         || (cot === 'lesson' ? findMatchingLessonTitle(cu, dsCoSan) : null);
       if (chuan && chuan !== cu) {

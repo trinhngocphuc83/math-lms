@@ -19,7 +19,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { doiVeTenChuan, chuanTen } from "@/utils/phanLoaiCauHoi";
+import { doiVeTenChuan, chuanTen, doiVeTenDangChuan} from "@/utils/phanLoaiCauHoi";
 import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
 import MenuGon, { NhomMenu, DanhSachTick } from "@/components/admin/MenuGon";
 
@@ -137,7 +137,7 @@ function AddNewCategoryModal({
          .eq('topic', ctx.topic)
          .eq('lesson', ctx.lesson || '');
 
-      const tenCu = doiVeTenChuan(formName.trim(), (cungBai || []).map((c: any) => String(c.math_form || '')));
+      const tenCu = doiVeTenDangChuan(formName.trim(), (cungBai || []).map((c: any) => String(c.math_form || '')));
 
       if (!tenCu) {
          /* Dạng mới phải kèm "Yêu cầu cần đạt" - xem src/utils/yeuCauCanDat.ts */

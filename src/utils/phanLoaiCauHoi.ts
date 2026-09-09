@@ -16,6 +16,7 @@
 //      ("Cực trị của hàm số") làm tên chương.
 
 import { findMatchingChapterTitle } from './topicMatch';
+import { doGiongNhau } from "./questionFingerprint";
 
 /** Một dòng danh mục: bộ (lớp, môn, chương, bài, dạng) đã được duyệt. */
 export interface DongDanhMuc {
@@ -50,16 +51,98 @@ export const chuanTen = (s: string | null | undefined): string =>
     .replace(/^[\s.,;:]+|[\s.,;:]+$/g, '');
 
 /**
+ * Ngưỡng coi hai tên dạng là ĐÁNG NGỜ giống nhau - chỉ để BÁO cho thầy cô, tuyệt đối
+ * không tự gộp.
+ *
+ * Đã thử tự gộp ở ngưỡng này và phải bỏ: tên dạng Toán thường chỉ khác nhau đúng một chữ
+ * quyết định, mà một chữ trên một câu dài thì phép đo độ giống gần như không nhúc nhích.
+ * Đo trên kho thật, tự gộp đòi nhập "căn bậc 3" vào "căn bậc 2", "Hệ phương trình chứa
+ * tham số" vào "Phương trình chứa tham số", "Tìm cực trị" vào "Tìm SỐ ĐIỂM cực trị" -
+ * toàn những cặp khác hẳn nhau. Gộp nhầm thì mất câu mà không ai biết.
+ */
+export const NGUONG_NGHI_TRUNG_TEN_DANG = 0.92;
+
+/**
+ * Từ hư hay bị AI viết lặp. Chỉ gộp mấy từ này, KHÔNG gộp bừa mọi từ lặp: tiếng Việt có
+ * từ láy thật ("song song", "đều đều"), gộp là hỏng nghĩa. Đo trên kho: 17 tên bị bắt
+ * lặp từ thì 16 là từ láy hợp lệ, chỉ đúng một cái "của của" là lỗi thật.
+ */
+const TU_HU_HAY_LAP = ['của', 'và', 'các', 'là', 'với', 'cho', 'trong', 'một', 'những'];
+
+/**
+ * Dọn một tên dạng do AI trả về, TRƯỚC khi đem so với danh mục.
+ *
+ * Mấy kiểu bẩn đã gặp thật trong kho, dù prompt đã dặn rõ:
+ *   - Nhét cả tên bài vào: "Bài 3. Biểu thức toạ độ..., Dạng toán: Toán thực tế - Tọa độ"
+ *   - Lặp từ hư: "Xác định tọa độ của của vectơ"
+ *   - Còn số thứ tự câu, dấu chấm cuối, xuống dòng, khoảng trắng thừa
+ * Không dọn thì mỗi kiểu bẩn đẻ ra một dạng mới, kho phình mà ra đề lại hụt câu.
+ */
+export function donTenDang(ten: string | null | undefined): string {
+  let t = String(ten || '').replace(/[\r\n]+/g, ' ').replace(/\s+/g, ' ').trim();
+  /* "Bài 3. Tên bài, Dạng toán: X" -> "X". Lấy khúc SAU nhãn, đó mới là tên dạng. */
+  const mDang = t.match(/,\s*Dạng\s*toán\s*:\s*(.+)$/i);
+  if (mDang) t = mDang[1].trim();
+  t = t.replace(/^Bài\s*\d+\s*[.:]\s*/i, '');
+  t = t.replace(/^(Câu|Bài\s*tập|VD|Ví\s*dụ)\s*\d+\s*[.:-]?\s*/i, '');
+  for (const tu of TU_HU_HAY_LAP) {
+    t = t.replace(new RegExp(`(^|\\s)${tu}(\\s+${tu})+(\\s|$)`, 'gi'), `$1${tu}$3`);
+  }
+  return t.replace(/\s+/g, ' ').replace(/^[\s.,;:-]+|[\s.,;:]+$/g, '');
+}
+
+/**
  * Tìm trong danh mục tên chuẩn ứng với một tên do AI trả về.
  *
  * Xuất ra dùng chung: mọi chỗ sắp thêm một dòng danh mục đều phải hỏi hàm này trước,
  * không thì tên chỉ lệch một dấu chấm cũng thành dạng mới.
+ *
+ * Hai vòng, chặt trước lỏng sau:
+ *   1. Khớp đúng sau khi chuẩn hoá (bỏ dấu, thường hoá) - như cũ.
+ *   2. Khớp GẦN: giống từ 92% trở lên thì dùng lại tên đã có. Vòng này để bắt mấy tên
+ *      chỉ lệch một hai chữ, thứ mà vòng một luôn để lọt và là nguồn đẻ dạng lạ chính.
  */
 export function doiVeTenChuan(ten: string, dsChuan: string[]): string | null {
   const t = chuanTen(ten);
   if (!t) return null;
   const khop = dsChuan.find(x => chuanTen(x) === t);
   return khop || null;
+}
+
+/**
+ * Bản dành riêng cho TÊN DẠNG. Đừng dùng cho tên bài hay tên chương.
+ *
+ * Khác `doiVeTenChuan` hai chỗ, và cả hai đều chỉ đúng với tên dạng:
+ *   - Dọn tên trước khi so (`donTenDang`). Với tên BÀI thì dọn là hỏng: nó cắt tiền tố
+ *     "Bài 3." vốn là một phần tên bài thật.
+ *   - Khớp GẦN từ 92%. Đây là vòng chặn chính: tên chỉ lệch một hai chữ thì dùng lại tên
+ *     đã có thay vì đẻ thêm một dạng song sinh. Với tên bài thì không dám, vì "Bài 9.
+ *     Định luật Boyle" và "Bài 10. Định luật Charles" cũng giống nhau kha khá.
+ */
+export function doiVeTenDangChuan(ten: string, dsDang: string[]): string | null {
+  const t = chuanTen(donTenDang(ten));
+  if (!t) return null;
+  return dsDang.find(x => chuanTen(x) === t) || null;
+}
+
+/**
+ * Tên dạng đã có nào GẦN GIỐNG tên sắp thêm - để hỏi thầy cô, không phải để tự gộp.
+ *
+ * Đây là chốt chặn cuối cho việc đẻ dạng lạ: dọn tên bắt được mấy kiểu bẩn máy móc, còn
+ * kiểu "cùng một dạng, AI diễn đạt khác đi một chút" thì chỉ người mới phân xử được -
+ * "Tìm cực trị" và "Tìm số điểm cực trị" giống nhau tới 93% nhưng là hai dạng.
+ *
+ * @returns danh sách tên đã có, xếp giống nhất lên đầu; rỗng nghĩa là không có gì đáng ngờ.
+ */
+export function timDangGanGiong(ten: string, dsDang: string[], toiDa = 3): string[] {
+  const t = chuanTen(donTenDang(ten));
+  if (!t) return [];
+  return dsDang
+    .map(x => ({ x, d: doGiongNhau(t, chuanTen(x)) }))
+    .filter(o => o.d >= NGUONG_NGHI_TRUNG_TEN_DANG && chuanTen(o.x) !== t)
+    .sort((a, b) => b.d - a.d)
+    .slice(0, toiDa)
+    .map(o => o.x);
 }
 
 export interface KetQuaPhanLoai {
@@ -116,8 +199,8 @@ export function chotPhanLoai(ts: ThamSoPhanLoai): KetQuaPhanLoai {
   };
 
   // ----- Dạng toán -----
-  let math_form = (ts.dangToan || '').trim();
-  if (math_form) math_form = doiVeTenChuan(math_form, dsDang) || math_form;
+  let math_form = donTenDang(ts.dangToan);
+  if (math_form) math_form = doiVeTenDangChuan(math_form, dsDang) || math_form;
 
   // ----- Bài -----
   let lesson = (ts.tenBai || '').trim();

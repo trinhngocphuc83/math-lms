@@ -29,7 +29,7 @@ import {
   scanFilesForQuestions,
 } from "@/utils/aiQuestionScan";
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
-import { doiVeTenChuan } from "@/utils/phanLoaiCauHoi";
+import { doiVeTenChuan, doiVeTenDangChuan} from "@/utils/phanLoaiCauHoi";
 import { autoCropImage, type NormalizedBox } from "@/utils/autoCropImage";
 import { chuanHoaNguonThanhAnh, laFilePdf } from "@/utils/pdfToImages";
 import { bankTypeLabel, difficultyLabel } from "@/utils/questionTypes";
@@ -538,7 +538,11 @@ export default function BatchQueuePage() {
         const dsCoSan = categories
           .filter((c) => String(c.grade) === String(sample.grade) && c.subject === sample.subject)
           .map((c) => String((c as any)[proposal.level] || '')).filter(Boolean);
-        const tenCu = doiVeTenChuan(String((sample as any)[proposal.level] || ''), dsCoSan);
+        /* Chỉ TÊN DẠNG mới được dọn - xem chú thích trong phanLoaiCauHoi.ts */
+        const tenGoc = String((sample as any)[proposal.level] || '');
+        const tenCu = proposal.level === 'math_form'
+          ? doiVeTenDangChuan(tenGoc, dsCoSan)
+          : doiVeTenChuan(tenGoc, dsCoSan);
         if (tenCu) {
           for (const w of affected) (w.q as any)[proposal.level] = tenCu;
         } else {

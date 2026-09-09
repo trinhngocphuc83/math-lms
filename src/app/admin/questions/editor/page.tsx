@@ -33,7 +33,7 @@ import {
   parseExtractedQuestionsJson,
 } from "@/utils/aiQuestionScan";
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
-import { doiVeTenChuan } from "@/utils/phanLoaiCauHoi";
+import { doiVeTenChuan, doiVeTenDangChuan} from "@/utils/phanLoaiCauHoi";
 import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
 import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep } from "@/utils/noiTiepJson";
 import KiemThuDeModal from "@/components/admin/KiemThuDeModal";
@@ -572,7 +572,11 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
       const dsCoSan = categories
         .filter(c => String(c.grade) === String(q.grade) && c.subject === q.subject)
         .map(c => String((c as any)[field] || '')).filter(Boolean);
-      const tenCu = doiVeTenChuan(newValue.trim(), dsCoSan);
+      /* Chỉ TÊN DẠNG mới được dọn: bộ dọn cắt tiền tố "Bài 3." vốn là một phần
+         tên bài thật, dùng nhầm cho tên bài là hỏng ngay. */
+      const tenCu = field === 'math_form'
+        ? doiVeTenDangChuan(newValue.trim(), dsCoSan)
+        : doiVeTenChuan(newValue.trim(), dsCoSan);
       const tenDung = tenCu || newValue.trim();
 
       if (!tenCu) {
