@@ -86,6 +86,20 @@ interface BaiQuet {
   suaTay: Record<string, string | null>;
 }
 
+/**
+ * Điểm CẢ PHẦN, để in lên ô "ĐIỂM SỐ CHI TIẾT" của phiếu trả lời.
+ *
+ * Phiếu chờ điểm của cả phần chứ không phải điểm một câu. Trước đây chỗ in phiếu truyền
+ * nhầm `diemMoiCauTheoPhan` vào đây, nên tờ phiếu ghi "Phần I: ..... /0,25đ" và cộng lại
+ * ra "TỔNG ĐIỂM ..... / 2,75đ" trong khi đề là 10 điểm - sai trên cả 5 bộ đề đang có.
+ */
+function diemCaPhan(cacPhan: PhanDeThi[], tongDiem: number): Record<string, number> {
+  const moiCau = diemMoiCauTheoPhan(cacPhan, tongDiem);
+  const ra: Record<string, number> = {};
+  for (const p of cacPhan) ra[p.ma] = Math.round((moiCau[p.ma] || 0) * p.cauHoi.length * 100) / 100;
+  return ra;
+}
+
 /** Điểm mỗi câu theo từng phần, chia đều điểm của phần cho số câu. */
 function diemMoiCauTheoPhan(cacPhan: PhanDeThi[], tongDiem: number): Record<string, number> {
   /* Khuôn điểm quen dùng: trắc nghiệm 0,25 - Đúng/Sai 1,0 - trả lời ngắn 0,5. Nếu cộng
@@ -505,7 +519,7 @@ export default function ChamQuetPage() {
               try {
                 setDangDoc('Đang dựng phiếu cho từng em…');
                 const { soPhieu } = await exportPhieuTheoLop(
-                  { dauDe: boDe.dau_de || {}, cacPhan, diemPhan: diemMoiCauTheoPhan(cacPhan, Number(boDe.tong_diem) || 0),
+                  { dauDe: boDe.dau_de || {}, cacPhan, diemPhan: diemCaPhan(cacPhan, Number(boDe.tong_diem) || 0),
                     boDeId: boDe.id },
                   dsHocSinh, boDe.ten.replace(/[^\p{L}\d]+/gu, '_').slice(0, 60),
                   (da, tong) => setDangDoc(`Đang dựng phiếu ${da}/${tong}…`),
