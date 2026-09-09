@@ -51,6 +51,14 @@ export interface KetQuaDocPhieu {
    * phải là toạ độ đã nắn về đúng tấm ảnh Thầy cô đang nhìn.
    */
   viTriO?: { ma: string; x: number; y: number; r: number }[];
+  /**
+   * Câu ĐỌC ĐƯỢC nhưng nét mờ - đã chấm bình thường, chỉ nhắc Thầy cô liếc lại.
+   *
+   * Khác `khongChac` ở chỗ câu này VẪN có điểm. Vết bẩn và nét tô nhạt đo ra giống hệt
+   * nhau (0,16 với 0,17), nên bỏ đi thì mất bài thật, mà đọc im lặng thì có ngày chấm
+   * nhầm vết bẩn - nói ra là đường duy nhất trung thực.
+   */
+  netMo?: { ma: string; viSao: string }[];
 }
 
 /* ===================== ẢNH XÁM & NGƯỠNG ===================== */
@@ -341,35 +349,53 @@ function doO(xam: Float32Array, rong: number, cao: number,
 
 /* ===================== ĐỌC MỘT PHIẾU ===================== */
 
-/** Mức trần: đậm tới đây thì chắc chắn là đã tô, khỏi bàn. */
-const MUC_DA_TO = 0.42;
 /**
- * Sàn nghi có vết: dưới mức này coi như giấy trắng thật, học sinh bỏ trống.
+ * SÀN GIẤY TRẮNG. Dưới mức này coi như giấy trắng thật, không phải nét tô.
  *
- * Khoảng giữa sàn và ngưỡng quyết định là VÙNG NGỜ - có vết nhưng chưa đủ chắc. Trước
- * đây vùng này bị lặng lẽ tính là bỏ trống, không một dòng cảnh báo; thầy cô nhìn bảng
- * chỉ thấy "(bỏ trống)" và 0 điểm, không biết là máy đọc hụt hay em ấy không làm.
+ * Đo trên 15 phiếu thật: ô để trắng ra 0,00-0,05 (299/338 ô của một tờ nằm dưới 0,10),
+ * còn nét tô nhạt nhất mà học sinh làm thật là 0,17. Nên 0,10 là chỗ tách an toàn.
  */
-const SAN_NGHI_TO = 0.18;
-/** Ô đậm nhì phải kém ô đậm nhất ít nhất chừng này, không thì coi như tô hai ô. */
+const SAN_GIAY_TRANG = 0.10;
+
+/**
+ * Nét MỜ: đọc được nhưng phải nói cho Thầy cô biết mà liếc lại.
+ *
+ * Đây là ranh giới thật của phép đo, không giấu được: dựng vết bẩn giả trên phiếu thử,
+ * nó đo ra 0,16 - ĐÚNG BẰNG nét tô thật của một em ở câu 4 (0,17). Không có ngưỡng nào
+ * tách được hai thứ ấy, vì trên ảnh chúng giống hệt nhau.
+ *
+ * Nên chọn cách này: nét mờ thì VẪN ĐỌC (chấm bình thường, không đánh rơi bài của em)
+ * nhưng ghi vào danh sách cần soát. Bỏ đi thì mất bài thật; đọc mà im lặng thì có ngày
+ * chấm nhầm vết bẩn thành đáp án. Nói ra là đường duy nhất trung thực.
+ */
+const HE_SO_NET_RO = 0.55;
+
+/**
+ * Sàn CỨNG của mức "nét rõ" - đo trên 15 tờ thật của lớp: nét tô bình thường có độ đậm
+ * trung vị 0,47, và 95% số ô được chọn đậm từ 0,28 trở lên. Lấy sàn 0,25 thì mỗi tờ chỉ
+ * gắn cờ chừng một câu (14/410 ô = 3,4%), vừa đủ để liếc lại chứ không phiền.
+ *
+ * Vì sao phải có sàn cứng: mức rõ tính theo trung vị của CHÍNH tờ ấy, nên tờ nào em cũng
+ * tô nhạt thì trung vị tụt theo, mức rõ tụt theo, hoá ra không câu nào bị gắn cờ - đúng
+ * tờ đáng ngờ nhất lại im lặng nhất. Đo ra đúng như vậy: tờ toàn nét 0,16 báo mờ 0 câu.
+ */
+const SAN_NET_RO = 0.25;
+
+/** Ô đậm nhì phải kém ô đậm nhất chừng này thì mới chắc em chỉ tô một ô. */
 const CACH_BIET = 0.18;
 
 /**
- * SÀN của một tờ: dưới mức này thì dù đậm hơn các ô cùng câu vẫn coi là vết bẩn.
+ * Mức "nét rõ" của riêng một tờ: trên mức này thì chấm thẳng, dưới thì đọc kèm ghi chú.
  *
- * Vì sao không dùng một con số cứng: đo trên phiếu thật của học sinh, có em tô bút chì
- * nhạt tới mức MỌI nét đều nằm trong 0,30-0,52, không nét nào vượt 0,6. Ngưỡng cứng 0,42
- * cắt đúng giữa cụm nét tô của em ấy - đọc được sáu câu, sáu câu còn lại rơi im lặng.
- *
- * Sàn lấy theo NỬA mức tô điển hình của chính tờ ấy (trung vị của ô đậm nhất mỗi câu).
+ * Lấy theo mức tô điển hình của chính tờ ấy (trung vị của ô đậm nhất mỗi câu) nhân hệ số.
+ * Em tô đậm thì mức rõ nâng lên, em tô nhạt thì hạ xuống - không áp một con số cứng cho
+ * mọi tờ, vì đã đo được là mỗi em một lực tay.
  */
-function sanCuaTo(damNhatMoiCau: number[]): number {
-  const co = damNhatMoiCau.filter(d => d >= SAN_NGHI_TO).sort((a, b) => a - b);
-  if (co.length < 3) return SAN_NGHI_TO;
+function mucNetRo(damNhatMoiCau: number[]): number {
+  const co = damNhatMoiCau.filter(d => d >= SAN_GIAY_TRANG).sort((a, b) => a - b);
+  if (co.length < 3) return SAN_NET_RO;
   const giua = co[Math.floor(co.length / 2)];
-  /* Nửa mức tô điển hình: bút chì nhạt thì sàn tụt theo, bút đậm thì sàn nâng lên nên
-     một vết bẩn mờ không lọt. Không bao giờ thấp hơn sàn nghi có vết. */
-  return Math.max(SAN_NGHI_TO, giua * 0.5);
+  return Math.max(SAN_NET_RO, giua * HE_SO_NET_RO);
 }
 
 export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
@@ -449,6 +475,7 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
 
   const traLoi: Record<string, string> = {};
   const khongChac: KetQuaDocPhieu['khongChac'] = [];
+  const netMo: KetQuaDocPhieu['khongChac'] = [];
   const chonTrongNhom = new Map<string, string | null>();
 
   /* Ô đậm nhất của từng câu - vừa để chọn đáp án, vừa để biết mức tô điển hình của tờ. */
@@ -457,7 +484,7 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
     xepCua.set(khoa, ds.map(x => ({ nhan: x.nhan, dam: damCua.get(x.ma) ?? 0 }))
                        .sort((a, b) => b.dam - a.dam));
   }
-  const san = sanCuaTo([...xepCua.values()].map(x => x[0]?.dam ?? 0));
+  const netRo = mucNetRo([...xepCua.values()].map(x => x[0]?.dam ?? 0));
 
   /*
    * Quyết định theo TƯƠNG PHẢN TRONG CHÍNH CÂU ĐÓ, không theo một mức đậm tuyệt đối.
@@ -468,28 +495,30 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
    * em ấy, đọc được sáu câu và đánh rơi sáu câu. So tương phản thì cả mười hai câu đều
    * rõ ràng.
    *
-   * Sàn vẫn giữ để một vết bẩn lẻ trên tờ để trắng không thành đáp án.
+   * Ba mức:
+   *   dưới sàn giấy trắng  -> em bỏ trống, im lặng là đúng
+   *   mờ, trên sàn         -> VẪN ĐỌC nhưng ghi vào `netMo` để Thầy cô liếc lại
+   *   rõ                   -> chấm thẳng
    */
   for (const [khoa, xep] of xepCua) {
     const nhat = xep[0], nhi = xep[1];
-    if (!nhat || nhat.dam < san) {
-      chonTrongNhom.set(khoa, null);
-      /* Có vết mà chưa tới sàn thì PHẢI báo. Im lặng bỏ qua là kiểu hỏng tệ nhất: bảng
-         điểm hiện "(bỏ trống)" y như em không làm bài, thầy cô không có cách nào biết. */
-      if (nhat && nhat.dam >= SAN_NGHI_TO) {
-        khongChac.push({ ma: khoa, viSao: `có vết mờ ở ${nhat.nhan} nhưng chưa đủ đậm để chắc - Thầy cô nhìn giúp` });
-      }
-      continue;
-    }
-    if (nhi && nhat.dam - nhi.dam < CACH_BIET) {
+    if (!nhat || nhat.dam < SAN_GIAY_TRANG) { chonTrongNhom.set(khoa, null); continue; }
+
+    /* Cách biệt cũng phải co theo nét: nét mờ 0,17 mà đòi hơn ô kia 0,18 thì không bao
+       giờ đạt, dù ba ô kia đo được đúng 0,00. */
+    const canCachBiet = Math.min(CACH_BIET, Math.max(0.08, nhat.dam * 0.5));
+    if (nhi && nhat.dam - nhi.dam < canCachBiet) {
       chonTrongNhom.set(khoa, null);
       khongChac.push({
         ma: khoa,
-        viSao: nhi.dam >= san
+        viSao: nhi.dam >= SAN_GIAY_TRANG
           ? `tô hơn một ô (${nhat.nhan} và ${nhi.nhan})`
           : 'nét tô quá mờ, không phân biệt được',
       });
       continue;
+    }
+    if (nhat.dam < netRo) {
+      netMo.push({ ma: khoa, viSao: `nét tô ở ${nhat.nhan} khá mờ (${nhat.dam.toFixed(2)}) - đã chấm, Thầy cô liếc lại giúp` });
     }
     chonTrongNhom.set(khoa, nhat.nhan);
   }
@@ -522,5 +551,5 @@ export function docPhieuQuet(anh: AnhTho, luoi: BanDoLuoi): KetQuaDocPhieu {
   /* Đã báo theo từng cột rồi thì bỏ dòng báo lẻ đi, chỉ giữ dòng của cả câu. */
   const gonKhongChac = khongChac.filter(k => !/^TLN:\d+:\d+$/.test(k.ma));
 
-  return { timDuocNeo: true, neo, o, viTriO, traLoi, khongChac: gonKhongChac };
+  return { timDuocNeo: true, neo, o, viTriO, traLoi, khongChac: gonKhongChac, netMo };
 }

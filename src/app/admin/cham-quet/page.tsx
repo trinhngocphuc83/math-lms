@@ -20,7 +20,7 @@ import React from "react";
 import { docQRPhieu } from "@/utils/docQRPhieu";
 import Link from "next/link";
 import {
-  Upload, Loader2, ScanLine, CheckCircle2, AlertTriangle, X, ChevronLeft, FileImage,
+  Upload, Loader2, ScanLine, CheckCircle2, AlertTriangle, X, ChevronLeft, FileImage, Search,
 } from "lucide-react";
 import { chuanHoaNguonThanhAnh } from "@/utils/pdfToImages";
 import { chiaPhanDeThi, soDiemVN, type PhanDeThi } from "@/utils/deThi";
@@ -928,6 +928,20 @@ function ChiTietBai({ bai, kq, ten, onDong, onSua, onXoa }: {
   bai: BaiQuet; kq: KetQuaChamPhieu; ten: string;
   onDong: () => void; onSua: (ma: string, v: string) => void; onXoa: () => void;
 }) {
+  /* Câu nét MỜ: máy vẫn chấm bình thường, nhưng nét tô nhạt tới mức không tách được với
+     một vết bẩn, nên phải nói ra. Khác hẳn `c.vuong` - chỗ máy KHÔNG dám đọc. Đo trên 15
+     tờ thật của lớp thì trung bình chỉ 1-2 câu mỗi tờ rơi vào đây. */
+  const netMoCua = React.useMemo(() => {
+    const m = new Map<string, string>();
+    for (const t of bai.trang) for (const n of t.doc?.netMo ?? []) {
+      /* Mã ô của bộ đọc là "NLC:3" hoặc "DS:2:c" hoặc "TLN:1:0"; câu chấm là "NLC:3" / "DS:2" / "TLN:1" */
+      const p = n.ma.split(':');
+      const maCau = `${p[0]}:${p[1]}`;
+      m.set(maCau, m.has(maCau) ? `${m.get(maCau)}; ${n.viSao}` : n.viSao);
+    }
+    return m;
+  }, [bai.trang]);
+
   return (
     <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
       <div className="px-5 py-3 border-b border-slate-100 flex items-center gap-3">
@@ -1030,8 +1044,18 @@ function ChiTietBai({ bai, kq, ten, onDong, onSua, onXoa }: {
               {c.vuong && (
                 <span title={c.vuong}><AlertTriangle className="w-4 h-4 text-amber-600" /></span>
               )}
+              {!c.vuong && netMoCua.has(c.ma) && (
+                <span title={netMoCua.get(c.ma)}><Search className="w-4 h-4 text-amber-500" /></span>
+              )}
             </div>
           ))}
+          {kq.cau.some(c => !c.vuong && netMoCua.has(c.ma)) && (
+            <p className="text-[12.5px] text-amber-800 bg-amber-50/70 border border-amber-200
+                          rounded-lg px-3 py-2 mt-2">
+              Câu có dấu kính lúp là chỗ em tô rất nhạt - máy ĐÃ CHẤM bình thường, nhưng nét
+              nhạt tới mức khó tách với một vết bẩn, Thầy cô liếc lại ảnh bên trái cho chắc.
+            </p>
+          )}
           {kq.cau.some(c => c.vuong) && (
             <p className="text-[12.5px] text-amber-800 bg-amber-50 border border-amber-200
                           rounded-lg px-3 py-2 mt-2">
