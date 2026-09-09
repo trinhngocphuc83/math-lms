@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { X, Save, Image as ImageIcon, Trash, Wand2, Crop, UploadCloud, Loader2 } from "lucide-react";
+import ChuCoCongThuc from "./ChuCoCongThuc";
 import { createClient } from "@/utils/supabase/client";
 import ReactCrop, { type Crop as CropType } from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
@@ -441,8 +442,17 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
                     }
                   }
                 }}
-                className="w-full h-32 p-3 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm resize-none mb-4"
+                className="w-full h-32 p-3 border border-gray-200 rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm resize-none"
               />
+
+              {/* Đọc thử: ô trên giữ chữ thô để sửa, khung này dựng công thức ra cho
+                  tường minh - trước đây phải tự dịch LaTeX trong đầu mới biết câu hỏi gì. */}
+              <div className="mb-4 mt-2 px-3 py-2.5 rounded-lg bg-indigo-50/40 border border-indigo-100">
+                <div className="text-[10px] font-black text-indigo-700 uppercase tracking-wide mb-1">Đọc thử</div>
+                {String(formData.content || '').trim()
+                  ? <ChuCoCongThuc chu={formData.content} anAnh className="text-[15px] leading-relaxed text-gray-900" />
+                  : <span className="text-[13px] text-gray-400 italic">(chưa có đề bài)</span>}
+              </div>
 
               {/* Image Dropzone UI like Old App */}
               <div 
@@ -552,6 +562,12 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
                 value={formData.explanation} onChange={e => handleChange('explanation', e.target.value)} 
                 className="w-full h-24 p-3 border rounded-lg bg-gray-50 outline-none focus:ring-2 focus:ring-indigo-500 font-mono text-sm"
               />
+              {String(formData.explanation || '').trim() && (
+                <div className="mt-2 px-3 py-2.5 rounded-lg bg-indigo-50/40 border border-indigo-100">
+                  <div className="text-[10px] font-black text-indigo-700 uppercase tracking-wide mb-1">Đọc thử</div>
+                  <ChuCoCongThuc chu={formData.explanation} anAnh className="text-[14px] leading-relaxed text-gray-900" />
+                </div>
+              )}
             </div>
           </div>
 

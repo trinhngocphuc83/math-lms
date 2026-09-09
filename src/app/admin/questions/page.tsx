@@ -11,6 +11,7 @@ import {
 import Papa from "papaparse";
 import QuestionEditorModal from "@/components/admin/QuestionEditorModal";
 import PreviewQuestionModal from "@/components/admin/PreviewQuestionModal";
+import ChuCoCongThuc from "@/components/admin/ChuCoCongThuc";
 import { exportQuestionsToWord } from "@/utils/exportDocx";
 import CategoryManagerModal from "@/components/admin/CategoryManagerModal";
 import ExportScopeModal, { khoaBai, type ThongKeNhanh, type PhamViChon } from "@/components/admin/ExportScopeModal";
@@ -677,8 +678,11 @@ export default function QuestionsPage() {
                     )}
                   </td>
                   <td className="p-4">
+                    {/* Dựng công thức ra cho tường minh: ô này trước bày chữ LaTeX thô,
+                        Thầy cô phải tự dịch trong đầu mới biết câu hỏi gì. Cắt chữ thì
+                        cắt SAU khi dựng, cắt trước là đứt đôi công thức. */}
                     <div className="text-gray-700 text-sm font-medium line-clamp-2 max-w-md" title={q.content}>
-                      {q.content.length > 100 ? q.content.substring(0, 100) + "..." : q.content}
+                      <ChuCoCongThuc chu={q.content} anAnh />
                     </div>
                   </td>
                   <td className="p-4">

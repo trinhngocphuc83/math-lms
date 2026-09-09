@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, ChevronUp, Image as ImageIcon, Loader2, Heading, Sigma, AlertTriangle, IndentIncrease, IndentDecrease, List, ListOrdered, Wand2 } from "lucide-react";
+import { Type, Palette, AlignLeft, AlignCenter, AlignRight, AlignJustify, Frame, Bold, Italic, Underline as UnderlineIcon, Smile, Eraser, ChevronDown, ChevronUp, Image as ImageIcon, Loader2, Heading, Sigma, AlertTriangle, IndentIncrease, IndentDecrease, List, ListOrdered, Wand2, Eye } from "lucide-react";
 import { donTheThua } from "@/utils/donTheThua";
 import TextareaAutosize from 'react-textarea-autosize';
 import katex from "katex";
+import ChuCoCongThuc from "./ChuCoCongThuc";
 import "katex/dist/katex.min.css";
 import LatexPalette from "./LatexPalette";
 import { CURSOR_TOKEN, getMathAtCursor, isInsideMath } from "@/utils/mathText";
@@ -49,6 +50,9 @@ const wrapMultiLineSelection = (selectedText: string, wrapFn: (line: string) => 
 };
 
 export default function RichTextarea({ value, onChange, onValueChange, className = "", collapsibleToolbar = true, defaultToolbarExpanded = true, viTriBanDau, xuLyAnhDan, ...props }: RichTextareaProps & { viTriBanDau?: number }) {
+  /* Khung xem trước CẢ Ô. Khung xem trước sẵn có chỉ vẽ đúng công thức đang có con trỏ,
+     nên nhìn được từng công thức một chứ không đọc được cả câu. */
+  const [xemCaO, setXemCaO] = React.useState(false);
   // Fallback: Nếu không truyền onChange, tạo handler tự động từ onValueChange
   const resolvedOnChange = React.useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) onChange(e);
@@ -938,6 +942,18 @@ export default function RichTextarea({ value, onChange, onValueChange, className
            <button type="button" onClick={() => fileInputRef.current?.click()} disabled={isUploading} className="flex items-center gap-1 px-2 h-6 bg-pink-50 text-pink-700 border border-pink-200 hover:bg-pink-100 font-bold rounded text-[11px]">
              {isUploading ? <Loader2 className="w-3 h-3 animate-spin"/> : <ImageIcon className="w-3 h-3" />} Ảnh
            </button>
+           <button
+             type="button"
+             onClick={() => setXemCaO(v => !v)}
+             title="Bật/tắt khung đọc thử: công thức dựng ra chữ tường minh, ngay dưới ô soạn"
+             className={`flex items-center gap-1 px-2 h-6 font-bold rounded text-[11px] border transition-colors ${
+               xemCaO
+                 ? 'bg-indigo-600 text-white border-indigo-600 hover:bg-indigo-700'
+                 : 'bg-indigo-50 text-indigo-700 border-indigo-200 hover:bg-indigo-100'
+             }`}
+           >
+             <Eye className="w-3 h-3" /> Đọc thử
+           </button>
            {collapsibleToolbar && (
              <button
                type="button"
@@ -966,6 +982,17 @@ export default function RichTextarea({ value, onChange, onValueChange, className
         className={`w-full p-4 border-none focus:ring-0 outline-none font-mono text-[15px] bg-transparent ${innerClass}`}
         {...props}
       />
+
+      {/* Đọc thử cả ô: dựng hết công thức trong ô ra chữ tường minh. Ô soạn vẫn giữ chữ
+          thô ở trên để sửa, khung này chỉ để đọc lại xem đã đúng ý chưa. */}
+      {xemCaO && (
+        <div className="px-4 py-3 border-t border-indigo-100 bg-indigo-50/40">
+          <div className="text-[10px] font-black text-indigo-700 uppercase tracking-wide mb-1.5">Đọc thử</div>
+          {String(value || '').trim()
+            ? <ChuCoCongThuc chu={value} className="text-[15px] leading-relaxed text-gray-900" />
+            : <span className="text-[13px] text-gray-400 italic">(ô đang trống)</span>}
+        </div>
+      )}
 
       {/* Xem trước công thức ngay tại chỗ khi con trỏ đang đứng trong cặp $...$ */}
       {mathPreview && (
