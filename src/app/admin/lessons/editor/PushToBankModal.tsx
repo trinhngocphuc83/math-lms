@@ -383,6 +383,8 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
   const [pendingFormSuggestions, setPendingFormSuggestions] = useState<Record<string, string>>({});
   /** Tiến độ khi AI đang chạy từng lô, để Thầy cô thấy nó không treo. */
   const [tienDoAI, setTienDoAI] = useState<{ xong: number; tong: number } | null>(null);
+  /** Đang soạn nháp Yêu cầu cần đạt cho các dạng mới, để nút nói rõ đang làm gì. */
+  const [baoYeuCau, setBaoYeuCau] = useState('');
   /** Kết quả lượt xếp chỗ gần nhất - dùng cho bảng soát lại sau khi AI chạy xong. */
   const [ketQuaSoat, setKetQuaSoat] = useState<{
     xepDuoc: any[]; khongXep: any[]; canhBao: string[];
@@ -895,9 +897,45 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
         }
         if (khongXep.length > 0) phan.push(`còn ${khongXep.length} câu máy không xếp được, Thầy cô chọn tay giúp`);
 
+        /*
+         * YÊU CẦU CẦN ĐẠT cho bảng soát.
+         *
+         * Cột này đi thẳng vào BẢNG ĐẶC TẢ xuất ra Word, mà trước giờ nó sinh ra lặng lẽ ở
+         * cửa lưu - thầy cô mở bảng đặc tả ra mới biết máy viết gì, lúc đó câu đã nằm trong
+         * kho rồi. Bày ngay tại bảng soát thì duyệt được TRƯỚC khi ghi.
+         *
+         * Dạng đã có trong danh mục thì lấy chữ đang lưu. Dạng MỚI thì soạn bản nháp bằng
+         * đúng bộ mà cửa lưu sẽ dùng, nên chữ thầy cô duyệt ở đây chính là chữ được ghi.
+         */
+        const chuHoa = (s: any) => String(s || '').trim().toLowerCase();
+        const timDanhMuc = (x: any) => categories.find(c =>
+          chuHoa(c.topic) === chuHoa(x.topic) && chuHoa(c.lesson) === chuHoa(x.lesson)
+          && chuHoa(c.math_form) === chuHoa(x.math_form));
+
+        const xepKemYeuCau = xepDuoc.map(x => ({ ...x, yeuCau: timDanhMuc(x)?.yeu_cau_can_dat || '' }));
+
+        const canNhap = xepKemYeuCau.filter(x => !String(x.yeuCau || '').trim() && x.math_form);
+        if (canNhap.length > 0) {
+          try {
+            const nhap = await boSungYeuCauCanDat(
+              canNhap.map(x => ({
+                grade: x.grade ?? questions.find(q => q.id === x.id)?.grade,
+                subject: x.subject, topic: x.topic, lesson: x.lesson, math_form: x.math_form,
+              })),
+              undefined,
+              (m) => setBaoYeuCau(m),
+            );
+            canNhap.forEach((x, i) => {
+              x.yeuCau = nhap[i]?.yeu_cau_can_dat || '';
+              x.yeuCauNhap = true;
+            });
+          } catch { /* soạn nháp hỏng thì để trống, bảng sẽ tô vàng nhắc */ }
+          finally { setBaoYeuCau(''); }
+        }
+
         // Mở bảng soát thay vì chỉ báo một câu rồi thôi: máy xếp chỗ cho hàng chục câu,
         // Thầy cô cần nhìn thấy từng câu đã về Chương/Bài/Dạng nào mới yên tâm đẩy vào kho.
-        setKetQuaSoat({ xepDuoc, khongXep, canhBao });
+        setKetQuaSoat({ xepDuoc: xepKemYeuCau, khongXep, canhBao });
         setHienBangSoat(true);
     } catch (e: any) {
         console.error(e);
@@ -1295,7 +1333,9 @@ export default function PushToBankModal({ isOpen, onClose, blocks, courseContext
                     style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', color: '#166534', padding: '4px 10px', borderRadius: 6, fontSize: 12, fontWeight: 700, cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, transition: 'all 0.2s', opacity: geminiLoading ? 0.6 : 1 }}
                   >
                     {geminiLoading
-                      ? (tienDoAI ? `⏳ Đang xếp ${tienDoAI.xong}/${tienDoAI.tong} câu...` : '⏳ Đang phân tích...')
+                      ? (baoYeuCau
+                          ? `⏳ Soạn Yêu cầu cần đạt… ${baoYeuCau}`
+                          : tienDoAI ? `⏳ Đang xếp ${tienDoAI.xong}/${tienDoAI.tong} câu...` : '⏳ Đang phân tích...')
                       : (() => {
                           /* Nói rõ nút chỉ chạy phần CÒN THIẾU, để bấm lại sau lượt hỏng thì
                              thầy cô biết là chạy tiếp chứ không làm lại từ đầu. */

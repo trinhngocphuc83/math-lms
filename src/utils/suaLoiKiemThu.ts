@@ -20,7 +20,11 @@ import type { CauDeSoat } from './kiemThuDe';
 
 /** Những trường của câu hỏi mà việc sửa có thể đụng tới. */
 export type BanVa = Partial<Pick<CauDeSoat,
-  'content' | 'option_a' | 'option_b' | 'option_c' | 'option_d' | 'correct_answer' | 'explanation'>>;
+  'content' | 'option_a' | 'option_b' | 'option_c' | 'option_d' | 'correct_answer' | 'explanation'
+  /* `difficulty` không phải nội dung câu, nhưng vẫn đi chung đường vá: cảnh báo "chưa ghi
+     mức độ nhận thức" chỉ sửa được bằng cách ghi vào đúng cột này, mà đường lưu bản vá thì
+     đã có sẵn cả hai lối (ghi thẳng bảng questions, hoặc đắp ngược vào khối quiz). */
+  | 'difficulty'>>;
 
 export type CachSua = 'may' | 'ai' | null;
 
@@ -38,6 +42,9 @@ export function suaDuocBang(maLoi: string): CachSua {
     case 'dsLapYTrongDe':
     case 'tlnKhongToDuoc':
     case 'dapAnSai':            // AI đã tính sẵn đáp án, chỉ việc thay
+    /* Đáp án trắc nghiệm ghi lệch khuôn ("A.", "a", "Đáp án A") - nắn về đúng một chữ
+       cái là việc thuần cơ học, không cần AI. */
+    case 'dapAnSaiKhuonTN':
       return 'may';
     case 'loiGiaiMotDong':
     case 'khongCoLoiGiai':
@@ -50,6 +57,14 @@ export function suaDuocBang(maLoi: string): CachSua {
     case 'phuongAnTrungNhau':
     case 'phuongAnLechDai':
     case 'phuongAnTongHop':
+    /* Mấy lỗi dưới đây trước không có đường sửa nào - thầy cô nhìn cảnh báo rồi phải tự
+       mở từng câu ra chữa tay. Chúng đều là việc soạn lại một phần nội dung, đúng thứ
+       `suaBangAI` vốn làm, chỉ thiếu mỗi lời dặn việc. */
+    case 'loiGiaiQuaNgan':
+    case 'khongCoDapAn':
+    case 'thieuPhuongAn':
+    case 'dsThieuY':
+    case 'doLaLe':
       return 'ai';
     default:
       return null;
@@ -194,6 +209,20 @@ export function suaBangMay(q: CauDeSoat, maLoi: string, deXuat?: BanVa): KetQuaS
       break;
     }
 
+    /* Đáp án trắc nghiệm ghi lệch khuôn: "A.", "a", "Đáp án B", "Chọn C".
+       Chỉ nắn khi trong chuỗi có ĐÚNG MỘT chữ cái A-D đứng riêng - có hai chữ trở lên thì
+       không biết chọn cái nào, thà để thầy cô sửa tay còn hơn đoán rồi đổi nhầm đáp án. */
+    case 'dapAnSaiKhuonTN': {
+      const cu = chu(q.correct_answer).trim();
+      const thay = [...cu.toUpperCase().matchAll(/(?:^|[^A-Z])([ABCD])(?![A-Z])/g)].map(m => m[1]);
+      const rieng = [...new Set(thay)];
+      if (rieng.length === 1 && rieng[0] !== cu) {
+        va.correct_answer = rieng[0];
+        ghiChu.push(`Đọc "${cu}" thành đáp án ${rieng[0]}.`);
+      }
+      break;
+    }
+
     case 'dsLapYTrongDe': {
       /* Bốn ý đang nằm cả trong đề: cắt ra, giữ lại phần dẫn. Ô mệnh đề nào còn trống
          thì điền luôn - dùng lại tachBonY vốn đã chạy ở đường bóc câu. */
@@ -271,6 +300,29 @@ const VIEC_AI: Record<string, string> = {
     'Có phương án kiểu "Cả A và B đều đúng" / "Tất cả đều đúng" / "Không có đáp án nào" - loại'
     + ' này bị cấm. Hãy thay bằng một khẳng định độc lập, sai theo một lỗi học sinh hay mắc.'
     + ' KHÔNG được đụng vào phương án đúng.',
+  loiGiaiQuaNgan:
+    'Lời giải đang quá ngắn, nhiều khả năng chỉ ghi mỗi đáp số. Hãy viết lại cho đủ các BƯỚC'
+    + ' BIẾN ĐỔI dẫn tới đáp số đang có, mỗi bước một dòng bắt đầu bằng dấu "-", kết thúc bằng'
+    + ' một dòng kết luận. GIỮ NGUYÊN đáp số; nếu đáp số hiện có sai thì cứ giữ, việc sửa đáp'
+    + ' án là chỗ khác.',
+  khongCoDapAn:
+    'Câu này chưa có đáp án nên không chấm được. Hãy GIẢI câu hỏi rồi điền đáp án vào trường'
+    + ' correct_answer theo đúng khuôn của loại câu: trắc nghiệm ghi đúng MỘT chữ cái A, B, C'
+    + ' hoặc D; Đúng/Sai ghi bốn ký tự liền nhau kiểu "ĐSSĐ"; trả lời ngắn ghi con số đáp số.'
+    + ' Nếu có lời giải sẵn thì lấy kết luận của lời giải, đừng giải lại theo hướng khác.',
+  thieuPhuongAn:
+    'Câu trắc nghiệm này chưa đủ bốn phương án. Hãy soạn bổ sung cho đủ A, B, C, D. Phương án'
+    + ' thêm vào phải là phương án NHIỄU - sai theo một lỗi học sinh hay mắc, tương đương về'
+    + ' độ dài và cấu trúc với các phương án đang có. TUYỆT ĐỐI không đụng vào phương án đúng'
+    + ' và không đổi đáp án.',
+  dsThieuY:
+    'Câu Đúng/Sai này thiếu ý, phải có đủ bốn ý a), b), c), d). Hãy soạn bổ sung ý còn thiếu,'
+    + ' cùng chủ đề và cùng mức độ với các ý đang có. GIỮ NGUYÊN các ý đã có và giữ nguyên'
+    + ' đáp án của chúng; ý mới thêm phải khớp với ký tự Đúng/Sai tương ứng trong đáp án.',
+  doLaLe:
+    'Số dấu $ đang LẺ - có một công thức chưa đóng, in ra sẽ vỡ cả đoạn. Hãy tìm chỗ thiếu và'
+    + ' đóng lại cho mọi công thức đều nằm trong cặp $…$ cân đối. Chỉ thêm hoặc bớt dấu $,'
+    + ' KHÔNG đổi một ký tự nào của nội dung toán học.',
 };
 
 /**
@@ -365,6 +417,7 @@ export const TEN_TRUONG: Record<string, string> = {
   option_c: 'Phương án C', option_d: 'Phương án D',
   correct_answer: 'Đáp án',
   explanation: 'Lời giải',
+  difficulty: 'Mức độ nhận thức',
 };
 
 /** Danh sách trường đã đổi, kèm giá trị cũ và mới - để bày bảng so sánh. */

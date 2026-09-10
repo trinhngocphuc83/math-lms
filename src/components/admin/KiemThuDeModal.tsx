@@ -13,6 +13,7 @@ import { nhanViTri } from "@/utils/kiemThuDe";
 import type { PhanDeThi } from "@/utils/deThi";
 import type { BankType } from "@/utils/questionTypes";
 import { suaDuocBang, suaBangMay, suaBangAI, type BanVa } from "@/utils/suaLoiKiemThu";
+import { doanMucDoNhieuCau, MA_MUC_DO } from "@/utils/datMucDo";
 import SuaHangLoatModal, { type MucSuaHangLoat } from "@/components/admin/SuaHangLoatModal";
 import type { CauDeSoat } from "@/utils/kiemThuDe";
 import SuaLoiModal from "./SuaLoiModal";
@@ -28,6 +29,27 @@ import SuaLoiModal from "./SuaLoiModal";
  *
  * Không tự sửa gì cả - chỉ chỉ chỗ hỏng và cách sửa.
  */
+
+/** Mã '1'..'4' đổi ngược ra chữ, để bảng duyệt bản vá đọc được. */
+const TEN_MUC_DO: Record<string, string> = Object.fromEntries(
+  Object.entries(MA_MUC_DO).map(([ten, ma]) => [ma, ten]));
+
+/**
+ * Vì sao mấy chỗ này không có nút sửa.
+ *
+ * Thầy cô nói đúng: cảnh báo mà không bấm được gì thì nằm đó vô ích. Nhưng có loại thật
+ * sự không sửa tự động được - sửa bừa còn hại hơn. Nói thẳng lý do và chỉ chỗ sửa, chứ
+ * không bày một cái nút giả rồi báo "không sửa được" sau khi bấm.
+ */
+const VI_SAO_KHONG_TU_SUA: Record<string, string> = {
+  lechSoCau: 'Phải thêm hoặc bớt câu trong ma trận - máy không tự chọn thay Thầy cô được.',
+  thieuCauSoVoiMaTran: 'Phải rút thêm câu từ ngân hàng cho đủ dòng ma trận.',
+  tongDiemLech: 'Phải chỉnh số câu hoặc điểm mỗi câu trong ma trận.',
+  loaiThua: 'Đề đang có loại câu mà ma trận không đòi - bỏ bớt hoặc sửa ma trận.',
+  deQuaNgan: 'Đề ít câu quá so với khuôn - rút thêm câu.',
+  choHinhChuaCoAnh: 'Phải chèn ẢNH THẬT vào câu; máy không vẽ hình thay được.',
+  cauTrungTrongDe: 'Bỏ bớt một trong hai câu, hoặc đổi sang câu khác trong ngân hàng.',
+};
 
 const MAU_MUC = {
   loi: { nen: 'bg-rose-50 border-rose-200', chu: 'text-rose-700', Icon: AlertCircle, ten: 'Lỗi' },
@@ -45,7 +67,7 @@ function ThanhDiem({ diem }: { diem: number }) {
 }
 
 export default function KiemThuDeModal({
-  mo, onDong, cacPhan, chiTieu, diemPhan, tenKhuon, dongMaTran, luuThayThe,
+  mo, onDong, cacPhan, chiTieu, diemPhan, tenKhuon, dongMaTran, luuThayThe, boCauKhoiDe,
 }: {
   mo: boolean;
   onDong: () => void;
@@ -57,6 +79,14 @@ export default function KiemThuDeModal({
    * `questions`, nen phai tu dap ban va ve dung khoi. Xem SuaLoiModal.
    */
   luuThayThe?: (cauId: string, va: BanVa) => void | Promise<void>;
+  /**
+   * Bỏ hẳn một câu ra khỏi đề (không đụng tới ngân hàng).
+   *
+   * Chỉ nơi nào SỞ HỮU danh sách câu của đề mới truyền được - trang chọn câu chẳng hạn.
+   * Có nó thì cảnh báo "câu này giống câu kia" mới có nút bấm; không có thì cảnh báo vẫn
+   * hiện nhưng kèm lời chỉ chỗ sửa, chứ không bày nút giả.
+   */
+  boCauKhoiDe?: (cauId: string) => void;
   chiTieu?: Partial<Record<BankType, ChiTieuLoaiSoat>>;
   diemPhan?: Record<string, number>;
   tenKhuon?: string;
@@ -223,6 +253,50 @@ export default function KiemThuDeModal({
     setDsHangLoat(ra);
   };
 
+  /**
+   * Đặt mức độ nhận thức cho MỌI câu trong đề còn để trống.
+   *
+   * Cảnh báo "N câu chưa ghi mức độ" là cảnh báo CẢ ĐỀ, không gắn vào câu nào, nên khung
+   * sửa từng câu không với tới được - thầy cô nhìn thấy cảnh báo mà không có nút nào bấm.
+   * Đây là đường sửa riêng cho nó: gom hết câu trống, hỏi AI một lượt, rồi vẫn mở bảng
+   * duyệt chung như mọi bản vá khác chứ không lặng lẽ ghi.
+   */
+  const datMucDoCaDe = async () => {
+    const trong: CauDeSoat[] = [];
+    for (const phan of cacPhan) {
+      for (const q of (phan.cauHoi as any[])) {
+        const cau = { ...q, ...(daVa[q?.id] || {}) };
+        if (cau?.id && !String(cau.difficulty ?? '').trim()) trong.push(cau);
+      }
+    }
+    if (trong.length === 0) return;
+    setBaoSua(''); setDangSuaMa('thieuMucDo'); setDangChayLoat(1);
+    try {
+      const map = await doanMucDoNhieuCau(trong, (xong) => setDangChayLoat(xong || 1));
+      const ra: MucSuaHangLoat[] = [];
+      for (const cau of trong) {
+        const ma = map[cau.id!];
+        if (!ma) continue;
+        ra.push({
+          cau, va: { difficulty: ma }, ghiChu: [],
+          moTa: [`${cau.id} — đặt mức độ ${TEN_MUC_DO[ma] || ma}`],
+        });
+      }
+      if (ra.length === 0) {
+        setBaoSua('AI chưa xếp được mức độ cho câu nào - Thầy cô đặt tay trong Ngân hàng giúp.');
+        return;
+      }
+      if (ra.length < trong.length) {
+        setBaoSua(`Xếp được ${ra.length}/${trong.length} câu; số còn lại AI không đủ căn cứ nên bỏ trống.`);
+      }
+      setDsHangLoat(ra);
+    } catch (e: any) {
+      setBaoSua('Không đặt được mức độ: ' + (e?.message || 'lỗi không rõ'));
+    } finally {
+      setDangSuaMa(''); setDangChayLoat(0);
+    }
+  };
+
   const KhoiLoi = ({ muc }: { muc: 'loi' | 'canhBao' | 'nhac' }) => {
     const ds = theoMuc(muc);
     if (ds.length === 0) return null;
@@ -264,6 +338,13 @@ export default function KiemThuDeModal({
                 <div className="min-w-0 flex-1">
                   <div className="text-[13.5px] font-semibold text-slate-800">{l.moTa}</div>
                   <div className="text-[12.5px] text-slate-500 mt-0.5">→ {l.cachSua}</div>
+                  {!suaDuocBang(l.ma) && l.ma !== 'thieuMucDo'
+                    && !(l.ma === 'cauTrungTrongDe' && l.cauId && boCauKhoiDe)
+                    && VI_SAO_KHONG_TU_SUA[l.ma] && (
+                    <div className="text-[11.5px] text-slate-400 mt-0.5 italic">
+                      Máy không tự sửa được: {VI_SAO_KHONG_TU_SUA[l.ma]}
+                    </div>
+                  )}
                 </div>
                 {/* Sửa được thì cho bấm ngay tại dòng. Nhờ AI thì ghi rõ để Thầy cô biết
                     là sẽ tốn lượt và mất mấy giây. */}
@@ -281,6 +362,32 @@ export default function KiemThuDeModal({
                       ? <Loader2 className="w-3.5 h-3.5 animate-spin" />
                       : suaDuocBang(l.ma) === 'ai' ? <Bot className="w-3.5 h-3.5" /> : <Wrench className="w-3.5 h-3.5" />}
                     {suaDuocBang(l.ma) === 'ai' ? 'Nhờ AI sửa' : 'Sửa'}
+                  </button>
+                )}
+                {/* Cảnh báo cả đề thì không có `cauId` nên nút sửa từng câu ở trên không
+                    hiện. Mức độ nhận thức lại là thứ sửa được hàng loạt, nên cho một nút
+                    riêng ngay tại dòng - trước đây dòng này nằm trơ không bấm được gì. */}
+                {l.ma === 'cauTrungTrongDe' && l.cauId && boCauKhoiDe && (
+                  <button
+                    onClick={() => { boCauKhoiDe(l.cauId!); setBaoSua(`Đã bỏ ${l.viTri} khỏi đề.`); }}
+                    title="Bỏ câu này ra khỏi đề. Câu vẫn còn nguyên trong ngân hàng."
+                    className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-lg text-[11.5px] font-black
+                               bg-white border border-slate-300 text-slate-700 hover:bg-slate-50"
+                  >
+                    <Wrench className="w-3.5 h-3.5" /> Bỏ khỏi đề
+                  </button>
+                )}
+                {l.ma === 'thieuMucDo' && (
+                  <button
+                    onClick={datMucDoCaDe}
+                    disabled={!!dangSuaMa}
+                    title="Nhờ AI xếp mức độ nhận thức cho những câu còn trống, rồi cho xem trước"
+                    className="shrink-0 flex items-center gap-1 px-2 py-1 rounded-lg text-[11.5px] font-black
+                               bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 disabled:opacity-40"
+                  >
+                    {dangSuaMa === 'thieuMucDo'
+                      ? <><Loader2 className="w-3.5 h-3.5 animate-spin" /> Đang xếp {dangChayLoat}…</>
+                      : <><Bot className="w-3.5 h-3.5" /> Nhờ AI đặt mức độ</>}
                   </button>
                 )}
               </div>

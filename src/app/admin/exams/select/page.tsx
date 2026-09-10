@@ -1289,6 +1289,16 @@ function SelectContent() {
           can: l.item.count || 0,
           co: l.selectedIds.size,
         }))}
+        /* Cảnh báo "câu này giống câu kia" chỉ sửa được bằng cách bỏ bớt một câu, mà danh
+           sách câu của đề nằm ở trang này chứ không ở trong khung kiểm thử. */
+        boCauKhoiDe={(cauId) => {
+          setChuaLuu(true);
+          setLines(prev => prev.map(l => {
+            if (!l.selectedIds.has(cauId)) return l;
+            const con = new Set(l.selectedIds); con.delete(cauId);
+            return { ...l, selectedIds: con };
+          }));
+        }}
       />
 
       <QuestionEditorModal

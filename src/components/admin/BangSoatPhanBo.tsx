@@ -24,6 +24,16 @@ export interface DongSoat {
   difficulty?: string;
   dangMoi?: boolean;
   lyDo?: string;
+  /**
+   * Yêu cầu cần đạt của dạng mà câu này được xếp vào.
+   *
+   * Dạng đã có trong danh mục thì lấy chữ đang lưu; dạng MỚI thì đây là chữ SẼ được ghi
+   * vào danh mục lúc đẩy câu vào kho. Bày ra ở đây để Thầy cô soát TRƯỚC khi ghi - trước
+   * kia chữ ấy sinh ra lặng lẽ ở cửa lưu, mở bảng đặc tả ra mới biết nó viết gì.
+   */
+  yeuCau?: string;
+  /** Dạng mới, chữ yêu cầu là bản nháp chờ duyệt chứ chưa nằm trong danh mục. */
+  yeuCauNhap?: boolean;
 }
 
 interface Props {
@@ -62,6 +72,7 @@ export default function BangSoatPhanBo({
     theoChuong.get(khoa)!.push(d);
   }
   const soDangMoi = xepDuoc.filter(d => d.dangMoi).length;
+  const soThieuYeuCau = xepDuoc.filter(d => !String(d.yeuCau || '').trim()).length;
 
   return (
     <div
@@ -108,6 +119,12 @@ export default function BangSoatPhanBo({
               {khongXep.length} câu chưa xếp được
             </span>
           )}
+          {soThieuYeuCau > 0 && (
+            <span title="Dạng trống Yêu cầu cần đạt thì bảng đặc tả xuất ra Word phải lấy tạm tên dạng"
+                  style={{ background: '#fffbeb', border: '1px solid #fde68a', color: '#92400e', borderRadius: 20, padding: '3px 12px', fontSize: 12, fontWeight: 700 }}>
+              {soThieuYeuCau} câu ở dạng chưa có Yêu cầu cần đạt
+            </span>
+          )}
         </div>
 
         {/* Thân bảng */}
@@ -133,8 +150,8 @@ export default function BangSoatPhanBo({
               </div>
               <table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'fixed' }}>
                 <colgroup>
-                  <col style={{ width: 52 }} /><col /><col style={{ width: 200 }} />
-                  <col style={{ width: 180 }} /><col style={{ width: 96 }} />
+                  <col style={{ width: 52 }} /><col /><col style={{ width: 170 }} />
+                  <col style={{ width: 160 }} /><col style={{ width: 210 }} /><col style={{ width: 88 }} />
                 </colgroup>
                 <thead>
                   <tr style={{ background: '#f8fafc', color: '#64748b', fontSize: 11, textAlign: 'left' }}>
@@ -142,6 +159,7 @@ export default function BangSoatPhanBo({
                     <th style={{ ...oNho, fontWeight: 700 }}>Nội dung</th>
                     <th style={{ ...oNho, fontWeight: 700 }}>Bài</th>
                     <th style={{ ...oNho, fontWeight: 700 }}>Dạng</th>
+                    <th style={{ ...oNho, fontWeight: 700 }}>Yêu cầu cần đạt</th>
                     <th style={{ ...oNho, fontWeight: 700 }}>Mức độ</th>
                   </tr>
                 </thead>
@@ -161,6 +179,20 @@ export default function BangSoatPhanBo({
                       <td style={{ ...oNho, color: d.dangMoi ? '#9a3412' : '#166534', fontWeight: 600 }}>
                         {d.math_form}
                         {d.dangMoi && <div style={{ fontSize: 10.5, fontWeight: 700 }}>DẠNG MỚI — chờ duyệt</div>}
+                      </td>
+                      {/* Yêu cầu cần đạt: đây là cột đi thẳng vào BẢNG ĐẶC TẢ xuất ra Word,
+                          nên trống là bảng đặc tả lấy tạm tên dạng - phải thấy được từ đây. */}
+                      <td style={{ ...oNho, color: d.yeuCau ? '#475569' : '#b45309' }}>
+                        {d.yeuCau
+                          ? <>
+                              {d.yeuCau}
+                              {d.yeuCauNhap && (
+                                <div style={{ fontSize: 10.5, fontWeight: 700, color: '#9a3412', marginTop: 2 }}>
+                                  BẢN NHÁP — sẽ ghi vào danh mục khi đẩy câu
+                                </div>
+                              )}
+                            </>
+                          : <span style={{ fontWeight: 600 }}>— chưa có, bảng đặc tả sẽ lấy tạm tên dạng —</span>}
                       </td>
                       <td style={{ ...oNho, color: '#475569' }}>{d.difficulty}</td>
                     </tr>
