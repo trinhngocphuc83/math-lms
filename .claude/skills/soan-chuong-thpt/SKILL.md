@@ -190,4 +190,13 @@ chứ đừng dùng chuỗi.
 
 ## Tệp Word đang mở trong Word
 
-Ghi đè sẽ báo bận (EBUSY). Script đã gài mốc giờ vào tên thư mục xuất nên không đụng bản cũ.
+Mỗi lần chạy, script ghi đè vào **cùng một thư mục** `scratch/word/<tên chương>/` — chạy lại
+sau khi sửa lỗi thì bản cũ biến mất, thầy chỉ thấy một thư mục duy nhất.
+
+Trước đây tên thư mục có gài mốc giờ, nên mỗi lần chạy lại lại đẻ thêm một thư mục nữa: xuất
+xong soi thấy lỗi, sửa rồi xuất lại là có hai thư mục **trông y hệt nhau** mà một cái hỏng.
+Không có cách nào nhìn tên mà biết cái nào là bản đã sửa.
+
+Mốc giờ chỉ còn dùng làm đường lui: nếu có tệp **đang mở trong Word** thì ghi đè báo bận
+(EBUSY/EPERM), script tự lánh sang `<tên chương>-<giờ>/` và **báo rõ trên màn hình** rằng
+phải đóng Word rồi xoá thư mục thừa.

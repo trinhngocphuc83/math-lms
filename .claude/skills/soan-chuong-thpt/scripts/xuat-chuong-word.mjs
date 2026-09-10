@@ -278,7 +278,8 @@ if (baiCC) {
 
 /* ---------- Ghi ra tệp ---------- */
 mkdirSync('scratch/word', { recursive: true });
-/* Tên có mốc giờ: bản trước có thể đang mở trong Word, ghi đè sẽ báo bận (EBUSY) */
+/* Tên thư mục KHÔNG có mốc giờ: chạy lại là ghi đè lên bản cũ, để thầy chỉ thấy một thư mục.
+   Chỉ khi có tệp đang mở trong Word (ghi đè báo bận, EBUSY) mới lánh sang thư mục có mốc giờ. */
 const gio = new Date().toISOString().slice(11, 16).replace(':', '');
 const nhanChuong = chBai[0].title.replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, '-').slice(0, 50);
 
@@ -300,21 +301,48 @@ async function ghi(tenTep, doan) {
 }
 
 console.log(`\n${chBai[0].title} · ${kh[0].title} · ${TACH ? 'mỗi bài một tệp' : 'gộp một tệp'}\n`);
+const DANG_MO = (e) => e?.code === 'EBUSY' || e?.code === 'EPERM' || e?.code === 'EACCES';
 let tongKB = 0;
-if (TACH) {
-  const thuMuc = `scratch/word/${nhanChuong}-${gio}`;
+
+async function xuatVaoThuMuc(thuMuc) {
   mkdirSync(thuMuc, { recursive: true });
+  let kb = 0;
+  const dong = [];
   for (const t of tap) {
-    const kb = await ghi(`${thuMuc}/${t.ten}.docx`, t.doan);
-    tongKB += kb;
-    console.log(`   ${String(kb).padStart(6)} KB · ${String(t.doan.length).padStart(4)} đoạn · ${t.nhan}`);
+    const n = await ghi(`${thuMuc}/${t.ten}.docx`, t.doan);
+    kb += n;
+    dong.push(`   ${String(n).padStart(6)} KB · ${String(t.doan.length).padStart(4)} đoạn · ${t.nhan}`);
   }
+  return { kb, dong };
+}
+
+if (TACH) {
+  const goc = `scratch/word/${nhanChuong}`;
+  let thuMuc = goc, ket;
+  try {
+    ket = await xuatVaoThuMuc(goc);
+  } catch (e) {
+    if (!DANG_MO(e)) throw e;
+    thuMuc = `${goc}-${gio}`;
+    console.log(`   ⚠ Có tệp trong ${goc}/ đang mở trong Word nên không ghi đè được.`);
+    console.log(`     Xuất sang ${thuMuc}/ — đóng Word rồi xoá thư mục kia đi cho gọn.\n`);
+    ket = await xuatVaoThuMuc(thuMuc);
+  }
+  tongKB = ket.kb;
+  for (const d of ket.dong) console.log(d);
   console.log(`\nĐã xuất ${tap.length} tệp vào ${thuMuc}/ · cộng ${tongKB} KB`);
 } else {
   const doan = [...bia()];
   for (const t of tap) doan.push(...t.doan, new Paragraph({ children: [new PageBreak()] }));
-  const tenTep = `scratch/word/${nhanChuong}-GV-${gio}.docx`;
-  tongKB = await ghi(tenTep, doan);
+  let tenTep = `scratch/word/${nhanChuong}-GV.docx`;
+  try {
+    tongKB = await ghi(tenTep, doan);
+  } catch (e) {
+    if (!DANG_MO(e)) throw e;
+    console.log(`   ⚠ ${tenTep} đang mở trong Word nên không ghi đè được.`);
+    tenTep = `scratch/word/${nhanChuong}-GV-${gio}.docx`;
+    tongKB = await ghi(tenTep, doan);
+  }
   console.log(`Đã xuất: ${tenTep} · ${tongKB} KB · ${doan.length} đoạn`);
 }
 if (daNen.so) console.log(`Ảnh: nén ${daNen.so} tấm, ${Math.round(daNen.truoc / 1024)} KB -> ${Math.round(daNen.sau / 1024)} KB`);
