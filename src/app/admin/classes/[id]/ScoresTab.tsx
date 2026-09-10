@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import { captureElement, downloadOrShare } from "@/utils/imageExport";
+import { useSearchParams } from "next/navigation";
 import { Loader2, ImageIcon, Save, Plus, Trash2, AlertTriangle, CheckCircle2 } from "lucide-react";
 import {
   layDsBaiKiemTra, luuBaiKiemTra, xoaBaiKiemTra, quetDiemTuDong, type BaiKiemTra,
@@ -36,6 +37,24 @@ export default function ScoresTab({ classId, classInfo, enrollments }: { classId
   }, [classId]);
 
   useEffect(() => { napDsBai(); }, [napDsBai]);
+
+  /*
+   * Mở thẳng ĐÚNG BÀI qua địa chỉ: ?tab=scores&bai=<id>
+   *
+   * Trang Chấm bài quét ảnh chốt xong sẽ dẫn về đây. Chỉ mở đúng tab thì thầy cô vẫn phải
+   * tự dò trong ô "Bài đã lưu" xem bài vừa chấm là bài nào - lớp dạy lâu thì danh sách ấy
+   * dài, mà tên bài lại là tên bộ đề nên dễ lẫn với mấy lần chấm trước.
+   */
+  const searchParams = useSearchParams();
+  const baiTuDiaChi = searchParams?.get('bai') || '';
+  const daMoTuDiaChi = useRef(false);
+  useEffect(() => {
+    if (daMoTuDiaChi.current || !baiTuDiaChi || dsBai.length === 0) return;
+    if (!dsBai.some(b => b.id === baiTuDiaChi)) return;
+    daMoTuDiaChi.current = true;
+    moBai(baiTuDiaChi);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [baiTuDiaChi, dsBai]);
 
   /** Mở một bài đã lưu: đổ lại tên, mức đạt và điểm từng em. */
   const moBai = (id: string) => {

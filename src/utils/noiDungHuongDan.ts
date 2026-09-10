@@ -484,4 +484,55 @@ bao nhiêu lần cũng ra đúng một con số, sai chỗ nào kiểm ra chỗ 
 cũng có thể khác. Một lớp 40 em là hơn 1.300 quyết định — sai vài câu rải rác thì không
 biết đường nào mà tìm. Thứ tự đúng là **máy chấm trước, mắt chỉ soi lại chỗ máy đã tự
 khoanh vùng**.
+
+---
+
+## 15. Chấm bài quét ảnh — chấm xong điểm nằm ở đâu
+
+Thầy cô in phiếu trả lời, học sinh tô, chụp ảnh nạp vào là máy chấm phần trắc nghiệm.
+Không tốn khoá A.I — máy đọc lưới tô tròn bằng hình học thuần.
+
+### Đường đi trọn vẹn
+
+1. **Chấm bài quét ảnh** → chọn bộ đề đã chốt → chọn lớp → nạp ảnh.
+2. Máy đọc mã QR trên phiếu để ghép đúng bài với đúng em. Tờ nào không có mã thì thầy cô
+   gán tay từ khay *"chưa gán"*.
+3. Soát lại: câu có **dấu tam giác** là máy KHÔNG dám đọc (tô hai ô, tẩy chưa sạch); câu
+   có **dấu kính lúp** là nét tô rất nhạt — máy đã chấm nhưng nhắc liếc lại. Sửa tay ngay
+   tại cột bên phải, điểm tự tính lại.
+4. Bấm **Chốt điểm vào sổ**.
+
+### Chấm xong thì kết quả nằm ở hai chỗ
+
+| Thứ gì | Nằm đâu |
+|---|---|
+| **Điểm** | Sổ điểm lớp — *Lớp học › chọn lớp › tab **Điểm*** |
+| **Ảnh phiếu + đáp án máy đọc từng câu** | Ngay dưới trang Chấm bài quét ảnh, bảng *"Bài đã quét của lớp này"* |
+
+Chốt xong màn hình hiện luôn dòng **"Mở sổ điểm lớp →"** — bấm vào là mở đúng bài vừa
+chấm, khỏi phải đi tìm.
+
+> 💡 Điểm này nằm **chung một chỗ** với điểm thầy cô nhập tay, nên bộ quét điểm thưởng tự
+> lấy sang mục *Bài kiểm tra* mà không phải làm gì thêm.
+
+### Xuất ảnh để báo điểm
+
+Trong **tab Điểm** của lớp:
+
+- Ô **"Bài đã lưu"** — chọn bài cần xem (tên bài chính là tên bộ đề, kèm ngày chấm).
+- Nút **📷 Xuất ảnh báo cáo** — ra một tấm PNG bảng điểm cả lớp, có logo, tên lớp, tên bài
+  và ngày. Gửi thẳng qua Zalo, phụ huynh mở ra là thấy, không phải tải Excel về.
+
+Muốn gửi **riêng từng phụ huynh** thì sang tab **Tổng kết tháng** — ở đó có *Phiếu phụ
+huynh*, xuất được ảnh cho từng em một, hoặc xuất cả loạt.
+
+### Vài chỗ hay vướng
+
+- **Bài đã quét trống trơn** dù đã chốt điểm: phần lưu ảnh phiếu cần một bảng và một kho
+  ảnh trong Supabase. Chưa có thì máy báo rõ đang thiếu **bảng** hay thiếu **kho ảnh** —
+  chạy tệp \`scratch/tao-bang-bai-quet.sql\` là có cả hai. Điểm thì vẫn vào sổ bình thường,
+  chỉ mất phần ảnh làm bằng chứng.
+- **Một em có hai bài** thì máy chặn không cho chốt — ghi đè lên nhau là mất một bài mà
+  không ai biết. Bỏ bớt một tờ rồi chốt lại.
+- **Em chưa có bài** thì máy chỉ nhắc, không chặn: thầy cô tự quyết cho vắng hay chờ.
 `;

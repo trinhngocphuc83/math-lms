@@ -174,6 +174,8 @@ export default function ChamQuetPage() {
   const [dsHocSinh, setDsHocSinh] = React.useState<{ id: string; ten: string }[]>([]);
   const [dangChot, setDangChot] = React.useState(false);
   const [daChot, setDaChot] = React.useState('');
+  /** Mã bảng điểm vừa ghi - để link dẫn thẳng vào ĐÚNG bài trong Sổ điểm lớp. */
+  const [maBangDiem, setMaBangDiem] = React.useState('');
   const [dangNap, setDangNap] = React.useState(true);
   const [dangDoc, setDangDoc] = React.useState('');
   const [bai, setBai] = React.useState<BaiQuet[]>([]);
@@ -442,6 +444,7 @@ export default function ChamQuetPage() {
       const diem: Record<string, number> = {};
       for (const b of coDiem) diem[b.studentId] = chamBai(b).diem;
       const bangDiemId = await luuBaiKiemTra(classId, { ten_bai: tenBai, diem_dat: 5 }, diem);
+      setMaBangDiem(bangDiemId);
 
       /* LƯU VẾT: cất ảnh phiếu và đáp án máy đọc từng câu, để sau này còn tra. Cất
          KHÔNG ĐƯỢC thì cũng không sao - điểm đã vào sổ rồi, chỉ báo cho Thầy cô biết. */
@@ -761,10 +764,13 @@ export default function ChamQuetPage() {
               {daChot && (
                 <span className="ml-2 font-bold text-emerald-700">
                   {daChot}{' '}
-                  <Link href={`/admin/classes/${classId}?tab=scores`}
+                  <Link href={`/admin/classes/${classId}?tab=scores${maBangDiem ? `&bai=${maBangDiem}` : ''}`}
                         className="underline hover:text-emerald-900">
                     Mở sổ điểm lớp →
                   </Link>
+                  <span className="ml-2 font-medium text-slate-500">
+                    (ở đó bấm <b>Xuất ảnh báo cáo</b> là ra tấm ảnh bảng điểm để gửi Zalo)
+                  </span>
                 </span>
               )}
             </div>
@@ -807,6 +813,8 @@ export default function ChamQuetPage() {
                 Sổ điểm lớp
               </Link>
               , còn ảnh phiếu và đáp án máy đọc từng câu hiện thành danh sách ngay tại đây.
+              Ở Sổ điểm lớp có nút <b>Xuất ảnh báo cáo</b> để ra tấm ảnh bảng điểm cả lớp,
+              gửi thẳng qua Zalo cho phụ huynh.
             </p>
           ) : chuaTaoBangVet ? (
             <p className="px-5 py-4 text-[13px] text-slate-600">
