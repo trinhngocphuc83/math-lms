@@ -50,6 +50,9 @@ export default function KhuOnTap() {
   const [moThemHinhThuc, setMoThemHinhThuc] = React.useState(false);
   const [tenHinhThucMoi, setTenHinhThucMoi] = React.useState('');
   const [deDangSua, setDeDangSua] = React.useState<De | null>(null);
+  /* Hình thức đang đổi tên - sửa TẠI CHỖ ngay trong danh sách, không mở hộp thoại:
+     đây chỉ là một dòng chữ, mở cả khung lên cho một ô nhập thì nặng nề. */
+  const [htDangSua, setHtDangSua] = React.useState<{ id: string; ten: string } | null>(null);
 
   /* ------------------------------------------------------------------ nạp khối */
   React.useEffect(() => {
@@ -148,6 +151,29 @@ export default function KhuOnTap() {
     setMoThemHinhThuc(false); setTenHinhThucMoi('');
     await napHinhThuc(khoiId);
     setHinhThucId(data.id);
+  };
+
+  /**
+   * Đổi tên một hình thức kiểm tra.
+   *
+   * Chặn trùng tên vì danh sách này chọn bằng mắt: hai mục cùng tên "Cuối chương 2" thì
+   * không biết đề nào nằm ở đâu, mà xoá nhầm là mất cả chồng đề bên trong.
+   */
+  const luuTenHinhThuc = async () => {
+    if (!htDangSua || dangLuu) return;
+    const t = htDangSua.ten.trim();
+    const cu = dsHinhThuc.find(h => h.id === htDangSua.id);
+    if (!t || t === cu?.title) { setHtDangSua(null); return; }
+    if (dsHinhThuc.some(h => h.id !== htDangSua.id && h.title.trim() === t)) {
+      setLoi(`Đã có hình thức tên "${t}" rồi - đặt tên khác cho khỏi lẫn.`);
+      return;
+    }
+    setDangLuu(true); setLoi('');
+    const { error } = await supabase.from('lessons').update({ title: t }).eq('id', htDangSua.id);
+    setDangLuu(false);
+    if (error) { setLoi('Không đổi được tên: ' + error.message); return; }
+    setHtDangSua(null);
+    await napHinhThuc(khoiId);
   };
 
   const xoaHinhThuc = async (h: HinhThuc) => {
@@ -269,6 +295,32 @@ export default function KhuOnTap() {
             )}
 
             {dsHinhThuc.map(h => (
+              htDangSua?.id === h.id ? (
+                /* Đang đổi tên: thay cả dòng bằng ô nhập, Enter là lưu, Esc là bỏ. */
+                <div key={h.id} className="px-3 py-2 border-b border-gray-100 bg-indigo-50/60 flex items-center gap-1.5">
+                  <input
+                    autoFocus
+                    value={htDangSua.ten}
+                    onChange={e => setHtDangSua({ ...htDangSua, ten: e.target.value })}
+                    onKeyDown={e => {
+                      if (e.key === 'Enter') luuTenHinhThuc();
+                      if (e.key === 'Escape') { setHtDangSua(null); setLoi(''); }
+                    }}
+                    className="flex-1 min-w-0 px-2 py-1.5 text-[13.5px] font-bold border border-indigo-300
+                               rounded-lg bg-white outline-none focus:border-indigo-500"
+                  />
+                  <button onClick={luuTenHinhThuc} disabled={dangLuu}
+                          title="Lưu tên mới"
+                          className="p-1.5 rounded-lg text-indigo-700 hover:bg-indigo-100 disabled:opacity-40">
+                    {dangLuu ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Check className="w-3.5 h-3.5" />}
+                  </button>
+                  <button onClick={() => { setHtDangSua(null); setLoi(''); }}
+                          title="Bỏ, giữ tên cũ"
+                          className="p-1.5 rounded-lg text-gray-400 hover:bg-gray-100">
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                </div>
+              ) : (
               <button key={h.id} onClick={() => setHinhThucId(h.id)}
                       className={`w-full text-left px-4 py-3 border-b border-gray-100 flex items-center gap-2
                                   transition-colors group ${
@@ -276,12 +328,18 @@ export default function KhuOnTap() {
                       }`}>
                 <span className={`flex-1 text-[13.5px] font-bold ${
                   h.id === hinhThucId ? 'text-indigo-800' : 'text-gray-700'}`}>{h.title}</span>
+                <span onClick={e => { e.stopPropagation(); setLoi(''); setHtDangSua({ id: h.id, ten: h.title }); }}
+                      title="Đổi tên hình thức này"
+                      className="opacity-0 group-hover:opacity-100 p-1 text-gray-300 hover:text-indigo-600 transition-all">
+                  <Pencil className="w-3.5 h-3.5" />
+                </span>
                 <span onClick={e => { e.stopPropagation(); xoaHinhThuc(h); }}
                       title="Xoá hình thức này"
                       className="opacity-0 group-hover:opacity-100 p-1 text-gray-300 hover:text-rose-600 transition-all">
                   <Trash2 className="w-3.5 h-3.5" />
                 </span>
               </button>
+              )
             ))}
 
             <div className="p-3">
