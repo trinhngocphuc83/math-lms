@@ -20,9 +20,29 @@ const LOI_DANH = [
 
 import { donDe } from './donDeCauHoi.mjs';
 
+const LA_DUNG_SAI = (s) => /^(Đúng|Sai|Đ|S|TRUE|FALSE|T|F)$/i.test(String(s ?? '').trim());
+
 export function tachYDungSai(q) {
   const dap = String(q.correct_answer || '').toUpperCase().replace(/[^ĐS]/g, '');
   if (dap.length !== 4) return null;
+
+  /*
+   * LỐI B: bốn ý nằm thẳng trong option_a..d, `content` chỉ là phần dẫn.
+   *
+   * Đây mới là lối phổ biến - đo trên chương 3 lớp 12 thì CẢ 38 câu Đúng/Sai đều thế này,
+   * không câu nào theo lối lồng ý vào đề. Bản trước chỉ biết lối lồng nên bỏ sạch 38 câu
+   * mà không kêu một tiếng: hàm trả về null, câu bị lọc, dạng nào chỉ có câu Đúng/Sai thì
+   * hiện ra là "kho không có câu nào dùng được".
+   *
+   * Phải xét lối này TRƯỚC, vì đề của lối B hay có chữ "a)" trong phần dẫn hoặc trong
+   * chính các ý, dò theo nhãn sẽ cắt nhầm.
+   */
+  const o = ['option_a', 'option_b', 'option_c', 'option_d'].map(k => String(q[k] ?? '').trim());
+  if (o.every(t => t.length > 0) && !o.every(LA_DUNG_SAI)) {
+    const de = donDe(q.content).trim();
+    if (de) return { de, y: o.map((t, i) => ({ content: t, isTrue: dap[i] === 'Đ' })) };
+  }
+
   const noi = donDe(q.content);
 
   for (const loi of LOI_DANH) {

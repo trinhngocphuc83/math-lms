@@ -354,12 +354,20 @@ export async function noiDungGiaoAnSangWord(
 
         /* BẢNG MARKDOWN: dòng bắt đầu bằng `|` và dòng ngay sau là dòng ngăn `|---|---|`.
            Phải đòi đủ hai dấu hiệu, vì một dòng lẻ có dấu `|` (công thức trị tuyệt đối
-           đứng đầu dòng chẳng hạn) không phải là bảng. */
-        if (trimmed.startsWith('|') && LA_DONG_NGAN(boTheTrangTri(lines[iDong + 1] || ''))) {
+           đứng đầu dòng chẳng hạn) không phải là bảng.
+
+           Nhận cả bảng nằm TRONG KHỐI TRÍCH DẪN `> `. Phần "Ví dụ mẫu" của bài giảng nằm
+           trọn trong khối trích dẫn, mà bảng số liệu thì hay nằm ngay trong ví dụ - bản
+           trước chỉ dò dòng bắt đầu bằng `|` nên mọi bảng trong ví dụ đều in ra nguyên dấu
+           gạch đứng. Đo trên chương III lớp 12: 9 dòng hỏng kiểu này. */
+        const boTrichDan = (d: string) => d.replace(/^>\s?/, '').trim();
+        const dongNay = boTrichDan(trimmed);
+        if (dongNay.startsWith('|')
+            && LA_DONG_NGAN(boTrichDan(boTheTrangTri(lines[iDong + 1] || '')))) {
             const dongBang: string[] = [];
             let j = iDong;
             while (j < lines.length) {
-                const d = boTheTrangTri(lines[j]);
+                const d = boTrichDan(boTheTrangTri(lines[j]));
                 if (!d.startsWith('|')) break;
                 dongBang.push(d);
                 j++;
