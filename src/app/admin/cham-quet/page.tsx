@@ -311,6 +311,17 @@ export default function ChamQuetPage() {
             loi: 'Tờ này là phiếu của một bộ đề KHÁC.' });
           continue;
         }
+        /*
+         * SỐ TRANG 0 = mã DANH TÍNH ở dải đầu trang, lặp trên mọi trang của một em.
+         *
+         * Đây chính là tờ tự luận: không có lưới để chấm máy, nhưng ĐÃ BIẾT của em nào.
+         * Trước khi có mã này, tờ tự luận rơi hết vào khay "chưa gán được vào bài nào" -
+         * đo trên một lớp 17 em thì 34/51 tờ nằm đó, Thầy cô phải xếp tay từng tờ.
+         */
+        if (qr.trang === 0) {
+          daDoc.push({ ...chung, vai: 'giayKhac', trang: 0, tuQR: true, maHS: qr.hs });
+          continue;
+        }
         const luoi = cacTrang.find(t => t.trang === qr.trang);
         if (!luoi) {
           daDoc.push({ ...chung, vai: 'giayKhac', trang: qr.trang, tuQR: true,
@@ -333,7 +344,10 @@ export default function ChamQuetPage() {
          Không có mã thì mới quay về lối cũ: gặp trang 1 là mở bài mới. */
       const theoMa = new Map<string, BaiQuet>();
       for (const t of daDoc) {
-        if (t.vai === 'giayKhac') { raKhay.push(t); continue; }
+        /* Giấy khác mà BIẾT của em nào (tờ tự luận có mã danh tính) thì vẫn gom vào bài
+           của em ấy - nó không chấm máy được, nhưng phải nằm đúng bài để Thầy cô chấm tay
+           và để lưu làm bằng chứng. Chỉ tờ không rõ chủ mới vào khay. */
+        if (t.vai === 'giayKhac' && !t.maHS) { raKhay.push(t); continue; }
         if (t.maHS) {
           let b = theoMa.get(t.maHS);
           if (!b) {

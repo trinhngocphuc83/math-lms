@@ -401,9 +401,20 @@ export const maHocSinhNgan = (id: string): string =>
  * KHÔNG kèm số trang: số trang do Word tự điền bằng trường đánh số (xem daiNeoDauTrang),
  * viết cứng vào đây thì trang nào cũng ghi "TRANG 1".
  */
-export function chuNhanDang(x: { maDe?: string; loai: 'de' | 'pt' | 'hd' }): string {
+export function chuNhanDang(x: {
+  maDe?: string; loai: 'de' | 'pt' | 'hd';
+  /** Mã ngắn của em, in kèm tên - để người xếp giấy đọc được bằng mắt. */
+  hs?: string; tenHS?: string;
+}): string {
   const ten = x.loai === 'pt' ? 'PHIẾU TRẢ LỜI' : x.loai === 'hd' ? 'HƯỚNG DẪN CHẤM' : 'ĐỀ THI';
-  return `${ten}${x.maDe ? ` · MÃ ĐỀ ${x.maDe}` : ''} · Trang `;
+  /* Tên em in ngay ở dải đầu trang MỌI TRANG, không riêng trang đầu.
+     Vì sao: tờ tự luận rời ra khỏi tập là không còn gì nhận dạng. Đo trên một lớp 17 em,
+     phiếu 51 trang: mỗi em 1 trang lưới + 2 trang tự luận, tức 34/51 tờ không tự khai
+     được chủ. Có tên in sẵn thì dù ảnh mờ, dù QR bị gấp mất, Thầy cô vẫn xếp được. */
+  const em = x.tenHS || x.hs
+    ? ` · ${[x.tenHS, x.hs ? `[${x.hs}]` : ''].filter(Boolean).join(' ')}`
+    : '';
+  return `${ten}${x.maDe ? ` · MÃ ĐỀ ${x.maDe}` : ''}${em} · Trang `;
 }
 
 /**
@@ -412,8 +423,23 @@ export function chuNhanDang(x: { maDe?: string; loai: 'de' | 'pt' | 'hd' }): str
  * Số trang lấy bằng trường đánh số của Word nên trang nào cũng đúng - ảnh chụp trang 2
  * vẫn tự khai là trang 2, máy chấm khỏi phải đoán theo thứ tự tệp ảnh Thầy cô gửi lên.
  */
-export function daiNeoDauTrang(x: { maDe?: string; loai: 'de' | 'pt' | 'hd' }): Paragraph {
+export function daiNeoDauTrang(x: {
+  maDe?: string; loai: 'de' | 'pt' | 'hd';
+  hs?: string; tenHS?: string;
+  /**
+   * Mã QR DANH TÍNH, dựng sẵn từ bên ngoài (vì `anhQR` là hàm bất đồng bộ).
+   *
+   * Nằm trong dải đầu trang nên Word lặp lại nó trên MỌI trang - kể cả trang tự luận,
+   * kể cả khi phần tự luận tràn sang trang thứ ba. Đây là chỗ duy nhất trong cả tờ phiếu
+   * lặp được như vậy mà không phải đoán trước số trang.
+   *
+   * Đặt ở GIỮA dải chứ không sát mép: hai đầu dải là dấu neo, mà bộ đọc tìm neo bằng cách
+   * dò khối đen gần vuông - để mã QR ngay cạnh là dễ bắt nhầm.
+   */
+  qr?: any;
+}): Paragraph {
   return daiNeo([
+    ...(x.qr ? [x.qr, new TextRun({ text: '  ' })] : []),
     chuNho(chuNhanDang(x)),
     new TextRun({ children: [PageNumber.CURRENT], size: CO_GHI_CHU, color: XAM_MO }),
     chuNho('/'),

@@ -23,7 +23,7 @@
 
 import {
   Document, Packer, Paragraph, TextRun, Table, TableRow, TableCell, WidthType,
-  AlignmentType, VerticalAlign, ShadingType, Header, Footer, BorderStyle,
+  AlignmentType, VerticalAlign, ShadingType, Header, Footer, BorderStyle, SectionType,
 } from "docx";
 import {
   NAVY, NEN_BANG_PHIEU, NEN_O_DIEM, DO_TONG_DIEM, XAM_MO, DEN,
@@ -324,16 +324,23 @@ export async function dungNoiDungPhieu(k: KhuonPhieu, qrDauTrang?: any): Promise
 
 /** Xuất phiếu trả lời ra tệp Word và tải về. */
 export async function exportPhieuTraLoi(k: KhuonPhieu, tenTep: string): Promise<boolean> {
+  const ma = k.hocSinh ? maHocSinhNgan(k.hocSinh.id) : undefined;
   const qr = await anhQR(noiDungQR({
-    boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: 1,
-    hs: k.hocSinh ? maHocSinhNgan(k.hocSinh.id) : undefined,
+    boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: 1, hs: ma,
   }), 74);
+  /* Mã danh tính cho dải đầu trang - chỉ có khi in phiếu đích danh một em. Phiếu trắng
+     (không gắn em nào) thì không có gì để nhận, dải đầu trang giữ nguyên như cũ. */
+  const qrDanhTinh = ma
+    ? await anhQR(noiDungQR({ boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: 0, hs: ma }), 52)
+    : null;
 
   const doc = new Document({
     styles: KIEU_MAC_DINH,
     sections: [{
       properties: TRANG_CHUAN,
-      headers: { default: new Header({ children: [daiNeoDauTrang({ maDe: k.dauDe?.maDe, loai: 'pt' })] }) },
+      headers: { default: new Header({ children: [daiNeoDauTrang({
+        maDe: k.dauDe?.maDe, loai: 'pt', hs: ma, tenHS: k.hocSinh?.ten, qr: qrDanhTinh,
+      })] }) },
       footers: { default: new Footer({ children: [daiNeo()] }) },
       /* Mã QR nay nằm trong bảng thông tin ở đầu phiếu, không đứng riêng một dòng nữa. */
       children: await dungNoiDungPhieu(k, qr),
@@ -385,28 +392,49 @@ export async function exportPhieuTheoLop(
       + '. Báo giúp tôi để đổi cách sinh mã.');
   }
 
-  const con: any[] = [];
+  /*
+   * MỖI EM MỘT SECTION, không phải một mạch nội dung chung.
+   *
+   * Word chỉ cho đặt dải đầu trang theo TỪNG SECTION. Để chung một section thì cả lớp
+   * dùng chung một dải đầu trang, mà dải ấy nay mang mã QR danh tính - hoá ra 17 em đều
+   * đeo mã của một em. Tách section thì mỗi em một dải riêng, và Word tự sang trang mới ở
+   * đầu mỗi section nên cũng khỏi cần chèn ngắt trang bằng tay như trước.
+   *
+   * Số trang vẫn chạy liên tục cả tài liệu (Trang 20/51), không bị đánh lại từ 1.
+   */
+  const cacSection: any[] = [];
   for (let i = 0; i < dsHocSinh.length; i++) {
     onTienDo?.(i, dsHocSinh.length);
     const hs = dsHocSinh[i];
-    /* Phiếu của em thứ hai trở đi sang trang mới, để cắt ra là trọn tờ của từng em. */
-    if (i > 0) con.push(new Paragraph({ text: "", pageBreakBefore: true }));
+    const ma = maHocSinhNgan(hs.id);
+
+    /* QR trong bảng đầu phiếu: mang SỐ TRANG 1, dùng cho trang lưới đầu tiên. */
     const qr = await anhQR(noiDungQR({
-      boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: 1, hs: maHocSinhNgan(hs.id),
+      boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: 1, hs: ma,
     }), 74);
-    con.push(...(await dungNoiDungPhieu({ ...k, hocSinh: hs }, qr)));
+
+    /* QR DANH TÍNH nằm ở dải đầu trang nên lặp trên mọi trang của em này. `trang: 0` nghĩa
+       là "mã này không nói trang mấy" - bộ đọc hiểu đó là mã nhận người, không phải mã trang. */
+    const qrDanhTinh = await anhQR(noiDungQR({
+      boDeId: k.boDeId, maDe: k.dauDe?.maDe, loai: 'pt', trang: 0, hs: ma,
+    }), 52);
+
+    cacSection.push({
+      properties: { ...TRANG_CHUAN, type: i === 0 ? SectionType.CONTINUOUS : SectionType.NEXT_PAGE },
+      headers: {
+        default: new Header({
+          children: [daiNeoDauTrang({
+            maDe: k.dauDe?.maDe, loai: 'pt', hs: ma, tenHS: hs.ten, qr: qrDanhTinh,
+          })],
+        }),
+      },
+      footers: { default: new Footer({ children: [daiNeo()] }) },
+      children: await dungNoiDungPhieu({ ...k, hocSinh: hs }, qr),
+    });
   }
   onTienDo?.(dsHocSinh.length, dsHocSinh.length);
 
-  const doc = new Document({
-    styles: KIEU_MAC_DINH,
-    sections: [{
-      properties: TRANG_CHUAN,
-      headers: { default: new Header({ children: [daiNeoDauTrang({ maDe: k.dauDe?.maDe, loai: 'pt' })] }) },
-      footers: { default: new Footer({ children: [daiNeo()] }) },
-      children: con,
-    }],
-  });
+  const doc = new Document({ styles: KIEU_MAC_DINH, sections: cacSection });
 
   const buffer = await Packer.toBuffer(doc);
   const blob = new Blob([buffer as any], {

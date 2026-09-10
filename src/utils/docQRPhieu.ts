@@ -121,8 +121,17 @@ export function xoayAnh(anh: AnhDiemAnh, do_: 90 | 180 | 270): AnhDiemAnh {
 export function phanTichMaPhieu(chuoi: string): MaPhieu | null {
   const p = String(chuoi || '').split('|');
   if (p[0] !== 'LTP' || p[4] !== 'pt') return null;
+  /*
+   * SỐ TRANG 0 = "mã này không nói trang mấy".
+   *
+   * Đó là mã DANH TÍNH nằm ở dải đầu trang, lặp trên mọi trang của một em - dùng để nhận
+   * ra tờ tự luận rời là của ai. Bản trước viết `Number(p[5]) || 1` nên số 0 bị nắn thành
+   * 1, tờ tự luận sẽ tự khai là trang 1 và đè lên tờ lưới thật.
+   */
+  const soTrang = Number(p[5]);
+  const trang = Number.isFinite(soTrang) && soTrang >= 0 ? soTrang : 1;
   /* Ô thứ bảy chỉ có ở phiếu in theo lớp - phiếu trắng in trước đó vẫn đọc được. */
-  return { boDeId: p[2], maDe: p[3], trang: Number(p[5]) || 1, hs: p[6] || undefined };
+  return { boDeId: p[2], maDe: p[3], trang, hs: p[6] || undefined };
 }
 
 /**
@@ -157,9 +166,24 @@ export function docQRPhieu(
     { ten: 'xoay 270', dung: () => thuNhoAnh(xoayAnh(anh, 270), 1600) },
   ];
 
+  /*
+   * MỘT TRANG CÓ THỂ CÓ HAI MÃ, phải lấy đúng mã mang số trang.
+   *
+   * Từ khi dải đầu trang mang mã DANH TÍNH (trang 0), trang lưới có hai mã: mã danh tính
+   * ở dải trên cùng và mã trang nằm trong ô điểm. jsQR mỗi lượt chỉ trả về MỘT mã, và
+   * lượt "ảnh gốc" hay vớ phải mã nào nằm gần góc trên bên trái - tức mã danh tính. Vớ
+   * nhầm thì trang lưới tự khai là trang 0, xếp trang sẽ loạn.
+   *
+   * Nên: gặp mã trang 0 thì GHI NHỚ rồi chạy tiếp các lượt còn lại tìm mã có số trang.
+   * Hết lượt mà vẫn chỉ có mã danh tính thì đó đúng là tờ tự luận - trả về, để bộ ghép
+   * bài biết tờ này của em nào dù không biết là trang mấy.
+   */
+  let chiDanhTinh: { ma: MaPhieu; luot: string } | null = null;
   for (const l of luot) {
     const kq = thu(l.dung(), l.ten);
-    if (kq) return kq;
+    if (!kq) continue;
+    if (kq.ma.trang > 0) return kq;
+    if (!chiDanhTinh) chiDanhTinh = kq;
   }
-  return null;
+  return chiDanhTinh;
 }
