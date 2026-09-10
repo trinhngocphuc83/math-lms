@@ -27,8 +27,18 @@ const quanTri = createClient(
 const KHO_ANH = 'bai-quet';
 
 const thieuBang = (loi: any) =>
-  !!loi && /schema cache|does not exist|Could not find the table|Bucket not found/i.test(
-    String(loi.message || ''));
+  !!loi && /schema cache|does not exist|Could not find the table/i.test(String(loi.message || ''));
+
+/**
+ * Thiếu KHO ẢNH, không phải thiếu bảng.
+ *
+ * Tách riêng vì hai chuyện này sửa ở hai chỗ khác nhau, mà bản trước gộp làm một: kho ảnh
+ * chưa có cũng bị báo "bảng bai_quet chưa tạo", thầy cô đi chạy lại tệp SQL rồi vẫn không
+ * hiểu sao không có gì được lưu. Đo trên cơ sở dữ liệu thật: bảng có 0 dòng trong khi
+ * bảng ĐÃ tồn tại và nhận ghi bình thường - đúng dấu vết của lần hỏng kiểu này.
+ */
+const thieuKhoAnh = (loi: any) =>
+  !!loi && /Bucket not found|bucket does not exist/i.test(String(loi.message || ''));
 
 export interface TrangAnhLuu {
   /** Ảnh dạng data:image/...;base64,... lấy thẳng từ trang chấm. */
@@ -68,7 +78,7 @@ function bocAnh(s: string): { bytes: Buffer; kieu: string } | null {
 export async function luuBaiQuet(
   ds: BaiQuetLuu[],
   bangDiemId?: string,
-): Promise<{ daLuu: number; chuaTaoBang: boolean; loi?: string }> {
+): Promise<{ daLuu: number; chuaTaoBang: boolean; thieuKhoAnh?: boolean; loi?: string }> {
   const nguoi = await assertStaff();
   if (ds.length === 0) return { daLuu: 0, chuaTaoBang: false };
 
@@ -88,6 +98,7 @@ export async function luuBaiQuet(
       const { error } = await quanTri.storage.from(KHO_ANH)
         .upload(duongDan, boc.bytes, { contentType: boc.kieu, upsert: true });
       if (error) {
+        if (thieuKhoAnh(error)) return { daLuu: 0, chuaTaoBang: false, thieuKhoAnh: true };
         if (thieuBang(error)) return { daLuu: 0, chuaTaoBang: true };
         continue;                                  // hỏng một ảnh thì bỏ ảnh ấy thôi
       }

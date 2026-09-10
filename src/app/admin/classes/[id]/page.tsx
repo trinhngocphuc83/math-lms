@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { ArrowLeft, Users, UserPlus, Upload, Trash2, Loader2, Search, X, FileSpreadsheet, Download, Plus, Edit2, CheckSquare, DollarSign, Dices, Trophy, HelpCircle } from "lucide-react";
 import Link from "next/link";
-import { useRouter, useParams } from "next/navigation";
+import { useRouter, useParams, useSearchParams } from "next/navigation";
 import { getEnrollments, addEnrollment, removeEnrollment, updateStudentProfile, searchStudents, createAndEnrollNewStudent } from "./actions";
 import AttendanceTab from "./AttendanceTab";
 import TuitionTab from "./TuitionTab";
@@ -22,7 +22,14 @@ export default function ClassDetailsPage() {
   const params = useParams();
   const router = useRouter();
   const classId = params.id as string;
-  const [activeTab, setActiveTab] = useState<'menu' | 'students' | 'attendance' | 'tuition' | 'scores' | 'tongket'>('students');
+  /* Cho phép mở thẳng một tab qua địa chỉ: /admin/classes/<id>?tab=scores
+     Trang Chấm bài quét ảnh cần link được vào đúng Sổ điểm sau khi chốt - trước đây chốt
+     xong chỉ báo "đã ghi vào sổ" mà không nói sổ nằm ở đâu, thầy cô đi tìm không ra. */
+  const searchParams = useSearchParams();
+  const TAB_HOP_LE = ['menu', 'students', 'attendance', 'tuition', 'scores', 'tongket'] as const;
+  const tabTuDiaChi = searchParams?.get('tab');
+  const [activeTab, setActiveTab] = useState<'menu' | 'students' | 'attendance' | 'tuition' | 'scores' | 'tongket'>(
+    (TAB_HOP_LE as readonly string[]).includes(String(tabTuDiaChi)) ? (tabTuDiaChi as any) : 'students');
   /* Gọi tên & Điểm mở thẳng từ đây - dùng được cả khi không chiếu bài nào. */
   const [moGoiTen, setMoGoiTen] = useState(false);
   /* Sân khấu vinh danh - chiếu tivi cuối tháng. */

@@ -460,7 +460,11 @@ export default function ChamQuetPage() {
             diem: c.diem, diemToiDa: c.diemToiDa, soCauVuong: c.soCauVuong,
           };
         }), bangDiemId);
-        veChuThich = kq.chuaTaoBang
+        veChuThich = kq.thieuKhoAnh
+          /* Nói đúng chỗ hỏng: thiếu KHO ẢNH thì chạy lại tệp SQL cũng vô ích nếu chỉ
+             tạo bảng - tệp ấy tạo cả kho, nhưng phải biết mình đang thiếu cái gì. */
+          ? ' (chưa lưu được ảnh phiếu - kho ảnh "bai-quet" trong Supabase Storage chưa có)'
+          : kq.chuaTaoBang
           ? ' (chưa lưu được bằng chứng - bảng bai_quet chưa tạo)'
           : kq.loi ? ` (không lưu được bằng chứng: ${kq.loi})`
           : ` Đã lưu bằng chứng ${kq.daLuu} bài.`;
@@ -751,7 +755,18 @@ export default function ChamQuetPage() {
               {!classId
                 ? 'Chọn lớp ở bước 2 thì mới chốt điểm vào sổ được.'
                 : `Chốt là ghi điểm vào sổ của lớp, mục "Bài kiểm tra" - điểm thưởng tự quét sang sau.`}
-              {daChot && <span className="ml-2 font-bold text-emerald-700">{daChot}</span>}
+              {/* Chốt xong phải CHỈ ĐƯỜNG tới chỗ điểm vừa nằm. Bản trước chỉ báo "đã ghi
+                  vào sổ lớp" rồi thôi - mà sổ ấy nằm sâu trong Lớp học › chọn lớp › tab
+                  Điểm, không có lối nào đi thẳng, nên chấm xong là không tìm ra kết quả. */}
+              {daChot && (
+                <span className="ml-2 font-bold text-emerald-700">
+                  {daChot}{' '}
+                  <Link href={`/admin/classes/${classId}?tab=scores`}
+                        className="underline hover:text-emerald-900">
+                    Mở sổ điểm lớp →
+                  </Link>
+                </span>
+              )}
             </div>
             <button
               onClick={chotDiem}
@@ -766,13 +781,34 @@ export default function ChamQuetPage() {
         </div>
       )}
 
-      {/* Bài đã chấm những lần trước - mở lại được để đối chiếu khi có ai hỏi */}
-      {classId && !baiDangMo && (daQuet.length > 0 || chuaTaoBangVet) && (
+      {/* Bài đã chấm những lần trước - mở lại được để đối chiếu khi có ai hỏi.
+          HIỆN CẢ KHI TRỐNG: bản trước chỉ hiện khi đã có dòng, nên lớp chưa quét bài nào
+          thì trang không nói một chữ nào về chỗ lưu kết quả - chấm xong đi tìm không ra. */}
+      {classId && !baiDangMo && (
         <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden mt-5">
-          <div className="px-5 py-3 border-b border-slate-100 font-black text-slate-800">
+          <div className="px-5 py-3 border-b border-slate-100 font-black text-slate-800
+                          flex flex-wrap items-center gap-x-3 gap-y-1">
             Bài đã quét của lớp này
+            <span className="font-medium text-[12.5px] text-slate-500">
+              Điểm nằm ở{' '}
+              <Link href={`/admin/classes/${classId}?tab=scores`}
+                    className="font-bold text-teal-700 underline hover:text-teal-900">
+                Sổ điểm lớp
+              </Link>
+              {' '}· ảnh phiếu và đáp án máy đọc từng câu lưu ngay dưới đây
+            </span>
           </div>
-          {chuaTaoBangVet ? (
+          {!chuaTaoBangVet && daQuet.length === 0 ? (
+            <p className="px-5 py-4 text-[13px] text-slate-600">
+              Lớp này chưa có bài quét nào được chốt. Chấm xong bấm{" "}
+              <b>Chốt điểm vào sổ</b> thì điểm vào{" "}
+              <Link href={`/admin/classes/${classId}?tab=scores`}
+                    className="font-bold text-teal-700 underline hover:text-teal-900">
+                Sổ điểm lớp
+              </Link>
+              , còn ảnh phiếu và đáp án máy đọc từng câu hiện thành danh sách ngay tại đây.
+            </p>
+          ) : chuaTaoBangVet ? (
             <p className="px-5 py-4 text-[13px] text-slate-600">
               Chưa bật phần lưu vết. Chạy tệp{" "}
               <code className="bg-slate-100 px-1.5 py-0.5 rounded">scratch/tao-bang-bai-quet.sql</code>{" "}
