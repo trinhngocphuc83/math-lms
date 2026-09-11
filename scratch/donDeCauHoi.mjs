@@ -25,5 +25,8 @@ export function donDe(noiDung) {
  * Nên: chỉ thay khi sau "\n" KHÔNG phải chữ cái tạo thành lệnh LaTeX.
  */
 export function xuongDong(s) {
-  return String(s || '').replace(/\n(?!eq\b|e\b|abla\b|u\b|ot\b|ewline\b|onumber\b)/g, '\n').trim();
+  /* Tệp này từng được ghi qua heredoc của shell, dấu chéo ngược bị nuốt mất một lớp: mẫu
+     thành /\n(...)/ - bắt xuống dòng THẬT rồi thay bằng xuống dòng, tức không làm gì.
+     Phải là hai dấu chéo trong mã nguồn: bắt dấu chéo ngược + chữ n. */
+  return String(s || '').replace(/\\n(?!eq\b|e\b|abla\b|u\b|ot\b|ewline\b|onumber\b)/g, '\n').trim();
 }
