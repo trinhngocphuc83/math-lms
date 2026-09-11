@@ -188,6 +188,12 @@ Một bẫy nữa: trong chuỗi thay thế của `String.replace`, `$$` và `` 
 biệt — chúng nuốt dấu `$` và chèn nhầm cả khúc văn bản phía trước. Dùng **hàm** thay thế
 chứ đừng dùng chuỗi.
 
+Bẫy thứ ba, im lặng hơn cả: lời giải trong kho thỉnh thoảng lưu xuống dòng bằng chuỗi hai
+kí tự `\n`, nên script hay có `.replace(/\\n/g, '\n')`. Phép ấy **ăn luôn `\neq`, `\ne`,
+`\nabla`** — thành xuống dòng + `eq`, in ra Word là `eq 440√2` giữa lời giải. Kho Toán 11
+có 40 câu, kho Lý 13 câu mang `\neq`. Dùng `xuongDong()` trong `scratch/donDeCauHoi.mjs`
+(đã chừa các lệnh ấy), và `soi-neq-hong.mjs` để đo lại sau khi ghi.
+
 ## Tệp Word đang mở trong Word
 
 Mỗi lần chạy, script ghi đè vào **cùng một thư mục** `scratch/word/<tên chương>/` — chạy lại
