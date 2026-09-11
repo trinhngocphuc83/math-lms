@@ -78,17 +78,27 @@ const textToRuns = (
         if (i > 0) dam = !dam;
         if (!m) return;
         /* Trong mỗi mẩu, dấu sao ĐƠN là chữ nghiêng - dò theo cặp vì chữ nghiêng không
-           bắc cầu qua công thức như chữ đậm. */
+           bắc cầu qua công thức như chữ đậm. Dấu nháy ngược là TÊN PHÍM (`SHIFT` `MENU`
+           trong mục bấm máy Casio): in bằng phông đơn cách, nền xám nhạt, cho giống cái
+           phím - bản trước in nguyên dấu nháy ra giấy. */
         let con = m;
         while (con.length > 0) {
-            const d = con.indexOf('*');
-            const c = d === -1 ? -1 : con.indexOf('*', d + 1);
-            if (d === -1 || c === -1) {
+            const d = con.search(/[*`]/);
+            if (d === -1) {
+                runs.push(new TextRun({ text: con, color: opts.color, bold: dam }));
+                break;
+            }
+            const dau = con[d];
+            const c = con.indexOf(dau, d + 1);
+            if (c === -1) {
                 runs.push(new TextRun({ text: con, color: opts.color, bold: dam }));
                 break;
             }
             if (d > 0) runs.push(new TextRun({ text: con.slice(0, d), color: opts.color, bold: dam }));
-            runs.push(new TextRun({ text: con.slice(d + 1, c), color: opts.color, bold: dam, italics: true }));
+            const ruot = con.slice(d + 1, c);
+            runs.push(dau === '`'
+                ? new TextRun({ text: ruot, font: 'Consolas', shading: { type: ShadingType.CLEAR, fill: 'EEEEEE' }, bold: true })
+                : new TextRun({ text: ruot, color: opts.color, bold: dam, italics: true }));
             con = con.slice(c + 1);
         }
     });
