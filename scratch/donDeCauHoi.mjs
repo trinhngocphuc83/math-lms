@@ -13,3 +13,17 @@ export function donDe(noiDung) {
     .replace(/^\s*\[CÂU HỎI CÓ THỂ BỊ SAI ĐỀ[^\]]*\]\s*/i, '')
     .trim();
 }
+
+/**
+ * Trả lời giải về dạng có xuống dòng thật.
+ *
+ * Kho lưu xuống dòng bằng kí tự thật là chính; một số câu (bóc từ JSON) lưu chuỗi hai kí tự
+ * "\n". Phép thay "\n" -> xuống dòng hàng loạt từng làm hỏng lệnh LaTeX bắt đầu bằng n:
+ * \neq thành xuống-dòng + "eq", in ra Word là "eq 440\sqrt{2}" giữa lời giải. Kho Lý có 13
+ * câu, kho Toán 11 có 40 câu dính \neq hoặc \ne như thế.
+ *
+ * Nên: chỉ thay khi sau "\n" KHÔNG phải chữ cái tạo thành lệnh LaTeX.
+ */
+export function xuongDong(s) {
+  return String(s || '').replace(/\n(?!eq\b|e\b|abla\b|u\b|ot\b|ewline\b|onumber\b)/g, '\n').trim();
+}
