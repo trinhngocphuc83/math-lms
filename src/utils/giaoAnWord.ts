@@ -252,11 +252,16 @@ const buildBulletParagraphs = async (text: string): Promise<Paragraph[]> => {
     return paragraphs;
 };
 
+/* Chuỗi "\n" hai kí tự (xuống dòng kiểu JSON) trong đề và phương án. KHÔNG được bắt nhầm
+   lệnh LaTeX bắt đầu bằng n: `\neq` mà thay "\n" thành khoảng trắng thì in ra " eq" giữa
+   công thức — đã dính với 35 chỗ trong 14 module. */
+const XUONG_DONG_JSON = /\\n(?!eq\b|e\b|abla\b|u\b|ot\b|ewline\b)/g;
+
 // Chuyển 1 khối ```quiz``` (câu hỏi tương tác trong bài giảng) thành các Paragraph.
 const renderQuizToParagraphs = async (quiz: any, questionNumber: number, type: 'student' | 'teacher'): Promise<Paragraph[]> => {
     const paragraphs: Paragraph[] = [];
 
-    const questionRuns = await buildRunsFromLine((quiz.question || '').replace(/\\n/g, ' '));
+    const questionRuns = await buildRunsFromLine((quiz.question || '').replace(XUONG_DONG_JSON, ' '));
     paragraphs.push(new Paragraph({
         children: [new TextRun({ text: `Câu ${questionNumber}. `, bold: true }), ...questionRuns],
         spacing: { before: 160, after: 60 },
@@ -267,7 +272,7 @@ const renderQuizToParagraphs = async (quiz: any, questionNumber: number, type: '
             const opt = quiz.options[i];
             const optText = typeof opt === 'string' ? opt : opt.content;
             const label = String.fromCharCode(65 + i);
-            const optRuns = await buildRunsFromLine((optText || '').replace(/\\n/g, ' '));
+            const optRuns = await buildRunsFromLine((optText || '').replace(XUONG_DONG_JSON, ' '));
             paragraphs.push(new Paragraph({
                 children: [new TextRun({ text: `${label}. `, bold: true }), ...optRuns],
                 spacing: { before: 20, after: 20 },
