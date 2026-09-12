@@ -191,10 +191,15 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
                 ? `flex gap-10 items-start ${viTriAnh === 'trai' ? 'flex-row-reverse' : ''}`
                 : 'contents'}>
             <div className={canhNhau ? 'flex-1 min-w-0' : 'contents'}>
-            {/* Bảng LaTeX (\begin{array}) 6-7 cột ở cỡ chữ 42px rộng hơn khung đề và bị cắt mất cột
-                cuối - thu bảng còn 0,8em và cho khung cuộn ngang làm lưới an toàn. */}
+            {/* Bảng LaTeX (\begin{array}) 6-7 cột: KaTeX phóng chữ 1,21em nên bảng rộng 2100px ở cỡ
+                42px, khung đề chỉ 1430px -> cắt mất cột cuối. Thu chữ trong bảng còn 0,75em (≈31px
+                trước khi slide tự co, đo trên bảng 7 cột thì còn dư 8% bề ngang; vẫn đọc được từ
+                cuối lớp). Không cho cuộn ngang: overflow-x:auto kéo theo thanh cuộn dọc vì KaTeX
+                xếp bảng bằng vlist có lề âm.
+                Nhắm vào .katex chứ không phải .katex-display: "$$…$$" viết trên một dòng được
+                remark-math coi là công thức nội dòng, không sinh .katex-display. */}
             <div className={`text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}
-                             [&_.katex-display:has(.mtable)]:text-[0.8em] [&_.katex-display]:max-w-full [&_.katex-display]:overflow-x-auto`}>
+                             [&_.katex:has(.mtable)]:text-[0.75em]`}>
                 <ReactMarkdown urlTransform={chuyenDiaChiAnh} components={thanhPhanDe} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                     {deKhongAnh}
                 </ReactMarkdown>
