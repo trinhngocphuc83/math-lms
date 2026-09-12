@@ -1,0 +1,126 @@
+{
+  "grade": "9",
+  "subject": "Hình học",
+  "nguon": "Vở bài tập Toán 9 tập 1 (chương trình mới), Bài 17, tr. 367–378",
+  "cau": [
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Nhận biết vị trí tương đối của hai đường tròn", "question_type": "TL", "difficulty": "1",
+      "content": "Cho đường tròn $(O; 5\\text{ cm})$ và đường tròn $(I; 4\\text{ cm})$. Xác định $OI$ biết:\na) Hai đường tròn tiếp xúc trong.\nb) Hai đường tròn tiếp xúc ngoài.\nc) Hai đường tròn cắt nhau.\nd) Hai đường tròn ngoài nhau.",
+      "correct_answer": "a) OI = 1 cm; b) OI = 9 cm; c) 1 cm < OI < 9 cm; d) OI > 9 cm",
+      "explanation": "Phương pháp giải:\nSo sánh đoạn nối tâm với $R + r$ và $R - r$ ($R = 5$, $r = 4$).\n\nLời giải:\na) Tiếp xúc trong: $OI = R - r = 5 - 4 = 1$ cm.\nb) Tiếp xúc ngoài: $OI = R + r = 9$ cm.\nc) Cắt nhau: $R - r < OI < R + r$, tức $1$ cm $< OI < 9$ cm.\nd) Ngoài nhau: $OI > R + r = 9$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hai đường tròn $(O; R)$ và $(O'; r)$ với $R = 12$ cm, $r = 5$ cm, $OO' = 13$ cm.\na) Chứng minh hai đường tròn $(O)$ và $(O')$ cắt nhau tại hai điểm $A$, $B$ và $OO'$ là đường trung trực của $AB$.\nb) Chứng minh $AO$ là tiếp tuyến của đường tròn $(O'; r)$.\nc) Tính độ dài $AB$.",
+      "correct_answer": "c) AB = 120/13 ≈ 9,23 cm",
+      "explanation": "Phương pháp giải:\nSo sánh $OO'$ với $R \\pm r$; định lí Pythagore đảo cho tam giác $OAO'$; hệ thức $AH \\cdot OO' = OA \\cdot O'A$ trong tam giác vuông.\n\nLời giải:\na) $R - r = 7 < OO' = 13 < R + r = 17$ nên hai đường tròn cắt nhau tại hai điểm $A$, $B$. Vì $OA = OB = R$ và $O'A = O'B = r$ nên $O$, $O'$ cùng thuộc đường trung trực của $AB$, tức $OO'$ là đường trung trực của $AB$.\nb) $OA^2 + O'A^2 = 144 + 25 = 169 = OO'^2$ nên tam giác $OAO'$ vuông tại $A$, tức $OA \\perp O'A$ tại $A \\in (O')$. Vậy $AO$ là tiếp tuyến của $(O'; r)$.\nc) Gọi $H = AB \\cap OO'$ thì $AH \\perp OO'$ và $H$ là trung điểm $AB$. Trong tam giác vuông $OAO'$: $AH = \\dfrac{OA \\cdot O'A}{OO'} = \\dfrac{12 \\cdot 5}{13} = \\dfrac{60}{13}$ cm.\nVậy $AB = 2AH = \\dfrac{120}{13} \\approx 9{,}23$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hai đường tròn $(O)$ và $(O')$ tiếp xúc ngoài tại $A$. Gọi $MN$ là tiếp tuyến chung ngoài của hai đường tròn với $M \\in (O)$ và $N \\in (O')$.\na) Tính số đo $\\widehat{MAN}$.\nb) Tính độ dài $MN$ biết $OA = 9$ cm; $O'A = 4$ cm.",
+      "correct_answer": "a) 90°; b) MN = 12 cm",
+      "explanation": "Phương pháp giải:\nKẻ tiếp tuyến chung tại $A$ cắt $MN$ tại $I$; dùng tính chất hai tiếp tuyến cắt nhau: $IM = IA = IN$. Tam giác $OIO'$ vuông tại $I$ với đường cao $IA$.\n\nLời giải:\na) Tiếp tuyến chung tại $A$ cắt $MN$ tại $I$. Ta có $IM = IA$ và $IN = IA$ (hai tiếp tuyến cắt nhau) nên $IA = \\dfrac{MN}{2}$, tức $A$ thuộc đường tròn đường kính $MN$. Vậy $\\widehat{MAN} = 90^\\circ$.\nb) $IO$, $IO'$ lần lượt là phân giác hai góc kề bù $\\widehat{MIA}$, $\\widehat{AIN}$ nên $\\widehat{OIO'} = 90^\\circ$. Trong tam giác vuông $OIO'$ với đường cao $IA$: $IA^2 = OA \\cdot O'A = 9 \\cdot 4 = 36$, $IA = 6$ cm.\nVậy $MN = 2IA = 12$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Nhận biết vị trí tương đối của hai đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; OA)$ và đường tròn tâm $I$ có đường kính $OA$.\na) Xác định vị trí tương đối của hai đường tròn.\nb) Dây $AD$ của đường tròn lớn cắt đường tròn nhỏ ở $M$. Chứng minh $AM = MD$.",
+      "correct_answer": "a) Tiếp xúc trong tại A",
+      "explanation": "Phương pháp giải:\nSo sánh $OI$ với hiệu hai bán kính; góc nội tiếp chắn nửa đường tròn $(I)$.\n\nLời giải:\na) Đặt $OA = R$ thì $(I)$ có bán kính $r = \\dfrac{R}{2}$ và $OI = \\dfrac{R}{2} = R - r$. Vậy hai đường tròn tiếp xúc trong tại $A$.\nb) $M$ thuộc đường tròn đường kính $OA$ nên $\\widehat{OMA} = 90^\\circ$, tức $OM \\perp AD$. Trong đường tròn $(O)$, bán kính vuông góc với dây $AD$ thì đi qua trung điểm của dây, nên $M$ là trung điểm $AD$: $AM = MD$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính chất đường nối tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hai đường tròn $(O)$ và $(O')$ cắt nhau tại hai điểm $A$ và $B$. Kẻ các đường kính $AOC$, $AO'D$. Chứng minh:\na) $AB \\perp BC$.\nb) $C$, $B$, $D$ thẳng hàng.\nc) $OO' \\parallel CD$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nGóc nội tiếp chắn nửa đường tròn là góc vuông; đường trung bình của tam giác.\n\nLời giải:\na) $B$ thuộc đường tròn $(O)$ đường kính $AC$ nên $\\widehat{ABC} = 90^\\circ$, tức $AB \\perp BC$.\nb) Tương tự, $B$ thuộc $(O')$ đường kính $AD$ nên $\\widehat{ABD} = 90^\\circ$. Suy ra $\\widehat{CBD} = \\widehat{ABC} + \\widehat{ABD} = 180^\\circ$, vậy $C$, $B$, $D$ thẳng hàng.\nc) $O$, $O'$ lần lượt là trung điểm của $AC$, $AD$ nên $OO'$ là đường trung bình của tam giác $ACD$, do đó $OO' \\parallel CD$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hai đường tròn $(O; 10\\text{ cm})$ và $(O'; 8\\text{ cm})$ cắt nhau tại hai điểm $A$, $B$. Biết $AB = 12$ cm, tính đoạn nối tâm $OO'$.",
+      "correct_answer": "OO' = 8 + 2√7 ≈ 13,29 cm (O, O' khác phía đối với AB) hoặc OO' = 8 − 2√7 ≈ 2,71 cm (O, O' cùng phía)",
+      "explanation": "Phương pháp giải:\nĐường nối tâm là trung trực của dây chung; gọi $H = OO' \\cap AB$, tính $OH$, $O'H$ bằng Pythagore rồi xét hai trường hợp về vị trí của $O$, $O'$ đối với $AB$.\n\nLời giải:\nGọi $H$ là giao điểm của $OO'$ và $AB$ thì $OO' \\perp AB$ tại trung điểm $H$ của $AB$, $HA = 6$ cm.\n$OH = \\sqrt{10^2 - 6^2} = 8$ cm; $O'H = \\sqrt{8^2 - 6^2} = \\sqrt{28} = 2\\sqrt{7}$ cm.\nNếu $O$ và $O'$ nằm khác phía đối với $AB$: $OO' = OH + O'H = 8 + 2\\sqrt{7} \\approx 13{,}29$ cm.\nNếu $O$ và $O'$ nằm cùng phía đối với $AB$: $OO' = OH - O'H = 8 - 2\\sqrt{7} \\approx 2{,}71$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính chất đường nối tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hai đường tròn $(O)$ và $(O')$ tiếp xúc với nhau tại điểm $A$ sao cho $O'$ nằm giữa $O$ và $A$. Gọi $M$ là một điểm bất kì nằm trên $(O)$ ($M \\ne A$), $AM$ cắt $(O')$ tại $B$. Chứng minh rằng $O'B \\parallel OM$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nHai tam giác cân $OAM$ và $O'AB$ có chung góc ở đáy $A$, suy ra hai góc đồng vị bằng nhau.\n\nLời giải:\n$OA = OM$ nên tam giác $OAM$ cân tại $O$: $\\widehat{OMA} = \\widehat{OAM}$.\n$O'A = O'B$ nên tam giác $O'AB$ cân tại $O'$: $\\widehat{O'BA} = \\widehat{O'AB}$.\nVì $O'$ nằm trên đoạn $OA$ và $B$ nằm trên đoạn $AM$ nên $\\widehat{OAM} = \\widehat{O'AB}$. Suy ra $\\widehat{OMA} = \\widehat{O'BA}$, mà hai góc này ở vị trí đồng vị nên $O'B \\parallel OM$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính chất đường nối tâm", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hai đường tròn $(O; R)$ và $(I; r)$ cắt nhau tại $M$ và $N$, trong đó $I$ thuộc đường tròn $(O)$ và $R > r$. Kẻ đường kính $IOK$ của đường tròn $(O)$.\na) Chứng minh $KM$, $KN$ là các tiếp tuyến của $(I)$.\nb) Đường vuông góc với $MI$ tại $I$ cắt $KN$ tại $J$. Chứng minh $JI = JK$.\nc) Đường vuông góc với $KM$ tại $K$ cắt $IN$ tại $P$. Chứng minh ba điểm $O$, $J$, $P$ thẳng hàng.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nGóc nội tiếp chắn nửa đường tròn $(O)$; góc so le trong với tính chất phân giác của hai tiếp tuyến cắt nhau; $J$, $P$ cùng nằm trên đường trung trực của $IK$.\n\nLời giải:\na) $M$, $N$ thuộc đường tròn $(O)$ đường kính $IK$ nên $\\widehat{IMK} = \\widehat{INK} = 90^\\circ$, tức $KM \\perp IM$ tại $M \\in (I)$ và $KN \\perp IN$ tại $N \\in (I)$. Vậy $KM$, $KN$ là các tiếp tuyến của $(I)$.\nb) $IJ \\perp MI$ và $KM \\perp MI$ nên $IJ \\parallel KM$, suy ra $\\widehat{JIK} = \\widehat{MKI}$ (so le trong). Mà $KI$ là phân giác góc $MKN$ (hai tiếp tuyến cắt nhau) nên $\\widehat{MKI} = \\widehat{IKJ}$. Do đó $\\widehat{JIK} = \\widehat{JKI}$, tam giác $JIK$ cân tại $J$: $JI = JK$.\nc) $KP \\perp KM$ và $IM \\perp KM$ nên $KP \\parallel IM$, suy ra $\\widehat{PKI} = \\widehat{KIM}$ (so le trong). $IK$ là phân giác góc $MIN$ nên $\\widehat{KIM} = \\widehat{KIP}$. Do đó tam giác $PIK$ cân tại $P$: $PI = PK$.\n$JI = JK$ và $PI = PK$ nên $J$, $P$ cùng thuộc đường trung trực của $IK$; $O$ là trung điểm $IK$ cũng thuộc đường ấy. Vậy $O$, $J$, $P$ thẳng hàng."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính chất đường nối tâm", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hai đường tròn $(O)$ và $(O')$ cắt nhau tại hai điểm $A$ và $B$. Gọi $I$ là trung điểm của $OO'$, gọi $C$ là điểm đối xứng với $A$ qua $I$. Chứng minh:\na) $BC \\perp AB$.\nb) Tứ giác $AOCO'$ là hình bình hành.\nc) Tứ giác $OO'BC$ là hình thang cân.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nĐường nối tâm vuông góc với dây chung tại trung điểm; đường trung bình của tam giác; hình thang có hai đường chéo bằng nhau là hình thang cân.\n\nLời giải:\na) Gọi $H = AB \\cap OO'$ thì $OO' \\perp AB$ tại trung điểm $H$ của $AB$. $I$ là trung điểm $AC$ nên $HI$ là đường trung bình của tam giác $ABC$, suy ra $BC \\parallel HI$, tức $BC \\parallel OO'$. Mà $OO' \\perp AB$ nên $BC \\perp AB$.\nb) Tứ giác $AOCO'$ có hai đường chéo $AC$ và $OO'$ cắt nhau tại trung điểm $I$ của mỗi đường nên là hình bình hành.\nc) $BC \\parallel OO'$ (câu a) nên $OO'BC$ là hình thang. Từ hình bình hành $AOCO'$: $O'C = OA = OB$. Hình thang $OO'BC$ có hai đường chéo $OB$ và $O'C$ bằng nhau nên là hình thang cân."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau", "question_type": "TL", "difficulty": "3",
+      "content": "Cho $\\triangle ABC$ vuông tại $A$, đường cao $AH$. Gọi $D$ là hình chiếu của $H$ trên $AB$, $E$ là hình chiếu của $H$ trên $AC$. Gọi $(O)$ là đường tròn đường kính $HB$, $(O')$ là đường tròn đường kính $HC$. Chứng minh:\na) Điểm $D$ thuộc đường tròn $(O)$, điểm $E$ thuộc đường tròn $(O')$.\nb) Hai đường tròn $(O)$ và $(O')$ tiếp xúc ngoài.\nc) $AH$ là tiếp tuyến chung của hai đường tròn đó.\nd) $AH = DE$.\ne) $DE$ là tiếp tuyến chung của hai đường tròn $(O)$ và $(O')$.\nf) Diện tích của tứ giác $DEO'O$ bằng nửa diện tích của tam giác $ABC$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nĐiểm nhìn đường kính dưới góc vuông; $OO' = OH + HO'$; $ADHE$ là hình chữ nhật; cộng góc để được $\\widehat{ODE} = 90^\\circ$; $DEO'O$ là hình thang vuông.\n\nLời giải:\na) $\\widehat{HDB} = 90^\\circ$ nên $D$ thuộc đường tròn đường kính $HB$; $\\widehat{HEC} = 90^\\circ$ nên $E$ thuộc đường tròn đường kính $HC$.\nb) $H$ nằm giữa $O$ và $O'$ nên $OO' = OH + HO'$, bằng tổng hai bán kính. Vậy $(O)$ và $(O')$ tiếp xúc ngoài tại $H$.\nc) $AH \\perp BC$ tại $H$, mà $H$ thuộc cả hai đường tròn và $OH$, $O'H$ nằm trên $BC$, nên $AH$ là tiếp tuyến chung của hai đường tròn.\nd) Tứ giác $ADHE$ có ba góc vuông nên là hình chữ nhật, do đó $DE = AH$.\ne) Gọi $K = AH \\cap DE$; trong hình chữ nhật $ADHE$: $KD = KH$ nên $\\widehat{KDH} = \\widehat{KHD}$. $OD = OH$ nên $\\widehat{ODH} = \\widehat{OHD}$. Suy ra $\\widehat{ODK} = \\widehat{ODH} + \\widehat{HDK} = \\widehat{OHD} + \\widehat{DHK} = \\widehat{OHA} = 90^\\circ$, tức $DE \\perp OD$ tại $D \\in (O)$. Tương tự $DE \\perp O'E$ tại $E \\in (O')$. Vậy $DE$ là tiếp tuyến chung của hai đường tròn.\nf) $OD \\perp DE$ và $O'E \\perp DE$ nên $DEO'O$ là hình thang vuông với hai đáy $OD = \\dfrac{HB}{2}$, $O'E = \\dfrac{HC}{2}$ và chiều cao $DE = AH$.\n$S_{DEO'O} = \\dfrac{1}{2}\\left(\\dfrac{HB}{2} + \\dfrac{HC}{2}\\right) AH = \\dfrac{1}{4} BC \\cdot AH = \\dfrac{1}{2} S_{ABC}$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính chất đường nối tâm", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O)$ đường kính $AB$, điểm $C$ nằm giữa $A$ và $O$. Vẽ đường tròn $(I)$ có đường kính $CB$.\na) Xét vị trí tương đối của hai đường tròn $(O)$ và $(I)$.\nb) Kẻ dây $DE$ của đường tròn $(O)$ vuông góc với $AC$ tại trung điểm $H$ của $AC$. Tứ giác $ADCE$ là hình gì? Vì sao?\nc) Gọi $K$ là giao điểm của $DB$ và đường tròn $(I)$. Chứng minh ba điểm $E$, $C$, $K$ thẳng hàng.\nd) Chứng minh $HK$ là tiếp tuyến của đường tròn $(I)$.",
+      "correct_answer": "a) Tiếp xúc trong tại B; b) ADCE là hình thoi",
+      "explanation": "Phương pháp giải:\n$OI = OB - IB$; tứ giác có hai đường chéo vuông góc tại trung điểm mỗi đường; qua một điểm chỉ có một đường vuông góc với đường thẳng cho trước; trung tuyến ứng với cạnh huyền.\n\nLời giải:\na) $OI = OB - IB$ (hiệu hai bán kính) nên $(O)$ và $(I)$ tiếp xúc trong tại $B$.\nb) $AB \\perp DE$ tại $H$ nên $H$ là trung điểm $DE$ (đường kính vuông góc với dây). $H$ cũng là trung điểm $AC$. Tứ giác $ADCE$ có hai đường chéo cắt nhau tại trung điểm mỗi đường và vuông góc với nhau nên là hình thoi.\nc) $\\widehat{CKB} = 90^\\circ$ (chắn nửa đường tròn $(I)$) nên $CK \\perp DB$. $\\widehat{ADB} = 90^\\circ$ (chắn nửa đường tròn $(O)$) nên $AD \\perp DB$. Vì $ADCE$ là hình thoi nên $CE \\parallel AD$, suy ra $CE \\perp DB$. Qua $C$ chỉ có một đường thẳng vuông góc với $DB$, vậy $E$, $C$, $K$ thẳng hàng.\nd) Tam giác $DKE$ vuông tại $K$ có $H$ là trung điểm $DE$ nên $HK = HD$, suy ra $\\widehat{HKD} = \\widehat{HDK}$. $IK = IB$ nên $\\widehat{IKB} = \\widehat{IBK}$.\nTam giác $DHB$ vuông tại $H$ nên $\\widehat{HDB} + \\widehat{HBD} = 90^\\circ$, do đó $\\widehat{HKD} + \\widehat{IKB} = 90^\\circ$. Suy ra $\\widehat{HKI} = 180^\\circ - 90^\\circ = 90^\\circ$, tức $HK \\perp IK$ tại $K \\in (I)$. Vậy $HK$ là tiếp tuyến của $(I)$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Nhận biết vị trí tương đối của hai đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho điểm $A$ nằm trên đường tròn $(O; 3\\text{ cm})$. Trên tiếp tuyến với đường tròn tại $A$, lấy một điểm $I$ sao cho $IA = 4$ cm. Vẽ đường tròn tâm $I$ tiếp xúc với đường tròn $(O; 3\\text{ cm})$. Tính bán kính đường tròn tâm $I$.",
+      "correct_answer": "r = 2 cm (tiếp xúc ngoài) hoặc r = 8 cm (tiếp xúc trong)",
+      "explanation": "Phương pháp giải:\nTính $OI$ bằng Pythagore rồi xét hai trường hợp tiếp xúc ngoài ($OI = R + r$) và tiếp xúc trong ($OI = |R - r|$).\n\nLời giải:\n$OA \\perp AI$ nên $OI = \\sqrt{3^2 + 4^2} = 5$ cm.\nTiếp xúc ngoài: $r = OI - R = 5 - 3 = 2$ cm.\nTiếp xúc trong (đường tròn $(I)$ chứa $(O)$): $r = OI + R = 5 + 3 = 8$ cm.\nVậy bán kính đường tròn tâm $I$ là $2$ cm hoặc $8$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính chất đường nối tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hai đường tròn $(O; R)$ và $(O'; r)$ tiếp xúc nhau tại $A$ ($A$ nằm giữa $O$ và $O'$). Một đường thẳng đi qua $A$ cắt $(O; R)$ tại $B$ và cắt $(O'; r)$ tại $C$. Chứng minh $OB \\parallel O'C$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nHai tam giác cân $OAB$, $O'AC$ có hai góc ở đỉnh $A$ đối đỉnh, suy ra hai góc so le trong bằng nhau.\n\nLời giải:\n$OA = OB$ nên $\\widehat{OBA} = \\widehat{OAB}$; $O'A = O'C$ nên $\\widehat{O'CA} = \\widehat{O'AC}$.\n$\\widehat{OAB} = \\widehat{O'AC}$ (đối đỉnh, vì $A$ nằm giữa $O$, $O'$ và giữa $B$, $C$). Suy ra $\\widehat{OBA} = \\widehat{O'CA}$, mà hai góc này ở vị trí so le trong nên $OB \\parallel O'C$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O; 9\\text{ cm})$ và $(O'; 3\\text{ cm})$ tiếp xúc ngoài tại $A$. Vẽ hai bán kính $OB$ và $O'C$ song song với nhau và thuộc cùng một nửa mặt phẳng bờ $OO'$.\na) Tính số đo của $\\widehat{BAC}$.\nb) Gọi $I$ là giao điểm của $BC$ và $OO'$. Tính độ dài $OI$.",
+      "correct_answer": "a) 90°; b) OI = 18 cm",
+      "explanation": "Phương pháp giải:\nHai góc trong cùng phía bù nhau; góc ở đáy của tam giác cân; định lí Thales với $OB \\parallel O'C$.\n\nLời giải:\na) $OB \\parallel O'C$ nên $\\widehat{BOA} + \\widehat{CO'A} = 180^\\circ$ (hai góc trong cùng phía).\nTam giác $OAB$ cân tại $O$: $\\widehat{OAB} = \\dfrac{180^\\circ - \\widehat{BOA}}{2}$; tam giác $O'AC$ cân tại $O'$: $\\widehat{O'AC} = \\dfrac{180^\\circ - \\widehat{CO'A}}{2}$.\n$\\widehat{OAB} + \\widehat{O'AC} = \\dfrac{360^\\circ - 180^\\circ}{2} = 90^\\circ$, suy ra $\\widehat{BAC} = 180^\\circ - 90^\\circ = 90^\\circ$.\nb) $OO' = 9 + 3 = 12$ cm. Vì $OB \\parallel O'C$ nên $\\dfrac{IO'}{IO} = \\dfrac{O'C}{OB} = \\dfrac{3}{9} = \\dfrac{1}{3}$. $I$ nằm ngoài đoạn $OO'$ về phía $O'$ nên $IO - IO' = OO' = 12$, tức $IO - \\dfrac{IO}{3} = 12$. Vậy $OI = 18$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính chất đường nối tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hai đường tròn $(O; R)$ và $(O'; r)$ tiếp xúc ngoài tại $A$. Một đường thẳng $d$ tiếp xúc với cả hai đường tròn trên tại $B$ và $C$ với $B \\in (O)$, $C \\in (O')$.\na) Chứng minh tam giác $ABC$ vuông.\nb) Gọi $M$ là trung điểm của $BC$. Chứng minh $MA$ là tiếp tuyến chung của hai đường tròn $(O)$ và $(O')$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nTiếp tuyến chung tại $A$ cắt $BC$ tại trung điểm; tam giác có trung tuyến bằng nửa cạnh đối là tam giác vuông; hai tam giác bằng nhau (c.c.c).\n\nLời giải:\na) Tiếp tuyến chung tại $A$ cắt $BC$ tại $M'$. Ta có $M'B = M'A$ và $M'C = M'A$ (hai tiếp tuyến cắt nhau), nên $M'A = \\dfrac{BC}{2}$ và $M'$ là trung điểm $BC$. Tam giác $ABC$ có trung tuyến $AM'$ bằng nửa cạnh $BC$ nên vuông tại $A$.\nb) $M'$ là trung điểm $BC$ nên $M' \\equiv M$, do đó $MA = MB = MC$.\n$\\triangle OMB$ và $\\triangle OMA$ có $OB = OA$, $MB = MA$, $OM$ chung nên bằng nhau, suy ra $\\widehat{OAM} = \\widehat{OBM} = 90^\\circ$: $MA \\perp OA$ tại $A \\in (O)$. Tương tự $MA \\perp O'A$ tại $A \\in (O')$. Vậy $MA$ là tiếp tuyến chung của hai đường tròn."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính chất đường nối tâm", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hai đường tròn $(O)$ và $(O')$ tiếp xúc ngoài tại $A$. Kẻ các đường kính $AOB$, $AO'C$. Gọi $DE$ là tiếp tuyến chung của hai đường tròn, $D \\in (O)$ và $E \\in (O')$. Gọi $M$ là giao điểm của $BD$ và $CE$.\na) Tính số đo của $\\widehat{DAE}$.\nb) Tứ giác $ADME$ là hình gì? Vì sao?\nc) Chứng minh $MA$ là tiếp tuyến chung của hai đường tròn.",
+      "correct_answer": "a) 90°; b) ADME là hình chữ nhật",
+      "explanation": "Phương pháp giải:\nTiếp tuyến chung tại $A$ cắt $DE$ tại trung điểm $N$ với $NA = ND = NE$; góc nội tiếp chắn nửa đường tròn; đường chéo hình chữ nhật cắt nhau tại trung điểm.\n\nLời giải:\na) Tiếp tuyến chung tại $A$ cắt $DE$ tại $N$. $ND = NA = NE$ (hai tiếp tuyến cắt nhau) nên tam giác $DAE$ có trung tuyến $AN = \\dfrac{DE}{2}$, do đó $\\widehat{DAE} = 90^\\circ$.\nb) $\\widehat{ADB} = 90^\\circ$ (chắn nửa đường tròn $(O)$) nên $\\widehat{ADM} = 90^\\circ$; $\\widehat{AEC} = 90^\\circ$ (chắn nửa đường tròn $(O')$) nên $\\widehat{AEM} = 90^\\circ$. Cùng với $\\widehat{DAE} = 90^\\circ$, tứ giác $ADME$ có ba góc vuông nên là hình chữ nhật.\nc) Trong hình chữ nhật $ADME$, hai đường chéo $AM$ và $DE$ cắt nhau tại trung điểm mỗi đường; $N$ là trung điểm $DE$ nên $N$ thuộc $AM$, tức $M$, $N$, $A$ thẳng hàng. Mà $NA$ là tiếp tuyến chung tại $A$, vậy $MA$ là tiếp tuyến chung của hai đường tròn."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+      "math_form": "Tính chất đường nối tâm", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hai đường tròn $(O; R)$ và $(O'; R')$ tiếp xúc ngoài tại $A$ ($R > R'$). Vẽ các đường kính $AOB$, $AO'C$. Dây $DE$ của đường tròn $(O)$ vuông góc với $BC$ tại trung điểm $K$ của $BC$.\na) Tứ giác $BDCE$ là hình gì? Vì sao?\nb) Gọi $I$ là giao điểm của $DA$ và đường tròn $(O')$. Chứng minh rằng ba điểm $E$, $I$, $C$ thẳng hàng.\nc) Chứng minh rằng $KI$ là tiếp tuyến của đường tròn $(O')$.",
+      "correct_answer": "a) BDCE là hình thoi",
+      "explanation": "Phương pháp giải:\nĐường kính vuông góc với dây thì đi qua trung điểm dây; góc nội tiếp chắn nửa đường tròn; trung tuyến ứng với cạnh huyền và cộng góc.\n\nLời giải:\na) $DE \\perp AB$ tại $K$ nên $K$ là trung điểm $DE$; $K$ cũng là trung điểm $BC$. Tứ giác $BDCE$ có hai đường chéo cắt nhau tại trung điểm mỗi đường và vuông góc với nhau nên là hình thoi.\nb) $\\widehat{AIC} = 90^\\circ$ (chắn nửa đường tròn $(O')$) nên $CI \\perp DA$. $\\widehat{BDA} = 90^\\circ$ (chắn nửa đường tròn $(O)$) nên $BD \\perp DA$. Vì $BDCE$ là hình thoi nên $CE \\parallel BD$, suy ra $CE \\perp DA$. Qua $C$ chỉ có một đường vuông góc với $DA$, vậy $E$, $I$, $C$ thẳng hàng.\nc) Tam giác $DIE$ vuông tại $I$ có $K$ là trung điểm $DE$ nên $KI = KE$, suy ra $\\widehat{KIE} = \\widehat{KEI}$. $O'I = O'C$ nên $\\widehat{O'IC} = \\widehat{O'CI}$.\nTam giác $KEC$ vuông tại $K$ nên $\\widehat{KEC} + \\widehat{KCE} = 90^\\circ$, tức $\\widehat{KIE} + \\widehat{O'IC} = 90^\\circ$. Suy ra $\\widehat{KIO'} = 180^\\circ - 90^\\circ = 90^\\circ$: $KI \\perp O'I$ tại $I \\in (O')$. Vậy $KI$ là tiếp tuyến của đường tròn $(O')$."
+    }
+  ]
+}

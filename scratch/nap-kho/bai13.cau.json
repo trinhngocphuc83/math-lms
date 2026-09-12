@@ -1,0 +1,161 @@
+{
+  "grade": "9",
+  "subject": "Hình học",
+  "nguon": "Vở bài tập Toán 9 tập 1 (chương trình mới), Bài 13, tr. 300–310",
+  "cau": [
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "1",
+      "content": "Cho tam giác $ABC$ vuông tại $A$. Xác định tâm và bán kính của đường tròn đi qua ba đỉnh của tam giác.",
+      "correct_answer": "Tâm là trung điểm M của BC, bán kính R = BC/2",
+      "explanation": "Phương pháp giải:\nTrong tam giác vuông, đường trung tuyến ứng với cạnh huyền bằng nửa cạnh huyền.\n\nLời giải:\nGọi $M$ là trung điểm của cạnh huyền $BC$. Vì $AM$ là trung tuyến ứng với cạnh huyền nên $MA = MB = MC = \\dfrac{BC}{2}$.\nVậy ba điểm $A$, $B$, $C$ cùng thuộc đường tròn tâm $M$ (trung điểm $BC$), bán kính $R = \\dfrac{BC}{2}$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho tam giác đều $ABC$ có cạnh bằng $a$. Tính bán kính của đường tròn đi qua ba đỉnh của tam giác $ABC$.",
+      "correct_answer": "R = a√3/3",
+      "explanation": "Phương pháp giải:\nTâm đường tròn đi qua ba đỉnh tam giác đều là trọng tâm $G$; $R = GA = \\dfrac{2}{3}$ đường cao.\n\nLời giải:\nĐường cao của tam giác đều cạnh $a$: $AH = \\dfrac{a\\sqrt{3}}{2}$.\nTrọng tâm $G$ cách đều ba đỉnh (vì các đường trung tuyến cũng là trung trực), nên $R = GA = \\dfrac{2}{3}AH = \\dfrac{2}{3} \\cdot \\dfrac{a\\sqrt{3}}{2} = \\dfrac{a\\sqrt{3}}{3}$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hình chữ nhật $ABCD$ có $AB = 12$ cm, $BC = 5$ cm. Chứng minh rằng bốn điểm $A$, $B$, $C$, $D$ cùng thuộc một đường tròn. Xác định tâm và bán kính của đường tròn đó.",
+      "correct_answer": "Tâm O là giao điểm hai đường chéo, R = 6,5 cm",
+      "explanation": "Phương pháp giải:\nHai đường chéo hình chữ nhật bằng nhau và cắt nhau tại trung điểm mỗi đường.\n\nLời giải:\nGọi $O$ là giao điểm của $AC$ và $BD$. Vì $ABCD$ là hình chữ nhật nên $OA = OB = OC = OD = \\dfrac{AC}{2}$.\nVậy $A$, $B$, $C$, $D$ cùng thuộc đường tròn tâm $O$.\n$AC = \\sqrt{AB^2 + BC^2} = \\sqrt{144 + 25} = 13$ cm nên $R = \\dfrac{13}{2} = 6{,}5$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hình thang cân $ABCD$ với $AB \\parallel CD$ và $AB > CD$. Chứng minh rằng bốn điểm $A$, $B$, $C$, $D$ cùng thuộc một đường tròn.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nTrong hình thang cân, đường trung trực của $AB$ cũng là đường trung trực của $CD$. Lấy giao điểm của nó với đường trung trực của $AD$.\n\nLời giải:\nGọi $d$ là đường trung trực của $AB$. Vì $ABCD$ là hình thang cân nên $d$ cũng là đường trung trực của $CD$.\nGọi $O$ là giao điểm của $d$ với đường trung trực của $AD$. Khi đó $OA = OB$ (vì $O \\in d$), $OC = OD$ (vì $O \\in d$) và $OA = OD$ (vì $O$ thuộc trung trực $AD$).\nSuy ra $OA = OB = OC = OD$, tức là bốn điểm $A$, $B$, $C$, $D$ cùng thuộc đường tròn tâm $O$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hình thang cân $ABCD$ (với $AD \\parallel BC$) có $AB = 12$ cm, $AC = 16$ cm, $BC = 20$ cm. Chứng minh rằng $A$, $B$, $C$, $D$ cùng thuộc một đường tròn. Tính bán kính đường tròn đó.",
+      "correct_answer": "R = 10 cm",
+      "explanation": "Phương pháp giải:\nKiểm tra $AB^2 + AC^2 = BC^2$ để có góc $BAC = 90^\\circ$; dùng tính chất hình thang cân ($AB = DC$, $AC = BD$) để có góc $BDC = 90^\\circ$; hai điểm nhìn $BC$ dưới góc vuông thì thuộc đường tròn đường kính $BC$.\n\nLời giải:\n$AB^2 + AC^2 = 144 + 256 = 400 = BC^2$ nên tam giác $ABC$ vuông tại $A$, suy ra $A$ thuộc đường tròn đường kính $BC$.\nHình thang cân $ABCD$ có $DC = AB = 12$ cm, $BD = AC = 16$ cm nên $DB^2 + DC^2 = 400 = BC^2$, suy ra tam giác $DBC$ vuông tại $D$, tức $D$ cũng thuộc đường tròn đường kính $BC$.\nVậy $A$, $B$, $C$, $D$ cùng thuộc đường tròn đường kính $BC$, bán kính $R = \\dfrac{BC}{2} = 10$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O)$ đường kính $AB$; $M$, $N$ thuộc $(O)$ sao cho $AM = BN$ và $M$, $N$ nằm trên hai nửa đường tròn khác nhau. Chứng minh $MN$ là đường kính của $(O)$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nChứng minh hai tam giác $OAM$ và $OBN$ bằng nhau để suy ra $\\widehat{AOM} = \\widehat{BON}$, rồi chỉ ra $M$, $O$, $N$ thẳng hàng.\n\nLời giải:\nXét $\\triangle OAM$ và $\\triangle OBN$ có $OA = OB$, $OM = ON$ (bán kính), $AM = BN$ (giả thiết) nên $\\triangle OAM = \\triangle OBN$ (c.c.c), suy ra $\\widehat{AOM} = \\widehat{BON}$.\nVì $M$, $N$ nằm trên hai nửa đường tròn khác nhau nên $\\widehat{MON} = \\widehat{MOB} + \\widehat{BON} = \\widehat{MOB} + \\widehat{AOM} = \\widehat{AOB} = 180^\\circ$.\nVậy $M$, $O$, $N$ thẳng hàng, tức $MN$ là đường kính của $(O)$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tứ giác $ABCD$ có $\\widehat{B} = \\widehat{D} = 90^\\circ$.\na) Chứng minh bốn điểm $A$, $B$, $C$, $D$ cùng thuộc một đường tròn.\nb) Nếu $AC = BD$ thì tứ giác $ABCD$ là hình gì?",
+      "correct_answer": "a) Cùng thuộc đường tròn đường kính AC. b) Hình chữ nhật",
+      "explanation": "Phương pháp giải:\nHai đỉnh $B$, $D$ cùng nhìn đoạn $AC$ dưới góc vuông nên thuộc đường tròn đường kính $AC$. Dây bằng đường kính thì chính là đường kính.\n\nLời giải:\na) Gọi $O$ là trung điểm $AC$. Tam giác $ABC$ vuông tại $B$ nên $OB = OA = OC$; tam giác $ADC$ vuông tại $D$ nên $OD = OA = OC$. Vậy $A$, $B$, $C$, $D$ cùng thuộc đường tròn tâm $O$ đường kính $AC$.\nb) Nếu $BD = AC$ thì dây $BD$ bằng đường kính, do đó $BD$ cũng là đường kính, tức $O$ là trung điểm $BD$. Tứ giác $ABCD$ có hai đường chéo bằng nhau và cắt nhau tại trung điểm mỗi đường nên là hình chữ nhật."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tứ giác $ABCD$ có $AC \\perp BD$. Gọi $M$, $N$, $P$, $Q$ lần lượt là trung điểm của các cạnh $AB$, $BC$, $CD$, $DA$. Chứng minh bốn điểm $M$, $N$, $P$, $Q$ cùng thuộc một đường tròn.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nDùng đường trung bình để chứng minh $MNPQ$ là hình chữ nhật; bốn đỉnh hình chữ nhật cách đều giao điểm hai đường chéo.\n\nLời giải:\n$MN$ là đường trung bình của tam giác $ABC$ nên $MN \\parallel AC$ và $MN = \\dfrac{AC}{2}$; tương tự $PQ \\parallel AC$, $PQ = \\dfrac{AC}{2}$. Suy ra $MNPQ$ là hình bình hành.\n$MQ$ là đường trung bình của tam giác $ABD$ nên $MQ \\parallel BD$. Vì $AC \\perp BD$ nên $MN \\perp MQ$, do đó $MNPQ$ là hình chữ nhật.\nGọi $O$ là giao điểm hai đường chéo của hình chữ nhật $MNPQ$ thì $OM = ON = OP = OQ$. Vậy $M$, $N$, $P$, $Q$ cùng thuộc đường tròn tâm $O$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$, các đường cao $BD$ và $CE$. Trên cạnh $AC$ lấy điểm $M$. Kẻ tia $Cx$ vuông góc với tia $BM$ tại $F$. Chứng minh rằng năm điểm $B$, $C$, $D$, $E$, $F$ cùng thuộc một đường tròn.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nCác điểm nhìn đoạn $BC$ dưới góc vuông đều thuộc đường tròn đường kính $BC$.\n\nLời giải:\nGọi $O$ là trung điểm $BC$.\nTam giác $BDC$ vuông tại $D$ nên $OD = OB = OC$. Tam giác $BEC$ vuông tại $E$ nên $OE = OB = OC$. Tam giác $BFC$ vuông tại $F$ (vì $CF \\perp BM$) nên $OF = OB = OC$.\nVậy $OB = OC = OD = OE = OF$, tức năm điểm $B$, $C$, $D$, $E$, $F$ cùng thuộc đường tròn tâm $O$ đường kính $BC$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "4",
+      "content": "Cho tam giác cân $ABC$ ($AB = AC$). Gọi $H$ là trực tâm của tam giác, $CE$ là đường cao. Gọi $D$, $M$, $N$ lần lượt là trung điểm của $BC$, $AB$, $CH$. Chứng minh rằng bốn điểm $D$, $M$, $E$, $N$ cùng nằm trên một đường tròn.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nChứng minh $\\widehat{MEN} = \\widehat{MDN} = 90^\\circ$ để suy ra $E$, $D$ thuộc đường tròn đường kính $MN$. Dùng đường trung bình: $MD \\parallel AC$, $DN \\parallel BH$.\n\nLời giải:\nVì $H$ là trực tâm và $CE$ là đường cao nên $H \\in CE$, do đó $N$ (trung điểm $CH$) nằm trên đường thẳng $CE$. Ta có $M \\in AB$ và $CE \\perp AB$ nên $\\widehat{MEN} = \\widehat{MEC} = 90^\\circ$.\n$MD$ là đường trung bình của tam giác $ABC$ nên $MD \\parallel AC$. $DN$ là đường trung bình của tam giác $CBH$ nên $DN \\parallel BH$. Mà $BH \\perp AC$ (vì $H$ là trực tâm) nên $DN \\perp MD$, tức $\\widehat{MDN} = 90^\\circ$.\nHai điểm $E$ và $D$ cùng nhìn đoạn $MN$ dưới góc vuông nên $E$, $D$ thuộc đường tròn đường kính $MN$. Vậy $D$, $M$, $E$, $N$ cùng nằm trên đường tròn đường kính $MN$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn", "question_type": "TLN", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ cân tại $A$, $BC = 12$ cm, chiều cao $AH = 4$ cm. Tính bán kính (theo cm) của đường tròn đi qua ba đỉnh của tam giác $ABC$.",
+      "correct_answer": "6,5",
+      "explanation": "Phương pháp giải:\nTâm $O$ nằm trên trục đối xứng $AH$. Đặt $R = OA = OB$ và dùng định lí Pythagore trong tam giác $OHB$ với $OH = |R - AH|$.\n\nLời giải:\n$BH = \\dfrac{BC}{2} = 6$ cm. Gọi $O$ là tâm đường tròn đi qua $A$, $B$, $C$ thì $O \\in AH$ và $OA = OB = R$, $OH = |R - 4|$.\nTam giác $OHB$ vuông tại $H$: $R^2 = (R - 4)^2 + 6^2 = R^2 - 8R + 16 + 36$, suy ra $8R = 52$, $R = 6{,}5$ cm.\n(Vì $R > AH$ nên $O$ nằm khác phía với $A$ đối với $BC$.)"
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Nhận biết đường tròn, hình tròn, vị trí của điểm so với đường tròn", "question_type": "TL", "difficulty": "1",
+      "content": "Trên mặt phẳng toạ độ $Oxy$, hãy xác định vị trí của mỗi điểm $A(-1; -1)$, $B(-1; -2)$, $C(\\sqrt{2}; \\sqrt{2})$ đối với đường tròn tâm $O$ bán kính $2$.",
+      "correct_answer": "A nằm trong, B nằm ngoài, C nằm trên đường tròn",
+      "explanation": "Phương pháp giải:\nTính khoảng cách từ $O$ đến mỗi điểm rồi so với bán kính: nhỏ hơn thì nằm trong, bằng thì nằm trên, lớn hơn thì nằm ngoài.\n\nLời giải:\n$OA = \\sqrt{1 + 1} = \\sqrt{2} < 2$ nên $A$ nằm trong đường tròn.\n$OB = \\sqrt{1 + 4} = \\sqrt{5} > 2$ nên $B$ nằm ngoài đường tròn.\n$OC = \\sqrt{2 + 2} = 2$ nên $C$ nằm trên đường tròn."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Tính chất đối xứng của đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O)$ đường kính $AB$; $M$, $N$ thuộc $(O)$ sao cho $AM = BN$ và $M$, $N$ nằm trên hai nửa đường tròn khác nhau. Chứng minh $M$ và $N$ đối xứng nhau qua $O$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\n$M$, $N$ đối xứng qua $O$ khi $O$ là trung điểm $MN$; chứng minh $M$, $O$, $N$ thẳng hàng nhờ hai tam giác bằng nhau.\n\nLời giải:\n$\\triangle OAM = \\triangle OBN$ (c.c.c) vì $OA = OB$, $OM = ON$, $AM = BN$; suy ra $\\widehat{AOM} = \\widehat{BON}$.\nDo $M$, $N$ ở hai nửa đường tròn khác nhau: $\\widehat{MON} = \\widehat{MOB} + \\widehat{BON} = \\widehat{MOB} + \\widehat{AOM} = 180^\\circ$, nên $M$, $O$, $N$ thẳng hàng.\nLại có $OM = ON$ nên $O$ là trung điểm $MN$. Vậy $M$ và $N$ đối xứng nhau qua tâm $O$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Tính chất đối xứng của đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O)$ với hai đường kính $AC$ và $BD$ vuông góc với nhau. Chứng minh rằng $ABCD$ là hình vuông.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nTứ giác có hai đường chéo bằng nhau, vuông góc và cắt nhau tại trung điểm mỗi đường là hình vuông.\n\nLời giải:\n$AC$ và $BD$ là hai đường kính nên $AC = BD = 2R$ và cắt nhau tại trung điểm $O$ của mỗi đường. Do đó $ABCD$ là hình bình hành có hai đường chéo bằng nhau, tức là hình chữ nhật.\nLại có $AC \\perp BD$ nên hình chữ nhật $ABCD$ có hai đường chéo vuông góc, suy ra $ABCD$ là hình vuông."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn", "question_type": "TL", "difficulty": "4",
+      "content": "Cho đường tròn $(O; R)$ đường kính $BC$. Điểm $A$ di động trên $(O)$; gọi $P$, $Q$ theo thứ tự là trung điểm của $AB$ và $AC$.\na) Chứng minh $PQ$ có độ dài không đổi khi $A$ di động trên $(O)$.\nb) Tìm quỹ tích trung điểm $M$ của $PQ$.",
+      "correct_answer": "a) PQ = R. b) M chạy trên đường tròn tâm O bán kính R/2 (trừ hai điểm thuộc BC)",
+      "explanation": "Phương pháp giải:\na) $PQ$ là đường trung bình của tam giác $ABC$. b) Chứng minh $M$ là trung điểm của $OA$ để có $OM = \\dfrac{R}{2}$.\n\nLời giải:\na) $PQ$ là đường trung bình của tam giác $ABC$ nên $PQ = \\dfrac{BC}{2} = R$, không đổi.\nb) Gọi $K$ là giao điểm của $PQ$ với $AO$. Trong tam giác $ABO$, $P$ là trung điểm $AB$ và $PK \\parallel BO$ nên $K$ là trung điểm $AO$ và $PK = \\dfrac{BO}{2}$; tương tự trong tam giác $ACO$: $KQ = \\dfrac{OC}{2}$. Vì $BO = OC$ nên $PK = KQ$, tức $K$ chính là trung điểm $M$ của $PQ$. Do đó $M$ là trung điểm của $OA$, suy ra $OM = \\dfrac{OA}{2} = \\dfrac{R}{2}$.\nVậy khi $A$ di động trên $(O)$, điểm $M$ chạy trên đường tròn tâm $O$ bán kính $\\dfrac{R}{2}$, trừ hai điểm nằm trên đường kính $BC$ (ứng với $A$ trùng $B$ hoặc $C$)."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ cân tại $A$ có ba đỉnh nằm trên đường tròn $(O)$. Đường cao $AH$ cắt $(O)$ ở $D$. Biết $BC = 24$ cm, $AC = 20$ cm. Tính chiều cao $AH$ và bán kính đường tròn $(O)$.",
+      "correct_answer": "AH = 16 cm; R = 12,5 cm",
+      "explanation": "Phương pháp giải:\n$AH$ là trục đối xứng nên đi qua tâm $O$, do đó $AD$ là đường kính và tam giác $ABD$ vuông tại $B$; dùng hệ thức $AB^2 = AH \\cdot AD$.\n\nLời giải:\n$H$ là trung điểm $BC$ nên $BH = 12$ cm; $AH = \\sqrt{AC^2 - CH^2} = \\sqrt{400 - 144} = 16$ cm.\nVì tam giác cân nên đường cao $AH$ là trục đối xứng của đường tròn, đi qua $O$; do đó $AD$ là đường kính và $\\widehat{ABD} = 90^\\circ$.\nTrong tam giác vuông $ABD$ với đường cao $BH$: $AB^2 = AH \\cdot AD$, suy ra $AD = \\dfrac{400}{16} = 25$ cm. Vậy $R = \\dfrac{AD}{2} = 12{,}5$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hình chữ nhật $ABCD$, vẽ tam giác $AEC$ vuông tại $E$. Chứng minh năm điểm $A$, $B$, $C$, $D$, $E$ cùng thuộc một đường tròn.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nCác điểm $B$, $D$, $E$ đều nhìn $AC$ dưới góc vuông nên thuộc đường tròn đường kính $AC$.\n\nLời giải:\nGọi $O$ là trung điểm $AC$. Vì $ABCD$ là hình chữ nhật nên $\\widehat{ABC} = \\widehat{ADC} = 90^\\circ$, suy ra $OB = OD = OA = OC$.\nTam giác $AEC$ vuông tại $E$ nên $OE = OA = OC$.\nVậy $OA = OB = OC = OD = OE$: năm điểm cùng thuộc đường tròn tâm $O$ đường kính $AC$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ vuông tại $A$, đường cao $AH$. Từ $M$ là điểm bất kì trên cạnh $BC$ kẻ $MD \\perp AB$, $ME \\perp AC$. Chứng minh năm điểm $A$, $D$, $M$, $H$, $E$ cùng nằm trên một đường tròn.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\n$ADME$ là hình chữ nhật nên $A$, $D$, $M$, $E$ thuộc đường tròn đường kính $AM$; $H$ nhìn $AM$ dưới góc vuông.\n\nLời giải:\nTứ giác $ADME$ có $\\widehat{DAE} = \\widehat{ADM} = \\widehat{AEM} = 90^\\circ$ nên là hình chữ nhật; gọi $O$ là giao điểm hai đường chéo thì $OA = OD = OM = OE = \\dfrac{AM}{2}$.\nTam giác $AHM$ vuông tại $H$ nên $OH = \\dfrac{AM}{2}$.\nVậy năm điểm $A$, $D$, $M$, $H$, $E$ cùng nằm trên đường tròn tâm $O$ đường kính $AM$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho tam giác $ABC$ có $AQ$, $BK$, $CI$ là ba đường cao và $H$ là trực tâm.\na) Chứng minh $A$, $B$, $Q$, $K$ cùng thuộc một đường tròn. Xác định tâm của đường tròn đó.\nb) Chứng minh $A$, $I$, $H$, $K$ cùng thuộc một đường tròn. Xác định tâm của đường tròn đó.",
+      "correct_answer": "a) Đường tròn đường kính AB, tâm là trung điểm AB. b) Đường tròn đường kính AH, tâm là trung điểm AH",
+      "explanation": "Phương pháp giải:\nĐiểm nhìn một đoạn thẳng dưới góc vuông thì thuộc đường tròn nhận đoạn thẳng đó làm đường kính.\n\nLời giải:\na) $\\widehat{AQB} = \\widehat{AKB} = 90^\\circ$ nên $Q$, $K$ thuộc đường tròn đường kính $AB$. Vậy $A$, $B$, $Q$, $K$ cùng thuộc đường tròn tâm là trung điểm của $AB$.\nb) $\\widehat{AIH} = \\widehat{AKH} = 90^\\circ$ (vì $CI \\perp AB$, $BK \\perp AC$) nên $I$, $K$ thuộc đường tròn đường kính $AH$. Vậy $A$, $I$, $H$, $K$ cùng thuộc đường tròn tâm là trung điểm của $AH$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Chứng minh rằng bốn trung điểm của bốn cạnh hình thoi cùng thuộc một đường tròn.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nTứ giác có đỉnh là trung điểm các cạnh của hình thoi là hình chữ nhật (đường trung bình song song với đường chéo, hai đường chéo hình thoi vuông góc).\n\nLời giải:\nGọi $M$, $N$, $P$, $Q$ lần lượt là trung điểm của $AB$, $BC$, $CD$, $DA$ của hình thoi $ABCD$.\n$MN \\parallel AC \\parallel PQ$ và $MN = PQ = \\dfrac{AC}{2}$ nên $MNPQ$ là hình bình hành. $MQ \\parallel BD$ mà $AC \\perp BD$ nên $MN \\perp MQ$, suy ra $MNPQ$ là hình chữ nhật.\nGiao điểm $O$ hai đường chéo của hình chữ nhật cách đều bốn đỉnh, nên $M$, $N$, $P$, $Q$ cùng thuộc đường tròn tâm $O$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hai đường tròn $(A; 6\\text{ cm})$ và $(B; 4\\text{ cm})$ cắt nhau tại $C$ và $D$, $AB = 8$ cm. Gọi $I$, $K$ lần lượt là giao điểm của hai đường tròn đã cho với đoạn thẳng $AB$.\na) Tính độ dài của các đoạn thẳng $CA$, $CB$, $DA$ và $DB$.\nb) Điểm $I$ có phải là trung điểm của đoạn thẳng $AB$ không?\nc) Tính độ dài của đoạn thẳng $IK$.",
+      "correct_answer": "a) CA = DA = 6 cm; CB = DB = 4 cm. b) Không. c) IK = 2 cm",
+      "explanation": "Phương pháp giải:\nĐiểm thuộc đường tròn cách tâm một khoảng bằng bán kính.\n\nLời giải:\na) $C$, $D$ thuộc $(A; 6)$ nên $CA = DA = 6$ cm; $C$, $D$ thuộc $(B; 4)$ nên $CB = DB = 4$ cm.\nb) $I$ thuộc $(A; 6)$ và nằm trên đoạn $AB$ nên $AI = 6$ cm $\\ne \\dfrac{AB}{2} = 4$ cm. Vậy $I$ không phải trung điểm $AB$.\nc) $K$ thuộc $(B; 4)$ nên $BK = 4$ cm, suy ra $AK = 8 - 4 = 4$ cm. $IK = AI - AK = 6 - 4 = 2$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 13. Mở đầu về đường tròn",
+      "math_form": "Nhận biết đường tròn, hình tròn, vị trí của điểm so với đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hình vuông $ABCD$, $O$ là giao điểm của hai đường chéo, $OA = \\sqrt{2}$ cm. Vẽ đường tròn tâm $A$ bán kính $2$ cm. Hãy xác định vị trí của năm điểm $A$, $B$, $C$, $D$, $O$ so với đường tròn.",
+      "correct_answer": "A, O nằm trong; B, D nằm trên; C nằm ngoài đường tròn",
+      "explanation": "Phương pháp giải:\nTính khoảng cách từ $A$ đến từng điểm rồi so với bán kính $2$ cm.\n\nLời giải:\n$AC = 2OA = 2\\sqrt{2}$ cm; cạnh hình vuông $AB = \\dfrac{AC}{\\sqrt{2}} = 2$ cm.\n$AA = 0 < 2$ và $AO = \\sqrt{2} < 2$ nên $A$, $O$ nằm trong đường tròn.\n$AB = AD = 2$ nên $B$, $D$ nằm trên đường tròn.\n$AC = 2\\sqrt{2} > 2$ nên $C$ nằm ngoài đường tròn."
+    }
+  ]
+}

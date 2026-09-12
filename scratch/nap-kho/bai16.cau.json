@@ -1,0 +1,182 @@
+{
+  "grade": "9",
+  "subject": "Hình học",
+  "nguon": "Vở bài tập Toán 9 tập 1 (chương trình mới), Bài 16, tr. 348–365",
+  "cau": [
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn", "question_type": "TL", "difficulty": "1",
+      "content": "Cho đường thẳng $a$ và một điểm $O$ cách $a$ là $3$ cm. Dựng $(O; 5\\text{ cm})$.\na) Xét vị trí tương đối của $a$ và đường tròn $(O)$.\nb) Gọi $B$ và $C$ là các giao điểm của đường thẳng $a$ và $(O)$. Tính độ dài $BC$.",
+      "correct_answer": "a) Cắt nhau. b) BC = 8 cm",
+      "explanation": "Phương pháp giải:\nSo sánh khoảng cách $d$ từ tâm đến đường thẳng với bán kính $R$; dây $BC$ tính bằng định lí Pythagore với $H$ là chân đường vuông góc hạ từ $O$.\n\nLời giải:\na) $d = 3$ cm $< R = 5$ cm nên đường thẳng $a$ cắt đường tròn $(O)$ tại hai điểm.\nb) Gọi $H$ là hình chiếu của $O$ trên $a$ thì $OH = 3$ cm, $H$ là trung điểm $BC$.\n$HB = \\sqrt{OB^2 - OH^2} = \\sqrt{25 - 9} = 4$ cm. Vậy $BC = 2HB = 8$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho hình thang vuông $ABCD$ ($\\widehat{A} = \\widehat{D} = 90^\\circ$), $AB = 4$ cm, $BC = 13$ cm và $CD = 9$ cm. Tính $AD$ và chứng minh rằng đường thẳng $AD$ tiếp xúc với đường tròn có đường kính là $BC$.",
+      "correct_answer": "AD = 12 cm",
+      "explanation": "Phương pháp giải:\nKẻ $BH \\perp CD$ để tính $AD = BH$. Đường tròn đường kính $BC$ có tâm $I$ là trung điểm $BC$; khoảng cách từ $I$ đến $AD$ là đường trung bình của hình thang.\n\nLời giải:\nKẻ $BH \\perp CD$ ($H \\in CD$). Tứ giác $ABHD$ là hình chữ nhật nên $DH = AB = 4$ cm, $HC = 9 - 4 = 5$ cm và $AD = BH$.\n$BH = \\sqrt{BC^2 - HC^2} = \\sqrt{169 - 25} = 12$ cm. Vậy $AD = 12$ cm.\nGọi $I$ là trung điểm $BC$, $K$ là trung điểm $AD$. $IK$ là đường trung bình của hình thang nên $IK \\parallel AB$, suy ra $IK \\perp AD$ và $IK = \\dfrac{AB + CD}{2} = \\dfrac{4 + 9}{2} = 6{,}5$ cm $= \\dfrac{BC}{2}$.\nKhoảng cách từ tâm $I$ đến $AD$ bằng bán kính nên $AD$ tiếp xúc với đường tròn đường kính $BC$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Chứng minh, tính toán với tiếp tuyến", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O; R)$ và dây $AB = \\dfrac{8R}{5}$. Vẽ một tiếp tuyến song song với $AB$, cắt các tia $OA$, $OB$ theo thứ tự tại $M$ và $N$. Tính diện tích tam giác $OMN$.",
+      "correct_answer": "S = 4R²/3",
+      "explanation": "Phương pháp giải:\nTính khoảng cách $OH$ từ $O$ đến $AB$; tam giác $OMN$ đồng dạng với tam giác $OAB$ với tỉ số bằng tỉ số hai đường cao $\\dfrac{OK}{OH}$ ($K$ là tiếp điểm).\n\nLời giải:\nGọi $H$ là trung điểm $AB$ thì $OH \\perp AB$, $HA = \\dfrac{4R}{5}$, $OH = \\sqrt{R^2 - \\dfrac{16R^2}{25}} = \\dfrac{3R}{5}$.\n$S_{OAB} = \\dfrac{1}{2} \\cdot AB \\cdot OH = \\dfrac{1}{2} \\cdot \\dfrac{8R}{5} \\cdot \\dfrac{3R}{5} = \\dfrac{12R^2}{25}$.\nGọi $K$ là tiếp điểm; $OK \\perp MN$ và $OK = R$. Vì $MN \\parallel AB$ nên $\\triangle OMN \\backsim \\triangle OAB$ với tỉ số $k = \\dfrac{OK}{OH} = \\dfrac{R}{3R/5} = \\dfrac{5}{3}$.\n$S_{OMN} = k^2 \\cdot S_{OAB} = \\dfrac{25}{9} \\cdot \\dfrac{12R^2}{25} = \\dfrac{4R^2}{3}$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TLN", "difficulty": "2",
+      "content": "Hai tiếp tuyến tại $B$ và $C$ của nửa đường tròn $(O; R)$ cắt nhau tại $A$. Biết $OA = R\\sqrt{2}$. Tính số đo (độ) của cung nhỏ $BC$.",
+      "correct_answer": "90",
+      "explanation": "Phương pháp giải:\nTam giác $OBA$ vuông tại $B$, dùng $\\cos\\widehat{BOA} = \\dfrac{OB}{OA}$; $OA$ là phân giác góc $BOC$.\n\nLời giải:\n$\\cos\\widehat{BOA} = \\dfrac{OB}{OA} = \\dfrac{R}{R\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}$ nên $\\widehat{BOA} = 45^\\circ$.\nVì $OA$ là tia phân giác của góc $BOC$ nên $\\widehat{BOC} = 2 \\cdot 45^\\circ = 90^\\circ$.\nVậy số đo cung nhỏ $BC$ là $90^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến", "question_type": "TL", "difficulty": "2",
+      "content": "Cho tam giác $ABC$ có $AB = 3$, $AC = 4$, $BC = 5$. Vẽ đường tròn $(B; BA)$. Chứng minh rằng $AC$ là tiếp tuyến của đường tròn.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nChứng minh tam giác $ABC$ vuông tại $A$ (Pythagore đảo), suy ra $AC \\perp BA$ tại $A$ thuộc đường tròn.\n\nLời giải:\n$AB^2 + AC^2 = 9 + 16 = 25 = BC^2$ nên tam giác $ABC$ vuông tại $A$, tức $AC \\perp AB$.\n$A$ thuộc đường tròn $(B; BA)$ và $AC$ vuông góc với bán kính $BA$ tại $A$, vậy $AC$ là tiếp tuyến của đường tròn $(B; BA)$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O)$, điểm $A$ nằm bên ngoài đường tròn. Gọi $M$ là trung điểm của $OA$. Vẽ đường tròn $(M; MO)$, nó cắt đường tròn $(O)$ tại hai điểm $B$ và $C$. Chứng minh rằng $AB$ và $AC$ là các tiếp tuyến của đường tròn $(O)$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\n$OA$ là đường kính của $(M)$ nên góc $OBA$, $OCA$ là góc nội tiếp chắn nửa đường tròn.\n\nLời giải:\n$M$ là trung điểm $OA$ và $MO = MB$ nên $B$ thuộc đường tròn đường kính $OA$, suy ra $\\widehat{OBA} = 90^\\circ$, tức $AB \\perp OB$ tại $B$.\n$B$ thuộc $(O)$ và $AB$ vuông góc với bán kính $OB$ tại $B$ nên $AB$ là tiếp tuyến của $(O)$.\nChứng minh tương tự, $\\widehat{OCA} = 90^\\circ$ nên $AC$ là tiếp tuyến của $(O)$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O; R)$ đường kính $AB$. Vẽ dây $AC$ sao cho $\\widehat{CAB} = 30^\\circ$. Trên tia đối của tia $BA$ lấy điểm $M$ sao cho $BM = R$. Chứng minh rằng:\na) $MC$ là tiếp tuyến của đường tròn $(O)$.\nb) $MC^2 = 3R^2$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nGóc $ACB = 90^\\circ$ (chắn nửa đường tròn); tam giác $OBC$ đều; tam giác $BCM$ cân tại $B$; cộng góc để được $\\widehat{OCM} = 90^\\circ$.\n\nLời giải:\na) $\\widehat{ACB} = 90^\\circ$ nên $\\widehat{CBA} = 90^\\circ - 30^\\circ = 60^\\circ$. Tam giác $OBC$ cân tại $O$ có $\\widehat{OBC} = 60^\\circ$ nên là tam giác đều: $BC = R$, $\\widehat{OCB} = 60^\\circ$.\nTam giác $BCM$ có $BC = BM = R$ nên cân tại $B$; $\\widehat{CBM} = 180^\\circ - 60^\\circ = 120^\\circ$ nên $\\widehat{BCM} = 30^\\circ$.\n$\\widehat{OCM} = \\widehat{OCB} + \\widehat{BCM} = 60^\\circ + 30^\\circ = 90^\\circ$, tức $MC \\perp OC$ tại $C \\in (O)$. Vậy $MC$ là tiếp tuyến của $(O)$.\nb) $OM = OB + BM = 2R$. Tam giác $OCM$ vuông tại $C$: $MC^2 = OM^2 - OC^2 = 4R^2 - R^2 = 3R^2$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$, vẽ các đường cao $BM$, $CN$ cắt nhau tại $H$.\na) Chứng minh rằng $A$, $M$, $H$, $N$ cùng nằm trên một đường tròn tâm $O$.\nb) Gọi $I$ là trung điểm của $BC$. Chứng minh $IM$ là tiếp tuyến của đường tròn $(O)$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\na) $M$, $N$ nhìn $AH$ dưới góc vuông. b) Dùng các tam giác cân $OMH$, $IMC$ để chứng minh $\\widehat{OMI} = 90^\\circ$.\n\nLời giải:\na) $\\widehat{AMH} = \\widehat{ANH} = 90^\\circ$ nên $M$, $N$ thuộc đường tròn đường kính $AH$. Vậy $A$, $M$, $H$, $N$ cùng nằm trên đường tròn tâm $O$ là trung điểm $AH$.\nb) Gọi $D$ là giao điểm của $AH$ với $BC$ thì $AD \\perp BC$.\n$OM = OH$ nên $\\widehat{OMH} = \\widehat{OHM} = \\widehat{DHB}$ (đối đỉnh) $= 90^\\circ - \\widehat{HBD}$.\nTam giác $BMC$ vuông tại $M$ có $I$ là trung điểm $BC$ nên $IM = IC$, suy ra $\\widehat{IMC} = \\widehat{ICM} = 90^\\circ - \\widehat{MBC}$.\nDo đó $\\widehat{OMH} = \\widehat{IMC}$. Suy ra $\\widehat{OMI} = \\widehat{OMH} + \\widehat{HMI} = \\widehat{IMC} + \\widehat{BMI} = \\widehat{BMC} = 90^\\circ$.\n$IM \\perp OM$ tại $M \\in (O)$ nên $IM$ là tiếp tuyến của $(O)$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn tâm $O$, bán kính $R$. Từ điểm $A$ nằm ngoài đường tròn vẽ tiếp tuyến $AB$, $AC$ với đường tròn tâm $O$ ($B$, $C$ là tiếp điểm).\na) Chứng minh $AO$ là đường trung trực của $BC$.\nb) Kẻ đường kính $CD$ của $(O)$. Chứng minh $BD$ song song với $AO$.\nc) Kẻ $OM$ vuông góc với $OB$ ($M$ thuộc $AC$). Chứng minh $MO = MA$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nTính chất hai tiếp tuyến cắt nhau: $AB = AC$, $AO$ là phân giác góc $BAC$; góc nội tiếp chắn nửa đường tròn; góc so le trong.\n\nLời giải:\na) $AB = AC$ (hai tiếp tuyến cắt nhau) và $OB = OC = R$ nên $A$, $O$ cùng thuộc đường trung trực của $BC$. Vậy $AO$ là đường trung trực của $BC$.\nb) $\\widehat{CBD} = 90^\\circ$ (góc nội tiếp chắn nửa đường tròn) nên $BD \\perp BC$. Mà $AO \\perp BC$ (câu a) nên $BD \\parallel AO$.\nc) $OM \\perp OB$ và $AB \\perp OB$ nên $OM \\parallel AB$, suy ra $\\widehat{MOA} = \\widehat{OAB}$ (so le trong). Mà $\\widehat{OAB} = \\widehat{OAC}$ ($AO$ là phân giác góc $BAC$) nên $\\widehat{MOA} = \\widehat{MAO}$. Tam giác $MOA$ cân tại $M$, do đó $MO = MA$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TL", "difficulty": "3",
+      "content": "Từ điểm $A$ nằm ngoài $(O; R)$ kẻ hai tiếp tuyến $AB$, $AC$ (với $B$, $C$ là các tiếp điểm). Kẻ $BE$ vuông góc với $AC$, $CF$ vuông góc với $AB$ ($E \\in AC$; $F \\in AB$), $BE$ và $CF$ cắt nhau tại $H$.\na) Chứng minh tứ giác $BCOH$ là hình thoi.\nb) Chứng minh ba điểm $A$, $H$, $O$ thẳng hàng.\nc) Tìm vị trí của điểm $A$ để $H$ thuộc $(O)$.",
+      "correct_answer": "c) OA = 2R",
+      "explanation": "Phương pháp giải:\nHai đường thẳng cùng vuông góc với một đường thẳng thì song song; hình bình hành có hai cạnh kề bằng nhau là hình thoi; $H$ là trực tâm tam giác $ABC$.\n\nLời giải:\na) $OB \\perp AB$ và $CF \\perp AB$ nên $OB \\parallel CH$; $OC \\perp AC$ và $BE \\perp AC$ nên $OC \\parallel BH$. Tứ giác $OBHC$ là hình bình hành, lại có $OB = OC = R$ nên là hình thoi.\nb) $H$ là giao của hai đường cao $BE$, $CF$ nên $H$ là trực tâm tam giác $ABC$, suy ra $AH \\perp BC$. Mặt khác $OA \\perp BC$ (tính chất hai tiếp tuyến cắt nhau). Qua $A$ chỉ có một đường vuông góc với $BC$ nên $A$, $H$, $O$ thẳng hàng.\nc) $H \\in (O) \\Leftrightarrow OH = R = OB = BH$, tức tam giác $OBH$ đều $\\Leftrightarrow \\widehat{BOH} = 60^\\circ \\Leftrightarrow \\widehat{BOA} = 60^\\circ$.\nKhi đó $OA = \\dfrac{OB}{\\cos 60^\\circ} = 2R$. Vậy $A$ cách $O$ một khoảng bằng $2R$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Chứng minh, tính toán với tiếp tuyến", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hình thang vuông $ABCD$ ($\\widehat{A} = \\widehat{D} = 90^\\circ$) ngoại tiếp đường tròn $(O)$, $OB = 15$ cm và $OC = 20$ cm.\na) Chứng minh rằng $\\triangle BOC$ vuông.\nb) Tính bán kính $R$ của đường tròn $(O)$.\nc) Tính độ dài các cạnh $AB$ và $CD$.",
+      "correct_answer": "b) R = 12 cm; c) AB = 21 cm, CD = 28 cm",
+      "explanation": "Phương pháp giải:\n$OB$, $OC$ là phân giác hai góc trong cùng phía $B$, $C$; hệ thức lượng trong tam giác vuông $BOC$ với đường cao $OH$ ($H$ là tiếp điểm trên $BC$); hai tiếp tuyến cắt nhau bằng nhau.\n\nLời giải:\na) $OB$, $OC$ lần lượt là phân giác của $\\widehat{ABC}$ và $\\widehat{BCD}$. Vì $AB \\parallel CD$ nên $\\widehat{ABC} + \\widehat{BCD} = 180^\\circ$, suy ra $\\widehat{OBC} + \\widehat{OCB} = 90^\\circ$, tức $\\widehat{BOC} = 90^\\circ$.\nb) $BC = \\sqrt{15^2 + 20^2} = 25$ cm. Gọi $H$ là tiếp điểm trên $BC$ thì $OH \\perp BC$ và $R = OH = \\dfrac{OB \\cdot OC}{BC} = \\dfrac{15 \\cdot 20}{25} = 12$ cm.\nc) $BH = \\dfrac{OB^2}{BC} = \\dfrac{225}{25} = 9$ cm, $CH = \\dfrac{OC^2}{BC} = \\dfrac{400}{25} = 16$ cm.\nGọi $E$, $G$ là tiếp điểm trên $AB$, $CD$. Tứ giác $AEOF$ ($F$ là tiếp điểm trên $AD$) là hình vuông cạnh $R$ nên $AE = 12$ cm; $BE = BH = 9$ cm. Vậy $AB = 21$ cm.\nTương tự $DG = 12$ cm, $CG = CH = 16$ cm nên $CD = 28$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Chứng minh, tính toán với tiếp tuyến", "question_type": "TL", "difficulty": "3",
+      "content": "Cho hình thang cân $ABCD$ ($AB \\parallel CD$) ngoại tiếp đường tròn $(O; r)$ và $CD = 4AB$.\na) Gọi $H$ là hình chiếu của $O$ lên $AD$. Chứng minh rằng $HD = 4HA$.\nb) Tính $AB$ và $CD$ theo $r$.",
+      "correct_answer": "b) AB = r, CD = 4r",
+      "explanation": "Phương pháp giải:\nHình thang cân nên tiếp điểm trên $AB$, $CD$ là trung điểm của chúng; hai tiếp tuyến cắt nhau bằng nhau; tam giác $AOD$ vuông tại $O$ với đường cao $OH$.\n\nLời giải:\na) $H$ là tiếp điểm trên $AD$. Gọi $E$, $G$ là tiếp điểm trên $AB$, $CD$; do hình thang cân nên $E$, $G$ là trung điểm của $AB$, $CD$.\n$HA = EA = \\dfrac{AB}{2}$, $HD = GD = \\dfrac{CD}{2} = \\dfrac{4AB}{2}$. Vậy $HD = 4HA$.\nb) $OA$, $OD$ là phân giác hai góc trong cùng phía nên $\\widehat{AOD} = 90^\\circ$. Trong tam giác vuông $AOD$ với đường cao $OH$: $OH^2 = HA \\cdot HD \\Rightarrow r^2 = HA \\cdot 4HA \\Rightarrow HA = \\dfrac{r}{2}$.\nSuy ra $AB = 2HA = r$ và $CD = 4AB = 4r$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O; R)$. Từ một điểm $M$ nằm ngoài đường tròn $(O)$, vẽ hai tiếp tuyến $MA$, $MB$ với đường tròn ($A$, $B$ là tiếp điểm) sao cho $\\widehat{AMO} = 30^\\circ$.\na) Chứng minh $MO = 2R$.\nb) Tính $AB$ theo $R$.\nc) Tính $S_{AMB}$ theo $R$.",
+      "correct_answer": "b) AB = R√3; c) S = 3√3R²/4",
+      "explanation": "Phương pháp giải:\nTam giác $OAM$ vuông tại $A$; $MO$ là trung trực của $AB$; tam giác $AMB$ cân có góc ở đỉnh $60^\\circ$ nên đều.\n\nLời giải:\na) Trong tam giác vuông $OAM$: $\\sin\\widehat{AMO} = \\dfrac{OA}{OM} \\Rightarrow OM = \\dfrac{R}{\\sin 30^\\circ} = 2R$.\nb) Gọi $H = MO \\cap AB$ thì $OM \\perp AB$ tại trung điểm $H$. $\\widehat{AOM} = 60^\\circ$ nên $AH = OA \\sin 60^\\circ = \\dfrac{R\\sqrt{3}}{2}$. Vậy $AB = 2AH = R\\sqrt{3}$.\nc) $\\widehat{AMB} = 2\\widehat{AMO} = 60^\\circ$ và $MA = MB$ nên tam giác $AMB$ đều cạnh $R\\sqrt{3}$.\n$S_{AMB} = \\dfrac{(R\\sqrt{3})^2\\sqrt{3}}{4} = \\dfrac{3\\sqrt{3}R^2}{4}$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O)$ đường kính $AB = 2R$. Trên cùng một phía của đường thẳng $AB$ vẽ hai tiếp tuyến $Ax$, $By$. Điểm $M$ nằm trên $(O)$ sao cho tiếp tuyến tại $M$ cắt $Ax$, $By$ lượt tại $C$, $D$. Đường thẳng $AD$ cắt $BC$ tại $N$.\na) Chứng minh $A$, $C$, $M$, $O$ thuộc một đường tròn.\nb) Chứng minh $OC$ song song $BM$.\nc) Tìm vị trí của $M$ để $S_{ABCD}$ nhỏ nhất.\nd) Chứng minh $MN$ và $AB$ vuông góc với nhau.",
+      "correct_answer": "c) M là điểm chính giữa cung AB, S nhỏ nhất bằng 2R²",
+      "explanation": "Phương pháp giải:\nHai điểm nhìn $OC$ dưới góc vuông; $OC$ là trung trực của $AM$; $S_{ABCD} = CD \\cdot R$ với $CD \\ge AB$; định lí Thales đảo trong tam giác $CBD$.\n\nLời giải:\na) $\\widehat{CAO} = \\widehat{CMO} = 90^\\circ$ nên $A$, $M$ thuộc đường tròn đường kính $CO$. Vậy $A$, $C$, $M$, $O$ cùng thuộc một đường tròn.\nb) $CA = CM$, $OA = OM$ nên $OC$ là trung trực của $AM$, do đó $OC \\perp AM$. Lại có $\\widehat{AMB} = 90^\\circ$ nên $BM \\perp AM$. Suy ra $OC \\parallel BM$.\nc) $ABDC$ là hình thang vuông có $AC + BD = CM + MD = CD$. $S_{ABCD} = \\dfrac{(AC + BD) \\cdot AB}{2} = CD \\cdot R \\ge AB \\cdot R = 2R^2$ (vì $CD \\ge AB$, khoảng cách giữa hai đường thẳng song song $Ax$, $By$).\nDấu bằng khi $CD \\parallel AB$, tức $OM \\perp AB$: $M$ là điểm chính giữa cung $AB$. Khi đó $S_{ABCD}$ nhỏ nhất bằng $2R^2$.\nd) $AC \\parallel BD$ nên $\\dfrac{NC}{NB} = \\dfrac{AC}{BD} = \\dfrac{MC}{MD}$. Theo định lí Thales đảo trong tam giác $CBD$: $MN \\parallel BD$. Mà $BD \\perp AB$ nên $MN \\perp AB$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TL", "difficulty": "3",
+      "content": "Cho $SA$ và $SB$ là hai tiếp tuyến cắt nhau của đường tròn $(O)$ ($A$ và $B$ là hai tiếp điểm). Gọi $M$ là một điểm tùy ý trên cung nhỏ $AB$. Tiếp tuyến của $(O)$ tại $M$ cắt $SA$ tại $E$ và cắt $SB$ tại $F$.\na) Chứng minh rằng chu vi của tam giác $SEF$ bằng $SA + SB$.\nb) Giả sử $M$ là giao điểm của đoạn $SO$ với đường tròn $(O)$. Chứng minh rằng $SE = SF$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nHai tiếp tuyến cắt nhau: $EA = EM$, $FB = FM$; $SO$ là phân giác góc $ASB$ và $EF \\perp OM$.\n\nLời giải:\na) $EA = EM$, $FB = FM$ (hai tiếp tuyến cắt nhau). Chu vi tam giác $SEF$ là $SE + EF + FS = SE + EM + MF + FS = SE + EA + FB + FS = SA + SB$.\nb) $EF$ là tiếp tuyến tại $M$ nên $EF \\perp OM$, tức $EF \\perp SO$ tại $M$. Trong tam giác $SEF$, $SM$ vừa là đường cao vừa là đường phân giác (vì $SO$ là phân giác góc $ASB$) nên tam giác $SEF$ cân tại $S$. Vậy $SE = SF$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn", "question_type": "TLN", "difficulty": "1",
+      "content": "Cho điểm $O$ cách đường thẳng $a$ là $6$ cm. Vẽ đường tròn $(O; 10\\text{ cm})$. Đường tròn $(O)$ cắt đường thẳng $a$ tại hai điểm $B$ và $C$. Tính diện tích tam giác $OBC$ (theo cm²).",
+      "correct_answer": "48",
+      "explanation": "Phương pháp giải:\n$d = 6 < R = 10$ nên đường thẳng cắt đường tròn tại hai điểm; tính nửa dây bằng Pythagore.\n\nLời giải:\nGọi $H$ là hình chiếu của $O$ trên $a$: $OH = 6$ cm, $H$ là trung điểm $BC$.\n$HB = \\sqrt{10^2 - 6^2} = 8$ cm nên $BC = 16$ cm.\n$S_{OBC} = \\dfrac{1}{2} \\cdot BC \\cdot OH = \\dfrac{1}{2} \\cdot 16 \\cdot 6 = 48$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn", "question_type": "TL", "difficulty": "1",
+      "content": "Cho điểm $M$ cách đường thẳng $xy$ một đoạn bằng $6$ cm, vẽ đường tròn $(M; 10\\text{ cm})$.\na) Chứng minh rằng đường tròn tâm $M$ và đường thẳng $xy$ cắt nhau.\nb) Gọi hai giao điểm là $P$ và $Q$. Tính $PQ$.",
+      "correct_answer": "b) PQ = 16 cm",
+      "explanation": "Phương pháp giải:\nSo sánh khoảng cách $d$ với bán kính $R$; tính nửa dây bằng định lí Pythagore.\n\nLời giải:\na) $d = 6$ cm $< R = 10$ cm nên đường tròn $(M)$ và đường thẳng $xy$ cắt nhau tại hai điểm.\nb) Gọi $H$ là hình chiếu của $M$ trên $xy$ thì $MH = 6$ cm và $H$ là trung điểm $PQ$.\n$HP = \\sqrt{MP^2 - MH^2} = \\sqrt{100 - 36} = 8$ cm. Vậy $PQ = 16$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến", "question_type": "TL", "difficulty": "2",
+      "content": "Cho tam giác $ABC$ vuông tại $A$. Vẽ hai đường tròn $(B; BA)$ và $(C; CA)$ cắt nhau tại $D$ (khác $A$). Chứng minh rằng $CD$ là tiếp tuyến của $(B)$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nChứng minh $\\triangle ABC = \\triangle DBC$ (c.c.c) để suy ra $\\widehat{BDC} = 90^\\circ$.\n\nLời giải:\n$BA = BD$ (bán kính của $(B)$), $CA = CD$ (bán kính của $(C)$), $BC$ chung nên $\\triangle ABC = \\triangle DBC$ (c.c.c).\nSuy ra $\\widehat{BDC} = \\widehat{BAC} = 90^\\circ$, tức $CD \\perp BD$ tại $D$.\n$D$ thuộc $(B)$ và $CD$ vuông góc với bán kính $BD$ tại $D$ nên $CD$ là tiếp tuyến của $(B)$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O)$ và một dây $AB$. Gọi $M$ là trung điểm của $AB$. Vẽ bán kính $OI$ đi qua $M$. Từ $I$ vẽ đường thẳng $xy \\parallel AB$. Chứng minh rằng $xy$ là tiếp tuyến của đường tròn $(O)$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nĐường kính đi qua trung điểm của dây thì vuông góc với dây; đường thẳng vuông góc với bán kính tại đầu mút nằm trên đường tròn là tiếp tuyến.\n\nLời giải:\n$M$ là trung điểm của dây $AB$ nên $OM \\perp AB$, tức $OI \\perp AB$.\nVì $xy \\parallel AB$ nên $OI \\perp xy$ tại $I$. Mà $I$ thuộc $(O)$, vậy $xy$ là tiếp tuyến của đường tròn $(O)$ tại $I$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến", "question_type": "TL", "difficulty": "3",
+      "content": "Cho $\\triangle ABC$ cân tại $A$ có các đường cao $AH$ và $BK$ cắt nhau tại $I$. Chứng minh:\na) Đường tròn đường kính $AI$ đi qua $K$.\nb) $HK$ là tiếp tuyến của đường tròn đường kính $AI$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\n$K$ nhìn $AI$ dưới góc vuông; $H$ là trung điểm $BC$ nên $HK = HB$; cộng góc để được $\\widehat{OKH} = 90^\\circ$ với $O$ là trung điểm $AI$.\n\nLời giải:\na) $\\widehat{AKI} = 90^\\circ$ nên $K$ thuộc đường tròn đường kính $AI$.\nb) Gọi $O$ là trung điểm $AI$ (tâm đường tròn). $OK = OI$ nên $\\widehat{OKI} = \\widehat{OIK} = \\widehat{HIB}$ (đối đỉnh) $= 90^\\circ - \\widehat{IBH}$.\nTam giác $ABC$ cân tại $A$ nên đường cao $AH$ cũng là trung tuyến, $H$ là trung điểm $BC$. Tam giác $BKC$ vuông tại $K$ có $KH$ là trung tuyến nên $HK = HB$, suy ra $\\widehat{HKB} = \\widehat{HBK} = \\widehat{IBH}$.\n$\\widehat{OKH} = \\widehat{OKI} + \\widehat{IKH} = (90^\\circ - \\widehat{IBH}) + \\widehat{IBH} = 90^\\circ$.\n$HK \\perp OK$ tại $K$ thuộc đường tròn nên $HK$ là tiếp tuyến của đường tròn đường kính $AI$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O; R)$ đường kính $AB$. $I$ là điểm nằm giữa $O$ và $A$. Vẽ dây $CD \\perp AB$ tại $I$. Chứng minh rằng các tiếp tuyến của đường tròn $(O)$ tại $C$ và $D$ và đường thẳng $AB$ đồng quy.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nGọi $M$ là giao của tiếp tuyến tại $C$ với $AB$; chứng minh $\\triangle OCM = \\triangle ODM$ để suy ra $MD$ cũng là tiếp tuyến.\n\nLời giải:\nTiếp tuyến tại $C$ không song song với $AB$ (vì $OC$ không vuông góc với $AB$), gọi $M$ là giao điểm của nó với $AB$.\n$AB \\perp CD$ tại $I$ nên $AB$ là trung trực của $CD$, suy ra $\\widehat{COM} = \\widehat{DOM}$.\n$\\triangle OCM$ và $\\triangle ODM$ có $OC = OD$, $\\widehat{COM} = \\widehat{DOM}$, $OM$ chung nên bằng nhau (c.g.c). Do đó $\\widehat{ODM} = \\widehat{OCM} = 90^\\circ$, tức $MD \\perp OD$ tại $D \\in (O)$: $MD$ là tiếp tuyến tại $D$.\nVậy tiếp tuyến tại $C$, tiếp tuyến tại $D$ và đường thẳng $AB$ cùng đi qua $M$, tức đồng quy."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; R)$. Từ một điểm $A$ cách $O$ một khoảng $2R$ ta vẽ hai tiếp tuyến $AB$, $AC$ ($B$, $C$ là tiếp điểm). Chứng minh rằng $\\triangle ABC$ đều.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nTính góc $BAO$ trong tam giác vuông $OBA$; tam giác cân có một góc $60^\\circ$ là tam giác đều.\n\nLời giải:\nTam giác $OBA$ vuông tại $B$: $\\sin\\widehat{BAO} = \\dfrac{OB}{OA} = \\dfrac{R}{2R} = \\dfrac{1}{2}$ nên $\\widehat{BAO} = 30^\\circ$.\n$AO$ là phân giác góc $BAC$ nên $\\widehat{BAC} = 60^\\circ$. Mà $AB = AC$ (hai tiếp tuyến cắt nhau) nên tam giác $ABC$ cân có một góc $60^\\circ$, do đó là tam giác đều."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; R)$ và điểm $M$ nằm ngoài đường tròn. Hai đường thẳng $c$, $d$ qua $M$ lần lượt tiếp xúc với $(O)$ tại $A$, $B$. Biết $\\widehat{AMB} = 120^\\circ$. Chứng minh $AB = R$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\n$MO$ là phân giác góc $AMB$; tính góc $AOB$ rồi chứng minh tam giác $OAB$ đều.\n\nLời giải:\n$MO$ là phân giác góc $AMB$ nên $\\widehat{AMO} = 60^\\circ$. Tam giác $OAM$ vuông tại $A$ nên $\\widehat{AOM} = 30^\\circ$, suy ra $\\widehat{AOB} = 2\\widehat{AOM} = 60^\\circ$.\nTam giác $OAB$ cân tại $O$ ($OA = OB = R$) có $\\widehat{AOB} = 60^\\circ$ nên là tam giác đều. Vậy $AB = OA = R$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TL", "difficulty": "3",
+      "content": "Cho nửa đường tròn $(O; R)$ đường kính $AB$. Gọi $Ax$, $By$ là các tia vuông góc với $AB$ ($Ax$, $By$ và nửa đường tròn cùng thuộc một phía của đường thẳng $AB$). Lấy $M$ thuộc $Ax$, qua $M$ kẻ tiếp tuyến với nửa đường tròn, cắt $By$ tại $N$.\na) Chứng minh rằng $MN = AM + BN$.\nb) $AM \\cdot BN$ không đổi.\nc) Tứ giác $AMNB$ có diện tích nhỏ nhất khi nào? Tính diện tích đó.",
+      "correct_answer": "b) AM·BN = R². c) Nhỏ nhất bằng 2R² khi AM = BN = R",
+      "explanation": "Phương pháp giải:\nGọi $C$ là tiếp điểm: $MA = MC$, $NB = NC$; $\\widehat{MON} = 90^\\circ$ (phân giác hai góc kề bù) và hệ thức $OC^2 = CM \\cdot CN$; $S_{AMNB} = MN \\cdot R \\ge AB \\cdot R$.\n\nLời giải:\nGọi $C$ là tiếp điểm của $MN$ với nửa đường tròn.\na) $MA = MC$, $NB = NC$ (hai tiếp tuyến cắt nhau) nên $MN = MC + CN = AM + BN$.\nb) $OM$, $ON$ lần lượt là phân giác của hai góc kề bù $\\widehat{AOC}$, $\\widehat{COB}$ nên $\\widehat{MON} = 90^\\circ$. Trong tam giác vuông $MON$ với đường cao $OC$: $OC^2 = CM \\cdot CN$, tức $AM \\cdot BN = R^2$ không đổi.\nc) $AMNB$ là hình thang vuông: $S = \\dfrac{(AM + BN) \\cdot AB}{2} = MN \\cdot R \\ge AB \\cdot R = 2R^2$ (vì $MN \\ge AB$ là khoảng cách giữa $Ax$ và $By$).\nDấu bằng khi $MN \\parallel AB$, tức $AM = BN = R$ ($C$ là điểm chính giữa cung $AB$). Khi đó diện tích nhỏ nhất bằng $2R^2$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+      "math_form": "Tính chất hai tiếp tuyến cắt nhau", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; R)$ đường kính $AB$ và các đường thẳng $m$, $n$, $p$ lần lượt tiếp xúc với đường tròn tại $A$, $B$, $C$. Gọi $D$ là giao điểm của $m$ và $p$, $E$ là giao điểm của $n$ và $p$. Chứng minh rằng:\na) $AD + BE = DE$.\nb) $\\widehat{COD} = \\dfrac{1}{2}\\widehat{COA}$ và $\\widehat{COE} = \\dfrac{1}{2}\\widehat{COB}$.\nc) Tam giác $ODE$ vuông.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nTính chất hai tiếp tuyến cắt nhau: đoạn tiếp tuyến bằng nhau, tia nối tâm với giao điểm là phân giác góc tạo bởi hai bán kính.\n\nLời giải:\na) $DA = DC$, $EB = EC$ (hai tiếp tuyến cắt nhau) nên $AD + BE = DC + CE = DE$.\nb) $OD$ là tia phân giác của góc tạo bởi hai bán kính $OA$, $OC$ nên $\\widehat{COD} = \\dfrac{1}{2}\\widehat{COA}$. Tương tự, $OE$ là phân giác góc $COB$ nên $\\widehat{COE} = \\dfrac{1}{2}\\widehat{COB}$.\nc) $\\widehat{DOE} = \\widehat{COD} + \\widehat{COE} = \\dfrac{1}{2}(\\widehat{COA} + \\widehat{COB}) = \\dfrac{1}{2} \\cdot 180^\\circ = 90^\\circ$. Vậy tam giác $ODE$ vuông tại $O$."
+    }
+  ]
+}

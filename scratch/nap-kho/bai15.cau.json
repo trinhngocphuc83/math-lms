@@ -1,0 +1,196 @@
+{
+  "grade": "9",
+  "subject": "Hình học",
+  "nguon": "Vở bài tập Toán 9 tập 1 (chương trình mới), Bài 15, tr. 333–347",
+  "cau": [
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính độ dài đường tròn, cung tròn", "question_type": "TL", "difficulty": "1",
+      "content": "a) Tính độ dài cung $60^\\circ$ của một đường tròn có bán kính $3$ dm.\nb) Tính độ dài cung $40^\\circ$ của một đường tròn có đường kính $10$ dm.",
+      "correct_answer": "a) π ≈ 3,14 dm; b) 10π/9 ≈ 3,49 dm",
+      "explanation": "Phương pháp giải:\nĐộ dài cung $n^\\circ$: $l = \\dfrac{n}{180}\\pi R = \\dfrac{n}{360}\\pi d$.\n\nLời giải:\na) $l = \\dfrac{60}{180}\\pi \\cdot 3 = \\pi \\approx 3{,}14$ dm.\nb) $l = \\dfrac{40}{360}\\pi \\cdot 10 = \\dfrac{10\\pi}{9} \\approx 3{,}49$ dm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính độ dài đường tròn, cung tròn", "question_type": "TLN", "difficulty": "1",
+      "content": "Một cái bàn tròn phục vụ trong nhà hàng có chu vi là $64\\pi$ dm. Tính độ dài cung $90^\\circ$ của cái bàn đó theo dm (làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "50,3",
+      "explanation": "Phương pháp giải:\nCung $90^\\circ$ bằng $\\dfrac{1}{4}$ đường tròn.\n\nLời giải:\nĐộ dài cung $90^\\circ$ $= \\dfrac{90}{360} \\cdot 64\\pi = 16\\pi \\approx 50{,}3$ dm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính độ dài đường tròn, cung tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Cho ba điểm $A$, $B$, $C$ thẳng hàng sao cho điểm $B$ nằm giữa hai điểm $A$ và $C$. Chứng minh rằng độ dài của nửa đường tròn đường kính $AC$ bằng tổng độ dài của hai nửa đường tròn đường kính $AB$ và $BC$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nĐộ dài nửa đường tròn đường kính $d$ là $\\dfrac{\\pi d}{2}$; dùng $AC = AB + BC$.\n\nLời giải:\nĐộ dài nửa đường tròn đường kính $AC$: $\\dfrac{\\pi \\cdot AC}{2}$.\nTổng độ dài hai nửa đường tròn đường kính $AB$ và $BC$: $\\dfrac{\\pi \\cdot AB}{2} + \\dfrac{\\pi \\cdot BC}{2} = \\dfrac{\\pi(AB + BC)}{2} = \\dfrac{\\pi \\cdot AC}{2}$ (vì $B$ nằm giữa $A$ và $C$ nên $AB + BC = AC$).\nVậy hai độ dài bằng nhau."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính độ dài đường tròn, cung tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O)$, dây $AB = 9$ cm có khoảng cách đến tâm bằng một nửa bán kính của đường tròn.\na) Tính chu vi đường tròn.\nb) Tính độ dài cung nhỏ $AB$.",
+      "correct_answer": "a) 6√3π ≈ 32,6 cm; b) 2√3π ≈ 10,9 cm",
+      "explanation": "Phương pháp giải:\nKẻ $OH \\perp AB$: $OH = \\dfrac{R}{2}$, $HA = 4{,}5$; tìm $R$ bằng Pythagore; $\\cos\\widehat{AOH} = \\dfrac{OH}{OA}$ cho góc ở tâm.\n\nLời giải:\n$OH^2 + HA^2 = R^2 \\Rightarrow \\dfrac{R^2}{4} + 20{,}25 = R^2 \\Rightarrow R^2 = 27$, $R = 3\\sqrt{3}$ cm.\na) Chu vi $C = 2\\pi R = 6\\sqrt{3}\\pi \\approx 32{,}6$ cm.\nb) $\\cos\\widehat{AOH} = \\dfrac{OH}{OA} = \\dfrac{1}{2}$ nên $\\widehat{AOH} = 60^\\circ$, $\\widehat{AOB} = 120^\\circ$. Độ dài cung nhỏ $AB$: $l = \\dfrac{120}{360} \\cdot 2\\pi R = \\dfrac{2\\pi \\cdot 3\\sqrt{3}}{3} = 2\\sqrt{3}\\pi \\approx 10{,}9$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính độ dài đường tròn, cung tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O)$ đường kính $AB$. Vẽ dây $CD$ vuông góc với $AB$ tại $M$. Giả sử $AM = 1$ cm, $CD = 2\\sqrt{3}$ cm. Tính:\na) Độ dài đường tròn.\nb) Độ dài của cung $CAD$.",
+      "correct_answer": "a) 4π ≈ 12,57 cm; b) 4π/3 ≈ 4,19 cm",
+      "explanation": "Phương pháp giải:\n$M$ là trung điểm $CD$; đặt $R = OC$ thì $OM = R - 1$; dùng Pythagore trong tam giác $OMC$; góc $\\widehat{COM}$ tính bằng $\\cos$.\n\nLời giải:\n$MC = \\sqrt{3}$ cm. $(R - 1)^2 + 3 = R^2 \\Rightarrow -2R + 4 = 0 \\Rightarrow R = 2$ cm.\na) Độ dài đường tròn $C = 2\\pi R = 4\\pi \\approx 12{,}57$ cm.\nb) $\\cos\\widehat{COM} = \\dfrac{OM}{OC} = \\dfrac{1}{2}$ nên $\\widehat{COM} = 60^\\circ$, $\\widehat{COD} = 120^\\circ$. Vì $A$ nằm cùng phía với $M$ so với $O$ nên cung $CAD$ là cung nhỏ $120^\\circ$: $l = \\dfrac{120}{360} \\cdot 4\\pi = \\dfrac{4\\pi}{3} \\approx 4{,}19$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TL", "difficulty": "1",
+      "content": "a) Tính diện tích hình quạt tròn bán kính $6$ cm có số đo cung là $60^\\circ$.\nb) Tính diện tích hình quạt tròn bán kính $5$ cm và có độ dài cung tương ứng bằng $4\\pi$ cm.",
+      "correct_answer": "a) 6π ≈ 18,85 cm²; b) 10π ≈ 31,4 cm²",
+      "explanation": "Phương pháp giải:\n$S_q = \\dfrac{n}{360}\\pi R^2 = \\dfrac{lR}{2}$.\n\nLời giải:\na) $S_q = \\dfrac{60}{360}\\pi \\cdot 6^2 = 6\\pi \\approx 18{,}85$ cm².\nb) $S_q = \\dfrac{lR}{2} = \\dfrac{4\\pi \\cdot 5}{2} = 10\\pi \\approx 31{,}4$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "2",
+      "content": "Cho tam giác $ABC$ nội tiếp đường tròn tâm $O$, bán kính $R = 3$ cm. Tính diện tích hình quạt tròn giới hạn bởi hai bán kính $OB$, $OC$ và cung nhỏ $BC$ khi $\\widehat{BAC} = 60^\\circ$ (theo cm², làm tròn đến chữ số thập phân thứ hai).",
+      "correct_answer": "9,42",
+      "explanation": "Phương pháp giải:\nGóc ở tâm chắn cung nhỏ $BC$ bằng hai lần góc $BAC$ (góc nội tiếp) nên sđ cung nhỏ $BC = 120^\\circ$.\n\nLời giải:\n$\\widehat{BOC} = 2\\widehat{BAC} = 120^\\circ$.\n$S_q = \\dfrac{120}{360}\\pi \\cdot 3^2 = 3\\pi \\approx 9{,}42$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "1",
+      "content": "Một hoạ tiết trang trí có dạng hình tròn bán kính $4$ dm được chia thành nhiều hình quạt tròn, mỗi hình quạt tròn có góc ở tâm là $10^\\circ$. Diện tích của mỗi hình quạt đó là bao nhiêu dm² (làm tròn kết quả đến hàng phần trăm)?",
+      "correct_answer": "1,4",
+      "explanation": "Phương pháp giải:\n$S_q = \\dfrac{n}{360}\\pi R^2$.\n\nLời giải:\n$S_q = \\dfrac{10}{360}\\pi \\cdot 4^2 = \\dfrac{4\\pi}{9} \\approx 1{,}40$ dm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "1",
+      "content": "Tính diện tích của hình vành khuyên nằm giữa hai đường tròn đồng tâm có bán kính là $3$ m và $5$ m (theo m², làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "50,3",
+      "explanation": "Phương pháp giải:\n$S = \\pi(R^2 - r^2)$.\n\nLời giải:\n$S = \\pi(5^2 - 3^2) = 16\\pi \\approx 50{,}3$ m²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "1",
+      "content": "Tính diện tích hình vành khuyên giới hạn bởi hai đường tròn $(O; 10\\text{ cm})$ và $(O; 20\\text{ cm})$ (theo cm², làm tròn đến hàng đơn vị).",
+      "correct_answer": "942",
+      "explanation": "Phương pháp giải:\n$S = \\pi(R^2 - r^2)$.\n\nLời giải:\n$S = \\pi(20^2 - 10^2) = 300\\pi \\approx 942{,}48 \\approx 942$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TL", "difficulty": "3",
+      "content": "Hãy tính diện tích hình viên phân $AmB$ theo $R$. Biết góc ở tâm $\\widehat{AOB} = 120^\\circ$ và bán kính hình tròn là $R$.",
+      "correct_answer": "S = R²(4π − 3√3)/12",
+      "explanation": "Phương pháp giải:\nDiện tích viên phân $=$ diện tích quạt $AOB$ $-$ diện tích tam giác $AOB$; $S_{\\triangle AOB} = \\dfrac{1}{2}R^2\\sin 120^\\circ$.\n\nLời giải:\n$S_q = \\dfrac{120}{360}\\pi R^2 = \\dfrac{\\pi R^2}{3}$.\n$S_{\\triangle AOB} = \\dfrac{1}{2} \\cdot OA \\cdot OB \\cdot \\sin\\widehat{AOB} = \\dfrac{1}{2}R^2 \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{R^2\\sqrt{3}}{4}$.\n$S_{AmB} = \\dfrac{\\pi R^2}{3} - \\dfrac{R^2\\sqrt{3}}{4} = \\dfrac{R^2(4\\pi - 3\\sqrt{3})}{12}$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "3",
+      "content": "Cho tam giác đều $AOB$ cạnh $4$ cm. Vẽ đường tròn tâm $O$, bán kính $OA$. Hãy tính diện tích hình viên phân $AmB$ (hình viên phân với cạnh chứa cung nhỏ $AB$), theo cm², làm tròn đến chữ số thập phân thứ hai.",
+      "correct_answer": "1,45",
+      "explanation": "Phương pháp giải:\nTam giác đều nên $\\widehat{AOB} = 60^\\circ$; viên phân $=$ quạt $60^\\circ$ $-$ tam giác đều cạnh $4$.\n\nLời giải:\n$S_q = \\dfrac{60}{360}\\pi \\cdot 4^2 = \\dfrac{8\\pi}{3} \\approx 8{,}38$ cm².\n$S_{\\triangle AOB} = \\dfrac{4^2\\sqrt{3}}{4} = 4\\sqrt{3} \\approx 6{,}93$ cm².\n$S_{AmB} = \\dfrac{8\\pi}{3} - 4\\sqrt{3} \\approx 1{,}45$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt", "question_type": "TLN", "difficulty": "2",
+      "content": "Một con bò được nhốt trong một mảnh vườn cỏ hình vuông cạnh là $5$ m. Con bò được buộc bằng một sợi dây dài $1{,}5$ m vào một cái cột ở góc vườn. Nếu diện tích cỏ mà con bò ăn được là nhiều nhất thì diện tích phần cỏ còn lại là bao nhiêu m² (làm tròn đến chữ số thập phân thứ nhất)?",
+      "correct_answer": "23,2",
+      "explanation": "Phương pháp giải:\nVùng bò ăn được là hình quạt $90^\\circ$ bán kính $1{,}5$ m ở góc vườn.\n\nLời giải:\nDiện tích cỏ bò ăn được: $\\dfrac{90}{360}\\pi \\cdot 1{,}5^2 = \\dfrac{2{,}25\\pi}{4} \\approx 1{,}77$ m².\nDiện tích cỏ còn lại: $5^2 - 1{,}77 \\approx 23{,}2$ m²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TL", "difficulty": "3",
+      "content": "Bạn An có một tấm bìa là hình tròn $(O)$ đường kính $AB = 2R$, $C$ là điểm chính giữa của cung $AB$. Cung $AmB$ có tâm $C$, bán kính $CA$. Bạn cắt miếng bìa đó để được hình như phần tô đậm. Diện tích phần tô đậm bằng bao nhiêu?\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b15-c14.png)",
+      "correct_answer": "R²",
+      "explanation": "Phương pháp giải:\nPhần tô đậm $=$ nửa hình tròn $(O)$ phía trên $AB$ $-$ hình viên phân của đường tròn $(C; CA)$ giới hạn bởi dây $AB$. Tam giác $ACB$ vuông cân tại $C$ nên $CA = R\\sqrt{2}$, $\\widehat{ACB} = 90^\\circ$.\n\nLời giải:\nNửa hình tròn $(O)$: $S_1 = \\dfrac{\\pi R^2}{2}$.\nHình quạt $CAB$ của $(C; R\\sqrt{2})$ ứng với góc $90^\\circ$: $S_q = \\dfrac{1}{4}\\pi (R\\sqrt{2})^2 = \\dfrac{\\pi R^2}{2}$; tam giác $CAB$: $S_{\\triangle} = \\dfrac{1}{2}(R\\sqrt{2})^2 = R^2$. Viên phân: $S_2 = \\dfrac{\\pi R^2}{2} - R^2$.\nPhần tô đậm: $S = S_1 - S_2 = \\dfrac{\\pi R^2}{2} - \\dfrac{\\pi R^2}{2} + R^2 = R^2$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt", "question_type": "TLN", "difficulty": "3",
+      "content": "Cho hình vẽ sau, biết hình vuông có diện tích là $4$ cm² và các cánh hoa được tạo bởi bốn nửa đường tròn có đường kính là bốn cạnh của hình vuông. Tính diện tích hình bông hoa (diện tích của $4$ cánh hoa), theo cm², làm tròn đến chữ số thập phân thứ hai.\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b15-c15.png)",
+      "correct_answer": "2,28",
+      "explanation": "Phương pháp giải:\nCạnh hình vuông là $2$ cm nên các nửa đường tròn có bán kính $1$ cm. Mỗi cánh hoa gồm hai hình viên phân của hình quạt $90^\\circ$ bán kính $1$ cm.\n\nLời giải:\nMột viên phân: $\\dfrac{1}{4}\\pi \\cdot 1^2 - \\dfrac{1}{2} \\cdot 1 \\cdot 1 = \\dfrac{\\pi}{4} - \\dfrac{1}{2}$.\nMột cánh hoa: $2\\left(\\dfrac{\\pi}{4} - \\dfrac{1}{2}\\right) = \\dfrac{\\pi}{2} - 1$.\nBốn cánh hoa: $4\\left(\\dfrac{\\pi}{2} - 1\\right) = 2\\pi - 4 \\approx 2{,}28$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt", "question_type": "TLN", "difficulty": "3",
+      "content": "Để làm một chiếc quạt giấy, người thợ làm quạt thường sử dụng $18$ thanh tre làm cốt và xâu thành một xâu ở đầu. Mỗi thanh tre dài $30$ cm. Để dán mỗi cái quạt cần hai phần giấy bằng nhau để dán cả hai bên. Phần không được dán giấy của mỗi thanh tre là $10$ cm (tính từ đầu xâu). Khi mở rộng nhất, hai thanh ngoài cùng của quạt tạo với nhau một góc bằng $150^\\circ$. Tính diện tích giấy tối thiểu cần để dán mỗi chiếc quạt, theo cm², làm tròn đến hàng đơn vị.",
+      "correct_answer": "2094",
+      "explanation": "Phương pháp giải:\nMỗi mặt giấy là một phần hình vành khuyên góc $150^\\circ$, bán kính ngoài $30$ cm, bán kính trong $10$ cm; cần hai mặt.\n\nLời giải:\nDiện tích một mặt giấy: $\\dfrac{150}{360}\\pi(30^2 - 10^2) = \\dfrac{5}{12} \\cdot 800\\pi = \\dfrac{1000\\pi}{3} \\approx 1047{,}2$ cm².\nDiện tích giấy tối thiểu cho hai mặt: $2 \\cdot \\dfrac{1000\\pi}{3} \\approx 2094$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt", "question_type": "TLN", "difficulty": "1",
+      "content": "Một bồn hoa có dạng hình vành khăn, người ta muốn trồng hoa bên trong phần vành khăn đó. Tính diện tích phần trồng hoa theo m² (làm tròn đến hàng đơn vị), biết rằng bán kính đường tròn lớn là $10$ m và bán kính đường tròn nhỏ là $8$ m.",
+      "correct_answer": "113",
+      "explanation": "Phương pháp giải:\n$S = \\pi(R^2 - r^2)$.\n\nLời giải:\n$S = \\pi(10^2 - 8^2) = 36\\pi \\approx 113{,}1 \\approx 113$ m²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt", "question_type": "TL", "difficulty": "3",
+      "content": "Một vườn cỏ hình chữ nhật $ABCD$ có $AB = 40$ m, $AD = 30$ m. Người ta muốn buộc hai con dê ở hai góc vườn $A$, $B$. Có hai cách buộc:\nCách 1: Mỗi dây thừng dài $20$ m.\nCách 2: Một dây thừng dài $30$ m và dây thừng kia dài $10$ m.\nHỏi với cách buộc nào thì diện tích cỏ mà hai con dê có thể ăn được sẽ lớn hơn?\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b15-c18.png)",
+      "correct_answer": "Cách 2 (250π ≈ 785,4 m² so với 200π ≈ 628,3 m²)",
+      "explanation": "Phương pháp giải:\nMỗi con dê ăn được phần cỏ là hình quạt $90^\\circ$ ở góc vườn; hai hình quạt không chồng lên nhau vì tổng hai bán kính bằng $AB = 40$ m.\n\nLời giải:\nCách 1: $S_1 = 2 \\cdot \\dfrac{1}{4}\\pi \\cdot 20^2 = 200\\pi \\approx 628{,}3$ m².\nCách 2: $S_2 = \\dfrac{1}{4}\\pi \\cdot 30^2 + \\dfrac{1}{4}\\pi \\cdot 10^2 = 250\\pi \\approx 785{,}4$ m² (bán kính $30$ m không vượt quá $AD = 30$ m nên hình quạt vẫn nằm trong vườn).\nVì $S_2 > S_1$ nên cách buộc thứ hai cho diện tích cỏ ăn được lớn hơn."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính độ dài đường tròn, cung tròn", "question_type": "TL", "difficulty": "2",
+      "content": "Lấy giá trị gần đúng của $\\pi$ là $3{,}14$, hãy điền vào ô trống trong bảng sau (đơn vị độ dài: cm, làm tròn kết quả đến chữ số thập phân thứ nhất và đến độ):\n\n| Bán kính $R$ của đường tròn | $14$ | ? | $20$ | $4{,}2$ | ? |\n|---|---|---|---|---|---|\n| Số đo $n^\\circ$ của cung tròn | $90^\\circ$ | $50^\\circ$ | ? | $35^\\circ$ | $20^\\circ$ |\n| Độ dài $l$ của cung tròn | ? | $40{,}6$ | $30{,}8$ | ? | $4{,}2$ |",
+      "correct_answer": "Cột 1: l ≈ 22,0; cột 2: R ≈ 46,5; cột 3: n ≈ 88°; cột 4: l ≈ 2,6; cột 5: R ≈ 12,0",
+      "explanation": "Phương pháp giải:\nTừ $l = \\dfrac{n}{180}\\pi R$ suy ra $R = \\dfrac{180l}{n\\pi}$ và $n = \\dfrac{180l}{\\pi R}$.\n\nLời giải:\nCột 1: $l = \\dfrac{90}{180} \\cdot 3{,}14 \\cdot 14 \\approx 22{,}0$ cm.\nCột 2: $R = \\dfrac{180 \\cdot 40{,}6}{50 \\cdot 3{,}14} \\approx 46{,}5$ cm.\nCột 3: $n = \\dfrac{180 \\cdot 30{,}8}{3{,}14 \\cdot 20} \\approx 88^\\circ$.\nCột 4: $l = \\dfrac{35}{180} \\cdot 3{,}14 \\cdot 4{,}2 \\approx 2{,}6$ cm.\nCột 5: $R = \\dfrac{180 \\cdot 4{,}2}{20 \\cdot 3{,}14} \\approx 12{,}0$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính độ dài đường tròn, cung tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho nửa đường tròn $(O; R)$ đường kính $AB$. Vẽ dây $CD = R$ (thuộc cung $AD$). Nối $AC$ và $BD$ cắt nhau tại $M$.\na) Chứng minh tam giác $MCD$ đồng dạng với tam giác $MBA$. Tìm tỉ số đồng dạng.\nb) Cho $\\widehat{ABC} = 30^\\circ$, tính độ dài cung nhỏ $AC$.",
+      "correct_answer": "a) Tỉ số 1/2. b) πR/3",
+      "explanation": "Phương pháp giải:\nDùng góc nội tiếp cùng chắn một cung để có hai cặp góc bằng nhau; tỉ số đồng dạng bằng $\\dfrac{CD}{AB}$. Góc ở tâm $\\widehat{AOC} = 2\\widehat{ABC}$.\n\nLời giải:\na) $\\widehat{CMD} = \\widehat{AMB}$ (đối đỉnh); $\\widehat{MDC} = \\widehat{BDC} = \\widehat{BAC} = \\widehat{MAB}$ (hai góc nội tiếp cùng chắn cung $BC$). Suy ra $\\triangle MCD \\backsim \\triangle MBA$ (g.g) với tỉ số đồng dạng $\\dfrac{CD}{AB} = \\dfrac{R}{2R} = \\dfrac{1}{2}$.\nb) $\\widehat{AOC} = 2\\widehat{ABC} = 60^\\circ$ nên cung nhỏ $AC$ có số đo $60^\\circ$; $l_{AC} = \\dfrac{60}{360} \\cdot 2\\pi R = \\dfrac{\\pi R}{3}$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính độ dài đường tròn, cung tròn", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ vuông tại $A$ có $AB = 5$ cm, $\\widehat{B} = 60^\\circ$. Đường tròn tâm $I$, đường kính $AB$ cắt $BC$ ở $D$.\na) Chứng minh $AD$ vuông góc với $BC$.\nb) Chứng minh đường tròn tâm $K$ đường kính $AC$ đi qua $D$.\nc) Tính độ dài cung nhỏ $BD$.",
+      "correct_answer": "c) 5π/6 ≈ 2,62 cm",
+      "explanation": "Phương pháp giải:\nGóc nội tiếp chắn nửa đường tròn là góc vuông; điểm nhìn đoạn thẳng dưới góc vuông thuộc đường tròn đường kính là đoạn ấy; góc ở tâm $\\widehat{BID} = 2\\widehat{BAD}$.\n\nLời giải:\na) $D$ thuộc đường tròn đường kính $AB$ nên $\\widehat{ADB} = 90^\\circ$, tức $AD \\perp BC$.\nb) $\\widehat{ADC} = 90^\\circ$ nên $D$ thuộc đường tròn đường kính $AC$, tức đường tròn $(K)$ đi qua $D$.\nc) $\\widehat{BAD} = 90^\\circ - \\widehat{B} = 30^\\circ$ nên $\\widehat{BID} = 2\\widehat{BAD} = 60^\\circ$. Bán kính $IB = 2{,}5$ cm; $l_{BD} = \\dfrac{60}{360} \\cdot 2\\pi \\cdot 2{,}5 = \\dfrac{5\\pi}{6} \\approx 2{,}62$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "1",
+      "content": "Tính diện tích của hình quạt tròn bán kính $4$ cm, ứng với cung $36^\\circ$ (theo cm², làm tròn đến chữ số thập phân thứ hai).",
+      "correct_answer": "5,03",
+      "explanation": "Phương pháp giải:\n$S_q = \\dfrac{n}{360}\\pi R^2$.\n\nLời giải:\n$S_q = \\dfrac{36}{360}\\pi \\cdot 4^2 = 1{,}6\\pi \\approx 5{,}03$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "1",
+      "content": "Tính diện tích hình vành khuyên nằm giữa hai đường tròn đồng tâm có bán kính là $7$ cm và $5$ cm (theo cm², làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "75,4",
+      "explanation": "Phương pháp giải:\n$S = \\pi(R^2 - r^2)$.\n\nLời giải:\n$S = \\pi(7^2 - 5^2) = 24\\pi \\approx 75{,}4$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ vuông cân tại $A$, $BC = 5\\sqrt{2}$. Vẽ $\\dfrac{1}{4}$ đường tròn tâm $A$ bán kính $AB$ rồi vẽ nửa đường tròn đường kính $AC$ nằm trong $\\dfrac{1}{4}$ hình tròn trên. Tính diện tích phần chung của hai hình tròn đó (làm tròn đến chữ số thập phân thứ hai).",
+      "correct_answer": "9,82",
+      "explanation": "Phương pháp giải:\n$AB = AC = 5$. Mọi điểm của nửa hình tròn đường kính $AC$ cách $A$ không quá $AC = 5$ nên nửa hình tròn ấy nằm trọn trong $\\dfrac{1}{4}$ hình tròn tâm $A$; phần chung chính là nửa hình tròn đường kính $AC$.\n\nLời giải:\n$AB = AC = \\dfrac{BC}{\\sqrt{2}} = 5$. Nửa hình tròn đường kính $AC$ có bán kính $2{,}5$ và nằm trong $\\dfrac{1}{4}$ hình tròn $(A; 5)$.\nDiện tích phần chung: $\\dfrac{1}{2}\\pi \\cdot 2{,}5^2 = 3{,}125\\pi \\approx 9{,}82$ (đơn vị diện tích)."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "3",
+      "content": "Hoa văn của một tấm bìa hình vuông $ABCD$ cạnh $20$ cm là hai cung tròn tâm $B$ và $D$ bán kính $20$ cm có phần chung là hình quả trám như hình vẽ. Hãy tính diện tích phần chung này (theo cm², làm tròn đến hàng đơn vị).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b15-tl7.png)",
+      "correct_answer": "228",
+      "explanation": "Phương pháp giải:\nHình quả trám gồm hai hình viên phân bằng nhau, mỗi viên phân $=$ hình quạt $90^\\circ$ bán kính $20$ cm $-$ tam giác vuông cân cạnh $20$ cm.\n\nLời giải:\nMột viên phân: $\\dfrac{1}{4}\\pi \\cdot 20^2 - \\dfrac{1}{2} \\cdot 20 \\cdot 20 = 100\\pi - 200$ cm².\nHình quả trám: $2(100\\pi - 200) = 200\\pi - 400 \\approx 228$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TLN", "difficulty": "3",
+      "content": "Cho nửa đường tròn $(O)$ đường kính $AB$. Gọi $M$ là điểm trên nửa đường tròn, kẻ $MH$ vuông góc với $AB$. Vẽ vào phía bên trong nửa đường tròn $(O)$ các nửa đường tròn $(O_1)$ đường kính $BH$, nửa đường tròn $(O_2)$ đường kính $AH$. Tính diện tích hình giới hạn bởi ba nửa đường tròn trên (theo cm², làm tròn đến chữ số thập phân thứ nhất), biết $MH = 6$ cm, $BH = 4$ cm, $AH = 9$ cm.",
+      "correct_answer": "28,3",
+      "explanation": "Phương pháp giải:\nDiện tích cần tìm $=$ nửa hình tròn đường kính $AB$ $-$ nửa hình tròn đường kính $AH$ $-$ nửa hình tròn đường kính $BH$.\n\nLời giải:\n$AB = AH + BH = 13$ cm nên các bán kính lần lượt là $6{,}5$; $4{,}5$; $2$ cm.\n$S = \\dfrac{\\pi}{2}(6{,}5^2 - 4{,}5^2 - 2^2) = \\dfrac{\\pi}{2}(42{,}25 - 20{,}25 - 4) = 9\\pi \\approx 28{,}27 \\approx 28{,}3$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+      "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên", "question_type": "TL", "difficulty": "3",
+      "content": "Cho nửa đường tròn $(O)$ và đường kính $AB$. Lấy $M$ thuộc đoạn $AB$. Vẽ dây $CD$ vuông góc với $AB$ tại $M$. Giả sử $AM = 2$ cm, $CD = 4\\sqrt{3}$ cm. Tính:\na) Độ dài đường tròn $(O)$ và diện tích hình tròn $(O)$.\nb) Độ dài cung $CAD$ và diện tích hình quạt tròn giới hạn bởi hai bán kính $OC$, $OD$ và cung nhỏ $CD$.",
+      "correct_answer": "a) C = 8π ≈ 25,13 cm; S = 16π ≈ 50,27 cm². b) l = 8π/3 ≈ 8,38 cm; Sq = 16π/3 ≈ 16,76 cm²",
+      "explanation": "Phương pháp giải:\n$M$ là trung điểm $CD$; đặt $R = OC$, $OM = R - 2$, dùng Pythagore; $\\cos\\widehat{COM} = \\dfrac{OM}{OC}$.\n\nLời giải:\n$MC = 2\\sqrt{3}$ cm. $(R - 2)^2 + 12 = R^2 \\Rightarrow -4R + 16 = 0 \\Rightarrow R = 4$ cm.\na) $C = 2\\pi R = 8\\pi \\approx 25{,}13$ cm; $S = \\pi R^2 = 16\\pi \\approx 50{,}27$ cm².\nb) $\\cos\\widehat{COM} = \\dfrac{2}{4} = \\dfrac{1}{2}$ nên $\\widehat{COM} = 60^\\circ$, $\\widehat{COD} = 120^\\circ$; cung $CAD$ là cung nhỏ $120^\\circ$.\n$l_{CAD} = \\dfrac{120}{360} \\cdot 8\\pi = \\dfrac{8\\pi}{3} \\approx 8{,}38$ cm; $S_q = \\dfrac{120}{360} \\cdot 16\\pi = \\dfrac{16\\pi}{3} \\approx 16{,}76$ cm²."
+    }
+  ]
+}

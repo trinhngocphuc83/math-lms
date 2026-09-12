@@ -1,0 +1,182 @@
+{
+  "grade": "9",
+  "subject": "Hình học",
+  "nguon": "Vở bài tập Toán 9 tập 1 (chương trình mới), Bài 14, tr. 311–332",
+  "cau": [
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; 10)$. Lấy một điểm $A$ tuỳ ý thuộc $(O)$. Vẽ dây $MN$ vuông góc với $OA$ tại trung điểm của $OA$.\na) Chứng minh $OMAN$ là hình thoi.\nb) Tính độ dài dây $MN$.",
+      "correct_answer": "b) MN = 10√3 ≈ 17,3",
+      "explanation": "Phương pháp giải:\nĐường kính (bán kính) vuông góc với dây thì đi qua trung điểm của dây; tứ giác có hai đường chéo vuông góc và cắt nhau tại trung điểm mỗi đường là hình thoi.\n\nLời giải:\na) Gọi $I$ là trung điểm $OA$. Vì $OA \\perp MN$ tại $I$ nên $I$ là trung điểm của $MN$. Tứ giác $OMAN$ có hai đường chéo $OA$, $MN$ cắt nhau tại trung điểm $I$ của mỗi đường và vuông góc với nhau nên là hình thoi.\nb) $OI = 5$, $OM = 10$ nên $MI = \\sqrt{OM^2 - OI^2} = \\sqrt{100 - 25} = 5\\sqrt{3}$. Vậy $MN = 2MI = 10\\sqrt{3} \\approx 17{,}3$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn tâm $O$, hai dây $AB$ và $CD$ vuông góc với nhau ở $M$. Biết $AB = 18$ cm, $CD = 14$ cm, $MC = 4$ cm. Hãy tính khoảng cách từ tâm $O$ đến mỗi dây $AB$ và $CD$.",
+      "correct_answer": "Khoảng cách từ O đến AB là 3 cm; đến CD là √41 ≈ 6,4 cm",
+      "explanation": "Phương pháp giải:\nKẻ $OH \\perp AB$, $OK \\perp CD$ thì $H$, $K$ là trung điểm các dây và $OHMK$ là hình chữ nhật; dùng $R^2 = OH^2 + HA^2 = OK^2 + KC^2$.\n\nLời giải:\nKẻ $OH \\perp AB$ tại $H$, $OK \\perp CD$ tại $K$; khi đó $HA = 9$ cm, $KC = 7$ cm và $OHMK$ là hình chữ nhật.\n$MK = KC - MC = 7 - 4 = 3$ cm, suy ra $OH = MK = 3$ cm: khoảng cách từ $O$ đến $AB$ là $3$ cm.\n$R^2 = OH^2 + HA^2 = 9 + 81 = 90$. Lại có $R^2 = OK^2 + KC^2$ nên $OK^2 = 90 - 49 = 41$, $OK = \\sqrt{41} \\approx 6{,}4$ cm: khoảng cách từ $O$ đến $CD$ là $\\sqrt{41}$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây", "question_type": "TLN", "difficulty": "3",
+      "content": "Trong hình vẽ bên, hai dây $AB$ và $CD$ của đường tròn $(O)$ vuông góc với nhau tại $E$, với $AE = 2$, $EB = 6$, $EC = 4$ và $ED = 3$. Tính độ dài đường kính của đường tròn $(O)$ (làm tròn đến chữ số thập phân thứ hai).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b14-c3.png)",
+      "correct_answer": "8,06",
+      "explanation": "Phương pháp giải:\nGọi $I$, $H$ là trung điểm của $AB$, $CD$ thì $OI \\perp AB$, $OH \\perp CD$ và $OIEH$ là hình chữ nhật; $R^2 = OI^2 + IA^2$.\n\nLời giải:\n$AB = 8$ nên $IA = 4$, $IE = 4 - 2 = 2$; $CD = 7$ nên $HC = 3{,}5$, $HE = 4 - 3{,}5 = 0{,}5$.\n$OIEH$ là hình chữ nhật nên $OI = HE = 0{,}5$.\n$R^2 = OI^2 + IA^2 = 0{,}25 + 16 = 16{,}25$, suy ra $R = \\sqrt{16{,}25}$ và đường kính $2R = \\sqrt{65} \\approx 8{,}06$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; 5\\text{ cm})$ và dây $AB = 8$ cm.\na) Tính khoảng cách từ tâm $O$ đến dây $AB$.\nb) Lấy điểm $I$ trên dây $AB$ sao cho $AI = 1$ cm. Qua $I$ kẻ dây $CD$ vuông góc với $AB$. Chứng minh rằng $AB = CD$.",
+      "correct_answer": "a) 3 cm. b) Chứng minh",
+      "explanation": "Phương pháp giải:\nKẻ $OH \\perp AB$ ($H$ là trung điểm $AB$); hai dây cách đều tâm thì bằng nhau.\n\nLời giải:\na) Kẻ $OH \\perp AB$ thì $HA = 4$ cm, $OH = \\sqrt{5^2 - 4^2} = 3$ cm.\nb) Kẻ $OK \\perp CD$. Vì $CD \\perp AB$ tại $I$ nên $OHIK$ là hình chữ nhật, suy ra $OK = HI = HA - AI = 4 - 1 = 3$ cm $= OH$.\nHai dây $AB$ và $CD$ cách đều tâm nên $AB = CD$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây", "question_type": "TL", "difficulty": "3",
+      "content": "Trong hình vẽ bên, một mảnh giấy hình chữ nhật $AMNB$... che khuất một phần của đường tròn $(O)$: cạnh bên trái của mảnh giấy cắt đường tròn tại $B$ và $C$, cạnh bên phải cắt đường tròn tại $N$ và $D$; $A$, $M$ là hai đỉnh dưới của mảnh giấy. Cho biết $AB = 1$ cm, $BC = 4$ cm và $MN = 2$ cm.\na) Tính độ dài đoạn $DN$.\nb) Cho $AM = 1$ cm. Tính bán kính của đường tròn $(O)$.\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b14-c6.png)",
+      "correct_answer": "a) DN = 2 cm. b) R = √5 ≈ 2,24 cm",
+      "explanation": "Phương pháp giải:\nHai dây $BC$ và $DN$ song song nên đường thẳng qua $O$ vuông góc với chúng đi qua trung điểm của cả hai dây: hai trung điểm ở cùng độ cao so với đáy $AM$.\n\nLời giải:\na) Gọi $H$, $K$ lần lượt là trung điểm của $BC$, $DN$ thì $O$, $H$, $K$ thẳng hàng và $HK \\parallel AM$. Độ cao của $H$ so với $AM$ là $AB + \\dfrac{BC}{2} = 1 + 2 = 3$ cm; độ cao của $K$ là $MN + \\dfrac{DN}{2} = 2 + \\dfrac{DN}{2}$. Suy ra $2 + \\dfrac{DN}{2} = 3$, $DN = 2$ cm.\nb) $HK = AM = 1$ cm. Đặt $OH = x$ (lấy dấu dương nếu $O$ nằm về phía trái của dây $BC$). $R^2 = OH^2 + HB^2 = x^2 + 4$ và $R^2 = OK^2 + KD^2 = (x + 1)^2 + 1$.\nSuy ra $x^2 + 4 = x^2 + 2x + 2$, $x = 1$: tâm $O$ cách dây $BC$ là $1$ cm (nằm ngoài mảnh giấy). $R^2 = 1 + 4 = 5$, $R = \\sqrt{5} \\approx 2{,}24$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn $(O)$ và đường kính $AB = 13$ cm. Dây $CD = 12$ cm vuông góc với $AB$ tại $H$.\na) Tính độ dài các đoạn $HA$, $HB$.\nb) Gọi $M$, $N$ theo thứ tự là hình chiếu của $H$ lên $AC$, $BC$. Tính diện tích tứ giác $CMHN$.",
+      "correct_answer": "a) HA = 4 cm, HB = 9 cm (hoặc ngược lại). b) S ≈ 16,6 cm²",
+      "explanation": "Phương pháp giải:\nĐường kính vuông góc với dây đi qua trung điểm dây; tam giác $ACB$ vuông tại $C$ nên $CMHN$ là hình chữ nhật.\n\nLời giải:\na) $H$ là trung điểm $CD$ nên $HC = 6$ cm; $OH = \\sqrt{6{,}5^2 - 6^2} = 2{,}5$ cm. Do đó $HA = 6{,}5 - 2{,}5 = 4$ cm, $HB = 6{,}5 + 2{,}5 = 9$ cm.\nb) Tam giác $ACB$ có trung tuyến $CO = \\dfrac{AB}{2}$ nên vuông tại $C$; tứ giác $CMHN$ có ba góc vuông nên là hình chữ nhật.\n$AC = \\sqrt{AH \\cdot AB} = \\sqrt{52}$, $BC = \\sqrt{BH \\cdot AB} = \\sqrt{117}$. $HM = \\dfrac{AH \\cdot CH}{AC} = \\dfrac{24}{\\sqrt{52}}$, $HN = \\dfrac{BH \\cdot CH}{BC} = \\dfrac{54}{\\sqrt{117}}$.\n$S_{CMHN} = HM \\cdot HN = \\dfrac{1296}{\\sqrt{52 \\cdot 117}} = \\dfrac{1296}{78} \\approx 16{,}6$ cm²."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "So sánh độ dài hai dây và hai cung tương ứng", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn tâm $O$ và điểm $I$ nằm bên trong đường tròn. Chứng minh rằng dây $AB$ vuông góc với $OI$ tại $I$ ngắn hơn mọi dây khác đi qua $I$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nDây nào gần tâm hơn thì dài hơn; so sánh khoảng cách từ $O$ đến hai dây.\n\nLời giải:\nGọi $CD$ là một dây bất kì đi qua $I$ (khác $AB$) và kẻ $OK \\perp CD$ tại $K$.\nTrong tam giác $OIK$ vuông tại $K$: $OK < OI$ (cạnh góc vuông nhỏ hơn cạnh huyền). Mà $OI$ là khoảng cách từ $O$ đến dây $AB$, $OK$ là khoảng cách từ $O$ đến dây $CD$.\nDây $CD$ gần tâm hơn dây $AB$ nên $CD > AB$. Vậy $AB$ ngắn hơn mọi dây khác đi qua $I$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "So sánh độ dài hai dây và hai cung tương ứng", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; 5\\text{ cm})$ và điểm $M$ cách $O$ một đoạn là $3$ cm.\na) Tính độ dài dây cung ngắn nhất của $(O)$ đi qua $M$.\nb) Tính độ dài dây cung dài nhất của $(O)$ đi qua $M$.",
+      "correct_answer": "a) 8 cm; b) 10 cm",
+      "explanation": "Phương pháp giải:\nDây ngắn nhất qua $M$ là dây vuông góc với $OM$ tại $M$; dây dài nhất qua $M$ là đường kính.\n\nLời giải:\na) Dây $AB$ vuông góc với $OM$ tại $M$ có $MA = \\sqrt{OA^2 - OM^2} = \\sqrt{25 - 9} = 4$ cm nên $AB = 8$ cm. Đây là dây ngắn nhất qua $M$ vì mọi dây khác qua $M$ đều gần tâm hơn.\nb) Dây dài nhất qua $M$ là đường kính đi qua $M$, dài $2R = 10$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "1",
+      "content": "Kim giờ và kim phút của đồng hồ tạo thành một góc ở tâm có số đo là bao nhiêu độ vào những thời điểm sau:\na) $3$ giờ; \\quad b) $5$ giờ; \\quad c) $6$ giờ; \\quad d) $22$ giờ.",
+      "correct_answer": "a) 90°; b) 150°; c) 180°; d) 60°",
+      "explanation": "Phương pháp giải:\nMặt đồng hồ chia thành $12$ phần, mỗi phần ứng với góc ở tâm $30^\\circ$. Lúc đúng giờ, kim phút chỉ số $12$.\n\nLời giải:\na) $3$ giờ: $3 \\cdot 30^\\circ = 90^\\circ$.\nb) $5$ giờ: $5 \\cdot 30^\\circ = 150^\\circ$.\nc) $6$ giờ: $6 \\cdot 30^\\circ = 180^\\circ$.\nd) $22$ giờ tức $10$ giờ: góc nhỏ giữa hai kim là $2 \\cdot 30^\\circ = 60^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "1",
+      "content": "Trên đường tròn $(O)$, lấy hai điểm $A$ và $B$ sao cho $\\widehat{AOB} = 90^\\circ$. Tính số đo mỗi cung $AB$.",
+      "correct_answer": "Cung nhỏ AB = 90°, cung lớn AB = 270°",
+      "explanation": "Phương pháp giải:\nSố đo cung nhỏ bằng số đo góc ở tâm chắn cung đó; cung lớn bằng $360^\\circ$ trừ cung nhỏ.\n\nLời giải:\nCung nhỏ $AB$ có số đo bằng $\\widehat{AOB} = 90^\\circ$. Cung lớn $AB$ có số đo $360^\\circ - 90^\\circ = 270^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; R)$ có dây $AB = R$. Tính số đo:\na) góc ở tâm $AOB$;\nb) cung lớn $AB$.",
+      "correct_answer": "a) 60°; b) 300°",
+      "explanation": "Phương pháp giải:\n$OA = OB = AB = R$ nên tam giác $OAB$ đều.\n\nLời giải:\na) Tam giác $OAB$ có ba cạnh bằng $R$ nên là tam giác đều, suy ra $\\widehat{AOB} = 60^\\circ$.\nb) Cung nhỏ $AB$ có số đo $60^\\circ$ nên cung lớn $AB$ có số đo $360^\\circ - 60^\\circ = 300^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Chứng minh hình học liên quan đến dây và cung", "question_type": "TL", "difficulty": "2",
+      "content": "Trên đường tròn $(O)$, lấy hai điểm $A$ và $B$ phân biệt. Kẻ các đường kính $AOC$ và $BOD$. Chứng minh $AD = BC$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nHai tam giác $AOD$ và $COB$ bằng nhau theo trường hợp cạnh – góc – cạnh (góc đối đỉnh).\n\nLời giải:\nXét $\\triangle AOD$ và $\\triangle COB$ có: $OA = OC$, $OD = OB$ (bán kính) và $\\widehat{AOD} = \\widehat{COB}$ (đối đỉnh).\nSuy ra $\\triangle AOD = \\triangle COB$ (c.g.c), do đó $AD = CB$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; R)$ và dây cung $AB = R\\sqrt{2}$. Tính số đo của hai cung $AB$.",
+      "correct_answer": "Cung nhỏ 90°, cung lớn 270°",
+      "explanation": "Phương pháp giải:\nKiểm tra $OA^2 + OB^2 = AB^2$ để suy ra tam giác $OAB$ vuông tại $O$.\n\nLời giải:\n$OA^2 + OB^2 = R^2 + R^2 = 2R^2 = AB^2$ nên tam giác $OAB$ vuông tại $O$, tức $\\widehat{AOB} = 90^\\circ$.\nVậy cung nhỏ $AB$ có số đo $90^\\circ$, cung lớn $AB$ có số đo $270^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; R)$ và dây cung $MN = R\\sqrt{3}$. Tính số đo của hai cung $MN$.",
+      "correct_answer": "Cung nhỏ 120°, cung lớn 240°",
+      "explanation": "Phương pháp giải:\nKẻ $OH \\perp MN$ thì $H$ là trung điểm $MN$; tính $\\cos\\widehat{MOH}$ hoặc $\\sin\\widehat{MOH}$ trong tam giác vuông $OHM$.\n\nLời giải:\nKẻ $OH \\perp MN$ tại $H$: $HM = \\dfrac{R\\sqrt{3}}{2}$, suy ra $\\sin\\widehat{MOH} = \\dfrac{HM}{OM} = \\dfrac{\\sqrt{3}}{2}$, $\\widehat{MOH} = 60^\\circ$.\nVì $OH$ là phân giác của góc $MON$ nên $\\widehat{MON} = 120^\\circ$. Vậy cung nhỏ $MN$ có số đo $120^\\circ$, cung lớn $MN$ có số đo $240^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "3",
+      "content": "Trên đường tròn $(O; R)$ lấy ba điểm $A$, $B$, $C$ sao cho dây cung $AB = R$, $BC = R\\sqrt{2}$ và tia $BO$ nằm giữa hai tia $BA$ và $BC$. Tính số đo các cung nhỏ $AB$, $BC$ và $AC$.",
+      "correct_answer": "sđ AB = 60°; sđ BC = 90°; sđ AC (cung nhỏ, chứa B) = 150°",
+      "explanation": "Phương pháp giải:\n$AB = R$ cho tam giác $OAB$ đều; $BC = R\\sqrt{2}$ cho tam giác $OBC$ vuông cân; tia $BO$ nằm giữa $BA$, $BC$ nên $A$ và $C$ nằm về hai phía của đường kính qua $B$.\n\nLời giải:\nTam giác $OAB$ đều nên $\\widehat{AOB} = 60^\\circ$: sđ cung nhỏ $AB = 60^\\circ$.\n$OB^2 + OC^2 = 2R^2 = BC^2$ nên $\\widehat{BOC} = 90^\\circ$: sđ cung nhỏ $BC = 90^\\circ$.\nVì tia $BO$ nằm giữa hai tia $BA$ và $BC$ nên hai cung $AB$ và $BC$ nằm về hai phía của $B$ và không chồng lên nhau; cung $AC$ đi qua $B$ có số đo $60^\\circ + 90^\\circ = 150^\\circ < 180^\\circ$, đó là cung nhỏ $AC$. Vậy sđ cung nhỏ $AC = 150^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; R)$ và dây $MN = R$. Hãy tính khoảng cách từ tâm $O$ đến dây $MN$.",
+      "correct_answer": "R√3/2",
+      "explanation": "Phương pháp giải:\nTam giác $OMN$ đều; khoảng cách từ $O$ đến $MN$ là đường cao của tam giác đều cạnh $R$.\n\nLời giải:\n$OM = ON = MN = R$ nên tam giác $OMN$ đều. Kẻ $OH \\perp MN$ thì $H$ là trung điểm $MN$, $HM = \\dfrac{R}{2}$ và $OH = \\sqrt{R^2 - \\dfrac{R^2}{4}} = \\dfrac{R\\sqrt{3}}{2}$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Chứng minh hình học liên quan đến dây và cung", "question_type": "TL", "difficulty": "4",
+      "content": "Cho tam giác $ABC$ có trực tâm $H$ và nội tiếp đường tròn $(O)$ đường kính $AD$.\na) Chứng minh $BHCD$ là hình bình hành.\nb) Kẻ đường kính $OI$ vuông góc với $BC$ tại $I$. Chứng minh $I$, $H$, $D$ thẳng hàng.\nc) Chứng minh $AH = 2OI$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nGóc nội tiếp chắn nửa đường tròn (tam giác có trung tuyến bằng nửa cạnh) cho $DB \\perp AB$, $DC \\perp AC$; kết hợp với các đường cao qua $H$ để có hai cặp cạnh song song. Đường kính vuông góc với dây đi qua trung điểm dây.\n\nLời giải:\na) Vì $AD$ là đường kính nên tam giác $ABD$ có trung tuyến $BO = \\dfrac{AD}{2}$, suy ra $\\widehat{ABD} = 90^\\circ$, tức $DB \\perp AB$. Mà $CH \\perp AB$ (đường cao) nên $DB \\parallel CH$. Tương tự $DC \\perp AC$ và $BH \\perp AC$ nên $DC \\parallel BH$. Vậy $BHCD$ là hình bình hành.\nb) $OI \\perp BC$ nên $I$ là trung điểm của dây $BC$. Trong hình bình hành $BHCD$, hai đường chéo $BC$ và $HD$ cắt nhau tại trung điểm mỗi đường, nên $I$ cũng là trung điểm của $HD$. Vậy $I$, $H$, $D$ thẳng hàng.\nc) Trong tam giác $AHD$, $O$ là trung điểm $AD$ và $I$ là trung điểm $HD$ nên $OI$ là đường trung bình, suy ra $AH = 2OI$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây", "question_type": "TL", "difficulty": "3",
+      "content": "Cho đường tròn tâm $O$ bán kính $25$ cm. Hai dây $AB$, $CD$ song song với nhau và có độ dài lần lượt là $40$ cm, $48$ cm. Tính khoảng cách giữa hai dây $AB$, $CD$.",
+      "correct_answer": "8 cm nếu hai dây cùng phía đối với tâm; 22 cm nếu khác phía",
+      "explanation": "Phương pháp giải:\nKẻ $OH \\perp AB$, $OK \\perp CD$; vì $AB \\parallel CD$ nên $H$, $O$, $K$ thẳng hàng và khoảng cách giữa hai dây là $|OH - OK|$ hoặc $OH + OK$.\n\nLời giải:\n$OH = \\sqrt{25^2 - 20^2} = 15$ cm; $OK = \\sqrt{25^2 - 24^2} = 7$ cm.\nNếu hai dây nằm cùng phía đối với tâm $O$: khoảng cách $HK = OH - OK = 8$ cm.\nNếu hai dây nằm khác phía đối với tâm $O$: khoảng cách $HK = OH + OK = 22$ cm."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Xác định số đo các cung $AB$, $BC$, $CA$ trong hình vẽ sau, biết $\\widehat{BOC} = 135^\\circ$ và $\\widehat{OAB} = 60^\\circ$.\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b14-tl4.png)",
+      "correct_answer": "sđ AB = 60°; sđ BC = 135°; sđ CA = 165°",
+      "explanation": "Phương pháp giải:\nTam giác $OAB$ cân tại $O$ có một góc $60^\\circ$ nên đều; ba cung nhỏ $AB$, $BC$, $CA$ ghép thành cả đường tròn.\n\nLời giải:\nTam giác $OAB$ cân tại $O$ ($OA = OB$) có $\\widehat{OAB} = 60^\\circ$ nên là tam giác đều, suy ra $\\widehat{AOB} = 60^\\circ$: sđ cung $AB = 60^\\circ$.\nsđ cung $BC = \\widehat{BOC} = 135^\\circ$.\nsđ cung $CA = 360^\\circ - 60^\\circ - 135^\\circ = 165^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Chứng minh hình học liên quan đến dây và cung", "question_type": "TL", "difficulty": "3",
+      "content": "Cho $(O)$ đường kính $AB$ và dây cung $AC$. Chứng minh rằng $\\widehat{BAC} = \\dfrac{1}{2}\\text{sđ}\\,\\overset{\\frown}{BC}$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nTam giác $OAC$ cân tại $O$; góc $BOC$ là góc ngoài của tam giác đó.\n\nLời giải:\nTam giác $OAC$ có $OA = OC$ nên cân tại $O$, suy ra $\\widehat{OAC} = \\widehat{OCA}$.\nGóc $BOC$ là góc ngoài tại đỉnh $O$ của tam giác $OAC$ nên $\\widehat{BOC} = \\widehat{OAC} + \\widehat{OCA} = 2\\widehat{BAC}$.\nMà sđ cung $BC = \\widehat{BOC}$ (góc ở tâm). Vậy $\\widehat{BAC} = \\dfrac{1}{2}\\text{sđ}\\,\\overset{\\frown}{BC}$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ có $\\widehat{B} = 70^\\circ$, $\\widehat{C} = 50^\\circ$. Đường tròn $(O)$ nội tiếp tam giác đó tiếp xúc với các cạnh $AB$, $BC$, $CA$ theo thứ tự tại $D$, $E$, $F$. Tính số đo các cung $DE$, $EF$ và $FD$. (Đường tròn nội tiếp tam giác là đường tròn tiếp xúc với cả ba cạnh của tam giác; bán kính vuông góc với cạnh tại tiếp điểm.)",
+      "correct_answer": "sđ DE = 110°; sđ EF = 130°; sđ FD = 120°",
+      "explanation": "Phương pháp giải:\nTại tiếp điểm, bán kính vuông góc với cạnh nên tứ giác $BDOE$ có hai góc vuông, suy ra $\\widehat{DOE} = 180^\\circ - \\widehat{B}$; tương tự cho hai góc còn lại.\n\nLời giải:\n$\\widehat{A} = 180^\\circ - 70^\\circ - 50^\\circ = 60^\\circ$.\nTứ giác $BDOE$ có $\\widehat{ODB} = \\widehat{OEB} = 90^\\circ$ nên $\\widehat{DOE} = 180^\\circ - \\widehat{B} = 110^\\circ$: sđ cung nhỏ $DE = 110^\\circ$.\nTương tự $\\widehat{EOF} = 180^\\circ - \\widehat{C} = 130^\\circ$: sđ cung $EF = 130^\\circ$; $\\widehat{FOD} = 180^\\circ - \\widehat{A} = 120^\\circ$: sđ cung $FD = 120^\\circ$.\n(Kiểm tra: $110^\\circ + 130^\\circ + 120^\\circ = 360^\\circ$.)"
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Chứng minh hình học liên quan đến dây và cung", "question_type": "TL", "difficulty": "3",
+      "content": "Cho một nửa đường tròn $(O)$ và hai dây cung $AB \\parallel CD$ nằm trong nửa đường tròn đó. Chứng minh rằng $AC = BD$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nĐường thẳng qua $O$ vuông góc với $AB$ cũng vuông góc với $CD$, đi qua trung điểm của hai dây và là trục đối xứng của hình.\n\nLời giải:\nKẻ $OH \\perp AB$ tại $H$; vì $AB \\parallel CD$ nên $OH \\perp CD$ tại $K$. $H$ là trung điểm $AB$, $K$ là trung điểm $CD$, nên đường thẳng $OH$ là đường trung trực của cả $AB$ và $CD$.\nDo đó $A$ và $B$ đối xứng nhau qua $OH$, $C$ và $D$ đối xứng nhau qua $OH$. Phép đối xứng trục biến đoạn $AC$ thành đoạn $BD$ nên $AC = BD$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Cho đường tròn $(O; R)$. Gọi $H$ là trung điểm của bán kính $OB$. Dây $CD$ vuông góc với $OB$ tại $H$. Tính số đo cung nhỏ và cung lớn $CD$.",
+      "correct_answer": "Cung nhỏ 120°, cung lớn 240°",
+      "explanation": "Phương pháp giải:\nTrong tam giác vuông $OHC$: $\\cos\\widehat{COH} = \\dfrac{OH}{OC} = \\dfrac{1}{2}$.\n\nLời giải:\n$OH = \\dfrac{R}{2}$, $OC = R$ nên $\\cos\\widehat{COH} = \\dfrac{1}{2}$, suy ra $\\widehat{COH} = 60^\\circ$.\n$OH$ vuông góc với dây $CD$ nên là phân giác của góc $COD$: $\\widehat{COD} = 120^\\circ$.\nVậy cung nhỏ $CD$ có số đo $120^\\circ$, cung lớn $CD$ có số đo $240^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Số đo cung, góc ở tâm", "question_type": "TL", "difficulty": "2",
+      "content": "Cho $(O; R)$ và dây cung $MN = R\\sqrt{3}$. Kẻ $OK$ vuông góc với $MN$ tại $K$. Hãy tính:\na) Độ dài $OK$ theo $R$.\nb) Số đo các góc $MOK$ và $MON$.\nc) Số đo cung nhỏ và cung lớn $MN$.",
+      "correct_answer": "a) OK = R/2; b) MOK = 60°, MON = 120°; c) 120° và 240°",
+      "explanation": "Phương pháp giải:\n$K$ là trung điểm $MN$; dùng định lí Pythagore và tỉ số lượng giác trong tam giác vuông $OKM$.\n\nLời giải:\na) $KM = \\dfrac{R\\sqrt{3}}{2}$; $OK = \\sqrt{R^2 - \\dfrac{3R^2}{4}} = \\dfrac{R}{2}$.\nb) $\\cos\\widehat{MOK} = \\dfrac{OK}{OM} = \\dfrac{1}{2}$ nên $\\widehat{MOK} = 60^\\circ$; $\\widehat{MON} = 2\\widehat{MOK} = 120^\\circ$.\nc) Cung nhỏ $MN$: $120^\\circ$; cung lớn $MN$: $240^\\circ$."
+    },
+    {
+      "topic": "Chương 5. Đường tròn", "lesson": "Bài 14. Cung và dây của một đường tròn",
+      "math_form": "Chứng minh hình học liên quan đến dây và cung", "question_type": "TL", "difficulty": "4",
+      "content": "Cho hai đường tròn bằng nhau $(O)$ và $(O')$ cắt nhau tại $A$ và $B$. Kẻ dây $AM$ của đường tròn $(O)$ và dây $BN$ của đường tròn $(O')$ sao cho $AM \\parallel BN$. Chứng minh $AM = BN$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nHai đường tròn bằng nhau nên trung điểm $I$ của $OO'$ cũng là trung điểm của $AB$; phép đối xứng tâm $I$ biến $(O)$ thành $(O')$, $A$ thành $B$ và dây $AM$ thành dây $BN$.\n\nLời giải:\nVì $OA = OB = O'A = O'B$ (hai đường tròn có cùng bán kính) nên $OAO'B$ là hình thoi; hai đường chéo $OO'$ và $AB$ cắt nhau tại trung điểm $I$ của mỗi đường.\nXét phép đối xứng tâm $I$: nó biến $O$ thành $O'$, do đó biến đường tròn $(O)$ thành đường tròn $(O')$ (cùng bán kính); biến $A$ thành $B$; biến đường thẳng $AM$ thành đường thẳng đi qua $B$ và song song với $AM$, tức là đường thẳng $BN$.\nGiao điểm thứ hai $M$ của đường thẳng $AM$ với $(O)$ được biến thành giao điểm thứ hai của đường thẳng $BN$ với $(O')$, tức là $N$. Vậy đoạn $AM$ biến thành đoạn $BN$, suy ra $AM = BN$."
+    }
+  ]
+}

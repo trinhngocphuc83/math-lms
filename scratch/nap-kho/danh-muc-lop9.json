@@ -1,0 +1,884 @@
+[
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Biểu diễn tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng toạ độ"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Giải hệ phương trình bằng máy tính cầm tay"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Giải hệ phương trình bằng phương pháp thế"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Hệ phương trình chứa tham số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Ứng dụng hệ phương trình để cân bằng phương trình hoá học"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+  "math_form": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+  "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+  "math_form": "Toán chuyển động trên bộ"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+  "math_form": "Toán có nội dung hình học"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+  "math_form": "Toán công việc, năng suất"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+  "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+  "math_form": "Toán về quan hệ giữa các số, chữ số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+  "math_form": "Toán về tỉ số phần trăm"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+  "lesson": "Ôn tập chương 1",
+  "math_form": "Bài tập tổng hợp chương 1"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 4. Phương trình quy về phương trình bậc nhất một ẩn",
+  "math_form": "Giải bài toán bằng cách lập phương trình"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 4. Phương trình quy về phương trình bậc nhất một ẩn",
+  "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 4. Phương trình quy về phương trình bậc nhất một ẩn",
+  "math_form": "Giải phương trình chứa ẩn ở mẫu"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 4. Phương trình quy về phương trình bậc nhất một ẩn",
+  "math_form": "Giải phương trình đưa về phương trình tích"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 4. Phương trình quy về phương trình bậc nhất một ẩn",
+  "math_form": "Giải phương trình tích cơ bản"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 5. Bất đẳng thức và tính chất",
+  "math_form": "Chứng minh bất đẳng thức"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 5. Bất đẳng thức và tính chất",
+  "math_form": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 5. Bất đẳng thức và tính chất",
+  "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 5. Bất đẳng thức và tính chất",
+  "math_form": "Ứng dụng thực tế của bất đẳng thức"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 6. Bất phương trình bậc nhất một ẩn",
+  "math_form": "Bất phương trình bậc nhất một ẩn chứa tham số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 6. Bất phương trình bậc nhất một ẩn",
+  "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 6. Bất phương trình bậc nhất một ẩn",
+  "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 6. Bất phương trình bậc nhất một ẩn",
+  "math_form": "Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Bài 6. Bất phương trình bậc nhất một ẩn",
+  "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+  "lesson": "Ôn tập chương 2",
+  "math_form": "Bài tập tổng hợp chương 2"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 7. Căn bậc hai và căn thức bậc hai",
+  "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 7. Căn bậc hai và căn thức bậc hai",
+  "math_form": "So sánh các căn bậc hai"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 7. Căn bậc hai và căn thức bậc hai",
+  "math_form": "Tìm căn bậc hai, căn bậc hai số học của một số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 7. Căn bậc hai và căn thức bậc hai",
+  "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 7. Căn bậc hai và căn thức bậc hai",
+  "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 7. Căn bậc hai và căn thức bậc hai",
+  "math_form": "Ứng dụng thực tế của căn bậc hai"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 8. Khai căn bậc hai với phép nhân và phép chia",
+  "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 8. Khai căn bậc hai với phép nhân và phép chia",
+  "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 8. Khai căn bậc hai với phép nhân và phép chia",
+  "math_form": "So sánh các biểu thức chứa căn bậc hai"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 8. Khai căn bậc hai với phép nhân và phép chia",
+  "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+  "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+  "math_form": "Giải phương trình chứa căn thức bậc hai"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+  "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+  "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+  "math_form": "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa căn"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+  "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+  "math_form": "Ứng dụng thực tế của biểu thức chứa căn"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 10. Căn bậc ba và căn thức bậc ba",
+  "math_form": "So sánh các căn bậc ba"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 10. Căn bậc ba và căn thức bậc ba",
+  "math_form": "Tìm căn bậc ba của một số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 10. Căn bậc ba và căn thức bậc ba",
+  "math_form": "Tìm điều kiện xác định của căn thức bậc ba"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 10. Căn bậc ba và căn thức bậc ba",
+  "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Bài 10. Căn bậc ba và căn thức bậc ba",
+  "math_form": "Ứng dụng thực tế của căn bậc ba"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+  "lesson": "Ôn tập chương 3",
+  "math_form": "Bài tập tổng hợp chương 3"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 18. Hàm số y = ax² (a ≠ 0)",
+  "math_form": "Điểm thuộc đồ thị, tìm hệ số a"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 18. Hàm số y = ax² (a ≠ 0)",
+  "math_form": "Nhận biết hàm số y = ax², tính giá trị của hàm số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 18. Hàm số y = ax² (a ≠ 0)",
+  "math_form": "Ứng dụng thực tế của hàm số y = ax²"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 18. Hàm số y = ax² (a ≠ 0)",
+  "math_form": "Vẽ đồ thị hàm số y = ax² (parabol)"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 19. Phương trình bậc hai một ẩn",
+  "math_form": "Biện luận số nghiệm của phương trình bậc hai theo tham số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 19. Phương trình bậc hai một ẩn",
+  "math_form": "Giải phương trình bậc hai bằng công thức nghiệm"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 19. Phương trình bậc hai một ẩn",
+  "math_form": "Giải phương trình bậc hai bằng máy tính cầm tay"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 19. Phương trình bậc hai một ẩn",
+  "math_form": "Giải phương trình bậc hai khuyết và phương trình đưa về bậc hai"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 19. Phương trình bậc hai một ẩn",
+  "math_form": "Nhận biết phương trình bậc hai một ẩn, xác định hệ số"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 20. Định lí Viète và ứng dụng",
+  "math_form": "Tìm hai số khi biết tổng và tích"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 20. Định lí Viète và ứng dụng",
+  "math_form": "Tìm tham số để nghiệm thoả mãn điều kiện cho trước"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 20. Định lí Viète và ứng dụng",
+  "math_form": "Tính giá trị biểu thức đối xứng của hai nghiệm"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 20. Định lí Viète và ứng dụng",
+  "math_form": "Tính tổng và tích hai nghiệm, nhẩm nghiệm"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 21. Giải bài toán bằng cách lập phương trình",
+  "math_form": "Toán chuyển động"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 21. Giải bài toán bằng cách lập phương trình",
+  "math_form": "Toán có nội dung hình học"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 21. Giải bài toán bằng cách lập phương trình",
+  "math_form": "Toán công việc, năng suất"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Bài 21. Giải bài toán bằng cách lập phương trình",
+  "math_form": "Toán về số, tỉ số phần trăm và thực tế khác"
+ },
+ {
+  "subject": "Đại số",
+  "topic": "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn",
+  "lesson": "Ôn tập chương 6",
+  "math_form": "Bài tập tổng hợp chương 6"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+  "math_form": "Chứng minh hệ thức lượng giác"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+  "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+  "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+  "math_form": "Tính giá trị, rút gọn biểu thức lượng giác"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+  "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+  "math_form": "Giải tam giác vuông"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+  "math_form": "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+  "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+  "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+  "lesson": "Ôn tập chương 4",
+  "math_form": "Bài tập tổng hợp chương 4"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 13. Mở đầu về đường tròn",
+  "math_form": "Nhận biết đường tròn, hình tròn, vị trí của điểm so với đường tròn"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 13. Mở đầu về đường tròn",
+  "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 13. Mở đầu về đường tròn",
+  "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 13. Mở đầu về đường tròn",
+  "math_form": "Tính chất đối xứng của đường tròn"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 14. Cung và dây của một đường tròn",
+  "math_form": "Chứng minh hình học liên quan đến dây và cung"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 14. Cung và dây của một đường tròn",
+  "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 14. Cung và dây của một đường tròn",
+  "math_form": "So sánh độ dài hai dây và hai cung tương ứng"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 14. Cung và dây của một đường tròn",
+  "math_form": "Số đo cung, góc ở tâm"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+  "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+  "math_form": "Tính độ dài đường tròn, cung tròn"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 15. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+  "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+  "math_form": "Chứng minh, tính toán với tiếp tuyến"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+  "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+  "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 16. Vị trí tương đối của đường thẳng và đường tròn",
+  "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+  "math_form": "Nhận biết vị trí tương đối của hai đường tròn"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+  "math_form": "Tính chất đường nối tâm"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Bài 17. Vị trí tương đối của hai đường tròn",
+  "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 5. Đường tròn",
+  "lesson": "Ôn tập chương 5",
+  "math_form": "Bài tập tổng hợp chương 5"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 27. Góc nội tiếp",
+  "math_form": "Chứng minh hình học bằng góc nội tiếp"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 27. Góc nội tiếp",
+  "math_form": "Góc nội tiếp chắn nửa đường tròn, các góc nội tiếp cùng chắn một cung"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 27. Góc nội tiếp",
+  "math_form": "Nhận biết góc nội tiếp, tính số đo góc nội tiếp và cung bị chắn"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 28. Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác",
+  "math_form": "Đường tròn ngoại tiếp, nội tiếp tam giác vuông và tam giác đều"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 28. Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác",
+  "math_form": "Tính bán kính đường tròn ngoại tiếp, nội tiếp"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 28. Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác",
+  "math_form": "Xác định tâm đường tròn ngoại tiếp, nội tiếp tam giác"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 29. Tứ giác nội tiếp",
+  "math_form": "Chứng minh tứ giác nội tiếp"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 29. Tứ giác nội tiếp",
+  "math_form": "Hình chữ nhật, hình vuông nội tiếp đường tròn"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 29. Tứ giác nội tiếp",
+  "math_form": "Nhận biết tứ giác nội tiếp"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 29. Tứ giác nội tiếp",
+  "math_form": "Tính góc trong tứ giác nội tiếp"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 30. Đa giác đều",
+  "math_form": "Nhận biết đa giác đều"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 30. Đa giác đều",
+  "math_form": "Phép quay giữ nguyên đa giác đều"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 30. Đa giác đều",
+  "math_form": "Tính góc, cạnh, bán kính của đa giác đều"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Bài 30. Đa giác đều",
+  "math_form": "Ứng dụng thực tế của đa giác đều"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp",
+  "lesson": "Ôn tập chương 9",
+  "math_form": "Bài tập tổng hợp chương 9"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 10. Một số hình khối trong thực tiễn",
+  "lesson": "Bài 31. Hình trụ và hình nón",
+  "math_form": "Nhận biết các yếu tố của hình trụ, hình nón"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 10. Một số hình khối trong thực tiễn",
+  "lesson": "Bài 31. Hình trụ và hình nón",
+  "math_form": "Tính diện tích xung quanh, thể tích hình nón"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 10. Một số hình khối trong thực tiễn",
+  "lesson": "Bài 31. Hình trụ và hình nón",
+  "math_form": "Tính diện tích xung quanh, thể tích hình trụ"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 10. Một số hình khối trong thực tiễn",
+  "lesson": "Bài 31. Hình trụ và hình nón",
+  "math_form": "Ứng dụng thực tế về hình trụ, hình nón"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 10. Một số hình khối trong thực tiễn",
+  "lesson": "Bài 32. Hình cầu",
+  "math_form": "Nhận biết các yếu tố của hình cầu"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 10. Một số hình khối trong thực tiễn",
+  "lesson": "Bài 32. Hình cầu",
+  "math_form": "Tính diện tích mặt cầu và thể tích hình cầu"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 10. Một số hình khối trong thực tiễn",
+  "lesson": "Bài 32. Hình cầu",
+  "math_form": "Ứng dụng thực tế về hình cầu"
+ },
+ {
+  "subject": "Hình học",
+  "topic": "Chương 10. Một số hình khối trong thực tiễn",
+  "lesson": "Ôn tập chương 10",
+  "math_form": "Bài tập tổng hợp chương 10"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Bài 22. Bảng tần số và biểu đồ tần số",
+  "math_form": "Lập bảng tần số"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Bài 22. Bảng tần số và biểu đồ tần số",
+  "math_form": "Phân tích số liệu từ bảng và biểu đồ tần số"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Bài 22. Bảng tần số và biểu đồ tần số",
+  "math_form": "Vẽ biểu đồ tần số"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Bài 23. Bảng tần số tương đối và biểu đồ tần số tương đối",
+  "math_form": "Lập bảng tần số tương đối"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Bài 23. Bảng tần số tương đối và biểu đồ tần số tương đối",
+  "math_form": "Phân tích số liệu từ bảng và biểu đồ tần số tương đối"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Bài 23. Bảng tần số tương đối và biểu đồ tần số tương đối",
+  "math_form": "Vẽ biểu đồ tần số tương đối (cột, hình quạt tròn)"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Bài 24. Bảng tần số, tần số tương đối ghép nhóm và biểu đồ",
+  "math_form": "Lập bảng tần số, tần số tương đối ghép nhóm"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Bài 24. Bảng tần số, tần số tương đối ghép nhóm và biểu đồ",
+  "math_form": "Phân tích số liệu ghép nhóm"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Bài 24. Bảng tần số, tần số tương đối ghép nhóm và biểu đồ",
+  "math_form": "Vẽ biểu đồ tần số, tần số tương đối ghép nhóm"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 7. Tần số và tần số tương đối",
+  "lesson": "Ôn tập chương 7",
+  "math_form": "Bài tập tổng hợp chương 7"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 8. Xác suất của biến cố trong một số mô hình xác suất đơn giản",
+  "lesson": "Bài 25. Phép thử ngẫu nhiên và không gian mẫu",
+  "math_form": "Mô tả các kết quả thuận lợi cho biến cố"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 8. Xác suất của biến cố trong một số mô hình xác suất đơn giản",
+  "lesson": "Bài 25. Phép thử ngẫu nhiên và không gian mẫu",
+  "math_form": "Nhận biết phép thử ngẫu nhiên, mô tả không gian mẫu"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 8. Xác suất của biến cố trong một số mô hình xác suất đơn giản",
+  "lesson": "Bài 26. Xác suất của biến cố liên quan tới phép thử",
+  "math_form": "Bài toán xác suất thực tế"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 8. Xác suất của biến cố trong một số mô hình xác suất đơn giản",
+  "lesson": "Bài 26. Xác suất của biến cố liên quan tới phép thử",
+  "math_form": "Tính xác suất của biến cố bằng tỉ số kết quả thuận lợi"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 8. Xác suất của biến cố trong một số mô hình xác suất đơn giản",
+  "lesson": "Bài 26. Xác suất của biến cố liên quan tới phép thử",
+  "math_form": "Xác suất trong phép thử hai giai đoạn (gieo hai xúc xắc, chọn hai đối tượng)"
+ },
+ {
+  "subject": "Thống kê",
+  "topic": "Chương 8. Xác suất của biến cố trong một số mô hình xác suất đơn giản",
+  "lesson": "Ôn tập chương 8",
+  "math_form": "Bài tập tổng hợp chương 8"
+ }
+]

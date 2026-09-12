@@ -1,0 +1,252 @@
+{
+  "grade": "9",
+  "subject": "Hình học",
+  "nguon": "Vở bài tập Toán 9 tập 1 (chương trình mới), Bài 12, tr. 279–299",
+  "cau": [
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Giải tam giác vuông", "question_type": "TL", "difficulty": "2",
+      "content": "a) Giải tam giác $ABC$ vuông tại $A$, biết $AB = 5$ và $AC = 8$.\nb) Giải tam giác $ABC$ vuông tại $A$, biết $AB = 3{,}5$ và $AC = 4{,}2$.\n(Độ dài làm tròn đến chữ số thập phân thứ hai, góc làm tròn đến độ.)",
+      "correct_answer": "a) BC ≈ 9,43; B ≈ 58°; C ≈ 32°. b) BC ≈ 5,47; B ≈ 50°; C ≈ 40°",
+      "explanation": "Phương pháp giải:\nBiết hai cạnh góc vuông: cạnh huyền tính bằng định lí Pythagore, góc $B$ tính từ $\\tan B = \\dfrac{AC}{AB}$, góc $C = 90^\\circ - B$.\n\nLời giải:\na) $BC = \\sqrt{5^2 + 8^2} = \\sqrt{89} \\approx 9{,}43$. $\\tan B = \\dfrac{8}{5} = 1{,}6$ nên $\\widehat{B} \\approx 58^\\circ$, $\\widehat{C} \\approx 32^\\circ$.\nb) $BC = \\sqrt{3{,}5^2 + 4{,}2^2} = \\sqrt{29{,}89} \\approx 5{,}47$. $\\tan B = \\dfrac{4{,}2}{3{,}5} = 1{,}2$ nên $\\widehat{B} \\approx 50^\\circ$, $\\widehat{C} \\approx 40^\\circ$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Giải tam giác vuông", "question_type": "TL", "difficulty": "2",
+      "content": "Giải tam giác $ABC$ vuông tại $A$, biết $AB = 3{,}0$ và $BC = 4{,}5$ (độ dài làm tròn đến chữ số thập phân thứ hai, góc làm tròn đến độ).",
+      "correct_answer": "AC ≈ 3,35; B ≈ 48°; C ≈ 42°",
+      "explanation": "Phương pháp giải:\nBiết một cạnh góc vuông và cạnh huyền: cạnh còn lại tính bằng Pythagore, góc $B$ từ $\\cos B = \\dfrac{AB}{BC}$.\n\nLời giải:\n$AC = \\sqrt{4{,}5^2 - 3^2} = \\sqrt{11{,}25} \\approx 3{,}35$.\n$\\cos B = \\dfrac{3}{4{,}5} = \\dfrac{2}{3}$ nên $\\widehat{B} \\approx 48^\\circ$; $\\widehat{C} = 90^\\circ - \\widehat{B} \\approx 42^\\circ$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Giải tam giác vuông", "question_type": "TL", "difficulty": "2",
+      "content": "Giải tam giác $ABC$ vuông tại $A$, biết $\\widehat{B} = 50^\\circ$ và $AB = 3{,}7$ (kết quả làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "C = 40°; AC ≈ 4,4; BC ≈ 5,8",
+      "explanation": "Phương pháp giải:\nBiết một cạnh góc vuông và một góc nhọn: $\\widehat{C} = 90^\\circ - \\widehat{B}$; $AC = AB \\tan B$; $BC = \\dfrac{AB}{\\cos B}$.\n\nLời giải:\n$\\widehat{C} = 90^\\circ - 50^\\circ = 40^\\circ$.\n$AC = AB \\cdot \\tan B = 3{,}7 \\cdot \\tan 50^\\circ \\approx 4{,}4$.\n$BC = \\dfrac{AB}{\\cos B} = \\dfrac{3{,}7}{\\cos 50^\\circ} \\approx 5{,}8$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Giải tam giác vuông", "question_type": "TL", "difficulty": "2",
+      "content": "Giải tam giác $ABC$ vuông tại $A$, biết $\\widehat{B} = 57^\\circ$ và $BC = 4{,}5$ (kết quả làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "C = 33°; AB ≈ 2,5; AC ≈ 3,8",
+      "explanation": "Phương pháp giải:\nBiết cạnh huyền và một góc nhọn: $AB = BC\\cos B$, $AC = BC\\sin B$.\n\nLời giải:\n$\\widehat{C} = 90^\\circ - 57^\\circ = 33^\\circ$.\n$AB = BC \\cdot \\cos B = 4{,}5 \\cdot \\cos 57^\\circ \\approx 2{,}5$.\n$AC = BC \\cdot \\sin B = 4{,}5 \\cdot \\sin 57^\\circ \\approx 3{,}8$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Giải tam giác vuông", "question_type": "TL", "difficulty": "2",
+      "content": "Cho tam giác $OPQ$ vuông tại $O$ có $\\widehat{P} = 36^\\circ$, $PQ = 7$. Hãy giải tam giác vuông $OPQ$ (kết quả làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "Q = 54°; OQ ≈ 4,1; OP ≈ 5,7",
+      "explanation": "Phương pháp giải:\nCạnh huyền $PQ$ đã biết: $OQ = PQ\\sin P$ (cạnh đối góc $P$), $OP = PQ\\cos P$ (cạnh kề góc $P$).\n\nLời giải:\n$\\widehat{Q} = 90^\\circ - 36^\\circ = 54^\\circ$.\n$OQ = PQ \\cdot \\sin P = 7 \\cdot \\sin 36^\\circ \\approx 4{,}1$.\n$OP = PQ \\cdot \\cos P = 7 \\cdot \\cos 36^\\circ \\approx 5{,}7$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng", "question_type": "TL", "difficulty": "2",
+      "content": "Cho tam giác $ABC$ vuông tại $A$ có $AB = 12$ cm, $\\widehat{C} = 40^\\circ$. Hãy tính độ dài (làm tròn đến chữ số thập phân thứ nhất):\na) $AC$;\nb) $BC$;\nc) phân giác $BD$ của góc $B$ ($D$ thuộc $AC$).",
+      "correct_answer": "a) AC ≈ 14,3 cm; b) BC ≈ 18,7 cm; c) BD ≈ 13,2 cm",
+      "explanation": "Phương pháp giải:\n$AB = AC\\tan C$, $AB = BC\\sin C$; phân giác $BD$ tạo với $AB$ góc $\\widehat{ABD} = \\dfrac{\\widehat{B}}{2}$ và $AB = BD\\cos\\widehat{ABD}$.\n\nLời giải:\na) $AC = \\dfrac{AB}{\\tan C} = \\dfrac{12}{\\tan 40^\\circ} \\approx 14{,}3$ cm.\nb) $BC = \\dfrac{AB}{\\sin C} = \\dfrac{12}{\\sin 40^\\circ} \\approx 18{,}7$ cm.\nc) $\\widehat{B} = 50^\\circ$ nên $\\widehat{ABD} = 25^\\circ$. Trong tam giác $ABD$ vuông tại $A$: $BD = \\dfrac{AB}{\\cos 25^\\circ} = \\dfrac{12}{\\cos 25^\\circ} \\approx 13{,}2$ cm."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng", "question_type": "TL", "difficulty": "2",
+      "content": "Cho tam giác $ABC$ vuông tại $A$, đường cao $AH$. Biết $AB = 2{,}5$; $BH = 1{,}5$. Tính $\\widehat{B}$, $\\widehat{C}$ (làm tròn đến độ) và $AC$ (làm tròn đến chữ số thập phân thứ hai).",
+      "correct_answer": "B ≈ 53°; C ≈ 37°; AC ≈ 3,33",
+      "explanation": "Phương pháp giải:\nTrong tam giác vuông $ABH$: $\\cos B = \\dfrac{BH}{AB}$; sau đó $AC = AB\\tan B$.\n\nLời giải:\n$\\cos B = \\dfrac{1{,}5}{2{,}5} = 0{,}6$ nên $\\widehat{B} \\approx 53^\\circ$, $\\widehat{C} \\approx 37^\\circ$.\n$AH = \\sqrt{2{,}5^2 - 1{,}5^2} = 2$ nên $\\tan B = \\dfrac{AH}{BH} = \\dfrac{4}{3}$.\n$AC = AB \\cdot \\tan B = 2{,}5 \\cdot \\dfrac{4}{3} \\approx 3{,}33$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ có $\\widehat{B} = 65^\\circ$, $\\widehat{C} = 45^\\circ$ và $AB = 2{,}8$ cm. Tính các góc và cạnh còn lại của tam giác đó (gọi là giải tam giác $ABC$; kết quả làm tròn đến chữ số thập phân thứ hai).",
+      "correct_answer": "A = 70°; AC ≈ 3,59 cm; BC ≈ 3,72 cm",
+      "explanation": "Phương pháp giải:\nKẻ đường cao $AH$ để tạo hai tam giác vuông $ABH$ và $ACH$; tính $AH$, $BH$ từ tam giác $ABH$, rồi $AC$, $CH$ từ tam giác $ACH$.\n\nLời giải:\n$\\widehat{A} = 180^\\circ - 65^\\circ - 45^\\circ = 70^\\circ$.\nKẻ $AH \\perp BC$. Trong tam giác $ABH$ vuông tại $H$: $AH = AB\\sin B = 2{,}8\\sin 65^\\circ \\approx 2{,}54$ cm; $BH = AB\\cos B = 2{,}8\\cos 65^\\circ \\approx 1{,}18$ cm.\nTrong tam giác $ACH$ vuông tại $H$: $AC = \\dfrac{AH}{\\sin C} = \\dfrac{2{,}54}{\\sin 45^\\circ} \\approx 3{,}59$ cm; $CH = \\dfrac{AH}{\\tan C} = AH \\approx 2{,}54$ cm.\n$BC = BH + CH \\approx 3{,}72$ cm."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TLN", "difficulty": "3",
+      "content": "Cho tam giác $ABC$, trong đó $BC = 11$ cm, $\\widehat{ABC} = 38^\\circ$, $\\widehat{ACB} = 30^\\circ$. Gọi điểm $N$ là chân của đường vuông góc kẻ từ $A$ đến cạnh $BC$. Hãy tính độ dài đoạn thẳng $AN$ theo cm (làm tròn kết quả đến chữ số thập phân thứ hai).",
+      "correct_answer": "3,65",
+      "explanation": "Phương pháp giải:\nĐặt $BN = x$ thì $NC = 11 - x$; viết $AN$ theo hai tam giác vuông $ABN$ và $ACN$ rồi cho bằng nhau.\n\nLời giải:\n$AN = BN\\tan 38^\\circ = NC\\tan 30^\\circ$ nên $x\\tan 38^\\circ = (11 - x)\\tan 30^\\circ$.\n$x(\\tan 38^\\circ + \\tan 30^\\circ) = 11\\tan 30^\\circ \\Rightarrow x = \\dfrac{11\\tan 30^\\circ}{\\tan 38^\\circ + \\tan 30^\\circ} \\approx 4{,}67$ cm.\n$AN = x\\tan 38^\\circ \\approx 4{,}67 \\cdot 0{,}7813 \\approx 3{,}65$ cm."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ có $BC = 6$ cm, $\\widehat{B} = 60^\\circ$, $\\widehat{C} = 40^\\circ$. Hãy tính (làm tròn đến chữ số thập phân thứ nhất):\na) Chiều cao $CH$ và cạnh $AC$;\nb) Diện tích tam giác $ABC$.",
+      "correct_answer": "a) CH ≈ 5,2 cm; AC ≈ 5,3 cm. b) S ≈ 10,2 cm²",
+      "explanation": "Phương pháp giải:\nĐường cao $CH$ ($H$ thuộc $AB$) nằm trong tam giác vuông $BCH$: $CH = BC\\sin B$. Góc $A = 80^\\circ$ cho $AC = \\dfrac{CH}{\\sin A}$. Diện tích $S = \\dfrac{1}{2}AB \\cdot CH$ với $AB = BH + HA$.\n\nLời giải:\na) $CH = BC\\sin 60^\\circ = 6 \\cdot \\dfrac{\\sqrt{3}}{2} \\approx 5{,}2$ cm. $\\widehat{A} = 180^\\circ - 60^\\circ - 40^\\circ = 80^\\circ$; $AC = \\dfrac{CH}{\\sin 80^\\circ} \\approx \\dfrac{5{,}196}{0{,}9848} \\approx 5{,}3$ cm.\nb) $BH = BC\\cos 60^\\circ = 3$ cm; $HA = \\dfrac{CH}{\\tan 80^\\circ} \\approx 0{,}92$ cm; $AB \\approx 3{,}92$ cm.\n$S = \\dfrac{1}{2} \\cdot AB \\cdot CH \\approx \\dfrac{1}{2} \\cdot 3{,}92 \\cdot 5{,}196 \\approx 10{,}2$ cm²."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TL", "difficulty": "3",
+      "content": "Giải tam giác $ABC$ biết $\\widehat{B} = 65^\\circ$, $\\widehat{C} = 40^\\circ$ và $BC = 4{,}2$ cm (kết quả làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "A = 75°; AB ≈ 2,8 cm; AC ≈ 3,9 cm",
+      "explanation": "Phương pháp giải:\nKẻ đường cao $AH$, đặt $BH = x$, viết $AH$ theo hai tam giác vuông rồi giải tìm $x$.\n\nLời giải:\n$\\widehat{A} = 180^\\circ - 65^\\circ - 40^\\circ = 75^\\circ$.\nKẻ $AH \\perp BC$, đặt $BH = x$ thì $CH = 4{,}2 - x$. $AH = x\\tan 65^\\circ = (4{,}2 - x)\\tan 40^\\circ$, suy ra $x = \\dfrac{4{,}2\\tan 40^\\circ}{\\tan 65^\\circ + \\tan 40^\\circ} \\approx 1{,}18$ cm và $AH \\approx 1{,}18 \\cdot \\tan 65^\\circ \\approx 2{,}53$ cm.\n$AB = \\dfrac{AH}{\\sin 65^\\circ} \\approx 2{,}8$ cm; $AC = \\dfrac{AH}{\\sin 40^\\circ} \\approx 3{,}9$ cm."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TL", "difficulty": "3",
+      "content": "Giải tam giác nhọn $ABC$ biết $AB = 2{,}1$, $AC = 3{,}8$ và $\\widehat{B} = 70^\\circ$ (góc làm tròn đến độ, độ dài làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "C ≈ 31°; A ≈ 79°; BC ≈ 4,0",
+      "explanation": "Phương pháp giải:\nKẻ đường cao $AH$: tam giác $ABH$ cho $AH$, $BH$; tam giác $ACH$ cho $\\sin C = \\dfrac{AH}{AC}$ và $CH$.\n\nLời giải:\nKẻ $AH \\perp BC$. $AH = AB\\sin 70^\\circ \\approx 1{,}97$; $BH = AB\\cos 70^\\circ \\approx 0{,}72$.\n$\\sin C = \\dfrac{AH}{AC} \\approx \\dfrac{1{,}97}{3{,}8} \\approx 0{,}519$ nên $\\widehat{C} \\approx 31^\\circ$; $\\widehat{A} = 180^\\circ - 70^\\circ - 31^\\circ \\approx 79^\\circ$.\n$CH = \\sqrt{AC^2 - AH^2} \\approx \\sqrt{14{,}44 - 3{,}89} \\approx 3{,}25$; $BC = BH + CH \\approx 4{,}0$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ nhọn. Đặt $BC = a$; $AC = b$; $AB = c$. Chứng minh rằng $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nKẻ một đường cao, biểu diễn nó theo hai cách bằng sin của hai góc kề.\n\nLời giải:\nKẻ đường cao $BH$ ($H$ thuộc $AC$). Trong tam giác $ABH$ vuông tại $H$: $BH = AB\\sin A = c\\sin A$. Trong tam giác $CBH$ vuông tại $H$: $BH = BC\\sin C = a\\sin C$.\nSuy ra $c\\sin A = a\\sin C$, tức là $\\dfrac{a}{\\sin A} = \\dfrac{c}{\\sin C}$.\nTương tự, kẻ đường cao $AK$ ($K$ thuộc $BC$): $AK = c\\sin B = b\\sin C$ nên $\\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}$.\nVậy $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C}$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ có góc $A$ nhọn. Chứng minh rằng diện tích tam giác $ABC$ là $S = \\dfrac{1}{2}AB \\cdot AC \\cdot \\sin A$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nKẻ đường cao $CH$ xuống $AB$ và biểu diễn $CH$ qua $AC$ và $\\sin A$.\n\nLời giải:\nKẻ $CH \\perp AB$ ($H$ thuộc đường thẳng $AB$). Trong tam giác $ACH$ vuông tại $H$: $CH = AC\\sin A$ (vì góc $A$ nhọn).\nDiện tích tam giác $ABC$: $S = \\dfrac{1}{2}AB \\cdot CH = \\dfrac{1}{2}AB \\cdot AC \\cdot \\sin A$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TL", "difficulty": "4",
+      "content": "Cho tam giác nhọn $ABC$ có $AB < AC$, đường cao $AH = h$, đường trung tuyến $AM$, đặt $\\widehat{HAM} = \\alpha$. Chứng minh rằng:\na) $HC - HB = 2h\\tan\\alpha$;\nb) $\\tan\\alpha = \\dfrac{\\cot C - \\cot B}{2}$.",
+      "correct_answer": "Chứng minh",
+      "explanation": "Phương pháp giải:\nTính $HM$ trong tam giác vuông $AHM$; dùng $M$ là trung điểm $BC$ để viết $HC$, $HB$ theo $HM$; rồi viết $\\cot B$, $\\cot C$ theo $HB$, $HC$ và $h$.\n\nLời giải:\na) Vì $AB < AC$ nên $H$ nằm giữa $B$ và $M$. Trong tam giác $AHM$ vuông tại $H$: $HM = AH\\tan\\alpha = h\\tan\\alpha$.\n$HC = HM + MC$ và $HB = MB - HM$, mà $MB = MC$, nên $HC - HB = 2HM = 2h\\tan\\alpha$.\nb) $\\cot C = \\dfrac{HC}{AH} = \\dfrac{HC}{h}$, $\\cot B = \\dfrac{HB}{h}$. Do đó $\\dfrac{\\cot C - \\cot B}{2} = \\dfrac{HC - HB}{2h} = \\dfrac{2h\\tan\\alpha}{2h} = \\tan\\alpha$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "2",
+      "content": "Một cột đèn $AB$ cao $6$ m có bóng in trên mặt đất là $AC$ dài $3{,}5$ m. Hãy tính góc $\\widehat{BCA}$ mà tia sáng mặt trời tạo với mặt đất (làm tròn kết quả đến hàng đơn vị của độ).",
+      "correct_answer": "60",
+      "explanation": "Phương pháp giải:\nTam giác $ABC$ vuông tại $A$: $\\tan\\widehat{BCA} = \\dfrac{AB}{AC}$.\n\nLời giải:\n$\\tan\\widehat{BCA} = \\dfrac{6}{3{,}5} \\approx 1{,}714$ nên $\\widehat{BCA} \\approx 59^\\circ 44' \\approx 60^\\circ$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "2",
+      "content": "Một cầu trượt trong công viên có độ dốc là $28^\\circ$ và có độ cao là $2{,}1$ m. Tính độ dài của mặt cầu trượt theo mét (làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "4,5",
+      "explanation": "Phương pháp giải:\nMặt cầu trượt là cạnh huyền, độ cao là cạnh đối của góc dốc: $\\text{độ dài} = \\dfrac{\\text{độ cao}}{\\sin 28^\\circ}$.\n\nLời giải:\nĐộ dài mặt cầu trượt $= \\dfrac{2{,}1}{\\sin 28^\\circ} \\approx \\dfrac{2{,}1}{0{,}4695} \\approx 4{,}5$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "2",
+      "content": "Trong trò chơi đánh đu của một lễ hội vào mùa xuân, khi người chơi nhún đều, cây đu sẽ đưa người chơi dao động quanh vị trí cân bằng. Người chơi đang ở vị trí $A$ với $OA = 5$ m ($O$ là điểm treo) và dây $OA$ tạo với phương thẳng đứng một góc $\\widehat{AOI} = 16^\\circ$ ($I$ là hình chiếu của $A$ lên phương thẳng đứng qua $O$). Tính khoảng cách $AI$ theo mét (làm tròn kết quả đến hàng phần trăm của mét).",
+      "correct_answer": "1,38",
+      "explanation": "Phương pháp giải:\nTam giác $OAI$ vuông tại $I$: $AI = OA\\sin\\widehat{AOI}$.\n\nLời giải:\n$AI = 5 \\cdot \\sin 16^\\circ \\approx 5 \\cdot 0{,}2756 \\approx 1{,}38$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "3",
+      "content": "Khoảng cách giữa hai chân tháp $AB$ và $MN$ là $a$ (như hình vẽ). Từ đỉnh $A$ của tháp $AB$ nhìn lên đỉnh $M$ của tháp $MN$ ta được góc $\\alpha$. Từ đỉnh $A$ nhìn xuống chân $N$ của tháp $MN$ ta được góc $\\beta$ (so với phương nằm ngang $AH$). Hãy tìm chiều cao $MN$ theo mét (làm tròn đến hàng đơn vị) nếu $a = 120$ m, $\\alpha = 30^\\circ$ và $\\beta = 20^\\circ$.\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b12-c19.png)",
+      "correct_answer": "113",
+      "explanation": "Phương pháp giải:\n$AH = BN = a$; $MH = a\\tan\\alpha$, $HN = a\\tan\\beta$; $MN = MH + HN$.\n\nLời giải:\n$MH = 120\\tan 30^\\circ \\approx 69{,}28$ m; $HN = 120\\tan 20^\\circ \\approx 43{,}68$ m.\n$MN = MH + HN \\approx 112{,}96 \\approx 113$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "3",
+      "content": "Người ta cần lắp đặt một thiết bị chiếu sáng gắn trên tường cho một phòng triển lãm. Thiết bị này có góc chiếu sáng là $20^\\circ$ và cần đặt cao hơn mặt đất là $2{,}5$ m. Người ta đặt thiết bị này sát tường và căn chỉnh sao cho trên mặt đất dải ánh sáng bắt đầu từ vị trí cách tường $2$ m. Hãy tính độ dài vùng được chiếu sáng trên mặt đất theo mét (làm tròn đến chữ số thập phân thứ nhất).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b12-c20.png)",
+      "correct_answer": "2,1",
+      "explanation": "Phương pháp giải:\nTính góc giữa tia sáng gần và tường bằng $\\tan$, cộng thêm $20^\\circ$ để được góc của tia sáng xa, rồi tính khoảng cách từ tường tới mép xa của dải sáng.\n\nLời giải:\nGọi $\\theta_1$ là góc giữa tường và tia sáng gần: $\\tan\\theta_1 = \\dfrac{2}{2{,}5} = 0{,}8$ nên $\\theta_1 \\approx 38{,}66^\\circ$.\nGóc giữa tường và tia sáng xa: $\\theta_2 = \\theta_1 + 20^\\circ \\approx 58{,}66^\\circ$.\nKhoảng cách từ tường tới mép xa: $2{,}5\\tan\\theta_2 \\approx 2{,}5 \\cdot 1{,}641 \\approx 4{,}10$ m.\nĐộ dài vùng được chiếu sáng: $4{,}10 - 2 \\approx 2{,}1$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TL", "difficulty": "3",
+      "content": "Hai con thuyền $P$ và $Q$ cách nhau $300$ m và thẳng hàng với chân $B$ của tháp hải đăng ở trên bờ biển. Từ $P$ và $Q$ người ta nhìn thấy tháp hải đăng dưới các góc $\\widehat{BPA} = 14^\\circ$ và $\\widehat{BQA} = 42^\\circ$. Đặt $h = AB$ là chiều cao của tháp hải đăng.\na) Tính $BQ$ và $BP$ theo $h$.\nb) Tính chiều cao của tháp hải đăng (kết quả làm tròn đến hàng phần mười).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b12-c21.png)",
+      "correct_answer": "a) BQ = h·cot 42°; BP = h·cot 14°. b) h ≈ 103,4 m",
+      "explanation": "Phương pháp giải:\nTrong hai tam giác vuông $ABQ$ và $ABP$: cạnh kề $= h\\cot(\\text{góc})$; hiệu $BP - BQ = 300$ cho phương trình tìm $h$.\n\nLời giải:\na) $BQ = \\dfrac{AB}{\\tan 42^\\circ} = h\\cot 42^\\circ$; $BP = \\dfrac{AB}{\\tan 14^\\circ} = h\\cot 14^\\circ$.\nb) $BP - BQ = PQ = 300$ nên $h(\\cot 14^\\circ - \\cot 42^\\circ) = 300$.\n$h = \\dfrac{300}{\\cot 14^\\circ - \\cot 42^\\circ} \\approx \\dfrac{300}{4{,}011 - 1{,}111} \\approx 103{,}4$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TL", "difficulty": "2",
+      "content": "Một nhà trẻ muốn thiết kế hai cái cầu tuột trong sân chơi. Đối với trẻ dưới $5$ tuổi, cầu tuột cao $1{,}5$ m và nghiêng với mặt đất một góc $30^\\circ$. Đối với trẻ trên $5$ tuổi, cầu tuột cao $3$ m và nghiêng với mặt đất một góc $60^\\circ$. Tính chiều dài của mỗi máng tuột (làm tròn đến chữ số thập phân thứ nhất).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b12-c22.png)",
+      "correct_answer": "Máng nhỏ DE = 3 m; máng lớn AC ≈ 3,5 m",
+      "explanation": "Phương pháp giải:\nMáng tuột là cạnh huyền, chiều cao là cạnh đối góc nghiêng: chiều dài $= \\dfrac{\\text{chiều cao}}{\\sin(\\text{góc nghiêng})}$.\n\nLời giải:\nMáng cho trẻ dưới $5$ tuổi: $DE = \\dfrac{DB}{\\sin 30^\\circ} = \\dfrac{1{,}5}{0{,}5} = 3$ m.\nMáng cho trẻ trên $5$ tuổi: $AC = \\dfrac{AB}{\\sin 60^\\circ} = \\dfrac{3}{\\sqrt{3}/2} = 2\\sqrt{3} \\approx 3{,}5$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "3",
+      "content": "Từ trên một ngọn hải đăng cao $75$ m, người ta quan sát hai lần thấy một chiếc thuyền đang hướng về phía hải đăng với góc hạ lần lượt là $30^\\circ$ và $45^\\circ$. Hỏi thuyền đi được bao nhiêu mét giữa hai lần quan sát (làm tròn đến chữ số thập phân thứ nhất)?\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b12-c23.png)",
+      "correct_answer": "54,9",
+      "explanation": "Phương pháp giải:\nGóc hạ bằng góc mà thuyền nhìn lên đỉnh hải đăng (so le trong). Khoảng cách từ chân hải đăng tới thuyền $= \\dfrac{75}{\\tan(\\text{góc hạ})}$.\n\nLời giải:\nLần 1 (góc hạ $30^\\circ$): $AD = \\dfrac{75}{\\tan 30^\\circ} = 75\\sqrt{3} \\approx 129{,}9$ m.\nLần 2 (góc hạ $45^\\circ$): $AC = \\dfrac{75}{\\tan 45^\\circ} = 75$ m.\nThuyền đi được $DC = AD - AC \\approx 54{,}9$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Giải tam giác vuông", "question_type": "TL", "difficulty": "2",
+      "content": "Cho tam giác $ABC$ vuông tại $A$, có $BC = a$, $AC = b$, $AB = c$. Giải tam giác $ABC$ trong các trường hợp (độ dài làm tròn đến chữ số thập phân thứ nhất, góc làm tròn đến độ):\ni) $b = 10$ cm, $\\widehat{C} = 30^\\circ$;\nii) $a = 21$; $b = 18$.",
+      "correct_answer": "i) B = 60°; a ≈ 11,5 cm; c ≈ 5,8 cm. ii) c ≈ 10,8; B ≈ 59°; C ≈ 31°",
+      "explanation": "Phương pháp giải:\ni) $b$ là cạnh kề góc $C$: $a = \\dfrac{b}{\\cos C}$, $c = b\\tan C$. ii) $c = \\sqrt{a^2 - b^2}$, $\\sin B = \\dfrac{b}{a}$.\n\nLời giải:\ni) $\\widehat{B} = 60^\\circ$; $a = \\dfrac{10}{\\cos 30^\\circ} \\approx 11{,}5$ cm; $c = 10\\tan 30^\\circ \\approx 5{,}8$ cm.\nii) $c = \\sqrt{21^2 - 18^2} = \\sqrt{117} \\approx 10{,}8$; $\\sin B = \\dfrac{18}{21} \\approx 0{,}857$ nên $\\widehat{B} \\approx 59^\\circ$, $\\widehat{C} \\approx 31^\\circ$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Giải tam giác vuông", "question_type": "TL", "difficulty": "2",
+      "content": "Giải tam giác $ABC$ vuông tại $A$, biết (độ dài làm tròn đến chữ số thập phân thứ nhất, góc làm tròn đến độ):\na) $AB = 2{,}7$ và $AC = 4{,}5$;\nb) $AC = 4{,}0$ và $BC = 4{,}8$.",
+      "correct_answer": "a) BC ≈ 5,2; B ≈ 59°; C ≈ 31°. b) AB ≈ 2,7; B ≈ 56°; C ≈ 34°",
+      "explanation": "Phương pháp giải:\nDùng định lí Pythagore cho cạnh còn thiếu; góc $B$ từ $\\tan B = \\dfrac{AC}{AB}$ (câu a) hoặc $\\sin B = \\dfrac{AC}{BC}$ (câu b).\n\nLời giải:\na) $BC = \\sqrt{2{,}7^2 + 4{,}5^2} = \\sqrt{27{,}54} \\approx 5{,}2$; $\\tan B = \\dfrac{4{,}5}{2{,}7} \\approx 1{,}667$ nên $\\widehat{B} \\approx 59^\\circ$, $\\widehat{C} \\approx 31^\\circ$.\nb) $AB = \\sqrt{4{,}8^2 - 4^2} = \\sqrt{7{,}04} \\approx 2{,}7$; $\\sin B = \\dfrac{4}{4{,}8} \\approx 0{,}833$ nên $\\widehat{B} \\approx 56^\\circ$, $\\widehat{C} \\approx 34^\\circ$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TLN", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ cân tại $A$, đường cao $BH$. Biết $\\widehat{A} = 50^\\circ$, $BH = 2{,}3$. Tính chu vi của tam giác $ABC$ (làm tròn kết quả đến chữ số thập phân thứ nhất).",
+      "correct_answer": "8,5",
+      "explanation": "Phương pháp giải:\n$AB = \\dfrac{BH}{\\sin A}$ (tam giác $ABH$ vuông tại $H$); góc ở đáy $\\widehat{C} = \\dfrac{180^\\circ - 50^\\circ}{2} = 65^\\circ$ và $BC = \\dfrac{BH}{\\sin C}$.\n\nLời giải:\n$AB = AC = \\dfrac{2{,}3}{\\sin 50^\\circ} \\approx 3{,}00$; $BC = \\dfrac{2{,}3}{\\sin 65^\\circ} \\approx 2{,}54$.\nChu vi $\\approx 3{,}00 + 3{,}00 + 2{,}54 \\approx 8{,}5$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ có $BC = 15$ cm, $\\widehat{ABC} = 42^\\circ$ và $\\widehat{ACB} = 30^\\circ$. Gọi $H$ là chân đường cao hạ từ đỉnh $A$ xuống $BC$. Hãy tính (làm tròn đến chữ số thập phân thứ nhất):\na) Độ dài đoạn thẳng $AH$;\nb) Độ dài đoạn thẳng $AC$.",
+      "correct_answer": "a) AH ≈ 5,3 cm; b) AC ≈ 10,6 cm",
+      "explanation": "Phương pháp giải:\nĐặt $BH = x$, $CH = 15 - x$; $AH = x\\tan 42^\\circ = (15 - x)\\tan 30^\\circ$.\n\nLời giải:\na) $x\\tan 42^\\circ = (15 - x)\\tan 30^\\circ \\Rightarrow x = \\dfrac{15\\tan 30^\\circ}{\\tan 42^\\circ + \\tan 30^\\circ} \\approx 5{,}86$ cm; $AH = x\\tan 42^\\circ \\approx 5{,}3$ cm.\nb) $AC = \\dfrac{AH}{\\sin 30^\\circ} \\approx 2 \\cdot 5{,}28 \\approx 10{,}6$ cm."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TL", "difficulty": "3",
+      "content": "Cho tam giác $ABC$ vuông tại $A$. Biết $AB = 3$ cm, $BC = 5$ cm.\na) Giải tam giác vuông $ABC$ (góc làm tròn đến độ).\nb) Từ $B$ kẻ đường thẳng vuông góc với $BC$, đường thẳng này cắt đường thẳng $AC$ tại $D$. Tính độ dài các đoạn thẳng $AD$ và $BD$.",
+      "correct_answer": "a) AC = 4 cm; B ≈ 53°; C ≈ 37°. b) AD = 2,25 cm; BD = 3,75 cm",
+      "explanation": "Phương pháp giải:\na) Pythagore và $\\sin B = \\dfrac{AC}{BC}$. b) Tam giác $DBC$ vuông tại $B$ có góc $C$ chung với tam giác $ABC$: $BD = BC\\tan C$; tam giác $ABD$ vuông tại $A$ có $\\widehat{ABD} = 90^\\circ - \\widehat{ABC} = \\widehat{C}$ nên $AD = AB\\tan C$.\n\nLời giải:\na) $AC = \\sqrt{5^2 - 3^2} = 4$ cm. $\\sin B = \\dfrac{4}{5}$ nên $\\widehat{B} \\approx 53^\\circ$, $\\widehat{C} \\approx 37^\\circ$.\nb) $\\tan C = \\dfrac{AB}{AC} = \\dfrac{3}{4}$. $BD = BC\\tan C = 5 \\cdot \\dfrac{3}{4} = 3{,}75$ cm. $\\widehat{ABD} = \\widehat{C}$ nên $AD = AB\\tan C = 3 \\cdot \\dfrac{3}{4} = 2{,}25$ cm.\n(Kiểm tra: $CD = AC + AD = 6{,}25 = \\dfrac{BC}{\\cos C} = \\dfrac{5}{0{,}8}$.)"
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TLN", "difficulty": "3",
+      "content": "Tính diện tích tam giác $ABC$ (theo cm², làm tròn đến chữ số thập phân thứ hai) có $BC = 2$ cm, $\\widehat{B} = 45^\\circ$, $\\widehat{C} = 30^\\circ$.",
+      "correct_answer": "0,73",
+      "explanation": "Phương pháp giải:\nKẻ đường cao $AH$, đặt $AH = h$: $BH = h\\cot 45^\\circ = h$, $CH = h\\cot 30^\\circ = h\\sqrt{3}$; $BH + CH = 2$.\n\nLời giải:\n$h + h\\sqrt{3} = 2 \\Rightarrow h = \\dfrac{2}{1 + \\sqrt{3}} = \\sqrt{3} - 1 \\approx 0{,}732$ cm.\n$S = \\dfrac{1}{2} \\cdot BC \\cdot AH = \\dfrac{1}{2} \\cdot 2 \\cdot 0{,}732 \\approx 0{,}73$ cm²."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác", "question_type": "TLN", "difficulty": "3",
+      "content": "Cho hình thang $ABCD$ có $AB \\parallel CD$, $\\widehat{D} = 90^\\circ$, $\\widehat{C} = 38^\\circ$, $AB = 3{,}5$ và $AD = 3{,}1$. Tính diện tích hình thang $ABCD$ (làm tròn kết quả đến hàng đơn vị).",
+      "correct_answer": "17",
+      "explanation": "Phương pháp giải:\nKẻ $BH \\perp DC$ thì $ABHD$ là hình chữ nhật: $BH = AD$, $DH = AB$; $HC = \\dfrac{BH}{\\tan C}$.\n\nLời giải:\n$BH = AD = 3{,}1$; $HC = \\dfrac{3{,}1}{\\tan 38^\\circ} \\approx 3{,}97$; $DC = DH + HC = 3{,}5 + 3{,}97 \\approx 7{,}47$.\n$S = \\dfrac{(AB + DC) \\cdot AD}{2} \\approx \\dfrac{(3{,}5 + 7{,}47) \\cdot 3{,}1}{2} \\approx 17{,}0 \\approx 17$."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TL", "difficulty": "2",
+      "content": "Tính góc nghiêng $\\alpha$ và chiều rộng $AB$ của mái nhà kho trong hình sau, biết mái cao hơn ở mép $A$ là $0{,}9$ m so với mép $B$ và khoảng cách theo phương ngang giữa hai mép là $15$ m (góc làm tròn đến phút, độ dài làm tròn đến chữ số thập phân thứ hai).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b12-tl8.png)",
+      "correct_answer": "α ≈ 3°26'; AB ≈ 15,03 m",
+      "explanation": "Phương pháp giải:\nMái nhà, phương ngang và độ chênh cao tạo thành tam giác vuông: $\\tan\\alpha = \\dfrac{0{,}9}{15}$, $AB = \\sqrt{15^2 + 0{,}9^2}$.\n\nLời giải:\n$\\tan\\alpha = \\dfrac{0{,}9}{15} = 0{,}06$ nên $\\alpha \\approx 3^\\circ 26'$.\n$AB = \\sqrt{15^2 + 0{,}9^2} = \\sqrt{225{,}81} \\approx 15{,}03$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "2",
+      "content": "Một cột đèn có bóng trên mặt đất dài $7{,}5$ m. Các tia nắng mặt trời tạo với mặt đất một góc xấp xỉ bằng $42^\\circ$. Tính chiều cao của cột đèn theo mét (làm tròn đến chữ số thập phân thứ nhất).",
+      "correct_answer": "6,8",
+      "explanation": "Phương pháp giải:\nChiều cao $=$ bóng $\\times \\tan(\\text{góc nắng})$.\n\nLời giải:\nChiều cao cột đèn $= 7{,}5 \\cdot \\tan 42^\\circ \\approx 7{,}5 \\cdot 0{,}9004 \\approx 6{,}8$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "2",
+      "content": "Một cái cây có bóng trên mặt đất dài $20$ m. Cho biết tia nắng qua ngọn cây nghiêng một góc $31^\\circ$ so với mặt đất. Tính chiều cao của cây theo mét (làm tròn đến hàng đơn vị).",
+      "correct_answer": "12",
+      "explanation": "Phương pháp giải:\nCây, bóng cây và tia nắng tạo thành tam giác vuông: chiều cao $= 20\\tan 31^\\circ$.\n\nLời giải:\nChiều cao của cây $= 20 \\cdot \\tan 31^\\circ \\approx 20 \\cdot 0{,}6009 \\approx 12$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "2",
+      "content": "Một cái thang dài $4{,}8$ m dựa vào tường làm thành một góc $58^\\circ$ so với mặt đất. Tính chiều cao của thang so với mặt đất theo mét (làm tròn đến mét).",
+      "correct_answer": "4",
+      "explanation": "Phương pháp giải:\nThang là cạnh huyền, chiều cao là cạnh đối góc $58^\\circ$: $h = 4{,}8\\sin 58^\\circ$.\n\nLời giải:\n$h = 4{,}8 \\cdot \\sin 58^\\circ \\approx 4{,}8 \\cdot 0{,}848 \\approx 4{,}07 \\approx 4$ m."
+    },
+    {
+      "topic": "Chương 4. Hệ thức lượng trong tam giác vuông", "lesson": "Bài 12. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+      "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ", "question_type": "TLN", "difficulty": "2",
+      "content": "Từ đỉnh một toà nhà cao $54$ m, người ta nhìn thấy một ô tô đang đỗ dưới một góc nghiêng xuống là $40^\\circ$. Hỏi ô tô đang đỗ cách toà nhà đó khoảng bao nhiêu mét (làm tròn đến hàng đơn vị)?",
+      "correct_answer": "64",
+      "explanation": "Phương pháp giải:\nGóc nghiêng xuống $40^\\circ$ bằng góc mà từ ô tô nhìn lên đỉnh toà nhà; khoảng cách $= \\dfrac{54}{\\tan 40^\\circ}$.\n\nLời giải:\nKhoảng cách từ ô tô đến toà nhà $= \\dfrac{54}{\\tan 40^\\circ} \\approx \\dfrac{54}{0{,}8391} \\approx 64$ m."
+    }
+  ]
+}

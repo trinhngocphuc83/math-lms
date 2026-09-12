@@ -1,0 +1,447 @@
+{
+ "grade": "9",
+ "subject": "Hình học",
+ "nguon": "Vở bài tập Toán 9 tập 1 (chương trình mới), Bài 11, tr. 257–278",
+ "cau": [
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "question_type": "TL",
+   "difficulty": "1",
+   "content": "Cho tam giác $ABC$ vuông tại $A$. Biết $AB = 3$ cm, $AC = 4$ cm. Tính các tỉ số lượng giác của góc nhọn $B$.",
+   "correct_answer": "sin B = 4/5; cos B = 3/5; tan B = 4/3; cot B = 3/4",
+   "explanation": "Phương pháp giải:\nTính cạnh huyền bằng định lí Pythagore rồi áp dụng định nghĩa: $\\sin B = \\dfrac{\\text{cạnh đối}}{\\text{cạnh huyền}}$, $\\cos B = \\dfrac{\\text{cạnh kề}}{\\text{cạnh huyền}}$, $\\tan B = \\dfrac{\\text{cạnh đối}}{\\text{cạnh kề}}$, $\\cot B = \\dfrac{\\text{cạnh kề}}{\\text{cạnh đối}}$.\n\nLời giải:\n$BC = \\sqrt{AB^2 + AC^2} = \\sqrt{3^2 + 4^2} = 5$ cm.\nĐối với góc $B$: cạnh đối là $AC$, cạnh kề là $AB$.\n$\\sin B = \\dfrac{AC}{BC} = \\dfrac{4}{5}$; $\\cos B = \\dfrac{AB}{BC} = \\dfrac{3}{5}$; $\\tan B = \\dfrac{AC}{AB} = \\dfrac{4}{3}$; $\\cot B = \\dfrac{AB}{AC} = \\dfrac{3}{4}$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "question_type": "TL",
+   "difficulty": "1",
+   "content": "Cho tam giác $ABC$ vuông tại $A$, có $AB = 5$ cm, $AC = 12$ cm. Hãy tính các tỉ số lượng giác của góc $B$.",
+   "correct_answer": "sin B = 12/13; cos B = 5/13; tan B = 12/5; cot B = 5/12",
+   "explanation": "Phương pháp giải:\nTính cạnh huyền rồi áp dụng định nghĩa các tỉ số lượng giác của góc nhọn.\n\nLời giải:\n$BC = \\sqrt{5^2 + 12^2} = 13$ cm.\n$\\sin B = \\dfrac{AC}{BC} = \\dfrac{12}{13}$; $\\cos B = \\dfrac{AB}{BC} = \\dfrac{5}{13}$; $\\tan B = \\dfrac{AC}{AB} = \\dfrac{12}{5}$; $\\cot B = \\dfrac{AB}{AC} = \\dfrac{5}{12}$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Tam giác $ABC$ vuông tại $A$, $AB = 1{,}5$ cm; $BC = 3{,}5$ cm. Tính tỉ số lượng giác của góc $C$ rồi suy ra các tỉ số lượng giác của góc $B$.",
+   "correct_answer": "sin C = 3/7; cos C = 2√10/7; tan C = 3√10/20; cot C = 2√10/3; sin B = 2√10/7; cos B = 3/7; tan B = 2√10/3; cot B = 3√10/20",
+   "explanation": "Phương pháp giải:\nTính cạnh góc vuông còn lại, áp dụng định nghĩa cho góc $C$, rồi dùng tính chất hai góc phụ nhau: $\\sin B = \\cos C$, $\\cos B = \\sin C$, $\\tan B = \\cot C$, $\\cot B = \\tan C$.\n\nLời giải:\n$AC = \\sqrt{BC^2 - AB^2} = \\sqrt{3{,}5^2 - 1{,}5^2} = \\sqrt{10}$ cm.\n$\\sin C = \\dfrac{AB}{BC} = \\dfrac{1{,}5}{3{,}5} = \\dfrac{3}{7}$; $\\cos C = \\dfrac{AC}{BC} = \\dfrac{\\sqrt{10}}{3{,}5} = \\dfrac{2\\sqrt{10}}{7}$;\n$\\tan C = \\dfrac{AB}{AC} = \\dfrac{1{,}5}{\\sqrt{10}} = \\dfrac{3\\sqrt{10}}{20}$; $\\cot C = \\dfrac{AC}{AB} = \\dfrac{2\\sqrt{10}}{3}$.\nVì $B$ và $C$ phụ nhau nên $\\sin B = \\cos C = \\dfrac{2\\sqrt{10}}{7}$; $\\cos B = \\sin C = \\dfrac{3}{7}$; $\\tan B = \\cot C = \\dfrac{2\\sqrt{10}}{3}$; $\\cot B = \\tan C = \\dfrac{3\\sqrt{10}}{20}$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Tam giác $ABC$ cân tại $A$, có $BC = 6$, đường cao $AH = 4$. Tính các tỉ số lượng giác của góc $B$.",
+   "correct_answer": "sin B = 4/5; cos B = 3/5; tan B = 4/3; cot B = 3/4",
+   "explanation": "Phương pháp giải:\nTam giác cân nên đường cao $AH$ cũng là trung tuyến; xét tam giác vuông $AHB$.\n\nLời giải:\nVì $ABC$ cân tại $A$ nên $H$ là trung điểm $BC$, suy ra $BH = 3$.\nTam giác $AHB$ vuông tại $H$: $AB = \\sqrt{AH^2 + BH^2} = \\sqrt{16 + 9} = 5$.\n$\\sin B = \\dfrac{AH}{AB} = \\dfrac{4}{5}$; $\\cos B = \\dfrac{BH}{AB} = \\dfrac{3}{5}$; $\\tan B = \\dfrac{AH}{BH} = \\dfrac{4}{3}$; $\\cot B = \\dfrac{BH}{AH} = \\dfrac{3}{4}$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Tính $\\tan C$ trong hình dưới đây (làm tròn kết quả đến hai chữ số thập phân).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b11-c4.png)",
+   "correct_answer": "0,58",
+   "explanation": "Phương pháp giải:\nTính đường cao $AH$ trong tam giác vuông $ABH$, tính góc $B$ rồi suy ra góc $C$; hoặc dùng $\\tan C = \\dfrac{AH}{HC}$ sau khi tính $HC$.\n\nLời giải:\nTam giác $ABH$ vuông tại $H$: $\\cos B = \\dfrac{BH}{AB} = \\dfrac{3}{6} = \\dfrac{1}{2}$ nên $\\widehat{B} = 60^\\circ$.\nTam giác $ABC$ vuông tại $A$ nên $\\widehat{C} = 90^\\circ - 60^\\circ = 30^\\circ$.\nVậy $\\tan C = \\tan 30^\\circ = \\dfrac{\\sqrt{3}}{3} \\approx 0{,}58$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "question_type": "TL",
+   "difficulty": "1",
+   "content": "Cho tam giác $ABC$ vuông tại $C$. Trong đó $AC = 0{,}9$ m, $BC = 1{,}2$ m. Tính các tỉ số lượng giác của góc $B$. Từ đó suy ra các tỉ số lượng giác của góc $A$.",
+   "correct_answer": "sin B = 0,6; cos B = 0,8; tan B = 0,75; cot B = 4/3; sin A = 0,8; cos A = 0,6; tan A = 4/3; cot A = 0,75",
+   "explanation": "Phương pháp giải:\nTính cạnh huyền $AB$, áp dụng định nghĩa cho góc $B$, rồi dùng tính chất hai góc phụ nhau cho góc $A$.\n\nLời giải:\n$AB = \\sqrt{0{,}9^2 + 1{,}2^2} = 1{,}5$ m.\n$\\sin B = \\dfrac{AC}{AB} = \\dfrac{0{,}9}{1{,}5} = 0{,}6$; $\\cos B = \\dfrac{BC}{AB} = 0{,}8$; $\\tan B = \\dfrac{AC}{BC} = 0{,}75$; $\\cot B = \\dfrac{BC}{AC} = \\dfrac{4}{3}$.\nVì $\\widehat{A} + \\widehat{B} = 90^\\circ$ nên $\\sin A = \\cos B = 0{,}8$; $\\cos A = \\sin B = 0{,}6$; $\\tan A = \\cot B = \\dfrac{4}{3}$; $\\cot A = \\tan B = 0{,}75$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TL",
+   "difficulty": "1",
+   "content": "Hãy viết tỉ số lượng giác của các góc sau thành tỉ số lượng giác của các góc nhỏ hơn $45^\\circ$: $\\sin 75^\\circ$, $\\cos 60^\\circ$, $\\tan 80^\\circ$, $\\cot 50^\\circ$.",
+   "correct_answer": "sin 75° = cos 15°; cos 60° = sin 30°; tan 80° = cot 10°; cot 50° = tan 40°",
+   "explanation": "Phương pháp giải:\nHai góc phụ nhau: $\\sin\\alpha = \\cos(90^\\circ - \\alpha)$, $\\tan\\alpha = \\cot(90^\\circ - \\alpha)$.\n\nLời giải:\n$\\sin 75^\\circ = \\cos 15^\\circ$; $\\cos 60^\\circ = \\sin 30^\\circ$; $\\tan 80^\\circ = \\cot 10^\\circ$; $\\cot 50^\\circ = \\tan 40^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Sắp xếp các tỉ số lượng giác sau theo thứ tự tăng dần:\na) $\\sin 70^\\circ$, $\\cos 30^\\circ$, $\\cos 40^\\circ$, $\\sin 51^\\circ$;\nb) $\\cos 34^\\circ$, $\\sin 57^\\circ$, $\\cos 52^\\circ$.",
+   "correct_answer": "a) cos 40° < sin 51° < cos 30° < sin 70°; b) cos 52° < cos 34° < sin 57°",
+   "explanation": "Phương pháp giải:\nĐưa về cùng một loại tỉ số nhờ hai góc phụ nhau, rồi dùng: góc nhọn tăng thì sin tăng, cos giảm.\n\nLời giải:\na) $\\cos 30^\\circ = \\sin 60^\\circ$, $\\cos 40^\\circ = \\sin 50^\\circ$. Vì $50^\\circ < 51^\\circ < 60^\\circ < 70^\\circ$ nên $\\sin 50^\\circ < \\sin 51^\\circ < \\sin 60^\\circ < \\sin 70^\\circ$, tức là $\\cos 40^\\circ < \\sin 51^\\circ < \\cos 30^\\circ < \\sin 70^\\circ$.\nb) $\\sin 57^\\circ = \\cos 33^\\circ$. Vì $33^\\circ < 34^\\circ < 52^\\circ$ nên $\\cos 52^\\circ < \\cos 34^\\circ < \\cos 33^\\circ$, tức là $\\cos 52^\\circ < \\cos 34^\\circ < \\sin 57^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Sắp xếp các tỉ số lượng giác sau theo thứ tự tăng dần:\na) $\\cot 40^\\circ$, $\\tan 40^\\circ$, $\\cot 43^\\circ$, $\\tan 42^\\circ$;\nb) $\\tan 52^\\circ$, $\\cot 63^\\circ$, $\\tan 72^\\circ$, $\\cot 31^\\circ$.",
+   "correct_answer": "a) tan 40° < tan 42° < cot 43° < cot 40°; b) cot 63° < tan 52° < cot 31° < tan 72°",
+   "explanation": "Phương pháp giải:\nĐổi cot thành tan của góc phụ, rồi dùng: góc nhọn tăng thì tan tăng.\n\nLời giải:\na) $\\cot 40^\\circ = \\tan 50^\\circ$, $\\cot 43^\\circ = \\tan 47^\\circ$. Vì $40^\\circ < 42^\\circ < 47^\\circ < 50^\\circ$ nên $\\tan 40^\\circ < \\tan 42^\\circ < \\cot 43^\\circ < \\cot 40^\\circ$.\nb) $\\cot 63^\\circ = \\tan 27^\\circ$, $\\cot 31^\\circ = \\tan 59^\\circ$. Vì $27^\\circ < 52^\\circ < 59^\\circ < 72^\\circ$ nên $\\cot 63^\\circ < \\tan 52^\\circ < \\cot 31^\\circ < \\tan 72^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "1",
+   "content": "Tính giá trị của biểu thức $A = \\dfrac{\\sin 32^\\circ}{\\cos 58^\\circ}$.",
+   "correct_answer": "1",
+   "explanation": "Phương pháp giải:\nHai góc phụ nhau thì sin góc này bằng cos góc kia.\n\nLời giải:\n$\\cos 58^\\circ = \\sin 32^\\circ$ nên $A = \\dfrac{\\sin 32^\\circ}{\\sin 32^\\circ} = 1$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "1",
+   "content": "Tính giá trị của biểu thức $B = \\tan 76^\\circ - \\cot 14^\\circ$.",
+   "correct_answer": "0",
+   "explanation": "Phương pháp giải:\nHai góc phụ nhau thì tan góc này bằng cot góc kia.\n\nLời giải:\n$\\cot 14^\\circ = \\tan 76^\\circ$ nên $B = \\tan 76^\\circ - \\tan 76^\\circ = 0$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Biết $\\sin\\alpha = \\dfrac{5}{13}$. Tính $\\cos\\alpha$, $\\tan\\alpha$ và $\\cot\\alpha$.",
+   "correct_answer": "cos α = 12/13; tan α = 5/12; cot α = 12/5",
+   "explanation": "Phương pháp giải:\nDùng $\\sin^2\\alpha + \\cos^2\\alpha = 1$ để tìm $\\cos\\alpha$ (góc nhọn nên $\\cos\\alpha > 0$), rồi $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$, $\\cot\\alpha = \\dfrac{1}{\\tan\\alpha}$.\n\nLời giải:\n$\\cos^2\\alpha = 1 - \\sin^2\\alpha = 1 - \\dfrac{25}{169} = \\dfrac{144}{169}$, suy ra $\\cos\\alpha = \\dfrac{12}{13}$.\n$\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha} = \\dfrac{5}{12}$; $\\cot\\alpha = \\dfrac{12}{5}$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Tính giá trị của biểu thức $A = \\cos^2 18^\\circ + \\cos^2 52^\\circ + \\cos^2 38^\\circ + \\cos^2 72^\\circ$.",
+   "correct_answer": "2",
+   "explanation": "Phương pháp giải:\nGhép các góc phụ nhau: $\\cos^2\\alpha + \\cos^2(90^\\circ - \\alpha) = \\cos^2\\alpha + \\sin^2\\alpha = 1$.\n\nLời giải:\n$A = (\\cos^2 18^\\circ + \\cos^2 72^\\circ) + (\\cos^2 52^\\circ + \\cos^2 38^\\circ) = (\\cos^2 18^\\circ + \\sin^2 18^\\circ) + (\\cos^2 52^\\circ + \\sin^2 52^\\circ) = 1 + 1 = 2$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Tính giá trị của biểu thức $B = \\sin^2 1^\\circ + \\sin^2 3^\\circ + \\sin^2 5^\\circ + \\ldots + \\sin^2 87^\\circ + \\sin^2 89^\\circ$.",
+   "correct_answer": "22,5",
+   "explanation": "Phương pháp giải:\nGhép $\\sin^2\\alpha + \\sin^2(90^\\circ - \\alpha) = \\sin^2\\alpha + \\cos^2\\alpha = 1$; góc $45^\\circ$ đứng một mình.\n\nLời giải:\nCác góc lẻ từ $1^\\circ$ đến $89^\\circ$ có $45$ góc. Ghép thành $22$ cặp phụ nhau $(1^\\circ; 89^\\circ), (3^\\circ; 87^\\circ), \\ldots, (43^\\circ; 47^\\circ)$, mỗi cặp có tổng bình phương sin bằng $1$, còn lại $\\sin^2 45^\\circ = \\dfrac{1}{2}$.\nVậy $B = 22 + \\dfrac{1}{2} = 22{,}5$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Tính giá trị của biểu thức $C = \\tan 5^\\circ \\cdot \\tan 10^\\circ \\cdot \\tan 15^\\circ \\cdots \\tan 80^\\circ \\cdot \\tan 85^\\circ$.",
+   "correct_answer": "1",
+   "explanation": "Phương pháp giải:\nGhép $\\tan\\alpha \\cdot \\tan(90^\\circ - \\alpha) = \\tan\\alpha \\cdot \\cot\\alpha = 1$.\n\nLời giải:\n$C = (\\tan 5^\\circ \\cdot \\tan 85^\\circ)(\\tan 10^\\circ \\cdot \\tan 80^\\circ) \\cdots (\\tan 40^\\circ \\cdot \\tan 50^\\circ) \\cdot \\tan 45^\\circ = 1 \\cdot 1 \\cdots 1 \\cdot 1 = 1$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Cho góc nhọn $\\alpha$. Chứng minh rằng: $1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}$ và $1 + \\cot^2\\alpha = \\dfrac{1}{\\sin^2\\alpha}$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nDùng $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$, $\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$ và $\\sin^2\\alpha + \\cos^2\\alpha = 1$.\n\nLời giải:\n$1 + \\tan^2\\alpha = 1 + \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = \\dfrac{\\cos^2\\alpha + \\sin^2\\alpha}{\\cos^2\\alpha} = \\dfrac{1}{\\cos^2\\alpha}$.\n$1 + \\cot^2\\alpha = 1 + \\dfrac{\\cos^2\\alpha}{\\sin^2\\alpha} = \\dfrac{\\sin^2\\alpha + \\cos^2\\alpha}{\\sin^2\\alpha} = \\dfrac{1}{\\sin^2\\alpha}$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Cho góc nhọn $\\alpha$ có $\\sin\\alpha = \\dfrac{3}{5}$. Hãy tính $\\cos\\alpha$, $\\tan\\alpha$, $\\cot\\alpha$.",
+   "correct_answer": "cos α = 4/5; tan α = 3/4; cot α = 4/3",
+   "explanation": "Phương pháp giải:\nDùng $\\sin^2\\alpha + \\cos^2\\alpha = 1$, rồi $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$, $\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$.\n\nLời giải:\n$\\cos\\alpha = \\sqrt{1 - \\dfrac{9}{25}} = \\dfrac{4}{5}$ (vì $\\alpha$ nhọn nên $\\cos\\alpha > 0$).\n$\\tan\\alpha = \\dfrac{3}{5} : \\dfrac{4}{5} = \\dfrac{3}{4}$; $\\cot\\alpha = \\dfrac{4}{3}$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "3",
+   "content": "Cho góc nhọn $\\alpha$. Chứng minh rằng:\na) $\\sin\\alpha < \\tan\\alpha$;\nb) $\\tan^2\\alpha - \\sin^2\\alpha = \\tan^2\\alpha \\cdot \\sin^2\\alpha$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nDùng $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$ và $0 < \\cos\\alpha < 1$, $\\sin^2\\alpha + \\cos^2\\alpha = 1$.\n\nLời giải:\na) $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$. Vì $0 < \\cos\\alpha < 1$ và $\\sin\\alpha > 0$ nên $\\dfrac{\\sin\\alpha}{\\cos\\alpha} > \\sin\\alpha$, tức là $\\tan\\alpha > \\sin\\alpha$.\nb) $\\tan^2\\alpha - \\sin^2\\alpha = \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} - \\sin^2\\alpha = \\dfrac{\\sin^2\\alpha(1 - \\cos^2\\alpha)}{\\cos^2\\alpha} = \\dfrac{\\sin^2\\alpha \\cdot \\sin^2\\alpha}{\\cos^2\\alpha} = \\tan^2\\alpha \\cdot \\sin^2\\alpha$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "3",
+   "content": "Chứng minh rằng $\\dfrac{1 - 4\\sin^2\\alpha \\cdot \\cos^2\\alpha}{(\\sin\\alpha - \\cos\\alpha)^2} = (\\sin\\alpha + \\cos\\alpha)^2$ (với $\\alpha$ là góc nhọn, $\\sin\\alpha \\ne \\cos\\alpha$).",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nViết $1 = (\\sin^2\\alpha + \\cos^2\\alpha)^2$ rồi dùng hằng đẳng thức hiệu hai bình phương.\n\nLời giải:\n$1 - 4\\sin^2\\alpha\\cos^2\\alpha = (\\sin^2\\alpha + \\cos^2\\alpha)^2 - (2\\sin\\alpha\\cos\\alpha)^2 = (\\sin^2\\alpha + \\cos^2\\alpha - 2\\sin\\alpha\\cos\\alpha)(\\sin^2\\alpha + \\cos^2\\alpha + 2\\sin\\alpha\\cos\\alpha) = (\\sin\\alpha - \\cos\\alpha)^2(\\sin\\alpha + \\cos\\alpha)^2$.\nChia hai vế cho $(\\sin\\alpha - \\cos\\alpha)^2 \\ne 0$ ta được điều phải chứng minh."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "3",
+   "content": "Cho tam giác nhọn $ABC$ có diện tích $S$, đường cao $AH = h$. Cho biết $S = h^2$. Chứng minh rằng $\\cot B + \\cot C = 2$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nBiểu diễn $\\cot B$, $\\cot C$ qua $BH$, $CH$ và $h$; dùng công thức diện tích $S = \\dfrac{1}{2}BC \\cdot h$.\n\nLời giải:\nTrong tam giác vuông $AHB$: $\\cot B = \\dfrac{BH}{AH} = \\dfrac{BH}{h}$. Trong tam giác vuông $AHC$: $\\cot C = \\dfrac{CH}{h}$.\nVì tam giác nhọn nên $H$ nằm giữa $B$ và $C$, do đó $\\cot B + \\cot C = \\dfrac{BH + CH}{h} = \\dfrac{BC}{h}$.\nMặt khác $S = \\dfrac{1}{2}BC \\cdot h = h^2$ nên $BC = 2h$. Vậy $\\cot B + \\cot C = \\dfrac{2h}{h} = 2$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "4",
+   "content": "Cho tam giác nhọn $ABC$ có hai đường cao $AD$ và $BE$ cắt nhau tại $H$. Biết $HD : HA = 1 : 2$. Chứng minh rằng $\\tan B \\cdot \\tan C = 3$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nViết $\\tan B = \\dfrac{AD}{BD}$, $\\tan C = \\dfrac{AD}{CD}$ rồi dùng hai tam giác đồng dạng $BDH$ và $ADC$ để tính $BD \\cdot CD$.\n\nLời giải:\n$\\tan B \\cdot \\tan C = \\dfrac{AD}{BD} \\cdot \\dfrac{AD}{CD} = \\dfrac{AD^2}{BD \\cdot CD}$.\nXét $\\triangle BDH$ và $\\triangle ADC$: $\\widehat{BDH} = \\widehat{ADC} = 90^\\circ$; $\\widehat{HBD} = \\widehat{DAC}$ (cùng phụ với $\\widehat{C}$). Suy ra $\\triangle BDH \\backsim \\triangle ADC$, nên $\\dfrac{BD}{AD} = \\dfrac{HD}{CD}$, tức là $BD \\cdot CD = AD \\cdot HD$.\nDo đó $\\tan B \\cdot \\tan C = \\dfrac{AD^2}{AD \\cdot HD} = \\dfrac{AD}{HD}$. Vì $HD : HA = 1 : 2$ nên $AD = HA + HD = 3HD$, suy ra $\\tan B \\cdot \\tan C = 3$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Tính giá trị của biểu thức $M = 4\\cos^2 45^\\circ + \\sqrt{3}\\cot 30^\\circ - 16\\cos^3 60^\\circ$.",
+   "correct_answer": "3",
+   "explanation": "Phương pháp giải:\nThay giá trị lượng giác của các góc đặc biệt: $\\cos 45^\\circ = \\dfrac{\\sqrt{2}}{2}$, $\\cot 30^\\circ = \\sqrt{3}$, $\\cos 60^\\circ = \\dfrac{1}{2}$.\n\nLời giải:\n$M = 4 \\cdot \\dfrac{1}{2} + \\sqrt{3} \\cdot \\sqrt{3} - 16 \\cdot \\dfrac{1}{8} = 2 + 3 - 2 = 3$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Tính giá trị của biểu thức $N = \\dfrac{2\\sin 30^\\circ - \\sin 60^\\circ}{\\cos^2 30^\\circ - \\cos 60^\\circ}$ (làm tròn kết quả đến hai chữ số thập phân).",
+   "correct_answer": "0,54",
+   "explanation": "Phương pháp giải:\nThay $\\sin 30^\\circ = \\cos 60^\\circ = \\dfrac{1}{2}$, $\\sin 60^\\circ = \\cos 30^\\circ = \\dfrac{\\sqrt{3}}{2}$.\n\nLời giải:\n$N = \\dfrac{1 - \\dfrac{\\sqrt{3}}{2}}{\\dfrac{3}{4} - \\dfrac{1}{2}} = \\dfrac{\\dfrac{2 - \\sqrt{3}}{2}}{\\dfrac{1}{4}} = 2(2 - \\sqrt{3}) = 4 - 2\\sqrt{3} \\approx 0{,}54$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Tính giá trị của biểu thức $A = \\cos^2\\alpha - \\tan 60^\\circ + \\cot 45^\\circ - 2\\sin 30^\\circ + \\cos^2\\alpha \\cdot \\tan^2\\alpha$ với $0^\\circ < \\alpha < 90^\\circ$ (làm tròn kết quả đến một chữ số thập phân).",
+   "correct_answer": "-0,7",
+   "explanation": "Phương pháp giải:\nRút gọn $\\cos^2\\alpha \\cdot \\tan^2\\alpha = \\sin^2\\alpha$, dùng $\\sin^2\\alpha + \\cos^2\\alpha = 1$ và giá trị các góc đặc biệt.\n\nLời giải:\n$\\cos^2\\alpha \\cdot \\tan^2\\alpha = \\cos^2\\alpha \\cdot \\dfrac{\\sin^2\\alpha}{\\cos^2\\alpha} = \\sin^2\\alpha$.\n$A = (\\cos^2\\alpha + \\sin^2\\alpha) - \\sqrt{3} + 1 - 2 \\cdot \\dfrac{1}{2} = 1 - \\sqrt{3} \\approx -0{,}7$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Một chiếc thang có chiều dài $AB = 4$ m được đặt dựa vào tường, khoảng cách từ chân thang $B$ đến chân tường $H$ là $BH = 1{,}5$ m. Tính góc tạo bởi cạnh $AB$ và phần tường nằm ngang trên mặt đất, tức góc $\\widehat{ABH}$ (làm tròn kết quả đến hàng đơn vị của độ).",
+   "correct_answer": "68",
+   "explanation": "Phương pháp giải:\nTrong tam giác vuông $ABH$ (vuông tại $H$), $\\cos\\widehat{ABH} = \\dfrac{BH}{AB}$; dùng máy tính cầm tay tìm góc.\n\nLời giải:\n$\\cos\\widehat{ABH} = \\dfrac{1{,}5}{4} = 0{,}375$.\nBấm máy: `SHIFT` `cos` `0.375` `=` được $\\widehat{ABH} \\approx 68^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Treo quả cầu kim loại nhỏ vào giá thí nghiệm bằng sợi dây mảnh nhẹ không dãn. Khi quả cầu đứng yên tại vị trí cân bằng, dây treo có phương thẳng đứng. Kéo quả cầu khỏi vị trí cân bằng một đoạn nhỏ rồi buông ra thì quả cầu sẽ chuyển động qua lại quanh vị trí cân bằng. Khi kéo quả cầu khỏi vị trí cân bằng, giả sử tâm $A$ của quả cầu cách điểm treo $B$ một khoảng $AB = 60$ cm và cách vị trí cân bằng (đường thẳng đứng qua $B$) một khoảng $AH = 20$ cm. Tính số đo góc $\\alpha$ tạo bởi sợi dây $BA$ và vị trí cân bằng (làm tròn kết quả đến hàng đơn vị của độ).",
+   "correct_answer": "19",
+   "explanation": "Phương pháp giải:\nTam giác $ABH$ vuông tại $H$ có $\\sin\\alpha = \\dfrac{AH}{AB}$; dùng máy tính cầm tay tìm góc.\n\nLời giải:\n$\\sin\\alpha = \\dfrac{AH}{AB} = \\dfrac{20}{60} = \\dfrac{1}{3}$.\nBấm máy: `SHIFT` `sin` `(1÷3)` `=` được $\\alpha \\approx 19^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Một con sông rộng $250$ m. Một chiếc đò ngang chèo vuông góc với dòng nước, nhưng vì nước chảy nên phải di chuyển $320$ m mới sang được đến bờ bên kia. Hãy xác định xem dòng nước đã làm chiếc đò bơi lệch đi một góc bao nhiêu độ (làm tròn kết quả đến hàng đơn vị của độ)?",
+   "correct_answer": "39",
+   "explanation": "Phương pháp giải:\nĐường đi thực tế là cạnh huyền, chiều rộng sông là cạnh kề của góc lệch $\\alpha$: $\\cos\\alpha = \\dfrac{250}{320}$.\n\nLời giải:\n$\\cos\\alpha = \\dfrac{250}{320} = 0{,}78125$.\nBấm máy: `SHIFT` `cos` `0.78125` `=` được $\\alpha \\approx 38{,}6^\\circ \\approx 39^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một vận động viên đánh quần vợt đang giao banh. Từ độ cao $h$, anh ta muốn banh rơi ở vị trí cách lưới $6$ m như hình bên dưới (lưới cao $0{,}9$ m, vị trí giao banh cách lưới $12$ m). Tìm góc tạo bởi mặt sân và đường bay của banh, biết banh bay chạm mép lưới (làm tròn kết quả đến hàng đơn vị của độ).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b11-c21.png)",
+   "correct_answer": "9",
+   "explanation": "Phương pháp giải:\nĐường bay của banh, mặt sân và lưới tạo thành tam giác vuông có cạnh đối $0{,}9$ m, cạnh kề $6$ m: $\\tan\\alpha = \\dfrac{0{,}9}{6}$.\n\nLời giải:\n$\\tan\\alpha = \\dfrac{0{,}9}{6} = 0{,}15$.\nBấm máy: `SHIFT` `tan` `0.15` `=` được $\\alpha \\approx 8{,}5^\\circ \\approx 9^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một vận động viên đánh quần vợt đang giao banh từ độ cao $h$ (m), cách lưới $12$ m; lưới cao $0{,}9$ m; banh bay theo đường thẳng, chạm mép lưới và rơi ở vị trí cách lưới $6$ m (hình bên dưới). Tìm độ cao $h$ (theo mét) khi giao banh để banh vừa chạm mép lưới.\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b11-c21.png)",
+   "correct_answer": "2,7",
+   "explanation": "Phương pháp giải:\nHai tam giác vuông có chung góc $\\alpha$ với mặt sân: $\\tan\\alpha = \\dfrac{0{,}9}{6} = \\dfrac{h}{6 + 12}$.\n\nLời giải:\n$\\tan\\alpha = \\dfrac{0{,}9}{6} = 0{,}15$. Khoảng cách từ vị trí giao banh đến điểm rơi là $6 + 12 = 18$ m nên $h = 18 \\cdot \\tan\\alpha = 18 \\cdot 0{,}15 = 2{,}7$ m."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "question_type": "TL",
+   "difficulty": "1",
+   "content": "Cho tam giác $ABC$ vuông tại $A$. Hãy tính tỉ số lượng giác của góc $B$ và góc $C$ nếu biết:\na) $AB = 3$ cm, $AC = 4$ cm;\nb) $AB = 0{,}9$ cm, $BC = 1{,}5$ cm.",
+   "correct_answer": "a) sin B = 4/5, cos B = 3/5, tan B = 4/3, cot B = 3/4; sin C = 3/5, cos C = 4/5, tan C = 3/4, cot C = 4/3. b) sin B = 0,8, cos B = 0,6, tan B = 4/3, cot B = 0,75; sin C = 0,6, cos C = 0,8, tan C = 0,75, cot C = 4/3",
+   "explanation": "Phương pháp giải:\nTính cạnh còn thiếu bằng định lí Pythagore, áp dụng định nghĩa cho một góc rồi dùng tính chất hai góc phụ nhau cho góc kia.\n\nLời giải:\na) $BC = 5$ cm. $\\sin B = \\dfrac{4}{5}$, $\\cos B = \\dfrac{3}{5}$, $\\tan B = \\dfrac{4}{3}$, $\\cot B = \\dfrac{3}{4}$. Suy ra $\\sin C = \\cos B = \\dfrac{3}{5}$, $\\cos C = \\dfrac{4}{5}$, $\\tan C = \\dfrac{3}{4}$, $\\cot C = \\dfrac{4}{3}$.\nb) $AC = \\sqrt{1{,}5^2 - 0{,}9^2} = 1{,}2$ cm. $\\sin B = \\dfrac{AC}{BC} = 0{,}8$, $\\cos B = \\dfrac{AB}{BC} = 0{,}6$, $\\tan B = \\dfrac{4}{3}$, $\\cot B = 0{,}75$. Suy ra $\\sin C = 0{,}6$, $\\cos C = 0{,}8$, $\\tan C = 0{,}75$, $\\cot C = \\dfrac{4}{3}$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Cho tam giác $ABC$ vuông tại $B$ có đường cao $BH$. Hãy tính các tỉ số lượng giác của góc $A$ rồi suy ra các tỉ số lượng giác của góc $C$ (làm tròn kết quả đến chữ số thập phân thứ hai) nếu biết:\na) $AB = 9$ cm, $BH = 5{,}4$ cm;\nb) $BC = 13$ cm, $CH = 12$ cm.",
+   "correct_answer": "a) sin A = 0,6; cos A = 0,8; tan A = 0,75; cot A ≈ 1,33; sin C = 0,8; cos C = 0,6; tan C ≈ 1,33; cot C = 0,75. b) sin A ≈ 0,92; cos A ≈ 0,38; tan A = 2,4; cot A ≈ 0,42; sin C ≈ 0,38; cos C ≈ 0,92; tan C ≈ 0,42; cot C = 2,4",
+   "explanation": "Phương pháp giải:\nXét tam giác vuông $ABH$ (hoặc $CBH$) để tính tỉ số lượng giác của góc $A$ (hoặc $C$); góc còn lại dùng tính chất hai góc phụ nhau.\n\nLời giải:\na) Tam giác $ABH$ vuông tại $H$: $\\sin A = \\dfrac{BH}{AB} = \\dfrac{5{,}4}{9} = 0{,}6$; $\\cos A = \\sqrt{1 - 0{,}36} = 0{,}8$; $\\tan A = 0{,}75$; $\\cot A \\approx 1{,}33$. Suy ra $\\sin C = 0{,}8$; $\\cos C = 0{,}6$; $\\tan C \\approx 1{,}33$; $\\cot C = 0{,}75$.\nb) Tam giác $CBH$ vuông tại $H$: $BH = \\sqrt{13^2 - 12^2} = 5$ cm. $\\sin C = \\dfrac{BH}{BC} = \\dfrac{5}{13} \\approx 0{,}38$; $\\cos C = \\dfrac{12}{13} \\approx 0{,}92$; $\\tan C = \\dfrac{5}{12} \\approx 0{,}42$; $\\cot C = 2{,}4$. Suy ra $\\sin A \\approx 0{,}92$; $\\cos A \\approx 0{,}38$; $\\tan A = 2{,}4$; $\\cot A \\approx 0{,}42$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TL",
+   "difficulty": "1",
+   "content": "Hãy viết các tỉ số lượng giác sau thành tỉ số lượng giác của các góc nhỏ hơn $45^\\circ$: $\\sin 60^\\circ$, $\\cos 75^\\circ$, $\\sin 52^\\circ 30'$, $\\cot 82^\\circ$, $\\tan 80^\\circ$.",
+   "correct_answer": "sin 60° = cos 30°; cos 75° = sin 15°; sin 52°30' = cos 37°30'; cot 82° = tan 8°; tan 80° = cot 10°",
+   "explanation": "Phương pháp giải:\nHai góc phụ nhau: $\\sin\\alpha = \\cos(90^\\circ - \\alpha)$, $\\cot\\alpha = \\tan(90^\\circ - \\alpha)$.\n\nLời giải:\n$\\sin 60^\\circ = \\cos 30^\\circ$; $\\cos 75^\\circ = \\sin 15^\\circ$; $\\sin 52^\\circ 30' = \\cos 37^\\circ 30'$; $\\cot 82^\\circ = \\tan 8^\\circ$; $\\tan 80^\\circ = \\cot 10^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Không dùng máy tính hoặc bảng số, hãy tính giá trị của biểu thức $M = \\sin^2 20^\\circ + \\cos^2 30^\\circ - \\sin^2 40^\\circ - \\sin^2 50^\\circ - \\sin^2 60^\\circ + \\sin^2 70^\\circ$.",
+   "correct_answer": "0",
+   "explanation": "Phương pháp giải:\nGhép các cặp góc phụ nhau: $\\sin^2\\alpha + \\sin^2(90^\\circ - \\alpha) = 1$; $\\cos^2 30^\\circ = \\sin^2 60^\\circ$.\n\nLời giải:\n$M = (\\sin^2 20^\\circ + \\sin^2 70^\\circ) - (\\sin^2 40^\\circ + \\sin^2 50^\\circ) + (\\cos^2 30^\\circ - \\sin^2 60^\\circ) = 1 - 1 + 0 = 0$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Không dùng máy tính hoặc bảng số, hãy sắp xếp các tỉ số lượng giác sau theo thứ tự tăng dần: $\\sin 41^\\circ$; $\\cos 58^\\circ$; $\\cot 49^\\circ$; $\\cos 75^\\circ$; $\\sin 25^\\circ$.",
+   "correct_answer": "cos 75° < sin 25° < cos 58° < sin 41° < cot 49°",
+   "explanation": "Phương pháp giải:\nĐổi về sin của góc nhọn rồi so sánh; chú ý $\\tan\\alpha > \\sin\\alpha$ với mọi góc nhọn.\n\nLời giải:\n$\\cos 58^\\circ = \\sin 32^\\circ$; $\\cos 75^\\circ = \\sin 15^\\circ$; $\\cot 49^\\circ = \\tan 41^\\circ > \\sin 41^\\circ$.\nVì $15^\\circ < 25^\\circ < 32^\\circ < 41^\\circ$ nên $\\sin 15^\\circ < \\sin 25^\\circ < \\sin 32^\\circ < \\sin 41^\\circ < \\tan 41^\\circ$.\nVậy $\\cos 75^\\circ < \\sin 25^\\circ < \\cos 58^\\circ < \\sin 41^\\circ < \\cot 49^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "a) Cho biết $\\sin\\alpha = 0{,}6$; tính $\\cos\\alpha$, $\\tan\\alpha$, $\\cot\\alpha$.\nb) Cho biết $\\tan\\alpha = \\dfrac{1}{\\sqrt{3}}$; tính $\\cot\\alpha$, $\\sin\\alpha$, $\\cos\\alpha$.\nc) Cho biết $\\cot x = 2$; tính $\\tan x$, $\\sin x$, $\\cos x$.",
+   "correct_answer": "a) cos α = 0,8; tan α = 0,75; cot α = 4/3. b) cot α = √3; sin α = 1/2; cos α = √3/2. c) tan x = 1/2; sin x = √5/5; cos x = 2√5/5",
+   "explanation": "Phương pháp giải:\nDùng $\\sin^2\\alpha + \\cos^2\\alpha = 1$, $\\tan\\alpha \\cdot \\cot\\alpha = 1$, $1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}$, $1 + \\cot^2\\alpha = \\dfrac{1}{\\sin^2\\alpha}$.\n\nLời giải:\na) $\\cos\\alpha = \\sqrt{1 - 0{,}36} = 0{,}8$; $\\tan\\alpha = \\dfrac{0{,}6}{0{,}8} = 0{,}75$; $\\cot\\alpha = \\dfrac{4}{3}$.\nb) $\\cot\\alpha = \\sqrt{3}$. $\\dfrac{1}{\\cos^2\\alpha} = 1 + \\tan^2\\alpha = \\dfrac{4}{3}$ nên $\\cos\\alpha = \\dfrac{\\sqrt{3}}{2}$; $\\sin\\alpha = \\tan\\alpha \\cdot \\cos\\alpha = \\dfrac{1}{2}$.\nc) $\\tan x = \\dfrac{1}{2}$. $\\dfrac{1}{\\sin^2 x} = 1 + \\cot^2 x = 5$ nên $\\sin x = \\dfrac{1}{\\sqrt{5}} = \\dfrac{\\sqrt{5}}{5}$; $\\cos x = \\cot x \\cdot \\sin x = \\dfrac{2\\sqrt{5}}{5}$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Tính giá trị của biểu thức $P = \\sin^2 30^\\circ - \\sin^2 40^\\circ - \\sin^2 50^\\circ + \\sin^2 60^\\circ$.",
+   "correct_answer": "0",
+   "explanation": "Phương pháp giải:\nGhép các cặp góc phụ nhau: $\\sin^2\\alpha + \\sin^2(90^\\circ - \\alpha) = 1$.\n\nLời giải:\n$P = (\\sin^2 30^\\circ + \\sin^2 60^\\circ) - (\\sin^2 40^\\circ + \\sin^2 50^\\circ) = 1 - 1 = 0$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Tính giá trị của biểu thức $Q = \\cos^2 25^\\circ - \\cos^2 35^\\circ + \\cos^2 45^\\circ - \\cos^2 55^\\circ + \\cos^2 65^\\circ$.",
+   "correct_answer": "0,5",
+   "explanation": "Phương pháp giải:\nGhép $\\cos^2\\alpha + \\cos^2(90^\\circ - \\alpha) = 1$ và $\\cos^2 45^\\circ = \\dfrac{1}{2}$.\n\nLời giải:\n$Q = (\\cos^2 25^\\circ + \\cos^2 65^\\circ) - (\\cos^2 35^\\circ + \\cos^2 55^\\circ) + \\cos^2 45^\\circ = 1 - 1 + \\dfrac{1}{2} = 0{,}5$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Rút gọn biểu thức $B = \\sin^4\\alpha + \\cos^4\\alpha + 2\\sin^2\\alpha\\cos^2\\alpha$ với $0^\\circ < \\alpha < 90^\\circ$. Giá trị của $B$ bằng bao nhiêu?",
+   "correct_answer": "1",
+   "explanation": "Phương pháp giải:\nNhận ra hằng đẳng thức $(a + b)^2$ với $a = \\sin^2\\alpha$, $b = \\cos^2\\alpha$.\n\nLời giải:\n$B = (\\sin^2\\alpha + \\cos^2\\alpha)^2 = 1^2 = 1$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Rút gọn biểu thức $C = \\sin^6\\alpha + \\cos^6\\alpha + 3\\sin^2\\alpha\\cos^2\\alpha$ với $0^\\circ < \\alpha < 90^\\circ$. Giá trị của $C$ bằng bao nhiêu?",
+   "correct_answer": "1",
+   "explanation": "Phương pháp giải:\nDùng $a^3 + b^3 = (a + b)^3 - 3ab(a + b)$ với $a = \\sin^2\\alpha$, $b = \\cos^2\\alpha$, $a + b = 1$.\n\nLời giải:\n$\\sin^6\\alpha + \\cos^6\\alpha = (\\sin^2\\alpha + \\cos^2\\alpha)^3 - 3\\sin^2\\alpha\\cos^2\\alpha(\\sin^2\\alpha + \\cos^2\\alpha) = 1 - 3\\sin^2\\alpha\\cos^2\\alpha$.\nVậy $C = 1 - 3\\sin^2\\alpha\\cos^2\\alpha + 3\\sin^2\\alpha\\cos^2\\alpha = 1$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "3",
+   "content": "Chứng minh rằng với góc nhọn $\\alpha$ (và $\\tan\\alpha \\ne 1$):\na) $\\dfrac{1 + \\cos\\alpha}{\\sin\\alpha} = \\dfrac{\\sin\\alpha}{1 - \\cos\\alpha}$;\nb) $\\dfrac{\\tan\\alpha + 1}{\\tan\\alpha - 1} = \\dfrac{1 + \\cot\\alpha}{1 - \\cot\\alpha}$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\na) Nhân chéo và dùng $\\sin^2\\alpha + \\cos^2\\alpha = 1$. b) Thay $\\cot\\alpha = \\dfrac{1}{\\tan\\alpha}$ vào vế phải.\n\nLời giải:\na) $(1 + \\cos\\alpha)(1 - \\cos\\alpha) = 1 - \\cos^2\\alpha = \\sin^2\\alpha = \\sin\\alpha \\cdot \\sin\\alpha$. Chia hai vế cho $\\sin\\alpha(1 - \\cos\\alpha) \\ne 0$ được $\\dfrac{1 + \\cos\\alpha}{\\sin\\alpha} = \\dfrac{\\sin\\alpha}{1 - \\cos\\alpha}$.\nb) $\\dfrac{1 + \\cot\\alpha}{1 - \\cot\\alpha} = \\dfrac{1 + \\dfrac{1}{\\tan\\alpha}}{1 - \\dfrac{1}{\\tan\\alpha}} = \\dfrac{\\tan\\alpha + 1}{\\tan\\alpha - 1}$ (nhân cả tử và mẫu với $\\tan\\alpha$)."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác",
+   "question_type": "TL",
+   "difficulty": "4",
+   "content": "Cho tam giác $ABC$ vuông tại $A$, $AB < AC$, $\\widehat{C} = \\alpha < 45^\\circ$, đường trung tuyến $AM$, đường cao $AH$ và $MA = MB = MC = a$. Chứng minh:\na) $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$;\nb) $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$;\nc) $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nTam giác $AMC$ cân tại $M$ nên $\\widehat{AMH} = 2\\alpha$ (góc ngoài). Tính $AH$, $MH$, $CH$, $BH$ theo hai cách: trong tam giác $AMH$ (cạnh huyền $a$, góc $2\\alpha$) và trong tam giác $AHC$ hoặc $ABC$ (cạnh huyền $2a$, góc $\\alpha$).\n\nLời giải:\nVì $MA = MC$ nên $\\widehat{MAC} = \\widehat{C} = \\alpha$, suy ra $\\widehat{AMH} = \\widehat{MAC} + \\widehat{C} = 2\\alpha$. Ta có $BC = 2a$, $AC = BC\\cos\\alpha = 2a\\cos\\alpha$.\na) Trong tam giác $AMH$: $AH = AM\\sin 2\\alpha = a\\sin 2\\alpha$. Trong tam giác $AHC$: $AH = AC\\sin\\alpha = 2a\\sin\\alpha\\cos\\alpha$. Vậy $\\sin 2\\alpha = 2\\sin\\alpha\\cos\\alpha$.\nb) $MH = AM\\cos 2\\alpha = a\\cos 2\\alpha$; $CH = AC\\cos\\alpha = 2a\\cos^2\\alpha$. Vì $\\alpha < 45^\\circ$ nên $H$ nằm giữa $M$ và $B$, do đó $CH = CM + MH = a + a\\cos 2\\alpha$. Vậy $1 + \\cos 2\\alpha = 2\\cos^2\\alpha$.\nc) $BH = BC - CH = 2a - 2a\\cos^2\\alpha = 2a\\sin^2\\alpha$; mặt khác $BH = BM - MH = a - a\\cos 2\\alpha$. Vậy $1 - \\cos 2\\alpha = 2\\sin^2\\alpha$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Đài quan sát ở Toronto, Ontario (Canada) cao $533$ m. Ở một thời điểm vào ban ngày, mặt trời chiếu thành bóng dài $1100$ m. Hỏi lúc đó góc tạo bởi tia sáng mặt trời và mặt đất là bao nhiêu độ (làm tròn kết quả đến hàng đơn vị của độ)?",
+   "correct_answer": "26",
+   "explanation": "Phương pháp giải:\nTháp, bóng và tia sáng tạo thành tam giác vuông: $\\tan\\alpha = \\dfrac{\\text{chiều cao}}{\\text{bóng}}$.\n\nLời giải:\n$\\tan\\alpha = \\dfrac{533}{1100} \\approx 0{,}4845$.\nBấm máy: `SHIFT` `tan` `(533÷1100)` `=` được $\\alpha \\approx 25{,}9^\\circ \\approx 26^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Trên một khúc sông với hai bờ song song với nhau, có một chiếc đò dự định chèo qua sông từ vị trí $A$ ở bờ bên này sang vị trí $B$ ở bờ bên kia, đường thẳng $AB$ vuông góc với các bờ sông. Do bị dòng nước đẩy xiên nên chiếc đò đã cập bờ bên kia tại vị trí $C$ cách $B$ một khoảng bằng $30$ m. Biết khúc sông rộng $150$ m, hỏi dòng nước đã đẩy chiếc đò lệch đi một góc có số đo bằng bao nhiêu độ (làm tròn kết quả đến hàng đơn vị của độ)?",
+   "correct_answer": "11",
+   "explanation": "Phương pháp giải:\nGóc lệch $\\widehat{BAC}$ trong tam giác $ABC$ vuông tại $B$: $\\tan\\widehat{BAC} = \\dfrac{BC}{AB}$.\n\nLời giải:\n$\\tan\\widehat{BAC} = \\dfrac{30}{150} = 0{,}2$.\nBấm máy: `SHIFT` `tan` `0.2` `=` được $\\widehat{BAC} \\approx 11^\\circ 19' \\approx 11^\\circ$."
+  },
+  {
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 11. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một bức tượng mỹ thuật có chiều cao $4$ m. Một người đang đứng cách chân tượng $5$ m và mắt người ấy cách mặt đất $1{,}5$ m (hình bên). Hỏi người đó nhìn toàn bộ bức tượng dưới góc bao nhiêu độ (\"góc nhìn\", làm tròn kết quả đến hàng đơn vị của độ)?\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-t9-b11-tl12.png)",
+   "correct_answer": "43",
+   "explanation": "Phương pháp giải:\nĐỉnh tượng ở phía trên tầm mắt, chân tượng ở phía dưới tầm mắt nên góc nhìn bằng góc ngẩng lên đỉnh cộng góc cúi xuống chân; mỗi góc tính bằng $\\tan$ trong tam giác vuông có cạnh kề $5$ m.\n\nLời giải:\nGóc ngẩng lên đỉnh tượng: $\\tan\\beta = \\dfrac{4 - 1{,}5}{5} = 0{,}5$ nên $\\beta \\approx 26{,}6^\\circ$.\nGóc cúi xuống chân tượng: $\\tan\\gamma = \\dfrac{1{,}5}{5} = 0{,}3$ nên $\\gamma \\approx 16{,}7^\\circ$.\nGóc nhìn toàn bộ bức tượng: $\\alpha = \\beta + \\gamma \\approx 26{,}6^\\circ + 16{,}7^\\circ \\approx 43^\\circ$."
+  }
+ ]
+}

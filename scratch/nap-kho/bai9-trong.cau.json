@@ -1,0 +1,147 @@
+{
+  "grade": "9",
+  "subject": "Đại số",
+  "nguon": "Vở bài tập Toán 9 tập 1 (chương trình mới), Bài 9, tr. 188–198 và 215–227 (chỉ hai dạng kho đang trống)",
+  "cau": [
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "1",
+      "content": "Khử mẫu biểu thức lấy căn:\na) $\\sqrt{\\dfrac{5}{2}}$;\nb) $\\sqrt{\\dfrac{5}{14}}$;\nc) $\\sqrt{\\dfrac{3m}{5n}}$ với $m \\cdot n > 0$;\nd) $\\sqrt{\\dfrac{7x}{18y}}$ với $x \\cdot y > 0$.",
+      "correct_answer": "a) √10/2; b) √70/14; c) √(15mn)/(5|n|); d) √(14xy)/(6|y|)",
+      "explanation": "Phương pháp giải:\nNhân cả tử và mẫu của biểu thức dưới dấu căn với một thừa số thích hợp để mẫu thành bình phương, rồi dùng $\\sqrt{\\dfrac{A}{B^2}} = \\dfrac{\\sqrt{A}}{|B|}$.\n\nLời giải:\na) $\\sqrt{\\dfrac{5}{2}} = \\sqrt{\\dfrac{10}{4}} = \\dfrac{\\sqrt{10}}{2}$.\nb) $\\sqrt{\\dfrac{5}{14}} = \\sqrt{\\dfrac{70}{14^2}} = \\dfrac{\\sqrt{70}}{14}$.\nc) $\\sqrt{\\dfrac{3m}{5n}} = \\sqrt{\\dfrac{15mn}{25n^2}} = \\dfrac{\\sqrt{15mn}}{5|n|}$ (vì $mn > 0$ nên $15mn > 0$).\nd) $\\sqrt{\\dfrac{7x}{18y}} = \\sqrt{\\dfrac{14xy}{36y^2}} = \\dfrac{\\sqrt{14xy}}{6|y|}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "2",
+      "content": "Khử mẫu của biểu thức lấy căn:\na) $\\sqrt{\\dfrac{1}{x^3 + 3x^2 + 3x + 1}}$ với $x > -1$;\nb) $\\sqrt{\\dfrac{1}{a^2} - \\dfrac{1}{a^3}}$ với $a \\ge 1$.",
+      "correct_answer": "a) √(x+1)/(x+1)²; b) √(a(a−1))/a²",
+      "explanation": "Phương pháp giải:\nPhân tích mẫu thành luỹ thừa: $x^3 + 3x^2 + 3x + 1 = (x+1)^3$; quy đồng $\\dfrac{1}{a^2} - \\dfrac{1}{a^3} = \\dfrac{a-1}{a^3}$; rồi nhân tử và mẫu với thừa số để mẫu thành bình phương.\n\nLời giải:\na) $\\sqrt{\\dfrac{1}{(x+1)^3}} = \\sqrt{\\dfrac{x+1}{(x+1)^4}} = \\dfrac{\\sqrt{x+1}}{(x+1)^2}$ (với $x > -1$ thì $x + 1 > 0$).\nb) $\\sqrt{\\dfrac{1}{a^2} - \\dfrac{1}{a^3}} = \\sqrt{\\dfrac{a-1}{a^3}} = \\sqrt{\\dfrac{a(a-1)}{a^4}} = \\dfrac{\\sqrt{a(a-1)}}{a^2}$ (với $a \\ge 1$ thì $a(a-1) \\ge 0$)."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "2",
+      "content": "Khử mẫu của biểu thức lấy căn:\na) $-x^2y\\sqrt{\\dfrac{y}{x}}$ với $x > 0$; $y \\ge 0$;\nb) $\\sqrt{\\dfrac{-2x}{15}}$ với $x < 0$;\nc) $\\sqrt{\\dfrac{5x}{13y}}$ với $x \\ge 0$; $y > 0$;\nd) $\\sqrt{\\dfrac{2x-1}{2x+1}}$ với $x \\ge \\dfrac{1}{2}$.",
+      "correct_answer": "a) −xy√(xy); b) √(−30x)/15; c) √(65xy)/(13y); d) √(4x²−1)/(2x+1)",
+      "explanation": "Phương pháp giải:\nNhân tử và mẫu dưới dấu căn với thừa số thích hợp để mẫu là bình phương; chú ý dấu của các đại lượng theo điều kiện đã cho.\n\nLời giải:\na) $-x^2y\\sqrt{\\dfrac{y}{x}} = -x^2y \\cdot \\dfrac{\\sqrt{xy}}{x} = -xy\\sqrt{xy}$ (vì $x > 0$).\nb) $\\sqrt{\\dfrac{-2x}{15}} = \\sqrt{\\dfrac{-30x}{225}} = \\dfrac{\\sqrt{-30x}}{15}$ (vì $x < 0$ nên $-30x > 0$).\nc) $\\sqrt{\\dfrac{5x}{13y}} = \\sqrt{\\dfrac{65xy}{169y^2}} = \\dfrac{\\sqrt{65xy}}{13y}$ (vì $y > 0$).\nd) $\\sqrt{\\dfrac{2x-1}{2x+1}} = \\sqrt{\\dfrac{(2x-1)(2x+1)}{(2x+1)^2}} = \\dfrac{\\sqrt{4x^2-1}}{2x+1}$ (vì $x \\ge \\dfrac{1}{2}$ nên $2x + 1 > 0$)."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "1",
+      "content": "Trục căn thức ở mẫu của các phân thức sau:\na) $\\dfrac{3+\\sqrt{3}}{3\\sqrt{3}}$;\nb) $\\dfrac{5+\\sqrt{5}}{\\sqrt{5}+1}$;\nc) $\\dfrac{3\\sqrt{5}+\\sqrt{15}}{\\sqrt{5}}$;\nd) $\\dfrac{1}{2-3\\sqrt{3}}$.",
+      "correct_answer": "a) (√3+1)/3; b) √5; c) 3+√3; d) −(2+3√3)/23",
+      "explanation": "Phương pháp giải:\nĐặt nhân tử chung ở tử để rút gọn với mẫu; với mẫu dạng $a - b\\sqrt{c}$ thì nhân tử và mẫu với biểu thức liên hợp $a + b\\sqrt{c}$.\n\nLời giải:\na) $\\dfrac{3+\\sqrt{3}}{3\\sqrt{3}} = \\dfrac{\\sqrt{3}(\\sqrt{3}+1)}{3\\sqrt{3}} = \\dfrac{\\sqrt{3}+1}{3}$.\nb) $\\dfrac{5+\\sqrt{5}}{\\sqrt{5}+1} = \\dfrac{\\sqrt{5}(\\sqrt{5}+1)}{\\sqrt{5}+1} = \\sqrt{5}$.\nc) $\\dfrac{3\\sqrt{5}+\\sqrt{15}}{\\sqrt{5}} = \\dfrac{\\sqrt{5}(3+\\sqrt{3})}{\\sqrt{5}} = 3+\\sqrt{3}$.\nd) $\\dfrac{1}{2-3\\sqrt{3}} = \\dfrac{2+3\\sqrt{3}}{(2-3\\sqrt{3})(2+3\\sqrt{3})} = \\dfrac{2+3\\sqrt{3}}{4-27} = -\\dfrac{2+3\\sqrt{3}}{23}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "2",
+      "content": "Trục căn thức ở mẫu của các phân thức sau, với các biểu thức đều có nghĩa:\na) $\\dfrac{1}{\\sqrt{m}+n}$;\nb) $\\dfrac{2}{\\sqrt{m}-\\sqrt{n}}$;\nc) $\\dfrac{3}{2\\sqrt{m}+1}$;\nd) $\\dfrac{2ab}{2\\sqrt{a}+3\\sqrt{b}}$.",
+      "correct_answer": "a) (√m−n)/(m−n²); b) 2(√m+√n)/(m−n); c) 3(2√m−1)/(4m−1); d) 2ab(2√a−3√b)/(4a−9b)",
+      "explanation": "Phương pháp giải:\nNhân cả tử và mẫu với biểu thức liên hợp của mẫu: liên hợp của $\\sqrt{A}+B$ là $\\sqrt{A}-B$ và ngược lại, dùng $(\\sqrt{A}+B)(\\sqrt{A}-B) = A - B^2$.\n\nLời giải:\na) $\\dfrac{1}{\\sqrt{m}+n} = \\dfrac{\\sqrt{m}-n}{(\\sqrt{m}+n)(\\sqrt{m}-n)} = \\dfrac{\\sqrt{m}-n}{m-n^2}$.\nb) $\\dfrac{2}{\\sqrt{m}-\\sqrt{n}} = \\dfrac{2(\\sqrt{m}+\\sqrt{n})}{m-n}$.\nc) $\\dfrac{3}{2\\sqrt{m}+1} = \\dfrac{3(2\\sqrt{m}-1)}{(2\\sqrt{m}+1)(2\\sqrt{m}-1)} = \\dfrac{3(2\\sqrt{m}-1)}{4m-1}$.\nd) $\\dfrac{2ab}{2\\sqrt{a}+3\\sqrt{b}} = \\dfrac{2ab(2\\sqrt{a}-3\\sqrt{b})}{4a-9b}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "2",
+      "content": "Trục căn thức ở mẫu và rút gọn:\na) $\\dfrac{1}{2\\sqrt{2}-3\\sqrt{3}}$;\nb) $\\sqrt{\\dfrac{3-\\sqrt{5}}{3+\\sqrt{5}}}$;\nc) $\\dfrac{\\sqrt{8}}{\\sqrt{5}-\\sqrt{3}}$;\nd) $\\sqrt{\\dfrac{2-\\sqrt{3}}{2+\\sqrt{3}}}$.",
+      "correct_answer": "a) −(2√2+3√3)/19; b) (3−√5)/2; c) √10+√6; d) 2−√3",
+      "explanation": "Phương pháp giải:\nNhân với biểu thức liên hợp; với căn của một thương, nhân tử và mẫu dưới dấu căn với liên hợp của mẫu để mẫu thành bình phương rồi khai căn.\n\nLời giải:\na) $\\dfrac{1}{2\\sqrt{2}-3\\sqrt{3}} = \\dfrac{2\\sqrt{2}+3\\sqrt{3}}{8-27} = -\\dfrac{2\\sqrt{2}+3\\sqrt{3}}{19}$.\nb) $\\sqrt{\\dfrac{3-\\sqrt{5}}{3+\\sqrt{5}}} = \\sqrt{\\dfrac{(3-\\sqrt{5})^2}{(3+\\sqrt{5})(3-\\sqrt{5})}} = \\sqrt{\\dfrac{(3-\\sqrt{5})^2}{4}} = \\dfrac{3-\\sqrt{5}}{2}$.\nc) $\\dfrac{\\sqrt{8}}{\\sqrt{5}-\\sqrt{3}} = \\dfrac{2\\sqrt{2}(\\sqrt{5}+\\sqrt{3})}{5-3} = \\sqrt{2}(\\sqrt{5}+\\sqrt{3}) = \\sqrt{10}+\\sqrt{6}$.\nd) $\\sqrt{\\dfrac{2-\\sqrt{3}}{2+\\sqrt{3}}} = \\sqrt{\\dfrac{(2-\\sqrt{3})^2}{4-3}} = 2-\\sqrt{3}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "3",
+      "content": "Trục căn thức ở mẫu của các phân thức sau:\na) $\\dfrac{1}{\\sqrt{3}+\\sqrt{2}-1}$;\nb) $\\dfrac{1}{\\sqrt{14}-\\sqrt{6+\\sqrt{35}}}$.",
+      "correct_answer": "a) (√2+√6−2)/4; b) (√14+√10)/2",
+      "explanation": "Phương pháp giải:\na) Nhóm $(\\sqrt{3}+\\sqrt{2}) - 1$ rồi nhân liên hợp hai lần. b) Viết $6+\\sqrt{35} = \\dfrac{(\\sqrt{7}+\\sqrt{5})^2}{2}$ để khai căn.\n\nLời giải:\na) $\\dfrac{1}{(\\sqrt{3}+\\sqrt{2})-1} = \\dfrac{\\sqrt{3}+\\sqrt{2}+1}{(\\sqrt{3}+\\sqrt{2})^2-1} = \\dfrac{\\sqrt{3}+\\sqrt{2}+1}{4+2\\sqrt{6}} = \\dfrac{\\sqrt{3}+\\sqrt{2}+1}{2(2+\\sqrt{6})}$\n$= \\dfrac{(\\sqrt{3}+\\sqrt{2}+1)(\\sqrt{6}-2)}{2(6-4)} = \\dfrac{3\\sqrt{2}-2\\sqrt{3}+2\\sqrt{3}-2\\sqrt{2}+\\sqrt{6}-2}{4} = \\dfrac{\\sqrt{2}+\\sqrt{6}-2}{4}$.\nb) $6+\\sqrt{35} = \\dfrac{12+2\\sqrt{35}}{2} = \\dfrac{(\\sqrt{7}+\\sqrt{5})^2}{2}$ nên $\\sqrt{6+\\sqrt{35}} = \\dfrac{\\sqrt{7}+\\sqrt{5}}{\\sqrt{2}} = \\dfrac{\\sqrt{14}+\\sqrt{10}}{2}$.\nMẫu: $\\sqrt{14} - \\dfrac{\\sqrt{14}+\\sqrt{10}}{2} = \\dfrac{\\sqrt{14}-\\sqrt{10}}{2}$.\nVậy biểu thức bằng $\\dfrac{2}{\\sqrt{14}-\\sqrt{10}} = \\dfrac{2(\\sqrt{14}+\\sqrt{10})}{14-10} = \\dfrac{\\sqrt{14}+\\sqrt{10}}{2}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "3",
+      "content": "Trục căn thức ở mẫu:\na) $A = \\dfrac{\\sqrt{6}+\\sqrt{14}}{2\\sqrt{3}-\\sqrt{7}}$;\nb) $B = \\dfrac{3+4\\sqrt{3}}{\\sqrt{6}+\\sqrt{2}-\\sqrt{5}}$;\nc) $C = \\dfrac{1}{2+\\sqrt{5}+2\\sqrt{2}+\\sqrt{10}}$.",
+      "correct_answer": "a) A = (13√2+3√42)/5; b) B = √6+√2+√5; c) C = √10−√5−2√2+2",
+      "explanation": "Phương pháp giải:\na) Nhân liên hợp. b) Nhân với $\\sqrt{6}+\\sqrt{2}+\\sqrt{5}$, mẫu thành $(\\sqrt{6}+\\sqrt{2})^2 - 5 = 3+4\\sqrt{3}$. c) Phân tích mẫu thành tích $(2+\\sqrt{5})(1+\\sqrt{2})$.\n\nLời giải:\na) $A = \\dfrac{(\\sqrt{6}+\\sqrt{14})(2\\sqrt{3}+\\sqrt{7})}{12-7} = \\dfrac{2\\sqrt{18}+\\sqrt{42}+2\\sqrt{42}+\\sqrt{98}}{5} = \\dfrac{6\\sqrt{2}+3\\sqrt{42}+7\\sqrt{2}}{5} = \\dfrac{13\\sqrt{2}+3\\sqrt{42}}{5}$.\nb) $(\\sqrt{6}+\\sqrt{2}-\\sqrt{5})(\\sqrt{6}+\\sqrt{2}+\\sqrt{5}) = (\\sqrt{6}+\\sqrt{2})^2 - 5 = 8+2\\sqrt{12}-5 = 3+4\\sqrt{3}$.\nDo đó $B = \\dfrac{(3+4\\sqrt{3})(\\sqrt{6}+\\sqrt{2}+\\sqrt{5})}{3+4\\sqrt{3}} = \\sqrt{6}+\\sqrt{2}+\\sqrt{5}$.\nc) $2+\\sqrt{5}+2\\sqrt{2}+\\sqrt{10} = (2+\\sqrt{5}) + \\sqrt{2}(2+\\sqrt{5}) = (2+\\sqrt{5})(1+\\sqrt{2})$.\n$C = \\dfrac{1}{(2+\\sqrt{5})(1+\\sqrt{2})} = \\dfrac{(\\sqrt{5}-2)(\\sqrt{2}-1)}{(5-4)(2-1)} = \\sqrt{10}-\\sqrt{5}-2\\sqrt{2}+2$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "1",
+      "content": "Khử mẫu của các biểu thức dưới dấu căn (giả thiết rằng các biểu thức đã cho có nghĩa):\n$\\sqrt{\\dfrac{1}{600}}$; $\\sqrt{\\dfrac{11}{540}}$; $\\sqrt{\\dfrac{3}{50}}$; $\\sqrt{\\dfrac{5}{98}}$; $\\sqrt{\\dfrac{(1-\\sqrt{3})^2}{27}}$.",
+      "correct_answer": "√6/60; √165/90; √6/10; √10/14; (3−√3)/9",
+      "explanation": "Phương pháp giải:\nTách mẫu thành bình phương nhân với một số nhỏ nhất: $600 = 100 \\cdot 6$, $540 = 36 \\cdot 15$, $50 = 25 \\cdot 2$, $98 = 49 \\cdot 2$, $27 = 9 \\cdot 3$; rồi khử phần căn còn lại ở mẫu.\n\nLời giải:\n$\\sqrt{\\dfrac{1}{600}} = \\dfrac{1}{10\\sqrt{6}} = \\dfrac{\\sqrt{6}}{60}$.\n$\\sqrt{\\dfrac{11}{540}} = \\dfrac{\\sqrt{11}}{6\\sqrt{15}} = \\dfrac{\\sqrt{165}}{90}$.\n$\\sqrt{\\dfrac{3}{50}} = \\dfrac{\\sqrt{3}}{5\\sqrt{2}} = \\dfrac{\\sqrt{6}}{10}$.\n$\\sqrt{\\dfrac{5}{98}} = \\dfrac{\\sqrt{5}}{7\\sqrt{2}} = \\dfrac{\\sqrt{10}}{14}$.\n$\\sqrt{\\dfrac{(1-\\sqrt{3})^2}{27}} = \\dfrac{|1-\\sqrt{3}|}{3\\sqrt{3}} = \\dfrac{\\sqrt{3}-1}{3\\sqrt{3}} = \\dfrac{(\\sqrt{3}-1)\\sqrt{3}}{9} = \\dfrac{3-\\sqrt{3}}{9}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "3",
+      "content": "Khử mẫu của mỗi biểu thức dưới dấu căn bậc hai sau:\na) $\\sqrt{\\dfrac{5x^3}{49y}}$ với $x \\ge 0$; $y > 0$;\nb) $7xy\\sqrt{\\dfrac{-3}{xy}}$ với $x < 0$; $y > 0$;\nc) $\\sqrt{\\dfrac{5b}{49a^3}}$ với $a > 0$; $b \\ge 0$;\nd) $\\dfrac{-1}{4}ab\\sqrt{\\dfrac{16}{ab}}$ với $a < 0$; $b < 0$.",
+      "correct_answer": "a) x√(5xy)/(7y); b) −7√(−3xy); c) √(5ab)/(7a²); d) −√(ab)",
+      "explanation": "Phương pháp giải:\nNhân tử và mẫu dưới dấu căn để mẫu thành bình phương, khai căn với $\\sqrt{A^2} = |A|$ rồi bỏ dấu giá trị tuyệt đối theo điều kiện của biến.\n\nLời giải:\na) $\\sqrt{\\dfrac{5x^3}{49y}} = \\sqrt{\\dfrac{5x^3y}{49y^2}} = \\dfrac{\\sqrt{x^2 \\cdot 5xy}}{7y} = \\dfrac{x\\sqrt{5xy}}{7y}$ (vì $x \\ge 0$, $y > 0$).\nb) Với $x < 0$, $y > 0$ thì $xy < 0$: $\\sqrt{\\dfrac{-3}{xy}} = \\sqrt{\\dfrac{-3xy}{(xy)^2}} = \\dfrac{\\sqrt{-3xy}}{|xy|} = \\dfrac{\\sqrt{-3xy}}{-xy}$.\nDo đó $7xy\\sqrt{\\dfrac{-3}{xy}} = 7xy \\cdot \\dfrac{\\sqrt{-3xy}}{-xy} = -7\\sqrt{-3xy}$.\nc) $\\sqrt{\\dfrac{5b}{49a^3}} = \\sqrt{\\dfrac{5ab}{49a^4}} = \\dfrac{\\sqrt{5ab}}{7a^2}$.\nd) Với $a < 0$, $b < 0$ thì $ab > 0$: $\\sqrt{\\dfrac{16}{ab}} = \\dfrac{4}{\\sqrt{ab}} = \\dfrac{4\\sqrt{ab}}{ab}$.\nDo đó $\\dfrac{-1}{4}ab\\sqrt{\\dfrac{16}{ab}} = \\dfrac{-1}{4}ab \\cdot \\dfrac{4\\sqrt{ab}}{ab} = -\\sqrt{ab}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "1",
+      "content": "Trục căn thức ở mẫu các biểu thức sau:\na) $\\dfrac{2}{\\sqrt{3}-1}$;\nb) $\\dfrac{3}{\\sqrt{15}+4}$;\nc) $\\dfrac{4}{\\sqrt{3}-1}$;\nd) $\\dfrac{2}{\\sqrt{5}+\\sqrt{3}}$;\ne) $\\dfrac{5}{2+\\sqrt{3}}$;\nf) $\\dfrac{\\sqrt{2}}{\\sqrt{5}-\\sqrt{2}}$;\ng) $\\dfrac{7}{3-\\sqrt{2}}$;\nh) $\\dfrac{\\sqrt{3}-\\sqrt{2}}{\\sqrt{3}+\\sqrt{2}}$.",
+      "correct_answer": "a) √3+1; b) 12−3√15; c) 2(√3+1); d) √5−√3; e) 5(2−√3); f) (√10+2)/3; g) 3+√2; h) 5−2√6",
+      "explanation": "Phương pháp giải:\nNhân cả tử và mẫu với biểu thức liên hợp của mẫu.\n\nLời giải:\na) $\\dfrac{2(\\sqrt{3}+1)}{3-1} = \\sqrt{3}+1$.\nb) $\\dfrac{3(\\sqrt{15}-4)}{15-16} = 12-3\\sqrt{15}$.\nc) $\\dfrac{4(\\sqrt{3}+1)}{3-1} = 2(\\sqrt{3}+1)$.\nd) $\\dfrac{2(\\sqrt{5}-\\sqrt{3})}{5-3} = \\sqrt{5}-\\sqrt{3}$.\ne) $\\dfrac{5(2-\\sqrt{3})}{4-3} = 5(2-\\sqrt{3})$.\nf) $\\dfrac{\\sqrt{2}(\\sqrt{5}+\\sqrt{2})}{5-2} = \\dfrac{\\sqrt{10}+2}{3}$.\ng) $\\dfrac{7(3+\\sqrt{2})}{9-2} = 3+\\sqrt{2}$.\nh) $\\dfrac{(\\sqrt{3}-\\sqrt{2})^2}{3-2} = 5-2\\sqrt{6}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu", "question_type": "TL", "difficulty": "2",
+      "content": "Trục căn thức ở mẫu:\na) $\\dfrac{2}{\\sqrt{a}}$ với $a > 0$;\nb) $\\dfrac{5}{\\sqrt{x}+3}$ với $x \\ge 0$;\nc) $\\dfrac{1}{\\sqrt{x}-\\sqrt{3}}$ với $x \\ge 0$; $x \\ne 3$;\nd) $\\dfrac{1-\\sqrt{a}}{1+\\sqrt{a}}$ với $a \\ge 0$;\ne) $\\dfrac{1}{\\sqrt{x+1}}$ với $x > -1$;\nf) $\\dfrac{1}{\\sqrt{x}-3}$ với $x \\ge 0$; $x \\ne 9$.",
+      "correct_answer": "a) 2√a/a; b) 5(√x−3)/(x−9) (x≠9); c) (√x+√3)/(x−3); d) (1−√a)²/(1−a) (a≠1); e) √(x+1)/(x+1); f) (√x+3)/(x−9)",
+      "explanation": "Phương pháp giải:\nMẫu chỉ có một căn thì nhân với chính căn đó; mẫu là tổng hoặc hiệu thì nhân với biểu thức liên hợp.\n\nLời giải:\na) $\\dfrac{2}{\\sqrt{a}} = \\dfrac{2\\sqrt{a}}{a}$.\nb) $\\dfrac{5}{\\sqrt{x}+3} = \\dfrac{5(\\sqrt{x}-3)}{x-9}$ (với $x \\ne 9$).\nc) $\\dfrac{1}{\\sqrt{x}-\\sqrt{3}} = \\dfrac{\\sqrt{x}+\\sqrt{3}}{x-3}$.\nd) $\\dfrac{1-\\sqrt{a}}{1+\\sqrt{a}} = \\dfrac{(1-\\sqrt{a})^2}{1-a} = \\dfrac{1-2\\sqrt{a}+a}{1-a}$ (với $a \\ne 1$).\ne) $\\dfrac{1}{\\sqrt{x+1}} = \\dfrac{\\sqrt{x+1}}{x+1}$.\nf) $\\dfrac{1}{\\sqrt{x}-3} = \\dfrac{\\sqrt{x}+3}{x-9}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên", "question_type": "TL", "difficulty": "3",
+      "content": "Cho biểu thức $A = \\dfrac{\\sqrt{x}}{\\sqrt{x}-2}$ và $B = \\dfrac{2\\sqrt{x}}{\\sqrt{x}-3} - \\dfrac{x+9\\sqrt{x}}{x-9}$ với $x > 0$; $x \\ne 4$; $x \\ne 9$.\na) Tính giá trị của biểu thức $A$ khi $x = 100$.\nb) Rút gọn biểu thức $B$.\nc) Tìm giá trị nguyên của $x$ để biểu thức $M = A : B$ có giá trị nguyên.",
+      "correct_answer": "a) A = 5/4; b) B = √x/(√x+3); c) x ∈ {1; 49}",
+      "explanation": "Phương pháp giải:\nb) Quy đồng với mẫu chung $(\\sqrt{x}-3)(\\sqrt{x}+3)$. c) Rút gọn $M$ về dạng $1 + \\dfrac{5}{\\sqrt{x}-2}$; với $x$ nguyên, $M$ nguyên thì $\\sqrt{x}$ phải nguyên và $\\sqrt{x}-2$ là ước của $5$.\n\nLời giải:\na) $x = 100$: $A = \\dfrac{10}{10-2} = \\dfrac{5}{4}$.\nb) $B = \\dfrac{2\\sqrt{x}(\\sqrt{x}+3) - x - 9\\sqrt{x}}{(\\sqrt{x}-3)(\\sqrt{x}+3)} = \\dfrac{x-3\\sqrt{x}}{(\\sqrt{x}-3)(\\sqrt{x}+3)} = \\dfrac{\\sqrt{x}(\\sqrt{x}-3)}{(\\sqrt{x}-3)(\\sqrt{x}+3)} = \\dfrac{\\sqrt{x}}{\\sqrt{x}+3}$.\nc) $M = A : B = \\dfrac{\\sqrt{x}}{\\sqrt{x}-2} \\cdot \\dfrac{\\sqrt{x}+3}{\\sqrt{x}} = \\dfrac{\\sqrt{x}+3}{\\sqrt{x}-2} = 1 + \\dfrac{5}{\\sqrt{x}-2}$.\nVới $x$ nguyên: nếu $\\sqrt{x}$ vô tỉ thì $\\dfrac{5}{\\sqrt{x}-2}$ vô tỉ, $M$ không nguyên. Vậy $\\sqrt{x}$ nguyên và $\\sqrt{x}-2 \\in \\{-5; -1; 1; 5\\}$, tức $\\sqrt{x} \\in \\{1; 3; 7\\}$ (loại $\\sqrt{x} = -3$), cho $x \\in \\{1; 9; 49\\}$. Loại $x = 9$ (không thoả điều kiện).\nVậy $x \\in \\{1; 49\\}$ (khi đó $M = -4$ và $M = 2$)."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên", "question_type": "TL", "difficulty": "3",
+      "content": "Cho biểu thức $P = \\dfrac{3x+\\sqrt{9x}-3}{x+\\sqrt{x}-2} - \\dfrac{\\sqrt{x}+1}{\\sqrt{x}+2} + \\dfrac{\\sqrt{x}-2}{1-\\sqrt{x}}$ với $x \\ge 0$; $x \\ne 1$.\na) Rút gọn biểu thức $P$.\nb) Tìm tất cả các giá trị $x$ nguyên dương để $P$ nhận giá trị nguyên.",
+      "correct_answer": "a) P = (√x+1)/(√x−1); b) x ∈ {4; 9}",
+      "explanation": "Phương pháp giải:\n$\\sqrt{9x} = 3\\sqrt{x}$, $x+\\sqrt{x}-2 = (\\sqrt{x}+2)(\\sqrt{x}-1)$; quy đồng rồi phân tích tử thành nhân tử. b) Viết $P = 1 + \\dfrac{2}{\\sqrt{x}-1}$.\n\nLời giải:\na) $P = \\dfrac{3x+3\\sqrt{x}-3 - (\\sqrt{x}+1)(\\sqrt{x}-1) - (\\sqrt{x}-2)(\\sqrt{x}+2)}{(\\sqrt{x}+2)(\\sqrt{x}-1)} = \\dfrac{3x+3\\sqrt{x}-3-(x-1)-(x-4)}{(\\sqrt{x}+2)(\\sqrt{x}-1)}$\n$= \\dfrac{x+3\\sqrt{x}+2}{(\\sqrt{x}+2)(\\sqrt{x}-1)} = \\dfrac{(\\sqrt{x}+1)(\\sqrt{x}+2)}{(\\sqrt{x}+2)(\\sqrt{x}-1)} = \\dfrac{\\sqrt{x}+1}{\\sqrt{x}-1}$.\nb) $P = 1 + \\dfrac{2}{\\sqrt{x}-1}$. Với $x$ nguyên dương, $P$ nguyên thì $\\sqrt{x}$ phải nguyên (nếu $\\sqrt{x}$ vô tỉ thì $\\dfrac{2}{\\sqrt{x}-1}$ vô tỉ) và $\\sqrt{x}-1 \\in \\{-2; -1; 1; 2\\}$, tức $\\sqrt{x} \\in \\{0; 2; 3\\}$.\nVì $x$ nguyên dương và $x \\ne 1$ nên $x \\in \\{4; 9\\}$ (khi đó $P = 3$ và $P = 2$)."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên", "question_type": "TL", "difficulty": "3",
+      "content": "Cho biểu thức $A = \\dfrac{3x+\\sqrt{9x}-3}{x+\\sqrt{x}-2} - \\dfrac{\\sqrt{x}+1}{\\sqrt{x}+2} + \\dfrac{\\sqrt{x}+2}{1-\\sqrt{x}}$ ($x \\ge 0$; $x \\ne 1$).\na) Rút gọn biểu thức $A$.\nb) Tìm các giá trị nguyên của $x$ để $A$ nhận giá trị nguyên.",
+      "correct_answer": "a) A = (√x−3)/(√x−1); b) x ∈ {0; 4; 9}",
+      "explanation": "Phương pháp giải:\nQuy đồng với mẫu chung $(\\sqrt{x}+2)(\\sqrt{x}-1)$, phân tích tử thành nhân tử. b) Viết $A = 1 - \\dfrac{2}{\\sqrt{x}-1}$.\n\nLời giải:\na) $A = \\dfrac{3x+3\\sqrt{x}-3-(x-1)-(\\sqrt{x}+2)^2}{(\\sqrt{x}+2)(\\sqrt{x}-1)} = \\dfrac{3x+3\\sqrt{x}-3-x+1-x-4\\sqrt{x}-4}{(\\sqrt{x}+2)(\\sqrt{x}-1)}$\n$= \\dfrac{x-\\sqrt{x}-6}{(\\sqrt{x}+2)(\\sqrt{x}-1)} = \\dfrac{(\\sqrt{x}-3)(\\sqrt{x}+2)}{(\\sqrt{x}+2)(\\sqrt{x}-1)} = \\dfrac{\\sqrt{x}-3}{\\sqrt{x}-1}$.\nb) $A = 1 - \\dfrac{2}{\\sqrt{x}-1}$. Với $x$ nguyên, $A$ nguyên thì $\\sqrt{x}$ nguyên và $\\sqrt{x}-1 \\in \\{-2; -1; 1; 2\\}$, tức $\\sqrt{x} \\in \\{0; 2; 3\\}$, cho $x \\in \\{0; 4; 9\\}$ (đều thoả $x \\ge 0$, $x \\ne 1$).\nKhi đó $A$ lần lượt bằng $3$; $-1$; $3$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên", "question_type": "TL", "difficulty": "4",
+      "content": "Cho biểu thức $A = \\left(\\dfrac{2}{\\sqrt{x}-2} + \\dfrac{3}{2\\sqrt{x}+1} - \\dfrac{5\\sqrt{x}-7}{2x-3\\sqrt{x}-2}\\right) : \\dfrac{2\\sqrt{x}+3}{5x-10\\sqrt{x}}$ với $x > 0$ và $x \\ne 4$.\na) Rút gọn biểu thức $A$.\nb) Tìm $x$ sao cho $A$ nhận một giá trị nguyên.",
+      "correct_answer": "a) A = 5√x/(2√x+1); b) x = 1/9",
+      "explanation": "Phương pháp giải:\n$2x-3\\sqrt{x}-2 = (2\\sqrt{x}+1)(\\sqrt{x}-2)$, $5x-10\\sqrt{x} = 5\\sqrt{x}(\\sqrt{x}-2)$. b) $x$ không bắt buộc nguyên: chặn $0 < A < \\dfrac{5}{2}$ rồi thử từng giá trị nguyên của $A$.\n\nLời giải:\na) Biểu thức trong ngoặc: $\\dfrac{2(2\\sqrt{x}+1)+3(\\sqrt{x}-2)-(5\\sqrt{x}-7)}{(2\\sqrt{x}+1)(\\sqrt{x}-2)} = \\dfrac{2\\sqrt{x}+3}{(2\\sqrt{x}+1)(\\sqrt{x}-2)}$.\n$A = \\dfrac{2\\sqrt{x}+3}{(2\\sqrt{x}+1)(\\sqrt{x}-2)} \\cdot \\dfrac{5\\sqrt{x}(\\sqrt{x}-2)}{2\\sqrt{x}+3} = \\dfrac{5\\sqrt{x}}{2\\sqrt{x}+1}$.\nb) Với $x > 0$: $A > 0$ và $A = \\dfrac{5\\sqrt{x}}{2\\sqrt{x}+1} < \\dfrac{5\\sqrt{x}}{2\\sqrt{x}} = \\dfrac{5}{2}$. Vậy $A$ nguyên thì $A \\in \\{1; 2\\}$.\n$A = 1 \\Leftrightarrow 5\\sqrt{x} = 2\\sqrt{x}+1 \\Leftrightarrow \\sqrt{x} = \\dfrac{1}{3} \\Leftrightarrow x = \\dfrac{1}{9}$ (thoả mãn).\n$A = 2 \\Leftrightarrow 5\\sqrt{x} = 4\\sqrt{x}+2 \\Leftrightarrow \\sqrt{x} = 2 \\Leftrightarrow x = 4$ (loại).\nVậy $x = \\dfrac{1}{9}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên", "question_type": "TL", "difficulty": "4",
+      "content": "Cho biểu thức $P = \\dfrac{x-2\\sqrt{x}}{x\\sqrt{x}-1} + \\dfrac{\\sqrt{x}+1}{x\\sqrt{x}+x+\\sqrt{x}} + \\dfrac{1+2x-2\\sqrt{x}}{x^2-\\sqrt{x}}$, với $x > 0$; $x \\ne 1$.\na) Rút gọn biểu thức $P$.\nb) Tìm tất cả các giá trị của $x$ sao cho giá trị của $P$ là một số nguyên.",
+      "correct_answer": "a) P = (√x+2)/(x+√x+1); b) Không có giá trị nào của x",
+      "explanation": "Phương pháp giải:\n$x\\sqrt{x}-1 = (\\sqrt{x}-1)(x+\\sqrt{x}+1)$, $x\\sqrt{x}+x+\\sqrt{x} = \\sqrt{x}(x+\\sqrt{x}+1)$, $x^2-\\sqrt{x} = \\sqrt{x}(\\sqrt{x}-1)(x+\\sqrt{x}+1)$. b) Chặn $0 < P < 2$ rồi xét $P = 1$.\n\nLời giải:\na) Mẫu chung $\\sqrt{x}(\\sqrt{x}-1)(x+\\sqrt{x}+1)$. Tử số:\n$(x-2\\sqrt{x})\\sqrt{x} + (\\sqrt{x}+1)(\\sqrt{x}-1) + 1+2x-2\\sqrt{x} = x\\sqrt{x}-2x + x-1 + 1+2x-2\\sqrt{x} = x\\sqrt{x}+x-2\\sqrt{x} = \\sqrt{x}(\\sqrt{x}+2)(\\sqrt{x}-1)$.\nVậy $P = \\dfrac{\\sqrt{x}(\\sqrt{x}+2)(\\sqrt{x}-1)}{\\sqrt{x}(\\sqrt{x}-1)(x+\\sqrt{x}+1)} = \\dfrac{\\sqrt{x}+2}{x+\\sqrt{x}+1}$.\nb) Với $x > 0$: $P > 0$. Mặt khác $2(x+\\sqrt{x}+1) - (\\sqrt{x}+2) = 2x+\\sqrt{x} > 0$ nên $P < 2$. Vậy $P$ nguyên chỉ có thể $P = 1$:\n$\\sqrt{x}+2 = x+\\sqrt{x}+1 \\Leftrightarrow x = 1$, không thoả điều kiện $x \\ne 1$.\nVậy không có giá trị nào của $x$ để $P$ nguyên. (Nếu cho phép $x = 0$ thì $P = 2$, nhưng $x = 0$ làm các mẫu $x\\sqrt{x}-1$, $x^2-\\sqrt{x}$ mất nghĩa theo đề.)"
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên", "question_type": "TL", "difficulty": "4",
+      "content": "Cho biểu thức $P = \\left(\\dfrac{3\\sqrt{x}}{\\sqrt{x}-1} - \\dfrac{2\\sqrt{x}}{3x+2\\sqrt{x}} - \\dfrac{9x+\\sqrt{x}+1}{3x-\\sqrt{x}-2}\\right) : \\dfrac{3\\sqrt{x}+1}{7x-7\\sqrt{x}}$ ($x > 0$; $x \\ne 1$).\na) Rút gọn biểu thức $P$.\nb) Tìm $x$ sao cho $P$ nhận giá trị là một số nguyên.",
+      "correct_answer": "a) P = 7√x/(3√x+2); b) x ∈ {1/4; 16}",
+      "explanation": "Phương pháp giải:\n$3x+2\\sqrt{x} = \\sqrt{x}(3\\sqrt{x}+2)$, $3x-\\sqrt{x}-2 = (3\\sqrt{x}+2)(\\sqrt{x}-1)$, $7x-7\\sqrt{x} = 7\\sqrt{x}(\\sqrt{x}-1)$. b) Chặn $0 < P < \\dfrac{7}{3}$.\n\nLời giải:\na) Mẫu chung của ngoặc: $\\sqrt{x}(3\\sqrt{x}+2)(\\sqrt{x}-1)$. Tử số:\n$3\\sqrt{x} \\cdot \\sqrt{x}(3\\sqrt{x}+2) - 2\\sqrt{x}(\\sqrt{x}-1) - (9x+\\sqrt{x}+1)\\sqrt{x} = 9x\\sqrt{x}+6x - 2x+2\\sqrt{x} - 9x\\sqrt{x}-x-\\sqrt{x} = 3x+\\sqrt{x} = \\sqrt{x}(3\\sqrt{x}+1)$.\nNgoặc $= \\dfrac{3\\sqrt{x}+1}{(3\\sqrt{x}+2)(\\sqrt{x}-1)}$.\n$P = \\dfrac{3\\sqrt{x}+1}{(3\\sqrt{x}+2)(\\sqrt{x}-1)} \\cdot \\dfrac{7\\sqrt{x}(\\sqrt{x}-1)}{3\\sqrt{x}+1} = \\dfrac{7\\sqrt{x}}{3\\sqrt{x}+2}$.\nb) Với $x > 0$: $P > 0$ và $P < \\dfrac{7\\sqrt{x}}{3\\sqrt{x}} = \\dfrac{7}{3}$, nên $P \\in \\{1; 2\\}$.\n$P = 1 \\Leftrightarrow 7\\sqrt{x} = 3\\sqrt{x}+2 \\Leftrightarrow \\sqrt{x} = \\dfrac{1}{2} \\Leftrightarrow x = \\dfrac{1}{4}$.\n$P = 2 \\Leftrightarrow 7\\sqrt{x} = 6\\sqrt{x}+4 \\Leftrightarrow \\sqrt{x} = 4 \\Leftrightarrow x = 16$.\nCả hai đều thoả điều kiện. Vậy $x \\in \\left\\{\\dfrac{1}{4}; 16\\right\\}$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên", "question_type": "TL", "difficulty": "3",
+      "content": "Cho biểu thức $P = \\dfrac{15\\sqrt{x}-11}{x+2\\sqrt{x}-3} + \\dfrac{3\\sqrt{x}-2}{1-\\sqrt{x}} + \\dfrac{2\\sqrt{x}+3}{3+\\sqrt{x}}$ với $x \\ge 0$; $x \\ne 1$.\na) Rút gọn biểu thức $P$.\nb) Tìm tất cả các giá trị nguyên của $x$ để $P$ là một số nguyên.",
+      "correct_answer": "a) P = (8−√x)/(√x+3); b) x = 64",
+      "explanation": "Phương pháp giải:\n$x+2\\sqrt{x}-3 = (\\sqrt{x}+3)(\\sqrt{x}-1)$; quy đồng, phân tích tử. b) Viết $P = -1 + \\dfrac{11}{\\sqrt{x}+3}$.\n\nLời giải:\na) $P = \\dfrac{15\\sqrt{x}-11 - (3\\sqrt{x}-2)(\\sqrt{x}+3) + (2\\sqrt{x}+3)(\\sqrt{x}-1)}{(\\sqrt{x}+3)(\\sqrt{x}-1)}$\n$= \\dfrac{15\\sqrt{x}-11 - (3x+7\\sqrt{x}-6) + (2x+\\sqrt{x}-3)}{(\\sqrt{x}+3)(\\sqrt{x}-1)} = \\dfrac{-x+9\\sqrt{x}-8}{(\\sqrt{x}+3)(\\sqrt{x}-1)} = \\dfrac{-(\\sqrt{x}-1)(\\sqrt{x}-8)}{(\\sqrt{x}+3)(\\sqrt{x}-1)} = \\dfrac{8-\\sqrt{x}}{\\sqrt{x}+3}$.\nb) $P = -1 + \\dfrac{11}{\\sqrt{x}+3}$. Với $x$ nguyên, $P$ nguyên thì $\\sqrt{x}$ nguyên và $\\sqrt{x}+3$ là ước dương của $11$ không nhỏ hơn $3$, tức $\\sqrt{x}+3 = 11$, $\\sqrt{x} = 8$, $x = 64$.\nThử lại: $x = 64$ thì $P = 0$ nguyên. Vậy $x = 64$."
+    },
+    {
+      "topic": "Chương 3. Căn bậc hai và căn bậc ba", "lesson": "Bài 9. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+      "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên", "question_type": "TL", "difficulty": "3",
+      "content": "Cho biểu thức $A = \\left(1 - \\dfrac{\\sqrt{x}}{\\sqrt{x}+1}\\right) : \\left(\\dfrac{\\sqrt{x}+3}{\\sqrt{x}-2} + \\dfrac{\\sqrt{x}+2}{3-\\sqrt{x}} + \\dfrac{\\sqrt{x}+2}{x-5\\sqrt{x}+6}\\right)$ với $x \\ge 0$; $x \\ne 4$; $x \\ne 9$.\na) Rút gọn biểu thức $A$.\nb) Tìm tất cả các giá trị nguyên của $x$ để biểu thức $A$ nhận giá trị nguyên.",
+      "correct_answer": "a) A = (√x−2)/(√x+1); b) x = 0",
+      "explanation": "Phương pháp giải:\n$x-5\\sqrt{x}+6 = (\\sqrt{x}-2)(\\sqrt{x}-3)$; rút gọn từng ngoặc rồi chia. b) Viết $A = 1 - \\dfrac{3}{\\sqrt{x}+1}$.\n\nLời giải:\na) $1 - \\dfrac{\\sqrt{x}}{\\sqrt{x}+1} = \\dfrac{1}{\\sqrt{x}+1}$.\nNgoặc thứ hai: $\\dfrac{(\\sqrt{x}+3)(\\sqrt{x}-3) - (\\sqrt{x}+2)(\\sqrt{x}-2) + \\sqrt{x}+2}{(\\sqrt{x}-2)(\\sqrt{x}-3)} = \\dfrac{x-9-x+4+\\sqrt{x}+2}{(\\sqrt{x}-2)(\\sqrt{x}-3)} = \\dfrac{\\sqrt{x}-3}{(\\sqrt{x}-2)(\\sqrt{x}-3)} = \\dfrac{1}{\\sqrt{x}-2}$.\n$A = \\dfrac{1}{\\sqrt{x}+1} \\cdot (\\sqrt{x}-2) = \\dfrac{\\sqrt{x}-2}{\\sqrt{x}+1}$.\nb) $A = 1 - \\dfrac{3}{\\sqrt{x}+1}$. Với $x$ nguyên, $A$ nguyên thì $\\sqrt{x}$ nguyên và $\\sqrt{x}+1$ là ước dương của $3$: $\\sqrt{x}+1 \\in \\{1; 3\\}$, tức $x \\in \\{0; 4\\}$. Loại $x = 4$.\nVậy $x = 0$ (khi đó $A = -2$)."
+    }
+  ]
+}
