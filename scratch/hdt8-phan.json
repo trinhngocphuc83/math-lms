@@ -1,0 +1,1574 @@
+[
+ {
+  "id": "ec215eab-a6df-46ae-8287-9051e47db282",
+  "question_id": "CH_1783916424739_24bt",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "8127e25a-c78b-446d-a29f-e70ad21e5be2",
+  "question_id": "CH_1783916424739_sfn5",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "0d2ca5fe-c0af-47ae-b2c3-4ea6ceb0e3be",
+  "question_id": "CH_1783916424739_7lnp",
+  "math_form": "Chứng minh giá trị biểu thức luôn dương hoặc luôn âm với mọi x",
+  "phan": "B1"
+ },
+ {
+  "id": "a35c2d00-9435-42c1-865a-1c09333a16cf",
+  "question_id": "CH_1783916424739_wiu1",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "512ce783-baa6-4b5d-97b7-8c055da95694",
+  "question_id": "CH_1783916424739_i8ni",
+  "math_form": "Tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "633181a0-17b4-469a-98d8-a21cf9664ace",
+  "question_id": "CH_1783916424739_hlgw",
+  "math_form": "Tìm Min-Max",
+  "phan": "B3"
+ },
+ {
+  "id": "a6eed5b4-4c6f-44d3-8af3-e3247783019a",
+  "question_id": "CH_1783940683915_bcti",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "4dce9ffe-ca58-403f-b9e8-0640423c4531",
+  "question_id": "CH_1783940683915_t28b",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "698f020d-aa40-4d00-8c05-1cfb0421f52a",
+  "question_id": "CH_1783940683915_vv1u",
+  "math_form": "Tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "b4ae424e-8169-400c-a580-a86e2b7a4aea",
+  "question_id": "CH_1787813913668_z2v9",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "ed1e7499-27a1-4697-b51a-43cc6d22a9e2",
+  "question_id": "CH_1787813913668_sl20",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "3d4cb25a-4f41-44a2-a907-8729fdb45612",
+  "question_id": "CH_1787813913668_i5v4",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "99c10b1f-a69a-4ad4-a568-14912b805bc2",
+  "question_id": "CH_1787813913668_cqc3",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "b943b85f-97b7-4eb6-ba81-59f6aeae6e70",
+  "question_id": "CH_1787813913668_edlk",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "4c8bdfe2-5d78-41bc-b173-37bba4f662ac",
+  "question_id": "CH_1787813913668_pinl",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "0f456553-c2b5-4728-9da1-bce4802004e4",
+  "question_id": "CH_1787813913668_nvcm",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "49a5f79d-9fd5-4d3a-b7ed-b71402b63d87",
+  "question_id": "CH_1783911766652_oacb",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "07dcd506-1ba0-4471-99a0-4d077a7f545a",
+  "question_id": "CH_1783911766652_yx3r",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "a01e063d-da6a-40ce-abae-684c7fd5ec84",
+  "question_id": "CH_1783912041673_iysc",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "72dcd737-64da-451a-84e4-c23ff8f83e57",
+  "question_id": "CH_1783911342714_fxxj",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "72821e60-f40e-4093-ba8c-12cd342b1505",
+  "question_id": "CH_1783911342715_ssrd",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "f963bef9-20c4-4308-8013-57ebcc94ea13",
+  "question_id": "CH_1783911342715_l83v",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "7bd38e02-8a35-41e3-959c-5a7ea1adf2cd",
+  "question_id": "CH_1783911342715_nvmy",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "0e2ba1a6-5fb1-423d-8241-2b13a3d655d4",
+  "question_id": "CH_1783911342715_yspw",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "f8406644-a8fe-4648-8219-5119190bc0d0",
+  "question_id": "CH_1783911342715_1haq",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "6a4b92d5-8bca-4f15-8b07-7452fafb06e3",
+  "question_id": "CH_1783911342715_szfs",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "c2bc872b-9368-4059-9154-c0f2109774e4",
+  "question_id": "CH_1783911342715_0xcn",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "42ca7fc1-2639-4fe3-8ba5-8366c26a1fb8",
+  "question_id": "CH_1783911342715_0xq7",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "8bfed07d-09d7-485a-a0dc-d80be61d4c86",
+  "question_id": "CH_1783911342715_h3sm",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "7436afa6-5382-4da7-870a-3607e8d73ebf",
+  "question_id": "CH_1783911342715_vgiw",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "cf04a49c-94c8-41f0-9502-1d3d0c72617b",
+  "question_id": "CH_1783911342715_ipgo",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "c3228660-1486-4e22-9700-703dc801e717",
+  "question_id": "CH_1783911342715_hmf7",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "68d16d76-ef65-4f71-80dc-ce158ed24f01",
+  "question_id": "CH_1783911342715_fjd5",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B2"
+ },
+ {
+  "id": "84967940-0862-42a8-a5fb-c2470d20323f",
+  "question_id": "CH_1783911342715_bu65",
+  "math_form": "Chứng minh giá trị biểu thức không phụ thuộc vào biến",
+  "phan": "B2"
+ },
+ {
+  "id": "3aee24eb-6259-4d36-9ff4-c938e7d71990",
+  "question_id": "CH_1783911342715_avqc",
+  "math_form": "Chứng minh giá trị biểu thức luôn dương hoặc luôn âm với mọi x",
+  "phan": "B1"
+ },
+ {
+  "id": "ca57d8ee-26b6-45e1-be11-fc0969521711",
+  "question_id": "CH_1783911342715_phct",
+  "math_form": "Chứng minh giá trị biểu thức luôn dương hoặc luôn âm với mọi x",
+  "phan": "B1"
+ },
+ {
+  "id": "734cfd25-97f1-426c-9c13-ddc245113c31",
+  "question_id": "CH_1783911342715_ap5v",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "a081e1cc-a6d5-4623-830e-e9c92ab02aed",
+  "question_id": "CH_1783911342715_f7kz",
+  "math_form": "Chứng minh đẳng thức",
+  "phan": "B1"
+ },
+ {
+  "id": "b5ce3d3e-c50a-4e04-bcb6-5771b7cf92a2",
+  "question_id": "CH_1783911342715_x22i",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "63ac70b5-49ba-4b05-aac3-52db86d6fc20",
+  "question_id": "CH_1783911342715_toa2",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "1a751348-a2a8-46d4-aaf5-76386cf021ed",
+  "question_id": "CH_1783911342715_zatz",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "535a48f9-708d-4175-884b-03c59cff63f2",
+  "question_id": "CH_1783911342715_pe9w",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "ff9d1011-888d-485c-9324-5b766142ce42",
+  "question_id": "CH_1783911766652_9xat",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "f613312f-b8a4-4667-b20a-16dda76f8ded",
+  "question_id": "CH_1783911766652_thqz",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "d0a6d9b4-eae6-44ff-896e-2082c8face98",
+  "question_id": "CH_1783911766652_jely",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "689e393c-7ac5-4006-be97-12f65430ba4e",
+  "question_id": "CH_1783911766652_4o8i",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "85ca163b-4fe8-4cce-9e19-016987dddaad",
+  "question_id": "CH_1783911766652_q2fk",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "633d39d4-f250-4e43-8871-df59e7e507a8",
+  "question_id": "CH_1783911766652_3t6g",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "c60506f7-c2ac-497c-b7f9-4dd9ae8de996",
+  "question_id": "CH_1783911766652_8qyy",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "5f2d77de-63ef-489a-a71b-8e54853e225a",
+  "question_id": "CH_1783911766652_bdet",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "deee89df-54d4-4f52-a3f0-d661d1303669",
+  "question_id": "CH_1783911766652_0f4x",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "c6ee1eb0-f2e0-4273-925f-62e86d656345",
+  "question_id": "CH_1783911766652_d8e9",
+  "math_form": "Chứng minh giá trị biểu thức không phụ thuộc vào biến",
+  "phan": "B3"
+ },
+ {
+  "id": "c3686a25-03ac-4d72-84d9-91403e1fd5bf",
+  "question_id": "CH_1783911766652_lwd5",
+  "math_form": "Chứng minh giá trị biểu thức không phụ thuộc vào biến",
+  "phan": "B1"
+ },
+ {
+  "id": "4e1a5016-e364-48de-b4f3-880a2a913e52",
+  "question_id": "CH_1783911766652_nbbe",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "c4668570-7435-4704-87a5-b61abe0a5808",
+  "question_id": "CH_1783911766652_pykp",
+  "math_form": "Toán tổng hợp",
+  "phan": "B3"
+ },
+ {
+  "id": "f8a5fe5d-3a78-49fe-b556-1a6880b22302",
+  "question_id": "CH_1783911766652_rv2r",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "b2f71d6a-d675-465a-836d-480bea365865",
+  "question_id": "CH_1783911766652_5ft6",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "363419b0-1493-4731-a668-0c964c4b5dd5",
+  "question_id": "CH_1783911766652_vn6j",
+  "math_form": "Chứng minh đẳng thức",
+  "phan": "B3"
+ },
+ {
+  "id": "a0f962a5-ab15-4d8c-b8c4-caea50735bec",
+  "question_id": "CH_1783911766652_ivbv",
+  "math_form": "Chứng minh chia hết",
+  "phan": "B1"
+ },
+ {
+  "id": "822b015d-7a88-421b-957f-56b2c62fd7ac",
+  "question_id": "CH_1783911766652_j809",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "45b66b1a-3f54-4f5c-bcfe-29b31caba615",
+  "question_id": "CH_1783911766652_ko3k",
+  "math_form": "Toán tổng hợp",
+  "phan": "B2"
+ },
+ {
+  "id": "9d92056b-d3aa-4f96-a6aa-5b43d1044841",
+  "question_id": "CH_1783911766652_5dpf",
+  "math_form": "Toán tổng hợp",
+  "phan": "B1"
+ },
+ {
+  "id": "f36fd017-015c-4d47-8e15-720c72d7ef78",
+  "question_id": "CH_1783911766652_gth5",
+  "math_form": "Toán tổng hợp",
+  "phan": "B3"
+ },
+ {
+  "id": "303f2e3d-863c-4dc6-9868-fc3bb2dbc20f",
+  "question_id": "CH_1783911766652_w0bd",
+  "math_form": "Chứng minh chia hết",
+  "phan": "B1"
+ },
+ {
+  "id": "1a0c6cd2-9560-4d71-b81c-c273733177f1",
+  "question_id": "CH_1783911766652_pfm8",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "98df1d2f-b577-459e-9bd7-79ee91aa3d3f",
+  "question_id": "CH_1783911766652_qoja",
+  "math_form": "Tìm Min-Max",
+  "phan": "B2"
+ },
+ {
+  "id": "8b8891cc-d647-4174-866b-2896def9554c",
+  "question_id": "CH_1783912041673_wsxo",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "163a8bf3-3434-4151-be1e-19b5ec4790f0",
+  "question_id": "CH_1783912041673_abk3",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "e90a3e1d-289c-41ad-b3ee-271f3bd5afcb",
+  "question_id": "CH_1783912041673_4xig",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "5cd24f8c-88ed-41ca-912b-e514b7cfe2f8",
+  "question_id": "CH_1783912041673_ze1a",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "db618435-921c-4bee-9ef5-8beb62af8685",
+  "question_id": "CH_1783912041673_fwdm",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "18ea399e-6823-4909-ba10-edccd45c1f7b",
+  "question_id": "CH_1783912041673_ibpc",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "406f45ab-49f2-48c3-af45-4c8042342413",
+  "question_id": "CH_1783912041673_t2p9",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B2"
+ },
+ {
+  "id": "33594364-7f62-42b9-afb9-d1991a0a1a3e",
+  "question_id": "CH_1783912041673_97my",
+  "math_form": "Chứng minh chia hết",
+  "phan": "B1"
+ },
+ {
+  "id": "70f2c525-eb95-4bb4-87f1-2a6d1938d13a",
+  "question_id": "CH_1783912041673_fq4i",
+  "math_form": "Chứng minh giá trị biểu thức luôn dương hoặc luôn âm với mọi x",
+  "phan": "B1"
+ },
+ {
+  "id": "46eda33a-c506-47e7-bb80-8b9e7f7acc1b",
+  "question_id": "CH_1783912486442_jo05",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "104bf91b-a401-42fd-8434-8e38d88a27ef",
+  "question_id": "CH_1783912486442_p4m8",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "3656acac-cf1a-4409-9cb5-a14d6c3e6c2b",
+  "question_id": "CH_1783912486442_ors9",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "5fad33b8-63da-48e8-a315-84a1a144af98",
+  "question_id": "CH_1783912486442_85hi",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "fe8f3fa9-fcfe-4dd9-ac4f-320167c07633",
+  "question_id": "CH_1783912486442_3ik6",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "b1aaf260-54a7-4b2a-9d6c-e4a1d2c100fc",
+  "question_id": "CH_1783912486442_rvbc",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "e4706d23-b6f7-4c29-8506-6cf998d7515c",
+  "question_id": "CH_1783912486442_sq7p",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "bcfce4c2-c4cd-42e3-b613-41d87bb08783",
+  "question_id": "CH_1783912486442_syyy",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "7b432512-fdc9-401b-a34e-4a1574c4ad25",
+  "question_id": "CH_1783912486442_y9a2",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "b970fca4-f19e-46a5-83c1-8500c8e9fbc2",
+  "question_id": "CH_1783912486442_difc",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "3c335855-c9f9-45ce-8363-8996252be42a",
+  "question_id": "CH_1783912486442_wnuj",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "75867ae3-878b-466a-a531-c0c80e22a896",
+  "question_id": "CH_1783912486442_iqf7",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "83d6c308-c8b6-4c16-bb39-ec789f8eeae7",
+  "question_id": "CH_1783912486442_11ev",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "6d33dac0-2842-450d-b3a6-34b82d0ebe11",
+  "question_id": "CH_1783912486442_hovx",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "d4ddc2b3-e18a-41cd-a2d9-6a20ed0cf706",
+  "question_id": "CH_1783912486442_j1ez",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "886dfbfc-23da-40af-be34-dcf6c2a85376",
+  "question_id": "CH_1783912486442_jyrv",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "85d271b0-e817-417a-809a-d3fbab9a1bdd",
+  "question_id": "CH_1783912486442_zen1",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "e819a9f7-766f-457d-8b7e-ab098ea7c7b9",
+  "question_id": "CH_1783912486442_uk76",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "61a98db7-560b-47b0-a91f-9ecde330637a",
+  "question_id": "CH_1783912486442_3m9n",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "830197f3-9bf7-4366-a9af-584e0a551582",
+  "question_id": "CH_1783912486442_qm2g",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "9fe9c541-d3c0-4a1d-ab7c-ec736cdc3848",
+  "question_id": "CH_1783912486442_oqod",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "70220d99-c32d-4d5a-931d-cb1736bc1308",
+  "question_id": "CH_1783912486442_xavd",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "b3c3d2e7-508a-486a-859f-c6d1bc64fbd0",
+  "question_id": "CH_1783912486442_pn35",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "eee490e7-3ac4-4829-90bc-8cd4a91def94",
+  "question_id": "CH_1783912486442_1p0b",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "d17c8ecc-0645-45bd-b632-0de8c3a1e03c",
+  "question_id": "CH_1783912486442_doyv",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "a98613ce-bb8d-4e11-a1b9-4b475a93f9b4",
+  "question_id": "CH_1783912486442_j6nq",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "21cd6c39-dbcf-4fb9-b9d7-db363edfa86c",
+  "question_id": "CH_1783912486442_n1wn",
+  "math_form": "Chứng minh đẳng thức",
+  "phan": "B1"
+ },
+ {
+  "id": "a834d61a-5c70-4aa4-b705-0831b5138867",
+  "question_id": "CH_1783912486442_qukn",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "bb5dc5af-cabf-4415-9ae8-6172bb31b435",
+  "question_id": "CH_1783912486442_klaj",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "38b237cb-db18-4e76-af3c-8ac1c73932b3",
+  "question_id": "CH_1783912486442_1cps",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "69eee9e4-423d-40f8-966d-6da2e1e2fa02",
+  "question_id": "CH_1783912486442_18lr",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "3b10d8cb-6084-4ea4-a2c8-bd28058f240c",
+  "question_id": "CH_1783912486442_0rq7",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "36e47576-26b3-45a5-94b4-4890aeab5830",
+  "question_id": "CH_1783912486442_w9tj",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "b1316a2c-a5ce-4e67-9695-05df148d9116",
+  "question_id": "CH_1783912486442_8uyo",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "3ea3af3e-462c-41e3-bf9a-4c7337ebe531",
+  "question_id": "CH_1783912754088_qc5l",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "bf3b9e44-ea86-4fcd-9c8b-aae9b9ad14db",
+  "question_id": "CH_1783912754088_xx75",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "fa2a2998-14e5-4c30-8757-f84d85d070a3",
+  "question_id": "CH_1783912754088_lqtf",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "b6daba54-1cca-4c63-a85e-359c42f21b1c",
+  "question_id": "CH_1783912754088_5pi1",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "0a9f8077-c3dd-49b2-ba47-5ca5d5d714f4",
+  "question_id": "CH_1783912754088_63bf",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "93e19a6b-dfc1-4424-a5d0-f5b9934e4ce8",
+  "question_id": "CH_1783912754088_mo8q",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "9583e385-0973-4975-acca-0a7c59f727f3",
+  "question_id": "CH_1783912754088_dneh",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "f791e788-a61e-435e-907b-839ac0e25297",
+  "question_id": "CH_1783912754088_t0f0",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "0b887869-9eb0-4f1d-a5e1-baf0967f573f",
+  "question_id": "CH_1783912754088_mjk6",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "f5ac81dc-5182-4e4d-9a49-e927f593be0f",
+  "question_id": "CH_1783912754088_6a6j",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "74759bec-409d-4b71-8cae-125c895925e0",
+  "question_id": "CH_1783912754088_6p2s",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "58c82ac9-f8c2-4259-a0ce-8d10bda0ca2b",
+  "question_id": "CH_1783912754088_h8zg",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "39c5bfb0-4de8-4566-8b38-669eead46888",
+  "question_id": "CH_1783912754088_mfqi",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "ea552ab5-bf4d-42a3-9236-9e8d10bf3a09",
+  "question_id": "CH_1783912754088_fk9w",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "80163a15-78fc-4197-99b7-cd799b2143f0",
+  "question_id": "CH_1783912754088_vtq6",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "035e01ce-a322-46a7-83b0-20df2192aa53",
+  "question_id": "CH_1783912754088_kurr",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "0eeccb99-41c9-43f6-b7c2-d9928ff78db1",
+  "question_id": "CH_1783912754088_5lm2",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "83fc9d37-5320-4d8e-a6b8-e26d45f3accb",
+  "question_id": "CH_1783912754088_3zuk",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "5fe2a710-ca02-4658-a83f-c984c3c92f4f",
+  "question_id": "CH_1783912754088_0r2d",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "a0d6412b-786a-477e-b2c1-c1e7f53a3879",
+  "question_id": "CH_1783912754088_i8ft",
+  "math_form": "Chứng minh đẳng thức",
+  "phan": "B1"
+ },
+ {
+  "id": "bf8936a9-69e0-4056-9b25-fdfa661e13ea",
+  "question_id": "CH_1783912754088_qskn",
+  "math_form": "Toán tổng hợp",
+  "phan": "B1"
+ },
+ {
+  "id": "677a24ff-dd13-4425-9ce3-85a55adb4240",
+  "question_id": "CH_1783912754088_y2s7",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "7131f6b9-3b2c-495c-adc7-3e93379b00dc",
+  "question_id": "CH_1783912754088_632g",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "d955923f-a7ba-4357-8643-0c23e2597e24",
+  "question_id": "CH_1783912754088_xv4c",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "b21a050c-55b6-4cba-8a91-92e674170d91",
+  "question_id": "CH_1783912754088_6xzi",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "754bc7e0-0a3e-4d86-b0e8-62302691367e",
+  "question_id": "CH_1783912754088_97y2",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "953f60ed-350e-4b52-8755-24e37161ddc2",
+  "question_id": "CH_1783912754088_87p4",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "0b401621-a288-4a2c-8680-76b357202e6a",
+  "question_id": "CH_1783912754088_wvf4",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "fc68f36b-dd77-4f89-80e3-3af7d5231afb",
+  "question_id": "CH_1783912754088_qoht",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "34405cc5-98b0-4a37-875d-d3ef0dfc85cd",
+  "question_id": "CH_1783912754088_4cn4",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "cea75886-160a-4f28-90f3-a675fa5b3a02",
+  "question_id": "CH_1783912754088_1a0a",
+  "math_form": "Toán tổng hợp",
+  "phan": "B1"
+ },
+ {
+  "id": "249f2a01-3f25-438f-9dbd-af36f4b25deb",
+  "question_id": "CH_1783912754088_5ofd",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "425cedbd-9cce-46ee-b6d7-6e772bc90a61",
+  "question_id": "CH_1783912754088_swml",
+  "math_form": "Toán tổng hợp",
+  "phan": "B1"
+ },
+ {
+  "id": "e9a1b668-a54c-4cf0-8d17-c484455f928e",
+  "question_id": "CH_1783912754088_lfvc",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "1259091f-3295-4a34-855b-fb4bb2301369",
+  "question_id": "CH_1783912754088_zqfv",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "19739629-3640-4033-8c65-1cf36b0a7aa8",
+  "question_id": "CH_1783912754088_v8ur",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "f946ac02-21c5-4d9b-a19b-ffe53bb2c4b4",
+  "question_id": "CH_1783912754088_tpwu",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "82b558cf-3fc3-4ec6-8a51-b372ba2dc6a3",
+  "question_id": "CH_1783912754088_haey",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "93ac9c32-b228-4d45-b7c1-8c92f03c6e26",
+  "question_id": "CH_1783912754088_03ub",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "fddee114-ecf8-4a02-9fde-f540ec9f5a5e",
+  "question_id": "CH_1783912754088_4sc2",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "f3e36a54-db3a-4a9a-a174-a01723ba9dc3",
+  "question_id": "CH_1783912754088_h3o9",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "7cac0fe5-e004-4bd4-a9e0-c3d91aca1ada",
+  "question_id": "CH_1783912754088_fqfd",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "eee6cd42-d7d0-4212-98d6-65b97c84a53b",
+  "question_id": "CH_1783912754088_fbtk",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "dc4ed6c0-7cf4-485d-b1d1-bb3609745be1",
+  "question_id": "CH_1783912754088_kgel",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B2"
+ },
+ {
+  "id": "5ff32f24-5792-4457-8150-bb0d7844b3ee",
+  "question_id": "CH_1783912754088_qp60",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "2d5df700-1096-4882-9459-8dfea91aca5d",
+  "question_id": "CH_1783912754088_aq1k",
+  "math_form": "Tìm Min-Max",
+  "phan": "B3"
+ },
+ {
+  "id": "b3450b9e-ed2e-4d93-9c40-122c1abc7900",
+  "question_id": "CH_1783912754088_5zxj",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "7d72cd23-f938-46b2-bb25-677061914d38",
+  "question_id": "CH_1783912754088_ct4o",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "74dbd9f5-0255-4183-9dda-75fb54449b08",
+  "question_id": "CH_1783912754088_nbg9",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "56ed10ca-46b2-4e8f-bf0f-44c998eb9f95",
+  "question_id": "CH_1783912754088_2ugz",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "faef8581-85dd-4539-a594-68cd8ab6ad3d",
+  "question_id": "CH_1783912754088_bz9f",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "5b831369-adce-47cd-81e5-bc22fa0f963e",
+  "question_id": "CH_1783912754088_57zd",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "ed1f3def-8f10-4c1b-84db-a68de09ea07d",
+  "question_id": "CH_1783912754088_8onk",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "e34b79fa-e9b9-48c3-86c4-75abe3450326",
+  "question_id": "CH_1783913022985_uqn5",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "df1797cc-bdfe-469f-8fe9-2403548436d2",
+  "question_id": "CH_1783913022985_vs4r",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B2"
+ },
+ {
+  "id": "7c7c3fd9-5e2a-4175-bc34-56af400f4c69",
+  "question_id": "CH_1783913022985_9vj8",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "c2c2407f-66b4-4e24-b8a9-75cf4c20463a",
+  "question_id": "CH_1783913022985_dk6d",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "5386718e-506c-49cc-97b3-b3bdfa8d95a2",
+  "question_id": "CH_1783913022985_6lty",
+  "math_form": "Chứng minh đẳng thức",
+  "phan": "B3"
+ },
+ {
+  "id": "8accb875-2f25-4b1f-a71e-51e931fa92f3",
+  "question_id": "CH_1783913022985_32cj",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "85617410-7603-4351-84bd-855071500781",
+  "question_id": "CH_1783913022985_j9dq",
+  "math_form": "Toán tổng hợp",
+  "phan": "B1"
+ },
+ {
+  "id": "58b361c8-c377-4e53-8589-3769ee7e59cd",
+  "question_id": "CH_1783913022985_ee17",
+  "math_form": "Tìm x",
+  "phan": "B2"
+ },
+ {
+  "id": "3795fd0a-3b51-4393-8922-ce585ff25d31",
+  "question_id": "CH_1783913022985_nhwy",
+  "math_form": "Toán tổng hợp",
+  "phan": "B3"
+ },
+ {
+  "id": "18e4c066-4fa4-4cce-a520-fffb05b4cf5a",
+  "question_id": "CH_1783913022985_bj3d",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "a594cc4c-bbff-4042-813b-be6cb947ac1c",
+  "question_id": "CH_1783913022985_0eus",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "cbcf04d9-cef3-49db-9bdd-1136ead140f0",
+  "question_id": "CH_1783913022985_vvcf",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "1b63fafb-22e9-445a-a40c-b19d3b6cc49e",
+  "question_id": "CH_1783913022985_rbvw",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "5e6ae993-fe24-4566-b57f-b3833c44b831",
+  "question_id": "CH_1783913022985_23ux",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B2"
+ },
+ {
+  "id": "c743115a-eced-4fe0-8d42-eaf680506fd7",
+  "question_id": "CH_1783913022985_ozon",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "c4bc44aa-77ed-45d0-ae07-4b5386108d08",
+  "question_id": "CH_1783913022985_bijm",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "457721dd-c50c-4e6a-8521-56a0e1237ceb",
+  "question_id": "CH_1783913022985_0arv",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "5b932ea0-69de-41b9-870f-614e41830dc2",
+  "question_id": "CH_1783913022985_tli9",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "a05148cf-6b0b-4625-b4e1-0e2c3250e1d3",
+  "question_id": "CH_1783913022985_bh65",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B2"
+ },
+ {
+  "id": "e26a5b63-9b52-4f5e-8cb4-32d5abf870a9",
+  "question_id": "CH_1783913022985_1yyr",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "4b3e47aa-3536-4071-84fd-93644ce4ca43",
+  "question_id": "CH_1783913022985_oiuj",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "e91aa37f-0b43-4575-a7ca-08b8c1b29cbf",
+  "question_id": "CH_1783913022985_9b1m",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "2e066edd-b9df-46b5-8a58-7219f6bb7192",
+  "question_id": "CH_1783913022985_miif",
+  "math_form": "Chứng minh chia hết",
+  "phan": "B2"
+ },
+ {
+  "id": "70b28c1e-1a06-484d-b29c-dadc20851113",
+  "question_id": "CH_1783913022985_5rzy",
+  "math_form": "Toán tổng hợp",
+  "phan": "B3"
+ },
+ {
+  "id": "c39fa578-2d02-4d70-833b-452701ec7a6a",
+  "question_id": "CH_1783913286305_witj",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "e0729ece-5192-46cf-8ce8-1d3568800149",
+  "question_id": "CH_1783913286305_31ki",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "3d44ab38-3e20-4a68-8966-57992498ad17",
+  "question_id": "CH_1783913286305_ys5i",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "9c824054-7862-4c15-a20a-af916af84319",
+  "question_id": "CH_1783913286305_x1hd",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "0eaabfdb-7ed5-4d80-b20c-56cee67dde99",
+  "question_id": "CH_1783913286305_8817",
+  "math_form": "Chứng minh giá trị biểu thức không phụ thuộc vào biến",
+  "phan": "B1"
+ },
+ {
+  "id": "0ecf5a95-8523-4839-b631-8b3672d3c2e2",
+  "question_id": "CH_1783913286305_49wh",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "c4aa065f-3c88-4468-825e-649fafa17a1b",
+  "question_id": "CH_1783913286305_x91z",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "d1957dfa-0547-4a88-ac1f-ae22f7a61511",
+  "question_id": "CH_1783913286305_j1tp",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "8b82efae-cd1a-4050-aab6-e065787c9652",
+  "question_id": "CH_1783913286305_f8eh",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "53d6803c-e5b9-4765-a5c7-f4fd19ef5ab0",
+  "question_id": "CH_1783913286305_yung",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "6c05c0bd-d916-4351-9aee-f6f16f86e0a6",
+  "question_id": "CH_1783913286305_n8xl",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "3f806805-abbd-4333-a45b-f9de683755f9",
+  "question_id": "CH_1783913286305_ugai",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "7b3d20c3-76b9-4965-9e57-3983ba50272f",
+  "question_id": "CH_1783913286305_6u3w",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "7ca9c49d-3837-405b-b6cd-14e0dec02385",
+  "question_id": "CH_1783913286305_t9qh",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "66799978-1df1-4d47-afdb-5d4610a06734",
+  "question_id": "CH_1783913286305_19pa",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "f9e263ef-2e4d-4aa2-90ed-07d564d68bec",
+  "question_id": "CH_1783913286305_hqoe",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "132b8127-0923-4ef3-872e-cb787bf70588",
+  "question_id": "CH_1783913286305_5xn7",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "502c9f8e-2470-4f00-820e-a19fdce7b2eb",
+  "question_id": "CH_1783913286305_e3wb",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "6580949c-66fe-422f-bcb4-8825df4be055",
+  "question_id": "CH_1783913286305_af0d",
+  "math_form": "Chứng minh đẳng thức",
+  "phan": "B3"
+ },
+ {
+  "id": "fc092d39-8e3c-4903-b1af-66e797f0ccae",
+  "question_id": "CH_1783913286305_kfti",
+  "math_form": "Chứng minh đẳng thức",
+  "phan": "B3"
+ },
+ {
+  "id": "c5d25580-7bc2-478b-b340-e2de4ab01dec",
+  "question_id": "CH_1783913286305_5m1u",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "71531522-7b4a-4174-a306-56b6c1aeecf1",
+  "question_id": "CH_1783913286305_r60b",
+  "math_form": "Tìm x",
+  "phan": "B2"
+ },
+ {
+  "id": "023578b0-0a3e-49c1-a2c2-085ade2dc3cd",
+  "question_id": "CH_1783913286305_f1xm",
+  "math_form": "Chứng minh đẳng thức",
+  "phan": "B3"
+ },
+ {
+  "id": "d21deff9-0f24-4cad-808f-f9b2ee8e44ce",
+  "question_id": "CH_1783913286305_dulj",
+  "math_form": "Toán tổng hợp",
+  "phan": "B3"
+ },
+ {
+  "id": "3024c9a3-0471-49a6-8378-61c18e507315",
+  "question_id": "CH_1783913832664_3jru",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "0ae9bf72-e253-41c4-9ed9-8ce7e1b9486c",
+  "question_id": "CH_1783913832664_fug1",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "c00ae585-a31a-4e4c-b106-326631ca7a90",
+  "question_id": "CH_1783913832664_8dkb",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "961f7fb0-d84c-4cc0-95dc-7f19d990de35",
+  "question_id": "CH_1783913832664_3of6",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "f25a948f-aece-49a1-b22d-bd2704ee32ae",
+  "question_id": "CH_1783913832664_y4if",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "cb2f92f9-d646-436a-a932-acc76006a329",
+  "question_id": "CH_1783913832664_atua",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "ee556551-aa2f-4191-8dd7-5656f7089e07",
+  "question_id": "CH_1783913832664_11ef",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "70f59d11-07f4-463d-a613-bf43163c5924",
+  "question_id": "CH_1783913832664_kgf8",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "3a277b7d-1083-4db3-bea3-be4cda44e52d",
+  "question_id": "CH_1783913832664_m0ln",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "52a84767-f117-4e5e-8485-819f26de5300",
+  "question_id": "CH_1783913832664_s5m1",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "51b8d1dc-8e68-4620-8650-a8b4ea56cb8e",
+  "question_id": "CH_1783913832664_d7lb",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "a15ab17a-ccc8-4143-91a2-096b4a8336cd",
+  "question_id": "CH_1783913832664_lvnr",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "b10bd47d-05f9-4677-87ea-5dceea8aa410",
+  "question_id": "CH_1783913832664_y7ru",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "a730c23b-6cd0-4eec-9049-a2082ba6f559",
+  "question_id": "CH_1783913832664_xkau",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "03f10523-2217-4259-9c51-384df1482d89",
+  "question_id": "CH_1783913832664_0haz",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "8fc2b257-e617-4eae-a2fa-36c8360487bc",
+  "question_id": "CH_1783913832664_gs3w",
+  "math_form": "Tìm x",
+  "phan": "B1"
+ },
+ {
+  "id": "7ec6a9ac-ba36-4a34-8bd2-afe504d7678e",
+  "question_id": "CH_1783913832664_bi90",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "d5b70ba1-cfa1-40fd-a5d1-19feb426eefb",
+  "question_id": "CH_1783913832664_dcqo",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "003baefc-9be5-439e-885b-5b42edb8f30b",
+  "question_id": "CH_1783913832664_bn95",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "16bc024c-5e3a-41b9-ae3e-a7f48505308e",
+  "question_id": "CH_1783913832664_sbls",
+  "math_form": "Toán tổng hợp",
+  "phan": "B1"
+ },
+ {
+  "id": "85e210d9-32a5-4b67-8701-297be5e2c13e",
+  "question_id": "CH_1789059088734_0rth",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "2bc356b6-97ff-4e75-b42f-a5821ebe45de",
+  "question_id": "CH_1783913022985_j96b",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "ecaec641-a22a-4ef0-ace9-5429673cf933",
+  "question_id": "CH_1789059088734_oktj",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "406ac3a9-d61e-4658-802b-5729cdf79db2",
+  "question_id": "CH_1789059088734_ezow",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "57152e08-fb44-456e-8082-7124e22c5789",
+  "question_id": "CH_1789059088734_62ov",
+  "math_form": "Chứng minh chia hết",
+  "phan": "B1"
+ },
+ {
+  "id": "0410cf48-87c9-42e5-b6ee-b385e1d5f5b5",
+  "question_id": "CH_1789059088734_0qjv",
+  "math_form": "Tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "017d0e87-777b-4c64-850a-61c9f8bed258",
+  "question_id": "CH_1783913286305_r9lm",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "823ea167-b5e0-4d77-a97a-b92f54d87a8d",
+  "question_id": "CH_1789059088734_sfxq",
+  "math_form": "Tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "3a29f32f-ec9e-497e-938d-ce13e6c9df4d",
+  "question_id": "CH_1783912486442_k6mu",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "97ace297-1966-46ef-acf8-d41039fa0024",
+  "question_id": "CH_1783916424739_bmjy",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "14adabda-1a82-49a1-8714-05dd38cc4d5c",
+  "question_id": "CH_1783913286305_u25u",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "1bea15f4-77f5-40b0-8e4e-480e483a9d59",
+  "question_id": "CH_1783913286305_wk04",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "60ee4a9e-31c6-4caa-a54c-95b246f6474b",
+  "question_id": "CH_1783916424739_dz36",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "1952e5f4-c0f3-4e64-a81e-eda48c7c2aff",
+  "question_id": "CH_1783913832664_gjbo",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "275156a6-663c-4807-8702-d5a57c111b51",
+  "question_id": "CH_1783912486442_tpgm",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "e39c7f22-0c3c-452c-890d-582710d43ced",
+  "question_id": "CH_1783912754088_apy4",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B3"
+ },
+ {
+  "id": "f37eb657-ca1e-46ff-a8e9-231dbacc272b",
+  "question_id": "CH_1783911766652_qkkm",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "a13b8cc9-0a50-4d2f-baaf-37417dc24c0a",
+  "question_id": "CH_1783912486442_dp2y",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "29b1c4d7-3f8a-4c82-9894-5681a0f967fb",
+  "question_id": "CH_1783911342715_dvsm",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "8634f9dd-6fb1-498e-99ad-3e605596dc11",
+  "question_id": "CH_1783912754088_hkhd",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "dd332dbf-ed1e-4918-be4f-3823d30ee241",
+  "question_id": "CH_1783912486442_3sdc",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "6a0ee943-b443-42a4-85a2-b024e35eeb00",
+  "question_id": "CH_1783916424739_g8gu",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "a1e78b74-648e-40c1-bc2e-67f430a40af5",
+  "question_id": "CH_1783911342715_z6u8",
+  "math_form": "Chứng minh giá trị biểu thức không phụ thuộc vào biến",
+  "phan": "B1"
+ },
+ {
+  "id": "b7561699-5928-403b-99d9-003af8a49469",
+  "question_id": "CH_1783911342715_xlyp",
+  "math_form": "Chứng minh đẳng thức",
+  "phan": "B1"
+ },
+ {
+  "id": "e1f38a8e-1f52-432c-9f3d-292bd3575fa8",
+  "question_id": "CH_1783912754088_tfgr",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B2"
+ },
+ {
+  "id": "c35699d3-6f67-4e5b-8d23-65331314d763",
+  "question_id": "CH_1783912754088_6vdt",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "3ee865d1-fc51-4a4e-b0aa-8155a8819089",
+  "question_id": "CH_1783913022985_i3ok",
+  "math_form": "Chứng minh giá trị biểu thức không phụ thuộc vào biến",
+  "phan": "B3"
+ },
+ {
+  "id": "2cee694d-a8d5-47eb-b056-3d3330817be1",
+  "question_id": "CH_1783912486442_d90x",
+  "math_form": "Tìm Min-Max",
+  "phan": "B1"
+ },
+ {
+  "id": "bd5d2263-1bf7-490d-a3c4-b6d944c23a12",
+  "question_id": "CH_1783912486442_jrbd",
+  "math_form": "Vận dụng hằng đẳng thức để tính",
+  "phan": "B1"
+ },
+ {
+  "id": "aa70db3a-88a5-4b4c-95ed-9b4673001ea0",
+  "question_id": "CH_1783913286305_sbsi",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B3"
+ },
+ {
+  "id": "bdc8c995-b93e-44d5-af2a-75a85861ea28",
+  "question_id": "CH_1783913022985_2mbl",
+  "math_form": "Rút gọn và tính giá trị biểu thức",
+  "phan": "B1"
+ },
+ {
+  "id": "844b3af4-bdd1-4e72-b3c0-541a55922317",
+  "question_id": "CH_1783911766652_hoo4",
+  "math_form": "Chứng minh giá trị biểu thức không phụ thuộc vào biến",
+  "phan": "B3"
+ }
+]

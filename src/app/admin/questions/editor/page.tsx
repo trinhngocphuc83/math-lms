@@ -35,6 +35,7 @@ import {
 import { saveQuestionsToBank } from "@/utils/questionBankSave";
 import { doiVeTenChuan, doiVeTenDangChuan} from "@/utils/phanLoaiCauHoi";
 import { boSungYeuCauCanDat } from "@/utils/yeuCauCanDat";
+import { chuanHoaBai, chuanHoaDang } from "@/utils/quyUocDanhMuc";
 import { LUAT_KHONG_CAT_CUT, soatKhoiQuiz, lenhNoiTiep } from "@/utils/noiTiepJson";
 import KiemThuDeModal from "@/components/admin/KiemThuDeModal";
 import { raSoatCaLo, taoKhoaSoSanh, type KhoaSoSanh } from "@/utils/questionFingerprint";
@@ -577,7 +578,8 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
       const tenCu = field === 'math_form'
         ? doiVeTenDangChuan(newValue.trim(), dsCoSan)
         : doiVeTenChuan(newValue.trim(), dsCoSan);
-      const tenDung = tenCu || newValue.trim();
+      /* Tên mới phải đúng quy ước trước khi thành dòng danh mục và gắn vào câu */
+      const tenDung = tenCu || (field === 'math_form' ? chuanHoaDang(newValue) : chuanHoaBai(newValue));
 
       if (!tenCu) {
         const insertData = {

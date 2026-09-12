@@ -70,7 +70,7 @@ dễ soát:
   "cau": [
     {
       "topic": "Chương 5. Đường tròn",
-      "lesson": "Bài 13. Mở đầu về đường tròn",
+      "lesson": "Bài 1. Mở đầu về đường tròn",
       "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn",
       "question_type": "NLC",
       "difficulty": "2",
@@ -96,7 +96,8 @@ Quy ước chép (đúng lối kho đang dùng, xem vài câu cùng bài trướ
 | Đề nhiều ý a) b) c) | Với TL giữ nguyên trong `content`; với TLN/NLC tách mỗi ý thành một câu, chép lại đủ giả thiết |
 
 Xếp dạng theo **yêu cầu cần đạt** chứ không theo chữ trùng trong tên. Bài tập tổng hợp cuối
-chương thì vào dạng "Bài tập tổng hợp chương N" của bài "Ôn tập chương N".
+chương thì vào dạng "Bài tập tổng hợp chương N" của bài "Bài K. Ôn tập chương" (K = số bài + 1).
+Tên bài đánh số **từ 1 trong mỗi chương** (không đánh liên tục theo SGK).
 
 ### 4. Soát
 
@@ -120,7 +121,16 @@ Script tự chạy lại bộ soát và từ chối nếu còn lỗi. Ghi xong i
 
 ### 6. Đo lại và báo
 
-Chạy lại `tai-danh-muc.mjs` để thấy số câu từng dạng sau khi nạp. Báo cho thầy theo khuôn:
+Chạy lại `tai-danh-muc.mjs` để thấy số câu từng dạng sau khi nạp, rồi kiểm cây danh mục:
+
+```bash
+node .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs
+```
+
+Phải về **0 ✗** (quy ước ở [docs/quy-uoc-danh-muc.md](../../../docs/quy-uoc-danh-muc.md):
+`Chương N. Tên`, `Bài N. Tên` đánh lại từ 1 mỗi chương, `Bài K. Ôn tập chương`, bốn phân
+môn). Chương/bài mới không có trong cây chuẩn thì báo thầy, được duyệt mới `--cap-nhat`.
+Báo cho thầy theo khuôn:
 
 - Nạp bao nhiêu câu, từ tài liệu nào, vào bài/dạng nào (bảng số câu theo dạng)
 - Cơ cấu loại và mức

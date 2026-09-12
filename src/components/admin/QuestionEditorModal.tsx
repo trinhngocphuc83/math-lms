@@ -117,6 +117,8 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
       }]);
       const { error } = await supabase.from('question_categories').insert([dongMoi]);
       if (error) throw error;
+      /* Cửa chung đã chuẩn hoá tên (dấu chấm, hoa thường...) - câu phải mang đúng tên ấy */
+      setFormData({ ...formData, grade: dongMoi.grade, subject: dongMoi.subject, topic: dongMoi.topic, lesson: dongMoi.lesson, math_form: dongMoi.math_form });
       alert("Đã thêm Dạng toán vào Danh mục thành công!");
       fetchCategories();
     } catch(e: any) {

@@ -234,6 +234,15 @@ Cả hai script soi **cả bản trình chiếu** (`presentation_markdown`) — 
 hai bản, màn chiếu ưu tiên bản trình chiếu, sửa mỗi bản nội dung thì trên lớp vẫn thấy
 bản cũ. Nhãn "(trình chiếu)" sau tên module là đang nói bản ấy.
 
+Kiểm luôn cây danh mục — soạn chương hay đụng tên bài, tên dạng:
+
+```bash
+node .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs
+```
+
+Phải về 0 ✗ theo [docs/quy-uoc-danh-muc.md](../../../docs/quy-uoc-danh-muc.md). Tên bài trong
+khoá học phải trùng từng chữ với tên bài trong kho, bài ôn tập là `Bài K. Ôn tập chương`.
+
 Xong máy rồi thì **mở app** (thầy đăng nhập Chrome, đi qua Claude in Chrome) bấm từng
 câu tương tác trên màn chiếu: bảng có đọc được từ cuối lớp không, "Xem lời giải" có ra
 từng bước không, diễn giải có chỗ nào nói sai kiến thức không. Chỉ khi nhìn thấy bằng

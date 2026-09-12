@@ -9,6 +9,7 @@ import { docDapAnDungSai, dapAnDungSaiDungKhuon } from "./chuanHoaCauHoi";
 import { nanTenPhanLoai } from "./deThi";
 import { tachChuKhoiCongThuc } from "./tachChuKhoiCongThuc";
 import { doiVeTenChuan, doiVeTenDangChuan} from "./phanLoaiCauHoi";
+import { chuanHoaTenDanhMuc } from "./quyUocDanhMuc";
 import { findMatchingChapterTitle, findMatchingLessonTitle } from "./topicMatch";
 import { boSungYeuCauCanDat } from "./yeuCauCanDat";
 
@@ -117,7 +118,10 @@ export async function baoDamCoDongDanhMuc(supabase: any, cacCau: any[]): Promise
  * (hàng đợi tự động) phải tự giải quyết isNewTopic/isNewLesson/isNewMathForm
  * TRƯỚC khi gọi hàm này.
  */
-export async function saveQuestionsToBank(supabase: any, questions: QuestionData[]): Promise<SaveResult> {
+export async function saveQuestionsToBank(supabase: any, questionsGoc: QuestionData[]): Promise<SaveResult> {
+  /* Tên lớp/chương/bài/dạng đi vào kho phải đúng quy ước (src/utils/quyUocDanhMuc.ts) -
+     chuẩn hoá ngay trên câu để câu và danh mục sinh ra cùng một tên. */
+  const questions = questionsGoc.map((q) => chuanHoaTenDanhMuc(q));
   const chuaTrung = questions.filter((q) => !q.isDuplicate);
   const duplicatesSkipped = questions.length - chuaTrung.length;
 

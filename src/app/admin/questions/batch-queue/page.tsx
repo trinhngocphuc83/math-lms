@@ -555,6 +555,8 @@ export default function BatchQueuePage() {
         const insertDataGoc = { grade: sample.grade, subject: sample.subject, topic: sample.topic, lesson: sample.lesson, math_form: sample.math_form };
         /* Dạng mới phải kèm "Yêu cầu cần đạt" - xem src/utils/yeuCauCanDat.ts */
         const [insertData] = await boSungYeuCauCanDat([insertDataGoc]);
+        /* câu mang đúng tên đã chuẩn hoá ở cửa chung (dấu chấm, hoa thường, La Mã -> Ả Rập) */
+        for (const w of affected) (w.q as any)[proposal.level] = (insertData as any)[proposal.level];
         const { error } = await supabase.from('question_categories').insert([insertData]);
         // Một câu hỏi có thể sinh nhiều đề xuất cùng lúc (Chương mới + Bài mới + Dạng
         // mới), nhưng cả ba đều ứng với ĐÚNG MỘT dòng danh mục. Duyệt cái đầu đã ghi

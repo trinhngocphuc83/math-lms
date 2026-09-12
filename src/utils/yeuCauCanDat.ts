@@ -16,6 +16,7 @@
 
 import { layCauHinhAI } from "./geminiBrowser";
 import { soanYeuCauNhieuLo, type DangCanSoan } from "./soanYeuCauCanDat";
+import { chuanHoaTenDanhMuc } from "./quyUocDanhMuc";
 
 /** Một dạng cần có yêu cầu cần đạt. */
 export interface ODanhMuc {
@@ -61,11 +62,15 @@ export async function boSungYeuCauCanDat<T extends ODanhMuc>(
 ): Promise<(T & { yeu_cau_can_dat: string })[]> {
   if (dong.length === 0) return [];
 
+  /* Tên đi qua cửa này phải đúng quy ước (docs/quy-uoc-danh-muc.md): "Bài 2: hệ..." thành
+     "Bài 2. Hệ...", "Chương III" thành "Chương 3". Nơi gọi phải dùng lại tên đã chuẩn hoá
+     cho cả câu hỏi, nếu không câu một tên, danh mục một tên. */
+  const chuan = dong.map((d) => chuanHoaTenDanhMuc(d));
   /* Luôn có sẵn câu theo mẫu để lấp, nên hàm này không bao giờ trả về ô trống. */
-  const ra = dong.map((d) => ({ ...d, yeu_cau_can_dat: yeuCauTheoMau(d) }));
+  const ra = chuan.map((d) => ({ ...d, yeu_cau_can_dat: yeuCauTheoMau(d) }));
 
   try {
-    const canSoan: DangCanSoan[] = dong.map((d, i) => ({
+    const canSoan: DangCanSoan[] = chuan.map((d, i) => ({
       id: String(i),
       grade: String(d.grade ?? ""),
       subject: String(d.subject ?? ""),

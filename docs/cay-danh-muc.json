@@ -1,0 +1,401 @@
+{
+ "7": {
+  "Đại số": {
+   "Chương 1. Số hữu tỉ": [
+    "Bài 1. Tập hợp số hữu tỉ",
+    "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+    "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+    "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+    "Bài 5. Ôn tập chương"
+   ],
+   "Chương 2. Số thực": [
+    "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+    "Bài 2. Số vô tỉ - Căn bậc hai số học",
+    "Bài 3. Tập hợp các số thực",
+    "Bài 4. Ôn tập chương"
+   ],
+   "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ": [
+    "Bài 1. Tỉ lệ thức",
+    "Bài 2. Tính chất của dãy tỉ số bằng nhau",
+    "Bài 3. Đại lượng tỉ lệ thuận",
+    "Bài 4. Đại lượng tỉ lệ nghịch",
+    "Bài 5. Ôn tập chương"
+   ],
+   "Chương 7. Biểu thức đại số và đa thức một biến": [
+    "Bài 1. Biểu thức đại số",
+    "Bài 2. Đa thức một biến",
+    "Bài 3. Phép cộng và phép trừ đa thức một biến",
+    "Bài 4. Phép nhân đa thức một biến",
+    "Bài 5. Phép chia đa thức một biến",
+    "Bài 6. Ôn tập chương"
+   ]
+  },
+  "Hình học": {
+   "Chương 3. Góc và đường thẳng song song": [
+    "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+    "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+    "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+    "Bài 4. Định lý và chứng minh định lý",
+    "Bài 5. Ôn tập chương"
+   ],
+   "Chương 4. Tam giác bằng nhau": [
+    "Bài 1. Tổng các góc trong một tam giác",
+    "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+    "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+    "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+    "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+    "Bài 6. Ôn tập chương"
+   ],
+   "Chương 10. Một số hình khối trong thực tiễn": [
+    "Bài 1. Hình hộp chữ nhật và hình lập phương",
+    "Bài 2. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 9. Quan hệ giữa các yếu tố trong một tam giác": [
+    "Bài 1. Quan hệ giữa góc và cạnh đối diện trong một tam giác",
+    "Bài 2. Quan hệ giữa đường vuông góc và đường xiên",
+    "Bài 3. Quan hệ giữa ba cạnh của một tam giác",
+    "Bài 4. Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam giác",
+    "Bài 5. Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác",
+    "Bài 6. Ôn tập chương"
+   ]
+  },
+  "Thống kê": {
+   "Chương 5. Thu thập và biểu diễn dữ liệu": [
+    "Bài 1. Thu thập và phân loại dữ liệu",
+    "Bài 2. Biểu đồ hình quạt tròn",
+    "Bài 3. Biểu đồ đoạn thẳng",
+    "Bài 4. Ôn tập chương"
+   ],
+   "Chương 8. Làm quen với biến cố và xác suất của biến cố": [
+    "Bài 1. Làm quen với biến cố",
+    "Bài 2. Làm quen với xác suất của biến cố",
+    "Bài 3. Ôn tập chương"
+   ]
+  }
+ },
+ "8": {
+  "Hình học": {
+   "Chương 3. Tứ giác": [
+    "Bài 1. Tứ giác",
+    "Bài 2. Hình thang cân",
+    "Bài 3. Hình bình hành",
+    "Bài 4. Hình chữ nhật",
+    "Bài 5. Hình thoi và hình vuông",
+    "Bài 6. Ôn tập chương"
+   ],
+   "Chương 4. Định lí Thalès": [
+    "Bài 1. Định lí Thalès trong tam giác",
+    "Bài 2. Đường trung bình của tam giác",
+    "Bài 3. Tính chất đường phân giác của tam giác",
+    "Bài 4. Ôn tập chương"
+   ],
+   "Chương 10. Một số hình khối trong thực tiễn": [
+    "Bài 1. Hình chóp tam giác đều",
+    "Bài 2. Hình chóp tứ giác đều",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 9. Tam giác đồng dạng": [
+    "Bài 1. Hai tam giác đồng dạng",
+    "Bài 2. Ba trường hợp đồng dạng của hai tam giác",
+    "Bài 3. Định lí Pythagore và ứng dụng",
+    "Bài 4. Các trường hợp đồng dạng của hai tam giác vuông",
+    "Bài 5. Hình đồng dạng",
+    "Bài 6. Ôn tập chương"
+   ]
+  },
+  "Đại số": {
+   "Chương 1. Đa thức": [
+    "Bài 1. Đơn thức",
+    "Bài 2. Đa thức nhiều biến",
+    "Bài 3. Phép cộng và trừ đa thức",
+    "Bài 4. Phép nhân đa thức",
+    "Bài 5. Phép chia đa thức cho đơn thức",
+    "Bài 6. Ôn tập chương"
+   ],
+   "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng": [
+    "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+    "Bài 2. Lập phương của một tổng hay một hiệu",
+    "Bài 3. Tổng và hiệu 2 lập phương",
+    "Bài 4. Phân tích đa thức thành nhân tử",
+    "Bài 5. Ôn tập chương"
+   ],
+   "Chương 6. Phân thức đại số": [
+    "Bài 1. Phân thức đại số",
+    "Bài 2. Tính chất cơ bản của phân thức đại số",
+    "Bài 3. Phép cộng và phép trừ phân thức đại số",
+    "Bài 4. Phép nhân và phép chia phân thức đại số",
+    "Bài 5. Ôn tập chương"
+   ],
+   "Chương 7. Phương trình bậc nhất và hàm số bậc nhất": [
+    "Bài 1. Phương trình bậc nhất một ẩn",
+    "Bài 2. Giải bài toán bằng cách lập phương trình",
+    "Bài 3. Khái niệm hàm số và đồ thị của hàm số",
+    "Bài 4. Hàm số bậc nhất và đồ thị của hàm số bậc nhất",
+    "Bài 5. Hệ số góc của đường thẳng",
+    "Bài 6. Ôn tập chương"
+   ]
+  },
+  "Thống kê": {
+   "Chương 5. Dữ liệu và biểu đồ": [
+    "Bài 1. Thu thập và phân loại dữ liệu",
+    "Bài 2. Biểu diễn dữ liệu bằng bảng, biểu đồ",
+    "Bài 3. Phân tích số liệu thống kê dựa vào biểu đồ",
+    "Bài 4. Ôn tập chương"
+   ],
+   "Chương 8. Mở đầu về tính xác suất của biến cố": [
+    "Bài 1. Kết quả có thể và kết quả thuận lợi",
+    "Bài 2. Cách tính xác suất của biến cố bằng tỉ số",
+    "Bài 3. Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng",
+    "Bài 4. Ôn tập chương"
+   ]
+  }
+ },
+ "9": {
+  "Đại số": {
+   "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn": [
+    "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+    "Bài 2. Bất đẳng thức và tính chất",
+    "Bài 3. Bất phương trình bậc nhất một ẩn",
+    "Bài 4. Ôn tập chương"
+   ],
+   "Chương 6. Hàm số y = ax² (a ≠ 0). Phương trình bậc hai một ẩn": [
+    "Bài 1. Hàm số y = ax² (a ≠ 0)",
+    "Bài 2. Phương trình bậc hai một ẩn",
+    "Bài 3. Định lí Viète và ứng dụng",
+    "Bài 4. Giải bài toán bằng cách lập phương trình",
+    "Bài 5. Ôn tập chương"
+   ],
+   "Chương 3. Căn bậc hai và căn bậc ba": [
+    "Bài 1. Căn bậc hai và căn thức bậc hai",
+    "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+    "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+    "Bài 4. Căn bậc ba và căn thức bậc ba",
+    "Bài 5. Ôn tập chương"
+   ],
+   "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn": [
+    "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+    "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+    "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+    "Bài 4. Ôn tập chương"
+   ]
+  },
+  "Hình học": {
+   "Chương 5. Đường tròn": [
+    "Bài 1. Mở đầu về đường tròn",
+    "Bài 2. Cung và dây của một đường tròn",
+    "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+    "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+    "Bài 5. Vị trí tương đối của hai đường tròn",
+    "Bài 6. Ôn tập chương"
+   ],
+   "Chương 4. Hệ thức lượng trong tam giác vuông": [
+    "Bài 1. Tỉ số lượng giác của góc nhọn",
+    "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 10. Một số hình khối trong thực tiễn": [
+    "Bài 1. Hình trụ và hình nón",
+    "Bài 2. Hình cầu",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 9. Đường tròn ngoại tiếp và đường tròn nội tiếp": [
+    "Bài 1. Góc nội tiếp",
+    "Bài 2. Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác",
+    "Bài 3. Tứ giác nội tiếp",
+    "Bài 4. Đa giác đều",
+    "Bài 5. Ôn tập chương"
+   ]
+  },
+  "Thống kê": {
+   "Chương 8. Xác suất của biến cố trong một số mô hình xác suất đơn giản": [
+    "Bài 1. Phép thử ngẫu nhiên và không gian mẫu",
+    "Bài 2. Xác suất của biến cố liên quan tới phép thử",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 7. Tần số và tần số tương đối": [
+    "Bài 1. Bảng tần số và biểu đồ tần số",
+    "Bài 2. Bảng tần số tương đối và biểu đồ tần số tương đối",
+    "Bài 3. Bảng tần số, tần số tương đối ghép nhóm và biểu đồ",
+    "Bài 4. Ôn tập chương"
+   ]
+  }
+ },
+ "10": {
+  "Đại số": {
+   "Chương 1. Mệnh đề và tập hợp": [
+    "Bài 1. Mệnh đề",
+    "Bài 2. Tập hợp và các phép toán trên tập hợp",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 2. Bất phương trình và hệ bất phương trình bậc nhất hai ẩn": [
+    "Bài 1. Bất phương trình bậc nhất hai ẩn",
+    "Bài 2. Hệ bất phương trình bậc nhất hai ẩn",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 6. Hàm số, đồ thị và ứng dụng": [
+    "Bài 1. Hàm số",
+    "Bài 2. Hàm số bậc hai",
+    "Bài 3. Dấu của tam thức bậc hai",
+    "Bài 4. Phương trình quy về phương trình bậc hai",
+    "Bài 5. Ôn tập chương"
+   ],
+   "Chương 8. Đại số tổ hợp": [
+    "Bài 1. Quy tắc đếm",
+    "Bài 2. Hoán vị, chỉnh hợp và tổ hợp",
+    "Bài 3. Nhị thức Newton",
+    "Bài 4. Ôn tập chương"
+   ]
+  },
+  "Hình học": {
+   "Chương 4. Vectơ": [
+    "Bài 1. Các khái niệm mở đầu",
+    "Bài 2. Tổng và hiệu của hai vectơ",
+    "Bài 3. Tích của một vectơ với một số",
+    "Bài 4. Vectơ trong mặt phẳng tọa độ",
+    "Bài 5. Tích vô hướng của hai vectơ",
+    "Bài 6. Ôn tập chương"
+   ],
+   "Chương 3. Hệ thức lượng trong tam giác": [
+    "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+    "Bài 2. Hệ thức lượng trong tam giác",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 7. Phương pháp tọa độ trong mặt phẳng": [
+    "Bài 1. Phương trình đường thẳng",
+    "Bài 2. Vị trí tương đối giữa hai đường thẳng. Góc và khoảng cách",
+    "Bài 3. Đường tròn trong mặt phẳng tọa độ",
+    "Bài 4. Ba đường conic",
+    "Bài 5. Ôn tập chương"
+   ]
+  },
+  "Thống kê": {
+   "Chương 5. Các số đặc trưng của mẫu số liệu không ghép nhóm": [
+    "Bài 1. Số gần đúng và sai số",
+    "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+    "Bài 3. Các số đặc trưng đo độ phân tán",
+    "Bài 4. Ôn tập chương"
+   ],
+   "Chương 9. Tính xác suất theo định nghĩa cổ điển": [
+    "Bài 1. Biến cố và định nghĩa cổ điển của xác suất",
+    "Bài 2. Thực hành tính xác suất theo định nghĩa cổ điển",
+    "Bài 3. Ôn tập chương"
+   ]
+  }
+ },
+ "11": {
+  "Đại số": {
+   "Chương 2. Dãy số - Cấp số cộng - Cấp số nhân": [
+    "Bài 1. Dãy số",
+    "Bài 2. Cấp số cộng",
+    "Bài 3. Cấp số nhân",
+    "Bài 4. Ôn tập chương"
+   ],
+   "Chương 1. Hàm số lượng giác và phương trình lượng giác": [
+    "Bài 1. Giá trị lượng giác của góc lượng giác",
+    "Bài 2. Công thức lượng giác",
+    "Bài 3. Hàm số lượng giác",
+    "Bài 4. Phương trình lượng giác cơ bản",
+    "Bài 5. Ôn tập chương"
+   ]
+  },
+  "Hình học": {
+   "Chương 4. Quan hệ song song trong không gian": [
+    "Bài 1. Đường thẳng và mặt phẳng trong không gian",
+    "Bài 2. Hai đường thẳng song song",
+    "Bài 3. Đường thẳng và mặt phẳng song song",
+    "Bài 4. Hai mặt phẳng song song",
+    "Bài 5. Phép chiếu song song",
+    "Bài 6. Ôn tập chương"
+   ],
+   "Chương 7. Quan hệ vuông góc trong không gian": [
+    "Bài 1. Hai đường thẳng vuông góc",
+    "Bài 2. Đường thẳng vuông góc với mặt phẳng",
+    "Bài 3. Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng",
+    "Bài 4. Hai mặt phẳng vuông góc",
+    "Bài 5. Khoảng cách",
+    "Bài 6. Thể tích",
+    "Bài 7. Ôn tập chương"
+   ]
+  },
+  "Thống kê": {
+   "Chương 3. Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm": [
+    "Bài 1. Mẫu số liệu ghép nhóm",
+    "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 8. Các quy tắc tính xác suất": [
+    "Bài 1. Biến cố hợp, biến cố giao, biến cố độc lập",
+    "Bài 2. Công thức cộng xác suất",
+    "Bài 3. Công thức nhân xác suất cho hai biến cố độc lập",
+    "Bài 4. Ôn tập chương"
+   ]
+  },
+  "Giải tích": {
+   "Chương 5. Giới hạn. Hàm số liên tục": [
+    "Bài 1. Giới hạn của dãy số",
+    "Bài 2. Giới hạn của hàm số",
+    "Bài 3. Hàm số liên tục",
+    "Bài 4. Ôn tập chương"
+   ],
+   "Chương 9. Đạo hàm": [
+    "Bài 1. Định nghĩa và ý nghĩa của đạo hàm",
+    "Bài 2. Các quy tắc tính đạo hàm",
+    "Bài 3. Đạo hàm cấp hai",
+    "Bài 4. Ôn tập chương"
+   ],
+   "Chương 6. Hàm số mũ và hàm số lôgarit": [
+    "Bài 1. Luỹ thừa với số mũ thực",
+    "Bài 2. Lôgarit",
+    "Bài 3. Hàm số mũ và hàm số lôgarit",
+    "Bài 4. Phương trình, bất phương trình mũ và lôgarit",
+    "Bài 5. Ôn tập chương"
+   ]
+  }
+ },
+ "12": {
+  "Hình học": {
+   "Chương 5. Phương pháp tọa độ trong không gian": [
+    "Bài 1. Phương trình mặt phẳng",
+    "Bài 2. Phương trình đường thẳng trong không gian",
+    "Bài 3. Công thức tính góc trong không gian",
+    "Bài 4. Phương trình mặt cầu",
+    "Bài 5. Ôn tập chương"
+   ],
+   "Chương 2. Vectơ và hệ trục toạ độ trong không gian": [
+    "Bài 1. Vectơ trong không gian",
+    "Bài 2. Hệ trục toạ độ trong không gian",
+    "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+    "Bài 4. Ôn tập chương"
+   ]
+  },
+  "Thống kê": {
+   "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm": [
+    "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+    "Bài 2. Phương sai và độ lệch chuẩn",
+    "Bài 3. Ôn tập chương"
+   ],
+   "Chương 6. Xác suất có điều kiện": [
+    "Bài 1. Xác suất có điều kiện",
+    "Bài 2. Công thức xác suất toàn phần và công thức Bayes",
+    "Bài 3. Ôn tập chương"
+   ]
+  },
+  "Đại số": {
+   "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số": [
+    "Bài 1. Tính đơn điệu và cực trị của hàm số",
+    "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+    "Bài 3. Đường tiệm cận của đồ thị hàm số",
+    "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+    "Bài 5. Ứng dụng của đạo hàm",
+    "Bài 6. Ôn tập chương"
+   ],
+   "Chương 4. Nguyên hàm và tích phân": [
+    "Bài 1. Nguyên hàm",
+    "Bài 2. Tích phân",
+    "Bài 3. Ứng dụng hình học của tích phân",
+    "Bài 4. Ôn tập chương"
+   ]
+  }
+ }
+}
