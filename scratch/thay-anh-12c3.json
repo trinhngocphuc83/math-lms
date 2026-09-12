@@ -1,0 +1,86 @@
+[
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/2pccm9o0bmy_1785413496065.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Lớp} & \\text{Tần số} \\\\ \\hline [375;450) & 6 \\\\ \\hline [450;525) & 15 \\\\ \\hline [525;600) & 10 \\\\ \\hline [600;675) & 6 \\\\ \\hline [675;750) & 9 \\\\ \\hline [750;825) & 4 \\\\ \\hline  & N = 50 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/sr2f6i0mbgs_1785413379070.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Lớp} & \\text{Tần số} \\\\ \\hline [15;20) & 10 \\\\ \\hline [20;25) & 12 \\\\ \\hline [25;30) & 14 \\\\ \\hline [30;35) & 9 \\\\ \\hline [35;40) & 5 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/np9muw9b0th_1785382810964.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Số lượt đặt bàn} & \\text{Tần số} \\\\ \\hline [1;6) & 14 \\\\ \\hline [6;11) & 30 \\\\ \\hline [11;16) & 25 \\\\ \\hline [16;21) & 18 \\\\ \\hline [21;26) & 5 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/g164epurazn_1785382836999.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Tuổi kết hôn} & \\text{Tần số} \\\\ \\hline [19;22) & 10 \\\\ \\hline [22;25) & 27 \\\\ \\hline [25;28) & 31 \\\\ \\hline [28;31) & 25 \\\\ \\hline [31;34) & 7 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/ujljt0tbvto_1785382861950.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Nhóm} & \\text{Tần số} \\\\ \\hline [74;80) & 4 \\\\ \\hline [80;86) & 6 \\\\ \\hline [86;92) & 3 \\\\ \\hline [92;98) & 4 \\\\ \\hline [98;104) & 3 \\\\ \\hline [104;110) & 7 \\\\ \\hline  & n = 27 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/8qrkert2md6_1785382883471.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Nhóm điểm} & \\text{Tần số} \\\\ \\hline [1;3) & 3 \\\\ \\hline [3;5) & 2 \\\\ \\hline [5;7) & 10 \\\\ \\hline [7;9) & 14 \\\\ \\hline [9;11) & 7 \\\\ \\hline  & n = 36 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/igtnyfvcu2_1785496496594.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Chiều cao (cm)} & \\text{Số học sinh} \\\\ \\hline [150;152) & 5 \\\\ \\hline [152;154) & 18 \\\\ \\hline [154;156) & 40 \\\\ \\hline [156;158) & 26 \\\\ \\hline [158;160) & 8 \\\\ \\hline [160;162] & 3 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/questions/1785323207330_image.png",
+  "bang": "$$\\begin{array}{|c|c|c|c|c|c|} \\hline \\text{Độ dày (mm)} & [18;19) & [19;20) & [20;21) & [21;22) & [22;23) \\\\ \\hline \\text{Tần số} & 3 & 7 & 23 & 25 & 2 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/questions/1785334911038_image.png",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Nhóm} & \\text{Tần số} \\\\ \\hline [6{,}22;6{,}46) & 3 \\\\ \\hline [6{,}46;6{,}70) & 7 \\\\ \\hline [6{,}70;6{,}94) & 5 \\\\ \\hline [6{,}94;7{,}18) & 20 \\\\ \\hline [7{,}18;7{,}42) & 5 \\\\ \\hline  & n = 40 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/wnfb1f2zere_1785413452801.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Lớp} & \\text{Tần số} \\\\ \\hline [20;25) & 2 \\\\ \\hline [25;30) & 7 \\\\ \\hline [30;35) & 15 \\\\ \\hline [35;40) & 8 \\\\ \\hline [40;45) & 3 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/loefazji83o_1785413538806.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Lớp} & \\text{Tần số} \\\\ \\hline [0;100) & 20 \\\\ \\hline [100;200) & 80 \\\\ \\hline [200;300) & 70 \\\\ \\hline [300;400) & 30 \\\\ \\hline [400;500) & 10 \\\\ \\hline  & N = 210 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/7hjl5k74lfl_1785414291927.jpg",
+  "bang": "$$\\begin{array}{|c|c|c|} \\hline \\text{Lớp khối lượng (gam)} & \\text{Giá trị đại diện} & \\text{Tần số} \\\\ \\hline [70;80) & 75 & 3 \\\\ \\hline [80;90) & 85 & 6 \\\\ \\hline [90;100) & 95 & 12 \\\\ \\hline [100;110) & 105 & 6 \\\\ \\hline [110;120) & 115 & 3 \\\\ \\hline  &  & n = 30 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/bq0vrdk9era_1785415255485.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Nhóm} & \\text{Tần số} \\\\ \\hline [30;40) & 2 \\\\ \\hline [40;50) & 10 \\\\ \\hline [50;60) & 16 \\\\ \\hline [60;70) & 8 \\\\ \\hline [70;80) & 2 \\\\ \\hline [80;90) & 2 \\\\ \\hline  & n = 40 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/waiw1jnsmv_1785415285108.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Nhóm} & \\text{Tần số} \\\\ \\hline [36;38) & 9 \\\\ \\hline [38;40) & 15 \\\\ \\hline [40;42) & 25 \\\\ \\hline [42;44) & 30 \\\\ \\hline [44;46) & 21 \\\\ \\hline  & n = 100 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/3k2am3wkiqa_1785417745264.jpg",
+  "bang": "$$\\begin{array}{|c|c|} \\hline \\text{Nhóm} & \\text{Số học sinh} \\\\ \\hline [30;40) & 2 \\\\ \\hline [40;50) & 10 \\\\ \\hline [50;60) & 16 \\\\ \\hline [60;70) & 8 \\\\ \\hline [70;80) & 2 \\\\ \\hline [80;90) & 2 \\\\ \\hline  & n = 40 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/ohapygdgy5_1785418277501.jpg",
+  "bang": "$$\\begin{array}{|c|c|c|c|c|c|} \\hline \\text{Thời gian (phút)} & [6;7) & [7;8) & [8;9) & [9;10) & [10;11) \\\\ \\hline \\text{Học sinh lớp 10A} & 8 & 10 & 13 & 10 & 9 \\\\ \\hline \\text{Học sinh lớp 10B} & 4 & 12 & 17 & 14 & 3 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/ksllb09l5n_1785502779701.jpg",
+  "bang": "$$\\begin{array}{|c|c|c|c|c|c|} \\hline \\text{Thời gian (phút)} & [0;20) & [20;40) & [40;60) & [60;80) & [80;100) \\\\ \\hline \\text{Số học sinh} & 4 & 8 & 12 & 10 & 8 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/xvkxfbzwq0b_1785502851737.jpg",
+  "bang": "$$\\begin{array}{|c|c|c|c|c|c|} \\hline \\text{Nhóm} & [0;2) & [2;4) & [4;6) & [6;8) & [8;10) \\\\ \\hline \\text{Tần số ở lớp 12A} & 5 & 6 & 6 & 25 & 3 \\\\ \\hline \\text{Tần số ở lớp 12B} & 2 & 5 & 18 & 16 & 4 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/s4i6amwik_1785502911484.jpg",
+  "bang": "$$\\begin{array}{|c|c|c|c|c|} \\hline \\text{Chỉ số AQI} & [0;50) & [50;100) & [100;150) & [150;200) \\\\ \\hline \\text{Số thành phố} & 73 & 47 & 7 & 2 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/bd529om9ji_1785382586089.jpg",
+  "bang": "$$\\begin{array}{|c|c|c|c|c|c|c|} \\hline \\text{Chiều cao (cm)} & [150;155) & [155;160) & [160;165) & [165;170) & [170;175) & [175;180) \\\\ \\hline \\text{Số học sinh nữ lớp 12A} & 2 & 7 & 12 & 3 & 0 & 1 \\\\ \\hline \\text{Số học sinh nữ lớp 12B} & 0 & 9 & 8 & 2 & 1 & 5 \\\\ \\hline \\end{array}$$"
+ },
+ {
+  "url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/questions/1785335451774_image.png",
+  "bang": "$$\\begin{array}{|c|c|c|c|c|c|} \\hline \\text{Tuổi kết hôn} & [19;22) & [22;25) & [25;28) & [28;31) & [31;34) \\\\ \\hline \\text{Số phụ nữ khu vực A} & 10 & 27 & 31 & 25 & 7 \\\\ \\hline \\text{Số phụ nữ khu vực B} & 47 & 40 & 11 & 2 & 0 \\\\ \\hline \\end{array}$$"
+ }
+]

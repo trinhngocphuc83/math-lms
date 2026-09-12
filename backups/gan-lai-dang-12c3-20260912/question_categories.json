@@ -1,0 +1,22 @@
+[
+ {
+  "id": "a357075e-5272-4698-a5a2-a0e1ef3a5356",
+  "grade": "12",
+  "subject": "Đại số",
+  "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+  "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+  "math_form": "Tính các số đặc trưng mức độ phân tán (mẫu không ghép nhóm)",
+  "created_at": "2026-08-21T04:52:17.735843+00:00",
+  "yeu_cau_can_dat": "Tính được phương sai và độ lệch chuẩn của mẫu số liệu không ghép nhóm để đánh giá mức độ phân tán của dữ liệu."
+ },
+ {
+  "id": "68ab7c75-0704-4e8b-ba1a-63fb8605bd79",
+  "grade": "12",
+  "subject": "Đại số",
+  "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+  "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+  "math_form": "Tính các số đặc trưng mức độ phân tán (mẫu không ghép nhóm)",
+  "created_at": "2026-08-21T04:52:17.735843+00:00",
+  "yeu_cau_can_dat": "Tính được khoảng biến thiên, khoảng tứ phân vị, phương sai và độ lệch chuẩn của mẫu số liệu không ghép nhóm."
+ }
+]

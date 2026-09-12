@@ -1,0 +1,128 @@
+[
+ {
+  "id": "c6f5bdbc-818b-4a0f-a17f-a39e34e4bb94",
+  "question_id": "CH_1785415835190_381q",
+  "content": "Số tiền điện phải trả của $50$ hộ trong khu phố A được thống kê trong bảng phân bố tần số sau đây (đơn vị nghìn đồng):\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/2pccm9o0bmy_1785413496065.jpg)\n\nTính số trung bình.",
+  "image_url": ""
+ },
+ {
+  "id": "53d4ace6-bf8e-492b-a362-627091b95ff4",
+  "question_id": "CH_1785415835190_fzsh",
+  "content": "Tuổi các học viên của một lớp tiếng Anh buổi tối ở một trung tâm ghi lại trong bảng tần số ghép lớp sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/sr2f6i0mbgs_1785413379070.jpg)\n\nTính số trung bình.",
+  "image_url": ""
+ },
+ {
+  "id": "d3c37a12-c646-4a64-8879-62c3b4e86618",
+  "question_id": "CH_1785393552556_dqbd",
+  "content": "Số lượng đặt bàn của một nhà hàng được cho bởi bảng sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/np9muw9b0th_1785382810964.jpg)\n\nHãy tìm khoảng tứ phân vị của mẫu số liệu ghép nhóm cho bởi bảng trên.",
+  "image_url": ""
+ },
+ {
+  "id": "3bbbcaa0-6ef1-4bc8-8278-27f857478163",
+  "question_id": "CH_1785393552556_ia9f",
+  "content": "Giả sử kết quả khảo sát khu vực A về độ tuổi kết hôn của một số phụ nữ vừa lập gia đình được cho ở bảng sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/g164epurazn_1785382836999.jpg)\n\nHãy tính khoảng tứ phân vị $\\color{blue} \\Delta_Q$ của mẫu số liệu trên.",
+  "image_url": ""
+ },
+ {
+  "id": "67cbe4ad-a2de-4328-9a16-217b6b973209",
+  "question_id": "CH_1785393552556_9j7n",
+  "content": "Điều tra về khối lượng 27 củ khoai tây (đơn vị: gam) thu hoạch tại nông trường, ta có kết quả sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/ujljt0tbvto_1785382861950.jpg)\n\nKhoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm trên lần lượt là",
+  "image_url": ""
+ },
+ {
+  "id": "96453f09-68b3-418e-a210-1c0871c4799c",
+  "question_id": "CH_1785393552556_e2iu",
+  "content": "Điểm kiểm tra 15 phút của 36 học sinh lớp 11A được cho bởi bảng tần số ghép nhóm sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/8qrkert2md6_1785382883471.jpg)\n\nKhoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm trên lần lượt là",
+  "image_url": ""
+ },
+ {
+  "id": "5f78269f-ffdf-407a-a01a-d2e98bfa613a",
+  "question_id": "CH_1785504654377_qj9e",
+  "content": "Đo chiều cao các em học sinh khối 10 ta thu được kết quả\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/igtnyfvcu2_1785496496594.jpg)\nPhương sai của mẫu số liệu ghép nhóm trên là $a,bcde$. Với $a,b,c,d,e$ là các số tự nhiên. Khi đó $a+b+c+d+e$ bằng.",
+  "image_url": ""
+ },
+ {
+  "id": "7e75e511-7a7f-4b50-8d1b-f5667632ba28",
+  "question_id": "CH_1785323289943_0cr7",
+  "content": "Bộ phận kiểm tra chất lượng sản phẩm dùng máy để đo (chính xác đến $0{,}001$ mm) độ dày của một chi tiết máy. Kết quả đo một số sản phẩm được thống kê trong bảng sau:\n\nNhận xét nào sau đây **sai**?",
+  "image_url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/questions/1785323207330_image.png"
+ },
+ {
+  "id": "67e5d1b0-4fdb-4471-b980-a835fa6b9257",
+  "question_id": "CH_1785334917766_o49c",
+  "content": "Kết quả 40 lần nhảy xa của vận động viên HUY được thống kê trong bảng sau (đơn vị: mét):\n\nĐộ lệch chuẩn của mẫu số liệu ghép nhóm trên là bao nhiêu? (làm tròn kết quả đến hàng phần trăm)",
+  "image_url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/questions/1785334911038_image.png"
+ },
+ {
+  "id": "6be89a03-2f5c-430d-b6e2-d6f957c01336",
+  "question_id": "CH_1785415835190_0z8r",
+  "content": "Nghiên cứu mức tiêu thụ xăng của một loại ô tô, một công ty chế tạo ô tô ở Mỹ đã cho $35$ xe chạy thử và xác định xem với $1$ galông xăng ($1$ galông $= 4,546$ lít), một xe chạy được bao nhiêu dặm ($1$ dặm $= 1,609$ km). Kết quả được cho trong bảng tần số ghép lớp sau đây:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/wnfb1f2zere_1785413452801.jpg)\nTính số trung bình.",
+  "image_url": ""
+ },
+ {
+  "id": "2a31d769-d4ef-4451-b7a6-98e7dc0c82ad",
+  "question_id": "CH_1785415835190_iy7a",
+  "content": "Một cửa hàng ăn ghi lại số tiền (nghìn đồng) mà mỗi khách trả cho cửa hàng. Các số liệu được trình bày trong bảng tần số ghép lớp sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/loefazji83o_1785413538806.jpg)\n\nTính số trung bình.",
+  "image_url": ""
+ },
+ {
+  "id": "5f34fd07-592b-47d0-a065-d967b09c33e0",
+  "question_id": "CH_1785415835190_725t",
+  "content": "Khối lượng của $30$ củ khoai tây được thu hoạch ở một nông trại được thống kê như bảng sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/7hjl5k74lfl_1785414291927.jpg)\n",
+  "image_url": ""
+ },
+ {
+  "id": "3d1fe0fb-9c7a-43cc-83c5-1a3a32c1672b",
+  "question_id": "CH_1785415835190_ljxq",
+  "content": "Sau khi điều tra về cân nặng của $40$ học sinh trong lớp 12A ở một trường THPT X thu được kết quả trong mẫu ghép nhóm sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/bq0vrdk9era_1785415255485.jpg)\n\nTính độ lệch chuẩn của mẫu số liệu ghép nhóm trên (làm tròn kết quả đến hàng phần chục).",
+  "image_url": ""
+ },
+ {
+  "id": "c0040e1f-1a8b-4ca6-abb7-b4972b350d85",
+  "question_id": "CH_1785415835190_s463",
+  "content": "Sau khi điều tra về số học sinh trong $100$ lớp học, người ta chia mẫu số liệu đó thành $5$ nhóm như sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/waiw1jnsmv_1785415285108.jpg)\n\nTính độ lệch chuẩn của mẫu số liệu ghép nhóm trên (làm tròn kết quả đến hàng phần trăm).",
+  "image_url": ""
+ },
+ {
+  "id": "4defd1f5-85e4-4c85-b696-169ce739b02e",
+  "question_id": "CH_1785418708813_ql4l",
+  "content": "Bảng dưới đây cho ta bảng tần số ghép nhóm số liệu thống kê cân nặng của 40 học sinh lớp 12B trong một trường trung học phổ thông (đơn vị: kilôgam).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/3k2am3wkiqa_1785417745264.jpg)\n",
+  "image_url": ""
+ },
+ {
+  "id": "65a4928d-cb3c-446f-8f1a-a12f9b6fa8b8",
+  "question_id": "CH_1785418708814_ggz4",
+  "content": "Thời gian hoàn thành một bài kiểm tra trắc nghiệm của một số học sinh lớp 10 của hai lớp 10A và 10B được ghi lại ở bảng sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/ohapygdgy5_1785418277501.jpg)\nTính hiệu độ lệch chuẩn $\\sigma_{10A} - \\sigma_{10B}$.",
+  "image_url": ""
+ },
+ {
+  "id": "e3eb34d6-161a-4e79-a8f3-eb4e4678f99f",
+  "question_id": "CH_1785504654377_rqet",
+  "content": "Khảo sát thời gian xem điện thoại trong một ngày của một số học sinh khối 12 thu được mẫu số liệu ghép nhóm sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/ksllb09l5n_1785502779701.jpg)\n",
+  "image_url": ""
+ },
+ {
+  "id": "d21b8aaf-57b9-48b3-86d9-c3526557c286",
+  "question_id": "CH_1785504654377_l3c5",
+  "content": "Kết quả môn Toán (cùng đề) của học sinh hai lớp $12A$ và $12B$ được cho lần lượt bởi mẫu số liệu ghép nhóm ở bảng sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/xvkxfbzwq0b_1785502851737.jpg)\n",
+  "image_url": ""
+ },
+ {
+  "id": "675c0b91-6cb6-43c9-93c5-169679198c53",
+  "question_id": "CH_1785504654377_3bru",
+  "content": "Chỉ số AQI là chỉ số thể hiện chất lượng không khí. Có 5 thông số ảnh hưởng đến chỉ số AQI là Ozone mặt đất, ô nhiễm phân tử (bụi mịn PM2.5 và PM10), $CO$, $NO_2$, $SO_2$ (với $NO_2$, $SO_2$ là tác nhân gây ra mưa axit). Chỉ số AQI từ 0-50 là mức tốt, từ 51-100 là trung bình, từ 101-150 là không tốt cho các nhóm nhạy cảm, từ 151-200 là không lành mạnh, từ 201-300 là rất không tốt, và trên 301 là rất nguy hiểm. Hà Nội của chúng ta là một trong những thành phố ô nhiễm nhất thế giới. Ngày 5/3/2024 chỉ số AQI của Hà Nội đạt mức 241 và là thành phố ô nhiễm nhất thế giới ngày hôm đó. Chỉ số AQI của một số các thành phố ngày 24/6/2024 được cho trong bảng sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/s4i6amwik_1785502911484.jpg)\n\nKhoảng biến thiên của mẫu số liệu trên là",
+  "image_url": ""
+ },
+ {
+  "id": "e2197c25-f4e1-4ec5-aacb-cf3e6bf76698",
+  "question_id": "CH_1785393552556_oz8s",
+  "content": "Bạn Linh thống kê chiều cao (đơn vị: cm) của các bạn học sinh nữ lớp 12A và lớp 12B ở bảng sau:\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/bd529om9ji_1785382586089.jpg)\n\nGọi $\\color{blue} R_1; R_2$ lần lượt là khoảng biến thiên của mẫu số liệu ghép nhóm về chiều cao của các bạn học sinh nữ lớp 12A và 12B. Tìm $\\color{blue} R_1; R_2$.",
+  "image_url": ""
+ },
+ {
+  "id": "5c82ebf9-b304-45a7-b31f-91a7ce5c9c48",
+  "question_id": "CH_1785335781036_y390",
+  "content": "Giả sử kết quả khảo sát hai khu vực A và B về độ tuổi kết hôn của một số phụ nữ vừa lập gia đình được cho ở bảng sau:\n\nCác mệnh đề sau đúng hay sai?",
+  "image_url": "https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/questions/1785335451774_image.png"
+ }
+]

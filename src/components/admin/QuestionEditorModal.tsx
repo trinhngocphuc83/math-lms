@@ -397,6 +397,12 @@ export default function QuestionEditorModal({ isOpen, onClose, question, onSave 
             <div className="bg-emerald-50 p-4 rounded-xl border border-emerald-200 shadow-sm">
               <label className="text-xs font-bold text-emerald-800 mb-1 block uppercase tracking-wider">Đáp án đúng</label>
               <input value={formData.correct_answer} onChange={e => handleChange('correct_answer', e.target.value)} className="w-full border-2 border-emerald-300 rounded p-3 text-lg font-bold text-emerald-700 outline-none focus:border-emerald-500" placeholder="A, B, C, D hoặc ĐĐSĐ..." />
+              {/* Đáp án có công thức (TLN/TL) thì dựng ra bên dưới, khỏi phải dịch "\frac{\sqrt{3}}{3}" trong đầu */}
+              {formData.correct_answer?.includes('$') && (
+                <div className="mt-2 px-3 py-2 bg-white rounded border border-emerald-200">
+                  <ChuCoCongThuc chu={formData.correct_answer} anAnh className="text-base font-bold text-emerald-700" />
+                </div>
+              )}
             </div>
           </div>
 

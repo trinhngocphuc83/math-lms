@@ -70,6 +70,9 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
     const [chuNhap, setChuNhap] = useState('');
     /** Cụm mệnh đề: thầy bấm Đ/S theo lớp trả lời trước khi lật đáp án. */
     const [chonCum, setChonCum] = useState<Record<number, boolean>>({});
+    /** Ảnh trong đề là dải ngang (rộng/cao > 2,5) - đo lúc ảnh tải xong, xem chú thích chỗ dùng. */
+    const [anhRong, setAnhRong] = useState(false);
+    useEffect(() => { setAnhRong(false); }, [quizData]);
 
     /* Nhận lệnh từ điện thoại. Phải nằm TRƯỚC dòng thoát sớm bên dưới, nếu không React
        đếm số hook lệch giữa hai lần vẽ và vỡ trang. */
@@ -126,14 +129,47 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
      *
      * Chỉ xếp cạnh nhau khi câu có ĐÚNG MỘT ảnh - nhiều ảnh thì chia cột là vỡ bố cục.
      */
-    const deGoc = String(quizData.question || '');
-    const viTriAnh = quizData.viTriAnh || 'phai';
+    /*
+     * Ảnh đặt ở trường `imageUrl` (mọi bộ dựng khối quiz - tự luyện, đề ôn tập, trang soạn
+     * bài - đều ghi vào đây, và trang học sinh cũng đọc trường này) thì GHÉP VÀO ĐỀ như
+     * một ảnh markdown, để đi chung đường xếp cạnh bên dưới. Trước đây màn chiếu chỉ đọc
+     * `img_url` - một tên không bộ dựng nào ghi - nên câu "cho ở bảng sau" hiện ra không có
+     * bảng nào cả; học sinh nhìn bốn mệnh đề mà không có số liệu để xét (bắt được 12/9/2026).
+     */
+    const anhRieng = String(quizData.imageUrl || quizData.img_url || '').trim();
+    const deGocTho = String(quizData.question || '');
+    const deGoc = anhRieng && !deGocTho.includes(anhRieng)
+        ? `${deGocTho}\n\n![Hình ảnh](${anhRieng})`
+        : deGocTho;
     const anhTrongDe = (deGoc.match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)/) || [])[1];
     const soAnhTrongDe = (deGoc.match(/!\[[^\]]*\]\(/g) || []).length;
+    /*
+     * ẢNH RỘNG THÌ XUỐNG DƯỚI, KHÔNG XẾP CẠNH.
+     *
+     * Bảng tần số cắt từ sách phần lớn là dải ngang: đo 112 ảnh trong chương 3 Toán 12 thì
+     * hơn 80 tấm rộng 700–1500 px mà cao chỉ 60–190 px. Nhét dải ấy vào cột 38% bên phải thì
+     * chữ trong bảng còn cao chừng 10 px trên màn chiếu - "ảnh nhỏ như con kiến" thầy bắt
+     * được 12/9/2026. Ảnh có tỉ lệ rộng/cao trên 2,5 thì tự động đặt dưới đề, trải hết bề
+     * ngang; chỉ ảnh gần vuông (đồ thị, hình vẽ) mới xếp cạnh. Thầy cô chọn tay "Dưới đề"
+     * trong trang soạn bài thì vẫn được tôn trọng như trước.
+     */
+    const viTriAnh = quizData.viTriAnh || (anhRong ? 'duoi' : 'phai');
     const canhNhau = viTriAnh !== 'duoi' && !!anhTrongDe && soAnhTrongDe === 1;
     const deKhongAnh = canhNhau
         ? deGoc.replace(/!\[[^\]]*\]\([^)\s]+[^)]*\)/, '').trim()
         : deGoc;
+    const doTiLeAnh = (e: React.SyntheticEvent<HTMLImageElement>) => {
+        const im = e.currentTarget;
+        if (im.naturalHeight > 0 && im.naturalWidth / im.naturalHeight > 2.5) setAnhRong(true);
+    };
+    /* Ảnh nằm trong đề (dưới đề): trải hết bề ngang cột đề thay vì cỡ gốc - ảnh 800 px trên
+       slide 1900 px vẫn là nhỏ. */
+    const thanhPhanDe = {
+        img: ({ src, alt }: any) => (
+            <img src={src} alt={alt || 'Hình ảnh'} onLoad={doTiLeAnh}
+                 className="block mx-auto my-4 w-full max-w-[1200px] h-auto rounded-2xl border border-slate-200 bg-white shadow-sm" />
+        ),
+    };
 
     return (
         <div className="w-full flex flex-col">
@@ -156,12 +192,9 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
                 : 'contents'}>
             <div className={canhNhau ? 'flex-1 min-w-0' : 'contents'}>
             <div className={`text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}`}>
-                <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
+                <ReactMarkdown urlTransform={chuyenDiaChiAnh} components={thanhPhanDe} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                     {deKhongAnh}
                 </ReactMarkdown>
-                {quizData.img_url && (
-                    <img src={quizData.img_url} alt="Minh họa" className="block mx-auto rounded-2xl shadow-lg mt-5 border border-slate-200 max-h-[340px]" />
-                )}
             </div>
 
             {type === 'true_false' && (
@@ -326,7 +359,7 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
             {/* Cột hình. Chỉ có khi thầy cô để ảnh sang bên. */}
             {canhNhau && (
                <div className="w-[38%] shrink-0">
-                  <img src={anhTrongDe} alt="Hình minh họa"
+                  <img src={anhTrongDe} alt="Hình minh họa" onLoad={doTiLeAnh}
                        className="w-full h-auto rounded-2xl border border-slate-200 bg-white shadow-sm"
                        style={{ objectFit: 'contain' }} />
                </div>

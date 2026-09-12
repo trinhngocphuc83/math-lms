@@ -72,3 +72,29 @@ và **không có dấu hiệu gì** — từng dính 19 khối, chỉ lộ khi b
 
 Câu rút từ kho phải kèm `sourceQuestionId` — đây là sợi dây để về sau xuất Word lấy lại
 được bản ghi đầy đủ (lời giải, ảnh, barem) và để truy ngược khi câu trong kho được sửa.
+
+Khuôn đầy đủ của một khối (trắc nghiệm):
+
+```json
+{
+  "type": "multiple_choice",
+  "question": "đề, ảnh/bảng nằm NGAY TRONG đề dưới dạng markdown hoặc $$\\begin{array}…$$",
+  "options": ["…", "…", "…", "…"],
+  "answerIndex": 2,
+  "phuong_phap_giai": "một câu nêu cách làm",
+  "cac_buoc_thuc_hien": ["Bước 1 …", "Bước 2 …", "Kết luận …"],
+  "sourceQuestionId": "uuid trong kho",
+  "maCauHoi": "CH_…"
+}
+```
+
+- `phuong_phap_giai` + `cac_buoc_thuc_hien` là **bắt buộc**: app bày từng bước đánh số
+  tròn khi bấm "Xem lời giải"; thiếu thì nút ấy không ra gì. Lấy từ `explanation` của kho
+  (khuôn "Phương pháp giải:\n…\n\nLời giải:\n…"), mỗi dòng lời giải một bước.
+- Ảnh để trong `question` (markdown), **không** để ở trường `imageUrl` riêng: hai màn hình
+  từng đọc hai tên trường khác nhau, màn chiếu bỏ sót ảnh, câu "cho ở bảng sau" hiện ra
+  không có bảng.
+- Bảng số liệu viết bằng `$$\begin{array}{|c|c|} \hline … \end{array}$$`, không dùng ảnh
+  cắt (xem SKILL.md, Bước 2).
+- Đúng/Sai: `type: "true_false_cluster"`, `options: [{content, isTrue}]`. Trả lời ngắn:
+  `type: "short_answer"`, `exactAnswer`.

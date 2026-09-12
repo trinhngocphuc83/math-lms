@@ -5,13 +5,14 @@ description: Soạn trọn một chương Toán THPT (lớp 10, 11, 12) trong ap
 
 # Soạn trọn một chương THPT
 
-Chương hoàn chỉnh gồm bốn phần, dựng theo đúng thứ tự này vì phần sau ăn theo phần trước:
+Chương hoàn chỉnh gồm các phần sau, dựng theo đúng thứ tự này vì phần sau ăn theo phần trước:
 
 1. **Lý thuyết và phân dạng** — mỗi bài một module `type = 'theory'`
 2. **Bài tập tự luyện** — mỗi bài một module `title = 'Bài tập tự luyện'`, câu **rút từ kho**
 3. **Năm đề ôn tập cuối chương** — trong chuyên đề ôn tập, bài `Cuối chương N`
 4. **Bảng tổng hợp công thức cả chương** — module lý thuyết của bài `Cuối chương N`
 5. **Xuất Word bản giáo viên** — mỗi bài một tệp
+6. **Kiểm lại toàn bộ giáo án** (Bước 7) — `kiem-giao-an.mjs` về 0 lỗi, rồi mở app xem bằng mắt
 
 Đọc [references/cau-truc-va-han-ngach.md](references/cau-truc-va-han-ngach.md) **trước khi
 rút câu**: ở đó có số câu từng loại theo khối lớp, phân bố mức, khuôn đề, và cách rút cho
@@ -97,6 +98,36 @@ Mỗi dạng ít nhất hai câu tương tác, xếp từ dễ đến khó. Câu
 phương pháp vừa trình bày, và phải tính ra con số cụ thể — hỏi lý thuyết suông thì học
 sinh học xong vẫn không làm được bài.
 
+**Phân dạng trước, rút câu sau — và chỉ hỏi điều đã dạy.** Câu tương tác dưới DẠNG n phải
+hỏi đúng kĩ năng của DẠNG n, và mọi khái niệm trong đề phải đã xuất hiện từ đầu bài tới hết
+mục ấy. Đừng tin nhãn dạng trong kho: Toán 12 chương 3 từng có dạng "mẫu không ghép nhóm"
+chứa toàn câu **tính số trung bình** (kiến thức lớp 11), máy rút hai câu ấy vào mục "mẫu
+không ghép nhóm" — học sinh gặp câu hỏi về thứ bài chưa dạy một chữ. Trước khi rút, đọc đề
+của vài câu trong dạng; thấy nhãn sai thì **gắn lại dạng trong kho** (có sao lưu) rồi mới
+rút. Dạng nào kho không có câu thì **bỏ dạng đó khỏi bài**, không giữ mục trống, không tự
+chế câu.
+
+**Mỗi câu tương tác phải mang lời giải từng bước.** Khối quiz có `phuong_phap_giai` (một
+câu nêu cách làm) và `cac_buoc_thuc_hien` (mảng, mỗi phần tử một bước) — app bày thành
+danh sách đánh số tròn khi thầy bấm "Xem lời giải". Lấy từ `explanation` của kho: phần
+"Phương pháp giải:" vào `phuong_phap_giai`, mỗi dòng của "Lời giải:" thành một bước.
+`va-giao-an.mjs` (Bước 7) làm việc này tự động cho câu còn thiếu.
+
+**Bảng số liệu viết bằng LaTeX, không dùng ảnh cắt từ sách.** Ảnh bảng tần số cắt từ trang
+sách cao 60–190 px, đặt cạnh đề trên màn chiếu thì chữ còn cao 10 px. Viết:
+
+```
+$$\begin{array}{|c|c|c|} \hline \text{Nhóm} & [10;12) & [12;14) \\ \hline \text{Tần số} & 5 & 12 \\ \hline \end{array}$$
+```
+
+App dựng bằng KaTeX sắc nét ở mọi cỡ, bộ xuất Word dựng thành bảng Word thật
+(`latexToDocxTable`). Số thập phân trong ô viết `6{,}22`. Câu trong kho đang dùng ảnh bảng
+thì đổi luôn trong kho (script mẫu: `scratch/bang-12c3.mjs`) rồi `va-giao-an.mjs
+--dong-bo-de --thay-anh` để bài giảng hưởng theo. Hình vẽ thật (đồ thị, hình không gian)
+mới để ảnh, và ảnh phải rộng **≥ 600 px**; nhỏ hơn thì cắt lại từ ảnh gốc bằng
+`cat-anh.mjs` của skill nạp kho. Màn chiếu tự xếp ảnh rộng (tỉ lệ > 2,5) xuống dưới đề,
+trải hết bề ngang; ảnh gần vuông mới đặt cạnh.
+
 Nội dung bài giảng trong app **không phải markdown thuần**: nó có thẻ HTML để canh giữa và
 vẽ khung màu trên màn hình. Cứ giữ nguyên lối ấy khi soạn — bộ xuất Word đã biết gỡ thẻ.
 
@@ -166,6 +197,47 @@ ra nguyên một mớ dấu gạch đứng. Trên màn hình app thì vẫn đ�
 đừng tin mỗi màn hình.
 
 Số `<m:oMath>` phải xấp xỉ số công thức trong nội dung; bằng 0 nghĩa là công thức hỏng hết.
+
+## Bước 7 — Kiểm lại toàn bộ giáo án, rồi mở app xem bằng mắt
+
+Soạn xong **chưa phải là xong**. Bảy lỗi dưới đây đều im lặng trên màn hình soạn, chỉ lộ
+khi mở bài dạy lên trước lớp — thầy bắt được cả bảy trong một buổi (12/9/2026, Toán 12
+chương 3):
+
+```bash
+node .claude/skills/soan-chuong-thpt/scripts/kiem-giao-an.mjs --lop 12 --chuong "PHÂN TÁN"
+```
+
+| Lỗi | Nghĩa |
+|---|---|
+| THIẾU DỮ LIỆU | đề nói "cho ở bảng sau" mà không có bảng, không có ảnh |
+| HỎI ĐIỀU CHƯA DẠY | đề nhắc khái niệm (số trung bình, phương sai, tích phân…) mà từ đầu bài tới mục ấy chưa dạy |
+| LẠC DẠNG | dạng-trong-kho của câu không khớp mục chứa nó, hoặc khác các câu cùng mục |
+| THIẾU LỜI GIẢI | khối không có `phuong_phap_giai` / `cac_buoc_thuc_hien` / `answer` |
+| ẢNH NHỎ | ảnh trong đề rộng dưới 600 px |
+| ĐÁP ÁN LỆCH | `answerIndex` / `exactAnswer` khác đáp án của câu gốc trong kho |
+| THIẾU answerIndex | chọn đúng vẫn báo sai |
+
+Phải về **0 lỗi**. Phần máy tự sửa được thì để máy sửa (chạy thử trước, có `ghi` mới ghi,
+sao lưu vào `backups/va-giao-an-<ngày>/`):
+
+```bash
+node .claude/skills/soan-chuong-thpt/scripts/va-giao-an.mjs --lop 12 --chuong "PHÂN TÁN" --dong-bo-de ghi
+```
+
+Nó thêm lời giải từng bước từ kho, ghép ảnh rời vào đề, chép lại đề từ kho sau khi kho
+được sửa, thay ảnh bảng bằng bảng LaTeX theo bản đồ `--thay-anh <tệp.json>`, và gắn
+`sourceQuestionId` cho khối đề ôn tập dựng bằng đường cũ. Câu HỎI ĐIỀU CHƯA DẠY và LẠC
+DẠNG thì người phải xử: gắn lại dạng trong kho, chọn câu khác, hoặc bỏ dạng.
+
+Cả hai script soi **cả bản trình chiếu** (`presentation_markdown`) — trang soạn bài lưu
+hai bản, màn chiếu ưu tiên bản trình chiếu, sửa mỗi bản nội dung thì trên lớp vẫn thấy
+bản cũ. Nhãn "(trình chiếu)" sau tên module là đang nói bản ấy.
+
+Xong máy rồi thì **mở app** (thầy đăng nhập Chrome, đi qua Claude in Chrome) bấm từng
+câu tương tác trên màn chiếu: bảng có đọc được từ cuối lớp không, "Xem lời giải" có ra
+từng bước không, diễn giải có chỗ nào nói sai kiến thức không. Chỉ khi nhìn thấy bằng
+mắt mới được báo là xong.
 
 ## Chạy script Node đụng vào mã của app
 

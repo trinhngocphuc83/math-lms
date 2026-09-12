@@ -1405,7 +1405,8 @@ Bạn là chuyên gia Toán học. Hãy bóc tách TẤT CẢ câu hỏi trong �
 
                       {(q.question_type === 'TLN' || q.question_type === 'TL') && (
                         <div className="bg-white/70 p-4 rounded-xl border border-emerald-100/50 shadow-sm">
-                           <input type="text" value={q.correct_answer} onChange={(e) => updateParsedQuestion(q.temp_id!, 'correct_answer', e.target.value)} placeholder={q.question_type === 'TLN' ? "Nhập kết quả cuối cùng (VD: 12.5)" : "Nhập đáp án ngắn gọn (tùy chọn)"} className="w-full border border-gray-300 rounded-lg p-2.5 text-sm font-bold bg-white outline-none focus:border-emerald-500 shadow-sm" />
+                           {/* Ô dựng công thức: đáp án "$\frac{\sqrt{3}}{3}$" từng hiện nguyên chữ thô, thầy không soát nổi đúng sai */}
+                           <OSuaTaiCho value={q.correct_answer || ''} onChange={(v) => updateParsedQuestion(q.temp_id!, 'correct_answer', v)} rows={1} co="nho" placeholder={q.question_type === 'TLN' ? "Nhập kết quả cuối cùng (VD: 12.5)" : "Nhập đáp án ngắn gọn (tùy chọn)"} className="border-gray-300 font-bold" />
                         </div>
                       )}
                     </div>
