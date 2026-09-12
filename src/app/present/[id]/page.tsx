@@ -197,9 +197,11 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
                 cuối lớp). Không cho cuộn ngang: overflow-x:auto kéo theo thanh cuộn dọc vì KaTeX
                 xếp bảng bằng vlist có lề âm.
                 Nhắm vào .katex chứ không phải .katex-display: "$$…$$" viết trên một dòng được
-                remark-math coi là công thức nội dòng, không sinh .katex-display. */}
-            <div className={`text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}
-                             [&_.katex:has(.mtable)]:text-[0.75em]`}>
+                remark-math coi là công thức nội dòng, không sinh .katex-display.
+                Luật nằm ở globals.css (.de-trinh-chieu) vì Tailwind 4 không sinh lớp cho biến thể
+                tuỳ ý có :has() - đã thử `[&_.katex:has(.mtable)]:text-[0.75em]`, lên bản dựng
+                không có luật nào. */}
+            <div className={`de-trinh-chieu text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}`}>
                 <ReactMarkdown urlTransform={chuyenDiaChiAnh} components={thanhPhanDe} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                     {deKhongAnh}
                 </ReactMarkdown>

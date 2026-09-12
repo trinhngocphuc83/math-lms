@@ -400,3 +400,12 @@ img[alt="Minh họa"]:not(.anh-noi-dung) {
 
 /* Công thức đứng riêng một dòng: kéo sát vào ý ngay trên nó. */
 .hop-giai .katex-display { margin-top: 0.15em; margin-bottom: 0.35em; }
+
+/*
+ * Bảng LaTeX (\begin{array}) trong đề câu hỏi trên màn chiếu.
+ * KaTeX phóng chữ 1,21em: bảng tần số 7 cột ở cỡ đề 42px rộng 2100px, khung đề chỉ 1430px,
+ * cột cuối bị cắt mất (bắt được 12/9/2026). Thu chữ trong bảng còn 0,75em - đo thì bảng 7 cột
+ * còn dư 8% bề ngang, chữ ≈31px vẫn đọc được từ cuối lớp. Viết ở đây vì Tailwind 4 không sinh
+ * lớp cho biến thể `[&_.katex:has(.mtable)]`.
+ */
+.de-trinh-chieu .katex:has(.mtable) { font-size: 0.75em; }
