@@ -70,7 +70,9 @@ for (const [k, g] of Object.entries(theoChuong)) {
   if (g.mon.size > 1) loi.push(`lớp ${lop} chương ${c} thuộc ${g.mon.size} phân môn: ${[...g.mon].join(' / ')}`);
   const thuong = [...g.bai].filter(([t]) => !/Ôn tập chương/.test(t)).map(([, n]) => n).sort((a, b) => a - b);
   const onTap = [...g.bai].filter(([t]) => /Ôn tập chương/.test(t));
-  for (let i = 0; i < thuong.length; i++) if (thuong[i] !== i + 1) { canhBao.push(`lớp ${lop} chương ${c}: số bài không liền 1..n (${thuong.join(',')})`); break; }
+  /* Số bài phải liền nhau. Kho Toán đánh lại từ 1 mỗi chương; kho Lý giữ số liên tục theo SGK
+     (Bài 8-13) - cả hai đều hợp lệ, chỉ báo khi có LỖ HỔNG (thiếu số ở giữa). */
+  for (let i = 0; i < thuong.length; i++) if (thuong[i] !== thuong[0] + i) { canhBao.push(`lớp ${lop} chương ${c}: số bài không liền nhau (${thuong.join(',')})`); break; }
   const trung = thuong.filter((n, i) => thuong.indexOf(n) !== i);
   if (trung.length) loi.push(`lớp ${lop} chương ${c}: hai bài cùng số ${[...new Set(trung)].join(',')}`);
   if (onTap.length > 1) loi.push(`lớp ${lop} chương ${c}: ${onTap.length} bài ôn tập`);
