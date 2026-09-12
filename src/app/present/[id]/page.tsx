@@ -191,7 +191,10 @@ function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau
                 ? `flex gap-10 items-start ${viTriAnh === 'trai' ? 'flex-row-reverse' : ''}`
                 : 'contents'}>
             <div className={canhNhau ? 'flex-1 min-w-0' : 'contents'}>
-            <div className={`text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}`}>
+            {/* Bảng LaTeX (\begin{array}) 6-7 cột ở cỡ chữ 42px rộng hơn khung đề và bị cắt mất cột
+                cuối - thu bảng còn 0,8em và cho khung cuộn ngang làm lưới an toàn. */}
+            <div className={`text-[42px] leading-[1.5] font-semibold text-slate-900 mb-8 ${KATEX_CLASS}
+                             [&_.katex-display:has(.mtable)]:text-[0.8em] [&_.katex-display]:max-w-full [&_.katex-display]:overflow-x-auto`}>
                 <ReactMarkdown urlTransform={chuyenDiaChiAnh} components={thanhPhanDe} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
                     {deKhongAnh}
                 </ReactMarkdown>
