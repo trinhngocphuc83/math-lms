@@ -1,0 +1,75 @@
+{
+ "question_categories": [
+  {
+   "id": "81c47621-9577-4360-a27a-bd9a58c8e21a",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 2. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác",
+   "math_form": "Nhận biết các yếu tố của hình lăng trụ đứng tam giác, tứ giác",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Mô tả được đỉnh, cạnh, mặt đáy, mặt bên và chiều cao của hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác."
+  },
+  {
+   "id": "c374ca05-d7bc-4c48-a605-c06bcf78d461",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 2. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác",
+   "math_form": "Tính thể tích của hình lăng trụ đứng",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Tính được thể tích của hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác."
+  },
+  {
+   "id": "4bfb2e71-6873-4ef3-8551-7549231cd55a",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 1. Hình hộp chữ nhật và hình lập phương",
+   "math_form": "Tính thể tích",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Tính được thể tích của hình hộp chữ nhật và hình lập phương."
+  },
+  {
+   "id": "0bbcfe63-4428-4b47-8006-a869e21491bc",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 2. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác",
+   "math_form": "Tính diện tích xung quanh của hình lăng trụ đứng",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích xung quanh của hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác."
+  },
+  {
+   "id": "8c8c41a5-5494-44e3-ae4a-8792d133a370",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 1. Hình hộp chữ nhật và hình lập phương",
+   "math_form": "Nhận biết các yếu tố của hình hộp chữ nhật, hình lập phương",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Mô tả được đỉnh, cạnh, góc, đường chéo, mặt đáy và mặt bên của hình hộp chữ nhật và hình lập phương."
+  },
+  {
+   "id": "c29493e2-edfc-4845-9bc7-2696fc3aaf33",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 1. Hình hộp chữ nhật và hình lập phương",
+   "math_form": "Tính diện tích xung quanh, diện tích toàn phần",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích xung quanh và diện tích toàn phần của hình hộp chữ nhật và hình lập phương."
+  },
+  {
+   "id": "6e6b29d8-4f65-48b4-a340-aa9ff806e451",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tổng hợp tính toán diện tích, thể tích các hình khối thực tiễn",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến tính diện tích và thể tích của các hình khối đã học."
+  }
+ ],
+ "questions": []
+}

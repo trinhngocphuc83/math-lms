@@ -1,0 +1,482 @@
+{
+ "question_categories": [
+  {
+   "id": "8112f645-e244-428e-a677-5c29ceeb5219",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Thu thập và biểu diễn dữ liệu",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu",
+   "created_at": "2026-07-22T15:59:22.217131+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc thu thập và phân loại dữ liệu theo các tiêu chí cho trước từ các nguồn thông tin khác nhau."
+  },
+  {
+   "id": "7effdea5-b150-4029-a090-ae908952abb0",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Thu thập và biểu diễn dữ liệu",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng",
+   "created_at": "2026-07-22T15:59:22.217131+00:00",
+   "yeu_cau_can_dat": "Đọc và phân tích được dữ liệu biểu diễn trên biểu đồ đoạn thẳng để lập bảng thống kê và nhận xét xu hướng thay đổi."
+  },
+  {
+   "id": "e50e21b6-0322-4cee-950f-5604a4adecc1",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Thu thập và biểu diễn dữ liệu",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng",
+   "created_at": "2026-07-22T15:59:22.217131+00:00",
+   "yeu_cau_can_dat": "Vẽ được biểu đồ đoạn thẳng để biểu diễn bảng dữ liệu thống kê cho trước."
+  },
+  {
+   "id": "043dc36c-87a5-4b07-851e-c8bd0b745834",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Thu thập và biểu diễn dữ liệu",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Đọc và mô tả biểu đồ hình quạt tròn",
+   "created_at": "2026-07-22T15:59:22.217131+00:00",
+   "yeu_cau_can_dat": "Đọc và mô tả được các thông tin biểu diễn trên biểu đồ hình quạt tròn để trả lời các câu hỏi liên quan."
+  },
+  {
+   "id": "65ca5f69-2408-44a5-8ff2-e4f8b039721b",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Thu thập và biểu diễn dữ liệu",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Tính đại diện của dữ liệu",
+   "created_at": "2026-07-22T15:59:22.217131+00:00",
+   "yeu_cau_can_dat": "Giải thích được tính hợp lí và tính đại diện của dữ liệu thu thập được trong một số tình huống thực tế đơn giản."
+  },
+  {
+   "id": "51bdea27-c51c-4916-b4ed-53fbf3fc562e",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Thu thập và biểu diễn dữ liệu",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn",
+   "created_at": "2026-07-22T15:59:22.217131+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc biểu diễn dữ liệu từ bảng thống kê tỉ lệ phần trăm vào biểu đồ hình quạt tròn cho trước."
+  },
+  {
+   "id": "cb9d536c-2bca-409a-8ec0-cb796a976dcc",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Thu thập và biểu diễn dữ liệu",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Phân tích dữ liệu trong biểu đồ hình quạt tròn",
+   "created_at": "2026-07-22T15:59:22.217131+00:00",
+   "yeu_cau_can_dat": "Phân tích được dữ liệu trên biểu đồ hình quạt tròn để đưa ra nhận xét, tính toán số liệu và giải quyết tình huống thực tế."
+  },
+  {
+   "id": "cdacd3d7-f9e9-40fc-9b31-bdb05aa4f0c4",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Thu thập và biểu diễn dữ liệu",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 5",
+   "created_at": "2026-09-12T13:22:55.079019+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức của chương 5 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "questions": [
+  {
+   "id": "cef9daa9-ef4a-4adc-bc9b-25875d277ae8",
+   "question_id": "CH_1784780493201_zi18",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "f38e0067-3f62-455e-9166-cae8cb0b1794",
+   "question_id": "CH_1784780493201_yjol",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "ce7c3b24-a752-4962-8a16-f0e30f6b82c1",
+   "question_id": "CH_1784736200251_epnv",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Tính đại diện của dữ liệu"
+  },
+  {
+   "id": "eb604606-0952-40bc-a0d6-d1b0801e92cb",
+   "question_id": "CH_1784736639580_vkaa",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "7a3de82e-d361-4d2b-b150-2e7f373cfe9d",
+   "question_id": "CH_1784736639580_7i8m",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Tính đại diện của dữ liệu"
+  },
+  {
+   "id": "07172adc-6315-43fb-9025-ae547d21daab",
+   "question_id": "CH_1784737866989_w0bn",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "609cf3ca-c884-49c1-b3b9-f18a4f5b4578",
+   "question_id": "CH_1784739752035_iv8c",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "c1037d05-4d35-4c99-9103-ee139c8cbe17",
+   "question_id": "CH_1784737866989_fn72",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Phân tích dữ liệu trong biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "3be77074-f293-4447-b94e-bc23b3f01322",
+   "question_id": "CH_1784739752035_49dc",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "adc02636-d751-4a5c-b0b2-fbceb5e9e883",
+   "question_id": "CH_1784737866989_0ltk",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "db94131a-d682-41cc-82a0-2661dddba690",
+   "question_id": "CH_1784738457862_3jlj",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "f12f58e5-75e9-4eb6-89f0-0601f6dab18a",
+   "question_id": "CH_1784739752035_6ruo",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "e9a138de-3ef1-4e95-9577-e02783db308e",
+   "question_id": "CH_1784739752035_tpih",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "19749a2d-93cc-4a23-b7ad-714e5ec34311",
+   "question_id": "CH_1784736200251_dx00",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "e3da230d-d7ba-4783-be38-09967816d12c",
+   "question_id": "CH_1784736639580_y4il",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "4f0bd4e3-2720-4915-a591-c7aae9507448",
+   "question_id": "CH_1784736639580_vq1l",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "ef0f33b8-ffe8-4e00-90b7-820452b1da9e",
+   "question_id": "CH_1784736639580_839h",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Tính đại diện của dữ liệu"
+  },
+  {
+   "id": "065e5109-603b-4d61-aa84-8f15aaf9ed6b",
+   "question_id": "CH_1784737866989_q7vc",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "1ac013b1-cc13-4fa3-81ca-d4f4e88540a1",
+   "question_id": "CH_1784737866989_qd7e",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "5eabdc83-d7af-4510-93a5-0b15bcb01bb2",
+   "question_id": "CH_1784737866989_tjou",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Phân tích dữ liệu trong biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "c1af46df-3275-46de-ae0e-0a3f573cbebc",
+   "question_id": "CH_1784737866989_unle",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Phân tích dữ liệu trong biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "b807d919-11ce-4a03-b641-4218995ee514",
+   "question_id": "CH_1784737866989_g771",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "37a3ab2c-42cd-4fb7-8704-1406ff5442d8",
+   "question_id": "CH_1784737866989_4raf",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Phân tích dữ liệu trong biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "d650e081-6b91-4e4d-ab40-f3261dc5d69f",
+   "question_id": "CH_1784737866989_ds55",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Đọc và mô tả biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "7a72b0e4-5131-4793-a3af-f153e5eb690c",
+   "question_id": "CH_1784737866989_fiaw",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "caf6fc20-3983-4da0-8d4a-1e2683f0d695",
+   "question_id": "CH_1784738457862_ulew",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "fd597c97-157f-49a4-b60b-19fd32765076",
+   "question_id": "CH_1784738457862_yttk",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "fce929a5-9edb-4d0e-af42-9c4836728ff1",
+   "question_id": "CH_1784738457862_6180",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "32334714-2d39-4bf3-831a-ee3bc6b5c6e5",
+   "question_id": "CH_1784738913941_b1re",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "f0d3387f-7ce7-4a7f-98ed-82c52968866a",
+   "question_id": "CH_1784738913941_lqk2",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "81163f04-9948-4541-a01f-895672d0361e",
+   "question_id": "CH_1784739752035_ognd",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Đọc và mô tả biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "ac4e5362-a4c8-4574-8017-8007a33e60fb",
+   "question_id": "CH_1784739752035_vgyb",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Tính đại diện của dữ liệu"
+  },
+  {
+   "id": "07269b13-ed0d-4ae5-ad93-1a76de4d197d",
+   "question_id": "CH_1784739752035_6hqt",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Phân tích dữ liệu trong biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "ff8e58f7-ef04-4456-b21a-db7282f23bd5",
+   "question_id": "CH_1784779875385_o1l7",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "d21fc5d3-2fc2-4d68-a5cb-3b90efbc39bd",
+   "question_id": "CH_1784779875385_ma6s",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "c69ac4d6-b1ab-42fa-8b36-a9228c4ca61a",
+   "question_id": "CH_1784780493201_ruwt",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "7c26ee9f-649e-4b6e-92d0-b0a699511965",
+   "question_id": "CH_1784736200251_p3m9",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "62b25883-c0c6-483e-b5f3-af957ff97f5a",
+   "question_id": "CH_1784779875385_b8mi",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "3acb0db3-bf00-49f1-92d0-d51487612e49",
+   "question_id": "CH_1784780493201_qa13",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "43d1a8cf-601c-41ca-a4e0-310c68658dd8",
+   "question_id": "CH_1784780493201_kllg",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "8f0aa034-2eec-4cc1-8241-5363bac72e4b",
+   "question_id": "CH_1784780493201_mpsv",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "b205ba4a-ff08-4100-a33c-ba3058ee0dfb",
+   "question_id": "CH_1784740082819_5zzb",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "732f1b29-69f4-4a5c-b230-d10eea3f9a15",
+   "question_id": "CH_1784736639580_yg9f",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "edfd4052-9f52-48aa-a8a7-087b1c814125",
+   "question_id": "CH_1784736639580_ixoe",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "e7cb521b-0cf9-4fdd-8ff2-eb1621bb3f54",
+   "question_id": "CH_1784737866989_17fr",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Đọc và mô tả biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "f0bd759d-a402-45ae-9800-3161dec5e866",
+   "question_id": "CH_1784737866989_iheh",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "cadfbe56-f59f-4b79-9d19-cc5db956ca9c",
+   "question_id": "CH_1784737866989_a9xs",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "9643bd70-38c4-45e6-8199-4f3d70f537d5",
+   "question_id": "CH_1784738913941_wiqc",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "9dc992ba-18b7-4f91-b9d7-4f8457f38b58",
+   "question_id": "CH_1784740082819_drw1",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Phân tích dữ liệu trong biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "b1d4b441-87f0-44ec-aa1a-4733cc8ad74d",
+   "question_id": "CH_1784740082819_60md",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Phân tích dữ liệu trong biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "352d5a7a-94fa-4038-9de3-91178b3d7481",
+   "question_id": "CH_1784780493201_zyeb",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "82a4550a-9197-498e-8938-a1000afb4451",
+   "question_id": "CH_1784738457862_tpys",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "02e80296-ceac-4f7e-8912-528e8291e5c0",
+   "question_id": "CH_1784736200251_vvqn",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "1b201a61-0405-4fdd-b160-4afbe51ff814",
+   "question_id": "CH_1784736200251_7u0t",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Tính đại diện của dữ liệu"
+  },
+  {
+   "id": "303bf540-2a11-47c4-9db6-f2dd637520d8",
+   "question_id": "CH_1784738913941_0d6h",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "d16ac85d-b66a-4ff1-ab8a-460918499a44",
+   "question_id": "CH_1784736200251_y2q6",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "34e905ea-6fdc-446e-b6b7-b946a1fdab5e",
+   "question_id": "CH_1784736200251_looq",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "4083b9ff-a78c-4cdc-848f-d20dce09a21e",
+   "question_id": "CH_1784736639580_vmh7",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập và phân loại dữ liệu"
+  },
+  {
+   "id": "5c0c45bf-31b4-446e-840b-0dcb6c1dadf3",
+   "question_id": "CH_1784737866989_lq8r",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Phân tích dữ liệu trong biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "fc292b11-ea77-40cf-925d-244174081096",
+   "question_id": "CH_1784738457862_gcr1",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "17a313ea-d665-4554-acf1-b3313ecc94ad",
+   "question_id": "CH_1784738913941_krp0",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "cd6b2b03-7ede-4908-85d1-8a5510c30bc7",
+   "question_id": "CH_1784739752035_drdu",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "a6644408-93a8-44ae-aec5-0b4b2ea66bfa",
+   "question_id": "CH_1784739752035_y19c",
+   "lesson": "Bài 2. Biểu đồ hình quạt tròn",
+   "math_form": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn"
+  },
+  {
+   "id": "c8367b1d-dfbd-446e-9a2f-e42a6ce3e3e0",
+   "question_id": "CH_1784740082819_s8yi",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "87d175b9-12ac-451b-9093-14a1924b0da5",
+   "question_id": "CH_1784738457862_10mt",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  },
+  {
+   "id": "284d2cb3-9ab0-4610-95a0-c96429d645c7",
+   "question_id": "CH_1784740082819_3y3n",
+   "lesson": "Bài 3. Biểu đồ đoạn thẳng",
+   "math_form": "Vẽ biểu đồ đoạn thẳng"
+  }
+ ]
+}

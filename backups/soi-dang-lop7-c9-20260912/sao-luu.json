@@ -1,0 +1,115 @@
+{
+ "question_categories": [
+  {
+   "id": "999fddbf-f4d2-49f1-83ab-78e60bf548ad",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 1. Quan hệ giữa góc và cạnh đối diện trong một tam giác",
+   "math_form": "So sánh các cạnh trong một tam giác khi biết số đo các góc",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được quan hệ giữa góc và cạnh đối diện để so sánh độ dài các cạnh trong một tam giác khi biết số đo các góc."
+  },
+  {
+   "id": "7f0267f9-7ba3-4c29-92c8-0c0ed0983f8e",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 1. Quan hệ giữa góc và cạnh đối diện trong một tam giác",
+   "math_form": "So sánh các góc trong một tam giác khi biết độ dài các cạnh",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "So sánh được độ lớn các góc của một tam giác khi biết độ dài các cạnh của tam giác đó."
+  },
+  {
+   "id": "16ae5d7f-12a8-4a6b-8cd1-532ff6f6560c",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 3. Quan hệ giữa ba cạnh của một tam giác",
+   "math_form": "Kiểm tra ba độ dài có thể là ba cạnh của một tam giác",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Nhận biết được ba độ dài cho trước có thể là độ dài ba cạnh của một tam giác hay không dựa vào bất đẳng thức tam giác."
+  },
+  {
+   "id": "acb42a6e-bc73-4ff2-8cd7-e9b7b2a69b93",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 4. Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam giác",
+   "math_form": "Tính chất ba đường trung tuyến (trọng tâm) của tam giác",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất đồng quy của ba đường trung tuyến và tỉ lệ độ dài liên quan đến trọng tâm để giải quyết các bài toán hình học."
+  },
+  {
+   "id": "929dd621-ff47-4195-8015-07cb994b3438",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 5. Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác",
+   "math_form": "Tính chất ba đường trung trực (tâm đường tròn ngoại tiếp) của tam giác",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất ba đường trung trực của tam giác và khoảng cách từ giao điểm của chúng đến ba đỉnh để giải quyết bài toán liên quan."
+  },
+  {
+   "id": "293f7d9c-c0ef-4744-becf-561dd9fe444c",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 2. Quan hệ giữa đường vuông góc và đường xiên",
+   "math_form": "Vận dụng định lí để so sánh đường vuông góc và đường xiên",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được định lí về quan hệ giữa đường vuông góc và đường xiên để so sánh độ dài các đoạn thẳng kẻ từ một điểm đến một đường thẳng."
+  },
+  {
+   "id": "48c72c25-cd68-4cea-b387-d6cd9021d670",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 2. Quan hệ giữa đường vuông góc và đường xiên",
+   "math_form": "Nhận biết đường vuông góc, đường xiên, hình chiếu",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Nhận biết được đường vuông góc, đường xiên và hình chiếu của đường xiên kẻ từ một điểm nằm ngoài một đường thẳng đến đường thẳng đó."
+  },
+  {
+   "id": "e573e056-35f9-4717-aefb-bb3bc43d193e",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 3. Quan hệ giữa ba cạnh của một tam giác",
+   "math_form": "Ước lượng độ dài cạnh thứ ba của tam giác (bất đẳng thức tam giác)",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được bất đẳng thức tam giác để ước lượng hoặc giới hạn độ dài cạnh thứ ba của một tam giác khi biết hai cạnh còn lại."
+  },
+  {
+   "id": "61d4c54a-3493-4ec4-b575-1fd637bce2f0",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 4. Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam giác",
+   "math_form": "Tính chất ba đường phân giác (tâm đường tròn nội tiếp) của tam giác",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất ba đường phân giác của tam giác và khoảng cách từ giao điểm của chúng đến ba cạnh để giải quyết bài toán liên quan."
+  },
+  {
+   "id": "6d15d2c5-9408-409c-87e8-d8b2fffcaa14",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 5. Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác",
+   "math_form": "Tính chất ba đường cao (trực tâm) của tam giác",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất đồng quy của ba đường cao trong tam giác để chứng minh các quan hệ vuông góc hoặc giải quyết bài toán liên quan."
+  },
+  {
+   "id": "7a9cc087-9331-46db-b1f6-9728a3ee9547",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 9. Quan hệ giữa các yếu tố trong một tam giác",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Tổng hợp kiến thức về các yếu tố trong tam giác",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các kiến thức về quan hệ giữa các yếu tố trong tam giác để giải quyết các bài toán chứng minh hoặc tính toán."
+  }
+ ],
+ "questions": []
+}

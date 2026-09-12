@@ -1,0 +1,704 @@
+{
+ "lop": "7",
+ "chuong": 2,
+ "dang": [
+  {
+   "bai": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "cu": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn",
+   "moi": "Nhận biết số thập phân hữu hạn, vô hạn tuần hoàn và viết gọn bằng chu kì",
+   "yc": "Nhận biết được phân số nào viết được thành số thập phân hữu hạn hay vô hạn tuần hoàn và viết gọn được số thập phân vô hạn tuần hoàn bằng chu kì."
+  },
+  {
+   "bai": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "cu": null,
+   "moi": "Đổi phân số sang số thập phân và ngược lại",
+   "yc": "Viết được phân số dưới dạng số thập phân (hữu hạn hoặc vô hạn tuần hoàn) và viết được số thập phân hữu hạn, vô hạn tuần hoàn dưới dạng phân số tối giản."
+  },
+  {
+   "bai": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "cu": null,
+   "moi": "Bài toán nâng cao về số thập phân vô hạn tuần hoàn",
+   "yc": "Chứng minh được các đẳng thức có số thập phân vô hạn tuần hoàn và tìm được điều kiện để một phân số viết được dưới dạng số thập phân hữu hạn."
+  },
+  {
+   "bai": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "cu": "So sánh hai số thực",
+   "moi": "So sánh các số thập phân vô hạn tuần hoàn",
+   "yc": "So sánh và sắp xếp được các số thập phân hữu hạn, vô hạn tuần hoàn."
+  },
+  {
+   "bai": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "cu": "Làm tròn số với độ chính xác cho trước",
+   "moi": "Làm tròn số với độ chính xác cho trước",
+   "yc": "Làm tròn được số thập phân đến một hàng cho trước hoặc với độ chính xác cho trước."
+  },
+  {
+   "bai": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "cu": "Ước lượng kết quả phép tính bằng cách làm tròn",
+   "moi": "Ước lượng và bài toán thực tế về làm tròn số",
+   "yc": "Ước lượng được kết quả phép tính bằng cách làm tròn và vận dụng làm tròn số vào bài toán thực tế."
+  },
+  {
+   "bai": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "cu": "Nhận biết & ước lượng số vô tỉ",
+   "moi": "Nhận biết số vô tỉ, chứng minh một số là số vô tỉ",
+   "yc": "Nhận biết được số vô tỉ và chứng minh được một số cho trước (√2, √3, tổng của số hữu tỉ với số vô tỉ) là số vô tỉ."
+  },
+  {
+   "bai": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "cu": "Tính căn bậc hai số học của một số",
+   "moi": "Tính căn bậc hai số học của một số",
+   "yc": "Tính được căn bậc hai số học của một số tự nhiên là số chính phương, phân số hoặc số thập phân có dạng bình phương."
+  },
+  {
+   "bai": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "cu": null,
+   "moi": "Tìm căn bậc hai của một số",
+   "yc": "Tìm được các căn bậc hai (dương và âm) của một số không âm và nhận biết được số âm không có căn bậc hai."
+  },
+  {
+   "bai": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "cu": null,
+   "moi": "Tính giá trị biểu thức chứa căn bậc hai",
+   "yc": "Tính được giá trị của biểu thức có nhiều căn bậc hai số học kết hợp với các phép tính khác."
+  },
+  {
+   "bai": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "cu": null,
+   "moi": "Tìm x trong đẳng thức chứa căn bậc hai, x² = a",
+   "yc": "Tìm được x trong các đẳng thức dạng √x = a, x² = a và các biểu thức chứa căn bậc hai đơn giản."
+  },
+  {
+   "bai": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "cu": "Tính căn bậc hai số học bằng máy tính cầm tay",
+   "moi": "Tính căn bậc hai số học bằng máy tính cầm tay",
+   "yc": "Sử dụng được máy tính cầm tay để tính, làm tròn và so sánh căn bậc hai số học."
+  },
+  {
+   "bai": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về căn bậc hai số học",
+   "yc": "Vận dụng được căn bậc hai số học để giải bài toán thực tế (tính cạnh hình vuông khi biết diện tích...)."
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "cu": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ",
+   "moi": "Nhận biết số thực, kí hiệu và quan hệ giữa các tập hợp số",
+   "yc": "Nhận biết được số thực, phân biệt được số hữu tỉ với số vô tỉ và dùng đúng kí hiệu ∈, ∉, ⊂ với các tập hợp N, Z, Q, I, R."
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "cu": "Tìm số đối của một số thực",
+   "moi": "Tìm số đối của một số thực",
+   "yc": "Xác định được số đối của một số thực cho trước."
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "cu": "Biểu diễn số thực trên trục số",
+   "moi": "Biểu diễn số thực trên trục số",
+   "yc": "Biểu diễn được một số thực cho trước trên trục số."
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "cu": "So sánh hai số thực",
+   "moi": "So sánh các số thực",
+   "yc": "So sánh và sắp xếp được các số thực, kể cả số có chứa căn bậc hai, bằng biểu diễn thập phân hoặc bình phương hai vế."
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "cu": "Tính giá trị tuyệt đối và xác định dấu của một số thực",
+   "moi": "Giá trị tuyệt đối của số thực và biểu thức chứa giá trị tuyệt đối",
+   "yc": "Tính được giá trị tuyệt đối của một số thực, xác định được dấu và tính được giá trị biểu thức chứa dấu giá trị tuyệt đối."
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "cu": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối",
+   "moi": "Tìm x trong đẳng thức chứa giá trị tuyệt đối",
+   "yc": "Tìm được số thực x thoả mãn đẳng thức dạng |ax + b| = c và các đẳng thức có tổng các giá trị tuyệt đối bằng 0."
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "cu": null,
+   "moi": "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa giá trị tuyệt đối hoặc căn bậc hai",
+   "yc": "Tìm được giá trị lớn nhất, nhỏ nhất của biểu thức chứa dấu giá trị tuyệt đối hoặc căn bậc hai dựa vào |A| ≥ 0, √A ≥ 0."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 2",
+   "moi": "Bài tập tổng hợp chương 2",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 2 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "dang": "Toán thực tế"
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "dang": "Toán thực tế"
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "dang": "Toán tổng hợp"
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "dang": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "dang": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "bai": "Bài 3. Tập hợp các số thực",
+   "dang": "Nhận biết & ước lượng số vô tỉ"
+  }
+ ],
+ "chuyen": {
+  "p4bw": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "om96": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "0csc": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "s21f": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "qtmo": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "399v": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "aken": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "u0p9": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "8ic1": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "3a6w": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "bg8x": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "56g1": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "6p28": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "u4vc": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "sgf0": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "fzxc": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "srd4": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "02af": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "sotx": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "i106": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "oali": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "taex": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "kq5q": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "93z3": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "4r30": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "fsc4": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_6": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_2": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_4": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_0": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_3": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_1": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_5": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_7": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_8": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "c365": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "23_6": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "23_5": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "d343": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "30_9": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "0_10": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Đổi phân số sang số thập phân và ngược lại"
+  ],
+  "x31p": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Bài toán nâng cao về số thập phân vô hạn tuần hoàn"
+  ],
+  "mvz2": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Bài toán nâng cao về số thập phân vô hạn tuần hoàn"
+  ],
+  "gyeq": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Bài toán nâng cao về số thập phân vô hạn tuần hoàn"
+  ],
+  "7dhu": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Bài toán nâng cao về số thập phân vô hạn tuần hoàn"
+  ],
+  "5t8o": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Bài toán nâng cao về số thập phân vô hạn tuần hoàn"
+  ],
+  "hdli": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Làm tròn số với độ chính xác cho trước"
+  ],
+  "gmm8": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Làm tròn số với độ chính xác cho trước"
+  ],
+  "3r1v": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Làm tròn số với độ chính xác cho trước"
+  ],
+  "8xmk": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Ước lượng và bài toán thực tế về làm tròn số"
+  ],
+  "lxww": [
+   "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "Ước lượng và bài toán thực tế về làm tròn số"
+  ],
+  "vvq3": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Nhận biết số vô tỉ, chứng minh một số là số vô tỉ"
+  ],
+  "100d": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Nhận biết số vô tỉ, chứng minh một số là số vô tỉ"
+  ],
+  "1y9h": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "s2or": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "sq2g": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "rmk7": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "cjky": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "qez8": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "w3nf": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "gkok": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "fxsx": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "05_7": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "06_9": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_11": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_12": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_13": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_14": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_15": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_16": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_17": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_18": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_19": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_20": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_22": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_23": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_25": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_26": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_27": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_28": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_29": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "6_30": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm căn bậc hai của một số"
+  ],
+  "bdvs": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "bequ": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "5vc7": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "vna8": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "wl1d": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "lohy": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "cl9b": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "dsn7": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "iez4": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "07tg": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "c8x2": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "nswv": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "wb3m": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "lvz3": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "gdej": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "1mr6": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "klnd": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "0lzb": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "yv66": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "hd0x": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "w4tu": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "eflc": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "05_3": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "9g8g": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "p44x": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "r8pb": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "wxzd": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "lf44": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tính giá trị biểu thức chứa căn bậc hai"
+  ],
+  "th3m": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "rxrz": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "ru8f": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "vetr": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "xlek": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "dulp": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "wj29": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "zq79": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "b5o4": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "cpky": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "w0r7": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "i0ah": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "jdpj": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "z4px": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "a3uy": [
+   "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "Tìm x trong đẳng thức chứa căn bậc hai, x² = a"
+  ],
+  "qaje": [
+   "Bài 3. Tập hợp các số thực",
+   "So sánh các số thực"
+  ],
+  "t3kg": [
+   "Bài 3. Tập hợp các số thực",
+   "So sánh các số thực"
+  ],
+  "tuki": [
+   "Bài 3. Tập hợp các số thực",
+   "Giá trị tuyệt đối của số thực và biểu thức chứa giá trị tuyệt đối"
+  ],
+  "lb2b": [
+   "Bài 3. Tập hợp các số thực",
+   "Giá trị tuyệt đối của số thực và biểu thức chứa giá trị tuyệt đối"
+  ],
+  "x4zs": [
+   "Bài 3. Tập hợp các số thực",
+   "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa giá trị tuyệt đối hoặc căn bậc hai"
+  ],
+  "18ph": [
+   "Bài 3. Tập hợp các số thực",
+   "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa giá trị tuyệt đối hoặc căn bậc hai"
+  ],
+  "yxne": [
+   "Bài 3. Tập hợp các số thực",
+   "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa giá trị tuyệt đối hoặc căn bậc hai"
+  ],
+  "tsq3": [
+   "Bài 3. Tập hợp các số thực",
+   "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa giá trị tuyệt đối hoặc căn bậc hai"
+  ],
+  "7igc": [
+   "Bài 3. Tập hợp các số thực",
+   "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa giá trị tuyệt đối hoặc căn bậc hai"
+  ],
+  "vvj7": [
+   "Bài 3. Tập hợp các số thực",
+   "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa giá trị tuyệt đối hoặc căn bậc hai"
+  ],
+  "bgz6": [
+   "Bài 3. Tập hợp các số thực",
+   "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa giá trị tuyệt đối hoặc căn bậc hai"
+  ]
+ }
+}

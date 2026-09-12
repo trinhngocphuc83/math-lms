@@ -1,0 +1,44 @@
+{
+ "lop": "7",
+ "chuong": 8,
+ "dang": [
+  {
+   "bai": "Bài 1. Làm quen với biến cố",
+   "cu": "Nhận biết biến cố chắc chắn, biến cố không thể và biến cố ngẫu nhiên",
+   "moi": "Nhận biết biến cố chắc chắn, biến cố không thể, biến cố ngẫu nhiên",
+   "yc": "Phân loại được biến cố chắc chắn, biến cố không thể, biến cố ngẫu nhiên trong các tình huống gieo xúc xắc, rút thẻ, chọn bóng, thời tiết..."
+  },
+  {
+   "bai": "Bài 1. Làm quen với biến cố",
+   "cu": null,
+   "moi": "Liệt kê các kết quả thuận lợi cho biến cố",
+   "yc": "Liệt kê được các kết quả có thể xảy ra của phép thử và các kết quả làm cho biến cố xảy ra."
+  },
+  {
+   "bai": "Bài 2. Làm quen với xác suất của biến cố",
+   "cu": null,
+   "moi": "Xác suất của biến cố chắc chắn, biến cố không thể và các biến cố đồng khả năng",
+   "yc": "Nhận biết được xác suất của biến cố chắc chắn bằng 1, biến cố không thể bằng 0 và tính được xác suất của k biến cố đồng khả năng bằng 1/k."
+  },
+  {
+   "bai": "Bài 2. Làm quen với xác suất của biến cố",
+   "cu": "Tính xác suất của biến cố ngẫu nhiên trong một số trò chơi đơn giản",
+   "moi": "Tính xác suất của biến cố trong trò chơi gieo xúc xắc, rút thẻ, chọn bóng",
+   "yc": "Tính được xác suất của biến cố ngẫu nhiên trong các trò chơi đơn giản khi các kết quả đồng khả năng."
+  },
+  {
+   "bai": "Bài 2. Làm quen với xác suất của biến cố",
+   "cu": null,
+   "moi": "Bài toán thực tế về xác suất của biến cố",
+   "yc": "Vận dụng được xác suất của biến cố để trả lời câu hỏi trong tình huống thực tế (dự báo, chọn ngẫu nhiên học sinh, sản phẩm...)."
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "cu": "Tổng hợp về biến cố và xác suất",
+   "moi": "Bài tập tổng hợp chương 8",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 8 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

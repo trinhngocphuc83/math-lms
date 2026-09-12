@@ -1,0 +1,105 @@
+{
+ "question_categories": [
+  {
+   "id": "63ed1a88-7717-40cb-adb1-ce3d4ed07093",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 4. Phép nhân đa thức một biến",
+   "math_form": "Nhân đa thức với đa thức",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép nhân đa thức với đa thức một biến."
+  },
+  {
+   "id": "5f5bea4d-3cd7-48cd-97ca-2064451bcec3",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 2. Đa thức một biến",
+   "math_form": "Tìm nghiệm của đa thức một biến",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Xác định được nghiệm của đa thức một biến trong các trường hợp đơn giản."
+  },
+  {
+   "id": "a05d4771-8b65-4e3e-8886-1b9006006cc2",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 1. Biểu thức đại số",
+   "math_form": "Tính giá trị của biểu thức đại số tại các giá trị cho trước của biến",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của một biểu thức đại số khi biết giá trị cho trước của các biến."
+  },
+  {
+   "id": "cbed27ed-7deb-43de-b52d-04598d7afa66",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 4. Phép nhân đa thức một biến",
+   "math_form": "Nhân đơn thức với đa thức",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép nhân đơn thức với đa thức một biến."
+  },
+  {
+   "id": "9e4942c2-1540-4bcc-8293-bf9cfdf17e65",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 2. Đa thức một biến",
+   "math_form": "Nhận biết đa thức một biến, xác định bậc, hệ số cao nhất, hệ số tự do",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Nhận biết được đa thức một biến và xác định được bậc, hệ số cao nhất, hệ số tự do của đa thức đó."
+  },
+  {
+   "id": "07df06ff-d492-4a5a-abc7-b4d7b8bc499c",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 3. Phép cộng và phép trừ đa thức một biến",
+   "math_form": "Trừ hai đa thức một biến",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép trừ hai đa thức một biến."
+  },
+  {
+   "id": "6899827a-44bc-4873-9b05-3684c7065218",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 1. Biểu thức đại số",
+   "math_form": "Viết biểu thức đại số theo yêu cầu",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Viết được biểu thức đại số biểu thị các đại lượng trong một tình huống thực tiễn đơn giản."
+  },
+  {
+   "id": "5b4946f8-d832-4caf-8c27-0272080f7462",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 5. Phép chia đa thức một biến",
+   "math_form": "Chia đa thức cho đa thức (chia hết và chia có dư)",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép chia đa thức một biến cho đa thức một biến trong trường hợp chia hết và chia có dư."
+  },
+  {
+   "id": "cb780ab4-821b-4ae8-b788-04e5e608f72d",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 3. Phép cộng và phép trừ đa thức một biến",
+   "math_form": "Cộng hai đa thức một biến",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép cộng hai đa thức một biến."
+  },
+  {
+   "id": "0a115f73-1386-41c7-b6bb-f36e3b0a807f",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 7. Biểu thức đại số và đa thức một biến",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Tổng hợp các phép toán với đa thức một biến",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Thực hiện được các phép tính cộng, trừ, nhân, chia đa thức một biến trong các bài toán tổng hợp."
+  }
+ ],
+ "questions": []
+}

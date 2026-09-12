@@ -1,0 +1,2142 @@
+{
+ "question_categories": [
+  {
+   "id": "cd13b1be-e0b2-4382-b0fa-d5bce62235b7",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc làm tròn một số thập phân với độ chính xác cho trước."
+  },
+  {
+   "id": "9eef2307-26c9-443a-b9e1-edec31d4b4a6",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến làm tròn số và ước lượng kết quả."
+  },
+  {
+   "id": "3f948b59-d8e0-449a-a758-b1254e7cf7ef",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Tính được căn bậc hai số học của một số thập phân hoặc số tự nhiên là số chính phương."
+  },
+  {
+   "id": "3b7ee0aa-5d1e-4081-bc95-22e876d4f706",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Vận dụng được khái niệm căn bậc hai số học để giải quyết một số bài toán thực tiễn liên quan đến diện tích và kích thước hình học."
+  },
+  {
+   "id": "08d4cc0a-98f7-4274-807a-f551340946a9",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tìm số đối của một số thực",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Xác định được số đối của một số thực cho trước."
+  },
+  {
+   "id": "d2d0dafa-2120-4cf8-8070-eda37b4a51f1",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Biểu diễn số thực trên trục số",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Biểu diễn được một số thực cho trước trên trục số."
+  },
+  {
+   "id": "fde219ae-5804-445e-bc42-8fc1f5829640",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "So sánh được hai số thực cho trước bằng cách sử dụng biểu diễn thập phân của chúng."
+  },
+  {
+   "id": "dd3f4346-55dd-4b2d-b821-65066fb08f3c",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Tìm được số thực chưa biết thỏa mãn điều kiện cho trước về giá trị tuyệt đối."
+  },
+  {
+   "id": "d51e711a-4df8-4899-9965-bdd04058f420",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-07-20T16:29:43.113108+00:00",
+   "yeu_cau_can_dat": "Thực hiện được các phép tính và biến đổi trên tập hợp số thực để giải quyết các bài toán tổng hợp."
+  },
+  {
+   "id": "84ad3bb8-e3c0-44e1-aa94-538c8491a693",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Làm tròn số với độ chính xác cho trước",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc làm tròn một số thực với độ chính xác cho trước."
+  },
+  {
+   "id": "6b14191f-06a6-4956-b34a-a54413b3f5a8",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính căn bậc hai số học của một số",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Tính được căn bậc hai số học của một số thực không âm cho trước."
+  },
+  {
+   "id": "3d8c1582-f6d1-4ee2-9cd4-017902528c03",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết & ước lượng số vô tỉ",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Nhận biết được số vô tỉ và thực hiện được việc ước lượng giá trị của một số vô tỉ trong những trường hợp đơn giản."
+  },
+  {
+   "id": "8d59c408-959d-4573-900a-987590ec20d5",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Nhận biết và viết gọn được số thập phân vô hạn tuần hoàn bằng cách sử dụng chu kì."
+  },
+  {
+   "id": "9bb08f40-b930-433a-98c6-16edb174ec5d",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "So sánh hai số thực",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "So sánh được hai số thập phân vô hạn tuần hoàn bằng cách viết chúng dưới dạng số thập phân."
+  },
+  {
+   "id": "3ce960ff-9a41-4c7a-9829-c83dc0f9b458",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Ước lượng kết quả phép tính bằng cách làm tròn",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc ước lượng kết quả phép tính bằng cách làm tròn các số trong phép tính."
+  },
+  {
+   "id": "8a9b42ba-7fe6-454e-9ab8-9f4d2c2c22cf",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Nhận biết & ước lượng số vô tỉ",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Nhận biết được số vô tỉ và ước lượng được giá trị của một số vô tỉ."
+  },
+  {
+   "id": "17bb2aad-9fa0-436c-85cf-7de1fd0f3626",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học bằng máy tính cầm tay",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Sử dụng được máy tính cầm tay để tính và làm tròn căn bậc hai số học của một số."
+  },
+  {
+   "id": "31bbda89-e658-44a2-84be-f510a71403a7",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Nhận biết được số thực và phân biệt được số hữu tỉ với số vô tỉ trong tập hợp các số cho trước."
+  },
+  {
+   "id": "72eae2a3-3ce5-46e3-98b3-af35fdf64313",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực",
+   "created_at": "2026-07-20T16:13:27.273202+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị tuyệt đối của một số thực và xác định được dấu của số thực đó."
+  },
+  {
+   "id": "527a5e7b-2494-4418-b89b-eeb37d2b4d96",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến việc tính toán trên tập hợp số thực."
+  },
+  {
+   "id": "b7c3a9d0-7e9b-44d3-9eb5-d0a093cc00ae",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 2. Số thực",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 2",
+   "created_at": "2026-09-12T13:22:55.079019+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức của chương 2 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "questions": [
+  {
+   "id": "d2e2891d-954d-4d9d-bd5d-3f00ac05d1df",
+   "question_id": "CH_1784565178506_zi07",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "a184047f-b3d2-40f9-970a-68150e45f2f3",
+   "question_id": "CH_1784565178506_h47s",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "c129d0bd-935c-4349-8a38-339366d617ec",
+   "question_id": "CH_1784565178506_pat0",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "5796d948-a854-4489-8eb1-436360de5552",
+   "question_id": "CH_1784565178507_e0yr",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "aeb9750a-af39-40c6-b6f8-cabd3f9e73ce",
+   "question_id": "CH_1784565178507_gse3",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "ad4d6e1d-2d23-401c-9c20-2be87dfb2314",
+   "question_id": "CH_1784565178507_3qke",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "e3c7aac3-922d-4886-80b3-c622380b4d37",
+   "question_id": "CH_1784565178507_r9b0",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "bff95fd7-e3b0-47fd-9971-3c5df28fe99a",
+   "question_id": "CH_1784566154465_dhwk",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "56894196-073f-48f4-b61f-51ecbb3909ed",
+   "question_id": "CH_1784565178506_wx5q",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "0550bb68-44a4-48a8-b967-d85255e2faa4",
+   "question_id": "CH_1784565178506_gssm",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "7d897a47-1783-4273-8295-cc07ba324b90",
+   "question_id": "CH_1784564986657_e6xk",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "cfd242eb-8a99-4dfd-a280-ebaa8f70f434",
+   "question_id": "CH_1784564986657_ndme",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tìm số đối của một số thực"
+  },
+  {
+   "id": "49924d49-0ab8-40f7-b635-8ead4c74e061",
+   "question_id": "CH_1784564986657_qjmm",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "9ba623fc-1e2b-4ecf-bcd5-c5f25a3f2b4a",
+   "question_id": "CH_1784564986657_tp3m",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "b70f985e-34be-42e9-8181-6356eefb9384",
+   "question_id": "CH_1784564986657_tuki",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "904c5d64-cf7c-4ed6-a38f-5ce650e7cb5d",
+   "question_id": "CH_1784564986657_s8am",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "03836c30-3683-4aa6-9371-3826ac3a08c4",
+   "question_id": "CH_1784565178507_ju6h",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "627ffefd-232b-4c22-b930-dadd932b79e7",
+   "question_id": "CH_1784565178507_0nzs",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "814efafe-fdfb-4bf5-8fae-fa531acdc08e",
+   "question_id": "CH_1784565178507_5fgb",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "f42c7ab7-beb0-49e6-9f0e-a7adaeab6d3a",
+   "question_id": "CH_1784565178507_yxfb",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "0fff8bcd-1a8b-4fc8-8295-c1874da52f48",
+   "question_id": "CH_1784565178507_jvsq",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "4e914975-9aa3-400c-87c2-7a4c5fadd54b",
+   "question_id": "CH_1784565178507_kxte",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "fadc91e8-ce44-46b0-b1ae-c76c50b528c6",
+   "question_id": "CH_1784565178507_h05r",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "206f4b16-b7b5-4fd7-88dc-f15404c5cf0f",
+   "question_id": "CH_1784565178507_15ws",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "71ced39c-5c28-47b3-b87c-6ccfe282ef31",
+   "question_id": "CH_1784565178507_wr7n",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "2a8cc687-15b7-4281-a3f0-f19970159b19",
+   "question_id": "CH_1784565178507_voop",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "b3af3c60-fb7a-44db-9c72-c5074fc4dfbb",
+   "question_id": "CH_1784565178507_j6ub",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "0e79f21c-b3ec-4448-a1dc-333ce1292914",
+   "question_id": "CH_1784565178507_h3j0",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "4349052b-6005-4c36-a788-71443125290b",
+   "question_id": "CH_1784565178507_gc4h",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "1f7f9f9e-33da-4222-80ba-73a67c72a752",
+   "question_id": "CH_1784565178507_bdvs",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "fa072078-987c-46f1-9138-44b303a47c35",
+   "question_id": "CH_1784565178507_bequ",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "ad95ad28-09c6-4e5d-b203-f9c5e6bb360f",
+   "question_id": "CH_1784565178507_5vc7",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "0be51ac5-0583-41ce-adbe-4dbbfcc4d48d",
+   "question_id": "CH_1784565178507_vna8",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "a7fb433d-63b6-48df-b0e6-86a30fd57092",
+   "question_id": "CH_1784565178507_ya0s",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "b82a2b16-a629-4871-843c-a035a570db24",
+   "question_id": "CH_1784565178507_wl1d",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "a018fae0-ce98-40d9-be34-b942d05a4c34",
+   "question_id": "CH_1784565178507_lohy",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "7723782a-5f48-47f0-b281-fd416b126c6a",
+   "question_id": "CH_1784565178507_cl9b",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "42abc213-7fcb-489b-a36d-9b0edc2d950c",
+   "question_id": "CH_1784565178507_yskp",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "1aef70b0-88fc-4123-a90d-bba65fc93028",
+   "question_id": "CH_1784565178507_1rte",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "7377b812-32c7-481f-9df5-d59dd8634b2d",
+   "question_id": "CH_1784565178507_9i6m",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "83918809-015f-41c8-a636-defb870539b9",
+   "question_id": "CH_1784565178507_dsn7",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "019bd60a-c70a-44cf-9b54-ae7b843f36a3",
+   "question_id": "CH_1784565178507_iez4",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "fba18e9c-6ef1-4721-bc41-c53f53780932",
+   "question_id": "CH_1784565178507_07tg",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "67af7fe2-632b-4327-a08e-bb392539691f",
+   "question_id": "CH_1784565178507_c8x2",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "16a71025-6664-4ba9-89c5-185c8c22d1e3",
+   "question_id": "CH_1784565178507_nswv",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "e80bbb62-5e51-424e-9b3c-ed039a46fd15",
+   "question_id": "CH_1784565178507_wb3m",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "4a5ab671-6115-435e-b581-38b006956e78",
+   "question_id": "CH_1784565178507_lvz3",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "7c0841da-ac1e-4f4a-b9a8-d2173a7338a8",
+   "question_id": "CH_1784565178507_gdej",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "88f4a5f2-1b68-4efd-8826-8601ca46ef6b",
+   "question_id": "CH_1784565178507_1415",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "aa507543-147b-4553-8468-ec454efcbfd0",
+   "question_id": "CH_1784565178507_5uvf",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "a5ce205f-13e3-4cd4-aa40-4e0248882d02",
+   "question_id": "CH_1784565178507_kfgz",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "8e7feccd-5d1d-4456-81af-2131384d31ff",
+   "question_id": "CH_1784565178507_wzmf",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "845424f4-31c9-49b3-b27b-5b6230cfab65",
+   "question_id": "CH_1784565178507_0dzl",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "18d3eee6-1679-40e3-ad35-b67fc54ceb9b",
+   "question_id": "CH_1784565178507_7u5i",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "270ea87d-9fd4-4d2b-b6b6-41a4fcda688d",
+   "question_id": "CH_1784565178507_mm0h",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "d69ac564-7a13-47d3-b4c7-77d2d873eb23",
+   "question_id": "CH_1784565178507_rusg",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "9841f7b2-1396-41af-93c4-49a651dd75c9",
+   "question_id": "CH_1784565178507_6qr3",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "61c19172-5729-456d-a7e6-ec846d08d8cd",
+   "question_id": "CH_1784565343266_p4bw",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "66577102-958a-4b23-a227-afa7e3258e2e",
+   "question_id": "CH_1784565178507_umxs",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "5d7cef36-13cb-407e-99b7-1cfbf8eac69a",
+   "question_id": "CH_1784565178507_vuxc",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "78a60953-9374-4fd7-9127-78b85f0c3d3f",
+   "question_id": "CH_1784565343266_4sjt",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "fe7a2bc8-8f42-49c7-a940-9b7e2860222d",
+   "question_id": "CH_1784565343266_stp2",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "ea88afd5-a0dc-4cef-99c9-431794355808",
+   "question_id": "CH_1784565343266_om96",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "d8eba7e5-5f07-4e27-928d-5f02d0a4f4d9",
+   "question_id": "CH_1784565343266_x31p",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "630a6a81-6b75-4679-99fe-2d62a980ca4d",
+   "question_id": "CH_1784565343266_9bmj",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "f2706b93-c881-43e2-950c-68ee0b8dcd05",
+   "question_id": "CH_1784565343266_q4pb",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "c2a4b856-7241-4f16-a007-70710ab5b133",
+   "question_id": "CH_1784565343266_l8v5",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "336be72f-c5c8-4889-8e8c-d791a6a991ce",
+   "question_id": "CH_1784565343266_0csc",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "001bc0a2-5cf2-4ca6-832d-162c6abe6f51",
+   "question_id": "CH_1784565343266_1z8x",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "e2ec8ffb-6a30-4af5-8f28-bf960ee8e351",
+   "question_id": "CH_1784565343266_v644",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "54c456cc-d3d8-49b2-8dff-7e9cf1f7ef0f",
+   "question_id": "CH_1784565343266_7h9s",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "33ff0506-cfb3-45fb-8c5e-654e02dee021",
+   "question_id": "CH_1784565343266_e5g4",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "c1b3e2c1-9cea-4251-a523-f86de8b8d461",
+   "question_id": "CH_1784565343266_ljt9",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "c48c6b5f-a938-45d9-bcd8-d5876dfde6df",
+   "question_id": "CH_1784565343266_u7li",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Ước lượng kết quả phép tính bằng cách làm tròn"
+  },
+  {
+   "id": "0110090e-128a-4615-9719-53d0819f58c6",
+   "question_id": "CH_1784565343266_8xmk",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "437fa687-dacf-4e19-b21a-2cf798a62f08",
+   "question_id": "CH_1784565343266_msye",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "1b357f0b-f7fa-43aa-9bde-5f7e3b95be66",
+   "question_id": "CH_1784566154465_1y9h",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "75f25aa5-1848-4f49-b141-40eedf773fe3",
+   "question_id": "CH_1784566154465_s21f",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "a4d41ad4-d9fd-4591-999e-4ad9c8412380",
+   "question_id": "CH_1784566154465_qtmo",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "48e5a3b1-9b86-45c5-9073-8bb9b1545652",
+   "question_id": "CH_1784566154465_399v",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "7a437be2-7272-4b4a-819c-932cd6557d74",
+   "question_id": "CH_1784566154465_aken",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "bc1a2815-daa7-46ce-811a-84f00dadbcbc",
+   "question_id": "CH_1784565343266_u0p9",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "b433cc4d-0c29-4eac-8a7c-aaab3d7c2620",
+   "question_id": "CH_1784566154465_8ic1",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "a4b5fae3-fedc-4841-936d-1351ca34671a",
+   "question_id": "CH_1784566154465_3a6w",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "646abc09-073c-4765-a438-8c9f60d88b32",
+   "question_id": "CH_1784566154465_bg8x",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "379f4d3a-f630-449e-8fd7-61e34cbb71ca",
+   "question_id": "CH_1784566154465_56g1",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "e6245967-a2f3-4050-a55e-2b7ce54bb427",
+   "question_id": "CH_1784566154465_6p28",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "d86e5f66-72fa-4618-9827-43cd3c7d26c3",
+   "question_id": "CH_1784566154465_u4vc",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "1a57ca57-122d-4ebb-abe2-e3edd3196b82",
+   "question_id": "CH_1784566154465_sgf0",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "f434b22e-b014-47b1-9bd7-843413e5f6f9",
+   "question_id": "CH_1784566154465_fzxc",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "8dd8f97d-2d09-4093-8548-3afeeb4656be",
+   "question_id": "CH_1784566154465_ecxt",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "13da33c2-0b7a-4fd8-9de0-b4e6c9fa1513",
+   "question_id": "CH_1784566154465_srd4",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "9f2b9597-6360-4d5b-aa67-5ff44958956a",
+   "question_id": "CH_1784566154465_02af",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "3d6cbad6-e1ba-43b6-8b1f-8b5f19c15c91",
+   "question_id": "CH_1784566154465_sotx",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "9f377d1f-4900-4272-b965-7a75c5b59424",
+   "question_id": "CH_1784566154465_mvz2",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "989d1e7b-5e4b-4330-aec1-037a9e2f867c",
+   "question_id": "CH_1784566154465_gyeq",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "bdc5093b-ae28-4f3a-a38f-4e057173c15f",
+   "question_id": "CH_1784566154465_xkpk",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "e957d946-514d-4360-ad19-164fc35d7319",
+   "question_id": "CH_1784566154465_i106",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "51c0f54b-cf0f-416d-bafd-e43a405c89f1",
+   "question_id": "CH_1784566154465_s2or",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "9669f901-e01d-442c-94da-16ab5a49139e",
+   "question_id": "CH_1784566154465_dc62",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "01b4aea0-3a66-4412-a0e6-c449a537e5a9",
+   "question_id": "CH_1784566154465_0oas",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "9afd95ff-4b32-4bbb-9ab7-cb7b4e4f965f",
+   "question_id": "CH_1784566154465_m6bs",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "c77f40e6-cc51-49c0-a2df-dc1887dea3a5",
+   "question_id": "CH_1784566154465_ltso",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "f8bef39d-a272-4cbd-8042-e6c91ae30a49",
+   "question_id": "CH_1784566154465_p0nb",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "6fd9b7f9-8970-4ba8-b9f9-6b39de0cfd3c",
+   "question_id": "CH_1784566154465_4jqu",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "987c0bef-dca8-4bf2-a0b8-99625575210a",
+   "question_id": "CH_1784566154465_sq2g",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "8a398d0a-d753-4286-8fc3-517703d9ad7f",
+   "question_id": "CH_1784566154465_2kg4",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "d156e242-ebdf-4b33-bdbe-d8bbba6e8ee6",
+   "question_id": "CH_1784566154465_97w2",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "7c1ccb8c-937d-4cb0-b33b-25fd770e56bf",
+   "question_id": "CH_1784566154465_7dhu",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "c9e3f61f-3f01-436f-9e0f-2de3c8ee09fb",
+   "question_id": "CH_1784566154465_5t8o",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "0d2537c2-80b5-4261-a27e-b4f9730be925",
+   "question_id": "CH_1784566154465_rmk7",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "1ccc2b61-79da-47d2-a7e2-4bfd8f04c744",
+   "question_id": "CH_1784566154465_cjky",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "cbffcf45-9159-460e-b4eb-04d66b7e8c16",
+   "question_id": "CH_1784566154465_1mr6",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "941a7092-f6d5-4ae6-8665-fddd5499a698",
+   "question_id": "CH_1784566154465_klnd",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "b081d92a-e1f9-4480-8632-7dc18abb348b",
+   "question_id": "CH_1784566154465_0lzb",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "e050ed4c-db64-4614-bf3c-81ef796b509d",
+   "question_id": "CH_1784566154465_th3m",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "6c8efe71-0f85-4154-b6aa-07904062c5aa",
+   "question_id": "CH_1784566154465_rxrz",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "b8447739-77ca-4ae5-b508-a4a25a4d952a",
+   "question_id": "CH_1784566154465_ru8f",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "65f40f1b-510f-4a4d-b6f2-6dc1bccce320",
+   "question_id": "CH_1784566154465_cdd6",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "8142a206-8539-405f-9c41-7a5b373b3950",
+   "question_id": "CH_1784566154465_t3kg",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Nhận biết & ước lượng số vô tỉ"
+  },
+  {
+   "id": "488ca907-786d-4fe9-9593-b11bc2ba2139",
+   "question_id": "CH_1784566154465_kja3",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "ac3cd32e-dc32-43cf-ba2b-97bf572462c6",
+   "question_id": "CH_1784566154465_z879",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "7788b4f0-4c51-41e4-8085-8ff68f23380f",
+   "question_id": "CH_1784566154465_9g8g",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "cb22fdcb-f46c-423b-b3f1-b68e65ac9375",
+   "question_id": "CH_1784566154465_p44x",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "9f12ae68-ed57-412b-8501-b494c0ff22c5",
+   "question_id": "CH_1784566154465_yv66",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "a11824a1-6aaa-4ea0-a6b9-57ef3235fa29",
+   "question_id": "CH_1784566313064_hd0x",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "83980415-5a18-4ec7-94a0-da3a334afebe",
+   "question_id": "CH_1784566313064_w4tu",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "f95dd6ca-4210-4863-9e44-501cfefa4ba0",
+   "question_id": "CH_1784566313064_vetr",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "81fe685f-5a1f-4f30-b9c9-106e8dbca04e",
+   "question_id": "CH_1784566313064_sgll",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Nhận biết & ước lượng số vô tỉ"
+  },
+  {
+   "id": "9495a7f0-d0af-4349-8d9e-864dccf63188",
+   "question_id": "CH_1784566313064_lq58",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Nhận biết & ước lượng số vô tỉ"
+  },
+  {
+   "id": "b6c47828-1db4-4f85-9786-fdd71cb236e8",
+   "question_id": "CH_1784566313064_xlek",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "93ba2149-15b9-48e6-ac91-1b3d76318f5a",
+   "question_id": "CH_1784566313064_dulp",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "9382e814-d283-49fb-8b27-1752d8328d6f",
+   "question_id": "CH_1784566313064_qez8",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "fdc851b7-7f07-4489-a125-9678d0300114",
+   "question_id": "CH_1784566313064_wj29",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "fe0aec02-bb3b-4ef3-aea2-fcd390b1a4a2",
+   "question_id": "CH_1784566313064_zq79",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "78926f9b-e519-4551-8509-b3a1fe2d9d85",
+   "question_id": "CH_1784566313064_b5o4",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "ecbbf514-3ecd-4a95-a48f-852b040f7d9d",
+   "question_id": "CH_1784566313064_tn0j",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "bba2cd52-86c9-4b00-8546-aa0fef5f17a7",
+   "question_id": "CH_1784566313064_qaje",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "a0938b65-fb33-4cff-ad28-c967ed072ac0",
+   "question_id": "CH_1784566313064_8f4y",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học bằng máy tính cầm tay"
+  },
+  {
+   "id": "4c50e49a-b8d9-426b-bfcf-508c3ab9c342",
+   "question_id": "CH_1784566313064_hh8t",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "802093e3-5598-4980-b9b0-de1afa941ecc",
+   "question_id": "CH_1784566313064_w3nf",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "890557c4-f751-474b-b573-7fde3917dca1",
+   "question_id": "CH_1784566313064_jdpj",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "e926a938-af91-4e68-b246-283dd6cf41c5",
+   "question_id": "CH_1784566313064_i0ah",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "2604bf55-44cc-447e-97fa-800dd47b5508",
+   "question_id": "CH_1784566313064_0dse",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Nhận biết & ước lượng số vô tỉ"
+  },
+  {
+   "id": "5a118844-96ca-4bc3-808f-cf1bf4b0f291",
+   "question_id": "CH_1784566313064_z4px",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "31fc9496-2349-4466-b515-77f0648dbb4c",
+   "question_id": "CH_1784566798026_vx9e",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "e309b119-4bb7-48e0-8e39-8cc7957fb730",
+   "question_id": "CH_1784566313064_v5x3",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Nhận biết & ước lượng số vô tỉ"
+  },
+  {
+   "id": "aafe526b-0b39-4bfa-a0ce-18926115889b",
+   "question_id": "CH_1784566798026_u5wi",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "f46191d5-31cf-4a4b-b3e5-4015bcae16d5",
+   "question_id": "CH_1784566798026_8lkm",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "4d2889a8-120e-43a7-83f6-fe8ca72c1863",
+   "question_id": "CH_1784566798026_0r2p",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "bc99afe7-1f07-4965-ae5d-85d893ff2ab8",
+   "question_id": "CH_1784566798026_4ex3",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "743ad8ed-2366-4324-b8a8-8cd6c4b0851b",
+   "question_id": "CH_1784566798026_a0j2",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "0bc3561d-3795-4178-ad77-6ae0883ed500",
+   "question_id": "CH_1784566798026_bfrn",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "d8b5a17a-d3f2-406e-b728-9d677b784b45",
+   "question_id": "CH_1784566798026_m8mm",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "b6aa400e-0f8e-4e85-b2a3-b2d551a25116",
+   "question_id": "CH_1784566798026_wzdl",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "69bc86d2-2968-4e8c-9222-087bfebcfcb2",
+   "question_id": "CH_1784566798026_n6yw",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "641b19ff-176f-495c-86d1-1e955fc5708a",
+   "question_id": "CH_1784566798026_2ikg",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "5738b848-bac1-4969-b079-949d74878c51",
+   "question_id": "CH_1784566798026_0ohz",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "e8dc4d4a-15ae-47ac-9546-c4a403b4f1da",
+   "question_id": "CH_1784566798026_drer",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "caaf858c-3cff-49f3-b3da-dd480a5343ce",
+   "question_id": "CH_1784566798026_34pr",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tìm số đối của một số thực"
+  },
+  {
+   "id": "450cc265-28e4-4798-9caf-4f7a912c661c",
+   "question_id": "CH_1784566798026_vb4t",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tìm số đối của một số thực"
+  },
+  {
+   "id": "79475ef7-812f-4df1-a71c-9b3c52f268a0",
+   "question_id": "CH_1784566798026_klbo",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tìm số đối của một số thực"
+  },
+  {
+   "id": "4a2b7718-99c5-4e95-bc63-b143bebec498",
+   "question_id": "CH_1784566798026_gabz",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "3adbcb9b-ca31-477d-ad9e-92077cc0c5cd",
+   "question_id": "CH_1784566798026_dll6",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "4aa943d8-27bf-447c-abef-fadb6540d011",
+   "question_id": "CH_1784566798026_9r7g",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "b891dedd-ad46-4bc8-a919-9dcdb43f9739",
+   "question_id": "CH_1784566798026_uqto",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "777036c6-2b74-4adb-937c-4fa95e1cfb8d",
+   "question_id": "CH_1784566798026_h0d7",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "2e6185f4-6248-492e-aa82-98288950a89b",
+   "question_id": "CH_1784566798026_t7gn",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "faef76c5-61f1-4780-8098-ec904addb33e",
+   "question_id": "CH_1784566798026_raxu",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "24696ce4-b2f9-4551-a66b-542fdfd1e544",
+   "question_id": "CH_1784566798026_4wvq",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "fe6cc3ea-8712-40ee-8c6c-d051b52c540f",
+   "question_id": "CH_1784566798026_oy9m",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "2b094346-1f69-44d8-9964-dd55859525d5",
+   "question_id": "CH_1784566798026_wer8",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "ceb1f54d-fbe3-4bb9-ac87-1c9d0c919532",
+   "question_id": "CH_1784566798026_cili",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "1998dcf4-5e3a-4db6-a3b1-b9e232ace3d8",
+   "question_id": "CH_1784566798026_8xzw",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "c75da99a-06b3-4256-a65b-218fc51a8f54",
+   "question_id": "CH_1784566798026_5uf8",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "2e4fea82-de30-410b-8afc-4a3a083b0a28",
+   "question_id": "CH_1784566798026_t8ge",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "3cf44543-b0d6-4d53-bf18-c84a67546293",
+   "question_id": "CH_1784566798026_6w17",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "25e3407b-6d08-4014-b6d1-e9b5d22883ca",
+   "question_id": "CH_1784567003410_9v10",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "0730afdc-8be4-460d-8e26-cfc729152bfa",
+   "question_id": "CH_1784566798026_rvg0",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "c0d12a33-43e1-44ab-8935-2ab9fc36afd9",
+   "question_id": "CH_1784566798026_tsq3",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "20b2d249-5e54-4e90-adf4-c8caca3b6914",
+   "question_id": "CH_1784565178507_j6m6",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "a2dc355c-1f57-42ac-ba47-110685500117",
+   "question_id": "CH_1784566798026_7igc",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "228a5224-b600-476d-b02d-720f54c9f72e",
+   "question_id": "CH_1784566798026_ln26",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tìm số đối của một số thực"
+  },
+  {
+   "id": "f466d30b-c97f-45d6-bbf7-146d1c7cba65",
+   "question_id": "CH_1784566798026_dav3",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tìm số đối của một số thực"
+  },
+  {
+   "id": "190a9f97-ef14-4a79-9696-73f34434755f",
+   "question_id": "CH_1784566798026_y2qa",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "bbc20c4e-43f3-4b62-a7e0-31eb30024213",
+   "question_id": "CH_1784566798026_ul5l",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "ca0ffbf3-c286-41c0-a91b-1538d581e7d9",
+   "question_id": "CH_1784566798026_y61y",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "3938a00b-4389-47b8-80f9-86e42f939166",
+   "question_id": "CH_1784567003410_fpe6",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "5ae0c8ec-d012-4dc9-a140-e616f835e781",
+   "question_id": "CH_1784567003410_kdbc",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "3ecc62b1-b391-416d-a0f8-998b62e70b04",
+   "question_id": "CH_1784567003410_vdnn",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "7d678f1b-4738-45af-99d3-97552d3527ad",
+   "question_id": "CH_1784567003410_x4zs",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "ae01e707-ac4b-43e9-9434-70466d0138ec",
+   "question_id": "CH_1784567003410_c1hj",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "67398c35-92da-40a1-bd0f-7e6294a7dfea",
+   "question_id": "CH_1784567003410_qqe3",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "4774edda-52cb-4848-a76f-cf1028755368",
+   "question_id": "CH_1784567003410_q1w5",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "3e56beb1-6aed-44ef-a7ed-9e44d898b03b",
+   "question_id": "CH_1784567003410_3zc1",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "a732f157-3455-4d6b-95c9-cdecb44d4e17",
+   "question_id": "CH_1784567003410_ni9q",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "eb6431d8-3189-44d6-a52f-0b7018e818b8",
+   "question_id": "CH_1784567003410_js0b",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "6a05e7b5-a82c-4514-97d4-c4db11b071b1",
+   "question_id": "CH_1784567003410_vvj7",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "273ca252-bcc6-4a50-bdd8-c7470ab7322b",
+   "question_id": "CH_1784567003410_c9qb",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "a51b1e18-f8a0-40a6-bc78-017494ec8b34",
+   "question_id": "CH_1784567003410_n3ii",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "bd45f8ed-6fb3-4849-942d-f937e5a86d20",
+   "question_id": "CH_1784567003410_2xsy",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "d4f92606-a4ae-436e-8ddb-05696545abe0",
+   "question_id": "CH_1784567003410_r8pb",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "be9c569a-feda-4da5-831a-43c3bc775a94",
+   "question_id": "CH_1784567003410_lxww",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "a21989e2-747f-48b2-aefa-7c17fa945e54",
+   "question_id": "CH_1784567003410_hdli",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "df5f55ca-410b-4ba1-b80e-4756974e7dda",
+   "question_id": "CH_1784567003410_wxzd",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "f49a6765-a325-43ed-aeff-9d0985b50f3c",
+   "question_id": "CH_1784567003410_lf44",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "2bcb215e-248e-40eb-be8c-b5271ebb2cb2",
+   "question_id": "CH_1784567003410_8vvk",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "c01f4fd2-1dde-4fcb-91fb-91654b125672",
+   "question_id": "CH_1784567003410_y349",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "8d3c358d-dac6-42c3-9839-3869e96e19f4",
+   "question_id": "CH_1784567003410_18ph",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "babb4856-4ec3-4db4-a66b-a4eeb6a28a7d",
+   "question_id": "CH_1784567003410_d1w8",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "d267a798-7ce7-48f9-95a5-a025a81b64b4",
+   "question_id": "CH_1784567003410_23ni",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "324930d2-4f5b-4024-8ac1-8e9f939cbebf",
+   "question_id": "CH_1784567003410_h8ny",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "c6612993-a47d-46b7-ad1c-5f1753faaaac",
+   "question_id": "CH_1784567003410_70xc",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "cbed4d96-8f03-4a83-8149-dd8b064fd7e7",
+   "question_id": "CH_1784567003410_0oxf",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "eec60802-6b5f-403d-ae8f-a1c6fa1e6d03",
+   "question_id": "CH_1784567003410_yxne",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "a3bfe01c-7d4e-481c-99ab-41a39f360950",
+   "question_id": "CH_1784567003410_vvq3",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết & ước lượng số vô tỉ"
+  },
+  {
+   "id": "fb9aa592-ac8b-4927-950c-5b38651c9f05",
+   "question_id": "CH_1784565343266_oali",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "233d3c35-c54f-4c12-8b29-2167a80501ba",
+   "question_id": "CH_1784565343266_yjm3",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "60fd99ad-6c88-43ef-b7e0-84f86d92987d",
+   "question_id": "CH_1784565343266_taex",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "b96b89ed-2932-4325-9517-69e4ecff7522",
+   "question_id": "CH_1784567003410_bgz6",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "c6a7ae33-4962-4beb-ba84-fb64de78b097",
+   "question_id": "CH_1784565343266_sd0a",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "cf821419-9fbf-4f5e-8f85-4ffd3b94efdb",
+   "question_id": "CH_1784566798026_5lny",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "57aaf7c5-11be-4d78-8275-19fa28690545",
+   "question_id": "CH_1784567003410_t3h9",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "522091b0-e6ea-4cf4-b762-46f2f52c5d40",
+   "question_id": "CH_1784566154465_kq5q",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "bcf5701f-dad2-483b-bdc4-8a46e2c49d62",
+   "question_id": "CH_1784566154465_93z3",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "ce75df15-9ba3-430e-985d-a8c99501a0d1",
+   "question_id": "CH_1784566154465_c47y",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "2d50a44c-4590-42d0-84cf-964846c18cf6",
+   "question_id": "CH_1784565343266_kcfx",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "d8b3b811-a866-41f0-b683-a1cc2fb979fa",
+   "question_id": "CH_1784566798026_a0ln",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "So sánh hai số thực"
+  },
+  {
+   "id": "fbb790bc-c94d-4dac-aeba-0ae36cba207b",
+   "question_id": "CH_1784566154465_4r30",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "fb73b46e-0ad6-4e0e-86fa-79cc44f97a57",
+   "question_id": "CH_1784566154465_fsc4",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "3c434b58-a991-4466-91f0-714e1a1cb1ed",
+   "question_id": "CH_1784565343266_uxyf",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "ba7117e8-c5cb-446a-92f2-df7bc4e38d7c",
+   "question_id": "CH_1784566154465_mrx7",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "1ff0bc30-f56e-4eb3-9666-ed1328ad9f2c",
+   "question_id": "CH_1784566313064_c10i",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Nhận biết & ước lượng số vô tỉ"
+  },
+  {
+   "id": "7b87db23-ee63-48be-a757-f4a67b0de4dd",
+   "question_id": "CH_1784564986657_74f0",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "9a7b9ad7-006d-46db-b776-344220710b26",
+   "question_id": "CH_1784566313064_gx9z",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học bằng máy tính cầm tay"
+  },
+  {
+   "id": "5e55dc27-fe40-403c-bf2f-c2713a9e33cb",
+   "question_id": "CH_1784566313064_w0r7",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "d6dc1567-7d59-48ce-bad1-2daa81a5591e",
+   "question_id": "CH_1784566313064_a3uy",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "fe8b6e38-f289-4d23-99da-fde4938c7062",
+   "question_id": "CH_1784565178507_eflc",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "9e4fb9cb-9e43-45a0-bf4a-9065d405a939",
+   "question_id": "CH_1784564986657_l4i7",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "ddce1c36-8b9b-43df-95a2-b63b93a20f4b",
+   "question_id": "CH_1784566798026_rn5g",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "c7763f98-05d9-4deb-a633-49d0d35f65de",
+   "question_id": "CH_1784565178507_tio6",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "f3d4278c-bd03-43ec-98fc-9bbb475554d2",
+   "question_id": "CH_1784565178506_0ftt",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "47d522f8-dad7-4e85-b319-ef0ba384cc51",
+   "question_id": "CH_1784566798026_pmmy",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "bbc3c204-f916-4c36-b2f5-483b355de3ee",
+   "question_id": "CH_1784567003410_lb2b",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "220224c1-fea8-43de-bf0d-6fb9eb371585",
+   "question_id": "CH_1784566313064_cpky",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "356f89c1-700e-4356-89a6-25c8405f5049",
+   "question_id": "CH_1784567003410_100d",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết & ước lượng số vô tỉ"
+  },
+  {
+   "id": "7af224f8-d970-4ac2-bc12-da5db5c3ddc4",
+   "question_id": "CH_1784566798026_57r8",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tìm số đối của một số thực"
+  },
+  {
+   "id": "b7789b13-8396-4f72-a012-e1f1bb79aecf",
+   "question_id": "CH_1784566798026_m2ow",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "3baad0b7-a081-4073-8fa0-fec173a13906",
+   "question_id": "CH_1784567003410_det6",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "01b271e1-f7ce-4eff-a355-d8b9101b9a95",
+   "question_id": "CH_1784567003410_cyxy",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "7cfae794-7b2b-4980-bf27-cec663e541a8",
+   "question_id": "CH_1784567003410_wfj7",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "ea8bfb5d-5c13-4f27-8630-be9eef38cfc2",
+   "question_id": "CH_1784567003410_gmm8",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "0089b1c6-07dc-433c-9034-4262948029ea",
+   "question_id": "CH_1784646394398_2",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "dad3eb69-e532-4688-bc91-25b7e4847780",
+   "question_id": "CH_1784566313064_a5bq",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "3b2080f4-838d-494b-9553-ee2434979ead",
+   "question_id": "CH_1784646394398_1",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "ef039ed8-8a24-4888-aa20-181b5ab3d2e2",
+   "question_id": "CH_1784646394398_7",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "517cc6f6-5de3-445a-9e52-8d7e53f12d83",
+   "question_id": "CH_1784646394398_11",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "a6a326f8-5327-4434-be18-95f1309cc3b1",
+   "question_id": "CH_1784646394398_9",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "e14176cc-de79-4ec2-bc45-4de9fdb5a243",
+   "question_id": "CH_1784646394398_4",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "55af1d3f-0cc1-4557-901f-d70d9cd4c32a",
+   "question_id": "CH_1784646394398_5",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "31da931b-2440-4113-ba39-72389f0b0020",
+   "question_id": "CH_1784646394398_10",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "92e61f28-a02c-4f61-8a07-3c4b0bd9016f",
+   "question_id": "CH_1784646394398_8",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "1ead0d83-fcfa-49f6-93f0-4df31d84e25f",
+   "question_id": "CH_1784567003410_5vrj",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "tìm số thực x thỏa mãn điều kiện về giá trị tuyệt đối"
+  },
+  {
+   "id": "b54a5d7d-f9ea-4ffb-a7b2-e0711fe677f3",
+   "question_id": "CH_1784566313064_smwh",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Nhận biết & ước lượng số vô tỉ"
+  },
+  {
+   "id": "aae9eeba-9fcd-41b1-b008-e2e30f5d16ed",
+   "question_id": "CH_1784566313064_gkok",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "c30d0469-c5f7-4b21-a0f2-da9add749b0f",
+   "question_id": "CH_1784566154465_fxsx",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "80cc1a83-a584-4510-a453-abd875c0fecc",
+   "question_id": "CH_1784565178506_22xu",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "aff5d354-b71c-4e2c-9e56-eb2cbe653c3a",
+   "question_id": "CH_1784565178507_5qqa",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "320bd0da-cfb4-4272-9989-424782396178",
+   "question_id": "CH_1784648397305_3",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "5e3ea0aa-235c-4a4a-b8a3-d7ff9a1455d4",
+   "question_id": "CH_1784648397305_5",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "56b9faa9-c826-441b-9285-bf11a5215ece",
+   "question_id": "CH_1784648397305_6",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "245f4104-4271-47cd-b462-9fa42e0969a5",
+   "question_id": "CH_1784648397305_7",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "446aedc7-3b26-47ee-a891-f6981706145e",
+   "question_id": "CH_1784648397306_9",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "9e254e9d-c552-44d2-83fe-0462c1f656dc",
+   "question_id": "CH_1784648397306_11",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "69a1d55f-c8a9-4175-8037-ff0706abed45",
+   "question_id": "CH_1784648397306_12",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "d8b1cd4e-ec91-42f6-8bf8-502322ddca92",
+   "question_id": "CH_1784648397306_13",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "41bbc63d-f52f-4215-afdd-828e2512aca8",
+   "question_id": "CH_1784648397306_14",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "33a3f068-ccb6-47d0-bb57-24789851b1fa",
+   "question_id": "CH_1784648397306_15",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "b61ace9d-c7f7-4e85-871b-2a9e9039de11",
+   "question_id": "CH_1784648397306_16",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "043e05a1-232b-48c7-956a-4167f106722d",
+   "question_id": "CH_1784648397306_17",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "6aa47140-267c-4a68-abd0-f8075fda18b9",
+   "question_id": "CH_1784648397306_18",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "964fbf69-d44b-4689-8412-e1311912af9c",
+   "question_id": "CH_1784648397306_19",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "ff987edc-c780-42e7-bbc1-50b3e26f0065",
+   "question_id": "CH_1784648397306_20",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "97da61b6-1d05-4123-8e7a-5137b13ed0b1",
+   "question_id": "CH_1784648397306_22",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "10f7989d-ae4a-4ad7-875c-bfda70a1dfb0",
+   "question_id": "CH_1784648397306_23",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "bb33106a-6fda-489a-a999-0ccda1a56d0b",
+   "question_id": "CH_1784648397306_25",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "e1b98023-eb1c-4966-a50e-6075de618c57",
+   "question_id": "CH_1784648397306_26",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "a5bbdb16-64f0-42c9-ae5b-e75fc628f257",
+   "question_id": "CH_1784648397306_27",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "4e9dd20c-9f36-41e0-b4aa-6040b4ab6316",
+   "question_id": "CH_1784648397306_28",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "3532f20e-b439-48c4-a763-5358a13fae07",
+   "question_id": "CH_1784648397306_29",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "42632cae-c3a5-4c3f-b597-5764b4e041d1",
+   "question_id": "CH_1784648397306_30",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "598a0a96-84cf-446c-bce9-785732a4329b",
+   "question_id": "CH_1784651285523_9",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "d99aa5ca-adf9-4f94-895b-107105447614",
+   "question_id": "CH_1784651285523_10",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "6a1848c7-5f57-4224-9dda-4d1898ec3006",
+   "question_id": "CH_1784650854830_6",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "2dd0bb47-a039-4f3c-afc5-30e49b0b7b73",
+   "question_id": "CH_1784650854830_2",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "0d8fca32-94f5-4c1e-8933-857f36256690",
+   "question_id": "CH_1784650854830_4",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "96569ef9-6faf-4e72-817b-8b396a5b3e95",
+   "question_id": "CH_1784650854830_0",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "fd6f7290-28f2-47dd-a30e-105d47b04958",
+   "question_id": "CH_1784650854830_3",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "ebfd807c-2594-45c7-baa3-c797d31a0236",
+   "question_id": "CH_1784650854830_1",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "03cd98a1-04a2-4541-9bd1-355986fec505",
+   "question_id": "CH_1784650854830_5",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "db7e6a4d-8b26-4402-9c85-7f6e2a96025c",
+   "question_id": "CH_1784650854830_7",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "a904d634-a0cd-40ae-bceb-ab72a20ef294",
+   "question_id": "CH_1784650854830_8",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "ca12f62d-8717-49cc-8b12-405e044801c8",
+   "question_id": "CH_1784566154465_c365",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "8884e4f3-7fac-4827-9bd6-3e21c9b58328",
+   "question_id": "CH_1784651285523_6",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "980a28ed-e567-403d-8a71-2976a0d8c6e9",
+   "question_id": "CH_1784651285523_7",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "73e5ee0e-4129-488b-947d-d1dc314d8a06",
+   "question_id": "CH_1784651285523_8",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "d554ba61-b132-4d3a-95f7-f9b8c6eff7a5",
+   "question_id": "CH_1784651285523_5",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "18490382-dc0d-44c3-a644-76f540165994",
+   "question_id": "CH_1784653356499_6",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "1def3d6f-e30e-4b30-b317-461f8e1a2e5d",
+   "question_id": "CH_1784653356499_5",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "f632bf00-8a68-4874-81e2-6898050c950b",
+   "question_id": "CH_1784646394398_6",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "9ec3fff9-59a4-4ede-a039-52087107b426",
+   "question_id": "CH_1784646394398_3",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "eb325201-8b69-4be7-89ab-e522e2c81820",
+   "question_id": "CH_1784646394398_0",
+   "lesson": "Bài 2. Số vô tỉ - Căn bậc hai số học",
+   "math_form": "Tính căn bậc hai số học của một số"
+  },
+  {
+   "id": "fdd4cc58-e7d4-49dc-af82-43f8841587d5",
+   "question_id": "CH_1784653356499_7",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "2c0527dd-ea57-462f-8819-d2dfc4d39eb1",
+   "question_id": "CH_1784653356499_1",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Tính giá trị tuyệt đối và xác định dấu của một số thực"
+  },
+  {
+   "id": "8c711e20-57bb-4418-97a6-2565150feac3",
+   "question_id": "CH_1784566798026_cmew",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "ce043a0d-438d-42ad-af2a-8adc2a1e5856",
+   "question_id": "CH_1784566154465_d343",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "32b0bc4e-bd9d-45f4-857d-9775e4d8e04e",
+   "question_id": "CH_1784567003410_3r1v",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Làm tròn số với độ chính xác cho trước"
+  },
+  {
+   "id": "30410ac5-e896-4658-bc32-b9b389417f41",
+   "question_id": "CH_1784650854830_9",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "9ec7dbd0-476b-48ab-bba9-c654c1f57c73",
+   "question_id": "CH_1784650854830_10",
+   "lesson": "Bài 1. Làm quen với số thập phân vô hạn tuần hoàn",
+   "math_form": "Nhận biết & viết gọn số thập phân vô hạn tuần hoàn"
+  },
+  {
+   "id": "0720c399-ead5-4bba-911b-4d7bc1af36ab",
+   "question_id": "CH_1784566798026_wg4h",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  },
+  {
+   "id": "294acafc-aebd-4926-a301-9120d4638ef1",
+   "question_id": "CH_1784566154465_hr9h",
+   "lesson": "Bài 3. Tập hợp các số thực",
+   "math_form": "Nhận biết số thực – phân loại số hữu tỉ và số vô tỉ"
+  }
+ ]
+}

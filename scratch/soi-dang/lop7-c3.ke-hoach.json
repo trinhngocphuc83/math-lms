@@ -1,0 +1,218 @@
+{
+ "lop": "7",
+ "chuong": 3,
+ "dang": [
+  {
+   "bai": "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "cu": "Nhận biết góc (phụ, bù, chéo)",
+   "moi": "Nhận biết hai góc kề bù, hai góc đối đỉnh",
+   "yc": "Nhận biết được các cặp góc kề nhau, bù nhau, kề bù, đối đỉnh trên hình vẽ."
+  },
+  {
+   "bai": "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "cu": "Tính số đo góc",
+   "moi": "Tính số đo góc (góc kề bù, đối đỉnh, tia phân giác)",
+   "yc": "Tính được số đo góc dựa vào tính chất hai góc kề bù, hai góc đối đỉnh và tia phân giác của một góc."
+  },
+  {
+   "bai": "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "cu": "Chứng minh tia phân giác",
+   "moi": "Chứng minh tia phân giác, hai góc bằng nhau",
+   "yc": "Chứng minh được một tia là tia phân giác của một góc và hai góc bằng nhau dựa vào định nghĩa, tính chất góc kề bù, đối đỉnh."
+  },
+  {
+   "bai": "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "cu": "Chứng minh 2 đường thẳng vuông góc",
+   "moi": "Chứng minh hai đường thẳng vuông góc (dùng góc kề bù, tia phân giác)",
+   "yc": "Chứng minh được hai tia, hai đường thẳng vuông góc bằng cách tính góc qua tính chất góc kề bù và tia phân giác."
+  },
+  {
+   "bai": "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "cu": "Xác định góc (so le, đồng vị)",
+   "moi": "Nhận biết các cặp góc so le trong, đồng vị",
+   "yc": "Nhận biết được các cặp góc so le trong, đồng vị, trong cùng phía tạo bởi một đường thẳng cắt hai đường thẳng."
+  },
+  {
+   "bai": "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "cu": "Nhận biết, chứng minh 2 đường thẳng song song",
+   "moi": "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết",
+   "yc": "Chứng minh được hai đường thẳng song song dựa vào cặp góc so le trong bằng nhau, đồng vị bằng nhau hoặc trong cùng phía bù nhau."
+  },
+  {
+   "bai": "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "cu": "Tiên đề Euclid",
+   "moi": "Tiên đề Euclid",
+   "yc": "Phát biểu và vận dụng được tiên đề Euclid về đường thẳng song song."
+  },
+  {
+   "bai": "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "cu": "Tính số đo góc",
+   "moi": "Tính số đo góc bằng tính chất hai đường thẳng song song",
+   "yc": "Tính được số đo góc bằng tính chất của hai đường thẳng song song (so le trong, đồng vị bằng nhau, trong cùng phía bù nhau), kể cả khi phải kẻ thêm đường thẳng song song."
+  },
+  {
+   "bai": "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "cu": "Chứng minh 2 góc bằng nhau",
+   "moi": "Chứng minh hai góc bằng nhau, tia phân giác bằng tính chất song song",
+   "yc": "Chứng minh được hai góc bằng nhau, một tia là tia phân giác dựa vào tính chất của hai đường thẳng song song."
+  },
+  {
+   "bai": "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "cu": "Chứng minh 2 đường thẳng song song",
+   "moi": "Chứng minh hai đường thẳng song song (cùng song song, cùng vuông góc với đường thẳng thứ ba)",
+   "yc": "Chứng minh được hai đường thẳng song song bằng quan hệ với đường thẳng thứ ba (cùng song song, cùng vuông góc) kết hợp dấu hiệu nhận biết."
+  },
+  {
+   "bai": "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "cu": "Chứng minh 2 đường thẳng vuông góc",
+   "moi": "Chứng minh hai đường thẳng vuông góc bằng quan hệ song song",
+   "yc": "Chứng minh được hai đường thẳng vuông góc dựa vào quan hệ giữa tính vuông góc và tính song song."
+  },
+  {
+   "bai": "Bài 4. Định lý và chứng minh định lý",
+   "cu": "Nhận biết, viết giả thuyết, kết luận của một định lý bằng ký hiệu",
+   "moi": "Nhận biết định lí, viết giả thiết và kết luận",
+   "yc": "Nhận biết được định lí, vẽ hình và viết được giả thiết, kết luận của định lí bằng kí hiệu."
+  },
+  {
+   "bai": "Bài 4. Định lý và chứng minh định lý",
+   "cu": "Chứng minh các định lý đơn giản",
+   "moi": "Chứng minh định lí đơn giản",
+   "yc": "Thực hiện được việc chứng minh một số định lí hình học đơn giản."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 3",
+   "moi": "Bài tập tổng hợp chương 3",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 3 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "dang": "Chứng minh 2 góc bằng nhau"
+  },
+  {
+   "bai": "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "dang": "Chứng minh 2 đường thẳng song song"
+  },
+  {
+   "bai": "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "dang": "Chứng minh 2 đường thẳng vuông góc"
+  },
+  {
+   "bai": "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "dang": "Tính số đo góc"
+  },
+  {
+   "bai": "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "dang": "Chứng minh tia phân giác"
+  },
+  {
+   "bai": "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "dang": "Nhận biết, chứng minh 2 đường thẳng song song"
+  }
+ ],
+ "chuyen": {
+  "5744": [
+   "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "Tính số đo góc (góc kề bù, đối đỉnh, tia phân giác)"
+  ],
+  "uupl": [
+   "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "Tính số đo góc (góc kề bù, đối đỉnh, tia phân giác)"
+  ],
+  "bibe": [
+   "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "Tính số đo góc (góc kề bù, đối đỉnh, tia phân giác)"
+  ],
+  "930o": [
+   "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "Tính số đo góc (góc kề bù, đối đỉnh, tia phân giác)"
+  ],
+  "mvp4": [
+   "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "Tính số đo góc (góc kề bù, đối đỉnh, tia phân giác)"
+  ],
+  "o1v3": [
+   "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "Tính số đo góc (góc kề bù, đối đỉnh, tia phân giác)"
+  ],
+  "cc7l": [
+   "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "Chứng minh tia phân giác, hai góc bằng nhau"
+  ],
+  "xka8": [
+   "Bài 1. Góc ở vị trí đặc biệt - Tia phân giác của một góc",
+   "Chứng minh tia phân giác, hai góc bằng nhau"
+  ],
+  "okhp": [
+   "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết"
+  ],
+  "dxzx": [
+   "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết"
+  ],
+  "9vim": [
+   "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết"
+  ],
+  "zsu9": [
+   "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết"
+  ],
+  "tv21": [
+   "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết"
+  ],
+  "6xyw": [
+   "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết"
+  ],
+  "aglj": [
+   "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết"
+  ],
+  "dfsc": [
+   "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết"
+  ],
+  "ifmf": [
+   "Bài 2. Hai đường thẳng song song và dấu hiệu nhận biết",
+   "Chứng minh hai đường thẳng song song bằng dấu hiệu nhận biết"
+  ],
+  "vb8y": [
+   "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "Chứng minh hai đường thẳng vuông góc bằng quan hệ song song"
+  ],
+  "e31b": [
+   "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "Chứng minh hai đường thẳng vuông góc bằng quan hệ song song"
+  ],
+  "26k6": [
+   "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "Tính số đo góc bằng tính chất hai đường thẳng song song"
+  ],
+  "toox": [
+   "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "Tính số đo góc bằng tính chất hai đường thẳng song song"
+  ],
+  "1y46": [
+   "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "Tính số đo góc bằng tính chất hai đường thẳng song song"
+  ],
+  "jx8l": [
+   "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "Tính số đo góc bằng tính chất hai đường thẳng song song"
+  ],
+  "uswp": [
+   "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "Chứng minh hai góc bằng nhau, tia phân giác bằng tính chất song song"
+  ],
+  "dg69": [
+   "Bài 3. Tiên đề Euclid. Tính chất hai đường thẳng song song",
+   "Chứng minh hai đường thẳng song song (cùng song song, cùng vuông góc với đường thẳng thứ ba)"
+  ]
+ }
+}

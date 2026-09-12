@@ -1,0 +1,107 @@
+{
+ "lop": "7",
+ "chuong": 4,
+ "dang": [
+  {
+   "bai": "Bài 1. Tổng các góc trong một tam giác",
+   "cu": "Tính số đo góc trong tam giác",
+   "moi": "Tính số đo góc trong tam giác",
+   "yc": "Tính được số đo góc chưa biết của tam giác bằng định lí tổng ba góc, góc ngoài của tam giác."
+  },
+  {
+   "bai": "Bài 1. Tổng các góc trong một tam giác",
+   "cu": "Mối quan hệ giữa các góc",
+   "moi": "Chứng minh, so sánh các góc dựa vào tổng ba góc của tam giác",
+   "yc": "Vận dụng được định lí tổng ba góc, tính chất góc ngoài để chứng minh đẳng thức, bất đẳng thức giữa các góc.",
+   "gop": [
+    "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+   ]
+  },
+  {
+   "bai": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "cu": "Xác định các cạnh bằng nhau, các góc bằng nhau",
+   "moi": "Nhận biết hai tam giác bằng nhau, xác định cạnh và góc tương ứng",
+   "yc": "Viết được kí hiệu hai tam giác bằng nhau, chỉ ra được các cạnh, các góc tương ứng bằng nhau và tính được độ dài cạnh, số đo góc, chu vi."
+  },
+  {
+   "bai": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "cu": "Chứng minh hai tam giác bằng nhau",
+   "moi": "Chứng minh hai tam giác bằng nhau (c.c.c) và suy ra góc, cạnh bằng nhau",
+   "yc": "Chứng minh được hai tam giác bằng nhau theo trường hợp cạnh-cạnh-cạnh và suy ra được hai góc bằng nhau, tia phân giác, hai đường thẳng song song.",
+   "gop": [
+    "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau",
+    "Chứng minh góc bằng nhau"
+   ]
+  },
+  {
+   "bai": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "cu": "Chứng minh hai tam giác bằng nhau",
+   "moi": "Chứng minh hai tam giác bằng nhau (c.g.c, g.c.g)",
+   "yc": "Chứng minh được hai tam giác bằng nhau theo trường hợp cạnh-góc-cạnh, góc-cạnh-góc."
+  },
+  {
+   "bai": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "cu": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau",
+   "moi": "Vận dụng hai tam giác bằng nhau để chứng minh đoạn thẳng, góc bằng nhau, song song, vuông góc, trung điểm",
+   "yc": "Vận dụng được các trường hợp bằng nhau của hai tam giác để chứng minh hai đoạn thẳng, hai góc bằng nhau, hai đường thẳng song song, vuông góc, một điểm là trung điểm.",
+   "gop": [
+    "Chứng minh góc bằng nhau",
+    "Mối quan hệ giữa các góc"
+   ]
+  },
+  {
+   "bai": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "cu": "Chứng minh 2 tam giác vuông bằng nhau",
+   "moi": "Chứng minh hai tam giác vuông bằng nhau",
+   "yc": "Chứng minh được hai tam giác vuông bằng nhau theo các trường hợp cạnh huyền - góc nhọn, cạnh huyền - cạnh góc vuông, hai cạnh góc vuông, cạnh góc vuông - góc nhọn kề.",
+   "gop": [
+    "Chứng minh hai tam giác bằng nhau"
+   ]
+  },
+  {
+   "bai": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "cu": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau",
+   "moi": "Vận dụng tam giác vuông bằng nhau để chứng minh đoạn thẳng, góc bằng nhau, tia phân giác",
+   "yc": "Vận dụng được các trường hợp bằng nhau của tam giác vuông để chứng minh đoạn thẳng, góc bằng nhau, tia phân giác, đường thẳng song song, vuông góc.",
+   "gop": [
+    "Chứng minh góc bằng nhau"
+   ]
+  },
+  {
+   "bai": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "cu": "Nhận biết tam giác cân, tam giác đều",
+   "moi": "Nhận biết, chứng minh tam giác cân, tam giác đều",
+   "yc": "Nhận biết và chứng minh được một tam giác là tam giác cân, tam giác đều dựa vào định nghĩa hoặc dấu hiệu nhận biết."
+  },
+  {
+   "bai": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "cu": "Tính số đo góc trong tam giác",
+   "moi": "Tính số đo góc trong tam giác cân, tam giác đều",
+   "yc": "Tính được số đo góc của tam giác cân, tam giác đều, tam giác vuông cân dựa vào tính chất của chúng."
+  },
+  {
+   "bai": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "cu": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau",
+   "moi": "Vận dụng tính chất tam giác cân, đường trung trực để chứng minh",
+   "yc": "Vận dụng được tính chất của tam giác cân và đường trung trực của đoạn thẳng để chứng minh đoạn thẳng, góc bằng nhau, hai tam giác bằng nhau, ba điểm thẳng hàng.",
+   "gop": [
+    "Chứng minh góc bằng nhau",
+    "Chứng minh hai tam giác bằng nhau",
+    "Chứng minh 2 tam giác vuông bằng nhau"
+   ]
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 4",
+   "moi": "Bài tập tổng hợp chương 4",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 4 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "dang": "Tính số đo góc trong tam giác"
+  }
+ ],
+ "chuyen": {}
+}

@@ -1,0 +1,35 @@
+{
+ "question_categories": [
+  {
+   "id": "b64db7bc-8bc7-431e-bafd-52671c7a2091",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Làm quen với biến cố và xác suất của biến cố",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tổng hợp về biến cố và xác suất",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Giải quyết được các bài toán liên quan đến việc nhận biết biến cố và tính xác suất của biến cố trong thực tiễn."
+  },
+  {
+   "id": "8efad9e1-80e6-433e-bd25-95e0e86c2e95",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Làm quen với biến cố và xác suất của biến cố",
+   "lesson": "Bài 1. Làm quen với biến cố",
+   "math_form": "Nhận biết biến cố chắc chắn, biến cố không thể và biến cố ngẫu nhiên",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Nhận biết được biến cố chắc chắn, biến cố không thể và biến cố ngẫu nhiên trong các tình huống thực tế đơn giản."
+  },
+  {
+   "id": "a1a17114-57b5-4520-92c7-59a6b355b45f",
+   "grade": "7",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Làm quen với biến cố và xác suất của biến cố",
+   "lesson": "Bài 2. Làm quen với xác suất của biến cố",
+   "math_form": "Tính xác suất của biến cố ngẫu nhiên trong một số trò chơi đơn giản",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Tính được xác suất của biến cố ngẫu nhiên trong một số trò chơi đơn giản như gieo xúc xắc hay chọn bóng."
+  }
+ ],
+ "questions": []
+}

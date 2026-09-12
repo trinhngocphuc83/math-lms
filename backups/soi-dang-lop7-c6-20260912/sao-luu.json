@@ -1,0 +1,95 @@
+{
+ "question_categories": [
+  {
+   "id": "e0d746de-3c77-420d-9968-a56e7ad58bde",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ",
+   "lesson": "Bài 3. Đại lượng tỉ lệ thuận",
+   "math_form": "Nhận biết hai đại lượng tỉ lệ thuận, tìm hệ số tỉ lệ",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Nhận biết được hai đại lượng tỉ lệ thuận và xác định được hệ số tỉ lệ của chúng."
+  },
+  {
+   "id": "f4322039-bb4a-4780-a67a-ae2571c4698c",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ",
+   "lesson": "Bài 2. Tính chất của dãy tỉ số bằng nhau",
+   "math_form": "Tìm các số chưa biết dựa vào dãy tỉ số bằng nhau",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất của dãy tỉ số bằng nhau để tìm các số chưa biết khi biết tổng hoặc hiệu của chúng."
+  },
+  {
+   "id": "cf013f72-9188-47f4-8779-5c062b65c60a",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ",
+   "lesson": "Bài 3. Đại lượng tỉ lệ thuận",
+   "math_form": "Bài toán thực tế về đại lượng tỉ lệ thuận",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến đại lượng tỉ lệ thuận."
+  },
+  {
+   "id": "8c586a24-df94-417e-b8d3-3adc40a9cb7d",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ",
+   "lesson": "Bài 1. Tỉ lệ thức",
+   "math_form": "Lập tỉ lệ thức từ các số cho trước",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Lập được các tỉ lệ thức từ các số cho trước khác không."
+  },
+  {
+   "id": "278f6774-e01b-44c2-8dea-aeafda2f73ec",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ",
+   "lesson": "Bài 1. Tỉ lệ thức",
+   "math_form": "Tìm thành phần chưa biết trong tỉ lệ thức",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Tính được thành phần chưa biết trong một tỉ lệ thức bằng cách sử dụng tính chất của tỉ lệ thức."
+  },
+  {
+   "id": "d9903aac-9299-4672-baba-09a8f6c530c3",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ",
+   "lesson": "Bài 2. Tính chất của dãy tỉ số bằng nhau",
+   "math_form": "Bài toán thực tế về dãy tỉ số bằng nhau (chia tỉ lệ)",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số bài toán thực tế liên quan đến việc chia một đại lượng theo tỉ lệ cho trước."
+  },
+  {
+   "id": "e2436190-85cc-4d98-89f7-8d1afcc1b0ac",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp các bài toán tỉ lệ thức và đại lượng tỉ lệ",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất của tỉ lệ thức và dãy tỉ số bằng nhau để giải quyết các bài toán thực tế liên quan đến đại lượng tỉ lệ."
+  },
+  {
+   "id": "8ff2d97e-c665-496d-820e-dd71e72e3fde",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ",
+   "lesson": "Bài 4. Đại lượng tỉ lệ nghịch",
+   "math_form": "Bài toán thực tế về đại lượng tỉ lệ nghịch",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến đại lượng tỉ lệ nghịch."
+  },
+  {
+   "id": "85ea1ec1-ccb9-422d-92de-db5ea8651fb4",
+   "grade": "7",
+   "subject": "Đại số",
+   "topic": "Chương 6. Tỉ lệ thức và đại lượng tỉ lệ",
+   "lesson": "Bài 4. Đại lượng tỉ lệ nghịch",
+   "math_form": "Nhận biết hai đại lượng tỉ lệ nghịch, tìm hệ số tỉ lệ",
+   "created_at": "2026-08-21T04:14:24.202032+00:00",
+   "yeu_cau_can_dat": "Nhận biết được hai đại lượng tỉ lệ nghịch và xác định được hệ số tỉ lệ của chúng."
+  }
+ ],
+ "questions": []
+}

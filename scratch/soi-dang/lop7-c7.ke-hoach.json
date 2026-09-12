@@ -1,0 +1,110 @@
+{
+ "lop": "7",
+ "chuong": 7,
+ "dang": [
+  {
+   "bai": "Bài 1. Biểu thức đại số",
+   "cu": "Viết biểu thức đại số theo yêu cầu",
+   "moi": "Viết biểu thức đại số biểu thị đại lượng",
+   "yc": "Viết được biểu thức đại số biểu thị các đại lượng (chu vi, diện tích, quãng đường, số tiền...) trong tình huống cho trước."
+  },
+  {
+   "bai": "Bài 1. Biểu thức đại số",
+   "cu": "Tính giá trị của biểu thức đại số tại các giá trị cho trước của biến",
+   "moi": "Tính giá trị của biểu thức đại số",
+   "yc": "Tính được giá trị của biểu thức đại số khi biết giá trị của các biến."
+  },
+  {
+   "bai": "Bài 2. Đa thức một biến",
+   "cu": "Nhận biết đa thức một biến, xác định bậc, hệ số cao nhất, hệ số tự do",
+   "moi": "Nhận biết đơn thức, đa thức một biến; xác định bậc, hệ số",
+   "yc": "Nhận biết được đơn thức, đa thức một biến và xác định được bậc, hệ số cao nhất, hệ số tự do của đa thức."
+  },
+  {
+   "bai": "Bài 2. Đa thức một biến",
+   "cu": null,
+   "moi": "Thu gọn và sắp xếp đa thức một biến",
+   "yc": "Thu gọn được đa thức một biến và sắp xếp được theo lũy thừa giảm dần hoặc tăng dần của biến."
+  },
+  {
+   "bai": "Bài 2. Đa thức một biến",
+   "cu": null,
+   "moi": "Tính giá trị của đa thức một biến",
+   "yc": "Tính được giá trị của đa thức một biến tại giá trị cho trước của biến."
+  },
+  {
+   "bai": "Bài 2. Đa thức một biến",
+   "cu": "Tìm nghiệm của đa thức một biến",
+   "moi": "Kiểm tra và tìm nghiệm của đa thức một biến",
+   "yc": "Kiểm tra được một số có là nghiệm của đa thức hay không và tìm được nghiệm của đa thức một biến trong trường hợp đơn giản."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và phép trừ đa thức một biến",
+   "cu": "Cộng hai đa thức một biến",
+   "moi": "Cộng hai đa thức một biến",
+   "yc": "Thực hiện được phép cộng hai đa thức một biến theo hàng ngang và theo cột dọc."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và phép trừ đa thức một biến",
+   "cu": "Trừ hai đa thức một biến",
+   "moi": "Trừ hai đa thức một biến",
+   "yc": "Thực hiện được phép trừ hai đa thức một biến theo hàng ngang và theo cột dọc."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và phép trừ đa thức một biến",
+   "cu": null,
+   "moi": "Tìm đa thức chưa biết trong đẳng thức",
+   "yc": "Tìm được đa thức chưa biết khi biết tổng hoặc hiệu của nó với một đa thức cho trước."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và phép trừ đa thức một biến",
+   "cu": null,
+   "moi": "Bài toán thực tế về cộng, trừ đa thức",
+   "yc": "Lập được đa thức biểu thị đại lượng và vận dụng phép cộng, trừ đa thức để giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức một biến",
+   "cu": "Nhân đơn thức với đa thức",
+   "moi": "Nhân đơn thức với đa thức",
+   "yc": "Thực hiện được phép nhân đơn thức với đa thức một biến."
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức một biến",
+   "cu": "Nhân đa thức với đa thức",
+   "moi": "Nhân đa thức với đa thức",
+   "yc": "Thực hiện được phép nhân hai đa thức một biến và thu gọn kết quả."
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức một biến",
+   "cu": null,
+   "moi": "Rút gọn biểu thức và tính giá trị sau khi nhân đa thức",
+   "yc": "Rút gọn được biểu thức có phép nhân đa thức rồi tính giá trị hoặc chứng tỏ giá trị không phụ thuộc vào biến."
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức một biến",
+   "cu": null,
+   "moi": "Chia đơn thức cho đơn thức, chia đa thức cho đơn thức",
+   "yc": "Thực hiện được phép chia đơn thức cho đơn thức và phép chia đa thức cho đơn thức trong trường hợp chia hết."
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức một biến",
+   "cu": "Chia đa thức cho đa thức (chia hết và chia có dư)",
+   "moi": "Chia đa thức cho đa thức (chia hết và chia có dư)",
+   "yc": "Thực hiện được phép chia đa thức một biến cho đa thức một biến, xác định được thương và dư."
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức một biến",
+   "cu": null,
+   "moi": "Tìm điều kiện để phép chia đa thức là phép chia hết",
+   "yc": "Tìm được giá trị của tham số để đa thức chia hết cho đa thức cho trước hoặc xác định được dư của phép chia."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Tổng hợp các phép toán với đa thức một biến",
+   "moi": "Bài tập tổng hợp chương 7",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 7 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

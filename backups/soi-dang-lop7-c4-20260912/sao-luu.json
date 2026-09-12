@@ -1,0 +1,1436 @@
+{
+ "question_categories": [
+  {
+   "id": "1d12cc98-49ef-4f7d-ab9b-5decdd2e2dbd",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Vận dụng các trường hợp bằng nhau của tam giác vuông để chứng minh hai đoạn thẳng bằng nhau hoặc hai góc bằng nhau."
+  },
+  {
+   "id": "e8cc5e03-091a-4065-bb87-5564ba3648c3",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của tam giác cân hoặc đường trung trực của đoạn thẳng để chứng minh hai góc hoặc hai đoạn thẳng bằng nhau."
+  },
+  {
+   "id": "e52a3d5d-05ab-40a6-bb0b-05fc9fa3bb31",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Tính được số đo góc chưa biết của một tam giác dựa vào định lí tổng ba góc trong một tam giác."
+  },
+  {
+   "id": "9168073e-44d5-40a8-a970-814c78a9dea7",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh góc bằng nhau",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng các trường hợp bằng nhau của hai tam giác để chứng minh hai góc bằng nhau."
+  },
+  {
+   "id": "f0157497-b500-4d98-a63e-86108b6d6d2f",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng trường hợp bằng nhau cạnh-cạnh-cạnh của hai tam giác để chứng minh hai góc bằng nhau hoặc hai cạnh bằng nhau."
+  },
+  {
+   "id": "be60d220-f233-445f-961e-340cb28a5a1f",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Giải thích được mối quan hệ giữa các góc trong một tam giác dựa vào định lí tổng ba góc."
+  },
+  {
+   "id": "b0df6571-7570-40ee-8819-cf90b06d5d0e",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Vận dụng trường hợp bằng nhau cạnh-cạnh-cạnh để chứng minh hai tam giác bằng nhau."
+  },
+  {
+   "id": "05544e3b-736b-447a-ab66-403411732952",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Vận dụng trường hợp bằng nhau cạnh-góc-cạnh hoặc góc-cạnh-góc để chứng minh hai tam giác bằng nhau."
+  },
+  {
+   "id": "6f9d907b-1fcb-42bf-b300-05c16e94019c",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Mối quan hệ giữa các góc",
+   "created_at": "2026-07-22T16:15:07.202624+00:00",
+   "yeu_cau_can_dat": "Vận dụng được sự bằng nhau của hai tam giác để chứng minh hoặc chỉ ra mối quan hệ bằng nhau giữa các góc."
+  },
+  {
+   "id": "65075523-cd6a-4204-bab9-ac4a80811fb4",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Tính số đo góc trong tam giác",
+   "created_at": "2026-07-22T16:15:15.94692+00:00",
+   "yeu_cau_can_dat": "Tính được số đo góc của một tam giác bằng cách sử dụng các trường hợp bằng nhau của hai tam giác."
+  },
+  {
+   "id": "75a982d3-9e09-423e-9aed-c3d62c941ed8",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh hai tam giác bằng nhau",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng định nghĩa và tính chất của tam giác cân để chứng minh hai tam giác bằng nhau."
+  },
+  {
+   "id": "dd42a50d-8296-4a6e-b739-e3980edf7cf5",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh góc bằng nhau",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của tam giác cân hoặc đường trung trực để chứng minh hai góc bằng nhau."
+  },
+  {
+   "id": "423fa6d8-3c80-46fd-a010-66bebcbffff5",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của tam giác cân hoặc đường trung trực để chứng minh hai tam giác vuông bằng nhau."
+  },
+  {
+   "id": "fbc2241c-979d-4dcc-90d4-b3bbd2b4d748",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng định lí tổng các góc trong một tam giác để chứng minh hai góc bằng nhau hoặc hai cạnh bằng nhau."
+  },
+  {
+   "id": "28d9af7f-7e39-412b-ae5a-773f785bd382",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Vận dụng các trường hợp bằng nhau của hai tam giác để chứng minh hai đoạn thẳng bằng nhau hoặc hai góc bằng nhau."
+  },
+  {
+   "id": "5505ef05-d010-4b40-a51d-b4cfc5e71212",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của tam giác cân và định lí tổng các góc trong một tam giác để tính số đo góc."
+  },
+  {
+   "id": "0c65ce02-17e7-4489-aa1d-be4a116eb3f3",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Nhận biết được tam giác cân và tam giác đều dựa vào định nghĩa hoặc các dấu hiệu nhận biết về cạnh và góc."
+  },
+  {
+   "id": "1a8f7e9d-1713-4ab8-92ea-274b32f71205",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh hai tam giác bằng nhau",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng các trường hợp bằng nhau của tam giác vuông để chứng minh hai tam giác bằng nhau."
+  },
+  {
+   "id": "4ce95479-dd56-4ed4-9df7-840ad9458abe",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh góc bằng nhau",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng các trường hợp bằng nhau của tam giác vuông để chứng minh hai góc bằng nhau."
+  },
+  {
+   "id": "c2e96ef2-47f7-4681-8af6-5bc72b8b4da2",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Xác định được các cạnh tương ứng bằng nhau và các góc tương ứng bằng nhau từ kí hiệu hai tam giác bằng nhau."
+  },
+  {
+   "id": "ad479404-e89d-4420-b2c0-e7ac5dc6724e",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh góc bằng nhau",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Vận dụng trường hợp bằng nhau cạnh-cạnh-cạnh của hai tam giác để chứng minh hai góc bằng nhau."
+  },
+  {
+   "id": "781f7acd-6663-4b2c-b255-a86bc9b1ae46",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau",
+   "created_at": "2026-07-22T14:09:55.113314+00:00",
+   "yeu_cau_can_dat": "Giải thích được hai tam giác vuông bằng nhau bằng cách sử dụng các trường hợp bằng nhau của tam giác vuông."
+  },
+  {
+   "id": "aa9dd631-7383-4637-8f27-521062f68316",
+   "grade": "7",
+   "subject": "Hình học",
+   "topic": "Chương 4. Tam giác bằng nhau",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 4",
+   "created_at": "2026-09-12T13:22:55.079019+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức của chương 4 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "questions": [
+  {
+   "id": "ad8b6773-d7b2-41ef-a1c3-45aa9911195e",
+   "question_id": "CH_1784779462651_nclt",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "a2c793bb-c49c-4ac8-a47c-36bfccacd2d0",
+   "question_id": "CH_1784778634840_mxbt",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "1f93aac6-09cd-4348-a0c1-994d4242736b",
+   "question_id": "CH_1784778634840_exv2",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "2bb2b583-6a09-42a5-aa7a-69e660a3c980",
+   "question_id": "CH_1784778634840_vdm9",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "0d932a1e-87a4-44c6-950b-097314684fd7",
+   "question_id": "CH_1784778634840_t233",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "63a786a7-189e-4951-a2cb-f9c00fbd694f",
+   "question_id": "CH_1784778634840_sfao",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "5d9b9964-72f8-41bd-8ddf-027f9c8f17fb",
+   "question_id": "CH_1784778850496_kw3k",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "3651e3ba-3bf9-496b-aede-4f8e2676fefa",
+   "question_id": "CH_1784778850496_sdnd",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "1401b071-1505-4a74-adf2-8bfcd9dbb952",
+   "question_id": "CH_1784778850496_9q9k",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "6f31bcae-52b8-4494-a70e-1e0004a2115c",
+   "question_id": "CH_1784778850496_nisx",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "1bf6c16a-689f-4cc2-9a0b-c8ce4660f94f",
+   "question_id": "CH_1784779462651_ib3i",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "b29a5cab-8b94-499b-8c4b-3cecc0ef1f0b",
+   "question_id": "CH_1784779462651_dk4t",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "b66cfe61-75db-4946-989c-500649d62cb9",
+   "question_id": "CH_1784779462651_iwo9",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "76c931e9-bbdd-49a8-b011-cac2fbeecb73",
+   "question_id": "CH_1784779462651_kavx",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "c04190ac-955d-43b6-8032-7153a77441d2",
+   "question_id": "CH_1784779462651_m0sx",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "4427ae79-b3a1-4b4f-a8fb-eb8cd9a5a81e",
+   "question_id": "CH_1784779462651_64si",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "f2cd5f9b-26b7-428b-aa1c-d8390d4dbfb2",
+   "question_id": "CH_1784779462651_96yf",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "990628cc-0839-4762-9f43-9f395bc2d05b",
+   "question_id": "CH_1784779462651_5dhd",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "3f0b9e1f-0ed4-402a-b3f5-8fd0ec487651",
+   "question_id": "CH_1784779462651_92at",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "c5889649-252d-4370-9fda-8dde654dde49",
+   "question_id": "CH_1784732804267_n9cf",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "f4bb8386-4424-419e-a70a-1bc9e0e53bdb",
+   "question_id": "CH_1784732804267_7c7e",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "b4d7906a-4983-48b7-89e6-5aa24f5be210",
+   "question_id": "CH_1784780061312_tihl",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "bee9d3e4-6cfd-442f-9703-36785ed80975",
+   "question_id": "CH_1784780061312_40g0",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "b7289fbc-5bde-4650-9b09-27f75b202631",
+   "question_id": "CH_1784780061312_jhwe",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "2895fea7-395a-44be-bd3e-275ff1040c28",
+   "question_id": "CH_1784780061312_71hg",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "a8fad648-e91f-44cb-ba79-db081f699fbf",
+   "question_id": "CH_1784780061312_jxyf",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "ed4b75da-84a6-4bc8-8a51-7522facb1789",
+   "question_id": "CH_1784780061312_n6s5",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "9f39718f-1593-4d5c-a9dd-f08d781f9f49",
+   "question_id": "CH_1784780061312_odgb",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "fab7dc31-2b15-40c3-8a1f-47ac2bbdddf4",
+   "question_id": "CH_1784732804267_2nst",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "9b643c8b-1f99-4682-98c6-52575781d6cd",
+   "question_id": "CH_1784780061312_bj4s",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "6c14ab0d-7312-4f87-8d4c-19783002c2e6",
+   "question_id": "CH_1784780061312_bdrs",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "facacd5c-b959-44e5-aae4-3fff126b8877",
+   "question_id": "CH_1784780061312_jreo",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "11d2b9d8-1d4f-432d-9152-ec4b8efdfd02",
+   "question_id": "CH_1784780061312_x69p",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "18d1f5a4-7602-4bc6-99bc-037111e7452b",
+   "question_id": "CH_1784732804267_31kh",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "ddb5d451-9a6f-45c5-8493-2f66702c0769",
+   "question_id": "CH_1784735477012_2b90",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "9cc45041-255d-42be-957e-320477c147ad",
+   "question_id": "CH_1784779462651_rs5p",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "bf25ade9-0907-4178-bc56-dd24a9b19000",
+   "question_id": "CH_1784778634840_x64u",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "98a35765-338c-402b-91b6-5431e0a813b7",
+   "question_id": "CH_1784778850496_6f7t",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "7b8b1714-d37a-409c-b91f-2046e5823b6b",
+   "question_id": "CH_1784732804267_15k9",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "9c2dc9a6-4297-4dbc-9978-b2b766c7e2ff",
+   "question_id": "CH_1784733916659_5p8w",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "d97b479b-bb1e-4def-a621-1fc968f54daf",
+   "question_id": "CH_1784732804267_s3sq",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "e659a038-e6f5-4fef-97d0-242c3e06e2c6",
+   "question_id": "CH_1784732804267_i69l",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "42b81237-0c70-4d7e-913f-a57985828783",
+   "question_id": "CH_1784732804267_1ni7",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "6e32cbd5-498f-44cc-bb3d-ebfc2fd7fd46",
+   "question_id": "CH_1784732414379_474v",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "a0b43b67-d4aa-4856-b829-4a7621206431",
+   "question_id": "CH_1784732414379_6tu6",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "073c6628-b26d-4013-bb78-978548892cf0",
+   "question_id": "CH_1784732804267_n6oj",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "a362726e-a08c-4b99-8a38-d4790758a9fd",
+   "question_id": "CH_1784732804267_a15w",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "bf92e534-ea5f-40dc-8601-3a73e7891cc8",
+   "question_id": "CH_1784732804267_r2sc",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "b16ca6a6-f366-4a5e-9f57-ced6026a0c50",
+   "question_id": "CH_1784732804267_dsn0",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "3020003f-2cc8-45a0-886d-d5701124b49c",
+   "question_id": "CH_1784732804267_cwdb",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "12520391-e825-4183-96f7-9c88ad87bb99",
+   "question_id": "CH_1784733916659_o3o7",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "6825a8ac-3752-49e1-8d78-5c7206d7c73f",
+   "question_id": "CH_1784733916659_9co0",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "3416098f-4aeb-48cf-8e64-8c8a44192097",
+   "question_id": "CH_1784733916659_po8e",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "6e767e41-fb57-4e25-9ecc-1d75b7e948f9",
+   "question_id": "CH_1784733916659_lrvw",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "bbddf9c6-b730-4640-9b4c-24889be46201",
+   "question_id": "CH_1784733916659_uxzi",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "c40a740d-1944-4072-83a7-fd03cd623608",
+   "question_id": "CH_1784733916659_ovky",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "4e3772d8-ef2b-4e84-ba15-17f6e7c4f54d",
+   "question_id": "CH_1784733916659_7oqa",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "6f07e58d-4b90-422e-aaaf-c01889d147d2",
+   "question_id": "CH_1784734226443_v3xd",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "23e26724-ba5e-47c8-9dfc-a1cb403ba286",
+   "question_id": "CH_1784734481491_776g",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "9c06624c-7dc9-45e4-be60-f40d0eda8e02",
+   "question_id": "CH_1784734226443_bmd7",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "91a18422-e3f0-477a-a1d8-146ce733cecd",
+   "question_id": "CH_1784734226443_8c8j",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "62b40fe3-b04f-465f-9d19-181ef8752757",
+   "question_id": "CH_1784734226443_fw1x",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "45d9308b-ee6e-4a66-b266-c5fcbaa2deae",
+   "question_id": "CH_1784734226443_akan",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "20d276e4-784e-44b9-9c2f-d2e70fe95405",
+   "question_id": "CH_1784734226443_a9le",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "f561d8a7-c28d-4de0-b04a-22c4be1c6998",
+   "question_id": "CH_1784734226443_9t1n",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "b6aab352-e4bb-4a0b-b6a9-1e2fd52f4239",
+   "question_id": "CH_1784734481491_72e5",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "9d63805f-9ed8-4f20-b0d8-58820d23aeab",
+   "question_id": "CH_1784734481491_p734",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "3d45e0b9-1b21-4c01-adef-c8c914789b01",
+   "question_id": "CH_1784734481491_d2m2",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "637e2b59-08a7-4178-8136-ec9e443c37f7",
+   "question_id": "CH_1784734481491_go1h",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "76b6c9e6-3ac5-4e79-8f2c-6574d2737195",
+   "question_id": "CH_1784734936364_8w4j",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "4e817239-f935-4496-b53f-79e2b006c4d7",
+   "question_id": "CH_1784734936364_ro5z",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "c8638564-34de-4270-96ef-578c49023917",
+   "question_id": "CH_1784734936364_j7kk",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "37088a13-d964-4307-86a1-700a931f7daa",
+   "question_id": "CH_1784734936364_6hk8",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "04c5073a-728d-4997-a6fe-35c5fb54a4ca",
+   "question_id": "CH_1784734936364_bp0x",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "1585d375-fad2-4931-a0ea-600134d32111",
+   "question_id": "CH_1784735477012_roz9",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "fb2bba1d-04cb-45db-9b0a-f6d9605a7ca3",
+   "question_id": "CH_1784735477012_uumm",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "071e638f-0151-454a-ae33-919e474b36bf",
+   "question_id": "CH_1784735477012_8n0v",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "a51d553f-c8d1-49c5-9ef2-bfabd5b869a4",
+   "question_id": "CH_1784735477012_fum6",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "6bc6a07b-1d8b-4634-a6c6-cb52ac3eaead",
+   "question_id": "CH_1784736922660_f4uq",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "1dd8c79f-9416-4033-9c67-a1cd5f6c5ed5",
+   "question_id": "CH_1784736922660_6qga",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "c44b2c28-45e8-472c-86f2-0eb68a5fd475",
+   "question_id": "CH_1784778850496_h94e",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "b338b077-4e3b-4cff-beb6-2b8c433889d1",
+   "question_id": "CH_1784732804267_k7ha",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "13ea84ab-7cdd-42ec-a7d6-0a905f60289e",
+   "question_id": "CH_1784778850496_sxvd",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "e2891a4f-3db3-419b-9a07-3964bc7d30d7",
+   "question_id": "CH_1784778850496_9hhi",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "de23f9dc-34ec-4506-9a14-29b9f27b4b76",
+   "question_id": "CH_1784778850496_tz06",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "15ac9220-c015-4328-9f2e-4553ba499fd3",
+   "question_id": "CH_1784734936364_bdlz",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "eecbdd65-295d-4197-84e1-98a87dca9e20",
+   "question_id": "CH_1784734481491_ra7n",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "7d1d3834-4c04-4c97-95d3-fb2ccd6df56e",
+   "question_id": "CH_1784778850496_y3eq",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "7dc47c7a-425b-4bc7-9eb1-07015fa6369d",
+   "question_id": "CH_1784778850496_euak",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "d5b9399f-84cd-4d34-b2ef-23f849fa6ab8",
+   "question_id": "CH_1784778850496_r47b",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "df9a8077-f098-4dcb-9e71-a28c1aaa55b0",
+   "question_id": "CH_1784778850496_u5mf",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "f205b90e-d684-4726-ae76-11be9de2c7cf",
+   "question_id": "CH_1784778850496_xg75",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "69be9197-af4b-4ad1-9d5d-4c5fad1a9572",
+   "question_id": "CH_1784778850496_stlc",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "f5179a1f-363b-44fc-86c7-3ae3fe626e31",
+   "question_id": "CH_1784778850496_s5m8",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "0143dfe0-5c10-4283-94d2-433ca5a15791",
+   "question_id": "CH_1784778850496_zrs5",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "9d2c9b9f-61a7-428a-bc72-345a16c4b44b",
+   "question_id": "CH_1784778850496_bcje",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "4255955a-9bc7-4fb6-8673-6b1874ec5026",
+   "question_id": "CH_1784778634840_g3lz",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "7f188395-7d60-4ac2-a562-8cbfd03ac00f",
+   "question_id": "CH_1784778634840_j0id",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "a6e732aa-a041-4f4e-a7d0-bb171e10dc34",
+   "question_id": "CH_1784778850496_wh6x",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "0286e8f6-d085-4e7e-b73d-d4de8dc6baee",
+   "question_id": "CH_1784778634840_muic",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "523e31a6-1a47-4f4c-9b64-51d4d20c20d7",
+   "question_id": "CH_1784778634840_cvaa",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "8464ff03-3f67-4d97-8120-e6810b6eabe7",
+   "question_id": "CH_1784778634840_pe7s",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "ffa7775a-2cab-4f02-8bc3-3c2d62b149db",
+   "question_id": "CH_1784778634840_frer",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "248d2d94-7c3c-4a03-92cf-19c1d52a4b50",
+   "question_id": "CH_1784778634840_9imj",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "602b9967-f07d-4285-b776-4593771ab470",
+   "question_id": "CH_1784736922660_u48a",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "6953662a-5f44-4db3-a7c4-b362075be9a0",
+   "question_id": "CH_1784778634840_3rav",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "6194413f-bae2-4884-911b-7cde4d6181dd",
+   "question_id": "CH_1784778634840_jntd",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "abcf316a-84cf-4a50-8a63-544d68ccecd4",
+   "question_id": "CH_1784778634840_mgnz",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "24f1346d-52f5-452e-87a1-818e9cfc26c9",
+   "question_id": "CH_1784736922660_1kcb",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "ac474980-44a4-474c-8b8b-239b1d6e4252",
+   "question_id": "CH_1784778634840_fvqh",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "39426782-daba-4c8d-8516-d15eceebbeef",
+   "question_id": "CH_1784736922660_e6mu",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "a9a29fd4-a1ba-44ec-bc8d-9e102f9ca402",
+   "question_id": "CH_1784735572532_vvsy",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "05631fea-72c9-4f63-9d1e-fe65df757a1a",
+   "question_id": "CH_1784778850496_a8h2",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "37cd2f5d-1a9a-43ca-a788-ee53a98f9aca",
+   "question_id": "CH_1784736922660_cuwy",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "fd2b51ee-300e-45c1-a985-9433ab6f67ed",
+   "question_id": "CH_1784736922660_7hso",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "1342c4c6-59d0-47d8-8fcf-8a0a8e757680",
+   "question_id": "CH_1784735572532_s1oe",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "6e4d2301-83eb-4e3f-a558-5be5d94dc775",
+   "question_id": "CH_1784735477012_iv1r",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "7b69dcf3-d385-4748-8059-e6513bde2f60",
+   "question_id": "CH_1784735477012_iobc",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "97b01bbd-44eb-4ca1-b061-078fcb749717",
+   "question_id": "CH_1784735477012_pmjt",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "4f2aa96f-eb3a-44e2-9245-cbaac8215f0b",
+   "question_id": "CH_1784734936364_q0mw",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "7cbc1ddd-98ab-46de-8362-57ac7cc25214",
+   "question_id": "CH_1784735477012_ozcf",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "c90906c7-3e30-4aa1-b262-ec008c4c3ff1",
+   "question_id": "CH_1784735477012_xeo0",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "9b4e3264-3c04-4cee-b68c-74cead3d13c2",
+   "question_id": "CH_1784734936364_zo9e",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "ac825d82-2341-4f87-9bdf-3acc68fffbe0",
+   "question_id": "CH_1784735477012_6gzz",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "7aa301ec-0c1c-4f96-b6bf-57101590b235",
+   "question_id": "CH_1784734936364_tjo2",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "4c12fb08-bf8c-48e3-80f5-faf883845b8c",
+   "question_id": "CH_1784734936364_b4vi",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "b2b5577f-5e12-4bcd-9d03-749fffdc2b89",
+   "question_id": "CH_1784735477012_a7o2",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "7e58be51-ea1f-4caf-b4e3-55c0070b23f5",
+   "question_id": "CH_1784734936364_sl7l",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "ffe56103-6c58-473c-8104-e96350bc908c",
+   "question_id": "CH_1784734936364_0uwy",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "1b81b526-71f6-4c8b-bc6b-029392da7dec",
+   "question_id": "CH_1784734936364_58n5",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "506a7f9d-f0c9-4d07-b5c0-291fa39dd451",
+   "question_id": "CH_1784734936364_khi2",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "0f11ed8a-2e9f-4102-afad-4661e21dfce2",
+   "question_id": "CH_1784734936364_3ywg",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "824e9e8f-c8f2-45fa-a728-bf43a7faf8ca",
+   "question_id": "CH_1784734936364_a4qy",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "b0fd4985-1ee0-43dd-b08b-e7015098f4d8",
+   "question_id": "CH_1784734936364_tsp3",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "e345c02d-97f0-4e1a-9155-fab6ad24cd50",
+   "question_id": "CH_1784734936364_38zs",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "e89af809-e253-4fd5-952b-f4de3a02748c",
+   "question_id": "CH_1784734936364_76s3",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "ff6c459c-838f-4c60-ab8b-8ffdae0da6df",
+   "question_id": "CH_1784734936364_xgrm",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "14b2944a-027d-44c5-b807-fad63582f5d5",
+   "question_id": "CH_1784734481491_5vmd",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "ede771aa-7510-4557-afef-ddaec8ef084f",
+   "question_id": "CH_1784734936364_onbb",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "7a317218-ef21-49d8-b37f-ca0e9b37003a",
+   "question_id": "CH_1784734481491_swgi",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "e8fd3054-74f0-4b14-bdbd-8502a57bd441",
+   "question_id": "CH_1784732804267_0sec",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "7d50d439-d8d5-493f-92a6-8fe0c721a9be",
+   "question_id": "CH_1784734481491_mecl",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "60b5b883-537d-4694-9ebf-db4c535c830a",
+   "question_id": "CH_1784734481491_gvxu",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "5bea4ad4-f5a1-41f1-a5f7-cb32ce526749",
+   "question_id": "CH_1784734481491_pj6m",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "5692b973-eff2-41b3-9603-cb63e993dca2",
+   "question_id": "CH_1784734226443_358i",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "c0f85513-a174-429f-93d4-fe3331cc8b4c",
+   "question_id": "CH_1784734481491_3hae",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "9b938d41-8f00-4f45-a0fe-3ba84a66611a",
+   "question_id": "CH_1784734226443_eqmj",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "1a4b93bd-7fd6-4dc7-b165-eef712a2a952",
+   "question_id": "CH_1784734226443_seot",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "353aa169-91d6-455b-8f1a-a7403716ca49",
+   "question_id": "CH_1784734226443_fm8t",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "c2ec10ab-228b-4062-addd-97407718f6bb",
+   "question_id": "CH_1784734226443_diuq",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "d1586069-3414-4682-8265-575098c1e28e",
+   "question_id": "CH_1784734226443_bc41",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "1e9fda56-ac03-4d83-a8e1-a16cc6243021",
+   "question_id": "CH_1784734226443_09wg",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "b883f845-5e79-4019-a4f2-665928ed24e4",
+   "question_id": "CH_1784733916659_mkub",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "3f4e8a60-bb5a-49c9-95e7-9fbbd4f05c5f",
+   "question_id": "CH_1784732804267_0hh0",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "f9d6f527-a806-4434-b78b-28c20332cc25",
+   "question_id": "CH_1784734226443_6egz",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "5c1daa71-7658-4c61-9261-6f1cee7b0ce0",
+   "question_id": "CH_1784733916659_jryz",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "9b584d89-f3c5-4013-99d4-bd4a49c75b10",
+   "question_id": "CH_1784733916659_i84o",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "b1376c55-3bbc-46d2-8985-53b1a2c12c83",
+   "question_id": "CH_1784733916659_u326",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "8b71cadd-68a9-47ee-b879-eedf78371533",
+   "question_id": "CH_1784733916659_4yay",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "5b76cf12-1dc9-42a0-ad7b-bd56e0fbb3c6",
+   "question_id": "CH_1784732804267_u3iq",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "cf5655e3-12ea-471b-95bd-1556f1bebd68",
+   "question_id": "CH_1784732804267_phvq",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "728a9d85-6a43-4320-9f68-b198a04ee19c",
+   "question_id": "CH_1784732414379_zc4y",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "a7830212-3056-4383-b9a7-dfe4e9967d17",
+   "question_id": "CH_1784732414379_eyxl",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  },
+  {
+   "id": "c6d9f930-d6f8-485a-9dd2-c4b3eb8f0fb9",
+   "question_id": "CH_1784732414379_jwn2",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "0723b544-1a00-42fe-9b5e-4f9d191ecf25",
+   "question_id": "CH_1784734936364_nkc5",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "c0110d3a-628e-4b58-9a1b-7c121cbb56d0",
+   "question_id": "CH_1784735477012_5pii",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "4cbebb7b-c2e9-4b8f-a97f-0a5804f207f1",
+   "question_id": "CH_1784735477012_k8ab",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Tính số đo góc trong tam giác"
+  },
+  {
+   "id": "f71077c8-0ae8-45d5-8ec4-95ee82118ef7",
+   "question_id": "CH_1784778634840_dwnf",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "9e8b7845-ff38-4d03-a20b-ab9192f90d53",
+   "question_id": "CH_1784733916659_mizm",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "9f3ee19d-2d96-4018-8f0e-0f350a70c9a5",
+   "question_id": "CH_1784733916659_0wgr",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "1e569b5b-6a77-47b7-9fcb-4134f32c9b01",
+   "question_id": "CH_1784779462651_mqtw",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Xác định các cạnh bằng nhau, các góc bằng nhau"
+  },
+  {
+   "id": "8b910225-6a8c-4d10-bea3-4c0969c8d3db",
+   "question_id": "CH_1784734226443_aup0",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "780db355-15d0-49c4-a297-3f0f468daaf5",
+   "question_id": "CH_1784779462651_lfm7",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "7cff6938-58cd-4cf4-b8e3-bc6455e2c0d1",
+   "question_id": "CH_1784734226443_285a",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "baea7386-d62f-4e2f-99af-e1412dd84d63",
+   "question_id": "CH_1784780061312_gxgx",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh góc bằng nhau"
+  },
+  {
+   "id": "ea8b76ef-ee9b-4ca6-890c-cd1f59768e48",
+   "question_id": "CH_1784734936364_ou56",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "74875b1a-5bb6-48f2-8b6d-3530bb3f0496",
+   "question_id": "CH_1784778634840_5sef",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "fb7b136c-fbac-4697-af12-3dbe7288f0c0",
+   "question_id": "CH_1784734226443_s6c8",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "858d6619-d2f4-4bc3-8a1f-c0c5e8cba3a1",
+   "question_id": "CH_1784779462651_4jrd",
+   "lesson": "Bài 2. Hai tam giác bằng nhau (cạnh-cạnh-cạnh)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "1c6e8222-4571-4ad4-b41e-01a007874343",
+   "question_id": "CH_1784778634840_j28m",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "d9bfa350-0ff2-41d8-a783-4a659fc9fce5",
+   "question_id": "CH_1784778634840_rjtu",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh hai tam giác bằng nhau"
+  },
+  {
+   "id": "976a7645-8e59-4b27-a0ef-3278e6dd5b5c",
+   "question_id": "CH_1784734226443_utdl",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "e14cd057-768b-4db3-9e92-3f7a273c3a96",
+   "question_id": "CH_1784778850496_auk3",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "5b02096e-c752-4bd1-b571-be629c941b91",
+   "question_id": "CH_1784778634840_dwa1",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "3c1e2f04-7273-43a0-9030-76495fa682bf",
+   "question_id": "CH_1784734481491_t6kx",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "2b8618c2-3cd9-466e-bfa7-63024d3663b6",
+   "question_id": "CH_1784734481491_0fph",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "6e7be040-901e-444d-ad3a-52344af59215",
+   "question_id": "CH_1784735477012_vliy",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "8b54b9e5-fad9-4de7-b1a0-5a90fd93801a",
+   "question_id": "CH_1784778850496_qy1c",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 tam giác vuông bằng nhau"
+  },
+  {
+   "id": "4ccefb4c-f9f4-43b5-990e-20917177db3c",
+   "question_id": "CH_1784735572532_ajra",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "1eb773ac-10e2-496d-80af-fa56feebf34f",
+   "question_id": "CH_1784734226443_uymy",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "7a79c093-6cdf-4467-8771-bde4e43c24fc",
+   "question_id": "CH_1784734936364_cpp0",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "cc8f22ae-bb70-4059-9855-ed15bdccee06",
+   "question_id": "CH_1784734481491_dzke",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "03a2c35a-6184-4f93-b1ab-5012ed172a15",
+   "question_id": "CH_1784735477012_f40h",
+   "lesson": "Bài 3. Hai tam giác bằng nhau (cạnh-góc-cạnh) (góc-cạnh góc)",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "26e53b60-b166-4a70-83c3-22be3d691942",
+   "question_id": "CH_1784734481491_fjn0",
+   "lesson": "Bài 4. Các trường hợp bằng nhau trong tam giác vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "e4a15a58-f7c7-43de-8ddf-1b4303dc3db9",
+   "question_id": "CH_1784780061312_zqfb",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "e1fd5172-6513-40f1-be88-40a82d8be868",
+   "question_id": "CH_1784780061312_2j8h",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "dab17659-7a8a-4bd6-8b1a-ba503af1c600",
+   "question_id": "CH_1784780061312_isi6",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "9ef853bc-42cd-41d5-9f26-77557efaf5c9",
+   "question_id": "CH_1784780061312_3yg7",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Nhận biết tam giác cân, tam giác đều"
+  },
+  {
+   "id": "11399bea-85ef-4a5c-9d52-1a1d56e0608a",
+   "question_id": "CH_1784778634840_ooln",
+   "lesson": "Bài 5. Tam giác cân. Đường trung trực của đoạn thẳng",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 cạnh bằng nhau"
+  },
+  {
+   "id": "d28e72b0-c6d0-4a09-a621-d259d3298093",
+   "question_id": "CH_1784732804267_9ad0",
+   "lesson": "Bài 1. Tổng các góc trong một tam giác",
+   "math_form": "Mối quan hệ giữa các góc"
+  }
+ ]
+}

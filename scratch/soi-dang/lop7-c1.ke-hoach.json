@@ -1,0 +1,1204 @@
+{
+ "lop": "7",
+ "chuong": 1,
+ "dang": [
+  {
+   "bai": "Bài 1. Tập hợp số hữu tỉ",
+   "cu": "Nhận biết các số hữu tỉ, quan hệ trên tập hợp số",
+   "moi": "Nhận biết số hữu tỉ, kí hiệu ∈, ∉ và quan hệ giữa các tập hợp N, Z, Q",
+   "yc": "Nhận biết được số hữu tỉ, tập hợp Q; dùng đúng kí hiệu ∈, ∉, ⊂ và quan hệ bao hàm giữa các tập hợp N, Z, Q."
+  },
+  {
+   "bai": "Bài 1. Tập hợp số hữu tỉ",
+   "cu": null,
+   "moi": "Số đối của một số hữu tỉ",
+   "yc": "Tìm được số đối của một số hữu tỉ cho trước (phân số, hỗn số, số thập phân)."
+  },
+  {
+   "bai": "Bài 1. Tập hợp số hữu tỉ",
+   "cu": "Biểu diễn số hữu tỉ",
+   "moi": "Các phân số cùng biểu diễn một số hữu tỉ",
+   "yc": "Nhận biết được các phân số bằng nhau cùng biểu diễn một số hữu tỉ và viết được dạng tổng quát của chúng."
+  },
+  {
+   "bai": "Bài 1. Tập hợp số hữu tỉ",
+   "cu": null,
+   "moi": "Biểu diễn số hữu tỉ trên trục số",
+   "yc": "Biểu diễn được số hữu tỉ trên trục số và đọc được số hữu tỉ ứng với một điểm trên trục số."
+  },
+  {
+   "bai": "Bài 1. Tập hợp số hữu tỉ",
+   "cu": null,
+   "moi": "Nhận biết số hữu tỉ dương, số hữu tỉ âm",
+   "yc": "Nhận biết được một số hữu tỉ cho trước là số dương, số âm hay bằng 0."
+  },
+  {
+   "bai": "Bài 1. Tập hợp số hữu tỉ",
+   "cu": "Tìm điều kiện để một số hữu tỉ là số âm (dương) hay số nguyên",
+   "moi": "Tìm điều kiện để một biểu thức là số hữu tỉ, số hữu tỉ dương hay âm",
+   "yc": "Tìm được điều kiện của biến để một phân số có nghĩa (là số hữu tỉ) và để nó là số hữu tỉ dương, âm hoặc bằng 0."
+  },
+  {
+   "bai": "Bài 1. Tập hợp số hữu tỉ",
+   "cu": null,
+   "moi": "Tìm số nguyên x để biểu thức nhận giá trị nguyên",
+   "yc": "Tìm được các giá trị nguyên của biến để một phân số có tử và mẫu là biểu thức của biến nhận giá trị nguyên."
+  },
+  {
+   "bai": "Bài 1. Tập hợp số hữu tỉ",
+   "cu": "So sánh hai số hữu tỉ",
+   "moi": "So sánh, sắp xếp các số hữu tỉ",
+   "yc": "So sánh được hai số hữu tỉ (quy đồng, so sánh với 0, với 1, dùng số trung gian) và sắp xếp được dãy số hữu tỉ theo thứ tự."
+  },
+  {
+   "bai": "Bài 1. Tập hợp số hữu tỉ",
+   "cu": null,
+   "moi": "Tìm số hữu tỉ thoả mãn điều kiện so sánh",
+   "yc": "Tìm được các số hữu tỉ (phân số có tử hoặc mẫu cho trước, số nguyên) nằm giữa hai số hữu tỉ cho trước."
+  },
+  {
+   "bai": "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "cu": "Thực hiện phép tính của hai hay nhiều số hữu tỉ",
+   "moi": "Thực hiện phép tính cộng, trừ, nhân, chia số hữu tỉ",
+   "yc": "Thực hiện được các phép tính cộng, trừ, nhân, chia với số hữu tỉ viết dưới dạng phân số, hỗn số, số thập phân."
+  },
+  {
+   "bai": "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "cu": "Tính hợp lí",
+   "moi": "Tính hợp lí bằng tính chất của các phép tính",
+   "yc": "Vận dụng được tính chất giao hoán, kết hợp, phân phối của phép cộng và phép nhân để tính nhanh, tính hợp lí giá trị biểu thức."
+  },
+  {
+   "bai": "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "cu": "Tính tổng dãy số có quy luật",
+   "moi": "Tính tổng dãy số có quy luật",
+   "yc": "Vận dụng được quy tắc và tính chất phép tính số hữu tỉ để tính tổng của dãy phân số có quy luật."
+  },
+  {
+   "bai": "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "cu": "Viết một số hữu tỉ dưới dạng tổng hoặc hiệu của hai số hữu tỉ",
+   "moi": "Viết một số hữu tỉ dưới dạng tổng hoặc hiệu của hai số hữu tỉ",
+   "yc": "Biểu diễn được một số hữu tỉ cho trước dưới dạng tổng hoặc hiệu của hai số hữu tỉ theo yêu cầu."
+  },
+  {
+   "bai": "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "cu": "Tìm số hữu tỉ x thỏa mãn điều kiện cho trước",
+   "moi": "Tìm x trong đẳng thức có một phép tính",
+   "yc": "Tìm được số hữu tỉ chưa biết trong đẳng thức dạng x + a = b, a − x = b, a · x = b, x : a = b."
+  },
+  {
+   "bai": "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "cu": "Bài toán thực tế",
+   "moi": "Bài toán thực tế về các phép tính với số hữu tỉ",
+   "yc": "Giải quyết được một số vấn đề thực tiễn đơn giản liên quan đến các phép tính với số hữu tỉ."
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "cu": null,
+   "moi": "Nhận biết lũy thừa, các công thức về lũy thừa",
+   "yc": "Nhận biết được kí hiệu, cơ số, số mũ của lũy thừa và các công thức nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa."
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "cu": "Tính lũy thừa của một số hữu tỉ",
+   "moi": "Tính lũy thừa của một số hữu tỉ",
+   "yc": "Tính được giá trị lũy thừa với số mũ tự nhiên của một số hữu tỉ."
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "cu": null,
+   "moi": "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa",
+   "yc": "Thực hiện được phép nhân, chia hai lũy thừa cùng cơ số và tính được lũy thừa của lũy thừa, lũy thừa của một tích, một thương."
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "cu": "Thực hiện phép tính",
+   "moi": "Tính giá trị biểu thức có lũy thừa",
+   "yc": "Tính được giá trị của biểu thức số có chứa lũy thừa bằng cách vận dụng các công thức lũy thừa và thứ tự thực hiện phép tính."
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "cu": "Viết số dưới dạng lũy thừa của một số hữu tỉ",
+   "moi": "Viết số dưới dạng lũy thừa của một số hữu tỉ",
+   "yc": "Viết được một số hữu tỉ hoặc một tích, thương cho trước dưới dạng lũy thừa của một số hữu tỉ."
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "cu": "Tìm số mũ, cơ số của lũy thừa",
+   "moi": "Tìm số mũ của lũy thừa",
+   "yc": "Tìm được số mũ chưa biết bằng cách đưa hai vế về lũy thừa cùng cơ số."
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "cu": null,
+   "moi": "Tìm cơ số x khi biết lũy thừa",
+   "yc": "Tìm được số hữu tỉ x trong đẳng thức dạng (ax + b)^n = c bằng cách đưa vế phải về lũy thừa cùng số mũ."
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "cu": "So sánh các lũy thừa",
+   "moi": "So sánh các lũy thừa",
+   "yc": "So sánh được hai lũy thừa bằng cách đưa về cùng cơ số hoặc cùng số mũ, hoặc dùng số trung gian."
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "cu": null,
+   "moi": "Ứng dụng thực tế của lũy thừa (kí hiệu khoa học)",
+   "yc": "Vận dụng được lũy thừa của 10 để đọc, viết và tính toán với số liệu thực tế rất lớn hoặc rất nhỏ."
+  },
+  {
+   "bai": "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "cu": null,
+   "moi": "Nhận biết thứ tự thực hiện các phép tính và quy tắc chuyển vế",
+   "yc": "Phát biểu được thứ tự thực hiện các phép tính trong biểu thức có hoặc không có dấu ngoặc và quy tắc chuyển vế."
+  },
+  {
+   "bai": "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "cu": "Thực hiện phép tính",
+   "moi": "Thực hiện phép tính theo thứ tự (biểu thức có dấu ngoặc, có lũy thừa)",
+   "yc": "Tính được giá trị biểu thức số hữu tỉ có nhiều phép tính, có dấu ngoặc và lũy thừa theo đúng thứ tự thực hiện phép tính."
+  },
+  {
+   "bai": "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "cu": "Tìm giá trị chưa biết",
+   "moi": "Tìm x bằng quy tắc chuyển vế",
+   "yc": "Vận dụng được quy tắc chuyển vế và thứ tự thực hiện phép tính để tìm số hữu tỉ chưa biết trong đẳng thức có nhiều phép tính, có dấu ngoặc."
+  },
+  {
+   "bai": "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "cu": "Bài toán thực tế về thứ tự thực hiện phép tính",
+   "moi": "Bài toán thực tế về thứ tự thực hiện phép tính",
+   "yc": "Vận dụng được thứ tự thực hiện phép tính và quy tắc chuyển vế để lập luận, giải quyết các bài toán thực tế."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 1",
+   "moi": "Bài tập tổng hợp chương 1",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 1 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "dang": "Bài toán thực tế về số hữu tỉ"
+  },
+  {
+   "bai": "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "dang": "So sánh biểu thức lũy thừa"
+  },
+  {
+   "bai": "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "dang": "Tính hợp lí"
+  }
+ ],
+ "chuyen": {
+  "2usl": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Số đối của một số hữu tỉ"
+  ],
+  "l79t": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Số đối của một số hữu tỉ"
+  ],
+  "hn8r": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Số đối của một số hữu tỉ"
+  ],
+  "m0jb": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Số đối của một số hữu tỉ"
+  ],
+  "rcyr": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Số đối của một số hữu tỉ"
+  ],
+  "onox": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Các phân số cùng biểu diễn một số hữu tỉ"
+  ],
+  "38f6": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "umwd": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "8w10": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "3c5e": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "f5ye": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "96ox": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "xft8": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "xyet": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "vfdu": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "9xze": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "n45d": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "xu5i": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Biểu diễn số hữu tỉ trên trục số"
+  ],
+  "bz3u": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Nhận biết số hữu tỉ dương, số hữu tỉ âm"
+  ],
+  "9zwc": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Nhận biết số hữu tỉ dương, số hữu tỉ âm"
+  ],
+  "i2cz": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Nhận biết số hữu tỉ dương, số hữu tỉ âm"
+  ],
+  "fd9p": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Nhận biết số hữu tỉ dương, số hữu tỉ âm"
+  ],
+  "q9d2": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Nhận biết số hữu tỉ dương, số hữu tỉ âm"
+  ],
+  "o137": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Nhận biết số hữu tỉ dương, số hữu tỉ âm"
+  ],
+  "mjzf": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Nhận biết số hữu tỉ dương, số hữu tỉ âm"
+  ],
+  "tqpu": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "reys": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "xk2x": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "l488": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "y9tm": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "ppri": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "nuq7": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "3c05": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "gse8": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "s538": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "zbr2": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "ka32": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "824s": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số nguyên x để biểu thức nhận giá trị nguyên"
+  ],
+  "5bkw": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số hữu tỉ thoả mãn điều kiện so sánh"
+  ],
+  "r1zh": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số hữu tỉ thoả mãn điều kiện so sánh"
+  ],
+  "1l0t": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số hữu tỉ thoả mãn điều kiện so sánh"
+  ],
+  "m6up": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số hữu tỉ thoả mãn điều kiện so sánh"
+  ],
+  "55g6": [
+   "Bài 1. Tập hợp số hữu tỉ",
+   "Tìm số hữu tỉ thoả mãn điều kiện so sánh"
+  ],
+  "vx0n": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Thực hiện phép tính cộng, trừ, nhân, chia số hữu tỉ"
+  ],
+  "0jqw": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Thực hiện phép tính cộng, trừ, nhân, chia số hữu tỉ"
+  ],
+  "s9nm": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Thực hiện phép tính cộng, trừ, nhân, chia số hữu tỉ"
+  ],
+  "wm2y": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Thực hiện phép tính cộng, trừ, nhân, chia số hữu tỉ"
+  ],
+  "92ty": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Thực hiện phép tính cộng, trừ, nhân, chia số hữu tỉ"
+  ],
+  "sy2q": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Thực hiện phép tính cộng, trừ, nhân, chia số hữu tỉ"
+  ],
+  "oi9f": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Thực hiện phép tính cộng, trừ, nhân, chia số hữu tỉ"
+  ],
+  "198o": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "bq0k": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "d3wo": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "mdzk": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "oifb": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "vhgl": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "pppy": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "8d92": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "b1dv": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "37h4": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "0lrg": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ihl6": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "k92q": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "0ewr": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ayns": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "3mpi": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "wn6v": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "rfsk": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ece8": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "6u7s": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ub8c": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "s3z7": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "dw9m": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "8u6x": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "vzam": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "0ejh": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ko96": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "bf5l": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "xbgn": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "by9r": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "2rgh": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "jda6": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "x1pz": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "upfe": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "haa1": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ma2j": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "2pax": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "zczv": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "tbbp": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "d08c": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "2qta": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "w7vk": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ebcv": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "rj0w": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "achl": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "0xrr": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "zla9": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ejks": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "uwos": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "xo6c": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "9mum": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "mh01": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "9lso": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "5tu0": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "fj5j": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "lco5": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "02y7": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "7g2w": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "vh6z": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "osv0": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "1man": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "a7jt": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "27fd": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "e4fq": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "hjjr": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "iidb": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ekuh": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "zntq": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "tmsf": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "qzkv": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "jlzj": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "3f77": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "bu64": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "d3df": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "dtce": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "ksix": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "wnsl": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "00yz": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính hợp lí bằng tính chất của các phép tính"
+  ],
+  "kaeb": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Tính tổng dãy số có quy luật"
+  ],
+  "bm9g": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Viết một số hữu tỉ dưới dạng tổng hoặc hiệu của hai số hữu tỉ"
+  ],
+  "ha25": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Viết một số hữu tỉ dưới dạng tổng hoặc hiệu của hai số hữu tỉ"
+  ],
+  "qjh8": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Bài toán thực tế về các phép tính với số hữu tỉ"
+  ],
+  "wii7": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Bài toán thực tế về các phép tính với số hữu tỉ"
+  ],
+  "59l7": [
+   "Bài 2. Cộng, trừ, nhân, chia số hữu tỉ",
+   "Bài toán thực tế về các phép tính với số hữu tỉ"
+  ],
+  "e3q1": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhận biết lũy thừa, các công thức về lũy thừa"
+  ],
+  "4l7k": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhận biết lũy thừa, các công thức về lũy thừa"
+  ],
+  "fcbi": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhận biết lũy thừa, các công thức về lũy thừa"
+  ],
+  "mjed": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhận biết lũy thừa, các công thức về lũy thừa"
+  ],
+  "cucr": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhận biết lũy thừa, các công thức về lũy thừa"
+  ],
+  "yew3": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tính lũy thừa của một số hữu tỉ"
+  ],
+  "2dq3": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "hdfg": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "q10p": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "a3ro": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "f2mi": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "b0mp": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "9a6r": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "2nau": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "1iy1": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "ee07": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "2gs4": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "2kki": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "sjro": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "wqzp": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "rkn8": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "0r4o": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "0mz9": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "1sud": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "gdr5": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "0p3r": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "3lkc": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "q3av": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "aa2t": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "i4op": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "1xsn": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "ycke": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "ec8e": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "sq6l": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "w30j": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "y4fx": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "h3ka": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "ryig": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "63t1": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "j2t2": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "oufd": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "fkko": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "x7zr": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "i0mu": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "3pek": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "3wxl": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "dqfo": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "kyep": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "cw4a": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "gh7h": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Nhân, chia hai lũy thừa cùng cơ số, lũy thừa của lũy thừa"
+  ],
+  "04ns": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tính giá trị biểu thức có lũy thừa"
+  ],
+  "xaxi": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "gobv": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "nyzc": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "y6io": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "btaa": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "gujr": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "4tos": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "vlfx": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "qqnu": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "x3zi": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "auys": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "tal1": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "wtm0": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "tyvz": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "ldb0": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "yt30": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "8peh": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "n35q": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "8ggp": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "k84j": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "ujha": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "uj3k": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "lo7l": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "wz2c": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "6e0p": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "hexp": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "k9lb": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "n8lf": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "20f3": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "lspn": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "cezn": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "6wei": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "u2d4": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "l270": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Tìm cơ số x khi biết lũy thừa"
+  ],
+  "lyls": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "So sánh các lũy thừa"
+  ],
+  "o0aj": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "So sánh các lũy thừa"
+  ],
+  "6xf7": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "So sánh các lũy thừa"
+  ],
+  "vd22": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "So sánh các lũy thừa"
+  ],
+  "gdn5": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Ứng dụng thực tế của lũy thừa (kí hiệu khoa học)"
+  ],
+  "zfgl": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Ứng dụng thực tế của lũy thừa (kí hiệu khoa học)"
+  ],
+  "c27u": [
+   "Bài 3. Lũy thừa với số mũ tự nhiên của số hữu tỉ",
+   "Ứng dụng thực tế của lũy thừa (kí hiệu khoa học)"
+  ],
+  "i9j0": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Nhận biết thứ tự thực hiện các phép tính và quy tắc chuyển vế"
+  ],
+  "5x4q": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Nhận biết thứ tự thực hiện các phép tính và quy tắc chuyển vế"
+  ],
+  "gpcl": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Nhận biết thứ tự thực hiện các phép tính và quy tắc chuyển vế"
+  ],
+  "7z01": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Thực hiện phép tính theo thứ tự (biểu thức có dấu ngoặc, có lũy thừa)"
+  ],
+  "e3f2": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Thực hiện phép tính theo thứ tự (biểu thức có dấu ngoặc, có lũy thừa)"
+  ],
+  "kz7e": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "c4he": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "0zch": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "vr7c": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "hmdo": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "s13x": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "nkud": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "qs9a": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "jpsz": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "kp4g": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "fxbq": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "2roe": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "ru9c": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "9pcb": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "9mr1": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "7nqy": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "5jpj": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "hh0z": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "xml2": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "w5ce": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Tìm x bằng quy tắc chuyển vế"
+  ],
+  "x72l": [
+   "Bài 4. Thứ tự thực hiện các phép toán, quy tắc chuyển vế",
+   "Bài toán thực tế về thứ tự thực hiện phép tính"
+  ]
+ }
+}

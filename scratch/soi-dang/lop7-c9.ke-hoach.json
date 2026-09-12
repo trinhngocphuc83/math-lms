@@ -1,0 +1,110 @@
+{
+ "lop": "7",
+ "chuong": 9,
+ "dang": [
+  {
+   "bai": "Bài 1. Quan hệ giữa góc và cạnh đối diện trong một tam giác",
+   "cu": "So sánh các góc trong một tam giác khi biết độ dài các cạnh",
+   "moi": "So sánh các góc trong một tam giác khi biết độ dài các cạnh",
+   "yc": "So sánh được các góc của một tam giác khi biết độ dài ba cạnh (góc đối diện với cạnh lớn hơn thì lớn hơn)."
+  },
+  {
+   "bai": "Bài 1. Quan hệ giữa góc và cạnh đối diện trong một tam giác",
+   "cu": "So sánh các cạnh trong một tam giác khi biết số đo các góc",
+   "moi": "So sánh các cạnh trong một tam giác khi biết số đo các góc",
+   "yc": "So sánh được các cạnh của một tam giác khi biết số đo các góc, kể cả khi phải tính góc còn lại."
+  },
+  {
+   "bai": "Bài 1. Quan hệ giữa góc và cạnh đối diện trong một tam giác",
+   "cu": null,
+   "moi": "Vận dụng quan hệ giữa góc và cạnh đối diện để chứng minh, giải bài toán thực tế",
+   "yc": "Vận dụng được quan hệ giữa góc và cạnh đối diện (cạnh huyền lớn nhất, cạnh đối diện góc tù lớn nhất) để chứng minh bất đẳng thức độ dài và giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 2. Quan hệ giữa đường vuông góc và đường xiên",
+   "cu": "Nhận biết đường vuông góc, đường xiên, hình chiếu",
+   "moi": "Nhận biết đường vuông góc, đường xiên, khoảng cách từ một điểm đến một đường thẳng",
+   "yc": "Nhận biết được đường vuông góc, đường xiên kẻ từ một điểm đến một đường thẳng và khoảng cách từ điểm đó đến đường thẳng."
+  },
+  {
+   "bai": "Bài 2. Quan hệ giữa đường vuông góc và đường xiên",
+   "cu": "Vận dụng định lí để so sánh đường vuông góc và đường xiên",
+   "moi": "So sánh đường vuông góc và đường xiên",
+   "yc": "So sánh được độ dài các đoạn thẳng kẻ từ một điểm đến một đường thẳng dựa vào quan hệ đường vuông góc ngắn hơn đường xiên."
+  },
+  {
+   "bai": "Bài 2. Quan hệ giữa đường vuông góc và đường xiên",
+   "cu": null,
+   "moi": "Bài toán thực tế về đường vuông góc và đường xiên",
+   "yc": "Vận dụng được quan hệ giữa đường vuông góc và đường xiên để giải bài toán thực tế (đường đi ngắn nhất, khoảng cách ngắn nhất)."
+  },
+  {
+   "bai": "Bài 3. Quan hệ giữa ba cạnh của một tam giác",
+   "cu": "Kiểm tra ba độ dài có thể là ba cạnh của một tam giác",
+   "moi": "Kiểm tra ba độ dài có là ba cạnh của một tam giác",
+   "yc": "Kiểm tra được ba độ dài cho trước có là độ dài ba cạnh của một tam giác hay không bằng bất đẳng thức tam giác."
+  },
+  {
+   "bai": "Bài 3. Quan hệ giữa ba cạnh của một tam giác",
+   "cu": "Ước lượng độ dài cạnh thứ ba của tam giác (bất đẳng thức tam giác)",
+   "moi": "Tìm độ dài cạnh thứ ba của tam giác",
+   "yc": "Tìm được khoảng giá trị hoặc giá trị nguyên của cạnh thứ ba, độ dài cạnh của tam giác cân, khi biết hai cạnh còn lại."
+  },
+  {
+   "bai": "Bài 3. Quan hệ giữa ba cạnh của một tam giác",
+   "cu": null,
+   "moi": "Chứng minh bất đẳng thức độ dài bằng bất đẳng thức tam giác",
+   "yc": "Chứng minh được các bất đẳng thức về độ dài đoạn thẳng, chu vi bằng cách vận dụng bất đẳng thức tam giác."
+  },
+  {
+   "bai": "Bài 3. Quan hệ giữa ba cạnh của một tam giác",
+   "cu": null,
+   "moi": "Bài toán thực tế về bất đẳng thức tam giác",
+   "yc": "Vận dụng được bất đẳng thức tam giác để giải bài toán thực tế (vị trí trạm, đường đi ngắn nhất...)."
+  },
+  {
+   "bai": "Bài 4. Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam giác",
+   "cu": "Tính chất ba đường trung tuyến (trọng tâm) của tam giác",
+   "moi": "Tính độ dài đoạn thẳng nhờ tính chất trọng tâm",
+   "yc": "Tính được độ dài các đoạn thẳng trên đường trung tuyến dựa vào tính chất trọng tâm cách đỉnh một khoảng bằng 2/3 độ dài đường trung tuyến."
+  },
+  {
+   "bai": "Bài 4. Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam giác",
+   "cu": null,
+   "moi": "Chứng minh bằng tính chất ba đường trung tuyến",
+   "yc": "Vận dụng được sự đồng quy của ba đường trung tuyến để chứng minh một điểm là trọng tâm, ba điểm thẳng hàng, hai đoạn thẳng bằng nhau."
+  },
+  {
+   "bai": "Bài 4. Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam giác",
+   "cu": "Tính chất ba đường phân giác (tâm đường tròn nội tiếp) của tam giác",
+   "moi": "Vận dụng tính chất ba đường phân giác của tam giác",
+   "yc": "Vận dụng được tính chất giao điểm ba đường phân giác cách đều ba cạnh để tính góc, chứng minh tia phân giác và các quan hệ trong tam giác."
+  },
+  {
+   "bai": "Bài 5. Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác",
+   "cu": "Tính chất ba đường trung trực (tâm đường tròn ngoại tiếp) của tam giác",
+   "moi": "Vận dụng tính chất ba đường trung trực của tam giác",
+   "yc": "Vận dụng được tính chất giao điểm ba đường trung trực cách đều ba đỉnh để chứng minh, xác định điểm cách đều ba điểm và tính góc."
+  },
+  {
+   "bai": "Bài 5. Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác",
+   "cu": "Tính chất ba đường cao (trực tâm) của tam giác",
+   "moi": "Vận dụng tính chất ba đường cao của tam giác",
+   "yc": "Vận dụng được sự đồng quy của ba đường cao để xác định trực tâm, chứng minh hai đường thẳng vuông góc và tính góc."
+  },
+  {
+   "bai": "Bài 5. Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác",
+   "cu": null,
+   "moi": "Đường trung tuyến, phân giác, trung trực, đường cao trong tam giác cân, tam giác đều",
+   "yc": "Vận dụng được tính chất trong tam giác cân đường trung tuyến ứng với cạnh đáy đồng thời là đường phân giác, đường trung trực, đường cao để chứng minh tam giác cân và các quan hệ liên quan."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Tổng hợp kiến thức về các yếu tố trong tam giác",
+   "moi": "Bài tập tổng hợp chương 9",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 9 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

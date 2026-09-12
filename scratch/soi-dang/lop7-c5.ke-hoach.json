@@ -1,0 +1,61 @@
+{
+ "lop": "7",
+ "chuong": 5,
+ "dang": [
+  {
+   "bai": "Bài 1. Thu thập và phân loại dữ liệu",
+   "cu": "Thu thập và phân loại dữ liệu",
+   "moi": "Thu thập, phân loại dữ liệu định tính và định lượng",
+   "yc": "Thu thập được dữ liệu từ bảng, biểu đồ, phỏng vấn và phân loại được dữ liệu theo tiêu chí định tính, định lượng."
+  },
+  {
+   "bai": "Bài 1. Thu thập và phân loại dữ liệu",
+   "cu": "Tính đại diện của dữ liệu",
+   "moi": "Tính hợp lí và tính đại diện của dữ liệu",
+   "yc": "Nhận biết được tính hợp lí của dữ liệu trong bảng thống kê và tính đại diện của dữ liệu thu thập được."
+  },
+  {
+   "bai": "Bài 2. Biểu đồ hình quạt tròn",
+   "cu": "Đọc và mô tả biểu đồ hình quạt tròn",
+   "moi": "Đọc và mô tả biểu đồ hình quạt tròn",
+   "yc": "Đọc và mô tả được các thông tin biểu diễn trên biểu đồ hình quạt tròn, lập được bảng thống kê tương ứng."
+  },
+  {
+   "bai": "Bài 2. Biểu đồ hình quạt tròn",
+   "cu": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn",
+   "moi": "Biểu diễn dữ liệu vào biểu đồ hình quạt tròn",
+   "yc": "Biểu diễn được dữ liệu từ bảng thống kê tỉ lệ phần trăm vào biểu đồ hình quạt tròn."
+  },
+  {
+   "bai": "Bài 2. Biểu đồ hình quạt tròn",
+   "cu": "Phân tích dữ liệu trong biểu đồ hình quạt tròn",
+   "moi": "Phân tích dữ liệu trong biểu đồ hình quạt tròn",
+   "yc": "Phân tích được dữ liệu trên biểu đồ hình quạt tròn để đưa ra nhận xét, tính toán số lượng từ tỉ lệ phần trăm."
+  },
+  {
+   "bai": "Bài 3. Biểu đồ đoạn thẳng",
+   "cu": "Vẽ biểu đồ đoạn thẳng",
+   "moi": "Vẽ biểu đồ đoạn thẳng",
+   "yc": "Vẽ được biểu đồ đoạn thẳng biểu diễn bảng dữ liệu thống kê theo thời gian."
+  },
+  {
+   "bai": "Bài 3. Biểu đồ đoạn thẳng",
+   "cu": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng",
+   "moi": "Đọc và phân tích dữ liệu trong biểu đồ đoạn thẳng",
+   "yc": "Đọc và phân tích được dữ liệu trên biểu đồ đoạn thẳng, nhận xét được xu hướng tăng, giảm."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 5",
+   "moi": "Bài tập tổng hợp chương 5",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 5 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {
+  "vkaa": [
+   "Bài 1. Thu thập và phân loại dữ liệu",
+   "Tính hợp lí và tính đại diện của dữ liệu"
+  ]
+ }
+}

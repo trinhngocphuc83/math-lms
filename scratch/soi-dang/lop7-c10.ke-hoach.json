@@ -1,0 +1,62 @@
+{
+ "lop": "7",
+ "chuong": 10,
+ "dang": [
+  {
+   "bai": "Bài 1. Hình hộp chữ nhật và hình lập phương",
+   "cu": "Nhận biết các yếu tố của hình hộp chữ nhật, hình lập phương",
+   "moi": "Nhận biết các yếu tố của hình hộp chữ nhật, hình lập phương",
+   "yc": "Mô tả được đỉnh, cạnh, mặt, đường chéo của hình hộp chữ nhật, hình lập phương và nhận biết được hình khai triển của chúng."
+  },
+  {
+   "bai": "Bài 1. Hình hộp chữ nhật và hình lập phương",
+   "cu": "Tính diện tích xung quanh, diện tích toàn phần",
+   "moi": "Tính diện tích xung quanh, diện tích toàn phần của hình hộp chữ nhật, hình lập phương",
+   "yc": "Tính được diện tích xung quanh, diện tích toàn phần của hình hộp chữ nhật, hình lập phương và tính ngược một kích thước khi biết diện tích."
+  },
+  {
+   "bai": "Bài 1. Hình hộp chữ nhật và hình lập phương",
+   "cu": "Tính thể tích",
+   "moi": "Tính thể tích của hình hộp chữ nhật, hình lập phương",
+   "yc": "Tính được thể tích của hình hộp chữ nhật, hình lập phương và tính ngược một kích thước khi biết thể tích."
+  },
+  {
+   "bai": "Bài 1. Hình hộp chữ nhật và hình lập phương",
+   "cu": null,
+   "moi": "Bài toán thực tế về hình hộp chữ nhật, hình lập phương",
+   "yc": "Giải được bài toán thực tế về diện tích, thể tích của hình hộp chữ nhật, hình lập phương (bể nước, thùng hàng, sơn tường...)."
+  },
+  {
+   "bai": "Bài 2. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác",
+   "cu": "Nhận biết các yếu tố của hình lăng trụ đứng tam giác, tứ giác",
+   "moi": "Nhận biết các yếu tố của hình lăng trụ đứng tam giác, hình lăng trụ đứng tứ giác",
+   "yc": "Mô tả được đỉnh, cạnh, mặt đáy, mặt bên, chiều cao của hình lăng trụ đứng tam giác, tứ giác và nhận biết được hình khai triển của chúng."
+  },
+  {
+   "bai": "Bài 2. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác",
+   "cu": "Tính diện tích xung quanh của hình lăng trụ đứng",
+   "moi": "Tính diện tích xung quanh, diện tích toàn phần của hình lăng trụ đứng",
+   "yc": "Tính được diện tích xung quanh, diện tích toàn phần của hình lăng trụ đứng tam giác, tứ giác."
+  },
+  {
+   "bai": "Bài 2. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác",
+   "cu": "Tính thể tích của hình lăng trụ đứng",
+   "moi": "Tính thể tích của hình lăng trụ đứng",
+   "yc": "Tính được thể tích của hình lăng trụ đứng tam giác, tứ giác và tính ngược chiều cao, diện tích đáy khi biết thể tích."
+  },
+  {
+   "bai": "Bài 2. Hình lăng trụ đứng tam giác và hình lăng trụ đứng tứ giác",
+   "cu": null,
+   "moi": "Bài toán thực tế về hình lăng trụ đứng",
+   "yc": "Giải được bài toán thực tế về diện tích, thể tích của hình lăng trụ đứng (lều trại, khúc gỗ, bể bơi...)."
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "cu": "Tổng hợp tính toán diện tích, thể tích các hình khối thực tiễn",
+   "moi": "Bài tập tổng hợp chương 10",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 10 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

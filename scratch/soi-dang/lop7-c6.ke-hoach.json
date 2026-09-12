@@ -1,0 +1,104 @@
+{
+ "lop": "7",
+ "chuong": 6,
+ "dang": [
+  {
+   "bai": "Bài 1. Tỉ lệ thức",
+   "cu": null,
+   "moi": "Nhận biết tỉ lệ thức, tìm các tỉ số lập thành tỉ lệ thức",
+   "yc": "Nhận biết được tỉ lệ thức và kiểm tra được hai tỉ số cho trước có lập thành tỉ lệ thức hay không."
+  },
+  {
+   "bai": "Bài 1. Tỉ lệ thức",
+   "cu": "Lập tỉ lệ thức từ các số cho trước",
+   "moi": "Lập tỉ lệ thức từ các số hoặc đẳng thức cho trước",
+   "yc": "Lập được tất cả các tỉ lệ thức từ bốn số cho trước hoặc từ một đẳng thức tích ad = bc."
+  },
+  {
+   "bai": "Bài 1. Tỉ lệ thức",
+   "cu": "Tìm thành phần chưa biết trong tỉ lệ thức",
+   "moi": "Tìm thành phần chưa biết trong tỉ lệ thức",
+   "yc": "Tìm được x trong tỉ lệ thức bằng tính chất cơ bản của tỉ lệ thức (tích trung tỉ bằng tích ngoại tỉ)."
+  },
+  {
+   "bai": "Bài 2. Tính chất của dãy tỉ số bằng nhau",
+   "cu": "Tìm các số chưa biết dựa vào dãy tỉ số bằng nhau",
+   "moi": "Tìm các số chưa biết khi biết tổng hoặc hiệu của chúng",
+   "yc": "Vận dụng được tính chất của dãy tỉ số bằng nhau để tìm hai hay ba số chưa biết khi biết tổng hoặc hiệu của chúng."
+  },
+  {
+   "bai": "Bài 2. Tính chất của dãy tỉ số bằng nhau",
+   "cu": null,
+   "moi": "Tìm các số chưa biết khi biết tích hoặc tổng bình phương",
+   "yc": "Tìm được các số chưa biết trong dãy tỉ số bằng nhau khi biết tích của chúng hoặc tổng các bình phương bằng cách đặt ẩn phụ."
+  },
+  {
+   "bai": "Bài 2. Tính chất của dãy tỉ số bằng nhau",
+   "cu": null,
+   "moi": "Chứng minh đẳng thức từ tỉ lệ thức",
+   "yc": "Chứng minh được đẳng thức giữa các tỉ số bằng cách đặt tỉ số bằng k hoặc dùng tính chất dãy tỉ số bằng nhau."
+  },
+  {
+   "bai": "Bài 2. Tính chất của dãy tỉ số bằng nhau",
+   "cu": "Bài toán thực tế về dãy tỉ số bằng nhau (chia tỉ lệ)",
+   "moi": "Bài toán thực tế chia một đại lượng theo tỉ lệ",
+   "yc": "Giải được bài toán thực tế chia một số thành các phần tỉ lệ với các số cho trước bằng tính chất dãy tỉ số bằng nhau."
+  },
+  {
+   "bai": "Bài 3. Đại lượng tỉ lệ thuận",
+   "cu": "Nhận biết hai đại lượng tỉ lệ thuận, tìm hệ số tỉ lệ",
+   "moi": "Nhận biết hai đại lượng tỉ lệ thuận, tìm hệ số tỉ lệ và viết công thức",
+   "yc": "Nhận biết được hai đại lượng tỉ lệ thuận, tìm được hệ số tỉ lệ và viết được công thức liên hệ y = kx."
+  },
+  {
+   "bai": "Bài 3. Đại lượng tỉ lệ thuận",
+   "cu": null,
+   "moi": "Lập bảng giá trị tương ứng của hai đại lượng tỉ lệ thuận",
+   "yc": "Hoàn thành được bảng giá trị tương ứng và tính được giá trị của đại lượng này khi biết giá trị của đại lượng kia."
+  },
+  {
+   "bai": "Bài 3. Đại lượng tỉ lệ thuận",
+   "cu": "Bài toán thực tế về đại lượng tỉ lệ thuận",
+   "moi": "Bài toán thực tế về đại lượng tỉ lệ thuận",
+   "yc": "Giải được bài toán thực tế về hai đại lượng tỉ lệ thuận (quãng đường - thời gian, khối lượng - thể tích, tiền - số lượng...)."
+  },
+  {
+   "bai": "Bài 3. Đại lượng tỉ lệ thuận",
+   "cu": null,
+   "moi": "Chia một số thành các phần tỉ lệ thuận với các số cho trước",
+   "yc": "Chia được một số thành các phần tỉ lệ thuận với các số cho trước và giải các bài toán thực tế tương ứng."
+  },
+  {
+   "bai": "Bài 4. Đại lượng tỉ lệ nghịch",
+   "cu": "Nhận biết hai đại lượng tỉ lệ nghịch, tìm hệ số tỉ lệ",
+   "moi": "Nhận biết hai đại lượng tỉ lệ nghịch, tìm hệ số tỉ lệ và viết công thức",
+   "yc": "Nhận biết được hai đại lượng tỉ lệ nghịch, tìm được hệ số tỉ lệ và viết được công thức liên hệ y = a/x."
+  },
+  {
+   "bai": "Bài 4. Đại lượng tỉ lệ nghịch",
+   "cu": null,
+   "moi": "Lập bảng giá trị tương ứng của hai đại lượng tỉ lệ nghịch",
+   "yc": "Hoàn thành được bảng giá trị tương ứng và tính được giá trị của đại lượng này khi biết giá trị của đại lượng kia."
+  },
+  {
+   "bai": "Bài 4. Đại lượng tỉ lệ nghịch",
+   "cu": "Bài toán thực tế về đại lượng tỉ lệ nghịch",
+   "moi": "Bài toán thực tế về đại lượng tỉ lệ nghịch",
+   "yc": "Giải được bài toán thực tế về hai đại lượng tỉ lệ nghịch (số máy - số ngày, vận tốc - thời gian, số người - số ngày làm...)."
+  },
+  {
+   "bai": "Bài 4. Đại lượng tỉ lệ nghịch",
+   "cu": null,
+   "moi": "Chia một số thành các phần tỉ lệ nghịch với các số cho trước",
+   "yc": "Chia được một số thành các phần tỉ lệ nghịch với các số cho trước và giải các bài toán thực tế tương ứng."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Tổng hợp các bài toán tỉ lệ thức và đại lượng tỉ lệ",
+   "moi": "Bài tập tổng hợp chương 6",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 6 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}
