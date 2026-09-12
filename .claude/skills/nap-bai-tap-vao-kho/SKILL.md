@@ -36,6 +36,17 @@ PDF được dựng thành ảnh từng trang ở `scratch/nap-kho/<tên>/trang-
 thì còn có `<tên>.txt` — **ưu tiên đọc chữ**, chỉ nhìn ảnh để soát công thức và lấy hình vẽ.
 Word thành `<tên>.md` kèm ảnh trích sẵn. Tài liệu quét không có chữ thì đọc ảnh từng trang.
 
+**Vở bài tập** (mỗi bài kèm hàng chục dòng chấm chấm để học sinh viết lời giải) thì lớp chữ
+thường hỏng mã và ảnh từng trang gần như trống. Nén lại rồi mới đọc:
+
+```bash
+node .claude/skills/nap-bai-tap-vao-kho/scripts/nen-trang.mjs scratch/nap-kho/<tên> 333 347 bai15
+```
+
+Ra `scratch/nap-kho/nen/bai15-<k>.png`: bỏ dòng chấm và khoảng trắng, ghép nhiều trang thành
+ảnh cao ≤ 2800 px, giữa các trang có vạch ghi số trang gốc để còn quay lại cắt hình. Một bài
+15 trang thường nén còn 3–4 ảnh, đọc một lần là đủ đề.
+
 ### 2. Tải danh mục của khối
 
 ```bash
