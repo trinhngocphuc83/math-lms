@@ -1,0 +1,139 @@
+{
+ "lop": "9",
+ "chuong": 5,
+ "dang": [
+  {
+   "bai": "Bài 1. Mở đầu về đường tròn",
+   "cu": "Nhận biết đường tròn, hình tròn, vị trí của điểm so với đường tròn",
+   "moi": "Nhận biết đường tròn, hình tròn, vị trí của điểm so với đường tròn",
+   "yc": "Nhận biết được đường tròn, hình tròn, tâm, bán kính và xác định được vị trí của một điểm so với đường tròn."
+  },
+  {
+   "bai": "Bài 1. Mở đầu về đường tròn",
+   "cu": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn",
+   "moi": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn",
+   "yc": "Xác định được đường tròn đi qua các điểm cho trước và chứng minh được nhiều điểm cùng thuộc một đường tròn."
+  },
+  {
+   "bai": "Bài 1. Mở đầu về đường tròn",
+   "cu": "Tính bán kính, khoảng cách liên quan đến đường tròn",
+   "moi": "Tính bán kính, khoảng cách liên quan đến đường tròn",
+   "yc": "Tính được bán kính đường tròn và khoảng cách giữa các điểm bằng định lí Pythagore, tính chất tam giác."
+  },
+  {
+   "bai": "Bài 1. Mở đầu về đường tròn",
+   "cu": "Tính chất đối xứng của đường tròn",
+   "moi": "Tính chất đối xứng của đường tròn",
+   "yc": "Nhận biết được tâm đối xứng, trục đối xứng của đường tròn và vận dụng để chứng minh."
+  },
+  {
+   "bai": "Bài 2. Cung và dây của một đường tròn",
+   "cu": "Số đo cung, góc ở tâm",
+   "moi": "Số đo cung, góc ở tâm",
+   "yc": "Nhận biết được cung, dây, góc ở tâm và tính được số đo cung nhỏ, cung lớn."
+  },
+  {
+   "bai": "Bài 2. Cung và dây của một đường tròn",
+   "cu": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây",
+   "moi": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây",
+   "yc": "Vận dụng được tính chất đường kính vuông góc với dây và liên hệ giữa dây với khoảng cách từ tâm đến dây để tính toán."
+  },
+  {
+   "bai": "Bài 2. Cung và dây của một đường tròn",
+   "cu": "So sánh độ dài hai dây và hai cung tương ứng",
+   "moi": "So sánh độ dài hai dây và hai cung tương ứng",
+   "yc": "So sánh được hai dây, hai cung của một đường tròn dựa vào quan hệ giữa dây và cung, dây và khoảng cách đến tâm."
+  },
+  {
+   "bai": "Bài 2. Cung và dây của một đường tròn",
+   "cu": "Chứng minh hình học liên quan đến dây và cung",
+   "moi": "Chứng minh hình học liên quan đến dây và cung",
+   "yc": "Chứng minh được các quan hệ bằng nhau, song song, vuông góc liên quan đến dây và cung của đường tròn."
+  },
+  {
+   "bai": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "cu": "Tính độ dài đường tròn, cung tròn",
+   "moi": "Tính độ dài đường tròn, cung tròn",
+   "yc": "Tính được độ dài đường tròn và độ dài cung tròn khi biết bán kính và số đo cung."
+  },
+  {
+   "bai": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "cu": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên",
+   "moi": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên",
+   "yc": "Tính được diện tích hình tròn, hình quạt tròn, hình viên phân và hình vành khuyên theo bán kính và số đo cung."
+  },
+  {
+   "bai": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "cu": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt",
+   "moi": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt",
+   "yc": "Giải quyết được một số vấn đề thực tiễn (bánh xe, đồng hồ, quạt giấy, vườn hoa) liên quan đến độ dài cung và diện tích hình quạt."
+  },
+  {
+   "bai": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "cu": "Nhận biết vị trí tương đối của đường thẳng và đường tròn",
+   "moi": "Nhận biết vị trí tương đối của đường thẳng và đường tròn",
+   "yc": "Xác định được đường thẳng cắt, tiếp xúc hay không giao với đường tròn dựa vào khoảng cách từ tâm đến đường thẳng."
+  },
+  {
+   "bai": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "cu": "Tính chất và dấu hiệu nhận biết tiếp tuyến",
+   "moi": "Tính chất và dấu hiệu nhận biết tiếp tuyến",
+   "yc": "Nhận biết được tiếp tuyến của đường tròn, vận dụng được tính chất và dấu hiệu nhận biết để chứng minh một đường thẳng là tiếp tuyến."
+  },
+  {
+   "bai": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "cu": "Tính chất hai tiếp tuyến cắt nhau",
+   "moi": "Tính chất hai tiếp tuyến cắt nhau",
+   "yc": "Vận dụng được tính chất của hai tiếp tuyến cắt nhau để chứng minh và tính toán."
+  },
+  {
+   "bai": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "cu": "Chứng minh, tính toán với tiếp tuyến",
+   "moi": "Chứng minh, tính toán với tiếp tuyến",
+   "yc": "Chứng minh và tính được độ dài, diện tích trong các hình có tiếp tuyến, đường tròn nội tiếp hình thang."
+  },
+  {
+   "bai": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "cu": "Nhận biết vị trí tương đối của hai đường tròn",
+   "moi": "Nhận biết vị trí tương đối của hai đường tròn",
+   "yc": "Xác định được hai đường tròn cắt nhau, tiếp xúc ngoài, tiếp xúc trong hay không giao nhau dựa vào đoạn nối tâm và các bán kính."
+  },
+  {
+   "bai": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "cu": "Tính chất đường nối tâm",
+   "moi": "Tính chất đường nối tâm",
+   "yc": "Vận dụng được tính chất đường nối tâm là trục đối xứng của hình gồm hai đường tròn để chứng minh."
+  },
+  {
+   "bai": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "cu": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau",
+   "moi": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau",
+   "yc": "Tính được độ dài dây chung, đoạn nối tâm, bán kính trong các bài toán về hai đường tròn cắt nhau, tiếp xúc nhau."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 5",
+   "moi": "Bài tập tổng hợp chương 5",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 5 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {
+  "duid": [
+   "Bài 2. Cung và dây của một đường tròn",
+   "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  ],
+  "ekyj": [
+   "Bài 2. Cung và dây của một đường tròn",
+   "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  ],
+  "gueg": [
+   "Bài 2. Cung và dây của một đường tròn",
+   "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  ],
+  "tfi1": [
+   "Bài 2. Cung và dây của một đường tròn",
+   "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  ]
+ }
+}

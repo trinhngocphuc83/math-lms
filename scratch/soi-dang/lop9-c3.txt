@@ -1,0 +1,545 @@
+Chương 3. Căn bậc hai và căn bậc ba · lớp 9 · 23 dạng · 474 câu
+
+
+### [1] Bài 1. Căn bậc hai và căn thức bậc hai | Ứng dụng thực tế của căn bậc hai (37)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến căn bậc hai (độ dài, diện tích, tốc độ, công thức vật lí).
+  0rqa TL 2 | Sử dụng công thức tìm được trong câu viết công thức tính thời gian t, hãy trả lời câu hỏi trong tình huống mở 
+  p5bk TL 2 | Trong Vật lí, quãng đường S (tính bằng mét) của một vật rơi tự do được cho bởi công thức S = 4,9t^2, trong đó 
+  thmg TL 2 | Đại Kim tự tháp Giza là Kim tự tháp Ai Cập lớn nhất và là lăng mộ của Vương triều thứ Tư của pharaoh Khufu. Nề
+  acy6 TL 2 | Viết biểu thức tính độ dài cạnh huyền BC của tam giác vuông ABC, biết AB = 3 cm và AC = x cm.
+  npi6 TL 2 | Trở lại tình huống mở đầu. Viết công thức tính thời gian t (giây) cần thiết để vật rơi được quãng đường S (mét
+  2zjh TL 2 | Để chuẩn bị trồng cây trên vỉa hè, người ta để lại những ô đất hình tròn có diện tích khoảng 2 \text{ m}^2. Em
+  19kp TL 2 | Vận tốc lăn v (tính bằng m/s) của một vật thể nặng m (tính bằng kg) được tác động một lực E_k (gọi là năng lượ
+  s571 TL 2 | Galilei là người phát hiện ra quãng đường chuyển động của vật rơi tự do tỉ lệ thuận với bình phương của thời g
+  aey5 TL 2 | Tốc độ của một chiếc canô và độ dài đường sóng nước để lại sau đuôi của nó được cho bởi công thức v = 5\sqrt{l
+  623e TL 2 | Một trạm phát sóng được đặt ở vị trí B cách đường tàu một khoảng AB = 300 m. Đầu tàu đang ở vị trí C, cách vị 
+  czkw TL 2 | Một thiết bị khảo sát được thả rơi tự do từ miệng một hố vực sâu trên Mặt Trăng. Quãng đường rơi s (mét) của t
+  kgg3 TL 2 | Một chiếc thang dài 5 m tựa vào bức tường như hình vẽ. [HÌNH VẼ] b) Tính độ cao trên khi x nhận giá trị lần lư
+  ifx3 TL 2 | Hệ quả của hiện tượng nóng lên toàn cầu là băng của một số sông băng đang tan chảy. Mười hai năm sau khi băng 
+  ek3h TL 3 | Biết rằng hình A và hình vuông B trong hình vẽ dưới có diện tích bằng nhau. Tính độ dài cạnh x của hình vuông 
+  jf8r TL 2 | Vận tốc v (m/s) của một tàu lượn di chuyển trên một cung tròn có bán kính r (m) được cho bởi công thức: v = \s
+  b6zi TL 3 | Giông bão thổi mạnh, một cây bị gãy gập xuống làm ngọn cây chạm đất và tạo với phương nằm ngang một góc 45^\ci
+  g79m TL 2 | Vận tốc v (m/s) của một tàu lượn di chuyển trên một cung tròn có bán kính r (m) được cho bởi công thức: v = \s
+  lu2y TL 2 | Một trạm phát sóng được đặt ở vị trí B cách đường tàu một khoảng AB = 300 m. Đầu tàu đang ở vị trí C, cách vị 
+  89mp TL 2 | Hai bến thuyền A và B nằm sát con đường vuông góc với nhau cách chỗ giao nhau lần lượt là 2 km và 3 km (hình v
+  q5gg TL 3 | Cửa hàng điện máy xanh trưng bày một chiếc ti vi màn hình phẳng 55 in, tức là độ dài đường chéo của màn hình t
+  pg0c TL 2 | Quãng đường phanh d (tính bằng mét) của một chiếc xe máy đang di chuyển với tốc độ v (tính bằng km/h) cho đến 
+  f2rf TL 3 | Quãng đường đi của một vật rơi tự do không vận tốc đầu cho bởi công thức S = \frac{1}{2}gt^2 (trong đó g là gi
+  nx9c TL 3 | Tốc độ của con sóng thần và chiều sâu của đại dương liên hệ bởi công thức s = \sqrt{dg}. Trong đó, g = 9,81\te
+  6wk1 TL 3 | Trên cần trục ở hình vẽ, hai trụ a và b đứng cách nhau 20 m, hai xà ngang c và d lần lượt có độ cao 20 m và 45
+  578j TL 1 | Để lái xe an toàn khi đi qua đoạn đường có dạng cung tròn, người lái cần biết tốc độ tối đa cho phép là bao nh
+  hi1n TL 2 | Vận tốc lăn v (tính bằng m/s) của một vật thể nặng m (tính bằng kg) được tác động một lực E_k (gọi là năng lượ
+  eyrw TL 2 | Một xe ô tô điện bắt đầu tăng tốc chuyển động trên một đoạn đường thẳng. Quãng đường s (mét) mà xe đi được sau
+  hg39 TL 2 | Tốc độ của con sóng thần và chiều sâu của đại dương liên hệ bởi công thức s = \sqrt{dg}. Trong đó, g = 9,81\te
+  q70l TL 3 | Có hai xã cùng ở một bên bờ sông. Người ta đo được khoảng cách từ trung tâm A, B của hai xã đó đến bờ sông lần
+  o3k0 TL 3 | Kích thước màn hình ti vi hình chữ nhật được xác định bởi độ dài đường chéo. Một loại ti vi có tỉ lệ hai cạnh 
+  4hg7 TL 2 | Một chiếc thang dài 5 m tựa vào bức tường như hình vẽ. [HÌNH VẼ] a) Nếu chân thang cách chân tường x (m) thì đ
+  qmqk TL 3 | Kích thước màn hình ti vi hình chữ nhật được xác định bởi độ dài đường chéo. Một loại ti vi có tỉ lệ hai cạnh 
+  oesh TL 2 | Điện áp V (tính theo volt) yêu cầu cho một mạch điện được cho bởi công thức V = \sqrt{PR}, trong đó P là công 
+  kyek TL 3 | Điện áp V (tính theo volt) yêu cầu cho một mạch điện được cho bởi công thức V = \sqrt{PR}, trong đó P là công 
+  bu7s TL 3 | Tốc độ của một chiếc canô và độ dài đường sóng nước để lại sau đuôi của nó được cho bởi công thức v = 5\sqrt{l
+  vvrz TL 3 | Thời gian t (tính bằng giây) từ khi một người bắt đầu nhảy bungee trên cao cách mặt nước d (tính bằng m) đến k
+  3d18 TL 2 | Thời gian t (tính bằng giây) từ khi một người bắt đầu nhảy bungee trên cao cách mặt nước d (tính bằng m) đến k
+
+### [2] Bài 1. Căn bậc hai và căn thức bậc hai | Tìm điều kiện xác định của căn thức bậc hai (15)
+    yêu cầu: Xác định được điều kiện để căn thức bậc hai có nghĩa và kiểm tra được giá trị của biến có thoả mãn điều kiện không.
+  ypft TL 1 | Cho căn thức \sqrt{5 - 2x}. Tìm điều kiện xác định của căn thức.
+  q3gb TL 2 | Với giá trị nào của x thì biểu thức sau có nghĩa: \sqrt{\frac{2025}{2x + 3}}
+  qi9x TL 1 | Tìm x để căn thức sau có nghĩa: \sqrt{-2024x}
+  q0eo TL 2 | Với giá trị nào của x thì căn thức sau có nghĩa: \sqrt{-x^2 - 3}
+  wajm TL 1 | Tìm x để căn thức sau có nghĩa: \sqrt{3x - 15}
+  yz9j TL 1 | Tìm x để căn thức sau có nghĩa: \sqrt{-2x - 5}
+  iwq2 TL 2 | Với giá trị nào của x thì biểu thức sau có nghĩa: \sqrt{\frac{2 - 7x}{2024}}
+  9lqm TL 2 | Với giá trị nào của x thì biểu thức sau có nghĩa: \sqrt{\frac{2025}{x^2}}
+  ylp1 TL 2 | Cho biểu thức C = \sqrt{2x - 1}. Tại x = 0 có tính được giá trị của biểu thức không? Vì sao?
+  epom TL 3 | Với giá trị nào của x thì biểu thức sau có nghĩa: \sqrt{x} + \frac{3}{x} + \sqrt{-3x}
+  5do0 TL 1 | Cho căn thức \sqrt{11-2x}. a) Tìm điều kiện xác định của căn thức. b) Tính giá trị của căn thức tại x = 1.
+  odzu TL 1 | Xét căn thức \sqrt{2x + 1}. Tìm điều kiện xác định của căn thức.
+  z08w TL 1 | Cho căn thức \sqrt{10-3x}. a) Tìm điều kiện xác định của căn thức. b) Tính giá trị của căn thức tại x = 2.
+  y2k6 TL 2 | Tìm điều kiện của x để các biểu thức sau có nghĩa: a) \sqrt{x-3} b) \frac{1}{2x-1}
+  bg35 TL 1 | Tìm điều kiện xác định của \sqrt{x + 10} và tính giá trị của căn thức tại x = -1.
+
+### [3] Bài 1. Căn bậc hai và căn thức bậc hai | Tìm căn bậc hai, căn bậc hai số học của một số (6)
+    yêu cầu: Nhận biết được khái niệm căn bậc hai, căn bậc hai số học và tính được căn bậc hai của một số thực không âm.
+  ctn8 TL 1 | Tìm căn bậc hai của: 169.
+  0bzu TL 1 | Tìm căn bậc hai của: 0,64.
+  1sta TL 1 | Tìm căn bậc hai của số 24,5 (làm tròn đến chữ số thập phân thứ hai).
+  k6cm TL 1 | Tìm căn bậc hai của: 2,25.
+  6jp5 TL 1 | Tìm căn bậc hai của: \frac{36}{121}.
+  qm8w TL 1 | Tính căn bậc hai của 225.
+
+### [4] Bài 1. Căn bậc hai và căn thức bậc hai | So sánh các căn bậc hai (5)
+    yêu cầu: So sánh được hai căn bậc hai số học hoặc một số với một căn bậc hai dựa vào tính chất a < b ⇔ √a < √b.
+  3uyx TL 2 | So sánh các cặp số sau: \frac{\sqrt{2}}{3} và \frac{\sqrt{3}}{2}.
+  uuzp TL 1 | So sánh các cặp số sau: \sqrt{120} và \sqrt{97}.
+  94yt TL 2 | So sánh các cặp số sau: 3 và \sqrt{8}.
+  jl1y TL 2 | So sánh các cặp số sau: \sqrt{81} và 19.
+  u8yw TL 2 | So sánh 3 với \sqrt{10} bằng hai cách (sử dụng MTCT hoặc sử dụng tính chất).
+
+### [5] Bài 1. Căn bậc hai và căn thức bậc hai | Rút gọn biểu thức dạng √A² = |A| (58)
+    yêu cầu: Vận dụng được hằng đẳng thức √A² = |A| để rút gọn biểu thức chứa căn thức bậc hai khi biết dấu của biểu thức dưới căn.
+  0vb9 TL 3 | Thực hiện các phép tính b) B = \frac{\sqrt{4x^2 - 4x + 1}}{2x - 1} \ (x \ne \frac{1}{2})
+  o1vd TL 3 | Rút gọn các biểu thức sau: b) B = 4x - \sqrt{x^2 - 4x + 4} \ (x \ge 2)
+  qf1m TL 3 | Rút gọn các biểu thức sau: c) C = \frac{\sqrt{x^2 + 4x + 4}}{x + 2} \ (x \ne -2)
+  3och TL 3 | Rút gọn các biểu thức sau: d) D = 2x - 1 - \frac{\sqrt{x^2 - 10x + 25}}{x - 5}
+  rixo TL 3 | Rút gọn các biểu thức sau: a) A = \frac{2}{a - 2}\sqrt{2a^8(a^2 - 4a + 4)} \ (a \ne 2)
+  qhzs TL 3 | Rút gọn các biểu thức sau: f) F = \frac{t}{2} + \frac{3}{2}\sqrt{4 - 4t + t^2} - 2 \ (t \le 2)
+  7ytu TL 2 | Rút gọn các biểu thức sau: a) A = \sqrt{64a^2} + 2a
+  yywv TL 3 | Rút gọn các biểu thức sau: e) E = \frac{1}{3}\sqrt{9 + 6v + v^2} + \frac{4v}{3} + 5 \ (v \le -3)
+  tbpz TL 1 | Tính: \sqrt{2024^2}
+  3g0c TL 2 | Rút gọn các biểu thức sau: b) \sqrt{(\sqrt{7} - 3)^2} + \sqrt{(\sqrt{7} + 3)^2}
+  wbui TL 2 | Chứng minh rằng: a) (1 - \sqrt{2})^2 = 3 - 2\sqrt{2}
+  1q7c TL 2 | Chứng minh rằng: b) (\sqrt{3} + \sqrt{2})^2 = 5 + 2\sqrt{6}
+  9knm TL 2 | Cho căn thức \sqrt{x^2 - 4x + 4}. b) Rút gọn căn thức đã cho với x \ge 2.
+  iqyb TL 1 | Tính: -\sqrt{(-8)^2}
+  emuq TL 2 | Tính giá trị của các biểu thức sau: A = \sqrt{(2 - \sqrt{5})^2} + \sqrt{(2\sqrt{2} - \sqrt{5})^2}
+  6yzm TL 3 | Tính giá trị của các biểu thức sau: C = \sqrt{11 + 6\sqrt{2}} - \sqrt{11 - 6\sqrt{2}}
+  m1oc TL 2 | Chứng minh rằng: 11 + 6\sqrt{2} = (3 + \sqrt{2})^2
+  xwqk TL 2 | Tính: \sqrt{(\sqrt{24} - 5)^2}
+  5oy7 TL 2 | Tính: \sqrt{(\sqrt{8} - 3)^2}
+  dnla TL 3 | Chứng minh rằng: \sqrt{11 + 6\sqrt{2}} + \sqrt{11 - 6\sqrt{2}} = 6
+  sxdv TL 3 | Rút gọn các biểu thức sau: D = \sqrt{29 + 12\sqrt{5}} - \sqrt{29 - 12\sqrt{5}}
+  yvhx TL 1 | Tính: (-\sqrt{2})^2
+  4w0e TL 1 | Tính: \sqrt{121}
+  iohb TL 3 | Tính giá trị của các biểu thức sau: \sqrt{6 + 2\sqrt{5}} + \sqrt{6 - 2\sqrt{5}}
+  niop TL 3 | Tính giá trị của các biểu thức sau: \sqrt{3 + 2\sqrt{2}} + \sqrt{6 - 4\sqrt{2}}
+  tj4j TL 3 | Tính giá trị của các biểu thức sau: \sqrt{24 + 8\sqrt{5}} + \sqrt{9 - 4\sqrt{5}}
+  i1qn TL 3 | Chứng minh rằng: \sqrt{8 - 2\sqrt{7}} - \sqrt{8 + 2\sqrt{7}} = -2
+  pc7q TL 3 | Tính giá trị của các biểu thức sau: C = \sqrt{13 + 30\sqrt{2 + \sqrt{9 + 4\sqrt{2}}}}
+  fexw TL 2 | Rút gọn các biểu thức sau: b) B = 3\sqrt{9a^6} - 6a^3
+  49ks TL 2 | Rút gọn các biểu thức sau: 5\sqrt{25a^2} - 25a \ (a < 0)
+  7jhy TL 2 | Rút gọn các biểu thức sau: \sqrt{16a^4} + 6a^2
+  033b TL 2 | Rút gọn các biểu thức sau: a) A = \sqrt{a^2 + 6a + 9} + \sqrt{a^2 - 6a + 9} \ (-3 \le a \le 3)
+  8avb TL 2 | Rút gọn các biểu thức sau: B = \sqrt{a^2 + 6a + 9} + \sqrt{a^2 - 6a + 9}
+  pzbd TL 2 | Tính giá trị của các biểu thức sau: 3\sqrt{5} - \sqrt{(1 - \sqrt{5})^2}
+  1wxr TL 2 | Rút gọn các biểu thức sau: a) (\sqrt{5-x})^2 với x < 2; b) \sqrt{9-6x+x^2} với x > 4.
+  57mv TL 2 | Rút gọn các biểu thức sau: a) (\sqrt{3-x})^2 với x < 1; b) \sqrt{9-6x+x^2} với x > 4.
+  3o59 TL 2 | Rút gọn các biểu thức sau: A = \sqrt{(4 - \sqrt{15})^2} + \sqrt{15}
+  xoqu TL 2 | Rút gọn các biểu thức sau: B = \sqrt{(2 - \sqrt{3})^2} + \sqrt{(1 - \sqrt{3})^2}
+  ynz1 TL 1 | Tính: \sqrt{(\sqrt{20}-5)^2}
+  7xc4 TL 2 | Tính giá trị biểu thức: C = \sqrt{(\sqrt{15}-3\sqrt{2})^2} + \sqrt{(5-3\sqrt{2})^2}
+  p4av TL 3 | Cho căn thức \sqrt{x^2 - 4x + 4}. c) Chứng tỏ rằng với mọi x \ge 2, biểu thức \sqrt{x} - \sqrt{x^2 - 4x + 4} c
+  567z TL 2 | Tính giá trị biểu thức: D = \sqrt{(4-2\sqrt{3})^2} + \sqrt{(\sqrt{10}-2\sqrt{3})^2}
+  gcpo TL 3 | Tính giá trị của các biểu thức sau: \sqrt{17 - 12\sqrt{2}} + \sqrt{9 + 4\sqrt{2}}
+  u59x TL 3 | Rút gọn các biểu thức sau: C = \sqrt{49 - 12\sqrt{5}} - \sqrt{49 + 12\sqrt{5}}
+  w6qw TL 2 | Tính giá trị của các biểu thức sau: B = \sqrt{(\sqrt{7} - 2\sqrt{2})^2} + \sqrt{(3 - 2\sqrt{2})^2}
+  46pa TL 3 | Rút gọn các biểu thức sau: b) B = \sqrt{a + 2\sqrt{a - 1}} + \sqrt{a - 2\sqrt{a - 1}} \ (1 \le a \le 2)
+  4iq6 TL 2 | Tính: (\sqrt{3} + \sqrt{2})^2 - 2\sqrt{6}.
+  0v55 TL 2 | Chứng minh rằng: 8 - 2\sqrt{7} = (\sqrt{7} - 1)^2
+  qq5s TL 3 | Tính giá trị của các biểu thức sau: \sqrt{6 - 4\sqrt{2}} + \sqrt{22 - 12\sqrt{2}}
+  7eqa TL 2 | Rút gọn các biểu thức sau: a) \sqrt{(\sqrt{3} - \sqrt{2})^2} + \sqrt{(1 - \sqrt{2})^2}
+  mzxn TL 2 | Rút gọn các biểu thức sau: \sqrt{64a^2} + 2a \ (a \ge 0)
+  w73x TL 1 | Tính: (-\sqrt{\frac{3}{4}})^2
+  i1y1 TL 3 | Tính giá trị của các biểu thức sau: \sqrt{41 - 12\sqrt{5}} - \sqrt{41 + 12\sqrt{5}}
+  je7r TL 3 | Tính giá trị của các biểu thức sau: B = \sqrt{\sqrt{5} - \sqrt{3 - \sqrt{29 - 12\sqrt{5}}}}
+  f37k TL 3 | Rút gọn các biểu thức sau: B = \frac{\sqrt{9x^2 + 12x + 4}}{3x + 2} \ (x \ne \frac{-2}{3})
+  igkf TL 3 | Rút gọn biểu thức B = \frac{y}{2} + \frac{3}{4}\sqrt{1 - 4y + 4y^2} - \frac{3}{2} \ (y \le \frac{1}{2})
+  db6z TL 1 | Tính: \sqrt{(\sqrt{12}-4)^2}
+  lc5e TL 1 | Cho căn thức \sqrt{x^2 - 4x + 4}. a) Hãy chứng tỏ rằng căn thức xác định với mọi giá trị của x.
+
+### [6] Bài 1. Căn bậc hai và căn thức bậc hai | Tính giá trị biểu thức chứa căn bậc hai (30)
+    yêu cầu: Tính được giá trị của biểu thức số chứa căn bậc hai và giá trị của căn thức tại giá trị cho trước của biến.
+  qpmh TL 1 | Cho căn thức \sqrt{5 - 2x}. Tính giá trị của căn thức tại x = 2.
+  bep7 TL 1 | Tính: \sqrt{(-4,9)^2}.
+  bmrf TL 1 | Không sử dụng MTCT, tính: \sqrt{(-5)^2}.
+  30cc TL 1 | Cho biểu thức C = \sqrt{2x - 1}. Tính giá trị của biểu thức tại x = 5.
+  ozox TL 2 | Rút gọn biểu thức sau: \sqrt{x^2 - 4x + 4} (x < 2).
+  ij65 TL 1 | Xét căn thức \sqrt{2x + 1}. Tính giá trị của căn thức đã cho tại x = 0 và x = 4.
+  loiw TL 1 | Không sử dụng MTCT, tính: \sqrt{6^2}.
+  62zd TL 1 | Tính: (-\sqrt{7})^2.
+  9a6g TL 1 | Tính giá trị của căn thức bậc hai \sqrt{2024 - x} tại x = 2023; x = 2015; x = 1943.
+  xwad TL 2 | Tính giá trị của căn thức bậc hai \sqrt{x^2 + 5} tại x = -2; x = 2; x = \sqrt{11}.
+  078z TL 2 | Tính giá trị của căn thức bậc hai \sqrt{13 - x^2} tại x = -3; x = -2; x = 0.
+  wljd TL 1 | Tính: \sqrt{\frac{121}{169}}.
+  b1g8 TL 2 | Rút gọn và tính giá trị của biểu thức x + \sqrt{4x^2 - 4x + 1} tại x = -2,5.
+  cjkr TL 1 | Tính giá trị của căn thức bậc hai \sqrt{2x + 1} tại x = 0; x = 4; x = 12.
+  lsj6 TL 2 | Rút gọn biểu thức sau: (\sqrt{1 - x})^2 với x < 0.
+  lxcg TL 2 | Tính giá trị của căn thức bậc hai \sqrt{x^2 - x + 4} tại x = -3; x = 0; x = 4.
+  droc TL 2 | Không dùng máy tính cầm tay, chứng tỏ biểu thức C có giá trị là một số nguyên: C = \sqrt{(3+4\sqrt{2})^2} - \s
+  wnjy TL 1 | Tính: \sqrt{(\frac{-3}{5})^2}.
+  ru3h TL 2 | Tính giá trị của biểu thức: B = \sqrt{4+\sqrt{10+2\sqrt{5}}} \cdot \sqrt{4-\sqrt{10+2\sqrt{5}}}
+  7vr0 TL 2 | Tính giá trị của biểu thức: C = \sqrt{3+\sqrt{6+2\sqrt{2}}} \cdot \sqrt{3-\sqrt{6+2\sqrt{2}}}
+  ltsv TL 2 | Tính giá trị của căn thức bậc hai \sqrt{2x^2 + x + 6} tại x = -3; x = 1; x = 2.
+  dbd7 TL 3 | Không dùng MTCT, chứng tỏ biểu thức A có giá trị là số nguyên: A = \sqrt{(1 + 2\sqrt{2})^2} - \sqrt{(1 - 2\sqr
+  vaxl TL 2 | Không dùng máy tính cầm tay, chứng tỏ biểu thức B có giá trị là một số nguyên: B = \sqrt{(2+3\sqrt{3})^2} - \s
+  2ojb TL 2 | Rút gọn biểu thức sau: \sqrt{(2 - \sqrt{5})^2}.
+  y8zp TL 2 | Rút gọn biểu thức sau: 3\sqrt{x^2} - x + 1 (x < 0).
+  a4fl TL 2 | Thực hiện phép tính: a) \sqrt{64} b) \sqrt{16}.\sqrt[3]{8} c) 2\sqrt{45} + \sqrt{5} - 3\sqrt{80}
+  gaxh TL 1 | Tính: \sqrt{5,1^2}.
+  r8ep TL 1 | Tính: -\sqrt{(-0,001)^2}.
+  cnc1 TL 2 | Trò chơi “tìm kho báu” là một trò chơi quốc tế, rất phổ biến trong sinh hoạt Đoàn Đội. Ai đã một lần chơi sẽ c
+  xkvc TL 2 | Rút gọn biểu thức x\sqrt{x^6} (x < 0).
+
+### [7] Bài 2. Khai căn bậc hai với phép nhân và phép chia | So sánh các biểu thức chứa căn bậc hai (15)
+    yêu cầu: So sánh được các biểu thức chứa căn bậc hai bằng cách biến đổi về cùng dạng căn hoặc bình phương hai vế.
+  1hrb TL 1 | So sánh các cặp số dưới đây a) 2\sqrt{29} và 4\sqrt{3}
+  zvvb TL 2 | So sánh các cặp số dưới đây b) \frac{5}{4}\sqrt{2} và \frac{3}{2}\sqrt{\frac{3}{2}}
+  pee9 TL 2 | So sánh các cặp số dưới đây b) \frac{5}{2}\sqrt{\frac{1}{6}} và 6\sqrt{\frac{1}{37}}
+  yhry TL 1 | So sánh các cặp số dưới đây c) 3\sqrt{3} và \sqrt{12}
+  bch2 TL 1 | Tìm số lớn hơn trong các cặp số dưới đây a) 2\sqrt{6} và 3\sqrt{3}
+  mup9 TL 1 | So sánh các cặp số dưới đây a) 5\sqrt{2} và 3\sqrt{13}
+  w2fl TL 2 | Tìm số lớn hơn trong các cặp số dưới đây b) \frac{2}{5}\sqrt{6} và \frac{7}{4}\sqrt{\frac{1}{3}}
+  wrcp TL 1 | Tìm số bé hơn trong các cặp số dưới đây a) 2\sqrt{23} và 3\sqrt{10}
+  76et TL 2 | Sắp xếp các số sau theo thứ tự giảm dần: 7\sqrt{2}; 2\sqrt{8}; \sqrt{28}; 5\sqrt{2}
+  w6im TL 2 | So sánh các cặp số dưới đây a) \frac{1}{3}\sqrt{51} và \frac{1}{5}\sqrt{150}
+  x6f1 TL 1 | So sánh các cặp số dưới đây d) \sqrt{7} và 3\sqrt{5}
+  q2j7 TL 2 | Sắp xếp các số sau theo thứ tự tăng dần: 3\sqrt{5}; 2\sqrt{6}; \sqrt{29}; 4\sqrt{2}
+  ymt9 TL 2 | Sắp xếp các số sau a) 2\sqrt{5}; 3\sqrt{2}; 5; \sqrt{23} theo thứ tự tăng dần
+  m7xy TL 2 | Sắp xếp các số sau b) 5\sqrt{2}; 2\sqrt{13}; 4\sqrt{3}; \sqrt{47} theo thứ tự giảm dần
+  zrao TL 2 | Tìm số bé hơn trong các cặp số dưới đây b) 2\sqrt{\frac{1}{5}} và \frac{1}{5}\sqrt{21}
+
+### [8] Bài 2. Khai căn bậc hai với phép nhân và phép chia | Khai căn bậc hai một tích, nhân các căn bậc hai (40)
+    yêu cầu: Vận dụng được quy tắc √(ab) = √a·√b để khai phương một tích, nhân các căn thức bậc hai và rút gọn biểu thức.
+  z61m TL 3 | Rút gọn các biểu thức sau: d) D = -\sqrt{36b} - \frac{1}{3}\sqrt{54b} + \frac{1}{5}\sqrt{150b} \ (b \ge 0)
+  km2d TL 2 | Tính C = \sqrt{(9 + 2\sqrt{14})(9 - 2\sqrt{14})}
+  jcd6 TL 2 | Tính: \sqrt{12} \cdot (\sqrt{12} + \sqrt{3}).
+  idsj TL 2 | Tính: \sqrt{8} \cdot (\sqrt{50} - \sqrt{2}).
+  ncws TL 2 | Rút gọn biểu thức \sqrt{2(a^2 - b^2)} \cdot \sqrt{\frac{3}{a + b}} (với a \ge b > 0).
+  qfuj TL 2 | Thực hiện phép tính: a) \sqrt{3}(\sqrt{192} - \sqrt{75})
+  47e8 TL 2 | Tính giá trị của các biểu thức sau: A = 0,5\sqrt{0,04} + 5\sqrt{0,36}
+  cw5a TL 2 | Tính giá trị của các biểu thức sau: B = 72 : \sqrt{2^2 \cdot 36 \cdot 3^2} - \sqrt{225}
+  uhyy TL 2 | Tính giá trị của các biểu thức sau: A = \sqrt{49} \cdot \sqrt{144} + \sqrt{256} : \sqrt{64}
+  n6al TL 1 | Tính: \sqrt{45 \cdot 80}
+  l96s TL 1 | Tính: \sqrt{52 \cdot 13}
+  oa6z TL 1 | Tính: \sqrt{7} \cdot \sqrt{28}
+  aztg TL 1 | Tính A = \sqrt{32 \cdot 200}
+  27yf TL 1 | Tính: \sqrt{25 \cdot 144}
+  w65r TL 2 | Tính: \sqrt{\frac{1}{8}} \cdot \sqrt{2} \cdot \sqrt{125} \cdot \sqrt{\frac{1}{5}}
+  ocm8 TL 2 | Tính: \sqrt{\sqrt{2} - 1} \cdot \sqrt{\sqrt{2} + 1}
+  s5ig TL 1 | Thực hiện phép tính: \sqrt{5^2 - 4^2}
+  kr6h TL 1 | Thực hiện phép tính: \sqrt{26^2 - 24^2}
+  c3ql TL 1 | Thực hiện phép tính: \sqrt{85^2 - 84^2}
+  ahj7 TL 2 | Tính: \sqrt{3 - \sqrt{5}} \cdot \sqrt{8}
+  7p3n TL 2 | Tính: (\sqrt{\frac{3}{4}} - \sqrt{3} + 5\sqrt{\frac{4}{3}}) \cdot \sqrt{12}
+  9355 TL 2 | Tính: (\sqrt{\frac{2}{3}} + \sqrt{\frac{50}{3}} - \sqrt{24}) \cdot \sqrt{6}
+  o8mi TL 3 | Tính B = (3 - \sqrt{5})\sqrt{3 + \sqrt{5}} + (3 + \sqrt{5})\sqrt{3 - \sqrt{5}}
+  bc94 TL 3 | Tính C = \sqrt{2 + \sqrt{3}} \cdot \sqrt{2 + \sqrt{2 + \sqrt{3}}} \cdot \sqrt{2 + \sqrt{2 + \sqrt{2 + \sqrt{3}
+  281m TL 3 | Tính A = (4 + \sqrt{15})(\sqrt{10} - \sqrt{6})\sqrt{4 - \sqrt{15}}
+  pg6y TL 1 | Tính B = \sqrt{5} \cdot \sqrt{125}
+  wr6c TL 2 | Tính: \sqrt{3 + \sqrt{5}} \cdot \sqrt{2}
+  qba5 TL 2 | Tính A = \sqrt{3 + \sqrt{5} + 2\sqrt{3}} \cdot \sqrt{3 - \sqrt{5 + 2\sqrt{3}}}
+  b71s TL 2 | Tính C = (\sqrt{12} + 12\sqrt{15} - 4\sqrt{135})\sqrt{3}
+  9m6h TL 2 | Tính giá trị của biểu thức: B = \sqrt{5 + \sqrt{21}} \cdot \sqrt{2}
+  i360 TL 2 | Tính giá trị của biểu thức: A = \sqrt{4 - \sqrt{7}} \cdot \sqrt{2}
+  46jv TL 3 | Tính B = \sqrt{4 + \sqrt{8}} \cdot \sqrt{2 + \sqrt{2 + \sqrt{2}}} \cdot \sqrt{2 - \sqrt{2 + \sqrt{2}}}
+  lsqp TL 2 | Tính: \sqrt{55 \cdot 77 \cdot 35}
+  2ijx TL 1 | Tính \sqrt{3} \cdot \sqrt{75}.
+  gxpu TL 2 | Phân tích thành nhân tử: \sqrt{ab} - 4\sqrt{a} (với a \ge 0, b \ge 0).
+  1n69 TL 2 | Rút gọn \frac{-3\sqrt{16a} + 5a\sqrt{16ab^2}}{2\sqrt{a}} (với a > 0, b > 0).
+  xhuy TL 2 | Tính D = 2\sqrt{40\sqrt{12}} - 2\sqrt{\sqrt{75}} - 3\sqrt{5\sqrt{48}}
+  zj76 TL 2 | Tính D = \sqrt{117,5^2 - 26,5^2 - 1440}
+  5axt TL 2 | Rút gọn \sqrt{5ab^3} \cdot \sqrt{5ab} (với a < 0, b < 0).
+  dwm9 TL 1 | Tính nhanh \sqrt{25 \cdot 49}.
+
+### [9] Bài 2. Khai căn bậc hai với phép nhân và phép chia | Khai căn bậc hai một thương, chia các căn bậc hai (81)
+    yêu cầu: Vận dụng được quy tắc √(a/b) = √a/√b để khai phương một thương, chia các căn thức bậc hai và rút gọn biểu thức.
+  l7z4 TL 2 | Tính giá trị của biểu thức sau: A = \sqrt{144} \cdot \sqrt{\frac{-49}{-64}} \cdot \sqrt{0,01}
+  jjod TL 3 | Rút gọn các biểu thức sau: c) C = (x - y)\sqrt{\frac{xy}{(x - y)^2}} \ (xy > 0)
+  244e TL 3 | Rút gọn các biểu thức sau: d) D = \sqrt{\frac{9 - 6x + x^2}{25y^2}}
+  tp2l TL 3 | Rút gọn các biểu thức sau: f) F = \frac{2}{2a - 1}\sqrt{5a^2(1 - 4a + 4a^2)}
+  k2bh TL 3 | Trục căn thức ở mẫu rồi rút gọn: b) \sqrt{\frac{2 - \sqrt{3}}{2 + \sqrt{3}}}
+  32pu TL 3 | Trục căn thức và thực hiện phép tính: a) A = (\frac{15}{\sqrt{6} + 1} + \frac{4}{\sqrt{6} - 2} - \frac{12}{3 -
+  7zot TL 3 | Trục căn thức và thực hiện phép tính: b) B = (1 - \frac{5 + \sqrt{5}}{1 + \sqrt{5}})(\frac{5 - \sqrt{5}}{1 - \
+  hl7n TL 3 | Thực hiện phép tính: b) B = (\frac{\sqrt{14} - \sqrt{7}}{1 - \sqrt{2}} + \frac{\sqrt{15} - \sqrt{5}}{1 - \sqrt
+  u8ho TL 2 | Khử mẫu của mỗi biểu thức dưới dấu căn bậc hai sau: a) \sqrt{\frac{5b}{49a^3}} \ (a > 0, b \ge 0)
+  rggx TL 2 | Trục căn thức ở mẫu rồi rút gọn: a) \frac{\sqrt{8}}{\sqrt{5} - \sqrt{3}}
+  hlev TL 3 | Chứng minh rằng: \frac{a\sqrt{a} + b\sqrt{b}}{\sqrt{a} + \sqrt{b}} - \sqrt{ab} = (\sqrt{a} - \sqrt{b})^2 \ (a,
+  u9af TL 3 | Chứng minh rằng: \frac{\sqrt{a}}{\sqrt{a} - \sqrt{b}} - \frac{\sqrt{b}}{\sqrt{a} + \sqrt{b}} = \frac{a + b}{a 
+  cu6f TL 2 | Khử mẫu của mỗi biểu thức dưới dấu căn bậc hai sau: b) 7xy\sqrt{\frac{-3}{xy}} \ (x < 0; y > 0)
+  haz5 TL 2 | Khử mẫu của mỗi biểu thức dưới dấu căn bậc hai sau: b) \frac{-1}{4}ab\sqrt{\frac{16}{ab}} \ (a < 0, b < 0)
+  54ay TL 2 | Trục căn thức ở mẫu và rút gọn: a) \frac{1}{2\sqrt{2} - 3\sqrt{3}}
+  qyls TL 2 | Tính b) \sqrt{3 + \sqrt{5}} - \sqrt{3 - \sqrt{5}} - \sqrt{2}
+  ubxt TL 2 | Rút gọn a \cdot \sqrt{\frac{2}{a^2}} (a > 0).
+  zl5t TL 1 | Viết số dưới dấu căn thành một phân số thập phân rồi tính \sqrt{1,69}.
+  64y5 TL 1 | Tính \sqrt{18} : \sqrt{50}.
+  w67w TL 1 | Tính: \sqrt{99} : \sqrt{11}.
+  jhiq TL 1 | Tính: \sqrt{7,84}.
+  nkvi TL 1 | Tính: \sqrt{1815} : \sqrt{15}.
+  epfl TL 2 | Thực hiện phép tính: b) \frac{-3\sqrt{18} + 5\sqrt{50} - \sqrt{128}}{7\sqrt{2}}
+  xbc2 TL 1 | Tính: \sqrt{\frac{4}{49}}
+  aqtk TL 2 | Tính giá trị của biểu thức sau: D = 75 : \sqrt{3^2 + (-4)^2} - 3\sqrt{(-5)^2} - 3^2
+  ed7i TL 2 | Tính giá trị của biểu thức sau: C = (\sqrt{0,04} - \sqrt{(-1,2)^2} + \sqrt{121}) \sqrt{81}
+  5qhg TL 2 | Tính giá trị của các biểu thức sau: B = -4\sqrt{\frac{-25}{-16}} + 5\sqrt{\frac{-9}{25}}
+  sbkb TL 2 | Tính giá trị của các biểu thức sau: D = \frac{1}{2}\sqrt{\frac{4}{9}} - \frac{2}{5}\sqrt{\frac{25}{16}}
+  gj0h TL 2 | Rút gọn A = \frac{\sqrt{10} - \sqrt{15}}{\sqrt{8} - \sqrt{12}}
+  q9pu TL 2 | Rút gọn B = \frac{\sqrt{6} - \sqrt{15}}{\sqrt{35} - \sqrt{14}}
+  vhu8 TL 3 | Rút gọn D = \frac{\sqrt{15} - \sqrt{5}}{\sqrt{3} - 1} + \frac{5 - 2\sqrt{5}}{2\sqrt{5} - 4}
+  o60j TL 2 | Rút gọn C = \frac{5 + \sqrt{5}}{\sqrt{10} + \sqrt{2}}
+  6lfo TL 2 | Rút gọn các biểu thức sau: A = \frac{\sqrt{6} + \sqrt{14}}{2\sqrt{3} + \sqrt{28}}
+  meu7 TL 2 | Rút gọn các biểu thức sau: B = \frac{\sqrt{2} + \sqrt{3} + \sqrt{6} + \sqrt{8} + 4}{\sqrt{2} + \sqrt{3} + \sqr
+  n2kx TL 3 | Rút gọn biểu thức sau: B = \frac{2\sqrt{15} - 2\sqrt{10} + \sqrt{6} - 3}{2\sqrt{5} - 2\sqrt{10} - \sqrt{3} + \
+  76uk TL 2 | Tính (\sqrt{\frac{1}{7}} - \sqrt{\frac{16}{7}} + \sqrt{7}) : \sqrt{7}
+  08gq TL 2 | Tính \sqrt{36 - 12\sqrt{5}} : \sqrt{6}
+  lg1n TL 2 | Tính (\sqrt{\frac{1}{3}} - \sqrt{\frac{4}{3}} + \sqrt{3}) : \sqrt{3}
+  oogm TL 2 | Tính \sqrt{3 - \sqrt{5}} : \sqrt{2}
+  vghq TL 2 | Tính A = (\sqrt{12} + \sqrt{75} + \sqrt{27}) : \sqrt{15}
+  rn0v TL 1 | Tính \sqrt{\frac{25}{64}}
+  mplm TL 1 | Tính \sqrt{1\frac{9}{16}}
+  m4d0 TL 2 | Thực hiện phép tính B = (\sqrt{325} - \sqrt{117} + 2\sqrt{208}) : \sqrt{13}
+  7kqm TL 2 | Tính B = (\sqrt{12} - 2\sqrt{18}) \cdot \frac{\sqrt{2}}{2}
+  a3tf TL 3 | Tính C = (\frac{1 - \sqrt{2}}{1 + \sqrt{2}} - \frac{1 + \sqrt{2}}{1 - \sqrt{2}}) : \sqrt{72}
+  s8bb TL 3 | Tính D = (\frac{1}{\sqrt{3} - 2} - \frac{1}{\sqrt{3} + 2}) \cdot \frac{2 - \sqrt{2}}{1 - \sqrt{2}}
+  te1z TL 1 | Tính \frac{\sqrt{230}}{\sqrt{2,3}}
+  5tfv TL 2 | Khử mẫu của mỗi biểu thức dưới dấu căn bậc hai sau: a) \sqrt{\frac{5x^3}{49y}} \ (x \ge 0; y > 0)
+  qyu2 TL 3 | Rút gọn các biểu thức sau: A = 4\sqrt{x} - \frac{(x + 6\sqrt{x} + 9)(\sqrt{x} - 3)}{x - 9} \ (0 \le x; x \ne 9
+  zzar TL 3 | Rút gọn các biểu thức sau: d) D = \frac{\sqrt{3}}{\sqrt{\sqrt{3} + 1} - 1} - \frac{\sqrt{3}}{\sqrt{\sqrt{3} + 
+  t9yh TL 3 | Rút gọn các biểu thức sau: e) E = \frac{3}{2(2x - 1)}\sqrt{8x^4(4x^2 - 2x + 1)} LƯU Ý: Đề bài bị lỗi in ấn, sử
+  n69p TL 3 | Thực hiện phép tính: a) A = (\frac{2}{\sqrt{3} - 1} + \frac{3}{\sqrt{3} - 2} + \frac{15}{3 - \sqrt{3}}) \cdot 
+  22ui TL 2 | Thực hiện phép tính A = \sqrt{1,6} \cdot \sqrt{250} + \sqrt{19,6} : \sqrt{4,9}
+  b1mr TL 2 | Rút gọn \sqrt{16ab^2} : \sqrt{4a} (với a > 0, b < 0).
+  v935 TL 2 | Thực hiện phép tính A = (20\sqrt{300} - 15\sqrt{675} + 5\sqrt{75}) : \sqrt{15}
+  6ih3 TL 1 | Tính \frac{\sqrt{12,5}}{\sqrt{0,5}}
+  etka TL 3 | Thực hiện các phép tính a) A = 5\sqrt{x} - \frac{(x - 10\sqrt{x} + 25)(\sqrt{x} + 5)}{x - 25} \ (0 \le x \ne 2
+  e72u TL 3 | Chứng minh rằng: \frac{(a\sqrt{b} + b)(\sqrt{a} + \sqrt{b})}{a - b} \sqrt{\frac{ab + b^2 - 2\sqrt{ab^3}}{a(a +
+  3exa TL 1 | Tính \sqrt{6,25}.
+  9cz0 TL 2 | Rút gọn (a^2 - 1) \cdot \sqrt{\frac{5}{(a - 1)^2}} (a > 1).
+  ddoc TL 3 | Rút gọn các biểu thức sau: b) B = 4\sqrt{25u} - \frac{15}{2}\sqrt{\frac{16u}{9}} - \frac{2}{u}\sqrt{\frac{169u
+  3aol TL 2 | Khử căn thức ở mẫu số các phân số: f) \sqrt{\frac{5 - 2\sqrt{6}}{3}}
+  ggzt TL 2 | Tính giá trị của các biểu thức sau: C = \frac{2}{3}\sqrt{81} - \frac{1}{2}\sqrt{16}
+  crgj TL 2 | Tính giá trị của biểu thức sau: B = (\sqrt{0,25} - \sqrt{(-15)^2} + \sqrt{2,25}) : \sqrt{169}
+  kj23 TL 3 | Rút gọn biểu thức sau: A = \frac{3\sqrt{8} - 2\sqrt{12} + \sqrt{20}}{3\sqrt{18} - 2\sqrt{27} + \sqrt{45}}
+  trhj TL 2 | Tính a) \sqrt{2 + \sqrt{3}} - \sqrt{2 - \sqrt{3}}
+  ac3k TL 3 | Rút gọn các biểu thức sau: c) C = 5\sqrt{4x} - 3\sqrt{\frac{100x}{9}} - \frac{4}{x}\sqrt{\frac{x^3}{4}} \ (x >
+  8amw TL 2 | Tính B = (12\sqrt{50} - 8\sqrt{200} + 7\sqrt{450}) : \sqrt{10}
+  0z1a TL 2 | Tính A = (\sqrt{27} - \sqrt{12} + 2\sqrt{6}) : 3\sqrt{3}
+  r1cf TL 2 | Tính c) \sqrt{6,5 + \sqrt{12}} + \sqrt{6,5 - \sqrt{12}} + 2\sqrt{6}
+  7xfa TL 2 | Thực hiện phép tính B = \sqrt{1\frac{3}{4} \cdot 2\frac{2}{7} \cdot 5\frac{4}{9}}
+  w132 TL 3 | Rút gọn biểu thức A = 4\sqrt{\frac{25x}{4}} - \frac{8}{3}\sqrt{\frac{9x}{4}} - \frac{4}{3x}\sqrt{\frac{9x^3}{6
+  7dn2 TL 2 | Khử căn thức ở mẫu số các phân số: a) \sqrt{\frac{7}{108}}
+  8cq6 TL 2 | Khử căn thức ở mẫu số các phân số: d) \sqrt{\frac{4}{75}}
+  9ze2 TL 2 | Khử căn thức ở mẫu số các phân số: e) \sqrt{\frac{3 + 2\sqrt{2}}{2}}
+  de60 TL 2 | Trục căn thức ở mẫu và rút gọn: b) \sqrt{\frac{3 - \sqrt{5}}{3 + \sqrt{5}}}
+  njtf TL 2 | Rút gọn các biểu thức sau: a) A = \frac{\sqrt{14} - \sqrt{7}}{2 - \sqrt{2}}
+  3rj6 TL 3 | Rút gọn các biểu thức sau: b) B = \frac{1}{\sqrt{7 - \sqrt{24}} + 1} - \frac{1}{\sqrt{7 + \sqrt{24}} - 1}
+  6e5e TL 3 | Rút gọn các biểu thức sau: c) C = (\frac{15}{\sqrt{6} + 1} + \frac{4}{\sqrt{6} - 2} - \frac{12}{3 - \sqrt{6}})
+  3lb8 TL 1 | Khử căn thức ở mẫu số các phân số: b) \sqrt{\frac{5}{6}}
+  3h51 TL 1 | Khử căn thức ở mẫu số các phân số: c) \sqrt{\frac{10}{13}}
+
+### [10] Bài 2. Khai căn bậc hai với phép nhân và phép chia | Ứng dụng thực tế của khai căn tích, thương (11)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn cần khai căn một tích hoặc một thương.
+  e3iy TL 2 | Trong Vật lí, ta có định luật Joule – Lenz để tính nhiệt lượng toả ra ở dây dẫn khi có dòng điện chạy qua: Q =
+  9gi0 TL 2 | Vận tốc m/s của một vật đang bay được cho bởi công thức v = \sqrt{\frac{2E}{m}}, trong đó E là động năng của v
+  2d27 TL 3 | Khi một quả bóng rổ được thả xuống, nó sẽ nảy trở lại, nhưng do tiêu hao năng lượng nên nó không đạt được chiề
+  xmbq TL 3 | Cho hình hộp chữ nhật có chiều dài \sqrt{12} cm, chiều rộng \sqrt{8} cm, chiều cao \sqrt{6} cm, như hình vẽ. [
+  o8os TL 3 | Công suất P (W), hiệu điện thế U (V), điện trở R (\Omega) trong đoạn mạch một chiều liên hệ với nhau theo công
+  wg8z TL 2 | Cho hình hộp chữ nhật có chiều dài \sqrt{12} cm, chiều rộng \sqrt{8} cm, chiều cao \sqrt{6} cm, như hình vẽ. [
+  vzig TL 3 | Biết rằng hình tam giác và hình chữ nhật ở hình vẽ có diện tích bằng nhau. Tính chiều rộng x của hình chữ nhật
+  3q0h TL 2 | Tốc độ gần đúng của một ô tô ngay trước khi đạp phanh được tính theo công thức v = \sqrt{2\lambda gd}, trong đ
+  2bn5 TL 2 | Cho hình chữ nhật có chiều rộng a (cm), chiều dài b (cm) và diện tích S (\text{cm}^2). b) Tìm b, biết S = 3\sq
+  7505 TL 3 | Từ một tấm thép hình vuông, người thợ cắt ra hai mảnh hình chữ nhật có diện tích lần lượt là 24\text{ cm}^2 và
+  os4l TL 2 | Cho hình chữ nhật có chiều rộng a (cm), chiều dài b (cm) và diện tích S (\text{cm}^2). a) Tìm S, biết a = \sqr
+
+### [11] Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai | Đưa thừa số ra ngoài, vào trong dấu căn (33)
+    yêu cầu: Thực hiện được phép đưa thừa số ra ngoài hoặc vào trong dấu căn bậc hai để rút gọn, so sánh biểu thức.
+  hrnq TL 2 | Đưa thừa số ra ngoài dấu căn: \sqrt{24a^4b^8} \ (a, b \in {R})
+  5j3s TL 2 | Đưa thừa số vào trong dấu căn: \frac{a}{2}\sqrt{\frac{12}{a}} \ (a > 0)
+  2p6j TL 2 | Đưa thừa số ra ngoài dấu căn: b) 4\sqrt{3} + \sqrt{27} - \sqrt{45} + \sqrt{5}
+  8kzw TL 2 | Đưa thừa số ra ngoài dấu căn: c) \sqrt{6 + 2\sqrt{5}}
+  4ta3 TL 2 | Đưa thừa số ra ngoài dấu căn: d) \sqrt{7 - 2\sqrt{10}} + \sqrt{2}
+  7epz TL 2 | Tính giá trị các biểu thức sau: a) A = \sqrt{125} + \sqrt{45} - \sqrt{405}
+  khvs TL 2 | Tính giá trị các biểu thức sau: b) B = \sqrt{50} - \sqrt{128} + \sqrt{162} - \sqrt{18}
+  mnnq TL 2 | Rút gọn các biểu thức sau: a) A = \sqrt{200} - \sqrt{32} + \sqrt{72}
+  i6jy TL 1 | Viết gọn các biểu thức sau: b) \sqrt{96 \cdot 125}
+  080j TL 1 | Viết gọn các biểu thức sau: a) \sqrt{25 \cdot 90}
+  hsvp TL 3 | Rút gọn các biểu thức sau: b) B = \sqrt{\sqrt{5} - \sqrt{3 - \sqrt{29 - 6\sqrt{20}}}}
+  bjgx TL 2 | Tính giá trị các biểu thức sau: c) C = \sqrt{63} - \sqrt{252} - \sqrt{343} + \sqrt{175}
+  jtbq TL 2 | Rút gọn các biểu thức sau: b) B = 4\sqrt{20} - 3\sqrt{125} + 5\sqrt{45} - 15\sqrt{\frac{1}{5}}
+  novz TL 3 | Rút gọn các biểu thức sau: c) C = \sqrt{6 + 2\sqrt{5 - \sqrt{13 + \sqrt{48}}}}
+  v3nv TL 3 | Rút gọn các biểu thức sau: d) D = \sqrt{4 + \sqrt{5\sqrt{3} + 5\sqrt{48 - 10\sqrt{7 + 4\sqrt{3}}}}}
+  4c5g TL 1 | Viết gọn các biểu thức sau: c) \sqrt{75 \cdot 54}
+  87ep TL 1 | Viết gọn các biểu thức sau: d) \sqrt{245 \cdot 35}
+  xwva TL 2 | Đưa thừa số vào trong dấu căn: a\sqrt{\frac{-15}{a}} \ (a < 0)
+  4fda TL 2 | Đưa thừa số ra ngoài dấu căn: \sqrt{25x^3} \ (x > 0)
+  w8gb TL 2 | Đưa thừa số vào trong dấu căn: a\sqrt{2} \ (a \le 0)
+  od9e TL 2 | Đưa thừa số ra ngoài dấu căn: \sqrt{48xy^4} \ (x \ge 0; y \in {R})
+  1a60 TL 2 | Đưa thừa số ra ngoài dấu căn: \sqrt{-9b^3} \ (b \le 0)
+  od6t TL 2 | Đưa thừa số vào trong dấu căn: x\sqrt{7} \ (x \ge 0)
+  3vau TL 2 | Đưa thừa số vào trong dấu căn: x\sqrt{15} \ (x \le 0)
+  zoz9 TL 2 | Đưa thừa số vào trong dấu căn: \frac{1}{y}\sqrt{19y} \ (y > 0)
+  11xv TL 2 | Đưa thừa số vào trong dấu căn: a\sqrt{13} \ (a \ge 0)
+  kl8d TL 2 | Đưa thừa số ra ngoài dấu căn: a) \sqrt{45} + \sqrt{20} - \sqrt{245}
+  hjyb TL 2 | Tìm x biết: a) \sqrt{25x} = 35 b) \sqrt{4x+20} - 8\sqrt{x+5} + \sqrt{9x+45} = -6
+  zxu4 TL 2 | Đưa thừa số vào trong dấu căn: \frac{1}{3}y\sqrt{\frac{27}{y^2}} \ (y \le 0)
+  sj39 TL 2 | Đưa thừa số ra ngoài dấu căn: \sqrt{5a^2} \ (a \le 0)
+  nq34 TL 2 | Đưa thừa số ra ngoài dấu căn: \sqrt{18a^2} \ (a \ge 0)
+  96bt TL 2 | Đưa thừa số ra ngoài dấu căn: \sqrt{27x^2} \ (x \ge 0)
+  c273 TL 2 | Đưa thừa số ra ngoài dấu căn: \sqrt{8xy^2} \ (x \ge 0; y \le 0)
+
+### [12] Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai | Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị (55)
+    yêu cầu: Rút gọn được biểu thức chứa căn thức bậc hai (biểu thức số và biểu thức chứa chữ có điều kiện) và tính được giá trị tại giá trị cho trước củ
+  ni1e TL 2 | Rút gọn và tính giá trị của biểu thức 2x + \sqrt{9x^2 - 6x + 1} tại x = -1,5.
+  29v6 TL 2 | Rút gọn và tính giá trị của biểu thức 3x + \sqrt{16x^2 - 8x + 1} tại x = -1,5.
+  2wbe TL 2 | Tính: (2\sqrt{\frac{5}{4}} - 3\sqrt{5} + \sqrt{\frac{9}{5}}) \cdot \sqrt{20}
+  bdt4 TL 2 | Tính: (3\sqrt{\frac{2}{9}} - 2\sqrt{2} + \sqrt{\frac{25}{2}}) \cdot \sqrt{18}
+  0zjz TL 2 | Khử mẫu của biểu thức lấy căn a) \sqrt{\frac{2a}{3b}} với ab > 0; b) a\sqrt{\frac{2}{5a}} với a > 0; c) 4x\sqr
+  kl4g TL 3 | Rút gọn biểu thức P = (\frac{\sqrt{x} - 1}{\sqrt{x} + 1} + \frac{2\sqrt{x}}{\sqrt{x} - 1} - \frac{3\sqrt{x} - 
+  u1gn TL 3 | Cho hai biểu thức: A = \frac{2}{\sqrt{x}+2} và B = (\frac{1}{\sqrt{x}-1} + \frac{1}{\sqrt{x}+1}) : \frac{2}{x-
+  1zz2 TL 3 | Cho biểu thức C = \frac{\sqrt{2x+2\sqrt{x^2-4}}}{\sqrt{x^2-4}+x+2} với x \neq -2 a) Rút gọn C. b) Tính giá trị
+  zynd TL 1 | Trục căn thức ở mẫu các biểu thức sau: a) \frac{2\sqrt{5}}{\sqrt{2}}; b) \frac{10}{3\sqrt{5}}; c) \frac{9}{2\s
+  xcz8 TL 2 | Cho biểu thức C = \frac{a}{a-16} - \frac{2}{\sqrt{a}-4} - \frac{2}{\sqrt{a}+4} với a \ge 0, a \neq 16 a) Rút g
+  2v1e TL 2 | Rút gọn biểu thức: \frac{\sqrt{a}}{\sqrt{a} - \sqrt{b}} - \frac{\sqrt{b}}{\sqrt{a} + \sqrt{b}} - \frac{2b}{a -
+  kttw TL 2 | Chứng minh đẳng thức sau với x > 0, y > 0 và x \ne y. (\frac{x\sqrt{x} + y\sqrt{y}}{\sqrt{x} + \sqrt{y}} - \sq
+  xcuq TL 2 | Rút gọn biểu thức sau a) 2\sqrt{\frac{2}{3}} - 4\sqrt{\frac{3}{2}}; b) \frac{5\sqrt{48} - 3\sqrt{27} + 2\sqrt{
+  fjgy TL 1 | Khử mẫu của biểu thức lấy căn a) \sqrt{\frac{4}{7}}; b) \sqrt{\frac{3}{5}}; c) \sqrt{\frac{11}{2}}; d) \sqrt{\
+  5oz2 TL 2 | Rút gọn biểu thức sau (\frac{\sqrt{22} - \sqrt{11}}{1 - \sqrt{2}} + \frac{\sqrt{21} - \sqrt{7}}{1 - \sqrt{3}})
+  0ze3 TL 3 | Cho ba số dương x, y, z thỏa mãn: xy + yz + zx = 1 Tính: A = x\sqrt{\frac{(1 + y^2)(1 + z^2)}{1 + x^2}} + y\sq
+  fn9v TL 2 | Đưa thừa số ra ngoài dấu căn a) \sqrt{18x}; b) \sqrt{75x^2y}; c) \sqrt{605x^3y^2}; d) \sqrt{128(x-y)^2}; e) \s
+  3dua TL 2 | Trục căn thức ở mẫu a) \frac{x^2 - 1}{\sqrt{x - 1}} với x > 1. b) \frac{a + 1}{\sqrt{2a + 3} - \sqrt{a + 2}} v
+  mj7q TL 3 | Cho biểu thức A = \sqrt{\frac{\sqrt{a}-1}{\sqrt{b}+1}} : \sqrt{\frac{\sqrt{b}-1}{\sqrt{a}+1}} a) Rút gọn biểu 
+  a9kb TL 2 | Cho biểu thức P = (\frac{1}{\sqrt{x} + 2} - \frac{2}{x + 4\sqrt{x} + 4}) : (\frac{2}{x - 4} - \frac{1}{\sqrt{x
+  bhnh TL 2 | Rút gọn các biểu thức sau: a) \sqrt{4,5} - \frac{1}{2}\sqrt{72} + 5\sqrt{\frac{1}{2}}; b) \sqrt{32} - \sqrt{18
+  8vqm TL 3 | Rút gọn các biểu thức a) A = \sqrt{1 + \frac{\sqrt{3}}{2}} - \sqrt{1 - \frac{\sqrt{3}}{2}}; b) B = \frac{3}{\s
+  2asa TL 2 | Rút gọn các biểu thức sau a) A = \frac{1 + a\sqrt{a}}{a + \sqrt{a}} với a > 0. b) A = 2x\sqrt{16xy^3} + 7\sqrt
+  dqg2 TL 2 | Rút gọn biểu thức P = \frac{\sqrt{y}}{\sqrt{xy} - x} - \frac{\sqrt{x}}{y - \sqrt{xy}}.
+  fql5 TL 2 | Cho biểu thức P = (\frac{2\sqrt{xy}}{x - y} - \frac{\sqrt{x} + \sqrt{y}}{2\sqrt{x} - 2\sqrt{y}}) \cdot \frac{2
+  u5o8 TL 3 | Cho biểu thức P = \frac{\sqrt{x} - 1}{\sqrt{x} + 2} - \frac{2\sqrt{x}}{\sqrt{x} - 2} + \frac{2 - 5\sqrt{x}}{4 
+  1j38 TL 2 | Cho biểu thức D = (2 - \frac{\sqrt{x} - 1}{2\sqrt{x} - 3}) : [\frac{6\sqrt{x} + 1}{(2\sqrt{x} - 3)(\sqrt{x} + 
+  130o TL 1 | Khử mẫu trong dấu căn a) \sqrt{\frac{4}{7}}; b) \sqrt{\frac{5}{24}}; c) 2a \cdot \sqrt{\frac{3}{5}}.
+  p44o TL 1 | Trục căn thức ở mẫu các biểu thức sau: a) \frac{\sqrt{2}}{\sqrt{5}}; b) \frac{3}{2\sqrt{6}}; c) -\frac{4\sqrt{
+  musd TL 3 | Cho biểu thức A = \frac{x+3}{2-\sqrt{y}} \cdot \sqrt{\frac{y-4\sqrt{y}+4}{(z+3)^4}}. a) Rút gọn biểu thức A. b
+  mjl5 TL 2 | Cho biểu thức M = (\frac{1}{a-\sqrt{a}} + \frac{1}{\sqrt{a}-1}) : \frac{\sqrt{a}+1}{a-2\sqrt{a}+1} với a \ge 0
+  rxcn TL 1 | Đưa thừa số ra ngoài dấu căn a) \sqrt{45}; b) \sqrt{2400}; c) \sqrt{147}; d) \sqrt{1,25}; e) \sqrt{12}; f) 3\s
+  w5b3 TL 2 | Đưa thừa số ra ngoài dấu căn a) \sqrt{50 \cdot 6}; b) \sqrt{14 \cdot 21}; c) \sqrt{32 \cdot 45}; d) \sqrt{125 
+  8st3 TL 1 | Đưa thừa số vào trong dấu căn a) 3\sqrt{5}; b) 5\sqrt{6}; c) \frac{2}{7}\sqrt{35}; d) 5\sqrt{3}; e) -5\sqrt{2}
+  i1sm TL 1 | Rút gọn các biểu thức sau: a) \sqrt{24} - 4\sqrt{6}; b) \sqrt{20} - \sqrt{5}; c) \sqrt{12} + \sqrt{27} - \sqrt
+  zg63 TL 2 | Rút gọn các biểu thức sau: a) (2 - \sqrt{10})(\sqrt{2} - \sqrt{5}). b) \sqrt{3}(\sqrt{72} + \sqrt{4,5} - \sqrt
+  y9io TL 2 | a) Trục căn thức ở mẫu của biểu thức \frac{x^2 - 1}{\sqrt{x} - 1}; \frac{x^2 - x}{\sqrt{x} + 1} với x > 1. b) 
+  n4lz TL 2 | Rút gọn biểu thức P = (\frac{x\sqrt{x} - y\sqrt{y}}{\sqrt{x} - \sqrt{y}} + \sqrt{xy}) : (x - y).
+  33vo TL 2 | Rút gọn biểu thức P = (1 + \frac{\sqrt{x}}{x + \sqrt{x} + 1}) : \frac{\sqrt{x} + 1}{x\sqrt{x} - 1}.
+  f2ff TL 2 | Cho biểu thức P = (\frac{\sqrt{x} + 2}{x - 1} - \frac{\sqrt{x} - 2}{x - 2\sqrt{x} + 1}) : \frac{4x}{(x - 1)^2}
+  v71a TL 3 | Cho biểu thức P = (\frac{1}{\sqrt{x} + 3} + \frac{3}{x\sqrt{x} - 9\sqrt{x}}) : (\frac{\sqrt{x}}{\sqrt{x} + 3} 
+  o7og TL 2 | Chứng minh rằng giá trị của biểu thức sau là hằng số với mọi giá trị thích hợp của x và y: A = (\frac{\sqrt{x}
+  z66t TL 2 | Cho biểu thức B = \frac{x + 2}{x\sqrt{x} + 1} + \frac{\sqrt{x} - 1}{x - \sqrt{x} + 1} - \frac{1}{\sqrt{x} + 1}
+  svk9 TL 2 | Cho biểu thức C = (\frac{1}{\sqrt{x} - 1} - \frac{2}{x\sqrt{x} - x + \sqrt{x} - 1}) : (\frac{\sqrt{x}}{x + 1} 
+  9v2o TL 2 | Chứng minh đẳng thức sau với x > 0, y \ge 0 và x \ne y. (\frac{\sqrt{x} + \sqrt{y}}{\sqrt{x} - \sqrt{y}} - \fr
+  ea71 TL 1 | Đưa thừa số ra ngoài dấu căn a) \sqrt{75}; b) \sqrt{27a}; c) \sqrt{50\sqrt{2} + 100}; d) \sqrt{9\sqrt{5} - 18}
+  qkkz TL 1 | Trục căn thức ở mẫu a) \frac{4 + 3\sqrt{5}}{\sqrt{5}}; b) \frac{1}{\sqrt{5} - 2}; c) \frac{3 + \sqrt{3}}{1 - \
+  09xp TL 1 | Tính: a) (\sqrt{\frac{4}{3}} + \sqrt{3})\sqrt{6}; b) (1 - 2\sqrt{5})^2; c) 2\sqrt{3} - \sqrt{27}; d) \sqrt{45}
+  tfab TL 2 | Rút gọn các biểu thức sau: a) \sqrt{18} : \sqrt{6} + \sqrt{8} \cdot \sqrt{\frac{27}{2}}; b) \sqrt{64a} - \sqrt
+  qs4h TL 1 | Đưa thừa số vào trong dấu căn a) 3\sqrt{2}; b) -2\sqrt{7}; c) 4\sqrt{\frac{15}{2}}; d) -5\sqrt{\frac{16}{5}}.
+  q3op TL 1 | Trục căn thức ở mẫu: a) -\frac{3\sqrt{a}}{\sqrt{12a}} với a > 0; b) \frac{5}{\sqrt{x} + 3} với x > 0, x \ne 9;
+  pi12 TL 2 | Rút gọn biểu thức A = \sqrt{x}(\frac{1}{\sqrt{x} + 3} - \frac{1}{3 - \sqrt{x}}) với x \ge 0 và x \ne 9.
+  8yq2 TL 2 | Chứng minh rằng: a) \frac{a\sqrt{b} - b\sqrt{a}}{\sqrt{ab}} : \frac{1}{\sqrt{a} + \sqrt{b}} = a - b với a > 0,
+  4wvs TL 1 | Khử mẫu của biểu thức lấy căn: a) -3x \cdot \sqrt{\frac{5}{x}} (x > 0); b) -\sqrt{\frac{3a}{b}} (a \ge 0, b > 
+  scyb TL 2 | Rút gọn biểu thức P = (\frac{\sqrt{x}}{\sqrt{y}} - 3) : \frac{\sqrt{xy}}{x + 3\sqrt{xy}}.
+
+### [13] Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai | Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu (12)
+    yêu cầu: Thực hiện được phép khử mẫu của biểu thức lấy căn và trục căn thức ở mẫu bằng biểu thức liên hợp.
+  l062 TL 2 | Khử mẫu của biểu thức lấy căn: a) \sqrt{\dfrac{1}{x^3 + 3x^2 + 3x + 1}} với x > -1; b) \sqrt{\dfrac{1}{a^2} - 
+  2s87 TL 2 | Trục căn thức ở mẫu của các phân thức sau, với các biểu thức đều có nghĩa: a) \dfrac{1}{\sqrt{m}+n}; b) \dfrac
+  5lqb TL 2 | Trục căn thức ở mẫu và rút gọn: a) \dfrac{1}{2\sqrt{2}-3\sqrt{3}}; b) \sqrt{\dfrac{3-\sqrt{5}}{3+\sqrt{5}}}; c
+  nvcb TL 1 | Khử mẫu của các biểu thức dưới dấu căn (giả thiết rằng các biểu thức đã cho có nghĩa): \sqrt{\dfrac{1}{600}}; 
+  m3k2 TL 3 | Khử mẫu của mỗi biểu thức dưới dấu căn bậc hai sau: a) \sqrt{\dfrac{5x^3}{49y}} với x \ge 0; y > 0; b) 7xy\sqr
+  0yeu TL 1 | Trục căn thức ở mẫu các biểu thức sau: a) \dfrac{2}{\sqrt{3}-1}; b) \dfrac{3}{\sqrt{15}+4}; c) \dfrac{4}{\sqrt
+  vkjt TL 1 | Khử mẫu biểu thức lấy căn: a) \sqrt{\dfrac{5}{2}}; b) \sqrt{\dfrac{5}{14}}; c) \sqrt{\dfrac{3m}{5n}} với m \cd
+  etdc TL 1 | Trục căn thức ở mẫu của các phân thức sau: a) \dfrac{3+\sqrt{3}}{3\sqrt{3}}; b) \dfrac{5+\sqrt{5}}{\sqrt{5}+1}
+  6qm2 TL 3 | Trục căn thức ở mẫu: a) A = \dfrac{\sqrt{6}+\sqrt{14}}{2\sqrt{3}-\sqrt{7}}; b) B = \dfrac{3+4\sqrt{3}}{\sqrt{6
+  jyqe TL 2 | Khử mẫu của biểu thức lấy căn: a) -x^2y\sqrt{\dfrac{y}{x}} với x > 0; y \ge 0; b) \sqrt{\dfrac{-2x}{15}} với x
+  g6xp TL 3 | Trục căn thức ở mẫu của các phân thức sau: a) \dfrac{1}{\sqrt{3}+\sqrt{2}-1}; b) \dfrac{1}{\sqrt{14}-\sqrt{6+\
+  xxhb TL 2 | Trục căn thức ở mẫu: a) \dfrac{2}{\sqrt{a}} với a > 0; b) \dfrac{5}{\sqrt{x}+3} với x \ge 0; c) \dfrac{1}{\sqr
+
+### [14] Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai | Giải phương trình chứa căn thức bậc hai (1)
+    yêu cầu: Giải được phương trình chứa căn thức bậc hai đơn giản bằng cách đặt điều kiện, bình phương hai vế hoặc đưa về √A = B.
+  gqc0 TL 4 | Giải phương trình: 3\sqrt{x} = x - \sqrt{7(x-2)} + 7.
+
+### [15] Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai | Tìm x để biểu thức chứa căn nhận giá trị nguyên (8)
+    yêu cầu: Tìm được giá trị nguyên của biến để biểu thức chứa căn sau khi rút gọn nhận giá trị nguyên.
+  le9q TL 3 | Cho biểu thức P = \dfrac{3x+\sqrt{9x}-3}{x+\sqrt{x}-2} - \dfrac{\sqrt{x}+1}{\sqrt{x}+2} + \dfrac{\sqrt{x}-2}{1
+  w4ph TL 3 | Cho biểu thức A = \dfrac{\sqrt{x}}{\sqrt{x}-2} và B = \dfrac{2\sqrt{x}}{\sqrt{x}-3} - \dfrac{x+9\sqrt{x}}{x-9}
+  zodt TL 4 | Cho biểu thức P = \dfrac{x-2\sqrt{x}}{x\sqrt{x}-1} + \dfrac{\sqrt{x}+1}{x\sqrt{x}+x+\sqrt{x}} + \dfrac{1+2x-2\
+  2vhe TL 3 | Cho biểu thức A = \dfrac{3x+\sqrt{9x}-3}{x+\sqrt{x}-2} - \dfrac{\sqrt{x}+1}{\sqrt{x}+2} + \dfrac{\sqrt{x}+2}{1
+  o7na TL 4 | Cho biểu thức A = (\dfrac{2}{\sqrt{x}-2} + \dfrac{3}{2\sqrt{x}+1} - \dfrac{5\sqrt{x}-7}{2x-3\sqrt{x}-2}) : \df
+  b6u2 TL 4 | Cho biểu thức P = (\dfrac{3\sqrt{x}}{\sqrt{x}-1} - \dfrac{2\sqrt{x}}{3x+2\sqrt{x}} - \dfrac{9x+\sqrt{x}+1}{3x-
+  s1wd TL 3 | Cho biểu thức P = \dfrac{15\sqrt{x}-11}{x+2\sqrt{x}-3} + \dfrac{3\sqrt{x}-2}{1-\sqrt{x}} + \dfrac{2\sqrt{x}+3}
+  nfmz TL 3 | Cho biểu thức A = (1 - \dfrac{\sqrt{x}}{\sqrt{x}+1}) : (\dfrac{\sqrt{x}+3}{\sqrt{x}-2} + \dfrac{\sqrt{x}+2}{3-
+
+### [16] Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai | Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa căn (4)
+    yêu cầu: Tìm được giá trị lớn nhất hoặc nhỏ nhất của biểu thức chứa căn bậc hai sau khi rút gọn.
+  m5h2 TLN 2 | Tìm nghiệm lớn nhất của x(x - 4)(x + 2) = 0.
+  aadb TLN 2 | Giải x^2 - 25 = 0 và cho biết hiệu nghiệm lớn với nghiệm nhỏ.
+  fj4n TL 3 | Cho biểu thức Q = (\frac{\sqrt{x} - 3}{\sqrt{x} + 3} + \frac{\sqrt{x} + 3}{\sqrt{x} - 3} - \frac{14}{9 - x}) \
+  id7u TL 3 | Cho biểu thức P = (\frac{1}{\sqrt{x} - 1} + \frac{1}{x - 1}) : (2 - \frac{\sqrt{x} - 4}{\sqrt{x} - 1}). a) Rút
+
+### [17] Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai | Ứng dụng thực tế của biểu thức chứa căn (2)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn có bối cảnh hình học hoặc vật lí bằng cách biến đổi biểu thức chứa căn.
+  7r3o TL 2 | Tam giác ABC được vẽ trên lưới ô vuông như hình dưới ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/stor
+  l80a TL 2 | Một vườn hoa gồm ba thửa hình vuông X, Y, Z lần lượt có diện tích như hình dưới ![Hình ảnh](https://cmjithgtec
+
+### [18] Bài 4. Căn bậc ba và căn thức bậc ba | Tìm căn bậc ba của một số (16)
+    yêu cầu: Nhận biết được khái niệm căn bậc ba và tính được căn bậc ba của một số thực bằng nhẩm hoặc máy tính cầm tay.
+  1s89 TL 1 | Tính: \sqrt[3]{1,331}.
+  h4km TL 1 | Sử dụng MTCT, tính căn bậc ba sau đây (làm tròn kết quả đến chữ số thập phân thứ hai): \sqrt[3]{2,1}.
+  jsah TL 1 | Sử dụng MTCT, tính căn bậc ba sau đây (làm tròn kết quả đến chữ số thập phân thứ hai): \sqrt[3]{-18}.
+  f38x TL 1 | Tìm căn bậc ba của: 216.
+  lb5r TL 1 | Tìm căn bậc ba của: -\frac{1}{1000}.
+  lbjj TL 1 | Sử dụng MTCT, tính căn bậc ba sau đây (làm tròn kết quả đến chữ số thập phân thứ hai): \sqrt[3]{0,35}.
+  ozg2 TL 1 | Tính: \sqrt[3]{216}.
+  ocz3 TL 1 | Tìm căn bậc ba của: -\frac{1000}{216}.
+  fs8v TL 1 | Tìm căn bậc ba của: -64.
+  b8xy TL 1 | Tìm căn bậc ba của: \frac{125}{8}.
+  p20z TL 1 | Tìm căn bậc ba của: 0,512.
+  n3lu TL 1 | Tính: \sqrt[3]{-0,001}.
+  pdch TL 1 | Tính: \sqrt[3]{-512}.
+  tseb TL 1 | Tìm căn bậc ba của: \frac{27}{512}.
+  l05j TL 1 | Sử dụng MTCT, tính căn bậc ba sau đây (làm tròn kết quả đến chữ số thập phân thứ hai): \sqrt[3]{-28}.
+  iz6a TL 1 | Tìm căn bậc ba của: -0,0729.
+
+### [19] Bài 4. Căn bậc ba và căn thức bậc ba | So sánh các căn bậc ba (4)
+    yêu cầu: So sánh được các căn bậc ba dựa vào tính chất a < b ⇔ ∛a < ∛b.
+  y0xj TL 1 | So sánh các cặp số sau: \sqrt[3]{-2024} và \sqrt[3]{-2025}.
+  0tlj TL 2 | So sánh các cặp số sau: -7 và \sqrt[3]{-342}.
+  kmjn TL 1 | So sánh các cặp số sau: 8 và \sqrt[3]{511}.
+  kdh4 TL 2 | So sánh các cặp số sau: \sqrt[3]{\frac{1}{1000}} và \sqrt[3]{\frac{1}{1001}}.
+
+### [20] Bài 4. Căn bậc ba và căn thức bậc ba | Tìm điều kiện xác định của căn thức bậc ba (4)
+    yêu cầu: Xác định được điều kiện để căn thức bậc ba có nghĩa (biểu thức dưới căn xác định).
+  ddqe TL 1 | Tìm x để căn thức sau có nghĩa: \sqrt[3]{\frac{2025 - 2024x}{2023}}.
+  s2up TL 1 | Tìm x để căn thức sau có nghĩa: \sqrt[3]{x - 2024}.
+  e608 TL 1 | Tìm x để căn thức sau có nghĩa: \sqrt[3]{\frac{-2}{x - 1}}.
+  wlr7 TL 1 | Tìm x để căn thức sau có nghĩa: \sqrt[3]{\frac{-2024}{4x - 3}}.
+
+### [21] Bài 4. Căn bậc ba và căn thức bậc ba | Tính giá trị, rút gọn biểu thức chứa căn bậc ba (22)
+    yêu cầu: Tính được giá trị và rút gọn được biểu thức chứa căn bậc ba, kể cả biểu thức có chữ.
+  xokl TL 2 | Rút gọn các biểu thức sau: (\sqrt[3]{\sqrt{2} + 1})^3.
+  e8mo TL 2 | Rút gọn biểu thức \sqrt[3]{x^3 - 3x^2 + 3x - 1}.
+  mwr6 TL 2 | Rút gọn các biểu thức sau: \sqrt[3]{(1 - \sqrt{2})^3}.
+  8gh1 TL 2 | Rút gọn các biểu thức sau: \sqrt[3]{(2\sqrt{2} + 1)^3}.
+  qyf4 TL 1 | Tính: \sqrt[3]{-0,027}.
+  het1 TL 1 | Tính: \sqrt[3]{\frac{64}{343}}.
+  m7i3 TL 1 | Tính: \sqrt[3]{729}.
+  p8op TL 1 | Tính: \sqrt[3]{\frac{1}{125}}.
+  wrrn TL 1 | Tính giá trị của căn thức bậc ba sau: \sqrt[3]{2025 - x} tại x = 2017; x = 1998; x = 1961.
+  hpuo TL 2 | Tính giá trị của căn thức bậc ba sau: \sqrt[3]{150 - x^2} tại x = -5; x = 5; x = \sqrt{86}.
+  mmqh TL 1 | Tính: \sqrt[3]{27}.
+  rie3 TL 1 | Tính giá trị của căn thức \sqrt[3]{5x - 1} tại x = -1,4.
+  9v32 TL 1 | Tính giá trị của căn thức \sqrt[3]{5x - 1} tại x = 0.
+  ubfv TL 1 | Tính: -\sqrt[3]{2024^3}.
+  ogk1 TL 1 | Tính: \sqrt[3]{0,008}.
+  og7p TL 1 | Tính: \sqrt[3]{-\frac{1}{216}}.
+  fpe4 TL 2 | Tính giá trị của căn thức bậc ba sau: \sqrt[3]{x^2 + 9} tại x = -\sqrt{18}; x = \sqrt{7}; x = 5.
+  n67z TL 1 | Tính: (-\sqrt[3]{\frac{4}{5}})^3.
+  8bj3 TL 1 | Tính: (-\sqrt[3]{\frac{2024}{2025}})^3.
+  j7p1 TL 2 | Rút gọn rồi tính giá trị của biểu thức \sqrt[3]{27x^3 - 27x^2 + 9x - 1} tại x = 7.
+  9pzw TL 1 | Tính: -\sqrt[3]{\frac{1}{512}}.
+  pf0c TL 2 | Tính giá trị của căn thức bậc ba sau: \sqrt[3]{4x + 7} tại x = -2; x = 5; x = \frac{203}{4}.
+
+### [22] Bài 4. Căn bậc ba và căn thức bậc ba | Ứng dụng thực tế của căn bậc ba (15)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến căn bậc ba (thể tích, cạnh hình lập phương, bán kính hình cầu).
+  v1af TL 2 | Thể tích của một khối bê tông có dạng hình lập phương là khoảng 220\ 348\text{ cm}^3. Hỏi độ dài cạnh của khối
+  cc14 TL 2 | Có hai khối bê tông hình lập phương A và B có thể tích lần lượt là 8\text{ dm}^3 và 15\text{ dm}^3 (Hình 1). [
+  04nk TL 3 | Có thể xếp 125 khối lập phương đơn vị (có cạnh bằng 1 cm) thành một khối lập phương lớn được không?
+  740k TL 2 | Một khối gỗ hình lập phương có thể tích 1\ 000\text{ cm}^3. Chia khối gỗ này thành 8 khối gỗ hình lập phương n
+  n6ki TL 2 | Có hai khối bê tông hình lập phương A và B có thể tích lần lượt là 8\text{ dm}^3 và 15\text{ dm}^3 (Hình 1). [
+  4rpo TL 2 | Một người thợ muốn làm một thùng tôn hình lập phương có thể tích bằng 730 \text{ dm}^3. Em hãy ước lượng chiều
+  xle2 TL 2 | Bạn Loan cần làm một chiếc hộp giấy có dạng hình lập phương với thể tích là 64\text{ dm}^3. Hỏi cạnh của chiếc
+  qr8j TL 3 | Một bể cá hình lập phương có sức chứa 1\ 000\text{ dm}^3. Muốn tăng sức chứa của bể lên 10 lần (giữ nguyên hìn
+  rrg2 TL 2 | Chiều cao ngang vai của một con voi đực ở châu Phi là h (cm) có thể được tính xấp xỉ bằng công thức: h = 62,5\
+  u755 TL 2 | Ông An có một bể kính hình lập phương như Hình vẽ. [HÌNH VẼ] Ông An muốn làm thêm một bể kính mới hình lập phư
+  123e TL 2 | Định luật Kepler về sự chuyển động của các hành tinh trong Hệ mặt trời xác định mối quan hệ giữa chu kỳ quay q
+  xoux TL 3 | Chiều cao ngang vai của một con voi đực ở châu Phi là h (cm) có thể được tính xấp xỉ bằng công thức: h = 62,5\
+  nzqm TL 2 | Định luật Kepler về sự chuyển động của các hành tinh trong Hệ mặt trời xác định mối quan hệ giữa chu kỳ quay q
+  yis1 TL 2 | Ông An có một bể kính hình lập phương như Hình vẽ. [HÌNH VẼ] Ông An muốn làm thêm một bể kính mới hình lập phư
+  t2q3 TL 2 | Thể tích V của một khối lập phương được tính bởi công thức: V = a^3 với a là độ dài cạnh của khối lập phương. 
+
+### [23] Bài 5. Ôn tập chương | Bài tập tổng hợp chương 3 (0)
+    yêu cầu: Vận dụng tổng hợp kiến thức về căn bậc hai, căn bậc ba, các phép biến đổi và rút gọn biểu thức chứa căn.

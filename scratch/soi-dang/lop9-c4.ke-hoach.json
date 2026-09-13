@@ -1,0 +1,157 @@
+{
+ "lop": "9",
+ "chuong": 4,
+ "dang": [
+  {
+   "bai": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "cu": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "moi": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "yc": "Nhận biết được các tỉ số lượng giác sin, cos, tan, cot của góc nhọn và tính được chúng trong tam giác vuông khi biết độ dài các cạnh."
+  },
+  {
+   "bai": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "cu": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "moi": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "yc": "Vận dụng được quan hệ giữa tỉ số lượng giác của hai góc phụ nhau và giá trị tỉ số lượng giác của các góc 30°, 45°, 60° để tính, sắp xếp."
+  },
+  {
+   "bai": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "cu": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "moi": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "yc": "Sử dụng được máy tính cầm tay để tính tỉ số lượng giác của một góc nhọn và tìm góc khi biết tỉ số lượng giác."
+  },
+  {
+   "bai": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "cu": "Tính giá trị, rút gọn biểu thức lượng giác",
+   "moi": "Tính giá trị, rút gọn biểu thức lượng giác",
+   "yc": "Tính được các tỉ số lượng giác còn lại khi biết một tỉ số và rút gọn được biểu thức chứa các tỉ số lượng giác của một góc nhọn."
+  },
+  {
+   "bai": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "cu": "Chứng minh hệ thức lượng giác",
+   "moi": "Chứng minh hệ thức lượng giác",
+   "yc": "Chứng minh được các hệ thức giữa các tỉ số lượng giác của một góc nhọn và các hệ thức trong tam giác."
+  },
+  {
+   "bai": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "cu": "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng",
+   "moi": "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng",
+   "yc": "Vận dụng được các hệ thức giữa cạnh và góc trong tam giác vuông để tính một cạnh hoặc một góc chưa biết."
+  },
+  {
+   "bai": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "cu": "Giải tam giác vuông",
+   "moi": "Giải tam giác vuông",
+   "yc": "Giải được tam giác vuông (tìm mọi cạnh và góc chưa biết) khi biết hai yếu tố trong đó có ít nhất một cạnh."
+  },
+  {
+   "bai": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "cu": "Tính đường cao, diện tích bằng tỉ số lượng giác",
+   "moi": "Giải tam giác nhọn; tính đường cao, diện tích bằng tỉ số lượng giác",
+   "yc": "Giải được tam giác nhọn bằng cách kẻ đường cao và tính được đường cao, diện tích, các đoạn thẳng trong hình bằng tỉ số lượng giác."
+  },
+  {
+   "bai": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "cu": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ",
+   "moi": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ",
+   "yc": "Giải quyết được một số vấn đề thực tiễn về tính chiều cao, khoảng cách, góc nâng, góc hạ, độ dốc bằng tỉ số lượng giác."
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 4",
+   "moi": "Bài tập tổng hợp chương 4",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 4 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {
+  "4kcd": [
+   "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  ],
+  "yuqa": [
+   "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  ],
+  "02l0": [
+   "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  ],
+  "0gjx": [
+   "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  ],
+  "pldz": [
+   "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  ],
+  "0e3b": [
+   "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  ],
+  "pn1g": [
+   "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "Tính giá trị, rút gọn biểu thức lượng giác"
+  ],
+  "fvzh": [
+   "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "Tính giá trị, rút gọn biểu thức lượng giác"
+  ],
+  "sotc": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  ],
+  "wo4f": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  ],
+  "qq9y": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  ],
+  "d2pq": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  ],
+  "rtv5": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  ],
+  "k4ep": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  ],
+  "zwnu": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  ],
+  "e8kq": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  ],
+  "txgs": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  ],
+  "w7n0": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng"
+  ],
+  "vqw5": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng"
+  ],
+  "azfd": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng"
+  ],
+  "mjst": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng"
+  ],
+  "y8qh": [
+   "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng"
+  ]
+ }
+}

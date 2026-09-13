@@ -1,0 +1,175 @@
+Chương 5. Đường tròn · lớp 9 · 19 dạng · 116 câu
+
+
+### [1] Bài 1. Mở đầu về đường tròn | Tính bán kính, khoảng cách liên quan đến đường tròn (5)
+    yêu cầu: Tính được bán kính đường tròn và khoảng cách giữa các điểm bằng định lí Pythagore và tính chất của đường tròn.
+  cjlt TL 2 | Cho tam giác đều ABC có cạnh bằng a. Tính bán kính của đường tròn đi qua ba đỉnh của tam giác ABC.
+  pm1l TLN 3 | Cho tam giác ABC cân tại A, BC = 12 cm, chiều cao AH = 4 cm. Tính bán kính (theo cm) của đường tròn đi qua ba 
+  ya00 TL 4 | Cho đường tròn (O; R) đường kính BC. Điểm A di động trên (O); gọi P, Q theo thứ tự là trung điểm của AB và AC.
+  gvzo TL 2 | Cho hai đường tròn (A; 6\text{ cm}) và (B; 4\text{ cm}) cắt nhau tại C và D, AB = 8 cm. Gọi I, K lần lượt là g
+  9dil TL 3 | Cho tam giác ABC cân tại A có ba đỉnh nằm trên đường tròn (O). Đường cao AH cắt (O) ở D. Biết BC = 24 cm, AC =
+
+### [2] Bài 1. Mở đầu về đường tròn | Nhận biết đường tròn, hình tròn, vị trí của điểm so với đường tròn (2)
+    yêu cầu: Nhận biết được đường tròn, hình tròn, tâm, bán kính và xác định được một điểm nằm trong, trên hay ngoài đường tròn.
+  o562 TL 2 | Cho hình vuông ABCD, O là giao điểm của hai đường chéo, OA = \sqrt{2} cm. Vẽ đường tròn tâm A bán kính 2 cm. H
+  v1lr TL 1 | Trên mặt phẳng toạ độ Oxy, hãy xác định vị trí của mỗi điểm A(-1; -1), B(-1; -2), C(\sqrt{2}; \sqrt{2}) đối vớ
+
+### [3] Bài 1. Mở đầu về đường tròn | Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn (13)
+    yêu cầu: Xác định được đường tròn đi qua các điểm cho trước và chứng minh được nhiều điểm cùng thuộc một đường tròn.
+  gg4f TL 1 | Cho tam giác ABC vuông tại A. Xác định tâm và bán kính của đường tròn đi qua ba đỉnh của tam giác.
+  l9j8 TL 2 | Cho hình chữ nhật ABCD có AB = 12 cm, BC = 5 cm. Chứng minh rằng bốn điểm A, B, C, D cùng thuộc một đường tròn
+  oaiu TL 3 | Cho hình thang cân ABCD với AB \parallel CD và AB > CD. Chứng minh rằng bốn điểm A, B, C, D cùng thuộc một đườ
+  fw8o TL 3 | Cho đường tròn (O) đường kính AB; M, N thuộc (O) sao cho AM = BN và M, N nằm trên hai nửa đường tròn khác nhau
+  pld4 TL 3 | Cho tứ giác ABCD có \widehat{B} = \widehat{D} = 90^\circ. a) Chứng minh bốn điểm A, B, C, D cùng thuộc một đườ
+  74dj TL 3 | Cho tứ giác ABCD có AC \perp BD. Gọi M, N, P, Q lần lượt là trung điểm của các cạnh AB, BC, CD, DA. Chứng minh
+  3hlz TL 3 | Cho tam giác ABC, các đường cao BD và CE. Trên cạnh AC lấy điểm M. Kẻ tia Cx vuông góc với tia BM tại F. Chứng
+  ckas TL 4 | Cho tam giác cân ABC (AB = AC). Gọi H là trực tâm của tam giác, CE là đường cao. Gọi D, M, N lần lượt là trung
+  1wcx TL 3 | Cho tam giác ABC vuông tại A, đường cao AH. Từ M là điểm bất kì trên cạnh BC kẻ MD \perp AB, ME \perp AC. Chứn
+  8pc8 TL 3 | Chứng minh rằng bốn trung điểm của bốn cạnh hình thoi cùng thuộc một đường tròn.
+  8jf3 TL 2 | Cho tam giác ABC có AQ, BK, CI là ba đường cao và H là trực tâm. a) Chứng minh A, B, Q, K cùng thuộc một đường
+  5l70 TL 3 | Cho hình thang cân ABCD (với AD \parallel BC) có AB = 12 cm, AC = 16 cm, BC = 20 cm. Chứng minh rằng A, B, C, 
+  xayl TL 2 | Cho hình chữ nhật ABCD, vẽ tam giác AEC vuông tại E. Chứng minh năm điểm A, B, C, D, E cùng thuộc một đường tr
+
+### [4] Bài 1. Mở đầu về đường tròn | Tính chất đối xứng của đường tròn (2)
+    yêu cầu: Nhận biết được tâm đối xứng, trục đối xứng của đường tròn và vận dụng để giải toán.
+  pe9w TL 3 | Cho đường tròn (O) đường kính AB; M, N thuộc (O) sao cho AM = BN và M, N nằm trên hai nửa đường tròn khác nhau
+  k1in TL 2 | Cho đường tròn (O) với hai đường kính AC và BD vuông góc với nhau. Chứng minh rằng ABCD là hình vuông.
+
+### [5] Bài 2. Cung và dây của một đường tròn | Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây (8)
+    yêu cầu: Vận dụng được tính chất đường kính vuông góc với dây và liên hệ giữa dây với khoảng cách từ tâm đến dây để tính toán.
+  1p5f TL 3 | Cho đường tròn (O) và đường kính AB = 13 cm. Dây CD = 12 cm vuông góc với AB tại H. a) Tính độ dài các đoạn HA
+  qov4 TL 2 | Cho đường tròn (O; R) và dây MN = R. Hãy tính khoảng cách từ tâm O đến dây MN.
+  wnr2 TL 3 | Cho đường tròn tâm O, hai dây AB và CD vuông góc với nhau ở M. Biết AB = 18 cm, CD = 14 cm, MC = 4 cm. Hãy tín
+  elro TL 2 | Cho đường tròn (O; 5\text{ cm}) và dây AB = 8 cm. a) Tính khoảng cách từ tâm O đến dây AB. b) Lấy điểm I trên 
+  7vj9 TL 2 | Cho đường tròn (O; 10). Lấy một điểm A tuỳ ý thuộc (O). Vẽ dây MN vuông góc với OA tại trung điểm của OA. a) C
+  8f21 TL 3 | Trong hình vẽ bên, một mảnh giấy hình chữ nhật AMNB... che khuất một phần của đường tròn (O): cạnh bên trái củ
+  2fzu TLN 3 | Trong hình vẽ bên, hai dây AB và CD của đường tròn (O) vuông góc với nhau tại E, với AE = 2, EB = 6, EC = 4 và
+  ew46 TL 3 | Cho đường tròn tâm O bán kính 25 cm. Hai dây AB, CD song song với nhau và có độ dài lần lượt là 40 cm, 48 cm. 
+
+### [6] Bài 2. Cung và dây của một đường tròn | Số đo cung, góc ở tâm (10)
+    yêu cầu: Nhận biết được cung, dây, góc ở tâm và tính được số đo cung nhỏ, cung lớn của đường tròn.
+  htau TL 2 | Cho đường tròn (O; R) có dây AB = R. Tính số đo: a) góc ở tâm AOB; b) cung lớn AB.
+  craa TL 2 | Cho đường tròn (O; R) và dây cung AB = R\sqrt{2}. Tính số đo của hai cung AB.
+  8eqt TL 2 | Cho đường tròn (O; R) và dây cung MN = R\sqrt{3}. Tính số đo của hai cung MN.
+  c35f TL 2 | Xác định số đo các cung AB, BC, CA trong hình vẽ sau, biết \widehat{BOC} = 135^\circ và \widehat{OAB} = 60^\ci
+  0ece TL 1 | Trên đường tròn (O), lấy hai điểm A và B sao cho \widehat{AOB} = 90^\circ. Tính số đo mỗi cung AB.
+  qlpr TL 1 | Kim giờ và kim phút của đồng hồ tạo thành một góc ở tâm có số đo là bao nhiêu độ vào những thời điểm sau: a) 3
+  7v2e TL 3 | Trên đường tròn (O; R) lấy ba điểm A, B, C sao cho dây cung AB = R, BC = R\sqrt{2} và tia BO nằm giữa hai tia 
+  i4a9 TL 2 | Cho đường tròn (O; R). Gọi H là trung điểm của bán kính OB. Dây CD vuông góc với OB tại H. Tính số đo cung nhỏ
+  dto8 TL 2 | Cho (O; R) và dây cung MN = R\sqrt{3}. Kẻ OK vuông góc với MN tại K. Hãy tính: a) Độ dài OK theo R. b) Số đo c
+  e4lr TL 3 | Cho tam giác ABC có \widehat{B} = 70^\circ, \widehat{C} = 50^\circ. Đường tròn (O) nội tiếp tam giác đó tiếp x
+
+### [7] Bài 2. Cung và dây của một đường tròn | So sánh độ dài hai dây và hai cung tương ứng (2)
+    yêu cầu: So sánh được hai dây, hai cung của một đường tròn dựa vào quan hệ giữa dây và cung căng dây.
+  tfi1 TL 3 | Cho đường tròn tâm O và điểm I nằm bên trong đường tròn. Chứng minh rằng dây AB vuông góc với OI tại I ngắn hơ
+  gueg TL 2 | Cho đường tròn (O; 5\text{ cm}) và điểm M cách O một đoạn là 3 cm. a) Tính độ dài dây cung ngắn nhất của (O) đ
+
+### [8] Bài 2. Cung và dây của một đường tròn | Chứng minh hình học liên quan đến dây và cung (5)
+    yêu cầu: Chứng minh được các quan hệ bằng nhau, song song, vuông góc liên quan đến dây và cung của đường tròn.
+  uiph TL 3 | Cho một nửa đường tròn (O) và hai dây cung AB \parallel CD nằm trong nửa đường tròn đó. Chứng minh rằng AC = B
+  jzdh TL 2 | Trên đường tròn (O), lấy hai điểm A và B phân biệt. Kẻ các đường kính AOC và BOD. Chứng minh AD = BC.
+  1fx3 TL 3 | Cho (O) đường kính AB và dây cung AC. Chứng minh rằng \widehat{BAC} = \dfrac{1}{2}\text{sđ}\overset{\frown}{BC
+  bppb TL 4 | Cho tam giác ABC có trực tâm H và nội tiếp đường tròn (O) đường kính AD. a) Chứng minh BHCD là hình bình hành.
+  zt6q TL 4 | Cho hai đường tròn bằng nhau (O) và (O') cắt nhau tại A và B. Kẻ dây AM của đường tròn (O) và dây BN của đường
+
+### [9] Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên | Ứng dụng thực tế về độ dài cung và diện tích hình quạt (5)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn (bánh xe, đồng hồ, cổng vòm, sân khấu) liên quan đến độ dài cung và diện tích hình quạt, hình vành k
+  x068 TLN 3 | Cho hình vẽ sau, biết hình vuông có diện tích là 4 cm² và các cánh hoa được tạo bởi bốn nửa đường tròn có đườn
+  6q37 TLN 3 | Để làm một chiếc quạt giấy, người thợ làm quạt thường sử dụng 18 thanh tre làm cốt và xâu thành một xâu ở đầu.
+  1vrs TLN 1 | Một bồn hoa có dạng hình vành khăn, người ta muốn trồng hoa bên trong phần vành khăn đó. Tính diện tích phần t
+  noja TL 3 | Một vườn cỏ hình chữ nhật ABCD có AB = 40 m, AD = 30 m. Người ta muốn buộc hai con dê ở hai góc vườn A, B. Có 
+  fjzq TLN 2 | Một con bò được nhốt trong một mảnh vườn cỏ hình vuông cạnh là 5 m. Con bò được buộc bằng một sợi dây dài 1{,}
+
+### [10] Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên | Tính độ dài đường tròn, cung tròn (8)
+    yêu cầu: Tính được độ dài đường tròn và độ dài cung tròn khi biết bán kính và số đo cung.
+  wskf TLN 1 | Một cái bàn tròn phục vụ trong nhà hàng có chu vi là 64\pi dm. Tính độ dài cung 90^\circ của cái bàn đó theo d
+  xyy0 TL 2 | Cho ba điểm A, B, C thẳng hàng sao cho điểm B nằm giữa hai điểm A và C. Chứng minh rằng độ dài của nửa đường t
+  duid TL 3 | Cho đường tròn (O), dây AB = 9 cm có khoảng cách đến tâm bằng một nửa bán kính của đường tròn. a) Tính chu vi 
+  ekyj TL 3 | Cho đường tròn (O) đường kính AB. Vẽ dây CD vuông góc với AB tại M. Giả sử AM = 1 cm, CD = 2\sqrt{3} cm. Tính:
+  jd5a TL 1 | a) Tính độ dài cung 60^\circ của một đường tròn có bán kính 3 dm. b) Tính độ dài cung 40^\circ của một đường t
+  yhkb TL 2 | Lấy giá trị gần đúng của \pi là 3{,}14, hãy điền vào ô trống trong bảng sau (đơn vị độ dài: cm, làm tròn kết q
+  nerh TL 3 | Cho nửa đường tròn (O; R) đường kính AB. Vẽ dây CD = R (thuộc cung AD). Nối AC và BD cắt nhau tại M. a) Chứng 
+  4tyz TL 3 | Cho tam giác ABC vuông tại A có AB = 5 cm, \widehat{B} = 60^\circ. Đường tròn tâm I, đường kính AB cắt BC ở D.
+
+### [11] Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên | Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên (14)
+    yêu cầu: Tính được diện tích hình tròn, hình quạt tròn và hình vành khuyên theo công thức.
+  tipi TL 1 | a) Tính diện tích hình quạt tròn bán kính 6 cm có số đo cung là 60^\circ. b) Tính diện tích hình quạt tròn bán
+  wpls TLN 1 | Một hoạ tiết trang trí có dạng hình tròn bán kính 4 dm được chia thành nhiều hình quạt tròn, mỗi hình quạt trò
+  fqrw TLN 1 | Tính diện tích của hình vành khuyên nằm giữa hai đường tròn đồng tâm có bán kính là 3 m và 5 m (theo m², làm t
+  hh5x TLN 1 | Tính diện tích hình vành khuyên giới hạn bởi hai đường tròn (O; 10\text{ cm}) và (O; 20\text{ cm}) (theo cm², 
+  gyn4 TLN 1 | Tính diện tích hình vành khuyên nằm giữa hai đường tròn đồng tâm có bán kính là 7 cm và 5 cm (theo cm², làm tr
+  4x8s TL 3 | Cho nửa đường tròn (O) và đường kính AB. Lấy M thuộc đoạn AB. Vẽ dây CD vuông góc với AB tại M. Giả sử AM = 2 
+  58ss TLN 3 | Cho tam giác đều AOB cạnh 4 cm. Vẽ đường tròn tâm O, bán kính OA. Hãy tính diện tích hình viên phân AmB (hình 
+  puw2 TLN 2 | Cho tam giác ABC nội tiếp đường tròn tâm O, bán kính R = 3 cm. Tính diện tích hình quạt tròn giới hạn bởi hai 
+  74s9 TL 3 | Hãy tính diện tích hình viên phân AmB theo R. Biết góc ở tâm \widehat{AOB} = 120^\circ và bán kính hình tròn l
+  9knd TL 3 | Bạn An có một tấm bìa là hình tròn (O) đường kính AB = 2R, C là điểm chính giữa của cung AB. Cung AmB có tâm C
+  lln6 TLN 1 | Tính diện tích của hình quạt tròn bán kính 4 cm, ứng với cung 36^\circ (theo cm², làm tròn đến chữ số thập phâ
+  2ip9 TLN 3 | Cho nửa đường tròn (O) đường kính AB. Gọi M là điểm trên nửa đường tròn, kẻ MH vuông góc với AB. Vẽ vào phía b
+  8z2x TLN 3 | Hoa văn của một tấm bìa hình vuông ABCD cạnh 20 cm là hai cung tròn tâm B và D bán kính 20 cm có phần chung là
+  uaeb TLN 3 | Cho tam giác ABC vuông cân tại A, BC = 5\sqrt{2}. Vẽ \dfrac{1}{4} đường tròn tâm A bán kính AB rồi vẽ nửa đườn
+
+### [12] Bài 4. Vị trí tương đối của đường thẳng và đường tròn | Nhận biết vị trí tương đối của đường thẳng và đường tròn (4)
+    yêu cầu: Xác định được đường thẳng cắt, tiếp xúc hay không giao với đường tròn dựa vào khoảng cách từ tâm đến đường thẳng và bán kính.
+  mt9l TL 1 | Cho đường thẳng a và một điểm O cách a là 3 cm. Dựng (O; 5\text{ cm}). a) Xét vị trí tương đối của a và đường 
+  psrb TL 2 | Cho hình thang vuông ABCD (\widehat{A} = \widehat{D} = 90^\circ), AB = 4 cm, BC = 13 cm và CD = 9 cm. Tính AD 
+  miuv TL 1 | Cho điểm M cách đường thẳng xy một đoạn bằng 6 cm, vẽ đường tròn (M; 10\text{ cm}). a) Chứng minh rằng đường t
+  5vc1 TLN 1 | Cho điểm O cách đường thẳng a là 6 cm. Vẽ đường tròn (O; 10\text{ cm}). Đường tròn (O) cắt đường thẳng a tại h
+
+### [13] Bài 4. Vị trí tương đối của đường thẳng và đường tròn | Tính chất và dấu hiệu nhận biết tiếp tuyến (8)
+    yêu cầu: Nhận biết được tiếp tuyến của đường tròn, vận dụng được tính chất tiếp tuyến vuông góc với bán kính tại tiếp điểm và dấu hiệu nhận biết tiếp
+  0z4j TL 3 | Cho đường tròn (O; R) đường kính AB. I là điểm nằm giữa O và A. Vẽ dây CD \perp AB tại I. Chứng minh rằng các 
+  46h3 TL 3 | Cho tam giác ABC, vẽ các đường cao BM, CN cắt nhau tại H. a) Chứng minh rằng A, M, H, N cùng nằm trên một đườn
+  5uub TL 2 | Cho đường tròn (O), điểm A nằm bên ngoài đường tròn. Gọi M là trung điểm của OA. Vẽ đường tròn (M; MO), nó cắt
+  vxos TL 2 | Cho tam giác ABC có AB = 3, AC = 4, BC = 5. Vẽ đường tròn (B; BA). Chứng minh rằng AC là tiếp tuyến của đường 
+  eqcl TL 3 | Cho đường tròn (O; R) đường kính AB. Vẽ dây AC sao cho \widehat{CAB} = 30^\circ. Trên tia đối của tia BA lấy đ
+  wux3 TL 2 | Cho tam giác ABC vuông tại A. Vẽ hai đường tròn (B; BA) và (C; CA) cắt nhau tại D (khác A). Chứng minh rằng CD
+  bww9 TL 2 | Cho đường tròn (O) và một dây AB. Gọi M là trung điểm của AB. Vẽ bán kính OI đi qua M. Từ I vẽ đường thẳng xy 
+  6ap2 TL 3 | Cho \triangle ABC cân tại A có các đường cao AH và BK cắt nhau tại I. Chứng minh: a) Đường tròn đường kính AI 
+
+### [14] Bài 4. Vị trí tương đối của đường thẳng và đường tròn | Tính chất hai tiếp tuyến cắt nhau (10)
+    yêu cầu: Vận dụng được tính chất của hai tiếp tuyến cắt nhau để chứng minh và tính toán.
+  ps7w TLN 2 | Hai tiếp tuyến tại B và C của nửa đường tròn (O; R) cắt nhau tại A. Biết OA = R\sqrt{2}. Tính số đo (độ) của c
+  4m64 TL 3 | Cho đường tròn (O; R). Từ một điểm M nằm ngoài đường tròn (O), vẽ hai tiếp tuyến MA, MB với đường tròn (A, B l
+  yx9a TL 2 | Cho đường tròn (O; R) và điểm M nằm ngoài đường tròn. Hai đường thẳng c, d qua M lần lượt tiếp xúc với (O) tại
+  favf TL 2 | Cho đường tròn (O; R) đường kính AB và các đường thẳng m, n, p lần lượt tiếp xúc với đường tròn tại A, B, C. G
+  9wk4 TL 2 | Cho đường tròn tâm O, bán kính R. Từ điểm A nằm ngoài đường tròn vẽ tiếp tuyến AB, AC với đường tròn tâm O (B,
+  hvo5 TL 3 | Từ điểm A nằm ngoài (O; R) kẻ hai tiếp tuyến AB, AC (với B, C là các tiếp điểm). Kẻ BE vuông góc với AC, CF vu
+  y3s7 TL 3 | Cho đường tròn (O) đường kính AB = 2R. Trên cùng một phía của đường thẳng AB vẽ hai tiếp tuyến Ax, By. Điểm M 
+  g6um TL 3 | Cho SA và SB là hai tiếp tuyến cắt nhau của đường tròn (O) (A và B là hai tiếp điểm). Gọi M là một điểm tùy ý 
+  ccnm TL 2 | Cho đường tròn (O; R). Từ một điểm A cách O một khoảng 2R ta vẽ hai tiếp tuyến AB, AC (B, C là tiếp điểm). Chứ
+  vge8 TL 3 | Cho nửa đường tròn (O; R) đường kính AB. Gọi Ax, By là các tia vuông góc với AB (Ax, By và nửa đường tròn cùng
+
+### [15] Bài 4. Vị trí tương đối của đường thẳng và đường tròn | Chứng minh, tính toán với tiếp tuyến (3)
+    yêu cầu: Chứng minh được một đường thẳng là tiếp tuyến và tính được độ dài tiếp tuyến, bán kính, khoảng cách trong các bài toán về tiếp tuyến.
+  i6x7 TL 3 | Cho hình thang cân ABCD (AB \parallel CD) ngoại tiếp đường tròn (O; r) và CD = 4AB. a) Gọi H là hình chiếu của
+  p5gt TL 3 | Cho đường tròn (O; R) và dây AB = \dfrac{8R}{5}. Vẽ một tiếp tuyến song song với AB, cắt các tia OA, OB theo t
+  ngai TL 3 | Cho hình thang vuông ABCD (\widehat{A} = \widehat{D} = 90^\circ) ngoại tiếp đường tròn (O), OB = 15 cm và OC =
+
+### [16] Bài 5. Vị trí tương đối của hai đường tròn | Nhận biết vị trí tương đối của hai đường tròn (3)
+    yêu cầu: Xác định được hai đường tròn cắt nhau, tiếp xúc ngoài, tiếp xúc trong, ngoài nhau hay đựng nhau dựa vào đoạn nối tâm và các bán kính.
+  uqnr TL 2 | Cho đường tròn (O; OA) và đường tròn tâm I có đường kính OA. a) Xác định vị trí tương đối của hai đường tròn. 
+  sd2a TL 2 | Cho điểm A nằm trên đường tròn (O; 3\text{ cm}). Trên tiếp tuyến với đường tròn tại A, lấy một điểm I sao cho 
+  31nh TL 1 | Cho đường tròn (O; 5\text{ cm}) và đường tròn (I; 4\text{ cm}). Xác định OI biết: a) Hai đường tròn tiếp xúc t
+
+### [17] Bài 5. Vị trí tương đối của hai đường tròn | Tính chất đường nối tâm (9)
+    yêu cầu: Vận dụng được tính chất đường nối tâm là trục đối xứng của hình gồm hai đường tròn để chứng minh và tính toán.
+  pb8x TL 2 | Cho hai đường tròn (O) và (O') tiếp xúc với nhau tại điểm A sao cho O' nằm giữa O và A. Gọi M là một điểm bất 
+  4k5t TL 3 | Cho đường tròn (O) đường kính AB, điểm C nằm giữa A và O. Vẽ đường tròn (I) có đường kính CB. a) Xét vị trí tư
+  qr23 TL 3 | Cho hai đường tròn (O; R) và (O'; R') tiếp xúc ngoài tại A (R > R'). Vẽ các đường kính AOB, AO'C. Dây DE của đ
+  kcub TL 3 | Cho hai đường tròn (O; R) và (I; r) cắt nhau tại M và N, trong đó I thuộc đường tròn (O) và R > r. Kẻ đường kí
+  k0ts TL 2 | Cho hai đường tròn (O) và (O') cắt nhau tại hai điểm A và B. Kẻ các đường kính AOC, AO'D. Chứng minh: a) AB \p
+  xuo1 TL 3 | Cho hai đường tròn (O) và (O') cắt nhau tại hai điểm A và B. Gọi I là trung điểm của OO', gọi C là điểm đối xứ
+  a3o3 TL 2 | Cho hai đường tròn (O; R) và (O'; r) tiếp xúc nhau tại A (A nằm giữa O và O'). Một đường thẳng đi qua A cắt (O
+  768b TL 2 | Cho hai đường tròn (O; R) và (O'; r) tiếp xúc ngoài tại A. Một đường thẳng d tiếp xúc với cả hai đường tròn tr
+  3dp3 TL 3 | Cho hai đường tròn (O) và (O') tiếp xúc ngoài tại A. Kẻ các đường kính AOB, AO'C. Gọi DE là tiếp tuyến chung c
+
+### [18] Bài 5. Vị trí tương đối của hai đường tròn | Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau (5)
+    yêu cầu: Tính được độ dài dây chung, đoạn nối tâm, bán kính trong các bài toán về hai đường tròn cắt nhau hoặc tiếp xúc nhau.
+  kfrf TL 3 | Cho hai đường tròn (O; R) và (O'; r) với R = 12 cm, r = 5 cm, OO' = 13 cm. a) Chứng minh hai đường tròn (O) và
+  p3ha TL 3 | Cho đường tròn (O; 9\text{ cm}) và (O'; 3\text{ cm}) tiếp xúc ngoài tại A. Vẽ hai bán kính OB và O'C song song
+  2xxp TL 2 | Cho hai đường tròn (O) và (O') tiếp xúc ngoài tại A. Gọi MN là tiếp tuyến chung ngoài của hai đường tròn với M
+  2rd7 TL 3 | Cho hai đường tròn (O; 10\text{ cm}) và (O'; 8\text{ cm}) cắt nhau tại hai điểm A, B. Biết AB = 12 cm, tính đo
+  iaw0 TL 3 | Cho \triangle ABC vuông tại A, đường cao AH. Gọi D là hình chiếu của H trên AB, E là hình chiếu của H trên AC.
+
+### [19] Bài 6. Ôn tập chương | Bài tập tổng hợp chương 5 (0)
+    yêu cầu: Vận dụng tổng hợp kiến thức về đường tròn, cung, dây, tiếp tuyến và vị trí tương đối để giải toán.

@@ -1,0 +1,2498 @@
+{
+ "question_categories": [
+  {
+   "id": "e19d1596-0bee-4ba7-a977-b3bae037aff4",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được phương trình bậc nhất hai ẩn, xác định được hệ số và kiểm tra được một cặp số có là nghiệm của phương trình hay không."
+  },
+  {
+   "id": "b971c181-fd9c-43a0-bae6-f4b38df94f2b",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Biểu diễn tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng toạ độ",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Viết được nghiệm tổng quát và biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn bằng một đường thẳng trên mặt phẳng toạ độ."
+  },
+  {
+   "id": "38b1c8c9-2471-4bb1-9995-2eced6ed3bb8",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được bài toán về chu vi, diện tích, kích thước của hình bằng cách lập hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "id": "40946b67-a393-4694-b39d-450602d0a400",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được hệ hai phương trình bậc nhất hai ẩn và kiểm tra được một cặp số có là nghiệm của hệ hay không."
+  },
+  {
+   "id": "61186b1a-a7cf-403c-b46f-8b1685b7ef36",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Dự đoán được số nghiệm của hệ hai phương trình bậc nhất hai ẩn dựa vào vị trí tương đối của hai đường thẳng hoặc tỉ số các hệ số."
+  },
+  {
+   "id": "9888527f-b9ee-42e5-8168-39c9d9a3fcee",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị của tham số để một cặp số cho trước là nghiệm của phương trình hoặc hệ phương trình bậc nhất hai ẩn."
+  },
+  {
+   "id": "8c9a4874-8fe6-47f8-a0df-cc624683719b",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thế."
+  },
+  {
+   "id": "ffc0bdf4-e16e-4ceb-8ab7-45bd215502dd",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp cộng đại số."
+  },
+  {
+   "id": "e4de3568-40f2-4c0a-b6e1-a06b1926242d",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thích hợp và tính được giá trị biểu thức liên quan đến nghiệm."
+  },
+  {
+   "id": "29f1e26c-c3f4-4cbe-b193-a3b9bab35870",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Biến đổi được hệ phương trình có ngoặc, có mẫu số về hệ hai phương trình bậc nhất hai ẩn rồi giải."
+  },
+  {
+   "id": "3b1b75c3-88bc-48e4-ae9a-433bcf07cade",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được hệ phương trình bằng cách đặt ẩn phụ đưa về hệ hai phương trình bậc nhất hai ẩn, có đặt điều kiện và đối chiếu nghiệm."
+  },
+  {
+   "id": "c7b05db5-9861-4531-8181-7a1542b34f07",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng máy tính cầm tay",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Sử dụng được máy tính cầm tay để tìm nghiệm của hệ hai phương trình bậc nhất hai ẩn và kiểm tra lại kết quả giải tay."
+  },
+  {
+   "id": "d391731c-0a4a-4762-a4ac-927cbb709cd9",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị của tham số để hệ hai phương trình bậc nhất hai ẩn có nghiệm duy nhất, vô nghiệm, vô số nghiệm hoặc có nghiệm thoả mãn điều kiện cho trước."
+  },
+  {
+   "id": "3e4544f8-d9c2-4c1e-b5ae-7c413bc5659e",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Lập và giải được hệ hai phương trình bậc nhất hai ẩn để tìm hệ số của hàm số hoặc đa thức khi biết đồ thị đi qua các điểm hoặc các giá trị cho trước."
+  },
+  {
+   "id": "141d087a-ce6c-413c-9d8b-a9884f7063fd",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng hệ phương trình để cân bằng phương trình hoá học",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hệ hai phương trình bậc nhất hai ẩn để tìm các hệ số cân bằng của phương trình phản ứng hoá học."
+  },
+  {
+   "id": "5d4fe755-1a0f-486e-8a24-e3b5316c4a72",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn đơn giản (mua bán, giá cả, số lượng) bằng cách lập và giải hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "id": "9904a1ed-1f34-4f59-b5a6-87b60b977dfb",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được bài toán tìm hai số hoặc số có hai chữ số khi biết các quan hệ giữa chúng bằng cách lập hệ phương trình."
+  },
+  {
+   "id": "72b08dde-9a6c-486a-8b1b-39d11371dd5b",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được bài toán chuyển động (gặp nhau, đuổi nhau, thay đổi vận tốc) bằng cách lập hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "id": "173b4da9-26fe-4ec9-8f75-9267c1007222",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được bài toán chuyển động xuôi dòng, ngược dòng bằng cách lập hệ hai phương trình bậc nhất hai ẩn với vận tốc dòng nước."
+  },
+  {
+   "id": "d1259d98-a217-4307-aa5a-e54aa8ae6032",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được bài toán làm chung – làm riêng, năng suất lao động, vòi nước chảy bằng cách lập hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "id": "cc284778-b3cf-4b24-907c-5fb1edf246e2",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được bài toán tăng giảm theo tỉ số phần trăm (sản lượng, giá bán, lãi suất) bằng cách lập hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "id": "4c8e21ff-b2ef-4811-bb75-e210584b4122",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được các tình huống thực tiễn khác (mua bán, sản xuất, phân chia, xếp chỗ) bằng cách lập hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "id": "866f6700-d8b2-451d-ac8f-04af14969c02",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 1",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức về phương trình, hệ hai phương trình bậc nhất hai ẩn và giải bài toán bằng cách lập hệ phương trình."
+  }
+ ],
+ "questions": [
+  {
+   "id": "6e1d98f1-f566-433c-83cb-f9ef3f5868d0",
+   "question_id": "CH_1785600354339_h4xg",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "ca6ed5db-4421-4722-814d-b09c825d8c60",
+   "question_id": "CH_1785600354339_mzrs",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn"
+  },
+  {
+   "id": "3343d3f6-41b7-44fa-ad52-263a9d5c4847",
+   "question_id": "CH_1783574210879_wf04",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "2e5a6584-f645-4036-abb3-3d622a8077b0",
+   "question_id": "CH_1783574210879_e38n",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "65502e1e-771c-40a9-a3b3-eb0f7a3d365e",
+   "question_id": "CH_1785600354339_gtjm",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "b5857d8b-9df6-4c10-abd6-c06e8fa85c56",
+   "question_id": "CH_1785600354339_pp2j",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn"
+  },
+  {
+   "id": "3211ddc9-793d-48d3-a478-3af8f118da04",
+   "question_id": "CH_1785600354339_0buv",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "a111a5ba-3499-4431-b012-764a3e4cf59c",
+   "question_id": "CH_1783574210879_g8ns",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "894ec7f9-e1e6-402f-902a-cc54773a4e04",
+   "question_id": "CH_1782143479585_kb37",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "c9bddc35-03ad-44cd-988c-4255877772c8",
+   "question_id": "CH_1783574210879_rkmf",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "5e5a2523-3a9f-4c2e-9d5b-62e78f5e3393",
+   "question_id": "CH_1783322644811_0wdq",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "ce29ed16-3ac3-478f-8608-b2ea97b29254",
+   "question_id": "CH_1783574210879_jpog",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "272e63ea-ba76-4d2f-b464-74faf5a74d60",
+   "question_id": "CH_1783574210879_a7w5",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "d87928df-cb73-4853-b38b-1a38143285f1",
+   "question_id": "CH_1782103933404_pf9q",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "1a111e68-e364-4faa-86c1-bf75ef093e38",
+   "question_id": "CH_1782103933404_0pmi",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "47b4c743-fc9b-4317-a594-03c6b6530077",
+   "question_id": "CH_1782097682645_bbqr",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "5d1ff37e-b85e-4bd2-b590-9bb3fa093ef4",
+   "question_id": "CH_1782097682645_v3dx",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "27139008-bf35-4abf-86ac-e8efa96c474f",
+   "question_id": "CH_1782097682645_13fc",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "9b1a1916-24d2-45ae-b94f-bf9e8a5b7247",
+   "question_id": "CH_1782097682646_kjdc",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  },
+  {
+   "id": "ac6d3813-03d7-4203-8447-762ad49a2a51",
+   "question_id": "CH_1782097682646_v4zv",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "b653324f-a34f-45ef-9477-03a56004e92c",
+   "question_id": "CH_1782103674996_pa27",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "b21d5634-e363-4bec-b223-82e5342ba61f",
+   "question_id": "CH_1782097682646_1k9h",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng hệ phương trình để cân bằng phương trình hoá học"
+  },
+  {
+   "id": "34b713aa-23f6-47af-b566-5380205ae5ab",
+   "question_id": "CH_1782103933404_xh4f",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "8d5bd95e-0155-4a34-8037-620366b497ba",
+   "question_id": "CH_1782108309061_ith4",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "432ea8c2-bb32-4a60-84fa-0d0f3bb45d37",
+   "question_id": "CH_1782108309061_md67",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "98b35a00-2592-405b-a0aa-8b15d59144d1",
+   "question_id": "CH_1782109037708_p7qh",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  },
+  {
+   "id": "2e392e0f-4a94-4198-b74a-5ffe43a0128c",
+   "question_id": "CH_1782143479584_1n5s",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "aa608955-8658-440d-bd88-b5b5987f27fa",
+   "question_id": "CH_1782143479585_7wi2",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "30cc32f5-609e-4ddf-bd5c-4d2c730b8a5e",
+   "question_id": "CH_1782108755628_h4zu",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "7b3af07b-eba7-4d8b-ba30-2ea985998ecb",
+   "question_id": "CH_1783324562961_87vs",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "50d2764b-d9fa-4e5d-9f32-75198beb2363",
+   "question_id": "CH_1785600354339_zznu",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "50fec419-d8d2-4303-afe6-d4664021ebdb",
+   "question_id": "CH_1783324562961_gn5d",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "60c10707-cf10-4fbd-9580-9fbfd417fbba",
+   "question_id": "CH_1783574210879_ynb2",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "79649a7d-4ee3-470e-8a80-4b942ecab97e",
+   "question_id": "CH_1785600354339_7kok",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "28faca0b-1dc6-416d-8da8-6a266a817ca0",
+   "question_id": "CH_1785600354339_1mfl",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "6ae62276-457a-4e4e-bc1b-0741e632e39d",
+   "question_id": "CH_1785600354339_gw9q",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "6d35476a-09fd-4674-a40a-9c5373bba9d9",
+   "question_id": "CH_1785600354339_a0d4",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "f354cf8c-fa12-41e5-9555-5ab8509dd14c",
+   "question_id": "CH_1783322644811_un1e",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "03aa467e-0523-4363-aa4b-dbf19e42a7cd",
+   "question_id": "CH_1785597873810_z2ai",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "1722315d-109b-4768-8a7c-962616c2876d",
+   "question_id": "CH_1785600354339_0ugn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "32ae5f75-f922-43ca-a944-8946e97c48a3",
+   "question_id": "CH_1785600354339_k96z",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn"
+  },
+  {
+   "id": "25218d49-cae8-4866-934d-69d0c1a607ca",
+   "question_id": "CH_1785600354339_kfbz",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "14047534-c1d2-4d49-9c5b-e00ac33545d2",
+   "question_id": "CH_1785600354339_v1mj",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn"
+  },
+  {
+   "id": "24b1d5c9-4e78-4e5f-bfe2-1168418dff36",
+   "question_id": "CH_1785600354339_xxul",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "6d8fa8bf-fcca-4f1f-8e36-ffaa4a53c5f2",
+   "question_id": "CH_1782109037708_nfr1",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng hệ phương trình để cân bằng phương trình hoá học"
+  },
+  {
+   "id": "6e66e948-53fe-49fe-acf8-e475d127254d",
+   "question_id": "CH_1785600354339_6l03",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "9ed6cdb5-0c95-4258-9594-1aa1f7a1aa5c",
+   "question_id": "CH_1785600354339_n9ks",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "0c92cb5f-8446-4ae3-8892-34c72b8eeb70",
+   "question_id": "CH_1785600354339_e026",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "0058fdc4-81dd-40ed-b60c-b87f65e2d8ed",
+   "question_id": "CH_1785600354339_0289",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "a33c86ae-ea4d-426b-bc4c-5cbf1b5abb82",
+   "question_id": "CH_1785600354339_sucr",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "3176156b-501a-49b4-bcc7-e0ccba5ecd06",
+   "question_id": "CH_1785600354339_2bvi",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "daee6c40-a766-4ace-86f4-691429669683",
+   "question_id": "CH_1785600354339_t1e7",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn"
+  },
+  {
+   "id": "eacd13aa-01b2-4feb-8c70-2eaabbd5ba8f",
+   "question_id": "CH_1785600354339_jo4b",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn"
+  },
+  {
+   "id": "3920333e-80ae-4c06-8fb3-f680e0bb09b6",
+   "question_id": "CH_1782144370217_nmjs",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "fc3e2783-4d33-4905-8a57-f809f2bfc2da",
+   "question_id": "CH_1782144370217_58w4",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "71cf16d0-5243-4a91-ba92-aa09656f2e55",
+   "question_id": "CH_1782144620505_fpwd",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "ffb09d19-478c-4ea1-acf8-7ecc54ba425b",
+   "question_id": "CH_1782144620506_0wqv",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "8239bbe9-bff7-41df-a2d7-042dc2996faa",
+   "question_id": "CH_1782144620506_a0oc",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "854bc17b-7f69-4802-a7d9-6a290c88ba25",
+   "question_id": "CH_1782145278465_gpxc",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "ed24f408-4214-490f-8ee6-04707e6e2ba8",
+   "question_id": "CH_1782145278465_smm6",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "a310b4f8-dee5-456c-9411-6a203b453132",
+   "question_id": "CH_1782144370217_1u0t",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "556ee1b1-efda-4af2-92dc-5c8aaf06fcf0",
+   "question_id": "CH_1782144163072_c4wi",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "3b2cad57-098f-48f1-9882-b8697eae97cb",
+   "question_id": "CH_1782144370217_hvlp",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "ce7c76c6-92a5-4281-ab30-4c76f433070f",
+   "question_id": "CH_1782144620506_44d6",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "46213f2f-dd51-4551-8c68-a27ccedff9f0",
+   "question_id": "CH_1782144370217_9k9x",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "09f5f5df-a08f-4bfa-8028-cd557122306d",
+   "question_id": "CH_1782144370217_x5si",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "6498639a-9681-4572-952c-53ef11212a44",
+   "question_id": "CH_1785228205146_04ai",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "d64c5e66-86f9-4ad6-8c1e-732469b0e70e",
+   "question_id": "CH_1785228205146_4qhc",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "10d91cb3-ad0c-4d68-a621-2d0a6f689442",
+   "question_id": "CH_1785228205146_0gol",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "2d8211bf-8d10-40a2-8d79-b8a897b7c178",
+   "question_id": "CH_1785228205146_cgi1",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "04268ea6-6477-48ac-9dec-de1dc8d1dac1",
+   "question_id": "CH_1785597873810_8p17",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "6d9f2dee-71d0-4de5-be14-1fa8d837300f",
+   "question_id": "CH_1785597873810_incj",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "7611da79-f28a-4057-aaed-9477dea3390c",
+   "question_id": "CH_1785597873810_tikp",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "a70244bc-19b8-4365-82ec-35656204dacb",
+   "question_id": "CH_1785597873810_c3py",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "7a0f6424-e668-4efe-8a1b-3647d8768db0",
+   "question_id": "CH_1782109037708_f2jb",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng hệ phương trình để cân bằng phương trình hoá học"
+  },
+  {
+   "id": "2515f59e-aee6-48e3-bdde-e1ba656333bd",
+   "question_id": "CH_1782144163072_kk0c",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "df25e73e-483c-4d35-8841-f1a4c54f378d",
+   "question_id": "CH_1785597873810_r1fw",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "581e450c-6405-4f78-9d1b-7b0f9bfbd8a6",
+   "question_id": "CH_1789054973577_ounj",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "9de56afa-1867-4514-a9c8-7f866ef3fbb5",
+   "question_id": "CH_1789054973577_je78",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "a3d518f1-2e9c-4be9-ae1a-3a6ff7c80561",
+   "question_id": "CH_1789054973577_coql",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "c86235c9-99fc-4ed4-bf34-dc8860d9309c",
+   "question_id": "CH_1789054973577_y888",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "c3dbf661-7412-463a-945d-376ff8bd75aa",
+   "question_id": "CH_1789054973577_yoh3",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "d3f0b617-2d53-4acd-9e0f-7db5d6331509",
+   "question_id": "CH_1789054973577_ux73",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "aec972ca-60b1-4b9f-96b0-e6598493ccd6",
+   "question_id": "CH_1782145278465_uftz",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "439fecd8-a69d-445e-bafe-160b9a8ff394",
+   "question_id": "CH_1783574210879_wjzm",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "0ff229d4-636a-4363-af8a-34daf3036664",
+   "question_id": "CH_1782144163072_iul9",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "523b6ce5-329a-4d00-81cf-32778eac339f",
+   "question_id": "CH_1782109037708_t04a",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng hệ phương trình để cân bằng phương trình hoá học"
+  },
+  {
+   "id": "5244720a-1229-4403-8f87-5d6068637048",
+   "question_id": "CH_1782144163072_ma7s",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "2e8dfe1b-c346-446c-ac52-f4efc5f8bd07",
+   "question_id": "CH_1782144163072_l7k2",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "0e86eedf-ddaf-4b87-987d-dfd088bd9be9",
+   "question_id": "CH_1782144163072_7ue3",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "4670758b-9fb4-4355-9a32-a59d1469bc3c",
+   "question_id": "CH_1789054973577_gfah",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Ứng dụng hệ phương trình để cân bằng phương trình hoá học"
+  },
+  {
+   "id": "ecba0fe6-a905-43b9-9232-f5b674892e44",
+   "question_id": "CH_1782144620506_sf1b",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "f1aae8cc-f84c-400c-8e71-9ef66ef436d9",
+   "question_id": "CH_1782145278465_ahdw",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "de006365-6a76-4475-aaaa-1a6e96183dad",
+   "question_id": "CH_1782103933404_9x47",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "306bb939-6ddf-4dcb-8fca-e330e80d11c3",
+   "question_id": "CH_1783324361744_cyky",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "643b77d2-e8a3-4621-a3ce-93e7d1f4005f",
+   "question_id": "CH_1782103933404_54k4",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "90173a57-4d2e-42f3-a0a2-201b904b410f",
+   "question_id": "CH_1782223286226_xxyf",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "677d3387-bbd2-451e-9fd8-9144bbe1a1e0",
+   "question_id": "CH_1782144620506_1ct9",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "b5a0f36a-87ef-45e9-bbeb-0ff990f3a077",
+   "question_id": "CH_1783322644811_q0ho",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "a9fdb13d-f9b0-4886-b9e8-a69a346323f7",
+   "question_id": "CH_1783322644811_rle1",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "29e5987c-fb5b-4c9e-ae5c-61105e6f07cf",
+   "question_id": "CH_1783324361744_7c26",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "6e650915-f9b3-411e-922e-ae02b8746f6e",
+   "question_id": "CH_1782103933404_4xba",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "a0245488-c740-4aaa-b0ff-65e62b1164d3",
+   "question_id": "CH_1782109037708_32f3",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  },
+  {
+   "id": "b7040409-cef7-426f-ac48-5e01bce93aba",
+   "question_id": "CH_1782143479585_sza6",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "7c6c947a-6749-4b1c-aa3e-4d05b52600dd",
+   "question_id": "CH_1782143479585_ocph",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "85d6ef4a-5223-4873-b586-9e68aa8801ac",
+   "question_id": "CH_1782144620506_w4kk",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "d41419e8-df0a-4e70-b2ea-6bff1f71e58c",
+   "question_id": "CH_1782145278465_4dv7",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "e603382c-82c7-4d93-aedc-5f8a6760e88b",
+   "question_id": "CH_1782109037708_c3gg",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  },
+  {
+   "id": "3b0967ba-c146-4197-a617-1cbf2b1feb87",
+   "question_id": "CH_1783322644811_eho3",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "4a69d046-787b-45c7-a4b3-4f9ff81a6389",
+   "question_id": "CH_1783324361744_5dkc",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "21043b3e-22d5-4ff1-b121-4325636f45f5",
+   "question_id": "CH_1782223286226_ofrj",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "1c11f6a4-1060-4b65-be3a-1aa7c28b5a0f",
+   "question_id": "CH_1782103933404_ifur",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "fc5e664f-987f-4bc7-b321-ae576e398176",
+   "question_id": "CH_1782103933404_1uh9",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "e62e8987-4bcd-403b-8135-cfd7e2b1c53b",
+   "question_id": "CH_1782103933404_swmx",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "3951c609-6f31-476e-a1e8-ec19a9fe67ef",
+   "question_id": "CH_1782103933404_gpqn",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "508b4536-f584-4e11-9188-5b980181c889",
+   "question_id": "CH_1782103933404_x8ck",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "b465116f-a0d4-4f59-9e9c-b9fd5c1be44a",
+   "question_id": "CH_1782103933404_8fjm",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "b72b0ce5-e69c-441a-ab17-2d5a8e107f33",
+   "question_id": "CH_1782103933404_lj7p",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "24630b2d-ebb3-4c4a-857b-d6a6cee1f8c6",
+   "question_id": "CH_1782103933404_v6fm",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "669c4b1b-c0b6-4b70-9eb1-af177a672e0b",
+   "question_id": "CH_1782103933404_e94x",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "28d8d28a-ac11-47a4-8e77-54bfd5513a29",
+   "question_id": "CH_1782103933404_gm22",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "e18652e1-d4ad-4b85-b166-532a92470cd1",
+   "question_id": "CH_1782103933404_u199",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "9c7cf78b-d4e4-461e-a8f1-490967c929c0",
+   "question_id": "CH_1782108309061_rtij",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "25164726-9daa-40a5-8fb0-28b62aa3683a",
+   "question_id": "CH_1782108309061_ym8a",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "f5dc7043-307d-4f8a-bd8f-d60b3212c9fd",
+   "question_id": "CH_1782108309061_njuo",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "2a6eecb5-bffd-43e5-a275-cf3fcf5c47e7",
+   "question_id": "CH_1782108309061_23z3",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "0fb4202a-0392-4543-a2ad-da3d914aff17",
+   "question_id": "CH_1782223286227_gk2a",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "cbdc0eb4-5ef9-4450-9af5-c79caf0af732",
+   "question_id": "CH_1782108309061_lh9q",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "fdf49a24-a952-4d66-9dc0-df3f1872d119",
+   "question_id": "CH_1782108309061_ye41",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "7a8f69ae-301c-4311-9812-fafd236fe51e",
+   "question_id": "CH_1782108309061_7008",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "645e6475-8b05-4819-b4f5-344d667e8449",
+   "question_id": "CH_1782108309061_82lo",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "0698ade4-d816-4de1-a8cb-6145eab3bcb8",
+   "question_id": "CH_1782108309061_2stu",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "545a4a7b-ee9b-41b6-aa7a-f571ac0b5e1c",
+   "question_id": "CH_1782108309061_wnm9",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "60706a25-c936-4f8d-8e75-e7c87871f7ee",
+   "question_id": "CH_1782108309061_m03s",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "e10c9619-43f2-40d1-b85b-b0448862156b",
+   "question_id": "CH_1782108309061_eqf3",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "384fe776-5e01-4e87-8fd1-3bccb8398de4",
+   "question_id": "CH_1782108755628_e71g",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "32adc2fc-3342-47ba-8507-0bb0acdc7f92",
+   "question_id": "CH_1782108755628_a1i7",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "8ab2bf81-b36b-4648-8609-50fd06fd0ed5",
+   "question_id": "CH_1782223286227_qtov",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "1ecb7fbe-0393-489d-84c8-49014b33bbe1",
+   "question_id": "CH_1782108755628_sby9",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "e73d4267-c17a-4756-abf3-208f15b8486c",
+   "question_id": "CH_1782108755628_0aa0",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "a789c773-b68b-4cb4-a550-6589043b8bde",
+   "question_id": "CH_1782108755628_7o2w",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "ddfc153f-38b4-4409-a85c-74096afb3eac",
+   "question_id": "CH_1782108755628_xysv",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "2c00513c-90e0-47fb-8ed9-23b22eca249a",
+   "question_id": "CH_1782108755628_n7az",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "40e41ff3-7697-471c-b49e-d1918b18b4a7",
+   "question_id": "CH_1783322644811_vsit",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "b137b907-a519-4b63-acae-20972a553a1b",
+   "question_id": "CH_1782108755628_f6er",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "a7b96a7f-d157-4b2c-9c52-d4861020a24f",
+   "question_id": "CH_1782109037708_keqz",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  },
+  {
+   "id": "b03602c9-4937-4f58-a305-1221428ccd65",
+   "question_id": "CH_1782109037708_ebfi",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  },
+  {
+   "id": "d76cb1c0-66c2-4849-a641-7a059d7d4351",
+   "question_id": "CH_1782109037708_cie6",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  },
+  {
+   "id": "a7829157-ab9f-4679-ab55-81d90a5a8bce",
+   "question_id": "CH_1783322644811_l3bt",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "36e26f60-f849-4501-a6ff-2ac53a7f35e0",
+   "question_id": "CH_1782143479584_tbj0",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "bcfcd558-0086-49eb-918c-300134886526",
+   "question_id": "CH_1782143479585_6lse",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "37984eb4-a7c9-42bf-b3d0-121e654ddf93",
+   "question_id": "CH_1782143479585_vdtj",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "70248c98-e4d3-4466-9f26-9650e7bed0b8",
+   "question_id": "CH_1782143479585_ktob",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "9afde79e-09e3-4f9a-a0cc-11d5521a4bc6",
+   "question_id": "CH_1782143479585_pehv",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "70c39dbe-f67f-4176-a809-2642950ad075",
+   "question_id": "CH_1782143479585_iinb",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "3455b3e7-5bf9-47d6-b0a1-cea66bde2ec3",
+   "question_id": "CH_1783322644811_v1ab",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "d53e1515-a167-42cf-938f-51c52589dfb7",
+   "question_id": "CH_1782143479585_61t5",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "0f12ce2b-7ca4-4ffc-bf44-5bcf040be819",
+   "question_id": "CH_1782144163072_a8yh",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "a20d7fb0-bbf0-40e8-8442-ae86bb4fbe42",
+   "question_id": "CH_1782144163072_1j1j",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "0b22bf7b-47a1-47f9-a12f-bac88976f802",
+   "question_id": "CH_1782145278465_jkaf",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "098d0705-be6e-4201-a81a-0fa3421b8b69",
+   "question_id": "CH_1782144163072_l9jx",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "9e20a172-6f6d-4095-84b0-0928d5ae8c3e",
+   "question_id": "CH_1782144163072_s9xo",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "c86cf89a-c33d-496c-bde9-754db7a856d2",
+   "question_id": "CH_1782223286227_y3fu",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "a99b4b9d-b727-4269-b5db-e3982cb9820e",
+   "question_id": "CH_1782144370217_o23z",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "245647d1-7edb-4332-95af-2856d195f23c",
+   "question_id": "CH_1782144370217_lfvv",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "c8682b7f-4199-4b49-9aa5-93991c4662cb",
+   "question_id": "CH_1782144620506_1cbj",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "eb535a37-ebf4-4ddc-bf13-92ec8f4f4691",
+   "question_id": "CH_1782223286227_82ns",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "b4bf2350-0566-44f0-8719-a897e8f35215",
+   "question_id": "CH_1782144370217_5v40",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "6ab69827-2bcc-4853-9716-872d58688481",
+   "question_id": "CH_1782144620506_s02r",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "92ee5452-d729-4914-937f-0d41b2b97551",
+   "question_id": "CH_1782144620506_oftf",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "410877c0-1b12-4241-804f-90af6db732bc",
+   "question_id": "CH_1782144620506_s27m",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "8292bcd7-8657-4d05-9e0b-9e8c25aa2a29",
+   "question_id": "CH_1782144620506_m5do",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "1ef9b007-eb92-4d2e-8e65-f26b837a1670",
+   "question_id": "CH_1782144620506_86ie",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "eab63901-f95e-4408-b731-c4e0fbbf2b7b",
+   "question_id": "CH_1782223286226_04eo",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "f1cf15d9-670c-4503-aac7-7abc8fcd5ce0",
+   "question_id": "CH_1782144620506_m9xg",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "4179caf0-a807-48e5-a2ee-67ae72e1e703",
+   "question_id": "CH_1782144620506_q894",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "7f85472c-89e6-44f3-9cb4-992dd6c768a0",
+   "question_id": "CH_1782145278465_4mb0",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "fee73afe-ac3c-4545-80e2-d50e63e12f19",
+   "question_id": "CH_1782145278465_p2my",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "215799c1-293b-480f-9e66-884557479c3f",
+   "question_id": "CH_1782145278465_okt4",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "44f45199-9c8a-40d4-b93d-be4783ba98c5",
+   "question_id": "CH_1782145278465_ik3h",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "b05696ce-db99-4edc-ba2f-18b06287599c",
+   "question_id": "CH_1782145278465_4ece",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "d9c347a9-3b23-4016-9438-89e5667eb18c",
+   "question_id": "CH_1782145278465_alsh",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "e7b241fb-b035-4778-b1dc-154de78bde5c",
+   "question_id": "CH_1782145278465_e6dw",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "830db021-5512-4673-b0fd-7ce0a3062c12",
+   "question_id": "CH_1783322644811_xsd8",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "c4f8721b-ad5f-4127-8b61-e7fe2867a8b2",
+   "question_id": "CH_1782145278465_s78r",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "a98a1a1f-508e-4d5e-931f-90876ac32afc",
+   "question_id": "CH_1782145278465_q4j1",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "89c9fc3e-4ab1-4221-85b4-04ca640ad802",
+   "question_id": "CH_1782145278465_5yde",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "6d17032f-60fa-4d0e-a1fa-08a12d844847",
+   "question_id": "CH_1782145278465_y0rn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "6e7ffac5-b213-431a-8bac-e8b35b05e857",
+   "question_id": "CH_1782223286227_cxxd",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "91aaa702-556c-440c-a385-ac6c6bb887cd",
+   "question_id": "CH_1782145278465_tqk3",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "8f59af8f-e981-459e-8546-22e404caa334",
+   "question_id": "CH_1782145278465_jx14",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "bc36aa4d-2cba-4692-86a1-2a4c95f1bdb9",
+   "question_id": "CH_1782223286226_jwhp",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "debfdcb5-7fa8-43e1-90bd-1e2a7520040d",
+   "question_id": "CH_1782223286227_5m5t",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "cff6c991-6099-484b-b85a-9e4efde1eb59",
+   "question_id": "CH_1782223286227_c1g1",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "5f4bab6e-9469-45bf-8e6c-466d66a24250",
+   "question_id": "CH_1782223286227_k663",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "ef28b5bb-9a03-465c-b380-552a0f8ef034",
+   "question_id": "CH_1783322644811_ppu6",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "d66882ef-81a5-4781-bda3-a594760654e9",
+   "question_id": "CH_1782145278465_2d32",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "c9ba1239-7895-4072-9a23-eef2e6202713",
+   "question_id": "CH_1782144620506_shfo",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "05de68c7-8d7a-4aee-9c6f-aa60f06f49fd",
+   "question_id": "CH_1782223286227_x1av",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "e32be928-0501-47dc-942c-86c81099cb64",
+   "question_id": "CH_1782108755628_lkq2",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "d0dd9dd5-9998-4483-81fe-734c2d2dee9c",
+   "question_id": "CH_1782144620506_uqcb",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "e547d44d-eaac-4f9f-9ba5-28c7fa539730",
+   "question_id": "CH_1782108755628_4l50",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "231d9526-a78e-45f5-84ff-98292b047ae4",
+   "question_id": "CH_1782108755628_xn6w",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "76ccab46-0044-4946-b3d1-bae9421f33e8",
+   "question_id": "CH_1782108309061_quyh",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "06bbc31c-2fb8-46e1-976e-9ca07f4400ce",
+   "question_id": "CH_1782108755628_7a37",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "d59505f3-13d4-4a33-85be-f771adb6a29b",
+   "question_id": "CH_1783322644811_fxy5",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "115f8cd7-686c-4b24-8966-04d6447cd397",
+   "question_id": "CH_1783322644811_655u",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "82deb7a8-2138-4bf0-a8c7-24576a220a24",
+   "question_id": "CH_1783322644811_nfkt",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "4a206982-815a-4140-bad1-1c96d90ddfde",
+   "question_id": "CH_1783322644811_hzfd",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "f7e483b0-8bbc-4aee-b5c6-72fc0184916e",
+   "question_id": "CH_1783322644811_wyv6",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "cb857816-b45c-4e10-a163-f22b391fc858",
+   "question_id": "CH_1783322644811_qgr7",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "fb28f671-dcf6-4ac8-b8b1-935133cd951e",
+   "question_id": "CH_1783322644811_vtdt",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "733c1d90-82db-46b2-9080-701bea455659",
+   "question_id": "CH_1783322644811_7a38",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ"
+  },
+  {
+   "id": "2b4b643f-ea02-4286-aa8d-91968f238c1b",
+   "question_id": "CH_1783322644811_clf9",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "72a8690a-e7fc-44b1-aee7-3cfba95c6bad",
+   "question_id": "CH_1783322644811_z6ac",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "143ded8e-cfcc-45f0-9545-eff853e09527",
+   "question_id": "CH_1783323276492_hwyc",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "c6dac66f-88fc-41a7-a5ba-6c6542213c3c",
+   "question_id": "CH_1783323276492_xp5b",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "8caf5be1-ca59-4deb-a9a1-150f044d4aaf",
+   "question_id": "CH_1783323276492_5geo",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "c92d8e30-5730-4795-9fc7-d051befa8502",
+   "question_id": "CH_1783323276492_gwhl",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "b31a4c52-663b-4fac-ad43-b767e955ede1",
+   "question_id": "CH_1783323487002_u31e",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "aecf8050-c890-497c-81bd-4001aed764b8",
+   "question_id": "CH_1783323276492_ssga",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "2ef44982-9d86-4fbd-af37-b03db0e82be0",
+   "question_id": "CH_1783323276492_qdc9",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "8b9c9200-c6a7-4010-b4c1-57b875e40c40",
+   "question_id": "CH_1783323276492_ywju",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "806ac59e-be7c-44dd-a297-7329ce42125e",
+   "question_id": "CH_1783323276492_1ulp",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "13645b4c-d548-43f9-921c-b0c5af12eb68",
+   "question_id": "CH_1783323276492_i6us",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "0bde32a5-3c01-4800-bce3-d3384c2dbe2d",
+   "question_id": "CH_1783323276492_ywrs",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "fb2b7a62-4bc9-42f8-b732-18e2d13c6ca3",
+   "question_id": "CH_1783323276492_z33s",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "54fe22b4-62d2-48c3-afa3-ed2f913c8736",
+   "question_id": "CH_1783323276492_uou2",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "efc730d3-12de-4989-aac3-59175df767bc",
+   "question_id": "CH_1783323276492_bp30",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "48179cd8-b23f-4a8a-a39c-d84aabf5a544",
+   "question_id": "CH_1783323276492_fnmm",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "8b4e067a-9f9e-4e46-bc2b-05c126be1aea",
+   "question_id": "CH_1783323276492_8fr1",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "77497c2e-3d28-42c9-b555-8c3ee606d1ff",
+   "question_id": "CH_1783323276492_kg1v",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "9a489d65-7a09-4050-a47a-6d4b3b3b7202",
+   "question_id": "CH_1783323487002_wgp1",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "a501c436-e200-45e1-b3f1-621f544d6bcb",
+   "question_id": "CH_1783323276492_n691",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "2dd69a35-8bb0-4b75-9236-5f959d3d3d00",
+   "question_id": "CH_1783323276492_6inv",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "728932fd-87d1-42f5-a387-11572e78d911",
+   "question_id": "CH_1783323276492_ktch",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "99680859-5a15-41dd-a3ea-d11941473c47",
+   "question_id": "CH_1783323276492_8c94",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "901b6ca7-c6ac-4b1e-876a-842151e9df50",
+   "question_id": "CH_1783323276492_a5jo",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "44f41e17-07f1-4b50-ad9b-a22c08a43294",
+   "question_id": "CH_1783324562961_04i9",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "45b8fedb-8a8b-49ac-9bb6-9ff76b9ebee0",
+   "question_id": "CH_1783323487002_pm4g",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "78f1a1af-5aea-43cb-87e8-f9056d95d815",
+   "question_id": "CH_1783323487002_zbsb",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "747ea380-4016-4660-abe5-ce0d9494f5b3",
+   "question_id": "CH_1783323487002_um01",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "7273c11a-c10e-4bf7-9f5a-bd9696077df5",
+   "question_id": "CH_1783323487002_0123",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "5e7e5b3a-184b-4a4f-b05e-290b15d5722c",
+   "question_id": "CH_1783323487002_jjx2",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "c88f5447-391f-4504-b8de-9f2986fc946a",
+   "question_id": "CH_1783323487002_lld3",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "9aa20943-1814-4d9f-bf8f-7a395a124f8c",
+   "question_id": "CH_1783323487002_dazh",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "f5a54b4d-4521-4816-bd74-d17618d98200",
+   "question_id": "CH_1783323487002_z5lp",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "eefe73fb-556c-45d3-9cb4-eea65d22ec12",
+   "question_id": "CH_1783323487002_ughy",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "36c9fac1-e1f7-4f3d-8c14-0889ceb74f94",
+   "question_id": "CH_1783323487002_nlw2",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "712cbd2e-402b-4e75-9164-de51e860a104",
+   "question_id": "CH_1783323487002_69zp",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "d39646d8-f6e6-4585-874b-2d8dd96c52f8",
+   "question_id": "CH_1783323487002_ckkr",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "6d6cfef9-cd97-4140-b44a-d8f03b62a5de",
+   "question_id": "CH_1783323487002_33ps",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "8f2d448d-4539-4459-8fa2-5d9216b19b38",
+   "question_id": "CH_1783323487002_ifd0",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "7c9c31da-a0c8-451c-8a22-e412b9c3e134",
+   "question_id": "CH_1783324361744_4wzv",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "eabd609b-12b4-4aee-9a7b-27825c3f282a",
+   "question_id": "CH_1783323487002_jnsk",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "cdd674dc-61db-4076-b50d-9eaecb12596b",
+   "question_id": "CH_1783323487002_9vsl",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "75a674c1-1127-41a7-9125-03018b8036fb",
+   "question_id": "CH_1783323487002_cdf9",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "2b170866-47e4-440e-945b-703cdfcc3102",
+   "question_id": "CH_1783324109393_0wmd",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "a4452b0e-d55b-4940-be78-d38fd93439b6",
+   "question_id": "CH_1783324109393_frxw",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "1e3dc81a-5aca-4d8c-9cfe-8939450d2a3a",
+   "question_id": "CH_1783324109393_d9pu",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "edcb07ca-f726-4c53-b668-5ba93640a170",
+   "question_id": "CH_1783324109393_2yy8",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "52b876f3-216a-4f7d-8818-0e4d4b81a761",
+   "question_id": "CH_1783324109393_ookj",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "82fa4736-aa61-4a53-b371-f5b05f0fee48",
+   "question_id": "CH_1783324109393_593b",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "34a3430e-c065-47f5-ad66-3701bccbf29f",
+   "question_id": "CH_1783324109393_3rx4",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "b2313469-3321-4709-b6b9-feda6540c26d",
+   "question_id": "CH_1783324109393_4eqq",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "1ef5a474-967d-400f-8edc-37aaa1190861",
+   "question_id": "CH_1783324109393_e0ho",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "96ceb398-f30c-4e6d-9857-0df76fc7d9e7",
+   "question_id": "CH_1783324109393_1273",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "9a1b002a-bb1c-4cfa-b3e1-2e3f9ac317f2",
+   "question_id": "CH_1783324109393_m755",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "272476d3-32cf-4f54-ab66-392433c44a1c",
+   "question_id": "CH_1783324109393_v8gx",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "f9597879-d67d-4d78-807a-89bcd94ee071",
+   "question_id": "CH_1783324109393_hht7",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "4dc4de86-9c48-4efa-8e3e-900b8d351312",
+   "question_id": "CH_1783324109393_79eg",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "53477bcd-0bb6-43f3-8c6f-01d7b8164d6c",
+   "question_id": "CH_1783324361744_wc31",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "c6759e1a-d282-48f4-ae21-a07e1d81a891",
+   "question_id": "CH_1783324109393_0roc",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "d8411194-1486-4bda-9188-3da93228040d",
+   "question_id": "CH_1783324109393_4j16",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "8ecab783-2147-47f3-a4e2-ee50a52c017f",
+   "question_id": "CH_1783324109393_wjr8",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "afb13402-68c4-44ff-8e63-b2c72905d176",
+   "question_id": "CH_1783324109393_hvim",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "5d8fcfc7-9944-4f00-b714-ed4bec721bb7",
+   "question_id": "CH_1783324109393_lon4",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "fa3df5f2-97b9-427e-afb3-524d785a3cf9",
+   "question_id": "CH_1783324361744_htj8",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "9165f064-11cb-41b4-90a8-57b14d6db748",
+   "question_id": "CH_1783324361744_8jjk",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "3eb973d5-fb06-49ab-995b-5d4acf2efdc8",
+   "question_id": "CH_1783324361744_3cqi",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "612b117a-a878-4638-ba15-3ba1d8f66aad",
+   "question_id": "CH_1783324361744_0xbb",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "19155067-a7b0-4805-b772-1fb9cb47bd5f",
+   "question_id": "CH_1783324361744_q445",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "3d8de2f5-a960-48f8-937d-ec6abda45d86",
+   "question_id": "CH_1783324562961_os7a",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "84dcd525-a12e-4697-bed7-91036288ecc6",
+   "question_id": "CH_1783324361744_h0q4",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "28c7353d-4944-461c-a8b9-fe9771b1aa2f",
+   "question_id": "CH_1783324361744_viwq",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "8d27e706-5ef4-40da-88ed-faa40b86651e",
+   "question_id": "CH_1783324361744_kq0j",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "67ea826e-5790-4927-8566-fcf8e45e76ed",
+   "question_id": "CH_1783324361744_nyx5",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "117c0dd6-3daf-43d8-8b31-2f3e5de918ca",
+   "question_id": "CH_1783324361744_6sbg",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "186cec02-f91b-46a5-9cfa-f63e2195b5ee",
+   "question_id": "CH_1783324361744_xo6w",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "4c37d9da-90b3-4637-9687-c5e3313be259",
+   "question_id": "CH_1783324361744_5f8e",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "a871c28d-3b9c-4904-ab66-3d3e51d9434a",
+   "question_id": "CH_1783324361744_xjan",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "16f1f79f-e8f9-4808-a99a-fa6f513dbdb9",
+   "question_id": "CH_1783324361744_bmyh",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "7baacb08-5dd8-49fb-8114-ce02acfa7e58",
+   "question_id": "CH_1783324361744_4fi7",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "5eb0770b-c714-4873-8112-0fcf8f0e5ebf",
+   "question_id": "CH_1783324361744_hgjk",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "f8e8b85b-4227-44c6-917d-dde27fd97121",
+   "question_id": "CH_1783324562961_gr9q",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "3ae58b88-8555-4f0b-87d9-f8c32b42f788",
+   "question_id": "CH_1783324361744_fekj",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "31213106-7255-4eb8-b7c3-e056d50dd0c3",
+   "question_id": "CH_1783324562961_pl55",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "5d269a4c-5d98-4c84-b61b-f361044012e7",
+   "question_id": "CH_1783324562961_rztq",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "f72bf689-d631-4d2a-9a81-d34a3f62f509",
+   "question_id": "CH_1783324562961_aizn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "9fc6be69-5d71-4608-9e6d-777ab3ce4f6d",
+   "question_id": "CH_1783324562961_psi5",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "36064233-f3f7-4ed5-9eb7-6503132e9d2d",
+   "question_id": "CH_1783324562961_4d63",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "28c82ef8-854d-4dba-89b7-cadcd023406f",
+   "question_id": "CH_1783324562961_1i52",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "55028e5a-1014-4692-8f6e-acd0e9642421",
+   "question_id": "CH_1783322644811_siqz",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "20bf5932-382f-4a78-a8b4-6c140d6e4bb8",
+   "question_id": "CH_1783324562961_blz5",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "2ef0e463-b324-426d-a600-ab78362afa45",
+   "question_id": "CH_1783324562961_2aaa",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "5a8fde50-65f8-415e-aac1-0adbb1f994b7",
+   "question_id": "CH_1783324562961_0b6m",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "577765e3-c8da-42ec-b3fb-f0c1ecc03386",
+   "question_id": "CH_1783324562961_ky3r",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "263fbc21-8cd0-4628-8eb3-06e4eda9b287",
+   "question_id": "CH_1783324562961_kgbw",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "27bb322e-cb1b-449c-b69e-3033e85696ba",
+   "question_id": "CH_1783324562961_768u",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "8b0a4cef-649a-47ce-8de4-782adeaf695d",
+   "question_id": "CH_1783322644811_agar",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Đoán nhận số nghiệm của hệ phương trình"
+  },
+  {
+   "id": "d0972fba-eecc-4fdb-8d58-9cf6627a1689",
+   "question_id": "CH_1783323487002_1yo0",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "280fc068-e96a-41f7-bb4a-4f7634ef1def",
+   "question_id": "CH_1783323487002_2c9s",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "5d587993-0e81-4ed6-a957-593b86026cab",
+   "question_id": "CH_1783323276492_zmj4",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "d68b7668-6373-40e9-914e-c1e6ab256557",
+   "question_id": "CH_1783323276492_imrh",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "a9ae6efb-dd31-41bf-bc03-e3fe82f2f083",
+   "question_id": "CH_1782108755628_vm5w",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "44534cf0-3ebb-4431-a625-f72f6be1a63f",
+   "question_id": "CH_1783323276492_q5nl",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "8ec87b95-b1d8-4167-bab1-1638d1e0f54f",
+   "question_id": "CH_1783324109393_0na6",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "5534c700-050d-4768-bd63-6d551883f55a",
+   "question_id": "CH_1782108309061_akko",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "c988a878-a7c7-4bd6-bd30-8d2980542a95",
+   "question_id": "CH_1783324562961_h645",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  },
+  {
+   "id": "9f0e0dc7-e411-4023-a134-c6af348faad5",
+   "question_id": "CH_1782144620506_l4z7",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "5972a8a2-6234-45f1-b2e8-24c2e76b915c",
+   "question_id": "CH_1783323487002_bg1l",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "cc52ef15-ce26-4b9c-aef4-d47fc539ef04",
+   "question_id": "CH_1782103933404_euy7",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "fb04638d-b0cb-4cf7-9b7f-7e2aca6b9fbb",
+   "question_id": "CH_1782103933404_za14",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  },
+  {
+   "id": "31af59df-65bd-4769-a8f3-c020d44a1c29",
+   "question_id": "CH_1782144163072_az8u",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "bb392702-672c-4b71-b4d1-5f46bb6b61db",
+   "question_id": "CH_1782145278465_xmhg",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "abbf007c-63ff-4446-8c9d-dcc20ba3298a",
+   "question_id": "CH_1783324361744_s8d6",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "d267c128-7f80-4d85-9ddc-3db2a974ebb2",
+   "question_id": "CH_1782108755628_q15r",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "00cf22d9-5adb-4319-9c3d-2127fb9615e9",
+   "question_id": "CH_1782145278465_ixsl",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "68a2826c-6ed3-4188-b110-1f9e18ba672f",
+   "question_id": "CH_1783324562961_kok4",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán có nội dung hình học"
+  },
+  {
+   "id": "500eb38b-bc9b-4de1-9c37-7f02cb7aa9b9",
+   "question_id": "CH_1783324361744_gcin",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "ba636ab6-d809-4074-80f5-c084e9ab4aba",
+   "question_id": "CH_1783324361744_kf4m",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "0a1b4314-bbb6-44f6-b197-d6b2cb2721d0",
+   "question_id": "CH_1782108309061_zngf",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "65933d3d-d192-489d-bf10-f4022acb2d53",
+   "question_id": "CH_1782103933404_4tr4",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp thế"
+  },
+  {
+   "id": "05739893-a657-4468-83c4-cf8b228e71b3",
+   "question_id": "CH_1783324361744_uxjv",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "e978f39a-894d-48bc-9284-0e48501f7076",
+   "question_id": "CH_1782108309061_qblh",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "355d3769-a90c-4fd3-b2de-518dcc6c71df",
+   "question_id": "CH_1782108755628_x56u",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  },
+  {
+   "id": "64e57003-cb73-48d3-9c62-3b750c948234",
+   "question_id": "CH_1782143479584_dd64",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "333b68b4-a102-4ba7-ac8d-7bed8b13a965",
+   "question_id": "CH_1783324361744_ymwj",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "0f756c85-125e-4459-bd66-cc298ce43c10",
+   "question_id": "CH_1783575595097_4dsv",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "4b2c4207-8bf5-488d-9b49-91c82c88b125",
+   "question_id": "CH_1783574210879_urjs",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "eb194634-2d12-4412-afbe-1e4cc76ee735",
+   "question_id": "CH_1783574210879_3pln",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "0fd427a7-0dc6-4dd6-b6b9-d17bfef07eb4",
+   "question_id": "CH_1783574210879_42ip",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "8721fba2-c5ef-4c12-8e56-c4cf89ae56d1",
+   "question_id": "CH_1783574210879_12eg",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "93f3e398-ab80-4e1a-b331-386df47837fb",
+   "question_id": "CH_1783574210879_hg9r",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "73691194-e80d-40cb-b73d-7ad0e32146e7",
+   "question_id": "CH_1783574210879_r865",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "a3c52a82-4f42-424d-953c-f9302298ad4b",
+   "question_id": "CH_1783574210879_3v68",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  },
+  {
+   "id": "f8a9b5ac-ad4e-4eca-824f-5b1a09ed416d",
+   "question_id": "CH_1783574210879_1mah",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "52680b35-401f-47a3-9857-3e617d61a13f",
+   "question_id": "CH_1783574210879_w2y3",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "1d6d69ba-7814-4833-8d8e-48328a0f86a5",
+   "question_id": "CH_1783575908894_2zvt",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "865f980d-603f-4eb8-bb8a-46878ac99170",
+   "question_id": "CH_1783575303567_j047",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "bf4e712a-1170-4ccc-a436-995d7515be5c",
+   "question_id": "CH_1783575303567_s72w",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng phương pháp cộng đại số"
+  },
+  {
+   "id": "91f7bb5b-a82c-40b8-9c8b-9a02d308dc4d",
+   "question_id": "CH_1783575595097_j3x2",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "2825ee6a-490f-4dfc-8b0f-36ae1a099f13",
+   "question_id": "CH_1783574210879_znv1",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "4e4a2b0e-0d03-4372-a8c0-ed679dac869a",
+   "question_id": "CH_1783574210879_m72p",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "121f15b2-d379-4f7c-9926-d7a54baa87b2",
+   "question_id": "CH_1783574210879_gqt6",
+   "lesson": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình"
+  },
+  {
+   "id": "f2cc32e6-5c71-4be2-a96b-ae612a506604",
+   "question_id": "CH_1783575595097_j9fb",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "d7e22289-b430-4f6a-b489-7aae3cd407c9",
+   "question_id": "CH_1783575908894_1opw",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "f037de28-3ddb-42a2-9f77-eceff920d334",
+   "question_id": "CH_1783576399298_m5tt",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn"
+  },
+  {
+   "id": "ee06f0ed-daa8-412a-b846-af193298af24",
+   "question_id": "CH_1783576641687_cd70",
+   "lesson": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "math_form": "Hệ phương trình chứa tham số"
+  },
+  {
+   "id": "a91b1d96-0238-43ed-88ae-535b50047047",
+   "question_id": "CH_1783577104407_zxtq",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "2b829e7c-3e1d-481b-93ef-d916ab29c57c",
+   "question_id": "CH_1783577104407_v98l",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "6dc70636-e9e4-4f80-8703-ed2589948d3c",
+   "question_id": "CH_1785597873810_1ut4",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "02ffc9b4-cbdd-473a-b25a-52e7ff8144a2",
+   "question_id": "CH_1785228205146_a9lz",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "aa9a40b5-aa55-4166-b6f9-bdc74cdaad57",
+   "question_id": "CH_1785228205146_6bch",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "0152c88c-2f60-43cf-99eb-0ad4b1f77630",
+   "question_id": "CH_1785597873810_b3b0",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  },
+  {
+   "id": "238e4499-a82b-4159-979e-eafd2e71f6ab",
+   "question_id": "CH_1785597873810_32io",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "666dda0a-91cf-4aac-83c2-9efd13895e4a",
+   "question_id": "CH_1785597873810_li2y",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "b202e62a-9941-414c-b79a-81ad18975898",
+   "question_id": "CH_1785597873810_r5ac",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về tỉ số phần trăm"
+  },
+  {
+   "id": "59e2407a-049a-4dd0-aff5-82e608590543",
+   "question_id": "CH_1785597873810_qke4",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "327e836f-c323-4c45-bc54-480692e9bc5f",
+   "question_id": "CH_1785597873810_z40o",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "9c520e58-1b8a-40f1-ad0d-bf91a2844164",
+   "question_id": "CH_1785597873810_5clf",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "2d962323-3b70-45f8-bf1b-591adc6574ce",
+   "question_id": "CH_1785597873810_6t57",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "2c0cc615-fc8f-459c-8e8e-25a7ffc382ae",
+   "question_id": "CH_1785597873810_lnuc",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán chuyển động trên bộ"
+  },
+  {
+   "id": "697851d6-ed00-49fd-9b74-7e5d1ec9df71",
+   "question_id": "CH_1783324562961_qdyn",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "3e97862b-5298-4994-b88e-c6ada55471ac",
+   "question_id": "CH_1783324562961_1w10",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán công việc, năng suất"
+  },
+  {
+   "id": "66fe9f10-91b6-4a7d-aa3b-2247be8315a1",
+   "question_id": "CH_1785597873810_d783",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  },
+  {
+   "id": "0c7a893b-e60e-4407-94a1-af7a7e2f6233",
+   "question_id": "CH_1785597873810_55e7",
+   "lesson": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "math_form": "Toán về quan hệ giữa các số, chữ số"
+  }
+ ]
+}

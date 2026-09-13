@@ -1,0 +1,3080 @@
+{
+ "question_categories": [
+  {
+   "id": "2e469e19-fdf5-4a64-a255-742ab30632ca",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Xác định được điều kiện để căn thức bậc hai có nghĩa và kiểm tra được giá trị của biến có thoả mãn điều kiện không."
+  },
+  {
+   "id": "66a92d85-001a-44b7-b844-7d0bb1782dde",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Rút gọn được biểu thức chứa căn thức bậc hai (biểu thức số và biểu thức chứa chữ có điều kiện) và tính được giá trị tại giá trị cho trước của biến."
+  },
+  {
+   "id": "07c49ce5-340a-4754-8ca9-0298d2c8ea39",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm căn bậc hai, căn bậc hai số học của một số",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được khái niệm căn bậc hai, căn bậc hai số học và tính được căn bậc hai của một số thực không âm."
+  },
+  {
+   "id": "13ae84d8-e87b-4dcd-9472-d5e008cf4e3f",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "So sánh các căn bậc hai",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "So sánh được hai căn bậc hai số học hoặc một số với một căn bậc hai dựa vào tính chất a < b ⇔ √a < √b."
+  },
+  {
+   "id": "2f1ecc09-af02-4a24-b655-a0340da814a1",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức √A² = |A| để rút gọn biểu thức chứa căn thức bậc hai khi biết dấu của biểu thức dưới căn."
+  },
+  {
+   "id": "5e622e1c-f268-4d91-ad9b-a839d7d5d5fe",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của biểu thức số chứa căn bậc hai và giá trị của căn thức tại giá trị cho trước của biến."
+  },
+  {
+   "id": "63101537-71ea-4c1f-b951-36ed931738dd",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến căn bậc hai (độ dài, diện tích, tốc độ, công thức vật lí)."
+  },
+  {
+   "id": "30578e6b-c018-4212-9726-b3c52d649ac3",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được quy tắc √(ab) = √a·√b để khai phương một tích, nhân các căn thức bậc hai và rút gọn biểu thức."
+  },
+  {
+   "id": "44a077df-be70-4761-9e37-3236e9be38a0",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được quy tắc √(a/b) = √a/√b để khai phương một thương, chia các căn thức bậc hai và rút gọn biểu thức."
+  },
+  {
+   "id": "eab65573-76b4-40f1-8bc4-283d12158879",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "So sánh được các biểu thức chứa căn bậc hai bằng cách biến đổi về cùng dạng căn hoặc bình phương hai vế."
+  },
+  {
+   "id": "c66aa378-1e43-46db-b26b-fa98a53fd48b",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn cần khai căn một tích hoặc một thương."
+  },
+  {
+   "id": "abfe77f2-8afd-419c-8ee1-423cbeb86d7f",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép đưa thừa số ra ngoài hoặc vào trong dấu căn bậc hai để rút gọn, so sánh biểu thức."
+  },
+  {
+   "id": "5c95165a-d95f-4dc3-8967-de1c515daaa9",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép khử mẫu của biểu thức lấy căn và trục căn thức ở mẫu bằng biểu thức liên hợp."
+  },
+  {
+   "id": "16b7fc10-c072-4b72-8c33-576701281a3f",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Giải phương trình chứa căn thức bậc hai",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình chứa căn thức bậc hai đơn giản bằng cách đặt điều kiện, bình phương hai vế hoặc đưa về √A = B."
+  },
+  {
+   "id": "b09d3bc0-820a-4b02-8661-1ddd44f24660",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị nguyên của biến để biểu thức chứa căn sau khi rút gọn nhận giá trị nguyên."
+  },
+  {
+   "id": "e20dc1ba-a119-490b-9e0c-50bb1d3c8da1",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa căn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị lớn nhất hoặc nhỏ nhất của biểu thức chứa căn bậc hai sau khi rút gọn."
+  },
+  {
+   "id": "29bf2a04-3133-49dc-afbc-59ff73c64345",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của biểu thức chứa căn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn có bối cảnh hình học hoặc vật lí bằng cách biến đổi biểu thức chứa căn."
+  },
+  {
+   "id": "5cd87cf5-bcb5-4f06-8fe0-c1db34d2044f",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được khái niệm căn bậc ba và tính được căn bậc ba của một số thực bằng nhẩm hoặc máy tính cầm tay."
+  },
+  {
+   "id": "23a4ce69-e268-46f1-ae7e-6f43cfb3f580",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "So sánh các căn bậc ba",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "So sánh được các căn bậc ba dựa vào tính chất a < b ⇔ ∛a < ∛b."
+  },
+  {
+   "id": "152e16f0-5a63-431f-8ed3-de5af756809d",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc ba",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Xác định được điều kiện để căn thức bậc ba có nghĩa (biểu thức dưới căn xác định)."
+  },
+  {
+   "id": "f9aff880-dbc3-42b7-81e3-bdad79412cff",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị và rút gọn được biểu thức chứa căn bậc ba, kể cả biểu thức có chữ."
+  },
+  {
+   "id": "5ba6fab5-19d1-456b-8600-6a605d5520f4",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến căn bậc ba (thể tích, cạnh hình lập phương, bán kính hình cầu)."
+  },
+  {
+   "id": "b6db12a2-5d0f-4d9d-bfe7-43d4c579b923",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 3. Căn bậc hai và căn bậc ba",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 3",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức về căn bậc hai, căn bậc ba, các phép biến đổi và rút gọn biểu thức chứa căn."
+  }
+ ],
+ "questions": [
+  {
+   "id": "a1525383-2c34-4581-85a3-b7e4280403ef",
+   "question_id": "CH_1785600354339_m5h2",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa căn"
+  },
+  {
+   "id": "693ba61b-967d-45de-9723-a71ca78d1acf",
+   "question_id": "CH_1785600354339_aadb",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa căn"
+  },
+  {
+   "id": "70ef4405-c41d-41f2-a046-a78eaac583d3",
+   "question_id": "CH_1782310093792_qpmh",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "a5245455-c9f1-47f1-a828-1c54cf4215d3",
+   "question_id": "CH_1782310093792_ypft",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "c10049a6-04eb-40ee-ba25-fe7e48b416c1",
+   "question_id": "CH_1782310093792_bep7",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "f713c081-1648-404a-a22e-cf4db71a2a2b",
+   "question_id": "CH_1782310093792_bmrf",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "4e6bbef2-7396-401a-8ed0-5f8d3067d596",
+   "question_id": "CH_1782310093792_30cc",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "ece84ab9-1017-4949-aaed-c5ce5fd18ecb",
+   "question_id": "CH_1782310093792_ozox",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "cd9c20b2-7537-4b7a-a412-e01d311bf0b3",
+   "question_id": "CH_1782310093792_ij65",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "1d7b81df-2a0a-4306-8af5-b837673ac627",
+   "question_id": "CH_1782310093792_loiw",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "27cdba68-6647-4f91-b026-22bc68a81af2",
+   "question_id": "CH_1782310093792_ctn8",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm căn bậc hai, căn bậc hai số học của một số"
+  },
+  {
+   "id": "a2f128b0-2278-4748-b70a-66c7e395a531",
+   "question_id": "CH_1782310093792_62zd",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "caf0b983-f667-4519-9df1-a0ba4f9d70a6",
+   "question_id": "CH_1782310093792_3uyx",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "So sánh các căn bậc hai"
+  },
+  {
+   "id": "4b452c1b-d91c-4ad7-b7da-39cc157ffd15",
+   "question_id": "CH_1782310566536_1s89",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "d400e390-4d14-4bec-a029-7cd423d24c08",
+   "question_id": "CH_1782310566536_h4km",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "292afadc-7cfe-4629-a2af-6cd81022a27f",
+   "question_id": "CH_1782310566536_jsah",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "1ced35f8-08e4-4a66-b842-705ed7991908",
+   "question_id": "CH_1782310566536_xokl",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "caa4d390-2eec-4a15-87d3-c273e735f165",
+   "question_id": "CH_1782310566536_f38x",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "8f49c0ea-bfce-497b-8262-eb04ba46e8a1",
+   "question_id": "CH_1782310566536_lb5r",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "d0b31556-19a1-4336-8604-e14d13ec4260",
+   "question_id": "CH_1782310566536_lbjj",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "009900fa-4da3-4d2a-84ed-562a1c8a04f8",
+   "question_id": "CH_1782310566536_ozg2",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "6d6db9f2-f09c-418e-8e6b-ade68723dcda",
+   "question_id": "CH_1782310566536_e8mo",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "4d6ebaee-c904-4c8b-b5e3-3e7b6f3bc9a4",
+   "question_id": "CH_1782310566536_mwr6",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "b1328017-44c3-4bea-921e-bddc6c0e6ebf",
+   "question_id": "CH_1782310566536_8gh1",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "08d322e7-27f5-450c-aabb-afe93dad90d6",
+   "question_id": "CH_1782310566536_qyf4",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "d7c75f68-a598-4b7f-bb6d-478704d3836e",
+   "question_id": "CH_1782310566536_het1",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "15aeb5c5-1283-4786-878e-7b2d64954a2c",
+   "question_id": "CH_1782310566536_m7i3",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "36e7e549-7467-47d3-b7bb-149024a15477",
+   "question_id": "CH_1782310566536_p8op",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "967af943-2be7-492d-a693-e9c59ffb3fc9",
+   "question_id": "CH_1782310566536_wrrn",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "116ba795-81ad-497f-8e1f-b8cde9528bf9",
+   "question_id": "CH_1782310566536_hpuo",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "05356b05-ab22-4a25-ac55-343c8a7ceb85",
+   "question_id": "CH_1782310566536_mmqh",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "976ade5c-6791-4446-8e16-182d8089eedb",
+   "question_id": "CH_1782310566536_y0xj",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "So sánh các căn bậc ba"
+  },
+  {
+   "id": "1642e2c2-2208-4eac-8e76-ea85af9d4ed9",
+   "question_id": "CH_1782310566536_0tlj",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "So sánh các căn bậc ba"
+  },
+  {
+   "id": "8ffb6e0b-21d0-44c8-a836-bd09db0d98d1",
+   "question_id": "CH_1782310566536_kmjn",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "So sánh các căn bậc ba"
+  },
+  {
+   "id": "c846b4c6-9cf4-492e-9b34-a510c56978e0",
+   "question_id": "CH_1782310566536_ddqe",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc ba"
+  },
+  {
+   "id": "f5443997-fa72-4d95-aba7-3cefb4125222",
+   "question_id": "CH_1782310778202_9a6g",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "48432702-7eef-4cb0-9b52-fef60399d2f6",
+   "question_id": "CH_1782310778202_q3gb",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "c28e803e-d5b7-4c9c-8035-2dc5bbdae486",
+   "question_id": "CH_1782310778202_xwad",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "0956b7b5-5f28-4384-9dba-26edd21b9b19",
+   "question_id": "CH_1782313622618_l7z4",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "33d5c5c4-f17b-4b5c-9171-4289155ba7ce",
+   "question_id": "CH_1782310566536_s2up",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc ba"
+  },
+  {
+   "id": "73ffbe1c-9170-43d0-8548-c2986381cc86",
+   "question_id": "CH_1782310778202_qi9x",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "44942326-9568-4682-a941-911dbb3bb27c",
+   "question_id": "CH_1782315596001_0vb9",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "4551510d-92c0-483e-8503-24db7073bd85",
+   "question_id": "CH_1782315596001_o1vd",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "84f7607e-4168-455c-82e5-49ec2a926814",
+   "question_id": "CH_1782315596001_qf1m",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "375a7aae-ce06-41e3-b59c-88c80aa11128",
+   "question_id": "CH_1782315596001_3och",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "13a6056a-12e4-41c2-8a63-290b9b81a40f",
+   "question_id": "CH_1782315596001_rixo",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "2c1d9ccb-cf9d-4e8b-b345-a25534c4b831",
+   "question_id": "CH_1782315596001_jjod",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "5fdf6edf-6294-451b-8b0d-c5716d2c9917",
+   "question_id": "CH_1782315596001_qhzs",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "eeb92c5b-6f5a-487e-9871-4773838b268c",
+   "question_id": "CH_1782315596001_7ytu",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "74e4176b-649d-418d-9e77-fbf7ef8c0ace",
+   "question_id": "CH_1782315596001_z61m",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "421c43da-7ac4-4994-bb5e-ec0d4031ca79",
+   "question_id": "CH_1782315596001_244e",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "d8afd028-f169-49e3-8998-87e425042b31",
+   "question_id": "CH_1782315596001_tp2l",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "efcc198d-e88a-4bce-8004-96054dd4c911",
+   "question_id": "CH_1782315596001_yywv",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "60c61d06-d2b7-4b76-bae6-a39e565ce384",
+   "question_id": "CH_1782316090611_k2bh",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "b0e713dc-6618-41f8-802e-600c4d620a24",
+   "question_id": "CH_1782316090611_32pu",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "6d0220ce-d1d0-4a33-bf63-f952401192e2",
+   "question_id": "CH_1782316090611_7zot",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "e81cc8ea-ba5b-4ca0-a98d-9bec0a2e3630",
+   "question_id": "CH_1782316090611_hl7n",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "7b21fe25-8af5-451b-8add-17da66a34f11",
+   "question_id": "CH_1782316090611_u8ho",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "5c99adb5-e624-4513-804d-4e61ec3ea0c2",
+   "question_id": "CH_1782316090611_rggx",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "a3c64150-5acb-4393-a3d7-f3e973b601df",
+   "question_id": "CH_1782316090611_hlev",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "b5546328-479d-4ab2-8d9c-4f7f737fbbdb",
+   "question_id": "CH_1782316090611_u9af",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "75a5f367-0d5f-4916-98e3-48c65eadaa34",
+   "question_id": "CH_1782316090611_cu6f",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "1a495b8b-f794-48a3-a21c-7fa88d3c1463",
+   "question_id": "CH_1782316090611_haz5",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "998bca44-bd8e-422b-bf6e-3f8f8ea4ab9c",
+   "question_id": "CH_1782310778202_078z",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "c1ec2ef2-c773-4d11-ab36-436b5ba70e6f",
+   "question_id": "CH_1782310093792_0rqa",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "4e445ea3-8b57-42b3-8338-6d5628b17373",
+   "question_id": "CH_1782315596001_hrnq",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "0acce84e-b2ae-4a9a-85d4-4837a4972bac",
+   "question_id": "CH_1782310566536_ocz3",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "61114dd1-be22-409f-8e8a-90ca4c75064b",
+   "question_id": "CH_1782310093792_0bzu",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm căn bậc hai, căn bậc hai số học của một số"
+  },
+  {
+   "id": "915de701-2709-4751-b1ab-8702c230a9fa",
+   "question_id": "CH_1782313622618_tbpz",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "e3c87247-b14c-4bfa-b313-008684c50128",
+   "question_id": "CH_1782310093792_wljd",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "387bbf11-67e7-422d-a24a-d8e2bfdcc5f0",
+   "question_id": "CH_1782310093792_1sta",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm căn bậc hai, căn bậc hai số học của một số"
+  },
+  {
+   "id": "83b9e685-0b19-443f-a49a-85d089f69a6c",
+   "question_id": "CH_1782310093792_b1g8",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "fb671c8e-a71e-4b96-ac1d-62fad08b1948",
+   "question_id": "CH_1782310093792_uuzp",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "So sánh các căn bậc hai"
+  },
+  {
+   "id": "9b33b86e-edf0-47cc-8f87-fda0c1eab273",
+   "question_id": "CH_1782316090611_54ay",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "696dbb9d-945f-456a-b460-6161069b0a2c",
+   "question_id": "CH_1782314182146_km2d",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "f8ac33af-ca7a-4b57-95f5-3f4165818e3d",
+   "question_id": "CH_1782311850736_p5bk",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "2502bdd3-c697-4f7b-91b7-bc82cde42257",
+   "question_id": "CH_1782311850736_thmg",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "93efe6a1-243f-41a2-b0a5-3fb1966fbc33",
+   "question_id": "CH_1782314182146_qyls",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "52eb71fc-d98a-4e40-b524-7aa86d3abfbd",
+   "question_id": "CH_1782311850736_v1af",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "60987e02-534b-4087-81eb-2b9902a4fa12",
+   "question_id": "CH_1782311850736_cc14",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "558a100f-39ed-4b11-b0af-0204fac3e365",
+   "question_id": "CH_1782311850736_04nk",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "9e01cc55-6af6-469e-a9d8-aa725b2ea908",
+   "question_id": "CH_1782315596001_5j3s",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "565ed224-1fba-4523-ba89-153c749384cc",
+   "question_id": "CH_1782313622618_ubxt",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "c448b682-4c1e-4e6d-84c4-0dfe777c0b8c",
+   "question_id": "CH_1782313622618_zl5t",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "3fc167e4-3c5d-4110-b189-709cc4dcd05c",
+   "question_id": "CH_1782313622618_64y5",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "b680a017-c78e-453a-9efc-b9dae280be36",
+   "question_id": "CH_1782313622618_jcd6",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "c68fca67-455f-437f-86d8-d2217230b5da",
+   "question_id": "CH_1782313622618_idsj",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "50768a40-7b51-4764-a0b9-7dd6935b4f41",
+   "question_id": "CH_1782313622618_ncws",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "6b566726-5cd6-443e-90d1-cb460d64db41",
+   "question_id": "CH_1782313622618_w67w",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "2d0dfc37-f0fb-46dc-b92b-e72488323df2",
+   "question_id": "CH_1782313622618_jhiq",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "1b71b5a5-c4bc-4307-b8b1-e2b57fdfd8e5",
+   "question_id": "CH_1782313622618_nkvi",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "bb965914-f092-41ce-8230-7a28c3f9d269",
+   "question_id": "CH_1782313622618_3g0c",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "a8eb73ef-5956-4a9b-8119-e487c8548057",
+   "question_id": "CH_1782313622618_wbui",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "85973389-1697-4257-9f69-f8259b36876f",
+   "question_id": "CH_1782313622618_epfl",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "2da74a39-a4be-4890-8642-f3572316b000",
+   "question_id": "CH_1782313622618_1q7c",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "f6a0e7b7-cb0a-449a-9fc8-91eccb317c4a",
+   "question_id": "CH_1782313622618_9knm",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "83a7df31-83b6-4403-8abd-b1d849732bdb",
+   "question_id": "CH_1782313622618_iqyb",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "23d8defe-f47b-4cd7-8b85-79799e8e33e2",
+   "question_id": "CH_1782313622618_qfuj",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "34353893-554f-42c9-860a-26330d27805d",
+   "question_id": "CH_1782313622618_xbc2",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "e009eb2e-602f-4457-ba04-9579b78a2c5c",
+   "question_id": "CH_1782313622618_aqtk",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "de8c2775-822d-4dd9-a3a0-e88879442d88",
+   "question_id": "CH_1782313622618_47e8",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "cea57a39-9114-4922-b8b4-82d26dd48059",
+   "question_id": "CH_1782313622618_emuq",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "162815f3-df17-440c-a8bf-d3e4f376fad6",
+   "question_id": "CH_1782313622618_6yzm",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "f5ef6cec-fc02-47bb-936e-2a51d3c43968",
+   "question_id": "CH_1782313622618_m1oc",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "9e5475e6-d6e0-4a1f-a33b-313a5a187d6e",
+   "question_id": "CH_1782313622618_xwqk",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "3257c096-8703-4f71-b649-f8a134acba19",
+   "question_id": "CH_1782313622618_5oy7",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "54d00506-ce50-4dcb-a76b-4b2c2256740c",
+   "question_id": "CH_1782313622618_dnla",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "55a3f732-5010-401e-b024-83c768e403ca",
+   "question_id": "CH_1782313622618_ed7i",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "262b0a4b-c8fe-4d1d-a229-ef8ecdb03f91",
+   "question_id": "CH_1782313622618_5qhg",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "9b5d23b2-bc4b-4d3c-8ff7-6d341ce7d512",
+   "question_id": "CH_1782313622618_cw5a",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "b6045d83-f332-4bd8-842f-0eb830136a70",
+   "question_id": "CH_1782313622618_uhyy",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "35031213-771a-406d-a0be-79d454b7927a",
+   "question_id": "CH_1782313622618_sxdv",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "0a03af3a-63e5-4e55-b766-16658f05bc01",
+   "question_id": "CH_1782313622618_yvhx",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "d293b8a2-ba09-4bdf-a692-88f7c62ced11",
+   "question_id": "CH_1782313622618_4w0e",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "2984cc8c-16df-49a3-abe6-65ddfb4cc771",
+   "question_id": "CH_1782313622618_iohb",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "97d8e418-d3e3-40f5-b6d9-3c9336dfcb5e",
+   "question_id": "CH_1782313622618_niop",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "40f4a9ce-248d-4732-87f3-ffe86a9640be",
+   "question_id": "CH_1782313622618_tj4j",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "9b2c15df-1611-4e29-b1b9-120e51b8fd3c",
+   "question_id": "CH_1782313622618_sbkb",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "4607e00d-0c3d-4596-bcf0-89fff24b4d28",
+   "question_id": "CH_1782313622618_i1qn",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "f02c46b3-297e-4188-8669-ce3b4a10e5f2",
+   "question_id": "CH_1782313622618_n6al",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "1d5ab158-ab0c-45e0-9258-9e86721f571b",
+   "question_id": "CH_1782313622618_l96s",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "59c22acd-0e9f-4c20-8347-03f4573de1ae",
+   "question_id": "CH_1782313622618_oa6z",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "df8ecb88-9173-4fc4-856d-09d19131cab0",
+   "question_id": "CH_1782314182146_aztg",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "3ea449e3-5849-41ca-b0a5-c0d7bb7f9b14",
+   "question_id": "CH_1782313622618_pc7q",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "a2abb056-37cb-4c5b-9f0f-03e955fd257d",
+   "question_id": "CH_1782313622618_27yf",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "09ecd4bb-ea13-4cb5-ad3c-f8d98c69f1a0",
+   "question_id": "CH_1782313622618_w65r",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "dece0791-d75b-4f19-a3d0-bba98c30f230",
+   "question_id": "CH_1782313622618_ocm8",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "dd165bbc-6bd1-418a-8b4d-e80c9d9eb911",
+   "question_id": "CH_1782313622618_s5ig",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "7ea89505-b83b-4d31-85e5-0992c47d37ed",
+   "question_id": "CH_1782313622618_kr6h",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "2963a8a3-67cd-45d0-bcd4-bf32d1905f53",
+   "question_id": "CH_1782313622618_c3ql",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "1e834d28-a3a6-4758-bbc0-6e3708d00d40",
+   "question_id": "CH_1782313622618_ahj7",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "bb44ec22-124b-421e-92d7-bd2869ffc051",
+   "question_id": "CH_1782314182146_gj0h",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "20ed0000-4642-4d75-b8e3-78730fe5f456",
+   "question_id": "CH_1782314182146_q9pu",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "1b935429-b2ab-42d4-b04f-d0cc3edcd913",
+   "question_id": "CH_1782314182146_vhu8",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "d614ea65-8009-473c-aed9-7452cd78e3ea",
+   "question_id": "CH_1782313622618_7p3n",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "30766ca3-7cdf-4450-baf9-06fea7b2022b",
+   "question_id": "CH_1782314182146_o60j",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "e7859407-6d35-4b68-b990-a5d8d9131003",
+   "question_id": "CH_1782313622618_9355",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "f4a12240-ad3e-4377-ac37-c03b9c94b80b",
+   "question_id": "CH_1782314182146_o8mi",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "c9388c0e-1d56-4856-b816-8c552e407985",
+   "question_id": "CH_1782314182146_bc94",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "59493554-e19b-42bc-8bd6-1d330b082543",
+   "question_id": "CH_1782314182146_6lfo",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "080f2433-426d-41e0-b3c4-f398bcf09f34",
+   "question_id": "CH_1782314182146_281m",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "83ff99bd-b1a8-4f93-ab67-fb817cd21553",
+   "question_id": "CH_1782314182146_meu7",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "448607c7-ba3b-4479-84a3-5bfb7597096e",
+   "question_id": "CH_1782314182146_n2kx",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "e1b231f8-1fe9-4cda-9db3-790418a1251e",
+   "question_id": "CH_1782314182146_76uk",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "a42418cd-4435-427f-be39-d14970903387",
+   "question_id": "CH_1782314182146_08gq",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "010dec76-5b12-40f4-b598-5b84364d19cf",
+   "question_id": "CH_1782314182146_lg1n",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "57a39166-0e5f-49e4-9d94-051b9f63823a",
+   "question_id": "CH_1782314182146_oogm",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "83e10b55-c9cd-4a7b-b92f-5cac76460365",
+   "question_id": "CH_1782314182146_vghq",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "b4d133c1-af5a-4351-bf50-862181ab0b86",
+   "question_id": "CH_1782314182146_rn0v",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "67000d0e-88f2-4600-b8fc-7b0217b7fb22",
+   "question_id": "CH_1782314182146_mplm",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "99c1459c-e287-429c-977c-d9469624ae85",
+   "question_id": "CH_1782314182146_m4d0",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "10cca96e-9607-4ff3-b883-a1b6301271ee",
+   "question_id": "CH_1782314182146_7kqm",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "068db5f3-1687-4924-b54e-eaadc5215cb0",
+   "question_id": "CH_1782314182146_a3tf",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "62d7f191-5e05-4cb3-adcd-4ed53f11b3e3",
+   "question_id": "CH_1782314182146_s8bb",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "1835795e-db36-4797-932e-1f28560c5713",
+   "question_id": "CH_1782314182146_2p6j",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "faa9c485-a8ef-45b6-b9d3-e174f8c318d0",
+   "question_id": "CH_1782314182146_8kzw",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "73894919-596f-40ac-b957-8ae186615f00",
+   "question_id": "CH_1782314182146_4ta3",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "16a3d7ac-00a4-4772-91ae-4da8cd1685ba",
+   "question_id": "CH_1782314182146_7epz",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "e97e225f-c0e0-4f2a-aba4-b4dffcd80a16",
+   "question_id": "CH_1782314182146_khvs",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "42c94464-463b-4d73-93db-03f48432caef",
+   "question_id": "CH_1782314182146_mnnq",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "d3bf6220-42ea-4ef4-9943-e93d95a6e572",
+   "question_id": "CH_1782314182146_i6jy",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "3eaac923-ce87-4a41-a42e-ace0ad53929c",
+   "question_id": "CH_1782314182146_080j",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "6f40c9e5-f857-4552-8439-bccfb02b018d",
+   "question_id": "CH_1782314182146_hsvp",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "d50cc9f5-b389-46a7-b3d8-e591d994dd88",
+   "question_id": "CH_1782314182146_bjgx",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "8706c048-2222-411c-a154-7e44caf980f2",
+   "question_id": "CH_1782314182146_1hrb",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "9c32bb14-a779-4ee0-9f43-3ac05f1d0ac3",
+   "question_id": "CH_1782314182146_jtbq",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "6dbbb788-adac-4b36-bf9a-6d16aed105db",
+   "question_id": "CH_1782314182146_novz",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "786abfc6-1d5c-4136-9206-0916bbe3844d",
+   "question_id": "CH_1782314182146_v3nv",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "5380493c-557c-48ae-8062-31ad62826d50",
+   "question_id": "CH_1782314182146_4c5g",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "dbb1a833-a1aa-407c-9593-9a321b305611",
+   "question_id": "CH_1782314182146_zvvb",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "b679978d-85c7-4f08-8517-059e70fef3b6",
+   "question_id": "CH_1782314182146_pee9",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "6d2a4d03-840f-4cdb-88a2-d94e5d585cf6",
+   "question_id": "CH_1782314182146_yhry",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "b9db3270-8482-49c3-a0ef-e55cf8ebf594",
+   "question_id": "CH_1782314182146_bch2",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "af65f704-a41c-4d16-8218-87f594ec06cc",
+   "question_id": "CH_1782314182146_mup9",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "6ff3a40e-4537-4610-ad22-0cde20b9556d",
+   "question_id": "CH_1782314182146_w2fl",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "795ffb01-7f33-4fa6-b54e-cbb62c90533a",
+   "question_id": "CH_1782314182146_wrcp",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "38cd4268-bdfc-424f-87a9-3f9bb8133609",
+   "question_id": "CH_1782314182146_76et",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "ce6f79f2-5cc7-4086-837c-d6d242071c5c",
+   "question_id": "CH_1782310566536_rie3",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "35201859-5e7a-4f0e-99b5-e5a8b2f9ba26",
+   "question_id": "CH_1782310566536_9v32",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "8ee6911e-1f1e-4401-9837-0a4bb3a9ef71",
+   "question_id": "CH_1782314182146_te1z",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "fb5feee2-b96d-473d-89ff-e8cd1fc3fe27",
+   "question_id": "CH_1782314182146_pg6y",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "cc68efcd-9dad-4695-b004-86d7721dbcaf",
+   "question_id": "CH_1782310566536_fs8v",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "5171a5ea-dfed-4187-8f13-0ca0e59b1368",
+   "question_id": "CH_1782313622618_wr6c",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "0e1754e9-e089-47c9-b525-634709fd7a90",
+   "question_id": "CH_1782310778202_cjkr",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "efff4a0f-9caa-4246-930a-dfa9141c3470",
+   "question_id": "CH_1782310778202_q0eo",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "7a253d27-a35c-4b7d-bdf4-51e849f8625a",
+   "question_id": "CH_1782314182146_e3iy",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "0681082b-af63-4438-8f5f-6bb29e0648dd",
+   "question_id": "CH_1782315596001_fexw",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "4d5aa2e7-3f02-435a-9a8a-e35e0ff0186a",
+   "question_id": "CH_1782314182146_qba5",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "aed4c6b2-332e-46cb-9481-ac6c0cff16b9",
+   "question_id": "CH_1782316090611_5tfv",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "515136ca-66a8-4fd3-aa23-1e446e681acc",
+   "question_id": "CH_1782314182146_87ep",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "28e24393-ba04-4a6e-8c50-cfda4bf8d89c",
+   "question_id": "CH_1782315596001_xwva",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "ec1e1d61-15e9-433b-9c63-5d7a6b829e67",
+   "question_id": "CH_1782314182146_9gi0",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "4603a61b-5b9d-4422-acaf-99c19816d478",
+   "question_id": "CH_1782315596001_4fda",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "6c56a563-186b-430e-86b5-f43486988c11",
+   "question_id": "CH_1782315596001_w8gb",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "f0dd00d2-335d-4052-afff-7e995981543f",
+   "question_id": "CH_1782315596001_49ks",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "116a16f7-c07f-40d1-85e3-381c9f26eb7a",
+   "question_id": "CH_1782310566536_ubfv",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "e79f5fcd-1dc1-40b5-9a13-afd4955d9fed",
+   "question_id": "CH_1782315596001_7jhy",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "d71bc781-f4a8-48d6-a5ec-a635322d221b",
+   "question_id": "CH_1782315596001_qyu2",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "091e7137-76f3-4bc3-a14c-c6483e9062c8",
+   "question_id": "CH_1782315596001_033b",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "fda03ed8-a870-4d4f-8174-5eecbe028e3c",
+   "question_id": "CH_1782315596001_8avb",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "8117d13a-7e4b-4012-89ec-83c109809c55",
+   "question_id": "CH_1782310566536_b8xy",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "5332bd14-f624-4e6e-8bc2-da48e4d1d2f1",
+   "question_id": "CH_1782310566536_p20z",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "49b03249-5141-4eb8-b96c-d3d0adcdd387",
+   "question_id": "CH_1782315596001_od9e",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "ef5918e8-0db1-49f6-ad15-1e3818f8bc33",
+   "question_id": "CH_1782310093792_lsj6",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "5c8e9fcd-b587-4a81-af02-e006e46c08d7",
+   "question_id": "CH_1782310093792_94yt",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "So sánh các căn bậc hai"
+  },
+  {
+   "id": "a8fd10ab-b22b-4b3e-b140-997da0a12e16",
+   "question_id": "CH_1782310566536_n3lu",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "bc177125-065d-4eb1-858d-73d2137475ec",
+   "question_id": "CH_1782310566536_e608",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc ba"
+  },
+  {
+   "id": "e6ceba6e-9757-4e1c-a051-75fb6d26263f",
+   "question_id": "CH_1782310778202_wajm",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "da11e521-4bec-4f44-bd1f-df244165437e",
+   "question_id": "CH_1782310778202_yz9j",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "6a39148b-3882-4876-ad67-6650ce95eddc",
+   "question_id": "CH_1782310778202_lxcg",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "9444ebe2-41b0-44dd-93d9-3ef4389e8a70",
+   "question_id": "CH_1782310778202_iwq2",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "7f48ad3f-a7b5-41b4-8373-0e098b275f58",
+   "question_id": "CH_1782310778202_9lqm",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "692f947f-75e6-4ec4-b275-e92bd6b426e2",
+   "question_id": "CH_1782311850736_740k",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "2507dd9f-1db1-4e01-b8e7-80f3ea3a897d",
+   "question_id": "CH_1782311850736_n6ki",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "89a96a62-21a0-45d1-92ba-22ee63462cc4",
+   "question_id": "CH_1782313622618_pzbd",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "9f15aa26-79ea-4f02-8e44-6f94b044c2c6",
+   "question_id": "CH_1782314182146_b71s",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "ab8f0197-90c0-417e-adec-f61837b2f09e",
+   "question_id": "CH_1782315596001_1a60",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "ef5c0c0c-ff27-4ed2-8f52-576f741917d3",
+   "question_id": "CH_1782315596001_od6t",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "8387c771-a24e-4b16-99a7-08308c69f2e7",
+   "question_id": "CH_1782315596001_3vau",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "d713facc-0f5e-4601-8e78-34d65291bada",
+   "question_id": "CH_1787815557923_1wxr",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "d0118bbc-cf89-48dd-8ef6-c360c1152cc1",
+   "question_id": "CH_1782315596001_zoz9",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "4686c88e-721e-4634-a3a1-7276d09441c3",
+   "question_id": "CH_1787815557923_ni1e",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "4f6cb375-5b11-4aa7-9837-e741e5496226",
+   "question_id": "CH_1787815557923_droc",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "fb200d0f-7a80-4dc6-8183-dd90f5111f8a",
+   "question_id": "CH_1787815557923_29v6",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "998880fb-a136-4fb9-9eae-56ba2f1ac632",
+   "question_id": "CH_1782310566536_4rpo",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "dd484d91-9a09-40fe-aa82-f5b1d5a2f968",
+   "question_id": "CH_1789188848996_l062",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "483df74a-6ff5-4877-b378-013b9d56e466",
+   "question_id": "CH_1789188848999_2s87",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "7071727c-0eb1-478c-a59a-c160374ad28b",
+   "question_id": "CH_1789188849000_5lqb",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "33131d39-469d-4a88-bc24-c6eaf7fadc58",
+   "question_id": "CH_1789188849003_nvcb",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "e057f9fa-662b-493b-a56f-e0893f65bba9",
+   "question_id": "CH_1789188849004_m3k2",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "77629062-1034-4bf0-8e9a-b7251578c9f2",
+   "question_id": "CH_1789188849005_0yeu",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "8b9a399b-0ed8-4ca1-a407-de64b0fd4254",
+   "question_id": "CH_1789188849008_le9q",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên"
+  },
+  {
+   "id": "6100f1d1-75bf-41ff-99b7-0a985e5c59d4",
+   "question_id": "CH_1787815557923_57mv",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "1d7ffef8-281a-4343-acca-fdb0cbd456f2",
+   "question_id": "CH_1789188849007_w4ph",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên"
+  },
+  {
+   "id": "df82661a-d973-48e9-a507-c8114747c50c",
+   "question_id": "CH_1789188849011_zodt",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên"
+  },
+  {
+   "id": "3ca55917-8116-4f08-8fea-50c19fc2bd14",
+   "question_id": "CH_1782310093792_acy6",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "36d6d170-2a93-4c2c-99fe-f9b9431499d4",
+   "question_id": "CH_1782311850736_xle2",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "28460af4-b88b-42a6-b8f2-b21c623220c9",
+   "question_id": "CH_1782310093792_npi6",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "41967c3f-2e24-4b6e-820d-8b5452e600bf",
+   "question_id": "CH_1782310093792_2zjh",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "51401340-0e75-4e4e-9593-23ffcb51e2c3",
+   "question_id": "CH_1782310093792_wnjy",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "3886a637-3da5-43c5-8cc8-2a40b511b6f8",
+   "question_id": "CH_1782313622618_3o59",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "fedaf783-08ff-4807-91a3-cda7d4d43857",
+   "question_id": "CH_1782311850736_19kp",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "b2cc1874-5af5-436c-9e55-74b52b268d93",
+   "question_id": "CH_1782311850736_s571",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "b756b5ea-69b9-4909-b909-5e9b577a176e",
+   "question_id": "CH_1782311850736_aey5",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "ceda874c-41f8-4d56-8ca6-8a4fa169f578",
+   "question_id": "CH_1782314182146_2d27",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "3716d7e1-6362-4f0e-9166-1d4a766eb985",
+   "question_id": "CH_1782311850736_623e",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "23f5b206-ff62-42a3-a748-8d3216f3922c",
+   "question_id": "CH_1785228205146_czkw",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "6ae0c830-501a-4f69-9dfc-45f06ff6246e",
+   "question_id": "CH_1782310566536_ogk1",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "c520bde3-812f-4ec6-8efe-ee35877f6455",
+   "question_id": "CH_1782311850736_kgg3",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "1af3cdd8-8a7a-4804-a046-f84189c7e501",
+   "question_id": "CH_1782311850736_ifx3",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "521ac471-103d-491e-a4fc-2100f25d8a0b",
+   "question_id": "CH_1782313622618_xoqu",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "6c948be8-c493-4239-91d4-223e72e339ec",
+   "question_id": "CH_1788783306283_ynz1",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "d0e837a3-bc5e-4855-a8fc-63429249423a",
+   "question_id": "CH_1788783306283_ru3h",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "a1c58d3c-3cc9-4eaf-82a9-317ea22f29ca",
+   "question_id": "CH_1788783306283_9m6h",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "ccfb384b-b779-4360-8057-9992e770e142",
+   "question_id": "CH_1788783306283_2wbe",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "6d66193b-7c2c-4f7e-a1fe-50a0e797fa95",
+   "question_id": "CH_1788783306283_bdt4",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "41967523-be68-4be9-bebb-0e1b1afdddb4",
+   "question_id": "CH_1788783306283_7vr0",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "d41b3f6b-016b-4a5c-89d7-7cd5f26c5501",
+   "question_id": "CH_1788783306283_7xc4",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "0c88005c-cafd-4dde-a25c-8c27dd7e5b81",
+   "question_id": "CH_1788783306283_i360",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "e6f7f0ba-b689-4be5-b667-81b4f45bf723",
+   "question_id": "CH_1782310093792_ylp1",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "d22ef76d-5835-4cf8-a593-a82dd76c6973",
+   "question_id": "CH_1782310778202_epom",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "f03e7096-1f7b-4293-b236-03d7a005ef84",
+   "question_id": "CH_1782313622618_p4av",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "bfb2d10c-8845-45e3-acb2-ec30f9b91719",
+   "question_id": "CH_1788783306283_567z",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "24a3f78e-48b9-4a08-ba55-e5a8dcbe6aea",
+   "question_id": "CH_1782310093792_k6cm",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm căn bậc hai, căn bậc hai số học của một số"
+  },
+  {
+   "id": "5f508622-adf7-424d-b1b6-669f35ab1b2b",
+   "question_id": "CH_1782311850736_ek3h",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "857b4029-65fc-4054-a2a3-2f4d0dbbe94b",
+   "question_id": "CH_1782311850736_jf8r",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "55927a9d-4909-421e-b884-a7a8f7b0b412",
+   "question_id": "CH_1782313622618_gcpo",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "aadccdac-9bd1-4507-bca5-ea502d2688e4",
+   "question_id": "CH_1782313622618_u59x",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "5939a65d-ba07-464f-bffe-c92cccc9d11f",
+   "question_id": "CH_1782313622618_w6qw",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "a7fe2378-131c-421c-aad5-59ead15d20fd",
+   "question_id": "CH_1782311850736_b6zi",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "97085372-5a5a-446b-a624-a1a766b75840",
+   "question_id": "CH_1782315596001_46pa",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "11416112-6d2d-45db-9e29-388f004eb8a7",
+   "question_id": "CH_1782316090611_zzar",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "44f995b4-6dbf-4702-9244-5f510f3f3b99",
+   "question_id": "CH_1782313622618_4iq6",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "64af3218-c189-446f-91b5-34c21559e289",
+   "question_id": "CH_1782313622618_0v55",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "954f2e92-554a-4c40-a827-af7c58e58612",
+   "question_id": "CH_1782310778202_ltsv",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "a6bbae55-a05c-49aa-a199-ec23cf5904b8",
+   "question_id": "CH_1787815557923_5do0",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "74565a07-ac60-4157-b89f-5752ce813c2e",
+   "question_id": "CH_1782311850736_g79m",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "a7eb88e1-dec5-4a6f-9579-e84fd6281dea",
+   "question_id": "CH_1782310093792_dbd7",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "4e25a07d-6e48-42c9-81f6-7487f8f94fdb",
+   "question_id": "CH_1782313622618_qq5s",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "0dc9a9d2-3ed9-4380-955a-465b19fff69c",
+   "question_id": "CH_1782311850736_lu2y",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "cbf919a7-9f9e-4c65-9954-7b375e6ffd5c",
+   "question_id": "CH_1782311850736_89mp",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "d57f8eea-b549-447a-a295-4cde2b218868",
+   "question_id": "CH_1782310093792_6jp5",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm căn bậc hai, căn bậc hai số học của một số"
+  },
+  {
+   "id": "c0ed90ca-bc7d-4b89-97fa-cb803855861c",
+   "question_id": "CH_1782313622618_7eqa",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "a010136b-a678-405f-ac69-56bc9f6c2aca",
+   "question_id": "CH_1787815557923_vaxl",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "02d84386-626a-499c-afa9-1346db593619",
+   "question_id": "CH_1782311850736_q5gg",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "94a49fc4-8e60-4a5c-9e92-3c6aae876126",
+   "question_id": "CH_1785228205146_pg0c",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "8b5fa9b1-cc12-40ae-82ae-62d42df37ac9",
+   "question_id": "CH_1782311850736_f2rf",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "840ad98f-558e-4d6f-96ca-7df2137644ca",
+   "question_id": "CH_1782311850736_nx9c",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "99c3774f-0a70-4ccc-9a29-a11d8a87e8e3",
+   "question_id": "CH_1782311850736_6wk1",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "888a9a46-c48b-4814-bacd-8519f65dd1e9",
+   "question_id": "CH_1782311850736_578j",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "d03e6f0a-515e-4ae7-8da2-a0a11eab2105",
+   "question_id": "CH_1782315596001_t9yh",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "6d45c46a-b0ae-45a5-821c-98f94ccc00a0",
+   "question_id": "CH_1782311850736_hi1n",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "2021e8d9-cc86-4820-9426-864c7201465f",
+   "question_id": "CH_1782316090611_n69p",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "331eb9e8-34ef-453d-9b8b-da44dc72fc39",
+   "question_id": "CH_1782314182146_46jv",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "d11e4b09-466c-4d5a-be21-5abbb7a27850",
+   "question_id": "CH_1782314182146_22ui",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "f13346e2-afa3-4da2-82c6-d69f598b9977",
+   "question_id": "CH_1782314182146_xmbq",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "0b2a7721-abdc-4068-875d-9ba88e5412e1",
+   "question_id": "CH_1782313622618_o8os",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "f609a9f1-3adf-4b39-b502-aab52f6c214c",
+   "question_id": "CH_1782313622618_b1mr",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "d384d857-b2e4-492a-a15d-d5aeb6db92b2",
+   "question_id": "CH_1782314182146_v935",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "158844cf-499f-48e0-8ba8-562bfb703f72",
+   "question_id": "CH_1782314182146_6ih3",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "4b3869f2-e3e8-4fb4-9b65-5605485eb9e9",
+   "question_id": "CH_1782314182146_w6im",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "45b5faf2-b431-416f-827f-967b5d3dfbe1",
+   "question_id": "CH_1782314182146_wg8z",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "7d72423e-67a0-42d3-b401-27914c9832d8",
+   "question_id": "CH_1782313622618_lsqp",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "2b9bb306-6d9e-4bfa-8d6f-345ca9ee38c0",
+   "question_id": "CH_1782315596001_etka",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "99b7e278-a125-4025-9add-edd1184486ea",
+   "question_id": "CH_1782316090611_e72u",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "7dafdb03-16d9-4b7d-a77a-b1d633acab41",
+   "question_id": "CH_1786288304192_0zjz",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "a35e9372-9ffd-4823-a0e8-1576cbc0ed27",
+   "question_id": "CH_1782315596001_11xv",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "9fe92b3a-c5c7-41a4-9b71-0b2ce55d0eee",
+   "question_id": "CH_1782314182146_kl8d",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "0dd3f090-77e9-49e2-879e-80d5ec8e210f",
+   "question_id": "CH_1789188848995_vkjt",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "98524d9f-d8cf-40aa-bc5e-625bfec1e0eb",
+   "question_id": "CH_1788655419083_hjyb",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "308602ab-07d3-4f57-91ea-25af9895730d",
+   "question_id": "CH_1786288651727_kl4g",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "633586bd-41f9-4829-b8d7-1a37bedbbb0d",
+   "question_id": "CH_1782311850736_qr8j",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "bfce066c-1941-4273-b334-08424afd7ec0",
+   "question_id": "CH_1782315596001_zxu4",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "0bd960a4-0113-40d2-9814-09098fefdf90",
+   "question_id": "CH_1789188848998_etdc",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "e37379ce-01df-4071-9a1c-5bc89ef92606",
+   "question_id": "CH_1789188849002_6qm2",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "33695600-2e23-43bd-883d-d8f961f65796",
+   "question_id": "CH_1789188848997_jyqe",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "d61060eb-7f45-41bd-bf5a-b8b3d12835cf",
+   "question_id": "CH_1789188849001_g6xp",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "d2b108d8-2694-49a7-ba95-8cec9369a792",
+   "question_id": "CH_1789188849006_xxhb",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  },
+  {
+   "id": "53e8612a-4b40-4702-8b2b-feb6c0fe734b",
+   "question_id": "CH_1789188849009_2vhe",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên"
+  },
+  {
+   "id": "2a3241f8-a7cf-43a7-b36b-62acf049d806",
+   "question_id": "CH_1789188849010_o7na",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên"
+  },
+  {
+   "id": "b30f54b0-7652-459a-a0a3-416825d72558",
+   "question_id": "CH_1789188849012_b6u2",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên"
+  },
+  {
+   "id": "682082c3-ddf1-4973-9d64-3164e3470f23",
+   "question_id": "CH_1789188849013_s1wd",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên"
+  },
+  {
+   "id": "6b21b90e-61c2-4af5-83dd-637ff58737ed",
+   "question_id": "CH_1789188849014_nfmz",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm x để biểu thức chứa căn nhận giá trị nguyên"
+  },
+  {
+   "id": "8930b1f0-58b1-4302-91d9-e3b0f4c38ea4",
+   "question_id": "CH_1788655419083_gqc0",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Giải phương trình chứa căn thức bậc hai"
+  },
+  {
+   "id": "89b8cd90-8747-4a98-9e1d-849bc3aadec6",
+   "question_id": "CH_1788655419083_u1gn",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "a0efcd0a-133e-4dbb-a9b7-0d9f36d0e473",
+   "question_id": "CH_1782318524328_1zz2",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "0d5feff2-ec2a-422d-be4b-a5afd1f82570",
+   "question_id": "CH_1786289007151_zynd",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "51b609c8-0fae-44cc-a27d-9b946dd3fa11",
+   "question_id": "CH_1782314182146_x6f1",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "7d6221cd-b101-4654-a230-da1543683073",
+   "question_id": "CH_1782310093792_odzu",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "8b3820f4-72f9-4376-8985-bb1306e9ec35",
+   "question_id": "CH_1782315596001_mzxn",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "253b40f8-6054-4990-b89d-ad69a7a7cd11",
+   "question_id": "CH_1782310093792_2ojb",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "de123064-ebb4-462b-ba05-c46776590adc",
+   "question_id": "CH_1786288849238_fj4n",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa căn"
+  },
+  {
+   "id": "68117c94-5352-4a65-b2c2-d357e46edca5",
+   "question_id": "CH_1782313622618_w73x",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "4372ae2b-2adb-4047-9518-47b814497493",
+   "question_id": "CH_1782310093792_jl1y",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "So sánh các căn bậc hai"
+  },
+  {
+   "id": "491677eb-d65e-4154-8522-d4673984164d",
+   "question_id": "CH_1782318524328_xcz8",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "b1ad4dba-bd2c-4710-9ea3-673662ddebe9",
+   "question_id": "CH_1786288560344_2v1e",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "cbf7b31d-a1c8-4826-a494-8c7446e43003",
+   "question_id": "CH_1782310566536_og7p",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "f41f3e1a-223f-49a4-b8e1-39701cd52a91",
+   "question_id": "CH_1782310566536_pdch",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "90d1865c-9eaf-4b58-9295-b41b2db0899d",
+   "question_id": "CH_1782313622618_2ijx",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "24d2568a-8b06-484d-a67d-03ad0d1f4943",
+   "question_id": "CH_1786288916111_kttw",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "e83dc003-a71f-4fc5-a6a2-c80a279c39fd",
+   "question_id": "CH_1786289007151_xcuq",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "61da8196-d97a-4424-b8e8-68d863f2dc5b",
+   "question_id": "CH_1782310566536_fpe4",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "aea9f53f-c7da-4838-8221-a6ae4e0f31f3",
+   "question_id": "CH_1782310566536_n67z",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "5a9c8bea-8e4c-4c52-8828-3b5f7a61f436",
+   "question_id": "CH_1782311850736_rrg2",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "bf02f924-3617-4938-a932-615742c2c265",
+   "question_id": "CH_1782310566536_wlr7",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc ba"
+  },
+  {
+   "id": "ecd4ee23-3deb-4b8f-9510-1f4aed292bc7",
+   "question_id": "CH_1782310566536_kdh4",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "So sánh các căn bậc ba"
+  },
+  {
+   "id": "0825847d-dc95-4c1c-942a-84003593e8d5",
+   "question_id": "CH_1782311850736_u755",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "1c2eed25-7aad-49f0-bc71-0ff42c22b659",
+   "question_id": "CH_1782310093792_y8zp",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "6bb3476d-4e05-4ce1-97e8-2d2147874769",
+   "question_id": "CH_1782313622618_3exa",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "515572ec-6b58-4963-a985-fde65d5052f5",
+   "question_id": "CH_1782313622618_9cz0",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "bf4f3523-79e3-4302-81ab-c49c5cb21b7d",
+   "question_id": "CH_1782310566536_tseb",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "38abd15c-5667-40d2-a381-621d5f3adc3f",
+   "question_id": "CH_1782310093792_u8yw",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "So sánh các căn bậc hai"
+  },
+  {
+   "id": "c3533a4b-b844-4d86-909a-6e8206473e99",
+   "question_id": "CH_1782310566536_8bj3",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "f110ac5d-8b84-4844-a46a-41c46625f863",
+   "question_id": "CH_1782310566536_l05j",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "bd8b5345-d37c-4044-a8fc-86b16ea675b5",
+   "question_id": "CH_1782310566536_j7p1",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "7ca72400-c768-4b16-a11d-2a184563e219",
+   "question_id": "CH_1782310566536_9pzw",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "c5172007-fdc1-48a1-8176-a533c52cffa4",
+   "question_id": "CH_1782313622618_i1y1",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "4b2ca7eb-f726-428f-8971-16202c2768b8",
+   "question_id": "CH_1782315596001_ddoc",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "879bf082-d079-4223-bfdc-7808c08758cc",
+   "question_id": "CH_1782316090611_3aol",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "9260a380-0f78-42af-abb2-3f9e5ad504b5",
+   "question_id": "CH_1782313622618_gxpu",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "f41b314f-434c-4ed0-88b7-4ccabcb9bd2a",
+   "question_id": "CH_1782313622618_ggzt",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "ae0589fd-f6f4-4472-861b-75ecd5626d2a",
+   "question_id": "CH_1782313622618_1n69",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "c4f068d9-cb26-4a1a-9db9-ccf5c389c663",
+   "question_id": "CH_1782313622618_crgj",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "8ca6c007-1dce-4c12-8176-ccefaaf31dca",
+   "question_id": "CH_1782314182146_kj23",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "40f43aa2-6283-47a4-b2e7-807df127f4c9",
+   "question_id": "CH_1782313622618_je7r",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "3cb16f2a-87f3-4789-8b2a-0119a60a78b3",
+   "question_id": "CH_1782314182146_xhuy",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "71809554-c12d-4eee-a3df-910843c188f2",
+   "question_id": "CH_1782314182146_zj76",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "feede2f4-e8f7-4aa0-832e-bfb31b55b817",
+   "question_id": "CH_1782314182146_trhj",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "b320bde8-7785-4717-87bf-b6b4e3708797",
+   "question_id": "CH_1782315596001_ac3k",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "ffd91cc0-c4fa-422b-be7d-848db12e5c68",
+   "question_id": "CH_1782315596001_sj39",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "c212c70e-f4e0-4eca-865d-ab15719264b8",
+   "question_id": "CH_1782310566536_pf0c",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba"
+  },
+  {
+   "id": "0f4025b9-52dc-425d-81bf-8935102870a5",
+   "question_id": "CH_1782314182146_8amw",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "e9be17ab-392b-4f76-9f1d-8b96440549ed",
+   "question_id": "CH_1782314182146_0z1a",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "03c21780-5d7d-4495-97d5-e0497b2bd7a4",
+   "question_id": "CH_1782315596001_f37k",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "765d08b6-9410-468d-9e84-093b3e737ca4",
+   "question_id": "CH_1782314182146_r1cf",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "6353cde4-4626-410d-a149-cfe0c7156f4b",
+   "question_id": "CH_1782314182146_7xfa",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "75f7544b-1f5d-4651-aaf3-af8b689c2dd8",
+   "question_id": "CH_1782315596001_w132",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "64547121-a1bc-4eac-b54b-f4a3e66f46fc",
+   "question_id": "CH_1782315596001_nq34",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "8184cbd4-1702-499f-a0d7-06395d4b5f53",
+   "question_id": "CH_1787815557923_z08w",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "d745d9d4-c527-4b10-a4ea-54c1c538c67b",
+   "question_id": "CH_1782315596001_igkf",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "88752cfc-daf7-403b-98ae-fbb5e6517777",
+   "question_id": "CH_1786288304192_fjgy",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "2af6878e-7212-48cc-9505-ecf1dbf89318",
+   "question_id": "CH_1786288560344_5oz2",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "1a483a72-e353-4434-8208-f72dedfa8c23",
+   "question_id": "CH_1785228205146_eyrw",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "49c0b7f7-fea0-4722-9da6-17dc630e8a08",
+   "question_id": "CH_1786289107830_7r3o",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của biểu thức chứa căn"
+  },
+  {
+   "id": "32115f69-3129-425d-a129-87860f15e79f",
+   "question_id": "CH_1782311913220_123e",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "ba1b47cf-ac16-4957-9beb-29dc281326b9",
+   "question_id": "CH_1782311850736_hg39",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "2ff37c2e-4a21-4b8a-98b6-7a8cb49bd45e",
+   "question_id": "CH_1788655419083_a4fl",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "98939810-f651-4b65-8db5-03b2091bee43",
+   "question_id": "CH_1788655419083_y2k6",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "e8724d96-1c1b-4712-aeba-ea64dc2a1c67",
+   "question_id": "CH_1788783306283_db6z",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "f74995b1-2928-46ee-8c2c-733d6925be1a",
+   "question_id": "CH_1782314182146_q2j7",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "90921542-81d7-407b-99ea-455ea26472f9",
+   "question_id": "CH_1782315596001_0ze3",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "e594f763-7734-41fa-8410-6f8356358457",
+   "question_id": "CH_1782311850736_xoux",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "75ea5757-03b9-4428-89bd-fe61358911bd",
+   "question_id": "CH_1782314182146_ymt9",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "2a4a6d1f-cc66-4d68-89c9-aec2d2f02e4f",
+   "question_id": "CH_1782310093792_gaxh",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "d8de0be5-d552-4f7b-907a-509df3b228eb",
+   "question_id": "CH_1786288304192_fn9v",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "7097b8c9-38ea-44e2-9406-99ec5c40732d",
+   "question_id": "CH_1786288440416_3dua",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "485a6ee8-3a70-4ef4-afb0-0d3b2a664d00",
+   "question_id": "CH_1782311913220_nzqm",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "48d9a682-b74d-4877-b3ac-30f1a8844135",
+   "question_id": "CH_1782314182146_vzig",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "70079fa8-1b63-4b91-8ab5-73e84c5b52e0",
+   "question_id": "CH_1782314182146_3q0h",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "df241a86-6a75-4d57-a5df-007600090aa0",
+   "question_id": "CH_1782318524328_mj7q",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "3fb2b2bd-c0bd-4708-bdb1-b7167b12a3d6",
+   "question_id": "CH_1786288744839_a9kb",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "a25fd4ad-9daf-492e-b907-1956cc0c93b1",
+   "question_id": "CH_1786288440416_bhnh",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "8350d8ca-3938-4fa8-8f17-86ca634f1fd4",
+   "question_id": "CH_1786288440416_8vqm",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "0608b0d6-d450-4d42-ae17-7a7d37727369",
+   "question_id": "CH_1786288560344_2asa",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "6aa121a5-6db1-49bb-943f-55081e3feacc",
+   "question_id": "CH_1786288560344_dqg2",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "1a38e749-5fd4-4a84-805b-9b8c1210d879",
+   "question_id": "CH_1786288744839_fql5",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "47b9db71-6919-4ec4-a07f-07e48fa789f4",
+   "question_id": "CH_1786423840901_qm8w",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm căn bậc hai, căn bậc hai số học của một số"
+  },
+  {
+   "id": "3d7b1b22-8b3c-48c8-8478-78e858ec65df",
+   "question_id": "CH_1786288651727_u5o8",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "74041c3a-bc23-4f6e-bf25-2d5e716bebea",
+   "question_id": "CH_1786288849238_1j38",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "65ed3d96-c710-456b-b1f6-d2f1d2a9aa0c",
+   "question_id": "CH_1786288916111_130o",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "f3dcef6a-1492-41c3-855c-97893ce789a5",
+   "question_id": "CH_1786288304192_p44o",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "ca4e8401-7936-4df9-bb92-d5c82bc010c8",
+   "question_id": "CH_1786289107830_l80a",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của biểu thức chứa căn"
+  },
+  {
+   "id": "a7d3d0d9-b2e2-4340-8c25-7a4bf733a0a0",
+   "question_id": "CH_1786288849238_id7u",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa căn"
+  },
+  {
+   "id": "f710a8c5-24a9-4232-a3c2-b3a1b576a3f6",
+   "question_id": "CH_1782310093792_r8ep",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "4a169a1e-b75b-48f1-9a9b-99813f7201e4",
+   "question_id": "CH_1782310093792_bg35",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tìm điều kiện xác định của căn thức bậc hai"
+  },
+  {
+   "id": "8ad12011-8364-4f56-a423-a5fe086aaa99",
+   "question_id": "CH_1782311850736_q70l",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "0623b5bb-f489-42ed-86e3-78baa30eee20",
+   "question_id": "CH_1782311850736_o3k0",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "853701c2-15f1-42dc-9acf-b7fb28651f94",
+   "question_id": "CH_1782311850736_4hg7",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "4c770065-421a-40f0-9473-25bc3dc7646c",
+   "question_id": "CH_1782311850736_qmqk",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "86e33e27-5c3e-4036-aad9-2870de5a6902",
+   "question_id": "CH_1782311850736_oesh",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "0897e6d6-7ca3-4e36-acb7-e4178dea8f56",
+   "question_id": "CH_1782311850736_kyek",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "62860d63-f440-43a2-b971-1028a3b6773a",
+   "question_id": "CH_1782311850736_cnc1",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "b7d709dd-9bd8-41f3-94cf-9a37408f7a70",
+   "question_id": "CH_1782311850736_bu7s",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "f2719739-70e3-41a7-bce2-3c3f26801d44",
+   "question_id": "CH_1782311850736_vvrz",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "d5e695bf-5ba7-4b2b-82ff-93ce2cde5960",
+   "question_id": "CH_1782313622618_5axt",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "9eda2b48-eb28-4516-b1d8-77c828c0bab3",
+   "question_id": "CH_1782313622618_dwm9",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  },
+  {
+   "id": "8e368509-b43c-4e50-a06a-b89baa2ea348",
+   "question_id": "CH_1782311850736_yis1",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "b7e94088-f741-4224-8985-1fbc215643ee",
+   "question_id": "CH_1782311850736_t2q3",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Ứng dụng thực tế của căn bậc ba"
+  },
+  {
+   "id": "e73bfe93-6334-4a1f-808e-6a31d1b409c8",
+   "question_id": "CH_1782314182146_2bn5",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "03e441fc-2a6e-4d01-9d2e-11dac1fd4e4f",
+   "question_id": "CH_1782314182146_7505",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "1cbf81ff-40c6-4ecd-bff1-ad6927aea48b",
+   "question_id": "CH_1782314182146_m7xy",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "0b1d2917-3d6e-4091-8b01-b15a6c8bced0",
+   "question_id": "CH_1782314182146_os4l",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Ứng dụng thực tế của khai căn tích, thương"
+  },
+  {
+   "id": "4b18e634-16f0-46d4-b1b1-e64283bc4956",
+   "question_id": "CH_1782315596001_96bt",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "62830415-f675-42df-b782-d0328e6144ed",
+   "question_id": "CH_1782314182146_zrao",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "So sánh các biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "5a00cc83-70a6-44cb-a14f-7d39bdc45b9d",
+   "question_id": "CH_1782315596001_c273",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Đưa thừa số ra ngoài, vào trong dấu căn"
+  },
+  {
+   "id": "83e2b472-0fa0-4825-a1c0-78fb436669d3",
+   "question_id": "CH_1782316090611_7dn2",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "c5ae4ba3-b705-4275-8598-b06ad35dafb0",
+   "question_id": "CH_1782316090611_8cq6",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "e162ce1d-2857-46fb-9e97-2b8177e9d52c",
+   "question_id": "CH_1782316090611_9ze2",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "a8cd085d-7be1-4c0c-8529-3d9a33bca215",
+   "question_id": "CH_1782316090611_de60",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "96e269ff-b331-4388-ba0c-bdfa50319a1f",
+   "question_id": "CH_1782316090611_njtf",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "d78a26ef-59bf-4d7b-85eb-b0d7298c13d4",
+   "question_id": "CH_1782316090611_3rj6",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "72c88ef1-bd09-486b-b0bd-3a30266fc320",
+   "question_id": "CH_1782316090611_6e5e",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "d4f7e391-7ad2-40ca-ae20-060c7fe7f646",
+   "question_id": "CH_1782316090611_3lb8",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "2f6572cc-ca5d-4ef6-a738-06664f545817",
+   "question_id": "CH_1782316090611_3h51",
+   "lesson": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "math_form": "Khai căn bậc hai một thương, chia các căn bậc hai"
+  },
+  {
+   "id": "544672a3-846f-46f5-a837-20f12cc9b4a7",
+   "question_id": "CH_1782310093792_xkvc",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Tính giá trị biểu thức chứa căn bậc hai"
+  },
+  {
+   "id": "343feea5-d834-46c7-ab84-4be3dcf1da61",
+   "question_id": "CH_1782318524328_musd",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "d45e0511-3c1d-4ad0-a329-272ec25e7765",
+   "question_id": "CH_1782318524328_mjl5",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "1890f2cd-66c6-4a1f-a8cc-1c4bf52a7bc0",
+   "question_id": "CH_1782311850736_3d18",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Ứng dụng thực tế của căn bậc hai"
+  },
+  {
+   "id": "be0efd82-d416-473c-99d6-82daab3cbec6",
+   "question_id": "CH_1786288304192_rxcn",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "e6512b62-7c69-414c-98d3-02aac9259860",
+   "question_id": "CH_1786288304192_w5b3",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "612f4d5d-2a92-426c-9543-f40476c5bdc1",
+   "question_id": "CH_1786288304192_8st3",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "091c9d61-eff8-42e4-b06f-f44b1b457c4d",
+   "question_id": "CH_1786288440416_i1sm",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "ee88813e-582c-4f80-8cc4-752e2699b538",
+   "question_id": "CH_1786288440416_zg63",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "201af160-a45c-4b53-99c8-3ac7dd03c13b",
+   "question_id": "CH_1786288560344_y9io",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "b6008ca3-4530-42af-8c80-079d2d4877c2",
+   "question_id": "CH_1786288651727_n4lz",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "7b5f2fd1-a597-4f4e-abd3-b6f5a71e31c5",
+   "question_id": "CH_1786288651727_33vo",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "f4fa843d-6053-4338-987a-635babf3e260",
+   "question_id": "CH_1786288744839_f2ff",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "30b10307-eec0-40a3-b62c-0db1df0317e0",
+   "question_id": "CH_1786288744839_v71a",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "30a561ce-84a3-493c-b358-734feae9f89f",
+   "question_id": "CH_1786288744839_o7og",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "519667f6-50ea-4507-a598-0bf5900764a3",
+   "question_id": "CH_1786288849238_z66t",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "dab404a8-7c48-4559-911d-44f6b03eee97",
+   "question_id": "CH_1786288849238_svk9",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "0af44c97-4b13-41fb-8142-d1cb958677ef",
+   "question_id": "CH_1786288916111_9v2o",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "3d256ce5-4293-47a6-ac8a-1d3e37bf950c",
+   "question_id": "CH_1786288916111_ea71",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "4b1a511e-7db1-4f49-8a5f-9935064b60e8",
+   "question_id": "CH_1786289007151_qkkz",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "fd4d05e1-a664-441d-9d2e-fd51121d5640",
+   "question_id": "CH_1782310566536_iz6a",
+   "lesson": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "math_form": "Tìm căn bậc ba của một số"
+  },
+  {
+   "id": "831d0126-838b-4282-9b9a-5439431771ce",
+   "question_id": "CH_1786289007151_09xp",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "a14ec88f-de59-49be-90f7-3da21120a7da",
+   "question_id": "CH_1786289007151_tfab",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "8a814d1d-24b5-4902-89e9-b788ea371901",
+   "question_id": "CH_1786288916111_qs4h",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "a496efb2-9b95-4887-8895-8abff12f3188",
+   "question_id": "CH_1782313622618_lc5e",
+   "lesson": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức dạng √A² = |A|"
+  },
+  {
+   "id": "b3b66140-2ba3-4e0b-bd58-3d118e340be6",
+   "question_id": "CH_1786289007151_q3op",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "b9df98e9-f4ac-4ef7-9ad6-b487f7c9d19d",
+   "question_id": "CH_1786289007151_pi12",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "7b88b2b5-de71-4281-af2a-84da5fd76f6a",
+   "question_id": "CH_1786289107830_8yq2",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "faacdd84-b35d-484e-9da3-f411fcb7d848",
+   "question_id": "CH_1786289007151_4wvs",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  },
+  {
+   "id": "943f3d35-fd6e-4a9a-b05b-21af11d94be3",
+   "question_id": "CH_1786288651727_scyb",
+   "lesson": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "math_form": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  }
+ ]
+}

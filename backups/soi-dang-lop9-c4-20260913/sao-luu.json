@@ -1,0 +1,694 @@
+{
+ "question_categories": [
+  {
+   "id": "10964b26-7336-4017-b191-abc47b11f88b",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được các tỉ số lượng giác sin, cos, tan, cot của góc nhọn và tính được chúng khi biết độ dài các cạnh của tam giác vuông."
+  },
+  {
+   "id": "6edd84a8-5de5-4e13-88ae-485f7bb13675",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn về tính chiều cao, khoảng cách không đo trực tiếp được bằng tỉ số lượng giác của góc nhọn."
+  },
+  {
+   "id": "ed8aac99-0dc0-4f3e-9bad-8cd4698addb9",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được quan hệ giữa tỉ số lượng giác của hai góc phụ nhau và bảng giá trị của các góc 30°, 45°, 60° để tính toán."
+  },
+  {
+   "id": "77823697-2356-4f3b-9ac6-2f852bc19884",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Sử dụng được máy tính cầm tay để tính tỉ số lượng giác của một góc nhọn và tìm góc khi biết một tỉ số lượng giác."
+  },
+  {
+   "id": "163a0d5c-f677-4d40-897b-e167b05f00ec",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị và rút gọn được biểu thức chứa các tỉ số lượng giác của góc nhọn dựa vào các hệ thức cơ bản."
+  },
+  {
+   "id": "24fe6593-e7c5-4c79-8f79-6b80e6310397",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Chứng minh được các hệ thức giữa các tỉ số lượng giác của một góc nhọn (sin² + cos² = 1, tan = sin/cos, tan·cot = 1)."
+  },
+  {
+   "id": "d1cbe511-6ab7-4c03-a83e-71cf1c5099a9",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hệ thức giữa cạnh và góc trong tam giác vuông để tính độ dài cạnh hoặc số đo góc còn lại."
+  },
+  {
+   "id": "4f62f480-6202-4772-b74c-98965f0cfe17",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được tam giác vuông (tìm mọi cạnh và góc chưa biết) khi biết hai cạnh hoặc một cạnh và một góc nhọn."
+  },
+  {
+   "id": "3924e085-6fc1-4f19-a38c-01b711a725cb",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tính được đường cao, diện tích tam giác và các đoạn thẳng trong hình bằng cách vận dụng tỉ số lượng giác."
+  },
+  {
+   "id": "c3a9101f-ce1e-4129-9269-28da32ad16d8",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 4. Hệ thức lượng trong tam giác vuông",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 4",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp tỉ số lượng giác và các hệ thức giữa cạnh, góc trong tam giác vuông để giải toán hình học và thực tế."
+  }
+ ],
+ "questions": [
+  {
+   "id": "0003816f-1e8e-4836-97b7-fe201d531767",
+   "question_id": "CH_1789186358197_na6q",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "e4c55d11-bdc6-4be8-bcd5-8e779fb5d9ac",
+   "question_id": "CH_1789186358199_9hcw",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "270eb291-a7d2-42eb-bc07-f173473dcfd0",
+   "question_id": "CH_1789186358200_t1tt",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "88a602ce-5f39-4637-9b3a-1664bcdfedd1",
+   "question_id": "CH_1789186358202_fv1m",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "22588746-d26a-4b52-98db-c6f2ff9d21d3",
+   "question_id": "CH_1789186358204_o40e",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "990de9a8-7ccf-4601-a94d-c956db5822ac",
+   "question_id": "CH_1789186358205_fekx",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "be68f529-6e71-416d-899e-d5597bf6db26",
+   "question_id": "CH_1789186358206_h4u2",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "25295212-64c2-47c6-9ff6-55ce61532edf",
+   "question_id": "CH_1789186358207_4t8n",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác"
+  },
+  {
+   "id": "5faa6e8d-958b-49df-ab20-ca14294c689f",
+   "question_id": "CH_1789186358208_x7kt",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "734c5525-845f-4cef-8d9e-3b4f4ad53114",
+   "question_id": "CH_1789186358209_0x15",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "e4c25c04-7dbe-4ccb-b632-1149ca2411c4",
+   "question_id": "CH_1789186358210_ji5o",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "b8784984-9f79-4513-a540-31425499cf15",
+   "question_id": "CH_1789186358211_x7br",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác"
+  },
+  {
+   "id": "60940f89-59c3-4c29-866a-d6518f468458",
+   "question_id": "CH_1789186358212_jhbg",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác"
+  },
+  {
+   "id": "41a489a0-dafa-4e70-9e60-ba24fc5f2581",
+   "question_id": "CH_1789186358214_mamz",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác"
+  },
+  {
+   "id": "27bc2e5c-1486-4b9f-bc6e-b219a7b8ec6f",
+   "question_id": "CH_1789186358215_09a8",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác"
+  },
+  {
+   "id": "d730c07a-75f3-4068-9ed2-78de8999ec6e",
+   "question_id": "CH_1789186358217_ep42",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "aafdd3d8-0e62-4b31-a033-2a3610ff564b",
+   "question_id": "CH_1789186358219_2w7d",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác"
+  },
+  {
+   "id": "795e2dcf-eb6f-480d-a72a-65efdef1ea9d",
+   "question_id": "CH_1789186358220_sotc",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "36bfdfb1-b3df-4ce5-a880-202a0f6e2108",
+   "question_id": "CH_1789186358222_wo4f",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "12c18954-885f-4201-99f3-869ef0bb8eff",
+   "question_id": "CH_1789186358223_qq9y",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "ab99a339-df47-4253-9a3c-a2032f79b663",
+   "question_id": "CH_1789186358224_d2pq",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "cff81d9d-428e-4c7d-aa97-9a72aa61e0ee",
+   "question_id": "CH_1789186358229_c1si",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "816484a4-ca2d-4497-a7ab-625bbc4e0114",
+   "question_id": "CH_1789186358231_r3mi",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "21a02f0d-7ddc-4793-8467-5e71bdf7d0b5",
+   "question_id": "CH_1789186358232_cjtm",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "922e5c96-ee57-44fd-a564-1d7fb2d939a8",
+   "question_id": "CH_1789186358233_5k5k",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác"
+  },
+  {
+   "id": "714dad0f-cccb-49e4-96ff-bd16e6c45081",
+   "question_id": "CH_1789186358234_qyfc",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác"
+  },
+  {
+   "id": "d20ec8cb-9634-4902-9795-0db6340bc261",
+   "question_id": "CH_1789186358236_pyx8",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác"
+  },
+  {
+   "id": "6b6f42e1-33a5-417a-9759-18ff127dbd43",
+   "question_id": "CH_1789186358239_rtv5",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "96dc0bda-5e14-47e2-a3fa-2abac638dcd3",
+   "question_id": "CH_1789186716709_nbq8",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "ab44f653-4e26-4fb8-8d8f-0aef549a24a2",
+   "question_id": "CH_1789186716710_ua45",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "860c4c43-c592-4118-a1bd-afaa98606810",
+   "question_id": "CH_1789186716712_rfa4",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "23ad2fec-a356-4746-9367-a046661dc6c2",
+   "question_id": "CH_1789186716713_gfm7",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "44dc4251-4ca3-429a-89bd-574fca9c6933",
+   "question_id": "CH_1789186716714_cxjw",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng"
+  },
+  {
+   "id": "e214240c-7b55-4dac-ab4c-dd3036ac7f77",
+   "question_id": "CH_1789186716715_8295",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính cạnh, góc trong tam giác vuông theo hệ thức lượng"
+  },
+  {
+   "id": "b165d441-98f1-41c0-b458-0529998d4a28",
+   "question_id": "CH_1789186716716_ux49",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "b6f45dd3-7c37-4332-9779-9fb820aef564",
+   "question_id": "CH_1789186716718_5x47",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "89e155a9-eed1-4a46-abc8-08e4298a6c12",
+   "question_id": "CH_1789186716719_vl9c",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "88ad24eb-9c2d-4f2b-bf5a-1a65eb31624a",
+   "question_id": "CH_1789186716720_t9e0",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "9e9674c2-bd19-47a7-b5bd-a7d12961dfdc",
+   "question_id": "CH_1789186716721_oq1t",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "5b1f6f48-f4d1-4389-a549-4d78a897cd7e",
+   "question_id": "CH_1789186716722_dfqq",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "83ff0c80-7820-4efd-9627-b1b9fb0dc821",
+   "question_id": "CH_1789186716724_xh6w",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "5a6e895c-7e08-43e9-a7a3-f6179ad78443",
+   "question_id": "CH_1789186716725_hr1s",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "dd54e200-6000-4b37-ba3f-e3608b7ccf6b",
+   "question_id": "CH_1789186716727_n5q2",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "fde03ab1-5e44-49ce-8a42-5d5f807fe043",
+   "question_id": "CH_1789186716729_uoch",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "5c136d6e-762e-4ca6-82c2-35bfffaeee89",
+   "question_id": "CH_1789186716731_0zyl",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "db390f2c-e9ef-45d9-8045-bd9807ec0e2a",
+   "question_id": "CH_1789186716733_redp",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "318b4e13-1d3a-4f4b-b4d8-996977c70af4",
+   "question_id": "CH_1789186716734_s1q2",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "2163377a-f744-4645-9edc-d7229266123f",
+   "question_id": "CH_1789186716735_c70o",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "9ad8a9ed-c2c3-4c52-a111-cc6ba22249bf",
+   "question_id": "CH_1789186716737_1f88",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "d2875efb-6c89-4521-be1f-fd04f6ff7d74",
+   "question_id": "CH_1789186716738_3gz4",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "5628ba33-7d53-46d7-93fa-30a78c8afaed",
+   "question_id": "CH_1789186716739_phhd",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "1e128020-4de7-4ae6-95d2-8762311e1e15",
+   "question_id": "CH_1789186716740_f9s9",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "9dde30d2-d8fa-4c8a-af00-7a83e580df1b",
+   "question_id": "CH_1789186716741_qik9",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "85d36319-8d61-4a4a-b743-dda830be5b8d",
+   "question_id": "CH_1789186716742_685c",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "b7d577ce-bc3b-49f0-9b23-ff12c5092554",
+   "question_id": "CH_1789186716743_zgyb",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "dc452c00-3991-463f-90dc-2ed9aee191e0",
+   "question_id": "CH_1785600354339_ukil",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "c7bc032a-b1d2-4e3c-8c02-52f9e5d21f51",
+   "question_id": "CH_1785600354339_4kcd",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "92eb5d47-5099-4624-a0cc-5140de7226e3",
+   "question_id": "CH_1785600354339_yuqa",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "8fa0e6d7-226c-41a3-af37-6aec55d627d4",
+   "question_id": "CH_1785600354339_02l0",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "d840e62e-0a09-4088-a83f-c8acfa2e325f",
+   "question_id": "CH_1785600354339_0gjx",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "19ec4769-9226-4051-a75f-2dd40694d616",
+   "question_id": "CH_1785600354339_y8qh",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "8e33fa12-1637-4add-b4c5-622117bf01b1",
+   "question_id": "CH_1785600354339_txgs",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "c2846525-b3cd-4ec5-a6b3-b0bbbc27baf1",
+   "question_id": "CH_1785600354339_w7n0",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "ab504dd0-67a3-4898-b2cd-1d4626035753",
+   "question_id": "CH_1785600354339_pn1g",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "053ccbbc-7c0b-4496-b9b7-914860e70a4e",
+   "question_id": "CH_1785600354339_vqw5",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "7bf6e49e-d82c-4b00-aa7d-918eab063dbd",
+   "question_id": "CH_1788655419083_e66d",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "5ee0e03b-877e-4793-a5e0-44efc0191d48",
+   "question_id": "CH_1788655419083_lcko",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "ca1216fd-7473-4e4b-bd64-e776dd8cc908",
+   "question_id": "CH_1789054973577_0e3b",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "be1cb1cf-4340-40b8-a706-703ca27f851b",
+   "question_id": "CH_1789054973577_pldz",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "e9ea439a-fc23-4dbd-9e1c-2eef75b00856",
+   "question_id": "CH_1789054973577_azfd",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "9632aa76-ceba-4c43-8135-1d1db465433e",
+   "question_id": "CH_1789054973577_kuvv",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "8760a3a9-373a-4558-8d1b-411198a438e0",
+   "question_id": "CH_1789186358203_el2n",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "d79c10af-261d-4af3-9a13-f58fdc22d203",
+   "question_id": "CH_1789186358201_b6do",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "6ec9fc60-78fa-4ed2-a757-6f8ffd327149",
+   "question_id": "CH_1789186358196_63m4",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "02c43209-68fe-4704-8a40-5309942a58c0",
+   "question_id": "CH_1789186358198_1jtm",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "6e77d022-842c-48da-8813-ffd953105dc1",
+   "question_id": "CH_1789186358218_26dw",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "548dddc4-723f-4675-9f62-8c11368ea6c8",
+   "question_id": "CH_1789186358213_j7ox",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác"
+  },
+  {
+   "id": "73279cca-a44e-4332-bd50-7d8166aa68d5",
+   "question_id": "CH_1789186358216_sc9a",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác"
+  },
+  {
+   "id": "b381e71d-793a-4843-b174-7ef5fcd99f79",
+   "question_id": "CH_1789186358228_8wu7",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "347ee52a-5fa7-419c-99f2-c65a5344e20e",
+   "question_id": "CH_1789186716726_aswt",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "f640b222-1911-4952-9160-558af010a5f7",
+   "question_id": "CH_1789186358221_k4ep",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "4fec55ef-7c67-48d7-98f5-2c53f265798d",
+   "question_id": "CH_1789186358225_pzre",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "ee5894b9-cba1-4a31-909b-701e7e231a64",
+   "question_id": "CH_1789186358226_rfon",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "117e1d3a-6755-4a0b-b6de-211db58ca1e4",
+   "question_id": "CH_1789186358230_n3o0",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính giá trị, rút gọn biểu thức lượng giác"
+  },
+  {
+   "id": "73caf56e-d976-435c-8a10-e2211c0699f8",
+   "question_id": "CH_1789186358227_5cr4",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt"
+  },
+  {
+   "id": "2d7b2564-b7f5-439a-a01c-46405403aa75",
+   "question_id": "CH_1789186358235_zu7q",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Chứng minh hệ thức lượng giác"
+  },
+  {
+   "id": "40ab17d5-0422-4ee3-8fb0-355fd753060b",
+   "question_id": "CH_1789186716717_p1n7",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "24866dfd-90ac-41fc-9fb5-a6dd06876ba1",
+   "question_id": "CH_1789186358237_zwnu",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "6e2c2725-2917-4550-82b8-2dfda7a66147",
+   "question_id": "CH_1789186358238_e8kq",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc"
+  },
+  {
+   "id": "3cfcc59c-945f-46d1-b1c3-178915d4205a",
+   "question_id": "CH_1785600354339_fvzh",
+   "lesson": "Bài 1. Tỉ số lượng giác của góc nhọn",
+   "math_form": "Tính tỉ số lượng giác của góc nhọn trong tam giác vuông"
+  },
+  {
+   "id": "d39031f0-16f5-425e-acf2-51f1aaea3cea",
+   "question_id": "CH_1789186716711_bd98",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "ddf1be6f-2859-4f4a-bb58-d4130599e422",
+   "question_id": "CH_1789054973577_mjst",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "482b3951-337b-48c0-be6f-0bb53a18f048",
+   "question_id": "CH_1789186716723_6imk",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  },
+  {
+   "id": "f26a0128-5ff8-4ecc-874c-44cec447033c",
+   "question_id": "CH_1789186716728_kwlu",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "b1e828c7-ce65-41bd-b04b-a4c6037ebd93",
+   "question_id": "CH_1789186716732_zfyi",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Giải tam giác vuông"
+  },
+  {
+   "id": "4013e750-e7e8-4188-901b-5d13ab4f42b7",
+   "question_id": "CH_1789186716730_0uog",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "d0a95dd9-b9d3-49e1-b3a8-eac7c97ee496",
+   "question_id": "CH_1789054973577_lxvf",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ"
+  },
+  {
+   "id": "ef9307cc-a20a-4d5f-9c3b-6ce1182f7c9f",
+   "question_id": "CH_1789186716736_3ks3",
+   "lesson": "Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng",
+   "math_form": "Tính đường cao, diện tích bằng tỉ số lượng giác"
+  }
+ ]
+}

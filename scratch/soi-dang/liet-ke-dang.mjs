@@ -4,7 +4,7 @@ const env = {}; for (const l of readFileSync('.env.local', 'utf8').split('\n')) 
 const sb = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 const lop = process.argv[2], tu = +process.argv[3], den = +process.argv[4];
 const { data: dm } = await sb.from('question_categories').select('subject,topic,lesson,math_form,yeu_cau_can_dat').eq('grade', lop).order('topic').order('lesson');
-const { data: q } = await sb.from('questions').select('topic,lesson,math_form').eq('grade', lop);
+const q = []; for (let i = 0; ; i += 1000) { const { data } = await sb.from('questions').select('topic,lesson,math_form').eq('grade', lop).range(i, i + 999); q.push(...(data || [])); if (!data || data.length < 1000) break; }
 const dem = {}; for (const x of q) dem[`${x.topic}|${x.lesson}|${x.math_form}`] = (dem[`${x.topic}|${x.lesson}|${x.math_form}`] || 0) + 1;
 let last = '';
 for (const d of dm) {

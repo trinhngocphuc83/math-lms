@@ -1,0 +1,227 @@
+{
+ "lop": "9",
+ "chuong": 1,
+ "dang": [
+  {
+   "bai": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình",
+   "moi": "Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình",
+   "yc": "Nhận biết được phương trình bậc nhất hai ẩn, kiểm tra được một cặp số có là nghiệm và viết được nghiệm tổng quát."
+  },
+  {
+   "bai": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Biểu diễn tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng toạ độ",
+   "moi": "Biểu diễn tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng toạ độ",
+   "yc": "Viết được nghiệm tổng quát và biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng toạ độ."
+  },
+  {
+   "bai": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ",
+   "moi": "Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ",
+   "yc": "Nhận biết được hệ hai phương trình bậc nhất hai ẩn và kiểm tra được một cặp số có là nghiệm của hệ hay không."
+  },
+  {
+   "bai": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Đoán nhận số nghiệm của hệ phương trình",
+   "moi": "Đoán nhận số nghiệm của hệ phương trình",
+   "yc": "Dự đoán được số nghiệm của hệ hai phương trình bậc nhất hai ẩn dựa vào vị trí tương đối của hai đường thẳng và tìm được tham số để hệ vô nghiệm, vô số nghiệm."
+  },
+  {
+   "bai": "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số",
+   "moi": "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số",
+   "yc": "Tìm được giá trị của tham số để một cặp số cho trước là nghiệm của phương trình, hệ phương trình bậc nhất hai ẩn."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Giải hệ phương trình bằng phương pháp thế",
+   "moi": "Giải hệ phương trình bằng phương pháp thế",
+   "yc": "Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thế."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Giải hệ phương trình bằng phương pháp cộng đại số",
+   "moi": "Giải hệ phương trình bằng phương pháp cộng đại số",
+   "yc": "Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp cộng đại số."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm",
+   "moi": "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm",
+   "yc": "Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thích hợp và tính được giá trị biểu thức theo nghiệm."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn",
+   "moi": "Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn",
+   "yc": "Biến đổi được hệ phương trình có ngoặc, có mẫu số về hệ hai phương trình bậc nhất hai ẩn rồi giải."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ",
+   "moi": "Giải hệ phương trình bằng phương pháp đặt ẩn phụ",
+   "yc": "Giải được hệ phương trình bằng cách đặt ẩn phụ đưa về hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Giải hệ phương trình bằng máy tính cầm tay",
+   "moi": "Giải hệ phương trình bằng máy tính cầm tay",
+   "yc": "Sử dụng được máy tính cầm tay để tìm nghiệm của hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Hệ phương trình chứa tham số",
+   "moi": "Hệ phương trình chứa tham số",
+   "yc": "Tìm được giá trị của tham số để hệ hai phương trình bậc nhất hai ẩn có nghiệm thoả mãn điều kiện cho trước."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình",
+   "moi": "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình",
+   "yc": "Lập và giải được hệ hai phương trình bậc nhất hai ẩn để tìm hệ số của hàm số y = ax + b, của đa thức đồng nhất."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Ứng dụng hệ phương trình để cân bằng phương trình hoá học",
+   "moi": "Ứng dụng hệ phương trình để cân bằng phương trình hoá học",
+   "yc": "Vận dụng được hệ hai phương trình bậc nhất hai ẩn để tìm các hệ số cân bằng phương trình hoá học."
+  },
+  {
+   "bai": "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "cu": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn",
+   "moi": "Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn",
+   "yc": "Giải quyết được một số vấn đề thực tiễn đơn giản (mua bán, giá cả, số lượng) bằng hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "bai": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "cu": "Toán về quan hệ giữa các số, chữ số",
+   "moi": "Toán về quan hệ giữa các số, chữ số",
+   "yc": "Giải được bài toán tìm hai số hoặc số có hai chữ số khi biết các quan hệ giữa chúng bằng cách lập hệ phương trình."
+  },
+  {
+   "bai": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "cu": "Toán chuyển động trên bộ",
+   "moi": "Toán chuyển động trên bộ",
+   "yc": "Giải được bài toán chuyển động (gặp nhau, đuổi nhau, thay đổi vận tốc) bằng cách lập hệ phương trình."
+  },
+  {
+   "bai": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "cu": "Toán chuyển động của ca nô, thuyền trên dòng nước",
+   "moi": "Toán chuyển động của ca nô, thuyền trên dòng nước",
+   "yc": "Giải được bài toán chuyển động xuôi dòng, ngược dòng bằng cách lập hệ hai phương trình bậc nhất hai ẩn."
+  },
+  {
+   "bai": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "cu": "Toán công việc, năng suất",
+   "moi": "Toán công việc, năng suất",
+   "yc": "Giải được bài toán làm chung - làm riêng, năng suất lao động, vòi nước chảy bằng cách lập hệ phương trình."
+  },
+  {
+   "bai": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "cu": "Toán về tỉ số phần trăm",
+   "moi": "Toán về tỉ số phần trăm",
+   "yc": "Giải được bài toán tăng giảm theo tỉ số phần trăm (sản lượng, giá bán, lãi suất) bằng cách lập hệ phương trình."
+  },
+  {
+   "bai": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "cu": "Toán có nội dung hình học",
+   "moi": "Toán có nội dung hình học",
+   "yc": "Giải được bài toán về chu vi, diện tích, kích thước của hình bằng cách lập hệ phương trình."
+  },
+  {
+   "bai": "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "cu": "Toán thực tế khác (mua bán, sản xuất, phân chia)",
+   "moi": "Toán thực tế khác (mua bán, sản xuất, phân chia)",
+   "yc": "Giải quyết được các tình huống thực tiễn khác (mua bán, sản xuất, phân chia, xếp chỗ) bằng cách lập hệ phương trình."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 1",
+   "moi": "Bài tập tổng hợp chương 1",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 1 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {
+  "h4xg": [
+   "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "Đoán nhận số nghiệm của hệ phương trình"
+  ],
+  "1mfl": [
+   "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "Đoán nhận số nghiệm của hệ phương trình"
+  ],
+  "eho3": [
+   "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  ],
+  "7a38": [
+   "Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn",
+   "Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số"
+  ],
+  "n9ks": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  ],
+  "2bvi": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  ],
+  "0buv": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm"
+  ],
+  "wgp1": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  ],
+  "lld3": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Giải hệ phương trình bằng phương pháp đặt ẩn phụ"
+  ],
+  "4fi7": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Hệ phương trình chứa tham số"
+  ],
+  "0ugn": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  ],
+  "2c9s": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  ],
+  "zmj4": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  ],
+  "8fr1": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  ],
+  "kg1v": [
+   "Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn",
+   "Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình"
+  ],
+  "gtjm": [
+   "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "Toán công việc, năng suất"
+  ],
+  "55e7": [
+   "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "Toán công việc, năng suất"
+  ],
+  "d783": [
+   "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "Toán thực tế khác (mua bán, sản xuất, phân chia)"
+  ],
+  "0gol": [
+   "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  ],
+  "lnuc": [
+   "Bài 3. Giải bài toán bằng cách lập hệ phương trình",
+   "Toán chuyển động của ca nô, thuyền trên dòng nước"
+  ]
+ }
+}

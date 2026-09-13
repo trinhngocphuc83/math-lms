@@ -1,0 +1,487 @@
+{
+ "lop": "9",
+ "chuong": 3,
+ "dang": [
+  {
+   "bai": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "cu": "Tìm căn bậc hai, căn bậc hai số học của một số",
+   "moi": "Tìm căn bậc hai, căn bậc hai số học của một số",
+   "yc": "Nhận biết được khái niệm căn bậc hai, căn bậc hai số học và tính được căn bậc hai của một số."
+  },
+  {
+   "bai": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "cu": "So sánh các căn bậc hai",
+   "moi": "So sánh các căn bậc hai",
+   "yc": "So sánh được hai căn bậc hai số học hoặc một số với một căn bậc hai."
+  },
+  {
+   "bai": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "cu": "Tìm điều kiện xác định của căn thức bậc hai",
+   "moi": "Tìm điều kiện xác định của căn thức bậc hai",
+   "yc": "Xác định được điều kiện để căn thức bậc hai có nghĩa và kiểm tra được giá trị của biến có thoả mãn hay không."
+  },
+  {
+   "bai": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "cu": "Tính giá trị biểu thức chứa căn bậc hai",
+   "moi": "Tính giá trị biểu thức chứa căn bậc hai",
+   "yc": "Tính được giá trị của biểu thức số chứa căn bậc hai và giá trị của căn thức bậc hai tại giá trị cho trước của biến."
+  },
+  {
+   "bai": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "cu": "Rút gọn biểu thức dạng √A² = |A|",
+   "moi": "Rút gọn biểu thức dạng √A² = |A|",
+   "yc": "Vận dụng được hằng đẳng thức √A² = |A| để rút gọn biểu thức, khai căn biểu thức có dạng bình phương và căn lồng nhau."
+  },
+  {
+   "bai": "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "cu": "Ứng dụng thực tế của căn bậc hai",
+   "moi": "Ứng dụng thực tế của căn bậc hai",
+   "yc": "Giải quyết được một số vấn đề thực tiễn liên quan đến căn bậc hai (công thức vật lí, hình học)."
+  },
+  {
+   "bai": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "cu": "Khai căn bậc hai một tích, nhân các căn bậc hai",
+   "moi": "Khai căn bậc hai một tích, nhân các căn bậc hai",
+   "yc": "Vận dụng được quy tắc √(ab) = √a·√b để khai phương một tích, nhân các căn bậc hai và rút gọn."
+  },
+  {
+   "bai": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "cu": "Khai căn bậc hai một thương, chia các căn bậc hai",
+   "moi": "Khai căn bậc hai một thương, chia các căn bậc hai",
+   "yc": "Vận dụng được quy tắc √(a/b) = √a/√b để khai phương một thương, chia các căn bậc hai và rút gọn."
+  },
+  {
+   "bai": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "cu": "So sánh các biểu thức chứa căn bậc hai",
+   "moi": "So sánh các biểu thức chứa căn bậc hai",
+   "yc": "So sánh được các biểu thức chứa căn bậc hai bằng cách biến đổi về cùng dạng rồi so sánh biểu thức dưới dấu căn."
+  },
+  {
+   "bai": "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "cu": "Ứng dụng thực tế của khai căn tích, thương",
+   "moi": "Ứng dụng thực tế của khai căn tích, thương",
+   "yc": "Giải quyết được một số vấn đề thực tiễn cần khai căn một tích, một thương."
+  },
+  {
+   "bai": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "cu": "Đưa thừa số ra ngoài, vào trong dấu căn",
+   "moi": "Đưa thừa số ra ngoài, vào trong dấu căn",
+   "yc": "Thực hiện được phép đưa thừa số ra ngoài hoặc vào trong dấu căn bậc hai và rút gọn tổng các căn thức đồng dạng."
+  },
+  {
+   "bai": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "cu": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu",
+   "moi": "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu",
+   "yc": "Thực hiện được phép khử mẫu của biểu thức lấy căn và trục căn thức ở mẫu."
+  },
+  {
+   "bai": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "cu": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị",
+   "moi": "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị",
+   "yc": "Rút gọn được biểu thức chứa căn thức bậc hai (biểu thức số và biểu thức chứa biến) và tính được giá trị của biểu thức."
+  },
+  {
+   "bai": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "cu": "Giải phương trình chứa căn thức bậc hai",
+   "moi": "Giải phương trình chứa căn thức bậc hai",
+   "yc": "Giải được phương trình chứa căn thức bậc hai đơn giản bằng cách đưa thừa số ra ngoài dấu căn hoặc bình phương hai vế."
+  },
+  {
+   "bai": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "cu": "Tìm x để biểu thức chứa căn nhận giá trị nguyên",
+   "moi": "Tìm x để biểu thức chứa căn nhận giá trị nguyên",
+   "yc": "Tìm được giá trị nguyên của biến để biểu thức chứa căn sau khi rút gọn nhận giá trị nguyên."
+  },
+  {
+   "bai": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "cu": "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa căn",
+   "moi": "Tìm giá trị lớn nhất, nhỏ nhất của biểu thức chứa căn",
+   "yc": "Tìm được giá trị lớn nhất hoặc nhỏ nhất của biểu thức chứa căn sau khi rút gọn."
+  },
+  {
+   "bai": "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "cu": "Ứng dụng thực tế của biểu thức chứa căn",
+   "moi": "Ứng dụng thực tế của biểu thức chứa căn",
+   "yc": "Giải quyết được một số vấn đề thực tiễn có bối cảnh hình học bằng biến đổi biểu thức chứa căn."
+  },
+  {
+   "bai": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "cu": "Tìm căn bậc ba của một số",
+   "moi": "Tìm căn bậc ba của một số",
+   "yc": "Nhận biết được khái niệm căn bậc ba và tính được căn bậc ba của một số, kể cả bằng máy tính cầm tay."
+  },
+  {
+   "bai": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "cu": "So sánh các căn bậc ba",
+   "moi": "So sánh các căn bậc ba",
+   "yc": "So sánh được các căn bậc ba dựa vào tính chất a < b ⇔ ∛a < ∛b."
+  },
+  {
+   "bai": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "cu": "Tìm điều kiện xác định của căn thức bậc ba",
+   "moi": "Tìm điều kiện xác định của căn thức bậc ba",
+   "yc": "Xác định được điều kiện để căn thức bậc ba có nghĩa (biểu thức dưới dấu căn xác định)."
+  },
+  {
+   "bai": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "cu": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba",
+   "moi": "Tính giá trị, rút gọn biểu thức chứa căn bậc ba",
+   "yc": "Tính được giá trị và rút gọn được biểu thức chứa căn bậc ba, kể cả căn thức bậc ba tại giá trị cho trước của biến."
+  },
+  {
+   "bai": "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "cu": "Ứng dụng thực tế của căn bậc ba",
+   "moi": "Ứng dụng thực tế của căn bậc ba",
+   "yc": "Giải quyết được một số vấn đề thực tiễn liên quan đến căn bậc ba (thể tích khối lập phương, công thức thực nghiệm)."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 3",
+   "moi": "Bài tập tổng hợp chương 3",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 3 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {
+  "ozox": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "lsj6": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "y8zp": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "xkvc": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "2ojb": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "b1g8": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "dbd7": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "vaxl": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "droc": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "8kzw": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "4ta3": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "hsvp": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "novz": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "v3nv": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Rút gọn biểu thức dạng √A² = |A|"
+  ],
+  "cnc1": [
+   "Bài 1. Căn bậc hai và căn thức bậc hai",
+   "Ứng dụng thực tế của căn bậc hai"
+  ],
+  "ru3h": [
+   "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  ],
+  "7vr0": [
+   "Bài 2. Khai căn bậc hai với phép nhân và phép chia",
+   "Khai căn bậc hai một tích, nhân các căn bậc hai"
+  ],
+  "k2bh": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "u8ho": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "rggx": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "cu6f": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "haz5": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "54ay": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "5tfv": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "3aol": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "de60": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "7dn2": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "8cq6": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "9ze2": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "3lb8": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "3h51": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "njtf": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "gj0h": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "q9pu": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "o60j": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "6lfo": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "0zjz": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "fjgy": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "130o": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "4wvs": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "zynd": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "p44o": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "qkkz": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "q3op": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "3dua": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "y9io": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Khử mẫu của biểu thức lấy căn, trục căn thức ở mẫu"
+  ],
+  "32pu": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "7zot": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "hl7n": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "hlev": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "u9af": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "qyu2": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "zzar": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "n69p": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "etka": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "e72u": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "3rj6": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "6e5e": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "meu7": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "n2kx": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "kj23": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "a3tf": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "s8bb": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "vhu8": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "qyls": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "trhj": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "r1cf": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Rút gọn biểu thức chứa căn thức bậc hai và tính giá trị"
+  ],
+  "fn9v": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Đưa thừa số ra ngoài, vào trong dấu căn"
+  ],
+  "rxcn": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Đưa thừa số ra ngoài, vào trong dấu căn"
+  ],
+  "w5b3": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Đưa thừa số ra ngoài, vào trong dấu căn"
+  ],
+  "8st3": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Đưa thừa số ra ngoài, vào trong dấu căn"
+  ],
+  "ea71": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Đưa thừa số ra ngoài, vào trong dấu căn"
+  ],
+  "qs4h": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Đưa thừa số ra ngoài, vào trong dấu căn"
+  ],
+  "hjyb": [
+   "Bài 3. Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai",
+   "Giải phương trình chứa căn thức bậc hai"
+  ],
+  "qyf4": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "het1": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "m7i3": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "p8op": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "mmqh": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "ogk1": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "og7p": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "9pzw": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "ubfv": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "n67z": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ],
+  "8bj3": [
+   "Bài 4. Căn bậc ba và căn thức bậc ba",
+   "Tìm căn bậc ba của một số"
+  ]
+ }
+}

@@ -1,0 +1,448 @@
+Chương 1. Phương trình và hệ hai phương trình bậc nhất hai ẩn · lớp 9 · 23 dạng · 377 câu
+
+
+### [1] Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn | Biểu diễn tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng toạ độ (0)
+    yêu cầu: Viết được nghiệm tổng quát và biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn bằng một đường thẳng trên mặt phẳng toạ độ.
+
+### [2] Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn | Nhận biết phương trình bậc nhất hai ẩn và nghiệm của phương trình (19)
+    yêu cầu: Nhận biết được phương trình bậc nhất hai ẩn, xác định được hệ số và kiểm tra được một cặp số có là nghiệm của phương trình hay không.
+  e38n NLC 1 | Công thức nghiệm tổng quát của phương trình 0x + 4y = -16.
+  g8ns NLC 2 | Trong các cặp số (-2; 1); (0; 2); (-1; 0); (1,5; 3); (4; -3) có bao nhiêu cặp số không là nghiệm của phương tr
+  jpog NLC 1 | Phương trình x - 5y + 7 = 0 nhận cặp số nào sau đây làm nghiệm?
+  a7w5 NLC 3 | Tìm tất cả nghiệm nguyên của phương trình 5x - 3y = 8.
+  ynb2 NLC 1 | Phương trình nào dưới đây nhận cặp số (-2; 4) làm nghiệm
+  kfbz TLN 1 | Tìm số nghiệm nguyên không âm của x + 2y = 6.
+  xxul TLN 2 | Phương trình (x - 2)^2(x + 1) = 0 có bao nhiêu nghiệm phân biệt?
+  je78 NLC 1 | Cặp số nào là nghiệm của phương trình  10x - 9y = 0?
+  y888 NLC 2 | Nghiệm tổng quát của phương trình  x + y = 9 là
+  yoh3 DS 2 | Cho phương trình  2x - y = 5 và hệ  \begin{cases} 2x - y = 5 \\ x + y = 7 \end{cases}.
+  wjzm NLC 1 | Cho phương trình ax + by = c với a \neq 0, b \neq 0. Nghiệm của phương trình được biểu diễn bởi.
+  ofrj NLC 2 | Trên mặt phẳng toạ độ Oxy, cho các điểm A(1; 2), B(5; 6), C(2; 3), D(-1; -1). Đường thẳng 4x - 3y = -1 đi qua 
+  urjs NLC 1 | Phương trình 5x + 4y = 8 nhận cặp số nào sau đây là nghiệm?
+  42ip NLC 1 | Công thức nghiệm tổng quát của phương trình 3x + 0y = 12.
+  1mah NLC 1 | Chọn khẳng định đúng. Đường thẳng d biểu diễn tập nghiệm của phương trình 3x - y = 3 là.
+  w2y3 NLC 1 | Cho đường thẳng nào dưới đây có biểu diễn hình học là đường thẳng song song với trục hoành.
+  znv1 NLC 3 | Tìm nghiệm tất cả các nghiệm nguyên của phương trình 3x - 2y = 5.
+  m72p NLC 3 | Tìm nghiệm nguyên âm lớn nhất của phương trình -5x + 2y = 7.
+  gqt6 NLC 3 | Nghiệm nguyên âm của phương trình 3x + 4y = -10 là (x; y). Tính x.y.
+
+### [3] Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn | Nhận biết hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ (11)
+    yêu cầu: Nhận biết được hệ hai phương trình bậc nhất hai ẩn và kiểm tra được một cặp số có là nghiệm của hệ hay không.
+  0buv TLN 1 | Hệ \begin{cases} 3x - 2y = 4 \\ x + y = 8 \end{cases} có nghiệm (x; y). Tính 2x + y.
+  0wdq NLC 2 | Bằng cách tìm giao điểm của hai đường thẳng d: 4x + 2y = -5 và d': 2x - y = -1 ta tìm được nghiệm của hệ phươn
+  ounj NLC 1 | Hệ nào sau đây là hệ hai phương trình bậc nhất hai ẩn?
+  xxyf NLC 1 | Cặp số nào sau đây là nghiệm của hệ phương trình \begin{cases} 5x + 7y = -1 \\ 3x + 2y = -5 \end{cases}?
+  q0ho NLC 1 | Cặp số (3; -5) là nghiệm của hệ phương trình nào sau đây?
+  rle1 NLC 2 | Bằng cách tìm giao điểm của hai đường thẳng d: -2x + y = 3 và d': x + y = 5 ta tìm được nghiệm của hệ phương t
+  eho3 NLC 2 | Cho hệ phương trình \begin{cases} -mx + y = -2m \\ x + m^2y = 9 \end{cases}. Tìm các giá trị của tham số m để 
+  l3bt NLC 1 | Hệ phương trình \begin{cases} 2x + 3y = 3 \\ -4x - 5y = 9 \end{cases} nhận cặp số nào sau đây là nghiệm.
+  v1ab NLC 2 | Hệ phương trình \begin{cases} 5x + y = 7 \\ -x - 3y = 21 \end{cases} nhận cặp số nào sau đây là nghiệm.
+  ppu6 NLC 1 | Cặp số (-2; -3) là nghiệm của hệ phương trình nào sau đây?
+  7a38 NLC 2 | Cho hệ phương trình \begin{cases} (m + 2)x + y = 2m - 8 \\ m^2x + 2y = -3 \end{cases}. Tìm các giá trị của tha
+
+### [4] Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn | Đoán nhận số nghiệm của hệ phương trình (20)
+    yêu cầu: Dự đoán được số nghiệm của hệ hai phương trình bậc nhất hai ẩn dựa vào vị trí tương đối của hai đường thẳng hoặc tỉ số các hệ số.
+  un1e NLC 1 | Hệ phương trình bậc nhất hai ẩn \begin{cases} ax + by = c \\ a'x + b'y = c' \end{cases} (có hệ số khác 0) vô n
+  coql NLC 2 | Hệ  \begin{cases} x + 2y = 8 \\ 3x + 6y = 24 \end{cases} có
+  cyky NLC 3 | Tìm giá trị của tham số m để hệ phương trình sau vô số nghiệm: \begin{cases} 3x - y = 5 \\ m^2 - 7m + 6x - 2y 
+  7c26 NLC 2 | Có bao nhiêu giá trị của tham số m để hệ phương trình sau có vô nghiệm: \begin{cases} x + my = 3 \\ mx + 4y = 
+  5dkc NLC 2 | Tìm giá trị của tham số k để hệ phương trình sau vô nghiệm \begin{cases} 2x - 7y = -3 \\ 2x + ky = -2 \end{cas
+  vsit NLC 1 | Hệ phương trình \begin{cases} ax + by = c \\ a'x + b'y = c' \end{cases} có nghiệm duy nhất khi
+  xsd8 NLC 2 | Xác định giá trị của tham số m để hệ phương trình \begin{cases} 2x - y = 4 \\ (m - 1)x + 2y = m \end{cases} vô
+  jwhp NLC 2 | Hệ phương trình \begin{cases} 0,6x + 0,3y = 1,8 \\ 2x + y = -6 \end{cases}
+  fxy5 NLC 1 | Hệ phương trình \begin{cases} ax + by = c \\ a'x + b'y = c' \end{cases} có các hệ số khác 0 và \frac{a}{a'} = 
+  655u NLC 2 | Cho hệ (I): \begin{cases} x = y - 1 \\ y = x + 1 \end{cases} và hệ (II): \begin{cases} 2x - 3y = 5 \\ 3y + 5 =
+  nfkt NLC 2 | Xác định giá trị của tham số m để hệ phương trình \begin{cases} mx - 2y = 1 \\ 2x - my = 2m^2 \end{cases} có n
+  hzfd NLC 2 | Xác định giá trị của tham số m để hệ phương trình \begin{cases} x + y = -1 \\ mx + y = 2m \end{cases} vô nghiệ
+  wyv6 NLC 2 | Không giải hệ phương trình, dự đoán số nghiệm của hệ \begin{cases} \sqrt{2}x - 2y = 3 \\ 3\sqrt{2}x - 6y = 5 \
+  qgr7 NLC 1 | Không giải hệ phương trình, dự đoán số nghiệm của hệ \begin{cases} -x + 5y = -1 \\ 5x + y = 2 \end{cases}.
+  vtdt NLC 1 | Không giải hệ phương trình, dự đoán số nghiệm của hệ \begin{cases} -2x + y = -3 \\ 3x - 2y = 7 \end{cases}.
+  clf9 NLC 2 | Cho hệ phương trình: \begin{cases} 5mx + 5y = -\frac{15}{2} \\ -4x - my = 2m + 1 \end{cases}. Xác định các giá
+  z6ac NLC 2 | Cho hệ phương trình: \begin{cases} 3mx + y = -2m \\ -3x - my = -1 + 3m \end{cases}. Xác định các giá trị của t
+  hgjk NLC 2 | Tìm các giá trị của m để phương trình sau có vô số nghiệm: \begin{cases} x - 3y = 2  (1) \\ m^2x - 3y = 2  (2)
+  siqz NLC 2 | Xác định giá trị của tham số m để hệ phương trình \begin{cases} x - (m - 2)y = 2 \\ (m - 1)x - 2y = m - 5 \end
+  agar NLC 1 | Hệ phương trình \begin{cases} ax + by = c \\ a'x + b'y = c' \end{cases} (các hệ số a'; b'; c' khác 0) vô số ng
+
+### [5] Bài 1. Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn | Phương trình, hệ phương trình bậc nhất hai ẩn chứa tham số (11)
+    yêu cầu: Tìm được giá trị của tham số để một cặp số cho trước là nghiệm của phương trình hoặc hệ phương trình bậc nhất hai ẩn.
+  wf04 NLC 2 | Tìm số dương m để phương trình 2x - (m - 2)^2y = 5 nhận cặp số (-10; -1) làm nghiệm.
+  rkmf NLC 2 | Cho đường thẳng d có phương trình (5m - 15)x + 2my = m - 2. Tìm các giá trị của tham số m để d song song với t
+  bbqr TL 2 | Bài 28. Cho hệ phương trình \begin{cases} 2mx+y=m \\\\ x-my=-1-6m \end{cases}. Tìm các giá trị của tham số m đ
+  v3dx TL 2 | Bài 32. Cho hệ phương trình \begin{cases} 4x+ay=6 \\\\ bx-2ay=8 \end{cases}. Xác định các hệ số a và b biết rằ
+  13fc TL 2 | BÀI TẬP RÈN LUYỆN Bài 30. Cho hệ phương trình \begin{cases} -mx+y=-2m \\\\ x-m^2y=-7 \end{cases}. Tìm các giá 
+  v4zv TL 2 | Bài 36. Cho hệ phương trình \begin{cases} (3a+b)x+(4a-b+1)y=35 \\\\ bx+4ay=29 \end{cases}. Xác định các hệ số 
+  3pln NLC 2 | Tìm m để phương trình \sqrt{m - 1}x - 3y = -1 nhận cặp số (1; 1) làm nghiệm.
+  12eg NLC 2 | Cho đường thẳng d có phương trình (m - 2)x + (3m - 1)y = 6m - 2. Tìm các giá trị của tham số m để d song song 
+  hg9r NLC 2 | Cho đường thẳng d có phương trình \frac{m - 1}{2}x + (1 - 2m)y = 2. Tìm các giá trị của tham số m để d song so
+  r865 NLC 2 | Cho đường thẳng d có phương trình (2m - 4)x + (m - 1)y = m - 5. Tìm các giá trị của tham số m để d đi qua gốc 
+  3v68 NLC 2 | Cho đường thẳng d có phương trình (m - 2)x + (3m - 1)y = 6m - 2. Tìm các giá trị của tham số m để d đi qua gốc
+
+### [6] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Giải hệ phương trình bằng phương pháp đặt ẩn phụ (31)
+    yêu cầu: Giải được hệ phương trình bằng cách đặt ẩn phụ đưa về hệ hai phương trình bậc nhất hai ẩn, có đặt điều kiện và đối chiếu nghiệm.
+  h4zu TL 3 | Giải hệ các phương trình sau: \begin{cases} x^2 + 2(y^2+2y) = 10 \\\\ 3x^2 - (y^2+2y) = 9 \end{cases}
+  7kok TLN 3 | Bất phương trình 5(x + 1) \ge 5x + 9 có bao nhiêu nghiệm?
+  e71g TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{4}{x+y-1} - \frac{5}{2x-y+3} = \frac{5}{2} \\\\ \frac{3}{x+y
+  a1i7 TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{1}{x-2} + \frac{1}{2y-1} = 2 \\\\ \frac{2}{x-2} - \frac{3}{2
+  sby9 TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{x}{x+1} - \frac{y}{y-1} = 3 \\\\ \frac{x}{x+1} + \frac{3y}{y
+  0aa0 TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{3}{4x-y} - \frac{10}{2x+3y} = -1 \\\\ \frac{4}{4x-y} + \frac
+  7o2w TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{7}{x-y+2} - \frac{5}{x+y-1} = \frac{9}{2} \\\\ \frac{3}{x-y+
+  xysv TL 3 | Giải hệ các phương trình sau: \begin{cases} 7x^2 + 13y = -39 \\\\ 5x^2 - 11y = 33 \end{cases}
+  n7az TL 3 | Giải hệ các phương trình sau: \begin{cases} 2x^2 + y^2 = 10 \\\\ x^2 - 2y^2 = 5 \end{cases}
+  f6er TL 3 | Giải hệ các phương trình sau: \begin{cases} (x+3)^2 - 2y^3 = 6 \\\\ 3(x+2)^2 + 5y^3 = 7 \end{cases}
+  lkq2 TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{2x-1}{3y+1} - \frac{4x-6}{3-2y} = -1 \\\\ \frac{2-4x}{3y+1} 
+  4l50 TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{5}{x+y-3} - \frac{2}{x-y+1} = 8 \\\\ \frac{3}{x+y-3} + \frac
+  xn6w TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{2}{x+2y} + \frac{1}{y+2x} = 3 \\\\ \frac{4}{x+2y} - \frac{3}
+  7a37 TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{2x}{x+2} - \frac{3y}{y+1} = -4 \\\\ \frac{x}{x+2} + \frac{2y
+  u31e NLC 3 | Kết luận đúng về nghiệm (x; y) của hệ phương trình \begin{cases} 3\sqrt{x - 1} + 2\sqrt{y} = 13 \\ 2\sqrt{x - 
+  bp30 NLC 3 | Số nghiệm của hệ phương trình \begin{cases} \frac{1}{x - 2} + \frac{1}{2y - 1} = 2 \\ \frac{2}{x - 2} - \frac{
+  fnmm NLC 3 | Hệ phương trình \begin{cases} \frac{2x}{x + 1} + \frac{y}{y + 1} = 3 \\ \frac{x}{x + 1} + \frac{3y}{y + 1} = -
+  n691 NLC 2 | Cho hệ phương trình \begin{cases} \frac{2}{2x + y} + \frac{5}{x + 2y} = \frac{5}{6} \\ \frac{3}{2x + y} - \fra
+  6inv NLC 2 | Cho hệ phương trình \begin{cases} \frac{2}{3x - 9y} + \frac{6}{x + \sqrt{y}} = 3 \\ \frac{4}{x - 3y} - \frac{9
+  ktch NLC 3 | Biết nghiệm của hệ phương trình \begin{cases} \frac{1}{x} - \frac{1}{y} = 1 \\ \frac{3}{x} + \frac{4}{y} = 5 \
+  a5jo NLC 3 | Nghiệm của hệ phương trình \begin{cases} 2(x + y) + 3(x - y) = 4 \\ (x + y) + 2(x - y) = 5 \end{cases} là (x; 
+  ughy NLC 3 | Kết luận đúng về nghiệm (x; y) của hệ phương trình \begin{cases} \sqrt{x + 3} - 2\sqrt{y + 1} = 2 \\ 2\sqrt{x 
+  ifd0 NLC 3 | Nghiệm của hệ phương trình \begin{cases} \frac{1}{x - 2} + \frac{1}{y + 1} = 2 \\ \frac{2}{x - 2} - \frac{3}{y
+  jnsk NLC 3 | Nghiệm của hệ phương trình \begin{cases} \frac{7}{\sqrt{x - 7}} - \frac{4}{\sqrt{y + 6}} = \frac{5}{3} \\ \fra
+  h0q4 NLC 3 | Cho biết x, y là nghiệm của hệ phương trình \begin{cases} \frac{1}{x} + \frac{1}{y} = \frac{11}{30} \\ \frac{3
+  1yo0 NLC 2 | Cho hệ phương trình \begin{cases} \frac{2}{x} + y = 3 \\ \frac{1}{x} - 2y = 4 \end{cases}. Nghiệm của hệ phươn
+  vm5w TL 2 | Giải hệ các phương trình sau: \begin{cases} \frac{3}{5x} + \frac{1}{y} = \frac{1}{10} \\\\ \frac{3}{4x} + \fra
+  q5nl NLC 2 | Cho hệ phương trình \begin{cases} \frac{15x}{\sqrt{y}} - \frac{7\sqrt{x}}{y} = 9 \\ \frac{4x}{\sqrt{y}} + \fra
+  q15r TL 2 | Giải hệ các phương trình sau: \begin{cases} \frac{1}{x} + \frac{1}{y} = -1 \\\\ \frac{3}{x} - \frac{2}{y} = 7 
+  uxjv NLC 2 | Gọi x, y là nghiệm của hệ phương trình \begin{cases} 2\sqrt{x} + 3\sqrt{y - 3} = 13 \\ 3\sqrt{x} - \sqrt{y - 3
+  x56u TL 2 | Giải hệ các phương trình sau: \begin{cases} \frac{1}{x} + \frac{1}{y} = \frac{1}{12} \\\\ \frac{8}{x} + \frac{
+
+### [7] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Giải hệ phương trình bằng máy tính cầm tay (0)
+    yêu cầu: Sử dụng được máy tính cầm tay để tìm nghiệm của hệ hai phương trình bậc nhất hai ẩn và kiểm tra lại kết quả giải tay.
+
+### [8] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Giải hệ phương trình bằng phương pháp thế (18)
+    yêu cầu: Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thế.
+  pa27 TL 2 | Bài 1a. Giải hệ các phương trình sau bằng phương pháp thế: \begin{cases} x + y = 5 \\\\ 4x - 3y = -1 \end{case
+  u199 TL 2 | Bài 1b. Giải hệ các phương trình sau bằng phương pháp thế: \begin{cases} x - 2y = 2 \\\\ 2x - 4y = 4 \end{case
+  04eo NLC 2 | Hệ phương trình \begin{cases} 1,5x - 0,6y = 0,3 \\ -2x + y = -2 \end{cases}
+  hwyc NLC 2 | Cho hệ phương trình \begin{cases} x - y = 5 \\ 3x + 2y = 18 \end{cases} có nghiệm (x; y). Tính x.y là:
+  xp5b NLC 2 | Cho hệ phương trình \begin{cases} 2x - 7y = 8 \\ 10x + 3y = 21 \end{cases} có nghiệm (x; y). Tổng x + y là:
+  5geo NLC 2 | Cho hệ phương trình \begin{cases} 7x - 3y = 5 \\ 4x + y = 2 \end{cases} có nghiệm (x; y). Tổng x + y là:
+  gwhl NLC 1 | Cho hệ phương trình \begin{cases} x - 2y = 12 \\ 2x + 3y = 3 \end{cases}. Số nghiệm của hệ phương trình là:
+  ssga NLC 2 | Cho hệ phương trình \begin{cases} 3x - 2y = 12 \\ x + 2y = 3 \end{cases}. Nghiệm của hệ phương trình là:
+  qdc9 NLC 2 | Số nghiệm của hệ phương trình \begin{cases} -x - \sqrt{2}y = \sqrt{3} \\ \sqrt{2}x + 2y = -\sqrt{6} \end{cases
+  4wzv NLC 2 | Cho a, b là các số thực thỏa mãn điều kiện \begin{cases} 3a + 3b = 2 \\ 11a + 6b = 4 \end{cases}. Tính P = 19a
+  wc31 NLC 2 | Biết rằng x_0; y_0 là nghiệm của hệ phương trình \begin{cases} 5x + y = 23 \\ x - 6y = 17 \end{cases}. Tính x_
+  htj8 NLC 2 | Hệ phương trình \begin{cases} x + 3y = 8 \\ 2x - 7y = -23 \end{cases} có nghiệm là:
+  8jjk NLC 2 | Cho a, b là các số thực thỏa mãn điều kiện: \begin{cases} 2a + b = -1 \\ 3a - 4b = -40 \end{cases}. Tính P = a
+  3cqi NLC 2 | Cho x, y là nghiệm của hệ phương trình: \begin{cases} x - 5y = -16 \\ 3x + 2y = 3 \end{cases} Khẳng định nào d
+  imrh NLC 2 | Hệ phương trình \begin{cases} x\sqrt{2} - y\sqrt{3} = 1 \\ x + y\sqrt{3} = \sqrt{2} \end{cases} có bao nhiêu n
+  s8d6 NLC 2 | Biết rằng x, y là nghiệm của hệ phương trình: \begin{cases} 5x + 2y = -20 \\ x - y = -11 \end{cases}. Tính S =
+  gcin NLC 1 | Hệ phương trình \begin{cases} x - y = 5 \\ 3x + 2y = -5 \end{cases} có nghiệm là:
+  4tr4 TL 2 | Bài 1c. Giải hệ các phương trình sau bằng phương pháp thế: \begin{cases} 8x - 2y = 10 \\\\ -4x + y = 3 \end{ca
+
+### [9] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Giải hệ phương trình bằng phương pháp cộng đại số (18)
+    yêu cầu: Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp cộng đại số.
+  0ugn TLN 1 | Đường thẳng y = ax + b đi qua (0; 1) và (2; 7). Tính a + b.
+  6l03 TLN 1 | Với nghiệm của hệ \begin{cases} 2x + y = 11 \\ x - y = 1 \end{cases}, tính y.
+  sucr TLN 1 | Giải hệ \begin{cases} x + y = 9 \\ x - y = 3 \end{cases} và cho biết x.
+  ifur TL 2 | Bài 2c. Giải hệ các phương trình sau bằng phương pháp cộng đại số: \begin{cases} x + 2y = 6 \\\\ 2x + 3y = 7 \
+  gpqn TL 2 | Bài 2a. Giải hệ các phương trình sau bằng phương pháp cộng đại số: \begin{cases} -2x + 3y = 5 \\\\ 4x - 3y = -
+  gk2a TL 2 | Giải hệ phương trình: \begin{cases} 2x + 5y = 10 \\ \frac{2}{5}x + y = 1 \end{cases}
+  qtov TL 2 | Giải hệ phương trình: \begin{cases} 5x - 3y = -2 \\ 14x + 8y = 19 \end{cases}
+  y3fu TL 2 | Giải hệ phương trình: \begin{cases} 0,2x + 0,1y = 0,3 \\ 3x + y = 5 \end{cases}
+  82ns TL 2 | Giải hệ phương trình: \begin{cases} \frac{3}{2}x - y = \frac{1}{2} \\ 6x - 4y = 2 \end{cases}
+  cxxd TL 2 | Giải hệ phương trình: \begin{cases} 0,5x + 2y = -2,5 \\ 0,7x - 3y = 8,1 \end{cases}
+  wgp1 NLC 2 | Cho hệ phương trình \begin{cases} 4\sqrt{x} - 3\sqrt{y} = 4 \\ 2\sqrt{x} + \sqrt{y} = 2 \end{cases}. Nghiệm củ
+  zbsb NLC 2 | Cho hệ phương trình \begin{cases} 3x + 7y = 16 \\ 3x - 3y = -24 \end{cases}. Nghiệm của hệ phương trình là:
+  um01 NLC 2 | Cho hệ phương trình \begin{cases} 4x + 3y = 6 \\ 2x + y = 4 \end{cases}. Nghiệm của hệ phương trình là:
+  0123 NLC 3 | Cho hệ phương trình \begin{cases} x\sqrt{2} - y\sqrt{3} = 1 \\ x + y\sqrt{3} = \sqrt{2} \end{cases}. Nghiệm củ
+  jjx2 NLC 3 | Cho hệ phương trình \begin{cases} 5x\sqrt{3} + y = 2\sqrt{2} \\ x\sqrt{6} - y\sqrt{2} = 2 \end{cases}. Nghiệm 
+  lld3 NLC 2 | Cho hệ phương trình \begin{cases} 0,3\sqrt{x} + 0,5\sqrt{y} = 3 \\ 1,5\sqrt{x} - 2\sqrt{y} = 1,5 \end{cases}. 
+  bg1l NLC 2 | Cho hệ phương trình \begin{cases} 2x - 3y = 1 \\ 4x + y = 9 \end{cases}. Nghiệm của hệ phương trình là (x; y).
+  s72w NLC 1 | Cho hệ phương trình \begin{cases}5x+7y=16\\5x-3y=-24\end{cases}. Nghiệm của hệ phương trình là:
+
+### [10] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Giải hệ phương trình (chọn phương pháp phù hợp) và tính giá trị biểu thức theo nghiệm (17)
+    yêu cầu: Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thích hợp và tính được giá trị biểu thức liên quan đến nghiệm.
+  pf9q TL 2 | Bài 4a. Giải hệ các phương trình sau: \begin{cases} x + y - 5 = 0 \\\\ x - y - 1 = 0 \end{cases}
+  0pmi TL 2 | Bài 7b. Giải hệ các phương trình sau: \begin{cases} x + y = 5 \\\\ 4x + 5y = 9 \end{cases}
+  xh4f TL 2 | Bài 6a. Giải hệ các phương trình sau: \begin{cases} x - y = 3 \\\\ 3x + y = 1 \end{cases}
+  ux73 TLN 2 | Giải hệ  \begin{cases} x + y = 12 \\ 2x - y = 12 \end{cases}. Viết nghiệm dưới dạng  (x; y).
+  9x47 TL 2 | Bài 4c. Giải hệ các phương trình sau: \begin{cases} 3x + y - 1 = 0 \\\\ x - 2y - 5 = 0 \end{cases}
+  54k4 TL 2 | Bài 8a. Giải hệ các phương trình sau: \begin{cases} 3x - 4y + 2 = 0 \\\\ 5x + 2y = 14 \end{cases}
+  4xba TL 2 | Bài 8c. Giải hệ các phương trình sau: \begin{cases} 3x - y + 4 = 0 \\\\ 2x + 3y - 1 = 0 \end{cases}
+  1uh9 TL 2 | Bài 3b. Giải hệ các phương trình sau: \begin{cases} 2x + y = 5 \\\\ 5x - 2y = 8 \end{cases}
+  swmx TL 2 | Bài 3c. Giải hệ các phương trình sau: \begin{cases} 4x + 3y = 11 \\\\ 4x - y = 7 \end{cases}
+  x8ck TL 2 | Bài 5a. Giải hệ các phương trình sau: \begin{cases} 2x - y = 4 \\\\ x + 3y = -5 \end{cases}
+  8fjm TL 2 | Bài 5c. Giải hệ các phương trình sau: \begin{cases} 2x + 3y = 8 \\\\ -x + y = 1 \end{cases}
+  lj7p TL 2 | Bài 6b. Giải hệ các phương trình sau: \begin{cases} 2x - 3y = 1 \\\\ x + 2y = 4 \end{cases}
+  v6fm TL 2 | Bài 6c. Giải hệ các phương trình sau: \begin{cases} 2x - y = 4 \\\\ x + 2y = 7 \end{cases}
+  e94x TL 2 | Bài 7a. Giải hệ các phương trình sau: \begin{cases} x - 2y = 5 \\\\ 2x - y = 7 \end{cases}
+  gm22 TL 2 | Bài 7c. Giải hệ các phương trình sau: \begin{cases} x + 2y = 4 \\\\ x - 2y = -4 \end{cases}
+  euy7 TL 2 | Bài 4b. Giải hệ các phương trình sau: \begin{cases} 3x + 2y - 10 = 0 \\\\ 2x - 3y + 2 = 0 \end{cases}
+  za14 TL 2 | Bài 8b. Giải hệ các phương trình sau: \begin{cases} 3x + 2y - 8 = 0 \\\\ 3x - 4y - 2 = 0 \end{cases}
+
+### [11] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Giải hệ phương trình bằng cách đưa về hệ bậc nhất hai ẩn (41)
+    yêu cầu: Biến đổi được hệ phương trình có ngoặc, có mẫu số về hệ hai phương trình bậc nhất hai ẩn rồi giải.
+  h4xg TLN 1 | Có bao nhiêu nghiệm của hệ \begin{cases} 2x - y = 1 \\ 4x - 2y = 3 \end{cases}?
+  gtjm TLN 2 | Hai vòi có tổng năng suất \frac{5}{6} bể/giờ; vòi I hơn vòi II \frac{1}{6} bể/giờ. Vòi I chảy riêng đầy bể tro
+  ith4 TL 2 | Giải hệ các phương trình sau: \begin{cases} 2(x+y) - 5y = 3 \\\\ 4(x-1) - 2(y+1) = 4 \end{cases}
+  md67 TL 2 | Giải hệ các phương trình sau: \begin{cases} 3(y-5) + 2(x-3) = 0 \\\\ 7(x-4) + 3(x+y-1) - 14 = 0 \end{cases}
+  1mfl TLN 1 | Hệ \begin{cases} 3x + y = 5 \\ 6x + 2y = 10 \end{cases} có bao nhiêu nghiệm?
+  n9ks TLN 1 | Nghiệm của hệ \begin{cases} x + 2y = 8 \\ 3x - y = 3 \end{cases} là (x; y). Tính xy.
+  2bvi TLN 1 | Cho hệ \begin{cases} 2x + 3y = 13 \\ 4x - y = 5 \end{cases}. Tính x + y.
+  rtij TL 2 | Giải hệ các phương trình sau: \begin{cases} \frac{x}{2} - \frac{y}{3} = 1 \\\\ 5x - 8y = 3 \end{cases}
+  ym8a TL 2 | Giải hệ các phương trình sau: \begin{cases} (x+1)(y-1) = xy - 1 \\\\ (x-3)(y-3) = xy - 3 \end{cases}
+  njuo TL 3 | Giải hệ các phương trình sau: \begin{cases} (x+y)(x-1) = (x-y)(x+1) + 2(xy+1) \\\\ (y-x)(y+1) = (y+x)(y-2) - 2
+  23z3 TL 3 | Giải hệ các phương trình sau: \begin{cases} (x-3)(2y+5) = (2x+7)(y-1) \\\\ (4x+1)(3y-6) = (6x-1)(2y+3) \end{ca
+  lh9q TL 3 | Giải hệ các phương trình sau: \begin{cases} (x-2)(6y+1) = (2x-3)(3y+1) \\\\ (2x+1)(12y-9) = (4x-1)(6y-5) \end{
+  ye41 TL 2 | Giải hệ các phương trình sau: \begin{cases} \frac{3x}{2} + 2y = 0 \\\\ \frac{x+y}{2} - \frac{2y}{3} = \frac{5}
+  7008 TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{3x+2}{3} + \frac{y-1}{2} = 1 \\\\ \frac{4x+y}{4} + \frac{y+1
+  82lo TL 2 | Giải hệ các phương trình sau: \begin{cases} \frac{1}{2}x + \frac{2}{3}y = 7 \\\\ \frac{5}{3}x - \frac{3}{2}y =
+  2stu TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{2x+3}{3y-2} = 1 \\\\ 3(3y+2) - 4(x+2y) = 0 \end{cases}
+  wnm9 TL 2 | Giải hệ các phương trình sau: \begin{cases} x + y = \frac{4x-3}{5} \\\\ x + 3y = \frac{15-9y}{14} \end{cases}
+  m03s TL 2 | Giải hệ các phương trình sau: \begin{cases} (x-1)(y+3) = xy + 27 \\\\ (x-2)(y+1) = xy + 8 \end{cases}
+  eqf3 TL 3 | Giải hệ các phương trình sau: \begin{cases} \frac{2x-3y}{4} - \frac{x+y-1}{5} = 2x - y - 1 \\\\ \frac{4x+y-2}{
+  x1av TL 3 | Giải hệ phương trình: \begin{cases} 2(x - 2) + 3(1 + y) = -2 \\ 3(x - 2) - 2(1 + y) = -3 \end{cases}
+  quyh TL 3 | Giải hệ các phương trình sau: \begin{cases} (x+1)(y-1) = (x-2)(y+1) - 1 \\\\ 2(x-2)y - x = 2xy - 3 \end{cases}
+  ywju NLC 3 | Số nghiệm của hệ phương trình \begin{cases} (x + 1)(y - 1) = xy - 1 \\ (x - 3)(y - 3) = xy - 3 \end{cases} là:
+  1ulp NLC 3 | Cho hệ phương trình \begin{cases} (x + 1)(y - 3) = (x - 1)(y + 3) \\ (x - 3)(y + 1) = (x + 1)(y - 3) \end{case
+  8c94 NLC 3 | Nghiệm của hệ phương trình \begin{cases} 3(y - 5) + 2(x - 3) = 0 \\ 7(x - 4) + 3(x + y - 1) - 14 = 0 \end{case
+  pm4g NLC 2 | Hệ phương trình \begin{cases} (x - 3)(2y + 5) = (2x + 7)(y - 1) \\ (4x + 1)(3y - 6) = (6x - 1)(2y + 3) \end{ca
+  dazh NLC 3 | Số nghiệm của hệ phương trình \begin{cases} 5(x + 2y) - 3(x - y) = 99 \\ x - 3y = 7x - 4y - 17 \end{cases} là:
+  z5lp NLC 3 | Số nghiệm của phương trình \begin{cases} 2(x + y) - 3(x - y) = 4 \\ x + 4y = 2x - y + 5 \end{cases} là:
+  nlw2 NLC 2 | Kết luận nào đúng khi nói về nghiệm (x; y) của hệ phương trình \begin{cases} \frac{x + y}{5} = \frac{x - y}{3}
+  69zp NLC 2 | Kết luận nào đúng khi nói về nghiệm của hệ phương trình \begin{cases} \frac{x + y}{2} = \frac{2x - 3}{2} \\ \f
+  viwq NLC 4 | Hệ phương trình sau có mấy nghiệm \begin{cases} (x - 5)^2 + |y + 1|^2 = 0  (1) \\ \sqrt{2x + y + 7} + \sqrt{y 
+  kq0j NLC 4 | Hệ phương trình sau có mấy nghiệm: \begin{cases} \sqrt{x^2 + y^2 - 6x + 4y + 13} + \sqrt{y + 2} = 0  (1) \\ x^
+  nyx5 NLC 3 | Hệ phương trình nào dưới đây có nghiệm x = 3, y = -2
+  6sbg NLC 3 | Hệ phương trình nào dưới đây là hệ phương trình vô nghiệm.
+  4fi7 NLC 4 | Có bao nhiêu giá trị k để hệ phương trình sau có nghiệm: \begin{cases} (x - 3)(y + k^2 - 16) = 0  (1) \\ (x - 
+  2c9s NLC 2 | Tìm a, b biết đường thẳng d: y = ax + b đi qua điểm A(-4; -2), B(2; 1).
+  zmj4 NLC 2 | Tìm a, b để đường thẳng y = ax + b đi qua hai điểm M(3; -5), N(1; 2)
+  akko TL 2 | Giải hệ các phương trình sau: \begin{cases} \frac{x}{y} = \frac{2}{3} \\\\ x + y - 1 = 0 \end{cases}
+  zngf TL 2 | Giải hệ các phương trình sau: \begin{cases} 5(x+2y) - 3(x-y) = 99 \\\\ x - 3y = 7x - 4y - 17 \end{cases}
+  qblh TL 2 | Giải hệ các phương trình sau: \begin{cases} \frac{x+y}{2} = \frac{x-y}{4} \\\\ \frac{x}{3} = \frac{y}{5} + 1 \
+  j047 NLC 3 | Số nghiệm của hệ phương trình \begin{cases}(x+1)(y-1)=xy-1\\(x-3)(y-2)=xy-3\end{cases} là:
+  m5tt NLC 3 | Gọi x;y là nghiệm của hệ phương trình \begin{cases}2\sqrt{x}+3\sqrt{y-3}=18 \\ 3\sqrt{x}-\sqrt{y-3}=5\end{case
+
+### [12] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Hệ phương trình chứa tham số (46)
+    yêu cầu: Tìm được giá trị của tham số để hệ hai phương trình bậc nhất hai ẩn có nghiệm duy nhất, vô nghiệm, vô số nghiệm hoặc có nghiệm thoả mãn điều
+  e026 TLN 1 | Tìm m để (2; -1) là nghiệm của \begin{cases} mx + y = 5 \\ x - y = 3 \end{cases}.
+  i6us NLC 3 | Cho hệ phương trình \begin{cases} 2x + by = -1 \\ bx - 2ay = 1 \end{cases}. Biết rằng hệ phương trình có nghiệ
+  ywrs NLC 3 | Cho hệ phương trình \begin{cases} 2x + by = -4 \\ bx - ay = -5 \end{cases}. Biết rằng hệ phương trình có nghiệ
+  z33s NLC 3 | Cho hai đường thẳng: d_1: mx - 2(3n + 2)y = 6 và d_2: (3m - 1)x + 2ny = 56. Tìm tích m.n để hai đường thẳng cắ
+  uou2 NLC 3 | Cho hai đường thẳng: d_1: mx - 2(3n + 2)y = 18 và d_2: (3m - 1)x + 2ny = -37. Tìm các giá trị m, n để hai đườn
+  8fr1 NLC 4 | Tìm các giá trị của m và n sao cho đa thức P(x) = mx^3 + (m - 2)x^2 - (3n - 5)x - 4n đồng thời chia hết cho x 
+  kg1v NLC 4 | Tìm các giá trị của m và n sao cho đa thức Q(x) = (3m - 1)x^3 - (2n - 5)x^2 - nx - 9m - 72 đồng thời chia hết 
+  ckkr NLC 3 | Tìm a, b để hệ phương trình \begin{cases} 2ax + by = -1 \\ bx - ay = 5 \end{cases} có nghiệm là (3; -4).
+  33ps NLC 3 | Tìm a, b để hệ phương trình \begin{cases} 4ax + 2by = -3 \\ 3bx + ay = 8 \end{cases} có nghiệm là (2; -3)
+  9vsl NLC 4 | Tìm các giá trị của m để nghiệm của hệ phương trình: \begin{cases} \frac{x + 1}{4} - \frac{y}{2} = x + y + 1 \
+  cdf9 NLC 4 | Tìm các giá trị của m để nghiệm của hệ phương trình: \begin{cases} \frac{2x + 1}{3} - \frac{y + 1}{4} = \frac{
+  0wmd NLC 2 | Biết hệ phương trình \begin{cases} 2x + by = a \\ bx + ay = 5 \end{cases} có nghiệm x = 1; y = 3. Tính 10(a + 
+  frxw NLC 3 | Cho hệ phương trình \begin{cases} x + 2y = m + 3 \\ 2x - 3y = m \end{cases} (m là tham số). Tìm m để hệ có ngh
+  d9pu NLC 3 | Cho hệ phương trình \begin{cases} 2x + y = 5m - 1 \\ x - 2y = 2 \end{cases}. Có bao nhiêu giá trị của m để hệ 
+  2yy8 NLC 3 | Cho hệ phương trình \begin{cases} 2x + 3y = \frac{7}{2} - m \\ 4x - y = 5m \end{cases}. Có bao nhiêu giá trị c
+  ookj NLC 2 | Cho hệ phương trình \begin{cases} (m - 1)x + y = 2 \\ mx + y = m + 1 \end{cases} (m là tham số). Nghiệm của hệ
+  593b NLC 2 | Với m = 1 thì hệ phương trình \begin{cases} x - y = m + 1 \\ x + y = 2m + 2 \end{cases} có cặp nghiệm (x; y) l
+  3rx4 NLC 3 | Cho hệ phương trình \begin{cases} (m - 1)x + y = 2 \\ mx + y = m + 1 \end{cases} (m là tham số). Kết luận nào 
+  4eqq NLC 3 | Biết rằng hệ phương trình \begin{cases} (m - 2)x - 3y = -5 \\ x + my = 3 \end{cases} có nghiệm duy nhất với mọ
+  e0ho NLC 4 | Cho hệ phương trình \begin{cases} 3x + y = 2m + 9 \\ x + y = 5 \end{cases} có nghiệm (x; y). Tìm m để biểu thứ
+  1273 NLC 3 | Cho hệ phương trình \begin{cases} x + my = m + 1 \\ mx + y = 2m \end{cases} (m là tham số). Tìm m để hệ phương
+  m755 NLC 3 | Với giá trị nào của m thì hệ phương trình \begin{cases} mx + y = 2m \\ x + my = m + 1 \end{cases} có vô số ngh
+  v8gx NLC 3 | Cho hệ phương trình \begin{cases} (a + 1)x - y = a + 1  (1) \\ x + (a - 1)y = 2  (2) \end{cases} (a là tham số
+  hht7 NLC 3 | Cho hệ phương trình \begin{cases} mx - y = m^2 \\ 2x + my = -m^3 + 2m + 2 \end{cases}. Trong trường hợp hệ có 
+  79eg NLC 4 | Tìm giá trị của m để hệ phương trình \begin{cases} x + y = 2 \\ mx - y = m \end{cases} có nghiệm nguyên duy nh
+  0roc NLC 3 | Cho hệ phương trình \begin{cases} x + 2y = 2 \\ mx - y = m \end{cases}. Trong trường hợp hệ phương trình có ng
+  4j16 NLC 4 | Cho hệ phương trình \begin{cases} mx - y = 2m \\ 4x - my = m + 6 \end{cases}. Trong trường hợp hệ phương trình
+  wjr8 NLC 4 | Cho hệ phương trình \begin{cases} x + my = 1 \\ mx - y = -m \end{cases}. Hệ thức liên hệ giữa x và y không phụ
+  hvim NLC 4 | Cho hệ phương trình \begin{cases} mx - y = 2m \\ 4x - my = m + 6 \end{cases}. Trong trường hợp hệ phương trình
+  lon4 NLC 3 | Cho hệ phương trình \begin{cases} x + (m + 1)y = 1 \\ 4x - y = -2 \end{cases}. Tìm m để hệ phương trình có ngh
+  0xbb NLC 3 | Có bao nhiêu giá trị của tham số k để x = -1, y = 2 là một nghiệm của hệ phương trình: \begin{cases} x - 2y = 
+  q445 NLC 3 | Tìm giá trị của tham số k để hai hệ phương trình sau có cùng giá trị nghiệm: I \begin{cases} 2x - 3y = 9 \\ x 
+  xo6w NLC 3 | Tìm giá trị của tham số m để hai hệ phương trình sau có cùng giá trị nghiệm (I) \begin{cases} x - y = 7 \\ 4x 
+  5f8e NLC 2 | Tìm các giá trị tham số a để hệ phương trình \begin{cases} ax + y = 3 \\ 4x + ay = -1 \end{cases} có một nghiệ
+  xjan NLC 2 | Tìm tất cả các giá trị của tham số k để hệ phương trình: \begin{cases} kx - 2y = 1 \\ 3x + y = 3 \end{cases} c
+  bmyh NLC 3 | Trên mặt phẳng Oxy, cho điểm M(x, y) với x, y thỏa mãn điều kiện: \begin{cases} x + y = 3 - m \\ x - y = 3m - 
+  fekj NLC 3 | Trên mặt phẳng Oxy, cho điểm M(x, y) với x, y thỏa mãn điều kiện: \begin{cases} x + y = 3k - 1 \\ 3x - y = k +
+  0na6 NLC 2 | Cho hệ phương trình \begin{cases} 2x + ay = -4 \\ ax - 3y = 5 \end{cases}. Hệ phương trình có nghiệm duy nhất 
+  kf4m NLC 2 | Tìm giá trị của a, b để x = 1, y = 4 là nghiệm của hệ phương trình \begin{cases} 2x + a - 3y = -2 \\ b - 2x + 
+  ymwj NLC 2 | Tìm tất cả giá trị của tham số k để hệ phương trình sau có nghiệm duy nhất: {{\begin{cases} 8x - k^2y = 12 \\ 
+  4dsv NLC 3 | Tìm các giá trị của m để nghiệm của hệ phương trình \begin{cases}\dfrac{x+1}{4}-\dfrac{y}{2}=x+y+1\\\dfrac{x-2
+  2zvt NLC 2 | Với m=1 thì hệ phương trình \begin{cases}x-y=m+1\\x+y=2m+3\end{cases} có cặp nghiệm (x;y) là:
+  j3x2 NLC 3 | Tìm a,b để hệ phương trình \begin{cases}4ax+2by=-3\\3bx+ay=0\end{cases} có nghiệm là (2;-3).
+  j9fb NLC 3 | Tìm các giá trị của m để nghiệm của hệ phương trình \begin{cases}\dfrac{2x+1}{3}-\dfrac{y+1}{4}=\dfrac{4x-2y+2
+  1opw NLC 2 | Cho hệ phương trình \begin{cases}2x+ay=-4\\ax-3y=6\end{cases}. Hệ phương trình có nghiệm duy nhất khi:
+  cd70 NLC 3 | Có bao nhiêu giá trị k để hệ phương trình sau có nghiệm duy nhất: \begin{cases}(x-3)(y+k^2-16)=0\\ (x-k)(y-7)=
+
+### [13] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Tìm hệ số của hàm số, đa thức bằng cách giải hệ phương trình (7)
+    yêu cầu: Lập và giải được hệ hai phương trình bậc nhất hai ẩn để tìm hệ số của hàm số hoặc đa thức khi biết đồ thị đi qua các điểm hoặc các giá trị c
+  kjdc TL 2 | Bài 37. Xác định các hệ số a, b của hàm số y=ax+b để: a) Đồ thị của nó đi qua hai điểm A(1;3), B(2;4) b) Đồ th
+  p7qh TL 2 | Xác định a và b, biết đồ thị hàm số y=ax+b đi qua hai điểm A(1;2) và B(-2;5).
+  32f3 TL 2 | Xác định các hệ số a và b, biết rằng hệ phương trình sau \begin{cases} (3a-2)x+2(2b+1)y=30 \\\\ (a+2)x-2(3b-1)
+  c3gg TL 3 | Cho hệ phương trình \begin{cases} \frac{x}{a}-y=\frac{2}{b} \\\\ x-\frac{y}{b}=-\frac{1}{a} \end{cases} Tìm a 
+  keqz TL 2 | Cho hệ phương trình \begin{cases} x+by=-2 \\\\ bx-ay=-3 \end{cases}. Xác định các hệ số a và b biết rằng hệ ph
+  ebfi TL 2 | Cho hệ phương trình \begin{cases} ax-2y=b \\\\ 2x-by=-2a \end{cases}. Tìm a và b biết hệ phương trình đã cho c
+  cie6 TL 2 | Xác định các hệ số a,b của hàm số y=ax+b để: Đồ thị của nó đi qua hai điểm A(1;3),B(2;4)
+
+### [14] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Ứng dụng hệ phương trình để cân bằng phương trình hoá học (5)
+    yêu cầu: Vận dụng được hệ hai phương trình bậc nhất hai ẩn để tìm các hệ số cân bằng của phương trình phản ứng hoá học.
+  1k9h TL 2 | Bài 39. Cân bằng phương trình ứng hóa học sau bằng phương pháp đại số: a) FeO + \text{O}_2 arrow \text{Fe}_3\t
+  nfr1 TL 1 | Tìm các hệ số x,y trong phản ứng hóa học đã được cân bằng sau: x Fe + y\text{O}_2 arrow \text{Fe}_3\text{O}_4
+  f2jb TL 2 | Cân bằng phương trình hóa học sau bằng phương pháp đại số: NO + \text{O}_2 arrow \text{N}_2\text{O}_5
+  t04a TL 2 | Cân bằng phương trình hóa học sau bằng phương pháp đại số: FeO + \text{O}_2 arrow \text{Fe}_3\text{O}_4
+  gfah TL 2 | Cân bằng phản ứng  x Al + y\text{O}_2 arrow 2\text{Al}_2\text{O}_3 bằng cách tìm hai hệ số nguyên dương nhỏ nh
+
+### [15] Bài 2. Giải hệ hai phương trình bậc nhất hai ẩn | Ứng dụng thực tế của hệ hai phương trình bậc nhất hai ẩn (6)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn đơn giản (mua bán, giá cả, số lượng) bằng cách lập và giải hệ hai phương trình bậc nhất hai ẩn.
+  mzrs TLN 2 | Mua 2 bút và 3 vở hết 51 nghìn; mua 4 bút và 1 vở hết 37 nghìn. Giá một quyển vở là bao nhiêu?
+  pp2j TLN 3 | Với x > 0, giá trị nhỏ nhất của x + \frac{4}{x} là bao nhiêu?
+  k96z TLN 1 | Hai lớp có 90 học sinh; lớp 9A hơn lớp 9B 8 học sinh. Sĩ số lớp 9A là bao nhiêu?
+  v1mj TLN 2 | Pha 30 lít dung dịch 32% từ loại 20% và 50%. Cần bao nhiêu lít loại 50%?
+  t1e7 TLN 1 | Có 50 vé loại 40 nghìn và 70 nghìn, thu 2 600 nghìn. Có bao nhiêu vé loại 70 nghìn?
+  jo4b TLN 2 | Có 42 con gà và chó, tổng 116 chân. Tính số chó.
+
+### [16] Bài 3. Giải bài toán bằng cách lập hệ phương trình | Toán thực tế khác (mua bán, sản xuất, phân chia) (12)
+    yêu cầu: Giải quyết được các tình huống thực tiễn khác (mua bán, sản xuất, phân chia, xếp chỗ) bằng cách lập hệ hai phương trình bậc nhất hai ẩn.
+  a0d4 TLN 1 | Tổng tuổi cha và con là 54; 6 năm trước tuổi cha gấp 6 lần tuổi con. Tính tuổi con hiện nay.
+  uftz TL 2 | Lớp 9A giao cho An đi mua bánh và kẹo để tổ chức liên hoan. An mua tất cả 15 hộp bánh và 5 túi kẹo với số tiền
+  ahdw TL 2 | Một tổ may gồm 47 công nhân cả nam và nữ được giao nhiệm vụ may 350 chiếc áo cho cổ động viên để cổ vũ đội tuy
+  4dv7 TL 2 | Một đoàn khách du lịch gồm 40 người dự định tham quan đỉnh núi Bà Đen, nóc nhà Đông Nam Bộ bằng cáp treo khứ h
+  q4j1 TL 2 | Trong một phòng học có một số bàn, nếu xếp mỗi bàn 3 học sinh thì 6 học sinh không có chỗ ngồi, nếu xếp mỗi bà
+  5yde TL 2 | Ban đầu, khán đài của nhà thi đấu các nội dung thuộc môn Bơi tại SEA Games chứa 1188 ghế được xếp thành các dã
+  y0rn TL 1 | Bạn A dự định mua 2 kg quả xoài và 2 kg quả vải hết 100000 đồng. Thực tế, A mua 3 kg quả xoài và 1 kg quả vải 
+  tqk3 TL 3 | Theo các chuyên gia về sức khỏe, người trưởng thành cần đi bộ từ 5000 bước mỗi ngày sẽ rất tốt cho sức khỏe. Đ
+  jx14 TL 3 | Đại hội Thể thao Đông Nam Á – SEA Games (South East Asian Games) là sự kiện thể thao được tổ chức 2 năm 1 lần 
+  k663 TL 3 | Trên cánh đồng có diện tích 160 ha của một đơn vị sản xuất, người ta dành 60 ha để cấy thí điểm giống lúa mới,
+  2aaa NLC 3 | Trong tháng đầu hai tổ sản xuất được 800 sản phẩm. Sang tháng thứ 2, tổ 1 sản xuất vượt mức 12\%, tổ 2 giảm 10
+  h645 NLC 3 | Trên một cánh đồng cấy 60 ha lúa giống mới và 40 ha lúa giống cũ, thu hoạch được tất cả 460 tấn thóc. Hỏi năng
+
+### [17] Bài 3. Giải bài toán bằng cách lập hệ phương trình | Toán về quan hệ giữa các số, chữ số (21)
+    yêu cầu: Giải được bài toán tìm hai số hoặc số có hai chữ số khi biết các quan hệ giữa chúng bằng cách lập hệ phương trình.
+  kb37 TL 2 | Cho một số có hai chữ số. Nếu đổi chỗ hai chữ số của nó thì được số mới lớn hơn số đã cho là 63. Tổng của số đ
+  1n5s TL 2 | Tìm hai số biết rằng 4 lần số thứ hai cộng với 5 lần số thứ nhất bằng 18040, và 3 lần số thứ nhất hơn 2 lần số
+  7wi2 TL 2 | Tìm hai số tự nhiên liên tiếp có tổng các bình phương của nó bằng 85.
+  gn5d NLC 2 | Nam có 360 viên bi trong hai hộp. Nếu Nam chuyển 30 viên từ hộp thứ hai sang hộp thứ nhất thì số viên bi ở hộp
+  gw9q TLN 2 | Số có hai chữ số có tổng chữ số 13, hàng chục hơn hàng đơn vị 5. Tìm số đó.
+  0289 TLN 1 | Hai số có tổng 72 và hiệu 18. Tìm số lớn.
+  sza6 TL 3 | Tìm một số có hai chữ số. Biết rằng nếu viết thêm số 1 vào bên phải số này thì được một số có ba chữ số hơn số
+  ocph TL 3 | Tìm một số có hai chữ số, biết rằng tổng hai chữ số của nó nhỏ hơn số đó 6 lần và thêm 25 vào tích của hai chữ
+  tbj0 TL 2 | Tổng các chữ số của một số có hai chữ số là 9. Nếu thêm vào số đó 63 đơn vị thì số thu được cũng viết bằng hai
+  6lse TL 2 | Tìm một số tự nhiên có hai chữ số, tổng các chữ số của nó bằng 11, nếu đổi chỗ hai chữ số hàng chục và hàng đơ
+  vdtj TL 3 | Tìm hai số tự nhiên hơn kém nhau 12 đơn vị biết tích của chúng bằng 20 lần số lớn cộng với 6 lần số bé.
+  ktob TL 2 | Tìm một số tự nhiên có hai chữ số, biết rằng số đó gấp 4 lần tổng các chữ số của nó. Nếu viết hai chữ số của n
+  pehv TL 3 | Đem một số có hai chữ số nhân với tổng các chữ số của nó thì được 405. Nếu lấy số được viết bởi hai chữ số ấy 
+  iinb TL 2 | Tìm một số tự nhiên có ba chữ số, tổng các chữ số bằng 17, chữ số hàng chục là 4, nếu đổi chỗ các chữ số hàng 
+  61t5 TL 3 | Tìm tất cả các số tự nhiên có hai chữ số, biết rằng chữ số hàng đơn vị nhỏ hơn chữ số hàng chục là 2 và tích c
+  c1g1 TL 3 | Tìm số tự nhiên n có hai chữ số, biết rằng nếu viết thêm chữ số 3 vào giữa hai chữ số của số n thì được một số
+  gr9q NLC 2 | Hai giá sách có 450 cuốn. Nếu chuyển 50 cuốn từ giá thứ nhất sang giá thứ hai thì số sách trên giá thứ hai bằn
+  dd64 TL 2 | Tìm hai số tự nhiên, biết rằng tổng của chúng bằng 2021 và hiệu của số lớn và số bé bằng 15.
+  qdyn NLC 3 | Cho một số có hai chữ số. Chữ số hàng chục lớn hơn chữ số hàng đơn vị là 5. Nếu đổi chỗ hai chữ số cho nhau ta
+  d783 TL 2 | Một xưởng sản xuất bán hai loại áo: áo sơ mi và áo thun. Biết rằng tổng số tiền thu được khi bán 3 chiếc áo sơ
+  55e7 TL 2 | Hai vòi nước cùng chảy vào hai bể chứa riêng biệt. Nếu vòi thứ nhất chảy trong 4 giờ và vòi thứ hai chảy trong
+
+### [18] Bài 3. Giải bài toán bằng cách lập hệ phương trình | Toán chuyển động trên bộ (25)
+    yêu cầu: Giải được bài toán chuyển động (gặp nhau, đuổi nhau, thay đổi vận tốc) bằng cách lập hệ hai phương trình bậc nhất hai ẩn.
+  nmjs TL 3 | Trên quãng đường AB dài 210 km (đề gốc ghi 210 m nhưng dựa trên dữ kiện thời gian là một sự nhầm lẫn đơn vị, t
+  58w4 TL 3 | Hằng ngày, Nam đạp xe đi học với vận tốc không đổi trên quãng đường dài 10 km. Nam tính toán và thấy rằng nếu 
+  1u0t TL 2 | Một ô tô và một xe máy khởi hành cùng một lúc từ hai tỉnh cách nhau 200 km, đi ngược chiều và gặp nhau sau 2 g
+  hvlp TL 2 | Một xe máy đi từ A đến B trong thời gian dự định. Nếu vận tốc tăng 20 km/h thì đến sớm 1 giờ, nếu vận tốc giảm
+  9k9x TL 2 | Một ô tô và một xe máy ở hai địa điểm A và B cách nhau 180 km, khởi hành cùng một lúc đi ngược chiều nhau và g
+  x5si TL 2 | Một ô tô đi từ A đến B với vận tốc dự định trong một thời gian dự định. Nếu ô tô tăng vận tốc thêm 3 km/h thì 
+  04ai TL 2 | Một ca nô chuyển động từ bến A đến bến B trên một hồ nước với vận tốc 30 km/h. Đi được 30 phút thì gặp sương m
+  4qhc TL 2 | Một người giao hàng đi xe máy từ kho A đến cửa hàng B với vận tốc dự định 40 km/h. Đi được 15 phút thì xe bị s
+  0gol TL 2 | Một ca nô chạy xuôi dòng từ bến A đến bến B với vận tốc 30 km/h, sau đó lập tức quay ngược dòng từ B về A với 
+  cgi1 TL 2 | Một đoàn tàu hoả chạy từ ga A đến ga B với vận tốc 60 km/h. Khi từ ga B quay trở về ga A, do thời tiết xấu, tà
+  8p17 TL 2 | Hai ca nô khởi hành cùng một lúc từ hai bến A và B cách nhau 180 km, đi ngược chiều nhau và gặp nhau sau 3 giờ
+  incj TL 2 | Hai đoàn tàu (tàu hàng và tàu khách) khởi hành cùng một lúc từ hai ga A và B cách nhau 300 km, đi ngược chiều 
+  o23z TL 2 | Một ô tô đi quãng đường AB với vận tốc 50 km/h rồi đi tiếp quãng đường BC với vận tốc 45 km/h. Biết quãng đườn
+  lfvv TL 3 | Quãng đường AB gồm một đoạn lên dốc dài 5 km và một đoạn xuống dốc dài 10 km. Một người đi xe đạp từ A đến B h
+  5v40 TL 3 | Một ô tô và một mô tô cùng đi từ A đến B dài 120 km. Xe ô tô đến sớm hơn xe mô tô là 1 giờ. Lúc trở về xe mô t
+  5m5t TL 3 | Hai vật chuyển động đều trên một đường tròn đường kính 20 cm, xuất phát cùng một lúc, từ cùng một điểm. Nếu ch
+  os7a NLC 3 | Một khách du lịch đi trên ô tô 4 giờ, sau đó đi tiếp bằng tàu hỏa trong 7 giờ được quãng đường dài 640 km. Hỏi
+  pl55 NLC 4 | Một ô tô dự định đi từ A đến B trong một thời gian nhất định. Nếu xe chạy mỗi giờ nhanh hơn 10 km thì đến nơi 
+  rztq NLC 3 | Hai người đi xe đạp xuất phát đồng thời từ hai thành phố cách nhau 36 km. Họ đi ngược chiều và gặp nhau sau 2 
+  aizn NLC 3 | Hai người đi xe máy xuất phát đồng thời từ hai thành phố cách nhau 225 km. Họ đi ngược chiều và gặp nhau sau 3
+  zxtq NLC 2 | Hai người đi xe đạp xuất phát đồng thời từ hai thành phố cách nhau 38km. Họ đi ngược chiều và gặp nhau sau 2 g
+  1ut4 TL 2 | Một người đi xe đạp trên đoạn đường bằng với vận tốc 20 km/h rồi tiếp tục đi trên đoạn đường dốc với vận tốc 1
+  a9lz TL 2 | Một đoàn tàu hỏa di chuyển từ ga A đến ga B với vận tốc dự định 60 km/h. Đi được 45 phút thì gặp đoạn đường sắ
+  6bch TL 2 | Một nhân viên giao hàng đi xe máy từ kho hàng A đến cửa hàng B với vận tốc 45 km/h. Sau khi giao hàng xong, ng
+  lnuc TL 2 | Một ca nô di chuyển trên một tuyến đường sông gồm hai chặng AB và BC. Trên chặng AB, ca nô chạy với vận tốc 30
+
+### [19] Bài 3. Giải bài toán bằng cách lập hệ phương trình | Toán chuyển động của ca nô, thuyền trên dòng nước (10)
+    yêu cầu: Giải được bài toán chuyển động xuôi dòng, ngược dòng bằng cách lập hệ hai phương trình bậc nhất hai ẩn với vận tốc dòng nước.
+  fpwd TL 2 | Một ca nô chạy xuôi dòng một khúc sông dài 72 (km), rồi chạy ngược dòng khúc sông ấy 64 (km) hết tất cả 7 h. N
+  tikp TL 3 | Một chiếc ca nô chạy xuôi dòng và ngược dòng trên một khúc sông dài 120 km hết tất cả 7 giờ. Biết thời gian ca
+  sf1b TL 2 | Hai ca nô cùng khởi hành từ A đến B cách nhau 85 km và đi ngược chiều nhau. Sau 1 giờ 40 phút thì gặp nhau. Tí
+  1cbj TL 2 | Một ca nô chạy trên song trong 8 giờ, xuôi dòng 81 km và ngược dòng 105 km. Một lần khác cũng chạy trên khúc s
+  s02r TL 2 | Một tàu tuần tra chạy ngược dòng 6 km . Sau đó chạy xuôi dòng 48 km trên cùng một dòng song có vận tốc của dòn
+  shfo TL 2 | Một chiếc thuyền xuôi dòng và ngược dòng trên khúc sông dài 40 km hết 4 giờ 30 phút. Biết thời gian thuyền xuô
+  psi5 NLC 4 | Một cano chạy trên sông trong 7 giờ, xuôi dòng 108 km và ngược dòng 63 km. Một lần khác cũng trong 7 giờ cano 
+  4d63 NLC 4 | Một chiếc cano đi xuôi dòng theo một khúc sông trong 3 giờ và đi ngược dòng trong 4 giờ, được 380 km. Một lần 
+  l4z7 TL 2 | Một ca nô xuôi dòng 78 km và ngược dòng 44 km mất 5 giờ với vận tốc dự định. nếu ca nô xuôi 13 km và ngược don
+  b3b0 TL 3 | Một máy bay thực hiện chặng bay dài 700 km cả lượt đi (thuận gió) và lượt về (ngược gió) hết tổng cộng 8 giờ. 
+
+### [20] Bài 3. Giải bài toán bằng cách lập hệ phương trình | Toán có nội dung hình học (20)
+    yêu cầu: Giải được bài toán về chu vi, diện tích, kích thước của hình bằng cách lập hệ hai phương trình bậc nhất hai ẩn.
+  87vs NLC 2 | Một mảnh đất hình chữ nhật có chu vi bằng 42 m. Đường chéo hình chữ nhật dài 15 m. Tính độ dài chiều rộng mảnh
+  zznu TLN 1 | Một hình chữ nhật có nửa chu vi 41 m, chiều dài hơn chiều rộng 9 m. Tính chiều dài.
+  c4wi TL 2 | Một hình chữ nhật có chu vi là 70 m ,nếu giảm chiều rộng đi 3 m và tăng chiều dài 5 m thì diện tích như cũ .Hã
+  c3py TL 2 | Một khu vườn hình chữ nhật có chu vi là 64 m. Nếu giảm chiều rộng đi 2 m và tăng chiều dài thêm 4 m thì diện t
+  kk0c TL 2 | Một thửa đất hình chữ nhật có chu vi bằng 198 m, diện tích bằng 2430\text{ m}^2. Tính chiều dài và chiều rộng 
+  r1fw TL 2 | Một sân thể thao hình chữ nhật có chu vi là 88 m. Nếu giảm chiều rộng đi 4 m và tăng chiều dài thêm 6 m thì di
+  iul9 TL 2 | Một mảnh vườn hình chữ nhật có diện tích là 168\text{ m}^2. Nếu giảm chiều dài đi 1 m và tăng chiều rộng thêm 
+  ma7s TL 2 | Một mảnh vườn hình chữ nhật có chu vi bằng 34 m. Nếu tăng thêm chiều dài 3 m và chiều rộng 2 m thì diện tích t
+  l7k2 TL 3 | Một khu đất hình chữ nhật có chu vi là 280 người ta làm đường đi xung quanh rộng 2 m nên diện tích phần còn lạ
+  7ue3 TL 2 | Một thửa ruộng hình chữ nhật có chiều rộng ngắn hơn chiều dài 45 m. Tính diện tích thửa ruộng, biết rằng nếu c
+  a8yh TL 2 | Một sân trường hình chữ nhật có chiều dài hơn chiều rộng 16 mét. Hai lần chiều dài kém 5 lần chiều rộng 28 mét
+  1j1j TL 2 | Một hình thang có diện tích là 140\text{ cm}^2, chiều cao 8 cm. Tính độ dài các đáy của hình thang, biết chúng
+  l9jx TL 3 | Nhà bạn Minh Hiền được ông bà Nội cho một mảnh đất hình chữ nhật. Khi bạn Nam đến nhà bạn Hiền chơi, Hiền đố N
+  s9xo TL 2 | Một mảnh đất hình chữ nhật có chu vi bằng 28 m. Đường chéo của hình chữ nhật dài 10. Tính chiều dài và chiều r
+  0b6m NLC 3 | Một tam giác có chiều cao bằng \frac{3}{4} cạnh đáy. Nếu chiều cao tăng thêm 3 dm và cạnh đáy giảm đi 3 dm thì
+  ky3r NLC 3 | Một tấm bìa hình tam giác có chiều cao bằng \frac{1}{4} cạnh đáy tương ứng. Nếu tăng chiều cao 2 dm và giảm cạ
+  kgbw NLC 3 | Một khu vườn hình chữ nhật có chu vi bằng 48 m. Nếu tăng chiều rộng lên bốn lần và tăng chiều dài lên ba lần t
+  768u NLC 3 | Một hình chữ nhật có chu vi 300 cm. Nếu tăng chiều rộng thêm 5 cm và giảm chiều dài 5 cm thì diện tích tăng 27
+  az8u TL 2 | Một mảnh đất hình chữ nhật có độ dài đường chéo là 13 m và chiều dài lớn hơn chiều rộng là 7 m. Tính chiều dài
+  kok4 NLC 2 | Một mảnh đất hình chữ nhật có nửa chu vi bằng 34 m. Đường chéo hình chữ nhật dài 26 m. Tính chiều dài mảnh đất
+
+### [21] Bài 3. Giải bài toán bằng cách lập hệ phương trình | Toán công việc, năng suất (18)
+    yêu cầu: Giải được bài toán làm chung – làm riêng, năng suất lao động, vòi nước chảy bằng cách lập hệ hai phương trình bậc nhất hai ẩn.
+  0wqv TL 2 | Hai bạn An và Bình cùng may khẩu trang để ủng hộ địa phương đang có dịch bệnh Covid-19, thì mất hai ngày mới h
+  a0oc TL 2 | Hưởng ứng chiến dịch tình nguyện “Mùa hè xanh” để giúp học sinh vùng cao đến trường thuận lợi hơn, hai tổ than
+  44d6 TL 2 | Hai máy cày có công suất khác nhau cùng làm việc đã cày được \frac{1}{6} cánh đồng trong 15 giờ. Nếu máy 1 cày
+  1ct9 TL 2 | Hai công nhân cùng làm chung một công việc trong 16 giờ thì xong. Nếu người thứ nhất làm trong 3 giờ, người th
+  w4kk TL 2 | Hai máy bơm nước vào ruộng. Nếu cho máy thứ nhất bơm suốt trong 8 giờ mới mở máy thứ hai cùng bơm thêm 4 giờ n
+  oftf TL 2 | Để hoàn thành một công việc, nếu hai tổ cùng làm chung thì hết 6 giờ. Sau 2 giờ làm chung thì tổ hai được điều
+  s27m TL 2 | Hai bạn A và B cùng làm chung một công việc thì hoàn thành sau 6 ngày. Hỏi nếu A làm một mình 3 ngày rồi nghỉ 
+  m5do TL 3 | Hai tổ công nhân cùng làm chung một công việc và dự định hoàn thành công việc trong 6 giờ. Nhưng khi làm chung
+  86ie TL 3 | Một đội công nhân A và B làm chung một công việc và dự định hoàn thành trong 12 ngày. Khi làm chung được 8 ngà
+  m9xg TL 2 | Hai vòi nước cùng chảy vào 1 cái bể không có nước trong 6 (h) thì đầy bể. Nếu mỗi vòi chảy riêng cho đầy bể th
+  q894 TL 2 | Cho một bể cạn (không có nước). Nếu hai vòi nước cùng được mở để chảy vào bể này thì sẽ đầy bể sau 4 giờ 48 ph
+  uqcb TL 2 | Hai vòi nước cùng chảy vào một bể không có nước thì sau 3 giờ đầy bể. Nếu mở vòi 1 chảy một mình trong 20 phút
+  blz5 NLC 4 | Hai xí nghiệp theo kế hoạch phải làm tổng cộng 360 dụng cụ. Trên thực tế, xí nghiệp 1 vượt mức, xí nghiệp 2 vư
+  qke4 TL 3 | Hai người thợ cùng làm chung một công việc đánh máy bản thảo thì sau 4 giờ sẽ hoàn thành. Nếu người thứ nhất l
+  z40o TL 3 | Hai đội công nhân cùng làm chung một đoạn đường thì sau 4 ngày sẽ hoàn thành. Nếu đội I làm một mình trong 3 n
+  5clf TL 2 | Hai vòi nước cùng chảy vào một bể bơi không có nước thì sau 8 giờ đầy bể. Nếu mở vòi thứ nhất chảy trong 2 giờ
+  6t57 TL 2 | Hai đội công nhân cùng làm chung một đoạn đường thì sau 10 ngày sẽ hoàn thành. Nếu đội thứ nhất làm trong 3 ng
+  1w10 NLC 4 | Hai vòi nước cùng chảy vào một bể thì sau 4 giờ 48 phút bể đầy. Nếu vòi I chảy riêng trong 4 giờ, vòi II chảy 
+
+### [22] Bài 3. Giải bài toán bằng cách lập hệ phương trình | Toán về tỉ số phần trăm (21)
+    yêu cầu: Giải được bài toán tăng giảm theo tỉ số phần trăm (sản lượng, giá bán, lãi suất) bằng cách lập hệ hai phương trình bậc nhất hai ẩn.
+  z2ai TL 2 | Để chuẩn bị cho đợt mở rộng giao thông xanh, theo kế hoạch hai xưởng cơ khí dự định sản xuất tổng cộng 500 chi
+  gpxc TL 2 | Một dung dịch chứa 30\% axit nitơric (tính theo thể tích ) và một dung dịch khác chứa 55\% axit nitơric .Cần p
+  smm6 TL 3 | Giả sử giá tiền điện hàng tháng được tính theo bậc thang như sau: Bậc 1: Từ 1kWh đến 100kWh thì giá điện là: 1
+  jkaf TL 3 | Một hợp kim gồm đồng và kẽm trong đó có 5 gam kẽm. Nếu thêm 15 gam kẽm vào hợp kim này thì được một hợp kim mớ
+  4mb0 TL 2 | Nhằm đáp ứng nhu cầu sử dụng khẩu trang chống dịch COVID-19, theo kế hoạch, 1 tổ sản xuất của một nhà máy dự đ
+  p2my TL 2 | Trong một kỳ thi, hai trường A, B có tổng cộng 350 học sinh dự thi. Kết quả là hai trường có tổng cộng 338 học
+  okt4 TL 3 | Có hai loại quặng sắt, quặng loại A chứa 60\% sắt, quặng loại B chứa 50\% sắt. Người ta trộn một lượng quặng l
+  ik3h TL 2 | Hai tổ sản xuất được giao làm 800 sản phẩm trong 1 thời gian quy định, nhờ tăng năng suất lao động, tổ 1 vượt 
+  4ece TL 2 | Một máy giặt và một tivi có giá tổng cộng 28690000 đồng. Sau khi giảm giá 10\% cho một máy giặt và 15\% cho mộ
+  alsh TL 2 | Hưởng ứng ngày “Ngày sách và văn hóa đọc Việt Nam năm 2022 ”, một nhà sách đã có chương trình giảm giá cho tất
+  e6dw TL 2 | Trong tháng đầu, hai tổ công nhân sản xuất được 800 chi tiết máy, sang tháng thứ hai, tổ 1 vượt mức 15\% và tổ
+  s78r TL 2 | Một người mua hai loại hàng và phải trả tổng cộng 2,17 triệu đồng , kể cả thuế giá trị gia tăng (VAT) với mức 
+  2d32 TL 2 | Để chuẩn bị trao thưởng cho học sinh giỏi cuối năm học, trường THCS X cần mua 2000 quyển vở và 400 cây bút để 
+  04i9 NLC 3 | Trong một kì thi, hai trường A, B có tổng cộng 350 học sinh dự thi. Kết quả hai trường đó có 336 học sinh trún
+  1i52 NLC 4 | Năm ngoái, cả 2 cánh đồng thu hoạch được 500 tấn thóc. Năm nay, do áp dụng khoa học kĩ thuật nên lượng lúa thu
+  xmhg TL 1 | Hai anh Quang và Hùng góp vốn cùng kinh doanh . Anh Quang góp 15 triệu đồng . Anh Hùng góp 13 triệu đồng . Sau
+  ixsl TL 2 | Trên địa bàn thành phố X, có 1850 học sinh lớp 9 đăng ký dự thi tuyển sinh vào lớp 10 của hai trường THPT A và
+  v98l NLC 3 | Trong tháng đầu hai tổ sản xuất được 600 sản phẩm. Sang tháng thứ 2, tổ 1 sản xuất vượt mức 12%, tổ 2 giảm 10%
+  32io TL 2 | Hưởng ứng phong trào "Phủ xanh trường học", theo kế hoạch hai trường THCS A và THCS B dự định trồng tổng cộng 
+  li2y TL 2 | Để chuẩn bị lắp đặt thiết bị cho phòng máy tính mới, một công ty đã mua 50 con chuột máy tính và 30 bàn phím. 
+  r5ac TL 2 | Để chuẩn bị nguyên liệu cho một buổi tiệc, một nhà hàng đã mua 80 kg thịt lợn và 50 kg thịt bò. Theo giá niêm 
+
+### [23] Bài 4. Ôn tập chương | Bài tập tổng hợp chương 1 (0)
+    yêu cầu: Vận dụng tổng hợp kiến thức về phương trình, hệ hai phương trình bậc nhất hai ẩn và giải bài toán bằng cách lập hệ phương trình.

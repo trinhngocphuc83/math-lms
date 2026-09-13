@@ -1,0 +1,130 @@
+Chương 4. Hệ thức lượng trong tam giác vuông · lớp 9 · 10 dạng · 98 câu
+
+
+### [1] Bài 1. Tỉ số lượng giác của góc nhọn | Tính tỉ số lượng giác của góc nhọn trong tam giác vuông (17)
+    yêu cầu: Nhận biết được các tỉ số lượng giác sin, cos, tan, cot của góc nhọn và tính được chúng khi biết độ dài các cạnh của tam giác vuông.
+  na6q TL 1 | Cho tam giác ABC vuông tại A, có AB = 5 cm, AC = 12 cm. Hãy tính các tỉ số lượng giác của góc B.
+  9hcw TL 2 | Tam giác ABC cân tại A, có BC = 6, đường cao AH = 4. Tính các tỉ số lượng giác của góc B.
+  t1tt TLN 2 | Tính \tan C trong hình dưới đây (làm tròn kết quả đến hai chữ số thập phân). ![Hình ảnh](https://cmjithgtecypx
+  ukil TLN 3 | Tam giác vuông có hai cạnh góc vuông 9 cm và 12 cm. Tính sin của góc đối diện cạnh 9 cm.
+  4kcd TLN 3 | Tính \sin 30^\circ.
+  yuqa TLN 3 | Tính \tan 45^\circ.
+  02l0 TLN 3 | Tính \cos 60^\circ.
+  0gjx TLN 4 | Nếu \alpha + \beta = 90^\circ và \sin \alpha = 0,6, tính \cos \beta.
+  pn1g TLN 3 | Cho góc nhọn \alpha có \tan \alpha = \frac{5}{12}. Tính \sin \alpha.
+  pldz NLC 1 | Biết  27^{\circ} + 63^{\circ} = 90^{\circ}. Khẳng định nào đúng?
+  kuvv NLC 2 | Cho tam giác  ABC vuông tại  A,  AC = 8, AB = 15. Giá trị  \tan B bằng
+  b6do TL 1 | Cho tam giác ABC vuông tại C. Trong đó AC = 0{,}9 m, BC = 1{,}2 m. Tính các tỉ số lượng giác của góc B. Từ đó 
+  63m4 TL 1 | Cho tam giác ABC vuông tại A. Biết AB = 3 cm, AC = 4 cm. Tính các tỉ số lượng giác của góc nhọn B.
+  1jtm TL 2 | Tam giác ABC vuông tại A, AB = 1{,}5 cm; BC = 3{,}5 cm. Tính tỉ số lượng giác của góc C rồi suy ra các tỉ số l
+  pzre TL 1 | Cho tam giác ABC vuông tại A. Hãy tính tỉ số lượng giác của góc B và góc C nếu biết: a) AB = 3 cm, AC = 4 cm; 
+  rfon TL 2 | Cho tam giác ABC vuông tại B có đường cao BH. Hãy tính các tỉ số lượng giác của góc A rồi suy ra các tỉ số lượ
+  fvzh TLN 3 | Cho góc nhọn \alpha có \sin \alpha = \frac{3}{5}. Tính \cos \alpha.
+
+### [2] Bài 1. Tỉ số lượng giác của góc nhọn | Tỉ số lượng giác của hai góc phụ nhau và các góc đặc biệt (15)
+    yêu cầu: Vận dụng được quan hệ giữa tỉ số lượng giác của hai góc phụ nhau và bảng giá trị của các góc 30°, 45°, 60° để tính toán.
+  fv1m TL 1 | Hãy viết tỉ số lượng giác của các góc sau thành tỉ số lượng giác của các góc nhỏ hơn 45^\circ: \sin 75^\circ, 
+  o40e TL 2 | Sắp xếp các tỉ số lượng giác sau theo thứ tự tăng dần: a) \cot 40^\circ, \tan 40^\circ, \cot 43^\circ, \tan 42
+  fekx TLN 1 | Tính giá trị của biểu thức A = \dfrac{\sin 32^\circ}{\cos 58^\circ}.
+  h4u2 TLN 1 | Tính giá trị của biểu thức B = \tan 76^\circ - \cot 14^\circ.
+  x7kt TLN 2 | Tính giá trị của biểu thức A = \cos^2 18^\circ + \cos^2 52^\circ + \cos^2 38^\circ + \cos^2 72^\circ.
+  0x15 TLN 3 | Tính giá trị của biểu thức B = \sin^2 1^\circ + \sin^2 3^\circ + \sin^2 5^\circ + \ldots + \sin^2 87^\circ + \
+  ji5o TLN 2 | Tính giá trị của biểu thức C = \tan 5^\circ \cdot \tan 10^\circ \cdot \tan 15^\circ \cdots \tan 80^\circ \cdot
+  ep42 TLN 2 | Tính giá trị của biểu thức M = 4\cos^2 45^\circ + \sqrt{3}\cot 30^\circ - 16\cos^3 60^\circ.
+  c1si TL 2 | Không dùng máy tính hoặc bảng số, hãy sắp xếp các tỉ số lượng giác sau theo thứ tự tăng dần: \sin 41^\circ; \c
+  r3mi TLN 2 | Tính giá trị của biểu thức P = \sin^2 30^\circ - \sin^2 40^\circ - \sin^2 50^\circ + \sin^2 60^\circ.
+  cjtm TLN 2 | Tính giá trị của biểu thức Q = \cos^2 25^\circ - \cos^2 35^\circ + \cos^2 45^\circ - \cos^2 55^\circ + \cos^2 
+  el2n TL 2 | Sắp xếp các tỉ số lượng giác sau theo thứ tự tăng dần: a) \sin 70^\circ, \cos 30^\circ, \cos 40^\circ, \sin 51
+  26dw TLN 2 | Tính giá trị của biểu thức N = \dfrac{2\sin 30^\circ - \sin 60^\circ}{\cos^2 30^\circ - \cos 60^\circ} (làm tr
+  8wu7 TLN 2 | Không dùng máy tính hoặc bảng số, hãy tính giá trị của biểu thức M = \sin^2 20^\circ + \cos^2 30^\circ - \sin^
+  5cr4 TL 1 | Hãy viết các tỉ số lượng giác sau thành tỉ số lượng giác của các góc nhỏ hơn 45^\circ: \sin 60^\circ, \cos 75^
+
+### [3] Bài 1. Tỉ số lượng giác của góc nhọn | Dùng máy tính cầm tay tính tỉ số lượng giác và tìm góc (10)
+    yêu cầu: Sử dụng được máy tính cầm tay để tính tỉ số lượng giác của một góc nhọn và tìm góc khi biết một tỉ số lượng giác.
+  sotc TLN 2 | Một chiếc thang có chiều dài AB = 4 m được đặt dựa vào tường, khoảng cách từ chân thang B đến chân tường H là 
+  wo4f TLN 2 | Một con sông rộng 250 m. Một chiếc đò ngang chèo vuông góc với dòng nước, nhưng vì nước chảy nên phải di chuyể
+  qq9y TLN 3 | Một vận động viên đánh quần vợt đang giao banh. Từ độ cao h, anh ta muốn banh rơi ở vị trí cách lưới 6 m như h
+  d2pq TLN 3 | Một vận động viên đánh quần vợt đang giao banh từ độ cao h (m), cách lưới 12 m; lưới cao 0{,}9 m; banh bay the
+  rtv5 TLN 3 | Một bức tượng mỹ thuật có chiều cao 4 m. Một người đang đứng cách chân tượng 5 m và mắt người ấy cách mặt đất 
+  txgs TLN 4 | Tam giác vuông có tan của một góc nhọn bằng 0,8 (H.20) [CÓ HÌNH ẢNH KÈM THEO]. Tính góc đó (làm tròn đến độ).
+  0e3b NLC 1 | Giá trị của  \sin 30^{\circ} bằng
+  k4ep TLN 2 | Treo quả cầu kim loại nhỏ vào giá thí nghiệm bằng sợi dây mảnh nhẹ không dãn. Khi quả cầu đứng yên tại vị trí 
+  zwnu TLN 2 | Đài quan sát ở Toronto, Ontario (Canada) cao 533 m. Ở một thời điểm vào ban ngày, mặt trời chiếu thành bóng dà
+  e8kq TLN 2 | Trên một khúc sông với hai bờ song song với nhau, có một chiếc đò dự định chèo qua sông từ vị trí A ở bờ bên n
+
+### [4] Bài 1. Tỉ số lượng giác của góc nhọn | Tính giá trị, rút gọn biểu thức lượng giác (6)
+    yêu cầu: Tính được giá trị và rút gọn được biểu thức chứa các tỉ số lượng giác của góc nhọn dựa vào các hệ thức cơ bản.
+  4t8n TL 2 | Biết \sin\alpha = \dfrac{5}{13}. Tính \cos\alpha, \tan\alpha và \cot\alpha.
+  jhbg TL 2 | Cho góc nhọn \alpha có \sin\alpha = \dfrac{3}{5}. Hãy tính \cos\alpha, \tan\alpha, \cot\alpha.
+  2w7d TLN 3 | Tính giá trị của biểu thức A = \cos^2\alpha - \tan 60^\circ + \cot 45^\circ - 2\sin 30^\circ + \cos^2\alpha \c
+  5k5k TLN 2 | Rút gọn biểu thức B = \sin^4\alpha + \cos^4\alpha + 2\sin^2\alpha\cos^2\alpha với 0^\circ < \alpha < 90^\circ.
+  qyfc TLN 3 | Rút gọn biểu thức C = \sin^6\alpha + \cos^6\alpha + 3\sin^2\alpha\cos^2\alpha với 0^\circ < \alpha < 90^\circ.
+  n3o0 TL 2 | a) Cho biết \sin\alpha = 0{,}6; tính \cos\alpha, \tan\alpha, \cot\alpha. b) Cho biết \tan\alpha = \dfrac{1}{\s
+
+### [5] Bài 1. Tỉ số lượng giác của góc nhọn | Chứng minh hệ thức lượng giác (7)
+    yêu cầu: Chứng minh được các hệ thức giữa các tỉ số lượng giác của một góc nhọn (sin² + cos² = 1, tan = sin/cos, tan·cot = 1).
+  x7br TL 2 | Cho góc nhọn \alpha. Chứng minh rằng: 1 + \tan^2\alpha = \dfrac{1}{\cos^2\alpha} và 1 + \cot^2\alpha = \dfrac{
+  mamz TL 3 | Chứng minh rằng \dfrac{1 - 4\sin^2\alpha \cdot \cos^2\alpha}{(\sin\alpha - \cos\alpha)^2} = (\sin\alpha + \cos
+  09a8 TL 3 | Cho tam giác nhọn ABC có diện tích S, đường cao AH = h. Cho biết S = h^2. Chứng minh rằng \cot B + \cot C = 2.
+  pyx8 TL 4 | Cho tam giác ABC vuông tại A, AB < AC, \widehat{C} = \alpha < 45^\circ, đường trung tuyến AM, đường cao AH và 
+  j7ox TL 3 | Cho góc nhọn \alpha. Chứng minh rằng: a) \sin\alpha < \tan\alpha; b) \tan^2\alpha - \sin^2\alpha = \tan^2\alph
+  sc9a TL 4 | Cho tam giác nhọn ABC có hai đường cao AD và BE cắt nhau tại H. Biết HD : HA = 1 : 2. Chứng minh rằng \tan B \
+  zu7q TL 3 | Chứng minh rằng với góc nhọn \alpha (và \tan\alpha \ne 1): a) \dfrac{1 + \cos\alpha}{\sin\alpha} = \dfrac{\sin
+
+### [6] Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng | Ứng dụng thực tế: tính chiều cao, khoảng cách, góc nâng, góc hạ (15)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn về tính chiều cao, khoảng cách không đo trực tiếp được bằng tỉ số lượng giác của góc nhọn.
+  xh6w TLN 2 | Một cột đèn AB cao 6 m có bóng in trên mặt đất là AC dài 3{,}5 m. Hãy tính góc \widehat{BCA} mà tia sáng mặt t
+  hr1s TLN 2 | Một cầu trượt trong công viên có độ dốc là 28^\circ và có độ cao là 2{,}1 m. Tính độ dài của mặt cầu trượt the
+  n5q2 TLN 3 | Khoảng cách giữa hai chân tháp AB và MN là a (như hình vẽ). Từ đỉnh A của tháp AB nhìn lên đỉnh M của tháp MN 
+  uoch TL 3 | Hai con thuyền P và Q cách nhau 300 m và thẳng hàng với chân B của tháp hải đăng ở trên bờ biển. Từ P và Q ngư
+  0zyl TLN 3 | Từ trên một ngọn hải đăng cao 75 m, người ta quan sát hai lần thấy một chiếc thuyền đang hướng về phía hải đăn
+  phhd TL 2 | Tính góc nghiêng \alpha và chiều rộng AB của mái nhà kho trong hình sau, biết mái cao hơn ở mép A là 0{,}9 m s
+  f9s9 TLN 2 | Một cột đèn có bóng trên mặt đất dài 7{,}5 m. Các tia nắng mặt trời tạo với mặt đất một góc xấp xỉ bằng 42^\ci
+  qik9 TLN 2 | Một cái cây có bóng trên mặt đất dài 20 m. Cho biết tia nắng qua ngọn cây nghiêng một góc 31^\circ so với mặt 
+  685c TLN 2 | Một cái thang dài 4{,}8 m dựa vào tường làm thành một góc 58^\circ so với mặt đất. Tính chiều cao của thang so
+  zgyb TLN 2 | Từ đỉnh một toà nhà cao 54 m, người ta nhìn thấy một ô tô đang đỗ dưới một góc nghiêng xuống là 40^\circ. Hỏi 
+  e66d TL 2 | Một cái cây có bóng in trên mặt đất dài 8 m khi các tia sáng mặt trời tạo với mặt đất một góc 48^\circ. Tính c
+  aswt TLN 2 | Trong trò chơi đánh đu của một lễ hội vào mùa xuân, khi người chơi nhún đều, cây đu sẽ đưa người chơi dao động
+  kwlu TLN 3 | Người ta cần lắp đặt một thiết bị chiếu sáng gắn trên tường cho một phòng triển lãm. Thiết bị này có góc chiếu
+  0uog TL 2 | Một nhà trẻ muốn thiết kế hai cái cầu tuột trong sân chơi. Đối với trẻ dưới 5 tuổi, cầu tuột cao 1{,}5 m và ng
+  lxvf TL 3 | Một tấm pin mặt trời dài  2,4 m được đặt nghiêng góc  25^{\circ} so với mái ngang. ![Hình ảnh](https://cmjithg
+
+### [7] Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng | Tính cạnh, góc trong tam giác vuông theo hệ thức lượng (2)
+    yêu cầu: Vận dụng được các hệ thức giữa cạnh và góc trong tam giác vuông để tính độ dài cạnh hoặc số đo góc còn lại.
+  cxjw TL 2 | Cho tam giác ABC vuông tại A có AB = 12 cm, \widehat{C} = 40^\circ. Hãy tính độ dài (làm tròn đến chữ số thập 
+  8295 TL 2 | Cho tam giác ABC vuông tại A, đường cao AH. Biết AB = 2{,}5; BH = 1{,}5. Tính \widehat{B}, \widehat{C} (làm tr
+
+### [8] Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng | Giải tam giác vuông (13)
+    yêu cầu: Giải được tam giác vuông (tìm mọi cạnh và góc chưa biết) khi biết hai cạnh hoặc một cạnh và một góc nhọn.
+  nbq8 TL 2 | a) Giải tam giác ABC vuông tại A, biết AB = 5 và AC = 8. b) Giải tam giác ABC vuông tại A, biết AB = 3{,}5 và 
+  ua45 TL 2 | Giải tam giác ABC vuông tại A, biết AB = 3{,}0 và BC = 4{,}5 (độ dài làm tròn đến chữ số thập phân thứ hai, gó
+  rfa4 TL 2 | Giải tam giác ABC vuông tại A, biết \widehat{B} = 57^\circ và BC = 4{,}5 (kết quả làm tròn đến chữ số thập phâ
+  gfm7 TL 2 | Cho tam giác OPQ vuông tại O có \widehat{P} = 36^\circ, PQ = 7. Hãy giải tam giác vuông OPQ (kết quả làm tròn 
+  redp TL 2 | Giải tam giác ABC vuông tại A, biết (độ dài làm tròn đến chữ số thập phân thứ nhất, góc làm tròn đến độ): a) A
+  y8qh TLN 4 | Tam giác ABC vuông tại A, B = 28^\circ. Tính C.
+  w7n0 TLN 3 | Tam giác vuông có cạnh huyền 20 cm, góc nhọn 35^\circ. Tính cạnh đối góc 35^\circ (làm tròn 0,01 cm).
+  vqw5 TLN 3 | Tam giác vuông có cạnh kề góc 40^\circ bằng 12 cm. Tính cạnh đối (làm tròn 0,01 cm).
+  lcko TL 3 | Cho \Delta ABC vuông tại A có AB < AC, đường cao AH. a) Cho AB = 5 cm , BC = 13 cm. Tính BH, số đo góc B, góc 
+  azfd NLC 2 | Trong tam giác vuông, cạnh huyền dài  17 cm, góc đối diện một cạnh góc vuông bằng  30^{\circ}. Độ dài cạnh đó 
+  bd98 TL 2 | Giải tam giác ABC vuông tại A, biết \widehat{B} = 50^\circ và AB = 3{,}7 (kết quả làm tròn đến chữ số thập phâ
+  mjst TL 2 | Một tam giác vuông có cạnh kề với góc  39^{\circ} dài  17 cm. Tính cạnh đối (làm tròn đến hàng phần trăm của c
+  zfyi TL 2 | Cho tam giác ABC vuông tại A, có BC = a, AC = b, AB = c. Giải tam giác ABC trong các trường hợp (độ dài làm tr
+
+### [9] Bài 2. Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng | Tính đường cao, diện tích bằng tỉ số lượng giác (13)
+    yêu cầu: Tính được đường cao, diện tích tam giác và các đoạn thẳng trong hình bằng cách vận dụng tỉ số lượng giác.
+  ux49 TL 3 | Cho tam giác ABC có \widehat{B} = 65^\circ, \widehat{C} = 45^\circ và AB = 2{,}8 cm. Tính các góc và cạnh còn 
+  5x47 TL 3 | Cho tam giác ABC có BC = 6 cm, \widehat{B} = 60^\circ, \widehat{C} = 40^\circ. Hãy tính (làm tròn đến chữ số t
+  vl9c TL 3 | Giải tam giác ABC biết \widehat{B} = 65^\circ, \widehat{C} = 40^\circ và BC = 4{,}2 cm (kết quả làm tròn đến c
+  t9e0 TL 3 | Giải tam giác nhọn ABC biết AB = 2{,}1, AC = 3{,}8 và \widehat{B} = 70^\circ (góc làm tròn đến độ, độ dài làm 
+  oq1t TL 3 | Cho tam giác ABC nhọn. Đặt BC = a; AC = b; AB = c. Chứng minh rằng \dfrac{a}{\sin A} = \dfrac{b}{\sin B} = \df
+  dfqq TL 3 | Cho tam giác ABC có góc A nhọn. Chứng minh rằng diện tích tam giác ABC là S = \dfrac{1}{2}AB \cdot AC \cdot \s
+  s1q2 TLN 3 | Cho tam giác ABC cân tại A, đường cao BH. Biết \widehat{A} = 50^\circ, BH = 2{,}3. Tính chu vi của tam giác AB
+  c70o TL 3 | Cho tam giác ABC có BC = 15 cm, \widehat{ABC} = 42^\circ và \widehat{ACB} = 30^\circ. Gọi H là chân đường cao 
+  1f88 TLN 3 | Tính diện tích tam giác ABC (theo cm², làm tròn đến chữ số thập phân thứ hai) có BC = 2 cm, \widehat{B} = 45^\
+  3gz4 TLN 3 | Cho hình thang ABCD có AB \parallel CD, \widehat{D} = 90^\circ, \widehat{C} = 38^\circ, AB = 3{,}5 và AD = 3{,
+  p1n7 TLN 3 | Cho tam giác ABC, trong đó BC = 11 cm, \widehat{ABC} = 38^\circ, \widehat{ACB} = 30^\circ. Gọi điểm N là chân 
+  6imk TL 4 | Cho tam giác nhọn ABC có AB < AC, đường cao AH = h, đường trung tuyến AM, đặt \widehat{HAM} = \alpha. Chứng mi
+  3ks3 TL 3 | Cho tam giác ABC vuông tại A. Biết AB = 3 cm, BC = 5 cm. a) Giải tam giác vuông ABC (góc làm tròn đến độ). b) 
+
+### [10] Bài 3. Ôn tập chương | Bài tập tổng hợp chương 4 (0)
+    yêu cầu: Vận dụng tổng hợp tỉ số lượng giác và các hệ thức giữa cạnh, góc trong tam giác vuông để giải toán hình học và thực tế.

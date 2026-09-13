@@ -1,0 +1,545 @@
+Chương 2. Phương trình và bất phương trình bậc nhất một ẩn · lớp 9 · 15 dạng · 498 câu
+
+
+### [1] Bài 1. Phương trình quy về phương trình bậc nhất một ẩn | Giải bài toán bằng cách lập phương trình (23)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn bằng cách lập phương trình quy về phương trình bậc nhất một ẩn.
+  k2kg TL 3 | Một người đạp xe từ nhà đến xưởng làm việc với vận tốc 15 km/h. Khi tan làm, do xe hỏng nên người đó phải đi b
+  ck92 TL 3 | Hai máy in cùng hoạt động thì hoàn thành một lô tài liệu trong 10 giờ. Hai máy cùng chạy được 4 giờ thì máy th
+  ru4p TL 3 | Hai đội công nhân cùng thi công rải nhựa một đoạn đường thì sau 12 ngày sẽ hoàn thành công việc. Hai đội cùng 
+  1nzg TL 3 | Một chiếc ca nô đi từ bến A đến đảo B với vận tốc 30 km/h, rồi từ đảo B quay ngay về bến A với vận tốc 20 km/h
+  89ue TL 2 | Một trang trại có mảnh đất hình chữ nhật kích thước chiều dài 30 m và chiều rộng 24 m. Chủ trang trại muốn đào
+  fa37 TL 3 | Bác An có một mảnh đất hình chữ nhật với chiều dài 14 m và chiều rộng 12 m. Bác dự định xây nhà trên mảnh đất 
+  amf1 TL 2 | Một khu du lịch có mảnh đất hình chữ nhật với chiều dài 20 m và chiều rộng 15 m. Người ta dự định xây một bể b
+  rkzt TL 3 | Một người đi xe đạp từ tỉnh A đến tỉnh B cách nhau 50km. Sau đó 1 giờ 30 phút một xe máy cũng đi từ tỉnh A đến
+  6j44 TL 3 | Một xe tải đi từ A đến B với vận tốc 50 km/h. Đi được 24 phút thì gặp đường xấu nên vận tốc trên quãng đường c
+  3cer TL 3 | Một ô tô phải đi quãng đường AB dài 60 km trong một thời gian nhất định. Xe đi nửa đầu quãng đường với vận tốc
+  dn7d TL 3 | Một ô tô đi quãng đường dài 60 km trong một thời gian đã định. Ô tô đi nửa quãng đường đầu với vận tốc hơn dự 
+  52qq TL 3 | Một máy bay trực thăng chở hàng cứu trợ bay từ trạm trung chuyển C đến vùng lũ D với tốc độ 60 km/h. Sau khi t
+  kac8 TL 3 | Một người đi xe gắn máy, đi từ địa điểm A đến địa điểm B trên một quãng đường dài 35km. Lúc trở về người đó đi
+  amc8 TL 3 | Một xe ô tô đi từ Hà Nội về Thanh Hoá. Sau khi đi được 43 km thì dừng lại 40 phút. Để về đến Thanh Hoá đúng gi
+  suhr TL 3 | Hai người cùng làm chung một công việc thì xong trong 8 giờ. Hai người cùng làm được 4 giờ thì người thứ nhất 
+  3jdf TL 2 | Một xe vận tải đi từ địa điểm A đến địa điểm B với vận tốc 50 km/h, rồi từ B quay ngay về A với vận tốc 40 km/
+  ju3t TL 3 | Một hãng viễn thông nước ngoài có hai gói cước như sau: - Gói cước A: Cước thuê bao hằng tháng 32 USD, 45 phút
+  gvsd TL 2 | Để loại bỏ x\% một loại tảo độc khỏi một hồ nước, người ta ước tính chi phí cần bỏ ra là C(x) = \frac{50x}{100
+  jqyo TL 3 | Một vận động viên chạy việt dã dự định chạy từ điểm xuất phát M đến đích N với vận tốc 15 km/h. Sau khi chạy đ
+  aw3i TL 3 | Một tàu chở hàng dự định đi từ cảng P đến cảng Q với tốc độ 40 km/h. Sau khi đi được 1 giờ 30 phút thì gặp bão
+  e10x TL 3 | Một thiết bị bay không người lái (drone) giao hàng dự định bay từ kho hàng E đến điểm nhận F với vận tốc 60 km
+  w7qj TL 3 | Hai vòi nước cùng chảy vào một bể rỗng thì sau 6 giờ đầy bể. Người ta mở cả hai vòi chảy trong 2 giờ, sau đó k
+  651a TL 2 | Trong một trung tâm sự kiện, một gian hàng triển lãm được dựng trên mảnh đất hình chữ nhật có chiều dài 25 m v
+
+### [2] Bài 1. Phương trình quy về phương trình bậc nhất một ẩn | Giải phương trình đưa về phương trình tích (77)
+    yêu cầu: Giải được phương trình bằng cách chuyển vế, phân tích đa thức thành nhân tử để đưa về phương trình tích.
+  j083 TL 2 | Giải phương trình sau: 0,5x(x - 3) = (x - 3)(1,5x - 1)
+  knsg TL 2 | Giải phương trình sau: \frac{3}{7}x - 1 = \frac{1}{7}x(3x - 7)
+  dg43 TL 2 | Giải phương trình sau: 3x - 15 = 2x(x - 5)
+  6m5i TL 3 | Giải phương trình sau: (3x - 1)(x^2 + 2) = (3x - 1)(7x - 10)
+  4m5s TL 2 | Giải phương trình: (3-2x)^2+4x^2-9=0
+  w2ph TL 2 | Giải phương trình: (2x+7)^2=9(x+2)^2
+  wjbv TL 3 | Giải phương trình: (x+2)^2=9(x^2-4x+4)
+  oltg TL 2 | Giải phương trình: 4(2x+7)^2-9(x+3)^2=0
+  eyg9 TL 3 | Giải phương trình: (5x^2-2x+10)^2=(3x^2+10x-8)^2
+  6729 TL 2 | Giải phương trình: (2x-1)^2+(x-3)(2x-1)=0
+  yy2h TL 3 | Giải phương trình: 4(3x-2)+(2-3x)^3=0
+  5k2i TL 3 | Giải phương trình: (x-1)(x^2-9)=-x-3
+  7ee6 TL 2 | Giải phương trình: (5x-3)^2-(4x-7)^2=0
+  a0fj TL 2 | Giải phương trình: (x+1)^2+2(x+1)+1=0
+  or5r TL 2 | Giải phương trình: 9x^2-1=(3x+1)(2x-3)
+  pcia TL 2 | Giải phương trình: 2(9x^2+6x+1)=(3x+1)(x-2)
+  kpv1 TL 2 | Giải phương trình: 27x^2(x+3)-12(x^2+3x)=0
+  l8s3 TL 2 | Giải phương trình: 16x^2-8x+1=4(x+3)(4x-1)
+  zo0y TL 2 | Giải phương trình: 3x^2-11x+6=0
+  u5j8 TL 2 | Giải phương trình: -2x^2+5x-3=0
+  fkpq TL 2 | Giải phương trình: x^2-4x-5=0
+  pzu1 TL 3 | Giải phương trình: 2x^4+3x^2-5=0
+  qpc7 TL 3 | Giải phương trình: (x-1)^2-1+x^2=(1-x)(x+3)
+  nauv TLN 2 | Giải x(x - 3) = 2(x - 3) và cho biết tổng các nghiệm.
+  j994 TL 3 | Giải phương trình: x^3-7x+6=0
+  prze TL 3 | Giải phương trình sau: x^2+(x+2)(11x-7)=4
+  bl2l TL 2 | Giải phương trình sau: x^3-x(x+1)+1=0
+  e3lo TL 2 | Giải phương trình sau: x^3+x^2+x+1=0
+  3ear TL 2 | Giải phương trình: x^2+7x+12=0
+  fai2 TL 2 | Giải phương trình: (x+2)(3-4x)=x^2+4x+4
+  lfa2 TL 2 | Giải phương trình: (2x+5)(x-4)=(x-5)(4-x)
+  w08f TL 3 | Giải phương trình sau: x^4+2x^3-2x^2+2x-3=0
+  3kjs TL 3 | Cho phương trình: 2x^3+5x^2-8x-4m=0 (1). Biết x=-2 là một nghiệm của phương trình (1). Tìm các nghiệm còn lại 
+  6vmr TL 3 | Giải phương trình sau: (x + 1 + \frac{1}{x})^2 = (x - 1 - \frac{1}{x})^2
+  6ao9 TL 2 | Giải phương trình sau: 4x^2 + 4x + 1 = x^2
+  kkf8 TL 3 | Giải phương trình: x^3-4x^2+4-x=0
+  643c TL 3 | Giải phương trình: x^4+2x^3+5x^2+4x-12=0
+  ip1o TL 2 | Giải phương trình sau: x(x+1) = 2(x^2-1)
+  j7wf TL 2 | Giải phương trình: 2x(3x-1)=(3x-1)
+  rymv TL 2 | Giải phương trình: (x+2)^3-9(x+2)=0
+  e8im TL 2 | Giải phương trình: 9(2x+1)^2-4(x+1)^2=0
+  kspa TL 2 | Giải phương trình sau: (x^2 - 2x + 1) - 4 = 0
+  16cd TL 2 | Giải phương trình: (x-2)^2-(2x+3)^2=0
+  kvd2 TL 2 | Giải phương trình: (x-2)(3x+5)=(2x-4)(x+1)
+  h6nr TL 2 | Giải phương trình: x^4-8x^3-9x^2=0
+  kjvz TL 3 | Giải phương trình: (9x^2-4)(x+1)=(3x+2)(x^2-1)
+  jv8r TL 3 | Giải phương trình: x^5-5x^3+4x=0
+  xk2k TL 3 | Giải phương trình: (x^2-1)(x+2)(x-3)=(x-1)(x^2-4)(x+5)
+  l6tv TL 3 | Giải phương trình: x^4-4x^3+3x^2+4x-4=0
+  vspj TL 3 | Giải phương trình: x^4+x^3+x+1=0
+  3oaj TL 3 | Giải phương trình: x^4-4x^3+12x-9=0
+  nwzw TL 3 | Giải phương trình: \frac{7-x}{2} + \frac{2}{3}(x-7)(x-3)=0
+  z2uy NLC 3 | Biết rằng phương trình (x^2 - 1)^2 = 4x + 1 có nghiệm lớn nhất là x_0. Chọn khẳng định đúng.
+  nzlo TL 2 | Giải phương trình: 3(x-5)(x+2)=x^2-5x
+  flb3 TL 2 | Giải phương trình: (x-1)(2x+3)+2x=2
+  7z63 TL 2 | Giải phương trình: (x-3)^2=(2x+7)^2
+  lurk TL 3 | Giải phương trình: 2(x+2)^2-x^3-8=0
+  e4al TL 3 | Giải phương trình: (x-1)(x^2+5x-2)-x^3+1=0
+  j75d TL 2 | Giải phương trình sau: 2x^3 + 6x^2 = x^2 + 3x
+  7edb TL 2 | Giải phương trình sau: (x^2 - 4) + (x - 2)(3 - 2x) = 0
+  cyrk TL 2 | Giải phương trình sau: x^3 - 3x^2 + 3x - 1 = 0
+  6upy TL 2 | Giải phương trình sau: x(2x - 7) - 4x + 14 = 0
+  tivz TL 2 | Giải phương trình sau: (2x - 5)^2 - (x + 2)^2 = 0
+  fu0c TL 2 | Giải phương trình sau: (2x + 1)^2 - 9x^2 = 0
+  4d0b TL 2 | Giải phương trình sau: 2x(x - 3) + 5(x - 3) = 0
+  5v8o NLC 3 | Tích các nghiệm của phương trình x^3 + 4x^2 + x - 6 = 0 là:
+  u9ba NLC 3 | Tập nghiệm của phương trình (5x^2 - 2x + 10)^2 = (3x^2 + 10x - 8)^2 là:
+  4j41 NLC 2 | Nghiệm lớn nhất của phương trình (x^2 - 1)(2x - 1) = (x^2 - 1)(x + 3) là:
+  ne2b NLC 2 | Tìm m để phương trình (2m - 5)x - 2m^2 + 8 = 43 có nghiệm x = -7.
+  yysr NLC 2 | Nghiệm nhỏ nhất của phương trình (2x + 1)^2 - (x - 1)^2 = 0 là:
+  6lgu NLC 2 | Số nghiệm của phương trình: (x^2 + 9)(x - 1) = (x^2 + 9)(x + 3) là
+  nch1 TL 2 | Giải phương trình sau: 4x^2-12x+5=0
+  99xp NLC 2 | Chọn khẳng định đúng.
+  x4oj TL 2 | Giải phương trình sau: (3x-1)^2 - (x+2)^2 = 0
+  9b6v TL 2 | Giải phương trình sau: 3x^2-4x-4=0
+  1y1x TL 2 | Giải phương trình sau: 2(x+1) = (5x-1)(x+1)
+  r3hb TL 2 | Giải phương trình sau: (-4x+3)x = (2x+5)x
+
+### [3] Bài 1. Phương trình quy về phương trình bậc nhất một ẩn | Giải phương trình tích cơ bản (51)
+    yêu cầu: Giải được phương trình tích dạng (ax + b)(cx + d) = 0 bằng cách đưa về các phương trình bậc nhất một ẩn.
+  57g7 TL 2 | Tìm nghiệm nguyên của phương trình: (x-5)(3-2x)(3x+4)=0
+  o3qp TL 2 | Tìm nghiệm nguyên của phương trình: (2x-1)(3x+2)(5-x)=0
+  6wsi TL 2 | Tìm nghiệm nguyên của phương trình: (x+3)(2x+4)(x-5)=0
+  2kdn TL 2 | Giải phương trình: (2x+1)(-x^2-2)=0
+  9q9n TL 2 | Giải phương trình: (x^2+4)(2x-3)=0
+  e8mt TL 2 | Tìm nghiệm nguyên của phương trình: (x+1)(x+3)(x+5)(x-6)=0
+  oa02 TL 2 | Giải phương trình: (x-3)(3x+2)=0
+  s1vt TL 2 | Giải phương trình: (4x-10)(24+5x)=0
+  nyfv TL 2 | Giải phương trình: (\frac{3}{4}x-2)(\frac{5}{3}x+1)=0
+  7kpr TL 2 | Giải phương trình: 2(x+4)(2x-3)=0
+  47ax TL 2 | Giải phương trình: (5x+3)(\frac{3x+11}{4} - \frac{x-7}{12})=0
+  ela9 TL 2 | Giải phương trình: (5x-7)(2x-6)=0
+  p82r TL 2 | Giải phương trình: (8x-4)(-x^2+2x-2)=0
+  3yyk TLN 2 | Tính tích các nghiệm của (3x - 1)(2x + 5) = 0.
+  1dvd TL 1 | Giải phương trình sau: 15(x+9)(x-3)(x+21)=0
+  uur4 TL 2 | Giải phương trình: (-2x^2-5)(\frac{2x-1}{5} - \frac{x-2}{3})=0
+  bphj TL 2 | Giải phương trình: (2x^2+3)(\frac{x+3}{2} - \frac{x-1}{3} - \frac{x+5}{6})=0
+  81tm TL 1 | Giải phương trình sau: (x^2-1)(x+3)=0
+  lqoo TL 2 | Giải phương trình sau: (\frac{4x+1}{3}+1)(\frac{8x-3}{7}-3)=0
+  ihik TL 2 | Giải phương trình sau: 9x(3x-7)(5x+6)=0
+  6dsb NLC 1 | Phương trình (x - 1)(x - 2)(x - 3) = 0 có số nghiệm là:
+  pb70 TL 2 | Giải phương trình: (3x-2)(x+1)=0
+  x2o2 TL 2 | Giải phương trình: (x-3)(2x+1)=0
+  egfv TL 2 | a) Tìm điều kiện xác định của phương trình: \frac{2x}{x-2} - \frac{3}{x+4} = 1. b) Giải phương trình tích sau:
+  xk9d TL 2 | Giải phương trình: (x^2+x+1)(6-2x)=0
+  d1cc TL 2 | Giải phương trình: (3-2x)(\frac{2x-1}{2} + \frac{x+3}{4})=0
+  rau2 TL 2 | Cho biểu thức A = (5x-3y+1)(7x+2y-2). a) Tìm x sao cho với y=2 thì A=0. b) Tìm y sao cho với x=-2 thì A=0.
+  liow TLN 2 | Tìm nghiệm âm của (2x - 3)(x + 5) = 0.
+  2jsa NLC 1 | Các nghiệm của phương trình (2 + 6x)(-x^2 - 4) = 0 là:
+  1eei NLC 2 | Cho phương trình (1) x(x^2 - 4x + 5) = 0 và phương trình (2) (x^2 - 1)(x^2 + 4x + 5) = 0. Chọn khẳng định đúng
+  ob03 TLN 2 | Tính tổng các nghiệm của phương trình  (x - 8)(x + 10) = 0.
+  xras TL 2 | Giải phương trình: x^2(7x-3)=0
+  g0eq TL 2 | Giải phương trình: (x^2+2024)(6x-3)=0
+  zf9x TL 2 | Giải phương trình: (x+6)(\frac{x^2+3}{2}-1)=0
+  vd18 TL 2 | Giải phương trình: (x+2)(\frac{x+5}{2} - \frac{3-2x}{4})=0
+  arlu TL 2 | Giải phương trình: (4x-10)[\frac{4x-3}{5} - \frac{2(x+3)}{7}]=0
+  t5kf TL 2 | Giải phương trình: (x^2+1)[\frac{3(3-x)}{8} + \frac{2(5-x)}{3}]=0
+  39q3 NLC 1 | Tập nghiệm của phương trình  (x - 8)(x + 9) = 0 là
+  1hg3 TL 2 | Giải phương trình sau: (2x + 1)(3x - 2) = 0
+  24zk TL 2 | Giải phương trình sau: (4x + 2)(x^2 + 1) = 0
+  scrf TL 2 | Giải phương trình sau: (2x + 7)(x - 5)(5x + 1) = 0
+  9izm TL 2 | Giải phương trình sau: (5x - 3)(\frac{4x - 1}{5} - \frac{2x + 1}{3}) = 0
+  q52g TL 2 | Giải phương trình sau: (\frac{2x - 1}{3} - \frac{1 - x}{3})[\frac{2(x + 1)}{5} - (2x + 1)] = 0
+  dkwt TL 2 | Giải phương trình sau: (3x - 2)(4x + 5) = 0
+  tpm8 TL 2 | Giải phương trình sau: (2,3x - 6,9)(0,1x + 2) = 0
+  xiel NLC 2 | Tổng các nghiệm của phương trình (x^2 - 4)(x + 6)(x - 8) = 0 là:
+  6p9y TL 1 | Giải phương trình sau: (5x+2)(x-7)=0
+  rjod NLC 1 | Phương trình (4 + 2x)(x - 1) = 0 có nghiệm là:
+  ygo6 TL 2 | Giải phương trình: (x^2-9)(4-x)=0
+  jghq TL 2 | Cho biểu thức P = (8x+5y-4)(x-3y+6)=0. a) Tìm các giá trị của x sao cho với y=4 thì P=0. b) Tìm các giá trị củ
+  csfn TL 2 | a) Tìm điều kiện xác định của phương trình: \frac{x+1}{x-5} + \frac{2}{x+3} = 3. b) Giải phương trình tích sau
+
+### [4] Bài 1. Phương trình quy về phương trình bậc nhất một ẩn | Giải phương trình chứa ẩn ở mẫu (103)
+    yêu cầu: Tìm được điều kiện xác định, quy đồng khử mẫu để giải phương trình chứa ẩn ở mẫu và đối chiếu nghiệm với điều kiện.
+  16q7 TLN 2 | Giải \frac{2}{x + 1} + 1 = \frac{5}{x + 1}.
+  t4c8 TL 2 | Giải phương trình: \frac{4}{x-1}-\frac{5}{x-2}=-3
+  tqrx TL 2 | Giải phương trình: \frac{x^2+6x-16}{x-2}=x+8
+  bch0 TL 2 | Giải phương trình: \frac{x^2+2x+1}{x+1}=0
+  8pca TL 2 | Giải phương trình: \frac{2x-5}{x+5}=3
+  z6ic TL 2 | Giải phương trình: \frac{4}{x-2}-2=0
+  ehna TL 2 | Giải phương trình: \frac{4x-8+(4-2x)}{x^2+1}=0
+  evdr TL 2 | Giải phương trình: \frac{7x+7}{x-1}=\frac{2}{3}
+  g8jp TL 2 | Giải phương trình: \frac{2}{1+x}=\frac{1}{3-7x}
+  oveq TL 2 | Giải phương trình: \frac{1}{x-2}+3=\frac{3-x}{x-2}
+  32la TL 2 | Giải phương trình sau: \frac{x^2 - 6}{x} = x + \frac{3}{2}
+  5h1n TL 3 | Giải phương trình sau: \frac{(x^2 + 2x) - (3x + 6)}{x - 3} = 0
+  3t8d TL 3 | Giải phương trình sau: \frac{5}{3x + 2} = 2x - 1
+  kpvt TL 2 | Giải phương trình sau: \frac{5x}{2x+2} + 1 = -\frac{6}{x+1}
+  36po TL 3 | Giải phương trình sau: x + \frac{1}{x} = x^2 + \frac{1}{x^2}
+  g7uw TL 3 | Giải phương trình sau: \frac{x+3}{x+1} + \frac{x-3}{x} = 2
+  82hv TL 2 | Giải phương trình sau: \frac{3x-2}{x+7} = \frac{6x+1}{2x-3}
+  g4vx TL 2 | Giải phương trình sau: \frac{x+1}{x-1} - \frac{x-1}{x+1} = \frac{4}{x^2-1}
+  4uvm TL 3 | Giải phương trình sau: \frac{13}{(x-3)(2x+7)} + \frac{1}{2x+7} = \frac{6}{(x-3)(x+3)}
+  2zvk TLN 2 | Giải \frac{x + 2}{x - 1} = 2.
+  thig TLN 2 | Phương trình \frac{x - 2}{x - 2} = 0 có bao nhiêu nghiệm?
+  ofvj TL 2 | Tìm các giá trị của a sao cho biểu thức sau có giá trị bằng 2: \frac{3a-1}{3a+1} + \frac{a-3}{a+3}
+  g6ps TL 2 | Giải phương trình sau: \frac{4x-8}{2x^2+1}=0
+  bixv TL 2 | Giải phương trình: \frac{6x+1}{x^2-7x+10}+\frac{5}{x-2}=\frac{3}{x-5}
+  ns9m TLN 2 | Phương trình \frac{x - 3}{x - 3} = 1 có bao nhiêu nghiệm thực?
+  4x4u TL 3 | Giải phương trình sau: \frac{2}{2x + 1} + \frac{1}{x + 1} = \frac{3}{(2x + 1)(x + 1)}
+  z2r5 TL 2 | Giải phương trình: \frac{x^2-15x+1}{x+17}=x-2
+  g539 TL 3 | Giải phương trình sau: 2x - \frac{2x^2}{x+3} = \frac{4x}{x+3} + \frac{2}{7}
+  emp4 TL 3 | Tìm các giá trị của a sao cho biểu thức sau có giá trị bằng 2: \frac{10}{3} - \frac{3a-1}{4a+12} - \frac{7a+2}
+  0jv4 TL 2 | Tìm x sao cho hai biểu thức A và B có giá trị bằng nhau, với A=x+\frac{1}{x}; B=x^2+\frac{1}{x^2}.
+  bay7 TL 2 | Tìm x sao cho biểu thức \frac{2x-9}{2x-5}+\frac{3x}{3x-2} có giá trị bằng 2.
+  t3da TL 3 | Giải phương trình sau: \frac{3}{(x-1)(x-2)} + \frac{2}{(x-3)(x-1)} = \frac{1}{(x-2)(x-3)}
+  j72h TL 3 | Giải phương trình: \frac{4x}{x^2+4x+3}-1=6(\frac{1}{x+3}-\frac{1}{2x+2})
+  qtst TL 2 | Tìm x sao cho hai biểu thức A và B có giá trị bằng nhau, với A=(x+1+\frac{1}{x})^2; B=(x-1-\frac{1}{x})^2
+  304x TL 3 | Giải phương trình sau: \frac{2x}{x-4} + \frac{3}{x+4} = \frac{x-12}{x^2-16}
+  mlmb TL 2 | Giải phương trình: \frac{11}{x}=\frac{9}{x+1}+\frac{2}{x-4}
+  8e81 NLC 2 | Phương trình \frac{6x}{9-x^2} = \frac{x}{x+3} - \frac{3}{3-x} có nghiệm là
+  nz6m TL 2 | Giải phương trình: 3x-\frac{1}{x-2}=\frac{x-1}{2-x}
+  pjfd TL 2 | Giải phương trình: \frac{x-1}{x-2}-3+x=\frac{1}{x-2}
+  dap6 TL 2 | Tìm x sao cho giá trị của hai biểu thức \frac{6x-1}{3x+2} và \frac{2x+5}{x-3} bằng nhau.
+  cw2g TL 2 | Tìm x sao cho giá trị của hai biểu thức \frac{x+5}{x-1}-\frac{x+1}{x-3} và \frac{-8}{(x-1)(x-3)} bằng nhau.
+  crq0 TL 3 | Giải phương trình: \frac{2}{x^2-4}-\frac{x-1}{x(x-2)}+\frac{x-4}{x(x+2)}=0
+  3ysn TL 2 | Giải phương trình: \frac{3}{4(x-5)}+\frac{15}{50-2x^2}=\frac{7}{6x+30}
+  ybc0 TL 3 | Giải phương trình: 1+\frac{1}{2+x}=\frac{12}{x^3+8}
+  cnrz TL 3 | Giải phương trình sau: 5 + \frac{96}{x^2-16} = \frac{2x-1}{x+4} - \frac{3x-1}{4-x}
+  v2f5 TL 3 | Giải phương trình sau: \frac{x+1}{x-2} - \frac{5}{x+2} = \frac{12}{x^2-4} + 1
+  04y2 TL 3 | Giải phương trình sau: \frac{x+5}{x-1} = \frac{x+1}{x-3} - \frac{8}{x^2-4x+3}
+  7unp TL 2 | Với giá trị nào của a để biểu thức sau có giá trị bằng 2: \frac{2a-9}{2a-5} + \frac{3a}{3a-2}
+  amfj NLC 1 | Điều kiện xác định của phương trình  \frac{x + 10}{x - 8} = 2 là
+  b60o TL 2 | Giải phương trình: \frac{12}{1-9x^2}=\frac{1-3x}{1+3x}-\frac{1+3x}{1-3x}
+  8oqu TL 3 | Giải phương trình sau: 1 + \frac{1}{x+2} = \frac{12}{8+x^3}
+  fhxr TL 3 | Giải phương trình sau: (\frac{1}{x} + 2) = (\frac{1}{x} + 2)(x^2 + 1)
+  fpam NLC 1 | Điều kiện xác định của phương trình \frac{x}{2x+1} + \frac{3}{x-5} = \frac{x}{(2x+1)(x-5)} là
+  atu0 TL 3 | Giải phương trình sau: \frac{x+5}{3x-6} - \frac{1}{2} = \frac{2x-3}{2x-4}
+  h7f6 TL 2 | Giải phương trình: \frac{x+1}{x-1}-\frac{x-1}{x+1}=\frac{16}{x^2-1}
+  jti8 TL 3 | Giải phương trình: \frac{x+4}{x^2-3x+2}+\frac{x+1}{x^2-4x+3}=\frac{2x+5}{x^2-4x+3}
+  9v1z TL 3 | Giải phương trình: \frac{12x+1}{6x-2}-\frac{9x-5}{3x+1}=\frac{108x-36x^2-9}{4(9x^2-1)}
+  tzzv TL 3 | Giải phương trình: \frac{1}{x^2-2x+2}+\frac{2}{x^2-2x+3}=\frac{6}{x^2-2x+4}
+  tq6q NLC 3 | Cho phương trình 1: \frac{1}{x} + \frac{2}{x-2} = 0 và phương trình 2: \frac{x-1}{x+2} - \frac{x}{x-2} = \frac
+  dvud NLC 2 | Phương trình \frac{1}{x^2+4x+3} + \frac{1}{x^2+8x+15} + \frac{1}{x^2+12x+35} + \frac{1}{x^2+16x+63} = \frac{1}
+  nhh9 TL 2 | Với giá trị nào của a để biểu thức sau có giá trị bằng 2: \frac{3a+2}{3a+4} + \frac{a-2}{a+4}
+  1frr NLC 3 | Biết x_0 là nghiệm nhỏ nhất của phương trình \frac{1}{x^2+4x+3} + \frac{1}{x^2+8x+15} + \frac{1}{x^2+12x+35} +
+  8gxs NLC 3 | Cho phương trình: \frac{1}{x^2+3x+2} + \frac{1}{x^2+5x+6} + \frac{1}{x^2+7x+12} + \frac{1}{x^2+9x+20} = \frac{
+  7ufn TL 2 | Giải phương trình: \frac{x+5}{x^2-5x}-\frac{x+25}{2x^2-50}=\frac{x-5}{2x^2+10x}
+  2qoz TL 2 | Giải phương trình: \frac{4x-3}{x-5}=\frac{29}{3}
+  6kvg TL 2 | Giải phương trình: \frac{2x-1}{5-3x}=2
+  w6dn TL 2 | Giải phương trình: \frac{4x-5}{x-1}=2+\frac{x}{x-1}
+  ob9r TL 2 | Giải phương trình: \frac{x+2}{x+3}-\frac{3x}{x+3}=1
+  sre9 TL 2 | Giải phương trình: \frac{2x+5}{2x}-\frac{x}{x+5}=0
+  ftln TL 2 | Giải phương trình: \frac{1}{x}+\frac{2}{x-2}=0
+  hck1 TL 2 | Giải phương trình: \frac{7}{x+2}=\frac{3}{x-5}
+  711i TL 2 | Giải phương trình: \frac{12x+1}{11x-4}+\frac{10x-4}{9}=\frac{20x+17}{18}
+  uqml TL 3 | Giải phương trình: \frac{1}{x}-2025-(\frac{1}{x}-2025)(x^2+2024)=0
+  dy62 TL 2 | Giải phương trình: \frac{1}{x}+2=(\frac{1}{x}+2)(x^2+2)
+  zzz8 TL 3 | Giải phương trình: \frac{1}{3-x}-\frac{1}{x+1}=\frac{x}{x-3}-\frac{(x-1)^2}{x^2-2x-3}
+  pfx6 TL 2 | Giải phương trình: \frac{1}{x-2}-\frac{6}{x+3}=\frac{5}{6-x^2-x}
+  9mh8 TL 3 | Giải phương trình: \frac{2}{x+2}-\frac{2x^2+16}{x^3+8}=\frac{5}{x^2-2x+4}
+  w1zy TL 3 | Giải phương trình: \frac{1}{x-1}+\frac{2x^2-5}{x^3-1}=\frac{4}{x^2+x+1}
+  vbhw TL 3 | Giải phương trình: \frac{8}{x-8}+\frac{11}{x-11}=\frac{9}{x-9}+\frac{10}{x-10}
+  vmr9 TL 3 | Giải phương trình: \frac{x}{x-3}-\frac{x}{x-5}=\frac{x}{x-4}-\frac{x}{x-6}
+  6w2d TL 3 | Giải phương trình: \frac{4}{x^2-3x+2}-\frac{3}{2x^2-6x+1}+1=0
+  3vjh TL 3 | Giải phương trình: \frac{1}{x-1}+\frac{2}{x-2}=\frac{6}{x-6}+\frac{3}{x-3}
+  fdoc TL 3 | Giải phương trình: \frac{x+1}{x^2+x+1}-\frac{x-1}{x^2-x+1}=\frac{3}{x(x^4+x^2+1)}
+  3zc6 TL 3 | Giải phương trình: \frac{1}{x^2+9x+20}+\frac{1}{x^2+11x+30}+\frac{1}{x^2+13x+42}=\frac{1}{18}
+  rn6t TL 3 | Giải phương trình: \frac{x^2}{x^2+2x+2}+\frac{x^2}{x^2-2x+2}-\frac{4x^2-20}{x^4+4}=\frac{322}{65}
+  t9yj TL 3 | Giải phương trình: \frac{2}{x^2+4x+3}+\frac{5}{x^2+11x+24}+\frac{2}{x^2+18x+80}=\frac{9}{52}
+  6lw4 TL 3 | Giải phương trình: \frac{x+4}{x-1}+\frac{x-4}{x+1}=\frac{x+8}{x-2}+\frac{x-8}{x+2}+6
+  dps9 TL 3 | Giải phương trình: \frac{1}{x^2+5x+6}+\frac{1}{x^2+7x+12}+\frac{1}{x^2+9x+20}+\frac{1}{x^2+11x+30}=\frac{1}{8}
+  4mzo TL 3 | Giải phương trình sau: \frac{1}{x + 1} - \frac{x}{x^2 - x + 1} = \frac{3x}{x^3 + 1}
+  qtzm NLC 2 | Trong các khẳng định sau, số khẳng định đúng là: a) Tập nghiệm của phương trình \frac{x^2+3x}{x} = 0 là 0; -3.
+  njad NLC 1 | Điều kiện xác định của phương trình \frac{x}{x-2} - \frac{2x}{x^2-1} = 0 là
+  b5rn NLC 1 | Điều kiện xác định của phương trình \frac{1}{x-2} + 3 = \frac{3-x}{x-2} là
+  30d8 NLC 3 | Cho hai biểu thức: A = 1 + \frac{1}{2+x} và B = \frac{12}{x^3+8}. Tìm x sao cho A = B.
+  d4hm NLC 2 | Cho phương trình \frac{1}{x-1} - \frac{7}{x-2} = \frac{-1}{(x-1)(2-x)}. Bạn Long giải phương trình như sau: Bư
+  drv4 NLC 3 | Số nghiệm của phương trình \frac{x^2+3x+2}{x+3} - \frac{x^2+2x+1}{x-1} = \frac{4x+4}{x^2+2x-3} là
+  s1ww NLC 3 | Cho phương trình \frac{a}{1+bx} = \frac{b}{1+ax} với a, b là các tham số khác 0. Phương trình vô nghiệm khi nà
+  hgnz NLC 2 | Số nghiệm của phương trình \frac{x-5}{x-1} + \frac{2}{x-3} = 1 là
+  llzf NLC 2 | Phương trình \frac{3x-5}{x-1} - \frac{2x-5}{x-2} = 1 có số nghiệm là
+  jjs2 TL 2 | Giải phương trình: \frac{14}{3x-12}-\frac{2+x}{x-4}=\frac{3}{8-2x}-\frac{5}{6}
+  xldt TL 3 | Giải phương trình sau: \frac{1}{x+2} - \frac{2}{x^2-2x+4} = \frac{x-4}{x^3+8}
+  znod TL 2 | Giải phương trình sau: \frac{x}{x-5} - \frac{2}{x+5} = \frac{x^2}{x^2-25}
+  h78c TL 2 | Giải phương trình chứa ẩn ở mẫu sau: \frac{x-1}{x-3} - \frac{1}{x} = \frac{3}{x^2 - 3x}.
+  2gc6 TL 2 | Giải phương trình chứa ẩn ở mẫu sau: \frac{x-2}{x-1} + \frac{3}{x} = \frac{3}{x^2 - x}.
+
+### [5] Bài 1. Phương trình quy về phương trình bậc nhất một ẩn | Giải phương trình bằng cách đặt ẩn phụ (18)
+    yêu cầu: Giải được phương trình bằng cách đặt ẩn phụ để đưa về phương trình bậc nhất hoặc phương trình tích.
+  8tc9 TL 3 | Giải phương trình: x(x-1)(x^2-x+1)-6=0.
+  vwyu TL 2 | Giải phương trình: (x^2+x)^2+4(x^2+x)-12=0.
+  h3dg TL 2 | Giải phương trình: (x^2+2x+3)^2-9(x^2+2x+3)+18=0.
+  9x4i TL 3 | Giải phương trình: x(x+1)(x^2+x+1)=42.
+  876o TL 3 | Giải phương trình: (x-1)(x-3)(x+5)(x+7)-297=0.
+  ngse TL 3 | Giải phương trình: x^4-2x^2-144x-1295=0.
+  9bwp TL 2 | Giải phương trình: (x^2+5x)^2-2(x^2+5x)=24.
+  arg3 TL 3 | Giải phương trình: x(x+1)(x-1)(x+2)=24.
+  olhi TL 3 | Giải phương trình: (x-2)(x+2)(x^2-10)=72.
+  xulj TL 2 | Giải phương trình: (2x+1)^2-2x-1=2.
+  5q1k TL 2 | Giải phương trình: (5-2x)^2+4x-10=8.
+  ga1r TL 2 | Giải phương trình: (x^2-5x)^2+10(x^2-5x)+24=0.
+  j3l2 TL 3 | Giải phương trình: (x+2)(x+3)(x-5)(x-6)=180.
+  xv56 TL 2 | Giải phương trình: (x^2-x-1)(x^2-x)-2=0.
+  xl6h NLC 3 | Tập nghiệm của phương trình (x^2 + x)(x^2 + x + 1) = 6 là:
+  v7q7 NLC 3 | Tập nghiệm của phương trình (x^2 - x - 1)(x^2 - x + 1) = 3 là
+  yyeg TL 2 | Giải phương trình: (x^2+2x+3)(x^2+2x+1)=3.
+  l0tw TL 2 | Giải phương trình: (x^2-3x)^2+5(x^2-3x)+6=0.
+
+### [6] Bài 2. Bất đẳng thức và tính chất | Chứng minh bất đẳng thức (44)
+    yêu cầu: Chứng minh được bất đẳng thức đơn giản bằng cách xét hiệu hoặc biến đổi tương đương dựa vào các tính chất của bất đẳng thức.
+  zd8q TL 2 | Với mọi a,b,c, chứng minh: a^2+b^2 \ge ab
+  2jc1 TL 2 | Với mọi a,b,c, chứng minh: 2a^2+b^2+c^2 \ge 2a(b+c)
+  jesc TL 2 | a) Cho m > n. Hãy so sánh: -3m + 5 và -3n + 5. b) Chứng minh rằng với mọi số thực x, y, ta luôn có: x^2 + y^2 
+  p94e TL 4 | Chứng minh rằng với hai số thực dương a và b bất kỳ, ta luôn có bất đẳng thức: (a + b)(\frac{1}{a} + \frac{1}{
+  63bs TL 3 | Với mọi x, y, z, chứng minh: x^2+y^2+z^2 \ge 2xy+2yz-2zx
+  tt92 TL 3 | Với mọi x, y, z, chứng minh: x^2+y^2+z^2+3 \ge 2(x+y+z)
+  0sab TL 2 | Với mọi a, b, chứng minh: a^2+b^2 \ge \frac{(a+b)^2}{2}
+  56e0 TL 2 | Với mọi a, b, chứng minh: \frac{(a+b)^2}{2} \ge 2ab
+  eka1 TL 2 | Với mọi a, b, chứng minh: a^2+\frac{b^2}{4} \ge ab
+  o6ft TL 3 | Với mọi a, b, chứng minh: a^2+b^2+1 \ge ab+a+b
+  dukn TL 3 | Với mọi a,b,c, chứng minh: \frac{a^2+b^2+c^2}{3} \ge (\frac{a+b+c}{3})^2
+  babz TL 3 | Với mọi a,b,c, chứng minh: a^2+b^2+c^2 \ge \frac{(a+b+c)^2}{3}
+  tr60 TL 3 | Với mọi a,b,c, chứng minh: \frac{a^2}{4}+b^2+c^2 \ge ab-ac+2bc
+  g9ee TL 3 | Với mọi a,b,c,d,e, chứng minh: a^2+b^2+c^2+d^2+e^2 \ge a(b+c+d+e)
+  9oml TL 3 | Với mọi a,b,c, chứng minh: a^4-2a^3b+2a^2b^2-2ab^3+b^4 \ge 0
+  jlkk TL 3 | Với mọi a,b,c, chứng minh: a^4+b^4+c^2+1 \ge 2a(ab^2-a+c+1)
+  zxyy TL 3 | Với mọi a,b,c, chứng minh: a^2+b^2+c^2+\frac{3}{4} \ge (a+b+c)
+  jo4r TL 3 | Với mọi a,b,c, chứng minh: a^4+a^3b+ab^3+b^4 \ge 0
+  3va2 TL 3 | Với mọi a,b,c, chứng minh: a^3+b^3+abc \ge ab(a+b+c)
+  rkm5 TL 3 | Với mọi a,b,c, chứng minh: 4(a^3+b^3) \ge (a+b)^3
+  0fmv TL 3 | Với mọi a,b,c, chứng minh: 2(a^3+b^3) \ge (a+b)(a^2+b^2)
+  zr5u TL 3 | Với mọi a,b,c, chứng minh: (a+b)(a^3+b^3) \le 2(a^4+b^4)
+  s2n5 NLC 2 | Khẳng định nào sau đây đúng với mọi x, y?
+  kcdq NLC 3 | Với mọi a, b, c. Khẳng định nào sau đây là đúng
+  dbzp TL 2 | Với mọi x, y, z, chứng minh: x^2+y^2+z^2 \ge xy+yz+zx
+  1rei TL 2 | Chứng minh: -3a + 5 > -3b + 5 với a < b.
+  475w TL 2 | Chứng minh: \sqrt{2025} - \sqrt{5} > \sqrt{2024} - \sqrt{5}
+  xzb0 TL 2 | Cho a \ge 2b. Chứng minh: 2a + 7 > a + 2b + 7
+  cbus TL 2 | Cho a \ge 2b. Chứng minh: 4b + 4a \le 5a + 2b.
+  xfky TL 2 | Chứng minh: 2m + 4 > 2n + 3 với m > n.
+  9pxy TL 3 | Chứng minh: (a - 1)^2 \ge 4 - 2a với a^2 \ge 3.
+  cfbd TL 2 | Cho a \le 1. Chứng minh: (a - 1)^2 \ge a^2 - 1.
+  cpi0 TL 2 | Cho a > b, chứng minh rằng: 4a+4 > 4b+3
+  ekaw NLC 2 | Với x, y bất kỳ. Chọn khẳng định đúng.
+  1rfs NLC 3 | Với mọi x > 0; y > 0 khẳng định nào đúng trong các khẳng định sau 1: (x + y)(\frac{1}{x} + \frac{1}{y}) \ge 4 
+  13nw NLC 3 | Bất đẳng thức nào sau đây đúng với mọi a > 0, b > 0?
+  nf8z NLC 3 | Khẳng định nào sau đây đúng với mọi a, b là các số thực dương?
+  hen3 NLC 3 | Khẳng định nào đúng với mọi a \ge b > 0?
+  3d1v NLC 3 | Cho x + y \ge 2. Chọn khẳng định đúng
+  ovb4 TL 2 | Cho a > b, chứng minh rằng: 1-3a < 3-3b
+  l4z2 NLC 2 | Với a, b bất kỳ. Chọn khẳng định sai.
+  6u50 TL 2 | Với mọi a, b, chứng minh: \frac{a^2+b^2}{2} \ge (\frac{a+b}{2})^2
+  bk7n TL 2 | a) Cho a < b. Hãy so sánh: 4a - 3 và 4b - 3. b) Chứng minh rằng với mọi số thực u, v, ta luôn có: u^2 + v^2 + 
+  b0qu TL 4 | Chứng minh rằng với hai số thực dương x và y bất kỳ, ta luôn có bất đẳng thức: \frac{x^2}{y} + \frac{y^2}{x} \
+
+### [7] Bài 2. Bất đẳng thức và tính chất | Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định (7)
+    yêu cầu: Nhận biết được bất đẳng thức và viết được bất đẳng thức diễn tả mối quan hệ so sánh giữa các đại lượng trong tình huống cho trước.
+  ebf8 TL 1 | Hãy chỉ ra các bất đẳng thức diễn tả mỗi khẳng định sau: a không lớn hơn b.
+  lpjl TL 1 | Hãy chỉ ra các bất đẳng thức diễn tả mỗi khẳng định sau: m không nhỏ hơn n.
+  79d0 NLC 1 | Cho  a > b và  c < 0. Khẳng định đúng là
+  5qkx TL 1 | Viết một bất đẳng thức phù hợp trong mỗi trường hợp sau: Mức lương tối thiểu cho một giờ làm việc của người la
+  zmbv TL 2 | Gọi x là số tuổi của bạn Việt, y là số tuổi của bạn Nam, biết rằng bạn Nam lớn tuổi hơn bạn Việt. Hãy dùng bất
+  yilh TL 1 | Viết một bất đẳng thức phù hợp trong mỗi trường hợp sau: Xe buýt chở được tối đa 45 người.
+  bvoj TL 1 | Viết một bất đẳng thức phù hợp trong mỗi trường hợp sau: Bạn phải ít nhất 18 tuổi mới được phép lái ô tô.
+
+### [8] Bài 2. Bất đẳng thức và tính chất | So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức (42)
+    yêu cầu: Vận dụng được tính chất bắc cầu, tính chất liên hệ với phép cộng và phép nhân của bất đẳng thức để so sánh hai số hoặc hai biểu thức.
+  bevw TL 2 | So sánh hai số 3 + 23^{2024} và 4 + 23^{2024}.
+  lxkb TL 2 | Hãy so sánh: (-163) . (-75)^{15} và (-162) . (-75)^{15}.
+  l5oi NLC 1 | Cho a > 1 > b, chọn khẳng định không đúng.
+  twf8 DS 2 | Cho  a > b, c < 0 và bất phương trình  -8x + 16 \le 0.
+  auh8 TL 2 | So sánh hai số a và b, nếu: - 2025a + 9 > - 2025b + 9
+  esj7 NLC 2 | Cho a > b > 0. So sánh a^2 và ab; a^3 và b^3.
+  d4ln NLC 2 | Hãy chọn câu sai. Nếu a < b thì
+  e64p TL 2 | Số a là âm hay dương nếu: -4a \le 2a
+  y25i TL 2 | Cho bất đẳng thức a > b và cho số thực c. Xác định dấu của hiệu: (a + c) - (b + c).
+  b90p TL 2 | Cho bất đẳng thức a > b và cho số thực c. Hãy so sánh: a + c và b + c.
+  0r4n TL 2 | So sánh x và y biết: 2x + 2023 > 2y + 2023
+  7wg3 TL 2 | Cho các bất đẳng thức a > b và b > c. Xác định dấu của các hiệu: a - b, b - c, a - c.
+  se3q TL 2 | Số a là âm hay dương nếu: 3a \ge 15a
+  vcgi TL 2 | Số a là âm hay dương nếu: 6a > 24a
+  shoy TL 3 | Cho a - 2 \le b - 1. So sánh hai biểu thức 2a - 4 và 2b - 2
+  v7j4 NLC 2 | Nếu a > b > 0 thì 2021a^3 \dots 2021b^3, dấu cần điền vào chỗ chấm là
+  w6ii TL 2 | Cho các bất đẳng thức a > b và b > c. Hãy so sánh: a và c.
+  6lk4 NLC 1 | Cho a + 1 \le b + 2. So sánh 2 số 2a + 2 và 2b + 4. Khẳng định nào dưới đây là đúng
+  p947 NLC 1 | Hãy chọn câu đúng. Nếu a > b thì
+  57n0 NLC 1 | Cho -2x + 3 < -2y + 3. So sánh x và y. Đáp án nào sau đây là đúng
+  cpwj NLC 2 | Cho biết a > b. Có bao nhiêu khẳng định đúng trong các khẳng định sau? I: a - 1 > b - 1. II: a - 1 > b. III: a
+  4uuo NLC 1 | Cho a - 2 \le b - 1. So sánh 2 số 2a - 4 và 2b - 2. Khẳng định nào dưới đây là sai
+  fnpd NLC 1 | Cho -3x - 1 < -3y - 1. So sánh x và y. Đáp án nào sau đây là đúng
+  mjre TL 2 | So sánh x và y biết: x - \frac{1}{3} \le y - \frac{1}{3}
+  xe6o TL 2 | So sánh x và y biết: -\frac{2024}{2025} - 3x \ge -\frac{2024}{2025} - 3y
+  3tjm NLC 1 | So sánh m và n biết m - \frac{1}{2} = n.
+  u4h9 NLC 1 | Biết rằng m > n với m, n bất kỳ, chọn câu đúng.
+  gsue NLC 1 | Cho x - 3 \le y - 3, so sánh x và y. Chọn đáp án sai.
+  3ico NLC 1 | Cho x + 5 \ge y + 5, so sánh x và y. Chọn đáp án sai.
+  w6u0 NLC 2 | Cho a - 3 < b. So sánh a + 10 và b + 13.
+  u8up NLC 2 | Cho biết a - 1 = b + 2 = c - 3. Hãy sắp xếp các số a, b, c theo thứ tự tăng dần.
+  oeb4 NLC 2 | Cho biết a = b - 1 = c - 3. Hãy sắp xếp các số a, b, c theo thứ tự tăng dần.
+  01bl NLC 1 | Hãy chọn câu sai.
+  3n1k NLC 1 | Cho a > b và c > 0, chọn kết luận đúng.
+  6v3u NLC 1 | Cho m bất kỳ, chọn câu đúng.
+  igka NLC 2 | Cho a + 8 < b. So sánh a - 7 và b - 15.
+  9js9 TL 2 | So sánh hai số a và b, nếu: a + 2024 < b + 2024
+  bgya TL 2 | So sánh m và m^2 với 0 < m < 1.
+  3s3a TL 2 | Cho a < b, hãy so sánh: a+b+5 với 2b+5.
+  1fvt NLC 2 | Cho a > b. Khi đó ta có:
+  h7pu TL 2 | Cho a < b, hãy so sánh: -2a-3 với -(a+b)-3.
+  68xs NLC 1 | Cho a > b khi đó
+
+### [9] Bài 2. Bất đẳng thức và tính chất | Ứng dụng thực tế của bất đẳng thức (7)
+    yêu cầu: Vận dụng được bất đẳng thức và tính chất của nó để giải quyết một số bài toán thực tế về ước lượng, so sánh, tối ưu.
+  59xk TL 3 | Một hình chữ nhật có chu vi  40 m. Tìm diện tích lớn nhất của hình chữ nhật.
+  79jt TL 2 | Một nhà tài trợ dự kiến tổ chức một buổi đi dã ngoại tập thể nhằm giúp các bạn học sinh vùng cao trải nghiệm t
+  4uoj TL 2 | Khi đi đường, chúng ta có thể thấy các biển báo giao thông báo hiệu giới hạn tốc độ mà xe cơ giới được phép đi
+  d6oh TL 2 | Nồng độ cồn trong máu (tiếng Anh là Blood Alcohol Content, viết tắt: BAC) được định nghĩa là tỉ lệ phần trăm l
+  3pjd TL 1 | Theo quy định của một hãng bay, khối lượng hành lí xách tay của khách hàng phổ thông không được vượt quá 12 kg
+  fovh TL 1 | Dùng các dấu >, <, \ge, \le để diễn tả: Trọng tải P của toàn bộ xe khi đi qua cầu đúng quy định với biển báo g
+  9h9e TL 1 | Dùng các dấu >, <, \ge, \le để diễn tả: Tốc độ v đúng quy định với biển báo giao thông ở Hình 4a. [HÌNH VẼ]
+
+### [10] Bài 3. Bất phương trình bậc nhất một ẩn | Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó (5)
+    yêu cầu: Nhận biết được bất phương trình bậc nhất một ẩn và kiểm tra được một số có là nghiệm của bất phương trình hay không.
+  a2ak TL 2 | Chứng minh các bất phương trình sau là bất phương trình bậc nhất một ẩn với mọi giá trị của tham số m: (m^2 + 
+  fs70 NLC 1 | Cho các bất phương trình sau, đâu là bất phương trình bậc nhất một ẩn.
+  jio6 TL 1 | Hãy xét xem các bất phương trình sau có là bất phương trình bậc nhất một ẩn hay không? \frac{1}{x} - 3 \le 0
+  mu1d TL 2 | Chứng minh các bất phương trình sau là bất phương trình bậc nhất một ẩn với mọi giá trị của tham số m: -(m^2 +
+  0pge NLC 1 | Với giá trị nào của m thì bất phương trình mx + 1 < 3 là bất phương trình bậc nhất một ẩn?
+
+### [11] Bài 3. Bất phương trình bậc nhất một ẩn | Giải bất phương trình bậc nhất một ẩn cơ bản (25)
+    yêu cầu: Giải được bất phương trình bậc nhất một ẩn dạng ax + b > 0 (hoặc <, ≥, ≤) và tìm được nghiệm nguyên thoả điều kiện cho trước.
+  ktyv TLN 3 | Tìm số nguyên nhỏ nhất thỏa mãn 2(3x - 1) > 4x + 8.
+  rohd TLN 3 | Có bao nhiêu số nguyên thỏa mãn -1 \le 2x - 3 < 7?
+  zdt5 TLN 3 | Tìm số nguyên lớn nhất thỏa mãn -3x + 4 \ge 19.
+  et3x TLN 3 | Tìm số nguyên nhỏ nhất thỏa mãn 5x - 7 > 18.
+  u9c7 TLN 3 | Tìm số nguyên lớn nhất thỏa mãn \frac{x - 1}{2} \le \frac{x + 5}{3}.
+  rycj TLN 3 | Có bao nhiêu số nguyên dương thỏa mãn 2x + 1 \le 15?
+  wx8a TL 2 | Giải bất phương trình sau và biểu diễn tập nghiệm của nó trên trục số: 4x - 3 < 7x + 9.
+  14yb NLC 2 | Nghiệm của bất phương trình  -9x + 72 \le 0 là
+  k7z5 TLN 2 | Tìm số nguyên nhỏ nhất thỏa mãn bất phương trình  9x > 89.
+  ss4p NLC 1 | Giá trị x = 2 là nghiệm của bất phương trình nào sau đây?
+  gjws NLC 1 | Cho a > b. Bất đẳng thức nào tương đương với bất đẳng thức đã cho?
+  b8xv TL 2 | Giải các bất phương trình sau: \frac{x + 2}{6} + \frac{x + 5}{3} > \frac{x + 3}{5} + \frac{x + 6}{2}
+  j5he TL 1 | Giải các bất phương trình sau: 2x - 8 > 0
+  adt3 TL 1 | Giải các bất phương trình sau: 9 - 3x \le 0
+  kotb TL 2 | Giải các bất phương trình sau: 3(2x - 3) \ge 4(2 - x) + 13
+  qsf2 TL 2 | Giải các bất phương trình sau: 2(3 - x) - 1,5(x - 4) < 3 - x
+  rt07 TL 2 | Giải các bất phương trình sau: 6x - 1 - (3x + 9) \le 8x - 7 - (2x - 1)
+  sorf TL 2 | Giải các bất phương trình sau: 17(x + 5) + 41x \ge -15(x + 4) - 1
+  iu0f TL 2 | Giải các bất phương trình sau: 8x + 17 - 3(2x + 3) \le 10(x + 2)
+  1hqa NLC 1 | Nghiệm của bất phương trình -3x + 5 > 0 là
+  gisp NLC 1 | Nghiệm của bất phương trình 3x + 7 > x + 9 là
+  y7i1 TL 2 | Giải các bất phương trình sau: 4(2 - 3x) - (5 - x) > 11 - x
+  68ib TL 1 | Giải các bất phương trình sau: 5 - \frac{1}{3}x < 1
+  9cnk NLC 1 | Nghiệm của bất phương trình 1-2x \ge 2-x là
+  h4ih NLC 1 | Nghiệm của bất phương trình -2x+1 < 0 là
+
+### [12] Bài 3. Bất phương trình bậc nhất một ẩn | Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn (61)
+    yêu cầu: Giải được bất phương trình có ngoặc, có mẫu số hoặc phải thu gọn hai vế để đưa về bất phương trình bậc nhất một ẩn.
+  s351 TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x + 1}{35} + \frac{x + 3}{33} \ge \frac{x + 5}{31} + 
+  i9i0 TL 2 | Giải các bất phương trình sau: \frac{3x + 5}{2} - 1 \le \frac{x + 2}{3} + x
+  bdmr TL 2 | Giải các bất phương trình sau: 2x + \frac{2x + 1}{2} > 3x - \frac{1}{5}
+  uf2e TL 2 | Giải các bất phương trình sau: x - \frac{5x}{6} - 3 > \frac{x}{3} - \frac{x}{6}
+  vut0 TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 1}{13} - \frac{2x - 13}{15} < \frac{3x - 15}{27} 
+  r876 TLN 3 | Bất phương trình 4(x - 2) < 4x + 1 có bao nhiêu nghiệm thực?
+  jzk3 TL 3 | Cho biểu thức B = (\frac{1}{3} + \frac{3}{x^2 - 3x}) : (\frac{x^2}{27 - 3x^2} + \frac{1}{x + 3}) a) Tìm điều k
+  l53e TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 1}{99} + \frac{x - 3}{97} + \frac{x - 5}{95} < \f
+  d3rt TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 2}{2017} + \frac{x - 3}{2018} < \frac{x - 4}{2019
+  vfr0 TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 29}{1970} + \frac{x - 27}{1972} + \frac{x - 25}{1
+  oz79 TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x + 1987}{2002} + \frac{x + 1988}{2003} > \frac{x + 1
+  2vor NLC 3 | Nghiệm của bất phương trình \frac{x + 4}{x + 1} + \frac{x}{x - 1} < \frac{2x^2}{x^2 - 1} là:
+  k9d1 TL 3 | Giải các bất phương trình ẩn x sau: \frac{x - ab}{a + b} + \frac{x - bc}{b + c} + \frac{x - ac}{a + c} > a + b
+  lhwa TL 2 | Giải các bất phương trình sau: 3(x + 1) + 2x(x - 1) < 2x^2
+  t8v8 TL 2 | Giải các bất phương trình sau: \frac{5(x - 1)}{6} - 1 \ge \frac{2(x + 1)}{3}
+  b1hj TL 2 | Giải các bất phương trình sau: \frac{2x - 1}{3} < \frac{x + 6}{2}
+  m7io TL 2 | Giải các bất phương trình sau: 8x - 3 < 5(\frac{8x}{5} + 3)
+  zpy8 TL 2 | Giải các bất phương trình sau: \frac{x + 5}{6} + \frac{x - 1}{3} \le \frac{x + 3}{2} - 1
+  txya TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 1995}{5} - \frac{x - 5}{1995} + \frac{x - 1997}{3
+  1hi2 TL 3 | Giải các bất phương trình ẩn x sau: \frac{x + 2004}{2005} + \frac{x + 2005}{2006} < \frac{x + 2006}{2007} + \f
+  myve TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x + 1}{2013} + \frac{x + 2}{2012} < \frac{x + 3}{2011
+  zuo7 TL 3 | Cho biểu thức A = ( \frac{1}{1 - x} + \frac{2}{x + 1} - \frac{5 - x}{1 - x^2} ) : \frac{1 - 2x}{x^2 - 1} a) Tì
+  7as3 TL 2 | Giải các bất phương trình \frac{2x + 1}{-3} - \frac{2x^2 + 3}{-4} > \frac{x(5 - 3x)}{-6} - \frac{4x + 1}{-5}
+  1f5q TL 2 | Giải các bất phương trình \frac{5x - 2}{-3} - \frac{2x^2 - x}{-2} > \frac{x(1 - 3x)}{-3} - \frac{5x}{-4}
+  k8xd TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x + 6}{1999} + \frac{x + 8}{1997} \ge \frac{x + 10}{1
+  sdgl TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x + 1}{2009} + \frac{x + 2}{2008} + \frac{x + 3}{2007
+  06dx TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 21}{1978} - \frac{x - 1978}{21} + \frac{x - 19}{1
+  vg4l NLC 2 | Bất phương trình \frac{3x + 5}{2} - 1 \le \frac{x + 2}{3} + x có nghiệm là
+  g4x1 NLC 2 | Bất phương trình 2(x - 1) - x > 3(x - 1) - 2x - 5 có nghiệm là
+  xoye TL 2 | Giải các bất phương trình sau: \frac{3x + 5}{2} - x \ge 1 + \frac{x + 2}{3}
+  4i8u TL 2 | Giải các bất phương trình sau: \frac{x - 2}{3} - x - 2 \le \frac{x - 17}{2}
+  hhcq TL 2 | Giải các bất phương trình sau: \frac{2x + 1}{3} - \frac{x - 4}{4} \le \frac{3x + 1}{6} - \frac{x - 4}{12}
+  388e TL 2 | Giải các bất phương trình (x - 1)^2 + x^2 \le (x + 1)^2 + (x + 2)^2
+  bqwt TL 2 | Giải các bất phương trình x^2 - 3x + 1 > 2(x - 1) - x(3 - x)
+  r8md TL 2 | Giải các bất phương trình sau: (2x + 3)(2x - 1) > 4x(x + 2)
+  0e4t TL 2 | Giải các bất phương trình sau: 5(x - 1) - x(7 - x) < x^2
+  qy65 TL 2 | Giải các bất phương trình sau: (x - 1)^2 + (x - 3)^2 > x^2 + (x + 1)^2
+  d90h TL 2 | Giải các bất phương trình \frac{4x - 2}{3} - x + 3 \le \frac{1 - 5x}{4}
+  hksp TL 2 | Giải các bất phương trình \frac{x + 4}{5} - x - 5 \ge \frac{x + 3}{3} - \frac{x - 2}{2}
+  0rq6 TL 2 | Giải các bất phương trình \frac{5x^2 - 3}{5} + \frac{3x - 1}{4} < \frac{x(2x + 3)}{2} - 5
+  gb4a TL 3 | Giải các bất phương trình sau: \frac{x - 2}{1007} + \frac{x - 1}{1008} < \frac{2x - 1}{2017} + \frac{2x - 3}{2
+  p96o TL 3 | Giải các bất phương trình ẩn x sau: \frac{x - 2}{2002} + \frac{x - 4}{2000} < \frac{x - 3}{2001} + \frac{x - 5
+  8ix5 TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 85}{15} + \frac{x - 74}{13} + \frac{x - 67}{11} \
+  y453 TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x + 1}{65} + \frac{x + 3}{63} - \frac{x + 5}{61} - \f
+  graa TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x + 29}{31} - \frac{x + 27}{33} \le \frac{x + 17}{43}
+  l1i0 TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 10}{1994} + \frac{x - 8}{1996} + \frac{x - 6}{199
+  586h TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{1909 - x}{91} + \frac{1907 - x}{93} + \frac{1905 - x}
+  b520 TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 1009}{1001} + \frac{x - 4}{1003} + \frac{x + 2010
+  nhdi TL 3 | Giải các bất phương trình sau: (Biến đổi đặc biệt) \frac{x - 3}{2011} + \frac{x - 2}{2012} \le \frac{x - 2012}
+  triw NLC 2 | Số nguyên nhỏ nhất thỏa mãn bất phương trình x(5x + 1) + 4(x + 3) \ge 5x^2 là
+  7od8 NLC 2 | Số nguyên lớn nhất thỏa mãn bất phương trình (x - 2)^2 - x^2 - 5x + 3 \ge 0 là
+  cax7 NLC 2 | Tập nghiệm của bất phương trình \frac{x - 3}{x + 4} < 0 là
+  itmc NLC 3 | Nghiệm của các bất phương trình x^2 + 2(x - 3) - 1 > x(x + 5) + 5 và \frac{2}{3} - \frac{3x - 6}{2} > \frac{1 
+  vmrm NLC 2 | Tìm giá trị của x để biểu thức A = \frac{5 - 2x}{x^2 + 4} có giá trị dương.
+  qyp4 NLC 2 | Chọn câu đúng, biết 0 < a < b.
+  uzqj TL 2 | Giải các bất phương trình sau: 2 + \frac{3(x + 1)}{8} \le 3 - \frac{x - 1}{4}
+  5ger TL 2 | Giải các bất phương trình \frac{x - 1}{2} - \frac{7x + 3}{15} \le \frac{2x + 1}{3} + \frac{3 - 2x}{5}
+  5y75 TL 2 | Giải các bất phương trình (x^2+1)(x-6) \le (x-2)^3
+  nu6j NLC 2 | Phương trình x-1 = m+4 có nghiệm lớn hơn 1 với
+  jyus TL 2 | Giải bất phương trình sau: 2x+3(x+1) > 5x - (2x-4)
+  rnm1 TL 2 | Giải bất phương trình sau: (x+1)(2x-1) < 2x^2 - 4x + 1
+
+### [13] Bài 3. Bất phương trình bậc nhất một ẩn | Bất phương trình bậc nhất một ẩn chứa tham số (0)
+    yêu cầu: Tìm được giá trị của tham số để bất phương trình có nghiệm cho trước hoặc để hai bất phương trình có cùng tập nghiệm.
+
+### [14] Bài 3. Bất phương trình bậc nhất một ẩn | Ứng dụng thực tế của bất phương trình bậc nhất một ẩn (35)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn (chi phí, số lượng tối đa, điều kiện đạt yêu cầu) bằng cách lập và giải bất phương trình bậc nhất mộ
+  c2j5 TLN 4 | Một cây cao 9 m có bóng dài 6 m (H.18) [CÓ HÌNH ẢNH KÈM THEO]. Tính góc tạo bởi tia nắng và mặt đất (làm tròn 
+  5t45 TLN 4 | Hai người ở hai phía chân khí cầu cách nhau 120 m, góc nâng 30^\circ và 60^\circ (H.17) [CÓ HÌNH ẢNH KÈM THEO]
+  7f7q TLN 4 | Cột cờ có bóng dài 18 m, tia nắng tạo với đất góc 42^\circ (H.11) [CÓ HÌNH ẢNH KÈM THEO]. Tính chiều cao (làm 
+  hctw TLN 3 | Một người có 500 nghìn đồng, mua sách giá 65 nghìn/quyển và để lại ít nhất 45 nghìn. Mua nhiều nhất bao nhiêu 
+  6o9l TLN 4 | Một con dốc dài 150 m nghiêng 7^\circ (H.15) [CÓ HÌNH ẢNH KÈM THEO]. Độ cao tăng thêm là bao nhiêu (làm tròn 0
+  7212 TLN 4 | Từ đỉnh hải đăng cao 50 m nhìn tàu với góc hạ 20^\circ (H.14) [CÓ HÌNH ẢNH KÈM THEO]. Tàu cách chân hải đăng b
+  47sc TLN 4 | Thang dài 7 m tạo với đất góc 68^\circ (H.13) [CÓ HÌNH ẢNH KÈM THEO]. Đầu thang cao bao nhiêu (làm tròn 0,01 m
+  q3a6 TLN 4 | Mái nhà dài 8 m nghiêng 32^\circ so với phương ngang (H.19) [CÓ HÌNH ẢNH KÈM THEO]. Tính độ cao chênh lệch hai
+  uann TLN 4 | Hai điểm cùng phía chân tháp cách nhau 15 m, góc nâng lần lượt 30^\circ và 45^\circ (H.16) [CÓ HÌNH ẢNH KÈM TH
+  xemy TLN 4 | Đứng cách chân tháp 30 m, góc nâng 38^\circ, mắt cao 1,5 m (H.12) [CÓ HÌNH ẢNH KÈM THEO]. Tính chiều cao tháp 
+  0pgj TL 2 | Chỉ số khối cơ thể BMI cho phép đánh giá thể trạng của một người là gầy, bình thường hay béo. Chỉ số khối cơ t
+  7t23 TL 2 | Để đổi từ độ Fahrenheit (độ F) sang độ Celsius (độ C), người ta dùng công thức sau: C = \frac{5}{9}(F - 32) a)
+  d72b TL 3 | Một người đi bộ một quãng đường dài 18 km trong khoảng thời gian không nhiều hơn 4 giờ. Lúc đầu người đó đi vớ
+  syul TL 3 | Người ta dùng một loại xe tải để chở sữa tươi cho một nhà máy. Biết mỗi thùng sữa loại 180 ml nặng trung bình 
+  74v8 TL 2 | Để lập đội tuyển năng khiếu về bóng rổ của trường THCS Nguyễn Hiền, thầy Nam đưa ra quy định tuyển chọn như sa
+  kypq TL 3 | Trong một cuộc thi tuyển dụng việc làm, ban tổ chức quy định mỗi người ứng tuyển phải trả lời 25 câu hỏi ở vòn
+  g0kg TL 3 | Một hãng viễn thông nước ngoài có hai gói cước như sau: [BẢNG BIẾN THIÊN] a) Hãy viết một phương trình xác địn
+  gpqv TL 2 | Với những giá trị nào của x thì: Giá trị của biểu thức (x + 1)^2 - 4 không lớn hơn giá trị của biểu thức (x - 
+  m970 TL 2 | Bạn Minh Hiền có 100 nghìn đồng. Bạn muốn mua một cái bút giá 18 nghìn đồng và một số quyển vở, mỗi quyển vở g
+  a94k TL 2 | Một kho chứa 100 tấn xi măng, mỗi ngày đều xuất đi 20 tấn xi măng. Gọi x là số ngày xuất xi măng của kho đó. T
+  zqtd TL 2 | Một hãng taxi có giá mở cửa là 15 nghìn đồng và giá 12 nghìn đồng cho mỗi kilômét tiếp theo. Hỏi với 200 nghìn
+  6nac TL 2 | Một người có số tiền không quá 70000 đồng gồm 15 tờ giấy bạc với hai loại mệnh giá: loại 2000 đồng và loại 500
+  j4lh TL 2 | Với những giá trị nào của x thì: Giá trị của biểu thức \frac{x + 2}{3} - x + 1 lớn hơn giá trị của biểu thức x
+  gchy TL 2 | Với những giá trị nào của x thì: Giá trị của biểu thức x - \frac{1 - \frac{3}{2}x}{4} nhỏ hơn giá trị của biểu
+  qgcv TL 2 | Với những giá trị nào của x thì: Giá trị của biểu thức 7 - 3(x + 1) không nhỏ hơn giá trị biểu thức 2(x - 3) -
+  e2nb TL 2 | Biểu thị (theo x) tổng khối lượng của các hộp xếp ở đĩa cân bên trái, đĩa cân bên phải (hình vẽ) lần lượt là 3
+  q6da TL 2 | Để hưởng ứng phong trào “Trồng cây gây rừng”, lớp 9A có kế hoạch trồng ít nhất 100 cây xanh. Lớp 9A đã trồng đ
+  jxuz TL 3 | Trong cuộc thi “Đố vui để học”, mỗi thí sinh phải trả lời 12 câu hỏi của ban tổ chức. Mỗi câu hỏi gồm bốn phươ
+  bghf TL 2 | Một kì thi Tiếng Anh gồm bốn kĩ năng: nghe, nói, đọc, viết. Kết quả của bài thi là điểm số trung bình của bốn 
+  3vpz TL 2 | Tìm số thực dương x sao cho chu vi của hình tam giác lớn hơn chu vi của hình chữ nhật (ở hình vẽ dưới) [HÌNH V
+  oy0w TL 2 | Một nhà máy sản xuất xi măng mỗi ngày đều sản xuất được 100 tấn xi măng. Lượng xi măng tồn trong kho của nhà m
+  y2l9 TL 2 | Một ngân hàng đang áp dụng lãi suất gửi tiết kiệm kì hạn 1 tháng là 0,4%/ tháng. Hỏi nếu muốn có số tiền lãi h
+  5isy TL 2 | Bạn Trúc Linh tham dự một kì kiểm tra năng lực tiếng Anh gồm 4 bài kiểm tra nghe, nói, đọc và viết. Mỗi bài ki
+  kna8 TL 2 | Đến ngày 31/12/2024, gia đình Cô Thúy đã tiết kiệm được số tiền là 250 triệu đồng. Sau thời điểm đó, mỗi tháng
+  dtcl TL 1 | Bác Hoàng dự định chạy bộ tổng cộng ít nhất 6 500 m vào buổi sáng và buổi chiều trong ngày. Buổi sáng bác Hoàn
+
+### [15] Bài 4. Ôn tập chương | Bài tập tổng hợp chương 2 (0)
+    yêu cầu: Vận dụng tổng hợp kiến thức về phương trình quy về bậc nhất, bất đẳng thức và bất phương trình bậc nhất một ẩn.

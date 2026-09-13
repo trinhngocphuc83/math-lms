@@ -1,0 +1,143 @@
+{
+ "lop": "9",
+ "chuong": 2,
+ "dang": [
+  {
+   "bai": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "cu": "Giải phương trình tích cơ bản",
+   "moi": "Giải phương trình tích cơ bản",
+   "yc": "Giải được phương trình tích dạng (ax + b)(cx + d) = 0 bằng cách đưa về các phương trình bậc nhất."
+  },
+  {
+   "bai": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "cu": "Giải phương trình đưa về phương trình tích",
+   "moi": "Giải phương trình đưa về phương trình tích",
+   "yc": "Giải được phương trình bằng cách chuyển vế, phân tích đa thức thành nhân tử để đưa về phương trình tích."
+  },
+  {
+   "bai": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "cu": "Giải phương trình chứa ẩn ở mẫu",
+   "moi": "Giải phương trình chứa ẩn ở mẫu",
+   "yc": "Tìm được điều kiện xác định, quy đồng khử mẫu để giải phương trình chứa ẩn ở mẫu và đối chiếu điều kiện."
+  },
+  {
+   "bai": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "cu": "Giải phương trình bằng cách đặt ẩn phụ",
+   "moi": "Giải phương trình bằng cách đặt ẩn phụ",
+   "yc": "Giải được phương trình bằng cách đặt ẩn phụ để đưa về phương trình tích hoặc phương trình bậc nhất."
+  },
+  {
+   "bai": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "cu": "Giải bài toán bằng cách lập phương trình",
+   "moi": "Giải bài toán bằng cách lập phương trình",
+   "yc": "Giải quyết được một số vấn đề thực tiễn bằng cách lập phương trình quy về phương trình bậc nhất một ẩn."
+  },
+  {
+   "bai": "Bài 2. Bất đẳng thức và tính chất",
+   "cu": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định",
+   "moi": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định",
+   "yc": "Nhận biết được bất đẳng thức và viết được bất đẳng thức diễn tả một khẳng định trong thực tế."
+  },
+  {
+   "bai": "Bài 2. Bất đẳng thức và tính chất",
+   "cu": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức",
+   "moi": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức",
+   "yc": "Vận dụng được tính chất bắc cầu, tính chất liên hệ với phép cộng và phép nhân của bất đẳng thức để so sánh hai số, hai biểu thức."
+  },
+  {
+   "bai": "Bài 2. Bất đẳng thức và tính chất",
+   "cu": "Chứng minh bất đẳng thức",
+   "moi": "Chứng minh bất đẳng thức",
+   "yc": "Chứng minh được bất đẳng thức đơn giản bằng cách xét hiệu hoặc biến đổi tương đương, dùng hằng đẳng thức."
+  },
+  {
+   "bai": "Bài 2. Bất đẳng thức và tính chất",
+   "cu": "Ứng dụng thực tế của bất đẳng thức",
+   "moi": "Ứng dụng thực tế của bất đẳng thức",
+   "yc": "Vận dụng được bất đẳng thức và tính chất của nó để giải quyết một số vấn đề thực tiễn."
+  },
+  {
+   "bai": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "cu": "Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó",
+   "moi": "Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó",
+   "yc": "Nhận biết được bất phương trình bậc nhất một ẩn và kiểm tra được một số có là nghiệm của bất phương trình hay không."
+  },
+  {
+   "bai": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "cu": "Giải bất phương trình bậc nhất một ẩn cơ bản",
+   "moi": "Giải bất phương trình bậc nhất một ẩn cơ bản",
+   "yc": "Giải được bất phương trình bậc nhất một ẩn dạng ax + b > 0 (hoặc <, ≥, ≤) và biểu diễn được tập nghiệm."
+  },
+  {
+   "bai": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "cu": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn",
+   "moi": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn",
+   "yc": "Giải được bất phương trình có ngoặc, có mẫu số hoặc phải thu gọn hai vế để đưa về bất phương trình bậc nhất một ẩn."
+  },
+  {
+   "bai": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "cu": "Bất phương trình bậc nhất một ẩn chứa tham số",
+   "moi": "Bất phương trình bậc nhất một ẩn chứa tham số",
+   "yc": "Tìm được giá trị của tham số để bất phương trình, phương trình có nghiệm thoả mãn điều kiện cho trước."
+  },
+  {
+   "bai": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "cu": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn",
+   "moi": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn",
+   "yc": "Giải quyết được một số vấn đề thực tiễn (chi phí, số lượng tối đa, điểm số) bằng cách lập bất phương trình bậc nhất một ẩn."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 2",
+   "moi": "Bài tập tổng hợp chương 2",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 2 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {
+  "egfv": [
+   "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "Giải phương trình chứa ẩn ở mẫu"
+  ],
+  "csfn": [
+   "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "Giải phương trình chứa ẩn ở mẫu"
+  ],
+  "6vmr": [
+   "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "Giải phương trình chứa ẩn ở mẫu"
+  ],
+  "pzu1": [
+   "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "Giải phương trình bằng cách đặt ẩn phụ"
+  ],
+  "qyp4": [
+   "Bài 2. Bất đẳng thức và tính chất",
+   "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  ],
+  "gjws": [
+   "Bài 2. Bất đẳng thức và tính chất",
+   "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  ],
+  "gpqv": [
+   "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  ],
+  "j4lh": [
+   "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  ],
+  "gchy": [
+   "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  ],
+  "qgcv": [
+   "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  ],
+  "nu6j": [
+   "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "Bất phương trình bậc nhất một ẩn chứa tham số"
+  ]
+ }
+}

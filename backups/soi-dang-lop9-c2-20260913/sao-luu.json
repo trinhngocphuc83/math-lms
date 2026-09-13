@@ -1,0 +1,3144 @@
+{
+ "question_categories": [
+  {
+   "id": "ebc0012d-5ccb-4e16-bfa9-492341e517dc",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình tích dạng (ax + b)(cx + d) = 0 bằng cách đưa về các phương trình bậc nhất một ẩn."
+  },
+  {
+   "id": "d682285f-bef4-4919-b75b-bf338aebdb38",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được bất đẳng thức và viết được bất đẳng thức diễn tả mối quan hệ so sánh giữa các đại lượng trong tình huống cho trước."
+  },
+  {
+   "id": "52d67360-afd0-4319-84f0-015a247a740d",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình bằng cách chuyển vế, phân tích đa thức thành nhân tử để đưa về phương trình tích."
+  },
+  {
+   "id": "12695a4f-500f-4ed4-82cb-487e674ef5ac",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tìm được điều kiện xác định, quy đồng khử mẫu để giải phương trình chứa ẩn ở mẫu và đối chiếu nghiệm với điều kiện."
+  },
+  {
+   "id": "2f298040-9747-421d-99fb-e801e1082055",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình bằng cách đặt ẩn phụ để đưa về phương trình bậc nhất hoặc phương trình tích."
+  },
+  {
+   "id": "5c2c53fc-b3f9-4a51-b8ed-294ad9496388",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn bằng cách lập phương trình quy về phương trình bậc nhất một ẩn."
+  },
+  {
+   "id": "3f1dc6e2-f4ee-42c4-b12e-21adf0220a4d",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất bắc cầu, tính chất liên hệ với phép cộng và phép nhân của bất đẳng thức để so sánh hai số hoặc hai biểu thức."
+  },
+  {
+   "id": "b2feb7d9-eb2d-4d4a-9003-326a93229ac7",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Chứng minh được bất đẳng thức đơn giản bằng cách xét hiệu hoặc biến đổi tương đương dựa vào các tính chất của bất đẳng thức."
+  },
+  {
+   "id": "16e16012-1cf4-4cae-aba5-e1705ed9fb2b",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Ứng dụng thực tế của bất đẳng thức",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được bất đẳng thức và tính chất của nó để giải quyết một số bài toán thực tế về ước lượng, so sánh, tối ưu."
+  },
+  {
+   "id": "8215eb95-6c21-4d69-b0bb-3cc3be09adf4",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được bất phương trình bậc nhất một ẩn và kiểm tra được một số có là nghiệm của bất phương trình hay không."
+  },
+  {
+   "id": "950618e4-16eb-4863-a36d-fcc1ff8ed513",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được bất phương trình bậc nhất một ẩn dạng ax + b > 0 (hoặc <, ≥, ≤) và tìm được nghiệm nguyên thoả điều kiện cho trước."
+  },
+  {
+   "id": "f40e6960-21a9-4c32-af58-5d55427c1bd8",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải được bất phương trình có ngoặc, có mẫu số hoặc phải thu gọn hai vế để đưa về bất phương trình bậc nhất một ẩn."
+  },
+  {
+   "id": "af6506fb-367c-4ace-bda4-bb3713324e21",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Bất phương trình bậc nhất một ẩn chứa tham số",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị của tham số để bất phương trình có nghiệm cho trước hoặc để hai bất phương trình có cùng tập nghiệm."
+  },
+  {
+   "id": "4bae3c02-ff99-4824-a267-9c37c0ec4590",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn (chi phí, số lượng tối đa, điều kiện đạt yêu cầu) bằng cách lập và giải bất phương trình bậc nhất một ẩn."
+  },
+  {
+   "id": "38a5a17e-a862-46d2-9e29-65de598c997f",
+   "grade": "9",
+   "subject": "Đại số",
+   "topic": "Chương 2. Phương trình và bất phương trình bậc nhất một ẩn",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 2",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức về phương trình quy về bậc nhất, bất đẳng thức và bất phương trình bậc nhất một ẩn."
+  }
+ ],
+ "questions": [
+  {
+   "id": "58e09be1-31e3-4251-8205-442dd979cbbb",
+   "question_id": "CH_1785600354339_c2j5",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "39f3beaa-6e17-4279-9b5f-878ec2654f75",
+   "question_id": "CH_1785600354339_5t45",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "73d7e301-faba-4bc8-a562-e9c561ffcd50",
+   "question_id": "CH_1785600354339_7f7q",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "aebce71b-9193-42e2-8bd6-5edae09805d0",
+   "question_id": "CH_1785600354339_16q7",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "d2c0b7f7-0a94-4a35-a37f-48ad711aa4c6",
+   "question_id": "CH_1782273758180_8tc9",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "d1c9f435-4256-454d-bafb-acca29abd5cc",
+   "question_id": "CH_1782273758180_vwyu",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "0004aa97-c179-4dcc-981b-e0186821ccbd",
+   "question_id": "CH_1782273758180_h3dg",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "80568b26-ed78-4404-bf78-d7181641ce97",
+   "question_id": "CH_1783572940886_j083",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "fd890c0d-6466-4c04-b357-84d7e077e3b6",
+   "question_id": "CH_1782273758180_9x4i",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "7e8d4ff1-0acb-419d-b8f3-207f6f63f6b2",
+   "question_id": "CH_1782273758180_876o",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "df550e98-4216-4e1c-9593-36e5cbef4b93",
+   "question_id": "CH_1782273758180_ngse",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "8efa0817-def9-4bb1-93b2-cf3f0b6cbfe3",
+   "question_id": "CH_1782274018789_t4c8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "45fe1711-8d55-423f-830e-999e954109b4",
+   "question_id": "CH_1782274018789_tqrx",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "f6633ae3-f033-4602-a424-3378365d6880",
+   "question_id": "CH_1782274018789_bch0",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "5566b46e-4127-44d8-b2ac-a30374a23061",
+   "question_id": "CH_1782274018789_8pca",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "f053f839-7a94-4942-b3af-c896aa9b3df6",
+   "question_id": "CH_1782274018789_z6ic",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "fd55befa-3fd4-4868-8b2d-c2c1d31d0ddc",
+   "question_id": "CH_1782274018789_ehna",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "77b88e7d-302c-415a-9f29-30db985194e0",
+   "question_id": "CH_1782274018789_evdr",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "9ea6aefc-5ec6-4fcd-84ad-b1745453f255",
+   "question_id": "CH_1782274018789_g8jp",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "4060f2b6-6ce9-49b1-9d02-1ced2645e54c",
+   "question_id": "CH_1782274018789_oveq",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "ce41a76f-55ea-43bd-a063-9cbc98eb8768",
+   "question_id": "CH_1782274446965_ebf8",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định"
+  },
+  {
+   "id": "44f0e17f-11c4-43ea-aaa9-7ca87b5091b6",
+   "question_id": "CH_1783572940886_knsg",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "f0c622e8-996f-4cdb-aa2a-661dc019c0fe",
+   "question_id": "CH_1783572940886_dg43",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "0adb2e6b-4e87-4f51-a716-a81fdda34a37",
+   "question_id": "CH_1782271717846_57g7",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "b39faa5f-aea5-45cd-9844-82abc419a60f",
+   "question_id": "CH_1782271717846_o3qp",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "5bafc771-00de-49b0-a2c8-bc44116a83d9",
+   "question_id": "CH_1782271717846_6wsi",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "bb208777-0177-4808-b33f-9fd103778f09",
+   "question_id": "CH_1782271717846_2kdn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "269f99cb-01be-413f-981d-667b3ed12b02",
+   "question_id": "CH_1782271717846_9q9n",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "94788998-2120-48a5-a62d-262a2203b9da",
+   "question_id": "CH_1782271717846_e8mt",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "0d392043-baba-40f0-82f3-9653a419c57f",
+   "question_id": "CH_1782271717846_oa02",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "7d0ec2cb-09ba-405c-9023-56abaa74d6c0",
+   "question_id": "CH_1782275039909_zd8q",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "7979fcc2-3d95-4873-9dbe-1afa6b25d526",
+   "question_id": "CH_1782275039909_2jc1",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "8a8f8aa6-a8fa-4a3a-92df-e372b4255887",
+   "question_id": "CH_1783572940886_32la",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "49920a33-1a9d-465b-85de-b5041f9e476e",
+   "question_id": "CH_1783572940886_5h1n",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "5c03a8e0-3b65-499c-ab35-eb09cfa21b74",
+   "question_id": "CH_1783572940886_3t8d",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "8555edba-40f8-4d70-9d52-1df2b71b156a",
+   "question_id": "CH_1783573244630_kpvt",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "7084ec3a-fbe9-4f16-b95f-295bf9133561",
+   "question_id": "CH_1783573244630_36po",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "3b036ec4-163d-45ac-b288-6307d7c15547",
+   "question_id": "CH_1783573244630_g7uw",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "d9d2ec39-8ddc-4286-ac0f-26094cb516e2",
+   "question_id": "CH_1783573244630_82hv",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "e7cd5208-e6a8-4811-8e50-8916b6f0e816",
+   "question_id": "CH_1783572940886_6m5i",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "29cb2e7f-8c75-4a3e-841f-f86e9365b519",
+   "question_id": "CH_1783573244630_g4vx",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "d61cf700-54be-45b1-ba32-a44bf903f5d5",
+   "question_id": "CH_1782274446965_lpjl",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định"
+  },
+  {
+   "id": "be42edac-7c67-4e5e-a28e-ae7efce64d35",
+   "question_id": "CH_1782274733004_bevw",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "40b69346-b120-4029-bb3e-7b5b6b3169e6",
+   "question_id": "CH_1782271717846_s1vt",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "ada041e1-fb52-4280-aa7c-2ad7e8ae7cef",
+   "question_id": "CH_1782275918045_s351",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "29d23212-f3ce-4b0a-b807-51dc5d6ff355",
+   "question_id": "CH_1782271717846_nyfv",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "5f64b19b-622f-4e36-a3e1-9ce9067b7ab5",
+   "question_id": "CH_1782271717846_7kpr",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "44a732e9-d393-45c1-873d-160c197f7024",
+   "question_id": "CH_1782271717846_47ax",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "3b66217c-2960-43a7-9381-d4185e8fd306",
+   "question_id": "CH_1782271717846_ela9",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "5c0c80c3-247e-40f8-ae2e-e6ef3b3f3fdf",
+   "question_id": "CH_1782271717846_p82r",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "8d8d4fae-96e2-41c6-a540-4f90100a4f3a",
+   "question_id": "CH_1783573244630_4uvm",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "16f412b7-6644-49bb-9bec-8e3a930b08e7",
+   "question_id": "CH_1782275403318_a2ak",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó"
+  },
+  {
+   "id": "20e037a9-8b55-4769-b4eb-1646d204fc1c",
+   "question_id": "CH_1782273613069_4m5s",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "defc7b30-b065-4857-9af7-e418216e7ae7",
+   "question_id": "CH_1782274733004_lxkb",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "59a153c9-9263-4b19-b468-8d668f6ee438",
+   "question_id": "CH_1783584044609_l5oi",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "125299ec-d0b8-428d-b33f-81fadeff937e",
+   "question_id": "CH_1782273613069_w2ph",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "e6d921a9-604c-49e3-bbe1-6d6fb2d0c0af",
+   "question_id": "CH_1782273613069_wjbv",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "116f0461-1d97-4fd2-b985-8f0eb84b6129",
+   "question_id": "CH_1782273613069_oltg",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "a467ea06-6ba5-40c4-8216-4f99fd1c0b85",
+   "question_id": "CH_1782273613069_eyg9",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "b33bf632-b662-4186-aa3d-ce56e091023e",
+   "question_id": "CH_1782273613069_6729",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "9bb785f9-7c86-448c-8993-2f6c8f56e4ae",
+   "question_id": "CH_1782273613069_yy2h",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "debec81d-08d8-4e79-ae89-26ce0d11185c",
+   "question_id": "CH_1782273613069_5k2i",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "9cc6ef53-dac9-48ff-a728-2e76d8594560",
+   "question_id": "CH_1782273613069_7ee6",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "ddc4a7e1-bc09-452d-8adc-fe3d7ccfeccd",
+   "question_id": "CH_1782273613070_a0fj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "4e6541af-b2be-4359-8ede-f4b2f3d5314c",
+   "question_id": "CH_1782273613070_or5r",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "727f952f-94c2-4110-a5e0-8db64cd0ea9b",
+   "question_id": "CH_1782273613070_pcia",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "2d29b450-eaeb-4f41-b567-0317603b2fb2",
+   "question_id": "CH_1782273613070_kpv1",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "d3aee358-1533-4c5d-9133-3574a9637797",
+   "question_id": "CH_1782273613070_l8s3",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "7b2ff385-5263-42b8-b595-0e7446e636d8",
+   "question_id": "CH_1782273613070_zo0y",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "658db568-c53f-483f-b30b-5c8ad200bfdd",
+   "question_id": "CH_1782273613070_u5j8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "260c0f5c-3273-4422-9838-5e578fdbf01f",
+   "question_id": "CH_1782273613070_fkpq",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "cac099f8-0fdb-40bd-a21b-81c717db23bf",
+   "question_id": "CH_1782273613070_pzu1",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "50fdad56-5a08-4489-9b43-d0fb65c231ca",
+   "question_id": "CH_1782273613070_qpc7",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "876287c2-3e63-47f2-b04e-6c7c589e0f49",
+   "question_id": "CH_1785600354339_3yyk",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "b38f2dfe-209f-4d46-a182-ad57d79ba65b",
+   "question_id": "CH_1785600354339_nauv",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "615b77c8-1724-4d8d-950c-c235f3d17b9e",
+   "question_id": "CH_1785600354339_2zvk",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "a883897a-1be0-4d50-893e-cf423a320576",
+   "question_id": "CH_1785600354339_thig",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "1b16fb1f-7c1b-48db-8457-8208427a7890",
+   "question_id": "CH_1785600354339_ktyv",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "f3e591bf-3bee-46e1-9737-ca5c663b55fc",
+   "question_id": "CH_1785600354339_rohd",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "412e20b8-1917-4b66-ba07-4c006ee61330",
+   "question_id": "CH_1785600354339_zdt5",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "70323bb3-35a8-4639-957e-46c4cf5ac10d",
+   "question_id": "CH_1785600354339_hctw",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "48fa9477-3ece-404f-907a-2f89578f3f37",
+   "question_id": "CH_1785600354339_6o9l",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "7ae64ef3-5df0-4f8c-bb68-c562881bd8af",
+   "question_id": "CH_1785600354339_7212",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "276406c1-ec70-4b97-9666-37abf4797147",
+   "question_id": "CH_1785600354339_47sc",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "171bb423-75ff-42ad-8191-bb43f4668fdc",
+   "question_id": "CH_1785600354339_q3a6",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "188fb555-401b-4520-97c8-1d84ad3998ca",
+   "question_id": "CH_1782273613070_j994",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "88c63785-b80d-40ef-9313-cde3137d95e9",
+   "question_id": "CH_1782275403318_i9i0",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "297c79a3-424a-4da6-a318-1b2982cbbbd6",
+   "question_id": "CH_1782275403318_bdmr",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "c6dfce43-cd1a-4a0d-8f93-3f34aba563d2",
+   "question_id": "CH_1783573244630_ofvj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "f37ff003-b9f8-4933-a63e-0bdf3db0036f",
+   "question_id": "CH_1785217759976_k2kg",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "b41c2eb1-00b6-4fc2-be1b-28df80902a6d",
+   "question_id": "CH_1782275403318_uf2e",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "45d1a3da-92ea-49d0-b7f2-8b4820e7accf",
+   "question_id": "CH_1785600354339_uann",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "e00ae565-ad02-4f9a-b35a-c6d36efba8cb",
+   "question_id": "CH_1783573244630_1dvd",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "e6b7f685-15a2-4482-a854-52ced7560a6d",
+   "question_id": "CH_1782271717846_uur4",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "7a795d6b-9362-4ad6-8c1c-fab002d26ad2",
+   "question_id": "CH_1782271717846_bphj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "869b1b51-8b23-4000-8445-b13da55155ce",
+   "question_id": "CH_1783573244630_prze",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "84f67cf3-1299-4d1a-b63f-19aa3d7a100a",
+   "question_id": "CH_1783573244630_bl2l",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "d7a5ee56-d538-4ccc-8342-fb9c63babd8c",
+   "question_id": "CH_1783573244630_81tm",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "ddd4e142-512c-41b2-9ea5-d83e2791a4ee",
+   "question_id": "CH_1783573244630_lqoo",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "f2600493-4ac2-49cc-b75a-5eda0f8d37b1",
+   "question_id": "CH_1783573244630_g6ps",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "71fa9a30-397a-4600-af61-306842c11ef8",
+   "question_id": "CH_1783573244630_e3lo",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "4a056841-e9af-402e-87c0-26bb5bba2207",
+   "question_id": "CH_1783573244630_ihik",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "c0e56cb8-e9ba-4d0b-a290-9f91485f57d8",
+   "question_id": "CH_1783573639814_6dsb",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "6a840526-23b1-4248-a68c-fb8b9315c1f3",
+   "question_id": "CH_1785600354339_et3x",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "482925ac-9da7-4992-9387-70ed563907f2",
+   "question_id": "CH_1785600354339_u9c7",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "e05037a6-658c-4e3b-acfb-534b0ce6b1e0",
+   "question_id": "CH_1785600354339_rycj",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "b13eae1e-fcfc-4b7a-9fd7-df75d87e8976",
+   "question_id": "CH_1782274018789_bixv",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "7b5b3c7d-ed7c-4369-9a05-0af8dec6a5a4",
+   "question_id": "CH_1785600354339_ns9m",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "754caa32-b014-4f1d-81c2-bb0486486324",
+   "question_id": "CH_1783572940885_4x4u",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "0c595127-69ce-4050-9196-3447173a367a",
+   "question_id": "CH_1782274018789_z2r5",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "7d0963fc-bde0-4695-b602-29b84286109c",
+   "question_id": "CH_1782271717846_pb70",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "8e2a78f1-c0bc-4e48-a2ee-a89c91017fbf",
+   "question_id": "CH_1782271717846_x2o2",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "d5b320a7-519a-4a86-aa15-3bba6a104c05",
+   "question_id": "CH_1782273613069_3ear",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "8c47447f-147f-4c2a-99b5-86e63a3adc88",
+   "question_id": "CH_1787191692850_egfv",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "d6cec072-a553-4cee-9520-45ab5dfe1da4",
+   "question_id": "CH_1782271717846_xk9d",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "870e6b49-cb08-4933-8c53-8cc49b5af558",
+   "question_id": "CH_1782271717846_d1cc",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "28e627c1-3756-4344-9a36-59ba0186532c",
+   "question_id": "CH_1783573244630_rau2",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "d0d85af0-f9a5-42cc-b61f-413d4b372774",
+   "question_id": "CH_1783573244630_g539",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "b83ef6d3-c85e-4218-bfab-74e3a410c303",
+   "question_id": "CH_1782273613069_fai2",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "1e3f6bde-f598-4053-bae8-e5458e341ba5",
+   "question_id": "CH_1782273613070_lfa2",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "ad7fe172-7097-46e1-ac8a-7fae4e5bd221",
+   "question_id": "CH_1782273758180_9bwp",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "0b7bd2d1-53ce-4680-953e-3a52bacda40b",
+   "question_id": "CH_1783573244630_emp4",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "53a0408e-426e-4447-b7d4-427cd258e81a",
+   "question_id": "CH_1785228205146_ck92",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "db363bd7-7cea-4afb-a162-8868f274d72f",
+   "question_id": "CH_1782274018789_0jv4",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "321c0aba-48c6-4ce7-baca-2cdf002dace0",
+   "question_id": "CH_1782274018789_bay7",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "85ee1491-cf76-43d4-8876-a41d5b8a3ecb",
+   "question_id": "CH_1783573244630_w08f",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "525d93b3-7775-41e0-b8d9-b3940c21bfc0",
+   "question_id": "CH_1783573244630_3kjs",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "75d2563e-0692-4211-97c2-e94acf6ce57a",
+   "question_id": "CH_1785600354339_liow",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "b4eb9598-55d0-47fd-9440-8b93a62ea42d",
+   "question_id": "CH_1785228205146_ru4p",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "2cabc05e-bfc3-4c57-bc27-501b2396c3d0",
+   "question_id": "CH_1782273758180_arg3",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "0213f591-e6cb-471d-a25c-0457f3e26828",
+   "question_id": "CH_1785217759976_1nzg",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "0046455b-d5b8-4b50-9ab0-d53c83b1e45a",
+   "question_id": "CH_1785228205146_89ue",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "fa22ca0f-65d2-4664-94b1-5b90567ce2b2",
+   "question_id": "CH_1783573244630_6vmr",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "300b8350-6fba-40dc-ad7b-63b8e83ff57a",
+   "question_id": "CH_1783573244630_t3da",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "1f365e01-95ed-4111-8f56-46cee77bc9e2",
+   "question_id": "CH_1783572940885_fa37",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "dc32c2c8-6027-4049-a660-07d226dc8ffd",
+   "question_id": "CH_1783572940886_6ao9",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "f29eda4b-cd09-4751-b59c-3cf9f55ab8b5",
+   "question_id": "CH_1782273613070_kkf8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "052b4d61-5cc6-4720-bd1c-0d8a3828d1ab",
+   "question_id": "CH_1782273613070_643c",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "3b06adff-134c-4489-a5a7-36dafbcebdd4",
+   "question_id": "CH_1785228205146_amf1",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "1864c90b-e97e-4ae2-8c7c-3052ecfa1f93",
+   "question_id": "CH_1783598641745_ip1o",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "5971cea0-b432-4f27-ae47-657b326a850b",
+   "question_id": "CH_1782273613069_j7wf",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "95ab5559-090d-4c2f-80ef-16173b5ee995",
+   "question_id": "CH_1783573639814_2jsa",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "34d902ff-2ff6-41c4-b358-ad3611aa190b",
+   "question_id": "CH_1783573639814_1eei",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "0f00d8fb-1e61-4f52-87ba-e7dca4f65913",
+   "question_id": "CH_1782274018789_j72h",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "56208c81-efb3-4721-86b8-cc372047c3ff",
+   "question_id": "CH_1782274018789_qtst",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "72dc2901-56c9-496a-a464-e2e243d9cdef",
+   "question_id": "CH_1782274195877_rkzt",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "f0e10e4f-7cd3-48a5-92d3-3d38ee346384",
+   "question_id": "CH_1782274195877_6j44",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "b71b50f7-a15c-45ab-94bf-34a12de81260",
+   "question_id": "CH_1782274195877_3cer",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "767c4634-2006-4576-908b-8d5c84fbf2c3",
+   "question_id": "CH_1789054973577_59xk",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Ứng dụng thực tế của bất đẳng thức"
+  },
+  {
+   "id": "a228b4a7-d064-4b2f-b086-588b94087881",
+   "question_id": "CH_1785600354339_xemy",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "3a07599b-12b5-424f-9f1b-818b5ae2f9c1",
+   "question_id": "CH_1782275918045_0pgj",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "af2b349b-3c56-4636-8451-34e31c170197",
+   "question_id": "CH_1782274195877_dn7d",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "946d2ab8-02a3-4e3e-9ba8-7dbbca6bb5e9",
+   "question_id": "CH_1783598641745_304x",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "80df6291-be72-418c-bd1b-743e242cd95d",
+   "question_id": "CH_1782275039909_79jt",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Ứng dụng thực tế của bất đẳng thức"
+  },
+  {
+   "id": "37426663-b1f0-4cec-81b7-b810a98e29fd",
+   "question_id": "CH_1782274446965_4uoj",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Ứng dụng thực tế của bất đẳng thức"
+  },
+  {
+   "id": "c53d1ee6-2d5d-49cc-9d8e-445eddad92ff",
+   "question_id": "CH_1782274018789_mlmb",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "5635d3f6-b95e-457c-8e85-d9a88cf85153",
+   "question_id": "CH_1783573639814_8e81",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "15965ee2-cfbd-415b-86b5-fffcd4025001",
+   "question_id": "CH_1782275039909_d6oh",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Ứng dụng thực tế của bất đẳng thức"
+  },
+  {
+   "id": "4b54f0cf-5e4a-45f5-81a9-89456a8f6be6",
+   "question_id": "CH_1782274018789_nz6m",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "7b1379ee-4ac6-4b44-ba5c-db60c160f5fa",
+   "question_id": "CH_1782274018789_pjfd",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "04590ab0-d9a5-4f77-af75-baaa47cdc5ae",
+   "question_id": "CH_1782274018789_dap6",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "12450f84-3936-4933-9604-e7414e627d02",
+   "question_id": "CH_1782274018789_cw2g",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "8b91f771-f526-4cad-a5cd-4708e64adf8e",
+   "question_id": "CH_1782274018789_crq0",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "77f3e20b-4c47-4b73-8191-9acc91fb1376",
+   "question_id": "CH_1782274018789_3ysn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "582a2cdf-645a-45d1-ab13-c047d4a95ae6",
+   "question_id": "CH_1782274018789_ybc0",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "8af8dbd9-3ab7-4584-bbdf-5a6ab7b3f9da",
+   "question_id": "CH_1783573244630_cnrz",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "2a932009-2d9e-43e7-a0a4-9f06041b99ab",
+   "question_id": "CH_1783573244630_v2f5",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "f04cb100-d10f-4942-8a02-fa956290fc84",
+   "question_id": "CH_1783573244630_04y2",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "0521e2b6-163a-4cd3-9e41-cd0a3f10779f",
+   "question_id": "CH_1783573244630_7unp",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "c305049e-b395-4070-9ec0-142d245d250a",
+   "question_id": "CH_1785217759976_52qq",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "e04eae3e-279c-4e1d-b741-77f036dbdc1e",
+   "question_id": "CH_1782275918045_vut0",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "8209a13c-4183-4a47-8bef-b444e953e0eb",
+   "question_id": "CH_1787191692850_jesc",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "4d0ac461-4e05-42b0-a690-4d07655cc6dc",
+   "question_id": "CH_1787191692850_p94e",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "d09c5ed5-1e91-4874-b6de-bfa45a5be0e7",
+   "question_id": "CH_1785600354339_r876",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "886cfe45-1c21-4779-b777-65e485859dc3",
+   "question_id": "CH_1782275918045_7t23",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "3a0ff074-09f5-409b-9ba2-c631864ceac6",
+   "question_id": "CH_1782275403318_jzk3",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "73ea0dce-ca7c-4cb6-8c49-17609a81de5b",
+   "question_id": "CH_1782275918045_l53e",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "022085e4-3070-4c9f-bc48-dea7e2b8e920",
+   "question_id": "CH_1782275918045_d3rt",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "0a680e8e-c8a3-4b01-b5b8-c40973f57d4d",
+   "question_id": "CH_1782275918045_vfr0",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "557416ad-7a94-4370-bcb6-f44b97944e0c",
+   "question_id": "CH_1782275918045_oz79",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "188b4b86-de9c-4017-83e8-597757eb1663",
+   "question_id": "CH_1782275918045_d72b",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "88555c34-2d2b-4008-8c8d-60c42a4c9945",
+   "question_id": "CH_1783584463566_2vor",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "b0a1a5ec-aacc-4a4d-b72f-a872889f256a",
+   "question_id": "CH_1782275918045_syul",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "b8611408-da03-4337-b507-c2ac6018a5f8",
+   "question_id": "CH_1782275918045_k9d1",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "dba23f79-f5eb-45a9-bd7a-b643857a8004",
+   "question_id": "CH_1783584463566_fs70",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó"
+  },
+  {
+   "id": "ad3ac8e1-c0e5-4a04-a5cb-0f330e26bcee",
+   "question_id": "CH_1782275918045_74v8",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "d2fc69fe-d765-4dfe-80af-399e22e4ca43",
+   "question_id": "CH_1782275918045_kypq",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "a022a628-c837-48fd-b133-214e55db9776",
+   "question_id": "CH_1782275918045_g0kg",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "c5682dda-5aec-417c-99f6-52e236dfe1e7",
+   "question_id": "CH_1787191692850_wx8a",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "beef8026-082a-454e-a561-eae1b3ab136a",
+   "question_id": "CH_1789054973577_amfj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "b0b8d6c1-f2be-4d81-8153-1f671f55f51a",
+   "question_id": "CH_1789054973577_79d0",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định"
+  },
+  {
+   "id": "35f3a747-4a67-4d44-adc7-03f01d359acb",
+   "question_id": "CH_1789054973577_twf8",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "01bec08c-e4f4-48fe-8a88-e7e24cb33814",
+   "question_id": "CH_1789054973577_14yb",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "0eb2a4ed-3fee-420b-bca0-1c7542af1095",
+   "question_id": "CH_1789054973577_ob03",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "f7dee4ba-0a6e-4a84-bdd6-18b3349b6028",
+   "question_id": "CH_1789054973577_k7z5",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "6a969c7f-2d2c-440e-ab7f-38f58c21fe35",
+   "question_id": "CH_1782274446965_3pjd",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Ứng dụng thực tế của bất đẳng thức"
+  },
+  {
+   "id": "17d8c5bc-b750-4ca0-bc60-c84065008d8a",
+   "question_id": "CH_1782273758180_olhi",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "ecf46573-4b7d-45d3-8c67-d256eb4ee94e",
+   "question_id": "CH_1782274018789_b60o",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "4c01e394-6400-4c26-a069-a7fbd2188ea8",
+   "question_id": "CH_1782273758180_xulj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "7d3821b4-4982-48e1-893a-bb38ed2029ca",
+   "question_id": "CH_1782273758180_5q1k",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "aacb27fb-6278-484e-bcc2-adfd3bb27f3b",
+   "question_id": "CH_1782274733004_auh8",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "152ad353-c64e-4eb4-bc38-81f4f708ea2c",
+   "question_id": "CH_1782273613069_rymv",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "5dca48e2-29de-4391-a95f-a14b9bb4632a",
+   "question_id": "CH_1782273613069_e8im",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "6c9c7bf5-bcfc-405e-b901-be0f9b4b0227",
+   "question_id": "CH_1782275403318_lhwa",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "4efa0fb9-0f63-4a37-b0d1-b07381c9e5db",
+   "question_id": "CH_1782271717846_xras",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "b7aab12a-0ec9-4880-a08a-7f3be66aed11",
+   "question_id": "CH_1783572940886_kspa",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "52262af4-8179-4aed-b5f3-fa8328d075a0",
+   "question_id": "CH_1782271717846_g0eq",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "b89d354a-03f7-4ebf-aaa3-d843e6f124ea",
+   "question_id": "CH_1782271717846_zf9x",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "3e63bcac-d7eb-468f-9b32-a4f4b84d0fdc",
+   "question_id": "CH_1783573244630_8oqu",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "7786ea7d-1635-4d7c-9127-87dd469e702d",
+   "question_id": "CH_1782271717846_vd18",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "6e7f7a1a-249a-41fd-9d1a-66679e91bb52",
+   "question_id": "CH_1782275403318_gpqv",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "9fcc8918-42ac-4115-879b-1cfde69cede6",
+   "question_id": "CH_1783573244630_fhxr",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "f88dc193-d731-4711-bad3-f7716e023ebd",
+   "question_id": "CH_1782271717846_arlu",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "ffe60bfd-16ed-4560-8b40-84444153b3f5",
+   "question_id": "CH_1782273613069_16cd",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "91522f02-6892-4868-aa4e-a4385d73cde7",
+   "question_id": "CH_1782273613070_kvd2",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "f62765bb-7374-4915-baf7-f14d877a8970",
+   "question_id": "CH_1782273613070_h6nr",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "6492599b-cf38-45c2-8ff7-b98135d69159",
+   "question_id": "CH_1782273613070_kjvz",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "55f2d2d7-0a40-4bb0-9e48-e7e0163974cf",
+   "question_id": "CH_1782273613070_jv8r",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "7d2c1f74-33e9-42d2-99bf-c9a2b5551a5f",
+   "question_id": "CH_1782275403318_t8v8",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "8cc502a5-2c80-4957-af14-12b66380fef8",
+   "question_id": "CH_1783598641745_fpam",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "734d9384-4c56-4000-b219-7b2e458f6f45",
+   "question_id": "CH_1782275403318_jio6",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó"
+  },
+  {
+   "id": "4f9861e7-7a55-48bd-bfcb-1c7110e077d2",
+   "question_id": "CH_1782275403318_b1hj",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "46ec8b15-24bd-4ced-b319-8905fcdf3a3e",
+   "question_id": "CH_1782273613070_xk2k",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "9288fcdc-ef1a-4af1-98b5-7659363f7342",
+   "question_id": "CH_1782273613070_l6tv",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "e808e069-3458-4cf8-9e6a-cf7ee8f01808",
+   "question_id": "CH_1782273758180_ga1r",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "4c98b5c5-4ad0-4c70-bb29-05f8cce08de5",
+   "question_id": "CH_1782275403318_m7io",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "15df3f95-4aa4-4b06-8433-6fb52d6fe32a",
+   "question_id": "CH_1782273613070_vspj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "c0b1aab3-3f43-4560-a1ba-6f4eb69d4d8c",
+   "question_id": "CH_1782273613070_3oaj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "77f9862e-b511-4a6b-aa73-8a2e6c6da1d2",
+   "question_id": "CH_1782275403318_zpy8",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "f2fa08a4-e67a-4178-a413-f9cd0d7175ff",
+   "question_id": "CH_1782271717846_t5kf",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "01bd7abc-6445-4638-849e-052a9793bc1f",
+   "question_id": "CH_1783573244630_atu0",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "4ef82db9-4089-4c06-9c7a-3b55e7b04c92",
+   "question_id": "CH_1782274018789_h7f6",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "c248ef13-9082-4f6d-8161-fe7355938daa",
+   "question_id": "CH_1789054973577_39q3",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "a5868699-0474-46ac-8ad2-52050e1c2cd4",
+   "question_id": "CH_1782273613069_nwzw",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "cb4fb135-a239-428a-b3ad-aabb0b61a40e",
+   "question_id": "CH_1783584266617_esj7",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "8f4c1425-e362-4a6c-a217-64a7690ed3b0",
+   "question_id": "CH_1783584266617_d4ln",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "8d21e45a-afce-4a06-8f0d-714207cc20b7",
+   "question_id": "CH_1782274733004_e64p",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "6adf2a87-76ac-4b6c-a6ca-62949d09ef83",
+   "question_id": "CH_1782274733004_y25i",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "25c85c31-b767-4939-a98c-2b0b9cbc23b9",
+   "question_id": "CH_1782274733004_b90p",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "5a97a7eb-6c11-4d68-8d91-a17c614d32bb",
+   "question_id": "CH_1782274733004_0r4n",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "86854f8e-36da-4a73-b58c-e0d634f97ff5",
+   "question_id": "CH_1782274733004_7wg3",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "93ba22f3-5f44-4279-aa26-d6b6631adf8f",
+   "question_id": "CH_1782274733004_se3q",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "23dc9d99-2617-4e46-86a8-21010f3b9f69",
+   "question_id": "CH_1782274733004_vcgi",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "f46c8060-5eda-467b-9eda-02a65220a340",
+   "question_id": "CH_1782274733004_shoy",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "5be182b0-e232-451d-a789-80c9592152ec",
+   "question_id": "CH_1783584266617_v7j4",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "02440080-6ec7-4b6a-8b34-79212204c321",
+   "question_id": "CH_1782274018789_jti8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "b5f0f41f-6994-4bf8-96fd-bb9a72b585cf",
+   "question_id": "CH_1782275918045_txya",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "124f6593-ea8d-48f5-8d43-8c9e411b12e7",
+   "question_id": "CH_1782274018789_9v1z",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "9a56c3ba-7a47-4e0b-81a1-f81c31558831",
+   "question_id": "CH_1782274018789_tzzv",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "bc0c6338-9abc-4a3f-b776-ab943adf6436",
+   "question_id": "CH_1782274446965_5qkx",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định"
+  },
+  {
+   "id": "7d741202-800e-4123-9163-172be3da3b86",
+   "question_id": "CH_1782275918045_1hi2",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "55ce688d-a81e-486c-9ce4-accf301dbc18",
+   "question_id": "CH_1782275918045_myve",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "9b3d4f47-e9b7-4dbe-bbf8-96b2d04ca163",
+   "question_id": "CH_1782274446965_zmbv",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định"
+  },
+  {
+   "id": "239fa317-3592-4a6b-942c-d066aeec9b09",
+   "question_id": "CH_1782275403318_mu1d",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó"
+  },
+  {
+   "id": "f2c2f91c-8eca-4750-a03a-369df2b11583",
+   "question_id": "CH_1782275403318_zuo7",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "c09b5e54-5c65-4703-9fa7-db041852c17b",
+   "question_id": "CH_1782275403318_7as3",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "ecbd4fb2-255f-4e5d-b63f-8f210c6629d0",
+   "question_id": "CH_1782275403318_1f5q",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "0341a799-92f4-4fa6-a19c-39ffb40ee3a9",
+   "question_id": "CH_1782275918045_k8xd",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "6425b591-9f0f-4c67-aac5-cdacf25702d5",
+   "question_id": "CH_1782275918045_sdgl",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "99c9fd78-9860-47db-96ec-8f2df061325f",
+   "question_id": "CH_1782275918045_06dx",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "2dceddda-a6fc-48e7-82a9-c5028dacc64f",
+   "question_id": "CH_1782275918045_m970",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "def4cb67-1c8c-4ee8-8246-dfe0d4ddda36",
+   "question_id": "CH_1782275039909_63bs",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "c27562f1-f27c-4160-b4fb-93dcd4082189",
+   "question_id": "CH_1782274733004_w6ii",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "e7efd621-9066-4be3-854e-302768d742ea",
+   "question_id": "CH_1782275039909_tt92",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "52151b4f-11c3-4d92-b883-b2578cb5eec1",
+   "question_id": "CH_1782275039909_0sab",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "7d764ca4-0842-4497-b9a8-d514769f6516",
+   "question_id": "CH_1782275039909_56e0",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "9f4ef6aa-591e-401e-b151-90f41018b5e3",
+   "question_id": "CH_1782275039909_eka1",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "14ec0725-ac26-4372-a73d-91f35dc10b45",
+   "question_id": "CH_1782275039909_o6ft",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "77489630-ca11-462d-8d19-343b33c5add9",
+   "question_id": "CH_1782275039909_dukn",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "b127d116-2b2b-474c-8bd7-bc53a0adfd15",
+   "question_id": "CH_1782275039909_babz",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "04020ecd-8ff6-4c3b-96f3-1bba4257150c",
+   "question_id": "CH_1782275039909_tr60",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "e8cd17de-3c27-4149-be22-6de0229de418",
+   "question_id": "CH_1782275039909_g9ee",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "22a704ac-a83c-402e-9d3a-48b3ab9f52b3",
+   "question_id": "CH_1782275039909_9oml",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "eed31c84-f129-4709-8b62-406b0186425f",
+   "question_id": "CH_1782275039909_jlkk",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "11970552-87e0-43c1-97d0-4ee48ed4c962",
+   "question_id": "CH_1782275039909_zxyy",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "917ae4ef-6a95-41dd-aaf1-60f67dcea224",
+   "question_id": "CH_1782275039909_jo4r",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "b4cbb7d7-90d4-4709-aa3c-1d601d3b0c37",
+   "question_id": "CH_1782275039909_3va2",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "46228818-cc63-46a9-90f3-fc57cd8ccec8",
+   "question_id": "CH_1782275039909_rkm5",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "1e781c0f-bcfd-482f-b071-66dfe91234f1",
+   "question_id": "CH_1782275039909_0fmv",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "9e35ce6c-4ac9-4096-8837-e2525b084d64",
+   "question_id": "CH_1782275039909_zr5u",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "667110f2-0175-4a1a-97e6-2f203b8cbc95",
+   "question_id": "CH_1782275918045_a94k",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "5f752c06-f836-4d31-828b-2e3d53938ddf",
+   "question_id": "CH_1782275918045_zqtd",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "c337f859-20a5-4444-8854-84ebd5be4122",
+   "question_id": "CH_1783573824304_tq6q",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "88b5dd96-6928-4fd5-bed0-9bd040fe7da8",
+   "question_id": "CH_1783573824304_dvud",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "0a22bffb-add7-4345-ae79-a014e51e5f08",
+   "question_id": "CH_1782275918045_6nac",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "dc47c8ce-f8ec-4f8f-8a60-04246777864d",
+   "question_id": "CH_1783584463566_vg4l",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "f6be2537-58c4-4a56-bf97-343e5c9a6acb",
+   "question_id": "CH_1783573639814_z2uy",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "cb908365-a0ab-429d-bd88-85ad305242f9",
+   "question_id": "CH_1783573244630_nhh9",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "c699241e-d231-4274-a09f-b95c6ff39f77",
+   "question_id": "CH_1783584266617_6lk4",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "db2c08c6-8273-45be-afea-86d1197cbc0b",
+   "question_id": "CH_1783584044609_s2n5",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "1d3fd29c-439b-4907-abc6-998dbc564a77",
+   "question_id": "CH_1783584044609_p947",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "1b6e1239-8ad7-491b-af02-0b783d7b94be",
+   "question_id": "CH_1783584266617_kcdq",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "c2d4c69a-9ef8-458e-821c-42be4d674717",
+   "question_id": "CH_1783584266617_57n0",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "327aa20a-2175-4999-b2d9-b433f5af1a62",
+   "question_id": "CH_1783573824304_1frr",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "fd4d8ea9-6bd2-4c92-be02-80f208f42e26",
+   "question_id": "CH_1783584463566_ss4p",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "7e7b1cca-30c2-4134-b15e-ff51578bb2e8",
+   "question_id": "CH_1783584463566_gjws",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "eec01b13-8647-432e-8ef9-7360b7160315",
+   "question_id": "CH_1783573824304_8gxs",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "e822ddb1-b478-4ad0-bd42-269383a2febb",
+   "question_id": "CH_1783584044609_cpwj",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "eb937561-2cdf-4961-b14e-9ff5d4dc55ba",
+   "question_id": "CH_1782274446965_fovh",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Ứng dụng thực tế của bất đẳng thức"
+  },
+  {
+   "id": "fa7d545e-65ac-449a-a736-a136e991054f",
+   "question_id": "CH_1782275918045_b8xv",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "cd9de01a-5e18-4c48-896f-5c2182d798af",
+   "question_id": "CH_1782273613069_nzlo",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "a96710cf-c550-4ba4-9e59-3e56d4daf6d2",
+   "question_id": "CH_1782273613069_flb3",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "bad6d528-d661-464d-b4bc-cbc59422d23c",
+   "question_id": "CH_1782273613069_7z63",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "40d46052-0a85-4381-a5aa-b9e34b6b7e64",
+   "question_id": "CH_1782273613069_lurk",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "28f4d9b0-2467-4c15-ba95-f8d95ff6448f",
+   "question_id": "CH_1782273613069_e4al",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "4a116c86-487f-4289-af7c-6ca328306bcc",
+   "question_id": "CH_1783584266617_4uuo",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "0aef3036-6b52-4f27-8c58-24fd213df97f",
+   "question_id": "CH_1783584266617_fnpd",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "19406cae-6105-470d-90d3-99f7c9d2ef1e",
+   "question_id": "CH_1783584463566_g4x1",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "147b6c28-3ea7-4f04-9423-1b50b6fbce4b",
+   "question_id": "CH_1782274446965_yilh",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định"
+  },
+  {
+   "id": "0d770c53-0215-4e1a-93b6-c3c3e02bf794",
+   "question_id": "CH_1782275039909_dbzp",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "1f5a0651-eecb-47b8-9916-5d446fba151e",
+   "question_id": "CH_1782274018789_7ufn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "fa0139d9-6bc7-4fc9-8e9d-553b9dc850ef",
+   "question_id": "CH_1782274593541_1rei",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "6e27d5f8-579a-48af-82e5-1d06ec6efad3",
+   "question_id": "CH_1782273758180_j3l2",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "4b31e275-166f-412b-acae-a7774564f74c",
+   "question_id": "CH_1782273758180_xv56",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "f9fcbae6-7bc0-4410-9004-6ed7704b68c4",
+   "question_id": "CH_1782274018789_2qoz",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "7fad280e-851a-4095-951f-faebe63909c0",
+   "question_id": "CH_1782274018789_6kvg",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "762c4585-e149-4004-9c45-15f79969c4df",
+   "question_id": "CH_1782274018789_w6dn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "3817a4a3-0335-4e42-88d8-594e0aaed56e",
+   "question_id": "CH_1782274018789_ob9r",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "2df7544f-54b1-4b51-b63d-4d481594de06",
+   "question_id": "CH_1782274018789_sre9",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "350f5c9b-bcc5-4ab2-812e-4076e8f38359",
+   "question_id": "CH_1782274018789_ftln",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "336bfe1d-adee-4034-b83d-33eef62f9c38",
+   "question_id": "CH_1782274018789_hck1",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "ef4af8ae-9b54-4371-b369-9d5deb871549",
+   "question_id": "CH_1782274018789_711i",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "d3945701-a396-441a-a744-b7d1c27755b9",
+   "question_id": "CH_1782274593541_475w",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "9d4287ce-2add-4e8b-8f54-aa73192b4ed9",
+   "question_id": "CH_1782274018789_uqml",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "4c8d81d7-d7a0-45ed-aa27-a863e4e548ef",
+   "question_id": "CH_1782274018789_dy62",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "92e14389-18d7-4adb-a141-1fdac90c222e",
+   "question_id": "CH_1782274018789_zzz8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "e9b7e794-b1f1-4bb5-83c9-40d6b197f021",
+   "question_id": "CH_1782274018789_pfx6",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "e1a0edb9-b351-4b76-987f-44c33603734a",
+   "question_id": "CH_1782274018789_9mh8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "a3d8786a-d17e-4571-8622-d0e15b8e871f",
+   "question_id": "CH_1782274018789_w1zy",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "7815f66f-e68e-4b2f-8640-f8863d3da984",
+   "question_id": "CH_1782274018789_vbhw",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "13ce097c-635d-43d9-b7a2-456233ae6a30",
+   "question_id": "CH_1782274018789_vmr9",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "dc78af5b-5f60-419c-ac44-8b5f63898c09",
+   "question_id": "CH_1782274018789_6w2d",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "54f8c43b-5ae0-4bec-878b-b0f6a93287f0",
+   "question_id": "CH_1782274018789_3vjh",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "7569e186-88a8-422b-8fde-679af1fb90ea",
+   "question_id": "CH_1782274018789_fdoc",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "e6d3a814-bd07-4089-af9c-5d50d04e383d",
+   "question_id": "CH_1782274018789_3zc6",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "0662a016-b834-4e00-82b7-a38ce603f1ea",
+   "question_id": "CH_1782274018789_rn6t",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "969bcef0-079b-4647-b3f1-05c57bac33b0",
+   "question_id": "CH_1782274018789_t9yj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "12b0a401-2324-4412-aeb4-b72775ffa39b",
+   "question_id": "CH_1782274018789_6lw4",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "768452cc-5fdf-498f-aaff-da92ac4022a2",
+   "question_id": "CH_1782274446965_bvoj",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Nhận biết bất đẳng thức, viết bất đẳng thức diễn tả một khẳng định"
+  },
+  {
+   "id": "75f208a7-9026-499d-867d-97e9245eca61",
+   "question_id": "CH_1782274018789_dps9",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "9ea22c92-19f9-4621-a3f8-c803480244b5",
+   "question_id": "CH_1782274195877_kac8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "976b66e0-bcd2-44c4-a326-9582631e0a69",
+   "question_id": "CH_1782274195877_amc8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "39f0e9ec-a9b8-4697-935c-554a489156a0",
+   "question_id": "CH_1782274593541_xzb0",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "81e2c435-4817-47c0-9ba3-ed2a23eea013",
+   "question_id": "CH_1782274593541_cbus",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "5c0f4003-cdfb-44ca-8118-cba6984b660d",
+   "question_id": "CH_1782274733004_mjre",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "36d7894d-54b8-4987-8d6a-917417f83efb",
+   "question_id": "CH_1782274593541_xfky",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "76083277-4d76-4496-bd96-8c8cb69d325c",
+   "question_id": "CH_1782274593541_9pxy",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "3bc6ae9a-8183-4deb-bf46-34a77334c8b9",
+   "question_id": "CH_1782274593541_cfbd",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "efdc0232-2e4b-4a61-84cb-1d796b87434d",
+   "question_id": "CH_1782274446965_9h9e",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Ứng dụng thực tế của bất đẳng thức"
+  },
+  {
+   "id": "639a1de1-8669-4306-809c-598e6843c4ae",
+   "question_id": "CH_1782274733004_xe6o",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "ae94e795-7078-447b-b36c-7d939d077316",
+   "question_id": "CH_1782275403318_xoye",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "eed2d25c-278f-41dd-80ae-3f7000a461e6",
+   "question_id": "CH_1782275403318_4i8u",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "8906ff43-2f1d-44eb-9178-8096893dcb81",
+   "question_id": "CH_1782275403318_hhcq",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "400a7ede-7435-4046-a4ad-ced18e64c9e2",
+   "question_id": "CH_1782275403318_388e",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "e9eee21f-b956-441e-9273-a895f06b8155",
+   "question_id": "CH_1782275403318_bqwt",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "c32ac747-b719-413c-bf22-02f9c802a69e",
+   "question_id": "CH_1782275403318_j5he",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "951854d5-6beb-46f3-add4-b20dd5fe3497",
+   "question_id": "CH_1782275403318_adt3",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "de509298-871d-4223-836b-c7ddee2de105",
+   "question_id": "CH_1782275403318_j4lh",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "bf996278-3ffe-48d1-b7e6-0f582feb4efe",
+   "question_id": "CH_1782275403318_kotb",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "1fddf634-fe6b-4c1f-99c7-6a8d88755dc0",
+   "question_id": "CH_1782275403318_r8md",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "78db7983-cc55-487b-9706-f02461d68331",
+   "question_id": "CH_1782275403318_0e4t",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "29ee4a8b-8823-4a6f-9e9e-e751899df3e6",
+   "question_id": "CH_1782275403318_qsf2",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "9a29be31-3dc2-426c-ad1e-313fdd112501",
+   "question_id": "CH_1782275403318_rt07",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "46ba37d5-f8c3-4f55-8973-2ab63613a7aa",
+   "question_id": "CH_1782275403318_sorf",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "c8d7011a-0b7f-493b-80a5-d44ba9536441",
+   "question_id": "CH_1782275403318_qy65",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "d96ee6cb-1c9c-4e63-ae4c-4057f7249b98",
+   "question_id": "CH_1782275403318_iu0f",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "5d652c4c-e82b-41b6-bb45-0786b4f26f7f",
+   "question_id": "CH_1782275403318_d90h",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "d5e575c9-abd9-4eaa-a9b5-53aa33ebcb24",
+   "question_id": "CH_1782275403318_hksp",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "38118112-0600-4890-b976-755a58ecd364",
+   "question_id": "CH_1782275403318_gchy",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "343cc887-dfd6-403c-ab84-8d4d658b04d9",
+   "question_id": "CH_1782275403318_qgcv",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "6128075c-2f4a-4de4-b585-ab50c90e547e",
+   "question_id": "CH_1782275403318_0rq6",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "04b0f246-2e3d-4d40-a167-5dc462c611e5",
+   "question_id": "CH_1782275918045_gb4a",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "14f10189-7c6f-4848-8732-fd637850253d",
+   "question_id": "CH_1782275918045_p96o",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "24238edf-eb9c-4ea6-984b-f5b972e75176",
+   "question_id": "CH_1782275918045_8ix5",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "01c44c02-7849-4f2f-8f98-83088770aeb4",
+   "question_id": "CH_1782275918045_y453",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "d0308a3d-9ed7-4e15-9387-74cf5561d0ca",
+   "question_id": "CH_1782275918045_graa",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "9b066cd6-f2d4-4e4e-8caa-ab8dac830ca7",
+   "question_id": "CH_1782275918045_l1i0",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "ed3c66f8-6bfa-4921-a7a2-e94335735610",
+   "question_id": "CH_1782275918045_586h",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "27434ef3-43bf-47be-a25f-85cecf74af4a",
+   "question_id": "CH_1783572940886_j75d",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "218c7354-34ef-4833-923f-ab9095faabf6",
+   "question_id": "CH_1782275918045_b520",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "1aabb431-c7e9-461c-838e-39b68afb598b",
+   "question_id": "CH_1782275918045_nhdi",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "7170c2f9-6f74-4e7b-87d6-2ec2dee5028c",
+   "question_id": "CH_1782275918045_e2nb",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "8101df90-dc8f-49e6-b77f-d57522497a53",
+   "question_id": "CH_1782275918045_q6da",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "27dd60e2-c545-4d49-95d4-5fd55d3f1373",
+   "question_id": "CH_1782275918045_jxuz",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "f59f8e20-1a35-4655-ad87-e9b0551b8d7f",
+   "question_id": "CH_1783572940886_7edb",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "977361e3-1612-4c4e-88b7-32d21702aeb5",
+   "question_id": "CH_1783572940886_cyrk",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "9033135b-e4c3-48f3-b888-706350244311",
+   "question_id": "CH_1782275918045_bghf",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "ab171d3f-e881-4a92-bc11-60a1c579a32f",
+   "question_id": "CH_1782275918045_3vpz",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "c99cf5c1-718c-464e-9992-c7faf0fc06d4",
+   "question_id": "CH_1783572940886_6upy",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "2afced1b-6cc8-4378-826a-3b1bfd5dd81f",
+   "question_id": "CH_1782275918045_oy0w",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "22f265e9-8d9a-4573-b824-568959b746e3",
+   "question_id": "CH_1782275918045_y2l9",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "d489ef88-4c8a-447e-a3ff-aff3184cf5c1",
+   "question_id": "CH_1783572940885_1hg3",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "f2770507-92ec-4605-a83e-555b9aef046f",
+   "question_id": "CH_1782275918045_5isy",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "99233788-2165-4d8d-a6fb-ae6184865f3c",
+   "question_id": "CH_1783572940885_4mzo",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "3c50ea86-14fc-4d66-861a-fcecd7033657",
+   "question_id": "CH_1783572940886_tivz",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "5eb7d0fa-4c9c-45c2-9b4c-4359e677d64c",
+   "question_id": "CH_1783572940885_fu0c",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "ed728a6d-2e21-491a-90dc-0310bb666c51",
+   "question_id": "CH_1783572940885_suhr",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "b013f298-4b1e-490b-99d0-9cfd57994842",
+   "question_id": "CH_1783572940886_24zk",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "609a9cea-16b4-42b5-85b5-0c2c269a07e0",
+   "question_id": "CH_1783572940886_scrf",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "addfb2d5-fa51-424a-938d-d12bebe7b7a7",
+   "question_id": "CH_1783572940886_9izm",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "700ba6c4-8630-45b1-b3bb-1505c00becd4",
+   "question_id": "CH_1783572940886_q52g",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "57e8b0f1-66ea-4237-aad2-5f7eb9d8fb39",
+   "question_id": "CH_1783572940886_4d0b",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "6c29ce26-242e-4abd-a814-47187c499384",
+   "question_id": "CH_1783572940886_dkwt",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "776ecb6c-209d-4cd1-b504-8f22aaf08856",
+   "question_id": "CH_1783572940886_tpm8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "32958eb2-541d-4c55-926b-38214d9aa7fd",
+   "question_id": "CH_1783573639814_5v8o",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "08a0af84-6b06-45a9-b86f-ccac6e6d4730",
+   "question_id": "CH_1783573639814_xl6h",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "b7dbc08f-7e73-4d01-9d57-17d90c67fe76",
+   "question_id": "CH_1783573639814_u9ba",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "68ef1368-25a9-435c-a85c-cd83e4bf87c0",
+   "question_id": "CH_1783573639814_4j41",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "b5ac1a31-7420-45db-a6ed-ea1bb1d904f7",
+   "question_id": "CH_1783573639814_xiel",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "973b1a20-88c9-4512-8cce-3a9e695f80f1",
+   "question_id": "CH_1783573639814_ne2b",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "d2e86139-ec69-4d7d-bda5-e110e488bd0c",
+   "question_id": "CH_1783573639814_yysr",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "ca4e0805-9df3-464f-82ab-33f9de6e1b5c",
+   "question_id": "CH_1783573639814_v7q7",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "c6e9df73-6002-42c2-8373-5078b40441df",
+   "question_id": "CH_1783573639814_6lgu",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "f1ef8def-c4f4-43ed-9171-c8e9bd05f3d2",
+   "question_id": "CH_1783573639814_qtzm",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "512cdfe2-5d79-4664-a8bc-11725e2761f2",
+   "question_id": "CH_1783573639814_njad",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "04aaf431-9a72-44ac-8178-71a9a6931213",
+   "question_id": "CH_1783573639814_b5rn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "261c165f-5349-46aa-a96c-ae606ec16b97",
+   "question_id": "CH_1783573824304_30d8",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "b072a7c5-107a-45f4-8ffa-c7b70b226d77",
+   "question_id": "CH_1783573824304_d4hm",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "609673dd-61d9-46c6-89d2-12c0aa677feb",
+   "question_id": "CH_1783573824304_drv4",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "768bf59e-b17e-4037-ab5c-ff3380727214",
+   "question_id": "CH_1783573824304_s1ww",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "76aebde7-2b39-48a1-a814-4572804b7549",
+   "question_id": "CH_1783598641745_cpi0",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "3e227370-db3c-42ba-8392-188e6eedc7ff",
+   "question_id": "CH_1783584044609_3tjm",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "0465aeff-43cd-465d-91ff-3e0fbd6366bf",
+   "question_id": "CH_1783584044609_ekaw",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "f66964e0-36e3-4dc5-8554-ecc2fae609d1",
+   "question_id": "CH_1783584044608_u4h9",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "fb0ebb69-533d-4e45-ba30-39d8b625a30b",
+   "question_id": "CH_1783584044609_gsue",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "91c0dd61-b28c-46c8-b9db-51aac6197314",
+   "question_id": "CH_1783584044609_3ico",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "310521b8-00e2-4597-a8cd-dc06143c7fc1",
+   "question_id": "CH_1783584044609_w6u0",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "fdf5044a-1cf7-46cd-b069-d789ef99ca16",
+   "question_id": "CH_1783584044609_u8up",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "d705df4a-70e9-4c93-aec8-123aad96ab7f",
+   "question_id": "CH_1783584044609_oeb4",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "224b6e5b-332a-4c79-83af-73553ffdb5aa",
+   "question_id": "CH_1783584044609_01bl",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "df01eef2-ff63-451d-9d51-9aaf05cf26d5",
+   "question_id": "CH_1783584044609_3n1k",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "07ea5c1a-c063-49eb-ad98-a800f9ae0e8f",
+   "question_id": "CH_1783584044608_6v3u",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "65a72d67-9baf-4efa-992c-f1f8140bf80d",
+   "question_id": "CH_1783573244630_nch1",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "bbae6e2a-e6af-4a72-91f1-266b3d7563b9",
+   "question_id": "CH_1783584266617_1rfs",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "791d0317-5a56-4ef3-acd4-8eba06acbc25",
+   "question_id": "CH_1783584266617_13nw",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "6d0ff03d-5835-4f02-9bf5-c9fd83b77278",
+   "question_id": "CH_1783584266617_nf8z",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "b5a871cb-2585-4110-928d-ea4c8169bdb3",
+   "question_id": "CH_1783584266617_hen3",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "fec5cc9a-6d7c-44d4-af0f-f750b551c39c",
+   "question_id": "CH_1783584266617_3d1v",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "fe0cae47-0c93-40a8-b48f-ef8f03747ec4",
+   "question_id": "CH_1783584463566_1hqa",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "bebc7955-625f-4b11-83e4-408c5c6fdc3f",
+   "question_id": "CH_1783598641745_ovb4",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "2b4cc89c-3125-404f-a4fd-ce67d655943f",
+   "question_id": "CH_1783584463566_triw",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "314dcc12-e37a-4030-a7df-fa58f1e0827b",
+   "question_id": "CH_1783584463566_7od8",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "2a1601a2-5fbc-4632-9d5c-43897e97d0e4",
+   "question_id": "CH_1783584463566_cax7",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "2b4fb486-97de-4af3-bf1e-a70fcb759697",
+   "question_id": "CH_1783584463566_gisp",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "ddbdc2e8-78fa-4671-a5e7-831b8d375823",
+   "question_id": "CH_1783584463566_itmc",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "404a07bd-00e8-4667-8a55-101bc0ee68d6",
+   "question_id": "CH_1783584463566_vmrm",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "ca65881f-63f6-43f1-b234-290ea01f3e31",
+   "question_id": "CH_1783573639814_99xp",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "81de46c7-4e84-4c06-966e-39d0c7093159",
+   "question_id": "CH_1783573639814_hgnz",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "5a695b01-27b3-48a9-829f-b8a7016e0976",
+   "question_id": "CH_1783573244630_6p9y",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "5e935aac-c88c-4467-a40f-370726247926",
+   "question_id": "CH_1783573639814_rjod",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "7adcc7cc-2a35-4935-bee1-0ea0c81c7fce",
+   "question_id": "CH_1783573824304_llzf",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "91f05546-dbc9-4193-84f5-259d6c90503c",
+   "question_id": "CH_1782271717846_ygo6",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "1227a5a5-f7a0-4ce9-a8fd-afacd0153601",
+   "question_id": "CH_1782273758180_yyeg",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "dc1536ed-9801-44dd-b2d8-8d9546013696",
+   "question_id": "CH_1783598641745_x4oj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "215b6095-86c0-40d9-884b-e6c60920a833",
+   "question_id": "CH_1782274195877_3jdf",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "6dd99d67-c216-452f-b1f4-c91846de2091",
+   "question_id": "CH_1783573244630_9b6v",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "1e546192-70c1-420a-82bc-d6d21f813702",
+   "question_id": "CH_1782273758180_l0tw",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bằng cách đặt ẩn phụ"
+  },
+  {
+   "id": "b1890c0d-7936-43b6-be0c-8ee7d92ff18d",
+   "question_id": "CH_1782274018789_jjs2",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "0403cd1c-8639-42f1-aba6-05f4987398ed",
+   "question_id": "CH_1783584044609_l4z2",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "b0116342-ce7d-4186-ba39-a9923d9c7276",
+   "question_id": "CH_1783584044609_igka",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "ac902145-8e10-42ab-b911-7bfa3c059613",
+   "question_id": "CH_1782274733004_9js9",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "e7735c62-2a5d-46b1-b349-808e22294694",
+   "question_id": "CH_1782274733004_bgya",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "bcd8f968-d27a-46a2-ac81-9f27a1e7696c",
+   "question_id": "CH_1783584463566_qyp4",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "a3916dee-b9f7-423c-897c-6daa0cbf02e4",
+   "question_id": "CH_1782275403318_y7i1",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "b8742f4d-2dcc-4ff8-b09c-22f444151c8f",
+   "question_id": "CH_1783584463566_0pge",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Nhận biết bất phương trình bậc nhất một ẩn và nghiệm của nó"
+  },
+  {
+   "id": "945a0271-eea2-45b4-bef5-e1e7de7f4c02",
+   "question_id": "CH_1782275403318_68ib",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "f4764924-4a27-4f7b-8023-44aa3abfced2",
+   "question_id": "CH_1782275403318_uzqj",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "76e2afbb-fc81-4fa8-95cd-b5fafa51408a",
+   "question_id": "CH_1782275403318_5ger",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "ef5b56a4-40a8-49d9-ae47-67f9f2fabfad",
+   "question_id": "CH_1783598641744_1y1x",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "97bd6824-327c-480b-9dd4-653f023b5ad4",
+   "question_id": "CH_1783598641745_xldt",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "f755b451-b488-49af-bac2-1103e8493df4",
+   "question_id": "CH_1782275918045_kna8",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "159d861a-6305-4b56-bee6-31796ae981d9",
+   "question_id": "CH_1782275403318_5y75",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "37dbc020-b1b6-4917-9425-9481d7fc2924",
+   "question_id": "CH_1783598641745_r3hb",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình đưa về phương trình tích"
+  },
+  {
+   "id": "46b90174-ceb5-4963-af92-5d62e1b90d94",
+   "question_id": "CH_1783598641745_znod",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "67ca8bbd-c5c4-4e0c-8dd5-41c3fe3ebbe2",
+   "question_id": "CH_1783598641745_3s3a",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "2f09f593-b7f2-4925-9830-3f9565ba1eea",
+   "question_id": "CH_1783598641745_1fvt",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "bd827723-3596-4a0a-95ae-7ba41898e9fb",
+   "question_id": "CH_1783598641745_nu6j",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "97cfcd6c-a88a-47d5-944c-f806086555cb",
+   "question_id": "CH_1783598641745_9cnk",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "5ef9c4c2-6258-41ab-a323-dd3b0924d115",
+   "question_id": "CH_1783598641745_h7pu",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "e854486e-d226-473c-8ae4-6fa2eefaa147",
+   "question_id": "CH_1783598641745_jyus",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "471ed3eb-73f4-4930-b99f-1f986d7c780c",
+   "question_id": "CH_1783598641745_h4ih",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình bậc nhất một ẩn cơ bản"
+  },
+  {
+   "id": "92c34aeb-25d7-4ce1-b1db-4f0ed2e5a944",
+   "question_id": "CH_1783598641745_rnm1",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Giải bất phương trình đưa về bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "b6880522-dc6a-4b8f-bfab-470cd0be8221",
+   "question_id": "CH_1783598641745_ju3t",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "fa7fc1c7-cd76-4961-8554-e0ce87e300e9",
+   "question_id": "CH_1783598641745_gvsd",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "41f038a4-982c-4fe5-b076-1be954f59457",
+   "question_id": "CH_1782275918045_dtcl",
+   "lesson": "Bài 3. Bất phương trình bậc nhất một ẩn",
+   "math_form": "Ứng dụng thực tế của bất phương trình bậc nhất một ẩn"
+  },
+  {
+   "id": "a1c9af7b-4083-4f3f-a7f4-1abe70680770",
+   "question_id": "CH_1783573244630_jghq",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "1aa1af2d-ae46-48c8-bedf-8a6ff294f8da",
+   "question_id": "CH_1783584044609_68xs",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "So sánh hai số, hai biểu thức bằng tính chất của bất đẳng thức"
+  },
+  {
+   "id": "c21be953-b600-4351-a6d6-b7a272d2a236",
+   "question_id": "CH_1785217759976_jqyo",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "a492b3d3-fe35-4b26-a71b-2e8b8cf1d9fe",
+   "question_id": "CH_1785217759976_aw3i",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "a45bff93-bac7-4456-b10d-1269ffed1290",
+   "question_id": "CH_1785217759976_e10x",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "909634fe-3630-4ff5-8240-1843911b4492",
+   "question_id": "CH_1782275039909_6u50",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "f02a9200-6849-4fb0-bf6e-d39e36cf508e",
+   "question_id": "CH_1785228205146_w7qj",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "4b2adfe1-3756-4641-914b-2727e2b78dbf",
+   "question_id": "CH_1785228205146_651a",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải bài toán bằng cách lập phương trình"
+  },
+  {
+   "id": "1932eb9d-50f3-4fe4-9823-02e24d65f7e1",
+   "question_id": "CH_1787191692850_csfn",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình tích cơ bản"
+  },
+  {
+   "id": "06d7c7f6-a89e-4ebc-bf4a-c9bd66114503",
+   "question_id": "CH_1787191692850_bk7n",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  },
+  {
+   "id": "29a3d9a2-0bfe-470a-aa00-4a2d03ee0e8f",
+   "question_id": "CH_1787191692850_h78c",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "784c5b7d-5504-4a2c-9902-d363d32b1620",
+   "question_id": "CH_1787191692850_2gc6",
+   "lesson": "Bài 1. Phương trình quy về phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình chứa ẩn ở mẫu"
+  },
+  {
+   "id": "fb018c82-3081-4688-a033-be1ae7859c4b",
+   "question_id": "CH_1787191692850_b0qu",
+   "lesson": "Bài 2. Bất đẳng thức và tính chất",
+   "math_form": "Chứng minh bất đẳng thức"
+  }
+ ]
+}

@@ -1,0 +1,892 @@
+{
+ "question_categories": [
+  {
+   "id": "cd078cee-6f58-4b4f-a8c1-73ae69c13f42",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn (bánh xe, đồng hồ, cổng vòm, sân khấu) liên quan đến độ dài cung và diện tích hình quạt, hình vành khuyên."
+  },
+  {
+   "id": "4c0b860e-b25e-4f8f-a64f-6eaaa0a4f858",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Nhận biết đường tròn, hình tròn, vị trí của điểm so với đường tròn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được đường tròn, hình tròn, tâm, bán kính và xác định được một điểm nằm trong, trên hay ngoài đường tròn."
+  },
+  {
+   "id": "d360643b-7ff8-4c27-a023-d438257c1d30",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Xác định được đường tròn đi qua các điểm cho trước và chứng minh được nhiều điểm cùng thuộc một đường tròn."
+  },
+  {
+   "id": "edf26728-e072-4cc2-b132-2e7c7fa375bb",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Tính chất đối xứng của đường tròn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được tâm đối xứng, trục đối xứng của đường tròn và vận dụng để giải toán."
+  },
+  {
+   "id": "0ef99c36-bfce-4830-b6f4-cd140098c3d3",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tính được bán kính đường tròn và khoảng cách giữa các điểm bằng định lí Pythagore và tính chất của đường tròn."
+  },
+  {
+   "id": "cd8849a9-2852-406a-b14d-2b6122ca2877",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được cung, dây, góc ở tâm và tính được số đo cung nhỏ, cung lớn của đường tròn."
+  },
+  {
+   "id": "ea36285b-128e-40d9-9ff0-24507737254e",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "So sánh độ dài hai dây và hai cung tương ứng",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "So sánh được hai dây, hai cung của một đường tròn dựa vào quan hệ giữa dây và cung căng dây."
+  },
+  {
+   "id": "dc8979c2-b90f-4bf7-9cd9-d9c159128c15",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất đường kính vuông góc với dây và liên hệ giữa dây với khoảng cách từ tâm đến dây để tính toán."
+  },
+  {
+   "id": "53550a98-87d7-4bf8-814a-6f6550f80ca1",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Chứng minh hình học liên quan đến dây và cung",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Chứng minh được các quan hệ bằng nhau, song song, vuông góc liên quan đến dây và cung của đường tròn."
+  },
+  {
+   "id": "86107ddf-95af-4edc-b559-3d41fb293de4",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính độ dài đường tròn, cung tròn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài đường tròn và độ dài cung tròn khi biết bán kính và số đo cung."
+  },
+  {
+   "id": "1d401203-3bab-4840-87d3-bc1990ab872a",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích hình tròn, hình quạt tròn và hình vành khuyên theo công thức."
+  },
+  {
+   "id": "5c00de53-1c92-4526-bc66-e9deea5c2820",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Xác định được đường thẳng cắt, tiếp xúc hay không giao với đường tròn dựa vào khoảng cách từ tâm đến đường thẳng và bán kính."
+  },
+  {
+   "id": "9186c70b-e48c-4e48-bea5-ce3c2266c7f1",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Nhận biết được tiếp tuyến của đường tròn, vận dụng được tính chất tiếp tuyến vuông góc với bán kính tại tiếp điểm và dấu hiệu nhận biết tiếp tuyến."
+  },
+  {
+   "id": "3296afb9-d109-4f75-bf31-82a494c9c2e1",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất của hai tiếp tuyến cắt nhau để chứng minh và tính toán."
+  },
+  {
+   "id": "9454419d-0ef2-47b2-8341-69a453172785",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Chứng minh, tính toán với tiếp tuyến",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Chứng minh được một đường thẳng là tiếp tuyến và tính được độ dài tiếp tuyến, bán kính, khoảng cách trong các bài toán về tiếp tuyến."
+  },
+  {
+   "id": "4a122309-a594-43d8-9883-eb559b6fcd5c",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Nhận biết vị trí tương đối của hai đường tròn",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Xác định được hai đường tròn cắt nhau, tiếp xúc ngoài, tiếp xúc trong, ngoài nhau hay đựng nhau dựa vào đoạn nối tâm và các bán kính."
+  },
+  {
+   "id": "a897c72c-9ffe-44ac-ace7-ba5969a757e0",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất đường nối tâm là trục đối xứng của hình gồm hai đường tròn để chứng minh và tính toán."
+  },
+  {
+   "id": "7b36d35a-4e53-4614-89b0-49ea7c469a45",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài dây chung, đoạn nối tâm, bán kính trong các bài toán về hai đường tròn cắt nhau hoặc tiếp xúc nhau."
+  },
+  {
+   "id": "84e4c4da-a874-49ff-99dc-e7495699f617",
+   "grade": "9",
+   "subject": "Hình học",
+   "topic": "Chương 5. Đường tròn",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 5",
+   "created_at": "2026-09-11T06:04:44.461848+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức về đường tròn, cung, dây, tiếp tuyến và vị trí tương đối để giải toán."
+  }
+ ],
+ "questions": [
+  {
+   "id": "2d9945b2-8964-4d3f-9bd5-642fd0f23e49",
+   "question_id": "CH_1789186956573_gg4f",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "9defb188-7d5e-4f64-a302-d8675b5c3cf4",
+   "question_id": "CH_1789186956574_cjlt",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn"
+  },
+  {
+   "id": "a33cbe28-fdef-4380-bb41-d1a9b3c44c8a",
+   "question_id": "CH_1789186956575_l9j8",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "e46374f1-cefa-4f56-ad05-16c8720c3ed8",
+   "question_id": "CH_1789186956576_oaiu",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "d8776316-6ac9-4e61-86d7-1a01bfd92a14",
+   "question_id": "CH_1789186956578_fw8o",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "46c01f26-2f0b-49c5-88ca-46a78b1d0e35",
+   "question_id": "CH_1789186956579_pld4",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "803a85bd-c6cd-4b16-8032-8771f8eb8e1a",
+   "question_id": "CH_1789186956580_74dj",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "3888485e-e3a1-4846-a688-5e451c814291",
+   "question_id": "CH_1789186956581_3hlz",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "7867bec3-c49c-46e0-9383-5554d9db3fc7",
+   "question_id": "CH_1789186956582_ckas",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "099ffdac-0181-4cc4-8abd-4d647cdd02ce",
+   "question_id": "CH_1789186956583_pm1l",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn"
+  },
+  {
+   "id": "741f11ca-9ab5-433a-841c-9d8457f4b911",
+   "question_id": "CH_1789186956585_pe9w",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Tính chất đối xứng của đường tròn"
+  },
+  {
+   "id": "5899204f-a0e3-4824-a91e-eee7d52bbbdf",
+   "question_id": "CH_1789186956586_k1in",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Tính chất đối xứng của đường tròn"
+  },
+  {
+   "id": "37cb924b-d900-4bd3-ad53-e185487dd9c1",
+   "question_id": "CH_1789186956590_1wcx",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "4c556ddb-b1e7-4178-a927-d87af5b45e0e",
+   "question_id": "CH_1789186956592_8pc8",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "6e8834b6-180b-4c08-9f51-c34f7e23154b",
+   "question_id": "CH_1789186956594_o562",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Nhận biết đường tròn, hình tròn, vị trí của điểm so với đường tròn"
+  },
+  {
+   "id": "58b616e9-75fc-4ee7-86a7-e25746e9dd7b",
+   "question_id": "CH_1789187257302_1p5f",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  },
+  {
+   "id": "39153d8b-6cc0-411b-8e48-50749c45d45c",
+   "question_id": "CH_1789187257303_tfi1",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "So sánh độ dài hai dây và hai cung tương ứng"
+  },
+  {
+   "id": "eaf70536-8923-4432-8368-443aec15dab4",
+   "question_id": "CH_1789187257307_htau",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "5a0a24df-56c6-4107-8dc9-aa5772915645",
+   "question_id": "CH_1789187257309_craa",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "a7678d4e-fe66-4183-b99f-a3b45d7f10e5",
+   "question_id": "CH_1789187257310_8eqt",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "769ad60d-d576-44a8-892a-91518bba8306",
+   "question_id": "CH_1789187257312_qov4",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  },
+  {
+   "id": "cdca5c2b-b60a-4f64-bc66-cf43702e57b5",
+   "question_id": "CH_1789187257315_c35f",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "4d1d6dfd-2955-4824-9dcb-766c5443964a",
+   "question_id": "CH_1789187257318_uiph",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Chứng minh hình học liên quan đến dây và cung"
+  },
+  {
+   "id": "99b9471c-51ea-4ea5-a468-b694c105f98e",
+   "question_id": "CH_1789187747216_wskf",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính độ dài đường tròn, cung tròn"
+  },
+  {
+   "id": "0f48c221-9a03-4e51-bdfa-5a0e3c31e868",
+   "question_id": "CH_1789187747217_xyy0",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính độ dài đường tròn, cung tròn"
+  },
+  {
+   "id": "7a626504-dd45-4f43-b117-10bfa57b0585",
+   "question_id": "CH_1789187747218_duid",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính độ dài đường tròn, cung tròn"
+  },
+  {
+   "id": "64bc9b67-1689-475c-af1b-36e616284069",
+   "question_id": "CH_1789187747219_ekyj",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính độ dài đường tròn, cung tròn"
+  },
+  {
+   "id": "137b58be-39ba-4646-a474-6d94076e1d97",
+   "question_id": "CH_1789187747220_tipi",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "36d41a1a-599b-468b-b5c1-08070eb869b2",
+   "question_id": "CH_1789187747222_wpls",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "7d066fc0-bdbc-4d4b-b0ad-e4c9b6734077",
+   "question_id": "CH_1789187747223_fqrw",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "5258de83-0371-4c89-9cd2-456434f2c91e",
+   "question_id": "CH_1789187747224_hh5x",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "f3eafc8d-1c9f-47f7-b1eb-4f143c057277",
+   "question_id": "CH_1789187747229_x068",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt"
+  },
+  {
+   "id": "971b97ac-094b-496e-b3ae-019d8a67a8ab",
+   "question_id": "CH_1789187747230_6q37",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt"
+  },
+  {
+   "id": "f8b30490-9652-4b2b-bde5-f6f7ca451be0",
+   "question_id": "CH_1789187747231_1vrs",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt"
+  },
+  {
+   "id": "e6e36753-09a7-4f80-b17c-eff09fa53f49",
+   "question_id": "CH_1789187747232_noja",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt"
+  },
+  {
+   "id": "646ef4ac-d774-40c3-a819-a6ca5d0ed2fe",
+   "question_id": "CH_1789187747237_gyn4",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "8a4af9b0-89c5-42c8-8fe8-ac27b3b87d2c",
+   "question_id": "CH_1789187747241_4x8s",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "daa18f44-b0d8-434d-a611-b393b3ea44d3",
+   "question_id": "CH_1789188030499_ps7w",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "1f2ce71d-ec43-4a50-b1bb-bace2a4ee3ee",
+   "question_id": "CH_1789188030507_i6x7",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Chứng minh, tính toán với tiếp tuyến"
+  },
+  {
+   "id": "30b619c3-5e07-486b-a8f6-8911bb1fd0a5",
+   "question_id": "CH_1789188030508_4m64",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "fbfb608d-0327-4c4d-8f57-9c7d323b7fb8",
+   "question_id": "CH_1789188030516_0z4j",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến"
+  },
+  {
+   "id": "8e691e72-5eed-4cfe-9a11-620ebfd4da79",
+   "question_id": "CH_1789188030518_yx9a",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "de5d2e0c-bb99-459e-af3c-5e4e53a3c02e",
+   "question_id": "CH_1789188030520_favf",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "dd495333-f2b6-4e4c-bb5d-d94f3a044b48",
+   "question_id": "CH_1789188276178_kfrf",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau"
+  },
+  {
+   "id": "fc7eb3df-3680-4310-8184-e452505f49c5",
+   "question_id": "CH_1789188276180_uqnr",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Nhận biết vị trí tương đối của hai đường tròn"
+  },
+  {
+   "id": "9aab2421-44ca-4fa3-bc13-3fbd540905fc",
+   "question_id": "CH_1789188276183_pb8x",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm"
+  },
+  {
+   "id": "e5f2845a-d58c-41e4-af4d-2b2323441b93",
+   "question_id": "CH_1789188276187_4k5t",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm"
+  },
+  {
+   "id": "f78ad5a3-ce7d-43ea-8144-aaf6b8f92114",
+   "question_id": "CH_1789188276188_sd2a",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Nhận biết vị trí tương đối của hai đường tròn"
+  },
+  {
+   "id": "98d0403c-55ab-4d13-b8f0-62684f18cda2",
+   "question_id": "CH_1789188276190_p3ha",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau"
+  },
+  {
+   "id": "23af12d3-7a3a-4059-bc95-d6b72eee7e04",
+   "question_id": "CH_1789188276193_qr23",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm"
+  },
+  {
+   "id": "822a2d39-49c7-40e1-aef5-a1b5e21c2b75",
+   "question_id": "CH_1789186956584_v1lr",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Nhận biết đường tròn, hình tròn, vị trí của điểm so với đường tròn"
+  },
+  {
+   "id": "3ed777f5-bbf2-47b2-80b2-0a5bbdc03ef2",
+   "question_id": "CH_1789187257298_wnr2",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  },
+  {
+   "id": "6971a4e6-0686-4abd-bb87-324f6fec8792",
+   "question_id": "CH_1789187257306_0ece",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "6680276f-d537-4499-aec8-0d79c5ae3ed7",
+   "question_id": "CH_1789186956587_ya00",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn"
+  },
+  {
+   "id": "527f2249-0f86-4a0b-ba47-b1a1e4b1e1b4",
+   "question_id": "CH_1789186956591_8jf3",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "f7392911-a6e2-4131-bef6-4c50331e8c48",
+   "question_id": "CH_1789186956577_5l70",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "21bc812e-cf1f-48ca-8dbe-2af6d5a92ebe",
+   "question_id": "CH_1789186956589_xayl",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Sự xác định đường tròn, chứng minh các điểm cùng thuộc một đường tròn"
+  },
+  {
+   "id": "824b95f0-b06f-4a44-a6dd-ab5e0a37b81c",
+   "question_id": "CH_1789186956593_gvzo",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn"
+  },
+  {
+   "id": "c9b6fd3b-2a57-4f18-b890-59de2a85108c",
+   "question_id": "CH_1789186956588_9dil",
+   "lesson": "Bài 1. Mở đầu về đường tròn",
+   "math_form": "Tính bán kính, khoảng cách liên quan đến đường tròn"
+  },
+  {
+   "id": "feceb13c-973e-495b-ac47-3268290cc304",
+   "question_id": "CH_1789187257300_elro",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  },
+  {
+   "id": "09349108-2308-4055-837c-99d17db7e1c5",
+   "question_id": "CH_1789187257304_gueg",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "So sánh độ dài hai dây và hai cung tương ứng"
+  },
+  {
+   "id": "6530f807-5d0a-4213-a41a-212c3a3df655",
+   "question_id": "CH_1789187257297_7vj9",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  },
+  {
+   "id": "114c294d-bb74-45ed-a2fe-5a00618445f4",
+   "question_id": "CH_1789187257301_8f21",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  },
+  {
+   "id": "18c7abf5-2483-4ff7-8b55-db4a5cd18452",
+   "question_id": "CH_1789187257305_qlpr",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "437739eb-b9fb-468e-b384-a40fee176f70",
+   "question_id": "CH_1789187257299_2fzu",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  },
+  {
+   "id": "f59e41f6-3a74-4a6a-a607-11a5127be87d",
+   "question_id": "CH_1789187257311_7v2e",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "5f6e69da-7963-4a4a-94f4-b915b42abc09",
+   "question_id": "CH_1789187257319_i4a9",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "e13589ce-a98f-40a2-81ae-c86bedb38651",
+   "question_id": "CH_1789187747226_58ss",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "206c211e-787f-4f0f-b1b0-6d3cd75cf26e",
+   "question_id": "CH_1789187257308_jzdh",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Chứng minh hình học liên quan đến dây và cung"
+  },
+  {
+   "id": "71962841-9d75-43aa-958e-efde8fbeb1af",
+   "question_id": "CH_1789187257316_1fx3",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Chứng minh hình học liên quan đến dây và cung"
+  },
+  {
+   "id": "60f7a88b-b8f4-4f66-9c02-bb4ae755cdd5",
+   "question_id": "CH_1789187257320_dto8",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "3e458d0d-773b-458d-9a32-3088f59a2ea2",
+   "question_id": "CH_1789187747215_jd5a",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính độ dài đường tròn, cung tròn"
+  },
+  {
+   "id": "6aac5d1b-8fe6-406e-b853-00e154f87f42",
+   "question_id": "CH_1789187747227_fjzq",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Ứng dụng thực tế về độ dài cung và diện tích hình quạt"
+  },
+  {
+   "id": "a9b31f5c-b2ce-4437-adeb-c791a12ac6a4",
+   "question_id": "CH_1789187257313_bppb",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Chứng minh hình học liên quan đến dây và cung"
+  },
+  {
+   "id": "ec88a058-47dd-42bf-9755-dea0a2b08e61",
+   "question_id": "CH_1789187257314_ew46",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Quan hệ giữa dây và khoảng cách từ tâm đến dây, đường kính vuông góc với dây"
+  },
+  {
+   "id": "f05a8407-e1dc-4988-a135-6c6eb00336b2",
+   "question_id": "CH_1789187747221_puw2",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "6c01ae45-5179-4a07-8555-2a77d531f89f",
+   "question_id": "CH_1789187747225_74s9",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "22e9635a-bcc7-46be-8c02-bb2fe9a47e16",
+   "question_id": "CH_1789187257317_e4lr",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Số đo cung, góc ở tâm"
+  },
+  {
+   "id": "d90c39b1-188d-4b02-9560-3308001f358c",
+   "question_id": "CH_1789187257321_zt6q",
+   "lesson": "Bài 2. Cung và dây của một đường tròn",
+   "math_form": "Chứng minh hình học liên quan đến dây và cung"
+  },
+  {
+   "id": "37b91847-d69a-4f47-8e60-f0e919992ed7",
+   "question_id": "CH_1789187747228_9knd",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "23eb5e56-66fb-46a0-a569-b90b3d3fd130",
+   "question_id": "CH_1789187747236_lln6",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "70253a9e-cbf2-498b-88a1-c1fb63112a4b",
+   "question_id": "CH_1789187747240_2ip9",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "517c0951-7689-470a-8fcb-daa497dcaf57",
+   "question_id": "CH_1789188030498_p5gt",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Chứng minh, tính toán với tiếp tuyến"
+  },
+  {
+   "id": "1f87bedb-76e8-4df7-9107-d4f48756afd6",
+   "question_id": "CH_1789187747233_yhkb",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính độ dài đường tròn, cung tròn"
+  },
+  {
+   "id": "f4e51976-ead7-4332-b594-00efa57fb46c",
+   "question_id": "CH_1789188030503_46h3",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến"
+  },
+  {
+   "id": "6470a997-4060-4bd0-ade5-2a335a76ec9f",
+   "question_id": "CH_1789187747234_nerh",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính độ dài đường tròn, cung tròn"
+  },
+  {
+   "id": "e8656caa-457b-4ecd-875d-4dc0991b1e52",
+   "question_id": "CH_1789187747235_4tyz",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính độ dài đường tròn, cung tròn"
+  },
+  {
+   "id": "bd0cf6c1-4082-456c-a934-e378661ab9a0",
+   "question_id": "CH_1789187747239_8z2x",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "23aef435-6ccd-4d7b-a46f-0751702cf588",
+   "question_id": "CH_1789187747238_uaeb",
+   "lesson": "Bài 3. Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên",
+   "math_form": "Tính diện tích hình tròn, hình quạt tròn, hình vành khuyên"
+  },
+  {
+   "id": "0ac9b9c5-420e-421e-9da1-ad91b8355848",
+   "question_id": "CH_1789188030496_mt9l",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn"
+  },
+  {
+   "id": "1380b1a1-ad50-4b85-aaea-b4f14a62c9ba",
+   "question_id": "CH_1789188030497_psrb",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn"
+  },
+  {
+   "id": "6d34cf3a-98e8-4aa2-a414-54aa6edd113a",
+   "question_id": "CH_1789188030501_5uub",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến"
+  },
+  {
+   "id": "595c0ea8-1e55-4e1d-9551-78d836eae344",
+   "question_id": "CH_1789188030500_vxos",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến"
+  },
+  {
+   "id": "da0f64e7-9f45-4df7-abb0-54ac9c6a59ca",
+   "question_id": "CH_1789188030504_9wk4",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "3d715cbc-f597-4661-8971-493cde5c4226",
+   "question_id": "CH_1789188030512_miuv",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn"
+  },
+  {
+   "id": "5bad3cf4-de28-49ef-bb25-ccd677ee21ce",
+   "question_id": "CH_1789188030502_eqcl",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến"
+  },
+  {
+   "id": "510f9e4e-30a8-40cf-bbd1-db4e306bc2fb",
+   "question_id": "CH_1789188030506_ngai",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Chứng minh, tính toán với tiếp tuyến"
+  },
+  {
+   "id": "5f6b819c-7c05-4111-b866-6ae5fbc9a196",
+   "question_id": "CH_1789188030505_hvo5",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "eba50fa6-2ff4-4b92-a12f-fd01ce89e786",
+   "question_id": "CH_1789188030509_y3s7",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "3eaaf1b1-5b32-43b6-ac80-b526d1b82523",
+   "question_id": "CH_1789188030513_wux3",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến"
+  },
+  {
+   "id": "09c848b7-ab12-4d11-b946-8925d50abb36",
+   "question_id": "CH_1789188030510_g6um",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "8b6179c5-015d-4190-8aa4-7f3443c1c99f",
+   "question_id": "CH_1789188030511_5vc1",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Nhận biết vị trí tương đối của đường thẳng và đường tròn"
+  },
+  {
+   "id": "a59e1bce-94d5-4d3f-b0fa-3d7e992cd062",
+   "question_id": "CH_1789188030514_bww9",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến"
+  },
+  {
+   "id": "92d9d151-9097-4172-9e85-740774372e40",
+   "question_id": "CH_1789188276184_kcub",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm"
+  },
+  {
+   "id": "427fd606-7fbd-44bf-b7c1-269617b6f2a6",
+   "question_id": "CH_1789188030515_6ap2",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất và dấu hiệu nhận biết tiếp tuyến"
+  },
+  {
+   "id": "2806b985-42e0-43d7-b31d-f4bf491d12d8",
+   "question_id": "CH_1789188030517_ccnm",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "8097c1c6-d4b4-4a17-9342-2748c2c8105d",
+   "question_id": "CH_1789188030519_vge8",
+   "lesson": "Bài 4. Vị trí tương đối của đường thẳng và đường tròn",
+   "math_form": "Tính chất hai tiếp tuyến cắt nhau"
+  },
+  {
+   "id": "ce9ddb01-2b4c-49bb-8f67-5975ed49c269",
+   "question_id": "CH_1789188276177_31nh",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Nhận biết vị trí tương đối của hai đường tròn"
+  },
+  {
+   "id": "30dca1df-d891-4644-ac06-a08b1b4ec586",
+   "question_id": "CH_1789188276179_2xxp",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau"
+  },
+  {
+   "id": "d22aee40-7083-4c01-ba16-03f4f88ac8ff",
+   "question_id": "CH_1789188276181_k0ts",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm"
+  },
+  {
+   "id": "3921e84b-c9fa-4819-af78-51273b449fe5",
+   "question_id": "CH_1789188276182_2rd7",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau"
+  },
+  {
+   "id": "e783d2d0-3a5b-4620-8a64-14d6a8468ff8",
+   "question_id": "CH_1789188276185_xuo1",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm"
+  },
+  {
+   "id": "7fcbcc7a-3977-4a81-af4e-858e9f4920db",
+   "question_id": "CH_1789188276186_iaw0",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính toán với hai đường tròn cắt nhau, tiếp xúc nhau"
+  },
+  {
+   "id": "dd2d0b25-d1bd-4326-aa7a-9cefaf692472",
+   "question_id": "CH_1789188276189_a3o3",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm"
+  },
+  {
+   "id": "ecdd7a8b-36ed-48b0-b813-073453ddb825",
+   "question_id": "CH_1789188276191_768b",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm"
+  },
+  {
+   "id": "0c938d55-d071-47f4-945b-0ff108aeee46",
+   "question_id": "CH_1789188276192_3dp3",
+   "lesson": "Bài 5. Vị trí tương đối của hai đường tròn",
+   "math_form": "Tính chất đường nối tâm"
+  }
+ ]
+}
