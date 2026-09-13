@@ -138,6 +138,41 @@ Báo cho thầy theo khuôn:
 - Dạng trong tài liệu mà danh mục chưa có — đề nghị tên, chờ thầy duyệt
 - Lệnh rút lại lượt vừa ghi
 
+### 7. Soi lại dạng của một chương (khi thầy bảo "kiểm tra kĩ", "soi lại dạng")
+
+Đây là việc khác với nạp: đọc **từng câu** trong kho rồi xếp lại bài/dạng cho đúng việc.
+Đã làm trọn lớp 7–12 ngày 12–13/9/2026 (khoảng 8 600 câu). Ba script:
+
+```bash
+# 1. in mọi dạng + mọi câu của một chương ra để đọc bằng mắt (ghi ra tệp cho dễ lật)
+node .claude/skills/nap-bai-tap-vao-kho/scripts/soi-dang-chuong.mjs --lop 8 --chuong 1 > scratch/soi-dang/lop8-c1.txt
+# 2. viết kế hoạch scratch/soi-dang/lop8-c1.ke-hoach.json (thường sinh bằng một tệp .chuyen.mjs), chạy thử rồi ghi
+node .claude/skills/nap-bai-tap-vao-kho/scripts/ap-ke-hoach-dang.mjs scratch/soi-dang/lop8-c1.ke-hoach.json      # thử
+node .claude/skills/nap-bai-tap-vao-kho/scripts/ap-ke-hoach-dang.mjs scratch/soi-dang/lop8-c1.ke-hoach.json ghi  # ghi + sao lưu
+# 3. câu lạc sang CHƯƠNG khác (ap-ke-hoach chỉ đổi bài/dạng trong một chương)
+node .claude/skills/nap-bai-tap-vao-kho/scripts/chuyen-cau-khac-chuong.mjs scratch/soi-dang/lop9-khac-chuong.json ghi
+```
+
+Kế hoạch: `dang` là danh sách dạng ĐÍCH đầy đủ của chương (`cu` tên cũ hoặc `null` nếu
+mới, `moi`, `yc`, `gop` các dạng cũ cùng bài gộp vào), `xoa` dạng bỏ (phải 0 câu), `chuyen`
+= { đuôi mã câu: [bài, dạng] }. Câu không ghi trong `chuyen` đi theo dạng cũ; câu nào rơi
+ngoài dạng đích thì script dừng, không ghi nửa chừng. Mọi mã trong bản soi là **đuôi ngắn
+nhất không trùng** trong chương — mã kiểu `CH_..._09_12` trùng 4 kí tự cuối rất nhiều.
+
+Quy tắc đặt dạng rút ra sau sáu lớp:
+
+- Tên dạng phải nói đúng **việc học sinh làm** ("Tìm x bằng phân tích đa thức thành nhân
+  tử"), không dùng tên rác kiểu "Toán tổng hợp", "Chứng minh", "Tìm x" trơ trọi.
+- Mỗi bài có đủ: nhận biết → tính toán/biến đổi → vận dụng (chứng minh, tham số) → **bài toán
+  thực tế**; lớp 10–12 thêm dạng "Xét các mệnh đề về …" cho câu Đúng/Sai nhiều ý.
+- Không để dạng song sinh ("Tìm khoảng đơn điệu…" / "Xét tính đơn điệu…") — gộp bằng `gop`.
+- Bài ôn tập chỉ có đúng một dạng `Bài tập tổng hợp chương N`; câu ở đó thuộc bài nào thì
+  trả về bài ấy.
+- Câu lạc chương (lượng giác nằm ở bất phương trình, phương trình tích nằm ở căn thức) thì
+  dùng script 3, không tạo dạng lạ để chứa.
+- Sau mỗi chương chạy `kiem-danh-muc.mjs` về 0 ✗; script này cũng bắt **dòng danh mục trùng**
+  (bảng không có unique, lớp 12 từng có 6 cặp).
+
 ## Bẫy đã gặp
 
 - **Tài liệu sai đáp án** không hiếm (một câu trong kho có đáp án 2,21 trong khi lời giải ra
