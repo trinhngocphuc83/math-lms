@@ -1,0 +1,122 @@
+{
+ "lop": "11",
+ "chuong": 7,
+ "dang": [
+  {
+   "bai": "Bài 1. Hai đường thẳng vuông góc",
+   "cu": "Tính góc giữa hai đường thẳng trong không gian",
+   "moi": "Tính góc giữa hai đường thẳng trong không gian",
+   "yc": "Tính được góc giữa hai đường thẳng trong không gian bằng cách dựng đường thẳng song song hoặc dùng vectơ."
+  },
+  {
+   "bai": "Bài 1. Hai đường thẳng vuông góc",
+   "cu": "Chứng minh hai đường thẳng vuông góc",
+   "moi": "Chứng minh hai đường thẳng vuông góc",
+   "yc": "Chứng minh được hai đường thẳng vuông góc trong không gian bằng góc giữa hai đường thẳng hoặc tích vô hướng."
+  },
+  {
+   "bai": "Bài 2. Đường thẳng vuông góc với mặt phẳng",
+   "cu": "Chứng minh đường thẳng vuông góc với mặt phẳng",
+   "moi": "Chứng minh đường thẳng vuông góc với mặt phẳng",
+   "yc": "Chứng minh được đường thẳng vuông góc với mặt phẳng bằng cách chỉ ra đường thẳng vuông góc với hai đường thẳng cắt nhau trong mặt phẳng."
+  },
+  {
+   "bai": "Bài 2. Đường thẳng vuông góc với mặt phẳng",
+   "cu": null,
+   "moi": "Chứng minh hai đường thẳng vuông góc bằng quan hệ vuông góc với mặt phẳng",
+   "yc": "Chứng minh được hai đường thẳng vuông góc bằng cách chỉ ra một đường thẳng vuông góc với mặt phẳng chứa đường thẳng kia."
+  },
+  {
+   "bai": "Bài 2. Đường thẳng vuông góc với mặt phẳng",
+   "cu": "Mối liên hệ giữa quan hệ song song và quan hệ vuông góc",
+   "moi": "Vận dụng liên hệ giữa quan hệ song song và quan hệ vuông góc",
+   "yc": "Vận dụng được các định lí về liên hệ giữa quan hệ song song và quan hệ vuông góc, tính chất mặt phẳng trung trực để chứng minh."
+  },
+  {
+   "bai": "Bài 2. Đường thẳng vuông góc với mặt phẳng",
+   "cu": null,
+   "moi": "Xác định thiết diện của hình chóp cắt bởi mặt phẳng vuông góc với đường thẳng",
+   "yc": "Xác định được thiết diện của hình chóp cắt bởi mặt phẳng đi qua một điểm và vuông góc với một đường thẳng cho trước."
+  },
+  {
+   "bai": "Bài 3. Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng",
+   "cu": "Dựng hình chiếu vuông góc",
+   "moi": "Xác định hình chiếu vuông góc của điểm, đường thẳng lên mặt phẳng",
+   "yc": "Xác định được hình chiếu vuông góc của một điểm, một đường thẳng lên mặt phẳng và vận dụng định lí ba đường vuông góc."
+  },
+  {
+   "bai": "Bài 3. Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng",
+   "cu": "Tính góc giữa đường thẳng và mặt phẳng",
+   "moi": "Tính góc giữa đường thẳng và mặt phẳng",
+   "yc": "Xác định và tính được góc giữa đường thẳng và mặt phẳng trong hình chóp, hình lăng trụ."
+  },
+  {
+   "bai": "Bài 4. Hai mặt phẳng vuông góc",
+   "cu": "Tính góc giữa hai mặt phẳng (góc nhị diện)",
+   "moi": "Nhận biết góc nhị diện, tính góc giữa hai mặt phẳng",
+   "yc": "Xác định được góc phẳng nhị diện và tính được góc giữa hai mặt phẳng trong hình chóp, hình lăng trụ."
+  },
+  {
+   "bai": "Bài 4. Hai mặt phẳng vuông góc",
+   "cu": "Chứng minh hai mặt phẳng vuông góc",
+   "moi": "Chứng minh hai mặt phẳng vuông góc",
+   "yc": "Chứng minh được hai mặt phẳng vuông góc bằng cách chỉ ra một mặt phẳng chứa đường thẳng vuông góc với mặt phẳng kia."
+  },
+  {
+   "bai": "Bài 4. Hai mặt phẳng vuông góc",
+   "cu": null,
+   "moi": "Vận dụng tính chất hai mặt phẳng vuông góc để chứng minh, tính toán",
+   "yc": "Vận dụng được tính chất của hai mặt phẳng vuông góc, hình lăng trụ đứng, hình chóp đều để chứng minh vuông góc và tính độ dài, góc."
+  },
+  {
+   "bai": "Bài 5. Khoảng cách",
+   "cu": "Khoảng cách từ điểm đến mặt phẳng",
+   "moi": "Tính khoảng cách từ một điểm đến đường thẳng, mặt phẳng",
+   "yc": "Tính được khoảng cách từ một điểm đến đường thẳng, từ một điểm đến mặt phẳng bằng cách dựng hình chiếu vuông góc."
+  },
+  {
+   "bai": "Bài 5. Khoảng cách",
+   "cu": null,
+   "moi": "Tính khoảng cách giữa đường thẳng và mặt phẳng song song, hai mặt phẳng song song",
+   "yc": "Tính được khoảng cách giữa đường thẳng và mặt phẳng song song, giữa hai mặt phẳng song song."
+  },
+  {
+   "bai": "Bài 5. Khoảng cách",
+   "cu": "Khoảng cách giữa hai đường thẳng chéo nhau",
+   "moi": "Tính khoảng cách giữa hai đường thẳng chéo nhau",
+   "yc": "Tính được khoảng cách giữa hai đường thẳng chéo nhau bằng đường vuông góc chung hoặc quy về khoảng cách từ điểm đến mặt phẳng."
+  },
+  {
+   "bai": "Bài 5. Khoảng cách",
+   "cu": null,
+   "moi": "Bài toán thực tế về khoảng cách",
+   "yc": "Vận dụng được khoảng cách trong không gian để giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 6. Thể tích",
+   "cu": "Tính thể tích khối chóp, khối lăng trụ",
+   "moi": "Tính thể tích khối chóp",
+   "yc": "Tính được thể tích khối chóp khi biết diện tích đáy và chiều cao, kể cả khi phải xác định chân đường cao."
+  },
+  {
+   "bai": "Bài 6. Thể tích",
+   "cu": null,
+   "moi": "Tính thể tích khối lăng trụ, khối hộp",
+   "yc": "Tính được thể tích khối lăng trụ, khối hộp chữ nhật, khối lập phương."
+  },
+  {
+   "bai": "Bài 6. Thể tích",
+   "cu": null,
+   "moi": "Tính thể tích khối chóp cụt đều và bài toán thực tế về thể tích",
+   "yc": "Tính được thể tích khối chóp cụt đều và vận dụng thể tích để giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 7. Ôn tập chương",
+   "cu": "Tổng hợp quan hệ vuông góc, khoảng cách, thể tích",
+   "moi": "Bài tập tổng hợp chương 7",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 7 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

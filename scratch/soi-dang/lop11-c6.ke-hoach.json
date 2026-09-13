@@ -1,0 +1,116 @@
+{
+ "lop": "11",
+ "chuong": 6,
+ "dang": [
+  {
+   "bai": "Bài 1. Luỹ thừa với số mũ thực",
+   "cu": null,
+   "moi": "Tính giá trị biểu thức chứa luỹ thừa, căn bậc n",
+   "yc": "Tính được giá trị biểu thức chứa luỹ thừa với số mũ nguyên, hữu tỉ và căn bậc n bằng các tính chất của luỹ thừa."
+  },
+  {
+   "bai": "Bài 1. Luỹ thừa với số mũ thực",
+   "cu": "Rút gọn biểu thức chứa luỹ thừa",
+   "moi": "Rút gọn biểu thức chứa luỹ thừa với số mũ thực",
+   "yc": "Rút gọn được biểu thức chứa luỹ thừa với số mũ thực và viết được biểu thức chứa căn dưới dạng luỹ thừa với số mũ hữu tỉ."
+  },
+  {
+   "bai": "Bài 1. Luỹ thừa với số mũ thực",
+   "cu": "So sánh các cơ số, số mũ",
+   "moi": "So sánh các luỹ thừa",
+   "yc": "So sánh được hai luỹ thừa dựa vào tính chất đơn điệu của luỹ thừa theo cơ số và số mũ."
+  },
+  {
+   "bai": "Bài 1. Luỹ thừa với số mũ thực",
+   "cu": null,
+   "moi": "Bài toán thực tế về luỹ thừa",
+   "yc": "Vận dụng được luỹ thừa với số mũ thực để giải bài toán thực tế (lãi kép, tăng trưởng, phân rã)."
+  },
+  {
+   "bai": "Bài 2. Lôgarit",
+   "cu": null,
+   "moi": "Nhận biết lôgarit, tính lôgarit bằng định nghĩa",
+   "yc": "Nhận biết được khái niệm lôgarit và tính được lôgarit của một số bằng định nghĩa, kể cả bằng máy tính cầm tay."
+  },
+  {
+   "bai": "Bài 2. Lôgarit",
+   "cu": "Tính giá trị, rút gọn biểu thức lôgarit",
+   "moi": "Tính giá trị, rút gọn biểu thức lôgarit",
+   "yc": "Tính được giá trị và rút gọn được biểu thức chứa lôgarit bằng các tính chất của lôgarit và công thức đổi cơ số."
+  },
+  {
+   "bai": "Bài 2. Lôgarit",
+   "cu": "Phân tích lôgarit theo các lôgarit cho trước",
+   "moi": "Biểu diễn lôgarit theo các lôgarit cho trước",
+   "yc": "Biểu diễn được một lôgarit theo các lôgarit cho trước (theo a, b) bằng các tính chất và công thức đổi cơ số."
+  },
+  {
+   "bai": "Bài 2. Lôgarit",
+   "cu": null,
+   "moi": "Bài toán thực tế về lôgarit",
+   "yc": "Vận dụng được lôgarit để giải bài toán thực tế (độ pH, độ lớn động đất, cường độ âm, thời gian tăng trưởng)."
+  },
+  {
+   "bai": "Bài 3. Hàm số mũ và hàm số lôgarit",
+   "cu": "Tìm tập xác định, tính đơn điệu, đồ thị hàm số mũ, lôgarit",
+   "moi": "Tìm tập xác định của hàm số mũ, hàm số lôgarit",
+   "yc": "Tìm được tập xác định của hàm số mũ, hàm số lôgarit."
+  },
+  {
+   "bai": "Bài 3. Hàm số mũ và hàm số lôgarit",
+   "cu": null,
+   "moi": "Xét tính đơn điệu và nhận dạng đồ thị hàm số mũ, hàm số lôgarit",
+   "yc": "Nhận biết được tính đơn điệu, tính chất của hàm số mũ, hàm số lôgarit và nhận dạng được đồ thị của chúng."
+  },
+  {
+   "bai": "Bài 3. Hàm số mũ và hàm số lôgarit",
+   "cu": null,
+   "moi": "So sánh các số bằng tính đơn điệu của hàm số mũ, lôgarit",
+   "yc": "So sánh được các luỹ thừa, các lôgarit dựa vào tính đơn điệu của hàm số mũ, hàm số lôgarit."
+  },
+  {
+   "bai": "Bài 3. Hàm số mũ và hàm số lôgarit",
+   "cu": null,
+   "moi": "Bài toán thực tế về hàm số mũ, hàm số lôgarit",
+   "yc": "Vận dụng được hàm số mũ, hàm số lôgarit để giải bài toán thực tế (tăng trưởng dân số, lãi kép, phân rã phóng xạ)."
+  },
+  {
+   "bai": "Bài 4. Phương trình, bất phương trình mũ và lôgarit",
+   "cu": "Giải phương trình, bất phương trình mũ cơ bản",
+   "moi": "Giải phương trình mũ",
+   "yc": "Giải được phương trình mũ cơ bản và phương trình mũ đưa về cùng cơ số, đặt ẩn phụ, lôgarit hoá."
+  },
+  {
+   "bai": "Bài 4. Phương trình, bất phương trình mũ và lôgarit",
+   "cu": "Giải phương trình, bất phương trình lôgarit cơ bản",
+   "moi": "Giải phương trình lôgarit",
+   "yc": "Giải được phương trình lôgarit cơ bản và phương trình lôgarit đưa về cùng cơ số, đặt ẩn phụ, có điều kiện xác định."
+  },
+  {
+   "bai": "Bài 4. Phương trình, bất phương trình mũ và lôgarit",
+   "cu": null,
+   "moi": "Giải bất phương trình mũ",
+   "yc": "Giải được bất phương trình mũ cơ bản và bất phương trình mũ đưa về cùng cơ số, đặt ẩn phụ."
+  },
+  {
+   "bai": "Bài 4. Phương trình, bất phương trình mũ và lôgarit",
+   "cu": null,
+   "moi": "Giải bất phương trình lôgarit",
+   "yc": "Giải được bất phương trình lôgarit cơ bản và bất phương trình lôgarit đưa về cùng cơ số, có điều kiện xác định."
+  },
+  {
+   "bai": "Bài 4. Phương trình, bất phương trình mũ và lôgarit",
+   "cu": null,
+   "moi": "Bài toán thực tế về phương trình, bất phương trình mũ và lôgarit",
+   "yc": "Vận dụng được phương trình, bất phương trình mũ và lôgarit để giải bài toán thực tế (thời gian gửi tiết kiệm, tăng trưởng, phân rã)."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Tổng hợp hàm số mũ, lôgarit và phương trình",
+   "moi": "Bài tập tổng hợp chương 6",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 6 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

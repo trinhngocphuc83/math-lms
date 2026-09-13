@@ -1,0 +1,92 @@
+{
+ "lop": "11",
+ "chuong": 5,
+ "dang": [
+  {
+   "bai": "Bài 1. Giới hạn của dãy số",
+   "cu": null,
+   "moi": "Nhận biết dãy số có giới hạn 0, giới hạn hữu hạn, giới hạn vô cực",
+   "yc": "Nhận biết được dãy số có giới hạn 0, giới hạn hữu hạn, giới hạn vô cực bằng định nghĩa và các giới hạn cơ bản."
+  },
+  {
+   "bai": "Bài 1. Giới hạn của dãy số",
+   "cu": "Tính giới hạn của dãy số dạng phân thức, chứa căn",
+   "moi": "Tính giới hạn của dãy số dạng phân thức",
+   "yc": "Tính được giới hạn của dãy số có dạng phân thức bằng cách chia tử và mẫu cho lũy thừa cao nhất của n."
+  },
+  {
+   "bai": "Bài 1. Giới hạn của dãy số",
+   "cu": null,
+   "moi": "Tính giới hạn của dãy số chứa căn, chứa lũy thừa",
+   "yc": "Tính được giới hạn của dãy số chứa căn thức (nhân liên hợp) và chứa lũy thừa (chia cho cơ số lớn nhất)."
+  },
+  {
+   "bai": "Bài 1. Giới hạn của dãy số",
+   "cu": null,
+   "moi": "Tính giới hạn vô cực của dãy số",
+   "yc": "Tính được giới hạn vô cực của dãy số bằng cách đặt nhân tử và các quy tắc giới hạn vô cực."
+  },
+  {
+   "bai": "Bài 1. Giới hạn của dãy số",
+   "cu": "Tổng của cấp số nhân lùi vô hạn",
+   "moi": "Tổng của cấp số nhân lùi vô hạn",
+   "yc": "Tính được tổng của cấp số nhân lùi vô hạn và vận dụng để viết số thập phân vô hạn tuần hoàn thành phân số, giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 2. Giới hạn của hàm số",
+   "cu": "Giới hạn tại một điểm",
+   "moi": "Tính giới hạn của hàm số tại một điểm",
+   "yc": "Tính được giới hạn của hàm số tại một điểm bằng cách thay giá trị, phân tích nhân tử, nhân liên hợp để khử dạng 0/0."
+  },
+  {
+   "bai": "Bài 2. Giới hạn của hàm số",
+   "cu": "Giới hạn tại vô cực, giới hạn một bên",
+   "moi": "Tính giới hạn một bên của hàm số",
+   "yc": "Tính được giới hạn một bên của hàm số và vận dụng để xét sự tồn tại giới hạn của hàm số cho bởi nhiều công thức."
+  },
+  {
+   "bai": "Bài 2. Giới hạn của hàm số",
+   "cu": null,
+   "moi": "Tính giới hạn của hàm số tại vô cực",
+   "yc": "Tính được giới hạn của hàm số khi x tiến tới vô cực đối với hàm phân thức, hàm chứa căn."
+  },
+  {
+   "bai": "Bài 2. Giới hạn của hàm số",
+   "cu": null,
+   "moi": "Tính giới hạn vô cực của hàm số",
+   "yc": "Tính được giới hạn vô cực của hàm số tại một điểm và tại vô cực bằng các quy tắc về giới hạn vô cực."
+  },
+  {
+   "bai": "Bài 2. Giới hạn của hàm số",
+   "cu": null,
+   "moi": "Bài toán thực tế về giới hạn của hàm số",
+   "yc": "Vận dụng được giới hạn của hàm số để giải bài toán thực tế (nồng độ, chi phí, vận tốc)."
+  },
+  {
+   "bai": "Bài 3. Hàm số liên tục",
+   "cu": "Xét tính liên tục của hàm số tại một điểm, trên một khoảng",
+   "moi": "Xét tính liên tục của hàm số tại một điểm",
+   "yc": "Xét được tính liên tục của hàm số tại một điểm, kể cả hàm số cho bởi nhiều công thức."
+  },
+  {
+   "bai": "Bài 3. Hàm số liên tục",
+   "cu": null,
+   "moi": "Xét tính liên tục của hàm số trên một khoảng, tìm tham số để hàm số liên tục",
+   "yc": "Xét được tính liên tục của hàm số trên tập xác định và tìm được giá trị tham số để hàm số liên tục tại một điểm, trên R."
+  },
+  {
+   "bai": "Bài 3. Hàm số liên tục",
+   "cu": "Chứng minh phương trình có nghiệm",
+   "moi": "Chứng minh phương trình có nghiệm",
+   "yc": "Vận dụng được tính liên tục của hàm số để chứng minh phương trình có nghiệm trên một khoảng."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Tổng hợp giới hạn và hàm số liên tục",
+   "moi": "Bài tập tổng hợp chương 5",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 5 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

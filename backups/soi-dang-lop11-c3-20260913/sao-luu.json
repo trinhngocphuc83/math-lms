@@ -1,0 +1,104 @@
+{
+ "question_categories": [
+  {
+   "id": "c0056c41-d646-41fe-8e59-bf6cd7c07a4a",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tổng hợp số đặc trưng của mẫu số liệu ghép nhóm",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm để so sánh và đánh giá hai mẫu số liệu."
+  },
+  {
+   "id": "4fe51fa6-aa56-42c2-8e61-f929d7f5e826",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính trung vị, tứ phân vị, mốt của mẫu số liệu ghép nhóm",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được trung vị, tứ phân vị và mốt của mẫu số liệu ghép nhóm."
+  },
+  {
+   "id": "9d65d382-aa70-4ec1-8556-95eb1b1eba20",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 1. Mẫu số liệu ghép nhóm",
+   "math_form": "Ghép nhóm mẫu số liệu",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Chuyển được mẫu số liệu không ghép nhóm sang mẫu số liệu ghép nhóm theo các khoảng cho trước."
+  },
+  {
+   "id": "78189acf-f230-428f-8e01-7167f3b36b58",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 1. Mẫu số liệu ghép nhóm",
+   "math_form": "Lập bảng tần số ghép nhóm",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc chuyển đổi mẫu số liệu không ghép nhóm sang mẫu số liệu ghép nhóm dưới dạng bảng tần số ghép nhóm."
+  },
+  {
+   "id": "1f32b038-5abc-414a-97ec-44193e2f0b54",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính số trung bình của mẫu số liệu ghép nhóm",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được số trung bình cộng của mẫu số liệu ghép nhóm."
+  }
+ ],
+ "questions": [
+  {
+   "id": "208d2353-0126-49cd-a7ba-a9d6a008b068",
+   "question_id": "CH_1785415835190_hb7d",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính số trung bình của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "b2eba32c-1b6f-4e9b-88b1-ba9e65a6b8d3",
+   "question_id": "CH_1785315627520_qoxb",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính số trung bình của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "805ef79b-9130-4e21-b224-44a718967f04",
+   "question_id": "CH_1785315627520_frg4",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính số trung bình của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "c6f5bdbc-818b-4a0f-a17f-a39e34e4bb94",
+   "question_id": "CH_1785415835190_381q",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính số trung bình của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "53d4ace6-bf8e-492b-a362-627091b95ff4",
+   "question_id": "CH_1785415835190_fzsh",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính số trung bình của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "6be89a03-2f5c-430d-b6e2-d6f957c01336",
+   "question_id": "CH_1785415835190_0z8r",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính số trung bình của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "f0c47653-97a3-4460-9c20-a91424fc686c",
+   "question_id": "CH_1785315195857_91wa",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính số trung bình của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "2a31d769-d4ef-4451-b7a6-98e7dc0c82ad",
+   "question_id": "CH_1785415835190_iy7a",
+   "lesson": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "math_form": "Tính số trung bình của mẫu số liệu ghép nhóm"
+  }
+ ]
+}

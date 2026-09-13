@@ -1,0 +1,575 @@
+{
+ "lop": "11",
+ "chuong": 1,
+ "dang": [
+  {
+   "bai": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "cu": "Đổi đơn vị đo góc, độ dài cung tròn",
+   "moi": "Đổi đơn vị đo góc, tính độ dài cung tròn",
+   "yc": "Đổi được số đo góc giữa độ và radian, tính được độ dài cung tròn khi biết bán kính và số đo cung."
+  },
+  {
+   "bai": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "cu": null,
+   "moi": "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác",
+   "yc": "Xác định được số đo của góc lượng giác, hệ thức Chasles và biểu diễn được góc lượng giác trên đường tròn lượng giác.",
+   "gop": [
+    "Toán tổng hợp"
+   ]
+  },
+  {
+   "bai": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "cu": "Tính các giá trị lượng giác của một góc lượng giác",
+   "moi": "Tính các giá trị lượng giác của một góc lượng giác",
+   "yc": "Tính được các giá trị lượng giác của một góc lượng giác khi biết một giá trị lượng giác và khoảng của góc."
+  },
+  {
+   "bai": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "cu": "Rút gọn biểu thức lượng giác cơ bản",
+   "moi": "Rút gọn, tính giá trị biểu thức lượng giác bằng hệ thức cơ bản và góc liên quan đặc biệt",
+   "yc": "Rút gọn và tính được giá trị biểu thức lượng giác bằng các hệ thức cơ bản và giá trị lượng giác của các góc liên quan đặc biệt."
+  },
+  {
+   "bai": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "cu": null,
+   "moi": "Bài toán thực tế về góc lượng giác và độ dài cung",
+   "yc": "Vận dụng được số đo góc lượng giác, độ dài cung tròn để giải bài toán thực tế (bánh xe quay, kim đồng hồ, đu quay)."
+  },
+  {
+   "bai": "Bài 2. Công thức lượng giác",
+   "cu": "Sử dụng công thức cộng, công thức nhân đôi",
+   "moi": "Sử dụng công thức cộng",
+   "yc": "Vận dụng được công thức cộng để tính giá trị lượng giác của tổng, hiệu hai góc và rút gọn biểu thức."
+  },
+  {
+   "bai": "Bài 2. Công thức lượng giác",
+   "cu": null,
+   "moi": "Sử dụng công thức nhân đôi, công thức hạ bậc",
+   "yc": "Vận dụng được công thức nhân đôi, công thức hạ bậc để tính giá trị lượng giác của góc 2a, a/2 và rút gọn biểu thức."
+  },
+  {
+   "bai": "Bài 2. Công thức lượng giác",
+   "cu": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng",
+   "moi": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng",
+   "yc": "Vận dụng được công thức biến đổi tích thành tổng và tổng thành tích để rút gọn, tính giá trị biểu thức lượng giác."
+  },
+  {
+   "bai": "Bài 2. Công thức lượng giác",
+   "cu": "Toán tổng hợp",
+   "moi": "Chứng minh đẳng thức, nhận dạng tam giác bằng công thức lượng giác",
+   "yc": "Chứng minh được đẳng thức lượng giác và nhận dạng được tam giác từ hệ thức lượng giác cho trước."
+  },
+  {
+   "bai": "Bài 2. Công thức lượng giác",
+   "cu": "Bài toán thực tế ứng dụng công thức lượng giác",
+   "moi": "Bài toán thực tế ứng dụng công thức lượng giác",
+   "yc": "Vận dụng được các công thức lượng giác để giải quyết bài toán thực tế (dao động điều hoà, góc nhìn, khoảng cách)."
+  },
+  {
+   "bai": "Bài 3. Hàm số lượng giác",
+   "cu": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác",
+   "moi": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác",
+   "yc": "Xác định được tập xác định và xét được tính chẵn, lẻ của hàm số lượng giác."
+  },
+  {
+   "bai": "Bài 3. Hàm số lượng giác",
+   "cu": "Chu kì và đồ thị của hàm số lượng giác",
+   "moi": "Chu kì và đồ thị của hàm số lượng giác",
+   "yc": "Nhận biết được tính tuần hoàn, chu kì, khoảng đồng biến, nghịch biến và đồ thị của hàm số lượng giác; đọc được số nghiệm từ đồ thị."
+  },
+  {
+   "bai": "Bài 3. Hàm số lượng giác",
+   "cu": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác",
+   "moi": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác",
+   "yc": "Tìm được giá trị lớn nhất, giá trị nhỏ nhất và tập giá trị của hàm số lượng giác."
+  },
+  {
+   "bai": "Bài 3. Hàm số lượng giác",
+   "cu": "Toán tổng hợp",
+   "moi": "Xét các mệnh đề về hàm số lượng giác (tập xác định, chu kì, tính chẵn lẻ, giá trị lớn nhất, nhỏ nhất)",
+   "yc": "Xét được tính đúng sai của các mệnh đề về tập xác định, chu kì, tính chẵn lẻ, giá trị lớn nhất, nhỏ nhất của một hàm số lượng giác."
+  },
+  {
+   "bai": "Bài 3. Hàm số lượng giác",
+   "cu": "Bài toán thực tế ứng dụng hàm số lượng giác",
+   "moi": "Bài toán thực tế ứng dụng hàm số lượng giác",
+   "yc": "Giải quyết được bài toán thực tế gắn với mô hình hàm số lượng giác (thuỷ triều, số giờ có ánh sáng, guồng nước, dao động)."
+  },
+  {
+   "bai": "Bài 4. Phương trình lượng giác cơ bản",
+   "cu": "Giải phương trình sin x = a, cos x = a",
+   "moi": "Giải phương trình sin x = a, cos x = a",
+   "yc": "Giải được phương trình lượng giác cơ bản dạng sin x = a, cos x = a và tìm được nghiệm trên một khoảng cho trước."
+  },
+  {
+   "bai": "Bài 4. Phương trình lượng giác cơ bản",
+   "cu": "Giải phương trình tan x = a, cot x = a",
+   "moi": "Giải phương trình tan x = a, cot x = a",
+   "yc": "Giải được phương trình lượng giác cơ bản dạng tan x = a, cot x = a và tìm được nghiệm trên một khoảng cho trước."
+  },
+  {
+   "bai": "Bài 4. Phương trình lượng giác cơ bản",
+   "cu": null,
+   "moi": "Giải phương trình lượng giác đưa về phương trình cơ bản",
+   "yc": "Giải được phương trình lượng giác đưa về phương trình cơ bản (phương trình tích, sin x = k·cos x, sin u = cos v)."
+  },
+  {
+   "bai": "Bài 4. Phương trình lượng giác cơ bản",
+   "cu": "Biện luận số nghiệm của phương trình lượng giác chứa tham số",
+   "moi": "Biện luận số nghiệm của phương trình lượng giác chứa tham số",
+   "yc": "Biện luận được số nghiệm của phương trình lượng giác chứa tham số trên một khoảng cho trước."
+  },
+  {
+   "bai": "Bài 4. Phương trình lượng giác cơ bản",
+   "cu": "Ứng dụng phương trình lượng giác trong bài toán thực tế",
+   "moi": "Ứng dụng phương trình lượng giác trong bài toán thực tế",
+   "yc": "Vận dụng được phương trình lượng giác cơ bản để giải quyết bài toán thực tế (dao động, thuỷ triều, vòng quay)."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Tổng hợp lượng giác và phương trình lượng giác",
+   "moi": "Bài tập tổng hợp chương 1",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 1 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Bài toán thực tế ứng dụng công thức lượng giác"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Xác định số đo của góc lượng giác"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Tính giá trị lượng giác của một góc, rút gọn biểu thức lượng giác"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Giải tam giác và ứng dụng thực tế"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "dang": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  }
+ ],
+ "chuyen": {
+  "ol65": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Đổi đơn vị đo góc, tính độ dài cung tròn"
+  ],
+  "vcb4": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "y6oi": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "cnnx": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "0jxe": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "88kw": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "tufl": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "a35h": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "97gj": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "w9a1": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "go9y": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "lv8m": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "c3py": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "qxeu": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Xác định số đo góc lượng giác, biểu diễn góc trên đường tròn lượng giác"
+  ],
+  "atmy": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Tính các giá trị lượng giác của một góc lượng giác"
+  ],
+  "83ip": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Tính các giá trị lượng giác của một góc lượng giác"
+  ],
+  "dt5w": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Tính các giá trị lượng giác của một góc lượng giác"
+  ],
+  "pwf5": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Rút gọn, tính giá trị biểu thức lượng giác bằng hệ thức cơ bản và góc liên quan đặc biệt"
+  ],
+  "1pta": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Rút gọn, tính giá trị biểu thức lượng giác bằng hệ thức cơ bản và góc liên quan đặc biệt"
+  ],
+  "wlob": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Rút gọn, tính giá trị biểu thức lượng giác bằng hệ thức cơ bản và góc liên quan đặc biệt"
+  ],
+  "2xwt": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Rút gọn, tính giá trị biểu thức lượng giác bằng hệ thức cơ bản và góc liên quan đặc biệt"
+  ],
+  "9dt1": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "6msy": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "ey8g": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "hl08": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "7oti": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "31mn": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "nd52": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "jfi9": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "9pwk": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "bpeb": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "yg1t": [
+   "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "Bài toán thực tế về góc lượng giác và độ dài cung"
+  ],
+  "chyk": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "jyfw": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "ldy7": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "a0st": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "hufy": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "1q1n": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "vivk": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "iwck": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "w026": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "s30k": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "1psk": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "usc9": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "leo4": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "60dc": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "trd2": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "x743": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "m4vl": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "b4fi": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "lw0h": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "hiir": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "e85i": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "p57s": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "jvbz": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "8chl": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "d399": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "h8h8": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức nhân đôi, công thức hạ bậc"
+  ],
+  "z2qm": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức cộng"
+  ],
+  "jbwz": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức cộng"
+  ],
+  "2mv2": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  ],
+  "b5he": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  ],
+  "x6cg": [
+   "Bài 2. Công thức lượng giác",
+   "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  ],
+  "l567": [
+   "Bài 2. Công thức lượng giác",
+   "Bài toán thực tế ứng dụng công thức lượng giác"
+  ],
+  "06xu": [
+   "Bài 2. Công thức lượng giác",
+   "Bài toán thực tế ứng dụng công thức lượng giác"
+  ],
+  "fldb": [
+   "Bài 3. Hàm số lượng giác",
+   "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  ],
+  "5vye": [
+   "Bài 3. Hàm số lượng giác",
+   "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  ],
+  "skzs": [
+   "Bài 3. Hàm số lượng giác",
+   "Chu kì và đồ thị của hàm số lượng giác"
+  ],
+  "kioc": [
+   "Bài 3. Hàm số lượng giác",
+   "Chu kì và đồ thị của hàm số lượng giác"
+  ],
+  "z6yj": [
+   "Bài 3. Hàm số lượng giác",
+   "Chu kì và đồ thị của hàm số lượng giác"
+  ],
+  "fw2g": [
+   "Bài 3. Hàm số lượng giác",
+   "Chu kì và đồ thị của hàm số lượng giác"
+  ],
+  "1bpk": [
+   "Bài 3. Hàm số lượng giác",
+   "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  ],
+  "rlwr": [
+   "Bài 3. Hàm số lượng giác",
+   "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  ],
+  "kldm": [
+   "Bài 3. Hàm số lượng giác",
+   "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  ],
+  "kkve": [
+   "Bài 3. Hàm số lượng giác",
+   "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  ],
+  "k74t": [
+   "Bài 3. Hàm số lượng giác",
+   "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  ],
+  "u12x": [
+   "Bài 3. Hàm số lượng giác",
+   "Xét các mệnh đề về hàm số lượng giác (tập xác định, chu kì, tính chẵn lẻ, giá trị lớn nhất, nhỏ nhất)"
+  ],
+  "okjz": [
+   "Bài 3. Hàm số lượng giác",
+   "Xét các mệnh đề về hàm số lượng giác (tập xác định, chu kì, tính chẵn lẻ, giá trị lớn nhất, nhỏ nhất)"
+  ],
+  "kd58": [
+   "Bài 3. Hàm số lượng giác",
+   "Xét các mệnh đề về hàm số lượng giác (tập xác định, chu kì, tính chẵn lẻ, giá trị lớn nhất, nhỏ nhất)"
+  ],
+  "v9kt": [
+   "Bài 3. Hàm số lượng giác",
+   "Xét các mệnh đề về hàm số lượng giác (tập xác định, chu kì, tính chẵn lẻ, giá trị lớn nhất, nhỏ nhất)"
+  ],
+  "zrdt": [
+   "Bài 3. Hàm số lượng giác",
+   "Xét các mệnh đề về hàm số lượng giác (tập xác định, chu kì, tính chẵn lẻ, giá trị lớn nhất, nhỏ nhất)"
+  ],
+  "k3z4": [
+   "Bài 3. Hàm số lượng giác",
+   "Xét các mệnh đề về hàm số lượng giác (tập xác định, chu kì, tính chẵn lẻ, giá trị lớn nhất, nhỏ nhất)"
+  ],
+  "4c8b": [
+   "Bài 3. Hàm số lượng giác",
+   "Bài toán thực tế ứng dụng hàm số lượng giác"
+  ],
+  "5nwh": [
+   "Bài 3. Hàm số lượng giác",
+   "Bài toán thực tế ứng dụng hàm số lượng giác"
+  ],
+  "u1yy": [
+   "Bài 3. Hàm số lượng giác",
+   "Bài toán thực tế ứng dụng hàm số lượng giác"
+  ],
+  "ellh": [
+   "Bài 3. Hàm số lượng giác",
+   "Bài toán thực tế ứng dụng hàm số lượng giác"
+  ],
+  "u6u1": [
+   "Bài 3. Hàm số lượng giác",
+   "Bài toán thực tế ứng dụng hàm số lượng giác"
+  ],
+  "jcmu": [
+   "Bài 3. Hàm số lượng giác",
+   "Bài toán thực tế ứng dụng hàm số lượng giác"
+  ],
+  "9pok": [
+   "Bài 4. Phương trình lượng giác cơ bản",
+   "Giải phương trình sin x = a, cos x = a"
+  ],
+  "dh9h": [
+   "Bài 4. Phương trình lượng giác cơ bản",
+   "Giải phương trình sin x = a, cos x = a"
+  ],
+  "o00j": [
+   "Bài 4. Phương trình lượng giác cơ bản",
+   "Giải phương trình sin x = a, cos x = a"
+  ],
+  "nik5": [
+   "Bài 4. Phương trình lượng giác cơ bản",
+   "Giải phương trình sin x = a, cos x = a"
+  ],
+  "ld76": [
+   "Bài 4. Phương trình lượng giác cơ bản",
+   "Giải phương trình lượng giác đưa về phương trình cơ bản"
+  ],
+  "tpn9": [
+   "Bài 4. Phương trình lượng giác cơ bản",
+   "Giải phương trình lượng giác đưa về phương trình cơ bản"
+  ],
+  "w0k5": [
+   "Bài 4. Phương trình lượng giác cơ bản",
+   "Biện luận số nghiệm của phương trình lượng giác chứa tham số"
+  ],
+  "mabz": [
+   "Bài 4. Phương trình lượng giác cơ bản",
+   "Biện luận số nghiệm của phương trình lượng giác chứa tham số"
+  ]
+ }
+}

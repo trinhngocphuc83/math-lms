@@ -1,0 +1,62 @@
+{
+ "lop": "11",
+ "chuong": 8,
+ "dang": [
+  {
+   "bai": "Bài 1. Biến cố hợp, biến cố giao, biến cố độc lập",
+   "cu": "Xác định biến cố hợp, biến cố giao, biến cố xung khắc",
+   "moi": "Xác định biến cố hợp, biến cố giao, biến cố xung khắc",
+   "yc": "Mô tả được biến cố hợp, biến cố giao, biến cố xung khắc và biểu diễn được biến cố qua các biến cố cho trước."
+  },
+  {
+   "bai": "Bài 1. Biến cố hợp, biến cố giao, biến cố độc lập",
+   "cu": "Nhận biết biến cố độc lập",
+   "moi": "Nhận biết biến cố độc lập",
+   "yc": "Nhận biết được hai biến cố độc lập trong các phép thử thực tế."
+  },
+  {
+   "bai": "Bài 2. Công thức cộng xác suất",
+   "cu": "Tính xác suất bằng công thức cộng cho biến cố xung khắc và không xung khắc",
+   "moi": "Tính xác suất bằng công thức cộng cho hai biến cố xung khắc",
+   "yc": "Tính được xác suất của biến cố hợp của hai biến cố xung khắc bằng công thức cộng."
+  },
+  {
+   "bai": "Bài 2. Công thức cộng xác suất",
+   "cu": null,
+   "moi": "Tính xác suất bằng công thức cộng cho hai biến cố bất kì",
+   "yc": "Tính được xác suất của biến cố hợp của hai biến cố bất kì bằng công thức P(A ∪ B) = P(A) + P(B) − P(AB)."
+  },
+  {
+   "bai": "Bài 2. Công thức cộng xác suất",
+   "cu": null,
+   "moi": "Bài toán thực tế về công thức cộng xác suất",
+   "yc": "Vận dụng được công thức cộng xác suất để giải bài toán thực tế (khảo sát, chọn học sinh, sản phẩm)."
+  },
+  {
+   "bai": "Bài 3. Công thức nhân xác suất cho hai biến cố độc lập",
+   "cu": "Tính xác suất bằng công thức nhân",
+   "moi": "Tính xác suất bằng công thức nhân cho hai biến cố độc lập",
+   "yc": "Tính được xác suất của biến cố giao của hai biến cố độc lập bằng công thức nhân."
+  },
+  {
+   "bai": "Bài 3. Công thức nhân xác suất cho hai biến cố độc lập",
+   "cu": null,
+   "moi": "Kết hợp công thức cộng và công thức nhân xác suất",
+   "yc": "Tính được xác suất của biến cố bằng cách kết hợp công thức cộng, công thức nhân và biến cố đối."
+  },
+  {
+   "bai": "Bài 3. Công thức nhân xác suất cho hai biến cố độc lập",
+   "cu": "Ứng dụng xác suất vào bài toán thực tế",
+   "moi": "Bài toán thực tế về công thức nhân xác suất",
+   "yc": "Vận dụng được công thức nhân xác suất để giải bài toán thực tế (bắn bia, thi đấu, kiểm tra sản phẩm, di truyền)."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Tổng hợp các quy tắc tính xác suất",
+   "moi": "Bài tập tổng hợp chương 8",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 8 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

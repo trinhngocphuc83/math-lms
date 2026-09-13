@@ -1,0 +1,350 @@
+Chương 1. Hàm số lượng giác và phương trình lượng giác · lớp 11 · 31 dạng · 255 câu
+
+
+### [1] Bài 1. Giá trị lượng giác của góc lượng giác | Tính các giá trị lượng giác của một góc lượng giác (22)
+    yêu cầu: Tính được các giá trị lượng giác của một góc khi biết một giá trị lượng giác của góc đó.
+  lfeh NLC 2 | Cho góc \alpha thỏa mãn 0 < \alpha < \frac{\pi}{2} và \cos \alpha = \frac{1}{3}. Tính \sin \alpha.
+  vcb4 NLC 2 | Cho một góc lượng giác (Ox, Ou) có số đo là -120^\circ và một góc lượng giác (Ox, Ov) có số đo 230^\circ. Số đ
+  7lvh NLC 2 | Cho \cos \alpha = \frac{2}{3} và \alpha \in ( \frac{3\pi}{2}; 2\pi ). Tính \cot \alpha.
+  9ru0 NLC 2 | Cho \cos \alpha = \frac{3}{7} và \frac{3\pi}{2} < \alpha < 2\pi. Khi đó \sin \alpha bằng
+  9hf6 DS 2 | Cho góc \alpha thỏa mãn \cos \alpha = \frac{3}{5} và -\frac{\pi}{2} < \alpha < 0.
+  9ead DS 2 | Cho góc \alpha \ (0^\circ < \alpha < 180^\circ) thỏa mãn \tan \alpha = 3.
+  pwf5 TLN 2 | Cho \tan \alpha = 2, Giá trị biểu thức P = \frac{4\sin \alpha + 5\cos \alpha}{2\sin \alpha - 3\cos \alpha} là
+  1pta TLN 2 | Cho biết \cot x = \frac{1}{2}. Tính giá trị của biểu thức A = \frac{2}{\sin^2 x - \sin x.\cos x - \cos^2 x}.
+  y6oi NLC 2 | Nếu góc lượng giác có sđ (Ox, Oz) = -\frac{63\pi}{2} thì hai tia Ox và Oz.
+  cnnx NLC 2 | Cho góc lượng giác (Ou, Ov) có số đo là -\frac{3\pi}{4}, góc lượng giác (Ou, Ow) có số đo là \frac{11\pi}{4}. 
+  2399 NLC 2 | Cho góc \alpha thỏa \cot \alpha = \frac{3}{4} và 0^\circ < \alpha < 90^\circ. Khẳng định nào sau đây đúng?
+  go9y NLC 2 | Trên đường tròn lượng giác, biết điểm M(\frac{3}{5}; -\frac{4}{5}) là điểm biểu diễn góc lượng giác có số đo \
+  ip4d NLC 2 | Cho góc \alpha thỏa \pi < \alpha < \frac{3\pi}{2}, \cos \alpha = -\frac{3}{5}. Tính giá trị lượng giác của \ta
+  cc4t NLC 2 | Cho góc \alpha thỏa mãn \sin \alpha = \frac{3}{5} và \frac{\pi}{2} < \alpha < \pi. Tính P = \frac{\tan \alpha}
+  wlob DS 2 | Tính được các giá trị lượng giác của góc \alpha = -\frac{\pi}{4} + (2k+1)\pi \ (biết \ k \in {Z}).
+  c8en TLN 2 | Cho \alpha = \frac{\pi}{2} + k2\pi, k \in {Z}. Tìm được bao nhiêu giá trị của k để 10\pi < \alpha < 11\pi.
+  mrtn TLN 3 | Cho góc \alpha thỏa mãn \tan \alpha = -\frac{4}{3} và \frac{2017\pi}{2} < \alpha < \frac{2019\pi}{2}. Tính \si
+  9mss TLN 2 | Cho  \sin \alpha = -\frac{1}{3}, với  (180^\circ < \alpha < 270^\circ). Tính  \cos \alpha. (Quy tròn đến hàng 
+  s517 NLC 2 | Cho \sin \alpha = \frac{4}{5} và \frac{\pi}{2} < \alpha < \pi. Tính \cos \alpha.
+  zlch TLN 1 | Cho  \sin \alpha = \frac{3}{5} và  (90^\circ < \alpha < 180^\circ). Tính  \cos \alpha.
+  uf89 NLC 2 | Cho \cos(\alpha + 2024\pi) = \frac{-3}{5} và \pi < \alpha < \frac{3\pi}{2}. Khi đó giá trị của \tan \alpha là
+  ivyd TL 2 | Cho \cos \alpha = \frac{3}{4} và \frac{3\pi}{2} < \alpha < 2\pi. Tính giá trị của \sin \alpha và \tan 2\alpha.
+
+### [2] Bài 1. Giá trị lượng giác của góc lượng giác | Đổi đơn vị đo góc, độ dài cung tròn (22)
+    yêu cầu: Thực hiện được việc đổi đơn vị đo góc giữa độ và radian, tính được độ dài cung tròn.
+  a35h NLC 2 | Cho góc hình học uOv có số đo 50^\circ (như hình vẽ) ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/stor
+  9dt1 NLC 2 | Bánh xe của người đi xe đạp quay được 2 vòng trong 6 giây. Hỏi trong 1 giây, bánh xe quay được bao nhiêu độ:
+  97gj NLC 2 | Cho góc lượng giác (Ou, Ov) có số đo là \frac{\pi}{4}. Số đo của góc lượng giác nào sau đây có cùng tia đầu là
+  6msy NLC 3 | Bánh xe của người đi xe đạp quay được 13 vòng trong 4 giây. Tính độ dài quãng đường mà người đi xe đạp đã đi đ
+  tufl NLC 2 | Trên đường tròn lượng giác, số đo của các góc lượng giác có tia đầu OA, tia cuối OB là ![Hình ảnh](https://cmj
+  s7kc NLC 2 | Trên đường tròn bán kính r = 15, độ dài của cung có số đo \alpha = 50^\circ là
+  ey8g TLN 2 | Bánh xe đạp của người đi xe đạp quay được 2 vòng trong 5 giây. Hỏi trong 2 giây, bánh xe quay được 1 góc bao n
+  hl08 TLN 3 | Một bánh xe đạp quay được 25 vòng trong 10 giây. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/
+  7oti TLN 3 | Một chiếc đu quay có bán kính 75 m, tâm của vòng quay ở độ cao 90 m so với mặt đất, thời gian thực hiện mỗi vò
+  0jxe NLC 2 | Cho \widehat{MON} = 60^\circ. Xác định số đo của góc lượng giác được biểu diễn trong hình vẽ. ![Hình ảnh](http
+  31mn NLC 2 | Một bánh xe có 72 răng. Số đo góc mà bánh xe đã quay được khi di chuyển 10 răng là
+  88kw NLC 2 | Trên đường tròn lượng giác với điểm gốc A(1;0), cho điểm M biểu diễn cho góc lượng giác \frac{\pi}{6}. Gọi N l
+  nd52 DS 3 | Một chiếc đồng hồ có kim giờ và kim phút được cho như trong hình vẽ sau. Chiều dài kim giờ, kim phút lần lượt 
+  jfi9 TLN 3 | Bánh xe của người đi xe đạp quay được 12 vòng trong 5 giây. Giả sử tại thời điểm bắt đầu quay van xe nằm ở vị 
+  9pwk TLN 3 | Một người đi xe đạp đã đi được quãng đường 614,8m trong thời gian 3 phút. Biết rằng đường kính bánh xe là 700m
+  bpeb TLN 4 | Một đồng hồ có kim giờ dài 5,5 (cm); kim phút dài 11 (cm) và chỉ thời gian lúc 12 giờ. Hỏi hai kim trùng với n
+  yg1t TLN 4 | Thanh OM quay ngược chiều kim đồng hồ quanh gốc O của nó trên một mặt phẳng thẳng đứng và in bóng vuông góc xu
+  5o36 NLC 1 | Góc  70^\circ có số đo bằng radian là:
+  bo5t NLC 1 | Góc có số đo  120^\circ đổi sang radian là
+  bfqs NLC 1 | Đổi số đo của góc \frac{\pi}{12} rad sang đơn vị độ ta được góc có số đo bằng bao nhiêu?
+  w9a1 NLC 2 | Cho góc hình học uOv có số đo bằng 60^\circ như hình vẽ ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/s
+  1zk0 NLC 1 | Đổi số đo góc 105^\circ sang radian, ta được
+
+### [3] Bài 1. Giá trị lượng giác của góc lượng giác | Rút gọn biểu thức lượng giác cơ bản (2)
+    yêu cầu: Sử dụng được các hệ thức lượng giác cơ bản và góc liên quan đặc biệt để rút gọn biểu thức.
+  xkna TLN 2 | Cho \cos x = \frac{1}{3}. Tính giá trị biểu thức P = 3\sin^2 x + 4\cos^2 x. (Kết quả làm tròn đến hàng phần mư
+  0gsp NLC 1 | Đơn giản biểu thức A = \cos(\alpha - \frac{\pi}{2}), ta được:
+
+### [4] Bài 1. Giá trị lượng giác của góc lượng giác | Toán tổng hợp (5)
+    yêu cầu: Vận dụng tổng hợp giá trị lượng giác của góc lượng giác để giải quyết các bài toán nhiều ý.
+  scf8 DS 3 | Cho hình vẽ sau: ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/e
+  mmyy DS 2 | Cho góc lượng giác \alpha có số đo theo đơn vị radian là \frac{3\pi}{4}.
+  v8vq DS 3 | Cho góc lượng giác (Ou, Ov) như hình vẽ sau, biết góc hình học \widehat{uOv} = 45^\circ. ![Hình ảnh](https://c
+  qpe2 DS 4 | Trên đường tròn lượng giác tâm O và hệ trục tọa độ Oxy cho điểm M sao cho \widehat{AOM} = \frac{\pi}{3} như hì
+  dt5w DS 2 | Cho \sin \alpha = \frac{1}{3}, với \frac{\pi}{2} < \alpha < \pi. Khi đó, các mệnh đề sau đúng hay sai?
+
+### [5] Bài 2. Công thức lượng giác | Bài toán thực tế ứng dụng công thức lượng giác (6)
+    yêu cầu: Vận dụng được các công thức lượng giác để giải quyết bài toán thực tế.
+  bwgz TLN 4 | Trên một mảnh đất hình vuông ABCD, bác An đặt một chiếc đèn pin tại vị trí A chiếu chùm sáng phân kì sang phía
+  tcn3 TLN 3 | Từ một vị trí A, người ta buộc hai sợi cáp AB và AC đến một cái trụ cao 15m, được dựng vuông góc với mặt đất, 
+  7aqc TLN 3 | Trong Vật lí, phương trình tổng quát của một vật dao động điều hoà cho bởi công thức x(t) = A\cos(\omega t + \
+  9pf1 TLN 3 | Trong Vật lí, phương trình tổng quát của một vật dao động điều hoà cho bởi công thức x(t) = A\cos(\omega t + \
+  8a6u DS 4 | Trong hình vẽ dưới đây, ba điểm M, N, P nằm ở đầu các cánh quạt của tuabin gió. Biết các cánh quạt dài 31 m, đ
+  05x1 TLN 3 | Một sợi cáp R được gắn vào một cột thẳng đứng ở vị trí cách mặt đất 14 m. Một sợi cáp S khác cũng được gắn vào
+
+### [6] Bài 2. Công thức lượng giác | Toán tổng hợp (2)
+    yêu cầu: Vận dụng tổng hợp các công thức lượng giác để giải quyết các bài toán nhiều ý.
+  h8h8 DS 3 | Cho góc \alpha thỏa mãn \cos \alpha = -\frac{4}{5} và \pi < \alpha < \frac{3\pi}{2}.
+  wjpp DS 3 | Cho tam giác ABC có \sin A = \frac{\sin B + \sin C}{\cos B + \cos C}.
+
+### [7] Bài 2. Công thức lượng giác | Sử dụng công thức biến đổi tổng thành tích, tích thành tổng (11)
+    yêu cầu: Vận dụng được công thức biến đổi tích thành tổng và tổng thành tích để rút gọn biểu thức.
+  kwfe NLC 1 | Biến đổi \sin 6x + \sin 4x thành tích là
+  5ckg TLN 3 | Cho góc lượng giác a thỏa mãn \cos 2a = 0,2. Tính giá trị của biểu thức A = 2\cos a.\cos 5a - 2\cos 2a.\cos 4a
+  csd8 NLC 2 | Rút gọn biểu thức P = \sin(a + \frac{\pi}{4})\sin(a - \frac{\pi}{4}).
+  z7qm NLC 2 | Cho hai góc nhọn a và b. Biết \cos a = \frac{1}{3}, \cos b = \frac{1}{4}. Giá trị \cos(a+b).\cos(a-b) bằng
+  vsah NLC 2 | Cho biểu thức B = \frac{\cos 2a - \cos 4a}{\sin 4a - \sin 2a}. Biểu thức B bằng biểu thức nào dưới đây?
+  6ufl NLC 3 | Cho góc \alpha thỏa mãn \cos \alpha = -\frac{4}{5} và \pi < \alpha < \frac{3\pi}{2}. Tính P = \sin\frac{\alpha
+  g8ul NLC 3 | Cho \cos \alpha = \frac{3}{4}. Tính giá trị của biểu thức P = \tan\frac{3\alpha}{2}\tan\frac{\alpha}{2}.
+  pzx4 TLN 2 | Cho hai góc nhọn a và b. Biết \cos a = \frac{1}{3}; \cos b = \frac{1}{4}. Tính giá trị của biểu thức P = \cos(
+  ztmn NLC 3 | Biểu thức thu gọn của biểu thức A = \frac{\sin 2a + \sin 5a - \sin 3a}{1 + \cos a - 2\sin^2 2a} (với giả thiết
+  ro46 NLC 1 | Biểu thức \sin 35^\circ . \cos 45^\circ được viết lại là
+  gf9s NLC 2 | Biểu thức \frac{\sin 10^\circ + \sin 20^\circ}{\cos 10^\circ + \cos 20^\circ} bằng
+
+### [8] Bài 2. Công thức lượng giác | Sử dụng công thức cộng, công thức nhân đôi (33)
+    yêu cầu: Vận dụng được công thức cộng và công thức nhân đôi để biến đổi, tính giá trị biểu thức lượng giác.
+  fwze NLC 1 | Biểu thức \sin(a + \frac{\pi}{6}) được viết lại
+  4nrp NLC 2 | Nếu hai góc a và b có \tan a = \frac{1}{3} và \tan b = \frac{1}{2} thì giá trị của \tan(a - b)
+  chyk NLC 2 | Cho góc \alpha thỏa mãn \cos\alpha = \frac{2}{5}. Tính \cos 2\alpha
+  jyfw NLC 2 | Cho \cos x = \frac{4}{5}, x \in (-\frac{\pi}{2} ; 0). Giá trị của \sin 2x là:
+  ldy7 NLC 3 | Với mọi giá trị của \alpha sao cho biểu thức có nghĩa, khi đó biểu thức \frac{\sin^2 2\alpha + 4\sin^2 \alpha 
+  a0st NLC 3 | Cho \sin \alpha - \cos \alpha = \frac{1}{3} với \pi < \alpha < \frac{5\pi}{4}. Giá trị của \cot 2\alpha là:
+  rbhb DS 2 | Biết \sin a = \frac{8}{17}, \tan b = \frac{5}{12} và a, b là các góc nhọn. Khi đó:
+  6kry DS 2 | Cho \tan a = \frac{1}{2}, 0 < a < \frac{\pi}{2} và \tan b = \frac{1}{3}, 0 < b < \frac{\pi}{2}.
+  hufy DS 2 | Cho \tan \alpha = \frac{1}{2}, \pi < \alpha < \frac{3\pi}{2}. Khi đó:
+  1q1n DS 3 | Cho \cos 2\alpha = -\frac{1}{9}, \alpha \in (-\frac{\pi}{2}; 0).
+  vivk TLN 2 | Cho \sin \alpha = \frac{2\sqrt{5}}{5} với 0 < \alpha < \frac{\pi}{2}. Biết giá trị của \cos(\alpha + \frac{\pi
+  iwck TLN 2 | Cho \sin \alpha = \frac{1}{3} và \frac{\pi}{2} < \alpha < \pi. Biết giá trị của \cos(\alpha - \frac{\pi}{6}) =
+  w026 TLN 3 | Cho \cos 2x = \frac{3}{5} và \frac{3\pi}{4} < x < \pi. Tính \tan(x - \frac{\pi}{3}). (kết quả làm tròn đến hàn
+  s30k TLN 3 | Tính giá trị của biểu thức \frac{3 - 4\cos 2\alpha + \cos 4\alpha}{3 + 4\cos 2\alpha + \cos 4\alpha} với giả t
+  1psk TLN 3 | Cho \sin x = \frac{1}{3} và 90^\circ < x < 180^\circ. Tính giá trị biểu thức \frac{1 + \sin 2x + \cos 2x}{1 + 
+  usc9 NLC 2 | Cho \sin x + \cos x = \frac{1}{2} thì \sin 2x bằng
+  leo4 NLC 1 | Giả sử \sin \alpha = \frac{\sqrt{3}}{4}. Giá trị của \cos 2\alpha bằng
+  60dc NLC 3 | Rút gọn biểu thức A = \frac{\sin x + \sin\frac{x}{2}}{1 + \cos x + \cos\frac{x}{2}} được:
+  trd2 NLC 2 | Biết \sin \alpha = \frac{\sqrt{3}}{2} và \frac{\pi}{2} < \alpha < \pi. Giá trị của P = \cos(2\alpha - \frac{\p
+  x743 NLC 3 | Biểu thức \frac{1 + \sin 4\alpha - \cos 4\alpha}{1 + \sin 4\alpha + \cos 4\alpha} có kết quả rút gọn bằng:
+  m4vl DS 2 | Cho \sin \alpha = \frac{2}{3} với 0 < \alpha < \frac{\pi}{2}.
+  b4fi TLN 3 | Cho \cos 4\alpha + 2 = 6\sin^2 \alpha với \frac{\pi}{2} < \alpha < \pi. Tính \tan 2\alpha. (kết quả làm tròn đ
+  lw0h TLN 3 | Cho \sin \alpha + \cos \alpha = m. Có bao nhiêu giá trị của tham số m để \sin 2\alpha = -\frac{3}{4}.
+  rbmq NLC 1 | Trong các khẳng định sau, khẳng định nào sai?
+  hiir NLC 2 | Cho  \cos x = \frac{4}{5}, x \in (-\frac{\pi}{2}; 0). Giá trị của  \sin 2x là:
+  b39l NLC 1 | Trong các công thức sau, công thức nào đúng?
+  e85i NLC 2 | Cho  \cos \alpha = -\frac{2}{3},  \cos 2\alpha nhận giá trị nào trong các giá trị sau:
+  5ebu NLC 1 | Rút gọn biểu thức \sin 2a.\cos a - \cos 2a.\sin a , ta được:
+  gqgb TLN 2 | Cho hai góc nhọn a và b. Biết \cos a = \frac{1}{3}; \cos b = \frac{1}{4}. Tính giá trị của biểu thức 144P biết
+  p57s NLC 3 | Cho số thực \alpha thỏa mãn \sin \alpha = \frac{1}{4}. Tính (\sin 4\alpha + 2\sin 2\alpha)\cos\alpha
+  12nh NLC 1 | Biểu thức \sin 7x.\sin x + \cos 7x.\cos x bằng:
+  ww86 NLC 1 | Khẳng định nào đúng trong các khẳng định sau?
+  jvbz TL 2 | Cho  \sin \alpha = \frac{5}{13} và  \frac{\pi}{2} < \alpha < \pi. Tính giá trị của  \cos \alpha và  \tan 2\alp
+
+### [9] Bài 3. Hàm số lượng giác | Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác (17)
+    yêu cầu: Tìm được giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác.
+  pcuj NLC 2 | Tìm tập giá trị T của hàm số y = 2\cos x + 3.
+  pjnd NLC 2 | Giá trị nhỏ nhất và giá trị lớn nhất của hàm số y = 3\sin 2x - 5 lần lượt là:
+  gcrf NLC 2 | Gọi M, m lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số y = 2\cos( x + \frac{\pi}{3} ). Tính P = 
+  oig6 DS 3 | Cho biểu thức A = 2\sin x - 1.
+  coi2 TLN 3 | Tập giá trị của hàm số y = 5 + 4\sin 2x \cos 2x chứa tất cả bao nhiêu giá trị nguyên?
+  38hc TLN 3 | Gọi M và m lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số y = \cos 2x + \cos x. Tính tổng M + m. 
+  zkbp TLN 3 | Biết rằng tập giá trị của hàm số y = \sin^6 x + \cos^6 x là T = [a;b]. Tính giá trị biểu thức P = 4a + b
+  g3zp NLC 2 | Tập giá trị của hàm số y = 2\sin x + 1 bằng
+  4ii0 NLC 2 | Giá trị lớn nhất và nhỏ nhất của hàm số y = 3\sin 3x - 4 lần lượt là
+  v9p5 NLC 2 | Giá trị bé nhất của hàm số y = -3\sin( x + \frac{\pi}{6} ) + 2 là
+  s5ne TLN 3 | Biết rằng tập giá trị của hàm số y = \cos^2 x + 2\sin x + 2 là T = [a;b]. Tính giá trị biểu thức P = 10a - 2b?
+  2g0u TLN 3 | Biết rằng tập giá trị của hàm số y = \frac{2\sin x + \cos x}{\sin x + 2\cos x + 4} là T = [a;b]. Tính giá trị 
+  pcj5 NLC 2 | Tập giá trị của hàm số y = \sqrt{2} \sin x là
+  ckzj TLN 2 | Hàm số y = \sin x + \cos x có giá trị nhỏ nhất bằng (làm tròn đến hàng phần mười) ?
+  yogy TLN 2 | Hàm số y = \sin x + \cos x có giá trị nhỏ nhất bằng (làm tròn đến hàng phần mười)
+  qdb0 NLC 1 | Tập giá trị của hàm số  y = \sin 2x là:
+  86m4 NLC 1 | Giá trị nhỏ nhất của hàm số  y = \cos x là
+
+### [10] Bài 3. Hàm số lượng giác | Toán tổng hợp (5)
+    yêu cầu: Vận dụng tổng hợp tính chất của hàm số lượng giác để giải quyết các bài toán nhiều ý.
+  z8t8 DS 3 | Cho biểu thức y = f(x) = \sin^6 x + \cos^6 x. Các mệnh đề sau đúng hay sai?
+  dle7 DS 3 | Cho hàm số y = f(x) = \cos 2x + \cos x.
+  k74t DS 3 | Cho biểu thức F = \cos^2 a + 2\sin a + 2
+  h5c4 DS 3 | Cho hàm số y = 2\sin( \frac{5\pi}{2} - \frac{\pi x}{6} ) + 11.
+  mchy DS 2 | Cho hàm số  y = f(x) = \frac{1}{2}\sin 2x + \frac{1}{2}.
+
+### [11] Bài 3. Hàm số lượng giác | Chu kì và đồ thị của hàm số lượng giác (10)
+    yêu cầu: Nhận biết được tính tuần hoàn, chu kì và hình dạng đồ thị của các hàm số lượng giác cơ bản.
+  ows3 NLC 1 | Khẳng định nào sau đây là sai?
+  de9t NLC 2 | Hàm số nào có đồ thị như hình dưới đây ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/
+  73ea NLC 2 | Đường cong hình bên dưới là đồ thị của hàm số nào trong bốn hàm số sau? ![Hình ảnh](https://cmjithgtecypxmisbz
+  qf21 NLC 1 | Trong các hàm số y = \sin x, y = \cos x, y = \tan x, y = \cot x có bao nhiêu hàm số có chu kì là 2\pi?
+  mo4i NLC 2 | Dựa vào đồ thị đã vẽ, chọn khẳng định đúng về hàm số y = \sin x ![Hình ảnh](https://cmjithgtecypxmisbzvw.supab
+  pxy9 NLC 2 | Xét hàm số y = \cos x trên đoạn [-\pi; \pi]. Khẳng định nào sau đây là sai? ![Hình ảnh](https://cmjithgtecypxm
+  6n8d NLC 2 | Đường cong trong hình dưới là đồ thị của hàm số nào trong các hàm số sau đây? ![Hình ảnh](https://cmjithgtecyp
+  mdtm NLC 2 | Có bao nhiêu giá trị của x trên đoạn [ -2\pi; \frac{3\pi}{2} ] để hàm số y = \cos x nhận giá trị bằng 0. ![Hìn
+  5h17 NLC 1 | Hàm số y = \tan x đồng biến trên khoảng nào trong các khoảng sau?
+  g7fh NLC 2 | Cho hàm số y = \sin x có đồ thị như hình vẽ dưới đây. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/sto
+
+### [12] Bài 3. Hàm số lượng giác | Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác (10)
+    yêu cầu: Xác định được tập xác định và xét được tính chẵn, tính lẻ của hàm số lượng giác.
+  oh9z NLC 2 | Tập xác định của hàm số y = \tan( 3x + \frac{\pi}{4} ) là
+  0bmu NLC 1 | Trong các hàm số sau, hàm số nào là hàm số lẻ?
+  a0ab NLC 1 | Trong các hàm số sau, hàm số nào là hàm số chẵn?
+  oexj NLC 1 | Tập xác định của hàm số y = 2 + \cot x là
+  d9ev NLC 1 | Cho các hàm số y = \cos x, y = \sin x, y = \tan x, y = \cot x. Trong các hàm số trên có bao nhiêu hàm số chẵn?
+  jlwq DS 2 | Cho hàm số f(x) = \sin^2 x + \cos x - 1.
+  ddrz NLC 2 | Tập xác định của hàm số y = \frac{1 - \cos x}{\sin x} là
+  gtre NLC 1 | Tập xác định của hàm số  y = \tan x là
+  ejt7 NLC 1 | Tập xác định của hàm số  y = \cot x là
+  ic10 NLC 1 | Tập xác định của hàm số y = \cot x là
+
+### [13] Bài 3. Hàm số lượng giác | Bài toán thực tế ứng dụng hàm số lượng giác (12)
+    yêu cầu: Giải quyết được bài toán thực tế gắn với mô hình hàm số lượng giác.
+  rjly DS 3 | Số giờ có ánh sáng của một thành phố A trong ngày thứ t của năm 2023 được cho bởi hàm số y = 4\sin[ \frac{\pi}
+  m1oc TLN 2 | Hằng ngày, mực nước của con kênh lên xuống theo thủy triều. Độ cao h (m) của mực nước trong kênh tính theo thờ
+  n7n6 TLN 3 | Số giờ có ánh sáng của một thành phố X ở vĩ độ 40^\circ Bắc trong ngày thứ t của một năm không nhuận được cho 
+  pna8 DS 3 | Chiều cao so với mực nước biển trung bình tại thời điểm t (giây) của mỗi cơn sóng được cho bởi hàm số h(t) = 7
+  y6sd TLN 3 | Số giờ có ánh sáng mặt trời của một thành phố X ở vĩ độ 40^\circ bắc trong ngày thứ t của một năm không nhuận 
+  rql9 TLN 3 | Hằng ngày mực nước của con kênh lên xuống theo thủy triều. Độ sâu h (mét) của mực nước trong kênh được tính tạ
+  ruk3 TLN 4 | Một cái guồng nước có vành kim loại ngoài cùng là một đường tròn tâm O, bán kính là 4m. Xét chất điểm M thuộc 
+  7a36 TLN 3 | Một con lắc lò xo dao động điều hoà quanh vị trí cân bằng theo phương trình y = 25\sin 4\pi t ở đó y được tính
+  52t7 TLN 3 | Số giờ có ánh sáng mặt trời của thành phố T ở vĩ độ 60^\circ bắc trong ngày thứ t của một năm không nhuận được
+  queb TLN 3 | Số giờ có ánh sáng mặt trời của một thành phố A trong ngày thứ t (ở đây t là số ngày tính từ ngày 1 tháng giên
+  no9e TLN 2 | Giả sử khi một cơn sóng biển đi qua một cái cọc ở ngoài khơi, chiều cao của nước được mô hình hoá bởi hàm số h
+  6g89 TLN 3 | Số giờ có ánh sáng mặt trời của thành phố T ở vĩ độ 60^\circ bắc trong ngày thứ t của một năm không nhuận được
+
+### [14] Bài 4. Phương trình lượng giác cơ bản | Giải phương trình sin x = a, cos x = a (27)
+    yêu cầu: Giải được phương trình lượng giác cơ bản dạng sin x = a và cos x = a.
+  36ps NLC 1 | Tìm tập nghiệm của phương trình \sin x = 0 là.
+  9cnc NLC 2 | Phương trình 1 - \cos 2x = 0 có tập nghiệm là:
+  z00b NLC 3 | Số nghiệm của phương trình \cos (x + \frac{\pi}{4}) = 1 với \pi \le x \le 5\pi là:
+  3aug NLC 1 | Nghiệm của phương trình \cos x = \cos 60^\circ là
+  6bmz NLC 3 | Số nghiệm của phương trình \sin (5x - \frac{\pi}{3}) = 1 trên [0; 2\pi] là:
+  jjk8 NLC 3 | Tổng nghiệm dương nhỏ nhất và nghiệm âm lớn nhất của phương trình \cos (2x - \frac{\pi}{6}) = \frac{\sqrt{3}}{
+  qz49 NLC 3 | Số nghiệm của phương trình \cos x = \frac{2}{5} trên khoảng x \in (-\frac{\pi}{2}; 2\pi) là:
+  7xy8 DS 3 | Cho phương trình \sin (2x - \frac{\pi}{4}) = \sin (x + \frac{3\pi}{4}).
+  5cxr TLN 3 | Phương trình \cos x = 0 có bao nhiêu nghiệm thuộc nửa khoảng (0; 2021\pi]?
+  pb9k NLC 1 | Giải phương trình 2\cos x = -1 được nghiệm là
+  a43n NLC 2 | Hỏi trên [0; \frac{\pi}{2}], phương trình \sin x = \frac{1}{2} có bao nhiêu nghiệm?
+  9so6 NLC 2 | Số nghiệm của phương trình \sin 2x = \frac{\sqrt{3}}{2} trong khoảng (0; 3\pi) là
+  33i9 NLC 1 | Phương trình \cos 3x = \cos \frac{\pi}{15} có nghiệm là:
+  pjje NLC 1 | Nghiệm của phương trình \sin \frac{x}{2} = 1 là
+  85n6 NLC 1 | Nghiệm của phương trình 2\sin x - \sqrt{3} = 0 là
+  zjm8 DS 3 | Cho phương trình lượng giác 2\cos x = \sqrt{3}.
+  mifx DS 3 | Cho phương trình lượng giác \sin (3x + \frac{\pi}{3}) = -\frac{\sqrt{3}}{2}.
+  u3ak TLN 3 | Tìm số nghiệm của phương trình \sin(\cos x) = 0 trên đoạn [1; 2021].
+  frb3 NLC 1 | Nghiệm của phương trình \cos x = -\frac{1}{2} là:
+  p9kr NLC 1 | Phương trình \sin x = \sin \alpha có tập nghiệm là:
+  t2hb NLC 2 | Số nghiệm của phương trình  \sin x = 0 trên đoạn  [0; \pi] là
+  049u NLC 1 | Nghiệm của phương trình  \sin x = \frac{1}{2} là
+  kdks NLC 1 | Nghiệm của phương trình  \cos x = \cos \frac{\pi}{12} là
+  nonu NLC 1 | Nghiệm của phương trình  \cos x = -\frac{1}{2} là:
+  q1ka DS 3 | Cho phương trình lượng giác \sin 2x = -\frac{1}{2}.
+  dzxw TL 2 | Giải phương trình  \sqrt{2}\cos(x + \frac{\pi}{2}) = 1
+  zlr5 NLC 1 | Nghiệm của phương trình 2\sin x + 1 = 0 là
+
+### [15] Bài 4. Phương trình lượng giác cơ bản | Giải phương trình tan x = a, cot x = a (14)
+    yêu cầu: Giải được phương trình lượng giác cơ bản dạng tan x = a và cot x = a.
+  ld76 NLC 2 | Tập nghiệm của phương trình \sin x = \sqrt{3} \cos x là
+  7p3b NLC 1 | Nghiệm của phương trình \cot x = \frac{1}{\sqrt{3}} là
+  yb3m NLC 3 | Tổng các nghiệm của phương trình \tan 2x = \tan x trên [-\pi; 2\pi] là
+  3n0q DS 3 | Cho phương trình lượng giác \cot 3x = -\frac{1}{\sqrt{3}}.
+  ms4w NLC 1 | Giải phương trình \sqrt{3}\tan x - 1 = 0.
+  6fb3 NLC 1 | Nghiệm của phương trình \tan x - 1 = 0 là
+  i91p NLC 1 | Tìm nghiệm của phương trình \cot x = \sqrt{3}.
+  1lnz NLC 3 | Tổng các nghiệm của phương trình \tan 5x - \tan x = 0 trên nửa khoảng [0; \pi) bằng
+  hb94 NLC 2 | Nghiệm của phương trình \tan 3x = \tan x là:
+  lprv DS 3 | Cho phương trình lượng giác \tan(2x - 15^\circ) = 1.
+  7kbr DS 3 | Cho phương trình lượng giác 3 - \sqrt{3}\tan(2x - \frac{\pi}{3}) = 0.
+  ssgt TL 2 | Giải phương trình  \tan(x + \frac{\pi}{3}) = \sqrt{3}
+  x272 NLC 2 | Tập nghiệm S của phương trình \sqrt{3} \tan \frac{x}{3} + 3 = 0
+  q3yz NLC 2 | Nghiệm của phương trình \cot 2x = -\sqrt{3} là
+
+### [16] Bài 4. Phương trình lượng giác cơ bản | Ứng dụng phương trình lượng giác trong bài toán thực tế (11)
+    yêu cầu: Vận dụng được phương trình lượng giác cơ bản để giải quyết bài toán thực tế.
+  o8lg TLN 3 | Giả sử một vật dao động điều hoà xung quanh vị trí cân bằng theo phương trình x = 2 \cos (5t - \frac{\pi}{6}).
+  ab3b TLN 3 | Hằng ngày, Mặt Trời chiếu sáng, bóng của một toà chung cư cao 40 m in trên mặt đất, độ dài bóng của toà nhà nà
+  59xs TLN 3 | Một vệ tinh bay quanh Trái Đất theo một quỹ đạo hình Elip (như hình vẽ): ![Hình ảnh](https://cmjithgtecypxmisb
+  ktkf TLN 4 | Một cây cầu có dạng cung OA của đồ thị hàm số y = 4,8 \sin \frac{x}{9} và được mô tả trong hệ trục tọa độ với 
+  jo64 TLN 3 | Số giờ có ánh sáng mặt trời của thành phố B trong ngày thứ t (ở đây t là số ngày tính từ ngày mùng 1 tháng giê
+  m7gg TLN 2 | Hằng ngày mực nước của con kênh lên xuống theo thủy triều. Độ sâu h (mét) của mực nước trong kênh được tính tạ
+  nbvs TLN 3 | Chiều cao h (m) của một cabin trên vòng quay vào thời điểm t giây sau khi bắt đầu chuyển động được cho bởi côn
+  7omj TLN 4 | Một cây cầu có dạng cung OA của đồ thị hàm số y = 4,8\sin\frac{x}{9} và được mô tả trong hệ trục tọa độ với đơ
+  s4de TLN 3 | Số giờ có ánh sáng mặt trời của một thành phố A trong ngày thứ t (ở đây t là số ngày tính từ ngày 1 tháng giên
+  v7ia TLN 4 | Một vòng quay trò chơi có bán kính 57 m, trục quay cách mặt đất 57,5 m, quay đều mỗi vòng hết 15 phút. Khi vòn
+  o1zi DS 3 | Một vật dao động xung quanh vị trí cân bằng theo phương trình x = 1,5 \cos (\frac{t\pi}{4}); trong đó t là thờ
+
+### [17] Bài 4. Phương trình lượng giác cơ bản | Biện luận số nghiệm của phương trình lượng giác chứa tham số (1)
+    yêu cầu: Biện luận được số nghiệm của phương trình lượng giác chứa tham số trên khoảng cho trước.
+  7mma TLN 4 | Số các giá trị nguyên của tham số m để phương trình: (3\cos x - 2)(2\cos x + 3m - 1) = 0 có 3 nghiệm phân biệt
+
+### [18] Bài 5. Ôn tập chương | Bài toán thực tế ứng dụng công thức lượng giác (1)
+    yêu cầu: Giải quyết được bài toán thực tế liên quan đến góc an toàn và khoảng cách bằng cách vận dụng công thức lượng giác.
+  l567 TLN 3 | Một cái thang đơn có chiều dài 5m có ghi "để đảm bảo an toàn cần đặt thang sao cho góc tạo thành giữa thang và
+
+### [19] Bài 5. Ôn tập chương | Tổng hợp lượng giác và phương trình lượng giác (8)
+    yêu cầu: Vận dụng được các công thức và phương trình lượng giác để giải quyết bài toán tổng hợp.
+  u12x DS 3 | Cho hàm số y = f(x) = \frac{1}{2}\cos 2x + \frac{1}{2}.
+  k3z4 DS 3 | Cho hai hàm số f(x) = \sin x; g(x) = \sin 3x.
+  w0k5 TLN 4 | Tìm số giá trị nguyên của tham số m để phương trình: (3\cos x - 2)(2025\cos x + 3m - 1) = 0 có 3 nghiệm phân b
+  okjz DS 2 | Cho hàm số  y = f(x) = \frac{1}{2}\cos 2x + \frac{1}{2}.
+  kd58 DS 3 | Cho các hàm số sau f(x) = \sin x và g(x) = \cos 2x. Khi đó, các mệnh đề sau đúng hay sai?
+  v9kt DS 3 | Cho hàm số y = \sqrt{2}\cos(2x + \frac{\pi}{4}) + \sin(2x - \frac{\pi}{2}).
+  mabz DS 3 | Cho phương trình lượng giác 2\cos(x + \frac{\pi}{3}) - m + 1 = 0, trong đó m \in {R} là tham số.
+  zrdt DS 3 | Cho hàm số y = f(x) = \sin(2x + \frac{\pi}{3}).
+
+### [20] Bài 5. Ôn tập chương | Đổi đơn vị đo góc, độ dài cung tròn (1)
+    yêu cầu: Tính được độ dài cung tròn khi biết bán kính và số đo của cung đó.
+  ol65 NLC 2 | Tính độ dài của cung trên đường tròn có bán kính R = 20(cm) và số đo \alpha = \frac{2\pi}{5}
+
+### [21] Bài 5. Ôn tập chương | Xác định số đo của góc lượng giác (3)
+    yêu cầu: Tính được số đo của góc lượng giác khi biết mối quan hệ giữa các góc lượng giác.
+  lv8m NLC 2 | Cho góc lượng giác (Ox, Ou) = -50^\circ và một góc lượng giác (Ox, Ov) = 120^\circ. Số đo của góc lượng giác (
+  c3py NLC 2 | Trên đường tròn lượng giác điểm gốc A, điểm M thuộc đường tròn sao cho góc lượng giác (OA, OM) có số đo 55^\ci
+  qxeu NLC 2 | Cho góc lượng giác (Ou, Ov) có số đo là \frac{2\pi}{3}, góc lượng giác (Ou, Ow) có số đo là \frac{11\pi}{12}. 
+
+### [22] Bài 5. Ôn tập chương | Sử dụng công thức biến đổi tổng thành tích, tích thành tổng (2)
+    yêu cầu: Rút gọn được biểu thức và tính giá trị lượng giác bằng công thức biến đổi tổng thành tích, tích thành tổng.
+  2mv2 NLC 3 | Rút gọn biểu thức B = \frac{\sin 2\alpha + \sin 4\alpha + \sin 6\alpha}{1 + \cos 2\alpha + \cos 4\alpha}, ta đ
+  b5he NLC 2 | Biết \cos 2x = \frac{2}{3}. Tính \sin(x - \frac{\pi}{3})\cdot\sin(x + \frac{\pi}{3}).
+
+### [23] Bài 5. Ôn tập chương | Giải phương trình sin x = a, cos x = a (5)
+    yêu cầu: Giải được phương trình lượng giác cơ bản dạng sin x = a, cos x = a và tính các nghiệm trên một khoảng cho trước.
+  9pok NLC 2 | Gọi a, b lần lượt là nghiệm dương nhỏ nhất và nghiệm âm lớn nhất của phương trình \sin(2x - \frac{\pi}{5}) = 0
+  dh9h NLC 1 | Nghiệm của phương trình \cos(x - \frac{\pi}{3}) = \frac{\sqrt{3}}{2} là
+  o00j TLN 3 | Tổng tất cả các nghiệm của phương trình \sin(\cos 2x) = 0 trên [0; 2\pi] bằng (kết quả làm tròn đến hàng phần 
+  nik5 NLC 3 | Tính tổng các nghiệm của phương trình 2\cos(x - \frac{\pi}{4}) + \sqrt{2} = 0 trên (-\pi; \frac{3\pi}{2}).
+  tpn9 DS 3 | Cho phương trình (2\sin x - 1)(\cos x + 1) = 0.
+
+### [24] Bài 5. Ôn tập chương | Chu kì và đồ thị của hàm số lượng giác (4)
+    yêu cầu: Sử dụng được đồ thị hàm số lượng giác để xác định số nghiệm của phương trình hoặc số giao điểm của các đường.
+  skzs NLC 2 | Cho đồ thị hàm số y = \cos x. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/le
+  kioc NLC 2 | Dùng đồ thị hàm số, cho biết số nghiệm của phương trình \sin x = \frac{1}{3} trên đoạn [-2\pi; \frac{5\pi}{2}]
+  z6yj NLC 2 | Cho đồ thị hàm số y = \sin x trên đoạn [-\pi; \pi] như hình vẽ. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supab
+  fw2g NLC 1 | Cho đồ thị hàm số y = \sin x trên đoạn [-\pi; \pi]. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/stora
+
+### [25] Bài 5. Ôn tập chương | Sử dụng công thức cộng, công thức nhân đôi (4)
+    yêu cầu: Tính được giá trị của biểu thức lượng giác bằng cách áp dụng công thức cộng và công thức nhân đôi.
+  8chl NLC 2 | Cho \cos a = \frac{1}{3}, khi đó giá trị của \cos 2a bằng:
+  jbwz NLC 2 | Giá trị của biểu thức \cos\frac{\pi}{7}\cos\frac{\pi}{42} - \sin\frac{\pi}{7}\sin\frac{\pi}{42} là
+  d399 NLC 2 | Cho \cos 2a = \frac{2}{3} với \frac{\pi}{2} < a < \pi. Khi đó \sin a bằng
+  z2qm NLC 2 | Cho a, b \in (0; \frac{\pi}{2}). Biết \cos a = \frac{1}{3}, \cos b = \frac{1}{4}. Giá trị \cos(a+b)\cdot\cos(a
+
+### [26] Bài 5. Ôn tập chương | Tính giá trị lượng giác của một góc, rút gọn biểu thức lượng giác (2)
+    yêu cầu: Rút gọn được biểu thức lượng giác và tính giá trị của biểu thức bằng các hằng đẳng thức lượng giác cơ bản.
+  2xwt TLN 3 | Khi A có nghĩa, biểu thức A = \frac{\cos^2 x - \sin^2 y}{\sin^2 x \sin^2 y} - \cot^2 x \cot^2 y có giá trị bằn
+  x6cg NLC 3 | Rút gọn biểu thức A = \frac{1 + \cos x + \cos 2x + \cos 3x}{2\cos^2 x + \cos x - 1}
+
+### [27] Bài 5. Ôn tập chương | Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác (2)
+    yêu cầu: Xác định được tập xác định và xét được tính chẵn, lẻ của một hàm số lượng giác cho trước.
+  fldb NLC 2 | Cho các hàm số 1) y = \sin x. 2) y = \sin x - \tan x. 3) y = \sin^2 x. 4) y = \cot 2x. 5) y = \cos x + \cot x.
+  5vye NLC 2 | Tìm tập xác định của hàm số y = 3\tan^2(\frac{x}{2} - \frac{\pi}{4}).
+
+### [28] Bài 5. Ôn tập chương | Giải tam giác và ứng dụng thực tế (1)
+    yêu cầu: Vận dụng được hệ thức lượng trong tam giác để tính chiều cao, khoảng cách và giải quyết các bài toán đo đạc thực tế.
+  06xu TLN 4 | Hai chung cư cao tầng với độ cao đều là 90m xây cạnh nhau với khoảng cách giữa chúng là HK = 20m. Để đảm bảo a
+
+### [29] Bài 5. Ôn tập chương | Tính các giá trị lượng giác của một góc lượng giác (2)
+    yêu cầu: Tính được các giá trị lượng giác của một góc khi biết một giá trị lượng giác của góc đó.
+  atmy NLC 2 | Cho \sin \alpha = \frac{1}{3}, \frac{\pi}{2} < \alpha < \pi. Tính \tan \alpha.
+  83ip NLC 2 | Cho \sin \alpha = \frac{4}{5}, \frac{\pi}{2} < \alpha < \pi. Giá trị của biểu thức P = \frac{2\cot \alpha - \t
+
+### [30] Bài 5. Ôn tập chương | Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác (4)
+    yêu cầu: Tìm được giá trị lớn nhất, giá trị nhỏ nhất của hàm số lượng giác và giải bài toán chứa tham số liên quan.
+  1bpk TLN 3 | Tìm số giá trị nguyên âm của tham số m để hàm số f(x) = \sqrt{3}\sin x - \cos x + 2m + 2025 nhận giá trị không
+  rlwr TLN 2 | Giá trị lớn nhất của hàm số y = f(x) = \sin^2 x + 4\sin x - 5 trên [0; \frac{\pi}{2}] là
+  kldm TLN 2 | Giá trị lớn nhất của hàm số y = \sin^2 x + \cos x - 3 là
+  kkve NLC 2 | Gọi M, m lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số y = 5\sin(x+\frac{\pi}{6}) + 9. Tính tổng
+
+### [31] Bài 5. Ôn tập chương | Bài toán thực tế ứng dụng hàm số lượng giác (6)
+    yêu cầu: Giải quyết được bài toán thực tế liên quan đến dao động điều hòa hoặc chuyển động tròn bằng cách ứng dụng hàm số lượng giác.
+  4c8b DS 3 | Trong hình bên, vị trí cabin mà Bình và Cường ngồi trên vòng quay được đánh dấu với điểm B và C. ![Hình ảnh](h
+  5nwh DS 3 | Giả sử một vật dao động điều hoà xung quanh vị trí cân bằng theo phương trình x = 3\cos(2t - \frac{\pi}{3}). Ở
+  u1yy TLN 3 | Mực nước cao nhất tại một cảng biển là 16m khi thủy triều lên cao và sau 12 giờ khi thủy triều xuống thấp thì 
+  ellh TLN 4 | Hình vẽ bên dưới là hai bánh răng của một động cơ, chúng có cùng kích thước. Khi động cơ hoạt động, hai bánh r
+  u6u1 TLN 3 | Hằng ngày, mực nước của con kênh lên xuống theo thủy triều. Độ sâu h(m) của mực nước trong kênh tính theo thời
+  jcmu TLN 3 | Một chiếc guồng nước có dạng hình tròn bán kính 2,5m; trục của nó đặt cách mặt nước 2m (hình bên). Khi guồng q

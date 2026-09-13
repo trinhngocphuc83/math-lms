@@ -1,0 +1,125 @@
+{
+ "question_categories": [
+  {
+   "id": "7a4f9ef6-243c-4a8d-ac0a-eb5e0ffda9a2",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 7. Ôn tập chương",
+   "math_form": "Tổng hợp quan hệ vuông góc, khoảng cách, thể tích",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các kiến thức về quan hệ vuông góc, khoảng cách và thể tích để giải quyết các bài toán hình học không gian tổng hợp."
+  },
+  {
+   "id": "9098c50b-4485-431a-b527-5b349db7ef3a",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 3. Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng",
+   "math_form": "Dựng hình chiếu vuông góc",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được hình chiếu vuông góc của một điểm, một đường thẳng lên một mặt phẳng."
+  },
+  {
+   "id": "8c046964-5f32-4ea6-a776-da17a91f1265",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 1. Hai đường thẳng vuông góc",
+   "math_form": "Chứng minh hai đường thẳng vuông góc",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Chứng minh được hai đường thẳng vuông góc với nhau trong không gian bằng cách sử dụng định nghĩa, tính chất hoặc vectơ chỉ phương."
+  },
+  {
+   "id": "65dc51f9-362b-4a61-adc1-c94698f5213d",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 2. Đường thẳng vuông góc với mặt phẳng",
+   "math_form": "Chứng minh đường thẳng vuông góc với mặt phẳng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Chứng minh được một đường thẳng vuông góc với một mặt phẳng bằng cách sử dụng định lí dấu hiệu nhận biết."
+  },
+  {
+   "id": "0bb7841c-e156-4269-9f4b-67fa6cde6da4",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 5. Khoảng cách",
+   "math_form": "Khoảng cách giữa hai đường thẳng chéo nhau",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được khoảng cách giữa hai đường thẳng chéo nhau trong không gian bằng cách xác định đoạn vuông góc chung hoặc sử dụng mặt phẳng song song."
+  },
+  {
+   "id": "a3ba0536-b114-4595-ae93-464775262320",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 4. Hai mặt phẳng vuông góc",
+   "math_form": "Chứng minh hai mặt phẳng vuông góc",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Chứng minh được hai mặt phẳng vuông góc với nhau bằng cách chỉ ra một đường thẳng nằm trong mặt phẳng này vuông góc với mặt phẳng kia."
+  },
+  {
+   "id": "52bb748f-672a-4c06-aa18-f96cbaa18c14",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 6. Thể tích",
+   "math_form": "Tính thể tích khối chóp, khối lăng trụ",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được thể tích của khối chóp và khối lăng trụ bằng cách sử dụng công thức tính thể tích khi biết diện tích đáy và chiều cao."
+  },
+  {
+   "id": "ad4a2e2d-259b-437e-9f58-9b6903fc5c82",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 5. Khoảng cách",
+   "math_form": "Khoảng cách từ điểm đến mặt phẳng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được khoảng cách từ một điểm đến một mặt phẳng bằng cách xác định hình chiếu vuông góc của điểm đó trên mặt phẳng."
+  },
+  {
+   "id": "15f66cd8-67c5-4801-87d8-c5ff207b28c2",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 4. Hai mặt phẳng vuông góc",
+   "math_form": "Tính góc giữa hai mặt phẳng (góc nhị diện)",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được số đo góc giữa hai mặt phẳng hoặc góc phẳng nhị diện bằng cách xác định các đường thẳng vuông góc với giao tuyến."
+  },
+  {
+   "id": "8c8e9eaa-4985-4a8f-958a-55d6ba6c5ad3",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 2. Đường thẳng vuông góc với mặt phẳng",
+   "math_form": "Mối liên hệ giữa quan hệ song song và quan hệ vuông góc",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Giải thích được mối liên hệ giữa quan hệ song song và quan hệ vuông góc của đường thẳng và mặt phẳng trong không gian."
+  },
+  {
+   "id": "d1feb374-6a55-4de0-aa12-c717a68f1661",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 1. Hai đường thẳng vuông góc",
+   "math_form": "Tính góc giữa hai đường thẳng trong không gian",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được số đo góc giữa hai đường thẳng trong không gian bằng cách sử dụng định nghĩa hoặc hệ thức lượng."
+  },
+  {
+   "id": "ca95e7a7-d874-4882-ad39-d18d1d6369ab",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 7. Quan hệ vuông góc trong không gian",
+   "lesson": "Bài 3. Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được số đo góc giữa đường thẳng và mặt phẳng bằng cách xác định hình chiếu vuông góc của đường thẳng trên mặt phẳng đó."
+  }
+ ],
+ "questions": []
+}

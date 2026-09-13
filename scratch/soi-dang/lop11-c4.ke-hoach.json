@@ -1,0 +1,122 @@
+{
+ "lop": "11",
+ "chuong": 4,
+ "dang": [
+  {
+   "bai": "Bài 1. Đường thẳng và mặt phẳng trong không gian",
+   "cu": null,
+   "moi": "Nhận biết các tính chất thừa nhận, cách xác định mặt phẳng",
+   "yc": "Nhận biết được các tính chất thừa nhận của hình học không gian và các cách xác định một mặt phẳng; xét được tính đúng sai của các mệnh đề."
+  },
+  {
+   "bai": "Bài 1. Đường thẳng và mặt phẳng trong không gian",
+   "cu": "Xác định giao tuyến của hai mặt phẳng",
+   "moi": "Xác định giao tuyến của hai mặt phẳng",
+   "yc": "Tìm được giao tuyến của hai mặt phẳng bằng cách tìm hai điểm chung."
+  },
+  {
+   "bai": "Bài 1. Đường thẳng và mặt phẳng trong không gian",
+   "cu": "Xác định giao điểm của đường thẳng và mặt phẳng",
+   "moi": "Xác định giao điểm của đường thẳng và mặt phẳng",
+   "yc": "Tìm được giao điểm của đường thẳng và mặt phẳng bằng cách chọn mặt phẳng phụ chứa đường thẳng."
+  },
+  {
+   "bai": "Bài 1. Đường thẳng và mặt phẳng trong không gian",
+   "cu": null,
+   "moi": "Chứng minh ba điểm thẳng hàng, ba đường thẳng đồng quy",
+   "yc": "Chứng minh được ba điểm thẳng hàng, ba đường thẳng đồng quy bằng tính chất giao tuyến của hai mặt phẳng."
+  },
+  {
+   "bai": "Bài 1. Đường thẳng và mặt phẳng trong không gian",
+   "cu": "Thiết diện của hình chóp",
+   "moi": "Xác định thiết diện của hình chóp cắt bởi mặt phẳng",
+   "yc": "Xác định được thiết diện của hình chóp, hình lăng trụ cắt bởi mặt phẳng đi qua ba điểm cho trước."
+  },
+  {
+   "bai": "Bài 2. Hai đường thẳng song song",
+   "cu": null,
+   "moi": "Nhận biết vị trí tương đối của hai đường thẳng trong không gian",
+   "yc": "Nhận biết được hai đường thẳng song song, cắt nhau, chéo nhau, trùng nhau trong không gian và trong các hình chóp, lăng trụ."
+  },
+  {
+   "bai": "Bài 2. Hai đường thẳng song song",
+   "cu": "Chứng minh hai đường thẳng song song",
+   "moi": "Chứng minh hai đường thẳng song song",
+   "yc": "Chứng minh được hai đường thẳng song song bằng đường trung bình, định lí Thalès và tính chất bắc cầu."
+  },
+  {
+   "bai": "Bài 2. Hai đường thẳng song song",
+   "cu": "Giao tuyến song song",
+   "moi": "Tìm giao tuyến của hai mặt phẳng chứa hai đường thẳng song song",
+   "yc": "Tìm được giao tuyến của hai mặt phẳng lần lượt chứa hai đường thẳng song song bằng định lí về giao tuyến của ba mặt phẳng."
+  },
+  {
+   "bai": "Bài 3. Đường thẳng và mặt phẳng song song",
+   "cu": null,
+   "moi": "Nhận biết vị trí tương đối của đường thẳng và mặt phẳng",
+   "yc": "Nhận biết được đường thẳng song song, cắt hoặc nằm trong mặt phẳng và xét được tính đúng sai của các mệnh đề liên quan."
+  },
+  {
+   "bai": "Bài 3. Đường thẳng và mặt phẳng song song",
+   "cu": "Chứng minh đường thẳng song song với mặt phẳng",
+   "moi": "Chứng minh đường thẳng song song với mặt phẳng",
+   "yc": "Chứng minh được đường thẳng song song với mặt phẳng bằng cách chỉ ra đường thẳng song song với một đường thẳng nằm trong mặt phẳng."
+  },
+  {
+   "bai": "Bài 3. Đường thẳng và mặt phẳng song song",
+   "cu": null,
+   "moi": "Tìm giao tuyến bằng quan hệ song song giữa đường thẳng và mặt phẳng",
+   "yc": "Tìm được giao tuyến của hai mặt phẳng khi một mặt phẳng chứa đường thẳng song song với mặt phẳng kia."
+  },
+  {
+   "bai": "Bài 3. Đường thẳng và mặt phẳng song song",
+   "cu": "Dựng thiết diện song song với một đường thẳng",
+   "moi": "Xác định thiết diện của hình chóp cắt bởi mặt phẳng song song với đường thẳng",
+   "yc": "Xác định được thiết diện của hình chóp cắt bởi mặt phẳng đi qua một điểm và song song với một hoặc hai đường thẳng."
+  },
+  {
+   "bai": "Bài 4. Hai mặt phẳng song song",
+   "cu": null,
+   "moi": "Nhận biết vị trí tương đối của hai mặt phẳng, hình lăng trụ, hình hộp",
+   "yc": "Nhận biết được hai mặt phẳng song song, cắt nhau và các yếu tố của hình lăng trụ, hình hộp; xét được tính đúng sai của các mệnh đề."
+  },
+  {
+   "bai": "Bài 4. Hai mặt phẳng song song",
+   "cu": "Chứng minh hai mặt phẳng song song",
+   "moi": "Chứng minh hai mặt phẳng song song",
+   "yc": "Chứng minh được hai mặt phẳng song song bằng cách chỉ ra hai đường thẳng cắt nhau của mặt phẳng này cùng song song với mặt phẳng kia."
+  },
+  {
+   "bai": "Bài 4. Hai mặt phẳng song song",
+   "cu": "Định lí Thalès trong không gian",
+   "moi": "Vận dụng định lí Thalès trong không gian, tính tỉ số đoạn thẳng",
+   "yc": "Vận dụng được định lí Thalès trong không gian để chứng minh và tính tỉ số, độ dài đoạn thẳng."
+  },
+  {
+   "bai": "Bài 4. Hai mặt phẳng song song",
+   "cu": null,
+   "moi": "Xác định thiết diện của hình chóp cắt bởi mặt phẳng song song với mặt phẳng cho trước",
+   "yc": "Xác định được thiết diện của hình chóp, hình lăng trụ cắt bởi mặt phẳng song song với một mặt phẳng cho trước."
+  },
+  {
+   "bai": "Bài 5. Phép chiếu song song",
+   "cu": "Dựng hình chiếu song song của một hình",
+   "moi": "Xác định hình chiếu song song của điểm, đoạn thẳng, hình",
+   "yc": "Xác định được hình chiếu song song của điểm, đường thẳng, đoạn thẳng, hình phẳng và nêu được tính chất của phép chiếu song song."
+  },
+  {
+   "bai": "Bài 5. Phép chiếu song song",
+   "cu": "Hình biểu diễn của một hình không gian",
+   "moi": "Vẽ hình biểu diễn của một hình không gian",
+   "yc": "Vẽ được hình biểu diễn của tam giác, hình bình hành, hình thang, đường tròn, hình chóp, hình lăng trụ."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Tổng hợp quan hệ song song trong không gian",
+   "moi": "Bài tập tổng hợp chương 4",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 4 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

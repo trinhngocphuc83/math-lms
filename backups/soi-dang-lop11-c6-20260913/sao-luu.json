@@ -1,0 +1,85 @@
+{
+ "question_categories": [
+  {
+   "id": "0e9120c0-404a-4cb3-bc93-c5835dbd0746",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 6. Hàm số mũ và hàm số lôgarit",
+   "lesson": "Bài 4. Phương trình, bất phương trình mũ và lôgarit",
+   "math_form": "Giải phương trình, bất phương trình lôgarit cơ bản",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình và bất phương trình lôgarit ở dạng cơ bản hoặc biến đổi về cùng cơ số."
+  },
+  {
+   "id": "27e718ce-60c5-42b5-a2a9-cd876642ea8b",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 6. Hàm số mũ và hàm số lôgarit",
+   "lesson": "Bài 3. Hàm số mũ và hàm số lôgarit",
+   "math_form": "Tìm tập xác định, tính đơn điệu, đồ thị hàm số mũ, lôgarit",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được tập xác định, tính đơn điệu và hình dạng đồ thị của hàm số mũ, hàm số lôgarit."
+  },
+  {
+   "id": "66dbe8ce-0166-4ee2-85e2-e984eda9545a",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 6. Hàm số mũ và hàm số lôgarit",
+   "lesson": "Bài 1. Luỹ thừa với số mũ thực",
+   "math_form": "So sánh các cơ số, số mũ",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "So sánh được các luỹ thừa cùng cơ số hoặc cùng số mũ dựa vào tính chất của luỹ thừa với số mũ thực."
+  },
+  {
+   "id": "a576cfa8-c505-45c0-bc55-99e78a68ce57",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 6. Hàm số mũ và hàm số lôgarit",
+   "lesson": "Bài 4. Phương trình, bất phương trình mũ và lôgarit",
+   "math_form": "Giải phương trình, bất phương trình mũ cơ bản",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình mũ cơ bản và bất phương trình mũ cơ bản."
+  },
+  {
+   "id": "c0b4c0cd-2de5-479b-bd7f-9214b09be25e",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 6. Hàm số mũ và hàm số lôgarit",
+   "lesson": "Bài 2. Lôgarit",
+   "math_form": "Phân tích lôgarit theo các lôgarit cho trước",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các tính chất và công thức đổi cơ số để biểu diễn một biểu thức lôgarit theo các lôgarit cho trước."
+  },
+  {
+   "id": "80ef8d3a-371e-41e8-804a-df5f24a73210",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 6. Hàm số mũ và hàm số lôgarit",
+   "lesson": "Bài 2. Lôgarit",
+   "math_form": "Tính giá trị, rút gọn biểu thức lôgarit",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị và rút gọn được các biểu thức chứa lôgarit bằng cách áp dụng các tính chất của lôgarit."
+  },
+  {
+   "id": "f2552051-726d-49ac-aa40-59a75ac002b0",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 6. Hàm số mũ và hàm số lôgarit",
+   "lesson": "Bài 1. Luỹ thừa với số mũ thực",
+   "math_form": "Rút gọn biểu thức chứa luỹ thừa",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Rút gọn được các biểu thức đại số chứa luỹ thừa với số mũ thực bằng cách sử dụng các tính chất của luỹ thừa."
+  },
+  {
+   "id": "823ddcc4-d68e-4bb4-9a8e-470cefc4fea3",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 6. Hàm số mũ và hàm số lôgarit",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp hàm số mũ, lôgarit và phương trình",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được kiến thức về hàm số, phương trình và bất phương trình mũ, lôgarit để giải quyết bài toán tổng hợp hoặc thực tiễn."
+  }
+ ],
+ "questions": []
+}

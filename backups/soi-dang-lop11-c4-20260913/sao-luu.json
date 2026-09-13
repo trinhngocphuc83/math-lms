@@ -1,0 +1,125 @@
+{
+ "question_categories": [
+  {
+   "id": "9db8046f-bb81-4740-acee-cb7847877130",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Tổng hợp quan hệ song song trong không gian",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Giải quyết được các bài toán tổng hợp về quan hệ song song giữa đường thẳng và mặt phẳng trong không gian."
+  },
+  {
+   "id": "359baf8f-44b4-48e4-b800-691b1add41b8",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 2. Hai đường thẳng song song",
+   "math_form": "Chứng minh hai đường thẳng song song",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Chứng minh được hai đường thẳng song song trong không gian bằng cách sử dụng các tính chất hình học không gian đã học."
+  },
+  {
+   "id": "eb30e90a-e592-42e4-9172-0a592797bd1e",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 4. Hai mặt phẳng song song",
+   "math_form": "Chứng minh hai mặt phẳng song song",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được dấu hiệu nhận biết để chứng minh hai mặt phẳng song song trong không gian."
+  },
+  {
+   "id": "75d69f65-c877-4da8-a85f-d67efdbe4f04",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 3. Đường thẳng và mặt phẳng song song",
+   "math_form": "Chứng minh đường thẳng song song với mặt phẳng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được dấu hiệu nhận biết để chứng minh một đường thẳng song song với một mặt phẳng trong không gian."
+  },
+  {
+   "id": "4021cb7d-f2e5-4fb9-a980-d672204824c3",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 2. Hai đường thẳng song song",
+   "math_form": "Giao tuyến song song",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được giao tuyến của hai mặt phẳng dựa vào tính chất song song của hai đường thẳng."
+  },
+  {
+   "id": "799c6e6e-d49b-4200-b2e4-a16e06a31062",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 1. Đường thẳng và mặt phẳng trong không gian",
+   "math_form": "Xác định giao điểm của đường thẳng và mặt phẳng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được giao điểm của một đường thẳng và một mặt phẳng trong không gian."
+  },
+  {
+   "id": "1bb6ad92-3927-4ffc-9bea-b44c06e742b5",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 5. Phép chiếu song song",
+   "math_form": "Dựng hình chiếu song song của một hình",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được hình chiếu song song của một điểm, đoạn thẳng hoặc một hình phẳng đơn giản."
+  },
+  {
+   "id": "e5107e5c-e3ff-4080-b77a-c06670ee1ca4",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 4. Hai mặt phẳng song song",
+   "math_form": "Định lí Thalès trong không gian",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được định lí Thalès trong không gian để tính tỉ số độ dài các đoạn thẳng."
+  },
+  {
+   "id": "9674dd34-6750-41ed-8bb9-8e08d8148c41",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 3. Đường thẳng và mặt phẳng song song",
+   "math_form": "Dựng thiết diện song song với một đường thẳng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được thiết diện của hình chóp hoặc hình lăng trụ cắt bởi mặt phẳng song song với một đường thẳng cho trước."
+  },
+  {
+   "id": "148a541e-92e1-4960-bc39-85a95fd6e4f1",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 5. Phép chiếu song song",
+   "math_form": "Hình biểu diễn của một hình không gian",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vẽ được hình biểu diễn của một số hình khối đơn giản như hình chóp, hình lăng trụ, hình hộp."
+  },
+  {
+   "id": "83495c37-9d0e-4e61-b6fe-8399158514e3",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 1. Đường thẳng và mặt phẳng trong không gian",
+   "math_form": "Thiết diện của hình chóp",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được thiết diện của hình chóp khi cắt bởi một mặt phẳng."
+  },
+  {
+   "id": "37733dc3-538b-4d59-924c-580bf3d26016",
+   "grade": "11",
+   "subject": "Hình học",
+   "topic": "Chương 4. Quan hệ song song trong không gian",
+   "lesson": "Bài 1. Đường thẳng và mặt phẳng trong không gian",
+   "math_form": "Xác định giao tuyến của hai mặt phẳng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được đường thẳng là giao tuyến của hai mặt phẳng cắt nhau."
+  }
+ ],
+ "questions": []
+}

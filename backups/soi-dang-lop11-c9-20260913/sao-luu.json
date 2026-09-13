@@ -1,0 +1,75 @@
+{
+ "question_categories": [
+  {
+   "id": "fedd0cc4-0ce2-4a81-b522-cb1cc654b673",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 9. Đạo hàm",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tổng hợp các quy tắc tính đạo hàm và ứng dụng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các quy tắc tính đạo hàm để giải quyết các bài toán liên quan đến tốc độ thay đổi của một đại lượng."
+  },
+  {
+   "id": "91a873a2-bff7-459e-9ef7-470cf39b87e6",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 9. Đạo hàm",
+   "lesson": "Bài 1. Định nghĩa và ý nghĩa của đạo hàm",
+   "math_form": "Viết phương trình tiếp tuyến của đồ thị hàm số",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Viết được phương trình tiếp tuyến của đồ thị hàm số tại một điểm cho trước hoặc khi biết hệ số góc của tiếp tuyến."
+  },
+  {
+   "id": "d7bfcfb3-2cf1-4a29-805d-842320eed413",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 9. Đạo hàm",
+   "lesson": "Bài 2. Các quy tắc tính đạo hàm",
+   "math_form": "Đạo hàm của hàm hợp",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được đạo hàm của hàm số hợp bằng cách sử dụng quy tắc tính đạo hàm của hàm hợp."
+  },
+  {
+   "id": "8fd3023b-9d0b-47f1-9d96-f7f454b4996e",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 9. Đạo hàm",
+   "lesson": "Bài 3. Đạo hàm cấp hai",
+   "math_form": "Tính đạo hàm cấp hai",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được đạo hàm cấp hai của một số hàm số sơ cấp cơ bản."
+  },
+  {
+   "id": "cf59fa54-d6f1-4a09-a8b9-cce7d98ec6f4",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 9. Đạo hàm",
+   "lesson": "Bài 2. Các quy tắc tính đạo hàm",
+   "math_form": "Tính đạo hàm của tổng, hiệu, tích, thương",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được đạo hàm của các hàm số sơ cấp cơ bản bằng cách sử dụng công thức tính đạo hàm của tổng, hiệu, tích, thương."
+  },
+  {
+   "id": "1a244029-97f0-44b1-b1e3-0ec73ef50442",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 9. Đạo hàm",
+   "lesson": "Bài 3. Đạo hàm cấp hai",
+   "math_form": "Bài toán chuyển động (vận tốc, gia tốc)",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số bài toán thực tiễn liên quan đến chuyển động thẳng bằng cách sử dụng ý nghĩa vật lí của đạo hàm."
+  },
+  {
+   "id": "42f1f41d-b76f-4698-b19b-3e475b8562ba",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 9. Đạo hàm",
+   "lesson": "Bài 1. Định nghĩa và ý nghĩa của đạo hàm",
+   "math_form": "Tính đạo hàm bằng định nghĩa",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được đạo hàm của một số hàm số đơn giản tại một điểm bằng định nghĩa."
+  }
+ ],
+ "questions": []
+}

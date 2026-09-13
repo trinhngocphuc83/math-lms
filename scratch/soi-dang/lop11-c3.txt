@@ -1,0 +1,25 @@
+Chương 3. Các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm · lớp 11 · 5 dạng · 8 câu
+
+
+### [1] Bài 1. Mẫu số liệu ghép nhóm | Ghép nhóm mẫu số liệu (0)
+    yêu cầu: Chuyển được mẫu số liệu không ghép nhóm sang mẫu số liệu ghép nhóm theo các khoảng cho trước.
+
+### [2] Bài 1. Mẫu số liệu ghép nhóm | Lập bảng tần số ghép nhóm (0)
+    yêu cầu: Thực hiện được việc chuyển đổi mẫu số liệu không ghép nhóm sang mẫu số liệu ghép nhóm dưới dạng bảng tần số ghép nhóm.
+
+### [3] Bài 2. Các số đặc trưng đo xu thế trung tâm | Tính trung vị, tứ phân vị, mốt của mẫu số liệu ghép nhóm (0)
+    yêu cầu: Tính được trung vị, tứ phân vị và mốt của mẫu số liệu ghép nhóm.
+
+### [4] Bài 2. Các số đặc trưng đo xu thế trung tâm | Tính số trung bình của mẫu số liệu ghép nhóm (8)
+    yêu cầu: Tính được số trung bình cộng của mẫu số liệu ghép nhóm.
+  hb7d TLN 3 | Kết quả 40 lần nhảy xa của vận động viên Dũng được lần lượt thống kê trong các bảng sau (đơn vị: mét): ![Hình 
+  qoxb NLC 1 | Một siêu thị thống kê số tiền (đơn vị: chục nghìn đồng) mà 44 khách hàng mua hàng ở siêu thị đó trong một ngày
+  frg4 NLC 1 | Kết quả 40 lần nhảy xa của hai vận động viên nam Dũng được lần lượt thống kê trong các bảng sau (đơn vị: mét) 
+  381q NLC 1 | Số tiền điện phải trả của 50 hộ trong khu phố A được thống kê trong bảng phân bố tần số sau đây (đơn vị nghìn 
+  fzsh NLC 1 | Tuổi các học viên của một lớp tiếng Anh buổi tối ở một trung tâm ghi lại trong bảng tần số ghép lớp sau: \begi
+  0z8r NLC 1 | Nghiên cứu mức tiêu thụ xăng của một loại ô tô, một công ty chế tạo ô tô ở Mỹ đã cho 35 xe chạy thử và xác địn
+  91wa NLC 1 | Giá đóng cửa của một cổ phiếu là giá của cổ phiếu đó cuối một phiên giao dịch. Bảng sau thống kê giá đóng cửa 
+  iy7a NLC 1 | Một cửa hàng ăn ghi lại số tiền (nghìn đồng) mà mỗi khách trả cho cửa hàng. Các số liệu được trình bày trong b
+
+### [5] Bài 3. Ôn tập chương | Tổng hợp số đặc trưng của mẫu số liệu ghép nhóm (0)
+    yêu cầu: Tính được các số đặc trưng đo xu thế trung tâm của mẫu số liệu ghép nhóm để so sánh và đánh giá hai mẫu số liệu.

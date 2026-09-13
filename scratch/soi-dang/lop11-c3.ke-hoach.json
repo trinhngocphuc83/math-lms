@@ -1,0 +1,53 @@
+{
+ "lop": "11",
+ "chuong": 3,
+ "dang": [
+  {
+   "bai": "Bài 1. Mẫu số liệu ghép nhóm",
+   "cu": "Ghép nhóm mẫu số liệu",
+   "moi": "Ghép nhóm mẫu số liệu, lập bảng tần số ghép nhóm",
+   "yc": "Chuyển được mẫu số liệu không ghép nhóm sang mẫu số liệu ghép nhóm với độ dài nhóm cho trước và lập được bảng tần số ghép nhóm.",
+   "gop": [
+    "Lập bảng tần số ghép nhóm"
+   ]
+  },
+  {
+   "bai": "Bài 1. Mẫu số liệu ghép nhóm",
+   "cu": null,
+   "moi": "Đọc và mô tả bảng tần số ghép nhóm",
+   "yc": "Đọc được bảng tần số ghép nhóm, xác định được độ dài nhóm, giá trị đại diện, tần số của mỗi nhóm và cỡ mẫu."
+  },
+  {
+   "bai": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "cu": "Tính số trung bình của mẫu số liệu ghép nhóm",
+   "moi": "Tính số trung bình của mẫu số liệu ghép nhóm",
+   "yc": "Tính được số trung bình của mẫu số liệu ghép nhóm bằng giá trị đại diện của các nhóm."
+  },
+  {
+   "bai": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "cu": "Tính trung vị, tứ phân vị, mốt của mẫu số liệu ghép nhóm",
+   "moi": "Tính trung vị, tứ phân vị của mẫu số liệu ghép nhóm",
+   "yc": "Xác định được nhóm chứa trung vị, tứ phân vị và tính được trung vị, tứ phân vị của mẫu số liệu ghép nhóm."
+  },
+  {
+   "bai": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "cu": null,
+   "moi": "Tính mốt của mẫu số liệu ghép nhóm",
+   "yc": "Xác định được nhóm chứa mốt và tính được mốt của mẫu số liệu ghép nhóm."
+  },
+  {
+   "bai": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "cu": null,
+   "moi": "Ý nghĩa và so sánh hai mẫu số liệu bằng số đặc trưng",
+   "yc": "Giải thích được ý nghĩa của số trung bình, trung vị, mốt và so sánh được hai mẫu số liệu ghép nhóm bằng các số đặc trưng."
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "cu": "Tổng hợp số đặc trưng của mẫu số liệu ghép nhóm",
+   "moi": "Bài tập tổng hợp chương 3",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 3 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

@@ -1,0 +1,80 @@
+{
+ "lop": "11",
+ "chuong": 9,
+ "dang": [
+  {
+   "bai": "Bài 1. Định nghĩa và ý nghĩa của đạo hàm",
+   "cu": "Tính đạo hàm bằng định nghĩa",
+   "moi": "Tính đạo hàm bằng định nghĩa",
+   "yc": "Tính được đạo hàm của hàm số tại một điểm và trên một khoảng bằng định nghĩa."
+  },
+  {
+   "bai": "Bài 1. Định nghĩa và ý nghĩa của đạo hàm",
+   "cu": "Viết phương trình tiếp tuyến của đồ thị hàm số",
+   "moi": "Viết phương trình tiếp tuyến của đồ thị hàm số",
+   "yc": "Viết được phương trình tiếp tuyến của đồ thị hàm số tại một điểm, khi biết hệ số góc hoặc đi qua một điểm."
+  },
+  {
+   "bai": "Bài 1. Định nghĩa và ý nghĩa của đạo hàm",
+   "cu": null,
+   "moi": "Ý nghĩa vật lí của đạo hàm (vận tốc tức thời, cường độ dòng điện)",
+   "yc": "Vận dụng được ý nghĩa vật lí của đạo hàm để tính vận tốc tức thời, cường độ dòng điện tức thời, tốc độ thay đổi."
+  },
+  {
+   "bai": "Bài 2. Các quy tắc tính đạo hàm",
+   "cu": "Tính đạo hàm của tổng, hiệu, tích, thương",
+   "moi": "Tính đạo hàm của hàm đa thức, phân thức, hàm chứa căn",
+   "yc": "Tính được đạo hàm của hàm đa thức, hàm phân thức, hàm chứa căn bằng các quy tắc đạo hàm của tổng, hiệu, tích, thương."
+  },
+  {
+   "bai": "Bài 2. Các quy tắc tính đạo hàm",
+   "cu": "Đạo hàm của hàm hợp",
+   "moi": "Tính đạo hàm của hàm hợp",
+   "yc": "Tính được đạo hàm của hàm hợp bằng công thức (u^n)', (√u)', (1/u)'."
+  },
+  {
+   "bai": "Bài 2. Các quy tắc tính đạo hàm",
+   "cu": null,
+   "moi": "Tính đạo hàm của hàm số lượng giác",
+   "yc": "Tính được đạo hàm của các hàm số lượng giác và hàm hợp của chúng."
+  },
+  {
+   "bai": "Bài 2. Các quy tắc tính đạo hàm",
+   "cu": null,
+   "moi": "Tính đạo hàm của hàm số mũ, hàm số lôgarit",
+   "yc": "Tính được đạo hàm của hàm số mũ, hàm số lôgarit và hàm hợp của chúng."
+  },
+  {
+   "bai": "Bài 2. Các quy tắc tính đạo hàm",
+   "cu": null,
+   "moi": "Vận dụng đạo hàm để giải phương trình, bất phương trình, chứng minh đẳng thức",
+   "yc": "Giải được phương trình, bất phương trình chứa đạo hàm và chứng minh được đẳng thức liên quan đến đạo hàm."
+  },
+  {
+   "bai": "Bài 2. Các quy tắc tính đạo hàm",
+   "cu": null,
+   "moi": "Bài toán thực tế về đạo hàm",
+   "yc": "Vận dụng được đạo hàm để giải bài toán thực tế (tốc độ thay đổi, chi phí biên, vận tốc)."
+  },
+  {
+   "bai": "Bài 3. Đạo hàm cấp hai",
+   "cu": "Tính đạo hàm cấp hai",
+   "moi": "Tính đạo hàm cấp hai",
+   "yc": "Tính được đạo hàm cấp hai của hàm số và giá trị đạo hàm cấp hai tại một điểm."
+  },
+  {
+   "bai": "Bài 3. Đạo hàm cấp hai",
+   "cu": "Bài toán chuyển động (vận tốc, gia tốc)",
+   "moi": "Ý nghĩa cơ học của đạo hàm cấp hai (gia tốc)",
+   "yc": "Vận dụng được ý nghĩa cơ học của đạo hàm cấp hai để tính gia tốc tức thời của chuyển động."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Tổng hợp các quy tắc tính đạo hàm và ứng dụng",
+   "moi": "Bài tập tổng hợp chương 9",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 9 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

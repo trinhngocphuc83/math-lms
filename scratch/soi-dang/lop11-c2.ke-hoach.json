@@ -1,0 +1,1471 @@
+{
+ "lop": "11",
+ "chuong": 2,
+ "dang": [
+  {
+   "bai": "Bài 1. Dãy số",
+   "cu": null,
+   "moi": "Nhận biết dãy số, cách cho một dãy số",
+   "yc": "Nhận biết được dãy số hữu hạn, vô hạn và các cách cho một dãy số (liệt kê, công thức số hạng tổng quát, hệ thức truy hồi, mô tả)."
+  },
+  {
+   "bai": "Bài 1. Dãy số",
+   "cu": "Xác định các số hạng của dãy số",
+   "moi": "Tính các số hạng của dãy số cho bằng công thức số hạng tổng quát",
+   "yc": "Tính được các số hạng của dãy số khi biết công thức số hạng tổng quát."
+  },
+  {
+   "bai": "Bài 1. Dãy số",
+   "cu": null,
+   "moi": "Tính các số hạng của dãy số cho bằng hệ thức truy hồi",
+   "yc": "Tính được các số hạng của dãy số cho bằng hệ thức truy hồi."
+  },
+  {
+   "bai": "Bài 1. Dãy số",
+   "cu": "Dự đoán công thức tổng quát",
+   "moi": "Tìm công thức số hạng tổng quát của dãy số",
+   "yc": "Tìm được công thức số hạng tổng quát của dãy số từ các số hạng đầu, từ hệ thức truy hồi hoặc từ hình vẽ."
+  },
+  {
+   "bai": "Bài 1. Dãy số",
+   "cu": null,
+   "moi": "Xác định vị trí của một số trong dãy số",
+   "yc": "Xác định được một số cho trước là số hạng thứ mấy của dãy số."
+  },
+  {
+   "bai": "Bài 1. Dãy số",
+   "cu": "Xét tính tăng giảm của dãy số",
+   "moi": "Xét tính tăng, giảm của dãy số",
+   "yc": "Xét được tính tăng, giảm của một dãy số cho trước bằng cách xét hiệu hoặc thương hai số hạng liên tiếp.",
+   "gop": [
+    "Toán tổng hợp"
+   ]
+  },
+  {
+   "bai": "Bài 1. Dãy số",
+   "cu": "Dãy số bị chặn",
+   "moi": "Xét tính bị chặn của dãy số",
+   "yc": "Xét được tính bị chặn trên, bị chặn dưới, bị chặn của một dãy số cho trước."
+  },
+  {
+   "bai": "Bài 1. Dãy số",
+   "cu": "Bài toán thực tế về dãy số",
+   "moi": "Bài toán thực tế về dãy số",
+   "yc": "Vận dụng được kiến thức về dãy số để giải quyết một số vấn đề thực tiễn (lãi suất, tăng trưởng, hình vẽ theo quy luật)."
+  },
+  {
+   "bai": "Bài 2. Cấp số cộng",
+   "cu": "Tìm công thức cấp số cộng",
+   "moi": "Nhận biết cấp số cộng, tìm số hạng tổng quát",
+   "yc": "Nhận biết được một dãy số là cấp số cộng và xác định được công thức số hạng tổng quát của cấp số cộng."
+  },
+  {
+   "bai": "Bài 2. Cấp số cộng",
+   "cu": "Xác định số hạng, công sai",
+   "moi": "Xác định số hạng, công sai của cấp số cộng",
+   "yc": "Tính được số hạng chưa biết, số hạng đầu và công sai của cấp số cộng từ các điều kiện cho trước."
+  },
+  {
+   "bai": "Bài 2. Cấp số cộng",
+   "cu": null,
+   "moi": "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)",
+   "yc": "Tìm được x để ba số lập thành cấp số cộng, chèn được các số vào giữa hai số và tìm được các số hạng liên tiếp của cấp số cộng khi biết tổng, tích."
+  },
+  {
+   "bai": "Bài 2. Cấp số cộng",
+   "cu": "Tính tổng các số hạng",
+   "moi": "Tính tổng các số hạng của cấp số cộng",
+   "yc": "Tính được tổng của n số hạng đầu của cấp số cộng và tìm được n khi biết tổng."
+  },
+  {
+   "bai": "Bài 2. Cấp số cộng",
+   "cu": null,
+   "moi": "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao",
+   "yc": "Vận dụng được cấp số cộng để giải bài toán về góc, cạnh của đa giác, nghiệm của phương trình và các bài toán nâng cao.",
+   "gop": [
+    "Toán tổng hợp"
+   ]
+  },
+  {
+   "bai": "Bài 2. Cấp số cộng",
+   "cu": null,
+   "moi": "Bài toán thực tế về cấp số cộng",
+   "yc": "Vận dụng được cấp số cộng để giải quyết bài toán thực tế (xếp ghế, trồng cây, tiền lương, khoan giếng)."
+  },
+  {
+   "bai": "Bài 2. Cấp số cộng",
+   "cu": "Chứng minh",
+   "moi": "Chứng minh tính chất của cấp số cộng",
+   "yc": "Chứng minh được các hệ thức, tính chất của cấp số cộng và chứng minh ba số lập thành cấp số cộng."
+  },
+  {
+   "bai": "Bài 2. Cấp số cộng",
+   "cu": null,
+   "moi": "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)",
+   "yc": "Xét được tính đúng sai của các mệnh đề về số hạng, công sai, tổng của một cấp số cộng cho trước."
+  },
+  {
+   "bai": "Bài 3. Cấp số nhân",
+   "cu": "Tìm công thức cấp số nhân",
+   "moi": "Nhận biết cấp số nhân, tìm số hạng tổng quát",
+   "yc": "Nhận biết được một dãy số là cấp số nhân và xác định được công thức số hạng tổng quát của cấp số nhân."
+  },
+  {
+   "bai": "Bài 3. Cấp số nhân",
+   "cu": "Xác định số hạng, công bội",
+   "moi": "Xác định số hạng, công bội của cấp số nhân",
+   "yc": "Tính được số hạng chưa biết, số hạng đầu và công bội của cấp số nhân từ các điều kiện cho trước."
+  },
+  {
+   "bai": "Bài 3. Cấp số nhân",
+   "cu": null,
+   "moi": "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)",
+   "yc": "Tìm được x để ba số lập thành cấp số nhân, chèn được các số vào giữa hai số và tìm được các số hạng liên tiếp của cấp số nhân khi biết tổng, tích."
+  },
+  {
+   "bai": "Bài 3. Cấp số nhân",
+   "cu": "Tính tổng các số hạng",
+   "moi": "Tính tổng các số hạng của cấp số nhân",
+   "yc": "Tính được tổng của n số hạng đầu của cấp số nhân và các tổng đưa được về cấp số nhân."
+  },
+  {
+   "bai": "Bài 3. Cấp số nhân",
+   "cu": null,
+   "moi": "Vận dụng cấp số nhân trong hình học và phương trình",
+   "yc": "Vận dụng được cấp số nhân để giải bài toán về dãy hình vuông, tam giác lồng nhau, góc, cạnh và nghiệm của phương trình."
+  },
+  {
+   "bai": "Bài 3. Cấp số nhân",
+   "cu": "Toán tổng hợp",
+   "moi": "Bài toán thực tế về cấp số nhân",
+   "yc": "Vận dụng được cấp số nhân để giải quyết bài toán thực tế (lãi kép, tăng trưởng dân số, vi khuẩn, chu kì bán rã, khấu hao)."
+  },
+  {
+   "bai": "Bài 3. Cấp số nhân",
+   "cu": "Chứng minh",
+   "moi": "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân",
+   "yc": "Chứng minh được các hệ thức, tính chất của cấp số nhân và chứng minh được một dãy số cho bằng hệ thức truy hồi là cấp số nhân."
+  },
+  {
+   "bai": "Bài 3. Cấp số nhân",
+   "cu": null,
+   "moi": "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)",
+   "yc": "Xét được tính đúng sai của các mệnh đề về số hạng, công bội, tổng của một cấp số nhân cho trước."
+  },
+  {
+   "bai": "Bài 3. Cấp số nhân",
+   "cu": null,
+   "moi": "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao",
+   "yc": "Giải được bài toán kết hợp cấp số cộng và cấp số nhân, tìm các số thoả mãn điều kiện và các bài toán nâng cao về cấp số nhân."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 2",
+   "moi": "Bài tập tổng hợp chương 2",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 2 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {
+  "3797": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "8200": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "opzc": [
+   "Bài 1. Dãy số",
+   "Nhận biết dãy số, cách cho một dãy số"
+  ],
+  "cmby": [
+   "Bài 1. Dãy số",
+   "Nhận biết dãy số, cách cho một dãy số"
+  ],
+  "u62p": [
+   "Bài 1. Dãy số",
+   "Nhận biết dãy số, cách cho một dãy số"
+  ],
+  "skay": [
+   "Bài 1. Dãy số",
+   "Nhận biết dãy số, cách cho một dãy số"
+  ],
+  "wi3r": [
+   "Bài 1. Dãy số",
+   "Nhận biết dãy số, cách cho một dãy số"
+  ],
+  "1dj2": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "dt75": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "iqrj": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "qgy2": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "snf6": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "anf6": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "r0he": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "tti1": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "vaf5": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "ykfm": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "ubk1": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "bh03": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "4p7a": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "zp84": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "lq4c": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "2rtp": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "tpu3": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "i1pl": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "g8kg": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "22lj": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "16ms": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "z4qs": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "2wot": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "jeuw": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "olr7": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "drf9": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "q7bp": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "ce7j": [
+   "Bài 1. Dãy số",
+   "Tính các số hạng của dãy số cho bằng hệ thức truy hồi"
+  ],
+  "zeuk": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "pwqg": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "lbvt": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "8xjz": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "texo": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "hdnb": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "sge3": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "irhl": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "ziv0": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "jac2": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "55gd": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "usfv": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "dfl9": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "53qa": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "49h9": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "jf0v": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "8xj9": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "gqw8": [
+   "Bài 1. Dãy số",
+   "Tìm công thức số hạng tổng quát của dãy số"
+  ],
+  "ok1o": [
+   "Bài 1. Dãy số",
+   "Xác định vị trí của một số trong dãy số"
+  ],
+  "jnh6": [
+   "Bài 1. Dãy số",
+   "Xác định vị trí của một số trong dãy số"
+  ],
+  "m3pb": [
+   "Bài 1. Dãy số",
+   "Xác định vị trí của một số trong dãy số"
+  ],
+  "q0pa": [
+   "Bài 1. Dãy số",
+   "Xác định vị trí của một số trong dãy số"
+  ],
+  "rfnx": [
+   "Bài 1. Dãy số",
+   "Xác định vị trí của một số trong dãy số"
+  ],
+  "b8iu": [
+   "Bài 1. Dãy số",
+   "Xác định vị trí của một số trong dãy số"
+  ],
+  "el08": [
+   "Bài 1. Dãy số",
+   "Xác định vị trí của một số trong dãy số"
+  ],
+  "5rdd": [
+   "Bài 1. Dãy số",
+   "Xác định vị trí của một số trong dãy số"
+  ],
+  "r0za": [
+   "Bài 1. Dãy số",
+   "Xác định vị trí của một số trong dãy số"
+  ],
+  "trzo": [
+   "Bài 1. Dãy số",
+   "Xét tính tăng, giảm của dãy số"
+  ],
+  "ry24": [
+   "Bài 1. Dãy số",
+   "Xét tính tăng, giảm của dãy số"
+  ],
+  "9k92": [
+   "Bài 1. Dãy số",
+   "Xét tính tăng, giảm của dãy số"
+  ],
+  "0mgd": [
+   "Bài 1. Dãy số",
+   "Xét tính tăng, giảm của dãy số"
+  ],
+  "8g6k": [
+   "Bài 1. Dãy số",
+   "Xét tính tăng, giảm của dãy số"
+  ],
+  "d0cp": [
+   "Bài 2. Cấp số cộng",
+   "Tính tổng các số hạng của cấp số cộng"
+  ],
+  "mjuh": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "ajfn": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "y14s": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "58x8": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "2cu4": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "trho": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "44e6": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "2vm1": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "dlpa": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "74cr": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "vau1": [
+   "Bài 2. Cấp số cộng",
+   "Nhận biết cấp số cộng, tìm số hạng tổng quát"
+  ],
+  "z847": [
+   "Bài 2. Cấp số cộng",
+   "Xác định số hạng, công sai của cấp số cộng"
+  ],
+  "3yw7": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "oe77": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "l5v4": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "ayrl": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "x6x1": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "0tq1": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "xl1e": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "5q3y": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "p6dg": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "hfvm": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "541l": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "kxu8": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "upi4": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "wqmb": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "xr6j": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "nbfa": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "3oe4": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "qyzc": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "i7zn": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "p40f": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "s792": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "0047": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "fct1": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "8apg": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "uzm9": [
+   "Bài 2. Cấp số cộng",
+   "Tìm các số lập thành cấp số cộng (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "7h4w": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "v0yt": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "rcbr": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "4zwu": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "t4dd": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "fi4r": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "dx50": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "9cre": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "ubpu": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "tege": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "wfjn": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "t3d5": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "04rc": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "9n44": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "32he": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "h4x6": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "dhcm": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "u0mw": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "ht4u": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "19lq": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "tfbq": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "kicd": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "r5pu": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "ef00": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "w60k": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "uv9n": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "mim2": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "lezu": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "874y": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "agmf": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "tzrw": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "pkh6": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "8ht3": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "mmyp": [
+   "Bài 2. Cấp số cộng",
+   "Vận dụng cấp số cộng trong hình học, phương trình và bài toán nâng cao"
+  ],
+  "4gk4": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "he94": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "cfqz": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "ttjd": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "6uhg": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "rfe6": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "x0y9": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "k87k": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "a9je": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "50ip": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "55s3": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "cjaz": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "ug6e": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "zb5x": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "fe77": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "foqn": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "ntqr": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "ktha": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "ebxf": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "d3qc": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "cta3": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "kggc": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "qv77": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "nqnk": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "45pn": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "7b1w": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "7sbs": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "n5va": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "tdxw": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "8rsz": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "klbh": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "wrpp": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "x45b": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "n6c1": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "yqgt": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "sne5": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "hmpj": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "kave": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "5azg": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "g0hs": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "ghfj": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "cf8t": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "vm3s": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "ofwq": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "vu2q": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "35a3": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "in67": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "kwuq": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "b885": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "5vnq": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "e04d": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "awjh": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "239f": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "4agx": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "uiu0": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "e4yp": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "vz4d": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "n3l5": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "jlhz": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "v8xw": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "as9s": [
+   "Bài 2. Cấp số cộng",
+   "Bài toán thực tế về cấp số cộng"
+  ],
+  "oi95": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "s5zh": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "1dgz": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "4gx2": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "jfjw": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "9a94": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "su2n": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "n0d3": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "1wrv": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "d5kl": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "p8xn": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "zc2g": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "jyup": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "m747": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "wjij": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "ibci": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "l6kk": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "xdk1": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "667s": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "2uux": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "df21": [
+   "Bài 2. Cấp số cộng",
+   "Xét các mệnh đề về cấp số cộng (số hạng, công sai, tổng)"
+  ],
+  "3pg5": [
+   "Bài 3. Cấp số nhân",
+   "Nhận biết cấp số nhân, tìm số hạng tổng quát"
+  ],
+  "afff": [
+   "Bài 3. Cấp số nhân",
+   "Nhận biết cấp số nhân, tìm số hạng tổng quát"
+  ],
+  "pm67": [
+   "Bài 3. Cấp số nhân",
+   "Nhận biết cấp số nhân, tìm số hạng tổng quát"
+  ],
+  "bqvz": [
+   "Bài 3. Cấp số nhân",
+   "Nhận biết cấp số nhân, tìm số hạng tổng quát"
+  ],
+  "hcl5": [
+   "Bài 3. Cấp số nhân",
+   "Nhận biết cấp số nhân, tìm số hạng tổng quát"
+  ],
+  "wrel": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "bgpw": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "5lxd": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "t7wc": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "c1ka": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "gndh": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "c8ph": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "akz0": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "j1he": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "0b1j": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "j7i7": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "6gbe": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "9rfk": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "j1nj": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "mrag": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "51xw": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "rqc8": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "vzdb": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "4byy": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "25bl": [
+   "Bài 3. Cấp số nhân",
+   "Tìm các số lập thành cấp số nhân (ba số, chèn số, số hạng liên tiếp)"
+  ],
+  "lkwi": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "5wy2": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "n46a": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "is81": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "tdlu": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "c6f1": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "shuw": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "mhoi": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "qr9p": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "i5al": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "2wrz": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "v8qy": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "mys5": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "1xsw": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "72uu": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "xj5z": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "pnai": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "omzl": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "ye61": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "v1jz": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "8d5w": [
+   "Bài 3. Cấp số nhân",
+   "Vận dụng cấp số nhân trong hình học và phương trình"
+  ],
+  "n3aq": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "du8z": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "gvfp": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "vmbk": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "mm57": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "ozag": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "6mfd": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "laso": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "6phj": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "7oop": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "uak1": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "uy4d": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "e6ji": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán thực tế về cấp số nhân"
+  ],
+  "umaz": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "12x8": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "lzvp": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "l3dy": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "ijja": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "be1q": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "3pyd": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "mpip": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "m7yr": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "hqi5": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "t4w5": [
+   "Bài 3. Cấp số nhân",
+   "Chứng minh tính chất của cấp số nhân, dãy số là cấp số nhân"
+  ],
+  "drel": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "5l8g": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "zysa": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "xjq4": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "znv8": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "mwe9": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "wss3": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "ovbj": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "qycs": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "ahf3": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "al0q": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "kb6g": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "stc8": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "14xt": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "y5gg": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "lxpj": [
+   "Bài 3. Cấp số nhân",
+   "Xét các mệnh đề về cấp số nhân (số hạng, công bội, tổng)"
+  ],
+  "wf0a": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "hrfh": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "65ml": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "zyrh": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "40sy": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "y5hn": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "yhwy": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "ozk2": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "htii": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "u8ec": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "wo6z": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "eid8": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "zsl2": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "fwyd": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "19yg": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "f7il": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "xz5r": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ],
+  "uhah": [
+   "Bài 3. Cấp số nhân",
+   "Bài toán kết hợp cấp số cộng, cấp số nhân và bài toán nâng cao"
+  ]
+ }
+}

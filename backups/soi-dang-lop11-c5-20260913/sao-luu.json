@@ -1,0 +1,75 @@
+{
+ "question_categories": [
+  {
+   "id": "d2c650a7-295f-4983-bddd-2e198d2d2010",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 5. Giới hạn. Hàm số liên tục",
+   "lesson": "Bài 2. Giới hạn của hàm số",
+   "math_form": "Giới hạn tại một điểm",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được giới hạn của hàm số tại một điểm trong các trường hợp xác định hoặc có dạng vô định đơn giản."
+  },
+  {
+   "id": "f1e7dd04-f725-4394-b7a1-caa96b9df467",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 5. Giới hạn. Hàm số liên tục",
+   "lesson": "Bài 3. Hàm số liên tục",
+   "math_form": "Xét tính liên tục của hàm số tại một điểm, trên một khoảng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được tính liên tục của hàm số tại một điểm hoặc trên một khoảng cho trước."
+  },
+  {
+   "id": "612044d1-eb03-4887-a56a-d8e1bdb67c09",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 5. Giới hạn. Hàm số liên tục",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tổng hợp giới hạn và hàm số liên tục",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các định lí và quy tắc tính giới hạn để giải quyết bài toán liên quan đến tính liên tục của hàm số."
+  },
+  {
+   "id": "a0ba18fc-acdf-4dca-adfb-ccc7788eb77f",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 5. Giới hạn. Hàm số liên tục",
+   "lesson": "Bài 1. Giới hạn của dãy số",
+   "math_form": "Tổng của cấp số nhân lùi vô hạn",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được tổng của cấp số nhân lùi vô hạn và áp dụng vào biểu diễn số thập phân vô hạn tuần hoàn."
+  },
+  {
+   "id": "283c1fd3-b0dc-4a64-9b8e-bd1d9532a00c",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 5. Giới hạn. Hàm số liên tục",
+   "lesson": "Bài 3. Hàm số liên tục",
+   "math_form": "Chứng minh phương trình có nghiệm",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất của hàm số liên tục trên một đoạn để chứng minh phương trình có nghiệm."
+  },
+  {
+   "id": "58aa3829-caa6-43e3-a0f9-2b3069658e43",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 5. Giới hạn. Hàm số liên tục",
+   "lesson": "Bài 2. Giới hạn của hàm số",
+   "math_form": "Giới hạn tại vô cực, giới hạn một bên",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được giới hạn một bên và giới hạn tại vô cực của hàm số trong các trường hợp cơ bản."
+  },
+  {
+   "id": "c34b95f0-5541-4ad9-a338-c8573ec4e07e",
+   "grade": "11",
+   "subject": "Giải tích",
+   "topic": "Chương 5. Giới hạn. Hàm số liên tục",
+   "lesson": "Bài 1. Giới hạn của dãy số",
+   "math_form": "Tính giới hạn của dãy số dạng phân thức, chứa căn",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được giới hạn của dãy số có dạng phân thức đại số hoặc biểu thức chứa căn thức."
+  }
+ ],
+ "questions": []
+}

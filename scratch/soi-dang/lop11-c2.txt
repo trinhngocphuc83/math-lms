@@ -1,0 +1,793 @@
+Chương 2. Dãy số - Cấp số cộng - Cấp số nhân · lớp 11 · 17 dạng · 740 câu
+
+
+### [1] Bài 1. Dãy số | Xét tính tăng giảm của dãy số (18)
+    yêu cầu: Nhận biết và xét được tính tăng, giảm của một dãy số cho trước.
+  0ysp TL 2 | Xét tính tăng, giảm của dãy (u_n) biết: u_n = \frac{n-3}{n+2}.
+  ll9i TL 2 | Xét tính tăng, giảm của dãy (u_n) biết: u_n = (-1)^n \cdot (2^n + 1).
+  b4we TL 2 | Xét tính tăng, giảm của dãy số (y_n) với y_n = \sqrt{n+1} - \sqrt{n}.
+  torx TL 3 | Cho dãy số (u_n) với u_n = \frac{na+2}{n+1}. Tìm giá trị của a để (u_n) là dãy số tăng.
+  f6q9 TL 2 | Một chồng cột gỗ được xếp thành các lớp, hai lớp liên tiếp hơn kém nhau 1 cột gỗ. a) Gọi u_1 = 25 là số cột gỗ
+  1lef NLC 3 | Mệnh đề nào sau đây đúng?
+  aw0h NLC 2 | Trong các dãy số (u_n) xác định như sau, dãy số giảm là?
+  gowm NLC 1 | Dãy số nào là dãy số giảm?
+  wyth NLC 1 | Dãy số nào là dãy số tăng?
+  z0k4 NLC 2 | Trong các dãy số (u_n) cho bởi số hạng tổng quát u_n sau, dãy số nào tăng? A. u_n=\dfrac{1}{2n}. B. u_n=\dfrac
+  n8l5 NLC 2 | Cho dãy số (u_n) với u_n=\dfrac{n+1}{n+2}. Phát biểu nào sau đây đúng? A. Dãy số tăng và bị chặn. B. Dãy số gi
+  wqcq NLC 1 | Cho các dãy số sau. Dãy số nào là dãy số tăng?
+  wqyj NLC 2 | Cho dãy số (u_n) biết u_n = n^2 + 5. Dãy số đã cho là
+  o6nz NLC 1 | Cho dãy số (u_n), biết u_n=\dfrac{1}{n}. Khẳng định nào đúng? A. Dãy số (u_n) có u_6=\dfrac{1}{6}. B. Dãy số (
+  geow TL 2 | Cho dãy số thực dương (u_n). Chứng minh rằng dãy số (u_n) là dãy số tăng khi và chỉ khi \frac{u_{n+1}}{u_n} > 
+  bahg TL 2 | Xét tính tăng, giảm của dãy (u_n) biết: u_n = n - \sqrt{n^2 - 1}.
+  nl8e NLC 1 | Trong các dãy số sau: dãy (a_n): a_n = n^2, dãy (b_n): b_n = 2n + 1, dãy (c_n): c_n = \frac{1}{n}, dãy (d_n): 
+  xo48 NLC 1 | Trong các dãy số có số hạng tổng quát sau đây nào là dãy số tăng.
+
+### [2] Bài 1. Dãy số | Toán tổng hợp (7)
+    yêu cầu: Đọc được thông tin từ biểu đồ và giải thích được ý nghĩa của khoảng tứ phân vị.
+  trzo DS 2 | Cho dãy số (u_n) có số hạng tổng quát u_n = n + \frac{1}{n}, n \in {N}^*. Khi đó: a) u_1 = 2. b) Dãy số (u_n) 
+  drf9 DS 3 | Cho dãy số (u_n) được xác định bởi \begin{cases} u_1 = 2 \\ u_{n+1} = 4u_n + 9 \end{cases}, \forall n \ge 1. K
+  q7bp DS 3 | Cho dãy số  (u_n) xác định bởi  u_1 = 1 và  u_{n+1} = 3u_n + 4 với mọi  n \ge 1. Xét tính đúng sai của các mện
+  d0cp NLC 3 | Tính tổng S=1-2+3-4+5+\cdots+(2n-1)-2n với n\ge1 và n\in{N}. A. S=0. B. S=-1. C. S=n. D. S=-n.
+  ry24 DS 2 | Cho dãy số (u_n) với u_n = 2 + \frac{5}{5^n}. Khi đó:
+  9k92 DS 2 | Cho dãy số (u_n) có số hạng tổng quát u_n = \frac{2n + 1}{n + 2}.
+  ce7j TLN 3 | Cho dãy số (u_n) có các số hạng thỏa mãn: \begin{cases} u_1 + u_2 + u_3 = 21 \\ u_1 + u_3 = 2u_2 \\ (u_1 + 2)(
+
+### [3] Bài 1. Dãy số | Xác định các số hạng của dãy số (87)
+    yêu cầu: Tính được các số hạng của dãy số khi biết công thức số hạng tổng quát hoặc hệ thức truy hồi.
+  4spe DS 3 | Cho dãy số (u_n) xác định bởi: u_n=\dfrac{1}{1.3}+\dfrac{1}{3.5}+\dfrac{1}{5.7}+\cdots+\dfrac{1}{(2n-1)(2n+1)}
+  8g6k DS 2 | Cho dãy số (u_n), biết u_n=\dfrac{-n}{n+1}. Xét tính đúng sai của các khẳng định sau: a) Năm số hạng đầu tiên 
+  9yko DS 2 | Cho dãy số (u_n), biết u_n = \frac{1}{1.3} + \frac{1}{3.5} + \frac{1}{5.7} + \ldots + \frac{1}{(2n-1)(2n+1)}. 
+  1dj2 TL 1 | Cho dãy số (u_n) được xác định như sau: u_1=1 và u_{n+1}=u_n+2. Hãy tìm số hạng u_{50}.
+  dt75 TL 3 | Cho dãy số (u_n) được xác định như sau: u_1=1;u_2=2 và u_{n+2}=2u_{n+1}+3u_n+5. Hãy tìm số hạng u_8.
+  zeuk NLC 2 | Cho dãy số (u_n) với u_1=1;\ u_{n+1}=u_n+(-1)^{2n}. Số hạng tổng quát u_n của dãy số là số hạng nào dưới đây?
+  iqrj NLC 1 | Cho dãy số (u_n) với \begin{cases}u_1=\dfrac{1}{2}\\ u_{n+1}=u_n-2\end{cases}. Công thức số hạng tổng quát của
+  e4g9 NLC 2 | Cho dãy số (u_n) xác định bởi u_n=\dfrac{n-1}{n^2+2n+3}. Giá trị u_{21} là
+  d3u8 NLC 1 | Cho dãy số (u_n) có u_n=\dfrac{n^2-1}{n^2+1}. Tính u_2.
+  reny NLC 2 | Cho dãy số (u_n), biết u_n=\dfrac{n(n-3)}{2}. Ba số hạng đầu tiên của dãy số là
+  sge3 NLC 2 | Dãy số có các số hạng cho bởi: 0;\dfrac{1}{2};\dfrac{2}{3};\dfrac{3}{4};\dfrac{4}{5};\dots có số hạng tổng quá
+  dpn2 TL 1 | Viết năm số hạng đầu và số hạng thứ 100 của dãy số (u_n) có số hạng tổng quát cho bởi u_n = 3n-2.
+  qgy2 NLC 2 | Cho dãy số (u_n), biết \begin{cases}u_1=2\\ u_{n+1}=2u_n\end{cases}. Số hạng tổng quát u_n của dãy số là số hạ
+  p0dz NLC 1 | Cho dãy số (u_n), biết u_n = 2^n. Tìm số hạng u_{n+1}.
+  tjqw NLC 1 | Cho dãy số  (u_n) có số hạng tổng quát  u_n = 3n - 5. Tính  u_3
+  0df1 NLC 1 | Cho dãy số  (u_n), biết  u_n = \frac{2n^2 - 1}{n^2 + 3}. Tìm số hạng  u_5.
+  j7e0 TL 1 | Viết năm số hạng đầu tiên của dãy số (u_n) cho bởi công thức tổng quát: u_n = 3 \cdot 2^n.
+  ok1o TL 2 | Cho dãy số (u_n) với u_n = \frac{n+1}{2n-1}. Số \frac{8}{15} là số hạng bao nhiêu của dãy số?
+  y8cs NLC 1 | Cho dãy số (u_n), biết u_n=5^n. Tìm số hạng u_{n-1}.
+  tw6v TL 1 | Viết năm số hạng đầu và số hạng thứ 100 của dãy số (u_n) có số hạng tổng quát cho bởi u_n = (1+\dfrac{1}{n})^n
+  snf6 TL 2 | Viết năm số hạng đầu tiên của dãy số (u_n) với u_1=1;u_2=2;u_n=u_{n-1}u_{n-2}\ (n\ge 3).
+  anf6 TL 4 | Cho dãy số (u_n) biết u_1=1 và u_{n+1}=\dfrac{u_n+2}{u_n+1}. Hãy tìm số hạng u_{10}.
+  r0he TL 3 | Cho dãy số (u_n) được xác định như sau: u_1=0 và u_{n+1}=\dfrac{n}{n+1}(u_n+1). Hãy tìm số hạng u_{11}.
+  8xj9 TL 1 | Gọi u_n là số chấm ở hàng thứ n trong hình dưới đây (hàng thứ 1 có 1 chấm, hàng thứ 2 có 2 chấm, hàng thứ 3 có
+  gqw8 TL 2 | Gọi u_n là tổng diện tích các hình vuông có ở hàng thứ n trong Hình (mỗi ô vuông nhỏ là 1 đơn vị diện tích), t
+  53qa NLC 1 | Cho dãy số (u_n) xác định bởi: u_1=1 và u_{n+1}=u_n+2\ (n\ge 1). Xác định công thức số hạng tổng quát.
+  pwqg NLC 2 | Cho dãy số (u_n) với u_1=5;\ u_{n+1}=u_n+n. Số hạng tổng quát u_n của dãy số là số hạng nào dưới đây?
+  lbvt NLC 1 | Cho dãy số (u_n) với u_1=\dfrac{1}{2};\ u_{n+1}=u_n-2. Công thức số hạng tổng quát của dãy số này là:
+  8xjz NLC 2 | Cho dãy số có các số hạng đầu là: -2;0;2;4;6;\dots. Số hạng tổng quát của dãy số này có dạng?
+  texo NLC 3 | Cho dãy số (u_n) với u_1=1;\ u_{n+1}=u_n+n^2. Số hạng tổng quát u_n của dãy số là số hạng nào dưới đây?
+  hdnb NLC 3 | Cho dãy số (u_n) với u_1=2;\ u_{n+1}-u_n=2n-1. Số hạng tổng quát u_n của dãy số là số hạng nào dưới đây?
+  jnh6 NLC 2 | Cho dãy số (u_n), biết u_n=\dfrac{n-1}{n^2+1}. Số \dfrac{2}{13} là số hạng thứ mấy của dãy số?
+  m3pb NLC 3 | Cho dãy số (u_n), biết u_n=n^3-8n^2-5n+7. Số -33 là số hạng thứ mấy của dãy số?
+  q0pa NLC 3 | Cho dãy số (u_n) với u_n=\dfrac{n^2+3n+7}{n+1}. Hỏi dãy số trên có bao nhiêu số hạng nhận giá trị nguyên.
+  5bqb NLC 1 | Cho dãy số (u_n) với u_n=2^n. Tìm số hạng u_{n+1}.
+  tti1 NLC 3 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=-2\\ u_{n+1}=-2-\dfrac{1}{u_n}\end{cases},\ \forall n\in{N}^*. 
+  vaf5 NLC 1 | Cho dãy số (u_n) với \begin{cases}u_1=1\\ u_{n+1}=u_n+(-1)^{2n}\end{cases}. Công thức tổng quát u_n nào dưới đ
+  r5pu NLC 4 | Cho hai cấp số cộng (u_n): 1;6;11;\dots và (v_n): 4;7;10;\dots. Mỗi cấp số có 2018 số. Hỏi có bao nhiêu số có 
+  49h9 NLC 4 | Cho dãy số (u_n) thỏa \begin{cases}u_1=3\\ u_n=2u_{n-1}+n^2-n-3\end{cases},\ \forall n\in{N}, n\ge 2. Tính tổn
+  unnn NLC 2 | Cho dãy số (u_n) với u_n=(\dfrac{n-1}{n+1})^{2n+3}. Tìm số hạng u_{n+1}.
+  ykfm NLC 2 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=2\\ u_{n+1}=\dfrac{1}{3}(u_n+1)\end{cases}. Tìm số hạng u_4.
+  ubk1 NLC 2 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=3\\ u_{n+1}=\dfrac{u_n}{2}+2\end{cases}. Mệnh đề nào sau đây sa
+  bh03 NLC 1 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=7\\ u_{n+1}=2u_n+3\end{cases}, khi đó u_5 bằng:
+  4p7a NLC 1 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=-1\\ u_{n+1}=u_n+3\end{cases}. Ba số hạng đầu tiên của dãy số đ
+  zp84 NLC 1 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=3\\ u_{n+1}=u_n+5\end{cases}. Ba số hạng đầu tiên của dãy số đó
+  lq4c NLC 2 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=-2\\ u_n=2u_{n-1}+n^2\end{cases}(n\ge 2). Số hạng thứ tư của dã
+  2rtp NLC 2 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=\dfrac{1}{2}\\ u_n=\dfrac{1}{2-u_{n-1}}\end{cases},\ \forall n\
+  t0vv NLC 1 | Cho dãy số (u_n) với u_n=2n+3. Tìm số hạng thứ 6 của dãy số.
+  rfnx TLN 2 | Cho dãy số (u_n) có u_n=-n^2+n+1. Số -19 là số hạng thứ mấy của dãy?
+  tpu3 DS 2 | Cho dãy số (u_n), biết \begin{cases}u_1=-1\\ u_{n+1}=u_n+3\end{cases} với n\ge 1. Xét tính đúng sai của các kh
+  i1pl DS 2 | Cho dãy số (u_n) được xác định như sau: \begin{cases}u_1=2\\ u_{n+1}=u_n+5\end{cases}. Xét tính đúng sai của c
+  jf0v TLN 4 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=1\\ u_{n+1}=u_n+n^3\end{cases},\ \forall n\in{N}^*. Tìm số nguy
+  jac2 TL 2 | Viết số hạng tổng quát của dãy số tăng gồm tất cả các số nguyên dương mà mỗi số hạng của nó đều chia hết cho 3
+  55gd TL 2 | Viết số hạng tổng quát của dãy số tăng gồm tất cả các số nguyên dương mà mỗi số hạng của nó khi chia cho 4 dư 
+  usfv TL 2 | \sqrt{5} là số thập phân vô hạn không tuần hoàn. Một dãy số (u_n) được xác định như sau: "u_n là số gần đúng c
+  wukl NLC 1 | Cho dãy số (u_n), biết u_n=-\dfrac{n}{n+1}. Năm số hạng đầu tiên của dãy số đã cho lần lượt là số nào dưới đây
+  g8kg NLC 2 | Cho dãy số (u_n) biết u_1=2 và u_n=\dfrac{u_{n-1}+1}{2} với mọi n\ge 2. Ba số hạng đầu tiên của dãy số lần lượ
+  22lj NLC 1 | Cho dãy số (u_n), biết \begin{cases}u_1=-1\\ u_{n+1}=u_n+3\end{cases}. Ba số hạng đầu tiên của dãy là
+  07xe NLC 1 | Cho dãy số (u_n) biết u_n=\dfrac{2n^2-1}{n^2+2}. Số hạng u_{10} là
+  v6zp NLC 1 | Cho dãy số (u_n) biết u_n=\dfrac{(-1)^n\cdot 2^n}{n}. Tìm số hạng u_3.
+  b8iu NLC 2 | Cho dãy số (u_n) biết u_n=\dfrac{n+1}{3n-2}. Số \dfrac{8}{19} là số hạng thứ mấy của dãy số?
+  a3do NLC 1 | Cho dãy số (u_n), biết u_n=2^n. Tìm số hạng u_{n+1}.
+  35m7 NLC 2 | Cho dãy số (u_n), biết u_n=(-1)^n\cdot 2n. Mệnh đề nào đúng?
+  i4pd NLC 2 | Cho dãy số (u_n), biết u_n=3^n. Tìm số hạng u_{2n-1}.
+  16ms NLC 3 | Cho dãy số (a_n) được xác định \begin{cases}a_1=3\\ a_{n+1}=\dfrac{1}{2}a_n,\ n\ge1\end{cases}. Mệnh đề nào sa
+  z4qs TL 2 | Viết bốn số hạng đầu của dãy số (u_n) cho bởi \begin{cases}u_1=1;u_2=3\\ u_n=u_{n-1}+2u_{n-2}\ (n\ge3)\end{cas
+  qwk3 NLC 1 | Cho dãy số (u_n), biết u_n = (-1)^n \cdot \frac{2^n}{n}. Tìm số hạng u_3.
+  opzc NLC 1 | Cho dãy số 2, 5, 10, 17, 26. Dãy số đã cho được xác định bằng cách
+  irhl NLC 1 | Dãy số có các số hạng đầu là: -1;1;-1;1;-1;\dots có số hạng tổng quát là công thức nào dưới đây?
+  cmby NLC 1 | Hàm số u(n) = n^2 xác định trên tập hợp M = \{1; 2; 3; 4; 5\} là một dãy số hữu hạn. Số hạng cuối của dãy số đ
+  ziv0 NLC 1 | Cho dãy số có các số hạng đầu là: \dfrac{1}{3};\dfrac{1}{3^2};\dfrac{1}{3^3};\dfrac{1}{3^4};\dfrac{1}{3^5};\do
+  l5dp NLC 1 | Cho dãy số (u_n) với u_n=\dfrac{n}{3^n-1}. Ba số hạng đầu của dãy số (u_n) lần lượt là A. \dfrac{1}{2};\dfrac{
+  el08 NLC 2 | Cho dãy số (u_n), biết u_n=\dfrac{2n+5}{5n-4}. Số \dfrac{7}{12} là số hạng thứ mấy của dãy số?
+  2wot NLC 2 | Cho dãy số (u_n) được xác định bởi \begin{cases}u_1=-2\\ u_n=3u_{n-1}-1\end{cases},\ \forall n\ge 2. Tìm số hạ
+  dfl9 NLC 2 | Cho dãy số (u_n) với u_1=1;\ u_{n+1}=u_n+(-1)^{2n+1}. Số hạng tổng quát u_n của dãy số là số hạng nào dưới đây
+  5rdd NLC 2 | Cho dãy số (u_n) biết u_n=\dfrac{n+1}{2n+1}. Số \dfrac{8}{15} là số hạng thứ mấy của dãy số?
+  r0za TLN 2 | Cho dãy số (u_n) với u_n=n^2+n+1 với n\in{N}^*. Số 21 là số hạng thứ bao nhiêu của dãy số đã cho?
+  ytda TL 1 | Viết năm số hạng đầu tiên của dãy số (u_n) cho bởi công thức tổng quát: u_n = \frac{n\sqrt{n}}{n+1}.
+  5zl6 TL 2 | Viết năm số hạng đầu tiên của dãy số (u_n) có số hạng tổng quát u_n = (-1)^{n+1}n^2.
+  0mgd DS 2 | Cho dãy số (u_n) có số hạng tổng quát u_n=\dfrac{2n+1}{n+2}. Xét tính đúng sai của các khẳng định sau: a) Số h
+  3qsc TL 1 | Viết năm số hạng đầu tiên của dãy số (u_n) cho bởi công thức tổng quát: u_n = (1 + \frac{1}{n})^n.
+  llbl TL 2 | Cho dãy số (u_n) với u_n=\dfrac{n^2+3n+7}{n+1}. Viết năm số hạng đầu tiên của dãy số đó.
+  jeuw TL 3 | Cho dãy số (u_n) xác định bởi \begin{cases}u_1=2021\\ u_{n+1}=\dfrac{u_n}{n}\end{cases}(n\ge 1). Tìm giá trị u
+  skay NLC 1 | Cho dãy số vô hạn 2; 4; 6; \ldots; 2n, \ldots. Mệnh đề đúng là
+  olr7 TLN 3 | Cho dãy số (u_n) với u_{n+1} = 2u_n + 3 và tổng mười lăm số hạng đầu là 32722. Tìm số hạng thứ 5 của dãy số (u
+  67ay NLC 1 | Cho dãy số (u_n) với u_n = 2n - 3. Viết 5 số hạng đầu của dãy số.
+  qk8g TL 3 | Cho dãy số (u_n) có u_n=\dfrac{an+b}{n+1}. Biết số hạng thứ 2 và số hạng thứ 4 lần lượt bằng 4 và bằng 2. Tìm 
+
+### [4] Bài 1. Dãy số | Bài toán thực tế về dãy số (9)
+    yêu cầu: Vận dụng được kiến thức về dãy số để giải quyết một số vấn đề thực tiễn như lãi kép, tăng trưởng và khấu hao.
+  f6y7 TLN 4 | Một đôi thỏ cứ mỗi tháng đẻ được một đôi thỏ con; mỗi đôi thỏ con, khi tròn hai tháng tuổi, lại mỗi tháng đẻ r
+  ldtz TL 2 | Ông An gửi tiết kiệm 100 triệu đồng kì hạn 1 tháng với lãi suất 6% một năm theo hình thức tính lãi kép. Số tiề
+  8rhm TL 3 | Chị Hương vay trả góp một khoản tiền 100 triệu đồng và đồng ý trả dần 2 triệu đồng mỗi tháng với lãi suất 0,8%
+  jssu TL 2 | Trên lưới ô vuông, mỗi ô cạnh 1 đơn vị, người ta vẽ 8 hình vuông và tô màu khác nhau như Hình vẽ . Tìm dãy số 
+  tw7l TL 2 | Giá của một chiếc máy photocopy lúc mới mua là 50 triệu đồng. Biết rằng giá trị của nó sau mỗi năm sử dụng chỉ
+  xes5 TL 2 | Nếu tỉ lệ lạm phát là 3,5% mỗi năm và giá trung bình của một căn hộ chung cư mới tại thời điểm hiện tại là 2,5
+  2r4h TL 2 | Bác An gửi tiết kiệm có kì hạn 3 tháng, với lãi suất 3% mỗi năm. Số tiền (triệu đồng) cả vốn lẫn lãi mà bác An
+  30n0 TL 2 | Vi khuẩn E. Coli sinh sản thông qua một quá trình gọi là quá trình phân đôi. Vi khuẩn E. Coli phân chia làm đô
+  48lb TL 3 | Một công ty dược phẩm đang thử nghiệm một loại thuốc mới. Một thí nghiệm bắt đầu với 1,0 \times 10^9 vi khuẩn.
+
+### [5] Bài 1. Dãy số | Dự đoán công thức tổng quát (11)
+    yêu cầu: Tính được một số số hạng đầu và dự đoán công thức số hạng tổng quát của dãy số.
+  jz6c TL 2 | Dự đoán công thức tổng quát của (u_n) biết \begin{cases} u_1 = -2 \\ u_{n+1} = -2 - \frac{1}{u_n} \end{cases}.
+  gmvv TL 2 | Tìm u_2, u_3 và dự đoán công thức số hạng tổng quát u_n của dãy số: \begin{cases} u_1 = 1 \\ u_{n+1} = \frac{u
+  v6mk TL 3 | Cho dãy số (u_n) với u_n = \frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \dots + \frac{1}{n(n+1)}. Tìm u_1, u_2,
+  ayr2 TL 2 | Cho dãy số (u_n) xác định bởi u_1 = 2 và u_n = \sqrt{2 + u_{n-1}^2} với mọi n \ge 2. Viết năm số hạng đầu của 
+  prmk TL 2 | Gọi u_n là số hình tròn ở hàng thứ n trong hình bên. Dự đoán công thức của số hạng tổng quát cho dãy số (u_n).
+  aeca TL 2 | Người ta nuôi cấy 5 con vi khuẩn Ecoli trong môi trường nhân tạo. Cứ 30 phút thì vi khuẩn ecoli sẽ nhân đôi 1 
+  0wz8 NLC 1 | Cho dãy số: \dfrac{1}{3};\dfrac{1}{3^2};\dfrac{1}{3^3};\dfrac{1}{3^4};\dfrac{1}{3^5};\ldots. Số hạng tổng quát
+  28w2 TL 3 | Với mỗi số nguyên dương n, lấy n+6 điểm cách đều nhau trên đường tròn. Nối mỗi điểm với điểm cách nó hai điểm 
+  mrty TL 2 | Gọi v_n là tổng diện tích của các hình tô màu ở hàng thứ n trong hình bên (mỗi ô vuông nhỏ là một đơn vị diện 
+  wi3r NLC 1 | Cho dãy số (u_n) xác định bởi u_1 và u_n = u_{n-1} + 2, \forall n \in {N}^*. Dãy số cho bằng
+  u62p NLC 1 | Trong các dãy số sau đây dãy nào là dãy số cho bằng phương pháp truy hồi.
+
+### [6] Bài 1. Dãy số | Dãy số bị chặn (14)
+    yêu cầu: Nhận biết và xét được tính bị chặn của một dãy số cho trước.
+  1g9x TL 2 | Xét tính bị chặn của dãy số (u_n) với u_n = \frac{6n-4}{n+2}.
+  r22d TL 2 | Xét tính bị chặn của dãy số (s_n) với s_n = \sin n + \cos n.
+  oeqk TL 1 | Xét tính bị chặn của dãy số (r_n) với r_n = (-1)^n.
+  ddhq TL 2 | Cho dãy số (u_n) với u_n = \frac{2n-1}{n+1}. Chứng minh (u_n) là dãy số tăng và bị chặn.
+  yfpz TL 2 | Xét tính bị chặn của dãy số (a_n) với a_n = \sin^2 \frac{n\pi}{3} + \cos \frac{n\pi}{4}.
+  x3n8 TL 3 | Xét tính tăng, giảm và bị chặn của dãy số (u_n) cho bởi số hạng tổng quát: u_n = \frac{2n-13}{3n-2}.
+  pwjk TL 3 | Xét tính tăng, giảm và bị chặn của dãy số (u_n) cho bởi số hạng tổng quát: u_n = 1 + \frac{1}{2^2} + \frac{1}{
+  4cww NLC 1 | Cho dãy số (u_n) biết u_n=\cos n. Dãy số (u_n) là:
+  m5bo NLC 2 | Trong các dãy số (u_n) cho bởi số hạng tổng quát u_n sau, dãy số nào bị chặn? A. u_n=\dfrac{1}{9^n}. B. u_n=9^
+  x5yb TL 2 | Xét tính tăng, giảm và bị chặn của dãy số (u_n) sau, biết số hạng tổng quát: u_n=(-1)^n\cdot n^2.
+  kja3 NLC 2 | Cho dãy số (u_n) biết u_n = \sin n. Dãy số (u_n) là
+  oymd NLC 2 | Trong các dãy số sau, dãy số nào bị chặn?
+  vkys NLC 1 | Trong các dãy số sau: dãy (a_n): a_n = 3 - n, dãy (b_n): b_n = \frac{2}{n+1}, dãy (c_n): c_n = 2n + 3, dãy (d_
+  tkjc NLC 1 | Trong các dãy số sau đây dãy nào là dãy số bị chặn.
+
+### [7] Bài 2. Cấp số cộng | Chứng minh (24)
+    yêu cầu: Thực hiện được phép chia đơn thức, đa thức để chứng minh giá trị biểu thức không phụ thuộc vào biến.
+  7p9n TL 3 | Cho tam giác ABC có ba góc A, B, C theo thứ tự lập thành một cấp số cộng. Khi đó hãy chứng minh rằng: AC^2 + A
+  rqx5 TL 3 | Tam giác ABC có các cạnh a, b, c theo thứ tự đó lập thành một cấp số cộng. Chứng minh công sai của cấp số cộng
+  tr6h TL 3 | Cho một cấp số cộng (u_n) và cho các số nguyên dương m, k với m < k. Chứng minh rằng: \frac{u_{k-m} + u_{k+m}}
+  7apf NLC 3 | Cho a, b, c theo thứ tự lập thành cấp số cộng, đẳng thức nào sau đây là đúng?
+  0inc NLC 3 | Cho a, b, c theo thứ tự lập thành cấp số cộng, ba số nào dưới đây cũng lập thành một cấp số cộng?
+  xka9 NLC 3 | Tam giác ABC có ba cạnh a, b, c thỏa mãn a^2, b^2, c^2 theo thứ tự đó lập thành một cấp số cộng. Chọn khẳng đị
+  6w12 TL 3 | Chứng minh rằng nếu 3 số a,b,c lập thành một cấp số cộng thì các số x,y,z cũng lập thành một cấp số cộng, với 
+  kagb TL 2 | Cho ba số a,b,c lập thành một cấp số cộng. Chứng minh hệ thức sau: a^2+2bc=c^2+2ab.
+  wg1u TL 4 | Chứng minh rằng: Nếu \log_x a,\log_y b,\log_z c theo thứ tự tạo thành một cấp số cộng thì: \log_b y=\dfrac{2\l
+  augi TL 3 | Chứng minh rằng nếu 3 số a,b,c lập thành một cấp số cộng thì các số x,y,z cũng lập thành một cấp số cộng, với 
+  cj14 TL 4 | Với giả thiết 3 số a,b,c dương lập thành một cấp số cộng, chứng minh rằng các số x,y,z cũng lập thành một cấp 
+  xoyi TL 3 | Cho ba số a,b,c lập thành một cấp số cộng. Chứng minh rằng: 3(a^2+b^2+c^2)-6(a-b)^2=(a+b+c)^2.
+  hkjo TL 4 | Chứng minh rằng nếu 3 số a^2,b^2,c^2 lập thành một cấp số cộng thì các số x,y,z cũng lập thành một cấp số cộng
+  9f9h TL 4 | Cho một cấp số cộng: u_1,u_2,u_3,u_4. Chứng minh rằng nếu |u_1u_4-u_2u_3|\le6 thì biểu thức A=\sqrt{(x-u_1)(x-
+  ke3q TL 3 | Chứng minh rằng nếu S_n,S_{2n},S_{3n} tương ứng là tổng của n,2n,3n số hạng đầu tiên của một cấp số cộng thì: 
+  jb1b TL 3 | Cho tam giác ABC, có ba cạnh a,b,c theo thứ tự lập thành một cấp số cộng. Hãy chứng minh rằng: \cot\dfrac{A}{2
+  e79p TL 4 | Tam giác ABC thỏa mãn điều kiện: \tan A\cdot\tan B=6 và \tan A\cdot\tan C=3. Chứng minh rằng: \tan A,\tan B,\t
+  4h5w TL 4 | Tam giác ABC thỏa mãn điều kiện \tan A,\tan B,\tan C theo thứ tự đó lập thành cấp số cộng. Hãy tìm giá trị nhỏ
+  w9t7 TL 4 | Tam giác ABC có \cot\dfrac{A}{2},\cot\dfrac{B}{2},\cot\dfrac{C}{2} theo thứ tự đó lập thành một cấp số cộng. C
+  8mps TL 4 | Tam giác ABC có \cot A,\cot B,\cot C theo thứ tự đó lập thành một cấp số cộng. Chứng minh rằng: a^2,b^2,c^2 th
+  casv TL 4 | Cho ba số \dfrac{1}{b+c},\dfrac{1}{c+a},\dfrac{1}{a+b} theo thứ tự lập thành cấp số cộng. Chứng minh rằng ba s
+  tcux TL 4 | Cho dãy số (u_n), biết u_1=-2,u_{n+1}=\dfrac{u_n}{1-u_n} với n\in{N}^*. Đặt v_n=\dfrac{u_n+1}{u_n} với n\in{N}
+  vau1 TL 2 | Viết năm số hạng đầu của dãy số (u_n) sau và xét xem nó có phải là cấp số cộng không. Nếu dãy số đó là cấp số 
+  74cr TL 2 | Trong dãy số sau đây, dãy số nào là cấp số cộng? Tìm số hạng đầu và công sai của nó: u_n = 5^n.
+
+### [8] Bài 2. Cấp số cộng | Tính tổng các số hạng (99)
+    yêu cầu: Tính được tổng của một số số hạng đầu tiên của một cấp số cộng.
+  o8v3 TLN 2 | Cho cấp số cộng (u_n) có u_3 + u_{28} = 100. Hãy tính tổng của 30 số hạng đầu tiên của cấp số cộng đó.
+  4gk4 TLN 2 | Người ta trồng 3003 cây theo dạng một hình tam giác như sau: hàng thứ nhất trồng 1 cây, hàng thứ hai trồng 2 c
+  he94 TLN 2 | Người ta trồng 465 cây trong một khu vườn hình tam giác như sau: Hàng thứ nhất có 1 cây, hàng thứ hai có 2 cây
+  ntm3 NLC 1 | Cho (u_n) là cấp số cộng có số hạng đầu bằng 2, công sai bằng 5. Tổng 10 số hạng đầu tiên của cấp số cộng đó b
+  6by0 TL 1 | Cho cấp số cộng (u_n) có u_1=17, d=3. Tính u_{20} và S_{20}.
+  ch5u TL 2 | Tính tổng S = 1 - 2 + 3 - 4 + 5 + \dots + (2n - 1) - 2n với n \ge 1 và n \in {N}.
+  a8v7 TLN 2 | Cho dãy số (u_n) xác định bởi u_1 = 2 và u_{n+1} = u_n + 3 với n \ge 1. Tìm tổng 20 số hạng đầu của dãy số (u_
+  cfqz TL 3 | Chu vi một đa giác là 158, số đo các cạnh của nó lập thành một cấp số cộng với công sai d = 3. Biết cạnh lớn n
+  ttjd TL 2 | Một gia đình cần khoan một cái giếng để lấy nước. Họ thuê một đội khoan giếng nước. Biết giá của mét khoan đầu
+  6uhg TL 3 | Khi kí kết hợp đồng lao động với người lao động, một doanh nghiệp đề xuất hai phương án trả lương như sau: Phư
+  rfe6 TL 2 | Khi một vận động viên nhảy dù nhảy ra khỏi máy bay, giả sử quãng đường người ấy rơi tự do (tính theo feet) tro
+  q9nu NLC 1 | Cho dãy số vô hạn (u_n) là cấp số cộng có công sai d, số hạng đầu u_1. Hãy chọn khẳng định sai?
+  kvnl NLC 2 | Cho (u_n) là cấp số cộng biết u_3 + u_{13} = 80. Tổng 15 số hạng đầu của cấp số cộng đó bằng
+  4sk3 NLC 2 | Cho cấp số cộng (u_n) biết u_3 = 6, u_8 = 16. Tính công sai d và tổng của 10 số hạng đầu tiên.
+  70zy NLC 2 | Cho cấp số cộng (u_n) với u_n = 3 - 2n thì S_{60} bằng
+  9jg2 NLC 2 | Cho cấp số cộng (u_n) có u_{2013} + u_6 = 1000. Tổng 2018 số hạng đầu tiên của cấp số cộng đó là:
+  p4u6 NLC 2 | Cho cấp số cộng (u_n) thỏa mãn hệ phương trình: u_1 + u_4 = 8 và u_3 - u_2 = 2. Tính tổng 10 số hạng đầu của c
+  4cmn NLC 2 | Cho cấp số cộng (u_n) có u_4 = -12; u_{14} = 18. Tổng của 16 số hạng đầu tiên của cấp số cộng là:
+  6jdp NLC 3 | Cho cấp số cộng (u_n) thỏa mãn hệ phương trình: u_2 - u_3 + u_5 = 10 và u_4 + u_6 = 26. Tính S = u_1 + u_4 + u
+  lezu NLC 4 | Cho cấp số cộng (u_n) có số hạng đầu bằng 1 và tổng 100 số hạng đầu bằng 14950. Giá trị của tổng \frac{1}{u_1 
+  874y NLC 4 | Cho một cấp số cộng (u_n) có u_1 = 1 và tổng 100 số hạng đầu bằng 10000. Tính tổng S = \frac{1}{u_1 u_2} + \fr
+  x0y9 DS 3 | Một sinh viên sau khi ra trường và xin vào làm cho một trung tâm với mức lương khởi điểm là 100 triệu đồng một
+  k87k DS 2 | Trong hội chợ tết, một công ty sữa muốn xếp 1000 hộp sữa theo thứ tự từ trên xuống dưới như sau: Hàng thứ nhất
+  a9je TLN 2 | Người ta trồng 3003 cây theo một hình tam giác như sau: hàng thứ nhất trồng 1 cây, hàng thứ hai trồng 2 cây, h
+  50ip TLN 2 | Trong một khán phòng có tất cả 30 dãy ghế, dãy đầu tiên có 15 ghế, các dãy liền sau nhiều hơn dãy trước đó 4 g
+  55s3 TLN 3 | Trên một bàn cờ có nhiều ô vuông, người ta đặt 7 hạt dẻ vào ô đầu tiên, sau đó đặt tiếp vào ô thứ hai số hạt n
+  cjaz TL 2 | Chuông đồng hồ ở một toà tháp đánh số tiếng đúng bằng số giờ và cứ mỗi 30 phút không phải là giờ đúng thì đánh
+  bbed NLC 2 | Cho cấp số cộng (u_n) có u_4 = -12, u_{14} = 18. Tính tổng 16 số hạng đầu tiên của cấp số cộng này.
+  r6pm NLC 2 | Cho cấp số cộng có u_1 = 1 và công sai d = -2. Tổng n số hạng đầu tiên của cấp số cộng này là S_n = -9800. Giá
+  x0kp NLC 2 | Cho cấp số cộng (u_n) thỏa \begin{cases} u_5 + 3u_3 - u_2 = -21 \\ 3u_7 - 2u_4 = -34 \end{cases}. Tổng 15 số h
+  dlyk NLC 4 | Cho cấp số cộng (u_n) thỏa \begin{cases} u_2 - u_3 + u_5 = 10 \\ u_4 + u_6 = 26 \end{cases}. Tính S = u_1 + u_
+  k6up NLC 2 | Cho cấp số cộng (u_n) có u_5 = -15, u_{20} = 60. Tổng S_{20} của 20 số hạng đầu tiên của cấp số cộng là
+  b79e NLC 3 | Giải phương trình 1 + 8 + 15 + 22 + \dots + x = 7944.
+  agmf NLC 4 | Cho một cấp số cộng (u_n) có u_1 = 1 và tổng 100 số hạng đầu bằng 24850. Tính S = \frac{1}{u_1u_2} + \frac{1}{
+  mim2 NLC 4 | Cho cấp số cộng (u_n) có các số hạng đều dương, số hạng đầu u_1 = 1 và tổng của 100 số hạng đầu tiên bằng 1495
+  ug6e NLC 3 | Người ta trồng 465 cây trong một khu vườn hình tam giác như sau: Hàng thứ nhất có 1 cây, hàng thứ hai có 2 cây
+  zb5x NLC 2 | Người ta trồng 3003 cây theo dạng một hình tam giác như sau: hàng thứ nhất trồng 1 cây, hàng thứ hai trồng 2 c
+  fe77 NLC 3 | Bạn An chơi trò chơi xếp các que diêm thành tháp theo qui tắc thể hiện như hình vẽ. Để xếp được tháp có 10 tần
+  foqn NLC 3 | Trong hội chợ tết Mậu Tuất 2018, một công ty sữa muốn xếp 900 hộp sữa theo số lượng 1, 3, 5, \dots từ trên xuố
+  ntqr NLC 3 | Sinh nhật bạn của An vào ngày 01 tháng năm. An muốn mua một món quà sinh nhật cho bạn nên quyết định bỏ ống he
+  ktha NLC 2 | Bà chủ quán trà sữa X muốn trang trí quán cho đẹp nên quyết định thuê nhân công xây một bức tường gạch với xi 
+  ebxf NLC 3 | Sinh nhật lần thứ 17 của An vào ngày 01 tháng 5 năm 2018. Bạn An muốn mua một chiếc máy ảnh giá 3850000 đồng đ
+  l0vh NLC 2 | Cho dãy số (u_n) là một cấp số cộng có u_1 = 3 và công sai d = 4. Biết tổng n số hạng đầu của dãy số (u_n) là 
+  d3qc NLC 2 | Một hội trường lớn có 35 ghế ở hàng đầu tiên, 37 ghế ở hàng thứ hai, 39 ghế ở hàng thứ ba và cứ tiếp tục theo 
+  67bb TLN 3 | Cho cấp số cộng biết tổng số hạng đầu và số hạng thứ tư bằng 36, tổng của số hạng thứ hai và số hạng thứ năm b
+  cta3 TLN 2 | Một cơ sở khoan giếng đưa ra định mức giá như sau: Giá của mét khoan đầu tiên là 100 nghìn đồng và kể từ mét k
+  1kx8 TL 2 | Cho cấp số cộng (u_n) có u_3=-15, u_{14}=18. Tính S_{20}.
+  24nz TL 2 | Cho cấp số cộng (u_n) có u_6=17, u_{11}=-1. Tìm d và S_{11}.
+  feof TL 3 | Cho cấp số cộng (u_n). Biết u_1+u_4+u_7+u_{10}+u_{13}+u_{16}=147. Tính u_1+u_6+u_{11}+u_{16}.
+  da5b TL 2 | Cho cấp số cộng (u_n) có u_5+u_{19}=90. Hãy tính tổng 23 số hạng đầu của (u_n).
+  fqae TL 2 | Tính tổng: A=15+20+25+\cdots+7515.
+  vxvq TL 3 | Tính tổng: B=1000^2-999^2+998^2-997^2+\cdots+2^2-1^2.
+  9oeu TL 2 | Tìm số tự nhiên n sao cho: 1+4+7+\cdots+(3n-2)=590, biết 1,4,7,\dots,(3n-2) là 1 cấp số cộng.
+  cyk8 TL 2 | Tìm số tự nhiên n sao cho: (2n+1)+(2n+2)+\cdots+3n=2265, biết 2n+1,2n+2,\dots,3n là 1 cấp số cộng.
+  bkq5 TL 3 | Tìm số tự nhiên n sao cho: 2+7+12+\cdots+n=245, biết 2,7,12,\dots,n là 1 cấp số cộng.
+  ta8k NLC 2 | Cần lấy tổng của bao nhiêu số hạng đầu của cấp số cộng 2;5;8;... để được kết quả bằng 345?
+  kggc NLC 3 | Một bức tường trang trí có dạng hình thang cân, rộng 2,4m ở đáy và rộng 1,2m ở đỉnh. Các viên gạch hình vuông 
+  qv77 NLC 2 | Một cầu thang bằng gạch có tổng cộng 30 bậc. Bậc dưới cùng cần 100 viên gạch. Mỗi bậc tiếp theo cần ít hơn 2 v
+  nqnk TLN 2 | Rạp hát có 20 hàng ghế xếp theo hình quạt. Hàng thứ nhất có 16 ghế, hàng thứ hai có 20 ghế, hàng thứ ba có 24 
+  77ig TL 2 | a) Cho cấp số cộng (u_n) có u_4 = -12, u_{14} = 18. Tính tổng 16 số hạng đầu tiên của cấp số cộng (u_n). b) Tì
+  063o TL 3 | Tính các tổng S = 1000^2 - 999^2 + 998^2 - 997^2 + \dots + 2^2 - 1^2.
+  3myg TLN 3 | Cho cấp số cộng (u_n) có u_1=123, u_3-u_{15}=84. Tính tổng 17 số hạng đầu của cấp số cộng (u_n).
+  45pn DS 2 | Trong sân vận động có tất cả 30 dãy ghế, dãy đầu tiên có 15 ghế, các dãy liền sau nhiều hơn dãy trước 4 ghế. X
+  7b1w DS 3 | Bà chủ quán trà sữa X muốn trang trí quán cho đẹp nên quyết định thuê nhân công xây một bức tường gạch với xi 
+  b3nl TL 3 | Cho (u_n) là cấp số cộng có u_2+u_4=22, u_1\cdot u_5=21 và công sai d>0. a) Tính u_{100},S_{100}. b) Tính tổng
+  mjzv TL 3 | Cho (u_n) là cấp số cộng có u_1+u_5+u_9+u_{13}+u_{17}+u_{21}=234. a) Tính u_2+u_8+u_{14}+u_{20}. b) Tìm u_1,d 
+  9q7r TL 2 | Một cấp số cộng có số hạng đầu bằng 5 và công sai bằng 2. Hỏi phải lấy tổng của bao nhiêu số hạng đầu của cấp 
+  6yjx TL 2 | Phải lấy tổng của bao nhiêu số hạng đầu của cấp số cộng có số hạng đầu là 78 và công sai là -4 để được tổng là
+  pkn2 TL 3 | Giải phương trình: 1+8+15+22+\cdots+x=7944 (biết 1,8,15,22,\dots,x là một cấp số cộng).
+  7sbs TL 2 | Một kiến trúc sư thiết kế một hội trường với 15 ghế ngồi ở hàng thứ nhất, 18 ghế ngồi ở hàng thứ hai, 21 ghế n
+  n5va TL 2 | Ở một loài thực vật lưỡng bội, tính trạng chiều cao cây do hai gene không alen là A và B cùng quy định theo ki
+  tdxw TL 2 | Một rạp hát có 20 hàng ghế. Hàng thứ nhất có 20 ghế, số ghế ở các hàng sau đều hơn số ghế hàng ngay trước đó m
+  8rsz TL 2 | Trên Mặt Trăng, khi một vật được thả rơi tự do, ở giây đầu tiên nó đi được một đoạn dài 80,772 cm. Mỗi giây sa
+  klbh TL 3 | Nhà hát bậc dốc hình tròn đã được xây dựng từ thời La Mã. Các dãy chỗ ngồi được xếp theo hình cung tròn mà số 
+  wrpp TL 2 | Các khúc gỗ được xếp thành hình thang, lượt thứ nhất có 21 khúc, lượt thứ hai có 20 khúc,..., lượt trên cùng c
+  x45b TL 3 | Có bao nhiêu hàng ghế trong một góc khán đài của một sân vận động, biết rằng góc khán đài đó có 2040 chỗ ngồi,
+  n6c1 TL 2 | Một cầu thang bằng gạch có tổng cộng 30 bậc. Bậc dưới cùng cần 100 viên gạch. Mỗi bậc tiếp theo cần ít hơn hai
+  yqgt TL 2 | Nếu anh Nam nhận được lời mời làm việc cho một công ty nước ngoài với mức lương khởi điểm là 35 000 đô la mỗi 
+  e1bh NLC 2 | Cho cấp số cộng (u_n) có u_4=-12, u_{14}=18. Tổng của 16 số hạng đầu tiên của cấp số cộng đó là A. S_{16}=24. 
+  pdx4 NLC 2 | Cho cấp số cộng: -2;-5;-8;-11;-14;\ldots. Công sai d và tổng 20 số hạng đầu tiên của cấp số cộng đó lần lượt l
+  fm1m NLC 2 | Tính tổng T=15+20+25+\cdots+7515. A. T=5651625. B. T=5651265. C. T=5651526. D. T=5651256.
+  mn5t NLC 2 | Tính tổng 100 số hạng đầu tiên, tính từ 1. A. 10000. B. 10100. C. 20000. D. 20200.
+  yvh6 NLC 2 | Tính tổng S = 1 + 4 + 7 + ... + 100.
+  u6y3 NLC 1 | Cho cấp số cộng (u_n) với số hạng đầu u_1 = -6 và công sai d = 4. Tính tổng S của 14 số hạng đầu tiên của cấp 
+  axu0 NLC 1 | Cho cấp số cộng (u_n) có u_1 = -1 và công sai d = 3. Khi đó S_5 bằng
+  sne5 NLC 2 | Trong sân vận động có tất cả 30 dãy ghế, dãy đầu tiên có 15 ghế, các dãy liền sau nhiều hơn dãy trước 4 ghế, h
+  hmpj TLN 2 | Một rạp hát có 30 dãy ghế, dãy đầu tiên có 25 ghế. Mỗi dãy sau có hơn dãy trước 3 ghế. Hỏi rạp hát có tất cả b
+  kave TLN 3 | Một rạp hát có 20 hàng ghế. Hàng thứ nhất có 20 ghế, số ghế ở các hàng sau đều hơn số ghế ngay trước đó 2 ghế.
+  34gy NLC 1 | Cho cấp số cộng (u_n):u_1 = 1 và công sai d = 3. Tổng 4 số hạng đầu của (u_n) là
+  zvwq NLC 2 | Cho cấp số cộng (u_n) với u_n=3-2n. Tính S_{60}.
+  05rj TL 2 | Cho cấp số cộng (u_n), biết hệ phương trình: u_5 + 3u_3 - u_2 = -21 và 3u_7 - 2u_4 = -34. a) Tìm số hạng thứ 1
+  5azg TLN 3 | Một chiếc đồng hồ báo thức, kể từ thời điểm 0 (giờ) thì sau mỗi giờ thì số tiếng chuông được đánh đúng bằng số
+  xojb NLC 1 | Cho cấp số cộng (u_n) có u_1 = -5 và công sai d = 2. Tổng 3 số hạng đầu của cấp số cộng là
+  cp5k NLC 1 | Cho một cấp số cộng có số hạng đầu u_1 = 5, công sai d = -3. Khi đó tổng n số hạng đầu của cấp số cộng đó là
+  g0hs TL 2 | Một người muốn mua một thanh gỗ đủ để cắt ra làm các thanh ngang của một cái thang. Biết rằng chiều dài các th
+  ghfj NLC 3 | Một đa giác có n cạnh và có chu vi bằng 158 cm. Biết số đo các cạnh của đa giác lập thành một cấp số cộng với 
+  cf8t DS 2 | Một nhà hát có 25 hàng ghế với 16 ghế ở hàng thứ nhất, 18 ghế ở hàng thứ hai, 20 ghế ở hàng thứ ba và cứ tiếp 
+  vm3s DS 2 | Người ta trồng 3240 cây theo một hình tam giác như sau: hàng thứ nhất trồng 1 cây, kể từ hàng thứ hai trở đi s
+  ofwq DS 3 | Khi kí kết hợp đồng lao động với người lao động, một doanh nghiệp đề xuất hai phương án trả lương như sau:\nPh
+
+### [9] Bài 2. Cấp số cộng | Xác định số hạng, công sai (169)
+    yêu cầu: Tính được số hạng chưa biết và công sai của một cấp số cộng.
+  x4p5 NLC 1 | Cho cấp số cộng (u_n) với u_1=9 và công sai d=2. Giá trị của u_2 bằng
+  jyup DS 3 | Cho cấp số cộng (u_n) với u_1=-2017 và công sai d=3. Xét tính đúng sai của các khẳng định sau: a) u_2=-2014. b
+  lm7s NLC 1 | Cho cấp số cộng (u_n) với u_1=2022 và công sai d=7. Giá trị của u_6 bằng
+  1bi5 NLC 1 | Tìm công sai d của cấp số cộng (u_n), n\in{N}^* có u_1=1;u_4=13.
+  k5uj NLC 1 | Cho cấp số cộng có u_3=2, d=-2. Số hạng thứ hai của cấp số cộng là
+  qnlz NLC 2 | Cho cấp số cộng (u_n) với u_{17}=33 và u_{33}=65 thì công sai bằng
+  uaty NLC 2 | Cho cấp số cộng (u_n) thỏa mãn \begin{cases} u_4 = 10 \\ u_4 + u_6 = 26 \end{cases} có công sai là
+  uzm9 NLC 2 | Một cấp số cộng gồm 5 số hạng. Hiệu số hạng đầu và số hạng cuối bằng 20. Tìm công sai d của cấp số cộng đã cho
+  ecui NLC 1 | Cho cấp số cộng u_n có các số hạng đầu lần lượt là 5;9;13;17;\dots. Tìm số hạng tổng quát u_n của cấp số cộng?
+  0eo0 TL 2 | Một cấp số cộng có số hạng thứ 5 bằng 18 và số hạng thứ 12 bằng 32. Tìm số hạng thứ 50 của cấp số cộng này.
+  olzz NLC 1 | Cho cấp số cộng (u_n), biết: u_n = -1, u_{n+1} = 8. Khẳng định nào đúng?
+  9ax3 NLC 1 | Cho cấp số cộng (u_n):u_2 = -2, u_7 = 13. Công sai của cấp số cộng đã cho là
+  xyeh NLC 1 | Cho cấp số cộng (u_n) có u_1=3 và u_2=-1. Khi đó A. u_3=4. B. u_3=2. C. u_3=-5. D. u_3=7.
+  5ahk NLC 1 | Cho cấp số cộng (u_n), u_1=3 và u_2=-1. Tìm số hạng thứ ba của cấp số cộng. A. u_3=4. B. u_3=2. C. u_3=-5. D. 
+  v7rg NLC 1 | Cấp số cộng (u_n) có số hạng đầu u_1=3, công sai d=5. Số hạng thứ tư của cấp số cộng đó là A. u_4=23. B. u_4=1
+  txqf NLC 2 | Cho cấp số cộng (u_n) có u_1 = 3 và công sai d = 7. Hỏi kể từ số hạng thứ mấy trở đi thì các số hạng của (u_n)
+  oohh NLC 2 | Cho (u_n) là cấp số cộng có u_4 + u_{16} = 48. Số hạng u_{10} bằng
+  9b6b NLC 2 | Cho dãy (u_n) là một cấp số cộng với số hạng đầu 2 và số hạng thứ 36 là 72. Công sai của cấp số cộng (u_n) là
+  244t NLC 1 | Cho cấp số cộng  (u_n) với  u_1 = 11 và công sai  d = 3. Giá trị của  u_2 bằng
+  mjuh NLC 1 | Trong các dãy số sau, dãy số nào là một cấp số cộng?
+  ajfn NLC 1 | Trong các dãy số sau, dãy số nào không phải là cấp số cộng?
+  udfr NLC 1 | Cho cấp số cộng  (u_n) với  u_1 = 9 và công sai  d = 2. Giá trị của  u_2 bằng
+  vm9n NLC 2 | Cho cấp số cộng (u_n) biết u_5+u_7=19. Giá trị u_2+u_{10} bằng
+  zulz NLC 3 | Cho (u_n) là cấp số cộng có S_n=n^2+4n với n\in{N}^*. Số hạng đầu u_1 và công sai của cấp số cộng đó là
+  y14s TL 1 | Trong các dãy số (u_n) dưới đây, dãy số nào là cấp số cộng, khi đó cho biết số hạng đầu và công sai của nó: u_
+  4425 TL 2 | Cho cấp số cộng (u_n) có số hạng đầu u_1 = -3, công sai d = 5. a) Viết công thức của số hạng tổng quát u_n. b)
+  2ems TL 2 | Cho cấp số cộng (u_n) với u_1 = \frac{1}{3} và u_1 + u_2 + u_3 = -1. Tìm công sai d và viết công thức của số h
+  3yw7 TL 2 | Tìm x sao cho x+3, 2x+1 và 5x+2 là ba số hạng liên tiếp của một cấp số cộng.
+  pcgi TL 2 | Cho cấp số cộng (u_n) có u_1 + 2u_5 = 0 và S_4 = 14. Tính số hạng đầu u_1 và công sai d của cấp số cộng.
+  xwuy NLC 2 | Xác định số hạng đầu u_1 và công sai d của cấp số cộng (u_n) có u_9 = 5u_2 và u_{13} = 2u_6 + 5.
+  hy1h NLC 2 | Cho (u_n) là một cấp số cộng thỏa mãn u_1 + u_3 = 8 và u_4 = 10. Công sai của cấp số cộng đã cho bằng
+  ov5o NLC 1 | Cấp số cộng (u_n) có số hạng đầu u_1 = 3, công sai d = -2 thì số hạng thứ 5 là
+  78hg NLC 1 | Cho cấp số cộng có u_1 = -3, d = 4. Chọn khẳng định đúng trong các khẳng định sau?
+  o6wy NLC 1 | Cho cấp số cộng (u_n) có u_1 = 11 và công sai d = 4. Hãy tính u_{99}.
+  spgn NLC 1 | Cho cấp số cộng (u_n), biết: u_1 = 3, u_2 = -1. Chọn đáp án đúng.
+  bbr4 NLC 2 | Một cấp số cộng (u_n) có u_{13} = 8 và d = -3. Tìm số hạng thứ ba của cấp số cộng (u_n).
+  aa5s NLC 1 | Cho cấp số cộng (u_n) có số hạng đầu u_1 = 3 và công sai d = 2. Giá trị của u_7 bằng:
+  lvxe NLC 1 | Cho cấp số cộng (u_n) có số hạng đầu u_1 = 2 và công sai d = 4. Giá trị u_{2019} bằng
+  m85z NLC 1 | Tìm số hạng thứ 11 của cấp số cộng có số hạng đầu bằng 3 và công sai d = -2.
+  sqqq NLC 1 | Cho cấp số cộng (u_n) có số hạng đầu u_1 = -2 và công sai d = -7. Giá trị u_6 bằng
+  24ym NLC 1 | Cho cấp số cộng (u_n) có số hạng đầu u_1 = 2 và công sai d = 5. Giá trị u_4 bằng
+  cjyg NLC 1 | Cho cấp số cộng (u_n) với số hạng đầu tiên u_1 = 2 và công sai d = 2. Tìm u_{2018}?
+  oe77 NLC 2 | Viết ba số xen giữa 2 và 22 để ta được một cấp số cộng có 5 số hạng?
+  owyn NLC 2 | Cho cấp số cộng (u_n) với u_1 = 2; d = 9. Khi đó số 2018 là số hạng thứ mấy trong dãy?
+  tj12 NLC 1 | Cho cấp số cộng 1, 4, 7, \dots. Số hạng thứ 100 của cấp số cộng là
+  bdz4 NLC 2 | Cho cấp số cộng (u_n) biết u_1 = 3, u_8 = 24 thì u_{11} bằng
+  bx68 NLC 2 | Cho cấp số cộng có số hạng thứ 3 và số hạng thứ 7 lần lượt là 6 và -2. Tìm số hạng thứ 5.
+  qp4d NLC 2 | Cho cấp số cộng (u_n), biết u_2 = 3 và u_4 = 7. Giá trị của u_{15} bằng
+  l176 NLC 1 | Cho cấp số cộng (u_n) có u_2 = 8, u_5 = 17. Công sai d bằng:
+  7j4q NLC 1 | Cho cấp số cộng (u_n) có u_1 = -5; u_8 = 30. Công sai của cấp số cộng bằng:
+  h5ge NLC 1 | Cho cấp số cộng (u_n) với u_1 = 10, u_2 = 13. Giá trị của u_4 là
+  2owx NLC 1 | Cho cấp số cộng (u_n) biết u_2 = -1, u_4 = 7. Tìm u_3.
+  hpsf NLC 1 | Cho cấp số cộng (u_n), biết u_1 = 2 và u_4 = 8. Giá trị của u_5 bằng
+  58x8 NLC 1 | Dãy số nào dưới đây là cấp số cộng?
+  7spw NLC 2 | Một cấp số cộng có tổng của n số hạng đầu S_n tính theo công thức S_n = 5n^2 + 3n, (n \in {N}^*). Tìm số hạng 
+  lsio NLC 3 | Cho cấp số cộng (u_n) biết u_5 = 18 và 4S_n = S_{2n}. Giá trị u_1 và d là
+  8mza NLC 3 | Gọi S_n là tổng n số hạng đầu tiên trong cấp số cộng (a_n). Biết S_6 = S_9, tỉ số \frac{a_3}{a_5} bằng:
+  m747 DS 2 | Cho cấp số cộng (u_n) có u_1 = -5, công sai d = 3. Xét tính đúng sai của các khẳng định sau:
+  wjij DS 2 | Cho cấp số cộng (u_n) có u_4 = -12, u_{14} = 18. Xét tính đúng sai của các khẳng định sau:
+  ibci DS 2 | Cho dãy cấp số cộng (u_n) có u_1 = 4. Biết tổng 20 số hạng đầu tiên bằng 460. Xét tính đúng sai của các khẳng 
+  8200 DS 2 | Cho cấp số cộng (u_n) có u_1 = 123, u_3 - u_{15} = 84. Xét tính đúng sai của các khẳng định sau:
+  vu2q TL 2 | Một ruộng bậc thang có thửa thấp nhất (bậc thứ nhất) nằm ở độ cao 950 m so với mực nước biển, độ chênh lệch gi
+  2cu4 NLC 1 | Dãy số nào sau đây là một cấp số cộng?
+  dlpa NLC 1 | Cho dãy số u_1 = 1; u_n = u_{n-1} + 2, (n \in {N}, n > 1). Kết quả nào đúng?
+  kicd NLC 3 | Cho hai cấp số cộng (a_n): a_1 = 4; a_2 = 7; \dots; a_{100} và (b_n): b_1 = 1; b_2 = 6; \dots; b_{100}. Hỏi có
+  7vl3 NLC 1 | Cấp số cộng (u_n) có số hạng đầu u_1 = 3, công sai d = 5, số hạng thứ tư là
+  kplh NLC 1 | Cho cấp số cộng (u_n) có số hạng đầu u_1 = 3 và công sai d = 2. Tính u_5.
+  6aj7 NLC 2 | Cho cấp số cộng (u_n) có u_5 = -15; u_{20} = 60. Tìm u_1, d của cấp số cộng.
+  y5wf NLC 2 | Cho dãy số (u_n) có d = -2; S_8 = 72. Tính u_1.
+  g4y6 NLC 2 | Cho dãy số (u_n) là cấp số cộng với u_1 = 3; u_5 = 19. Tính u_{12}.
+  aqi8 NLC 2 | Cho cấp số cộng (u_n) có u_2 + u_3 = 20, u_5 + u_7 = -29. Tìm u_1, d.
+  ohof NLC 3 | Cho cấp số cộng (u_n) biết u_5 = 18 và 4S_n = S_{2n}. Tìm số hạng đầu tiên u_1 và công sai d của cấp số cộng.
+  l5v4 NLC 2 | Biết bốn số 5; x; 15; y theo thứ tự lập thành cấp số cộng. Giá trị của biểu thức 3x + 2y bằng
+  ayrl NLC 2 | Xác định x để 3 số: 1 - x; x^2; 1 + x theo thứ tự lập thành một cấp số cộng.
+  x6x1 NLC 2 | Xác định x để 3 số: 1+2x; 2x^2 - 1; -2x theo thứ tự lập thành một cấp số cộng.
+  0tq1 NLC 2 | Viết ba số xen giữa các số 2 và 22 để được cấp số cộng có 5 số hạng.
+  xl1e NLC 2 | Viết 4 số hạng xen giữa các số \frac{1}{3} và \frac{16}{3} để được cấp số cộng có 6 số hạng.
+  7h4w NLC 3 | Một tam giác vuông có chu vi bằng 3 và độ dài các cạnh lập thành một cấp số cộng. Độ dài các cạnh của tam giác
+  wmzg NLC 2 | Cho dãy số (u_n) có u_1 = -1; d = 2; S_n = 483. Tính số các số hạng của cấp số cộng.
+  4qv7 NLC 2 | Cho cấp số cộng có tổng n số hạng đầu là S_n = 4n^2 + 3n, n \in {N}^* thì số hạng thứ 10 của cấp số cộng là
+  8apg NLC 4 | Cho 4 số thực a, b, c, d là 4 số hạng liên tiếp của một cấp số cộng. Biết tổng của chúng bằng 4 và tổng các bì
+  tzrw NLC 4 | Cho cấp số cộng (u_n) có u_1 = 4. Tìm giá trị nhỏ nhất của u_1u_2 + u_2u_3 + u_3u_1.
+  gv91 NLC 2 | Cho cấp số cộng có tổng n số hạng đầu là S_n = 3n^2 + 4n, n \in {N}^*. Giá trị của số hạng thứ 10 của cấp số c
+  fct1 NLC 4 | Bốn số tạo thành một cấp số cộng có tổng bằng 28 và tổng các bình phương của chúng bằng 276. Tích của bốn số đ
+  v0yt NLC 2 | Cho tam giác ABC biết 3 góc của tam giác lập thành một cấp số cộng và có một góc bằng 25^\circ. Tìm 2 góc còn 
+  35a3 NLC 2 | Hùng đang tiết kiệm để mua một cây guitar. Trong tuần đầu tiên, anh ta để dành 42 đô la, và trong mỗi tuần tiế
+  trho NLC 1 | Trong các dãy số sau, dãy số nào không phải cấp số cộng?
+  3li3 NLC 1 | Cho cấp số cộng (u_n) có u_1 = -3, u_6 = 27. Tính công sai d.
+  rf9s NLC 1 | Cho cấp số cộng có u_1 = -3, d = 4. Khẳng định nào sau đây đúng?
+  lov8 NLC 1 | Cho cấp số cộng (u_n): u_4 = 12, u_5 = 20. Công sai của cấp số cộng đã cho là
+  in67 TLN 2 | Một người muốn mua một thanh gỗ đủ để cắt ra làm các thanh ngang của một cái thang. Biết rằng chiều dài các th
+  bxsi TLN 2 | Cho cấp số cộng (u_n) có công sai d = 2 và tổng của 25 số hạng đầu là 625. Tính u_5.
+  pkh6 TLN 4 | Biết cấp số cộng (u_n) có công sai d = 2 và biểu thức u_2^2 + u_3^2 + u_4^2 đạt giá trị nhỏ nhất. Hỏi số 2018 
+  xssv TL 3 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_7+u_{15}-u_3=10\\ u_1+u_6=-11\end{case
+  32af TL 2 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_1+u_5-u_3=10\\ u_1+u_6=17\end{cases}.
+  ymsk TL 2 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_1+u_2+u_3=27\\ u_1^2+u_2^2+u_3^2=275\e
+  xs17 TL 3 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}S_5-S_2-u_5=\dfrac{1}{10}\\ S_4+u_7=\dfr
+  y5p6 TL 3 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_7+u_{15}=60\\ u_4^2+u_{12}^2=1170\end{
+  71du TL 3 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_1+u_3+u_5=-12\\ u_1\cdot u_3\cdot u_5=
+  qj67 TL 2 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_5-u_3=-4\\ u_2\cdot u_4=-3\end{cases}.
+  ftq3 TL 2 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_7-u_3=8\\ u_2\cdot u_7=75\end{cases}.
+  8ht3 TL 4 | Cho cấp số cộng (u_n) có n số hạng thỏa mãn u_1+u_2+\cdots+u_n=a và u_1^2+u_2^2+\cdots+u_n^2=b^2 với a^2=nb^2.
+  fuie TL 2 | Xác định cấp số cộng có công sai là 3, số hạng cuối là 12 và có tổng bằng 30.
+  0047 TL 2 | Một cấp số cộng có 11 số hạng. Tổng của chúng là 176. Hiệu của số hạng cuối và số hạng đầu là 30. Tìm cấp số đ
+  i7zn TL 2 | Tìm 3 số hạng liên tiếp của một cấp số cộng, biết tổng của chúng là 27 và tổng các bình phương của chúng là 29
+  rcbr TL 3 | Số đo các góc của một tứ giác lồi lập thành một cấp số cộng và góc lớn nhất gấp 5 lần góc nhỏ nhất. Tìm số đo 
+  4zwu TL 2 | Ba góc của một tam giác vuông lập thành một cấp số cộng. Tìm số đo các góc đó.
+  t4dd TL 3 | Số đo các góc của một đa giác lồi có 9 cạnh lập thành một cấp số cộng có công sai bằng 3°. Tìm số đo các góc đ
+  3oe4 TL 2 | Tìm x để 3 số a,b,c lập thành một cấp số cộng, với a=10-3x;b=2x^2+3;c=7-4x.
+  qyzc TL 2 | Tìm x để 3 số a,b,c lập thành một cấp số cộng, với a=x+1;b=3x-2;c=x^2-1.
+  fi4r TL 3 | Tìm các nghiệm số của phương trình: 4x^3-6\sqrt{6}x^2+14x-\sqrt{6}=0, biết rằng các nghiệm phân biệt và tạo th
+  dx50 TL 4 | Tìm các giá trị m để phương trình x^4-2(m+2)x^2+2m+3=0 (1) có 4 nghiệm phân biệt và tạo thành một cấp số cộng.
+  9cre TL 3 | Tìm các nghiệm số của phương trình: x^3-15x^2+71x-105=0, biết rằng các nghiệm phân biệt và tạo thành một cấp s
+  ubpu TL 4 | Tìm các giá trị m để phương trình x^4-2(m+1)x^2+2m+1=0 có 4 nghiệm phân biệt và tạo thành một cấp số cộng.
+  tege TL 3 | Tìm các giá trị m để phương trình x^3-3x^2-9x+m=0 có 3 nghiệm phân biệt và tạo thành một cấp số cộng.
+  q901 NLC 2 | Cho cấp số cộng (u_n) thỏa mãn: \begin{cases} u_3 = -2 \\ S_8 = -40 \end{cases}. Công sai của cấp số cộng đã c
+  upi4 NLC 2 | Cho dãy số (u_n): a; 2; b; 6. Biết (u_n) là một cấp số cộng, tổng a+b bằng
+  wfjn TLN 2 | Cho một tam giác vuông có độ dài ba cạnh lập thành cấp số cộng. Chu vi tam giác đó bằng 24. Tính độ dài cạnh n
+  fznl NLC 2 | Cho cấp số cộng (u_n) có u_1=5 và tổng 40 số hạng đầu là 3320. Công sai cấp số cộng đó bằng
+  tj5d NLC 1 | Cho cấp số cộng (u_n) với u_1=2 và u_2=8. Công sai của cấp số cộng đã cho bằng
+  zaf7 NLC 1 | Cho cấp số cộng (u_n), biết: u_1=3,u_2=-1. Số hạng thứ 3 của cấp số (u_n) là
+  u3ym NLC 2 | Cho cấp số cộng (u_n): u_3=4,u_5=12. Công sai của cấp số cộng đã cho là
+  ucx7 NLC 3 | Cho cấp số cộng (u_n) thỏa mãn: \begin{cases}u_1+2u_6=26\\ 3u_2+u_3=18\end{cases}. Công sai của cấp số cộng đã
+  5q3y NLC 2 | Tìm x sao cho 2x;3x+2;5x+3 là ba số hạng liên tiếp của một cấp số cộng.
+  khwz TLN 2 | Cho cấp số cộng (u_n) biết u_2=14 và công sai d=3. Số 56 là số hạng thứ bao nhiêu của cấp số cộng đó?
+  b49q TLN 3 | Một cấp số cộng có 7 số hạng. Biết rằng tổng của số hạng đầu và số hạng cuối bằng 30, còn tổng của số hạng thứ
+  2vm1 NLC 1 | Trong các dãy số có công thức tổng quát sau, dãy số nào là cấp số cộng?
+  l6kk DS 2 | Cho cấp số cộng (u_n) có u_5=-15, u_{20}=60. Xét tính đúng sai của các khẳng định sau: a) u_1=-35. b) Công sai
+  239f TLN 2 | Giá của một chiếc xe ô tô lúc mới mua là 680 triệu đồng. Cứ sau mỗi năm sử dụng, giá của chiếc xe ô tô giảm 55
+  tf35 NLC 2 | Cho cấp số cộng (u_n) có u_1=5 và công sai d=-3. Biết rằng -289 là một số hạng của cấp số cộng trên. Hỏi đó là
+  bh0m TL 2 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_1+u_6=18\\ u_3+u_7=22\end{cases}.
+  6j7g TL 3 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_9-u_4=15\\ u_3\cdot u_8=184\end{cases}
+  sax0 TL 2 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases}u_6=8\\ u_2^2+u_4^2=16\end{cases}.
+  p6dg TL 2 | Tìm x để ba số 10-3x,2x^2+3,7-4x theo thứ tự lập thành một cấp số cộng.
+  p40f TL 3 | Tìm 5 số hạng liên tiếp của một cấp số cộng, biết tổng của chúng bằng 40 và tổng bình phương của chúng bằng 48
+  kwuq TL 1 | Vào năm 2020, dân số của một thành phố là khoảng 1,2 triệu người. Giả sử mỗi năm, dân số của thành phố này tăn
+  b885 TL 2 | Chiều cao (đơn vị: centimét) của một đứa trẻ n tuổi phát triển bình thường được cho bởi công thức x_n=75+5\cdo
+  5vnq NLC 2 | Lan đang tiết kiệm để mua laptop. Trong tuần đầu tiên, cô ta để dành 200 đô la, và trong mỗi tuần tiếp theo, c
+  0anu TL 1 | Xác định công sai, số hạng thứ 5, số hạng tổng quát và số hạng thứ 100 của cấp số cộng sau: 4, 9, 14, 19, \dot
+  edqm TL 1 | Xác định công sai, số hạng thứ 5, số hạng tổng quát và số hạng thứ 100 của cấp số cộng sau: 1, -1, -3, -5, \do
+  09re TL 2 | Cho cấp số cộng (u_n) có số hạng đầu u_1 = -3 và công sai d = 2. a) Tìm u_{12}. b) Số 195 là số hạng thứ bao n
+  j9kx TL 2 | Cho cấp số cộng (u_n) với u_1 = \frac{1}{3} và u_1 + u_2 + u_3 = -1. a) Tìm công sai d và viết công thức của s
+  v6gm TL 2 | Cho cấp số cộng (u_n) có số hạng tổng quát: u_n = 7n - 3. a) Tìm số hạng đầu và công sai của cấp số cộng (u_n)
+  2yzr TL 2 | Cho cấp số cộng (u_n), biết u_1 = 5 và d = 3. a) Tìm số hạng tổng quát của cấp số cộng (u_n). b) Tìm u_{99}. c
+  25sf TL 2 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases} u_2 + u_3 = 0 \\ u_2 + u_5 = 80 \end{ca
+  i7y5 TL 3 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases} u_5 - u_2 = 3 \\ u_8 \cdot u_3 = 24 \en
+  j5x5 TL 2 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases} u_4 = 10 \\ u_7 = 19 \end{cases}
+  0k9u TL 3 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases} S_{10} = 165 \\ S_{20} = 630 \end{cases
+  e04d TL 1 | Bác Tư vào làm cho một công ty với hợp đồng về tiền lương mỗi năm như sau: Năm thứ nhất: 240 triệu; Từ năm thứ
+  z847 NLC 2 | Một cấp số cộng có 8 số hạng. Số hạng đầu là 5, số hạng thứ tám là 40. Khi đó công sai d của cấp số cộng đó là
+  hfvm NLC 2 | Nếu các số 5 + m; 7 + 2m; 17 + m theo thứ tự lập thành cấp số cộng thì m bằng bao nhiêu?
+  541l NLC 1 | Cho các số -4; 1; 6; x theo thứ tự lập thành một cấp số cộng. Tìm x.
+  jtdb TL 3 | Tìm số hạng đầu u_1 và công sai d của cấp số cộng (u_n) biết: \begin{cases}5u_1+10u_5=0\\ S_4=14\end{cases}.
+  fs3u NLC 2 | Cho cấp số cộng (u_n) với u_1 = 8, công sai d = 4. Số 1000 là số hạng thứ mấy của cấp số cộng đã cho?
+  zs4r NLC 1 | Cho cấp số cộng (u_n) biết u_1 = 4, công sai d = 2. Ba số hạng đầu của cấp số cộng là
+  44e6 NLC 1 | Trong các dãy số sau đây, dãy số nào là một cấp số cộng?
+  rs6a NLC 1 | Cho cấp số cộng (u_n) với u_1=8 và công sai d=3. Giá trị của u_2 bằng
+  t3d5 NLC 2 | Cho tứ giác ABCD biết 4 góc của tứ giác lập thành một cấp số cộng và góc A bằng 30^\circ. Tìm các góc còn lại.
+  346v NLC 2 | Cho cấp số cộng (u_n) với số hạng đầu là u_1 = -2017 và công sai d = 3. Bắt đầu từ số hạng nào trở đi mà các s
+  fo8l TL 2 | Tìm số hạng đầu và công sai của cấp số cộng (u_n), biết: \begin{cases} u_3 - u_1 = 20 \\ u_2 + u_5 = 54 \end{c
+  04rc NLC 1 | Số đo ba góc của một tam giác vuông theo thứ tự lần lượt a, b, c là một cấp số cộng. Số đo các góc của tam giá
+  kxu8 TLN 3 | Có bao nhiêu giá trị của a để 3 số 1 - a, a^2, 1 + a lập thành một cấp số cộng?
+  awjh NLC 2 | Người ta muốn trồng 10 hàng cây theo quy luật: Hàng thứ nhất có 10 cây; Hàng thứ hai có 12; Hàng thứ ba có 14;
+  xdk1 DS 2 | Cho cấp số cộng (u_n): 1; \frac{3}{2}; 2; \frac{5}{2}; 3; \dots.
+  667s DS 2 | Cho cấp số cộng (u_n): u_1 = 1 và công sai d = 3.
+  s792 TL 3 | Tìm 4 số hạng liên tiếp của một cấp số cộng, biết tổng của chúng bằng 22 và tổng các bình phương của chúng bằn
+  9n44 TL 4 | Cho phương trình x^3+3x^2-(24+m)x-26-n=0. Tìm hệ thức liên hệ giữa m và n để 3 nghiệm phân biệt x_1,x_2,x_3 lậ
+  2uux DS 2 | Một cấp số cộng có năm số hạng mà tổng số hạng đầu và số hạng thứ tư bằng 36, tổng của số hạng thứ hai và số h
+  wqmb DS 2 | Cho cấp số cộng (u_n): 5; x; 15; y.
+
+### [10] Bài 2. Cấp số cộng | Toán tổng hợp (30)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến cấp số cộng.
+  oi95 DS 2 | Cho dãy số (u_n) với \begin{cases}u_1=2\\ u_n=u_{n-1}+3\end{cases} (n\ge2,n\in{N}). A. u_2=5; u_6=16. B. u_{n+
+  s5zh DS 2 | Cho cấp số cộng (u_n) có số hạng đầu u_1 = \frac{3}{2} và công sai d = \frac{1}{2}. Khi đó:
+  1dgz DS 2 | Cho cấp số cộng (u_n) với u_1=-2, d=-5. A. u_2=-7. B. Tổng của 100 số hạng đầu tiên của dãy số (u_n) là -24950
+  4gx2 DS 2 | Cho cấp số cộng có u_1=-2 và công sai d=4. A. Dãy số trên có công thức truy hồi là \begin{cases}u_1=-2\\ u_{n+
+  jfjw DS 2 | Cho dãy số (u_n), biết \begin{cases}u_1=-1\\ u_{n+1}=u_n+3\end{cases} với n\ge1. Khi đó: A. Năm số hạng đầu ti
+  9a94 DS 2 | Cho dãy số (u_n) với u_n = 2n + 1. Khi đó:
+  4agx DS 2 | Một người muốn kí hợp đồng với một cơ sở khoan giếng để khoan một cái giếng lấy nước dùng cho sinh hoạt của gi
+  su2n DS 2 | Cho cấp số cộng có các số hạng -1, 2, 5, 8, 11, 14, 17. Các mệnh đề sau đúng hay sai? a) Cấp số cộng đã cho có
+  n0d3 DS 2 | Cho cấp số cộng (u_n) có số hạng đầu u_1 = 3, công sai d = -2. Khi đó, các mệnh đề sau đúng hay sai?
+  19lq TLN 4 | Cho hai cấp số cộng (x_n):4,7,10,\dots và (y_n):1,6,11,\dots. Hỏi trong 2018 số hạng đầu tiên của mỗi cấp số c
+  32he NLC 3 | Ba góc của một tam giác vuông tạo thành cấp số cộng. Hai góc nhọn của tam giác có số đo (độ) là: A. 45° và 45°
+  h4x6 NLC 3 | Một tam giác vuông có chu vi bằng 3 và độ dài các cạnh lập thành một cấp số cộng. Độ dài các cạnh của tam giác
+  1wrv DS 3 | Cho cấp số cộng (u_n) thỏa mãn \begin{cases}u_1-u_3+u_5=15\\ u_1+u_6=27\end{cases} A. Công sai cấp số cộng bằn
+  d5kl DS 2 | Cho cấp số cộng (u_n) có u_1 = 4. Biết tổng 20 số hạng đầu tiên bằng 460.
+  uiu0 DS 2 | Một rạp hát có 20 hàng ghế. Hàng thứ nhất có 20 ghế, số ghế ở các hàng sau đều hơn số ghế của hàng ngay trước 
+  p8xn DS 2 | Cho cấp số cộng (u_n) có u_1 = 5 và u_2 = 9. Khi đó:
+  e4yp DS 3 | Trong một hội chợ đón Xuân, một gian hàng sữa muốn xếp 900 hộp sữa theo quy luật là hàng trên cùng có 1 hộp sữ
+  dhcm TL 3 | Chu vi của một đa giác là 213 cm, số đo các cạnh của nó lập thành cấp số cộng với công sai d=7 cm và cạnh lớn 
+  u0mw TL 3 | Tứ giác ABCD có số đo bốn góc A,B,C,D theo thứ tự lập thành cấp số cộng. Biết số đo góc C gấp 5 lần góc A. Tín
+  zc2g DS 2 | Cho dãy số (u_n), biết \begin{cases} u_1 = -1 \\ u_{n+1} = u_n + 3 \end{cases} với n \ge 1. Xét tính đúng, sai
+  vz4d TLN 2 | Một hội trường có 10 dãy ghế, mỗi dãy ghế kế tiếp nhiều hơn dãy ghế trước nó 4 ghế. Biết dãy ghế cuối cùng có 
+  n3l5 TLN 3 | Nam đang tiết kiệm để mua một cây guitar. Trong tuần đầu tiên, anh ta để dành 12 đô la, tuần thứ hai 15 đô la,
+  jlhz TL 2 | Mặt sàn tầng một (tầng trệt) của một ngôi nhà cao hơn mặt sân 0,5 m. Cầu thang đi từ tầng một lên tầng hai gồm
+  v8xw TL 2 | Người ta trồng cây theo các hàng ngang với quy luật: ở hàng thứ nhất có 1 cây, ở hàng thứ hai có 2 cây, ở hàng
+  tfbq TLN 3 | Cho hai cấp số cộng có dãy số hạng lần lượt là: 5; 7; 9; \ldots và 3; 8; 13; \ldots Hỏi trong 2024 số hạng đầu
+  ht4u TLN 3 | Bốn nghiệm của phương trình x^4 - 10x^2 + 3a = 0 là 4 số hạng liên tiếp của một cấp số cộng. Tính tổng bình ph
+  as9s TLN 3 | Một người muốn mua một chiếc điện thoại có giá 15 triệu theo hình thức trả góp trong vòng 1 năm. Người mua có 
+  ef00 TLN 3 | Một cấp số cộng có công sai nằm trong khoảng (0; 10) và thỏa mãn các điều kiện sau: \begin{cases} S_6 = -6 \\ 
+  w60k TLN 3 | Cho cấp số cộng (u_n) có các số hạng đều dương, số hạng đầu u_1 = 1 và tổng của 100 số hạng đầu tiên bằng 1495
+  uv9n TLN 3 | Ba số phân biệt có tổng là 434 có thể coi là các số hạng liên tiếp của một cấp số nhân, cũng có thể coi là số 
+
+### [11] Bài 2. Cấp số cộng | Tìm công thức cấp số cộng (20)
+    yêu cầu: Xác định được công thức số hạng tổng quát và các yếu tố của một cấp số cộng.
+  df21 DS 2 | Cho dãy số (u_n) có tổng n số hạng đầu được tính bởi công thức S_n = n^2 - \frac{3}{2}n. a) Ta có S_1 = -\frac
+  lexc NLC 1 | Trong các dãy số (u_n) với số hạng tổng quát sau, dãy số nào là cấp số cộng?
+  xr6j TL 2 | Giữa các số 7 và 35, hãy đặt thêm 6 số nữa để được một cấp số cộng.
+  iobz NLC 2 | Cho cấp số cộng (u_n) và gọi S_n là tổng n số hạng đầu tiên của nó. Biết u_{21} = -19 và S_{22} = 0. Tìm số hạ
+  yrv0 NLC 2 | Cho cấp số cộng (u_n) và gọi S_n là tổng n số hạng đầu tiên của nó. Biết S_7 = 77 và S_{12} = 192. Tìm số hạng
+  nu0o NLC 1 | Cho cấp số cộng (u_n) có số hạng tổng quát là u_n = 3n - 2. Tìm công sai d của cấp số cộng.
+  i3z3 TLN 1 | Cho cấp số cộng (u_n) với u_n = 5 - 2n. Tìm công sai của cấp số cộng (u_n).
+  mmyp TL 3 | Cho dãy số (u_n): \begin{cases}u_1=a\ (a\in{R})\\ u_{n+1}=3-2u_n\ (n\ge1)\end{cases}. Tìm các giá trị của a để
+  nbfa TL 2 | Giữa các số 4 và 67, hãy đặt thêm 20 số nữa để được một cấp số cộng.
+  63jg NLC 1 | Cho cấp số cộng (u_n) có số hạng đầu u_1, công sai d. Khi đó, với n\ge2 ta có A. u_n=u_1+d. B. u_n=u_1+(n+1)d.
+  jnbj NLC 2 | Dãy số nào sau đây không phải là cấp số cộng?
+  hbf6 NLC 1 | Cho dãy số \dfrac{1}{2};0;-\dfrac{1}{2};-1;-\dfrac{3}{2};\ldots là cấp số cộng với: A. Số hạng đầu tiên là \df
+  5sal NLC 1 | Cho cấp số cộng (u_n) với u_1 = 7 và công sai d = 2. Giá trị u_n (n \ge 1, n \in {N}^*) bằng
+  bbze NLC 1 | Công thức nào sau đây là đúng với cấp số cộng có số hạng đầu u_1, công sai d, n \ge 2?
+  r1zy NLC 1 | Trong các dãy số được cho dưới đây, dãy số nào là cấp số cộng?
+  xkzg NLC 2 | Tìm công thức số hạng tổng quát của cấp số cộng (u_n) thỏa mãn: \begin{cases} u_2 - u_3 + u_5 = 7 \\ u_1 + u_6
+  vk58 NLC 2 | Cho một cấp số cộng (u_n) có u_1 = 5 và tổng của 50 số hạng đầu bằng 5150. Tìm công thức của số hạng tổng quát
+  juk0 TL 1 | Cho (u_n) là cấp số cộng với số hạng đầu u_1 = 4 và công sai d = -10. Viết công thức số hạng tổng quát u_n.
+  1xgn NLC 1 | Cho cấp số cộng có các số hạng đầu là 1, 4, 7, 10, 13, \ldots. Số hạng tổng quát u_n của cấp số cộng là
+  qkrm NLC 1 | Cho một cấp số cộng có số hạng đầu u_1 = 2025, công sai d = -11. Khi đó công thức tính số hạng tổng quát của c
+
+### [12] Bài 3. Cấp số nhân | Chứng minh (4)
+    yêu cầu: Chứng minh được một dãy số cho trước là cấp số nhân dựa vào định nghĩa.
+  shuw TL 3 | Cho hình vuông C_1 có cạnh bằng 4. Người ta chia mỗi cạnh hình vuông thành bốn phần bằng nhau và nối các điểm 
+  8d5w TL 3 | Độ dài các cạnh của \triangle ABC lập thành một cấp số nhân. Chứng minh rằng: \triangle ABC có hai góc không q
+  9ea1 TL 4 | Chứng minh rằng nếu 3 số \dfrac{2}{y-x};\dfrac{1}{y};\dfrac{2}{y-z} lập thành cấp số cộng thì 3 số x,y,z lập t
+  vpnq TL 4 | Chứng minh rằng nếu 3 số dương a,b,c theo thứ tự tạo thành cấp số nhân thì: \dfrac{\log_a N}{\log_c N}=\dfrac{
+
+### [13] Bài 3. Cấp số nhân | Xác định số hạng, công bội (89)
+    yêu cầu: Tính được số hạng chưa biết và công bội của một cấp số nhân.
+  4ham NLC 1 | Cho cấp số nhân (u_n) có u_1=2 và công bội q=-2. Giá trị u_5 bằng
+  g5dg NLC 2 | Cho cấp số nhân (u_n) có u_5=2 và u_9=6. Tính u_{21}.
+  w0x9 NLC 2 | Cho cấp số nhân (u_n) có u_1=1, q=2. Hỏi 1024 là số hạng thứ mấy?
+  0y16 NLC 2 | Cho dãy số 4;12;36;108;324;\cdots. Số hạng thứ 10 của dãy số đó là
+  bqvz NLC 1 | Dãy số (u_n) với u_n = 2^{n-1} là một cấp số nhân với:
+  c1ka NLC 2 | Tìm x để ba số 1+x; 9+x; 33+x theo thứ tự đó lập thành một cấp số nhân.
+  hrbt NLC 1 | Cho cấp số nhân  (u_n) với  u_1 = 3 và  u_2 = 9. Công bội của cấp số nhân đã cho bằng
+  pm67 NLC 1 | Trong các dãy số  (u_n) sau đây, dãy số nào là cấp số nhân?
+  6ihx NLC 1 | Cho cấp số nhân  (u_n) với  u_1 = 2 và công bội  q = 3. Giá trị của  u_2 bằng
+  gndh NLC 2 | Có bao nhiêu số x để 2x - 1; x; 2x + 1 theo thứ tự lập thành cấp số nhân?
+  hcl5 NLC 1 | Dãy số u_n = 2^n là một cấp số nhân với:
+  9i22 NLC 1 | Cho cấp số nhân (u_n) với u_1 = 3 và công bội q = 2. Giá trị của u_2 bằng
+  c8ph NLC 1 | Tìm tất cả các giá trị của x để ba số 2x - 1, x, 2x + 1 theo thứ tự đó lập thành một cấp số nhân.
+  9iut NLC 1 | Cho cấp số nhân (u_n) có u_4 = 9 và u_5 = 81. Công bội cấp số nhân đó bằng
+  g1or NLC 1 | Cho cấp số nhân (u_n) có u_1 = 3 và u_2 = 9. Công bội của cấp số nhân bằng
+  27ha NLC 1 | Tìm công bội q của cấp số nhân (u_n) có u_1 = \frac{1}{2} và u_6 = 16.
+  zg4k NLC 2 | Cho cấp số nhân (u_n) biết u_2\cdot u_6=64. Giá trị u_3\cdot u_5 là
+  8j3z TL 2 | Xác định công bội, số hạng thứ 5, số hạng tổng quát và số hạng thứ 100 của cấp số nhân sau: 1, 4, 16, \ldots
+  1gto TL 2 | Cho cấp số nhân (u_n) với số hạng đầu u_1 = -5, công bội q = 2. a) Tìm u_9. b) Số -320 là số hạng thứ bao nhiê
+  v1jz TL 3 | a) Số đo bốn góc của một tứ giác lập thành cấp số nhân. Tìm số đo của bốn góc đó biết rằng số đo của góc lớn n
+  4bha TL 3 | Tìm số hạng đầu và công bội của cấp số nhân (u_n), biết: a) \begin{cases} u_5 - u_1 = 15 \\ u_4 - u_2 = 6 \end
+  mav0 TL 3 | Cho một cấp số nhân có tất cả các số hạng đều dương. Số hạng thứ tư của cấp số nhân là 125 và số hạng thứ 10 l
+  n3aq TL 2 | Một công ty xây dựng mua một chiếc máy ủi với giá 3 tỉ đồng. Cứ sau mỗi năm sử dụng, giá trị của chiếc máy ủi 
+  jt4n NLC 2 | Một cấp số nhân có sáu số hạng, số hạng đầu là 2 và số hạng thứ sáu bằng 486. Gọi q là công bội của cấp số nhâ
+  i129 NLC 3 | Cho cấp số nhân (u_n) có u_1=-1 và q=-\dfrac{1}{10}. Số \dfrac{1}{10^{103}} là số hạng thứ mấy của cấp số nhân
+  yqru NLC 1 | Cho cấp số nhân (u_n) với u_1=-2 và q=-5. Viết bốn số hạng đầu tiên của cấp số nhân. A. -2;-10;-50;-250. B. -2
+  ayr4 NLC 2 | Một cấp số nhân có hai số hạng liên tiếp là 16 và 36. Số hạng tiếp theo là A. 81. B. 64. C. 720. D. 56.
+  gvfp TL 2 | Một cây đàn organ có tần số âm thanh các phím liên tiếp tạo thành một cấp số nhân. Cho biết tần số phím La tru
+  26dk TL 2 | Tìm số hạng đầu u_1 và công bội q của cấp số nhân (u_n) biết: \begin{cases}u_5=96\\ u_6=192\end{cases}.
+  uqvt TL 3 | Tìm số hạng đầu u_1 và công bội q của cấp số nhân (u_n) biết: \begin{cases}u_4-u_2=72\\ u_5-u_3=144\end{cases}
+  yjza NLC 1 | Cho cấp số nhân (u_n) với u_1=2 và công bội q=\dfrac{1}{2}. Giá trị của u_3 bằng A. 3. B. \dfrac{1}{2}. C. \df
+  d0xy NLC 2 | Cho cấp số nhân có u_1 = -3, q = \frac{2}{3}. Số \frac{-96}{243} là số hạng thứ mấy của cấp số này?
+  z56k NLC 1 | Cho cấp số nhân (u_n) với u_1 = 2 và u_2 = 6. Công bội của cấp số nhân đã cho bằng
+  e0o9 NLC 1 | Cấp số nhân (u_n) có u_4 = 9, u_5 = 81 có công bội là
+  ilgx NLC 2 | Cho cấp số nhân (u_n) với u_2 = 6 và u_5 = 162. Công bội của cấp số nhân đã cho bằng
+  hxta NLC 2 | Cho cấp số nhân (u_n) có u_1 = -3, công bội q = -2. Hỏi -192 là số hạng thứ mấy của (u_n)?
+  can2 NLC 2 | Một cấp số nhân với công bội bằng -2 có số hạng thứ ba bằng 8 và số hạng cuối bằng -1024. Hỏi cấp số nhân đó c
+  4iid NLC 1 | Cho cấp số nhân (u_n) có u_1 = -2 và công bội q = 3. Số hạng u_2 là
+  lzvp NLC 3 | Cho dãy số (u_n) xác định bởi \begin{cases} u_1 = 1 \\ u_{n+1} = \frac{u_n + 8}{5} \end{cases} và dãy số (v_n)
+  fb6i NLC 2 | Cho cấp số nhân (u_n) biết u_2 = -8; u_5 = 64. Giá trị của u_6 bằng
+  jsz4 NLC 2 | Cho cấp số nhân (u_n) biết u_2 = -8; u_5 = 64. Giá trị của u_3 bằng
+  yn36 NLC 2 | Cho cấp số nhân (u_n) có \begin{cases} u_2 + u_4 = 60 \\ u_3 + u_5 = 180 \end{cases}. Tìm u_1.
+  3pg5 TL 2 | Dãy số (u_n) sau đây, dãy số nào là cấp số nhân, trong trường hợp là cấp số nhân, hãy xác định số hạng đầu và 
+  ludp TL 2 | Cho các cấp số nhân (u_n) với công bội q. Biết u_1=2, u_6=486. Tìm q.
+  gnov TL 2 | Cho cấp số nhân (u_n) với công bội q=\dfrac{2}{3}, u_4=\dfrac{8}{21}. Tìm u_1.
+  5qx7 TL 2 | Cho cấp số nhân (u_n) với u_1=3, q=-2. Hỏi số 192 là số hạng thứ mấy?
+  h1ti TL 3 | Tìm số hạng đầu và công bội của cấp số nhân, biết: \begin{cases}u_1+u_5=51\\ u_2+u_6=102\end{cases}.
+  3xzd TL 3 | Tìm số hạng đầu và công bội của cấp số nhân, biết: \begin{cases}u_2-u_4+u_5=10\\ u_3-u_5+u_6=20\end{cases}.
+  yaze TL 3 | Tìm số hạng đầu và công bội của cấp số nhân, biết: \begin{cases}u_1-u_3+u_5=65\\ u_1+u_7=325\end{cases}.
+  kj7j TL 3 | Tìm số hạng đầu và công bội của cấp số nhân, biết: \begin{cases}u_3+u_5=90\\ u_2-u_6=240\end{cases}.
+  b7f3 TL 3 | Tìm số hạng đầu và công bội của cấp số nhân, biết: \begin{cases}u_1+u_2+u_3=14\\ u_1\cdot u_2\cdot u_3=64\end{
+  u4wx NLC 2 | Cho cấp số nhân (u_n) với u_1=5; u_6=160. Số hạng u_2 bằng A. 31. B. 10. C. 32. D. 3.
+  rfbx TL 3 | Tìm số hạng đầu và công bội của cấp số nhân, biết: \begin{cases}u_1+u_2+u_3=21\\ \dfrac{1}{u_1}+\dfrac{1}{u_2}
+  b0le TL 3 | Tìm số hạng đầu và công bội của cấp số nhân, biết: \begin{cases}u_1+u_2+u_3+u_4=30\\ u_1^2+u_2^2+u_3^2+u_4^2=3
+  9rfk TL 2 | Giữa các số 160 và 5, hãy chèn vào 4 số nữa để tạo thành một cấp số nhân.
+  j1nj TL 2 | Giữa các số 243 và 1, hãy đặt thêm 4 số nữa để tạo thành một cấp số nhân.
+  51xw TL 3 | Tìm 3 số hạng liên tiếp của một cấp số nhân biết tổng của chúng là 19 và tích của chúng là 216.
+  rqc8 TL 3 | Cho cấp số nhân u_5=2x-3; u_{10}=x+3; u_{15}=5x-3. Tìm x.
+  vzdb TL 3 | Cho bốn số hạng liên tiếp của một cấp số nhân, trong đó số hạng thứ hai nhỏ hơn số hạng thứ nhất là 35, còn số
+  4byy TL 3 | Số số hạng của một cấp số nhân là một số chẵn. Tổng tất cả các số hạng của nó lớn gấp 3 lần tổng các số hạng c
+  akz0 NLC 2 | Xác định x là số thực dương để 2x - 3; x; 2x + 3 lập thành một cấp số nhân.
+  25bl TL 3 | Tổng của số hạng thứ hai và thứ tư của một cấp số nhân (tăng nghiêm ngặt) là 30, và tích của chúng bằng 144. T
+  2kim NLC 3 | Tìm số hạng đầu u_1 của cấp số nhân (u_n) biết rằng: \begin{cases} u_{10} - u_1 = 511 \\ u_7 + u_4 + u_1 = 73 
+  j1he NLC 2 | Có bao nhiêu giá trị nguyên dương của x để ba số 1; x; x + 2 theo thứ tự lập thành một cấp số nhân?
+  0b1j NLC 2 | Biết ba số x^2; 8; x theo thứ tự lập thành cấp số nhân. Giá trị của x bằng
+  j7i7 NLC 3 | Với x là số nguyên dương, ba số 2x, 3x+3, 5x+5 theo thứ tự là ba số hạng liên tiếp của một cấp số nhân. Số hạn
+  mrag NLC 2 | Viết thêm sáu số xen giữa hai số -2 và 256 để được một cấp số nhân có 8 số hạng. Nếu viết tiếp thì số hạng thứ
+  xlim NLC 2 | Tìm số hạng đầu u_1 của cấp số nhân (u_n) biết rằng: u_1 + u_2 + u_3 = 21 và u_4 + u_5 + u_6 = 567.
+  lkwi NLC 4 | Cho hình vuông A_1B_1C_1D_1 có cạnh bằng 1. Gọi A_{k+1},B_{k+1},C_{k+1},D_{k+1} thứ tự là trung điểm các cạnh 
+  8lfe NLC 1 | Cho cấp số nhân (u_n) với u_1=3 và u_2=9. Công bội của cấp số nhân đã cho bằng A. -6. B. \dfrac{1}{3}. C. 3. D
+  gmbh NLC 2 | Cấp số nhân (u_n) có công bội âm, biết u_3=12, u_7=192. Tìm u_{10}. A. u_{10}=1536. B. u_{10}=-1536. C. u_{10}
+  iqgy NLC 2 | Cho cấp số nhân (u_n) biết u_2=-8; u_5=64. Giá trị của u_6 bằng A. 512. B. 256. C. -128. D. -1024.
+  b57d NLC 2 | Cho cấp số nhân (u_n) có công bội q=3, biết u_4=54. Tìm số hạng u_1. A. u_1=2. B. u_1=-2. C. u_1=3. D. u_1=-3.
+  ou5d NLC 1 | Cho cấp số nhân (u_n) với u_1=3 và u_2=12. Công bội của cấp số nhân đã cho bằng A. 9. B. -9. C. \dfrac{1}{4}. 
+  dizo NLC 1 | Cho cấp số nhân (u_n) với u_1=4 và công bội q=3. Giá trị của u_2 bằng A. 64. B. 81. C. 12. D. \dfrac{4}{3}.
+  l3dy TL 3 | Cho dãy số (u_n) xác định bởi \begin{cases} u_1 = 1 \\\\ u_{n+1} = \frac{u_n + 8}{5} \end{cases} và dãy số (v_
+  dhmz TL 2 | Cho cấp số nhân (u_n), với công bội khác 0 và thỏa mãn: \begin{cases} u_{20} = 8u_{17} \\\\ u_1 + u_5 = 272 \e
+  kufj NLC 1 | Cho cấp số nhân (u_n) với u_1 = 5 và u_2 = 2. Công bội của cấp số nhân đó bằng
+  cjhr NLC 1 | Cho cấp số nhân có công bội q > 0 và các số hạng đầu là 4, u_2, 64, \ldots. Giá trị của u_2 là
+  fq3e NLC 2 | Cấp số nhân (u_n) có công bội âm, biết u_3 = 12, u_7 = 192. Tìm u_{10}.
+  aua0 NLC 2 | Cho cấp số nhân (u_n) có \begin{cases} u_2 + u_7 = 198 \\ u_3 + u_8 = 396 \end{cases}. Khi đó công bội của cấp
+  6gbe NLC 2 | Ba số 2x - 1, x, 2x + 1 theo thứ tự lập thành một cấp số nhân. Hãy tìm x.
+  afff TL 2 | Dãy số (u_n) sau đây, dãy số nào là cấp số nhân, trong trường hợp là cấp số nhân, hãy xác định số hạng đầu và 
+  6vgm NLC 1 | Cho cấp số nhân (u_n) có số hạng đầu u_1 = 2 và công bội q = \frac{3}{2}. Mệnh đề nào sau đây đúng?
+  stc8 DS 2 | Cho cấp số nhân (u_n) gồm các số hạng 5; 10; 20; \ldots; 163840. a) Số hạng đầu và công bội của cấp số nhân lầ
+  52w8 TLN 3 | Cho cấp số nhân (u_n) thỏa mãn u_4 - u_2 = 72 và u_5 - u_3 = 144. Số hạng u_8 của cấp số nhân đã cho có giá tr
+  du8z TL 2 | Một tỉnh có 2 triệu dân vào năm 2020 với tỉ lệ tăng dân số là 1 \%/ năm. Gọi u_n là số dân của tỉnh đó sau n n
+  82vu NLC 1 | Cấp số nhân (u_n) có số hạng tổng quát là u_n = \frac{3}{5} \cdot 2^{n-1}, n \in {N}^*. Số hạng đầu tiên và cô
+  14xt DS 2 | Cho cấp số nhân (u_n), biết u_1 + u_5 = 51; u_2 + u_6 = 102. Xét tính đúng, sai của các mệnh đề sau:
+
+### [14] Bài 3. Cấp số nhân | Tìm công thức cấp số nhân (26)
+    yêu cầu: Nhận biết được một dãy số là cấp số nhân và xác định được công thức số hạng tổng quát của nó.
+  xs3x NLC 1 | Trong các dãy số  (u_n) cho bởi số hạng tổng quát  u_n sau, dãy số nào là một cấp số nhân?
+  y7vo NLC 1 | Dãy số nào dưới đây **không phải** cấp số nhân?
+  pug6 NLC 1 | Dãy số nào dưới đây là một cấp số nhân?
+  ngn7 NLC 1 | Chọn cấp số nhân trong các dãy số sau:
+  t7wc NLC 3 | Viết bốn số hạng xen giữa các số 1 và -243 để được một cấp số nhân có 6 số hạng. Bốn số hạng đó lần lượt là:
+  3ym8 TL 2 | Trong các dãy số sau, dãy số nào là cấp số nhân: u_n=(-1)^{n+1}\cdot7^n?
+  rtk9 TL 2 | Trong các dãy số sau, dãy số nào là cấp số nhân: \begin{cases}u_1=1\\u_{n+1}=2u_n+3\end{cases}?
+  mu63 TL 2 | Trong các dãy số sau, dãy số nào là cấp số nhân: u_n=3(-2)^n?
+  8fa6 NLC 1 | Trong các dãy số (u_n) được cho bởi số hạng tổng quát u_n sau, dãy số nào là cấp số nhân? A. u_n=7-3n. B. u_n=
+  12x8 TL 3 | Cho cấp số nhân (u_n) và cho các số nguyên dương m, k với m < k. Chứng minh rằng:\n|u_k| = \sqrt{u_{k-m} \cdot
+  umaz TL 3 | Cho dãy số (u_n): \begin{cases} u_1 = 1, u_2 = 2 \\ u_{n+1} = 3u_n - 2u_{n-1}  (n \ge 2) \end{cases}. Xét dãy 
+  haab NLC 1 | Cho cấp số nhân (u_n) có số hạng đầu u_1 và công bội q \neq 0. Công thức xác định số hạng tổng quát của cấp số
+  wrel TL 2 | Tìm x để ba số x;\sqrt{3};x+2 lập thành cấp số nhân.
+  id0v NLC 1 | Cho cấp số nhân (u_n) với u_1=3 và công bội q=3. Số hạng tổng quát u_n (n\ge2) bằng A. 3^{n-1}. B. 3^{n+2}. C.
+  ajut NLC 1 | Cho dãy số (u_n) biết \begin{cases} u_1 = 3 \\ u_{n+1} = 3u_n \end{cases} , \forall n \in {N}^*. Tìm số hạng t
+  bnhc NLC 1 | Dãy số nào sau đây là cấp số nhân? A. 1;-1;1;-1. B. 1;3;5;7. C. 1;2;3;4. D. 1;4;9;16.
+  zb0v NLC 1 | Cho cấp số nhân (u_n) với u_1=3 và công bội q=2. Số hạng tổng quát u_n (n\ge2) là A. 3\cdot2^{n-1}. B. 3\cdot2
+  b9gu NLC 1 | Cho cấp số nhân (u_n) có số hạng đầu u_1 và công bội q\ne0. Công thức xác định số hạng tổng quát của cấp số nh
+  5lxd NLC 3 | Gọi S là tập hợp tất cả các số thực x thỏa mãn ba số x, 2x, 1 theo thứ tự đó lập thành một cấp số nhân. Số phầ
+  fbrd NLC 1 | Dãy số nào sau đây không phải là cấp số nhân? A. 1;-1;1;-1. B. 1;-3;9;10. C. 1;0;0;0. D. 32;16;8;4.
+  7bur NLC 1 | Trong các dãy số (u_n) cho bởi số hạng tổng quát u_n sau, dãy số nào là một cấp số nhân?
+  94ny NLC 1 | Cho cấp số nhân (u_n) với u_1 = 2 và công bội q = \frac{1}{2}. Số hạng tổng quát của dãy số là
+  40le NLC 1 | Trong các dãy số (u_n) sau, dãy nào là cấp số nhân?
+  bgpw NLC 2 | Biết x^2;8;x là ba số hạng liên tiếp của một cấp số nhân. Giá trị của x bằng A. x=4. B. x=5. C. x=2. D. x=1.
+  be7n NLC 1 | Cho cấp số nhân (u_n) có số hạng đầu u_1 và công bội q \neq 0. Mệnh đề nào sau đây sai?
+  jftw NLC 1 | Cho một cấp số nhân có số hạng đầu u_1 = 5, công bội q = 2. Khi đó số hạng tổng quát của cấp số nhân đó là
+
+### [15] Bài 3. Cấp số nhân | Tính tổng các số hạng (47)
+    yêu cầu: Tính được tổng của một số số hạng đầu tiên của một cấp số nhân.
+  vmbk TL 3 | Câu lạc bộ Thiện nguyện của trường THPT Nguyễn Văn Trỗi phát động chiến dịch "Xuân yêu thương NVT" để quyên gó
+  5wy2 NLC 3 | Cho tam giác đều A_1B_1C_1 có độ dài cạnh bằng 4. Trung điểm của các cạnh tam giác A_1B_1C_1 tạo thành tam giá
+  4jd8 NLC 2 | Cho cấp số nhân (u_n) có u_1=3 và q=-2. Tổng 10 số hạng đầu tiên của cấp số nhân đó bằng
+  npsv NLC 2 | Cho cấp số nhân (u_n) có u_1=\dfrac{1}{3} và u_8=729. Tổng 8 số hạng đầu tiên của cấp số nhân đó bằng
+  l4gn NLC 3 | Cho cấp số nhân (u_n) có u_3=12, u_5=48 có công bội âm. Tổng 7 số hạng đầu tiên cấp số nhân đó bằng
+  yanv NLC 2 | Tổng S=1+3+3^2+\cdots+3^{2018} bằng
+  30ki TL 2 | Cho cấp số nhân (u_n) với u_1 = 3, u_3 = \frac{27}{4}. a) Tìm công bội q và viết năm số hạng đầu của cấp số nh
+  f00d TL 3 | Tính các tổng sau: a) S_n = 1 + \frac{1}{3} + \frac{1}{3^2} + \cdots + \frac{1}{3^n}; b) S_n = 9 + 99 + 999 + 
+  m8np NLC 2 | Một cấp số nhân có bốn số hạng, số hạng đầu là 3 và số hạng thứ tư là 192. Gọi S là tổng các số hạng của cấp s
+  n46a TL 3 | Một hình vuông màu vàng có cạnh 1 đơn vị dài được chia thành chín hình vuông nhỏ hơn và hình vuông ở chính giữ
+  mm57 TL 3 | Một kỹ sư ra trường làm việc tại một công ty A với mức lương tháng khởi điểm là 7 triệu đồng và cứ sau mỗi hai
+  5xvg TL 3 | Tính các tổng sau: a) P_1 = 1 + 2.2 + 3.2^2 + \dots + 100.2^{99}. b) P_2 = 1.x + 2.x^2 + \dots + nx^n.
+  3gcw TL 3 | Tính các tổng sau: a) A = 5 + 5^2 + \dots + 5^n b) B = 15 + 155 + \dots + \underbrace{1555\dots5}_{n\text{ số 
+  oj4p TL 3 | Tìm số hạng đầu của một cấp số nhân, biết rằng công bội là 3, tổng số các số hạng là 728 và số hạng cuối là 48
+  4pn1 TL 3 | Tìm công bội của một cấp số nhân có số hạng đầu là 7, số hạng cuối là 448 và tổng số các số hạng là 889.
+  d16l TL 2 | Tính tổng sau: A=10+10^2+\cdots+10^n.
+  lrlt TL 3 | Tính tổng sau: B=9+99+\cdots+\underbrace{99\ldots9}_{n\text{ số }9}.
+  jpqn TL 3 | Tính tổng sau: C=7+77+777+\cdots+\underbrace{77\ldots7}_{n\text{ số }7}.
+  mkq6 TL 4 | Tính tổng sau: D=(2+\dfrac{1}{2})^2+(4+\dfrac{1}{4})^2+\cdots+(2^n+\dfrac{1}{2^n})^2.
+  n7xx NLC 1 | Cho cấp số nhân (u_n) có u_1 = 2 và công bội q = -3. Tổng 4 số hạng đầu của cấp số nhân (u_n) bằng
+  ep9q NLC 2 | Cho cấp số nhân (u_n) có u_2 = -6, u_5 = 48. Tính S_5.
+  1i0m NLC 1 | Cho cấp số nhân có số hạng đầu u_1 = 3, công bội q = 2. Tính tổng 5 số hạng đầu tiên S_5 của cấp số nhân.
+  rok4 NLC 2 | Một cấp số nhân có số hạng đầu u_1 = 3, công bội q = 2. Biết rằng tổng n số hạng đầu tiên bằng 21. Tìm n.
+  8fp2 NLC 1 | Cho cấp số nhân (u_n) biết u_3 = 9 và công bội q = -3. Tính tổng S_3 của 3 số hạng đầu của cấp số nhân (u_n).
+  co8m NLC 3 | Cho cấp số nhân (u_n) có S_2 = 4, S_3 = 13. Biết u_2 < 0, giá trị của S_5 bằng
+  7ul7 NLC 3 | Cho cấp số nhân (u_n) thỏa mãn \begin{cases} u_1 + u_2 + u_3 = 13 \\ u_4 - u_1 = 26 \end{cases}. Tổng 8 số hạn
+  sy2o NLC 3 | Cho (u_n) là cấp số nhân, đặt S_n = u_1 + u_2 + \dots + u_n. Biết u_2 + S_4 = 43, S_3 = 13. Tính S_6.
+  clnu NLC 2 | Cho cấp số nhân (u_n) có u_2 = -2 và u_5 = 54. Tính tổng 1000 số hạng đầu tiên của cấp số nhân đã cho.
+  ozag NLC 3 | Một du khách vào chuồng đua ngựa đặt cược, lần đầu đặt 20.000 đồng, mỗi lần sau đặt cọc gấp đôi lần đặt cọc tr
+  6mfd NLC 3 | Một cơ sở khoan giếng có đơn giá như sau: mét khoan đầu tiên có giá là 50.000 đồng, kể từ mét khoan thứ hai, g
+  laso NLC 3 | Nhà bạn Minh cần khoan một cái giếng nước. Biết rằng giá tiền của mét khoan đầu tiên là 200.000đ và kể từ mét 
+  6phj NLC 3 | Ông A gửi 120 triệu đồng tiền vào ngân hàng với lãi suất 6\%/năm. Biết rằng nếu không rút tiền ra khỏi ngân hà
+  7oop NLC 3 | Một quả bóng cao su từ độ cao 15(m) so với mặt đất, mỗi lần chạm đất quả bóng lại nảy lên một độ cao bằng hai 
+  b5n0 TL 2 | Cho cấp số nhân (u_n) có u_1 = -3 và q = 2. Biết tổng n số hạng đầu tiên của cấp số nhân đã cho bằng -1533. Tì
+  1b13 TLN 3 | Cho cấp số nhân (u_n) với u_1=2, u_4=16 và u_n=2048. Tính tổng n số hạng đầu tiên của (u_n).
+  pwpa NLC 2 | Tính tổng S = 1 + 2 + 2^2 + ... + 2^9.
+  gyr0 NLC 1 | Cho dãy số (u_n) là cấp số nhân có số hạng đầu u_1 = 1, công bội q = 2. Tổng ba số hạng đầu của cấp số nhân (u
+  xdbm NLC 2 | Cho dãy số (u_n) thỏa mãn điều kiện \begin{cases} u_1 = 2020 \\ u_{n+1} = \frac{1}{3}u_n, \forall n \in {N}^* 
+  uak1 NLC 2 | Sắp đến ngày sinh nhật của mẹ, Lan quyết định tiết kiệm tiền để mua quà tặng mẹ theo cách sau: ngày thứ nhất L
+  k9w1 NLC 2 | Tính tổng S = 10 + 2 + 2^2 + \dots + 2^{10}.
+  oy80 NLC 1 | Cho cấp số nhân (u_n) hữu hạn có n số hạng và có u_1 = -10 và công bội q = -3. Tổng n số hạng của cấp số nhân 
+  3x4m NLC 1 | Cho một cấp số nhân có số hạng đầu u_1 = 3, công bội q = -2. Khi đó tổng n số hạng đầu của cấp số nhân đó là
+  uy4d NLC 2 | Người ta nghiên cứu sự sinh sản của một loại vi rút trong 10 ngày nhận thấy quy luật: ngày thứ nhất có 10 con;
+  is81 TL 4 | Với hình vuông A_1B_1C_1D_1 như hình vẽ bên, cách tô màu như hình được gọi là cách tô màu "đẹp". Một nhà thiết
+  tdlu NLC 4 | Một thợ thủ công muốn vẽ trang trí một hình vuông kích thước 4m\times4m bằng cách vẽ một hình vuông mới với cá
+  e6ji TL 2 | Một loại thuốc được dùng mỗi ngày một lần. Lúc đầu nồng độ thuốc trong máu của bệnh nhân tăng nhanh, nhưng mỗi
+  c6f1 TL 3 | Một tam giác đều có cạnh bằng 4 cm. Chia tam giác đều đó thành 4 tam giác đều bằng nhau và tô màu tam giác ở t
+
+### [16] Bài 3. Cấp số nhân | Toán tổng hợp (86)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến cấp số nhân.
+  drel DS 3 | Cho cấp số nhân (u_n), biết u_1+u_5=51; u_2+u_6=102. Khi đó A. Số hạng đầu u_1=3. B. Số hạng u_4=48. C. Số 122
+  5l8g DS 3 | Cho dãy số (u_n) là một cấp số nhân có u_1=3, u_3=12 và công bội của cấp số nhân đó là số âm. A. Công bội của 
+  zysa DS 3 | Cho cấp số nhân (u_n) với công bội q<0 và u_2=4,u_4=9. A. Số hạng đầu u_1=-\dfrac{8}{3}. B. Cấp số nhân có côn
+  xjq4 DS 3 | Cho cấp số nhân (u_n) có u_2=6 và u_3=18. A. Công bội của cấp số nhân là q=3. B. u_{k-1}+u_{k+1}=u_k^2, 2\le k
+  n827 DS 3 | Một người lên kế hoạch để đọc một cuốn sách có 256 trang như sau: ngày thứ nhất đọc 1 trang sách, từ ngày thứ 
+  znv8 DS 3 | Cho cấp số nhân (u_n) biết rằng u_1+u_2+u_3=168 và u_4+u_5+u_6=21. A. Số hạng đầu u_1=90. B. Công bội của cấp 
+  mwe9 DS 3 | Cho dãy số (u_n) với u_n=3^n, \forall n\in{N}^*. A. u_4<100. B. \dfrac{u_1+u_9}{2}=u_5. C. Dãy số tăng và bị c
+  m7yr DS 3 | Cho dãy số (u_n), biết u_1 = 8, u_{n+1} = 4u_n - 9 với n \in {N}^*. Đặt v_n = u_n - 3 với n \in {N}^*.
+  rne6 DS 3 | Trong một hồ sen, số lá sen ngày hôm sau bằng 3 lần số lá sen ngày hôm trước. Biết rằng ngày đầu có 1 lá sen t
+  0u1o DS 2 | Anh An đang tập đầu tư chứng khoán. Ở cuối mỗi lần đầu tư, anh An hoặc mất hết tiền đã đầu tư hoặc lời bằng số
+  wf0a TLN 3 | Cho bốn số a, b, c, d biết rằng a, b, c theo thứ tự đó lập thành một cấp số nhân công bội q < 1; còn b, c, d t
+  6frk TLN 3 | Một gia đình mua một chiếc ô tô giá 800 triệu đồng. Trung bình sau mỗi năm sử dụng, giá trị còn lại của ô tô g
+  rh99 TLN 2 | Một gia đình mua một chiếc ô tô giá 800 triệu đồng. Trung bình sau mỗi năm sử dụng, giá trị còn lại của ô tô g
+  244u TLN 2 | Theo báo cáo của Chính phủ, dân số của nước ta tính đến tháng 12 năm 2018 là 95,93 triệu người, nếu tỉ lệ tăng
+  ayrp TL 3 | Để chuẩn bị cho quỹ học bổng "Nâng bước tương lai học sinh trường THPT Nguyễn Văn Trỗi", nhằm hỗ trợ các học s
+  a7rx TLN 2 | Vào năm 2020, dân số của một quốc gia là khoảng 97 triệu người và tốc độ tăng trưởng dân số là 0,91%. Nếu tốc 
+  lxpj NLC 1 | Trong các phát biểu sau, phát biểu nào **sai**?
+  eid8 NLC 3 | Ba số lập thành một cấp số nhân. Nếu số hạng thứ hai cộng thêm 2 ta được một cấp số cộng. Sau đó cộng thêm 9 v
+  mhoi NLC 3 | Cho hình vuông C_1 có cạnh bằng 1. Gọi C_2 là hình vuông có các đỉnh là trung điểm của các cạnh hình vuông C_1
+  49vn NLC 3 | Bạn A thả quả bóng cao su từ độ cao 10 m theo phương thẳng đứng. Mỗi khi chạm đất nó lại nảy lên theo phương t
+  ijja TL 3 | Ba số \dfrac{2}{b-a}, \dfrac{1}{b}, \dfrac{2}{b-c} theo thứ tự lập thành cấp số cộng. Chứng minh rằng ba số a,
+  wo6z TL 3 | Ba số phân biệt tạo thành một cấp số nhân có tổng bằng 78; đồng thời chúng là số hạng thứ nhất, thứ ba và thứ 
+  h0up TL 3 | Các bệnh truyền nhiễm có thể lây lan rất nhanh. Giả sử có năm người bị bệnh trong tuần đầu tiên của một đợt dị
+  h808 TL 3 | Nếu một kĩ sư được một công ty thuê với mức lương hằng năm là 180 triệu đồng và nhận được mức tăng lương hằng 
+  5779 TL 3 | Để tích luỹ tiền cho việc học đại học của con gái, cô Hoa quyết định hằng tháng bỏ ra 500 nghìn đồng vào tài k
+  gw3r TL 3 | Một người nhảy bungee (một trò chơi mạo hiểm mà người chơi nhảy từ một nơi có địa thế cao xuống với dây đai an
+  qr9p TL 3 | Các cạnh của hình vuông ban đầu có chiều dài 16 cm. Một hình vuông mới được hình thành bằng cách nối các điểm 
+  1xsw NLC 3 | Một tam giác có số đo các góc lập thành cấp số nhân có công bội q=2. Số đo các góc của tam giác đó lần lượt là
+  be1q DS 3 | Cho dãy số (a_n) xác định bởi hệ thức truy hồi a_1=2, a_{n+1}=-2a_n với n\in{N}^*. A. (a_n) là một cấp số nhân
+  qycs DS 3 | Cho cấp số nhân (u_n) có công bội dương và các số hạng thỏa mãn \begin{cases}u_1=9\\ u_3=36\end{cases}. A. q=3
+  ahf3 DS 3 | Cho cấp số nhân có hai số hạng đầu tiên là các số dương, tích của số hạng đầu và số hạng thứ ba bằng 1, tích c
+  hrfh TL 3 | Tìm ba số, biết theo thứ tự đó chúng lập thành cấp số cộng và có tổng bằng 21, và nếu lần lượt cộng thêm các s
+  52x3 TL 2 | Giả sử quần thể động vật này ở thời điểm ban đầu có 110000 cá thể, quần thể này có tỉ lệ sinh là 12\%/năm, xuấ
+  31rc TL 1 | Dân số Việt Nam năm 2020 là khoảng 97,6 triệu người (theo Niên giám thống kê năm 2020). Nếu trung bình mỗi năm
+  pudq TL 4 | Ông An vay ngân hàng 1 tỉ đồng với lãi suất 12\%/năm. Ông đã trả nợ theo cách: Bắt đầu từ tháng thứ nhất sau k
+  oia5 TL 2 | Trực khuẩn E. Coli là loại vi khuẩn sinh sống trong đường tiêu hoá của người. Nó có lợi ích như ngăn chặn sự t
+  ocsy TL 3 | Anh Nam là một cầu thủ bóng đá chuyên nghiệp. Anh vừa kí hợp đồng 5 năm với một câu lạc bộ với mức lương năm k
+  wss3 DS 3 | Cho cấp số nhân (u_n) thỏa mãn \begin{cases}u_5-u_2=156\\ u_6-u_3=468\end{cases}. A. Số hạng đầu của cấp số nh
+  ovbj DS 2 | Cho dãy số (u_n) với \begin{cases}u_1=3\\ u_n=3u_{n-1}\end{cases}. A. Ba số hạng đầu của dãy là 3;9;26. B. Dãy
+  i5al TL 3 | Đường Von Kốc (von Koch) là một hình được xây dựng bằng phương pháp lặp như sau: Từ đoạn thẳng AB ban đầu ta c
+  vim6 TL 3 | Năm 2018 anh Tài tốt nghiệp trường Đại Học Bách Khoa Hà Nội. Vừa ra trường anh Tài đã được nhận vào làm việc t
+  crdt TL 3 | Trong một buổi sinh hoạt trải nghiệm của học sinh trường THPT chuyên Nguyễn Tất Thành, học sinh được tham gia 
+  v8qy TL 3 | Cho tam giác ABC có \hat{A} = 90^\circ và a, \frac{\sqrt{6}}{3}b, c theo thứ tự đó lập thành một cấp số nhân. 
+  mys5 TL 3 | Cho tam giác ABC cân tại A. Cạnh BC, đường cao AH, cạnh bên AB theo thứ tự đó lập thành một cấp số nhân. Hãy t
+  3pyd TL 3 | Cho dãy số (u_n): \begin{cases} u_1 = 2 \\ u_{n+1} = \frac{u_n^2 + 4}{4}  (n \ge 1) \end{cases}. Chứng minh: (
+  mpip TL 3 | Cho dãy số (u_n): \begin{cases} u_1 = 4 \\ u_{n+1} = \sqrt{u_n + 12}  (n \ge 1) \end{cases}. Chứng minh: (u_n)
+  72uu TL 3 | Tìm 4 góc của một tứ giác, biết rằng các góc đó lập thành một cấp số nhân và góc cuối gấp 9 lần góc thứ hai.
+  fwyd TL 4 | Tìm 4 số hạng đầu của một cấp số nhân, biết rằng tổng 3 số hạng đầu là \dfrac{148}{9}, đồng thời, theo thứ tự,
+  19yg TL 4 | Tìm 3 số hạng đầu của một cấp số nhân, biết rằng khi tăng số hạng thứ hai thêm 2 thì 3 số đó trở thành cấp số 
+  65ml TL 4 | Tìm 4 số trong đó ba số đầu là ba số hạng kế tiếp của một cấp số nhân, còn ba số sau là ba số hạng kế tiếp của
+  zyrh TL 4 | Tìm bốn số biết rằng ba số đầu lập thành cấp số cộng, ba số sau lập thành cấp số nhân, tổng của số hạng đầu và
+  40sy TL 4 | Tìm các số dương a và b sao cho a, a+2b, 2a+b lập thành một cấp số cộng và (b+1)^2, ab+5, (a+1)^2 lập thành mộ
+  y5hn TL 4 | Biết các số x+5y; 5x+2y; 8x+y theo thứ tự đó lập thành cấp số cộng; đồng thời các số (y-1)^2; xy-1; (x+2)^2 th
+  y5gg NLC 2 | Cho cấp số nhân u_n. Khi đó đẳng thức nào sau đây là đúng?
+  yhwy NLC 3 | Biết 3 số nguyên 3, x, y theo thứ tự đó lập thành một cấp số nhân và 3 số x, y, 9 theo thứ tự đó lập thành một
+  hqi5 NLC 3 | Cho dãy số (u_n) xác định bởi \begin{cases} u_1 = 1 \\ u_{n+1} = \sqrt{3u_n^2 + 2} ; n \ge 1 \end{cases}. Tính
+  xz5r NLC 3 | Cho cấp số nhân (u_n) có u_1 = 2 và biểu thức 20u_1 - 10u_2 + u_3 đạt giá trị nhỏ nhất. Số hạng thứ bảy của cấ
+  t4w5 NLC 4 | Cho dãy (u_n) thỏa mãn \begin{cases}3u_1=\sqrt{3u_1-u_2}+6\\ u_{n+1}=2u_n,\forall n\in{N}^*\end{cases}. Tìm gi
+  f7il NLC 3 | Cho cấp số nhân (u_n) thỏa mãn 2(u_3+u_4+u_5)=u_6+u_7+u_8. Tính \dfrac{u_8+u_9+u_{10}}{u_2+u_3+u_4}. A. 4. B. 
+  ye61 NLC 4 | Biết rằng tồn tại đúng hai giá trị của tham số m để phương trình x^3-7x^2+2(m^2+6m)x-8=0 có ba nghiệm phân biệ
+  al0q DS 3 | Cho cấp số nhân (u_n) có công bội nguyên và các số hạng thoả mãn \begin{cases}u_4-u_2=54\\ u_5-u_3=108\end{cas
+  4wp7 DS 4 | Tương truyền rằng nhà vua Ấn Độ cho phép người phát minh ra bàn cờ vua được lựa chọn phần thưởng tùy theo sở t
+  zsl2 TL 3 | Cho 3 số dương a, b, c có tổng bằng 21 và theo thứ tự đó tạo thành một cấp số cộng và a - 1, b + 1, c + 7 theo
+  e501 TL 2 | Chu kì bán rã của nguyên tố phóng xạ Poloni 210 là 138 ngày (nghĩa là sau 138 ngày khối lượng của nguyên tố đó
+  ozk2 NLC 4 | Cho x,y là các số nguyên thỏa mãn: Các số x+y, 2x+3y, 9x+y, theo thứ tự lập thành một cấp số cộng, đồng thời c
+  s7xr TL 2 | Chu kì bán rã của Iôt phóng xạ ^{131}_{53}I dùng trong y tế là 8 ngày (nghĩa là sau 8 ngày khối lượng của nguy
+  3797 DS 3 | Cho tứ giác ABCD có bốn góc tạo thành một cấp số nhân có công bội bằng 2. A. Số đo góc nhỏ nhất bằng 24°. B. S
+  uhah TL 3 | Cho cấp số nhân (u_n) có u_1 = 2 và biểu thức 20u_1 - 10u_2 + u_3 đạt giá trị nhỏ nhất. Tìm số hạng thứ năm củ
+  v1lr TL 3 | Do ảnh hưởng của dịch Covid 19 nên doanh thu 6 tháng đầu năm của công ty A không đạt kế hoạch. Cụ thể, doanh t
+  2wrz TL 3 | Cho hình vuông A_1B_1C_1D_1 có cạnh bằng 1. Gọi A_{k+1}, B_{k+1}, C_{k+1}, D_{k+1} thứ tự là trung điểm các cạ
+  inub TL 2 | Một loại vi khuẩn được nuôi cấy trong ống nghiệm, cứ 20 phút lại phân đôi một lần. Nếu ban đầu có 20 vi khuẩn,
+  rh6y DS 3 | Aladin nhặt được cây đèn thần, chàng miết tay vào cây đèn và gọi Thần đèn ra. Thần đèn cho chàng 3 điều ước. A
+  omzl TLN 3 | Xác định m để phương trình x^3 + (2m+1)x^2 - (3m+3)x - 8 = 0 có 3 nghiệm lập thành một cấp số nhân.
+  hqtj NLC 2 | Một loại vi khuẩn sau mỗi phút số lượng tăng gấp đôi biết rằng sau 5 phút người ta đếm được có 64000 con hỏi s
+  htii TLN 3 | Ba số phân biệt có tổng bằng 146 có thể xem là ba số hạng đầu của một cấp số nhân hoặc có thể xem là số hạng t
+  wgsv TL 2 | Một khay nước có nhiệt độ 23^\circ được đặt vào ngăn đá của tủ lạnh. Biết sau mỗi giờ, nhiệt độ của nước giảm 
+  u8ec TLN 3 | Ba số tạo thành một cấp số cộng có công sai dương và tổng bằng 6, biết rằng nếu hoán đổi vị trí số hạng thứ nh
+  kb6g DS 2 | Cho cấp số nhân có hai số hạng đầu tiên là các số dương, tích của số hạng đầu và số hạng thứ ba bằng 1, tích c
+  gszr NLC 3 | Người ta thiết kế một cái tháp 11 tầng, biết diện tích mặt trên của đế tháp bằng 12288\text{ m}^2. Diện tích b
+  ybor NLC 3 | Người ta thiết kế một cái tháp gồm 10 tầng theo cách: Diện tích bề mặt trên mỗi tầng bằng nửa diện tích bề mặt
+  7q3t TL 3 | Một quả bóng được thả thẳng đứng từ độ cao 10 m rơi xuống đất và nảy lên. Giả sử sau mỗi một lần rơi xuống, nó
+  utne TLN 3 | Cam Cao Phong được xem là đặc sản khá nổi tiếng. Thông thường mùa cam nơi đây bắt đầu vào tháng 9 năm nay và k
+  xj5z TLN 3 | Một thợ thủ công muốn vẽ trang trí trên một viên gạch hình vuông kích thước 8 m \times 8 m bằng cách vẽ một hì
+  pnai TLN 4 | Một hình tam giác đều màu trắng có cạnh 1 đơn vị dài được chia thành bốn hình tam giác nhỏ hơn và hình tam giá
+  hyx5 TL 2 | Một cái tháp có 11 tầng. Diện tích của mặt sàn tầng 2 bằng nửa diện tích của mặt đáy tháp và diện tích của mặt
+  o4zw DS 3 | Do nhu cầu đi lại của gia đình, anh Bình quyết định thực hiện tích góp tiền để mua một chiếc ôtô HONDA CRV trị
+
+### [17] Bài 4. Ôn tập chương | Bài tập tổng hợp chương 2 (0)
+    yêu cầu: Vận dụng tổng hợp kiến thức của chương 2 để giải các bài toán ôn tập, kiểm tra cuối chương.

@@ -1,0 +1,1846 @@
+{
+ "question_categories": [
+  {
+   "id": "ab450bf1-9000-4660-8910-a964e25c452b",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác",
+   "created_at": "2026-08-27T02:44:51.968616+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác."
+  },
+  {
+   "id": "6eb5ede5-22a7-4d77-928f-b6e8a2518e4d",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp lượng giác và phương trình lượng giác",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các công thức và phương trình lượng giác để giải quyết bài toán tổng hợp."
+  },
+  {
+   "id": "87013f9c-fcfd-4d83-861e-24cef5b4d8b1",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được tập xác định và xét được tính chẵn, tính lẻ của hàm số lượng giác."
+  },
+  {
+   "id": "8aec7e62-4898-4f6e-9bf6-85846049fd60",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình lượng giác cơ bản dạng sin x = a và cos x = a."
+  },
+  {
+   "id": "095f76ef-5e8e-412e-9361-a0513ee32de2",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Rút gọn biểu thức lượng giác cơ bản",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Sử dụng được các hệ thức lượng giác cơ bản và góc liên quan đặc biệt để rút gọn biểu thức."
+  },
+  {
+   "id": "4e4f7fcf-0fc2-499a-abfd-43d4b8dbe9b9",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được các giá trị lượng giác của một góc khi biết một giá trị lượng giác của góc đó."
+  },
+  {
+   "id": "a1f76c78-5fc1-4a43-95d2-05a14de4c1ce",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức biến đổi tích thành tổng và tổng thành tích để rút gọn biểu thức."
+  },
+  {
+   "id": "0e090f7b-f506-4257-8a8e-53c2c7e28179",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Nhận biết được tính tuần hoàn, chu kì và hình dạng đồ thị của các hàm số lượng giác cơ bản."
+  },
+  {
+   "id": "c4e8a098-cd8a-402d-98db-006735581310",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế",
+   "created_at": "2026-08-27T03:21:00.128287+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phương trình lượng giác cơ bản để giải quyết bài toán thực tế."
+  },
+  {
+   "id": "047c0c7f-4334-4079-a5b3-f20bb5e239b3",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Biện luận số nghiệm của phương trình lượng giác chứa tham số",
+   "created_at": "2026-08-27T03:40:27.900702+00:00",
+   "yeu_cau_can_dat": "Biện luận được số nghiệm của phương trình lượng giác chứa tham số trên khoảng cho trước."
+  },
+  {
+   "id": "617c2094-bc7e-4989-8cd7-88df9079e610",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài cung tròn khi biết bán kính và số đo của cung đó."
+  },
+  {
+   "id": "bbe6fddf-7e57-4cc4-9a78-3ed137281d4a",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình lượng giác cơ bản dạng tan x = a và cot x = a."
+  },
+  {
+   "id": "61bfc74e-06a0-4d37-9890-52a5c0268350",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức cộng và công thức nhân đôi để biến đổi, tính giá trị biểu thức lượng giác."
+  },
+  {
+   "id": "cd6d32c2-4f03-4be3-9ad4-1f67b22306d0",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Xác định số đo của góc lượng giác",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Tính được số đo của góc lượng giác khi biết mối quan hệ giữa các góc lượng giác."
+  },
+  {
+   "id": "50f24e72-c00c-4e5f-884f-08b557a7197d",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc đổi đơn vị đo góc giữa độ và radian, tính được độ dài cung tròn."
+  },
+  {
+   "id": "395ca686-d6cf-4f35-adcd-21f3d9ff4f17",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Rút gọn được biểu thức và tính giá trị lượng giác bằng công thức biến đổi tổng thành tích, tích thành tổng."
+  },
+  {
+   "id": "00ec3c77-fde5-4afd-ae20-442b5659d694",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giải phương trình sin x = a, cos x = a",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình lượng giác cơ bản dạng sin x = a, cos x = a và tính các nghiệm trên một khoảng cho trước."
+  },
+  {
+   "id": "3925d64b-f7dd-4ac3-a7cb-cc173faa6bf9",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Sử dụng được đồ thị hàm số lượng giác để xác định số nghiệm của phương trình hoặc số giao điểm của các đường."
+  },
+  {
+   "id": "7bf034fa-4c2e-474e-85b5-0015b5a1fb3f",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của biểu thức lượng giác bằng cách áp dụng công thức cộng và công thức nhân đôi."
+  },
+  {
+   "id": "dc98dc69-f20f-45d7-9196-9995b417d605",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tính giá trị lượng giác của một góc, rút gọn biểu thức lượng giác",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Rút gọn được biểu thức lượng giác và tính giá trị của biểu thức bằng các hằng đẳng thức lượng giác cơ bản."
+  },
+  {
+   "id": "06f26e09-26ab-4c99-80bf-df9a8cc945be",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-09-04T06:09:36.737282+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp giá trị lượng giác của góc lượng giác để giải quyết các bài toán nhiều ý."
+  },
+  {
+   "id": "c21a24fa-268c-4299-a4ec-d4f653319375",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-09-04T06:09:36.737282+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp các công thức lượng giác để giải quyết các bài toán nhiều ý."
+  },
+  {
+   "id": "cb06d623-9e62-46f0-ab33-4cbd34642f03",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-09-04T06:09:36.737282+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp tính chất của hàm số lượng giác để giải quyết các bài toán nhiều ý."
+  },
+  {
+   "id": "d8f1c27c-21c3-42ef-9363-bd58fec0073a",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Xác định được tập xác định và xét được tính chẵn, lẻ của một hàm số lượng giác cho trước."
+  },
+  {
+   "id": "a4561201-3adf-4ebe-a903-017e760eb6d5",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giải tam giác và ứng dụng thực tế",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hệ thức lượng trong tam giác để tính chiều cao, khoảng cách và giải quyết các bài toán đo đạc thực tế."
+  },
+  {
+   "id": "f6decae4-17c9-4fbe-8099-db899467fcbf",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng công thức lượng giác",
+   "created_at": "2026-08-26T17:54:30.550343+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các công thức lượng giác để giải quyết bài toán thực tế."
+  },
+  {
+   "id": "79598315-1d0b-4de0-aca3-abe48bf26729",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác",
+   "created_at": "2026-08-27T02:44:51.968616+00:00",
+   "yeu_cau_can_dat": "Giải quyết được bài toán thực tế gắn với mô hình hàm số lượng giác."
+  },
+  {
+   "id": "8c580679-b983-46ba-8071-c721646acc9b",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Tính được các giá trị lượng giác của một góc khi biết một giá trị lượng giác của góc đó."
+  },
+  {
+   "id": "81860a50-1fbd-4b8e-9523-a8983899882a",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị lớn nhất, giá trị nhỏ nhất của hàm số lượng giác và giải bài toán chứa tham số liên quan."
+  },
+  {
+   "id": "8c05cca2-aee8-430a-a50a-55c96bc6f115",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Giải quyết được bài toán thực tế liên quan đến dao động điều hòa hoặc chuyển động tròn bằng cách ứng dụng hàm số lượng giác."
+  },
+  {
+   "id": "3e81a54d-b30c-4c80-89a1-88188a811027",
+   "grade": "11",
+   "subject": "Đại số",
+   "topic": "Chương 1. Hàm số lượng giác và phương trình lượng giác",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài toán thực tế ứng dụng công thức lượng giác",
+   "created_at": "2026-08-27T04:05:03.837922+00:00",
+   "yeu_cau_can_dat": "Giải quyết được bài toán thực tế liên quan đến góc an toàn và khoảng cách bằng cách vận dụng công thức lượng giác."
+  }
+ ],
+ "questions": [
+  {
+   "id": "52e9b23d-6871-44cc-afb9-fc84f9f73ea2",
+   "question_id": "CH_1787761736532_a35h",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "c2c802af-87ee-407e-b089-2c11c1c49e31",
+   "question_id": "CH_1787761736532_9dt1",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "47327f34-e59b-4f4c-9515-a025cca59cd4",
+   "question_id": "CH_1787761736532_97gj",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "9294ce5c-db7f-40cd-9c6b-ec95a3c66062",
+   "question_id": "CH_1787761736532_lfeh",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "9bb5da71-5b6c-4bf6-ba21-2e1eac415e67",
+   "question_id": "CH_1787761736532_6msy",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "20a3d6f6-181c-4cc9-b374-e85128d943bf",
+   "question_id": "CH_1787761736532_tufl",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "fc87e593-a1ca-4bbd-a608-c5a6dcd1eccf",
+   "question_id": "CH_1787761736532_vcb4",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "62b5affb-5286-49ec-aa04-eddb8b46ca72",
+   "question_id": "CH_1787761736532_s7kc",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "d0d367bd-f67f-4d48-bf3c-213596117631",
+   "question_id": "CH_1787761736532_7lvh",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "0de24ce8-0a8a-42c9-8a26-33ee90b0076c",
+   "question_id": "CH_1787761736532_9ru0",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "11e8f2a7-0893-43c5-8a70-fc014c28262a",
+   "question_id": "CH_1787761736533_9hf6",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "ab92bac6-600e-4fd6-8908-b9ea2ef68130",
+   "question_id": "CH_1787761736533_9ead",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "5609b37a-2c1f-4923-b6de-d295843e540c",
+   "question_id": "CH_1787761736533_xkna",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Rút gọn biểu thức lượng giác cơ bản"
+  },
+  {
+   "id": "6f988de2-96f9-4a01-a7be-bd2729eb56f6",
+   "question_id": "CH_1787761736533_pwf5",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "c3000517-d16b-456a-88a5-781c4d1ce348",
+   "question_id": "CH_1787761736533_1pta",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "d47140c1-8081-4d26-99cc-8a51c9dcee8a",
+   "question_id": "CH_1787761736533_ey8g",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "122e9128-f01a-4d18-839e-5ef7f3d981db",
+   "question_id": "CH_1787761736533_hl08",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "ca815fd2-6e32-431e-b94f-ed94837ce5d6",
+   "question_id": "CH_1787761736533_7oti",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "65f625b4-3f18-4b8e-b076-1fad238f146b",
+   "question_id": "CH_1787763390923_0jxe",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "3b8c7979-e86f-4120-8816-58ff426039af",
+   "question_id": "CH_1787763390923_y6oi",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "88a6dac4-84f3-4baa-b4b3-17283b44c390",
+   "question_id": "CH_1787763390923_31mn",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "bbe5eaa1-cb68-49d3-b75a-0cb934552049",
+   "question_id": "CH_1787763390923_cnnx",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "7fb8e5f5-b9d9-4955-8fde-4735d6f684f8",
+   "question_id": "CH_1787763390923_88kw",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "cf614389-9f96-4067-8f8b-0811b2b02b6e",
+   "question_id": "CH_1787763390923_2399",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "3b310f40-f66a-481a-b8aa-750e4fdba22f",
+   "question_id": "CH_1787763390923_go9y",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "cf0bd850-bda8-4693-bf01-a0660fd8c6c4",
+   "question_id": "CH_1787763390923_ip4d",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "5b22dd11-b0b8-445d-8120-98d1939f3fcd",
+   "question_id": "CH_1787763390923_cc4t",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "5f2e5c8d-d52c-4312-85f8-516b324629b4",
+   "question_id": "CH_1787763390923_0gsp",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Rút gọn biểu thức lượng giác cơ bản"
+  },
+  {
+   "id": "91381121-7022-4d66-bc9d-c658283b6dd0",
+   "question_id": "CH_1787763390923_nd52",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "293ebc84-2232-4dc0-bfa3-b02e8792cc9b",
+   "question_id": "CH_1787763390923_wlob",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "6e41dbc2-f02f-4057-ba92-2ee7122a26ef",
+   "question_id": "CH_1787763390923_c8en",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "493feb46-3af2-413e-98c4-4d49051b065c",
+   "question_id": "CH_1787763390923_jfi9",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "abc7ecd2-7f25-43ea-8a0d-700797332ff2",
+   "question_id": "CH_1787763390923_9pwk",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "6c32c914-2bae-45c0-bab0-dd7d8437b016",
+   "question_id": "CH_1787763390923_bpeb",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "eb04c306-57c5-44d3-9271-c2d84ab4a20e",
+   "question_id": "CH_1787763390923_mrtn",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "83771a0f-340e-427a-a884-9ac13088ea2a",
+   "question_id": "CH_1787763390923_yg1t",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "0193f72a-afc3-4380-aa63-3a66b17cd65c",
+   "question_id": "CH_1787766019736_fwze",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "658fe3c9-2b88-4bc9-a4df-aa020f577f49",
+   "question_id": "CH_1787766019736_4nrp",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "cee94a96-b4b9-4884-a7f6-eeab2751dbd5",
+   "question_id": "CH_1787766019736_chyk",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "6c788a96-e6a8-4ee1-a8e0-d0588f60f749",
+   "question_id": "CH_1787766019736_kwfe",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "fffd7d37-5bd5-4208-b272-25379a99a097",
+   "question_id": "CH_1787766019736_jyfw",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "11fce871-48df-456f-940f-78d49bf620d1",
+   "question_id": "CH_1787766019736_ldy7",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "af271f14-ca8a-4482-b577-bc4e883a7395",
+   "question_id": "CH_1787766019736_a0st",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "41eb573f-de1f-4d4e-b235-173cb276550b",
+   "question_id": "CH_1787766019737_rbhb",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "7953f457-9953-4a61-98ad-56d34cfea36c",
+   "question_id": "CH_1787766019737_6kry",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "8a3cc03c-3765-41e8-8074-34952d0ca789",
+   "question_id": "CH_1787766019737_hufy",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "6b07e100-f398-4408-8640-988fbc42592e",
+   "question_id": "CH_1787766019737_1q1n",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "d4494626-dd0b-4ba5-845e-d66f7ff3c424",
+   "question_id": "CH_1787766019737_vivk",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "2014cf88-ca91-46b5-91e6-ef92472b3ac2",
+   "question_id": "CH_1787766019737_iwck",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "936d6243-2cf9-4c31-b8bf-d417f0ea793a",
+   "question_id": "CH_1787766019737_w026",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "f1a1d9bd-7b37-4608-b1ec-fab4a0d7282f",
+   "question_id": "CH_1787766019737_s30k",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "aef656bf-19d9-43ed-8f53-72b9302d1166",
+   "question_id": "CH_1787766019737_5ckg",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "c540a5af-0935-4260-8751-7538c1fe3791",
+   "question_id": "CH_1787766019737_1psk",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "d132831a-a6c8-4269-9e1d-fea336e52a51",
+   "question_id": "CH_1787766870561_usc9",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "e8a6ef65-41e2-4cdf-a2f3-8e768badbd3a",
+   "question_id": "CH_1787766870561_leo4",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "63c50cb0-f53f-455d-bab7-feda7ee972db",
+   "question_id": "CH_1787766870561_csd8",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "9642d0d6-7979-4716-9edc-81eaf8452320",
+   "question_id": "CH_1787766870561_60dc",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "d8e43bb3-4fa7-4c8c-8f3e-fe53c8d03fb3",
+   "question_id": "CH_1787766870561_z7qm",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "116ab6c3-d2eb-4750-90f8-13366844ae3f",
+   "question_id": "CH_1787766870561_trd2",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "089e9651-ad32-4063-9f05-2fc74dc9334d",
+   "question_id": "CH_1787766870561_x743",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "14e7707a-1fa7-4fab-a89c-cc41e16a1d73",
+   "question_id": "CH_1787766870561_vsah",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "ac9b5333-36f5-4352-a01c-ee126ef67981",
+   "question_id": "CH_1787766870561_6ufl",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "40ca25bd-cad8-4565-b246-5ef41d327794",
+   "question_id": "CH_1787766870561_g8ul",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "0e8b1de4-47ac-456e-86f2-fb8d44d7066c",
+   "question_id": "CH_1787766870561_m4vl",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "4583425a-14d8-4c32-9676-5cc3c1174a96",
+   "question_id": "CH_1787766870561_h8h8",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "70564e94-2056-42d7-bb2e-f84a6df51670",
+   "question_id": "CH_1787766870561_wjpp",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "5aeb1364-c0fb-4c0c-95e6-65e889ba2ead",
+   "question_id": "CH_1787766870561_pzx4",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "b1f29a4b-5744-477f-9f3d-43ea23127994",
+   "question_id": "CH_1787766870561_b4fi",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "a9b9b186-b7db-4109-8130-44c02ffc956e",
+   "question_id": "CH_1787766870561_lw0h",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "c4388ad8-a7dc-42e0-bb12-679e49391030",
+   "question_id": "CH_1787766870561_bwgz",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng công thức lượng giác"
+  },
+  {
+   "id": "b2e19220-5a9a-4e38-a115-15d4792d2c36",
+   "question_id": "CH_1787766870561_tcn3",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng công thức lượng giác"
+  },
+  {
+   "id": "eb61e5db-d4fb-4981-9036-615c31591eac",
+   "question_id": "CH_1787798691502_ows3",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "c06457cd-5e52-4e52-abce-71853ab8d0f2",
+   "question_id": "CH_1787798691502_oh9z",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "17dfa18f-eee2-4d85-a4b0-ae1ae2513f8f",
+   "question_id": "CH_1787798691502_0bmu",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "cfbece75-0c11-4761-b664-0d88f9d2b5ae",
+   "question_id": "CH_1787798691502_pcuj",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "2ba1cb2a-e625-465e-a9c0-fa81fd5b27fb",
+   "question_id": "CH_1787798691502_pjnd",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "967ea42c-4cb0-4acc-8c4d-a68af0ae5001",
+   "question_id": "CH_1787798691502_gcrf",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "1d6499a1-9f79-4566-ab59-aa05748ddeb7",
+   "question_id": "CH_1787798691502_de9t",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "63ca6af6-d267-43a3-84fb-f9780076eed7",
+   "question_id": "CH_1787798691502_a0ab",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "aff59e5b-323b-4d57-97a4-22b50d78b8c1",
+   "question_id": "CH_1787798691502_73ea",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "00bf6686-26a1-4cf5-b1bc-b691d5d95a12",
+   "question_id": "CH_1787798691503_oig6",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "12510cbc-14db-4d6e-a712-e44374933d60",
+   "question_id": "CH_1787798691503_coi2",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "2ffa5c1e-338a-4539-85bd-98c4f550ed8b",
+   "question_id": "CH_1787798691503_38hc",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "74bb7f75-015b-4c6c-af2d-6d8b404e664a",
+   "question_id": "CH_1787798691503_rjly",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "3852a320-50c9-413b-830d-fd0101beb7e2",
+   "question_id": "CH_1787798691503_m1oc",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "03e98947-0617-41c1-81fa-81ba0db604e1",
+   "question_id": "CH_1787798691503_zkbp",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "3dd22d61-8992-4246-bf1b-9f1d78e6bb5a",
+   "question_id": "CH_1787798691503_n7n6",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "a0954c55-57ce-4226-82de-78d89f4d89e0",
+   "question_id": "CH_1787799552322_oexj",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "0485b7d7-7ac5-4370-a39d-c5519cf10d24",
+   "question_id": "CH_1787799552322_d9ev",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "53cc8a50-48a6-4a44-9e69-91d2ca0784b0",
+   "question_id": "CH_1787799552322_qf21",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "f729fbd2-2b39-4162-a7bc-9bbfe0edf51b",
+   "question_id": "CH_1787799552322_g3zp",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "2f9e20bf-7aab-4238-ba68-13c1b0f83b90",
+   "question_id": "CH_1787799552322_4ii0",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "1d01d215-bdbd-46fd-be01-59a902181929",
+   "question_id": "CH_1787799552322_v9p5",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "6a115e33-1a52-4914-b982-ee021acc5704",
+   "question_id": "CH_1787799552323_mo4i",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "37f5c847-59bb-43c9-a79c-20078872ba55",
+   "question_id": "CH_1787799552323_pxy9",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "01427e5f-afb2-4e67-b168-1e3e1b6abe5f",
+   "question_id": "CH_1787799552323_6n8d",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "1d5fab5b-2cf7-4d6b-affb-b30ee4901003",
+   "question_id": "CH_1787799552323_mdtm",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "efc6ef58-8611-431b-ae86-ea07b797372d",
+   "question_id": "CH_1787799552323_jlwq",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "f24d9266-9985-45cd-97d1-c6408778bac6",
+   "question_id": "CH_1787799552323_s5ne",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "8b14f961-e7fe-4a26-9751-0e8c41d57e3c",
+   "question_id": "CH_1787799552323_2g0u",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "650bafef-32a1-4469-9e3d-ae8902a3b761",
+   "question_id": "CH_1787799552323_pna8",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "a4abe5ee-3111-4f40-8a1c-53c21cbca1ef",
+   "question_id": "CH_1787799552323_y6sd",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "cea0af21-8535-485b-99b4-d0679a1af064",
+   "question_id": "CH_1787799552323_rql9",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "9951af65-037b-4e39-900a-1159f307ebf4",
+   "question_id": "CH_1787799552323_ruk3",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "b4d3adeb-c5cf-4d56-87dd-a83e298bdbc4",
+   "question_id": "CH_1787799552323_7a36",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "d97438be-4358-4b81-8482-159f39e92bb3",
+   "question_id": "CH_1787800859894_36ps",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "212c751c-c54b-4d62-ba63-beaad18f8598",
+   "question_id": "CH_1787800859894_9cnc",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "5ab69953-13a2-4e11-b012-b61ea05244c6",
+   "question_id": "CH_1787800859894_z00b",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "7439ae7c-ef51-46e4-92ea-a85b9d75ffdf",
+   "question_id": "CH_1787800859894_3aug",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "086b27f9-cfc8-44ae-a65c-cfc56871eb1f",
+   "question_id": "CH_1787800859894_ld76",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "3c3c8505-6ae2-44f2-8386-c2b6deb5e316",
+   "question_id": "CH_1787800859894_7p3b",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "02ac1286-063d-420b-99d4-695468690591",
+   "question_id": "CH_1787800859894_6bmz",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "84c0516b-472b-4e7d-aa8f-c861775c7f09",
+   "question_id": "CH_1787800859894_jjk8",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "badb9111-c500-4dc2-bd87-0c71784c338f",
+   "question_id": "CH_1787800859894_yb3m",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "95f7e338-02ef-4f6d-a21b-cad8e7c8bdb7",
+   "question_id": "CH_1787800859894_qz49",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "ae65e16e-0d47-45c2-9c2c-681b1eaeb3ee",
+   "question_id": "CH_1787800859894_3n0q",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "d853d43f-6275-49aa-82ae-d26980a505dc",
+   "question_id": "CH_1787800859894_7xy8",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "8902ce00-b728-423a-b99e-8a0ac2d53d4f",
+   "question_id": "CH_1787800859894_5cxr",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "ef094528-fe6f-459c-ac4d-a0829c4933d2",
+   "question_id": "CH_1787800859894_o8lg",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "9354647d-4b85-49bd-bf64-05487223cf9f",
+   "question_id": "CH_1787800859894_ab3b",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "11a98c8a-996d-4a18-9ca0-14e8de4cf3c7",
+   "question_id": "CH_1787800859894_59xs",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "eb7b811f-9ff7-4722-b36c-bbc73adcc231",
+   "question_id": "CH_1787800859894_ktkf",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "d4a35b19-0e09-40d0-9e5c-36f11ce34ce5",
+   "question_id": "CH_1787802027670_pb9k",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "c69b7135-c785-4295-b1cb-ae39a81f1943",
+   "question_id": "CH_1787802027670_ms4w",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "c8dcecbf-e752-4bf7-b495-5f87e5e8e4ca",
+   "question_id": "CH_1787802027670_6fb3",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "dfca5fd8-7c48-49ec-8ad8-c6fa5f622c11",
+   "question_id": "CH_1787802027670_i91p",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "9ca2c146-70b1-4231-b30c-06544dd9e7ff",
+   "question_id": "CH_1787802027670_a43n",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "be3becc2-baa7-4193-9d75-5053507cd63b",
+   "question_id": "CH_1787802027670_9so6",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "6d238cd6-cf16-438e-8a80-af02b0277b82",
+   "question_id": "CH_1787802027670_33i9",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "d67fcccf-d024-4ed5-9772-ab954a024b03",
+   "question_id": "CH_1787802027670_pjje",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "26b68fcb-5796-42a5-abe8-2e15d2c954d9",
+   "question_id": "CH_1787802027670_85n6",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "662b8312-6adc-43a3-8eff-81ed6bb0abbb",
+   "question_id": "CH_1787802027670_1lnz",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "23691978-c2e7-4995-8523-b67b77a02cd1",
+   "question_id": "CH_1787802027670_hb94",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "76980a42-3772-4e43-99e0-6b4293d666d7",
+   "question_id": "CH_1787802027670_lprv",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "50c0c4e2-23d0-46b1-a4d3-438bc9a54a0b",
+   "question_id": "CH_1787802027670_zjm8",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "6e95f60f-ec05-46b0-9ce2-5742e75e1bc6",
+   "question_id": "CH_1787802027670_mifx",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "e0bd4118-3973-43ff-a11b-28c5c8b79ad6",
+   "question_id": "CH_1787802027670_7kbr",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "780194d1-156a-4bc4-950c-2cc2fff3b459",
+   "question_id": "CH_1787802027670_u3ak",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "1340f911-2d4b-4392-bcc2-7b2ff018f641",
+   "question_id": "CH_1787802027670_jo64",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "1924ed31-eb6e-4fde-96c6-3d749ae39775",
+   "question_id": "CH_1787802027670_m7gg",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "71a5e48f-5db0-4448-b95c-516a8c3ffd90",
+   "question_id": "CH_1787802027670_nbvs",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "1043489a-2baa-49f8-ab45-12249f19161c",
+   "question_id": "CH_1787802027670_7mma",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Biện luận số nghiệm của phương trình lượng giác chứa tham số"
+  },
+  {
+   "id": "136f6ccd-789e-4c16-81f9-a899184857a7",
+   "question_id": "CH_1787802027670_7omj",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "393899eb-51bd-469e-b608-c8cb8c44718b",
+   "question_id": "CH_1787803503608_fldb",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "e1a9dae3-8466-452a-abaf-5a132681fef7",
+   "question_id": "CH_1787803503608_lv8m",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Xác định số đo của góc lượng giác"
+  },
+  {
+   "id": "d81ae71e-72c6-4211-989d-8f76fac68d4c",
+   "question_id": "CH_1787803503608_8chl",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "7376fab7-70fe-4e48-8be8-9c43df448436",
+   "question_id": "CH_1787803503608_2mv2",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "94532aa6-4f97-4513-9ec9-a188539f0454",
+   "question_id": "CH_1787803503608_ol65",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "03256b6d-a351-42ea-8078-51e918be349c",
+   "question_id": "CH_1787803503608_c3py",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Xác định số đo của góc lượng giác"
+  },
+  {
+   "id": "2991bef6-7f18-4755-9988-31a5e43808b8",
+   "question_id": "CH_1787803503608_atmy",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "5c952bd8-0f8a-4a23-aed1-661ca6f7ca18",
+   "question_id": "CH_1787803503608_4c8b",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "56491330-2180-45b4-8268-67ce8e6385ad",
+   "question_id": "CH_1787803503608_jbwz",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "2555b690-f8ef-45b8-a0fb-9500b852af3a",
+   "question_id": "CH_1787803503608_skzs",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "7ea4ea32-9984-4bf6-9eb3-2945ac0ea2d9",
+   "question_id": "CH_1787803503608_2xwt",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tính giá trị lượng giác của một góc, rút gọn biểu thức lượng giác"
+  },
+  {
+   "id": "5490f6a8-419f-43e2-aee8-f98386903603",
+   "question_id": "CH_1787803503608_u12x",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp lượng giác và phương trình lượng giác"
+  },
+  {
+   "id": "255d157f-58f7-47ca-9d97-24040a490275",
+   "question_id": "CH_1787803503608_l567",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài toán thực tế ứng dụng công thức lượng giác"
+  },
+  {
+   "id": "b20ebff4-c6d6-4913-8c63-2353f522739f",
+   "question_id": "CH_1787803503608_1bpk",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "5be7119b-f8e3-468a-8293-ceba4b1c5adf",
+   "question_id": "CH_1787805770497_kioc",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "b5884498-eef3-47a2-a6c6-381b1afb1070",
+   "question_id": "CH_1787805770497_x6cg",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tính giá trị lượng giác của một góc, rút gọn biểu thức lượng giác"
+  },
+  {
+   "id": "c5f1733d-19ae-4581-969a-8db22bb27098",
+   "question_id": "CH_1787805770497_9pok",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "14c4f6aa-375f-4364-a794-23ef0eeac48a",
+   "question_id": "CH_1787805770497_z6yj",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "fbb33181-a151-4499-8c83-b40adb51ddfc",
+   "question_id": "CH_1787805770497_d399",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "aecd654f-4f52-4e6e-8dfb-6124c6325485",
+   "question_id": "CH_1787805770497_dh9h",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "12fa3424-e949-499d-9cd9-63de97dcacb8",
+   "question_id": "CH_1787805770497_z2qm",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "1382ed7c-62b3-439d-9778-740ccbc9ef26",
+   "question_id": "CH_1787805770497_k3z4",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp lượng giác và phương trình lượng giác"
+  },
+  {
+   "id": "683f1a7d-5e3a-4642-abd3-9c3f8ccacd7b",
+   "question_id": "CH_1787805770497_83ip",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "89627684-1312-48db-b052-1d066eeeab12",
+   "question_id": "CH_1787805770497_5nwh",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "a97af840-34ed-4fc4-8869-2094a9144d63",
+   "question_id": "CH_1787805770497_rlwr",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "8653403d-c158-4408-86c2-8f4355640afd",
+   "question_id": "CH_1787805770497_o00j",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "d99f94cf-f2a8-478c-a1fb-25a922a39ca5",
+   "question_id": "CH_1787805770497_w0k5",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp lượng giác và phương trình lượng giác"
+  },
+  {
+   "id": "7a6085b5-b455-4404-99fe-5d09114150ab",
+   "question_id": "CH_1787805770497_u1yy",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "a081159f-6c3d-49b3-8125-b77f8d92f26f",
+   "question_id": "CH_1787761736533_scf8",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "9520b727-2732-4c11-a697-15ef19185603",
+   "question_id": "CH_1787761736533_mmyy",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "d917496a-3d29-4874-8656-e9486db88a61",
+   "question_id": "CH_1787798691503_z8t8",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "02b96b76-66d4-4c29-b324-79d1a3a5fe4a",
+   "question_id": "CH_1787763390923_v8vq",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "f03874ac-a818-41ff-8f09-33dcf642d625",
+   "question_id": "CH_1787799552323_dle7",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "d27e3932-17da-4675-8ca0-6878207a5e3b",
+   "question_id": "CH_1787763390923_qpe2",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "766fb1c4-1e70-4869-bb6d-df38c6882546",
+   "question_id": "CH_1787798691503_k74t",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "dad67f8d-890d-4ef4-bbaa-c5cb95d57593",
+   "question_id": "CH_1787799552323_h5c4",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "4246b761-9694-44f1-86ce-43a6a2988552",
+   "question_id": "CH_1788507311577_pcj5",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "de0f2666-10b8-4066-adac-9c0b1d260e00",
+   "question_id": "CH_1788507311578_frb3",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "dedeb5d7-9760-4aa0-b5bb-81d06994854a",
+   "question_id": "CH_1788507311578_rbmq",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "8c5a5b8e-2d8c-458a-a8fd-0e14bf13a4fb",
+   "question_id": "CH_1788507311578_ddrz",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "d9a4df33-e7c5-423c-bdc6-b91688ad0883",
+   "question_id": "CH_1788507311578_p9kr",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "8c2f2a3a-b8dd-4d16-b918-581790f15d98",
+   "question_id": "CH_1788507311578_dt5w",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "15ba9358-de8b-47bb-8b8c-fdd0db3d73a8",
+   "question_id": "CH_1788507311578_52t7",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "ec7ca240-de34-4c11-8252-8ee5071e4e62",
+   "question_id": "CH_1788507311578_ckzj",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "6470f470-d997-4945-86fb-bc5e5bd8ab9e",
+   "question_id": "CH_1788507311578_7aqc",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng công thức lượng giác"
+  },
+  {
+   "id": "6191b402-6efc-42e6-b66b-4fedc32bc655",
+   "question_id": "CH_1788508523498_9pf1",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng công thức lượng giác"
+  },
+  {
+   "id": "f909399c-6959-4a19-930d-9dab23b308b2",
+   "question_id": "CH_1788508523498_yogy",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "290d0523-5103-4c42-89b8-1ad4dd32c832",
+   "question_id": "CH_1788510068392_hiir",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "cc0635d1-a898-4162-accd-77c0df75ecfd",
+   "question_id": "CH_1788510068392_t2hb",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "3ae460d5-de81-4023-b2fc-94db3366ceb4",
+   "question_id": "CH_1788510068392_gtre",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "79c23364-b5d0-497b-b203-3a313fcb8fd9",
+   "question_id": "CH_1788510068392_049u",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "60f56a51-d6b2-4a89-b2e1-fe5f8f03c082",
+   "question_id": "CH_1788510068392_b39l",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "ddd5de34-7e39-4ecd-a1aa-11ebc04c4fed",
+   "question_id": "CH_1788510068392_5o36",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "a20b1f14-f757-4db4-a38a-7aa7f8b0442e",
+   "question_id": "CH_1788510068392_qdb0",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "99170f8d-e6cd-4e76-9623-0df02b2eb732",
+   "question_id": "CH_1788510068393_queb",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "4c262c95-0a72-457a-9552-9297b5fb7f72",
+   "question_id": "CH_1788510068393_9mss",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "632a18b4-23ec-45aa-8097-4784ced00b4f",
+   "question_id": "CH_1788510357439_e85i",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "0027147e-e90d-49f3-bbe8-90a79cba61a3",
+   "question_id": "CH_1788510357439_86m4",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "643d3b97-ff30-4410-a347-aaf51a59832c",
+   "question_id": "CH_1788510357439_kdks",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "9679ca5e-3dfb-43c0-b86b-f169ae93c72e",
+   "question_id": "CH_1788510357439_bo5t",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "99330d60-0f8e-4175-8020-c4db4f96c490",
+   "question_id": "CH_1788510357439_nonu",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "b1163d53-02a8-405a-81f0-4b173687fe49",
+   "question_id": "CH_1788510357440_mchy",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "8be51cf6-38aa-4464-97f9-540bfbbffe23",
+   "question_id": "CH_1788510357440_s4de",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "1bf7b31b-93fb-4e20-af54-5c4f135742b2",
+   "question_id": "CH_1787766019736_5ebu",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "2f131ef3-559b-4e25-a71b-dd4553aca5a0",
+   "question_id": "CH_1788507311578_gqgb",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "2f7366fe-512e-48b7-aaec-3986fd12bec0",
+   "question_id": "CH_1787761736532_s517",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "412b7afd-c26d-491a-b048-478cf3df9ae1",
+   "question_id": "CH_1788510357440_zlch",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "4b468094-6aee-4609-8bb1-d09bb484897c",
+   "question_id": "CH_1787763390923_bfqs",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "9dd58552-a7ee-42cb-9fd2-9c0a5c24da3d",
+   "question_id": "CH_1788510357439_ejt7",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "a9cf64ae-4a93-4465-87d7-6b448b67de79",
+   "question_id": "CH_1788510068393_ssgt",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "ad0fe9ef-17eb-4ce8-a20f-f89dacfab877",
+   "question_id": "CH_1787766019736_p57s",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "c4c85782-0ecc-4f11-a587-7676653ae5ba",
+   "question_id": "CH_1787766019736_ztmn",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "c97d115f-2532-4c5a-bc9b-7b454b109e46",
+   "question_id": "CH_1787800859894_q1ka",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "d413347a-756a-49d8-967e-eaf657196426",
+   "question_id": "CH_1787798691502_5h17",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "e251e504-fe05-410e-8649-80376d08aa03",
+   "question_id": "CH_1787766019736_ro46",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "51801819-11db-4a16-91e9-06b8e5fc95c6",
+   "question_id": "CH_1787766870561_8a6u",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng công thức lượng giác"
+  },
+  {
+   "id": "5f87f22b-99de-4309-bd77-c7d09a757249",
+   "question_id": "CH_1787800859894_v7ia",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "74a2a4cd-7770-4c22-ace7-e7d8f612709a",
+   "question_id": "CH_1788507311578_w9a1",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "f048be8e-1bdd-40be-a582-59fdb3f155b4",
+   "question_id": "CH_1787803503608_kldm",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "a0d89968-06c1-483e-b2c1-59deb6632112",
+   "question_id": "CH_1787803503608_kkve",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giá trị lớn nhất và giá trị nhỏ nhất của hàm số lượng giác"
+  },
+  {
+   "id": "3efb3cf6-55b0-481d-b087-b557717f6f9c",
+   "question_id": "CH_1787803503608_ellh",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "955a7a04-8e4d-4ded-8e3b-8072fb6c4d8d",
+   "question_id": "CH_1787805770497_qxeu",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Xác định số đo của góc lượng giác"
+  },
+  {
+   "id": "22b38fb6-44f6-4da4-a701-7f366c269b72",
+   "question_id": "CH_1787805770497_u6u1",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "19a2c2a8-5170-4ee0-ab4a-07a14057d830",
+   "question_id": "CH_1787763390923_uf89",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "4d1bf5c9-858e-4091-ae13-bc5255f0c5ab",
+   "question_id": "CH_1787766870561_12nh",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "27f78e91-8f44-4772-9ed9-13df6a02d502",
+   "question_id": "CH_1787766870561_ww86",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "845a20b4-63b4-4c27-9aa6-819735044e18",
+   "question_id": "CH_1787766870561_05x1",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng công thức lượng giác"
+  },
+  {
+   "id": "0f040c6e-9da9-4db3-a591-73f87eb4b575",
+   "question_id": "CH_1787798691502_ic10",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "1f1d8716-9bce-424e-bf4b-ac952d3c1f89",
+   "question_id": "CH_1787800859894_x272",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "023eb66c-f480-465c-ae1d-a4481b637bf0",
+   "question_id": "CH_1788510357440_ivyd",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Tính các giá trị lượng giác của một góc lượng giác"
+  },
+  {
+   "id": "5fa19826-e2dc-45b8-91df-d3f558a77e25",
+   "question_id": "CH_1788510068393_jvbz",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức cộng, công thức nhân đôi"
+  },
+  {
+   "id": "661b87d4-6746-4303-9364-2b167cd08f7a",
+   "question_id": "CH_1787798691502_g7fh",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "73ac777e-13b4-4b60-9f75-5a0db39db0af",
+   "question_id": "CH_1787798691503_no9e",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "7ebe5d0f-8dc2-42d3-a27f-28851e857cd3",
+   "question_id": "CH_1787800859894_o1zi",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Ứng dụng phương trình lượng giác trong bài toán thực tế"
+  },
+  {
+   "id": "8d0949e5-4182-4dbd-866a-83ea58f25233",
+   "question_id": "CH_1787761736532_1zk0",
+   "lesson": "Bài 1. Giá trị lượng giác của góc lượng giác",
+   "math_form": "Đổi đơn vị đo góc, độ dài cung tròn"
+  },
+  {
+   "id": "c8a1740e-30dc-4941-8bbf-54e0f49f49c6",
+   "question_id": "CH_1788510357440_dzxw",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "d239281b-2d3e-4a43-bf9d-9afa4bd2ecd2",
+   "question_id": "CH_1787800859894_q3yz",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình tan x = a, cot x = a"
+  },
+  {
+   "id": "def206be-284b-45b6-92ec-8e821574115f",
+   "question_id": "CH_1787766019736_gf9s",
+   "lesson": "Bài 2. Công thức lượng giác",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "e53970c2-6950-42b8-98cc-2b2868826b72",
+   "question_id": "CH_1787802027670_zlr5",
+   "lesson": "Bài 4. Phương trình lượng giác cơ bản",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "fbef55a4-e44d-49e0-8e90-3e90f2f0b151",
+   "question_id": "CH_1788508523498_6g89",
+   "lesson": "Bài 3. Hàm số lượng giác",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  },
+  {
+   "id": "52606306-d4ef-446f-970c-a6342935e232",
+   "question_id": "CH_1788510068393_okjz",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp lượng giác và phương trình lượng giác"
+  },
+  {
+   "id": "118387f2-c7aa-447c-9621-a0c2596816e4",
+   "question_id": "CH_1788507311578_kd58",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp lượng giác và phương trình lượng giác"
+  },
+  {
+   "id": "286101d5-7c81-43c1-96ab-28271d50a8cb",
+   "question_id": "CH_1787803503608_v9kt",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp lượng giác và phương trình lượng giác"
+  },
+  {
+   "id": "a2013593-2f2c-4707-a52e-ab7e35f1443b",
+   "question_id": "CH_1787803503608_5vye",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tìm tập xác định, tính chẵn lẻ của hàm số lượng giác"
+  },
+  {
+   "id": "9621d393-38d8-410a-a03c-6fa82d91d3ba",
+   "question_id": "CH_1787803503608_nik5",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "c278f0d8-0289-4770-a4ab-c191e642c14b",
+   "question_id": "CH_1787803503608_mabz",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp lượng giác và phương trình lượng giác"
+  },
+  {
+   "id": "f80e394a-ed2d-465c-89b0-65bfde1cde06",
+   "question_id": "CH_1787803503608_06xu",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giải tam giác và ứng dụng thực tế"
+  },
+  {
+   "id": "20dfa1e9-6e81-4e15-a5e2-f6fa9658afa4",
+   "question_id": "CH_1787805770497_zrdt",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp lượng giác và phương trình lượng giác"
+  },
+  {
+   "id": "74a0175b-f85d-41bd-b9f4-9cee3290621f",
+   "question_id": "CH_1787805770497_b5he",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Sử dụng công thức biến đổi tổng thành tích, tích thành tổng"
+  },
+  {
+   "id": "202ccd0e-576d-491b-b511-1f45e70e9818",
+   "question_id": "CH_1787805770497_fw2g",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Chu kì và đồ thị của hàm số lượng giác"
+  },
+  {
+   "id": "f688e223-b3b0-412e-ac2c-ad14cba5fd7d",
+   "question_id": "CH_1787805770497_tpn9",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Giải phương trình sin x = a, cos x = a"
+  },
+  {
+   "id": "19885e09-00fd-438e-876a-8619923e28e7",
+   "question_id": "CH_1787805770497_jcmu",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài toán thực tế ứng dụng hàm số lượng giác"
+  }
+ ]
+}

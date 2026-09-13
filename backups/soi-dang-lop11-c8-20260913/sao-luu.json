@@ -1,0 +1,65 @@
+{
+ "question_categories": [
+  {
+   "id": "08af857e-9779-4656-8205-5ab2d63aa9a1",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Các quy tắc tính xác suất",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tổng hợp các quy tắc tính xác suất",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức cộng và công thức nhân xác suất để giải các bài toán tính xác suất của biến cố."
+  },
+  {
+   "id": "73973716-514a-49a0-86e0-505509e53ef0",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Các quy tắc tính xác suất",
+   "lesson": "Bài 3. Công thức nhân xác suất cho hai biến cố độc lập",
+   "math_form": "Ứng dụng xác suất vào bài toán thực tế",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Giải quyết được các bài toán thực tế liên quan đến tính xác suất bằng các quy tắc tính xác suất đã học."
+  },
+  {
+   "id": "b5f9b83f-4694-4925-8e7c-d25d0b21b87e",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Các quy tắc tính xác suất",
+   "lesson": "Bài 3. Công thức nhân xác suất cho hai biến cố độc lập",
+   "math_form": "Tính xác suất bằng công thức nhân",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được xác suất của biến cố giao bằng cách sử dụng công thức nhân xác suất cho hai biến cố độc lập."
+  },
+  {
+   "id": "1ae44d47-59e3-4b02-9f46-41e0ced9990c",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Các quy tắc tính xác suất",
+   "lesson": "Bài 1. Biến cố hợp, biến cố giao, biến cố độc lập",
+   "math_form": "Nhận biết biến cố độc lập",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Nhận biết được hai biến cố độc lập trong các tình huống thực tế đơn giản."
+  },
+  {
+   "id": "b88be6e5-2173-44f6-9e54-b26ef71cc575",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Các quy tắc tính xác suất",
+   "lesson": "Bài 2. Công thức cộng xác suất",
+   "math_form": "Tính xác suất bằng công thức cộng cho biến cố xung khắc và không xung khắc",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Tính được xác suất của biến cố hợp bằng cách sử dụng công thức cộng xác suất cho hai biến cố."
+  },
+  {
+   "id": "51a6aa9a-b2f0-48e3-960a-35d79a041cfe",
+   "grade": "11",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Các quy tắc tính xác suất",
+   "lesson": "Bài 1. Biến cố hợp, biến cố giao, biến cố độc lập",
+   "math_form": "Xác định biến cố hợp, biến cố giao, biến cố xung khắc",
+   "created_at": "2026-08-21T04:38:19.591292+00:00",
+   "yeu_cau_can_dat": "Xác định được biến cố hợp, biến cố giao và biến cố xung khắc của hai biến cố."
+  }
+ ],
+ "questions": []
+}
