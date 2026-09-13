@@ -1,0 +1,460 @@
+{
+ "lop": "8",
+ "chuong": 3,
+ "dang": [
+  {
+   "bai": "Bài 1. Tứ giác",
+   "cu": "Nhận dạng tứ giác",
+   "moi": "Nhận biết tứ giác, tứ giác lồi; đỉnh, cạnh, đường chéo",
+   "yc": "Nhận biết được tứ giác, tứ giác lồi và chỉ ra được đỉnh, cạnh, đường chéo, góc của tứ giác; vẽ được tứ giác khi biết các yếu tố.",
+   "gop": [
+    "Vẽ tứ giác khi biết 5 yếu tố"
+   ]
+  },
+  {
+   "bai": "Bài 1. Tứ giác",
+   "cu": "Tính số đo góc",
+   "moi": "Tính số đo góc của tứ giác",
+   "yc": "Tính được số đo góc của tứ giác bằng định lí tổng các góc của tứ giác bằng 360°, kể cả góc ngoài và góc giữa hai tia phân giác."
+  },
+  {
+   "bai": "Bài 1. Tứ giác",
+   "cu": "Chứng minh và tính toán với tứ giác",
+   "moi": "Chứng minh về góc trong tứ giác (góc ngoài, tia phân giác)",
+   "yc": "Chứng minh được các hệ thức về góc trong tứ giác (tổng góc ngoài, góc tạo bởi tia phân giác) từ định lí tổng các góc."
+  },
+  {
+   "bai": "Bài 1. Tứ giác",
+   "cu": "Chứng minh hệ thức giữa các độ dài. Tính độ dài",
+   "moi": "Chứng minh và tính độ dài liên quan đến cạnh, đường chéo của tứ giác",
+   "yc": "Chứng minh được bất đẳng thức về cạnh, đường chéo, chu vi của tứ giác và tính được độ dài bằng bất đẳng thức tam giác, định lí Pythagore."
+  },
+  {
+   "bai": "Bài 2. Hình thang cân",
+   "cu": "Nhận biết hình thang, hình thang cân",
+   "moi": "Nhận biết hình thang, hình thang cân và tính chất",
+   "yc": "Nhận biết được hình thang, hình thang cân, hình thang vuông và phát biểu đúng tính chất về cạnh bên, góc, đường chéo, trục đối xứng của hình thang cân."
+  },
+  {
+   "bai": "Bài 2. Hình thang cân",
+   "cu": "Tính số đo góc",
+   "moi": "Tính số đo góc của hình thang, hình thang cân",
+   "yc": "Tính được số đo góc của hình thang, hình thang cân từ quan hệ hai góc kề một cạnh bên bù nhau và hai góc kề một đáy bằng nhau."
+  },
+  {
+   "bai": "Bài 2. Hình thang cân",
+   "cu": "Tính độ dài đoạn thẳng",
+   "moi": "Tính độ dài, chu vi của hình thang cân",
+   "yc": "Tính được cạnh bên, đường cao, chu vi của hình thang cân bằng cách kẻ đường cao và dùng định lí Pythagore."
+  },
+  {
+   "bai": "Bài 2. Hình thang cân",
+   "cu": null,
+   "moi": "Chứng minh tứ giác là hình thang, hình thang cân",
+   "yc": "Chứng minh được tứ giác là hình thang, hình thang cân bằng định nghĩa và dấu hiệu nhận biết (hai góc kề một đáy bằng nhau, hai đường chéo bằng nhau)."
+  },
+  {
+   "bai": "Bài 2. Hình thang cân",
+   "cu": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau",
+   "moi": "Chứng minh đoạn thẳng, góc bằng nhau bằng tính chất hình thang cân",
+   "yc": "Vận dụng được tính chất hình thang cân để chứng minh đoạn thẳng, góc bằng nhau, tam giác cân và các quan hệ hình học.",
+   "gop": [
+    "Chứng minh và tính toán với hình thang cân"
+   ]
+  },
+  {
+   "bai": "Bài 3. Hình bình hành",
+   "cu": "Chứng minh 2 góc bằng nhau, tính số đo góc",
+   "moi": "Tính số đo góc của hình bình hành",
+   "yc": "Tính được số đo các góc của hình bình hành từ tính chất hai góc đối bằng nhau, hai góc kề một cạnh bù nhau."
+  },
+  {
+   "bai": "Bài 3. Hình bình hành",
+   "cu": null,
+   "moi": "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết",
+   "yc": "Nhận biết được hình bình hành, phát biểu đúng tính chất về cạnh, góc, đường chéo và các dấu hiệu nhận biết hình bình hành."
+  },
+  {
+   "bai": "Bài 3. Hình bình hành",
+   "cu": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng",
+   "moi": "Chứng minh đoạn thẳng, góc bằng nhau; tính độ dài bằng tính chất hình bình hành",
+   "yc": "Vận dụng được tính chất hình bình hành để chứng minh đoạn thẳng, góc bằng nhau, đường thẳng song song và tính độ dài đoạn thẳng.",
+   "gop": [
+    "Chứng minh và tính toán với hình bình hành"
+   ]
+  },
+  {
+   "bai": "Bài 3. Hình bình hành",
+   "cu": "Chứng minh tứ giác là hình bình hành",
+   "moi": "Chứng minh tứ giác là hình bình hành",
+   "yc": "Chứng minh được tứ giác là hình bình hành bằng các dấu hiệu nhận biết."
+  },
+  {
+   "bai": "Bài 3. Hình bình hành",
+   "cu": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy",
+   "moi": "Chứng minh ba điểm thẳng hàng, ba đường thẳng đồng quy bằng hình bình hành",
+   "yc": "Vận dụng được tính chất hai đường chéo hình bình hành cắt nhau tại trung điểm mỗi đường để chứng minh ba điểm thẳng hàng, ba đường thẳng đồng quy."
+  },
+  {
+   "bai": "Bài 3. Hình bình hành",
+   "cu": null,
+   "moi": "Bài toán thực tế về hình bình hành",
+   "yc": "Vận dụng được tính chất hình bình hành để giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 4. Hình chữ nhật",
+   "cu": "Dấu hiệu nhận biết hình chữ nhật",
+   "moi": "Nhận biết hình chữ nhật, tính chất và dấu hiệu nhận biết",
+   "yc": "Nhận biết được hình chữ nhật, phát biểu đúng tính chất về cạnh, góc, đường chéo và các dấu hiệu nhận biết hình chữ nhật.",
+   "gop": [
+    "Chứng minh quan hệ bằng nhau"
+   ]
+  },
+  {
+   "bai": "Bài 4. Hình chữ nhật",
+   "cu": null,
+   "moi": "Tính độ dài, số đo góc trong hình chữ nhật; đường trung tuyến ứng với cạnh huyền",
+   "yc": "Tính được độ dài đường chéo, cạnh, số đo góc của hình chữ nhật và độ dài đường trung tuyến ứng với cạnh huyền của tam giác vuông."
+  },
+  {
+   "bai": "Bài 4. Hình chữ nhật",
+   "cu": "Chứng minh tứ giác là hình chữ nhật",
+   "moi": "Chứng minh tứ giác là hình chữ nhật",
+   "yc": "Chứng minh được tứ giác là hình chữ nhật bằng các dấu hiệu nhận biết."
+  },
+  {
+   "bai": "Bài 4. Hình chữ nhật",
+   "cu": "Chứng minh quan hệ vuông góc",
+   "moi": "Vận dụng tính chất hình chữ nhật để chứng minh vuông góc, bằng nhau",
+   "yc": "Vận dụng được tính chất hình chữ nhật và đường trung tuyến ứng với cạnh huyền để chứng minh vuông góc, đoạn thẳng bằng nhau và tính độ dài.",
+   "gop": [
+    "Chứng minh và tính toán với hình chữ nhật"
+   ]
+  },
+  {
+   "bai": "Bài 5. Hình thoi và hình vuông",
+   "cu": "Dấu hiệu nhận biết hình thoi",
+   "moi": "Nhận biết hình thoi, hình vuông; tính chất và dấu hiệu nhận biết",
+   "yc": "Nhận biết được hình thoi, hình vuông; phát biểu đúng tính chất về cạnh, góc, đường chéo, trục đối xứng và các dấu hiệu nhận biết.",
+   "gop": [
+    "Dấu hiệu nhận biết hình vuông",
+    "Chứng minh quan hệ bằng nhau"
+   ]
+  },
+  {
+   "bai": "Bài 5. Hình thoi và hình vuông",
+   "cu": null,
+   "moi": "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông",
+   "yc": "Tính được cạnh, chu vi, diện tích, đường chéo, số đo góc của hình thoi, hình vuông."
+  },
+  {
+   "bai": "Bài 5. Hình thoi và hình vuông",
+   "cu": "Chứng minh tứ giác là hình thoi",
+   "moi": "Chứng minh tứ giác là hình thoi",
+   "yc": "Chứng minh được tứ giác là hình thoi bằng các dấu hiệu nhận biết."
+  },
+  {
+   "bai": "Bài 5. Hình thoi và hình vuông",
+   "cu": "Chứng minh tứ giác là hình vuông",
+   "moi": "Chứng minh tứ giác là hình vuông",
+   "yc": "Chứng minh được tứ giác là hình vuông bằng các dấu hiệu nhận biết."
+  },
+  {
+   "bai": "Bài 5. Hình thoi và hình vuông",
+   "cu": "Tính chất và bài tập hình thoi, hình vuông",
+   "moi": "Vận dụng tính chất hình thoi, hình vuông để chứng minh, tính toán",
+   "yc": "Vận dụng được tính chất hình thoi, hình vuông để chứng minh đoạn thẳng, góc bằng nhau, vuông góc, thẳng hàng, đồng quy và tính toán.",
+   "gop": [
+    "Chứng minh quan hệ vuông góc",
+    "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng",
+    "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau",
+    "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+   ]
+  },
+  {
+   "bai": "Bài 5. Hình thoi và hình vuông",
+   "cu": "Nhận dạng tứ giác",
+   "moi": "Xác định dạng của tứ giác",
+   "yc": "Xác định được tứ giác cho trước là hình thang cân, hình bình hành, hình chữ nhật, hình thoi hay hình vuông và tìm được điều kiện để tứ giác trở thành hình đặc biệt."
+  },
+  {
+   "bai": "Bài 5. Hình thoi và hình vuông",
+   "cu": null,
+   "moi": "Bài toán dựng hình và nâng cao về hình vuông",
+   "yc": "Giải được bài toán dựng hình vuông và các bài toán nâng cao về hình vuông."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 3",
+   "moi": "Bài tập tổng hợp chương 3",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 3 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {
+  "2306": [
+   "Bài 2. Hình thang cân",
+   "Chứng minh tứ giác là hình thang, hình thang cân"
+  ],
+  "00wd": [
+   "Bài 1. Tứ giác",
+   "Chứng minh về góc trong tứ giác (góc ngoài, tia phân giác)"
+  ],
+  "g402": [
+   "Bài 1. Tứ giác",
+   "Chứng minh về góc trong tứ giác (góc ngoài, tia phân giác)"
+  ],
+  "3s9m": [
+   "Bài 1. Tứ giác",
+   "Chứng minh về góc trong tứ giác (góc ngoài, tia phân giác)"
+  ],
+  "qv89": [
+   "Bài 1. Tứ giác",
+   "Chứng minh về góc trong tứ giác (góc ngoài, tia phân giác)"
+  ],
+  "od0k": [
+   "Bài 1. Tứ giác",
+   "Chứng minh và tính độ dài liên quan đến cạnh, đường chéo của tứ giác"
+  ],
+  "mkrf": [
+   "Bài 2. Hình thang cân",
+   "Tính độ dài, chu vi của hình thang cân"
+  ],
+  "u1eu": [
+   "Bài 2. Hình thang cân",
+   "Chứng minh tứ giác là hình thang, hình thang cân"
+  ],
+  "nxvs": [
+   "Bài 2. Hình thang cân",
+   "Chứng minh tứ giác là hình thang, hình thang cân"
+  ],
+  "q0rb": [
+   "Bài 2. Hình thang cân",
+   "Chứng minh tứ giác là hình thang, hình thang cân"
+  ],
+  "l12u": [
+   "Bài 2. Hình thang cân",
+   "Chứng minh tứ giác là hình thang, hình thang cân"
+  ],
+  "4jlk": [
+   "Bài 2. Hình thang cân",
+   "Chứng minh tứ giác là hình thang, hình thang cân"
+  ],
+  "tv8l": [
+   "Bài 2. Hình thang cân",
+   "Chứng minh tứ giác là hình thang, hình thang cân"
+  ],
+  "501h": [
+   "Bài 2. Hình thang cân",
+   "Chứng minh tứ giác là hình thang, hình thang cân"
+  ],
+  "ly3w": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "pteu": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "hcmp": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "dw9h": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "rmrx": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "q2ut": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "tnil": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "tmio": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "nubr": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "lvc9": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "q98d": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "nrdn": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "wlub": [
+   "Bài 3. Hình bình hành",
+   "Nhận biết hình bình hành, tính chất và dấu hiệu nhận biết"
+  ],
+  "kwl9": [
+   "Bài 3. Hình bình hành",
+   "Chứng minh đoạn thẳng, góc bằng nhau; tính độ dài bằng tính chất hình bình hành"
+  ],
+  "9fkj": [
+   "Bài 3. Hình bình hành",
+   "Chứng minh đoạn thẳng, góc bằng nhau; tính độ dài bằng tính chất hình bình hành"
+  ],
+  "ja6d": [
+   "Bài 3. Hình bình hành",
+   "Chứng minh đoạn thẳng, góc bằng nhau; tính độ dài bằng tính chất hình bình hành"
+  ],
+  "rv1l": [
+   "Bài 3. Hình bình hành",
+   "Bài toán thực tế về hình bình hành"
+  ],
+  "53xt": [
+   "Bài 4. Hình chữ nhật",
+   "Nhận biết hình chữ nhật, tính chất và dấu hiệu nhận biết"
+  ],
+  "cwgo": [
+   "Bài 4. Hình chữ nhật",
+   "Tính độ dài, số đo góc trong hình chữ nhật; đường trung tuyến ứng với cạnh huyền"
+  ],
+  "owcg": [
+   "Bài 4. Hình chữ nhật",
+   "Tính độ dài, số đo góc trong hình chữ nhật; đường trung tuyến ứng với cạnh huyền"
+  ],
+  "4h3e": [
+   "Bài 4. Hình chữ nhật",
+   "Tính độ dài, số đo góc trong hình chữ nhật; đường trung tuyến ứng với cạnh huyền"
+  ],
+  "1wf2": [
+   "Bài 4. Hình chữ nhật",
+   "Tính độ dài, số đo góc trong hình chữ nhật; đường trung tuyến ứng với cạnh huyền"
+  ],
+  "qsso": [
+   "Bài 4. Hình chữ nhật",
+   "Tính độ dài, số đo góc trong hình chữ nhật; đường trung tuyến ứng với cạnh huyền"
+  ],
+  "mh9m": [
+   "Bài 4. Hình chữ nhật",
+   "Chứng minh tứ giác là hình chữ nhật"
+  ],
+  "7zd9": [
+   "Bài 4. Hình chữ nhật",
+   "Chứng minh tứ giác là hình chữ nhật"
+  ],
+  "16tf": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Nhận biết hình thoi, hình vuông; tính chất và dấu hiệu nhận biết"
+  ],
+  "nj7t": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Nhận biết hình thoi, hình vuông; tính chất và dấu hiệu nhận biết"
+  ],
+  "berz": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Nhận biết hình thoi, hình vuông; tính chất và dấu hiệu nhận biết"
+  ],
+  "yefg": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "ge4j": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "39pa": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "e5yq": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "rah8": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "1z7g": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "bq0l": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "f07a": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "s31z": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "o39b": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Tính độ dài, chu vi, diện tích, số đo góc của hình thoi, hình vuông"
+  ],
+  "7gqd": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Chứng minh tứ giác là hình thoi"
+  ],
+  "clsm": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Chứng minh tứ giác là hình thoi"
+  ],
+  "ctdl": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Chứng minh tứ giác là hình thoi"
+  ],
+  "uish": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Chứng minh tứ giác là hình thoi"
+  ],
+  "qcpk": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Chứng minh tứ giác là hình vuông"
+  ],
+  "i7gq": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Vận dụng tính chất hình thoi, hình vuông để chứng minh, tính toán"
+  ],
+  "b72k": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Vận dụng tính chất hình thoi, hình vuông để chứng minh, tính toán"
+  ],
+  "1h18": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Xác định dạng của tứ giác"
+  ],
+  "n5ig": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Xác định dạng của tứ giác"
+  ],
+  "evvm": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Xác định dạng của tứ giác"
+  ],
+  "khl8": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Xác định dạng của tứ giác"
+  ],
+  "ck1j": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Bài toán dựng hình và nâng cao về hình vuông"
+  ],
+  "omb1": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Bài toán dựng hình và nâng cao về hình vuông"
+  ],
+  "tlfn": [
+   "Bài 5. Hình thoi và hình vuông",
+   "Bài toán dựng hình và nâng cao về hình vuông"
+  ]
+ }
+}

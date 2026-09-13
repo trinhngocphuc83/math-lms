@@ -1,0 +1,3526 @@
+{
+ "question_categories": [
+  {
+   "id": "f0a5a4c8-af5e-458b-a288-f5f6679b32dc",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính tổng và hiệu đa thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép tính cộng và phép tính trừ các đơn thức đồng dạng."
+  },
+  {
+   "id": "86afd5cc-58e2-4013-87d9-f8847334e44b",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính tổng và hiệu đa thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép tính cộng và phép tính trừ các đa thức nhiều biến."
+  },
+  {
+   "id": "42015640-0033-48f5-b691-3d3f8ad8c677",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức",
+   "created_at": "2026-07-02T07:26:00.163205+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc thu gọn đơn thức và nhận biết được đơn thức thu gọn."
+  },
+  {
+   "id": "4cd0b819-d86f-4a79-ae28-085216ebeead",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức",
+   "created_at": "2026-07-02T07:26:00.163205+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của đơn thức hoặc biểu thức đại số đơn giản tại các giá trị cho trước của biến."
+  },
+  {
+   "id": "fbe8e52a-4bbc-4346-ab74-e1c7a6bb5491",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng",
+   "created_at": "2026-07-02T07:26:00.163205+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép tính cộng và phép tính trừ các đơn thức đồng dạng."
+  },
+  {
+   "id": "cc508740-68fc-4655-aa0a-eb4529f48a23",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến",
+   "created_at": "2026-07-02T07:26:00.163205+00:00",
+   "yeu_cau_can_dat": "Nhận biết được đơn thức nhiều biến và đa thức nhiều biến trong các biểu thức đại số cho trước."
+  },
+  {
+   "id": "eb1d0d10-3266-493c-aab8-7b2261dd5c57",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép chia một đa thức cho một đơn thức trong trường hợp các hạng tử của đa thức chia hết cho đơn thức."
+  },
+  {
+   "id": "a815e801-72f8-4c3b-8b4c-7271b5954495",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của biểu thức chứa phép chia đơn thức, đa thức cho đơn thức tại các giá trị cho trước của biến."
+  },
+  {
+   "id": "5528137e-d80c-4ba9-8884-398c1af015f7",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Xác định được điều kiện để một đa thức chia hết cho một đơn thức và thực hiện phép chia hết đó."
+  },
+  {
+   "id": "89e83190-a431-4283-8a1a-7204d3cc65df",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phép nhân đa thức để giải quyết một số bài toán thực tế liên quan đến diện tích, thể tích hoặc các đại lượng khác."
+  },
+  {
+   "id": "110499eb-6236-4b8e-aba6-a670cda683f1",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Vận dụng phép nhân đa thức và thu gọn biểu thức để tìm giá trị của biến số trong một đẳng thức cho trước."
+  },
+  {
+   "id": "d3476c1b-9a0b-44a2-b0fc-a4fe61da98fa",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép nhân đơn thức với đa thức và phép nhân đa thức với đa thức."
+  },
+  {
+   "id": "3ec00d21-daa6-41b8-8273-ef1f090c0db5",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Dạng toán chia hết",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Vận dụng phép cộng, trừ đa thức và tính chất chia hết để giải quyết các bài toán về chia hết của số tự nhiên hoặc biểu thức."
+  },
+  {
+   "id": "4848d9ad-2c4a-4b1e-9f5c-2398b1c25f28",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép tính cộng và phép tính trừ các đa thức nhiều biến."
+  },
+  {
+   "id": "baeeab4f-989f-4719-91ab-b4a03f3a477c",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của một đa thức nhiều biến khi biết giá trị của các biến."
+  },
+  {
+   "id": "34f6cc91-d3a0-4520-bf75-329bf09cd25f",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Xác định được bậc của một đa thức nhiều biến sau khi đã thu gọn."
+  },
+  {
+   "id": "695e085c-c1db-46c0-97b1-338c0bf9591b",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Xác định được hệ số và bậc của từng hạng tử trong một đa thức nhiều biến."
+  },
+  {
+   "id": "864fa32e-06e5-4a99-9e3d-f68ee46c2f3f",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của biểu thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của biểu thức chứa đơn thức tại các giá trị cho trước của các biến."
+  },
+  {
+   "id": "c0c3ba96-4a77-4b4d-ac80-cf8f082a863a",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc thu gọn và tính giá trị của biểu thức đại số tại các giá trị cho trước của biến."
+  },
+  {
+   "id": "9b553cc8-26d4-48eb-bbcc-2d1e3585d2a8",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm bậc đa thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Nhận biết và xác định được bậc của một đa thức sau khi đã thu gọn đa thức đó."
+  },
+  {
+   "id": "84e486d1-cb0f-472b-8ec8-a061068b4ad9",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Thực hiện được các phép tính cộng, trừ, nhân, chia đa thức để thu gọn và tính giá trị của biểu thức."
+  },
+  {
+   "id": "e3a9af6a-a90a-4e1f-999b-8a2b391585a8",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phép cộng, trừ đơn thức đồng dạng để tìm đơn thức chưa biết và tính giá trị của đơn thức đó."
+  },
+  {
+   "id": "7b18b76a-f154-4866-a660-0beafa65ce82",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm x",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các phép tính nhân đa thức và hằng đẳng thức để tìm giá trị của biến số thỏa mãn đẳng thức cho trước."
+  },
+  {
+   "id": "fa1c75ea-e508-4c82-a8df-a905782b6659",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính giá trị của đa thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc thu gọn đa thức và tính giá trị của đa thức tại các giá trị cho trước của biến."
+  },
+  {
+   "id": "6dbbf8b8-6bac-48bb-a7f2-3d2a85821629",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Rút gọn và tính giá trị biểu thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc thu gọn và tính giá trị của đa thức nhiều biến bằng cách sử dụng các phép tính đại số cơ bản."
+  },
+  {
+   "id": "97057b28-8b4a-40eb-8c9d-330955c1c3d9",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tính giá trị của biểu thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của biểu thức đại số sau khi thực hiện thu gọn bằng phép nhân đa thức."
+  },
+  {
+   "id": "02e2f304-9437-4d4c-9756-4bee0ee312a6",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm bậc đa thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Xác định được bậc của một đa thức sau khi đã thực hiện thu gọn các hạng tử đồng dạng."
+  },
+  {
+   "id": "94ec37e7-7461-4ee4-bcbb-ff3f938fb52b",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tìm x",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các phép tính cộng, trừ, nhân đa thức để tìm giá trị của biến số trong một đẳng thức cho trước."
+  },
+  {
+   "id": "30c41d78-9f1d-4084-9d55-0941287a3c87",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính giá trị của biểu thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của biểu thức đại số sau khi thực hiện thu gọn bằng phép cộng và phép trừ đa thức."
+  },
+  {
+   "id": "e0dce7d5-9824-4bec-95ca-667eb83b7491",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến việc lập biểu thức đại số biểu diễn diện tích hoặc thể tích."
+  },
+  {
+   "id": "446db75f-6523-4c9a-b6e8-412c31b76c52",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phép cộng và phép trừ đa thức để tìm đa thức chưa biết trong một đẳng thức cho trước."
+  },
+  {
+   "id": "1f9bc3dc-dec9-4c70-a18d-b4f4d086cd25",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các quy tắc tính toán đơn thức để tìm đơn thức chưa biết và tính giá trị của nó tại các giá trị cho trước."
+  },
+  {
+   "id": "5c5c062a-75a8-4d11-b92f-363095a0faa1",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Dạng toán chia hết",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Giải quyết được các bài toán liên quan đến điều kiện chia hết của đa thức cho đơn thức và tính chất chia hết trong tập hợp số."
+  },
+  {
+   "id": "826d03a7-b457-4920-aaf1-73e8165d16d5",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Chứng minh",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các phép toán thu gọn biểu thức để chứng minh giá trị của biểu thức không phụ thuộc vào giá trị của biến."
+  },
+  {
+   "id": "62b05fa6-a52b-4710-9b60-9f98e0cb574c",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Chứng minh",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phép cộng và phép trừ đa thức để chứng minh giá trị của một biểu thức không phụ thuộc vào biến số."
+  },
+  {
+   "id": "cf8e0508-79a7-4a12-b985-bead71be81a0",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phép chia đa thức cho đơn thức để giải quyết một số bài toán thực tế liên quan đến hình học hoặc tính toán đại lượng."
+  },
+  {
+   "id": "518c0a37-facd-4d1b-8c55-f3ff549b09c7",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chứng minh",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Vận dụng phép chia đa thức cho đơn thức để chứng minh giá trị của một biểu thức không phụ thuộc vào giá trị của biến."
+  },
+  {
+   "id": "eaeecaca-21de-42bb-9467-4c34b3c97198",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép chia một đơn thức cho một đơn thức khác trong trường hợp chia hết."
+  },
+  {
+   "id": "cc3e45ff-66aa-4f5f-b8a5-e4b712424fca",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Vận dụng phép nhân đa thức để chứng minh giá trị của một biểu thức không phụ thuộc vào giá trị của biến."
+  },
+  {
+   "id": "8d525e8d-7bc4-4d3b-a7bb-a2c9a9afd1d9",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc rút gọn và tính giá trị của biểu thức đại số có chứa phép nhân đa thức."
+  },
+  {
+   "id": "a2301193-c4ec-40e0-b6e0-592b572033fc",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phép cộng và phép trừ đa thức để giải quyết một số bài toán thực tế liên quan đến hình học và đời sống."
+  },
+  {
+   "id": "20640386-bcc7-42c8-89b9-ff63d7bc0c22",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phép cộng và phép trừ đa thức để tìm một đa thức chưa biết trong một đẳng thức cho trước."
+  },
+  {
+   "id": "daf25d8f-7073-4012-9931-b6ca60a85459",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến việc biểu diễn các đại lượng bằng đa thức nhiều biến."
+  },
+  {
+   "id": "4cc18891-de15-40e5-a9c8-894f4ba54cbe",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức",
+   "created_at": "2026-07-02T07:26:00.163205+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các phép tính cộng, trừ đơn thức đồng dạng để tìm đơn thức chưa biết và tính giá trị của biểu thức tại giá trị cho trước của biến."
+  },
+  {
+   "id": "5dc9de44-c550-4f39-a40e-8ec0c79586c5",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức",
+   "created_at": "2026-07-07T03:25:05.461383+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc thu gọn đa thức nhiều biến bằng cách nhóm các hạng tử đồng dạng."
+  },
+  {
+   "id": "befcabad-2405-4de4-aa68-9289d9bd48c9",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Nhận biết được đơn thức nhiều biến và đa thức nhiều biến trong các biểu thức đại số cho trước."
+  },
+  {
+   "id": "35b1a084-cad4-43cb-9b9a-3ee3aa2da237",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng",
+   "created_at": "2026-07-02T07:26:00.163205+00:00",
+   "yeu_cau_can_dat": "Nhận biết được các đơn thức đồng dạng và phân loại chúng thành các nhóm đồng dạng."
+  },
+  {
+   "id": "b35f03c5-cf51-43e1-abca-f55a73a512b7",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 1",
+   "created_at": "2026-09-12T13:22:55.079019+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức của chương 1 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  },
+  {
+   "id": "e6c0cb10-209a-4543-b928-fa09578925e7",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 1. Đa thức",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đơn thức",
+   "created_at": "2026-09-10T16:51:28.782524+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép thu gọn đơn thức bằng cách nhân các hệ số và nhân các phần biến với nhau."
+  }
+ ],
+ "questions": [
+  {
+   "id": "7974ef94-bf0d-4c89-a339-3b18a48efc2f",
+   "question_id": "CH_1783398504170_9sk9",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "bb7f6a53-4dde-4bbc-b844-9ed75fa55ac7",
+   "question_id": "CH_1783398504170_en97",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "2be6c92a-4627-4118-b26d-0d495b8381d0",
+   "question_id": "CH_1783398504170_kn2i",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "7e6768e8-a5ba-4dd0-ae08-0a771e2ea89e",
+   "question_id": "CH_1783398504170_7iaj",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "50951da7-47d8-402f-80f0-aad6eb6c6d1d",
+   "question_id": "CH_1783398504170_l5f2",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "35580a41-02b6-4443-85fb-e8930d7f6dca",
+   "question_id": "CH_1783398504170_hf7e",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "1cfc2579-0e8b-4494-8c16-272d035a2826",
+   "question_id": "CH_1783399490787_q5wi",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "f3714d13-2a04-4be1-bf48-0ea2a950b209",
+   "question_id": "CH_1783398504170_h3u7",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "f055cc11-8263-4ba3-88a1-ed8f6443a275",
+   "question_id": "CH_1783398504170_3f44",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "ef5ff0c2-c6ec-4a9f-9f9f-b79896219c47",
+   "question_id": "CH_1783399490787_umlx",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "7c5fc26f-e13c-4c35-99a6-5acc0a52520d",
+   "question_id": "CH_1783398504170_3ivd",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "65e55cd9-005a-4547-bef1-5c2d8c992b21",
+   "question_id": "CH_1783398504170_yx60",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "940e6612-c363-4890-bb87-e1830d7e438f",
+   "question_id": "CH_1783399490787_xomy",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "4821a7bc-03fb-4c6b-9c20-e733d7ddd9fa",
+   "question_id": "CH_1783398504170_cibf",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "29985f1f-1da2-4b04-840f-61edd788f230",
+   "question_id": "CH_1783398504170_hviy",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "965ce280-6ad8-4c72-b264-aa66c0c8cd79",
+   "question_id": "CH_1783399490787_t3if",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "ea49159d-612f-49e8-b8a9-deb38d519f2c",
+   "question_id": "CH_1783916424739_h2kk",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "790a598a-de67-4eb3-88ec-0abbb31ded1a",
+   "question_id": "CH_1783916424739_t4ox",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "4d47b2f8-9bec-4479-ab4a-16ffa897211e",
+   "question_id": "CH_1783916424739_ikkz",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "c1d7d47d-c370-4c73-875f-c1b2b5a9e09c",
+   "question_id": "CH_1783916424739_a4bh",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "82c7b386-67d7-4319-83f9-305bbfa50246",
+   "question_id": "CH_1783916424739_3t9d",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "fdc6ca4b-3143-48a0-88e9-c4e11cc607a6",
+   "question_id": "CH_1783916424739_j1qp",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "4ab47423-ae55-497b-a39e-5fe38832741f",
+   "question_id": "CH_1783916424739_e9oj",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "01c46351-e64d-4dde-9037-b7d83ac11b0b",
+   "question_id": "CH_1783916424739_q808",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "882319c2-12e9-431f-b91b-f34123cdcf94",
+   "question_id": "CH_1783916424739_ukof",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "0857e6fc-ec50-4504-af60-f2dcdb2118f9",
+   "question_id": "CH_1783398504170_ms32",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "273a7cf7-6781-4d9d-ad84-45e8f66a7294",
+   "question_id": "CH_1783398504170_zuqj",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "f850f5b2-3c91-4c4d-93f4-1f9ab1746018",
+   "question_id": "CH_1783398504170_f87g",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "51c1c55f-fd84-4341-bad3-385bae551a4e",
+   "question_id": "CH_1783940683915_hnrf",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "acc051a0-89a1-42d2-b902-0b0cf2d710bf",
+   "question_id": "CH_1783940683915_zn8q",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "f95e4594-e9ea-474c-8a19-97de59c80576",
+   "question_id": "CH_1783940683915_p7x1",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "7a305539-eb18-4789-993d-08f6bd958457",
+   "question_id": "CH_1783396042634_adj7",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "909edaa2-f227-4906-8082-a45a6d2bf26a",
+   "question_id": "CH_1783396042634_a4vz",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "fa9ccd36-8840-4ece-a3f4-8c3949c875b4",
+   "question_id": "CH_1783398504170_89c8",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "0e70d35f-bc37-4278-af47-6406091c3aff",
+   "question_id": "CH_1783399490787_a36z",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "dd2ce9cd-155b-4a61-8826-2475354b395a",
+   "question_id": "CH_1783399490787_dt0l",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "38736264-ff8b-43d8-8adf-e6637d05d5a6",
+   "question_id": "CH_1783399490787_13dv",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "53ccd2a8-9b96-4b0b-be15-c08249efd23d",
+   "question_id": "CH_1782977566042_q1yd",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "bcecbdc0-904b-459d-ad2d-d4c2ae339718",
+   "question_id": "CH_1782977566042_fct8",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "dc413d72-9438-4dc6-8bc1-f2e04d1c8d8b",
+   "question_id": "CH_1782977566042_sxjm",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "336e2894-1500-4809-aeb7-2bd334a6260b",
+   "question_id": "CH_1782977566042_6agj",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "f94d7992-6993-4cf2-9af3-57b58dbc8e98",
+   "question_id": "CH_1782978538435_k65u",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "aa364635-d92a-4123-ba87-9a6c7a37e92b",
+   "question_id": "CH_1782977566042_0rz0",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "6df611e5-4828-4081-9958-ab712b431335",
+   "question_id": "CH_1782977566042_ybkl",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "c4f375fc-c583-46ab-b130-66f4122af593",
+   "question_id": "CH_1783399490787_0wtp",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "c49c6944-b5d5-4488-88c7-d45234b5e26b",
+   "question_id": "CH_1782978538434_pp5j",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "c313b43f-41c4-4771-a366-290acd7aa964",
+   "question_id": "CH_1782978538434_e5so",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "0a826b41-6e26-4746-af2c-0367899e6010",
+   "question_id": "CH_1782978538435_0bwr",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "fe414e9b-5a31-4992-a7ee-342db4e7abb8",
+   "question_id": "CH_1782978538434_9zu6",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "72b4d6c6-07bd-44d7-a854-6f719a0d040f",
+   "question_id": "CH_1782978538434_rr7t",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "3c7c2873-c571-45ac-8c02-e5a3ad6a90ec",
+   "question_id": "CH_1782978538434_4y7s",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "f7fbe8b6-160c-4194-9be8-531f34b31186",
+   "question_id": "CH_1782978538434_a13u",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "8ff43393-9252-48a5-ace7-47c19d9140bf",
+   "question_id": "CH_1782978538434_xtfu",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "140fd6e8-7ead-4eb3-b2e0-156e2982f03a",
+   "question_id": "CH_1782978538434_wue6",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "f14ca13d-4da6-4b0b-a771-ae6aae32d550",
+   "question_id": "CH_1782978538435_4az8",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "f7b97b80-22c5-4bdb-90ce-0a51ece235d1",
+   "question_id": "CH_1782978538435_17s0",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "c4311aa8-3351-420b-82d5-88e2b43b0df3",
+   "question_id": "CH_1782978538435_9z7i",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "c92dc472-4b54-4980-8195-7ffa7db8c6e0",
+   "question_id": "CH_1782978538435_1423",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "973fd196-4d6f-4ba2-9d3f-0a1daab0462e",
+   "question_id": "CH_1782978538435_xuhc",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "ac3b48e2-0ba9-4240-8729-f5799157de3a",
+   "question_id": "CH_1782978538435_pcfq",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "252f4739-6d13-46f0-8b4a-bb1b3eef88b4",
+   "question_id": "CH_1782978538435_29ug",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "bdc1b98c-cde0-48f6-8e1d-1109f0d1d305",
+   "question_id": "CH_1782978538435_8xda",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "e4ec043a-c52d-48f6-a797-64cf454fc2bf",
+   "question_id": "CH_1782978538435_o4u2",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "65b64a28-7ff9-44dc-899c-d720c5ee3755",
+   "question_id": "CH_1782978538435_8sd8",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "f2a795c4-2d19-4cb4-83a7-c65efd5148bb",
+   "question_id": "CH_1782978538435_3ksb",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "bd28e851-e752-4d4a-99d4-7f1746e3befb",
+   "question_id": "CH_1782978538435_o2cz",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "b809662c-4a62-479b-8c48-cb7a54e75e00",
+   "question_id": "CH_1782978538435_4xph",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "6d7c17d8-0a50-4a6e-892e-04262c3d52a9",
+   "question_id": "CH_1782978538435_vre3",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "48a27aac-2663-4ff9-9363-66a8102259e6",
+   "question_id": "CH_1782978538435_b3xu",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "dc36a171-a151-4018-901b-072826ff5020",
+   "question_id": "CH_1782978538435_4fm5",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "de20f152-01d9-4428-a3c5-7c058711c9c1",
+   "question_id": "CH_1782978538435_lazp",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "103aef34-d16d-4db2-9217-de4c3e768cfd",
+   "question_id": "CH_1782978538435_8yeg",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "95a2c6f8-d531-4791-b4c0-0704f6b950ae",
+   "question_id": "CH_1782978538435_htkb",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "a2a0076c-af52-4c0f-a39c-598983bac7e9",
+   "question_id": "CH_1782978538435_owly",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "1c49dcfd-ecaf-48aa-8a52-2f7351038a1e",
+   "question_id": "CH_1782978538435_ehm0",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "fd9ee3fa-1e0f-4c8a-85e8-1511c38d771c",
+   "question_id": "CH_1782978538435_tk08",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "55425853-6309-4b3e-a71c-49dc12caa4fb",
+   "question_id": "CH_1782978538435_ylao",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "3c6a4f9e-270b-4b76-9c8e-ba1e351659fe",
+   "question_id": "CH_1782978538435_bkrv",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "eeacbf74-73ec-473d-93c2-0292af6e1ca9",
+   "question_id": "CH_1782978538435_k8j7",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "ce39ed1d-f234-4a13-9b8e-58b9c5422250",
+   "question_id": "CH_1782978538435_si1h",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "91bdfe47-775a-46b6-8c97-5e101bb5cb3d",
+   "question_id": "CH_1782978538435_s61s",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "ff3afdba-e73d-4560-a95f-eb040ee6553d",
+   "question_id": "CH_1782978538435_9ovf",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "2c2ba202-54fc-4697-b14b-673bcaa8e209",
+   "question_id": "CH_1782978538435_1oci",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "bec41737-d6df-4dc1-adc8-11b34c787772",
+   "question_id": "CH_1782978538435_2z37",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "6eb69bbd-734a-442c-90ef-3a78f0839853",
+   "question_id": "CH_1782978538435_6tri",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "59cb06d0-b829-4e1e-8814-b13fac534c3e",
+   "question_id": "CH_1782978538435_14b9",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "a6b3647b-757f-416f-a0b0-47d4011829db",
+   "question_id": "CH_1782978538435_4adj",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "efcafae1-5ade-4447-8248-ffceb2088428",
+   "question_id": "CH_1782978538435_c1e4",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "e92f7ecc-54ce-4512-ad9a-45d31d3a9304",
+   "question_id": "CH_1782978538435_xwxl",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "4250ba15-10d7-46d6-80be-f0b526731f2d",
+   "question_id": "CH_1782978538435_v1u1",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "bd876f7a-8a74-45df-9eae-89694f9a102a",
+   "question_id": "CH_1782978538435_hnqw",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "60250b25-1162-41ff-90f2-f34043122c05",
+   "question_id": "CH_1782978538435_v2k0",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "879ba60c-b353-4110-98d8-2005960ee61e",
+   "question_id": "CH_1782978538435_r2am",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "2ef5bea3-b890-43ba-8786-45e710314a69",
+   "question_id": "CH_1782978538435_sanu",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "7eab9953-127a-4faf-83dc-d2257ff99c69",
+   "question_id": "CH_1782978538435_zhvo",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "eca0c520-0615-4171-994a-62be783c076a",
+   "question_id": "CH_1782978538435_3c44",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "9f6c47f5-67f8-46df-a796-6e36257f5f44",
+   "question_id": "CH_1782978538435_xknq",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "417fc8f5-1db8-4c9f-80b9-7c707794f422",
+   "question_id": "CH_1782978538435_8hp0",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "54417970-7e73-43b3-b0d9-2c5e3c332027",
+   "question_id": "CH_1782978538435_1jaa",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "eca123dd-f012-4f46-9028-127618d39dda",
+   "question_id": "CH_1782978538435_qrza",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "86064ea9-43a9-4758-8999-0dbe7d36771a",
+   "question_id": "CH_1782978538434_sh8a",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "54504fa4-eaa7-4693-9591-50d9d55b4615",
+   "question_id": "CH_1782978538435_twju",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "27c794d4-fd53-428c-b222-0cd28851ff03",
+   "question_id": "CH_1782977566042_gh9o",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "10e10005-b0f3-482b-9733-0e218f5ba347",
+   "question_id": "CH_1782978538435_uu60",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "383b896c-0921-4f56-8bcc-be8507f66e33",
+   "question_id": "CH_1782978538435_j5n3",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "a005df1e-2ea7-4d13-99b4-39c608a58152",
+   "question_id": "CH_1783396042634_r69c",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "de78d6ae-353b-4be4-883b-d288dcd9f689",
+   "question_id": "CH_1783398504170_k3bn",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "d0d7cbe5-086a-4114-a6c2-eebbd5c36779",
+   "question_id": "CH_1783395076075_1hd2",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "d1e8018d-5aa1-43a2-9621-678174440adf",
+   "question_id": "CH_1783395463794_4n5o",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "a1d38a6b-1786-4b98-a497-4f40e5cf94d1",
+   "question_id": "CH_1783395463794_03eg",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "7fc0a3fc-ece6-44b3-b2b9-61e8b7095003",
+   "question_id": "CH_1783395463794_7ryk",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "00c04834-0ce0-4ce4-b16f-de51ff3df608",
+   "question_id": "CH_1783395463794_vgv5",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "f10ccf99-3c7d-4fe0-b222-e856c77b84c9",
+   "question_id": "CH_1783396254922_gtrv",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "cbf9500e-c17d-4576-9984-22e06d5b5afd",
+   "question_id": "CH_1783398504170_a4mc",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "24cacb7c-5d97-4e70-af4f-a83391d848dc",
+   "question_id": "CH_1783398504170_eyde",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "09d2d21f-178e-44df-9277-755e7ba3a7e3",
+   "question_id": "CH_1783395076075_4srg",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "38c7372c-c8cc-4585-b7bd-ff2603185f58",
+   "question_id": "CH_1783395076075_k1gw",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "7d3b7baf-1824-4383-b9bf-af0da191e4bb",
+   "question_id": "CH_1783395076075_c2f6",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "da576ef7-f03e-4a65-8345-05df514460e5",
+   "question_id": "CH_1783395076075_gbny",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "42c75c09-bd23-40d9-a9df-4ef8e1918b08",
+   "question_id": "CH_1783395076075_s6xw",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "6cfb817f-f6c9-4a93-b868-ed7768b0156c",
+   "question_id": "CH_1783395076075_7iuw",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "de40a919-fb05-4dcb-8ec4-b667cbf4a07d",
+   "question_id": "CH_1783395076075_yji5",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "437a58eb-c41a-48b9-8bc9-9a52695e1993",
+   "question_id": "CH_1783395076075_zlcg",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "5a831975-5c97-4c48-85e9-8e9d9f500747",
+   "question_id": "CH_1783395076075_mbc8",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "9295ef5d-daec-460b-8677-f949a23c02ad",
+   "question_id": "CH_1783395076075_l276",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "771ea96a-0027-425f-9a03-db1d2c5748a8",
+   "question_id": "CH_1783395076075_fszg",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "04cd044d-b957-48bc-9c35-a6da38069fde",
+   "question_id": "CH_1783395076075_sygu",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "382ffcd5-96c2-4801-a7a8-6975c4df3953",
+   "question_id": "CH_1783395076075_kxxt",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "28120835-1e86-4ba9-8d97-145346e162b1",
+   "question_id": "CH_1783395076075_fz6z",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "11934c51-682a-45e6-8596-2cfd09e0679e",
+   "question_id": "CH_1783395076075_iwjr",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "1be0a232-a1e9-4ab0-ad66-0bf62983ee50",
+   "question_id": "CH_1783398504170_zot7",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "7e0e6492-0042-4e5b-a80b-ebe8916e1497",
+   "question_id": "CH_1783395076075_lis1",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "7602e6a6-efed-4256-b41d-bc2fbb837fac",
+   "question_id": "CH_1783395076075_xax2",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "360b5ea9-11dc-4b21-9cfb-22d21f41d6c2",
+   "question_id": "CH_1783395076075_9kgu",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "616151b9-e89b-4907-98a4-15ac9bd5917f",
+   "question_id": "CH_1783395076075_01lo",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "dc66c78a-2932-43c0-8d39-6a2940b96158",
+   "question_id": "CH_1783395076075_1v3t",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "d4f07254-42af-452b-8b83-aec57bd2e6b7",
+   "question_id": "CH_1783396042634_ru0w",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "697490be-b4cd-4755-ac98-b16da2754c10",
+   "question_id": "CH_1783395076075_hvnb",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "e73d5a05-5d58-43ac-9c57-f0041b1365a9",
+   "question_id": "CH_1783395076075_8cu8",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "07048413-9399-4526-9073-a0768e730142",
+   "question_id": "CH_1783395076075_n0lc",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "e38d8292-8481-40b6-ba35-492e942212b3",
+   "question_id": "CH_1783395463794_7q0a",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "091540cb-4761-4fcd-9179-704f3b10ef62",
+   "question_id": "CH_1783395463794_89f9",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "1e48afb2-c5b4-4e22-8fcf-78ae4df1bbb6",
+   "question_id": "CH_1783395463794_i2b5",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "7347848f-0745-4524-8524-f7a62e63ea94",
+   "question_id": "CH_1783395463794_485o",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "0b580c5a-4ed1-4932-a3dc-6d7dca825be0",
+   "question_id": "CH_1783395463794_axqt",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "dbfa0f54-679a-4b5d-83c1-fc47cafb8226",
+   "question_id": "CH_1783395463794_mth0",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "b45ec240-f1a2-4a1c-a125-95facb2fbd33",
+   "question_id": "CH_1783395463794_nyfp",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "adb5f66e-cdb3-4084-8b2d-a9278114c2a8",
+   "question_id": "CH_1783395463794_lkne",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "d705cc63-b6ae-4191-8917-506ff54f6b02",
+   "question_id": "CH_1783395463794_rk12",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "93d81826-214a-42a1-b800-6081b4819af2",
+   "question_id": "CH_1783395639083_3t71",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "af3fadb9-c0de-43af-acc7-6b309ab24def",
+   "question_id": "CH_1783395639083_3cq3",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "eb321b31-ef91-41d3-9999-57ed1bbf3380",
+   "question_id": "CH_1783395639083_wkm0",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "152c97a5-2ba2-46b9-b4f1-020e277f155a",
+   "question_id": "CH_1783395639083_68t9",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "e513ad6a-228a-492c-b070-a2c17094eccf",
+   "question_id": "CH_1783395639083_n7dt",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "cd1cc75d-40aa-4791-ba43-554ac1ce27cd",
+   "question_id": "CH_1783395639083_0pkf",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "75e2651f-7ca0-4e50-8696-a642e63be54b",
+   "question_id": "CH_1783395639083_ihqh",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "4d6237cf-dd63-439e-90bc-df0ca2023790",
+   "question_id": "CH_1783396042634_9g0e",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "92c93803-c7f6-4b47-afc2-de22742f513d",
+   "question_id": "CH_1783395639083_epc0",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "a3b62df3-f02a-473f-9503-8a54914ac9ae",
+   "question_id": "CH_1783396042634_182j",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "497f1197-b63c-4ab7-a1cc-53a7946219c7",
+   "question_id": "CH_1783395639083_p00y",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "09e402e0-b04c-4ecf-a6dc-bfc79bebd9d9",
+   "question_id": "CH_1783396042634_x00e",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "0cd897d2-b6d4-4e76-b8f2-334d8667f2bd",
+   "question_id": "CH_1783396042634_07r8",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "2d47a5c3-63ed-43a0-b07e-20887d6d27a6",
+   "question_id": "CH_1783395639083_ysfa",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "16b488f4-6e32-413d-8a91-7268a311598d",
+   "question_id": "CH_1783395639083_5yi4",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "8f424af7-1a26-44a5-81cb-2d6365f28782",
+   "question_id": "CH_1783396042634_thrm",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "45f06f8b-53ab-47d7-8bee-72adf4ecd7f7",
+   "question_id": "CH_1783396042634_j3l1",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "74d7a908-ed7f-4211-b722-18f7cf3dcbfa",
+   "question_id": "CH_1783396042634_0st0",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "fd554174-c898-418d-9a14-b6d4637918ab",
+   "question_id": "CH_1783396042634_v074",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "99b2d25c-c471-48a6-89e0-54ebde02736b",
+   "question_id": "CH_1783396042634_er1b",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "4f5b626f-7dd4-4f15-b55c-e1ef84ade167",
+   "question_id": "CH_1783396042634_89dd",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "64f9d6c5-92c7-4b57-bc25-1ef0b39bfd65",
+   "question_id": "CH_1783396042634_xzna",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "5cfa8ee2-a5ff-4344-91cb-0e8ee09817fe",
+   "question_id": "CH_1783396042634_zy1s",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "cad27f22-e7ab-4247-9fd8-c9a2729b7631",
+   "question_id": "CH_1783396042634_h0h8",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "1eda18ad-8848-4298-90b1-2fa72afd35a2",
+   "question_id": "CH_1783398504170_ylw8",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "27e2bed6-5e55-4c62-8a05-33b3baeb87eb",
+   "question_id": "CH_1783396042634_v6jr",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "09ce2587-3440-48a4-84ac-50fcbe568f93",
+   "question_id": "CH_1783396042634_pqw0",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "2716eacf-857c-4927-9843-7d4575ec6156",
+   "question_id": "CH_1783396042634_dwje",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "972406f5-6918-4a7e-814b-55aaa3962b6f",
+   "question_id": "CH_1783396042634_cxu9",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "86c9c2d3-4ac3-48b5-b05c-14feb82e7d14",
+   "question_id": "CH_1783396042634_uqgv",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "1106cd7e-0bce-4171-bee8-d266867f8cc6",
+   "question_id": "CH_1783396042634_7ik6",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "58ddf53b-1f7d-4e98-9bcd-3773be5477bb",
+   "question_id": "CH_1783396042634_bbnt",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "c15541bf-f83a-4497-889d-303dfab23f2c",
+   "question_id": "CH_1783396042634_53j8",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "0eb3088d-a8c8-4094-b93c-93e8f31968e8",
+   "question_id": "CH_1783398504170_jid1",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "315b80d4-c0fe-4ccf-b870-d1224d1f477e",
+   "question_id": "CH_1783396042634_krtl",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "937a9fe8-06f5-4e49-9a37-0719911cce40",
+   "question_id": "CH_1783396042634_vazf",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "2d626a57-7c22-4b64-b9a1-051b6d95ed62",
+   "question_id": "CH_1783396042634_vwts",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "6ebffe0c-16d4-4823-ac62-28d1138736d4",
+   "question_id": "CH_1783396042634_lva0",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "d38aaf39-5e80-4614-83b7-27458cca269e",
+   "question_id": "CH_1783396042634_2dfu",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "0a6be44e-c779-4e66-a9a9-2184e43389a2",
+   "question_id": "CH_1783396042634_irc3",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "f1e9a165-7e9c-45ad-9d7c-614564c6b8d4",
+   "question_id": "CH_1783396042634_4kii",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "2a547e64-30ad-45cb-99fc-dad2ed18dcee",
+   "question_id": "CH_1783396042634_41nx",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "b3df621c-b7d1-4b9b-b90d-35b52374008d",
+   "question_id": "CH_1783396254923_8dpz",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "ad8dfb37-730d-4e28-a354-7fab28b76249",
+   "question_id": "CH_1783396254923_stj7",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "0e0ae774-9631-40a8-98d3-b8f35e173193",
+   "question_id": "CH_1783396687049_qvkb",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "308dab26-c76f-4814-9f0e-359e5a3f717e",
+   "question_id": "CH_1783397137067_a5w7",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "59ebb92b-775a-45aa-b6ba-7864eb361777",
+   "question_id": "CH_1783396254923_9d5r",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "c6048b1d-7940-43a0-9f46-9e822c0f4792",
+   "question_id": "CH_1783396254923_9rgt",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "a5d7db49-5484-4821-b55e-dda49827b213",
+   "question_id": "CH_1783396254923_z5cn",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "c5afcce1-f75f-4933-9316-fcdf76c6a0a5",
+   "question_id": "CH_1783396254923_hp09",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "003a647e-d4b8-4b50-a4fc-52bb776de312",
+   "question_id": "CH_1783396254923_l8lg",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "cb510c3a-6ba7-4a3c-b15a-4d8a4d8a4e2a",
+   "question_id": "CH_1783396254923_z70l",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "c9501112-43da-44f2-9302-3ab3409b4c10",
+   "question_id": "CH_1783396687049_i0d9",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "62fc7df4-7b76-4061-8a3b-3672bb3082c0",
+   "question_id": "CH_1783396687049_swbx",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "419a206e-e98c-4aca-b97d-7418ffb9fd2e",
+   "question_id": "CH_1783397137067_2ac2",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "feb6daab-afe6-408b-be62-6d994c5eca1c",
+   "question_id": "CH_1783396687049_cg0v",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "30e9c0f9-baff-418d-bd6c-a3325a7f415b",
+   "question_id": "CH_1783396687049_rtf0",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "71a4c27b-ae53-48af-8631-26df68c6e66e",
+   "question_id": "CH_1783396687049_cbfd",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "dea28f7e-3eb3-424f-8c90-ed475b14562c",
+   "question_id": "CH_1783396687049_yvhr",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "ce79d226-43b1-418e-af93-39e5887f0fbc",
+   "question_id": "CH_1783396687049_n83p",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "895f3f46-ac57-4b96-bfa1-523ffbcc92c5",
+   "question_id": "CH_1783396687049_zrrs",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "65bdb6ca-44e6-4bd2-8acb-6b45ddea2308",
+   "question_id": "CH_1783396687049_elfn",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "c1590587-90c2-4299-bfce-3ddadff46382",
+   "question_id": "CH_1783396687049_3m7b",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "b805f644-0548-4b69-abed-3f148ac7e334",
+   "question_id": "CH_1783396687049_jzop",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "64215f5d-79d4-4535-8c34-fed8287a7960",
+   "question_id": "CH_1783396687049_3g5z",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "1413d382-52a0-451d-9769-a0259d6782ff",
+   "question_id": "CH_1783396687049_pqw5",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "bb3676b1-be48-4c0a-ac13-349455b50121",
+   "question_id": "CH_1783396687049_zi1o",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "c9476fb2-b418-4d88-8a61-28915362a9e8",
+   "question_id": "CH_1783396687049_z2e5",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "c37d394d-831c-4db3-87ff-ff92eb7fbca2",
+   "question_id": "CH_1783396687049_nrc6",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "4374326e-b128-4de0-ac69-5ec7414494fa",
+   "question_id": "CH_1783397137067_csxx",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "9e27288d-8c52-4c5a-a9fd-3b59fdec5447",
+   "question_id": "CH_1783397137067_8f94",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "d607c89e-186f-492e-a37c-fbf151d5d96c",
+   "question_id": "CH_1783397137067_zmch",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "bd3d71f9-6f11-4ce5-b976-d07eac21ea00",
+   "question_id": "CH_1783397137067_vipq",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "05e2255a-3d21-4936-8521-4ab63781cd6d",
+   "question_id": "CH_1783397137067_58a4",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "0b9f432c-79a1-45ee-8dc9-1e35b313445b",
+   "question_id": "CH_1783397137067_tswc",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "fe9eaf6f-1e37-4c48-a22c-2e3f58bdf78a",
+   "question_id": "CH_1783397137067_gwai",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "89e0a63e-55ba-4514-a088-e3e49b46e74f",
+   "question_id": "CH_1783397137067_yxue",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "8c4d41cf-ac20-4320-8f93-471d6549a0a4",
+   "question_id": "CH_1783397137067_o5lj",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "d9f86afa-bfde-4d81-b70c-f7240cf910cf",
+   "question_id": "CH_1783397137067_3q6v",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "a5ddeee5-4dc5-4421-b8c6-c3f6e628f9a9",
+   "question_id": "CH_1783397137067_l135",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "b2faaa2c-9db3-4d0c-b4c2-4381d6014727",
+   "question_id": "CH_1783397137067_vu2h",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "bab138b1-d8d8-47d4-9842-56d0c1426a75",
+   "question_id": "CH_1783397137067_8s1p",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "09b51ca2-b963-4d51-b232-8e44a4cb0f0c",
+   "question_id": "CH_1783397137067_xkkr",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "a6e99774-df13-434f-a519-08324980b89a",
+   "question_id": "CH_1783397137067_gkpw",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "6b12c0a0-0684-49f0-98f0-c07a7191b59f",
+   "question_id": "CH_1783397137067_09f8",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "00078e31-354b-4617-96a9-52bb2601b7a2",
+   "question_id": "CH_1783397137067_pn1h",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "9964a6cc-1a7e-496f-a6bb-215f55db40d8",
+   "question_id": "CH_1783397137067_094o",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "a6cc61dd-0c67-43b6-a8eb-b24e85b155a6",
+   "question_id": "CH_1783397137067_52zq",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "039cb678-f0ed-4959-950f-6f1fa0a9d59c",
+   "question_id": "CH_1783397137067_8a5l",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "d03bcf7e-cd78-4948-97a7-59b2a21c8385",
+   "question_id": "CH_1783397137067_gexm",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "98df9dae-7f71-4a8a-9aa2-efdab1c7adca",
+   "question_id": "CH_1783397137067_i60g",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "dd0fc79a-614e-4c4a-b768-a1c59e9b4af7",
+   "question_id": "CH_1783397137067_zmcm",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "b8c72a86-ddaa-457f-a6ca-79325ea1ec11",
+   "question_id": "CH_1783397137067_b4we",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "60a10877-8877-4d9a-9cf1-a01f00be1353",
+   "question_id": "CH_1783397137067_8ftm",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "f5ea5b24-9c26-44ef-a5fb-1502e0fa84b3",
+   "question_id": "CH_1783397137067_7uq6",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "3358e4e2-03fe-4f44-b624-1a388303d9ce",
+   "question_id": "CH_1783397137067_s2ys",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "e5c218f5-961f-4af9-b08b-e960be20c8cf",
+   "question_id": "CH_1783397137067_rifn",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "97502e4f-01ca-4b16-bc52-8a1d0a5c116d",
+   "question_id": "CH_1783397137067_ehq5",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "b1cf2030-b2a2-4bab-a554-f21ee4fd2026",
+   "question_id": "CH_1783397137067_q4xx",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "486ec0b6-2496-45e7-bcc3-38a4a8ae67f9",
+   "question_id": "CH_1783397137067_ah32",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "6ad088c6-5c59-423d-9697-71ba37281016",
+   "question_id": "CH_1783397137067_b6bz",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "55176a82-52b2-4f71-9160-f4e524102d3a",
+   "question_id": "CH_1783397137067_xbzt",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "c5139ea4-25e8-4a01-aeb8-bd671ac90323",
+   "question_id": "CH_1783397137067_us7b",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "ed465b64-662a-4d44-8a02-fae257b6685a",
+   "question_id": "CH_1783397137067_sarj",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "faaf27ad-33db-400d-9c49-498a74d176ac",
+   "question_id": "CH_1783397137067_qd5s",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "98f05667-a19c-48bd-b774-93cc5dc66a9b",
+   "question_id": "CH_1783397137067_2rs9",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "c17921fa-c2fc-42f1-9c54-30a9d2ea949b",
+   "question_id": "CH_1783397137067_uorc",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "f32a0764-c5b5-46bd-b77d-9dd1b18fc760",
+   "question_id": "CH_1783397137067_ivaw",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "21b0a68a-ee44-4a92-8e61-9a0836d5b68f",
+   "question_id": "CH_1783397137067_narv",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "cdc06c5f-8f6e-4727-afc0-3e4617f08327",
+   "question_id": "CH_1783397137067_loxf",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "cbe74c04-bc1a-4bc1-8324-af4ba69706ee",
+   "question_id": "CH_1783397137067_sokm",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "17124be3-24f2-43b8-a2ff-0dc8728bf430",
+   "question_id": "CH_1783397137067_fxbh",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "a4b49ab9-d7b2-4b79-a612-ea00211d003b",
+   "question_id": "CH_1783397137067_sxve",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "c25d99ec-0538-4d02-b343-6608a4713472",
+   "question_id": "CH_1783397137067_bb8t",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "d1b9ce0a-ef9a-4330-847a-909b8f56a994",
+   "question_id": "CH_1783397137067_y8o9",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "c23cf634-67df-45d7-bcdb-f7d415f68081",
+   "question_id": "CH_1783397137067_4mc6",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "1172686c-8f1c-4082-bea6-540855acc4b7",
+   "question_id": "CH_1783397137067_e78e",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "3b0a12d9-86ad-4f5c-84e7-100181112dc3",
+   "question_id": "CH_1783397310851_3ppb",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "003ed34f-d3b0-4029-9dbd-16f9faa71d66",
+   "question_id": "CH_1783397310851_grni",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "733f7e86-d068-4df7-a748-74ee3b580b87",
+   "question_id": "CH_1783397310851_fho4",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "64b73c20-2888-4917-af7d-aab4b04b79d9",
+   "question_id": "CH_1783397310851_enkc",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "6c590518-f653-4126-8466-a07abf023a5d",
+   "question_id": "CH_1783397310851_koq1",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "018dc582-eab9-4139-a8d3-e640bbb2531a",
+   "question_id": "CH_1783397310851_8uab",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "b46db79b-0934-4856-8bf2-526d2e07e745",
+   "question_id": "CH_1783397310851_cm5z",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "07333b3c-979e-47f3-88eb-979d2d459de4",
+   "question_id": "CH_1783397310851_9xhu",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "42e0200d-cf2b-4dc7-be7b-1bc81952c3bb",
+   "question_id": "CH_1783397310851_evwk",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "6ee25dfc-2435-45eb-aab7-91740f70688c",
+   "question_id": "CH_1783398504170_ha67",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "05d6f375-1df3-41cc-a2d3-c676d8173dd0",
+   "question_id": "CH_1783398504170_tse4",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "e30bb3a6-1457-432e-b9d1-75ed8995c902",
+   "question_id": "CH_1783398504170_e3vn",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "7eaa0916-7006-42ee-8cb2-57d4f712fcc2",
+   "question_id": "CH_1783398504170_xay9",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "9d2ab530-75ec-497d-848c-f965ca8d0d9b",
+   "question_id": "CH_1783398504170_xiwl",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "962c7ef8-2717-481f-945d-e6bd5e08728a",
+   "question_id": "CH_1783398504170_sykt",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "29904d5d-f55b-441a-b6eb-6ffa47b77353",
+   "question_id": "CH_1783398504170_l1zo",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "87d6a669-c93d-4a08-bd17-2f313266cf4a",
+   "question_id": "CH_1783398504170_zgtv",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "eccce303-1214-416d-a899-40588befa9af",
+   "question_id": "CH_1783398504170_no65",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "f9deaba8-b28e-435f-b884-e267101f1dff",
+   "question_id": "CH_1783398504170_urra",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "1e51700d-7a1c-4c8c-a808-db6ce586132e",
+   "question_id": "CH_1783398504170_r0lx",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "454346ad-22b7-4553-99b3-7e685b074922",
+   "question_id": "CH_1783398504170_2a9k",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "14fdf9b4-3270-4481-b82a-84ed7ccddbed",
+   "question_id": "CH_1783398504170_xxhg",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "2869ecf7-f140-41ca-88d4-1a7945bfd9f1",
+   "question_id": "CH_1783398504170_ypvm",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "5796acc6-0287-43ab-812a-59150ae0d377",
+   "question_id": "CH_1783398504170_ibzr",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "04a8da3a-b756-4d50-be4c-be6f9129391d",
+   "question_id": "CH_1783398504170_kq15",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "a2269732-5b69-42dc-8989-f8e943294ec6",
+   "question_id": "CH_1783398504170_aiw7",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "0d0f11d7-25fc-40c3-9591-66fdd6082bda",
+   "question_id": "CH_1783398504170_la51",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "64def257-95e1-428e-b146-f805f8fb1afe",
+   "question_id": "CH_1783398504170_zb5g",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "a3676a79-f2c0-4012-a06f-1bc832706bea",
+   "question_id": "CH_1783398504170_wo66",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "0679e805-3b05-4fd4-ba5c-680481dc194d",
+   "question_id": "CH_1783398504170_n50s",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "4ef365e0-9b69-4a11-80ec-2ed857fdd8ad",
+   "question_id": "CH_1783398504170_qa97",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "ea6d9068-3e9b-4d6e-8fb3-e45ca7d34b6c",
+   "question_id": "CH_1783398504170_x69l",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "9c0674ec-6974-409f-8ecf-0878119ab777",
+   "question_id": "CH_1783398504170_rdo4",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "e0f9c69e-edc3-4654-9236-7402858ffd8f",
+   "question_id": "CH_1783398504170_vvch",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "c40b2c38-1347-491b-96ed-05b7aa05ca1e",
+   "question_id": "CH_1783398504170_qjwy",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "35300a64-e2b6-4667-bcbf-cb9c92571c76",
+   "question_id": "CH_1783398504170_82pk",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "0b8b1522-f1b9-4b04-ba49-ee26a4059cce",
+   "question_id": "CH_1783398504170_7z3b",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "d379aabc-2b2f-4210-81f8-820087f10171",
+   "question_id": "CH_1783398504170_d4ie",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "142bd2b9-1b56-4978-a4c4-c47d47981ddf",
+   "question_id": "CH_1783398504170_iubh",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "3af08f80-850b-4487-9a22-de0c4b335b66",
+   "question_id": "CH_1783398504170_f5x8",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "866493b9-eb54-4519-9f19-9ab61998ea40",
+   "question_id": "CH_1783398504170_fqc4",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "b9560327-fa88-453d-abb6-0709bb34a90d",
+   "question_id": "CH_1783398504170_bg20",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "fbef938a-60bb-46c5-8ff1-8c3c1f28cfe9",
+   "question_id": "CH_1783398504170_egiy",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "7c5df701-41a6-4772-96e0-c0765e7028b0",
+   "question_id": "CH_1783398504170_nmor",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "5beb2b98-9db2-45aa-8f02-b36b65ee6cb9",
+   "question_id": "CH_1783398504170_9fvw",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "740ed18e-ead0-4dd8-a3d9-8ecf2818d302",
+   "question_id": "CH_1783398504170_8ado",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "ad8fb066-7c87-4207-90ce-2a1722123c0e",
+   "question_id": "CH_1783398504170_iz1q",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "8e29efce-a041-483c-a7db-dfc494db6e8f",
+   "question_id": "CH_1783398504170_ouku",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "81b34515-64d0-43c1-9681-110aac8e256c",
+   "question_id": "CH_1783398504170_xniu",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "a5767102-2e3b-4c43-93d6-5576ce59c5d1",
+   "question_id": "CH_1783398504170_ze6s",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "2b72fd22-b8d6-449f-80a7-dc42f693267d",
+   "question_id": "CH_1783398504170_6c1i",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "b9872940-e99d-4634-8b67-bc97219b9f65",
+   "question_id": "CH_1783398504170_tkj4",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "a0eb13be-e086-46af-866b-4da028f3c639",
+   "question_id": "CH_1783398504170_50pl",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "70ecc9b0-a652-4d7c-9b15-6234acca57a7",
+   "question_id": "CH_1783399490787_2siq",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "8f088998-3cd8-4013-8921-20420371a1b1",
+   "question_id": "CH_1783399490787_t9mm",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "f1dec592-045a-4187-a2f4-cb4604aaf17c",
+   "question_id": "CH_1783399490787_ql44",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "266267db-9d56-4c2d-a2bd-4a1579f1392b",
+   "question_id": "CH_1783398504170_5ec3",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "4cf18ea4-8f7d-46a9-b41f-6290261a27e0",
+   "question_id": "CH_1783399490787_krbe",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "9a02b054-2ce8-4995-81ea-99e4403d73b3",
+   "question_id": "CH_1783399490787_owea",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "7af9ef51-a5a1-468f-83c6-fd4693ba35a2",
+   "question_id": "CH_1783399490787_gm5n",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "ec5bb17e-da1c-4bba-bb88-9a14b26fa382",
+   "question_id": "CH_1783399490787_89g1",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "2f511b7f-e196-4315-a6d0-8653331ce6a8",
+   "question_id": "CH_1783399490787_l00g",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "ac7021a0-6d57-4cab-bb6a-c5ead264261b",
+   "question_id": "CH_1783399490787_kj8q",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "527f659a-760b-4b71-9c22-500d83f24adc",
+   "question_id": "CH_1783399490787_w9ja",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "cbae94fb-ea6a-4777-8f30-4415e655a562",
+   "question_id": "CH_1783399490787_xmnb",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "e45f0c10-8480-49e4-ad63-3ee2e8c63dcc",
+   "question_id": "CH_1783399490787_ubk6",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "5e2ef54e-836f-4f0c-bdc1-24e299f7d4ea",
+   "question_id": "CH_1783399490787_mhna",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "0921e97a-6fa9-4eb0-a288-e4e1e1e3e12a",
+   "question_id": "CH_1783399490787_cu1n",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "0559a739-2405-4b5a-aab1-e0ed2e451825",
+   "question_id": "CH_1783399490787_w7ia",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "52f32b1e-da81-4115-93a1-4fb19832c764",
+   "question_id": "CH_1783399490787_sovw",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "ab5da558-9284-413f-bf28-1869203926b6",
+   "question_id": "CH_1783399490787_rmnk",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "097771da-8c39-411c-b413-474bbb96a17f",
+   "question_id": "CH_1783399490787_i8qr",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "024f0614-9ab0-4cb7-a933-e79cc0e21b33",
+   "question_id": "CH_1783399490787_eftc",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "bb81ab8a-c4ad-4985-b5d3-5633041bc3c8",
+   "question_id": "CH_1783399490787_872i",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "908be33b-59bd-4e43-b93a-11d931ee483c",
+   "question_id": "CH_1783399490787_ogq5",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "fd434526-e6a4-4b0b-b8e8-0d7cfe945022",
+   "question_id": "CH_1783399490787_4e06",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "6f0fda7a-7f97-448c-93c0-8cd411874c98",
+   "question_id": "CH_1783399490787_jv4d",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "3904cd97-28c7-4c2c-8bad-78894100abc1",
+   "question_id": "CH_1783399490787_hwqr",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "608570b5-5776-47f4-b2df-ae7a4fce848a",
+   "question_id": "CH_1783399490787_rxaw",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "2f654adf-e530-4dd2-a2e5-7e07a215a744",
+   "question_id": "CH_1783399490787_tpdh",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "9ad7e6e4-21a3-42f2-ae05-11772e500aba",
+   "question_id": "CH_1783399490787_oilx",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "8ec992d4-44aa-4aeb-8c00-dcd285f4acc9",
+   "question_id": "CH_1783399490787_l00s",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "3c272246-dfce-4632-8d73-804458cfa855",
+   "question_id": "CH_1783399490787_mimj",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "0f735bd0-fb14-49a1-af61-e4983bf51291",
+   "question_id": "CH_1783399490787_w03f",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "21428a48-5a1f-438a-8837-7e4ee503ade5",
+   "question_id": "CH_1783399490787_2lt2",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "db06f078-60e2-43ca-900a-f7ce752bfc5c",
+   "question_id": "CH_1783402587138_nvoz",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "4d6f60ab-53b7-4d31-b7ea-04ff445dceaf",
+   "question_id": "CH_1783402587138_6t4j",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "bb036fc4-aaa1-427d-a380-4a72f46fa539",
+   "question_id": "CH_1783402587138_cdsv",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "8deecd72-6a29-4491-8a9c-3c69eed77785",
+   "question_id": "CH_1783402587138_y5s8",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "6d86794b-74ef-43b2-824b-820fc25a35bf",
+   "question_id": "CH_1783402587138_qkrt",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "17023aa7-c5b8-4d78-ba26-2ffaebd001f5",
+   "question_id": "CH_1783402587138_qte7",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "2bad1213-fa1c-42f6-82d2-f5d7d891c8e2",
+   "question_id": "CH_1783402587138_dogp",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "fbcc264b-41b6-4858-93e6-eec7bcbace8b",
+   "question_id": "CH_1783402587138_syei",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "1aa10ba0-50b5-4b2b-a78a-7bb2c5974386",
+   "question_id": "CH_1783402587138_dupf",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "4d270a00-679d-41dc-b525-22c16deaa1af",
+   "question_id": "CH_1783402587138_sb53",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "0f3cbda7-718e-4949-9267-ce7084e8acc4",
+   "question_id": "CH_1783402587138_4ufz",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "4e041d63-ea1a-4314-864d-469b4cb92e85",
+   "question_id": "CH_1783402587138_cwr5",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "390a07ae-23c3-48e5-883c-10560210319a",
+   "question_id": "CH_1783402587138_nxqt",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "776cfe7d-2f70-4ba6-ba04-7f786391b727",
+   "question_id": "CH_1783402587138_2mh3",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "a4e767f1-a75b-4422-a74f-ea207cbb9452",
+   "question_id": "CH_1783402587138_5g36",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "ce97ee47-1cb0-4a09-b5b4-f84a6a217dc7",
+   "question_id": "CH_1783402587138_ktsn",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "857fab68-f995-4484-9a6f-765798aed36a",
+   "question_id": "CH_1783402587138_lt0z",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "2a5ee3a8-07f2-466f-b9a7-e5b5aaac3e7e",
+   "question_id": "CH_1783402587138_1m9i",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "5b28bd2e-6b12-4c07-aff5-76571007ff1a",
+   "question_id": "CH_1783402587138_i677",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "61ebb1ab-435f-4040-a073-08ce3fe737e0",
+   "question_id": "CH_1783402587138_ewhy",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "c33be7d4-3c5c-4c99-8516-7a705c3b8a31",
+   "question_id": "CH_1783402587138_7drw",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "d4f46cd9-bfb6-4f9a-8358-965a06e5b663",
+   "question_id": "CH_1783402587138_7pav",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "6caad644-6a56-42c1-8e05-d235a9155fe3",
+   "question_id": "CH_1783402587138_q8rc",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "ced006aa-9871-425c-b4ec-d2b64a79f48e",
+   "question_id": "CH_1783402587138_yfdw",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "ce80d835-c036-47b6-8dee-12eab11aad28",
+   "question_id": "CH_1783402587138_3y92",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "21c3239f-c692-4cc6-ae68-44f9801afe99",
+   "question_id": "CH_1783402587138_rhuy",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "96ad4c34-3c34-49c2-9d92-138ebde723c5",
+   "question_id": "CH_1783402587138_ksyf",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "1a2f3bfc-235b-4ba8-8af2-7301446b0f45",
+   "question_id": "CH_1783402587138_d5ct",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "5cbc6e40-7426-4ed6-9c60-86b8ce86e563",
+   "question_id": "CH_1783402587138_zco6",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "e4a6763a-c7b8-4163-b578-25de6c61bb54",
+   "question_id": "CH_1783402587138_pw1e",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "50e7b290-154b-40a4-9593-fd7c808fa6b3",
+   "question_id": "CH_1783402587138_wy3j",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "7c2bd338-89eb-450f-b575-58af56ed2b66",
+   "question_id": "CH_1783402587138_mlbz",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "1a9ff412-c895-4810-8bf0-7f637cf7ac60",
+   "question_id": "CH_1783402587138_416m",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "c22fe61d-1f7a-4434-9f1e-ba719df7a0da",
+   "question_id": "CH_1783402587138_x8uc",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "47b6cf32-047a-453e-b68f-2707f0abd810",
+   "question_id": "CH_1783402587138_haou",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "10849b24-61e3-4fa4-aad1-799656904f34",
+   "question_id": "CH_1783402587138_gqm1",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "904a71b2-c168-403a-8704-96f23042006d",
+   "question_id": "CH_1783402587138_nowq",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "51712daf-3198-497d-9547-e4fc7d0d168e",
+   "question_id": "CH_1783402587138_q6m2",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "6e7856e7-43f2-4157-a786-8632c1f8687a",
+   "question_id": "CH_1783402587138_3liq",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "00298610-a86c-4605-9da8-5ee31c8a064b",
+   "question_id": "CH_1783402587138_4tap",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "80dec516-c8a1-4bcb-a76d-ca893395f923",
+   "question_id": "CH_1783402587138_oq5q",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "3442f4ad-0d18-46c0-861a-1a03eb7bbe7d",
+   "question_id": "CH_1783402587138_fl0l",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "802b281c-b73a-49d4-934e-141d609c072c",
+   "question_id": "CH_1783402587138_d8zx",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "27c8904e-a713-414f-a0ee-be34cd0380a2",
+   "question_id": "CH_1783402587138_jnr6",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "a90a0d79-7706-426d-aceb-c4543020a155",
+   "question_id": "CH_1783402587138_otno",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "187f7f6e-0897-4b2c-a554-f2a708f7970d",
+   "question_id": "CH_1783402587138_0pyb",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "782e3c96-8f9a-4b19-a166-7f8e690cac4d",
+   "question_id": "CH_1783402587138_jlau",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "4b562c94-f254-4111-acd2-457a0fc60ed1",
+   "question_id": "CH_1783402587138_901d",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "150835b4-4681-4560-82bc-9493dc7d735e",
+   "question_id": "CH_1783402587138_umpp",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "5fddc21f-6eef-435b-a0d2-efd7fbf9192a",
+   "question_id": "CH_1783402587138_2p9l",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "e7c438df-0fcb-4d0e-a26c-0b189c363914",
+   "question_id": "CH_1783402587138_1f3t",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "d2384b59-3fe3-4c85-9b16-9e5443464835",
+   "question_id": "CH_1783402587138_p6wt",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "d7f15477-7f1a-4420-9e84-fbfee1e50dad",
+   "question_id": "CH_1783402587138_rwbs",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "8f48215b-3fc7-4ad5-95e2-15c273ffdb91",
+   "question_id": "CH_1783402587138_zy5h",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "e7b63228-4912-410e-96ff-82b64bfd7b19",
+   "question_id": "CH_1783402587138_11o4",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "3d455e23-cd51-49d2-9b50-14ceabeb8bab",
+   "question_id": "CH_1783403067898_lsg7",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "17ffc5ea-d3c7-4a7e-991f-37fd1b484ae2",
+   "question_id": "CH_1783402587138_gw3e",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "c7a79653-4d72-438a-a929-3eaee774b04f",
+   "question_id": "CH_1783402587138_hiu2",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "38997491-0d24-49a6-af73-d9a7c92ce6cb",
+   "question_id": "CH_1783402587138_8i49",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "fc0eb096-e4ab-47d7-8603-7f4076d13ea0",
+   "question_id": "CH_1783402587138_1fa5",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "e79f3e6c-6984-4190-ae7b-b148330f3859",
+   "question_id": "CH_1783403067899_58x0",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "926071fc-61c1-4ffd-b0e9-962eff44f2e7",
+   "question_id": "CH_1783403067899_nc78",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "b9e8df63-4a7a-4245-b195-3b7c056d3a32",
+   "question_id": "CH_1783403067899_1ete",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính giá trị của biểu thức"
+  },
+  {
+   "id": "0e7d897b-1c86-410f-b61f-e38e7894fb86",
+   "question_id": "CH_1783403067899_tmo2",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "91d94725-f3e4-41f4-b09a-e04e91c4eb36",
+   "question_id": "CH_1783403067899_rxws",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "48a6d062-ebd8-4cd2-8161-6622661d93bd",
+   "question_id": "CH_1783403067899_slvt",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "cc8945fb-8756-46e3-a64e-1dda5bb9cffd",
+   "question_id": "CH_1783403067899_7da1",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "b2339c88-e3b3-4b99-9128-78452bd417ac",
+   "question_id": "CH_1783403067899_2r1b",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "ee6d0c0f-46c0-4112-baef-9b02dc46ad1a",
+   "question_id": "CH_1783403067899_b8kj",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "385a84ec-3b34-4490-a21d-839d266cbc98",
+   "question_id": "CH_1783403067898_f6jk",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "46cde9cb-1634-4e1e-96ec-d2f28bed3f92",
+   "question_id": "CH_1783403067899_f4dw",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "6afaa2b2-331b-4a25-bd1e-ecdce9736a08",
+   "question_id": "CH_1783403067899_qch3",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "ab9626e6-3f6e-44dd-a999-80eac659af19",
+   "question_id": "CH_1783403067899_y9xy",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "8dbb4e56-3f7a-4783-9d1c-22edaccba191",
+   "question_id": "CH_1783403067899_di8h",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "c8e19eb2-a23a-4b23-a5fb-2f240b25b97b",
+   "question_id": "CH_1783403067899_e9ow",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "81d17ff4-a7f5-402f-a923-8b151eb9bcde",
+   "question_id": "CH_1783403067899_dugf",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "fb62df79-8bbe-4051-87fe-ab63af08df87",
+   "question_id": "CH_1783403067899_2ggu",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "5870a46c-1e3d-4c89-8d19-f8de1bf4ceb6",
+   "question_id": "CH_1783403067899_svlj",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "ff4d31bd-d82c-4931-a7e6-9e92fe20eb62",
+   "question_id": "CH_1783403067899_nq2r",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "603b9b82-b569-49d3-a014-4a4dc39cca98",
+   "question_id": "CH_1783403067899_d094",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "8425e0b6-8270-4f17-8924-f90c2a5a2093",
+   "question_id": "CH_1783403067899_qte0",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "cf053d97-946e-4557-a89b-c26243719b2e",
+   "question_id": "CH_1783403067899_2r64",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "a2afb10e-0088-42cb-876b-3224a40c3480",
+   "question_id": "CH_1783403067899_5sg8",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "9a707f91-7eb0-42cb-98a8-27eda218ae1e",
+   "question_id": "CH_1783403067899_bpb4",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "5d2c1d09-8092-4300-8b93-2181ad309549",
+   "question_id": "CH_1783403067899_inzv",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "35e19ddf-5906-469b-be3d-ae5cbeef59d1",
+   "question_id": "CH_1783403067899_dryo",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "b71176c9-eb35-4516-906b-764073e29b5d",
+   "question_id": "CH_1783403067899_dprl",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "54434ea5-9b45-4da5-8946-3ce6c1443216",
+   "question_id": "CH_1783403067899_bqk6",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "4ec9dc8a-73a5-4266-a247-31226827545c",
+   "question_id": "CH_1783403067899_26n8",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "fd1fb05d-7acc-4020-b2c1-d29d181a7558",
+   "question_id": "CH_1783402587138_xltu",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "ee07aaf2-8154-4e0e-bdf9-cefb51b56ee8",
+   "question_id": "CH_1783395639083_xrg0",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "cc9f0951-d7ce-4be5-ba5b-55a5c6e217b5",
+   "question_id": "CH_1783395639083_uv4f",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "b584a30c-d754-47cb-8374-a566ef394587",
+   "question_id": "CH_1783403067899_9sg4",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "d32cf4df-1f61-4058-904c-d146dd5cd473",
+   "question_id": "CH_1783396254922_8ts6",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "21350f6c-4842-45f1-9b42-9069f0d7305a",
+   "question_id": "CH_1783396254923_0rc2",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "5705663c-873f-4103-aa0d-9eec074735a2",
+   "question_id": "CH_1783395463794_2t4e",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "a0d9d29c-9b19-42c9-9c57-23a8fd7c060a",
+   "question_id": "CH_1783395076075_ttqu",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "8bb3342b-0616-4487-bb46-047c9a7deac9",
+   "question_id": "CH_1783395463794_9o8s",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "01c8db52-037e-4d2e-b079-52c50ed4455d",
+   "question_id": "CH_1783396687049_6qaf",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "27334903-ee16-4dc4-b25e-247fc9221819",
+   "question_id": "CH_1782977566042_9tzt",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "f5e6bb37-43a4-4349-acf8-a1a7f47005a9",
+   "question_id": "CH_1783397137067_m5cw",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "5a54323f-14f3-4477-88c0-d2c5cb81cde8",
+   "question_id": "CH_1783402587138_4p16",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tìm bậc đa thức"
+  },
+  {
+   "id": "171dce1d-9692-407d-8444-226be787ea6e",
+   "question_id": "CH_1782978538435_b6mt",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "8f5500e9-9d51-462a-b310-1288492e648a",
+   "question_id": "CH_1783396042634_vytf",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "6de5b403-83c6-4593-becf-d47545b1d347",
+   "question_id": "CH_1783395076075_de2t",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Nhận biết đa thức, hạng tử của đa thức"
+  },
+  {
+   "id": "d26e83b4-5a76-4cfe-af13-7830ca6eab1a",
+   "question_id": "CH_1783396687049_0k3g",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "d0abe546-cdc2-4d6b-b4db-6f29c0ee84e3",
+   "question_id": "CH_1783399490787_fz2j",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "b808f9a5-198b-461c-8b27-314735edc200",
+   "question_id": "CH_1783399490787_1zhu",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "3f2d1d33-c641-4f1e-acd0-3f4bd0ff91cd",
+   "question_id": "CH_1783402587138_v889",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính giá trị của đa thức"
+  },
+  {
+   "id": "88fd56fd-dd2e-4765-9e4e-396cf8527e06",
+   "question_id": "CH_1783398504170_29mb",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "6ad593ee-486d-4adb-b7d9-322de9b12649",
+   "question_id": "CH_1783399490787_z47e",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "e8dea733-1870-4146-95f6-198c8ba1ecad",
+   "question_id": "CH_1783399490787_rprj",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "cb9a7d68-2a07-43c7-bbf9-aea489844bbe",
+   "question_id": "CH_1783402587138_dab1",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "d0662275-b885-46e2-b9da-f4151b63f835",
+   "question_id": "CH_1783396042634_q0ts",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "32d7aab2-ab09-4170-b7a1-ca036a94d2fd",
+   "question_id": "CH_1783396042634_0v1f",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "9c625641-ce24-4939-99cc-646b385d3512",
+   "question_id": "CH_1783397137067_9dvc",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Chứng minh"
+  },
+  {
+   "id": "8aef1167-e5d4-4d21-a95c-04ec323b8fe0",
+   "question_id": "CH_1783397310851_om7i",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "727abb7e-ae0b-44f3-8600-86e289563511",
+   "question_id": "CH_1783397310851_tehh",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "10e4d721-8367-4e83-bc07-d504119a5585",
+   "question_id": "CH_1783402587138_x8re",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "b540acab-e74d-497c-b56d-f82bcdb6e58e",
+   "question_id": "CH_1783397137067_cvnu",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "3240444d-23f4-4b6c-9af3-697575250eb9",
+   "question_id": "CH_1783397137067_ypt1",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "6f56cece-f7ed-4e0a-9cb6-23076dd9395b",
+   "question_id": "CH_1783397137067_4v6u",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "d986ef2a-7920-44a3-9058-60090199fcdc",
+   "question_id": "CH_1783402587138_y5th",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "7c52113a-4874-40f9-bb39-df5d0487b361",
+   "question_id": "CH_1783399490787_klvs",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "2bd38cd4-7e3b-4087-a0b2-e48cf04c4efd",
+   "question_id": "CH_1783398504170_fvn3",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "f2d2c4e5-e69b-4dba-a44d-7387fb28b4a9",
+   "question_id": "CH_1783398504170_mvtj",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "cc7db6c2-6087-40af-9af3-d9dbc21b5f25",
+   "question_id": "CH_1783399490787_g8pw",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "c3b89c8c-19e5-4125-a6a0-a3c89da37407",
+   "question_id": "CH_1783398504170_34pu",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Phép chia hết"
+  },
+  {
+   "id": "5a3dd2b2-7914-4103-b1e0-af2aef51a635",
+   "question_id": "CH_1783402587138_kred",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Dạng toán chia hết"
+  },
+  {
+   "id": "4a1306a8-ff88-49f3-bccf-b40de5e8091c",
+   "question_id": "CH_1782978538435_ql7b",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "86f74eec-d65e-4c43-9dbd-97ad2b3654fd",
+   "question_id": "CH_1783398504170_wr9z",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đơn thức cho đơn thức"
+  },
+  {
+   "id": "65f367c6-85e7-45cf-86dc-9edf91365e23",
+   "question_id": "CH_1783402587138_3ri7",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  },
+  {
+   "id": "c35a527d-fea0-4390-be94-e90ce1930d16",
+   "question_id": "CH_1783395639083_vd8q",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Thu gọn đa thức"
+  },
+  {
+   "id": "c9fd4cf6-85f9-4163-8806-fcd57197542a",
+   "question_id": "CH_1783396254922_mpqk",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "id": "c3aa562b-dfdf-4c35-b3b6-1b5b9f30e22f",
+   "question_id": "CH_1782978538435_tq5h",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức đồng dạng"
+  },
+  {
+   "id": "e107fedc-35f7-42fb-900f-7db818b6e1d9",
+   "question_id": "CH_1782978538435_4nwg",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Cộng, trừ các đơn thức đồng dạng"
+  },
+  {
+   "id": "0b788d47-cebd-409a-8104-2112e01cae84",
+   "question_id": "CH_1782978538435_4gs1",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Tìm đơn thức thỏa mãn đẳng thức"
+  },
+  {
+   "id": "2b5eb839-f1d1-449d-9d04-a3b1ab7f5846",
+   "question_id": "CH_1783399490787_yp3t",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "67c72f97-1fb8-4073-b92c-f2781fd5f1de",
+   "question_id": "CH_1783397137067_kuwh",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "ace145bd-38bc-4320-a992-3cfcc03f0696",
+   "question_id": "CH_1783398504170_1qfb",
+   "lesson": "Bài 5. Phép chia đa thức cho đơn thức",
+   "math_form": "Chia đa thức cho đơn thức"
+  },
+  {
+   "id": "43e5aa49-16d6-4592-a98e-cb39eaa55454",
+   "question_id": "CH_1783395463794_8p56",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "0f9cc2d8-d82a-42d5-a547-78f082795e28",
+   "question_id": "CH_1783396042634_f5rz",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "a17115cf-0909-4fe9-9847-d72918ce829c",
+   "question_id": "CH_1783395076075_4p46",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "1b4b371c-cae7-4af8-ad2e-30fc156a6097",
+   "question_id": "CH_1783396687049_hnqr",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "294e1307-72da-47a1-a916-d41a101b831a",
+   "question_id": "CH_1783396687049_g9jv",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "a86a7290-0f5e-41e1-be8d-a9f6818f51ba",
+   "question_id": "CH_1783395463794_y1ro",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "35c8f777-331d-4470-88df-22ab01cedcb3",
+   "question_id": "CH_1789059088734_s3n3",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Thu gọn đơn thức"
+  },
+  {
+   "id": "08d8377d-4996-4271-a689-7110d3cfdf01",
+   "question_id": "CH_1789059088734_2778",
+   "lesson": "Bài 3. Phép cộng và trừ đa thức",
+   "math_form": "Tìm đa thức thõa mãn đẳng thức"
+  },
+  {
+   "id": "e8e6d09d-7b85-4b4d-b064-c246e83f8ee3",
+   "question_id": "CH_1789059088734_o3eh",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Phép nhân đa thức"
+  },
+  {
+   "id": "41f00add-81ee-4770-b566-5828cf198ff2",
+   "question_id": "CH_1789059088734_b2pu",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "c7910b3f-0b56-446f-ba5c-aff84690fac0",
+   "question_id": "CH_1789059088734_g3ka",
+   "lesson": "Bài 2. Đa thức nhiều biến",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "9f5df183-1549-458f-b788-d48f3bcc3033",
+   "question_id": "CH_1783916424739_bd1o",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "a07b742f-2cf8-41a8-b414-e85bc6c1a294",
+   "question_id": "CH_1783399490787_lv38",
+   "lesson": "Bài 4. Phép nhân đa thức",
+   "math_form": "Rút gọn và tính giá trị biểu thức"
+  },
+  {
+   "id": "00a699c9-8916-42b9-9e4e-709d0cfaec7b",
+   "question_id": "CH_1782978538435_qqk6",
+   "lesson": "Bài 1. Đơn thức",
+   "math_form": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+  }
+ ]
+}

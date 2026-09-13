@@ -1,0 +1,2648 @@
+{
+ "question_categories": [
+  {
+   "id": "175bc697-47d3-44a1-ba77-a4e304aee0e2",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của biểu thức đại số bằng cách phân tích đa thức thành nhân tử và thay thế các giá trị đã biết."
+  },
+  {
+   "id": "c88f9063-7bd7-4ebf-86c8-ca2a7d0c1d8b",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp thêm bớt cùng 1 hạng tử",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc phân tích đa thức thành nhân tử bằng phương pháp thêm và bớt cùng một hạng tử thích hợp."
+  },
+  {
+   "id": "3e951df1-f2b3-44a2-a2a1-5e2232939c3f",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc phân tích đa thức thành nhân tử bằng cách phối hợp nhiều phương pháp khác nhau."
+  },
+  {
+   "id": "a873e270-339d-4ca8-bafb-7f84f54050d9",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc phân tích đa thức thành nhân tử bằng cách áp dụng trực tiếp các hằng đẳng thức đáng nhớ."
+  },
+  {
+   "id": "ce145589-ed1d-4f22-8ce7-0f9b73abe440",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc phân tích một đa thức thành nhân tử bằng phương pháp đặt nhân tử chung."
+  },
+  {
+   "id": "038b4a97-9510-456f-a2a6-a344315a0df0",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức bình phương của một tổng hoặc một hiệu để chứng minh một biểu thức luôn nhận giá trị dương hoặc âm."
+  },
+  {
+   "id": "1bcd51bf-c980-4241-a4a9-5d0247c49edb",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh chia hết",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức bình phương của một tổng hoặc một hiệu để giải quyết bài toán chứng minh chia hết."
+  },
+  {
+   "id": "8e02bff8-8fe3-4740-ad2e-d2f55d0c820f",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh đẳng thức",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức bình phương của một tổng, một hiệu hoặc hiệu hai bình phương để chứng minh một đẳng thức đại số."
+  },
+  {
+   "id": "18e9fc84-cc94-4ba3-bdd7-f1fb719500b2",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hằng đẳng thức đáng nhớ để thu gọn biểu thức và tính giá trị của biểu thức tại giá trị cho trước của biến."
+  },
+  {
+   "id": "8646dbf5-7e36-4e72-a942-b6cea92ec04f",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Tìm x thoả mãn đẳng thức",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hằng đẳng thức đáng nhớ để biến đổi biểu thức và tìm giá trị của biến x thỏa mãn đẳng thức cho trước."
+  },
+  {
+   "id": "0fc3593f-71c5-4e04-b042-d86b86395466",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để chứng minh giá trị của biểu thức không phụ thuộc vào biến."
+  },
+  {
+   "id": "45b09a80-768e-42b6-b3da-3523ec92da3f",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hằng đẳng thức đáng nhớ để chứng minh một biểu thức đại số luôn nhận giá trị dương hoặc âm với mọi giá trị của biến."
+  },
+  {
+   "id": "11b7ef7d-58da-4384-af1f-d944ca4189e6",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hằng đẳng thức đáng nhớ để thu gọn biểu thức và chứng minh giá trị của biểu thức không phụ thuộc vào biến."
+  },
+  {
+   "id": "ec0c898a-c615-4e24-9445-cb6234521a8d",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hằng đẳng thức đáng nhớ để thực hiện phép nhân đa thức hoặc điền khuyết vào các hệ thức toán học."
+  },
+  {
+   "id": "357e5565-acba-44eb-ba4c-6be7cd1b96d2",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh chia hết",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để giải quyết bài toán chứng minh chia hết."
+  },
+  {
+   "id": "a3ce8c6a-e099-4ee7-8605-a2b1c73e53a9",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh đẳng thức",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để chứng minh một đẳng thức đại số."
+  },
+  {
+   "id": "0e1fc518-82fe-4a13-82fc-725e91eef0c8",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc rút gọn và tính giá trị của biểu thức đại số bằng cách áp dụng hằng đẳng thức lập phương."
+  },
+  {
+   "id": "8b9ef5ee-12a3-4651-a7f7-35b49b044dea",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức bình phương của một tổng hoặc một hiệu để tìm giá trị lớn nhất hoặc nhỏ nhất của biểu thức."
+  },
+  {
+   "id": "2b219f6d-5a23-4768-aff4-1789d529d4ac",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Chứng minh biểu thức chia hết cho một số",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phương pháp phân tích đa thức thành nhân tử để chứng minh một biểu thức chia hết cho một số nguyên."
+  },
+  {
+   "id": "771647d7-668c-4893-b7cf-3761bc789f80",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc phân tích đa thức thành nhân tử bằng phương pháp nhóm các hạng tử một cách thích hợp."
+  },
+  {
+   "id": "ccbf634a-d8e0-4d02-8e40-d12fac4559a2",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để tìm giá trị lớn nhất, giá trị nhỏ nhất của biểu thức."
+  },
+  {
+   "id": "c4f20fda-7fa5-4998-88e3-16ee2bec74ff",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc khai triển hoặc viết gọn một biểu thức đại số bằng cách vận dụng các hằng đẳng thức đáng nhớ."
+  },
+  {
+   "id": "f1b72782-2242-4ebb-8dd5-f3a545b09571",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hằng đẳng thức bình phương của một tổng hoặc một hiệu và hiệu hai bình phương để biến đổi, rút gọn biểu thức đại số về một hằng số."
+  },
+  {
+   "id": "ca28c761-5b63-44cf-b131-06338c0112df",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc khai triển hoặc viết gọn các biểu thức đại số bằng cách sử dụng các hằng đẳng thức bình phương của một tổng, một hiệu và hiệu hai bình phương."
+  },
+  {
+   "id": "e3048c6d-1b9d-43ac-961b-29c52b3cdc24",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phương pháp phân tích đa thức thành nhân tử để tìm biến số trong một đẳng thức cho trước."
+  },
+  {
+   "id": "2127be97-8878-4121-879d-4c731b3ab886",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đổi biến",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc phân tích đa thức thành nhân tử bằng phương pháp đặt ẩn phụ hoặc đổi biến số."
+  },
+  {
+   "id": "29d7baab-c6da-43ac-a289-502a3a818e46",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp tách 1 hạng tử thành nhiều hạng tử",
+   "created_at": "2026-07-13T02:48:39.193395+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc phân tích đa thức bậc hai thành nhân tử bằng phương pháp tách một hạng tử thành nhiều hạng tử."
+  },
+  {
+   "id": "f763c387-b834-43c5-8ae2-d6c75618e68e",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức tổng và hiệu hai lập phương để biến đổi biểu thức và tìm giá trị lớn nhất hoặc giá trị nhỏ nhất của biểu thức đó."
+  },
+  {
+   "id": "eafbc67d-75eb-4e56-a62e-e5682c281f6c",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh chia hết",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hằng đẳng thức đáng nhớ để biến đổi biểu thức và chứng minh tính chất chia hết của biểu thức số hoặc biểu thức đại số."
+  },
+  {
+   "id": "6d50f597-d5dd-4d48-bf6d-e81eccac68ad",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh đẳng thức",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hằng đẳng thức đáng nhớ để biến đổi và chứng minh sự bằng nhau của hai biểu thức đại số."
+  },
+  {
+   "id": "57445147-8a53-401f-853d-3c895d9f6413",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc rút gọn biểu thức đại số bằng cách sử dụng hằng đẳng thức và tính giá trị của biểu thức tại giá trị cho trước của biến."
+  },
+  {
+   "id": "e277a3fc-4926-4366-9737-6a15ee0e0087",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để chứng minh biểu thức luôn nhận giá trị dương hoặc âm."
+  },
+  {
+   "id": "d9f72761-7011-4c16-95b8-2b731e78b514",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để tìm biến số thỏa mãn đẳng thức cho trước."
+  },
+  {
+   "id": "4fcae887-0588-412b-aba8-610dbd3c3cb5",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-09-12T13:16:59.875613+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp các hằng đẳng thức đáng nhớ để giải các bài toán rút gọn, tính giá trị, chứng minh và tìm giá trị lớn nhất, nhỏ nhất."
+  },
+  {
+   "id": "5fb76b4c-d5ae-468d-8726-beeb8d972128",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-09-12T13:16:59.699756+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp các hằng đẳng thức đáng nhớ để giải các bài toán rút gọn, tính giá trị, chứng minh và tìm giá trị lớn nhất, nhỏ nhất."
+  },
+  {
+   "id": "adfb134f-b051-43a9-85af-8953cc70de5a",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức",
+   "created_at": "2026-08-10T00:43:54.378897+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hằng đẳng thức bình phương của một tổng, một hiệu hoặc hiệu hai bình phương để tìm biến số thỏa mãn đẳng thức."
+  },
+  {
+   "id": "a60e8a58-de77-4023-807b-81ed359a61f9",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-09-12T13:16:59.786835+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp các hằng đẳng thức đáng nhớ để giải các bài toán rút gọn, tính giá trị, chứng minh và tìm giá trị lớn nhất, nhỏ nhất."
+  },
+  {
+   "id": "36389864-764e-4acb-ae39-bbfc18950b37",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 2",
+   "created_at": "2026-09-12T13:22:55.079019+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức của chương 2 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "questions": [
+  {
+   "id": "5812615d-e759-422e-86fc-06adf2c4183c",
+   "question_id": "CH_1783940683915_orbb",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp"
+  },
+  {
+   "id": "af369b14-961e-494f-9d1a-27436fa6a1e4",
+   "question_id": "CH_1783915700869_f34b",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "133a7a5a-bd57-441d-90b0-bb4f8ff8b6a9",
+   "question_id": "CH_1783915700869_rr69",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "fec77494-1f2e-48ed-ae35-58076205a1ce",
+   "question_id": "CH_1783915700869_o0ff",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "7170beaf-b75c-4672-a88a-80a24234ee5d",
+   "question_id": "CH_1783915700869_btae",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "3a2a04fe-1441-4d78-b2b0-b757b541419d",
+   "question_id": "CH_1783915700869_t8a0",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "4be5c053-6709-4b06-8baa-94e6be04efec",
+   "question_id": "CH_1783915700869_toiu",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "735a5888-4cc1-4eb0-9061-4617a237042b",
+   "question_id": "CH_1783915700869_oq4s",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "a298c7d1-553d-4043-8564-887dab811732",
+   "question_id": "CH_1783915700869_m57t",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "0f52e22e-83f3-4dc8-a2e9-143ea924125d",
+   "question_id": "CH_1783915700869_53qr",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "28614f32-8dd1-49b3-9e41-4d07e17b52fb",
+   "question_id": "CH_1783915700869_fv0p",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "0d6a2282-3aab-44d4-8c6c-5ab38ecc6e56",
+   "question_id": "CH_1783915700869_9v43",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "bab859dd-5ac7-4d95-a054-ca45c55fad32",
+   "question_id": "CH_1783915700869_db8b",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp"
+  },
+  {
+   "id": "e9f3f5a8-1efd-46b2-b257-2054c9bc7c7c",
+   "question_id": "CH_1783915700869_1txz",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp"
+  },
+  {
+   "id": "67189592-6fa3-4c2b-bd1b-56a029f6b05f",
+   "question_id": "CH_1783915700869_0cvd",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "80e8986b-e27a-41f1-9b77-c8312fa2b432",
+   "question_id": "CH_1783915700869_68mu",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "606a69dc-2559-46f7-b0a1-ba604de99975",
+   "question_id": "CH_1783915700869_hrig",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "7458d3df-3550-4300-937c-d653ee58f32b",
+   "question_id": "CH_1783915700869_j08u",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "8ed774ef-116b-4a7f-b747-ada5f4e5c13b",
+   "question_id": "CH_1783915700869_zb6v",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp tách 1 hạng tử thành nhiều hạng tử"
+  },
+  {
+   "id": "67678bf6-d4a5-48c7-830a-2c912f1c33ff",
+   "question_id": "CH_1783916047635_87w3",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "584f2ae2-97df-4df2-bd6f-16cd75abb379",
+   "question_id": "CH_1783916047635_pzho",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "75dc3c47-c295-4f5a-91b6-870758bfc75d",
+   "question_id": "CH_1783916047635_kszb",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "3117d02d-1f33-4ac1-9d9d-e044f7374185",
+   "question_id": "CH_1783916047635_07mw",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "e27dbbeb-9874-4dde-b814-90c174d30c5e",
+   "question_id": "CH_1783916047635_g2vy",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "33b34835-fccb-4dab-92b4-b1f92772c8fa",
+   "question_id": "CH_1783916047635_byyr",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp"
+  },
+  {
+   "id": "b970b206-5cde-4596-ac3d-76315a19ae0f",
+   "question_id": "CH_1783916047635_nzy9",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "1a757087-234d-4ae4-bd9c-bd895e356b23",
+   "question_id": "CH_1783916047635_t700",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "f3243f60-eca3-477b-8189-1f864b0649d6",
+   "question_id": "CH_1783916047635_equr",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp"
+  },
+  {
+   "id": "2246b61d-dddb-4888-abed-0d904495b6bb",
+   "question_id": "CH_1783916047635_5fo2",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "e3710e42-c665-45f1-8d7c-85f0dbc188e7",
+   "question_id": "CH_1783916047635_z7b7",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đổi biến"
+  },
+  {
+   "id": "72d06133-de39-4190-a99d-504aab715da1",
+   "question_id": "CH_1783916047635_tm1l",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp"
+  },
+  {
+   "id": "ec215eab-a6df-46ae-8287-9051e47db282",
+   "question_id": "CH_1783916424739_24bt",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "8127e25a-c78b-446d-a29f-e70ad21e5be2",
+   "question_id": "CH_1783916424739_sfn5",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "c69b632e-7215-40f7-8ee2-cf402f880ba4",
+   "question_id": "CH_1783916424739_kjrf",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức"
+  },
+  {
+   "id": "45c63374-9fe0-45c8-b1eb-6a0ab5d60f40",
+   "question_id": "CH_1783916424739_pv6k",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "a35c2d00-9435-42c1-865a-1c09333a16cf",
+   "question_id": "CH_1783916424739_wiu1",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "633181a0-17b4-469a-98d8-a21cf9664ace",
+   "question_id": "CH_1783916424739_hlgw",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "a6eed5b4-4c6f-44d3-8af3-e3247783019a",
+   "question_id": "CH_1783940683915_bcti",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "13eda411-caa1-4ac7-9d59-78cfc677f2b2",
+   "question_id": "CH_1787813913668_tvs3",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "2184f8b1-ad3f-48c1-a6c0-466fc8ae472e",
+   "question_id": "CH_1787813913668_j905",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "df6a5289-cb40-4fdc-9633-989e4aca51b2",
+   "question_id": "CH_1787813913668_p80m",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "17c25c66-818c-4605-8c30-a78543aaca59",
+   "question_id": "CH_1787813913668_bfb2",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "ed1e7499-27a1-4697-b51a-43cc6d22a9e2",
+   "question_id": "CH_1787813913668_sl20",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "3d4cb25a-4f41-44a2-a907-8729fdb45612",
+   "question_id": "CH_1787813913668_i5v4",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "99c10b1f-a69a-4ad4-a568-14912b805bc2",
+   "question_id": "CH_1787813913668_cqc3",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "b943b85f-97b7-4eb6-ba81-59f6aeae6e70",
+   "question_id": "CH_1787813913668_edlk",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "ae2a6546-38a1-451f-84ac-f914d2b8a038",
+   "question_id": "CH_1787813913668_921j",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh chia hết"
+  },
+  {
+   "id": "009bb8b5-4beb-448e-8ebb-852893d4e810",
+   "question_id": "CH_1787813913668_n8yb",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh chia hết"
+  },
+  {
+   "id": "4c8bdfe2-5d78-41bc-b173-37bba4f662ac",
+   "question_id": "CH_1787813913668_pinl",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "0f456553-c2b5-4728-9da1-bce4802004e4",
+   "question_id": "CH_1787813913668_nvcm",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "097d0932-c6e1-4661-9566-e40c91cfedec",
+   "question_id": "CH_1783914554544_u036",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "f095a180-ac41-491d-adef-415104d48b84",
+   "question_id": "CH_1783914554544_n5lx",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "a4c1da3e-0471-4766-9533-9677462a7bfd",
+   "question_id": "CH_1783914554544_9c4w",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "49a5f79d-9fd5-4d3a-b7ed-b71402b63d87",
+   "question_id": "CH_1783911766652_oacb",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "07dcd506-1ba0-4471-99a0-4d077a7f545a",
+   "question_id": "CH_1783911766652_yx3r",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "a01e063d-da6a-40ce-abae-684c7fd5ec84",
+   "question_id": "CH_1783912041673_iysc",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "03e45edd-53d7-46de-b000-2b0d526352c5",
+   "question_id": "CH_1783914554544_tz9t",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "9d648921-3e91-46a3-8de9-a71be71f23a6",
+   "question_id": "CH_1783914554544_y37v",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "72dcd737-64da-451a-84e4-c23ff8f83e57",
+   "question_id": "CH_1783911342714_fxxj",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "72821e60-f40e-4093-ba8c-12cd342b1505",
+   "question_id": "CH_1783911342715_ssrd",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "7bd38e02-8a35-41e3-959c-5a7ea1adf2cd",
+   "question_id": "CH_1783911342715_nvmy",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "f8406644-a8fe-4648-8219-5119190bc0d0",
+   "question_id": "CH_1783911342715_1haq",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "68d16d76-ef65-4f71-80dc-ce158ed24f01",
+   "question_id": "CH_1783911342715_fjd5",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "c2bc872b-9368-4059-9154-c0f2109774e4",
+   "question_id": "CH_1783911342715_0xcn",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "42ca7fc1-2639-4fe3-8ba5-8366c26a1fb8",
+   "question_id": "CH_1783911342715_0xq7",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "8bfed07d-09d7-485a-a0dc-d80be61d4c86",
+   "question_id": "CH_1783911342715_h3sm",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "7436afa6-5382-4da7-870a-3607e8d73ebf",
+   "question_id": "CH_1783911342715_vgiw",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "cf04a49c-94c8-41f0-9502-1d3d0c72617b",
+   "question_id": "CH_1783911342715_ipgo",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "c3228660-1486-4e22-9700-703dc801e717",
+   "question_id": "CH_1783911342715_hmf7",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "3aee24eb-6259-4d36-9ff4-c938e7d71990",
+   "question_id": "CH_1783911342715_avqc",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến"
+  },
+  {
+   "id": "ca57d8ee-26b6-45e1-be11-fc0969521711",
+   "question_id": "CH_1783911342715_phct",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến"
+  },
+  {
+   "id": "b5ce3d3e-c50a-4e04-bcb6-5771b7cf92a2",
+   "question_id": "CH_1783911342715_x22i",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "63ac70b5-49ba-4b05-aac3-52db86d6fc20",
+   "question_id": "CH_1783911342715_toa2",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "1a751348-a2a8-46d4-aaf5-76386cf021ed",
+   "question_id": "CH_1783911342715_zatz",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "734cfd25-97f1-426c-9c13-ddc245113c31",
+   "question_id": "CH_1783911342715_ap5v",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "a081e1cc-a6d5-4623-830e-e9c92ab02aed",
+   "question_id": "CH_1783911342715_f7kz",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh đẳng thức"
+  },
+  {
+   "id": "f613312f-b8a4-4667-b20a-16dda76f8ded",
+   "question_id": "CH_1783911766652_thqz",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "689e393c-7ac5-4006-be97-12f65430ba4e",
+   "question_id": "CH_1783911766652_4o8i",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "85ca163b-4fe8-4cce-9e19-016987dddaad",
+   "question_id": "CH_1783911766652_q2fk",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "633d39d4-f250-4e43-8871-df59e7e507a8",
+   "question_id": "CH_1783911766652_3t6g",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "5f2d77de-63ef-489a-a71b-8e54853e225a",
+   "question_id": "CH_1783911766652_bdet",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "b2f71d6a-d675-465a-836d-480bea365865",
+   "question_id": "CH_1783911766652_5ft6",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "363419b0-1493-4731-a668-0c964c4b5dd5",
+   "question_id": "CH_1783911766652_vn6j",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh đẳng thức"
+  },
+  {
+   "id": "a0f962a5-ab15-4d8c-b8c4-caea50735bec",
+   "question_id": "CH_1783911766652_ivbv",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh chia hết"
+  },
+  {
+   "id": "deee89df-54d4-4f52-a3f0-d661d1303669",
+   "question_id": "CH_1783911766652_0f4x",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "c3686a25-03ac-4d72-84d9-91403e1fd5bf",
+   "question_id": "CH_1783911766652_lwd5",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+  },
+  {
+   "id": "4e1a5016-e364-48de-b4f3-880a2a913e52",
+   "question_id": "CH_1783911766652_nbbe",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "c4668570-7435-4704-87a5-b61abe0a5808",
+   "question_id": "CH_1783911766652_pykp",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "f8a5fe5d-3a78-49fe-b556-1a6880b22302",
+   "question_id": "CH_1783911766652_rv2r",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "45b66b1a-3f54-4f5c-bcfe-29b31caba615",
+   "question_id": "CH_1783911766652_ko3k",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "9d92056b-d3aa-4f96-a6aa-5b43d1044841",
+   "question_id": "CH_1783911766652_5dpf",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "f36fd017-015c-4d47-8e15-720c72d7ef78",
+   "question_id": "CH_1783911766652_gth5",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "303f2e3d-863c-4dc6-9868-fc3bb2dbc20f",
+   "question_id": "CH_1783911766652_w0bd",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh chia hết"
+  },
+  {
+   "id": "1a0c6cd2-9560-4d71-b81c-c273733177f1",
+   "question_id": "CH_1783911766652_pfm8",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "98df1d2f-b577-459e-9bd7-79ee91aa3d3f",
+   "question_id": "CH_1783911766652_qoja",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "8b8891cc-d647-4174-866b-2896def9554c",
+   "question_id": "CH_1783912041673_wsxo",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "163a8bf3-3434-4151-be1e-19b5ec4790f0",
+   "question_id": "CH_1783912041673_abk3",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "e90a3e1d-289c-41ad-b3ee-271f3bd5afcb",
+   "question_id": "CH_1783912041673_4xig",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "5cd24f8c-88ed-41ca-912b-e514b7cfe2f8",
+   "question_id": "CH_1783912041673_ze1a",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "db618435-921c-4bee-9ef5-8beb62af8685",
+   "question_id": "CH_1783912041673_fwdm",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "406f45ab-49f2-48c3-af45-4c8042342413",
+   "question_id": "CH_1783912041673_t2p9",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "33594364-7f62-42b9-afb9-d1991a0a1a3e",
+   "question_id": "CH_1783912041673_97my",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh chia hết"
+  },
+  {
+   "id": "104bf91b-a401-42fd-8434-8e38d88a27ef",
+   "question_id": "CH_1783912486442_p4m8",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "3656acac-cf1a-4409-9cb5-a14d6c3e6c2b",
+   "question_id": "CH_1783912486442_ors9",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "7b432512-fdc9-401b-a34e-4a1574c4ad25",
+   "question_id": "CH_1783912486442_y9a2",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "b970fca4-f19e-46a5-83c1-8500c8e9fbc2",
+   "question_id": "CH_1783912486442_difc",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "5fad33b8-63da-48e8-a315-84a1a144af98",
+   "question_id": "CH_1783912486442_85hi",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "fe8f3fa9-fcfe-4dd9-ac4f-320167c07633",
+   "question_id": "CH_1783912486442_3ik6",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "b1aaf260-54a7-4b2a-9d6c-e4a1d2c100fc",
+   "question_id": "CH_1783912486442_rvbc",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "e4706d23-b6f7-4c29-8506-6cf998d7515c",
+   "question_id": "CH_1783912486442_sq7p",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "bcfce4c2-c4cd-42e3-b613-41d87bb08783",
+   "question_id": "CH_1783912486442_syyy",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "3c335855-c9f9-45ce-8363-8996252be42a",
+   "question_id": "CH_1783912486442_wnuj",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "75867ae3-878b-466a-a531-c0c80e22a896",
+   "question_id": "CH_1783912486442_iqf7",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "e819a9f7-766f-457d-8b7e-ab098ea7c7b9",
+   "question_id": "CH_1783912486442_uk76",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "61a98db7-560b-47b0-a91f-9ecde330637a",
+   "question_id": "CH_1783912486442_3m9n",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "83d6c308-c8b6-4c16-bb39-ec789f8eeae7",
+   "question_id": "CH_1783912486442_11ev",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "d4ddc2b3-e18a-41cd-a2d9-6a20ed0cf706",
+   "question_id": "CH_1783912486442_j1ez",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "886dfbfc-23da-40af-be34-dcf6c2a85376",
+   "question_id": "CH_1783912486442_jyrv",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "85d271b0-e817-417a-809a-d3fbab9a1bdd",
+   "question_id": "CH_1783912486442_zen1",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "830197f3-9bf7-4366-a9af-584e0a551582",
+   "question_id": "CH_1783912486442_qm2g",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "9fe9c541-d3c0-4a1d-ab7c-ec736cdc3848",
+   "question_id": "CH_1783912486442_oqod",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "70220d99-c32d-4d5a-931d-cb1736bc1308",
+   "question_id": "CH_1783912486442_xavd",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "eee490e7-3ac4-4829-90bc-8cd4a91def94",
+   "question_id": "CH_1783912486442_1p0b",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "d17c8ecc-0645-45bd-b632-0de8c3a1e03c",
+   "question_id": "CH_1783912486442_doyv",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "a98613ce-bb8d-4e11-a1b9-4b475a93f9b4",
+   "question_id": "CH_1783912486442_j6nq",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "21cd6c39-dbcf-4fb9-b9d7-db363edfa86c",
+   "question_id": "CH_1783912486442_n1wn",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh đẳng thức"
+  },
+  {
+   "id": "a834d61a-5c70-4aa4-b705-0831b5138867",
+   "question_id": "CH_1783912486442_qukn",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "bb5dc5af-cabf-4415-9ae8-6172bb31b435",
+   "question_id": "CH_1783912486442_klaj",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "69eee9e4-423d-40f8-966d-6da2e1e2fa02",
+   "question_id": "CH_1783912486442_18lr",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "3b10d8cb-6084-4ea4-a2c8-bd28058f240c",
+   "question_id": "CH_1783912486442_0rq7",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "36e47576-26b3-45a5-94b4-4890aeab5830",
+   "question_id": "CH_1783912486442_w9tj",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "b1316a2c-a5ce-4e67-9695-05df148d9116",
+   "question_id": "CH_1783912486442_8uyo",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "3ea3af3e-462c-41e3-bf9a-4c7337ebe531",
+   "question_id": "CH_1783912754088_qc5l",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "bf3b9e44-ea86-4fcd-9c8b-aae9b9ad14db",
+   "question_id": "CH_1783912754088_xx75",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "fa2a2998-14e5-4c30-8757-f84d85d070a3",
+   "question_id": "CH_1783912754088_lqtf",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "b6daba54-1cca-4c63-a85e-359c42f21b1c",
+   "question_id": "CH_1783912754088_5pi1",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "0a9f8077-c3dd-49b2-ba47-5ca5d5d714f4",
+   "question_id": "CH_1783912754088_63bf",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "93e19a6b-dfc1-4424-a5d0-f5b9934e4ce8",
+   "question_id": "CH_1783912754088_mo8q",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "9583e385-0973-4975-acca-0a7c59f727f3",
+   "question_id": "CH_1783912754088_dneh",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "0b887869-9eb0-4f1d-a5e1-baf0967f573f",
+   "question_id": "CH_1783912754088_mjk6",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "f5ac81dc-5182-4e4d-9a49-e927f593be0f",
+   "question_id": "CH_1783912754088_6a6j",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "74759bec-409d-4b71-8cae-125c895925e0",
+   "question_id": "CH_1783912754088_6p2s",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "0eeccb99-41c9-43f6-b7c2-d9928ff78db1",
+   "question_id": "CH_1783912754088_5lm2",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "58c82ac9-f8c2-4259-a0ce-8d10bda0ca2b",
+   "question_id": "CH_1783912754088_h8zg",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "39c5bfb0-4de8-4566-8b38-669eead46888",
+   "question_id": "CH_1783912754088_mfqi",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "ea552ab5-bf4d-42a3-9236-9e8d10bf3a09",
+   "question_id": "CH_1783912754088_fk9w",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "80163a15-78fc-4197-99b7-cd799b2143f0",
+   "question_id": "CH_1783912754088_vtq6",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "035e01ce-a322-46a7-83b0-20df2192aa53",
+   "question_id": "CH_1783912754088_kurr",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "83fc9d37-5320-4d8e-a6b8-e26d45f3accb",
+   "question_id": "CH_1783912754088_3zuk",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "5fe2a710-ca02-4658-a83f-c984c3c92f4f",
+   "question_id": "CH_1783912754088_0r2d",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "a0d6412b-786a-477e-b2c1-c1e7f53a3879",
+   "question_id": "CH_1783912754088_i8ft",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh đẳng thức"
+  },
+  {
+   "id": "677a24ff-dd13-4425-9ce3-85a55adb4240",
+   "question_id": "CH_1783912754088_y2s7",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "7131f6b9-3b2c-495c-adc7-3e93379b00dc",
+   "question_id": "CH_1783912754088_632g",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "d955923f-a7ba-4357-8643-0c23e2597e24",
+   "question_id": "CH_1783912754088_xv4c",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "b21a050c-55b6-4cba-8a91-92e674170d91",
+   "question_id": "CH_1783912754088_6xzi",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "754bc7e0-0a3e-4d86-b0e8-62302691367e",
+   "question_id": "CH_1783912754088_97y2",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "953f60ed-350e-4b52-8755-24e37161ddc2",
+   "question_id": "CH_1783912754088_87p4",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "0b401621-a288-4a2c-8680-76b357202e6a",
+   "question_id": "CH_1783912754088_wvf4",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "fc68f36b-dd77-4f89-80e3-3af7d5231afb",
+   "question_id": "CH_1783912754088_qoht",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "34405cc5-98b0-4a37-875d-d3ef0dfc85cd",
+   "question_id": "CH_1783912754088_4cn4",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "cea75886-160a-4f28-90f3-a675fa5b3a02",
+   "question_id": "CH_1783912754088_1a0a",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "249f2a01-3f25-438f-9dbd-af36f4b25deb",
+   "question_id": "CH_1783912754088_5ofd",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "7cac0fe5-e004-4bd4-a9e0-c3d91aca1ada",
+   "question_id": "CH_1783912754088_fqfd",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "eee6cd42-d7d0-4212-98d6-65b97c84a53b",
+   "question_id": "CH_1783912754088_fbtk",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "dc4ed6c0-7cf4-485d-b1d1-bb3609745be1",
+   "question_id": "CH_1783912754088_kgel",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "e9a1b668-a54c-4cf0-8d17-c484455f928e",
+   "question_id": "CH_1783912754088_lfvc",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "1259091f-3295-4a34-855b-fb4bb2301369",
+   "question_id": "CH_1783912754088_zqfv",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "19739629-3640-4033-8c65-1cf36b0a7aa8",
+   "question_id": "CH_1783912754088_v8ur",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "f946ac02-21c5-4d9b-a19b-ffe53bb2c4b4",
+   "question_id": "CH_1783912754088_tpwu",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "82b558cf-3fc3-4ec6-8a51-b372ba2dc6a3",
+   "question_id": "CH_1783912754088_haey",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "93ac9c32-b228-4d45-b7c1-8c92f03c6e26",
+   "question_id": "CH_1783912754088_03ub",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "fddee114-ecf8-4a02-9fde-f540ec9f5a5e",
+   "question_id": "CH_1783912754088_4sc2",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "f3e36a54-db3a-4a9a-a174-a01723ba9dc3",
+   "question_id": "CH_1783912754088_h3o9",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "b3450b9e-ed2e-4d93-9c40-122c1abc7900",
+   "question_id": "CH_1783912754088_5zxj",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "7d72cd23-f938-46b2-bb25-677061914d38",
+   "question_id": "CH_1783912754088_ct4o",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "74dbd9f5-0255-4183-9dda-75fb54449b08",
+   "question_id": "CH_1783912754088_nbg9",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "56ed10ca-46b2-4e8f-bf0f-44c998eb9f95",
+   "question_id": "CH_1783912754088_2ugz",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "faef8581-85dd-4539-a594-68cd8ab6ad3d",
+   "question_id": "CH_1783912754088_bz9f",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "5b831369-adce-47cd-81e5-bc22fa0f963e",
+   "question_id": "CH_1783912754088_57zd",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "ed1f3def-8f10-4c1b-84db-a68de09ea07d",
+   "question_id": "CH_1783912754088_8onk",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "e34b79fa-e9b9-48c3-86c4-75abe3450326",
+   "question_id": "CH_1783913022985_uqn5",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "7c7c3fd9-5e2a-4175-bc34-56af400f4c69",
+   "question_id": "CH_1783913022985_9vj8",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "58b361c8-c377-4e53-8589-3769ee7e59cd",
+   "question_id": "CH_1783913022985_ee17",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "c2c2407f-66b4-4e24-b8a9-75cf4c20463a",
+   "question_id": "CH_1783913022985_dk6d",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "5386718e-506c-49cc-97b3-b3bdfa8d95a2",
+   "question_id": "CH_1783913022985_6lty",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh đẳng thức"
+  },
+  {
+   "id": "8accb875-2f25-4b1f-a71e-51e931fa92f3",
+   "question_id": "CH_1783913022985_32cj",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "18e4c066-4fa4-4cce-a520-fffb05b4cf5a",
+   "question_id": "CH_1783913022985_bj3d",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "a594cc4c-bbff-4042-813b-be6cb947ac1c",
+   "question_id": "CH_1783913022985_0eus",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "cbcf04d9-cef3-49db-9bdd-1136ead140f0",
+   "question_id": "CH_1783913022985_vvcf",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "1b63fafb-22e9-445a-a40c-b19d3b6cc49e",
+   "question_id": "CH_1783913022985_rbvw",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "5e6ae993-fe24-4566-b57f-b3833c44b831",
+   "question_id": "CH_1783913022985_23ux",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "c743115a-eced-4fe0-8d42-eaf680506fd7",
+   "question_id": "CH_1783913022985_ozon",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "c4bc44aa-77ed-45d0-ae07-4b5386108d08",
+   "question_id": "CH_1783913022985_bijm",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "457721dd-c50c-4e6a-8521-56a0e1237ceb",
+   "question_id": "CH_1783913022985_0arv",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "5b932ea0-69de-41b9-870f-614e41830dc2",
+   "question_id": "CH_1783913022985_tli9",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "a05148cf-6b0b-4625-b4e1-0e2c3250e1d3",
+   "question_id": "CH_1783913022985_bh65",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "4b3e47aa-3536-4071-84fd-93644ce4ca43",
+   "question_id": "CH_1783913022985_oiuj",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "e91aa37f-0b43-4575-a7ca-08b8c1b29cbf",
+   "question_id": "CH_1783913022985_9b1m",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "2e066edd-b9df-46b5-8a58-7219f6bb7192",
+   "question_id": "CH_1783913022985_miif",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh chia hết"
+  },
+  {
+   "id": "c39fa578-2d02-4d70-833b-452701ec7a6a",
+   "question_id": "CH_1783913286305_witj",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "e0729ece-5192-46cf-8ce8-1d3568800149",
+   "question_id": "CH_1783913286305_31ki",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "3d44ab38-3e20-4a68-8966-57992498ad17",
+   "question_id": "CH_1783913286305_ys5i",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "de41524c-f51a-4b97-b83c-84e53387c76c",
+   "question_id": "CH_1783914554544_1glo",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "0eaabfdb-7ed5-4d80-b20c-56cee67dde99",
+   "question_id": "CH_1783913286305_8817",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+  },
+  {
+   "id": "66799978-1df1-4d47-afdb-5d4610a06734",
+   "question_id": "CH_1783913286305_19pa",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "0ecf5a95-8523-4839-b631-8b3672d3c2e2",
+   "question_id": "CH_1783913286305_49wh",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "c4aa065f-3c88-4468-825e-649fafa17a1b",
+   "question_id": "CH_1783913286305_x91z",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "d1957dfa-0547-4a88-ac1f-ae22f7a61511",
+   "question_id": "CH_1783913286305_j1tp",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "8b82efae-cd1a-4050-aab6-e065787c9652",
+   "question_id": "CH_1783913286305_f8eh",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "53d6803c-e5b9-4765-a5c7-f4fd19ef5ab0",
+   "question_id": "CH_1783913286305_yung",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "6c05c0bd-d916-4351-9aee-f6f16f86e0a6",
+   "question_id": "CH_1783913286305_n8xl",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "3f806805-abbd-4333-a45b-f9de683755f9",
+   "question_id": "CH_1783913286305_ugai",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "7b3d20c3-76b9-4965-9e57-3983ba50272f",
+   "question_id": "CH_1783913286305_6u3w",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "7ca9c49d-3837-405b-b6cd-14e0dec02385",
+   "question_id": "CH_1783913286305_t9qh",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "132b8127-0923-4ef3-872e-cb787bf70588",
+   "question_id": "CH_1783913286305_5xn7",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "502c9f8e-2470-4f00-820e-a19fdce7b2eb",
+   "question_id": "CH_1783913286305_e3wb",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "6580949c-66fe-422f-bcb4-8825df4be055",
+   "question_id": "CH_1783913286305_af0d",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh đẳng thức"
+  },
+  {
+   "id": "fc092d39-8e3c-4903-b1af-66e797f0ccae",
+   "question_id": "CH_1783913286305_kfti",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh đẳng thức"
+  },
+  {
+   "id": "c5d25580-7bc2-478b-b340-e2de4ab01dec",
+   "question_id": "CH_1783913286305_5m1u",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "71531522-7b4a-4174-a306-56b6c1aeecf1",
+   "question_id": "CH_1783913286305_r60b",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "d21deff9-0f24-4cad-808f-f9b2ee8e44ce",
+   "question_id": "CH_1783913286305_dulj",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "52a84767-f117-4e5e-8485-819f26de5300",
+   "question_id": "CH_1783913832664_s5m1",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "51b8d1dc-8e68-4620-8650-a8b4ea56cb8e",
+   "question_id": "CH_1783913832664_d7lb",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "c00ae585-a31a-4e4c-b106-326631ca7a90",
+   "question_id": "CH_1783913832664_8dkb",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "961f7fb0-d84c-4cc0-95dc-7f19d990de35",
+   "question_id": "CH_1783913832664_3of6",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "f25a948f-aece-49a1-b22d-bd2704ee32ae",
+   "question_id": "CH_1783913832664_y4if",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "cb2f92f9-d646-436a-a932-acc76006a329",
+   "question_id": "CH_1783913832664_atua",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "ee556551-aa2f-4191-8dd7-5656f7089e07",
+   "question_id": "CH_1783913832664_11ef",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "70f59d11-07f4-463d-a613-bf43163c5924",
+   "question_id": "CH_1783913832664_kgf8",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "3a277b7d-1083-4db3-bea3-be4cda44e52d",
+   "question_id": "CH_1783913832664_m0ln",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "b10bd47d-05f9-4677-87ea-5dceea8aa410",
+   "question_id": "CH_1783913832664_y7ru",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "54df68f8-ecf0-49b6-91a2-1fbafcb4e402",
+   "question_id": "CH_1783914554544_86fl",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "a730c23b-6cd0-4eec-9049-a2082ba6f559",
+   "question_id": "CH_1783913832664_xkau",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "03f10523-2217-4259-9c51-384df1482d89",
+   "question_id": "CH_1783913832664_0haz",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "8fc2b257-e617-4eae-a2fa-36c8360487bc",
+   "question_id": "CH_1783913832664_gs3w",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "7ec6a9ac-ba36-4a34-8bd2-afe504d7678e",
+   "question_id": "CH_1783913832664_bi90",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "d5b70ba1-cfa1-40fd-a5d1-19feb426eefb",
+   "question_id": "CH_1783913832664_dcqo",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "16bc024c-5e3a-41b9-ae3e-a7f48505308e",
+   "question_id": "CH_1783913832664_sbls",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "8095d8eb-1f5c-49c7-98d9-a1a115ddd93e",
+   "question_id": "CH_1783914554544_gjbr",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "d7091916-453a-4f53-a785-8d3ed8f961cb",
+   "question_id": "CH_1783914554544_ptid",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "5e246b02-df3a-4e72-bbf1-fccff6a75e93",
+   "question_id": "CH_1783914554544_3n15",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "a1d900e8-8b3a-4a14-80e2-e01972bf0a01",
+   "question_id": "CH_1783914554544_0plf",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức"
+  },
+  {
+   "id": "f59dce5c-1620-4d43-9b52-b74842113a18",
+   "question_id": "CH_1783914554544_zab5",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức"
+  },
+  {
+   "id": "fb7575b3-7340-4b94-80e7-307a2ba54a3b",
+   "question_id": "CH_1783914554544_lcy5",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "d6bc54bc-dc1f-49d9-9efe-5c6358156c98",
+   "question_id": "CH_1783914554544_qg53",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức"
+  },
+  {
+   "id": "2d2326c0-186a-4c07-8392-2a69f6bc6c61",
+   "question_id": "CH_1783914554544_p3ak",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "9a2d05db-e173-4043-826e-67a9afad98b4",
+   "question_id": "CH_1783914554544_u92c",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "886dc76a-469e-4623-9f1b-2c620bdf6ffe",
+   "question_id": "CH_1783914554544_i4zw",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "9b5b39bf-8589-4c85-940d-b89b69a129d7",
+   "question_id": "CH_1783914554544_a9p7",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức"
+  },
+  {
+   "id": "c7762c88-9772-4ce8-9664-0a11eccbbedc",
+   "question_id": "CH_1783914554544_4fz6",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "8df22edf-0759-4b26-a41d-49ad60f7511e",
+   "question_id": "CH_1783914554544_88qc",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "9136d990-79a1-44bd-9722-ba1f144bd7af",
+   "question_id": "CH_1783914554544_boxe",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức"
+  },
+  {
+   "id": "3a34cb62-1ee9-414e-8630-fc9bf8b8bb59",
+   "question_id": "CH_1783914554544_e7i7",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "093ea903-d9a8-4355-971a-378e16ced2a6",
+   "question_id": "CH_1783914554544_ywv9",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "6ce28fcf-02af-4a73-894b-a38a7b75b651",
+   "question_id": "CH_1783914554544_tgd3",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "84e3965f-1ee5-4e01-acbf-f570e1b4f562",
+   "question_id": "CH_1783914554544_yc0n",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "0d23d2f7-43b9-4178-b5c8-ba0c700750a1",
+   "question_id": "CH_1783914554544_ftai",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "ebcd983d-261d-4985-ae16-5a52076125c0",
+   "question_id": "CH_1783914554544_e2az",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đổi biến"
+  },
+  {
+   "id": "ac2efab2-2115-47a7-8f2d-4e06fac427e2",
+   "question_id": "CH_1783914554544_hbsb",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp"
+  },
+  {
+   "id": "3f51b525-c80f-4477-90d4-b70463065cde",
+   "question_id": "CH_1783914554544_u7ai",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "275f601f-4929-4e87-9cfe-f0dd148355b8",
+   "question_id": "CH_1783914554544_gmjd",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "d2c90097-e2eb-4951-904f-0176dd6edd07",
+   "question_id": "CH_1783914554544_z9n0",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "dc354326-de53-4248-8505-96cccdc68854",
+   "question_id": "CH_1783914554544_hnys",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Chứng minh biểu thức chia hết cho một số"
+  },
+  {
+   "id": "b5f3d3a6-ae5b-4286-a78d-fe826e333a33",
+   "question_id": "CH_1783914554544_5ovu",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "0e72c8ec-e3dc-4a34-902c-a8422b29b7ea",
+   "question_id": "CH_1783914554544_f6oe",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "ead68e7b-9599-44bc-a2f7-d51d7cbec3ec",
+   "question_id": "CH_1783914554544_ni9l",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đổi biến"
+  },
+  {
+   "id": "36a8b10c-b808-4d0a-a5ff-3195c16b00d9",
+   "question_id": "CH_1788624624376_ru2o",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "2740422f-59ad-457c-ae42-cf805a65a153",
+   "question_id": "CH_1783914554544_eyty",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "f14388c1-8027-4e19-8707-798c8fa1e2d0",
+   "question_id": "CH_1783915700869_nqrh",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "8c50c9dc-f989-4b21-992c-5d019b61bbf2",
+   "question_id": "CH_1788624624377_md8g",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "52ea1256-64da-49ec-bd4b-abe146f9f90f",
+   "question_id": "CH_1788624624377_hsze",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "8b1c6e7f-26ff-417f-a2c9-4210afd92172",
+   "question_id": "CH_1788624624377_53o0",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "5c8e1d5f-198a-4434-a9c8-c7d4ab4cc13f",
+   "question_id": "CH_1788624624377_1gye",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "6e7865ab-a155-4018-b57c-8385d575166d",
+   "question_id": "CH_1788624624377_yk77",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "d742fffb-6bed-473b-8825-cb39cf7aab48",
+   "question_id": "CH_1788624624377_icdi",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "128a7df4-8060-4cc4-8a10-a04bc11b1494",
+   "question_id": "CH_1788624624377_xw7h",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "3ed70a5a-c714-4098-a66d-f1a98aff09d9",
+   "question_id": "CH_1788624624377_9cw9",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "4cfbb62b-b28b-48c2-94d9-f570ac367159",
+   "question_id": "CH_1788624624377_ztr4",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "a491ab06-e77f-40b8-9835-61a1f6be3791",
+   "question_id": "CH_1789059088734_mlvn",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+  },
+  {
+   "id": "2bc356b6-97ff-4e75-b42f-a5821ebe45de",
+   "question_id": "CH_1783913022985_j96b",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "5acc7dcb-8a79-4729-875d-aaf3826f21b0",
+   "question_id": "CH_1783916047635_e9se",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "406ac3a9-d61e-4658-802b-5729cdf79db2",
+   "question_id": "CH_1789059088734_ezow",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "57152e08-fb44-456e-8082-7124e22c5789",
+   "question_id": "CH_1789059088734_62ov",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh chia hết"
+  },
+  {
+   "id": "0410cf48-87c9-42e5-b6ee-b385e1d5f5b5",
+   "question_id": "CH_1789059088734_0qjv",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "017d0e87-777b-4c64-850a-61c9f8bed258",
+   "question_id": "CH_1783913286305_r9lm",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "418afbe7-be11-4d15-a3ea-f9812eb8e93f",
+   "question_id": "CH_1783915700869_3vd9",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "d0823fce-30b0-4c44-9809-8519f75b345b",
+   "question_id": "CH_1783916047635_r9fa",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức"
+  },
+  {
+   "id": "97ace297-1966-46ef-acf8-d41039fa0024",
+   "question_id": "CH_1783916424739_bmjy",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "14adabda-1a82-49a1-8714-05dd38cc4d5c",
+   "question_id": "CH_1783913286305_u25u",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "60ee4a9e-31c6-4caa-a54c-95b246f6474b",
+   "question_id": "CH_1783916424739_dz36",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "1952e5f4-c0f3-4e64-a81e-eda48c7c2aff",
+   "question_id": "CH_1783913832664_gjbo",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "275156a6-663c-4807-8702-d5a57c111b51",
+   "question_id": "CH_1783912486442_tpgm",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "e39c7f22-0c3c-452c-890d-582710d43ced",
+   "question_id": "CH_1783912754088_apy4",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "f37eb657-ca1e-46ff-a8e9-231dbacc272b",
+   "question_id": "CH_1783911766652_qkkm",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "a13b8cc9-0a50-4d2f-baaf-37417dc24c0a",
+   "question_id": "CH_1783912486442_dp2y",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "29b1c4d7-3f8a-4c82-9894-5681a0f967fb",
+   "question_id": "CH_1783911342715_dvsm",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "8634f9dd-6fb1-498e-99ad-3e605596dc11",
+   "question_id": "CH_1783912754088_hkhd",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "dd332dbf-ed1e-4918-be4f-3823d30ee241",
+   "question_id": "CH_1783912486442_3sdc",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "6a0ee943-b443-42a4-85a2-b024e35eeb00",
+   "question_id": "CH_1783916424739_g8gu",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "a1e78b74-648e-40c1-bc2e-67f430a40af5",
+   "question_id": "CH_1783911342715_z6u8",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+  },
+  {
+   "id": "b7561699-5928-403b-99d9-003af8a49469",
+   "question_id": "CH_1783911342715_xlyp",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh đẳng thức"
+  },
+  {
+   "id": "2a197da7-7cc2-4050-a05c-2c0d61252538",
+   "question_id": "CH_1783916047635_upzo",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "c35699d3-6f67-4e5b-8d23-65331314d763",
+   "question_id": "CH_1783912754088_6vdt",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "2cee694d-a8d5-47eb-b056-3d3330817be1",
+   "question_id": "CH_1783912486442_d90x",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "686972a3-805b-4375-9ff2-d547edac7f08",
+   "question_id": "CH_1783915700869_wegv",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "74e1e8e0-ecac-4ec1-882b-cb36b86255ca",
+   "question_id": "CH_1783914554544_s0im",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "aa70db3a-88a5-4b4c-95ed-9b4673001ea0",
+   "question_id": "CH_1783913286305_sbsi",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "bdc8c995-b93e-44d5-af2a-75a85861ea28",
+   "question_id": "CH_1783913022985_2mbl",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "844b3af4-bdd1-4e72-b3c0-541a55922317",
+   "question_id": "CH_1783911766652_hoo4",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+  },
+  {
+   "id": "df674e09-b28b-4fac-a2e2-1a3a886795af",
+   "question_id": "CH_1783916424739_mrab",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "b8ec8c0c-e589-435f-bb89-8afe2c6f5611",
+   "question_id": "CH_1783914554544_1qon",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "313b5e0c-a952-4ef7-bc58-5a4bfb1ff680",
+   "question_id": "CH_1783915700869_57b6",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "6b95f6e2-6cb4-4a38-926b-44842cb568e6",
+   "question_id": "CH_1783915700869_vfkb",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "e94cc6f7-8d64-4b1e-872e-e09b05a78d2a",
+   "question_id": "CH_1783915700869_7r5e",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp tách 1 hạng tử thành nhiều hạng tử"
+  },
+  {
+   "id": "50b3d727-1303-4ae9-aadd-fae466b85d7b",
+   "question_id": "CH_1783915700869_hlx3",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "516fc3ae-a0fc-469d-8742-3d6325d3b36a",
+   "question_id": "CH_1783914554544_fpwm",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "d66c7335-1eaa-46c6-945d-1e8bce609a00",
+   "question_id": "CH_1783915700869_epiy",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "461d4284-6aef-49c5-86c3-adb68286de7a",
+   "question_id": "CH_1783915700869_jshd",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "d62ef2b0-c0dc-4a4f-b6c3-3a81cbb0f034",
+   "question_id": "CH_1783915700869_e6l9",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "bb00609d-ba9a-430f-a5ed-1ea040ce98ed",
+   "question_id": "CH_1789059088734_qp09",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm x thoả mãn đẳng thức"
+  },
+  {
+   "id": "b4ae424e-8169-400c-a580-a86e2b7a4aea",
+   "question_id": "CH_1787813913668_z2v9",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "f963bef9-20c4-4308-8013-57ebcc94ea13",
+   "question_id": "CH_1783911342715_l83v",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "6a4b92d5-8bca-4f15-8b07-7452fafb06e3",
+   "question_id": "CH_1783911342715_szfs",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "0d2ca5fe-c0af-47ae-b2c3-4ea6ceb0e3be",
+   "question_id": "CH_1783916424739_7lnp",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến"
+  },
+  {
+   "id": "ff9d1011-888d-485c-9324-5b766142ce42",
+   "question_id": "CH_1783911766652_9xat",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "70f2c525-eb95-4bb4-87f1-2a6d1938d13a",
+   "question_id": "CH_1783912041673_fq4i",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến"
+  },
+  {
+   "id": "512ce783-baa6-4b5d-97b7-8c055da95694",
+   "question_id": "CH_1783916424739_i8ni",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "698f020d-aa40-4d00-8c05-1cfb0421f52a",
+   "question_id": "CH_1783940683915_vv1u",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "d0a6d9b4-eae6-44ff-896e-2082c8face98",
+   "question_id": "CH_1783911766652_jely",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "4dce9ffe-ca58-403f-b9e8-0640423c4531",
+   "question_id": "CH_1783940683915_t28b",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "0e2ba1a6-5fb1-423d-8241-2b13a3d655d4",
+   "question_id": "CH_1783911342715_yspw",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "c6ee1eb0-f2e0-4273-925f-62e86d656345",
+   "question_id": "CH_1783911766652_d8e9",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+  },
+  {
+   "id": "84967940-0862-42a8-a5fb-c2470d20323f",
+   "question_id": "CH_1783911342715_bu65",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+  },
+  {
+   "id": "535a48f9-708d-4175-884b-03c59cff63f2",
+   "question_id": "CH_1783911342715_pe9w",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "b3c3d2e7-508a-486a-859f-c6d1bc64fbd0",
+   "question_id": "CH_1783912486442_pn35",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "c60506f7-c2ac-497c-b7f9-4dd9ae8de996",
+   "question_id": "CH_1783911766652_8qyy",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "6d33dac0-2842-450d-b3a6-34b82d0ebe11",
+   "question_id": "CH_1783912486442_hovx",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "38b237cb-db18-4e76-af3c-8ac1c73932b3",
+   "question_id": "CH_1783912486442_1cps",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "f791e788-a61e-435e-907b-839ac0e25297",
+   "question_id": "CH_1783912754088_t0f0",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "822b015d-7a88-421b-957f-56b2c62fd7ac",
+   "question_id": "CH_1783911766652_j809",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "18ea399e-6823-4909-ba10-edccd45c1f7b",
+   "question_id": "CH_1783912041673_ibpc",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "46eda33a-c506-47e7-bb80-8b9e7f7acc1b",
+   "question_id": "CH_1783912486442_jo05",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "bf8936a9-69e0-4056-9b25-fdfa661e13ea",
+   "question_id": "CH_1783912754088_qskn",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "425cedbd-9cce-46ee-b6d7-6e772bc90a61",
+   "question_id": "CH_1783912754088_swml",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "5ff32f24-5792-4457-8150-bb0d7844b3ee",
+   "question_id": "CH_1783912754088_qp60",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "e26a5b63-9b52-4f5e-8cb4-32d5abf870a9",
+   "question_id": "CH_1783913022985_1yyr",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "70b28c1e-1a06-484d-b29c-dadc20851113",
+   "question_id": "CH_1783913022985_5rzy",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "2d5df700-1096-4882-9459-8dfea91aca5d",
+   "question_id": "CH_1783912754088_aq1k",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "3795fd0a-3b51-4393-8922-ce585ff25d31",
+   "question_id": "CH_1783913022985_nhwy",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "3024c9a3-0471-49a6-8378-61c18e507315",
+   "question_id": "CH_1783913832664_3jru",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "df1797cc-bdfe-469f-8fe9-2403548436d2",
+   "question_id": "CH_1783913022985_vs4r",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "0ae9bf72-e253-41c4-9ed9-8ce7e1b9486c",
+   "question_id": "CH_1783913832664_fug1",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "85617410-7603-4351-84bd-855071500781",
+   "question_id": "CH_1783913022985_j9dq",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "023578b0-0a3e-49c1-a2c2-085ade2dc3cd",
+   "question_id": "CH_1783913286305_f1xm",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Chứng minh đẳng thức"
+  },
+  {
+   "id": "9c824054-7862-4c15-a20a-af916af84319",
+   "question_id": "CH_1783913286305_x1hd",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "f9e263ef-2e4d-4aa2-90ed-07d564d68bec",
+   "question_id": "CH_1783913286305_hqoe",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "a15ab17a-ccc8-4143-91a2-096b4a8336cd",
+   "question_id": "CH_1783913832664_lvnr",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "003baefc-9be5-439e-885b-5b42edb8f30b",
+   "question_id": "CH_1783913832664_bn95",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "85e210d9-32a5-4b67-8701-297be5e2c13e",
+   "question_id": "CH_1789059088734_0rth",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "ecaec641-a22a-4ef0-ace9-5429673cf933",
+   "question_id": "CH_1789059088734_oktj",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Tìm giá trị nhỏ nhất, lớn nhất"
+  },
+  {
+   "id": "3ee865d1-fc51-4a4e-b0aa-8155a8819089",
+   "question_id": "CH_1783913022985_i3ok",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+  },
+  {
+   "id": "823ea167-b5e0-4d77-a97a-b92f54d87a8d",
+   "question_id": "CH_1789059088734_sfxq",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Rút gọn và tính giá trị của biểu thức"
+  },
+  {
+   "id": "3a29f32f-ec9e-497e-938d-ce13e6c9df4d",
+   "question_id": "CH_1783912486442_k6mu",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "e1f38a8e-1f52-432c-9f3d-292bd3575fa8",
+   "question_id": "CH_1783912754088_tfgr",
+   "lesson": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "bd5d2263-1bf7-490d-a3c4-b6d944c23a12",
+   "question_id": "CH_1783912486442_jrbd",
+   "lesson": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "3e1a383a-dbfd-47c3-b5b1-e1e44528f58c",
+   "question_id": "CH_1783915700869_8u8h",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "14c6ce91-841d-49e8-a558-aac45ce7abab",
+   "question_id": "CH_1783914554544_jkkn",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tính giá trị biểu thức"
+  },
+  {
+   "id": "1bea15f4-77f5-40b0-8e4e-480e483a9d59",
+   "question_id": "CH_1783913286305_wk04",
+   "lesson": "Bài 3. Tổng và hiệu 2 lập phương",
+   "math_form": "Vận dụng hằng đẳng thức để tính"
+  },
+  {
+   "id": "5952dc3b-4688-4335-989b-68dfd32dd9db",
+   "question_id": "CH_1783915700869_p0aj",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "db6d656c-8486-42e8-82a7-ac5405a2dbed",
+   "question_id": "CH_1783914554544_drrj",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp nhóm hạng tử"
+  },
+  {
+   "id": "3cbd8eaf-2625-4ac2-8b0b-8ad8b77c7ba6",
+   "question_id": "CH_1783914554544_3hpq",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  },
+  {
+   "id": "ec359cc1-3abc-4bb0-b353-62df2b8b542d",
+   "question_id": "CH_1783915700869_fgmy",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức"
+  },
+  {
+   "id": "4b9c8752-ecb0-4758-ade8-a51a5b9392a8",
+   "question_id": "CH_1783914554544_ijlc",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp"
+  },
+  {
+   "id": "f79436c1-4882-4402-8e2c-6bbaa2025610",
+   "question_id": "CH_1783914554544_mqwz",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Tìm x"
+  },
+  {
+   "id": "77dcf956-aba7-46ca-9089-668db941059d",
+   "question_id": "CH_1783914554544_fyq9",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp dùng hằng đẳng thức"
+  },
+  {
+   "id": "7aeb68b8-51e0-473c-ba43-d8add0b4719f",
+   "question_id": "CH_1783915700869_563h",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phối hợp nhiều phương pháp"
+  },
+  {
+   "id": "3fc2c292-45d2-42ac-9849-7e99429a3f43",
+   "question_id": "CH_1783916047635_8yo3",
+   "lesson": "Bài 4. Phân tích đa thức thành nhân tử",
+   "math_form": "Phương pháp đặt nhân tử chung"
+  }
+ ]
+}

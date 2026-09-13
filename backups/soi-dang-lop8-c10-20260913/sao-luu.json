@@ -1,0 +1,55 @@
+{
+ "question_categories": [
+  {
+   "id": "71569adf-d5f7-47a5-b1c4-cc938f51c724",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 2. Hình chóp tứ giác đều",
+   "math_form": "Tính diện tích xung quanh, thể tích của hình chóp tứ giác đều",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích xung quanh và thể tích của một hình chóp tứ giác đều bằng cách sử dụng công thức."
+  },
+  {
+   "id": "faa9b0bc-a73e-4fbc-aa19-20ec0cb190e2",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 1. Hình chóp tam giác đều",
+   "math_form": "Tính diện tích xung quanh, thể tích của hình chóp tam giác đều",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích xung quanh và thể tích của một hình chóp tam giác đều bằng cách sử dụng công thức."
+  },
+  {
+   "id": "0f7fdf23-bd2d-40c6-b7e5-6427f94602c6",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 1. Hình chóp tam giác đều",
+   "math_form": "Nhận biết đỉnh, mặt đáy, mặt bên, cạnh bên của hình chóp tam giác đều",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được đỉnh, mặt đáy, mặt bên và cạnh bên của một hình chóp tam giác đều cho trước."
+  },
+  {
+   "id": "713f4c86-72c9-47cf-b314-be2113883792",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 2. Hình chóp tứ giác đều",
+   "math_form": "Nhận biết đỉnh, mặt đáy, mặt bên, cạnh bên của hình chóp tứ giác đều",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được đỉnh, mặt đáy, mặt bên và cạnh bên của một hình chóp tứ giác đều cho trước."
+  },
+  {
+   "id": "cdb47c9c-b32a-4aae-84f2-9b4792bf1b4e",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 10. Một số hình khối trong thực tiễn",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tổng hợp tính toán liên quan đến hình chóp",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các công thức tính diện tích xung quanh và thể tích để giải quyết một số bài toán thực tế liên quan đến hình chóp."
+  }
+ ],
+ "questions": []
+}

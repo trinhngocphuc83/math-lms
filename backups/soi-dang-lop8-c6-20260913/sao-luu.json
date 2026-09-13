@@ -1,0 +1,95 @@
+{
+ "question_categories": [
+  {
+   "id": "7fe93f42-7767-4de2-8d1c-6d09c66bd0ad",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 6. Phân thức đại số",
+   "lesson": "Bài 4. Phép nhân và phép chia phân thức đại số",
+   "math_form": "Chia hai phân thức",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép chia hai phân thức đại số bằng cách nhân với phân thức nghịch đảo."
+  },
+  {
+   "id": "b8c0f080-d053-4bfe-a216-5d766e50a801",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 6. Phân thức đại số",
+   "lesson": "Bài 1. Phân thức đại số",
+   "math_form": "Nhận biết phân thức đại số, tìm điều kiện xác định của phân thức",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được phân thức đại số và xác định được điều kiện để phân thức đại số có nghĩa."
+  },
+  {
+   "id": "4bfcccf2-8279-4a3c-974a-0e0d4d72f04c",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 6. Phân thức đại số",
+   "lesson": "Bài 2. Tính chất cơ bản của phân thức đại số",
+   "math_form": "Rút gọn phân thức đại số",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất cơ bản của phân thức đại số để rút gọn một phân thức đại số cho trước."
+  },
+  {
+   "id": "1503e593-6ede-42d7-b23b-ef212257166b",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 6. Phân thức đại số",
+   "lesson": "Bài 2. Tính chất cơ bản của phân thức đại số",
+   "math_form": "Quy đồng mẫu thức nhiều phân thức",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc tìm mẫu thức chung và quy đồng mẫu thức của nhiều phân thức đại số."
+  },
+  {
+   "id": "7201a80e-f973-4077-b5c5-2090cacfd9fb",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 6. Phân thức đại số",
+   "lesson": "Bài 3. Phép cộng và phép trừ phân thức đại số",
+   "math_form": "Cộng, trừ hai phân thức khác mẫu",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép cộng và phép trừ hai phân thức đại số có mẫu thức khác nhau bằng cách quy đồng mẫu thức."
+  },
+  {
+   "id": "0e5b8736-a6f2-4fe2-afc2-10a3c67f74e8",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 6. Phân thức đại số",
+   "lesson": "Bài 4. Phép nhân và phép chia phân thức đại số",
+   "math_form": "Nhân hai hay nhiều phân thức",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép nhân hai hoặc nhiều phân thức đại số."
+  },
+  {
+   "id": "92457b9b-26d9-4ee5-b7bc-f5a2b6fa61ac",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 6. Phân thức đại số",
+   "lesson": "Bài 3. Phép cộng và phép trừ phân thức đại số",
+   "math_form": "Cộng, trừ hai phân thức cùng mẫu",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Thực hiện được phép cộng và phép trừ hai phân thức đại số có cùng mẫu thức."
+  },
+  {
+   "id": "222de3ab-5ed0-4ccb-856f-bd05194f8cae",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 6. Phân thức đại số",
+   "lesson": "Bài 1. Phân thức đại số",
+   "math_form": "Tính giá trị của phân thức tại giá trị cho trước của biến",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị của một phân thức đại số tại các giá trị cho trước của biến thỏa mãn điều kiện xác định."
+  },
+  {
+   "id": "e7411700-991d-45a5-94ab-dff790ecb301",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 6. Phân thức đại số",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Rút gọn biểu thức và tính giá trị của phân thức tổng hợp",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc rút gọn phân thức và tính giá trị của biểu thức phân thức đại số tại một giá trị cho trước của biến."
+  }
+ ],
+ "questions": []
+}

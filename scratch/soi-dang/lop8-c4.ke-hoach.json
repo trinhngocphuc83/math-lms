@@ -1,0 +1,80 @@
+{
+ "lop": "8",
+ "chuong": 4,
+ "dang": [
+  {
+   "bai": "Bài 1. Định lí Thalès trong tam giác",
+   "cu": null,
+   "moi": "Nhận biết đoạn thẳng tỉ lệ, viết tỉ số các đoạn thẳng",
+   "yc": "Nhận biết được hai đoạn thẳng tỉ lệ với hai đoạn thẳng khác và viết được các tỉ số đoạn thẳng theo định lí Thalès."
+  },
+  {
+   "bai": "Bài 1. Định lí Thalès trong tam giác",
+   "cu": "Tính độ dài đoạn thẳng",
+   "moi": "Tính độ dài đoạn thẳng bằng định lí Thalès",
+   "yc": "Tính được độ dài đoạn thẳng chưa biết trong tam giác có đường thẳng song song với một cạnh bằng định lí Thalès."
+  },
+  {
+   "bai": "Bài 1. Định lí Thalès trong tam giác",
+   "cu": "Chứng minh các hệ thức hình học và đường thẳng song song",
+   "moi": "Chứng minh hai đường thẳng song song bằng định lí Thalès đảo",
+   "yc": "Chứng minh được hai đường thẳng song song bằng định lí Thalès đảo và chứng minh được các hệ thức về tỉ số đoạn thẳng."
+  },
+  {
+   "bai": "Bài 1. Định lí Thalès trong tam giác",
+   "cu": null,
+   "moi": "Bài toán thực tế về định lí Thalès",
+   "yc": "Vận dụng được định lí Thalès để đo gián tiếp khoảng cách, chiều cao trong thực tế."
+  },
+  {
+   "bai": "Bài 2. Đường trung bình của tam giác",
+   "cu": "Nhận biết, chứng minh đường trung bình của tam giác",
+   "moi": "Nhận biết, chứng minh đường trung bình của tam giác",
+   "yc": "Nhận biết được đường trung bình của tam giác và chứng minh được một đoạn thẳng là đường trung bình."
+  },
+  {
+   "bai": "Bài 2. Đường trung bình của tam giác",
+   "cu": "Tính độ dài đoạn thẳng, chứng minh hai đường thẳng song song bằng đường trung bình",
+   "moi": "Tính độ dài đoạn thẳng bằng tính chất đường trung bình",
+   "yc": "Tính được độ dài đoạn thẳng bằng tính chất đường trung bình của tam giác (song song và bằng nửa cạnh thứ ba)."
+  },
+  {
+   "bai": "Bài 2. Đường trung bình của tam giác",
+   "cu": null,
+   "moi": "Chứng minh song song, bằng nhau, thẳng hàng bằng đường trung bình",
+   "yc": "Vận dụng được tính chất đường trung bình để chứng minh hai đường thẳng song song, đoạn thẳng bằng nhau, ba điểm thẳng hàng, tứ giác là hình bình hành."
+  },
+  {
+   "bai": "Bài 2. Đường trung bình của tam giác",
+   "cu": null,
+   "moi": "Bài toán thực tế về đường trung bình của tam giác",
+   "yc": "Vận dụng được tính chất đường trung bình của tam giác để giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 3. Tính chất đường phân giác của tam giác",
+   "cu": "Tính tỉ số đoạn thẳng, độ dài đoạn thẳng",
+   "moi": "Tính độ dài, tỉ số đoạn thẳng bằng tính chất đường phân giác",
+   "yc": "Tính được độ dài, tỉ số các đoạn thẳng trên cạnh đối diện bằng tính chất đường phân giác của tam giác."
+  },
+  {
+   "bai": "Bài 3. Tính chất đường phân giác của tam giác",
+   "cu": "Chứng minh các hệ thức hình học",
+   "moi": "Chứng minh hệ thức, đường phân giác bằng tính chất đường phân giác",
+   "yc": "Chứng minh được các hệ thức về tỉ số đoạn thẳng và chứng minh được một tia là tia phân giác dựa vào tính chất đường phân giác của tam giác."
+  },
+  {
+   "bai": "Bài 3. Tính chất đường phân giác của tam giác",
+   "cu": null,
+   "moi": "Bài toán thực tế về tính chất đường phân giác",
+   "yc": "Vận dụng được tính chất đường phân giác của tam giác để giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Tổng hợp về định lí Thalès, đường trung bình và phân giác",
+   "moi": "Bài tập tổng hợp chương 4",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 4 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

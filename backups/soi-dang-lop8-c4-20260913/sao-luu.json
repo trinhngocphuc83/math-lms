@@ -1,0 +1,82 @@
+{
+ "question_categories": [
+  {
+   "id": "d5648246-3fb3-4ce7-8530-6b476e8a2139",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 4. Định lí Thalès",
+   "lesson": "Bài 2. Đường trung bình của tam giác",
+   "math_form": "Tính độ dài đoạn thẳng, chứng minh hai đường thẳng song song bằng đường trung bình",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất đường trung bình của tam giác để tính độ dài đoạn thẳng và chứng minh hai đường thẳng song song."
+  },
+  {
+   "id": "3990f708-7fcf-4a72-a0f0-1103bc334a4e",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 4. Định lí Thalès",
+   "lesson": "Bài 1. Định lí Thalès trong tam giác",
+   "math_form": "Tính độ dài đoạn thẳng",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài đoạn thẳng trong tam giác hoặc hình thang bằng cách áp dụng định lí Thalès."
+  },
+  {
+   "id": "c7dcac34-5e38-45db-818e-4cdfb6b63e70",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 4. Định lí Thalès",
+   "lesson": "Bài 3. Tính chất đường phân giác của tam giác",
+   "math_form": "Chứng minh các hệ thức hình học",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất đường phân giác của tam giác để chứng minh các hệ thức và đẳng thức hình học."
+  },
+  {
+   "id": "08a3e78f-dd10-46ad-88fb-cb64a3549a97",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 4. Định lí Thalès",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tổng hợp về định lí Thalès, đường trung bình và phân giác",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Giải quyết được các bài toán tổng hợp về tính độ dài đoạn thẳng và chứng minh hình học bằng định lí Thalès, đường trung bình, đường phân giác."
+  },
+  {
+   "id": "a3afca7c-b08f-4ff7-95c5-7299c0c6dc88",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 4. Định lí Thalès",
+   "lesson": "Bài 2. Đường trung bình của tam giác",
+   "math_form": "Nhận biết, chứng minh đường trung bình của tam giác",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Mô tả được định nghĩa đường trung bình của tam giác và nhận biết được đường trung bình trong một hình vẽ."
+  },
+  {
+   "id": "4fd66417-1bf3-49b2-b524-837fa10a86ae",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 4. Định lí Thalès",
+   "lesson": "Bài 3. Tính chất đường phân giác của tam giác",
+   "math_form": "Tính tỉ số đoạn thẳng, độ dài đoạn thẳng",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất đường phân giác của tam giác để tính độ dài đoạn thẳng và tỉ số giữa các đoạn thẳng."
+  },
+  {
+   "id": "01727504-d14e-4690-b7e9-8c77ee2e2aae",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 4. Định lí Thalès",
+   "lesson": "Bài 1. Định lí Thalès trong tam giác",
+   "math_form": "Chứng minh các hệ thức hình học và đường thẳng song song",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vận dụng định lí Thalès và định lí Thalès đảo để chứng minh các hệ thức hình học và hai đường thẳng song song."
+  }
+ ],
+ "questions": [
+  {
+   "id": "47ac79e8-06b1-4e3c-bb42-480189bd5aa0",
+   "question_id": "CH_1789059088734_vq0i",
+   "lesson": "Bài 2. Đường trung bình của tam giác",
+   "math_form": "Tính độ dài đoạn thẳng, chứng minh hai đường thẳng song song bằng đường trung bình"
+  }
+ ]
+}

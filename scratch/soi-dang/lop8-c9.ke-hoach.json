@@ -1,0 +1,116 @@
+{
+ "lop": "8",
+ "chuong": 9,
+ "dang": [
+  {
+   "bai": "Bài 1. Hai tam giác đồng dạng",
+   "cu": "Nhận biết hai tam giác đồng dạng, viết kí hiệu",
+   "moi": "Nhận biết hai tam giác đồng dạng, viết kí hiệu và tỉ số đồng dạng",
+   "yc": "Nhận biết được hai tam giác đồng dạng, viết đúng kí hiệu theo thứ tự đỉnh tương ứng và xác định được tỉ số đồng dạng."
+  },
+  {
+   "bai": "Bài 1. Hai tam giác đồng dạng",
+   "cu": "Sử dụng tính chất của hai tam giác đồng dạng để tính độ dài cạnh, số đo góc",
+   "moi": "Tính độ dài cạnh, số đo góc từ hai tam giác đồng dạng",
+   "yc": "Tính được độ dài cạnh, số đo góc, chu vi của tam giác khi biết hai tam giác đồng dạng và tỉ số đồng dạng."
+  },
+  {
+   "bai": "Bài 1. Hai tam giác đồng dạng",
+   "cu": null,
+   "moi": "Chứng minh hai tam giác đồng dạng bằng định lí về đường thẳng song song với một cạnh",
+   "yc": "Chứng minh được hai tam giác đồng dạng khi có đường thẳng song song với một cạnh của tam giác và vận dụng tính chất."
+  },
+  {
+   "bai": "Bài 2. Ba trường hợp đồng dạng của hai tam giác",
+   "cu": "Chứng minh hai tam giác đồng dạng (c-c-c, c-g-c, g-g)",
+   "moi": "Chứng minh hai tam giác đồng dạng (c.c.c, c.g.c, g.g)",
+   "yc": "Chứng minh được hai tam giác đồng dạng theo trường hợp cạnh-cạnh-cạnh, cạnh-góc-cạnh, góc-góc."
+  },
+  {
+   "bai": "Bài 2. Ba trường hợp đồng dạng của hai tam giác",
+   "cu": "Tính độ dài đoạn thẳng, chứng minh các hệ thức hình học dựa vào tam giác đồng dạng",
+   "moi": "Tính độ dài đoạn thẳng, chứng minh hệ thức bằng tam giác đồng dạng",
+   "yc": "Vận dụng được tam giác đồng dạng để tính độ dài đoạn thẳng và chứng minh các hệ thức dạng tích, tỉ số."
+  },
+  {
+   "bai": "Bài 2. Ba trường hợp đồng dạng của hai tam giác",
+   "cu": null,
+   "moi": "Chứng minh góc bằng nhau, tia phân giác, đường thẳng song song bằng tam giác đồng dạng",
+   "yc": "Vận dụng được tam giác đồng dạng để chứng minh hai góc bằng nhau, tia phân giác, hai đường thẳng song song."
+  },
+  {
+   "bai": "Bài 2. Ba trường hợp đồng dạng của hai tam giác",
+   "cu": null,
+   "moi": "Bài toán thực tế về tam giác đồng dạng",
+   "yc": "Vận dụng được tam giác đồng dạng để đo gián tiếp chiều cao, khoảng cách trong thực tế."
+  },
+  {
+   "bai": "Bài 3. Định lí Pythagore và ứng dụng",
+   "cu": "Tính độ dài cạnh trong tam giác vuông",
+   "moi": "Tính độ dài cạnh trong tam giác vuông bằng định lí Pythagore",
+   "yc": "Tính được độ dài cạnh còn lại của tam giác vuông khi biết hai cạnh bằng định lí Pythagore."
+  },
+  {
+   "bai": "Bài 3. Định lí Pythagore và ứng dụng",
+   "cu": "Nhận biết tam giác vuông bằng định lí Pythagore đảo",
+   "moi": "Nhận biết tam giác vuông bằng định lí Pythagore đảo",
+   "yc": "Kiểm tra được một tam giác có là tam giác vuông hay không bằng định lí Pythagore đảo."
+  },
+  {
+   "bai": "Bài 3. Định lí Pythagore và ứng dụng",
+   "cu": null,
+   "moi": "Tính độ dài đoạn thẳng trong hình có tam giác vuông",
+   "yc": "Tính được độ dài đường cao, đường chéo, cạnh trong hình chữ nhật, hình thang, tam giác cân bằng cách vận dụng định lí Pythagore."
+  },
+  {
+   "bai": "Bài 3. Định lí Pythagore và ứng dụng",
+   "cu": null,
+   "moi": "Bài toán thực tế về định lí Pythagore",
+   "yc": "Vận dụng được định lí Pythagore để giải bài toán thực tế (thang dựa tường, khoảng cách, chiều cao)."
+  },
+  {
+   "bai": "Bài 4. Các trường hợp đồng dạng của hai tam giác vuông",
+   "cu": "Chứng minh hai tam giác vuông đồng dạng",
+   "moi": "Chứng minh hai tam giác vuông đồng dạng",
+   "yc": "Chứng minh được hai tam giác vuông đồng dạng theo trường hợp góc nhọn, hai cạnh góc vuông, cạnh huyền - cạnh góc vuông."
+  },
+  {
+   "bai": "Bài 4. Các trường hợp đồng dạng của hai tam giác vuông",
+   "cu": "Tính độ dài đường cao, cạnh trong tam giác vuông",
+   "moi": "Tính độ dài đoạn thẳng, chứng minh hệ thức bằng tam giác vuông đồng dạng",
+   "yc": "Vận dụng được tam giác vuông đồng dạng để tính độ dài đường cao, hình chiếu, cạnh và chứng minh các hệ thức trong tam giác vuông."
+  },
+  {
+   "bai": "Bài 4. Các trường hợp đồng dạng của hai tam giác vuông",
+   "cu": null,
+   "moi": "Tỉ số diện tích, tỉ số đường cao của hai tam giác đồng dạng",
+   "yc": "Vận dụng được tỉ số đường cao bằng tỉ số đồng dạng, tỉ số diện tích bằng bình phương tỉ số đồng dạng để tính toán."
+  },
+  {
+   "bai": "Bài 4. Các trường hợp đồng dạng của hai tam giác vuông",
+   "cu": null,
+   "moi": "Bài toán thực tế về tam giác vuông đồng dạng",
+   "yc": "Vận dụng được tam giác vuông đồng dạng để đo gián tiếp chiều cao, khoảng cách trong thực tế."
+  },
+  {
+   "bai": "Bài 5. Hình đồng dạng",
+   "cu": "Nhận biết các hình đồng dạng trong thực tiễn",
+   "moi": "Nhận biết hình đồng dạng, hình đồng dạng phối cảnh",
+   "yc": "Nhận biết được hai hình đồng dạng, hình đồng dạng phối cảnh (vị tự) và chỉ ra được tỉ số đồng dạng."
+  },
+  {
+   "bai": "Bài 5. Hình đồng dạng",
+   "cu": null,
+   "moi": "Vẽ hình đồng dạng phối cảnh và tính kích thước hình đồng dạng",
+   "yc": "Vẽ được hình đồng dạng phối cảnh với tỉ số cho trước và tính được kích thước, chu vi, diện tích của hình đồng dạng."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Tổng hợp định lí Pythagore và tam giác đồng dạng",
+   "moi": "Bài tập tổng hợp chương 9",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 9 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

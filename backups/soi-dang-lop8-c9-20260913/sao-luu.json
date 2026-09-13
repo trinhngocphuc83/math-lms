@@ -1,0 +1,105 @@
+{
+ "question_categories": [
+  {
+   "id": "56daf3b1-4491-4dcc-abc5-beff0e8ae0f5",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 4. Các trường hợp đồng dạng của hai tam giác vuông",
+   "math_form": "Chứng minh hai tam giác vuông đồng dạng",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Giải thích được các trường hợp đồng dạng của hai tam giác vuông để chứng minh hai tam giác vuông đồng dạng."
+  },
+  {
+   "id": "ad54f02c-aa95-465b-893e-69916254851d",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 2. Ba trường hợp đồng dạng của hai tam giác",
+   "math_form": "Tính độ dài đoạn thẳng, chứng minh các hệ thức hình học dựa vào tam giác đồng dạng",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vận dụng các trường hợp đồng dạng của hai tam giác để tính độ dài đoạn thẳng và chứng minh các hệ thức hình học liên quan."
+  },
+  {
+   "id": "4f353ddd-dcd0-45a0-b837-54c572c12e8a",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 1. Hai tam giác đồng dạng",
+   "math_form": "Sử dụng tính chất của hai tam giác đồng dạng để tính độ dài cạnh, số đo góc",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài cạnh và số đo góc của một tam giác bằng cách sử dụng định nghĩa và tính chất của hai tam giác đồng dạng."
+  },
+  {
+   "id": "fb88e368-f0d4-4637-b536-9e82e3f54594",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 1. Hai tam giác đồng dạng",
+   "math_form": "Nhận biết hai tam giác đồng dạng, viết kí hiệu",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được hai tam giác đồng dạng và viết đúng kí hiệu đồng dạng theo thứ tự các đỉnh tương ứng."
+  },
+  {
+   "id": "b3bae410-4a4d-43b3-8bef-5567d7427d7c",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 5. Hình đồng dạng",
+   "math_form": "Nhận biết các hình đồng dạng trong thực tiễn",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được các hình đồng dạng phối cảnh và các hình đồng dạng trong thế giới tự nhiên hay thực tiễn cuộc sống."
+  },
+  {
+   "id": "01fd01e8-8273-483b-b1f3-b7f609674a5e",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 3. Định lí Pythagore và ứng dụng",
+   "math_form": "Nhận biết tam giác vuông bằng định lí Pythagore đảo",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được một tam giác là tam giác vuông khi biết độ dài ba cạnh bằng cách sử dụng định lí Pythagore đảo."
+  },
+  {
+   "id": "1571fac9-bafd-4cb3-b9c9-fd5679274344",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 4. Các trường hợp đồng dạng của hai tam giác vuông",
+   "math_form": "Tính độ dài đường cao, cạnh trong tam giác vuông",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài đường cao và các cạnh của tam giác vuông bằng cách áp dụng các trường hợp đồng dạng của hai tam giác vuông."
+  },
+  {
+   "id": "af66625e-0459-4146-882b-670d51d5f543",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Tổng hợp định lí Pythagore và tam giác đồng dạng",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vận dụng định lí Pythagore và các trường hợp đồng dạng của hai tam giác để giải quyết các bài toán tính toán và chứng minh hình học."
+  },
+  {
+   "id": "951f2e47-4d42-4484-9052-b23c2a097b6f",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 3. Định lí Pythagore và ứng dụng",
+   "math_form": "Tính độ dài cạnh trong tam giác vuông",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài một cạnh của tam giác vuông khi biết độ dài hai cạnh còn lại bằng cách áp dụng định lí Pythagore."
+  },
+  {
+   "id": "acc5e84c-7fa9-4fd3-a288-5d93f6d437e5",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 9. Tam giác đồng dạng",
+   "lesson": "Bài 2. Ba trường hợp đồng dạng của hai tam giác",
+   "math_form": "Chứng minh hai tam giác đồng dạng (c-c-c, c-g-c, g-g)",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Chứng minh được hai tam giác đồng dạng bằng cách sử dụng các trường hợp đồng dạng cạnh-cạnh-cạnh, cạnh-góc-cạnh hoặc góc-góc."
+  }
+ ],
+ "questions": []
+}

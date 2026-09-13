@@ -1,0 +1,1940 @@
+{
+ "question_categories": [
+  {
+   "id": "aa730baa-1d45-4158-9d30-c17d5f0f3822",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh và tính toán với hình chữ nhật",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Nhận biết được các tính chất về cạnh, góc, hai đường chéo và tâm đối xứng của hình chữ nhật."
+  },
+  {
+   "id": "b14f5be9-774a-42ff-b7d8-68a233bdaaf7",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh và tính toán với hình bình hành",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Nhận biết được các tính chất về cạnh, góc và hai đường chéo của hình bình hành."
+  },
+  {
+   "id": "43579b03-6b41-48ec-8829-54910cd100e3",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông",
+   "created_at": "2026-07-13T16:04:47.942813+00:00",
+   "yeu_cau_can_dat": "Nhận biết được các tính chất về cạnh, góc, đường chéo và trục đối xứng của hình vuông."
+  },
+  {
+   "id": "90bdd2c7-dcb9-425c-9105-f00d0d24d444",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Nhận dạng tứ giác",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Nhận biết được tứ giác lồi và tứ giác không lồi trong các hình vẽ cho trước."
+  },
+  {
+   "id": "b4b92a19-33c5-4dc8-a893-50a81a8cf7be",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ vuông góc",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất của hình chữ nhật, hình thoi, hình vuông để chứng minh hai đường thẳng vuông góc trong một hình cụ thể."
+  },
+  {
+   "id": "80376dce-dcea-4902-8137-af0ed4b0c5c5",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Dấu hiệu nhận biết hình chữ nhật",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Giải thích được một tứ giác là hình chữ nhật bằng cách sử dụng các dấu hiệu nhận biết liên quan đến góc và đường chéo."
+  },
+  {
+   "id": "d4e0d928-ded3-4ee1-b424-6cc066256a89",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Tính được số đo các góc của hình thang cân dựa vào định nghĩa và tính chất của hình thang cân."
+  },
+  {
+   "id": "6eed96f7-a9e4-4cf4-82e5-062094619188",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các dấu hiệu nhận biết để chứng minh một tứ giác là hình bình hành."
+  },
+  {
+   "id": "dd2b118c-d4b7-4e62-a808-02c0eb8cd61e",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của hình bình hành để chứng minh hai đoạn thẳng bằng nhau hoặc tính độ dài đoạn thẳng."
+  },
+  {
+   "id": "41480377-e134-4e70-8c3d-ea231efe28fe",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính độ dài đoạn thẳng",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài cạnh bên, đường cao hoặc chu vi của hình thang cân bằng cách sử dụng định lí Pythagore."
+  },
+  {
+   "id": "35684930-3987-4bf5-8d14-c9b468dbf72e",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của hình thang cân để chứng minh hai đoạn thẳng bằng nhau hoặc hai góc bằng nhau."
+  },
+  {
+   "id": "04f95cc6-cbb1-4871-b6a7-2ff993ca852c",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài cạnh hoặc chu vi của hình thoi dựa vào độ dài hai đường chéo cho trước."
+  },
+  {
+   "id": "a922481a-9074-4d92-9315-e692770d4e80",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ vuông góc",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của hình chữ nhật để chứng minh hai đường thẳng vuông góc."
+  },
+  {
+   "id": "942a41f5-4bf1-4444-bad5-6c10f05fcb74",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Giải thích được một tứ giác cho trước là hình vuông dựa vào các dấu hiệu nhận biết."
+  },
+  {
+   "id": "4e80bb53-66a3-4dbf-859e-d52a30eb4b4c",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Nhận biết được các dấu hiệu để chứng minh một tứ giác là hình thoi."
+  },
+  {
+   "id": "f9217fa9-4565-4222-b5b4-6e5dca6ccac2",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của các tứ giác đặc biệt để chứng minh ba điểm thẳng hàng hoặc ba đường thẳng đồng quy."
+  },
+  {
+   "id": "5e183f3e-8e62-48b6-941c-f874da011ddc",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Vẽ tứ giác khi biết 5 yếu tố",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc vẽ một tứ giác khi biết độ dài các cạnh và các đường chéo của nó."
+  },
+  {
+   "id": "4c19fde2-2703-4818-994a-24249c5655ae",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ bằng nhau",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài cạnh hoặc chu vi của hình thoi bằng cách vận dụng các tính chất về đường chéo và định lí Pythagore."
+  },
+  {
+   "id": "e72e7cbe-38db-43a4-bb95-db4591854c09",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh và tính toán với tứ giác",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Giải thích được định lí về tổng các góc trong một tứ giác lồi và vận dụng để chứng minh, tính toán."
+  },
+  {
+   "id": "fbda0719-1d64-4cd6-a54f-9e0e05dfcbc3",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Tính được số đo các góc của một tứ giác dựa vào định lí tổng các góc trong một tứ giác."
+  },
+  {
+   "id": "af025593-f54b-4e4a-b144-4ce74a439041",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Vận dụng được dấu hiệu nhận biết hình chữ nhật để chứng minh một tứ giác cho trước là hình chữ nhật."
+  },
+  {
+   "id": "b1429524-ce39-4f56-b1bd-66e8878a0b45",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh và tính toán với hình thang cân",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Nhận biết được định nghĩa, tính chất về cạnh bên, góc kề một đáy và hai đường chéo của hình thang cân."
+  },
+  {
+   "id": "d8e5c512-13f1-4068-a348-b0a611a38df1",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Giải thích được một tứ giác cho trước là hình thoi dựa vào các dấu hiệu nhận biết."
+  },
+  {
+   "id": "ae6c0123-9dfe-400e-acea-cee54629902a",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất giao điểm hai đường chéo của hình bình hành để chứng minh ba điểm thẳng hàng hoặc ba đường thẳng đồng quy."
+  },
+  {
+   "id": "7385558c-74b0-49ec-9de3-593ecd6ff4db",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 góc bằng nhau, tính số đo góc",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Tính được số đo các góc của hình bình hành dựa vào tính chất về góc của hình bình hành."
+  },
+  {
+   "id": "48ca923d-72c8-4395-b1c7-c4bc5e324546",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh hệ thức giữa các độ dài. Tính độ dài",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Vận dụng bất đẳng thức tam giác hoặc định lí Pythagore để tính độ dài cạnh và chứng minh hệ thức liên quan đến tứ giác."
+  },
+  {
+   "id": "f1247f1d-4ded-4f95-b1fb-0a12a38da66b",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Nhận biết được một tứ giác là hình thang hoặc hình thang cân dựa vào định nghĩa và dấu hiệu nhận biết."
+  },
+  {
+   "id": "18cfd166-5176-4a1a-a623-8d080535e1c2",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của hình thoi và hình vuông để chứng minh hai đoạn thẳng bằng nhau hoặc tính độ dài đoạn thẳng."
+  },
+  {
+   "id": "ddfc85db-8914-4ae6-9aff-015cc6c34915",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của hình thoi và hình vuông để chứng minh hai đoạn thẳng bằng nhau hoặc hai góc bằng nhau."
+  },
+  {
+   "id": "73a8d364-34e1-428c-be33-722dcaa67a0f",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Nhận dạng tứ giác",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Nhận biết được tứ giác lồi và tứ giác không lồi thông qua hình vẽ cho trước."
+  },
+  {
+   "id": "4e2fb96e-f60d-46ce-a3b9-cd8354a40a1c",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình vuông",
+   "created_at": "2026-07-13T11:45:01.640987+00:00",
+   "yeu_cau_can_dat": "Giải thích được dấu hiệu nhận biết một tứ giác là hình vuông dựa vào định nghĩa và tính chất."
+  },
+  {
+   "id": "8a31d198-dd00-472c-a3fb-274e20e0dbec",
+   "grade": "8",
+   "subject": "Hình học",
+   "topic": "Chương 3. Tứ giác",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Bài tập tổng hợp chương 3",
+   "created_at": "2026-09-12T13:22:55.079019+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp kiến thức của chương 3 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "questions": [
+  {
+   "id": "c04018c7-40ae-4a76-8768-652e364dd47b",
+   "question_id": "CH_1783962749698_9xyd",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "f5c2a6b3-1272-4e93-9716-d5bc24d2a910",
+   "question_id": "CH_1783962749698_yefg",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "fb33a22d-4cf1-4651-8fab-cfdbf47eec50",
+   "question_id": "CH_1783962749698_ge4j",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "c79d010b-d1b8-4470-bef7-a365f05ad55f",
+   "question_id": "CH_1783944118552_k88l",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Nhận dạng tứ giác"
+  },
+  {
+   "id": "a16a97c7-451a-469e-a01f-791b3d9a7632",
+   "question_id": "CH_1783963329362_dxin",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình vuông"
+  },
+  {
+   "id": "04597a54-d6d3-4f8b-9058-cbd7650b246a",
+   "question_id": "CH_1783963329362_nj7t",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "cb73244b-557a-4da3-ad15-b3ff1f8cd52b",
+   "question_id": "CH_1783963513401_7jlq",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "cc13f8fd-1c74-47d6-ba2c-9dfc073d54e9",
+   "question_id": "CH_1783963513401_qvyu",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "786ce141-573e-40bd-9ac1-fce98f5338a5",
+   "question_id": "CH_1783944118552_oj17",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "b892cd7c-2301-45fb-8fc6-f2136fe07d2f",
+   "question_id": "CH_1783944118552_xpey",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Vẽ tứ giác khi biết 5 yếu tố"
+  },
+  {
+   "id": "7816d2bb-41c3-4319-b515-48e403703d7d",
+   "question_id": "CH_1783944118552_t8ew",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh hệ thức giữa các độ dài. Tính độ dài"
+  },
+  {
+   "id": "c333a9ff-86ff-45bc-a9eb-437bc5cb2de4",
+   "question_id": "CH_1783944118552_0dj5",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "8c728e3c-6f95-4656-88c2-c0d05cbadf84",
+   "question_id": "CH_1783944118552_00wd",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "04879acf-cd15-4b7d-b0af-d81bb44959b3",
+   "question_id": "CH_1783963513401_h037",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh hệ thức giữa các độ dài. Tính độ dài"
+  },
+  {
+   "id": "22cd69cf-027b-43d4-b0b6-a2c538a289d9",
+   "question_id": "CH_1783963513401_vtac",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 góc bằng nhau, tính số đo góc"
+  },
+  {
+   "id": "f2499f78-e4a7-4cee-bd66-f3380e02dde1",
+   "question_id": "CH_1783944118552_qv89",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "9e7aa6b5-133a-4414-a28a-38acf1d4f9be",
+   "question_id": "CH_1783963329362_berz",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "8eb2c44f-d058-486c-8652-812291774595",
+   "question_id": "CH_1783957871315_jd1s",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "b24bff2e-184a-4f66-a806-4cccc1fc6a79",
+   "question_id": "CH_1783957871315_czpi",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "9c341971-861b-4eca-830c-4445215221e9",
+   "question_id": "CH_1783957871315_owd9",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "172f27da-c239-4780-993b-ae48834ae62e",
+   "question_id": "CH_1783957871315_ombi",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "1542f566-77c1-47f4-a19b-02cae9e6c5db",
+   "question_id": "CH_1783957871315_w9ki",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "bd33ef6c-a728-4444-9f58-b000c4dcedbf",
+   "question_id": "CH_1783957871315_wbsd",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "5ec56b5d-57ba-445b-8d27-3751d9e5b3af",
+   "question_id": "CH_1783957871315_bfex",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "a5aef523-d54e-46eb-8162-790a65099c50",
+   "question_id": "CH_1783957871315_501h",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "808e57eb-0d8d-4908-a019-746e4691dccd",
+   "question_id": "CH_1783957871315_u1eu",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "72994304-766d-4f1d-9dd0-0df92faf4f7a",
+   "question_id": "CH_1783957871315_pk13",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "a8354be5-8db8-41d2-9e0e-fbf0dc8d531d",
+   "question_id": "CH_1783957871315_n7pf",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "af00bb69-6151-4e72-8c3b-329100b722cb",
+   "question_id": "CH_1783957871315_lctc",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "2a7b9e70-ccfb-4c65-875d-5f3e099e11e9",
+   "question_id": "CH_1783957871315_lvok",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "daceb14e-7928-492e-b3ec-4562d8a10e54",
+   "question_id": "CH_1783957871315_eyt9",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "70d95479-0a6e-40e3-8e2e-503ea131e4cd",
+   "question_id": "CH_1783957871315_kibl",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "0c6c77f6-daf7-4a93-b26b-e4936986c0cc",
+   "question_id": "CH_1783957871315_2306",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "2dc21812-9800-4ea2-a592-2b00d013c105",
+   "question_id": "CH_1783958172722_qke5",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 góc bằng nhau, tính số đo góc"
+  },
+  {
+   "id": "37ccb387-431e-4bd1-bdb4-eaec74523df5",
+   "question_id": "CH_1783958172722_65c2",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 góc bằng nhau, tính số đo góc"
+  },
+  {
+   "id": "a99d7545-0bc5-4a25-92cb-aa3654ef7087",
+   "question_id": "CH_1783958172723_kwl9",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 góc bằng nhau, tính số đo góc"
+  },
+  {
+   "id": "429335f6-bc3d-43dc-904d-fc30a3dcd35f",
+   "question_id": "CH_1783958172723_wl3e",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "473e6943-bb6c-4e93-b389-f6ae06a59fe7",
+   "question_id": "CH_1783958172723_3m0o",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "887fdd7b-febc-4f75-a13d-6838cc7128ef",
+   "question_id": "CH_1783958172723_btek",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "bbbc8112-e97e-4f65-8a92-b1b4f2ea1944",
+   "question_id": "CH_1783958172723_4bx9",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "53000ced-8fb7-48f9-9471-e76cbe61e668",
+   "question_id": "CH_1783958172723_tkjx",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+  },
+  {
+   "id": "22f991a5-1eb0-4367-a69b-692912bea600",
+   "question_id": "CH_1783958172723_tuog",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+  },
+  {
+   "id": "d371327f-b96a-409e-9fbb-8acb92edd44f",
+   "question_id": "CH_1783958172723_9mvf",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+  },
+  {
+   "id": "3cfc5646-5a49-49d8-947e-1cef59a00ca7",
+   "question_id": "CH_1783958172723_nvvy",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "2f42703b-8922-4040-aee4-96f0771c51b5",
+   "question_id": "CH_1783958172723_qi6x",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "4f9d5855-be84-4436-8888-cfd387b19a4e",
+   "question_id": "CH_1783958172723_l6na",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "d0b340b4-3f5a-4c60-bc28-a44362f58c76",
+   "question_id": "CH_1783958172723_q98d",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "12438af7-2604-436c-93b0-d8f9b9c2c605",
+   "question_id": "CH_1783958172723_9fkj",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 góc bằng nhau, tính số đo góc"
+  },
+  {
+   "id": "6d55b204-06f9-4856-bfec-0379489685a0",
+   "question_id": "CH_1783958172723_jzb1",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+  },
+  {
+   "id": "018b018e-8afe-4265-b4fa-33de679622fe",
+   "question_id": "CH_1783958172723_ammg",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+  },
+  {
+   "id": "602555d5-05b0-46a2-a7f8-654eafb0e666",
+   "question_id": "CH_1783958172723_q5ok",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "2a43c65b-4242-48d6-b7c7-a7e8b98add05",
+   "question_id": "CH_1783958172723_xnrx",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "8f9ca237-c8f1-4858-a359-2794ebd3819e",
+   "question_id": "CH_1783958172723_w73e",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "451f1e17-91cd-4922-88f3-0482aae938dd",
+   "question_id": "CH_1783958172723_crb5",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "80b89f5d-7dee-48b2-ba3b-049dc3b9f1bb",
+   "question_id": "CH_1783958172723_ow8j",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "0362bbea-136c-4a40-abbb-8e07867ce013",
+   "question_id": "CH_1783958172723_cndv",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh và tính toán với hình bình hành"
+  },
+  {
+   "id": "f5762110-852e-4932-b6d6-e32e386ff887",
+   "question_id": "CH_1783958172723_ja6d",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 góc bằng nhau, tính số đo góc"
+  },
+  {
+   "id": "c1faefae-cb1e-4f66-bf7f-cde5d345d811",
+   "question_id": "CH_1783958172723_yww0",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh và tính toán với hình bình hành"
+  },
+  {
+   "id": "c053180f-a3ae-4d95-8973-4bfd9f705116",
+   "question_id": "CH_1783958172723_s3ac",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "54876a95-7b8f-475e-a0d8-a6bedc8768fa",
+   "question_id": "CH_1783958172723_n162",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh và tính toán với hình bình hành"
+  },
+  {
+   "id": "e53543f8-5159-4b36-9a0b-b13e3cca6822",
+   "question_id": "CH_1783958418900_ljqn",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "86117c16-7f74-466d-a5db-b59d1e1efc41",
+   "question_id": "CH_1783958418900_7fav",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "a6609aa1-0f7c-465a-9012-e30bb4348de7",
+   "question_id": "CH_1783958418900_mh9m",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Dấu hiệu nhận biết hình chữ nhật"
+  },
+  {
+   "id": "f0921154-258c-4336-9e3d-87da9a24901d",
+   "question_id": "CH_1783958418900_7zd9",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Dấu hiệu nhận biết hình chữ nhật"
+  },
+  {
+   "id": "c703637c-35f5-4a2e-9d43-1cdeab349b10",
+   "question_id": "CH_1783958418900_k0bl",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ vuông góc"
+  },
+  {
+   "id": "82ba223c-56cc-4199-87b1-1bc64dc1dd83",
+   "question_id": "CH_1783958418900_1wf2",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh và tính toán với hình chữ nhật"
+  },
+  {
+   "id": "1a17857e-6d5c-47dd-a6bc-d15951e504c6",
+   "question_id": "CH_1783958418900_qsso",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh và tính toán với hình chữ nhật"
+  },
+  {
+   "id": "4d9cb3a9-7caf-490b-a7eb-da99aa227414",
+   "question_id": "CH_1783958418900_qo3y",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh và tính toán với hình chữ nhật"
+  },
+  {
+   "id": "7248128b-ad0c-4226-859b-328c572223ee",
+   "question_id": "CH_1783962749698_39pa",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "07f1ce5a-d441-4cc9-86d0-4a53cb9a56b5",
+   "question_id": "CH_1783958688712_vycv",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "d8173baa-d23a-4002-88f3-db5e311ede90",
+   "question_id": "CH_1783958688712_2hni",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "87bd3dc4-4201-4cea-8a92-fde287d0fab6",
+   "question_id": "CH_1783958688712_1bit",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "10f003af-9d65-4c62-8ffd-4d33143a3e94",
+   "question_id": "CH_1783958688712_hvlb",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "8265a795-b0c8-46c8-bccb-8002bb033334",
+   "question_id": "CH_1783958688712_betu",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "fcdf8c54-214c-4f06-b4d8-e6135cf629c5",
+   "question_id": "CH_1783958688712_7gqd",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "8b7250d0-2d07-4270-8479-410d0d8e1efb",
+   "question_id": "CH_1783958688712_clsm",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "d285befd-4344-47b3-8d52-e8b19cef1e1b",
+   "question_id": "CH_1783958688712_qcpk",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình vuông"
+  },
+  {
+   "id": "96dd0c41-b944-4eda-9978-d713e0783783",
+   "question_id": "CH_1783958688712_i7gq",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "f9660ea4-c021-45c5-ba96-7bf1bdac6701",
+   "question_id": "CH_1783958688712_bq0l",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "25c94564-951f-489f-ba59-0e7757be70a5",
+   "question_id": "CH_1783958688712_1d2a",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "74ce4ad7-a94b-476b-88d4-f44338fc4d07",
+   "question_id": "CH_1783958688712_7ww7",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ vuông góc"
+  },
+  {
+   "id": "4e3f034c-5d3f-4353-a888-2cc18c5ab26a",
+   "question_id": "CH_1783958688712_n5ig",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "ca4f68e2-db6b-4ceb-bc87-9315e99587f4",
+   "question_id": "CH_1783958688712_u802",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "4ea611b1-7624-4b8b-b2b2-46468556332e",
+   "question_id": "CH_1783958688712_dt7q",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "9b2bff28-a2b6-4021-9a8f-2ee3a0108f0e",
+   "question_id": "CH_1783958688712_ctdl",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "3d278e02-d4a7-4bea-85da-209407f42476",
+   "question_id": "CH_1783958688712_evvm",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "d192e7f0-40bf-4319-817c-bc58f1113319",
+   "question_id": "CH_1783958688712_1h18",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "a2ec64d8-68c8-45f0-ba0c-88fa0d165362",
+   "question_id": "CH_1783958688712_khl8",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "1e0dc415-c446-4439-9cde-3a6632ea1259",
+   "question_id": "CH_1783958688712_v40t",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "d98c352f-2ff7-41f4-9d75-7e56d736efc6",
+   "question_id": "CH_1783958688712_uish",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "d3bce03b-0275-4392-9106-215403454a4f",
+   "question_id": "CH_1783958688712_g6jz",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "38f1d2c5-bd6f-4205-8151-2f81d7dab4ff",
+   "question_id": "CH_1783958688712_nbjq",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "9b6ea3c7-e819-437c-a120-a1337aaa05ae",
+   "question_id": "CH_1783958688712_ck1j",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "d28cfa3e-4cd2-4338-8b63-9f7c78d5f831",
+   "question_id": "CH_1783958688712_omb1",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "058afc21-9538-41fa-a2d3-66b8b44042fa",
+   "question_id": "CH_1783959002403_bhd6",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Nhận dạng tứ giác"
+  },
+  {
+   "id": "e55a33bb-3b46-4ee2-9e5d-ce5f40fc2811",
+   "question_id": "CH_1783959002403_k3t2",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Nhận dạng tứ giác"
+  },
+  {
+   "id": "4b4b33ae-527c-40df-a254-ede6b77aba9d",
+   "question_id": "CH_1783959002403_g90u",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "3a739d2e-724b-4450-8b61-34bb9463719d",
+   "question_id": "CH_1783959002403_64qw",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "75d3055e-c649-4a34-b058-bd2899fcabc9",
+   "question_id": "CH_1783959002403_2zo0",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "cf069628-fc34-4e8d-a975-c33f71e41596",
+   "question_id": "CH_1783959002403_w3ax",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ vuông góc"
+  },
+  {
+   "id": "9095465d-a820-4334-a3b6-de2447bf8fc6",
+   "question_id": "CH_1783959002403_hd14",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Nhận dạng tứ giác"
+  },
+  {
+   "id": "a546e237-ae73-4d84-988f-d35982591c01",
+   "question_id": "CH_1783959002403_75l9",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+  },
+  {
+   "id": "b16e0012-3cac-4824-a61e-71eaba329710",
+   "question_id": "CH_1783962749698_16tf",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "4575ebce-6cab-449d-ba1a-0b79392abeca",
+   "question_id": "CH_1783959867699_2pfv",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Nhận dạng tứ giác"
+  },
+  {
+   "id": "16224216-767a-480a-95b9-02846b4a934d",
+   "question_id": "CH_1783959867699_ynyq",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "e0ec260d-396a-4d65-9b9d-1545dac23e2e",
+   "question_id": "CH_1783959867699_zewq",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "75e980fb-e91a-4341-bedd-eed596db58d8",
+   "question_id": "CH_1783959867699_yuj5",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "b659c4c6-97a5-46f9-acf7-d4c071755d1b",
+   "question_id": "CH_1783959867699_ladk",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "9558098a-b7b0-43cb-9ad8-c998a56c6531",
+   "question_id": "CH_1783959867699_xhe0",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "f0409783-1ff3-4afa-9f2e-4c3f920b523b",
+   "question_id": "CH_1783959867699_hmwy",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "0642cf1d-5871-405b-b56d-b2a0a70ccf08",
+   "question_id": "CH_1783959867699_gtib",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "09b112f2-093d-45e8-8cfb-149fed3db974",
+   "question_id": "CH_1783959867699_p7eo",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "e520aed1-0df3-4898-8557-606e878a8df0",
+   "question_id": "CH_1783959867699_v708",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "d1cb76b1-3d3a-45df-a162-049eb6b97b66",
+   "question_id": "CH_1783959867699_60he",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "dd3665f7-2b9a-4873-b880-dfb3d34b5fb0",
+   "question_id": "CH_1783959867699_b51b",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "ad2a989d-4de0-4592-bc88-9a0118e20208",
+   "question_id": "CH_1783959867699_s78l",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh hệ thức giữa các độ dài. Tính độ dài"
+  },
+  {
+   "id": "2f21100f-2c8c-4f9f-9582-de05d7e4dd9e",
+   "question_id": "CH_1783959867699_0ohc",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "3137cf62-e550-4447-ad7a-265093c4ed29",
+   "question_id": "CH_1783962749698_bbst",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "b9ee0a67-df1d-43be-a56c-59c1d44f007b",
+   "question_id": "CH_1783959867699_orph",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "fe3c85f0-3219-439b-9ed4-ff6fa37fd48b",
+   "question_id": "CH_1783959867699_g402",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "a02dcdad-07a4-47de-a591-9de287b37d23",
+   "question_id": "CH_1783959867699_e8h2",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh hệ thức giữa các độ dài. Tính độ dài"
+  },
+  {
+   "id": "61a5ee94-cacd-4f59-848b-fe46c9f0e366",
+   "question_id": "CH_1783959867699_fr1a",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh và tính toán với tứ giác"
+  },
+  {
+   "id": "6ae6bd27-a4a5-4f1a-b2a4-0cc8295353cb",
+   "question_id": "CH_1783961152795_ajpv",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "aeb5aa87-da72-4d99-848a-bbbb16746e79",
+   "question_id": "CH_1783961152795_4bwf",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "f2ba1525-02ef-43cc-a616-8ea6e1c77126",
+   "question_id": "CH_1783961152795_h7a1",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "d5af70a7-3086-47f7-9f9c-af5f327d592e",
+   "question_id": "CH_1783961152795_g8e1",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "79a7bae5-5d50-4088-961e-a9e5eb3dda7e",
+   "question_id": "CH_1783961152795_ytmc",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "73e244c5-53f8-45f3-8a07-62f1c33754ac",
+   "question_id": "CH_1783961152795_2szd",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "234cb411-e9be-4622-8826-706fecfceb29",
+   "question_id": "CH_1783961152795_am9j",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "eb16a11f-0f79-4304-ba53-279d255391b6",
+   "question_id": "CH_1783961152795_xmdv",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "927311f7-e6e8-40cb-8030-abcfbeb0992a",
+   "question_id": "CH_1783961152795_gcd4",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "1ba51f6e-b208-432b-849e-744e46f7ac0f",
+   "question_id": "CH_1783961152795_50pl",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "01672928-f815-44a0-8e94-bd1e4d24dcd5",
+   "question_id": "CH_1783961152795_ksnd",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "0f3f79ad-2163-4c55-a8c9-4368e267ebf1",
+   "question_id": "CH_1783961152795_mkrf",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "dacb5d4b-acc7-4502-a17a-3f0f74a18692",
+   "question_id": "CH_1783961152795_xjvl",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "cbacb33f-a4a6-48ff-96e9-243e4ef8d979",
+   "question_id": "CH_1783961152795_i3gg",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "b33820d0-f0b2-4738-b1d2-237f0e494d89",
+   "question_id": "CH_1783961152795_xzy1",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "1dcd1f6d-e328-42a0-bb1b-575dc3eaa4a3",
+   "question_id": "CH_1783961152795_8ky4",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "d67079f3-ce32-4391-a516-9f0cfbc72b1e",
+   "question_id": "CH_1783961152795_ci65",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "fa9b63d4-ca77-4a35-b6f6-ec5584d93a9f",
+   "question_id": "CH_1783961152795_nxvs",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "1a4005df-5815-4d01-8d32-db252e5bf11a",
+   "question_id": "CH_1783961152795_tw6x",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "640b53e2-e97f-497a-a004-7b1ab45f671d",
+   "question_id": "CH_1783961152795_q0rb",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "98a57b02-d3cd-460f-ad01-5596e4a4ac9e",
+   "question_id": "CH_1783961152795_k0ym",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "8251c6d6-629a-46cb-b9d2-c9c554b5be0e",
+   "question_id": "CH_1783961152795_l12u",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "be271f88-cde7-4f51-b431-723983b8aceb",
+   "question_id": "CH_1783961152795_eveg",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "4faa6fee-5bb7-4217-b557-fc1b1fcf072c",
+   "question_id": "CH_1783961152795_alw6",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "e03a4161-2fb5-40ab-967b-d1087fbf5b5a",
+   "question_id": "CH_1783961152795_4jlk",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "6466901d-4e4f-4384-9574-d69ba7a5657a",
+   "question_id": "CH_1783961152795_boq2",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau"
+  },
+  {
+   "id": "afacbc98-b54d-4661-ae2d-a7874c386d70",
+   "question_id": "CH_1783962749698_mcs7",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "0f7e9ef3-73e1-49b4-bf8b-a8597c7eb24d",
+   "question_id": "CH_1783962749698_1p2f",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "e005b1d0-edc8-4dba-8090-e9a36fac1c47",
+   "question_id": "CH_1783961959738_ly3w",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "4132ec3b-f77a-491b-9731-65a9955875a1",
+   "question_id": "CH_1783961959738_pteu",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "6c80365b-602e-4bbc-9065-682c54cf90fc",
+   "question_id": "CH_1783961959738_hcmp",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "11503983-60c2-4e2b-afa1-27063f8892ea",
+   "question_id": "CH_1783961959738_dw9h",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "393c3d73-09ea-4d92-b77e-3a9ad149b25c",
+   "question_id": "CH_1783961959738_rmrx",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "e32a5b40-cb51-43be-82e9-583233eeeaf9",
+   "question_id": "CH_1783961959738_q2ut",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "783b74f9-774d-4e95-867e-b9e43e701b75",
+   "question_id": "CH_1783961959738_tnil",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "f6f93d0f-16bf-43c3-a065-1a9b2ac5d070",
+   "question_id": "CH_1783961959738_qlss",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 góc bằng nhau, tính số đo góc"
+  },
+  {
+   "id": "4a3e1b8d-be0a-4e42-ac63-ffd652a500b8",
+   "question_id": "CH_1783961959738_mmyl",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "479dedbb-f1b6-4689-8485-457f792b5d69",
+   "question_id": "CH_1783963329362_wfn5",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình vuông"
+  },
+  {
+   "id": "e9956fc7-d683-4bff-8371-0a4befd5b65d",
+   "question_id": "CH_1783963329362_e5cb",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình vuông"
+  },
+  {
+   "id": "5ff3c721-0dbc-4dbc-99cb-fd911951cc65",
+   "question_id": "CH_1783963329362_e5yq",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "b6a8004a-11ec-42de-9f09-166716de7795",
+   "question_id": "CH_1783963329362_rah8",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "1291a449-86b0-4bc5-b446-16c7f0a1c118",
+   "question_id": "CH_1783961959738_t9nr",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 góc bằng nhau, tính số đo góc"
+  },
+  {
+   "id": "8ca64416-8fd0-4fba-9b8e-41bff1d0f476",
+   "question_id": "CH_1783963513401_s0ni",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình vuông"
+  },
+  {
+   "id": "33f3fd56-0760-4bce-a1d0-58f057efa4fb",
+   "question_id": "CH_1783961959738_tmio",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "5d377ebe-9332-4334-910d-88f034eee3d8",
+   "question_id": "CH_1783961959738_2o72",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "0d7e3b60-94d3-4627-9ea2-ee98c3be9566",
+   "question_id": "CH_1783963513401_j139",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "373d5ce9-9d7c-434b-9325-ee5a9ff8f283",
+   "question_id": "CH_1783961959738_khvw",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "77e50845-f858-4707-976d-7e79ea5ea45d",
+   "question_id": "CH_1783961959738_q8zh",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+  },
+  {
+   "id": "8b780682-8a3b-49f1-af66-5a6e27fc0893",
+   "question_id": "CH_1783961959738_g4dq",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "eec5de4c-408a-4681-9247-38aaa3d6ef04",
+   "question_id": "CH_1783963329362_4a7n",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình vuông"
+  },
+  {
+   "id": "b008cc21-155e-4047-8cd2-673d0c2acb33",
+   "question_id": "CH_1783961959738_cm9w",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "d5122077-98eb-405d-b865-bbad17a748bd",
+   "question_id": "CH_1783961959738_73sx",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "3a89b936-d05b-4e33-b0c8-166f8b8ab88e",
+   "question_id": "CH_1783961959738_2w0p",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+  },
+  {
+   "id": "0c60d580-c36c-43af-b020-926105d37f8a",
+   "question_id": "CH_1783961959738_wfrn",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "486b0a94-d89e-44da-ba80-eef8d136f116",
+   "question_id": "CH_1783961959738_fbzo",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "f630d200-9632-468d-ace5-190edf11ba71",
+   "question_id": "CH_1783961959738_a70g",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "8438b0f9-8b74-4f0d-9f93-2b6f71b182de",
+   "question_id": "CH_1783963329362_1z7g",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "0a438399-d7d1-4a9c-8559-f8680e52be0d",
+   "question_id": "CH_1783961959738_kej9",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "788e3987-f5c3-42e7-8dcc-a3e94aaf9f13",
+   "question_id": "CH_1783962749698_b72k",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "b5866d57-aa07-412a-8f2c-7c3a12b7cbe1",
+   "question_id": "CH_1783962749698_bn1i",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "685d8c68-8c6a-439a-9073-d7b870a0e30a",
+   "question_id": "CH_1783962749698_fkf2",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "caeffa23-1d78-4c66-8162-6f8db96e221e",
+   "question_id": "CH_1783962243283_8ypw",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Dấu hiệu nhận biết hình chữ nhật"
+  },
+  {
+   "id": "838b32ef-e51a-41f3-877d-6312bc3b43c3",
+   "question_id": "CH_1783962243283_alzc",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "3f445e31-20a1-4e99-8054-b7bfa149ff37",
+   "question_id": "CH_1783962243283_clqn",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "7edbe3f6-cd0e-4079-ae82-8bba6fec333f",
+   "question_id": "CH_1783962243283_m7dr",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "c9c79663-4b4e-4929-b014-e6bff5cdae61",
+   "question_id": "CH_1783962243283_qsw1",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Dấu hiệu nhận biết hình chữ nhật"
+  },
+  {
+   "id": "7ef3e22b-973a-4230-8bcb-66b0d0a5ec32",
+   "question_id": "CH_1783962243283_zrld",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Dấu hiệu nhận biết hình chữ nhật"
+  },
+  {
+   "id": "64767a99-9c82-46fd-8695-3a9d9e9f3def",
+   "question_id": "CH_1783962243283_9h7x",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Dấu hiệu nhận biết hình chữ nhật"
+  },
+  {
+   "id": "644abfbc-1df2-4db0-b7c0-18c42c630eec",
+   "question_id": "CH_1783962243283_cwgo",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "49e31360-4e5c-4262-a96d-752e98fa77a8",
+   "question_id": "CH_1783962243283_owcg",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "e073fbb3-017a-4c12-8291-f5ae62ef71ec",
+   "question_id": "CH_1783962243283_hvji",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Dấu hiệu nhận biết hình chữ nhật"
+  },
+  {
+   "id": "0d379a21-ffaf-4831-8a50-f0c35878b4cf",
+   "question_id": "CH_1783962749698_hw8l",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "2273aab3-479f-4d3a-a9c8-617805bde42d",
+   "question_id": "CH_1783962243283_4h3e",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "fc7b893a-8101-4f27-88a2-8fb0344116be",
+   "question_id": "CH_1783962243283_53xt",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "11bb10cf-a8a2-41f4-bbec-0c0a2c432a39",
+   "question_id": "CH_1783962243283_wcxm",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "6e1e63dc-3b92-435f-b902-fc9cc91c50af",
+   "question_id": "CH_1783962243283_ncup",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "1973b933-9e4b-45ef-93e5-7b2c4569b4d2",
+   "question_id": "CH_1783962243283_98br",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "237baf84-b12d-4a26-a538-d76a709936c6",
+   "question_id": "CH_1783963329362_5y43",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình vuông"
+  },
+  {
+   "id": "2aa2a1e3-1e56-482a-8dad-ffb5c7a1a634",
+   "question_id": "CH_1783962243283_7nb5",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "02d93cfb-04ae-463f-8970-d2ef9012fe10",
+   "question_id": "CH_1783962243283_j49j",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "60391ccf-6842-43c0-9b0e-c255bffced1a",
+   "question_id": "CH_1783962243283_2npn",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "077d89cc-6a22-412e-90af-f79e8eeffaf5",
+   "question_id": "CH_1783962243283_vj8l",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh quan hệ vuông góc"
+  },
+  {
+   "id": "96eaf4a9-edf6-401b-a422-bd47b8ebe6d4",
+   "question_id": "CH_1783963329362_xu14",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình vuông"
+  },
+  {
+   "id": "e0e9f17c-499c-4971-a144-3ebcf9b3fd3a",
+   "question_id": "CH_1783962749698_fenj",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "30bf41d2-0f42-4133-8032-b96db153eb19",
+   "question_id": "CH_1783962749698_3fku",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "6239e355-548d-40fd-ac96-cae5ae6ab5f9",
+   "question_id": "CH_1783962749698_hhbz",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ bằng nhau"
+  },
+  {
+   "id": "627442e6-0c2b-4665-9106-a257e676ea8c",
+   "question_id": "CH_1783962749698_oa5l",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "52c3102b-12dc-4409-b023-a373778aee61",
+   "question_id": "CH_1783962749698_xqdq",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Dấu hiệu nhận biết hình thoi"
+  },
+  {
+   "id": "82dd8431-8999-4ac0-bcda-705211b9c417",
+   "question_id": "CH_1783962749698_8qo3",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "6cd49134-3879-4df2-a082-f33beee36876",
+   "question_id": "CH_1783962749698_8zfx",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình thoi"
+  },
+  {
+   "id": "99ee3621-9cc1-41cc-b68f-ad796419e561",
+   "question_id": "CH_1783963329362_buio",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh quan hệ vuông góc"
+  },
+  {
+   "id": "e27cf566-7882-4789-95ba-fcd10268883a",
+   "question_id": "CH_1783963329362_qgso",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "9a0027a8-c663-4bb0-8419-b5ed78f5301f",
+   "question_id": "CH_1783963329362_bzvr",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "a8b7ae74-dd37-4c78-8248-8d2edd6abe81",
+   "question_id": "CH_1783963329362_tv82",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "6c6fc985-6bfe-4c81-8d04-3c5c3a0cf0e6",
+   "question_id": "CH_1783963329362_k4zg",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "b1e5a35c-90ca-42cf-a03d-26945afe903a",
+   "question_id": "CH_1783963329362_8h7t",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "29c7e7a6-9007-46a7-b0ea-57411db5ee7d",
+   "question_id": "CH_1783963329362_5kgk",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  },
+  {
+   "id": "4d20f4ab-436c-4077-8e25-813342ccf24a",
+   "question_id": "CH_1783963513401_tv8l",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Nhận biết hình thang, hình thang cân"
+  },
+  {
+   "id": "1c68d6a6-cc9a-4ae8-a017-4c7e592cc2b9",
+   "question_id": "CH_1783963513401_nubr",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "72797dd5-841c-4fda-8abf-9d4fc1b9ddf3",
+   "question_id": "CH_1783963513401_wlub",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng"
+  },
+  {
+   "id": "caddc750-8939-42c1-8218-710c0132b5ac",
+   "question_id": "CH_1783963513401_lvc9",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "57f498bd-8a58-4530-97a3-53a2c5764a32",
+   "question_id": "CH_1783963513401_gcsh",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Dấu hiệu nhận biết hình chữ nhật"
+  },
+  {
+   "id": "0fc13894-73d7-400c-836c-89b9573ac8c3",
+   "question_id": "CH_1783944118551_0ar4",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Nhận dạng tứ giác"
+  },
+  {
+   "id": "37e61cdc-ceff-4508-8a3f-17e32c0cf866",
+   "question_id": "CH_1783944118552_d6s9",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh hệ thức giữa các độ dài. Tính độ dài"
+  },
+  {
+   "id": "f996bb8c-383a-4ba1-a802-3c9d1217e67a",
+   "question_id": "CH_1783944118552_as9u",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "75ee53a5-280b-4f95-abe5-68f53c0b5807",
+   "question_id": "CH_1783944118552_3s9m",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "7ce61814-9d35-4a71-a7d1-5d25e14e2519",
+   "question_id": "CH_1783944118552_pr8d",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "8e296444-f323-4566-8f0b-a9e6a56ea8cb",
+   "question_id": "CH_1783959867699_1a41",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Nhận dạng tứ giác"
+  },
+  {
+   "id": "0600458b-e72b-4093-a21e-10c1ba4a0670",
+   "question_id": "CH_1783959867699_3kid",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "3d0e27dd-b863-402d-8291-fb70831c77b0",
+   "question_id": "CH_1783944118552_1lxy",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Nhận dạng tứ giác"
+  },
+  {
+   "id": "33edf51e-d4fc-46c3-914a-0d020e223056",
+   "question_id": "CH_1783944118552_g4q8",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh hệ thức giữa các độ dài. Tính độ dài"
+  },
+  {
+   "id": "7d9d20a1-ac2e-4b1f-8a5f-864936b47e2d",
+   "question_id": "CH_1783959867699_crck",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Tính số đo góc"
+  },
+  {
+   "id": "0678f35e-d43e-4a42-abc5-e9bea0aa240b",
+   "question_id": "CH_1783959867699_i2l3",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh hệ thức giữa các độ dài. Tính độ dài"
+  },
+  {
+   "id": "4ecffa50-c964-4bfd-9b9b-b1f61c8f84d5",
+   "question_id": "CH_1783959867699_moum",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Nhận dạng tứ giác"
+  },
+  {
+   "id": "30df60d5-478b-4651-9a53-1e5d3299f08c",
+   "question_id": "CH_1783958418900_22jl",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh và tính toán với hình chữ nhật"
+  },
+  {
+   "id": "6f79d6a2-1cf4-48d1-a1e8-3dad57af7bfe",
+   "question_id": "CH_1783958418900_rlf3",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh và tính toán với hình chữ nhật"
+  },
+  {
+   "id": "db3bb14c-84dd-43fc-a140-9e10fff88c2e",
+   "question_id": "CH_1783958172723_gyif",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh và tính toán với hình bình hành"
+  },
+  {
+   "id": "dfa43e6f-ca48-4bc8-a2fd-d4e8c860415a",
+   "question_id": "CH_1783963513401_nrdn",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh và tính toán với hình bình hành"
+  },
+  {
+   "id": "9ace20f9-c03c-42d5-a1bf-a6d848289e3b",
+   "question_id": "CH_1783958688712_f07a",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "f21b6e82-179c-4209-a6a1-b51055054d14",
+   "question_id": "CH_1783958688712_s31z",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "385cd4fc-4655-4a97-a842-619a7e1c1924",
+   "question_id": "CH_1783958688712_uv5a",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "ad5bbadc-4e95-48e8-a701-15aa3f308219",
+   "question_id": "CH_1783958688712_o39b",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "57ab0ece-7fdf-497e-a05e-0c42a1b12508",
+   "question_id": "CH_1783958688712_k0ba",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "76f1c0f1-f0a0-459d-a9d1-117d3b3a79bc",
+   "question_id": "CH_1783958688712_z4k0",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "cd9ffcad-59b1-4256-b78b-168f1e4a97a1",
+   "question_id": "CH_1783958688712_tnwi",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "3eb1d70d-edee-4f5f-b6b5-5272ace1d151",
+   "question_id": "CH_1783958688712_isqh",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "cffb6211-9f8f-444e-a38e-4a05ebdc9c06",
+   "question_id": "CH_1783958688712_6ryi",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "18a7c654-d86a-4384-ad87-ea11b8877189",
+   "question_id": "CH_1783958688712_n7tj",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "5c842d73-14d6-4af3-9a01-837644227072",
+   "question_id": "CH_1783958688712_8g42",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "a41f03ed-7ea2-4350-903e-c02af7561c42",
+   "question_id": "CH_1783958688712_7alq",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "06447f59-d1c2-4203-aca3-21a65c3d1f84",
+   "question_id": "CH_1783958688712_ddr3",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "070478b6-2748-4499-ae50-10e87f5f01ca",
+   "question_id": "CH_1783958688712_cmoe",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "6d1f048a-981f-43e5-9f58-4b5334a643e6",
+   "question_id": "CH_1783958688712_0332",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "3fc8aab4-399d-4b9d-bfa2-7a09d4d8adb8",
+   "question_id": "CH_1783957871315_2daa",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh và tính toán với hình thang cân"
+  },
+  {
+   "id": "2ba56070-863e-46d6-ab1a-6f8dc453f2b5",
+   "question_id": "CH_1783959867699_od0k",
+   "lesson": "Bài 1. Tứ giác",
+   "math_form": "Chứng minh và tính toán với tứ giác"
+  },
+  {
+   "id": "56bd8259-5d6f-4ecd-b082-747751091788",
+   "question_id": "CH_1783958688712_tlfn",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "7c699ed8-07b0-4880-9807-a004050ca0ab",
+   "question_id": "CH_1783963329362_y308",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "d16e48a6-2f14-46d7-a474-dcdd2407f130",
+   "question_id": "CH_1789059088734_rv1l",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy"
+  },
+  {
+   "id": "c4472d75-150f-48e1-bdc8-943a6f772b6f",
+   "question_id": "CH_1789059088734_l74k",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "7e0f1251-545e-49fd-81b3-141705139489",
+   "question_id": "CH_1789059088734_ke0b",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "fd5a0292-96c7-4745-aabe-ee264d907f26",
+   "question_id": "CH_1789059088734_2ywa",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "5fb267c9-8ecf-44d6-abf8-bbd4dbd85a45",
+   "question_id": "CH_1789059088734_89h0",
+   "lesson": "Bài 4. Hình chữ nhật",
+   "math_form": "Chứng minh tứ giác là hình chữ nhật"
+  },
+  {
+   "id": "bc8b861f-df2c-4e4b-8057-b1b60ffe29c2",
+   "question_id": "CH_1789059088734_6av6",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "834187b0-82cc-4965-b0bf-a68c2c81908d",
+   "question_id": "CH_1789059088734_0b9d",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Tính chất và bài tập hình thoi, hình vuông"
+  },
+  {
+   "id": "16417a6e-60c1-491b-8fca-cbb9c25e0706",
+   "question_id": "CH_1789059088734_596v",
+   "lesson": "Bài 3. Hình bình hành",
+   "math_form": "Chứng minh tứ giác là hình bình hành"
+  },
+  {
+   "id": "98b72112-1b59-4d95-8941-6d5c5138377a",
+   "question_id": "CH_1789059088734_0ji3",
+   "lesson": "Bài 2. Hình thang cân",
+   "math_form": "Chứng minh và tính toán với hình thang cân"
+  },
+  {
+   "id": "32a6b314-081f-4331-b981-521876b9f034",
+   "question_id": "CH_1789059088734_nnqy",
+   "lesson": "Bài 5. Hình thoi và hình vuông",
+   "math_form": "Chứng minh tứ giác là hình vuông"
+  }
+ ]
+}

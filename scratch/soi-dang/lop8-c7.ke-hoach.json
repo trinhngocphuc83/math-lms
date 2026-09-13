@@ -1,0 +1,134 @@
+{
+ "lop": "8",
+ "chuong": 7,
+ "dang": [
+  {
+   "bai": "Bài 1. Phương trình bậc nhất một ẩn",
+   "cu": "Nhận biết phương trình bậc nhất một ẩn",
+   "moi": "Nhận biết phương trình bậc nhất một ẩn, kiểm tra nghiệm",
+   "yc": "Nhận biết được phương trình bậc nhất một ẩn ax + b = 0 (a ≠ 0), xác định được hệ số và kiểm tra được một số có là nghiệm của phương trình hay không."
+  },
+  {
+   "bai": "Bài 1. Phương trình bậc nhất một ẩn",
+   "cu": "Giải phương trình bậc nhất một ẩn và phương trình đưa về dạng bậc nhất",
+   "moi": "Giải phương trình bậc nhất một ẩn",
+   "yc": "Giải được phương trình bậc nhất một ẩn dạng ax + b = 0."
+  },
+  {
+   "bai": "Bài 1. Phương trình bậc nhất một ẩn",
+   "cu": null,
+   "moi": "Giải phương trình đưa được về dạng bậc nhất một ẩn",
+   "yc": "Giải được phương trình đưa về dạng ax + b = 0 bằng quy tắc chuyển vế, quy tắc nhân, phá ngoặc, quy đồng khử mẫu số."
+  },
+  {
+   "bai": "Bài 1. Phương trình bậc nhất một ẩn",
+   "cu": null,
+   "moi": "Tìm điều kiện của tham số để phương trình thoả mãn yêu cầu",
+   "yc": "Tìm được giá trị của tham số để phương trình bậc nhất có nghiệm cho trước, vô nghiệm hoặc có vô số nghiệm."
+  },
+  {
+   "bai": "Bài 2. Giải bài toán bằng cách lập phương trình",
+   "cu": null,
+   "moi": "Biểu diễn đại lượng bằng biểu thức chứa ẩn",
+   "yc": "Biểu diễn được các đại lượng chưa biết theo ẩn và các đại lượng đã biết trong bài toán thực tế."
+  },
+  {
+   "bai": "Bài 2. Giải bài toán bằng cách lập phương trình",
+   "cu": "Giải bài toán chuyển động, năng suất, tỉ lệ phần trăm, hình học bằng cách lập phương trình",
+   "moi": "Giải bài toán chuyển động bằng cách lập phương trình",
+   "yc": "Giải được bài toán chuyển động (cùng chiều, ngược chiều, xuôi ngược dòng) bằng cách lập phương trình bậc nhất."
+  },
+  {
+   "bai": "Bài 2. Giải bài toán bằng cách lập phương trình",
+   "cu": null,
+   "moi": "Giải bài toán năng suất, công việc bằng cách lập phương trình",
+   "yc": "Giải được bài toán về năng suất lao động, làm chung làm riêng bằng cách lập phương trình."
+  },
+  {
+   "bai": "Bài 2. Giải bài toán bằng cách lập phương trình",
+   "cu": null,
+   "moi": "Giải bài toán về số, tuổi, tỉ lệ phần trăm bằng cách lập phương trình",
+   "yc": "Giải được bài toán tìm số, tuổi, tỉ lệ phần trăm, lãi suất bằng cách lập phương trình."
+  },
+  {
+   "bai": "Bài 2. Giải bài toán bằng cách lập phương trình",
+   "cu": null,
+   "moi": "Giải bài toán có nội dung hình học bằng cách lập phương trình",
+   "yc": "Giải được bài toán về chu vi, diện tích, kích thước hình bằng cách lập phương trình."
+  },
+  {
+   "bai": "Bài 3. Khái niệm hàm số và đồ thị của hàm số",
+   "cu": "Nhận biết hàm số, tính giá trị của hàm số",
+   "moi": "Nhận biết hàm số, tính giá trị của hàm số",
+   "yc": "Nhận biết được đại lượng này là hàm số của đại lượng kia, viết được công thức và tính được giá trị của hàm số tại giá trị cho trước của biến."
+  },
+  {
+   "bai": "Bài 3. Khái niệm hàm số và đồ thị của hàm số",
+   "cu": "Xác định tọa độ điểm, vẽ đồ thị hàm số trên mặt phẳng tọa độ",
+   "moi": "Xác định toạ độ điểm trên mặt phẳng toạ độ",
+   "yc": "Xác định được toạ độ của một điểm và biểu diễn được điểm có toạ độ cho trước trên mặt phẳng toạ độ."
+  },
+  {
+   "bai": "Bài 3. Khái niệm hàm số và đồ thị của hàm số",
+   "cu": null,
+   "moi": "Đồ thị của hàm số, kiểm tra điểm thuộc đồ thị",
+   "yc": "Nhận biết được đồ thị của hàm số, kiểm tra được một điểm có thuộc đồ thị hay không và đọc được giá trị từ đồ thị."
+  },
+  {
+   "bai": "Bài 4. Hàm số bậc nhất và đồ thị của hàm số bậc nhất",
+   "cu": "Nhận biết hàm số bậc nhất",
+   "moi": "Nhận biết hàm số bậc nhất, xác định hệ số a, b",
+   "yc": "Nhận biết được hàm số bậc nhất y = ax + b (a ≠ 0), xác định được hệ số a, b và tìm điều kiện của tham số để hàm số là hàm số bậc nhất."
+  },
+  {
+   "bai": "Bài 4. Hàm số bậc nhất và đồ thị của hàm số bậc nhất",
+   "cu": "Vẽ đồ thị của hàm số bậc nhất y = ax + b",
+   "moi": "Vẽ đồ thị của hàm số bậc nhất",
+   "yc": "Vẽ được đồ thị của hàm số y = ax + b bằng cách xác định hai điểm, tìm được giao điểm với các trục toạ độ."
+  },
+  {
+   "bai": "Bài 4. Hàm số bậc nhất và đồ thị của hàm số bậc nhất",
+   "cu": null,
+   "moi": "Xác định hàm số bậc nhất khi biết điều kiện",
+   "yc": "Xác định được hệ số a, b của hàm số bậc nhất khi biết đồ thị đi qua điểm cho trước hoặc thoả mãn điều kiện."
+  },
+  {
+   "bai": "Bài 4. Hàm số bậc nhất và đồ thị của hàm số bậc nhất",
+   "cu": null,
+   "moi": "Bài toán thực tế về hàm số bậc nhất",
+   "yc": "Lập được hàm số bậc nhất biểu thị đại lượng trong tình huống thực tế (cước phí, tiền lương, nhiệt độ...) và vận dụng để tính toán."
+  },
+  {
+   "bai": "Bài 5. Hệ số góc của đường thẳng",
+   "cu": "Tìm hệ số góc của đường thẳng",
+   "moi": "Nhận biết hệ số góc, góc tạo bởi đường thẳng với trục Ox",
+   "yc": "Nhận biết được hệ số góc của đường thẳng y = ax + b và mối liên hệ giữa hệ số góc với góc tạo bởi đường thẳng và trục Ox."
+  },
+  {
+   "bai": "Bài 5. Hệ số góc của đường thẳng",
+   "cu": "Nhận biết hai đường thẳng song song, cắt nhau dựa vào hệ số góc",
+   "moi": "Nhận biết hai đường thẳng song song, cắt nhau, trùng nhau",
+   "yc": "Nhận biết được hai đường thẳng song song, cắt nhau, trùng nhau dựa vào hệ số góc và tung độ gốc."
+  },
+  {
+   "bai": "Bài 5. Hệ số góc của đường thẳng",
+   "cu": null,
+   "moi": "Tìm điều kiện của tham số để hai đường thẳng song song, cắt nhau",
+   "yc": "Tìm được giá trị của tham số để hai đường thẳng song song, cắt nhau, trùng nhau hoặc cắt nhau tại một điểm trên trục toạ độ."
+  },
+  {
+   "bai": "Bài 5. Hệ số góc của đường thẳng",
+   "cu": null,
+   "moi": "Viết phương trình đường thẳng khi biết hệ số góc và điểm đi qua",
+   "yc": "Xác định được đường thẳng y = ax + b khi biết hệ số góc và một điểm đi qua hoặc song song với đường thẳng cho trước."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Tổng hợp về phương trình và hàm số bậc nhất",
+   "moi": "Bài tập tổng hợp chương 7",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 7 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

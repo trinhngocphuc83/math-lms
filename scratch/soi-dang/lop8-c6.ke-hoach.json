@@ -1,0 +1,104 @@
+{
+ "lop": "8",
+ "chuong": 6,
+ "dang": [
+  {
+   "bai": "Bài 1. Phân thức đại số",
+   "cu": "Nhận biết phân thức đại số, tìm điều kiện xác định của phân thức",
+   "moi": "Nhận biết phân thức đại số, tìm điều kiện xác định",
+   "yc": "Nhận biết được phân thức đại số, tử thức, mẫu thức và tìm được điều kiện xác định của phân thức."
+  },
+  {
+   "bai": "Bài 1. Phân thức đại số",
+   "cu": null,
+   "moi": "Nhận biết hai phân thức bằng nhau",
+   "yc": "Kiểm tra được hai phân thức bằng nhau bằng định nghĩa A/B = C/D khi AD = BC và tìm được đa thức chưa biết trong đẳng thức hai phân thức."
+  },
+  {
+   "bai": "Bài 1. Phân thức đại số",
+   "cu": "Tính giá trị của phân thức tại giá trị cho trước của biến",
+   "moi": "Tính giá trị của phân thức",
+   "yc": "Tính được giá trị của phân thức tại giá trị cho trước của biến (kiểm tra điều kiện xác định)."
+  },
+  {
+   "bai": "Bài 1. Phân thức đại số",
+   "cu": null,
+   "moi": "Viết phân thức biểu thị đại lượng trong bài toán thực tế",
+   "yc": "Viết được phân thức biểu thị đại lượng (vận tốc, thời gian, năng suất...) trong tình huống thực tế."
+  },
+  {
+   "bai": "Bài 2. Tính chất cơ bản của phân thức đại số",
+   "cu": "Rút gọn phân thức đại số",
+   "moi": "Rút gọn phân thức đại số",
+   "yc": "Rút gọn được phân thức bằng cách phân tích tử và mẫu thành nhân tử rồi chia cho nhân tử chung, kể cả khi phải đổi dấu."
+  },
+  {
+   "bai": "Bài 2. Tính chất cơ bản của phân thức đại số",
+   "cu": "Quy đồng mẫu thức nhiều phân thức",
+   "moi": "Quy đồng mẫu thức nhiều phân thức",
+   "yc": "Tìm được mẫu thức chung và quy đồng được mẫu thức của hai hay nhiều phân thức."
+  },
+  {
+   "bai": "Bài 2. Tính chất cơ bản của phân thức đại số",
+   "cu": null,
+   "moi": "Vận dụng tính chất cơ bản của phân thức để chứng minh, tìm đa thức",
+   "yc": "Vận dụng được tính chất cơ bản của phân thức để chứng minh hai phân thức bằng nhau, tìm đa thức trong đẳng thức và rút gọn rồi tính giá trị."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và phép trừ phân thức đại số",
+   "cu": "Cộng, trừ hai phân thức cùng mẫu",
+   "moi": "Cộng, trừ các phân thức cùng mẫu",
+   "yc": "Thực hiện được phép cộng, phép trừ các phân thức có cùng mẫu thức."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và phép trừ phân thức đại số",
+   "cu": "Cộng, trừ hai phân thức khác mẫu",
+   "moi": "Cộng, trừ các phân thức khác mẫu",
+   "yc": "Thực hiện được phép cộng, phép trừ các phân thức có mẫu thức khác nhau bằng cách quy đồng mẫu thức."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và phép trừ phân thức đại số",
+   "cu": null,
+   "moi": "Rút gọn biểu thức có phép cộng, trừ phân thức và tính giá trị",
+   "yc": "Rút gọn được biểu thức có nhiều phép cộng, trừ phân thức (dùng tính chất giao hoán, kết hợp) và tính được giá trị tại giá trị cho trước của biến."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và phép trừ phân thức đại số",
+   "cu": null,
+   "moi": "Bài toán thực tế về cộng, trừ phân thức",
+   "yc": "Vận dụng được phép cộng, trừ phân thức để giải bài toán thực tế về thời gian, vận tốc, năng suất."
+  },
+  {
+   "bai": "Bài 4. Phép nhân và phép chia phân thức đại số",
+   "cu": "Nhân hai hay nhiều phân thức",
+   "moi": "Nhân các phân thức đại số",
+   "yc": "Thực hiện được phép nhân các phân thức và rút gọn kết quả."
+  },
+  {
+   "bai": "Bài 4. Phép nhân và phép chia phân thức đại số",
+   "cu": "Chia hai phân thức",
+   "moi": "Chia các phân thức đại số",
+   "yc": "Thực hiện được phép chia phân thức bằng cách nhân với phân thức nghịch đảo."
+  },
+  {
+   "bai": "Bài 4. Phép nhân và phép chia phân thức đại số",
+   "cu": null,
+   "moi": "Rút gọn biểu thức có nhiều phép toán với phân thức",
+   "yc": "Rút gọn được biểu thức có phối hợp các phép cộng, trừ, nhân, chia phân thức theo đúng thứ tự thực hiện phép tính."
+  },
+  {
+   "bai": "Bài 4. Phép nhân và phép chia phân thức đại số",
+   "cu": null,
+   "moi": "Bài toán thực tế về nhân, chia phân thức",
+   "yc": "Vận dụng được phép nhân, chia phân thức để giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Rút gọn biểu thức và tính giá trị của phân thức tổng hợp",
+   "moi": "Bài tập tổng hợp chương 6",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 6 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

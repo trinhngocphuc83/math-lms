@@ -1,0 +1,367 @@
+Chương 3. Tứ giác · lớp 8 · 32 dạng · 269 câu
+
+
+### [1] Bài 1. Tứ giác | Tính số đo góc (25)
+    yêu cầu: Tính được số đo các góc của một tứ giác dựa vào định lí tổng các góc trong một tứ giác.
+  7jlq NLC 2 | Một tứ giác có một cặp góc đối là 125° và 65°, cặp góc đối còn lại của tứ giác đó có thể là: A. 115° và 65° B.
+  qvyu NLC 2 | Số đo các góc của tứ giác ABCD theo tỉ lệ \widehat A:\widehat B:\widehat C:\widehat D = 4:3:2:1. Số đo các góc
+  oj17 TL 2 | Ba góc ngoài tại ba đỉnh A, B, C của tứ giác ABCD lần lượt là 40^\circ; 70^\circ; 120^\circ. Tính số đo của gó
+  0dj5 TL 2 | Tổng số đo ba góc của một tứ giác hơn số đo góc thứ tư là 220^\circ. Tính số đo góc thứ tư.
+  00wd TL 3 | Chứng minh rằng trong một tứ giác, tổng hai góc ngoài tại hai đỉnh bằng tổng hai góc trong tại các đỉnh còn lạ
+  qv89 TL 4 | Cho tứ giác ABCD. Các tia phân giác của góc A và góc B cắt nhau tại M. Các tia phân giác của góc C và góc D cắ
+  ynyq NLC 2 | Các góc của tứ giác có thể là
+  zewq NLC 1 | Cho tứ giác ABCD có \widehat{A}=50^\circ; \widehat{C}=150^\circ; \widehat{D}=45^\circ. Số đo góc ngoài tại đỉn
+  yuj5 NLC 2 | Cho tứ giác ABCD, trong đó \widehat{A} + \widehat{B} = 140^\circ. Tổng \widehat{C} + \widehat{D} bằng
+  ladk NLC 1 | Cho tứ giác ABCD như hình vẽ dưới đây. Tính \widehat{B} [HÌNH VẼ]
+  xhe0 NLC 2 | Cho tứ giác ABCD như hình vẽ dưới đây, biết \widehat{O}=90^\circ; \widehat{A}=120^\circ. Tính \widehat{B} [HÌN
+  hmwy NLC 2 | Khi đó tứ giác ABCD biết số đo của các góc \widehat{A}; \widehat{B}; \widehat{C}; \widehat{D} tỉ lệ thuận với 
+  gtib TL 1 | Tính số đo x, y trong các hình sau: [HÌNH VẼ]
+  p7eo TL 2 | Cho tứ giác ABCD có \widehat{C}=50^\circ, \widehat{D}=60^\circ; \frac{\widehat{A}}{3} = \frac{\widehat{B}}{2}.
+  v708 TL 2 | Cho tứ giác MNPQ có \widehat{N}=\widehat{M}+10^\circ, \widehat{P}=\widehat{N}+10^\circ, \widehat{Q}=\widehat{P
+  60he TL 2 | Cho tứ giác ABCD, AB // CD; \widehat{ABC}=135^\circ; \widehat{ACB}=24^\circ; \widehat{ADC}=60^\circ. Tính số đ
+  b51b TL 3 | Cho tứ giác ABCD có \widehat{D}=72^\circ, \widehat{C}=68^\circ. Hai tia phân giác của \widehat{A}, \widehat{B}
+  0ohc TL 2 | Cho tứ giác ABCD, biết rằng \frac{\widehat{A}}{1} = \frac{\widehat{B}}{2} = \frac{\widehat{C}}{3} = \frac{\wid
+  orph TL 2 | Tứ giác ABCD có \widehat{C} = 60^\circ, \widehat{D} = 80^\circ, \widehat{A} - \widehat{B} = 10^\circ. Tính số 
+  g402 TL 2 | Cho hình vẽ bên. Chứng minh tổng bốn góc ngoài của tứ giác ABCD bằng 360^\circ (\widehat{A_1} + \widehat{B_1} 
+  as9u TL 2 | Tìm số đo x trong hình bên. [HÌNH VẼ] Tứ giác ABCD có góc ngoài tại đỉnh B là 70^\circ. Góc trong \widehat{C} 
+  3s9m TL 2 | Chứng minh rằng tổng các góc ngoài của một tứ giác bằng 360^\circ (mỗi đỉnh chỉ tính một góc ngoài).
+  pr8d TL 3 | Tứ giác ABCD có \widehat{A} + \widehat{B} = 220^\circ. Các tia phân giác của góc C và góc D cắt nhau tại O. Tí
+  3kid NLC 1 | Cho hình vẽ sau, góc ngoài của tứ giác MNPQ là: [HÌNH VẼ]
+  crck NLC 1 | Cho tứ giác ABCD có \widehat{A}=40^\circ; \widehat{B}=120^\circ; \widehat{C}=130^\circ. Số đo góc D bằng.
+
+### [2] Bài 1. Tứ giác | Vẽ tứ giác khi biết 5 yếu tố (1)
+    yêu cầu: Thực hiện được việc vẽ một tứ giác khi biết độ dài các cạnh và các đường chéo của nó.
+  xpey TL 2 | Vẽ tứ giác ABCD, biết AB = 1,5 cm ; AC = 3,5 cm ; AD = 2 cm ; CD = 4 cm và BD = 3 cm.
+
+### [3] Bài 1. Tứ giác | Nhận dạng tứ giác (6)
+    yêu cầu: Nhận biết được tứ giác lồi và tứ giác không lồi trong các hình vẽ cho trước.
+  k88l TL 2 | Trong hình bên có bao nhiêu tứ giác lồi, là những tứ giác nào? [HÌNH VẼ] Hình một ngũ giác có các đỉnh A, B, C
+  2pfv NLC 1 | Hãy chọn câu sai trong các khẳng định sau:
+  0ar4 TL 1 | Cho hình bên, hãy kể tên các tứ giác lồi và không lồi có trong hình vẽ. [HÌNH VẼ] Hình tứ giác ABCD có hai đườ
+  1a41 NLC 1 | Trong tứ giác sau, khẳng định nào sai? [HÌNH VẼ]
+  1lxy TL 2 | Trong hình bên có bao nhiêu tứ giác, là những tứ giác nào? [HÌNH VẼ] Hình vẽ hiển thị một đa giác lớn được chi
+  moum NLC 1 | Trong các hình dưới đây, hình nào là tứ giác lồi? [HÌNH VẼ]
+
+### [4] Bài 1. Tứ giác | Chứng minh và tính toán với tứ giác (2)
+    yêu cầu: Giải thích được định lí về tổng các góc trong một tứ giác lồi và vận dụng để chứng minh, tính toán.
+  fr1a TL 4 | Cho tứ giác ABCD có phân giác trong của góc A và góc B cắt nhau tại E (E nằm bên trong tứ giác), phân giác ngo
+  od0k TL 3 | Cho tứ giác ABCD có \widehat{B}+\widehat{D}=180^\circ và CB=CD. Trên tia đối của tia DA lấy điểm E sao cho ED=
+
+### [5] Bài 1. Tứ giác | Chứng minh hệ thức giữa các độ dài. Tính độ dài (7)
+    yêu cầu: Vận dụng bất đẳng thức tam giác hoặc định lí Pythagore để tính độ dài cạnh và chứng minh hệ thức liên quan đến tứ giác.
+  t8ew TL 3 | Cho tứ giác ABCD, hai đường chéo vuông góc tại O. Biết BC = 15 cm ; CD = 24 cm và AD = 20 cm. Tính độ dài AB.
+  h037 NLC 2 | Cho tam giác ABC cân tại A có đường cao AH. Cho AH = 4cm, AB = 5cm. Chu vi tam giác ABC bằng: A. 12cm B. 15cm 
+  s78l TL 3 | Cho tứ giác ABCD có \widehat{A}+\widehat{B}=180^\circ, DB là phân giác của \widehat{ADC}. Chứng minh \Delta CB
+  e8h2 TL 3 | Cho tứ giác ABCD. Gọi O là giao điểm của hai đường chéo AC và BD. Gọi chu vi tứ giác ABCD là P_{ABCD}. Chứng m
+  d6s9 TL 3 | Chứng minh rằng trong một tứ giác, tổng hai đường chéo lớn hơn nửa chu vi của tứ giác đó.
+  g4q8 TL 4 | Tứ giác ABCD có AC = a, BD = b. Gọi M là một điểm nằm trong tứ giác. Hỏi tổng các khoảng cách từ M đến bốn đỉn
+  i2l3 NLC 3 | Cho tứ giác ABCD. Gọi O là giao điểm của hai đường chéo AC và BD. Khẳng định nào sau đây là **đúng** [HÌNH VẼ]
+
+### [6] Bài 2. Hình thang cân | Chứng minh và tính toán với hình thang cân (2)
+    yêu cầu: Nhận biết được định nghĩa, tính chất về cạnh bên, góc kề một đáy và hai đường chéo của hình thang cân.
+  2daa TL 4 | Cho hình thang cân ABCD (AB \parallel CD), AB = BC và BC \perp BD. a) Chứng minh rằng AC \perp AD. b) Tính số 
+  0ji3 TL 3 | Cho hình thang cân  ABCD có  AB \parallel CD và  AB < CD. Gọi  O là giao điểm của  AD và  BC,  E là giao điểm 
+
+### [7] Bài 2. Hình thang cân | Tính số đo góc (12)
+    yêu cầu: Tính được số đo các góc của hình thang cân dựa vào định nghĩa và tính chất của hình thang cân.
+  jd1s TL 1 | Cho hình thang ABCD (AB \parallel CD). Tìm các số đo x và y, biết \widehat{A} = 100^\circ, \widehat{B} = 120^\
+  czpi TL 2 | Cho hình thang ABCD (AB \parallel CD). Biết \widehat{B} - \widehat{C} = 40^\circ; \widehat{C} - \widehat{D} = 
+  owd9 TL 3 | Cho hình thang ABCD vuông tại A và D. Biết AD = 2 cm; BC = 4 cm. Tính số đo của góc \widehat{B} và \widehat{C}
+  ombi TL 1 | Cho hình thang cân ABCD (AB \parallel CD). Biết \widehat{A} = 120^\circ. Tính số đo các góc còn lại.
+  ytmc NLC 1 | Cho hình thang ABCD (AB // CD) biết \widehat{A} = 58° thì \widehat{D} bằng: A. 122° B. 212° C. 22° D. 2°
+  xmdv NLC 2 | Cho hình thang cân ABCD có AB // CD và \widehat{A} = 125°. Khi đó \widehat{B} bằng: A. 125° B. 65° C. 90° D. 5
+  ksnd NLC 3 | Cho tam giác ABC cân tại A. Gọi D, E theo thứ tự thuộc các cạnh bên AB, AC sao cho AD = AE. Tính các góc của h
+  xjvl TL 2 | Tính số đo x, y trong hình thang ABCD sau: [HÌNH VẼ: hình thang ABCD với A, B ở đáy trên, D, C ở đáy dưới]
+  i3gg TL 2 | Tính số đo x, y trong hình sau: [HÌNH VẼ]
+  xzy1 TL 3 | Cho hình thang ABCD (AB // CD) có \widehat{A} - \widehat{D} = 20°; \widehat{B} = 2\widehat{C}. Tính các góc củ
+  8ky4 TL 3 | Cho hình thang cân ABCD (AB // CD) có \widehat{D} = 70°; \widehat{BCA} = 38°. Tính \widehat{ACD} và \widehat{D
+  eveg TL 3 | Cho hình thang ABCD (AB // CD) có \widehat{B} - \widehat{C} = 30° và \widehat{A} = 3\widehat{D}. Tính các góc 
+
+### [8] Bài 2. Hình thang cân | Tính độ dài đoạn thẳng (4)
+    yêu cầu: Tính được độ dài cạnh bên, đường cao hoặc chu vi của hình thang cân bằng cách sử dụng định lí Pythagore.
+  pk13 TL 2 | Hình thang cân ABCD có đáy nhỏ AB = 10 cm, đáy lớn CD = 20 cm và đường cao AH = 12 cm. Tính độ dài cạnh bên.
+  n7pf TL 2 | Cho hình thang cân ABCD, đáy nhỏ AB, đường cao AH = 2. Biết HC = 3,5 và HD = 1,5. Tính chu vi của hình thang c
+  lctc TL 3 | Cho hình thang vuông ABCD (AB \parallel CD) có \widehat{D} = 90^\circ; \widehat{C} = 45^\circ. Biết AB = 2; CD
+  mkrf NLC 3 | [HÌNH VẼ] Cho hình thang cân ABCD (AB // CD), kẻ đường cao AH, BK của hình thang (H, K nằm trên CD), biết AB =
+
+### [9] Bài 2. Hình thang cân | Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau (9)
+    yêu cầu: Vận dụng tính chất của hình thang cân để chứng minh hai đoạn thẳng bằng nhau hoặc hai góc bằng nhau.
+  w9ki TL 2 | Cho hình thang cân ABCD (AB \parallel CD). Chứng minh rằng \widehat{CAD} = \widehat{DBC}.
+  wbsd TL 3 | Cho hình thang cân ABCD (AB \parallel CD). Hai đường chéo cắt nhau tại O. Biết \widehat{COD} = 60^\circ, chứng
+  bfex TL 3 | Cho hình thang cân ABCD, đáy nhỏ AB. Vẽ AH \perp CD. Chứng minh rằng DH = \frac{CD - AB}{2}.
+  kibl TL 2 | Cho hình thang cân ABCD, đáy nhỏ AB. Các đường thẳng chứa hai cạnh bên cắt nhau tại O. Chứng minh rằng OA = OB
+  50pl NLC 3 | Cho hình thang cân ABCD có AB // CD, E là giao điểm của hai đường chéo. Khẳng định **sai** là: A. \Delta ABC =
+  ci65 TL 3 | Cho tam giác ABC nhọn có AB < AC, hai đường phân giác của \widehat{B}, \widehat{C} cắt nhau tại O. Qua O kẻ đư
+  tw6x TL 4 | Cho tam giác ABC đều, M là điểm nằm trong tam giác đó. Qua M kẻ đường thẳng song song với AC và cắt BC ở D, kẻ
+  k0ym TL 4 | Cho hình thang ABCD có AB // CD. Các tia phân giác của các góc A và D gặp nhau tại điểm E thuộc cạnh BC. Chứng
+  boq2 TL 4 | Cho hình thang cân ABCD (AB // CD, AB < CD). Kẻ các đường cao AE, BF (E, F thuộc CD). a) Chứng minh rằng: DE =
+
+### [10] Bài 2. Hình thang cân | Nhận biết hình thang, hình thang cân (18)
+    yêu cầu: Nhận biết được một tứ giác là hình thang hoặc hình thang cân dựa vào định nghĩa và dấu hiệu nhận biết.
+  501h TL 2 | Tứ giác ABCD có \widehat{A} + \widehat{D} = \widehat{B} + \widehat{C}. Chứng minh rằng tứ giác ABCD là hình th
+  u1eu TL 2 | Cho tam giác ABC cân tại A. Trên tia đối của tia AB lấy điểm M, trên tia đối của tia AC lấy điểm N sao cho AM 
+  lvok TL 1 | Hình bên có AB \parallel CD \parallel EF \parallel GH (các điểm A, F, E, D thẳng hàng và B, H, G, C thẳng hàng
+  eyt9 TL 2 | Tứ giác ABCD có \widehat{B} = \widehat{C}, \widehat{A} = 3\widehat{D}, \widehat{D} = 45^\circ. Hãy cho biết dạ
+  2306 TL 3 | Cho tam giác ABC cân tại A. Điểm O nằm trong tam giác đó. Trên cạnh AB lấy điểm D, trên cạnh BC lấy điểm E sao
+  ajpv NLC 1 | Trong các khẳng định sau, khẳng định nào **Sai**? A. Tứ giác có hai cạnh đối song song là hình thang. B. Hình 
+  4bwf NLC 1 | [HÌNH VẼ] Trong các tứ giác trên, tứ giác nào là hình thang? A. ABCD B. MNPQ C. EFGH D. IKLM
+  h7a1 NLC 1 | [HÌNH VẼ] Trong các hình thang sau hình nào là hình thang cân: A. ABCD B. IKLM C. EFGH D. MNOP
+  g8e1 NLC 2 | Cho hình thang cân ABCD có AB // CD. Phát biểu nào sau đây là **Sai**? A. Hai cạnh bên AD = BC B. Hai đường ch
+  2szd NLC 1 | Để chứng minh một hình thang là hình thang cân ta chứng minh: A. Hình thang đó có hai góc kề bằng nhau B. Hình
+  am9j NLC 1 | Số trục đối xứng của hình thang cân là: A. 0 B. 1 C. 2 D. 3
+  gcd4 NLC 3 | Cho hình thang cân ABCD có AB // CD. Gọi giao điểm của AD và BC là M. Tam giác MCD là tam giác gì? A. Tam giác
+  nxvs TL 3 | Cho \Delta ABC vuông cân tại A. Ở phía ngoài tam giác ABC vẽ tam giác ACD vuông cân tại D. Chứng minh tứ giác 
+  q0rb TL 3 | Cho tam giác ABC cân tại A có BD và CE là hai đường trung tuyến của tam giác (D là trung điểm AC, E là trung đ
+  l12u TL 4 | Cho tam giác ABC vuông tại A (AB < AC). Tia phân giác của \widehat{B} cắt AC tại D. Trên BC lấy điểm E sao cho
+  alw6 TL 3 | Cho các tứ giác sau, tứ giác nào là hình thang, hình thang cân, nêu cách chứng minh:
+  4jlk TL 3 | Cho tam giác ABC cân tại A có BH và CK là hai đường cao của tam giác (BH \perp AC tại H, CK \perp AB tại K). C
+  tv8l NLC 2 | Cho tam giác ABC nhọn. Các tia phân giác của các góc B và C cắt nhau tại I. Qua I kẻ đường thẳng song song với
+
+### [11] Bài 3. Hình bình hành | Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy (8)
+    yêu cầu: Vận dụng tính chất giao điểm hai đường chéo của hình bình hành để chứng minh ba điểm thẳng hàng hoặc ba đường thẳng đồng quy.
+  tkjx TL 3 | Cho hình bình hành ABCD. Trên các cạnh AB và CD lần lượt lấy các điểm M và N sao cho AM = CN. Gọi O là giao đi
+  tuog TL 4 | Cho tam giác ABC. Qua A vẽ đường thẳng xy \parallel BC. Trên cạnh BC lấy một điểm D. Vẽ DE \parallel AB, DF \p
+  9mvf TL 3 | Cho hình bình hành ABCD. Vẽ hình bình hành AECF (E \in AB; F \in CD). Chứng minh rằng ba đường thẳng EF, AC, B
+  jzb1 TL 4 | Cho hình bình hành ABCD. Trên tia đối của tia AD và CB, lấy các điểm M và P sao cho AM = CP. Trên tia đối của 
+  ammg TL 3 | Cho tứ giác ABCD. Gọi E, F, G, H, M và N thứ tự là trung điểm của AB, BC, CD, DA, BD và AC. Chứng minh rằng ba
+  q8zh TL 4 | Cho hình bình hành ABCD, đường chéo BD. Kẻ AH và CK vuông góc với BD lần lượt tại H và K. a) Chứng minh AH = C
+  2w0p TL 3 | Cho hình bình hành ABCD. Trên tia đối của tia AD lấy điểm M, trên tia đối của tia CB lấy điểm N sao cho AM = C
+  rv1l TL 3 | Một đội công nhân đang trồng cây trên đoạn đường  AB thì gặp chướng ngại vật che lấp tầm nhìn. Đội đó đã dựng 
+
+### [12] Bài 3. Hình bình hành | Chứng minh 2 góc bằng nhau, tính số đo góc (8)
+    yêu cầu: Tính được số đo các góc của hình bình hành dựa vào tính chất về góc của hình bình hành.
+  vtac NLC 1 | Cho hình bình hành ABCD có \widehat A = 130°. Số đo \widehat C bằng A. 50° B. 130° C. 60° D. 110°
+  qke5 TL 1 | Tính các góc của hình bình hành ABCD biết \widehat{A} - \widehat{B} = 30^{\circ}.
+  65c2 TL 1 | Hình bình hành ABCD có \widehat{A} = 3\widehat{B}. Tính các góc của hình bình hành đó.
+  kwl9 TL 2 | Cho hình bình hành ABCD. Trên cạnh AB lấy điểm M, trên cạnh CD lấy điểm N sao cho CM \parallel AN. Chứng minh 
+  9fkj TL 3 | Cho hình bình hành ABCD (AB > CD). Tia phân giác của góc C cắt AB tại M. Trên cạnh CD lấy điểm M sao cho CN = 
+  ja6d TL 3 | Cho tam giác đều ABC, một đường thẳng song song với BC cắt AB, AC ở D và E. Gọi G là trọng tâm của tam giác AD
+  qlss NLC 1 | Cho hình bình hành ABCD có \widehat{A} = 120°, các góc còn lại của hình bình hành là: A. \widehat{B} = 60°; \w
+  t9nr NLC 2 | Cho hình bình hành ABCD có \widehat{A} = 3\widehat{B}. Số đo các góc của hình bình hành là: A. \widehat{A} = \
+
+### [13] Bài 3. Hình bình hành | Chứng minh tứ giác là hình bình hành (26)
+    yêu cầu: Vận dụng được các dấu hiệu nhận biết để chứng minh một tứ giác là hình bình hành.
+  nvvy TL 2 | Cho hình bình hành ABCD, hai đường chéo cắt nhau tại O. Gọi M, N lần lượt là trung điểm của OB và OD. Chứng mi
+  qi6x TL 3 | Cho hình bình hành ABCD. Trên đường chéo BD lấy hai điểm M và N sao cho BM = DN. a) Chứng minh tứ giác AMCN là
+  l6na TL 4 | Cho tam giác ABC, \widehat{A} \neq 60^{\circ}. Vẽ ra phía ngoài của tam giác này các tam giác đều ABD và ACE. 
+  q98d TL 1 | Quan sát các hình dưới đây rồi cho biết tứ giác ở hình nào là hình bình hành. Vì sao? [HÌNH VẼ]
+  q5ok TL 3 | Cho tam giác ABC, đường cao AH. Ở phía ngoài của tam giác, ta vẽ các tam giác vuông cân ACE và ABD đỉnh A. Trê
+  w73e TL 3 | Cho tam giác ABC cân tại A. Lấy điểm D trên cạnh AB, điểm E trên cạnh AC sao cho AD = CE. Gọi I là trung điểm 
+  crb5 TL 4 | Cho điểm D nằm bên trong tam giác đều ABC. Vẽ các tam giác đều BDE, CDF (E, F, D nằm cùng phía với BC). Chứng 
+  ly3w NLC 1 | Hãy chọn câu trả lời "đúng" trong các khẳng định sau: A. Tứ giác có một cặp cạnh đối song song là hình bình hà
+  pteu NLC 1 | Hãy chọn câu trả lời "sai" trong các khẳng định sau: A. Tứ giác có hai cặp cạnh đối song song là hình bình hàn
+  hcmp NLC 1 | Hãy chọn câu trả lời "sai" trong các khẳng định sau: A. Tứ giác có một cặp cạnh đối song song và bằng nhau là 
+  dw9h NLC 2 | [HÌNH VẼ] Trong các tứ giác sau, tứ giác nào "không phải" là hình bình hành? A. ABCD B. EFGH C. MNPQ D. IKLM
+  rmrx NLC 2 | [HÌNH VẼ] Cho tứ giác ABCD có AB = CD (với A, B ở đáy trên, D, C ở đáy dưới), hãy bổ sung một điều kiện nữa để
+  q2ut NLC 2 | [HÌNH VẼ] Cho tứ giác MNPQ có MN // PQ (với M, N ở đáy trên, Q, P ở đáy dưới), hãy bổ sung một điều kiện nữa đ
+  tnil NLC 2 | [HÌNH VẼ] Cho tứ giác EFGH có I là trung điểm của EG (với E, F ở trên, H, G ở dưới, I là giao điểm hai đường c
+  tmio NLC 3 | [HÌNH VẼ] Cho hình vẽ, hãy chọn câu khẳng định "sai": A. ABCD là hình bình hành. B. \Delta ABC = \Delta CDA. C
+  khvw TL 3 | Cho hình bình hành ABCD. Trên cạnh AD lấy điểm M, trên cạnh BC lấy điểm N sao cho DM = BN. a) Chứng minh MBND 
+  cm9w TL 4 | Cho tam giác ABC nhọn (AB < AC), các đường cao BH và CK cắt nhau tại E. Đường thẳng qua B vuông góc với AB và 
+  73sx TL 4 | Cho tam giác ABC vuông tại A. Đường trung tuyến AN (N là trung điểm BC). Điểm M là hình chiếu vuông góc của N 
+  wfrn TL 3 | Cho tam giác ABC cân ở A có điểm D trên cạnh BC. Kẻ DM // AC (M thuộc AB), DN // AB (N thuộc AC). a) Chứng min
+  fbzo TL 3 | Cho hình bình hành ABCD có AB < AD. Tia phân giác của \widehat{B}, \widehat{D} lần lượt cắt AD, BC tại M, N. a
+  kej9 TL 4 | Cho tam giác ABC nhọn (AB < AC), các đường trung tuyến AM, BN cắt nhau tại G. Trên tia BN lấy điểm E sao cho N
+  nubr NLC 1 | Hãy chọn câu sai: A. Tứ giác có hai cặp cạnh đối song song là hình bình hành. B. Hình thang có hai góc kề một 
+  lvc9 NLC 1 | Tứ giác ABCD là hình bình hành nếu A. AB = CD. B. AD // BC. C. AB//CD, AD = BC. D. AB = CD, AD = BC.
+  l74k TL 2 | Cho tam giác  ABC,  M là trung điểm của  BC,  N là trung điểm của  AC. Lấy điểm  E sao cho  N là trung điểm củ
+  2ywa TL 3 | Cho hình bình hành  ABCD,  AC cắt  BD tại  O. Gọi  M, N lần lượt là trung điểm  OD, OB.  AM cắt  DC tại  E,  C
+  596v TL 4 | Cho  \Delta ABC nhọn có  AB < AC. Các đường cao  BE, CF cắt nhau tại  H. Gọi  M là trung điểm của  BC. Từ  B k
+
+### [14] Bài 3. Hình bình hành | Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng (12)
+    yêu cầu: Vận dụng tính chất của hình bình hành để chứng minh hai đoạn thẳng bằng nhau hoặc tính độ dài đoạn thẳng.
+  wl3e TL 2 | Cho hình bình hành ABCD. Vẽ AE và CF cùng vuông góc với BD. Chứng minh rằng AE = CF.
+  3m0o TL 2 | Cho hình bình hành ABCD, hai đường chéo cắt nhau tại O. Qua O vẽ một đường cắt AB và CD lần lượt tại M và N. C
+  btek TL 1 | Tứ giác ABCD trong hình sau là một hình bình hành, AO = x + 1, OB = x + 2, DO = y + 3 và OC = 3. Tìm các giá t
+  4bx9 TL 2 | Cho tam giác ABC cân tại A, AB = 4. Từ một điểm D trên cạnh BC vẽ DE \parallel AB (E \in AC) và DF \parallel A
+  xnrx TL 3 | Tính độ dài đường trung tuyến AM của tam giác ABC có \widehat{A} = 120^{\circ}, AB = 4 cm, AC = 6 cm.
+  ow8j TL 3 | Cho tứ giác ABCD. Trên cạnh AB lấy các điểm E, F sao cho AE = AF = FB. Trên cạnh CD lấy điểm G, H sao cho DG =
+  s3ac TL 4 | Cho tam giác ABC. Lấy các điểm D, E theo thứ tự thuộc các tia đối của các tia BA, CA sao cho BD = CE = BC. Gọi
+  mmyl NLC 2 | Chu vi của hình bình hành ABCD bằng 10cm, chu vi của tam giác \Delta ABD bằng 9cm, khi đó độ dài BD là: A. 4cm
+  2o72 NLC 3 | Cho hình bình hành ABCD. Qua giao điểm O của các đường chéo, vẽ một đường thẳng cắt các cạnh đối BC và AD theo
+  g4dq TL 4 | Cho hình bình hành ABCD. Gọi E và F theo thứ tự là trung điểm của AB và CD. a) Chứng minh AF // CE. b) Gọi gia
+  a70g TL 4 | Cho tam giác ABC có O là trung điểm của AC. Trên tia BO lấy điểm D sao cho OD = OB. a) Chứng minh tứ giác ABCD
+  wlub NLC 2 | Hãy chọn câu đúng. Cho hình bình hành ABCD, gọi E là trung điểm của AB, F là trung điểm của CD. Khi đó: A. DE 
+
+### [15] Bài 3. Hình bình hành | Chứng minh và tính toán với hình bình hành (5)
+    yêu cầu: Nhận biết được các tính chất về cạnh, góc và hai đường chéo của hình bình hành.
+  cndv TL 3 | Hình bình hành ABCD có \widehat{A} = 60^{\circ}. Lấy các điểm E, F theo thứ tự thuộc các cạnh AD, CD sao cho D
+  yww0 TL 4 | Vẽ ra phía ngoài tam giác ABC các tam giác ABD vuông cân tại B, ACE vuông cân tại C. Gọi M là trung điểm của D
+  n162 TL 4 | Cho điểm E thuộc cạnh AC của tam giác đều ABC. Đường vuông góc với AB kẻ từ E cắt đường vuông góc với BC kẻ từ
+  gyif TL 3 | Cho tam giác ABC có \widehat{A} > 90^{\circ}. Trong góc A vẽ các đoạn thẳng AD, AE sao cho AD vuông góc và bằn
+  nrdn NLC 1 | Trong các câu sau, câu nào đúng? A. Trong hình bình hành hai đường chéo bằng nhau. B. Trong hình bình hành hai
+
+### [16] Bài 4. Hình chữ nhật | Chứng minh và tính toán với hình chữ nhật (5)
+    yêu cầu: Nhận biết được các tính chất về cạnh, góc, hai đường chéo và tâm đối xứng của hình chữ nhật.
+  1wf2 TL 2 | Cho hình chữ nhật ABCD, hai đường chéo cắt nhau tại O. Biết AD = 2\sqrt{3}, BD = 4\sqrt{3}. Tính: a) Chu vi ta
+  qsso TL 3 | Cho tam giác ABC vuông tại A, đường trung tuyến AM. Vẽ BH \perp AM. Cho biết AB = 15; BH = 12. Tính BC.
+  qo3y TL 3 | Cho hình chữ nhật ABCD. Trên AD lấy điểm E, trên CD lấy điểm F sao cho EF \parallel AC. Vẽ hình chữ nhật DEMF.
+  22jl TL 3 | Cho tam giác ABC vuông tại A. Một đường thẳng song song với BC cắt hai cạnh AB và AC lần lượt tại D và E. Gọi 
+  rlf3 TL 4 | Cho tam giác ABC vuông tại A, đường cao AH. Vẽ HE \perp AB, HF \perp AC. Từ A vẽ một đường thẳng vuông góc với
+
+### [17] Bài 4. Hình chữ nhật | Dấu hiệu nhận biết hình chữ nhật (8)
+    yêu cầu: Giải thích được một tứ giác là hình chữ nhật bằng cách sử dụng các dấu hiệu nhận biết liên quan đến góc và đường chéo.
+  mh9m TL 2 | Cho tam giác ABC, đường trung tuyến AM. Từ A vẽ một đường thẳng song song với BC, từ M vẽ một đường thẳng song
+  7zd9 TL 3 | Cho hình bình hành ABCD, \widehat{ACD} = \frac{1}{2}\widehat{D}. Gọi M là trung điểm của AB. Hai tia CM và DA 
+  8ypw NLC 1 | "Tứ giác có ... là hình chữ nhật." A. hai góc vuông. B. bốn góc vuông. C. bốn cạnh bằng nhau. D. các cạnh đối 
+  qsw1 NLC 2 | Hình bình hành cần có thêm điều kiện nào sau đây thì trở thành hình chữ nhật? A. Có một góc vuông. B. Có hai c
+  zrld NLC 2 | Hình bình hành cần có thêm điều kiện nào sau đây thì trở thành hình chữ nhật? A. Có hai cạnh đối bằng nhau. B.
+  9h7x NLC 2 | Hình thang cân cần có thêm điều kiện nào sau đây thì trở thành hình chữ nhật? A. Có hai đường chéo bằng nhau B
+  hvji NLC 2 | Hình bình hành ABCD là hình chữ nhật khi: A. AC \perp BD B. AC = BD C. AC = 2.BD D. AC // BD
+  gcsh NLC 1 | Một dấu hiệu nhận biết hình chữ nhật là: A. Tứ giác có hai đường chéo bằng nhau là hình chữ nhật. B. Hình than
+
+### [18] Bài 4. Hình chữ nhật | Chứng minh quan hệ vuông góc (2)
+    yêu cầu: Vận dụng tính chất của hình chữ nhật để chứng minh hai đường thẳng vuông góc.
+  k0bl TL 4 | Cho hình chữ nhật ABCD, hai đường chéo cắt nhau tại O. Trên cạnh AB lấy một điểm M. Kẻ AH \perp CM. Chứng minh
+  vj8l TL 4 | Cho \Delta ABC vuông tại A (AB < AC) có M là trung điểm của BC. Gọi D, E lần lượt là hình chiếu của M trên AB,
+
+### [19] Bài 4. Hình chữ nhật | Chứng minh quan hệ bằng nhau (6)
+    yêu cầu: Tính được độ dài cạnh hoặc chu vi của hình thoi bằng cách vận dụng các tính chất về đường chéo và định lí Pythagore.
+  alzc NLC 1 | Hai đường chéo của hình chữ nhật có tính chất nào sau đây? A. Chúng vuông góc với nhau. B. Chúng bằng nhau. C.
+  clqn NLC 1 | Khẳng định nào sau đây là "SAI": Trong hình chữ nhật …………… A. hai cạnh đối song song và bằng nhau B. hai đường
+  m7dr NLC 1 | Đường trung tuyến ứng với cạnh huyền của một tam giác vuông có tính chất nào sau đây? A. Bằng một cạnh góc vuô
+  cwgo NLC 2 | Hình chữ nhật có kích thước hai cạnh kề là 5cm và 12cm. Độ dài đường chéo của hình chữ nhật là: A. 7cm B. 13cm
+  owcg NLC 2 | Cho tam giác ABC vuông tại B, có M là trung điểm của AC. Biết AB = 3cm, BC = 4cm. Độ dài BM là: A. 2cm B. 2,5c
+  4h3e NLC 2 | Hình chữ nhật ABCD có O là giao điểm của hai đường chéo. Biết \widehat{AOD} = 50°, tính số đo \widehat{ABO}. A
+
+### [20] Bài 4. Hình chữ nhật | Chứng minh tứ giác là hình chữ nhật (11)
+    yêu cầu: Vận dụng được dấu hiệu nhận biết hình chữ nhật để chứng minh một tứ giác cho trước là hình chữ nhật.
+  ljqn TL 2 | Cho tam giác ABC cân tại A. Hai đường trung tuyến BD, CE cắt nhau tại G. Trên tia đối của DB lấy điểm F sao ch
+  7fav TL 3 | Cho tam giác ABC cân tại A. từ một điểm D trên đáy BC, vẽ đường thẳng vuông góc với BC, cắt các đường thẳng AC
+  53xt NLC 3 | Trong các cách chứng minh một tứ giác ABCD là hình chữ nhật dưới đây, cách nào là "SAI"? A. ABCD có \widehat{A
+  wcxm TL 3 | Cho tam giác nhọn ABC (AB < AC), đường cao AH. I là trung điểm của AC, lấy điểm E sao cho I là trung điểm của 
+  ncup TL 4 | Cho \Delta ABC vuông tại A (AB < AC) có AH là đường cao. Gọi P và Q lần lượt là hình chiếu của H lên AB, AC. a
+  98br TL 3 | Cho tam giác ABC vuông cân tại A. Trên các cạnh AB, AC lấy lần lượt các điểm H, K sao cho HB = AK. Từ điểm H v
+  7nb5 TL 4 | Cho tam giác ABC vuông tại A (AB < AC), trung tuyến AM. Lấy E và F lần lượt là trung điểm của AB và AC. a) Chứ
+  j49j TL 4 | Cho \Delta ABC vuông tại A (AB < AC), M là trung điểm của BC. Gọi D, E lần lượt là chân đường vuông góc kẻ từ 
+  2npn TL 3 | Cho \Delta ABC vuông tại A có AB < AC. Gọi M là trung điểm của BC. Trên tia đối của tia MA lấy điểm D sao cho 
+  ke0b TL 3 | Cho tam giác  ABC vuông tại  A, đường cao  AH. Kẻ  HM vuông góc  AB,  HN vuông góc với  AC ( M thuộc  AB,  N t
+  89h0 TL 4 | Cho  \Delta ABC vuông tại  A có  AB < AC, đường cao  AH và trung tuyến  AE. Gọi  D, F lần lượt là chân đường v
+
+### [21] Bài 5. Hình thoi và hình vuông | Chứng minh 3 điểm thẳng hàng, 3 đường thẳng đồng quy (1)
+    yêu cầu: Vận dụng tính chất của các tứ giác đặc biệt để chứng minh ba điểm thẳng hàng hoặc ba đường thẳng đồng quy.
+  75l9 TL 3 | Cho hình thoi ABCD có hai đường chéo cắt nhau tại O. Vẽ hình bình hành ACEF trong đó CE bằng cạnh của hình tho
+
+### [22] Bài 5. Hình thoi và hình vuông | Dấu hiệu nhận biết hình thoi (10)
+    yêu cầu: Nhận biết được các dấu hiệu để chứng minh một tứ giác là hình thoi.
+  9xyd NLC 2 | [HÌNH VẼ] Cho hình vẽ sau, để chứng minh EFGH là hình thoi ta cần chứng minh thêm? A. EF = GH B. EF // GH C. E
+  7gqd TL 3 | Cho tam giác ABC, D là một điểm trên cạnh BC. Vẽ DE \parallel AB, DF \parallel AC (E \in AC; F \in AB). Xác đị
+  clsm TL 3 | Cho tam giác ABC, M và N lần lượt là trung điểm của AC và BC. Vẽ điểm D đối xứng với M qua N. a) Chứng minh rằ
+  ctdl TL 3 | Cho tam giác ABC, hai đường cao BD và CE cắt nhau tại H. Đường thẳng qua B và vuông góc với AB cắt đường thẳng
+  1h18 TL 2 | Xác định dạng của một tứ giác, biết rằng a) Tứ giác đó có hai trục đối xứng vuông góc với nhau và không đi qua
+  uish TL 4 | Tứ giác ABCD có các đường chéo cắt nhau tại O và chu vi các tam giác OAB, OBC, OCD, ODA bằng nhau. Chứng minh 
+  j139 NLC 2 | Trong các dấu hiệu chứng minh hình thoi sau, dấu hiệu SAI là: A. Tứ giác có bốn cạnh bằng nhau là hình thoi B.
+  fenj NLC 1 | "Tứ giác có ...... là hình thoi." A. hai cạnh đối song song và bằng nhau B. bốn góc vuông. C. bốn cạnh bằng nh
+  oa5l NLC 2 | [HÌNH VẼ] Tứ giác này là hình thoi theo dấu hiệu nào? A. Tứ giác có bốn cạnh bằng nhau. B. Tứ giác có hai đườn
+  xqdq NLC 2 | [HÌNH VẼ] Cho hình vẽ sau, để chứng minh MNPQ là hình thoi ta cần chứng minh thêm? A. MP = NQ. B. MP \perp NQ.
+
+### [23] Bài 5. Hình thoi và hình vuông | Chứng minh tứ giác là hình thoi (11)
+    yêu cầu: Giải thích được một tứ giác cho trước là hình thoi dựa vào các dấu hiệu nhận biết.
+  vycv TL 2 | Cho hình thoi ABCD, hai đường chéo cắt nhau tại O. Trên OC lấy một điểm K. Đường thẳng qua K và song song với 
+  2hni TL 2 | Cho tam giác ABC cân tại A. Hai đường trung tuyến BD và CE cắt nhau tại G. Vẽ điểm F đối xứng với A qua G. Chứ
+  u802 TL 3 | Cho tam giác ABC cân tại A. Vẽ các đường cao BD và CE. Gọi M, N lần lượt là trung điểm của BC và DE. Vẽ MH \pe
+  16tf NLC 3 | Cho tam giác ABC vuông ở A, trung tuyến AM. Gọi D là trung điểm của AB, M' là điểm đối xứng với M qua D. Cách 
+  bbst TL 3 | Cho góc nhọn xOy, tia phân giác Ot. Từ điểm M thuộc Ot kẻ MA // Oy và MB // Ox (với A \in Ox, B \in Oy). Chứng
+  mcs7 TL 3 | Cho \Delta BAC cân tại B có đường cao BE. Trên tia đối của tia EB lấy điểm D sao cho ED = EB. Chứng minh tứ gi
+  1p2f TL 4 | Cho hình bình hành ABCD có AC vuông góc với BC tại C. Gọi E, F theo thứ tự là trung điểm của các cạnh AB, CD. 
+  bn1i TL 4 | Cho hình chữ nhật ABCD có P, Q lần lượt là trung điểm của BC và AD. Gọi M là giao điểm của AP và BQ; N là giao
+  fkf2 TL 4 | Cho tam giác ABC có ba góc nhọn, các đường cao AD, BE. Tia phân giác của \widehat{DAC} cắt BE, BC theo thứ tự 
+  hw8l TL 4 | Cho hình bình hành ABCD. Trên các cạnh AB và CD lần lượt lấy các điểm M và N sao cho AM = DN. Đường trung trực
+  8zfx TL 4 | Cho \Delta ABC cân tại A, đường cao AD. M là một điểm bất kì trên cạnh BC. Từ M vẽ ME vuông góc với AB tại E, 
+
+### [24] Bài 5. Hình thoi và hình vuông | Chứng minh tứ giác là hình vuông (11)
+    yêu cầu: Giải thích được một tứ giác cho trước là hình vuông dựa vào các dấu hiệu nhận biết.
+  1bit TL 2 | Cho tam giác ABC vuông tại A, đường trung tuyến AM. Gọi N là trung điểm của AC. Vẽ điểm D đối xứng với M qua N
+  hvlb TL 3 | Cho hình vuông ABCD. Trên cạnh BC lấy điểm E. Vẽ hình vuông CEFG ra phía ngoài hình vuông ABCD. Vẽ EK \perp AC
+  betu TL 3 | Cho tam giác ABC cân tại A, đường cao AH. Các đường trung tuyến BD, CE cắt nhau tại G. Gọi M và N là trung điể
+  8qo3 TL 4 | Cho hình thoi ABCD, gọi O là giao điểm của hai đường chéo. Trên cạnh AB, BC, CD, DA lấy theo thứ tự các điểm M
+  qgso TL 4 | Cho hình vuông ABCD. Trên cạnh AB, BC, CD, DA lần lượt lấy các điểm E, F, G, H sao cho AE = BF = CG = DH. Chứn
+  bzvr TL 4 | Cho hình chữ nhật ABCD có AB = 2AD. Gọi E, F theo thứ tự là trung điểm của AB, CD. Gọi M là giao điểm của AF v
+  tv82 TL 4 | Cho hình chữ nhật ABCD (AD < AB < 2AD). Vẽ các tam giác vuông cân ABI, CDK (\widehat{I} = \widehat{K} = 90°), 
+  k4zg TL 4 | Cho tam giác ABC cân tại A (\widehat{A} < 90°), các đường cao BD và CE cắt nhau tại H. Tia phân giác của góc A
+  8h7t TL 3 | Cho tam giác ABC vuông tại A. Đường phân giác AD (D \in BC). Gọi M, N theo thứ tự là chân đường vuông góc hạ t
+  5kgk TL 3 | Cho \Delta ABC vuông cân tại A. Trên cạnh BC lấy hai điểm H, G sao cho BH = HG = GC. Qua H và G kẻ các đường t
+  nnqy TL 2 | Cho hình vuông  ABCD, trên các cạnh  AB, BC, CD, DA lần lượt lấy  M, N, P, Q sao cho  AM = BN = CP = DQ. Chứng
+
+### [25] Bài 5. Hình thoi và hình vuông | Chứng minh quan hệ bằng nhau (10)
+    yêu cầu: Tính được độ dài cạnh hoặc chu vi của hình thoi dựa vào độ dài hai đường chéo cho trước.
+  yefg NLC 1 | Hình thoi có chu vi bằng 20cm thì độ dài cạnh của nó bằng: A. 4cm B. 5cm C. 8cm D. Cả A, B, C đều sai.
+  ge4j NLC 2 | Hình thoi có độ dài hai đường chéo là 24cm và 10cm thì cạnh của hình thoi đó bằng: A. 12cm B. 13cm C. 14cm D. 
+  39pa NLC 3 | [HÌNH VẼ] Cho hình thoi ABCD. Biết đường cao AH kẻ từ đỉnh A đến cạnh CD chia cạnh đó thành hai đoạn bằng nhau
+  i7gq TL 3 | Cho hình thoi ABCD, đường cao AH. Lấy điểm M ở trong hình thoi. Vẽ ME \perp AB, MF \perp BC. Biết ME + MF = AH
+  e5yq NLC 1 | Cho hình vuông có chu vi 28cm. Độ dài cạnh hình vuông là: A. 4cm B. 7cm C. 14cm D. 8cm
+  rah8 NLC 2 | Một hình vuông có chu vi là 32cm. Hỏi diện tích hình vuông bằng? A. 49cm^2 B. 64cm^2 C. 14cm^2 D. 32cm^2
+  1z7g NLC 3 | Cho hình vuông ABCD. M, N, P, Q là trung điểm các cạnh AB, BC, CD, DA. Hãy chọn câu "Đúng" A. S_{MNPQ} = \dfra
+  b72k TL 4 | Cho hình thoi ABCD có \widehat{A} = 60°, kẻ BH \perp AD (H \in AD), rồi kéo dài một đoạn HE = HB. Nối E với A,
+  3fku NLC 1 | Khẳng định nào sau đây là "SAI"? Trong hình thoi …………… A. hai cạnh đối song song và bằng nhau B. hai góc đối b
+  hhbz NLC 2 | Cho hình thoi ABCD, O là giao điểm của AC và BD. Khẳng định nào sau đây là "SAI"? A. AB = BC = CD = DA B. AB \
+
+### [26] Bài 5. Hình thoi và hình vuông | Chứng minh quan hệ vuông góc (3)
+    yêu cầu: Vận dụng được tính chất của hình chữ nhật, hình thoi, hình vuông để chứng minh hai đường thẳng vuông góc trong một hình cụ thể.
+  7ww7 TL 3 | Cho hình vuông ABCD, hai đường chéo cắt nhau tại O. Trên các cạnh BC và CD lần lượt lấy các điểm M và N sao ch
+  w3ax TL 3 | Cho đoạn thẳng AB, trên đó lấy các điểm M và N sao cho AM = BN. Trên cùng một nửa mặt phẳng bờ AB, vẽ các tia 
+  buio TL 3 | Cho hình vuông ABCD. Lấy các điểm E, F theo thứ tự thuộc các cạnh CD, DA sao cho DE = AF. a) Chứng minh rằng A
+
+### [27] Bài 5. Hình thoi và hình vuông | Tính chất và bài tập hình thoi, hình vuông (32)
+    yêu cầu: Nhận biết được các tính chất về cạnh, góc, đường chéo và trục đối xứng của hình vuông.
+  nj7t NLC 2 | Cho hình vuông MNPQ, hai đường chéo cắt nhau tại O. Khẳng định nào sau đây là "Sai"? A. MP \perp NQ tại O. B. 
+  berz NLC 1 | Hình vuông có bao nhiêu trục đối xứng? A. Không có trục đối xứng. B. Có 3 trục đối xứng. C. Có 2 trục đối xứng
+  bq0l TL 2 | Hình thoi ABCD có \widehat{A} = 30^{\circ}, đường cao BH = 1,5 cm. Tính chu vi của hình thoi.
+  1d2a TL 3 | Cho hình vuông ABCD cạnh a, hai đường chéo cắt nhau tại O. Qua O vẽ đường thẳng d bất kỳ. Gọi A', B', C', D' l
+  n5ig TL 2 | Cho hình bình hành ABCD, AC \perp AD. Gọi E và F là trung điểm của AB và CD. cho biết hình dạng của tứ giác AE
+  dt7q TL 3 | Cho hình thoi ABCD, góc A có số đo bằng 50^{\circ}. Vẽ BH \perp AD, BK \perp CD, DE \perp AB, DF \perp BC. Gọi
+  evvm TL 3 | Cho tam giác ABC, AB < BC. Từ một điểm D nằm trên cạnh BC, vẽ một đường thẳng song song với AB. Từ A vẽ một đư
+  khl8 TL 3 | Cho hình bình hành ABCD, AB = 2AD, D = 70^{\circ}. Gọi H là hình chiếu của B trên AD, M là trung điểm của CD. 
+  v40t TL 3 | Gọi O là giao điểm của các đường chéo hình thoi ABCD, E và F theo thứ tự là hình chiếu của O trên BC và CD. Tí
+  g6jz TL 4 | Gọi M là điểm bất kì trên đoạn thẳng AB. Vẽ về một phía của AB các hình vuông AMCD, BMEF. a) Chứng minh rằng A
+  nbjq TL 4 | Cho tứ giác ABCD. Gọi E, F, H theo thứ tự là tâm các hình vuông có cạnh AB, BC, CD, DA dựng phía ngoài tứ giác
+  ck1j TL 4 | Cho bốn điểm E, G, F, H. Dựng hình vuông ABCD có bốn đường thẳng chứa cạnh đi qua bốn điểm E, G, F, H.
+  omb1 TL 4 | Cho ba đường thẳng a, b, c. Dựng hình vuông ABCD có A thuộc a, C thuộc b còn B và D thuộc d.
+  f07a TL 2 | Chu vi của hình thoi ABCD là 24 cm, BD = 6 cm. a) Tính số đo các góc của hình thoi đó. b) Tính độ dài đường ch
+  s31z TL 2 | Cho hình thoi ABCD cạnh dài 4 cm, \widehat{A} = 60^{\circ}. Gọi M, N lần lượt là trung điểm của AD và CD. a) C
+  uv5a TL 4 | Cho hình vuông ABCD cạnh a. Trên cạnh BC lấy điểm M, trên tia đối của DC lấy điểm N sao cho BM = DN. a) Tính s
+  o39b TL 3 | Cho hình vuông ABCD. Vẽ vào trong hình vuông này tam giác đều MCD. a) Tính số đo góc \widehat{MAB} và \widehat
+  k0ba TL 3 | Cho hình vuông ABCD. Trên cạnh AB lấy điểm E, trên tia đối của BA lấy điểm F, trên tia đối với CB lấy điểm G s
+  z4k0 TL 3 | Cho hình vuông ABCD. Gọi M và N lần lượt là trung điểm của BC và CD. a) Chứng minh AN = DM và AN \perp DM. b) 
+  tnwi TL 4 | Cho hình bình hành ABCD. Gọi M là giao điểm các đường phân giác của góc A, góc B. Gọi N là giao điểm các đường
+  isqh TL 4 | Cho hình vuông ABCD. Trên cạnh AB lấy điểm E, trên cạnh CD lấy điểm F sao cho AE = CF. Gọi O là trung điểm của
+  6ryi TL 3 | Cho hình vuông ABCD, điểm M nằm trên đường chéo AC. Gọi E, F theo thứ tự là các hình chiếu của M trên AD, CD. 
+  n7tj TL 3 | Cho hình vuông ABCD. Điểm E nằm trong hình vuông sao cho tam giác ECD cân có góc đáy bằng 15^{\circ}. Chứng mi
+  8g42 TL 4 | Cho \triangle ABC cân tại A, góc đáy 75^{\circ} và hình vuông BDEC (các điểm A, D, E nằm cùng phía đối với BC)
+  7alq TL 4 | Cho hình vuông ABCD, điểm E thuộc cạnh CD, điểm F thuộc cạnh BC. Chứng minh rằng chu vi \triangle CEF bằng nửa
+  ddr3 TL 4 | Cho hình vuông ABCD, điểm M thuộc cạnh AB. Tia phân giác của góc \widehat{MCD} cắt cạnh AD ở N. Cho biết BM = 
+  cmoe TL 3 | Cho hình vuông ABCD. Lấy các điểm E, F theo thứ tự thuộc các cạnh AD, AB sao cho AE = AF. Gọi H là hình chiếu 
+  0332 TL 4 | Cho điểm M thuộc cạnh CD của hình vuông ABCD. Tia phân giác của góc \widehat{ABM} cắt AD ở I. Chứng minh BI \l
+  tlfn TL 4 | Cho ba điểm E, O, F. Dựng hình vuông ABCD nhận O là giao điểm hai đường chéo, E và F thứ tự thuộc a) Các đường
+  y308 TL 4 | Cho hình vuông ABCD. Trên tia đối của tia BA lấy điểm E, trên tia đối của tia CB lấy điểm F sao cho AE = CF. a
+  6av6 TL 3 | Cho hình thoi  ABCD có  O là giao điểm của  2 đường chéo. Trên các cạnh  AB, BC, CD, DA lần lượt lấy các điểm 
+  0b9d TL 4 | Cho hình vuông  ABCD. Gọi  O là giao điểm của hai đường chéo. Một đường thẳng qua  O cắt cạnh  AD tại  P, cắt 
+
+### [28] Bài 5. Hình thoi và hình vuông | Chứng minh 2 đoạn thẳng bằng nhau, các quan hệ về độ dài. Tính độ dài đoạn thẳng (1)
+    yêu cầu: Vận dụng tính chất của hình thoi và hình vuông để chứng minh hai đoạn thẳng bằng nhau hoặc tính độ dài đoạn thẳng.
+  g90u TL 2 | Cho hình bình hành ABCD. Gọi E và F lần lượt là trung điểm của BC và CD. Đường chéo BD cắt AE và AF lần lượt t
+
+### [29] Bài 5. Hình thoi và hình vuông | Chứng minh 2 góc bằng nhau, 2 đoạn thẳng bằng nhau (2)
+    yêu cầu: Vận dụng tính chất của hình thoi và hình vuông để chứng minh hai đoạn thẳng bằng nhau hoặc hai góc bằng nhau.
+  64qw TL 3 | Cho hình thoi ABCD, \widehat{A} = 50^\circ. Gọi M và N lần lượt là trung điểm của BC và AD. Vẽ BH \perp CN a) 
+  2zo0 TL 3 | Cho hình vuông ABCD, điểm M trên cạnh CD. Tia phân giác của góc \widehat{BAM} cắt BC tại N. Trên tia đối của t
+
+### [30] Bài 5. Hình thoi và hình vuông | Nhận dạng tứ giác (3)
+    yêu cầu: Nhận biết được tứ giác lồi và tứ giác không lồi thông qua hình vẽ cho trước.
+  bhd6 TL 2 | Cho tam giác \Delta ABC vuông tại A. Gọi M là trung điểm của BC, và D là điểm đối xứng với M qua AC. a) Tứ giá
+  k3t2 TL 3 | Cho hình thoi ABCD. Hai đường chéo cắt nhau tại O. Đường thẳng qua O và vuông góc với AB cắt AB tại H, cắt CD 
+  hd14 TL 3 | Cho hình vuông ABCD cạnh a. Trên đường chéo AC lấy một điểm M. Vẽ ME \perp CD; MF \perp AD. a) Chứng minh rằng
+
+### [31] Bài 5. Hình thoi và hình vuông | Dấu hiệu nhận biết hình vuông (8)
+    yêu cầu: Giải thích được dấu hiệu nhận biết một tứ giác là hình vuông dựa vào định nghĩa và tính chất.
+  dxin NLC 1 | Định nghĩa đúng về hình vuông là…. A. tứ giác có bốn góc vuông. B. tứ giác có bốn cạnh bằng nhau. C. tứ giác c
+  qcpk TL 4 | Cho tam giác ABC vuông cân tại A, BC = a. Trên đáy BC lấy hai điểm M và N sao cho BM = CN < \frac{a}{2}. Vẽ MQ
+  wfn5 NLC 2 | Để chứng minh một hình chữ nhật là hình vuông cách nào sau đây là "SAI"? A. Hình chữ nhật có hai cạnh kề bằng 
+  e5cb NLC 2 | Để chứng minh một hình thoi là hình vuông cách nào sau đây là "ĐÚNG"? A. Hình thoi có hai đường chéo vuông góc
+  s0ni NLC 2 | Trong các khẳng định sau, khẳng định SAI là: A. Hình thoi có hai đường chéo góc vuông là hình vuông. B. Hình t
+  4a7n NLC 3 | [HÌNH VẼ] Cho hình vẽ , tứ giác ABCD là hình vuông theo dấu hiệu: A. Hình thoi có một góc vuông. B. Hình chữ n
+  5y43 NLC 3 | Cho tam giác ABC vuông tại A. Lấy N \in BC. Gọi M, P lần lượt là hình chiếu của N trên AB, AC. Tam giác ABC cầ
+  xu14 NLC 3 | Cho tam giác ABC cân tại A, đường trung tuyến AM. Gọi I là trung điểm của AC. K là điểm đối xứng với M qua điể
+
+### [32] Bài 6. Ôn tập chương | Bài tập tổng hợp chương 3 (0)
+    yêu cầu: Vận dụng tổng hợp kiến thức của chương 3 để giải các bài toán ôn tập, kiểm tra cuối chương.

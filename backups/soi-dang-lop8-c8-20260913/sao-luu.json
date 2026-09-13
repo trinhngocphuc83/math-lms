@@ -1,0 +1,65 @@
+{
+ "question_categories": [
+  {
+   "id": "8089433e-5147-44ba-894d-23aa9f15c59a",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Mở đầu về tính xác suất của biến cố",
+   "lesson": "Bài 3. Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng",
+   "math_form": "Ứng dụng xác suất thực nghiệm để ước lượng xác suất của biến cố",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vận dụng được xác suất thực nghiệm để ước lượng xác suất của một biến cố trong các tình huống thực tiễn."
+  },
+  {
+   "id": "d441fe41-1826-4243-b1fa-3031684934a1",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Mở đầu về tính xác suất của biến cố",
+   "lesson": "Bài 1. Kết quả có thể và kết quả thuận lợi",
+   "math_form": "Liệt kê các kết quả có thể của phép thử ngẫu nhiên",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Liệt kê được tất cả các kết quả có thể xảy ra của một phép thử ngẫu nhiên đơn giản."
+  },
+  {
+   "id": "95e969ed-0845-4b3e-8b1f-6127ab152abb",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Mở đầu về tính xác suất của biến cố",
+   "lesson": "Bài 1. Kết quả có thể và kết quả thuận lợi",
+   "math_form": "Xác định số kết quả thuận lợi cho một biến cố",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Xác định được số kết quả thuận lợi cho một biến cố cụ thể trong một phép thử ngẫu nhiên đơn giản."
+  },
+  {
+   "id": "6b9bf566-2135-43b1-9852-58002e541add",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Mở đầu về tính xác suất của biến cố",
+   "lesson": "Bài 3. Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng",
+   "math_form": "Tính xác suất thực nghiệm",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Tính được xác suất thực nghiệm của một biến cố trong một số thí nghiệm hoặc hoạt động thực tiễn đơn giản."
+  },
+  {
+   "id": "aed23853-a7ea-449e-b808-312beb47f1a3",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Mở đầu về tính xác suất của biến cố",
+   "lesson": "Bài 2. Cách tính xác suất của biến cố bằng tỉ số",
+   "math_form": "Tính xác suất của biến cố trong các trò chơi (tung đồng xu, xúc xắc, rút thẻ...)",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Tính được xác suất của một biến cố bằng tỉ số trong các trò chơi đơn giản như tung đồng xu, gieo xúc xắc hoặc rút thẻ."
+  },
+  {
+   "id": "d86fbda0-a79f-4358-98a4-b933a300b4c0",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 8. Mở đầu về tính xác suất của biến cố",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tổng hợp về biến cố và tính xác suất",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Giải quyết được các bài toán tổng hợp về xác định biến cố và tính xác suất của biến cố trong các trò chơi đơn giản."
+  }
+ ],
+ "questions": []
+}

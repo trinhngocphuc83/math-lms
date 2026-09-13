@@ -1,0 +1,50 @@
+{
+ "lop": "8",
+ "chuong": 10,
+ "dang": [
+  {
+   "bai": "Bài 1. Hình chóp tam giác đều",
+   "cu": "Nhận biết đỉnh, mặt đáy, mặt bên, cạnh bên của hình chóp tam giác đều",
+   "moi": "Nhận biết các yếu tố của hình chóp tam giác đều",
+   "yc": "Mô tả được đỉnh, mặt đáy, mặt bên, cạnh bên, chiều cao, trung đoạn của hình chóp tam giác đều và nhận biết hình khai triển."
+  },
+  {
+   "bai": "Bài 1. Hình chóp tam giác đều",
+   "cu": "Tính diện tích xung quanh, thể tích của hình chóp tam giác đều",
+   "moi": "Tính diện tích xung quanh, thể tích của hình chóp tam giác đều",
+   "yc": "Tính được diện tích xung quanh, diện tích toàn phần, thể tích của hình chóp tam giác đều và tính ngược một yếu tố khi biết diện tích, thể tích."
+  },
+  {
+   "bai": "Bài 1. Hình chóp tam giác đều",
+   "cu": null,
+   "moi": "Bài toán thực tế về hình chóp tam giác đều",
+   "yc": "Giải được bài toán thực tế về diện tích, thể tích của vật có dạng hình chóp tam giác đều."
+  },
+  {
+   "bai": "Bài 2. Hình chóp tứ giác đều",
+   "cu": "Nhận biết đỉnh, mặt đáy, mặt bên, cạnh bên của hình chóp tứ giác đều",
+   "moi": "Nhận biết các yếu tố của hình chóp tứ giác đều",
+   "yc": "Mô tả được đỉnh, mặt đáy, mặt bên, cạnh bên, chiều cao, trung đoạn của hình chóp tứ giác đều và nhận biết hình khai triển."
+  },
+  {
+   "bai": "Bài 2. Hình chóp tứ giác đều",
+   "cu": "Tính diện tích xung quanh, thể tích của hình chóp tứ giác đều",
+   "moi": "Tính diện tích xung quanh, thể tích của hình chóp tứ giác đều",
+   "yc": "Tính được diện tích xung quanh, diện tích toàn phần, thể tích của hình chóp tứ giác đều và tính ngược một yếu tố khi biết diện tích, thể tích."
+  },
+  {
+   "bai": "Bài 2. Hình chóp tứ giác đều",
+   "cu": null,
+   "moi": "Bài toán thực tế về hình chóp tứ giác đều",
+   "yc": "Giải được bài toán thực tế về diện tích, thể tích của vật có dạng hình chóp tứ giác đều (kim tự tháp, lều, mái nhà...)."
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "cu": "Tổng hợp tính toán liên quan đến hình chóp",
+   "moi": "Bài tập tổng hợp chương 10",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 10 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

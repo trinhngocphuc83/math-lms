@@ -1,0 +1,105 @@
+{
+ "question_categories": [
+  {
+   "id": "465eeff2-8c52-4839-9ccd-60a05dd5cbd2",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 4. Hàm số bậc nhất và đồ thị của hàm số bậc nhất",
+   "math_form": "Vẽ đồ thị của hàm số bậc nhất y = ax + b",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Vẽ được đồ thị của hàm số bậc nhất y bằng ax cộng b với a khác không trên mặt phẳng tọa độ."
+  },
+  {
+   "id": "9f2b84f6-67bf-460c-9c57-e30a04a0eb99",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 4. Hàm số bậc nhất và đồ thị của hàm số bậc nhất",
+   "math_form": "Nhận biết hàm số bậc nhất",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được hàm số bậc nhất trong các công thức cho trước."
+  },
+  {
+   "id": "b1d878c6-1169-49be-b74f-d828ee16149f",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 3. Khái niệm hàm số và đồ thị của hàm số",
+   "math_form": "Nhận biết hàm số, tính giá trị của hàm số",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được khái niệm hàm số và tính được giá trị của hàm số tại một giá trị cho trước của biến số."
+  },
+  {
+   "id": "e8a2b915-9850-4529-a37a-0f006a94d345",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 1. Phương trình bậc nhất một ẩn",
+   "math_form": "Giải phương trình bậc nhất một ẩn và phương trình đưa về dạng bậc nhất",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình bậc nhất một ẩn và một số phương trình có thể đưa được về dạng phương trình bậc nhất một ẩn."
+  },
+  {
+   "id": "0efdef0d-7bf3-4fb9-96b5-a767680fbb06",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 1. Phương trình bậc nhất một ẩn",
+   "math_form": "Nhận biết phương trình bậc nhất một ẩn",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được phương trình bậc nhất một ẩn và xác định được các hệ số của phương trình đó."
+  },
+  {
+   "id": "fe9dd41c-e301-4a45-8985-b3aad3776464",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 3. Khái niệm hàm số và đồ thị của hàm số",
+   "math_form": "Xác định tọa độ điểm, vẽ đồ thị hàm số trên mặt phẳng tọa độ",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Xác định được tọa độ của một điểm trên mặt phẳng tọa độ và biểu diễn điểm đó khi biết tọa độ."
+  },
+  {
+   "id": "e4bf1356-21da-4b56-b4a0-2d77e9971bd0",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 2. Giải bài toán bằng cách lập phương trình",
+   "math_form": "Giải bài toán chuyển động, năng suất, tỉ lệ phần trăm, hình học bằng cách lập phương trình",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến chuyển động, năng suất, tỉ lệ phần trăm hoặc hình học bằng cách lập phương trình bậc nhất một ẩn."
+  },
+  {
+   "id": "440b1093-768e-424c-bd0f-518b5c9fddbf",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 5. Hệ số góc của đường thẳng",
+   "math_form": "Tìm hệ số góc của đường thẳng",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Xác định được hệ số góc của đường thẳng cho trước."
+  },
+  {
+   "id": "a53c5f45-84ff-4fce-8136-9e45787c37b7",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 5. Hệ số góc của đường thẳng",
+   "math_form": "Nhận biết hai đường thẳng song song, cắt nhau dựa vào hệ số góc",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được vị trí tương đối giữa hai đường thẳng song song hoặc cắt nhau dựa vào hệ số góc của chúng."
+  },
+  {
+   "id": "345ca95f-5c22-42db-829b-29b8412bb1af",
+   "grade": "8",
+   "subject": "Đại số",
+   "topic": "Chương 7. Phương trình bậc nhất và hàm số bậc nhất",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Tổng hợp về phương trình và hàm số bậc nhất",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến phương trình bậc nhất và hàm số bậc nhất."
+  }
+ ],
+ "questions": []
+}

@@ -1,0 +1,74 @@
+{
+ "lop": "8",
+ "chuong": 5,
+ "dang": [
+  {
+   "bai": "Bài 1. Thu thập và phân loại dữ liệu",
+   "cu": "Thu thập, phân loại và tổ chức dữ liệu",
+   "moi": "Thu thập dữ liệu và xác định phương pháp thu thập",
+   "yc": "Xác định được phương pháp thu thập dữ liệu (trực tiếp, gián tiếp) phù hợp và thu thập được dữ liệu cho một vấn đề."
+  },
+  {
+   "bai": "Bài 1. Thu thập và phân loại dữ liệu",
+   "cu": null,
+   "moi": "Phân loại dữ liệu định tính, định lượng",
+   "yc": "Phân loại được dữ liệu định tính (định danh, biểu thị thứ bậc) và dữ liệu định lượng (rời rạc, liên tục)."
+  },
+  {
+   "bai": "Bài 1. Thu thập và phân loại dữ liệu",
+   "cu": null,
+   "moi": "Nhận biết tính hợp lí của dữ liệu",
+   "yc": "Nhận biết được dữ liệu không hợp lí trong bảng thống kê và chỉ ra được lí do."
+  },
+  {
+   "bai": "Bài 2. Biểu diễn dữ liệu bằng bảng, biểu đồ",
+   "cu": "Lựa chọn và vẽ biểu đồ phù hợp",
+   "moi": "Lựa chọn biểu đồ phù hợp với dữ liệu",
+   "yc": "Lựa chọn được loại biểu đồ (tranh, cột, cột kép, hình quạt tròn, đoạn thẳng) phù hợp với dữ liệu và mục đích biểu diễn."
+  },
+  {
+   "bai": "Bài 2. Biểu diễn dữ liệu bằng bảng, biểu đồ",
+   "cu": null,
+   "moi": "Vẽ biểu đồ biểu diễn dữ liệu từ bảng thống kê",
+   "yc": "Vẽ được biểu đồ cột, cột kép, đoạn thẳng, hình quạt tròn biểu diễn dữ liệu từ bảng thống kê."
+  },
+  {
+   "bai": "Bài 2. Biểu diễn dữ liệu bằng bảng, biểu đồ",
+   "cu": "Đọc và phân tích số liệu từ biểu đồ (biểu đồ tranh, cột, quạt, đoạn thẳng)",
+   "moi": "Đọc dữ liệu từ biểu đồ và lập bảng thống kê",
+   "yc": "Đọc được số liệu từ biểu đồ tranh, cột, cột kép, hình quạt tròn, đoạn thẳng và lập được bảng thống kê tương ứng."
+  },
+  {
+   "bai": "Bài 2. Biểu diễn dữ liệu bằng bảng, biểu đồ",
+   "cu": null,
+   "moi": "Chuyển đổi dữ liệu giữa các dạng biểu đồ",
+   "yc": "Chuyển được dữ liệu từ dạng biểu đồ này sang dạng biểu đồ khác (cột sang hình quạt tròn, bảng sang biểu đồ)."
+  },
+  {
+   "bai": "Bài 3. Phân tích số liệu thống kê dựa vào biểu đồ",
+   "cu": "Đánh giá sự hợp lí của số liệu",
+   "moi": "Phát hiện vấn đề, nhận xét số liệu từ biểu đồ",
+   "yc": "Phát hiện được vấn đề hoặc quy luật đơn giản, so sánh và nhận xét được số liệu dựa vào biểu đồ."
+  },
+  {
+   "bai": "Bài 3. Phân tích số liệu thống kê dựa vào biểu đồ",
+   "cu": "Nhận biết xu hướng và đưa ra dự đoán",
+   "moi": "Nhận biết xu hướng và đưa ra dự đoán",
+   "yc": "Nhận biết được xu hướng tăng, giảm của dữ liệu trên biểu đồ đoạn thẳng và đưa ra được dự đoán hợp lí."
+  },
+  {
+   "bai": "Bài 3. Phân tích số liệu thống kê dựa vào biểu đồ",
+   "cu": null,
+   "moi": "Nhận biết biểu đồ biểu diễn sai lệch và cách khắc phục",
+   "yc": "Nhận biết được biểu đồ có cách biểu diễn gây hiểu sai (trục không bắt đầu từ 0, tỉ lệ không phù hợp) và nêu được cách khắc phục."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Tổng hợp thống kê và biểu đồ",
+   "moi": "Bài tập tổng hợp chương 5",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 5 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

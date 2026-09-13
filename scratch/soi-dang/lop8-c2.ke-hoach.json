@@ -1,0 +1,517 @@
+{
+ "lop": "8",
+ "chuong": 2,
+ "dang": [
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": "Vận dụng hằng đẳng thức để tính",
+   "moi": "Khai triển, viết gọn biểu thức bằng hằng đẳng thức hiệu hai bình phương, bình phương của một tổng, một hiệu",
+   "yc": "Khai triển được bình phương của một tổng, một hiệu, tích của tổng và hiệu; viết được biểu thức dưới dạng bình phương hoặc hiệu hai bình phương; điền đúng hạng tử còn thiếu."
+  },
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": null,
+   "moi": "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức",
+   "yc": "Tính nhanh được giá trị của biểu thức số bằng cách đưa về hằng đẳng thức hiệu hai bình phương, bình phương của một tổng, một hiệu."
+  },
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": "Rút gọn và tính giá trị của biểu thức",
+   "moi": "Rút gọn biểu thức và tính giá trị",
+   "yc": "Rút gọn được biểu thức có hằng đẳng thức rồi tính giá trị tại giá trị cho trước của biến."
+  },
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": null,
+   "moi": "Tính giá trị biểu thức khi biết hệ thức giữa các biến",
+   "yc": "Tính được giá trị của biểu thức khi biết tổng, hiệu, tích của các biến hoặc khi các biến thoả mãn đẳng thức có tổng bình phương bằng 0."
+  },
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": "Tìm x thoả mãn đẳng thức",
+   "moi": "Tìm x bằng hằng đẳng thức",
+   "yc": "Tìm được x trong đẳng thức bằng cách khai triển hằng đẳng thức và thu gọn."
+  },
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": "Chứng minh đẳng thức",
+   "moi": "Chứng minh đẳng thức, giá trị biểu thức không phụ thuộc vào biến",
+   "yc": "Chứng minh được đẳng thức và chứng minh được giá trị biểu thức không phụ thuộc vào biến bằng hằng đẳng thức.",
+   "gop": [
+    "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+   ]
+  },
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": "Tìm giá trị nhỏ nhất, lớn nhất",
+   "moi": "Tìm giá trị lớn nhất, giá trị nhỏ nhất của biểu thức",
+   "yc": "Tìm được giá trị lớn nhất, giá trị nhỏ nhất của đa thức bậc hai (một hoặc nhiều biến) bằng cách đưa về bình phương của một tổng, một hiệu."
+  },
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến",
+   "moi": "Chứng minh biểu thức luôn dương, luôn âm",
+   "yc": "Chứng minh được biểu thức luôn dương, luôn âm với mọi giá trị của biến bằng cách đưa về bình phương cộng hằng số."
+  },
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": "Chứng minh chia hết",
+   "moi": "Chứng minh chia hết và bài toán nâng cao",
+   "yc": "Chứng minh được tính chia hết và giải được các bài toán nâng cao (số chính phương, đề thi học sinh giỏi) bằng hằng đẳng thức.",
+   "gop": [
+    "Toán tổng hợp"
+   ]
+  },
+  {
+   "bai": "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "cu": null,
+   "moi": "Bài toán thực tế về hằng đẳng thức",
+   "yc": "Vận dụng được hằng đẳng thức để giải bài toán thực tế về diện tích, chu vi."
+  },
+  {
+   "bai": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "cu": "Vận dụng hằng đẳng thức để tính",
+   "moi": "Khai triển, viết gọn biểu thức bằng hằng đẳng thức lập phương của một tổng, một hiệu",
+   "yc": "Khai triển được lập phương của một tổng, một hiệu; viết được đa thức dưới dạng lập phương của một tổng, một hiệu; điền đúng hạng tử còn thiếu."
+  },
+  {
+   "bai": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "cu": null,
+   "moi": "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương",
+   "yc": "Tính nhanh được giá trị của biểu thức bằng cách viết gọn thành lập phương của một tổng, một hiệu."
+  },
+  {
+   "bai": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "cu": "Rút gọn và tính giá trị của biểu thức",
+   "moi": "Rút gọn biểu thức có lập phương của một tổng, một hiệu",
+   "yc": "Rút gọn được biểu thức có lập phương của một tổng, một hiệu."
+  },
+  {
+   "bai": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "cu": "Chứng minh đẳng thức",
+   "moi": "Chứng minh đẳng thức, giá trị biểu thức không phụ thuộc vào biến",
+   "yc": "Chứng minh được đẳng thức và chứng minh được giá trị biểu thức không phụ thuộc vào biến bằng hằng đẳng thức lập phương.",
+   "gop": [
+    "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+   ]
+  },
+  {
+   "bai": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "cu": "Tìm x thoả mãn đẳng thức",
+   "moi": "Tìm x bằng hằng đẳng thức lập phương",
+   "yc": "Tìm được x trong đẳng thức có lập phương của một tổng, một hiệu."
+  },
+  {
+   "bai": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "cu": "Toán tổng hợp",
+   "moi": "Bài toán thực tế về lập phương của một tổng, một hiệu",
+   "yc": "Vận dụng được hằng đẳng thức lập phương để giải bài toán thực tế về thể tích."
+  },
+  {
+   "bai": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "cu": "Tìm giá trị nhỏ nhất, lớn nhất",
+   "moi": "Bài toán nâng cao về lập phương của một tổng, một hiệu",
+   "yc": "Giải được các bài toán nâng cao về lập phương của một tổng, một hiệu (giá trị lớn nhất, chứng minh số học).",
+   "gop": [
+    "Chứng minh chia hết"
+   ]
+  },
+  {
+   "bai": "Bài 3. Tổng và hiệu 2 lập phương",
+   "cu": "Vận dụng hằng đẳng thức để tính",
+   "moi": "Khai triển, viết gọn biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương",
+   "yc": "Khai triển được tích dạng (a + b)(a² - ab + b²), (a - b)(a² + ab + b²); viết được tổng, hiệu hai lập phương thành tích; điền đúng hạng tử còn thiếu."
+  },
+  {
+   "bai": "Bài 3. Tổng và hiệu 2 lập phương",
+   "cu": "Rút gọn và tính giá trị của biểu thức",
+   "moi": "Tính nhanh giá trị biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương",
+   "yc": "Tính nhanh được giá trị của biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương."
+  },
+  {
+   "bai": "Bài 3. Tổng và hiệu 2 lập phương",
+   "cu": null,
+   "moi": "Rút gọn biểu thức có tổng, hiệu hai lập phương",
+   "yc": "Rút gọn được biểu thức có tổng, hiệu hai lập phương."
+  },
+  {
+   "bai": "Bài 3. Tổng và hiệu 2 lập phương",
+   "cu": null,
+   "moi": "Tính giá trị biểu thức khi biết hệ thức giữa các biến",
+   "yc": "Tính được x³ + y³, x³ - y³ và các biểu thức liên quan khi biết tổng, hiệu, tích của x và y."
+  },
+  {
+   "bai": "Bài 3. Tổng và hiệu 2 lập phương",
+   "cu": "Chứng minh đẳng thức",
+   "moi": "Chứng minh đẳng thức, giá trị biểu thức không phụ thuộc vào biến",
+   "yc": "Chứng minh được đẳng thức và chứng minh được giá trị biểu thức không phụ thuộc vào biến bằng hằng đẳng thức tổng, hiệu hai lập phương.",
+   "gop": [
+    "Chứng minh giá trị của biểu thức không phụ thuộc vào các biến"
+   ]
+  },
+  {
+   "bai": "Bài 3. Tổng và hiệu 2 lập phương",
+   "cu": "Tìm x thoả mãn đẳng thức",
+   "moi": "Tìm x bằng hằng đẳng thức tổng, hiệu hai lập phương",
+   "yc": "Tìm được x trong đẳng thức có tổng, hiệu hai lập phương."
+  },
+  {
+   "bai": "Bài 3. Tổng và hiệu 2 lập phương",
+   "cu": "Toán tổng hợp",
+   "moi": "Bài toán nâng cao về tổng, hiệu hai lập phương",
+   "yc": "Giải được các bài toán nâng cao về a³ + b³ + c³ - 3abc, giá trị nhỏ nhất và đề thi học sinh giỏi.",
+   "gop": [
+    "Tìm giá trị nhỏ nhất, lớn nhất",
+    "Chứng minh chia hết"
+   ]
+  },
+  {
+   "bai": "Bài 4. Phân tích đa thức thành nhân tử",
+   "cu": "Phương pháp đặt nhân tử chung",
+   "moi": "Phân tích đa thức thành nhân tử bằng phương pháp đặt nhân tử chung",
+   "yc": "Phân tích được đa thức thành nhân tử bằng phương pháp đặt nhân tử chung, kể cả khi phải đổi dấu để xuất hiện nhân tử chung."
+  },
+  {
+   "bai": "Bài 4. Phân tích đa thức thành nhân tử",
+   "cu": "Phương pháp dùng hằng đẳng thức",
+   "moi": "Phân tích đa thức thành nhân tử bằng phương pháp dùng hằng đẳng thức",
+   "yc": "Phân tích được đa thức thành nhân tử bằng cách vận dụng các hằng đẳng thức đáng nhớ."
+  },
+  {
+   "bai": "Bài 4. Phân tích đa thức thành nhân tử",
+   "cu": "Phương pháp nhóm hạng tử",
+   "moi": "Phân tích đa thức thành nhân tử bằng phương pháp nhóm hạng tử",
+   "yc": "Phân tích được đa thức thành nhân tử bằng phương pháp nhóm hạng tử để xuất hiện nhân tử chung hoặc hằng đẳng thức."
+  },
+  {
+   "bai": "Bài 4. Phân tích đa thức thành nhân tử",
+   "cu": "Phối hợp nhiều phương pháp",
+   "moi": "Phân tích đa thức thành nhân tử bằng cách phối hợp nhiều phương pháp",
+   "yc": "Phân tích được đa thức thành nhân tử bằng cách phối hợp đặt nhân tử chung, dùng hằng đẳng thức và nhóm hạng tử."
+  },
+  {
+   "bai": "Bài 4. Phân tích đa thức thành nhân tử",
+   "cu": "Phương pháp tách 1 hạng tử thành nhiều hạng tử",
+   "moi": "Phân tích đa thức thành nhân tử bằng phương pháp tách, thêm bớt hạng tử, đặt ẩn phụ",
+   "yc": "Phân tích được đa thức thành nhân tử bằng phương pháp tách hạng tử, thêm bớt hạng tử hoặc đặt ẩn phụ.",
+   "gop": [
+    "Phương pháp đổi biến",
+    "Phương pháp thêm bớt cùng 1 hạng tử"
+   ]
+  },
+  {
+   "bai": "Bài 4. Phân tích đa thức thành nhân tử",
+   "cu": "Tìm x",
+   "moi": "Tìm x bằng phân tích đa thức thành nhân tử",
+   "yc": "Tìm được x bằng cách đưa đẳng thức về dạng tích bằng 0 nhờ phân tích đa thức thành nhân tử."
+  },
+  {
+   "bai": "Bài 4. Phân tích đa thức thành nhân tử",
+   "cu": "Tính giá trị biểu thức",
+   "moi": "Tính giá trị biểu thức bằng phân tích đa thức thành nhân tử",
+   "yc": "Tính nhanh được giá trị của biểu thức bằng cách phân tích đa thức thành nhân tử rồi thay số."
+  },
+  {
+   "bai": "Bài 4. Phân tích đa thức thành nhân tử",
+   "cu": null,
+   "moi": "Bài toán thực tế về phân tích đa thức thành nhân tử",
+   "yc": "Vận dụng được phân tích đa thức thành nhân tử để giải bài toán thực tế về diện tích, lãi suất, độ dài."
+  },
+  {
+   "bai": "Bài 4. Phân tích đa thức thành nhân tử",
+   "cu": "Chứng minh biểu thức chia hết cho một số",
+   "moi": "Chứng minh chia hết bằng phân tích đa thức thành nhân tử",
+   "yc": "Chứng minh được biểu thức chia hết cho một số bằng cách phân tích đa thức thành nhân tử."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 2",
+   "moi": "Bài tập tổng hợp chương 2",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 2 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 2. Lập phương của một tổng hay một hiệu",
+   "dang": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến"
+  },
+  {
+   "bai": "Bài 3. Tổng và hiệu 2 lập phương",
+   "dang": "Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến"
+  }
+ ],
+ "chuyen": {
+  "tvs3": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "j905": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "fxxj": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "ipgo": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "bdet": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "0f4x": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "1p0b": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "doyv": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "j6nq": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "6p2s": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "h8zg": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "mfqi": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "dvsm": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "hkhd": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "3sdc": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "8qyy": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "sq7p": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "8dkb": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức số bằng hằng đẳng thức"
+  ],
+  "bmjy": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Rút gọn biểu thức và tính giá trị"
+  ],
+  "rv2r": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Rút gọn biểu thức và tính giá trị"
+  ],
+  "vgiw": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "9vj8": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "bi90": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "dcqo": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "oqod": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "0qjv": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "i8ni": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "vv1u": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "sfxq": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Chứng minh chia hết và bài toán nâng cao"
+  ],
+  "oktj": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Bài toán thực tế về hằng đẳng thức"
+  ],
+  "1a0a": [
+   "Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu",
+   "Bài toán thực tế về hằng đẳng thức"
+  ],
+  "32cj": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "bijm": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "j96b": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "kgel": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "uqn5": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "23ux": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "ozon": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "bh65": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "9cw9": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "ztr4": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "2mbl": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "vs4r": [
+   "Bài 2. Lập phương của một tổng hay một hiệu",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức lập phương"
+  ],
+  "iysc": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Khai triển, viết gọn biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "j1tp": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Khai triển, viết gọn biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "f8eh": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Khai triển, viết gọn biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "yung": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Khai triển, viết gọn biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "t9qh": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Khai triển, viết gọn biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "e3wb": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "wk04": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "5xn7": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tính nhanh giá trị biểu thức bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "oacb": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Rút gọn biểu thức có tổng, hiệu hai lập phương"
+  ],
+  "0xq7": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Rút gọn biểu thức có tổng, hiệu hai lập phương"
+  ],
+  "3t6g": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Rút gọn biểu thức có tổng, hiệu hai lập phương"
+  ],
+  "9b1m": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Rút gọn biểu thức có tổng, hiệu hai lập phương"
+  ],
+  "atua": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Rút gọn biểu thức có tổng, hiệu hai lập phương"
+  ],
+  "xkau": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Rút gọn biểu thức có tổng, hiệu hai lập phương"
+  ],
+  "dk6d": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "oiuj": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "49wh": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "x91z": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "1yyr": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tính giá trị biểu thức khi biết hệ thức giữa các biến"
+  ],
+  "5m1u": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tìm x bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "0haz": [
+   "Bài 3. Tổng và hiệu 2 lập phương",
+   "Tìm x bằng hằng đẳng thức tổng, hiệu hai lập phương"
+  ],
+  "fgmy": [
+   "Bài 4. Phân tích đa thức thành nhân tử",
+   "Bài toán thực tế về phân tích đa thức thành nhân tử"
+  ],
+  "fyq9": [
+   "Bài 4. Phân tích đa thức thành nhân tử",
+   "Bài toán thực tế về phân tích đa thức thành nhân tử"
+  ],
+  "ijlc": [
+   "Bài 4. Phân tích đa thức thành nhân tử",
+   "Bài toán thực tế về phân tích đa thức thành nhân tử"
+  ],
+  "563h": [
+   "Bài 4. Phân tích đa thức thành nhân tử",
+   "Bài toán thực tế về phân tích đa thức thành nhân tử"
+  ]
+ }
+}

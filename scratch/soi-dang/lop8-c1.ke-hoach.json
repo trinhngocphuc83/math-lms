@@ -1,0 +1,670 @@
+{
+ "lop": "8",
+ "chuong": 1,
+ "dang": [
+  {
+   "bai": "Bài 1. Đơn thức",
+   "cu": "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến",
+   "moi": "Nhận biết đơn thức; xác định hệ số, phần biến và bậc của đơn thức",
+   "yc": "Nhận biết được đơn thức, đơn thức thu gọn và xác định được hệ số, phần biến, bậc của đơn thức.",
+   "gop": [
+    "Tìm bậc đa thức"
+   ]
+  },
+  {
+   "bai": "Bài 1. Đơn thức",
+   "cu": "Thu gọn đa thức",
+   "moi": "Thu gọn đơn thức, nhân các đơn thức",
+   "yc": "Thu gọn được đơn thức và thực hiện được phép nhân các đơn thức, chỉ ra hệ số, phần biến, bậc của kết quả.",
+   "gop": [
+    "Thu gọn đơn thức",
+    "Rút gọn và tính giá trị biểu thức"
+   ]
+  },
+  {
+   "bai": "Bài 1. Đơn thức",
+   "cu": "Nhận biết các đơn thức đồng dạng",
+   "moi": "Nhận biết các đơn thức đồng dạng",
+   "yc": "Nhận biết được các đơn thức đồng dạng và xếp được các đơn thức thành từng nhóm đồng dạng."
+  },
+  {
+   "bai": "Bài 1. Đơn thức",
+   "cu": "Cộng, trừ các đơn thức đồng dạng",
+   "moi": "Cộng, trừ các đơn thức đồng dạng",
+   "yc": "Thực hiện được phép cộng, phép trừ các đơn thức đồng dạng."
+  },
+  {
+   "bai": "Bài 1. Đơn thức",
+   "cu": "Tìm đơn thức thỏa mãn đẳng thức",
+   "moi": "Tìm đơn thức chưa biết trong đẳng thức",
+   "yc": "Tìm được đơn thức chưa biết trong đẳng thức có phép cộng, trừ, nhân đơn thức."
+  },
+  {
+   "bai": "Bài 1. Đơn thức",
+   "cu": null,
+   "moi": "Bài toán nâng cao về đơn thức",
+   "yc": "Giải được các bài toán nâng cao về đơn thức: xét dấu của đơn thức, tổng các lũy thừa bậc chẵn bằng 0, so sánh giá trị các đơn thức.",
+   "gop": [
+    "Chứng minh"
+   ]
+  },
+  {
+   "bai": "Bài 1. Đơn thức",
+   "cu": "Tính giá trị của đa thức",
+   "moi": "Tính giá trị của đơn thức",
+   "yc": "Tính được giá trị của đơn thức (sau khi thu gọn nếu cần) tại giá trị cho trước của các biến.",
+   "gop": [
+    "Tính giá trị của biểu thức",
+    "Tính tổng và hiệu đa thức"
+   ]
+  },
+  {
+   "bai": "Bài 1. Đơn thức",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về đơn thức",
+   "yc": "Lập được đơn thức biểu thị đại lượng trong tình huống thực tế và tính được giá trị của nó."
+  },
+  {
+   "bai": "Bài 2. Đa thức nhiều biến",
+   "cu": "Nhận biết đa thức, hạng tử của đa thức",
+   "moi": "Nhận biết đa thức; xác định hạng tử, hệ số và bậc của hạng tử",
+   "yc": "Nhận biết được đa thức nhiều biến, chỉ ra được các hạng tử và xác định được hệ số, bậc của từng hạng tử.",
+   "gop": [
+    "Nhận biết các đơn thức nhiều biến, đa thức nhiều biến"
+   ]
+  },
+  {
+   "bai": "Bài 2. Đa thức nhiều biến",
+   "cu": "Thu gọn đa thức",
+   "moi": "Thu gọn đa thức",
+   "yc": "Thu gọn được đa thức nhiều biến bằng cách cộng, trừ các hạng tử đồng dạng."
+  },
+  {
+   "bai": "Bài 2. Đa thức nhiều biến",
+   "cu": "Tìm bậc đa thức",
+   "moi": "Tìm bậc của đa thức",
+   "yc": "Xác định được bậc của đa thức nhiều biến sau khi thu gọn."
+  },
+  {
+   "bai": "Bài 2. Đa thức nhiều biến",
+   "cu": "Tính giá trị của đa thức",
+   "moi": "Tính giá trị của đa thức",
+   "yc": "Tính được giá trị của đa thức nhiều biến (sau khi thu gọn nếu cần) tại giá trị cho trước của các biến."
+  },
+  {
+   "bai": "Bài 2. Đa thức nhiều biến",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về đa thức",
+   "yc": "Lập được đa thức biểu thị diện tích, thể tích, số tiền... trong tình huống thực tế và tính được giá trị của nó."
+  },
+  {
+   "bai": "Bài 2. Đa thức nhiều biến",
+   "cu": null,
+   "moi": "Bài toán nâng cao về đa thức",
+   "yc": "Giải được các bài toán nâng cao về đa thức: tìm giá trị nhỏ nhất, tìm nghiệm, đa thức có tham số.",
+   "gop": [
+    "Rút gọn và tính giá trị biểu thức"
+   ]
+  },
+  {
+   "bai": "Bài 3. Phép cộng và trừ đa thức",
+   "cu": "Tính tổng và hiệu đa thức",
+   "moi": "Cộng, trừ hai đa thức và rút gọn biểu thức",
+   "yc": "Thực hiện được phép cộng, phép trừ hai đa thức nhiều biến và rút gọn được biểu thức có dấu ngoặc."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và trừ đa thức",
+   "cu": "Tìm đa thức thõa mãn đẳng thức",
+   "moi": "Tìm đa thức chưa biết trong đẳng thức",
+   "yc": "Tìm được đa thức chưa biết khi biết tổng hoặc hiệu của nó với một đa thức cho trước."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và trừ đa thức",
+   "cu": null,
+   "moi": "Tính giá trị của biểu thức sau khi cộng, trừ đa thức",
+   "yc": "Rút gọn được biểu thức bằng phép cộng, trừ đa thức rồi tính giá trị tại giá trị cho trước của các biến.",
+   "gop": [
+    "Tính giá trị của đa thức"
+   ]
+  },
+  {
+   "bai": "Bài 3. Phép cộng và trừ đa thức",
+   "cu": "Chứng minh",
+   "moi": "Chứng minh giá trị biểu thức không phụ thuộc vào biến, luôn dương",
+   "yc": "Chứng minh được giá trị của biểu thức không phụ thuộc vào biến hoặc luôn dương, luôn âm bằng phép cộng, trừ đa thức."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và trừ đa thức",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về cộng, trừ đa thức",
+   "yc": "Vận dụng được phép cộng, trừ đa thức để giải bài toán thực tế về chu vi, diện tích, số tiền."
+  },
+  {
+   "bai": "Bài 3. Phép cộng và trừ đa thức",
+   "cu": "Dạng toán chia hết",
+   "moi": "Bài toán chia hết và nâng cao về cộng, trừ đa thức",
+   "yc": "Giải được các bài toán chia hết và bài toán nâng cao (đa thức bậc cao, tìm nghiệm nguyên) bằng phép cộng, trừ đa thức.",
+   "gop": [
+    "Tìm bậc đa thức"
+   ]
+  },
+  {
+   "bai": "Bài 3. Phép cộng và trừ đa thức",
+   "cu": null,
+   "moi": "Tìm x bằng phép cộng, trừ đa thức",
+   "yc": "Tìm được x trong đẳng thức có phép cộng, trừ các đa thức."
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức",
+   "cu": "Phép nhân đa thức",
+   "moi": "Nhân đơn thức với đa thức",
+   "yc": "Thực hiện được phép nhân đơn thức với đa thức."
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức",
+   "cu": null,
+   "moi": "Nhân đa thức với đa thức",
+   "yc": "Thực hiện được phép nhân đa thức với đa thức và thu gọn kết quả."
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức",
+   "cu": "Rút gọn và tính giá trị biểu thức",
+   "moi": "Rút gọn biểu thức và tính giá trị sau khi nhân đa thức",
+   "yc": "Rút gọn được biểu thức có phép nhân đa thức và tính được giá trị tại giá trị cho trước của biến."
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức",
+   "cu": null,
+   "moi": "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)",
+   "yc": "Tính được giá trị biểu thức bằng cách hợp lí: thay số bằng biến rồi rút gọn, dùng các hệ thức đối xứng.",
+   "gop": [
+    "Tính giá trị của biểu thức"
+   ]
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức",
+   "cu": "Chứng minh",
+   "moi": "Chứng minh đẳng thức, giá trị biểu thức không phụ thuộc vào biến",
+   "yc": "Chứng minh được đẳng thức và chứng minh được giá trị của biểu thức không phụ thuộc vào biến bằng phép nhân đa thức."
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức",
+   "cu": "Tìm x",
+   "moi": "Tìm x bằng phép nhân đa thức",
+   "yc": "Tìm được x trong đẳng thức có phép nhân đa thức bằng cách khai triển và thu gọn."
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về nhân đa thức",
+   "yc": "Vận dụng được phép nhân đa thức để giải bài toán thực tế về diện tích, thể tích, chuyển động."
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức cho đơn thức",
+   "cu": "Chia đơn thức cho đơn thức",
+   "moi": "Chia đơn thức cho đơn thức",
+   "yc": "Thực hiện được phép chia đơn thức cho đơn thức trong trường hợp chia hết."
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức cho đơn thức",
+   "cu": "Chia đa thức cho đơn thức",
+   "moi": "Chia đa thức cho đơn thức",
+   "yc": "Thực hiện được phép chia đa thức cho đơn thức trong trường hợp chia hết."
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức cho đơn thức",
+   "cu": "Phép chia hết",
+   "moi": "Tìm điều kiện để phép chia là phép chia hết",
+   "yc": "Tìm được số tự nhiên n để đơn thức, đa thức chia hết cho đơn thức cho trước.",
+   "gop": [
+    "Dạng toán chia hết"
+   ]
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức cho đơn thức",
+   "cu": "Tính giá trị của biểu thức",
+   "moi": "Tính giá trị của biểu thức có phép chia đa thức cho đơn thức",
+   "yc": "Rút gọn được biểu thức có phép chia đa thức cho đơn thức rồi tính giá trị tại giá trị cho trước của biến.",
+   "gop": [
+    "Rút gọn và tính giá trị biểu thức"
+   ]
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức cho đơn thức",
+   "cu": "Tìm đơn thức thỏa mãn đẳng thức",
+   "moi": "Tìm đơn thức, đa thức chưa biết trong phép chia",
+   "yc": "Tìm được đơn thức, đa thức chưa biết trong đẳng thức có phép chia.",
+   "gop": [
+    "Tìm đa thức thõa mãn đẳng thức"
+   ]
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức cho đơn thức",
+   "cu": "Tìm x",
+   "moi": "Tìm x bằng phép chia đa thức cho đơn thức",
+   "yc": "Tìm được x trong đẳng thức có phép chia đa thức cho đơn thức."
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức cho đơn thức",
+   "cu": "Chứng minh",
+   "moi": "Chứng minh giá trị biểu thức không phụ thuộc vào biến và bài toán nâng cao",
+   "yc": "Chứng minh được giá trị biểu thức không phụ thuộc vào biến, luôn dương và giải được bài toán nâng cao về phép chia đa thức."
+  },
+  {
+   "bai": "Bài 5. Phép chia đa thức cho đơn thức",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về chia đa thức cho đơn thức",
+   "yc": "Vận dụng được phép chia đa thức cho đơn thức để tính kích thước hình, chiều cao, diện tích đáy trong bài toán thực tế."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Bài tập tổng hợp chương 1",
+   "moi": "Bài tập tổng hợp chương 1",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 1 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 2. Đa thức nhiều biến",
+   "dang": "Tính tổng và hiệu đa thức"
+  },
+  {
+   "bai": "Bài 2. Đa thức nhiều biến",
+   "dang": "Tìm x"
+  },
+  {
+   "bai": "Bài 3. Phép cộng và trừ đa thức",
+   "dang": "Tính giá trị của biểu thức"
+  },
+  {
+   "bai": "Bài 4. Phép nhân đa thức",
+   "dang": "Tìm đơn thức thỏa mãn đẳng thức"
+  }
+ ],
+ "chuyen": {
+  "1423": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "q1yd": [
+   "Bài 1. Đơn thức",
+   "Nhận biết đơn thức; xác định hệ số, phần biến và bậc của đơn thức"
+  ],
+  "cg0v": [
+   "Bài 1. Đơn thức",
+   "Nhận biết đơn thức; xác định hệ số, phần biến và bậc của đơn thức"
+  ],
+  "rtf0": [
+   "Bài 1. Đơn thức",
+   "Nhận biết đơn thức; xác định hệ số, phần biến và bậc của đơn thức"
+  ],
+  "y5s8": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "4ufz": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "58x0": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "wkm0": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "nxqt": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "2mh3": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "5g36": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "csxx": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "3ppb": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "grni": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "fho4": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "om7i": [
+   "Bài 1. Đơn thức",
+   "Thu gọn đơn thức, nhân các đơn thức"
+  ],
+  "yvhr": [
+   "Bài 1. Đơn thức",
+   "Nhận biết các đơn thức đồng dạng"
+  ],
+  "tehh": [
+   "Bài 1. Đơn thức",
+   "Nhận biết các đơn thức đồng dạng"
+  ],
+  "gtrv": [
+   "Bài 1. Đơn thức",
+   "Cộng, trừ các đơn thức đồng dạng"
+  ],
+  "mpqk": [
+   "Bài 1. Đơn thức",
+   "Cộng, trừ các đơn thức đồng dạng"
+  ],
+  "elfn": [
+   "Bài 1. Đơn thức",
+   "Cộng, trừ các đơn thức đồng dạng"
+  ],
+  "owea": [
+   "Bài 1. Đơn thức",
+   "Tìm đơn thức chưa biết trong đẳng thức"
+  ],
+  "3y92": [
+   "Bài 1. Đơn thức",
+   "Bài toán nâng cao về đơn thức"
+  ],
+  "rhuy": [
+   "Bài 1. Đơn thức",
+   "Bài toán nâng cao về đơn thức"
+  ],
+  "ksyf": [
+   "Bài 1. Đơn thức",
+   "Bài toán nâng cao về đơn thức"
+  ],
+  "d5ct": [
+   "Bài 1. Đơn thức",
+   "Bài toán nâng cao về đơn thức"
+  ],
+  "z2e5": [
+   "Bài 1. Đơn thức",
+   "Bài toán nâng cao về đơn thức"
+  ],
+  "6agj": [
+   "Bài 1. Đơn thức",
+   "Bài toán thực tế về đơn thức"
+  ],
+  "9zu6": [
+   "Bài 2. Đa thức nhiều biến",
+   "Nhận biết đa thức; xác định hạng tử, hệ số và bậc của hạng tử"
+  ],
+  "xtfu": [
+   "Bài 2. Đa thức nhiều biến",
+   "Nhận biết đa thức; xác định hạng tử, hệ số và bậc của hạng tử"
+  ],
+  "9rgt": [
+   "Bài 2. Đa thức nhiều biến",
+   "Nhận biết đa thức; xác định hạng tử, hệ số và bậc của hạng tử"
+  ],
+  "9z7i": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "xuhc": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "pcfq": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "29ug": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "8xda": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "o4u2": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "b3xu": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "4fm5": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "lazp": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "bkrv": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "b6mt": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "hp09": [
+   "Bài 2. Đa thức nhiều biến",
+   "Thu gọn đa thức"
+  ],
+  "9d5r": [
+   "Bài 2. Đa thức nhiều biến",
+   "Tìm bậc của đa thức"
+  ],
+  "17s0": [
+   "Bài 2. Đa thức nhiều biến",
+   "Tính giá trị của đa thức"
+  ],
+  "o2cz": [
+   "Bài 2. Đa thức nhiều biến",
+   "Tính giá trị của đa thức"
+  ],
+  "8yeg": [
+   "Bài 2. Đa thức nhiều biến",
+   "Tính giá trị của đa thức"
+  ],
+  "htkb": [
+   "Bài 2. Đa thức nhiều biến",
+   "Tính giá trị của đa thức"
+  ],
+  "c1e4": [
+   "Bài 2. Đa thức nhiều biến",
+   "Tính giá trị của đa thức"
+  ],
+  "8dpz": [
+   "Bài 2. Đa thức nhiều biến",
+   "Tính giá trị của đa thức"
+  ],
+  "0rc2": [
+   "Bài 2. Đa thức nhiều biến",
+   "Tính giá trị của đa thức"
+  ],
+  "slvt": [
+   "Bài 2. Đa thức nhiều biến",
+   "Bài toán nâng cao về đa thức"
+  ],
+  "bpb4": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Cộng, trừ hai đa thức và rút gọn biểu thức"
+  ],
+  "1ete": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Tính giá trị của biểu thức sau khi cộng, trừ đa thức"
+  ],
+  "zy1s": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Tính giá trị của biểu thức sau khi cộng, trừ đa thức"
+  ],
+  "vwts": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Tính giá trị của biểu thức sau khi cộng, trừ đa thức"
+  ],
+  "x8uc": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Tính giá trị của biểu thức sau khi cộng, trừ đa thức"
+  ],
+  "b6bz": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Tính giá trị của biểu thức sau khi cộng, trừ đa thức"
+  ],
+  "3liq": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Bài toán chia hết và nâng cao về cộng, trừ đa thức"
+  ],
+  "26n8": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Bài toán chia hết và nâng cao về cộng, trừ đa thức"
+  ],
+  "haou": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Bài toán chia hết và nâng cao về cộng, trừ đa thức"
+  ],
+  "485o": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Tìm x bằng phép cộng, trừ đa thức"
+  ],
+  "axqt": [
+   "Bài 3. Phép cộng và trừ đa thức",
+   "Tìm x bằng phép cộng, trừ đa thức"
+  ],
+  "t4ox": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "e9oj": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "a5w7": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "2ac2": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "zmch": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "094o": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "3q6v": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "kuwh": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "2siq": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "krbe": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "oq5q": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "jnr6": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "otno": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "jlau": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "z47e": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "koq1": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "8uab": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "fxbh": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "hnrf": [
+   "Bài 4. Phép nhân đa thức",
+   "Nhân đa thức với đa thức"
+  ],
+  "l135": [
+   "Bài 4. Phép nhân đa thức",
+   "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)"
+  ],
+  "2rs9": [
+   "Bài 4. Phép nhân đa thức",
+   "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)"
+  ],
+  "loxf": [
+   "Bài 4. Phép nhân đa thức",
+   "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)"
+  ],
+  "qd5s": [
+   "Bài 4. Phép nhân đa thức",
+   "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)"
+  ],
+  "d094": [
+   "Bài 4. Phép nhân đa thức",
+   "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)"
+  ],
+  "q6m2": [
+   "Bài 4. Phép nhân đa thức",
+   "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)"
+  ],
+  "vu2h": [
+   "Bài 4. Phép nhân đa thức",
+   "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)"
+  ],
+  "8s1p": [
+   "Bài 4. Phép nhân đa thức",
+   "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)"
+  ],
+  "sokm": [
+   "Bài 4. Phép nhân đa thức",
+   "Tính giá trị biểu thức bằng cách hợp lí (thay số bằng biến)"
+  ],
+  "9xhu": [
+   "Bài 5. Phép chia đa thức cho đơn thức",
+   "Chia đơn thức cho đơn thức"
+  ],
+  "cm5z": [
+   "Bài 5. Phép chia đa thức cho đơn thức",
+   "Chia đa thức cho đơn thức"
+  ],
+  "fvn3": [
+   "Bài 5. Phép chia đa thức cho đơn thức",
+   "Tìm đơn thức, đa thức chưa biết trong phép chia"
+  ],
+  "wr9z": [
+   "Bài 5. Phép chia đa thức cho đơn thức",
+   "Tìm đơn thức, đa thức chưa biết trong phép chia"
+  ],
+  "y9xy": [
+   "Bài 5. Phép chia đa thức cho đơn thức",
+   "Chứng minh giá trị biểu thức không phụ thuộc vào biến và bài toán nâng cao"
+  ]
+ }
+}

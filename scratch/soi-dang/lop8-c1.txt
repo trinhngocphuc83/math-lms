@@ -1,0 +1,654 @@
+Chương 1. Đa thức · lớp 8 · 49 dạng · 505 câu
+
+
+### [1] Bài 1. Đơn thức | Rút gọn và tính giá trị biểu thức (3)
+    yêu cầu: Thực hiện được việc thu gọn và tính giá trị của biểu thức đại số tại các giá trị cho trước của biến.
+  y5s8 NLC 1 | Tích của hai đơn thức 6x^2yz và -2y^2z^2 là đơn thức
+  4ufz DS 2 | Đúng điền Đ, sai điền S: Hệ số của biểu thức xyz\cdot(-2)^{-2}\cdot(xyz)^2 là 4.
+  58x0 NLC 1 | Kết quả phép tính (3xy).(4x^2y) bằng:
+
+### [2] Bài 1. Đơn thức | Thu gọn đa thức (24)
+    yêu cầu: Thực hiện được việc thu gọn đơn thức và nhận biết được đơn thức thu gọn.
+  fct8 TL 2 | Cho các đơn thức: A = 4x(-2)x^2y; B = 12,75xyz; C = (1 + 2 \cdot 4,5)x^2y\frac{1}{5}y^3; D = (2 - \sqrt{5})x. 
+  9z7i TL 2 | Thu gọn đa thức sau: B=-2xy+\frac{3}{2}xy^2+\frac{1}{2}xy^2+xy.
+  1423 TL 2 | Thu gọn đa thức sau: C=x^2+y^2+z^2+x^2-y^2+z^2+x^2+y^2-z^2.
+  xuhc TL 2 | Thu gọn đa thức sau: D=xy^2z+2xy^2z-xyz-3xy^2z+xy^2z.
+  pcfq TL 2 | Thu gọn đa thức sau: A=2x^2yz+xy-x^2yz+4xy+6.
+  29ug TL 2 | Thu gọn đa thức sau: B=4xy+\frac{1}{2}x^2y-xy+\frac{3}{2}x^2y.
+  8xda TL 2 | Thu gọn đa thức sau: D=2x^2yz+4xy^2z-5x^2yz+xy^2z-xyz.
+  o4u2 TL 2 | Thu gọn đa thức sau: E=2x^2y^3+3x^4-7x^2+6x^4-x^2y^3.
+  4xph TL 2 | Thu gọn mỗi đơn thức sau: 2xy\cdot\frac{4}{5}x^2y^3\cdot 10xyz.
+  vre3 TL 2 | Thu gọn mỗi đơn thức sau: \frac{4}{3}x^2y^2z^2\cdot\frac{3}{4}xyz.
+  b3xu TL 2 | Thu gọn đa thức sau: D=\frac{3}{4}xy^2-2xy-\frac{1}{2}xy^2+3xy.
+  4fm5 TL 2 | Thu gọn đa thức sau: E=2x^2-3y^3-z^4-4x^2+2y^3+3z^4.
+  lazp TL 2 | Thu gọn đa thức sau: F=3xy^2z+xy^2z-xyz+2xy^2z-3xyz.
+  owly TL 2 | Thu gọn mỗi đơn thức sau: -10y^2\cdot(2xy)^3\cdot(-x)^2.
+  ehm0 TL 2 | Thu gọn mỗi đơn thức sau (với a,b là hằng số): -4a^2x\cdot(-2bxy)^2\cdot(-\frac{1}{4}x^2y^3).
+  tk08 TL 2 | Thu gọn mỗi đơn thức sau: 2xy^2\cdot\frac{4}{3}x^2y^3\cdot 6x.
+  ylao TL 2 | Thu gọn mỗi đơn thức sau: 2x^2y\cdot 3xy^2.
+  bkrv TL 2 | Thu gọn đa thức sau: C=4x^2y^3+x^4-2x^2+6x^4-x^2y^3.
+  1oci TL 2 | Thực hiện phép tính: -\frac{1}{3}x^2y\cdot\frac{3}{2}xy^3.
+  2z37 TL 2 | Thực hiện phép tính: \frac{3}{4}\cdot(x^3y^2)^2.
+  xwxl TL 2 | Thực hiện phép tính: x^2\cdot(-\frac{1}{4}y)\cdot(\frac{1}{2}x^2).
+  xknq TL 2 | Thực hiện phép tính (với b là hằng số): (-\frac{1}{2}x)^2(by)^2.
+  cbfd TL 2 | Thu gọn các đơn thức sau rồi chỉ rõ hệ số, phần biến và bậc của đơn thức đó: a) \frac{3}{4}xy^2z \cdot (\frac{
+  b6mt TL 2 | Thu gọn đa thức sau: A=-x^2y-2xy+2x^2y+5xy+2.
+
+### [3] Bài 1. Đơn thức | Tính giá trị của đa thức (14)
+    yêu cầu: Tính được giá trị của đơn thức hoặc biểu thức đại số đơn giản tại các giá trị cho trước của biến.
+  sxjm TL 2 | Thu gọn rồi tính giá trị của đơn thức sau: B = xyz(-0,5)y^2z khi x = 4; y = 0,5; z = 2.
+  4az8 TL 2 | Tính giá trị biểu thức P=2011x^2y+12x^2y-2015x^2y tại x=-1;\ y=2.
+  17s0 TL 2 | Tính giá trị của đa thức sau: 4x^2y^2+xy tại x=-2,\ y=\frac{1}{2}.
+  o2cz TL 2 | Tính giá trị của đa thức sau: -\frac{1}{2}x^2y^3+x tại x=3,\ y=-2.
+  8yeg TL 2 | Tính giá trị đa thức sau: A=6xy^2+7xy^3+8x^2y^3 tại x=2;\ y=\frac{1}{2}.
+  htkb TL 2 | Tính giá trị đa thức sau: B=x^6+2x^2y^3-x^5+xy-xy^5-x^6 tại x=0;\ y=\frac{1}{4}.
+  c1e4 TL 2 | Tính giá trị đa thức sau: C=7x^2y-4x^6+3y^2+4x^6 tại x=2;\ y=1.
+  v1u1 TL 2 | Tính giá trị biểu thức \frac{2}{3}x^2y+3x^2y+x^2y tại x=3,\ y=-\frac{1}{7}.
+  hnqw TL 2 | Tính giá trị biểu thức \frac{1}{2}xy^2+\frac{1}{3}xy^2+\frac{1}{6}xy^2 tại x=\frac{3}{4},\ y=-\frac{1}{2}.
+  v2k0 TL 2 | Tính giá trị biểu thức 2x^3y^3+10x^3y^3-20x^3y^3 tại x=1,\ y=-1.
+  3c44 TL 2 | Tính giá trị của đơn thức -\frac{1}{2}x^3y^2 tại x=-\frac{1}{2},\ y=-4.
+  1jaa TL 2 | Tính giá trị biểu thức 2018xy^2+16xy^2-2016xy^2 tại x=-2,\ y=-\frac{1}{3}.
+  qrza TL 2 | Tính giá trị của đơn thức 2x^2y tại x=-1,\ y=\frac{1}{4}.
+  9tzt TL 2 | Thu gọn rồi tính giá trị của đơn thức sau: A = (-2)x^2y\frac{1}{2}xy khi x = -2; y = \frac{1}{2}.
+
+### [4] Bài 1. Đơn thức | Cộng, trừ các đơn thức đồng dạng (20)
+    yêu cầu: Thực hiện được phép tính cộng và phép tính trừ các đơn thức đồng dạng.
+  6agj TL 3 | Một mảnh đất có dạng như phần được tô màu xanh trong hình bên cùng với các kích thước được ghi trên đó. Hãy tì
+  k65u TL 2 | Tính tổng, hiệu các biểu thức sau: 2x^2y+\frac{2}{3}x^2y+(-\frac{1}{3})x^2y.
+  0rz0 TL 2 | Tính tổng của bốn đơn thức: 2x^2y^3; -\frac{3}{5}x^2y^3; -14x^2y^3; \frac{8}{5}x^2y^3.
+  ybkl TL 2 | Rút gọn rồi tính giá trị của biểu thức S = \frac{1}{2}x^2y^5 - \frac{5}{2}x^2y^5 khi x = -2 và y = 1.
+  e5so TL 2 | Tính tổng, hiệu các biểu thức sau: 3xy^2+\frac{1}{3}xy^2.
+  0bwr TL 2 | Tính tổng, hiệu các biểu thức sau: 3x^2yz^2-4x^2yz^2.
+  a13u TL 2 | Tính tổng, hiệu các biểu thức sau: 2x^2y^2+3x^2y^2+x^2y^2.
+  si1h TL 2 | Thực hiện phép tính: 2x^3y-\frac{1}{4}x^3y.
+  s61s TL 2 | Thực hiện phép tính: \frac{2}{3}x^2y+3x^2y+x^2y.
+  9ovf TL 2 | Thực hiện phép tính: \frac{1}{2}xy^2+\frac{1}{3}xy^2+\frac{1}{6}xy^2.
+  6tri TL 2 | Thực hiện phép tính: 3xy^2+\frac{1}{4}xy^2+(-\frac{1}{2})xy^2.
+  14b9 TL 2 | Thực hiện phép tính: -\frac{1}{2}x^2y+2x^2y.
+  4adj TL 2 | Thực hiện phép tính: 19x^3y+15x^3y-12x^3y.
+  68t9 NLC 2 | Kết quả phép tính 3xy^2 + (-3xy^2) là:
+  n7dt NLC 2 | Kết quả phép tính 4x^2y^2 - 6x^2y^2 là:
+  0pkf NLC 2 | Kết quả phép tính 10x^2y + 6x^2y là:
+  yvhr TL 2 | Cho hai đơn thức A = 5m(x^2y^3)^2, B = -\frac{2}{m}x^4y^6 (với m > 0). a) Hai đơn thức có đồng dạng với nhau k
+  n83p TL 2 | Cho ba đơn thức: A = -12x^2y^4; B = -6x^2y^4; C = 9x^2y^4. Tính a) Tính A \cdot B \cdot C; A - B; A + B; A - C
+  lt0z TL 4 | Nhìn đoàn tàu cổ gồm 7 toa mang mã số lần lượt là 2x^2y, 3xyz, 4x^2y, 5xyz^2, 6x^2y, 7xyz, 8x^2y. Bạn BEE nói 
+  4nwg TL 2 | Thực hiện phép tính: -x^2y+\frac{1}{5}x^2y+4x^2y-2x^2y.
+
+### [5] Bài 1. Đơn thức | Tính giá trị của biểu thức (3)
+    yêu cầu: Tính được giá trị của biểu thức chứa đơn thức tại các giá trị cho trước của các biến.
+  1m9i TL 2 | Tính giá trị của đơn thức A = 0{,}005x^4y^5, biết x=-5, y=2.
+  i677 TL 2 | Tính giá trị của đơn thức B = 0{,}0625x^5y^3, biết x=-4, y=0{,}25.
+  pw1e TL 2 | Cho a^{2k}=5. Tính 6a^{6k}-4.
+
+### [6] Bài 1. Đơn thức | Nhận biết các đơn thức nhiều biến, đa thức nhiều biến (21)
+    yêu cầu: Nhận biết được đơn thức nhiều biến và đa thức nhiều biến trong các biểu thức đại số cho trước.
+  q1yd TL 1 | Trong các biểu thức sau, biểu thức nào là đơn thức? -x; (1 + x)y^2; (3 + \sqrt{3})xy; 0; \frac{1}{y}x^2; 2\sqr
+  9zu6 DS 1 | Biểu thức nào không phải là đa thức trong các biểu thức sau?
+  rr7t TL 1 | Cho biết phần hệ số, phần biến của đơn thức sau: -\frac{1}{2}xy^3.
+  xtfu DS 1 | Biểu thức nào là đa thức trong các biểu thức sau?
+  wue6 DS 1 | Biểu thức nào dưới đây không phải là đơn thức?
+  8sd8 DS 1 | Trong các biểu thức sau, biểu thức nào là đơn thức? 2+xy;\ 3xy^2z;\ 3\frac{1}{2};\ (1-\frac{3}{2})x^2y^2;\ \fr
+  3ksb DS 1 | Trong các biểu thức sau, biểu thức nào là đơn thức? \frac{4}{3}x^2yz;\ 2018;\ \frac{xy^2}{3};\ \frac{2xy}{z};\
+  k8j7 TL 1 | Cho biết phần hệ số, phần biến của đơn thức sau: -\frac{3}{4}x^2y^2.
+  sh8a TL 1 | Cho biết phần hệ số, phần biến của đơn thức sau: 2x^2y.
+  twju TL 1 | Cho biết phần hệ số, phần biến của đơn thức sau: \frac{1}{3}xy^3.
+  3t71 NLC 1 | Trong các biểu thức đại số sau, biểu thức nào không phải đơn thức?
+  3cq3 NLC 1 | Đơn thức 5xyz^2 có phần biến là?
+  wkm0 NLC 1 | Thu gọn đơn thức 3x^2y^2zy^2z^2 ta được đơn thức là?
+  cg0v TL 1 | Trong các biểu thức sau, biểu thức nào gọi là đơn thức? 3x^2; -15x; 55; -14; 12x + 3; -8x^4y^6z^5; \frac{3x^2y
+  rtf0 TL 1 | Cho các biểu thức a) \frac{4}{5}x; b) (\sqrt{2} - 1)xy; c) -3xy^2; d) \frac{1}{2}x^2y; e) \frac{1}{x}y^3; f) -
+  3g5z TL 2 | Cho các biểu thức sau (1) a^2b - 2a^2b + 3a(ab) (2) (\frac{1}{2}ab) \cdot (\frac{1}{5}ac)bc (3) 12a(ab) - 123(
+  nxqt DS 1 | Đúng điền Đ, sai điền S: Để nhân các đơn thức người ta chỉ cần nhân các phần biến với nhau.
+  lsg7 NLC 1 | Có bao nhiêu đơn thức trong các biểu thức sau: -\dfrac25x^2y;\ 2+xy^3;\ xy^2z;\ \dfrac{xyz}{x-1}
+  uv4f NLC 1 | Trong các đơn thức sau, đơn thức chưa thu gọn là?
+  3ri7 NLC 1 | Khoanh vào chữ cái trước biểu thức là đơn thức
+  qqk6 DS 1 | Trong các biểu thức sau, biểu thức nào là đơn thức?
+
+### [7] Bài 1. Đơn thức | Thu gọn đơn thức (1)
+    yêu cầu: Thực hiện được phép thu gọn đơn thức bằng cách nhân các hệ số và nhân các phần biến với nhau.
+  s3n3 TL 2 | B. ĐẠI SỐ Bài 1. Thu gọn đơn thức sau: a)  (-2xy^2z)(\frac{3}{4}x^2yz^3); b)  (xy^2)(-2xy^3); c)  \frac{1}{5}x
+
+### [8] Bài 1. Đơn thức | Nhận biết các đơn thức đồng dạng (11)
+    yêu cầu: Nhận biết được các đơn thức đồng dạng và phân loại chúng thành các nhóm đồng dạng.
+  pp5j TL 1 | Trong các đơn thức sau, đơn thức nào đồng dạng với đơn thức -3x^2yz? a) -3xyz b) \frac{2}{3}x^2yz c) \frac{3}{
+  4y7s TL 1 | Xếp các đơn thức sau thành từng nhóm các đơn thức đồng dạng: \frac{3}{2}xy;\ -\frac{1}{3}x^2z;\ \frac{3}{4}xyz
+  gh9o TL 1 | Sắp xếp các đơn thức sau thành từng nhóm, mỗi nhóm chứa tất cả các đơn thức đồng dạng với nhau: 3x^3y^2; -0,2x
+  uu60 TL 1 | Xếp các đơn thức sau thành từng nhóm các đơn thức đồng dạng: -8x^2yz;\ 3xy^2z;\ \frac{1}{3}x^2yz;\ 5x^2y^2z;\ 
+  dupf TL 2 | Nối đơn thức ở dòng trên với một đơn thức đồng dạng với nó ở dòng dưới: A: -\dfrac{2}{3}x^6y^5; B: -\dfrac{2}{
+  ktsn TL 3 | Cho các biểu thức sau: A = 2xy^2 - 3xy^2 + 4xy^2 (1) B = (\dfrac13xy)(\dfrac12x^2z)y (2) C = 0{,}1xy^2 - 0{,}0
+  q8rc TL 4 | Trong một cuộc vui tại liên hoan thiếu nhi thế giới, 5 bạn ở 5 châu lục khác nhau mỗi người sở hữu một mật mã 
+  3y92 TL 3 | Xác định dấu của a, biết rằng x=-2abc^3 trái dấu với y=3a^2b^3c^5.
+  rhuy TL 3 | Xác định dấu của a, biết rằng hai đơn thức x=-1\dfrac18a^3b và y=\dfrac{4}{15}a^2b^3 cùng dấu.
+  ksyf TL 3 | Hai đơn thức x=-5a^{2n}b và y=3a^{4n}b^5 có thể có cùng giá trị âm được không?
+  tq5h TL 1 | Xếp các đơn thức sau thành từng nhóm các đơn thức đồng dạng: \frac{5}{4}x^2y;\ x^2y^2;\ -\frac{1}{2}x^2y;\ -2x
+
+### [9] Bài 1. Đơn thức | Tìm đơn thức thỏa mãn đẳng thức (9)
+    yêu cầu: Vận dụng được các phép tính cộng, trừ đơn thức đồng dạng để tìm đơn thức chưa biết và tính giá trị của biểu thức tại giá trị cho trước của b
+  r2am TL 2 | Tính giá trị của biểu thức M biết 15x^2y^4-M=10x^2y^4+6x^2y^4 tại x=-\frac{1}{2},\ y=2.
+  sanu TL 2 | Tính giá trị của biểu thức M biết 40x^3y+M=20x^3y+15x^3y tại x=-2,\ y=\frac{1}{5}.
+  zhvo TL 2 | Xác định đơn thức M để 2x^4y^4+3M=3x^4y^4-2x^4y^4.
+  8hp0 TL 2 | Xác định đơn thức M để 3x^2y^3+M=-x^2y^3.
+  j5n3 TL 2 | Xác định đơn thức M để 7x^2y^2-M=3x^2y^2.
+  ysfa NLC 2 | Xác định số a để các đơn thức axy^3, -4xy^3, 7xy^3 có tổng bằng 6xy^3.
+  d5ct TL 4 | Tìm x, y và z nếu (5x^2y^4)^3+(-7y^3z^5)^2=0.
+  ql7b TL 2 | Xác định đơn thức M để x^2-2M=3x^2.
+  4gs1 TL 2 | Xác định đơn thức M để 2x^3y^3-M=4x^3y^3.
+
+### [10] Bài 1. Đơn thức | Tính tổng và hiệu đa thức (1)
+    yêu cầu: Thực hiện được phép tính cộng và phép tính trừ các đơn thức đồng dạng.
+  z5cn NLC 2 | Giá trị của đơn thức 9x^3y^3 tại x = -1, y = -\frac{1}{3}
+
+### [11] Bài 1. Đơn thức | Chứng minh (1)
+    yêu cầu: Vận dụng được các phép toán thu gọn biểu thức để chứng minh giá trị của biểu thức không phụ thuộc vào giá trị của biến.
+  zi1o TL 3 | Cho chín số a_1, a_2, a_3; b_1, b_2, b_3; c_1, c_2, c_3 khác 0. Hỏi tất cả sáu số sau x_1 = a_1b_2c_3; x_2 = a
+
+### [12] Bài 1. Đơn thức | Toán thực tế (2)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến việc lập biểu thức đại số biểu diễn diện tích hoặc thể tích.
+  yfdw TL 4 | Bạn BEE trèo từng bậc cầu thang của nhà. Khi tới các bậc thứ 6, thứ 9 và thứ 12 bạn viết ở mỗi bậc lần lượt cá
+  yp3t TL 3 | Chuyện rằng Rùa chạy đua với Thỏ. Thỏ chạy nhanh gấp 60 lần rùa, nhưng chỉ sau t phút chạy, Thỏ đã dừng lại mặ
+
+### [13] Bài 1. Đơn thức | Tìm bậc đa thức (7)
+    yêu cầu: Nhận biết và xác định được bậc của một đa thức sau khi đã thu gọn đa thức đó.
+  6t4j NLC 1 | Đơn thức -2^3x^2yz^3 có
+  sb53 DS 2 | Đúng điền Đ, sai điền S: Bậc của đơn thức 15xy^5z^{15} là 21.
+  cwr5 DS 1 | Đúng điền Đ, sai điền S: Bậc của đơn thức 2014 là 2014.
+  2mh3 TL 3 | Điền số/biểu thức thích hợp: Cho đơn thức chưa thu gọn 3^2xyz(3xy). Rút gọn đơn thức, xác định bậc của biến x,
+  5g36 TL 3 | Điền số/biểu thức thích hợp: Cho đơn thức chưa thu gọn -\dfrac{2}{3}a^2x\cdot(-3y)^2\cdot\dfrac{2}{5}. Rút gọn
+  ewhy TL 3 | Một đơn thức thu gọn có hệ số là 5 và cũng là đơn thức có bậc là 5. Biết đơn thức có đúng 3 biến số là x, y, z
+  f4dw NLC 1 | Bậc của đơn thức 4x^2y^3z là:
+
+### [14] Bài 2. Đa thức nhiều biến | Toán thực tế (7)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến việc biểu diễn các đại lượng bằng đa thức nhiều biến.
+  n0lc TL 2 | Mỗi quyển vở giá x đồng. Mỗi cái bút giá y đồng. Viết biểu thức biểu thị số tiền phải trả để mua: a) 8 quyển v
+  8p56 TL 2 | Cho hình hộp chữ nhật có các kích thước như hình bên (tính theo cm). [HÌNH VẼ] a) Viết các biểu thức tính thể 
+  4p46 TL 3 | Một bức tường hình thang có cửa sổ hình tròn với các kích thước như hình vẽ bên (tính bằng m). [HÌNH VẼ] a) Vi
+  hnqr TL 2 | Từ một miếng bìa, người ta cắt ra hai hình tròn có bán kính x centimét và y centimét. Tìm biểu thức biểu thị d
+  g9jv TL 2 | Trong một khách sạn có hai bể bơi dạng hình hộp chữ nhật. Bể thứ nhất có chiều sâu là 1,2 m, đáy là hình chữ n
+  y1ro TL 2 | Bạn Hạnh dự định cắt một miếng bìa có dạng tam giác vuông với độ dài hai cạnh góc vuông lần lượt là 6 (cm) , 8
+  g3ka TL 2 | Mỗi chiếc bánh crepe có giá  x (đồng), mỗi chiếc bánh đồng xu có giá  y (đồng). a) Em hãy viết biểu thức biểu 
+
+### [15] Bài 2. Đa thức nhiều biến | Tính tổng và hiệu đa thức (5)
+    yêu cầu: Thực hiện được phép tính cộng và phép tính trừ các đa thức nhiều biến.
+  8dpz NLC 3 | Giá trị của biểu thức x^2 + 3x + 1 tại x thỏa mãn (x^2 + 7)(x + 2) = 0 bằng
+  9d5r NLC 2 | Bậc của đa thức \frac{5}{2}x^3y + 2xy^2 + 3xy - \frac{5}{2}x^3y - 2xy^2 - 1 là:
+  9rgt NLC 2 | Trong các câu sau, câu nào sai?
+  hp09 NLC 2 | Thu gọn đa thức -3x^2y - 2xy^2 + 16 - 2x^2y + 5xy^2 - 10 ta được
+  0rc2 NLC 3 | Cho P = xyz + x^2y^2z^2 + x^3y^3z^3 + ... + x^{2020}y^{2020}z^{2020}. Tính P biết x = y = 1; z = -1.
+
+### [16] Bài 2. Đa thức nhiều biến | Tính giá trị của đa thức (10)
+    yêu cầu: Tính được giá trị của một đa thức nhiều biến khi biết giá trị của các biến.
+  s6xw TL 2 | Thu gọn rồi tính giá trị của đa thức: M = \frac{1}{3}x^2y + xy^2 - xy + \frac{1}{2}xy^2 - 5xy - \frac{1}{3}x^2
+  7iuw TL 2 | Cho đa thức P = 8x^2y^2z - 2xyz + 5y^2z - 5x^2y^2z + x^2y^2 - 3x^2y^2z. a) Thu gọn và tìm bậc của đa thức P; b
+  8cu8 TL 2 | Cho đa thức P = 3x^4 + \frac{1}{3}xyz - 3x^4 - \frac{4}{3}xyz + 2x^2y - 6z. a) Tìm bậc của đa thức P. b) Tính 
+  lkne TL 2 | Tính giá trị của đa thức P = x^2y + xy^2 tại x = -3; y = -2.
+  rk12 TL 3 | Cho a, b, c là những hằng số thỏa mãn a + b + c = 2015. Tìm giá trị của đa thức A = axy^2z^3 + bx^3y + cxy^2z,
+  5yi4 NLC 2 | Đa thức 2xy^2 + 3xy có giá trị bằng 0 tại x = \frac{1}{2}, thì giá trị của y là
+  pqw5 TL 2 | Rút gọn các biểu thức sau, rồi tính giá trị của biểu thức thu gọn tại x = -1 và y = -1. a) xy - 9xy + 5xy + xy
+  nrc6 TL 2 | Tính a) 15x^4 + 7x^4 + (-20x^2)^2 tại x = -1. b) 23x^3y^3 + 17x^3y^3 + (-50x^3y)y^2 tại x = 1; y = -1.
+  gqm1 TL 3 | Bạn BEE không biết tính bài toán sau như thế nào, vì tính lũy thừa 5 của -0{,}3 rất khó. Bạn giúp BEE được khô
+  0k3g TL 2 | Tìm bậc của mỗi đa thức sau rồi tính giá trị của chúng tại x = 1; y = -2: P = 5x^4 - 3x^3y + 2xy^3 - x^3y + 2y
+
+### [17] Bài 2. Đa thức nhiều biến | Tìm bậc đa thức (22)
+    yêu cầu: Xác định được bậc của một đa thức nhiều biến sau khi đã thu gọn.
+  1hd2 TL 2 | Thu gọn (nếu cần) và tìm bậc của đa thức sau: 5x^2y + 8xy - 2x^2 - 5x^2y + x^2.
+  4n5o TL 2 | Tìm bậc của đa thức: B = 6xy^2 + 7xy^3 + 8x^2y^3.
+  03eg TL 2 | Tìm bậc của đa thức: M = x^6 + 2x^2y^3 - x^5 + xy - xy^5 - x^6.
+  7ryk TL 2 | Tìm bậc của đa thức: N = 7x^2y - 4x^6 + 3y^2z + 4x^6.
+  vgv5 TL 2 | Thu gọn (nếu cần) và tìm bậc của đa thức: Q = 5x^2 - 7xy + 2,5y^2 + 2x - 8,3y + 1.
+  gbny TL 2 | Thu gọn (nếu cần) và tìm bậc của đa thức sau: x^4 - 3x^2y^2 + 3xy^2 - x^4 + 1.
+  kxxt TL 2 | Thu gọn đa thức sau, rồi tìm bậc của chúng: B = 3x^2y^3z^4 + 3x^4 - 5x^2y^3z^4 + 6y^2z^3 + 2x^2y^3z^4.
+  fz6z TL 2 | Thu gọn đa thức sau, rồi tìm bậc của chúng: A = 3x^4y^3 - 4x^2y^3 + 2x^2y^3 + 5x^2y - 4x^4y^3.
+  lis1 TL 2 | Tìm bậc của đa thức sau: A = 2x^2y^3 + 3x^4 - 7x^2 + 6x^4 - x^2y^3.
+  xax2 TL 2 | Tìm bậc của đa thức sau: B = 2x^2y^3 + 4x^4 - 5x^2 + 3x^4 - 2x^2y^3.
+  9kgu TL 2 | Thu gọn đa thức sau rồi tìm bậc của chúng: P = -4x^3y^3 - 3x^4y^3 + x^4y^3 - 6xy^2 + 4x^3y^3.
+  01lo TL 2 | Thu gọn đa thức sau rồi tìm bậc của chúng: R = x^2y + 2xxy - 3xz + x^2y - 2xy + 3xz.
+  1v3t TL 3 | Cho đa thức P = 4x^5y^2 - 3x^3y + 7x^3y + ax^5y^2 (a hằng số). Để đa thức P có bậc là 4 thì giá trị của a là b
+  hvnb TL 2 | Thu gọn đa thức sau rồi tìm bậc của chúng: Q = xy - x + 1 + 2xy - (xy - x + 2).
+  nyfp TL 2 | Thu gọn (nếu cần) và tìm bậc của đa thức: H = 4x^5 - \frac{1}{2}x^3y + \frac{3}{4}x^2y^2 - 4x^5 + 2y^2 - 7.
+  nvoz TL 3 | Một đa thức hai biến bậc hai thu gọn có thể có nhiều nhất bao nhiêu hạng tử bậc hai? Cho ví dụ.
+  7drw DS 1 | Đúng điền Đ, sai điền S: Số mũ lớn nhất của các biến trong đa thức một biến (dạng rút gọn và không là đa thức 
+  zco6 DS 2 | Đúng điền Đ, sai điền S: Bậc của đa thức là tổng bậc của tất cả các hạng tử trong dạng thu gọn của đa thức đó.
+  mlbz TL 3 | Nối mỗi đa thức với bậc của nó: 1) 2x^2y^3-2xy^3+6(x^2y^2)y+6xy^2 2) 0{,}2xy^3-0{,}02x^3y^4+0{,}002xy^3+0{,}00
+  xrg0 NLC 1 | Câu nào sau đây là sai?
+  9sg4 NLC 2 | Bậc của thức 3x^2y^3-xy-3x^2y^3+xy+1 là:
+  4p16 DS 1 | Đúng điền Đ, sai điền S: Số 0 là đa thức có bậc 0.
+
+### [18] Bài 2. Đa thức nhiều biến | Nhận biết đa thức, hạng tử của đa thức (10)
+    yêu cầu: Xác định được hệ số và bậc của từng hạng tử trong một đa thức nhiều biến.
+  4srg TL 1 | Xác định hệ số và bậc của từng hạng tử trong đa thức sau: x^2y - 3xy + 5x^2y^2 + 0,5x - 4.
+  k1gw TL 1 | Xác định hệ số và bậc của từng hạng tử trong đa thức sau: x\sqrt{2} - 2xy^3 + y^3 - 7x^3y.
+  yji5 TL 1 | Hãy chỉ ra các đa thức trong các biểu thức sau: x - 1 + \frac{2}{x}; xyz - ax^2; 101; y^3 - 4; \frac{z + 1}{x^
+  7pav DS 2 | Đúng điền Đ, sai điền S: Trong đa thức một biến, các hệ số của các hạng tử gọi là hệ số tự do.
+  f6jk NLC 1 | Có bao nhiêu đa thức trong các biểu thức sau: 2025;\ x^2+2y^2;\ \dfrac1x+3y;\ \dfrac x3+xy;\ \sqrt z+2y
+  xltu NLC 1 | Biểu thức nào sau đây là đa thức?
+  2t4e TL 1 | Trong các biểu thức sau, biểu thức nào là đa thức? x^2 + 2y; 2x^2y; \frac{2x^2}{y}; \frac{x^2 + 2}{y}; \frac{x
+  ttqu TL 1 | Trong các biểu thức sau, biểu thức nào là đa thức? -x^2 + 3x + 1; \frac{x}{\sqrt{5}}; x - \frac{\sqrt{5}}{x}; 
+  9o8s TL 1 | Biểu thức nào dưới đây là đa thức? Hãy chỉ rõ các hạng tử của mỗi đa thức ấy. 3xy^2 - 1; x + \frac{1}{x}; \sqr
+  de2t TL 1 | Cho a là hằng số. Trong các biểu thức sau, biểu thức nào là đa thức? a) A = \frac{1}{a + 1} \cdot x + xy^2 + x
+
+### [19] Bài 2. Đa thức nhiều biến | Tìm x (2)
+    yêu cầu: Vận dụng được các phép tính nhân đa thức và hằng đẳng thức để tìm giá trị của biến số thỏa mãn đẳng thức cho trước.
+  z2e5 TL 3 | Tìm x, y và z biết (2x^2z^2)^3 + (-3xy^3)^2 = 0.
+  slvt NLC 2 | Tổng các nghiệm của đa thức Q(x)=4x^2-16 là:
+
+### [20] Bài 2. Đa thức nhiều biến | Rút gọn và tính giá trị biểu thức (1)
+    yêu cầu: Thực hiện được việc thu gọn và tính giá trị của đa thức nhiều biến bằng cách sử dụng các phép tính đại số cơ bản.
+  zrrs TL 3 | Cho biểu thức M = 3a^2x^2 + 4b^2x^2 - 2a^2x^2 - 3b^2x^2 + 19 (a \ne 0; b \ne 0). Tìm giá trị nhỏ nhất của M.
+
+### [21] Bài 2. Đa thức nhiều biến | Thu gọn đa thức (18)
+    yêu cầu: Thực hiện được việc thu gọn đa thức nhiều biến bằng cách nhóm các hạng tử đồng dạng.
+  c2f6 TL 2 | Thu gọn đa thức: 5x^4 - 2x^3y + 20xy^3 + 6x^3y - 3x^2y^2 + xy^3 - y^4.
+  zlcg TL 2 | Thu gọn đa thức sau: A = 5x^3y^2 + 3y^2x^3 - 4x^3y^2.
+  mbc8 TL 2 | Thu gọn đa thức sau: B = 5x^2y - 2xy^2 + 3x^3y^3 + 3xy^2 - 4x^2y - 4x^3y^3.
+  l276 TL 2 | Thu gọn đa thức sau: C = (5x + 5y) - (3x - 2y).
+  fszg TL 2 | Thu gọn đa thức sau: 3x^5y^3 - 4x^4y^3 + 2x^4y^3 + 7xy^2 - 3x^5y^3.
+  sygu TL 1 | Thu gọn đa thức M = x^2y - 5xy + 7xy^2 + 3x^2y + xy^2 - 4xy^2 + 2.
+  iwjr TL 2 | Thu gọn đa thức sau: -\frac{1}{2}xy^2z + 3x^3y^2 + 2xy^2z - \frac{2}{3}xy^2z - \frac{1}{3}x^3y^2 + xy^2z.
+  7q0a TL 2 | Cho đa thức N = 5y^2z^2 - 2xy^2z + \frac{1}{3}x^4 - 2y^2z^2 + \frac{2}{3}x^4 + xy^2z. a) Thu gọn đa thức N. b)
+  89f9 TL 2 | Thu gọn đa thức sau: A = 2x^2 - 3y^3 - z^4 - 4x^2 + 2y^4 + 3z^4.
+  i2b5 TL 2 | Thu gọn đa thức sau: B = 2x^2y - 5xy^2 + 4x^2y - 6xy^2.
+  485o TL 2 | Tìm x, biết: (2x - 3) + (3x - 4) - (4x + 5) = 6.
+  axqt TL 2 | Tìm x, biết: (\frac{1}{2}x - 1) + (\frac{2}{3}x - 2) - (\frac{3}{4}x - 3) = 4.
+  mth0 TL 2 | Thu gọn đa thức: 0,6x^3 + x^2z - 2,7xy^2 + 0,4x^3 + 1,7xy^2.
+  epc0 NLC 1 | Đa thức nào sau đây chưa thu gọn?
+  p00y NLC 2 | Thu gọn đa thức xy - 2x^2y + 3xy + 2x^2y ta được kết quả là:
+  416m TL 3 | Cho đa thức f(x)=x+7x^2-6x^3+3x^4+2x^2+6x-2x^4+1. a) Thu gọn, rồi sắp xếp các số hạng của đa thức theo lũy thừ
+  6qaf TL 2 | Thu gọn các biểu thức sau: a) -3x^2 - 0,5x^2 + 2,5x^2. b) 5x^3 - 3x^2 + x - x^3 - 4x^2 - x. c) -\frac{3}{4}x^3
+  vd8q NLC 1 | Đa thức thu gọn trong các đa thức sau là:
+
+### [22] Bài 2. Đa thức nhiều biến | Nhận biết các đơn thức nhiều biến, đa thức nhiều biến (2)
+    yêu cầu: Nhận biết được đơn thức nhiều biến và đa thức nhiều biến trong các biểu thức đại số cho trước.
+  ihqh NLC 1 | Biểu thức nào sau đây không là đa thức?
+  i0d9 TL 1 | Cho các biểu thức: \frac{4}{5}x; (\sqrt{2} - 1)xy; -3xy^2; \frac{1}{2}x^2y; \frac{1}{x}y^3; -xy + \sqrt{2}; -\
+
+### [23] Bài 3. Phép cộng và trừ đa thức | Tính giá trị của biểu thức (2)
+    yêu cầu: Tính được giá trị của biểu thức đại số sau khi thực hiện thu gọn bằng phép cộng và phép trừ đa thức.
+  3liq TL 4 | Cho các đa thức A(x)=(x-4)^2+2014 và B(x)=4|x-4|+4. a) Tính A(-4), A(4), B(-4) và B(4). b) Tìm giá trị nhỏ nhấ
+  1ete NLC 2 | Giá trị của biểu thức A=x^2(x-1)+y^2(x-1)+z^2(x-1)-1 biết x^2+y^2+z^2=0 là:
+
+### [24] Bài 3. Phép cộng và trừ đa thức | Toán thực tế (3)
+    yêu cầu: Vận dụng được phép cộng và phép trừ đa thức để giải quyết một số bài toán thực tế liên quan đến hình học và đời sống.
+  cxu9 TL 3 | Trong buổi sinh hoạt câu lạc bộ Toán học của lớp, hai bạn tính giá trị của hai đa thức P = 2x^2y - xy^2 + 22 v
+  vytf TL 2 | Tìm độ dài cạnh còn thiếu của tam giác trong hình bên, biết rằng tam giác có chu vi bằng 7x + 5y. [HÌNH VẼ]
+  f5rz TL 2 | Bác Huỳnh muốn sơn bề mặt của hai khối gỗ có dạng hình hộp chữ nhật. Hình hộp chữ nhật thứ nhất có ba kích thư
+
+### [25] Bài 3. Phép cộng và trừ đa thức | Tìm đa thức thõa mãn đẳng thức (16)
+    yêu cầu: Vận dụng được phép cộng và phép trừ đa thức để tìm một đa thức chưa biết trong một đẳng thức cho trước.
+  adj7 TL 2 | Tìm đa thức M biết: (25x^2y - 13xy^2 + x^3) - M = 11x^2y - 2x^3.
+  a4vz TL 2 | Cho đa thức P = x^2 - 2x^2y + x. Tìm đa thức M thỏa mãn M + P = 3x^2y + 2x - 1.
+  ru0w TL 2 | Tìm đa thức M biết: M + (5x^2 - 2xy) = 6x^2 + 9xy - y^2.
+  07r8 TL 2 | Tìm đa thức M biết M - 5x^2 + xyz = xy + 2x^2 - 3xyz + 5.
+  v6jr TL 2 | Tìm đa thức P biết 2P + (2x^2 + 3y^2) = 6x^2 - 3y^2 - 2x^2y^2.
+  4kii TL 2 | Tìm đa thức M biết a) M + (2x - 3y) = x - 4y + 5; b) M - (2xy - 0,5y^2) = -2xy + 5y^2; c) (2x^2 - 3xy + 4y^2) 
+  41nx TL 2 | Cho đa thức Q = 3xy^2 - 2xy + x^2y - 2y^4. Tìm đa thức N thỏa mãn Q - N = 2y^4 + x^2y + xy^2.
+  l8lg NLC 2 | Tìm đa thức B sao cho tổng B với đa thức 2x^4 - 3x^2y + y^4 + 6xz - z^2 bằng 0.
+  z70l NLC 2 | Tìm đa thức M biết M - 3xy + 4y^2 = x^2 - 7xy + 8y^2.
+  swbx TL 2 | Cho hai đa thức: A = 7xyz^2 - 5xy^2z + 3x^2yz - xyz + 1; B = 7x^2yz - 5xy^2z + 3xyz^2 - 2. a) Tìm đa thức C sa
+  bpb4 TL 3 | Cho các đa thức M=2x^3-2x^2y+xy+1; N=3x^2y+2xy-2; P=x^3-x^2y-3xy+1. Tính: a) M+N. b) M-P. c) M-N+P.
+  inzv TL 3 | Tìm đa thức A sau đó tính giá trị biểu thức A tại x=1;y=2, biết 6x^2-3xy^2+A=x^2+y^2-2xy^2.
+  dryo TL 3 | Tìm đa thức B sau đó tính giá trị biểu thức B tại x=1;y=2, biết B-(2xy-4y^2)=5xy+x^2-7y^2.
+  26n8 TL 4 | Cho đa thức A=x^2+xy-2012x-2013y-2014. Tìm cặp số (x;y) nguyên để đa thức A=0.
+  0v1f TL 2 | Tìm đa thức M biết: M - (4xy - 3y^2) = x^2 - 7xy + 8y^2.
+  2778 TL 2 | Tìm đa thức  M và cho biết bậc của đa thức  M a)  (3x - x^3y^2 - x^2y + 2 - x) - M = -(7x^2y + xyz - 3x + 4) b
+
+### [26] Bài 3. Phép cộng và trừ đa thức | Dạng toán chia hết (3)
+    yêu cầu: Vận dụng phép cộng, trừ đa thức và tính chất chia hết để giải quyết các bài toán về chia hết của số tự nhiên hoặc biểu thức.
+  pqw0 TL 3 | Chứng minh rằng \overline{abc} + \overline{bca} + \overline{cab} chia hết cho 37.
+  dwje TL 3 | Cho a, b, c là số nguyên. Đặt A = 3a - 5b, B = 7b - 9c và C = 11c - 13a. Chứng tỏ tích A \cdot B \cdot C là số
+  lva0 TL 3 | Với n là số nguyên dương, chứng minh rằng A = 3^{n+2} + 3^n - 2^{n+2} - 2^n chia hết cho 10.
+
+### [27] Bài 3. Phép cộng và trừ đa thức | Tính tổng và hiệu đa thức (33)
+    yêu cầu: Thực hiện được phép tính cộng và phép tính trừ các đa thức nhiều biến.
+  r69c TL 2 | Cho ba đa thức: A = x^2 - 2xy + y^2; B = 2x^2 - y^2; C = x^2 - 3xy. Tính: a) A - B. b) A - C.
+  gtrv NLC 1 | Kết quả của phép tính 3x^2y^4 + 7x^2y^4 là
+  9g0e TL 2 | Rút gọn biểu thức: (x - y) + (y - z) + (z - x).
+  182j TL 2 | Tính tổng và hiệu của hai đa thức P = x^2y + x^3 - xy^2 + 3 và Q = x^3 + xy^2 - xy - 6.
+  x00e TL 2 | Rút gọn biểu thức: (2x - 3y) + (2y - 3z) + (2z - 3x).
+  thrm TL 2 | Tìm tổng và hiệu của hai đa thức: C = 5x^2y + 5x - 3z + 2 và D = xyz - 4x^2y + 5x - 1.
+  j3l1 TL 2 | Tính tổng của hai đa thức: M = -5x^2y + 3xy^2 + 7 và N = -6x^2y + 4xy^2 - 5.
+  0st0 TL 2 | Tính tổng của hai đa thức: M = 2x^2y + xy^2 - 2 và N = -2xy^2 + x^2y + 1.
+  v074 TL 2 | Tính tổng của hai đa thức: P = 2x^2y + 9xy^2 - 5y^3 và Q = 6x^2y + xy^2.
+  er1b TL 2 | Tính hiệu của hai đa thức M và N biết: M = 15x^2y - 7xy^2 - 6y^3 và N = 12x^2y - 2y^3 - 7xy^2.
+  89dd TL 2 | Tính hiệu của hai đa thức M và N biết: M = 1,2x - 3,5y + 2 và N = 0,2x - 2,5y + 3.
+  xzna TL 2 | Tính tổng và hiệu của hai đa thức P và Q, biết: P = y - [y - (y + x)] và Q = y - [y - x + (2x - 2y)].
+  zy1s TL 2 | Cho hai đa thức M = 2x^2 + 4xy - 4y^2 và N = 3x^2 - 2xy + 2y^2. Tính giá trị của đa thức M + N tại x = 1; y = 
+  h0h8 TL 2 | Tính tổng của hai đa thức: P = 5,7x^2y - 3,1xy + 8y^3 và Q = 2,3x^2y - 8y^3 - 6,9xy.
+  uqgv TL 2 | Tính: a) x + 2y + (x - y); b) 2x - y - (3x - 5y); c) 3x^2 - 4y^2 + 6xy + 7 + (-x^2 + y^2 - 8xy + 9x + 1); d) 4
+  7ik6 TL 2 | Tính tổng của hai đa thức P = x^3 + 3x^2y + 3xy^2 + y^3 và Q = x^3 - 3x^2y + 3xy^2 - y^3.
+  bbnt TL 2 | Tính tổng của hai đa thức: a) A = 2x^2 + 3y^2 và B = 3x^2 - 4y^2; b) P = 2x^2 - 3xy + 5y^2 và Q = 3x^2 + xy - 
+  53j8 TL 2 | Cho hai đa thức G = x^2y - 3xy - 3 và H = 3x^2y + xy - 0,5x + 5. Hãy tính G + H và G - H.
+  krtl TL 2 | Tính hiệu của hai đa thức M và N với a) M = x^2 + y^2 + 2xy và N = x^2 + y^2 - 2xy; b) M = 2,3x + 3,2y - 10 và
+  vazf TL 2 | Rút gọn biểu thức: a) (x - y) + (y - z) + (z - x); b) (2x - 3y) + (2y - 3z) + (2z - 3x).
+  vwts TL 2 | Rút gọn và tính giá trị của biểu thức sau tại x = 2 và y = -1. K = (x^2y + 2xy^3) - (7,5x^3y^2 - x^3) + (3xy^3
+  2dfu TL 2 | Cho P = x^2 - y^2 + 1 và Q = 3 - y^2 - 2x^2. Tính P - Q và P + Q.
+  irc3 TL 2 | Cho hai đa thức A = 2x^2y + 3xyz - 2x + 5 và B = 3xyz - 2x^2y + x - 4. a) Tìm các đa thức A + B và A - B; b) T
+  stj7 NLC 3 | Cho M = x - (y - z) - 2x + y + z - (2 - x - y) và N = x - [x - (y - 2z) - 2z]. Tính M - N.
+  qvkb TL 2 | Cho ba đa thức: M = 3x^3 - 4x^2y + 3x - y; N = 5xy - 3x + 2; P = 3x^3 + 2x^2y + 7x - 1. Tính M + N - P và M - 
+  elfn TL 1 | Tính tổng a) 8a - 6a - 7a. b) 6b^2 - 4b^2 + 3b^2. c) 6ab - 3ab - 2ab.
+  wy3j TL 3 | Điền số/chữ thích hợp vào chỗ chấm (...). Cho đa thức A = a - 2ab + 3abc + 4abcd, B = 2a - 4ab - 3abc, C = -3a
+  2r64 TL 2 | Rút gọn biểu thức sau: A = (x^2-xy+y^2)-(-x^2+7xy-5y^2).
+  5sg8 TL 2 | Rút gọn biểu thức sau: B = (xy^2-3x^2y)-(-2xy^2-5x^2y)+(x^2y-3xy^2).
+  8ts6 NLC 2 | Phép tính x^2y + 2xy - (-x^2y - xy) sau khi phá dấu ngoặc tròn được kết quả là?
+  dab1 NLC 2 | Gọi T là tổng, H là hiệu của hai đa thức 3x^2y - 2xy^2 + xy và -2x^2y + 3xy^2 + 1. Khi đó:
+  q0ts TL 2 | Tính tổng và hiệu của hai đa thức P và Q, biết: P = xy - x + 1 và Q = 2xy - (xy - x + 5).
+  mpqk NLC 1 | Kết quả của phép tính -9y^2z - (-12y^2z) là
+
+### [28] Bài 3. Phép cộng và trừ đa thức | Tìm bậc đa thức (1)
+    yêu cầu: Xác định được bậc của một đa thức sau khi đã thực hiện thu gọn các hạng tử đồng dạng.
+  nowq TL 4 | Cho các đa thức f(x)=x^{2014}-x^{2013}+x^{2012}-x^{2011}+\cdots+x^2-x+1 và h(x)=-1+x-x^2+x^3-\cdots-x^{2012}+x
+
+### [29] Bài 3. Phép cộng và trừ đa thức | Chứng minh (3)
+    yêu cầu: Vận dụng được phép cộng và phép trừ đa thức để chứng minh giá trị của một biểu thức không phụ thuộc vào biến số.
+  3m7b TL 3 | Chứng minh rằng hiệu hai đa thức 0,7x^4 + 0,2x^2 - 5 và -0,3x^4 + x^2 - 8 luôn luôn dương với mọi giá trị thực
+  x8uc TL 4 | Cho các đa thức: A=5x^2-3xy+7y^2 và B=6x^2-8xy+9y^2. a) Tính P=A+B và Q=A-B. b) Tính giá trị của đa thức M=P-Q
+  bqk6 TL 4 | Cho hai đa thức M=4x^2y^2-12xy^2-2y^2 và N=x^2y^2+12xy^2+2y^2. Chứng minh rằng: không có số thực x và y nào để
+
+### [30] Bài 3. Phép cộng và trừ đa thức | Tính giá trị của đa thức (3)
+    yêu cầu: Thực hiện được việc thu gọn đa thức và tính giá trị của đa thức tại các giá trị cho trước của biến.
+  jzop TL 2 | Tính giá trị của biểu thức (7a^3 - 6a^3 + 5a^2 + 1) + (5a^3 + 7a^2 + 3a) - (10a^3 + a^2 + 8a) với a = -0,25.
+  haou TL 4 | Cho một dải băng số gồm 10 ô như sau: u_1, u_2, u_3, u_4, u_5, u_6, u_7, u_8, u_9, u_{10}. Biết chìa khóa tìm 
+  v889 TL 3 | Cho đa thức f(x)=1+x+x^2+\cdots+x^{2013}+x^{2014}. Tính f(-1), f(0) và f(1).
+
+### [31] Bài 4. Phép nhân đa thức | Chứng minh (24)
+    yêu cầu: Vận dụng phép nhân đa thức để chứng minh giá trị của một biểu thức không phụ thuộc vào giá trị của biến.
+  vipq TL 3 | Chứng minh đẳng thức sau: (2x + y)(2x^2 + xy - y^2) = (2x - y)(2x^2 + 3xy + y^2).
+  8a5l TL 3 | Cho biểu thức A = x(1 + x) - x^2(1 - x) + x^3(x^2 - 1). Chứng minh rằng với hai giá trị đối nhau của x thì biể
+  gexm TL 3 | Chứng minh các đẳng thức sau: a) 4(x - 6) - x^2(2 + 3x) + x(5x - 4) + 3x^2(x - 1) + 24 = 0; b) x^n(y^n - xy^{n
+  i60g TL 3 | Cho x^2 + y^2 = 2. Chứng minh đẳng thức 2(x + 1)(y + 1) = (x + y)(x + y + 2).
+  zmcm TL 3 | a) Chứng minh rằng biểu thức P = 5x(2 - x) - (x + 1)(x + 9) luôn nhận giá trị âm với mọi giá trị của biến x. b
+  8ftm TL 2 | Chứng minh các đẳng thức a) (x + a)(x + b) = x^2 + (a + b)x + ab; b) (x + a)(x + b)(x + c) = x^3 + (a + b + c)
+  7uq6 TL 2 | Chứng minh rằng giá trị của biểu thức sau không phụ thuộc vào giá trị của các biến: a) A = 10 - 5x(x - 1,2) + 
+  s2ys TL 3 | Cho (a - b)^2 + (b - c)^2 + (c - a)^2 = 4(a^2 + b^2 + c^2 - ab - bc - ca). Chứng minh rằng a = b = c.
+  uorc TL 3 | Chứng minh đẳng thức x^6(x + 1) - x^5(x - 1) - x^4(x + 1) + x^3(x - 1) + x^2(x + 1) - x(x - 1) + 1 = x^7 + x +
+  ivaw TL 3 | Chứng minh rằng biểu thức A = 90 \cdot 10^n - 10^{n+2} + 10^{n+1} có giá trị không đổi với mọi n \in {N}.
+  narv TL 3 | Cho biểu thức A = 3x^{n+1}(x^{n-1} - y^n) + y^n(3x^{n+1} - y^n), trong đó n \in {N}^*. Chứng minh rằng khi tha
+  y8o9 TL 3 | Chứng minh các đẳng thức sau a) (a - 1)(a - 2)(a + 3) - (a + 1)(a + 2)(a - 3) = 12; b) a(a^2 - bc) + b(b^2 - c
+  4mc6 TL 3 | Cho các số x, y, z tỉ lệ với a, b, c. Chứng minh rằng (x^2 + 2y^2 + 3z^2)(a^2 + 2b^2 + 3c^2) = (ax + 2by + 3cz
+  kj8q TL 3 | Cho biểu thức C=x(x+x^3)+(x-1)(x^2+x^3)+1. Rút gọn biểu thức C rồi chứng tỏ rằng với hai giá trị đối nhau của 
+  w9ja TL 2 | Cho ab=1. Chứng minh đẳng thức a(b+1)+b(a+1)=(a+1)(b+1).
+  xmnb TL 2 | Cho biểu thức B=10-5x(x-1{,}2)+2x(2{,}5x-3). Chứng minh rằng giá trị của biểu thức này luôn không đổi.
+  w7ia TL 2 | Cho biểu thức C=x(x-y)+y(x+y)-(x+y)(x-y)-2y^2. Với mọi giá trị của x và y thì giá trị của biểu thức C là một s
+  i8qr TL 2 | Chứng minh giá trị của biểu thức sau không phụ thuộc vào giá trị của các biến: A=(2x-3)(x+7)-2x(x+5)-x.
+  eftc TL 2 | Chứng minh đẳng thức (x-y)(x^3+x^2y+xy^2+y^3)=x^4-y^4.
+  872i TL 2 | Chứng minh đẳng thức (x+y)(x+y+2)-2(x+1)(y+1)+2=x^2+y^2.
+  umpp TL 4 | Cho \dfrac{x}{a}=\dfrac{y}{b}. Chứng minh rằng (x^2+y^2)(a^2+b^2)=(ax+by)^2.
+  dugf TL 3 | Chứng minh biểu thức sau không phụ thuộc vào giá trị của biến: A = x(x^3+x^2-3x+2)-(x^2-2)(x^2+x+3)+4(x^2-x-2)
+  qte0 TL 4 | Cho a, b, c là các số thực thỏa mãn ab+bc+ca=abc và a+b+c=1. Chứng minh rằng: (a-1)(b-1)(c-1)=0.
+  9dvc TL 3 | Cho m số, mỗi số bằng 3n + 1 và n số, mỗi số bằng 9 - 3m. Biết rằng tổng tất cả các số đó bằng 5 lần tổng m + 
+
+### [32] Bài 4. Phép nhân đa thức | Rút gọn và tính giá trị biểu thức (29)
+    yêu cầu: Thực hiện được việc rút gọn và tính giá trị của biểu thức đại số có chứa phép nhân đa thức.
+  ikkz NLC 2 | Rút gọn biểu thức x(x-y)-y(x+y)+x^2+y^2 ta được:
+  gwai TL 3 | Cho n \in {N}^*. Tìm hệ số của hạng tử bậc lớn nhất của đa thức A = 3x^n(4x^{n-1} - 1) - 2x^{n+1}(6x^{n-2} - 1
+  yxue TL 2 | Rút gọn biểu thức sau để thấy rằng giá trị của nó không phụ thuộc vào giá trị của biến: (x - 5)(2x + 3) - 2x(x
+  o5lj TL 2 | Rút gọn biểu thức: x(x^2 - y) - x^2(x + y) + xy(x - 1).
+  l135 TL 3 | Tính giá trị của biểu thức A = x^5 - 70x^4 - 70x^3 - 70x^2 - 70x + 29 bằng cách hợp lí tại x = 71.
+  vu2h TL 3 | Cho biểu thức M = (x - a)(x - b) + (x - b)(x - c) + (x - c)(x - a) + x^2. Tìm M theo a, b, c, biết rằng 2x = a
+  8s1p TL 3 | Cho a + b + c = -6, ab + bc + ca = 11 và abc = -6. Hãy tính giá trị của biểu thức E = (x + a)(x + b)(x + c) vớ
+  09f8 TL 2 | Rút gọn các biểu thức sau: a) xy(x^5 - y^3) - x^2y(x^4 - y^3); b) x^3y^4(x^2 - y^3) - x^3y^3(x^4 - y^4).
+  pn1h TL 2 | Rút gọn và tính giá trị của biểu thức a) P(x) = (x^2 - 5)(x + 3) + (x + 4)(x - x^2) tại x = -15; b) Q(x) = (5x
+  q4xx TL 2 | Rút gọn các biểu thức sau: a) A = (4x^3 - 5x^2y + 2xy) \cdot (-\frac{1}{2}xy); b) B = 8x(x - 2) - 3(x^2 - 4x -
+  b6bz TL 3 | a) Rút gọn rồi tính giá trị của biểu thức P = (5x^2 - 2xy + y^2) - (x^2 + y^2) - (4x^2 - 5xy + 1) khi x = 1,2 
+  xbzt TL 2 | Cho biểu thức A = x^3y^3(x^4 - y^4) - x^3y^4(x^2 - y^3). Rút gọn rồi tính giá trị biểu thức với x = 1, y = -2.
+  us7b TL 2 | Rút gọn biểu thức a) (x - y)(x^2 + xy + y^2); b) (x + y)(x^2 - xy + y^2); c) (4x - 1)(6y + 1) - 3x(8y + \frac{
+  qd5s TL 3 | Cho biểu thức A = \frac{3}{229}(2 + \frac{1}{433}) - \frac{1}{229} \cdot \frac{432}{433} - \frac{4}{229 \cdot 
+  2rs9 TL 3 | Tính giá trị của các đa thức a) A = x^7 - 80x^6 + 80x^5 - 80x^4 + \dots + 80x + 15 với x = 79; b) B = x^{14} -
+  loxf TL 3 | Thực hiện phép tính A = (2^9 + 2^7 + 1)(2^{23} - 2^{21} + 2^{19} - 2^{17} + 2^{14} - 2^{10} + 2^9 - 2^7 + 1).
+  sokm TL 3 | Cho a + b + c = 12, ab + bc + ca = 47 và abc = 60. Hãy tính giá trị của biểu thức P = (x - a)(x - b)(x - c) vớ
+  evwk NLC 2 | Cho biểu thức C = x(y + z) - y(z + x) - z(x - y). Chọn khẳng định đúng.
+  l00g TL 2 | Rút gọn biểu thức A=8x(x-2)-3(x^2-4x-5)-5x^2.
+  ubk6 TL 2 | Cho biểu thức P=5x(3x^2y-2xy^2+1)-3xy(5x^2-3xy)+x^2y^2. a) Bằng cách thu gọn, chứng tỏ rằng giá trị của biểu t
+  sovw TL 2 | Rút gọn biểu thức B=2(x-5)(x+1)+(x-3)(x+x^2).
+  rmnk TL 2 | Rút gọn biểu thức A=(x+5)(2x-3)-2x(x+3)-(x-15). Rồi cho biết bậc của đa thức kết quả.
+  qkrt TL 3 | Cho biểu thức 3x^3(x^5 - y^5) + y^5(3x^3 - y^3). a) Rút gọn biểu thức đã cho. b) Tính giá trị của biểu thức đã
+  qte7 TL 3 | Rút gọn biểu thức: \frac{1}{4}(2x^2+y)(x-2y^2) + \frac{1}{4}(2x^2-y)(x+2y^2).
+  q6m2 TL 4 | Bạn BEE khoe mình có thể áp dụng phương pháp thay số bằng biến để giải bài toán sau: Chứng minh rằng với mọi g
+  di8h TL 3 | Rút gọn biểu thức sau: A = 3x.(x^2-2x+3)-x^2.(3x-2)+4(x^2-x).
+  d094 TL 4 | Tính nhanh biểu thức sau: A = \dfrac{3}{229}(2+\dfrac{1}{433}) - \dfrac{1}{229}\cdot\dfrac{432}{433} - \dfrac{
+  ypt1 TL 2 | Rút gọn rồi tính giá trị các biểu thức sau: a) A = x^3(x^2 - y^3) - y^3(y^2 - x^3) với x = 2, y = -2; b) B = (
+  lv38 TL 2 | Cho biểu thức B=5x^2(3x-2)-(4x+7)(6x^2-x)-(7x-9x^3). Rút gọn rồi tính giá trị của biểu thức B với x=-\frac{3}{
+
+### [33] Bài 4. Phép nhân đa thức | Tìm x (16)
+    yêu cầu: Vận dụng phép nhân đa thức và thu gọn biểu thức để tìm giá trị của biến số trong một đẳng thức cho trước.
+  q808 TL 2 | Tìm x, biết: 2x(2x+2)-4x(x-2)=12
+  zn8q TL 3 | Tìm x, biết: a) 2x(2x + 2) - 4x(x - 2) = 12 b) (3x + 4)^2 - (3x - 1)(3x + 1) = 65 c) x(2x - 1) - 3(1 - 2x) = 0
+  xkkr TL 2 | Tìm giá trị của x biết: a) 3x^2 - 3x(-2 + x) = 36; b) x^2 + 8 = 0.
+  gkpw TL 2 | Tìm giá trị của x biết: a) 3x(8x - 4) - 6x(4x - 3) = 30; b) 3x(5 - 2x) + 2x(3x - 5) = 20.
+  52zq TL 2 | Tìm giá trị của x biết: a) 2x^4 + x(-2x^2 + x^3) - 3(x^4 - 6) = 26; b) -4x^5 - 3x^3(2x^2 - 1) + 5(2x^5 - x^3) 
+  b4we TL 2 | Tìm x, biết: (12x - 5)(4x - 1) + (3x - 7)(1 - 16x) = 81.
+  sxve TL 2 | Tìm giá trị của x biết a) 2x(7x + 5) - 7x(2x - 3) = 93; b) 5x(3 - 7x) + 7x(5x + 6) = 114.
+  bb8t TL 2 | Tìm x, biết a) (x + 2)(x + 3) - (x - 2)(x + 5) = 6; b) (3x + 2)(2x + 9) - (x + 2)(6x + 1) = (x + 1) - (x - 6).
+  mhna TL 2 | Tìm x biết 3(x-1)(x+3)-x(3x+1)=2.
+  cu1n TL 2 | Tìm x biết (x+1)(x^2+2x-1)-x^2(x+2)=4.
+  hwqr TL 2 | Tìm x biết (x+1)(3x^2+x-2)-x^2(3x+4)=5.
+  901d TL 3 | Tìm x biết (x-3)(x+x^2)+2(x-5)(x+1)-x^3=12.
+  2r1b NLC 3 | Giá trị m thỏa mãn x^4-x^3+6x^2-x+m-1=(x^2-x+5)(x^2+1) là:
+  svlj TL 3 | Tìm ba số tự nhiên chẵn liên tiếp, biết tích của hai số sau lớn hơn tích của hai số đầu là 24.
+  4v6u TL 2 | Tìm x, biết a) (2x + 3)(x - 4) + (x - 5)(x - 2) = (3x - 5)(x - 4); b) 2(x - 5)(x + 5) - (x + 2)(2x - 3) + x(x^
+  bd1o NLC 2 | Cho 2x(3x-1)-3x(2x-3)=11. Kết quả x bằng:
+
+### [34] Bài 4. Phép nhân đa thức | Tìm đơn thức thỏa mãn đẳng thức (1)
+    yêu cầu: Vận dụng được các quy tắc tính toán đơn thức để tìm đơn thức chưa biết và tính giá trị của nó tại các giá trị cho trước.
+  owea TL 2 | a) Tìm đơn thức C nếu 5xy^2\cdot C=10x^3y^3. b) Với đơn thức C tìm được ở câu a, hãy tìm đơn thức K sao cho (K
+
+### [35] Bài 4. Phép nhân đa thức | Toán thực tế (17)
+    yêu cầu: Vận dụng được phép nhân đa thức để giải quyết một số bài toán thực tế liên quan đến diện tích, thể tích hoặc các đại lượng khác.
+  umlx TL 3 | Bạn Thành dùng một miếng bìa hình chữ nhật để làm thành một cái hộp (không nắp) bằng cách cắt bốn hình vuông c
+  a4bh NLC 3 | Cho hình thang có đáy lớn gấp đôi đáy nhỏ, đáy nhỏ lớn hơn chiều cao 2 đơn vị. Gọi độ dài đáy nhỏ là x. Biểu t
+  ukof TL 3 | Gia đình Vinh có một mảnh đất hình chữ nhật có chiều dài x (m) và chiều rộng y (m) (x>y>8) để nuôi gà và bò. T
+  p7x1 TL 3 | Gia đình Vinh có một mảnh đất hình chữ nhật có chiều dài x \ (m) và chiều rộng y \ (m) (x > y > 8) để nuôi gà 
+  rifn TL 3 | Trên một sông thẳng, xuất phát cùng lúc từ một bến thuyền, thuyền đi xuôi dòng với tốc độ (v + 3) km/h, ca nô 
+  sarj TL 2 | Một mảnh vườn có dạng hình chữ nhật với độ dài hai cạnh là 2x + y (m) và 2x - y (m). a) Viết đa thức biểu thị 
+  e78e TL 3 | Trên một dòng sông, để đi được 10 km, một chiếc xuồng tiêu tốn a lít dầu khi xuôi dòng và tiêu tốn (a + 2) lít
+  oilx TL 2 | Khu vườn nhà bác Xuân có dạng hình vuông. Bác Xuân muốn dành một mảnh đất có dạng hình chữ nhật ở góc khu vườn
+  2lt2 TL 2 | Một mảnh vườn có dạng hình chữ nhật với chiều rộng là x (m), chiều dài là y (m). a) Viết đa thức biểu thị diện
+  tmo2 TL 4 | Trong một khách sạn có hai bể bơi dạng hình hộp chữ nhật. Bể thứ nhất có chiều sâu là 1{,}2\ (m), đáy là hình 
+  rxws TL 4 | Một khu đất hình chữ nhật có chu vi là 80\ (m) và chiều dài là x\ (m). a) Viết đa thức biểu thị diện tích của 
+  qch3 NLC 2 | Một mảnh đất hình chữ nhật có chiều dài là x(m), chiều rộng ngắn hơn chiều dài 4(m). Đa thức biểu thị diện tíc
+  2ggu TL 4 | Một sân bóng hình chữ nhật có chiều dài 10x+5y\ (m) và chiều rộng là 10x-5y\ (m). Mỗi cạnh chừa lại 3\ (m) làm
+  nq2r TL 3 | Một hình thang có đáy lớn bằng (x+2) mét, đáy bé bằng (x+1) mét và chiều cao bằng (x+3) mét. Biết rằng tích độ
+  dprl TL 3 | Một chiếc bình có dạng hình lập phương với độ dài cạnh là 2x (cm). a) Viết đa thức biểu thị thể tích nước tối 
+  m5cw TL 2 | Tính diện tích phần tô màu trong hình vẽ. [HÌNH VẼ]
+  b2pu TL 3 | Một sân vận động hình chữ nhật có chiều dài  5x + 3y (m) và chiều rộng là  5x - 3y (m). Người ta làm lối đi rộ
+
+### [36] Bài 4. Phép nhân đa thức | Tính giá trị của biểu thức (1)
+    yêu cầu: Tính được giá trị của biểu thức đại số sau khi thực hiện thu gọn bằng phép nhân đa thức.
+  0pyb TL 4 | Tính giá trị của biểu thức A với x=999: A = x^6-x^5(x-1)-x^4(x+1)+x^3(x+1)-x(x-1)+1.
+
+### [37] Bài 4. Phép nhân đa thức | Phép nhân đa thức (44)
+    yêu cầu: Thực hiện được phép nhân đơn thức với đa thức và phép nhân đa thức với đa thức.
+  h2kk NLC 1 | Kết quả phép nhân x(2x^2+1) là:
+  t4ox NLC 2 | Kết quả phép nhân (xy-1)(xy+5) =
+  3t9d TL 1 | Thực hiện phép tính sau: 2x(4xy-1)-8x^2y
+  e9oj TL 2 | Thực hiện phép tính sau: (2x-y)(x^2-xy+3y^2)
+  hnrf TL 2 | Thực hiện phép tính sau: a) 2x(4xy - 1) - 8x^2y. b) (3x^2y^2 + 6x^2y^3 - 12xy) : 3xy c) (x - 1)^2 + (x - 2)(x 
+  a5w7 TL 2 | Thực hiện các phép tính sau: a) (x + 3)(x^2 + 3x - 5); b) (x^2 - 2x + 3)(x - 4).
+  2ac2 TL 2 | Thực hiện phép nhân: a) (x - y)(x - 5y); b) (2x + y)(4x^2 - 2xy + y^2).
+  csxx TL 1 | Nhân hai đơn thức: a) 5x^2y và 2xy^2; b) \frac{3}{4}xy và 8x^3y^2; c) 1,5xy^2z^3 và 2x^3y^2z.
+  8f94 TL 2 | Tìm tích của đơn thức với đa thức: a) (-0,5)xy^2(2xy - x^2 + 4y); b) (x^3y - \frac{1}{2}x^2 + \frac{1}{3}xy)6x
+  zmch TL 2 | Làm tính nhân: a) (x^2 - xy + 1)(xy + 3); b) (x^2y^2 - \frac{1}{2}xy + 2)(x - 2y).
+  58a4 TL 2 | Thực hiện phép tính sau: a) \frac{3}{5}xy(xy^2 - 5x + 10y); b) (3xy - 2x^2 + xy^2) \cdot \frac{2}{3}x^2y.
+  tswc TL 2 | Thực hiện phép nhân: a) 3x(2xy - 5x^2y); b) 2x^2y(xy - 4xy^2 + 7y); c) (-\frac{1}{2}xy^2 + 6y^2z) \cdot (-\fra
+  3q6v TL 3 | Thực hiện phép tính: a) (x^2 - x + 1)(x^2 + x + 1)(x^4 - x^2 + 1); b) (x^{2n} - x^ny^n + y^{2n})(x^n + y^n)(x^
+  094o TL 2 | Thực hiện các phép tính sau: a) (x^2y^2 - \frac{1}{2}xy + 2y)(x - 2y); b) (x + y)(x^2 - xy + y^2).
+  ehq5 TL 2 | Thực hiện phép tính a) (-xy)(-2x^2y + 3xy - 7x); b) (\frac{1}{6}x^2y^2)(-0,3x^2y - 0,4xy + 1); c) (x + y)(x^2 
+  ah32 TL 2 | Xác định bậc, hệ số của hạng tử có bậc lớn nhất của các biểu thức sau: a) A = -4x^3(x^2 - 3x + 1); b) B = -\fr
+  fxbh TL 2 | Rút gọn các biểu thức sau a) (x - y)(x + y)(x^2 + y^2)(x^4 + y^4); b) (x + 2)(x^2 + 4x + 4) - (x - 2)^3 - 6(x 
+  3ppb NLC 1 | Hệ số của đơn thức 2x^2y3xy^2 là?
+  grni NLC 2 | Bậc của đơn thức 2xy^2 \frac{4}{3}x^2y^3 6x là?
+  fho4 NLC 2 | Viết đơn thức 21x^4y^5z^6 dưới dạng tích hai đơn thức, trong đó có 1 đơn thức 3x^2y^2z ta được kết quả là:
+  enkc NLC 1 | Thực hiện phép tính nhân x^2(5x^3 - x - \frac{1}{2}) ta được kết quả là?
+  koq1 NLC 2 | Tích (x - y)(x + y) có kết quả bằng:
+  8uab NLC 2 | Trong các phép tính sau, phép tính nào có kết quả là 3x^2 + 3y^2?
+  cm5z NLC 2 | Tính (\frac{1}{3}x^3y^3 + 2x^2y^4) : (xy^2) ta được kết quả là?
+  9xhu NLC 2 | Tích 6x^4y^2 : (\frac{1}{2}x^2y)^2 bằng:
+  2siq TL 1 | Thực hiện phép tính: (x+8)(x-5).
+  ql44 TL 1 | Làm tính nhân: \frac{1}{2}x^3(x^2-6x-10).
+  krbe TL 1 | Thực hiện phép tính: (2x-1)(3x^2-7x+5).
+  gm5n TL 1 | Làm tính nhân: -3x^2(5x^3-4x^2+3x-1).
+  4tap TL 2 | Làm tính nhân: -4x^3(x^2-3x+2).
+  oq5q TL 3 | Làm tính nhân: (5x^2-4x)(2x^2+9x-3).
+  fl0l TL 2 | Làm tính nhân: 6x^3(7x^2+5x-3).
+  d8zx TL 3 | Làm tính nhân: 4x^2y(2x^3-x^2y+\dfrac12xy^2-6y^3).
+  jnr6 TL 3 | Làm tính nhân: (3x^2-7x)(2x^2-5x+1).
+  otno TL 3 | Làm tính nhân: (3x-y)(5x^2+2xy+4y^2).
+  jlau TL 2 | Làm tính nhân: (2x+7)(3x-1).
+  7da1 NLC 1 | Kết quả của phép tính x.(2x^2+1) bằng:
+  z47e TL 2 | Tìm hệ số của x^3 trong kết quả của phép nhân (x^2-x)(x^2+x-1).
+  om7i NLC 1 | Kết quả của phép tính (3x^2y) \cdot (-xy^2)
+  tehh NLC 2 | Cho các đơn thức A = 4x^3y(-5xy), B = -17x^4y^2, C = \frac{3}{5}x^6y. Các đơn thức nào đồng dạng với nhau?
+  x8re TL 2 | Làm tính nhân: -\dfrac25x^2(5x^3+10x^2-15x).
+  cvnu TL 2 | Thực hiện phép tính và xác định bậc của đa thức: a) 2x^3(5x^3 - x - \frac{1}{2}); b) \frac{2}{3}x^2y(6xy - x^2
+  kuwh TL 2 | Thực hiện các phép tính sau a) (x - 1)(x^5 + x^4 + x^3 + x^2 + x + 1); b) (x + 1)(x^6 - x^5 + x^4 - x^3 + x^2 
+  o3eh TL 2 | Thực hiện phép tính: a)  (5xy - 10x^3 + y) \cdot \frac{2}{5}x^2yz b)  -2xy \cdot (x^3y - 3x^2y^2 + 8xy^3) c)  
+
+### [38] Bài 5. Phép chia đa thức cho đơn thức | Tìm đơn thức thỏa mãn đẳng thức (2)
+    yêu cầu: Vận dụng được phép cộng, trừ đơn thức đồng dạng để tìm đơn thức chưa biết và tính giá trị của đơn thức đó.
+  t9mm TL 2 | a) Tìm đơn thức B nếu 4x^3y^2:B=-2xy. b) Với đơn thức B tìm được ở câu a, hãy tìm đơn thức H để (4x^3y^2-3x^2y
+  dogp TL 3 | Biết rằng D là một đơn thức sao cho -2x^3y^4 : D = xy^2. Hãy tìm thương của phép chia: (10x^5y^2 - 6x^3y^4 + 8
+
+### [39] Bài 5. Phép chia đa thức cho đơn thức | Tính giá trị của biểu thức (12)
+    yêu cầu: Tính được giá trị của biểu thức chứa phép chia đơn thức, đa thức cho đơn thức tại các giá trị cho trước của biến.
+  hf7e TL 2 | Tính giá trị của biểu thức A = 20x^3y^5z^3 : 5x^3y^3z với x=1{,}234; y=18; z=-\frac{1}{12}.
+  3f44 TL 2 | Tính giá trị của biểu thức A = 15a^4b^3c^2 : 5ab^2c^2 tại a=2, b=-10, c=2018.
+  eyde TL 2 | Tính giá trị của biểu thức P = (-x^2y^5)^2 : (-x^2y^5) tại x=\frac{1}{2} và y=-1.
+  zot7 TL 2 | Tính giá trị của biểu thức M = 15x^4y^3z^2 : 5xy^2z^2 tại x=2; y=-10 và z=2004.
+  ylw8 TL 2 | Tính giá trị của biểu thức P = [3(x-y)^4+2(x-y)^3-5(x-y)^2] : (x-y)^2 tại x=1, y=-7.
+  x69l TL 2 | Tính giá trị của biểu thức A = 15a^4b^3c^2 : 5ab^2c^2 tại a=2; b=-10; c=2009.
+  iubh TL 2 | Tính giá trị của biểu thức Q = -(x^7y^2z)^2 : (-xy^3z)^2 tại x=1; y=-10; z=101.
+  xniu TL 2 | Tính giá trị biểu thức A = (15x^4y^5-17x^3y^2) : xy^2 tại x=2, y=3.
+  ze6s TL 2 | Tính giá trị biểu thức B = [5(x-y)^6+2(x-y)^5-7(x-y)^3] : (y-x)^2 tại x=7, y=13.
+  6c1i TL 2 | Tính giá trị biểu thức C = (x^2+6)(x^2+4) : (x^2+5) tại x=-2.
+  tpdh TL 2 | Tính giá trị của biểu thức A=20x^3y^5z^3:5x^3y^3z với x=1{,}234; y=8; z=-\frac{1}{12}.
+  nc78 NLC 2 | Giá trị biểu thức A=(8x^3):x tại x=-1 là:
+
+### [40] Bài 5. Phép chia đa thức cho đơn thức | Tìm x (2)
+    yêu cầu: Vận dụng được các phép tính cộng, trừ, nhân đa thức để tìm giá trị của biến số trong một đẳng thức cho trước.
+  zy5h TL 3 | Tìm x, biết: (18x^3-15x^2):(-3x^2)=2.
+  1fa5 TL 3 | Tìm x, biết: (12x^5-15x^4):3x^3-(8x^3+6x):2x=7.
+
+### [41] Bài 5. Phép chia đa thức cho đơn thức | Tìm đa thức thõa mãn đẳng thức (1)
+    yêu cầu: Vận dụng được phép cộng và phép trừ đa thức để tìm đa thức chưa biết trong một đẳng thức cho trước.
+  mimj TL 3 | Rút gọn biểu thức T=(5xy-4y^2)(3x^2+4xy)-15xy(x+y)(x-y). Tìm đa thức D sao cho T:D=xy^2.
+
+### [42] Bài 5. Phép chia đa thức cho đơn thức | Dạng toán chia hết (7)
+    yêu cầu: Giải quyết được các bài toán liên quan đến điều kiện chia hết của đa thức cho đơn thức và tính chất chia hết trong tập hợp số.
+  t3if TL 3 | Cho đa thức A=2x^2y^2-5xy^3 và đơn thức B=3x^my^2 (với m\in{N}). a) Tìm số nguyên dương m sao cho đa thức A ch
+  w03f TL 2 | Cho các đa thức A=9x^4y^2z^2-5x^3y^3z+2x^3y^3; B=6x^3y^3z^2+3x^2y^2z^2-7xy^4z^2 và đơn thức C=3x^2y^2z. Xét xe
+  p6wt TL 3 | Tìm n\in{N} để (-x^{3n}y^3z) chia hết cho 4x^6y^{n+1}.
+  rwbs TL 3 | Tìm n\in{N} để 21x^ny^3 - 35x^5y^{n-1} chia hết cho 7x^3y^3.
+  8i49 TL 2 | Tìm n\in{N} để đơn thức 2x^ny^3 chia hết cho đơn thức 5x^2y^{n-1}.
+  y9xy TL 4 | Tìm các số thực a, b sao cho đa thức 4x^4-11x^3-2ax^2+5bx-6 chia hết cho đa thức x^2-2x-3. (Trích đề thi học s
+  kred TL 2 | Tìm n\in{N} để đơn thức 18x^{n+2} chia hết cho đơn thức -6x^5.
+
+### [43] Bài 5. Phép chia đa thức cho đơn thức | Toán thực tế (4)
+    yêu cầu: Vận dụng được phép chia đa thức cho đơn thức để giải quyết một số bài toán thực tế liên quan đến hình học hoặc tính toán đại lượng.
+  3ivd TL 2 | Tính diện tích đáy của hình hộp chữ nhật có thể tích bằng 12x^3-3xy^2+9x^2y và chiều cao bằng 3x.
+  89c8 TL 2 | Tính chiều dài của hình chữ nhật có diện tích bằng 6xy+10y^2 và chiều rộng bằng 2y.
+  jid1 TL 2 | Tính chiều cao của hình hộp chữ nhật có thể tích V=6x^2y-8xy^2 và diện tích đáy S=2xy.
+  5ec3 TL 2 | Bà Khanh dự định mua x hộp sữa, mỗi hộp giá y đồng. Nhưng khi đến cửa hàng bà Khanh thấy giá sữa đã giảm 1500 
+
+### [44] Bài 5. Phép chia đa thức cho đơn thức | Chứng minh (5)
+    yêu cầu: Vận dụng phép chia đa thức cho đơn thức để chứng minh giá trị của một biểu thức không phụ thuộc vào giá trị của biến.
+  k3bn TL 3 | Chứng minh rằng giá trị của biểu thức sau không phụ thuộc vào giá trị của biến y (x\ne 0; y\ne 0): B = \frac{2
+  a4mc TL 3 | Chứng minh rằng giá trị của biểu thức sau không phụ thuộc vào biến x (x\ne 0, y\ne 0): Q = \frac{1}{2}x^3y^2 :
+  kq15 TL 2 | Chứng minh rằng biểu thức sau không âm với mọi giá trị của biến: A = (-15x^3y^6):(-5xy^2).
+  f5x8 TL 3 | Chứng minh rằng giá trị của biểu thức sau không phụ thuộc vào biến x (x\ne 0, y\ne 0): E = \frac{2}{3}x^5y^7 :
+  11o4 TL 4 | Chứng minh rằng giá trị của biểu thức A luôn luôn dương với mọi giá trị của x: A = (7x^4-21x^2):7x^2 + (10x+5x
+
+### [45] Bài 5. Phép chia đa thức cho đơn thức | Chia đơn thức cho đơn thức (38)
+    yêu cầu: Thực hiện được phép chia một đơn thức cho một đơn thức khác trong trường hợp chia hết.
+  a36z TL 1 | Làm tính chia: 20x^5y^3:4x^2y^2.
+  dt0l TL 1 | Làm tính chia: 12x^3y^4 : \frac{2}{5}xy^4.
+  13dv TL 1 | Làm tính chia: 2(x+y)^3 : 5(x+y).
+  0wtp TL 2 | Làm tính chia: -(x-y)^5 : (y-x)^2.
+  ha67 TL 1 | Làm tính chia: (\frac{3}{4})^5 : (\frac{3}{4})^3.
+  tse4 TL 1 | Làm tính chia: 16x^4y^5z^6 : 8x^3y^2.
+  xay9 TL 1 | Làm tính chia: 5^3 : (-5)^2.
+  xiwl TL 1 | Làm tính chia: (-12)^3 : 8^3.
+  sykt TL 1 | Làm tính chia: x^2yz : \frac{1}{2}xyz.
+  l1zo TL 1 | Làm tính chia: 2x^3y^4 : x^3y.
+  zgtv TL 1 | Làm tính chia: 18x^2y^2z : 8xyz.
+  no65 TL 1 | Làm tính chia: 5a^3b : (-2a^2b).
+  urra TL 1 | Làm tính chia: 27x^4y^2z : 9x^4y.
+  r0lx TL 2 | Làm tính chia: (x+y)^2 : (x+y).
+  2a9k TL 2 | Làm tính chia: (x-y)^5 : (y-x)^4.
+  xxhg TL 1 | Làm tính chia: (x-y+z)^4 : (x-y+z)^3.
+  ypvm TL 2 | Làm tính chia: 8(x+2y)^5 : (2x+4y).
+  ibzr TL 1 | Làm tính chia: (-ab)^{10} : (-ab)^5.
+  aiw7 TL 2 | Làm tính chia: (-x^3y^2z)^4 : (-xy^2z)^3.
+  la51 TL 1 | Làm tính chia: 5a^2b^4 : 10a^2b.
+  zb5g TL 1 | Làm tính chia: \frac{3}{4}a^3b^3 : (\frac{-1}{2}a^2b^2).
+  wo66 TL 1 | Thực hiện phép tính: (39x^5y^7) : (13x^2y).
+  qa97 TL 1 | Thực hiện phép chia: 20x^3y^5 : (5x^2y^2).
+  rdo4 TL 2 | Thực hiện phép chia: 18x^3y^5 : [3(-x)^3y^2].
+  fqc4 TL 1 | Thực hiện phép tính: 5x^4y^3 : 15x^2y^2.
+  bg20 TL 1 | Thực hiện phép tính: \frac{3}{4}x^3y^5 : (-\frac{1}{2}x^2y^4).
+  egiy TL 1 | Thực hiện phép tính: (-xy)^{10} : (-xy)^5.
+  iz1q TL 2 | Thực hiện phép tính: 2(x-2y)^5 : (5x-10y).
+  ogq5 TL 1 | Làm tính chia: (-x^4y^5):(-xy^3).
+  4e06 TL 1 | Làm tính chia: x^2yz^3:(-x^2z^3).
+  jv4d TL 2 | Làm tính chia: x^{n+2}y^{3n}:x^{n-2}y^n (với n\in{N}, n\ge 2).
+  gw3e TL 2 | Làm tính chia: (-7x^3y^4):(9x^3y^2).
+  1zhu TL 1 | Làm tính chia: (x+2y-3z)^{n+1} : (x+2y-3z)^n (với n\in{N}).
+  y5th TL 2 | Làm tính chia: 20x^5y^2z : (-\dfrac25x^2y^2).
+  fvn3 TL 2 | Tìm đơn thức N sao cho N : 0{,}5xy^2z = -xy.
+  mvtj TL 2 | Làm tính chia: (-a-b)^5 : (a+b)^2.
+  g8pw TL 1 | Làm tính chia: \frac{4}{9}x^5y^2z^3 : (-1\frac{1}{3}xy^2).
+  wr9z TL 2 | Tìm đơn thức M, biết rằng \frac{7}{3}x^3y^2 : M = 7xy^2.
+
+### [46] Bài 5. Phép chia đa thức cho đơn thức | Phép chia hết (14)
+    yêu cầu: Xác định được điều kiện để một đa thức chia hết cho một đơn thức và thực hiện phép chia hết đó.
+  h3u7 TL 2 | Tìm số tự nhiên n để phép chia sau là chia hết: (13x^4y^3-7x^3y^4+2x^2y^3):3x^ny^n.
+  yx60 TL 2 | Cho đa thức A = 9xy^4 - 12x^2y^3 + 6x^3y^2. Xét xem A có chia hết cho đơn thức B = 3x^2y hay không? Thực hiện 
+  hviy TL 2 | Tìm số tự nhiên n để phép chia sau là chia hết: (2018x^{2019}-2017x^3+2x^5):4x^n.
+  ms32 TL 2 | Tìm số tự nhiên n để phép chia sau là phép chia hết: x^4 : x^n.
+  zuqj TL 2 | Tìm số tự nhiên n để phép chia sau là phép chia hết: 5x^ny^3 : 4x^2y^2.
+  f87g TL 2 | Tìm số tự nhiên n để đơn thức A chia hết cho đơn thức B, biết A = 4x^{n+1}y^2; B = 3x^3y^{n-1}.
+  qjwy TL 2 | Tìm số tự nhiên n để A chia hết cho B với A=8x^{n+2}y^2 và B=3x^4y^{n-1}.
+  82pk TL 2 | Tìm n\in{N} để đơn thức -7x^{n+1}y^6 chia hết cho 4x^5y^n.
+  7z3b TL 2 | Tìm số tự nhiên n để phép chia sau là phép chia hết: 15x^{n+2}y^n : 3x^3y^4.
+  d4ie TL 2 | Tìm số tự nhiên n để phép chia sau là phép chia hết: (-\frac{1}{2}x^{2n}y^7) : \frac{3}{10}x^{n+3}y^n.
+  tkj4 TL 2 | Tìm số tự nhiên n để phép chia sau là chia hết: (3x^5-7x^4+2x^3) : 2x^n.
+  50pl TL 2 | Tìm số tự nhiên n để phép chia sau là chia hết: (3x^5y^3-7x^4y^2+2x^3y^2) : 2x^ny^n.
+  rxaw TL 2 | Tìm số tự nhiên n để đa thức 8x^4y^5+4x^5y^3-5x^6y^4 chia hết cho đơn thức 5x^ny^{n+1}.
+  34pu TL 2 | Tìm số tự nhiên n để phép chia sau là chia hết: (3x^3-7x^2+2x):4x^n.
+
+### [47] Bài 5. Phép chia đa thức cho đơn thức | Chia đa thức cho đơn thức (27)
+    yêu cầu: Thực hiện được phép chia một đa thức cho một đơn thức trong trường hợp các hạng tử của đa thức chia hết cho đơn thức.
+  9sk9 TL 1 | Thực hiện phép chia: (4x^2y^2-8x^2y+10xy) : (2xy).
+  en97 TL 1 | Thực hiện phép tính: (4x^7-3x^3-4x^2):(7x^2).
+  kn2i TL 1 | Thực hiện phép tính: (7y^4-3y^2+2y):(2y).
+  7iaj TL 1 | Thực hiện phép tính: (9x^3y^3-18x^2y^4-6x^3y^2):(3x^2y).
+  l5f2 TL 1 | Thực hiện phép tính: (2x^5y^3-4x^3y^5+6xy^4):(2xy).
+  q5wi TL 1 | Làm tính chia: (8x^4-10x^3+12x^2):4x^2.
+  xomy TL 2 | Làm tính chia: [7(y-x)^4-5(x-y)^3] : (x-y)^3.
+  cibf TL 1 | Thực hiện phép tính: (x^3-2xy^2+6x^2y^3):(-\frac{1}{2}x).
+  j1qp TL 2 | Thực hiện phép tính sau: (3x^2y^2+6x^2y^3-12xy):3xy
+  e3vn TL 2 | Thực hiện phép chia (7y^5z^2 - 14y^4z^3 + 2{,}1y^3z^4) : (-7y^3z^2).
+  n50s TL 1 | Thực hiện phép tính: (x^2y^2+\frac{1}{6}x^3y^2-x^5y^4) : (\frac{1}{2}x^2y^2).
+  vvch TL 1 | Thực hiện phép chia: (7x^4y^2-2x^2y^2-5x^2y^4) : (3x^2).
+  nmor TL 1 | Thực hiện phép tính: (30x^3y^4-15x^3y^2+3x^3y^5) : (3x^2y^2).
+  9fvw TL 1 | Thực hiện phép tính: (5xy^2-3xy+6x^3y^2) : (-xy).
+  8ado TL 2 | Thực hiện phép tính: [2(a-b)^2+3(b-a)^3-4(a-b)^4] : (b-a)^2.
+  ouku TL 2 | Thực hiện phép tính: [(x-y)^4-3(y-x)^3+2(x-y)^2] : (x^2-2xy+y^2).
+  l00s TL 3 | Làm tính chia: [\frac{1}{2}(x-y)^5+\frac{2}{3}(x-y)^{n+2}] : \frac{1}{6}(x-y)^2 với n\in{N}.
+  cdsv NLC 2 | Khi chia đa thức 8x^3y^2 - 6x^2y^3 cho đơn thức -2xy, ta được kết quả là
+  syei TL 4 | Làm phép chia sau theo hướng dẫn: [8x^3(2x-5)^2 - 6x^2(2x-5)^3 + 10x(2x-5)^2] : 2x(2x-5)^2. Hướng dẫn: Đặt y =
+  2p9l TL 2 | Làm tính chia: (9x^4y^2-15x^3y^3+21x^2y) : 10x^2y.
+  1f3t TL 2 | Làm tính chia: (24x^6y^4-8x^4y^6+\dfrac12x^2y^2) : \dfrac12x^2y^2.
+  hiu2 TL 2 | Làm tính chia: (6x^4-9x^3y-15x^2y^2) : \dfrac34x^2.
+  b8kj NLC 2 | Kết quả phép tính (2x^2y+4x^2y^2):(2xy) bằng:
+  29mb TL 1 | Thực hiện phép tính: (4x^4-8x^2y+24x^2y^5):(-4x^2).
+  rprj TL 2 | Làm tính chia: (1\frac{1}{5}x^5y^3+2\frac{2}{5}x^4y^4-1\frac{1}{5}x^3y^5) : \frac{3}{5}x^3y^3.
+  klvs TL 1 | Làm tính chia: (30x^3y^2-18x^2y^3-6xy^4):(-6xy^2).
+  1qfb TL 1 | Thực hiện phép tính: (8x^5-3x^4+2x^3-4x):(-2x).
+
+### [48] Bài 5. Phép chia đa thức cho đơn thức | Rút gọn và tính giá trị biểu thức (3)
+    yêu cầu: Thực hiện được các phép tính cộng, trừ, nhân, chia đa thức để thu gọn và tính giá trị của biểu thức.
+  89g1 TL 2 | Rút gọn biểu thức: (3x^2-5xy-4y^2)\cdot(2x^2+y^2)+(2x^4y-x^3y^3-x^2y^4):(\frac{1}{5}xy).
+  e9ow TL 4 | Rút gọn biểu thức sau: B = 5xy(xy-y^2+1)-3x(y-1)-[(10x^3y^4-10x^2y^5+6x^2y^2):2xy^2].
+  fz2j TL 2 | Cho biểu thức B=(6x^4y^2-8x^3y^3):2x^2y^2+(-20x^4y^3+15x^3y^4):(-5x^3y^2). a) Rút gọn B. b) Tính giá trị của B
+
+### [49] Bài 6. Ôn tập chương | Bài tập tổng hợp chương 1 (0)
+    yêu cầu: Vận dụng tổng hợp kiến thức của chương 1 để giải các bài toán ôn tập, kiểm tra cuối chương.

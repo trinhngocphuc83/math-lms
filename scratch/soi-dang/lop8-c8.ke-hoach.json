@@ -1,0 +1,62 @@
+{
+ "lop": "8",
+ "chuong": 8,
+ "dang": [
+  {
+   "bai": "Bài 1. Kết quả có thể và kết quả thuận lợi",
+   "cu": "Liệt kê các kết quả có thể của phép thử ngẫu nhiên",
+   "moi": "Liệt kê các kết quả có thể của hành động, thực nghiệm",
+   "yc": "Liệt kê được các kết quả có thể của một hành động, thực nghiệm (gieo xúc xắc, rút thẻ, quay vòng quay...)."
+  },
+  {
+   "bai": "Bài 1. Kết quả có thể và kết quả thuận lợi",
+   "cu": "Xác định số kết quả thuận lợi cho một biến cố",
+   "moi": "Xác định các kết quả thuận lợi cho biến cố",
+   "yc": "Xác định được các kết quả thuận lợi cho một biến cố và đếm được số kết quả thuận lợi."
+  },
+  {
+   "bai": "Bài 2. Cách tính xác suất của biến cố bằng tỉ số",
+   "cu": "Tính xác suất của biến cố trong các trò chơi (tung đồng xu, xúc xắc, rút thẻ...)",
+   "moi": "Tính xác suất của biến cố bằng tỉ số",
+   "yc": "Tính được xác suất của biến cố bằng tỉ số giữa số kết quả thuận lợi và số kết quả có thể khi các kết quả đồng khả năng."
+  },
+  {
+   "bai": "Bài 2. Cách tính xác suất của biến cố bằng tỉ số",
+   "cu": null,
+   "moi": "Tính xác suất khi thực hiện hai hành động liên tiếp",
+   "yc": "Liệt kê được các kết quả có thể khi thực hiện hai hành động (gieo hai xúc xắc, tung hai đồng xu, chọn hai thẻ) và tính được xác suất của biến cố."
+  },
+  {
+   "bai": "Bài 2. Cách tính xác suất của biến cố bằng tỉ số",
+   "cu": null,
+   "moi": "Bài toán thực tế về xác suất của biến cố",
+   "yc": "Vận dụng được cách tính xác suất bằng tỉ số để giải bài toán thực tế (chọn học sinh, sản phẩm, vé số...)."
+  },
+  {
+   "bai": "Bài 3. Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng",
+   "cu": "Tính xác suất thực nghiệm",
+   "moi": "Tính xác suất thực nghiệm của biến cố",
+   "yc": "Tính được xác suất thực nghiệm của biến cố từ dữ liệu thống kê số lần thực hiện và số lần xảy ra."
+  },
+  {
+   "bai": "Bài 3. Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng",
+   "cu": "Ứng dụng xác suất thực nghiệm để ước lượng xác suất của biến cố",
+   "moi": "Ước lượng xác suất bằng xác suất thực nghiệm",
+   "yc": "Ước lượng được xác suất của biến cố bằng xác suất thực nghiệm khi số lần thực hiện đủ lớn và vận dụng để dự đoán số lần xảy ra."
+  },
+  {
+   "bai": "Bài 3. Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng",
+   "cu": null,
+   "moi": "Ứng dụng xác suất thực nghiệm trong thực tế",
+   "yc": "Vận dụng được mối liên hệ giữa xác suất thực nghiệm và xác suất để giải bài toán thực tế (tỉ lệ phế phẩm, dự báo, kiểm tra chất lượng)."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Tổng hợp về biến cố và tính xác suất",
+   "moi": "Bài tập tổng hợp chương 8",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 8 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

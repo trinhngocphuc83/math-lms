@@ -1,0 +1,65 @@
+{
+ "question_categories": [
+  {
+   "id": "d54a46aa-84e4-4e92-a1a9-3338268c6afd",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Dữ liệu và biểu đồ",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tổng hợp thống kê và biểu đồ",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Giải quyết được các bài toán tổng hợp về phân tích, so sánh và biểu diễn dữ liệu thống kê trên các loại biểu đồ khác nhau."
+  },
+  {
+   "id": "ee342fbf-4b56-4875-8460-a33c08f7b19a",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Dữ liệu và biểu đồ",
+   "lesson": "Bài 3. Phân tích số liệu thống kê dựa vào biểu đồ",
+   "math_form": "Đánh giá sự hợp lí của số liệu",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Giải thích được tính hợp lí hoặc không hợp lí của các số liệu thống kê dựa trên các tiêu chí toán học đơn giản."
+  },
+  {
+   "id": "f0696e5a-9112-4e59-8f87-280a5a7608e7",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Dữ liệu và biểu đồ",
+   "lesson": "Bài 2. Biểu diễn dữ liệu bằng bảng, biểu đồ",
+   "math_form": "Đọc và phân tích số liệu từ biểu đồ (biểu đồ tranh, cột, quạt, đoạn thẳng)",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Đọc và phân tích được các thông tin, số liệu thống kê biểu diễn trên biểu đồ tranh, biểu đồ cột, biểu đồ hình quạt tròn hoặc biểu đồ đoạn thẳng."
+  },
+  {
+   "id": "d9a1d741-f38c-466d-841c-5ead1b3e8875",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Dữ liệu và biểu đồ",
+   "lesson": "Bài 1. Thu thập và phân loại dữ liệu",
+   "math_form": "Thu thập, phân loại và tổ chức dữ liệu",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc thu thập, phân loại và tổ chức dữ liệu theo các tiêu chí cho trước dưới dạng bảng hoặc biểu đồ."
+  },
+  {
+   "id": "17b48845-0600-4e98-9672-adf372f3aa30",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Dữ liệu và biểu đồ",
+   "lesson": "Bài 3. Phân tích số liệu thống kê dựa vào biểu đồ",
+   "math_form": "Nhận biết xu hướng và đưa ra dự đoán",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Nhận biết được xu hướng biến động của dữ liệu từ biểu đồ và đưa ra những dự đoán, nhận định đơn giản."
+  },
+  {
+   "id": "96fe96b5-3735-4cfa-bf54-c3016cb222ca",
+   "grade": "8",
+   "subject": "Thống kê",
+   "topic": "Chương 5. Dữ liệu và biểu đồ",
+   "lesson": "Bài 2. Biểu diễn dữ liệu bằng bảng, biểu đồ",
+   "math_form": "Lựa chọn và vẽ biểu đồ phù hợp",
+   "created_at": "2026-08-21T04:25:43.565042+00:00",
+   "yeu_cau_can_dat": "Lựa chọn được loại biểu đồ phù hợp để biểu diễn một tập dữ liệu cho trước và vẽ được biểu đồ đó."
+  }
+ ],
+ "questions": []
+}

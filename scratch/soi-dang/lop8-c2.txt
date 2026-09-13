@@ -1,0 +1,493 @@
+Chương 2. Hằng đẳng thức đáng nhớ và ứng dụng · lớp 8 · 38 dạng · 377 câu
+
+
+### [1] Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu | Tìm giá trị nhỏ nhất, lớn nhất (30)
+    yêu cầu: Vận dụng được hằng đẳng thức bình phương của một tổng hoặc một hiệu để tìm giá trị lớn nhất hoặc nhỏ nhất của biểu thức.
+  x22i TL 3 | Tìm giá trị nhỏ nhất của biểu thức Q=5x^2-10x.
+  ap5v TL 3 | Tìm giá trị lớn nhất của biểu thức P=x-x^2-1.
+  nbbe TL 4 | (Đề thi HSG lớp 8, huyện Thái Thụy, tỉnh Thái Bình, năm 2016). Tìm giá trị nhỏ nhất của biểu thức A = (x-1)(2x
+  pfm8 TL 4 | (Đề thi HSG8, Phòng GD Tam Dương, Vĩnh Phúc, 2018). Tìm giá trị nhỏ nhất của biểu thức C = \sqrt{16x^2+8x+1} +
+  qoja TL 4 | (Đề thi học sinh giỏi 8, tỉnh Khánh Hòa, năm 2017). Tìm giá trị nhỏ nhất của biểu thức P = x^4+2x^3+3x^2+2x+1.
+  rvbc NLC 3 | Giá trị nhỏ nhất của biểu thức M = x^2 - 4x + 10 là
+  3m9n TL 3 | Tìm giá trị nhỏ nhất của biểu thức sau: B = x^2 - x + 1.
+  klaj TL 3 | Tìm giá trị nhỏ nhất của biểu thức sau: A = x^2 - 2x + 5.
+  18lr TL 4 | Tìm giá trị nhỏ nhất của biểu thức sau: D = (x-1)(x+2)(x+3)(x+6).
+  0rq7 TL 3 | Tìm giá trị lớn nhất của biểu thức sau: A = -x^2 - 4x - 2.
+  w9tj TL 3 | Tìm giá trị lớn nhất của biểu thức sau: B = (2-x)(x+4).
+  8uyo TL 4 | Tìm giá trị lớn nhất của biểu thức sau: D = -5x^2 + 4xy - y^2 + 1.
+  5lm2 TL 3 | Tìm giá trị nhỏ nhất của biểu thức: C=x^2-4x+y^2-8y+6.
+  fk9w TL 4 | Tìm giá trị nhỏ nhất của biểu thức: D=(2x-1)(x+2)(2x+1)(x+3).
+  vtq6 TL 3 | Tìm giá trị lớn nhất của biểu thức: B=4x-2x^2+1.
+  kurr TL 3 | Tìm giá trị nhỏ nhất của biểu thức: A=x^2+6x+7.
+  3zuk TL 3 | Tìm giá trị lớn nhất của biểu thức: C=12x-8y-4x^2-y^2+1.
+  0r2d TL 4 | Tìm giá trị lớn nhất của biểu thức: D=-x(x-3)(x-4)(x-7)+10.
+  qoht TL 3 | Tìm giá trị nhỏ nhất của biểu thức sau: A=4x^2-4x+3.
+  4cn4 TL 3 | Tìm giá trị lớn nhất của biểu thức sau: B=(x+3)(2-x)-7.
+  5ofd TL 3 | Tìm giá trị nhỏ nhất của biểu thức sau: M=x^2+2y^2+2xy-2x-6y+2025.
+  lfvc TL 4 | Về nhà: Tìm GTNN của biểu thức P=x^2+2y^2+4x-10y-2xy+28.
+  zqfv TL 4 | Về nhà: Tìm GTNN của biểu thức Q=2x^2+9y^2-6xy-6x-12y+2015.
+  11ef NLC 3 | Cho biểu thức K=x^2-6x+y^2-4y+6 có giá trị nhỏ nhất là:
+  ezow TL 3 | Tìm giá trị lớn nhất, giá trị nhỏ nhất (nếu có) của các biểu thức sau:  A = x^2 - 2x + 9  B = x^2 + 6x - 3  C 
+  d90x TL 3 | Tìm giá trị lớn nhất của biểu thức sau: C = -4x^2 - 8x + 10.
+  1cps TL 4 | Tìm giá trị nhỏ nhất của biểu thức sau: C = x^2 + 5y^2 - 2xy + 4y + 3.
+  j809 TL 4 | (Đề thi KĐCL, Thanh Chương, tỉnh Nghệ An, năm 2013). Tìm giá trị nhỏ nhất của biểu thức A = 2x^2+3y^2+4xy-8x-2
+  bn95 TL 4 | Tìm giá trị nhỏ nhất của biểu thức M=10x^2+y^2+2xy+10x+4y+10
+  oktj TL 3 | Bạn Nam muốn làm một khung ảnh hình chữ nhật và sử dụng các dây trang trí xung quanh phần khung đó. Biết độ dà
+
+### [2] Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu | Chứng minh chia hết (6)
+    yêu cầu: Vận dụng được hằng đẳng thức bình phương của một tổng hoặc một hiệu để giải quyết bài toán chứng minh chia hết.
+  921j TL 1 | Chứng minh rằng với mọi số tự nhiên n, ta có: (n + 3)^2 - (n - 1)^2 chia hết cho 8.
+  n8yb TL 2 | Chứng minh rằng với mọi số tự nhiên n, biểu thức (n + 4)^2 - n^2 chia hết cho 8.
+  ivbv TL 3 | Chứng minh với mọi n thì A = (4n+3)^2-25 chia hết cho 8.
+  w0bd TL 4 | (Đề thi KĐCL, Thanh Chương, Nghệ An năm 2013). Cho hai số chính phương liên tiếp. Chứng minh rằng tổng của hai
+  97my TL 3 | Chứng minh rằng hiệu các bình phương của hai số chẵn liên tiếp chia hết cho 4.
+  62ov TL 4 | *. Cho ba số nguyên  a; b; c có tổng chia hết cho  6. Chứng minh rằng biểu thức  M = (a + b)(b + c)(c + a) - 2
+
+### [3] Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu | Chứng minh giá trị của biểu thức không phụ thuộc vào các biến (2)
+    yêu cầu: Vận dụng được các hằng đẳng thức bình phương của một tổng hoặc một hiệu và hiệu hai bình phương để biến đổi, rút gọn biểu thức đại số về một
+  lwd5 TL 3 | Chứng minh giá trị của biểu thức sau không phụ thuộc vào giá trị của các biến: C = (x+y-z-t)^2 - (z+t-x-y)^2.
+  mlvn TL 3 | Chứng minh các biểu thức sau không phụ thuộc vào biến:  M = 5x(x - 5y) + (y - 5x)(-5y) - 1 - 5(x^2 - y^2)  N =
+
+### [4] Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu | Vận dụng hằng đẳng thức để tính (78)
+    yêu cầu: Thực hiện được việc khai triển hoặc viết gọn các biểu thức đại số bằng cách sử dụng các hằng đẳng thức bình phương của một tổng, một hiệu và
+  24bt NLC 1 | Tích (2x-3)(2x+3) có kết quả bằng:
+  bcti NLC 2 | Điền vào chỗ trống: (\frac{1}{2}x - y)^2 = \frac{1}{4}x^2 - \ldots + y^2
+  tvs3 TL 1 | Tính nhanh: a) 48 \cdot 52; b) 104^2.
+  j905 TL 1 | Tính nhanh: a) 67 \cdot 73; b) 305^2.
+  p80m TL 1 | Viết các biểu thức sau dưới dạng bình phương của một tổng hoặc một hiệu: a) x^2 + 6x + 9; b) 9a^2 - 12ab + 4b^
+  bfb2 TL 1 | Viết các biểu thức sau dưới dạng bình phương của một tổng hoặc một hiệu: a) x^2 - 10x + 25; b) 25x^2 + 20xy + 
+  sl20 NLC 1 | Biểu thức thích hợp cần điền vào [?] trong đẳng thức (3x - y)(3x + y) = [?] - y^2 là
+  i5v4 NLC 2 | Biểu thức thích hợp cần điền vào [?] trong đẳng thức x^2 + 6xy + [?] = (x + 3y)^2 là
+  cqc3 NLC 2 | Biểu thức thích hợp điền vào hai vị trí [?_1] và [?_2] trong đẳng thức [?_1] - 12xy + 9y^2 = (2x - [?_2])^2 lầ
+  edlk NLC 2 | Cặp biểu thức (A, B) thỏa mãn đẳng thức 16x^2 - 24xy + A = (B - 3y)^2 là
+  iysc TL 1 | Tính: (x - 5y^2)(x^2 + 5xy^2 + 25y^4).
+  fxxj TL 1 | Áp dụng hằng đẳng thức hiệu hai bình phương để tính 5^2-4^2.
+  ipgo TL 2 | Tính nhanh giá trị của biểu thức: D=50^2-49 \cdot 51.
+  thqz TL 1 | Điền các đơn thức hoặc các phép tính thích hợp vào ô trống: (2x+3)^2 = 4x^2 + [?] + 9.
+  bdet TL 2 | Tính giá trị biểu thức: 950^2-850^2.
+  0f4x TL 2 | Tính giá trị biểu thức: 150^2-50^2.
+  rv2r TL 2 | Tính giá trị biểu thức: (2h+2)^2-2(2h+2)(h-8)+(h-8)^2 với h=-5.
+  wsxo TL 1 | Tính: (4x + 7)^2.
+  abk3 TL 1 | Tính: (6x - \frac{1}{3}y)^2.
+  4xig TL 1 | Tính: (3x^2 - 5xy^3)(3x^2 + 5xy^3).
+  p4m8 NLC 1 | Điền vào chỗ trống sau: (x+2)^2 = x^2 + [?] + 4.
+  ors9 NLC 1 | Kết quả của (x-1)^2 = ??
+  y9a2 NLC 1 | Kết quả của x^2-2^2 = ??
+  difc TL 1 | Điền vào ô trống và chỗ "..." để hoàn thành phép tính sau: (x+\frac{1}{2})^2 = [?]^2 + [?] \cdot x \cdot [?] +
+  85hi NLC 2 | Dạng hiệu hai bình phương của biểu thức (x^2-4y)(x^2+4y) là
+  sq7p NLC 3 | Kết quả của biểu thức 3(2^2+1)(2^4+1)(2^8+1)(2^{16}+1)(2^{32}+1) là:
+  syyy NLC 1 | Điền vào chỗ trống sau: x^2 - [?] = (x-4)(x+4).
+  wnuj TL 1 | Điền vào ô trống và chỗ "..." để hoàn thành phép tính sau: x^2-y^2 = (x-\dots)(\dots + \dots)
+  iqf7 TL 1 | Điền vào ô trống và chỗ "..." để hoàn thành phép tính sau: 9x^2-4y^2 = (\dots)^2 - (2y)^2 = (\dots - \dots)(\d
+  uk76 TL 2 | Điền vào ô trống và chỗ "..." để đưa biểu thức sau về bình phương của một tổng: (2x+3y)^2 + 2(2x+3y) + 1 = (\d
+  11ev TL 2 | Điền vào ô trống và chỗ "..." để đưa biểu thức sau về bình phương của một hiệu: x^2 - 8x + 16 = [?]^2 - 2 \cdo
+  j1ez TL 3 | Điền vào ô trống và chỗ "..." để hoàn thành phép biến đổi sau: (2x-1-5x+5)(2x-1+5x-5) = [2x-1-(\dots - \dots)]
+  zen1 TL 2 | Điền vào ô trống và chỗ "..." để đưa biểu thức sau về hiệu hai bình phương: (2y-x)(2y+x) = \dots^2 - \dots^2
+  1p0b TL 2 | Tính nhanh: 102^2.
+  doyv TL 2 | Tính nhanh: 67 \cdot 73.
+  j6nq TL 2 | Tính nhanh: 153^2 + 94 \cdot 153 + 47^2.
+  qc5l TL 1 | Thực hiện phép tính: (4x-1)^2.
+  xx75 TL 1 | Thực hiện phép tính: (x+\frac{1}{2})(x-\frac{1}{2}).
+  lqtf TL 1 | Thực hiện phép tính: (x^2 - \frac{1}{3})^2.
+  5pi1 TL 1 | Thực hiện phép tính: (10x-2y)(2y+10x).
+  63bf TL 2 | Thực hiện phép tính: (a+b+1)(a+b-1).
+  mo8q TL 1 | Viết biểu thức sau dưới dạng bình phương của một tổng hoặc hiệu: x^2-6x+9.
+  dneh TL 1 | Viết biểu thức sau dưới dạng bình phương của một tổng hoặc hiệu: 25x^2-10x+1.
+  6p2s TL 2 | Tính nhanh: 501^2.
+  h8zg TL 2 | Tính nhanh: 88^2 + 24 \cdot 88 + 12^2.
+  mfqi TL 2 | Tính nhanh: \frac{437^2-363^2}{537^2-463^2}.
+  y2s7 TL 1 | Thực hiện phép tính: (x-3)^2-x(x+1).
+  632g TL 1 | Thực hiện phép tính: (2x+2)^2-3x^2-(4x+4).
+  xv4c TL 1 | Thực hiện phép tính: (x-5)(x+5)-x(x-25)+10.
+  j1tp TL 1 | Thực hiện các phép tính sau: (x-2)(x^2+2x+4).
+  f8eh TL 1 | Thực hiện các phép tính sau: (2x+1)(4x^2-2x+1).
+  yung TL 1 | Thực hiện các phép tính sau: (1-\frac{x}{2})(1+\frac{x}{2}+\frac{x^2}{4}).
+  t9qh NLC 2 | Viết (3x-2)(9x^2+6x+4) dưới dạng hiệu ta được:
+  8dkb NLC 3 | So sánh M=2^{32} và N=(2+1)(2^2+1)(2^4+1)(2^8+1)(2^{16}+1)
+  y4if NLC 1 | Biểu thức (a+b+c)^2 bằng:
+  m0ln NLC 1 | Chọn câu sai:
+  bmjy NLC 1 | Giá trị của đa thức x^2+2xy+y^2 tại x=9, y=1 là:
+  dz36 NLC 2 | Chọn câu "Đúng":
+  gjbo NLC 1 | Khai triển 4x^2-25y^2 theo hằng đẳng thức ta được:
+  tpgm NLC 1 | Hằng đẳng thức bình phương của một tổng là:
+  qkkm TL 1 | Điền các đơn thức hoặc các phép tính thích hợp vào ô trống: (\frac{2}{3}x+3)^2 = [?] x^2 + [?] x + [?].
+  dp2y TL 1 | Điền vào ô trống và chỗ "..." để hoàn thành phép tính sau: (x^2-2y)^2 = (\dots)^2 - 2 \cdot [?] \cdot [?] + (2
+  dvsm TL 2 | Tính nhanh giá trị của biểu thức: C=39^2+78 \cdot 61+61^2.
+  hkhd TL 2 | Tính nhanh: 502 \cdot 498.
+  3sdc TL 2 | Tính nhanh: 101^2 - 99^2.
+  6vdt TL 2 | Thực hiện phép tính: (x+y+1)^2-(x-y)(x+y)-2x-2y.
+  z2v9 NLC 1 | Biểu thức thích hợp cần điền vào [?] trong đẳng thức (x - 5y)(x + 5y) = x^2 - [?] là
+  szfs TL 1 | Điền các đơn thức thích hợp vào ô trống: (x-\frac{1}{x})^2 = x^2 - [?] + \frac{1}{x^2}.
+  9xat TL 1 | Áp dụng hằng đẳng thức hiệu hai bình phương để tính: (\frac{2}{5}u^3-3v^2)(\frac{2}{5}u^3+3v^2).
+  yspw TL 1 | Viết đa thức 25x^2-5xy+\frac{1}{4}y^2 dưới dạng bình phương hay lập phương của một tổng hay hiệu.
+  pe9w TL 1 | Áp dụng hằng đẳng thức bình phương của một tổng hoặc bình phương của một hiệu để tính: (y-2)^2.
+  8qyy TL 2 | Tính giá trị biểu thức: 25^2-15^2.
+  hovx TL 2 | Điền vào ô trống và chỗ "..." để đưa biểu thức sau về bình phương của một tổng: 4x^2 + 12xy + 9y^2 = (\dots)^2
+  jo05 NLC 1 | Hằng đẳng thức bình phương của một hiệu là:
+  3jru NLC 2 | Khai triển (3x-4y)^2 ta được:
+  fug1 NLC 2 | Biểu thức \frac{1}{4}x^2y^2+xy+1 bằng:
+  k6mu NLC 1 | Hằng đẳng thức hiệu hai bình phương là:
+  jrbd TL 2 | Điền vào ô trống và chỗ "..." để đưa biểu thức sau về bình phương của một tổng: x^2 + \frac{2}{3}x + \frac{1}{
+
+### [5] Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu | Chứng minh đẳng thức (4)
+    yêu cầu: Vận dụng được hằng đẳng thức bình phương của một tổng, một hiệu hoặc hiệu hai bình phương để chứng minh một đẳng thức đại số.
+  f7kz TL 3 | Chứng minh đẳng thức: (x+y)^2-(x-y)^2=4xy.
+  n1wn TL 3 | Chứng minh rằng: (a+b-c)^2 + (a-b+c)^2 - 2(b-c)^2 = 2a^2.
+  i8ft TL 4 | Chứng minh rằng nếu a^2+b^2+c^2=ab+bc+ca thì a=b=c.
+  xlyp TL 3 | Chứng minh đẳng thức: 3(x^2+y^2+z^2)-(x-y)^2-(y-z)^2-(z-x)^2=(x+y+z)^2.
+
+### [6] Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu | Rút gọn và tính giá trị của biểu thức (40)
+    yêu cầu: Vận dụng được các hằng đẳng thức đáng nhớ để thu gọn biểu thức và tính giá trị của biểu thức tại giá trị cho trước của biến.
+  sfn5 NLC 2 | Rút gọn biểu thức (a+b)^2-(a-b)^2 được kết quả là:
+  pinl TL 2 | Rút gọn các biểu thức sau: a) (2x - y)^2 - (2x + y)^2; b) (2x + 5y)^2 + (5x - 2y)^2.
+  nvcm TL 2 | Rút gọn các biểu thức sau: a) (x - 4y)^2 - (x + 4y)^2; b) (x + 2y)^2 + (2x - y)^2.
+  yx3r TL 2 | Rút gọn rồi tính giá trị của biểu thức sau với x=-19: A=(3x+2)^2+(2x-7)^2-2(3x+2)(2x-7).
+  h3sm TL 2 | Cho biểu thức A=5(x+3)(x-3)+(2x+3)^2+(x-6)^2. Rút gọn rồi tính giá trị của biểu thức A với x=-\frac{1}{5}.
+  vgiw TL 2 | Cho biết x+y=15 và xy=-100. Tính giá trị của biểu thức B=x^2+y^2.
+  hmf7 TL 2 | Rút gọn biểu thức sau: (7x+4)^2-(7x+4)(7x-4).
+  4o8i TL 2 | Rút gọn biểu thức sau: (2x+3)^2+(2x-3)^2-2(4x^2-9).
+  5ft6 TL 2 | Rút gọn rồi tính giá trị của biểu thức sau với u=\frac{1}{5}: B=(7u+7)^2+(2u+7)^2-2(7u+7)(2u+7).
+  3ik6 NLC 2 | Kết quả của biểu thức (x-5)^2 - (x+5)^2 là
+  jyrv TL 2 | Rút gọn, sau đó tính giá trị biểu thức sau: A = (5x-2)(5x+2) - (5x+2)^2 + 10 tại x=2.
+  qm2g TL 2 | Rút gọn, sau đó tính giá trị biểu thức sau: B = (4x+1)^2 - 4(2x-2)^2 + 2(x-5) tại x=-1.
+  oqod TL 2 | Rút gọn, sau đó tính giá trị biểu thức sau: C = x^2 + 2xy + y^2 - 4x - 4y + 1 tại x+y=3.
+  xavd TL 2 | Rút gọn, sau đó tính giá trị biểu thức sau: D = (x-1)^2 - 2(x-1)(x+5) + (x+5)^2 + x + 64 tại x=-100.
+  mjk6 TL 2 | Rút gọn, sau đó tính giá trị biểu thức sau: B = -(2x-1)^2 + (x+1)^2 + (2x-1)(2x+1) tại x=10.
+  6a6j TL 3 | Rút gọn, sau đó tính giá trị biểu thức sau: C = (2x+3)^2 - 2(2x+3)(2x+5) + (2x+5)^2 + y tại x=2022, y=36.
+  6xzi TL 2 | Tính nhanh giá trị biểu thức: A=(2x+3)(2x-3)-x(3x-100)-x^2 tại x=\frac{1}{10}.
+  97y2 TL 2 | Tính nhanh giá trị biểu thức: B=(3x+y)^2-2y(3x+y)+y^2 tại x=10, y=99.
+  9vj8 TL 3 | Cho a - b = 7. Tính giá trị biểu thức A = a^2(a + 1) - b^2(b - 1) - 3ab(a - b + 1) + ab.
+  5xn7 TL 2 | Tính nhanh giá trị các biểu thức sau: C = (x^2-2)(x^4+2x^2+4) - x(x^5+1) + 8 tại x=99.
+  atua NLC 2 | Giá trị của biểu thức E=(x+1)(x^2-x+1)-(x-1)(x^2+x+1) là:
+  kgf8 TL 2 | Rút gọn biểu thức sau: (x+y)^2-(x-y)^2-4xy
+  xkau TL 3 | Rút gọn biểu thức sau: (2y-5)(4y^2+10y+25)-8y^2(y-1)+125
+  bi90 TL 2 | Cho x-y=7, tính giá trị của biểu thức A=x^2+2x+y(y-2)-2xy
+  dcqo TL 2 | Cho x+2y=5. Tính giá trị biểu thức sau: C=x^2+4y^2-2x+10+4xy-4y
+  ru2o TL 2 | Rút gọn biểu thức (5x+2)^2 - (5x+2)(5x-2)
+  md8g TL 2 | Rút gọn biểu thức (4x+3)^2 - (4x+3)(4x-3)
+  icdi TL 1 | Thực hiện phép tính sau: (x+2)^2 + (x-3)(x+3) - 2x^2
+  xw7h TL 1 | Thực hiện phép tính sau: (x-3)^2 + (x-4)(x+4) - 2x^2
+  0qjv TL 4 | *. Cho các số thực  x, y thỏa mãn  x^2 + 5y^2 - 4xy - 4x + 2y + 13 = 0. Tính giá trị  M = (x - 9)^{2023} + (y 
+  g8gu TL 2 | Thực hiện phép tính sau: (x-1)^2+(x-2)(x+2)-2x^2
+  i8ni TL 4 | Cho các số thực x,y thỏa mãn 2x^2-2xy+y^2-2x-4y+13=0. Tính giá trị biểu thức P=(2x-5)^{11}+(y-6)^{2023}.
+  vv1u TL 4 | a) Cho các số thực x, y thỏa mãn 2x^2 - 2xy + y^2 - 2x - 4y + 13 = 0. Tính giá trị biểu thức P = (2x - 5)^{11}
+  t28b NLC 2 | Giá trị của đa thức x^2 + 2xy + y^2 tại x = 9, y = 11 là:
+  pn35 TL 2 | Rút gọn, sau đó tính giá trị biểu thức sau: E = (3x+4)^2 - (9x^2-6x+1) - 20x tại x=-\frac{1}{10}.
+  t0f0 TL 2 | Rút gọn, sau đó tính giá trị biểu thức sau: A = (x-2)^2 - (x-1)(x+1) - x(1-x) tại x=5.
+  ibpc TL 2 | Rút gọn biểu thức: (7x + 4)^2 - (7x + 4)(7x - 4).
+  lvnr TL 2 | Rút gọn biểu thức sau: x(x-6)-(x+4)(x-4)+3x-16
+  0rth TL 2 | Rút gọn các biểu thức sau a)  A = x^2(x - y^2) - xy(1 - yx) - x^3 + 4x^3y^6 : 10xy^4 b)  B = x(x + 3y + 1) - 2
+  sfxq TL 4 | *. Cho  x, y là các số thực thỏa mãn  x^2 + y^2 + xy - 3x - 3y + 3 = 0. Chứng minh biểu thức  P = (3x + 2y - 6
+
+### [7] Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu | Tìm x thoả mãn đẳng thức (11)
+    yêu cầu: Vận dụng được hằng đẳng thức bình phương của một tổng, một hiệu hoặc hiệu hai bình phương để tìm biến số thỏa mãn đẳng thức.
+  wiu1 TL 2 | Tìm x, biết: (3x+4)^2-(3x-1)(3x+1)=65
+  toa2 TL 2 | Tìm x biết rằng: (x-5)^2+(x-3)(x+3)-2(x+1)^2=0.
+  zatz TL 2 | Tìm x biết rằng: (2x+1)(1-2x)+(2x-1)^2=22.
+  qukn TL 4 | Tìm các số x, y, z biết: x^2 - 6x + y^2 + 10y + 34 = -(4z-1)^2.
+  87p4 TL 2 | Tìm x biết: (x-4)^2-(x-2)(x+2)=12.
+  wvf4 TL 2 | Tìm x biết: (8-2x)^2-16=0.
+  5m1u TL 3 | Tìm x, biết: x(x-5)(x+5) - (x+2)(x^2-2x+4) = 0.
+  d7lb NLC 2 | Có bao nhiêu giá trị x thỏa mãn: 5^2-x^2=0
+  0haz TL 3 | Tìm x, biết: x(x-5)(x+5)-(x-2)(x^2+2x+4)=58
+  gs3w TL 2 | Tìm x, biết: (x+2)^2-(2x-1)^2=0
+  qp09 TL 2 | Tìm  x, biết: a)  x(x - 3) - (x + 1)(x - 2) = 5 b)  x^2 - 6x + 9 = 0 c)  4x^2 - 25 = 0 d)  4x(x - 7) - 4x^2 = 
+
+### [8] Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu | Toán tổng hợp (6)
+    yêu cầu: Vận dụng tổng hợp các hằng đẳng thức đáng nhớ để giải các bài toán rút gọn, tính giá trị, chứng minh và tìm giá trị lớn nhất, nhỏ nhất.
+  ko3k TL 4 | (Đề thi HSG8, huyện Củ Chi, TP Hồ Chí Minh năm 2016). a) Tìm giá trị nhỏ nhất của biểu thức x^2+5y^2+2xy-4x-8y
+  5dpf TL 4 | (Đề thi hsg lớp 8, Đông Hà, Quảng Trị năm 2017). Tìm tất cả các số nguyên x sao cho x^2+4x-3 là số chính phươn
+  1a0a TL 3 | Một mảnh đất hình vuông có cạnh là x(m). Người ta mở rộng mảnh đất về bốn phía, mỗi phía 2(m) thì diện tích tă
+  sbls TL 4 | Chứng minh rằng với mọi x \in Q thì giá trị của biểu thức N=(x+1)(x+2)(x+3)(x+4)+1 luôn là bình phương của một
+  qskn TL 4 | HSG Huyện Thanh Oai 2023-2024. Cho các số x,y,z \ne 0 thỏa mãn đồng thời \frac{1}{x} + \frac{1}{y} + \frac{1}{
+  swml TL 4 | Cho các số x,y thỏa mãn điều kiện x^2-2xy+6y^2-12x+2y+41=0. Tính giá trị biểu thức A = \frac{2020-2019(9-x-y)^
+
+### [9] Bài 1. Hiệu 2 bình phương. Bình phương của một tổng hay một hiệu | Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến (4)
+    yêu cầu: Vận dụng được hằng đẳng thức bình phương của một tổng hoặc một hiệu để chứng minh một biểu thức luôn nhận giá trị dương hoặc âm.
+  avqc TL 3 | Chứng minh giá trị của biểu thức P=x^2-2x+3 luôn luôn dương với mọi giá trị của x.
+  phct TL 3 | Chứng minh giá trị của biểu thức Q=6x-x^2-10 luôn luôn âm với mọi giá trị của x.
+  7lnp NLC 2 | Trong các biểu thức sau, biểu thức nào luôn nhận giá trị dương:
+  fq4i TL 3 | Chứng minh giá trị biểu thức Q = -x^2 + 6x - 10 luôn luôn âm với mọi x.
+
+### [10] Bài 2. Lập phương của một tổng hay một hiệu | Rút gọn và tính giá trị của biểu thức (18)
+    yêu cầu: Thực hiện được việc rút gọn và tính giá trị của biểu thức đại số bằng cách áp dụng hằng đẳng thức lập phương.
+  fjd5 TL 2 | Rút gọn biểu thức sau: (x+2y)^3-6xy(x+2y).
+  q2fk TL 2 | Rút gọn biểu thức sau: (x+2)^3+(x-2)^3+x^3-3x(x+2)(x-2).
+  t2p9 TL 2 | Rút gọn biểu thức: (x + 2y)^3 - 6xy(x + 2y).
+  kgel NLC 2 | Giá trị biểu thức A=8x^3+12x^2+6x+1 tại x=9,5 bằng:
+  uqn5 TL 2 | Tính nhanh giá trị các biểu thức sau: A = 27 - 54x + 36x^2 - 8x^3 tại x = 4.
+  23ux TL 2 | Tính nhanh giá trị các biểu thức sau: A = x^3 - 6x^2 + 12x - 8 tại x = 5.
+  ozon TL 2 | Tính nhanh giá trị các biểu thức sau: B = 1 + \frac{3x}{2} + \frac{3x^2}{4} + \frac{x^3}{8} tại x = 18.
+  0arv TL 2 | Rút gọn biểu thức sau: M = (x + 2)^3 - (x - 2)^3 + (x - 4)(x + 4).
+  tli9 TL 2 | Rút gọn biểu thức sau: N = (a + b)^3 + (a - b)^3 - 6ab^2 - 2a(a + 1).
+  bh65 TL 2 | Tính nhanh giá trị các biểu thức sau: D = (2x + y)^3 - 6(2x + y)^2x + 12(2x + y)x^2 - 8x^3 tại x = 99 và y = 5
+  y7ru TL 3 | Rút gọn biểu thức sau: (x+3)^3-(2-x)^3-2x^3
+  hsze TL 2 | Rút gọn biểu thức: (2x - y)^3 + 6xy(2x - y).
+  53o0 TL 2 | Rút gọn biểu thức: (3x + y)^3 - 9xy(3x + y).
+  9cw9 TL 2 | Tính nhanh giá trị của biểu thức: A = 8x^6 + 4x^4y + \frac{2}{3}x^2y^2 + \frac{1}{27}y^3 tại x = 3 và y = 6.
+  ztr4 TL 2 | Tính nhanh giá trị của biểu thức: B = 27x^3 - 27x^2y^2 + 9xy^4 - y^6 tại x = 4 và y = 3.
+  2mbl TL 2 | Tính nhanh giá trị các biểu thức sau: C = x^6 - \frac{3}{2}x^4y + \frac{3}{4}x^2y^2 - \frac{1}{8}y^3 tại x = 4
+  qp60 NLC 3 | Hệ số tự do của đa thức M=(x+2)^3-(x-2)^3+(x-4)(x+4) khi thu gọn là:
+  vs4r TL 2 | Tính nhanh giá trị các biểu thức sau: B = (x + 2y)^3 - 3(x + 2y)^2 + 3(x + 2y) - 1 tại x = 10, y = \frac{1}{2}
+
+### [11] Bài 2. Lập phương của một tổng hay một hiệu | Chứng minh giá trị của biểu thức không phụ thuộc vào các biến (1)
+    yêu cầu: Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để chứng minh giá trị của biểu thức không phụ thuộc vào biến.
+  i3ok TL 3 | Trong các biểu thức sau, biểu thức nào không phụ thuộc vào giá trị của biến x: 1. A = (x - 1)^3 - (x + 1)^3 + 
+
+### [12] Bài 2. Lập phương của một tổng hay một hiệu | Tìm giá trị nhỏ nhất, lớn nhất (1)
+    yêu cầu: Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để tìm giá trị lớn nhất, giá trị nhỏ nhất của biểu thức.
+  aq1k NLC 3 | Giá trị lớn nhất của biểu thức M=(x-3)^3+(-x-1)^3 là:
+
+### [13] Bài 2. Lập phương của một tổng hay một hiệu | Vận dụng hằng đẳng thức để tính (28)
+    yêu cầu: Thực hiện được việc khai triển hoặc viết gọn một biểu thức đại số bằng cách vận dụng các hằng đẳng thức đáng nhớ.
+  1haq TL 1 | Viết đa thức 8x^3-12x^2y+6xy^2-y^3 dưới dạng bình phương hay lập phương của một tổng hay hiệu.
+  ze1a TL 1 | Tính: (2x^2 + 5y)^3.
+  fwdm TL 1 | Tính: (3x^3 - 4xy)^3.
+  fqfd NLC 2 | x^3-x^2+\frac{1}{3}x-\frac{1}{27}=
+  fbtk NLC 2 | Cho x^3+12x^2+48x+64=(x+a)^3. Giá trị của a là:
+  v8ur NLC 1 | Hằng đẳng thức lập phương của một tổng là:
+  tpwu NLC 1 | Hằng đẳng thức lập phương của một hiệu là:
+  haey NLC 1 | Cho (x-2)^3=x^3-\dots+12x-8. Điền đơn thức phù hợp vào chỗ trống.
+  03ub NLC 1 | Khai triển (x+3)^3 ta được:
+  4sc2 NLC 2 | Để đa thức x^3+6x^2+12x+m là lập phương của một tổng thì giá trị của m là:
+  h3o9 NLC 2 | Cho biểu thức M=27x^3-135x^2+225x-130. Chọn phương án đúng nhất.
+  5zxj TL 1 | Điền vào ô trống và chỗ "..." để hoàn thành phép tính sau: (x+5)^3=x^3+3 \cdot [?] \cdot [?] + 3 \cdot x \cdot
+  ct4o TL 1 | Điền vào ô trống và chỗ "..." để hoàn thành phép tính sau: (x-\frac{1}{2})^3 = \dots^3 - [?]x^2 \cdot [?] + 3 
+  nbg9 TL 1 | Điền vào ô trống và chỗ "..." để hoàn thành phép tính sau: (\frac{1}{2}x+y^2)^3 = \dots
+  2ugz TL 1 | Viết biểu thức sau về lập phương của một tổng hoặc lập phương của một hiệu: 27y^3-9y^2+y-\frac{1}{27}.
+  bz9f TL 1 | Viết biểu thức sau về lập phương của một tổng hoặc lập phương của một hiệu: x^3+\frac{3}{2}x^2+\frac{3}{4}x+\f
+  57zd TL 1 | Viết biểu thức sau về lập phương của một tổng hoặc lập phương của một hiệu: x^3-\frac{3}{5}x^2+\frac{3}{25}x-\
+  8onk TL 1 | Viết biểu thức sau về lập phương của một tổng hoặc lập phương của một hiệu: 8x^6+12x^4y+6x^2y^2+y^3.
+  32cj TL 2 | Tính nhanh giá trị biểu thức sau: D = 98^3 + 6 \cdot 98^2 + 12 \cdot 98 + 8.
+  bj3d TL 1 | Tính: (y - 2)^3.
+  0eus TL 1 | Tính: (x - 3y)^3.
+  vvcf TL 1 | Tính: (2x + \frac{1}{3})^3.
+  rbvw TL 1 | Tính: (2x^2 + 3y)^3.
+  bijm TL 2 | Tính nhanh: E = 203^3 - 9 \cdot 203^2 + 27 \cdot 203 - 27.
+  3of6 NLC 2 | Viết biểu thức x^3+12x^2+48x+64 dưới dạng lập phương của một tổng ta được:
+  j96b TL 2 | Tính nhanh giá trị biểu thức sau: C = 101^3.
+  apy4 NLC 1 | x^3+3x^2+3x+1=
+  tfgr TL 1 | Điền vào ô trống và chỗ "..." để hoàn thành phép tính sau: (x^2-3)^3 = (x^2)^3-3(\dots)^2 \cdot [?] + 3x^2 \cd
+
+### [14] Bài 2. Lập phương của một tổng hay một hiệu | Tìm x thoả mãn đẳng thức (1)
+    yêu cầu: Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để tìm biến số thỏa mãn đẳng thức cho trước.
+  ee17 TL 2 | Tìm x thỏa mãn (x + 1)^3 - x(x^2 + 3) = 4?
+
+### [15] Bài 2. Lập phương của một tổng hay một hiệu | Toán tổng hợp (1)
+    yêu cầu: Vận dụng tổng hợp các hằng đẳng thức đáng nhớ để giải các bài toán rút gọn, tính giá trị, chứng minh và tìm giá trị lớn nhất, nhỏ nhất.
+  j9dq TL 3 | Từ một khối lập phương có cạnh bằng 2x - 1 (cm), người ta cắt bỏ một khối lập phương có cạnh bằng 2x - 3 (cm) 
+
+### [16] Bài 2. Lập phương của một tổng hay một hiệu | Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến (0)
+    yêu cầu: Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để chứng minh biểu thức luôn nhận giá trị dương hoặc âm.
+
+### [17] Bài 2. Lập phương của một tổng hay một hiệu | Chứng minh chia hết (1)
+    yêu cầu: Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để giải quyết bài toán chứng minh chia hết.
+  miif TL 4 | Chứng minh rằng tích ba số nguyên dương liên tiếp không là lập phương của một số tự nhiên.
+
+### [18] Bài 2. Lập phương của một tổng hay một hiệu | Chứng minh đẳng thức (1)
+    yêu cầu: Vận dụng được hằng đẳng thức lập phương của một tổng hoặc một hiệu để chứng minh một đẳng thức đại số.
+  vn6j TL 3 | Chứng minh đẳng thức: (x+y)^3-(x-y)^3=2y(3x^2+y^2).
+
+### [19] Bài 3. Tổng và hiệu 2 lập phương | Tìm x thoả mãn đẳng thức (1)
+    yêu cầu: Vận dụng được các hằng đẳng thức đáng nhớ để biến đổi biểu thức và tìm giá trị của biến x thỏa mãn đẳng thức cho trước.
+  r60b TL 3 | Tìm x, biết: (x-3)^3 - (x-3)(x^2+3x+9) + 9(x+1)^2 = 54.
+
+### [20] Bài 3. Tổng và hiệu 2 lập phương | Chứng minh chia hết (0)
+    yêu cầu: Vận dụng được các hằng đẳng thức đáng nhớ để biến đổi biểu thức và chứng minh tính chất chia hết của biểu thức số hoặc biểu thức đại số.
+
+### [21] Bài 3. Tổng và hiệu 2 lập phương | Chứng minh đẳng thức (4)
+    yêu cầu: Vận dụng được các hằng đẳng thức đáng nhớ để biến đổi và chứng minh sự bằng nhau của hai biểu thức đại số.
+  6lty TL 4 | Chứng minh đẳng thức sau: (a + b + c)^3 = a^3 + b^3 + c^3 + 3(a + b)(b + c)(c + a)
+  af0d TL 3 | Cho x+y=1 và xy=-1. Chứng minh rằng: x^3+y^3=4.
+  kfti TL 3 | Cho x-y=1 và xy=6. Chứng minh rằng: x^3-y^3=19.
+  f1xm TL 4 | Chứng minh rằng a^3+b^3+c^3-3abc = (a+b+c)(a^2+b^2+c^2-ab-bc-ca).
+
+### [22] Bài 3. Tổng và hiệu 2 lập phương | Rút gọn và tính giá trị của biểu thức (14)
+    yêu cầu: Thực hiện được việc rút gọn biểu thức đại số bằng cách sử dụng hằng đẳng thức và tính giá trị của biểu thức tại giá trị cho trước của biến.
+  oacb TL 2 | Rút gọn biểu thức sau: (2x-y)(4x^2+2xy+y^2)-(2x+y)(4x^2-2xy+y^2).
+  0xq7 TL 2 | Rút gọn biểu thức sau: (3x+y)(9x^2-3xy+y^2)-(3x-y)^3-27x^2y.
+  3t6g TL 2 | Rút gọn biểu thức sau: (x+2)(x^2-2x+4)-(18+x^3).
+  dk6d TL 3 | Cho x, y \in {R} thỏa mãn điều kiện x + y = 3; x^2 + y^2 = 17. Tính giá trị biểu thức x^3 + y^3.
+  oiuj TL 3 | Cho a + b = 1. Tính giá trị của biểu thức Q = a^3 + b^3 + 3ab(a^2 + b^2) + 6a^2b^2(a + b).
+  9b1m TL 3 | Rút gọn biểu thức sau: (a + b)^3 + (b + c)^3 + (a + c)^3 - 3(a + b)(b + c)(c + a)
+  49wh NLC 3 | Biết rằng 2x+y=0. Biểu thức A = (x+y)^3+x^3 đạt giá trị nào sau đây?
+  x91z NLC 3 | Với a=b+5 và ab=-3, giá trị của biểu thức A = a^3-b^3 là:
+  1gye TL 2 | Tính nhanh giá trị của biểu thức: C = (3x-2y)(9x^2 + 6xy + 4y^2) - 27x^3 + 8y(y-3)(y+3) tại x=5, y=10.
+  yk77 TL 2 | Tính nhanh giá trị của biểu thức: D = (x+4y)(x^2 - 4xy + 16y^2) - x(x-2)(x+2) - 64y^3 tại x=50, y=3.
+  sbsi TL 2 | Tính nhanh giá trị các biểu thức sau: B = (2x+3y)(4x^2-6xy+9y^2) - 8x(x-1)(x+1) - 27y^3 tại x=10, y=5.
+  1yyr TL 3 | Cho x + y = 1. Tính giá trị của biểu thức P = x^3 + y^3 + 3xy + 5.
+  x1hd NLC 2 | Với x=-20, giá trị của biểu thức P = (x+4)(x^2-4x+16) - (64-x^3) là:
+  hqoe TL 2 | Tính nhanh giá trị các biểu thức sau: A = (x-y)(x^2+xy+y^2)+2x^3+y^3-1 tại x=y=100.
+
+### [23] Bài 3. Tổng và hiệu 2 lập phương | Toán tổng hợp (5)
+    yêu cầu: Vận dụng tổng hợp các hằng đẳng thức đáng nhớ để giải các bài toán rút gọn, tính giá trị, chứng minh và tìm giá trị lớn nhất, nhỏ nhất.
+  pykp TL 4 | (Đề thi HSG toán 8, Hà Đông, Hà Nội, năm 2017). a) Cho các số thực a, b, c thỏa mãn a+b+c=0. Chứng minh rằng a
+  gth5 TL 4 | (Đề thi HSG lớp 8, Đông Hà, Quảng Trị năm 2017). a) Cho các số thực a, b, c. Chứng minh (a+b+c)^3-(a^3+b^3+c^3
+  dulj TL 4 | HSG HUYỆN SƠN ĐỘNG NĂM HỌC 2023-2024. Cho a^3+b^3+c^3=3abc. Tính giá trị biểu thức: P = (1+\frac{a}{b})(1+\fra
+  5rzy TL 4 | Với a, b, c là các số thực thỏa mãn: (3a + 3b + 3c)^3 = 24 + (3a + b - c)^3 + (3b + c - a)^3 + (3c + a - b)^3.
+  nhwy TL 4 | Cho các số nguyên a, b, c thỏa mãn (a - b)^3 + (b - c)^3 + (c - a)^3 = 210. Tính giá trị của biểu thức A = |a 
+
+### [24] Bài 3. Tổng và hiệu 2 lập phương | Chứng minh giá trị của một biểu thức luôn dương (hay âm) với mọi giá trị của biến (0)
+    yêu cầu: Vận dụng được các hằng đẳng thức đáng nhớ để chứng minh một biểu thức đại số luôn nhận giá trị dương hoặc âm với mọi giá trị của biến.
+
+### [25] Bài 3. Tổng và hiệu 2 lập phương | Chứng minh giá trị của biểu thức không phụ thuộc vào các biến (5)
+    yêu cầu: Vận dụng được các hằng đẳng thức đáng nhớ để thu gọn biểu thức và chứng minh giá trị của biểu thức không phụ thuộc vào biến.
+  8817 NLC 3 | Với mọi giá trị của x, giá trị của biểu thức (2x+3)(4x^2-6x+9) - 2(4x^3-1) bằng:
+  z6u8 TL 3 | Chứng minh giá trị của biểu thức sau không phụ thuộc vào giá trị của biến: A=(3x+2)(9x^2-6x+4)-3(9x^3-2).
+  hoo4 TL 3 | Chứng minh giá trị của biểu thức sau không phụ thuộc vào giá trị của các biến: B = (2x-y)(4x^2+2xy+y^2)-(2x+y)
+  d8e9 TL 3 | Chứng minh giá trị của biểu thức sau không phụ thuộc vào giá trị của các biến: A = (2x+y)(4x^2-2xy+y^2)+(3x-y)
+  bu65 TL 3 | Giá trị của biểu thức sau có phụ thuộc vào giá trị của biến không? B=(x+1)^3-(x-1)(x^2+x+1)-3x(x+1).
+
+### [26] Bài 3. Tổng và hiệu 2 lập phương | Vận dụng hằng đẳng thức để tính (17)
+    yêu cầu: Vận dụng được các hằng đẳng thức đáng nhớ để thực hiện phép nhân đa thức hoặc điền khuyết vào các hệ thức toán học.
+  ssrd TL 1 | Áp dụng hằng đẳng thức tổng hai lập phương hoặc hiệu hai lập phương để tính y^3+2^3.
+  nvmy TL 1 | Áp dụng hằng đẳng thức tổng hai lập phương hoặc hiệu hai lập phương để tính (x-5y^2)(x^2+5xy^2+25y^4).
+  0xcn TL 1 | Điền các đơn thức thích hợp vào ô trống: (\frac{1}{2} + [?])(\frac{1}{4} - \frac{1}{6}xy + \frac{1}{9}y^2) = \
+  witj NLC 1 | Hằng đẳng thức tổng hai lập phương là:
+  31ki NLC 1 | Hằng đẳng thức hiệu hai lập phương là:
+  ys5i NLC 1 | Cho x^3+125 = (x+5)(x^2-...+25). Chỗ "..." cần điền là:
+  19pa NLC 2 | Nếu (\frac{y}{3}+5)(\frac{y^2}{9}-\frac{5}{3}y+25) = \frac{y^3}{27}+a thì giá trị của a là:
+  n8xl TL 2 | Thực hiện các phép tính sau: (y-\frac{x}{y})(y^2+x+\frac{x^2}{y^2}).
+  ugai TL 1 | Viết các biểu thức sau dưới dạng tích: y^3-64.
+  6u3w TL 1 | Viết các biểu thức sau dưới dạng tích: x^3-\frac{1}{8}.
+  e3wb TL 3 | Tính nhanh giá trị các biểu thức sau: D = \frac{2020^3-1}{2020^2+2021} - 19.
+  s5m1 NLC 2 | Viết biểu thức (x-3y)(x^2+3xy+9y^2) dưới dạng hiệu hai lập phương:
+  r9lm NLC 1 | Viết biểu thức x^3-27 dưới dạng tích ta được:
+  u25u NLC 2 | Tổng của M và N trong hằng đẳng thức x^M - 64y^N = (x^2-4y)(x^4+4x^2y+16y^2) là:
+  l83v TL 1 | Áp dụng hằng đẳng thức tổng hai lập phương hoặc hiệu hai lập phương để tính (6x+\frac{1}{2})(36x^2-3x+\frac{1}
+  jely TL 1 | Điền các đơn thức hoặc các phép tính thích hợp vào ô trống: ([?] m + [?] n)(\frac{1}{4}m^2 - [?] mn + \frac{1}
+  wk04 NLC 2 | Kết quả của phép tính \frac{35^3+13^3}{48} - 35 \cdot 13 là:
+
+### [27] Bài 3. Tổng và hiệu 2 lập phương | Tìm giá trị nhỏ nhất, lớn nhất (1)
+    yêu cầu: Vận dụng được hằng đẳng thức tổng và hiệu hai lập phương để biến đổi biểu thức và tìm giá trị lớn nhất hoặc giá trị nhỏ nhất của biểu thức đ
+  hlgw TL 4 | Cho x+y=1. Tìm giá trị nhỏ nhất của biểu thức A=x^3+y^3+xy.
+
+### [28] Bài 4. Phân tích đa thức thành nhân tử | Tính giá trị biểu thức (10)
+    yêu cầu: Tính được giá trị của biểu thức đại số bằng cách phân tích đa thức thành nhân tử và thay thế các giá trị đã biết.
+  9v43 TL 3 | Tính nhanh giá trị biểu thức sau: A=xyz-(xy+yz+zx)+x+y+z-1 với z-1=10; xy-y-x=99
+  68mu TL 2 | Tính nhanh giá trị biểu thức sau: B=2x^2+2y^2-x^2z+z-y^2z-2 tại 2-z=50; x=y=2
+  hrig TL 2 | Tính nhanh giá trị biểu thức sau: A=9x^2-y^2+4y-4 tại 3x+y=102; 3x-y=80
+  ftai TL 3 | Tính nhanh giá trị biểu thức: B=35^2+40.35+20^2-45^2
+  z9n0 TL 3 | Tính nhanh giá trị biểu thức sau: A=x(x-y)^2-y(x-y)^2+xy^2-x^2y với x-y=5; xy=4
+  5ovu TL 2 | Tính nhanh giá trị biểu thức sau: B=65^2-35^2+83^2-17^2
+  e9se NLC 2 | Giá trị của biểu thức D=x^3-x^2y-xy^2+y^3 khi x=y là:
+  hlx3 NLC 2 | Giá trị của biểu thức 40^2+25^2-35^2+80.25 là:
+  e6l9 TL 2 | Tính nhanh giá trị biểu thức sau: B=x^3-x^2y-xy^2+y^3 với x+y=100; x-y=20
+  jkkn TL 3 | Tính nhanh giá trị biểu thức: A=t(10-4t)-t^2(2t-5)-2t+5 tại t=\frac{5}{2}
+
+### [29] Bài 4. Phân tích đa thức thành nhân tử | Phương pháp thêm bớt cùng 1 hạng tử (0)
+    yêu cầu: Thực hiện được việc phân tích đa thức thành nhân tử bằng phương pháp thêm và bớt cùng một hạng tử thích hợp.
+
+### [30] Bài 4. Phân tích đa thức thành nhân tử | Phối hợp nhiều phương pháp (9)
+    yêu cầu: Thực hiện được việc phân tích đa thức thành nhân tử bằng cách phối hợp nhiều phương pháp khác nhau.
+  orbb TL 3 | Phân tích đa thức sau thành nhân tử: a) 3x + x^2 - 3y - y^2 b) x^2 - 12xy + 36y^2 - 49
+  db8b TL 3 | Phân tích đa thức sau thành nhân tử: A=a(b^2+c^2)+b(a^2+c^2)+c(a^2+b^2)+2abc
+  1txz TL 4 | Phân tích đa thức sau thành nhân tử: P=bc(a+d)(b-c)-ac(b+d)(a-c)+ab(c+d)(a-b)
+  byyr NLC 3 | Phân tích đa thức a^3-a^2x-ay^2+xy^2 thành nhân tử ta được:
+  equr TL 3 | Phân tích đa thức sau thành nhân tử: x^3-x+y^3-y+2x^2y+2xy^2
+  tm1l TL 4 | Phân tích đa thức sau thành nhân tử: a^3(b^2-c^2)+b^3(c^2-a^2)+c^3(a^2-b^2)
+  hbsb TL 4 | Phân tích đa thức sau thành nhân tử: a^2(b-c)+b^2(c-a)+c^2(a-b)
+  ijlc TL 4 | Từ một sợi dây có độ dài 200 cm, Hùng cắt ra thành hai đoạn dây, một đoạn lớn, một đoạn nhỏ, mỗi đoạn có độ dà
+  563h TL 3 | Một thửa ruộng hình chữ nhật có chiều dài bằng 20 m, chiều rộng bằng \frac{1}{2} chiều dài. a) Tính chiều rộng
+
+### [31] Bài 4. Phân tích đa thức thành nhân tử | Phương pháp dùng hằng đẳng thức (9)
+    yêu cầu: Thực hiện được việc phân tích đa thức thành nhân tử bằng cách áp dụng trực tiếp các hằng đẳng thức đáng nhớ.
+  kjrf TL 2 | Phân tích đa thức sau thành nhân tử: x^2-12xy+36y^2-49
+  0plf NLC 2 | Cho 8x^3-64=(2x-4)(...). Biểu thức thích hợp điền vào dấu … là:
+  zab5 NLC 2 | Phân tích (5x-4)^2-49x^2 bằng phương pháp dùng hằng đẳng thức ta được:
+  qg53 NLC 3 | Cho (x+y)^3-(x-y)^3=A.y(Bx^2+Cy^2), biết A,B,C là các số nguyên tố (dương). Khi đó A+B+C bằng:
+  a9p7 TL 3 | Phân tích đa thức sau thành nhân tử: 4b^2c^2-(c^2+b^2-a^2)^2
+  boxe TL 2 | Phân tích đa thức sau thành nhân tử: \frac{x^3}{8}+8y^3
+  r9fa NLC 1 | Đa thức x^2-y^2 phân tích thành nhân tử ta được:
+  fgmy TL 3 | Bác An gửi tiết kiệm với số tiền 400 triệu đồng vào một ngân hàng, kỳ hạn 12 tháng và theo thể thức lãi kép ng
+  fyq9 TL 3 | Cho một hình vuông lớn có cạnh (x+y) được chia thành 4 phần gồm: một hình vuông có cạnh x, hai hình chữ nhật c
+
+### [32] Bài 4. Phân tích đa thức thành nhân tử | Phương pháp đặt nhân tử chung (16)
+    yêu cầu: Thực hiện được việc phân tích một đa thức thành nhân tử bằng phương pháp đặt nhân tử chung.
+  g2vy NLC 2 | Đa thức 14x^2y-21xy^3+28xy phân tích thành nhân tử ta được:
+  u036 TL 2 | Phân tích đa thức sau thành nhân tử: \frac{2}{5}xy(y-1)-\frac{2}{5}y(y-1)
+  n5lx TL 2 | Phân tích đa thức sau thành nhân tử: 2(x-1)^3-5(x-1)^2-(x-1)
+  9c4w TL 2 | Phân tích đa thức sau thành nhân tử: 5(x+3y)-xy(x+3y)
+  tz9t TL 2 | Phân tích đa thức sau thành nhân tử: 12x^3y^2z-6x^2y^3z+3x^2y^2
+  y37v TL 2 | Phân tích đa thức sau thành nhân tử: 5a(x-y)+2b(y-x)
+  1glo TL 2 | Phân tích đa thức sau thành nhân tử: 14x^2y^2+8x^2y-2xy^2
+  gjbr NLC 1 | Phân tích đa thức x^3+12x thành nhân tử ta được:
+  ptid NLC 3 | Chọn đẳng thức Sai:
+  lcy5 TL 2 | Phân tích đa thức sau thành nhân tử: x^2y+x^3y-xy
+  p3ak TL 2 | Phân tích đa thức sau thành nhân tử: \frac{x^3}{3}+\frac{x^6}{9}-\frac{x^9}{27}
+  i4zw TL 2 | Phân tích đa thức sau thành nhân tử (đặt dấu "–" để tạo thành nhân tử chung): y(x-2)+3(2-x)
+  eyty NLC 2 | Phân tích đa thức 7x^2y^2-21xy^2z+7xyz+14xy ta được:
+  fpwm TL 2 | Phân tích đa thức sau thành nhân tử: (6x+3)-(2x-5)(2x+1)
+  3hpq NLC 1 | Phân tích đa thức 3x+6 thành nhân tử ta được:
+  8yo3 NLC 1 | Đa thức 12x-x^2 phân tích thành nhân tử ta được:
+
+### [33] Bài 4. Phân tích đa thức thành nhân tử | Chứng minh biểu thức chia hết cho một số (1)
+    yêu cầu: Vận dụng được phương pháp phân tích đa thức thành nhân tử để chứng minh một biểu thức chia hết cho một số nguyên.
+  hnys TL 4 | Cho biểu thức A=n^2(n-1)+2n(1-n), trong đó n\in{Z}. Chứng minh rằng A  \vdots  6.
+
+### [34] Bài 4. Phân tích đa thức thành nhân tử | Phương pháp nhóm hạng tử (23)
+    yêu cầu: Thực hiện được việc phân tích đa thức thành nhân tử bằng phương pháp nhóm các hạng tử một cách thích hợp.
+  f34b NLC 2 | Để phân tích đa thức x^2-6x-y^2+9 thành nhân tử ta sẽ nhóm (x^2-6x+...)-.... Các biểu thức trong dấu … lần lượ
+  rr69 NLC 2 | Phân tích đa thức x^2-2x-4y^2-4y thành nhân tử ta có thể nhóm hạng tử:
+  o0ff NLC 1 | Phân tích đa thức x^2-y^2+4x+4 thành nhân tử ta có thể nhóm các hạng tử:
+  btae NLC 1 | Cho x^2+2x+x+2=(x+1)(........). Biểu thức thích hợp điền vào dấu … là:
+  t8a0 NLC 2 | Đa thức x^2y+xy^2-x-y được phân tích thành nhân tử là:
+  oq4s TL 3 | Phân tích đa thức sau thành nhân tử: ab(x^2+y^2)+xy(a^2+b^2)
+  m57t TL 3 | Phân tích đa thức sau thành nhân tử: (xy-3ab)^2+(3ay+bx)^2
+  53qr TL 2 | Phân tích đa thức sau thành nhân tử: 3x+3y-x^2-2xy-y^2
+  fv0p TL 3 | Phân tích đa thức sau thành nhân tử: 5x^2+5y^2-x^2z+2xyz-y^2z-10xy
+  0cvd TL 3 | Phân tích đa thức sau thành nhân tử: x^2-4xy+4y^2-z^2+4zt-4t^2
+  87w3 NLC 2 | Đa thức 5x^2-4x+10xy-8y phân tích thành nhân tử ta được:
+  pzho NLC 2 | Phân tích đa thức x(x-2y)+y(2y-x) thành nhân tử ta được:
+  kszb NLC 2 | Đa thức 3x^2-3xy-5x+5y phân tích thành nhân tử ta được:
+  07mw NLC 2 | Phân tích đa thức 4xy-4xz-y+z thành nhân tử ta được:
+  86fl NLC 2 | Cho 3a^2(x+1)-4bx-4b=(x+1)(...). Điền biểu thức thích hợp vào dấu …
+  u92c NLC 2 | Phân tích đa thức 3x(x-3y)+9y(3y-x) thành nhân tử ta được:
+  nqrh NLC 2 | Phân tích đa thức x^3-2x^2+7x-14 ta được kết quả là:
+  3vd9 NLC 2 | Đa thức x^2-2x+1-y^2 được phân tích thành nhân tử là:
+  vfkb NLC 1 | Phân tích đa thức ax+ay-x-y thành nhân tử, ta có thể nhóm hạng tử như sau:
+  epiy TL 2 | Phân tích đa thức sau thành nhân tử: 5x^2-5xy+7y-7x
+  8u8h NLC 2 | Phân tích đa thức x^2+y^2-3x-3y+2xy ta được kết quả là:
+  p0aj TL 2 | Phân tích đa thức sau thành nhân tử: 5x^3+10xy-5x^2y-10x^2
+  drrj NLC 2 | Nhân tử chung của biểu thức 5x^2(5-2x)+4x-10 có thể là:
+
+### [35] Bài 4. Phân tích đa thức thành nhân tử | Tìm x (24)
+    yêu cầu: Vận dụng được phương pháp phân tích đa thức thành nhân tử để tìm biến số trong một đẳng thức cho trước.
+  toiu NLC 3 | Tìm x, biết x^3+27+(x+3)(x-9)=0.
+  j08u TL 3 | Tìm x, biết: (x+3)(x^2-3x+5)=x^2+3x
+  nzy9 NLC 2 | Giá trị của x thoả mãn x^2-10x+9=0 là:
+  t700 NLC 3 | Cho x_1 và x_2 là hai giá trị thoả mãn x(5-10x)-3(10x-5)=0. Khi đó x_1+x_2 bằng:
+  5fo2 TL 3 | Tìm x, biết: (x+2)(3-2x)=x^2+4x+4
+  pv6k TL 2 | Tìm x, biết: x(2x-1)-3(1-2x)=0
+  3n15 NLC 2 | Biết 5x(x-2)-(2-x)=0. Giá trị của x là:
+  4fz6 TL 2 | Tìm x, biết: x^2-x=0
+  88qc TL 2 | Tìm x, biết: 2x(x+1)-3(x+1)=0
+  e7i7 TL 3 | Tìm x, biết: 2(x-4)^2=4-x
+  ywv9 TL 3 | Tìm x, biết: (x^2-11)(x-2)+2x=4
+  tgd3 TL 3 | Tìm x, biết: (2x+1)^2-(3x+2)^2=0
+  yc0n TL 3 | Tìm x, biết: (x^3+8)-(x+2)(x+4)=0
+  u7ai TL 2 | Tìm x biết: 9x^2-(2x-1)^2=0
+  gmjd TL 3 | Tìm x biết: (x^3-1)-(x-1)(x^2-5)=0
+  f6oe TL 1 | Tìm x biết: x^2+4x=0
+  upzo TL 2 | Tìm x, biết: x(3x-6)-5(6-3x)=0
+  wegv TL 2 | Tìm x, biết: x^2(x+5)-9x=45
+  s0im TL 3 | Tìm x, biết: x^2(x+1)-x(x+1)+x(x-1)=0
+  mrab TL 2 | Tìm x, biết: x^2+2x=15
+  1qon TL 2 | Tìm x, biết: 3x^2-6x=0
+  57b6 TL 3 | Tìm x, biết: x^3-4x+x-2=0
+  jshd TL 2 | Tìm x, biết: 9(5-x)+x^2-10x=-25
+  mqwz TL 2 | Tìm x biết: 4x(x+3)-x-3=0
+
+### [36] Bài 4. Phân tích đa thức thành nhân tử | Phương pháp đổi biến (3)
+    yêu cầu: Thực hiện được việc phân tích đa thức thành nhân tử bằng phương pháp đặt ẩn phụ hoặc đổi biến số.
+  z7b7 TL 3 | Phân tích đa thức sau thành nhân tử: (a+b+c)^2+(a-b+c)^2-4b^2
+  e2az TL 4 | Phân tích đa thức sau thành nhân tử: x(x+4)(x+6)(x+10)+128
+  ni9l TL 4 | Phân tích đa thức sau thành nhân tử: M=(4x+1)(12x-1)(3x+2)(x+1)-4
+
+### [37] Bài 4. Phân tích đa thức thành nhân tử | Phương pháp tách 1 hạng tử thành nhiều hạng tử (2)
+    yêu cầu: Thực hiện được việc phân tích đa thức bậc hai thành nhân tử bằng phương pháp tách một hạng tử thành nhiều hạng tử.
+  zb6v TL 2 | Phân tích đa thức sau thành nhân tử: 7x^2+50x+7
+  7r5e NLC 1 | Phân tích đa thức x^2+5x+6 ta được:
+
+### [38] Bài 5. Ôn tập chương | Bài tập tổng hợp chương 2 (0)
+    yêu cầu: Vận dụng tổng hợp kiến thức của chương 2 để giải các bài toán ôn tập, kiểm tra cuối chương.
