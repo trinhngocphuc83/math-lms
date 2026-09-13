@@ -1,0 +1,1200 @@
+{
+ "question_categories": [
+  {
+   "id": "9aa1aa55-6bc2-4c7e-b849-08386338097f",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm",
+   "created_at": "2026-08-21T05:17:55.674174+00:00",
+   "yeu_cau_can_dat": "Tính được phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm để so sánh mức độ đồng đều của hai tập dữ liệu."
+  },
+  {
+   "id": "ebb5be5d-4591-4e78-a30e-524f28335770",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ",
+   "created_at": "2026-08-21T05:17:55.674174+00:00",
+   "yeu_cau_can_dat": "Xác định được các tứ phân vị, khoảng tứ phân vị và giá trị ngoại lệ của mẫu số liệu ghép nhóm từ bảng tần số."
+  },
+  {
+   "id": "7b6e91c2-f7fb-4777-97ba-8a400fbaa026",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm."
+  },
+  {
+   "id": "bee57f64-05a3-437e-873d-2fb992bc3407",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được các tứ phân vị và khoảng tứ phân vị của mẫu số liệu ghép nhóm."
+  },
+  {
+   "id": "bb619201-3841-46f7-a2eb-c3d12028146a",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm cho dưới dạng bảng tần số ghép nhóm."
+  },
+  {
+   "id": "ebaa27a0-7dd4-46c7-bc50-b6a9d9a8bdf7",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được khoảng biến thiên của mẫu số liệu ghép nhóm để so sánh độ phân tán của các mẫu số liệu."
+  },
+  {
+   "id": "e91860c7-c51e-4adb-baa6-c507776728b4",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải thích được ý nghĩa và xác định được các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm."
+  },
+  {
+   "id": "c6c86b27-34ef-43b0-81fe-ad7e683ae15e",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm."
+  },
+  {
+   "id": "99c32d07-3acc-4518-9ab7-c7c73f4f2c25",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm",
+   "created_at": "2026-08-21T05:17:55.674174+00:00",
+   "yeu_cau_can_dat": "Xác định được khoảng biến thiên của mẫu số liệu ghép nhóm từ bảng tần số ghép nhóm hoặc biểu đồ tương ứng."
+  }
+ ],
+ "questions": [
+  {
+   "id": "78348847-8842-4d10-ac23-d8e9a7194e63",
+   "question_id": "CH_1785393552556_fvzd",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "d10eff35-ae71-4be5-9849-85f94a7daf22",
+   "question_id": "CH_1785393552556_x6dr",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "5e2317fa-b5b3-4fa1-9cfc-4112491f13e9",
+   "question_id": "CH_1785393552556_8whq",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "42a9497c-7a85-44ef-ac7b-bb5b2eba5f5e",
+   "question_id": "CH_1785393552556_x4nw",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "0ebc7ecf-9786-4131-bea4-628056fc98d7",
+   "question_id": "CH_1785323754399_4uuk",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "ffc613ed-49af-448c-aeb5-fd4f33de6e8e",
+   "question_id": "CH_1785415835190_60jw",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "d21b8aaf-57b9-48b3-86d9-c3526557c286",
+   "question_id": "CH_1785504654377_l3c5",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "e97e63a3-95e4-4ecb-969b-55c2bba5aac7",
+   "question_id": "CH_1785335781036_xcxg",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "675c0b91-6cb6-43c9-93c5-169679198c53",
+   "question_id": "CH_1785504654377_3bru",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "67e5d1b0-4fdb-4471-b980-a835fa6b9257",
+   "question_id": "CH_1785334917766_o49c",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "3d1fe0fb-9c7a-43cc-83c5-1a3a32c1672b",
+   "question_id": "CH_1785415835190_ljxq",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "04364333-18e1-47a0-afb7-0ec2c7e6d7fe",
+   "question_id": "CH_1785315195857_jw04",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "2b0102cc-6515-4a98-a373-b6ae1af161bf",
+   "question_id": "CH_1785314669969_1hm7",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "4bf24985-d574-4a87-a56d-244f0fbe9aa1",
+   "question_id": "CH_1785314669969_4yhn",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "476f5585-371b-4b9a-8215-e5d6aa49c4e0",
+   "question_id": "CH_1785315195857_sa93",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "a9aaddf1-f2d5-4947-8a3f-eae062713261",
+   "question_id": "CH_1785316068720_udue",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "06fbb680-593c-46de-bcac-517f1cef6f5b",
+   "question_id": "CH_1785334558701_see8",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "2d990609-ae1e-462c-a70d-229c6c494cd6",
+   "question_id": "CH_1785334917766_e3j0",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "0c342c6c-8f7b-4b43-90f1-4d6c570cb0ff",
+   "question_id": "CH_1785393552556_qfw7",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "f4385afd-4b7c-4368-89c6-6ec6cee57161",
+   "question_id": "CH_1785393552556_ytm3",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "46a3ef8d-a061-47cf-886b-b61e81359edd",
+   "question_id": "CH_1785313751194_u313",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "4531f8e9-caac-4fa4-b99a-b13544462556",
+   "question_id": "CH_1785316068720_9t9i",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "6b286a23-20d1-4902-88a3-a313e9542cf3",
+   "question_id": "CH_1785393552556_gj57",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "8e0e1b22-2c21-4673-8712-8d47956185bb",
+   "question_id": "CH_1785408622250_u7qa",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "96453f09-68b3-418e-a210-1c0871c4799c",
+   "question_id": "CH_1785393552556_e2iu",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "ac2849ad-0050-42a5-a512-74921eb9d869",
+   "question_id": "CH_1785418708813_obow",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "253ed63a-1d5b-46df-9ed3-34336a5b7db6",
+   "question_id": "CH_1785324147292_usyc",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "aa704dd5-de5e-41e8-91dd-b52d8269c239",
+   "question_id": "CH_1785323289943_qz0k",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "67cbe4ad-a2de-4328-9a16-217b6b973209",
+   "question_id": "CH_1785393552556_9j7n",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "d3c37a12-c646-4a64-8879-62c3b4e86618",
+   "question_id": "CH_1785393552556_dqbd",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "3bbbcaa0-6ef1-4bc8-8278-27f857478163",
+   "question_id": "CH_1785393552556_ia9f",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "7e75e511-7a7f-4b50-8d1b-f5667632ba28",
+   "question_id": "CH_1785323289943_0cr7",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "5f34fd07-592b-47d0-a065-d967b09c33e0",
+   "question_id": "CH_1785415835190_725t",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "c0040e1f-1a8b-4ca6-abb7-b4972b350d85",
+   "question_id": "CH_1785415835190_s463",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "4defd1f5-85e4-4c85-b696-169ce739b02e",
+   "question_id": "CH_1785418708813_ql4l",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "65a4928d-cb3c-446f-8f1a-a12f9b6fa8b8",
+   "question_id": "CH_1785418708814_ggz4",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "d909d5b4-8302-4907-8984-16d5e3af7810",
+   "question_id": "CH_1785418708813_y0f7",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "e2197c25-f4e1-4ec5-aacb-cf3e6bf76698",
+   "question_id": "CH_1785393552556_oz8s",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "5c82ebf9-b304-45a7-b31f-91a7ce5c9c48",
+   "question_id": "CH_1785335781036_y390",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "50fb8a02-1601-479a-b415-ee4d08e5483e",
+   "question_id": "CH_1785415835190_na3j",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "bd9cf283-5a3f-4825-b782-a2eadef422b5",
+   "question_id": "CH_1785315627520_h6ua",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "3aba0e8f-2072-4362-8b29-b34c946936ec",
+   "question_id": "CH_1785316068720_k2c7",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "d66be39b-9dac-4982-9df4-7509436ba227",
+   "question_id": "CH_1785316068720_0cum",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "2dc05c83-44e6-45ce-91d2-648f1ebe35b6",
+   "question_id": "CH_1785323289943_8rc5",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "bb62b963-6eaa-40ad-976a-e1d6a52e5e56",
+   "question_id": "CH_1785334558701_kc3k",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "a78b59cd-6e5c-415d-a984-189ae22b8d44",
+   "question_id": "CH_1785335781036_miuo",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "93238bbc-951d-450d-95bc-a542c83a3834",
+   "question_id": "CH_1785335781036_7be3",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "f13c769c-1882-4099-bde1-8458662185b8",
+   "question_id": "CH_1785393552556_zab1",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "112252f4-75b2-4130-b3ce-50ed3ee0fbc6",
+   "question_id": "CH_1785408622250_oi3h",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "fb4a51ad-06f8-44f2-893b-7d16c1cc84d9",
+   "question_id": "CH_1785415835190_8am9",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "d112a702-d6b7-4109-8b83-da7ae21e0fb1",
+   "question_id": "CH_1785315195857_uddg",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "74864be1-3788-460f-ac0b-20b8ce791f3b",
+   "question_id": "CH_1785335781036_1pqb",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "0b754f9c-80b4-4278-a0a7-cebb29995d3d",
+   "question_id": "CH_1785315627520_ouj1",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "71f92e5e-4a91-4409-9610-466152e076c2",
+   "question_id": "CH_1785315627520_u0nc",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "ee276d2b-4ec4-409c-a2c5-4c54447f94b6",
+   "question_id": "CH_1785393552556_rkux",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "a9712887-397b-4c22-948e-e08edfea6e2c",
+   "question_id": "CH_1785323754399_5wyx",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "3b2318ca-3f7a-4d75-98c6-1985108e29aa",
+   "question_id": "CH_1785314669969_nkgm",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "63831557-fdea-42b2-b855-af9ef396ff15",
+   "question_id": "CH_1785323754399_k8gi",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "9b331fdf-ee25-4d5a-839d-9381fe226e75",
+   "question_id": "CH_1785313751194_kkml",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "c7a67a35-44d9-48a6-ac5c-deb3aaf71630",
+   "question_id": "CH_1785314669969_zelb",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "999c2647-9228-40af-9653-0dda4a0a45c8",
+   "question_id": "CH_1785334558701_tgjn",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "b1eaf57c-e9f2-4349-9b1b-26bfa5c3e923",
+   "question_id": "CH_1785334917766_93h8",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "53abdd39-85c9-41d3-90f0-f9746b0eec9a",
+   "question_id": "CH_1785335130087_grjf",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "f625227b-bc95-4973-8abd-c996cd6138c0",
+   "question_id": "CH_1785314669969_c18w",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "048333f4-a06c-4c0f-b386-17346c515ee7",
+   "question_id": "CH_1785418708813_jg7p",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "941c5d49-3df1-4206-85a5-ffb424b5583c",
+   "question_id": "CH_1785504654377_6u08",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "d0834233-0224-47b1-9469-028789b9a0d6",
+   "question_id": "CH_1785504654377_teoj",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "aedd37de-0b6e-4ac7-832d-f2f0ac9fa44c",
+   "question_id": "CH_1785415835190_8f1p",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "64ddab22-6571-4955-9624-4b288c79951d",
+   "question_id": "CH_1785334917766_qugp",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "fc930c75-e6ca-40f5-93e3-6cf064876d1c",
+   "question_id": "CH_1785504654377_srt2",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "2f199316-eac0-4f4d-898d-d490e89d0667",
+   "question_id": "CH_1785324147292_6sxi",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "f700ada3-823b-4126-b7af-5df3635f5c95",
+   "question_id": "CH_1785313751194_hubl",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "12ba1bfa-6857-40dc-b9d4-67a04ed8229b",
+   "question_id": "CH_1785415835190_5s3f",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "cf9ca74b-2987-40fc-8532-ee6af939e6b6",
+   "question_id": "CH_1785315627520_9g1v",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "83e77d52-0089-4626-913d-7818e8cb3bab",
+   "question_id": "CH_1785315627520_dlk3",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "8c3f18fb-de21-4754-97df-436c67927b39",
+   "question_id": "CH_1785316068720_5fg2",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "228afa33-da49-40a7-8cd4-3694f4e63f08",
+   "question_id": "CH_1785323289943_733h",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "35dc43d2-272d-40ec-b029-3c101baafa19",
+   "question_id": "CH_1785324147292_enr3",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "d61365d8-f75b-457f-8f65-0f033c790df7",
+   "question_id": "CH_1785331235383_vd6y",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "89d29464-8833-4129-afdb-ebad4d28c92f",
+   "question_id": "CH_1785334558701_j8gj",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "b10a0712-6e3e-4dff-ae6f-6509f40e8b2f",
+   "question_id": "CH_1785334558701_hrs4",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "5808205d-ecb9-46e1-b208-4186d839ed07",
+   "question_id": "CH_1785334917766_xb9z",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "97c2118b-d57b-41b4-8dd8-f96c06949020",
+   "question_id": "CH_1785335781036_8enh",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "c0c6bd7f-ac76-4d28-87ff-70f648c7f64c",
+   "question_id": "CH_1785335781036_bcbz",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "6fffb6ab-e6de-4ea8-9178-db7b01bf0b19",
+   "question_id": "CH_1785335781036_4uqz",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "d53eeaed-10b7-49fc-be84-2e38b804a982",
+   "question_id": "CH_1785393552556_54g7",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "6416fca3-c2cc-4a04-a623-740e4f7c57fa",
+   "question_id": "CH_1785393552556_1c66",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "96cbc81b-316e-47e1-989e-1363f07c2ed8",
+   "question_id": "CH_1785408622250_m3q9",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "8640fce5-3e4a-44fc-ad57-90677f76b2eb",
+   "question_id": "CH_1785408622250_0vn2",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "b3c880c4-55ae-4f48-af64-fba772238170",
+   "question_id": "CH_1785408622250_8b9i",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "558b3d94-de0c-43e8-bf0b-0bec2309f21d",
+   "question_id": "CH_1785408622250_jwsd",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "987a5659-3c74-40aa-9a6f-0386b3002bba",
+   "question_id": "CH_1785408622250_08dx",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "3b4a5c11-5a59-4260-b2d6-bc25b5ac3367",
+   "question_id": "CH_1785415835190_v1pa",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "8cc14634-d542-4e81-b357-7ed61e56aae7",
+   "question_id": "CH_1785415835190_afzo",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "a5d0ec89-4df6-496c-ba5f-16c244f28079",
+   "question_id": "CH_1785418708813_7pkz",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "bbb87b92-2f62-4250-b33d-2421a0f620f8",
+   "question_id": "CH_1785418708813_gfnx",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "aaef3c3c-83c9-46a3-b00c-c78b52d81060",
+   "question_id": "CH_1785418708813_q4qk",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "23e33558-a9e8-48a7-824e-81c72ea88916",
+   "question_id": "CH_1785418708813_we2j",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "5632a537-2fd8-4ef6-b371-765342438d94",
+   "question_id": "CH_1785418708813_ry26",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "a8a3f944-2abd-44d4-8a77-f4227df912a7",
+   "question_id": "CH_1785418708814_5e21",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "4828e9d1-de35-491f-b466-846cfc27079f",
+   "question_id": "CH_1785315195857_vd0z",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "78e1197f-4831-4c96-b625-288b704cf0d5",
+   "question_id": "CH_1785331235383_mt5z",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "84ea6ade-ad06-4073-a9ba-0864b0bf0207",
+   "question_id": "CH_1785323754399_1q94",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "0385af6e-f1fb-469f-8f26-da7d1f2134e2",
+   "question_id": "CH_1785408622250_fgyq",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "f39b348a-8a49-4019-998d-8a31b847a3b0",
+   "question_id": "CH_1785418708814_rtll",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "fed9c931-da65-493a-a16e-d2dfff53ff98",
+   "question_id": "CH_1785335781036_cb42",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "dcd2ba75-84d9-4b00-9980-f9bf83c5c0c5",
+   "question_id": "CH_1785313751194_n3om",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "dc55817b-7bae-4c63-b37c-8ca4dfea71df",
+   "question_id": "CH_1785324147292_82to",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "e0adcb67-fbcc-4b57-a109-49933003533a",
+   "question_id": "CH_1785504654377_c1ok",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "304a6810-71cc-4696-b502-c964e092823a",
+   "question_id": "CH_1785335781036_4bts",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "e9a86d54-3048-4f29-8cc2-61d70ba7dd01",
+   "question_id": "CH_1785324147292_cub6",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "1a712e7b-6643-4380-a0e7-522eb77032f0",
+   "question_id": "CH_1785316068720_arxd",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "0d4c9866-4935-40d2-b595-0ecf10a1048d",
+   "question_id": "CH_1785418708813_w56k",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "719f815e-d153-434a-a4a5-8c02b391693f",
+   "question_id": "CH_1785393552556_0vbu",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "d8877a45-181b-4495-addd-a69cd7e69d88",
+   "question_id": "CH_1785415835190_hpm7",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "20f0be14-e6d4-40b6-888d-077ab8095abc",
+   "question_id": "CH_1785408622250_af7v",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "822eb141-7df7-4009-b3af-20780820ccdd",
+   "question_id": "CH_1785393552556_mdny",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "8bf09855-79af-4e5d-aece-33eccb5cda78",
+   "question_id": "CH_1785418708814_d5su",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "316c094f-d6bd-4422-a488-012277288a9f",
+   "question_id": "CH_1785408622250_4c93",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "34be08e6-4b94-421f-b090-9bc3b5b2ad41",
+   "question_id": "CH_1785408622250_1zbg",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "335cb1d6-b1fe-4597-ab58-f740e59a6a79",
+   "question_id": "CH_1785418708813_vkvg",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "98b0311d-6246-42f8-a51b-5fecd7173009",
+   "question_id": "CH_1785408622250_8649",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "b0c2fe8a-f3cc-44c6-9c4f-04c298177911",
+   "question_id": "CH_1785408622250_p785",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "c58dda2a-6c86-4482-8486-c9189b228a0a",
+   "question_id": "CH_1785408622250_pe1j",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "4d026e9c-6508-4a8c-a687-d0e7e8bd46db",
+   "question_id": "CH_1785418708813_2ii7",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "b38b6474-be9e-4e07-9345-d1e4bfbd6195",
+   "question_id": "CH_1785504654377_oyhq",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "0d8b75ab-1318-40ce-8fc6-84a41dd35d9c",
+   "question_id": "CH_1785408622250_3y66",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "b8d302bf-e1b5-44e0-a1a4-c7cdb4c29369",
+   "question_id": "CH_1785331235383_y2fm",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "06bdad44-ab6f-4a18-9ca9-b3d772dcfba0",
+   "question_id": "CH_1785334558701_ffab",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "ddfaf6c7-ed57-4203-adb1-ac33d36a0401",
+   "question_id": "CH_1785313751194_xint",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "9421422e-a7f8-4e5f-9208-8182b7c9430c",
+   "question_id": "CH_1785313751194_fl10",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "cde41f62-09eb-44a7-9b5b-71ab767da551",
+   "question_id": "CH_1785335781036_j4zi",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "12ac6627-95cb-437d-933c-53ac4fa4f54e",
+   "question_id": "CH_1785323289943_zj91",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "d5316ca4-c7c9-49db-8fce-bd4d7f98d37b",
+   "question_id": "CH_1785331235383_e4hq",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "881ae9bc-65f9-404e-8e4a-a7461434ffd2",
+   "question_id": "CH_1785504654377_fdu3",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "3d6b1c46-fc4d-421a-a354-df083c32e776",
+   "question_id": "CH_1785504654377_pshv",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "a1fc2d40-b295-40a4-a46f-a2cebbd2f25c",
+   "question_id": "CH_1785314669969_n3p2",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "97d3e321-8b82-4861-a218-a15f3d7fef5a",
+   "question_id": "CH_1785334917766_hwp0",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "3931bc84-d860-4fd1-aeb5-e47444f0628c",
+   "question_id": "CH_1785313751194_ocvm",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "90ae531c-71fe-40b3-9ae7-d299fb7a77c4",
+   "question_id": "CH_1785314669969_9bb4",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "f82dd0d5-3d91-4425-a4d9-0da9af220983",
+   "question_id": "CH_1785314669969_h5wo",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "480011fa-68ab-4070-b82b-4239046a1416",
+   "question_id": "CH_1785315195857_i6ea",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "07001893-2598-4016-8249-54a9146a547b",
+   "question_id": "CH_1785329522179_01zj",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "cc61b541-e221-4f81-be13-39ca05aba319",
+   "question_id": "CH_1785315627520_njeh",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "9d69f16e-deed-4a7f-a640-5f9a9b71aca7",
+   "question_id": "CH_1785316068720_ncwn",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "700ad2ba-382e-4b58-adb2-76ffec9c5aa3",
+   "question_id": "CH_1785331235383_ippi",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "9e68239a-9060-4c34-8d56-d580445e0b74",
+   "question_id": "CH_1785328715088_n5nr",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "06a64b94-73fb-4219-b627-2ff7437e294f",
+   "question_id": "CH_1785328715088_lrap",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "4c7bab68-8957-4a58-befc-56c9a77909a0",
+   "question_id": "CH_1785408622250_hg47",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "00b5f6e5-a916-44b4-94a1-5ffc39e897d8",
+   "question_id": "CH_1785335130087_1i5r",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "c8028752-454c-42cf-842f-34124f0f9563",
+   "question_id": "CH_1785408622250_wh0q",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "6adbe60c-f550-4729-a50a-2d2db8fbd150",
+   "question_id": "CH_1785393552556_n9g6",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "160b6a01-6928-4d90-a82a-3278ef19cdef",
+   "question_id": "CH_1785408622250_a6r9",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "b1777604-2c46-49ab-957b-8ed4e2877601",
+   "question_id": "CH_1785415835190_fkly",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "d5f9941f-9c04-4b4f-9959-b6b93292dcc9",
+   "question_id": "CH_1785418708813_i6hn",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "69645c51-089d-40d5-9c89-16678b2072a7",
+   "question_id": "CH_1785504654377_5gxr",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "f9e3fd89-2dd6-46dd-9849-675b27da72cf",
+   "question_id": "CH_1785504654377_63ar",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "913c9999-9b19-45e8-b1b1-a34741e98b0e",
+   "question_id": "CH_1785504654377_uh50",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "78053d08-35a8-4ec5-9675-04be499f5ff7",
+   "question_id": "CH_1785504654377_shje",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "b52d5815-0b1d-463a-ab25-c060e3af8ab7",
+   "question_id": "CH_1785504654377_25r1",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "5a79b401-7777-42ef-9522-90282051c690",
+   "question_id": "CH_1785504654377_ca42",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "7615a208-08cf-4f31-ac85-d1d35055d318",
+   "question_id": "CH_1785313751194_par6",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "dea22958-5b19-46a0-adae-bb3a6569bfcd",
+   "question_id": "CH_1785504654377_v5st",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "5f78269f-ffdf-407a-a01a-d2e98bfa613a",
+   "question_id": "CH_1785504654377_qj9e",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "e3eb34d6-161a-4e79-a8f3-eb4e4678f99f",
+   "question_id": "CH_1785504654377_rqet",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "b69f7893-8480-4b77-bd86-351eecad1d81",
+   "question_id": "CH_1785313751194_t32t",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "289fd1ed-5720-419a-9ffe-d167fb62dec8",
+   "question_id": "CH_1785314669969_10w3",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "44d87962-a6f0-4c88-b387-50eb2f3f1180",
+   "question_id": "CH_1785314669969_vms4",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "5b7f5a1b-8525-4b95-a19a-2d7b7d78f1d4",
+   "question_id": "CH_1785335781036_mr1a",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "9a97f525-8c85-487b-9fc3-17423ce4924a",
+   "question_id": "CH_1785335781036_z52s",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "298d1ca4-2bcd-41f8-86df-1bae04beae92",
+   "question_id": "CH_1785335781036_jrhl",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "5055a499-56dc-4f7e-932e-6211a5952c1c",
+   "question_id": "CH_1785323289943_8ffs",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "cfecd59e-55ba-4efb-9c16-2756e071d707",
+   "question_id": "CH_1785315627520_r732",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "45ce319e-641b-461f-b1c9-6c4951f747f4",
+   "question_id": "CH_1785334917766_1l7s",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "e39ff616-2fd6-4f8d-b3bf-9dd1a0dd372d",
+   "question_id": "CH_1785408622250_u5tw",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "6a138e34-ff6d-43d5-ba65-fbebfe0d5c86",
+   "question_id": "CH_1785418708813_oigf",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "cc0772d4-cc01-4c2c-8790-1bd56077354d",
+   "question_id": "CH_1785415835190_5f46",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "f1ee4907-b45d-4874-b48a-9d568cc1f461",
+   "question_id": "CH_1785408622250_dlq3",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "b658bb8c-5132-4313-a2bf-75809de52887",
+   "question_id": "CH_1785418708814_423n",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "647928e1-d5f5-4442-a990-f5e0552063d6",
+   "question_id": "CH_1785418708814_buwq",
+   "lesson": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "math_form": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "id": "98780855-1fe9-441e-85c1-97c692226997",
+   "question_id": "CH_1785418708814_ajib",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "6be0ef6e-152e-46e5-9b03-5d2aa0b0a137",
+   "question_id": "CH_1785504654377_6164",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "c70693c9-51f6-4c44-8297-9eebdfc0decd",
+   "question_id": "CH_1785328715088_e5s6",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  },
+  {
+   "id": "6d60f42a-c49d-43cb-b1c1-8b0df7281adf",
+   "question_id": "CH_1785328715088_tmy7",
+   "lesson": "Bài 2. Phương sai và độ lệch chuẩn",
+   "math_form": "Toán tổng hợp"
+  }
+ ]
+}

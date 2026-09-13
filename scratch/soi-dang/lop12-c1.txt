@@ -1,0 +1,880 @@
+Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số · lớp 12 · 49 dạng · 731 câu
+
+
+### [1] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm tham số để hàm số thỏa mãn điều kiện cực trị (22)
+    yêu cầu: Tìm được giá trị của tham số để hàm số có các điểm cực trị thỏa mãn điều kiện cho trước.
+  sp5w TLN 3 | Giả sử các số a, b, c thỏa mãn đồ thị hàm số y = x^3 + ax^2 + bx + c đi qua (0;1) và có một điểm cực trị có tọ
+  auyr NLC 2 | Tìm tất cả các giá trị của tham số m để hàm số y = \frac{1}{3}x^3 - x^2 + mx - 1 có cực đại và cực tiểu.
+  cb36 TL 3 | Tìm m để hàm số f(x) = 2x^3 - 6x^2 - m + 1 có hai điểm cực trị và các giá trị cực trị trái dấu.
+  kxjf NLC 2 | Trong các hàm số sau, hàm số nào có hai điểm cực đại và một điểm cực tiểu?
+  11_20 TLN 4 | Cho hàm số y = f(x) = 2024^x - 2024^{-x} + x + \sin x. Có bao nhiêu giá trị nguyên của tham số m để phương trì
+  r512 NLC 2 | Tìm tất cả các giá trị của tham số m để hàm số y = x^3 - 3x^2 + 2mx + m có cực đại và cực tiểu.
+  1fyr TLN 3 | Tìm giá trị của tham số m để ba điểm cực trị của đồ thị hàm số y = x^4 + (6m - 4)x^2 + 1 - m là ba đỉnh của mộ
+  eh34 TLN 3 | Tìm giá trị của tham số m để hàm số f(x) = (m^2 - 3)x - 2m \ln x đạt cực tiểu tại điểm x_0 = 1.
+  rb3v TLN 4 | Gọi (P) là parabol qua 3 điểm cực trị của đồ thị hàm số y = \frac{1}{4}x^4 - mx^2 + m^2. Tìm tất cả các giá tr
+  tkah TLN 3 | Tìm giá trị thực của tham số m để hàm số y = \frac{1}{3}x^3 - mx^2 + (m^2 - m - 1)x đạt giá trị cực đại tại x 
+  i7vh TLN 3 | Biết tập hợp tất cả các giá trị của tham số m để hàm số y = \frac{1}{3}x^3 - mx^2 + (2m-1)x - m + 2 có hai điể
+  0wev NLC 3 | *Biết đồ thị hàm số y = x^3 - 2x^2 + ax + b có điểm cực trị là A(1; 3). Khi đó giá trị của 4a - b là:
+  pbbq NLC 3 | Cho hàm số y = 8x^3 - 6mx^2 + 9mx + 6m (m là tham số thực). Giá trị của m để hàm số đạt cực tiểu tại x = -6 th
+  bo59 NLC 2 | Tìm tất cả các giá trị thực của tham số m để hàm số y = x^3 - 3x^2 + (m + 1)x + 2 có hai điểm cực trị.
+  p9qz NLC 2 | Cho hàm số y = x^3 - 2mx^2 + (-\frac{4}{3}m^2 - 40m - 144)x - 5 (m là tham số thực). Tìm tất cả các giá trị củ
+  1gce NLC 2 | Cho hàm số y = (m + 1)x^4 - mx^2 + 3. Tìm tất cả các giá trị thực của tham số m để hàm số có ba điểm cực trị.
+  un3q TLN 3 | Đồ thị hàm số y = x^3 - 3x^2 + 2ax + b có điểm cực tiểu A(2; -2). Khi đó a + b bằng bao nhiêu?
+  wqr6 NLC 3 | Cho hàm số y = ax^4 + bx^2 + c (a; b; c \in {R}, a \neq 0) có bảng biến thiên dưới đây: [BẢNG BIẾN THIÊN] Tính
+  73j6 NLC 3 | Biết M(0;2), N(2;-2) là các điểm cực trị của đồ thị hàm số y = ax^3 + bx^2 + cx + d. Tính giá trị của hàm số t
+  jwo8 DS 4 | Cho hàm số y = f(x) có đạo hàm f'(x) = (x-1)(x^2 - 4x + m), \forall x \in {R}.
+  gu49 TLN 3 | Biết đồ thị hàm số y = x^3 - 3x^2 + 2ax + b có điểm cực tiểu A(2; -2), tính a+b.
+  50by NLC 3 | Ta xác định được các số a, b, c để đồ thị hàm số y = x^3 + ax^2 + bx + c đi qua điểm (0;1) và có điểm cực trị 
+
+### [2] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm cực trị của hàm số cho bởi công thức (49)
+    yêu cầu: Tính được tọa độ các điểm cực trị hoặc giá trị cực trị của hàm số cho trước bằng công thức.
+  009_3 NLC 2 | Điểm cực tiểu của hàm số y = \frac{-x^2 + 2x - 1}{x + 2} là
+  2_16 TLN 2 | Biết hàm số f(x) = x^3 - 6x^2 + 9x - 5 đạt cực đại tại x = a và đạt cực tiểu tại x = b. Giá trị của biểu thức 
+  009_2 NLC 2 | Cho hàm số y = \frac{x^2 - 2x - 7}{x - 4}. Phát biểu nào sau đây là đúng?
+  33_3 TLN 2 | Cho hàm số y = \frac{2x^2 + 5x + 4}{x + 2}. Độ dài của đoạn thẳng nối hai điểm cực trị của đồ thị hàm số bằng 
+  58_11 NLC 2 | Cho hàm số y = \frac{x^2-2x+1}{x+1}. Toạ độ điểm cực tiểu của đồ thị hàm số đã cho là
+  09_9 TLN 3 | Biết rằng đồ thị hàm số y = x^4 - 2ax^2 + b có một điểm cực trị là (1; 2). Tính khoảng cách giữa điểm cực đại 
+  39_13 DS 3 | Cho hàm số y = \frac{x^2 + x - 1}{x - 1}. Các khẳng định sau đúng hay sai?
+  48_16 TLN 3 | Có bao nhiêu giá trị nguyên dương của tham số m để hàm số y = x^3 - 3x^2 + (m+1)x + 2 có hai điểm cực trị?
+  04_4 TLN 3 | Cho hàm số y = \frac{x^2 + mx + 1}{x + m} (với m là tham số). Tìm giá trị của m để hàm số đã cho có giá trị cự
+  819_15 TLN 3 | Cho hàm số y = x^3 - 3(m+1)x^2 + 3(7m-3)x. Gọi S là tập tất cả các giá trị nguyên của tham số m để hàm số đã c
+  11_16 TLN 2 | Cho hàm số y = x^3 - 3x^2 + 2. Giá trị cực tiểu của hàm số đã cho bằng bao nhiêu?
+  04_5 TLN 3 | Biết đồ thị hàm số y = x^3 + ax^2 + bx + c đi qua điểm A(1;0) và có điểm cực trị B(-2;0). Tính giá trị biểu th
+  17_2 NLC 3 | Biết đồ thị hàm số y=x^3+3x^2-9x-1 có hai điểm cực trị A và B. Điểm nào dưới đây thuộc đường thẳng AB?
+  xgu3 DS 2 | Cho hàm số y = -x^3 + 3x^2 + 1. Xét tính Đúng/Sai của các khẳng định sau: a) Hàm số f(x) đạt cực đại tại x = 0
+  fj20 TLN 2 | Tìm điểm cực đại của hàm số y = x^2 \cdot e^x.
+  8rrk NLC 3 | *Cho hàm số y = |x^2 - 1|, khẳng định nào sau đây đúng?
+  ni5u NLC 2 | Cho hàm số y = x^3 + 17x^2 - 24x + 8. Kết luận nào sau đây là đúng?
+  39_11 NLC 2 | Hàm số f(x) = x^3 - 3x^2 - 9x + 1 đạt cực đại tại điểm
+  609_12 DS 2 | Cho hàm số y = f(x) = x^4 - 2x^2 - 5. Các khẳng định sau là đúng hay sai?
+  39_15 TLN 3 | Gọi m, n lần lượt là giá trị cực đại và giá trị cực tiểu của hàm số y = \frac{x^2 + x + 4}{x + 1}. Tính giá tr
+  6540 NLC 2 | Điểm cực đại của đồ thị hàm số y = \frac{x^2-4x+5}{x-2} là:
+  ca93 NLC 2 | Giá trị cực tiểu của hàm số y = -x^4 + 8x^2 + 2025 là bao nhiêu?
+  33_1 DS 2 | Cho hàm số y=x^3-3x+1.
+  57_1 DS 2 | Cho hàm số f(x) = 2x^3 + 2(m+1)x^2 + 6x + 4 + 2m, với m là tham số.
+  08_9 DS 2 | Cho hàm số y = -x^3 + 3x - 5.
+  cf92 NLC 1 | Hàm số nào sau đây **không** có cực trị?
+  e4r5 NLC 1 | Hàm số y = \frac{2x - 1}{x + 2} có bao nhiêu điểm cực trị?
+  9u13 NLC 2 | Cho hàm số y = x^3 - 3x^2 + 2. Khẳng định nào sau đây là đúng?
+  yr4r NLC 2 | Hàm số y = x^4 - 4x^3 - 5
+  xazo TLN 2 | Cho hàm số y = 4x^3 + 8x^2 - 3x + 3. Giá trị cực đại của hàm số bằng bao nhiêu?
+  uh21 NLC 2 | Điểm cực đại của hàm số y = -x^3 + 3x là
+  xqzw NLC 2 | Cực đại của hàm số y = \frac{1}{3}x^3 - 2x^2 + 3x - 1 là
+  obkh TLN 2 | Hàm số y = \frac{1}{4}x^4 - \frac{1}{2}x^3 có bao nhiêu điểm cực trị?
+  lkrr NLC 2 | Tìm giá trị cực tiểu của hàm số y = -x^3 + 3x + 4.
+  kkej TL 2 | Tìm điểm cực trị của hàm số y = \log_3(6x - x^2).
+  219_8 NLC 2 | Tính giá trị cực đại của hàm số y = \frac{\ln x}{x}.
+  219_11 NLC 3 | Biết M(1; -5) là một điểm cực trị của đồ thị hàm số y = f(x) = x^3 + ax^2 + bx + 1. Giá trị f(2) bằng
+  iqz8 DS 2 | Cho hàm số y = f(x) = x^4 - 2x^2 - 3. Các mệnh đề sau đúng hay sai?
+  1qo6 TLN 2 | Tìm điểm cực tiểu của hàm số y = x^3 - 5x^2 - 8x + 8?
+  ap7y TLN 3 | Gọi A, B là hai điểm cực trị của đồ thị hàm số y = x^3 - 3x^2 + 4. Tính diện tích S của tam giác OAB với O là 
+  45_16 TLN 2 | Biết hàm số f(x) = x^3 - 6x^2 + 9x - 1 đạt cực đại tại x = a và đạt cực tiểu tại x = b. Giá trị của biểu thức 
+  419_8 NLC 3 | Cho đường thẳng d: y = -4x + 1. Đồ thị của hàm số y = x^3 - 3mx + 1 có hai điểm cực trị nằm trên đường thẳng d
+  on5z DS 4 | Cho hàm số y = f(x) có đạo hàm f'(x) = x^2 - 4, \forall x \in {R}. Các khẳng định sau đúng hay sai?
+  dygz DS 3 | Cho hàm số y = x^4 - 2x^2 + 1. Các khẳng định sau đúng hay sai?
+  za9q DS 3 | Cho hàm số y = -x^4 + 2x^2 - 3.
+  rxrd DS 3 | Cho hàm số y = 2^{x^2 - 3x + \frac{13}{4}}. Xét tính Đúng/Sai của các khẳng định sau: a) Hàm số nghịch biến tr
+  7x5f NLC 2 | Cho hàm số y = x^3 + 4x^2 - 3x + 7 đạt cực tiểu tại x_0. Kết luận nào sau đây đúng?
+  amyg TLN 2 | Tìm giá trị cực tiểu của hàm số y = x^3 + 6x^2 - 15x + 2023.
+  c49b DS 2 | Cho hàm số bậc ba có bảng biến thiên như sau: [BẢNG BIẾN THIÊN] Các khẳng định sau đúng hay sai?
+
+### [3] Bài 1. Tính đơn điệu và cực trị của hàm số | Lý thuyết về tính đơn điệu và cực trị (9)
+    yêu cầu: Nhận biết được tính đơn điệu và các điểm cực trị của hàm số thông qua định nghĩa và các định lí cơ bản.
+  x8m0 DS 2 | Cho hàm số y = ax^4 + bx^2 + c, (a; b; c \in {R}) có đồ thị như hình vẽ bên dưới: [HÌNH VẼ]
+  ql0m NLC 2 | Cho hàm số y = -x^4 - 8x^2 + 1. Khẳng định nào dưới đây đúng?
+  219_0 NLC 1 | Cho hàm số f(x) có đạo hàm liên tục trên {R}. Mệnh đề nào sau đây đúng?
+  qsj1 DS 3 | Cho hàm số y = ax^3 + bx^2 + cx + d, (a;b;c;d \in {R}) có đồ thị như hình vẽ bên dưới: [HÌNH VẼ] Các khẳng địn
+  qmnh NLC 2 | Hàm số nào dưới đây **không** có điểm cực trị?
+  jxng NLC 2 | Hàm số nào sau đây có hai điểm cực trị?
+  y3xp NLC 1 | Hàm số bậc ba có thể có bao nhiêu điểm cực trị?
+  se86 NLC 1 | Cho hàm số y = f(x). Chọn mệnh đề **sai** trong các mệnh đề sau:
+  a8lo NLC 1 | Trong các hàm số dưới đây, hàm số nào không có cực trị?
+
+### [4] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm số điểm cực trị dựa vào đồ thị đạo hàm (4)
+    yêu cầu: Xác định được số điểm cực trị và các điểm cực trị của hàm số thông qua đồ thị của hàm số đạo hàm.
+  gglk NLC 3 | Cho hàm số y = f(x). Hàm số y = f'(x) có đồ thị trên một khoảng K như hình vẽ bên. [HÌNH VẼ] Chọn khẳng định đ
+  vzhv NLC 2 | Cho hàm số y = f(x) liên tục trên {R}. Biết đồ thị của hàm số y = f'(x) như hình vẽ bên dưới: [HÌNH VẼ] Số điể
+  odms NLC 2 | Hàm số y = f(x) liên tục trên khoảng K, biết đồ thị của hàm số y = f'(x) trên K như hình vẽ bên. [HÌNH VẼ] Tìm
+  hr3i NLC 2 | Đường cong trong hình vẽ bên dưới là đồ thị hàm số y = f'(x). [HÌNH VẼ] Điểm cực trị của hàm số y = f(x) là
+
+### [5] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm cực trị của hàm số dựa vào bảng biến thiên (22)
+    yêu cầu: Xác định được điểm cực trị và giá trị cực trị của hàm số dựa vào bảng biến thiên cho trước.
+  39_1 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau [HINH VẼ ĐỒ THỊ] Giá trị cực tiểu của hàm số đã cho bằng<br/><i
+  c8tn NLC 1 | Cho hàm số y = f(x) có bảng biến thiên: [BẢNG BIẾN THIÊN] Khẳng định nào sau đây là đúng?
+  5nzw TLN 3 | Cho hàm số y = f(x) = \frac{1}{3}x^3 + bx^2 + cx + 2  (b, c \in {R}) có bảng biến thiên như sau: [BẢNG BIẾN TH
+  2_dyg0 NLC 1 | Cho hàm số f(x) có bảng biến thiên như sau: [BẢNG BIẾN THIÊN] Hỏi mệnh đề nào sau đây sai?
+  iqoz NLC 1 | Cho hàm số y = f(x) có bảng biến thiên sau: [BẢNG BIẾN THIÊN] Mệnh đề nào dưới đây đúng?
+  14_0 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ] Đồ thị hàm số y = f(x) có điểm cực tiểu là:<b
+  48_0 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ] Hàm số đã cho đạt cực đại tại<br/><img src="d
+  45_1 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ] Điểm cực tiểu của hàm số đã cho là:<br/><img 
+  yjbs NLC 2 | Cho hàm số f(x) có bảng xét dấu của đạo hàm f'(x) như sau: Cực tiểu của hàm số f(x) bằng
+  2yyf NLC 2 | Cho hàm số y = f(x) có tập xác định (-\infty; 4] và có bảng biến thiên như hình vẽ bên. [BẢNG BIẾN THIÊN] Số đ
+  03_6 NLC 1 | Cho hàm số y = f(x) xác định trên {R} và có bảng biến thiên như hình vẽ sau: [HINH VẼ ĐỒ THỊ] Giá trị cực tiểu
+  219_7 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ] Giá trị cực đại của f(x) là<br/><img src="dat
+  219_12 NLC 2 | Cho hàm số y = f(x) có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ] a) Hàm số y = f(x) đồng biến trên khoảng (-\i
+  609_1 NLC 1 | Cho hàm số f(x) có bảng biến thiên như sau: [HÌNH VẼ BẢNG BIẾN THIÊN] Hàm số f(x) đạt cực đại tại<br/><img src
+  vhab NLC 1 | Cho hàm số y = f(x) xác định trên {R} và có bảng biến thiên như hình vẽ sau ![Hình ảnh](https://cmjithgtecypxm
+  1a7l NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau ![Hình minh họa](https://cmjithgtecypxmisbzvw.supabase.co/stora
+  fkly NLC 1 | Cho hàm số y = f(x) liên tục trên tập số thực, có bảng biến thiên như hình vẽ sau ![Hình minh họa](https://cmj
+  tidf NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như hình bên ![Hình minh họa](https://cmjithgtecypxmisbzvw.supabase.co/
+  yxp3 NLC 1 | Cho hàm số y = f(x) xác định trên {R} và có bảng biến thiên như hình vẽ sau: [BẢNG BIẾN THIÊN] Tìm điểm cực đạ
+  tyqi NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: [BẢNG BIẾN THIÊN] Hàm số đã cho đạt cực đại tại điểm nào dưới 
+  uv5r NLC 1 | Cho hàm số f(x) có bảng biến thiên như sau: [BẢNG BIẾN THIÊN] Giá trị cực tiểu của hàm số đã cho bằng
+  gwqe NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: [BẢNG BIẾN THIÊN] Tìm giá trị cực đại y_{CD} và giá trị cực ti
+
+### [6] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm cực trị của hàm số dựa vào đồ thị hàm số (17)
+    yêu cầu: Xác định được điểm cực trị và giá trị cực trị của hàm số dựa vào đồ thị của hàm số đó.
+  42_1 NLC 1 | Cho hàm số y = f(x) có đồ thị như hình vẽ. Hàm số y = f(x) đạt cực đại tại điểm nào sau đây? [HINH VẼ ĐỒ THỊ]<
+  1_12 DS 2 | Cho hàm số y = x^3 - 3x + 2. Khi đó
+  03_5 NLC 1 | Cho hàm số y = f(x) có đồ thị là đường cong như hình vẽ bên dưới: [HINH VẼ ĐỒ THỊ] Hàm số f(x) đạt cực đại tại
+  mfbu NLC 2 | Điểm cực tiểu của đồ thị hàm số y = x^3 - 12x + 12 là
+  6rca NLC 1 | Cho hàm số y = f(x) có đồ thị như hình vẽ bên. Hàm số đạt cực đại tại điểm nào? [HÌNH VẼ]
+  hovl DS 2 | Cho hàm số bậc ba có đồ thị như sau: [HÌNH VẼ] Xét các khẳng định sau:
+  554_0 NLC 1 | Cho hàm số bậc ba y=f(x) có đồ thị như hình vẽ dưới đây: [HINH VẼ ĐỒ THỊ] Hàm số y=f(x) đạt cực tiểu tại<br/><
+  3doj NLC 2 | Điểm cực tiểu của đồ thị hàm số y = \frac{x^2 - 2x + 5}{x - 1} là
+  219_1 NLC 1 | Cho hàm số bậc bốn có đồ thị như hình vẽ dưới đây: [HINH VẼ ĐỒ THỊ] Điểm cực tiểu của đồ thị hàm số đã cho là<
+  219_13 NLC 3 | Cho hàm số bậc ba y = f(x) có đồ thị là đường cong như hình vẽ sau: [HINH VẼ ĐỒ THỊ] a) Hàm số y = f(x) đồng b
+  2d9k NLC 1 | Cho hàm số có đồ thị như hình bên ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/publi
+  44uo DS 3 | Cho hàm số y = f(x) có đồ thị như hình vẽ bên dưới ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storag
+  20_5 NLC 3 | Cho hàm số y = f(x) có đạo hàm liên tục trên {R} và có đồ thị như hình vẽ. [HÌNH VẼ ĐỒ THỊ]. Có bao nhiêu giá 
+  s33l NLC 1 | Cho hàm số y = ax^3 + bx^2 + cx + d  (a, b, c, d \in {R}) có đồ thị là đường cong trong hình bên dưới: [HÌNH V
+  h1l4 NLC 2 | Cho hàm số y = f(x) xác định và liên tục trên {R}. Biết đồ thị của hàm số f(x) như hình vẽ. Hỏi hàm số có bao 
+  hog0 NLC 1 | Hàm số f(x) có đồ thị như hình bên. Hỏi hàm số f(x) có bao nhiêu điểm cực tiểu? [HÌNH VẼ]
+  w47l NLC 2 | Điểm cực đại của đồ thị hàm số f(x) = x^3 - 3x + 2 là
+
+### [7] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm cực trị của hàm số dựa vào đồ thị đạo hàm (8)
+    yêu cầu: Xác định được các điểm cực trị của hàm số dựa vào đồ thị của hàm số đạo hàm.
+  eji4 NLC 2 | Cho hàm số y = f(x) xác định và liên tục trên {R}. Biết đồ thị của hàm số f'(x) như hình vẽ. [HÌNH VẼ] Tìm điể
+  yd9w NLC 3 | Cho hàm số y = f(x) xác định trên {R} và có đồ thị hàm số y = f'(x) là đường cong trong hình bên. Mệnh đề nào 
+  6e99 NLC 3 | Cho hàm số f(x) có đồ thị f'(x) của nó trên khoảng K như hình vẽ. Khi đó trên K, hàm số y = f(x) có bao nhiêu 
+  h5q8 NLC 2 | Cho hàm số bậc bốn y = f(x) có đồ thị đạo hàm y = f'(x) như hình vẽ bên dưới: (Hình ảnh đồ thị f'(x) cắt trục 
+  glyd NLC 2 | Cho hàm số f(x) xác định trên {R} và có đồ thị của hàm số f'(x) như hình vẽ bên. [HÌNH VẼ] Trong các mệnh đề s
+  dczm NLC 2 | Cho hàm số bậc bốn y = f(x) có đồ thị đạo hàm y = f'(x) như hình vẽ bên dưới: [HÌNH VẼ] Hàm số đã cho đạt cực 
+  ykr2 NLC 3 | Cho hàm số y = f(x) có đạo hàm liên tục trên {R} và hàm số y = f'(x) có đồ thị như hình vẽ bên. Mệnh đề nào sa
+  6sgf NLC 3 | Cho hàm số y = f(x). Hàm số y = f'(x) có đồ thị trên một khoảng K như hình vẽ bên. Trong các khẳng định sau, c
+
+### [8] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm cực trị dựa vào biểu thức đạo hàm (4)
+    yêu cầu: Xác định được các điểm cực trị của hàm số khi biết biểu thức của đạo hàm.
+  cq7b NLC 2 | Cho hàm số y = f(x) có đạo hàm f'(x) = (x + 1)(x - 2)^2(x - 3)^3(x + 5)^4. Hỏi hàm số y = f(x) đạt cực tiểu tạ
+  dooo NLC 2 | Cho hàm số y = x^3 - 3x^2 - 2. Gọi a, b lần lượt là giá trị cực đại và giá trị cực tiểu của hàm số đó. Giá trị
+  k5nm NLC 3 | Cho hàm số y = f(x) có đạo hàm f'(x) = 3x^2(x - 2)(x + 2)^4(4 - x^2). Hỏi hàm số đạt cực đại tại điểm nào sau 
+  xyxj NLC 3 | Gọi M, n lần lượt là giá trị cực đại, giá trị cực tiểu của hàm số y = \frac{x^2 + 3x + 3}{x + 2}. Khi đó giá t
+
+### [9] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm khoảng đơn điệu của hàm số cho bởi công thức (34)
+    yêu cầu: Tìm được các khoảng đồng biến, nghịch biến của hàm số cho trước bằng công thức.
+  009_12 TLN 3 | Hàm số y = \log_3(x^2 - 2x) nghịch biến trên khoảng (-\infty; a) có độ dài lớn nhất. Khi đó a bằng?
+  14_1 NLC 2 | Hàm số y = -x^3 + 3x đồng biến trên khoảng nào dưới đây?
+  14_2 NLC 2 | Cho hàm số y = f(x) có f'(x) = (x + 2)(x + 1)(x^2 - 1). Hàm số y = f(x) đồng biến trên khoảng nào sau đây?
+  03_7 NLC 2 | Cho hàm số y = \frac{x-2}{x+1}, khẳng định nào sau đây là đúng?
+  009_0 NLC 2 | Hàm số y = \frac{x^2 - 3x + 5}{x + 1} nghịch biến trên các khoảng nào?
+  09_8 TLN 3 | Biết rằng tất cả các khoảng nghịch biến của hàm số y = \frac{x^2 + 2x + 2}{x + 1} là hai khoảng (a; b), (b; c)
+  219_2 NLC 2 | Hàm số nào sau đây nghịch biến trên tập xác định của nó?
+  919_2 NLC 2 | Sau khi phát hiện một bệnh dịch, các chuyên gia y tế nhận thấy tốc độ truyền bệnh (người/ngày) tại thời điểm t
+  919_3 NLC 2 | Giả sử sự lây lan của một loại virus ở một địa phương có thể được mô hình hóa bằng hàm số N(t) = -t^3 + 12t^2,
+  609_2 NLC 3 | Cho hàm số y = -x^3 - mx^2 + (4m + 9)x + 5, với m là tham số. Hỏi có bao nhiêu giá trị nguyên của m để hàm số 
+  07_0 NLC 3 | Có bao nhiêu giá trị nguyên của m để hàm số y = -x^3 + 3(m+1)x^2 + 3(2m-1)x + 2024 nghịch biến trên {R}.
+  07_1 NLC 3 | Cho hàm số y = \frac{m+2}{3}x^3 - (m+2)x^2 - (3m-1)x + 2. Có bao nhiêu số nguyên m để hàm số đồng biến trên {R
+  07_2 NLC 3 | Giá trị nguyên lớn nhất của tham số m để f(x) = 2mx^3 - 6x^2 + (2m-4)x + m^2 + 2024 nghịch biến trên {R}.
+  07_3 NLC 3 | Số giá trị nguyên của tham số m để hàm số y = (4-m^2)x^3 + (m-2)x^2 + x + m - 2024 đồng biến trên (-\infty; +\
+  07_4 NLC 3 | Có bao nhiêu giá trị nguyên của tham số thực m để hàm số y = \frac{1}{3}x^3 - mx^2 + (2m+3)x + 2 đồng biến trê
+  07_5 NLC 3 | Hỏi có bao nhiêu số nguyên m để hàm số y = (m^2-1)x^3 + (m-1)x^2 - x + 4 nghịch biến trên khoảng (-\infty; +\i
+  07_6 NLC 3 | Giá trị m để hàm số y = x^3 + 3x^2 + mx + m giảm trên đoạn có độ dài bằng 1 là:
+  07_7 NLC 3 | Tìm m để hàm số y = \frac{-1}{3}x^3 + x^2 + (3m+2)x + m - 3 đồng biến trên đoạn có độ dài nhỏ hơn 4?
+  07_8 NLC 3 | Có bao nhiêu giá trị nguyên của m để hàm số y = \frac{x + m + 1}{mx + 2} đồng biến trên từng khoảng xác định.
+  07_9 NLC 3 | Có bao nhiêu giá trị nguyên của tham số m để hàm số y = \frac{x+6}{x+5m} nghịch biến trên (10; +\infty).
+  07_10 NLC 3 | Có bao nhiêu giá trị nguyên của tham số m để hàm số y = \frac{(m+1)x + 12}{x+m} nghịch biến trên (-\infty; 0).
+  07_11 NLC 4 | Có bao nhiêu giá trị nguyên của tham số m lớn hơn -3 để hàm số y = \frac{\tan x - 2}{\tan x - m} đồng biến trê
+  7_12 NLC 4 | Có bao nhiêu giá trị nguyên của tham số m không vượt quá 10 để hàm số y = \frac{2\cos x - 1}{\cos x - m} đồng 
+  7_13 NLC 2 | Tìm tất cả các giá trị thực của tham số m sao cho hàm số y = \frac{x-m+2}{x+1} giảm trên các khoảng mà nó xác 
+  7_14 NLC 3 | Có bao nhiêu giá trị nguyên nhỏ hơn 10 của m để hàm số y = \frac{mx+1}{x+m} đồng biến trên (1; +\infty).
+  7_15 NLC 4 | Có bao nhiêu giá trị nguyên của m thuộc (-5; 5) để y = \frac{\tan x - 2}{\tan x + m} đồng biến trên khoảng (0;
+  7_16 NLC 4 | Có bao nhiêu giá trị nguyên của m thuộc (-9; 9) để hàm số y = \frac{2\cos x - 1}{\cos x - m} đồng biến trên (0
+  00_0 NLC 2 | Cho hàm số y = x^3 + 3x^2 - mx - 4. Số các giá trị nguyên của m \in [-10;10] để hàm số đồng biến trên khoảng (
+  700_1 NLC 2 | Tìm giá trị lớn nhất của m để hàm số y = -x^3 + 3x^2 + 3mx - 1 nghịch biến trên khoảng (0;+\infty).
+  700_2 NLC 2 | Có bao nhiêu giá trị nguyên dương của tham số m sao cho hàm số y = x^4 - 2(m-1)x^2 + m - 2 đồng biến trên khoả
+  700_3 NLC 3 | Có bao nhiêu giá trị nguyên của tham số m không lớn hơn 10 sao cho hàm số y = -\frac{1}{3}x^3 + (m-1)x^2 + (m+
+  700_4 NLC 3 | Có bao nhiêu giá trị nguyên của tham số m \in [-20;20] sao cho hàm số y = \frac{1}{3}x^3 + (m-1)x^2 + (2m+1)x 
+  jrig NLC 2 | Hàm số y = x^4 - 8x^2 + 2025 đồng biến trên khoảng nào sau đây?
+  w8km TLN 3 | Tính tổng các giá trị nguyên dương của tham số m để hàm số y = x^3 - 3mx^2 + 3(3m+4)x + 2025 đồng biến trên (2
+
+### [10] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm khoảng đơn điệu dựa vào bảng biến thiên (17)
+    yêu cầu: Xác định được các khoảng đồng biến, nghịch biến của hàm số khi cho bảng biến thiên hoặc bảng xét dấu đạo hàm.
+  219_9 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ] Hàm số đã cho nghịch biến trên khoảng nào dướ
+  919_0 NLC 1 | Thể tích V (đơn vị: cm^3) của 1kg nước tại nhiệt độ T (đơn vị: ^\circ C) được tính bởi hàm số V(T), T \in [0;3
+  17_0 NLC 1 | Cho hàm số y=f(x) có bảng biến thiên như hình vẽ sau: [HINH VẼ ĐỒ THỊ]. Mệnh đề nào sau đây sai?<br/><img src=
+  919_1 NLC 1 | Độ giảm huyết áp của một bệnh nhân được cho bởi hàm số y = G(x). Trong đó x là liều lượng thuốc được tiêm cho 
+  919_11 NLC 1 | Xét một chất điểm chuyển động dọc theo trục. Hỏi vận tốc của chất điểm tăng khi t thuộc khoảng nào dưới đây, b
+  l6dv NLC 1 | Cho hàm số có bảng biến thiên như sau ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/p
+  a8p7 NLC 1 | Cho hàm số y = f(x) xác định liên tục và liên tục trên {R} và có bảng biến thiên như sau ![Hình minh họa](http
+  wh58 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau. Mệnh đề nào dưới đây là **sai**? ![Hình minh họa](https://cmji
+  02oj NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: ![Hình minh họa](https://cmjithgtecypxmisbzvw.supabase.co/stor
+  02_0 NLC 1 | Cho hàm số y = f(x) xác định và liên tục trên khoảng (-\infty; +\infty), có bảng biến thiên như hình sau: [HIN
+  02_2 NLC 1 | Cho hàm số y = f(x) có bảng xét dấu đạo hàm như sau: [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;base64,/9j
+  02_3 NLC 2 | Cho hàm số f(x) có bảng xét dấu đạo hàm như sau: [HINH VẼ ĐỒ THỊ] Mệnh đề nào dưới đây là đúng?<br/><img src="
+  35_0 NLC 1 | Cho hàm số f(x) có bảng biến thiên như sau. Tìm mệnh đề đúng? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;b
+  35_5 NLC 1 | Cho hàm số y = f(x) liên tục trên {R} và có bảng xét dấu đạo hàm như hình bên. Hàm số y = f(x) nghịch biến trê
+  35_6 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau. Khẳng định nào dưới đây đúng? [HINH VẼ ĐỒ THỊ]<br/><img src="d
+  35_1 NLC 1 | Hàm số y = f(x) có bảng biến thiên ở hình bên. Hàm số nghịch biến trong các khoảng nào sau đây [HINH VẼ ĐỒ THỊ
+  35_2 NLC 1 | Cho hàm số y = f(x) liên tục trên {R} và có bảng biến thiên như hình dưới đây [HINH VẼ ĐỒ THỊ] Hỏi hàm số đã c
+
+### [11] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm khoảng đơn điệu dựa vào đồ thị hàm số (9)
+    yêu cầu: Xác định được các khoảng đồng biến, nghịch biến của hàm số thông qua việc quan sát hình dáng đồ thị hàm số.
+  29_1 NLC 1 | Cho hàm số bậc bốn y = f(x) có đồ thị là đường cong trong hình dưới đây: [HÌNH VẼ ĐỒ THỊ] Hàm số đã cho đồng b
+  919_8 NLC 1 | Cho một chất điểm có đồ thị biểu diễn vận tốc theo thời gian như hình minh họa [HINH VẼ ĐỒ THỊ]. Hỏi vận tốc c
+  wt27 NLC 1 | Cho hàm số có đồ thị như hình bên ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/publi
+  nkhr DS 3 | Cho hàm số y = f(x) có đồ thị như hình vẽ bên ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/
+  5k97 NLC 1 | Cho hàm số y = f(x) có đồ thị như hình vẽ ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/obje
+  02_6 NLC 2 | Cho hàm số f(x) xác định, liên tục trên {R} và có đồ thị như hình vẽ bên. Khẳng định nào sau đây là sai? [HINH
+  45_0 NLC 1 | Cho hàm số y = f(x) có đồ thị như hình dưới đây. [HINH VẼ ĐỒ THỊ] Hàm số đã cho đồng biến trên khoảng nào sau 
+  508_1 NLC 1 | Cho hàm số y=f(x) có đồ thị là đường cong trong hình bên. [HINH VẼ ĐỒ THỊ] Hàm số đã cho nghịch biến trong kho
+  ow9u NLC 1 | Cho hàm số y = ax^3 + bx^2 + cx + d (a,b,c,d \in {R}, a \neq 0) có đồ thị là đường cong như hình bên. Hàm số đ
+
+### [12] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm (9)
+    yêu cầu: Xác định được các khoảng đồng biến, nghịch biến của hàm số dựa vào việc xét dấu từ đồ thị của đạo hàm.
+  17_1 NLC 2 | Cho hàm số đa thức bậc bốn y=f(x). Hàm số y=f'(x) có đồ thị như hình vẽ: [HINH VẼ ĐỒ THỊ]. Hỏi hàm số y=f(x) đ
+  42_8 NLC 2 | Cho hàm số y = f(x) có đạo hàm trên {R}, biết hàm số y = f'(x) có đồ thị như hình vẽ. Khẳng định nào sai về hà
+  419_17 TLN 4 | Cho hàm số f(x) liên tục trên {R} và có đồ thị hàm số y = f'(x) như hình vẽ bên. Biết hàm số y = f(x) - \frac{
+  33_0 DS 3 | Cho hàm số y=f(x) có đạo hàm trên {R} và f'(x) là hàm số bậc ba có đồ thị là đường cong trong hình vẽ. [HINH V
+  45_11 NLC 3 | Cho hàm số đa thức bậc bốn y = f(x) có đồ thị đạo hàm y = f'(x) như hình bên dưới: [HINH VẼ ĐỒ THỊ] Hàm số g(x
+  03_3 NLC 2 | Cho hàm số y = f'(x) có đồ thị là đường cong trong hình vẽ dưới đây: [HINH VẼ ĐỒ THỊ] Hàm số y = f(x) đồng biế
+  009_4 NLC 2 | Cho hàm số bậc bốn y = f(x). Hàm số y = f'(x) có đồ thị như hình dưới đây: [HINH VẼ ĐỒ THỊ] a) Hàm số y = f(x)
+  219_6 NLC 2 | Cho hàm số y = f(x) có f'(x) = (x+2)(x+1)(x^2-1), \forall x \in {R}. Hàm số y = f(x) đồng biến trên khoảng nào
+  02_7 NLC 2 | Cho hàm số y = f(x) có đạo hàm trên {R} và có đồ thị y = f'(x) như hình vẽ bên. Khẳng định nào sau đây là khẳn
+
+### [13] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm số điểm cực trị của hàm số cho bởi công thức (20)
+    yêu cầu: Tính và xác định được số điểm cực trị của hàm số khi biết công thức giải tích của hàm số đó.
+  08_10 DS 3 | Cho hàm số f(x) = \frac{x^2 - 2x + 6}{-x - 1}.
+  0_10 NLC 3 | Biết rằng hàm số y = (x+a)^3 + (x+b)^3 - x^3 có hai điểm cực trị. Mệnh đề nào sau đây là đúng?
+  kcpm NLC 3 | Cho hàm số y = \frac{1}{4}x^4 - \frac{4}{3}x^3 - \frac{7}{2}x^2 - 2x - 1. Khẳng định nào sau đây đúng?
+  2_10 NLC 2 | Cho hàm số y = f(x) liên tục trên {R}, có đạo hàm f'(x) = x(x+1)^2(2-x)^3, \forall x \in {R}. Hàm số đã cho có
+  vc96 NLC 2 | Số điểm cực trị của hàm số y = \frac{3^x}{\ln 3} - 9x + 17 là
+  219_5 NLC 2 | Hàm số y = (x^2 - 1)(3x - 2)^3 có bao nhiêu điểm cực đại?
+  r4az NLC 1 | Hàm số y = \frac{2x + 3}{x + 1} có bao nhiêu điểm cực trị?
+  ysm7 TLN 4 | Cho hàm số bậc ba y = f(x) có bảng biến thiên như sau: [BẢNG BIẾN THIÊN] Tìm số điểm cực trị của hàm số y = f(
+  ppmh TLN 4 | Cho hàm số y = f(x), bảng biến thiên của hàm số f'(x) như sau: [BẢNG BIẾN THIÊN] Tìm số điểm cực trị của hàm s
+  20_0 NLC 3 | [Câu 50 - Đề Minh Họa 2022] Cho hàm số y = f(x) có đạo hàm là f'(x) = x^2 + 10x, \forall x \in {R}. Có bao nhi
+  20_1 NLC 3 | Cho hàm số f(x) có đạo hàm f'(x) = (x + 1)^2(x^2 - 4x). Có bao nhiêu giá trị nguyên dương của tham số m để hàm
+  20_2 NLC 3 | [Câu 50 - Đề Chính Thức 2021] Cho hàm số y = f(x) có đạo hàm f'(x) = (x - 7)(x^2 - 9), \forall x \in {R}. Có b
+  20_3 NLC 3 | Cho hàm số y = f(x) có đạo hàm f'(x) = (x - 6)(x^2 + 2x - 8), \forall x \in {R}. Có bao nhiêu giá trị nguyên d
+  20_4 NLC 4 | [Câu 49 - ĐMH 2024] Cho hàm số y = f(x) có đạo hàm f'(x) = x^2 - 3x - 4, \forall x \in {R}. Có bao nhiêu giá t
+  r1v5 NLC 3 | Hàm số y = \log_5(x^3 - 3x^2 + 4) có bao nhiêu điểm cực trị?
+  qrm1 NLC 2 | Cho hàm số y = x^4 - 2x^2 + 3. Khẳng định nào sau đây là đúng?
+  936u NLC 1 | Số điểm cực trị của hàm số y = x^4 - 2x^2 - 3 là
+  wi23 NLC 1 | Số điểm cực trị của hàm số y = x^4 + 2x^2 + 1 là
+  8ksu NLC 1 | Số điểm cực trị của hàm số y = -3x^4 + 1 là
+  33_4 TLN 2 | Cho hàm số y=f(x) có đồ thị của f'(x) như hình vẽ bên dưới. Số điểm cực trị của hàm số y=f(x) là: [HINH VẼ ĐỒ 
+
+### [14] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm số điểm cực trị dựa vào biểu thức đạo hàm (7)
+    yêu cầu: Xác định được số điểm cực trị, điểm cực đại hoặc điểm cực tiểu của hàm số dựa vào biểu thức đạo hàm cho trước.
+  wpf2 NLC 3 | Cho hàm số y = f(x) có đạo hàm f'(x) = x(x + 1)(1 - x^2)(x - 2)^2(4 - x^2)^3. Hỏi hàm số y = f(x) có mấy điểm 
+  opms NLC 2 | Hàm số f có đạo hàm là f'(x) = (x - 2020)^{2022} \cdot (x - 2021)^{2019} \cdot (x - 3)^2(x + 1)^{15}. Số điểm 
+  yw1i NLC 3 | Cho hàm số f(x) có đạo hàm f'(x) = x^2(x^2 - 3x)(x^2 - 9)(x^2 + 4x + 3), \forall x \in {R}. Số điểm cực trị củ
+  d722 NLC 2 | Cho hàm số f(x) có đạo hàm f'(x) = x(x-1)^2, \forall x \in {R}. Số điểm cực trị của hàm số đã cho là
+  5dbq NLC 2 | Cho hàm số y = f(x) có đạo hàm f'(x) = (x + 1)(x - 2)^2(x - 3)^3(x + 5)^4. Hỏi hàm số y = f(x) có mấy điểm cực
+  l48f NLC 2 | Hàm số f có đạo hàm là f'(x) = (x - 2020)^{2020} \cdot (x - 2021)^{2021} \cdot x^2 (x + 1)^5. Số điểm cực trị 
+  scbb NLC 2 | Cho hàm số y = f(x) liên tục trên {R}, có đạo hàm f'(x) = (x - 1)(x^2 - 2)(x^4 - 4). Số điểm cực trị của hàm s
+
+### [15] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm số điểm cực trị dựa vào bảng biến thiên (7)
+    yêu cầu: Xác định được số điểm cực trị của hàm số dựa vào bảng biến thiên hoặc bảng xét dấu của đạo hàm.
+  mka1 NLC 2 | Cho hàm số f(x) xác định trên {R} \setminus \{1\} và có bảng xét dấu f'(x) như sau: [BẢNG BIẾN THIÊN] Số điểm 
+  300_1 NLC 1 | Cho hàm số y = f(x), bảng xét dấu của f'(x) như sau: [HINH VẼ ĐỒ THỊ] Số điểm cực trị của hàm số đã cho là:<br
+  kohj NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: [BẢNG BIẾN THIÊN] Số điểm cực trị của hàm số đã cho là
+  aqkw NLC 1 | Cho hàm số f(x) liên tục trên {R} và có bảng xét dấu của f'(x) như sau: [BẢNG BIẾN THIÊN] Số điểm cực đại của 
+  29_0 NLC 2 | Hàm số y = f(x) liên tục trên {R} có bảng biến thiên hàm số y = f'(x) như hình dưới: [HÌNH VẼ ĐỒ THỊ] Số điểm 
+  219_10 NLC 2 | Cho hàm số y = f(x) liên tục trên {R} và có bảng xét dấu f'(x) như sau: [HINH VẼ ĐỒ THỊ] Hàm số y = f(x) có ba
+  twnp NLC 2 | Cho hàm số y = f(x) có bảng biến thiên như sau: [BẢNG BIẾN THIÊN] Hỏi hàm số có bao nhiêu điểm cực trị?
+
+### [16] Bài 1. Tính đơn điệu và cực trị của hàm số | Xét tính đơn điệu của hàm số cho bởi công thức (74)
+    yêu cầu: Xét được tính đồng biến, nghịch biến của hàm số hoặc tìm tham số để hàm số đơn điệu trên một tập hợp số.
+  17_9 NLC 2 | Cho hàm số y=x^3-2x^2+mx+1 (m là tham số). Tập hợp các giá trị của tham số m để hàm số đồng biến trên {R} là:
+  35_18 NLC 2 | Hàm số y = -x^3+3x-5 đồng biến trên khoảng nào sau đây?
+  35_20 NLC 2 | Hàm số y = -x^3+3x^2-1 đồng biến trên khoảng nào sau đây?
+  35_15 NLC 2 | Hàm số nào dưới đây đồng biến trên khoảng (-\infty;+\infty)?
+  5_22 NLC 2 | Hàm số nào dưới đây đồng biến trên {R}?
+  05_20 NLC 4 | Hàm số: y = x^3 + 3x^2 + mx + 1 nghịch biến trên một đoạn có độ dài 2 đơn vị khi:
+  03_4 NLC 2 | Hàm số nào sau đây nghịch biến trên {R}?
+  009_1 NLC 2 | Cho hàm số y = f(x) xác định trên {R} và có đạo hàm f'(x) = 12x^{2025}(x + 1)(3 - x), \forall x \in {R}. Hàm s
+  009_6 DS 2 | Cho hàm số y = 2^{x^2 - 3x + \frac{13}{4}}.
+  39_0 NLC 2 | Cho hàm số y = f(x) có đạo hàm f'(x) = -x^2 - 4, \forall x \in {R}. Mệnh đề nào dưới đây **đúng**?
+  33_6 TLN 4 | Cho hàm số y = f(x) có đạo hàm trên {R} và bảng xét dấu đạo hàm như hình vẽ sau: [BẢNG XÉT DẤU]. Tìm m để hàm 
+  3iu1 NLC 2 | Cho hàm số y = \frac{8 - 5x}{-4x - 9}. Khẳng định nào sau đây là **sai**?
+  vwvh NLC 2 | Cho hàm số y = 7x^3 + 9x^2 - 3x - 4. Khẳng định nào sau đây là **sai**?
+  2kws DS 2 | Cho hàm số y = f(x) = x^3 - 3x^2 - 1. Các mệnh đề sau đúng hay sai?
+  dbtu NLC 2 | Các khoảng đồng biến của hàm số y = x^4 - 8x^2 - 4 là
+  ik7r NLC 2 | Hàm số y = x^4 - 2x^2 + 1 nghịch biến trên các khoảng nào sau đây?
+  cp1a NLC 1 | Cho hàm số y = \frac{x + 1}{x - 3}. Trong các mệnh đề sau, mệnh đề nào **sai**?
+  met7 NLC 2 | Cho hàm số y = \frac{1}{3}x^3 - \frac{1}{2}x^2 - 12x - 1. Mệnh đề nào sau đây đúng?
+  ac30 NLC 2 | Hàm số nào sau đây **không** đồng biến trên (-\infty; +\infty)?
+  vde9 NLC 2 | Cho hàm số y = x - 2\sqrt{x}. Mệnh đề nào sau đây đúng?
+  00_9 NLC 3 | Tìm m để hàm số y = \frac{\cos x - 2}{\cos x - m} đồng biến trên khoảng (0; \frac{\pi}{2}).
+  04_7 TLN 3 | Có tất cả bao nhiêu giá trị nguyên của tham số m để hàm số y = \frac{m}{3}x^3 - 2mx^2 + (3m+5)x đồng biến trên
+  45_19 TLN 4 | Có bao nhiêu giá trị nguyên dương của tham số m để hàm số y = x^5 - \frac{2023}{x} - mx đồng biến trên khoảng 
+  819_0 NLC 2 | Cho hàm số y = \frac{x^2 + 3}{x - 1}. Khẳng định nào sau đây là đúng?
+  554_1 NLC 2 | Hàm số y = \frac{x^2 - x + 9}{x - 1} nghịch biến trên khoảng nào trong các khoảng dưới đây?
+  554_5 NLC 2 | Cho hàm số y = \frac{x}{x^2 + 1}. Mệnh đề nào dưới đây đúng?
+  554_16 TLN 3 | Có bao nhiêu giá trị nguyên dương của tham số m thuộc đoạn [-100;100] để hàm số y = \frac{2x + m}{x + 10} nghị
+  42_3 NLC 2 | Cho các hàm số sau: (1) y = -x^3 + x^2 - x + 2; (2) y = -4x + 3; (3) y = -x^4; (4) y = \frac{x+1}{x-2}. Trong 
+  42_2 NLC 2 | Cho hàm số y = \frac{1}{3}x^3 + x^2 - 3x + 2. Khẳng định nào dưới đây đúng?
+  2_18 TLN 3 | Có bao nhiêu giá trị nguyên âm của tham số m để hàm số y = \frac{3}{4}x^4 - \frac{9}{2}x^2 + (2m+15)x - 3m + 1
+  419_4 NLC 2 | Hàm số y = -x^3 + 3x^2 đồng biến trên khoảng nào dưới đây?
+  48_9 NLC 3 | Tìm tất cả các giá trị của m để hàm số y = \\frac{mx - 2}{2x - m} đồng biến trên mỗi khoảng xác định.
+  48_17 TLN 3 | Cho hàm số y = \\sqrt{3x^2 - x^3}. Biết các khoảng nghịch biến của hàm số đã cho là (-\\infty; a) và (b; c). T
+  35_19 NLC 2 | Hàm số y = x^3-3x nghịch biến trên khoảng nào?
+  02_4 NLC 2 | Cho hàm số y = x^5 + 3x^3 - 8. Kết luận nào sau đây là đúng?
+  35_7 NLC 2 | Cho hàm số y = f(x) có đạo hàm f'(x) = x(x-2)^3, với mọi x \in {R}. Hàm số đã cho nghịch biến trên khoảng nào 
+  02_5 NLC 2 | Cho hàm số y = \frac{x + 2}{x - 1}. Kết luận nào sau đây là đúng?
+  35_8 NLC 2 | Cho hàm số y = f(x) liên tục trên {R} và có f'(x) = (x+1)^2(x-1)^3(2-x). Hàm số y = f(x) nghịch biến trên khoả
+  35_9 NLC 2 | Hàm số y = f(x) có đạo hàm y' = x^2. Mệnh đề nào sau đây đúng?
+  35_10 NLC 2 | Kết luận nào sau đây về tính đơn điệu của hàm số y = \frac{2x-1}{x+2} là đúng?
+  35_11 NLC 2 | Cho hàm số y = \frac{x+1}{2-x}. Khẳng định nào sau đây đúng?
+  35_12 NLC 2 | Cho hàm số y = \frac{3-x}{x+1}. Mệnh đề nào dưới đây đúng?
+  35_14 NLC 2 | Cho hàm số y = \frac{-x+5}{x+2}. Mệnh đề nào sau đây là đúng?
+  35_16 NLC 2 | Hàm số y = f(x) = \frac{-2}{-x+1} có tính chất
+  35_21 NLC 2 | Cho hàm số y = x^4-2x^2+4. Mệnh đề nào dưới đây đúng?
+  5_23 NLC 3 | Hàm số y = -2x^3+3x^2+2 đồng biến trên khoảng nào sau đây?
+  5_24 NLC 2 | Hàm số y = \sqrt{25-x^2} nghịch biến trên khoảng nào sau đây?
+  5_25 NLC 2 | Hàm số y = \sqrt{2x-x^2} nghịch biến trên khoảng nào dưới đây?
+  5_26 NLC 2 | Hàm số y = \sqrt{8+2x-x^2} đồng biến trên khoảng nào sau đây?
+  5_28 NLC 2 | Trên khoảng nào sau đây, hàm số y = \sqrt{-x^2+2x} đồng biến?
+  5_30 NLC 3 | *Hàm số y = 2x - \sqrt{x^2-2x} đồng biến trên khoảng
+  05_0 NLC 3 | Có bao nhiêu giá trị nguyên không âm của tham số m để hàm số y = x^4 - 2mx^2 - 3m + 1 đồng biến trên khoảng (1
+  05_1 NLC 3 | Tìm tất cả các giá trị thực của tham số m sao cho hàm số y = x^4 - 2(m-1)x^2 + m - 2 đồng biến trên khoảng (1;
+  05_2 NLC 3 | Tìm tất cả các giá trị thực của tham số m để hàm số y = x^4 - 2x^2 + (2m^2 - 1)x + 5 đồng biến trên khoảng (1;
+  05_3 NLC 2 | Hàm số y = \frac{mx + 1}{x - 2} nghịch biến trên từng khoảng xác định thì các giá trị của tham số m là:
+  05_4 NLC 3 | Tìm số nguyên m nhỏ nhất sao cho hàm số y = \frac{(m-3)x - 2}{x + m} luôn nghịch biến trên các khoảng xác định
+  05_5 NLC 3 | Tìm m để hàm số y = \frac{mx - 9}{x - m} luôn đồng biến trên khoảng (-\infty; 2)
+  05_6 NLC 3 | Hàm số y = \frac{mx + 1}{x + m} nghịch biến trên khoảng (-\infty; 0) khi:
+  05_7 NLC 3 | Cho hàm số y = \frac{x + 2}{x + m}. Số giá trị nguyên của m để hàm số đồng biến trên khoảng (-\infty; -11) là:
+  05_8 NLC 3 | Tìm tất cả các giá trị thực của tham số m sao cho hàm số y = \frac{mx + 4}{x + m} giảm trên khoảng (-\infty; 1
+  05_9 NLC 3 | Tìm m để hàm số y = \frac{2x + m - 6}{x - m^2} luôn đồng biến trên khoảng (3; +\infty).
+  05_10 NLC 4 | Có bao nhiêu giá trị nguyên nhỏ hơn 20 của m để y = \frac{\cos x - 2}{\cos x - m} tăng trên (0; \frac{\pi}{2})
+  05_11 NLC 4 | Có bao nhiêu giá trị nguyên dương của m để y = \frac{\tan x - 2}{\tan x - m} đồng biến trên (0; \frac{\pi}{4})
+  05_12 NLC 3 | Tìm tất cả các giá trị thực của tham số m sao cho hàm số sau luôn đồng biến trên {R}? y = 2x^3 - 3(m+2)x^2 + 6
+  05_13 NLC 3 | Tìm giá trị nhỏ nhất của tham số m sao cho hàm số y = \frac{x^3}{3} + mx^2 - mx - m luôn đồng biến trên {R}
+  05_14 NLC 3 | Hàm số y = \frac{1}{3}x^3 + (m+1)x^2 - (m+1)x + 1 đồng biến trên tập xác định của nó khi:
+  05_15 NLC 3 | Tìm tất cả các giá trị thực của tham số m sao cho hàm số sau luôn nghịch biến trên {R}? y = -\frac{1}{3}x^3 - 
+  05_16 NLC 3 | Các giá trị của tham số m để hàm số y = \frac{1}{3}x^3 + (m+2)x^2 + (4m+13)x - 2 đồng biến trên {R} là:
+  05_18 NLC 4 | Hàm số: y = -\frac{1}{3}x^3 - mx^2 - (m+6)x + 1 đồng biến trên một đoạn có độ dài \sqrt{24} đơn vị khi:
+  05_19 NLC 4 | Cho hàm số y = 2x^3 - 3(3m-1)x^2 + 6(2m^2-m)x + 3. Tìm tổng các giá trị của m để hàm số nghịch biến trên đoạn 
+  05_21 NLC 2 | Cho hàm số y = ax^3 + bx^2 + cx + d. Hỏi hàm số luôn đồng biến trên {R} khi nào?
+  009_5 DS 2 | Cho hàm số y = f(x) = \frac{x^2 + 3x}{x - 1}.
+  09_7 DS 3 | Cho hàm số y = \log_2(x^2 - 4x + 5) có đồ thị là (C).
+  8jt7 NLC 2 | Trong các hàm số dưới đây, hàm số nào sau đây nghịch biến trên {R}?
+
+### [17] Bài 1. Tính đơn điệu và cực trị của hàm số | Toán tổng hợp (4)
+    yêu cầu: Vận dụng tổng hợp đạo hàm để xét tính đơn điệu và tìm cực trị của hàm số trong các bài toán nhiều ý.
+  nsw0 DS 3 | Cho hàm số y = f(x) xác định trên {R} và có đồ thị của hàm số y = f'(x) là đường cong ở hình vẽ dưới ![Hình mi
+  4ocb DS 3 | Cho hàm số y = f(x) xác định trên {R} và có bảng biến thiên như hình vẽ ![Hình minh họa](https://cmjithgtecypx
+  7799 DS 3 | Cho hàm số y = f(x) liên tục trên đoạn [0; \frac{16}{5}] thoả mãn f'(\frac{1}{3}) = f'(1) = f'(\frac{5}{2}) = 
+  pzoc DS 3 | Đạo hàm f'(x) của hàm số y = f(x) có đồ thị như hình bên dưới ![Hình minh họa](https://cmjithgtecypxmisbzvw.su
+
+### [18] Bài 1. Tính đơn điệu và cực trị của hàm số | Ứng dụng cực trị vào hình học (11)
+    yêu cầu: Tính được khoảng cách, độ dài đoạn thẳng nối các điểm cực trị của đồ thị hàm số.
+  8_dyg0 NLC 3 | Tính độ dài đoạn thẳng nối hai điểm cực trị của đồ thị hàm số y = x^3 - 3x^2 + 1.
+  vr20 TLN 3 | Cho hàm số y = -x^4 + 2x^2 + 3 có đồ thị (C). Gọi h và h_1 lần lượt là khoảng cách từ các điểm cực đại và cực 
+  8yvq TLN 3 | Cho hàm số y = \frac{1}{3}x^3 - 4x + 4. Đường thẳng đi qua các điểm cực trị của đồ thị hàm số có phương trình 
+  7ddf TLN 4 | Cho A, B, C là ba điểm cực trị của đồ thị hàm số f(x) = -x^4 + 8x^2 - 8. Biết H(m; \frac{n}{p}) là trực tâm củ
+  eaer TLN 4 | Gọi S là tập hợp tất cả các giá trị thực của tham số m để đồ thị (C) của hàm số y = x^4 - 2m^2 x^2 + m^4 + 5 c
+  009_10 TLN 3 | Biết rằng hai điểm cực trị của đồ thị hàm số y = \frac{x^2 + 2x - 3}{x^2 + 1} cùng với điểm I(-\sqrt{5}; -\sqr
+  ive3 NLC 3 | Cho hàm số y = -x^3 + 3x^2 + 6x. Hàm số đạt cực trị tại hai điểm x_1, x_2. Khi đó giá trị của biểu thức S = x_
+  219_14 TLN 3 | Biết đường thẳng đi qua hai điểm cực trị của đồ thị hàm số y = -x^3 + 3x^2 + 9x + 1 là ax + by + 4 = 0. Tính a
+  2_17 TLN 3 | Cho hàm số y = \frac{1}{3}x^3 - \frac{1}{2}mx^2 + 6m (với m là tham số). Tính tổng bình phương các giá trị của
+  38_8 TLN 4 | Bác nông dân có ba tấm lưới thép B40, mỗi tấm dài \sqrt{\frac{700}{\sqrt{3}}} (m) và muốn rào một khu vườn có 
+  38_4 TLN 3 | Từ một miếng tôn dạng nửa hình tròn có bán kính R = 4 dm, người ta muốn cắt ra một hình chữ nhật. Hỏi diện tíc
+
+### [19] Bài 1. Tính đơn điệu và cực trị của hàm số | Toán thực tế (9)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến việc tìm cực trị của hàm số.
+  7lff TLN 3 | Vận tốc của tàu con thoi từ lúc cất cánh tại t = 0(s) cho đến khi tên lửa đẩy được phóng đi tại t = 126(s) cho
+  17_11 NLC 3 | Một vật chuyển động theo quy luật s=-t^3+6t^2 với t (giây) là khoảng thời gian tính từ lúc vật bắt đầu chuyển 
+  219_15 TLN 4 | Máng trượt của một cầu trượt cho trẻ em được uốn từ một tấm kim loại có bề rộng 80 cm, mặt cắt được mô tả ở Hì
+  11_11 NLC 3 | Một bể ban đầu chứa 150 lít nước. Sau đó, cứ mỗi phút người ta bơm thêm 50 lít nước, đồng thời cho vào bể 20 g
+  919_6 NLC 2 | Để giảm nhiệt độ trong phòng từ 28^\circ C, một hệ thống làm mát được phép hoạt động trong 10 phút. Gọi T (đơn
+  919_4 NLC 2 | Một chất điểm chuyển động theo quy luật S = -\frac{1}{3}t^3 + 4t^2 + 9t với t \ge 0 (giây) là khoảng thời gian
+  919_5 NLC 2 | Công suất P (đơn vị W) của một mạch điện được cung cấp bởi một nguồn pin 12V được cho bởi công thức P = 12I - 
+  919_7 NLC 2 | Một hợp tác xã nuôi cá thí nghiệm trong hồ. Người ta thấy rằng nếu trên mỗi đơn vị diện tích của mặt hồ có n c
+  01_0 NLC 2 | Một doanh nghiệp dự kiến lợi nhuận khi sản xuất x sản phẩm (0 \le x \le 300) được cho bởi hàm số y = -x^3 + 30
+
+### [20] Bài 1. Tính đơn điệu và cực trị của hàm số | Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu (9)
+    yêu cầu: Tìm được giá trị của tham số để một hàm số bậc ba đồng biến hoặc nghịch biến trên một khoảng cho trước.
+  cobw NLC 3 | Tìm m để hàm số y = x^3 + mx^2 + (1 - 2m)x + m - 3 đồng biến trên khoảng (-3; 0).
+  hb4r NLC 2 | Tìm tất cả các giá trị thực của tham số m để hàm số y = -\frac{1}{3}x^3 - mx^2 + (2m - 3)x - m + 2 nghịch biến
+  dlmi NLC 2 | Cho hàm số y = -x^3 - mx^2 + (4m + 9)x + 5, với m là tham số thực. Có bao nhiêu giá trị nguyên của m để hàm số
+  f2gf TLN 2 | Cho hàm số y = -x^3 - mx^2 + (4m + 9)x + 3 với m là tham số. Có bao nhiêu giá trị nguyên của m để hàm số nghịc
+  dgxv TLN 3 | Có bao nhiêu giá trị nguyên của tham số m để hàm số y = x^3 - 3(m + 2)x^2 + 3(m^2 + 4m)x + 1 nghịch biến trên 
+  p7bp NLC 3 | Tất cả các giá trị của tham số m sao cho hàm số y = -x^3 - 3mx^2 + 4m - 1 đồng biến trên khoảng (0; 4) là
+  7r03 NLC 3 | Tìm tất cả các giá trị của tham số m để hàm số y = -x^3 + 3x^2 + 3mx - 1 nghịch biến trên khoảng (0; +\infty).
+  e6ui TLN 3 | Cho hàm số y = \frac{mx + 2}{2x + m}, m là tham số thực. Gọi S là tập hợp tất cả các giá trị nguyên của m để h
+  c384 TLN 3 | Có bao nhiêu giá trị nguyên của tham số m để hàm số y = \frac{1}{3}x^3 - (m-1)x^2 - (m-3)x + 2024m đồng biến t
+
+### [21] Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số | Toán thực tế (17)
+    yêu cầu: Vận dụng được giá trị lớn nhất, giá trị nhỏ nhất của hàm số để giải quyết một số bài toán thực tiễn.
+  0954_17 TLN 3 | Một nhà sản xuất muốn thiết kế một chiếc hộp có dạng hình hộp chữ nhật không có nắp, có đáy là hình vuông cạnh
+  2954_13 DS 3 | Một cơ sở sản xuất khăn mặt đang bán mỗi chiếc khăn với giá 30.000 đồng một chiếc và mỗi tháng cơ sở bán được 
+  2954_19 TLN 3 | Một màn hình BC có chiều cao 1,4m được đặt thẳng đứng và mép dưới của màn hình cách mặt đất một khoảng BA = 1,
+  954_20 TLN 3 | Một ông nông dân có 240 m hàng rào và muốn rào lại cánh đồng hình chữ nhật tiếp giáp với một con sông. Ông khô
+  954_21 TLN 4 | Anh Hà dự định làm một cái thùng đựng dầu hình trụ bằng sắt có nắp đậy thể tích 10m^3. Chi phí làm mỗi m^2 đáy
+  0954_14 TLN 3 | Người ta muốn sản xuất một bể nước theo dạng khối lăng trụ tứ giác đều, không có nắp trên, làm bằng kính và có
+  0954_15 TLN 3 | Từ hình vuông có cạnh bằng 6 người ta cắt bỏ các tam giác vuông cân tạo thành hình tô đậm như hình vẽ. [HINH V
+  0954_16 TLN 3 | Người ta cần xây một bể chứa nước sản xuất dạng khối hộp chữ nhật không nắp có thể tích bằng 200~m^{3}. Đáy bể
+  0954_18 TLN 3 | Ông A muốn mua một mảnh đất hình chữ nhật có diện tích bằng 100m^{2} để làm khu vườn. Để chi phí xây dựng bờ r
+  0954_19 TLN 4 | Một doanh nghiệp tư nhân chuyên kinh doanh xe gắn máy các loại. Hiện nay doanh nghiệp đang tập trung vào chiến
+  11_9 NLC 3 | Một công ty chuyên sản xuất thùng phi nhận được đơn đặt hàng với yêu cầu là thùng phi phải có dạng hình trụ và
+  41_3 TLN 3 | Anh An muốn di chuyển từ vị trí A đến điểm B càng nhanh càng tốt (như hình vẽ). Để di chuyển từ vị trí A đến đ
+  33_7 TLN 3 | Một hộp sữa dung tích 1 lít có dạng hình hộp chữ nhật với đáy là hình vuông cạnh bằng x (cm) và chiều cao h (c
+  00_8 NLC 3 | Từ một miếng tôn hình bán nguyệt có bán kính bằng 3, người ta muốn cắt ra một hình chữ nhật (xem hình) có diện
+  41_2 TLN 2 | Hằng ngày mực nước của hồ thủy điện ở miền Trung lên và xuống theo lượng nước mưa, và các suối nước đổ về hồ. 
+  46_0 TLN 3 | Một người đàn ông muốn chèo thuyền ở vị trí A tới điểm B về phía hạ lưu bờ đối diện, càng nhanh càng tốt, trên
+  41_4 TLN 2 | Một hãng điện thoại đưa ra quy luật bán buôn cho từng đại lí, đó là đại lí càng nhập nhiều chiếc điện thoại củ
+
+### [22] Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số | Min-Max trên khoảng (16)
+    yêu cầu: Tìm được giá trị lớn nhất và giá trị nhỏ nhất của hàm số trên một khoảng hoặc nửa khoảng cho trước.
+  2954_10 NLC 2 | Cho hàm số y = f(x) = x - 5 + \frac{1}{x}, xét trên khoảng (0; +\infty) giá trị nhỏ nhất của hàm số bằng
+  id03 NLC 3 | Tìm giá trị lớn nhất M của hàm số y = \frac{x + 1}{\sqrt{x^2 + 1}} trên khoảng (-\infty; +\infty).
+  5zhx NLC 2 | Giá trị lớn nhất của hàm số y = 2x + \frac{1}{x} khi x < 0 là
+  2954_6 NLC 3 | Tìm giá trị lớn nhất của hàm số f(x) = \frac{1}{40}x^2(30-x) trên nửa khoảng (0;+\infty)
+  28_0 NLC 1 | Cho hàm số y=f(x) liên tục trên {R} thỏa mãn giá trị nhỏ nhất của hàm số trên {R} là 5. Khẳng định nào sau đây
+  0954_5 NLC 1 | Giá trị nhỏ nhất của hàm số y=\sqrt{x+1} trên tập xác định là
+  0954_8 NLC 2 | Tìm giá trị nhỏ nhất của hàm số f(x)=(x-3)e^{2x}.
+  0954_9 NLC 3 | Gọi giá trị nhỏ nhất và giá trị lớn nhất của hàm số f(x)=\frac{\ln~x}{x} trên nửa khoảng [1;e^{2}) lần lượt là
+  0954_11 DS 3 | Cho hàm số f(x) có đạo hàm f^{\prime}(x)=-x(x-2)^{2}(x-3), \forall x\in{R}.
+  2954_12 DS 2 | Cho hàm số f(x) = 2x^2 + \frac{500}{x}. Xét tính đúng sai của các mệnh đề sau:
+  609_3 NLC 2 | Giá trị lớn nhất của hàm số f(x) = x + \frac{4}{x} trên (-4; 0) là
+  t54l NLC 2 | Tìm giá trị lớn nhất M của hàm số y = -2\sqrt{4 - x}.
+  04tn NLC 2 | Giá trị lớn nhất của hàm số y = \sqrt{x + 2} - x là
+  di7n NLC 3 | Giá trị lớn nhất của hàm số f(x) = x(1 - x^2) trên khoảng (0; 1) là
+  jdz6 NLC 4 | Cho hàm số y = f(x) có đạo hàm cấp hai trên {R}. Biết f'(0) = 3, f'(2) = -2 và bảng xét dấu của f''(x) như sau
+  42_4 NLC 2 | Giá trị nhỏ nhất của hàm số y = f(x) = -x^3 - 3x^2 + 1 trên khoảng (-\infty; -1) là
+
+### [23] Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số | Min-max bằng bảng biến thiên (11)
+    yêu cầu: Xác định được giá trị lớn nhất và giá trị nhỏ nhất của hàm số dựa vào bảng biến thiên.
+  2954_1 NLC 2 | Cho hàm số y = f(x) liên tục trên [-3;2] và có bảng biến thiên như hình dưới đây. [HINH VẼ BẢNG BIẾN THIÊN] Gọ
+  0954_3 NLC 2 | Cho hàm số y=f(x) liên tục trên {R} và có bảng biến thiên như hình vẽ. [HINH VẼ ĐỒ THỊ] Chọn khẳng định đúng t
+  2954_14 DS 2 | Cho hàm số f(x) có bảng biến thiên như sau: [HINH VẼ BẢNG BIẾN THIÊN]. Xét tính đúng sai của các mệnh đề sau:<
+  2954_5 NLC 1 | Cho hàm số y = f(x) xác định, liên tục trên {R} và có bảng biến thiên như sau: [HINH VẼ BẢNG BIẾN THIÊN] Giá t
+  0954_1 NLC 2 | Hàm số y=f(x) liên tục trên đoạn [-1;3] và có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ] Gọi M,m lần lượt là gi
+  0954_0 NLC 1 | Cho hàm số y=f(x) có bảng biến thiên trên đoạn [0;3] như sau: [HINH VẼ ĐỒ THỊ] Giá trị nhỏ nhất của hàm số y=f
+  0954_7 NLC 1 | Cho hàm số y=f(x) liên tục và có bảng biến thiên trên đoạn [-1;3] như hình vẽ bên. [HINH VẼ ĐỒ THỊ] Khẳng định
+  0954_10 DS 3 | Cho hàm số y=f(x). Biết bảng xét dấu của f^{\prime}(x) như sau [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;
+  39_2 NLC 2 | Cho hàm số y = f(x) liên tục trên {R} và có bảng biến thiên như sau. [HINH VẼ ĐỒ THỊ] Tổng giá trị lớn nhất và
+  6u3k DS 2 | Hàm số y = f(x) liên tục trên đoạn [-1; 3] và có bảng biến thiên như sau: ![Hình minh họa](https://cmjithgtecy
+  300_2 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên trên nửa khoảng [-5;7) như sau: [HINH VẼ ĐỒ THỊ] Mệnh đề nào dưới đây đ
+
+### [24] Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số | Min-Max trên đoạn (27)
+    yêu cầu: Tính được giá trị lớn nhất và giá trị nhỏ nhất của hàm số cho trước trên một đoạn xác định.
+  2954_7 NLC 3 | Cho hàm số y = 2^x - 4x \ln 2. Giá trị nhỏ nhất của hàm số trên đoạn [0;4] có dạng a - b \ln c. Tính a + b + c
+  2954_8 NLC 2 | Gọi m, M lần lượt là giá trị nhỏ nhất, lớn nhất của hàm số y = x - \ln x trên đoạn [\frac{1}{2}; e]. Giá trị c
+  2954_9 NLC 2 | Cho hàm số y = f(x) = \sqrt{4 - x^2}. Khẳng định nào sau đây là sai?
+  0954_4 NLC 2 | Giá trị lớn nhất của hàm số y=\frac{x^{2}}{x+1} trên đoạn [0;2] là
+  14_3 NLC 2 | Giá trị lớn nhất của hàm số y = x^4 - 4x^2 + 5 trên đoạn [-2; 3] là:
+  17_3 NLC 2 | Tìm giá trị nhỏ nhất m của hàm số y=\frac{x^2+3}{x-1} trên đoạn [2;4].
+  554_2 NLC 2 | Giá trị lớn nhất của hàm số y = x^3 - 3x + 5 trên đoạn [0; 2] bằng
+  4nli NLC 2 | Tìm giá trị nhỏ nhất của hàm số y = \frac{x + 3}{x - 1} trên đoạn [-1; 0].
+  syu1 NLC 2 | Giá trị lớn nhất của hàm số y = \frac{x + 1}{x - 2} trên [-1; 0] là
+  zgb5 TLN 2 | Biết hàm số y = x^3 - 3x^2 - 9x + 28 đạt giá trị nhỏ nhất trên đoạn [0; 4] tại x_0. Tính P = x_0 + 2.
+  2954_2 NLC 2 | Gọi m là giá trị nhỏ nhất của hàm số y = \frac{x^2 + 3}{x - 1} trên đoạn [2;4]. Khi đó:
+  2954_3 NLC 2 | Tìm giá trị nhỏ nhất của hàm số y = f(x) = x^2 - 3x trên đoạn [0;2].
+  2954_16 TLN 2 | Giá trị nhỏ nhất của hàm số y = x^2 + \frac{2}{x} trên đoạn [\frac{1}{2}; 2] là bao nhiêu?
+  2954_17 TLN 2 | Tổng giá trị nhỏ nhất và giá trị lớn nhất của hàm số g(x) = \frac{\ln x}{x} trên đoạn [1;4] là... (làm tròn đế
+  2954_18 TLN 3 | Giá trị lớn nhất của hàm số f(x) = \sin x + \cos 2x trên [0; \pi] là bao nhiêu?
+  0954_6 NLC 2 | Tổng giá trị nhỏ nhất và giá trị lớn nhất của hàm số y=\sin~2x+2 trên tập xác định là
+  5_17 TLN 3 | Cho hàm số y = e^x(x^2 - 3). Gọi M = \frac{a}{e^b} (a, b \in {N}) là giá trị lớn nhất của hàm số đã cho trên đ
+  39jr NLC 2 | Tìm giá trị lớn nhất của hàm số f(x) = x^3 - 2x^2 - 4x + 1 trên đoạn [1; 3].
+  67p9 NLC 2 | Cho hàm số f(x) = -2x^4 + 4x^2 + 10. Tìm giá trị lớn nhất M và giá trị nhỏ nhất m của hàm số trên đoạn [0; 2].
+  300_3 NLC 2 | Giá trị nhỏ nhất của hàm số f(x) = x^3 - 21x trên đoạn [2;19] bằng:
+  45_6 NLC 2 | Gọi M và m lần lượt là giá trị lớn nhất và giá trị nhỏ nhất của hàm số y = \frac{x-3}{x+1} trên đoạn [0; 2]. T
+  ietg NLC 2 | Giá trị nhỏ nhất của hàm số y = -x^3 + 3x + 10 trên đoạn [0; 3] bằng
+  819_1 NLC 2 | Giá trị nhỏ nhất của hàm số f(x) = x^4 - 12x^2 - 1 trên đoạn [0;9] bằng
+  48_3 NLC 2 | Giá trị lớn nhất của hàm số y = (x-3)^2e^x trên đoạn [2; 4] bằng
+  418_2 NLC 2 | Giá trị lớn nhất của hàm số f(x) = x^3 - 8x^2 + 16x - 9 trên đoạn [1; 3] là
+  48_5 NLC 2 | Cho hàm số y = x\ln x. Giá trị nhỏ nhất của hàm số đã cho trên đoạn [1; e] bằng:
+  d77n NLC 2 | Giá trị lớn nhất của hàm số y = \sqrt{4x-x^2} trên đoạn [0;4] là:
+
+### [25] Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số | Min-max bằng đồ thị (13)
+    yêu cầu: Xác định được giá trị lớn nhất và giá trị nhỏ nhất của hàm số trên một đoạn dựa vào đồ thị cho trước.
+  2954_15 DS 2 | Cho hàm số f(x) liên tục trên đoạn [-1;3] và có đồ thị như hình vẽ sau: [HINH VẼ ĐỒ THỊ]. Xét tính đúng sai củ
+  0954_2 NLC 1 | Giá trị lớn nhất của hàm số y=f(x) có đồ thị như hình là [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;base64
+  yyo4 NLC 1 | Giá trị nhỏ nhất trên tập xác định của hàm số có đồ thị sau là ![Hình minh họa](https://cmjithgtecypxmisbzvw.s
+  5mh8 TLN 2 | Cho hàm số y = f(x) liên tục trên đoạn [-1; 3] và có đồ thị như hình vẽ bên. ![Hình minh họa](https://cmjithgt
+  2954_4 NLC 1 | Cho hàm số y = f(x) xác định, liên tục trên đoạn [-2;2] và có đồ thị là đường cong trong hình vẽ sau: [HINH VẼ
+  2954_0 NLC 1 | Cho hàm số y = f(x) liên tục trên đoạn [-1;3] và có đồ thị như hình vẽ bên. [HINH VẼ ĐỒ THỊ] Giá trị lớn nhất 
+  51_0 NLC 1 | Cho hàm số y=f(x) liên tục trên đoạn [-1;2] và có đồ thị như hình vẽ sau: [HINH VẼ ĐỒ THỊ] Giá trị lớn nhất củ
+  39_3 NLC 2 | Cho hàm số y = f(x) có đồ thị như hình vẽ. [HINH VẼ ĐỒ THỊ] Giá trị lớn nhất của hàm số trên đoạn [0; 3] bằng<
+  14_4 NLC 3 | Cho hàm số y = f(x) có đạo hàm f'(x) tại mọi x \in {R}. Đồ thị của hàm số y = f'(x) được cho như hình vẽ dưới 
+  p4da NLC 2 | Cho hàm số đa thức bậc ba y = f(x) có đồ thị như hình vẽ ![Hình minh họa](https://cmjithgtecypxmisbzvw.supabas
+  4fhz NLC 1 | Cho hàm số y = f(x) xác định và liên tục trên {R} có đồ thị như hình vẽ bên. Tìm giá trị nhỏ nhất m và giá trị
+  609_4 NLC 1 | Cho hàm số f(x) có đồ thị trên [-3; 3] như hình vẽ. [HINH VẼ ĐỒ THỊ] Giá trị lớn nhất M và giá trị nhỏ nhất m 
+  01_1 NLC 1 | Đồ thị bên dưới là tốc độ của một chiếc xe đua trên đoạn đường đua bằng phẳng dài 3 km. [HINH VẼ ĐỒ THỊ] Tốc đ
+
+### [26] Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số | Min-max chứa tham số m (10)
+    yêu cầu: Tìm được giá trị của tham số để giá trị lớn nhất hoặc giá trị nhỏ nhất của hàm số thỏa mãn điều kiện cho trước.
+  9uo1 TLN 3 | Tìm m để hàm số y = \frac{x - m}{mx + 1} có giá trị nhỏ nhất trên [0; 1] bằng -2.
+  2954_11 NLC 3 | Để hàm số y = -x^4 + 6x^2 + m đạt giá trị lớn nhất trên [-1;1] bằng 5 thì giá trị của tham số m bằng
+  0954_13 DS 3 | Cho hàm số y=f(x)=x^{3}-3x+m^{2}-2.
+  0954_12 DS 3 | Cho hàm số y=f(x)=\log_{2}(x^{2}-3x+2)
+  419_15 TLN 3 | Tìm m để giá trị lớn nhất của hàm số y = \frac{x-m}{x+1} trên đoạn [1;3] bằng 2.
+  508_4 NLC 3 | Hàm số y = \frac{x-m^2}{x+1} có giá trị nhỏ nhất trên đoạn [0; 1] bằng -4 khi và chỉ khi:
+  lfwm NLC 4 | Xét hàm số f(x) = |x^2 + ax + b|, với a, b là tham số. Gọi M là giá trị lớn nhất của hàm số trên [-1; 3]. Khi 
+  45_9 NLC 3 | Có bao nhiêu giá trị của tham số m để giá trị lớn nhất của hàm số f(x) = x^3 - 3mx trên đoạn [1; 2] bằng 20?
+  42_7 NLC 3 | Tìm giá trị của tham số m để hàm số y = x^3 - 3x^2 + m có giá trị nhỏ nhất trên [-1; 1] bằng 1.
+  554_17 TLN 3 | Cho hàm số f(x) = m\sqrt{x - 1} với m là tham số. Gọi m_1, m_2 là hai giá trị của m thỏa mãn \min_{[2;5]} f(x)
+
+### [27] Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số | Ứng dụng thực tế của cực trị (3)
+    yêu cầu: Vận dụng giá trị lớn nhất và giá trị nhỏ nhất của hàm số để giải quyết bài toán tối ưu chi phí, lợi nhuận thực tế.
+  dhun TLN 3 | Một doanh nghiệp dự kiến lợi nhuận khi sản xuất x sản phẩm (0 \le x \le 300) được cho bởi hàm số y = -x^3 + 30
+  yv00 TLN 3 | Một xưởng in có 8 máy in, mỗi máy in được 3600 bản in trong một giờ. Chi phí để vận hành một máy in trong mỗi 
+  37ws TLN 3 | Ông An muốn xây một cái bể chứa nước lớn dạng một khối hộp chữ nhật không nắp có thể tích bằng 288\text{ m}^3.
+
+### [28] Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số | Toán tổng hợp (4)
+    yêu cầu: Giải thích được ý nghĩa và xác định được khoảng tứ phân vị của mẫu số liệu ghép nhóm.
+  jt3t DS 2 | Cho hàm số y = f(x) liên tục trên {R} và có đồ thị như hình dưới đây. Mệnh đề nào đúng? ![Hình minh họa](https
+  apzp DS 2 | Tìm khẳng định đúng. Xét trên khoảng (-\infty; +\infty), hàm số y = x^4 + 2x^2 - 3
+  6jzd DS 2 | Cho hàm số y = f(x) xác định và liên tục trên khoảng (-3; 2) có \lim_{x \to (-3)^+} f(x) = -5, \lim_{x \to 2^-
+  occy DS 3 | Cho hàm số bậc ba y=f(x) có đồ thị như hình vẽ sau: [HÌNH VẼ]
+
+### [29] Bài 3. Đường tiệm cận của đồ thị hàm số | Tìm tiệm cận bằng biểu thức đại số (62)
+    yêu cầu: Tìm được phương trình đường tiệm cận đứng, tiệm cận ngang của đồ thị hàm số phân thức hữu tỉ.
+  21_1 NLC 1 | Đường thẳng nào dưới đây là tiệm cận ngang của đồ thị hàm số y = \frac{x - 3}{5x - 16}?
+  18_4 NLC 1 | Tiệm cận ngang của đồ thị hàm số y = \frac{3-2x}{x+1} là
+  39_6 NLC 2 | Tiệm cận xiên của đồ thị hàm số y = \frac{-x^2 - 3x + 4}{x + 2} là đường thẳng có phương trình?
+  33_5 TLN 2 | Tiệm cận xiên của đồ thị hàm số y=f(x)=\frac{x^2-x+1}{x-1} có dạng y=ax+b, (a, b \in {Z}). Tính giá trị biểu t
+  14_12 TLN 3 | Có bao nhiêu giá trị nguyên của m \in [-2026; 2026] để đồ thị hàm số y = \frac{x - 1}{x^2 + 2(m - 1)x + m^2 - 
+  00_5 NLC 1 | Tiệm cận ngang của đồ thị hàm số y = \frac{2x+1}{3x-1} là đường thẳng:
+  45_5 NLC 1 | Đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số y = \frac{3x+1}{x-1} lần lượt là:
+  45_10 NLC 2 | Cho hàm số y = \frac{x+1}{\sqrt{mx^2+1}} với m > 0. Số đường tiệm cận ngang của đồ thị hàm số đã cho là
+  tged NLC 1 | Tiệm cận đứng của đồ thị hàm số y = \frac{x + 1}{x - 2} là đường thẳng có phương trình:
+  21_6 NLC 1 | Tiệm cận đứng của đồ thị hàm số y = \frac{2x^2 - 3x - 1}{x - 2} là
+  21_5 NLC 1 | Cho hàm số y = \frac{x + 1}{2x - 1}. Tiệm cận đứng của đồ thị hàm số là:
+  5tp7 TLN 2 | Cho hàm số y = \frac{2x^2 - 3x - 3}{x - 2}. Tiệm cận xiên của đồ thị hàm số là đường thẳng y = ax + b. Tính gi
+  21_7 NLC 2 | Đồ thị hàm số y = \frac{x^2 + 2x + 2}{x + 1} có tiệm cận xiên là đường thẳng:
+  21_11 NLC 2 | Số đường tiệm cận của đồ thị hàm số y = \frac{2x^2 - 3x - 2}{x^2 - 4} là
+  21_16 TLN 2 | Gọi A, B lần lượt là giao điểm của tiệm cận xiên của đồ thị hàm số y = \frac{x^2 + 2x + 2}{x + 1} với trục Ox,
+  21_20 TLN 3 | Cho hàm số f(x) = 2x - \sqrt{x^2 - 3x}. Tìm số đường tiệm cận xiên của đồ thị hàm số.
+  18_7 NLC 2 | Đồ thị của hàm số nào trong bốn hàm số sau có đường tiệm cận ngang?
+  18_8 NLC 2 | Đồ thị của hàm số nào trong các hàm số sau đây có tiệm cận xiên?
+  18_9 NLC 2 | Tiệm cận xiên của đồ thị hàm số y = \frac{x^2+x-3}{x-1} là:
+  18_10 NLC 2 | Cho hàm số y = \frac{-x^2+3x-1}{x-2}. Tọa độ giao điểm của các đường tiệm cận của đồ thị hàm số là:
+  18_14 DS 3 | Cho hàm số y = \frac{-x^2-3x+m+1}{x-1} với m là tham số. Xét tính đúng hoặc sai của các khẳng định sau:
+  18_15 DS 3 | Cho hàm số y = \frac{2x + m}{mx - 3} có đồ thị (C_m), với m là tham số. Các mệnh đề dưới đây đúng hay sai?
+  11_10 NLC 3 | Gọi S là tập hợp các giá trị m để tiệm cận xiên của đồ thị hàm số y = \frac{mx^2+x-3}{x-1} tạo với hai trục hệ
+  39_4 NLC 1 | Đường tiệm cận ngang của đồ thị hàm số y = \frac{2024x + 2025}{x - 5} là
+  39_5 NLC 1 | Đường tiệm cận đứng của đồ thị hàm số y = \frac{15x - 6}{10x + 5} là
+  609_5 NLC 2 | Đồ thị hàm số y = \frac{x + 1}{x^2 + x - 2} có bao nhiêu đường tiệm cận đứng?
+  609_6 NLC 1 | Cho hàm số y = \frac{6x^2 + 7x - 2023}{2x^2 + 3x + 2024} tiệm cận ngang của đồ thị hàm số là
+  508_5 NLC 1 | Tiệm cận đứng của đồ thị hàm số y=f(x)=\frac{x-2}{x+1} là:
+  14_10 TLN 2 | Cho hàm số y = \frac{2x - 3}{3x - 5}. Đồ thị hàm số có đường tiệm cận đứng và ngang lần lượt là các đường thẳn
+  17_6 NLC 2 | Đồ thị hàm số y=\frac{2x^2-6x+2}{x+3} có tất cả bao nhiêu đường tiệm cận?
+  17_7 NLC 4 | Gọi S là tập hợp tất cả các giá trị m để tiệm cận xiên của đồ thị hàm số y=\frac{mx^2+x-3}{x-1} tạo với hai tr
+  08_3 TLN 3 | Biết tích các giá trị của tham số m để đồ thị hàm số y=\frac{2x-4}{x^{2}+2(m-2)x+m^{2}+1} có đúng 2 đường tiệm
+  04_6 TLN 4 | Gọi S là tập tất cả các giá trị của tham số m để đồ thị hàm số y = \frac{x-2}{x^2 - 3mx + m} có đúng một tiệm 
+  45_7 NLC 1 | Đồ thị hàm số nào dưới đây có tiệm cận đứng?
+  819_8 NLC 2 | Tìm tất cả các giá trị của tham số m để đồ thị hàm số y = \frac{mx-8}{x+2} có hai đường tiệm cận.
+  554_10 NLC 3 | Đồ thị hàm số y = \sqrt{x^2 + 2x + 2} có bao nhiêu đường tiệm cận xiên?
+  418_3 NLC 2 | Đường thẳng nào sau đây là tiệm cận xiên của đồ thị hàm số y = \frac{2x^2 - 3x + 1}{x + 2}?
+  419_10 NLC 2 | Đồ thị hàm số y = \frac{x+1}{\sqrt{4x^2+2x+1}} có bao nhiêu đường tiệm cận?
+  419_16 TLN 3 | Có bao nhiêu giá trị của tham số m để đồ thị hàm số y = \frac{x^2 - 1}{x^2 + (2-m)x + 2m + 1} có đúng hai đườn
+  a3xq DS 3 | Cho hàm số y = \frac{x^2 - 2x + 3}{x - 1}.
+  11_17 TLN 2 | Cho hàm số y = \frac{5x-3}{2x+6}. Đồ thị hàm số có đường tiệm cận đứng và ngang lần lượt là các đường thẳng x 
+  kjv9 NLC 2 | Cho hàm số y = \frac{x^2 + 2x - 1}{2x - 1} có đồ thị như sau: [HÌNH VẼ] Tiệm cận xiên của đồ thị hàm số là:
+  vnow NLC 2 | Đường tiệm cận xiên của đồ thị hàm số y = \frac{2x^2 + x - 2}{x + 1} là
+  e6io NLC 2 | Cho hàm số y = \frac{x^2 - 2x + 6}{x + 1}.
+  kghv NLC 2 | Số đường tiệm cận đứng của đồ thị hàm số y = \frac{4x}{x^2 - 1} là
+  vngg NLC 1 | Đường tiệm cận ngang của đồ thị hàm số y = \frac{4x + 1}{2x - 2} là
+  gorg NLC 2 | Đồ thị hàm số y = \frac{x^2 - 3x + 2}{x^2 - 1} có tất cả bao nhiêu đường tiệm cận đứng?
+  5i0i NLC 1 | Cho hàm số y = 2x - 1 + \frac{1}{x - 2}. Tiệm cận xiên của đồ thị hàm số đã cho là:
+  cwdd NLC 2 | Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số y = \frac{(x - 2)\sqrt{x - 1}}{x^2 - 1} bằng
+  hovn NLC 2 | Cho hàm số y = \frac{x + 1}{x^2 - 2x - 3}. Tổng số tiệm cận đứng và tiệm cận ngang của đồ thị hàm số đã cho là
+  rfmv TLN 2 | Cho hàm số y = \frac{3x - 2}{x + 1}. Giả sử đồ thị hàm số có đường tiệm cận đứng là x = a và đường tiệm cận ng
+  48_6 NLC 1 | Tiệm cận xiên của đồ thị hàm số y = \\frac{2x^2 - 9x + 3}{x + 1} là đường thẳng:
+  819_5 NLC 1 | Đồ thị hàm số f(x) = 2x - 1 + \frac{1}{x-2} có tiệm cận xiên là:
+  3lna TLN 2 | Cho hàm số y = f(x) = \frac{x^2 - 5x + 7}{x - 3} có đồ thị (C). Đường tiệm cận xiên của đồ thị (C) là đường th
+  nl5b NLC 1 | Tiệm cận đứng của đồ thị hàm số y = \frac{4x^2 - x + 1}{3x + 2} là đường thẳng
+  u1dj TLN 3 | Cho hàm số y = \frac{x^2 + 3}{x - 2} có đồ thị (C). Hai đường tiệm cận của đồ thị (C) cùng với hai trục tọa độ
+  47_0 DS 2 | Cho hàm số y = \frac{x^2-2x+3}{x-1}. Các khẳng định sau đây đúng hay sai?
+  cvjp NLC 1 | Đường thẳng nào dưới đây là tiệm cận đứng của đồ thị hàm số y = \frac{2x+1}{x+1}?
+  59tl TLN 3 | Cho hàm số y = f(x) = \frac{ax^2+bx+2025}{x+2} (a,b là các tham số thực, a \neq 0). Biết đồ thị hàm số có một 
+  vmj0 DS 2 | Cho hàm số y = \frac{x^2 - 2x + 3}{x - 1}. Các mệnh đề sau đúng hay sai?
+  ylqs NLC 1 | Đường thẳng nào dưới đây là tiệm cận xiên của đồ thị hàm số y = \frac{x^2-5x+2025}{x-2}?
+  aafa DS 2 | Bài 2. Cho hàm số y = \frac{\sqrt{4x^2 - 9}}{x - 1}.
+
+### [30] Bài 3. Đường tiệm cận của đồ thị hàm số | Bài toán tổng hợp đồ thị hàm số (10)
+    yêu cầu: Vận dụng được sự tương giao và các yếu tố hình học của đồ thị hàm số để giải quyết bài toán liên quan.
+  04_1 DS 3 | Cho đồ thị (C) \colon y = \frac{x+3}{x-1}.
+  47_1 DS 3 | Cho hàm số y = \frac{x+2}{x-2} có đồ thị là (C). Các khẳng định sau đây đúng hay sai?
+  47_2 DS 3 | Cho hàm số y = \frac{x^2+2x-1}{x-1} có đồ thị (C). Các khẳng định sau đây đúng hay sai?
+  554_18 TLN 4 | Cho hàm số y = f(x) = ax^3 + bx^2 + cx + d (a eq 0) có đồ thị (C) như hình vẽ sau. [HINH VẼ ĐỒ THỊ] Tìm tổng s
+  48_18 TLN 4 | Cho hàm số y = f(x) là hàm đa thức có đồ thị như hình vẽ sau. Đặt g(x) = \\frac{x^2 - x}{f^2(x) - 2f(x)}. Hỏi 
+  1ymq DS 3 | Bài 5. Cho hàm số y = \frac{x^2 + 2x - 1}{x - 1} có đồ thị (C).
+  zv4b DS 3 | Bài 13. Cho hàm số y = \frac{2x^2 - 2x + 2}{-x + 1} có đồ thị (C). Các mệnh đề sau đúng hay sai?
+  gog9 DS 3 | Bài 12. Cho hàm số y = \frac{x^2 + 2x - 1}{x - 1} có đồ thị (C). Các mệnh đề sau đúng hay sai?
+  tdhi DS 3 | Cho hàm số y = \frac{x+2}{x-2} có đồ thị là (C).
+  huq8 DS 2 | Bài 7. Cho hàm số y = \frac{ax + b}{cx + d} với a, b, c \in {R} có đồ thị là [HÌNH VẼ] Các mệnh đề:
+
+### [31] Bài 3. Đường tiệm cận của đồ thị hàm số | Toán thực tế (10)
+    yêu cầu: Giải quyết được các bài toán thực tế liên quan đến tối ưu hóa kích thước, chi phí bằng ứng dụng đạo hàm.
+  21_21 TLN 4 | Người ta muốn làm một cái bể dạng hình hộp chữ nhật không nắp (như hình vẽ) có thể tích bằng 1m^3. Chiều cao c
+  21_19 TLN 4 | Từ một tấm tôn hình chữ nhật có các kích thước là x(m), y(m) với x > 1 và y > 1 và diện tích bằng 4m^2, người 
+  909_3 TLN 3 | Một bể chứa 6000 lít nước tinh khiết. Người ta bơm vào bể đó nước muối có nồng độ 25 gam muối cho mỗi lít nước
+  909_4 TLN 4 | Một mảnh đất hình thang vuông có đáy lớn gấp đôi đáy nhỏ, có diện tích là S = 24 (m^2). Gọi x (m) là độ dài đá
+  909_2 TLN 3 | Một công ty sản xuất đồ chơi ước tính chi phí để sản xuất x (sản phẩm) là C(x) = 2x^2 + x + 25 (nghìn đồng). G
+  909_1 TLN 2 | Để loại bỏ x\% chất gây ô nhiễm không khí từ khí thải của một nhà máy, người ta ước lượng chi phí cần bỏ ra là
+  909_0 TLN 2 | Giả sử dân số của một huyện sau t năm kể từ năm 2024 được mô tả bởi hàm số f(t) = \frac{20t+5}{t+2}, t \ge 0 (
+  55ie TLN 2 | Số lượng sản phẩm bán được của một cửa hàng quần áo trong t (tháng) được cho bởi công thức: S(t) = 200(\frac{2
+  909_5 TLN 3 | Chi phí xuất bản x cuốn tạp chí (bao gồm: lương cán bộ, công nhân viên, giấy in...) được cho bởi C(x) = x^2 - 
+  vta7 DS 2 | Nồng độ oxygen trong hồ theo thời gian t cho bởi công thức y(t) = 5 - \frac{15t}{9t^2 + 1}, với y được tính th
+
+### [32] Bài 3. Đường tiệm cận của đồ thị hàm số | Lý thuyết và định nghĩa (6)
+    yêu cầu: Nhận biết được định nghĩa đường tiệm cận đứng, tiệm cận ngang của đồ thị hàm số thông qua giới hạn.
+  300_4 NLC 1 | Cho hàm số y = f(x) có \lim_{x \to +\infty} f(x) = 1 và \lim_{x \to -\infty} f(x) = -1. Khẳng định nào sau đây
+  21_4 NLC 2 | Cho hàm số y = f(x) xác định trên [2; 9) và có \lim_{x \to 2^+} f(x) = 2, \lim_{x \to 9^-} f(x) = -\infty. Tìm
+  21_8 NLC 1 | Đường thẳng y = ax + b là tiệm cận xiên của đồ thị hàm số y = f(x). Mệnh đề nào sau đây đúng?
+  21_0 NLC 1 | Cho hàm số y = f(x) có \lim_{x \to +\infty} f(x) = 3 và \lim_{x \to -\infty} f(x) = -3. Khẳng định nào sau đây
+  b7n1 NLC 2 | Cho hàm số y = f(x) thỏa mãn \lim_{x \to 2^+} f(x) = 1; \lim_{x \to 2^-} f(x) = 1; \lim_{x \to +\infty} f(x) =
+  554_3 NLC 1 | Cho hàm số y = f(x) có \lim_{x \to -2^+} f(x) = +\infty và \lim_{x \to -2^-} f(x) = -\infty.
+
+### [33] Bài 3. Đường tiệm cận của đồ thị hàm số | Xác định tiệm cận qua đồ thị, bảng biến thiên (19)
+    yêu cầu: Xác định được phương trình các đường tiệm cận của đồ thị hàm số dựa vào bảng biến thiên hoặc đồ thị.
+  21_3 NLC 2 | Cho hàm số y = f(x) xác định trên {R} \setminus \{-1; 1\}, liên tục trên mỗi khoảng xác định và có bảng biến t
+  11_2 NLC 2 | Cho hàm số y = f(x) có đồ thị như sau [HINH VẼ ĐỒ THỊ] Khẳng định nào sau đây SAI?<br/><img src="data:image/jp
+  rkcw NLC 1 | Cho hàm số y = \frac{ax + b}{cx + d} có đồ thị là đường liền nét như hình bên ![Hình ảnh](https://cmjithgtecyp
+  21_10 NLC 2 | Cho hàm số y = f(x) có đồ thị như hình vẽ [HINH VẼ ĐỒ THỊ]. Tiệm cận xiên của đồ thị hàm số đã cho là<br/><img
+  21_17 TLN 3 | Cho f(x) là hàm bậc bốn và có bảng biến thiên như hình vẽ [HINH VẼ ĐỒ THỊ]. Đồ thị hàm số g(x) = \frac{(x^2 - 
+  718_2 NLC 2 | Cho hàm số y = f(x) có đồ thị như hình vẽ: [HINH VẼ ĐỒ THỊ]. Đồ thị hàm số đã cho có bao nhiêu đường tiệm cận?
+  18_5 NLC 2 | Cho hàm số f(x) có bảng biến thiên như sau: [HINH VẼ BBT]. Tổng số tiệm cận ngang và tiệm cận đứng của đồ thị 
+  18_11 NLC 2 | Cho hàm số y = f(x) liên tục trên {R} \setminus \{1\} có bảng biến thiên như hình vẽ. [HINH VẼ BBT]. Tổng số đ
+  18_6 NLC 1 | Cho hàm số f(x) có đồ thị như hình vẽ bên dưới. [HINH VẼ ĐỒ THỊ]. Đường tiệm cận ngang của đồ thị hàm số là<br
+  qcvr NLC 1 | Cho hàm số f(x) có bảng biến thiên như sau: [BẢNG BIẾN THIÊN] Số đường tiệm cận ngang của đồ thị hàm số đã cho
+  lqfs NLC 1 | Hình vẽ bên là đồ thị của hàm số y = \frac{ax + b}{cx + d}. [HÌNH VẼ] Đường tiệm cận đứng của đồ thị hàm số có
+  6mbb NLC 1 | Hàm số y = f(x) có đồ thị như hình dưới đây: [HÌNH VẼ] Đồ thị hàm số đã cho có tiệm cận ngang là:
+  nnvs NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau [BẢNG BIẾN THIÊN] Tiệm cận đứng của đồ thị hàm số đã cho là đườ
+  42_9 NLC 1 | Cho hàm số y = f(x) xác định trên {R} \setminus \{1\}, liên tục trên mỗi khoảng xác định và có bảng biến thiên
+  bmv7 TLN 1 | Cho hàm số có bảng biến thiên bên dưới. [BẢNG BIẾN THIÊN] Đồ thị hàm số có tất cả bao nhiêu đường tiệm cận?
+  mvmq NLC 1 | Cho hàm số y = f(x) có bảng biến thiên với các giới hạn sau: [BẢNG BIẾN THIÊN] Mệnh đề nào sau đây là đúng?
+  718_3 NLC 1 | Cho hàm số y = f(x) có bảng biến thiên như sau: [HINH VẼ BBT]. Mệnh đề nào sau đây là đúng?<br/><img src="data
+  18_12 DS 2 | Cho hàm số y = f(x) có bảng biến thiên như sau: [HINH VẼ BBT]<br/><img src="data:image/jpeg;base64,/9j/4AAQSkZ
+  pl9k DS 1 | Bài 6. Cho hàm số y = f(x) có đồ thị như [HÌNH VẼ]
+
+### [34] Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số | Toán thực tế (7)
+    yêu cầu: Vận dụng được đạo hàm và khảo sát hàm số để giải quyết các bài toán tối ưu trong thực tiễn.
+  58_15 DS 3 | Nhà máy A chuyên sản xuất một loại sản phẩm cho nhà máy B... P(x) = 45 - 0,001x^2, C(x) = 100 + 30x.
+  58_8 NLC 2 | Giả sử hàm nhu cầu đối với một loại hàng hóa được cho bởi công thức p = \frac{60}{1+0,2x}, 0 \le x < 12, trong
+  58_9 NLC 3 | Giả sử chi phí (tính bằng trăm ngàn đồng) để sản xuất x chiếc bánh kem là: C(x) = 10000 + 20x - \frac{1}{4}x^2
+  58_18 TLN 4 | Một thành phố nằm trên một con sông chảy qua hẻm núi... Tính tổng độ dài đoạn MN và PQ biết rằng N và Q là hai
+  58_19 TLN 4 | Tính nồng độ chất độc trong máu thấp nhất khi ông Vinh về đến trại (làm tròn đáp án đến hàng phần chục).
+  58_17 TLN 3 | Tìm chi phí trung bình thấp nhất cho một cuốn tạp chí là bao nhiêu vạn đồng, biết rằng nhu cầu hiện tại xuất b
+  11_21 TLN 3 | Một cốc chứa 25 ml dung dịch NaOH với nồng độ 100 mg/ml. Một bình chứa dung dịch NaOH khác với nồng độ 9 mg/ml
+
+### [35] Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số | Xác định dấu các hệ số của hàm bậc ba dựa vào đồ thị (1)
+    yêu cầu: Xác định được dấu các hệ số của hàm số bậc ba dựa vào hình dạng và các điểm đặc trưng trên đồ thị.
+  70vr NLC 3 | Cho hàm số y = ax^3 + bx^2 + cx + d, (a; b; c; d \in {R}) có đồ thị như hình vẽ bên dưới: [HÌNH VẼ] Khẳng định
+
+### [36] Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số | Tiếp tuyến và yếu tố hình học (5)
+    yêu cầu: Vận dụng được đạo hàm để giải quyết một số bài toán liên quan đến tiếp tuyến và đường tiệm cận của đồ thị hàm số.
+  58_20 TLN 3 | Cho hàm số y = x + 1 + \frac{1}{x-1} có đồ thị là (C). Điểm M là điểm bất kỳ trên đồ thị (C), tiếp tuyến của (
+  1_14 DS 3 | Cho hàm số y = \frac{x^2-2x+4}{x-2} có đồ thị (C). Khi đó
+  1_15 DS 3 | Cho hàm số y = x - \frac{1}{x+1} có đồ thị là (C). Khi đó
+  08_8 NLC 4 | Cho hàm số y = \frac{2x+1}{x+1} có đồ thị (C). Gọi S là tập tất cả các giá trị của tham số m để đường thẳng d:
+  17_8 NLC 3 | Cho (C): y=\frac{2x+1}{x-1}. Điểm A \in (C) có hoành độ bằng 2. Tiếp tuyến của (C) tại A cắt các trục tọa độ O
+
+### [37] Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số | Xác định yếu tố đặc trưng của đồ thị (22)
+    yêu cầu: Nhận biết được các hệ số của hàm số phân thức hữu tỉ đơn giản thông qua hình dáng và các đường tiệm cận của đồ thị.
+  819_3 NLC 3 | Cho hàm số y = \frac{ax-b}{x-1} có đồ thị như hình vẽ dưới đây. [HINH VẼ ĐỒ THỊ] Khẳng định nào sau đây là đún
+  1_13 DS 3 | Cho đồ thị hàm số y = \frac{bx-c}{x-a} (a, b, c \in {R}) có đồ thị như hình vẽ bên dưới. [HINH VẼ ĐỒ THỊ]<br/>
+  57_0 DS 3 | Cho hàm số y = f(x) = \\frac{ax+3}{bx+c} (a, b, c \\in \{R}) có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ]<br/>
+  419_12 DS 3 | Cho hàm số y = \frac{ax^2 + bx + 1}{cx + 2} có đồ thị như hình vẽ bên dưới. [HINH VẼ ĐỒ THỊ]<br/><img src="dat
+  58_4 NLC 2 | Cho hàm số y = f(x) có đồ thị như hình bên. Tâm đối xứng của đồ thị hàm số có tọa độ là [HINH VẼ ĐỒ THỊ]<br/><
+  58_16 TLN 3 | Cho hàm số hữu tỉ y = ax + 2 + \frac{b}{x+c} có đồ thị như hình bên dưới. Tính P = a + b + c. [HINH VẼ ĐỒ THỊ]
+  1_18 TLN 3 | Cho đồ thị hàm số f(x) = \frac{5x^2-6x+9}{x-1} có tâm đối xứng là I(a; b). Giá trị của biểu thức C = a + 3b là
+  11_8 NLC 3 | Cho hàm số y = \frac{(a-1)x+b}{(c-1)x+d}, d < 0 có đồ thị như hình trên. Khẳng định nào dưới đây là đúng? [HIN
+  609_11 NLC 2 | Cho hàm số y = \frac{x^2 + a}{x + b} có đồ thị là đường cong trong hình vẽ bên dưới. Giá trị của T = a + b bằn
+  41_1 TLN 3 | Cho hàm số bậc ba y = ax^3 + bx^2 + cx + d có đồ thị như hình vẽ dưới đây. [HINH VẼ ĐỒ THỊ] Giá trị của a + 2b
+  14_11 TLN 3 | Cho hàm số y = ax^3 + bx^2 + cx + d có đồ thị như sau: [HINH VẼ ĐỒ THỊ] Tính giá trị biểu thức T = a + 2b + 3c
+  08_2 TLN 3 | Cho hàm số y=\frac{ax+b}{cx+d} (c eq 0, ad-bc eq 0) có đồ thị như hình dưới đây. Tính giá trị biểu thức T=\fra
+  00_7 NLC 2 | Cho hàm số y = \frac{(a+b)x+1}{x+a-b} có bảng biến thiên như hình vẽ sau: [HINH VẼ ĐỒ THỊ] Tính a, b.<br/><img
+  14_6 NLC 1 | Cho hàm số y = (x - 2)(x^2 + 1) có đồ thị (C). Mệnh đề nào dưới đây đúng?
+  45_3 NLC 2 | Xác định a, b, c để hàm số y = \frac{ax-1}{bx+c} có đồ thị như hình vẽ sau. [HINH VẼ ĐỒ THỊ]<br/><img src="dat
+  554_8 NLC 3 | Cho hàm số y = \frac{ax + b}{cx + d} (với c eq 0) có đồ thị như hình dưới đây. [HINH VẼ ĐỒ THỊ] Biết rằng a là
+  554_9 NLC 3 | Cho hàm số y = ax^3 + bx^2 + cx + d có đồ thị như hình vẽ dưới đây. [HINH VẼ ĐỒ THỊ] Khẳng định nào sau đây là
+  42_6 NLC 3 | Cho hàm số bậc ba y = ax^3 + bx^2 + cx + d (a eq 0) có đồ thị như hình vẽ. Chọn khẳng định đúng. [HINH VẼ ĐỒ T
+  48_10 NLC 3 | Cho hàm số y = ax^3 + bx^2 + cx + d (a \\neq 0). Biết hàm số đã cho đạt cực tiểu tại x_1, đạt cực đại tại x_2,
+  11_4 NLC 1 | Cho hàm số y = \frac{2x-4}{x-1}. Tọa độ giao điểm của đồ thị và trục Oy là
+  58_10 NLC 1 | Đồ thị hàm số y = \frac{x^2+2x-6}{x-1} đi qua điểm nào trong các điểm cho dưới đây?
+  41_0 TLN 2 | Cho đồ thị hàm số y = f(x) = 4x - 3 + \frac{1}{x-2} có tâm đối xứng I(a;b). Giá trị của biểu thức a - 3b là ba
+
+### [38] Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số | Toán tổng hợp (1)
+    yêu cầu: Đọc và giải thích được các thông tin thống kê từ biểu đồ của mẫu số liệu ghép nhóm.
+  q3mv DS 3 | Cho đồ thị (C): y = \frac{x+3}{x-1}.
+
+### [39] Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số | Phân tích, tổng hợp tính chất đồ thị hàm số (19)
+    yêu cầu: Vận dụng được các tính chất về cực trị, tiệm cận và tâm đối xứng để xác định hệ số hoặc tính chất hàm số.
+  58_12 DS 3 | Cho hàm số y = f(x) = ax^3 + bx^2 + cx + d có đồ thị là (C). Biết (C) có một điểm cực trị là A(1; -1) và tâm đ
+  58_14 DS 2 | Cho hàm số y = \frac{x^2+2x+5}{x+1}
+  508_7 NLC 2 | Cho hàm số y=f(x) có bảng biến thiên như sau [HINH VẼ ĐỒ THỊ] Số nghiệm của phương trình 3f(x) - 2 = 0 là<br/>
+  2_12 DS 2 | Cho hàm số y = f(x) xác định trên {R} và có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ]<br/><img src="data:image
+  554_12 DS 3 | Cho hàm số y = f(x) liên tục trên {R} và có bảng biến thiên sau: [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpe
+  wd6n DS 3 | Cho hàm số f(x) = x^3 - 6x^2 - 15x + 20 có đồ thị (C).
+  v6k5 DS 3 | Cho hàm số y = f(x) = \frac{x^2 + x - 1}{x - 1}.
+  11_7 NLC 2 | Cho hàm số y = f(x) xác định trên {R} \setminus \{-1\}, liên tục trên mỗi khoảng xác định và có bảng biến thiê
+  11_6 NLC 3 | Cho hàm số y = \frac{x^2+2x-1}{x-1} và y = 2x-7. Hai đồ thị cắt nhau tại hai điểm thì tổng hoành độ hai giao đ
+  00_6 NLC 2 | Gọi M, N là giao điểm của đường thẳng y = x+1 và đồ thị hàm số y = \frac{2x+4}{x-1}. Khi đó hoành độ x_I của t
+  17_10 NLC 3 | Biết hàm số y=x^4-4x^2+3 có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ]. Tìm m để phương trình |x^4-4x^2+3|=m có
+  45_4 NLC 2 | Cho hàm số y = f(x) liên tục trên {R} và có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ] Đồ thị của hàm số trên c
+  419_7 NLC 3 | Cho hàm số y = f(x) có bảng biến thiên như sau: [HINH VẼ ĐỒ THỊ] Số nghiệm thuộc đoạn [-\pi; 2\pi] của phương 
+  2_13 DS 3 | Cho hàm số đa thức y = f(x) có đồ thị y = f'(x) cắt trục Ox tại ba điểm có hoành độ a < b < c như hình vẽ bên 
+  419_6 NLC 3 | Tìm tất cả các giá trị của m để đường thẳng y = mx - m + 1 cắt đồ thị hàm số y = x^3 - 3x^2 + x + 2 tại ba điể
+  42_5 NLC 2 | Đường thẳng y = x + 1 cắt đồ thị hàm số y = \frac{x+3}{x-1} tại hai điểm phân biệt A, B. Tính độ dài đoạn thẳn
+  57_5 TLN 3 | Có bao nhiêu giá trị nguyên của tham số m để đồ thị hàm số y = 2x^3 - 3x^2 + 2 cắt đồ thị hàm số y = x^3 - 6x^
+  14_13 TLN 3 | Cho hàm số y = \frac{x - 1}{2x} có đồ thị (C). Tìm m để đường thẳng d: y = -x + m cắt đồ thị (C) tại hai điểm 
+  11_19 TLN 3 | Cho hàm số y = x^3 - 3x + 2 có đồ thị (C) và y = \frac{x+2}{x-1} có đồ thị (T). Số giao điểm của (C) với (T) l
+
+### [40] Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số | Bài toán tổng hợp đồ thị hàm số (7)
+    yêu cầu: Vận dụng sự tương giao giữa các đồ thị để biện luận số nghiệm của phương trình chứa tham số.
+  819_16 TLN 4 | Có bao nhiêu giá trị nguyên âm của a để đồ thị hàm số y = x^3 + ax^2 cắt parabol y = -10x^2 + x - 1 tại đúng 1
+  819_10 DS 3 | Cho hàm số y = \frac{x^2 + 3x + 3}{x + 2}.
+  8_13 DS 2 | Cho hàm số f(x) = x^3 - 3x + 2025.
+  45_13 DS 2 | Cho hàm số y = f(x) có đồ thị như hình dưới đây. [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;base64,/9j/4AA
+  554_6 NLC 2 | Số giao điểm của đồ thị hàm số y = x^3 + x^2 và đồ thị hàm số y = x^2 + 5x là
+  45_12 DS 3 | Cho hàm số y = \frac{x^2 - 2x - 3}{x - 2}.
+  jlv4 DS 2 | Cho hàm số y = f(x) = \frac{ax^2 + bx + c}{x + n} với a \neq 0, có đồ thị là đường cong như hình dưới đây. [HÌ
+
+### [41] Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số | Nhận dạng đồ thị hàm số (20)
+    yêu cầu: Nhận biết và chỉ ra được công thức hàm số tương ứng với đồ thị hoặc bảng biến thiên đã cho.
+  58_2 NLC 1 | Đồ thị hình dưới đây là của hàm số nào? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgAB
+  11_0 NLC 2 | Cho hàm số y = f(x) có bảng biến thiên như sau [HINH VẼ ĐỒ THỊ] Bảng biến thiên trên là hàm số nào sau đây<br/
+  39_7 NLC 2 | Đường cong ở hình sau là đồ thị của hàm số nào? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;base64,/9j/4AAQ
+  39_8 NLC 2 | Hàm số nào sau đây có bảng biến thiên như hình? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;base64,/9j/4AAQ
+  18_1 NLC 2 | Bảng biến thiên sau của hàm số nào trong các hàm số sau đây? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;ba
+  afnm DS 2 | Cho hàm số y = \frac{ax+b}{cx+d} có đồ thị như sau: [HÌNH VẼ]
+  0ha6 NLC 1 | Hàm số nào dưới đây có đồ thị như đường cong trong hình bên? ![Hình minh họa](https://cmjithgtecypxmisbzvw.sup
+  58_3 NLC 2 | Đồ thị dưới đây là đồ thị của hàm số nào trong các hàm số sau? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;
+  58_5 NLC 1 | Đường cong trong hình vẽ bên là đồ thị của hàm số nào dưới đây? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg
+  58_7 NLC 2 | Đường cong ở hình dưới đây là đồ thị của hàm số: [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;base64,/9j/4AA
+  58_1 NLC 1 | Đường cong trong hình bên dưới là đồ thị của một hàm số trong bốn hàm số được liệt kê ở bốn phương án A, B, C,
+  39_9 NLC 2 | Đường cong dưới đây là đồ thị của hàm số nào? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;base64,/9j/4AAQSk
+  609_10 NLC 2 | Đồ thị của hàm số nào dưới đây có dạng như đường cong trong hình bên dưới? [HÌNH VẼ ĐỒ THỊ]<br/><img src="data
+  14_5 NLC 2 | Bảng biến thiên sau là của hàm số nào dưới đây? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;base64,/9j/4AAQ
+  45_2 NLC 2 | Bảng biến thiên dưới đây là của hàm số nào trong các hàm số sau? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpe
+  45_8 NLC 2 | Đồ thị của hàm số nào dưới đây có dạng như hình vẽ bên dưới? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;ba
+  58_0 NLC 1 | Đồ thị hàm số nào dưới đây có dạng như đường cong dưới đây? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;bas
+  48_7 NLC 2 | Đường cong trong hình dưới đây là đồ thị của hàm số nào trong các hàm số ở các phương án sau? [HINH VẼ ĐỒ THỊ]
+  42_0 NLC 1 | Cho hàm số y = f(x) có đồ thị là đường cong trong hình vẽ bên dưới: [HINH VẼ ĐỒ THỊ] Khẳng định nào sau đây đú
+  m5h4 NLC 2 | Cho hàm số bậc ba y = f(x) có bảng biến thiên như sau: Hàm số đã cho là:
+
+### [42] Bài 5. Ứng dụng của đạo hàm | Đọc đồ thị, bảng biến thiên, bảng xét dấu (7)
+    yêu cầu: Xác định được giá trị lớn nhất và giá trị nhỏ nhất của hàm số thông qua bảng biến thiên hoặc đồ thị cho trước.
+  01_11 NLC 1 | Một cửa hàng trà sữa có đồ thị biểu diễn số ly trà sữa bán được trong một tuần như sau. [HINH VẼ ĐỒ THỊ] Số ly
+  01_7 NLC 1 | Mực nước biển trung bình tại trường sa từ năm 2013 đến năm 2019 được cho bởi biểu đồ trong hình bên. [HINH VẼ 
+  01_8 NLC 1 | Hình vẽ cho biết nhiệt độ trung bình các tháng năm 2020 tại Thành phố Hồ Chí Minh đo bằng đơn vị ^\circ C. Hãy
+  919_9 NLC 1 | Một doanh nghiệp sản xuất với số lượng là x sản phẩm và thu được lợi nhuận f(x) được biểu thị bởi bảng xét dấu
+  919_10 NLC 2 | Cho một tấm nhôm hình vuông cạnh 12(cm). Người ta cắt ở bốn góc của tấm nhôm đó bốn hình vuông bằng nhau cạnh 
+  01_9 NLC 1 | Hình bên cho biết sự thay đổi của nhiệt độ ở một thành phố trong một ngày. Thời điểm nào trong ngày có nhiệt đ
+  01_10 NLC 1 | Hình bên cho biết lượng mưa trung bình các tháng năm 2019 tại Thành phố Hồ Chí Minh đo theo đơn vị milimet. Hã
+
+### [43] Bài 5. Ứng dụng của đạo hàm | Toán thực tế (62)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến việc tìm giá trị lớn nhất, giá trị nhỏ nhất của hàm số.
+  38_6 TLN 3 | Cho hai vị trí A, B cách nhau 615 m, cùng nằm về một phía bờ sông như hình vẽ. Khoảng cách từ A và từ B đến bờ
+  14_8 NLC 3 | Một xưởng in có 8 máy in, mỗi máy in được 4000 bản in khổ giấy A4 trong một giờ. Chi phí để bảo trì, vận hành 
+  57_9 TLN 3 | Một công ty muốn xây dựng hệ thống dây cáp từ trạm A ở trên bờ biển đến một vị trí B trên một hòn đảo. Hòn đảo
+  38_0 DS 3 | Để làm một cửa sổ có dạng một hình bán nguyệt và một hình chữ nhật ghép lại như hình vẽ bên dưới, người ta dùn
+  919_12 DS 3 | Tại một cơ sở sản xuất nước tinh khiết, nhân viên phụ trách sản xuất cho biết, nếu mỗi ngày cơ sở này sản xuất
+  38_2 DS 2 | Dân số của một quốc gia sau t (năm) bắt đầu từ năm 2023 được tính theo công thức N(t) = 100e^{0,012t} (trong đ
+  919_14 DS 3 | Một vật chuyển động theo hàm số s(t) = t^3 - 3t^2 + 9t (m), với t \ge 0 và t là khoảng thời gian tính từ khi v
+  39_14 DS 3 | Một công ty bất động sản có 150 căn hộ cho thuê, biết rằng nếu cho thuê mỗi căn hộ với giá 2 triệu đồng mỗi th
+  919_15 DS 3 | Nhân ngày quốc tế Phụ nữ 8 – 3 năm 2024. Ông M đã mua tặng vợ một món quà và đặt nó trong một chiếc hộp chữ nh
+  38_3 DS 3 | Đường dây điện 110KV kéo từ trạm phát (điểm A) trong đất liền ra Côn Đảo (điểm C). Biết BC = 60km, AB = 100km,
+  819_13 TLN 2 | Trong 18 giây đầu tiên, một chất điểm chuyển động theo phương trình s(t) = -t^3 + 18t^2 + t + 3, trong đó t tí
+  57_2 DS 2 | Một loại thuốc được dùng cho một bệnh nhân và nồng độ thuốc trong máu của bệnh nhân được giám sát bởi bác sĩ. 
+  554_11 NLC 2 | Một chất điểm chuyển động có phương trình S = t^3 - 3t^2 - 9t + 2, trong đó t \ge 0 được tính bằng giây và S đ
+  57_3 DS 2 | Xét một chất điểm chuyển động dọc theo trục Ox. Toạ độ của chất điểm tại thời điểm t giây được xác định bởi hà
+  48_14 DS 3 | Một miếng bìa hình tam giác đều ABC, cạnh bằng 16. Một học sinh cắt một hình chữ nhật MNPQ từ miếng bìa trên đ
+  419_11 NLC 2 | Một chất điểm chuyển động theo phương trình s = -2t^3 + 18t^2 + 2t + 1, trong đó t tính bằng giây (s) và s tín
+  2_15 DS 3 | Một công ty du lịch muốn in một số lượng lớn tạp chí giới thiệu về các địa điểm du lịch. Công ty đã khảo sát v
+  48_11 NLC 2 | Một vật xuất phát từ A chuyển động thẳng và nhanh dần đều với quãng đường s(t) = t + t^2 (m). Tính vận tốc tại
+  u8dq DS 3 | Để kỷ niệm 70 năm ngày thành lập trường THPT Việt Đức, các cực học sinh tổ chức phát hành áo kỷ niệm gây quỹ h
+  919_13 DS 3 | Khi nuôi tôm thẻ trong ao, một kỹ sư thủy sản đã thống kê được nếu mỗi mét vuông mặt ao thả x con tôm giống th
+  919_16 TLN 3 | Một nhóm các nhà nghiên cứu vi sinh học đã tiến hành khảo nghiệm tại một làng quê địa phương với đối tượng là 
+  919_17 TLN 3 | Biết khối lượng q (kg) của quả vải thiều Lục Ngạn mà cửa tiệm hoa quả bán được trong một ngày phụ thuộc vào gi
+  919_18 TLN 3 | Một hợp tác xã nuôi cá thí nghiệm trong hồ. Cứ sau mỗi vụ, người ta thấy rằng nếu trên mỗi đơn vị diện tích củ
+  919_19 TLN 3 | Một công ty bất động sản có 150 căn hộ cho thuê, biết rằng nếu cho thuê mỗi căn hộ với giá 2 triệu đồng mỗi th
+  9_20 TLN 4 | **[CẢNH BÁO LỖI ĐỀ]: Đề bài không cung cấp đủ giới hạn của tham số m hoặc điều kiện của biến số để tính tổng c
+  9_21 TLN 4 | Giả sử doanh số bán hàng (đơn vị triệu đồng) của một sản phẩm mới trong vòng một số năm nhất định tuân theo qu
+  38_1 DS 3 | Có hai cây cột, một cây cao 12 m và một cây cao 28 m đứng cách nhau 30 m. Chúng được giữ bằng hai sợi dây, gắn
+  38_7 TLN 3 | Hai thành phố A và B cách nhau một con sông. Người ta xây dựng một cây cầu EF bắc qua sông biết rằng thành phố
+  38_9 TLN 3 | Một công ty bất động sản có 50 căn hộ cho thuê. Biết rằng nếu cho thuê mỗi căn hộ với giá 2.000.000 đồng mỗi t
+  39_10 NLC 3 | Khi nuôi cá thí nghiệm trong hồ, một nhà khoa học đã nhận thấy rằng: nếu trên mỗi đơn vị diện tích của mặt hồ 
+  33_2 TLN 3 | Sau khi phát hiện một dịch bệnh, các chuyên gia y tế ước tính số người nhiễm bệnh kể từ ngày phát hiện bệnh nh
+  14_9 NLC 2 | Sự ảnh hưởng khi sử dụng một loại độc tố với vi khuẩn X được một nhà sinh học mô tả bởi hàm số P(t) = \frac{t 
+  14_15 TLN 2 | Một bác nông dân có 240 m hàng rào và muốn rào lại một khu đất hình chữ nhật tiếp giáp với một con sông. Bác n
+  57_8 TLN 2 | Vận tốc của một tàu con thoi từ lúc cất cánh tại thời điểm t = 0(s) cho đến thời điểm t = 126(s) được cho bởi 
+  45_18 TLN 3 | Một chất điểm chuyển động theo phương trình s = f(t) = 0,5\cos(2\pi t), trong đó s tính bằng mét, t tính bằng 
+  45_20 TLN 3 | Một công ty bất động sản có 50 căn hộ cho thuê. Biết rằng nếu cho thuê căn hộ giá 2.000.000 đồng mỗi tháng thì
+  819_14 TLN 3 | Hai con tàu A và B đang ở cùng một vĩ tuyến và cách nhau 5 hải lí. Cả hai tàu đồng thời cùng khởi hành. Tàu A 
+  819_17 TLN 3 | Để làm một máng xối nước có dạng hình lăng trụ, từ một tấm tôn kích thước 0,9 m \times 3 m người ta gấp tấm tô
+  554_20 TLN 3 | Một doanh nghiệp tư nhân chuyên kinh doanh xe máy điện các loại. Hiện nay doanh nghiệp đang tập trung chiến lư
+  554_21 TLN 3 | Một công ty muốn xây một đường ống dẫn từ một điểm A trên bờ biển đến một điểm B trên một hòn đảo. Giá để xây 
+  48_19 TLN 3 | Nếu một doanh nghiệp sản xuất x sản phẩm trong một tháng (x \\in \{N}^*; 1 \\le x \\le 4500) thì doanh thu nhậ
+  2_11 NLC 2 | Một vật chuyển động theo quy luật s = -\frac{1}{2}t^3 + 9t^2 với t (giây) là khoảng thời gian tính từ khi vật 
+  2_14 DS 3 | Có một bể bơi hình chữ nhật rộng 50 m, dài 200 m. Một vận động viên chạy phối hợp với bơi như sau: Xuất phát t
+  2_20 TLN 3 | Để tạo ra phần xung quanh của một hộp kẹo sôcôla có dạng hình lăng trụ đứng (không tính hai đáy), người ta dùn
+  419_5 NLC 2 | Cho chuyển động được xác định bởi phương trình s = 3t^3 + 4t^2 - t, trong đó t được tính bằng giây và s được t
+  419_18 TLN 3 | Một vật chuyển động với quãng đường s(t) (tính theo mét) đi được sau khoảng thời gian t (tính theo giây) được 
+  419_19 TLN 3 | Một công ty sản xuất sản phẩm và doanh thu (đơn vị triệu đồng) từ việc bán sản phẩm được mô tả bởi hàm số R(x)
+  48_15 DS 3 | Một hộ làm nghề dệt vải lụa tơ tằm sản xuất mỗi ngày được x mét vải lụa (1 \\le x \\le 17). Tổng chi phí sản x
+  8_21 TLN 3 | Giả sử doanh số (tính bằng sản phẩm) của một sản phẩm mới (trong vòng một số năm nhất định) tuân theo quy luật
+  819_12 DS 3 | Một tàu đổ bộ tiếp cận Mặt Trăng theo cách tiếp cận thẳng đứng và đốt cháy các tên lửa hãm ở độ cao 250 km so 
+  tce3 TLN 2 | Công ty Apple đề xuất giá bán mỗi chiếc Iphone 17 Pro Max 1TB cho đại lý tại Việt Nam khi đại lý này nhập x ch
+  45_14 DS 3 | Một sợi dây kim loại dài a (cm). Người ta cắt đoạn dây đó thành hai đoạn: đoạn có độ dài x (cm) được uốn thành
+  45_15 DS 3 | Một vật được làm nóng đến u_0 = 100^\circ C và sau đó được làm mát trong phòng có nhiệt độ không khí là T = 30
+  554_15 DS 3 | Một cửa hàng bán vải thiều với giá bán là 30000 đồng/1kg. Giá nhập vào là 16000 đồng/1kg. Với giá này cửa hàng
+  819_11 DS 3 | Một tấm kim loại hình chữ nhật có kích thước 3 m \times 8 m. Người ta cắt mỗi góc một hình vuông có cạnh là x 
+  2_21 TLN 3 | Người ta giăng lưới để nuôi riêng một loại cá trên một góc hồ. Biết rằng lưới được giăng theo một đường thẳng 
+  ar2t TLN 3 | Một đường dây điện được nối từ một nhà máy điện ở A đến một hòn đảo ở C (như hình vẽ). Biết BC = 4 km là khoản
+  554_14 DS 3 | Một chất điểm chuyển động theo phương trình s(t) = t^3 - 3t^2 + 8t + 1, trong đó t tính bằng giây và s(t) tính
+  419_14 DS 3 | Người ta dùng một thanh thép có chiều dài 4 m để uốn thành khung viền của một cửa sổ có dạng một hình chữ nhật
+  45_21 TLN 3 | Để thiết kế một bể cá nhỏ bằng kính không có mặt trên, hình hộp chữ nhật, có chiều cao 60 cm, thể tích 288 lít
+  554_19 TLN 4 | Từ một tấm bìa mỏng hình vuông cạnh 6 dm, cắt bỏ bốn tam giác cân bằng nhau có cạnh đáy là cạnh của hình vuông
+  48_20 TLN 3 | Người ta tiến hành mạ vàng chiếc hộp có dạng hình hộp chữ nhật có nắp. Thể tích của hộp là 100\\text{ cm}^3, c
+
+### [44] Bài 5. Ứng dụng của đạo hàm | Khảo sát hàm số thực tế (cho sẵn công thức) (12)
+    yêu cầu: Vận dụng đạo hàm để khảo sát và giải quyết các bài toán thực tiễn khi đã cho trước công thức hàm số.
+  408_1 DS 2 | Một công ty sản xuất sản phẩm. Bộ phận tài chính của công ty đưa ra hàm số biểu diễn giá bán mỗi sản phẩm khi 
+  819_7 NLC 2 | Để điều chỉnh nhiệt độ trong phòng, một hệ thống điều hòa không khí được phép hoạt động trong 10 phút. Gọi T l
+  01_2 NLC 1 | Giả sử chi phí (tính bằng trăm nghìn đồng) để sản xuất x đơn vị hàng hóa nào đó là C(x) = 27900 + 100x - 1,5x^
+  01_4 NLC 1 | Một công ty sản xuất một sản phẩm. Bộ phận tài chính của công ty đưa ra hàm giá bán là p(x) = 1000 - 25x, tron
+  01_5 NLC 2 | Một hộ làm nghề dệt vải lụa tơ tằm sản xuất mỗi ngày được x mét vải lụa 1 \le x \le 18. Tổng chi phí sản xuất 
+  01_6 NLC 2 | Giả sử một công ty du lịch bán tour với giá là x (triệu đồng)/khách thì doanh thu sẽ được biểu diễn qua hàm số
+  408_4 TLN 2 | Khi loại thuốc A được tiêm vào bệnh nhân, nồng độ mg/l của thuốc trong máu sau x phút được xác định bởi công t
+  408_5 TLN 3 | Giả sử số lượng của một quần thể nấm men tại môi trường nuôi cấy trong phòng thí nghiệm được mô hình hoá bằng 
+  419_9 NLC 2 | Sau khi phát hiện một bệnh dịch, các chuyên gia y tế ước tính số người nhiễm bệnh kể từ ngày xuất hiện bệnh nh
+  419_13 DS 3 | Một người bơm xăng vào bình xăng của một xe ô tô. Biết rằng thể tích V (lít) của lượng xăng trong bình được tí
+  04_3 DS 2 | Số dân của một thị trấn sau t năm kể từ năm 1980 được ước tính bởi công thức: f(t) = \frac{26t + 10}{t + 5} (n
+  0lkj TLN 3 | Kính viễn vọng không gian Hubble được đưa vào vũ trụ ngày 24/4/1990 bằng tàu con thoi Discovery. Vận tốc của t
+
+### [45] Bài 5. Ứng dụng của đạo hàm | Thiết lập mô hình toán học và khảo sát (8)
+    yêu cầu: Thiết lập được mô hình hàm số và vận dụng đạo hàm để giải quyết bài toán tối ưu trong thực tiễn.
+  klis TLN 3 | Một nhà máy sản xuất xe đạp cho thị trường Việt Nam theo đơn giá 3 triệu đồng/chiếc. Chi phí mỗi ngày của nhà 
+  qak0 TLN 3 | Một cơ sở sản xuất khăn mặt đang bán mỗi chiếc khăn với giá 30 nghìn đồng một chiếc và mỗi tháng cơ sở bán đượ
+  01_3 NLC 3 | Một cửa hàng bán dầu muốn đóng những thùng đựng dầu có thể tích không đổi bằng V = 30 dm^3, thùng có dạng hình
+  08_6 TLN 4 | Có một cái hồ hình chữ nhật rộng 50 m, dài 200 m. Một vận động viên tập luyện chạy phối hợp với bơi như sau: X
+  408_7 TLN 3 | Giả sử chi phí để xuất bản x cuốn tạp chí (gồm: lương cán bộ, công nhân viên, giấy in,...) được cho bởi công t
+  04_2 DS 3 | Bác An cần xây dựng một bể chứa nước có dạng hình hộp chữ nhật không có nắp đậy để phục vụ cho việc tưới cây t
+  04_9 TLN 3 | Cho một tấm gỗ hình vuông cạnh 200 cm. Người ta cắt ra một tấm gỗ có hình một tam giác vuông ABC như hình vẽ s
+  wecl TLN 3 | Người ta cần xây một hồ chứa nước với dạng khối hộp chữ nhật không nắp có thể tích bằng 1000\text{m}^3. Đáy hồ
+
+### [46] Bài 6. Ôn tập chương | Toán tổng hợp (1)
+    yêu cầu: Giải thích được ý nghĩa và đọc hiểu các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm.
+  dsz0 DS 4 | Cho hàm số y = f(x) = \frac{x+1}{x^2-2x+6} có đồ thị (C).
+
+### [47] Bài 6. Ôn tập chương | Bài toán tổng hợp đồ thị hàm số (2)
+    yêu cầu: Vận dụng tính chất của hàm số và đồ thị để giải quyết bài toán tương giao giữa hai đồ thị.
+  gfc5 DS 3 | Cho hàm số y = h(x) = \frac{x^2-2x-1}{x+1}.
+  e0qr DS 3 | Cho hàm số y = f(x) = x^3 - 3x^2 - 9x.
+
+### [48] Bài 6. Ôn tập chương | Toán thực tế (2)
+    yêu cầu: Vận dụng đạo hàm để giải quyết bài toán tối ưu trong thực tiễn liên quan đến hình học không gian.
+  009_11 TLN 3 | Xí nghiệp A sản xuất độc quyền một loại sản phẩm. Biết rằng hàm tổng chi phí sản xuất là TC = x^3 - 77x^2 + 10
+  09_13 TLN 4 | Lát cắt ngang của một vùng đất ven biển được mô hình hoá thành một hàm số bậc ba y = f(x) có đồ thị như hình v
+
+### [49] Bài 6. Ôn tập chương | Đọc đồ thị, bảng biến thiên, bảng xét dấu (2)
+    yêu cầu: Đọc được các thông tin về tính đơn điệu, cực trị, giá trị lớn nhất và nhỏ nhất từ bảng biến thiên hoặc đồ thị.
+  dxge DS 2 | Cho hàm số y = g(x) có bảng biến thiên như hình vẽ sau:
+  9hkf DS 2 | Cho hàm số y = f(x) xác định trên {R} \setminus \{1\}, liên tục trên mỗi khoảng xác định và có bảng biến thiên

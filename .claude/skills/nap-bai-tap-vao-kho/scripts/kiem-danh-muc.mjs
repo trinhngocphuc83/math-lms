@@ -41,6 +41,11 @@ const loi = [], canhBao = [];
 const soChuong = (t) => { const m = String(t).match(/^Chương (\d+)\. /); return m ? +m[1] : null; };
 const soBai = (t) => { const m = String(t).match(/^Bài (\d+)\. /); return m ? +m[1] : null; };
 
+/* 0. dòng danh mục trùng (bảng không có ràng buộc unique, từng thấy 6 cặp ở lớp 12) */
+{ const daThay = new Map();
+  for (const d of dm) { const k = [d.grade, d.topic, d.lesson, d.math_form].map(s => String(s).normalize('NFC')).join('|');
+    if (daThay.has(k)) loi.push(`dòng danh mục trùng [${d.grade} · ${String(d.lesson).slice(0, 30)} · ${d.math_form}] (id ${daThay.get(k)} và ${d.id})`); else daThay.set(k, d.id); } }
+
 /* 1. từng dòng danh mục: hình thức */
 for (const d of dm) {
   const o = `[${d.grade} · ${d.subject} · ${String(d.topic).slice(0, 30)} · ${String(d.lesson).slice(0, 30)} · ${d.math_form}]`;

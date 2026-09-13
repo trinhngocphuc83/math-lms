@@ -42,9 +42,12 @@ for (const d of KH.dang) {
   for (const g of d.gop || []) doiTen[`${d.bai}|${g}`] = d.moi;   // dạng gộp: câu đi theo dạng đích, dòng cũ xoá
 }
 const dem = {}, ke = [];
+/* khoá trong "chuyen" là ĐUÔI mã câu (soi-dang-chuong in đuôi ngắn nhất không trùng); đuôi khớp >1 câu thì dừng */
+const khoaChuyen = Object.keys(KH.chuyen || {});
+for (const k of khoaChuyen) { const n = cau.filter(q => q.question_id.endsWith(k)).length; if (n > 1) { console.log(`  ✗ đuôi "${k}" khớp ${n} câu trong chương - ghi đuôi dài hơn`); process.exit(1); } }
 for (const q of cau) {
-  const id = q.question_id.slice(-4);
-  const c = KH.chuyen?.[id];
+  const id = khoaChuyen.find(k => q.question_id.endsWith(k));
+  const c = id ? KH.chuyen[id] : undefined;
   const dich = c ? { lesson: c[0], math_form: c[1] } : { lesson: q.lesson, math_form: doiTen[`${q.lesson}|${q.math_form}`] || q.math_form };
   const k = `${dich.lesson}|${dich.math_form}`;
   if (!KH.dang.some(d => d.bai === dich.lesson && d.moi === dich.math_form)) { console.log(`  ✗ câu ${id} rơi ngoài dạng đích: ${k}`); process.exit(1); }

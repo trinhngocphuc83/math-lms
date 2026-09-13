@@ -1,0 +1,322 @@
+{
+ "lop": "12",
+ "chuong": 2,
+ "dang": [
+  {
+   "bai": "Bài 1. Vectơ trong không gian",
+   "cu": "Các quy tắc cơ bản của vectơ trong không gian",
+   "moi": "Nhận biết vectơ, quy tắc hình hộp, tổng hiệu vectơ trong không gian",
+   "yc": "Nhận biết được vectơ trong không gian, vận dụng được quy tắc ba điểm, quy tắc hình bình hành, quy tắc hình hộp để xác định vectơ tổng, hiệu."
+  },
+  {
+   "bai": "Bài 1. Vectơ trong không gian",
+   "cu": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt",
+   "moi": "Biểu diễn vectơ, chứng minh đẳng thức vectơ trong không gian",
+   "yc": "Biểu diễn được một vectơ theo các vectơ cho trước và chứng minh được đẳng thức vectơ có trung điểm, trọng tâm trong không gian."
+  },
+  {
+   "bai": "Bài 1. Vectơ trong không gian",
+   "cu": "Tính độ dài của vectơ",
+   "moi": "Tính độ dài của vectơ trong hình không gian",
+   "yc": "Tính được độ dài của vectơ tổng, hiệu trong hình hộp, tứ diện, hình chóp."
+  },
+  {
+   "bai": "Bài 1. Vectơ trong không gian",
+   "cu": "Góc giữa hai vectơ và tích vô hướng",
+   "moi": "Tính tích vô hướng, góc giữa hai vectơ trong không gian",
+   "yc": "Tính được tích vô hướng và góc giữa hai vectơ trong không gian bằng định nghĩa và tính chất."
+  },
+  {
+   "bai": "Bài 1. Vectơ trong không gian",
+   "cu": "Toán thực tế - Lực",
+   "moi": "Bài toán thực tế về vectơ trong không gian (lực, vận tốc)",
+   "yc": "Vận dụng được vectơ trong không gian để giải bài toán về hợp lực, vận tốc, cân bằng lực."
+  },
+  {
+   "bai": "Bài 2. Hệ trục toạ độ trong không gian",
+   "cu": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ",
+   "moi": "Xác định toạ độ điểm, vectơ từ biểu diễn qua vectơ đơn vị",
+   "yc": "Xác định được toạ độ của điểm, của vectơ từ biểu diễn qua các vectơ đơn vị và ngược lại; đọc được toạ độ trong hệ trục."
+  },
+  {
+   "bai": "Bài 2. Hệ trục toạ độ trong không gian",
+   "cu": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)",
+   "moi": "Xác định toạ độ các điểm đặc biệt (hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng, trục)",
+   "yc": "Xác định được toạ độ hình chiếu, điểm đối xứng của một điểm qua trục, mặt phẳng toạ độ và điểm thuộc trục, mặt phẳng toạ độ."
+  },
+  {
+   "bai": "Bài 2. Hệ trục toạ độ trong không gian",
+   "cu": "Xác định tọa độ điểm thông qua khối hình học không gian",
+   "moi": "Xác định toạ độ điểm thông qua khối hình học không gian",
+   "yc": "Chọn được hệ trục toạ độ gắn với hình hộp chữ nhật, hình chóp, hình lăng trụ và xác định được toạ độ các đỉnh."
+  },
+  {
+   "bai": "Bài 2. Hệ trục toạ độ trong không gian",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về hệ trục toạ độ trong không gian",
+   "yc": "Vận dụng được hệ trục toạ độ trong không gian để mô tả vị trí trong bài toán thực tế.",
+   "gop": [
+    "Toán thực tế - Tọa độ",
+    "Toán thực tế - Lực"
+   ]
+  },
+  {
+   "bai": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "cu": "Xác định tọa độ của vectơ, biểu thức vectơ",
+   "moi": "Xác định toạ độ của vectơ, biểu thức vectơ bằng toạ độ",
+   "yc": "Tính được toạ độ của vectơ tổng, hiệu, tích với một số và vectơ biểu diễn qua các vectơ khác; xét được hai vectơ cùng phương."
+  },
+  {
+   "bai": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "cu": "Xác định tọa độ của điểm thỏa điều kiện cho trước",
+   "moi": "Xác định toạ độ của điểm thoả điều kiện cho trước",
+   "yc": "Xác định được toạ độ trung điểm, trọng tâm, đỉnh hình bình hành và điểm thoả mãn hệ thức vectơ cho trước.",
+   "gop": [
+    "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+   ]
+  },
+  {
+   "bai": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "cu": "Góc giữa hai vectơ và tích vô hướng",
+   "moi": "Tính tích vô hướng, góc giữa hai vectơ bằng toạ độ",
+   "yc": "Tính được tích vô hướng, góc giữa hai vectơ bằng toạ độ và xét được hai vectơ vuông góc."
+  },
+  {
+   "bai": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "cu": "Tính số đo của các đại lượng hình học",
+   "moi": "Tính độ dài, diện tích, thể tích và các đại lượng hình học bằng toạ độ",
+   "yc": "Tính được độ dài đoạn thẳng, độ dài vectơ, chu vi, diện tích tam giác và các đại lượng hình học bằng toạ độ."
+  },
+  {
+   "bai": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "cu": "Toán thực tế - Tọa độ",
+   "moi": "Bài toán thực tế về toạ độ vectơ (lực, vận tốc, vị trí)",
+   "yc": "Vận dụng được biểu thức toạ độ của các phép toán vectơ để giải bài toán thực tế về lực, vận tốc, vị trí.",
+   "gop": [
+    "Toán thực tế - Lực"
+   ]
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": null,
+   "moi": "Bài tập tổng hợp chương 2",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 2 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "dang": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "bai": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "dang": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Tính độ dài của vectơ"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  }
+ ],
+ "chuyen": {
+  "1ni9": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ điểm thông qua khối hình học không gian"
+  ],
+  "ytm7": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ điểm thông qua khối hình học không gian"
+  ],
+  "yvdk": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ điểm thông qua khối hình học không gian"
+  ],
+  "f5wx": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ điểm thông qua khối hình học không gian"
+  ],
+  "anwq": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ điểm thông qua khối hình học không gian"
+  ],
+  "qcbk": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ điểm thông qua khối hình học không gian"
+  ],
+  "1klj": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ điểm thông qua khối hình học không gian"
+  ],
+  "ffsd": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ các điểm đặc biệt (hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng, trục)"
+  ],
+  "vnag": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ các điểm đặc biệt (hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng, trục)"
+  ],
+  "vom4": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ các điểm đặc biệt (hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng, trục)"
+  ],
+  "m58m": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ các điểm đặc biệt (hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng, trục)"
+  ],
+  "dzo2": [
+   "Bài 2. Hệ trục toạ độ trong không gian",
+   "Xác định toạ độ các điểm đặc biệt (hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng, trục)"
+  ],
+  "wvdd": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của vectơ, biểu thức vectơ bằng toạ độ"
+  ],
+  "egl1": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của vectơ, biểu thức vectơ bằng toạ độ"
+  ],
+  "28nd": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của vectơ, biểu thức vectơ bằng toạ độ"
+  ],
+  "9hot": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của vectơ, biểu thức vectơ bằng toạ độ"
+  ],
+  "n8zk": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của vectơ, biểu thức vectơ bằng toạ độ"
+  ],
+  "639q": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của vectơ, biểu thức vectơ bằng toạ độ"
+  ],
+  "yfn2": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của vectơ, biểu thức vectơ bằng toạ độ"
+  ],
+  "i72t": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của vectơ, biểu thức vectơ bằng toạ độ"
+  ],
+  "03_0": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "03_1": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "03_2": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "03_3": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "03_4": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "08_0": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "54_3": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "u5tu": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "0gd6": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "7pcx": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "qsef": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "u1ca": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "jlp9": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "9ouw": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Xác định toạ độ của điểm thoả điều kiện cho trước"
+  ],
+  "m6pl": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính tích vô hướng, góc giữa hai vectơ bằng toạ độ"
+  ],
+  "8zc9": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính tích vô hướng, góc giữa hai vectơ bằng toạ độ"
+  ],
+  "nluk": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính tích vô hướng, góc giữa hai vectơ bằng toạ độ"
+  ],
+  "2dg7": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính tích vô hướng, góc giữa hai vectơ bằng toạ độ"
+  ],
+  "0byc": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính tích vô hướng, góc giữa hai vectơ bằng toạ độ"
+  ],
+  "drpa": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính độ dài, diện tích, thể tích và các đại lượng hình học bằng toạ độ"
+  ],
+  "hhqs": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính độ dài, diện tích, thể tích và các đại lượng hình học bằng toạ độ"
+  ],
+  "amzp": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính độ dài, diện tích, thể tích và các đại lượng hình học bằng toạ độ"
+  ],
+  "k0s3": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính độ dài, diện tích, thể tích và các đại lượng hình học bằng toạ độ"
+  ],
+  "oxvz": [
+   "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "Tính độ dài, diện tích, thể tích và các đại lượng hình học bằng toạ độ"
+  ]
+ }
+}

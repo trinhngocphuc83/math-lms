@@ -1,0 +1,2752 @@
+{
+ "question_categories": [
+  {
+   "id": "b2278bf8-ded5-4a36-83dd-0430f41ac85c",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Bài toán cực trị",
+   "created_at": "2026-09-11T09:06:30.054899+00:00",
+   "yeu_cau_can_dat": "Vận dụng được kiến thức về phương trình mặt phẳng và khoảng cách để giải quyết bài toán tìm giá trị lớn nhất, giá trị nhỏ nhất trong không gian."
+  },
+  {
+   "id": "121b078e-0cd9-46c3-8257-1444cf75f2f2",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán cực trị",
+   "created_at": "2026-09-11T09:23:37.534779+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phương pháp tọa độ trong không gian để giải quyết bài toán cực trị liên quan đến đường thẳng, mặt phẳng và điểm."
+  },
+  {
+   "id": "1d63e6dc-48de-4723-a6c0-9789b678dbe3",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp phương pháp tọa độ không gian (mặt phẳng, đường thẳng, mặt cầu)",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phương pháp tọa độ trong không gian để giải quyết các bài toán tổng hợp liên quan đến mặt phẳng, đường thẳng và mặt cầu."
+  },
+  {
+   "id": "dacea2ef-f5dd-4b95-9d90-dc3f2cb215cc",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 4. Phương trình mặt cầu",
+   "math_form": "Vị trí tương đối giữa mặt phẳng và mặt cầu",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Xác định được vị trí tương đối giữa mặt phẳng và mặt cầu trong không gian bằng phương pháp tọa độ."
+  },
+  {
+   "id": "51673edb-5ae7-4e3b-b9a4-0581aa69d87e",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 4. Phương trình mặt cầu",
+   "math_form": "Nhận biết phương trình mặt cầu, tìm tâm và bán kính",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Nhận biết được phương trình mặt cầu và xác định được tọa độ tâm, độ dài bán kính của mặt cầu đó."
+  },
+  {
+   "id": "41790e93-7439-4798-a26a-1fc83344f5fc",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Tính được số đo góc hoặc côsin của góc giữa hai mặt phẳng bằng phương pháp tọa độ."
+  },
+  {
+   "id": "808ffcba-416f-4d73-84b1-2670058c3269",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Tính được số đo góc hoặc côsin của góc giữa hai đường thẳng bằng phương pháp tọa độ."
+  },
+  {
+   "id": "71cc2748-e76a-4a33-b774-f9e4ed63b577",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Viết được phương trình tham số hoặc phương trình chính tắc của đường thẳng khi biết các yếu tố xác định."
+  },
+  {
+   "id": "39be23e5-9c99-424e-83c5-1399c3def134",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Tính được khoảng cách từ một điểm đến một mặt phẳng bằng công thức tọa độ."
+  },
+  {
+   "id": "69a645ee-a0a6-435a-a3a2-d437e1b5d7b4",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Xác định được vị trí tương đối giữa hai mặt phẳng bằng phương pháp tọa độ."
+  },
+  {
+   "id": "6b2d0e9a-b842-487d-9c24-d82714a2411f",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng",
+   "created_at": "2026-09-11T16:40:19.152036+00:00",
+   "yeu_cau_can_dat": "Viết được phương trình tổng quát của mặt phẳng đi qua một điểm và vuông góc với một đường thẳng cho trước."
+  },
+  {
+   "id": "7b866c8b-93d6-4df2-8f58-dfc449a66164",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Tính được số đo góc hoặc sin của góc giữa đường thẳng và mặt phẳng bằng phương pháp tọa độ."
+  },
+  {
+   "id": "e7e209fd-7ec6-4e51-83b8-ff94f05779f6",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Xác định được vị trí tương đối giữa hai đường thẳng hoặc giữa đường thẳng và mặt phẳng trong không gian."
+  },
+  {
+   "id": "aaff1424-d80b-496f-b4c8-5b9d65e1ac43",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Lập được phương trình tổng quát của mặt phẳng đi qua một điểm và biết vectơ pháp tuyến hoặc các yếu tố liên quan."
+  },
+  {
+   "id": "0769560d-8979-403f-b996-8e17c0340178",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Điểm đối xứng, hình chiếu",
+   "created_at": "2026-09-11T17:15:03.205777+00:00",
+   "yeu_cau_can_dat": "Xác định được toạ độ hình chiếu vuông góc và toạ độ điểm đối xứng của một điểm qua đường thẳng hoặc mặt phẳng cho trước."
+  },
+  {
+   "id": "6b2f3051-f225-451a-b8c3-42b9be8543fd",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Đường vuông góc chung của hai đường thẳng chéo nhau",
+   "created_at": "2026-09-11T17:21:02.697747+00:00",
+   "yeu_cau_can_dat": "Viết được phương trình đường vuông góc chung của hai đường thẳng chéo nhau trong không gian với hệ tọa độ Oxyz."
+  },
+  {
+   "id": "bb95be8a-7e79-47e1-8719-276e517d137d",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 4. Phương trình mặt cầu",
+   "math_form": "Viết phương trình mặt cầu",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Viết được phương trình mặt cầu khi biết tâm và bán kính hoặc biết các yếu tố hình học xác định mặt cầu."
+  },
+  {
+   "id": "a78b950c-6ef3-43d8-9dea-ed731087650d",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán thực tế về phương trình đường thẳng",
+   "created_at": "2026-09-11T17:21:02.697747+00:00",
+   "yeu_cau_can_dat": "Vận dụng được phương trình đường thẳng trong không gian để giải quyết một số bài toán thực tiễn liên quan đến tọa độ và chuyển động."
+  },
+  {
+   "id": "a06847d8-637e-48d2-88b9-0a6c621c3bde",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Nhận biết điểm thuộc đường thẳng",
+   "created_at": "2026-09-12T04:28:52.110243+00:00",
+   "yeu_cau_can_dat": "Nhận biết được một điểm có thuộc đường thẳng cho trước trong không gian hay không."
+  },
+  {
+   "id": "d65a21ac-df82-4d34-ad50-c420f27961d0",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Hình chiếu, điểm đối xứng",
+   "created_at": "2026-09-12T04:28:52.110243+00:00",
+   "yeu_cau_can_dat": "Xác định được tọa độ hình chiếu vuông góc hoặc điểm đối xứng của một điểm qua đường thẳng hoặc mặt phẳng."
+  },
+  {
+   "id": "31794577-d9cb-46a3-9264-970983c3dce6",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Khoảng cách",
+   "created_at": "2026-09-12T04:28:52.110243+00:00",
+   "yeu_cau_can_dat": "Tính được khoảng cách từ một điểm đến một đường thẳng hoặc một mặt phẳng trong không gian."
+  },
+  {
+   "id": "16975082-4f72-4485-bf5c-187ec752b7a9",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Vị trí tương đối, cắt nhau",
+   "created_at": "2026-09-12T04:28:52.110243+00:00",
+   "yeu_cau_can_dat": "Xác định được vị trí tương đối của hai đường thẳng hoặc tìm tọa độ giao điểm của chúng."
+  },
+  {
+   "id": "eed0245a-8fb3-49ea-84a3-c1598a51da33",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán tổng hợp",
+   "created_at": "2026-09-12T04:33:46.592112+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến vị trí tương đối giữa đường thẳng và mặt phẳng trong không gian với hệ tọa độ Oxyz."
+  },
+  {
+   "id": "2f29caf2-f34c-42cc-9b98-3550ae58a805",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Khoảng cách giữa hai đường thẳng chéo nhau",
+   "created_at": "2026-09-12T04:33:46.592112+00:00",
+   "yeu_cau_can_dat": "Tính được khoảng cách giữa hai đường thẳng chéo nhau trong không gian với hệ tọa độ Oxyz để giải quyết một số bài toán thực tiễn."
+  },
+  {
+   "id": "ac56b245-0807-4f31-bb23-72da39f7b18b",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Tâm đường tròn ngoại tiếp, trục của tam giác",
+   "created_at": "2026-09-12T04:33:46.592112+00:00",
+   "yeu_cau_can_dat": "Xác định được tọa độ tâm đường tròn ngoại tiếp tam giác và viết được phương trình đường thẳng liên quan trong không gian với hệ tọa độ Oxyz."
+  },
+  {
+   "id": "1100788b-d13a-4b3e-98d0-e2abf6d27db6",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán tổng hợp (Đường phân giác)",
+   "created_at": "2026-09-12T04:33:46.592112+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tính chất của đường phân giác để xác định tọa độ các điểm hoặc viết phương trình đường thẳng liên quan trong không gian với hệ tọa độ Oxyz."
+  },
+  {
+   "id": "8570af2a-c39e-4874-b946-ccb9a783a321",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-09-12T15:58:59.291584+00:00",
+   "yeu_cau_can_dat": "Vận dụng phương pháp tọa độ để tính góc giữa hai đường thẳng, góc giữa đường thẳng và mặt phẳng bằng cách thiết lập hệ trục tọa độ."
+  },
+  {
+   "id": "0541cb67-bbc7-43b9-a79a-4956a21df184",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 5. Phương pháp tọa độ trong không gian",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-09-12T15:58:59.291584+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến tính góc trong không gian bằng phương pháp tọa độ."
+  }
+ ],
+ "questions": [
+  {
+   "id": "1a5aa873-8828-4d7c-b736-702b6f6a239a",
+   "question_id": "CH_1789230877841_hi15",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "b807eb30-0840-41e3-8c1f-d259e3546f2d",
+   "question_id": "CH_1789114987372_wjyo",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "3b5f7e27-f3d7-4168-af60-447919b012ca",
+   "question_id": "CH_1789114987372_c4it",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "61a38830-4e6e-42a2-a742-3f4654523c82",
+   "question_id": "CH_1789114987372_frrw",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "2aec5685-2d21-4baa-853a-6b584cf57967",
+   "question_id": "CH_1789114987372_dmzs",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "51ff59da-0b00-40d3-8940-920bde82b8bf",
+   "question_id": "CH_1789114987372_6j3g",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "3d0db174-17ca-474e-b505-2bf80ccd47ec",
+   "question_id": "CH_1789114987372_yhgh",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "fb7aad22-52ae-4ec2-8328-95f476d04f89",
+   "question_id": "CH_1789114987372_j6bw",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "144d2e26-daf2-43b4-82b1-440b1fc28061",
+   "question_id": "CH_1789114987372_o4e5",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "4a282c5c-4d99-4b6e-9689-bda28dbb6d1c",
+   "question_id": "CH_1789114987372_3ugb",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "d22b2d6e-8386-4626-9496-e3dec65f9aa1",
+   "question_id": "CH_1789114987372_rqbk",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "c529bcb9-53aa-494f-9a92-6c67d2096b46",
+   "question_id": "CH_1789114987373_9dhf",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "72634d4e-4da2-4ee9-8952-416464723b56",
+   "question_id": "CH_1789114987373_ktmm",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "d467e95f-85a2-4da4-9fbc-6e8cc018276b",
+   "question_id": "CH_1789115269828_dw69",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "8ffb40aa-6478-4a89-b415-d2120bc1ccb0",
+   "question_id": "CH_1789115269828_jqi0",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "1110e022-a247-4233-b4be-6cf40dfa9bff",
+   "question_id": "CH_1789115269828_g8bs",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e9200990-7268-4886-849f-690bd8e2fafb",
+   "question_id": "CH_1789115269828_9ra1",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "79c7c0ee-a5e1-43f6-90d5-0f53bc4c5b8e",
+   "question_id": "CH_1789115269828_sifi",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "c360b751-ad30-4b0e-8cf7-ae239496ba1a",
+   "question_id": "CH_1789115269828_zvyu",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "17c6502d-dd05-4f35-832c-aab348ff4d38",
+   "question_id": "CH_1789115269828_bg5r",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "29db5d31-2f00-48ea-b6a8-53cc82e19ba8",
+   "question_id": "CH_1789115269828_1e8h",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "6655e1c1-ca2e-4373-a9f4-b05931e74eb7",
+   "question_id": "CH_1789115269828_vlo7",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "06a0f6d3-d5db-46a9-a6fd-f3aa4888e3b6",
+   "question_id": "CH_1789115269828_q8vq",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "8911a7c8-650d-449c-96a7-b18ba3006b07",
+   "question_id": "CH_1789115269828_3bqw",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "07f20a11-2ec9-45b1-98ae-44b763081d14",
+   "question_id": "CH_1789115269828_vx22",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "bd243894-952e-4afd-876b-7399b3fd75d1",
+   "question_id": "CH_1789115269828_susj",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "bbc593c7-fe37-401d-9439-873437ecf9e8",
+   "question_id": "CH_1789115269828_3dzx",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e0f09053-86fa-46bc-9a8c-840650dcb908",
+   "question_id": "CH_1789115269828_5dqk",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "89c26ccd-e716-42d5-88d8-6de179d741f1",
+   "question_id": "CH_1789115561622_pzcl",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e1796055-8574-4bcf-a39f-c3c9c24b9b96",
+   "question_id": "CH_1789115561622_rdnn",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "8450f0c1-91ce-4dd4-a446-acf5b6aacd60",
+   "question_id": "CH_1789115561622_c345",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "03810f42-94e3-4fff-b03f-cd6cf8749a22",
+   "question_id": "CH_1789115561622_owf5",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "6b9bc2cc-1364-46e4-873b-c9136bd0ecec",
+   "question_id": "CH_1789115561622_w7q2",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "fe547bca-943e-4187-8714-c64407d6bcf8",
+   "question_id": "CH_1789115561622_coie",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e3a7e7dd-62db-4761-a322-aadb65d7f310",
+   "question_id": "CH_1789115561622_wa48",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "d35d13fb-c0e1-4ff3-a1d2-4dc2fa06ccaa",
+   "question_id": "CH_1789115561622_m696",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "c3e7016b-352a-45c7-b774-bf0251e186d1",
+   "question_id": "CH_1789115561622_nrsi",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "dafe36fb-9fd3-42a4-aeb3-691e73d197b3",
+   "question_id": "CH_1789115561622_e0xo",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "e28210ad-460c-4f29-9a95-ba7ab8da4197",
+   "question_id": "CH_1789115561622_7sth",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "9e638575-7331-4e6e-a780-a6e44a4dab32",
+   "question_id": "CH_1789116068846_z8sh",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "442babb5-d49b-4d74-a4c0-153276715b88",
+   "question_id": "CH_1789116068846_n0c2",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "664a58ed-f323-4c4f-8904-40b44a37176c",
+   "question_id": "CH_1789116068846_kncf",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "abbcad5a-f99b-4cd7-b5e1-19aa41b8f785",
+   "question_id": "CH_1789116068846_frtz",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "84fbe312-41ef-4dd4-a872-cb55678709f1",
+   "question_id": "CH_1789116068846_l8d0",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "6def1739-de27-4afe-8156-aaf8bfe24395",
+   "question_id": "CH_1789116068846_2bqh",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "91907c93-c6de-4dbb-ac33-8bc0f9849df8",
+   "question_id": "CH_1789116068846_qhum",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "a77fe4ec-c22c-40f8-8b9b-9a624cf28a47",
+   "question_id": "CH_1789116068846_hh3u",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e27e745d-2bbe-473c-8281-1c71b086ec33",
+   "question_id": "CH_1789116068846_6yru",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "37ded83d-4645-4add-b39f-ba6484f11c88",
+   "question_id": "CH_1789116068846_yqcx",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "6af3ef44-377f-4128-9416-df59d3d34b3f",
+   "question_id": "CH_1789116068846_dxhz",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "4845ff11-93b7-422e-a25d-6bb56ed8461d",
+   "question_id": "CH_1789116068846_clys",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "386f1362-a57d-4777-924d-65949a83b127",
+   "question_id": "CH_1789116068846_1w73",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "cec31b6c-785e-4477-af28-c9c2efc60c21",
+   "question_id": "CH_1789116068846_7xfd",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "c19153ff-4b9d-4a4e-a064-b45e2cfef5ca",
+   "question_id": "CH_1789116068846_f2pm",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "a3f396b2-3f17-4693-ae6d-d9f98be332ff",
+   "question_id": "CH_1789116137267_a7hg",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e2faaf98-48bb-4ba3-a902-7e66153f2633",
+   "question_id": "CH_1789116137267_k9ic",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "a5990f37-8eab-4347-8107-a98e960a60b9",
+   "question_id": "CH_1789116137267_zbw9",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "25d833a2-0373-4d6a-a103-8933d241d0ad",
+   "question_id": "CH_1789116137267_novy",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "c7fd7358-09c5-43d7-af94-b5554d9c13ce",
+   "question_id": "CH_1789116137267_ly06",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "a7f4a44b-b646-40c8-b003-e8e5845616e3",
+   "question_id": "CH_1789116137267_yx61",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "dcbe3bc9-eb29-4b01-8157-415d29d7d751",
+   "question_id": "CH_1789116137267_2378",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "3f9fea9b-00f2-4a44-96ca-09eaeaebcd90",
+   "question_id": "CH_1789116137267_z84x",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e101cf7b-b58d-433b-9ade-902e95974bcc",
+   "question_id": "CH_1789116137267_df4y",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "352d6933-844e-40da-9970-1170591ffe44",
+   "question_id": "CH_1789116137267_i5xn",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e341a86c-0c2d-49f0-ba30-9953cb881337",
+   "question_id": "CH_1789116137267_yhuo",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e40413fd-56f2-4a04-bb6a-4c74bf7db814",
+   "question_id": "CH_1789116137267_js5m",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "0a225279-6934-4103-b372-a6e7dfbdb8f0",
+   "question_id": "CH_1789116137267_i897",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "420f9416-1a44-49e6-bc03-289a0d78252e",
+   "question_id": "CH_1789116137267_pq9a",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "58e5f07e-5a14-4ac6-953f-a54b19b8fa4f",
+   "question_id": "CH_1789116233649_hb6h",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "30ed3ae6-fd89-4dc6-8d3a-c915a76b5c61",
+   "question_id": "CH_1789116233649_3m3a",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "ccb762f3-125d-4144-a30a-3e724a9310d5",
+   "question_id": "CH_1789116233649_6lpe",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "233e29e2-e80e-4f99-8483-c4998bad9424",
+   "question_id": "CH_1789116233649_ij6z",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "f5feabc5-ecdd-400b-924a-19bf454a5b4d",
+   "question_id": "CH_1789116233649_zc4m",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "de8fa538-85a1-46e2-a316-d4f660abeed7",
+   "question_id": "CH_1789116233649_nc4c",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "d66c6988-1d67-4863-8722-ed9967081d6d",
+   "question_id": "CH_1789116233649_b11q",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "4d1ced63-9928-47e3-b293-78fad3fd6912",
+   "question_id": "CH_1789116620751_gkwk",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "c69f65ef-11b9-4dd5-86e4-83b836f9dffd",
+   "question_id": "CH_1789116620751_yrfd",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "71972161-f64c-4a8a-a4b2-ec0c3fbe80ff",
+   "question_id": "CH_1789116620751_hbwa",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "17522f6e-833f-4ddb-8ce9-cdd90cc59801",
+   "question_id": "CH_1789116620751_ig96",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "ddcbe744-555f-4db2-912d-455da79c0fcf",
+   "question_id": "CH_1789116620751_rjjo",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "d0ef3f71-cac4-46d7-872c-b114ab90aa75",
+   "question_id": "CH_1789116620751_e8a5",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "b7174bd7-898b-4325-b635-a4bc26b360de",
+   "question_id": "CH_1789116620751_7c2b",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "d9a1bbe2-a2ac-42ea-a876-837e164840a7",
+   "question_id": "CH_1789116620751_ixi4",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "8e560325-eb9f-4972-b557-88fee341b4e2",
+   "question_id": "CH_1789116620751_wh8p",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "a9d151ed-77aa-4d2a-a1b6-de46556fac7b",
+   "question_id": "CH_1789116620751_deuh",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "8e2dd4bb-3751-47d0-ad45-c9fd0951affe",
+   "question_id": "CH_1789116803257_oazz",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "d2baa5a8-f059-4a04-b90d-664b5e3ea0d1",
+   "question_id": "CH_1789116803257_po9d",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "73deff8b-d737-4d18-86d4-7996c285b557",
+   "question_id": "CH_1789116803257_to25",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "ba0e8996-e9a7-43d7-abcf-f652afffdf38",
+   "question_id": "CH_1789116803257_g740",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "06f4ee9d-f852-4286-9d0c-eaf4fdbc0f5d",
+   "question_id": "CH_1789116803257_pkuz",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "4a5410fc-5f16-4a5a-ba24-f086b9a51ec3",
+   "question_id": "CH_1789116803257_dg8h",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "c5f601ab-2fd6-477e-8b5e-352175129357",
+   "question_id": "CH_1789116803257_nf25",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "1f05bd7b-3113-497d-b215-8bbf10dfd4e3",
+   "question_id": "CH_1789116803257_zvt9",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "62340e2c-00de-4a82-bafd-7c7895ebad4b",
+   "question_id": "CH_1789116803257_4f1y",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "2a4ca165-62bf-49e3-9604-b31112392644",
+   "question_id": "CH_1789116803257_ebwk",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "468be7fa-fe19-4f91-bcf4-7b42154f1ddb",
+   "question_id": "CH_1789116856586_g6ot",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "1515c59a-d173-4f0d-a650-39c1a9a63c38",
+   "question_id": "CH_1789117222379_01ud",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "618d2cc5-1a8c-45e9-acf9-b36579593512",
+   "question_id": "CH_1789117222379_5mrw",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "8ec59307-9154-4be4-b57c-6fd77dacb8f4",
+   "question_id": "CH_1789117222379_2ayp",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "5ed97a2d-6345-4f1f-9ebe-6ff5f6a3faf0",
+   "question_id": "CH_1789117222379_97i1",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "92c57abb-b93d-4d72-a108-88c773b79f69",
+   "question_id": "CH_1789117222379_v5ep",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "58a3ad1b-ae78-46f1-a5f6-3a66b4613e52",
+   "question_id": "CH_1789117222379_8a5g",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "d92debe3-17c5-40d4-b9e4-2ea2ac515c77",
+   "question_id": "CH_1789117222379_0g4w",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "fc5a0202-7a22-4bef-974f-fc32aec50082",
+   "question_id": "CH_1789117529881_hn92",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "c8983e47-18a0-45f5-8af9-70bb0bce0a25",
+   "question_id": "CH_1789117529881_qyym",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "79d5b052-b412-43de-9937-b385fc02a22b",
+   "question_id": "CH_1789117529881_n3s9",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "0d612a15-5d26-47c1-8156-0233ab1ba19e",
+   "question_id": "CH_1789117529881_ah61",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "0f16320a-fa0b-4f6b-9989-bd1d3d83a608",
+   "question_id": "CH_1789117529881_sbva",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "24eb32f7-af45-464a-b340-b3c2758e1425",
+   "question_id": "CH_1789117529881_okg0",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "14a2d3c2-0737-41fb-a10f-341cb8f5e998",
+   "question_id": "CH_1789117529881_0f00",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "2dc49c08-1683-4935-9691-d888827e8648",
+   "question_id": "CH_1789117529881_bgx5",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "1f1e1847-4caf-4fae-9ead-9641d3e2d730",
+   "question_id": "CH_1789117529881_jyrs",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "beec0d8a-6b57-499f-83ca-7bd48a02b830",
+   "question_id": "CH_1789117529881_qexm",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "f1011bac-2f84-4cd6-8540-9e4a798e4ed9",
+   "question_id": "CH_1789117529881_38va",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "b68497c3-db32-42f8-8e8a-b688bd0f8260",
+   "question_id": "CH_1789117529881_k308",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "8b1a5851-5f59-4987-a850-9f261fada4ec",
+   "question_id": "CH_1789117529881_9i8k",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Xét vị trí tương đối của hai mặt phẳng"
+  },
+  {
+   "id": "0623e4be-9543-482c-9940-6eedabea958f",
+   "question_id": "CH_1789117529881_obmu",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "07d9316b-6429-4ece-94f5-d771a270916e",
+   "question_id": "CH_1789117529881_f722",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "952ac190-23ce-4b04-a8cc-86bf20c7cdf4",
+   "question_id": "CH_1789117590283_7xla",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "05db35a6-5d34-4315-89bd-9a2c2b3c9aae",
+   "question_id": "CH_1789117590283_0rwk",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Bài toán cực trị"
+  },
+  {
+   "id": "460c3ef9-4b22-4460-9eaa-255bd5dac3e5",
+   "question_id": "CH_1789117590283_io85",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Bài toán cực trị"
+  },
+  {
+   "id": "5ecdb0d2-fec6-4360-9360-dd0bdd000fce",
+   "question_id": "CH_1789117590283_8vu4",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Bài toán cực trị"
+  },
+  {
+   "id": "cc3f0db0-0cee-4490-982d-cfa43f203495",
+   "question_id": "CH_1789117590283_w3fb",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Bài toán cực trị"
+  },
+  {
+   "id": "6d396931-e86b-4fdd-8c70-ba28bf063b04",
+   "question_id": "CH_1789117590283_pymk",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e82a4020-b12f-4c78-88c7-f9acebdbe35f",
+   "question_id": "CH_1789117590283_qdg7",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "a4175563-5945-4922-8498-ef75be3e2260",
+   "question_id": "CH_1789117590283_tch0",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "b27ea0bb-c915-442f-9608-cd91d6597837",
+   "question_id": "CH_1789117590283_1fx6",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "7b194d41-9701-4941-96eb-403741819687",
+   "question_id": "CH_1789117590283_8to0",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "95746183-97d4-4b9d-a03a-69454bba6c75",
+   "question_id": "CH_1789117805115_tui5",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Tính khoảng cách từ một điểm đến mặt phẳng"
+  },
+  {
+   "id": "4ed2d30d-8d5e-465b-a66b-885feffb5162",
+   "question_id": "CH_1789117805115_tknm",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "a2ed2a74-9372-4d0c-9e38-9ae6ab936697",
+   "question_id": "CH_1789117805115_bi3b",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "4b10995c-ab41-4dcf-8381-fa6c92fbe411",
+   "question_id": "CH_1789117805115_1u83",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Bài toán cực trị"
+  },
+  {
+   "id": "9dc7f9fe-a5f3-4e75-888e-e5da23f99a70",
+   "question_id": "CH_1789117805115_r0qw",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Bài toán cực trị"
+  },
+  {
+   "id": "06dc3371-4a10-4b26-bc1a-7c551411a5a5",
+   "question_id": "CH_1789117805115_ba4o",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Bài toán cực trị"
+  },
+  {
+   "id": "2215eaa5-9fbe-492b-b197-64b63db2c1b2",
+   "question_id": "CH_1789118236988_5yjz",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "730882a9-efeb-4a6a-916b-499b08f36490",
+   "question_id": "CH_1789118236988_22nm",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "a9fba063-116a-44b4-b80a-48eb86091746",
+   "question_id": "CH_1789118236988_647h",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "227777b5-e7c9-4fec-9d44-fff5c884c1e1",
+   "question_id": "CH_1789118236988_1p30",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "5b6c112d-a70c-4730-9c73-51bcfd6e6f87",
+   "question_id": "CH_1789118236988_e234",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "1c556c9c-4882-4738-b0bc-90c49753dfe2",
+   "question_id": "CH_1789118236988_1bl4",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình tổng quát của mặt phẳng"
+  },
+  {
+   "id": "e448c249-d91c-4850-85be-e76f1a28ba9d",
+   "question_id": "CH_1789118236988_pi7q",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "32afd7f7-b208-48cc-a39a-4158762e4af9",
+   "question_id": "CH_1789118236988_o1c9",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "40848147-8d21-40aa-815e-82a9a65328fb",
+   "question_id": "CH_1789118236988_qlju",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "4a77ad9a-3bc2-4303-85bd-368af9598fff",
+   "question_id": "CH_1789118236988_5zbh",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "f5432033-14c9-4794-a56b-5ef634871dd9",
+   "question_id": "CH_1789118236988_0ues",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "bfd94ee9-a9fc-4c02-ab85-82be4abd8596",
+   "question_id": "CH_1789118236988_w4ka",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "1b58efee-e198-4f36-9439-c0df3cd796ef",
+   "question_id": "CH_1789118308099_bfud",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "ed7a5af7-051c-4c86-bcfc-1b0526145c6d",
+   "question_id": "CH_1789118308099_rckv",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "2c99c0d5-2256-461c-86a0-b80eebca3db3",
+   "question_id": "CH_1789118308099_6enx",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "9522fb94-f947-4c45-8ebd-d770d4be5b64",
+   "question_id": "CH_1789118308099_3yre",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "2cd13cba-96ad-48d7-8832-d2db8c66ab40",
+   "question_id": "CH_1789118308099_4j4o",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "f17c8128-d202-4641-a416-ecaeb8a3b2c6",
+   "question_id": "CH_1789118308099_gf7a",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "5fbb072e-b869-404c-9a48-8f8ec1b974e2",
+   "question_id": "CH_1789118308099_hcwz",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "8e9068d7-5de1-42da-810e-eae00ec1eac8",
+   "question_id": "CH_1789118308099_euyl",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "e38719e0-6607-4bc5-96df-d647bacf2c6a",
+   "question_id": "CH_1789118308099_skni",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "f3982569-1fad-40c8-a6dc-4aa7d791a4d0",
+   "question_id": "CH_1789118308099_fbgn",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "0b614452-414d-4c4a-81ec-6c579988b3a7",
+   "question_id": "CH_1789118308099_zi41",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "a6980592-1529-4598-b189-6a10abaab2a6",
+   "question_id": "CH_1789118308099_zq3v",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "0f5bba46-64d5-434a-93ab-6d2609e65648",
+   "question_id": "CH_1789118617755_yilg",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "7a85009c-a4c5-4ae6-b75d-34ac35b27e17",
+   "question_id": "CH_1789118617755_s6mq",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "65f448e4-c6ba-4894-8d16-c8457365a384",
+   "question_id": "CH_1789118617755_8p2f",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "9bcbb01d-8547-4bb2-aa69-6ab4e6c7271b",
+   "question_id": "CH_1789118617755_dg09",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "eb336222-b990-4153-a51a-4e9cdbd8620f",
+   "question_id": "CH_1789118617755_hbga",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "0315a8fe-744e-4319-963a-2e820b8b805d",
+   "question_id": "CH_1789118617755_a9qd",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "67f5a23f-77e7-4459-a88f-00a874d263c6",
+   "question_id": "CH_1789118617755_3ioh",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "92ab6e39-8be4-4f1a-9d82-5193370fbb36",
+   "question_id": "CH_1789118617755_567y",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "cdc6202b-2d31-4950-a07b-010be91aa826",
+   "question_id": "CH_1789118617755_bmm5",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "745d4618-3f22-4ae0-bf5a-165dee119054",
+   "question_id": "CH_1789118617755_6hcs",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "16ba9fe3-9c7d-44f8-b92c-8d27c15cc17d",
+   "question_id": "CH_1789118617755_dxnp",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "6f39b0d3-15b4-41ce-9745-1b195b12028b",
+   "question_id": "CH_1789118617755_9jkp",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "a556dcde-62f8-4798-b17b-27c69f364a28",
+   "question_id": "CH_1789118617755_nij7",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán cực trị"
+  },
+  {
+   "id": "e6181686-9f82-49e4-a996-e2b82b8a7203",
+   "question_id": "CH_1789140182172_81wb",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "a0effe67-26d8-418a-8f66-477b0d7fd897",
+   "question_id": "CH_1789140182172_rh4f",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "f2bafdc5-d53a-4755-aef4-8714ed6f6c6c",
+   "question_id": "CH_1789140182172_12ky",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "6b28904c-fe32-4165-bb57-637700f1d3e2",
+   "question_id": "CH_1789140182172_857k",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b6b85694-330d-4811-beba-34332996171d",
+   "question_id": "CH_1789140182172_w67i",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "011ee52d-08ee-43fe-a18d-f890ae4318ed",
+   "question_id": "CH_1789141652986_zu31",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "67486fdc-4481-4745-80ae-0e21db40f873",
+   "question_id": "CH_1789141652986_paf5",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "c5d8c87d-18e4-4a09-8538-9f1e60008140",
+   "question_id": "CH_1789141652986_rmrv",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "0dd98a2a-a39b-44b5-9831-ca666f9dd20a",
+   "question_id": "CH_1789141652986_8r07",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "ee9fb7e3-013a-4239-95e8-804b4c32f12e",
+   "question_id": "CH_1789141652986_cbzm",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "237c001e-657c-4f08-80f1-85e60c7ad141",
+   "question_id": "CH_1789141652986_48z9",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "fadc2b92-8e22-439b-9146-eecb2d5c5cd8",
+   "question_id": "CH_1789141652986_xt3r",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "82b8daa6-98cd-4e07-b8eb-808e74032b44",
+   "question_id": "CH_1789141652986_evcz",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "fb68843f-a098-47b3-b3b2-12bff22e7e05",
+   "question_id": "CH_1789141652986_qem2",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "2218a38c-292f-4e8b-8b3e-2cd8ae1f5d4d",
+   "question_id": "CH_1789141652986_4uh9",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "28b2a44c-a23f-4d23-af3a-211fffc77440",
+   "question_id": "CH_1789141652986_leo7",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "f6be5658-3c2a-4527-8c65-5c6b4b0cacfd",
+   "question_id": "CH_1789141652986_27nx",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "a251fec1-88d7-417b-9768-a67141b8d29d",
+   "question_id": "CH_1789143203717_jz65",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "d07afc66-d3ef-42b0-a550-564e77911bb0",
+   "question_id": "CH_1789143203717_6bsf",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "dbf5a94a-1c6c-42da-902c-bde8df3a1387",
+   "question_id": "CH_1789143203717_k34q",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "932f6f76-19d0-4067-b36f-347505cd3cf9",
+   "question_id": "CH_1789143203717_8ytj",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "eda3025b-ffbb-4a20-92d5-3ad874138f06",
+   "question_id": "CH_1789143203717_so20",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "d5807517-d3df-42ac-8dbc-63bdffe67ed1",
+   "question_id": "CH_1789143203717_ejy9",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "f6257e52-d220-4ca8-a91b-7df226289f2e",
+   "question_id": "CH_1789143203717_ajlc",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "fb0071ba-526f-48b9-a20a-92e2c6e796e4",
+   "question_id": "CH_1789143203717_prrw",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "319f4182-9f1b-4bcf-9fc8-ef8ddd35b7cb",
+   "question_id": "CH_1789143203717_7fqw",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "21721945-4c7b-410a-b2e2-63fcf6c32d17",
+   "question_id": "CH_1789143203717_2h7p",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "a32d62d5-a780-475f-b76d-66de94245fdd",
+   "question_id": "CH_1789143603098_hea5",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "8df2709c-6a79-4c16-958b-f3b25e3c388e",
+   "question_id": "CH_1789143603098_ktug",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b86f6797-c704-4b0c-80bb-3d1f9849ba82",
+   "question_id": "CH_1789143603098_iy1l",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b2be8ad2-6768-421a-bbee-d04dd07d4e57",
+   "question_id": "CH_1789143603098_m0ew",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "db9a4697-aaab-412f-9a4f-0b639940d15c",
+   "question_id": "CH_1789143603098_w0gc",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "e5cbcbe0-bb13-4897-89a6-3556be26d255",
+   "question_id": "CH_1789143603098_mkl2",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "52425941-69e6-4d36-8e77-7e98c12b2713",
+   "question_id": "CH_1789143603098_c5j5",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "db86746f-bb82-4dc2-88f6-0009803b8e26",
+   "question_id": "CH_1789143603098_pzix",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b38500cb-c1ea-448f-aee8-fe536d63f65a",
+   "question_id": "CH_1789143603098_6t49",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b149b116-8fa4-4f80-9db5-fd66840f1262",
+   "question_id": "CH_1789143603098_crpz",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "4bb4eb4b-053d-408b-af39-74cb2de1740c",
+   "question_id": "CH_1789144153859_rzoo",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "a117d746-7c62-4675-8667-83fbc4fb72a6",
+   "question_id": "CH_1789144153859_xsbt",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "a23b1e3e-e426-404d-b1cd-dc05db56c79d",
+   "question_id": "CH_1789144153859_4lqg",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b09a1bd9-8892-4cd8-b716-bfb623a0e2c8",
+   "question_id": "CH_1789230877841_l76s",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "4c4c426a-d331-4264-84d2-f2985416f4dd",
+   "question_id": "CH_1789144153859_wyx1",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "a3363d6b-669e-4929-98d4-e23f3ef0bf9b",
+   "question_id": "CH_1789144153859_j1j2",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "676e2660-cda6-4688-ac2b-4ad5eb3c9673",
+   "question_id": "CH_1789144153859_8kgr",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "e4169303-393c-4730-b793-220944f4e741",
+   "question_id": "CH_1789144153859_nyv2",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "adcd8500-8cb6-46da-9376-6d6d65eb333b",
+   "question_id": "CH_1789144153859_eww7",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "e6304cc2-489b-4cb8-b2a6-0016679d48df",
+   "question_id": "CH_1789144153859_j442",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "68e4f3fa-7754-4762-98eb-261a4d7e2ee0",
+   "question_id": "CH_1789144153859_exdf",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "da9b61ab-4f28-4be2-a112-39d1618c922d",
+   "question_id": "CH_1789144819750_bif4",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "e8903725-d734-4b95-8b30-92e7d49e83ce",
+   "question_id": "CH_1789144819750_jxev",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b958f234-cbcc-4fe5-b844-18fe332849b2",
+   "question_id": "CH_1789144819750_k19z",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "449fe081-bab7-4fe3-bfb2-1c6121297c59",
+   "question_id": "CH_1789144819750_ot3m",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "fc4c315b-0669-4e0c-b8af-32815dd97a4c",
+   "question_id": "CH_1789144819750_whst",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "ca7514fc-c73a-4aad-af77-139ef9af7e80",
+   "question_id": "CH_1789144819750_t7z8",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "c279ecc7-1b0c-4038-8555-ceb9f943dec7",
+   "question_id": "CH_1789144819750_csrj",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "41beb9af-ca6c-4f63-bcbf-d61dcd217327",
+   "question_id": "CH_1789144819750_h3ux",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "97a7e671-98ff-4291-a699-28ad19ee3131",
+   "question_id": "CH_1789144819750_1pgu",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "c7a29757-d90b-4420-8731-7b8d707152f4",
+   "question_id": "CH_1789144819750_dvtd",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng"
+  },
+  {
+   "id": "183192af-b050-4147-b8e5-2965bd9cf76a",
+   "question_id": "CH_1789145125184_agh2",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng"
+  },
+  {
+   "id": "85372eaa-0c36-4544-8f53-8b8dc5da4d11",
+   "question_id": "CH_1789145125184_sp7w",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng"
+  },
+  {
+   "id": "4b1c27c5-2b90-4b1e-802f-10d66df3d1fc",
+   "question_id": "CH_1789145125184_8iu2",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng"
+  },
+  {
+   "id": "b7b8d4b8-ea8f-4789-be34-bab00bf64046",
+   "question_id": "CH_1789145125184_z50i",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng"
+  },
+  {
+   "id": "366bbca8-5abc-4d94-a97c-f1781a2529b6",
+   "question_id": "CH_1789145125184_3rjm",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng"
+  },
+  {
+   "id": "dd016985-ab7b-4eff-826d-8b479e8214e7",
+   "question_id": "CH_1789145125184_uyne",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng"
+  },
+  {
+   "id": "cbda1583-81fa-412c-9eb6-58893feb8ca1",
+   "question_id": "CH_1789145583976_nvi8",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "d010fb2f-3075-43de-9a04-01c7010024d7",
+   "question_id": "CH_1789145583976_7cks",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "f2ce1f85-d701-49b0-9f00-dd21e1d61a99",
+   "question_id": "CH_1789145583976_vw35",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "0accb2d6-e1d1-4bcf-80bd-aa01e00f234b",
+   "question_id": "CH_1789145583976_81ca",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "949819f7-ea81-4a8d-9685-5a428cd4964b",
+   "question_id": "CH_1789145583977_2u8e",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "11a701fc-a5a8-4be7-ac83-5c0bec507131",
+   "question_id": "CH_1789145583977_4bda",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "3c31da49-8b5e-49eb-9a0d-fda4377ac05c",
+   "question_id": "CH_1789145583977_fgj3",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "c1fd8f85-f448-459a-8d83-3d2934f653a1",
+   "question_id": "CH_1789145583977_n8ew",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "0ae7b51a-6b4a-4608-88a6-0363da705fdc",
+   "question_id": "CH_1789145583977_muoe",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "18a67cea-f964-4b52-8ad8-ffb1a013b07f",
+   "question_id": "CH_1789145583977_g07e",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "4e4c5a87-060d-495e-b3c7-bb03d437928e",
+   "question_id": "CH_1789145583977_x570",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "38ab2efc-26c1-4970-b401-c714602db2da",
+   "question_id": "CH_1789145901757_poci",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "10e89336-681e-49df-b139-8a4d7ec0c297",
+   "question_id": "CH_1789145901757_t61q",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "a02d335f-00cb-42f5-8144-508c1f4beb59",
+   "question_id": "CH_1789145901757_5al5",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "4dc20acf-e470-486f-b2ad-2b317700a89d",
+   "question_id": "CH_1789145901757_fsua",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "f82bee8d-50e7-443c-b2ac-6befff9ec683",
+   "question_id": "CH_1789145901757_xe9l",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b7888887-d4ef-4cbd-bb10-bd4af298e31b",
+   "question_id": "CH_1789145901757_juog",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "46202c3b-7f56-4eb7-8430-58056f7e2c26",
+   "question_id": "CH_1789145901757_s66z",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "76bd5977-1725-4887-af64-c1620919ddc5",
+   "question_id": "CH_1789145901757_8ekx",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "df8723a6-0f6b-4a92-86d1-3457899c630b",
+   "question_id": "CH_1789145901757_jb7p",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "38922229-7504-424b-b1e7-d87e2a8bab8c",
+   "question_id": "CH_1789145901757_oen8",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b40dda0e-5f89-4f90-9159-c2de0bcb1a3d",
+   "question_id": "CH_1789145901757_yo6a",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "e7b1fc23-2d9f-4720-9e01-62c38a575137",
+   "question_id": "CH_1789146168420_zyl6",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "28873ce2-d2e8-41aa-9d6d-361e3285ad3a",
+   "question_id": "CH_1789146168420_m55c",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "5198284b-22cb-4b93-a6f8-5f1326fe5421",
+   "question_id": "CH_1789146168420_zfzt",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "88bdd5d5-a9b0-4ed3-926c-e57356e62efc",
+   "question_id": "CH_1789146168420_3iei",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "0d04f60c-cad4-4889-b430-7a7cb5e9ff22",
+   "question_id": "CH_1789146168420_sk4x",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "0ffd23c1-082a-4f06-abf3-51d7f9fb35ba",
+   "question_id": "CH_1789146168420_971j",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "07f643af-ea21-42ca-aac6-cd5e33e567bc",
+   "question_id": "CH_1789146168420_r44u",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "b754a21b-0f05-454d-b6d5-a3a1ed226aea",
+   "question_id": "CH_1789146168420_mxqx",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "1dbf454c-4eca-4e0b-a0f0-b632f8b710f4",
+   "question_id": "CH_1789146168420_f9sj",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "dd879197-c3d8-4928-8b2e-f2956e775112",
+   "question_id": "CH_1789146168420_wdkv",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "75b362ce-7a5b-42da-a774-4de1a73e888e",
+   "question_id": "CH_1789146168420_5g4x",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "4a1cb091-d0ca-4a2b-accc-6c060417dad5",
+   "question_id": "CH_1789146168420_xur9",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "39eb086f-d93d-4d57-813b-4518885be23a",
+   "question_id": "CH_1789146168420_87ux",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "d4b7321e-c2cc-4d89-a2a1-6e669a91f47b",
+   "question_id": "CH_1789146168420_1xxu",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "d3ddff9d-7a85-49c1-91e5-8dc7d8a5fe5e",
+   "question_id": "CH_1789146909327_l70r",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "dbb2a44c-1c45-4c19-a633-11b903719ffe",
+   "question_id": "CH_1789146909327_ytc4",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "bbfaf44c-aa43-42b7-8d89-a3e25882b661",
+   "question_id": "CH_1789146909327_vgpb",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "c9346d42-b722-4e10-a7d2-bf7661169c7f",
+   "question_id": "CH_1789146909327_z9b5",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "eb01ef22-de58-4ca8-a6ac-4ad0f5cbf080",
+   "question_id": "CH_1789146909327_ye1q",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "b5e5028d-612b-47c9-886c-5ded98a35d41",
+   "question_id": "CH_1789146909327_0rhl",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "c32b6537-070f-4a74-9a71-65d5d6ad2124",
+   "question_id": "CH_1789146909327_8cvw",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "423fb820-2706-4785-8d1b-0f5b0bd3e08f",
+   "question_id": "CH_1789146909327_ch2p",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "66d77462-0c9a-4289-b34e-5b1b0821d997",
+   "question_id": "CH_1789146909327_pgat",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "650034e4-464a-4fd9-88c7-8109eb0de981",
+   "question_id": "CH_1789146909327_wuow",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "3f2bb4ac-cc1a-42c9-aa94-02d1131f2cea",
+   "question_id": "CH_1789146909327_ut5l",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "24ae701e-eefd-42cd-973e-befe92a5b5e6",
+   "question_id": "CH_1789146909327_d3xm",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "5006f9c6-0e5e-452e-8c97-33a7f25fd4be",
+   "question_id": "CH_1789146909327_rpjw",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "4ea45c28-0b98-46c7-af59-a80c78f3347f",
+   "question_id": "CH_1789146909327_2dwz",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "c38d636f-3d6b-4f2e-a229-061c0bfe182f",
+   "question_id": "CH_1789147263418_uz08",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "ebac9a4e-4790-45db-b529-99bd32fbaf34",
+   "question_id": "CH_1789147263418_7hs6",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Đường vuông góc chung của hai đường thẳng chéo nhau"
+  },
+  {
+   "id": "4af71e27-e0b9-4949-9cd1-f277693c3d44",
+   "question_id": "CH_1789147263418_fhg0",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "1a026fa7-12e8-4f80-be0d-38c558f29447",
+   "question_id": "CH_1789147263418_291i",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "40f44c8b-a4f8-4002-ade7-ce4fa9aabfe6",
+   "question_id": "CH_1789147263418_wyid",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Điểm đối xứng, hình chiếu"
+  },
+  {
+   "id": "d8d4ef76-2ead-486e-ac7c-eb12077e6372",
+   "question_id": "CH_1789147263418_0jqa",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "f6a4ba60-4434-43f7-baf8-37ffd9b59f8d",
+   "question_id": "CH_1789147263418_qj6i",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán thực tế về phương trình đường thẳng"
+  },
+  {
+   "id": "ddd9ab80-9c43-4ca3-9d35-3daae0f0d81b",
+   "question_id": "CH_1789147263418_yi9b",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán thực tế về phương trình đường thẳng"
+  },
+  {
+   "id": "c57af950-a2ff-4e99-aa2a-3c5b2a3e9409",
+   "question_id": "CH_1789187332250_vwrh",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Nhận biết điểm thuộc đường thẳng"
+  },
+  {
+   "id": "2b7f61fc-44d6-44e0-859c-735e23152ab5",
+   "question_id": "CH_1789187332250_26z7",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Nhận biết điểm thuộc đường thẳng"
+  },
+  {
+   "id": "f11dccff-2e95-4b8c-9843-f23bbf54f70d",
+   "question_id": "CH_1789187332250_4g9a",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "731d11c3-eb2b-4f39-8697-25a64075812a",
+   "question_id": "CH_1789187332250_oq9h",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng"
+  },
+  {
+   "id": "18a0f3fb-aa39-4784-a472-ebebe5f80e5b",
+   "question_id": "CH_1789187332250_uzzg",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "3de01927-9622-4466-bd76-a9be58e305cc",
+   "question_id": "CH_1789187332250_iy2l",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "7223fbc0-3d4a-47da-8f24-a303acacc150",
+   "question_id": "CH_1789187332250_1yf7",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "f5f03f7c-f2d6-4a79-971f-ff93b35664c0",
+   "question_id": "CH_1789187332250_dnnr",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "1e34c3a6-ae84-4719-9261-bf507a0d3913",
+   "question_id": "CH_1789187332250_y8mb",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "710aed7d-38fe-40d7-9515-a84448f36a7d",
+   "question_id": "CH_1789187332250_vu5f",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Viết phương trình tham số, chính tắc của đường thẳng"
+  },
+  {
+   "id": "0018c6ba-b0ff-4661-a477-64488c0d170e",
+   "question_id": "CH_1789187332250_dkzl",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng"
+  },
+  {
+   "id": "c5dfab0e-f0e8-4c9b-9ca5-aff3176f3b57",
+   "question_id": "CH_1789187332250_ecic",
+   "lesson": "Bài 1. Phương trình mặt phẳng",
+   "math_form": "Viết phương trình mặt phẳng"
+  },
+  {
+   "id": "b115ff64-7b4f-4261-9d5e-4d386bc012b2",
+   "question_id": "CH_1789187332250_x3gh",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán thực tế về phương trình đường thẳng"
+  },
+  {
+   "id": "4df172f0-0ff3-4f3e-928c-64c282fe3cc5",
+   "question_id": "CH_1789187332250_fmb2",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Hình chiếu, điểm đối xứng"
+  },
+  {
+   "id": "3f95e8aa-43a5-462f-b1cd-ae656fcba60c",
+   "question_id": "CH_1789230877841_a0sj",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "944a32d5-5dfa-43c0-bc50-aca11ba596d8",
+   "question_id": "CH_1789187332250_yyss",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Hình chiếu, điểm đối xứng"
+  },
+  {
+   "id": "b2d39212-9b60-4fcb-86f9-2a0b9b454720",
+   "question_id": "CH_1789187332250_qtes",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Khoảng cách"
+  },
+  {
+   "id": "14e1115e-35ff-4fbe-9aa7-04270f2aef06",
+   "question_id": "CH_1789187332250_f0al",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Vị trí tương đối, cắt nhau"
+  },
+  {
+   "id": "d9670a39-29ff-4c96-bdfa-d75794003697",
+   "question_id": "CH_1789187332250_l5lt",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán thực tế về phương trình đường thẳng"
+  },
+  {
+   "id": "70de0f6e-db99-4cd3-b06b-42d0b15c5d39",
+   "question_id": "CH_1789187332250_at42",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán thực tế về phương trình đường thẳng"
+  },
+  {
+   "id": "0975dd04-ae68-488e-8375-821f9ed6771f",
+   "question_id": "CH_1789187626713_x3tz",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán tổng hợp"
+  },
+  {
+   "id": "2f00ae82-71bb-452e-aa75-c7b486d41351",
+   "question_id": "CH_1789187626713_i1uj",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Khoảng cách giữa hai đường thẳng chéo nhau"
+  },
+  {
+   "id": "2099b5ec-9a6b-4b28-a3ba-6c48b62ee940",
+   "question_id": "CH_1789187626713_gnf7",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Đường vuông góc chung của hai đường thẳng chéo nhau"
+  },
+  {
+   "id": "685c4b14-9c1f-4555-857e-68c21e48d5b7",
+   "question_id": "CH_1789187626713_moce",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Hình chiếu, điểm đối xứng"
+  },
+  {
+   "id": "938345c0-ac90-450e-ab13-f5ead046e9bf",
+   "question_id": "CH_1789187626713_mjpq",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Hình chiếu, điểm đối xứng"
+  },
+  {
+   "id": "4cf2175d-7a8c-48e4-8a00-31836d21b067",
+   "question_id": "CH_1789187626713_8ads",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán cực trị"
+  },
+  {
+   "id": "0218adf1-bef2-43fd-ade2-c534b00a6a4d",
+   "question_id": "CH_1789187626713_4ntk",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Tâm đường tròn ngoại tiếp, trục của tam giác"
+  },
+  {
+   "id": "d9ac2e80-d7c5-4336-bbce-05249f746a64",
+   "question_id": "CH_1789187626713_hho0",
+   "lesson": "Bài 2. Phương trình đường thẳng trong không gian",
+   "math_form": "Bài toán tổng hợp (Đường phân giác)"
+  },
+  {
+   "id": "6f764707-a234-4850-be1e-b00849aa1907",
+   "question_id": "CH_1789188251740_kckm",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "87ee53cd-159a-4c5c-ae80-bfbe3c98d931",
+   "question_id": "CH_1789188251740_ywtg",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "3a7bf8f0-9fbd-481f-adb4-65be778de43e",
+   "question_id": "CH_1789188251740_t38i",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "caea5a5b-09bf-478f-b5d5-d1f177ed7fcb",
+   "question_id": "CH_1789188251740_gs9v",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "48b15dbe-c491-4d58-89dc-de03d7611d92",
+   "question_id": "CH_1789188251740_uelt",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "c086ca94-cc37-4fc3-b49b-8c4383656ce1",
+   "question_id": "CH_1789188251740_f8fa",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "85ad79de-c1d9-411e-8256-9f73c6454819",
+   "question_id": "CH_1789188251740_tbw8",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "6a026565-706f-4378-8a46-d8a6fba43cd8",
+   "question_id": "CH_1789188251740_11xv",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "5edbce02-afea-4c76-8d30-d331d9e5d2f5",
+   "question_id": "CH_1789188251740_ih9a",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "dd0a50eb-081c-4087-acdb-dbd0b9f33ed3",
+   "question_id": "CH_1789188251740_93ia",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "fcc391ea-ef28-4d9b-b745-2f041934b51c",
+   "question_id": "CH_1789188251740_lhmw",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "678a9004-faf2-4323-a1b0-946ac4e7938c",
+   "question_id": "CH_1789188251740_ker6",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "66824425-cd57-4e4a-9664-7548de80a648",
+   "question_id": "CH_1789188251740_r2l1",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "16d91420-5743-4224-9804-a02910bdea1f",
+   "question_id": "CH_1789188251740_j30l",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "0262b77b-45e0-4d3f-a079-d92d892e268d",
+   "question_id": "CH_1789188251740_va25",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "3490cd2d-ad66-4d60-a9b5-315ce5282027",
+   "question_id": "CH_1789188636760_blei",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "caed4371-8129-435e-afbe-408170dbe39b",
+   "question_id": "CH_1789188636760_w49v",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "3c4748f3-0ae5-45b8-84e5-1949f943d5d9",
+   "question_id": "CH_1789188636760_b92c",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "54b42652-6d00-4b79-a28e-a4d53345655d",
+   "question_id": "CH_1789188636760_krg8",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "165b7c5b-3366-4718-93be-a868bf936b7d",
+   "question_id": "CH_1789188636760_qdzd",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "d8e70283-4217-4f68-ad37-ed438a94a6d5",
+   "question_id": "CH_1789188819221_rgxp",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "bb1fb20b-0eaa-4f64-86ff-546037cc0551",
+   "question_id": "CH_1789188819222_i4to",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "feac8a48-229b-4874-b98a-a21a96be75c1",
+   "question_id": "CH_1789188819222_cvf8",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "978dcb3f-7a20-4224-b810-ee884cd9127a",
+   "question_id": "CH_1789188819222_g0dk",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "8a7f98ec-6d0b-4828-8a26-744fcd2d366b",
+   "question_id": "CH_1789188819222_98to",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "0b6888a0-db68-441b-add7-7cf6c757bc23",
+   "question_id": "CH_1789188819222_tki7",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "3c39098f-def9-48e4-837d-a214d48344b9",
+   "question_id": "CH_1789188819222_zfbv",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "b761a05a-2ce1-43e7-86d5-ffebe0e3cb68",
+   "question_id": "CH_1789188819222_i6rn",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "3224fa5f-dc4b-410e-93c1-aec048436a8e",
+   "question_id": "CH_1789188819222_0dq3",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "fe74ae49-dcbe-4ac8-b582-7b4c88be6c98",
+   "question_id": "CH_1789188819222_4w71",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "b3f41633-62c9-4e7d-84b9-68d8a064c736",
+   "question_id": "CH_1789188819222_9ko1",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "cedbeaf6-c7ba-40dd-8c9a-a8a847562b68",
+   "question_id": "CH_1789188819222_y4n7",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "a5be4b44-334d-4f0f-8829-ef5a855a22bf",
+   "question_id": "CH_1789188819222_guk8",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "c7c656a4-dfad-45f2-956c-6e3fd3e84801",
+   "question_id": "CH_1789188819222_wzjv",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "301fe14d-2cd7-4954-a405-d6d433df95ed",
+   "question_id": "CH_1789188819222_8vz6",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "2d82eec5-a285-43ae-a7ea-399d53b9810b",
+   "question_id": "CH_1789189188348_g8nb",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "336048c0-5087-4f29-b676-5ce9fc46567b",
+   "question_id": "CH_1789189188348_yi7s",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "a8711785-0646-4571-b644-f486de019182",
+   "question_id": "CH_1789189188348_w5vw",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "06ce517c-61a8-4a57-8e80-56d485204514",
+   "question_id": "CH_1789189188348_2ghi",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "e59c5f19-1eba-4a86-bc76-42c758c7bda2",
+   "question_id": "CH_1789189188348_qsht",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "abef20f7-048b-41f8-b633-7d1f4fe6c465",
+   "question_id": "CH_1789189188348_g6l5",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "ba16ef2d-d021-47be-8308-07c50e2a0289",
+   "question_id": "CH_1789189188348_dmrj",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "261e3683-96ac-46c8-9774-2a696cf40696",
+   "question_id": "CH_1789189188348_hbam",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "bc6fd6be-c296-43a1-931e-7174a88d1a7f",
+   "question_id": "CH_1789189188348_sb2i",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "75dedeb2-6f0f-4319-a6ea-90683d22e059",
+   "question_id": "CH_1789189188348_edav",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "6e0fb3f2-aa03-4ef0-a4aa-da9f688226cd",
+   "question_id": "CH_1789189188348_8f19",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "72277710-9941-4de1-b9bf-63d20828d69f",
+   "question_id": "CH_1789189188348_c7rq",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "c2397020-d405-4346-a8b6-84cbedd49ab5",
+   "question_id": "CH_1789189188348_1iub",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "60a7ac25-d197-42ba-9c92-3cf56263e792",
+   "question_id": "CH_1789189188348_t4bw",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "6b34f35d-f989-48bc-978d-0b46273e9157",
+   "question_id": "CH_1788959381596_ybk8",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "a1612436-588d-432b-a0f0-2bb8e3250572",
+   "question_id": "CH_1789227758522_o12u",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "accc9600-f073-4973-a867-22d396b8fc33",
+   "question_id": "CH_1789227758522_nwbd",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "cec487ab-1778-43de-bb83-b22011619772",
+   "question_id": "CH_1789230133534_aax0",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "3253ffc8-37bb-4258-b313-3f8cc28009aa",
+   "question_id": "CH_1789230133534_i9pb",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "b0bf9506-a16c-4903-a4f6-315504c87415",
+   "question_id": "CH_1789230133534_liwl",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "2f908c3b-b472-4bd9-815f-6e5a8a0f2b38",
+   "question_id": "CH_1789230877841_5gw7",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "4fc7b0ba-55b2-4ac1-99a9-a4396a4c602e",
+   "question_id": "CH_1789227758522_j9c5",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "043d97bc-4b8f-4f48-918c-ad8c79052af5",
+   "question_id": "CH_1789227758522_dklg",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "b34dc2f2-9e89-4a4b-a565-f153e6316869",
+   "question_id": "CH_1789227758522_7l6l",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "0fbcbd40-3cb1-480e-9033-d31bc6671c94",
+   "question_id": "CH_1789227758522_f076",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "c6e8396b-926a-4589-a547-f1ec9534ade1",
+   "question_id": "CH_1789227758522_d5f0",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "3fb57471-9f88-42c7-a781-5fcde01b220e",
+   "question_id": "CH_1789227758522_q16s",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "077201d5-a6c7-40c9-ab25-5f841d00676c",
+   "question_id": "CH_1789227758522_dykp",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "1aeedd5f-8502-4dab-9052-9d2d2a05994c",
+   "question_id": "CH_1789227758522_zz54",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "dba92f4c-daf1-49e0-8f1f-665620705fbc",
+   "question_id": "CH_1789227758522_g779",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "70ab945a-565f-4d58-b917-9f89cd2d9f65",
+   "question_id": "CH_1789228739903_gmbe",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "3e8eebb4-a085-405a-9aa1-e2947df0f825",
+   "question_id": "CH_1789228739903_97qu",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "b854c5b5-164a-4d93-aa87-91e68a8f8b33",
+   "question_id": "CH_1789228739903_qtax",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "ed93eb43-306a-4436-9413-e3d448802497",
+   "question_id": "CH_1789228739903_hz8m",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "c4c60bbb-f23d-4499-aa05-66b51ffccf38",
+   "question_id": "CH_1789230877841_hqc5",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "00b8841f-3732-4bf7-8738-1f4060e92c86",
+   "question_id": "CH_1789228739903_mh03",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "a105654e-9363-4feb-862c-9c000ddfec42",
+   "question_id": "CH_1789228739903_rxlp",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "a5cef148-4e7f-4d2d-a6f8-826575bf063d",
+   "question_id": "CH_1789228739903_ou97",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "16470003-93b0-47d3-bc48-eab2c0ac1ab5",
+   "question_id": "CH_1789230133534_yojy",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "6554de1d-6f3c-4f8e-b5df-31e0ce6e7d6b",
+   "question_id": "CH_1789230133534_wkuk",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "19b33210-e36d-48ff-b319-0f279b9ff5a7",
+   "question_id": "CH_1789230133534_o24y",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "383253eb-3011-4005-b598-422351510a1f",
+   "question_id": "CH_1789230133534_0at5",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "6a66980b-8edb-417e-b5e9-e5d9e6964b66",
+   "question_id": "CH_1789230877841_let9",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "5bb80e32-76e2-48ba-ac43-64137faf7f3d",
+   "question_id": "CH_1789230877841_owoq",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "8a4171b4-0a41-41fc-9634-58f72280525e",
+   "question_id": "CH_1789230877841_tw0n",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "c7115020-f01b-467c-9f6a-9362f4cb8955",
+   "question_id": "CH_1789230877841_ya7f",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "14d09a68-64f2-47e4-a05a-4bf2236bbf07",
+   "question_id": "CH_1789230877841_phz4",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "aa52f5c5-35be-4498-90cd-dfbf910411fe",
+   "question_id": "CH_1789230877841_176i",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa đường thẳng và mặt phẳng"
+  },
+  {
+   "id": "29e5298b-89c4-4bf5-8050-995c0d332adc",
+   "question_id": "CH_1789230877841_kd0g",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "062976e3-5733-4132-ae00-b151333beb1c",
+   "question_id": "CH_1789230877841_24lw",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "be83dbec-8568-4bcc-a3fb-8e5142d589a9",
+   "question_id": "CH_1789230877841_nool",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "01701353-540f-4802-adb0-ce724c69086d",
+   "question_id": "CH_1789230877841_vdka",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "1e0421d3-d9c5-42cb-b2ca-664939f49339",
+   "question_id": "CH_1789230877841_td83",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai đường thẳng"
+  },
+  {
+   "id": "879f9c76-24b3-4414-ac0f-594e1d22b930",
+   "question_id": "CH_1789230877841_tx5i",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Tính góc giữa hai mặt phẳng"
+  },
+  {
+   "id": "fd29d601-1917-4fe5-aca7-d62787460fd0",
+   "question_id": "CH_1789230877841_ck6n",
+   "lesson": "Bài 3. Công thức tính góc trong không gian",
+   "math_form": "Toán tổng hợp"
+  }
+ ]
+}

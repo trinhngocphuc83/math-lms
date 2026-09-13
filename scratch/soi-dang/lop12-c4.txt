@@ -1,0 +1,998 @@
+Chương 4. Nguyên hàm và tích phân · lớp 12 · 28 dạng · 912 câu
+
+
+### [1] Bài 1. Nguyên hàm | Chứng minh nguyên hàm (5)
+    yêu cầu: Chứng minh được một hàm số cho trước là một nguyên hàm của hàm số khác trên khoảng xác định.
+  x95x NLC 1 | Biết F(x) là một nguyên hàm của hàm số f(x) trên K. Khẳng định nào dưới đây đúng?
+  k9qw TL 2 | Trong mỗi trường hợp sau, hàm số F(x) có là một nguyên hàm của hàm số f(x) trên khoảng tương ứng không? Vì sao
+  j2rn NLC 1 | Hàm số F(x) là một nguyên hàm của hàm số f(x) trên khoảng K nếu
+  d2f5 NLC 1 | Hàm số F(x) = e^{x^3} là nguyên hàm của hàm số nào trong các hàm số sau:
+  ujvs NLC 1 | Cho \int 5^x dx = F(x) + C. Khẳng định nào dưới đây đúng?
+
+### [2] Bài 1. Nguyên hàm | Tìm hàm số khi biết đạo hàm (tìm hàng số C) (137)
+    yêu cầu: Xác định được nguyên hàm của một hàm số khi biết giá trị của nguyên hàm đó tại một điểm.
+  8yf3 DS 2 | Cho hàm số f(x) = 4x^3 - 6x. Biết F(x) là một nguyên hàm của f(x) và F(0) = 2. Xét tính đúng sai của các khẳng
+  wp5c DS 2 | Cho hàm số f(x) = e^x(2 + e^x) và F(x) là nguyên hàm của hàm số f(x). Xét tính đúng sai của các khẳng định sau
+  2h3w TLN 3 | Cho hàm số f(x) = \begin{cases} 2x + 5 & \text{khi } x \ge 1 \\ 3x^2 + 4 & \text{khi } x < 1 \end{cases}. Giả 
+  zq0a TLN 3 | Bạn Huyền chạy thể dục buổi sáng với a(t) = -\frac{1}{24}t^3 + \frac{5}{16}t^2 (m/s), trong đó t là khoảng thờ
+  hbk1 NLC 2 | Biết F(x) là một nguyên hàm của hàm số f(x) = e^x + 2x thỏa mãn F(0) = \frac{3}{2}. Khi đó:
+  aojq NLC 2 | Nếu F(x) là một nguyên hàm của f(x) = e^x(1 - e^{-x}) và F(0) = 3 thì F(x) bằng:
+  fepm NLC 2 | Cho hàm số f(x) với f'(x) = 3 + 2\sin x và f(0) = 3. Mệnh đề nào dưới đây đúng?
+  q68y NLC 2 | Cho hàm số F(x) là nguyên hàm của hàm số f(x) = \frac{1}{\sqrt{x}}. Biết F(1) = 1, tính F(4).
+  x7uz NLC 4 | Cho hàm số f(x) xác định trên {R} \setminus \{-45; 45\} thỏa mãn f'(x) = \frac{1}{x^2 - 2025}, f(25) = 0. Tính
+  gn46 NLC 2 | Tìm một nguyên hàm F(x) của hàm số f(x) = 2x + 3\sqrt{x} thỏa mãn F(1) = 0.
+  c2tk NLC 2 | Tìm hàm số y = f(x), biết f'(x) = 3\sqrt{x} + \frac{2}{\sqrt[3]{x}}, (x > 0) và f(1) = 1.
+  fpmw NLC 2 | Gọi F(x) là một nguyên hàm của hàm số f(x) = (2x - 3)^2 thỏa F(0) = \frac{1}{3}. Tính giá trị của biểu thức T 
+  g69w NLC 2 | Tìm nguyên hàm F(x) của hàm số f(x) = \sin x + \cos x thỏa mãn F(\frac{\pi}{2}) = 2.
+  6td3 TLN 4 | Một chất điểm chuyển động trên đường thẳng nằm ngang với gia tốc phụ thuộc thời gian t(s) là a(t) = 2t - 7 (m/
+  e5jd TLN 3 | Cho hàm số bậc ba y = f(x) có f'(x) = 3x^2 + 2x - m + 1, f(2) = 1. Đồ thị hàm số y = f(x) đi qua điểm M(1; -3)
+  bxyl TL 3 | Cho hàm số y = f(x) có đồ thị là (C). Xét điểm M(x; f(x)) thay đổi trên (C). Biết rằng, hệ số góc của tiếp tuy
+  stjy NLC 2 | Nguyên hàm F(x) của hàm số f(x) = e^x + 2e^{-x} - 2x thỏa mãn F(0) = 1
+  6gr4 NLC 2 | Cho f'(x) = 2x - \cos 2x. Tìm f(x) biết f(0) = 0.
+  0k1d TLN 2 | Cho F(x) là một nguyên hàm của hàm số f(x) = e^x + 2x thỏa mãn F(0) = \frac{3}{2}. Tìm F(2) (kết quả làm tròn 
+  ksbt TLN 2 | Cho hàm số f(x) = \cos x.\sin^2 x có một nguyên hàm F(x) thỏa mãn F(0) = 2025. Tính F(\frac{\pi}{2}) (làm tròn
+  199x TLN 3 | Biết rằng hàm số F(x) = x + 2024 là một nguyên hàm của hàm số f(x); hàm số G(x) = \frac{x^2}{4} + 2025 là một 
+  ipb2 TLN 3 | Một hồ bơi có dạng hình hộp chữ nhật có chiều cao 3,0(m) đang không chứa nước. Người ta cần thay nước mới cho 
+  9ifv TLN 3 | Một xe ô tô đang chuyển động đều thì người lái xe nhìn thấy chướng ngại vật trên đường. Sau 1 giây thì người l
+  sqc4 TLN 2 | Một chiếc ô tô đang chạy với vận tốc 15 m/s thì nhìn thấy chướng ngại vật trên đường cách đó 50 m, người lái x
+  hm8z NLC 2 | Nguyên hàm F(x) của hàm số f(x) = (2x - 3)^2 thỏa mãn F(-1) = -17 là
+  p3y9 NLC 2 | Cho F(x) là một nguyên hàm của f(x) = \frac{2}{x + 2}. Biết F(-1) = 1, khi đó F(2) bằng
+  o32f TL 2 | Tốc độ tăng trưởng của một đàn gấu mèo tại thời điểm t tháng kể từ khi người ta thả 100 cá thể đầu tiên vào mộ
+  60oy TL 2 | Cường độ dòng điện (đơn vị: A) trong một dây dẫn tại thời điểm t giây là I(t) = Q'(t) = 3t^2 - 6t + 5, với Q(t
+  lopm TL 2 | Một chất điểm thực hiện chuyển động thẳng trên trục Ox, với vận tốc v(t) = 3t^2 + 4t (m/s), t là thời gian. Bi
+  s2t8 NLC 2 | Nguyên hàm F(x) của hàm số f(x) = 2\sin x - \cos x thỏa mãn F(\frac{\pi}{3}) = -\frac{\sqrt{3}}{2} là:
+  dlcc NLC 2 | Cho hàm số f(x) thỏa mãn f'(x) = 3 - 5\cos x và f(0) = 5. Mệnh đề nào dưới đây đúng?
+  zdvg NLC 2 | Một nguyên hàm F(x) của hàm số f(x) = \sin x + 2\cos x biết F(\frac{\pi}{2}) = 0 là
+  gywg NLC 2 | Một nguyên hàm F(x) của hàm số f(x) = \sin x + \frac{1}{\cos^2 x} thỏa mãn F(\frac{\pi}{4}) = \frac{\sqrt{2}}{
+  y39b TLN 3 | Cho hàm số y = f(x) có đạo hàm f'(x) = 4\sin 2x + \cos x, \forall x \in {R} và f(0) = -2. Biết F(x) là nguyên 
+  yvpl NLC 2 | Tìm một nguyên hàm F(x) của hàm số f(x) = e^x - 1 trên (-\infty; +\infty), biết F(0) = 2.
+  gdvf NLC 3 | Cho hàm số y = f(x) có đạo hàm là f'(x) = e^x + 2x + 1, \forall x \in {R} và f(0) = 1. Biết F(x) là nguyên hàm
+  enoz DS 2 | Gọi F(x) là một nguyên hàm của hàm số f(x) = e^x - 2x trên {R} thỏa mãn F(0) = 1. Xét tính đúng sai của các kh
+  g49o NLC 2 | Cho F(x) là một nguyên hàm của f(x) = 2^x + x + 1. Biết F(0) = 1. Tính F(-1) kết quả là
+  mop8 NLC 2 | Cho hàm số y = f(x) có đạo hàm là f'(x) = 12x^2 + 2, \forall x \in {R} và f(1) = 3. Biết F(x) là nguyên hàm củ
+  lswn NLC 2 | Cho hàm số f(x) thỏa mãn f'(x) = 3 - 5\sin x và f(0) = 10. Mệnh đề nào dưới đây đúng?
+  l9iu NLC 2 | Hàm số f(x) có đạo hàm liên tục trên {R} và: f'(x) = 2e^{2x} + 1, \forall x, f(0) = 2. Hàm f(x) là
+  wjtt NLC 2 | Cho hàm số f(x) thỏa mãn f'(x) = 2 - 5\sin x và f(0) = 10. Mệnh đề nào dưới đây đúng?
+  wr82 NLC 2 | Cho hàm số f(x) thỏa mãn f'(x) = ax^2 + \frac{b}{x^3}, f'(1) = 3, f(1) = 2, f(\frac{1}{2}) = -\frac{1}{12}. Kh
+  bgi5 NLC 3 | Cho hàm số f(x) xác định trên {R} \setminus \{0\} thỏa mãn f'(x) = \frac{x+1}{x^2}, f(-2) = \frac{3}{2} và f(2
+  pzgn TLN 2 | Cho F(x) = (ax^2 + bx + c)e^{2x} là một nguyên hàm của hàm số f(x) = 2x^2 \cdot e^{2x}. Tính tổng a + b + c.
+  ywke TLN 3 | Biết F(x) = e^{2x} + 2x^2 là một nguyên hàm của hàm số f(x) trên {R}. Giả sử G(x) là một nguyên hàm của hàm số
+  l959 TL 2 | Tìm nguyên hàm F(x) của hàm số f(x) = \sin x + 1 biết F(\frac{\pi}{6}) = 0.
+  tkzg TL 2 | Hàm số f(x) có đạo hàm liên tục trên {R} và f'(x) = 2024 - 2\sin^2 \frac{x}{2}, \forall x, f(\frac{\pi}{2}) = 
+  e7ft TL 2 | Hàm số f(x) có đạo hàm liên tục trên {R} và f'(x) = 1 + e^{2x}, \forall x, f(0) = 2. Tìm hàm f(x).
+  9ft5 TL 2 | Hàm số f(x) có đạo hàm liên tục trên {R} và f'(x) = 2^x + 3^x, \forall x, f(0) = \frac{1}{\ln 3}. Tìm hàm f(x)
+  zsg6 TL 2 | Hàm số f(x) có đạo hàm liên tục trên {R} và f'(x) = e^{3x+2024}, \forall x, f(-675) = 1. Tìm hàm f(x).
+  w0kh TL 2 | Hàm số f(x) có đạo hàm liên tục trên {R} và f'(x) = 3^{x+2} \cdot 2^{2x+1}, \forall x, f(0) = \frac{1}{2\ln 2}
+  uqr8 TL 3 | Hàm số f(x) có đạo hàm liên tục trên {R} và f'(x) = (3^x + 5^x)^2, \forall x, f(0) = \frac{1}{\ln 5 + \ln 3 + 
+  oee9 TL 2 | Cho hàm số f(x) = 2x + e^x. Tìm một nguyên hàm F(x) của hàm số f(x) thỏa mãn F(0) = 2024.
+  1hyc TL 2 | Cho F(x) là một nguyên hàm của f(x) = (5x + 3)^5. Biết F(1) = 0. Tính F(0).
+  m0l4 TL 2 | Cho F(x) là một nguyên hàm của f(x) = x^3 - 4x + 5. Biết F(1) = 3. Tính F(0).
+  laf4 TL 2 | Cho F(x) là một nguyên hàm của f(x) = 3 - 5\cos x. Biết F(\pi) = 2. Tính F(\frac{\pi}{2}).
+  isk0 TL 2 | Cho F(x) là một nguyên hàm của f(x) = \frac{3-5x^2}{x}. Biết F(e) = 1. Tính F(2).
+  lfbp TL 2 | Cho F(x) là một nguyên hàm của f(x) = \frac{x^2+1}{x}. Biết F(1) = \frac{3}{2}. Tính F(-1).
+  ejsp NLC 2 | Một ô tô đang chạy với vận tốc 36 km/h thì tăng tốc chuyển động nhanh dần đều với gia tốc a(t) = 1 + \frac{t}{
+  0i4m NLC 2 | Một vật chuyển động với vận tốc 10 m/s thì tăng tốc với gia tốc được tính theo thời gian t là a(t) = 3t + t^2\
+  p9iv NLC 3 | Tại một nơi không có gió, một chiếc khí cầu đang đứng yên ở độ cao 162 (mét) so với mặt đất đã được phi công c
+  q53g NLC 2 | Một viên đạn được bắn lên theo phương thẳng đứng với vận tốc ban đầu là 25 m/s, gia tốc trọng trường là 9,8\te
+  acrs NLC 2 | Sự sản sinh vi rút Zika ngày thứ t có số lượng là N(t) con, biết N'(t) = \frac{1000}{t} và lúc đầu đám vi rút 
+  ei9r NLC 2 | Biết F(x) là một nguyên hàm của hàm số f(x) = \sin x - \cos x và F(\frac{\pi}{2}) = 0. Tính F(\frac{3\pi}{2}).
+  lfi9 TLN 2 | Biết F(x) là một nguyên hàm của hàm số f(x) = 2x^2 + x + 1 thỏa F(2) = 1. Khi đó giá trị của F(3) có dạng \fra
+  uh25 TLN 3 | Biết F(x) là một nguyên hàm của hàm số f(x) = \cot^2 x thỏa F(\frac{\pi}{4}) = 0. Tính F(\frac{\pi}{2}).
+  lq8i TLN 3 | Cho hàm số f(x) = \frac{3x^3 - 2x + 1}{x}. Biết F(x) là một nguyên hàm của f(x) thỏa F(1) = 3. Khi đó F(5) = a
+  otvv TLN 3 | Cho F(x) là một nguyên hàm của hàm số f(x) = (2x^2 + 3)(x - 2) và F(\frac{1}{2}) = 3. Tính F(0).
+  7f9g TLN 3 | Biết F(x) là một nguyên hàm của hàm số f(x) = \frac{x^3-1}{x^2} thỏa F(1) = 0. Khi đó giá trị của F(\frac{5}{2
+  i23m TLN 3 | Xét hàm số f(x) = 3\cos^2 \frac{x}{2} + \sin x. Biết F(x) là một nguyên hàm của f(x) thỏa F(0) = 5. Tính giá t
+  szfg NLC 2 | Cho F(x) là một nguyên hàm của hàm số y = -\frac{1}{\cos^2 x} thỏa F(0) = 1. Khi đó:
+  60v6 NLC 2 | Cho hàm số f(x) thỏa f'(x) = x + \sin x và f(0) = 1. Tìm f(x).
+  moam TLN 3 | Cho hàm số f(x) = 4x + \sin(-x). Biết F(x) là một nguyên hàm của hàm số f(x) thỏa mãn F(\frac{\pi}{2}) = \frac
+  u5x6 TLN 3 | Cho hàm số f(x) = (2x - 1)^3. Biết hàm số F(x) là một nguyên hàm của f(x) thỏa F(2) = 2036. Tổng các hệ số của
+  6lf2 TLN 3 | Cho hàm số f(x) có đồ thị cắt trục tung tại điểm có tung độ bằng 1 và có đạo hàm là f'(x) = 2 + e^x, \forall x
+  lr1t TLN 3 | Gọi F(x) là một nguyên hàm của hàm số f(x) = 2^x, thỏa mãn F(0) = \frac{1}{\ln 2}. Giá trị biểu thức T = F(0) 
+  cufd TLN 3 | Cho hàm số f(x) = (\tan 2x - \tan x) \cos 2x. Gọi F(x) là một nguyên hàm của hàm số f^2(x) thỏa F(\frac{\pi}{3
+  m2x0 NLC 3 | Biết một nguyên hàm F(x) của hàm số f(x) = mx + \frac{n}{x^2} (x \neq 0) thỏa F(-2) = \frac{7}{20}, F(1) = \fr
+  2bkk NLC 3 | Với nguyên hàm F(x) của hàm số y = 2^x thỏa F(\log_2 5) = \frac{5 + \ln 5}{\ln 2}, khẳng định nào sau đây đúng
+  9d43 NLC 3 | Cho F(x) là một nguyên hàm của hàm số f(x) = \sqrt{2}\cos(x - \frac{\pi}{4}) thỏa F(\frac{\pi}{4}) = 1. Khi đó
+  kwfx TLN 3 | Biết F(x) = (x + a)\sqrt{x^2 + b} (a, b \in {Z}) là một nguyên hàm của hàm số f(x) = \frac{2x^2 + x + 2}{\sqrt
+  m3gi TLN 3 | Biết hàm số f(x) = 7^{x+1} \cdot 3^{2x} có một nguyên hàm F(x) thỏa (2\ln 3 + \ln 7)F(0) = 7. Tính giá trị của
+  l6tz NLC 2 | Tìm hàm số F(x), biết F(x) là một nguyên hàm của f(x) = \sqrt{x} thỏa 3F(1) = 2030.
+  751g NLC 2 | Biết F(x) là một nguyên hàm của f(x) = \frac{\sqrt{2}}{x} và F(2) = 1. Tính F(4).
+  43i4 NLC 3 | Cho f(x) = 1 + |x|. Một nguyên hàm F(x) của f(x) thỏa F(1) = F(-1) = 1 là:
+  tl3e NLC 3 | Biết hàm số f(x) = -3^{-x} có một nguyên hàm F(x) thỏa F(0) = \frac{1}{\ln 3}. Tính giá trị biểu thức S = F(1)
+  zvpw TLN 3 | Biết hàm số f(x) = \frac{4}{3x} có một nguyên hàm trên khoảng (0; +\infty) là F(x) = \frac{a\ln b}{c} \log x (
+  ydje TL 3 | Biết hàm số f(x) = (1 + \cos \frac{x}{2})(1 - \cos \frac{x}{2}) có một nguyên hàm F(x) = \frac{1}{2}(x - \sin 
+  zvrp TL 3 | Biết hàm số f(x) = 3x^2 - 2 có một nguyên hàm là F(x) thỏa F(1) = 10. Gọi G(x) là một nguyên hàm của g(x) = \f
+  l8ws NLC 2 | Tìm nguyên hàm F(x) của hàm số f(x) = \frac{7x^3 - 2026}{x^2}, biết F(1) = \frac{1}{2}.
+  ouf9 NLC 2 | Biết một nguyên hàm F(x) của hàm số f(x) = \sin \frac{x}{4} . \cos \frac{x}{4} . \cos \frac{x}{2} thỏa F(\pi) 
+  gbz5 NLC 2 | Biết hàm số F(x) = (ax + b)\sqrt{x - 1} với a, b \in {Z} là một nguyên hàm của f(x) = \frac{6x-1}{2\sqrt{x-1}}
+  49fk TLN 2 | Biết F(x) là một nguyên hàm của f(x) = \frac{1}{x\sqrt{x}} thỏa F(1) = 3. Khi đó F^2(9) = \frac{a}{b} với \fra
+  747i TLN 2 | Cho hàm số f(x) có đạo hàm f'(x) = -3x^2 + 1. Tính f(4) - f(5).
+  qcmk NLC 3 | Cho hàm số f(x) = \cos x + 2\sin x có một nguyên hàm F(x) thỏa F(\frac{\pi}{3}) = \sqrt{3}. Khi đó F(2) có giá
+  u9t8 NLC 4 | Cho các hàm số f(x) = 1 + \cos x + \cos 2x + \cos 3x và g(x) = 2\cos^2 x + \cos x - 1. Biết một nguyên hàm F(x
+  aty3 TLN 3 | Cho F(x) là một nguyên hàm của hàm số f(x) = (2x^2 - x)^2 thỏa F(-1) = 5. Khi đó giá trị F(-3) = -\frac{a}{b} 
+  rx82 TLN 4 | Cho các hàm số f(x) = \cos 2x và g(x) = \sqrt{2}\cos(x - \frac{\pi}{4}). Gọi H(x) là một nguyên hàm của hàm số
+  v4zu NLC 2 | Biết một nguyên hàm F(x) của hàm số f(x) = 507x^{2027} + \frac{1}{12} thỏa F(1) = \frac{4}{3}. Tính F(-1).
+  zlbn TL 2 | Người ta truyền nhiệt cho một bình nuôi cấy vi sinh vật từ 1^\circ C. Tốc độ tăng nhiệt độ của bình tại thời đ
+  u1ps TLN 2 | Một chiếc cốc chứa nước ở 95^\circ C được đặt trong phòng có nhiệt độ 20^\circ C. Theo định luật làm mát của N
+  yrs3 TLN 3 | Trọng lượng của một bào thai người nặng khoảng 0,04 ounce (1 ounce \approx 28,3485 gram) sau 8 tuần tuổi. Tron
+  4jgp TL 3 | Một bác thợ xây bơm nước vào bể chứa nước. Gọi h(t) là thể tích nước bơm được sau t giây. Cho h'(t) = 6at^2 + 
+  l2eo TLN 3 | Cho F(x) là một nguyên hàm của f(x) = \frac{2(3-x)^2}{x^2} thỏa F(-1) + F(1) = 6. Khi đó giá trị biểu thức F(-
+  7rha NLC 2 | Gọi h(t) (m) là mực nước ở bồn chứa sau khi bơm nước được t giây. Biết rằng h'(t) = \frac{1}{5}\sqrt[3]{t} (m/
+  g3qv TL 2 | Cho hàm số y = f(x) xác định trên khoảng (0; +\infty). Biết rằng, f'(x) = 2x + \frac{1}{x^2} với mọi x \in (0;
+  rbnj TL 3 | Một viên đạn được bắn thẳng đứng lên trên từ mặt đất. Giả sử tại thời điểm t giây (coi t = 0 là thời điểm viên
+  o9gk TLN 4 | Một bác thợ xây bơm nước vào bể chứa nước. Gọi h(t) là thể tích nước bơm được sau t phút. Biết h'(t) = 3at^2 +
+  3m7h NLC 2 | Biết F(x) là một nguyên hàm của hàm số f(x) = \frac{1}{x} trên (0; +\infty) và F(e) = 3. Tính F(5)?
+  r5rb NLC 3 | Một ô tô đang chạy với vận tốc 108 km/h thì hãm phanh và chuyển động chậm dần đều với tốc độ v(t) = -10t + 30 
+  1cmh NLC 1 | Gọi F(x) là một nguyên hàm của hàm số f(x), với f(x) = 3\sin x + \frac{4}{\cos^2 x}, biết F(0) = 2. Tính F(\fr
+  psj5 NLC 2 | Một quả bóng được ném lên từ độ cao 20m với vận tốc được tính bởi công thức v(t) = -10t + 16 (m/s). Công thức 
+  u5m7 TLN 4 | Cho F(x) là một nguyên hàm của hàm số f(x) = \frac{2x + 1}{x^4 + 2x^3 + x^2} trên khoảng (0; +\infty) thỏa mãn
+  m5g4 NLC 3 | Một bác thợ xây bơm nước vào bể chứa nước. Gọi h(t) là thể tích nước bơm được sau t giây. Cho h'(t) = 3at^2 + 
+  jm34 NLC 2 | Biết một nguyên hàm của hàm số f(x) = \frac{1}{2x-1} là hàm số F(x) thỏa mãn F(1) = 5. Khi đó F(x) là hàm số n
+  a8j8 DS 2 | Cho hàm số f(x) = x^3 - 4x + 5. Gọi F(x) là một nguyên hàm của f(x), biết F(1) = 3. Xét tính đúng sai của các 
+  s0gc TL 3 | Tốc độ phát triển của số lượng vi khuẩn trong hồ bơi được mô hình bởi B'(t) = \frac{1000}{(1 + 0,3t)^2} với t 
+  9c4c TL 2 | Một vật đang chuyển động với vận tốc 6 m/s thì tăng tốc với gia tốc a(t) = \frac{3}{t + 1} (m/s^2), trong đó t
+  zpui TL 2 | Một viên đạn được bắn lên trời với vận tốc 72 m/s bắt đầu từ độ cao 2 m. Biết gia tốc trọng trường là 9,8\text
+  avq6 DS 2 | Đặt F(x) = \int \tan^2 x dx và thỏa mãn F(0) = 0. Xét tính đúng sai của các khẳng định sau:
+  elge TLN 3 | Cho F(x) là nguyên hàm của hàm số f(x) = \sin^2 x trên {R} thỏa mãn F(\frac{\pi}{4}) = 0. Tính giá trị của biể
+  mlg1 NLC 2 | Biết F(x) là một nguyên hàm của hàm số f(x) = e^{2x} và F(0) = 0. Giá trị của F(\ln 3) bằng
+  b9li DS 2 | Cho hàm số f(x) = 2x + e^x. Biết F(x) là một nguyên hàm của hàm số f(x) thỏa mãn F(0) = 2025. Xét tính đúng sa
+  n8bj NLC 2 | Cho F(x) là một nguyên hàm của hàm số f(x) = e^x + 2x thỏa mãn F(0) = \frac{3}{2}. Tìm F(x).
+  b8fk NLC 2 | Cho hàm số f(x) = \begin{cases} 2x - 1 & \text{khi } x \ge 1 \\ 3x^2 - 2 & \text{khi } x < 1 \end{cases}, giả 
+  ydqc NLC 3 | Tìm một nguyên hàm F(x) của hàm số f(x) = ax + \frac{b}{x^2} (x \neq 0), biết rằng F(-1) = 1, F(1) = 4, f(1) =
+  1yi1 TLN 3 | Cho hàm số f(x) = \sin^2 \frac{x}{2}. Biết hàm số F(x) là một nguyên hàm của f(x) và đồ thị y = F(x) đi qua gố
+  p8ov TL 3 | Cho hàm số f(x) = \frac{4m}{\pi} + \sin^2\frac{x}{2}. Giá trị của tham số m để nguyên hàm F(x) của hàm số f(x)
+  u6ci TL 2 | Cho F(x), G(x) lần lượt là các nguyên hàm của f(x) = 2\sin x, g(x) = 3\cos x thỏa F(\frac{\pi}{2}) = 1 và G(\f
+  6z25 DS 3 | Cho hàm số f(x) có đồ thị đi qua điểm M(0; -1) và có đạo hàm f'(x) = 18x^2 - 22x + 6.
+  vfej NLC 2 | Cho F(x) là một nguyên hàm của hàm số f(x) = e^x + 2x thỏa F(0) = \frac{3}{2}. Tính F(1)+F(2).
+  rqm3 TL 2 | Biết F(x) là một nguyên hàm của f(x) = e^x và F(1) = e - 1. Tính F(2).
+  ewr6 TLN 3 | Cho hàm số f(x) = \frac{x^2 + 2}{x}. Biết F(x) là một nguyên hàm của f(x) thỏa F(-1) = 2, F(1) = 3. Khi đó F(-
+  123h TLN 3 | Cho hàm số f(x) = \sin x + 1. Biết G(x) là một nguyên hàm của hàm số g(x) = \frac{5}{f^2(x)-2f(x)} thỏa G(\fra
+  qvkw TL 3 | Biết hàm số f(x) = \frac{mx}{2} - \tan^2 x có một nguyên hàm F(x) thỏa F(0) = 1 và F(\frac{\pi}{4}) = \frac{\p
+  u1v6 DS 3 | Đặt F(x) = -\int \sin x dx và thỏa mãn F(0) = 1. Xét tính đúng sai của các khẳng định sau:
+
+### [3] Bài 1. Nguyên hàm | Tính chất của nguyên hàm (22)
+    yêu cầu: Vận dụng được các tính chất cơ bản của nguyên hàm để biến đổi và tìm nguyên hàm của một số hàm số đơn giản.
+  0dga DS 2 | Cho F(x) và G(x) là hai nguyên hàm khác nhau của hàm số f(x).
+  c3ph NLC 2 | Nếu \int f(x) dx = e^x + \sin^2 x + C thì f(x) bằng:
+  h8zx NLC 1 | Cho các hàm số f(x), g(x) liên tục trên K. Mệnh đề nào sau đây **sai**?
+  x50u TLN 3 | Biết hàm số F(x) = 2\sin(\pi + x) + \cos(\frac{\pi}{2} + x) là một nguyên hàm của f(x). Tính f'(\frac{\pi}{3})
+  6nyv NLC 1 | Cho f(x), g(x) là các hàm số liên tục và F(x), G(x) lần lượt là nguyên hàm của f(x), g(x). Xét các mệnh đề sau
+  p69n DS 2 | Cho các hàm số f(x) = 2x^2 + 5x - 3 và g(x) = x + 3.
+  amuf NLC 1 | Cho các hàm số f(x), g(x) có đạo hàm trên K. Mệnh đề nào dưới đây **sai**?
+  2d7z NLC 2 | Hàm số nào sau đây **không** là một nguyên hàm của hàm số f(x) = \sin^2 x?
+  w9c8 NLC 2 | Hàm số nào sau đây **không phải** là một nguyên hàm của hàm số f(x) = x e^{x^2}?
+  lpxv TL 2 | Tìm giá trị của a để hàm số F(x) = ax^3 + 8x^2 - 3x + 10 là một nguyên hàm của hàm số f(x) = (5x-1)(3-x).
+  2a61 TLN 3 | Biết hàm số F(x) = (ax^2 + bx + c)e^x là một nguyên hàm của hàm số f(x) = (x^2 + 2x + 3)e^x. Tính S = a + 2b +
+  w5td TLN 3 | Biết F(x) = (ax^2 + bx + c)\sqrt{2x-3} là một nguyên hàm của hàm số f(x) = \frac{20x^2 - 30x + 7}{\sqrt{2x-3}}
+  c7mm DS 2 | Cho các hàm số f(x) và g(x) thỏa f'(x) = \sin x, f(0) = 0 và g'(x) = e^x, g(0) = 2.
+  dlcp NLC 1 | Các mệnh đề sau, có bao nhiêu mệnh đề sai? i) \int k f(x)dx = k \int f(x)dx  (k \in {R}). ii) \int f(x).g(x)dx
+  mq7q NLC 1 | Biết F(x) là một nguyên hàm của hàm số f(x). Tìm I = \int [2f(x) + 1]dx.
+  rhaf DS 2 | Cho các hàm số f(x), g(x) có đạo hàm liên tục. Biết F(x) là một nguyên hàm của f(x) và G(x) là một nguyên hàm 
+  sms1 NLC 2 | Hàm số F(x) = \cos x - 2\sin \frac{\pi}{2} - 2x là một nguyên hàm của hàm số nào sau đây?
+  d401 NLC 1 | Cho các hàm số f(x), g(x) có đạo hàm liên tục. Trong các khẳng định sau, khẳng định nào sai?
+  001c NLC 1 | Chọn khẳng định sai:
+  nxi5 NLC 1 | Giả sử hàm số F(x) là một nguyên hàm của hàm số f(x) trên khoảng K. Khẳng định nào sau đây đúng?
+  fi1k NLC 2 | Trong các khẳng định sau, khẳng định nào đúng?
+  9p1k NLC 2 | Cặp hàm số nào sau đây có tính chất: Có một hàm số là nguyên hàm của hàm số còn lại?
+
+### [4] Bài 1. Nguyên hàm | Tìm họ nguyên hàm của hàm số (204)
+    yêu cầu: Tính được họ nguyên hàm của một số hàm số bằng cách sử dụng bảng nguyên hàm và các phép biến đổi đại số.
+  009w DS 2 | Cho hàm số F(x) là một nguyên hàm của hàm số f(x) = \frac{6^{x+1} + 3^{2x}}{2^{2x+3}}. Xét tính đúng sai của c
+  h4hg DS 2 | Xét các hàm số f(x) = \frac{2 - \sqrt{x}}{x^2} và g(x) = (\frac{x+1}{x})^2 trên khoảng (0; +\infty).
+  j3nr TL 2 | Tìm nguyên hàm của các hàm số sau: a) f(x) = 3x^2 + 2x - 1; b) f(x) = x^3 - x; c) f(x) = (2x + 1)^2; d) f(x) =
+  pwbe NLC 1 | Họ nguyên hàm của hàm số f(x) = \frac{1}{3\sqrt[3]{x^2}} + \frac{1}{\sqrt{x}} + \frac{3}{2}\sqrt{x} là
+  h8ga TL 2 | Tìm: a) \int (2\cos x - \frac{3}{\sin^2 x}) d x; b) \int 4\sin^2\frac{x}{2} d x; c) \int (\sin\frac{x}{2} - \c
+  n9uo NLC 2 | Tìm nguyên hàm của hàm số f(x) = 4x^3 + \frac{2}{x^3}.
+  45vg NLC 2 | Tìm \int 2^{2x} \cdot 3^x \cdot 7^x dx.
+  ddxi NLC 1 | Một nguyên hàm của hàm số f(x) = e^{3x+1} - 2x^2 là
+  fu0l NLC 1 | Tất cả các nguyên hàm của hàm số f(x) = 3^{-x} là
+  alx8 NLC 1 | Mệnh đề nào dưới đây sai?
+  c45o NLC 1 | Nguyên hàm của hàm số f(x) = \sqrt{x} là:
+  yhue NLC 2 | Nguyên hàm của hàm số f(x) = e^{2x+3} là:
+  pexf NLC 1 | Họ các nguyên hàm của hàm số f(x) = x^4 là
+  1q8c NLC 1 | Tìm khẳng định đúng.
+  whe8 NLC 2 | Tìm họ nguyên hàm của hàm số y = x^2 - 3^x + \frac{1}{x}.
+  dyht NLC 1 | Nguyên hàm của hàm số f(x) = e^x + x là
+  0j9s NLC 2 | Tính \int \frac{1}{x.\ln 2}. \log_2 x dx.
+  gqs0 NLC 2 | Tính \int \frac{2}{x} \ln x dx.
+  m9j4 NLC 2 | Họ tất cả các nguyên hàm của f(x) = x^2 + \sin 2x là
+  duq9 NLC 3 | Tìm nguyên hàm I = \int \frac{x^2 - 2025}{x(x^2 + 2025)} dx.
+  jlen NLC 3 | Biết \int \frac{dx}{\sqrt{x+2025} + \sqrt{x+2024}} = a(x+2025)\sqrt{x+2025} + b(x+2024)\sqrt{x+2024} + C với a
+  7ypa NLC 4 | Tìm nguyên hàm I = \int \frac{x^2 + 45}{x^4 - 91x^2 + 2025} dx.
+  i4oc NLC 1 | Tìm họ nguyên hàm của hàm số f(x) = \frac{5 + 2x^4}{x^2}.
+  3f08 TL 1 | Tìm nguyên hàm F(x) của hàm số f(x) = \frac{2}{\sqrt{x}} + 3^x + 3x - 2.
+  g7bt TL 1 | Tìm nguyên hàm F(x) của hàm số f(x) = \frac{(x^2 - 1)^2}{x^2}.
+  biyf NLC 1 | Nguyên hàm của hàm số f(x) = 2\sin x + \frac{3}{\sin^2 x} là:
+  jkfz NLC 1 | Tìm \int \sin 5x dx.
+  2hp2 NLC 1 | Với C là hằng số, họ nguyên hàm của hàm số f(x) = 2\cos 2x là
+  6c2l NLC 2 | Tìm \int \frac{\cos 2x}{\sin^2 x \cdot \cos^2 x} dx
+  mh9t NLC 1 | Nguyên hàm của hàm số y = \tan^2 x là
+  l8u9 NLC 1 | Hàm số F(x) = \cot x là một nguyên hàm của hàm số nào dưới đây trên khoảng (0; \frac{\pi}{2})?
+  w0nm NLC 1 | Cho hàm số f(x) = 1 + \sin x. Khẳng định nào dưới đây đúng?
+  ey38 NLC 2 | Tìm nguyên hàm F(x) của hàm số f(x) = \cos^2 \frac{x}{2}.
+  2y7c NLC 1 | Cho hàm số f(x) = 1 - \frac{1}{\cos^2 x}. Khẳng định nào dưới đây đúng?
+  ocyf NLC 1 | Họ nguyên hàm của hàm số f(x) = \cos x + 6x là
+  5t2y NLC 1 | Tìm nguyên hàm của hàm số f(x) = 2\sin x + 3x.
+  88vd NLC 1 | Tính \int (x - \sin x) dx.
+  hr53 NLC 1 | Họ nguyên hàm của hàm số f(x) = 3x^2 + \sin x là
+  ofga NLC 1 | Họ nguyên hàm của hàm số f(x) = \frac{1}{x} + \sin x là
+  n4od TL 2 | Tính \int x^2 [ \frac{1}{x^2 \sin^2 \frac{x}{2} \cdot \cos^2 \frac{x}{2}} + \frac{3}{x^3} - \frac{4}{x^4} ] dx
+  gn2a NLC 1 | Họ tất cả các nguyên hàm của hàm số f(x) = 5^{2x-1} là
+  vppk NLC 1 | Hàm số F(x) = x^2 + e^{-2x} + 2025 là một nguyên hàm của hàm số
+  w0xe NLC 2 | Nguyên hàm của hàm số f(x) = \frac{x\sqrt{x} + \sqrt{x}}{x^2} là:
+  somk NLC 2 | Tìm họ nguyên hàm của hàm số f(x) = x^{2024}.
+  asjn NLC 1 | Nguyên hàm của hàm số y = 2^x là
+  7gwm NLC 1 | Họ tất cả các nguyên hàm của hàm số f(x) = 2x + 4 là
+  dr4o NLC 1 | Họ tất cả các nguyên hàm của hàm số f(x) = x^2 - 2 là
+  r9g4 NLC 1 | Họ tất cả các nguyên hàm của hàm số f(x) = 5x^4 - 8x^3 - 6x là
+  kg1e NLC 1 | Tìm nguyên hàm của hàm số f(x) = \frac{1}{5x-2}.
+  bl3z NLC 1 | Tìm nguyên hàm của hàm số f(x) = x^2 + \frac{2}{x^2}.
+  48cs NLC 2 | Tìm họ nguyên hàm của hàm số f(x) = \frac{x^2-x+1}{x-1}.
+  z67a NLC 1 | Họ các nguyên hàm của hàm số f(x) = 3x^2 + 1 là
+  23jm NLC 2 | Tìm nguyên hàm của hàm số f(x) = \sqrt{2x-1}.
+  aaiq NLC 2 | Tìm nguyên hàm của hàm số \int (x^2 + \frac{3}{x} - 2\sqrt{x}) dx.
+  oy7i NLC 2 | Họ nguyên hàm của hàm số f(x) = 3\sqrt{x} + x^{2024} là
+  518v NLC 2 | Họ các nguyên hàm của hàm số y = x(x + 1)^5 là
+  l3zy NLC 2 | Nguyên hàm của hàm số f(x) = \frac{1}{x^2} - x^2 - \frac{1}{3} là:
+  c2s6 NLC 1 | Cho hàm số F(x) là một nguyên hàm của hàm số f(x) trên K. Các mệnh đề sau, mệnh đề nào sai.
+  wlvd NLC 1 | \int x^2 dx bằng
+  g8bq NLC 1 | Nguyên hàm của hàm số f(x) = x^3 + x là
+  h5mj NLC 1 | Nguyên hàm của hàm số f(x) = x^4 + x^2 là
+  5shs NLC 1 | Hàm số nào trong các hàm số sau đây không là nguyên hàm của hàm số y = x^{2022}?
+  6dag NLC 1 | Nguyên hàm của hàm số f(x) = \frac{1}{3}x^3 - 2x^2 + x - 2024 là
+  xkbj NLC 2 | Tìm nguyên hàm F(x) của hàm số f(x) = (x + 1)(x + 2)(x + 3)?
+  omxh NLC 2 | Tìm nguyên hàm của hàm số f(x) = (5x + 3)^5.
+  j3b6 NLC 3 | Tính \int \sqrt{x \sqrt{x \sqrt{x}}} dx.
+  57e2 NLC 3 | Tính \int \frac{\sqrt{x} - 2\sqrt[3]{x^2} + 1}{\sqrt[4]{x}} dx.
+  rjen NLC 1 | Hàm số F(x) = 2\sin x - 3\cos x + 1 là một nguyên hàm của hàm số nào sau đây?
+  ty28 NLC 2 | Tìm nguyên hàm của hàm số f(x) = e^x(1 + e^{-x}).
+  9ojy NLC 1 | Cho hàm số f(x) = x^2 + 4. Mệnh đề nào sau đây đúng?
+  okgb NLC 1 | Trên khoảng (0; +\infty), cho hàm số f(x) = x^{\frac{3}{2}}. Mệnh đề nào sau đây đúng?
+  5aqy NLC 1 | Cho hàm số f(x) = \frac{x^4 + 2}{x^2}. Mệnh đề nào sau đây đúng?
+  rqjq DS 2 | Cho hàm số f(x) = \frac{2x+1}{x-1} với x \neq 1. Xét tính đúng sai của các khẳng định sau:
+  qb9m NLC 1 | Trong các hàm số dưới đây, hàm số nào có họ tất cả các nguyên hàm là hàm số F(x) = \frac{a^x}{\ln a} + C, (a >
+  vhah TL 1 | Tìm nguyên hàm F(x) của hàm số f(x) = mx^3 - 3x^2 + \frac{4m}{x^3} + \frac{5}{2x} - 7m (m là tham số).
+  706v TL 2 | Tính \int (\frac{(1 - x)^3}{\sqrt{x}}) dx.
+  o2tv TL 1 | Tính \int (\sqrt[3]{x^2} - \sqrt[4]{x^3} + \sqrt[5]{x^4}) dx.
+  vsod NLC 2 | Nguyên hàm của hàm số f(x) = \frac{3^{x+1}}{4^x} là:
+  v1ej NLC 2 | Nguyên hàm của hàm số f(x) = (\cos \frac{x}{2} + \sin \frac{x}{2})^2 là:
+  22i4 NLC 2 | Nguyên hàm của hàm số f(x) = \tan^2 x + \cot^2 x là:
+  4a01 NLC 2 | Hàm số nào dưới đây là một nguyên hàm của hàm số f(x) = x + \sin(2x+1)?
+  p31k NLC 1 | Khẳng định nào đây sai?
+  t46s TL 2 | Tìm nguyên hàm F(x) của hàm số f(x) = 2024 - 2\sin^2 \frac{x}{2}.
+  83zh TL 2 | Tìm nguyên hàm F(x) của hàm số f(x) = \frac{1}{\sin^2 \frac{x}{2} \cdot \cos^2 \frac{x}{2}}.
+  k9pc TL 2 | Tìm nguyên hàm F(x) của hàm số f(x) = \frac{1}{3}x^2 - 2x + \frac{1}{2}\tan^2 x.
+  ues9 TL 3 | Tính \int x (1 - \frac{\sin^2 \frac{x}{2}}{2}) dx.
+  isf4 TL 2 | Tính \int x^2 (1 + \frac{1}{x} - \frac{\tan^2 x}{x^2}) dx.
+  ik25 NLC 1 | Hàm số F(x) = \frac{x^3}{3} + e^x là một nguyên hàm của hàm số f(x) nào sau đây?
+  5htw NLC 1 | Họ nguyên hàm của hàm số f(x) = 4^x + \cos 2x là
+  f3n6 NLC 1 | Kết quả \int (x + e^{2020x}) dx bằng
+  9o9p NLC 2 | Tìm nguyên hàm của hàm số f(x) = e^{-x} (2 + \frac{e^x}{\cos^2 x}).
+  4q4u NLC 1 | Cho hàm số f(x) = 2^x + 3. Khẳng định nào sau đây đúng?
+  l05t NLC 1 | Họ nguyên hàm của hàm số f(x) = e^{3x} là hàm số nào sau đây?
+  z3bg NLC 1 | Nguyên hàm của hàm số y = e^{2x-1} là
+  70ry NLC 1 | Cho hàm số f(x) = e^x + 2. Khẳng định nào dưới đây là đúng?
+  o3k4 NLC 1 | Hàm số F(x) là một nguyên hàm của hàm số y = \frac{1}{x} trên (-\infty; 0) thỏa mãn F(-2) = 0. Khẳng định nào 
+  884p NLC 1 | Họ nguyên hàm của hàm số f(x) = 4x^3 - 2024 là
+  q3po NLC 2 | Biết \int (\frac{1}{2x} + x^5) dx = a \ln|x| + b x^6 + C với (a, b \in {Q}, C \in {R}). Tính a^2 + b^2?
+  0pa0 NLC 2 | Nếu \int f(x)dx = \frac{1}{x} + \ln x + C thì:
+  hn8e NLC 2 | [CÓ HÌNH ẢNH KÈM THEO] Bạn Minh Hiền ngồi trên máy bay đi du lịch thế giới với vận tốc chuyển động của máy bay
+  6d4y NLC 2 | Một ô tô đang chạy với vận tốc 12 m/s thì người lái đạp phanh; từ thời điểm đó, ô tô chuyển động chậm dần đều 
+  2arn NLC 2 | Một ô tô đang chạy với vận tốc 20 m/s thì người người đạp phanh. Sau khi đạp phanh, ô tô chuyển động chậm dần 
+  twc7 NLC 2 | Một ca nô đang chạy trên hồ Tây với vận tốc 20 m/s thì hết xăng; từ thời điểm đó, ca nô chuyển động chậm dần đ
+  n2rs NLC 1 | Cho hàm số f(x) xác định trên khoảng K. Khẳng định nào sau đây **sai**?
+  4js4 NLC 1 | Nguyên hàm của hàm số f(x) = 3x^2 + 2x + 5 là:
+  x9el NLC 1 | Nguyên hàm của hàm số f(x) = \frac{1}{x^2} là:
+  1mmg NLC 2 | Tìm nguyên hàm của hàm số f(x) = 5^{2x+1}.
+  r8hg NLC 1 | Tìm \int \frac{1}{\cos^2 x} dx.
+  rkjz NLC 2 | Tìm nguyên hàm của hàm số f(x) = 4x^3 + 2x + \frac{1}{2\sqrt{x}}.
+  ybj5 TLN 2 | Biết một nguyên hàm F(x) của hàm số f(x) = 3^{2x+1} có dạng a \cdot \frac{b^x}{\ln b} với a, b \in {N}. Tính g
+  fble TLN 3 | Cho hai hàm số F(x) = (x^2 + ax + b)e^{-x} và f(x) = (-x^2 + 3x + 6)e^{-x}. Biết F(x) là một nguyên hàm của hà
+  h2q4 TLN 2 | Biết F(x) = \frac{1}{3}x^3 + 4x - \frac{4}{x} + 3 là một nguyên hàm của f(x) = \frac{(x^2+a)^2}{x^2}. Tìm a.
+  5gjv TLN 2 | Biết \int (x^2 + \frac{3}{x} - 2\sqrt{x}) dx = a x^3 + b \ln|x| + c x\sqrt{x} + C. Tính S = a + b + c.
+  jnvo TLN 2 | Để F(x) = a x^3 + (3a + 2)x^2 - 4x + 3 là một nguyên hàm của hàm số f(x) = 3x^2 + 10x - 4 thì giá trị của tham
+  p5rc TLN 3 | Tìm giá trị của a để F(x) = \frac{ax + 1}{x - 5} là một nguyên hàm của hàm số f(x) = \frac{1}{(x - 5)^2}.
+  ppg9 TLN 3 | Biết F(x) = e^x(m\sin x + n\cos x) là một nguyên hàm của hàm số f(x) = e^x(2\sin x - 3\cos x). Tính S = m^2 + 
+  dowb TLN 3 | Biết hàm số f(x) = \frac{2}{\sqrt{x}} + 2^{3x} + 2x - 1 có một nguyên hàm là F(x) = a\sqrt{x} + \frac{2^{3x}}{
+  fg3w TLN 3 | Tìm giá trị a để F(x) = \frac{ax+1}{\sqrt{2x+1}} là một nguyên hàm của hàm số f(x) = \frac{4x+3}{\sqrt{(2x+1)^
+  imc2 TLN 3 | Cho F(x) = (ax^2 + bx - c)e^{2x} là một nguyên hàm của hàm số f(x) = (2x^2 - 3x + 1)e^{2x} trên {R}. Tính giá 
+  akc2 NLC 1 | Hàm số F(x) = x^2 + \sin x là một nguyên hàm của hàm số:
+  jxq0 NLC 2 | Hàm số F(x) = e^{x^3} là một nguyên hàm của hàm số:
+  t2wm NLC 2 | Nguyên hàm của hàm số f(x) = \frac{1}{x\sqrt{x}} là:
+  wiam NLC 2 | Tìm \int (\sqrt[3]{x^2} + \frac{4}{x}) dx.
+  hd4c NLC 2 | Tìm \int (x^3 - \frac{2}{x} + \sqrt{x}) dx.
+  gdxx NLC 2 | Nguyên hàm của hàm số f(x) = 2^{3x} \cdot 3^{2x} là:
+  6i66 NLC 3 | Một nguyên hàm của hàm số f(x) = \frac{e^{3x} + 1}{e^x + 1} là:
+  z42v TLN 3 | Cho hàm số f(x) = (3x^2 - \frac{4}{x})(2x + 5) với x \in (0; +\infty). Biết một nguyên hàm của hàm số f(x) là 
+  csuv TLN 3 | Biết F(x) = (ax^2 + bx + c)\sqrt{2x - 1} là một nguyên hàm của hàm số f(x) = \frac{10x^2 - 7x - 2}{\sqrt{2x - 
+  qu2s NLC 2 | Nguyên hàm của hàm số f(x) = 3^{1-2x} \cdot 2^{3x} là:
+  o1xo NLC 2 | Tìm \int (3^x - \frac{1}{3^x})^2 dx.
+  8qpf NLC 1 | Tìm nguyên hàm của hàm số f(x) = 3\cos x + \frac{1}{x^2}.
+  lxlk NLC 1 | Hàm số nào dưới đây là một nguyên hàm của hàm số f(x) = e^x + \sin x trên {R}?
+  b2w1 NLC 2 | Tìm \int e^x (1 + \frac{e^{-x}}{\sqrt{x}}) dx.
+  l5d3 NLC 2 | Trên khoảng (0; +\infty), nguyên hàm của hàm số f(x) = -\frac{1}{x^2} + \frac{1}{x} là:
+  l26m NLC 1 | Nguyên hàm của hàm số f(x) = 3\cos x - 4\sin x là:
+  252t NLC 2 | Nếu \int f(x) dx = \frac{1}{2x} + \ln |5x| + C thì hàm số f(x) là:
+  c9id NLC 2 | Biết một nguyên hàm của hàm số y = f(x) là F(x) = -2x^2 + 3x - 2. Khi đó:
+  1972 TLN 3 | Cho hàm số f(x) có một nguyên hàm là F(x) = \frac{\sin 2x + \sin x}{1 + \cos 2x + \cos x}. Tính giá trị f^2(1)
+  7ozm NLC 3 | Cho F(x) = 2x\sqrt{x} là một nguyên hàm của hàm số f(x)\sqrt{x}. Một nguyên hàm G(x) của hàm số f'(x)e^{2x} là
+  3al6 NLC 2 | Nguyên hàm của hàm số y = \frac{e^x+2x^2-4}{x} là:
+  jig2 DS 2 | Cho các hàm số f(x) = \sqrt[5]{x^3 \sqrt{x\sqrt{x}}} và g(x) = \sqrt{x}.
+  3d9q TLN 3 | Biết hàm số f(x) = (2^x + 3)(3^{x-1} + 2) có một nguyên hàm là F(x) = \frac{6^x}{\ln a} + \frac{3^x}{\ln b} + 
+  fax4 NLC 2 | Tìm nguyên hàm của hàm số f(x) = \frac{e^{2x}-1}{e^x+1}.
+  bggw NLC 2 | Cho hàm số f(x) = \cos \frac{x}{2}. Tìm nguyên hàm của hàm số y = (f'(x))^2.
+  xu9h NLC 2 | Nguyên hàm \int \frac{\cos 2x}{\sin x + \cos x} dx là:
+  9det NLC 2 | Hàm số nào dưới đây là một nguyên hàm của hàm số f(x) = \frac{x^3}{x^4+1}?
+  a58i NLC 2 | Một nguyên hàm của hàm số f(x) = e^x (2e^{-3x} + \frac{1}{3e^{2x}}) là:
+  pmua NLC 2 | Tìm nguyên hàm của hàm số f(x) = e^x(7 - \frac{8e^{-x}}{x^5}).
+  h0xy NLC 2 | Tìm \int (\frac{5}{x^2} + \frac{1}{2}\sqrt{x^3}) dx.
+  c3uy TL 2 | Tìm: a) \int (3\sqrt{x} + \frac{1}{\sqrt[3]{x}}) d x; b) \int \sqrt{x}(7x^2 - 3) d x \ (x > 0); c) \int \frac{
+  qwwk TL 2 | Tính \int x (2024 - \frac{1}{x^3} + \frac{\sin x}{x}) dx.
+  t899 TL 2 | Tính \int x^3 [ \frac{(\sin \frac{x}{2} + \cos \frac{x}{2})^2}{x^3} - 2x + \frac{1}{x^{2024}} ] dx.
+  p0o5 NLC 1 | Hàm số nào sau đây là một nguyên hàm của hàm số f(x) = \frac{1}{(3x+1)^2}?
+  iaqs NLC 2 | Hàm số nào dưới đây không là một nguyên hàm của hàm số f(x) = \frac{1}{(x+2)^2}?
+  gyjl NLC 2 | Tìm \int (\frac{1}{x} - \frac{2}{x^2} + \frac{3}{x^3}) dx.
+  wdkm NLC 2 | Tìm \int \frac{x\sin x + 2x.3^{x+1}}{x} dx.
+  mthp NLC 2 | Biết \int (\frac{5}{x^4} - 2x^3 + \sqrt{x}) dx = \frac{a}{3x^3} - \frac{bx^4}{2} + \frac{c}{3}x\sqrt{x} + C. T
+  6wjt NLC 1 | Tìm \int (x^2 + \frac{3}{x} - 2\sqrt{x}) dx.
+  hwp1 NLC 2 | Nguyên hàm của hàm số f(x) = 3^{3x-1} \cdot \ln 3 là:
+  742u NLC 2 | Hàm số nào sau đây **không** là một nguyên hàm của f(x) = \sqrt[3]{x} trên (0; +\infty)?
+  90qo NLC 2 | Tìm \int (2026.2^x + 3\sqrt{x}) dx.
+  hubx NLC 2 | Một nguyên hàm của f(x) = \frac{x+2}{x+1} trên (-1; +\infty) là
+  h8le NLC 2 | Cho các hàm số f(x) = (2x - 1)^2 và g(x) = \sqrt{x}. Một nguyên hàm của f(x).g(x) là:
+  d3h1 NLC 2 | Nguyên hàm của hàm số f(x) = \frac{e}{e^{2-3x}} là:
+  rkhn NLC 2 | Nguyên hàm của hàm số f(x) = e^x(24e^{-2x} - 12) là:
+  vgpk NLC 2 | Hàm số F(x) nào dưới đây **không** là một nguyên hàm của hàm số f(x) = \frac{45x^2+13}{x^2}?
+  2cvk NLC 2 | Hàm số nào dưới đây là một nguyên hàm của hàm số f(x) = \frac{2x}{x^2 + 1}?
+  hfef DS 2 | Cho hàm số f(x) = (4 - 2x)(x^2 + 2x). 1) f'(x) = -2(2x + 2) = -4x - 4. 2) \int f(x) dx = \int (4 - 2x)(x^2 + 2
+  byri DS 2 | Cho hàm số f(x) = \frac{2x^3 + x^2 - 2x - 1}{x - 1}. 1) f'(x) = 4x + 3. 2) \int f'(x) dx = 2x^2 + 3x + 1 + C. 
+  otr3 NLC 1 | Một nguyên hàm của hàm số f(x) = 2025^x là
+  7ma2 NLC 1 | Họ nguyên hàm của hàm số f(x) = 4x^3 - \sin x + \frac{\pi}{4} là:
+  wduo TLN 3 | Biết hàm số f(x) = (x\sqrt{x} + 3)(\frac{1}{x^2} - 2) có nguyên hàm là F(x) = -\frac{4}{a}x^2\sqrt{x} + b\sqrt
+  itd0 NLC 1 | Tìm \int (5^x + 12^x)dx.
+  avap NLC 2 | Tìm \int \frac{2x^{10}+9}{x^4}dx.
+  oq84 NLC 2 | Cho hàm số f(x) = \frac{2}{x} + \frac{x}{2} + 2x. Khi đó:
+  e3hm NLC 2 | Cho hàm số f(x) = \frac{2}{x}. Trong các hàm số sau, có bao nhiêu hàm số là nguyên hàm của f(x)? F(x) = 2\ln|x
+  wjie NLC 2 | Tìm nguyên hàm của hàm số f(x) = \frac{1}{5^{2x}}.
+  7t5c NLC 1 | Họ nguyên hàm của hàm số f(x) = \frac{x^2}{2} + 2x - 5 là
+  pulw TL 2 | Một nguyên hàm của f(x) = \frac{2}{3}x^2 - 2x\sqrt[3]{x} - \frac{1}{x} có dạng F(x) = ax^3 + bx^{\frac{7}{3}} 
+  nfil TL 2 | Biết hàm số f(x) = 7^x . 4^{2x} có một nguyên hàm F(x) = \frac{a^{x-\ln a}}{\ln a} với a \in {Z}. Tính F(2).
+  z0ka NLC 2 | Trong một đợt xả lũ, nhà máy thủy điện đã xả lũ trong 40 phút với tốc độ lưu lượng nước tại thời điểm t giây l
+  7bes NLC 2 | Tìm nguyên hàm của hàm số f(x) = e^{3x}(1 - 3e^{-5x}).
+  7noe NLC 2 | Tìm \int ( \frac{5}{x} + \sqrt{x^3} ) dx.
+  dyca NLC 1 | Cho hàm số f(x) = 3x^2 + 2x. Trong các hàm số dưới đây, hàm số nào là một nguyên hàm của f(x) trên {R}?
+  n4li NLC 2 | Cho hàm số f(x) = x - \frac{1}{\sqrt{x}}. Trong các hàm số dưới đây, hàm số nào là một nguyên hàm của f(x) trê
+  le3g NLC 2 | Tìm họ các nguyên hàm F(x) của hàm số f(x) = \frac{x+3}{x+1}.
+  zidt NLC 1 | Họ tất cả các nguyên hàm của hàm số f(x) = 2x + 6 là
+  v649 DS 2 | Cho hàm số F(x) = \int (2x + \sqrt{x}) dx với x > 0. Xét tính đúng sai của các khẳng định sau:
+  d7nm DS 2 | Các mệnh đề sau đây đúng hay sai:
+  o2k8 NLC 2 | Nguyên hàm của hàm số f(x) = 2\cos^2 \frac{x}{2} là:
+  x0xw NLC 2 | Cho hàm số f(x) = \int \cos \frac{x}{2} \sin \frac{x}{2} dx. Khẳng định nào dưới đây đúng?
+  1qmo DS 2 | Cho hàm số f(x) = \cos^2 x và F(x) = \int f(x) dx. Xét tính đúng sai của các khẳng định sau:
+  us3z TLN 3 | Biết nguyên hàm I = \int \frac{dx}{2\tan x + 1} bằng \frac{a}{b}\ln|2\sin x + \cos x| + \frac{c}{b}x + C với (
+  vk1l TLN 2 | Gọi F(x) là họ các nguyên hàm của hàm số f(x) = 8\sin 3x \cos x. Biết rằng F(x) có dạng F(x) = a\cos 4x + b\co
+  h5o6 NLC 2 | Tìm nguyên hàm của hàm số f(x) = e^x (2017 - \frac{2018 e^{-x}}{x^5}).
+  5mxr NLC 1 | Khẳng định nào dưới đây đúng?
+  l53q DS 2 | Cho hàm số F(x) = \int (4^x + 2^x + 1)dx. Xét tính đúng sai của các khẳng định sau:
+  5z2n NLC 1 | Nguyên hàm của hàm số f(x) = x^7 là:
+  8fxv NLC 2 | Tìm nguyên hàm của hàm số f(x) = x + \cos x.
+  n3b9 NLC 1 | Tìm \int \frac{1}{2\sqrt{x}}dx.
+  a1vd NLC 2 | Có bao nhiêu hàm số dưới đây **không** là nguyên hàm của hàm số f(x) = \frac{x-1}{x+2} trên (-2; +\infty): F(x
+  3iwt NLC 3 | Tìm nguyên hàm của hàm số f(x) = \frac{2^{x+1} - 5^{x-1}}{10^x}.
+  14em NLC 2 | Tính \int (2 + e^{3x})^2 dx.
+  pj9h DS 2 | Xét tính đúng sai của các khẳng định sau:
+
+### [5] Bài 1. Nguyên hàm | Toán tổng hợp (60)
+    yêu cầu: Giải thích được ý nghĩa của các đặc trưng đo xu thế trung tâm và đo độ phân tán của mẫu số liệu ghép nhóm.
+  tw0b DS 2 | Một xe chuyển động đều với v_0 = 15 m/s, phanh với gia tốc không đổi a = -3\text{ m/s}^2.
+  t9xk DS 2 | Cho hàm số f(x) = 2x + m và G(x) = x^3 + mx^2 + 3x + m với m \in {R}. Gọi F(x) là một nguyên hàm của f(x) sao 
+  jpkb DS 3 | Cho hàm số f(x) có đồ thị đi qua điểm M(-1; 2) và có đạo hàm f'(x) = 8x^2 - 3, \forall x \in {R}.
+  no4j DS 2 | Cho các hàm số f(x) = 2\cos (\frac{\pi}{2} + x) - 3x^2 và g(x) = 2\sin x.
+  3mcz TLN 4 | Cho hàm số f(x) có đạo hàm liên tục trên {R} và hàm số F(x) là một nguyên hàm của f(x) trên {R}. Biết x^2 f'(x
+  nqcw DS 3 | Cho hàm số f(x) = 3x^2 - 2x + 1. Gọi F(x) là họ nguyên hàm của hàm số f(x), F(1) = 1.
+  sr0w TLN 4 | Cho hàm số y = f(x) liên tục trên đoạn [-1; 3], có đồ thị là một phần của parabol và một phần là đoạn thẳng nh
+  rjbq DS 2 | Cho hàm số f(x) = 4x^3 - 6x. Biết F(x) là một nguyên hàm của f(x) và F(0) = 2.
+  w2k6 NLC 2 | Biết \int (2\sin x + \cos x)^2 dx = a\sin 2x - \cos 2x + bx + C, với a, b \in {Q}. Tính a^2 + b^2.
+  sdzn DS 3 | Cho F(x) là một nguyên hàm của hàm số f(x) = \frac{2x+1}{x}.
+  orbr DS 2 | Cho hàm số F(x) = \int (4^x + 2^x + 1) dx.
+  5qxa NLC 2 | Cho hàm số y = F(x) là một nguyên hàm của hàm số y = x^2. Tính F'(25).
+  0pli DS 3 | Trong thí nghiệm nuôi cấy vi sinh vật, sau 3 giờ có 50 con. Trong 7 giờ tiếp theo: f'(t) = t^2 - 8t.
+  utxn DS 2 | Cho hàm số f(x) = 2x^5 - 3x^3 + x.
+  4pqi DS 2 | Cho hàm số f(x) = (2x^3 - 1)(x^2 + 1).
+  kl5i DS 2 | Cho hàm số f(x) = 4^x(3 - 2^{x+1}).
+  xj7y DS 2 | Cho hàm số f(x) = 2\sin x - 3\cos x.
+  90m6 DS 2 | Cho hàm số f(x) = 3(x - 1)^2.
+  ax0q DS 2 | Cho hàm số f(x) = 3x^2 + \frac{1}{\sqrt{x}} với x > 0.
+  hg7d DS 3 | Cho các hàm số f(x) = 2\sin x và g(x) = -5\cos x.
+  8s0l DS 2 | Cho các hàm số f(x) = 2^x và g(x) = 1 + 3^{2x}.
+  xfw2 DS 3 | Cho hàm số f(x) = (2 - x^2)^4.
+  q9zu DS 2 | Cho hàm số f(x) = 3x^2 + 8\sin x.
+  6c35 DS 2 | Cho hàm số f(x) = \frac{2x^4+3}{x^2}.
+  3zt3 DS 2 | Cho hàm số f(x) = e^x ( 2 - \frac{3e^{-x}}{x^5} ).
+  d001 DS 3 | Cho hàm số f(x) = \frac{1 + \sqrt{x}}{\sqrt[3]{x}}.
+  fjso DS 3 | Cho các hàm số f(x) = 3e^{2x} - \ln 2 và g(x) = 6e^{2x}.
+  sy8n DS 3 | Cho hàm số f(x) có đạo hàm f'(x) = (2x^2 - 3)(2x + 1) và f(0) = -1. 1) f(x) = x^4 + \frac{2}{3}x^3 - 3(x^2 - x
+  4532 DS 3 | Cho các hàm số f(x) = \sin(x + \frac{\pi}{4}), g(x) = \sin(\frac{\pi}{4} - x). 1) \int \sqrt{2}f(x)dx = \sin x
+  6eew DS 3 | Cho hàm số f(x) = 5^{2x} + 3\sin(\frac{\pi}{2} - x) + e. 1) f'(x) = 2\ln 5 \cdot 5^{2x} - 3\sin x. 2) Hàm số F
+  nlwu DS 3 | Cho hàm số f(x) = \begin{cases} 2x - 3 & \text{khi } x \le 0 \\ (2x - 3)^2 & \text{khi } x > 0 \end{cases}. 1)
+  ospb TLN 3 | Cho hàm số y = f(x) = \frac{-5}{(x-2)^2}. Biết hàm số y = F(x) = \frac{x+a}{x+b} (a, b \in {R}) là một nguyên 
+  mcil TLN 3 | Cho hàm số bậc hai f(x) = ax^2 + bx + c (a \neq 0) có đồ thị là một parabol (P) có đỉnh S(1; -2) và cắt trục t
+  ehnf DS 2 | Cho hàm số f(x) = -6x + 7. 1) Nếu F(x) là một nguyên hàm của f(x) thì F'(4) = -17. 2) F(x) = -3x^2 + 7x + 21 l
+  5dvt DS 2 | Cho các hàm số f(x) = 1 + \cos x, g(x) = \tan^2 \frac{x}{2}. 1) \int f(x)dx = x - \sin x + C. 2) \int g(2x)dx 
+  5otm DS 2 | Cho hàm số f(x) = 3^x. 1) \int f(x)dx = 3^x \ln 3 + C. 2) \int [f(x) - e^x]dx = \frac{3^x - 3}{\ln 3} - e^x + 
+  mqv5 DS 2 | Cho hàm số f(x) = \frac{\sin^4 x - \cos^4 x + \cos^2 x}{2(1-\cos x)}. 1) f(x) = 1 + \cos x. 2) \int f(x)dx = \
+  400w TLN 3 | Cho hàm số bậc ba y = f(x) = ax^3 + bx^2 + cx + d (a \neq 0) có đồ thị (C) đi qua các điểm M(1; 2), N(2; 28). 
+  crf2 TL 3 | Biết F(x) = (ax^2 + bx + c)e^{-x} là một nguyên hàm của hàm số f(x) = (x - 2)(2x + 3)e^{-x} trên {R}. Tính giá
+  df8o TL 3 | Cho hàm số f(x) có một nguyên hàm là F(x) = 5^x + 2x và hàm số g(x) = 2^x + 5x có một nguyên hàm là G(x) thỏa 
+  8sko DS 3 | Cho hàm số f(x) có \frac{f'(x)}{x} = 3(x + 1)^2 và f(1) = \frac{1}{4}, hàm số \frac{g(x)}{x} có một nguyên hàm
+  dpbw TLN 4 | Cho hàm số F(x) là một nguyên hàm của hàm số f(x) thỏa x[2f(x) + x f'(x)] = 2x - 3 và f(1) = F(1) = 5. Tính F(
+  dg3r TLN 3 | Biết đồ thị hàm số y = f(x) là một parabol có đỉnh I(3; -2) và đi qua điểm A(2; -1). Gọi F(x) là một nguyên hà
+  ne30 TLN 3 | Cho hàm số f(x) = \frac{3^{2x-1}}{2^x} có một nguyên hàm F(x) thỏa F(0) = 1. Biết đường thẳng x = 2 cắt đồ thị
+  omja DS 3 | Cho hàm số f(x) có đạo hàm f'(x) = 2^x . 4^{x+1} . 5^{2x}. 1) f(x) = 4.200^x. 2) Nếu f(0) = \ln 10 thì f(\frac
+  2tlj DS 3 | Cho các hàm số f(x), g(x) lần lượt có nguyên hàm F(x) = (ax + 2)\sqrt{x - b}, G(x) = \frac{3}{cx^2} với a, b, 
+  9y0v DS 2 | Cho các hàm số f(x) = \sqrt{2}\cos(x + \frac{\pi}{4}) và g(x) = 2\cos(\frac{\pi}{3} + x). 1) \int f(x)dx = \si
+  ccdw DS 3 | Cho các hàm số f(x) = \frac{6x^3+13x^2}{2x+3} và g(x) = \frac{4x-3}{2x+3}. 1) Một nguyên hàm của g'(x) là h(x)
+  wseh DS 3 | Cho hàm số F(x) là một nguyên hàm của hàm số f(x) = \frac{6^{x+1} + 3^{2x}}{2^{2x+3}}.
+  sv5m DS 3 | Cho hàm số f(x) có nguyên hàm trên {R} và thỏa mãn f'(x) = e^x + \sin x.
+  whgi DS 2 | Cho hàm số f(x) = x^3 - 3x^2 + 2x - 1 và F(x) = \int f(x) dx.
+  jef1 DS 3 | Cho hàm số y = f(x) có f'(x) = \tan^2 x + \frac{1}{x^2} với \forall x \in (0; \frac{\pi}{2}) và thỏa mãn f(\fr
+  3yf7 DS 2 | Cho hàm số f(x) = 3. Xét tính đúng sai của các khẳng định sau:
+  p1wk DS 3 | Cây cà chua khi trồng có chiều cao 5 cm. Tốc độ tăng chiều cao sau khi trồng là v(t) = -0,1t^3 + t^2 (cm/tuần)
+  0eh2 TLN 3 | Cho F(x) = \cos 2x là một nguyên hàm của hàm số f(x) \cdot \tan x. Biết nguyên hàm của hàm số \frac{\tan x}{f'
+  x0pd DS 3 | Cho hàm số F(x) là một nguyên hàm của hàm số f(x) = \frac{2^{2x+1} - 1 + \cos 2x}{2^x + \sin x} trên [0; +\inf
+  ckbu DS 2 | Xét hàm số f(x) = \frac{x^3-8}{x-2} trên khoảng (2; +\infty).
+  2e6h DS 2 | Cho hàm số f(x) = 10^{2x} - 25 \cdot 100^{x-1}.
+  esx1 TLN 4 | Xét các nguyên hàm F(x) của hàm số f(x) = 1^x \cdot 2^x \cdot 3^x \cdot 4^x thỏa F(1) > 3. Giá trị nguyên lớn 
+  8znv TLN 3 | Biết F(x) = (ax^3+bx^2+cx+d)e^{-x} là một nguyên hàm của f(x) = (-3x^3+9x^2+12x-5)e^{-x}. Khi đó a+b+c+d bằng 
+
+### [6] Bài 2. Tích phân | Bài toán tổng hợp đồ thị hàm số (19)
+    yêu cầu: Vận dụng được kiến thức về đồ thị hàm số để xác định tham số thỏa mãn điều kiện về giao điểm của hai đường cong.
+  i61j DS 2 | Cho hàm số f(x) = x^3 + 2x và hàm số g(x) = x^2 + x.
+  ltqp DS 3 | Cho hàm số y = f(x) = \frac{1}{4}x^2 + \sqrt{x}.
+  ptqq DS 3 | Giả sử sự sản sinh virus Zika ngày thứ t có số lượng là N(t), biết N'(t) = \frac{1000}{1+0{,}5t} và lúc đầu đá
+  imow DS 2 | Cho hàm số y = f(x) = -3x^2 + 6x có nguyên hàm F(x) thỏa F(0) = 1.
+  tagz DS 2 | Xét hàm số f(x) = \ln(x + 1) - \ln(x + 2) trên (0; +\infty).
+  yyst DS 3 | Xét hàm số f(x) = \sin x khi x \le 0 và f(x) = 2x^2 + \sqrt{x} khi x > 0.
+  jbdl DS 2 | Cho các tích phân I = \int_{0}^{\pi} \sin^2 \frac{x}{2} dx và J = \int_{0}^{\pi} \cos^2 \frac{x}{2} dx.
+  lyl9 DS 3 | Cho hàm số y = f(x) = \begin{cases} 5x^2 + 1 & \text{khi } 0 \le x \le 1 \\ 7 - x & \text{khi } 1 < x \le 3 \e
+  r5l3 DS 2 | Cho các hàm số f(x) = \sin \frac{x}{2} và g(x) = \cos \frac{x}{2}.
+  nsor DS 2 | Cho hàm số y = f(x) liên tục trên {R} thỏa \int_{0}^{9} [f(x) + 2x]dx = 100.
+  0w7x NLC 2 | Tính diện tích hình thang cong giới hạn bởi đồ thị hàm số f(x) = \sin x + 2, trục hoành và các đường thẳng x =
+  iiox DS 2 | Cho hàm số y = f(x) = e^x.
+  rer5 DS 3 | Cho hàm số bậc ba f(x) = ax^3 + bx^2 + cx + d (a \neq 0) có đồ thị như hình sau: ![Hình ảnh](https://cmjithgte
+  tmrs DS 3 | Cho hàm số f(x) = \frac{(3x^2 + 7)^2}{2x}.
+  3gyu DS 3 | Cho hàm số f(x) = (3 - 2x)^4.
+  h5km DS 2 | Cho hàm số f(x) có đạo hàm liên tục trên khoảng (0; +\infty) thỏa mãn f'(x) = \frac{2x^4 + 3}{x^2} và f(1) = 2
+  48a5 DS 2 | Cho hàm số f(x) = \cos^4 \frac{x}{2} - \sin^4 \frac{x}{2}.
+  deil DS 3 | Cho hàm số f(x) = \begin{cases} 2x + 1 & \text{khi } x \le 0 \\ \cos x & \text{khi } x > 0 \end{cases}.
+  9ess DS 3 | Cho hàm số y = f(x) liên tục trên đoạn [-3; 5] và có đồ thị như hình vẽ (phần cong của đồ thị là một phần của 
+
+### [7] Bài 2. Tích phân | Tính tích phân (42)
+    yêu cầu: Tính được tích phân của các hàm số đa thức và hàm số cho bởi nhiều công thức trên một đoạn thẳng.
+  d8p2 TLN 1 | Tích phân I = \int_{-1}^{3} (x^3 + 1)dx bằng bao nhiêu?
+  en06 TLN 2 | Biết \int_{1}^{2} \frac{\mathrm{d}x}{(x + 1)(2x + 1)} = a\ln 2 + b\ln 3 + c\ln 5, (a, b, c \in {Q}). Tính giá 
+  iahd TLN 2 | Cho tích phân \int_1^2 (\frac{x^2+1}{x}) d x = \ln a + \frac{b}{c}, biết a,b,c là số nguyên. Tính tổng a+b+c.
+  aixw NLC 1 | Tính \int_0^{\frac{\pi}{6}} \cos x d x được kết quả là
+  lfrl NLC 2 | Tính \int_1^3 \frac{2x^2+1}{x} d x được kết quả là
+  0aq8 NLC 1 | Kết quả phép tính \int_1^2 3^x d x bằng
+  nup2 NLC 2 | Biết rằng \int_0^3 (2x+1)^2 d x = ( \frac{a}{3}x^3 + bx^2 + cx ) \Big|_0^3. Tính giá trị biểu thức T = a+b+c
+  mn63 NLC 2 | Kết quả phép tính I = \int_1^2 \frac{x^2+2x+3}{x} d x bằng.
+  zhbq NLC 2 | Tính \int_0^{\frac{\pi}{4}} (2x - \sin x + 4) d x
+  s7cb TLN 2 | Cho hàm số y = f(x) = \begin{cases} 3x^2 & \text{khi } 0 \le x \le 1 \\ 4-x & \text{khi } 1 \le x \le 2 \end{c
+  suhh TLN 4 | Cho hàm số y=f(x) liên tục, có đạo hàm trên R thỏa mãn điều kiện f(x) + x(f'(x) - 2\sin x) = x^2\cos x và f(\f
+  w48j NLC 2 | Tính tích phân \int\limits_{1}^{2} \frac{2x^3 + 2x^2 + 1}{x + 1} d x.
+  5mz3 NLC 3 | Gọi a, b là các số nguyên sao cho \int\limits_{0}^{2} \sqrt{e^{x+2}} d x = 2ae^2 + be. Giá trị của a^2 + b^2 b
+  dzub DS 2 | Cho hàm số f(x) = \begin{cases} x^2 - 2x & \text{khi } x \ge 2 \\ x - 2 & \text{khi } x < 2 \end{cases}
+  k4iz TLN 2 | Biết \int\limits_{1}^{3} \frac{x+2}{x} d x = a + b\ln c, với a, b, c \in {Z}, c < 9. Tính tổng S = a + b + c
+  6eyv TLN 4 | Cho hàm số f(x) liên tục trên {R}. Biết f(x) là một nguyên hàm của hàm số g(x) = f(x) + e^{2x}; f(0) = 1. Biết
+  1q9f NLC 2 | Cho hàm số f(x) = \begin{cases} x + 2 & \text{khi } -3 \le x \le -1 \\ x^2 & \text{khi } x \ge -1 \end{cases} 
+  wucl DS 2 | Cho hàm số f(x) = x^5 - 4x^3 - x^2 + x + 1
+  ryyn TLN 3 | Biết I = \int\limits_{0}^{1} \frac{e^{2x-1} - e^{-3x} + 1}{e^x} d x = \frac{1}{4e^a} - \frac{b}{e} + \frac{7}{
+  lmd6 NLC 2 | Biết \int_{1}^{2} \frac{x - 1}{x + 3} d x = 1 + 4\ln \frac{a}{b} với a, b \in {Z} và \frac{a}{b} là phân số tố
+  1uy7 NLC 1 | Tích phân \int_{0}^{1} (x + 1)^2 dx bằng:
+  x7md NLC 2 | Biết \int_{0}^{\pi/3} \sin^2 \frac{x}{2} dx = \frac{\pi}{a} - \frac{\sqrt{3}}{b} (a, b \in {Z}). Tính S = a + 
+  rneb NLC 1 | Tích phân \int_{0}^{1} x^2(1 + x) dx bằng:
+  g9nc NLC 2 | Tính \int_{-1}^3 x^2 d x được kết quả là
+  z2xl TLN 2 | Biết giá trị tích phân I = \int_{1}^{2} \sqrt[5]{x^2}dx có dạng \frac{2a \sqrt[5]{b-a}}{7} với a, b \in {Z}. T
+  zwt1 NLC 2 | Biết giá trị tích phân \int_{0}^{1} (2x e^{x^2} + e^x) dx có dạng a + be với a, b \in {Z}. Tính giá trị biểu t
+  wchi NLC 2 | Cho hàm số y = f(x) = \begin{cases} \frac{2}{x + 1} & \text{khi } 0 \le x \le 1 \\ 2x - 1 & \text{khi } 1 < x 
+  d9pt NLC 3 | Nếu \int_{0}^{a} (\cos x + \sin x)dx = 0 (0 < a < 2\pi) thì giá trị a có dạng \frac{m\pi}{n} với m, n \in {Z} 
+  gemb NLC 2 | Biết \int_{0}^{\frac{\pi}{3}} (3 + 4\sin^2 \frac{x}{2}) dx = \frac{a\pi}{b} + c\sqrt{3}, trong đó a, b, c \in 
+  27hu NLC 2 | Tìm k để \int_{k}^{0} (6x^2 - 6x - 2)dx = 3.
+  jsgs NLC 2 | Biết \int_{1}^{k} (k - 4x)dx = 6 - 5k với k \in {R}. Khi đó giá trị của k là:
+  1xbx NLC 2 | Biết diện tích hình thang cong giới hạn bởi đồ thị hàm số f(x) = \frac{x^2 + 1}{2x}, trục hoành và các đường t
+  47ot NLC 2 | Biết tích phân \int_{0}^{\pi/4} 2\cos^2 \frac{x}{2} dx có dạng \frac{a\pi + b\sqrt{b}}{4} với a, b \in {Z}. Tí
+  inbj NLC 2 | Tích phân \int_{0}^{3} x(x - 1)dx có giá trị bằng với giá trị của tích phân nào sau đây?
+  y2ru NLC 1 | Tích phân \int_{1}^{2} (3x^2 - 2x + 3)dx bằng:
+  3188 DS 3 | Cho hàm số f(x) = \begin{cases} e^x + m & \text{khi } x < 0 \\ 2x^2 + \sqrt{x} & \text{khi } x \ge 0 \end{case
+  70r6 TLN 2 | Nếu \int_{0}^{6} f(x)dx = 235 và \int_{0}^{4} f(t)dt = 327 với t = 3x, thì \int_{4}^{6} f(x)dx bằng bao nhiêu?
+  hg15 TLN 2 | Gọi S là tập hợp các giá trị của a thỏa mãn I = \int_{1}^{2} [a^2 + (4 - a)x + 4x^3]dx = \frac{184}{9} (với a 
+  a0w2 TLN 1 | Giá trị của tích phân \int_{0}^{1} 3e^{3x}dx bằng bao nhiêu?
+  o0yw TLN 1 | Tích phân I = \int_{\pi/4}^{\pi/2} \frac{dx}{\sin^2 x} bằng bao nhiêu?
+  e3za NLC 2 | Biết giá trị tích phân \int_{0}^{\frac{\pi}{4}} \tan^2 x dx có dạng a + \frac{\pi}{b} với a, b \in {Z}. Tính g
+  4yj4 TLN 2 | Giá trị của tích phân \int_{0}^{\pi/4} \tan^2 x dx có dạng a + \frac{\pi}{b} với a, b \in {Z}. Tính S = 2a - 3
+
+### [8] Bài 2. Tích phân | Tích phân hàm chứa giá trị tuyệt đối (30)
+    yêu cầu: Tính được tích phân của hàm số chứa dấu giá trị tuyệt đối bằng cách khử dấu giá trị tuyệt đối trên các khoảng xác định.
+  xoma NLC 1 | Tính tích phân I = \int_{0}^{2} |x - 2| d x.
+  gjmg NLC 2 | Biết I = \int_{-2}^2 |x+1| d x. Tìm mệnh đề đúng
+  ry2b TLN 3 | Cho 0 \le m \le 2 và tích phân I = \int_0^m |x-2| d x = 2. Tìm m bằng
+  hyx3 NLC 2 | Tính tích phân \int\limits_{0}^{8}|x^2 - 6x| d x.
+  rf3w NLC 2 | Tính tích phân I = \int_{-1}^{1} |2^x - 2^{-x}| d x.
+  o7t2 NLC 2 | Cho a là số thực dương, tính tích phân I = \int_{-1}^{a} |x| d x theo a.
+  0ykd NLC 3 | Cho số thực m > 1 thỏa mãn \int_{1}^{m} |2mx - 1| d x = 1. Khẳng định nào sau đây **đúng**?
+  tg1t NLC 2 | Tính tích phân I = \int_{1}^{4} \sqrt{x^2 - 6x + 9} d x.
+  188h NLC 2 | Giá trị của I = \int_{0}^{2\pi} \sqrt{1 - \cos 2x} d x bằng
+  58if NLC 3 | Cho tích phân I = \int_{0}^{3} |2^x - 4| d x = a + \frac{b}{c \ln 2} với a, b, c \in {Z} và \frac{b}{c} là phâ
+  1puf NLC 2 | Tính tích phân I = \int_{-1}^{2} (|x| - |x - 1|) d x.
+  by5t NLC 2 | Khẳng định nào sau đây là **đúng**?
+  yauq NLC 2 | Tính tích phân \int_0^4 |x - 2| d x.
+  qrrf NLC 2 | Giá trị của \int_{-2}^2 |x^2 - 1| d x là:
+  emhi DS 2 | Cho hàm số đa thức y = f(x) thỏa f(x) < 0, \forall x \in (-1; 1) và f(x) > 0, \forall x \in (-\infty; -1) \cup
+  etl5 NLC 2 | Tính tích phân I = \int_{\pi/4}^{5\pi/3} |\sin x| dx = \frac{a + \sqrt{2}}{b}. Tính S = 2a - 3b.
+  tenu NLC 3 | Tính tích phân \int_{0}^{1-a} |x - 1|dx với a < 0 ta được kết quả:
+  ehzc NLC 3 | Tính tích phân I = \int_{-1}^{\sqrt{2}} |x^3 + x^2 - x - 1|dx ta được kết quả I = \frac{a + b\sqrt{2}}{12} với
+  ygjk NLC 2 | Tính tích phân \int_{0}^{1} |x - 2|dx ta được kết quả:
+  jtgr NLC 2 | Cho I = \int_{-1}^3 |2x-4| d x. Chọn khẳng định đúng.
+  d9fg NLC 2 | Tích phân \int_{0}^{4} |x - 2|dx bằng:
+  pydb NLC 3 | Cho tích phân I = (\sqrt{3} + \sqrt{2}) \int_{-3}^{3} |x^2 - 1| d x = a\sqrt{3} + b\sqrt{2} với a, b \in {Q}. 
+  yocp NLC 3 | Tích phân \int_{a}^{b} |2x - 1|dx (với 0 < a < \frac{1}{2} và b > 1) có giá trị bằng:
+  tybu TLN 3 | Tính tích phân I = \int_{0}^{2} |3^x + x - 4|dx ta được kết quả I = a + \frac{b}{\ln c} (với a, b, c \in {N} v
+  4ll8 NLC 2 | Cho tích phân I = \int_{0}^{3} |2^x - 4|dx. Xét các mệnh đề sau: (I) I = \int_{2}^{3} (2^x - 4)dx + \int_{0}^{
+  tle9 DS 3 | Cho hàm số f(x) = \frac{|x^3 - 3x + 2|}{x - 1} với x \neq 1.
+  g2ei NLC 2 | Cho các hàm số f(x) = 3x^3 - x^2 - 4x + 1 và g(x) = 2x^3 + x^2 - 3x - 1. Khi đó tích phân \int_{-1}^{2} |f(x) 
+  coky NLC 3 | Tính tích phân I = \int_{0}^{2} |x - a|dx với 0 < a < 2.
+  zw8f TLN 3 | Cho hàm số f(x) = \begin{cases} 4 - x^2 & \text{khi } x < 1 \\ \sqrt{x+2} & \text{khi } x \ge 1 \end{cases}. T
+  5cwx TLN 3 | Cho hàm số f(x) = x|x - a| với a > \frac{1}{2}. Biết \int_{0}^{1} f(x)dx = \frac{1}{6}. Khi đó tổng S = f(3) +
+
+### [9] Bài 2. Tích phân | Tính tích phân bằng định nghĩa và nguyên hàm cơ bản (117)
+    yêu cầu: Tính được tích phân của hàm số bằng cách sử dụng định nghĩa, tính chất cơ bản và bảng nguyên hàm của các hàm số sơ cấp.
+  0vvm NLC 2 | Nếu \int_{0}^{2} f(x) d x = 2 thì \int_{0}^{2} [4x - f(x)] d x bằng
+  vm8k NLC 2 | Cho hàm số f(x) có f(2) = -1, f(3) = 5 có đạo hàm f'(x) liên tục trên đoạn [2; 3]. Khi đó, \int_{2}^{3} f'(x) 
+  mlpv NLC 1 | Mệnh đề nào sau đây sai?
+  m9fl DS 2 | Cho tích phân \int_{3}^{4} f(x) d x = 2 và \int_{3}^{1} f(x) d x = 5. Gọi F(x) là một nguyên hàm của hàm số f(
+  6o15 NLC 2 | Tính tích phân \int_{1}^{5} \frac{2x^2 + 2}{x} dx ta được kết quả dạng a + \ln b với a, b \in {Z}. Tính giá tr
+  2n79 NLC 2 | Biết I = \int_{0}^{1} \frac{e^{2x-1} - e^{-3x} + 1}{e^x} d x = \frac{1}{a} + b (a, b \in {R}). Khi đó giá trị 
+  s6gf NLC 1 | Cho hàm số f(x) liên tục trên đoạn [0; 10] và \int_{0}^{10} f(x) d x = 7; \int_{2}^{6} f(x) d x = 3. Tính P = 
+  7usr NLC 2 | Biết F(x) = x^3 là một nguyên hàm của hàm số f(x) trên {R}. Giá trị của \int_{1}^{3} (1 + f(x)) d x bằng
+  2oud NLC 1 | Nếu \int_{0}^{3} f(x) d x = 6 thì \int_{0}^{3} [ \frac{1}{3} f(x) + 2 ] d x bằng?
+  vw8j NLC 2 | Biết F(x) = x^2 là một nguyên hàm của hàm số f(x) trên {R}. Giá trị của \int_{1}^{2} [2 + f(x)] d x bằng
+  30a1 NLC 1 | Nếu \int_{0}^{2} f(x) d x = 5 thì \int_{0}^{2} [2f(x) - 1] d x bằng:
+  k6yc TLN 1 | Cho hàm số f(x). Nếu f(1) = 7 và f'(x) liên tục thỏa \int_{1}^{4} f'(x)dx = 17 thì giá trị của f(4) bằng bao n
+  5vbg NLC 1 | Tính tích phân \int\limits_{0}^{\frac{\pi}{2}}(2\sin x + 3\cos x) d x.
+  5hd6 NLC 2 | Tính tích phân \int\limits_{0}^{1} 2^x.3^x d x.
+  wrz8 NLC 1 | Tính tích phân \int\limits_{0}^{1}(2024x + 2025) d x.
+  4xcy NLC 1 | Cho hai hàm số f(x), g(x) liên tục trên đoạn [c; d] và số thực k. Cho các khẳng định sau: 1) \int\limits_{c}^{
+  y4bm NLC 2 | Tính tích phân \int\limits_{0}^{2} (x^2 + 1)^2 d x.
+  c4xz NLC 2 | Tính tích phân \int\limits_{1}^{9} \frac{x\sqrt{x} + 1}{\sqrt{x}} d x.
+  kxje NLC 2 | Biết F(x) = x^2 là một nguyên hàm của hàm số f(x) trên {R}. Giá trị của \int_{1}^{3} [1 + f(x)] d x bằng
+  558v NLC 1 | Cho F(x) là một nguyên hàm của f(x) = \frac{2}{x}. Biết F(-1) = 0. Tính F(2) kết quả là.
+  ljyq NLC 1 | Biết rằng \int_1^3 f(t) d t = 4. Tính \int_1^3 2f(x) d x
+  jbyv NLC 1 | Tính tích phân I = \int_{0}^{2} (2x + 1) d x
+  yrie NLC 2 | Tính tích phân \int\limits_{0}^{\pi} \cos^2 x d x.
+  586l TLN 2 | Cho \int\limits_{0}^{5} f(x) d x = -2. Tích phân \int\limits_{0}^{5} [4f(x) - 3x^2] d x bằng
+  4cms NLC 1 | Tích phân \int_{0}^{1} e^{3x + 1} d x bằng
+  f18e NLC 2 | Biết \int_{0}^{1} \frac{e^x}{2^x} d x = \frac{e}{a} + b (a, b \in {Z}). Khi đó giá trị của P = a + b là
+  kzfz NLC 2 | Giá trị của I = \int_{0}^{1} \frac{e^{2x} - 4}{e^x + 2} d x bằng
+  689l NLC 2 | Biết \int_{1}^{2} e^x ( 1 - \frac{e^{-x}}{x} ) d x = e^2 + a \cdot e + b \ln 2 (a, b \in {Z}). Khi đó giá trị 
+  8uat NLC 1 | Giá trị của \int_{0}^{\frac{\pi}{2}} \sin x d x bằng
+  xkik NLC 2 | Biết \int_{\frac{\pi}{6}}^{\frac{\pi}{4}} (2\cot^2 x + 5) d x = \frac{\pi}{a} + b\sqrt{3} + c (a, b, c \in {Z}
+  wsl0 NLC 1 | Nếu F'(x) = \frac{1}{2x} và F(1) = 1 thì giá trị của F(4) bằng
+  b5f9 NLC 1 | Cho hàm số f(x) liên tục, có đạo hàm trên [-1; 2], f(-1) = 8; f(2) = -1. Tích phân \int_{-1}^{2} f'(x) d x bằn
+  hdm7 NLC 2 | Biết F(x) = x^3 là một nguyên hàm của hàm số f(x) trên {R}. Giá trị của \int_{1}^{2} (2 + f(x)) d x bằng
+  qwy0 NLC 3 | Cho hàm số f(x). Biết f(0) = 4 và f'(x) = 2\cos^2\frac{x}{2} + 3, \forall x \in {R}, khi đó \int_{0}^{\frac{\p
+  ve0g NLC 2 | Cho hàm số f(x) = \begin{cases} e^{2x} & \text{khi } x \ge 0 \\ x^2 + x + 2 & \text{khi } x < 0 \end{cases}. B
+  fnhl NLC 2 | Cho hàm số f(x) = \begin{cases} x(1 + x^2) & \text{khi } x \ge 3 \\ \frac{1}{x - 4} & \text{khi } x < 3 \end{c
+  m1mh NLC 2 | Cho số thực a và hàm số f(x) = \begin{cases} 2x & \text{khi } x \le 0 \\ a(x - x^2) & \text{khi } x > 0 \end{c
+  38ps NLC 1 | Nếu \int_{1}^{4} f(x) d x = 3 và \int_{1}^{4} g(x) d x = -2 thì \int_{1}^{4} (f(x) - g(x)) d x bằng
+  4a5r NLC 1 | Nếu \int_{1}^{4} f(x) d x = 5 và \int_{1}^{4} g(x) d x = -4 thì \int_{1}^{4} [f(x) - g(x)] d x bằng
+  ilpd NLC 2 | Biết \int_{1}^{2022} f(x) d x = -3 và \int_{2022}^{1} g(x) d x = 2. Khi đó \int_{1}^{2022} [f(x) - g(x)] d x b
+  65lo NLC 1 | Nếu \int_{0}^{3} f(x) d x = 3 thì \int_{0}^{3} 4f(x) d x bằng
+  yx77 NLC 1 | Cho \int_{0}^{2} f(x) d x = \frac{1}{2022}. Tính I = \int_{0}^{2} 2022f(x) d x.
+  t65t NLC 1 | Nếu \int_{0}^{5} f(x) d x = 5 thì \int_{5}^{0} 5f(x) d x bằng
+  zm6t NLC 1 | Nếu \int_{0}^{2} f(x) d x = 3 thì \int_{0}^{2} [2f(x) - 1] d x bằng
+  o7jo NLC 1 | Cho \int_{0}^{1} f(x) d x = 2 và \int_{0}^{1} g(x) d x = 5, khi \int_{0}^{1} [f(x) - 2g(x)] d x bằng
+  zy3q NLC 1 | Cho \int_{0}^{\frac{\pi}{2}} f(x) d x = 5. Tính I = \int_{0}^{\frac{\pi}{2}} [f(x) + 2\sin x] d x.
+  arsz NLC 2 | Cho \int_{1}^{2} [4f(x) - 2x] d x = 1. Khi đó \int_{1}^{2} f(x) d x bằng:
+  uje0 NLC 1 | Cho \int_{0}^{1} f(x) d x = 1, tích phân \int_{0}^{1} (2f(x) - 3x^2) d x bằng
+  f5fj NLC 2 | Cho \int_{-1}^{2} f(x) d x = 2 và \int_{-1}^{2} g(x) d x = -1. Tính I = \int_{-1}^{2} [x + 2f(x) - 3g(x)] d x.
+  40ru NLC 1 | Cho \int_{0}^{2} f(x) d x = 3, \int_{0}^{2} g(x) d x = -1 thì \int_{0}^{2} [f(x) - 5g(x) + x] d x bằng:
+  7uzl NLC 1 | Cho \int_{-2}^{2} f(x) d x = 1, \int_{-2}^{4} f(t) d t = -4. Tính \int_{2}^{4} f(y) d y.
+  t83l NLC 1 | Cho hàm số f(x) liên tục trên {R} và có \int_{0}^{2} f(x) d x = 9; \int_{2}^{4} f(x) d x = 4. Tính I = \int_{0
+  mi51 NLC 1 | Cho hàm số f(x) liên tục trên {R} và \int_{0}^{4} f(x) d x = 10, \int_{3}^{4} f(x) d x = 4. Tích phân \int_{0}
+  sxtw NLC 1 | Tính tích phân I = \int_{1}^{e} ( \frac{1}{x} - \frac{1}{x^2} ) d x
+  4li7 NLC 2 | Cho hàm số f(x) = \begin{cases} x^2 - 1 & \text{khi } x \ge 2 \\ x^2 - 2x + 3 & \text{khi } x < 2 \end{cases}.
+  mdsd NLC 2 | Tính tích phân I = \int_0^2 2e^{2x} d x.
+  9c9f NLC 2 | Tích phân \int_0^{\ln 2} (e^x + 1) e^x d x bằng:
+  ye9o NLC 2 | Cho \int_0^{\frac{\pi}{2}} f(x) d x = 5. Khi đó \int_0^{\frac{\pi}{2}} [f(x) + 2 \sin x] d x bằng:
+  k52k NLC 2 | Biết tích phân \int_0^4 (3x - e^{\frac{x}{4}}) d x = a + be với a, b \in {Z}. Khi đó a + 5b bằng:
+  1ium NLC 2 | Biết \int_0^{\frac{\pi}{2}} (2x - 1 - \sin x) d x = \pi ( \frac{\pi}{a} - \frac{1}{b} ) - 1 với a, b \in {Z}. 
+  jvku NLC 1 | Nếu \int_0^9 f(x) d x = 37 và \int_0^9 g(x) d x = 16 thì \int_0^9 [2f(x) + 3g(x)] d x bằng:
+  zukd DS 1 | Cho hàm số f(x) có đạo hàm liên tục trên {R} và các số thực a < b < c.
+  p60s TLN 1 | Cho các hàm số f(x) và g(x) liên tục trên đoạn [1; 5] thỏa \int_1^5 f(x) d x = 12 và \int_1^5 g(x) d x = -33. 
+  1cka TLN 2 | Cho hàm số f(x) liên tục trên đoạn [0; 2]. Nếu \int_0^2 f(x) d x = 2026 thì \int_0^2 [x + 2f(x)] d x có giá tr
+  5hdc TLN 2 | Cho tích phân I = \int_0^3 x^{2026} d x. Khi đó \ln I có giá trị bằng bao nhiêu?
+  2876 NLC 1 | Biết \int_{a}^{b} f(x)dx = 10 và \int_{a}^{b} g(x)dx = 5. Khi đó giá trị của tích phân \int_{a}^{b} [3f(x) - 5
+  veer NLC 2 | Cho f(x) = x^2 khi 0 \le x < 1 và f(x) = 2 - x khi 1 \le x \le 2. Tính \int_{0}^{2} f(x)dx.
+  sr47 DS 2 | Biết \int_{a}^{b} f(x)dx = 27, \int_{c}^{b} f(x)dx = 31 với a < b < c.
+  me8x NLC 1 | Nếu \int_{1}^{2} f(x)dx = 2 thì I = \int_{1}^{2} [3f(x) - 2]dx bằng bao nhiêu?
+  vjqr NLC 3 | Cho hàm số y = f(x) có đạo hàm liên tục thỏa 1 \le f'(x) \le 4, \forall x \in [2; 5]. Khẳng định nào dưới đây 
+  z37w NLC 1 | Biết \int_{a}^{b} f(x)dx = 5, \int_{a}^{b} g(x)dx = 8. Tính I = \int_{a}^{b} [2f(x) - 5g(x)]dx.
+  pc4i NLC 2 | Tích phân \int_{2}^{4} (x + \frac{1}{x})^2 dx bằng:
+  l41e TLN 2 | Nếu \int_{a}^{c} f(x)dx = 1224; \int_{b}^{c} f(x)dx = -2412 với a < c < b thì \int_{a}^{b} f(x)dx bằng bao nhi
+  8nm5 NLC 1 | Tích phân \int_{0}^{1} x(x^2 + 3)dx bằng:
+  6ci8 TLN 2 | Biết (e^{x^3 + \sin x})' = e^{x^3 + \sin x}(3x^2 + \cos x), tích phân I = \int_{0}^{\pi/2} e^{x^3 + \sin x}(3x
+  jqyi NLC 2 | Tích phân \int_{0}^{1} (e^{2x} + \frac{3}{x+1}) dx có giá trị gần nhất với giá trị nào sau đây?
+  r16e NLC 1 | Tích phân \int_{2}^{5} (3x - 4)^4 dx bằng:
+  hbzv NLC 2 | Biết giá trị trung bình của hàm số y = f(x) trên đoạn [a; b] là \frac{1}{b-a} \int_{a}^{b} f(x)dx. Giá trị tru
+  bgf8 NLC 1 | Biết \int_{0}^{1} f(x)dx = 2, \int_{1}^{4} f(x)dx = 3, \int_{0}^{4} g(x)dx = 4. Khẳng định nào sau đây là sai?
+  esmu NLC 2 | Biết giá trị tích phân \int_{1}^{a} \frac{x+1}{x} dx = e. Khi đó a bằng:
+  snyg DS 2 | Cho hàm số f(x) liên tục trên đoạn [-3; 3].
+  3nvr TLN 2 | Cho các tích phân \int_{-1}^{1} (x^4 + 2x^3)dx = a, \int_{-2}^{-1} (x^2 + 3x)dx = b. Giá trị của T = 30ab là b
+  bjma NLC 2 | Tích phân \int_{0}^{1} 3^{2x+1} dx bằng:
+  hoz1 NLC 1 | Tính tích phân I = \int_{1}^{2^{2026}} \frac{dx}{x}.
+  yzhv NLC 2 | Biết \int_{1}^{2} f(x)dx = \frac{x^2}{2}\Big|_{1}^{2}, \int_{1}^{2} g(x)dx = x^2\Big|_{1}^{2}. Khi đó \int_{1}
+  f78r NLC 2 | Biết \int_{1}^{3} f(x)dx = -2, \int_{1}^{4} f(x)dx = 3, \int_{1}^{4} g(x)dx = 7. Khẳng định nào sau đây là sai
+  rere NLC 1 | Biết \int_{1}^{2} f(x)dx = 2 và \int_{1}^{3} f(x)dx = 3. Khi đó \int_{3}^{2} f(x)dx bằng bao nhiêu?
+  57yw NLC 1 | Tích phân \int_{0}^{1} (3x + 1)(x + 3) d x bằng
+  atkq NLC 2 | Biết \int_{\frac{\pi}{3}}^{\frac{\pi}{2}} (2\sin x + 3\cos x + x) d x = \frac{a + b\sqrt{3}}{2} + \frac{\pi^2}
+  s15j NLC 2 | Biết \int_{\frac{\pi}{4}}^{\frac{\pi}{3}} 3\tan^2 x d x = a\sqrt{3} + b + \frac{\pi}{c} (a, b, c \in {Z}). Khi
+  ubak NLC 1 | Cho \int_{0}^{5} f(x) d x = -2. Tích phân \int_{0}^{5} [4f(x) - 3x^2] d x bằng
+  sm3f NLC 2 | Nếu \int_{-2}^{0} (4 - e^{-\frac{x}{2}}) dx = a - 2e thì giá trị của a là:
+  lklt DS 2 | Cho f(x) là hàm số chẵn, không âm trên {R} và thỏa mãn \int_{-3}^{-1} f(x)dx = a, \int_{0}^{-1} f(x)dx = b.
+  z54c NLC 2 | Tích phân \int_1^2 \frac{(x^2 - 1)^2}{x} d x bằng:
+  ykbk NLC 2 | Cho M = \int_1^2 \frac{x^2 + 2}{2x^2} d x. Giá trị của M là:
+  ab5a TLN 2 | Biết tích phân I = \int_{\pi/6}^{\pi/3} (\sin x \cdot \cot x + \cos x \cdot \tan x) d x có dạng a + \sqrt{b} v
+  zwy5 NLC 2 | Cho hàm số f(x) liên tục trên {R} và thỏa mãn \int_{a}^{d} f(x)dx = 10, \int_{b}^{d} f(x)dx = 8, \int_{a}^{c} 
+  zjpq TLN 2 | Cho y = f(x) là hàm số chẵn, liên tục trên {R} và thỏa mãn \int_{-2}^{2} |f(x)|dx = 2026. Khi đó giá trị tích 
+  8lnf TLN 2 | Tổng bình phương các giá trị của số k thỏa \int_{2}^{5} k^2(5 - x^3)dx = -549 là bao nhiêu?
+  29o7 NLC 1 | Biết F(x) là một nguyên hàm của hàm số f(x). Khi đó giá trị F(1) - F(2) bằng biểu thức nào dưới đây?
+  7abm NLC 1 | Nếu hàm số f(x) có f(1) = 15 và f'(x) liên tục, thỏa mãn \int_{1}^{4} f'(x)dx = 10 thì giá trị của f(4) bằng:
+  ky66 NLC 1 | Cho \int_{2}^{5} f(x)dx = 10. Khi đó \int_{2}^{5} [2 - 4f(x)]dx bằng:
+  j3vm NLC 2 | Biết A = \int_{1}^{2} [3f(x) + 2g(x)]dx = 1 và B = \int_{1}^{2} [2f(x) - g(x)]dx = -3. Tích phân \int_{1}^{2} 
+  dghq TLN 2 | Cho hàm số f(x) liên tục trên {R}. Nếu \int_{1}^{5} 2f(x)dx = 2 và \int_{1}^{3} f(x)dx = 7 thì \int_{3}^{5} 2f
+  ln3u NLC 1 | Cho hàm số f(x) liên tục trên đoạn [1; 5]. Nếu \int_{1}^{5} f(x)dx = 2 và \int_{1}^{3} f(x)dx = 7 thì \int_{3}
+  8s5h NLC 1 | Trong các phép tính sau đây, phép tính nào sai?
+  rg3i NLC 1 | Xét hàm số f(x) liên tục trên {R} và các số thực a, b, c tùy ý. Trong các khẳng định sau, khẳng định nào sai?
+  w9cd NLC 2 | Cho các hàm số f(x) và g(x) liên tục trên đoạn [1; 5] thỏa mãn \int_{1}^{5} f(x)dx = -7, \int_{1}^{5} g(x)dx =
+  nlz6 DS 2 | Cho hàm số f(x) liên tục trên {R}.
+  qom8 NLC 1 | Nếu \int_{0}^{10} f(x)dx = 17 và \int_{0}^{8} f(x)dx = 12 thì \int_{8}^{10} f(x)dx bằng:
+  ehm2 NLC 2 | Cho f(x) liên tục trên [0; 10] thỏa \int_{0}^{10} f(x)dx = 7, \int_{2}^{6} f(x)dx = 3. Tính P = \int_{0}^{2} f
+  iir9 TLN 2 | Biết \int_{0}^{b} (2x - 4)dx = 0, khi đó tổng bình phương các giá trị của b bằng bao nhiêu?
+  otx4 NLC 2 | Tích phân \int_{1}^{8} \frac{x - 1}{\sqrt[3]{x}}dx bằng:
+  o2j0 TLN 1 | Giá trị của \int_{0}^{2} 2e^{2x}dx là bao nhiêu?
+  0xj9 NLC 2 | Có bao nhiêu số thực b thuộc khoảng (\pi; 3\pi) sao cho \int_{\pi}^{b} 2\cos x dx = 1?
+  738h TLN 1 | Tích phân I = \int_{0}^{\pi} \sin x dx bằng bao nhiêu?
+  e0ai NLC 1 | Biết \int_{0}^{9} f(x)dx = 37 và \int_{9}^{0} g(x)dx = 16. Khi đó tích phân \int_{0}^{9} [2f(x) + 3g(x)]dx bằn
+
+### [10] Bài 2. Tích phân | Sử dụng ý nghĩa hình học để tính tích phân (9)
+    yêu cầu: Tính được tích phân của một số hàm số đơn giản bằng cách sử dụng ý nghĩa hình học và công thức tính diện tích các hình phẳng đặc biệt.
+  0r9u NLC 3 | Tính \int_{-3}^1 \sqrt{3 - 2x - x^2} d x
+  e0sw DS 2 | Cho hàm số y = \sqrt{4-x^2}.
+  8qen TLN 3 | Cho hàm số y = f(x) liên tục trên đoạn [-6; 5], có đồ thị gồm hai đoạn thẳng và nửa đường tròn như hình vẽ: ![
+  vh2i NLC 2 | Tìm a để diện tích hình thang cong giới hạn bởi đồ thị y = \frac{2}{x}, trục hoành và các đường thẳng x = 1, x
+  0fwh TLN 2 | Tính tích phân I = \int_{0}^{1} \sqrt{1 - x^2}dx dựa vào ý nghĩa hình học.
+  gqzg TLN 3 | Cho hình thang cong (H) giới hạn bởi các đường y = 2^x, y = 0, x = 0, x = 4. Đường thẳng x = a (0 < a < 4) chi
+  y8v1 NLC 2 | Gọi S là diện tích hình thang cong giới hạn bởi đồ thị hàm số f(x) = 2 - \cos x, trục hoành và các đường thẳng
+  yeju TLN 3 | Cho hàm số f(x) = x^4 + 2x^2 + m không âm trên [0, 1]. Xét hình thang cong giới hạn bởi đồ thị hàm số f(x) = x
+  c1ig NLC 2 | Tính diện tích hình thang cong giới hạn bởi f(x) = \frac{x^4}{16} - x^2 + \frac{3}{2}x + 2, trục hoành và x = 
+
+### [11] Bài 2. Tích phân | Ứng dụng tích phân - Toán thực tế (29)
+    yêu cầu: Vận dụng được tích phân để giải quyết một số bài toán thực tế liên quan đến tính diện tích hình phẳng và tối ưu hóa.
+  95rd NLC 2 | Một vật chuyển động với vận tốc v(t) = 1 - 2\sin 2t (m/s). Quãng đường vật di chuyển trong khoảng thời gian từ
+  taym TLN 2 | Khi quan sát một đám vi khuẩn trong phòng thí nghiệm người ta thấy tại ngày thứ x có số lượng là N(x). Biết rằ
+  73qu NLC 2 | Một vật chuyển động với vận tốc ban đầu bằng 0, vận tốc biến đổi theo quy luật, và có gia tốc a = 0,3\text{ m/
+  63ya DS 3 | Chất điểm chuyển động theo quy luật vận tốc v(t) (m/s) có dạng đường thẳng khi 0 \le t \le 3 (s) và 8 \le t \l
+  gvep TLN 3 | Một vật chuyển động với gia tốc được cho bởi hàm số a(t) = 10\sin t (m/s^2). Lúc bắt đầu chuyển động vật có vậ
+  m72j TLN 3 | Một xe mô tô phân khối lớn sau khi chờ hết đèn đỏ đã bắt đầu phóng nhanh với vận tốc tăng liên tục được biểu t
+  36li DS 3 | Tại một nhà máy sản xuất một loại phân bón, gọi P(x) là lợi nhuận (tính theo triệu đồng) thu được từ việc bán 
+  eym6 NLC 2 | Một ô tô chuyển động chậm dần đều với vận tốc v(t) = 27 - 9\sqrt{t}. Tính quãng đường mà ô tô đi chuyển được t
+  3gjz NLC 2 | Ô tô đang chạy 18 m/s hãm phanh, v(t) = -36t + 18 m/s. Quãng đường đi được từ lúc phanh đến khi dừng hẳn là:
+  ljjt NLC 3 | Hai người chạy đua 400 m, gia tốc f(t) = \frac{3}{100}t + \frac{1}{10} và g(t) = \frac{8}{25}. Thời gian về đí
+  w8ds TLN 3 | Một vật chuyển động trong 4 giờ với vận tốc v (km/h) phụ thuộc thời gian t (h) có đồ thị vận tốc như hình bên 
+  f3zh TLN 2 | Một vật chuyển động với vận tốc 10 m/s thì tăng tốc với gia tốc phụ thuộc theo thời gian t là a(t) = 3t + t^2\
+  ukri NLC 3 | Một ô tô đang chạy đều với vận tốc 15 m/s thì phía trước xuất hiện chướng ngại vật nên người lái đạp phanh gấp
+  unav TLN 2 | Một người đứng từ sân thượng một tòa nhà cao 262 m, ném một quả bi sắt theo phương thẳng đứng hướng xuống (bỏ 
+  xs5s NLC 4 | Khu vực trung tâm một quảng trường có dạng hình tròn đường kính AB bằng 10 m. Người ta trang trí khu vực này b
+  q0hc TLN 3 | Trường THPT Lê Quý Đôn muốn làm một cái cửa nhà hình parabol có chiều cao từ mặt đất đến đỉnh là 2,25 mét, chi
+  tox9 DS 3 | Sau khi xuất phát, ô tô di chuyển với tốc độ v(t) = 2,01t - 0,025t^2 \ (0 \le t \le 10). Trong đó v(t) tính th
+  e37e NLC 2 | Một hạt proton di chuyển trong điện trường có biểu thức gia tốc (tính theo \text{cm/s}^2) là a(t) = \frac{-20}
+  5fn5 TLN 3 | Theo Định luật Hooke, lực cần dùng để giữ lò xo giãn thêm x mét từ độ dài tự nhiên là f(x) = kx với k (N/m) là
+  r3jv TLN 2 | Một vật chuyển động với vận tốc v(t) = 2 - 2\sin t (m/s). Quãng đường (đơn vị: mét) mà vật chuyển động trong k
+  6zrs NLC 3 | Một viên đạn được bắn lên theo phương thẳng đứng từ mặt đất với vận tốc ban đầu 29,4 m/s. Tính quãng đường viê
+  07za TLN 2 | Một vật chuyển động chậm dần đều với vận tốc v(t) = 160 - 10t m/s. Quãng đường mà vật chuyển động từ thời điểm
+  2zfp TLN 3 | Một người chạy trong thời gian 1 giờ, vận tốc v (km/h) phụ thuộc thời gian t (h) có đồ thị là một phần của đườ
+  xtwf TLN 2 | Khi gặp chướng ngại vật, người điều khiển xe máy phanh để xe chuyển động chậm dần đều với vận tốc v(t) = 10 - 
+  k4m7 NLC 3 | Một vật chuyển động với vận tốc v(t) = 1,2 + \frac{t^2 + 4}{t + 3} m/s. Để ý [\ln(t+3)]' = \frac{1}{t+3}, \for
+  pifo NLC 3 | Một người cần làm một cái cổng sắt cao 4 m, rộng 4 m, có hình dạng một parabol như hình vẽ ![Hình ảnh](https:/
+  qmbw NLC 1 | Một vật thể chuyển động với tốc độ thay đổi theo thời gian v = f(t). Quãng đường vật đi được trong khoảng thời
+  nx7e TLN 2 | Trong kinh tế học, thặng dư tiêu dùng của hàng hóa được tính bằng công thức I = \int_{0}^{a} [p(x) - P]dx. Với
+  41g8 NLC 2 | Giả sử một máy bay đang bay với vận tốc là v(t) = 3t^2 + 5 m/s. Quãng đường máy bay bay được từ giây thứ 4 đến
+
+### [12] Bài 2. Tích phân | Xác định hàm số từ đẳng thức đạo hàm (3)
+    yêu cầu: Xác định được công thức của hàm số khi biết đạo hàm của nó và một giá trị ban đầu cho trước.
+  nhhb DS 3 | Cho hàm số f(x) có đạo hàm liên tục trên đoạn [0; 2] thỏa mãn (2x + 3)f'(x) + 2f(x) = 4x - 3x^2 và f(0) = 3.
+  td5b DS 3 | Cho hàm số f(x) liên tục trên đoạn [0; \frac{\pi}{3}] thỏa mãn f'(x) \cdot \cos x + f(x) \cdot \sin x = 1, \fo
+  ndic DS 4 | Cho hàm số f(x) có đạo hàm liên tục trên đoạn [1; 4] thỏa mãn f(x) = x \cdot f'(x) + 3x^4 - 4x^2 và f(1) = 2.
+
+### [13] Bài 3. Ứng dụng hình học của tích phân | Sử dụng ý nghĩa hình học để tính tích phân (54)
+    yêu cầu: Tính được tích phân bằng cách sử dụng ý nghĩa hình học và công thức tính diện tích của các hình phẳng đặc biệt.
+  wowl NLC 1 | Tính diện tích S hình phẳng giới hạn bởi các đường y = x^2 + 1, x = -1, x = 2 và trục hoành.
+  113d NLC 1 | Cho hai hàm số f(x) và g(x) liên tục trên [a; b]. Diện tích hình phẳng giới hạn bởi đồ thị của các hàm số y = 
+  w7tn NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị hàm số y = (x - 2)^2 - 1, trục hoành và hai đường thẳng x = 1, x = 2 
+  g33g NLC 2 | Tính diện tích hình phẳng giới hạn bởi các đường y = x^2 + 5, y = 6x, x = 0, x = 1.
+  0jy3 NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị các hàm số y = x^3 + 11x - 6, y = 6x^2 và hai đường thẳng x = 0, x = 
+  ms8o NLC 1 | Diện tích của hình phẳng giới hạn bởi các đường y = 2^x, y = 0, x = 0, x = 2 là
+  jomw NLC 1 | Gọi (H) là hình phẳng giới hạn bởi các đường y = \sin x, Ox, x = 0, x = \pi. Diện tích của hình phẳng (H) bằng
+  9gx7 NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị hàm số y = x^2 + 2x và trục hoành bằng
+  4ys8 NLC 2 | Diện tích hình phẳng giới hạn bởi hai đường y = -x^2 + x + 6 và y = 0 bằng
+  ouj0 NLC 2 | Diện tích hình phẳng giới hạn bởi các đường y = x^2 - 4x + 3; x = 0 và y = 0 bằng
+  bb7e NLC 2 | Diện tích hình phẳng giới hạn bởi các đường y = x^2 và y = 4x - 3 là
+  zfah NLC 2 | Diện tích hình phẳng giới hạn bởi các đồ thị hàm số y = x^2 và y = 8 - x^2 là
+  ukad NLC 2 | Diện tích hình phẳng giới hạn bởi 2 đường y = x^2 - 1 và y = x - 1 bằng:
+  go5p NLC 2 | Diện tích hình phẳng giới hạn bởi các đường cong y = x^3 - 6x và y = x^2 bằng
+  vtun NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị của các hàm số y = |\ln x|, y = 1 được tính bởi công thức:
+  ygs0 NLC 2 | Cho hàm số y = f(x) liên tục trên đoạn [a; b]. Gọi D là diện tích hình phẳng giới hạn bởi đồ thị (C): y = f(x)
+  luwf NLC 2 | Gọi S là diện tích hình phẳng giới hạn bởi các đường y = f(x), trục hoành và hai đường thẳng x = -3, x = 2 (nh
+  kvx3 NLC 2 | Cho hình phẳng giới hạn bởi đường cong y = \sqrt{x + 2} và hai trục tọa độ. Thể tích khối tròn xoay thu được k
+  et1n NLC 2 | Cho miền phẳng (D) giới hạn bởi y = \sqrt{x}, hai đường thẳng x = 1, x = 2 và trục hoành. Tính thể tích khối t
+  3836 NLC 2 | Cho hình phẳng giới hạn bởi các đường y = \sqrt{x - 2}, y = 0 và x = 4, x = 9 quay xung quanh trục Ox. Tính th
+  7ho7 NLC 2 | Cho hình phẳng (H) giới hạn bởi đồ thị hàm số y = e^x, các đường thẳng x = 0, x = \ln 3 và trục hoành. Thể tíc
+  8ljd NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị hàm số y = x^2 + 2 và đường thẳng y = 6 bằng
+  jftf NLC 2 | Gọi S là diện tích hình phẳng giới hạn bởi đồ thị hàm số y = f(x), trục hoành, đường thẳng x = a, x = b ![Hình
+  bxax NLC 2 | Cho hình phẳng D giới hạn bởi các đường y = \sqrt{x - 1}, trục hoành và x = 5. Thể tích khối tròn xoay tạo thà
+  mz04 NLC 2 | Thể tích vật thể tròn xoay khi cho hình phẳng giới hạn bởi đồ thị hàm số y = x^2 - 4x + 3 và trục hoành quay q
+  4yfq NLC 2 | Thể tích khối tròn xoay giới hạn bởi các đường y = 2x - x^2, y = 0 khi quay quanh trục Ox là: ![Hình ảnh](http
+  2bpd NLC 2 | Cho hình phẳng giới hạn bởi đồ thị hàm số y = x^2 và đường thẳng y = 4 quay quanh trục Ox. Thể tích khối tròn 
+  044o NLC 2 | Gọi S là diện tích hình phẳng (H) giới hạn bởi các đường y = f(x), trục hoành và hai đường thẳng x = -1, x = 2
+  md3i NLC 2 | Tính thể tích V của phần vật thể giới hạn bởi hai mặt phẳng x = 0, x = 1, có thiết diện bị cắt bởi mặt phẳng v
+  okrr NLC 1 | Gọi V là thể tích của khối tròn xoay thu được khi quay hình thang cong, giới hạn bởi đồ thị hàm số y = \sin x,
+  aiw0 NLC 1 | Cho hình phẳng (H) giới hạn bởi các đường y = x^2 - 2x, y = 0. Quay (H) quanh trục hoành tạo thành khối tròn x
+  cku0 NLC 2 | Biết một nguyên hàm của hàm số f(x) = \sin^2 x là F(x) = \frac{x}{2} - \frac{\sin 2x}{4}. Thể tích của khối tr
+  da5t NLC 2 | Thể tích khối tròn xoay thu được khi quay hình phẳng giới hạn bởi hai đường y = x^2 - 4x + 3 và y = 0 quanh tr
+  q83y NLC 2 | Cho hình phẳng (H) được giới hạn bởi đồ thị của hàm số y = x^2 và đồ thị của hàm số y = \sqrt{x} (tham khảo hì
+  o1za NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị của hàm số y = 4x - x^2, y = 2x và hai đường thẳng x = 1, x = 3 bằng
+  onz9 NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị các hàm số y = \ln x, y = 1 và hai đường thẳng x = 1, x = e bằng
+  qbqs NLC 2 | Diện tích của hình phẳng được giới hạn bởi đồ thị hàm số y = f(x), trục hoành và hai đường thẳng x = a, x = b 
+  k5ya NLC 2 | Diện tích phần hình phẳng gạch chéo trong hình vẽ bên ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/sto
+  0oac NLC 2 | Diện tích phần hình phẳng được tô đậm trong hình vẽ bên ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/s
+  ckd7 NLC 2 | Cắt một vật thể bởi hai mặt phẳng vuông góc với trục Ox tại x = 1 và x = 3. Một mặt phẳng tùy ý vuông góc với 
+  88ql NLC 2 | Tính thể tích V của phần vật thể giới hạn bởi hai mặt phẳng x = 0 và x = 3, biết rằng khi cắt vật thể bởi mặt 
+  erzw NLC 2 | Tìm công thức tính thể tích của khối tròn xoay khi cho hình phẳng giới hạn bởi parabol (P): y = x^2, đường thẳ
+  qn3j NLC 2 | Thể tích khối tròn xoay được sinh ra khi quay hình phẳng giới hạn bởi đồ thị của hàm số y = x^2 - 2x, trục hoà
+  trai NLC 1 | Thể tích khối tròn xoay do hình phẳng giới hạn bởi các đường y = \sqrt{x}, trục Ox và hai đường thẳng x = 1; x
+  0yks NLC 1 | Gọi D là hình phẳng giới hạn bởi các đường y = e^{3x}, y = 0, x = 0 và x = 1. Thể tích của khối tròn xoay tạo 
+  rp1y NLC 1 | Gọi D là hình phẳng giới hạn bởi các đường y = e^{4x}, y = 0, x = 0 và x = 1. Thể tích của khối tròn xoay tạo 
+  i8zx NLC 2 | Cho hình phẳng (H) giới hạn bởi đồ thị (P): y = x^2 - 2x và trục Ox. Tính thể tích của khối tròn xoay tạo thàn
+  bbbs NLC 2 | Kí hiệu (H) là hình phẳng giới hạn bởi đồ thị hàm số y = x^2 e^x, trục hoành, đường thẳng x = 1. Tính thể tích
+  hbg6 NLC 2 | Cho (H) là hình phẳng giới hạn bởi đồ thị hàm số y = x^2 - 2x - 2 và trục hoành. Quay hình phẳng (H) quay quan
+  rr4a NLC 1 | Tính thể tích của khối tròn xoay khi cho hình phẳng giới hạn bởi đồ thị hàm số y = x^2, trục hoành và đường th
+  uez6 NLC 2 | Thể tích khối tròn xoay khi quay hình phẳng (H) xác định bởi các đường y = \frac{1}{3}x^3 - x^2 và y = 0 quanh
+  h2nu NLC 2 | Gọi (H) là hình phẳng giới hạn bởi đồ thị hàm số y = x^2 - 5x + 4 và trục Ox. Tính thể tích của khối tròn xoay
+  yfrs NLC 1 | Cho (H) là hình phẳng được tô đậm trong hình vẽ và được giới hạn bởi các đường y = x^2 + 1, x = 0, x = 1, y = 
+  xvwo NLC 2 | Thể tích hình khối do hình phẳng giới hạn bởi các đường y = x^2 - 4, y = 2x - 4, x = 0, x = 2 quay quanh trục 
+
+### [14] Bài 3. Ứng dụng hình học của tích phân | Tính thể tích vật thể khi biết diện tích mặt cắt (7)
+    yêu cầu: Tính được thể tích của một vật thể bằng tích phân khi biết diện tích mặt cắt vuông góc với trục tọa độ.
+  g1x2 NLC 2 | Cắt một vật thể bởi hai mặt phẳng vuông góc với trục Ox tại x = 1 và x = 2. Một mặt phẳng tùy ý vuông góc với 
+  yrru NLC 2 | Cắt một vật thể (T) bởi hai mặt phẳng vuông góc với trục Ox tại x = 0 và x = 2. Một mặt phẳng tùy ý vuông góc 
+  7u4o DS 2 | Cho vật thể (T) giới hạn bởi hai mặt phẳng x = -1; x = 1. Cắt vật thể (T) bởi mặt phẳng vuông góc với trục Ox 
+  pxbv DS 3 | Cho một vật thể bằng gỗ có dạng hình trụ với chiều cao và bán kính đáy cùng bằng 1. Cắt khối gỗ đó bởi một mặt
+  sfqg TLN 4 | Từ một khúc gỗ hình trụ có đường kính 30 cm, người ta cắt khúc gỗ bởi một mặt phẳng đi qua đường kính đáy và n
+  9sl9 TLN 3 | Một vật có kích thước và hình dáng như hình vẽ dưới đây. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/
+  5u1d TLN 4 | Biết thể tích vật thể tạo được khi lấy giao vuông góc hai vật thể hình trụ có cùng bán kính đáy bằng 2 có dạng
+
+### [15] Bài 3. Ứng dụng hình học của tích phân | Tính thể tích khối tròn xoay (30)
+    yêu cầu: Tính được thể tích khối tròn xoay sinh ra khi quay một hình phẳng giới hạn bởi đồ thị hàm số và các trục tọa độ quanh trục hoành.
+  uuth TLN 3 | Cho hình (H) giới hạn bởi các đường y = \frac{4}{x} và y = -x + 5. Quay hình (H) quanh trục Ox ta được khối tr
+  ux4c TLN 3 | Cho hai mặt cầu (S_1), (S_2) có cùng bán kính bằng 2, thỏa tâm của (S_1) nằm trên (S_2) và ngược lại. Tính thể
+  eszx NLC 2 | Thể tích khối tròn xoay giới hạn bởi đồ thị hàm số y = 1 - x^2, trục hoành y = 0 và các đường thẳng x = 0 và x
+  ea8j NLC 2 | Gọi D là hình phẳng giới hạn bởi đồ thị hàm số y = f(x) = x^2 - 4x + 3, trục hoành và hai đường thẳng x = 1; x
+  czku NLC 2 | Cho hình phẳng (H) giới hạn bởi các đường y = x^2 + 3, y = 0, x = 0, x = 2. Gọi V là thể tích khối tròn xoay đ
+  34z3 NLC 2 | Cho hình phẳng D giới hạn bởi đường cong y = \sqrt{2 + \cos x}, trục hoành và các đường thẳng x = 0, x = \frac
+  f6lr NLC 1 | Viết công thức tính thể tích V của khối tròn xoay được tạo ra khi quay hình thang cong, giới hạn bởi đồ thị hà
+  qngd NLC 2 | Cho hình phẳng (H) giới hạn bởi các đường y = 2x - x^2, y = 0. Quay (H) quanh trục hoành tạo thành khối tròn x
+  755l NLC 2 | Thể tích khối tròn xoay sinh ra khi quay quanh trục Ox hình phẳng giới hạn bởi đồ thị hàm số y = \sqrt{2x}, tr
+  ygek NLC 2 | Cho hình (H) giới hạn bởi các đường y = -x^2 + 2x, trục hoành. Quay hình phẳng (H) quanh trục Ox ta được khối 
+  sy3j NLC 2 | Cho hình (H) giới hạn bởi đồ thị hàm số y = 2\sqrt{x}, đường thẳng x = 5 và trục hoành. ![Hình ảnh](https://cm
+  3hqe NLC 3 | Kí hiệu V_1, V_2 lần lượt là thể tích khối cầu bán kính đơn vị và thể tích khối tròn xoay sinh ra khi quay hìn
+  bx7y TLN 3 | Cho hai nửa đường tròn như hình vẽ, biết đường kính của đường tròn lớn gấp đôi đường kính của đường tròn nhỏ !
+  4c0o NLC 2 | Gọi (H) là hình phẳng giới hạn bởi đồ thị hàm số y = \sqrt{x} - 1, trục Ox và đường thẳng x = 4. Quay hình (H)
+  qzin NLC 2 | Cho hình phẳng giới hạn bởi các đường y = x - \frac{1}{2}x^3, y = 0, x = 0, x = \sqrt{2} ![Hình ảnh](https://c
+  kr2c NLC 2 | Thể tích khối tròn xoay khi cho hình phẳng giới hạn bởi các đường y = x^2 + 1, x = 0, x = 1, y = 0 ![Hình ảnh]
+  1u6b TLN 2 | Thể tích vật thể tròn xoay khi quay hình phẳng giới hạn bởi các đường y = \frac{4}{x}, y = 0, x = 1, x = 4 qua
+  segl NLC 3 | Thể tích vật thể tròn xoay khi quay hình phẳng giới hạn bởi các đường y = \sqrt{x}, y = 0, y = 2 - x ![Hình ản
+  j3q8 NLC 2 | Cho hình phẳng giới hạn bởi các đường y = x^3 + 1, y = 0, x = 0 và x = 1 ![Hình ảnh](https://cmjithgtecypxmisb
+  one1 NLC 2 | Biết khối tròn xoay do hình phẳng giới hạn bởi các đường y = f(x), y = 0, x = a, x = b (a < b) quay quanh trục
+  y1ur NLC 1 | Thể tích V của khối tròn xoay giới hạn bởi đồ thị hàm số y = f(x), trục Ox và hai đường thẳng x = a, x = b (a 
+  rve5 NLC 1 | Cho hình phẳng giới hạn bởi các đường y = \sqrt{x}, y = 0, x = a, x = b (0 < a < b) quay xung quanh trục Ox. T
+  4rg2 TLN 2 | Thể tích vật thể tròn xoay khi quay hình phẳng giới hạn bởi các đường y = 1 - x^2, y = 0 ![Hình ảnh](https://c
+  umow NLC 2 | Gọi (H) là hình phẳng giới hạn bởi đồ thị hàm số y = 3x - x^2 và trục Ox. ![Hình ảnh](https://cmjithgtecypxmis
+  vqop NLC 2 | Cho hình phẳng (H) được tô đậm trong hình vẽ bên quay quanh trục Ox ta được khối tròn xoay có thể tích là: ![H
+  0t30 NLC 3 | Thể tích khối tròn xoay khi quay hình phẳng (H) giới hạn bởi đồ thị các hàm số y = x^2 và y = x + 2 quanh trục
+  vlft NLC 2 | Cho hình (H) giới hạn bởi các đường y = \sqrt{x}, x = 4 và trục hoành Ox. ![Hình ảnh](https://cmjithgtecypxmis
+  xl4p NLC 4 | Cho a, b là hai số thực dương. Gọi (H) là hình phẳng nằm trong góc phần tư thứ hai, giới hạn bởi parabol y = a
+  l0r4 TLN 2 | Biết thể tích khối tròn xoay tạo nên khi quay xung quanh trục Ox hình phẳng giới hạn bởi các đường y = (1 - x)
+  0f19 NLC 2 | Thể tích khối tròn xoay nhận được khi quay hình phẳng giới hạn bởi đường cong y = 4x - x^2 và trục hoành quanh
+
+### [16] Bài 3. Ứng dụng hình học của tích phân | Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng (30)
+    yêu cầu: Tính được diện tích hình phẳng giới hạn bởi đồ thị của hai hàm số và hai đường thẳng đứng bằng ứng dụng tích phân.
+  s41z TLN 3 | Gọi S là diện tích hình phẳng giới hạn bởi đồ thị các hàm số y = x^2 + 2x + 1, y = m (m < 0) và 2 đường thẳng 
+  4sdg TLN 3 | Biết hình phẳng nằm trong góc phần tư thứ nhất, giới hạn bởi các đường thẳng y = 4x, y = x và đồ thị hàm số y 
+  pmq4 NLC 2 | Hình phẳng (H) giới hạn bởi đồ thị các hàm số y = x^2 + 2x + 2, y = x + 1 và hai đường thẳng x = -1, x = 1 có 
+  gdy8 NLC 3 | Cho hình phẳng (H) giới hạn bởi đồ thị các hàm số y = |x^2 - 1|, y = |x| + 5. Diện tích của (H) bằng: ![Hình ả
+  0oxj NLC 3 | Diện tích hình phẳng giới hạn bởi parabol (P): y = x^2 - 2x + 2, tiếp tuyến của (P) tại giao điểm của (P) với 
+  8599 TLN 3 | Cho số dương a thỏa mãn hình phẳng giới hạn bởi các đường parabol y = ax^2 - 2 và y = 4 - 2ax^2 có diện tích b
+  54it NLC 2 | Gọi S là diện tích hình phẳng giới hạn bởi đồ thị các hàm số y = x^2 và y = 2 - x^2. Khẳng định nào sau đây đú
+  reyg DS 3 | Xét một phần hình phẳng (H) giới hạn bởi các đường thẳng y = x, y = 4 và đồ thị hàm số y = \frac{x^2}{9} như p
+  14dn NLC 2 | Tính diện tích hình phẳng (H) giới hạn bởi đồ thị hàm số y = x^3 - 3x^2 + 4 và đường thẳng x - y + 1 = 0. ![Hì
+  5trk NLC 3 | Gọi S là diện tích hình phẳng giới hạn bởi các đường x = 0, x = 1, đồ thị hàm số y = x^3 + 3x^2 và tiếp tuyến 
+  re2u NLC 2 | Diện tích S của hình phẳng giới hạn bởi các đường y = x^2 + 2x, y = x + 6 là
+  o2r3 NLC 2 | Diện tích hình phẳng giới hạn bởi các đường (C): y = e^x + x, \Delta: x - y + 1 = 0 và đường thẳng x = \ln 5 l
+  ivwc NLC 3 | Tính diện tích S của phần hình phẳng giới hạn bởi đường parabol và hai đoạn thẳng AC và BC (như hình vẽ). ![Hì
+  5wi7 TLN 3 | Tìm a để diện tích S của hình phẳng giới hạn bởi (P) : y = \frac{x^2 - 2x}{x - 1}, đường thẳng d : y = x - 1 v
+  h1f0 TLN 3 | Biết diện tích hình phẳng giới hạn bởi các đường thẳng y = 3^x, y = 4 - x và trục tung có dạng \frac{a}{b} + \
+  holx TLN 2 | Diện tích hình phẳng giới hạn bởi hai đường y = x^3 + 11x - 6 và y = 6x^2 là bao nhiêu?
+  sxfy NLC 2 | Gọi S là diện tích hình phẳng giới hạn bởi các đường y = f(x), y = g(x), x = a, x = b. Biết rằng f(x) - g(x) =
+  6t37 NLC 2 | Diện tích S của hình phẳng giới hạn bởi các đường y = 2x^2, y = -1, x = 0 và x = 1 được tính bởi công thức nào
+  10z2 NLC 2 | Tính diện tích S của hình phẳng giới hạn bởi các đường y = e^x, y = 2, x = 0, x = 1.
+  mwn8 NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị các hàm số y = x^3 + 1, y = 2x^2 + 1 và hai đường thẳng x = 1, x = 2 
+  58cd NLC 1 | Diện tích S của hình phẳng giới hạn bởi đồ thị của các hàm số y = f_1(x), y = f_2(x) liên tục và hai đường thẳ
+  54xr DS 3 | Cho hình phẳng (H) là phần tô đậm trong hình sau (giới hạn bởi y = x^2 - 2x - 1, y = -x^2 + 3, x = -1, x = 2).
+  ochl NLC 3 | Diện tích hình phẳng giới hạn bởi đồ thị hàm số y = 4 - |x| và parabol y = \frac{x^2}{2} bằng: ![Hình ảnh](htt
+  ycp8 TLN 3 | Biết diện tích hình phẳng giới hạn bởi đồ thị hàm số y = x^2 - 4x + 5 và hai tiếp tuyến với đồ thị hàm số này 
+  vnvi NLC 2 | Cho hình phẳng (H) giới hạn bởi đồ thị hàm số y = x^2 - x + 3 ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabas
+  u3si NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị của các hàm số y = x^2 - 2x và y = -x^2 + x là: ![Hình ảnh](https://c
+  5vtp TLN 3 | Biết diện tích hình phẳng giới hạn bởi các đường thẳng y = 1, y = x và đồ thị hàm số y = \frac{x^2}{4} trong m
+  ogqh TLN 3 | Biết diện tích hình phẳng giới hạn bởi đồ thị các hàm số y = \begin{cases} -x & \text{khi } x \le 1 \\ x - 2 &
+  ylty NLC 2 | Diện tích hình phẳng giới hạn bởi các đường y = x^3 + 3x, y = -x và đường thẳng x = -2 là:
+  aq9u NLC 3 | Diện tích hình phẳng giới hạn bởi đồ thị các hàm số y = -1, y = x^4 - 2x^2 - 1 có dạng \frac{a\sqrt{2}}{b} với
+
+### [17] Bài 3. Ứng dụng hình học của tích phân | Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng (24)
+    yêu cầu: Tính được diện tích hình phẳng giới hạn bởi đồ thị của một hàm số, trục hoành và hai đường thẳng vuông góc với trục hoành.
+  zrhy NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị hàm số y = 2\sin x, trục hoành và hai đường thẳng x = 0, x = 2\pi là:
+  fq5j NLC 1 | Kí hiệu S là diện tích hình phẳng giới hạn bởi đồ thị của một hàm số liên tục y = f(x), trục hoành và hai đườn
+  lmtj TLN 2 | Biết diện tích hình phẳng giới hạn bởi đồ thị hàm số y = x^3 - 3x^2 + 2x, trục tung, trục hoành, đường thẳng x
+  2xy6 NLC 3 | Diện tích S của hình phẳng giới hạn bởi đồ thị hàm số y = x^2 - 4|x| + 3 và trục hoành bằng: ![Hình ảnh](https
+  txkf NLC 3 | Cho đồ thị (C): y = \frac{1}{3}x^3 + mx^2 - 2x - 2m - \frac{1}{3}. Giá trị m \in (0; \frac{5}{6}) sao cho hình
+  sh9p TLN 2 | Cho hàm số f(x) liên tục trên {R} (như hình vẽ), có \int\limits_{-2}^{1} f(x) d x = 8; \int\limits_{1}^{3} f(x
+  7bsi TLN 2 | Diện tích của hình phẳng (H) giới hạn bởi đường cong y = x^3 - x^2 - 12x và trục Ox xấp xỉ bằng bao nhiêu (làm
+  paoc NLC 2 | Cho đồ thị hàm số y = f(x) trên đoạn [0; 4] như hình vẽ với diện tích S_1 = \frac{11}{6} và S_2 = \frac{9}{2}.
+  4y08 NLC 1 | Diện tích hình phẳng giới hạn bởi các đường x = a, x = b, y = f(x) và trục hoành là
+  x4ox NLC 2 | Cho hàm số f(x) liên tục trên {R}. Gọi S là diện tích hình phẳng giới hạn bởi các đường y = f(x), y = 0, x = -
+  qnn4 NLC 2 | Diện tích của hình phẳng giới hạn bởi các đường y = x^3, y = 0, x = -1, x = 2 ![Hình ảnh](https://cmjithgtecyp
+  742y NLC 2 | Gọi S là diện tích hình phẳng giới hạn bởi các đường y = \sin x, y = 0, x = 0, x = 2\pi. Mệnh đề nào dưới đây 
+  ede9 NLC 2 | Tính diện tích hình phẳng giới hạn bởi đồ thị hàm số y = e^x, trục hoành và hai đường thẳng x = 0 và x = 3.
+  zanx NLC 2 | Diện tích của hình phẳng giới hạn bởi đồ thị hàm số y = 3x^2 + 1, trục hoành và hai đường thẳng x = 0, x = 2 b
+  fpog NLC 2 | Cho đồ thị hàm số y = f(x) như hình sau ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object
+  k5nv NLC 2 | Diện tích hình phẳng giới hạn bởi đồ thị hàm số y = 2x - x^4 ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase
+  um74 NLC 3 | Diện tích hình phẳng được tô đậm trong hình sau ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v
+  4p7u DS 2 | Cho đồ thị hàm số y = f(x) và gọi S là diện tích hình phẳng được tô màu như hình bên ![Hình ảnh](https://cmjit
+  4w8y DS 2 | Cho hình phẳng được tô màu như hình bên ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object
+  vp9s NLC 2 | Diện tích S của hình phẳng (H) giới hạn bởi đồ thị hàm số y = -x^3 + 3x^2 - 2, hai trục tọa độ và đường thẳng 
+  4t8r NLC 1 | Diện tích S của hình phẳng giới hạn bởi đồ thị hàm số y = f(x) liên tục trên đoạn [a; b], trục hoành và hai đư
+  5k8v NLC 2 | Cho hình phẳng (H) giới hạn bởi đồ thị hàm số y = x^3, trục Ox và đường thẳng x = \frac{3}{2}. ![Hình ảnh](htt
+  oabi NLC 2 | Diện tích hình phẳng được tô đậm trong hình vẽ sau là bao nhiêu? ![Hình ảnh](https://cmjithgtecypxmisbzvw.supa
+  yl98 DS 3 | Hình vuông OABC có cạnh bằng 4 được chia thành hai phần bởi đường cong (C) có phương trình y = \frac{1}{4}x^2.
+
+### [18] Bài 3. Ứng dụng hình học của tích phân | Ứng dụng tích phân - Toán thực tế (48)
+    yêu cầu: Vận dụng được tích phân để giải quyết một số bài toán thực tế liên quan đến diện tích hình phẳng và các đại lượng kinh tế.
+  4qcg TLN 3 | Một công ty quảng cáo muốn làm một bức tranh trang trí hình MNEIF ở chính giữa của một bức tường hình chữ nhật
+  wszr TLN 3 | Một chiếc đèn cói có hình như bên. Nếu cắt đèn bằng mặt phẳng song song với mặt đáy và cách mặt đáy một khoảng
+  0qk4 TLN 3 | Một chiếc lều mái vòm có hình dạng như hình bên. Nếu cắt lều bằng mặt phẳng song song với mặt đáy và cách mặt 
+  zbyt TLN 3 | Người ta dự định lắp kính cho cửa của một mái vòm có dạng hình parabol. Hãy tính diện tích mặt kính cần lắp và
+  s9bp DS 3 | Giả sử lợi nhuận biên (tính bằng triệu đồng) của một sản phẩm được mô hình hóa bằng công thức P'(x) = -0.0008x
+  s7bw TLN 4 | Một bình hoa có dạng khối tròn xoay với chiều cao là 25cm (tham khảo hình vẽ). Khi cắt bình hoa theo một mặt p
+  sbcj TLN 3 | Từ hình chữ nhật ABCD có chiều dài AB = 10 cm và chiều rộng BC = 5 cm; Người ta cắt bỏ miền (R) được giới hạn 
+  1j6z TLN 3 | Một viên gạch hoa hình vuông cạnh 60 (cm). Người thiết kế đã sử dụng bốn đường parabol có chung đỉnh tại tâm v
+  z05n NLC 1 | Vận tốc của một vật chuyển động là v(t) = 3t^2 + 5 (m/s). Quãng đường vật đó đi được từ giây thứ 4 đến giây th
+  x89q NLC 2 | Giả sử lợi nhuận biên (tính bằng triệu đồng) của một sản phẩm được mô hình hóa bằng công thức P'(x) = -0.0004x
+  j9k3 NLC 2 | Giả sử vận tốc v của dòng máu ở khoảng cách r từ tâm của động mạch bán kính R = 9, có thể được mô hình hóa bởi
+  5ya2 NLC 2 | Một ô tô đang chạy với vận tốc 10 m/s thì gặp chướng ngại vật, người lái xe đạp phanh. Từ thời điểm đó, ô tô c
+  nypt DS 3 | Một chất điểm chuyển động trên đường thẳng nằm ngang (chiều dương hướng sang phải) với gia tốc phụ thuộc vào t
+  9im7 DS 3 | Ở nhiệt độ 37^\circ C, một phản ứng hóa học từ chất đầu A, chuyển hóa thành chất sản phẩm B theo phương trình:
+  o5t8 NLC 3 | Một chất điểm A xuất phát từ O, chuyển động thẳng với vận tốc biến thiên theo thời gian bởi quy luật v(t) = \f
+  l23d NLC 2 | Một ô tô bắt đầu chuyển động nhanh dần đều với vận tốc v_1(t) = 2t (m/s). Đi được 12 giây, người lái xe gặp ch
+  mm0f NLC 2 | Một chất điểm đang chuyển động với vận tốc v_0 = 15 m/s thì tăng tốc với gia tốc a(t) = t^2 + 4t (m/s^2). Tính
+  llhu NLC 2 | Một chiếc máy bay chuyển động trên đường băng với vận tốc v(t) = t^2 + 10t (m/s) với t là thời gian được tính 
+  7e9r NLC 2 | Một ô tô bắt đầu chuyển động nhanh dần đều với vận tốc v_1(t) = 7t (m/s). Đi được 5s, người lái xe phát hiện c
+  7y3q NLC 2 | Một người chạy trong 2 giờ, vận tốc v (km/h) phụ thuộc vào thời gian t (h) có đồ thị là một phần của đường Par
+  wnco NLC 2 | Một vật chuyển động trong 3 giờ với vận tốc v (km/h) phụ thuộc thời gian t (h) có đồ thị là một phần của đường
+  3eu2 TLN 4 | Một bồn hình trụ đang chứa dầu, được đặt nằm ngang, có chiều dài bồn là 5 m, có bán kính đáy 1 m. Người ta đã 
+  f55v DS 4 | Người ta chế tác một giọt nước bằng thủy tinh. Biết giọt nước thủy tinh này là vật thể tròn xoay khi xoay hình
+  6scw TLN 2 | Một vật chuyển động chậm dần với vận tốc v(t) = 160 - 10t (m/s). Hỏi rằng trong 3s trước khi dừng hẳn vật di c
+  h1os TLN 2 | Một xe mô tô phân khối lớn đang chạy với vận tốc 10m/s thì tăng tốc với gia tốc được biểu diễn bởi phương trìn
+  erpa TLN 3 | Một vật chuyển động dọc theo một đường thẳng sao cho vận tốc của nó tại thời điểm t (giây) là v(t) = t^2 - t -
+  147x TLN 2 | Một chiếc xe ô tô đang chạy trên đường cao tốc với vận tốc 72km/h thì tài xế bất ngờ đạp phanh làm cho chiếc ô
+  3wtd TLN 2 | Công ty vừa đưa vào một dây chuyền sản xuất để chế tạo máy tính mới. Sau vài tuần, sản lượng đạt được q(t) = 4
+  7yty TLN 2 | Việc thở là những vòng tuần hoàn, mỗi vòng tính từ lúc bắt đầu hít vào đến lúc kết thúc thở ra, thường kéo dài
+  6zh4 TLN 2 | Một lực có độ lớn 40 N cần thiết để kéo căng một chiếc lò xo có độ dài tự nhiên 10 cm lên 15 cm. Biết rằng the
+  ofzt DS 3 | Sau khi xuất phát, ô tô di chuyển với tốc độ v(t) = 2.01t - 0.025t^2 (0 \le t \le 10). Trong đó v(t) tính theo
+  yljz TLN 4 | Có một cốc nước thủy tinh hình trụ, bán kính trong lòng đáy cốc là 6 cm, chiều cao lòng cốc là 10 cm đang đựng
+  22ve TLN 3 | Mặt cắt ngang của một ống dẫn khí nóng là hình vành khuyên như hình vẽ, khi bên trong ống được duy trì ở 150^\
+  36to NLC 3 | Tính thể tích chứa được (dung tích) của một cái chén (bát), biết phần trong của nó có dạng khối tròn xoay được
+  pu6n TLN 3 | Một Chi đoàn thanh niên đi dự trại ở một đơn vị bạn, họ dự định dựng một lều trại có dạng parabol (nhìn từ mặt
+  ziui TLN 4 | Một thùng rượu (xét phần bên trong) có 2 đáy là các hình tròn với bán kính là 30 cm, thiết diện (P) vuông góc 
+  emh4 NLC 4 | Từ một quả cầu bằng đá trắng sứ bán kính bằng 1 dm, người ta khoan rút lõi ngay "chính giữa" quả cầu (trục đối
+  l0cd NLC 3 | Một ô tô bắt đầu chuyển động thẳng đều với vận tốc v_0, sau 6 giây chuyển động thì gặp chướng ngại vật nên bắt
+  znhs NLC 2 | Để đảm bảo an toàn khi lưu thông trên đường, các xe ô tô khi dừng đèn đỏ phải cách nhau tối thiểu 1m. Một ô tô
+  kamu TLN 3 | Hiệu suất của tim là lưu lượng máu được bơm bởi tim trên một đơn vị thời gian (lưu lượng máu chảy vào động mạc
+  3m7e TLN 4 | Xét phần bên trong của một thùng rượu là một khối tròn xoay có 2 đáy là hình tròn bằng nhau và có chiều cao là
+  5yc1 TLN 3 | Người ta cần làm một cái cửa nhà hình parabol có chiều cao từ mặt đất đến đỉnh là 2,25 mét, chiều rộng tiếp gi
+  8468 NLC 3 | Tính thể tích chứa được của một cái chậu inox to mà khách hàng đặt theo kích thước yêu cầu, biết phần trong củ
+  sscy TLN 4 | Để trang trí cho một phòng trong một tòa nhà, người ta vẽ lên tường một hình như sau: trên mỗi cạnh của hình l
+  4i5u NLC 3 | Một bác thợ gốm làm một cái chậu trồng cây, phần trong chậu cây có dạng khối tròn xoay được tạo thành khi quay
+  4rl3 DS 4 | Một ly trà sữa dạng hình nón cụt, có đường kính đáy ly 6 cm, đường kính miệng ly 9 cm, chiều cao 13{,}4 cm, ở 
+  3syi TLN 4 | Hình elip được ứng dụng nhiều trong thực tiễn, đặc biệt là kiến trúc, xây dựng, thiết bị nội thất,... Mặt tron
+  c0tt DS 4 | Chướng ngại vật "tường cong" trong một sân thi đấu thể thao là một khối bê tông có chiều cao từ mặt đất lên là
+
+### [19] Bài 3. Ứng dụng hình học của tích phân | Bài toán tổng hợp đồ thị hàm số (22)
+    yêu cầu: Giải quyết được bài toán biện luận số giao điểm của hai đồ thị hàm số bằng cách sử dụng các phép biến đổi đại số và khảo sát hàm số.
+  yh5k NLC 3 | Cho hàm số y = f(x) có đồ thị y = f'(x) cắt trục Ox tại ba điểm có hoành độ a < b < c như hình sau. ![Hình ảnh
+  s6ba NLC 2 | Cho hàm số y = f(x) liên tục và có đồ thị trên đoạn [-2; 5] như hình sau. ![Hình ảnh](https://cmjithgtecypxmis
+  5axd DS 3 | Cho hàm số y = e^x có đồ thị (C).
+  gza5 NLC 3 | Trong mặt phẳng Oxy cho hình vuông OABC có cạnh bằng 4 như hình sau ![Hình ảnh](https://cmjithgtecypxmisbzvw.s
+  ud0u DS 2 | Cho hàm số y = f(x) liên tục và có đồ thị như hình sau. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/s
+  dnqt DS 3 | Cho hàm số bậc hai y = -x^2 + 5x và đường thẳng y = 2x.
+  e4co DS 3 | Cho hình phẳng (H) giới hạn bởi các đường y = x^2 - 4x + 4 \ (C_1), y = 4x - 12 \ (C_2).
+  2ud2 DS 3 | Gọi H là hình phẳng giới hạn bởi các đồ thị hàm số y = \sqrt{x}, y = 2e^x và hai đường thẳng x = 0, x = 4.
+  uzw8 DS 3 | Cho hình phẳng (H) giới hạn bởi đồ thị hàm số y = \sqrt{x}, trục hoành Ox và hai đường thẳng x = 0, x = 4.
+  j5o4 DS 3 | Cho hình phẳng được tô trong hình bên dưới. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/ob
+  dpl8 DS 3 | Cho hình phẳng (H) giới hạn bởi đồ thị hàm số y = f(x) = \frac{x + 1}{x}, trục hoành và hai đường thẳng x = 2,
+  6n32 DS 3 | Cho hình phẳng (H) giới hạn bởi các đường y = 2x^2 (C_1), y^2 = 4x (C_2). Khi đó:
+  le9k DS 3 | Cho hàm số y = f(x) liên tục trên {R} và có đồ thị là đường cong trong hình ![Hình ảnh](https://cmjithgtecypxm
+  katx NLC 2 | Miền tô đậm ở trong hình vẽ bên ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/
+  waxv DS 4 | Giả sử chiếc nón rộng vành sau có thể mô hình hóa bằng cách cho hình phẳng (H) giới hạn bởi đồ thị hàm số y = 
+  ezet DS 2 | Cho các hàm số y = f(x), y = g(x) liên tục trên đoạn [0; 1] và có đồ thị như hình sau. Hình phẳng (H) giới hạn
+  p2r3 DS 3 | Cho hàm số đa thức y = f(x) có đồ thị y = f'(x) như hình vẽ sau. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supa
+  85rt DS 2 | Cho hàm số f(x) liên tục trên {R}. Gọi S là diện tích hình phẳng giới hạn bởi các đường y = f(x), y = 0, x = -
+  n2mi DS 3 | Cho hình phẳng (H) được tô đậm trong hình dưới đây. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/stora
+  9w4d TLN 4 | Cho hàm số y = x^4 - 3x^2 + m có đồ thị (C) với m là tham số. Giả sử (C) cắt trục Ox tại 4 điểm phân biệt như 
+  soqg DS 2 | Cho hàm số y = f(x) liên tục và có đồ thị trên đoạn [-4; 4] như hình sau: ![Hình ảnh](https://cmjithgtecypxmis
+  90tb DS 3 | Một cái trứng khủng long đồ chơi là một khối tròn xoay được tạo thành từ 2 mảnh ghép lại. Biết mảnh trên được 
+
+### [20] Bài 4. Ôn tập chương | Tính tích phân (1)
+    yêu cầu: Thực hiện được việc tính tích phân của một số hàm số cơ bản và hàm số phân nhánh bằng phương pháp đổi biến hoặc phân đoạn.
+  57me NLC 2 | Cho hàm số f(x) liên tục và có đạo hàm trên [-1;2]. Biết f(-1) = 1, f(2) = 10, tính tích phân \int_{-1}^2 [2x 
+
+### [21] Bài 4. Ôn tập chương | Ứng dụng tích phân - Toán thực tế (6)
+    yêu cầu: Giải quyết được một số bài toán thực tiễn về tính diện tích hoặc tối ưu hóa đại lượng bằng cách sử dụng tích phân.
+  iebp DS 3 | Một chiếc cổng có dạng là một parabol (P) có kích thước như hình vẽ, biết chiều cao cổng bằng chiều rộng của c
+  t9f6 NLC 2 | Một vật chuyển động với vận tốc v(t) = 1 + \sin t (m/s). Quãng đường vật di chuyển trong khoảng thời gian từ t
+  q531 TLN 3 | Một cốc rượu có hình dạng tròn xoay (không kể phần chân đế) có kích thước như hình vẽ bên dưới. ![Hình ảnh](ht
+  4qou TLN 2 | Một ô tô đang chạy với vận tốc 20 (m/s) thì người ta nhìn thấy một chướng ngại vật nên đạp phanh. Từ thời điểm
+  fqhv TLN 4 | Một chi tiết máy hình đĩa tròn có dạng như hình vẽ bên ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/st
+  v9ba TLN 4 | Mặt trong của một hầm biogas có hình dạng là một phần của mặt cầu đã cắt bỏ hai phần của nó bằng hai mặt phẳng
+
+### [22] Bài 4. Ôn tập chương | Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng (1)
+    yêu cầu: Tính được diện tích hình phẳng giới hạn bởi đồ thị của hai hàm số và hai đường thẳng vuông góc với trục hoành.
+  c0dw DS 2 | Cho đồ thị như hình vẽ ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_im
+
+### [23] Bài 4. Ôn tập chương | Tính tích phân bằng định nghĩa và nguyên hàm cơ bản (4)
+    yêu cầu: Tính được tích phân của một số hàm số bằng cách sử dụng định nghĩa, tính chất và bảng nguyên hàm cơ bản.
+  visz NLC 2 | Cho hàm số y = f(x) liên tục trên [1;9], thỏa mãn \int_1^9 f(x) dx = 24 và \int_4^5 f(x) dx = 7. Tính giá trị 
+  56sg NLC 1 | Cho hàm số f(x) liên tục trên {R} và \int_{-1}^0 f(x) dx = 3, \int_0^3 f(x) dx = 3. Tích phân \int_{-1}^3 f(x)
+  kqqg NLC 2 | Cho hàm số y = f(x) có đồ thị như hình bên ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/obj
+  vgge NLC 1 | Cho \int_2^5 f(x) dx = 10. Khi đó \int_2^5 4f(x) dx bằng:
+
+### [24] Bài 4. Ôn tập chương | Bài toán tổng hợp đồ thị hàm số (1)
+    yêu cầu: Giải quyết được bài toán liên quan đến sự tương giao của hai đồ thị hàm số và các tính chất hình học của đồ thị.
+  me9c DS 3 | Cho hàm số y = f(x) có đạo hàm liên tục trên {R}, có thị hàm số y = f'(x) như hình vẽ bên. ![Hình ảnh](https:/
+
+### [25] Bài 4. Ôn tập chương | Tìm họ nguyên hàm của hàm số (3)
+    yêu cầu: Tính được họ nguyên hàm của một số hàm số phân thức, hàm số lũy thừa và hàm số mũ bằng các phép biến đổi cơ bản.
+  okxn NLC 1 | Hàm số F(x) = \log x là nguyên hàm của hàm số:
+  2mr3 NLC 1 | Họ nguyên hàm của hàm số f(x) = 2x^2 là:
+  gxsg DS 2 | Cho F(x); G(x) lần lượt là một nguyên hàm của hàm số f(x) = x\sqrt{x} + 8; g(x) = 5^x - e^x. Các mệnh đề sau đ
+
+### [26] Bài 4. Ôn tập chương | Tìm hàm số khi biết đạo hàm (tìm hàng số C) (1)
+    yêu cầu: Xác định được một nguyên hàm cụ thể của hàm số thỏa mãn điều kiện cho trước bằng cách tìm hằng số tích phân.
+  pya8 NLC 2 | Cho F(x) là một nguyên hàm của hàm số f(x) = x^2 - 2x + 3 thỏa mãn F(0) = 2, giá trị của F(1) bằng
+
+### [27] Bài 4. Ôn tập chương | Tính thể tích khối tròn xoay (2)
+    yêu cầu: Tính được thể tích của khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi các đường cho trước quanh trục hoành.
+  jjk8 TLN 3 | Thể tích vật thể tròn xoay tạo bởi phép quay xung quanh trục Ox hình phẳng giới hạn bởi các đường y = 0, y = \
+  fdb3 NLC 1 | Gọi V là thể tích khối tròn xoay được tạo thành khi cho hình phẳng giới hạn bởi các đường y = e^x, y = 0, x = 
+
+### [28] Bài 4. Ôn tập chương | Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng (1)
+    yêu cầu: Tính được diện tích hình phẳng giới hạn bởi đồ thị của một hàm số, trục hoành và hai đường thẳng đứng.
+  hnkj TLN 2 | Cho hình vuông OABC có cạnh bằng 4 được chia thành hai phần bởi đường cong (C) có phương trình y = \frac{1}{4}

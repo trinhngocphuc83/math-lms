@@ -1,0 +1,213 @@
+Chương 3. Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm · lớp 12 · 9 dạng · 184 câu
+
+
+### [1] Bài 1. Khoảng biến thiên và khoảng tứ phân vị | Tìm khoảng biến thiên của mẫu số liệu ghép nhóm (42)
+    yêu cầu: Tính được khoảng biến thiên của mẫu số liệu ghép nhóm để so sánh độ phân tán của các mẫu số liệu.
+  4uuk DS 2 | Thu nhập theo tháng (đơn vị: triệu đồng) của 20 người lao động ở ba nhà máy như sau: Xét tính đúng/sai các mện
+  3bru TLN 3 | Chỉ số AQI là chỉ số thể hiện chất lượng không khí. Có 5 thông số ảnh hưởng đến chỉ số AQI là Ozone mặt đất, ô
+  qfw7 TLN 3 | Bảng thống kê chiều cao (cm) của 40 bạn học sinh lớp 12A1 ở bảng sau: ![Hình ảnh](https://cmjithgtecypxmisbzvw
+  u313 NLC 1 | Một công ty cung cấp nước sạch thống kê lượng nước các hộ gia đình trong một khu vực tiêu thụ trong một tháng 
+  gj57 NLC 1 | Kết quả khảo sát cân nặng của 1 thùng táo ở một lô hàng cho trong bảng sau: ![Hình ảnh](https://cmjithgtecypxm
+  e2iu NLC 3 | Điểm kiểm tra 15 phút của 36 học sinh lớp 11A được cho bởi bảng tần số ghép nhóm sau: \begin{array}{|c|c|} \hl
+  qz0k DS 2 | Thời gian chờ khám bệnh của hai phòng khám 1 và phòng khám 2 ở thành phố X được cho trong bảng sau: Xét tính đ
+  9j7n NLC 2 | Điều tra về khối lượng 27 củ khoai tây (đơn vị: gam) thu hoạch tại nông trường, ta có kết quả sau: \begin{arra
+  oz8s NLC 1 | Bạn Linh thống kê chiều cao (đơn vị: cm) của các bạn học sinh nữ lớp 12A và lớp 12B ở bảng sau: \begin{array}{
+  kc3k TLN 2 | Thống kê số thẻ vàng của mỗi câu lạc bộ trong giải ngoại hạng Anh mùa giải 2021 – 2022 cho kết quả như sau: Tí
+  5wyx DS 2 | Người ta theo dõi sự thay đổi cân nặng, được tính bằng hiệu cân nặng trước và sau ba tháng áp dụng chế độ ăn k
+  nkgm NLC 2 | Thời gian và số ngày tập thể dục của bác T và bác H trong một tháng (30 ngày) được thống kê theo bảng dưới đây
+  tgjn TLN 2 | Thống kê số thẻ vàng của mỗi câu lạc bộ trong giải ngoại hạng Anh mùa giải 2021 – 2022 cho kết quả sau: (Theo 
+  6u08 NLC 1 | Cho bảng số liệu khảo sát về tuổi thọ (đơn vị: nghìn giờ) của hai loại bóng đèn: ![Hình ảnh](https://cmjithgte
+  6sxi DS 2 | Để chuẩn bị mở một trung tâm thể dục thể thao, ông A đã tiến hành điều tra tuổi thọ (đơn vị tính bằng năm) của
+  hubl NLC 1 | Bảng sau thống kê khối lượng một số quả măng cụt được lựa chọn ngẫu nhiên trong một thùng hàng. ![Hình ảnh](ht
+  m3q9 NLC 1 | Tìm hiểu thời gian hoàn thành một bài tập (đơn vị: phút) của một số học sinh thu được kết quả sau: ![Hình ảnh]
+  8b9i NLC 2 | Ta có bảng sau về thời gian tập thể dục buổi sáng của bác Bình và bác An: ![Hình ảnh](https://cmjithgtecypxmis
+  mt5z TLN 2 | Bạn Trang thống kê lại chiều cao (đơn vị: cm) của các bạn học sinh nữ lớp 12C ở bảng sau: Bạn Trang nhận xét n
+  fgyq TLN 3 | Bảng thống kê nhiệt độ (C) cao nhất trong các ngày của tháng 7 tại tỉnh Hà Tĩnh trong năm 2024 cho ở bảng sau:
+  rtll TLN 3 | Thời gian tập luyện trong một ngày (tính theo giờ) của một số vận động viên được ghi lại ở bảng sau: ![Hình ản
+  n3om NLC 2 | Thâm niên công tác của các công nhân hai nhà máy A và B được cho trong bảng sau ![Hình ảnh](https://cmjithgtec
+  0vbu NLC 1 | Một công ty xây dựng khảo sát khách hàng xem họ có nhu cầu mua nhà ở mức giá nào. Kết quả khảo sát được ghi lạ
+  mdny NLC 1 | Thống kê chỉ số chất lượng không khí (AQI) tại một địa điểm vào các ngày trong tháng 6/2022 được cho trong bản
+  1zbg NLC 1 | Khảo sát thời gian xem ti vi trong một ngày của một số học sinh khối 11 thu được mẫu số liệu ghép nhóm sau: ![
+  8649 NLC 1 | Biết  Q_1, Q_2, Q_3 là tứ phân vị thứ nhất, tứ phân vị thứ hai và tứ phân vị thứ ba của một mẫu số liệu ghép n
+  p785 NLC 1 | Thống kê thời gian sử dụng mạng xã hội trong ngày của các bạn học sinh tổ 1 và tổ 2 lớp 12A thu được bảng sau:
+  ffab TLN 2 | Bạn Lộc thống kê lại chiều cao (đơn vị: cm) của các bạn nam lớp 12A và lớp 12B ở bảng sau. Khoảng biến thiên c
+  xint NLC 2 | Bạn Lan thống kê lại chiều cao (đơn vị: cm) của các học sinh nữ lớp 10B và lớp 10C ở bảng sau. ![Hình ảnh](htt
+  fl10 NLC 2 | Kết quả khảo sát cân nặng của 40 quả cam Canh ở mỗi lô hàng 1 và lô hàng 2 được cho ở bảng sau ![Hình ảnh](htt
+  fdu3 NLC 2 | Trong kỳ thi chọn học sinh giỏi ở cụm trường THPT A, môn Toán có 25 học sinh tham gia kết quả điểm bài thi của
+  pshv NLC 2 | Số đặc trưng nào sau đây **không** sử dụng để đo mức độ phân tán của mẫu số liệu ghép nhóm?
+  n3p2 NLC 1 | Bảng dưới đây thống kê cân nặng (gam) của 100 quả xoài cát Hòa Lộc sau khi thu hoạch tại một khu vườn: ![Hình 
+  ippi TLN 1 | Bảng tần số ghép nhóm dưới đây thể hiện kết quả điều tra về tuổi thọ trung bình của nam giới ở 50 quốc gia. Hã
+  hg47 NLC 1 | Kết quả khảo sát năng suất (đơn vị: tấn/ha) của một số thửa ruộng được minh họa ở biểu đồ sau: Năng suất lúa c
+  i6hn NLC 1 | Bảng thống kê chiều cao của 40 mẫu cây ở một vườn thực vật (đơn vị: centimét) ![Hình ảnh](https://cmjithgtecyp
+  uh50 NLC 1 | Cho bảng số liệu khảo sát về tuổi thọ (đơn vị: nghìn giờ) của một loại bóng đèn: ![Hình ảnh](https://cmjithgte
+  par6 NLC 1 | Người ta thống kê tốc độ của một số xe ôtô đi chuyển qua một trạm kiểm soát trên đường cao tốc trong một khoản
+  t32t NLC 2 | Kết quả điều tra về số giờ làm thêm trong một tuần của 100 sinh viên được cho ở biểu đồ sau: Khoảng biến thiên
+  10w3 NLC 1 | Giáo viên chủ nhiệm thống kê chiều cao (đơn vị cm) của các bạn học sinh nữ của lớp 12A ở bảng sau: ![Hình ảnh]
+  z52s NLC 1 | Đường đi bộ mỗi ngày (đơn vị: km) của bác Hương trong 20 ngày được thống kê lại ở bảng sau: Khoảng biến thiên 
+  oigf NLC 1 | Có bao nhiêu nhận xét đúng trong các nhận xét sau : (1) Khoảng biến thiên của mẫu số liệu ghép nhóm luôn luôn 
+
+### [2] Bài 1. Khoảng biến thiên và khoảng tứ phân vị | Toán tổng hợp (4)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm.
+  y390 DS 3 | Giả sử kết quả khảo sát hai khu vực A và B về độ tuổi kết hôn của một số phụ nữ vừa lập gia đình được cho ở bả
+  af7v DS 3 | Bảng tần số ghép nhóm dưới đây thống kê số giờ ngủ buổi tối của các học sinh lớp 12A1 và 12A2: ![Hình ảnh](htt
+  wh0q DS 3 | Cho bảng mẫu số liệu ghép nhóm về mức lương của hai công ty A và B (đơn vị: triệu đồng) như sau: ![Hình ảnh](h
+  a6r9 DS 3 | Thời gian (phút) truy cập Internet mỗi buổi tối của một số học sinh được cho ở bảng sau: ![Hình ảnh](https://c
+
+### [3] Bài 1. Khoảng biến thiên và khoảng tứ phân vị | Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ (50)
+    yêu cầu: Tính được các tứ phân vị và khoảng tứ phân vị của mẫu số liệu ghép nhóm.
+  xcxg NLC 2 | Khảo sát thời gian tập thể dục trong ngày của một số học sinh khối 11 thu được mẫu số liệu ghép nhóm sau: Nhóm
+  jw04 NLC 2 | Bạn Trang thống kê lại chiều cao (đơn vị: cm) của các bạn học sinh nữ lớp 12C và lớp 12D ở bảng sau: ![Hình ản
+  1hm7 NLC 2 | Bảng sau thống kê cân nặng của 50 quả xoài Thanh Ca được lựa chọn ngẫu nhiên sau khi thu hoạch ở một nông trườ
+  4yhn NLC 2 | Một phòng khám thống kê số bệnh nhân đến khám bệnh mỗi ngày trong tháng 4 năm 2022 ở bảng sau. ![Hình ảnh](htt
+  sa93 NLC 2 | Bảng tần số ghép nhóm dưới đây thể hiện kết quả điều tra về tuổi thọ trung bình của nam giới và nữ giới ở 50 q
+  see8 TLN 3 | Bảng tần số ghép nhóm dưới đây thể hiện kết quả điều tra về tuổi thọ trung bình: Tính khoảng tứ phân vị của mẫ
+  u7qa NLC 2 | Cho mẫu số liệu ghép nhóm về độ tuổi của dân cư của khu phố A như sau ![Hình ảnh](https://cmjithgtecypxmisbzvw
+  y0f7 NLC 1 | Cho mẫu số liệu ghép nhóm về thời gian (phút) đi từ nhà đến nơi làm việc của các nhân viên của một công ty như
+  8rc5 DS 2 | Thống kê thu nhập theo tháng (đơn vị: triệu đồng) của một nhóm người chạy Grab được cho trong bảng sau: Xét tí
+  7be3 TLN 2 | Biểu đồ dưới đây biểu diễn số lượt khách hàng đặt bàn qua hình thức trực tuyến mỗi ngày trong quý III năm 2022
+  oi3h NLC 3 | Các bạn học sinh lớp 12A5 trả lời 40 câu hỏi trong một bài kiểm tra. Kết quả số câu trả lời đúng được thống kê
+  uddg NLC 2 | Kết quả đo chiều cao của 100 cây keo 3 năm tuổi tại một nông trường được cho ở bảng sau: ![Hình ảnh](https://c
+  1pqb DS 3 | Bảng sau thống kê tổng lượng mưa (đơn vị: mm) đo được vào tháng 7 từ năm 2002 đến 2021 tại một trạm quan trắc 
+  rkux DS 3 | Một công ty cung cấp nước sạch thống kê lượng nước các hộ gia đình trong một khu vực tiêu thụ trong một tháng 
+  k8gi DS 2 | Điểm kiểm tra cuối khóa môn Tiếng Anh của hai lớp ở một trung tâm ngoại ngữ được thống kê trong các bảng sau: 
+  kkml NLC 2 | Một hãng xe ôtô thống kê lại số lần gặp sự cố về động cơ của 100 chiếc xe cùng loại sau 2 năm sử dụng đầu tiên
+  zelb NLC 2 | Một mẫu số liệu ghép nhóm có tứ phân vị thứ 1 là 254,9 và tứ phân vị thứ 3 là 417,25 thì điều kiện giá trị ngo
+  c18w NLC 2 | Bảng dưới đây biểu diễn mẫu số liệu ghép nhóm về số tiền (đơn vị: nghìn đồng) mà 12 khách hàng mua sách ở một 
+  vd6y TLN 2 | Cô Hà thống kê lại đường kính thân gỗ của một số cây xoan đào 6 năm tuổi được trồng ở một lâm trường ở bảng sa
+  4uqz TLN 2 | Thời gian sử dụng điện thoại trong một ngày của 30 sinh viên được ghi lại ở bảng sau (đơn vị: phút). Trong các
+  0vn2 NLC 2 | Lương tháng của một số nhân viên một văn phòng được ghi lại như sau (đơn vị: triệu đồng): ![Hình ảnh](https://
+  jwsd TLN 4 | Khảo sát thời gian đọc sách trong ngày của một số học sinh khối 12 thu được mẫu số liệu ghép nhóm sau: ![Hình 
+  08dx TLN 4 | Người ta ghi lại tuổi thọ của một số con ong cho kết quả như sau: ![Hình ảnh](https://cmjithgtecypxmisbzvw.sup
+  5e21 TLN 4 | Doanh thu bán hàng trong 20 ngày của hai cửa hàng được lựa chọn ngẫu nhiên được cho dưới dạng biểu đồ hình cột
+  vd0z NLC 2 | Biểu đồ dưới đây thống kê thời gian tập thể dục buổi sáng mỗi ngày trong tháng 9/2022 của bác Bình và bác An. 
+  1q94 DS 3 | Cho mẫu số liệu thống kê chiều cao của các học sinh lớp 12A1, 12A2 và 12A3 của một trường THPT như bảng sau: X
+  cb42 NLC 2 | Cho mẫu số liệu ghép nhóm về tuổi thọ (đơn vị tính là năm) của một loại bóng đèn mới như sau. Nhóm chứa tứ phâ
+  82to DS 2 | Điểm kiểm tra cuối học kỳ 2 môn Toán (thang điểm 10) của hai lớp 12A và 12B ở một trường THPT được thống kê tr
+  c1ok TLN 3 | Thống kê lượng khách du lịch đến tỉnh Quảng Ninh từ năm 2007 đến năm 2023 cho kết quả như sau (đơn vị: triệu n
+  4bts TLN 2 | Điểm thi môn Toán (thang điểm 100, điểm được làm tròn đến 1) của 60 thí sinh được cho mẫu số liệu ghép nhóm nh
+  4c93 NLC 2 | Số lượng học sinh trên lớp đăng ký tham gia hoạt động Hoa phượng đỏ ở một trường THPT trên địa bàn TP.HCM được
+  vkvg NLC 2 | Đại lượng nào đo độ phân tán của nửa giữa của mẫu số liệu, không bị ảnh hưởng nhiều bởi các giá trị ngoại lệ t
+  pe1j TLN 4 | Cho mẫu số liệu về thời gian (phút) đi từ nhà đến trường của các học sinh trong một lớp 12 của một trường như 
+  oyhq TLN 4 | Chiều dài của 40 bé sơ sinh 12 ngày tuổi được chọn ngẫu nhiên ở viện nhi trung ương được nghiên cứu thống kê ở
+  3y66 NLC 2 | Cho mẫu số liệu ghép nhóm về chiều cao của 25 cây cam giống như sau: ![Hình ảnh](https://cmjithgtecypxmisbzvw.
+  y2fm TLN 3 | Kết quả đo chiều cao của 100 cây keo 3 năm tuổi tại một nông trường được cho ở bảng sau: Trong 100 cây keo trê
+  j4zi DS 3 | Kết quả đo chiều cao của 100 cây keo 3 năm tuổi tại một nông trường được cho ở bảng sau: Các mệnh đề sau đúng 
+  e4hq TLN 2 | Kết quả đo chiều cao của 100 cây keo 3 năm tuổi tại một nông trường được cho ở bảng sau: Hãy xác định khoảng t
+  ocvm NLC 2 | Kiểm tra điện lượng của một số viên pin tiểu do một hãng sản xuất thu được kết quả sau. ![Hình ảnh](https://cm
+  9bb4 NLC 3 | Cân nặng của một số lợn con mới sinh thuộc hai giống A và B được cho ở bảng sau. ![Hình ảnh](https://cmjithgte
+  h5wo NLC 2 | Một mẫu số liệu ghép nhóm có khoảng tứ phân vị là 4,43 và tứ phân vị thứ 3 là \frac{68}{3} thì giá trị ngoại l
+  i6ea NLC 2 | Giả sử kết quả khảo sát hai khu vực A và B về độ tuổi kết hôn của một số phụ nữ vừa lập gia đình được cho ở bả
+  5gxr NLC 1 | Cho bảng số liệu khảo sát về tuổi thọ (đơn vị: nghìn giờ) của một loại bóng đèn: ![Hình ảnh](https://cmjithgte
+  63ar TLN 4 | Điều tra về thời gian (phút) sử dụng Internet mỗi buổi tối của học sinh ở hai lớp tại một trường học ta có hai
+  vms4 NLC 2 | Một người thống kê lại thời gian thực hiện các cuộc gọi điện thoại của người đó trong một tuần ở bảng sau. ![H
+  mr1a NLC 2 | Một vườn thú ghi lại tuổi thọ (đơn vị: năm) của 20 con hổ và thu được kết quả như sau: Nhóm chứa tứ phân vị th
+  u5tw NLC 1 | Kết quả khảo sát năng suất (đơn vị: tấn/ha) của một số thửa ruộng được minh họa ở biểu đồ sau: Năng suất lúa c
+  dlq3 TLN 3 | Khoảng tứ phân vị của mẫu số liệu ghép nhóm được cho ở bảng sau là bao nhiêu? (làm tròn kết quả đến hai chữ số
+  423n TLN 3 | Một trang báo điện tử thống kê thời gian người sử dụng đọc thông tin trên trang trong mỗi lần truy cập ở bảng 
+  buwq TLN 4 | Người ta ghi lại tiền lãi (đơn vị: triệu đồng) của một số nhà đầu tư (với số tiền đầu tư như nhau), khi đầu tư
+
+### [4] Bài 2. Phương sai và độ lệch chuẩn | Toán tổng hợp (2)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm.
+  bcbz DS 3 | Biểu đồ sau mô tả kết quả điều tra về điểm trung bình năm học của học sinh hai trường A và B. Các mệnh đề sau 
+  tmy7 DS 3 | Bác sĩ A điều trị 18 bệnh nhân mỡ máu bằng cách xét nghiệm Cholesterol toàn phần trong buổi sáng điều trị như 
+
+### [5] Bài 2. Phương sai và độ lệch chuẩn | Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm (61)
+    yêu cầu: Tính được phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm cho dưới dạng bảng tần số ghép nhóm.
+  60jw NLC 2 | Mỗi ngày bác Hương đều đi bộ để rèn luyện sức khoẻ. Quãng đường đi bộ mỗi ngày (đơn vị: km) của bác Hương tron
+  o49c TLN 2 | Kết quả 40 lần nhảy xa của vận động viên HUY được thống kê trong bảng sau (đơn vị: mét): \begin{array}{|c|c|} 
+  ljxq TLN 4 | Sau khi điều tra về cân nặng của 40 học sinh trong lớp 12A ở một trường THPT X thu được kết quả trong mẫu ghép
+  udue NLC 2 | Thời gian truy cập Internet mỗi buổi tối của một số học sinh được cho trong bảng sau: ![Hình ảnh](https://cmji
+  e3j0 TLN 2 | Điều tra về số tiền mua sách (đơn vị: nghìn đồng) trong một năm của 50 học sinh trong một trường THPT, người t
+  9t9i NLC 2 | Trong 30 ngày, một nhà đầu tư đã theo dõi giá cổ phiếu của hai công ty G và H vào phiên mở cửa mỗi ngày. Thông
+  usyc DS 2 | Cho mẫu số liệu dưới dạng bảng sau Xét tính đúng/sai các mệnh đề sau:
+  0cr7 NLC 2 | Bộ phận kiểm tra chất lượng sản phẩm dùng máy để đo (chính xác đến 0{,}001 mm) độ dày của một chi tiết máy. Kế
+  s463 TLN 4 | Sau khi điều tra về số học sinh trong 100 lớp học, người ta chia mẫu số liệu đó thành 5 nhóm như sau: \begin{a
+  ggz4 TLN 4 | Thời gian hoàn thành một bài kiểm tra trắc nghiệm của một số học sinh lớp 10 của hai lớp 10A và 10B được ghi l
+  na3j TLN 4 | Kết quả khảo sát thời gian sử dụng liên tục (đơn vị: giờ) từ lúc sạc đầy cho đến khi hết của pin một số máy vi
+  h6ua NLC 2 | Mỗi ngày bác Hương đều đi bộ để rèn luyện sức khỏe. Quãng đường đi bộ mỗi ngày (đơn vị: km) của bác Hương tron
+  k2c7 NLC 2 | Thống kê tổng số giờ nắng trong tháng 9 tại một trạm quan trắc đặt ở Cà Mau trong các năm từ 2002 đến 2021 đượ
+  0cum NLC 2 | Anh An đầu tư số tiền bằng nhau vào hai lĩnh vực kinh doanh A, B. Anh An thống kê số tiền thu được mỗi tháng t
+  miuo NLC 2 | Doanh thu bán hàng trong 20 ngày được lựa chọn ngẫu nhiên của một cửa hàng được ghi lại ở bảng sau (đơn vị: tr
+  ouj1 NLC 2 | Một bác tài xế thống kê lại độ dài quãng đường (đơn vị: km) bác đã lái xe mỗi ngày trong một tháng ở bảng sau:
+  u0nc NLC 2 | Người ta ghi lại tiền lãi (đơn vị: triệu đồng) của một số nhà đầu tư (với số tiền đầu tư như nhau), khi đầu tư
+  93h8 TLN 3 | Thời gian hoàn thành một bài viết chính tả của một số học sinh lớp 4 hai trường X và Y được ghi lại ở bảng sau
+  grjf TLN 3 | Giá đóng cửa của một cổ phiếu là giá của cổ phiếu đó cuối một phiên giao dịch. Bảng sau thống kê giá đóng cửa 
+  jg7p NLC 1 | Khi hai mẫu số liệu ghép nhóm có cùng đơn vị đo và có số trung bình cộng bằng nhau (hoặc xấp xỉ nhau) thì
+  teoj TLN 4 | Bạn Hùng và Nhiên cùng sử dụng vòng đeo tay thông minh để ghi lại số bước chân hai bạn đi mỗi ngày trong một t
+  qugp TLN 2 | Thống kê doanh thu (đơn vị: triệu đô la) của 20 công ty sản xuất ô tô trong năm 2023, người ta có bảng sau: Tí
+  5s3f NLC 1 | Thời gian truy cập Internet mỗi buổi tối (đơn vị: phút) của một số học sinh được thống kê ở bảng sau: ![Hình ả
+  9g1v NLC 2 | Dũng là học sinh rất giỏi chơi rubik, bạn có thể giải nhiều loại khối rubik khác nhau. Trong một lần tập luyện
+  dlk3 NLC 2 | Giá đóng cửa của một cổ phiếu là giá của cổ phiếu đó cuối một phiên giao dịch. Bảng sau thống kê giá đóng cửa 
+  5fg2 NLC 2 | Một câu lạc bộ thể dục thể thao đã ghi lại số giờ các thành viên của mình sử dụng cơ sở vật chất của câu lạc b
+  733h NLC 3 | Biểu đồ dưới đây mô tả kết quả điều tra về mức lương khởi điểm (đơn vị: triệu đồng) của một số công nhân ở hai
+  enr3 DS 1 | Xét mẫu dữ liệu ghép nhóm được cho ở bảng sau với n = n_1 + n_2 + \dots + n_k. Xét tính đúng/sai các mệnh đề s
+  j8gj TLN 2 | Bảng thống kê sau cho biết điện năng tiêu thụ của 30 hộ ở một khu dân cư trong một tháng như sau (đơn vị: kW):
+  hrs4 TL 2 | Điều tra 42 học sinh của một lớp 12 về số giờ tự học ở nhà, người ta có bảng thống kê sau: Tính phương sai của
+  xb9z TLN 2 | Tốc độ của 20 xe hơi khi đi qua một trạm kiểm tra tốc độ (đơn vị: km/h) được thống kê lại như sau.\nHãy tính p
+  8enh DS 3 | Giá đóng cửa của một cổ phiếu là giá của cổ phiếu đó cuối một phiên giao dịch. Bảng sau thống kê giá đóng cửa 
+  v1pa NLC 2 | Phương sai, độ lệch chuẩn của mẫu số liệu ghép nhóm được dùng để đo ... của mẫu số liệu ghép nhóm xung quanh s
+  7pkz NLC 1 | Hai mẫu số liệu ghép nhóm thống kê điểm kiểm tra môn toán ở hai lớp 12A và 12B lần lượt có độ lệch chuẩn là s_
+  q4qk NLC 2 | Một siêu thị thống kê số tiền (đơn vị: chục nghìn đồng) mà 44 khách hàng mua hàng ở siêu thị đó trong một ngày
+  we2j NLC 2 | Phương sai của một mẫu số liệu ghép nhóm cho bởi bảng thống kê dưới đây là: ![Hình ảnh](https://cmjithgtecypxm
+  cub6 DS 2 | Số khách hàng mua bảo hiểm ở từng độ tuổi được thống kê trong bảng số liệu ghép nhóm sau: Xét tính đúng/sai cá
+  arxd NLC 2 | Khảo sát thời gian tự học bài ở nhà của học sinh khối 9 ở trường X, ta thu được bảng sau: ![Hình ảnh](https://
+  w56k NLC 3 | Để so sánh mức độ phân tán của các mẫu số liệu ghép nhóm có cùng số trung bình ta dùng đại lượng nào?
+  hpm7 NLC 2 | Ghi lại tốc độ (đơn vị: km/h) trong 200 lần giao bóng của một vận động viên môn quần vợt cho kết quả như bảng 
+  d5su TLN 4 | Biểu đồ dưới đây thể hiện điểm trung bình môn Toán của học sinh khối 10 của một trường THPT: ![Hình ảnh](https
+  2ii7 NLC 2 | Kết quả khảo sát thời gian sử dụng liên tục (đơn vị: giờ) từ lúc sạc đầy cho đến khi hết của pin một số máy vi
+  zj91 NLC 3 | Thống kê lợi nhuận hàng tháng (đơn vị: triệu đồng) trong 20 tháng của hai nhà đầu tư được cho như sau: Đáp án 
+  hwp0 TLN 3 | Một giống cây xoan đào được trồng tại hai địa điểm A và B. Người ta thống kê đường kính thân của một số cây xo
+  01zj DS 3 | Biểu đồ dưới đây biểu thị kết quả thu thập được về mức tiền (đơn vị: tỷ đồng) của một số khách hàng nợ ở hai n
+  njeh NLC 2 | Bạn Chi rất thích nhảy hiện đại. Thời gian tập nhảy mỗi ngày trong thời gian gần đây của bạn Chi được thống kê
+  ncwn NLC 2 | Một mẫu số liệu có bảng tần số ghép nhóm như sau: ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage
+  n5nr DS 2 | Thời gian (phút) để học sinh hoàn thành một câu hỏi thi được cho như sau: Xét tính đúng/sai các mệnh đề sau:
+  lrap DS 3 | Người ta ghi lại tiền lãi (đơn vị: triệu đồng) của một số nhà đầu tư (với số tiền đầu tư như nhau), khi đầu tư
+  1i5r TLN 3 | Anh An đầu tư số tiền sử dụng vào hai lĩnh vực kinh doanh A, B. Anh An thống kê số tiền thu được mỗi tháng tro
+  fkly NLC 2 | Một siêu thị thống kê số tiền (đơn vị: chục nghìn đồng) mà 44 khách hàng mua hàng ở siêu thị đó trong một ngày
+  25r1 NLC 2 | Ý nghĩa độ lệch chuẩn của mẫu số liệu ghép nhóm
+  ca42 TLN 4 | Một công ty bất động sản Đất Vàng thực hiện cuộc khảo sát khách hàng xem họ có nhu cầu mua nhà ở mức giá nào đ
+  v5st NLC 3 | Quãng đường đi bộ tập thể dục mỗi ngày (đơn vị: km) của bác An trong 20 ngày được thống kê lại ở bảng sau: ![H
+  qj9e NLC 2 | Đo chiều cao các em học sinh khối 10 ta thu được kết quả \begin{array}{|c|c|} \hline \text{Chiều cao (cm)} & \
+  jrhl NLC 2 | Thời gian (phút) truy cập Internet mỗi buổi tối của một số học sinh được cho trong bảng sau: Tổng các giá trị 
+  8ffs NLC 2 | Một vận động viên luyện tập chạy cự li 100 m đã ghi lại kết quả luyện tập như sau: Tìm phương sai của mẫu số l
+  r732 NLC 2 | Bạn Chi rất thích nhảy hiện đại. Thời gian tập nhảy mỗi ngày trong thời gian gần đây của bạn Chi được thống kê
+  1l7s TLN 2 | Thống kê điểm trắc nghiệm môn Tiếng Anh của 40 học sinh, người ta có bảng sau: Tính phương sai của mẫu số liệu
+  5f46 TLN 4 | Bảng dưới đây thống kê cự li ném tạ của một vận động viên. ![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.c
+  e5s6 DS 2 | Số lượng khách hàng nữ mua hàng thời trang trong một ngày của một cửa hàng được thống kê trong bảng tần số ghé
+
+### [6] Bài 3. Ôn tập chương | Tìm khoảng biến thiên của mẫu số liệu ghép nhóm (2)
+    yêu cầu: Xác định được khoảng biến thiên của mẫu số liệu ghép nhóm từ bảng tần số ghép nhóm hoặc biểu đồ tương ứng.
+  54g7 NLC 1 | Biểu đồ dưới đây thống kê thời gian tập thể dục buổi sáng mỗi ngày trong tháng 9/2022 của bác Bình và bác An. 
+  1c66 DS 3 | Bạn Trang thống kê lại chiều cao (đơn vị cm) của các bạn học sinh nữ lớp 12C và 12D ở bảng sau: ![Hình ảnh](ht
+
+### [7] Bài 3. Ôn tập chương | Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ (7)
+    yêu cầu: Xác định được các tứ phân vị, khoảng tứ phân vị và giá trị ngoại lệ của mẫu số liệu ghép nhóm từ bảng tần số.
+  x6dr TLN 4 | Mỗi ngày bác Tâm đều đi bộ để rèn luyện sức khoẻ. Quãng đường đi bộ mỗi ngày của bác Hương trong 20 ngày được 
+  8whq NLC 1 | Gọi  Q_1, Q_2, Q_3 là tứ phân vị của một mẫu số liệu ghép nhóm. Khi đó khoảng tứ phân vị  \Delta_Q của mẫu số 
+  ytm3 TLN 4 | Thời gian hoàn thành một bài tập (đơn vị: phút) của một số học sinh thu được kết quả sau: ![Hình ảnh](https://
+  dqbd NLC 2 | Số lượng đặt bàn của một nhà hàng được cho bởi bảng sau: \begin{array}{|c|c|} \hline \text{Số lượt đặt bàn} & 
+  ia9f NLC 2 | Giả sử kết quả khảo sát khu vực A về độ tuổi kết hôn của một số phụ nữ vừa lập gia đình được cho ở bảng sau: \
+  zab1 TLN 4 | Kết quả đo chiều cao của 200 cây keo 3 năm tuổi ở một nông trường được biểu diễn ở biểu đồ dưới đây ![Hình ảnh
+  n9g6 TLN 3 | Cho bảng số liệu về khối lượng của 30 củ khoai tây thu hoạch từ một thửa ruộng như dưới đây. ![Hình ảnh](https
+
+### [8] Bài 3. Ôn tập chương | Toán tổng hợp (15)
+    yêu cầu: Giải thích được ý nghĩa và xác định được các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm.
+  fvzd DS 3 | Kết quả khảo sát năng suất (đơn vị: tấn/ha) của một số thửa ruộng được minh họa ở biểu đồ sau: ![Hình ảnh](htt
+  x4nw NLC 2 | Một ý nghĩa của khoảng tứ phân vị là
+  obow DS 3 | Kết quả khảo sát mức tiêu thụ điện trong tháng 6 năm 2024 của các hộ dân được minh hoá ở biểu đồ sau ![Hình ản
+  725t DS 3 | Khối lượng của 30 củ khoai tây được thu hoạch ở một nông trại được thống kê như bảng sau: \begin{array}{|c|c|c
+  ql4l DS 3 | Bảng dưới đây cho ta bảng tần số ghép nhóm số liệu thống kê cân nặng của 40 học sinh lớp 12B trong một trường 
+  8am9 DS 3 | Số xe ô tô đi qua một trạm thu phí mỗi phút trong khoảng thời gian từ 10 giờ đến 10 giờ 20 phút sáng được thốn
+  8f1p DS 3 | Thời gian hoàn thành một bài viết chính tả của một số học sinh lớp 4 hai trường X và Y được ghi lại ở bảng sau
+  srt2 DS 3 | Biểu đồ dưới đây thể hiện điểm trung bình môn văn, điểm trung bình môn toán của học sinh lớp 12 của một trường
+  afzo TLN 3 | Các bạn học sinh lớp 12A trả lời 40 câu hỏi trong một bài kiểm tra. Kết quả được thống kê ở bảng sau: ![Hình ả
+  gfnx NLC 2 | Thống kê cân nặng của học sinh lớp 11A cho trong bảng dưới đây: ![Hình ảnh](https://cmjithgtecypxmisbzvw.supab
+  ry26 DS 3 | Một giống cây xoan đào được trồng tại hai địa điểm A và B. Người ta thống kê đường kính thân của một số cây xo
+  shje NLC 2 | Thống kê điểm thi đánh giá năng lực của một trường THPT qua thang điểm 120 môn Toán ![Hình ảnh](https://cmjith
+  rqet DS 3 | Khảo sát thời gian xem điện thoại trong một ngày của một số học sinh khối 12 thu được mẫu số liệu ghép nhóm sa
+  ajib DS 3 | Thống kê chiều cao của tổ 1 và tổ 2 của lớp 10A cho bởi bảng sau: ![Hình ảnh](https://cmjithgtecypxmisbzvw.sup
+  6164 DS 3 | Bảng sau thống kê lại tổng số giờ nắng trong tháng 6 của các năm từ 2002 đến 2021 tại hai trạm quan trắc đặt ở
+
+### [9] Bài 3. Ôn tập chương | Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm (1)
+    yêu cầu: Tính được phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm để so sánh mức độ đồng đều của hai tập dữ liệu.
+  l3c5 DS 3 | Kết quả môn Toán (cùng đề) của học sinh hai lớp 12A và 12B được cho lần lượt bởi mẫu số liệu ghép nhóm ở bảng 

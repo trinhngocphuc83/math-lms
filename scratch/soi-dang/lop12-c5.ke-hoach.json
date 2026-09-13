@@ -1,0 +1,184 @@
+{
+ "lop": "12",
+ "chuong": 5,
+ "dang": [
+  {
+   "bai": "Bài 1. Phương trình mặt phẳng",
+   "cu": null,
+   "moi": "Nhận biết vectơ pháp tuyến, cặp vectơ chỉ phương, điểm thuộc mặt phẳng",
+   "yc": "Xác định được vectơ pháp tuyến, cặp vectơ chỉ phương của mặt phẳng và kiểm tra được điểm thuộc mặt phẳng."
+  },
+  {
+   "bai": "Bài 1. Phương trình mặt phẳng",
+   "cu": "Viết phương trình tổng quát của mặt phẳng",
+   "moi": "Viết phương trình tổng quát của mặt phẳng",
+   "yc": "Viết được phương trình tổng quát của mặt phẳng khi biết điểm và vectơ pháp tuyến, cặp vectơ chỉ phương, ba điểm, hoặc song song, vuông góc với mặt phẳng, đường thẳng cho trước.",
+   "gop": [
+    "Viết phương trình mặt phẳng"
+   ]
+  },
+  {
+   "bai": "Bài 1. Phương trình mặt phẳng",
+   "cu": "Xét vị trí tương đối của hai mặt phẳng",
+   "moi": "Xét vị trí tương đối của hai mặt phẳng",
+   "yc": "Xét được vị trí tương đối (song song, trùng, cắt, vuông góc) của hai mặt phẳng và tìm được tham số thoả điều kiện."
+  },
+  {
+   "bai": "Bài 1. Phương trình mặt phẳng",
+   "cu": "Tính khoảng cách từ một điểm đến mặt phẳng",
+   "moi": "Tính khoảng cách từ một điểm đến mặt phẳng",
+   "yc": "Tính được khoảng cách từ một điểm đến mặt phẳng, giữa hai mặt phẳng song song và vận dụng vào hình chóp, lăng trụ."
+  },
+  {
+   "bai": "Bài 1. Phương trình mặt phẳng",
+   "cu": "Bài toán cực trị",
+   "moi": "Bài toán cực trị liên quan đến mặt phẳng",
+   "yc": "Giải được bài toán cực trị về khoảng cách, thể tích liên quan đến mặt phẳng và điểm."
+  },
+  {
+   "bai": "Bài 1. Phương trình mặt phẳng",
+   "cu": null,
+   "moi": "Bài toán thực tế về phương trình mặt phẳng",
+   "yc": "Vận dụng được phương trình mặt phẳng để giải bài toán thực tế (mái nhà, sân khấu, tấm kính nghiêng)."
+  },
+  {
+   "bai": "Bài 2. Phương trình đường thẳng trong không gian",
+   "cu": "Nhận biết điểm thuộc đường thẳng",
+   "moi": "Nhận biết vectơ chỉ phương, điểm thuộc đường thẳng",
+   "yc": "Xác định được vectơ chỉ phương của đường thẳng và kiểm tra được điểm thuộc đường thẳng."
+  },
+  {
+   "bai": "Bài 2. Phương trình đường thẳng trong không gian",
+   "cu": "Viết phương trình tham số, chính tắc của đường thẳng",
+   "moi": "Viết phương trình tham số, chính tắc của đường thẳng",
+   "yc": "Viết được phương trình tham số, chính tắc của đường thẳng khi biết điểm và vectơ chỉ phương, hai điểm, giao tuyến hai mặt phẳng, hoặc vuông góc với mặt phẳng."
+  },
+  {
+   "bai": "Bài 2. Phương trình đường thẳng trong không gian",
+   "cu": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng",
+   "moi": "Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng",
+   "yc": "Xét được vị trí tương đối giữa hai đường thẳng (song song, cắt, chéo, trùng) và giữa đường thẳng với mặt phẳng, tìm được giao điểm.",
+   "gop": [
+    "Vị trí tương đối, cắt nhau"
+   ]
+  },
+  {
+   "bai": "Bài 2. Phương trình đường thẳng trong không gian",
+   "cu": "Hình chiếu, điểm đối xứng",
+   "moi": "Tìm hình chiếu, điểm đối xứng qua đường thẳng, mặt phẳng",
+   "yc": "Tìm được hình chiếu vuông góc và điểm đối xứng của một điểm qua đường thẳng, mặt phẳng.",
+   "gop": [
+    "Điểm đối xứng, hình chiếu"
+   ]
+  },
+  {
+   "bai": "Bài 2. Phương trình đường thẳng trong không gian",
+   "cu": "Khoảng cách",
+   "moi": "Tính khoảng cách liên quan đến đường thẳng",
+   "yc": "Tính được khoảng cách từ một điểm đến đường thẳng, giữa hai đường thẳng song song và hai đường thẳng chéo nhau.",
+   "gop": [
+    "Khoảng cách giữa hai đường thẳng chéo nhau"
+   ]
+  },
+  {
+   "bai": "Bài 2. Phương trình đường thẳng trong không gian",
+   "cu": "Đường vuông góc chung của hai đường thẳng chéo nhau",
+   "moi": "Đường vuông góc chung của hai đường thẳng chéo nhau",
+   "yc": "Viết được phương trình đường vuông góc chung của hai đường thẳng chéo nhau."
+  },
+  {
+   "bai": "Bài 2. Phương trình đường thẳng trong không gian",
+   "cu": "Bài toán cực trị",
+   "moi": "Bài toán cực trị và nâng cao về đường thẳng",
+   "yc": "Giải được bài toán cực trị, đường phân giác, tâm đường tròn ngoại tiếp và các bài toán nâng cao về đường thẳng trong không gian.",
+   "gop": [
+    "Bài toán tổng hợp (Đường phân giác)",
+    "Tâm đường tròn ngoại tiếp, trục của tam giác"
+   ]
+  },
+  {
+   "bai": "Bài 2. Phương trình đường thẳng trong không gian",
+   "cu": "Bài toán thực tế về phương trình đường thẳng",
+   "moi": "Bài toán thực tế về phương trình đường thẳng",
+   "yc": "Vận dụng được phương trình đường thẳng để giải bài toán thực tế (máy bay, cáp treo, tia sáng, đường giao thông).",
+   "gop": [
+    "Bài toán tổng hợp"
+   ]
+  },
+  {
+   "bai": "Bài 3. Công thức tính góc trong không gian",
+   "cu": "Tính góc giữa hai đường thẳng",
+   "moi": "Tính góc giữa hai đường thẳng",
+   "yc": "Tính được góc giữa hai đường thẳng bằng vectơ chỉ phương trong hệ toạ độ và trong hình chóp, lăng trụ."
+  },
+  {
+   "bai": "Bài 3. Công thức tính góc trong không gian",
+   "cu": "Tính góc giữa đường thẳng và mặt phẳng",
+   "moi": "Tính góc giữa đường thẳng và mặt phẳng",
+   "yc": "Tính được góc giữa đường thẳng và mặt phẳng bằng vectơ chỉ phương và vectơ pháp tuyến."
+  },
+  {
+   "bai": "Bài 3. Công thức tính góc trong không gian",
+   "cu": "Tính góc giữa hai mặt phẳng",
+   "moi": "Tính góc giữa hai mặt phẳng",
+   "yc": "Tính được góc giữa hai mặt phẳng bằng hai vectơ pháp tuyến."
+  },
+  {
+   "bai": "Bài 3. Công thức tính góc trong không gian",
+   "cu": "Toán tổng hợp",
+   "moi": "Xét các mệnh đề về góc trong không gian",
+   "yc": "Xét được tính đúng sai của các mệnh đề và giải được bài toán tổng hợp về góc, khoảng cách trong hình chóp, lăng trụ bằng toạ độ."
+  },
+  {
+   "bai": "Bài 3. Công thức tính góc trong không gian",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về góc trong không gian",
+   "yc": "Vận dụng được công thức tính góc để giải bài toán thực tế (mái nhà, sân khấu, tháp, dốc)."
+  },
+  {
+   "bai": "Bài 4. Phương trình mặt cầu",
+   "cu": "Nhận biết phương trình mặt cầu, tìm tâm và bán kính",
+   "moi": "Nhận biết phương trình mặt cầu, tìm tâm và bán kính",
+   "yc": "Nhận biết được phương trình mặt cầu và xác định được tâm, bán kính từ phương trình."
+  },
+  {
+   "bai": "Bài 4. Phương trình mặt cầu",
+   "cu": "Viết phương trình mặt cầu",
+   "moi": "Viết phương trình mặt cầu",
+   "yc": "Viết được phương trình mặt cầu khi biết tâm và bán kính, đường kính, tâm và tiếp xúc với mặt phẳng, đi qua các điểm."
+  },
+  {
+   "bai": "Bài 4. Phương trình mặt cầu",
+   "cu": "Vị trí tương đối giữa mặt phẳng và mặt cầu",
+   "moi": "Vị trí tương đối giữa mặt phẳng và mặt cầu",
+   "yc": "Xét được vị trí tương đối giữa mặt phẳng và mặt cầu, tìm được tâm và bán kính đường tròn giao tuyến."
+  },
+  {
+   "bai": "Bài 4. Phương trình mặt cầu",
+   "cu": null,
+   "moi": "Bài toán thực tế về mặt cầu",
+   "yc": "Vận dụng được phương trình mặt cầu để giải bài toán thực tế (vùng phủ sóng, vệ tinh, GPS)."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Tổng hợp phương pháp tọa độ không gian (mặt phẳng, đường thẳng, mặt cầu)",
+   "moi": "Bài tập tổng hợp chương 5",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 5 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {
+  "i1uj": [
+   "Bài 2. Phương trình đường thẳng trong không gian",
+   "Bài toán thực tế về phương trình đường thẳng"
+  ],
+  "va25": [
+   "Bài 3. Công thức tính góc trong không gian",
+   "Bài toán thực tế về góc trong không gian"
+  ],
+  "11xv": [
+   "Bài 3. Công thức tính góc trong không gian",
+   "Bài toán thực tế về góc trong không gian"
+  ]
+ }
+}

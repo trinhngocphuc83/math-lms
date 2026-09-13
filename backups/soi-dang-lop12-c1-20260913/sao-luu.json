@@ -1,0 +1,4882 @@
+{
+ "question_categories": [
+  {
+   "id": "e5f0a8fa-d717-4423-a484-9e05d6dfdd28",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được điểm cực trị và giá trị cực trị của hàm số dựa vào bảng biến thiên cho trước."
+  },
+  {
+   "id": "37ea84eb-a4cf-490e-bc2b-980d42f0626a",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Tính được khoảng cách, độ dài đoạn thẳng nối các điểm cực trị của đồ thị hàm số."
+  },
+  {
+   "id": "dae0a837-6e34-4884-8e2b-1f149691fb7c",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến việc tìm cực trị của hàm số."
+  },
+  {
+   "id": "40cc75fa-5ae8-41af-a438-5531d167e3e8",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Tính được tọa độ các điểm cực trị hoặc giá trị cực trị của hàm số cho trước bằng công thức."
+  },
+  {
+   "id": "82b0282b-d4d9-4243-b79d-a179a186c73a",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Nhận biết được tính đơn điệu và các điểm cực trị của hàm số thông qua định nghĩa và các định lí cơ bản."
+  },
+  {
+   "id": "4c53976e-71df-46b3-b03e-0f7f14e8de5f",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được điểm cực trị và giá trị cực trị của hàm số dựa vào đồ thị của hàm số đó."
+  },
+  {
+   "id": "fdc66d06-f2b1-4b47-8a89-604c36dc9c7a",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được các điểm cực trị của hàm số dựa vào đồ thị của hàm số đạo hàm."
+  },
+  {
+   "id": "a9707465-746b-4617-a63e-c2430f65e5d3",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị dựa vào biểu thức đạo hàm",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được các điểm cực trị của hàm số khi biết biểu thức của đạo hàm."
+  },
+  {
+   "id": "c317c02a-a0d4-4e22-8b53-6fefb0219f3d",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Tìm được các khoảng đồng biến, nghịch biến của hàm số cho trước bằng công thức."
+  },
+  {
+   "id": "233141ca-579b-49cf-a0eb-b3b966f7a59e",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được các khoảng đồng biến, nghịch biến của hàm số khi cho bảng biến thiên hoặc bảng xét dấu đạo hàm."
+  },
+  {
+   "id": "116380e4-a0df-45b7-bef3-42a95eb1a3ef",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được các khoảng đồng biến, nghịch biến của hàm số thông qua việc quan sát hình dáng đồ thị hàm số."
+  },
+  {
+   "id": "fe03f6dd-12e0-4e20-b29b-6ffa124e0402",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được các khoảng đồng biến, nghịch biến của hàm số dựa vào việc xét dấu từ đồ thị của đạo hàm."
+  },
+  {
+   "id": "0f60f884-744f-4035-b38a-f4b245db5165",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Tính và xác định được số điểm cực trị của hàm số khi biết công thức giải tích của hàm số đó."
+  },
+  {
+   "id": "36418b3e-755a-43f1-b32b-004ab5870671",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào biểu thức đạo hàm",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được số điểm cực trị, điểm cực đại hoặc điểm cực tiểu của hàm số dựa vào biểu thức đạo hàm cho trước."
+  },
+  {
+   "id": "a1ef580f-3e89-4084-be66-c69f958b4ade",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào bảng biến thiên",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được số điểm cực trị của hàm số dựa vào bảng biến thiên hoặc bảng xét dấu của đạo hàm."
+  },
+  {
+   "id": "78767efd-6ca1-4fc9-b4a6-808187e28a81",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xét được tính đồng biến, nghịch biến của hàm số hoặc tìm tham số để hàm số đơn điệu trên một tập hợp số."
+  },
+  {
+   "id": "621461f1-2197-4299-be11-8ba9f0a04ec4",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng đạo hàm để giải quyết bài toán tối ưu trong thực tiễn liên quan đến hình học không gian."
+  },
+  {
+   "id": "9b0352c1-b45d-476f-9481-4ed6241d27f4",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị lớn nhất và giá trị nhỏ nhất của hàm số trên một khoảng hoặc nửa khoảng cho trước."
+  },
+  {
+   "id": "cb794cfc-1d34-4a17-afd3-97780ec0da9a",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được giá trị lớn nhất và giá trị nhỏ nhất của hàm số dựa vào bảng biến thiên."
+  },
+  {
+   "id": "38b303e7-f391-46dd-82f5-b29d4a5f9118",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng đạo hàm để khảo sát và giải quyết các bài toán thực tiễn khi đã cho trước công thức hàm số."
+  },
+  {
+   "id": "ae351049-07df-4ee0-823c-8417a8355599",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số vấn đề thực tiễn liên quan đến việc tìm giá trị lớn nhất, giá trị nhỏ nhất của hàm số."
+  },
+  {
+   "id": "18f307b3-6e2d-4be9-8f94-5ff879b6bb0d",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị lớn nhất và giá trị nhỏ nhất của hàm số cho trước trên một đoạn xác định."
+  },
+  {
+   "id": "c3615bbe-f410-43ef-aaeb-2be7ced608eb",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được giá trị lớn nhất và giá trị nhỏ nhất của hàm số trên một đoạn dựa vào đồ thị cho trước."
+  },
+  {
+   "id": "24fdab27-081f-4cf2-a298-944aed18c8c0",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tìm được phương trình đường tiệm cận đứng, tiệm cận ngang của đồ thị hàm số phân thức hữu tỉ."
+  },
+  {
+   "id": "a830cc39-2aca-4e10-9031-728ccd56ce5f",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng sự tương giao giữa các đồ thị để biện luận số nghiệm của phương trình chứa tham số."
+  },
+  {
+   "id": "fa21fb4b-acaa-4890-9538-8c2e7a5a8620",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Thiết lập mô hình toán học và khảo sát",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Thiết lập được mô hình hàm số và vận dụng đạo hàm để giải quyết bài toán tối ưu trong thực tiễn."
+  },
+  {
+   "id": "d61a93f2-f19e-4916-9129-0ef394a94515",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Tiếp tuyến và yếu tố hình học",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được đạo hàm để giải quyết một số bài toán liên quan đến tiếp tuyến và đường tiệm cận của đồ thị hàm số."
+  },
+  {
+   "id": "c7912829-e797-44e7-b64e-00a0c7ff60f1",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được giá trị lớn nhất và giá trị nhỏ nhất của hàm số thông qua bảng biến thiên hoặc đồ thị cho trước."
+  },
+  {
+   "id": "e3220998-68e3-4db1-8c0c-611b1f84d05d",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Nhận biết được các hệ số của hàm số phân thức hữu tỉ đơn giản thông qua hình dáng và các đường tiệm cận của đồ thị."
+  },
+  {
+   "id": "9fc87662-6db6-40c7-a488-b3858e406c0f",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Nhận biết và chỉ ra được công thức hàm số tương ứng với đồ thị hoặc bảng biến thiên đã cho."
+  },
+  {
+   "id": "e89b7481-e01c-451b-a49a-c3609088873e",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được đạo hàm và khảo sát hàm số để giải quyết các bài toán tối ưu trong thực tiễn."
+  },
+  {
+   "id": "6db77aed-6815-4567-985d-b7edc0de6a5c",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các tính chất về cực trị, tiệm cận và tâm đối xứng để xác định hệ số hoặc tính chất hàm số."
+  },
+  {
+   "id": "1c5a017a-5821-4c67-b91a-9edd18a87a81",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được sự tương giao và các yếu tố hình học của đồ thị hàm số để giải quyết bài toán liên quan."
+  },
+  {
+   "id": "f4069759-9103-488e-b0b0-2e47aa922ba0",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải quyết được các bài toán thực tế liên quan đến tối ưu hóa kích thước, chi phí bằng ứng dụng đạo hàm."
+  },
+  {
+   "id": "a81ad77d-18b1-4c54-86ec-a93f6cbf541b",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Lý thuyết và định nghĩa",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Nhận biết được định nghĩa đường tiệm cận đứng, tiệm cận ngang của đồ thị hàm số thông qua giới hạn."
+  },
+  {
+   "id": "7062a5ba-af3b-4655-afe6-9276741d7edd",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được phương trình các đường tiệm cận của đồ thị hàm số dựa vào bảng biến thiên hoặc đồ thị."
+  },
+  {
+   "id": "57d6be5d-952f-4a14-8a86-720ed98b7cc7",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được giá trị lớn nhất, giá trị nhỏ nhất của hàm số để giải quyết một số bài toán thực tiễn."
+  },
+  {
+   "id": "f6ebd493-2820-4329-b3f1-b8bf48d106b1",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị của tham số để giá trị lớn nhất hoặc giá trị nhỏ nhất của hàm số thỏa mãn điều kiện cho trước."
+  },
+  {
+   "id": "e5f85308-7bf4-4ef9-930c-91c15d504767",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Ứng dụng thực tế của cực trị",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng giá trị lớn nhất và giá trị nhỏ nhất của hàm số để giải quyết bài toán tối ưu chi phí, lợi nhuận thực tế."
+  },
+  {
+   "id": "3960fbcb-c210-49de-9807-602280095771",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định dấu các hệ số của hàm bậc ba dựa vào đồ thị",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được dấu các hệ số của hàm số bậc ba dựa vào hình dạng và các điểm đặc trưng trên đồ thị."
+  },
+  {
+   "id": "2af45919-2d97-4a43-bdfa-bf5d793369a2",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng tính chất của hàm số và đồ thị để giải quyết bài toán tương giao giữa hai đồ thị."
+  },
+  {
+   "id": "4d003265-664e-44ae-af2b-66be30c32060",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải thích được ý nghĩa và xác định được khoảng tứ phân vị của mẫu số liệu ghép nhóm."
+  },
+  {
+   "id": "a2cc8389-9b96-4208-b23c-29e5eb76243d",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Đọc và giải thích được các thông tin thống kê từ biểu đồ của mẫu số liệu ghép nhóm."
+  },
+  {
+   "id": "ba314fa8-8afe-486c-a331-174be146f569",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải thích được ý nghĩa và đọc hiểu các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm."
+  },
+  {
+   "id": "3964218b-cd15-4618-8d98-05f0ed2e2ecc",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Đọc được các thông tin về tính đơn điệu, cực trị, giá trị lớn nhất và nhỏ nhất từ bảng biến thiên hoặc đồ thị."
+  },
+  {
+   "id": "88bf593e-f437-4ce0-a948-c0363470e565",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào đồ thị đạo hàm",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Xác định được số điểm cực trị và các điểm cực trị của hàm số thông qua đồ thị của hàm số đạo hàm."
+  },
+  {
+   "id": "93fdf1ef-add2-4d0c-8b8b-0f065f1431ff",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị",
+   "created_at": "2026-08-21T05:17:13.698553+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị của tham số để hàm số có các điểm cực trị thỏa mãn điều kiện cho trước."
+  },
+  {
+   "id": "1aebe316-837b-412e-a618-0029f708f859",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu",
+   "created_at": "2026-08-25T08:21:54.257629+00:00",
+   "yeu_cau_can_dat": "Tìm được giá trị của tham số để một hàm số bậc ba đồng biến hoặc nghịch biến trên một khoảng cho trước."
+  },
+  {
+   "id": "0a11d986-9f55-41c8-a756-c6d2bcf3708d",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 1. Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-09-04T06:09:36.737282+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp đạo hàm để xét tính đơn điệu và tìm cực trị của hàm số trong các bài toán nhiều ý."
+  }
+ ],
+ "questions": [
+  {
+   "id": "9e19e144-c96c-401b-ad0b-d10d964e7c14",
+   "question_id": "CH_20260523_222954_1",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "4174acf9-20b0-4735-b37e-b36d8b2d3a6a",
+   "question_id": "CH_20260523_145009_12",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "1efbf9ac-c71e-441e-a1be-a0330f64f777",
+   "question_id": "CH_20260523_153219_9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "d9ece934-af89-4cc7-bdda-440255eacab6",
+   "question_id": "CH_20260523_222954_7",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "1e40f97a-2393-440e-bc55-cdb0db1af1bf",
+   "question_id": "CH_20260523_222954_8",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "9e55c5d8-fda2-4af8-87e2-826bfd79a420",
+   "question_id": "CH_20260523_222954_9",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "96560201-a8ea-4559-8ff9-0d2bbc7c5bbc",
+   "question_id": "CH_20260523_222954_10",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "1fe7f89d-4db5-4eaa-b3d0-403b5b4ed748",
+   "question_id": "CH_20260523_222954_15",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "87a4726c-4dbc-4867-af4e-2effeb02f70d",
+   "question_id": "CH_20260524_170954_2",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "191710d8-c252-4388-8ccc-52c138b4543a",
+   "question_id": "CH_20260524_170954_4",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "6e96120a-9e0c-4d52-9880-ad284334abca",
+   "question_id": "CH_20260525_152221_1",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "adc6241e-1526-4853-aba5-7f4d09acb7cb",
+   "question_id": "CH_20260524_170954_17",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "54537b48-8cda-440f-8df4-4f0e25e92e64",
+   "question_id": "CH_20260525_152221_3",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "bbde5aa5-fa2d-4bf0-a6d2-cd71e409ce36",
+   "question_id": "CH_20260524_170954_3",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "4740060b-88a9-479c-a250-08a4e619e5d0",
+   "question_id": "CH_20260525_155718_4",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "21564611-df5e-4279-a4ec-35f3cbddc2be",
+   "question_id": "CH_20260523_145009_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "98ffa5d4-5e52-45ba-bec8-80b179a7b105",
+   "question_id": "CH_20260529_181342_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "146de45e-dd89-4034-8707-a6b735abf018",
+   "question_id": "CH_20260529_181342_16",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "95146d0c-1c05-4f88-8875-9a725015de51",
+   "question_id": "CH_1781626076042_cq7b",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "de69ac9a-98e0-4896-9b58-3edca9f8c368",
+   "question_id": "CH_20260523_145009_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "0ad874a9-2e80-4374-811b-87aeaffdb55c",
+   "question_id": "CH_20260527_213311_12",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "d27a270e-42af-44ca-b0a9-890ecaa61ff5",
+   "question_id": "CH_20260527_222933_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "8189565e-08a4-41f4-92ec-0e686a655f0d",
+   "question_id": "CH_20260526_181058_2",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "6afc53b6-1055-4b9b-bc33-f5ad9330097d",
+   "question_id": "CH_20260526_181058_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "d0e25b6b-dafd-4d08-b1df-e5488566b289",
+   "question_id": "CH_20260527_225117_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "3510731d-ad6f-48e2-8436-134041115920",
+   "question_id": "CH_1781616262368_sp5w",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "816bac72-00f6-4934-b503-cf2385f4d0e1",
+   "question_id": "CH_20260523_145009_9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "fc3b4286-dc1f-4c88-9c60-77b8c704aab8",
+   "question_id": "CH_20260527_221539_13",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "8d2bf108-9c8f-4159-a5a2-dbe22729c01d",
+   "question_id": "CH_20260526_181058_12",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "a1c78f93-57c0-40b7-b473-db06b345d1f0",
+   "question_id": "CH_20260526_181058_14",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "4cab3868-3102-4e01-9376-be1b051887bb",
+   "question_id": "CH_20260529_181342_8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "8b89c372-32e6-4de3-89d5-8539863ae709",
+   "question_id": "CH_20260529_183548_16",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "a8f0fb01-f111-4832-ae1f-f57101a8d326",
+   "question_id": "CH_20260527_213311_0",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "4b77a39d-4e8d-4297-aa8f-e0fdab4843d7",
+   "question_id": "CH_20260527_213311_2",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "d53eaaa0-e117-4512-b135-78e4fcd9686d",
+   "question_id": "CH_20260523_144103_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "c86aa002-de35-4ce3-a198-ef708e846085",
+   "question_id": "CH_20260527_221539_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "c00fb725-642f-4de9-a6d8-d59274d73edf",
+   "question_id": "CH_20260529_174204_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e10a4048-79f3-4d68-a243-95864e458692",
+   "question_id": "CH_20260529_175819_15",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "fb5f5918-b8a0-4fe3-b202-fa086ac3f28a",
+   "question_id": "CH_1781616262368_dyg0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "45fd49b7-b5a0-4e0c-8615-128cc6f7e2ff",
+   "question_id": "CH_20260527_223508_10",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "1815b15a-8a7e-42e4-9202-a5ef4a5ab4b2",
+   "question_id": "CH_1781625112115_c8tn",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "4e7e008a-24a6-4260-ad58-1336904f64ff",
+   "question_id": "CH_20260527_213311_16",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "569c85c5-a1d0-40f7-83bd-52139dd6a92c",
+   "question_id": "CH_20260529_174204_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "a94d95e0-d504-4053-a6d2-b0c7502268d8",
+   "question_id": "CH_20260527_225117_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "cc5fe6bf-305e-426c-9880-74a0f47dee64",
+   "question_id": "CH_20260527_214919_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "072f02b1-15ce-480d-8d88-6e65d424bd5c",
+   "question_id": "CH_20260529_172300_10",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "343cdab0-2f98-4114-8f9a-8acb0186e806",
+   "question_id": "CH_20260529_182419_17",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "00f86439-4b2f-4cfc-b56d-fa04f2d75998",
+   "question_id": "CH_1781616262368_vr20",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "e1c31660-b6cd-4e65-93b5-efddb0856aa7",
+   "question_id": "CH_1781620499861_5nzw",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "1ac70f12-1039-489c-9266-37cfb607be6f",
+   "question_id": "CH_1781626076042_wpf2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "27d1bb56-9fae-4897-b2f5-dabd5ea96316",
+   "question_id": "CH_1781618730598_x8m0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị"
+  },
+  {
+   "id": "c8778d6c-dabb-479a-a632-07585cf31f4e",
+   "question_id": "CH_1781620499861_ql0m",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị"
+  },
+  {
+   "id": "212f872f-4828-4a49-9fe4-04be2189f34e",
+   "question_id": "CH_1781620499861_auyr",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "c152854c-4104-437d-b106-4a1a888f0ad5",
+   "question_id": "CH_1781620499861_xgu3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "c01b71b8-08f6-4bd9-8be2-37256efa154b",
+   "question_id": "CH_1781620499861_8yvq",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "9a51598a-2097-43a8-a8ab-48b9b65b8889",
+   "question_id": "CH_1781618730598_fj20",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "4f4a6b0a-d0dc-4477-ab88-1fed324d5def",
+   "question_id": "CH_1781618730598_mfbu",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "7e88232d-6638-483a-bff1-6d3a5dfded10",
+   "question_id": "CH_1781625112115_6rca",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "c2afc193-c0ec-49ca-a0ab-0943d6384ee2",
+   "question_id": "CH_1781616262368_mka1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào bảng biến thiên"
+  },
+  {
+   "id": "10a735ab-2570-4ec9-97fb-550ffd989f30",
+   "question_id": "CH_1781616262368_7lff",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "489fbee4-b0dc-4af0-873f-4d94b80a6ca3",
+   "question_id": "CH_1781626076042_dyg0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "fe4fcb99-c44d-426f-99eb-50139edb9ea4",
+   "question_id": "CH_1781620499861_7ddf",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "99170b39-ea29-49cc-a59d-34d6f81b898a",
+   "question_id": "CH_1781620499861_cb36",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "db65e7c5-1775-4cea-91b5-2b0a8a420c12",
+   "question_id": "CH_1781618730598_kxjf",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "35d4dec7-74a6-4e1e-92ff-817b88098d01",
+   "question_id": "CH_1781626076042_iqoz",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "0fe2b6a3-428e-4594-8a3e-bc6ba2091ff0",
+   "question_id": "CH_20260529_172300_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào bảng biến thiên"
+  },
+  {
+   "id": "b3aa177f-bcf5-4167-8750-30cc3a043364",
+   "question_id": "CH_20260527_224114_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "da4910e3-929c-45ad-a887-0b704e3dc8e4",
+   "question_id": "CH_20260527_213311_20",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "90638215-f4e7-40f7-897d-fec53359dc4b",
+   "question_id": "CH_1781625112115_8rrk",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "6f4d89b7-7030-4370-b19e-2cc73d1b66b8",
+   "question_id": "CH_1781625112115_kcpm",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "0d679963-32bf-4034-8ece-799f48addbdb",
+   "question_id": "CH_1781626076042_ni5u",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "55d75a40-7dce-4590-87c9-65603f23e016",
+   "question_id": "CH_1781626076042_eji4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "816995b8-db6a-4f23-a43e-20c32caa1fa9",
+   "question_id": "CH_20260529_183548_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "97a5e791-8244-49a8-8b30-7d70ab33900c",
+   "question_id": "CH_1781625112115_yd9w",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "daed50a6-6fb7-4d07-80ef-9dba83aed83a",
+   "question_id": "CH_20260527_220538_6",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "73e98fa9-4f33-40f6-a069-70f7aa03ad6f",
+   "question_id": "CH_20260527_221539_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "5743e8a1-332b-4f50-b963-7fc2d7ca4f05",
+   "question_id": "CH_20260523_153219_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị"
+  },
+  {
+   "id": "d6a23181-9c72-41dc-9054-ed11fb4cb407",
+   "question_id": "CH_20260527_222609_12",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "fa76a514-998d-4d54-a5a5-903a0f395704",
+   "question_id": "CH_1781618730598_hovl",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "6b2857f8-1ec1-43c0-b63a-538f92af2211",
+   "question_id": "CH_20260527_221539_6",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "101c69c4-3a52-4475-a7db-7972be359954",
+   "question_id": "CH_20260527_221539_15",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "fc1f2ef8-8751-4642-908f-260acdb165b0",
+   "question_id": "CH_1784996119387_6540",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "90488577-850b-45fe-88cb-fc1313dd36a6",
+   "question_id": "CH_1784996119387_ca93",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "a53a9c16-25aa-4d3c-8ad9-905d1ea4c666",
+   "question_id": "CH_20260527_221539_7",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "05fbcef6-22c1-4aaa-91d6-905f480abf93",
+   "question_id": "CH_20260527_221539_8",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "cf1f1507-937e-4f99-95a2-6a932b42b439",
+   "question_id": "CH_20260527_222933_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "ef574a5a-91d5-4eb4-82ac-7ec9ac5d867d",
+   "question_id": "CH_20260527_223508_7",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "d96eb09a-4645-4488-b934-5cd3684bb6c5",
+   "question_id": "CH_20260527_224114_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "7cbc986d-e1e9-4de5-b0e8-77c565e7b9d2",
+   "question_id": "CH_20260527_224114_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e3b86b9b-5f34-4508-8d0f-ff367070ae04",
+   "question_id": "CH_20260527_224114_3",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "6b636aad-3231-467c-b24c-5acef8242b25",
+   "question_id": "CH_20260527_224114_8",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "cc737039-56a9-4c9c-92a8-e164776f2bdc",
+   "question_id": "CH_20260527_224114_12",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "dded2da3-7475-4d47-9e39-aa3de0d1a4ad",
+   "question_id": "CH_20260527_224557_9",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "c97bdf77-1e04-466a-b05b-51a0eecff017",
+   "question_id": "CH_20260527_225117_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "e4f8ca14-7801-4551-b249-27b8d1d966c2",
+   "question_id": "CH_20260527_225117_3",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "e8e01fb5-2a7f-4a73-a153-2066a1719e38",
+   "question_id": "CH_20260527_222933_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "49031e19-1f29-41f2-82d3-1ff31325b2d8",
+   "question_id": "CH_20260523_222954_14",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "198fa1cd-ddc5-491d-acd2-38c2f0c96731",
+   "question_id": "CH_20260527_225117_9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "c14feeff-562a-4f4a-82da-525f88e9df49",
+   "question_id": "CH_20260527_225117_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "9e2bf0b2-3c41-43f6-bcfc-6648ff4ae961",
+   "question_id": "CH_20260527_222933_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "53f5f13f-5f26-49e4-9aa6-46077eca19f7",
+   "question_id": "CH_20260527_224557_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "a4f1e607-ba20-4209-ab11-421f3f95ebc3",
+   "question_id": "CH_20260527_220538_0",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "d932d822-5f86-4087-9c40-7519695c77c6",
+   "question_id": "CH_20260527_223508_9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "c9635465-549f-4a6a-b942-5f8bb6b72440",
+   "question_id": "CH_20260526_181058_15",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "a0bb3db4-63cc-4ab8-b661-35bd1703f852",
+   "question_id": "CH_20260527_214919_12",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "baa6d08f-83d2-4deb-b452-f729a520cf25",
+   "question_id": "CH_20260527_220538_2",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "beeb1f8f-0569-4620-9181-719beceded92",
+   "question_id": "CH_20260529_172300_4",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Lý thuyết và định nghĩa"
+  },
+  {
+   "id": "691ddff1-00d4-4fe1-940a-0397c2224b6c",
+   "question_id": "CH_20260529_172300_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "bec8a45f-602b-4b83-9b8e-94cac8883b61",
+   "question_id": "CH_20260529_180554_2",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "ac2c8287-3861-495c-bb0f-a5a25cbd03a0",
+   "question_id": "CH_20260529_175045_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "b70ffbfb-f9f5-40c0-b3bb-04c8ed4af7dc",
+   "question_id": "CH_20260523_222954_13",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "8e8a16fa-de6b-48dc-9b2b-cde4fcb5292c",
+   "question_id": "CH_20260529_175045_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "6a761fac-079a-4358-a81b-b097119dc5a3",
+   "question_id": "CH_20260529_175045_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "b6acf4fc-8d94-440b-a466-6939f6f922cd",
+   "question_id": "CH_20260527_214919_14",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "2287b931-f6cd-464c-be7c-56611c353c25",
+   "question_id": "CH_20260527_221539_14",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "fe0065c7-2482-4e18-80eb-31761e50cf61",
+   "question_id": "CH_20260529_175045_10",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "171089eb-9772-49e0-a254-1033756a27ec",
+   "question_id": "CH_20260527_214919_15",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "dc1316d9-8b17-4f33-a194-37b311605d38",
+   "question_id": "CH_20260527_220538_3",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "7e7f2cf5-b1bb-4f75-8a37-f8f6342603b6",
+   "question_id": "CH_20260527_225408_1",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "d698bdba-ed37-4b3a-95be-3529aee9adfc",
+   "question_id": "CH_20260529_175819_3",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "991f0f5d-8034-4ec9-98f7-4a1b9d84de03",
+   "question_id": "CH_20260529_175819_7",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "9b7de714-68d3-409e-9d61-5f8bba26d205",
+   "question_id": "CH_20260529_175819_13",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "9971b3d5-0916-4a5b-a86b-b326358db7c5",
+   "question_id": "CH_20260529_180554_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "5d22ce4e-ed0b-4a1f-8a12-5f3cc57100a6",
+   "question_id": "CH_20260527_213311_13",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "01513304-b1aa-493a-ad98-a7e96aee54c0",
+   "question_id": "CH_20260527_224557_2",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "1e08ee10-0968-488f-8049-59a3af0fb3c2",
+   "question_id": "CH_20260527_224557_0",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "6f31eae7-42a1-4409-a687-4e4007ef546b",
+   "question_id": "CH_20260529_180554_11",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "b03e2928-a22c-4072-aa62-ea88644a9ca4",
+   "question_id": "CH_20260527_224557_3",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "dc446864-37bc-4a07-99f9-020213013f33",
+   "question_id": "CH_20260529_183548_14",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "4b4bb1c3-7b9d-4b5b-9bef-2f86081733c9",
+   "question_id": "CH_20260529_181342_12",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "af5db161-5280-42df-95b3-090e889fa475",
+   "question_id": "CH_20260529_175819_16",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "45cc6495-2a83-409e-ad4f-1eef31cc2a9c",
+   "question_id": "CH_20260529_181342_10",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "f9deaf76-5bc5-4787-a9c9-cb91576a658a",
+   "question_id": "CH_20260529_174204_1",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "04bc99f3-dafc-4e08-86ac-a5edc0a77316",
+   "question_id": "CH_20260529_182418_1",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "c33c84da-2eeb-41bc-a303-f5a67ca8433c",
+   "question_id": "CH_20260529_175819_10",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "d96b1e1c-1d5f-4e40-bac3-356d510cae55",
+   "question_id": "CH_20260529_182419_11",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "72ebdece-117b-4dd8-a2e7-83caaec75db6",
+   "question_id": "CH_20260529_180554_12",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "e02491cf-2709-4d04-8075-c47f0b9abc83",
+   "question_id": "CH_20260529_181342_15",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "b28274fe-0ea0-47cb-a255-ed5a44d53428",
+   "question_id": "CH_20260529_182419_12",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "7259c038-1fa4-4cee-8d47-40cf4039dd1b",
+   "question_id": "CH_20260529_183548_11",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "cd291ade-684e-4344-a30b-670e45c34786",
+   "question_id": "CH_1782747129422_afnm",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "e39f8470-e26c-409e-b10b-fd2f15cc7b4d",
+   "question_id": "CH_1784996119387_gfc5",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "9eddafaa-11ce-4570-8e5d-dbd74a898ecb",
+   "question_id": "CH_20260529_183548_13",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "304157df-d35e-483e-a891-384f396922d1",
+   "question_id": "CH_1784996119387_e0qr",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "4ba93707-9d60-414b-afd1-90b7747cb8f5",
+   "question_id": "CH_1784996119387_u8dq",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "09da7581-a74a-482b-9670-9f220019b48f",
+   "question_id": "CH_1784996119387_dxge",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  },
+  {
+   "id": "e3b39966-2cd0-4365-afdb-980a3cd14622",
+   "question_id": "CH_20260608_172635_18",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "34684c1d-33f9-4697-aa05-b5053a604bea",
+   "question_id": "CH_20260525_154047_1",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "f39b2620-251a-44f9-9423-e8a302732909",
+   "question_id": "CH_1781618730598_cf92",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "c782803f-daf7-4203-8be5-470605097627",
+   "question_id": "CH_1781618730598_r512",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "58281f50-149e-4a94-81de-c03c45146a54",
+   "question_id": "CH_1781625112115_3doj",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "fd14d22c-cdb9-4714-86b6-45007cc69bb8",
+   "question_id": "CH_1781625112115_e4r5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "5c8377d5-f4c9-4964-9f88-347de86c82ea",
+   "question_id": "CH_1781618730598_yjbs",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "5ac7c354-1eea-49fd-8c09-a66a42e791ff",
+   "question_id": "CH_1781618730598_eaer",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "5422f217-d00d-4951-bf15-634778d95aec",
+   "question_id": "CH_20260608_172635_20",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e1d51a0d-5b68-4917-8e81-ceb46f111e2d",
+   "question_id": "CH_1781618730598_kohj",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào bảng biến thiên"
+  },
+  {
+   "id": "fb2fcb99-9f3a-461b-8f31-d6809a99041d",
+   "question_id": "CH_1781625112115_9u13",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b7116de1-b960-4022-927a-9175107691a7",
+   "question_id": "CH_1781625112115_yr4r",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e816c0d1-cc84-4ae8-89a8-d3e7be57f45a",
+   "question_id": "CH_20260608_172635_15",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "7825ed7a-4fc3-4fb8-b9e2-7b6fccbd764c",
+   "question_id": "CH_20260608_172635_22",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "bf6ec1a2-6142-4eb1-a3ce-90d303e29854",
+   "question_id": "CH_1787646114339_xazo",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e3467915-8b51-405a-98fa-af9dbf79aac5",
+   "question_id": "CH_1787646114339_1fyr",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "3d836ebb-f392-4f1a-8366-24ff2d8e54bb",
+   "question_id": "CH_1787656152290_cobw",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  },
+  {
+   "id": "cbf5c31d-9dcb-4340-b553-a1b6259c7618",
+   "question_id": "CH_20260608_220305_20",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "49710c84-7c7e-4667-88a0-c98286d441c9",
+   "question_id": "CH_1781616262368_uh21",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "a91c8fc2-37cf-4f62-a79d-caeec15320e2",
+   "question_id": "CH_1781625112115_xqzw",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "797ce5fc-406e-4ea2-807a-60fbd97278db",
+   "question_id": "CH_1787656152291_nsw0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "8c17a85d-9ee1-4a7e-bfdb-0c11724ed95f",
+   "question_id": "CH_1787656152291_obkh",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "886f18a5-e8dd-46d5-bff8-7b542388d1e2",
+   "question_id": "CH_1781616262368_dhun",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Ứng dụng thực tế của cực trị"
+  },
+  {
+   "id": "f0d72c29-7226-4008-b6e9-3dbe83932aa5",
+   "question_id": "CH_1781618730598_70vr",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định dấu các hệ số của hàm bậc ba dựa vào đồ thị"
+  },
+  {
+   "id": "4c82577a-abc3-47f2-bd3f-8427ac475e59",
+   "question_id": "CH_1787656152291_eh34",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "02ff6843-bff5-4304-99bd-fe1393087337",
+   "question_id": "CH_1787656152291_rb3v",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "1af4454f-d7df-47f9-a531-1dc2b1e0621a",
+   "question_id": "CH_1781620499861_aqkw",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào bảng biến thiên"
+  },
+  {
+   "id": "50033afc-505c-4487-8b7c-85f4041c9749",
+   "question_id": "CH_1781618730598_tkah",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "588ad7d8-16df-47be-a44d-7b353b5defc9",
+   "question_id": "CH_1781618730598_i7vh",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "a95dc217-deef-48bb-a7be-be530c7a03b8",
+   "question_id": "CH_1781620499861_lkrr",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "ac0616a9-d369-4a01-bb68-ffb60fcd44fe",
+   "question_id": "CH_1781620499861_vc96",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "50f677ff-0f33-4b50-b83c-b26d33b16004",
+   "question_id": "CH_1787657735691_4nli",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "691f9f67-8211-47ae-a412-36282e6eadd4",
+   "question_id": "CH_1787657735691_yyo4",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "1d38f171-2cde-4ecc-9d62-a7d3cdb79704",
+   "question_id": "CH_1787657735691_syu1",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "659d3f67-a4ce-4091-aa2e-c992d36dd555",
+   "question_id": "CH_1781620499861_kkej",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e2da85ee-7819-499f-9b30-81365983aaa4",
+   "question_id": "CH_1787657735691_id03",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "986dd596-ba02-4cbe-b1c6-f1cc25ab0a01",
+   "question_id": "CH_1787657735691_5zhx",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "b33366a0-9efe-44a5-a451-9b163fff5c66",
+   "question_id": "CH_1781625112115_2yyf",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "7e2b0ec3-e496-4590-9419-92dc22721c5f",
+   "question_id": "CH_1787657735691_jt3t",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "815c1f74-453b-49b3-86a4-93e0c7718f21",
+   "question_id": "CH_1781625112115_0wev",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "2b19ec30-8640-4fe1-a2a9-f07207b6ff2a",
+   "question_id": "CH_1787657735691_5mh8",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "d5860e27-7896-4ad0-9473-0425a99b4182",
+   "question_id": "CH_1787657735691_zgb5",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "6323e8a7-2495-4c78-8190-f5c8c2bbdd77",
+   "question_id": "CH_1787657735691_9uo1",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "bce1a657-a2d0-406d-b989-faf9e94a39d8",
+   "question_id": "CH_1787657735691_yv00",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Ứng dụng thực tế của cực trị"
+  },
+  {
+   "id": "e11f789c-6010-44b6-95bd-20a83e5d374c",
+   "question_id": "CH_1781625112115_6e99",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "d6693c90-ca8e-46e0-9722-09e56f2e8546",
+   "question_id": "CH_1787657735691_37ws",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Ứng dụng thực tế của cực trị"
+  },
+  {
+   "id": "77dd98e6-d80e-40a7-86b6-990d27f03fff",
+   "question_id": "CH_1781626076042_dooo",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "e547ca37-702c-4606-a106-c891211204a7",
+   "question_id": "CH_1781626076042_gglk",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "e5db80af-8cbe-44f6-8270-6cad9727a6c1",
+   "question_id": "CH_20260523_134129_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào bảng biến thiên"
+  },
+  {
+   "id": "2dbd40db-2493-4649-abfd-d80c74908f43",
+   "question_id": "CH_20260523_144103_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "0ec7e563-822c-4ce9-9b55-cfe0fd59dc97",
+   "question_id": "CH_20260523_134129_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "8c72182b-c8b6-48d5-b79a-6573dcbaf899",
+   "question_id": "CH_20260523_144103_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "bbdf776d-ad83-4579-a6f6-077517da1285",
+   "question_id": "CH_20260523_144103_7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "79decd12-0364-4b96-b4a0-73ae86efcdd7",
+   "question_id": "CH_20260523_145009_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "2ad4aeb6-c614-48ff-a300-c4144c3eb0cf",
+   "question_id": "CH_20260523_145009_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "72695141-8538-4b6e-a52f-9ea92a1750d9",
+   "question_id": "CH_20260523_144103_6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "dd38e45b-c008-4f17-8e2a-85acf116f4cd",
+   "question_id": "CH_20260523_145009_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "fdc4ade1-5640-492c-8146-344fd17a3b6b",
+   "question_id": "CH_20260523_222954_6",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "03a19128-b12f-42e4-a49c-383591c9ea06",
+   "question_id": "CH_20260523_145009_8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "0a50f895-b84c-43d0-a1af-e6ddd8481a8c",
+   "question_id": "CH_20260523_145009_10",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "8a50d389-5fa2-4d3d-8553-908e46bbdad8",
+   "question_id": "CH_20260523_145009_6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "dcb8cbe5-6a89-407f-9e16-7cd605000dbe",
+   "question_id": "CH_20260523_153219_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "787231c0-8b24-49c4-8158-a17399dff36b",
+   "question_id": "CH_20260523_153219_8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "59dcf0f2-6395-45b8-ace0-8b719acb1d68",
+   "question_id": "CH_20260523_153219_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "6c012ac5-573e-4f36-9c0f-e34c1b6cf3df",
+   "question_id": "CH_20260523_145009_11",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "c8c2be4c-9b3a-43a1-8dd6-690244423e32",
+   "question_id": "CH_20260523_145009_13",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "5eb6074f-8a19-44f8-962b-5063e1a95267",
+   "question_id": "CH_20260523_153219_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "8ed51d3c-a53f-4395-a2bc-d6a260e5303e",
+   "question_id": "CH_20260523_153219_6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "aa38e746-f267-40ce-a904-860261aae7f5",
+   "question_id": "CH_20260523_153219_7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "86dd794c-0ec4-4fef-97ed-08f48460a268",
+   "question_id": "CH_20260523_153219_10",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào bảng biến thiên"
+  },
+  {
+   "id": "eb5c9ad6-f364-4f02-b43d-44a4d149d1a5",
+   "question_id": "CH_20260523_222954_5",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "6498990a-c744-4d19-a613-ce00c90759fd",
+   "question_id": "CH_20260523_153219_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "c12a7537-a2ae-45e6-b952-cfdcd3ec70a7",
+   "question_id": "CH_20260523_153219_12",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "87ae5485-06cc-4082-8358-7e6be4cfe0e0",
+   "question_id": "CH_20260523_153219_13",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "b8f1a9e0-2b70-44be-813e-6b2626d8de90",
+   "question_id": "CH_20260523_153219_15",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "a755f028-ed77-48d2-b285-6293d1a94fb2",
+   "question_id": "CH_20260523_222954_4",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "c5f1ad88-c841-41a4-a8a3-245f3b7f2d8c",
+   "question_id": "CH_20260523_222954_2",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "4eea4b99-09db-4326-a049-b396d804f540",
+   "question_id": "CH_20260523_222954_3",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "998b057e-79e7-4908-a118-d72cdcc3e3ef",
+   "question_id": "CH_20260523_222954_0",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "c9046ab0-5f30-44ef-b1d6-d95449cfa25b",
+   "question_id": "CH_20260523_222954_11",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "7ab413bb-bd7f-4f1e-bdba-ef8a065d2ff6",
+   "question_id": "CH_20260524_170954_1",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "bfaaec0c-1a23-4bad-9923-467957205172",
+   "question_id": "CH_20260523_222954_16",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "285032c3-99df-4578-bc48-57f114464644",
+   "question_id": "CH_20260523_222954_17",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "a83d89d6-fac2-4ed6-9a8e-fe7e1f4e4b55",
+   "question_id": "CH_20260523_222954_18",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "77691f50-6224-4775-bf90-522b7885c425",
+   "question_id": "CH_20260523_222954_19",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "4fe1b606-10b1-47bc-aa5c-44ecd78b8582",
+   "question_id": "CH_20260523_222954_20",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "b29fc672-4715-4405-9f09-0c4f6575d9b9",
+   "question_id": "CH_20260523_222954_21",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "a00df485-3343-4944-824e-a02547749b92",
+   "question_id": "CH_20260523_234228_0",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "a14e3465-641a-4ab8-87f9-ecbbfc2a8d04",
+   "question_id": "CH_20260524_170954_0",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "faac481f-b5da-435a-98b9-8205057494e4",
+   "question_id": "CH_20260524_170954_5",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "d9258cfc-d481-4450-8a7f-93c8f06ee9c2",
+   "question_id": "CH_20260524_170954_6",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "ea883670-d340-4581-8bf8-2297291f194a",
+   "question_id": "CH_20260524_170954_7",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "9eff27b4-451f-4567-a5bc-d7226e84664a",
+   "question_id": "CH_20260524_170551_0",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "fb97365e-dbd4-4ee5-aece-1a8e5c56862c",
+   "question_id": "CH_20260524_170954_8",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "2ed55d0c-7047-456f-a510-452c02da65f3",
+   "question_id": "CH_20260524_170954_9",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "fdfedf32-5650-4f09-a029-dc5595fb58a6",
+   "question_id": "CH_20260524_170954_10",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "754d978d-1c6d-4887-bb5d-a5ec6177db25",
+   "question_id": "CH_20260524_170954_11",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "bb624a76-8df3-4cde-a307-e0379ebf973f",
+   "question_id": "CH_20260524_170954_13",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "b89907f3-7b59-4da0-b0e6-2a40d981c8bd",
+   "question_id": "CH_1787942689737_0ha6",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "2698c608-7591-4d27-a021-f6e244ce695a",
+   "question_id": "CH_1787942689737_rkcw",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "a40aaa4f-a1d5-4acd-afd5-db0a784ecaf4",
+   "question_id": "CH_20260524_170954_14",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "48f29cb3-82d6-4ad3-8fd5-0df56a125992",
+   "question_id": "CH_20260524_170954_15",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "123d120b-20f2-4f3b-a82b-d449110434e7",
+   "question_id": "CH_1787942689737_tged",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "7f0436cc-9e9d-4de6-977b-1b373b1446d2",
+   "question_id": "CH_1787942689737_9hkf",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  },
+  {
+   "id": "703ad6c1-5513-4e87-9137-f150d3af41c9",
+   "question_id": "CH_1787942689737_wd6n",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "4f7951d8-c91c-4303-aad8-3f0eb295f277",
+   "question_id": "CH_20260524_170954_16",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "7052d135-9399-4c8c-8205-71ec382918ae",
+   "question_id": "CH_20260525_152221_4",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Lý thuyết và định nghĩa"
+  },
+  {
+   "id": "dae6988a-dd65-4c39-8a9b-d994eab2966f",
+   "question_id": "CH_20260525_152221_6",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "06be4b63-d674-48df-bb74-d8f3e352f265",
+   "question_id": "CH_20260525_152221_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "9b50c93b-c7b5-4e90-bb3a-38e15b1d7e4f",
+   "question_id": "CH_1787942689737_v6k5",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "1a7436d6-05c7-48c7-9b07-e81c2ed30a34",
+   "question_id": "CH_20260525_152221_21",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "f0df0662-4efd-4fcc-952b-8e9fa0cd5bde",
+   "question_id": "CH_1787942689737_5tp7",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "5b50516a-22ef-4aec-83b9-200a36610215",
+   "question_id": "CH_20260524_170954_18",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "d4a1b5ec-5521-4d23-bc5b-52b24a303c89",
+   "question_id": "CH_1787942689737_klis",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Thiết lập mô hình toán học và khảo sát"
+  },
+  {
+   "id": "6f80da12-3716-4275-a00b-5b366d423ef7",
+   "question_id": "CH_1787942689737_qak0",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Thiết lập mô hình toán học và khảo sát"
+  },
+  {
+   "id": "99ac2bc8-cfcf-4fb7-baa4-3e62f8b95813",
+   "question_id": "CH_20260525_152221_7",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "2d2d5a8f-8b8a-492f-8fe0-f33ca9be6c4a",
+   "question_id": "CH_20260525_152221_8",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Lý thuyết và định nghĩa"
+  },
+  {
+   "id": "ba3fb50a-dbc1-4e5f-9564-748604f363c3",
+   "question_id": "CH_20260525_152221_0",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Lý thuyết và định nghĩa"
+  },
+  {
+   "id": "1ac9a259-d2ba-4008-829a-2b08f808986a",
+   "question_id": "CH_20260525_152221_10",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "97074c94-f4de-4330-a1e2-1de7e829d9c6",
+   "question_id": "CH_20260525_152221_11",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "5745a580-22b1-42e1-94d1-eaa9ce9bb9fc",
+   "question_id": "CH_20260525_152221_16",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "308c5f0b-762d-4c0f-8f0e-c7dd40ea170a",
+   "question_id": "CH_20260525_152221_17",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "06694e85-6cf5-4c12-a99f-2954de3f4c00",
+   "question_id": "CH_20260525_152221_19",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "8c48f8db-7713-4ae2-83b0-aebfdbf4c272",
+   "question_id": "CH_20260525_152221_20",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "23e28ead-1366-4a62-88e5-2f748c94415e",
+   "question_id": "CH_20260525_154047_2",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "48694169-4a8b-419e-b844-594db2b39989",
+   "question_id": "CH_20260524_170954_19",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "8fab1df4-3cff-4797-807e-fd839e67a8ac",
+   "question_id": "CH_20260527_213311_7",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "fe1ccce4-6c4b-464e-a2f2-f1aebfcf34eb",
+   "question_id": "CH_20260525_155718_2",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "a4927ae7-4364-44c7-89bf-5cc5d9b11d01",
+   "question_id": "CH_20260525_155718_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "0600a2f7-8fa0-41e4-b3ba-8fe48e3cd827",
+   "question_id": "CH_20260525_155718_7",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "30342f1c-c77c-412a-8393-bff54c59db84",
+   "question_id": "CH_20260525_155718_8",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "b7be79a3-b252-4eaf-a88b-7dc780c89297",
+   "question_id": "CH_20260525_155718_9",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "14fc10dd-5fe8-4db7-a61d-268e26b5a0d5",
+   "question_id": "CH_20260525_155718_10",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "5093dd6d-9055-4317-a5e0-bae0306fe0dc",
+   "question_id": "CH_20260525_155718_11",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "7afe6754-840d-4f2c-92bc-7a0cf7584142",
+   "question_id": "CH_20260525_155718_14",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "44944115-d241-4a85-9fcd-3a64b4a773cd",
+   "question_id": "CH_20260525_155718_15",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "59ba94c4-c529-4645-b05e-d1b1f281ff19",
+   "question_id": "CH_20260525_160909_3",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "5065be00-286b-49d2-b745-c6babd468449",
+   "question_id": "CH_20260525_160909_4",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "2418cd41-a38f-4c57-b614-46ef57c03522",
+   "question_id": "CH_20260525_160909_2",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "3d5abdad-425e-4d9d-92ab-9612b50ca5ca",
+   "question_id": "CH_20260525_160909_1",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "0f29b04d-5800-4a9c-85e2-53649c8e6545",
+   "question_id": "CH_20260526_181058_3",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "c642ee62-7575-44b1-8acd-505e1b6b5f1a",
+   "question_id": "CH_20260526_181058_4",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "1ae63027-ff65-4078-82d5-cc7c24e04dcf",
+   "question_id": "CH_20260526_181058_5",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "07f24a9e-cae8-412b-9147-e9c66ccf35c1",
+   "question_id": "CH_20260526_181058_7",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "60ca2912-a695-491e-bca7-7badc2b7b219",
+   "question_id": "CH_20260526_181058_8",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "5371a275-5d0b-40a0-92a7-e2d3d157c14b",
+   "question_id": "CH_20260526_181058_9",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "4f351e7a-1674-4e75-9b4c-b7d5505b5a04",
+   "question_id": "CH_20260526_181058_1",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "777e3525-0594-4518-bee6-dad31cdb5357",
+   "question_id": "CH_20260527_215801_11",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  },
+  {
+   "id": "be289966-b6cc-419a-a4f1-4db02c78fced",
+   "question_id": "CH_20260526_181058_16",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "15fe27c1-bd6d-4e06-a75c-5076faa162fd",
+   "question_id": "CH_20260526_181058_18",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "88b3fdcf-fcbf-4fe7-87cf-265ad5e0ba15",
+   "question_id": "CH_20260526_181058_19",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "0a884709-b6ea-491d-a382-ba2c1cc74593",
+   "question_id": "CH_20260526_181058_20",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Tiếp tuyến và yếu tố hình học"
+  },
+  {
+   "id": "f38c5227-b12a-4448-bc94-ff8763803e69",
+   "question_id": "CH_20260527_213311_6",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "3e7a5778-2472-4a5a-a23e-ef414e5cd207",
+   "question_id": "CH_20260527_213311_10",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "1c990cd1-1286-4822-90c0-c75c5c6d6fe3",
+   "question_id": "CH_20260527_213311_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "f5b7e06f-8cfc-4c5a-9cc8-ceb5710a9c79",
+   "question_id": "CH_20260527_214919_6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "5a3e2735-81c6-4b06-a535-a548a495bd91",
+   "question_id": "CH_20260527_213311_9",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "831090f0-993f-46c5-b60b-568111a65286",
+   "question_id": "CH_20260527_213311_14",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Tiếp tuyến và yếu tố hình học"
+  },
+  {
+   "id": "c46c41fd-31a7-4aa6-a808-688169e88915",
+   "question_id": "CH_20260527_215801_7",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  },
+  {
+   "id": "7fbfe9a8-e523-4f6a-ba7a-823b23889300",
+   "question_id": "CH_20260527_213311_15",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Tiếp tuyến và yếu tố hình học"
+  },
+  {
+   "id": "da2a73d1-11f4-46a7-93c0-45cf5a4ea437",
+   "question_id": "CH_20260527_213311_18",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "b5adb0b2-d786-4001-a4bb-e55ab223e4cf",
+   "question_id": "CH_20260527_214919_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "b49fe2b7-6653-4a6d-bb94-2aed93cbba0d",
+   "question_id": "CH_20260523_222954_12",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "ede1a717-0914-4b8c-be1b-8ec5fd6c30eb",
+   "question_id": "CH_20260527_214919_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "997472a2-96b0-463e-bf6c-0632d652dff4",
+   "question_id": "CH_20260527_214919_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "4ec55f24-a349-4bb9-a477-e03a4c1d0e40",
+   "question_id": "CH_20260527_214919_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "0accd517-3852-4cdd-a5b7-f8445ca5c30d",
+   "question_id": "CH_20260527_214919_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "195fb8f3-f8f7-4f9b-a40b-ceae3aabae8e",
+   "question_id": "CH_20260527_215801_8",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  },
+  {
+   "id": "87b001bc-3d70-4525-b11d-fcf264c8a4d9",
+   "question_id": "CH_20260527_214919_7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "d7b90fd3-8eb4-4634-8946-6d857ac35fab",
+   "question_id": "CH_20260527_214919_8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "7b875b6e-ea05-4161-a016-a41a32e77e73",
+   "question_id": "CH_20260527_214919_13",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "48bef694-5a9a-4cae-80eb-938e7a3e1a82",
+   "question_id": "CH_20260527_214919_9",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  },
+  {
+   "id": "af1ec913-1e28-478d-a9c6-1bdda6a8eadc",
+   "question_id": "CH_20260527_214919_10",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  },
+  {
+   "id": "14c306b3-85c6-45c3-8c50-06df97d12932",
+   "question_id": "CH_20260527_214919_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "8ad8c66a-9d6e-4650-b4a7-3f5ad869293e",
+   "question_id": "CH_20260527_215801_9",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  },
+  {
+   "id": "07756cc7-dbfe-42e5-b116-15fe03090ec5",
+   "question_id": "CH_20260524_170954_12",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "83faab8f-5c0e-4db6-b3f9-c7b212bb5d0e",
+   "question_id": "CH_20260527_214919_16",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "ab9fc4ac-4f7c-446a-b1e5-a75cf79d9d72",
+   "question_id": "CH_20260527_214919_17",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "d2fff0db-0fa9-4155-9770-abf239b68d97",
+   "question_id": "CH_20260527_214919_18",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "1a9ab974-b76b-46bd-8e37-4292a33004a8",
+   "question_id": "CH_20260527_214919_19",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "ded99b18-a24d-43d1-bdb6-ca0e06c7df55",
+   "question_id": "CH_20260527_214919_20",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "65b16ab9-ffe5-48c7-ad93-42bafc8e1e33",
+   "question_id": "CH_20260527_215801_10",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  },
+  {
+   "id": "f64c7ebe-266b-4921-83bd-202b3d8b8ef8",
+   "question_id": "CH_20260527_214919_21",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "08057c3f-3f6f-47e3-8adc-2be6ddb1e97e",
+   "question_id": "CH_20260527_215801_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "93949511-38b6-41db-8517-7a0f142e6d25",
+   "question_id": "CH_20260527_215801_2",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "2709151e-d1df-4572-bb27-36710af4a04a",
+   "question_id": "CH_20260527_215801_3",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Thiết lập mô hình toán học và khảo sát"
+  },
+  {
+   "id": "35a6efa0-6077-4f41-90aa-718bcc1a55b3",
+   "question_id": "CH_20260527_215801_4",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "25aa79ca-17a6-44b0-af70-681af7f4691f",
+   "question_id": "CH_20260529_182419_15",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "206c7d58-c0d5-4ee6-8c60-94afad48f39c",
+   "question_id": "CH_20260529_175045_17",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "ddf7e9aa-b73e-44d6-a5e7-5d420494633c",
+   "question_id": "CH_20260527_215801_5",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "aae52c13-1e15-472d-b9e6-6da59a5b1346",
+   "question_id": "CH_20260527_215801_6",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "57cab05c-ed50-44bb-a245-3fc126790055",
+   "question_id": "CH_20260527_220538_1",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "3c2c9283-2a26-45d1-8b87-0ce5baac42d4",
+   "question_id": "CH_20260527_213311_8",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "c572f865-ffcb-4059-b361-0a061a3ab744",
+   "question_id": "CH_20260527_220538_7",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "2bb2f27f-36df-4d41-9664-e295a2a1abbd",
+   "question_id": "CH_20260527_220538_9",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "f972b6e3-83e6-4834-bb02-257ecc0eaaec",
+   "question_id": "CH_20260527_221539_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "1f7aec94-8832-4f48-b66d-f5d4c034a6ab",
+   "question_id": "CH_20260527_221539_4",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "df3c89af-8e2a-43b4-94a9-049d8c5acc91",
+   "question_id": "CH_20260527_221539_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "61e93666-30eb-420b-9d01-22c5f17dc5bc",
+   "question_id": "CH_20260527_221539_3",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "f8ed2257-9c3c-425b-9582-6b57ee3ac0e2",
+   "question_id": "CH_20260527_221539_10",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "397179c1-49ce-47f0-b001-5e6f48efc47d",
+   "question_id": "CH_20260527_221539_9",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "e04ab223-be84-4cf5-9cfe-5b4564692b63",
+   "question_id": "CH_20260527_222609_10",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "b793a1fd-8d26-403c-8239-6813e36c9963",
+   "question_id": "CH_20260527_221539_2",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "e3114787-93a2-4472-a6c8-6d9f198a2097",
+   "question_id": "CH_20260527_222041_3",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "44a5a3b3-711e-44aa-83ef-b4000632727b",
+   "question_id": "CH_20260527_222609_11",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "28c15ad4-c8d9-4810-a350-188c1c6658a3",
+   "question_id": "CH_20260527_222609_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "a7b47a22-d08a-46b8-9f12-54e6e504242d",
+   "question_id": "CH_20260527_222609_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "942d8c18-b16b-4c5a-959e-fdee72e214c2",
+   "question_id": "CH_20260527_222609_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "6e77b12e-0902-469e-aeee-f7840b8b121b",
+   "question_id": "CH_20260527_222609_6",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "cc794e76-92b9-48c9-a4cb-69810401671c",
+   "question_id": "CH_20260527_222609_3",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "ce2b8a3d-6eae-4106-b133-a86b3003e129",
+   "question_id": "CH_20260527_222933_2",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "33ffba3d-dc06-4a2f-9817-b28d4b54beb0",
+   "question_id": "CH_20260527_222933_6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "70808971-a5e6-4b70-b4fd-a82c02fa5dee",
+   "question_id": "CH_20260527_222041_1",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "83091e2c-f696-44c5-8d76-1265b02c31b3",
+   "question_id": "CH_20260527_222933_7",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "6c5fb896-42e7-4403-9efa-7b9a4410765b",
+   "question_id": "CH_20260527_223508_4",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "05a50eb9-bb1a-4ef4-8d7c-037aaa46d274",
+   "question_id": "CH_20260527_223508_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "cadafbc8-d1e6-4a56-9bb9-4938cf64824a",
+   "question_id": "CH_20260527_224114_9",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "b47aa4ba-bebe-494a-b441-87faa8a4fbb4",
+   "question_id": "CH_20260527_224114_10",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "ee30af8f-13dd-42f6-969f-3423db54af87",
+   "question_id": "CH_20260527_224114_5",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "5c897cc9-fe67-4137-b246-bd9a5f0c33f1",
+   "question_id": "CH_20260527_224114_11",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "7916e0fd-6fe7-4d06-847d-19e9de95835b",
+   "question_id": "CH_20260527_223508_8",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Tiếp tuyến và yếu tố hình học"
+  },
+  {
+   "id": "027a04fb-5918-4198-a39a-222358114751",
+   "question_id": "CH_20260527_224114_15",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "61b7ef83-0f1e-4ea9-b1fa-f7a6cd6ecb60",
+   "question_id": "CH_20260527_224114_4",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "c75151e9-518e-47ea-ba2a-a0953b72f271",
+   "question_id": "CH_20260529_172300_6",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "a976bcde-3e2e-4a21-8c70-c40d1456fc87",
+   "question_id": "CH_20260529_175045_2",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "6bdb6083-f082-4548-b95e-04351c80bc22",
+   "question_id": "CH_20260527_224557_8",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "082e8deb-14b4-42ad-9c98-b22d1303ff20",
+   "question_id": "CH_20260527_225117_6",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "97567dda-b979-47d6-84e8-d2232057c8a1",
+   "question_id": "CH_20260527_225117_7",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "82ed1314-1793-44be-9374-2e2a3a78fe30",
+   "question_id": "CH_20260527_225117_8",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Tiếp tuyến và yếu tố hình học"
+  },
+  {
+   "id": "d23a40cd-8537-4307-b87f-87ee4ef7c4c8",
+   "question_id": "CH_20260527_225117_10",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "64e4ea2f-ff7a-422f-a2c1-f800f5491e86",
+   "question_id": "CH_20260527_225408_2",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "a884db50-ec0b-42c2-aeb9-cc553ddeee26",
+   "question_id": "CH_1787646114338_3iu1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "2cd83991-02bb-4fe7-bfaa-55019bf3251e",
+   "question_id": "CH_1787646114338_l6dv",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "3168a068-0433-4d4e-8f6b-d9b439faa542",
+   "question_id": "CH_1787646114338_wt27",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "efc9a96e-5bcc-4e66-ac6b-95ab273534e3",
+   "question_id": "CH_1787646114338_hb4r",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  },
+  {
+   "id": "71765492-f222-4e08-86b5-9b28f9ef8499",
+   "question_id": "CH_1787646114338_dlmi",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  },
+  {
+   "id": "17cf6edc-adef-423e-8f71-f0ec8274a6cd",
+   "question_id": "CH_1787646114338_vwvh",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "31c84a93-6696-4956-b386-3f1d7caee933",
+   "question_id": "CH_1787646114338_vhab",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "211fff97-f192-460d-a8ee-d62eb2a02203",
+   "question_id": "CH_1787646114338_2d9k",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "dfa9a527-3618-4102-943e-3630cac3ef3d",
+   "question_id": "CH_1787646114338_pbbq",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "8058c9d7-99ba-4b83-928a-c8ff6270f70b",
+   "question_id": "CH_1787646114338_bo59",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "f192d683-df51-4585-a67e-d83eb394783d",
+   "question_id": "CH_1787646114338_p9qz",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "f3e80375-65e7-47d3-bf9b-52089efb4027",
+   "question_id": "CH_1787646114338_1gce",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "b29c7ae3-1b43-466f-b4fb-4735fb5d4206",
+   "question_id": "CH_1787646114339_2kws",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b1bc34c1-8ab0-4e28-b937-8a5a18bf9ab1",
+   "question_id": "CH_1787646114339_nkhr",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "e33c985c-bf89-4d7e-ae8e-408a703b05b5",
+   "question_id": "CH_1787646114339_iqz8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "f50ee22b-98c2-4fb0-bbe3-02ce104cf565",
+   "question_id": "CH_1787646114339_44uo",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "ea71a20d-1bb9-403a-8cb6-e4196e2f5210",
+   "question_id": "CH_1787646114339_1qo6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "34f99aec-490b-44ba-a4ab-bd9e536e0728",
+   "question_id": "CH_1787646114339_f2gf",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  },
+  {
+   "id": "30f17d03-0da0-4aa4-9d5b-5ad4da8db244",
+   "question_id": "CH_1787646114339_un3q",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "4423a80c-e3f7-48dd-916a-811c1336dc4e",
+   "question_id": "CH_1787646114339_dgxv",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  },
+  {
+   "id": "046adab5-dac5-4653-a96f-cc9d1bc0df68",
+   "question_id": "CH_1787656152290_dbtu",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b8d30f1a-dd0c-4aa4-948e-141f1590849f",
+   "question_id": "CH_20260527_225408_3",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "79386e03-d189-4ca1-ade2-eb95e5e782c3",
+   "question_id": "CH_1787656152290_ik7r",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e1a80fd0-c2b0-49d0-80c9-2c4e3d6beb03",
+   "question_id": "CH_20260527_225408_4",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "0ae53610-cf68-4380-a459-1e74e92f7c09",
+   "question_id": "CH_1787656152290_cp1a",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "82285b92-7263-4e82-ace6-7e48a350d597",
+   "question_id": "CH_1787656152290_met7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "2a92e898-c188-4c3f-9520-52011950047c",
+   "question_id": "CH_1787656152290_ac30",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "f643f796-be8e-4036-8404-66f07136cbd4",
+   "question_id": "CH_1787656152290_vde9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "69d2e30e-932b-4345-92b9-6779aecc2613",
+   "question_id": "CH_20260527_225408_5",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "5ae33453-f60b-47db-bf96-966bcd5d7cd1",
+   "question_id": "CH_1787656152290_a8p7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "3dff3dd8-fce8-490e-aaae-9b47ea10c08a",
+   "question_id": "CH_1787656152290_wh58",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "5a22288e-81bb-4e4e-82cd-ff516336a204",
+   "question_id": "CH_1787656152290_1a7l",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "4ee42a2e-35f5-4e81-8dca-0e263f06c804",
+   "question_id": "CH_1787656152290_p7bp",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  },
+  {
+   "id": "60a2e691-1b8b-4b92-896b-250c884c1fc9",
+   "question_id": "CH_1787656152290_7r03",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  },
+  {
+   "id": "903499aa-fc93-4ab4-9e8f-0db95ac01f8c",
+   "question_id": "CH_1787656152291_4ocb",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "2a0fb0ef-932a-44cf-ad7d-5dcb7ebd8e03",
+   "question_id": "CH_1787656152291_7799",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "7be74c07-c44b-45e6-8cb1-9bf208f516c9",
+   "question_id": "CH_1787656152291_e6ui",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  },
+  {
+   "id": "f426d4e7-c022-4653-accd-7185bcb566dc",
+   "question_id": "CH_1787656152291_ap7y",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "789bceab-a0c7-496a-8e8a-13ad644a505d",
+   "question_id": "CH_1787656152291_c384",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  },
+  {
+   "id": "ec447cf6-675f-4a1e-9658-06f2769e5dd3",
+   "question_id": "CH_1787657735691_t54l",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "75f59b4f-9fd3-4dfe-b6e2-efcb7305b3e0",
+   "question_id": "CH_1787942689737_5k97",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "e056b3aa-ed84-4862-807d-d008d50c73cd",
+   "question_id": "CH_1787942689737_02oj",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "b46162c5-8e71-4ad3-987d-c0270223acf2",
+   "question_id": "CH_1787942689737_fkly",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "409b364b-9c02-4e98-b481-695632fdeed7",
+   "question_id": "CH_1787942689737_tidf",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "e22c0948-038a-4d16-987f-0ec1ea44aa96",
+   "question_id": "CH_1787656152291_pzoc",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "5d8fcd2f-db9b-4960-a03f-055933c7163a",
+   "question_id": "CH_1787657735691_39jr",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "73f85be8-4baf-40c4-8318-012ef3ef09bd",
+   "question_id": "CH_1787657735691_67p9",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "13608555-afef-416a-a265-de3d4d96eafb",
+   "question_id": "CH_1787657735691_04tn",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "9e08da38-4e0a-4195-b6ad-1defb45a95f4",
+   "question_id": "CH_1787657735691_di7n",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "214743a9-1aa1-4381-b39c-ca72fec0ae01",
+   "question_id": "CH_1787657735691_jdz6",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "4fac491e-6219-40ec-97a5-3ce6cb0abcb8",
+   "question_id": "CH_1787657735691_lfwm",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "b8dfc3b4-33df-424f-8e20-3ce27d894f2b",
+   "question_id": "CH_20260527_225408_6",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Thiết lập mô hình toán học và khảo sát"
+  },
+  {
+   "id": "83e9bf31-8552-4c83-bbab-9e508b942f3e",
+   "question_id": "CH_20260527_225408_7",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Thiết lập mô hình toán học và khảo sát"
+  },
+  {
+   "id": "63d0c8e2-e07e-434c-8b8d-33ff55d76021",
+   "question_id": "CH_20260529_172300_3",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "76639dbe-494d-4092-a520-74683690774f",
+   "question_id": "CH_20260529_172300_9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "5f2fb71f-e37e-49e8-b2c1-a11f79580edc",
+   "question_id": "CH_20260529_172300_7",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "87ccd86b-90dc-4075-aca7-054014ef7b5b",
+   "question_id": "CH_20260529_172300_8",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "4049748e-b245-4305-a199-faef24b04883",
+   "question_id": "CH_20260529_175045_8",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "87d1aee2-bb5c-45f3-8d0e-5bcd3452fbd0",
+   "question_id": "CH_20260529_174204_2",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Thiết lập mô hình toán học và khảo sát"
+  },
+  {
+   "id": "0da0dc18-dcc7-4932-ac86-b45d3faa9312",
+   "question_id": "CH_20260527_224114_6",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "5970adbc-e164-445c-a510-59fc0413af4d",
+   "question_id": "CH_20260526_181058_0",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "4044eefc-cb9e-44c9-92ed-ed026bb58b82",
+   "question_id": "CH_20260529_175045_13",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "3b7a47d1-281b-4452-b0b7-50714efac182",
+   "question_id": "CH_20260529_180554_6",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "9a5ce9ad-7e2a-46e3-8552-408d6b5a59cc",
+   "question_id": "CH_20260526_181058_17",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "1b9b0054-5a14-4cc2-9748-bf5e9086c3d0",
+   "question_id": "CH_20260527_213311_21",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "686608c7-87df-48da-9515-4e095ac7b0c3",
+   "question_id": "CH_20260529_174204_6",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "a6d83e82-f04d-4c68-aee8-e7cd3658343f",
+   "question_id": "CH_20260529_174204_7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "bab2197f-2dcc-4c2c-995f-963c5dd50713",
+   "question_id": "CH_20260529_175045_12",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "779a3ae4-d68e-44c6-87fe-0b86352f5ee8",
+   "question_id": "CH_20260529_174204_9",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Thiết lập mô hình toán học và khảo sát"
+  },
+  {
+   "id": "8c839982-ac3b-41da-924a-824f3c477733",
+   "question_id": "CH_20260529_175045_7",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "11fe5240-ff38-4688-974f-aa6fc073748b",
+   "question_id": "CH_20260529_175045_3",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "a8cf8f2e-71dd-48f0-8484-0cf61582ad25",
+   "question_id": "CH_20260529_175045_4",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "05fd081a-5b85-48df-adc6-9058ab674b6a",
+   "question_id": "CH_20260529_175045_6",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "277d9256-db51-4453-ae56-36d28d3bfec5",
+   "question_id": "CH_20260529_175045_9",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "a5722641-8c64-4e35-be5f-40585036ccc9",
+   "question_id": "CH_20260529_175045_16",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "7115ee97-d17a-4923-a6cc-412ae04e1986",
+   "question_id": "CH_20260529_175045_18",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "ecf4840b-6e3e-40da-909d-59e70e6dc619",
+   "question_id": "CH_20260529_175045_19",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "3cbaa6d3-10a2-4b8c-8ef5-7d02b747b4bb",
+   "question_id": "CH_20260529_175045_20",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "b47630b3-5a49-4cea-ae44-be571782820c",
+   "question_id": "CH_20260529_175819_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "7f24e60c-bf3b-4eb3-8165-6f6366068281",
+   "question_id": "CH_20260529_175819_8",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "e1e98740-f362-4779-805b-0336e52182e7",
+   "question_id": "CH_20260529_175819_14",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "054a9f1e-6521-4ed3-a176-06dbf9bed946",
+   "question_id": "CH_20260529_180554_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "201eafb2-5dcf-45e4-ab27-f25d7605cba2",
+   "question_id": "CH_20260529_180554_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "3e06fd14-db4a-4035-a2de-296263c50761",
+   "question_id": "CH_20260529_180554_10",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "0f2da903-0c04-4ea1-bb89-5fee81158cee",
+   "question_id": "CH_20260529_180554_8",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "171c7e1c-ef5e-4469-a292-2aa4f381a469",
+   "question_id": "CH_20260529_175819_17",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "42994152-747b-4944-8191-09115ddcf618",
+   "question_id": "CH_20260529_180554_16",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "a0c2d732-6ad9-425b-803a-27b0d18bd094",
+   "question_id": "CH_20260529_180554_18",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "8ea5f14d-c962-49df-9436-b3dfbc3004e3",
+   "question_id": "CH_20260529_181342_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "102edd36-2a73-4c97-b8cf-44d2da64dcdf",
+   "question_id": "CH_20260529_180554_20",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "9f3546cb-3ed5-473b-8e41-21ed23a07294",
+   "question_id": "CH_20260529_181342_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "1e961e4a-2d4c-46f7-a65f-9440bf41d9fe",
+   "question_id": "CH_20260529_180554_21",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "021a9973-a54d-4db8-972f-3ea505f4a237",
+   "question_id": "CH_20260529_183548_19",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "119f08c9-20ae-41e3-a0b3-89066f66aed6",
+   "question_id": "CH_20260529_181342_7",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "9062a6f7-5359-406d-b4fe-bfd1d8446c91",
+   "question_id": "CH_20260529_181342_11",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "7ed44295-51cb-4047-8849-47af3fec67fd",
+   "question_id": "CH_20260529_180554_9",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "4948eaf5-0b8f-4310-8a63-b9ccbe0631b9",
+   "question_id": "CH_20260529_181342_14",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "41d721af-c330-4245-b37d-dd74d9aff7be",
+   "question_id": "CH_20260529_181342_18",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "9f5f5c90-1fb8-4b45-8f50-401a10e36cea",
+   "question_id": "CH_20260529_181342_20",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "0a916333-32af-4bc0-a042-462ad5e64afc",
+   "question_id": "CH_20260529_181342_6",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "b1e09c30-5f57-4223-b8d4-a5f1d1915f1b",
+   "question_id": "CH_20260529_182418_3",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "e48c2d00-5977-40a8-83c1-cccdd9846e6e",
+   "question_id": "CH_20260529_182419_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "408c3e7b-7c64-4139-9d12-6c5d3144651a",
+   "question_id": "CH_20260529_182419_9",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "f59c704c-2ce2-4b9b-ac29-44510e6a5ddf",
+   "question_id": "CH_20260529_182419_10",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "689f0b85-1969-431f-afa6-d26ef5a6c70a",
+   "question_id": "CH_20260529_182419_8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "25c479b4-f116-4100-b5ac-52125bcfb21a",
+   "question_id": "CH_20260529_182419_5",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "5db61afe-6e59-4ada-9870-90b58cd0dfa4",
+   "question_id": "CH_20260529_182419_7",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "9a18dc65-d709-4248-ae07-fbe91d5d191f",
+   "question_id": "CH_20260529_182419_16",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "cfcc27ce-0bef-47b8-b317-1205868fa63b",
+   "question_id": "CH_20260529_182419_18",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "f36cec34-c3a4-484a-b126-63826795d618",
+   "question_id": "CH_20260529_181342_13",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "104d6a0c-3f84-4f52-b7c8-6503050059e5",
+   "question_id": "CH_20260529_182419_19",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "399ae288-be0b-4ab6-9a21-7c92aae1150e",
+   "question_id": "CH_20260529_181342_4",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên khoảng"
+  },
+  {
+   "id": "78623696-5810-44be-b407-062165d544fc",
+   "question_id": "CH_20260529_183548_9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "131d2cff-a91c-477b-8a2d-eef0714ac4f0",
+   "question_id": "CH_20260529_183548_10",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "3538c446-42d8-4b68-b03c-b5b0746dca58",
+   "question_id": "CH_1781626076042_opms",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "1e70f90c-17a7-44c1-9ba6-04e789cf3f2f",
+   "question_id": "CH_20260529_183548_15",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "b427fee7-3fe2-4f55-8777-f460560d7427",
+   "question_id": "CH_20260529_183548_17",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "660fa5f6-db12-42af-82b9-e9167f41701f",
+   "question_id": "CH_20260529_183548_18",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "b977a64c-3832-44f0-90aa-69ec981c80de",
+   "question_id": "CH_20260529_183548_21",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "39dbcf8b-49cd-40c7-a485-35c37aa70748",
+   "question_id": "CH_20260529_182419_6",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "75d40dbc-472f-4ac0-be2a-65ed48755788",
+   "question_id": "CH_20260529_183548_7",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "3cb92270-e187-438c-a003-c1380b33b5a6",
+   "question_id": "CH_1781620499861_r4az",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "a219fbb3-328f-48c0-b705-f7870ea93bd8",
+   "question_id": "CH_1781616262368_twnp",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào bảng biến thiên"
+  },
+  {
+   "id": "b49d1095-1d81-4556-92e3-5c8029b77399",
+   "question_id": "CH_1781615436007_h5q8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "3174fe49-5109-4460-baf5-ac9c1b42a966",
+   "question_id": "CH_1781618730598_wqr6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "90609630-1eeb-4a4c-a395-fb495522a91d",
+   "question_id": "CH_1781616262368_yw1i",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "1598f239-ca1c-4148-87b7-cdcad06662e6",
+   "question_id": "CH_1781616262368_73j6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "672e555e-fb7d-4bf4-b12a-0f4ada79688b",
+   "question_id": "CH_1781616262368_qsj1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị"
+  },
+  {
+   "id": "5965198c-8d9c-443d-9cc7-9d10d0f361da",
+   "question_id": "CH_1781616262368_ysm7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "7d677ecb-bc84-4d04-8902-a8c00be48029",
+   "question_id": "CH_1781618730598_jwo8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "0cbd5a53-6025-448d-b380-eafc7f01cbee",
+   "question_id": "CH_1781618730598_gu49",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "d2c1b6c4-5291-4c87-a47b-041d3f181c9e",
+   "question_id": "CH_20260529_181342_0",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "8bdb98eb-bba3-4740-aaf3-489cafb838df",
+   "question_id": "CH_1781618730598_ppmh",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "0a90789f-874e-4a1a-93f6-03f377f96cf6",
+   "question_id": "CH_1781626076042_glyd",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "fb2dab39-d547-44b6-809b-7bf5d3e89381",
+   "question_id": "CH_20260608_172635_19",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "18c26f8e-bb91-43a2-95f6-b6d4c2492be7",
+   "question_id": "CH_20260608_170402_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "a0b705c9-c3fd-4d94-a138-ff7f7c3e591e",
+   "question_id": "CH_1787657735691_6u3k",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "0ef8c014-a36e-4c3b-9f08-9b59f1fe5937",
+   "question_id": "CH_1787657735691_apzp",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "2f027d32-d3fa-4035-b354-1045a16116f9",
+   "question_id": "CH_1787942689737_ietg",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "494451a9-a67e-4907-8102-08bff652ed60",
+   "question_id": "CH_1787942689737_p4da",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "5182577b-cd60-46ff-8b12-4dbb570e1488",
+   "question_id": "CH_1787657735691_6jzd",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "f2d972ce-585f-43cf-b994-71c036c158a1",
+   "question_id": "CH_20260608_164720_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "59b6f853-eee3-4c01-af1a-c4ef8b58e5ff",
+   "question_id": "CH_20260608_164720_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "fce8b5b8-6dc8-4ce5-801e-03503cea3815",
+   "question_id": "CH_20260608_164720_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "1a4a68df-5f27-487f-814b-ff4ecd40787c",
+   "question_id": "CH_20260608_164720_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "95daf736-f474-4458-b1fd-eebfc538cd61",
+   "question_id": "CH_20260608_172635_7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "424f279c-9459-4095-b3b2-d32bde18011a",
+   "question_id": "CH_20260608_164720_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b9ac434f-9fda-4c02-b074-016c7d6a56eb",
+   "question_id": "CH_20260608_164720_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "3485129a-3784-40a3-8bf4-adbaca85f13d",
+   "question_id": "CH_20260608_170402_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "e4843605-b341-402f-8251-4fca7b6b9fa2",
+   "question_id": "CH_20260608_170402_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "c1992936-9a85-4752-b245-fa2ee88068f9",
+   "question_id": "CH_20260608_170402_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "b0d715b7-01f1-4b82-8d0c-233b80a85a48",
+   "question_id": "CH_20260608_170402_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "31426d1d-a192-4842-afdf-aa2e6ee297a8",
+   "question_id": "CH_20260608_170402_6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "df4045a6-db24-4cc3-9740-684d8e4496e5",
+   "question_id": "CH_20260608_170402_7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "979687fb-4c87-45ff-829a-9597a295f15e",
+   "question_id": "CH_20260608_172635_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "83ce4c49-69ef-411d-94b9-06a8f47bed44",
+   "question_id": "CH_20260608_172635_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "ee2b1120-d9fc-4338-8f9f-3301066900f6",
+   "question_id": "CH_20260608_172635_6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "d32dea17-237b-48ce-b1aa-0aa38ec0b572",
+   "question_id": "CH_20260608_172635_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "8ceb142a-4258-400a-81dc-b84c7b70fb35",
+   "question_id": "CH_20260608_172635_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào bảng biến thiên"
+  },
+  {
+   "id": "12050f3b-4fd6-40c9-a6e0-f628e9b3813e",
+   "question_id": "CH_20260608_172635_8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "3648b609-8680-468e-9af0-3fbd8a224213",
+   "question_id": "CH_20260608_172635_9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "62a97090-c038-40eb-a9fe-2a85e6539591",
+   "question_id": "CH_20260608_172635_10",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "68a210c7-a352-44e7-8549-9cf749486840",
+   "question_id": "CH_20260608_172635_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "02682a51-9f65-4382-83e6-be96e53b3cb2",
+   "question_id": "CH_20260608_172635_12",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "efee9fd4-2795-4b2d-b7c0-862ee1ab0448",
+   "question_id": "CH_20260608_172635_14",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "2eaa5f68-0478-4443-a4fa-8353ae388d57",
+   "question_id": "CH_20260608_172635_16",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "93b44955-d4da-4d14-9d6d-4d36d83ceb4b",
+   "question_id": "CH_20260608_172635_21",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "0756c78d-be4e-49e4-a11f-0f6db0f21844",
+   "question_id": "CH_20260608_172635_23",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "0ac836f8-b003-4754-9b24-a8830b5edce8",
+   "question_id": "CH_20260608_172635_24",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "be3130c6-d5d8-4616-a0e5-672df38572ef",
+   "question_id": "CH_20260608_172635_25",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "0464879a-0fd3-4662-9726-77eec61327f9",
+   "question_id": "CH_20260608_172635_26",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "74796721-fb36-443b-a568-b0467bde1447",
+   "question_id": "CH_20260608_172635_28",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "ad9ea123-ff77-4c9f-9527-4d2820e89c22",
+   "question_id": "CH_20260608_172635_30",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e36a466e-961a-43c6-b4db-26ba0b24f11a",
+   "question_id": "CH_20260608_184107_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b7b60f4b-5f0f-4f05-ade9-b8e2088ae757",
+   "question_id": "CH_20260608_184107_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "060c5153-e782-4505-a6a3-06af8405834e",
+   "question_id": "CH_20260608_184107_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "6438a371-74dc-4f50-bdda-2af109cdc308",
+   "question_id": "CH_20260608_184107_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "54677a7f-3d7e-49ec-917b-2af278e1e5d4",
+   "question_id": "CH_20260608_184107_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "fae8f9f2-9cc9-41fd-85d4-c509446ea4a0",
+   "question_id": "CH_20260608_184107_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "2404e3dc-0e10-4f55-95c5-f8b8f393614c",
+   "question_id": "CH_20260608_184107_6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "bcd8e564-fc9a-4d48-aaaf-956d0f880378",
+   "question_id": "CH_20260608_184107_7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "9f2b2891-13ee-4f45-b9ba-c538a4534867",
+   "question_id": "CH_20260608_184107_8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "1bd87df0-df8b-475c-b323-fa5b06341f62",
+   "question_id": "CH_20260608_184107_9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "18f58702-1603-4efe-a826-bbed95d1dfe4",
+   "question_id": "CH_20260608_184107_10",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "37e30d59-1442-47d2-b97f-2399cc49a721",
+   "question_id": "CH_20260608_184107_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "d9734aec-ba36-47fb-bfc6-025e5916874d",
+   "question_id": "CH_20260608_184107_12",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "3e233bad-0613-4cef-8a07-11848fa17347",
+   "question_id": "CH_20260608_184107_13",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "f5987f5a-9625-4cb0-a65c-818bcc037938",
+   "question_id": "CH_20260608_184107_14",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "4441d0d8-c154-454b-9178-912876e3bcb2",
+   "question_id": "CH_20260608_184107_15",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b8bb42ac-c1dd-4898-966d-97374338bd94",
+   "question_id": "CH_20260608_184107_16",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "fca90822-3172-444c-9027-7aa87cc7d1d3",
+   "question_id": "CH_20260608_185700_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "3bb7ba86-5adf-4fb8-8b3f-f95f0ef30911",
+   "question_id": "CH_20260608_185700_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "c6a45dd3-24c3-4661-a35a-be88d8de143c",
+   "question_id": "CH_20260608_185700_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "aabb227f-8111-4d5c-befe-528c6161ad80",
+   "question_id": "CH_20260608_185700_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "2eb1efd8-cdb7-45d1-8735-3244690f03f7",
+   "question_id": "CH_20260608_185700_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e73cee60-8a9d-4eef-99cb-d61d8ccc0e26",
+   "question_id": "CH_20260608_220305_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "c1fdf7a6-20f5-420c-b18d-759ba52c631e",
+   "question_id": "CH_20260608_220305_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "ca68f3e3-49f5-4f5b-91af-459ecab7bb29",
+   "question_id": "CH_20260608_220305_2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "407fa0c4-c239-48a5-afa4-952de764b4d5",
+   "question_id": "CH_20260608_220305_3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b0a98e35-8d83-407a-a488-51ebff3db029",
+   "question_id": "CH_20260608_220305_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "45cdc0f4-44dc-419a-b2c9-009bf476e0d1",
+   "question_id": "CH_20260608_220305_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "4c0b3bd9-9c37-4336-9e13-0ddfb04c8f25",
+   "question_id": "CH_20260608_220305_6",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "624c8dfa-7b4f-4682-b520-62c683eea4b4",
+   "question_id": "CH_20260608_220305_7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b6d66d34-9765-442b-9599-ff9497731e5d",
+   "question_id": "CH_20260608_220305_8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e41f7c1f-103c-4bc3-806d-741187070e26",
+   "question_id": "CH_20260608_220305_9",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "421cd216-30d0-413a-8c1f-7669994b7290",
+   "question_id": "CH_20260608_220305_10",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "766e2cfe-755a-4746-a4ca-7d67c81ddf02",
+   "question_id": "CH_20260608_220305_11",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "15bf3277-235a-45e6-a155-b0f0a99e6fc8",
+   "question_id": "CH_20260608_220305_12",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "05cb1a10-d7d5-47b1-b758-80da98a07cb9",
+   "question_id": "CH_20260608_220305_13",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "af3b308a-2fbf-4330-8cb3-3998ecff2e91",
+   "question_id": "CH_20260608_220305_14",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "94be640a-f9ba-4dfb-b900-f04721cc4e46",
+   "question_id": "CH_20260608_220305_15",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "19bdd18b-6513-421a-a1b7-c31d8fc4e5a3",
+   "question_id": "CH_20260608_220305_16",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "3f9582bf-101b-4042-b61c-cef645f23506",
+   "question_id": "CH_20260608_220305_18",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "5ad1b4f2-2b03-4f94-81dc-8f5c178e89cb",
+   "question_id": "CH_20260608_220305_19",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "1a4740d5-24a9-4611-83e9-07ce7197c185",
+   "question_id": "CH_20260608_220305_21",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "7e19bf1d-bd8b-45cc-8837-48025ac3f804",
+   "question_id": "CH_1781615942048_yxp3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "0d504753-8713-4d7d-96fa-040bd59001c4",
+   "question_id": "CH_1781616262368_dczm",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "65289ece-c172-4a6c-85d3-7cb0cd5c8a74",
+   "question_id": "CH_1781616262368_qmnh",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị"
+  },
+  {
+   "id": "87ed221c-87b7-46af-a2f6-78a00c6dc482",
+   "question_id": "CH_1781616262368_jxng",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị"
+  },
+  {
+   "id": "243f45d3-12c5-4168-909d-b28bcc478bf6",
+   "question_id": "CH_1781625112115_y3xp",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị"
+  },
+  {
+   "id": "36312f71-aa43-42ef-8d86-be9bd4060952",
+   "question_id": "CH_1781616262368_on5z",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "f848b43e-028b-43ca-bc91-416023e563d5",
+   "question_id": "CH_1781616262368_dygz",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "7a2aa7b0-2e8f-4c5a-b0be-01be91388eb5",
+   "question_id": "CH_1781625112115_ykr2",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "b93172c9-921d-42ed-b6d3-37eaf5af4cb8",
+   "question_id": "CH_1781616262368_tyqi",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "b61176d2-ca31-4092-ab5b-fd912e84fb26",
+   "question_id": "CH_1781618730598_se86",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị"
+  },
+  {
+   "id": "4e359e29-f89e-40c9-8ae3-f99083cc23d9",
+   "question_id": "CH_1781618730598_d722",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "6abbe01f-f87b-44dd-adf3-12a67437836d",
+   "question_id": "CH_1781618730598_r1v5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e209bf75-b7cb-433b-b40e-0ca16e066b90",
+   "question_id": "CH_20260529_175819_12",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "82647ac2-9f98-4bdd-9669-827aa6b5e820",
+   "question_id": "CH_1781620499861_s33l",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "cf642160-7c3e-4d2b-a3ce-4bbfb2b55b66",
+   "question_id": "CH_1781620499861_uv5r",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "c946a3cb-c0a8-4d3d-abe1-e9bf5ceb6f7c",
+   "question_id": "CH_1781618730598_za9q",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e982e0fd-52ac-49d5-aa7d-66a2a69c98dc",
+   "question_id": "CH_1781620499861_vzhv",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "374d9bf0-b03f-4ab5-9c2c-173fbc62d4cd",
+   "question_id": "CH_1781620499861_a8lo",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Lý thuyết về tính đơn điệu và cực trị"
+  },
+  {
+   "id": "023ee762-a4af-4aa7-be74-9d6a4963a0b1",
+   "question_id": "CH_1781620499861_50by",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  },
+  {
+   "id": "80051e41-001e-4352-a73f-29c90cbd1f07",
+   "question_id": "CH_1781620499861_rxrd",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "513b6621-88f8-42cb-b7e4-44463d3b378d",
+   "question_id": "CH_1781626076042_5dbq",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "57ea82e9-f7a5-49d5-8051-16b43a352531",
+   "question_id": "CH_1781625112115_qrm1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "bd0ba7da-3cc9-49b5-972a-70dc687e9d43",
+   "question_id": "CH_20260529_175819_1",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "b05e85e7-c1ba-493d-9d3b-944e712b7461",
+   "question_id": "CH_1781625112115_l48f",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "e70718c5-92f1-4b56-9523-198fe68fd3f3",
+   "question_id": "CH_1781625112115_k5nm",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "c3cf3fff-1d8f-4e7c-b08b-87c8285ed96f",
+   "question_id": "CH_1781625112115_scbb",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "fd004d88-49a4-4595-9407-fd031734782c",
+   "question_id": "CH_1781625112115_h1l4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "527148f1-1312-461b-b754-95d07fedc062",
+   "question_id": "CH_1781625112115_hog0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "97002b6e-2f39-44ec-a289-eccc3fbdfcd2",
+   "question_id": "CH_1781625112115_6sgf",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "e349d953-a70f-41c9-8da7-3d70abd97c0e",
+   "question_id": "CH_1781625112115_w47l",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "2e5912e9-beab-47b3-9bbf-312179994021",
+   "question_id": "CH_1781625112115_ive3",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "dfbf94c9-361f-4acf-8f63-ee45f95b4e18",
+   "question_id": "CH_1781625112115_7x5f",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "8461d2ac-b6e0-469e-ad47-ad0499fa4cc2",
+   "question_id": "CH_1781626076042_xyxj",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị dựa vào biểu thức đạo hàm"
+  },
+  {
+   "id": "26096fee-61cd-4d48-aa48-306b94964eb1",
+   "question_id": "CH_1781626076042_gwqe",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số dựa vào bảng biến thiên"
+  },
+  {
+   "id": "aba849d2-9255-4af5-a196-a7f41bb8d32f",
+   "question_id": "CH_1781626076042_936u",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "a2988379-a9f6-4134-92ef-7771dcd45442",
+   "question_id": "CH_1781626076042_wi23",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "2a41bdab-ef2c-4985-915d-4f5f744ea2ee",
+   "question_id": "CH_1781626076042_8ksu",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "959ce689-2bc7-4102-8e99-c61570a42589",
+   "question_id": "CH_1781626076042_odms",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "24c72791-9fc5-4690-9074-6736e0d1aa5a",
+   "question_id": "CH_20260529_180554_17",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max chứa tham số m"
+  },
+  {
+   "id": "5ba6ab54-a4cd-4306-9890-4eed456409a2",
+   "question_id": "CH_20260527_222041_2",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "04bdde2a-78e1-47b1-9361-70a0e999346e",
+   "question_id": "CH_1781626076042_hr3i",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị dựa vào đồ thị đạo hàm"
+  },
+  {
+   "id": "b637e3ff-3256-4e82-8ae0-640a76446780",
+   "question_id": "CH_20260526_184846_0",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "97e92dc6-9f76-4546-923b-49b72a59d674",
+   "question_id": "CH_1784996119387_4fhz",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "64a75474-35a7-4d84-a3c1-9c66825416e9",
+   "question_id": "CH_1784996119387_m5h4",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Nhận dạng đồ thị hàm số"
+  },
+  {
+   "id": "8d930f6a-6dfe-4654-a6f0-2932c5c67b72",
+   "question_id": "CH_1782620444771_a3xq",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "a3819ac0-db42-4566-ad9e-46e1c4843296",
+   "question_id": "CH_20260527_213311_17",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "0531874c-464e-4279-b25d-62f6cac8100f",
+   "question_id": "CH_20260525_155718_6",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "9f75597b-e35d-4ca8-ac09-8ec3307b7f05",
+   "question_id": "CH_1782624567398_qcvr",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "16a7dd66-5813-4645-87a3-3aae842a5c2a",
+   "question_id": "CH_1782624567398_lqfs",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "1716f8c3-7bc4-44fc-8815-c11da01af830",
+   "question_id": "CH_1782624567398_kjv9",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "ca720b35-1532-49d5-935d-4b54c553a048",
+   "question_id": "CH_1782624567398_vnow",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "91d33ded-498b-441c-8f69-9f85001dd06f",
+   "question_id": "CH_1782624567398_e6io",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "c49a7f5d-2071-4594-8ba3-7dafbc7c99a5",
+   "question_id": "CH_1782624567398_kghv",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "c1212b6a-f0d4-4b88-9677-a0b9bdfd8a31",
+   "question_id": "CH_1782624567398_vngg",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "370c7bc9-a83c-43cb-b1a3-0cc8f25bedc8",
+   "question_id": "CH_1782624567398_b7n1",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Lý thuyết và định nghĩa"
+  },
+  {
+   "id": "074bdeea-1b8a-47c3-9a17-fda841ffa15f",
+   "question_id": "CH_1782624567398_gorg",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "10e42ae6-b68c-4ce0-95e8-05d6bb6f09be",
+   "question_id": "CH_1782624567398_5i0i",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "0100c925-0b85-4a0d-b503-af48ac3ae966",
+   "question_id": "CH_1782624567398_cwdd",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "bb23a04e-6d59-4c5a-9b02-f5c584121e5c",
+   "question_id": "CH_1782624567398_hovn",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "7dd593b5-1b88-47d4-a304-87fd5069d63b",
+   "question_id": "CH_1782633898525_1ymq",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "10082c3a-0470-4130-9951-fb06f74eab2c",
+   "question_id": "CH_1782633898525_zv4b",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "30b2641f-b7f5-418e-b115-8d156b770d2c",
+   "question_id": "CH_20260529_180554_3",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Lý thuyết và định nghĩa"
+  },
+  {
+   "id": "1ac257a8-f791-4f00-a1de-16b8766909b4",
+   "question_id": "CH_1782659559001_rfmv",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "95ae3edf-f429-4caa-87e9-6e823c56f3c8",
+   "question_id": "CH_1782624567398_6mbb",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "4821d2a2-e086-4e1c-ab87-3590a7cd214c",
+   "question_id": "CH_20260529_182419_13",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "571d6f29-9827-4f4f-a70f-aacf45efcd54",
+   "question_id": "CH_20260529_183548_6",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "047dcf29-fb57-460b-8805-90d1e395f1fe",
+   "question_id": "CH_1782624567398_nnvs",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "07907719-f635-497b-9883-d8ccb19d1d9a",
+   "question_id": "CH_20260529_175819_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "f93584da-9148-408a-8261-bc96d37996d6",
+   "question_id": "CH_1782659559001_3lna",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "4bcf077e-d00d-4722-ad23-cac1e79514a2",
+   "question_id": "CH_20260525_160909_0",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "b019b12d-39d5-4963-98e1-6e503eae63c7",
+   "question_id": "CH_20260529_181342_9",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "cd16c897-e8d7-49af-b19f-7d9f59864415",
+   "question_id": "CH_1782621028708_55ie",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "1589e045-e932-4f87-b116-ee2d2f28efde",
+   "question_id": "CH_1782624567398_nl5b",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "6eeca4c6-8dec-49b4-b8db-4e55a7133b10",
+   "question_id": "CH_20260525_160909_5",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "c48ded76-ed65-4a54-bc0c-3e408d6bd462",
+   "question_id": "CH_20260529_175045_0",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "51bd6519-475c-44ac-894b-16d12c664281",
+   "question_id": "CH_20260527_223508_1",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "50e981f6-c581-4293-94a5-6bda08a8af30",
+   "question_id": "CH_20260523_153219_14",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "fd2af253-f315-46dc-88c5-69cd35d85c20",
+   "question_id": "CH_20260527_222933_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm số điểm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "7343c6e3-807a-4ad2-a872-62661da131c8",
+   "question_id": "CH_20260529_181342_17",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "d7e2de81-d268-4b47-bbdc-0acb358daf4d",
+   "question_id": "CH_20260527_220538_8",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "cbd7558b-5c62-4ba3-9955-bcad9c19ec67",
+   "question_id": "CH_20260527_220538_4",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Ứng dụng cực trị vào hình học"
+  },
+  {
+   "id": "258a9a9a-72b3-4fe0-9dce-61653126f286",
+   "question_id": "CH_1782659559001_bmv7",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "22c09728-7f16-4174-b06f-c6a27d57630f",
+   "question_id": "CH_1782624567398_mvmq",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "cbf61d7f-47c0-481b-b73b-ade45f2a68d4",
+   "question_id": "CH_20260525_155718_3",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "bbdf58b7-1bee-44e0-8c22-b4b87a5d2cb8",
+   "question_id": "CH_1782659559001_u1dj",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "06e64d2a-f81f-465d-98cf-e23b730eda45",
+   "question_id": "CH_20260525_154047_0",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "c090bbc0-3a69-4aea-ba98-8be474f73d4f",
+   "question_id": "CH_20260529_172300_2",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng bảng biến thiên"
+  },
+  {
+   "id": "095b3639-2366-4eb4-be07-12568481ad6f",
+   "question_id": "CH_20260527_222609_4",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "078cddb0-1bab-4e83-82a5-d9001a568698",
+   "question_id": "CH_20260527_215801_1",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-max bằng đồ thị"
+  },
+  {
+   "id": "666ad73c-22df-4693-8da9-f3ce3bd1ae4d",
+   "question_id": "CH_20260529_183548_3",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "a82f812a-5aa8-4786-aec5-2de7096edf45",
+   "question_id": "CH_20260529_182418_2",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "2c0ffb6d-a53d-44cc-92c8-3c9de0e90073",
+   "question_id": "CH_1782747656279_occy",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "bfc2e8d0-5ae1-4d79-8be9-1b0ebd5865a2",
+   "question_id": "CH_20260527_222041_4",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "d291a80b-f5bf-41c5-9d39-571ffe31ec43",
+   "question_id": "CH_20260529_183548_5",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "18778210-b94d-4e64-a905-4ce464201cbe",
+   "question_id": "CH_20260527_213311_4",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "46d1198a-e1a5-4a9c-8e96-1e5c8f532697",
+   "question_id": "CH_20260526_181058_10",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "b35e82e9-f997-4894-83cd-71b87871ea2d",
+   "question_id": "CH_20260529_181342_5",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "7254226d-22f7-4b89-ba83-01c0af7af828",
+   "question_id": "CH_1782749005150_jlv4",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "22e2e256-178b-4a9a-bcfc-5144f040cb49",
+   "question_id": "CH_20260527_222041_0",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Xác định yếu tố đặc trưng của đồ thị"
+  },
+  {
+   "id": "f519b9bd-8716-4fea-a9cd-92d0c7bf91f0",
+   "question_id": "CH_20260527_224557_5",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "a5c6ce72-6bcf-4377-bb78-452bf795a581",
+   "question_id": "CH_20260527_224114_13",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "eedce948-55c0-4db2-8c05-345f19846748",
+   "question_id": "CH_20260527_213311_19",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  },
+  {
+   "id": "4770c462-3158-4cbb-95f7-9e6a717480d9",
+   "question_id": "CH_1784996119387_tce3",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "16414f7c-2592-4f56-b661-4f8553918632",
+   "question_id": "CH_20260525_155718_12",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "89db8573-a651-475e-924d-715997b2d79e",
+   "question_id": "CH_1784996119387_ow9u",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số"
+  },
+  {
+   "id": "fbe8b93a-5528-407f-8525-15d253ea70b0",
+   "question_id": "CH_1784996119387_jrig",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "2274b3ce-8323-4467-9dd5-46bbf3aaa2bc",
+   "question_id": "CH_1784996119387_cvjp",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "90c36e0f-34ea-4549-88d2-0a54720bcb10",
+   "question_id": "CH_1784996119387_d77n",
+   "lesson": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "math_form": "Min-Max trên đoạn"
+  },
+  {
+   "id": "dba16100-2525-485d-9237-36c46e9d6873",
+   "question_id": "CH_1784996119387_59tl",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "06952dfe-b06e-4b9e-9f58-befa77f7bdfc",
+   "question_id": "CH_1784996119387_w8km",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "09caef5d-f96e-41d7-8744-3e0dc07c7231",
+   "question_id": "CH_1782633898525_gog9",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "29513bdc-2b01-4d06-b1a2-ff6c83453d12",
+   "question_id": "CH_20260523_145009_5",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b69415e5-f59e-4378-8945-a0384ba9240d",
+   "question_id": "CH_20260523_145009_7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "7e762510-43e1-402f-b4ed-305664489eae",
+   "question_id": "CH_1782633898525_vmj0",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "be7f3ef3-f557-4078-9f8f-8c81c0de7a42",
+   "question_id": "CH_1782620444771_tdhi",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "d6817a17-0ef1-4f32-acfe-261f8f44f376",
+   "question_id": "CH_1782633898525_huq8",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "a4a39e76-e011-49d7-950b-89c55923ab90",
+   "question_id": "CH_1782633898525_pl9k",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Xác định tiệm cận qua đồ thị, bảng biến thiên"
+  },
+  {
+   "id": "3632d0fe-a891-43c5-91a7-2da064910b61",
+   "question_id": "CH_1782620444771_dsz0",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "0943a583-40ec-46c7-8073-b44316031192",
+   "question_id": "CH_20260529_174204_3",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "a65e4292-b95a-4b38-80a5-56036e9eb0e1",
+   "question_id": "CH_1784996119387_ylqs",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "00d743e0-151f-4bc6-b873-4f527aca1623",
+   "question_id": "CH_1784996119387_8jt7",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Xét tính đơn điệu của hàm số cho bởi công thức"
+  },
+  {
+   "id": "e05d01c6-f1d0-4ec2-9a0e-f8a496681a0f",
+   "question_id": "CH_1784996119387_amyg",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "8cfd18ec-702b-4ae8-8e19-49c6ea3c8a2b",
+   "question_id": "CH_1782747860654_q3mv",
+   "lesson": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "88d1b3cb-d4c0-4eba-b4b8-1a1e03531377",
+   "question_id": "CH_1787942689737_0lkj",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Khảo sát hàm số thực tế (cho sẵn công thức)"
+  },
+  {
+   "id": "c064ef9e-b461-4d11-a23d-075e21e36fdd",
+   "question_id": "CH_20260529_175045_14",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "b45a17a7-dd6c-47d1-a587-20bac494f902",
+   "question_id": "CH_20260529_175045_15",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "3fcace38-4a33-4471-8a42-83e4c27c4993",
+   "question_id": "CH_20260529_180554_15",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "c6c1076f-c2fe-4c07-99d9-178c083ed0a1",
+   "question_id": "CH_20260529_175819_11",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "d591dc09-0679-4a4b-b639-59d5100b0708",
+   "question_id": "CH_20260529_181342_21",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "cfac28fe-ae65-4e2a-8150-97388c26b453",
+   "question_id": "CH_1784996119387_wecl",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Thiết lập mô hình toán học và khảo sát"
+  },
+  {
+   "id": "c5588479-1a01-44ff-b2f2-816ecddd43d8",
+   "question_id": "CH_1784996119387_ar2t",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "49d36278-f5a0-41d8-8fbc-dd94fb7dac6a",
+   "question_id": "CH_20260529_180554_14",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "fd57c8f6-730f-49b8-be99-68ddfdb1afe2",
+   "question_id": "CH_20260529_182419_14",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "0a154a30-a605-401d-ad54-4044d7ef0f9f",
+   "question_id": "CH_20260529_175045_21",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "a1ee6d4a-b64e-4d4b-8d86-035cb1ddc18b",
+   "question_id": "CH_20260529_180554_19",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "c768ecb6-9511-4471-ac4c-5098b466b7b5",
+   "question_id": "CH_20260529_183548_20",
+   "lesson": "Bài 5. Ứng dụng của đạo hàm",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "34282d97-15fa-4129-8841-ac1569e3f65a",
+   "question_id": "CH_1781616262368_c49b",
+   "lesson": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "math_form": "Tìm cực trị của hàm số cho bởi công thức"
+  },
+  {
+   "id": "b047aace-8b6d-493a-82f2-25a42e439878",
+   "question_id": "CH_1782633898525_aafa",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Tìm tiệm cận bằng biểu thức đại số"
+  },
+  {
+   "id": "fbf38050-23ec-497a-9794-c5ea4b6a84c4",
+   "question_id": "CH_1782633898525_vta7",
+   "lesson": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "math_form": "Toán thực tế"
+  }
+ ]
+}

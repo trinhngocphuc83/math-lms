@@ -1,0 +1,62 @@
+[
+ {
+  "id": "747b2919-e43f-4979-8429-102bfed2851f",
+  "grade": "12",
+  "subject": "Hình học",
+  "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+  "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+  "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian",
+  "created_at": "2026-08-24T11:25:03.326314+00:00",
+  "yeu_cau_can_dat": "Xác định được tọa độ của một điểm trong không gian thông qua các kích thước và tính chất của khối đa diện."
+ },
+ {
+  "id": "35382e8a-b933-458a-8267-63f4e587a082",
+  "grade": "12",
+  "subject": "Hình học",
+  "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+  "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+  "math_form": "Toán thực tế - Tọa độ",
+  "created_at": "2026-08-21T04:52:17.735843+00:00",
+  "yeu_cau_can_dat": "Vận dụng được toạ độ của vectơ để giải quyết các bài toán thực tế liên quan đến chuyển động và vận tốc."
+ },
+ {
+  "id": "b9e77bc9-e524-4dcd-842b-401ffe4798c1",
+  "grade": "12",
+  "subject": "Hình học",
+  "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+  "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+  "math_form": "Toán thực tế",
+  "created_at": "2026-08-21T04:52:17.735843+00:00",
+  "yeu_cau_can_dat": "Thiết lập được hệ tọa độ Oxyz để giải quyết các bài toán tối ưu và hình học trong thực tế."
+ },
+ {
+  "id": "0689811d-1d06-4bd2-abf7-493edaec0670",
+  "grade": "12",
+  "subject": "Hình học",
+  "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+  "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+  "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ",
+  "created_at": "2026-08-21T04:52:17.735843+00:00",
+  "yeu_cau_can_dat": "Xác định được toạ độ của vectơ thông qua biểu diễn vectơ đơn vị hoặc các phép toán tổng, hiệu vectơ."
+ },
+ {
+  "id": "018c87d0-be78-4c47-93ee-95e278401c47",
+  "grade": "12",
+  "subject": "Hình học",
+  "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+  "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+  "math_form": "Tính số đo của các đại lượng hình học",
+  "created_at": "2026-08-21T04:52:17.735843+00:00",
+  "yeu_cau_can_dat": "Tính được độ dài đoạn thẳng và tích vô hướng của hai vectơ bằng biểu thức toạ độ."
+ },
+ {
+  "id": "80c0d780-fa46-4df8-b41a-32ee5154e620",
+  "grade": "12",
+  "subject": "Hình học",
+  "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+  "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+  "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước",
+  "created_at": "2026-08-21T04:52:17.735843+00:00",
+  "yeu_cau_can_dat": "Tìm được tọa độ của điểm thỏa mãn các đẳng thức vectơ hoặc điều kiện hình học cho trước trong không gian."
+ }
+]

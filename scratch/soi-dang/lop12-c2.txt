@@ -1,0 +1,611 @@
+Chương 2. Vectơ và hệ trục toạ độ trong không gian · lớp 12 · 27 dạng · 528 câu
+
+
+### [1] Bài 1. Vectơ trong không gian | Góc giữa hai vectơ và tích vô hướng (26)
+    yêu cầu: Tính được tích vô hướng của hai vectơ và xác định được góc giữa hai vectơ trong không gian.
+  g4fq TLN 3 | Cho hình chóp S.ABC có SA = SB = SC = AB = AC = a, BC = a\sqrt{2}. Biết góc giữa hai véc tơ \overrightarrow{AB
+  7_16 NLC 2 | Cho hình lập phương ABCD.A'B'C'D' (tham khảo hình vẽ) có cạnh bằng a. Tính \vec{AB} \cdot \vec{DC'}. [HINH VẼ 
+  7_14 NLC 2 | Cho lăng trụ đứng ABC.A'B'C'. Đáy là tam giác ABC vuông tại B. Khi đó góc giữa vectơ \vec{BA} và vectơ \vec{B'
+  7_15 NLC 2 | Cho hình lập phương ABCD.A'B'C'D'. Khẳng định nào sau đây là sai? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jp
+  t7ex NLC 1 | Cho hai vectơ \vec{a} và \vec{b} thỏa mãn |\vec{a}|=3, |\vec{b}|=2 và \vec{a}.\vec{b}=-3. Xác định góc \alpha 
+  50v3 NLC 1 | Trong không gian, cho hai vectơ \vec{u} và \vec{v} thoả mãn |\vec{u}| = 2, |\vec{v}| = 3 và (\vec{u}, \vec{v})
+  03dr NLC 2 | Cho hình lập phương ABFE.DCHG có cạnh bằng 2. ![Hình minh họa](https://cmjithgtecypxmisbzvw.supabase.co/storag
+  5_11 TLN 3 | Cho biết bốn đoạn thẳng nối từ một đỉnh của tứ diện đến trọng tâm mặt đối diện luôn cắt nhau tại một điểm gọi 
+  n6rr DS 3 | Cho hình lăng trụ tam giác đều  ABC.A'B'C' có  AB=a và  AA'=a\sqrt{2}.
+  p4ms TLN 2 | Cho hình chóp  S.ABC có  SA=SB=SC=AB=AC=a,  BC=a\sqrt{2}. Biết góc giữa hai véc tơ  \overrightarrow{AB} và  \o
+  49z3 TLN 2 | Cho tứ diện  OABC có các cạnh  OA, OB, OC đôi một vuông góc và  OA = OB = OC = 1. Gọi  M là trung điểm của cạn
+  54_7 DS 3 | Cho hình lập phương ABCD.A'B'C'D' có cạnh bằng a. Gọi O, O' lần lượt là tâm của hình vuông ABCD và A'B'C'D'. [
+  633_0 TL 3 | Cho tứ diện đều ABCD có H là trung điểm của cạnh AB. Tính góc giữa: a) (\overrightarrow{AB}, \overrightarrow{C
+  633_1 TL 3 | Cho hình lập phương ABCD \cdot A'B'C'D'. Tính góc giữa các cặp vectơ sau đây: a) \overrightarrow{AD} và \overr
+  633_2 TL 3 | Cho hình lăng trụ tam giác đều ABC \cdot A'B'C'. Tính các góc (\overrightarrow{AA'}; \overrightarrow{BC}) và (
+  33_3 TL 3 | Cho hình chóp tứ giác đều S \cdot ABCD có độ dài tất cả các cạnh bằng a. Tính các tích vô hướng sau: a) \overr
+  633_4 TL 3 | Cho hình lăng trụ tứ giác đều ABCD \cdot A'B'C'D' có độ dài mỗi cạnh đáy bằng 1 và độ dài mỗi cạnh bên bằng 2.
+  633_6 TL 3 | Cho tứ diện đều ABCD cạnh a. Tính góc giữa \overrightarrow{AD} và \overrightarrow{BC}.
+  633_7 TL 3 | Cho hình chóp S \cdot ABC có BC = a\sqrt{2}, các cạnh còn lại đều bằng a. Tính góc giữa hai vectơ \overrightar
+  633_5 TL 3 | Cho tứ diện O.ABC có các cạnh OA, OB, OC đôi một vuông góc với nhau và OA = OB = OC = 1. Gọi M là trung điểm c
+  hotg NLC 2 | Cho hình lăng trụ tam giác đều ABC.A'B'C' có cạnh đáy bằng a, cạnh bên bằng 2a. Tính \overrightarrow{AB'}.\ove
+  rj1n TLN 3 | Cho tứ diện đều ABCD có cạnh bằng 1. Tính tích vô hướng \overrightarrow{AB}.(2024\overrightarrow{BC} - 2025\ov
+  9b1n NLC 1 | Cho \vec{a} và \vec{b} là hai vectơ cùng hướng và đều khác vectơ \vec{0}. Mệnh đề nào sau đây đúng?
+  qrrh NLC 3 | Cho tứ diện ABCD có AB = CD = 2a. Gọi M, N lần lượt là trung điểm của AD và BC. Biết MN = \sqrt{3}a, góc giữa 
+  o226 TL 3 | Trong không gian, cho tứ diện S.ABC có SA = SB = SC = AB = AC = 2, BC = 2\sqrt{2}. Hãy tính \overrightarrow{SC
+  j60w TLN 3 | Cho hình chóp S.ABC có đáy ABC là tam giác đều cạnh 6a, SA = SB = SC = 9a. Gọi M là điểm thuộc cạnh SC sao cho
+
+### [2] Bài 1. Vectơ trong không gian | Tính độ dài của vectơ (7)
+    yêu cầu: Tính được độ dài của vectơ biểu diễn dưới dạng tổng hoặc hiệu các vectơ trong khối đa diện.
+  7_12 NLC 3 | Cho hình lập phương ABCD.A'B'C'D' cạnh a. Đặt \vec{x} = \vec{AA'} + \vec{AC'}. Độ dài của \vec{x} bằng [HINH V
+  7_13 NLC 3 | Cho hình hộp đứng ABCD.A'B'C'D', trong đó mặt đáy là hình bình hành với \widehat{DAB} = 120^\circ. Biết độ dài
+  58_4 NLC 2 | Cho hai vectơ \vec{u} và \vec{v} tạo với nhau một góc 120^\circ và |\vec{u}| = 2, |\vec{v}| = 5. Tính |\vec{u}
+  gi4k TL 4 | Cho hình lập phương  ABCD.A'B'C'D' cạnh bằng  9. Trên  BD, AD' lần lượt lấy các điểm  M, N sao cho  MD = AN = 
+  eafm NLC 2 | Cho hai vectơ  \vec{a}, \vec{b} thỏa mãn:  |\vec{a}| = 3, |\vec{b}| = 4, |\vec{a} + \vec{b}| = 6. Tính  |\vec{
+  gi21 NLC 1 | Cho hình lập phương  ABCD.A'B'C'D' có cạnh là  a. Hai vectơ nào sau đây có cùng độ dài?
+  6tov NLC 3 | Cho hai vectơ \vec{a}, \vec{b} thỏa mãn: |\vec{a}| = 3, |\vec{b}| = 4, |\vec{a} + \vec{b}| = 6. Tính |\vec{a} 
+
+### [3] Bài 1. Vectơ trong không gian | Toán thực tế - Lực (19)
+    yêu cầu: Vận dụng được các phép toán vectơ trong không gian để giải quyết các bài toán cân bằng lực trong thực tiễn.
+  inmj TLN 4 | Người ta treo một chiếc đèn chùm được thiết kế như hình vẽ với đĩa đèn hình tròn được giữ bởi bốn đoạn cáp khô
+  2gmt TLN 3 | Trong không gian, ba lực \vec{F_1}, \vec{F_2}, \vec{F_3} cùng tác động vào một điểm. Biết cường độ của ba lực 
+  1hlb TLN 3 | Một chiếc đèn trang trí hình tròn được treo song song với mặt phẳng trần nhà nằm ngang bởi ba sợi dây không gi
+  2vb8 DS 2 | Một chất điểm ở vị trí đỉnh A của hình lập phương ABCD.A'B'C'D'. Chất điểm chịu tác dụng bởi ba lực \vec{a}, \
+  67ed TLN 2 | Trọng lực \overrightarrow{P} là lực hấp dẫn do Trái Đất tác dụng lên một vật được tính bởi công thức \overrigh
+  jkfk TLN 3 | Trong điện trường đều, lực tĩnh điện \overrightarrow{F} (đơn vị: N) tác dụng lên điện tích điểm có điện tích q
+  q3rm TLN 3 | Một lực tĩnh điện \overrightarrow{F} tác động lên điện tích điểm M trong điện trường đều làm cho M dịch chuyển
+  0jf8 TLN 3 | Theo định luật II Newton: gia tốc của một vật có cùng hướng với lực tác dụng lên vật. Độ lớn của gia tốc tỉ lệ
+  y40l TLN 3 | Một em bé cân nặng m = 20 kg trượt trên cầu thang trượt dài 2 m. Biết rằng, cầu trượt có góc nghiêng so với ph
+  4ovs TLN 3 | Trong không gian, một chiếc ô tô được đặt trên mặt đáy dưới của một khung sắt có dạng hình hộp chữ nhật với đá
+  913h TLN 3 | Một chất điểm A nằm trên mặt phẳng nằm ngang (\alpha), chịu tác động bởi ba lực \overrightarrow{F_1}, \overrig
+  sfho TLN 3 | Cho biết công A (đơn vị: Jun) sinh bởi lực \overrightarrow{F} tác dụng lên một vật được tính bằng công thức A 
+  0kw4 TLN 3 | Người ta vận chuyển một thùng hàng có dạng hình hộp chữ nhật bằng cách móc 4 dây cáp vào 4 góc trên của thùng 
+  o38t TLN 3 | Một chiếc máy đo đạc trắc địa được đặt trên một giá đỡ ba chân. Trọng lực tác dụng lên chiếc máy có độ lớn là 
+  8jk7 TLN 3 | Một giỏ hoa treo trong nhà làm bằng 3 sợi dây không giãn, mỗi sợi dài 60 (cm) miếng kê là một miếng gỗ cân đối
+  mejt TL 4 | Một chiếc ô tô được đặt trên mặt đáy dưới của một khung sắt có dạng hình hộp chữ nhật với đáy trên là hình chữ
+  u05e DS 2 | Một chất điểm ở vị trí đỉnh  A của hình lập phương  ABCD.A'B'C'D'. Chất điểm chịu tác dụng bởi ba lực  \vec{a}
+  v7xi TLN 3 | Một chiếc đèn trang trí hình tròn được treo song song với mặt phẳng trần nhà nằm ngang bởi ba sợi dây không gi
+  52ou DS 3 | Một vật nặng O được kéo từ ba hướng như hình vẽ và chịu tác dụng của 3 lực \overrightarrow{F_1}, \overrightarr
+
+### [4] Bài 1. Vectơ trong không gian | Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt (42)
+    yêu cầu: Thực hiện được việc biểu diễn vectơ và chứng minh các đẳng thức vectơ trong không gian.
+  9_21 NLC 2 | Cho tứ diện ABCD có G là trọng tâm tam giác BCD. Đặt \\vec{x} = \\vec{AB}, \\vec{y} = \\vec{AC}, \\vec{z} = \\
+  47_0 TL 2 | Cho tứ diện ABCD. + a) Chứng minh rằng: \vec{AC} + \vec{BD} = \vec{AD} + \vec{BC} + b) Gọi M, N lần lượt là tr
+  19_7 NLC 2 | Cho tứ diện ABCD. Gọi M và P lần lượt là trung điểm của AB và CD. Đặt \vec{AB} = \vec{b}, \vec{AC} = \vec{c}, 
+  47_5 NLC 2 | Cho hình lăng trụ ABC.A'B'C', M là trung điểm của BB'. Đặt \vec{CA} = \vec{a}, \vec{CB} = \vec{b}, \vec{AA'} =
+  07_4 NLC 3 | Cho hình hộp ABCD.A'B'C'D'. Gọi I, J lần lượt là trung điểm của AB' và CD'. Khẳng định nào dưới đây là đúng?
+  07_9 NLC 3 | Cho tứ diện đều ABCD, M và N theo thứ tự là trung điểm của cạnh AB và CD. Mệnh đề nào sau đây sai?
+  633_8 TL 3 | Cho tứ diện ABCD có AC và BD cùng vuông góc với AB. Gọi M, N lần lượt là trung điểm của hai cạnh AB, CD. Chứng
+  19_6 NLC 2 | Gọi M, N lần lượt là trung điểm của các cạnh AC và BD của tứ diện ABCD. Gọi I là trung điểm đoạn MN và P là 1 
+  19_12 NLC 3 | Cho hình hộp ABCD.A'B'C'D' có tâm O. Đặt \\vec{AB} = \\vec{a}, \\vec{BC} = \\vec{b}. M là điểm xác định bởi \\
+  19_10 NLC 2 | Cho tứ diện ABCD. Gọi G là trọng tâm tam giác ABC. Tìm giá trị của k thích hợp điền vào đẳng thức vectơ: \\vec
+  19_18 NLC 2 | Cho hình chóp S.ABC, gọi G là trọng tâm tam giác ABC. Ta có
+  07_8 NLC 3 | Cho tứ diện ABCD. Gọi M,N lần lượt là trung điểm của AB, CD và G là trung điểm của MN. Trong các khẳng định sa
+  7_10 NLC 3 | Cho hình hộp ABCD.A'B'C'D' với tâm O. Hãy chỉ ra đẳng thức sai trong các đẳng thức sau đây.
+  19_0 NLC 2 | (THPT Hồng Quang-Hải Dương-Lần 1- 2018 - BTN) Cho hình lăng trụ tam giác ABC.A'B'C', gọi M là trung điểm cạnh 
+  19_1 NLC 2 | Cho hình lập phương ABCD.A_1B_1C_1D_1. Gọi O là tâm của hình lập phương. Chọn đẳng thức đúng?
+  19_3 NLC 2 | Cho hình tứ diện ABCD có trọng tâm G. Mệnh đề nào sau đây là sai?
+  19_9 NLC 2 | Cho tứ diện ABCD. Đặt \\vec{AB} = \\vec{a}, \\vec{AC} = \\vec{b}, \\vec{AD} = \\vec{c}, gọi M là trung điểm củ
+  19_13 NLC 2 | Cho hình chóp S.ABCD có đáy ABCD là hình bình hành. Khẳng định nào sau đây đúng?
+  19_14 NLC 2 | Cho tứ diện ABCD. Gọi M, N lần lượt là trung điểm của AD và BC. Khẳng định nào sau đây sai?
+  19_15 NLC 2 | Cho hình chóp S.ABCD có ABCD là hình bình hành tâm O. Trong các mệnh đề sau, mệnh đề nào sai?
+  19_16 NLC 2 | Cho tứ diện ABCD. Gọi G là trọng tâm của tam giác BCD. Khẳng định nào sau đây đúng:
+  19_17 NLC 2 | Cho tứ diện ABCD. Gọi I, J lần lượt là trung điểm của AB và CD, G là trung điểm của IJ. Cho các đẳng thức sau,
+  9_19 NLC 3 | Cho tứ diện ABCD. Gọi E là trung điểm AD, F là trung điểm BC và G là trọng tâm của tam giác BCD. Tìm mệnh đề s
+  9_20 NLC 4 | Cho hình hộp ABCD.A'B'C'D' có tâm O. Gọi I là tâm hình bình hành ABCD. Đặt \\vec{AC'} = \\vec{u}, \\vec{CA'} =
+  19_2 NLC 2 | Cho lăng trụ tam giác ABC.A'B'C' có \\vec{AA'}=\\vec{a}, \\vec{AB}=\\vec{b}, \\vec{AC}=\\vec{c}. Hãy phân tích
+  19_4 NLC 2 | Cho tứ diện ABCD. Gọi M và N lần lượt là trung điểm của AB và CD. Tìm giá trị của k thích hợp điền vào đẳng th
+  07_6 NLC 2 | Cho hình chóp S.ABCD có đáy là hình bình hành tâm O. Tính tổng \vec{SA} + \vec{SB} + \vec{SC} + \vec{SD}.
+  l5kn TL 2 | Cho tứ diện  ABCD. Lấy các điểm  M và  N lần lượt thuộc  AD và  BC sao cho  \vec{AM} = 3\vec{MD}; \vec{NB} = -
+  c3d4 DS 3 | Cho hình lăng trụ tam giác đều ABC.A'B'C' có AB = a và AA' = a\sqrt{2}.
+  47_1 TL 2 | Cho hình bình hành ABCD. Gọi S là một điểm nằm ngoài mặt phẳng chứa hình bình hành. Chứng minh rằng: \vec{SA} 
+  07_7 NLC 2 | Cho tứ diện ABCD. Gọi G là trọng tâm tam giác ABD. Khi đó
+  47_2 TL 2 | Cho hình hộp ABCD.A'B'C'D'. Chứng minh rằng: + a, \vec{AB} + \vec{B'C'} + \vec{DD'} = \vec{AC'} + b, \vec{BD} 
+  47_3 NLC 2 | Cho tứ diện ABCD có G là trọng tâm tam giác BCD. Đặt \vec{x} = \vec{AB}; \vec{y} = \vec{AC}; \vec{z} = \vec{AD
+  47_4 NLC 2 | Cho tứ diện ABCD. Gọi M và P lần lượt là trung điểm của AB và CD. Đặt \vec{AB} = \vec{b}, \vec{AC} = \vec{c}, 
+  47_6 NLC 2 | Cho hình hộp ABCD.EFGH có \vec{AB} = \vec{a}; \vec{AD} = \vec{b}; \vec{AE} = \vec{c}. Gọi I là trung điểm của 
+  47_7 NLC 2 | Cho lăng trụ ABC.A'B'C'. Đặt \vec{AA'} = \vec{a}, \vec{AB} = \vec{b}, \vec{AC} = \vec{c}. Gọi G' là trọng tâm 
+  5_10 TLN 2 | Ta đã biết trọng tâm của tứ diện ABCD là một điểm I thoả mãn \vec{AI} = 3\vec{IG}, ở đó G là trọng tâm của tam
+  z3x5 NLC 2 | Cho hình lăng trụ ABC.A'B'C'. Đặt \overrightarrow{AA'} = \vec{a}, \overrightarrow{AB} = \vec{b}, \overrightarr
+  v76t TL 3 | Cho tứ diện ABCD. Lấy các điểm M và N lần lượt thuộc AD và BC sao cho \overrightarrow{AM} = 3\overrightarrow{M
+  3nrg NLC 1 | Cho hình lập phương ABCD.A'B'C'D'. Gọi O là tâm của hình lập phương. Khẳng định nào sau đây là đúng?
+  lmc7 NLC 2 | Cho hình chóp S.ABCD có đáy ABCD là hình bình hành. Đặt \overrightarrow{SA} = \vec{a}, \overrightarrow{SB} = \
+  jzob DS 2 | Cho hình hộp ABCD.A'B'C'D'.
+
+### [5] Bài 1. Vectơ trong không gian | Các quy tắc cơ bản của vectơ trong không gian (20)
+    yêu cầu: Vận dụng được quy tắc ba điểm, quy tắc hình bình hành và quy tắc hình hộp để biến đổi các hệ thức vectơ trong không gian.
+  07_0 NLC 2 | Cho tứ diện ABCD. Mệnh đề nào dưới đây là mệnh đề đúng?
+  07_1 NLC 1 | Cho hình lập phương ABCD.EFGH, \vec{x} = \vec{CB} + \vec{CD} + \vec{CG} [HINH VẼ ĐỒ THỊ]<br/><img src="data:im
+  07_3 NLC 1 | Cho hình hộp ABCD.A'B'C'D'. Đẳng thức nào sau đây là đẳng thức đúng? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image
+  07_5 NLC 2 | Cho hình lập phương ABCD.A'B'C'D'. Mệnh đề nào sau đây sai? [HINH VẼ ĐỒ THỊ]<br/><img src="data:image/jpeg;bas
+  lb5j NLC 1 | Trong không gian, cho hình hộp ABCD.A'B'C'D'. Vectơ đối của vectơ \overrightarrow{AA'} là
+  22_6 NLC 2 | Cho hình hộp chữ nhật ABCD.A'B'C'D'. [HINH VẼ ĐỒ THỊ] Vectơ nào sau đây cùng phương với \vec{BC}?<br/><img src
+  yh3z DS 2 | Cho hình lăng trụ tam giác đều ABC.A'B'C' có tất cả các cạnh bằng a.
+  0_11 NLC 1 | Đẳng thức nào sau đây đúng?
+  07_2 NLC 1 | Cho hình hộp ABCD.A'B'C'D' (xem hình dưới), tổng của \vec{DA} + \vec{DC} + \vec{DD'} là vectơ nào dưới đây? [H
+  10_5 NLC 1 | Cho tứ diện ABCD. Gọi I là trung điểm của BC. Khẳng định nào sau đây là sai?
+  10_0 NLC 1 | Cho hình hộp ABCD.A'B'C'D'. Mệnh đề đúng là
+  xeqg NLC 1 | Cho hình chóp S.ABCD có đáy ABCD là hình bình hành tâm O. Khẳng định nào sau đây là **sai**?
+  o07p NLC 1 | Cho tứ diện ABCD. Có bao nhiêu vectơ khác \vec{0}, có điểm đầu là A và điểm cuối là một trong các đỉnh còn lại
+  ukl2 NLC 1 | Cho tứ diện  ABCD. Có bao nhiêu vectơ khác  \vec{0}, có điểm đầu là  A và điểm cuối là một trong các đỉnh còn 
+  x921 NLC 1 | Cho hình lập phương  ABCD.A'B'C'D'. Hai vectơ nào có giá cùng nằm trong mặt phẳng  (ABCD)?
+  73g0 NLC 1 | Cho hình lập phương  ABCD.A'B'C'D'. Vectơ nào sau đây bằng vectơ  \vec{D'C'}?
+  16_0 NLC 1 | Cho hình hộp ABCD.A'B'C'D'. Khẳng định nào sau đây sai?
+  fyw8 NLC 1 | Cho hình lập phương ABCD.A'B'C'D'. Hai vectơ nào có giá cùng nằm trong mặt phẳng (ABCD)?
+  g1xq NLC 1 | Cho hình lập phương ABCD.A'B'C'D' có cạnh là a. Hai vectơ nào sau đây có cùng độ dài?
+  9zp0 NLC 1 | Cho hình lập phương ABCD.A'B'C'D'. Vectơ nào sau đây bằng vectơ \overrightarrow{D'C'}?
+
+### [6] Bài 2. Hệ trục toạ độ trong không gian | Toán thực tế - Tọa độ (2)
+    yêu cầu: Sử dụng được tọa độ của điểm và vectơ để xác định vị trí, vận tốc và khoảng cách của vật thể trong thực tế.
+  1666 TLN 3 | Người ta cần lắp một camera phía trên sân bóng để phát sóng truyền hình một trận bóng đá, camera có thể di độn
+  io1s TLN 2 | Trong hệ trục tọa độ (Oxyz), một thiết bị âm thanh được phát từ vị trí A(1;5;8). Người ta dự định đặt một máy 
+
+### [7] Bài 2. Hệ trục toạ độ trong không gian | Toán thực tế (11)
+    yêu cầu: Vận dụng được hệ trục tọa độ trong không gian để giải quyết các bài toán liên quan đến thực tiễn.
+  59_4 TLN 4 | Để chuẩn bị cho một buổi triển lãm quốc tế, các trang sức có giá trị lớn được đặt bảo mật trong các khối chóp 
+  533_7 NLC 3 | Cần trục chân đế là kiểu cột quay được sử dụng để phục vụ công việc xếp dỡ hàng hóa chủ yếu ngoài các cảng bến
+  59_6 TLN 3 | Một ngôi nhà gồm hai phần. Phần thân nhà dạng hình hộp chữ nhật ABCD.OMNK có chiều dài 1200 cm, chiều rộng 900
+  59_1 TLN 3 | Hai chiếc kinh khí cầu A và B bay lên từ cùng một vị trí O trên mặt đất. Sau một khoảng thời gian, kinh khí cầ
+  21_0 TLN 3 | Một toà nhà được thiết kế để làm 2 phòng dạy học có trang bị máy chiếu. Mái nhà là dạng mái vát CDFE như hình 
+  36_0 TLN 3 | Trong không gian Oxyz, đài kiểm soát không lưu sân bay đặt ở gốc tọa độ O(0;0;0), đơn vị trên mỗi trục tính th
+  59_0 TLN 3 | Một bể cá đầy nước có dạng hình hộp chữ nhật ABCD.EFGH với AB = 6 (dm), AD = 8 (dm) và cạnh bên bằng 10 (dm). 
+  59_5 TLN 3 | Hai chiếc flycam được điều khiển cùng bay lên tại một địa điểm. Sau một thời gian bay, chiếc flycam thứ nhất b
+  21_2 TLN 3 | Người ta thường dùng cầu trục tháp (như hình vẽ) để vận chuyển vật liệu xây dựng; thân tháp vuông góc với mặt 
+  k3uf TL 2 | Hãy mô tả hệ toạ độ Oxyz trong căn phòng như hình sao cho gốc O trùng với góc trên của căn phòng, khung tranh 
+  w3yc TL 2 | Trong Vận dụng 2, hãy giải thích vì sao tại mỗi thời điểm chiếc máy bay di chuyển trên đường băng thì toạ độ c
+
+### [8] Bài 2. Hệ trục toạ độ trong không gian | Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ (34)
+    yêu cầu: Xác định được tọa độ của vectơ, tọa độ của điểm và tính được độ dài đoạn thẳng trong không gian Oxyz.
+  33_9 NLC 2 | Trong không gian Oxyz, cho véc-tơ \vec{AO} = 3(\vec{i} + 4\vec{j}) - 2\vec{k} + 5\vec{j}. Tọa độ của điểm A là
+  33_12 NLC 2 | Trong không gian Oxyz, cho điểm M thỏa mãn \vec{OM} = (2x-4)\vec{i} - 4\vec{j} + (y-1)\vec{k}. Khi điểm M \in 
+  54_3 DS 3 | Trong không gian Oxyz, cho ba điểm A(1;2;3), B(2;5;4), C(0;2;0). Trong các khẳng định sau, khẳng định nào đúng
+  euhu NLC 1 | Trong không gian Oxyz, cho biểu diễn của vectơ \vec{a} qua các vectơ đơn vị là \vec{a} = 2\vec{i} + \vec{k} - 
+  22_7 NLC 2 | Trong không gian Oxyz giả sử \vec{OM} = 2\vec{i} + 3\vec{j} - \vec{k}, khi đó tọa độ điểm M là
+  ks9d TL 1 | Trong không gian Oxyz, xác định toạ độ của vectơ \overrightarrow{AB} trong trường hợp sau: A(0; 0; 0) và B(4; 
+  alm9 NLC 1 | Trong không gian Oxyz, cho vectơ \overrightarrow{OA} = \vec{j} - 2\vec{k}. Tọa độ điểm A là
+  44_1 NLC 1 | Cho vé-tơ \vec{u} = ( 3; -5; \frac{1}{2} ). Hãy phân tích vé-tơ \vec{u} theo các vé-tơ đơn vị
+  44_3 NLC 1 | Tọa độ vé-tơ đơn vị \vec{j} là
+  44_2 NLC 1 | Tọa độ vé-tơ đơn vị \vec{i} là
+  03_0 NLC 1 | Trong không gian Oxyz, cho bốn điểm A(1;0;2), B(-2;1;3), C(3;2;4), D(6;9;-5). Hãy tìm tọa độ trọng tâm của tứ 
+  03_1 NLC 2 | Trong không gian Oxyz, cho các điểm A(1;0;3), B(2;3;-4), C(-3;1;2). Tìm tọa độ điểm D sao cho tứ giác ABCD là 
+  03_2 NLC 2 | Trong không gian Oxyz, cho ba điểm A(-4;1;-5), B(2;-4;7), C(3;-2;9). Tọa độ điểm D để ABCD là hình bình hành l
+  03_3 NLC 2 | Trong không gian Oxyz, cho hình bình hành ABCE với A(3;1;2), B(1;0;1), C(2;3;0). Tọa độ đỉnh E là
+  03_4 NLC 2 | Trong không gian Oxyz, cho hai điểm A(1;-2;3), B(2;-3;4). Tìm điểm M \in (Oxy) sao cho ba điểm A, B, M thẳng h
+  rn4p NLC 1 | Trong không gian Oxyz, cho vectơ \vec{a} thoả mãn \vec{a} = 2\vec{i} - 3\vec{j} + \vec{k}. Tọa độ của \vec{a} 
+  u5tu DS 3 | Trong không gian Oxyz, cho ba vectơ \vec{a}, \vec{b}, \vec{c} đều khác \vec{0} và có giá đôi một vuông góc. Nh
+  8lnt NLC 1 | Trong không gian  Oxyz, cho vectơ  \overrightarrow{OA} = \vec{j} - 2\vec{k}. Tọa độ điểm  A là
+  fwlv NLC 1 | Trong không gian  Oxyz, cho vectơ  \vec{u}=(1;2;0). Mệnh đề nào sau đây đúng?
+  pbwu NLC 1 | Trong không gian  Oxyz, cho  \vec{a} = -\vec{i} + 2\vec{j} - 3\vec{k}. Tọa độ của vectơ  \vec{a} là
+  elay NLC 1 | Trong không gian  Oxyz, cho vectơ  \vec{u} = 3\vec{i} + 4\vec{j} - 5\vec{k} và điểm  A. Biết  \overrightarrow{
+  q9z7 NLC 1 | Trong không gian  Oxyz, cho biểu diễn của vectơ  \vec{a} qua các vectơ đơn vị là  \vec{a} = 2\vec{i} + \vec{k}
+  08_0 TL 2 | Cho A(1; 2; 3); B(2; -1; 4); C(1; -3; 0); D(-4; 5; 6) + a) Tìm tọa độ I là trung điểm của AB; G là trọng tâm t
+  08_6 NLC 2 | Trong không gian với hệ tọa độ Oxyz cho vectơ \overrightarrow{AO} = 3(\vec{i} + 4\vec{j}) - 2\vec{k} + 5\vec{j
+  44_4 NLC 1 | Tọa độ vé-tơ đơn vị \vec{k} là
+  44_0 NLC 1 | Cho vé-tơ \vec{u} = 2\vec{i} + 3\vec{j} - 3\vec{k}. Tọa độ vé-tơ \vec{u} là
+  4_11 NLC 1 | Trong không gian với hệ tọa độ Oxyz, cho điểm M thỏa mãn hệ thức \vec{OM} = 2\vec{i} + \vec{j}. Tọa độ của điể
+  533_8 NLC 1 | Trong không gian Oxyz, cho điểm M thỏa mãn \vec{MO} = 3\vec{k} - 2\vec{i} + 4\vec{j}. Tọa độ điểm M bằng
+  yfzk TL 1 | Trong không gian Oxyz, xác định toạ độ của vectơ \overrightarrow{AB} trong trường hợp sau: A(1; -3; 7) và B(1;
+  myyf TL 1 | Trong không gian Oxyz, xác định toạ độ của vectơ \overrightarrow{AB} trong trường hợp sau: A(5; 4; 9) và B(-5;
+  dzhb NLC 1 | Trong không gian Oxyz, cho vectơ \vec{u} = (1;2;0). Mệnh đề nào sau đây đúng?
+  cduw NLC 1 | Trong không gian Oxyz, cho \vec{a} = -\vec{i} + 2\vec{j} - 3\vec{k}. Toạ độ của vectơ \vec{a} là
+  eef0 NLC 1 | Trong không gian Oxyz, cho vectơ \vec{u} = 3\vec{i} + 4\vec{j} - 5\vec{k} và điểm A. Biết \overrightarrow{OA} 
+  wvdd NLC 1 | Trong không gian Oxyz, cho hai điểm A(2;-1;-1), B(-3;2;-2). Tọa độ của \overrightarrow{AB} là
+
+### [9] Bài 2. Hệ trục toạ độ trong không gian | Xác định tọa độ điểm thông qua khối hình học không gian (13)
+    yêu cầu: Xác định được tọa độ các đỉnh và các điểm đặc biệt của khối đa diện khi gắn vào hệ trục tọa độ Oxyz.
+  533_6 TLN 2 | Trong không gian Oxyz, cho hình hộp chữ nhật OABC.EFGH có các cạnh OA = 5, OC = 8, OE = 7 (xem hình vẽ dưới đâ
+  3_20 NLC 3 | Cho hình lập phương ABCD.A'B'C'D' có độ dài cạnh bằng 1. Gọi M, N, P, Q lần lượt là trung điểm của AB, BC, C'D
+  3_21 NLC 3 | Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a, SAD là tam giác đều và nằm trong mặt phẳng vuông góc vớ
+  3_22 NLC 3 | Cho tứ diện đều ABCD cạnh a. Gọi K là trung điểm AB, gọi M, N lần lượt là hình chiếu vuông góc của K lên AD, A
+  4_37 NLC 3 | Trong không gian với hệ tọa độ Oxyz, cho hình hộp ABCD.A'B'C'D' có A(0; 0; 0), B(3; 0; 0), D(0; 3; 0) và D'(0;
+  08_9 NLC 3 | Trong không gian với hệ trục tọa độ Oxyz, cho hình hộp ABCD.A'B'C'D'. Biết tọa độ các đỉnh A(-3; 2; 1), C(4; 2
+  08_10 NLC 3 | Trong không gian với hệ tọa độ Oxyz, cho hình hộp ABCD.A'B'C'D'. Biết A(1; 0; 1), B'(2; 1; 2), D'(1; -1; 1), C
+  59_9 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho hình bình hành ABCD với A(1; 0; 1), B(2; 1; 2) và giao điểm của hai đ
+  21_3 TLN 2 | Người ta cần lắp một camera phía trên sân bóng để phát sóng truyền hình một trận bóng đá, camera có thể di độn
+  ziwe TL 2 | Trong không gian Oxyz, cho hình hộp chữ nhật ABCD.A'B'C'D' có đỉnh A trùng với gốc O và các đỉnh D, B, A' có t
+  rj17 TL 2 | Trong không gian Oxyz, cho hình hộp OABC.O'A'B'C' có A(1; 1; -1), B(0; 3; 0), C'(2; -3; 6). a) Xác định toạ độ
+  d7lx TLN 3 | Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a, SAB là tam giác đều và nằm trong mặt phẳng vuông góc vớ
+  pdl0 TLN 3 | Cho hình lập phương ABCD.A'B'C'D' cạnh bằng 9. Trên BD, AD' lần lượt lấy các điểm M, N sao cho MD = AN = x, (0
+
+### [10] Bài 2. Hệ trục toạ độ trong không gian | Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục) (28)
+    yêu cầu: Xác định được toạ độ hình chiếu vuông góc và điểm thuộc các trục toạ độ hoặc mặt phẳng toạ độ.
+  533_1 NLC 1 | Trong không gian Oxyz, điểm nào sau đây nằm trên mặt phẳng tọa độ (Oyz)?
+  533_2 NLC 1 | Trong không gian Oxyz, tọa độ hình chiếu của M(2;1;4) lên trục Ox là
+  6_16 NLC 2 | Trong không gian Oxyz, tọa độ điểm đối xứng của M(1; 2; 3) qua mặt phẳng (Oyz) là
+  533_4 NLC 2 | Trong không gian Oxyz, điểm đối xứng với điểm M(4;-5;3) qua trục Oz có tọa độ là
+  33_14 NLC 1 | Trong không gian Oxyz, hình chiếu vuông góc của điểm M(-1;2;-2) trên trục Oz là điểm
+  3_18 NLC 2 | Trong không gian Oxyz, cho A(1;2;3). Điểm đối xứng với A qua trục Oy có tọa độ là
+  4_30 NLC 2 | Trong không gian với hệ trục tọa độ Oxyz, cho A(1; 1; 0), B(3; -1; 2). Tọa độ điểm C sao cho B là trung điểm c
+  533_0 NLC 1 | Trong không gian Oxyz, điểm nào sau đây thuộc trục Oz?
+  533_5 NLC 2 | Trong không gian Oxyz, điểm đối xứng của điểm M(-1;2;-2) qua mặt phẳng (Oxz) là điểm
+  3_17 NLC 2 | Trong không gian Oxyz, cho vectơ \vec{OM} = \vec{i} - 3\vec{j} + 4\vec{k}. Gọi H là hình chiếu vuông góc của M
+  54_0 NLC 2 | Trong không gian Oxyz, cho hai điểm A(2;-2;1), B(0;1;2). Tọa độ điểm M thuộc mặt phẳng (Oxy) sao cho ba điểm A
+  4_23 NLC 1 | Hình chiếu vuông góc của M(4; 5; 6) lên mặt phẳng (Oyz) là
+  22_0 NLC 2 | Trong không gian tọa độ Oxyz cho điểm M(\sqrt{2}; 0; \sqrt{3}). Tìm điểm M' \in Oy sao cho độ dài đoạn thẳng M
+  4_24 NLC 1 | Hình chiếu vuông góc của M(1; 0; 5) lên mặt phẳng (Oxz) là
+  4_20 NLC 1 | Hình chiếu vuông góc của M(1; 2; 3) lên trục Oy là
+  3_19 NLC 2 | Trong không gian Oxyz, điểm đối xứng của A(1;2;3) qua mặt phẳng (Oyz) là điểm nào dưới đây
+  4_38 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho \vec{OM} = (1; 5; 2), \vec{ON} = (3; 7; -4). Gọi P là điểm đối xứng v
+  4_22 NLC 1 | Hình chiếu vuông góc của M(1; 2; 3) lên mặt phẳng (Oxy) là
+  n9re NLC 1 | Trong không gian  Oxyz, cho điểm  A(-2; -1; 3). Gọi  A_1, A_2, A_3 lần lượt là hình chiếu của điểm  A trên các
+  03_5 NLC 3 | Trong không gian Oxyz, cho các điểm A(3;-4;0), B(-1;1;3), C(3;1;0). Tìm tọa độ điểm D trên trục hoành sao cho 
+  6_10 NLC 2 | Trong không gian Oxyz, hình chiếu vuông góc của điểm A(1; 2; 3) trên mặt phẳng (Oxz) là
+  3_16 NLC 1 | Trong không gian Oxyz, hình chiếu vuông góc của điểm M(5;-6;2) lên mặt phẳng (Oxy) có tọa độ là
+  4_27 NLC 2 | Cho điểm M(2; -1; -3). Tìm tọa độ điểm M' đối xứng với M qua trục Oy
+  4_15 NLC 2 | Cho hai điểm B(2; 1; 1) và C(1; 1; 1). Tìm tọa độ điểm A đối xứng với B qua C
+  6ddo TL 1 | Trong không gian Oxyz, xác định toạ độ của điểm A trong trường hợp sau: A trùng với gốc toạ độ.
+  1vxq TL 1 | Trong không gian Oxyz, xác định toạ độ của điểm A trong trường hợp sau: A nằm trên tia Ox và OA = 2.
+  eo6e NLC 1 | Trong không gian Oxyz, cho điểm A(-2;-1;3). Gọi A_1, A_2, A_3 lần lượt là hình chiếu của điểm A trên các mặt p
+  gms8 NLC 1 | Trong không gian Oxyz, cho điểm A(1;-2;5). Hình chiếu vuông góc của A lên trục Ox có toạ độ là
+
+### [11] Bài 2. Hệ trục toạ độ trong không gian | Toán thực tế - Lực (1)
+    yêu cầu: Vận dụng được kiến thức về vectơ trong không gian để giải quyết một số bài toán thực tiễn liên quan đến lực.
+  j6y9 TLN 4 | Một chiếc điện thoại iphone được đặt trên một giá đỡ có ba chân với điểm đặt S(0;0;20) và các điểm chạm mặt đấ
+
+### [12] Bài 3. Biểu thức toạ độ của các phép toán vectơ | Xác định tọa độ của điểm thỏa điều kiện cho trước (111)
+    yêu cầu: Xác định được toạ độ điểm thoả mãn điều kiện cho trước thông qua biểu thức toạ độ vectơ.
+  16_3 DS 3 | Trong không gian với tọa độ Oxyz, cho hai điểm A(1; 1; 2), B(-1; 3; -9). Khi đó các mệnh đề sau đúng hay sai?
+  11_3 TLN 2 | Trên phần mềm mô phỏng việc điều khiển drone giao hàng trong không gian Oxyz (đơn vị mét). Một đội gồm 4 drone
+  0_15 DS 3 | Trong không gian với hệ trục tọa độ Oxyz, cho \vec{OA} = 2\vec{i} + 2\vec{j} + 2\vec{k}, B(-2;2;0) và C(4;1;-1
+  16_4 TLN 2 | Trong không gian Oxyz, cho ba điểm A(2; -1; 5), B(5; -5; 7), M(x; y; 1). Tính x+y để A, B, M thẳng hàng.
+  u15t NLC 1 | Trong không gian Oxyz, cho vectơ \vec{u}=(-4;2;-3) và điểm A(1;2;3). Tọa độ điểm B thỏa mãn \overrightarrow{AB
+  28_3 TL 3 | Ví dụ 18: Trong không gian Oxyz, cho ba điểm A(1; 2; -1), B(2; -1; 3) và C(-3; 5; 1). Tìm tọa độ điểm D sao ch
+  8_28 NLC 1 | Câu 47. Trong không gian Oxyz, cho hai điểm A(1; 2; 0), B(-1; 0; -2). Tìm tọa độ trung điểm M của đoạn thẳng A
+  g2iq DS 2 | Trong không gian Oxyz, cho hai điểm A(0;1;-2) và B(3;-1;1) và điểm M(x;y;z) thỏa mãn \overrightarrow{AM} = 3\o
+  16_7 DS 3 | Trong không gian với hệ tọa độ Oxyz, cho ba điểm A(1; -2; 2), B(-5; 6; 4) và C(0; 1; -2). Các mệnh đề sau đúng
+  10_2 DS 3 | Trong không gian Oxyz, cho các điểm A(3;2;1), B(1;-1;-2) và C(-2;1;3). Xét tính đúng sai của các mệnh đề sau:
+  54_5 DS 2 | Trong không gian Oxyz, cho các điểm A(4; 2; -1), B(1; -1; 2) và C(0; -2; 3). Xét tính đúng sai của các mệnh đề
+  54_6 DS 3 | Trong không gian Oxyz, cho \Delta ABC, biết A(-1; 0; 3), B(4; 2; 0), C(3; 1; -3).
+  4_39 NLC 3 | Trong không gian với hệ tọa độ Oxyz, cho ba điểm A(3; -4; 0), B(0; 2; 4), C(4; 2; 1). Tìm tọa độ điểm D thuộc 
+  22_4 TLN 3 | Trong không gian tọa độ Oxyz cho điểm A(-1; 2; -3), B(0; 2; 1), C(-1; 2; 1), M \in Oy. Tìm giá trị nhỏ nhất củ
+  rjvs NLC 2 | Trong không gian Oxyz cho hình bình hành ABCD và các đỉnh có toạ độ lần lượt là A(3;1;2), B(1;0;1), C(2;3;0). 
+  s3bg NLC 1 | Trong không gian Oxyz, cho vectơ \vec{a} = (-3;2;1) và điểm A(4;6;-3). Tọa độ điểm B thỏa mãn \overrightarrow{
+  lz29 NLC 2 | Trong không gian Oxyz, điểm M thuộc trục Ox và cách đều hai điểm A(4;2;-1) và B(2;1;0) là
+  wmsm TLN 2 | Trong không gian Oxyz, cho các điểm A(1;0;3), B(2;3;-4), C(-3;1;2). Biết điểm D(a;b;c) sao cho ABCD là hình bì
+  22_8 NLC 2 | Trong không gian Oxyz, cho ba điểm A(1; 2; -1), B(2; -1; 3), C(-3; 5; 1). Tìm tọa độ điểm D sao cho tứ giác AB
+  54_2 DS 3 | Trong không gian Oxyz, cho ba điểm A(2;-1;1), B(-1;3;-1), C(5;-3;4). Trong các khẳng định sau, khẳng định nào 
+  08_5 NLC 2 | Cho ba điểm A(2; -1; 5), B(5; -5; 7) và M(x; y; 1). Với giá trị nào của x, y thì ba điểm A, B, M thẳng hàng?
+  08_15 NLC 3 | Cho ba điểm A(1; 1; 1), B(4; 1; 1), C(1; 1; 5). Tìm tọa độ tâm đường tròn nội tiếp tam giác ABC
+  08_16 NLC 3 | Cho ba điểm A(1; -1; 1), B(2; 1; -2), C(0; 0; 1). Gọi J(x; y; z) là tâm đường tròn nội tiếp \Delta ABC. Tính g
+  08_17 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho hai điểm A(-2; 1; 3), B(2; 1; 1). Tìm tọa độ tất cả các điểm M, biết 
+  08_19 NLC 3 | Cho ba điểm A(1; 1; 0), B(3; -1; 2), C(-1; 6; 7). Tìm điểm M \in (Oxz) sao cho MA^2 + MB^2 + MC^2 nhỏ nhất.
+  58_0 NLC 2 | Cho 4 điểm A(1; 2; -2); B(2; 2; 0); C(0; 5; -1); D(3; 2; x). Gọi G là trọng tâm tam giác ABC. Tính giá trị của
+  58_3 NLC 3 | Cho hai điểm B(1; 2; 1) và C(2; 1; -8). Tìm điểm A thuộc tia Oy sao cho \Delta ABC vuông tại A.
+  59_12 NLC 2 | Cho bốn điểm O(0; 0; 0), A(0; 1; -2), B(1; 2; 1), C(4; 3; m). Tìm m để 4 điểm O, A, B, C đồng phẳng.
+  ddec TL 1 | Trong không gian Oxyz, cho ba điểm A(1; 2; 3), B(3; 2; 1) và C(2; -1; 5). Tìm toạ độ trọng tâm G của tam giác 
+  xfwy TL 2 | Trong không gian Oxyz, cho ba điểm A(2; 9; -1), B(9; 4; 5) và G(3; 0; 4). Tìm toạ độ điểm C sao cho tam giác A
+  zg2v TL 1 | Trong không gian Oxyz, cho tam giác ABC có A(1; 0; 1), B(0; -3; 1) và C(4; -1; 4). Tìm toạ độ trọng tâm của ta
+  59_16 NLC 3 | Trong không gian Oxyz, cho A(2; 1; -1), B(3; 0; 1), C(2; -1; 3) và D nằm trên trục Oy và thể tích tứ diện ABCD
+  59_18 NLC 2 | Trong không gian Oxyz, cho bốn điểm A(1; -2; 0), B(1; 0; -1) và C(0; -1; 2), D(0; m; k). Hệ thức giữa m và k đ
+  4_10 NLC 2 | Cho A(m; 1; 2) và B(2; 1; 0). Tìm m sao cho AB = 2\sqrt{2}
+  4_13 NLC 1 | Cho ba điểm A(1; 0; -3), B(2; 4; -1), C(2; -2; 0). Tọa độ trọng tâm của tam giác ABC là
+  4_14 NLC 2 | Trong không gian với hệ trục tọa độ Oxyz, cho ba điểm A(1; 0; 2), B(2; 1; 4), C(1; 1; 1). Tính tọa độ trọng tâ
+  4_16 NLC 2 | Cho ba điểm A(1; 2; 3); B( \frac{1}{2}; 3; 1 ); G(2; 3; -1). Tìm tọa độ điểm C sao cho G là trọng tâm \Delta A
+  4_17 NLC 2 | Cho ba điểm A(1; 1; 1), B(2; 1; 3), C(2; 2; 5) và G(-1; 4; 2). Tìm tọa độ điểm D sao cho G là trọng tâm tứ diệ
+  4_12 NLC 1 | Tìm tọa độ trung điểm của đoạn thẳng AB biết A(2; 1; 1) và B(0; 2; 3)
+  4_18 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho hai điểm A(0; -2; 3), B(1; 0; -1). Gọi M là trung điểm đoạn AB. Khẳng
+  4_28 NLC 3 | Trong không gian với hệ tọa độ Oxyz, cho tam giác ABC có A(1; 2; 3), B(-3; 0; 1), C(-1; y; z). Trọng tâm G của
+  4_31 NLC 3 | Tìm tọa độ điểm M trên trục Ox cách đều hai điểm A(1; 2; -1) và điểm B(2; 1; 2).
+  4_32 NLC 2 | Trong không gian Oxyz, cho hai điểm A(3; 4; 2), B(-1; -2; 2) và G(1; 1; 3) là trọng tâm của tam giác ABC. Tọa 
+  4_33 NLC 2 | Trong không gian với hệ toạ độ Oxyz, cho điểm A(1; 2; 4), B(1; 3; 5), C(1; -2; 3). Trọng tâm G của tam giác AB
+  4_36 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho A(1; -3; 2), B(0; 1; -1), G(2; -1; 1). Tìm tọa độ điểm C sao cho tam 
+  28_4 TL 1 | Ví dụ 19: Trong không gian Oxyz, cho hai điểm M(1; -2; 2) và N(1; 0; 4). Tọa độ trung điểm của đoạn thẳng MN l
+  28_5 TL 1 | Ví dụ 20: Trong không gian Oxyz, cho tam giác ABC, biết A(1; -2; 4), B(0; 2; 5), C(5; 6; 3). Tọa độ trọng tâm 
+  28_6 TL 2 | Ví dụ 21: Trong không gian tọa độ Oxyz cho ba điểm M(1; 1; 1), N(2; 3; 4), P(7; 7; 5). Tìm tọa độ điểm Q để tứ
+  28_7 TL 2 | Ví dụ 22: Trong không gian Oxyz, cho ba điểm A(2; -1; 5), B(5; -5; 7), M(x; y; 1). Xác định tọa độ điểm M để b
+  28_8 TL 3 | Ví dụ 23: Trong không gian Oxyz, cho ba điểm A(2; 0; 0), B(0; 3; 1), C(-3; 6; 4). Tìm điểm M thuộc đoạn BC sao
+  28_9 TL 3 | Ví dụ 24: Trong không gian Oxyz, cho hai điểm A(1; 2; -1) và B(0; -2; 3). Tìm tọa độ chân đường cao kẻ từ đỉnh
+  8_27 NLC 1 | Trong không gian Oxyz, cho hai điểm A(3; -2; 3) và B(-1; 2; 5). Tìm tọa độ trung điểm I của đoạn thẳng AB.
+  8_30 NLC 2 | Câu 49. Trong không gian Oxyz, cho điểm A(1; 2; 4), B(3; 4; 2). Tìm tọa độ điểm M, biết B là trung điểm của AM
+  8_31 NLC 2 | Câu 50. Trong không gian Oxyz, cho hai điểm M(3; 1; 4) và N(0; 2; -1). Tọa độ trọng tâm của tam giác OMN là
+  8_29 NLC 1 | Cho hai điểm M(1; -2; 3) và N(3; 0; -1). Tìm tọa độ trung điểm I của đoạn thẳng MN.
+  8_32 NLC 2 | Câu 51. Trong không gian Oxyz cho điểm A(1; 2; 4), B(2; 4; -1). Tìm tọa độ trọng tâm G của tam giác OAB.
+  8_33 NLC 2 | Câu 52. Trong không gian tọa độ Oxyz, cho ba điểm A(1; 0; -2), B(2; 1; -1), C(1; -2; 2). Tìm tọa độ trọng tâm 
+  8_34 NLC 2 | Câu 53. Trong không gian Oxyz, cho ba điểm A(1; 3; 4); B(1; 0; -2) và C(4; 0; 1). Tọa độ trọng tâm G của tam g
+  8_35 NLC 2 | Câu 54. Trong không gian Oxyz, cho tam giác ABC có A(1; -2; 3), B(-1; 0; 2) và G(1; -3; 2) là trọng tâm của ta
+  8_36 NLC 2 | Câu 55. Trong không gian Oxyz, cho tam giác ABC có trọng tâm G(-3; 1; 4) và A(1; 0; -1), B(2; 3; 5). Tọa độ đi
+  54_8 TLN 2 | Trong không gian Oxyz, cho hai điểm B(1; 2; -3) và C(7; 4; -2). Gọi E(x; y; z) là điểm thỏa mãn đẳng thức \ove
+  08_18 NLC 3 | Trong không gian với hệ trục tọa độ Oxyz, cho A(1; 1; 1), B(2; 1; -1), C(0; 4; 6). Điểm M di chuyển trên trục 
+  jgic DS 2 | Trong không gian Oxyz, cho ba điểm A(3;2;-1), B(1;4;-2) và C(0;-2;3).
+  1eqh NLC 3 | Trong không gian  Oxyz, cho hai điểm  A(1;2;0), B(2;-1;1). Tìm điểm  C có hoành độ dương trên trục  Ox sao cho
+  goyr NLC 2 | Trong không gian  Oxyz, cho hai điểm  A(1;1;0) và  B(0;1;2). Tìm điểm  M thoả mãn điều kiện  \overrightarrow{A
+  qfz0 TLN 3 | Trong không gian  Oxyz, cho hình thang cân  ABCD có các đáy lần lượt là  AB, CD. Biết  A(3;1;-2), B(-1;3;2), C
+  z8xf NLC 2 | Trong không gian  Oxyz, cho vectơ  \vec{u} = (1; 1; -1) và điểm  B(2; 3; 2). Tìm toạ độ điểm  C sao cho  \over
+  wqg7 NLC 2 | Trong không gian  Oxyz, cho  A(2; 5; -2), B(1; 1; 3), C(3; 3; -1). Tìm tọa độ điểm  E sao cho  C là trọng tâm 
+  nuxy TL 3 | Trong không gian  Oxyz, cho  S(1;2;3) và các điểm  A, B, C thuộc các trục  Ox, Oy, Oz sao cho hình chóp  S.ABC
+  sftn NLC 2 | Trong không gian  Oxyz cho hình bình hành  ABCD và các đỉnh có toạ độ lần lượt là  A(3;1;2), B(1;0;1), C(2;3;0
+  37gu NLC 2 | Trong không gian  Oxyz, cho vectơ  \vec{a} = (-3;2;1) và điểm  A(4;6;-3). Tọa độ điểm  B thỏa mãn  \vec{AB} = 
+  rol6 NLC 2 | Trong không gian  Oxyz, cho ba điểm  A(3;5;-1), B(7;x;1) và  C(9;2;y). Để  A, B, C thẳng hàng thì giá trị  x +
+  v14d NLC 2 | Trong không gian  Oxyz, điểm  M thuộc trục  Ox và cách đều hai điểm  A(4;2;-1) và  B(2;1;0) là
+  yj2m TLN 2 | Trong không gian  Oxyz, cho các điểm  A(1;0;3), B(2;3;-4), C(-3;1;2). Biết điểm  D(a;b;c) sao cho  ABCD là hìn
+  w3fx TLN 3 | Trong không gian  Oxyz, cho hai điểm  A(3;1;6) và  B(1;1;2). Điểm  M(a;b;c) thuộc mặt phẳng  (Oyz) sao cho  MA
+  b4bd TL 3 | Trong không gian  Oxyz, cho hai điểm  A(-3;3;-1), B(2;-2;4). Biết điểm  M(a;b;c) thuộc mặt phẳng  (Oyz) sao ch
+  vrqy NLC 2 | Trong không gian Oxyz, cho hai điểm A(1;2;0), B(2;-1;1). Tìm điểm C có hoành độ dương trên trục Ox sao cho \De
+  u9vm NLC 2 | Trong không gian Oxyz, cho hai điểm A(1;1;0) và B(0;1;2). Tìm điểm M thoả mãn điều kiện \overrightarrow{AM} = 
+  dgag NLC 1 | Trong không gian Oxyz, cho vectơ \vec{u} = (1;1;-1) và điểm B(2;3;2). Tìm tọa độ điểm C sao cho \overrightarro
+  03_7 NLC 3 | Trong không gian Oxyz, cho ba điểm A(1;-1;1), B(3;2;-2), C(-3;1;5). Tìm tọa độ điểm M(x;y;z) thỏa mãn \vec{MA}
+  03_8 NLC 2 | Trong không gian Oxyz, cho hai điểm A(1;2;3), B(-2;-4;9). Điểm M thuộc đoạn thẳng AB sao cho MA = 2MB. Độ dài 
+  03_9 NLC 3 | Trong không gian Oxyz, cho tam giác ABC có A(1;1;1), B(-1;2;3) và C(3;2;1). Gọi M là điểm thuộc đường thẳng BC
+  mr1s NLC 2 | Trong không gian Oxyz, cho hình bình hành ABCD có A(2;1;-3), B(0;-2;2), C(4;-3;0). Tọa độ điểm D là
+  3_10 TL 3 | Trong không gian Oxyz, cho tam giác ABC có A(1;1;1), B(-1;2;3) và C(3;2;1). a) Tìm tọa độ điểm M thỏa hệ thức 
+  s9bu NLC 1 | Trong không gian Oxyz, cho ba điểm A(1;2;4), B(-1;3;2) và C(0;4;-3). Trọng tâm G của tam giác ABC là
+  36_3 TLN 3 | Trong không gian với hệ trục tọa độ Oxyz (đơn vị trên mỗi trục là mét), một thiết bị phát sóng wifi được đặt t
+  10_3 TLN 3 | Trong không gian Oxyz, cho hai điểm A(0;-2;1), B(1;1;-2). Tìm tọa độ điểm M thuộc trục tọa độ Oy sao cho tam g
+  10_9 TLN 3 | Trong không gian Oxyz, cho tam giác ABC có A(3;2;1), B(1;-1;-2) và C(-2;1;3). Tìm tọa độ chân đường cao AH của
+  16_8 TLN 3 | Trong không gian Oxyz, cho A(-1; 2; -4), B(2; -3; -1) và C(-1; 2; 4). Biết M(a; b; c) thỏa \overrightarrow{MA}
+  6_14 TLN 3 | Trong không gian Oxyz, cho A(-1; 2; 3), B(-1; 2; -3). Biết có hai điểm C \in Oy sao cho tam giác ABC vuông tại
+  6_20 TLN 2 | Trong không gian tọa độ Oxyz cho A(2; 5; 3), B(3; 7; 4), C(x; y; 6). Tính x + y để ba điểm A, B, C thẳng hàng.
+  08_1 NLC 2 | Cho A(m+1; -m; m+2) và B(-m; 2m; 3m). Tìm m nguyên sao cho AB = 3\sqrt{2}
+  08_7 NLC 2 | Cho điểm A(2a; a+1; 3a); B(b; 2-b; b+3) và C(2c+1; c; c+1). Tính tổng S = 3(a+b+c) biết G(1; 1; 1) là trọng tâ
+  08_8 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho ba điểm A(3; 1; 0), B(0; -1; 0), C(0; 0; -6). Nếu tam giác A'B'C' thỏ
+  08_11 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho A(1; -1; 0), B(0; 2; 0), C(2; 1; 3). Tọa độ điểm M thỏa mãn \overrigh
+  08_12 NLC 2 | Cho điểm A(-1; 2; 0), B(3; 0; -1), C(1; -2; 3). Gọi tọa độ điểm I(x; y; z) thỏa mãn 5\overrightarrow{IA} - 4\o
+  08_13 NLC 3 | Cho ba điểm A(1; 1; 1), B(4; 1; 1), C(1; 1; 5). Gọi D là chân đường phân giác trong kẻ từ đỉnh B. Tìm tọa độ đ
+  ey4p TL 1 | Trong không gian Oxyz, cho ba điểm A(1; 2; 3), B(3; 2; 1) và C(2; -1; 5). Tìm toạ độ trung điểm M của đoạn thẳ
+  d1n1 TL 3 | Trong không gian Oxyz, cho ba điểm M(-4; 3; 3), N(4; -4; 2) và P(3; 6; -1). a) Tìm toạ độ của các vectơ \overr
+  jm8o TLN 3 | Trong không gian Oxyz, cho hình thang cân ABCD có các đáy lần lượt là AB, CD. Biết A(3;1;-2), B(-1;3;2), C(-6;
+  dj68 NLC 2 | Trong không gian Oxyz, cho A(2;5;-2), B(1;1;3), C(3;3;-1). Tìm tọa độ điểm E sao cho C là trọng tâm của tam gi
+  qnyc TLN 4 | Trong không gian Oxyz, cho S(1;2;3) và các điểm A, B, C thuộc các trục Ox, Oy, Oz sao cho hình chóp S.ABC có c
+  brel TLN 3 | Trong không gian Oxyz, cho ba điểm A(1;2;0); B(3;1;5); C(2;0;1). Điểm M(a;b;c) trên mặt phẳng (Oyz) thỏa P = M
+  xxbe NLC 2 | Trong không gian Oxyz, cho ba điểm A(3;5;-1), B(7;x;1) và C(9;2;y). Để A, B, C thẳng hàng thì giá trị x+y bằng
+  ym5j NLC 1 | Trong không gian Oxyz, cho điểm M(3;1;0) và \overrightarrow{MN}=(-1;-1;0). Tìm tọa độ của điểm N.
+  txs2 TLN 2 | Trong không gian Oxyz, cho hai điểm A(0;-2;-1), B(1;-1;2). Điểm M(a;b;c) thuộc đoạn thẳng AB thỏa mãn MA = 2MB
+  dt2j TLN 3 | Trong không gian Oxyz, cho tam giác ABC với A(1;0;0), B(3;2;4), C(0;5;4). Biết điểm M(a;b;c) thuộc mặt phẳng (
+  dd0c TLN 3 | Trong không gian Oxyz, cho hai điểm A(3;1;6) và B(1;1;2). Điểm M(a,b,c) thuộc mặt phẳng (Oyz) sao cho MA^2 + M
+  wlb2 TL 4 | Trong không gian Oxyz, cho hai điểm A(-3;3;-1), B(2;-2;4). Biết điểm M(a;b;c) thuộc mặt phẳng (Oyz) sao cho bi
+  i05j DS 3 | Trong không gian Oxyz, cho các điểm A(8;9;2), B(3;5;1) và C(11;10;4).
+  42ax TL 4 | Trong không gian Oxyz, cho các điểm A(1; -1; 2), B(-1; 1; 1), C(-3; -3; 4), D(1; \frac{1}{2}; 1). Điểm M thay 
+
+### [13] Bài 3. Biểu thức toạ độ của các phép toán vectơ | Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ (9)
+    yêu cầu: Tính được độ dài đoạn thẳng và xác định được tọa độ của điểm hoặc vectơ bằng các phép toán tọa độ trong không gian.
+  drpa NLC 1 | Trong không gian Oxyz, cho hai điểm A(1;1;-1), B(2;1;2). Độ dài đoạn thẳng AB bằng
+  imz2 NLC 2 | Trong không gian  Oxyz, cho các vectơ  \vec{a} = (2; m-1; 3), \vec{b} = (1; 3; -2n). Tìm  m, n để các vectơ  \
+  r0ar DS 2 | Trong không gian  Oxyz, cho hai điểm  A(0; 1; -2) và  B(3; -1; 1) và điểm  M(x; y; z) thỏa mãn  \overrightarro
+  u6ni NLC 1 | Trong không gian  Oxyz, cho ba điểm  A(1;3;4), B(1;0;-2) và  C(4;0;1). Tọa độ trọng tâm  G của tam giác  ABC l
+  jgu4 TL 2 | Trong không gian  Oxyz, cho hai điểm  A(-2;3;1) và  B(5;6;2). Đường thẳng  AB cắt mặt phẳng  (Oxz) tại điểm  M
+  v8ot NLC 2 | Trong không gian Oxyz, cho hình hộp ABCD.A'B'C'D' có A'(1;0;1), B'(2;1;2), D'(1;-1;1), C(4;5;-5). Tìm tọa độ đ
+  9grq NLC 1 | Trong không gian Oxyz, cho hai điểm A(-1;1;2) và B(3;-5;0). Trung điểm của đoạn thẳng AB là
+  igyy TLN 3 | Trong không gian Oxyz, cho hình hộp ABCD.A'B'C'D'. Biết A(2;4;0), B(4;0;0), C(-1;4;-7) và D'(6;8;10). Biết đỉn
+  ybho DS 2 | Trong không gian Oxyz, cho tam giác ABC có ba đỉnh A(1;1;1), B(-1;2;1), C(1;2;-1).
+
+### [14] Bài 3. Biểu thức toạ độ của các phép toán vectơ | Tính số đo của các đại lượng hình học (50)
+    yêu cầu: Vận dụng được biểu thức tọa độ của các phép toán vectơ để tính khoảng cách và các đại lượng hình học thực tế.
+  28_19 NLC 1 | Trong không gian Oxyz, cho điểm A(-4; 3; 12). Độ dài đoạn thẳng OA bằng
+  0_14 NLC 2 | Trong không gian Oxyz cho A(1;2;3); B(-1;2;1); C(3;-1;-2). Tính tích vô hướng \vec{AB} \cdot \vec{AC}.
+  0_16 TLN 3 | Trong không gian Oxyz, cho A(-1;2;-1), B(1;-1;-3) và C(-2;1;1). Gọi H là chân đường cao hạ từ B của tam giác A
+  16_2 NLC 2 | Trong không gian Oxyz, cho \vec{a} = (-3; 4; 0), \vec{b} = (5; 0; 12). Côsin của góc giữa \vec{a} và \vec{b} b
+  28_11 TL 2 | Ví dụ 26: Trong không gian Oxyz, cho hai điểm A(0; 2; 1) và B(3; -2; 1). Độ dài đoạn thẳng AB bằng
+  03_6 NLC 2 | Trong không gian Oxyz, cho ba điểm M(2;3;-1), N(-1;1;1) và P(1;m-1;2). Tìm m để tam giác MNP vuông tại N.
+  22_2 NLC 2 | Trong không gian Oxyz cho A(1; 2; 3); B(-1; 2; 1); C(3; -1; -2). Tính chu vi tam giác ABC.
+  08_14 NLC 3 | Trong không gian Oxyz, cho tam giác ABC, biết A(1; 1; 1), B(5; 1; -2), C(7; 9; 1). Tính độ dài đường phân giác
+  58_1 NLC 2 | Trong không gian với hệ tọa độ Oxyz, hãy tính góc giữa hai vectơ \vec{a} = (1; 2; -2) và \vec{b} = (-1; -1; 0)
+  58_7 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho A(1; 2; 0), B(3; -1; 1), C(1; 1; 1). Tính diện tích S của tam giác AB
+  58_8 NLC 3 | Trong không gian với hệ trục tọa độ Oxyz, cho ba điểm A(2; 0; 0), B(0; 3; 1), C(-1; 4; 2). Độ dài đường cao từ
+  44_8 NLC 2 | Trong không gian với hệ toạ độ Oxyz, cho vectơ \vec{u} = 2\vec{i} - 3\vec{j} + 6\vec{k}. Tìm độ dài của vectơ 
+  59_14 NLC 3 | Cho tứ diện ABCD biết A(0; -1; 3), B(2; 1; 0), C(-1; 3; 3), D(1; -1; -1). Tính chiều cao AH của tứ diện.
+  59_15 NLC 3 | Trong không gian Oxyz, cho hình hộp ABCD.A'B'C'D' có A(1; 1; -6), B(0; 0; -2), C(-5; 1; 2) và D'(2; 1; -1). Th
+  n7on TL 1 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (1; 4; 2) và \vec{b} = (-4; 1; 0). Tính \vec{a} \cdot \vec{b} v
+  4y6z TL 2 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (1; 4; 2) và \vec{b} = (-4; 1; 0) (như trong Ví dụ 3). Tính (\v
+  5xo7 TL 2 | Trong không gian Oxyz, cho tam giác ABC có A(1; 0; 1), B(0; -3; 1) và C(4; -1; 4). Chứng minh rằng \widehat{BA
+  22_3 DS 3 | Trong không gian với hệ tọa độ Oxyz, cho tam giác ABC với A(1; 2; -1), B(2; -1; 3), C(-4; 7; 5). Xét tính Đúng
+  59_17 NLC 3 | Trong hệ tọa độ Oxyz, cho tứ diện ABCD có A(2; 3; 1), B(4; 1; -2), C(6; 3; 7), D(-5; -4; -8). Độ dài đường cao
+  4_25 NLC 2 | Tính khoảng cách từ điểm M(2; 3; 1) đến trục Ox
+  4_26 NLC 2 | Tính khoảng cách từ điểm M(2; 3; 1) đến mặt phẳng (Oyz)
+  28_10 TL 2 | Ví dụ 25: Trong không gian Oxyz, cho hai điểm A(1; 2; 3) và B(-1; 4; 1). Gọi I là trung điểm của đoạn thẳng AB
+  28_12 TL 2 | Ví dụ 27: Trong không gian Oxyz, cho tam giác ABC biết A(1; 0; -2), B(2; 1; -1), C(1; -2; 2). Tính chu vi của 
+  28_13 TL 3 | Ví dụ 28: Trong không gian Oxyz, cho A(1; 2; -1), B(0; 3; 1), C(3; 2; 0). Tính diện tích \Delta ABC (nếu có).
+  w4p4 TLN 2 | Trong không gian Oxyz, cho tam giác ABC có A(1; 0; 1), B(0; -3; 1) và C(4; -1; 4). Tính \widehat{ABC}, (làm tr
+  28_14 TL 3 | Ví dụ 29: Trong không gian Oxyz, cho A(-1; -2; 3), B(0; 3; 1), C(4; 2; 2). Tính số đo \widehat{BAC}.
+  28_18 NLC 1 | Trong không gian Oxyz, cho vectơ \vec{a} = (1; 2; -2). Tính độ dài vectơ \vec{a}.
+  8_22 NLC 2 | Câu 41. Trong không gian Oxyz, cho các điểm A(1; 2; 0), B(-1; 0; 1), C(0; 2; -1). Tính độ dài của vectơ \overr
+  8_25 NLC 2 | Câu 44. Trong không gian Oxyz, cho ba vectơ \vec{a} = (-1; 1; 0), \vec{b} = (1; 1; 0), \vec{c} = (1; 1; 1). Tr
+  8_26 NLC 2 | Câu 45. Trong không gian Oxyz, cho hai vectơ \vec{u} = (2; -1; 1), \vec{v} = (-3; 4; -5). Số đo của góc giữa h
+  8_20 NLC 1 | Trong không gian Oxyz, cho hai điểm A(1; 0; 1) và B(4; 2; -2). Độ dài đoạn thẳng AB bằng
+  8_23 NLC 1 | Trong không gian Oxyz, cho \vec{a} = (-3; 1; 2) và \vec{b} = (0; -4; 5). Giá trị của \vec{a} \cdot \vec{b} bằn
+  8_21 NLC 1 | Trong không gian Oxyz, cho hai điểm A(2; 3; 4) và B(3; 0; 1). Độ dài vectơ \overrightarrow{AB} là
+  8_24 NLC 1 | Trong không gian Oxyz, cho hai vectơ \vec{u} = (-\sqrt{3}; 0; 1), \vec{v} = (0; 1; 1), khi đó
+  wuip TLN 2 | Trong không gian Oxyz, cho ba điểm A(0; 2; 1), B(3; -2; 1) và C(-2; 5; 7). Tính chu vi của tam giác ABC. Làm t
+  59_13 NLC 2 | Trong không gian với hệ trục Oxyz, cho bốn điểm A(1; 1; 1), B(1; 2; 1), C(3; 1; 2), D(1; \frac{1}{2}; \frac{3}
+  11_5 TLN 3 | Cơn bão Yagi gây thiệt hại nghiêm trọng về người và tài sản cho nước ta, trong đó nặng nề nhất là tại thôn Làn
+  5lr8 DS 3 | Trong không gian  Oxyz, cho tam giác  ABC có ba đỉnh  A(1;1;1), B(-1;2;1), C(1;2;-1).
+  ebum TL 3 | Trong không gian  Oxyz, cho hình thang  ABCD với các đỉnh  A(1;2;1), B(2;0;-1), C(6;1;0) và  D(\frac{7}{3}; \f
+  z2xm NLC 1 | Trong không gian  Oxyz, cho hai điểm  A(1; 1; -1), B(2; 1; 2). Độ dài đoạn thẳng  AB bằng
+  10_8 DS 3 | Trong không gian Oxyz, cho các điểm A(1;-2;1), B(-1;1;3) và C(2;0;4).
+  6_12 NLC 2 | Trên mặt phẳng tọa độ Oxy, cho tam giác ABC biết A(1; 3), B(-2; -2), C(3; 1). Tính cosin góc A của tam giác.
+  6_18 NLC 2 | Trong không gian Oxyz, góc giữa hai vectơ \vec{i} và \vec{u} = (-\sqrt{3}; 0; 1) là
+  44_7 NLC 2 | Tính độ dài AB biết A(1; 2; 1) và B( 0; 5; \frac{1}{2} )
+  8u6m TL 1 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (1; 4; 2) và \vec{b} = (-4; 1; 0). Tính độ dài của vectơ \vec{a
+  35fq TL 3 | Cho hình chóp S.ABCD có đáy ABCD là hình chữ nhật và SA vuông góc với mặt phẳng (ABCD). Giả sử SA=2, AB=3, AD=
+  syhj TLN 2 | Trong không gian Oxyz, cho ba điểm A(0; 2; 1), B(3; -2; 1) và C(-2; 5; 7). Tính \widehat{BAC}.
+  cpti TL 2 | Trong không gian Oxyz, cho ba vectơ \vec{a} = (3; 1; 2), \vec{b} = (-3; 0; 4) và \vec{c} = (6; -1; 0). Tính cá
+  4_34 NLC 1 | Trong không gian với hệ trục tọa độ Oxyz, cho điểm A(2; 2; 1). Tính độ dài đoạn thẳng OA.
+  54zu TLN 3 | Trong không gian Oxyz, cho hình thang ABCD với các đỉnh A(1;2;1), B(2;0;-1), C(6;1;0) và D(\frac{7}{3}; \frac{
+
+### [15] Bài 3. Biểu thức toạ độ của các phép toán vectơ | Toán thực tế - Tọa độ (29)
+    yêu cầu: Vận dụng được biểu thức toạ độ của vectơ để giải quyết bài toán thực tế liên quan đến vị trí và khoảng cách.
+  21_4 TLN 2 | Trong không gian với một hệ trục toạ độ cho trước (đơn vị đo lấy theo kilomet), ra đa phát hiện một chiếc máy 
+  06_0 TLN 3 | Trạm kiểm soát không lưu đang theo dõi hai máy bay. Giả sử trong không gian với hệ trục tọa độ Oxyz, đơn vị đo
+  11_2 TLN 3 | Thiên thạch với kích thước chỉ 30 cm đến 40 cm đến từ vùng không gian giữa các hành tinh, khi xuyên vào khí qu
+  11_4 TLN 2 | Một chiếc máy bay không người lái bay lên tại một điểm. Sau một thời gian bay, chiếc máy bay cách điểm xuất ph
+  0_17 TLN 4 | Cho biết máy bay Airbus chở hành khách đang bay với vectơ vận tốc \vec{a} = (300;-200;400) (đơn vị: km/h). Một
+  59_3 TLN 3 | Trong không gian với hệ tọa độ Oxyz (đơn vị trên mỗi trục tọa độ là 1 m), một cabin cáp treo xuất phát từ điểm
+  36_4 TLN 3 | Trong không gian với hệ tọa độ Oxyz, một cabin cáp treo xuất phát từ điểm A(10;3;0) và chuyển động đều theo đư
+  11_1 TLN 3 | Xét Trái Đất trong không gian Oxyz, với O là tâm Trái Đất, tia Ox chứa giao điểm của kinh tuyến gốc và xích đạ
+  21_1 TLN 3 | Trong không gian chọn hệ trục toạ độ cho trước, đơn vị đo là kilômet, một rada phát hiện một máy bay chiến đấu
+  11_0 TLN 2 | Trên phần mềm mô phỏng việc điều khiển drone giao hàng trong không gian Oxyz. Một đội gồm ba drone giao hàng A
+  11_6 TLN 3 | Có hai trạm thu phát sóng tín hiệu mặt đất đặt ở hai điểm O, A và vệ tinh thu phát tín hiệu tại ở vị trí M, bi
+  21_5 TLN 3 | Trượt nước là một trò chơi vận động được nhiều người yêu thích trong các công viên nước. Một cái máng trượt nư
+  ujux DS 3 | Hình minh họa sơ đồ một ngôi nhà trong không gian  Oxyz, trong đó nền nhà, bốn bức tường và hai mái nhà đều là
+  59_2 TLN 3 | Một chiếc xe đang kéo căng sợi dây cáp AB trong công trường xây dựng, trên đó đã thiết lập hệ tọa độ Oxyz như 
+  32_1 TLN 3 | Từ mặt nước trong một bể nước, tại ba vị trí đôi một cách nhau 2 m, người ta lần lượt thả dây dọi để quả dọi c
+  32_3 TLN 3 | Để xác định vị trí của máy bay khi đang bay, người ta gắn một hệ trục tọa độ Oxyz với gốc tọa độ đặt tại một s
+  32_4 TLN 2 | Trong không gian chọn hệ trục tọa độ cho trước, đơn vị đo lấy kilômét, ra đa phát hiện một máy bay di chuyển v
+  32_0 TLN 3 | Hai chiếc khinh khí cầu bay lên từ cùng một địa điểm. Sau một thời gian chiếc thứ nhất cách điểm xuất phát 300
+  36_1 TLN 3 | Trong một cuộc diễn tập phòng không, một bệ phóng tên lửa phòng không được đặt tại vị trí O(0;0;0) (trong khôn
+  36_5 TLN 4 | Hai chiếc khinh khí cầu bay lên từ cùng một địa điểm trong không gian. Sau một khoảng thời gian, chiếc thứ nhấ
+  10_4 TLN 4 | Hai chiếc khinh khí cầu cùng bay lên tại một địa điểm. Sau một thời gian bay, chiếc khinh khí cầu thứ nhất các
+  0_10 TLN 4 | Trong không gian chọn hệ trục tọa độ cho trước, đơn vị đo lấy kilômét, ra đa phát hiện hai máy bay không người
+  16_9 TLN 3 | Một em bé cân nặng m = 20kg trượt trên cầu thang trượt dài 2m. Biết rằng, cầu trượt có góc nghiêng so với phươ
+  6_15 TLN 3 | Hai chiếc khinh khí cầu bay lên từ cùng một địa điểm. Chiếc thứ nhất cách điểm xuất phát 2 km về phía nam và 1
+  klwy TL 3 | Hai chiếc khinh khí cầu bay lên từ cùng một địa điểm. Chiếc thứ nhất nằm cách điểm xuất phát 2 km về phía nam 
+  jx1f TL 1 | Một phòng học có thiết kế dạng hình hộp chữ nhật với chiều dài là 8 m, chiều rộng là 6 m và chiều cao là 3 m. 
+  pry5 TL 2 | Trong không gian, xét hệ trục toạ độ Oxyz có gốc O trùng với vị trí của một giàn khoan trên biển, mặt phẳng (O
+  56_1 TLN 2 | Trong hệ trục toạ độ Oxyz cho trước (đơn vị trên trục là mét), cho một trạm thu phát sóng 5G có bán kính vùng 
+  dqe5 DS 3 | Hình minh họa sơ đồ một ngôi nhà trong không gian Oxyz, trong đó nền nhà, bốn bức tường và hai mái nhà đều là 
+
+### [16] Bài 3. Biểu thức toạ độ của các phép toán vectơ | Xác định tọa độ của vectơ, biểu thức vectơ (59)
+    yêu cầu: Tính được toạ độ của tích có hướng giữa hai vectơ trong không gian.
+  0_12 NLC 1 | Trong không gian Oxyz, cho \vec{b} = 4\vec{j} - \vec{i}. Tọa độ \vec{b} bằng?
+  0_13 NLC 1 | Trong không gian Oxyz, cho hai vectơ \vec{u} = (-1;5;0) và \vec{v} = (1;-5;-3), tọa độ của vectơ \vec{u} + \ve
+  16_1 NLC 2 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (-2; 5; 2) và \vec{b} = (1; -3; -1), vectơ \vec{a} - \vec{b} có
+  16_6 NLC 1 | Trong không gian Oxyz, cho vectơ \vec{a} = (-2; 6; 2), vectơ \frac{3}{2}\vec{a} có tọa độ là
+  6_17 NLC 2 | Trong không gian với hệ trục tọa độ Oxyz, cho \vec{a} = (2; -3; 3), \vec{b} = (0; 2; -1), \vec{c} = (3; -1; 5)
+  o99g NLC 2 | Trong không gian Oxyz, cho các vectơ \vec{a} = (1;0;-2); \vec{b} = (-1;1;4), \vec{u} = (-5;3;16). Tìm cặp số (
+  28_1 TL 2 | Ví dụ 16: Trong không gian Oxyz, cho ba vectơ \vec{a} = (2;-1;0), \vec{b} = (-1;-3;2), \vec{c} = (-2;-4;-3). X
+  28_2 TL 2 | Ví dụ 17: Trong không gian Oxyz, cho hai điểm A(1;3;2) và B(3;-1;4). Xác định tọa độ vectơ \vec{u} = 2\overrig
+  6_13 DS 2 | Trong không gian với hệ trục tọa độ Oxyz, cho \vec{a} = (2; 3; 1), \vec{b} = (-1; 5; 2), \vec{c} = (4; -1; 3).
+  44_9 NLC 2 | Cho điểm M( \frac{1}{2}; 2; \frac{3}{2} ) và N(3; 1; 0). Hãy phân tích vé-tơ \vec{MN} theo các vé-tơ đơn vị
+  22_1 NLC 1 | Trong không gian Oxyz với \vec{i}, \vec{j}, \vec{k} lần lượt là các vectơ đơn vị trên các trục Ox, Oy, Oz. Tín
+  6_19 DS 2 | Trong không gian Oxyz, cho vectơ \vec{a} = (2; -2; -4), \vec{b} = (1; -1; 1), \vec{c} = (1; 1-m; 2+n). Đẳng th
+  zw61 NLC 1 | Trong không gian Oxyz, cho hai vectơ \vec{a}=(2;3;2) và \vec{b}=(1;1;-1). Vectơ \vec{a}-\vec{b} có tọa độ là
+  54_1 NLC 2 | Trong không gian Oxyz cho 2 véc tơ \vec{a}=(2;1;-1); \vec{b}=(1;3;m). Tìm m để (\vec{a};\vec{b})=90^\circ.
+  58_2 NLC 2 | Trong hệ tọa độ Oxyz cho \vec{u} = (x; 0; 1), \vec{v} = (\sqrt{2}; -\sqrt{2}; 0). Tìm x để góc giữa \vec{u} và
+  58_5 NLC 1 | Cho hai vectơ \vec{u}(2; 1; 3) và \vec{v}(2; -1; 5). Tính tọa độ [\vec{u}, \vec{v}].
+  9_11 NLC 2 | Cho bốn điểm A(1; 3; 1), B(2; 1; -3), C(-1; 1; \frac{1}{2}) và D(5; 0; -2). Tính hỗn tích [\overrightarrow{AB}
+  59_10 NLC 1 | Cho ba vectơ \vec{a}(2; 1; 5), \vec{b}(1; -2; 5), \vec{c}(-3; \frac{1}{2}; -2). Tính [\vec{a}, \vec{b}] \cdot 
+  44_6 NLC 1 | Trong không gian với hệ trục Oxyz cho A(1; 2; 1), B(2; 2; 3). Tìm tọa độ của vectơ \vec{AB}.
+  44_5 NLC 1 | Cho hai điểm A(1; 2; 3) và B(2; 5; 9). Tính tọa độ vé-tơ \vec{AB}
+  4_35 NLC 2 | Trong không gian với hệ toạ độ Oxyz cho 4 điểm M(1; 2; 3), N(-1; 0; 4), P(2; -3; 1), Q(2; 1; 2). Cặp véctơ nào
+  28_15 NLC 2 | Câu 34. Trong không gian Oxyz, cho hai vectơ \vec{a} = (3; 0; 1), \vec{c} = (1; 1; 0). Tìm tọa độ của vectơ \v
+  pw2s NLC 2 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (2;-2;-4) và \vec{b} = (1;-1;1). Mệnh đề nào dưới đây sai?
+  nxrl DS 2 | Trong không gian Oxyz, cho ba điểm A(1;1;1), B(-1;2;1), C(1;2;-1).
+  58_6 NLC 2 | Cho hai điểm A(3; 1; 5), B(1; 1; -2). Tích có hướng giữa hai vectơ \overrightarrow{OA} và \overrightarrow{OB} 
+  033l NLC 1 | Trong không gian  Oxyz, cho hai điểm  A(1;1;-1) và  B(2;3;2). Vectơ  \overrightarrow{AB} có tọa độ là
+  j8o8 NLC 1 | Trong không gian  Oxyz, cho hai vectơ  \vec{a}=(1;-2;0) và  \vec{b}=2\vec{a}. Tìm tọa độ của vectơ  \vec{b}.
+  3yrs NLC 2 | Trong không gian  Oxyz, cho ba vectơ  \vec{a}=(1;2;3), \vec{b}=(-2;0;1), \vec{c}=(-1;0;1). Tọa độ của vectơ  \
+  0yg1 DS 2 | Trong không gian  Oxyz, cho ba vectơ  \vec{a}=(1;0;0), \vec{b}=(0;2;0), \vec{c}=(0;0;-1).
+  b5eg NLC 2 | Trong không gian  Oxyz, cho hai vectơ  \vec{a} = (2; -2; -4) và  \vec{b} = (1; -1; 1). Mệnh đề nào dưới đây sa
+  5xpw NLC 1 | Trong không gian  Oxyz, cho hai vectơ  \vec{a} = (1; 2; 3), \vec{b} = (4; 5; 6). Tọa độ  \vec{a} + \vec{b} là
+  ksq3 NLC 2 | Trong không gian  Oxyz, cho các vectơ  \vec{a}=(1; 0; -2); \vec{b}=(-1; 1; 4), \vec{u}=(-5; 3; 16). Tìm cặp số
+  h9ka DS 2 | Trong không gian  Oxyz, cho ba điểm  A(1; 1; 1), B(-1; 2; 1), C(1; 2; -1).
+  uyai TLN 2 | Trong không gian  Oxyz, cho vectơ  \vec{a} = (1;-2;4),  \vec{b} cùng phương. Biết vectơ  \vec{b} tạo với tia  
+  a4ov NLC 1 | Trong không gian  Oxyz, cho hai điểm  A(1;-1;2) và  B(2;1;-4). Vectơ  \vec{AB} có tọa độ là
+  s9av NLC 2 | Trong không gian  Oxyz, cho ba vectơ  \vec{a} = (1;2;3), \vec{b} = (-2;0;1), \vec{c} = (-1;0;1). Tìm tọa độ củ
+  mau7 DS 2 | Trong không gian  Oxyz, cho hai vectơ  \vec{a} = (1;2;-2) và  \vec{b} = (-1;-1;0).
+  ll7b NLC 2 | Trong không gian Oxyz, cho ba vectơ \vec{a} = (1;2;3), \vec{b} = (-2;0;1), \vec{c} = (-1;0;1). Tọa độ của vect
+  zqoa DS 2 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (1;2;-2) và \vec{b} = (-1;-1;0).
+  eo10 NLC 1 | Trong không gian Oxyz, cho vectơ \vec{a} = (2;1;3) và \vec{b} = (-1;2;1). Tọa độ của vectơ \vec{a} + \vec{b} l
+  10_1 NLC 1 | Trong không gian Oxyz, cho hai điểm A(1;1;-1) và B(2;3;2). Vectơ \vec{AB} có tọa độ là
+  08_2 NLC 2 | Cho ba vectơ không đồng phẳng \vec{a}=(1; 2; 3), \vec{b}=(-1; -3; 1), \vec{c}=(2; -1; 4). Khi đó vectơ \vec{d}
+  08_3 NLC 2 | Trong không gian với hệ tọa độ Oxyz cho các vectơ \vec{a}=(1; 2; 1), \vec{b}=(-2; 3; 4), \vec{c}=(0; 1; 2), \v
+  08_4 NLC 1 | Cho vectơ \vec{a}=(1; 3; 4), tìm vectơ \vec{b} cùng phương với vectơ \vec{a}
+  9ciu NLC 1 | Trong không gian Oxyz, cho vectơ \vec{a}=(5;7;2). Tọa độ của vectơ 2\vec{a} là
+  05jc TL 1 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (2; 1; 5) và \vec{b} = (2; 2; 1). Tìm toạ độ của vectơ \vec{a} 
+  thvn TL 1 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (2; 1; 5) và \vec{b} = (2; 2; 1). Tìm toạ độ của vectơ 3\vec{a}
+  7zqv TL 1 | Trong không gian Oxyz, cho ba vectơ \vec{u} = (1; 8; 6), \vec{v} = (-1; 3; -2) và \vec{w} = (0; 5; 4). Tìm toạ
+  gzgu TL 2 | Trong không gian Oxyz, cho ba vectơ \vec{a} = (3; 1; 2), \vec{b} = (-3; 0; 4) và \vec{c} = (6; -1; 0). Tìm toạ
+  28_16 NLC 1 | Trong không gian Oxyz, cho hai điểm A(1; 1; -1) và B(2; 3; 2). Vectơ \overrightarrow{AB} có tọa độ là
+  28_17 NLC 1 | Trong không gian Oxyz, cho A(-1; 0; 1) và B(1; -1; 2) tọa độ vectơ \overrightarrow{AB} là
+  xaha NLC 1 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (1;-2;0) và \vec{b} = 2\vec{a}. Tìm tọa độ của vectơ \vec{b}.
+  yjzd NLC 1 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (1;2;3), \vec{b} = (4;5;6). Tọa độ \vec{a} + \vec{b} là
+  txan NLC 2 | Trong không gian Oxyz, cho các vectơ \vec{a} = (2; m-1; 3), \vec{b} = (1; 3; -2n). Tìm m, n để các vectơ \vec{
+  ygge TLN 3 | Trong không gian Oxyz, cho vectơ \vec{a} = (1;-2;4), \vec{b} cùng phương. Biết vectơ \vec{b} tạo với tia Oy mộ
+  rpj8 NLC 1 | Trong không gian Oxyz, cho \vec{a}=(2;-1;0), \vec{b}=(1;1;-3). Khi đó, tọa độ \vec{a}+\vec{b} là
+  k9zr NLC 2 | Trong không gian Oxyz, cho ba vectơ \vec{a}=(1;2;2), \vec{b}=(3;0;-1), \vec{c}=(-6;1;-1). Biết vectơ \vec{m} =
+  60h4 DS 2 | Trong không gian Oxyz, cho hai vectơ \vec{a}=(2;1;-3), \vec{b}=(-4;-2;6).
+  xbga TLN 3 | Trong không gian Oxyz, cho \vec{a}=(2;3;1), \vec{b}=(-1;5;2), \vec{c}=(4;-1;3) và \vec{x}=(-3;22;5). Biết \vec
+
+### [17] Bài 3. Biểu thức toạ độ của các phép toán vectơ | Toán thực tế - Lực (20)
+    yêu cầu: Vận dụng được các phép toán vectơ trong không gian để giải quyết bài toán thực tế về lực và cân bằng lực.
+  35_9 TLN 2 | Cho ba lực \vec{F_1} = \vec{MA}, \vec{F_2} = \vec{MB}, \vec{F_3} = \vec{MC} cùng tác động vào một ô tô tại điể
+  35_7 TLN 3 | Một chiếc cân đòn tay đang cân một vật có khối lượng m = 3 kg được thiết kế với đĩa cân được giữ bởi bốn đoạn 
+  35_8 TLN 2 | Người ta treo một bóng đèn có khối lượng m = 1 kg bằng cách luồn sợi dây qua một cái móc của đèn và hai đầu dâ
+  16_5 TLN 3 | Một kiện hàng có dạng hình hộp chữ nhật với đáy trên là hình chữ nhật ABCD. Kiện hàng đó được buộc vào móc E c
+  35_5 TLN 4 | Một chiếc đèn trang trí (gồm các bóng đèn gắn vào một giá hình tròn) như hình bên dưới. Đèn được treo song son
+  6_21 TLN 4 | Một chậu cây được đặt trên một giá đỡ có bốn chân với điểm đặt S(0; 0; 30) và các điểm chạm mặt đất của bốn ch
+  22_5 TLN 3 | Một em nhỏ cân nặng 25kg trượt trên cầu trượt dài 3,5m. Biết cầu trượt có góc nghiêng 30^\circ so với phương n
+  06_1 TLN 4 | Trong không gian với hệ trục tọa độ Oxyz, một tấm bảng đồng chất có dạng hình vuông ABCD tâm O' được treo nghi
+  03_12 TLN 4 | Một chiếc đèn chùm treo có khối lượng m = 8 kg được thiết kế với đĩa đèn được giữ bởi bốn đoạn xích SA, SB, SC
+  3_15 TLN 3 | Có ba lực \vec{F_1}, \vec{F_2}, \vec{F_3} cùng tác động vào một vật. Ba lực này đôi một hợp với nhau một góc 6
+  3_11 TLN 3 | Có ba lực cùng tác động vào một vật. Hai trong ba lực này hợp với nhau một góc 100^\circ và có độ lớn lần lượt
+  3_13 TLN 4 | Một chiếc máy đo đạc trắc địa được đặt trên một giá đỡ ba chân. Trọng lực tác động lên chiếc máy có độ lớn là 
+  03_14 TLN 4 | Một giỏ hoa treo trong nhà bằng 3 sợi dây không giãn, mỗi sợi dài 60 cm miếng kê là một miếng gỗ cân đối hình 
+  35_0 TLN 2 | Có ba lực cùng tác động vào một vật. Hai trong ba lực này hợp với nhau một góc 120^\circ và có độ lớn lần lượt
+  35_1 TLN 3 | Treo một vật nặng có trọng lượng 30 N bởi ba sợi dây giống hệt nhau, các sợi dây đôi một tạo với nhau một góc 
+  35_2 TLN 2 | Có ba lực cùng tác động vào một vật. Lực \vec{F_1}, \vec{F_2} hợp với nhau một góc 110^\circ và có độ lớn lần 
+  35_3 TLN 3 | Người ta treo một chiếc đèn trang trí có trọng lượng 200 N lên trần nhà bằng ba sợi dây không giãn, bằng nhau 
+  35_4 TLN 4 | Một chiếc ô tô được đặt trên mặt đáy dưới của một khung sắt có dạng hình hộp chữ nhật với đáy trên là hình chữ
+  35_6 TLN 2 | Có ba lực cùng tác động vào một cái bàn như hình vẽ. Trong đó hai lực \vec{F_1}, \vec{F_2} có giá nằm trên mặt
+  56_2 TLN 3 | Trong không gian Oxyz, một chiếc máy quay phim được đặt trên một giá đỡ ba chân với điểm đặt S(0; 0; 5) và các
+
+### [18] Bài 3. Biểu thức toạ độ của các phép toán vectơ | Góc giữa hai vectơ và tích vô hướng (13)
+    yêu cầu: Tính được tích vô hướng và góc giữa hai vectơ trong không gian bằng biểu thức tọa độ hoặc phương pháp hình học.
+  8n55 NLC 2 | Trong không gian Oxyz, cho A(1;2;3), B(-2;0;1), C(-1;0;1). Tính \cos \widehat{ABC}.
+  9xgv NLC 1 | Trong không gian  Oxyz, cho hai vectơ  \vec{u}=(1;0;1) và  \vec{v}=(0;1;-2). Tích vô hướng của  \vec{u} và  \v
+  9eco NLC 2 | Trong không gian  Oxyz, cho hai vectơ  \vec{a}=(2;1;-1) và  \vec{b}=(1;3;m). Tìm giá trị của tham số  m để  (\
+  4530 NLC 1 | Trong không gian  Oxyz, cho hai vectơ  \vec{a}=(3;2;1) và  \vec{b}=(-2;0;1). Tính  \cos(\vec{a}, \vec{b}).
+  2eoj DS 2 | Trong không gian  Oxyz, biết  \vec{c}=(x;y;z) vuông góc với cả hai vectơ  \vec{a}=(1;3;4), \vec{b}=(-1;2;3).
+  o5zr NLC 2 | Trong không gian  Oxyz, cho  A(1; 2; 3), B(-2; 0; 1), C(-1; 0; 1). Tính  \cos ABC.
+  hfpg NLC 2 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (2;1;-1), \vec{b} = (1;3;m). Tìm giá trị của tham số m để (\vec
+  fxx7 NLC 2 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (3;2;1); \vec{b} = (-2;0;1). Tính \cos(\vec{a}, \vec{b}).
+  4vxo DS 2 | Trong không gian Oxyz, cho ba vectơ \vec{a} = (1;0;0), \vec{b} = (0;2;0), \vec{c} = (0;0;-1).
+  pi11 NLC 1 | Trong không gian Oxyz, cho hai vectơ \vec{u} = (1;0;1), \vec{v} = (0;1;-2). Tích vô hướng của \vec{u} và \vec{
+  vrtq DS 2 | Trong không gian Oxyz, biết \vec{c} = (x;y;z) vuông góc với cả hai vectơ \vec{a} = (1;3;4), \vec{b} = (-1;2;3)
+  wucz NLC 2 | Trong không gian Oxyz, cho ba vectơ \vec{a}=(1;2;-2), \vec{b}=(3;1;-1) và vectơ \vec{c}=(x;y;1). Biết \vec{a} 
+  dka8 TLN 3 | Cho tứ diện OABC có các cạnh OA, OB, OC đôi một vuông góc và OA = OB = OC = 1. Gọi M là trung điểm của cạnh AB
+
+### [19] Bài 3. Biểu thức toạ độ của các phép toán vectơ | Xác định tọa độ điểm thông qua khối hình học không gian (4)
+    yêu cầu: Xác định được tọa độ các đỉnh hoặc các điểm đặc biệt của một hình khối không gian bằng cách thiết lập hệ trục tọa độ.
+  1ni9 NLC 2 | Trong không gian  Oxyz, cho hình hộp  ABCD.A'B'C'D' có  A'(1;0;1), B'(2;1;2), D'(1;-1;1) và  C(4;5;-5). Tìm tọ
+  ytm7 TLN 3 | Trong không gian  Oxyz, cho hình lăng trụ tam giác đều  ABC.A'B'C' có  A'(\sqrt{3}; -1; 1), hai đỉnh  B, C thu
+  yvdk TLN 2 | Trong không gian  Oxyz, cho hình hộp  ABCD.A'B'C'D'. Biết  A(2;4;0), B(4;0;0), C(-1;4;-7) và  D'(6;8;10). Biết
+  f5wx TLN 3 | Trong không gian Oxyz, cho hình lăng trụ tam giác đều ABC.A'B'C' có A'(\sqrt{3}; -1; 1), hai đỉnh B, C thuộc t
+
+### [20] Bài 3. Biểu thức toạ độ của các phép toán vectơ | Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục) (3)
+    yêu cầu: Tìm được tọa độ hình chiếu vuông góc của một điểm lên các trục tọa độ hoặc các mặt phẳng tọa độ.
+  ffsd NLC 1 | Trong không gian  Oxyz, cho hai điểm  A(-1;1;2) và  B(3;-5;0). Trung điểm của đoạn thẳng  AB là
+  vnag TLN 3 | Trong không gian  Oxyz, cho ba điểm  A(1;2;0), B(3;1;5), C(2;0;1). Điểm  M(a;b;c) trên mặt phẳng  (Oyz) thỏa  
+  vom4 TL 3 | Trong không gian Oxyz, cho hai điểm A(-2;3;1) và B(5;6;2). Đường thẳng AB cắt mặt phẳng (Oxz) tại điểm M. Tính
+
+### [21] Bài 4. Ôn tập chương | Xác định tọa độ của vectơ, biểu thức vectơ (7)
+    yêu cầu: Tính được tọa độ của vectơ tổng, hiệu hoặc vectơ biểu diễn qua các vectơ đơn vị trong hệ tọa độ không gian.
+  egl1 DS 3 | Trong không gian Oxyz, cho ba điểm A(3;5;-1), B(7;x;1), C(9;2;y).
+  28nd NLC 2 | Trong không gian với hệ trục tọa độ Oxyz, cho hai vectơ \vec{a} = (2; 1; -3), \vec{b} = (-4; -2; 6). Phát biểu
+  9hot NLC 1 | Trong không gian Oxyz, cho hai điểm A(1;1;-2) và B(2;2;1). Vectơ \vec{AB} có tọa độ là
+  n8zk DS 2 | Trong không gian Oxyz, cho ba vectơ \vec{a} = (2;1;0) và \vec{b} = (-1;0;-2), \vec{c} = (1;7;2). Xét tính đúng
+  639q NLC 1 | Trong không gian Oxyz, cho hai vectơ \vec{a} = (1;2;3), \vec{b} = \vec{i} + \vec{j} - 2\vec{k}. Tính tọa độ ve
+  yfn2 NLC 2 | Trong không gian Oxyz, cho ba vectơ \vec{a} = (1;2;3), \vec{b} = (2;2;-1), \vec{c} = (4;0;-4). Tọa độ của vect
+  i72t DS 2 | Trong không gian Oxyz, cho A(0;-1;1), B(-2;1;-1), \vec{OC} = -\vec{i} + 3\vec{j} + 2\vec{k}.
+
+### [22] Bài 4. Ôn tập chương | Xác định tọa độ điểm thông qua khối hình học không gian (3)
+    yêu cầu: Xác định được tọa độ các đỉnh của một hình hộp chữ nhật hoặc hình lập phương trong hệ trục tọa độ không gian.
+  anwq NLC 2 | Cho hình chóp S.ABCD có đáy là hình vuông cạnh bằng 3, SA = 4 và SA \perp (ABCD). Chọn hệ trục Oxyz có gốc tọa
+  qcbk NLC 2 | Cho hình hộp chữ nhật ABCD.A'B'C'D' có AB = 2, AD = 3, AA' = 4. Chọn hệ trục tọa độ Oxyz có gốc O trùng với A,
+  1klj TLN 3 | Cho hình chóp S.ABCD có đáy là hình vuông cạnh bằng 3, SA = 4 và SA \perp (ABCD). Chọn hệ trục Oxyz có gốc tọa
+
+### [23] Bài 4. Ôn tập chương | Tính độ dài của vectơ (2)
+    yêu cầu: Tính được độ dài của một vectơ trong không gian bằng cách sử dụng các phép toán vectơ và hình học.
+  hhqs NLC 2 | Trong không gian Oxyz, cho \vec{a} = (-2;2;0), \vec{b} = (2;2;0), \vec{c} = (2;2;2). Giá trị của |\vec{a} + \v
+  amzp TLN 3 | Trong không gian Oxyz cho ba vectơ \vec{a} = (1; m; 2), \vec{b} = (m+1; 2; 1), \vec{c} = (0; m-2; 2). Tổng các
+
+### [24] Bài 4. Ôn tập chương | Góc giữa hai vectơ và tích vô hướng (5)
+    yêu cầu: Tính được tích vô hướng của hai vectơ và góc giữa hai vectơ trong không gian.
+  m6pl NLC 2 | Cho hai vectơ \vec{a} = (1;-2;3), \vec{b} = (-2;1;2). Khi đó, tích vô hướng (\vec{a} + \vec{b}).\vec{b} bằng
+  8zc9 NLC 1 | Trong hệ tọa độ Oxyz, cho \vec{u} = \vec{i} + 3\vec{j} - 2\vec{k} và \vec{v} = (2;-1;1). Tính \vec{u}.\vec{v}.
+  nluk NLC 2 | Trong không gian Oxy, cho tam giác ABC biết A(1;3;0), B(-2;-2;0), C(3;1;0). Tính \cos A của tam giác.
+  2dg7 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho vectơ \vec{u} = (2;0;-1). Tìm vectơ \vec{v} biết \vec{v} cùng phương 
+  0byc DS 3 | Trong không gian với hệ tọa độ Oxyz, cho hai vectơ \vec{a} và \vec{b} thỏa mãn |\vec{a}| = 2, |\vec{b}| = 3 và
+
+### [25] Bài 4. Ôn tập chương | Tính số đo của các đại lượng hình học (2)
+    yêu cầu: Tính được độ dài đoạn thẳng và tích vô hướng của hai vectơ trong không gian.
+  k0s3 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho tam giác ABC có A(1;0;0), B(0;0;1), C(2;1;1). Diện tích của tam giác 
+  oxvz NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho tứ diện ABCD với A(0; 0; 3), B(0; 0; -1), C(1; 0; -1), D(0; 1; -1). M
+
+### [26] Bài 4. Ôn tập chương | Xác định tọa độ của điểm thỏa điều kiện cho trước (6)
+    yêu cầu: Xác định được toạ độ của điểm thoả mãn các hệ thức toạ độ và điều kiện hình học cho trước.
+  0gd6 TLN 2 | Trong không gian với hệ tọa độ Oxyz, cho các điểm A(2;-5;0), B(-1;1;3), C(3;3;0). Tìm tọa độ điểm D trên trục 
+  7pcx NLC 2 | Trong không gian Oxyz, cho ba điểm A(2;-1;5), B(5;-5;7), M(x;y;1). Với giá trị nào của x, y thì A, B, M thẳng 
+  qsef TLN 3 | Trong không gian Oxy cho hai điểm A(1;2;3) và B(2;1;1). Cho điểm M(x_0; y_0; z_0) thuộc mặt phẳng (Oyz) sao ch
+  u1ca NLC 2 | Trong không gian Oxyz, cho ba điểm A(1;1;1), B(5;-1;2), C(3;2;-4). Tọa độ điểm M thỏa mãn \vec{MA} + 2\vec{MB}
+  jlp9 TLN 3 | Trong không gian với hệ tọa độ Oxyz, cho tam giác ABC có A(1;2;-1); B(2;-1;3); C(-4;7;5). Gọi D(a;b;c) là chân
+  9ouw TLN 4 | Trong không gian với hệ tọa độ Oxyz, cho hai điểm A(0;2;-2); B(2;2;-4). Giả sử I(a;b;c) là tâm đường tròn ngoạ
+
+### [27] Bài 4. Ôn tập chương | Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục) (2)
+    yêu cầu: Xác định được tọa độ của điểm thuộc trục, mặt phẳng tọa độ hoặc hình chiếu vuông góc của một điểm lên chúng.
+  m58m NLC 1 | Trong không gian Oxyz, cho điểm A(2;-3;5). Tìm tọa độ A' là điểm đối xứng với A qua trục Oy.
+  dzo2 NLC 1 | Trong không gian với hệ tọa độ Oxyz, tọa độ hình chiếu của điểm A(-2;-1;3) trên mặt phẳng Oyz là

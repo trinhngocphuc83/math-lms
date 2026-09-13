@@ -1,0 +1,3444 @@
+{
+ "question_categories": [
+  {
+   "id": "6c004bb9-6a1a-4504-8407-d2e06699ceb5",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được toạ độ của tích có hướng giữa hai vectơ trong không gian."
+  },
+  {
+   "id": "9421e270-e3c3-4db2-b575-fa3d5779841f",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được tọa độ các đỉnh và các điểm đặc biệt của khối đa diện khi gắn vào hệ trục tọa độ Oxyz."
+  },
+  {
+   "id": "c491883c-2c94-4c0e-ba65-92bdee38809d",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Tính độ dài của vectơ",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài của vectơ biểu diễn dưới dạng tổng hoặc hiệu các vectơ trong khối đa diện."
+  },
+  {
+   "id": "e24b9ebd-7ae4-4412-bab8-880112a9bf21",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài đoạn thẳng và xác định được tọa độ của điểm hoặc vectơ bằng các phép toán tọa độ trong không gian."
+  },
+  {
+   "id": "5a146eee-bd5b-4b7c-a249-eb2ca2b049e9",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được biểu thức tọa độ của các phép toán vectơ để tính khoảng cách và các đại lượng hình học thực tế."
+  },
+  {
+   "id": "2af730d5-83c4-4b09-8638-f65ab6342083",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được toạ độ của điểm thoả mãn các hệ thức toạ độ và điều kiện hình học cho trước."
+  },
+  {
+   "id": "18e3b933-3d3c-45f5-a8e2-0236127e2462",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng được hệ trục tọa độ trong không gian để giải quyết các bài toán liên quan đến thực tiễn."
+  },
+  {
+   "id": "c11f43d0-c0b5-45fb-8873-a6854c875efa",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được biểu thức toạ độ của vectơ để giải quyết bài toán thực tế liên quan đến vị trí và khoảng cách."
+  },
+  {
+   "id": "d657eb46-a46b-4da7-a973-c88a34a8dd46",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc biểu diễn vectơ và chứng minh các đẳng thức vectơ trong không gian."
+  },
+  {
+   "id": "ba3d48c6-2c34-488a-8131-a775c1ed1849",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được toạ độ hình chiếu vuông góc và điểm thuộc các trục toạ độ hoặc mặt phẳng toạ độ."
+  },
+  {
+   "id": "8b281b85-af63-4c51-bc45-baf97689b1c2",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được quy tắc ba điểm, quy tắc hình bình hành và quy tắc hình hộp để biến đổi các hệ thức vectơ trong không gian."
+  },
+  {
+   "id": "e31d6cb7-a9d9-4794-9c62-8beed4a76c86",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tích vô hướng của hai vectơ và xác định được góc giữa hai vectơ trong không gian."
+  },
+  {
+   "id": "a2622036-115d-4317-9c8c-19635e9b6010",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được tọa độ của vectơ, tọa độ của điểm và tính được độ dài đoạn thẳng trong không gian Oxyz."
+  },
+  {
+   "id": "b07bb6e7-434e-4354-b7f8-080b42d2d6d4",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được toạ độ điểm thoả mãn điều kiện cho trước thông qua biểu thức toạ độ vectơ."
+  },
+  {
+   "id": "714a6db2-58f9-4a1b-9ecf-45bfeba6e385",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các phép toán vectơ trong không gian để giải quyết bài toán thực tế về lực và cân bằng lực."
+  },
+  {
+   "id": "07911f23-edd0-4bf4-89b1-32e3ee4b0319",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế - Lực",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được kiến thức về vectơ trong không gian để giải quyết một số bài toán thực tiễn liên quan đến lực."
+  },
+  {
+   "id": "c96fa657-9347-432c-a5ff-e8bb1f5339e6",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế - Tọa độ",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Sử dụng được tọa độ của điểm và vectơ để xác định vị trí, vận tốc và khoảng cách của vật thể trong thực tế."
+  },
+  {
+   "id": "9abb5b3c-2d3a-4db1-abd0-707e235a626d",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tích vô hướng và góc giữa hai vectơ trong không gian bằng biểu thức tọa độ hoặc phương pháp hình học."
+  },
+  {
+   "id": "842ebf69-da1a-41f2-a0c4-5252e05d51db",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được tọa độ các đỉnh hoặc các điểm đặc biệt của một hình khối không gian bằng cách thiết lập hệ trục tọa độ."
+  },
+  {
+   "id": "cb1c29bf-4a99-4d04-882a-6da61114c03e",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được tọa độ của điểm thuộc trục, mặt phẳng tọa độ hoặc hình chiếu vuông góc của một điểm lên chúng."
+  },
+  {
+   "id": "35083f2c-feda-4656-b5d3-54359a6f5990",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tọa độ của vectơ tổng, hiệu hoặc vectơ biểu diễn qua các vectơ đơn vị trong hệ tọa độ không gian."
+  },
+  {
+   "id": "1594b6dc-9311-46bb-95b2-9f1de7b7d6ce",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được tọa độ các đỉnh của một hình hộp chữ nhật hoặc hình lập phương trong hệ trục tọa độ không gian."
+  },
+  {
+   "id": "06393049-a729-4426-80bc-e5c5b5139af2",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính độ dài của vectơ",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài của một vectơ trong không gian bằng cách sử dụng các phép toán vectơ và hình học."
+  },
+  {
+   "id": "56146fb8-954f-408b-a612-3683c73eddac",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tích vô hướng của hai vectơ và góc giữa hai vectơ trong không gian."
+  },
+  {
+   "id": "74579f22-d96a-4f7a-8f9b-10771c1c59a2",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính số đo của các đại lượng hình học",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài đoạn thẳng và tích vô hướng của hai vectơ trong không gian."
+  },
+  {
+   "id": "0b263f38-4de4-44bf-b6cf-f047242211cf",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tìm được tọa độ hình chiếu vuông góc của một điểm lên các trục tọa độ hoặc các mặt phẳng tọa độ."
+  },
+  {
+   "id": "2c09a379-0fc6-49e4-8edc-23bb80957f1f",
+   "grade": "12",
+   "subject": "Hình học",
+   "topic": "Chương 2. Vectơ và hệ trục toạ độ trong không gian",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các phép toán vectơ trong không gian để giải quyết các bài toán cân bằng lực trong thực tiễn."
+  }
+ ],
+ "questions": [
+  {
+   "id": "8b35823e-2baf-415e-a0e8-4aaaae8dd0ff",
+   "question_id": "CH_20260606_085735_9",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "3639c4b8-fe60-480c-b03a-14ef53c13f49",
+   "question_id": "CH_20260606_085735_7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "c58bdef7-8713-4965-9eb1-b54456bc28d9",
+   "question_id": "CH_20260606_085735_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "eb0cbf9f-114a-4a3b-bc16-a1d10b041a5e",
+   "question_id": "CH_20260606_120459_4",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "dbb7f3c4-6ecf-4766-8542-cd7a6ad41538",
+   "question_id": "CH_20260606_122521_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "8859dee1-ffb6-4bf1-a071-59803dc67c30",
+   "question_id": "CH_20260606_123106_0",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "0ffd4a25-43a7-43e4-90b7-a079864c3548",
+   "question_id": "CH_20260606_084128_19",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "3ff82a5f-3605-4869-8f06-6a799994e9b3",
+   "question_id": "CH_20260606_161716_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "a0fe86bb-1adc-42c0-9199-a4d3c85123b7",
+   "question_id": "CH_20260608_162319_21",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "81af94f6-59ba-47b8-b208-ce206b820a22",
+   "question_id": "CH_20260608_161047_0",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "049850ff-7a5e-4f67-9cc9-2094b015694e",
+   "question_id": "CH_20260608_162319_7",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "76ac4ea0-9446-4387-bb2c-f57e50f4af16",
+   "question_id": "CH_20260608_161047_5",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "c8b94b4b-a102-49ad-ad57-4d82b30371ce",
+   "question_id": "CH_20260606_124711_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "c45fbeaf-69da-4afe-a644-a3aa0f9c6326",
+   "question_id": "CH_20260606_124711_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "51c613c7-21e2-4fa0-981a-0ee804632885",
+   "question_id": "CH_20260606_124711_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "cac33254-0ee8-4899-81a9-8bb3df84c1b1",
+   "question_id": "CH_20260606_161210_15",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "7d07cddb-9933-4e85-bcf8-5884b1a7b45c",
+   "question_id": "CH_20260606_161210_14",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "82ea2415-b9d0-4791-b696-67fbef3d4172",
+   "question_id": "CH_20260606_161210_16",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "8d10a8f3-397a-44b3-85b3-869702cb49bc",
+   "question_id": "CH_20260606_161210_17",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "9a741370-7b99-4f9d-8872-598b41c86371",
+   "question_id": "CH_20260606_161210_12",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "ae206165-654b-4bf1-93ac-63eb096fe95a",
+   "question_id": "CH_20260606_161210_13",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "7c7f18ba-cd22-4655-a152-06f6a46f0b8c",
+   "question_id": "CH_20260606_161716_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "3dd41250-1e47-42e6-9499-508ec4571ba9",
+   "question_id": "CH_20260529_192533_1",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "e96c7b13-a237-4e50-83f7-f3796a6a8844",
+   "question_id": "CH_20260529_192533_2",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "31d11a8e-4025-4376-a433-635d49512c4f",
+   "question_id": "CH_20260606_161716_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "9935ceeb-39fc-4300-8b66-dc0e0b9a7a83",
+   "question_id": "CH_20260606_161716_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "163a49ec-1df8-45fb-a56d-40a09a202258",
+   "question_id": "CH_20260606_161716_6",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "2def508c-f4f2-412b-8610-d733f5a67daf",
+   "question_id": "CH_20260606_161716_17",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "e38441c8-a622-4fb3-a3a4-74910124659d",
+   "question_id": "CH_20260606_161716_16",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "cb78106e-e2e8-416b-857e-5a385b4b2ea4",
+   "question_id": "CH_20260606_161716_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "359e0e1b-ad37-487f-80bf-2a9d0655ba4b",
+   "question_id": "CH_1783870733992_8n55",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "0dbba311-9ca7-4105-b148-343eb845a6ad",
+   "question_id": "CH_1783870733992_o99g",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "fdd2b61a-bd59-48e0-8004-decb639f6c66",
+   "question_id": "CH_1783870733992_drpa",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "80d86216-ab46-41e7-923a-54a71f01eb45",
+   "question_id": "CH_1783871268295_u15t",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "9d40e503-85e1-4264-831d-d838d8826166",
+   "question_id": "CH_1783870733992_g4fq",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "cdfc5b0c-e93a-4b24-b06b-3024eb09a5d6",
+   "question_id": "CH_20260529_191107_0",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "3d732b90-54d7-48c7-9865-c2bea4826dce",
+   "question_id": "CH_20260529_191107_1",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "1fd8834a-16ea-4801-9238-22cf3c9134ce",
+   "question_id": "CH_20260529_191107_3",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "f98bed21-3662-4bae-8c36-3773cec7056d",
+   "question_id": "CH_20260529_191107_4",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "71b99c32-d4a3-4d88-8c0a-d7faa86e5878",
+   "question_id": "CH_20260529_191107_5",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "0313bf46-669a-4bdc-8466-5654effe235f",
+   "question_id": "CH_20260529_191107_9",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "8a1acdc0-1eb3-420f-aa1a-2cd8292940e4",
+   "question_id": "CH_20260529_192533_4",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "ac74e660-60ea-49eb-a1eb-010c2aaea609",
+   "question_id": "CH_20260529_192533_7",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "65568fd1-f542-4285-9dc7-1d066f7045ea",
+   "question_id": "CH_20260529_192533_9",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "5c43ad69-36da-45a6-ad17-a9e481422b2e",
+   "question_id": "CH_20260529_192533_12",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "5c661b25-c9e2-4f47-9f46-90c6b86666ae",
+   "question_id": "CH_20260529_192533_14",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "b30845b1-a816-4ac7-a261-6a3ca4d66912",
+   "question_id": "CH_20260529_192533_18",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "11f520ff-fcf0-4676-99d7-676e64c23b96",
+   "question_id": "CH_20260606_084128_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "3c2209c6-34fe-4d43-8fcc-8f358f1d52d0",
+   "question_id": "CH_20260606_084128_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "c60f9a89-5b55-43dc-8163-f6a24f999759",
+   "question_id": "CH_20260606_084128_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "65e19eee-7db1-4cc4-9205-b2024a7a395c",
+   "question_id": "CH_20260606_084128_11",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "a92b7386-9242-41f9-b32a-9d13a11262c0",
+   "question_id": "CH_20260606_084128_28",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "9fc25399-5ed1-423a-b27a-254b23415d77",
+   "question_id": "CH_20260606_084903_6",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "ada96296-2705-405f-bf24-2081affb692a",
+   "question_id": "CH_20260606_085735_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "26a2ad8c-6a40-49db-bb1d-3362a38b72f6",
+   "question_id": "CH_20260606_120459_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "8a383c92-4e4f-49e5-9f5c-8dfa442d8d85",
+   "question_id": "CH_20260606_120459_6",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "da655130-398c-4663-b245-4a8b641c9bea",
+   "question_id": "CH_1783870733992_g2iq",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "81fa0505-ef9c-4ed5-a996-459617b80975",
+   "question_id": "CH_20260606_160636_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "e783d47e-f546-4b99-a7a0-be885e0b115f",
+   "question_id": "CH_20260608_161633_8",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "bf90fb2e-e388-452a-bc99-0dce5e66b32f",
+   "question_id": "CH_20260608_162319_6",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "790c4a18-f4e1-42ce-8f9e-3854180a4885",
+   "question_id": "CH_20260608_162319_12",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "46702ef0-6375-450b-9c9c-2eb6c0675ce7",
+   "question_id": "CH_20260608_162319_10",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "2a7254c6-b6ea-4c45-ae4e-83c8148cdb06",
+   "question_id": "CH_20260606_161716_7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "0ed41dd9-4b0c-437a-90b6-f005b0f7413a",
+   "question_id": "CH_20260606_161210_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "52c10bef-affd-43f8-a0f5-bbe783dbb5ea",
+   "question_id": "CH_20260606_173654_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "738c49f1-9cda-4a38-82ec-f9d0eae50150",
+   "question_id": "CH_20260606_173654_6",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "2da9a7a2-f374-46c0-8a67-5afa3fca3dc2",
+   "question_id": "CH_20260606_161716_13",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "b7ba7ed6-f62e-4d10-8638-98b1cdc99e77",
+   "question_id": "CH_20260606_173654_3",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "fe397c02-791a-453c-8c3c-0d62e9c3de21",
+   "question_id": "CH_20260608_162319_18",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "f216a5af-d3a0-4dfe-ae7a-543621c81ac0",
+   "question_id": "CH_20260608_163744_9",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "c17a625b-0c41-42de-88a6-c982cc6e9c92",
+   "question_id": "CH_20260608_163744_30",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "f6e5d04e-53c0-4f57-9fd0-c6726be19591",
+   "question_id": "CH_1787067702576_0gd6",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "6fd9a719-61dd-4c12-8324-81b69094efd4",
+   "question_id": "CH_20260608_163744_39",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "2a18c504-10c5-457e-97f9-bd42a0adac6e",
+   "question_id": "CH_20260529_191107_8",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "02005909-29b1-4b99-b8bf-b15d23477873",
+   "question_id": "CH_20260529_191107_10",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "c36b0c7c-71ba-4278-bc5e-c45e49adaf17",
+   "question_id": "CH_20260529_191107_12",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Tính độ dài của vectơ"
+  },
+  {
+   "id": "d2016d9c-0767-4269-8b18-4a883b9aa956",
+   "question_id": "CH_20260529_191107_13",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Tính độ dài của vectơ"
+  },
+  {
+   "id": "8ef644e6-e1fd-4f81-a461-2aa4ccef17c9",
+   "question_id": "CH_20260529_191107_16",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "9d0df820-1da0-4cd7-9d85-ee569f101699",
+   "question_id": "CH_20260529_191107_14",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "b0385448-fa19-4b9c-9970-ab6a0c0960ea",
+   "question_id": "CH_20260529_191107_15",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "ae6dff98-1247-436d-8995-a5f8d510b871",
+   "question_id": "CH_20260529_192533_0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "01da1335-834f-4c0d-87ba-a156a09814aa",
+   "question_id": "CH_20260529_192533_5",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "2281f68a-ca85-44ec-814f-03d921b07ad5",
+   "question_id": "CH_20260529_192533_6",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "892329ad-214b-40d8-8726-8078f9795d79",
+   "question_id": "CH_20260529_192533_17",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "fe5b327c-9546-4b8a-bc0e-8256c42defd9",
+   "question_id": "CH_20260606_161716_21",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "ecb3b141-320c-4700-98d1-3ea915cc36e3",
+   "question_id": "CH_20260606_164022_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "23c1596e-e315-471b-bdc0-55eb8a225cfc",
+   "question_id": "CH_20260606_164022_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "e60a7d04-e074-40a1-9647-43ee5065bd2e",
+   "question_id": "CH_20260606_161716_19",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "efa02ea5-cc50-4bef-9d0b-d3fbc3102b38",
+   "question_id": "CH_1783871268295_lb5j",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "c6a51a9c-5738-4504-8982-0962c09c222d",
+   "question_id": "CH_1783871268295_zw61",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "bd220d35-0f02-40b2-95e4-e4929fc72353",
+   "question_id": "CH_20260529_192533_20",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "ece8c15b-8d31-4231-a563-2ee805035f2a",
+   "question_id": "CH_1783871268295_t7ex",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "84af6013-cf93-418f-a176-42e963659b7d",
+   "question_id": "CH_20260606_164022_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "e879382f-0528-4e33-8c42-81b0f75aeab0",
+   "question_id": "CH_1783871978383_euhu",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "3307d791-b1bf-43c5-bab5-7a6120734955",
+   "question_id": "CH_1783871978383_rjvs",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "63f90ef0-b4ef-4ea9-9a7c-753d34e1daa0",
+   "question_id": "CH_1783871978383_s3bg",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "dd01c3bd-0da9-4e3c-8bfd-f4d52370c1a1",
+   "question_id": "CH_1783871978383_lz29",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "63e5eeb6-6d09-4df3-943a-a9f20893e795",
+   "question_id": "CH_1783871978383_wmsm",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "1955ca7d-5f1d-42b6-bc9e-c97aa176cfd1",
+   "question_id": "CH_20260606_164022_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "3e40934c-2818-4c0f-a22e-edccd987bac8",
+   "question_id": "CH_20260606_164022_6",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "1403f034-9a3f-4453-a173-65df045d81a7",
+   "question_id": "CH_20260606_164022_7",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "c69a5c49-3dfb-4e0c-bcd2-c0e17cd262bd",
+   "question_id": "CH_20260606_164022_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "8d9e021f-0161-4af6-bcf8-8dbc116d890c",
+   "question_id": "CH_20260606_173654_0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "a63de6c1-ad7d-4a60-8c36-763cc8e20c96",
+   "question_id": "CH_20260606_173654_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "ee659efb-75de-4f2a-bd16-894e2a6d13a4",
+   "question_id": "CH_20260606_173654_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "b3624ec2-7a7d-4c4f-b0b6-1e5ee250093e",
+   "question_id": "CH_20260608_162319_0",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "8977301b-aa71-41fc-981a-1cadaaef3824",
+   "question_id": "CH_20260608_162319_1",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "1c827987-1590-436f-89c1-1e1a89bfb4c8",
+   "question_id": "CH_20260608_162319_3",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "46da9202-9aad-49a9-8a67-655caecc3af6",
+   "question_id": "CH_1787942689737_50v3",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "f43f0077-f847-4a84-932b-9b6ce2e107b7",
+   "question_id": "CH_1787942689737_03dr",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "821bf9d8-7a1c-4c23-9e02-bed3beef7cb0",
+   "question_id": "CH_1787942689737_yh3z",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "feda51d0-63b9-4b40-b504-61341f12fc7a",
+   "question_id": "CH_1787942689737_inmj",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "97bdabc9-2dd1-470f-815c-77b76e1d056f",
+   "question_id": "CH_20260608_162319_9",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "45a8ce14-f3f9-4515-b0c8-ff0744651e8d",
+   "question_id": "CH_20260608_162319_13",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "eaa0fb36-e63e-44bc-a63b-6034c030c006",
+   "question_id": "CH_20260608_162319_14",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "62aea180-0462-41af-9666-2c87c69e66b7",
+   "question_id": "CH_20260608_162319_15",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "3a2edab2-10ca-492d-a4ca-753011f65a6d",
+   "question_id": "CH_20260608_162319_16",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "2af896f1-9a48-44b6-afb9-4dec58dafcdf",
+   "question_id": "CH_20260608_162319_17",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "236239d5-af5f-44b2-a2bc-97148158fb52",
+   "question_id": "CH_20260608_162319_19",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "59d9e697-4ab8-4007-a7c5-7f9abd86cda2",
+   "question_id": "CH_20260608_162808_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "4dd9d801-4cc8-4bf9-adcd-20fa1710349e",
+   "question_id": "CH_20260608_162319_20",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "a6402a72-5d0e-4d5e-aff6-ac53f554f2c2",
+   "question_id": "CH_20260608_162808_14",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "a2a1feb2-6849-4484-a882-4fb38f0f66bb",
+   "question_id": "CH_20260608_162808_15",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "7088a1e8-261c-4aa9-8249-57b7ae2b6222",
+   "question_id": "CH_20260608_162808_16",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "9220647c-5907-4c43-90ce-7cb92d06f019",
+   "question_id": "CH_20260608_162808_17",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "8aa33f81-4fc9-47d0-a292-b2f95cce86c2",
+   "question_id": "CH_20260608_162808_19",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "9b13bb29-96f1-48f4-8770-6f19db4b27c6",
+   "question_id": "CH_20260608_163158_0",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "93ae226e-a400-4ff4-8790-8e2e43ea6521",
+   "question_id": "CH_20260608_163158_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "fbe10f28-8aff-4a9e-935e-7348d345f627",
+   "question_id": "CH_20260608_163158_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "81263e87-01c0-4670-a616-c635d94ce53c",
+   "question_id": "CH_20260608_163158_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "2c901978-216f-4e27-b18a-91fd3c9f912d",
+   "question_id": "CH_20260608_163158_7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "581365ef-b7f8-48a1-92d4-6ca00d5a29ed",
+   "question_id": "CH_20260608_163158_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "96b29990-dbcb-4edc-bfcd-621552fef383",
+   "question_id": "CH_20260608_163158_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "446d332d-4005-4261-9a7f-a069827c475e",
+   "question_id": "CH_20260608_163744_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "c3a92de1-8610-41bc-a6a8-b7161929b4b7",
+   "question_id": "CH_20260608_163159_11",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "662ef31e-67f4-4f86-815c-b2a1dbfc04e0",
+   "question_id": "CH_20260608_163159_12",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "9cb9f76c-b6d1-4fd4-b73d-9baf2ad11b4d",
+   "question_id": "CH_20260608_163159_14",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "6deb8d97-a922-4e37-aee1-8a78f79c35a6",
+   "question_id": "CH_20260608_163159_15",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "2ba3fed7-f6ae-42fb-9af6-f3310fe1bc75",
+   "question_id": "CH_20260608_163159_10",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "a3d7c539-b821-42e6-8598-e24be060915f",
+   "question_id": "CH_20260606_085735_11",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "c1e3e6ff-a065-4bbe-8819-02cca254218d",
+   "question_id": "CH_20260608_163744_23",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "e5ec71da-91f8-408c-91e3-e4026678ce88",
+   "question_id": "CH_20260606_120459_1",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "9e49f23d-3e78-4629-95bf-e386241db615",
+   "question_id": "CH_1783756802251_ddec",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "d1f57fcd-632f-455a-8edd-cf4445803b6b",
+   "question_id": "CH_1783756802251_xfwy",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "7c4a627f-5dc3-4f90-b4df-511f5dce706e",
+   "question_id": "CH_1783756802251_n7on",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "b5bce0f4-99ff-4792-96f1-e27948b9b966",
+   "question_id": "CH_1783756802251_4y6z",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "aebfae4c-8859-4e59-9ac7-16f0ff1e4340",
+   "question_id": "CH_1783756802251_zg2v",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "cf340305-7c44-4d2e-907c-428c90079351",
+   "question_id": "CH_1783756802251_5xo7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "42ca3e83-299b-4027-9c89-dbc5963b9e3c",
+   "question_id": "CH_20260606_164022_0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "ac50f7f1-6f7f-463a-b6e5-1c0c9fe1635c",
+   "question_id": "CH_1783755496868_ks9d",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "ffc271ce-2f15-4493-96a6-9afd27e10a80",
+   "question_id": "CH_20260608_163159_16",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "983f89ca-6204-4e98-bb9d-0b937f4df6ee",
+   "question_id": "CH_20260606_164022_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "60d9913a-144c-4a08-bbad-63508472b058",
+   "question_id": "CH_1783870314865_alm9",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "a4312ef2-5e2a-4882-8570-d79796d4b0ad",
+   "question_id": "CH_20260608_163159_17",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "12df83ca-a7d2-423d-92e6-089b3841b4b2",
+   "question_id": "CH_20260608_163159_18",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "33a036a2-fc40-47a6-9bb4-e524a4dbdf9d",
+   "question_id": "CH_20260606_123106_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "afef5b72-9146-4d25-8d1f-279f4cacd759",
+   "question_id": "CH_20260608_163744_1",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "3b722fc7-5994-428b-9c9a-ec1cc394acab",
+   "question_id": "CH_20260608_163744_6",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "ca6619f1-fc63-47cd-95cc-7eca078ff9c1",
+   "question_id": "CH_20260608_163744_3",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "36db5861-8f71-4658-bdaf-f5e0298a5a30",
+   "question_id": "CH_20260608_163744_2",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "cfcc1aae-9e83-4f13-b9b2-3d06923db372",
+   "question_id": "CH_20260608_163744_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "f43850b4-28d3-40d5-9a88-91061a3c8790",
+   "question_id": "CH_20260608_163744_10",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "bcf7f6c8-7207-4742-88a0-f7a260c44ca0",
+   "question_id": "CH_20260608_163744_13",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "deb2ee7d-1ede-4d14-86f6-16826de193b5",
+   "question_id": "CH_20260608_163744_14",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "73c6fc70-7dc2-4600-8a07-6a6684fd4fbe",
+   "question_id": "CH_20260608_163744_16",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "d580308e-1981-49f4-9daf-9b554b6946cc",
+   "question_id": "CH_20260608_163744_17",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "06ff6ba4-50fb-47ae-b063-d85f86b67c62",
+   "question_id": "CH_20260608_163744_12",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "e89d7416-40b7-4531-be2e-ac2c470863ad",
+   "question_id": "CH_20260608_163744_18",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "5a1ab494-7572-4a82-9245-ca73e4d349bc",
+   "question_id": "CH_20260608_163744_25",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "d9077202-9d46-4041-9ee1-607b2b7bd27d",
+   "question_id": "CH_20260608_163744_26",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "be5b0e26-447d-4247-86b0-0764d1b59d80",
+   "question_id": "CH_20260608_163744_28",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "eef17252-cab9-4cb2-ac4c-dd504093a55b",
+   "question_id": "CH_20260608_163744_24",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "0e820417-6cbc-4837-ba8b-c9f54e015363",
+   "question_id": "CH_20260608_163744_20",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "aec9df14-0489-4620-b3d7-540f466352c5",
+   "question_id": "CH_20260608_163744_31",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "6fee6211-2954-4d1c-80de-123c90168a06",
+   "question_id": "CH_20260608_163744_32",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "1d5cea86-38ee-42ff-871e-60614bacb402",
+   "question_id": "CH_20260608_163744_33",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "292c5f4f-4a65-491b-a7df-f3d83de05f54",
+   "question_id": "CH_20260608_163744_35",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "c82fee5a-931b-45b8-bc7e-02097cc6bbad",
+   "question_id": "CH_20260608_163744_36",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "0db65d16-5610-4820-b340-299e4dc4dfac",
+   "question_id": "CH_20260529_192533_21",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "4a56a7b0-d4a7-428e-a20e-488336fd174b",
+   "question_id": "CH_20260529_192533_22",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "c667b21e-24ba-4ce7-89ea-7d6118ed3b54",
+   "question_id": "CH_20260529_192533_19",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "a33419c0-6ae8-4732-957b-3aea8b9e57ed",
+   "question_id": "CH_20260606_084128_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "6f8cff13-f47c-4db2-89fd-8244ae5b5cc3",
+   "question_id": "CH_20260606_084128_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "afbedfa1-e321-47a6-8870-550d6fc13feb",
+   "question_id": "CH_20260606_084128_6",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "c7edba57-cd33-49f8-a646-e9673bef8941",
+   "question_id": "CH_20260606_084128_7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "90c113fc-c33f-45a9-82e7-d26bb3275940",
+   "question_id": "CH_20260606_084128_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "2b718469-8abf-4f83-8a5d-00213c9b4548",
+   "question_id": "CH_20260608_163744_37",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "5a2b6d84-8a44-4596-bba4-abc91a3e2bfd",
+   "question_id": "CH_20260608_163744_38",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "674cabda-0fc3-421f-b81b-c0df15738358",
+   "question_id": "CH_1787067702576_7pcx",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "9010515d-1044-445d-af09-5cc4ee788ef1",
+   "question_id": "CH_1787067702576_egl1",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "a6e55348-1c4f-46b3-a398-e9c12b57bb8e",
+   "question_id": "CH_20260606_161210_11",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "19551027-c350-4e41-a90f-342aa27983e0",
+   "question_id": "CH_20260608_162319_2",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "15a0dd69-26c5-4bdb-bc5b-256dd2574758",
+   "question_id": "CH_20260529_191107_2",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "ce8520ba-ee11-4f8c-a5b5-7ae071faf263",
+   "question_id": "CH_20260608_163158_4",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Tính độ dài của vectơ"
+  },
+  {
+   "id": "11c6ca94-755c-4894-85ef-86652591578d",
+   "question_id": "CH_20260606_161210_5",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "10484835-3ca7-4180-92a8-4688f2cfd001",
+   "question_id": "CH_20260606_161210_0",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "6830595f-700e-4cff-8b8c-402b8f343aee",
+   "question_id": "CH_20260606_084128_9",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "62ea0039-962e-4e46-b415-78c6def935b2",
+   "question_id": "CH_20260606_084128_10",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "5eb563b4-60c8-489e-a383-ffc9445f9115",
+   "question_id": "CH_20260606_084128_12",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "1693b540-22e7-416b-a99d-7129b243627b",
+   "question_id": "CH_1787942689737_2gmt",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "6ef973a0-cfe7-46fa-b90f-ff325d3f28fe",
+   "question_id": "CH_20260606_084128_13",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "97f5424f-c648-47c9-a346-50de5f028c43",
+   "question_id": "CH_1783756802251_w4p4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "effc1fe4-7d77-4bf1-969a-b67623d50352",
+   "question_id": "CH_20260606_084128_27",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "e7410560-0c2d-4800-a2e8-07c8e65bbe68",
+   "question_id": "CH_20260606_084128_14",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "4341308e-26cf-456c-bbd1-17eb39b55bf7",
+   "question_id": "CH_20260606_084128_15",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "520d7106-5476-43f8-a6f8-9fb12a8b0efc",
+   "question_id": "CH_20260606_084128_18",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "3d33f0d9-74ec-494b-a7b6-d609bb8980bd",
+   "question_id": "CH_20260606_084128_22",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "282a486c-4d00-4353-9e7f-b0fd8f5a504d",
+   "question_id": "CH_20260606_084128_25",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "043a3d19-a9e2-425c-ab29-909c49ecaa0e",
+   "question_id": "CH_20260606_084128_26",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "ad4bc2bd-4494-40da-aaf0-060e1e8c16ac",
+   "question_id": "CH_20260606_084128_30",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "e121d8d7-2eb1-4f17-9b27-19552f76da6a",
+   "question_id": "CH_20260606_084128_31",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "8f96ca97-03a6-439d-9d88-9f64f29c2346",
+   "question_id": "CH_20260606_084128_20",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "5b373cff-a78f-4050-8db9-dfef73eceb32",
+   "question_id": "CH_20260606_084128_23",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "ee727adb-c559-4029-9dbb-1ea158a2116d",
+   "question_id": "CH_20260606_084128_21",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "2ec9c186-9ce3-4b60-afbc-2f814fcefd41",
+   "question_id": "CH_20260606_084128_24",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "ff710cbe-1bf5-46bc-b65e-4f2ef85e3180",
+   "question_id": "CH_20260606_084128_29",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "a047ca0e-f466-4238-aaf1-ca8427a3d770",
+   "question_id": "CH_20260606_084128_32",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "e6a771e5-f7a8-4d6d-bcab-60dc860e92e1",
+   "question_id": "CH_20260606_084128_33",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "f4b5f7ef-7057-410c-a35e-d5ad2f9420ee",
+   "question_id": "CH_20260606_084128_34",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "a9b9bf83-b7ac-4963-be84-9e65a39b921d",
+   "question_id": "CH_20260606_084128_35",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "3925179f-e570-4521-9961-a7d4679050ec",
+   "question_id": "CH_20260606_084128_36",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "901c4fec-4135-48bd-aef5-d82d01574acb",
+   "question_id": "CH_20260606_084903_0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "0733b7cf-4a92-4ab6-9e22-342a8ed5b2fa",
+   "question_id": "CH_20260606_084903_1",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "5d5180c2-1c92-4c9a-bd45-1893b91dc9e0",
+   "question_id": "CH_20260606_084903_2",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "ec003686-7d67-4d3d-93c5-f1221e084552",
+   "question_id": "CH_20260606_084903_3",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "fa9854b8-d1e0-4b6a-ac7a-f6d63a627a82",
+   "question_id": "CH_20260606_084903_4",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "1b726e37-42ce-4d40-adab-655dbd2e52df",
+   "question_id": "CH_1783756802251_wuip",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "1afb49ac-c782-483a-b764-5085ee77df86",
+   "question_id": "CH_1783870733992_pw2s",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "cc886fb8-9d0f-4262-b36a-6d2ccfb412e0",
+   "question_id": "CH_1783871978383_1hlb",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "1d9e922b-2b2f-4d04-a3ae-c6dc298cc6ec",
+   "question_id": "CH_1783871978383_2vb8",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "0912556a-69c4-4f29-b17a-533434663402",
+   "question_id": "CH_20260606_122521_0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "1fb3ecf8-c7ad-41ab-a2a3-ee463499e8f7",
+   "question_id": "CH_1787942689737_xeqg",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "9d8c605f-ed8a-4446-a871-fac2794d70df",
+   "question_id": "CH_20260608_163744_22",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "318d735f-4ca1-49c3-8094-8455d26bedb8",
+   "question_id": "CH_20260608_162319_4",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "4a8585fe-d842-4b00-ae08-451e09b62109",
+   "question_id": "CH_20260606_084903_12",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "0a5ef79a-6d91-4822-a028-ece81355bc13",
+   "question_id": "CH_20260606_160636_0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "2186d5b7-93f8-4081-b748-d665cb4fff6c",
+   "question_id": "CH_20260529_191107_6",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "3588b569-4088-402e-a2f8-4f3abaea8d26",
+   "question_id": "CH_1783871978383_o07p",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "40511aad-9998-4d55-ba5c-d6bf1e889b66",
+   "question_id": "CH_1783870733992_nxrl",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "4e89a5cd-5b88-4a3a-bed2-8fa9344c18b0",
+   "question_id": "CH_1783872367030_rn4p",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "80ba8344-f21a-4ce9-8b92-dd6e85a208e1",
+   "question_id": "CH_20260606_173654_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "b4c19a4b-b055-488f-ae30-2f94452b0134",
+   "question_id": "CH_20260608_162808_18",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "c27d2656-5c81-4712-b76f-17c646f1f31f",
+   "question_id": "CH_20260608_163159_13",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "ef95d4a6-c71d-4e72-8d2b-1c1d69e8025b",
+   "question_id": "CH_1783871268295_jgic",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "fbf1768d-975e-4712-9fb6-c59678db1920",
+   "question_id": "CH_1783755496868_u5tu",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "7cedd071-2672-4229-98a7-bc8835f20299",
+   "question_id": "CH_1788925865293_67ed",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "b6f86bb5-115f-4de5-85de-cca0b1056f28",
+   "question_id": "CH_1788925865293_jkfk",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "eba8b28f-60dc-4886-bca3-fe8e87af74a7",
+   "question_id": "CH_1788925865294_q3rm",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "d0ec1bcf-4cab-467a-98f3-5cce03ee89c3",
+   "question_id": "CH_1788925865294_0jf8",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "85f1389c-ad09-4c10-89d9-795d0fac8938",
+   "question_id": "CH_1788925865294_y40l",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "3dc9e81e-00a2-45dc-b0ea-2a323e346e90",
+   "question_id": "CH_1788925865294_4ovs",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "5a879c47-ad95-41f1-a568-e52c8b7cbcc1",
+   "question_id": "CH_1788927057015_913h",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "0d036d23-ebd6-4756-94da-2dd9aa6775bd",
+   "question_id": "CH_1788927057016_sfho",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "c4fdfb01-bb15-4f8f-9d8d-af7ba03fab6e",
+   "question_id": "CH_1788927057016_0kw4",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "daf2e48f-c724-48ac-a2d1-5e74abe7ed59",
+   "question_id": "CH_1788939310192_o38t",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "b6b6aa89-660b-48cf-8663-60b375c22df1",
+   "question_id": "CH_1788939310192_8jk7",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "54af8906-0c69-4acd-9e79-67b1f93c5a6b",
+   "question_id": "CH_20260608_163158_6",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "1bb7d8e0-aa4a-43b8-942b-2173707b84d8",
+   "question_id": "CH_20260606_124711_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "aed75942-191c-4bbf-bcf4-76b58861d4cf",
+   "question_id": "CH_20260606_124711_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "769582ea-ade6-46d4-844c-2547dd967b5c",
+   "question_id": "CH_20260606_122521_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "fe33db27-a0ce-4460-bdf2-72f5f55d17df",
+   "question_id": "CH_20260606_124711_0",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "ce1f23b8-d45a-431b-bcf9-5a71c344055e",
+   "question_id": "CH_20260606_124711_6",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "a42d6f24-4515-41ae-9f58-9b7909e6ad3e",
+   "question_id": "CH_20260606_122521_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "fa8291a3-322d-41a7-89b3-8cabade711dd",
+   "question_id": "CH_1788959381595_033l",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "f63948a2-ba86-4430-95d9-db88e252ac3a",
+   "question_id": "CH_1788959381595_8lnt",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "082f6695-8949-4715-b7a3-cd69d466e22b",
+   "question_id": "CH_1788959381595_1ni9",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "2c77c598-a558-48ce-8baa-34c9adb7fb03",
+   "question_id": "CH_1788959381595_9xgv",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "fe4784c5-89d8-4a96-92b5-ddda6431895c",
+   "question_id": "CH_1788959381595_ffsd",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "e2e42b85-eaeb-4ecb-8995-f2c8afbafcd3",
+   "question_id": "CH_1788959381596_j8o8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "134192a1-e689-4fd6-a6c7-2f56fe2c0ade",
+   "question_id": "CH_1788959381596_fwlv",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "b2fcc9f2-2b20-443c-ba0f-ff297dc809d1",
+   "question_id": "CH_1788959381596_1eqh",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "86e1f454-a289-4dd4-8d7f-c73c8cc36ba9",
+   "question_id": "CH_1788959381596_goyr",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "ff1548c0-19b7-43cf-a7c7-db9078f1421c",
+   "question_id": "CH_1788959381596_3yrs",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "47994c8f-a2c0-45c9-990c-d714d7349ff3",
+   "question_id": "CH_1788959381596_9eco",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "64447fbd-b54b-431d-88e0-dba09fecdbb6",
+   "question_id": "CH_1788959381596_4530",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "5f1d8611-86c6-47c8-bce1-11bf281e7731",
+   "question_id": "CH_1788959381596_0yg1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "f2f1ecee-a484-4531-a48d-c23087e3a992",
+   "question_id": "CH_1788959381596_5lr8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "91ef013d-7cad-428d-85b6-244a3674b887",
+   "question_id": "CH_1788959381596_2eoj",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "6c5bee88-4a54-4517-a82e-e2a084efaf72",
+   "question_id": "CH_1788959381596_ytm7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "da91aca0-5a5a-438d-87f4-f577dd2362aa",
+   "question_id": "CH_1788959381596_ebum",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "40c6b7d1-5c71-49f7-bad4-219689b90ef0",
+   "question_id": "CH_1788959381596_qfz0",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "f4d022e2-8b0f-41bc-9594-6dd6925fd002",
+   "question_id": "CH_1788959381596_gi4k",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Tính độ dài của vectơ"
+  },
+  {
+   "id": "19f724b5-33de-4c7a-9c8a-f86d2c4e31b2",
+   "question_id": "CH_1788959381596_1666",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "91575607-cde4-4ccc-80cb-5ae558cfbb58",
+   "question_id": "CH_1788960754693_pbwu",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "b9972c38-4a7a-4fbd-8343-b3ed5489bd2e",
+   "question_id": "CH_1788960754693_n9re",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "2cdb77d1-dacd-4090-a79a-5d6b4165a96b",
+   "question_id": "CH_1788960754693_b5eg",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "cb25aa38-b2a8-471a-a4e3-8cc1efa41f53",
+   "question_id": "CH_1788960754693_z8xf",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "fd07bd75-c2e7-4227-8c61-7b81feeda46f",
+   "question_id": "CH_1788960754693_5xpw",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "6df9af37-10bf-48f6-81a7-5b1161178a7a",
+   "question_id": "CH_1788960754693_elay",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "5a90940f-8702-4c6a-964d-96d2ede5db48",
+   "question_id": "CH_1788960754693_wqg7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "c651838e-38a0-49a2-a93c-996b87d1efd2",
+   "question_id": "CH_1788960754693_imz2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "208035f7-9125-4cda-aa91-5558c1839183",
+   "question_id": "CH_1788960754693_eafm",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Tính độ dài của vectơ"
+  },
+  {
+   "id": "bdf183b7-ccbc-4bce-9b77-be55a01a7d61",
+   "question_id": "CH_1788960754693_o5zr",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "403f994b-7d9c-49db-9a81-94af43af39c1",
+   "question_id": "CH_1788960754693_ksq3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "ec480b52-072e-4640-a0df-f39193531e82",
+   "question_id": "CH_1788960754693_z2xm",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "b191669d-c0d6-46f5-b070-28338c5121bf",
+   "question_id": "CH_1788960754693_n6rr",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "810e3cc2-4843-4db5-b267-087a6c49c495",
+   "question_id": "CH_1788960754693_h9ka",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "7d65cfdd-378e-48b5-bba0-a2a56868c559",
+   "question_id": "CH_1788960754693_r0ar",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "cc33855d-5e50-4f9e-91b3-dcd45f2ebe20",
+   "question_id": "CH_1788960754693_ujux",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "fb9b51a0-9396-45f7-96ba-ffb3e4765d55",
+   "question_id": "CH_1788960754693_p4ms",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "dc5488b2-3f9c-4ead-9282-7c37dae013e5",
+   "question_id": "CH_1788960754693_yvdk",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "a78a7de2-af66-4be9-b00b-6bbe46964582",
+   "question_id": "CH_1788960754693_uyai",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "0874fba6-3aec-4400-b426-495190599997",
+   "question_id": "CH_1788960754693_nuxy",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "f88e5c2c-4426-437e-9c4a-5edc146ceaca",
+   "question_id": "CH_1788960754693_vnag",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "25b99363-d5ee-4ee7-8896-5d000b0bcc22",
+   "question_id": "CH_1788960754693_mejt",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "abd88364-88d7-4b3a-8d27-ac44e2ce04e1",
+   "question_id": "CH_1789019118037_ukl2",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "c6092fd0-6a7e-49ef-90ca-555100386acb",
+   "question_id": "CH_1789019118037_x921",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "23dcee51-bc2f-458e-bf71-3223249749c6",
+   "question_id": "CH_1789019118037_gi21",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Tính độ dài của vectơ"
+  },
+  {
+   "id": "3c8e0b86-34ea-4a9e-b9d9-93f23a46884e",
+   "question_id": "CH_1789019118037_73g0",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "bbd95065-c327-4755-805b-6bcbbe04bfe4",
+   "question_id": "CH_1789019118037_a4ov",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "b8d8e1a6-6ab9-4ab9-b192-5215f192c82b",
+   "question_id": "CH_1789019118037_q9z7",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "4e86248d-955b-49a9-89f3-7600cea2f3d5",
+   "question_id": "CH_1789019118037_sftn",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "635021aa-65a5-465e-be7f-ea9061503e21",
+   "question_id": "CH_1789019118037_37gu",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "59e4a228-ba01-4ee8-a16f-3dddf164d58b",
+   "question_id": "CH_1789019118037_s9av",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "2cf1b53d-bb68-441d-9991-fe51675cd387",
+   "question_id": "CH_1789019118037_rol6",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "1141629f-728a-4d1b-9944-86d9b1b3eddf",
+   "question_id": "CH_1789019118037_v14d",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "78661b7d-1f16-40fe-a873-d71d2c020c69",
+   "question_id": "CH_1789019118037_u6ni",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "b32711e8-da18-424d-b0d4-9bdbba1ada6f",
+   "question_id": "CH_1789019118037_u05e",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "7493fc5f-a747-4641-8533-54561405df11",
+   "question_id": "CH_1789019118037_mau7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "f39d6fe2-77ee-46f0-8bda-9d9d868d287e",
+   "question_id": "CH_1789019118037_yj2m",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "57a8365e-f17e-4da0-af1a-5d3ae3d743fd",
+   "question_id": "CH_1789019118037_w3fx",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "ffb7cc7f-ec5d-4a8f-a145-2a38c1c870fa",
+   "question_id": "CH_1789019118037_v7xi",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "5d275c11-defb-461d-9af6-be80429eb767",
+   "question_id": "CH_1789019118037_49z3",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "72cd2167-ee13-430b-b4ab-9d83c0ad719d",
+   "question_id": "CH_1789019118037_l5kn",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "f314ce1c-e7c8-4deb-8a31-429b9034b357",
+   "question_id": "CH_1789019118037_jgu4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "77cc46d6-ea63-4a65-9e53-7bfb3d5a93cd",
+   "question_id": "CH_1789019118037_b4bd",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "dcf06b04-3579-4a72-8b95-762ea1345456",
+   "question_id": "CH_20260606_084903_5",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "832a6fe4-ec92-43ef-972e-9d705200907e",
+   "question_id": "CH_1783870314865_vrqy",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "a3fd151b-c0b7-450d-ae7e-28c52e2680ee",
+   "question_id": "CH_1787067702576_m58m",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "c3927c9a-31e2-4ad5-8481-dec8bed070d4",
+   "question_id": "CH_1783870314865_u9vm",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "cd159202-4dfe-448c-85fe-969895faf8f6",
+   "question_id": "CH_1783870314865_ll7b",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "9465f3e8-d858-406d-a333-3a6e50f8946a",
+   "question_id": "CH_1783870314865_hfpg",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "68eb3403-e74c-4c9f-bd27-fd29504fc2c5",
+   "question_id": "CH_1783870314865_fxx7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "34fb9d16-52af-4ff9-804c-bf076975ce76",
+   "question_id": "CH_1783870733992_dgag",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "69d14cfb-026f-47dd-a4f6-82a049dedcc7",
+   "question_id": "CH_1783870314865_4vxo",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "859f79d2-a1a2-4de7-8432-bf9a1f9277bf",
+   "question_id": "CH_1783871978383_zqoa",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "ba9507e3-63fe-4465-8895-35a72472a1fb",
+   "question_id": "CH_1783870733992_c3d4",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "9fa3b06b-6a19-478d-8209-ee8984db459d",
+   "question_id": "CH_1787067702576_28nd",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "cf15b0d7-e3eb-459a-9aa8-db6e60551294",
+   "question_id": "CH_1787067702576_dzo2",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "2b437971-c38d-4bab-a4ed-36798632890a",
+   "question_id": "CH_20260606_084903_7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "4f5a3004-9fbe-4894-92ed-1ccec6e097fc",
+   "question_id": "CH_20260606_084903_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "5bd3f7f2-4eb2-4446-bc5f-d4b0af25ee4d",
+   "question_id": "CH_20260606_084903_9",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "805f8597-bb2f-4f80-bf31-b6661ca873df",
+   "question_id": "CH_1783872367030_mr1s",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "8f852d75-c7a2-4617-a7d3-7644b9c6c7e3",
+   "question_id": "CH_1783872367030_eo10",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "60bda0d0-fbf2-40d9-93f0-9c7a80f407e5",
+   "question_id": "CH_1787067702576_anwq",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "07be4e71-7195-4595-b2d4-d803f62d0250",
+   "question_id": "CH_1787067702576_qcbk",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "2d7de576-67d1-4d03-b0a0-7ed1934711cb",
+   "question_id": "CH_1787067702576_9hot",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "db00290a-bfe8-40ce-9a76-1a3416586462",
+   "question_id": "CH_20260606_084903_15",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "be01b967-8f8b-4c8d-9917-2f2aed755095",
+   "question_id": "CH_1787067702576_qsef",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "021b5a73-12ae-4345-acf0-8586b8df6adc",
+   "question_id": "CH_20260606_120459_0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "d10b88e3-d604-442c-84f5-9101f48e2878",
+   "question_id": "CH_20260606_084903_10",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "f1e443b7-4bd9-4b8c-85c0-9645c3977e13",
+   "question_id": "CH_20260606_084903_11",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "673cb701-9ed3-4704-ae0c-88827e895002",
+   "question_id": "CH_20260606_084903_13",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "793ceea2-02be-46a8-8a6f-a99bf8c0cc1a",
+   "question_id": "CH_20260606_084903_14",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "9b697348-8d16-4000-b6dd-6066745fb274",
+   "question_id": "CH_1783872367030_s9bu",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "c060f009-dfa8-474e-9d8c-1cc63a7b192d",
+   "question_id": "CH_20260606_085735_0",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "204d2ee0-550a-4e80-a838-d841de789dad",
+   "question_id": "CH_20260606_085735_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "c5bde758-2bdf-4acf-a6dd-196f03b28eca",
+   "question_id": "CH_20260606_085735_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "0bb69c79-ecbb-4ef7-8455-3e24919e61aa",
+   "question_id": "CH_20260606_085735_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "64895ca6-c184-4186-8f64-e28cff83ee41",
+   "question_id": "CH_20260606_085735_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "cf94a55c-f728-43b2-9b21-c53d1b60b79a",
+   "question_id": "CH_20260606_120459_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "9b814e7f-57b2-4d80-8067-de453a617556",
+   "question_id": "CH_20260606_085735_6",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "3d2dab36-0e1c-446f-9e94-b61490a1ffad",
+   "question_id": "CH_20260606_125832_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "41c35c48-32af-4bb1-927e-1cabcc378363",
+   "question_id": "CH_20260606_125832_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "34a60ae4-982a-4c4a-a73e-eb15d6870366",
+   "question_id": "CH_20260606_125832_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "80b6c7c3-b5a3-4514-a8be-a9f91f4e46aa",
+   "question_id": "CH_20260606_125832_0",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "564723a5-3358-4d32-b17f-f0bed3102b6d",
+   "question_id": "CH_20260606_160636_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "2cfc89c2-5515-4e32-ba09-13a2e36dc334",
+   "question_id": "CH_20260606_160636_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "4617c00f-c376-411b-a7be-7ddbf959a044",
+   "question_id": "CH_20260606_160636_5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "06b01740-9f9b-4fda-9424-341dca564da9",
+   "question_id": "CH_20260606_160856_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "d08f2a68-1fcf-477a-9c25-6f42129dd72e",
+   "question_id": "CH_20260606_161716_0",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "98ccaabf-f165-4c96-9f8a-0f5019f3c04a",
+   "question_id": "CH_20260606_161210_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "586242da-445f-4c8d-8031-c2936ef15f26",
+   "question_id": "CH_20260606_161210_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "ab208041-9cd6-468f-9189-689fa41eca28",
+   "question_id": "CH_20260606_161210_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "31aec3c7-1e92-43e3-8ed0-58e292efd2d7",
+   "question_id": "CH_20260606_161210_9",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "12d7b005-bfaf-400b-82c0-50bd5bfa4c5b",
+   "question_id": "CH_20260606_161210_10",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "9a521f89-6a70-468a-a8c7-327784d8a7b5",
+   "question_id": "CH_20260606_161210_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "9292eeb0-3e90-4b1a-9447-7f11bc9d5c91",
+   "question_id": "CH_20260606_161716_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "84894e9d-4c80-456b-9f07-69cb160d1deb",
+   "question_id": "CH_20260606_161716_9",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "4cb8ce30-446c-4306-92b3-1b26ed2675b5",
+   "question_id": "CH_20260606_161716_10",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "6ebd662d-7966-468d-ae3f-a05b8aaa66d3",
+   "question_id": "CH_20260606_161716_12",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "02166c1b-c3a6-4f05-9822-7d3878d8d6ae",
+   "question_id": "CH_20260606_161716_14",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "4ec372ee-7660-4724-9646-d09ed99a7405",
+   "question_id": "CH_20260606_161716_15",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "d9f249ec-a254-4d74-b77b-e80b4fc7289d",
+   "question_id": "CH_20260606_161716_18",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "efa02237-ab8d-436c-bfdb-89caae4e8803",
+   "question_id": "CH_20260606_161716_20",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "a7d8583a-d545-4c98-9dee-d83c22be937b",
+   "question_id": "CH_20260608_161047_1",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "dd85d336-4879-4617-9644-8c38df7278eb",
+   "question_id": "CH_20260529_191107_7",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "89d36a43-2b5a-4fa7-b95e-53a619d7f004",
+   "question_id": "CH_20260606_173654_7",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "e5188a9b-2900-4821-821d-71c825318129",
+   "question_id": "CH_20260608_161047_2",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "cd1fd53d-0bcb-4c38-882f-2284e0c6beee",
+   "question_id": "CH_20260608_161047_3",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "b14db26b-a560-4335-8408-4f79919bacb4",
+   "question_id": "CH_20260608_161047_4",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "a560d4b1-d275-4d43-b22d-16e7052f30cf",
+   "question_id": "CH_20260608_161047_6",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "dc34dec2-be4e-4a57-9ae7-cb0accd55630",
+   "question_id": "CH_20260608_161047_7",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "a0efadd2-6dad-414d-a24c-f12f7d41c94f",
+   "question_id": "CH_20260608_161633_0",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "e02c0c43-74e3-4646-89e0-342a753a0c59",
+   "question_id": "CH_20260608_161633_1",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "218bd110-2281-49f4-a6af-b9216b2639b2",
+   "question_id": "CH_20260608_161633_2",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "939d3267-6b1a-45a7-82db-93d54bb17d0e",
+   "question_id": "CH_20260608_161633_3",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "c25c9601-6322-441e-bc7c-f307486b9c14",
+   "question_id": "CH_20260608_161633_4",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "5becb778-681e-47f1-aa02-73b6aaaddc9b",
+   "question_id": "CH_20260608_161633_6",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "3d3b0bde-268d-46cf-b812-c30de51fdfce",
+   "question_id": "CH_20260608_162808_0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "ba60abc3-1ee1-4509-8ece-25a60a6d744b",
+   "question_id": "CH_20260608_162808_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "f47e612f-03a7-43f2-aeed-40020a0e322f",
+   "question_id": "CH_20260608_162808_2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "85c7ea2a-ab56-479b-b7dd-0345ba82d673",
+   "question_id": "CH_20260608_162808_3",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "4b8d701d-2eb9-452a-a41e-8dd0a50ff7f3",
+   "question_id": "CH_20260608_163744_7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "e742be03-b838-4ad1-ab4b-98da69838b50",
+   "question_id": "CH_20260608_162808_4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "c0f08d6f-bfb8-4433-927e-e8b42e529087",
+   "question_id": "CH_20260608_162808_6",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "d87555ff-3f13-4346-85c2-51b198178ab1",
+   "question_id": "CH_20260608_162808_7",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "2e5d1c2a-8650-4926-a042-a170fbdeeb5a",
+   "question_id": "CH_20260608_162808_8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "6d2b13ce-737d-43cf-b53d-d60ba64fa820",
+   "question_id": "CH_20260608_162808_9",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "744ea50f-6064-48e0-9d52-ffb0447aab21",
+   "question_id": "CH_20260608_162808_10",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "9cbb0c2f-090a-4bd1-ab8e-a6262e7d6bc3",
+   "question_id": "CH_20260608_162808_11",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "deb9a266-dab7-4440-9872-5c5a1c84356a",
+   "question_id": "CH_20260608_162808_12",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "e95675f8-5c53-4185-9b80-6c7b329e7383",
+   "question_id": "CH_20260608_162808_13",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "97f5daec-ed9e-413b-b1cb-6b8bbfec4f6d",
+   "question_id": "CH_20260608_161633_7",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "e942760b-ee33-4091-ac02-2d468882b54f",
+   "question_id": "CH_20260606_085735_10",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "042b422a-2905-4318-bab0-7f7b84c172f5",
+   "question_id": "CH_20260608_161633_5",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "40bc4135-a0e8-4cdb-b3d6-4d8cf73a79f2",
+   "question_id": "CH_20260608_163744_4",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "bb93c137-e2b7-4a6d-b3f3-91799c02c9c2",
+   "question_id": "CH_20260608_163744_0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "87da337c-069d-46a1-95d6-b60377879e75",
+   "question_id": "CH_20260608_163744_11",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "515a55e0-4b66-4610-b0e8-734d99a56f63",
+   "question_id": "CH_20260529_192533_8",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "d434a8d9-96d1-4634-b4b4-24d05d331a73",
+   "question_id": "CH_20260529_192533_16",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "992f36f1-45ad-407d-aacc-edeff9b4b633",
+   "question_id": "CH_20260608_163159_9",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "ffb8a4de-bd38-492f-83f3-bfa14bfd2fce",
+   "question_id": "CH_20260608_163744_27",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "4d4bdb82-976a-4eeb-a609-bfd8457ec89f",
+   "question_id": "CH_20260606_120459_5",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "d2ea1227-ee1d-443f-86c0-e57a9290aa5b",
+   "question_id": "CH_20260608_163744_15",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "96c43be5-d5ba-45c1-a1df-7f266b59fb4a",
+   "question_id": "CH_20260606_122521_2",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "30f9b848-dacc-4c00-a679-fc7dbd3a1fa5",
+   "question_id": "CH_20260606_122521_3",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "becd1bdd-111a-4893-997a-199807345f9b",
+   "question_id": "CH_1783755496868_k3uf",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "f0697e26-18f0-4106-b945-1dd340b55263",
+   "question_id": "CH_1783755496868_yfzk",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "6bbbf2f5-2353-4a66-8953-b7b22bd6bed4",
+   "question_id": "CH_1783755496868_myyf",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "896709ed-bb91-455b-a87b-5bdc5f3305d3",
+   "question_id": "CH_1783755496868_6ddo",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "faf68caf-e274-465f-9415-68c6f5aa7ba1",
+   "question_id": "CH_1783755496868_1vxq",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "ef989fee-0d63-4778-b04a-a9204214c65d",
+   "question_id": "CH_1783870733992_6tov",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Tính độ dài của vectơ"
+  },
+  {
+   "id": "4ef88b13-ad32-4012-a110-8555ac699113",
+   "question_id": "CH_1783871268295_9ciu",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "26d60124-e886-4303-bd53-d52283f95943",
+   "question_id": "CH_1783755496868_ziwe",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "14855348-a831-4777-a50a-15b9264f04c0",
+   "question_id": "CH_1783756802251_8u6m",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "0d106d00-905e-41b4-9f02-8cab8f9265de",
+   "question_id": "CH_1783755496868_rj17",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "fdd4591b-91ef-4f48-b70c-0bbccc818bc1",
+   "question_id": "CH_1783755496868_w3yc",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế"
+  },
+  {
+   "id": "867dea61-2437-4949-b9a9-f41a01aa919e",
+   "question_id": "CH_1783756802251_05jc",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "a7ed1960-40f7-4c9b-9356-1f59c7fef8e9",
+   "question_id": "CH_1783756802251_thvn",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "45140a44-13e1-45cf-b4d0-916af4fdf896",
+   "question_id": "CH_1783756802251_7zqv",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "8a40cd2d-2d81-4ee5-9050-e33888e3a98e",
+   "question_id": "CH_1783756802251_ey4p",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "8ac10b2c-955e-4cb8-bc2c-5189f759e1ac",
+   "question_id": "CH_1783756802251_35fq",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "1c94526c-ee5a-4471-8aa1-8cfa5afcc373",
+   "question_id": "CH_1783756802251_syhj",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "0b42b8ba-88cf-4779-bab0-1e3a2817d986",
+   "question_id": "CH_1783756802251_klwy",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "ad4bb5fc-7248-4afc-83de-88afea4e4f43",
+   "question_id": "CH_1783756802251_gzgu",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "5f95e3ee-16c7-4026-9149-bd009d25b24d",
+   "question_id": "CH_1783756802251_cpti",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "795ceb6b-7f1a-48cf-a5d1-145c27a1a26d",
+   "question_id": "CH_1783756802251_d1n1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "0ffcd9f5-ca25-4885-8853-35d1de4df376",
+   "question_id": "CH_1783756802251_jx1f",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "b25a2107-303e-47e2-b073-d758ad808d4a",
+   "question_id": "CH_1783756802251_pry5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "2e54f416-cdaf-4a79-8162-10dba2c64be3",
+   "question_id": "CH_20260608_163744_34",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "118af652-1a5d-4fed-b479-bcb1d5e577e0",
+   "question_id": "CH_20260606_084128_16",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "c684fd41-4f63-4f74-8dfe-19035f57ee51",
+   "question_id": "CH_20260606_084128_17",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "ea1dd76e-2e67-45b2-9136-63de10669df9",
+   "question_id": "CH_20260606_160856_1",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "7fc065f6-eaba-4541-b80f-d87a869ec890",
+   "question_id": "CH_1783870314865_v8ot",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "f1771f9b-dee5-49f3-901f-a491fbd3c223",
+   "question_id": "CH_1783870314865_pi11",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "7cea9877-2a5d-42d2-a45c-67b4e7b31e55",
+   "question_id": "CH_1783870314865_9grq",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "2f7eab85-c969-4485-a1b0-153776bb8dec",
+   "question_id": "CH_1783870314865_xaha",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "60441c6b-b2fd-4508-9efd-76ced77b8286",
+   "question_id": "CH_1783870314865_dzhb",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "4d7816fe-3665-470c-a4d0-fcef197b529f",
+   "question_id": "CH_1783870314865_f5wx",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "8ad8bb61-a069-400c-8556-21215f949532",
+   "question_id": "CH_1783870314865_54zu",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "2c17c115-e58d-49b1-8daf-ea2a2da9f92b",
+   "question_id": "CH_1783870314865_jm8o",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "757adf48-ba42-48a0-82cb-f7fbf60a07e7",
+   "question_id": "CH_1783870314865_vrtq",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "2d19d4b1-0401-46cb-9c3c-4f499607d1d2",
+   "question_id": "CH_1783870314865_d7lx",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "121aeee5-3e0a-4e55-a760-d008e9c6fbe6",
+   "question_id": "CH_1783870314865_pdl0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "662596c5-83d3-46fc-89f0-e5539da7a873",
+   "question_id": "CH_1783870733992_cduw",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "6f673760-debe-4d8b-b5dd-e7c887d04847",
+   "question_id": "CH_1783870733992_eo6e",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "82796887-1c63-402a-8170-2efbaa8beb02",
+   "question_id": "CH_1783870733992_yjzd",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "e623a29b-f154-41ce-8777-865106928517",
+   "question_id": "CH_1783870733992_eef0",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "c5da2296-e49f-4ebd-ae1a-5ac51b94e91b",
+   "question_id": "CH_1783870733992_dj68",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "60d049ce-ad9b-43a6-b65b-a8898284723e",
+   "question_id": "CH_1783870733992_txan",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "80f8fe7b-9b05-453a-ae0d-5e31d97e8479",
+   "question_id": "CH_1787067702576_u1ca",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "58037b07-054b-436b-b2e3-1be5f3fbb8fd",
+   "question_id": "CH_1783870733992_igyy",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "ec9b7f6b-336d-410a-b474-654f28311916",
+   "question_id": "CH_1783870733992_ygge",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "498762be-5f72-4439-acca-f187a6acc2bc",
+   "question_id": "CH_1783870733992_qnyc",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "ce2b8003-14c5-40fd-83e1-fa03d1efc83b",
+   "question_id": "CH_1783870733992_brel",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "4d742abe-8a36-4080-b82a-b12d36c1e3de",
+   "question_id": "CH_1783871268295_z3x5",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "a713f50c-d93c-4f90-916f-5df95487db4e",
+   "question_id": "CH_1783871268295_hotg",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "66021196-fa2e-49ac-a7f5-0aa04c12393b",
+   "question_id": "CH_1783871268295_xxbe",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "3382c012-d55d-4dd5-8528-5101e415579d",
+   "question_id": "CH_1783871268295_rpj8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "a79d4b90-7459-45e0-aa4e-54ff07de11e6",
+   "question_id": "CH_1783871268295_k9zr",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "62f8b953-485b-4c94-b558-6c5178f5e54e",
+   "question_id": "CH_1783871268295_ym5j",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "53255f01-fcd8-4f0f-88c2-3e9f35238949",
+   "question_id": "CH_1783871268295_wucz",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "a2b395f1-b7ac-4c5b-b88a-4477afae4009",
+   "question_id": "CH_1783872367030_wvdd",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "e3bf545f-5665-430c-880c-dae05073d857",
+   "question_id": "CH_1783871268295_60h4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "0a468d44-7d7b-4ffd-8490-5d43ff85e2df",
+   "question_id": "CH_1783871268295_rj1n",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "3a931c67-c7ec-465a-8350-aba960f5e5ca",
+   "question_id": "CH_1783871268295_xbga",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "f9ab2dc0-8f14-4fa3-919d-c2a59b34bb67",
+   "question_id": "CH_1783871268295_txs2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "dcfd93a5-543a-4c48-96c3-28694158a783",
+   "question_id": "CH_1783871268295_io1s",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "2b14eb9b-e3c9-40df-bb4a-d3504e4c808b",
+   "question_id": "CH_1787067702576_n8zk",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "16ca6838-c139-447a-b88b-055e497f4875",
+   "question_id": "CH_1783871268295_dt2j",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "41a60d01-7cf4-48cd-a65b-59b0b56ef06b",
+   "question_id": "CH_1783871268295_j6y9",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "1b40843b-f587-4685-974d-4eb305adf7aa",
+   "question_id": "CH_1783871978383_fyw8",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "57d92a62-137d-421f-939d-199aa04ecd62",
+   "question_id": "CH_1783871978383_g1xq",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "98d408d8-3e19-41ec-8f43-6135e884e03a",
+   "question_id": "CH_1783871978383_9zp0",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Các quy tắc cơ bản của vectơ trong không gian"
+  },
+  {
+   "id": "30dcd491-eb88-458f-b6e5-8dd5fc56eca4",
+   "question_id": "CH_1783871978383_dd0c",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "2e18cfb3-6fe5-4074-8d24-d41d5c380540",
+   "question_id": "CH_1783871978383_dka8",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "b0c0e962-7e10-4c9c-ae3e-7f6081d9c609",
+   "question_id": "CH_1783871978383_v76t",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "43c9c95f-d51a-4ad9-86bc-a6e4f6c62256",
+   "question_id": "CH_1783871978383_vom4",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "1ceb7591-2639-495d-a659-27adcb5552c8",
+   "question_id": "CH_1783871978383_wlb2",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "6aeb827a-1f5d-4256-ba30-371582747526",
+   "question_id": "CH_1783872367030_3nrg",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "4ab5e849-93c2-4cda-b809-96fec1ffbc4a",
+   "question_id": "CH_1783872367030_9b1n",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "e72cff09-cf30-4ae1-b776-ad4c3904f11a",
+   "question_id": "CH_1783872367030_lmc7",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "fbe19400-1360-487b-8cb8-1c2d318b8f5f",
+   "question_id": "CH_1783872367030_qrrh",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "9eae0c61-9442-48eb-b3cb-b2e953fa9525",
+   "question_id": "CH_1783872367030_gms8",
+   "lesson": "Bài 2. Hệ trục toạ độ trong không gian",
+   "math_form": "Xác định tọa độ các điểm đặc biệt (Hình chiếu, điểm đối xứng, điểm thuộc mặt phẳng/trục)"
+  },
+  {
+   "id": "94496b2c-e247-4348-88ff-b924057444ad",
+   "question_id": "CH_1783872367030_i05j",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "15d2085d-6287-464e-9192-4dfc273eefab",
+   "question_id": "CH_1783872367030_o226",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "b676e8a4-1bee-47dc-804f-02c1b53efd72",
+   "question_id": "CH_1783872367030_42ax",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "3794169d-1d30-4ac1-a5bb-2df276452eac",
+   "question_id": "CH_1783872367030_j60w",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "3dab8845-b7df-415c-9319-9b277c4f5a1b",
+   "question_id": "CH_1783870314865_ybho",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Xác định tọa độ điểm, vectơ bằng biểu thức tọa độ, hệ thức vectơ"
+  },
+  {
+   "id": "823f78ac-ad83-4611-8d89-e7660ab05f05",
+   "question_id": "CH_1783870733992_dqe5",
+   "lesson": "Bài 3. Biểu thức toạ độ của các phép toán vectơ",
+   "math_form": "Toán thực tế - Tọa độ"
+  },
+  {
+   "id": "ca0476b1-98c7-458e-aff5-0ff1bf82fec5",
+   "question_id": "CH_1783871268295_52ou",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "a98581bb-78bc-4b4f-9be7-768818e3bb05",
+   "question_id": "CH_1783872367030_jzob",
+   "lesson": "Bài 1. Vectơ trong không gian",
+   "math_form": "Biểu diễn và chứng minh đẳng thức vectơ có chứa điểm đặc biệt"
+  },
+  {
+   "id": "a7d4e914-1605-4bb1-a110-a07f2ce8ddcc",
+   "question_id": "CH_1787067702576_639q",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "cbc61ae7-6bf0-4e6c-af26-f94ffe4ca056",
+   "question_id": "CH_1787067702576_hhqs",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính độ dài của vectơ"
+  },
+  {
+   "id": "feaf29a0-0275-40b2-81c6-c1199d53cb4e",
+   "question_id": "CH_1787067702576_yfn2",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  },
+  {
+   "id": "74034741-f8c4-4501-97cd-f1b6ce77780c",
+   "question_id": "CH_1787067702576_m6pl",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "88adbf90-8a12-4c15-af34-d7c4198b34e0",
+   "question_id": "CH_1787067702576_8zc9",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "91f272d3-c3ee-411a-991e-efe1910cf82c",
+   "question_id": "CH_1787067702576_nluk",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "6b60c40e-6e3e-4206-ab11-26929e7c7baf",
+   "question_id": "CH_1787067702576_2dg7",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "a287e8f3-b585-4889-a021-574c4ecc3d80",
+   "question_id": "CH_1787067702576_k0s3",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "05642377-e27d-421b-975a-ecc673e58278",
+   "question_id": "CH_1787067702576_oxvz",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính số đo của các đại lượng hình học"
+  },
+  {
+   "id": "4a00625d-d55d-4ef6-b3db-1f46d46b2368",
+   "question_id": "CH_1787067702576_0byc",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Góc giữa hai vectơ và tích vô hướng"
+  },
+  {
+   "id": "756bb746-f97d-4b40-8e27-094a47763ebb",
+   "question_id": "CH_1787067702576_1klj",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ điểm thông qua khối hình học không gian"
+  },
+  {
+   "id": "c1142457-5e31-4ded-b952-1de4e2336a48",
+   "question_id": "CH_1787067702576_amzp",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính độ dài của vectơ"
+  },
+  {
+   "id": "2bbe0060-0b7f-47d8-80fc-7ba91863543d",
+   "question_id": "CH_1787067702576_jlp9",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "4d95384b-118b-41d7-a4a6-47ff72d5d971",
+   "question_id": "CH_1787067702576_9ouw",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của điểm thỏa điều kiện cho trước"
+  },
+  {
+   "id": "8adf576a-aa5e-4bdb-a734-5f864f69b935",
+   "question_id": "CH_1787067702576_i72t",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Xác định tọa độ của vectơ, biểu thức vectơ"
+  }
+ ]
+}

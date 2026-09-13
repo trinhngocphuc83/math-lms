@@ -1,0 +1,5758 @@
+{
+ "question_categories": [
+  {
+   "id": "071f0bdb-1a05-4f51-81cf-b1e106509cfa",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Vận dụng được kiến thức về đồ thị hàm số để xác định tham số thỏa mãn điều kiện về giao điểm của hai đường cong."
+  },
+  {
+   "id": "d10b184d-1412-481e-a4a3-0b194016afcc",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số",
+   "created_at": "2026-08-24T11:25:03.326314+00:00",
+   "yeu_cau_can_dat": "Giải quyết được bài toán liên quan đến sự tương giao của hai đồ thị hàm số và các tính chất hình học của đồ thị."
+  },
+  {
+   "id": "0dc7fc06-9ee0-4824-bdbd-526c54827d70",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tích phân của các hàm số đa thức và hàm số cho bởi nhiều công thức trên một đoạn thẳng."
+  },
+  {
+   "id": "531b922e-0bae-4097-ac53-dd34722cfb8c",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được họ nguyên hàm của một số hàm số bằng cách sử dụng bảng nguyên hàm và các phép biến đổi đại số."
+  },
+  {
+   "id": "a6380982-a41e-4656-ad1b-975cfb5d1a6a",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải thích được ý nghĩa của các đặc trưng đo xu thế trung tâm và đo độ phân tán của mẫu số liệu ghép nhóm."
+  },
+  {
+   "id": "0c2750c7-eed7-4afa-8991-4d7e730b72f2",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Chứng minh nguyên hàm",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Chứng minh được một hàm số cho trước là một nguyên hàm của hàm số khác trên khoảng xác định."
+  },
+  {
+   "id": "4d51f417-6748-4fc3-9f2b-7489a96d1e01",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được nguyên hàm của một hàm số khi biết giá trị của nguyên hàm đó tại một điểm."
+  },
+  {
+   "id": "d43edf6a-a048-431c-b476-7616fd16d73f",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được một nguyên hàm cụ thể của hàm số thỏa mãn điều kiện cho trước bằng cách tìm hằng số tích phân."
+  },
+  {
+   "id": "e854db62-dc78-4ae8-bf7f-7a5327b42fad",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính thể tích khối tròn xoay",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được thể tích của khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi các đường cho trước quanh trục hoành."
+  },
+  {
+   "id": "a6a29733-ab0d-4413-acca-fcf362f7ec5f",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính tích phân",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc tính tích phân của một số hàm số cơ bản và hàm số phân nhánh bằng phương pháp đổi biến hoặc phân đoạn."
+  },
+  {
+   "id": "592c7902-7a25-4565-8efe-c29968d61f52",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tìm họ nguyên hàm của hàm số",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được họ nguyên hàm của một số hàm số phân thức, hàm số lũy thừa và hàm số mũ bằng các phép biến đổi cơ bản."
+  },
+  {
+   "id": "8a5a84b4-dd1e-4d2c-ad3f-fcaac4d5f16d",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tích phân của hàm số chứa dấu giá trị tuyệt đối bằng cách khử dấu giá trị tuyệt đối trên các khoảng xác định."
+  },
+  {
+   "id": "711a1dd9-3e88-4626-93bc-e8b13600b09f",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tích phân của hàm số bằng cách sử dụng định nghĩa, tính chất cơ bản và bảng nguyên hàm của các hàm số sơ cấp."
+  },
+  {
+   "id": "3290ae18-bf53-4d86-8046-0e863769e422",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tích phân của một số hàm số bằng cách sử dụng định nghĩa, tính chất và bảng nguyên hàm cơ bản."
+  },
+  {
+   "id": "d097409a-6422-4e7f-9794-f6fdfb29140c",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các tính chất cơ bản của nguyên hàm để biến đổi và tìm nguyên hàm của một số hàm số đơn giản."
+  },
+  {
+   "id": "236a9e3e-34d3-4953-a3a4-367db6424b0f",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích vật thể khi biết diện tích mặt cắt",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được thể tích của một vật thể bằng tích phân khi biết diện tích mặt cắt vuông góc với trục tọa độ."
+  },
+  {
+   "id": "d9f9c910-e6a5-42ff-bb43-2ca32d528979",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được thể tích khối tròn xoay sinh ra khi quay một hình phẳng giới hạn bởi đồ thị hàm số và các trục tọa độ quanh trục hoành."
+  },
+  {
+   "id": "1b658ff2-1472-4df7-bd2c-4de392ce035f",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích hình phẳng giới hạn bởi đồ thị của hai hàm số và hai đường thẳng đứng bằng ứng dụng tích phân."
+  },
+  {
+   "id": "feeb21f7-7f4e-4c41-bbf1-57947bb367f6",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tích phân của một số hàm số đơn giản bằng cách sử dụng ý nghĩa hình học và công thức tính diện tích các hình phẳng đặc biệt."
+  },
+  {
+   "id": "273101fb-151d-49a3-bea9-ac325510499b",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích hình phẳng giới hạn bởi đồ thị của một hàm số, trục hoành và hai đường thẳng vuông góc với trục hoành."
+  },
+  {
+   "id": "43707e66-ee15-48d0-ae2e-707378f541c8",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Ứng dụng tích phân - Toán thực tế",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải quyết được một số bài toán thực tiễn về tính diện tích hoặc tối ưu hóa đại lượng bằng cách sử dụng tích phân."
+  },
+  {
+   "id": "61102f80-3099-4c0a-831f-846322b781d2",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tích phân để giải quyết một số bài toán thực tế liên quan đến tính diện tích hình phẳng và tối ưu hóa."
+  },
+  {
+   "id": "338b0760-4ea3-4a19-ad87-16f3c2e827d4",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tích phân để giải quyết một số bài toán thực tế liên quan đến diện tích hình phẳng và các đại lượng kinh tế."
+  },
+  {
+   "id": "2f921e30-1532-47bc-a773-e8164da89bca",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Xác định hàm số từ đẳng thức đạo hàm",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Xác định được công thức của hàm số khi biết đạo hàm của nó và một giá trị ban đầu cho trước."
+  },
+  {
+   "id": "2c2b0b35-4135-415a-8532-1e5107161eaf",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được tích phân bằng cách sử dụng ý nghĩa hình học và công thức tính diện tích của các hình phẳng đặc biệt."
+  },
+  {
+   "id": "cda3a219-77b5-41cc-8664-4e2b39d71e28",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích hình phẳng giới hạn bởi đồ thị của một hàm số, trục hoành và hai đường thẳng đứng."
+  },
+  {
+   "id": "910bd944-7f3a-46a3-b442-30b8b79277cc",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích hình phẳng giới hạn bởi đồ thị của hai hàm số và hai đường thẳng vuông góc với trục hoành."
+  },
+  {
+   "id": "1c7c6a82-a347-4e38-8a24-83e9a93aaa09",
+   "grade": "12",
+   "subject": "Đại số",
+   "topic": "Chương 4. Nguyên hàm và tích phân",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số",
+   "created_at": "2026-08-21T04:52:17.735843+00:00",
+   "yeu_cau_can_dat": "Giải quyết được bài toán biện luận số giao điểm của hai đồ thị hàm số bằng cách sử dụng các phép biến đổi đại số và khảo sát hàm số."
+  }
+ ],
+ "questions": [
+  {
+   "id": "2cd0c9e5-4138-4143-bb79-7266da71e709",
+   "question_id": "CH_1786377695651_d8p2",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "4ae37409-34b5-4ae0-aec2-cc81970e2267",
+   "question_id": "CH_1786424565274_4qcg",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "a0b3564e-b675-4c1f-836d-8f493ba83458",
+   "question_id": "CH_1786424565274_s41z",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "048e5952-55d4-4cb4-a14a-b62019254fb3",
+   "question_id": "CH_1786424565274_4sdg",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "aea7a41b-cf7f-4fa6-9369-46c0445cf5b8",
+   "question_id": "CH_1786426877976_zrhy",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "e756ab44-2bff-45fa-be1b-218c9998fce1",
+   "question_id": "CH_1786426877976_pmq4",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "d2a05ab5-fb37-4532-8029-01204bad144c",
+   "question_id": "CH_1786426877976_gdy8",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "a6d72b39-d4bb-41ff-8af6-14d7aa72b977",
+   "question_id": "CH_1786073195251_8yf3",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "1f823be9-f09e-4bd3-bd44-afe1362d5519",
+   "question_id": "CH_1786073970901_wp5c",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "b00e306d-108c-4f5d-855a-2704bd1b88e2",
+   "question_id": "CH_1786073195251_tw0b",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "f14fe762-34fb-4c87-99b1-49b13462edf3",
+   "question_id": "CH_1786073970901_009w",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "46a19674-df13-46f1-83ab-9213dab93735",
+   "question_id": "CH_1786073195251_t9xk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "375929d8-1f59-4ac8-928a-f26a17606733",
+   "question_id": "CH_1786426877976_0oxj",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "e5944d14-2faa-4e7d-a585-24680fde3f65",
+   "question_id": "CH_1786075191926_jpkb",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "dc3255b5-0364-4e4a-a660-0f216fb5c138",
+   "question_id": "CH_1786075191926_no4j",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "0c4f223d-22bc-4cfc-a6d1-dd6a57f4d869",
+   "question_id": "CH_1786426877976_yh5k",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "ea42db1e-3c87-4adf-9acc-af1f805c2cb0",
+   "question_id": "CH_1786426877976_uuth",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "883aecf6-4fd0-4cc3-aa3b-f80234d787b0",
+   "question_id": "CH_1786426877976_ux4c",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "dce0c4fd-69ae-4a1b-8418-d26c477a5227",
+   "question_id": "CH_1786449503465_0vvm",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "73b82894-ed4d-4374-a1df-a5b52f79c39e",
+   "question_id": "CH_1786426877976_8599",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "5d444f10-de34-4cff-988a-a668b79b449f",
+   "question_id": "CH_1786449503465_vm8k",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "d0262413-0bea-43c1-875c-a1a0f4c68b1b",
+   "question_id": "CH_1786449503465_95rd",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "075f42b7-9ff6-4ec9-98a2-5b4217ca7369",
+   "question_id": "CH_1786449503465_mlpv",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "19035186-45ad-4804-ac13-b41349308aa1",
+   "question_id": "CH_1786449503465_m9fl",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "07d55ff4-a6ad-48cd-b305-62ffa762fae3",
+   "question_id": "CH_1786449503465_2h3w",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "29478070-3373-4c0c-820c-df6171f88854",
+   "question_id": "CH_1786075332781_h4hg",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "bcda0463-26ea-426d-b282-ff9413bdfea3",
+   "question_id": "CH_1786075332781_0dga",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "fc06be14-2c72-4bb9-8726-cb242cc734b4",
+   "question_id": "CH_1785823594859_j3nr",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f67ba0bd-9e9a-458a-a663-a7c5805605c4",
+   "question_id": "CH_1785922931285_zq0a",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "d32913fb-4ade-477f-9631-51aed6322784",
+   "question_id": "CH_1786449503465_x95x",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Chứng minh nguyên hàm"
+  },
+  {
+   "id": "d00f4743-d51a-48a1-9c24-9f3d750f082c",
+   "question_id": "CH_1788349140377_3mcz",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "136821a4-15fb-4a98-803c-f76c421cec88",
+   "question_id": "CH_1786377016719_6o15",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "3367869c-fb7c-4b78-a92e-3b5362b0604f",
+   "question_id": "CH_1786159610744_2n79",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "3e3f95e7-dcdf-4689-aa71-0fd8eae4a7a7",
+   "question_id": "CH_1786172493126_s6gf",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "4be79873-07e9-4c21-af1b-3b38c415656b",
+   "question_id": "CH_1786161853433_7usr",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "530ed92d-8779-43c6-8697-04c87d736066",
+   "question_id": "CH_1786161853434_2oud",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "90a7527d-5e18-4a4c-b161-265101a99e17",
+   "question_id": "CH_1786449503465_en06",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "b4390aad-7bc2-4238-8e5c-25673453e2f4",
+   "question_id": "CH_1786161853433_vw8j",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "b5e2d0f3-6455-4e14-844a-918514479d39",
+   "question_id": "CH_1785999521179_iahd",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "bdb2b45b-f58a-4f6f-b071-feda7e0dce56",
+   "question_id": "CH_1786161853434_30a1",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "ce22aa3f-35d5-4ead-ba5c-3b2bf5f89d40",
+   "question_id": "CH_1786373159508_taym",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "d69489e5-4eaf-4b71-ae15-69926f439c0f",
+   "question_id": "CH_1786159610744_xoma",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "24ed2196-aaa8-4767-a9e8-4bb1b074923f",
+   "question_id": "CH_1786426877976_fq5j",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "5d5b6796-bcd5-40fe-9c33-1d43b46be234",
+   "question_id": "CH_1786001213955_73qu",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "b2015f47-4568-402e-8ebc-4cffe1310e99",
+   "question_id": "CH_1786424565274_s6ba",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "92371f3b-02a9-41ad-b75c-7a43f566f140",
+   "question_id": "CH_1786005574457_iebp",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "94a49e32-ae5a-4bd2-9e28-fb3c25faa988",
+   "question_id": "CH_1786426877976_eszx",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "c19b9797-c272-468b-b237-fc9265cc28a7",
+   "question_id": "CH_1786172493126_wowl",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "fc11cd11-efd5-4146-a3b4-adab2b77aa74",
+   "question_id": "CH_1786414869051_lmtj",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "c67828b0-fbd4-4e27-b595-b28b25478708",
+   "question_id": "CH_1786426877976_54it",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "d729c062-31cb-4cea-b6bd-89778b0e0f8b",
+   "question_id": "CH_1786004203424_ea8j",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "548d823e-afe3-4a34-9330-9834851e7aca",
+   "question_id": "CH_1786003041141_wszr",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "7b6d1f6c-0be2-4346-9d50-f66b6d66c339",
+   "question_id": "CH_1786414869051_reyg",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "e255bf4f-9580-4928-a18c-63c7376e061c",
+   "question_id": "CH_1785999521179_aixw",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "bfef1b22-ed23-400a-b49c-5cd16610cc80",
+   "question_id": "CH_1785922931285_pwbe",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "a43f66bf-da5c-43cc-898d-2c3ef66976f9",
+   "question_id": "CH_1785922931285_nqcw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "89a661d9-d005-486a-b81d-364caa80852b",
+   "question_id": "CH_1785823594858_k9qw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Chứng minh nguyên hàm"
+  },
+  {
+   "id": "0db6b6b6-56ce-4c66-9e18-7bcf31ba7380",
+   "question_id": "CH_1785823594859_h8ga",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "ba195aaf-c2b9-43a5-bfd5-f35f8cfca0ea",
+   "question_id": "CH_1785922931285_sr0w",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "450400d7-efe3-4fa7-ba99-cc17d927d778",
+   "question_id": "CH_1786377695651_k6yc",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "5bbdddf3-7396-480a-91b1-2d517085e0e2",
+   "question_id": "CH_1785999521179_lfrl",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "65bb577d-192a-4593-97cc-2442f6978cf6",
+   "question_id": "CH_1785999521179_0aq8",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "e4c92b0a-8426-4dae-8795-e0a535e9791d",
+   "question_id": "CH_1785999521179_nup2",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "dfbe6ff9-31c9-435b-add9-60d63e762129",
+   "question_id": "CH_1786074529013_n9uo",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f3fa0979-4df8-41eb-9e6e-9f88020567fa",
+   "question_id": "CH_1786074529013_hbk1",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "0bf85f64-850c-4f5b-a8ac-cee67034ffed",
+   "question_id": "CH_1786074864901_45vg",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "e901a1ff-39db-4770-ac99-76fc86b6c450",
+   "question_id": "CH_1786073844868_ddxi",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f80b7e66-4d71-42ee-a53c-44f2196e1cf7",
+   "question_id": "CH_1786074864901_c3ph",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "aa1472f1-c934-4bef-91cb-a4258119d5a4",
+   "question_id": "CH_1786074864901_aojq",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "a1427667-3ba0-4b25-9ce9-e1f04017b72d",
+   "question_id": "CH_1785999521179_gjmg",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "871e2f11-f272-42c4-a096-14375ab80c4e",
+   "question_id": "CH_1786074864901_fepm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "925ce0a5-7fb2-4fbe-baaf-3aee0f98b453",
+   "question_id": "CH_1785999521179_mn63",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "3cae1e0b-310d-4674-8a00-f5460f9aa329",
+   "question_id": "CH_1785999521179_zhbq",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "1d4ccc81-f842-406a-892d-cf687b83bf1e",
+   "question_id": "CH_1786001213955_5vbg",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "8f80b756-1859-4bd6-bb00-5667bee9a070",
+   "question_id": "CH_1786001213955_5hd6",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "184fbba6-b254-47cb-9dee-662a1c65fd8c",
+   "question_id": "CH_1786005574457_okxn",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "47a2119e-8aa2-4392-bd07-2fcd5586ffc0",
+   "question_id": "CH_1786005574457_visz",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "ea51d5a9-c2f4-4772-8700-be6c6344c34a",
+   "question_id": "CH_1786073844868_fu0l",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "bff504e0-fe72-4b45-bd6f-2ccacb24b5e0",
+   "question_id": "CH_1786074737893_alx8",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "43d192a7-8c85-42fb-9c96-a6e90bd991fd",
+   "question_id": "CH_1786074737893_c45o",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f38df344-913d-4188-9960-3c6d4461dbc2",
+   "question_id": "CH_1786074737893_yhue",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "076c3ea9-c5c3-4b3c-984e-4980610ba811",
+   "question_id": "CH_1785996833148_pexf",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "21c3bb9c-190c-4093-9deb-48c5023fe071",
+   "question_id": "CH_1785996833148_q68y",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "3dced731-147c-47f1-842b-74e9a2648d5f",
+   "question_id": "CH_1785996833148_1q8c",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "a68f849c-cb49-4113-878a-96585a4f5800",
+   "question_id": "CH_1785996833148_whe8",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "7b36386e-a814-47d7-919d-9b042ea11b2b",
+   "question_id": "CH_1786005574457_t9f6",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "718cc8d8-785d-458f-9ad8-88eb34a8d60f",
+   "question_id": "CH_1785996833148_dyht",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "03c4128a-d5b0-4d7a-8318-e3fa0ae9a569",
+   "question_id": "CH_1785996833148_0j9s",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "7f964c21-a659-4e67-ae4e-92062a1a461c",
+   "question_id": "CH_1785996833148_gqs0",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "4953efa3-7863-4bb0-9d8e-567730cca78b",
+   "question_id": "CH_1785996833148_m9j4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "32bb2e39-b8b0-418b-9905-4db8329c6d13",
+   "question_id": "CH_1785996833148_duq9",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b1d5a14d-e9b8-4b3f-95b6-bb89ef814c5e",
+   "question_id": "CH_1785996833148_jlen",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "43d03851-9218-48a0-b57b-faa15c85c363",
+   "question_id": "CH_1785996833148_x7uz",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "3c4f2eed-dab1-46ee-b604-35f688bd84d8",
+   "question_id": "CH_1785996833148_7ypa",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "20d96708-7ee9-415c-a76f-7292b73a9d2a",
+   "question_id": "CH_1785996833148_rjbq",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "2d5c0512-9a8b-4572-8891-bac61bc49780",
+   "question_id": "CH_1786073083779_i4oc",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b61fd86a-b567-48d4-ad70-838fd265a099",
+   "question_id": "CH_1786073083779_gn46",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "26cbe7ad-af08-4243-9862-46a34bcf48f4",
+   "question_id": "CH_1786073083779_c2tk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "ca19d850-3aa4-4eec-a96c-a715275af7a6",
+   "question_id": "CH_1786073083779_fpmw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "0628b188-bb90-4070-8ce4-829411e5dbd4",
+   "question_id": "CH_1786073264692_3f08",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "9dec17de-8df2-4c3f-ba09-7f79ee4e1d0d",
+   "question_id": "CH_1786073264692_g7bt",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "9a224b57-2dd0-414f-80dc-80fd7d19dd58",
+   "question_id": "CH_1786073353260_biyf",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6ef7ca29-8f9c-45c0-aa4a-92a6624a7fcd",
+   "question_id": "CH_1786073353260_jkfz",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f4aef202-eb30-4265-b9b3-386b51863c40",
+   "question_id": "CH_1786073353260_2hp2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "28b281b4-f20f-4531-acfa-4e4fa079876d",
+   "question_id": "CH_1786073353260_6c2l",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "9bb33aa6-33c1-472b-969c-e20377bc29f8",
+   "question_id": "CH_1786073353260_mh9t",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b55567ea-542c-4693-8856-0b5b01014e7d",
+   "question_id": "CH_1786073353260_w2k6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "16b2c6a2-523e-4a9c-a0c0-3a55fb5c1010",
+   "question_id": "CH_1786073353260_l8u9",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "247c56d2-c5a7-4fe1-bb4c-3b3b1003ddf2",
+   "question_id": "CH_1786073353260_w0nm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "e8b1be1a-1c5f-46a9-94ba-1bec5d28e002",
+   "question_id": "CH_1786073353260_ey38",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "d1f31786-2e2a-488b-9948-7b7dc4b85e82",
+   "question_id": "CH_1786073353260_2y7c",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c1a4f302-d777-40d2-a45e-03b3eb09e99f",
+   "question_id": "CH_1786073353260_ocyf",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f183e4c9-45f1-4504-8734-2d0e6ba04283",
+   "question_id": "CH_1786073353260_5t2y",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "73a8e237-7771-4091-bf39-ee782424cf46",
+   "question_id": "CH_1786073353260_88vd",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c3bc28eb-cdbf-408b-bf7a-17364888cb6a",
+   "question_id": "CH_1786073353260_hr53",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "93e60afc-d3e1-4e93-86b3-a0f56f4148c9",
+   "question_id": "CH_1786073353260_ofga",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f64904a0-af65-480e-8cd3-4e25850c47d1",
+   "question_id": "CH_1786074051884_g69w",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "7d1379b4-07ef-4958-b9a1-7dc37f4e7a9d",
+   "question_id": "CH_1786073808533_n4od",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "0d133d08-7f43-48d1-b480-bc09530ec34c",
+   "question_id": "CH_1785922931285_6td3",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "b13e34f7-5529-45aa-beb4-e027956ed9fe",
+   "question_id": "CH_1785922931285_e5jd",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "4964aaf3-411d-4fa0-b5cc-83278c5d2636",
+   "question_id": "CH_1786073844868_gn2a",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "3858face-fc83-42df-b2de-aeead091e61b",
+   "question_id": "CH_1786073844868_vppk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "d29d81dd-8aea-4ae4-9bdd-f0adf054522d",
+   "question_id": "CH_1785823594859_bxyl",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "8a67b855-b42f-4f6f-ba21-a699a9d51995",
+   "question_id": "CH_1786073844868_stjy",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "b1aa88fa-08dd-40a9-b291-156a6e87f6ee",
+   "question_id": "CH_1786074864901_w0xe",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "aea62ab6-9756-4dfa-ad17-7ec69d748e41",
+   "question_id": "CH_1785922931285_6gr4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "330a8433-49a3-4a43-bb02-cf3a3fbba590",
+   "question_id": "CH_1785996833148_sdzn",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "91f00ddc-04ce-4311-9638-15b11a085779",
+   "question_id": "CH_1785996833148_orbr",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "6f8c99da-654d-4f21-be1b-423f149c116f",
+   "question_id": "CH_1785996833148_0k1d",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "111a01ff-8d5c-4913-9b20-ab0ace6650a8",
+   "question_id": "CH_1785996833148_ksbt",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "c30afcc8-ef09-43f1-8b29-538fe52b5329",
+   "question_id": "CH_1785996833148_199x",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "8cb6b42f-a35b-47bf-a010-abfd137d5e67",
+   "question_id": "CH_1785996833148_ipb2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "da2358cb-1e98-4487-8759-0c5ecd244e5c",
+   "question_id": "CH_1785996833148_9ifv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "9c58caa9-1e6d-4e5e-802c-bc370d60fc91",
+   "question_id": "CH_1785996833148_sqc4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "5fe940cf-2bab-4d27-a030-130377aa6936",
+   "question_id": "CH_1786001213955_wrz8",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "df6b6a76-489a-43d6-af62-59824e07a745",
+   "question_id": "CH_1786005574457_pya8",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "46bdf5b0-b8a0-46d7-a2b4-4cbf29823ea8",
+   "question_id": "CH_1786424565274_14dn",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "974f4b7e-d431-4574-900b-5d0a9c0a2ce2",
+   "question_id": "CH_1785999521179_63ya",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "020650e3-f665-4e47-9320-d58ce8b2e620",
+   "question_id": "CH_1785999521179_s7cb",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "0f6299d5-16a7-42ec-8f15-7464bc91be2d",
+   "question_id": "CH_1785999521179_ry2b",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "d3b2ca9b-7176-49c0-a177-c9314b9bc741",
+   "question_id": "CH_1785999521179_gvep",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "8b1cbade-c91d-4e68-931d-c55ada410ecd",
+   "question_id": "CH_1785999521179_suhh",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "2628e8e0-a431-4b95-b8c2-88c6e6ed10b7",
+   "question_id": "CH_1786001213955_4xcy",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "a4fa6882-8a62-41e2-b082-63e4f638b984",
+   "question_id": "CH_1786001213955_y4bm",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "ae63f851-2c2e-4265-94b3-64880e98a552",
+   "question_id": "CH_1786001213955_c4xz",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "affd85d0-e007-4880-add1-0bc3cd3494f5",
+   "question_id": "CH_1786001213955_w48j",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "7c085207-9e02-49d7-b1e9-71dd2ffa7cc6",
+   "question_id": "CH_1786001213955_5mz3",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "4e1a4d4b-4ed6-4e67-8f66-ccadde74fe69",
+   "question_id": "CH_1786001213955_i61j",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "a55df9b0-bc13-4810-a0a8-51731ce96376",
+   "question_id": "CH_1786005574457_56sg",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "baba1de2-f698-4526-890a-91139b90ec92",
+   "question_id": "CH_1786001213955_dzub",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "a33bc6c2-2498-4224-9a9d-1ffe1fafe523",
+   "question_id": "CH_1786001213955_k4iz",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "ce7cb79d-158a-4957-a2ae-cb655ca6fbd0",
+   "question_id": "CH_1786001213955_m72j",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "d732fd4b-16c9-4b38-9595-a349d5b6b31e",
+   "question_id": "CH_1786001213955_6eyv",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "088b66f3-5ceb-4f9b-aba5-174900352cd2",
+   "question_id": "CH_1786003041141_5trk",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "066d886b-2037-4074-a1fb-8fecbdef1f4e",
+   "question_id": "CH_1786003041141_g1x2",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích vật thể khi biết diện tích mặt cắt"
+  },
+  {
+   "id": "ef9e2034-da42-4c37-ad37-d863d3f786fd",
+   "question_id": "CH_1786003041141_yrru",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích vật thể khi biết diện tích mặt cắt"
+  },
+  {
+   "id": "d66fd646-27c9-4cfd-b9d8-807f04001ee6",
+   "question_id": "CH_1786424565274_2xy6",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "2adf2945-52a6-443b-a056-1cc46588b4b1",
+   "question_id": "CH_1786003041141_czku",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "e730cc69-863d-4942-82c1-ad689562c722",
+   "question_id": "CH_1786003041141_34z3",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "10b3fab7-a7e4-400d-89db-e90cbb555be7",
+   "question_id": "CH_1786003041141_5axd",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "b5f0b906-1628-4171-9c85-bb44771aea2f",
+   "question_id": "CH_1786003041141_f6lr",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "a87d80f2-29d7-482e-ae54-68f3f2dbba4b",
+   "question_id": "CH_1786424565274_txkf",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "7f0c3b6c-5d58-4154-b1ab-2033888f31fd",
+   "question_id": "CH_1786003041141_sh9p",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "76d119a7-9a28-416d-983a-ec185cef5f8a",
+   "question_id": "CH_1786003041141_0qk4",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "443dde74-75f9-4088-810f-7182d9ceac5d",
+   "question_id": "CH_1786003041141_7bsi",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "7c2612dc-04d3-4ea0-8662-01dcf6bf520a",
+   "question_id": "CH_1786003041141_zbyt",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "e0c9dc81-42eb-4c6c-9eee-314aa0e9a31a",
+   "question_id": "CH_1786004203424_qngd",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "f17c8047-40fd-49a7-9119-623daeb18021",
+   "question_id": "CH_1786004203424_re2u",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "97203f7d-7781-459e-ab66-e6c34d1840e9",
+   "question_id": "CH_1785922931285_somk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "57873b45-6696-4d04-af80-8e2d17dfc3ec",
+   "question_id": "CH_1786004203424_755l",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "04edab86-5d25-4bd5-a7bc-f14fc622832b",
+   "question_id": "CH_1786004203424_ygek",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "3f033560-1394-43fc-b111-4bc3cf2e6bb8",
+   "question_id": "CH_1786424565274_sy3j",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "a93bcdfa-7aba-48f1-a8e0-48ad4c4a0d2f",
+   "question_id": "CH_1786005574457_kqqg",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "dff8c82a-d59f-4e0d-963d-e7e3c88bb106",
+   "question_id": "CH_1786005574457_vgge",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "83d7aeb2-5aa5-424a-9f35-0a75d9108f2b",
+   "question_id": "CH_1786005574457_57me",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "11f150ac-b260-4614-9635-b1f84a37c9a3",
+   "question_id": "CH_1786424565274_gza5",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "d0d4f504-259d-440a-b64d-85b17487ed2f",
+   "question_id": "CH_1786005574457_2mr3",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "0178a69f-556c-4d5a-9e08-31530fc710d5",
+   "question_id": "CH_1786073844868_asjn",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "78dd5979-c6b1-48bc-a073-99701f994b81",
+   "question_id": "CH_1786424565274_o2r3",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "996b7faa-b09d-4679-917b-6ecc8fc2afdd",
+   "question_id": "CH_1786426877976_3hqe",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "fb44c581-259f-42da-ab95-0262e77de503",
+   "question_id": "CH_1786424565274_ud0u",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "6e1525b2-3704-452a-881c-3783285d57b1",
+   "question_id": "CH_1786426877976_ivwc",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "2c265dbf-6dc4-4b0e-b471-e5753547abc8",
+   "question_id": "CH_1786005574457_gxsg",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "ea7f3b9f-4fdf-40cb-8a8d-de3c38d476de",
+   "question_id": "CH_1786005574457_me9c",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "d912cff1-b714-4a9f-8a13-ef444eb69138",
+   "question_id": "CH_1786005574457_c0dw",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "17144db7-128f-4b29-b165-122fdf27981b",
+   "question_id": "CH_1786005574457_jjk8",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "a05496bf-a4eb-4165-9507-2bf168e47e56",
+   "question_id": "CH_1786005574457_q531",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "02ff1c7c-3258-4d74-ac47-e11d6d546313",
+   "question_id": "CH_1786005574457_hnkj",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "30cfe588-f4b7-453f-bc9a-4036b39177d3",
+   "question_id": "CH_1786072988532_7gwm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "7fb1ba37-f08f-4ca7-8509-f18b3d982fbb",
+   "question_id": "CH_1786072988532_dr4o",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c3d718a9-52ff-48de-9d60-6a1176d48f34",
+   "question_id": "CH_1786072988532_r9g4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "a5292fe4-0e5b-4504-be4d-adaaf2663475",
+   "question_id": "CH_1786072988532_hm8z",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "ade93029-ca21-402c-9db7-d5197043ce87",
+   "question_id": "CH_1786072988532_kg1e",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "178f1507-56b1-4b54-962b-e66e907be36b",
+   "question_id": "CH_1786072988532_bl3z",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6c1a6573-37be-4724-8408-6b1bdfa2e940",
+   "question_id": "CH_1786072988532_48cs",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "8663ba85-9193-48a0-a7cb-7bddef451229",
+   "question_id": "CH_1786072988532_z67a",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "01fdba8e-84a2-4dfe-a52f-e18f7aa4768c",
+   "question_id": "CH_1786072988532_23jm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "338b96d6-29f3-41eb-afb3-628619d8692a",
+   "question_id": "CH_1786072988532_aaiq",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "a4cd8d77-09dd-430f-8412-c6c5e01fb6a3",
+   "question_id": "CH_1786072988532_oy7i",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "bdd555af-c28f-444a-b145-affe0cc47d6e",
+   "question_id": "CH_1786072988532_518v",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "3ce4ec83-19d6-4a6d-8663-9187b8307927",
+   "question_id": "CH_1786072988532_5qxa",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "9cf34bb7-3963-48df-89f9-5457345de454",
+   "question_id": "CH_1786074737893_l3zy",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "4b800e82-dcff-4edb-8179-23155d20ced9",
+   "question_id": "CH_1786073083779_p3y9",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "e68d6530-791c-4c13-9b3d-72daf579619b",
+   "question_id": "CH_1786073083779_c2s6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "0324ae7c-4f22-485f-9b10-ce9c76543a5d",
+   "question_id": "CH_1786073083779_wlvd",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "2f28f036-7212-4ba4-a467-be8711d57bf7",
+   "question_id": "CH_1786073083779_g8bq",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f6c7b2d9-630a-42a7-9b96-35b876e27aee",
+   "question_id": "CH_1786073083779_h5mj",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "fa19ee0e-8b16-422f-8038-998d4afb60c6",
+   "question_id": "CH_1786073083779_5shs",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "1aa0e8a3-36e8-4dc6-a366-1b8bf0d2f932",
+   "question_id": "CH_1786073083779_6dag",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "40c98e02-33d3-4569-a05a-016dd9956d92",
+   "question_id": "CH_1786073083779_xkbj",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6f3cc91c-bf97-4ff7-a367-b7aa7e2a33ac",
+   "question_id": "CH_1786073083779_omxh",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b9fd56a2-8d7b-4b9c-bc92-8b005f3fe824",
+   "question_id": "CH_1786073083779_j3b6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "ade8c94e-d1b6-477e-939d-667ffc1a45a3",
+   "question_id": "CH_1786073083779_57e2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "90fcb614-8845-41e9-8326-6fbe761799fd",
+   "question_id": "CH_1786074737893_rjen",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "a657a9fa-c3fc-4a48-a574-91ff63b18f70",
+   "question_id": "CH_1786074737893_ty28",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c4c0e8c6-c333-4e68-a16f-a680598db197",
+   "question_id": "CH_1786073083779_9ojy",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "0419a04c-18da-457d-8a88-434bfb5b8917",
+   "question_id": "CH_1786073083779_okgb",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b4fd8a7e-bac4-49cb-88ec-bf8230a07c0e",
+   "question_id": "CH_1786073083779_5aqy",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "dcc598b0-5473-4d8f-b6b6-ab745c2808d9",
+   "question_id": "CH_1786073195251_rqjq",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "5afed3fa-db92-4d1d-b38d-72071093284b",
+   "question_id": "CH_1786073844868_qb9m",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6292cf9d-e1a3-4498-8443-6bc3bfb84750",
+   "question_id": "CH_1786073264692_vhah",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "105fe2ca-35fd-4726-9403-f1c97ac72bee",
+   "question_id": "CH_1786073264692_706v",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "e38b2144-2d60-42aa-b81c-90fa624e099e",
+   "question_id": "CH_1786073264692_o2tv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "fa88d930-8346-4eff-bac3-4b50a31ecee4",
+   "question_id": "CH_1786073195251_0pli",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "440c9a31-a5c6-445e-89bc-cdb421048774",
+   "question_id": "CH_1786073264692_o32f",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "4c70843a-2542-4e07-976a-96a34da66ca2",
+   "question_id": "CH_1786073264692_60oy",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "28b40203-bf4a-422c-aec6-ba95e7bf694c",
+   "question_id": "CH_1786073264692_lopm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "2f52ea42-e9ed-4dab-882c-6e4cd27e3e70",
+   "question_id": "CH_1786074864901_vsod",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "2be084d6-36bc-42da-9a6a-4a78d33b72f2",
+   "question_id": "CH_1786073353260_v1ej",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "18975db2-f0e6-4f2f-be10-a71b7b344a5e",
+   "question_id": "CH_1786073353260_22i4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "5da4e548-285a-46af-a184-c2095bd4eeae",
+   "question_id": "CH_1786073353260_4a01",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f56e1827-309a-430a-bfca-41c21b6fdd12",
+   "question_id": "CH_1786073353260_s2t8",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "2e848eb0-55fc-47b9-b3f4-00d85668ef1c",
+   "question_id": "CH_1786073353260_p31k",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "61f2dda4-a7e6-43c3-a0f4-ea2d6bdd9bd2",
+   "question_id": "CH_1786073353260_dlcc",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "093a7a0e-5cc7-4354-9f0b-75de6df09865",
+   "question_id": "CH_1786073353260_zdvg",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "a443501c-1694-44d5-b80c-23fe999c1dba",
+   "question_id": "CH_1786073353260_gywg",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "254c98cb-7c50-49ca-9d90-b1f70d8a1772",
+   "question_id": "CH_1786073808533_y39b",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "6d55580b-a15e-409c-b53d-20c8a7349edd",
+   "question_id": "CH_1786073808533_t46s",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "4ebefd62-5ec7-45ea-9e97-c2d13454884b",
+   "question_id": "CH_1786073808533_83zh",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "35ef59ef-ad1f-45be-a5b4-cd4d23a0cc45",
+   "question_id": "CH_1786073808533_k9pc",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "2a61ffd0-8b61-4fbf-83f2-e5566c656225",
+   "question_id": "CH_1786073808533_ues9",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "af7200c9-4d48-4bf8-9704-6adeb20f74ed",
+   "question_id": "CH_1786073808533_isf4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b8a7440b-eddc-41b3-a9c2-171a1fa36245",
+   "question_id": "CH_1786073844868_ik25",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "0bcd99d3-c81f-4ba3-915d-955f12b64e66",
+   "question_id": "CH_1786073844868_5htw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "adcba3a0-dcc2-4fb6-98f1-2f9b4515b738",
+   "question_id": "CH_1786073844868_yvpl",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "1e48b647-a3f7-49df-a569-d0a5cb822f3b",
+   "question_id": "CH_1786073844868_f3n6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "fa4ea265-0b61-4009-9c60-2c7ebb1eccaf",
+   "question_id": "CH_1786073844868_9o9p",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "9d9a4970-3041-4480-aba8-d9b4fa05b7d5",
+   "question_id": "CH_1786073844868_4q4u",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "9eb74a23-7c25-4dde-9a33-9f36dc8af6c6",
+   "question_id": "CH_1786073844868_gdvf",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "60843ec5-fc23-4643-b8ca-b99d8d5aee02",
+   "question_id": "CH_1786073844868_l05t",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "d18da9d8-1548-4ac9-afc3-8480d965b3bf",
+   "question_id": "CH_1786005574457_fdb3",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "85986605-ba3c-4a63-b6c9-429fcdbd8279",
+   "question_id": "CH_1786073844868_z3bg",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "20ed2ca4-c50a-4ac2-a2f9-d6e39ef6e50a",
+   "question_id": "CH_1786073844868_70ry",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "07380462-8934-4237-a1ad-6f1035c03dab",
+   "question_id": "CH_1786073970901_enoz",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "6dee395f-3a13-4a2c-ac21-07857c3c8120",
+   "question_id": "CH_1786074051884_o3k4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "7b320688-2c28-4727-a559-950616eaae96",
+   "question_id": "CH_1786074051884_g49o",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "3a07f1cc-8e36-4bc8-a786-eaa9de0025ae",
+   "question_id": "CH_1786074051884_mop8",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "9cc08d78-90d6-4623-822f-aa5af0fd5c37",
+   "question_id": "CH_1786074051884_lswn",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "1d101912-fc45-4530-a913-adfc553ed26c",
+   "question_id": "CH_1786074051884_l9iu",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "dee44d4f-b18e-4e45-9fd0-e3c5d781b58d",
+   "question_id": "CH_1786074051884_wjtt",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "178f122a-d94b-4b95-bac4-9c3ab4e0f66e",
+   "question_id": "CH_1786074051884_wr82",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "e4501232-de5b-4f73-af71-af27e882527d",
+   "question_id": "CH_1786074051884_bgi5",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "0709ba09-39f0-481c-af36-848a23feb363",
+   "question_id": "CH_1786074051884_pzgn",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "e18facde-01be-46f4-932f-30c2f2473d8e",
+   "question_id": "CH_1786182463288_s9bp",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "2e6a09e7-1e33-43a3-8a16-9bf0b9569e56",
+   "question_id": "CH_1786449503465_1q9f",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "0fbbbb9c-4b3e-417b-ac5a-3ee30e5b6843",
+   "question_id": "CH_1786074051884_ywke",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "444beb60-e081-42a6-99e0-cdf7fa46950a",
+   "question_id": "CH_1786073083779_884p",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b569e789-014f-4121-8c36-2c8ed765cf83",
+   "question_id": "CH_1786073083779_q3po",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "fdd650f3-d7d4-4744-8f8a-278d8cc6b2e7",
+   "question_id": "CH_1786074227108_l959",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "b387782c-6250-4e13-8ebf-1e9f76aa4ce9",
+   "question_id": "CH_1786074227108_tkzg",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "e049e533-b581-460a-8dfb-370c5691659f",
+   "question_id": "CH_1786074227108_e7ft",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "6c05e000-6d35-4569-95ac-4966f92f2560",
+   "question_id": "CH_1786074227108_9ft5",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "c3f482d7-05a0-4ace-ace8-2c3eeb84c843",
+   "question_id": "CH_1786074227108_zsg6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "0756630a-7b40-4231-95c6-0b02e1f15972",
+   "question_id": "CH_1786161853433_kxje",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "97214bca-d5e4-423d-b52a-9d6f3153c5fd",
+   "question_id": "CH_1786161853433_558v",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "ab24e349-b16d-432d-87d5-0fdd92d524f0",
+   "question_id": "CH_1785999521179_ljyq",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "36a650a3-8502-44de-a014-8786755afc1d",
+   "question_id": "CH_1786074227108_w0kh",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "67396a97-4b4a-4ecf-8733-4a59fa10b91c",
+   "question_id": "CH_1786074227108_uqr8",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "18aa4e99-1c8f-4b4a-aeb4-5d698ad9a39a",
+   "question_id": "CH_1786074227108_oee9",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "4824a125-3c9a-4a9d-be2b-7076def25633",
+   "question_id": "CH_1786074227108_1hyc",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "327b2c4b-7246-47f0-a134-e0d683fe1c6b",
+   "question_id": "CH_1786074227108_m0l4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "bf019992-03a2-46dc-bc94-e78fc972279f",
+   "question_id": "CH_1786074227108_laf4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "698f3e98-abff-4c52-9649-17783bdfbb21",
+   "question_id": "CH_1786074529013_0pa0",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "7b120418-4359-457e-b551-05753a592266",
+   "question_id": "CH_1786074276660_hn8e",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "db89b896-43e7-47e2-8c99-0536cbd1c041",
+   "question_id": "CH_1786074276660_6d4y",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c6ee7024-b403-4b84-bdf3-bba79a544a9d",
+   "question_id": "CH_1786074227108_isk0",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "26310b28-34e3-41bf-a12f-62a6aae69439",
+   "question_id": "CH_1786074276660_2arn",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "369b2ee6-1146-42dd-8f62-274db1ce9494",
+   "question_id": "CH_1786074227108_lfbp",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "6eef0360-4e35-4958-9fad-54aafa3f1bbb",
+   "question_id": "CH_1786074276660_ejsp",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "f8a229fb-9685-4ce4-bf9a-c6bc25eb3a31",
+   "question_id": "CH_1786074276660_twc7",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "90c4e5b6-4b35-4029-84d3-1aff4a7eb786",
+   "question_id": "CH_1786074276660_0i4m",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "eb326c90-c22c-4cf3-9ccb-afacdb6eb2d9",
+   "question_id": "CH_1786074276660_p9iv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "e2e40d63-6e6b-4619-b2d9-477a9747f492",
+   "question_id": "CH_1786074276660_q53g",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "9dab632d-08e0-4edd-8c88-d4f79961a9dd",
+   "question_id": "CH_1786074276660_acrs",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "f06ed83d-b3d1-44f9-8f19-341befc57188",
+   "question_id": "CH_1786074529013_n2rs",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c109b3c7-b10e-4ea4-989b-4b5a09369f2b",
+   "question_id": "CH_1786074529013_4js4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "dcaae180-3b8c-4f02-9821-fd46cf0822cd",
+   "question_id": "CH_1786074529013_x9el",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "09ac1cf4-6852-4971-93fc-2749cf8db1fa",
+   "question_id": "CH_1786074529013_1mmg",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "3397dac6-2fdc-4a75-a254-77c0050f497c",
+   "question_id": "CH_1786074529013_r8hg",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "873102b5-a517-45ca-a9c2-090b56e3f8c4",
+   "question_id": "CH_1786074529013_rkjz",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "749a97dd-77a2-4ce9-b09a-445d51ad4924",
+   "question_id": "CH_1786074529013_ei9r",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "6ab619e4-831b-4933-a70d-74be84fe8c1f",
+   "question_id": "CH_1786074529013_utxn",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "13a9c411-2c22-4b3d-bf71-92ed05639562",
+   "question_id": "CH_1786074529013_4pqi",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "b59979ac-9683-40ac-b793-71a6c4e8c0eb",
+   "question_id": "CH_1786074529013_kl5i",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "167750ac-41b6-4791-abdb-e3266a01b13d",
+   "question_id": "CH_1786074529013_xj7y",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "be996775-857e-4ff7-b9a8-6ac4f9660b2f",
+   "question_id": "CH_1786074529013_lfi9",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "d08ebe0a-011a-4669-b2e4-5a7f572a5461",
+   "question_id": "CH_1786074529013_ybj5",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "fc5c61a6-9348-44a8-8646-9c3dc5af4608",
+   "question_id": "CH_1786074529013_uh25",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "9f7d3b31-e881-4748-9661-2e6a9745049b",
+   "question_id": "CH_1786074529013_fble",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "fe271f8d-c731-4661-b11a-2e31ba8b1e9e",
+   "question_id": "CH_1786074529013_h2q4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "88ac5176-2944-418f-b9e7-85347fc3e3c5",
+   "question_id": "CH_1786074737893_90m6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "dceb19a8-afd8-4853-97dc-d142f3078817",
+   "question_id": "CH_1786074737893_ax0q",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "d5a23dda-f0c0-4c84-91bd-8b455c858f80",
+   "question_id": "CH_1786074737893_hg7d",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "88634579-8f87-47bd-8676-cb12243d66d1",
+   "question_id": "CH_1786074737893_8s0l",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "4891fc4c-2667-42d0-9d77-9d88fd463c3a",
+   "question_id": "CH_1786074737893_5gjv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "dac30954-3702-4dd6-ab24-680729e7239f",
+   "question_id": "CH_1786074737893_jnvo",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f2c1fc6b-6e31-4282-871c-4aa53199405b",
+   "question_id": "CH_1786074737893_lq8i",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "02f61201-db2a-491d-85f3-8367ac94d000",
+   "question_id": "CH_1786074737893_otvv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "8865348d-2274-4ecf-bb99-f468aaa2926a",
+   "question_id": "CH_1786074737893_p5rc",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6e23580f-5044-4e00-abd4-248f5e53c775",
+   "question_id": "CH_1786074737893_ppg9",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "24456077-a766-46a7-8d67-1f80de51b631",
+   "question_id": "CH_1786074864901_h8zx",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "952d6ff7-962a-40ab-ba6c-7fecfa136bb1",
+   "question_id": "CH_1786074864901_xfw2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "6042a033-e989-403d-a414-c7cf4f66ac8a",
+   "question_id": "CH_1786074864901_q9zu",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "5856e222-832d-4d7d-911e-aac4317d48db",
+   "question_id": "CH_1786074864901_6c35",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "2f72e6f9-3173-4bd2-8086-fa330b2ed869",
+   "question_id": "CH_1786074864901_3zt3",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "03e55499-9c56-44e2-863b-f444410e53f8",
+   "question_id": "CH_1786074864901_dowb",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "8ca046b6-b053-4605-b101-edba59efcbb7",
+   "question_id": "CH_1786074864901_7f9g",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "48e9784f-d194-4180-8f22-784f13793090",
+   "question_id": "CH_1786074864901_fg3w",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b74667a2-c7df-4c02-9be2-ab93ee4dde85",
+   "question_id": "CH_1786074864901_imc2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "fc0bfd95-4887-4328-841d-2e12b513a086",
+   "question_id": "CH_1786074864901_i23m",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "fa9c45a7-c59d-48e4-96c0-e3592e98f468",
+   "question_id": "CH_1786074864901_x50u",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "986c1814-5f60-4aca-91be-3198a96e97ee",
+   "question_id": "CH_1786074996221_6nyv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "c9562b32-7e2e-47e3-894b-a58548a9f6e7",
+   "question_id": "CH_1786074996221_akc2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "4277a15d-f65d-4569-b445-0072bafe5fd8",
+   "question_id": "CH_1786074996221_jxq0",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "cd9da2fe-187d-4b65-8ca7-1ed22cfc71a9",
+   "question_id": "CH_1786074996221_t2wm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "77b855a1-47c2-49dd-bf2b-bc9ac8d4fb6d",
+   "question_id": "CH_1786074996221_wiam",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "011e9601-2f00-4c72-8ea6-bfbb29a80d2d",
+   "question_id": "CH_1786074996221_hd4c",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "43c0777b-cffc-4629-b086-9c69c2a3329a",
+   "question_id": "CH_1786074996221_gdxx",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "d7b18711-3512-416f-803d-f8215046546f",
+   "question_id": "CH_1786074996221_6i66",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "0fd21da2-4d32-4831-ad62-c8628668ea53",
+   "question_id": "CH_1786074996221_szfg",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "283ef531-d208-4f3f-86d7-0e21fead5864",
+   "question_id": "CH_1786074996221_60v6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "b617ed6b-24ec-4d9d-8c2b-49c3584cbc41",
+   "question_id": "CH_1786074996221_z42v",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "8528833c-af72-4340-a846-570daea19586",
+   "question_id": "CH_1786426877976_paoc",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "5d1cc884-2b1f-4e22-b951-4c44d9374665",
+   "question_id": "CH_1786074996221_d001",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "1e2f9e18-14fc-46ca-a272-422c8e27d480",
+   "question_id": "CH_1786074996221_p69n",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "3d882418-5ab9-4321-8127-d14b60ee55ca",
+   "question_id": "CH_1786074996221_fjso",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "5daf13a8-1aa3-4b17-8965-30c1b1c0cdc7",
+   "question_id": "CH_1786074996221_moam",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "ebeb115c-3a36-4f9e-8a47-98f8e3a721f1",
+   "question_id": "CH_1786074996221_u5x6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "5803a2c1-666e-4c30-ab25-f45af39e5ac0",
+   "question_id": "CH_1786074996221_6lf2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "f12c7988-cf85-4c15-b90c-2fe893bf449b",
+   "question_id": "CH_1786074996221_csuv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b6610fa8-fddb-479a-9f22-7116465ba55d",
+   "question_id": "CH_1786075191926_amuf",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "1fcaf3a2-160d-4c14-8a32-723e16bf6997",
+   "question_id": "CH_1786075191926_qu2s",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f1540a0a-662c-44a7-b2e1-6de76340d8a7",
+   "question_id": "CH_1786075191926_o1xo",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c2a34c43-0ea9-43c3-a26b-0bed7d82bf61",
+   "question_id": "CH_1786075191926_2d7z",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "73a19f7a-1111-4f5d-87e7-cb38dbe4e1c0",
+   "question_id": "CH_1786075191926_8qpf",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f3b3b9f0-2ed1-4d74-a1d7-d7021bbdfe60",
+   "question_id": "CH_1786075191926_lxlk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "23e56a11-a9a7-4921-9fea-d9f9632f1b7b",
+   "question_id": "CH_1786075191926_w9c8",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "b6623367-7cc4-4c81-9722-5da6c132450d",
+   "question_id": "CH_1786075191926_b2w1",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "646bc6b7-ca13-4a09-98a6-5c54b48ae38c",
+   "question_id": "CH_1786075191926_l5d3",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6f84fc64-995d-4d71-9b29-8cf6960af236",
+   "question_id": "CH_1786075191926_lr1t",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "6ff1662e-3ba1-4053-9078-ad793d8882f8",
+   "question_id": "CH_1786075191926_lpxv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "38e791b4-f8d0-4c69-ac62-c38b35e973fc",
+   "question_id": "CH_1786073353260_l26m",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6724e37f-7010-4d8b-aae5-dc6047c888d0",
+   "question_id": "CH_1786075191926_2a61",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "c5756195-246e-4b25-9c84-837915a84aee",
+   "question_id": "CH_1786075191926_w5td",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "ac48d0d0-0717-47dd-8496-4118c381fd14",
+   "question_id": "CH_1786075332781_cufd",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "f8248571-e0a5-4335-8d92-e046035d7332",
+   "question_id": "CH_1786075332781_252t",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "34c0be47-ec1e-4144-bf02-cce58736ed51",
+   "question_id": "CH_1786075332781_c9id",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "3c2c6e06-aaf5-4527-bed3-1b647b68c49c",
+   "question_id": "CH_1786075332781_1972",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f6df9100-1b27-4606-94e0-91c2b458c5c4",
+   "question_id": "CH_1786075332781_m2x0",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "204175ad-564e-41cb-971a-6260d194ba5b",
+   "question_id": "CH_1786075332781_2bkk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "ab966dbe-8109-4b35-af1e-236da4f46ec1",
+   "question_id": "CH_1786075332781_7ozm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "0c64d49e-933a-4b79-82ac-beb47f592606",
+   "question_id": "CH_1786075332781_9d43",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "57adf893-1f8d-4296-90cd-6df3ed542e58",
+   "question_id": "CH_1786075332781_kwfx",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "5a384542-0bc6-466b-95c5-32bdc01e9349",
+   "question_id": "CH_1786075332781_m3gi",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "d652f82e-2056-4505-89b9-782c5cb93179",
+   "question_id": "CH_1786077377468_3al6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6fc1df63-e19b-45e0-ae8d-fb5b35f4ba51",
+   "question_id": "CH_1786075332781_jig2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "ac585bd4-202a-4a7d-8275-2361575bf793",
+   "question_id": "CH_1786075332781_c7mm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "bb42a986-c5f6-412d-bde4-b8087330d35e",
+   "question_id": "CH_1786075332781_3d9q",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "8f5c7fb0-5a58-4b62-8647-eedc664be79a",
+   "question_id": "CH_1786077377468_fax4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "41420d0e-044f-48f8-83bb-c8984b9410ec",
+   "question_id": "CH_1786077377468_l6tz",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "87bdffee-341e-4b12-b8ae-a17e1e81e6a1",
+   "question_id": "CH_1786077377468_bggw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "0ee36b27-4eb8-45c0-9237-e8a02bd87101",
+   "question_id": "CH_1786077377468_xu9h",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "1e2454dc-891c-4419-8eeb-74f0cf091c67",
+   "question_id": "CH_1786077377468_751g",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "77abee4f-77ac-4e07-85aa-21a0abd1028a",
+   "question_id": "CH_1786077377468_9det",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "dcdf085f-2f79-4707-9ab8-ecef13d2322b",
+   "question_id": "CH_1786077377468_a58i",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "55c618b1-a7fa-4cdc-93e1-c74ebe2be98f",
+   "question_id": "CH_1786077377468_43i4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "ce28de30-8ea7-4d52-bc49-32eddf54bdab",
+   "question_id": "CH_1786077377468_sy8n",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "c629ea32-9781-4a3a-b59f-ae2d48c8ab2f",
+   "question_id": "CH_1786077377468_tl3e",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "9a055253-0169-4b74-af5e-ca11bb0bf5b7",
+   "question_id": "CH_1786077377468_4532",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "e4c020c5-efbc-44ba-9fcc-e444422f6ab5",
+   "question_id": "CH_1786077377468_6eew",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "3d9e3c06-41da-45ed-8c08-2b2f1b1b2f88",
+   "question_id": "CH_1786159610744_jbyv",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "d13fe2f0-5a7b-4eb2-8042-294bb109833a",
+   "question_id": "CH_1786077377468_nlwu",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "78158413-3396-4cc8-9cf2-7f4b7a87a7b8",
+   "question_id": "CH_1786077377468_zvpw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "983c46fe-ba70-4ffc-9f15-55bdadcd2928",
+   "question_id": "CH_1786077377468_ydje",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "4ed860fe-397e-439a-a6dd-1096705528ff",
+   "question_id": "CH_1786077377468_zvrp",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "074259c6-4271-4c82-ab48-d227269fd85c",
+   "question_id": "CH_1786074737893_pmua",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "24dca0f3-04ba-4e4d-8898-eb5c7519886d",
+   "question_id": "CH_1786074737893_h0xy",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "481a3cba-ce6b-4060-aeeb-6ba2d8762f1b",
+   "question_id": "CH_1786077377468_ospb",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "8f7da379-b1ed-4e62-8b73-02a703109b0f",
+   "question_id": "CH_1786077377468_mcil",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "3ad30794-3dd4-445f-9a12-bc190e7595aa",
+   "question_id": "CH_1786077542862_dlcp",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "02d2938b-09d8-44d4-981a-c9ff661c9839",
+   "question_id": "CH_1785823594859_c3uy",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "3d3626c9-83b3-4481-b36d-c6bb01ef8f2b",
+   "question_id": "CH_1786073808533_qwwk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "5d06262a-465f-4347-9c29-ab492d66d54b",
+   "question_id": "CH_1786073808533_t899",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "74afdf95-a3c0-4dea-9c64-c69dfe6162e1",
+   "question_id": "CH_1785999521179_0r9u",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "398f18e5-fb7a-4baf-b1c1-5f3fcd1e0509",
+   "question_id": "CH_1786001213955_hyx3",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "38470711-f5df-4199-95cb-2ada937c4854",
+   "question_id": "CH_1786077542862_l8ws",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "a267f5a5-b342-4ef2-92f0-4ffe80a5c056",
+   "question_id": "CH_1786077542862_p0o5",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "37e03624-fe2a-497e-ab0d-f2b67543785e",
+   "question_id": "CH_1786077542862_iaqs",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "876f8446-078e-48c8-82be-72d8bfa18164",
+   "question_id": "CH_1786077542862_gyjl",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "775cfec7-b7ab-454a-9821-f0e14c7de202",
+   "question_id": "CH_1786077542862_wdkm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c90746b9-15ea-4f8a-8047-f3b9c9462363",
+   "question_id": "CH_1786077542862_mthp",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "634941cb-d693-4b31-82c4-debbba313105",
+   "question_id": "CH_1786077542862_6wjt",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "ed29418f-14bf-4c40-8b83-6e59b3011c71",
+   "question_id": "CH_1786077542862_ouf9",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "5a0c56f0-5721-477e-8ba4-13519fe6ecb9",
+   "question_id": "CH_1786003041141_4y08",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "74207ce3-a076-4588-9e55-ee507e7642e9",
+   "question_id": "CH_1786077542862_ehnf",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "72a6bdbe-1473-41d5-9c64-4a05a438cf19",
+   "question_id": "CH_1786077542862_5dvt",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "2c7d9ae2-30bd-4a58-97f4-f93d8ba3b4e6",
+   "question_id": "CH_1786077542862_5otm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "e900444d-7e56-4248-90cb-cd6d3de86c32",
+   "question_id": "CH_1785999521179_e0sw",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "b1a408b8-c00d-4bc2-8b9e-f3dea270a4e2",
+   "question_id": "CH_1786077542862_gbz5",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "4272c0f4-b96f-4d32-9b63-fd7729914773",
+   "question_id": "CH_1786077542862_mqv5",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "e06600b1-243e-4a11-8b76-646886740463",
+   "question_id": "CH_1785999521179_36li",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "0fd86d6b-cfdf-4b27-b155-46e8b0a4dd3a",
+   "question_id": "CH_1786001213955_yrie",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "a61ffc09-879c-47f9-9ce4-d8c0daa2732b",
+   "question_id": "CH_1786074864901_hwp1",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "3981c9c3-796a-41cd-a722-e9752c958d51",
+   "question_id": "CH_1786074864901_742u",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "a916c3ee-5e97-40a0-9c2c-632df65cd0c4",
+   "question_id": "CH_1786077857430_90qo",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "42268441-8719-44c8-b21e-b4e1a0292688",
+   "question_id": "CH_1786001213955_eym6",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "313aa87b-9957-4d9d-b7b2-2db47e0b8255",
+   "question_id": "CH_1786001213955_wucl",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "43a75989-4621-4d12-b76a-530498ec48dd",
+   "question_id": "CH_1785922931285_hubx",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6cf4f73d-3856-4579-a447-c6af48818bac",
+   "question_id": "CH_1786077542862_400w",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "48023a87-cc83-4f8c-bb91-9f1e530468cd",
+   "question_id": "CH_1786077542862_crf2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "39363ae5-1ac8-46ff-8d48-3b0f5a7d817b",
+   "question_id": "CH_1786001213955_586l",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "55d7f89d-f1d6-4f07-bdbe-43ba4273293b",
+   "question_id": "CH_1786001213955_ryyn",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "db3bc073-9801-498e-a231-9e4e09250f71",
+   "question_id": "CH_1786003041141_x4ox",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "51b8e0fd-c608-42e6-b1bc-19fdd66ef18a",
+   "question_id": "CH_1786077542862_49fk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "4f96753f-e77f-4b60-ba7a-781892ee35b0",
+   "question_id": "CH_1786003041141_dnqt",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "d5fd1792-8ce1-4bb7-be61-4fa101468527",
+   "question_id": "CH_1786003041141_7u4o",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích vật thể khi biết diện tích mặt cắt"
+  },
+  {
+   "id": "bf2c8771-4fbf-4d21-aef5-e35d2cf3f567",
+   "question_id": "CH_1786077542862_df8o",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "8c3a6b5c-23c2-4a17-bfa5-9b1dde55c7c4",
+   "question_id": "CH_1786077542862_747i",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "d7ca5134-68bd-49b3-a549-985663c91d4e",
+   "question_id": "CH_1786077857430_h8le",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "df370718-f934-468d-9e90-07cb15b63e9b",
+   "question_id": "CH_1786003041141_e4co",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "62ca198c-e256-4b85-b44f-afd8ff00d197",
+   "question_id": "CH_1786077857430_d3h1",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "5ac8733b-8f9b-42bb-b352-8def1b959baf",
+   "question_id": "CH_1786077857430_rkhn",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "953ac791-7cf6-428c-ac05-4243cc5f55ef",
+   "question_id": "CH_1786003041141_s7bw",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "9eae2c51-7c5d-41cb-882e-5bd2384f6fec",
+   "question_id": "CH_1786077857430_vgpk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "7373cb4b-f595-4c61-ac6c-5ad96b425921",
+   "question_id": "CH_1786004203424_2ud2",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "a9477b66-8ffe-4faa-b55d-f2b0f8657cf6",
+   "question_id": "CH_1786004203424_uzw8",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "05c2fea1-0b00-4872-9ce2-51bd4e77abc6",
+   "question_id": "CH_1786077857430_2cvk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "bac6d37e-aa54-4c37-a8dd-d2752cfd5a8a",
+   "question_id": "CH_1786004203424_j5o4",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "22df056c-c02c-4fe9-a18a-032a8bb4ab9e",
+   "question_id": "CH_1786077857430_qcmk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "a480a091-7f18-4061-9206-2623b0e05c13",
+   "question_id": "CH_1786078278852_mq7q",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "90012ead-c785-4e82-9b60-d996de33ea1a",
+   "question_id": "CH_1786077857430_u9t8",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "b196ad72-ed19-4fdd-9eea-9bcf16b97380",
+   "question_id": "CH_1786077857430_rhaf",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "c09cd126-848f-4f45-a0ec-1cb49132699b",
+   "question_id": "CH_1786004203424_pxbv",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích vật thể khi biết diện tích mặt cắt"
+  },
+  {
+   "id": "bf3798e6-7c1c-4180-b596-e1051aaf9fca",
+   "question_id": "CH_1786077857430_hfef",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "d883f06c-342e-434d-ad91-2077ff538f1c",
+   "question_id": "CH_1786077857430_byri",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "56fc3d07-f572-43e4-a415-781065616a41",
+   "question_id": "CH_1786004203424_5wi7",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "269611fd-7a3e-4f86-b03e-d691d253c14b",
+   "question_id": "CH_1786073844868_otr3",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "f6ffde41-5b38-423e-8c0a-98d50fc95377",
+   "question_id": "CH_1786077857430_8sko",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "141648e5-85af-4469-a25b-d941d616ec6a",
+   "question_id": "CH_1786078278852_7ma2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "381dd3c5-2771-413e-8e8c-609cad0ba416",
+   "question_id": "CH_1786077857430_aty3",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "50d5c9e8-459c-4f40-b930-a7dc10c249ac",
+   "question_id": "CH_1786077857430_dpbw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "d1c42490-12af-4196-be68-4be7763e1a23",
+   "question_id": "CH_1786004203424_sbcj",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "f2618427-e195-4b22-9bac-72c1327125e2",
+   "question_id": "CH_1786004203424_1j6z",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "5cf7cbeb-d81e-4db0-bc29-98b35fcd3425",
+   "question_id": "CH_1786077857430_wduo",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "d93b1135-24b1-4fad-b69f-9c6808a7ab7a",
+   "question_id": "CH_1786004203424_bx7y",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "9ceac798-90de-413c-997e-cf4c5ecffc44",
+   "question_id": "CH_1786426877976_4c0o",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "9315c03d-abd0-40b5-8ad5-d9d95a403450",
+   "question_id": "CH_1786005574457_4qou",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "897aa580-b2fb-493b-8f4c-057522c219b1",
+   "question_id": "CH_1786077857430_dg3r",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "b7b8eefd-3bd6-425f-9b4f-0c2021a2aca7",
+   "question_id": "CH_1786005574457_fqhv",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "1b9a6526-a61b-4532-990b-a131eb39320e",
+   "question_id": "CH_1786077857430_rx82",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "40b1d620-ef1a-4c69-8ec6-f35dd89ab48e",
+   "question_id": "CH_1786078278852_sms1",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "52743ed0-dddf-456f-83c8-0d9f5e3d3a41",
+   "question_id": "CH_1786077857430_ne30",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "534e6141-c089-4e5d-8953-e0ce8d5aea5d",
+   "question_id": "CH_1786078278852_d401",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "1f7da6a5-bd4b-4e3c-8e6b-ebd8628deeef",
+   "question_id": "CH_1786078278852_itd0",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "5d159393-7439-4a59-98c2-97b5a969947a",
+   "question_id": "CH_1786078278852_avap",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "857cd8d3-f1c7-4c8d-be41-b54a2e44c468",
+   "question_id": "CH_1786078278852_oq84",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "e6104d71-988a-47b9-b69e-89083555c6bb",
+   "question_id": "CH_1786078278852_001c",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "67f73de1-610b-4896-9ea1-393db4a97062",
+   "question_id": "CH_1786078278852_e3hm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b0fcd97d-a8cd-4dee-9354-c980b883c36f",
+   "question_id": "CH_1786078278852_wjie",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "80759fd9-09b9-46d5-802d-4bfb28b870fb",
+   "question_id": "CH_1786078278852_v4zu",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "6af25965-bd74-4d89-9cd7-c846926f1f94",
+   "question_id": "CH_1786078278852_omja",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "7c1b4845-5b07-4724-8a63-96a2b07c1250",
+   "question_id": "CH_1786073264692_zlbn",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "a0510a40-3bf2-4d2f-9475-4a770ba2ff87",
+   "question_id": "CH_1786078278852_2tlj",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "6254aa94-84e1-45ef-9db9-946e488775fd",
+   "question_id": "CH_1786074051884_u1ps",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "ed2be488-b241-4f43-b598-8af3839bb559",
+   "question_id": "CH_1786074051884_yrs3",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "13e08883-082d-4931-a93e-45854737ac72",
+   "question_id": "CH_1786073264692_4jgp",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "146b1ee9-52c9-4529-a07f-a2fd1bd967cf",
+   "question_id": "CH_1785922931285_7t5c",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "3c1db0d0-ec8e-4195-ab16-6bb6cf812ed2",
+   "question_id": "CH_1786078278852_9y0v",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "a77b319c-28d1-4c59-8e4b-0f6f8f7368c5",
+   "question_id": "CH_1786078278852_ccdw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "9954e3b0-3454-4ab0-877f-e436d296914f",
+   "question_id": "CH_1786078278852_l2eo",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "b4b7aee6-5c9b-42b0-9db6-13badc885e5f",
+   "question_id": "CH_1786078278852_pulw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "abe0121e-7f62-4a86-90d2-f581c948b5f9",
+   "question_id": "CH_1786078278852_nfil",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "13f7605b-3355-401d-be3a-243f6ad93882",
+   "question_id": "CH_1786159610744_4cms",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "03eadd0b-954d-470f-9480-f0935f3d81dd",
+   "question_id": "CH_1786159610744_f18e",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "1260b973-f7dc-4087-9945-11d81985c126",
+   "question_id": "CH_1786074276660_z0ka",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c875f4c1-4bd4-453a-a8c7-c9529fb79897",
+   "question_id": "CH_1786159610744_kzfz",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "48f4fee6-2f94-4b30-8d53-bf4bb607ac16",
+   "question_id": "CH_1786159610744_689l",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "9c796199-c63a-4ee8-8b98-bcea762848c7",
+   "question_id": "CH_1786159610744_8uat",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "511f8e5d-9517-4de1-bd63-21aa30d2fd18",
+   "question_id": "CH_1786159610744_xkik",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "d509b2ef-bdce-4a08-8bc2-4b8f14c092fd",
+   "question_id": "CH_1786159610744_rf3w",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "60c6a20d-d5dd-4fa5-bcd7-805038419ecb",
+   "question_id": "CH_1786159610744_o7t2",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "bb651ddb-d57b-41de-ba21-0028573e5a28",
+   "question_id": "CH_1786159610744_0ykd",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "3bde5408-1c70-47ee-89d1-5dfad3cc71c0",
+   "question_id": "CH_1786159610744_tg1t",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "f601c546-ed5a-4403-89bc-68109585f7cc",
+   "question_id": "CH_1786161853433_wsl0",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "a7a168bb-deb5-4b65-92d1-6ad5816c0cf7",
+   "question_id": "CH_1786161853433_b5f9",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "33458130-d24b-41b1-8a80-033973e95d6b",
+   "question_id": "CH_1786161853433_hdm7",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "a6e8c85d-9e01-4b24-821d-975675aef531",
+   "question_id": "CH_1786161853433_qwy0",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "3d8a8821-7f60-42cb-8d0e-887d412f73c1",
+   "question_id": "CH_1786161853433_ve0g",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "25e6f5d1-3a17-4e51-bdb4-deb1854aaa5d",
+   "question_id": "CH_1786161853434_fnhl",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "f46a5f4b-77e8-4228-8c49-5fc193a3cc0d",
+   "question_id": "CH_1786161853434_m1mh",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "6f44c525-f470-4af1-9545-cfabfa6de5dc",
+   "question_id": "CH_1786161853434_38ps",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "ab45e08c-d765-43f6-8039-5d87506de3d5",
+   "question_id": "CH_1786161853434_4a5r",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "2f6304f8-6217-42fc-930e-3acea3701025",
+   "question_id": "CH_1786161853434_ilpd",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "bc9f1df6-e932-4a1a-b86a-524f30a2a0af",
+   "question_id": "CH_1786161853434_65lo",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "402af7dd-fbd1-434b-bc85-ccdbebb9d015",
+   "question_id": "CH_1786161853434_yx77",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "b4fc8f66-3575-4ad3-95d3-505bd68f2203",
+   "question_id": "CH_1786161853434_t65t",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "e106ecbd-c0fc-4a62-97e6-218c98754513",
+   "question_id": "CH_1786161853434_zm6t",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "b5c0a3f4-9f0e-4acf-89bf-e998eaee9c7c",
+   "question_id": "CH_1786161853434_o7jo",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "0200cdbc-dd5b-410a-a919-dd89fe507e9f",
+   "question_id": "CH_1786161853434_zy3q",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "3cce1be5-b19e-4397-a079-31702087ae18",
+   "question_id": "CH_1786161853434_arsz",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "71aee7cb-1af1-4af1-83ef-c7bb9f7db0ca",
+   "question_id": "CH_1786161853434_uje0",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "9119de54-d250-43e9-9487-176f894cc283",
+   "question_id": "CH_1786172493126_f5fj",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "4b65e31e-ef5c-42a6-bed0-24b951b77afe",
+   "question_id": "CH_1786172493126_40ru",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "6fc412c3-1d99-426f-a85e-3053b97e7640",
+   "question_id": "CH_1786172493126_7uzl",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "782cb3e0-e99a-4e5d-8d37-8acf6fb2e9d3",
+   "question_id": "CH_1786172493126_t83l",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "ac3c6824-e97b-4cbb-a0f3-599df684025f",
+   "question_id": "CH_1786172493126_mi51",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "ad71505b-7b24-42ae-a22b-98277d3a64f0",
+   "question_id": "CH_1786172493126_113d",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "3525a470-88b0-42c3-9d63-3734a0b8044f",
+   "question_id": "CH_1786172493126_w7tn",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "14390d67-d763-412d-b733-88af7b2ae76d",
+   "question_id": "CH_1786172493126_g33g",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "b4e63f3b-7973-45e6-bdc4-9e4c67206556",
+   "question_id": "CH_1786172493126_0jy3",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "eaa2933c-7826-4a19-8e65-95936f0b736b",
+   "question_id": "CH_1786172493126_ms8o",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "e906bd7c-7a47-42db-8cd2-d52d2218c746",
+   "question_id": "CH_1786172493126_jomw",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "4e7e278c-9367-448c-a36d-d8b9ef1533ba",
+   "question_id": "CH_1786172493126_9gx7",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "9085ced2-9e28-4123-8953-012e9c4fb422",
+   "question_id": "CH_1786172493126_4ys8",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "4d192891-8230-4a14-a8b0-b8b6246aa269",
+   "question_id": "CH_1786172493126_ouj0",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "c9ee20e2-fa8d-42c3-a5c1-67a313c6dce1",
+   "question_id": "CH_1786172493126_bb7e",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "12faf871-f314-4a93-a3c1-9401f882aea7",
+   "question_id": "CH_1786172493126_zfah",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "5ddc1f8f-83de-4fd8-82e8-fd6508a67a92",
+   "question_id": "CH_1786172493126_ukad",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "28bfb178-ca49-47a1-b9c4-7a5beb08fda8",
+   "question_id": "CH_1786172493126_go5p",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "932a6f03-dffd-4435-b5ed-34323b54b606",
+   "question_id": "CH_1786172493126_vtun",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "38b8f05c-a58d-4e06-8fc7-93742a247841",
+   "question_id": "CH_1786172493126_ygs0",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "6c20759c-40bf-4c16-aa3d-31218376ea2b",
+   "question_id": "CH_1786074276660_7rha",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "fd9f8d82-121a-432e-8007-1e9ef9038750",
+   "question_id": "CH_1786173221695_luwf",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "7590a157-d398-44d1-83d7-cfb3d6f9abfb",
+   "question_id": "CH_1786174042667_kvx3",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "da5e67ed-651d-4942-8240-c4d619fc9883",
+   "question_id": "CH_1786174042667_et1n",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "c078570d-93a7-46b7-872a-b6b36e3331b1",
+   "question_id": "CH_1786174042667_3836",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "6be16c10-9995-4f9c-a815-1840dc183455",
+   "question_id": "CH_1786174042667_7ho7",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "5f102d4b-f436-479c-ad00-37d892087236",
+   "question_id": "CH_1786159610744_sxtw",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "056fe96e-333d-4669-bcc8-2a2a6cd97571",
+   "question_id": "CH_1786159610744_188h",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "0f17b412-5fa0-4f19-9441-2041ed6b3b99",
+   "question_id": "CH_1786159610744_58if",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "7fafbe95-03b8-45d3-9e46-6e5dd564ed48",
+   "question_id": "CH_1786159610744_1puf",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "f8e4b37b-acef-4bcc-91f9-ddcfe2b0f1ce",
+   "question_id": "CH_1786159610744_by5t",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "257cadb7-58a2-4e29-9c97-533cd566e99f",
+   "question_id": "CH_1786161853433_4li7",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "8b5cbc15-0618-415c-8520-8dcd8da0b685",
+   "question_id": "CH_1786172493126_8ljd",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "dca0e4c4-f729-4634-a28d-cbd4a566aa1c",
+   "question_id": "CH_1786172493126_jftf",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "985ff8be-8cec-4ed2-b096-9b47df86a43a",
+   "question_id": "CH_1786174042667_bxax",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "46122e5e-042f-4737-bd46-fd482d30edba",
+   "question_id": "CH_1786174042667_mz04",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "4d4917dd-d822-4ab0-b11b-0d13e945bef0",
+   "question_id": "CH_1786174042667_4yfq",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "da0f5fa5-d8e5-4f3f-bd53-e44d282b2106",
+   "question_id": "CH_1786175256459_2bpd",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "1865b62d-0264-4024-8a66-661049697156",
+   "question_id": "CH_1786173221695_044o",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "510f8c07-6a0b-448a-ac2a-e780d5494a80",
+   "question_id": "CH_1786173221695_md3i",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "4b7ec28f-b206-49b0-aa8e-567ca3c7799a",
+   "question_id": "CH_1786174042667_okrr",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "025a7019-b5c0-4549-9312-f2870bb25e26",
+   "question_id": "CH_1786174042667_aiw0",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "f8e5c0fb-7b84-4dd3-8d4d-8083459e8480",
+   "question_id": "CH_1786175256459_z05n",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "ec8b256f-d3d7-440a-bb2c-8026ebbfb81a",
+   "question_id": "CH_1786175256459_cku0",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "cef1f99d-1568-49d0-a774-313203a8fd4f",
+   "question_id": "CH_1786175256459_x89q",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "c25783da-3a7a-4fe1-b408-5beab4b96e68",
+   "question_id": "CH_1786174042667_da5t",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "a5cea3f7-019f-4c6e-9832-ecb1136ce383",
+   "question_id": "CH_1786174042667_q83y",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "72494bf6-111e-4010-9c7a-fbefb3931602",
+   "question_id": "CH_1786175256459_j9k3",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "35478f2d-02f4-4fc3-8759-f41928d32167",
+   "question_id": "CH_1786175256459_5ya2",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "07001158-fe82-499d-8d0e-84daeefd0b81",
+   "question_id": "CH_1786182463288_nypt",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "22c02557-802b-4b9e-8412-40799f52d225",
+   "question_id": "CH_1786182463288_9im7",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "c7c39a73-9c1d-4f48-8ac0-6597b9bfbd0b",
+   "question_id": "CH_1786175256459_o5t8",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "02b2d87f-88e9-4712-a81c-f04d4ef4f3fa",
+   "question_id": "CH_1786182898594_8qen",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "c0bb080e-da55-4c9d-a852-b7caa6413ada",
+   "question_id": "CH_1786175256459_l23d",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "73ef3325-3468-4610-b475-7e37356e14ed",
+   "question_id": "CH_1786175256459_mm0f",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "fc7b0d90-e329-4938-91b8-a25bdae14444",
+   "question_id": "CH_1786175256459_llhu",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "c234c3e4-c856-45a3-b2cd-f55595dccbf8",
+   "question_id": "CH_1786175256459_7e9r",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "1c69ef1f-4dde-48fb-ac86-6ab153cc1eaf",
+   "question_id": "CH_1786182898594_mdsd",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "84d80d23-5696-450f-af89-d4520a1e5efd",
+   "question_id": "CH_1786379382952_qnn4",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "74a12518-e63a-426b-ab4a-8148daa067ad",
+   "question_id": "CH_1786379382952_dpl8",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "713e0d68-91ec-4e36-acb5-3f0baf113553",
+   "question_id": "CH_1786379382952_6n32",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "b0a19d59-d604-405b-8052-23596f2447da",
+   "question_id": "CH_1786175256459_7y3q",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "4c86b0db-4dcf-42ed-888d-232d54994af3",
+   "question_id": "CH_1786175256459_wnco",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "ff3e3dcc-694b-4900-9760-d16f29fe291b",
+   "question_id": "CH_1786379382952_h1f0",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "fd61854d-8602-4e30-900b-20d167321f3b",
+   "question_id": "CH_1786380952688_qzin",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "9961e1d9-2316-4eb6-abc1-f06183067611",
+   "question_id": "CH_1786380952688_le9k",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "1a6a6b28-afa3-4774-8c09-c3df267e3fe5",
+   "question_id": "CH_1786379382952_katx",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "46defc0e-b0de-4bbb-922c-00d8235407c2",
+   "question_id": "CH_1786426877976_holx",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "543e7ee1-edca-4cb1-bea0-dd8123a11b43",
+   "question_id": "CH_1786449503465_lmd6",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "93689ed7-37e8-4eb8-9d18-95084aa84deb",
+   "question_id": "CH_1786414869051_3eu2",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "c95512d4-693e-45ba-a1a0-d278743af603",
+   "question_id": "CH_1786424565274_waxv",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "59c80b2b-3e9d-4463-b9cc-07559ba67e79",
+   "question_id": "CH_1786426877976_f55v",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "d900088a-93ea-4323-8239-fe4c5d96a10a",
+   "question_id": "CH_1785823594859_g3qv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "f764d00b-efd8-4fc9-97fb-fa3398ff6317",
+   "question_id": "CH_1785823594859_rbnj",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "f5b03002-02f1-4025-8f80-1a9e06ddaac9",
+   "question_id": "CH_1785922931285_wseh",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "959a2460-f9f5-4b43-b8d9-a1cd22ddcdb1",
+   "question_id": "CH_1785922931285_o9gk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "a28a39fd-e875-4191-8758-a90e35178630",
+   "question_id": "CH_1786182898594_9c9f",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "cc35caf3-f803-4633-88be-fc5f59c6f2a6",
+   "question_id": "CH_1786182463288_6scw",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "e7af1dcc-0b07-4915-b2eb-595473135f35",
+   "question_id": "CH_1786182463288_h1os",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "bf99940b-d865-4961-bae7-ef3d491857df",
+   "question_id": "CH_1786182463288_erpa",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "5fa517f5-eea0-4550-ab74-1cbe420f6e53",
+   "question_id": "CH_1786182463288_147x",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "905adae1-64f5-4023-be93-b8040879d127",
+   "question_id": "CH_1786182463288_3wtd",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "50d48d2c-2896-45e3-94c7-225a181c9674",
+   "question_id": "CH_1785922931285_j2rn",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Chứng minh nguyên hàm"
+  },
+  {
+   "id": "d7058c63-b704-438d-8ad7-c4518e83f7e5",
+   "question_id": "CH_1786003041141_742y",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "95fde7f1-3edb-46b9-8a1f-a9a4b852876b",
+   "question_id": "CH_1786182463288_7yty",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "d8845dfb-9454-4417-94c0-35851ed527b5",
+   "question_id": "CH_1785922931285_d2f5",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Chứng minh nguyên hàm"
+  },
+  {
+   "id": "cf1dec6d-5309-4c0f-ac2e-3fa7914efad0",
+   "question_id": "CH_1786182463288_6zh4",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "0e346bb2-9d6b-4782-8c6f-6a3d358972e9",
+   "question_id": "CH_1785922931285_3m7h",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "a7fede0e-0db6-4475-834a-a40472f848ce",
+   "question_id": "CH_1785922931285_r5rb",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "8e7a5f68-fe8d-472b-90a2-305cb5de32a5",
+   "question_id": "CH_1786182898594_yauq",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "0047fa30-5a9e-4b12-b256-4f4d19dc056a",
+   "question_id": "CH_1786182898594_ye9o",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "f157590f-4764-471e-b42f-437195273f6f",
+   "question_id": "CH_1786182898594_k52k",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "7a9f2ec7-573f-491b-b8df-a9c8fef78572",
+   "question_id": "CH_1786182898594_qrrf",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "f88b0ac4-d777-4e3c-8500-353fdc258bc5",
+   "question_id": "CH_1786182898594_1ium",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "35f3c263-f38a-4e0f-a8f0-b324d893243f",
+   "question_id": "CH_1786182898594_jvku",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "cf3efc1b-5218-46c6-9357-e62bc427d58f",
+   "question_id": "CH_1786182898594_vh2i",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "f6b1f0eb-5afe-4868-a693-6eea9eb38926",
+   "question_id": "CH_1786182898594_ltqp",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "1574ddfc-6646-4c73-b6c9-96d2d6ab1d1c",
+   "question_id": "CH_1786182898594_ptqq",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "8995c3c1-7031-4554-aa38-b2ef7e6017b3",
+   "question_id": "CH_1786182898594_zukd",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "b92fb2f7-af9b-4acb-9435-5a1fb2587aa8",
+   "question_id": "CH_1786182898594_emhi",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "84a1e437-bc25-4fdb-943a-9663098438d4",
+   "question_id": "CH_1786182898594_p60s",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "36f158b8-7f23-491f-97e7-6be93769dc9e",
+   "question_id": "CH_1786372767076_1uy7",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "8e3695c3-707d-47bf-af68-37515188f13a",
+   "question_id": "CH_1786372767076_x7md",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "cbca65a6-5b3d-4f95-a08f-00d64a22f78a",
+   "question_id": "CH_1786372767076_rneb",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "ea3a4122-3caf-459f-8bd7-1f8a9d3da226",
+   "question_id": "CH_1786372767076_etl5",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "8d66fdf2-9d4c-43f6-bdb8-4186e8726291",
+   "question_id": "CH_1786182898594_1cka",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "440179d1-30e1-4640-b921-f08bbcab9d79",
+   "question_id": "CH_1786182898594_5hdc",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "94606898-4a15-4dbf-bb8a-253bee481f95",
+   "question_id": "CH_1785922931285_1cmh",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "f7a0b702-729c-4ba3-9e96-5e2225e99e9b",
+   "question_id": "CH_1785922931285_psj5",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "fba29e1f-a2ff-4b93-96d1-e6360fd2b7e2",
+   "question_id": "CH_1786372767076_3gjz",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "af4a4b58-eb81-41e6-99bf-caa6c8408e35",
+   "question_id": "CH_1785922931285_sv5m",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "c8f27b32-4a43-444c-aced-1938dd35c29b",
+   "question_id": "CH_1786373159508_2876",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "de07421c-9aa5-4d67-ad6b-a7c9b95944f1",
+   "question_id": "CH_1786372767076_veer",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "64877946-cd7b-4bac-b117-35c11037224d",
+   "question_id": "CH_1786372767076_imow",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "fc5f27c9-2219-428a-bd71-6f682d20af31",
+   "question_id": "CH_1786372767076_ljjt",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "f2531f25-ea25-4d5c-9445-f6ba88777923",
+   "question_id": "CH_1785922931285_ujvs",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Chứng minh nguyên hàm"
+  },
+  {
+   "id": "fb15a980-6d7b-47eb-808d-fceabf98c79f",
+   "question_id": "CH_1786074864901_7bes",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "16ac961b-f82b-428d-a752-73a4b81a498c",
+   "question_id": "CH_1786074864901_7noe",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "95907125-f055-469f-8b85-2831bac6d2b3",
+   "question_id": "CH_1786372767076_sr47",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "1047499a-921f-4ac6-ab51-d45199afa9ea",
+   "question_id": "CH_1786372767076_tagz",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "32daaf0d-50bd-487b-bd47-c05a84dcf662",
+   "question_id": "CH_1786372767076_yyst",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "9035cdcc-ea1e-414e-9412-f6fc46c377cc",
+   "question_id": "CH_1785996833148_whgi",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "3f649e87-b3b7-4044-9085-330689e47804",
+   "question_id": "CH_1785999521179_g9nc",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "7c251fee-f0bd-4f9f-8fd8-9deeafa39382",
+   "question_id": "CH_1786372767076_w8ds",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "4547ea16-d1b8-4cab-bd7a-e8d29acfcd43",
+   "question_id": "CH_1786373159508_tenu",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "27fedad1-e899-4cc3-9e3c-5b839796f4a4",
+   "question_id": "CH_1786373159508_ehzc",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "54de97b0-35a3-433c-bf51-79bd54a4ac76",
+   "question_id": "CH_1786373159508_me8x",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "cf9d1c82-78c1-4cd3-9cb7-a78e0a5b53aa",
+   "question_id": "CH_1786373159508_vjqr",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "eb61ab04-2bf6-4bf8-aeb2-47ce0ee0665c",
+   "question_id": "CH_1786372767076_f3zh",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "509d5bfc-dbaf-4c54-8d2a-89a7e32d7061",
+   "question_id": "CH_1786373159508_z37w",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "544abf65-74b0-49dd-b6cd-78cd7bc8b173",
+   "question_id": "CH_1785922931285_jef1",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "089f0150-5aea-44e4-aaf7-cf3e740e5e09",
+   "question_id": "CH_1786377016719_ygjk",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "9b3cfd6c-2fb9-4184-a500-a718327189b5",
+   "question_id": "CH_1786373159508_pc4i",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "3d5c6dd7-4ca7-4412-8e03-e4728279aedb",
+   "question_id": "CH_1786373159508_ukri",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "276de274-2441-4edf-abf5-acd4956e4105",
+   "question_id": "CH_1785922931285_u5m7",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "3f64224d-abe7-4e2a-a8b4-15a02e69c39a",
+   "question_id": "CH_1786373159508_jbdl",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "5d972545-eb03-4632-9326-377f9f543a35",
+   "question_id": "CH_1786373159508_lyl9",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "358dbf71-9857-4372-bd53-848dfcf7b974",
+   "question_id": "CH_1786373159508_r5l3",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "07413b40-ff42-4b1b-8304-78f2be92996a",
+   "question_id": "CH_1786373159508_nsor",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "9f79fff7-b18e-4254-aaa7-57682ec28759",
+   "question_id": "CH_1786373159508_z2xl",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "27bac08f-c62e-4e5b-b869-9e46a6df47f5",
+   "question_id": "CH_1786373159508_l41e",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "1a082617-f8ad-4da1-9b9b-d894356bcbbb",
+   "question_id": "CH_1785999521179_jtgr",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "bca55f34-acdd-4c11-8587-b7e4d026fee3",
+   "question_id": "CH_1786377016719_8nm5",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "8ce09c93-5ab4-4580-be82-c554eafd263b",
+   "question_id": "CH_1786373159508_6ci8",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "201e827b-28cc-4038-9fa5-349c2b4806e6",
+   "question_id": "CH_1786373159508_0fwh",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "db2fbe12-d581-41f1-82a4-ebb0e88d3ca0",
+   "question_id": "CH_1786377016719_0w7x",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "e15ca18d-68a4-43f4-9308-011513fa7e3f",
+   "question_id": "CH_1786377016719_jqyi",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "b44be6f3-09fd-43cb-bbdb-f9b5a88e3229",
+   "question_id": "CH_1786377016719_r16e",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "9b2a45e2-393c-4448-9c81-4ee1ed2d32f6",
+   "question_id": "CH_1786377016719_zwt1",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "28c14ae8-c530-4998-b2ec-f4c481fcc9b2",
+   "question_id": "CH_1786377016719_hbzv",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "0c32ca36-128b-46d2-9e72-832a6256a0ae",
+   "question_id": "CH_1785999521179_iiox",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "0ac9df89-4ded-47f4-9914-ad0bf97062dc",
+   "question_id": "CH_1786003041141_sxfy",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "8c7474d7-97b5-4108-8db4-8660277ba790",
+   "question_id": "CH_1786182463288_ofzt",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "853ec965-4bec-4ca2-ab82-af32fcfab409",
+   "question_id": "CH_1786373159508_unav",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "ee4b21ad-c47b-426c-b289-a11901924c9f",
+   "question_id": "CH_1786004203424_ede9",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "9778bc64-c746-4fcb-a09c-e872fa0397d3",
+   "question_id": "CH_1786004203424_zanx",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "42230555-3de5-48ac-bb62-e7d450c141fc",
+   "question_id": "CH_1786004203424_6t37",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "2b086316-70be-42b4-b8d4-7f9f85d6f2b0",
+   "question_id": "CH_1786004203424_10z2",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "7a16cc9d-037d-43b7-9a6c-ed14c1e2e3da",
+   "question_id": "CH_1785999521179_xs5s",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "d3dc0fea-3edd-4594-b1fc-9a24ed48871b",
+   "question_id": "CH_1785999521179_q0hc",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "5d9dfd5a-f7b7-4372-92bd-85c6be9cf9a5",
+   "question_id": "CH_1786001213955_tox9",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "fb38d6e0-38c6-4177-8696-fae69032a07d",
+   "question_id": "CH_1786004203424_yljz",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "86e29f98-0165-45be-b029-267e7fddf2e2",
+   "question_id": "CH_1786004203424_22ve",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "d701a450-b398-4d10-9496-026be652f9ab",
+   "question_id": "CH_1786377016719_bgf8",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "edc580f0-2095-4fa2-bb7e-a3a5540e3449",
+   "question_id": "CH_1786377016719_esmu",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "0e96bb3b-4ccb-49ae-b7fb-1086684ca9bb",
+   "question_id": "CH_1786377016719_rer5",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "3f82ead5-d861-4243-bdd9-e22f76665d88",
+   "question_id": "CH_1786377016719_snyg",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "98d70011-9a08-474e-bd2c-ba4857c0f16f",
+   "question_id": "CH_1786377016719_tmrs",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "ae8dd659-e262-4889-977a-12a35999a05b",
+   "question_id": "CH_1786005574457_v9ba",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "a883cdfc-5e84-48a1-966f-21397014e318",
+   "question_id": "CH_1786074276660_m5g4",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "a3efd79c-e10d-4b28-b0e4-109080bff960",
+   "question_id": "CH_1786373159508_e37e",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "630615fa-adee-494b-91dc-0698fd90ecb6",
+   "question_id": "CH_1786379382952_36to",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "53ce9fa5-4650-4e2b-890e-18a0c8ca6086",
+   "question_id": "CH_1786379382952_pu6n",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "2a18e9f0-9ea7-4088-bcc1-11f3b56dec84",
+   "question_id": "CH_1786414869051_ziui",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "1b4c2489-fb7a-4200-8b2b-d1d73d0c72e9",
+   "question_id": "CH_1786424565274_emh4",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "00b390ae-a60e-46ac-a4ea-f777f7675045",
+   "question_id": "CH_1786072988532_dyca",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "6ac0ca77-bf00-4138-b147-cdb40df45029",
+   "question_id": "CH_1786072988532_n4li",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "91e6ab60-16ca-4326-9464-b56218ff68c1",
+   "question_id": "CH_1786072988532_jm34",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "0132aaaf-b24e-41a4-9862-5487a327fcac",
+   "question_id": "CH_1786072988532_le3g",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "cda79e2e-e518-4423-8a82-aa271e59dde3",
+   "question_id": "CH_1786073083779_zidt",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "21ee5acd-438d-4d2d-b35f-12fc7b1d4fa0",
+   "question_id": "CH_1786073195251_v649",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "3baf7e1f-da16-4dfb-8651-dd4afc44af06",
+   "question_id": "CH_1786073195251_3yf7",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "6bb8e7d4-90c2-4b4e-bc30-2fca2689541f",
+   "question_id": "CH_1786073195251_a8j8",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "df7dacc3-c1d3-4bcc-a922-3b58f3d46542",
+   "question_id": "CH_1786073195251_d7nm",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "e92fb1cd-a3b0-45fc-8366-91bc92248ef0",
+   "question_id": "CH_1786073195251_p1wk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "b4c6693e-11e7-49a8-afd3-6b62bd5321af",
+   "question_id": "CH_1786073264692_s0gc",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "eb69e9a3-b64f-4d3c-a201-86314a4c3631",
+   "question_id": "CH_1786073264692_9c4c",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "09a953ac-a6a9-4acc-8399-4d25623b62ed",
+   "question_id": "CH_1786073264692_zpui",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "c7650e2d-6ad2-453c-bfca-edc9c6ec038c",
+   "question_id": "CH_1786073353260_o2k8",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "781de850-ca16-4280-9b4c-be6498669c97",
+   "question_id": "CH_1786073353260_x0xw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "5332a99f-3d78-46ac-8864-9a1326ac8349",
+   "question_id": "CH_1786073457620_1qmo",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "57e4f29b-9efd-4a45-9ba8-05efd00b42c9",
+   "question_id": "CH_1786073457620_avq6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "0f0d65c4-060c-4c51-86fe-11798940454a",
+   "question_id": "CH_1786073808533_elge",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "a8f66466-56b5-424b-afd4-166196a9340d",
+   "question_id": "CH_1786073808533_us3z",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "53b44ea5-afac-465a-bf43-39df1a039bc6",
+   "question_id": "CH_1786073808533_vk1l",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "31a3aa08-ab11-4d23-8307-2945647964be",
+   "question_id": "CH_1786073808533_0eh2",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "d20b1256-c2ed-439a-8015-855a51779816",
+   "question_id": "CH_1786073844868_mlg1",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "e9c875bf-a2aa-4a63-8f1f-acff50bd9d1b",
+   "question_id": "CH_1786073844868_h5o6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "b619be15-908b-4162-b5b9-1647f4b8722c",
+   "question_id": "CH_1786073844868_5mxr",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "88a6af9e-959d-4a5f-8df6-1a8c7016d60b",
+   "question_id": "CH_1786073970901_l53q",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "164cb8c3-d683-450e-a926-f897a8536be4",
+   "question_id": "CH_1786073970901_x0pd",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "a7465e37-deeb-433f-bffc-2413962f4437",
+   "question_id": "CH_1786073970901_b9li",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "2c5383de-886a-4b13-b438-9d0ed047ccd2",
+   "question_id": "CH_1786074051884_n8bj",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "6ee2dccd-c12e-498b-9e7e-9885119d627d",
+   "question_id": "CH_1786074051884_b8fk",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "e470ca5e-3c65-4b47-b0e2-8a075065630c",
+   "question_id": "CH_1786074051884_ydqc",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "1fc5128b-80a8-4c15-b680-9b0ccc88a6a5",
+   "question_id": "CH_1786074529013_5z2n",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "c108fc46-3554-4070-bfd5-5d4a1f4ef934",
+   "question_id": "CH_1786074529013_1yi1",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "e4ccad2a-f78c-4912-902c-7b2a8e6dbfaf",
+   "question_id": "CH_1786377016719_3gyu",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "934995ed-6e52-482a-88f3-6d9439589f04",
+   "question_id": "CH_1786377016719_3nvr",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "54b344b5-9164-4368-9fc7-43269fe7847d",
+   "question_id": "CH_1786377016719_gqzg",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "04559e89-6cf3-4b58-b178-ee3006115b37",
+   "question_id": "CH_1786377346895_wchi",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "d35a121e-1a61-4d04-9271-02f8e9c2e3ae",
+   "question_id": "CH_1786377346895_bjma",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "a35dafa9-5634-4b3c-b8ec-e39207d7e8f8",
+   "question_id": "CH_1786377346895_hoz1",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "56c154fc-f1da-4d71-836c-64daead164d6",
+   "question_id": "CH_1786377016719_5fn5",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "1f686560-85be-45ea-a20d-5654e1f7059e",
+   "question_id": "CH_1786377016719_r3jv",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "4a0204e8-d9d0-47ab-8ecd-ba95052ba132",
+   "question_id": "CH_1786075191926_p8ov",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "1810fcd0-b6cf-445f-8e8d-e9dada6a74fb",
+   "question_id": "CH_1786077542862_u6ci",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "7842bb06-0f3e-49e6-80c6-ae9056f3dd1a",
+   "question_id": "CH_1786074996221_8fxv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "376a1da3-9502-476f-bde7-8fd78a887bea",
+   "question_id": "CH_1786074996221_6z25",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "5847c412-84b3-44b5-a7fe-b46175e224f5",
+   "question_id": "CH_1786075191926_n3b9",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "1ff122f0-da7d-4297-92c2-e907d5717b7a",
+   "question_id": "CH_1786075191926_vfej",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "24e0d26b-1925-4ae0-8bd1-f3dd6b02fd20",
+   "question_id": "CH_1786377346895_yzhv",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "9128002c-06ec-412c-858a-b9543d628225",
+   "question_id": "CH_1786377346895_f78r",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "5584193c-20ea-4347-a5d8-904d8c6928cd",
+   "question_id": "CH_1786075191926_ckbu",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "475c6b47-f717-4755-9e0a-4120cd3c1801",
+   "question_id": "CH_1786075191926_2e6h",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "97430166-89db-49ed-9877-ef9c125b1e71",
+   "question_id": "CH_1786075191926_rqm3",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "35ad637f-5233-4627-b221-ca7abd88d80d",
+   "question_id": "CH_1786075332781_nxi5",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "df4428f4-b5ff-4540-b49f-8a82e5f4e04b",
+   "question_id": "CH_1786075332781_fi1k",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "ecd52990-3e27-403c-9623-d2aa135e667e",
+   "question_id": "CH_1786075332781_a1vd",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "8d463949-f088-4d54-b697-3127f04bb4f5",
+   "question_id": "CH_1786075332781_ewr6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "dd54f292-1cfa-4189-829c-a41033d6d452",
+   "question_id": "CH_1786077377468_9p1k",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tính chất của nguyên hàm"
+  },
+  {
+   "id": "b0fb00a9-4674-43cd-821f-831c0328a631",
+   "question_id": "CH_1786077377468_esx1",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "b58d3514-1fe5-4cf6-b6e0-c9dabb6fe037",
+   "question_id": "CH_1786077857430_3iwt",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "e83075ad-de30-47c9-919b-33b7b0a0b6b5",
+   "question_id": "CH_1786077857430_14em",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "de13720f-373f-4c93-ae76-2acb80fccf78",
+   "question_id": "CH_1786078278852_123h",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "1f3ca7f8-d6d7-4033-a051-aebeef7e5a5e",
+   "question_id": "CH_1786078278852_8znv",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Toán tổng hợp"
+  },
+  {
+   "id": "efb991d0-059c-42c2-88b3-dc020de36551",
+   "question_id": "CH_1786377346895_d9pt",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "4e317a6a-d9b8-4814-84bc-c853bfa6cc08",
+   "question_id": "CH_1786377346895_d9fg",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "6b03a208-b8ce-4f81-a488-d3a8f3e5cb13",
+   "question_id": "CH_1786377346895_rere",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "06bd9982-cd31-4c2c-a262-bef1e9b2fc8d",
+   "question_id": "CH_1786078278852_qvkw",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "id": "335000b7-ce86-45b2-be85-e774ea9ab86d",
+   "question_id": "CH_1786159610744_57yw",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "5b245676-21c6-4452-98e9-f4317cccd333",
+   "question_id": "CH_1786159610744_atkq",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "9193194a-b8df-43f8-8580-11bf29061693",
+   "question_id": "CH_1786159610744_s15j",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "683e806a-1dbd-4eac-97de-90ff610b7c6c",
+   "question_id": "CH_1786159610744_pydb",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "17fc5b53-9f5f-4eeb-898f-d9c6f023e884",
+   "question_id": "CH_1786172493126_ubak",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "b92c2070-03d5-4861-80ca-ae407a9eb2d2",
+   "question_id": "CH_1786172493126_o1za",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "1f5a93c6-1d7f-408b-a29a-5e45e3c42b3b",
+   "question_id": "CH_1786172493126_onz9",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "b6e6f071-7527-4ed1-a5f6-8225b2454fc9",
+   "question_id": "CH_1786172493126_qbqs",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "1dd5e637-5019-469b-988c-193bd1dfaac0",
+   "question_id": "CH_1786172493126_k5ya",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "4ee1821c-cc11-4037-9f47-65daa08ae30e",
+   "question_id": "CH_1786377346895_gemb",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "6450e7d1-f029-4e5e-b680-bb6847ee9449",
+   "question_id": "CH_1786173221695_0oac",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "9e990435-7f9f-423f-96f8-9299fde2c6d1",
+   "question_id": "CH_1786173221695_ckd7",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "003ee1a3-eba8-45df-a417-6975dbae7332",
+   "question_id": "CH_1786173221695_88ql",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "bcc59d88-dc67-4dda-a707-2156618322ea",
+   "question_id": "CH_1786174042667_erzw",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "de59e5c3-353d-445a-80f0-3f33aa70d2af",
+   "question_id": "CH_1786174042667_qn3j",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "4c68bdff-1c35-432d-ba1a-c3ce9b3a5a79",
+   "question_id": "CH_1786174042667_trai",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "45f60668-0519-46b1-9f46-83050b41a254",
+   "question_id": "CH_1786174042667_0yks",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "fd044ff1-a6c8-4191-833b-55e6b4c0197f",
+   "question_id": "CH_1786174042667_rp1y",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "e49ca18e-7cd6-4579-b24d-f7d7b45d8ef3",
+   "question_id": "CH_1786174042667_i8zx",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "bd891bbe-1bb3-4401-9df7-e51c2548c587",
+   "question_id": "CH_1786174042667_bbbs",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "e72fec13-aa37-4eb5-8b29-4ecbd4c43093",
+   "question_id": "CH_1786174042667_hbg6",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "f243b7c8-ac94-4cc1-b310-d14ecb46221a",
+   "question_id": "CH_1786174042667_rr4a",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "c64c4aa0-0d89-473f-bedc-51178f3e14ab",
+   "question_id": "CH_1786174042667_uez6",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "af4e7010-ffdb-42cf-8cf1-a5f55763d33d",
+   "question_id": "CH_1786174042667_h2nu",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "6b336b23-34e7-45e6-928b-deb40f79d340",
+   "question_id": "CH_1786174042667_yfrs",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "0b32f46c-7141-469f-a047-d94791021325",
+   "question_id": "CH_1786377346895_sm3f",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "45dd32a2-3289-4aad-bd70-1181ef5f9561",
+   "question_id": "CH_1786175256459_xvwo",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "6501f841-6bae-4b13-b219-9caaca15d9f1",
+   "question_id": "CH_1786175256459_l0cd",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "d0e94452-6449-4ea0-a400-bbdd77525149",
+   "question_id": "CH_1786175256459_znhs",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "2062751a-1e9b-4b9e-89b2-714c2b28fe4f",
+   "question_id": "CH_1786377346895_yocp",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "a68e1d60-2a53-466c-a4fc-00dde039b123",
+   "question_id": "CH_1786377346895_nhhb",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Xác định hàm số từ đẳng thức đạo hàm"
+  },
+  {
+   "id": "1e3b7dd9-9784-46c3-b167-d8aca1afa4b1",
+   "question_id": "CH_1786377346895_h5km",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "b18af156-0726-4e46-8db3-0b291a299339",
+   "question_id": "CH_1786377346895_lklt",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "a28c799c-6b9a-4284-9089-53ce1555bb18",
+   "question_id": "CH_1786182463288_kamu",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "7d09f7db-1cd5-4545-987a-d0f8e8c41911",
+   "question_id": "CH_1786377346895_6zrs",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "482a0b1d-0d58-467f-b36c-3254a7132958",
+   "question_id": "CH_1786182898594_z54c",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "402d793b-bf77-4c9d-9802-3a592d0f2e7c",
+   "question_id": "CH_1786182898594_ykbk",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "a26256a9-fab0-4f45-af96-b56178ac1aad",
+   "question_id": "CH_1786182898594_ab5a",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "46fefd62-7944-48f5-a6e1-8a3aa6fad1d0",
+   "question_id": "CH_1786182898594_07za",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "467317f4-c7c9-46cb-88af-5dce4c81fae5",
+   "question_id": "CH_1786377346895_2zfp",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "3a006c72-9215-41f9-b239-8dafe9b2516d",
+   "question_id": "CH_1786377346895_xtwf",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "f49f4ca0-9a08-46bc-8aff-dcb85005879e",
+   "question_id": "CH_1786377346895_td5b",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Xác định hàm số từ đẳng thức đạo hàm"
+  },
+  {
+   "id": "04a6cf04-7c56-4a6f-b0d5-b72b21532d8d",
+   "question_id": "CH_1786377695651_zwy5",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "0e7c0814-a14b-4111-8ca5-fbdd8214b102",
+   "question_id": "CH_1786377346895_tybu",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "9533189b-48bb-4e17-9975-18e6e23be4a8",
+   "question_id": "CH_1786377695651_k4m7",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "a44012ef-3466-4618-99d3-94d6ae74feb7",
+   "question_id": "CH_1786377346895_zjpq",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "b8859949-bfa2-478d-8b6e-23ee48e05d42",
+   "question_id": "CH_1786377346895_8lnf",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "907b6fd0-d038-4af4-80e1-fcfe435b3172",
+   "question_id": "CH_1786377695651_y8v1",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "de5db096-9b78-4ca8-bcbc-9b99ccbb49d6",
+   "question_id": "CH_1786377695651_29o7",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "e22dab44-543c-4068-bacf-2f9b0db42b77",
+   "question_id": "CH_1786377695651_27hu",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "1bcc5ea4-b05f-482a-ba3e-086cd4dbf563",
+   "question_id": "CH_1786377695651_7abm",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "3df58499-7173-47c7-b000-77e91b4da814",
+   "question_id": "CH_1786377695651_ky66",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "b8abfd06-6426-45d7-8c3d-fd1b3dbcfff6",
+   "question_id": "CH_1786377695651_j3vm",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "a9b003ed-f57b-4e16-abdf-6401bbe04d69",
+   "question_id": "CH_1786377695651_jsgs",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "636f83a0-bd25-4ad0-ac9a-6d85af0a3049",
+   "question_id": "CH_1786377695651_48a5",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "4896ab8d-44fa-4f44-a564-5e48dd99d80c",
+   "question_id": "CH_1786377695651_4ll8",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "3c460524-653d-4335-a635-b5e575185ea0",
+   "question_id": "CH_1786377695651_ndic",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Xác định hàm số từ đẳng thức đạo hàm"
+  },
+  {
+   "id": "52270a1b-051f-4df5-b077-e97b9df38828",
+   "question_id": "CH_1786377695651_tle9",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "777e102c-ece1-4526-9739-52b327dc83f4",
+   "question_id": "CH_1786377695651_deil",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "11aa1b86-c6d3-4a6d-a692-5cc139f58fc8",
+   "question_id": "CH_1786377695651_pifo",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "c12b35c4-016f-4a20-bb81-8d574f333721",
+   "question_id": "CH_1786378011058_1xbx",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "f8b65331-27a7-4390-a65f-a3336685a931",
+   "question_id": "CH_1786378011058_g2ei",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "54d5adf2-5caa-462e-bbbf-ee4f6386d9fd",
+   "question_id": "CH_1786377695652_yeju",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "552f471b-8061-443a-af5d-58f08cc5f4b2",
+   "question_id": "CH_1786377695652_dghq",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "caaf5737-82f2-46d1-b891-a0f839a212f4",
+   "question_id": "CH_1786378011058_47ot",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "53c81f67-5061-4c3f-825a-bb175f1e575e",
+   "question_id": "CH_1786378011058_ln3u",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "f037f32d-0b31-4154-88b3-0485608eb8e0",
+   "question_id": "CH_1786378011058_8s5h",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "1b941d3d-d06c-4a6f-beb9-9bfff4e75b06",
+   "question_id": "CH_1786378011058_inbj",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "96ed8269-2c46-46b3-a3d0-614dfbc40f55",
+   "question_id": "CH_1786378011058_rg3i",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "4a9a4e75-2399-4ec7-a681-2ddbc7a0f4da",
+   "question_id": "CH_1786378011058_w9cd",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "bc6b3ecd-7452-4fe4-b387-4d537935369a",
+   "question_id": "CH_1786378011058_coky",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "00489343-8bf1-422c-bde7-30aeec341d59",
+   "question_id": "CH_1786378011058_y2ru",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "c5e2b41c-28cc-401b-b012-ff94cd4e4a6a",
+   "question_id": "CH_1786378011058_qmbw",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "bb828cbc-690a-46c8-9a7f-df508dcfb930",
+   "question_id": "CH_1786378011058_9ess",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "811732ed-99cd-4d3a-ab7f-b2c09d27b337",
+   "question_id": "CH_1786378011058_3188",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "be601643-174b-4267-a1bd-8b866273684c",
+   "question_id": "CH_1786378011058_nlz6",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "b6b35d08-8ed9-43f3-a9fa-12de1097c7be",
+   "question_id": "CH_1786378011058_70r6",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "3f604b06-3e3c-4990-8957-034745ed73ec",
+   "question_id": "CH_1786378011058_hg15",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "a342d248-9a77-4a03-b741-08b090f1f1d2",
+   "question_id": "CH_1786378011058_zw8f",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "68f8b414-e6c5-4018-8652-fdefdf482dd6",
+   "question_id": "CH_1786378011058_nx7e",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "df4b23b8-a08e-44b7-a612-cf091da5c7d4",
+   "question_id": "CH_1786379382952_mwn8",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "acb6158b-83cc-44eb-9ec2-3008ad6531b0",
+   "question_id": "CH_1786379382952_kr2c",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "4fcfe8b8-a578-4f72-91a7-8738a0006d5a",
+   "question_id": "CH_1786380952688_58cd",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "58915e2f-0428-4537-b531-17b961fff19d",
+   "question_id": "CH_1786379382952_ezet",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "3945fcf7-aff9-4c7f-a100-fc7d67524b4d",
+   "question_id": "CH_1786379382952_54xr",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "d04e81d8-121a-4888-a782-11839c517169",
+   "question_id": "CH_1786379382952_3m7e",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "c4a8eaa5-44c3-43bd-ac75-e7fbfd24a735",
+   "question_id": "CH_1786380952688_ochl",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "f45f0c90-bf61-47ab-a78c-0cb5920abc01",
+   "question_id": "CH_1786379382952_1u6b",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "1b5f5e79-b5e8-49b0-8a57-7c06ca19eb08",
+   "question_id": "CH_1786380952688_fpog",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "5324fd5f-7fa2-4b4e-a37d-256275e8c072",
+   "question_id": "CH_1786379382952_5yc1",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "7aa672a2-f4a2-457d-98f8-eec86fb7c786",
+   "question_id": "CH_1786380952688_segl",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "25723dac-358b-4ead-9af6-a9788ed83f4d",
+   "question_id": "CH_1786380952688_j3q8",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "b0685f64-78fd-432a-a51b-5a28d1dae8db",
+   "question_id": "CH_1786380952688_k5nv",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "c0daa51e-bd29-47eb-ad35-1b134255b739",
+   "question_id": "CH_1786380952688_um74",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "bdf2d5fd-e000-47d0-81b6-5b9a33ba2f89",
+   "question_id": "CH_1786380952688_one1",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "d25fca99-b0cd-4bd2-bacb-7661aa7155aa",
+   "question_id": "CH_1786372767075_c1ig",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Sử dụng ý nghĩa hình học để tính tích phân"
+  },
+  {
+   "id": "377ffd8f-6019-4993-9926-8ef74deb4407",
+   "question_id": "CH_1786372767075_qom8",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "75d1e075-8003-4639-b2af-af2b2be37d4f",
+   "question_id": "CH_1786372767075_ehm2",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "5fa70edf-07e5-460d-83e5-b4024dc2f6b3",
+   "question_id": "CH_1786372767076_a0w2",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "bd669a2a-0b14-4622-b761-22304004fec7",
+   "question_id": "CH_1786372767076_o0yw",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "b3ecaf92-a001-4980-9837-756d402e61ba",
+   "question_id": "CH_1786372767076_iir9",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "c8514a88-4598-42db-aee3-30dc117a5e89",
+   "question_id": "CH_1786380952688_4p7u",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "5593a064-58b0-4e38-88de-7e306407f45a",
+   "question_id": "CH_1786380952688_ycp8",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "76aae692-52df-4f31-88bd-94ef251e5664",
+   "question_id": "CH_1786380952688_4w8y",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "01e15a6c-8a17-4fe0-8d4b-f81ba0777540",
+   "question_id": "CH_1786373159508_e3za",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "bfb0b66b-47bd-4bec-8547-121ea3908878",
+   "question_id": "CH_1786373159508_otx4",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "95a6d0e6-1d18-4a1c-b025-6b2eb4f9df9f",
+   "question_id": "CH_1786377016719_o2j0",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "a0772c3d-8b24-4b91-aa48-1ea6e52cae17",
+   "question_id": "CH_1786377016719_0xj9",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "4146a931-b8f1-41e4-94e1-ede8d2a5e008",
+   "question_id": "CH_1786377016719_41g8",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "91e06277-50f9-4f2d-90fb-98160d690c0a",
+   "question_id": "CH_1786377346895_738h",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "7388327b-5c5c-4974-90e4-480445579fcb",
+   "question_id": "CH_1786377695652_5cwx",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tích phân hàm chứa giá trị tuyệt đối"
+  },
+  {
+   "id": "c2f8ec8a-acad-4690-b779-629e53721ac3",
+   "question_id": "CH_1786378011058_e0ai",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "id": "d26ca268-aa9f-4921-a69b-44a18d4f5484",
+   "question_id": "CH_1786378011058_4yj4",
+   "lesson": "Bài 2. Tích phân",
+   "math_form": "Tính tích phân"
+  },
+  {
+   "id": "1a9cf429-c4f6-486b-921c-0f820028e489",
+   "question_id": "CH_1786379382952_y1ur",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "d646610c-213e-44b7-b6c6-9a819fbb801c",
+   "question_id": "CH_1786379382952_vnvi",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "fd053818-d8d2-40b1-8578-9631a7367c0d",
+   "question_id": "CH_1786380952688_rve5",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "0fba7ba8-b9a7-4bde-a33a-5f358c7d3e16",
+   "question_id": "CH_1786379382952_8468",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "b1924dea-6118-4e4a-bacb-419fc1282036",
+   "question_id": "CH_1786380952688_u3si",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "9ab541c4-8b91-468d-b703-a7e9a1b3b2d9",
+   "question_id": "CH_1786380952688_4rg2",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "a57f031b-abee-47b9-a5dd-b91947d2701c",
+   "question_id": "CH_1786414869051_umow",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "bf20bbdb-55a6-4e58-b041-f2a37a0e34a5",
+   "question_id": "CH_1786380952688_5vtp",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "981fe821-61c8-4257-b70e-61515b7c4f28",
+   "question_id": "CH_1786424565274_vp9s",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "82431d4d-274a-49f1-aa68-b0555a6e7119",
+   "question_id": "CH_1786424565274_4t8r",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "a68ced3d-5fd6-444e-b6c2-3196e3463ae0",
+   "question_id": "CH_1786426877976_p2r3",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "f2ecdcd4-a0c2-4155-b184-e0c7f89f3f7e",
+   "question_id": "CH_1786380952688_ogqh",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "fda7b835-4617-4275-b95c-bd1beb1ae0c5",
+   "question_id": "CH_1786380952688_sfqg",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích vật thể khi biết diện tích mặt cắt"
+  },
+  {
+   "id": "f2253606-2983-4273-b55a-7166b19b38a0",
+   "question_id": "CH_1786073457620_pj9h",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "id": "67c02d80-1bd8-4935-9e53-a314b8318279",
+   "question_id": "CH_1786414869050_vqop",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "b1413479-3a21-4bfa-8cb3-e049fb2cc156",
+   "question_id": "CH_1786414869051_ylty",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "69117df8-78b9-40a7-a847-30dce5de96bf",
+   "question_id": "CH_1786414869051_aq9u",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "id": "a45b9bdd-cb06-44bc-b2a5-98d88e32a746",
+   "question_id": "CH_1786414869051_5k8v",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "8b0a3fdd-1472-4a3f-8ac4-c9b5b80bacbb",
+   "question_id": "CH_1786380952688_sscy",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "a1c22487-72f3-4ba4-9e90-10951817cced",
+   "question_id": "CH_1786414869051_0t30",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "c9fff5bf-dc05-4b5b-9603-577ffd1e205f",
+   "question_id": "CH_1786414869051_oabi",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "ba7005a0-1875-4a64-b1a1-e46f44673b91",
+   "question_id": "CH_1786414869051_vlft",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "9bdd70e1-b2c3-499e-bc3b-87d4c609a17f",
+   "question_id": "CH_1786414869051_xl4p",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "2c9dbf16-4d05-4864-b338-3c6ae9db727b",
+   "question_id": "CH_1786414869051_4i5u",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "960ec8e7-c075-4f1b-a201-37fd2619aa57",
+   "question_id": "CH_1786414869051_85rt",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "6f34b392-6440-4615-ac9f-5b1b2781afee",
+   "question_id": "CH_1786414869051_n2mi",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "c4d6b9ff-db32-44f5-93c7-b4769b656b5b",
+   "question_id": "CH_1786414869051_yl98",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  },
+  {
+   "id": "fef301d1-2740-4565-8edf-128db41682c9",
+   "question_id": "CH_1786414869051_9w4d",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "fbfedb9c-9e42-408a-b9be-ba72c86f5181",
+   "question_id": "CH_1786414869051_9sl9",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích vật thể khi biết diện tích mặt cắt"
+  },
+  {
+   "id": "22e7394a-64ff-4ecc-b212-bc65f2912bdf",
+   "question_id": "CH_1786414869051_l0r4",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "3abe7231-9ca2-42b3-8189-fe5e63050cc1",
+   "question_id": "CH_1786424565274_0f19",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "id": "76d69c3e-8cc5-45a6-887e-8d39f014afae",
+   "question_id": "CH_1786424565274_soqg",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "d1c0300e-bd9d-4b7c-81a6-c5d6cfa3f836",
+   "question_id": "CH_1786424565274_90tb",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "id": "e54ae058-f7a9-4761-a12e-019c5bfa5698",
+   "question_id": "CH_1786426877976_5u1d",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Tính thể tích vật thể khi biết diện tích mặt cắt"
+  },
+  {
+   "id": "57cc9e8a-abe1-488f-a0da-f9299481ea5f",
+   "question_id": "CH_1786426877976_4rl3",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "acee87e9-af00-468f-8ecd-5b2b078f2de9",
+   "question_id": "CH_1786426877976_3syi",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "1c2e5e20-8cd8-4aa3-a730-5cc22f8549b9",
+   "question_id": "CH_1786426877976_c0tt",
+   "lesson": "Bài 3. Ứng dụng hình học của tích phân",
+   "math_form": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "id": "b8edcd84-e6f1-4f26-98f0-fd747bcd270d",
+   "question_id": "CH_1786073457620_u1v6",
+   "lesson": "Bài 1. Nguyên hàm",
+   "math_form": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  }
+ ]
+}

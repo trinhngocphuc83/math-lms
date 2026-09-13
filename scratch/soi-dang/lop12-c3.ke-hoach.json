@@ -1,0 +1,102 @@
+{
+ "lop": "12",
+ "chuong": 3,
+ "dang": [
+  {
+   "bai": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "cu": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm",
+   "moi": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm",
+   "yc": "Tính được khoảng biến thiên của mẫu số liệu ghép nhóm từ bảng tần số hoặc biểu đồ."
+  },
+  {
+   "bai": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "cu": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ",
+   "moi": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ",
+   "yc": "Tính được các tứ phân vị, khoảng tứ phân vị của mẫu số liệu ghép nhóm và xác định được giá trị ngoại lệ."
+  },
+  {
+   "bai": "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "cu": "Toán tổng hợp",
+   "moi": "Ý nghĩa và so sánh độ phân tán bằng khoảng biến thiên, khoảng tứ phân vị",
+   "yc": "Giải thích được ý nghĩa của khoảng biến thiên, khoảng tứ phân vị và so sánh được độ phân tán của hai mẫu số liệu ghép nhóm."
+  },
+  {
+   "bai": "Bài 2. Phương sai và độ lệch chuẩn",
+   "cu": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm",
+   "moi": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm",
+   "yc": "Tính được phương sai, độ lệch chuẩn của mẫu số liệu ghép nhóm."
+  },
+  {
+   "bai": "Bài 2. Phương sai và độ lệch chuẩn",
+   "cu": "Toán tổng hợp",
+   "moi": "Ý nghĩa và so sánh độ phân tán bằng phương sai, độ lệch chuẩn",
+   "yc": "Giải thích được ý nghĩa của phương sai, độ lệch chuẩn và so sánh được độ phân tán, độ ổn định của hai mẫu số liệu ghép nhóm."
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "cu": "Toán tổng hợp",
+   "moi": "Bài tập tổng hợp chương 3",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 3 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "dang": "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "dang": "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "dang": "Tính phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm"
+  }
+ ],
+ "chuyen": {
+  "54g7": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  ],
+  "1c66": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Tìm khoảng biến thiên của mẫu số liệu ghép nhóm"
+  ],
+  "x6dr": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  ],
+  "8whq": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  ],
+  "ytm3": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  ],
+  "dqbd": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  ],
+  "ia9f": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  ],
+  "zab1": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  ],
+  "n9g6": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Tìm các tứ phân vị, khoảng tứ phân vị và xác định giá trị ngoại lệ"
+  ],
+  "x4nw": [
+   "Bài 1. Khoảng biến thiên và khoảng tứ phân vị",
+   "Ý nghĩa và so sánh độ phân tán bằng khoảng biến thiên, khoảng tứ phân vị"
+  ],
+  "l3c5": [
+   "Bài 2. Phương sai và độ lệch chuẩn",
+   "Ý nghĩa và so sánh độ phân tán bằng phương sai, độ lệch chuẩn"
+  ]
+ }
+}

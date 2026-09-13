@@ -1,0 +1,834 @@
+{
+ "lop": "12",
+ "chuong": 1,
+ "dang": [
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Lý thuyết về tính đơn điệu và cực trị",
+   "moi": "Lý thuyết về tính đơn điệu và cực trị",
+   "yc": "Nhận biết được tính đơn điệu, điểm cực trị, giá trị cực trị và các mệnh đề lí thuyết về đơn điệu, cực trị."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm khoảng đơn điệu dựa vào bảng biến thiên",
+   "moi": "Tìm khoảng đơn điệu dựa vào bảng biến thiên, bảng xét dấu",
+   "yc": "Xác định được các khoảng đồng biến, nghịch biến của hàm số dựa vào bảng biến thiên, bảng xét dấu đạo hàm."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số",
+   "moi": "Tìm khoảng đơn điệu dựa vào đồ thị hàm số",
+   "yc": "Xác định được các khoảng đồng biến, nghịch biến của hàm số dựa vào đồ thị hàm số."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm",
+   "moi": "Tìm khoảng đơn điệu dựa vào đồ thị đạo hàm",
+   "yc": "Xác định được các khoảng đồng biến, nghịch biến của hàm số dựa vào đồ thị của đạo hàm."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": null,
+   "moi": "Tìm khoảng đơn điệu dựa vào biểu thức đạo hàm",
+   "yc": "Xác định được các khoảng đồng biến, nghịch biến của hàm số khi biết biểu thức đạo hàm."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Xét tính đơn điệu của hàm số cho bởi công thức",
+   "moi": "Xét tính đơn điệu, tìm khoảng đơn điệu của hàm số cho bởi công thức",
+   "yc": "Xét được tính đơn điệu và tìm được các khoảng đồng biến, nghịch biến của hàm số cho bởi công thức.",
+   "gop": [
+    "Tìm khoảng đơn điệu của hàm số cho bởi công thức"
+   ]
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu",
+   "moi": "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu",
+   "yc": "Tìm được giá trị của tham số để hàm số đồng biến, nghịch biến trên R hoặc trên một khoảng cho trước."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm cực trị của hàm số dựa vào bảng biến thiên",
+   "moi": "Tìm cực trị, số điểm cực trị dựa vào bảng biến thiên, bảng xét dấu",
+   "yc": "Xác định được điểm cực trị, giá trị cực trị và số điểm cực trị của hàm số dựa vào bảng biến thiên, bảng xét dấu.",
+   "gop": [
+    "Tìm số điểm cực trị dựa vào bảng biến thiên"
+   ]
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm cực trị của hàm số dựa vào đồ thị hàm số",
+   "moi": "Tìm cực trị của hàm số dựa vào đồ thị hàm số",
+   "yc": "Xác định được điểm cực trị, giá trị cực trị của hàm số dựa vào đồ thị hàm số."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm cực trị của hàm số dựa vào đồ thị đạo hàm",
+   "moi": "Tìm cực trị, số điểm cực trị dựa vào đồ thị đạo hàm",
+   "yc": "Xác định được các điểm cực trị, số điểm cực trị của hàm số dựa vào đồ thị của đạo hàm.",
+   "gop": [
+    "Tìm số điểm cực trị dựa vào đồ thị đạo hàm"
+   ]
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm cực trị dựa vào biểu thức đạo hàm",
+   "moi": "Tìm cực trị, số điểm cực trị dựa vào biểu thức đạo hàm",
+   "yc": "Xác định được các điểm cực trị, số điểm cực trị của hàm số khi biết biểu thức đạo hàm.",
+   "gop": [
+    "Tìm số điểm cực trị dựa vào biểu thức đạo hàm"
+   ]
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm cực trị của hàm số cho bởi công thức",
+   "moi": "Tìm cực trị, số điểm cực trị của hàm số cho bởi công thức",
+   "yc": "Tính được toạ độ điểm cực trị, giá trị cực trị và số điểm cực trị của hàm số cho bởi công thức.",
+   "gop": [
+    "Tìm số điểm cực trị của hàm số cho bởi công thức"
+   ]
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị",
+   "moi": "Tìm tham số để hàm số thỏa mãn điều kiện cực trị",
+   "yc": "Tìm được giá trị của tham số để hàm số có cực trị thoả mãn điều kiện cho trước."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Toán tổng hợp",
+   "moi": "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số",
+   "yc": "Xét được tính đúng sai của các mệnh đề về tính đơn điệu, cực trị của một hàm số cho bởi công thức, bảng biến thiên hoặc đồ thị."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Ứng dụng cực trị vào hình học",
+   "moi": "Ứng dụng cực trị vào hình học",
+   "yc": "Tính được khoảng cách, độ dài, diện tích liên quan đến các điểm cực trị của đồ thị hàm số."
+  },
+  {
+   "bai": "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về tính đơn điệu và cực trị",
+   "yc": "Giải quyết được bài toán thực tế bằng tính đơn điệu và cực trị của hàm số (chuyển động, lợi nhuận, nhiệt độ)."
+  },
+  {
+   "bai": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "cu": "Min-Max trên đoạn",
+   "moi": "Tìm giá trị lớn nhất, nhỏ nhất của hàm số trên đoạn",
+   "yc": "Tìm được giá trị lớn nhất, giá trị nhỏ nhất của hàm số trên một đoạn bằng đạo hàm."
+  },
+  {
+   "bai": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "cu": "Min-Max trên khoảng",
+   "moi": "Tìm giá trị lớn nhất, nhỏ nhất của hàm số trên khoảng, nửa khoảng",
+   "yc": "Tìm được giá trị lớn nhất, giá trị nhỏ nhất của hàm số trên khoảng, nửa khoảng hoặc trên tập xác định bằng bảng biến thiên."
+  },
+  {
+   "bai": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "cu": "Min-max bằng bảng biến thiên",
+   "moi": "Tìm giá trị lớn nhất, nhỏ nhất dựa vào bảng biến thiên",
+   "yc": "Xác định được giá trị lớn nhất, giá trị nhỏ nhất của hàm số dựa vào bảng biến thiên cho trước."
+  },
+  {
+   "bai": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "cu": "Min-max bằng đồ thị",
+   "moi": "Tìm giá trị lớn nhất, nhỏ nhất dựa vào đồ thị",
+   "yc": "Xác định được giá trị lớn nhất, giá trị nhỏ nhất của hàm số dựa vào đồ thị cho trước."
+  },
+  {
+   "bai": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "cu": "Min-max chứa tham số m",
+   "moi": "Tìm tham số để giá trị lớn nhất, nhỏ nhất thỏa mãn điều kiện",
+   "yc": "Tìm được giá trị của tham số để giá trị lớn nhất, giá trị nhỏ nhất của hàm số thoả mãn điều kiện cho trước."
+  },
+  {
+   "bai": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "cu": "Toán tổng hợp",
+   "moi": "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số",
+   "yc": "Xét được tính đúng sai của các mệnh đề về giá trị lớn nhất, giá trị nhỏ nhất của một hàm số."
+  },
+  {
+   "bai": "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về giá trị lớn nhất, nhỏ nhất",
+   "yc": "Vận dụng được giá trị lớn nhất, giá trị nhỏ nhất của hàm số để giải bài toán tối ưu trong thực tế (chi phí, diện tích, thể tích).",
+   "gop": [
+    "Ứng dụng thực tế của cực trị"
+   ]
+  },
+  {
+   "bai": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "cu": "Lý thuyết và định nghĩa",
+   "moi": "Nhận biết tiệm cận từ giới hạn của hàm số",
+   "yc": "Nhận biết được tiệm cận đứng, tiệm cận ngang, tiệm cận xiên của đồ thị hàm số từ các giới hạn cho trước."
+  },
+  {
+   "bai": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "cu": "Tìm tiệm cận bằng biểu thức đại số",
+   "moi": "Tìm tiệm cận của đồ thị hàm số cho bởi công thức",
+   "yc": "Tìm được phương trình các đường tiệm cận đứng, ngang, xiên và số đường tiệm cận của đồ thị hàm số cho bởi công thức."
+  },
+  {
+   "bai": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "cu": "Xác định tiệm cận qua đồ thị, bảng biến thiên",
+   "moi": "Xác định tiệm cận qua đồ thị, bảng biến thiên",
+   "yc": "Xác định được các đường tiệm cận của đồ thị hàm số dựa vào đồ thị hoặc bảng biến thiên."
+  },
+  {
+   "bai": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "cu": null,
+   "moi": "Tìm tham số liên quan đến tiệm cận",
+   "yc": "Tìm được giá trị của tham số để đồ thị hàm số có tiệm cận thoả mãn điều kiện cho trước."
+  },
+  {
+   "bai": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "cu": "Bài toán tổng hợp đồ thị hàm số",
+   "moi": "Xét các mệnh đề về tiệm cận và đồ thị hàm phân thức",
+   "yc": "Xét được tính đúng sai của các mệnh đề về tiệm cận, tâm đối xứng và các tính chất của đồ thị hàm phân thức."
+  },
+  {
+   "bai": "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về tiệm cận",
+   "yc": "Giải quyết được bài toán thực tế có mô hình hàm phân thức và ý nghĩa của tiệm cận (chi phí trung bình, nồng độ, dân số)."
+  },
+  {
+   "bai": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "cu": "Nhận dạng đồ thị hàm số",
+   "moi": "Nhận dạng đồ thị hàm số",
+   "yc": "Nhận biết được công thức hàm số tương ứng với đồ thị hoặc bảng biến thiên cho trước."
+  },
+  {
+   "bai": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "cu": "Xác định yếu tố đặc trưng của đồ thị",
+   "moi": "Xác định hệ số, tâm đối xứng, giao điểm với trục toạ độ từ đồ thị",
+   "yc": "Xác định được dấu các hệ số, tâm đối xứng, giao điểm với trục toạ độ của đồ thị hàm số bậc ba, hàm phân thức.",
+   "gop": [
+    "Xác định dấu các hệ số của hàm bậc ba dựa vào đồ thị"
+   ]
+  },
+  {
+   "bai": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "cu": "Phân tích, tổng hợp tính chất đồ thị hàm số",
+   "moi": "Phân tích, tổng hợp tính chất đồ thị hàm số",
+   "yc": "Vận dụng được các tính chất về đơn điệu, cực trị, tiệm cận để phân tích đồ thị và xét tính đúng sai của các mệnh đề.",
+   "gop": [
+    "Toán tổng hợp"
+   ]
+  },
+  {
+   "bai": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "cu": "Bài toán tổng hợp đồ thị hàm số",
+   "moi": "Sự tương giao của hai đồ thị",
+   "yc": "Xác định được số giao điểm, toạ độ giao điểm của hai đồ thị và biện luận số nghiệm của phương trình bằng đồ thị."
+  },
+  {
+   "bai": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "cu": "Tiếp tuyến và yếu tố hình học",
+   "moi": "Tiếp tuyến và yếu tố hình học",
+   "yc": "Vận dụng được đạo hàm để giải bài toán về tiếp tuyến và các yếu tố hình học liên quan đến đồ thị hàm số."
+  },
+  {
+   "bai": "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán thực tế về khảo sát hàm số",
+   "yc": "Vận dụng được khảo sát hàm số để giải quyết bài toán thực tế."
+  },
+  {
+   "bai": "Bài 5. Ứng dụng của đạo hàm",
+   "cu": "Toán thực tế",
+   "moi": "Bài toán tối ưu trong thực tế",
+   "yc": "Giải quyết được bài toán tối ưu trong thực tế (chi phí, doanh thu, khoảng cách, kích thước) bằng đạo hàm."
+  },
+  {
+   "bai": "Bài 5. Ứng dụng của đạo hàm",
+   "cu": "Thiết lập mô hình toán học và khảo sát",
+   "moi": "Thiết lập mô hình toán học và khảo sát",
+   "yc": "Thiết lập được mô hình hàm số từ tình huống thực tế và vận dụng đạo hàm để khảo sát, tìm giá trị tối ưu."
+  },
+  {
+   "bai": "Bài 5. Ứng dụng của đạo hàm",
+   "cu": "Khảo sát hàm số thực tế (cho sẵn công thức)",
+   "moi": "Khảo sát hàm số thực tế (cho sẵn công thức)",
+   "yc": "Khảo sát được hàm số cho sẵn công thức trong bài toán thực tế (nồng độ thuốc, dân số, chi phí) để trả lời câu hỏi."
+  },
+  {
+   "bai": "Bài 5. Ứng dụng của đạo hàm",
+   "cu": "Đọc đồ thị, bảng biến thiên, bảng xét dấu",
+   "moi": "Đọc thông tin từ đồ thị, bảng biến thiên trong bài toán thực tế",
+   "yc": "Đọc được thông tin về xu hướng, giá trị lớn nhất, nhỏ nhất từ đồ thị, bảng biến thiên trong bài toán thực tế."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": null,
+   "moi": "Bài tập tổng hợp chương 1",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 1 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "dang": "Toán tổng hợp"
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "dang": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "dang": "Toán thực tế"
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "dang": "Đọc đồ thị, bảng biến thiên, bảng xét dấu"
+  }
+ ],
+ "chuyen": {
+  "14_2": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm khoảng đơn điệu dựa vào biểu thức đạo hàm"
+  ],
+  "219_6": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm khoảng đơn điệu dựa vào biểu thức đạo hàm"
+  ],
+  "009_1": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm khoảng đơn điệu dựa vào biểu thức đạo hàm"
+  ],
+  "39_0": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm khoảng đơn điệu dựa vào biểu thức đạo hàm"
+  ],
+  "35_7": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm khoảng đơn điệu dựa vào biểu thức đạo hàm"
+  ],
+  "35_8": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm khoảng đơn điệu dựa vào biểu thức đạo hàm"
+  ],
+  "35_9": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm khoảng đơn điệu dựa vào biểu thức đạo hàm"
+  ],
+  "33_0": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm khoảng đơn điệu dựa vào biểu thức đạo hàm"
+  ],
+  "609_2": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_0": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_1": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_2": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_3": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_4": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_5": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_6": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_7": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_8": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_9": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_10": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "07_11": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "7_12": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "7_13": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "7_14": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "7_15": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "7_16": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "00_0": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "700_1": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "700_2": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "700_3": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "700_4": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "w8km": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "17_9": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_20": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "00_9": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "04_7": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "45_19": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "554_16": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "2_18": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "48_9": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_0": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_1": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_2": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_3": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_4": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_5": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_6": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_7": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_8": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_9": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_10": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_11": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_12": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_13": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_14": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_15": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_16": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_18": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_19": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "05_21": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "33_6": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện đơn điệu"
+  ],
+  "48_16": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "04_4": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "819_15": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "57_1": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "2_10": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "20_0": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "20_1": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "20_2": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "20_3": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "20_4": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "ysm7": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "ppmh": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Tìm tham số để hàm số thỏa mãn điều kiện cực trị"
+  ],
+  "xgu3": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "33_1": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "08_9": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "609_12": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "iqz8": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "dygz": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "za9q": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "rxrd": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "on5z": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "jwo8": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "c49b": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "hovl": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "44uo": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "nkhr": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "1_12": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "39_13": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "2kws": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "009_6": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "009_5": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "09_7": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "x8m0": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "qsj1": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "08_10": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Xét các mệnh đề về tính đơn điệu và cực trị của hàm số"
+  ],
+  "919_2": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Bài toán thực tế về tính đơn điệu và cực trị"
+  ],
+  "919_3": [
+   "Bài 1. Tính đơn điệu và cực trị của hàm số",
+   "Bài toán thực tế về tính đơn điệu và cực trị"
+  ],
+  "jt3t": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "apzp": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "6jzd": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "occy": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "2954_12": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "0954_11": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "0954_10": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "6u3k": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "2954_14": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "2954_15": [
+   "Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số",
+   "Xét các mệnh đề về giá trị lớn nhất, nhỏ nhất của hàm số"
+  ],
+  "14_12": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "45_10": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "18_14": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "18_15": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "11_10": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "17_7": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "08_3": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "04_6": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "819_8": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "419_16": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "59tl": [
+   "Bài 3. Đường tiệm cận của đồ thị hàm số",
+   "Tìm tham số liên quan đến tiệm cận"
+  ],
+  "554_18": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  ],
+  "48_18": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  ],
+  "dsz0": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  ],
+  "gfc5": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  ],
+  "e0qr": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  ],
+  "dxge": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  ],
+  "9hkf": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  ],
+  "q3mv": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Phân tích, tổng hợp tính chất đồ thị hàm số"
+  ],
+  "11_6": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Sự tương giao của hai đồ thị"
+  ],
+  "00_6": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Sự tương giao của hai đồ thị"
+  ],
+  "419_6": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Sự tương giao của hai đồ thị"
+  ],
+  "42_5": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Sự tương giao của hai đồ thị"
+  ],
+  "57_5": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Sự tương giao của hai đồ thị"
+  ],
+  "14_13": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Sự tương giao của hai đồ thị"
+  ],
+  "11_19": [
+   "Bài 4. Khảo sát sự biến thiên và vẽ đồ thị hàm số",
+   "Sự tương giao của hai đồ thị"
+  ],
+  "009_11": [
+   "Bài 5. Ứng dụng của đạo hàm",
+   "Bài toán tối ưu trong thực tế"
+  ],
+  "09_13": [
+   "Bài 5. Ứng dụng của đạo hàm",
+   "Bài toán tối ưu trong thực tế"
+  ]
+ }
+}

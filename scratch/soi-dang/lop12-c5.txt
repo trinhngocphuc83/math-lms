@@ -1,0 +1,497 @@
+Chương 5. Phương pháp tọa độ trong không gian · lớp 12 · 28 dạng · 411 câu
+
+
+### [1] Bài 1. Phương trình mặt phẳng | Xét vị trí tương đối của hai mặt phẳng (10)
+    yêu cầu: Xác định được vị trí tương đối giữa hai mặt phẳng bằng phương pháp tọa độ.
+  nrsi TL 2 | Cho ba mặt phẳng (P_1): 2x - y - 2z + 1 = 0, (P_2): 4x - 2y - 4z + 4 = 0, (P_3): x + 4y - z + 1 = 0. Chứng min
+  e0xo TL 2 | Trong không gian Oxyz, cho hai mặt phẳng (\alpha): m^2x - y + (m^2-2)z + 2 = 0 và (\beta): 2x + m^2y - 2z + 1 
+  zc4m NLC 1 | Trong không gian Oxyz, cho mặt phẳng (\alpha): 2x - y + 3 = 0. Mặt phẳng nào sau đây vuông góc với mặt phẳng (
+  nc4c NLC 2 | Trong không gian Oxyz, cho mặt phẳng (\alpha): 2x - y + 3 = 0. Mặt phẳng nào sau đây song song với mặt phẳng (
+  e8a5 DS 3 | Trong không gian Oxyz, cho hai mặt phẳng (P), (Q) lần lượt có phương trình là (P): x - 2y + 3z + 1 = 0 và (Q):
+  deuh DS 3 | Trong không gian Oxyz, cho hai mặt phẳng (P), (Q) lần lượt có phương trình là (P): x + y - z + 1 = 0 và (Q): x
+  g740 DS 3 | Trong không gian với hệ trục tọa độ Oxyz, cho điểm A(0;2;-2) và các mặt phẳng (\alpha): x + 2y - 2z - 1 = 0, (
+  pkuz DS 2 | Trong không gian với hệ tọa độ Oxyz, cho ba mặt phẳng (P): x + 2y - z - 1 = 0; (Q): 3x - y + z - 5 = 0 và (R):
+  2ayp DS 3 | Trong không gian Oxyz, cho mặt phẳng (P): (4-a)x - (a+3)y + z + 1 = 0 và mặt phẳng (Q): 3x - 4y + z + 3 = 0.
+  9i8k TLN 2 | Trong không gian Oxyz, cho (\alpha): x + 2y - z - 1 = 0 và (\beta): 2x + 4y - mz + 2 = 0. Tìm m để (\alpha) và
+
+### [2] Bài 1. Phương trình mặt phẳng | Tính khoảng cách từ một điểm đến mặt phẳng (15)
+    yêu cầu: Tính được khoảng cách từ một điểm đến một mặt phẳng bằng công thức tọa độ.
+  wa48 TL 3 | Cho hình lập phương ABCD.EFGH cạnh 1. Điểm M được cho thỏa mãn hệ thức \overrightarrow{AM} + \overrightarrow{A
+  m696 TL 4 | Cho hình lăng trụ tam giác đều ABC.DEF, AB=6, AD=2. Gọi M, N, P lần lượt là trung điểm DE, DF, BC. Lập hệ trục
+  b11q NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (P) có phương trình: 3x + 4y + 2z + 4 = 0 và điểm A(1;-2;3)
+  gkwk NLC 2 | Trong không gian Oxyz, cho mặt phẳng (P): 2x - y + 2z - 4 = 0. Khoảng cách từ điểm M(3;1;-2) đến mặt phẳng (P)
+  yrfd NLC 2 | Trong không gian Oxyz, khoảng cách từ M(1;2;-3) đến (P): x + 2y + 2z - 10 = 0 là
+  hbwa NLC 2 | Trong không gian Oxyz cho hai mặt phẳng song song (P) và (Q) lần lượt có phương trình 2x - y + z = 0 và 2x - y
+  dg8h DS 2 | Trong không gian Oxyz, cho M(-2; -4; 3) và (P): 2x - y + 2z - 3 = 0, (Q): 2x - y + 2z - 6 = 0.
+  nf25 DS 3 | Cho hai mặt phẳng (P): 2x - y + 2z - 5 = 0; (Q): 4x - 2y + 4z + 1 - m = 0 và điểm M(2;1;5).
+  8a5g DS 3 | Trong hệ trục tọa độ Oxyz, cho điểm A(3;1;1) và hai mặt phẳng (P): x - 2y + 2z - 3 = 0, (Q): -x + 2y - 2z + 1 
+  0g4w DS 3 | Trong hệ trục tọa độ Oxyz, cho hai mặt phẳng (P): 2x - 2y + z + 1 = 0, (Q): 2x - 2y + z - 5 = 0 và các điểm A(
+  okg0 TLN 2 | Cho điểm A(1;2;-1) và mặt phẳng (\alpha): 2x - 2y + z - 7 = 0. Khoảng cách từ A đến mặt phẳng (\alpha) có dạng
+  0f00 TLN 3 | Cho điểm A(1;2;-1) và mặt phẳng (\alpha): x - 2y + 2z + 2 = 0. Mặt phẳng (\beta) song song với mặt phẳng (\alp
+  f722 TLN 2 | Trong không gian Oxyz, cho các điểm A(0;1;2), B(2;-2;1), C(-2;1;0), M(3;0;1). Tính khoảng cách từ M đến mặt ph
+  qdg7 TLN 2 | Trong không gian với hệ trục tọa độ Oxyz, cho A(1;2;3), B(3;4;4). Có tất cả bao nhiêu giá trị của tham số m sa
+  tui5 TLN 3 | Trong hệ tọa độ không gian Oxyz, cho A(1;0;0), B(0;b;0), C(0;0;c), biết b, c > 0, phương trình mặt phẳng (P): 
+
+### [3] Bài 1. Phương trình mặt phẳng | Bài toán cực trị (7)
+    yêu cầu: Vận dụng được kiến thức về phương trình mặt phẳng và khoảng cách để giải quyết bài toán tìm giá trị lớn nhất, giá trị nhỏ nhất trong không g
+  0rwk TLN 4 | Trong không gian Oxyz, cho các điểm M(m;0;0), N(0;n;0), P(0;0;p) không trùng với gốc tọa độ và thỏa mãn m^2 + 
+  io85 TLN 3 | Trong không gian Oxyz, cho điểm A(1;1;2) và mặt phẳng (P): (m-1)x + y + mz - 1 = 0, với m là tham số. Tìm m để
+  8vu4 TLN 4 | Trong không gian với hệ tọa độ Oxyz, cho hai điểm A(3;-2;6), B(0;1;0) và mặt cầu (S): (x-1)^2 + (y-2)^2 + (z-3
+  w3fb TLN 4 | Trong không gian Oxyz, cho hai điểm A(2;-2;4), B(-3;3;-1) và mặt phẳng (P): 2x - y + 2z - 8 = 0. Xét M là điểm
+  1u83 TLN 3 | Trong không gian với hệ trục tọa độ Oxyz, cho hai điểm A(2;3;4), B(6;-3;0) và mặt phẳng (P) sao cho d(B; (P)) 
+  r0qw TLN 4 | Trong không gian Oxyz, cho điểm M(1;2;3). Mặt phẳng (P): x + Ay + Bz + C = 0 chứa trục Oz và cách điểm M một k
+  ba4o TLN 4 | Trong không gian Oxyz, cho hai điểm A(1;-3;2) và B(-2;1;-3). Xét hai điểm M và N thay đổi thuộc mặt phẳng (Oxy
+
+### [4] Bài 1. Phương trình mặt phẳng | Viết phương trình tổng quát của mặt phẳng (102)
+    yêu cầu: Lập được phương trình tổng quát của mặt phẳng đi qua một điểm và biết vectơ pháp tuyến hoặc các yếu tố liên quan.
+  wjyo TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng (P) đi qua điểm A(1;0;-2) và có vectơ pháp tuyến \vec{n}(1;
+  c4it TL 2 | Trong không gian với hệ trục tọa độ Oxyz, viết phương trình mặt phẳng đi qua điểm A(0;1;2) và có vectơ pháp tu
+  frrw TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng đi qua A(-1;1;1) và có vectơ pháp tuyến \vec{n}=(-1;-2;2)
+  dmzs TL 2 | Trong không gian với hệ trục tọa độ Oxyz, cho các điểm A(0;1;2), B(2;-2;1), C(-2;0;1). Phương trình mặt phẳng 
+  6j3g TL 2 | Trong không gian Oxyz, cho ba điểm A(-1;1;1), B(2;1;0) và C(1;-1;2). Mặt phẳng đi qua A và vuông góc với đường
+  yhgh TL 2 | Trong không gian Oxyz, cho A(-1;-1;1), B(3;1;1). Phương trình mặt phẳng trung trực của đoạn AB là.
+  j6bw TL 2 | Trong không gian với hệ tọa độ Oxyz, cho hai điểm A(1;6;-7) và B(3;2;1). Phương trình mặt phẳng trung trực đoạ
+  o4e5 TL 3 | Trong không gian Oxyz, viết phương trình mặt phẳng (P) chứa điểm M(1;3;-2), cắt các tia Ox, Oy, Oz lần lượt tạ
+  3ugb TL 3 | Trong không gian Oxyz, cho hình hộp ABCD.A'B'C'D', biết rằng A(-3;0;0), B(0;2;0), D(0;0;1), A'(1;2;3). Viết ph
+  rqbk TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng (P) đi qua điểm M(0;1;3) và song song với mặt phẳng (Q): 2x
+  9dhf TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng (P) đi qua điểm M(-2;3;1) và song song với mặt phẳng (Q): x
+  ktmm TL 2 | Trong không gian với hệ tọa độ Oxyz, viết phương trình mặt phẳng đi qua điểm M(3;-1;-2) và song song với mặt p
+  dw69 TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng (ABC) với ba điểm A(-1;0;3), B(2;-1;1), C(1;-1;0).
+  jqi0 TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng (ABC) với ba điểm A(1;0;2), B(-2;3;1), C(3;2;1).
+  g8bs TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng (MNP) với ba điểm M(2;0;0), N(0;-1;0), P(0;0;2).
+  9ra1 TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng (MNP) với ba điểm M(0;-2;0), N(3;0;0), P(0;0;-3).
+  sifi TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng đi qua ba điểm A(1;0;-2), B(1;1;1), C(0;-1;2).
+  zvyu TL 2 | Trong không gian Oxyz, cho ba điểm A(1;0;0), B(0;-1;-1), C(5;-1;1). Viết phương trình mặt phẳng (ABC).
+  bg5r TL 2 | Trong không gian với hệ tọa độ Oxyz, viết phương trình mặt phẳng đi qua ba điểm A(2; 3; 5), B(3; 2; 4) và C(4;
+  1e8h TL 2 | Trong không gian với hệ tọa độ Oxyz, viết phương trình mặt phẳng đi qua ba điểm A(1;1;4), B(2;7;9), C(0;9;13).
+  vlo7 TL 3 | Trong không gian Oxyz, viết phương trình mặt phẳng (\alpha) đi qua điểm A(1;2;-2), B(2;-1;4) và vuông góc với 
+  q8vq TL 3 | Trong không gian với hệ tọa độ Oxyz, cho hai điểm A(2;4;1), B(-1;1;3) và mặt phẳng (P): x - 3y + 2z - 5 = 0. V
+  3bqw TL 3 | Trong không gian hệ tọa độ Oxyz, cho A(2;1;-1); B(1;0;1) và mặt phẳng (P): x + 2y - z + 1 = 0. Viết phương trì
+  vx22 TL 3 | Trong không gian Oxyz, viết phương trình mặt phẳng (P) đi qua điểm M(-1;-2;5) và vuông góc với hai mặt phẳng (
+  susj TL 3 | Trong không gian Oxyz, cho hai mặt phẳng (\alpha): 3x - 2y + 2z + 7 = 0 và (\beta): 5x - 4y + 3z + 1 = 0. Phươ
+  3dzx TL 3 | Cho hai mặt phẳng (\alpha): 3x - 2y + 2z + 7 = 0, (\beta): 5x - 4y + 3z + 1 = 0. Phương trình mặt phẳng đi qua
+  5dqk TL 3 | Trong không gian Oxyz, cho hai mặt phẳng (P): x - 3y + 2z - 1 = 0, (Q): x - z + 2 = 0. Mặt phẳng (\alpha) vuôn
+  pzcl TL 2 | Trong không gian Oxyz, viết phương trình mặt phẳng (P) song song với mặt phẳng (Q): x + 2y - 2z + 1 = 0 và các
+  rdnn TL 2 | Trong không gian với hệ tọa độ Oxyz, viết phương trình mặt phẳng (P) song song và cách mặt phẳng (\alpha): 3x 
+  c345 TL 2 | Trong không gian Oxyz, cho mặt phẳng (P): x + 2y + 2z - 10 = 0. Phương trình mặt phẳng (Q) với (Q) song song v
+  owf5 TL 2 | Trong không gian hệ tọa độ Oxyz, lập phương trình các mặt phẳng song song với mặt phẳng (\beta): x + y - z + 3
+  w7q2 TL 2 | Trong không gian với hệ trục tọa độ Oxyz, viết phương trình mặt phẳng (P) song song với mặt phẳng (Q): x - 2y 
+  coie TL 2 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (Q): 2x - y + 2z - 3 = 0 và điểm A(1;2;3). Viết phương trìn
+  7sth TL 3 | Trong không gian Oxyz cho A(2;0;0), B(0;4;0), C(0;0;6), D(2;4;6). Gọi (P) là mặt phẳng song song với mp (ABC),
+  z8sh NLC 1 | Trong không gian Oxyz, phương trình mặt phẳng (Oxy) là
+  n0c2 NLC 1 | Trong không gian Oxyz, mặt phẳng (Oxz) có phương trình là.
+  kncf NLC 1 | Trong không gian Oxyz, phương trình của mặt phẳng (Oyz) là:
+  frtz NLC 1 | Trong không gian Oxyz, cho mặt phẳng (P): 3x - y + 2z - 1 = 0. Vectơ nào dưới đây là một vectơ pháp tuyến của 
+  l8d0 NLC 1 | Trong không gian Oxyz, cho mặt phẳng (P): -2x + 5y + z - 3 = 0. Vectơ nào dưới đây là một vectơ pháp tuyến của
+  2bqh NLC 1 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (P): 3x - z + 2 = 0. Vectơ nào dưới đây là một vectơ pháp t
+  qhum NLC 2 | Trong không gian Oxyz, véctơ nào sau đây là một véctơ pháp tuyến của (P), biết \vec{a}=(-1;-2;-2), \vec{b}=(-1
+  hh3u NLC 2 | Trong không gian Oxyz, cho ba điểm A(3;2;1), B(-1;4;1), C(3;-2;5). Tọa độ nào sau đây là tọa độ vectơ pháp tuy
+  6yru NLC 1 | Trong không gian Oxyz, mặt phẳng đi qua O và nhận vectơ \vec{n}=(2;-1;4) làm vectơ pháp tuyến có phương trình 
+  yqcx NLC 1 | Trong không gian Oxyz, mặt phẳng đi qua O và nhận véctơ \vec{n}=(1;2;-3) làm véctơ pháp tuyến có phương trình 
+  dxhz NLC 2 | Trong không gian với hệ tọa độ Oxyz, phương trình nào dưới đây là phương trình mặt phẳng đi qua điểm M(1;2;-3)
+  clys NLC 2 | Trong không gian Oxyz, phương trình mặt phẳng (\alpha) đi qua điểm A(2;-1;3) và có vectơ pháp tuyến \vec{n}=(2
+  1w73 NLC 1 | Trong không gian Oxyz, cho ba điểm A(3;0;0), B(0;1;0) và C(0;0;-2). Mặt phẳng (ABC) có phương trình là:
+  7xfd NLC 1 | Trong không gian Oxyz, cho ba điểm A(-2;0;0), B(0;3;0) và C(0;0;4). Mặt phẳng (ABC) có phương trình là
+  f2pm NLC 1 | Trong không gian Oxyz, cho ba điểm M(2;0;0), N(0;-1;0), P(0;0;2). Mặt phẳng (MNP) có phương trình là:
+  a7hg NLC 2 | Trong không gian Oxyz, phương trình mặt phẳng (P) đi qua 3 điểm M(-2;0;0), N(0;-1;0), P(0;0;3) là
+  k9ic NLC 2 | Trong không gian Oxyz, phương trình mặt phẳng (P) đi qua 3 điểm A(-1;1;3), B(2;-1;3), C(2;2;-1) là.
+  zbw9 NLC 2 | Trong không gian Oxyz, cho hai điểm A(0;0;1) và B(1;2;3). Mặt phẳng đi qua A và vuông góc AB có phương trình l
+  novy NLC 2 | Trong không gian Oxyz, cho hai điểm A(1;0;0) và B(3;2;1). Mặt phẳng đi qua A và vuông góc với AB có phương trì
+  ly06 NLC 2 | Trong không gian Oxyz, cho điểm A(1;2;-1) và mặt phẳng (P): 2x + y - 3z + 1 = 0. Mặt phẳng qua A và song song 
+  yx61 NLC 2 | Trong không gian Oxyz, cho điểm A(1;-1;2) và mặt phẳng (P): x + 2y - 3z + 1 = 0. Mặt phẳng đi qua A và song so
+  2378 NLC 2 | Trong không gian Oxyz, cho điểm A(1;2;-1) và mặt phẳng (P): x - 2y + 3z + 1 = 0. Mặt phẳng đi qua A và song so
+  z84x NLC 1 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (\alpha): x + y + z - 6 = 0. Điểm nào dưới đây không thuộc 
+  df4y NLC 1 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (P): x - 2y + z - 5 = 0. Điểm nào dưới đây thuộc (P)?
+  i5xn NLC 2 | Trong không gian Oxyz, cho hai điểm A(4;0;1) và B(-2;2;3). Mặt phẳng trung trực của đoạn thẳng AB có phương tr
+  yhuo NLC 2 | Trong không gian Oxyz, cho hai điểm A(-1;2;0) và B(3;0;2). Mặt phẳng trung trực của đoạn thẳng AB có phương tr
+  js5m NLC 3 | Trong không gian với hệ tọa độ Oxyz, cho mặt cầu (S) có tâm I(3;2;-1) và đi qua điểm A(2;1;2). Mặt phẳng nào d
+  i897 NLC 3 | Trong không gian Oxyz, phương trình mặt phẳng (P) đi qua hai điểm A(2;-1;0), B(1;1;2) và vuông góc với mặt phẳ
+  pq9a NLC 3 | Trong không gian Oxyz, phương trình mặt phẳng (P) đi qua điểm M(2;1;-2) và vuông góc với hai mặt phẳng (Q): x 
+  hb6h NLC 3 | Trong không gian Oxyz, phương trình mặt phẳng (P) đi qua điểm N(2;1;-2), song song với trục Oy và vuông góc vớ
+  3m3a NLC 3 | Trong không gian Oxyz, phương trình của mặt phẳng (P) đi qua điểm B(2;1;-3), đồng thời vuông góc với hai mặt p
+  6lpe NLC 3 | Trong không gian Oxyz, mặt phẳng đi qua điểm M(1;-1;1), N(2;1;2) và song song với trục Oz có phương trình là
+  ij6z NLC 3 | Trong không gian Oxyz, cho mặt phẳng (P): 2x - y + 2z + 11 = 0 và hai điểm A(1;0;-2), B(-1;-1;3). Mặt phẳng (Q
+  ig96 DS 2 | Trong không gian Oxyz, cho ba điểm A(1;1;4), B(2;7;9), C(0;9;13).
+  rjjo DS 2 | Trong không gian Oxyz, cho ba điểm A(1;1;1); B(1;-2;3); C(2;-1;2).
+  7c2b DS 2 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (P) đi qua điểm M(-1;2;0) và có VTPT \vec{n} = (4;0;-5).
+  ixi4 DS 2 | Trong không gian với hệ tọa độ Oxyz, cho điểm A(2;0;-3) và các \vec{u} = (-1;-2;5), \vec{v} = (3;-1;-2). Mặt p
+  wh8p DS 3 | Trong không gian với hệ tọa độ Oxyz, cho điểm M(-2;1;3). Mặt phẳng (P) đi qua điểm M và cắt ba trục tọa độ tại
+  oazz DS 3 | Trong không gian với hệ trục tọa độ Oxyz, cho điểm A(2;-3;1) và mặt phẳng (\alpha): x + 2y - z + 1 = 0. (P) là
+  po9d DS 3 | Trong không gian với hệ trục tọa độ Oxyz, cho điểm A(-2;1;2) và mặt phẳng (\alpha): 2x - y + 1 = 0.
+  to25 DS 3 | Trong không gian với hệ trục tọa độ Oxyz, cho các điểm A(2;-3;1), B(1;0;-1), C(3;1;2), D(1;0;-1).
+  zvt9 DS 3 | Trong không gian với hệ trục tọa độ Oxyz, cho điểm A(1;2;5) và mặt phẳng (\alpha): x + 2y + 2z - 6 = 0.
+  4f1y DS 2 | Trong không gian với hệ trục tọa độ Oxyz, cho ba điểm A(1;2;-2); B(2;1;2); C(3;-2;1).
+  ebwk DS 3 | Trong không gian với hệ tọa độ Oxyz, cho ba điểm A(2;1;3), B(3;0;2), C(0;-2;1).
+  g6ot DS 3 | Trong không gian với hệ tọa độ Oxyz, cho bốn điểm A(1;2;1), B(-2;1;3), C(2;-1;1) và D(0;3;1).
+  01ud DS 3 | Trong không gian Oxyz, cho A(-1;0;2) và mặt phẳng (P): 2x + y - 2z = 0.
+  5mrw DS 3 | Trong không gian Oxyz, cho A(2;0;0), B(0;2;0), C(0;0;3).
+  97i1 DS 3 | Trong không gian Oxyz, cho điểm M(1;3;-2) và mặt phẳng (\alpha): 2x + y - z + 5 = 0.
+  v5ep DS 3 | Trong không gian Oxyz, cho hai mặt phẳng (P): x - 3y + 2z - 1 = 0 và (Q): -2x + y + 4z - 3 = 0
+  hn92 TLN 2 | Trong không gian với hệ trục tọa độ Oxyz, mặt phẳng đi qua điểm M(1;0;0) và song song với mặt phẳng (\alpha): 
+  qyym TLN 2 | Trong không gian Oxyz, cho ba điểm A(2;1;-1), B(-1;0;4), C(0;-2;-1). Phương trình mặt phẳng qua A và vuông góc
+  n3s9 TLN 2 | Trong không gian với hệ tọa độ Oxyz, cho hai điểm A(2;0;1) và 2 vectơ \vec{a} = (1;-3;2), \vec{b} = (-1;-1;2).
+  ah61 TLN 2 | Trong không gian tọa độ Oxyz, phương trình mặt phẳng (P) đi qua ba điểm A(1;0;-2), B(-3;1;1), C(5;5;-5) có dạn
+  sbva TLN 2 | Trong không gian Oxyz, cho ba điểm A(0;1;2), B(2;-2;1), C(-2;1;0). Khi đó, phương trình mặt phẳng (ABC) là ax 
+  bgx5 TLN 1 | Trong không gian Oxyz, cho điểm M(a;b;1) thuộc mặt phẳng (P): 2x - y + z - 3 = 0. Tính giá trị biểu thức S = 2
+  jyrs TLN 2 | Trong không gian Oxyz, cho phương trình mặt phẳng (P) qua A(2;1;-3) và song song với mặt phẳng (Q): x - y + 2z
+  qexm TLN 2 | Trong không gian Oxyz, cho ba điểm A(2;-1;1), B(1;0;4), C(0;-2;-1). Mặt phẳng qua A và vuông góc với đường thẳ
+  38va TLN 3 | Trong không gian Oxyz, cho mặt phẳng (P): ax + by + cz - 27 = 0 qua hai điểm A(3;2;1) và B(-3;5;2) và vuông gó
+  k308 TLN 3 | Trong không gian Oxyz, mặt phẳng (P) đi qua A(1;0;0); B(0;0;2) và cắt tia Oy tại điểm C sao cho thể tích khối 
+  obmu TLN 3 | Trong không gian Oxyz, cho hai điểm A(1;2;0), B(3;4;-2) và (P): x - y + z - 4 = 0. Phương trình mặt phẳng (Q) 
+  7xla TLN 3 | Trong không gian Oxyz, biết mặt phẳng (P) song song với mặt phẳng (Q): x - 2y + 2z - 7 = 0 và cách điểm A(2;-3
+  pymk TLN 3 | Trong không gian Oxyz, cho điểm M(1;1;2). Hỏi có bao nhiêu mặt phẳng (P) đi qua M và cắt các trục x'Ox, y'Oy, 
+  tch0 TLN 3 | Trong không gian Oxyz, mặt phẳng (\alpha) qua hai điểm A(1;2;0), B(4;1;2) và cách đều hai điểm C(-2;1;-1), D(0
+  1fx6 TLN 3 | Trong không gian Oxyz, mặt phẳng (P) qua điểm A(1;-2;-2), vuông góc với mặt phẳng (Oxz) đồng thời khoảng cách 
+  8to0 TLN 3 | Trong không gian với hệ trục tọa độ Oxyz, cho điểm H(1;2;3) là trực tâm của \Delta ABC với A, B, C là ba điểm 
+  tknm TLN 2 | Trong không gian Oxyz cho hai điểm A(-1; 2; 0), B(1; 1; 3) và mặt phẳng (P): x - 2y + 3z - 5 = 0. Phương trình
+  bi3b TLN 3 | Trong không gian Oxyz, cho mặt phẳng (\alpha): x + by + cz + d = 0 vuông góc với mặt phẳng (\beta): x + 2y + 3
+  1bl4 TL 1 | Trong không gian Oxyz, cho mặt phẳng (P): 2x + y - z + 3 = 0. Vectơ nào sau đây là vectơ pháp tuyến của mặt ph
+
+### [5] Bài 1. Phương trình mặt phẳng | Viết phương trình mặt phẳng (9)
+    yêu cầu: Viết được phương trình tổng quát của mặt phẳng đi qua một điểm và vuông góc với một đường thẳng cho trước.
+  dvtd NLC 2 | Trong không gian Oxyz, cho điểm M(2; -2; 3) và đường thẳng d: \frac{x-1}{3} = \frac{y+2}{2} = \frac{z-3}{-1}. 
+  agh2 NLC 2 | Trong không gian Oxyz, mặt phẳng đi qua điểm M(1; 1; -1) và vuông góc với đường thẳng \Delta: \frac{x+1}{2} = 
+  sp7w NLC 2 | Trong không gian Oxyz cho điểm M(1; 1; -2) và đường thẳng d: \frac{x-1}{1} = \frac{y+2}{2} = \frac{z}{-3}. Mặt
+  8iu2 NLC 3 | Trong không gian với hệ tọa độ Oxyz, cho hai đường thẳng d_1: \{ \begin{array}{l} x = 1 + 3t \\ y = -2 + t \\ 
+  z50i NLC 2 | Trong không gian tọa độ Oxyz, mặt phẳng (P) đi qua điểm A(0; 0; 2) và chứa trục hoành có phương trình là
+  3rjm NLC 3 | Trong không gian tọa độ Oxyz, hãy viết phương trình mặt phẳng (\alpha) chứa đường thẳng d: \frac{x}{1} = \frac
+  uyne NLC 3 | Trong không gian tọa độ Oxyz, cho hai đường thẳng chéo nhau d_1: \frac{x-2}{2} = \frac{y+2}{1} = \frac{z-6}{-2
+  dkzl TLN 4 | Trong không gian Oxyz, cho mặt phẳng (\alpha): ax + by + cz + 10 = 0. Biết mặt phẳng (\alpha) chứa hai đường t
+  ecic TLN 4 | Trong không gian Oxyz, cho mặt phẳng (\alpha) và B(3; a; 2a). Biết mặt phẳng (\alpha) chứa hai đường thẳng d: 
+
+### [6] Bài 2. Phương trình đường thẳng trong không gian | Điểm đối xứng, hình chiếu (1)
+    yêu cầu: Xác định được toạ độ hình chiếu vuông góc và toạ độ điểm đối xứng của một điểm qua đường thẳng hoặc mặt phẳng cho trước.
+  wyid DS 3 | Trong không gian Oxyz, cho điểm M(1; 0; -2), đường thẳng \Delta: \{ \begin{array}{l} x = -2t \\ y = 1 + 2t \\ 
+
+### [7] Bài 2. Phương trình đường thẳng trong không gian | Bài toán cực trị (2)
+    yêu cầu: Vận dụng được phương pháp tọa độ trong không gian để giải quyết bài toán cực trị liên quan đến đường thẳng, mặt phẳng và điểm.
+  nij7 TL 4 | Trong không gian Oxyz, cho hai điểm A(0;2;1), B(1;2;3) và mặt phẳng (P): 2x - y + 1 = 0. Đường thẳng d đi qua 
+  8ads TLN 4 | Trong không gian với hệ trục tọa độ Oxyz, cho mặt phẳng (P): x - 2y + 2z - 5 = 0 và hai điểm A(-3; 0; 1), B(0;
+
+### [8] Bài 2. Phương trình đường thẳng trong không gian | Viết phương trình tham số, chính tắc của đường thẳng (133)
+    yêu cầu: Viết được phương trình tham số hoặc phương trình chính tắc của đường thẳng khi biết các yếu tố xác định.
+  5yjz TL 1 | Trong không gian Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 1 - t \\ y = -2 + 2t \\ z = 1 + t \end{array
+  22nm TL 1 | Trong không gian với hệ trục tọa độ Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 4 + 8t \\ y = -6 + 11t \\
+  647h TL 1 | Trong không gian Oxyz, đường thẳng d: \frac{x-1}{2} = \frac{y-2}{-1} = \frac{z+3}{-2} có một vectơ chỉ phương 
+  1p30 TL 2 | Trong không gian cho hệ trục Oxyz, đường thẳng \Delta có phương trình \frac{x-1}{2} = \frac{y+1}{3} = \frac{-z
+  e234 TL 2 | Trong không gian Oxyz cho mặt phẳng (P): x + y - z - 1 = 0. Một vectơ chỉ phương của đường thẳng \Delta đi qua
+  pi7q TL 2 | Trong không gian Oxyz, gọi đường thẳng \Delta là giao tuyến của hai mặt phẳng (\alpha): x - 3y + z = 0; (\beta
+  o1c9 TL 2 | Trong không gian Oxyz, cho hai mặt phẳng (P): x - 2y + z - 3 = 0 và (Q): x + y - 1 = 0. Giao tuyến của (P) và 
+  qlju TL 2 | Trong không gian Oxyz, cho đường thẳng \Delta là giao tuyến của hai mặt phẳng (\alpha): x + y + z + 1 = 0 và (
+  5zbh TL 4 | Trong không gian Oxyz, cho hình lăng trụ tam giác đều ABC.A'B'C' có A'(\sqrt{3}; -1; 1), hai đỉnh B, C thuộc t
+  0ues TL 3 | Trong không gian Oxyz, gọi \Delta là đường thẳng đi qua điểm M(1;2;2), song song với mặt phẳng (P): x - y + z 
+  w4ka TL 1 | Trong không gian Oxyz, phương trình tham số của đường thẳng đi qua điểm M(3;-1;2) và có vectơ chỉ phương \vec{
+  bfud TL 1 | Trong không gian Oxyz, đường thẳng đi qua điểm M(1;3;-2) và nhận vectơ \vec{u} = (1;-1;5) làm vectơ chỉ phương
+  rckv TL 1 | Trong không gian Oxyz, đường thẳng đi qua điểm M(1;-2;3) và nhận véctơ \vec{u} = (2;4;-3) làm véctơ chỉ phương
+  6enx TL 1 | Trong không gian Oxyz, phương trình đường thẳng d đi qua điểm M(-3;-1;2) và có một vectơ chỉ phương \vec{u} = 
+  3yre TL 1 | Trong không gian Oxyz phương trình đường thẳng d đi qua điểm M(2;1;-1) và có một véc tơ chỉ phương \vec{u} = (
+  4j4o TL 2 | Trong không gian Oxyz, cho các điểm A(1;-2;3), B(-2;1;1), C(0;2;3). Phương trình đường thẳng d đi qua A và son
+  gf7a TL 2 | Trong không gian Oxyz, cho điểm M(2;0;-3) và mặt phẳng (P): x - 2y + 1 = 0. Đường thẳng đi qua điểm M và vuông
+  hcwz TL 2 | Viết phương trình tham số của đường thẳng d đi qua A(1;2;3) và vuông góc với mặt phẳng (\alpha) có phương trìn
+  euyl TL 2 | Trong không gian Oxyz, đường thẳng d đi qua điểm M(1;-1;3) và song song với đường thẳng d_1: \frac{x-2}{2} = \
+  skni TL 2 | Trong không gian Oxyz, cho điểm M(1;-2;3) và mặt phẳng (\alpha): 2x - 3y + 2z - 1 = 0. Đường thẳng \Delta qua 
+  fbgn TL 3 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (P): 2x + y + z + 1 = 0 và đường thẳng d: \frac{x-1}{2} = \
+  zi41 TL 3 | Trong không gian với hệ tọa độ Oxyz, cho điểm A(1;2;3) và hai mặt phẳng (P): 2x + 2y + z + 1 = 0, (Q): 2x - y 
+  zq3v TL 3 | Trong không gian Oxyz, cho các điểm A(1;-1;1), B(-1;2;3) và đường thẳng d: \frac{x+1}{-2} = \frac{y-2}{1} = \f
+  yilg TL 2 | Trong không gian Oxyz, cho điểm M(-4;-2;3) và đường thẳng d: \frac{x+1}{1} = \frac{y-3}{1} = \frac{z-2}{1}. Đư
+  s6mq TL 2 | Trong không gian Oxyz, cho điểm M(3;1;2). Đường thẳng (\Delta) đi qua M, vuông góc và cắt trục Ox có phương tr
+  8p2f TL 2 | Trong không gian Oxyz, cho điểm A(1;-2;1) và hai mặt phẳng (P), (Q) lần lượt có phương trình x - 3z + 1 = 0, 2
+  dg09 TL 2 | Trong không gian Oxyz, cho điểm M(-1;1;3) và hai đường thẳng \Delta: \frac{x-1}{3} = \frac{y+3}{2} = \frac{z-1
+  hbga TL 3 | Trong không gian Oxyz, cho hai đường thẳng chéo nhau (d_1): \frac{x-1}{3} = \frac{y+1}{2} = \frac{z-2}{-2}, (d
+  a9qd TL 3 | Trong không gian Oxyz, cho hai đường thẳng d_1: \frac{x}{2} = \frac{y-1}{-1} = \frac{z+2}{1}; d_2: \{ \begin{a
+  3ioh TL 3 | Trong không gian Oxyz, cho mặt phẳng (P): -2x+2y+z-3=0 và đường thẳng d: \frac{x-1}{3} = \frac{y-1}{1} = \frac
+  567y TL 3 | Trong không gian Oxyz, cho mặt phẳng (P): 2y - 3z - 3 = 0 và hai đường thẳng d_1: \frac{x}{2} = \frac{y-1}{-1}
+  bmm5 TL 3 | Trong không gian Oxyz, cho đường thẳng d: \frac{x}{1} = \frac{y-1}{1} = \frac{z-2}{-1} và mặt phẳng (P): x + 2
+  6hcs TL 3 | Trong không gian Oxyz, cho mặt phẳng (\alpha): 2x - 2y - z + 1 = 0 và hai đường thẳng d_1: \{ \begin{array}{l}
+  dxnp TL 3 | Trong không gian Oxyz, cho mặt phẳng (P): 2x - y + 2z = 0 và hai đường thẳng d: \frac{x-1}{1} = \frac{y-1}{3} 
+  857k TL 3 | Trong một khu du lịch, người ta cho du khách trải nghiệm thiên nhiên bằng cách đu theo đường trượt zipline từ 
+  w67i TL 4 | Cầu Cổng Vàng (The Golden Gate Bridge) ở Mỹ. Xét hệ trục toạ độ Oxyz với O là bệ của chân cột trụ tại mặt nước
+  zu31 NLC 1 | (MĐ 101-2022) Trong không gian Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 2 + t \\ y = 1 - 2t \\ z = -1 
+  paf5 NLC 1 | (Mã 101 2018) Trong không gian Oxyz, đường thẳng d: \{ \begin{array}{l} x = 2 - t \\ y = 1 + 2t \\ z = 3 + t \
+  rmrv NLC 1 | (Mã 103 - 2020 Lần 1) Trong không gian Oxyz, cho đường thẳng d: \frac{x-3}{4} = \frac{y+1}{-2} = \frac{z+2}{3}
+  8r07 NLC 1 | (Mã 102 - 2019) Trong không gian Oxyz, cho đường thẳng d: \frac{x-1}{2} = \frac{y-3}{-5} = \frac{z+2}{3}. Vect
+  cbzm NLC 1 | (Mã 103 - 2019) Trong không gian Oxyz, cho đường thẳng d: \frac{x+2}{1} = \frac{y-1}{-3} = \frac{z-3}{2}. Vect
+  48z9 NLC 1 | (MĐ 104-2022) Trong không gian Oxyz, cho đường thẳng d: \frac{x-2}{1} = \frac{y-1}{-2} = \frac{z+1}{3}. Điểm n
+  xt3r NLC 1 | (Mã 101 2020 Lần 2) Trong không gian Oxyz, cho đường thẳng d: \frac{x-2}{4} = \frac{y-1}{-2} = \frac{z+3}{1}. 
+  evcz NLC 1 | (Mã 104 - 2020 Lần 2) Trong không gian Oxyz, cho đường thẳng d: \frac{x-3}{2} = \frac{y-1}{2} = \frac{z+5}{-1}
+  qem2 NLC 1 | (Mã đề 104 2018) Trong không gian Oxyz, điểm nào dưới đây thuộc đường thẳng d: \{ \begin{array}{l} x = 1 - t \
+  4uh9 NLC 1 | Trong không gian Oxyz, đường thẳng d: \frac{x-1}{2} = \frac{y-2}{-1} = \frac{z-3}{2} đi qua điểm nào dưới đây?
+  leo7 NLC 1 | (MĐ 101 2020-2021 – ĐỢT 1) Trong không gian Oxyz, cho đường thẳng d đi qua điểm M(3; -1; 4) và có một vectơ ch
+  27nx NLC 1 | (MĐ 102 2020-2021 – ĐỢT 1) Trong không gian Oxyz, cho đường thẳng d đi qua điểm M(2; 2; 1) và có một véctơ chỉ
+  jz65 NLC 1 | (101-2023) Trong không gian Oxyz phương trình đường thẳng d đi qua điểm M(2; 1; -1) và có một véc tơ chỉ phươn
+  6bsf NLC 1 | (102-2023) Trong không gian Oxyz, phương trình đường thẳng d đi qua điểm M(-3; -1; 2) và có một véctơ chỉ phươ
+  k34q NLC 2 | (101-2023) Trong không gian Oxyz, cho điểm A(1; 2; -1) và mặt phẳng (P): x + 2y + z = 0. Đường thẳng đi qua A 
+  8ytj NLC 2 | (102-2023) Trong không gian Oxyz, cho điểm A(1; -1; 1) và mặt phẳng (P): 2x + 3y + z - 5 = 0. Đường thẳng đi q
+  so20 NLC 2 | (103-2023) Trong không gian Oxyz, cho điểm A(1; -1; 1) và mặt phẳng (P): 2x + 3y + z - 5 = 0. Đường thẳng đi q
+  ejy9 NLC 3 | (MĐ 101-2022) Trong không gian Oxyz, cho ba điểm A(1; 2; -1), B(3; 0; 1), C(2; 2; -2). Đường thẳng đi qua A và
+  ajlc NLC 2 | (MĐ 101 2020-2021 – ĐỢT 1) Trong không gian Oxyz, cho điểm M(-1; 3; 2) và mặt phẳng (P): x - 2y + 4z + 1 = 0. 
+  prrw NLC 2 | (MĐ 102 2020-2021 – ĐỢT 1) Trong không gian Oxyz, cho điểm M(2; 1; -1) và mặt phẳng (P): x - 3y + 2z + 1 = 0. 
+  7fqw NLC 2 | Trong không gian Oxyz, đường thẳng đi qua điểm A(1; 2; -1) và B(2; -1; 1) có phương trình tham số là:
+  2h7p NLC 2 | Trong không gian Oxyz, cho hai điểm M(1; 0; 1) và N(3; 2; -1). Đường thẳng MN có phương trình tham số là
+  hea5 NLC 2 | Trong không gian Oxyz, cho hai điểm M(1; 2; 1) và N(3; 1; -2). Đường thẳng MN có phương trình là:
+  ktug NLC 2 | Trong không gian Oxyz, cho hai điểm M(1; 1; 0) và N(3; 2; -1). Đường thẳng MN có phương trình là:
+  iy1l NLC 2 | Trong không gian Oxyz, đường thẳng đi qua hai điểm A(1; -3; 5), B(2; -1; 7) có phương trình chính tắc là
+  m0ew NLC 1 | Trong không gian tọa độ Oxyz, phương trình nào dưới đây là phương trình chính tắc của đường thẳng d: \{ \begin
+  w0gc NLC 2 | Trong không gian Oxyz, cho ba điểm A(1; 0; 1), B(1; 1; 0) và C(3; 4; -1). Đường thẳng đi qua A và song song vớ
+  mkl2 NLC 2 | Trong không gian Oxyz, cho ba điểm A(1; 2; 0), B(1; 1; 2) và C(2; 3; 1). Đường thẳng đi qua A và song song với
+  c5j5 NLC 2 | Trong không gian Oxyz, cho ba điểm A(1; 1; 0), B(1; 0; 1), C(3; 1; 0). Đường thẳng đi qua A và song song với B
+  pzix NLC 3 | Trong không gian Oxyz, cho các điểm A(1; 0; 2), B(1; 2; 1), C(3; 2; 0) và D(1; 1; 3). Đường thẳng đi qua A và 
+  6t49 NLC 3 | Trong không gian Oxyz, cho các điểm A(1; 2; 0), B(2; 0; 2), C(2; -1; 3), D(1; 1; 3). Đường thẳng đi qua C và v
+  crpz NLC 2 | Trong không gian với hệ tọa độ Oxyz, phương trình đường thẳng \Delta đi qua điểm A(2; -1; 3) và vuông góc với 
+  rzoo NLC 2 | Trong không gian với hệ tọa độ Oxyz, phương trình đường thẳng d đi qua N(-1; 5; 2) và song song với trục x'Ox
+  xsbt NLC 2 | (Mã 105 2017) Trong không gian với hệ tọa độ Oxyz, cho hai điểm A(1; -2; -3); B(-1; 4; 1) và đường thẳng d: \f
+  4lqg NLC 2 | Trong không gian Oxyz, đường thẳng nào dưới đây đi qua A(3; 5; 7) và song song với d: \frac{x-1}{2} = \frac{y-
+  wyx1 NLC 2 | Trong không gian Oxyz, cho điểm M(1; 2; 3) và đường thẳng \Delta: \{ \begin{array}{l} x = 1 - t \\ y = t \\ z 
+  j1j2 NLC 3 | (Mã 101 2018) Trong không gian Oxyz cho điểm A(1; 2; 3) và đường thẳng d: \frac{x-3}{2} = \frac{y-1}{1} = \fra
+  8kgr NLC 3 | Trong không gian Oxyz, cho điểm A(1; 1; 3) và đường thẳng d: \frac{x-1}{1} = \frac{y}{2} = \frac{z+1}{1}. Đườn
+  nyv2 NLC 3 | (Mã 102 2018) Trong không gian Oxyz, cho điểm A(2; 1; 3) và đường thẳng d: \frac{x+1}{1} = \frac{y-1}{-2} = \f
+  eww7 NLC 3 | Trong không gian với hệ tọa độ Oxyz cho điểm A(1; 0; 2) và đường thẳng d có phương trình: \frac{x-1}{1} = \fra
+  j442 NLC 3 | (Mã 103 2018) Trong không gian Oxyz, cho đường thẳng d: \frac{x+1}{2} = \frac{y}{-1} = \frac{z+2}{2} và mặt ph
+  exdf NLC 2 | (Mã 123 2017) Trong không gian Oxyz cho điểm M(-1; 1; 3) và hai đường thẳng \Delta: \frac{x-1}{3} = \frac{y+3}
+  bif4 NLC 3 | Trong không gian Oxyz cho đường thẳng \Delta: \frac{x}{1} = \frac{y+1}{2} = \frac{z-1}{1} và mặt phẳng (P): x 
+  jxev NLC 4 | Trong không gian Oxyz, cho mặt phẳng (P): 2x + 2y - z - 3 = 0 và hai đường thẳng d_1: \frac{x-1}{2} = \frac{y}
+  k19z NLC 3 | Trong không gian Oxyz, cho đường thẳng d: \frac{x}{1} = \frac{y-1}{1} = \frac{z-2}{-1} và mặt phẳng (P): x + 2
+  ot3m NLC 3 | Trong không gian Oxyz, cho đường thẳng d: \frac{x+1}{1} = \frac{y}{1} = \frac{z-1}{2} và mặt phẳng (P): 2x + y
+  whst NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho điểm A(1; -2; 3) và hai mặt phẳng (P): x + y + z + 1 = 0, (Q): x - y 
+  1pgu NLC 2 | Trong không gian Oxyz cho điểm M(-1; 1; 3) và hai đường thẳng \Delta: \frac{x-1}{3} = \frac{y+3}{2} = \frac{z-
+  nvi8 DS 3 | Trong không gian Oxyz, cho điểm A(2; -1; 3), đường thẳng d: \frac{x-2}{1} = \frac{y+1}{2} = \frac{z}{-1} và mặ
+  7cks DS 3 | Trong Oxyz, cho mặt phẳng (P): x + 2y + z - 4 = 0 và đường thẳng d: \frac{x+1}{2} = \frac{y}{1} = \frac{z+2}{3
+  vw35 DS 3 | Trong không gian Oxyz, cho điểm M(3; 3; -2) và hai đường thẳng d_1: \frac{x-1}{1} = \frac{y-2}{3} = \frac{z}{1
+  81ca DS 3 | Trong không gian Oxyz, cho điểm M(0; -1; 2) và hai đường thẳng d_1: \frac{x-1}{1} = \frac{y+2}{-1} = \frac{z-3
+  2u8e DS 3 | Trong không gian Oxyz, cho điểm M(3; 2; -1) và hai đường thẳng d_1: \frac{x+1}{2} = \frac{y+1}{1} = \frac{z-2}
+  4bda DS 3 | Trong không gian Oxyz, cho điểm M(2; -1; -6) và hai đường thẳng d_1: \frac{x-1}{2} = \frac{y-1}{-1} = \frac{z+
+  fgj3 DS 2 | Trong không gian với hệ tọa độ Oxyz cho điểm A(1; 0; 2) và đường thẳng d có phương trình: \frac{x-1}{1} = \fra
+  n8ew DS 3 | Trong không gian tọa độ Oxyz cho đường thẳng \Delta: \{ \begin{array}{l} x = 1 + t \\ y = -t \\ z = -1 + t \en
+  muoe DS 2 | Trong không gian Oxyz, cho điểm M(1; -1; 3) và đường thẳng (d): \{ \begin{array}{l} x = 1 + 2t \\ y = 2 - t \\
+  g07e DS 3 | Trong không gian Oxyz, cho điểm M(2; 1; 0) và đường thẳng d: \frac{x-1}{2} = \frac{y+1}{1} = \frac{z}{-1}.
+  x570 DS 2 | Trong không gian Oxyz, cho đường thẳng d: \frac{x+1}{2} = \frac{y}{-1} = \frac{z+2}{2} và mặt phẳng (P): x + y
+  poci DS 3 | Trong không gian Oxyz cho đường thẳng d: \{ \begin{array}{l} x = t \\ y = -1 + 2t \\ z = 1 + t \end{array} . v
+  t61q DS 3 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (P): 3x + y + z = 0 và đường thẳng d: \frac{x-1}{1} = \frac
+  5al5 DS 3 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (P): 2x + y - 2z + 9 = 0 và đường thẳng d: \frac{x-1}{-1} =
+  fsua DS 3 | Trong không gian Oxyz, cho mặt phẳng (\alpha): x + y - z + 6 = 0 và đường thẳng d: \frac{x-1}{2} = \frac{y+4}{
+  xe9l DS 3 | Trong không gian với hệ toạ độ Oxyz, cho mặt phẳng (P): x + y - z - 1 = 0 và đường thẳng d: \frac{x+2}{2} = \f
+  juog DS 2 | Trong không gian Oxyz cho mặt phẳng (P): x + y + z - 3 = 0 và đường thẳng d: \frac{x}{1} = \frac{y+1}{2} = \fr
+  s66z DS 2 | Trong không gian Oxyz cho d: \{ \begin{array}{l} x = 1 + 2t \\ y = -2 + 3t \\ z = 3 + t \end{array} . và mặt p
+  8ekx DS 4 | Trong không gian Oxyz, đường thẳng d: \{ \begin{array}{l} x = t \\ y = -1 + 2t \\ z = 2 - t \end{array} . cắt 
+  jb7p DS 4 | Trong không gian với hệ tọa độ Oxyz, cho điểm A(3; -1; 0) và đường thẳng d: \frac{x-2}{-1} = \frac{y+1}{2} = \
+  oen8 DS 3 | Trong không gian Oxyz, cho hai đường thẳng d_1: \{ \begin{array}{l} x = 1 + 3t \\ y = 2 + t \\ z = -1 + 2t \en
+  yo6a DS 3 | Trong không gian Oxyz, cho điểm A(1; 1; 0), B(-1; 0; 1), đường thẳng d: \frac{x}{1} = \frac{y-1}{-1} = \frac{z
+  zyl6 DS 3 | Trong không gian Oxyz, cho điểm A(1; 2; -1), đường thẳng d: \frac{x-1}{2} = \frac{y+1}{1} = \frac{z-2}{-1} và 
+  m55c DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \frac{x-1}{2} = \frac{y-4}{3} = \frac{z}{1}. Đường thẳng d đi q
+  zfzt DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \frac{x-1}{2} = \frac{y}{3} = \frac{z-3}{1}. Đường thẳng d đi q
+  3iei DS 2 | Trong không gian Oxyz, cho điểm M(1; 0; -1) và điểm N(0; 1; 1). Đường thẳng d đi qua điểm M và điểm N' với N' 
+  5g4x DS 2 | Trong không gian Oxyz, cho đường thẳng d: \frac{x-1}{1} = \frac{y-3}{-1} = \frac{z-2}{2}.
+  xur9 DS 3 | Trong không gian Oxyz, cho đường thẳng d: \frac{x+4}{3} = \frac{y-5}{-4} = \frac{z+2}{1}.
+  87ux DS 3 | Trong hệ tọa độ Oxyz, cho đường thẳng d: \frac{x-1}{1} = \frac{y-3}{-1} = \frac{z-2}{2}.
+  1xxu DS 2 | Trong không gian Oxyz, cho đường thẳng d: \frac{x+1}{1} = \frac{3-y}{2} = \frac{z+4}{2}.
+  l70r DS 2 | Trong không gian Oxyz, cho đường thẳng (d): \{ \begin{array}{l} x = 1 + 2t \\ y = -2 + 3t \\ z = 4 - t \end{ar
+  ytc4 DS 2 | Trong không gian Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 3 + 4t \\ y = -1 - 2t \\ z = -2 + 3t \end{ar
+  vgpb DS 2 | Trong không gian Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 2 - 5t \\ y = 2t \\ z = -3 \end{array} . (t 
+  ye1q DS 3 | Trong không gian Oxyz, cho điểm A(1; -1; 2) và đường thẳng d: \{ \begin{array}{l} x = 1 + 2t \\ y = 2 - t \\ z
+  0rhl DS 3 | Trong không gian Oxyz, cho điểm M(1; 1; -2) và đường thẳng \Delta: \frac{x-1}{1} = \frac{y-2}{2} = \frac{z+2}{
+  8cvw DS 3 | Trong không gian Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 2 + t \\ y = t \\ z = -2 + t \end{array} . (
+  ch2p DS 3 | Trong không gian Oxyz, cho hai điểm M(3; 0; 2), N(2; 2025; 2026) và đường thẳng d có phương trình chính tắc là
+  pgat DS 2 | Trong không gian Oxyz, cho điểm A(1; 2; 3) và đường thẳng d: \frac{x+4}{-2} = \frac{y+3}{-3} = \frac{z-3}{1}.
+  wuow DS 3 | Trong không gian Oxyz, cho điểm M(1; 0; 1) và đường thẳng d: \frac{x-1}{1} = \frac{y-2}{2} = \frac{z-3}{3}. Gọ
+  ut5l DS 3 | Trong không gian Oxyz, cho điểm A(-1; 0; 4) và đường thẳng d có phương trình \frac{x+1}{1} = \frac{y}{1} = \fr
+  uz08 DS 2 | Trong không gian Oxyz, cho hai đường thẳng d và d' có phương trình tham số lần lượt là: d: \{ \begin{array}{l}
+  291i DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \{ \begin{array}{l} x = 1 - 2t \\ y = -2 + t \\ z = 3 + 2t \end
+  0jqa DS 3 | Trong không gian Oxyz, cho các đường thẳng \Delta_1: \{ \begin{array}{l} x = 1 \\ y = 2 - 3t \\ z = 3 + 4t \en
+  uzzg TLN 2 | Trong không gian Oxyz, cho A(1; 3; -2), B(1; 1; 5). Phương trình tham số của đường thẳng đi qua hai điểm A, B 
+  iy2l TLN 2 | Trong không gian Oxyz, phương trình tham số của đường thẳng đi qua điểm M(3; -2; 1) và song song với đường thẳ
+  1yf7 TLN 2 | Trong không gian Oxyz, cho điểm M(1; 3; 5) và mặt phẳng (P): 2x + y - 3z + 1 = 0. Phương trình tham số của đườ
+  dnnr TLN 3 | Trong không gian với hệ tọa độ Oxyz, cho hai đường thẳng d_1: \{ \begin{array}{l} x = t \\ y = -1 - 4t \\ z = 
+  y8mb TLN 3 | Trong không gian với hệ tọa độ Oxyz, phương trình tham số của đường thẳng (\Delta) qua M(2; 3; 1) và song song
+  vu5f TLN 4 | Trong không gian Oxyz, cho điểm A(1; -2; 3), B(2; b; c), mặt phẳng (\alpha): x + 3y - 2z + 5 = 0 và đường thẳn
+
+### [9] Bài 2. Phương trình đường thẳng trong không gian | Bài toán thực tế về phương trình đường thẳng (5)
+    yêu cầu: Vận dụng được phương trình đường thẳng trong không gian để giải quyết một số bài toán thực tiễn liên quan đến tọa độ và chuyển động.
+  qj6i DS 3 | Trong không gian Oxyz, Hai máy bay cùng xuất phát từ hai phi trường, trên màn hình rađa của trạm điều khiển (v
+  yi9b DS 3 | Trong không gian với hệ tọa độ Oxyz, một cabin cáp treo xuất phát từ điểm A(10; 3; 0) và chuyển động đều theo 
+  x3gh TLN 4 | Trong không gian Oxyz, mắt một người quan sát đặt ở điểm M(1; 2; -2) và vật quan sát đặt ở điểm N(-2; 0; 2). M
+  l5lt TLN 3 | Một phần mềm mô phỏng vận động viên đang tập bắn súng trong không gian Oxyz. Cho biết trục d của nòng súng có 
+  at42 TLN 4 | Trong không gian Oxyz, một cabin cáp treo ở Bà Nà Hill xuất phát từ điểm A(-2; 1; 5) và chuyển động đều theo đ
+
+### [10] Bài 2. Phương trình đường thẳng trong không gian | Nhận biết điểm thuộc đường thẳng (2)
+    yêu cầu: Nhận biết được một điểm có thuộc đường thẳng cho trước trong không gian hay không.
+  vwrh TLN 2 | Trong không gian Oxyz, cho các điểm M(-1; 3; 1), N(-2; 1; -2), P(1; 2; 3), Q(2; -1; 2), S(1; 2; -3). Đường thẳ
+  26z7 TLN 2 | Trong không gian Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 1 + 2t \\ y = 2 - t \\ z = 3 + 2t \end{array
+
+### [11] Bài 2. Phương trình đường thẳng trong không gian | Hình chiếu, điểm đối xứng (4)
+    yêu cầu: Xác định được tọa độ hình chiếu vuông góc hoặc điểm đối xứng của một điểm qua đường thẳng hoặc mặt phẳng.
+  fmb2 TLN 3 | Trong không gian Oxyz, cho điểm A(0; 2; -4) và hai đường thẳng d_1: \frac{x-2}{1} = \frac{y-1}{-1} = \frac{z+1
+  yyss TLN 4 | Trong không gian Oxyz, cho điểm A(2; -3; 5) có hình chiếu vuông góc trên các trục Ox, Oy, Oz là B, C, D. Gọi H
+  moce TLN 3 | Trong không gian Oxyz, cho đường thẳng d: \frac{x}{1} = \frac{y+1}{2} = \frac{z-2}{-1}. Đường thẳng d' đối xứn
+  mjpq TLN 3 | Trong không gian Oxyz, cho đường thẳng d: \frac{x}{1} = \frac{y-1}{1} = \frac{z-2}{-1} và mặt phẳng (P): x + 2
+
+### [12] Bài 2. Phương trình đường thẳng trong không gian | Khoảng cách (1)
+    yêu cầu: Tính được khoảng cách từ một điểm đến một đường thẳng hoặc một mặt phẳng trong không gian.
+  qtes TLN 3 | Trong không gian Oxyz, cho đường thẳng d: \frac{x}{2} = \frac{y}{-1} = \frac{z+1}{1} và mặt phẳng (\alpha): x 
+
+### [13] Bài 2. Phương trình đường thẳng trong không gian | Vị trí tương đối, cắt nhau (1)
+    yêu cầu: Xác định được vị trí tương đối của hai đường thẳng hoặc tìm tọa độ giao điểm của chúng.
+  f0al TLN 4 | Trong không gian Oxyz cho hai đường thẳng d_1: \{ \begin{array}{l} x = 4 + t \\ y = -4 - t \\ z = 6 + 2t \end{
+
+### [14] Bài 2. Phương trình đường thẳng trong không gian | Bài toán tổng hợp (1)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến vị trí tương đối giữa đường thẳng và mặt phẳng trong không gian với hệ tọa độ Oxyz.
+  x3tz TLN 4 | Trong không gian Oxyz, nhà công vụ của một trạm hải đăng nằm trên mặt phẳng (P): x + 2y + z - 4 = 0 và phương 
+
+### [15] Bài 2. Phương trình đường thẳng trong không gian | Khoảng cách giữa hai đường thẳng chéo nhau (1)
+    yêu cầu: Tính được khoảng cách giữa hai đường thẳng chéo nhau trong không gian với hệ tọa độ Oxyz để giải quyết một số bài toán thực tiễn.
+  i1uj TLN 3 | Tại một nút giao thông có 2 con đường khác mức. Trên thiết kế, trong không gian Oxyz hai con đường đó thuộc ha
+
+### [16] Bài 2. Phương trình đường thẳng trong không gian | Tâm đường tròn ngoại tiếp, trục của tam giác (1)
+    yêu cầu: Xác định được tọa độ tâm đường tròn ngoại tiếp tam giác và viết được phương trình đường thẳng liên quan trong không gian với hệ tọa độ Oxyz.
+  4ntk TLN 4 | Trong không gian với hệ tọa độ Oxyz, cho các điểm A(2; 0; 1), B(2; -2; 1), C(4; 2; 3). Gọi d là đường thẳng đi
+
+### [17] Bài 2. Phương trình đường thẳng trong không gian | Bài toán tổng hợp (Đường phân giác) (1)
+    yêu cầu: Vận dụng được tính chất của đường phân giác để xác định tọa độ các điểm hoặc viết phương trình đường thẳng liên quan trong không gian với hệ
+  hho0 TLN 4 | Trong không gian với hệ tọa độ Oxyz, cho tam giác ABC có phương trình đường phân giác trong góc A là: \frac{x}
+
+### [18] Bài 2. Phương trình đường thẳng trong không gian | Xét vị trí tương đối giữa đường thẳng và mặt phẳng, giữa hai đường thẳng (20)
+    yêu cầu: Xác định được vị trí tương đối giữa hai đường thẳng hoặc giữa đường thẳng và mặt phẳng trong không gian.
+  9jkp TL 3 | Trong không gian Oxyz, cho điểm M(3;3;-2) và hai đường thẳng d_1: \frac{x-1}{1} = \frac{y-2}{3} = \frac{z}{1};
+  81wb TL 2 | Trong không gian Oxyz, xét vị trí tương đối của cặp đường thẳng sau: d: \{ \begin{array}{l} x = 1 + t \\ y = 2
+  rh4f TL 2 | Trong không gian Oxyz, xét vị trí tương đối của cặp đường thẳng sau: d: \{ \begin{array}{l} x = 1 + 2t \\ y = 
+  12ky TL 2 | Trong không gian Oxyz, xét vị trí tương đối của cặp đường thẳng sau: d: \frac{x}{1} = \frac{y-1}{-1} = \frac{z
+  t7z8 NLC 2 | Trong không gian Oxyz, hai đường thẳng d: \frac{x-1}{-2} = \frac{y+2}{1} = \frac{z-4}{3} và d': \{ \begin{arra
+  csrj NLC 2 | Trong không gian với hệ tọa độ Oxyz, hai đường thẳng d_1: \frac{x-1}{2} = \frac{y}{1} = \frac{z+2}{-2}, d_2: \
+  h3ux NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho đường thẳng \Delta_1 có \{ \begin{array}{l} x = 1 \\ y = 2 \\ z = 3t 
+  sk4x DS 2 | Trong không gian Oxyz, cho hai đường thẳng \Delta_1: \frac{x-1}{1} = \frac{y+2}{1} = \frac{z-3}{4} và \Delta_2
+  971j DS 3 | Trong không gian Oxyz, cho ba đường thẳng: (d_1): \frac{x-3}{1} = \frac{y+1}{-2} = \frac{z+1}{1}, (d_2): \frac
+  r44u DS 3 | Trong không gian Oxyz, cho hai đường thẳng d: \{ \begin{array}{l} x = 1 + 2t \\ y = 2 - 2t \\ z = t \end{array
+  mxqx DS 4 | Trong không gian Oxyz, cho đường thẳng d_1: \frac{x-1}{1} = \frac{y-2}{-2} = \frac{z-3}{1} và điểm A(1; 0; -1)
+  f9sj DS 3 | Trong không gian cho mặt phẳng (P): x + 2y + mz + 1 = 0 và đường thẳng (d): \frac{x-1}{2} = \frac{y-2}{4} = \f
+  wdkv DS 3 | Trong không gian Oxyz, cho mặt phẳng (P): 4x + 4y + m^2z - 8 = 0 và đường thẳng (d): \frac{x}{2} = \frac{y}{-1
+  z9b5 DS 3 | Trong không gian Oxyz, cho đường thẳng d: \frac{x-1}{2} = \frac{y+2}{3} = \frac{z-4}{1} và đường thẳng \Delta:
+  d3xm DS 3 | Trong không gian Oxyz, cho hai đường thẳng d: \{ \begin{array}{l} x = 2 - 2t \\ y = 3 - 2t \\ z = 1 - 3t \end{
+  rpjw DS 2 | Trong không gian Oxyz, cho hai đường thẳng d: \frac{x-1}{2} = \frac{y-7}{1} = \frac{z-3}{4} và d': \frac{x-6}{
+  2dwz DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \{ \begin{array}{l} x = -mt \\ y = 2 - 3t \\ z = 1 + (2m+1)t \e
+  fhg0 DS 2 | Trong không gian Oxyz, cho hai đường thẳng: \Delta_1: \frac{x}{1} = \frac{y-3}{-1} = \frac{z+3}{2}, \Delta_2: 
+  4g9a TLN 2 | Trong không gian Oxyz, cho hai đường thẳng d_1: \frac{x-3}{-1} = \frac{y-3}{-2} = \frac{z+2}{1} và d_2: \{ \be
+  oq9h TLN 3 | Trong không gian Oxyz, giao điểm của hai đường thẳng d: \{ \begin{array}{l} x = -3 + 2t \\ y = -2 + 3t \\ z = 
+
+### [19] Bài 2. Phương trình đường thẳng trong không gian | Đường vuông góc chung của hai đường thẳng chéo nhau (2)
+    yêu cầu: Viết được phương trình đường vuông góc chung của hai đường thẳng chéo nhau trong không gian với hệ tọa độ Oxyz.
+  7hs6 DS 4 | Trong không gian Oxyz, cho đường thẳng \Delta_1: \{ \begin{array}{l} x = 5 - t \\ y = -3 + 2t \\ z = 4t \end{a
+  gnf7 TLN 4 | Trong không gian Oxyz, cho hai đường thẳng chéo nhau d: \{ \begin{array}{l} x = 1 + t \\ y = 0 \\ z = -5 + t \
+
+### [20] Bài 3. Công thức tính góc trong không gian | Tính góc giữa hai đường thẳng (19)
+    yêu cầu: Tính được số đo góc hoặc côsin của góc giữa hai đường thẳng bằng phương pháp tọa độ.
+  l76s TLN 3 | Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh 2a, SA = a; SB = a\sqrt{3} và mặt phẳng (SAB) vuông góc vớ
+  kckm TLN 2 | Trong không gian Oxyz, tính cosin của góc giữa trục Oz và đường thẳng \Delta: \frac{x-3}{1} = \frac{y+1}{2} = 
+  ywtg TLN 2 | Trong không gian Oxyz, tính góc giữa đường thẳng d: \frac{x-1}{1} = \frac{y}{1} = \frac{z+1}{-1} và đường thẳn
+  t38i TLN 2 | Trong không gian Oxyz, tính góc giữa đường thẳng d: \{ \begin{array}{l} x = 2 + t \\ y = -2 + t \\ z = 1 \end{
+  gs9v TLN 4 | Trong không gian Oxyz, Gọi S là tập hợp các giá trị m để đường thẳng d: \{ \begin{array}{l} x = 2 + mt \\ y = 
+  uelt TLN 4 | Trong không gian Oxyz, gọi d là đường thẳng đi qua O, thuộc mặt phẳng (Oyz) và cách điểm M(1; -2; 1) một khoản
+  rgxp NLC 2 | Trong không gian Oxyz, cho hai đường thẳng \Delta_1: \{ \begin{array}{l} x = 5 - 2t \\ y = 5 + 3t \\ z = 2t \e
+  i4to NLC 2 | Trên một phần mềm đã thiết kế sân khấu 3D trong không gian Oxyz. Tính \cos của góc giữa hai tia sáng có phương
+  cvf8 NLC 2 | Tính \cos góc giữa đường thẳng d với trục Ox biết d: \frac{x+1}{2} = \frac{y-1}{1} = \frac{z-2}{1}.
+  g0dk NLC 2 | Trong không gian Oxyz, tính góc giữa hai đường thẳng d_1: \frac{x}{1} = \frac{y+1}{-1} = \frac{z-1}{2} và d_2:
+  sb2i NLC 4 | Cho hình lăng trụ tam giác đều ABC.A'B'C' có cạnh bên 2a, góc tạo bởi A'B và mặt đáy là 60^\circ. Gọi M là tru
+  edav NLC 4 | Cho hình chóp S.ABCD có đáy hình vuông. Cho tam giác SAB vuông tại S và góc SBA bằng 30^\circ. Mặt phẳng (SAB)
+  1iub NLC 3 | Cho hình chóp S.ABCD có đáy ABCD là hình chữ nhật và SA \perp (ABCD). Cho biết AB = 2a, AD = 3a và SA = 2a. Co
+  ybk8 TL 3 | Cho hình chóp  S.ABCD có đáy  ABCD là hình vuông cạnh  a,  SAB là tam giác đều và nằm trong mặt phẳng vuông gó
+  j9c5 DS 3 | Trong không gian Oxyz, cho hai đường thẳng \Delta: \{ \begin{array}{l} x = t \\ y = 2 - 3t \\ z = 1 + 2t \end{
+  dklg DS 3 | Trong không gian Oxyz, cho hai đường thẳng d và d' có phương trình chính tắc lần lượt là: d: \frac{x-3}{2} = \
+  q16s DS 4 | Trong không gian Oxyz, cho đường thẳng \Delta_1: \{ \begin{array}{l} x = 1+t \\ y = 2+3t \\ z = 3-t \end{array
+  o24y TLN 3 | Trong không gian Oxyz cho hai đường thẳng d_1: \frac{x}{-1} = \frac{y+1}{2} = \frac{z}{2}, d_2: \{ \begin{arra
+  td83 TLN 3 | Cho hình chóp tứ giác đều S.ABCD có SA = 2a; AB = a. Gọi N, M lần lượt là trung điểm của DC và BC, tính cosin 
+
+### [21] Bài 3. Công thức tính góc trong không gian | Tính góc giữa hai mặt phẳng (37)
+    yêu cầu: Tính được số đo góc hoặc côsin của góc giữa hai mặt phẳng bằng phương pháp tọa độ.
+  hi15 TLN 3 | Cho hình chóp tứ giác đều S.ABCD có AB = a. Tính cosin của góc giữa hai mặt phẳng (SCD) và (SBC) biết góc giữa
+  a0sj TLN 4 | Cho hình lăng trụ ABC.A'B'C' có A'.ABC là tứ diện đều cạnh a. Gọi M, N lần lượt là trung điểm của AA' và BB'. 
+  lhmw TLN 2 | Trong không gian với hệ tọa độ Oxyz, cho hai mặt phẳng (P): 2x - y + 2z - 1 = 0 và (Q): x - y - 4 = 0. Tính số
+  ker6 TLN 2 | Trong không gian với hệ trục tọa độ Oxyz, cho mặt phẳng (P): x - 2y + 2z - 3 = 0 và mặt phẳng (Q): 2x - y + 5z
+  r2l1 TLN 3 | Trong không gian với hệ trục tọa độ Oxyz, cho mặt phẳng (P): x - y - 2z - 1 = 0 và mặt phẳng (Q). Biết hình ch
+  j30l TLN 2 | Trong không gian với hệ tọa độ Oxyz, cho ba điểm M(1; 0; 0), N(0; 1; 0), P(0; 0; 1). Tính cosin của góc giữa h
+  va25 TLN 3 | Hình minh họa sơ đồ một ngôi nhà trong không gian Oxyz, trong đó nền nhà, bốn bức tường và hai mái nhà đều là 
+  blei TLN 3 | Cho hình lập phương ABCD.A'B'C'D' có cạnh 3a. Tính góc giữa hai mặt phẳng (A'B'CD) và (ACC'A').
+  w49v TLN 3 | Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh 2a, SAB là tam giác đều và (SAB) vuông góc với (ABCD). Tín
+  krg8 TLN 3 | Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh 2a, cạnh bên SA = a và vuông góc với mặt phẳng đáy. Gọi M 
+  zfbv NLC 2 | Trong không gian Oxyz, cho hai mặt phẳng (P): 2x - y - z - 3 = 0 và (Q): x - z - 2 = 0. Góc giữa hai mặt phẳng
+  i6rn NLC 2 | Trong không gian Oxyz, cho ba điểm M(1; 0; 0), N(0; 1; 0) và P(0; 0; 1). Cosin của góc giữa hai mặt phẳng (MNP
+  9ko1 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho hai mặt phẳng (P): x - 2y - z + 2 = 0, (Q): 2x - y + z + 1 = 0. Góc g
+  y4n7 NLC 2 | Trong không gian với hệ trục tọa độ Oxyz, cho mặt phẳng (P): x + 2y - 2z + 3 = 0, mặt phẳng (Q): x - 3y + 5z -
+  guk8 NLC 2 | Trong không gian Oxyz, tính góc giữa hai mặt phẳng (P): 8x - 4y - 8z - 11 = 0 và (Q): \sqrt{2}x - \sqrt{2}y + 
+  wzjv NLC 3 | Trong không gian Oxyz, cho điểm H(2; -1; -2) là hình chiếu vuông góc của gốc tọa độ O xuống mặt phẳng (P), số 
+  8vz6 NLC 2 | Trong không gian Oxyz, cho hai mặt phẳng (P): x + 2y - 2z + 3 = 0 và (Q): x - 3y + 5z - 2 = 0. Cosin của góc g
+  g8nb NLC 2 | Trong không gian Oxyz, cho hai mặt phẳng (\alpha): x - y + 2z - 1 = 0, (\beta): x + 2y - z + 2 = 0. Tính góc \
+  yi7s NLC 2 | Trong không gian Oxyz, tính góc \varphi giữa mặt phẳng (P): x - \sqrt{2}y + z - 2 = 0 và (Oxz): y = 0.
+  w5vw NLC 2 | Trong không gian Oxyz, gọi \varphi là góc giữa mặt phẳng (P): 2x - y + 3z + 1 = 0 và (Oxy): z = 0. Tính \cos \
+  2ghi NLC 3 | Trong không gian Oxyz, cho hai mặt phẳng (P): 4x + my + mz + 1 = 0 và (Q): x - y - 3 = 0. Có bao nhiêu giá trị
+  qsht NLC 2 | Trong không gian Oxyz, xác định tất cả các giá trị thực của tham số m để hai mặt phẳng (\alpha): 2x + my + 2mz
+  g6l5 NLC 3 | Trong không gian Oxyz, cho lăng trụ đứng ABC.A'B'C' có A(0;0;0), B(0;1;0), C(1;1;0), A'(0;0;1). Tính góc giữa 
+  dmrj NLC 4 | Cho hình chóp S.ABCD có đáy là hình thang vuông tại A và D, AB = 2a, CD = DA = a. Cạnh bên SA = 2a và vuông gó
+  hbam NLC 4 | Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a, cạnh bên SA = 2a và vuông góc với mặt phẳng đáy. Gọi M 
+  c7rq NLC 4 | Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh a, mặt bên SAB là tam giác đều và nằm trong mặt phẳng vuôn
+  o12u DS 3 | Trong không gian với hệ trục Oxyz, cho ba mặt phẳng (P): x - y + 2 = 0, (Q): x + y - z - 3 = 0, (R): x + y + 2
+  nwbd DS 3 | Trong không gian Oxyz, cho hình chóp S.ABC có ba điểm S(0;0;3), A(0;0;0), B(1;0;0), C(0;2;0) và mặt phẳng (P):
+  aax0 TLN 2 | Trong mặt phẳng tọa độ Oxyz, góc (tính theo đơn vị độ) giữa hai mặt phẳng (P): x - y + 2z + 5 = 0 và (Q): 2x +
+  i9pb TLN 3 | Trong mặt phẳng tọa độ Oxyz, cho mặt phẳng (P): x - z - 3 = 0 và mặt phẳng (Q), biết hình chiếu vuông góc của 
+  liwl TLN 3 | Trong mặt phẳng tọa độ Oxyz, cho mặt phẳng (P): x - y + 2 = 0 và mặt phẳng (Q): (m+3)x + my + mz + 5 = 0, biết
+  5gw7 TLN 3 | Trong không gian Oxyz, cho mặt phẳng (P): ax+by+cz-1=0 với c<0 đi qua 2 điểm A(0; 1; 0); B(1; 0; 0) và tạo với
+  owoq TLN 3 | Cho hình lăng trụ đứng ABC.A'B'C' có AB = AC = a, \widehat{BAC} = 120^\circ, AA' = a. Gọi M, N lần lượt là tru
+  phz4 TLN 3 | Cho hình chóp S.ABCD có đáy ABCD là hình vuông cạnh 5a, cạnh bên SA = 10a và vuông góc với mặt phẳng đáy. Gọi 
+  kd0g TLN 4 | Cho hình chóp S.ABC có \triangle ABC vuông tại B, AB=1, BC=\sqrt{3}, \triangle SAC đều, mặt phẳng (SAC) vuông 
+  vdka TLN 4 | Cho tứ diện ABCD có BC = 3, CD = 4, \widehat{ABC} = \widehat{BCD} = \widehat{ADC} = 90^\circ, (AD, BC) = 60^\c
+  tx5i TLN 4 | Cho hình lăng trụ tam giác ABC.A'B'C' có đáy là tam giác ABC vuông tại A, AB=3, AC=4, AA' = \frac{\sqrt{61}}{2
+
+### [22] Bài 3. Công thức tính góc trong không gian | Tính góc giữa đường thẳng và mặt phẳng (28)
+    yêu cầu: Tính được số đo góc hoặc sin của góc giữa đường thẳng và mặt phẳng bằng phương pháp tọa độ.
+  f8fa TLN 2 | Trong không gian với hệ tọa độ Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 1 - t \\ y = 2 + 2t \\ z = 3 +
+  tbw8 TLN 2 | Trong không gian với hệ tọa độ Oxyz, tính góc giữa trục Oz và mặt phẳng (P): x - y + \sqrt{2}z + 2024 = 0.
+  11xv TLN 2 | Trên một sân khấu đã thiết lập sẵn một hệ trục tọa độ Oxyz. Biết tia sáng có phương trình d: \{ \begin{array}{
+  ih9a TLN 4 | Trong không gian với hệ tọa độ Oxyz, cho hai đường thẳng d_1: \frac{x-1}{2} = \frac{y-2}{-2} = \frac{z+1}{-1},
+  93ia TLN 4 | Trong không gian với hệ trục tọa độ Oxyz, cho mặt phẳng (P): 2x - 2y + z + 1 = 0 và đường thẳng d: \{ \begin{a
+  b92c TLN 4 | Cho hình chóp tứ giác đều S.ABCD có đáy ABCD là hình vuông cạnh 2a, tâm O. Gọi M và N lần lượt là trung điểm c
+  qdzd TLN 2 | Cho hình lập phương ABCD.A'B'C'D' có cạnh bằng 2a. gọi \alpha là góc giữa đường thẳng A'B và mặt phẳng (BB'D'D
+  98to NLC 2 | Trong không gian Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 6 + 5t \\ y = 2 + t \\ z = 1 \end{array} . v
+  tki7 NLC 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \frac{x-1}{2} = \frac{y+1}{-1} = \frac{z}{2} và mặt phẳng (\alp
+  0dq3 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho mặt phẳng (P): 6x + 8y + 10z - 1 = 0 và đường thẳng d: \frac{x-2}{3} 
+  4w71 NLC 2 | Trong không gian với hệ tọa độ Oxyz, cho đường thẳng d: \{ \begin{array}{l} x = 6 + 5t \\ y = 2 + t \\ z = 1 \
+  8f19 NLC 3 | Cho hình chóp S.ABCD có đáy ABCD là hình chữ nhật, AB=a, BC=a\sqrt{3}, SA=a và SA vuông góc với đáy ABCD. Tính
+  t4bw NLC 2 | Trong không gian Oxyz, với mặt phẳng (Oxy) là mặt đất, một máy bay cất cánh từ vị trí A(0; 10; 0) với vận tốc 
+  7l6l DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \{ \begin{array}{l} x = 3+t \\ y = 4+2t \\ z = -3-t \end{array}
+  f076 DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \frac{x-2}{-1} = \frac{y-1}{-2} = \frac{z+3}{1} và mặt phẳng (P
+  d5f0 DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \{ \begin{array}{l} x = 1+2t \\ y = 2+t \\ z = -1-3t \end{array
+  dykp DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \frac{x-2024}{2} = \frac{y}{1} = \frac{z+2025}{-2} và mặt phẳng
+  zz54 DS 4 | Trong không gian Oxyz, cho đường thẳng \Delta: \{ \begin{array}{l} x = 1 - t \\ y = 3 + t \\ z = 4 \end{array}
+  g779 DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \{ \begin{array}{l} x = 3 - 2t \\ y = 1 + 2t \\ z = -5 + t \end
+  gmbe DS 3 | Trong không gian Oxyz, cho đường thẳng \Delta: \{ \begin{array}{l} x = 1+t \\ y = 2+t \\ z = 3+3t \end{array} 
+  97qu DS 4 | Cho hình chóp tứ giác đều S.ABCD có đáy là hình vuông tâm O cạnh bằng \sqrt{2}, SO = 1. Gọi E là điểm đối xứng
+  qtax DS 4 | Cho hình chóp S.ABCD có đáy là hình vuông cạnh bằng 1, SA vuông góc với mặt đáy và có độ dài bằng 2. Gọi H, K 
+  hz8m DS 4 | Cho hình chóp S.ABCD có đáy là hình thang vuông tại A và B, AB=BC=a, AD=2a, SA vuông góc với mặt đáy và SA=a. 
+  hqc5 TLN 3 | Cho hình chóp S.ABCD có đáy là hình thang vuông tại A và B, thỏa mãn điều kiện AB = BC = a, AD = 2a, SA vuông 
+  let9 TLN 4 | Trong không gian Oxyz, cho đường thẳng \Delta: \{ \begin{array}{l} x = 1+2t \\ y = 2+t \\ z = -2-t \end{array}
+  tw0n TLN 4 | Cho hình chóp S.ABCD có đáy ABCD là hình thoi tâm I, cạnh a, góc \widehat{BAD} = 60^\circ, SA = SB = SD = \fra
+  ya7f TLN 4 | Cho hình chóp tứ giác đều S.ABCD có đáy ABCD là hình vuông cạnh a, tâm O. Gọi M và N lần lượt là trung điểm củ
+  176i TLN 3 | Cho hình chóp S.ABCD có đáy là hình thang vuông tại A và B, AB = BC = a, AD = 2a; cạnh bên SA vuông góc với mặ
+
+### [23] Bài 3. Công thức tính góc trong không gian | Toán thực tế (5)
+    yêu cầu: Giải quyết được một số vấn đề thực tiễn liên quan đến tính góc trong không gian bằng phương pháp tọa độ.
+  ou97 DS 4 | Trong không gian Oxyz cho trước (1 đơn vị = 1 cm), có một chú kiến vàng và một chú kiến đen bò trên hai sợi dâ
+  yojy TLN 4 | Một căn gác có chiếc cửa sổ trời như hình vẽ. Tính góc (theo đơn vị độ, làm tròn đến hàng phần mười) giữa mặt 
+  wkuk TLN 4 | Một ngôi nhà gồm hai phần mái dốc số 1 và số 2 (tham khảo hình vẽ bên dưới). Biết rằng số đo của các cạnh AB =
+  24lw TLN 4 | Từ mặt nước trong một bể nước, tại ba vị trí đôi một cách nhau 4m, người ta lần lượt thả dây dọi để quả dọi ch
+  nool TLN 3 | Trên một sườn núi (có độ nghiêng đều), người ta trồng một cây thông và muốn giữ nó không bị nghiêng bằng hai s
+
+### [24] Bài 3. Công thức tính góc trong không gian | Toán tổng hợp (4)
+    yêu cầu: Vận dụng phương pháp tọa độ để tính góc giữa hai đường thẳng, góc giữa đường thẳng và mặt phẳng bằng cách thiết lập hệ trục tọa độ.
+  mh03 DS 4 | Cho hình chóp S.ABCD có đáy ABCD là hình chữ nhật với AB = 2a, AD = 5a, SA = 3a và SA \perp (ABCD). Bằng cách 
+  rxlp DS 4 | Một sân vận động được xây dựng theo mô hình là hình chóp cụt OAGD.BCFE có hai đáy song song với nhau. Mặt sân 
+  0at5 TLN 4 | Trong không gian Oxyz cho tam giác ABC có A(1; 2; -1), B(2; -1; 3), C(-4; 7; 5). Tọa độ chân đường phân giác g
+  ck6n TLN 4 | Cho hình hộp chữ nhật ABCD.A'B'C'D'. Biết khoảng cách giữa AB và B'C bằng \frac{2a\sqrt{5}}{5}, khoảng cách gi
+
+### [25] Bài 4. Phương trình mặt cầu | Vị trí tương đối giữa mặt phẳng và mặt cầu (0)
+    yêu cầu: Xác định được vị trí tương đối giữa mặt phẳng và mặt cầu trong không gian bằng phương pháp tọa độ.
+
+### [26] Bài 4. Phương trình mặt cầu | Nhận biết phương trình mặt cầu, tìm tâm và bán kính (0)
+    yêu cầu: Nhận biết được phương trình mặt cầu và xác định được tọa độ tâm, độ dài bán kính của mặt cầu đó.
+
+### [27] Bài 4. Phương trình mặt cầu | Viết phương trình mặt cầu (0)
+    yêu cầu: Viết được phương trình mặt cầu khi biết tâm và bán kính hoặc biết các yếu tố hình học xác định mặt cầu.
+
+### [28] Bài 5. Ôn tập chương | Tổng hợp phương pháp tọa độ không gian (mặt phẳng, đường thẳng, mặt cầu) (0)
+    yêu cầu: Vận dụng được phương pháp tọa độ trong không gian để giải quyết các bài toán tổng hợp liên quan đến mặt phẳng, đường thẳng và mặt cầu.

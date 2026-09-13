@@ -1,0 +1,55 @@
+{
+ "question_categories": [
+  {
+   "id": "4f6a9943-1eed-4878-b984-08e4f9ebbd29",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 6. Xác suất có điều kiện",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tổng hợp xác suất có điều kiện, xác suất toàn phần, công thức Bayes",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức xác suất toàn phần và công thức Bayes để giải quyết các bài toán thực tế tổng hợp."
+  },
+  {
+   "id": "eb04866f-808d-4b4c-8b1e-87a94be2e378",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 6. Xác suất có điều kiện",
+   "lesson": "Bài 2. Công thức xác suất toàn phần và công thức Bayes",
+   "math_form": "Vận dụng công thức xác suất toàn phần",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức xác suất toàn phần để tính xác suất của một biến cố trong các bài toán thực tế."
+  },
+  {
+   "id": "fc19726b-ec2b-481f-b521-8cdc8053191b",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 6. Xác suất có điều kiện",
+   "lesson": "Bài 1. Xác suất có điều kiện",
+   "math_form": "Tính xác suất có điều kiện",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Tính được xác suất có điều kiện dựa vào định nghĩa, bảng thống kê số liệu hoặc sơ đồ hình cây."
+  },
+  {
+   "id": "8ccba262-4700-4c26-a2db-037bfe44d790",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 6. Xác suất có điều kiện",
+   "lesson": "Bài 1. Xác suất có điều kiện",
+   "math_form": "Vận dụng công thức nhân xác suất",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức nhân xác suất để tính xác suất của tích hai biến cố trong các bài toán thực tiễn."
+  },
+  {
+   "id": "4ffbf8f3-2fa4-4ab0-a165-d7c7acf6babb",
+   "grade": "12",
+   "subject": "Thống kê",
+   "topic": "Chương 6. Xác suất có điều kiện",
+   "lesson": "Bài 2. Công thức xác suất toàn phần và công thức Bayes",
+   "math_form": "Vận dụng công thức Bayes",
+   "created_at": "2026-08-21T05:34:34.249139+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức Bayes để tính xác suất của biến cố nguyên nhân trong các tình huống thực tiễn."
+  }
+ ],
+ "questions": []
+}

@@ -1,0 +1,56 @@
+{
+ "lop": "12",
+ "chuong": 6,
+ "dang": [
+  {
+   "bai": "Bài 1. Xác suất có điều kiện",
+   "cu": null,
+   "moi": "Nhận biết xác suất có điều kiện, tính bằng định nghĩa",
+   "yc": "Nhận biết được khái niệm xác suất có điều kiện và tính được P(A|B) bằng định nghĩa khi biết P(AB), P(B)."
+  },
+  {
+   "bai": "Bài 1. Xác suất có điều kiện",
+   "cu": "Tính xác suất có điều kiện",
+   "moi": "Tính xác suất có điều kiện từ bảng dữ liệu thống kê",
+   "yc": "Tính được xác suất có điều kiện từ bảng số liệu thống kê hai chiều, bảng tần số."
+  },
+  {
+   "bai": "Bài 1. Xác suất có điều kiện",
+   "cu": "Vận dụng công thức nhân xác suất",
+   "moi": "Vận dụng công thức nhân xác suất",
+   "yc": "Vận dụng được công thức nhân P(AB) = P(A)·P(B|A) và sơ đồ hình cây để tính xác suất của biến cố giao."
+  },
+  {
+   "bai": "Bài 1. Xác suất có điều kiện",
+   "cu": null,
+   "moi": "Bài toán thực tế về xác suất có điều kiện",
+   "yc": "Vận dụng được xác suất có điều kiện để giải bài toán thực tế (khảo sát, y tế, kiểm tra chất lượng)."
+  },
+  {
+   "bai": "Bài 2. Công thức xác suất toàn phần và công thức Bayes",
+   "cu": "Vận dụng công thức xác suất toàn phần",
+   "moi": "Vận dụng công thức xác suất toàn phần",
+   "yc": "Vận dụng được công thức xác suất toàn phần và sơ đồ hình cây để tính xác suất của một biến cố."
+  },
+  {
+   "bai": "Bài 2. Công thức xác suất toàn phần và công thức Bayes",
+   "cu": "Vận dụng công thức Bayes",
+   "moi": "Vận dụng công thức Bayes",
+   "yc": "Vận dụng được công thức Bayes để tính xác suất có điều kiện khi biết kết quả xảy ra."
+  },
+  {
+   "bai": "Bài 2. Công thức xác suất toàn phần và công thức Bayes",
+   "cu": null,
+   "moi": "Bài toán thực tế về xác suất toàn phần và công thức Bayes",
+   "yc": "Vận dụng được công thức xác suất toàn phần, công thức Bayes để giải bài toán thực tế (xét nghiệm y tế, sản phẩm lỗi, thư rác)."
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "cu": "Tổng hợp xác suất có điều kiện, xác suất toàn phần, công thức Bayes",
+   "moi": "Bài tập tổng hợp chương 6",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 6 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

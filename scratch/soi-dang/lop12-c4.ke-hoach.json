@@ -1,0 +1,441 @@
+{
+ "lop": "12",
+ "chuong": 4,
+ "dang": [
+  {
+   "bai": "Bài 1. Nguyên hàm",
+   "cu": "Tính chất của nguyên hàm",
+   "moi": "Tính chất của nguyên hàm",
+   "yc": "Nhận biết được khái niệm, tính chất của nguyên hàm và vận dụng để tính nguyên hàm của tổng, hiệu, tích với hằng số."
+  },
+  {
+   "bai": "Bài 1. Nguyên hàm",
+   "cu": "Tìm họ nguyên hàm của hàm số",
+   "moi": "Tìm họ nguyên hàm của hàm số",
+   "yc": "Tìm được họ nguyên hàm của hàm đa thức, phân thức, luỹ thừa, mũ, lượng giác bằng bảng nguyên hàm và tính chất."
+  },
+  {
+   "bai": "Bài 1. Nguyên hàm",
+   "cu": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)",
+   "moi": "Tìm nguyên hàm thoả mãn điều kiện (tìm hằng số C)",
+   "yc": "Tìm được nguyên hàm cụ thể của hàm số thoả mãn điều kiện cho trước (đi qua một điểm, giá trị tại một điểm)."
+  },
+  {
+   "bai": "Bài 1. Nguyên hàm",
+   "cu": "Chứng minh nguyên hàm",
+   "moi": "Chứng minh, kiểm tra một hàm số là nguyên hàm của hàm số cho trước",
+   "yc": "Chứng minh, kiểm tra được một hàm số là nguyên hàm của hàm số cho trước bằng đạo hàm."
+  },
+  {
+   "bai": "Bài 1. Nguyên hàm",
+   "cu": "Toán tổng hợp",
+   "moi": "Xét các mệnh đề về nguyên hàm",
+   "yc": "Xét được tính đúng sai của các mệnh đề về nguyên hàm của một hoặc nhiều hàm số cho trước."
+  },
+  {
+   "bai": "Bài 1. Nguyên hàm",
+   "cu": null,
+   "moi": "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)",
+   "yc": "Xác định được các hệ số của nguyên hàm có dạng cho trước bằng cách đạo hàm và đồng nhất hệ số."
+  },
+  {
+   "bai": "Bài 1. Nguyên hàm",
+   "cu": null,
+   "moi": "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)",
+   "yc": "Vận dụng được nguyên hàm để giải bài toán thực tế về chuyển động (vận tốc, gia tốc, quãng đường), tốc độ tăng trưởng."
+  },
+  {
+   "bai": "Bài 2. Tích phân",
+   "cu": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản",
+   "moi": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản",
+   "yc": "Tính được tích phân của hàm đa thức, phân thức, mũ, lượng giác bằng định nghĩa và bảng nguyên hàm.",
+   "gop": [
+    "Tính tích phân"
+   ]
+  },
+  {
+   "bai": "Bài 2. Tích phân",
+   "cu": "Tích phân hàm chứa giá trị tuyệt đối",
+   "moi": "Tích phân hàm chứa giá trị tuyệt đối",
+   "yc": "Tính được tích phân của hàm số chứa giá trị tuyệt đối bằng cách xét dấu và tách đoạn."
+  },
+  {
+   "bai": "Bài 2. Tích phân",
+   "cu": null,
+   "moi": "Sử dụng tính chất của tích phân",
+   "yc": "Vận dụng được các tính chất của tích phân (tách đoạn, tổ hợp tuyến tính, đổi cận) để tính tích phân khi biết một số tích phân cho trước."
+  },
+  {
+   "bai": "Bài 2. Tích phân",
+   "cu": "Sử dụng ý nghĩa hình học để tính tích phân",
+   "moi": "Sử dụng ý nghĩa hình học để tính tích phân",
+   "yc": "Tính được tích phân của một số hàm số đơn giản bằng ý nghĩa hình học (diện tích hình thang cong, hình tròn)."
+  },
+  {
+   "bai": "Bài 2. Tích phân",
+   "cu": "Xác định hàm số từ đẳng thức đạo hàm",
+   "moi": "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn",
+   "yc": "Tính được tích phân của hàm số cho bởi nhiều công thức và xác định được hàm số, tích phân từ đẳng thức chứa đạo hàm."
+  },
+  {
+   "bai": "Bài 2. Tích phân",
+   "cu": "Bài toán tổng hợp đồ thị hàm số",
+   "moi": "Xét các mệnh đề về tích phân",
+   "yc": "Xét được tính đúng sai của các mệnh đề về tích phân của các hàm số cho trước."
+  },
+  {
+   "bai": "Bài 2. Tích phân",
+   "cu": "Ứng dụng tích phân - Toán thực tế",
+   "moi": "Bài toán thực tế về tích phân (quãng đường, lưu lượng, tăng trưởng)",
+   "yc": "Vận dụng được tích phân để giải bài toán thực tế về quãng đường, lưu lượng, tăng trưởng, công."
+  },
+  {
+   "bai": "Bài 3. Ứng dụng hình học của tích phân",
+   "cu": "Sử dụng ý nghĩa hình học để tính tích phân",
+   "moi": "Tính diện tích hình thang cong bằng tích phân",
+   "yc": "Tính được diện tích hình thang cong giới hạn bởi đồ thị hàm số, trục hoành và hai đường thẳng bằng tích phân."
+  },
+  {
+   "bai": "Bài 3. Ứng dụng hình học của tích phân",
+   "cu": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng",
+   "moi": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng",
+   "yc": "Tính được diện tích hình phẳng giới hạn bởi một đồ thị, trục hoành và hai đường thẳng, kể cả khi hàm số đổi dấu."
+  },
+  {
+   "bai": "Bài 3. Ứng dụng hình học của tích phân",
+   "cu": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng",
+   "moi": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng",
+   "yc": "Tính được diện tích hình phẳng giới hạn bởi hai đồ thị và hai đường thẳng, kể cả khi phải tìm hoành độ giao điểm."
+  },
+  {
+   "bai": "Bài 3. Ứng dụng hình học của tích phân",
+   "cu": "Tính thể tích khối tròn xoay",
+   "moi": "Tính thể tích khối tròn xoay",
+   "yc": "Tính được thể tích khối tròn xoay sinh ra khi quay hình phẳng quanh trục Ox."
+  },
+  {
+   "bai": "Bài 3. Ứng dụng hình học của tích phân",
+   "cu": "Tính thể tích vật thể khi biết diện tích mặt cắt",
+   "moi": "Tính thể tích vật thể khi biết diện tích mặt cắt",
+   "yc": "Tính được thể tích vật thể khi biết diện tích mặt cắt vuông góc với trục."
+  },
+  {
+   "bai": "Bài 3. Ứng dụng hình học của tích phân",
+   "cu": "Bài toán tổng hợp đồ thị hàm số",
+   "moi": "Xét các mệnh đề về diện tích hình phẳng, thể tích",
+   "yc": "Xét được tính đúng sai của các mệnh đề về diện tích hình phẳng, thể tích khối tròn xoay và các yếu tố đồ thị liên quan."
+  },
+  {
+   "bai": "Bài 3. Ứng dụng hình học của tích phân",
+   "cu": "Ứng dụng tích phân - Toán thực tế",
+   "moi": "Bài toán thực tế về diện tích, thể tích bằng tích phân",
+   "yc": "Vận dụng được tích phân để tính diện tích, thể tích của vật thể trong thực tế (cổng parabol, cốc rượu, hầm biogas, chi tiết máy)."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": null,
+   "moi": "Bài tập tổng hợp chương 4",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 4 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Tính tích phân"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Ứng dụng tích phân - Toán thực tế"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Bài toán tổng hợp đồ thị hàm số"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Tìm họ nguyên hàm của hàm số"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Tìm hàm số khi biết đạo hàm (tìm hàng số C)"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Tính thể tích khối tròn xoay"
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "dang": "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  }
+ ],
+ "chuyen": {
+  "3188": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "okxn": [
+   "Bài 1. Nguyên hàm",
+   "Tìm họ nguyên hàm của hàm số"
+  ],
+  "2mr3": [
+   "Bài 1. Nguyên hàm",
+   "Tìm họ nguyên hàm của hàm số"
+  ],
+  "pya8": [
+   "Bài 1. Nguyên hàm",
+   "Tìm nguyên hàm thoả mãn điều kiện (tìm hằng số C)"
+  ],
+  "gxsg": [
+   "Bài 1. Nguyên hàm",
+   "Xét các mệnh đề về nguyên hàm"
+  ],
+  "pzgn": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "ywke": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "crf2": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "df8o": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "8znv": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "0eh2": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "ne30": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "199x": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "esx1": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "w2k6": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "dpbw": [
+   "Bài 1. Nguyên hàm",
+   "Xác định nguyên hàm có dạng cho trước (tìm hệ số a, b, c)"
+  ],
+  "zq0a": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "6td3": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "ipb2": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "9ifv": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "sqc4": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "o32f": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "60oy": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "lopm": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "ejsp": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "0i4m": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "p9iv": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "q53g": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "acrs": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "tw0b": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "0pli": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "p1wk": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "ptqq": [
+   "Bài 1. Nguyên hàm",
+   "Bài toán thực tế về nguyên hàm (chuyển động, tăng trưởng)"
+  ],
+  "57me": [
+   "Bài 2. Tích phân",
+   "Tính tích phân bằng định nghĩa và nguyên hàm cơ bản"
+  ],
+  "70r6": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "nsor": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "9ess": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "jbdl": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "ezet": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "85rt": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "visz": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "56sg": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "kqqg": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "vgge": [
+   "Bài 2. Tích phân",
+   "Sử dụng tính chất của tích phân"
+  ],
+  "0w7x": [
+   "Bài 2. Tích phân",
+   "Sử dụng ý nghĩa hình học để tính tích phân"
+  ],
+  "s7cb": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "dzub": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "1q9f": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "wchi": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "lyl9": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "deil": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "yyst": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "6eyv": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "suhh": [
+   "Bài 2. Tích phân",
+   "Tích phân của hàm số cho bởi nhiều công thức, hàm ẩn"
+  ],
+  "t9f6": [
+   "Bài 2. Tích phân",
+   "Bài toán thực tế về tích phân (quãng đường, lưu lượng, tăng trưởng)"
+  ],
+  "4qou": [
+   "Bài 2. Tích phân",
+   "Bài toán thực tế về tích phân (quãng đường, lưu lượng, tăng trưởng)"
+  ],
+  "hnkj": [
+   "Bài 3. Ứng dụng hình học của tích phân",
+   "Tính diện tích hình phẳng giới hạn bởi 1 đồ thị, trục hoành và 2 đường thẳng"
+  ],
+  "c0dw": [
+   "Bài 3. Ứng dụng hình học của tích phân",
+   "Tính diện tích hình phẳng giới hạn bởi 2 đồ thị và 2 đường thẳng"
+  ],
+  "jjk8": [
+   "Bài 3. Ứng dụng hình học của tích phân",
+   "Tính thể tích khối tròn xoay"
+  ],
+  "fdb3": [
+   "Bài 3. Ứng dụng hình học của tích phân",
+   "Tính thể tích khối tròn xoay"
+  ],
+  "me9c": [
+   "Bài 3. Ứng dụng hình học của tích phân",
+   "Xét các mệnh đề về diện tích hình phẳng, thể tích"
+  ],
+  "iebp": [
+   "Bài 3. Ứng dụng hình học của tích phân",
+   "Bài toán thực tế về diện tích, thể tích bằng tích phân"
+  ],
+  "q531": [
+   "Bài 3. Ứng dụng hình học của tích phân",
+   "Bài toán thực tế về diện tích, thể tích bằng tích phân"
+  ],
+  "fqhv": [
+   "Bài 3. Ứng dụng hình học của tích phân",
+   "Bài toán thực tế về diện tích, thể tích bằng tích phân"
+  ],
+  "v9ba": [
+   "Bài 3. Ứng dụng hình học của tích phân",
+   "Bài toán thực tế về diện tích, thể tích bằng tích phân"
+  ]
+ }
+}

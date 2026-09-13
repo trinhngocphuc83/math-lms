@@ -36,6 +36,9 @@ mkdirSync('scratch/soi-dang', { recursive: true });
 writeFileSync(`scratch/soi-dang/lop${LOP}-c${CHUONG}.json`, JSON.stringify({ grade: LOP, subject: dm[0].subject, topic, danhMuc: dm, cau }, null, 1));
 
 console.log(`${topic} · lớp ${LOP} · ${dm.length} dạng · ${cau.length} câu\n`);
+/* mã ngắn: đuôi ngắn nhất (>= 4 kí tự) không trùng với câu nào khác trong chương - mã kiểu CH_..._09_12 hay trùng 4 kí tự cuối */
+const tatCa = [...cau.map(q => q.question_id)];
+const ma = (q) => { for (let n = 4; n <= q.question_id.length; n++) { const s = q.question_id.slice(-n); if (tatCa.filter(x => x.endsWith(s)).length === 1) return s; } return q.question_id; };
 const gon = (s) => String(s || '').replace(/\s+/g, ' ').replace(/\\(left|right|mathbb|quad|,|;|color\{blue\})/g, '').replace(/\$/g, '').trim();
 let i = 0;
 for (const d of dm) {
@@ -43,7 +46,7 @@ for (const d of dm) {
   const ds = cau.filter(q => q.lesson === d.lesson && q.math_form === d.math_form);
   if (i < TU || i > DEN) continue;
   console.log(`\n### [${i}] ${d.lesson} | ${d.math_form} (${ds.length})\n    yêu cầu: ${gon(d.yeu_cau_can_dat).slice(0, 140)}`);
-  for (const q of ds) console.log(`  ${q.question_id.slice(-4)} ${q.question_type} ${q.difficulty} | ${gon(q.content).slice(0, 110)}`);
+  for (const q of ds) console.log(`  ${ma(q)} ${q.question_type} ${q.difficulty} | ${gon(q.content).slice(0, 110)}`);
 }
 const lac = cau.filter(q => !dm.some(d => d.lesson === q.lesson && d.math_form === q.math_form));
-if (lac.length) { console.log(`\n### NGOÀI DANH MỤC (${lac.length})`); for (const q of lac) console.log(`  ${q.question_id.slice(-4)} ${q.lesson} | ${q.math_form} | ${gon(q.content).slice(0, 80)}`); }
+if (lac.length) { console.log(`\n### NGOÀI DANH MỤC (${lac.length})`); for (const q of lac) console.log(`  ${ma(q)} ${q.lesson} | ${q.math_form} | ${gon(q.content).slice(0, 80)}`); }
