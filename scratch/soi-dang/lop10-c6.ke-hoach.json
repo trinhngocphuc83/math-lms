@@ -1,0 +1,104 @@
+{
+ "lop": "10",
+ "chuong": 6,
+ "dang": [
+  {
+   "bai": "Bài 1. Hàm số",
+   "cu": null,
+   "moi": "Nhận biết hàm số, tính giá trị của hàm số",
+   "yc": "Nhận biết được hàm số cho bằng công thức, bảng, đồ thị và tính được giá trị của hàm số tại điểm cho trước."
+  },
+  {
+   "bai": "Bài 1. Hàm số",
+   "cu": "Tìm tập xác định, tập giá trị của hàm số",
+   "moi": "Tìm tập xác định, tập giá trị của hàm số",
+   "yc": "Tìm được tập xác định của hàm số cho bằng công thức (chứa căn, mẫu) và tập giá trị của hàm số đơn giản."
+  },
+  {
+   "bai": "Bài 1. Hàm số",
+   "cu": "Xét tính đồng biến, nghịch biến của hàm số",
+   "moi": "Xét tính đồng biến, nghịch biến của hàm số",
+   "yc": "Xét được tính đồng biến, nghịch biến của hàm số trên một khoảng bằng định nghĩa hoặc bằng đồ thị."
+  },
+  {
+   "bai": "Bài 1. Hàm số",
+   "cu": null,
+   "moi": "Đồ thị của hàm số và bài toán thực tế về hàm số",
+   "yc": "Đọc được thông tin từ đồ thị hàm số và lập được hàm số biểu thị đại lượng trong tình huống thực tế."
+  },
+  {
+   "bai": "Bài 2. Hàm số bậc hai",
+   "cu": "Lập bảng biến thiên và vẽ đồ thị hàm số bậc hai",
+   "moi": "Lập bảng biến thiên và vẽ đồ thị hàm số bậc hai",
+   "yc": "Xác định được đỉnh, trục đối xứng, lập được bảng biến thiên và vẽ được đồ thị hàm số bậc hai."
+  },
+  {
+   "bai": "Bài 2. Hàm số bậc hai",
+   "cu": "Xác định hàm số bậc hai khi biết một số yếu tố",
+   "moi": "Xác định hàm số bậc hai khi biết một số yếu tố",
+   "yc": "Xác định được hệ số a, b, c của hàm số bậc hai khi biết đỉnh, trục đối xứng, điểm đi qua hoặc đồ thị."
+  },
+  {
+   "bai": "Bài 2. Hàm số bậc hai",
+   "cu": null,
+   "moi": "Tìm giá trị lớn nhất, nhỏ nhất của hàm số bậc hai",
+   "yc": "Tìm được giá trị lớn nhất, giá trị nhỏ nhất của hàm số bậc hai trên tập xác định hoặc trên một đoạn."
+  },
+  {
+   "bai": "Bài 2. Hàm số bậc hai",
+   "cu": null,
+   "moi": "Bài toán thực tế về hàm số bậc hai",
+   "yc": "Vận dụng được hàm số bậc hai để giải bài toán thực tế (quỹ đạo, cổng parabol, tối ưu diện tích, doanh thu)."
+  },
+  {
+   "bai": "Bài 3. Dấu của tam thức bậc hai",
+   "cu": "Xét dấu tam thức bậc hai",
+   "moi": "Xét dấu tam thức bậc hai",
+   "yc": "Xét được dấu của tam thức bậc hai dựa vào biệt thức và hệ số a."
+  },
+  {
+   "bai": "Bài 3. Dấu của tam thức bậc hai",
+   "cu": "Giải bất phương trình bậc hai một ẩn",
+   "moi": "Giải bất phương trình bậc hai một ẩn",
+   "yc": "Giải được bất phương trình bậc hai một ẩn và bất phương trình đưa về tích, thương các tam thức."
+  },
+  {
+   "bai": "Bài 3. Dấu của tam thức bậc hai",
+   "cu": "Ứng dụng dấu tam thức bậc hai (tìm điều kiện của tham số m)",
+   "moi": "Tìm tham số để tam thức không đổi dấu, bất phương trình nghiệm đúng với mọi x",
+   "yc": "Tìm được giá trị của tham số để tam thức bậc hai luôn dương, luôn âm, phương trình bậc hai có nghiệm, bất phương trình nghiệm đúng với mọi x."
+  },
+  {
+   "bai": "Bài 3. Dấu của tam thức bậc hai",
+   "cu": null,
+   "moi": "Bài toán thực tế về bất phương trình bậc hai",
+   "yc": "Vận dụng được dấu tam thức bậc hai để giải bài toán thực tế (lợi nhuận, quỹ đạo, điều kiện an toàn)."
+  },
+  {
+   "bai": "Bài 4. Phương trình quy về phương trình bậc hai",
+   "cu": "Giải phương trình chứa căn thức dạng sqrt(f(x)) = sqrt(g(x))",
+   "moi": "Giải phương trình dạng √f(x) = √g(x)",
+   "yc": "Giải được phương trình dạng √f(x) = √g(x) bằng cách bình phương hai vế và thử lại nghiệm."
+  },
+  {
+   "bai": "Bài 4. Phương trình quy về phương trình bậc hai",
+   "cu": "Giải phương trình chứa căn thức dạng sqrt(f(x)) = g(x)",
+   "moi": "Giải phương trình dạng √f(x) = g(x)",
+   "yc": "Giải được phương trình dạng √f(x) = g(x) bằng cách bình phương hai vế và thử lại nghiệm."
+  },
+  {
+   "bai": "Bài 4. Phương trình quy về phương trình bậc hai",
+   "cu": null,
+   "moi": "Bài toán thực tế về phương trình quy về phương trình bậc hai",
+   "yc": "Vận dụng được phương trình chứa căn để giải bài toán thực tế (khoảng cách, thời gian, chi phí)."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Tổng hợp hàm số, đồ thị, tam thức bậc hai, phương trình quy về bậc hai",
+   "moi": "Bài tập tổng hợp chương 6",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 6 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

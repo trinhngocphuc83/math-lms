@@ -1,0 +1,95 @@
+{
+ "question_categories": [
+  {
+   "id": "e1099297-414a-4fe7-954b-860e7f8a13b3",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 8. Đại số tổ hợp",
+   "lesson": "Bài 3. Nhị thức Newton",
+   "math_form": "Khai triển nhị thức Newton (với n = 4, n = 5)",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Khai triển được nhị thức Newton với số mũ bằng 4 hoặc bằng 5."
+  },
+  {
+   "id": "7c8cf2cc-06bf-4849-8683-7a9a86357bb9",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 8. Đại số tổ hợp",
+   "lesson": "Bài 2. Hoán vị, chỉnh hợp và tổ hợp",
+   "math_form": "Bài toán đếm sử dụng chỉnh hợp",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức chỉnh hợp để giải các bài toán đếm chọn và sắp xếp thứ tự một số phần tử."
+  },
+  {
+   "id": "f921d2f5-7c35-480c-8253-1da936c93409",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 8. Đại số tổ hợp",
+   "lesson": "Bài 1. Quy tắc đếm",
+   "math_form": "Kết hợp quy tắc cộng và quy tắc nhân",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Phối hợp được quy tắc cộng và quy tắc nhân để giải quyết các bài toán đếm gồm nhiều phương án và công đoạn."
+  },
+  {
+   "id": "b5f2323f-52a8-465b-83f0-cb3c9aa27c47",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 8. Đại số tổ hợp",
+   "lesson": "Bài 1. Quy tắc đếm",
+   "math_form": "Vận dụng quy tắc cộng",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được quy tắc cộng để tính số cách thực hiện một công việc gồm nhiều phương án độc lập."
+  },
+  {
+   "id": "67268d66-ffb7-48aa-a73a-b1130d352c07",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 8. Đại số tổ hợp",
+   "lesson": "Bài 2. Hoán vị, chỉnh hợp và tổ hợp",
+   "math_form": "Bài toán đếm sử dụng tổ hợp",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức tổ hợp để tính số cách chọn một nhóm phần tử không phân biệt thứ tự."
+  },
+  {
+   "id": "d6e2ee22-fcea-44f0-a1e9-6947350440cc",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 8. Đại số tổ hợp",
+   "lesson": "Bài 2. Hoán vị, chỉnh hợp và tổ hợp",
+   "math_form": "Bài toán đếm sử dụng hoán vị",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được công thức hoán vị để tính số cách sắp xếp thứ tự của toàn bộ phần tử trong một tập hợp."
+  },
+  {
+   "id": "fe3f468f-e5c1-45e1-b712-46d0dcd76fcc",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 8. Đại số tổ hợp",
+   "lesson": "Bài 1. Quy tắc đếm",
+   "math_form": "Vận dụng quy tắc nhân",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được quy tắc nhân để tính số cách thực hiện một công việc gồm nhiều công đoạn liên tiếp."
+  },
+  {
+   "id": "f8165cb0-6453-499e-8935-00ba08c2ae04",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 8. Đại số tổ hợp",
+   "lesson": "Bài 3. Nhị thức Newton",
+   "math_form": "Tìm hệ số của số hạng trong khai triển nhị thức Newton",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xác định được hệ số hoặc số hạng thỏa mãn điều kiện cho trước trong khai triển nhị thức Newton."
+  },
+  {
+   "id": "3a7a4fb4-4001-46e4-951f-409de83e4ec2",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 8. Đại số tổ hợp",
+   "lesson": "Bài 4. Ôn tập chương",
+   "math_form": "Tổng hợp quy tắc đếm, hoán vị, chỉnh hợp, tổ hợp, nhị thức Newton",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các quy tắc đếm, hoán vị, chỉnh hợp, tổ hợp và nhị thức Newton để giải các bài toán đại số tổ hợp tổng hợp."
+  }
+ ],
+ "questions": []
+}

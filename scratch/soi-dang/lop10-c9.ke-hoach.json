@@ -1,0 +1,56 @@
+{
+ "lop": "10",
+ "chuong": 9,
+ "dang": [
+  {
+   "bai": "Bài 1. Biến cố và định nghĩa cổ điển của xác suất",
+   "cu": "Xác định không gian mẫu và biến cố",
+   "moi": "Mô tả không gian mẫu và biến cố",
+   "yc": "Mô tả được không gian mẫu, biến cố, biến cố đối và đếm được số phần tử của chúng trong phép thử đơn giản."
+  },
+  {
+   "bai": "Bài 1. Biến cố và định nghĩa cổ điển của xác suất",
+   "cu": "Tính xác suất bằng định nghĩa cổ điển",
+   "moi": "Tính xác suất bằng định nghĩa cổ điển",
+   "yc": "Tính được xác suất của biến cố bằng định nghĩa cổ điển khi liệt kê được không gian mẫu."
+  },
+  {
+   "bai": "Bài 1. Biến cố và định nghĩa cổ điển của xác suất",
+   "cu": null,
+   "moi": "Nhận biết ý nghĩa của xác suất, xác suất của biến cố đối",
+   "yc": "Vận dụng được tính chất P(A̅) = 1 − P(A), nhận biết được biến cố chắc chắn, không thể và ý nghĩa thực tế của xác suất."
+  },
+  {
+   "bai": "Bài 2. Thực hành tính xác suất theo định nghĩa cổ điển",
+   "cu": null,
+   "moi": "Tính xác suất bằng sơ đồ hình cây",
+   "yc": "Tính được xác suất của biến cố bằng cách dùng sơ đồ hình cây để liệt kê các kết quả."
+  },
+  {
+   "bai": "Bài 2. Thực hành tính xác suất theo định nghĩa cổ điển",
+   "cu": "Tính xác suất sử dụng quy tắc đếm (hoán vị, chỉnh hợp, tổ hợp)",
+   "moi": "Tính xác suất sử dụng quy tắc đếm (hoán vị, chỉnh hợp, tổ hợp)",
+   "yc": "Tính được xác suất của biến cố bằng cách dùng hoán vị, chỉnh hợp, tổ hợp để đếm số kết quả."
+  },
+  {
+   "bai": "Bài 2. Thực hành tính xác suất theo định nghĩa cổ điển",
+   "cu": null,
+   "moi": "Tính xác suất bằng biến cố đối",
+   "yc": "Tính được xác suất của biến cố thông qua biến cố đối trong các bài toán \"có ít nhất\"."
+  },
+  {
+   "bai": "Bài 2. Thực hành tính xác suất theo định nghĩa cổ điển",
+   "cu": null,
+   "moi": "Bài toán thực tế về xác suất cổ điển",
+   "yc": "Vận dụng được xác suất cổ điển để giải bài toán thực tế (chọn đội, rút thẻ, kiểm tra sản phẩm)."
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "cu": "Tổng hợp tính xác suất bằng phương pháp tổ hợp",
+   "moi": "Bài tập tổng hợp chương 9",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 9 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

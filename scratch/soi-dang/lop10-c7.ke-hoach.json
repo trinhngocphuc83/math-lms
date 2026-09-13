@@ -1,0 +1,116 @@
+{
+ "lop": "10",
+ "chuong": 7,
+ "dang": [
+  {
+   "bai": "Bài 1. Phương trình đường thẳng",
+   "cu": null,
+   "moi": "Xác định vectơ pháp tuyến, vectơ chỉ phương, điểm thuộc đường thẳng",
+   "yc": "Xác định được vectơ pháp tuyến, vectơ chỉ phương của đường thẳng và kiểm tra được điểm thuộc đường thẳng."
+  },
+  {
+   "bai": "Bài 1. Phương trình đường thẳng",
+   "cu": "Viết phương trình tham số, phương trình tổng quát của đường thẳng",
+   "moi": "Viết phương trình tham số, phương trình tổng quát của đường thẳng",
+   "yc": "Viết được phương trình tham số, phương trình tổng quát của đường thẳng khi biết điểm và vectơ chỉ phương, vectơ pháp tuyến hoặc hai điểm."
+  },
+  {
+   "bai": "Bài 1. Phương trình đường thẳng",
+   "cu": "Chuyển đổi giữa các dạng phương trình đường thẳng",
+   "moi": "Chuyển đổi giữa các dạng phương trình đường thẳng",
+   "yc": "Chuyển được phương trình đường thẳng giữa dạng tham số, tổng quát, chính tắc, hệ số góc."
+  },
+  {
+   "bai": "Bài 1. Phương trình đường thẳng",
+   "cu": null,
+   "moi": "Viết phương trình các đường thẳng đặc biệt trong tam giác",
+   "yc": "Viết được phương trình đường cao, đường trung tuyến, đường trung trực, đường thẳng qua một điểm và song song hoặc vuông góc với đường thẳng cho trước."
+  },
+  {
+   "bai": "Bài 2. Vị trí tương đối giữa hai đường thẳng. Góc và khoảng cách",
+   "cu": "Xét vị trí tương đối giữa hai đường thẳng",
+   "moi": "Xét vị trí tương đối giữa hai đường thẳng",
+   "yc": "Xét được vị trí tương đối (cắt nhau, song song, trùng nhau, vuông góc) của hai đường thẳng và tìm được giao điểm."
+  },
+  {
+   "bai": "Bài 2. Vị trí tương đối giữa hai đường thẳng. Góc và khoảng cách",
+   "cu": "Tính góc giữa hai đường thẳng",
+   "moi": "Tính góc giữa hai đường thẳng",
+   "yc": "Tính được góc giữa hai đường thẳng bằng vectơ pháp tuyến hoặc vectơ chỉ phương."
+  },
+  {
+   "bai": "Bài 2. Vị trí tương đối giữa hai đường thẳng. Góc và khoảng cách",
+   "cu": "Tính khoảng cách từ một điểm đến một đường thẳng",
+   "moi": "Tính khoảng cách từ một điểm đến một đường thẳng",
+   "yc": "Tính được khoảng cách từ một điểm đến một đường thẳng, khoảng cách giữa hai đường thẳng song song và vận dụng tính diện tích tam giác."
+  },
+  {
+   "bai": "Bài 2. Vị trí tương đối giữa hai đường thẳng. Góc và khoảng cách",
+   "cu": null,
+   "moi": "Tìm điểm, viết phương trình đường thẳng thoả mãn điều kiện về góc, khoảng cách",
+   "yc": "Tìm được điểm, viết được phương trình đường thẳng thoả mãn điều kiện về khoảng cách, góc, đường phân giác."
+  },
+  {
+   "bai": "Bài 2. Vị trí tương đối giữa hai đường thẳng. Góc và khoảng cách",
+   "cu": null,
+   "moi": "Bài toán thực tế về vị trí tương đối, góc và khoảng cách",
+   "yc": "Vận dụng được góc và khoảng cách trong mặt phẳng toạ độ để giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 3. Đường tròn trong mặt phẳng tọa độ",
+   "cu": "Xác định tâm và bán kính đường tròn",
+   "moi": "Nhận biết phương trình đường tròn, xác định tâm và bán kính",
+   "yc": "Nhận biết được phương trình đường tròn và xác định được tâm, bán kính từ phương trình."
+  },
+  {
+   "bai": "Bài 3. Đường tròn trong mặt phẳng tọa độ",
+   "cu": "Viết phương trình đường tròn",
+   "moi": "Viết phương trình đường tròn",
+   "yc": "Viết được phương trình đường tròn khi biết tâm và bán kính, đường kính, tâm và tiếp xúc với đường thẳng, đi qua ba điểm."
+  },
+  {
+   "bai": "Bài 3. Đường tròn trong mặt phẳng tọa độ",
+   "cu": "Viết phương trình tiếp tuyến của đường tròn",
+   "moi": "Viết phương trình tiếp tuyến của đường tròn",
+   "yc": "Viết được phương trình tiếp tuyến của đường tròn tại một điểm thuộc đường tròn và tiếp tuyến thoả mãn điều kiện cho trước."
+  },
+  {
+   "bai": "Bài 3. Đường tròn trong mặt phẳng tọa độ",
+   "cu": null,
+   "moi": "Vị trí tương đối của đường thẳng và đường tròn, bài toán thực tế",
+   "yc": "Xét được vị trí tương đối của đường thẳng và đường tròn, tìm được giao điểm và vận dụng vào bài toán thực tế."
+  },
+  {
+   "bai": "Bài 4. Ba đường conic",
+   "cu": "Nhận biết, viết phương trình chính tắc của Elip",
+   "moi": "Nhận biết, viết phương trình chính tắc của elip",
+   "yc": "Nhận biết được phương trình chính tắc của elip, xác định được tiêu điểm, đỉnh, trục và viết được phương trình chính tắc của elip."
+  },
+  {
+   "bai": "Bài 4. Ba đường conic",
+   "cu": "Nhận biết, viết phương trình chính tắc của Hypebol",
+   "moi": "Nhận biết, viết phương trình chính tắc của hypebol",
+   "yc": "Nhận biết được phương trình chính tắc của hypebol, xác định được tiêu điểm, đỉnh và viết được phương trình chính tắc của hypebol."
+  },
+  {
+   "bai": "Bài 4. Ba đường conic",
+   "cu": "Nhận biết, viết phương trình chính tắc của Parabol",
+   "moi": "Nhận biết, viết phương trình chính tắc của parabol",
+   "yc": "Nhận biết được phương trình chính tắc của parabol, xác định được tiêu điểm, đường chuẩn và viết được phương trình chính tắc của parabol."
+  },
+  {
+   "bai": "Bài 4. Ba đường conic",
+   "cu": null,
+   "moi": "Bài toán thực tế về ba đường conic",
+   "yc": "Vận dụng được ba đường conic để giải bài toán thực tế (quỹ đạo, cổng vòm, ăng-ten parabol)."
+  },
+  {
+   "bai": "Bài 5. Ôn tập chương",
+   "cu": "Tổng hợp phương pháp tọa độ mặt phẳng (đường thẳng, đường tròn, ba đường conic)",
+   "moi": "Bài tập tổng hợp chương 7",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 7 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

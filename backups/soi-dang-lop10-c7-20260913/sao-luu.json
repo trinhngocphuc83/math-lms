@@ -1,0 +1,125 @@
+{
+ "question_categories": [
+  {
+   "id": "15d0c51d-e6ee-4725-a526-92e2d57e55a5",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 4. Ba đường conic",
+   "math_form": "Nhận biết, viết phương trình chính tắc của Elip",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Nhận biết và viết được phương trình chính tắc của elip khi biết các yếu tố hình học cơ bản."
+  },
+  {
+   "id": "fd4e2ba9-bf7e-4ae7-b72e-0a6b610bfb8e",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 2. Vị trí tương đối giữa hai đường thẳng. Góc và khoảng cách",
+   "math_form": "Tính khoảng cách từ một điểm đến một đường thẳng",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Tính được khoảng cách từ một điểm có toạ độ cho trước đến một đường thẳng."
+  },
+  {
+   "id": "1983f1c0-efad-4b1d-9dd5-98f591e309b9",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 3. Đường tròn trong mặt phẳng tọa độ",
+   "math_form": "Viết phương trình đường tròn",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Viết được phương trình đường tròn khi biết tâm và bán kính hoặc thoả mãn điều kiện hình học cho trước."
+  },
+  {
+   "id": "90777283-7ece-4fe1-b6f7-ae36ddaeb5f6",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 3. Đường tròn trong mặt phẳng tọa độ",
+   "math_form": "Viết phương trình tiếp tuyến của đường tròn",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Viết được phương trình tiếp tuyến của đường tròn tại một điểm thuộc đường tròn hoặc thoả mãn điều kiện cho trước."
+  },
+  {
+   "id": "f38b8f4d-1846-4554-8023-bd55e783b98b",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 2. Vị trí tương đối giữa hai đường thẳng. Góc và khoảng cách",
+   "math_form": "Xét vị trí tương đối giữa hai đường thẳng",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xác định được vị trí tương đối giữa hai đường thẳng khi biết phương trình của chúng."
+  },
+  {
+   "id": "9631d80a-4db3-4771-887b-3158c75cc0f2",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 4. Ba đường conic",
+   "math_form": "Nhận biết, viết phương trình chính tắc của Parabol",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Nhận biết và viết được phương trình chính tắc của parabol khi biết các yếu tố hình học cơ bản."
+  },
+  {
+   "id": "2797dc43-ca9e-486e-9ccc-ec245e0af046",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 1. Phương trình đường thẳng",
+   "math_form": "Viết phương trình tham số, phương trình tổng quát của đường thẳng",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Lập được phương trình tham số và phương trình tổng quát của đường thẳng khi biết các yếu tố xác định."
+  },
+  {
+   "id": "097afcf4-ab78-4b67-b896-f205bcc49df1",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 1. Phương trình đường thẳng",
+   "math_form": "Chuyển đổi giữa các dạng phương trình đường thẳng",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Thực hiện được việc chuyển đổi giữa phương trình tổng quát và phương trình tham số của đường thẳng."
+  },
+  {
+   "id": "a7097356-3530-4a9e-9d43-cf05f7ec6e0a",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 2. Vị trí tương đối giữa hai đường thẳng. Góc và khoảng cách",
+   "math_form": "Tính góc giữa hai đường thẳng",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Tính được số đo góc hoặc côsin của góc giữa hai đường thẳng khi biết phương trình của chúng."
+  },
+  {
+   "id": "8e918167-9c7c-42cf-9960-f5bbfbb34926",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 4. Ba đường conic",
+   "math_form": "Nhận biết, viết phương trình chính tắc của Hypebol",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Nhận biết và viết được phương trình chính tắc của hypebol khi biết các yếu tố hình học cơ bản."
+  },
+  {
+   "id": "e5a3d309-f9ed-4a17-8a75-a2c393f29de9",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 3. Đường tròn trong mặt phẳng tọa độ",
+   "math_form": "Xác định tâm và bán kính đường tròn",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xác định được toạ độ tâm và độ dài bán kính của đường tròn khi biết phương trình của nó."
+  },
+  {
+   "id": "dfb7bbdb-d457-42ac-93f7-c1453d6820ef",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 7. Phương pháp tọa độ trong mặt phẳng",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp phương pháp tọa độ mặt phẳng (đường thẳng, đường tròn, ba đường conic)",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được kiến thức về đường thẳng, đường tròn và ba đường conic để giải quyết các bài toán toạ độ tổng hợp."
+  }
+ ],
+ "questions": []
+}

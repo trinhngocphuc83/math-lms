@@ -1,0 +1,184 @@
+{
+ "question_categories": [
+  {
+   "id": "5dd25f41-acaa-40ce-990a-6be108acfda8",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Tổng hợp các phép toán vectơ và tọa độ",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được tổng hợp các kiến thức về phép toán vectơ và phương pháp tọa độ để giải quyết các bài toán hình học."
+  },
+  {
+   "id": "c17fdb3c-0c2c-4aa3-bd17-361ec6191dd4",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 5. Tích vô hướng của hai vectơ",
+   "math_form": "Tính góc giữa hai vectơ",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Tính được góc giữa hai vectơ dựa vào công thức tích vô hướng và độ dài của các vectơ."
+  },
+  {
+   "id": "02d13f40-fe37-4fe0-bf35-9c64a8012f47",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 4. Vectơ trong mặt phẳng tọa độ",
+   "math_form": "Các phép toán vectơ bằng tọa độ",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Thực hiện được các phép cộng, trừ vectơ, nhân vectơ với một số và tính tích vô hướng qua biểu thức tọa độ."
+  },
+  {
+   "id": "82e6ea81-f364-4e23-80d9-6f507a1b4ff8",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 3. Tích của một vectơ với một số",
+   "math_form": "Chứng minh ba điểm thẳng hàng, hai đường thẳng song song bằng vectơ",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được điều kiện hai vectơ cùng phương để chứng minh ba điểm thẳng hàng hoặc hai đường thẳng song song."
+  },
+  {
+   "id": "ac11f725-85bd-4031-be1f-55c48a75aead",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 3. Tích của một vectơ với một số",
+   "math_form": "Xác định tích của một vectơ với một số",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xác định được phương, hướng, độ dài và dựng được vectơ là tích của một số thực với một vectơ cho trước."
+  },
+  {
+   "id": "d944d9b2-302a-4659-9787-7844eb91420d",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 2. Tổng và hiệu của hai vectơ",
+   "math_form": "Xác định tổng, hiệu của hai vectơ (quy tắc ba điểm, quy tắc hình bình hành)",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xác định và tính được độ dài của tổng, hiệu hai vectơ bằng cách áp dụng quy tắc ba điểm hoặc quy tắc hình bình hành."
+  },
+  {
+   "id": "634a4f62-9cae-4ef2-98d6-eca616d9861b",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 5. Tích vô hướng của hai vectơ",
+   "math_form": "Tính tích vô hướng của hai vectơ và ứng dụng",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Tính được tích vô hướng của hai vectơ và vận dụng để giải quyết bài toán tính độ dài hoặc chứng minh tính vuông góc."
+  },
+  {
+   "id": "4703b77d-905b-49e2-a1ec-af7971be6484",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 4. Vectơ trong mặt phẳng tọa độ",
+   "math_form": "Tìm tọa độ của vectơ, tọa độ điểm",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xác định được tọa độ của một vectơ, tọa độ điểm, trung điểm đoạn thẳng và trọng tâm tam giác trong mặt phẳng tọa độ."
+  },
+  {
+   "id": "cdbc7b6d-f4bb-4250-b3de-61780b71004b",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 3. Tích của một vectơ với một số",
+   "math_form": "Phân tích một vectơ theo hai vectơ không cùng phương",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Biểu diễn được một vectơ qua hai vectơ không cùng phương cho trước trong các bài toán hình học."
+  },
+  {
+   "id": "bcda3962-5647-43a2-8f2a-ebc8693d00c3",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 2. Tổng và hiệu của hai vectơ",
+   "math_form": "Chứng minh đẳng thức vectơ (phép cộng, trừ)",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các tính chất của phép cộng, trừ vectơ và các quy tắc hình học để chứng minh đẳng thức vectơ."
+  },
+  {
+   "id": "13b962dd-1b4d-4ef3-b368-4b1e8d99d28c",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 1. Các khái niệm mở đầu",
+   "math_form": "Xác định vectơ, hai vectơ cùng phương, cùng hướng, bằng nhau",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Nhận biết và xác định được vectơ, vectơ-không cùng mối quan hệ cùng phương, cùng hướng và bằng nhau giữa các vectơ."
+  },
+  {
+   "id": "d1dbbfc8-7dce-46f3-94b8-90c06fd1b386",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 3. Tích của một vectơ với một số",
+   "math_form": "Tính độ dài của vectơ",
+   "created_at": "2026-09-04T06:46:25.627947+00:00",
+   "yeu_cau_can_dat": "Tính được độ dài của vectơ tổng, vectơ hiệu và tích của một vectơ với một số."
+  },
+  {
+   "id": "cb363142-08c6-4bf0-83d8-fcf931a182ce",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 4. Vectơ",
+   "lesson": "Bài 2. Tổng và hiệu của hai vectơ",
+   "math_form": "Toán thực tế - Lực",
+   "created_at": "2026-09-04T06:46:25.627947+00:00",
+   "yeu_cau_can_dat": "Vận dụng phép cộng, trừ vectơ để giải quyết bài toán thực tiễn về lực."
+  }
+ ],
+ "questions": [
+  {
+   "id": "4de2dfd5-a6c0-47ac-be8d-d1df3f832646",
+   "question_id": "CH_1787906200657_hvic",
+   "lesson": "Bài 2. Tổng và hiệu của hai vectơ",
+   "math_form": "Xác định tổng, hiệu của hai vectơ (quy tắc ba điểm, quy tắc hình bình hành)"
+  },
+  {
+   "id": "564acefa-26c7-4015-b88b-3e682475d615",
+   "question_id": "CH_1787906200657_kd6y",
+   "lesson": "Bài 1. Các khái niệm mở đầu",
+   "math_form": "Xác định vectơ, hai vectơ cùng phương, cùng hướng, bằng nhau"
+  },
+  {
+   "id": "aa337104-e37c-42ea-be3a-a385b0364846",
+   "question_id": "CH_1787906200657_s2qo",
+   "lesson": "Bài 1. Các khái niệm mở đầu",
+   "math_form": "Xác định vectơ, hai vectơ cùng phương, cùng hướng, bằng nhau"
+  },
+  {
+   "id": "8551c40e-ff73-4e5e-861b-3186016ea297",
+   "question_id": "CH_1787906200657_0lvu",
+   "lesson": "Bài 2. Tổng và hiệu của hai vectơ",
+   "math_form": "Chứng minh đẳng thức vectơ (phép cộng, trừ)"
+  },
+  {
+   "id": "ad7de5a9-d9d3-4aac-a9ec-933531287b28",
+   "question_id": "CH_1787906200657_76mr",
+   "lesson": "Bài 3. Tích của một vectơ với một số",
+   "math_form": "Phân tích một vectơ theo hai vectơ không cùng phương"
+  },
+  {
+   "id": "1b5da100-6b68-4eab-abf8-1e00c853aaad",
+   "question_id": "CH_1787906200657_2su8",
+   "lesson": "Bài 2. Tổng và hiệu của hai vectơ",
+   "math_form": "Toán thực tế - Lực"
+  },
+  {
+   "id": "4c80494c-e2f1-4573-bf58-a3c67dd2e05d",
+   "question_id": "CH_1787906200657_908b",
+   "lesson": "Bài 6. Ôn tập chương",
+   "math_form": "Tổng hợp các phép toán vectơ và tọa độ"
+  },
+  {
+   "id": "60a17c78-1297-4dd9-a90a-0bea7f0cadd5",
+   "question_id": "CH_1787906200657_r8r1",
+   "lesson": "Bài 3. Tích của một vectơ với một số",
+   "math_form": "Tính độ dài của vectơ"
+  }
+ ]
+}

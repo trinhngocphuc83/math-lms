@@ -1,0 +1,105 @@
+{
+ "question_categories": [
+  {
+   "id": "32ff2453-fe1b-4a9c-82fd-76dc5a621f92",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 4. Phương trình quy về phương trình bậc hai",
+   "math_form": "Giải phương trình chứa căn thức dạng sqrt(f(x)) = g(x)",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình chứa căn thức dạng căn bậc hai của một tam thức bậc hai bằng một nhị thức bậc nhất."
+  },
+  {
+   "id": "7e20a449-c1c9-430b-b696-7904bc0531b8",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 3. Dấu của tam thức bậc hai",
+   "math_form": "Ứng dụng dấu tam thức bậc hai (tìm điều kiện của tham số m)",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được định lí về dấu của tam thức bậc hai để tìm điều kiện của tham số."
+  },
+  {
+   "id": "71979935-c3c3-4271-864f-6743765f3042",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 3. Dấu của tam thức bậc hai",
+   "math_form": "Giải bất phương trình bậc hai một ẩn",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Giải được bất phương trình bậc hai một ẩn."
+  },
+  {
+   "id": "1284b99b-8d32-4d9e-9509-f41e2269d250",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 3. Dấu của tam thức bậc hai",
+   "math_form": "Xét dấu tam thức bậc hai",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xét được dấu của tam thức bậc hai."
+  },
+  {
+   "id": "2cc2d41b-afb3-47a3-8065-099d67b581fd",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 1. Hàm số",
+   "math_form": "Tìm tập xác định, tập giá trị của hàm số",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Tìm được tập xác định và tập giá trị của hàm số cho bởi công thức."
+  },
+  {
+   "id": "afd23b3b-28c9-475c-9a1f-c01ee485c3b2",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 2. Hàm số bậc hai",
+   "math_form": "Lập bảng biến thiên và vẽ đồ thị hàm số bậc hai",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Lập được bảng biến thiên và vẽ được đồ thị của hàm số bậc hai."
+  },
+  {
+   "id": "369e6773-e642-4dbd-b121-259660d3b74d",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 4. Phương trình quy về phương trình bậc hai",
+   "math_form": "Giải phương trình chứa căn thức dạng sqrt(f(x)) = sqrt(g(x))",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Giải được phương trình chứa căn thức dạng căn bậc hai của f(x) bằng căn bậc hai của g(x)."
+  },
+  {
+   "id": "692235d3-84ce-4422-bd59-6ddaec1d5b37",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 5. Ôn tập chương",
+   "math_form": "Tổng hợp hàm số, đồ thị, tam thức bậc hai, phương trình quy về bậc hai",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được kiến thức về hàm số, tam thức bậc hai và phương trình quy về bậc hai để giải toán."
+  },
+  {
+   "id": "43633116-8188-4849-8d24-31f792c42f71",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 2. Hàm số bậc hai",
+   "math_form": "Xác định hàm số bậc hai khi biết một số yếu tố",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xác định được các hệ số của hàm số bậc hai khi biết toạ độ đỉnh, trục đối xứng hoặc điểm thuộc đồ thị."
+  },
+  {
+   "id": "e6a2d4e5-f337-4d6a-ab50-6468d1031efe",
+   "grade": "10",
+   "subject": "Đại số",
+   "topic": "Chương 6. Hàm số, đồ thị và ứng dụng",
+   "lesson": "Bài 1. Hàm số",
+   "math_form": "Xét tính đồng biến, nghịch biến của hàm số",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xét được tính đồng biến, nghịch biến của hàm số trên một khoảng cho trước."
+  }
+ ],
+ "questions": []
+}

@@ -1,0 +1,62 @@
+{
+ "lop": "10",
+ "chuong": 3,
+ "dang": [
+  {
+   "bai": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "cu": "Tính giá trị lượng giác của một góc, rút gọn biểu thức lượng giác",
+   "moi": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "yc": "Tính được giá trị lượng giác của các góc đặc biệt, của góc bù nhau, phụ nhau và bằng máy tính cầm tay."
+  },
+  {
+   "bai": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "cu": null,
+   "moi": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "yc": "Vận dụng được các hệ thức cơ bản (sin² + cos² = 1, tan·cot = 1...) để tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác."
+  },
+  {
+   "bai": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "cu": "Tìm góc khi biết giá trị lượng giác",
+   "moi": "Tìm góc khi biết giá trị lượng giác",
+   "yc": "Tìm được góc từ 0° đến 180° khi biết một giá trị lượng giác của nó, kể cả bằng máy tính cầm tay."
+  },
+  {
+   "bai": "Bài 2. Hệ thức lượng trong tam giác",
+   "cu": "Định lí côsin, định lí sin và tính các yếu tố trong tam giác",
+   "moi": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "yc": "Vận dụng được định lí côsin, định lí sin để tính cạnh, góc, bán kính đường tròn ngoại tiếp của tam giác."
+  },
+  {
+   "bai": "Bài 2. Hệ thức lượng trong tam giác",
+   "cu": "Tính diện tích tam giác",
+   "moi": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "yc": "Tính được diện tích tam giác bằng các công thức (½ab·sinC, công thức Heron, pr, abc/4R) và suy ra đường cao, bán kính đường tròn nội tiếp."
+  },
+  {
+   "bai": "Bài 2. Hệ thức lượng trong tam giác",
+   "cu": "Giải tam giác và ứng dụng thực tế",
+   "moi": "Giải tam giác",
+   "yc": "Giải được tam giác (tìm mọi cạnh, góc còn lại) khi biết ba yếu tố trong đó có ít nhất một cạnh."
+  },
+  {
+   "bai": "Bài 2. Hệ thức lượng trong tam giác",
+   "cu": null,
+   "moi": "Chứng minh hệ thức, nhận dạng tam giác",
+   "yc": "Chứng minh được các hệ thức trong tam giác và nhận dạng được tam giác từ hệ thức cho trước bằng định lí côsin, định lí sin."
+  },
+  {
+   "bai": "Bài 2. Hệ thức lượng trong tam giác",
+   "cu": null,
+   "moi": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "yc": "Vận dụng được hệ thức lượng trong tam giác để đo khoảng cách, chiều cao trong thực tế."
+  },
+  {
+   "bai": "Bài 3. Ôn tập chương",
+   "cu": "Tổng hợp hệ thức lượng và giải tam giác",
+   "moi": "Bài tập tổng hợp chương 3",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 3 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

@@ -1,0 +1,128 @@
+{
+ "lop": "10",
+ "chuong": 4,
+ "dang": [
+  {
+   "bai": "Bài 1. Các khái niệm mở đầu",
+   "cu": "Xác định vectơ, hai vectơ cùng phương, cùng hướng, bằng nhau",
+   "moi": "Xác định vectơ, hai vectơ cùng phương, cùng hướng, bằng nhau",
+   "yc": "Nhận biết được vectơ, vectơ-không, hai vectơ cùng phương, cùng hướng, bằng nhau và đếm được số vectơ trong hình."
+  },
+  {
+   "bai": "Bài 1. Các khái niệm mở đầu",
+   "cu": null,
+   "moi": "Tính độ dài của vectơ trong hình",
+   "yc": "Tính được độ dài vectơ dựa vào độ dài đoạn thẳng trong hình vuông, hình chữ nhật, tam giác đều."
+  },
+  {
+   "bai": "Bài 2. Tổng và hiệu của hai vectơ",
+   "cu": "Xác định tổng, hiệu của hai vectơ (quy tắc ba điểm, quy tắc hình bình hành)",
+   "moi": "Xác định tổng, hiệu của hai vectơ (quy tắc ba điểm, quy tắc hình bình hành)",
+   "yc": "Xác định được vectơ tổng, vectơ hiệu bằng quy tắc ba điểm, quy tắc hình bình hành, quy tắc trừ."
+  },
+  {
+   "bai": "Bài 2. Tổng và hiệu của hai vectơ",
+   "cu": "Chứng minh đẳng thức vectơ (phép cộng, trừ)",
+   "moi": "Chứng minh đẳng thức vectơ (phép cộng, trừ)",
+   "yc": "Chứng minh được đẳng thức vectơ bằng quy tắc ba điểm, quy tắc hình bình hành, tính chất trung điểm, trọng tâm."
+  },
+  {
+   "bai": "Bài 2. Tổng và hiệu của hai vectơ",
+   "cu": null,
+   "moi": "Tính độ dài của vectơ tổng, vectơ hiệu",
+   "yc": "Tính được độ dài của vectơ tổng, vectơ hiệu trong hình vuông, tam giác đều, hình chữ nhật."
+  },
+  {
+   "bai": "Bài 2. Tổng và hiệu của hai vectơ",
+   "cu": "Toán thực tế - Lực",
+   "moi": "Bài toán thực tế về tổng hợp lực, vận tốc",
+   "yc": "Vận dụng được phép cộng, trừ vectơ để giải bài toán về hợp lực, vận tốc tổng hợp trong thực tế."
+  },
+  {
+   "bai": "Bài 3. Tích của một vectơ với một số",
+   "cu": "Xác định tích của một vectơ với một số",
+   "moi": "Xác định tích của một vectơ với một số",
+   "yc": "Xác định được vectơ k·a (phương, hướng, độ dài) và dựng được vectơ tích."
+  },
+  {
+   "bai": "Bài 3. Tích của một vectơ với một số",
+   "cu": "Phân tích một vectơ theo hai vectơ không cùng phương",
+   "moi": "Phân tích một vectơ theo hai vectơ không cùng phương",
+   "yc": "Biểu thị được một vectơ theo hai vectơ không cùng phương và theo trung điểm, trọng tâm."
+  },
+  {
+   "bai": "Bài 3. Tích của một vectơ với một số",
+   "cu": "Chứng minh ba điểm thẳng hàng, hai đường thẳng song song bằng vectơ",
+   "moi": "Chứng minh ba điểm thẳng hàng, hai đường thẳng song song bằng vectơ",
+   "yc": "Chứng minh được ba điểm thẳng hàng, hai đường thẳng song song bằng điều kiện hai vectơ cùng phương."
+  },
+  {
+   "bai": "Bài 3. Tích của một vectơ với một số",
+   "cu": null,
+   "moi": "Chứng minh đẳng thức vectơ có trung điểm, trọng tâm",
+   "yc": "Chứng minh được đẳng thức vectơ liên quan đến trung điểm đoạn thẳng, trọng tâm tam giác và xác định điểm thoả mãn đẳng thức vectơ."
+  },
+  {
+   "bai": "Bài 3. Tích của một vectơ với một số",
+   "cu": "Tính độ dài của vectơ",
+   "moi": "Tính độ dài của vectơ tích với một số",
+   "yc": "Tính được độ dài vectơ dạng k·a + m·b trong tam giác, hình vuông, hình chữ nhật."
+  },
+  {
+   "bai": "Bài 4. Vectơ trong mặt phẳng tọa độ",
+   "cu": "Tìm tọa độ của vectơ, tọa độ điểm",
+   "moi": "Tìm tọa độ của vectơ, tọa độ điểm",
+   "yc": "Tìm được toạ độ của vectơ, toạ độ điểm (trung điểm, trọng tâm, đỉnh thứ tư hình bình hành) trong mặt phẳng toạ độ."
+  },
+  {
+   "bai": "Bài 4. Vectơ trong mặt phẳng tọa độ",
+   "cu": "Các phép toán vectơ bằng tọa độ",
+   "moi": "Các phép toán vectơ bằng tọa độ",
+   "yc": "Thực hiện được phép cộng, trừ, nhân với số bằng toạ độ và tính được độ dài vectơ, khoảng cách hai điểm."
+  },
+  {
+   "bai": "Bài 4. Vectơ trong mặt phẳng tọa độ",
+   "cu": null,
+   "moi": "Xét cùng phương, thẳng hàng bằng tọa độ",
+   "yc": "Xét được hai vectơ cùng phương, ba điểm thẳng hàng và phân tích vectơ theo hai vectơ bằng toạ độ."
+  },
+  {
+   "bai": "Bài 4. Vectơ trong mặt phẳng tọa độ",
+   "cu": null,
+   "moi": "Bài toán thực tế về vectơ trong mặt phẳng tọa độ",
+   "yc": "Vận dụng được toạ độ vectơ để giải bài toán thực tế (vị trí, chuyển động, lực)."
+  },
+  {
+   "bai": "Bài 5. Tích vô hướng của hai vectơ",
+   "cu": "Tính tích vô hướng của hai vectơ và ứng dụng",
+   "moi": "Tính tích vô hướng của hai vectơ",
+   "yc": "Tính được tích vô hướng của hai vectơ bằng định nghĩa và bằng toạ độ."
+  },
+  {
+   "bai": "Bài 5. Tích vô hướng của hai vectơ",
+   "cu": "Tính góc giữa hai vectơ",
+   "moi": "Tính góc giữa hai vectơ",
+   "yc": "Tính được góc giữa hai vectơ bằng tích vô hướng và xét được hai vectơ vuông góc."
+  },
+  {
+   "bai": "Bài 5. Tích vô hướng của hai vectơ",
+   "cu": null,
+   "moi": "Chứng minh vuông góc, tính độ dài bằng tích vô hướng",
+   "yc": "Vận dụng được tích vô hướng để chứng minh hai đường thẳng vuông góc, tính độ dài đoạn thẳng và chứng minh đẳng thức."
+  },
+  {
+   "bai": "Bài 5. Tích vô hướng của hai vectơ",
+   "cu": null,
+   "moi": "Bài toán thực tế về tích vô hướng (công của lực)",
+   "yc": "Vận dụng được tích vô hướng để tính công của lực và giải bài toán thực tế."
+  },
+  {
+   "bai": "Bài 6. Ôn tập chương",
+   "cu": "Tổng hợp các phép toán vectơ và tọa độ",
+   "moi": "Bài tập tổng hợp chương 4",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 4 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

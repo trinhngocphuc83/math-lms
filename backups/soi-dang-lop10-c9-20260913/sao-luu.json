@@ -1,0 +1,45 @@
+{
+ "question_categories": [
+  {
+   "id": "22ff9eea-84cf-42cc-91f6-edf18b9b78cb",
+   "grade": "10",
+   "subject": "Thống kê",
+   "topic": "Chương 9. Tính xác suất theo định nghĩa cổ điển",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tổng hợp tính xác suất bằng phương pháp tổ hợp",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các kiến thức tổ hợp và quy tắc tính xác suất để giải quyết các bài toán thực tiễn."
+  },
+  {
+   "id": "8a8e8a34-060f-4d45-99d6-b293af57c84f",
+   "grade": "10",
+   "subject": "Thống kê",
+   "topic": "Chương 9. Tính xác suất theo định nghĩa cổ điển",
+   "lesson": "Bài 1. Biến cố và định nghĩa cổ điển của xác suất",
+   "math_form": "Xác định không gian mẫu và biến cố",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Mô tả và xác định được không gian mẫu cùng các biến cố của một phép thử ngẫu nhiên."
+  },
+  {
+   "id": "0ed37059-5d78-47c5-8fed-e888b7634729",
+   "grade": "10",
+   "subject": "Thống kê",
+   "topic": "Chương 9. Tính xác suất theo định nghĩa cổ điển",
+   "lesson": "Bài 1. Biến cố và định nghĩa cổ điển của xác suất",
+   "math_form": "Tính xác suất bằng định nghĩa cổ điển",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Tính được xác suất của một biến cố bằng cách sử dụng định nghĩa cổ điển của xác suất."
+  },
+  {
+   "id": "1b3d7450-8caa-4624-988a-b777bb32d618",
+   "grade": "10",
+   "subject": "Thống kê",
+   "topic": "Chương 9. Tính xác suất theo định nghĩa cổ điển",
+   "lesson": "Bài 2. Thực hành tính xác suất theo định nghĩa cổ điển",
+   "math_form": "Tính xác suất sử dụng quy tắc đếm (hoán vị, chỉnh hợp, tổ hợp)",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Tính được xác suất của biến cố bằng cách sử dụng hoán vị, chỉnh hợp, tổ hợp để đếm số phần tử."
+  }
+ ],
+ "questions": []
+}

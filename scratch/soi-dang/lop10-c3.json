@@ -1,0 +1,111 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "topic": "Chương 3. Hệ thức lượng trong tam giác",
+ "danhMuc": [
+  {
+   "id": "48becd9f-b704-4e20-b415-e232fd81c587",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tìm góc khi biết giá trị lượng giác",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Xác định được số đo của góc từ 0 độ đến 180 độ khi biết giá trị lượng giác của góc đó."
+  },
+  {
+   "id": "f7e138f1-6c67-4c4c-a028-e2c719814945",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác của một góc, rút gọn biểu thức lượng giác",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Tính được giá trị lượng giác của một góc và rút gọn được biểu thức lượng giác đơn giản dựa vào các hệ thức cơ bản."
+  },
+  {
+   "id": "dab13375-cc5a-4fd2-a3d5-d51b4140f4e8",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Giải tam giác và ứng dụng thực tế",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được các hệ thức lượng trong tam giác để giải quyết các bài toán thực tiễn về đo đạc khoảng cách, chiều cao."
+  },
+  {
+   "id": "1eae50f2-4e27-4fea-ade3-9f3c3692012f",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Định lí côsin, định lí sin và tính các yếu tố trong tam giác",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng được định lí côsin và định lí sin để tính độ dài các cạnh, số đo các góc trong tam giác."
+  },
+  {
+   "id": "3feb6290-56ce-401f-bf42-0f0dd412f418",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Tính được diện tích tam giác và bán kính đường tròn nội tiếp, ngoại tiếp bằng các công thức thích hợp."
+  },
+  {
+   "id": "c6410663-7944-4f63-9d1b-08ed06fbc2ca",
+   "grade": "10",
+   "subject": "Hình học",
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 3. Ôn tập chương",
+   "math_form": "Tổng hợp hệ thức lượng và giải tam giác",
+   "created_at": "2026-08-21T04:34:37.914517+00:00",
+   "yeu_cau_can_dat": "Vận dụng tổng hợp các hệ thức lượng trong tam giác để tính các yếu tố cạnh, góc, diện tích và giải tam giác."
+  }
+ ],
+ "cau": [
+  {
+   "id": "cd731dc8-1dd8-4050-ab3e-7c302d4b9d6d",
+   "question_id": "CH_1787906200657_jq98",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $a = 8, b = 3, \\hat{C} = 60^\\circ$. Khi đó diện tích tam giác $ABC$ bằng",
+   "option_a": "$12$",
+   "option_b": "$6\\sqrt{3}$",
+   "option_c": "$24$",
+   "option_d": "$12\\sqrt{3}$",
+   "correct_answer": "B"
+  },
+  {
+   "id": "877b22f2-2ff7-4a67-8224-9c976096a8c3",
+   "question_id": "CH_1787906200657_6spk",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác của một góc, rút gọn biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "1",
+   "content": "Trong các đẳng thức sau đây, đẳng thức nào đúng?",
+   "option_a": "$\\cos 150^\\circ = -\\frac{\\sqrt{3}}{2}$",
+   "option_b": "$\\tan 150^\\circ = \\frac{\\sqrt{3}}{3}$",
+   "option_c": "$\\cot 150^\\circ = \\sqrt{3}$",
+   "option_d": "$\\sin 150^\\circ = -\\frac{\\sqrt{3}}{2}$",
+   "correct_answer": "A"
+  },
+  {
+   "id": "6ef5d7fd-fb22-4588-9f69-f236530033fe",
+   "question_id": "CH_1787906200657_19rl",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Định lí côsin, định lí sin và tính các yếu tố trong tam giác",
+   "question_type": "NLC",
+   "difficulty": "1",
+   "content": "Cho tam giác $ABC$, chọn công thức đúng?",
+   "option_a": "$AB^2 = AC^2 + BC^2 - 2AC \\cdot BC \\cos C$",
+   "option_b": "$AB^2 = AC^2 + BC^2 + 2AC \\cdot BC \\cos B$",
+   "option_c": "$AB^2 = AC^2 + BC^2 - 2AC \\cdot AB \\cos C$",
+   "option_d": "$AB^2 = AC^2 + BC^2 - 2AC \\cdot BC \\cos A$",
+   "correct_answer": "A"
+  }
+ ]
+}

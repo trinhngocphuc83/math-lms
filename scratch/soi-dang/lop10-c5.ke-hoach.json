@@ -1,0 +1,56 @@
+{
+ "lop": "10",
+ "chuong": 5,
+ "dang": [
+  {
+   "bai": "Bài 1. Số gần đúng và sai số",
+   "cu": "Xác định số gần đúng, sai số tuyệt đối, sai số tương đối",
+   "moi": "Xác định số gần đúng, sai số tuyệt đối, sai số tương đối",
+   "yc": "Nhận biết được số gần đúng, tính được sai số tuyệt đối, độ chính xác và sai số tương đối."
+  },
+  {
+   "bai": "Bài 1. Số gần đúng và sai số",
+   "cu": "Xác định quy tròn số, chữ số đáng tin",
+   "moi": "Quy tròn số gần đúng, xác định chữ số chắc",
+   "yc": "Quy tròn được số gần đúng với độ chính xác cho trước và xác định được chữ số chắc."
+  },
+  {
+   "bai": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "cu": "Tính số trung bình, trung vị, tứ phân vị, mốt",
+   "moi": "Tính số trung bình, trung vị, tứ phân vị, mốt",
+   "yc": "Tính được số trung bình, trung vị, tứ phân vị, mốt của mẫu số liệu không ghép nhóm cho dưới dạng dãy số hoặc bảng tần số."
+  },
+  {
+   "bai": "Bài 2. Các số đặc trưng đo xu thế trung tâm",
+   "cu": "Ý nghĩa các số đặc trưng đo xu thế trung tâm",
+   "moi": "Ý nghĩa và lựa chọn số đặc trưng đo xu thế trung tâm",
+   "yc": "Giải thích được ý nghĩa, lựa chọn được số đặc trưng phù hợp để đại diện cho mẫu số liệu và so sánh hai mẫu."
+  },
+  {
+   "bai": "Bài 3. Các số đặc trưng đo độ phân tán",
+   "cu": "Tính khoảng biến thiên, khoảng tứ phân vị",
+   "moi": "Tính khoảng biến thiên, khoảng tứ phân vị, phát hiện giá trị bất thường",
+   "yc": "Tính được khoảng biến thiên, khoảng tứ phân vị và phát hiện được giá trị bất thường của mẫu số liệu."
+  },
+  {
+   "bai": "Bài 3. Các số đặc trưng đo độ phân tán",
+   "cu": "Tính phương sai, độ lệch chuẩn",
+   "moi": "Tính phương sai, độ lệch chuẩn",
+   "yc": "Tính được phương sai, độ lệch chuẩn của mẫu số liệu không ghép nhóm."
+  },
+  {
+   "bai": "Bài 3. Các số đặc trưng đo độ phân tán",
+   "cu": null,
+   "moi": "Ý nghĩa các số đặc trưng đo độ phân tán, so sánh hai mẫu số liệu",
+   "yc": "Giải thích được ý nghĩa của các số đặc trưng đo độ phân tán và so sánh được độ phân tán của hai mẫu số liệu."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Tổng hợp các số đặc trưng của mẫu số liệu",
+   "moi": "Bài tập tổng hợp chương 5",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 5 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}

@@ -1,0 +1,80 @@
+{
+ "lop": "10",
+ "chuong": 8,
+ "dang": [
+  {
+   "bai": "Bài 1. Quy tắc đếm",
+   "cu": "Vận dụng quy tắc cộng",
+   "moi": "Vận dụng quy tắc cộng",
+   "yc": "Vận dụng được quy tắc cộng để đếm số cách chọn trong các tình huống đơn giản."
+  },
+  {
+   "bai": "Bài 1. Quy tắc đếm",
+   "cu": "Vận dụng quy tắc nhân",
+   "moi": "Vận dụng quy tắc nhân",
+   "yc": "Vận dụng được quy tắc nhân để đếm số cách thực hiện công việc gồm nhiều công đoạn."
+  },
+  {
+   "bai": "Bài 1. Quy tắc đếm",
+   "cu": "Kết hợp quy tắc cộng và quy tắc nhân",
+   "moi": "Kết hợp quy tắc cộng và quy tắc nhân, sơ đồ hình cây",
+   "yc": "Kết hợp được quy tắc cộng và quy tắc nhân, vẽ sơ đồ hình cây để đếm trong các bài toán lập số, chọn đồ vật, đường đi."
+  },
+  {
+   "bai": "Bài 2. Hoán vị, chỉnh hợp và tổ hợp",
+   "cu": "Bài toán đếm sử dụng hoán vị",
+   "moi": "Bài toán đếm sử dụng hoán vị",
+   "yc": "Nhận biết được hoán vị và vận dụng công thức n! để đếm số cách sắp xếp."
+  },
+  {
+   "bai": "Bài 2. Hoán vị, chỉnh hợp và tổ hợp",
+   "cu": "Bài toán đếm sử dụng chỉnh hợp",
+   "moi": "Bài toán đếm sử dụng chỉnh hợp",
+   "yc": "Nhận biết được chỉnh hợp và vận dụng công thức A(n,k) để đếm số cách chọn có thứ tự."
+  },
+  {
+   "bai": "Bài 2. Hoán vị, chỉnh hợp và tổ hợp",
+   "cu": "Bài toán đếm sử dụng tổ hợp",
+   "moi": "Bài toán đếm sử dụng tổ hợp",
+   "yc": "Nhận biết được tổ hợp và vận dụng công thức C(n,k) để đếm số cách chọn không có thứ tự."
+  },
+  {
+   "bai": "Bài 2. Hoán vị, chỉnh hợp và tổ hợp",
+   "cu": null,
+   "moi": "Phối hợp hoán vị, chỉnh hợp, tổ hợp và quy tắc đếm",
+   "yc": "Phối hợp được hoán vị, chỉnh hợp, tổ hợp với quy tắc cộng, quy tắc nhân trong bài toán đếm có điều kiện."
+  },
+  {
+   "bai": "Bài 2. Hoán vị, chỉnh hợp và tổ hợp",
+   "cu": null,
+   "moi": "Tính giá trị, giải phương trình có hoán vị, chỉnh hợp, tổ hợp",
+   "yc": "Tính được giá trị biểu thức và giải được phương trình đơn giản chứa n!, A(n,k), C(n,k), kể cả bằng máy tính cầm tay."
+  },
+  {
+   "bai": "Bài 3. Nhị thức Newton",
+   "cu": "Khai triển nhị thức Newton (với n = 4, n = 5)",
+   "moi": "Khai triển nhị thức Newton (với n = 4, n = 5)",
+   "yc": "Khai triển được (a + b)⁴, (a + b)⁵ bằng công thức nhị thức Newton hoặc tam giác Pascal."
+  },
+  {
+   "bai": "Bài 3. Nhị thức Newton",
+   "cu": "Tìm hệ số của số hạng trong khai triển nhị thức Newton",
+   "moi": "Tìm hệ số, số hạng trong khai triển nhị thức Newton",
+   "yc": "Tìm được hệ số của một số hạng trong khai triển (a + b)ⁿ với n = 4, 5."
+  },
+  {
+   "bai": "Bài 3. Nhị thức Newton",
+   "cu": null,
+   "moi": "Ứng dụng nhị thức Newton để tính giá trị, chứng minh",
+   "yc": "Vận dụng được nhị thức Newton để tính gần đúng, tính tổng các hệ số và chứng minh đẳng thức đơn giản."
+  },
+  {
+   "bai": "Bài 4. Ôn tập chương",
+   "cu": "Tổng hợp quy tắc đếm, hoán vị, chỉnh hợp, tổ hợp, nhị thức Newton",
+   "moi": "Bài tập tổng hợp chương 8",
+   "yc": "Vận dụng tổng hợp kiến thức của chương 8 để giải các bài toán ôn tập, kiểm tra cuối chương."
+  }
+ ],
+ "xoa": [],
+ "chuyen": {}
+}
