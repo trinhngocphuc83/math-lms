@@ -1,0 +1,255 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Luyện kỹ năng Toán 10 - Trắc nghiệm hệ thức lượng tam giác thường (Giang Sơn), Cơ bản định lí sin, côsin, giải tam giác P1, tr. 9-10",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Cho tam giác $ABC$, mệnh đề nào sau đây đúng?",
+   "option_a": "$a^2 = b^2 + c^2 + 2bc\\cos A$.", "option_b": "$a^2 = b^2 + c^2 - 2bc\\cos A$.", "option_c": "$a^2 = b^2 + c^2 - 2bc\\cos C$.", "option_d": "$a^2 = b^2 + c^2 - 2bc\\cos B$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin: bình phương một cạnh bằng tổng bình phương hai cạnh kia trừ hai lần tích của chúng với côsin góc xen giữa.\n\nLời giải:\n$a^2 = b^2 + c^2 - 2bc\\cos A$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tính diện tích tam giác $ABC$, biết $a = 7$, $b = 8$, $c = 6$.",
+   "option_a": "$S = \\dfrac{21\\sqrt{15}}{4}$.", "option_b": "$S = \\dfrac{5\\sqrt{15}}{2}$.", "option_c": "$S = \\dfrac{5\\sqrt{15}}{4}$.", "option_d": "$S = \\dfrac{\\sqrt{15}}{2}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nCông thức Heron $S = \\sqrt{p(p-a)(p-b)(p-c)}$ với $p$ là nửa chu vi.\n\nLời giải:\n$p = \\dfrac{7 + 8 + 6}{2} = \\dfrac{21}{2}$.\n$S = \\sqrt{\\dfrac{21}{2} \\cdot \\dfrac{7}{2} \\cdot \\dfrac{5}{2} \\cdot \\dfrac{9}{2}} = \\sqrt{\\dfrac{6615}{16}} = \\dfrac{21\\sqrt{15}}{4}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Cho tam giác $ABC$, chọn công thức đúng?",
+   "option_a": "$AB^2 = AC^2 + BC^2 - 2AC \\cdot AB\\cos C$.", "option_b": "$AB^2 = AC^2 - BC^2 + 2AC \\cdot BC\\cos C$.", "option_c": "$AB^2 = AC^2 + BC^2 - 2AC \\cdot BC\\cos C$.", "option_d": "$AB^2 = AC^2 + BC^2 - 2AC \\cdot BC + \\cos C$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin cho cạnh $AB$ đối diện góc $C$.\n\nLời giải:\n$AB^2 = AC^2 + BC^2 - 2AC \\cdot BC\\cos C$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Định lí sin được phát biểu là",
+   "option_a": "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$.", "option_b": "$\\dfrac{a}{2\\sin A} = \\dfrac{b}{2\\sin B} = \\dfrac{c}{2\\sin C} = 2R$.", "option_c": "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = R$.", "option_d": "$\\dfrac{2a}{\\sin A} = \\dfrac{2b}{\\sin B} = \\dfrac{2c}{\\sin C} = R$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: tỉ số giữa mỗi cạnh và sin góc đối diện bằng đường kính đường tròn ngoại tiếp.\n\nLời giải:\n$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tìm góc khi biết giá trị lượng giác",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Cho $\\triangle ABC$ thỏa mãn $2\\cos B = \\sqrt{2}$. Khi đó:",
+   "option_a": "$B = 30^\\circ$.", "option_b": "$B = 60^\\circ$.", "option_c": "$B = 45^\\circ$.", "option_d": "$B = 75^\\circ$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nTìm góc trong $(0^\\circ; 180^\\circ)$ có côsin bằng giá trị đã cho.\n\nLời giải:\n$\\cos B = \\dfrac{\\sqrt{2}}{2}$ nên $B = 45^\\circ$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Cho $\\triangle ABC$ vuông tại $B$ và có $\\widehat{C} = 25^\\circ$. Số đo của góc $A$ là:",
+   "option_a": "$A = 65^\\circ$.", "option_b": "$A = 60^\\circ$.", "option_c": "$A = 155^\\circ$.", "option_d": "$A = 75^\\circ$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nTổng ba góc trong tam giác bằng $180^\\circ$.\n\nLời giải:\n$A = 180^\\circ - 90^\\circ - 25^\\circ = 65^\\circ$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Công thức diện tích nào sau đây đúng?",
+   "option_a": "$2S = bc\\sin A = ca\\sin B = ab\\sin C$.", "option_b": "$S = bc\\sin A = ca\\sin B = ab\\sin C$.", "option_c": "$S = \\dfrac{1}{3}bc\\sin A = \\dfrac{1}{3}ca\\sin B = \\dfrac{1}{3}ab\\sin C$.", "option_d": "$S = 2bc\\sin A = 2ca\\sin B = 2ab\\sin C$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\n$S = \\dfrac{1}{2}bc\\sin A = \\dfrac{1}{2}ca\\sin B = \\dfrac{1}{2}ab\\sin C$.\n\nLời giải:\nNhân hai vế với $2$ được $2S = bc\\sin A = ca\\sin B = ab\\sin C$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $\\triangle ABC$ có $b = 7$; $c = 5$; $\\cos A = \\dfrac{3}{5}$. Diện tích tam giác $ABC$ bằng",
+   "option_a": "$10$.", "option_b": "$14$.", "option_c": "$15$.", "option_d": "$18$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nTính $\\sin A = \\sqrt{1 - \\cos^2 A}$ rồi dùng $S = \\dfrac{1}{2}bc\\sin A$.\n\nLời giải:\n$\\sin A = \\sqrt{1 - \\dfrac{9}{25}} = \\dfrac{4}{5}$. $S = \\dfrac{1}{2} \\cdot 7 \\cdot 5 \\cdot \\dfrac{4}{5} = 14$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho $\\triangle ABC$ có $b = 6$, $c = 8$, $\\widehat{A} = 60^\\circ$. Độ dài cạnh $a$ là:",
+   "option_a": "$2\\sqrt{13}$.", "option_b": "$3\\sqrt{12}$.", "option_c": "$2\\sqrt{37}$.", "option_d": "$\\sqrt{20}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin $a^2 = b^2 + c^2 - 2bc\\cos A$.\n\nLời giải:\n$a^2 = 36 + 64 - 2 \\cdot 6 \\cdot 8 \\cdot \\dfrac{1}{2} = 52$, suy ra $a = 2\\sqrt{13}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Chọn công thức đúng trong các đáp án sau:",
+   "option_a": "$S = \\dfrac{1}{2}bc\\sin A$.", "option_b": "$S = \\dfrac{1}{2}ac\\sin A$.", "option_c": "$S = \\dfrac{1}{2}bc\\sin B$.", "option_d": "$S = bc\\sin B$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nDiện tích bằng nửa tích hai cạnh nhân với sin góc xen giữa.\n\nLời giải:\nHai cạnh $b$, $c$ kề góc $A$ nên $S = \\dfrac{1}{2}bc\\sin A$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Đâu là công thức Heron (tính diện tích tam giác với độ dài 3 cạnh cho trước)?",
+   "option_a": "$S = \\sqrt{p(p-a)(p-b)(p-c)}$.", "option_b": "$S = 2\\sqrt{p(p-a)(p-b)(p-c)}$.", "option_c": "$S = \\sqrt{2p(p-a)(p-b)(p-c)}$.", "option_d": "$S = \\sqrt{p(p+a)(p+b)(p+c)}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nCông thức Heron với $p = \\dfrac{a+b+c}{2}$.\n\nLời giải:\n$S = \\sqrt{p(p-a)(p-b)(p-c)}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tam giác $ABC$ có $AB = 5$, $BC = 7$, $CA = 8$. Số đo góc $\\widehat{A}$ bằng:",
+   "option_a": "$30^\\circ$.", "option_b": "$45^\\circ$.", "option_c": "$60^\\circ$.", "option_d": "$90^\\circ$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin: $\\cos A = \\dfrac{AB^2 + AC^2 - BC^2}{2 \\cdot AB \\cdot AC}$.\n\nLời giải:\n$\\cos A = \\dfrac{25 + 64 - 49}{2 \\cdot 5 \\cdot 8} = \\dfrac{40}{80} = \\dfrac{1}{2}$, suy ra $\\widehat{A} = 60^\\circ$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tam giác $ABC$ có $AB = 2$, $AC = 1$ và $\\widehat{A} = 60^\\circ$. Tính độ dài cạnh $BC$.",
+   "option_a": "$BC = 1$.", "option_b": "$BC = 2$.", "option_c": "$BC = \\sqrt{2}$.", "option_d": "$BC = \\sqrt{3}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin $BC^2 = AB^2 + AC^2 - 2AB \\cdot AC\\cos A$.\n\nLời giải:\n$BC^2 = 4 + 1 - 2 \\cdot 2 \\cdot 1 \\cdot \\dfrac{1}{2} = 3$, suy ra $BC = \\sqrt{3}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Trong tam giác $ABC$ công thức nào sau đây có thể dùng để tính $\\cos A$?",
+   "option_a": "$\\cos A = \\dfrac{c^2 + a^2 - b^2}{2ca}$.", "option_b": "$\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc}$.", "option_c": "$\\cos A = \\dfrac{a^2 + b^2 - c^2}{2ab}$.", "option_d": "$\\cos A = \\dfrac{a^2 + b^2 - c^2}{2ac}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nHệ quả của định lí côsin.\n\nLời giải:\n$\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $\\widehat{A} = 120^\\circ$. Chọn khẳng định đúng.",
+   "option_a": "$a^2 = b^2 + c^2 - 3bc$.", "option_b": "$a^2 = b^2 + c^2 + bc$.", "option_c": "$a^2 = b^2 + c^2 + 3bc$.", "option_d": "$a^2 = b^2 + c^2 - bc$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin với $\\cos 120^\\circ = -\\dfrac{1}{2}$.\n\nLời giải:\n$a^2 = b^2 + c^2 - 2bc \\cdot \\left(-\\dfrac{1}{2}\\right) = b^2 + c^2 + bc$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có góc $\\widehat{A} = 120^\\circ$, $b = 8$, $c = 5$. Khi đó số đo của $\\widehat{B}$ gần nhất với số nào sau đây?",
+   "option_a": "$71^\\circ 35'$.", "option_b": "$30^\\circ 37'$.", "option_c": "$45^\\circ 12'$.", "option_d": "$37^\\circ 35'$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nTính $a$ bằng định lí côsin rồi tính $\\cos B$ bằng hệ quả định lí côsin (hoặc $\\sin B$ bằng định lí sin).\n\nLời giải:\n$a^2 = 64 + 25 - 2 \\cdot 8 \\cdot 5 \\cdot \\left(-\\dfrac{1}{2}\\right) = 129$, $a = \\sqrt{129}$.\n$\\cos B = \\dfrac{a^2 + c^2 - b^2}{2ac} = \\dfrac{129 + 25 - 64}{2\\sqrt{129} \\cdot 5} \\approx 0{,}7923$, suy ra $\\widehat{B} \\approx 37^\\circ 35'$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Cho $\\triangle ABC$ có $a = 6$, $b = 8$, $c = 10$. Diện tích $S$ của tam giác trên là:",
+   "option_a": "$48$.", "option_b": "$24$.", "option_c": "$12$.", "option_d": "$30$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nKiểm tra $a^2 + b^2 = c^2$ để nhận ra tam giác vuông, hoặc dùng công thức Heron.\n\nLời giải:\n$6^2 + 8^2 = 10^2$ nên tam giác vuông tại $C$, $S = \\dfrac{1}{2} \\cdot 6 \\cdot 8 = 24$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Tính diện tích tam giác $ABC$ có $AB = 12$; $AC = 8$; $\\widehat{BAC} = 30^\\circ$.",
+   "option_a": "$24\\sqrt{2}$.", "option_b": "$48$.", "option_c": "$24$.", "option_d": "$24\\sqrt{3}$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\n$S = \\dfrac{1}{2}AB \\cdot AC\\sin A$.\n\nLời giải:\n$S = \\dfrac{1}{2} \\cdot 12 \\cdot 8 \\cdot \\sin 30^\\circ = 48 \\cdot \\dfrac{1}{2} = 24$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $\\widehat{B} = 75^\\circ$, $\\widehat{C} = 45^\\circ$ và $BC = 50$. Tính độ dài cạnh $AB$ (làm tròn đến hàng phần mười).",
+   "option_a": "$24\\sqrt{2}$.", "option_b": "$48$.", "option_c": "$24$.", "option_d": "$40{,}8$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nTính $\\widehat{A}$ rồi dùng định lí sin $\\dfrac{AB}{\\sin C} = \\dfrac{BC}{\\sin A}$.\n\nLời giải:\n$\\widehat{A} = 180^\\circ - 75^\\circ - 45^\\circ = 60^\\circ$.\n$AB = \\dfrac{BC \\sin C}{\\sin A} = \\dfrac{50 \\sin 45^\\circ}{\\sin 60^\\circ} = \\dfrac{50\\sqrt{2}}{\\sqrt{3}} \\approx 40{,}8$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $AB = 6$, $AC = 7$, $BC = 8$. Giá trị $\\cos A$ bằng bao nhiêu?",
+   "option_a": "$0{,}5$.", "option_b": "$\\dfrac{1}{4}$.", "option_c": "$\\dfrac{1}{3}$.", "option_d": "$\\dfrac{3}{4}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin.\n\nLời giải:\n$\\cos A = \\dfrac{AB^2 + AC^2 - BC^2}{2 \\cdot AB \\cdot AC} = \\dfrac{36 + 49 - 64}{2 \\cdot 6 \\cdot 7} = \\dfrac{21}{84} = \\dfrac{1}{4}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tính số đo góc $A$ của tam giác $ABC$ biết $a^2 = b^2 + c^2 + \\sqrt{2}bc$.",
+   "option_a": "$60^\\circ$.", "option_b": "$45^\\circ$.", "option_c": "$135^\\circ$.", "option_d": "$150^\\circ$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nSo sánh với định lí côsin $a^2 = b^2 + c^2 - 2bc\\cos A$.\n\nLời giải:\n$-2bc\\cos A = \\sqrt{2}bc \\Rightarrow \\cos A = -\\dfrac{\\sqrt{2}}{2} \\Rightarrow \\widehat{A} = 135^\\circ$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $b^2 + c^2 - a^2 = \\sqrt{3}bc$. Lựa chọn mệnh đề đúng.",
+   "option_a": "$100^\\circ > \\widehat{BAC} > 50^\\circ$.", "option_b": "$\\widehat{ABC} + \\widehat{ACB} = 150^\\circ$.", "option_c": "$\\widehat{ABC} > 160^\\circ$.", "option_d": "$\\widehat{BAC} = 60^\\circ$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nTính $\\cos A$ bằng hệ quả định lí côsin.\n\nLời giải:\n$\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc} = \\dfrac{\\sqrt{3}}{2} \\Rightarrow \\widehat{A} = 30^\\circ$, suy ra $\\widehat{B} + \\widehat{C} = 150^\\circ$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tam giác $ABC$ có $\\widehat{B} = 60^\\circ$, $\\widehat{C} = 45^\\circ$ và $AB = 5$. Tính độ dài cạnh $AC$.",
+   "option_a": "$AC = \\dfrac{5\\sqrt{6}}{2}$.", "option_b": "$AC = 5\\sqrt{3}$.", "option_c": "$AC = 5\\sqrt{2}$.", "option_d": "$AC = 10$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin $\\dfrac{AC}{\\sin B} = \\dfrac{AB}{\\sin C}$.\n\nLời giải:\n$AC = \\dfrac{AB\\sin B}{\\sin C} = \\dfrac{5 \\cdot \\frac{\\sqrt{3}}{2}}{\\frac{\\sqrt{2}}{2}} = \\dfrac{5\\sqrt{3}}{\\sqrt{2}} = \\dfrac{5\\sqrt{6}}{2}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $ABC$ có $a = 2$; $b = \\sqrt{6}$; $c = 1 + \\sqrt{3}$ thì bán kính $R$ của đường tròn ngoại tiếp là",
+   "option_a": "$1$.", "option_b": "$\\sqrt{2}$.", "option_c": "$\\dfrac{\\sqrt{2}}{2}$.", "option_d": "$\\sqrt{3}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nTính một góc bằng hệ quả định lí côsin rồi dùng $R = \\dfrac{a}{2\\sin A}$.\n\nLời giải:\n$\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc} = \\dfrac{6 + (4 + 2\\sqrt{3}) - 4}{2\\sqrt{6}(1 + \\sqrt{3})} = \\dfrac{2\\sqrt{3}(\\sqrt{3} + 1)}{2\\sqrt{6}(1 + \\sqrt{3})} = \\dfrac{\\sqrt{3}}{\\sqrt{6}} = \\dfrac{\\sqrt{2}}{2}$, nên $\\widehat{A} = 45^\\circ$.\n$R = \\dfrac{a}{2\\sin A} = \\dfrac{2}{2 \\cdot \\frac{\\sqrt{2}}{2}} = \\sqrt{2}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tính bán kính $r$ của đường tròn nội tiếp tam giác $ABC$ biết độ dài ba cạnh là $13$, $14$, $15$.",
+   "option_a": "$2$.", "option_b": "$3$.", "option_c": "$4$.", "option_d": "$\\sqrt{2}$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nTính $S$ bằng công thức Heron rồi dùng $S = pr$.\n\nLời giải:\n$p = 21$, $S = \\sqrt{21 \\cdot 8 \\cdot 7 \\cdot 6} = 84$. $r = \\dfrac{S}{p} = \\dfrac{84}{21} = 4$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $ABC$ có độ dài ba cạnh thỏa mãn đẳng thức $(a + b - c)(a + b + c) = 3ab$. Số đo của góc $C$ khi đó là",
+   "option_a": "$60^\\circ$.", "option_b": "$120^\\circ$.", "option_c": "$45^\\circ$.", "option_d": "$30^\\circ$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nKhai triển đẳng thức về dạng $a^2 + b^2 - c^2 = \\ldots$ rồi dùng hệ quả định lí côsin.\n\nLời giải:\n$(a + b)^2 - c^2 = 3ab \\Leftrightarrow a^2 + b^2 - c^2 = ab \\Leftrightarrow \\cos C = \\dfrac{a^2 + b^2 - c^2}{2ab} = \\dfrac{1}{2}$, suy ra $\\widehat{C} = 60^\\circ$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho hình bình hành $ABCD$ có $AD = 3$, $AB = 5$ và đường chéo $AC = 5$. Đường chéo $BD$ có độ dài bằng bao nhiêu?",
+   "option_a": "$\\sqrt{43}$.", "option_b": "$2\\sqrt{13}$.", "option_c": "$8$.", "option_d": "$8\\sqrt{3}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nDùng định lí côsin trong tam giác $ABC$ để tính $\\cos\\widehat{ABC}$, rồi trong tam giác $ABD$ với $\\widehat{BAD} = 180^\\circ - \\widehat{ABC}$.\n\nLời giải:\nTrong $\\triangle ABC$: $BC = AD = 3$, $\\cos\\widehat{ABC} = \\dfrac{AB^2 + BC^2 - AC^2}{2 \\cdot AB \\cdot BC} = \\dfrac{25 + 9 - 25}{30} = \\dfrac{3}{10}$.\n$\\widehat{BAD} = 180^\\circ - \\widehat{ABC}$ nên $\\cos\\widehat{BAD} = -\\dfrac{3}{10}$.\nTrong $\\triangle ABD$: $BD^2 = AB^2 + AD^2 - 2 \\cdot AB \\cdot AD\\cos\\widehat{BAD} = 25 + 9 + 2 \\cdot 5 \\cdot 3 \\cdot \\dfrac{3}{10} = 43$, suy ra $BD = \\sqrt{43}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tam giác $ABC$ có $\\widehat{A} = 75^\\circ$; $\\widehat{B} = 45^\\circ$. Tính $\\dfrac{AB}{AC}$.",
+   "option_a": "$\\dfrac{AB}{AC} = \\dfrac{\\sqrt{5}}{3}$.", "option_b": "$\\dfrac{AB}{AC} = \\dfrac{\\sqrt{6}}{2}$.", "option_c": "$\\dfrac{AB}{AC} = \\dfrac{\\sqrt{5}}{6}$.", "option_d": "$\\dfrac{AB}{AC} = \\dfrac{\\sqrt{11}}{7}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: $\\dfrac{AB}{AC} = \\dfrac{\\sin C}{\\sin B}$.\n\nLời giải:\n$\\widehat{C} = 180^\\circ - 75^\\circ - 45^\\circ = 60^\\circ$.\n$\\dfrac{AB}{AC} = \\dfrac{\\sin 60^\\circ}{\\sin 45^\\circ} = \\dfrac{\\sqrt{3}}{\\sqrt{2}} = \\dfrac{\\sqrt{6}}{2}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Tam giác với ba cạnh là $5$; $12$; $13$ có bán kính đường tròn ngoại tiếp là?",
+   "option_a": "$6$.", "option_b": "$8$.", "option_c": "$\\dfrac{13}{2}$.", "option_d": "$\\dfrac{11}{2}$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\n$5^2 + 12^2 = 13^2$ nên tam giác vuông; đường tròn ngoại tiếp tam giác vuông có đường kính là cạnh huyền.\n\nLời giải:\n$R = \\dfrac{13}{2}$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ thoả mãn $b^2 + c^2 - a^2 = \\sqrt{3}bc$. Khi đó:",
+   "option_a": "$A = 30^\\circ$.", "option_b": "$A = 45^\\circ$.", "option_c": "$A = 60^\\circ$.", "option_d": "$A = 75^\\circ$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin $\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc}$.\n\nLời giải:\n$\\cos A = \\dfrac{\\sqrt{3}bc}{2bc} = \\dfrac{\\sqrt{3}}{2}$, suy ra $A = 30^\\circ$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tam giác $ABC$ có $a = 16{,}8$; $\\widehat{B} = 56^\\circ 13'$; $\\widehat{C} = 71^\\circ$. Cạnh $c$ bằng bao nhiêu (làm tròn đến hàng phần mười)?",
+   "option_a": "$29{,}9$.", "option_b": "$14{,}1$.", "option_c": "$17{,}5$.", "option_d": "$19{,}9$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nTính $\\widehat{A}$ rồi dùng định lí sin $c = \\dfrac{a\\sin C}{\\sin A}$.\n\nLời giải:\n$\\widehat{A} = 180^\\circ - 56^\\circ 13' - 71^\\circ = 52^\\circ 47'$.\n$c = \\dfrac{16{,}8 \\cdot \\sin 71^\\circ}{\\sin 52^\\circ 47'} \\approx \\dfrac{16{,}8 \\cdot 0{,}9455}{0{,}7966} \\approx 19{,}9$.\nChọn D."
+  }
+ ]
+}

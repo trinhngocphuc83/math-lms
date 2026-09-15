@@ -1,0 +1,167 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Luyện kỹ năng Toán 10 - Trắc nghiệm hệ thức lượng tam giác thường (Giang Sơn), Vận dụng GTLG góc 0°-180° P3, tr. 19-20",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho $\\sin\\alpha = \\dfrac{4}{5}$, với $90^\\circ \\le \\alpha \\le 180^\\circ$. Tính giá trị của $M = \\dfrac{\\sin\\alpha + \\cos\\alpha}{\\cos^3\\alpha}$.",
+   "option_a": "$M = \\dfrac{25}{27}$.", "option_b": "$M = \\dfrac{175}{27}$.", "option_c": "$M = \\dfrac{35}{27}$.", "option_d": "$M = -\\dfrac{25}{27}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nGóc tù nên $\\cos\\alpha < 0$; $\\cos\\alpha = -\\sqrt{1 - \\sin^2\\alpha}$.\n\nLời giải:\n$\\cos\\alpha = -\\dfrac{3}{5}$. $M = \\dfrac{\\frac{4}{5} - \\frac{3}{5}}{-\\frac{27}{125}} = \\dfrac{1}{5} \\cdot \\left(-\\dfrac{125}{27}\\right) = -\\dfrac{25}{27}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho $\\tan x = 2$. Tính $A = \\dfrac{2\\sin^2 x - 5\\sin x \\cdot \\cos x + \\cos^2 x}{2\\sin^2 x + \\sin x \\cdot \\cos x + \\cos^2 x}$.",
+   "option_a": "$A = \\dfrac{1}{11}$.", "option_b": "$A = -11$.", "option_c": "$A = -\\dfrac{1}{11}$.", "option_d": "$A = 11$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nChia tử và mẫu cho $\\cos^2 x$.\n\nLời giải:\n$A = \\dfrac{2\\tan^2 x - 5\\tan x + 1}{2\\tan^2 x + \\tan x + 1} = \\dfrac{8 - 10 + 1}{8 + 2 + 1} = -\\dfrac{1}{11}$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho 4 góc $\\alpha_1; \\alpha_2; \\alpha_3; \\alpha_4$ có các điểm biểu diễn trên nửa đường tròn đơn vị thứ tự là $A, B, C, D$ như hình vẽ. Khẳng định nào sau đây là khẳng định đúng?\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-l10c3-lkn-p7c7.png)",
+   "option_a": "$\\sin\\alpha_1 < \\sin\\alpha_3 < \\sin\\alpha_4$.", "option_b": "$\\sin\\alpha_4 < \\sin\\alpha_1 < \\sin\\alpha_2$.", "option_c": "$\\sin\\alpha_4 < \\sin\\alpha_3 < \\sin\\alpha_2$.", "option_d": "$\\sin\\alpha_2 < \\sin\\alpha_4 < \\sin\\alpha_3$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nSin của góc bằng tung độ điểm biểu diễn; điểm càng gần đỉnh $(0; 1)$ thì sin càng lớn.\n\nLời giải:\nTheo hình, $D$ thấp nhất, rồi đến $A$, còn $B$, $C$ gần đỉnh nên $\\sin\\alpha_4 < \\sin\\alpha_1 < \\sin\\alpha_2$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho $\\tan\\alpha - \\cot\\alpha = 3$. Tính giá trị của biểu thức sau: $A = \\tan^2\\alpha + \\cot^2\\alpha$.",
+   "option_a": "$A = 12$.", "option_b": "$A = 11$.", "option_c": "$A = 13$.", "option_d": "$A = 5$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\n$\\tan^2\\alpha + \\cot^2\\alpha = (\\tan\\alpha - \\cot\\alpha)^2 + 2\\tan\\alpha\\cot\\alpha$.\n\nLời giải:\n$A = 3^2 + 2 = 11$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho điểm $M\\left(-\\dfrac{1}{3}; \\dfrac{2\\sqrt{2}}{3}\\right)$ trên nửa đường tròn đơn vị. Gọi góc $\\alpha = \\widehat{xOM'}$ với $M'$ là điểm đối xứng với $M$ qua trục $Oy$. Giá trị lượng giác của $\\tan\\alpha$ là",
+   "option_a": "$\\tan\\alpha = \\dfrac{1}{2\\sqrt{2}}$.", "option_b": "$\\tan\\alpha = 2\\sqrt{2}$.", "option_c": "$\\tan\\alpha = \\dfrac{2\\sqrt{2} - 1}{3}$.", "option_d": "$\\tan\\alpha = \\dfrac{2\\sqrt{2}}{9}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐiểm đối xứng qua $Oy$ có hoành độ đổi dấu, tung độ giữ nguyên; $\\cos\\alpha$, $\\sin\\alpha$ là hoành độ, tung độ của $M'$.\n\nLời giải:\n$M'\\left(\\dfrac{1}{3}; \\dfrac{2\\sqrt{2}}{3}\\right)$ nên $\\cos\\alpha = \\dfrac{1}{3}$, $\\sin\\alpha = \\dfrac{2\\sqrt{2}}{3}$, $\\tan\\alpha = 2\\sqrt{2}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Biết rằng $\\dfrac{\\cos x + \\sin x}{\\cos^3 x} = \\tan^3 x + a\\tan^2 x + b\\tan x + c$. Tính giá trị $a + b + c$.",
+   "option_a": "$4$.", "option_b": "$3$.", "option_c": "$2$.", "option_d": "$6$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nTách $\\dfrac{\\cos x}{\\cos^3 x} = \\dfrac{1}{\\cos^2 x} = 1 + \\tan^2 x$ và $\\dfrac{\\sin x}{\\cos^3 x} = \\tan x(1 + \\tan^2 x)$.\n\nLời giải:\nVế trái $= 1 + \\tan^2 x + \\tan x + \\tan^3 x$, nên $a = b = c = 1$ và $a + b + c = 3$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác $ABC$. Kết quả rút gọn biểu thức $\\dfrac{\\sin^3\\dfrac{B}{2}}{\\cos\\left(\\dfrac{A + C}{2}\\right)} + \\dfrac{\\cos^3\\dfrac{B}{2}}{\\sin\\left(\\dfrac{A + C}{2}\\right)} - \\dfrac{\\cos(A + C)}{\\sin B} \\cdot \\tan B$ là",
+   "option_a": "$2$.", "option_b": "$3$.", "option_c": "$0$.", "option_d": "$1$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\n$\\dfrac{A + C}{2} = 90^\\circ - \\dfrac{B}{2}$ (phụ nhau) và $A + C = 180^\\circ - B$ (bù nhau).\n\nLời giải:\n$\\cos\\dfrac{A + C}{2} = \\sin\\dfrac{B}{2}$, $\\sin\\dfrac{A + C}{2} = \\cos\\dfrac{B}{2}$ nên hai số hạng đầu bằng $\\sin^2\\dfrac{B}{2} + \\cos^2\\dfrac{B}{2} = 1$.\n$\\cos(A + C) = -\\cos B$ nên số hạng cuối bằng $-\\dfrac{-\\cos B}{\\sin B} \\cdot \\dfrac{\\sin B}{\\cos B} = 1$.\nKết quả bằng $2$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Giá trị biểu thức $A = \\sin(90^\\circ - x) + \\cos(180^\\circ - x) + \\sin^2 x(1 + \\tan^2 x) - \\tan^2 x$ không phụ thuộc vào biến và có giá trị bằng",
+   "option_a": "$3$.", "option_b": "$2$.", "option_c": "$4$.", "option_d": "$0$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nGóc phụ: $\\sin(90^\\circ - x) = \\cos x$; góc bù: $\\cos(180^\\circ - x) = -\\cos x$; $1 + \\tan^2 x = \\dfrac{1}{\\cos^2 x}$.\n\nLời giải:\n$A = \\cos x - \\cos x + \\dfrac{\\sin^2 x}{\\cos^2 x} - \\tan^2 x = 0$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Kết quả rút gọn biểu thức $B = \\dfrac{1}{\\sin x} \\cdot \\sqrt{\\dfrac{1}{1 + \\cos x} + \\dfrac{1}{1 - \\cos x}} - \\sqrt{2}$ (với $0^\\circ < x < 180^\\circ$) là",
+   "option_a": "$\\sqrt{2}\\cot^2 x$.", "option_b": "$\\sqrt{2}\\sin x$.", "option_c": "$\\sqrt{3}\\cos x$.", "option_d": "$\\sqrt{2}\\sin 2x$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nQuy đồng trong căn: $\\dfrac{1}{1 + \\cos x} + \\dfrac{1}{1 - \\cos x} = \\dfrac{2}{\\sin^2 x}$; với $0^\\circ < x < 180^\\circ$ thì $\\sin x > 0$.\n\nLời giải:\n$B = \\dfrac{1}{\\sin x} \\cdot \\dfrac{\\sqrt{2}}{\\sin x} - \\sqrt{2} = \\sqrt{2}\\left(\\dfrac{1}{\\sin^2 x} - 1\\right) = \\sqrt{2}\\cot^2 x$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tính $A = \\cos 10^\\circ + \\cos 30^\\circ + \\cos 50^\\circ + \\ldots + \\cos 150^\\circ + \\cos 170^\\circ$.",
+   "option_a": "$0$.", "option_b": "$2$.", "option_c": "$-1$.", "option_d": "$1$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nGhép các cặp góc bù nhau: $\\cos x + \\cos(180^\\circ - x) = 0$.\n\nLời giải:\n$A = (\\cos 10^\\circ + \\cos 170^\\circ) + (\\cos 30^\\circ + \\cos 150^\\circ) + (\\cos 50^\\circ + \\cos 130^\\circ) + (\\cos 70^\\circ + \\cos 110^\\circ) + \\cos 90^\\circ = 0$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Giá trị biểu thức $P = \\sqrt{\\sin^4 x + 6\\cos^2 x + 3\\cos^4 x} + \\sqrt{\\cos^4 x + 6\\sin^2 x + 3\\sin^4 x}$ không phụ thuộc vào $x$. Giá trị đó bằng",
+   "option_a": "$2$.", "option_b": "$3$.", "option_c": "$4$.", "option_d": "$1$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nĐặt $t = \\sin^2 x$ ($0 \\le t \\le 1$), $\\cos^2 x = 1 - t$, đưa mỗi biểu thức dưới căn về bình phương.\n\nLời giải:\n$\\sin^4 x + 6\\cos^2 x + 3\\cos^4 x = t^2 + 6(1 - t) + 3(1 - t)^2 = 4t^2 - 12t + 9 = (3 - 2t)^2$.\n$\\cos^4 x + 6\\sin^2 x + 3\\sin^4 x = (1 - t)^2 + 6t + 3t^2 = 4t^2 + 4t + 1 = (2t + 1)^2$.\nVì $0 \\le t \\le 1$ nên $P = (3 - 2t) + (2t + 1) = 4$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho góc $\\alpha = \\widehat{xOM}$ với điểm $M\\left(\\dfrac{1}{3}; \\dfrac{2\\sqrt{2}}{3}\\right)$ trên nửa đường tròn đơn vị. Giá trị lượng giác của $\\cot\\alpha$ là",
+   "option_a": "$\\cot\\alpha = \\dfrac{1}{2\\sqrt{2}}$.", "option_b": "$\\cot\\alpha = 2\\sqrt{2}$.", "option_c": "$\\cot\\alpha = \\dfrac{2\\sqrt{2} - 1}{3}$.", "option_d": "$\\cot\\alpha = \\dfrac{2\\sqrt{2}}{9}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\n$\\cos\\alpha = x_M$, $\\sin\\alpha = y_M$, $\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha}$.\n\nLời giải:\n$\\cot\\alpha = \\dfrac{\\frac{1}{3}}{\\frac{2\\sqrt{2}}{3}} = \\dfrac{1}{2\\sqrt{2}}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Kết quả rút gọn biểu thức $A = \\dfrac{(1 - \\tan^2 x)^2}{4\\tan^2 x} - \\dfrac{1}{4\\sin^2 x\\cos^2 x}$ bằng",
+   "option_a": "$0$.", "option_b": "$-1$.", "option_c": "$1$.", "option_d": "$2$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\n$\\dfrac{1}{\\sin^2 x\\cos^2 x} = \\dfrac{(1 + \\tan^2 x)^2}{\\tan^2 x}$ (vì $\\dfrac{1}{\\cos^4 x} = (1 + \\tan^2 x)^2$ và $\\sin^2 x = \\tan^2 x\\cos^2 x$).\n\nLời giải:\n$A = \\dfrac{(1 - \\tan^2 x)^2 - (1 + \\tan^2 x)^2}{4\\tan^2 x} = \\dfrac{-4\\tan^2 x}{4\\tan^2 x} = -1$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho $H = \\cos(x + 60^\\circ) - 5\\cos(120^\\circ - x) - 6\\sin(x + 60^\\circ) \\cdot \\cot(x + 60^\\circ)$ $(0^\\circ \\le x \\le 90^\\circ)$. Chọn mệnh đề đúng trong các mệnh đề sau.",
+   "option_a": "$H = -1$.", "option_b": "$H = \\dfrac{1}{3}$.", "option_c": "$H = \\dfrac{\\pi}{3}$.", "option_d": "$H = 0$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$120^\\circ - x = 180^\\circ - (x + 60^\\circ)$ nên $\\cos(120^\\circ - x) = -\\cos(x + 60^\\circ)$; $\\sin u\\cot u = \\cos u$.\n\nLời giải:\n$H = \\cos(x + 60^\\circ) + 5\\cos(x + 60^\\circ) - 6\\cos(x + 60^\\circ) = 0$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho $\\tan a = -3$ $(0^\\circ \\le a \\le 180^\\circ)$. Khi đó $B = \\dfrac{\\sin^2 a + 2\\sin a \\cdot \\cos a - 2\\cos^2 a}{2\\sin^2 a - 3\\sin a \\cdot \\cos a + 4\\cos^2 a}$ bằng",
+   "option_a": "$\\dfrac{1}{31}$.", "option_b": "$\\dfrac{5}{14}$.", "option_c": "$\\dfrac{2}{13}$.", "option_d": "$\\dfrac{5}{12}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nChia tử và mẫu cho $\\cos^2 a$.\n\nLời giải:\n$B = \\dfrac{\\tan^2 a + 2\\tan a - 2}{2\\tan^2 a - 3\\tan a + 4} = \\dfrac{9 - 6 - 2}{18 + 9 + 4} = \\dfrac{1}{31}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho $\\sin a = \\dfrac{1}{3}$. Giá trị của biểu thức $A = \\dfrac{\\cot a - \\tan a}{\\tan a + 2\\cot a}$ bằng",
+   "option_a": "$\\dfrac{1}{9}$.", "option_b": "$\\dfrac{7}{9}$.", "option_c": "$\\dfrac{17}{81}$.", "option_d": "$\\dfrac{7}{17}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nNhân tử và mẫu với $\\tan a$ để đưa về $\\tan^2 a = \\dfrac{\\sin^2 a}{1 - \\sin^2 a}$.\n\nLời giải:\n$\\tan^2 a = \\dfrac{\\frac{1}{9}}{\\frac{8}{9}} = \\dfrac{1}{8}$. $A = \\dfrac{1 - \\tan^2 a}{\\tan^2 a + 2} = \\dfrac{\\frac{7}{8}}{\\frac{17}{8}} = \\dfrac{7}{17}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho biết $\\cot\\alpha = 5$. Tính giá trị của $E = 2\\cos^2\\alpha + 5\\sin\\alpha\\cos\\alpha + 1$?",
+   "option_a": "$\\dfrac{10}{26}$.", "option_b": "$\\dfrac{100}{26}$.", "option_c": "$\\dfrac{50}{26}$.", "option_d": "$\\dfrac{101}{26}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$\\sin^2\\alpha = \\dfrac{1}{1 + \\cot^2\\alpha}$; $\\cos^2\\alpha = \\cot^2\\alpha\\sin^2\\alpha$; $\\sin\\alpha\\cos\\alpha = \\cot\\alpha\\sin^2\\alpha$.\n\nLời giải:\n$\\sin^2\\alpha = \\dfrac{1}{26}$, $\\cos^2\\alpha = \\dfrac{25}{26}$, $\\sin\\alpha\\cos\\alpha = \\dfrac{5}{26}$.\n$E = \\dfrac{50}{26} + \\dfrac{25}{26} + 1 = \\dfrac{101}{26}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho $\\sin x + \\cos x = \\dfrac{3}{4}$ $(0^\\circ \\le x \\le 180^\\circ)$. Biểu thức $B = |\\sin x - \\cos x|$ bằng",
+   "option_a": "$\\dfrac{3}{4}$.", "option_b": "$\\dfrac{23}{16}$.", "option_c": "$\\dfrac{\\sqrt{23}}{4}$.", "option_d": "$\\dfrac{9}{16}$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\n$(\\sin x + \\cos x)^2 + (\\sin x - \\cos x)^2 = 2$.\n\nLời giải:\n$(\\sin x - \\cos x)^2 = 2 - \\dfrac{9}{16} = \\dfrac{23}{16}$, suy ra $B = \\dfrac{\\sqrt{23}}{4}$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Biểu thức $E = \\sin(180^\\circ - x) - 2\\cos(90^\\circ - x) + \\cos x \\cdot \\tan x$ $(x \\ne 90^\\circ)$ sau khi thu gọn bằng với biểu thức nào trong 4 biểu thức dưới đây:",
+   "option_a": "$A = 0$.", "option_b": "$B = -2\\sin x$.", "option_c": "$C = \\sin x$.", "option_d": "$D = -2\\cos x$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nGóc bù: $\\sin(180^\\circ - x) = \\sin x$; góc phụ: $\\cos(90^\\circ - x) = \\sin x$; $\\cos x\\tan x = \\sin x$.\n\nLời giải:\n$E = \\sin x - 2\\sin x + \\sin x = 0$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC", "difficulty": "1",
+   "content": "Trong mặt phẳng tọa độ $Oxy$, cho điểm $M$ nằm trên nửa đường tròn đơn vị. Điểm $M$ có tung độ và hoành độ đều dương, góc $\\widehat{xOM}$ có thể là",
+   "option_a": "$100^\\circ$.", "option_b": "$80^\\circ$.", "option_c": "$120^\\circ$.", "option_d": "$140^\\circ$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nHoành độ của $M$ là $\\cos\\widehat{xOM}$; hoành độ dương thì góc nhọn.\n\nLời giải:\nChỉ $80^\\circ$ là góc nhọn trong bốn phương án.\nChọn B."
+  }
+ ]
+}

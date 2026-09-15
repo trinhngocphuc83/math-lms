@@ -1,0 +1,294 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Các dạng toán hệ thức lượng trong tam giác Toán 10 (thường gặp), Bài 2 HTL trong tam giác - ví dụ và bài tập rèn luyện, tr. 122-136",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $b = 5$, $c = 7$ và $\\cos A = \\dfrac{3}{5}$. Tính cạnh $a$ và côsin các góc còn lại của tam giác đó.",
+   "correct_answer": "a = 4√2; cos B = √2/2; cos C = √2/10",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin và hệ quả.\n\nLời giải:\n$a^2 = 25 + 49 - 2 \\cdot 5 \\cdot 7 \\cdot \\dfrac{3}{5} = 32 \\Rightarrow a = 4\\sqrt{2}$.\n$\\cos B = \\dfrac{c^2 + a^2 - b^2}{2ca} = \\dfrac{49 + 32 - 25}{56\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2}$; $\\cos C = \\dfrac{a^2 + b^2 - c^2}{2ab} = \\dfrac{32 + 25 - 49}{40\\sqrt{2}} = \\dfrac{\\sqrt{2}}{10}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TLN", "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có $AC = 10$ cm, $BC = 16$ cm và $\\widehat{C} = 120^\\circ$. Tính độ dài cạnh $AB$ (làm tròn kết quả đến hàng phần mười theo đơn vị xăng-ti-mét).",
+   "correct_answer": "22,7",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin.\n\nLời giải:\n$AB^2 = 100 + 256 - 2 \\cdot 10 \\cdot 16\\cos 120^\\circ = 516 \\Rightarrow AB = \\sqrt{516} \\approx 22{,}7$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $AB = 4$ cm, $AC = 3$ cm và $BC = 6$ cm. Tính độ dài trung tuyến kẻ từ $C$ của tam giác $ABC$ (làm tròn kết quả đến hàng phần mười theo đơn vị xăng-ti-mét).",
+   "correct_answer": "4,3",
+   "explanation": "Phương pháp giải:\nCông thức đường trung tuyến $m_c^2 = \\dfrac{a^2 + b^2}{2} - \\dfrac{c^2}{4}$.\n\nLời giải:\n$m_c^2 = \\dfrac{36 + 9}{2} - \\dfrac{16}{4} = \\dfrac{37}{2} \\Rightarrow m_c = \\dfrac{\\sqrt{74}}{2} \\approx 4{,}3$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $BC = 3$, $CA = 4$ và $AB = 6$. Tính côsin của góc có số đo lớn nhất của tam giác đã cho.",
+   "correct_answer": "cos C = −11/24",
+   "explanation": "Phương pháp giải:\nGóc lớn nhất đối diện cạnh lớn nhất $AB$, tức góc $C$; hệ quả định lí côsin.\n\nLời giải:\n$\\cos C = \\dfrac{CA^2 + CB^2 - AB^2}{2 \\cdot CA \\cdot CB} = \\dfrac{16 + 9 - 36}{24} = -\\dfrac{11}{24}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Hai chiếc tàu thủy cùng xuất phát từ một vị trí $A$, đi thẳng theo hai hướng tạo với nhau góc $60^\\circ$. Tàu $B$ chạy với tốc độ $20$ hải lí một giờ. Tàu $C$ chạy với tốc độ $15$ hải lí một giờ. Hỏi sau hai giờ, hai tàu cách nhau bao nhiêu hải lí (làm tròn kết quả đến hàng đơn vị)?",
+   "correct_answer": "36",
+   "explanation": "Phương pháp giải:\nSau $2$ giờ: $AB = 40$, $AC = 30$; định lí côsin.\n\nLời giải:\n$BC^2 = 30^2 + 40^2 - 2 \\cdot 30 \\cdot 40\\cos 60^\\circ = 1300 \\Rightarrow BC \\approx 36$ (hải lí)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TLN", "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có $\\widehat{A} = 60^\\circ$, $AB = 6$, $AC = 8$. Tính $BC$ (làm tròn kết quả đến hàng phần trăm).",
+   "correct_answer": "7,21",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin.\n\nLời giải:\n$BC^2 = 36 + 64 - 2 \\cdot 6 \\cdot 8\\cos 60^\\circ = 52 \\Rightarrow BC = 2\\sqrt{13} \\approx 7{,}21$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TL", "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có các cạnh $BC = 6$, $CA = 4\\sqrt{2}$, $AB = 2$. Tính $\\cos A$ và góc $\\widehat{A}$.",
+   "correct_answer": "cos A = 0; A = 90°",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin.\n\nLời giải:\n$\\cos A = \\dfrac{AB^2 + AC^2 - BC^2}{2AB \\cdot AC} = \\dfrac{4 + 32 - 36}{2 \\cdot 2 \\cdot 4\\sqrt{2}} = 0 \\Rightarrow \\widehat{A} = 90^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TLN", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = 6$ cm, $AC = 5$ cm và $\\widehat{ACB} = 60^\\circ$. Tính $BC$ (làm tròn kết quả đến hàng phần trăm theo đơn vị xăng-ti-mét).",
+   "correct_answer": "6,65",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin cho cạnh $AB$, được phương trình bậc hai ẩn $BC$.\n\nLời giải:\n$36 = 25 + BC^2 - 2 \\cdot 5 \\cdot BC\\cos 60^\\circ \\Leftrightarrow BC^2 - 5BC - 11 = 0 \\Leftrightarrow BC = \\dfrac{5 + \\sqrt{69}}{2} \\approx 6{,}65$ (cm) (loại nghiệm âm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Tam giác $ABC$ có $b = 6$, $c = 8$ và $m_a = 5$. Tính $a$ và $\\widehat{A}$.",
+   "correct_answer": "a = 10; A = 90°",
+   "explanation": "Phương pháp giải:\nCông thức đường trung tuyến rồi hệ quả định lí côsin.\n\nLời giải:\n$m_a^2 = \\dfrac{b^2 + c^2}{2} - \\dfrac{a^2}{4} \\Leftrightarrow 25 = 50 - \\dfrac{a^2}{4} \\Leftrightarrow a = 10$.\n$\\cos A = \\dfrac{36 + 64 - 100}{2 \\cdot 6 \\cdot 8} = 0 \\Rightarrow \\widehat{A} = 90^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$, gọi $l_a$ là độ dài đường phân giác trong kẻ từ đỉnh $A$ của tam giác $ABC$. Chứng minh rằng $l_a = \\dfrac{bc\\sin A}{(b + c)\\sin\\dfrac{A}{2}}$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nGọi $D$ là chân phân giác; $S_{ABC} = S_{ABD} + S_{ACD}$.\n\nLời giải:\n$\\dfrac{1}{2}bc\\sin A = \\dfrac{1}{2}c \\cdot l_a\\sin\\dfrac{A}{2} + \\dfrac{1}{2}b \\cdot l_a\\sin\\dfrac{A}{2} \\Leftrightarrow bc\\sin A = l_a(b + c)\\sin\\dfrac{A}{2} \\Leftrightarrow l_a = \\dfrac{bc\\sin A}{(b + c)\\sin\\dfrac{A}{2}}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Hai lực $\\overrightarrow{f_1}$ và $\\overrightarrow{f_2}$ cho trước cùng tác dụng lên một vật và tạo thành góc nhọn $\\left(\\overrightarrow{f_1}, \\overrightarrow{f_2}\\right) = \\alpha$. Hãy lập công thức tính cường độ của hợp lực $\\overrightarrow{s}$.",
+   "correct_answer": "|s| = √(|f1|² + |f2|² + 2|f1||f2| cos α)",
+   "explanation": "Phương pháp giải:\nDựng hình bình hành $ABCD$ với $\\overrightarrow{AB} = \\overrightarrow{f_1}$, $\\overrightarrow{AD} = \\overrightarrow{f_2}$ thì $\\overrightarrow{s} = \\overrightarrow{AC}$; định lí côsin trong tam giác $ABC$ với $\\widehat{ABC} = 180^\\circ - \\alpha$.\n\nLời giải:\n$AC^2 = AB^2 + BC^2 - 2AB \\cdot BC\\cos\\left(180^\\circ - \\alpha\\right) = \\left|\\overrightarrow{f_1}\\right|^2 + \\left|\\overrightarrow{f_2}\\right|^2 + 2\\left|\\overrightarrow{f_1}\\right|\\left|\\overrightarrow{f_2}\\right|\\cos\\alpha$.\nVậy $\\left|\\overrightarrow{s}\\right| = \\sqrt{\\left|\\overrightarrow{f_1}\\right|^2 + \\left|\\overrightarrow{f_2}\\right|^2 + 2\\left|\\overrightarrow{f_1}\\right|\\left|\\overrightarrow{f_2}\\right|\\cos\\alpha}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN", "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có $\\widehat{A} = 120^\\circ$ và $BC = 10$ cm. Tính bán kính đường tròn ngoại tiếp tam giác $ABC$ (làm tròn kết quả đến hàng phần trăm theo đơn vị xăng-ti-mét).",
+   "correct_answer": "5,77",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: $R = \\dfrac{BC}{2\\sin A}$.\n\nLời giải:\n$R = \\dfrac{10}{2\\sin 120^\\circ} = \\dfrac{10\\sqrt{3}}{3} \\approx 5{,}77$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $\\widehat{A} = 40^\\circ$, $\\widehat{B} = 55^\\circ$ và $AB = 100$. Tính độ dài cạnh $BC$ (làm tròn kết quả đến hàng phần mười).",
+   "correct_answer": "64,5",
+   "explanation": "Phương pháp giải:\n$\\widehat{C} = 85^\\circ$; định lí sin.\n\nLời giải:\n$BC = \\dfrac{AB\\sin A}{\\sin C} = \\dfrac{100\\sin 40^\\circ}{\\sin 85^\\circ} \\approx 64{,}5$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $\\dfrac{AB}{2} = \\dfrac{BC}{3}$ và $\\widehat{A} = 45^\\circ$. Tính các góc $B$, $C$ của tam giác đó (làm tròn kết quả đến hàng phần mười).",
+   "correct_answer": "C ≈ 28,1°; B ≈ 106,9°",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: $\\dfrac{AB}{\\sin C} = \\dfrac{BC}{\\sin A}$; vì $AB < BC$ nên $\\widehat{C} < \\widehat{A}$, $C$ nhọn.\n\nLời giải:\n$\\sin C = \\dfrac{AB\\sin A}{BC} = \\dfrac{2\\sin 45^\\circ}{3} \\approx 0{,}4714 \\Rightarrow \\widehat{C} \\approx 28{,}1^\\circ$.\n$\\widehat{B} = 180^\\circ - 45^\\circ - 28{,}1^\\circ = 106{,}9^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $\\widehat{A} = 30^\\circ$, $\\widehat{B} = 50^\\circ$ và bán kính đường tròn ngoại tiếp bằng $10$ cm. Tính độ dài các cạnh của tam giác $ABC$ (làm tròn đến hàng phần mười).",
+   "correct_answer": "BC = 10 cm; AC ≈ 15,3 cm; AB ≈ 19,7 cm",
+   "explanation": "Phương pháp giải:\n$\\widehat{C} = 100^\\circ$; định lí sin: mỗi cạnh bằng $2R$ nhân sin góc đối.\n\nLời giải:\n$BC = 2R\\sin A = 20\\sin 30^\\circ = 10$ (cm); $AC = 20\\sin 50^\\circ \\approx 15{,}3$ (cm); $AB = 20\\sin 100^\\circ \\approx 19{,}7$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$. Chứng minh rằng $\\sin^2 A = \\sin B\\sin C$ khi và chỉ khi $a^2 = bc$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: $\\sin A = \\dfrac{a}{2R}$, $\\sin B = \\dfrac{b}{2R}$, $\\sin C = \\dfrac{c}{2R}$.\n\nLời giải:\n$\\sin^2 A = \\sin B\\sin C \\Leftrightarrow \\left(\\dfrac{a}{2R}\\right)^2 = \\dfrac{b}{2R} \\cdot \\dfrac{c}{2R} \\Leftrightarrow a^2 = bc$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Cho tam giác $ABC$. Biết $AB = 5$ cm, $BC = 6$ cm và $2\\sin A = \\sin B + \\sin C$. Tính độ dài cạnh $AC$ (đơn vị cm).",
+   "correct_answer": "7",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin đưa về cạnh: $2BC = AC + AB$.\n\nLời giải:\n$2\\sin A = \\sin B + \\sin C \\Leftrightarrow \\dfrac{2BC}{2R} = \\dfrac{AC}{2R} + \\dfrac{AB}{2R} \\Leftrightarrow 2BC = AC + AB$.\n$AC = 2 \\cdot 6 - 5 = 7$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN", "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có $\\widehat{B} = 70^\\circ$ và $AC = 15$ cm. Tính bán kính đường tròn ngoại tiếp tam giác $ABC$ (làm tròn kết quả đến hàng đơn vị theo đơn vị xăng-ti-mét).",
+   "correct_answer": "8",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin.\n\nLời giải:\n$R = \\dfrac{AC}{2\\sin B} = \\dfrac{15}{2\\sin 70^\\circ} \\approx 8$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $\\widehat{B} = 30^\\circ$, $\\widehat{C} = 65^\\circ$ và $BC = 50$. Tính độ dài cạnh $AB$ (làm tròn kết quả đến hàng phần mười).",
+   "correct_answer": "45,5",
+   "explanation": "Phương pháp giải:\n$\\widehat{A} = 180^\\circ - 30^\\circ - 65^\\circ = 85^\\circ$; định lí sin.\n\nLời giải:\n$AB = \\dfrac{BC\\sin C}{\\sin A} = \\dfrac{50\\sin 65^\\circ}{\\sin 85^\\circ} \\approx 45{,}5$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ thỏa mãn $a\\sin B = c\\sin A$. Chứng minh rằng tam giác $ABC$ cân.",
+   "correct_answer": "Chứng minh (b = c)",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin.\n\nLời giải:\n$a\\sin B = c\\sin A \\Leftrightarrow \\dfrac{a}{\\sin A} = \\dfrac{c}{\\sin B}$. Mà $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B}$ nên $\\dfrac{c}{\\sin B} = \\dfrac{b}{\\sin B} \\Rightarrow b = c$. Vậy tam giác $ABC$ cân tại $A$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ thỏa mãn $\\sin^2 A = \\sin^2 B + \\sin^2 C$. Chứng minh rằng tam giác $ABC$ vuông.",
+   "correct_answer": "Chứng minh (vuông tại A)",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin.\n\nLời giải:\n$\\sin^2 A = \\sin^2 B + \\sin^2 C \\Leftrightarrow \\left(\\dfrac{a}{2R}\\right)^2 = \\left(\\dfrac{b}{2R}\\right)^2 + \\left(\\dfrac{c}{2R}\\right)^2 \\Leftrightarrow a^2 = b^2 + c^2$. Vậy tam giác $ABC$ vuông tại $A$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "4",
+   "content": "Cho tam giác $ABC$. Gọi $D$ là điểm thuộc miền trong tam giác $ABC$ sao cho $\\widehat{BAD} = \\widehat{CBD} = \\widehat{ACD} = \\varphi$. Chứng minh rằng $\\sin^3\\varphi = \\sin(A - \\varphi)\\sin(B - \\varphi)\\sin(C - \\varphi)$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin trong ba tam giác $ABD$, $BCD$, $CAD$ (trong tam giác $ABD$: $\\widehat{BAD} = \\varphi$, $\\widehat{ABD} = B - \\varphi$; tương tự cho hai tam giác kia).\n\nLời giải:\n$\\dfrac{BD}{\\sin\\varphi} = \\dfrac{AD}{\\sin(B - \\varphi)}$; $\\dfrac{CD}{\\sin\\varphi} = \\dfrac{BD}{\\sin(C - \\varphi)}$; $\\dfrac{AD}{\\sin\\varphi} = \\dfrac{CD}{\\sin(A - \\varphi)}$.\nNhân ba đẳng thức: $\\dfrac{AD \\cdot BD \\cdot CD}{\\sin^3\\varphi} = \\dfrac{AD \\cdot BD \\cdot CD}{\\sin(A - \\varphi)\\sin(B - \\varphi)\\sin(C - \\varphi)}$, suy ra $\\sin^3\\varphi = \\sin(A - \\varphi)\\sin(B - \\varphi)\\sin(C - \\varphi)$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $BC = 40$ cm, $\\widehat{B} = 30^\\circ$, $\\widehat{C} = 45^\\circ$. Tính góc $\\widehat{A}$ và độ dài các cạnh $AB$, $AC$ của tam giác đó (làm tròn kết quả đến hàng phần mười).",
+   "correct_answer": "A = 105°; AB ≈ 29,3 cm; AC ≈ 20,7 cm",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin.\n\nLời giải:\n$\\widehat{A} = 180^\\circ - 30^\\circ - 45^\\circ = 105^\\circ$.\n$AB = \\dfrac{BC\\sin C}{\\sin A} = \\dfrac{40\\sin 45^\\circ}{\\sin 105^\\circ} \\approx 29{,}3$ (cm); $AC = \\dfrac{40\\sin 30^\\circ}{\\sin 105^\\circ} \\approx 20{,}7$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $AB = 25$, $AC = 20$, $\\widehat{A} = 120^\\circ$. Tính cạnh $BC$ và các góc $B$, $C$ của tam giác đó (làm tròn kết quả đến hàng phần mười).",
+   "correct_answer": "BC = 5√61 ≈ 39,1; B ≈ 26,3°; C ≈ 33,7°",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin rồi định lí sin.\n\nLời giải:\n$BC^2 = 625 + 400 - 2 \\cdot 25 \\cdot 20\\cos 120^\\circ = 1525 \\Rightarrow BC = 5\\sqrt{61} \\approx 39{,}1$.\n$\\sin B = \\dfrac{AC\\sin A}{BC} = \\dfrac{20\\sin 120^\\circ}{5\\sqrt{61}} \\approx 0{,}4435 \\Rightarrow \\widehat{B} \\approx 26{,}3^\\circ$ (nhọn vì $A$ tù); $\\widehat{C} \\approx 33{,}7^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Để đo chiều rộng $AB$ của một khúc sông, người ta chọn điểm $C$ cùng bờ với $B$. Sau đó, đo khoảng cách $BC$, các góc $B$ và $C$. Biết rằng $BC = 200$ m, $\\widehat{B} = 107^\\circ$, $\\widehat{C} = 28^\\circ$. Tìm chiều rộng $AB$ của khúc sông đó (làm tròn kết quả đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "115",
+   "explanation": "Phương pháp giải:\n$\\widehat{A} = 180^\\circ - 107^\\circ - 28^\\circ = 45^\\circ$; định lí sin.\n\nLời giải:\n$AB = \\dfrac{BC\\sin C}{\\sin A} = \\dfrac{200\\sin 28^\\circ}{\\sin 45^\\circ} \\approx 114{,}6 \\approx 115$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "3",
+   "content": "Để đo chiều cao $CH$ của một tháp truyền hình, người ta chọn hai điểm quan sát $A$, $B$ trên mặt đất, thẳng hàng với chân tháp $H$ ($B$ nằm giữa $A$ và $H$). Biết $\\widehat{CAH} = 51^\\circ$, $\\widehat{CBH} = 66^\\circ$ và $AB = 75$ m, tính chiều cao của tháp (làm tròn kết quả đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "206",
+   "explanation": "Phương pháp giải:\n$\\widehat{ACB} = 66^\\circ - 51^\\circ = 15^\\circ$; định lí sin trong tam giác $ABC$ tìm $BC$; $CH = BC\\sin\\widehat{CBH}$.\n\nLời giải:\n$BC = \\dfrac{AB\\sin\\widehat{CAH}}{\\sin\\widehat{ACB}} = \\dfrac{75\\sin 51^\\circ}{\\sin 15^\\circ}$; $CH = BC\\sin 66^\\circ = \\dfrac{75\\sin 51^\\circ\\sin 66^\\circ}{\\sin 15^\\circ} \\approx 205{,}7 \\approx 206$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "3",
+   "content": "Trên ngọn đồi có một cái tháp cao $120$ m. Đỉnh tháp $B$ và chân tháp $C$ nhìn điểm $A$ ở chân đồi dưới các góc tương ứng bằng $35^\\circ$ và $60^\\circ$ so với phương thẳng đứng. Xác định chiều cao $HA$ của ngọn đồi ($H$ là điểm trên đường thẳng đứng qua tháp, ngang mức với $A$; làm tròn kết quả đến hàng phần mười theo đơn vị mét).",
+   "correct_answer": "81,4",
+   "explanation": "Phương pháp giải:\nTrong tam giác $ABC$: $\\widehat{ABC} = 35^\\circ$, $\\widehat{BAC} = 60^\\circ - 35^\\circ = 25^\\circ$; định lí sin tìm $AC$; $\\widehat{ACH} = 90^\\circ - 60^\\circ = 30^\\circ$ nên $AH = AC\\sin 30^\\circ$.\n\nLời giải:\n$AC = \\dfrac{BC\\sin\\widehat{ABC}}{\\sin\\widehat{BAC}} = \\dfrac{120\\sin 35^\\circ}{\\sin 25^\\circ}$; $AH = AC\\sin 30^\\circ = \\dfrac{120\\sin 35^\\circ\\sin 30^\\circ}{\\sin 25^\\circ} \\approx 81{,}4$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $AB = 8$, $BC = 10$, $AC = 15$. Tính $\\widehat{A} + 2\\widehat{C}$ (làm tròn kết quả đến hàng phần mười theo đơn vị độ).",
+   "correct_answer": "97,1",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin cho từng góc.\n\nLời giải:\n$\\cos A = \\dfrac{64 + 225 - 100}{2 \\cdot 8 \\cdot 15} = \\dfrac{63}{80} \\Rightarrow \\widehat{A} \\approx 38{,}0^\\circ$; $\\cos C = \\dfrac{225 + 100 - 64}{2 \\cdot 15 \\cdot 10} = \\dfrac{87}{100} \\Rightarrow \\widehat{C} \\approx 29{,}5^\\circ$.\n$\\widehat{A} + 2\\widehat{C} \\approx 97{,}1^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = 15$ cm, $AC = 21$ cm, $\\widehat{A} = 30^\\circ$. Tính cạnh $BC$ và các góc $B$, $C$ của tam giác đó (làm tròn kết quả đến hàng phần mười).",
+   "correct_answer": "BC ≈ 11,0 cm; B ≈ 106,9°; C ≈ 43,1°",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $BC$; góc $B$ đối diện cạnh lớn nhất $AC$ nên tính bằng hệ quả định lí côsin (tránh nhầm giữa hai góc bù nhau khi dùng định lí sin).\n\nLời giải:\n$BC^2 = 225 + 441 - 2 \\cdot 15 \\cdot 21\\cos 30^\\circ \\approx 120{,}4 \\Rightarrow BC \\approx 11{,}0$ (cm).\n$\\cos B = \\dfrac{AB^2 + BC^2 - AC^2}{2AB \\cdot BC} \\approx \\dfrac{225 + 120{,}4 - 441}{2 \\cdot 15 \\cdot 10{,}97} \\approx -0{,}290 \\Rightarrow \\widehat{B} \\approx 106{,}9^\\circ$.\n$\\widehat{C} \\approx 180^\\circ - 30^\\circ - 106{,}9^\\circ = 43{,}1^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = 15$, $AC = 12$, $\\widehat{A} = 60^\\circ$. $M$ là điểm thuộc cạnh $AB$ sao cho $AM = 2BM$. Tính cạnh $CM$, góc $\\widehat{BCM}$ và bán kính đường tròn ngoại tiếp tam giác $BCM$ (làm tròn kết quả đến hàng phần mười).",
+   "correct_answer": "CM ≈ 11,1; BCM ≈ 19,8°; R ≈ 7,4",
+   "explanation": "Phương pháp giải:\n$AM = 10$, $BM = 5$; định lí côsin trong tam giác $ACM$ và $ABC$; hệ quả định lí côsin trong tam giác $BCM$; định lí sin.\n\nLời giải:\n$CM^2 = 100 + 144 - 2 \\cdot 10 \\cdot 12\\cos 60^\\circ = 124 \\Rightarrow CM \\approx 11{,}1$; $BC^2 = 225 + 144 - 2 \\cdot 15 \\cdot 12\\cos 60^\\circ = 189$.\n$\\cos\\widehat{BCM} = \\dfrac{CM^2 + CB^2 - BM^2}{2CM \\cdot CB} = \\dfrac{124 + 189 - 25}{2\\sqrt{124} \\cdot \\sqrt{189}} \\approx 0{,}941 \\Rightarrow \\widehat{BCM} \\approx 19{,}8^\\circ$.\n$R = \\dfrac{BM}{2\\sin\\widehat{BCM}} \\approx \\dfrac{5}{2\\sin 19{,}8^\\circ} \\approx 7{,}4$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Để đo chiều rộng $AB$ của một khúc sông, người ta chọn điểm $C$ cùng bờ với $B$, đo khoảng cách $BC$, các góc $B$ và $C$. Biết rằng $BC = 250$ m, $\\widehat{B} = 104^\\circ$, $\\widehat{C} = 31^\\circ$. Tìm chiều rộng $AB$ của khúc sông đó (làm tròn đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "182",
+   "explanation": "Phương pháp giải:\n$\\widehat{A} = 180^\\circ - 104^\\circ - 31^\\circ = 45^\\circ$; định lí sin.\n\nLời giải:\n$AB = \\dfrac{BC\\sin C}{\\sin A} = \\dfrac{250\\sin 31^\\circ}{\\sin 45^\\circ} \\approx 182$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "3",
+   "content": "Để đo chiều cao $CH$ của một tháp truyền hình, người ta chọn hai điểm quan sát $A$, $B$ trên mặt đất, thẳng hàng với chân tháp $H$ ($B$ nằm giữa $A$ và $H$). Biết $\\widehat{CAH} = 54^\\circ$, $\\widehat{CBH} = 68^\\circ$ và $AB = 80$ m, tính chiều cao của tháp (làm tròn đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "248",
+   "explanation": "Phương pháp giải:\n$\\widehat{ACB} = 68^\\circ - 54^\\circ = 14^\\circ$; định lí sin tìm $BC$; $CH = BC\\sin 68^\\circ$.\n\nLời giải:\n$CH = \\dfrac{AB\\sin 54^\\circ}{\\sin 14^\\circ} \\cdot \\sin 68^\\circ \\approx 248$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $\\widehat{A} = 60^\\circ$ và $AB = 8$ cm, $AC = 5$ cm.\na) Tính diện tích của tam giác $ABC$.\nb) Tính độ dài đường cao hạ từ đỉnh $A$ của tam giác $ABC$.\nc) Tính bán kính đường tròn nội tiếp tam giác $ABC$.",
+   "correct_answer": "a) S = 10√3 cm²; b) h_a = 20√3/7 cm; c) r = √3 cm",
+   "explanation": "Phương pháp giải:\n$S = \\dfrac{1}{2}AB \\cdot AC\\sin A$; định lí côsin tìm $BC$; $h_a = \\dfrac{2S}{BC}$; $r = \\dfrac{S}{p}$.\n\nLời giải:\na) $S = \\dfrac{1}{2} \\cdot 8 \\cdot 5\\sin 60^\\circ = 10\\sqrt{3}$ (cm$^2$).\nb) $BC^2 = 64 + 25 - 2 \\cdot 8 \\cdot 5\\cos 60^\\circ = 49 \\Rightarrow BC = 7$; $h_a = \\dfrac{2S}{BC} = \\dfrac{20\\sqrt{3}}{7}$ (cm).\nc) $p = \\dfrac{8 + 5 + 7}{2} = 10$; $r = \\dfrac{S}{p} = \\sqrt{3}$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho hình bình hành $ABCD$ có $AB = 6$, $BC = 8$ và $\\widehat{ABC} = 60^\\circ$. Tính diện tích hình bình hành $ABCD$.",
+   "correct_answer": "S = 24√3",
+   "explanation": "Phương pháp giải:\n$S_{ABCD} = 2S_{ABC} = AB \\cdot BC\\sin\\widehat{ABC}$.\n\nLời giải:\n$S_{ABCD} = 6 \\cdot 8\\sin 60^\\circ = 24\\sqrt{3}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $\\widehat{A} = 120^\\circ$, $\\widehat{B} = 30^\\circ$, diện tích tam giác $ABC$ bằng $9\\sqrt{3}$. Tính các cạnh của tam giác $ABC$.",
+   "correct_answer": "AB = AC = 6; BC = 6√3",
+   "explanation": "Phương pháp giải:\n$\\widehat{C} = 30^\\circ$ nên tam giác cân tại $A$; $S = \\dfrac{1}{2}AB \\cdot AC\\sin A$; định lí sin.\n\nLời giải:\n$\\widehat{C} = 180^\\circ - 120^\\circ - 30^\\circ = 30^\\circ \\Rightarrow AB = AC$.\n$9\\sqrt{3} = \\dfrac{1}{2}AB^2\\sin 120^\\circ = \\dfrac{\\sqrt{3}}{4}AB^2 \\Rightarrow AB = AC = 6$.\n$BC = \\dfrac{AC\\sin A}{\\sin B} = \\dfrac{6\\sin 120^\\circ}{\\sin 30^\\circ} = 6\\sqrt{3}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = 2$, $AC = 2\\sqrt{7}$ và $BC = 4$.\na) Tính góc $B$ và diện tích tam giác $ABC$.\nb) Tính độ dài đường phân giác trong của góc $B$ của tam giác $ABC$.",
+   "correct_answer": "a) B = 120°; S = 2√3; b) BD = 4/3",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin; $S = \\dfrac{1}{2}AB \\cdot BC\\sin B$; phân giác $BD$: $S_{ABC} = S_{ABD} + S_{BCD}$.\n\nLời giải:\na) $\\cos B = \\dfrac{4 + 16 - 28}{2 \\cdot 2 \\cdot 4} = -\\dfrac{1}{2} \\Rightarrow \\widehat{B} = 120^\\circ$; $S = \\dfrac{1}{2} \\cdot 2 \\cdot 4\\sin 120^\\circ = 2\\sqrt{3}$.\nb) $2\\sqrt{3} = \\dfrac{1}{2} \\cdot 2 \\cdot BD\\sin 60^\\circ + \\dfrac{1}{2} \\cdot 4 \\cdot BD\\sin 60^\\circ = \\dfrac{3\\sqrt{3}}{2}BD \\Rightarrow BD = \\dfrac{4}{3}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác với ba cạnh $a = 13$, $b = 14$, $c = 15$. Tính diện tích của tam giác và độ dài đường cao $h_c$.",
+   "correct_answer": "S = 84; h_c = 56/5 = 11,2",
+   "explanation": "Phương pháp giải:\nCông thức Heron; $h_c = \\dfrac{2S}{c}$.\n\nLời giải:\n$p = 21$, $S = \\sqrt{21 \\cdot 8 \\cdot 7 \\cdot 6} = 84$; $h_c = \\dfrac{2 \\cdot 84}{15} = \\dfrac{56}{5} = 11{,}2$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = 10$, $BC = 6$ và góc $\\widehat{B} = 120^\\circ$.\na) Tính $AC$ và diện tích tam giác $ABC$.\nb) Tính đường cao $AH$ ($H$ thuộc đường thẳng $BC$) và bán kính đường tròn nội tiếp tam giác $ABC$.\nc) Tính độ dài đường phân giác trong $BD$ của tam giác $ABC$.",
+   "correct_answer": "a) AC = 14; S = 15√3; b) AH = 5√3; r = √3; c) BD = 15/4",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin; $S = \\dfrac{1}{2}AB \\cdot BC\\sin B$; $AH = \\dfrac{2S}{BC}$; $r = \\dfrac{S}{p}$; $S_{ABC} = S_{ABD} + S_{BCD}$.\n\nLời giải:\na) $AC^2 = 100 + 36 - 2 \\cdot 10 \\cdot 6\\cos 120^\\circ = 196 \\Rightarrow AC = 14$; $S = \\dfrac{1}{2} \\cdot 10 \\cdot 6\\sin 120^\\circ = 15\\sqrt{3}$.\nb) $AH = \\dfrac{2S}{BC} = \\dfrac{30\\sqrt{3}}{6} = 5\\sqrt{3}$; $p = 15$, $r = \\dfrac{15\\sqrt{3}}{15} = \\sqrt{3}$.\nc) $15\\sqrt{3} = \\dfrac{1}{2} \\cdot 10 \\cdot BD\\sin 60^\\circ + \\dfrac{1}{2} \\cdot 6 \\cdot BD\\sin 60^\\circ = 4\\sqrt{3}BD \\Rightarrow BD = \\dfrac{15}{4}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = 2$, $AC = 3$ và $\\widehat{BAC} = 120^\\circ$. Tính độ dài $BC$, diện tích tam giác $ABC$, độ dài đường phân giác trong $AD$ của tam giác $ABC$.",
+   "correct_answer": "BC = √19; S = 3√3/2; AD = 6/5",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin; $S = \\dfrac{1}{2}AB \\cdot AC\\sin A$; $S_{ABC} = S_{BAD} + S_{DAC}$ với $\\widehat{BAD} = \\widehat{DAC} = 60^\\circ$.\n\nLời giải:\n$BC^2 = 4 + 9 - 2 \\cdot 2 \\cdot 3\\cos 120^\\circ = 19 \\Rightarrow BC = \\sqrt{19}$; $S = \\dfrac{1}{2} \\cdot 2 \\cdot 3\\sin 120^\\circ = \\dfrac{3\\sqrt{3}}{2}$.\n$\\dfrac{3\\sqrt{3}}{2} = \\dfrac{1}{2} \\cdot 2 \\cdot AD\\sin 60^\\circ + \\dfrac{1}{2} \\cdot 3 \\cdot AD\\sin 60^\\circ = \\dfrac{5\\sqrt{3}}{4}AD \\Rightarrow AD = \\dfrac{6}{5}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = c$, $BC = a$, $AC = b$. Gọi $h_a$, $h_b$, $h_c$ lần lượt là các đường cao tương ứng xuất phát từ các đỉnh $A$, $B$, $C$ và $r$ là bán kính đường tròn nội tiếp tam giác $ABC$. Chứng minh $\\dfrac{1}{h_a} + \\dfrac{1}{h_b} + \\dfrac{1}{h_c} = \\dfrac{1}{r}$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\n$S = \\dfrac{1}{2}ah_a = \\dfrac{1}{2}bh_b = \\dfrac{1}{2}ch_c = pr$.\n\nLời giải:\n$\\dfrac{1}{h_a} = \\dfrac{a}{2S}$, $\\dfrac{1}{h_b} = \\dfrac{b}{2S}$, $\\dfrac{1}{h_c} = \\dfrac{c}{2S}$ nên vế trái $= \\dfrac{a + b + c}{2S} = \\dfrac{2p}{2S} = \\dfrac{p}{S} = \\dfrac{1}{r}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ không vuông ở $A$, chứng minh $S = \\dfrac{1}{4}\\left(b^2 + c^2 - a^2\\right)\\tan A$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\n$S = \\dfrac{1}{2}bc\\sin A = \\dfrac{1}{2}bc\\cos A\\tan A$ và $2bc\\cos A = b^2 + c^2 - a^2$.\n\nLời giải:\n$S = \\dfrac{1}{2}bc\\cos A \\cdot \\dfrac{\\sin A}{\\cos A} = \\dfrac{1}{2}bc \\cdot \\dfrac{b^2 + c^2 - a^2}{2bc} \\cdot \\tan A = \\dfrac{1}{4}\\left(b^2 + c^2 - a^2\\right)\\tan A$."
+  }
+ ]
+}

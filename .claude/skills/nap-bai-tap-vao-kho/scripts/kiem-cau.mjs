@@ -22,15 +22,17 @@ for (const l of readFileSync('.env.local', 'utf8').split('\n')) { const m = l.ma
 const sb = createClient(env.NEXT_PUBLIC_SUPABASE_URL, env.SUPABASE_SERVICE_ROLE_KEY);
 const lay = async (b, c, f2) => { let r = [], f = 0; while (true) { const { data, error } = await f2(sb.from(b).select(c)).range(f, f + 999); if (error) throw error; r.push(...(data || [])); if (!data || data.length < 1000) break; f += 1000; } return r; };
 const dm = await lay('question_categories', 'subject,topic,lesson,math_form', q => q.eq('grade', GRADE));
-const kho = await lay('questions', 'question_id,content,option_a', q => q.eq('grade', GRADE));
+const kho = await lay('questions', 'question_id,content,option_a,option_b,option_c,option_d', q => q.eq('grade', GRADE));
 const khoaDM = new Set(dm.map(c => `${c.subject}|${c.topic}|${c.lesson}|${c.math_form}`));
 
 /* Chuẩn hoá để so trùng - cùng lối với isSameQuestion của app. */
-const chuan = (t) => S(t).replace(/!\[[^\]]*\]\([^)]*\)/g, ' ').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ')
+const chuan = (t) => S(t).replace(/!\[[^\]]*\]\(([^)]*)\)/g, (_, u) => ' ' + u.split('/').pop() + ' ')  /* giữ tên tệp ảnh: hai câu chỉ khác hình là hai câu khác */.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ')
   .replace(/\s*([{}()[\]^_])\s*/g, '$1').toLowerCase().replace(/[.,;:!?]+$/, '');
 const bo3 = (t) => { const s = chuan(t).replace(/\s/g, ''); const r = new Set(); for (let i = 0; i + 3 <= s.length; i++) r.add(s.slice(i, i + 3)); return r; };
 const giong = (a, b) => { const A = bo3(a), B = bo3(b); if (!A.size || !B.size) return 0; let c = 0; for (const x of A) if (B.has(x)) c++; return c / Math.max(A.size, B.size); };
-const khoChuan = kho.map(q => ({ id: q.question_id, c: chuan(q.content), b: bo3(q.content) }));
+/* So trùng trên ĐỀ + BỐN PHƯƠNG ÁN: câu trắc nghiệm "Đẳng thức nào đúng?" đề giống hệt nhau nhưng phương án khác là câu khác. */
+const deVaPA = (q) => [q.content, q.option_a, q.option_b, q.option_c, q.option_d].map(S).join(' | ');
+const khoChuan = kho.map(q => ({ id: q.question_id, c: chuan(deVaPA(q)), b: bo3(deVaPA(q)) }));
 
 const canDollar = (t) => (S(t).replace(/\$\$/g, '').match(/\$/g) || []).length % 2 === 0;
 const oPhieu = (s) => s.replace(/[.,-]/g, '').length + (s.includes(',') || s.includes('.') ? 1 : 0) + (s.startsWith('-') ? 1 : 0);
@@ -68,11 +70,11 @@ goi.cau.forEach((q, i) => {
   if (/hình (vẽ|bên|dưới|sau)|như hình|đồ thị (bên|dưới|sau)/i.test(S(q.content)) && ![q.content, ...pa].some(t => /!\[/.test(S(t)))) bao(i, '⚠', 'đề nhắc hình mà chưa nhúng ảnh (dùng cat-anh.mjs)');
 
   /* Trùng */
-  const c = chuan(q.content), b = bo3(q.content);
+  const c = chuan(deVaPA(q)), b = bo3(deVaPA(q));
   const trungKho = khoChuan.find(x => x.c === c);
   if (trungKho) bao(i, '✗', `trùng hệt câu ${trungKho.id} trong kho`);
   else { let tot = null; for (const x of khoChuan) { let n = 0; for (const t of b) if (x.b.has(t)) n++; const d = n / Math.max(b.size, x.b.size); if (d >= 0.85 && (!tot || d > tot.d)) tot = { id: x.id, d }; } if (tot) bao(i, '⚠', `rất giống câu ${tot.id} trong kho (${Math.round(tot.d * 100)}%) - đọc lại xem có phải cùng một câu`); }
-  for (let j = 0; j < i; j++) if (chuan(goi.cau[j].content) === c) bao(i, '✗', `trùng câu ${j + 1} trong cùng tệp`);
+  for (let j = 0; j < i; j++) if (chuan(deVaPA(goi.cau[j])) === c) bao(i, '✗', `trùng câu ${j + 1} trong cùng tệp`);
 });
 
 const dem = (f) => goi.cau.filter(f).length;

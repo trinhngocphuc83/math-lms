@@ -1,0 +1,91 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Chuyên đề hệ thức lượng trong tam giác Toán 10 KNTT (chuyên đề III), phần bài tập tự luận chưa có trong kho",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Biết $\\sin x + \\cos x = m$.\na) Tìm $\\left|\\sin^4 x - \\cos^4 x\\right|$ theo $m$.\nb) Chứng minh rằng $|m| \\le \\sqrt{2}$.",
+   "correct_answer": "a) |m|·√(2 − m²); b) chứng minh",
+   "explanation": "Phương pháp giải:\n$\\sin^4 x - \\cos^4 x = \\left(\\sin^2 x - \\cos^2 x\\right)\\left(\\sin^2 x + \\cos^2 x\\right) = (\\sin x - \\cos x)(\\sin x + \\cos x)$; $(\\sin x - \\cos x)^2 = 2 - (\\sin x + \\cos x)^2$.\n\nLời giải:\na) $(\\sin x - \\cos x)^2 = 1 - 2\\sin x\\cos x = 2 - (\\sin x + \\cos x)^2 = 2 - m^2$ nên $|\\sin x - \\cos x| = \\sqrt{2 - m^2}$.\n$\\left|\\sin^4 x - \\cos^4 x\\right| = |\\sin x - \\cos x| \\cdot |\\sin x + \\cos x| = |m|\\sqrt{2 - m^2}$.\nb) Vì $(\\sin x - \\cos x)^2 \\ge 0$ nên $2 - m^2 \\ge 0$, tức $|m| \\le \\sqrt{2}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TLN", "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có $AB = 4$, $AC = 6$, $\\widehat{A} = 120^\\circ$. Tính độ dài cạnh $BC$ (làm tròn kết quả đến hàng phần trăm).",
+   "correct_answer": "8,72",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin.\n\nLời giải:\n$BC^2 = 16 + 36 - 2 \\cdot 4 \\cdot 6\\cos 120^\\circ = 76 \\Rightarrow BC = 2\\sqrt{19} \\approx 8{,}72$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Cho tam giác $ABC$. Chứng minh $S = R \\cdot r \\cdot (\\sin A + \\sin B + \\sin C)$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: $\\sin A + \\sin B + \\sin C = \\dfrac{a + b + c}{2R} = \\dfrac{p}{R}$; $S = pr$.\n\nLời giải:\n$R \\cdot r \\cdot (\\sin A + \\sin B + \\sin C) = R \\cdot r \\cdot \\dfrac{p}{R} = pr = S$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Hai chiếc tàu thuỷ cùng xuất phát từ vị trí $A$, đi thẳng theo hai hướng tạo với nhau một góc $60^\\circ$. Tàu thứ nhất chạy với tốc độ $30$ km/h, tàu thứ hai chạy với tốc độ $40$ km/h. Hỏi sau $2$ giờ hai tàu cách nhau bao nhiêu ki-lô-mét (làm tròn kết quả đến hàng phần mười)?",
+   "correct_answer": "72,1",
+   "explanation": "Phương pháp giải:\nSau $2$ giờ: $AC = 60$ km, $AB = 80$ km; định lí côsin.\n\nLời giải:\n$BC^2 = 60^2 + 80^2 - 2 \\cdot 60 \\cdot 80\\cos 60^\\circ = 5200 \\Rightarrow BC = 20\\sqrt{13} \\approx 72{,}1$ (km)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "3",
+   "content": "Từ một đỉnh tháp chiều cao $CD = 80$ m, người ta nhìn hai điểm $A$ và $B$ trên mặt đất dưới các góc nhìn là $72^\\circ 12'$ và $34^\\circ 26'$ so với phương nằm ngang. Ba điểm $A$, $B$, $D$ thẳng hàng ($D$ là chân tháp). Tính khoảng cách $AB$ (chính xác đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "91",
+   "explanation": "Phương pháp giải:\nTrong các tam giác vuông $CDA$, $CDB$: $\\widehat{CAD} = 72^\\circ 12'$, $\\widehat{CBD} = 34^\\circ 26'$ (so le trong với góc nhìn); $AD = \\dfrac{CD}{\\tan\\widehat{CAD}}$, $BD = \\dfrac{CD}{\\tan\\widehat{CBD}}$.\n\nLời giải:\n$AD = \\dfrac{80}{\\tan 72^\\circ 12'} \\approx 25{,}7$ (m); $BD = \\dfrac{80}{\\tan 34^\\circ 26'} \\approx 116{,}7$ (m).\n$AB = BD - AD \\approx 91$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $a = 13$, $b = 8$, $c = 7$. Tính góc $A$, suy ra $S$, $h_a$, $R$, $r$, $m_a$.",
+   "correct_answer": "A = 120°; S = 14√3; h_a = 28√3/13; R = 13√3/3; r = √3; m_a = √57/2",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin; $S = \\dfrac{1}{2}bc\\sin A$; $h_a = \\dfrac{2S}{a}$; $R = \\dfrac{a}{2\\sin A}$; $r = \\dfrac{S}{p}$; công thức trung tuyến.\n\nLời giải:\n$\\cos A = \\dfrac{64 + 49 - 169}{2 \\cdot 8 \\cdot 7} = -\\dfrac{1}{2} \\Rightarrow \\widehat{A} = 120^\\circ$.\n$S = \\dfrac{1}{2} \\cdot 8 \\cdot 7\\sin 120^\\circ = 14\\sqrt{3}$; $h_a = \\dfrac{28\\sqrt{3}}{13}$; $R = \\dfrac{13}{2\\sin 120^\\circ} = \\dfrac{13\\sqrt{3}}{3}$; $p = 14$, $r = \\dfrac{14\\sqrt{3}}{14} = \\sqrt{3}$.\n$m_a^2 = \\dfrac{2(64 + 49) - 169}{4} = \\dfrac{57}{4} \\Rightarrow m_a = \\dfrac{\\sqrt{57}}{2}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = 10$, $AC = 4$ và $\\widehat{A} = 60^\\circ$.\na) Tính chu vi của tam giác.\nb) Tính $\\tan C$.",
+   "correct_answer": "a) 14 + 2√19; b) tan C = −5√3",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $BC$; hệ quả định lí côsin tìm $\\cos C$; $\\tan^2 C = \\dfrac{1}{\\cos^2 C} - 1$ với dấu của $\\tan C$ theo dấu của $\\cos C$.\n\nLời giải:\na) $BC^2 = 100 + 16 - 2 \\cdot 10 \\cdot 4\\cos 60^\\circ = 76 \\Rightarrow BC = 2\\sqrt{19}$; chu vi $= 14 + 2\\sqrt{19}$.\nb) $\\cos C = \\dfrac{AC^2 + BC^2 - AB^2}{2AC \\cdot BC} = \\dfrac{16 + 76 - 100}{2 \\cdot 4 \\cdot 2\\sqrt{19}} = -\\dfrac{1}{2\\sqrt{19}} < 0$ nên $C$ tù.\n$\\tan^2 C = 4 \\cdot 19 - 1 = 75 \\Rightarrow \\tan C = -5\\sqrt{3}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Giải tam giác $ABC$, biết $b = 4{,}5$; $\\widehat{A} = 30^\\circ$; $\\widehat{C} = 75^\\circ$ (làm tròn kết quả đến hàng phần trăm).",
+   "correct_answer": "B = 75°; c = 4,5; a ≈ 2,33",
+   "explanation": "Phương pháp giải:\n$\\widehat{B} = 75^\\circ = \\widehat{C}$ nên tam giác cân tại $A$; định lí sin tìm $a$.\n\nLời giải:\n$\\widehat{B} = 180^\\circ - 30^\\circ - 75^\\circ = 75^\\circ \\Rightarrow c = b = 4{,}5$.\n$a = \\dfrac{b\\sin A}{\\sin B} = \\dfrac{4{,}5\\sin 30^\\circ}{\\sin 75^\\circ} \\approx 2{,}33$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ cân tại $A$ biết $a = \\sqrt{3}$; $\\widehat{B} = \\widehat{C} = 30^\\circ$. Tính $R$, $r$, cạnh $c$, $b$, suy ra $S$.",
+   "correct_answer": "R = 1; b = c = 1; S = √3/4; r = (2√3 − 3)/2",
+   "explanation": "Phương pháp giải:\n$\\widehat{A} = 120^\\circ$; định lí sin; $S = \\dfrac{1}{2}bc\\sin A$; $r = \\dfrac{S}{p}$.\n\nLời giải:\n$R = \\dfrac{a}{2\\sin A} = \\dfrac{\\sqrt{3}}{2\\sin 120^\\circ} = 1$; $b = c = 2R\\sin 30^\\circ = 1$.\n$S = \\dfrac{1}{2} \\cdot 1 \\cdot 1 \\cdot \\sin 120^\\circ = \\dfrac{\\sqrt{3}}{4}$; $p = \\dfrac{2 + \\sqrt{3}}{2}$; $r = \\dfrac{S}{p} = \\dfrac{\\sqrt{3}}{2\\left(2 + \\sqrt{3}\\right)} = \\dfrac{\\sqrt{3}\\left(2 - \\sqrt{3}\\right)}{2} = \\dfrac{2\\sqrt{3} - 3}{2}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Tam giác $ABC$ có $BC = a$, $CA = b$, $AB = c$ và trung tuyến $AM = AB = c$. Chứng minh rằng:\na) $a^2 = 2\\left(b^2 - c^2\\right)$;\nb) $\\sin^2 A = 2\\left(\\sin^2 B - \\sin^2 C\\right)$.",
+   "correct_answer": "Chứng minh",
+   "explanation": "Phương pháp giải:\nCông thức trung tuyến $m_a^2 = \\dfrac{2b^2 + 2c^2 - a^2}{4}$ với $m_a = c$; định lí sin.\n\nLời giải:\na) $c^2 = \\dfrac{2b^2 + 2c^2 - a^2}{4} \\Leftrightarrow 4c^2 = 2b^2 + 2c^2 - a^2 \\Leftrightarrow a^2 = 2\\left(b^2 - c^2\\right)$.\nb) Thay $a = 2R\\sin A$, $b = 2R\\sin B$, $c = 2R\\sin C$ vào a) rồi chia hai vế cho $4R^2$: $\\sin^2 A = 2\\left(\\sin^2 B - \\sin^2 C\\right)$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Tìm tính chất đặc biệt của tam giác $ABC$ biết $2a\\cos A = b\\cos C + c\\cos B$.",
+   "correct_answer": "A = 60°",
+   "explanation": "Phương pháp giải:\nHệ thức $b\\cos C + c\\cos B = a$ (thay hệ quả định lí côsin).\n\nLời giải:\n$b\\cos C + c\\cos B = \\dfrac{a^2 + b^2 - c^2}{2a} + \\dfrac{a^2 + c^2 - b^2}{2a} = a$.\nGiả thiết trở thành $2a\\cos A = a \\Leftrightarrow \\cos A = \\dfrac{1}{2} \\Leftrightarrow \\widehat{A} = 60^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Cho tam giác $ABC$. Chứng minh tam giác $ABC$ cân nếu $h_a = c\\sin A$.",
+   "correct_answer": "Chứng minh (cân tại C)",
+   "explanation": "Phương pháp giải:\n$h_a = \\dfrac{2S}{a} = \\dfrac{ca\\sin B}{a} = c\\sin B$; so sánh với giả thiết.\n\nLời giải:\n$c\\sin B = c\\sin A \\Leftrightarrow \\sin A = \\sin B \\Leftrightarrow a = b$ (định lí sin). Vậy tam giác $ABC$ cân tại $C$."
+  }
+ ]
+}

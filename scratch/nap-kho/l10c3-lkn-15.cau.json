@@ -1,0 +1,159 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Luyện kỹ năng Toán 10 - Trắc nghiệm hệ thức lượng tam giác thường (Giang Sơn), Vận dụng cao P3, tr. 31-32",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tìm góc khi biết giá trị lượng giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Phương trình $\\sqrt{x^2 + 4} = \\cos\\alpha + 1$ có tối đa bao nhiêu nghiệm thực, trong đó $0^\\circ \\le \\alpha \\le 180^\\circ$?",
+   "option_a": "$2$.", "option_b": "$3$.", "option_c": "$1$.", "option_d": "$4$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nSo sánh hai vế: $\\sqrt{x^2 + 4} \\ge 2$ và $\\cos\\alpha + 1 \\le 2$.\n\nLời giải:\nPhương trình chỉ có nghiệm khi cả hai vế cùng bằng $2$: $x = 0$ và $\\cos\\alpha = 1 \\Leftrightarrow \\alpha = 0^\\circ$.\nVậy phương trình có tối đa $1$ nghiệm thực ($x = 0$).\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ có $a^4 = b^4 + c^4$. Tính $\\dfrac{\\tan B\\tan C}{\\sin^2 A}$.",
+   "option_a": "$3$.", "option_b": "$2$.", "option_c": "$1$.", "option_d": "$4$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\n$\\tan B\\tan C = \\dfrac{\\sin B\\sin C}{\\cos B\\cos C}$; định lí sin cho $\\dfrac{\\sin B\\sin C}{\\sin^2 A} = \\dfrac{bc}{a^2}$; hệ quả định lí côsin cho $\\cos B\\cos C$.\n\nLời giải:\n$\\cos B\\cos C = \\dfrac{\\left(a^2 + c^2 - b^2\\right)\\left(a^2 + b^2 - c^2\\right)}{4a^2bc} = \\dfrac{a^4 - \\left(b^2 - c^2\\right)^2}{4a^2bc} = \\dfrac{a^4 - b^4 - c^4 + 2b^2c^2}{4a^2bc} = \\dfrac{2b^2c^2}{4a^2bc} = \\dfrac{bc}{2a^2}$.\n$\\dfrac{\\tan B\\tan C}{\\sin^2 A} = \\dfrac{bc}{a^2} : \\dfrac{bc}{2a^2} = 2$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tính diện tích tam giác $ABC$ có $\\widehat{C} = 60^\\circ$; $AC = 2$; $AB = \\sqrt{7}$.",
+   "option_a": "$\\sqrt{3}$.", "option_b": "$\\dfrac{\\sqrt{3}}{2}$.", "option_c": "$3\\sqrt{3}$.", "option_d": "$\\dfrac{3\\sqrt{3}}{2}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $BC$, rồi $S = \\dfrac{1}{2}CA \\cdot CB\\sin C$.\n\nLời giải:\n$7 = BC^2 + 4 - 2 \\cdot BC \\cdot 2 \\cdot \\dfrac{1}{2} \\Leftrightarrow BC^2 - 2BC - 3 = 0 \\Leftrightarrow BC = 3$.\n$S = \\dfrac{1}{2} \\cdot 2 \\cdot 3 \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{3\\sqrt{3}}{2}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ có $4S = a^2 + b^2$. Khẳng định nào sau đây đúng?",
+   "option_a": "$\\dfrac{a + b}{c} = \\sqrt{2}$.", "option_b": "$\\dfrac{a + 2b}{c} = \\sqrt{3}$.", "option_c": "$\\dfrac{a + c}{b + 2c} = \\sqrt{3}$.", "option_d": "$\\dfrac{a + b}{a + c} = \\sqrt{2}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\n$4S = 2ab\\sin C \\le 2ab \\le a^2 + b^2$; giả thiết buộc các dấu bằng xảy ra.\n\nLời giải:\n$a^2 + b^2 = 2ab\\sin C \\le 2ab \\le a^2 + b^2$ nên $\\sin C = 1$ và $a = b$: tam giác vuông cân tại $C$, $c = a\\sqrt{2}$.\n$\\dfrac{a + b}{c} = \\dfrac{2a}{a\\sqrt{2}} = \\sqrt{2}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tìm giá trị nhỏ nhất của biểu thức $\\sqrt{2\\sin^2 x + 4} + \\sqrt{2\\sin^2 x - 2\\sqrt{2}\\sin x + 5}$.",
+   "option_a": "$10$.", "option_b": "$\\sqrt{17}$.", "option_c": "$\\sqrt{26}$.", "option_d": "$5$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐặt $t = \\sin x$; viết mỗi căn dạng $\\sqrt{u^2 + v^2}$ rồi dùng bất đẳng thức $\\sqrt{u^2 + v^2} + \\sqrt{u'^2 + v'^2} \\ge \\sqrt{(u + u')^2 + (v + v')^2}$ (bình phương hai vế và dùng Bu-nhi-a-cốp-xki).\n\nLời giải:\n$P = \\sqrt{\\left(\\sqrt{2}t\\right)^2 + 2^2} + \\sqrt{\\left(1 - \\sqrt{2}t\\right)^2 + 2^2} \\ge \\sqrt{\\left(\\sqrt{2}t + 1 - \\sqrt{2}t\\right)^2 + 4^2} = \\sqrt{17}$.\nDấu bằng khi $\\dfrac{\\sqrt{2}t}{2} = \\dfrac{1 - \\sqrt{2}t}{2} \\Leftrightarrow t = \\dfrac{\\sqrt{2}}{4} \\in [-1; 1]$, thoả mãn.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tính bán kính đường tròn nội tiếp tam giác $ABC$ có $\\widehat{A} = 60^\\circ$; $AB = 3$; $BC = 3\\sqrt{3}$.",
+   "option_a": "$\\dfrac{3\\left(\\sqrt{3} - 1\\right)}{2}$.", "option_b": "$\\dfrac{3\\left(\\sqrt{3} + 1\\right)}{2}$.", "option_c": "$\\dfrac{\\sqrt{3} - 1}{2}$.", "option_d": "$\\sqrt{3} - 1$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $AC$, rồi $r = \\dfrac{S}{p}$.\n\nLời giải:\n$27 = AC^2 + 9 - 2 \\cdot AC \\cdot 3 \\cdot \\dfrac{1}{2} \\Leftrightarrow AC^2 - 3AC - 18 = 0 \\Leftrightarrow AC = 6$.\n$S = \\dfrac{1}{2} \\cdot 3 \\cdot 6 \\cdot \\sin 60^\\circ = \\dfrac{9\\sqrt{3}}{2}$; $p = \\dfrac{3 + 6 + 3\\sqrt{3}}{2} = \\dfrac{9 + 3\\sqrt{3}}{2}$.\n$r = \\dfrac{9\\sqrt{3}}{9 + 3\\sqrt{3}} = \\dfrac{3\\sqrt{3}}{3 + \\sqrt{3}} = \\dfrac{3\\sqrt{3}\\left(3 - \\sqrt{3}\\right)}{6} = \\dfrac{3\\left(\\sqrt{3} - 1\\right)}{2}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác $ABC$ với các kí hiệu quy ước đã biết, có $\\dfrac{c}{b} = \\dfrac{m_b}{m_c} \\ne 1$. Tính $\\dfrac{\\cot A}{\\cot B + \\cot C}$.",
+   "option_a": "$2$.", "option_b": "$1$.", "option_c": "$\\dfrac{1}{2}$.", "option_d": "$\\dfrac{1}{3}$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nBình phương giả thiết, thay công thức trung tuyến để được hệ thức giữa ba cạnh; $\\cot A = \\dfrac{R\\left(b^2 + c^2 - a^2\\right)}{abc}$ (và tương tự).\n\nLời giải:\n$c^2\\left(2a^2 + 2b^2 - c^2\\right) = b^2\\left(2a^2 + 2c^2 - b^2\\right) \\Leftrightarrow 2a^2\\left(c^2 - b^2\\right) = c^4 - b^4 \\Leftrightarrow 2a^2 = b^2 + c^2$ (vì $b \\ne c$).\n$\\dfrac{\\cot A}{\\cot B + \\cot C} = \\dfrac{b^2 + c^2 - a^2}{\\left(a^2 + c^2 - b^2\\right) + \\left(a^2 + b^2 - c^2\\right)} = \\dfrac{b^2 + c^2 - a^2}{2a^2} = \\dfrac{2a^2 - a^2}{2a^2} = \\dfrac{1}{2}$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tìm góc khi biết giá trị lượng giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho $0^\\circ \\le \\alpha \\le 180^\\circ$, bất phương trình $x^2 - 2(\\sin\\alpha + 3)x + 10\\sin\\alpha + 5 \\le 0$ có độ dài miền nghiệm dài nhất bằng",
+   "option_a": "$4$ đơn vị.", "option_b": "$5$ đơn vị.", "option_c": "$3$ đơn vị.", "option_d": "$6$ đơn vị.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nTìm hai nghiệm của tam thức (biệt thức là bình phương đúng), miền nghiệm là đoạn giữa hai nghiệm.\n\nLời giải:\n$\\Delta' = (\\sin\\alpha + 3)^2 - 10\\sin\\alpha - 5 = \\sin^2\\alpha - 4\\sin\\alpha + 4 = (\\sin\\alpha - 2)^2$.\nHai nghiệm: $x = \\sin\\alpha + 3 \\pm (2 - \\sin\\alpha)$, tức $x_1 = 5$, $x_2 = 2\\sin\\alpha + 1 \\le 3$.\nMiền nghiệm $[2\\sin\\alpha + 1; 5]$ có độ dài $4 - 2\\sin\\alpha \\le 4$, lớn nhất bằng $4$ khi $\\sin\\alpha = 0$ ($\\alpha = 0^\\circ$ hoặc $180^\\circ$).\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ có $AB = c$, $BC = a$, $CA = b$ thỏa mãn đồng thời $\\begin{cases} b^2 + c^2 \\le a^2, \\\\ \\sin A + \\sin B + \\sin C = 1 + \\sqrt{2}. \\end{cases}$ Tính số đo của góc $3A + 4B + 5C$.",
+   "option_a": "$520^\\circ$.", "option_b": "$460^\\circ$.", "option_c": "$675^\\circ$.", "option_d": "$385^\\circ$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\n$b^2 + c^2 \\le a^2 \\Rightarrow \\cos A \\le 0 \\Rightarrow \\widehat{A} \\ge 90^\\circ$, suy ra $\\widehat{B} + \\widehat{C} \\le 90^\\circ$; đánh giá $\\sin A \\le 1$ và $\\sin B + \\sin C \\le \\sqrt{2}$.\n\nLời giải:\nVì $\\widehat{C} \\le 90^\\circ - \\widehat{B}$ (hai góc nhọn) nên $\\sin C \\le \\sin\\left(90^\\circ - \\widehat{B}\\right) = \\cos B$, do đó $\\sin^2 B + \\sin^2 C \\le \\sin^2 B + \\cos^2 B = 1$.\n$(\\sin B + \\sin C)^2 \\le 2\\left(\\sin^2 B + \\sin^2 C\\right) \\le 2 \\Rightarrow \\sin B + \\sin C \\le \\sqrt{2}$.\nVậy $\\sin A + \\sin B + \\sin C \\le 1 + \\sqrt{2}$; dấu bằng khi $\\widehat{A} = 90^\\circ$, $\\widehat{B} = \\widehat{C} = 45^\\circ$.\n$3A + 4B + 5C = 270^\\circ + 180^\\circ + 225^\\circ = 675^\\circ$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tam giác $ABC$ có các kí hiệu quy ước đã biết, $p$ là nửa chu vi. Hệ thức nào sau đây đúng?",
+   "option_a": "$\\sin A + \\sin B + \\sin C = \\dfrac{p}{R}$.", "option_b": "$\\sin A + \\sin B + \\sin C = \\dfrac{2p}{R}$.", "option_c": "$\\sin A + \\sin B + \\sin C = \\dfrac{p}{2R}$.", "option_d": "$\\sin A + \\sin B + \\sin C = \\dfrac{2p}{3R}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: $\\sin A = \\dfrac{a}{2R}$, …\n\nLời giải:\n$\\sin A + \\sin B + \\sin C = \\dfrac{a + b + c}{2R} = \\dfrac{2p}{2R} = \\dfrac{p}{R}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ có $a = x^2 + x + 1$; $b = 2x + 1$; $c = x^2 - 1$ (với $x > 1$). Khẳng định nào sau đây đúng?",
+   "option_a": "$\\dfrac{3a + b}{c + a} = 4$.", "option_b": "$\\widehat{A} > 100^\\circ$.", "option_c": "$\\widehat{C} > 90^\\circ$.", "option_d": "$\\widehat{B} > 70^\\circ$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nTính $b^2 + c^2 + bc$ và so với $a^2$ để suy ra $\\cos A$.\n\nLời giải:\n$b^2 + c^2 + bc = (2x + 1)^2 + \\left(x^2 - 1\\right)^2 + (2x + 1)\\left(x^2 - 1\\right) = x^4 + 2x^3 + 3x^2 + 2x + 1 = \\left(x^2 + x + 1\\right)^2 = a^2$.\n$\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc} = \\dfrac{-bc}{2bc} = -\\dfrac{1}{2} \\Rightarrow \\widehat{A} = 120^\\circ > 100^\\circ$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác $ABC$ có các kí hiệu quy ước đã biết. Giá trị lớn nhất của $\\sqrt{p - a} + \\sqrt{p - b} + \\sqrt{p - c}$ tính theo nửa chu vi $p$ là",
+   "option_a": "$p$.", "option_b": "$\\sqrt{6p}$.", "option_c": "$\\sqrt{3p}$.", "option_d": "$\\sqrt{2p}$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nBất đẳng thức $(x + y + z)^2 \\le 3\\left(x^2 + y^2 + z^2\\right)$ với $x = \\sqrt{p - a}$, …\n\nLời giải:\n$\\left(\\sqrt{p - a} + \\sqrt{p - b} + \\sqrt{p - c}\\right)^2 \\le 3\\left[(p - a) + (p - b) + (p - c)\\right] = 3(3p - 2p) = 3p$.\nVậy giá trị lớn nhất là $\\sqrt{3p}$, đạt khi $a = b = c$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Xét tứ giác $ABCD$ nội tiếp trong một đường tròn, kí hiệu $p$ là nửa chu vi, ta có công thức Brahmagupta (nhà toán học Ấn Độ thế kỉ VII) như sau: $S = \\sqrt{(p - a)(p - b)(p - c)(p - d)}$ với $a$, $b$, $c$, $d$ là độ dài bốn cạnh. Tính diện tích (đvdt) tứ giác $ABCD$ nội tiếp khi $a = 2\\sqrt{5}$; $b = 5\\sqrt{2}$; $c = 5\\sqrt{2}$; $d = 4\\sqrt{5}$.",
+   "option_a": "$45$.", "option_b": "$50$.", "option_c": "$42$.", "option_d": "Kết quả khác.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nTính $p$ rồi thay vào công thức.\n\nLời giải:\n$p = \\dfrac{2\\sqrt{5} + 5\\sqrt{2} + 5\\sqrt{2} + 4\\sqrt{5}}{2} = 3\\sqrt{5} + 5\\sqrt{2}$.\n$p - a = \\sqrt{5} + 5\\sqrt{2}$; $p - b = p - c = 3\\sqrt{5}$; $p - d = 5\\sqrt{2} - \\sqrt{5}$.\n$S^2 = \\left(5\\sqrt{2} + \\sqrt{5}\\right)\\left(5\\sqrt{2} - \\sqrt{5}\\right) \\cdot 45 = (50 - 5) \\cdot 45 = 45^2 \\Rightarrow S = 45$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $MPQ$ vuông tại $P$. Trên cạnh $MQ$ lấy hai điểm $E$, $F$ sao cho các góc $\\widehat{MPE}$, $\\widehat{EPF}$, $\\widehat{FPQ}$ bằng nhau. Đặt $MP = q$, $PQ = m$, $PE = x$, $PF = y$. Trong các hệ thức sau, hệ thức nào đúng?",
+   "option_a": "$ME = EF = FQ$.", "option_b": "$ME^2 = q^2 + x^2 - xq$.", "option_c": "$MF^2 = q^2 + y^2 - yq$.", "option_d": "$MQ^2 = q^2 + m^2 - 2qm$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\n$\\widehat{MPE} = \\widehat{EPF} = \\widehat{FPQ} = 30^\\circ$ nên $\\widehat{MPF} = 60^\\circ$; định lí côsin trong tam giác $MPF$.\n\nLời giải:\n$MF^2 = MP^2 + PF^2 - 2 \\cdot MP \\cdot PF\\cos 60^\\circ = q^2 + y^2 - qy$.\n(B sai vì $ME^2 = q^2 + x^2 - \\sqrt{3}qx$; D sai vì $MQ^2 = q^2 + m^2$; A sai vì ba đoạn không bằng nhau.)\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho góc $\\widehat{xOy} = 30^\\circ$. Gọi $A$ và $B$ là hai điểm di động lần lượt trên $Ox$ và $Oy$ sao cho $AB = 1$. Khi $OB$ có độ dài lớn nhất thì độ dài của đoạn $OA$ bằng:",
+   "option_a": "$\\dfrac{3}{2}$.", "option_b": "$\\sqrt{3}$.", "option_c": "$2\\sqrt{2}$.", "option_d": "$2$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin trong tam giác $OAB$: $OB = \\dfrac{AB\\sin\\widehat{OAB}}{\\sin 30^\\circ} = 2\\sin\\widehat{OAB} \\le 2$.\n\nLời giải:\n$OB$ lớn nhất bằng $2$ khi $\\widehat{OAB} = 90^\\circ$. Khi đó tam giác $OAB$ vuông tại $A$: $OA = \\sqrt{OB^2 - AB^2} = \\sqrt{4 - 1} = \\sqrt{3}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tìm góc khi biết giá trị lượng giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tìm giá trị lớn nhất đối với một nghiệm nào đó của phương trình $x^2 - (3\\sin\\alpha + 5)x + 15\\sin\\alpha = 0$, trong đó $0^\\circ \\le \\alpha \\le 180^\\circ$.",
+   "option_a": "$4$.", "option_b": "$5$.", "option_c": "$3$.", "option_d": "$1$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nPhân tích vế trái thành nhân tử.\n\nLời giải:\n$x^2 - (3\\sin\\alpha + 5)x + 15\\sin\\alpha = (x - 5)(x - 3\\sin\\alpha) = 0 \\Leftrightarrow x = 5$ hoặc $x = 3\\sin\\alpha \\le 3$.\nVậy giá trị lớn nhất của nghiệm là $5$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $ABC$ vuông tại $A$, có $AB = c$, $AC = b$. Gọi $\\ell_a$ là độ dài đoạn phân giác trong góc $\\widehat{BAC}$. Tính $\\ell_a$ theo $b$ và $c$.",
+   "option_a": "$\\ell_a = \\dfrac{\\sqrt{2}bc}{b + c}$.", "option_b": "$\\ell_a = \\dfrac{2(b + c)}{bc}$.", "option_c": "$\\ell_a = \\dfrac{2bc}{b + c}$.", "option_d": "$\\ell_a = \\dfrac{\\sqrt{2}(b + c)}{bc}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nGọi $D$ là chân phân giác; $S_{ABC} = S_{ABD} + S_{ACD}$ với $\\widehat{BAD} = \\widehat{CAD} = 45^\\circ$.\n\nLời giải:\n$\\dfrac{1}{2}bc = \\dfrac{1}{2}c \\cdot \\ell_a\\sin 45^\\circ + \\dfrac{1}{2}b \\cdot \\ell_a\\sin 45^\\circ = \\dfrac{\\sqrt{2}}{4}\\ell_a(b + c) \\Rightarrow \\ell_a = \\dfrac{2bc}{\\sqrt{2}(b + c)} = \\dfrac{\\sqrt{2}bc}{b + c}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho hình chữ nhật $ABCD$ biết $AD = 1$ và $AB > AD$. Gọi $M$ là trung điểm của cạnh $AB$ và thoả mãn $\\sin\\widehat{BDM} = \\dfrac{\\sqrt{6}}{9}$. Độ dài cạnh $AB$ là",
+   "option_a": "$\\dfrac{1}{\\sqrt{2}}$.", "option_b": "$\\sqrt{2}$.", "option_c": "$2\\sqrt{2}$.", "option_d": "$\\dfrac{1}{2\\sqrt{2}}$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nĐặt $AB = 2t$; tính $S_{BDM}$ hai cách: $\\dfrac{1}{2}BM \\cdot AD$ và $\\dfrac{1}{2}DB \\cdot DM\\sin\\widehat{BDM}$.\n\nLời giải:\n$BM = t$, $DB = \\sqrt{1 + 4t^2}$, $DM = \\sqrt{1 + t^2}$.\n$\\dfrac{t}{2} = \\dfrac{1}{2}\\sqrt{\\left(1 + 4t^2\\right)\\left(1 + t^2\\right)} \\cdot \\dfrac{\\sqrt{6}}{9} \\Leftrightarrow 81t^2 = 6\\left(4t^4 + 5t^2 + 1\\right) \\Leftrightarrow 8t^4 - 17t^2 + 2 = 0$\n$\\Leftrightarrow t^2 = 2$ hoặc $t^2 = \\dfrac{1}{8}$. Vì $AB = 2t > 1$ nên $t = \\sqrt{2}$, $AB = 2\\sqrt{2}$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho $\\tan x = 2$. Tính theo $m$ giá trị của biểu thức $\\dfrac{\\sin^3 x + 3\\sin^2 x\\cos x + m\\cos^3 x}{3\\sin^3 x + 4m\\sin x\\cos^2 x + 5\\cos^3 x}$.",
+   "option_a": "$\\dfrac{20 + m}{29 + 8m}$.", "option_b": "$\\dfrac{20 + m}{29 + 20m}$.", "option_c": "$\\dfrac{20 + m}{25 + 40m}$.", "option_d": "$\\dfrac{29 + m}{19 + 20m}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nChia cả tử và mẫu cho $\\cos^3 x \\ne 0$ để đưa về $\\tan x$.\n\nLời giải:\nBiểu thức bằng $\\dfrac{\\tan^3 x + 3\\tan^2 x + m}{3\\tan^3 x + 4m\\tan x + 5} = \\dfrac{8 + 12 + m}{24 + 8m + 5} = \\dfrac{20 + m}{29 + 8m}$.\nChọn A."
+  }
+ ]
+}

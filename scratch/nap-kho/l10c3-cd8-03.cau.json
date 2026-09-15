@@ -1,0 +1,377 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Chuyên đề hệ thức lượng trong tam giác Toán 10 chương trình mới (Phan Nhật Linh), Bài 2 dạng 1-4 - tự luận và trả lời ngắn, tr. 17-48",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Khoảng cách từ $A$ đến $B$ không thể đo trực tiếp được vì phải qua một đầm lầy. Người ta xác định được một điểm $C$ mà từ đó có thể nhìn được $A$ và $B$ dưới một góc $60^\\circ$. Biết $CA = 200$ m, $CB = 180$ m. Khoảng cách $AB$ bằng bao nhiêu mét (làm tròn kết quả đến hàng đơn vị)?",
+   "correct_answer": "191",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin.\n\nLời giải:\n$AB^2 = 200^2 + 180^2 - 2 \\cdot 200 \\cdot 180\\cos 60^\\circ = 36400 \\Rightarrow AB \\approx 191$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Vịnh Vân Phong, tỉnh Khánh Hoà nổi tiếng vì có con đường đi bộ xuyên biển nối từ Hòn Quạ đến đảo Điệp Sơn. Một du khách muốn chèo thuyền kayak từ vị trí $C$ trên Hòn Quạ đến vị trí $B$ trên Bè thay vì đi bộ xuyên qua con đường qua vị trí $A$ rồi mới đến vị trí $B$. Nếu người đó chèo thuyền với vận tốc không đổi là $4$ km/h thì sẽ mất bao nhiêu phút (làm tròn kết quả đến hàng đơn vị), biết $AB = 0{,}4$ km, $AC = 0{,}6$ km và góc giữa $AB$ và $AC$ là $60^\\circ$?",
+   "correct_answer": "8",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $BC$; thời gian $= \\dfrac{BC}{4}$ giờ.\n\nLời giải:\n$BC^2 = 0{,}16 + 0{,}36 - 2 \\cdot 0{,}4 \\cdot 0{,}6\\cos 60^\\circ = 0{,}28 \\Rightarrow BC \\approx 0{,}529$ (km).\nThời gian $\\approx \\dfrac{0{,}529}{4} \\approx 0{,}132$ giờ $\\approx 8$ phút."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một ô tô muốn đi từ địa điểm $A$ đến địa điểm $B$, nhưng giữa $A$ và $B$ là một ngọn núi cao nên ô tô phải đi thành hai đoạn từ $A$ lên $C$ và từ $C$ đến $B$. Các đoạn đường tạo thành tam giác $ABC$ với $AC = 15$ km, $CB = 20$ km và $\\widehat{ACB} = 120^\\circ$. Nếu người ta đào một đường hầm xuyên núi chạy thẳng từ $A$ đến $B$ thì ô tô chạy trên con đường mới này tiết kiệm được số tiền gần nhất là bao nhiêu nghìn đồng (làm tròn đến hàng đơn vị)? Biết trung bình cứ chạy $1$ km, ô tô tiêu thụ hết $0{,}3$ lít xăng và giá xăng là $25000$ đồng một lít.",
+   "correct_answer": "34",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $AB$; quãng đường tiết kiệm $= AC + CB - AB$.\n\nLời giải:\n$AB^2 = 15^2 + 20^2 - 2 \\cdot 15 \\cdot 20\\cos 120^\\circ = 925 \\Rightarrow AB \\approx 30{,}41$ (km).\nTiết kiệm $35 - 30{,}41 = 4{,}59$ km, tức $4{,}59 \\cdot 0{,}3 \\cdot 25000 \\approx 34400$ đồng $\\approx 34$ nghìn đồng."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "4",
+   "content": "Từ một địa điểm $O$ cố định của một vùng đất cù lao (các mặt của vùng đất đều giáp với các con sông), người ta cần chọn một địa điểm $T$ trên vùng cù lao sao cho $OT = 60$ km để xây dựng các con đường cao tốc (cầu vượt cao tốc) nối từ hai địa điểm $X$ và $Y$ của hai tỉnh thành lân cận đến $T$. Cho biết $OX = 120$ km, $OY = 150$ km, $\\widehat{XOY} = 120^\\circ$. Chi phí hoàn thành $1$ km đoạn đường đi từ $T$ đến $X$ là $100000$ USD; chi phí hoàn thành $1$ km đoạn đường đi từ $T$ đến $Y$ là $200000$ USD. Hỏi chi phí thấp nhất để hoàn thành hai con đường trên là bao nhiêu triệu USD (làm tròn kết quả đến hàng phần mười)?",
+   "correct_answer": "33,4",
+   "explanation": "Phương pháp giải:\nChi phí $= 10^5(TX + 2TY)$. Lấy $X'$ trên tia $OX$ với $OX' = \\dfrac{OT^2}{OX} = 30$ km; hai tam giác $OTX'$ và $OXT$ đồng dạng (c.g.c, tỉ số $\\dfrac{OT}{OX} = \\dfrac{OX'}{OT} = \\dfrac{1}{2}$) nên $TX' = \\dfrac{1}{2}TX$. Do đó $TX + 2TY = 2(TX' + TY) \\ge 2X'Y$.\n\nLời giải:\n$X'Y^2 = 30^2 + 150^2 - 2 \\cdot 30 \\cdot 150\\cos 120^\\circ = 27900 \\Rightarrow X'Y \\approx 167{,}0$ (km).\nDấu bằng khi $T$ là giao của đoạn $X'Y$ với đường tròn tâm $O$ bán kính $60$ (tồn tại vì $OX' = 30 < 60 < 150 = OY$).\nChi phí thấp nhất $\\approx 10^5 \\cdot 2 \\cdot 167{,}0 = 33{,}4$ triệu USD."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có các góc $\\widehat{A} = 75^\\circ$, $\\widehat{B} = 45^\\circ$. Tính tỉ số $\\dfrac{AB}{AC}$ (làm tròn kết quả đến hàng phần trăm).",
+   "correct_answer": "1,22",
+   "explanation": "Phương pháp giải:\n$\\widehat{C} = 60^\\circ$; định lí sin: $\\dfrac{AB}{AC} = \\dfrac{\\sin C}{\\sin B}$.\n\nLời giải:\n$\\dfrac{AB}{AC} = \\dfrac{\\sin 60^\\circ}{\\sin 45^\\circ} = \\dfrac{\\sqrt{6}}{2} \\approx 1{,}22$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN",
+   "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có góc $\\widehat{BAC} = 60^\\circ$ và cạnh $BC = \\sqrt{3}$. Tính bán kính của đường tròn ngoại tiếp tam giác $ABC$.",
+   "correct_answer": "1",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin.\n\nLời giải:\n$R = \\dfrac{BC}{2\\sin A} = \\dfrac{\\sqrt{3}}{2\\sin 60^\\circ} = 1$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Để đo khoảng cách từ một điểm $A$ trên bờ sông đến gốc cây $C$ trên cù lao giữa sông, người ta chọn một điểm $B$ cùng ở trên bờ với $A$ sao cho từ $A$ và $B$ có thể nhìn thấy điểm $C$. Ta đo được khoảng cách $AB = 40$ m, $\\widehat{CAB} = 45^\\circ$, $\\widehat{CBA} = 70^\\circ$. Vậy sau khi đo đạc và tính toán, khoảng cách $AC$ bằng bao nhiêu mét (kết quả làm tròn đến hàng phần mười)?",
+   "correct_answer": "41,5",
+   "explanation": "Phương pháp giải:\n$\\widehat{C} = 65^\\circ$; định lí sin.\n\nLời giải:\n$AC = \\dfrac{AB\\sin B}{\\sin C} = \\dfrac{40\\sin 70^\\circ}{\\sin 65^\\circ} \\approx 41{,}5$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Ở giữa một cái hồ có một cái đảo nhỏ. Để tính khoảng cách từ điểm $A$ trên đảo đến điểm $B$ trên bờ hồ, người ta chọn điểm $C$ trên bờ, đo các góc $B$, $C$ và khoảng cách $BC$. Biết $\\widehat{B} = 88^\\circ$, $\\widehat{C} = 85^\\circ$ và $BC = 50$ m. Tính khoảng cách từ $A$ đến $B$ (làm tròn kết quả đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "409",
+   "explanation": "Phương pháp giải:\n$\\widehat{A} = 7^\\circ$; định lí sin.\n\nLời giải:\n$AB = \\dfrac{BC\\sin C}{\\sin A} = \\dfrac{50\\sin 85^\\circ}{\\sin 7^\\circ} \\approx 409$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "4",
+   "content": "Để tính chiều rộng cửa biển $CD$ của cảng Quy Nhơn, người ta chọn hai vị trí $A$ và $B$ cách nhau $800$ m trên bờ biển. Từ vị trí $A$ người ta đo được $\\widehat{CAD} = 17^\\circ$, $\\widehat{BAD} = 121^\\circ$; tại $B$ người ta đo được $\\widehat{ABC} = 24^\\circ$, $\\widehat{DBC} = 15^\\circ$ (tia $AC$ nằm giữa hai tia $AB$, $AD$; tia $BC$ nằm giữa hai tia $BA$, $BD$). Tính $CD$ (làm tròn kết quả đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "1084",
+   "explanation": "Phương pháp giải:\nTam giác $ABC$: $\\widehat{BAC} = 104^\\circ$, $\\widehat{ABC} = 24^\\circ$, $\\widehat{ACB} = 52^\\circ$, định lí sin tìm $AC$. Tam giác $ABD$: $\\widehat{BAD} = 121^\\circ$, $\\widehat{ABD} = 39^\\circ$, $\\widehat{ADB} = 20^\\circ$, định lí sin tìm $AD$. Định lí côsin trong tam giác $ACD$ với $\\widehat{CAD} = 17^\\circ$.\n\nLời giải:\n$AC = \\dfrac{800\\sin 24^\\circ}{\\sin 52^\\circ} \\approx 412{,}9$ (m); $AD = \\dfrac{800\\sin 39^\\circ}{\\sin 20^\\circ} \\approx 1472{,}0$ (m).\n$CD^2 = AC^2 + AD^2 - 2AC \\cdot AD\\cos 17^\\circ \\approx 1174769 \\Rightarrow CD \\approx 1084$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN",
+   "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có $S = 84$, $a = 13$, $b = 14$, $c = 15$. Tính bán kính đường tròn ngoại tiếp $R$ của tam giác $ABC$ (làm tròn kết quả đến hàng phần trăm).",
+   "correct_answer": "8,13",
+   "explanation": "Phương pháp giải:\n$R = \\dfrac{abc}{4S}$.\n\nLời giải:\n$R = \\dfrac{13 \\cdot 14 \\cdot 15}{4 \\cdot 84} = \\dfrac{65}{8} = 8{,}125 \\approx 8{,}13$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL",
+   "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có $S = 10\\sqrt{3}$ và nửa chu vi $p = 10$. Tính bán kính đường tròn nội tiếp $r$ của tam giác $ABC$.",
+   "correct_answer": "r = √3",
+   "explanation": "Phương pháp giải:\n$S = pr$.\n\nLời giải:\n$r = \\dfrac{S}{p} = \\dfrac{10\\sqrt{3}}{10} = \\sqrt{3}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Cho hình chữ nhật $ABCD$ có cạnh $AB = 4$, $BC = 6$, $M$ là trung điểm của $BC$, $N$ là điểm trên cạnh $CD$ sao cho $ND = 3NC$. Tính bán kính của đường tròn ngoại tiếp tam giác $AMN$ (làm tròn kết quả đến hàng phần trăm).",
+   "correct_answer": "3,54",
+   "explanation": "Phương pháp giải:\nPythagore tính ba cạnh của tam giác $AMN$; diện tích bằng hình chữ nhật trừ ba tam giác vuông; $R = \\dfrac{AM \\cdot MN \\cdot NA}{4S}$.\n\nLời giải:\n$BM = MC = 3$, $NC = 1$, $ND = 3$. $AM^2 = 16 + 9 = 25$; $MN^2 = 9 + 1 = 10$; $AN^2 = 36 + 9 = 45$.\n$S_{AMN} = 24 - \\dfrac{1}{2} \\cdot 4 \\cdot 3 - \\dfrac{1}{2} \\cdot 3 \\cdot 1 - \\dfrac{1}{2} \\cdot 6 \\cdot 3 = 7{,}5$.\n$R = \\dfrac{5 \\cdot \\sqrt{10} \\cdot \\sqrt{45}}{4 \\cdot 7{,}5} = \\dfrac{5 \\cdot 15\\sqrt{2}}{30} = \\dfrac{5\\sqrt{2}}{2} \\approx 3{,}54$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL",
+   "difficulty": "4",
+   "content": "Cho tam giác đều $ABC$ cạnh $a$. Gọi $D$ là điểm thuộc đoạn $BC$ sao cho $BD = \\dfrac{1}{3}BC$. Gọi $R$ và $r$ lần lượt là bán kính đường tròn ngoại tiếp và nội tiếp của tam giác $ADC$. Tính tỉ số $\\dfrac{R}{r}$.",
+   "correct_answer": "R/r = (5√7 + 7)/9",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin trong tam giác $ABD$ tìm $AD$; $R = \\dfrac{AD}{2\\sin C}$; $r = \\dfrac{S_{ADC}}{p}$.\n\nLời giải:\n$BD = \\dfrac{a}{3}$, $DC = \\dfrac{2a}{3}$. $AD^2 = a^2 + \\dfrac{a^2}{9} - 2a \\cdot \\dfrac{a}{3}\\cos 60^\\circ = \\dfrac{7a^2}{9} \\Rightarrow AD = \\dfrac{a\\sqrt{7}}{3}$.\n$R = \\dfrac{AD}{2\\sin 60^\\circ} = \\dfrac{a\\sqrt{7}}{3\\sqrt{3}} = \\dfrac{a\\sqrt{21}}{9}$.\n$S_{ADC} = \\dfrac{1}{2} \\cdot \\dfrac{2a}{3} \\cdot a\\sin 60^\\circ = \\dfrac{a^2\\sqrt{3}}{6}$; $p = \\dfrac{a + \\dfrac{2a}{3} + \\dfrac{a\\sqrt{7}}{3}}{2} = \\dfrac{a\\left(5 + \\sqrt{7}\\right)}{6}$; $r = \\dfrac{S}{p} = \\dfrac{a\\sqrt{3}}{5 + \\sqrt{7}}$.\n$\\dfrac{R}{r} = \\dfrac{\\sqrt{21}\\left(5 + \\sqrt{7}\\right)}{9\\sqrt{3}} = \\dfrac{\\sqrt{7}\\left(5 + \\sqrt{7}\\right)}{9} = \\dfrac{5\\sqrt{7} + 7}{9}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TL",
+   "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có các cạnh $AB = 4$ m, $BC = 6$ m, $AC = 2\\sqrt{7}$ m. Tính diện tích tam giác $ABC$.",
+   "correct_answer": "S = 6√3 m²",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin tìm $\\cos B$ rồi $S = \\dfrac{1}{2}AB \\cdot BC\\sin B$.\n\nLời giải:\n$\\cos B = \\dfrac{16 + 36 - 28}{2 \\cdot 4 \\cdot 6} = \\dfrac{1}{2} \\Rightarrow \\widehat{B} = 60^\\circ$; $S = \\dfrac{1}{2} \\cdot 4 \\cdot 6\\sin 60^\\circ = 6\\sqrt{3}$ (m$^2$)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Một người ngồi trên tàu hoả đi từ ga $A$ đến ga $B$. Khi tàu đỗ ở ga $A$, qua ống nhòm người đó nhìn thấy một tháp $C$. Hướng nhìn từ người đó đến tháp tạo với hướng đi của tàu một góc khoảng $60^\\circ$. Khi tàu đỗ ở ga $B$ tiếp theo, người đó nhìn lại vẫn thấy tháp $C$, hướng nhìn từ người đó đến tháp tạo với hướng ngược với hướng đi của tàu khoảng $45^\\circ$. Biết rằng đoạn đường tàu nối thẳng ga $A$ với $B$ dài $8$ km. Hỏi khoảng cách từ ga $A$ đến tháp $C$ là bao nhiêu ki-lô-mét (làm tròn kết quả đến hàng phần trăm)?",
+   "correct_answer": "5,86",
+   "explanation": "Phương pháp giải:\n$\\widehat{C} = 180^\\circ - 60^\\circ - 45^\\circ = 75^\\circ$; định lí sin.\n\nLời giải:\n$AC = \\dfrac{AB\\sin B}{\\sin C} = \\dfrac{8\\sin 45^\\circ}{\\sin 75^\\circ} \\approx 5{,}86$ (km)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một toà tháp đổ nát được rào lại vì lí do an toàn. Để tìm chiều cao của tháp $CT$ ($C$ là chân tháp), người đo đứng tại điểm $A$ và đo góc $\\widehat{CAT} = 18^\\circ$. Sau đó người đo đi thẳng $20$ mét về phía chân tháp đến điểm $B$ và đo được góc $\\widehat{CBT} = 31^\\circ$. Tính chiều cao của tháp (kết quả làm tròn đến hàng phần mười theo đơn vị mét).",
+   "correct_answer": "14,1",
+   "explanation": "Phương pháp giải:\n$\\widehat{ATB} = 31^\\circ - 18^\\circ = 13^\\circ$; định lí sin trong tam giác $ABT$ tìm $BT$; $CT = BT\\sin 31^\\circ$.\n\nLời giải:\n$BT = \\dfrac{20\\sin 18^\\circ}{\\sin 13^\\circ} \\approx 27{,}47$ (m); $CT = BT\\sin 31^\\circ \\approx 14{,}1$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Một học sinh tập sút bóng sệt vào khung thành trống có bề rộng đo giữa hai mép trong của cột là $BC = 7{,}3$ m. Biết khoảng cách từ quả bóng $A$ đến chân các mép cột $B$, $C$ lần lượt là $AB = 10$ m và $AC = 14$ m. Tính góc sút $\\widehat{BAC}$ tối đa để học sinh đó có thể sút được bóng vào lưới (làm tròn kết quả đến hàng phần mười theo đơn vị độ).",
+   "correct_answer": "29,9",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin.\n\nLời giải:\n$\\cos A = \\dfrac{10^2 + 14^2 - 7{,}3^2}{2 \\cdot 10 \\cdot 14} \\approx 0{,}8668 \\Rightarrow \\widehat{A} \\approx 29{,}9^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN",
+   "difficulty": "1",
+   "content": "Cho hình thoi $ABCD$ có cạnh bằng $3$ và góc $\\widehat{BAD} = 30^\\circ$. Tính diện tích hình thoi $ABCD$.",
+   "correct_answer": "4,5",
+   "explanation": "Phương pháp giải:\n$S = AB \\cdot AD\\sin\\widehat{BAD}$.\n\nLời giải:\n$S = 3 \\cdot 3\\sin 30^\\circ = 4{,}5$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Tam giác $ABC$ vuông cân tại $A$ và nội tiếp trong đường tròn tâm $O$ bán kính $R$. Gọi $r$ là bán kính đường tròn nội tiếp tam giác $ABC$. Tính tỉ số $\\dfrac{R}{r}$ (kết quả làm tròn đến hàng phần trăm).",
+   "correct_answer": "2,41",
+   "explanation": "Phương pháp giải:\n$BC = 2R$, $AB = AC = R\\sqrt{2}$; $r = \\dfrac{S}{p}$.\n\nLời giải:\n$S = \\dfrac{1}{2}AB \\cdot AC = R^2$; $p = \\dfrac{2R + 2R\\sqrt{2}}{2} = R\\left(1 + \\sqrt{2}\\right)$; $r = \\dfrac{R}{1 + \\sqrt{2}}$; $\\dfrac{R}{r} = 1 + \\sqrt{2} \\approx 2{,}41$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có các cạnh $a = 10$ m, $b = 8$ m, $c = 6$ m. Tính độ dài đường phân giác trong góc $A$ của tam giác $ABC$ (kết quả làm tròn đến hàng phần trăm theo đơn vị mét).",
+   "correct_answer": "4,85",
+   "explanation": "Phương pháp giải:\n$b^2 + c^2 = a^2$ nên tam giác vuông tại $A$; gọi $AD$ là phân giác, $S_{ABC} = S_{ABD} + S_{ACD}$ với $\\widehat{BAD} = \\widehat{CAD} = 45^\\circ$.\n\nLời giải:\n$\\dfrac{1}{2} \\cdot 6 \\cdot 8 = \\dfrac{1}{2}AD(6 + 8)\\sin 45^\\circ \\Rightarrow AD = \\dfrac{48}{14 \\cdot \\dfrac{\\sqrt{2}}{2}} = \\dfrac{24\\sqrt{2}}{7} \\approx 4{,}85$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Cho tam giác $ABC$, biết $b = 7$, $c = 5$, $\\cos A = \\dfrac{3}{5}$. Biết rằng bán kính đường tròn nội tiếp tam giác $ABC$ có dạng $r = a - \\sqrt{b}$, trong đó $a, b \\in \\mathbb{Z}$. Tính giá trị biểu thức $a - 2b$.",
+   "correct_answer": "-1",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm cạnh $BC$; $S = \\dfrac{1}{2}bc\\sin A$; $r = \\dfrac{S}{p}$.\n\nLời giải:\n$BC^2 = 49 + 25 - 2 \\cdot 7 \\cdot 5 \\cdot \\dfrac{3}{5} = 32 \\Rightarrow BC = 4\\sqrt{2}$; $\\sin A = \\dfrac{4}{5}$, $S = 14$; $p = \\dfrac{12 + 4\\sqrt{2}}{2} = 6 + 2\\sqrt{2}$.\n$r = \\dfrac{14}{6 + 2\\sqrt{2}} = \\dfrac{7}{3 + \\sqrt{2}} = 3 - \\sqrt{2}$. Vậy $a = 3$, $b = 2$, $a - 2b = -1$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "4",
+   "content": "Mặt tiền nhà ông An có chiều ngang $AB = 4$ m, ông An muốn thiết kế lan can nhô ra có dạng là một phần của đường tròn $(C)$ đi qua $A$ và $B$. Vì phía trước vướng cây tại vị trí $F$ nên để an toàn, ông An cho đường cong đi qua điểm $E$ nằm trên đoạn $DF$ cách $F$ đúng $1$ m, với $D$ là trung điểm của $AB$. Biết $AF = 2$ m, $\\widehat{DAF} = 60^\\circ$ và lan can cao $1$ m làm bằng inox với giá $2{,}2$ triệu đồng/m$^2$. Tính số tiền ông An phải trả theo đơn vị nghìn đồng (làm tròn đến hàng nghìn đồng).",
+   "correct_answer": "9977",
+   "explanation": "Phương pháp giải:\nTam giác $ADF$ có $AD = AF = 2$, $\\widehat{DAF} = 60^\\circ$ nên đều: $DF = 2$, $E$ là trung điểm $DF$. Đặt hệ trục $A(0; 0)$, $B(4; 0)$, $D(2; 0)$, $F(1; \\sqrt{3})$, $E\\left(\\dfrac{3}{2}; \\dfrac{\\sqrt{3}}{2}\\right)$; tâm đường tròn $I(2; k)$ với $IA = IE$; độ dài cung $AEB$ tính bằng $\\dfrac{\\pi R n}{180}$ với $n = \\widehat{AIB}$.\n\nLời giải:\n$IA^2 = IE^2 \\Leftrightarrow 4 + k^2 = \\dfrac{1}{4} + \\left(\\dfrac{\\sqrt{3}}{2} - k\\right)^2 \\Leftrightarrow k = -\\sqrt{3}$; $R = \\sqrt{7}$.\n$\\cos\\widehat{AIB} = \\dfrac{IA^2 + IB^2 - AB^2}{2IA \\cdot IB} = \\dfrac{7 + 7 - 16}{14} = -\\dfrac{1}{7} \\Rightarrow \\widehat{AIB} \\approx 98{,}21^\\circ$.\nĐộ dài lan can $\\approx \\dfrac{\\pi\\sqrt{7} \\cdot 98{,}21}{180} \\approx 4{,}535$ (m); diện tích inox $\\approx 4{,}535$ m$^2$; số tiền $\\approx 4{,}535 \\cdot 2{,}2 \\approx 9{,}977$ triệu $= 9977$ nghìn đồng."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một tháp nước được xây dựng trên một con dốc có độ nghiêng là $6^\\circ$. Để tháp đứng thẳng, người ta dùng hai sợi cáp cố định tháp về hai phía dọc theo con dốc. Biết rằng tháp cao $100$ ft và khoảng cách từ chân tháp ra đến chỗ cố định mỗi dây cáp là $75$ ft (đo dọc theo mặt dốc). Tính chiều dài sợi dây cáp ở phía dưới dốc (kết quả làm tròn đến hàng đơn vị theo đơn vị ft).",
+   "correct_answer": "131",
+   "explanation": "Phương pháp giải:\nGóc giữa thân tháp (thẳng đứng) và mặt dốc phía dưới dốc là $90^\\circ + 6^\\circ = 96^\\circ$; định lí côsin.\n\nLời giải:\n$d^2 = 100^2 + 75^2 - 2 \\cdot 100 \\cdot 75\\cos 96^\\circ \\approx 17193 \\Rightarrow d \\approx 131$ (ft)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một nhân viên kiểm lâm đang đi trên đường nghiêng một góc $5^\\circ$ so với phương ngang (đường dốc xuống về phía tháp) để hướng về tháp quan sát cao $100$ ft. Góc nâng từ nhân viên nhìn lên đỉnh tháp (so với phương ngang) là $40^\\circ$. Tính khoảng cách từ nhân viên kiểm lâm đến chân tháp vào thời điểm đó (làm tròn kết quả đến hàng đơn vị theo đơn vị ft).",
+   "correct_answer": "108",
+   "explanation": "Phương pháp giải:\nGọi $P$ là vị trí nhân viên, $B$ chân tháp, $T$ đỉnh tháp. $\\widehat{TPB} = 40^\\circ + 5^\\circ = 45^\\circ$; tháp thẳng đứng và $PB$ nghiêng $5^\\circ$ nên $\\widehat{PBT} = 90^\\circ - 5^\\circ = 85^\\circ$; $\\widehat{PTB} = 50^\\circ$; định lí sin.\n\nLời giải:\n$PB = \\dfrac{BT\\sin\\widehat{PTB}}{\\sin\\widehat{TPB}} = \\dfrac{100\\sin 50^\\circ}{\\sin 45^\\circ} \\approx 108$ (ft)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Để đo được chiều cao của một ngọn núi, một nhân viên trắc địa nhìn đỉnh núi tại hai vị trí cách nhau $900$ mét nằm trên một đường thẳng đến ngọn núi. Lần quan sát đầu tiên (ở vị trí xa) người này nhìn đỉnh núi với một góc nâng là $35^\\circ$ và lần thứ hai (ở vị trí gần hơn) nhìn đỉnh núi với một góc nâng là $47^\\circ$. Giả sử máy toàn đạc cao $2$ mét, tìm chiều cao $h$ của ngọn núi (làm tròn kết quả đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "1818",
+   "explanation": "Phương pháp giải:\nGọi $F$, $N$ là hai vị trí đặt máy (mức cao $2$ m), $A$ là đỉnh núi. Trong tam giác $FNA$: $\\widehat{F} = 35^\\circ$, $\\widehat{FNA} = 180^\\circ - 47^\\circ = 133^\\circ$, $\\widehat{A} = 12^\\circ$; định lí sin tìm $AF$; chiều cao $= AF\\sin 35^\\circ + 2$.\n\nLời giải:\n$AF = \\dfrac{900\\sin 133^\\circ}{\\sin 12^\\circ} \\approx 3165{,}7$ (m); $h \\approx 3165{,}7\\sin 35^\\circ + 2 \\approx 1818$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL",
+   "difficulty": "3",
+   "content": "Để xác định chiều dài của cáp treo trượt tuyết cần lắp đặt từ điểm $P$ đến điểm $Q$ trên đỉnh núi, một nhân viên trắc địa đo được $\\widehat{DPQ} = 25^\\circ$ ($D$ là chân núi, $D$, $P$, $R$ thẳng hàng trên mặt đất), sau đó anh ta đi xa ra một đoạn $1000$ feet tới điểm $R$ và đo được $\\widehat{PRQ} = 15^\\circ$.\na) Tính khoảng cách từ điểm $P$ đến điểm $Q$.\nb) Tính chiều cao $QD$ của núi.",
+   "correct_answer": "a) PQ ≈ 1490,5 ft; b) QD ≈ 630 ft",
+   "explanation": "Phương pháp giải:\nTrong tam giác $PQR$: $\\widehat{QPR} = 180^\\circ - 25^\\circ = 155^\\circ$, $\\widehat{PQR} = 10^\\circ$; định lí sin; $QD = PQ\\sin 25^\\circ$.\n\nLời giải:\na) $PQ = \\dfrac{PR\\sin\\widehat{PRQ}}{\\sin\\widehat{PQR}} = \\dfrac{1000\\sin 15^\\circ}{\\sin 10^\\circ} \\approx 1490{,}5$ (ft).\nb) $QD = PQ\\sin 25^\\circ \\approx 630$ (ft)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một chiếc máy bay được quan sát bởi hai người điều khiển không lưu cách nhau $1000$ ft trên mặt đất. Máy bay bay trên đường nối liền giữa hai người và mỗi người quan sát nó theo góc nâng lần lượt là $40^\\circ$ và $35^\\circ$. Hỏi độ cao của chiếc máy bay so với mặt đất là bao nhiêu ft (làm tròn kết quả đến hàng đơn vị)?",
+   "correct_answer": "382",
+   "explanation": "Phương pháp giải:\nGọi $h$ là độ cao, $I$ là hình chiếu của máy bay; $AI = \\dfrac{h}{\\tan 40^\\circ}$, $BI = \\dfrac{h}{\\tan 35^\\circ}$, $AI + BI = 1000$.\n\nLời giải:\n$h = \\dfrac{1000}{\\dfrac{1}{\\tan 40^\\circ} + \\dfrac{1}{\\tan 35^\\circ}} \\approx \\dfrac{1000}{1{,}1918 + 1{,}4281} \\approx 382$ (ft)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL",
+   "difficulty": "3",
+   "content": "Tháp nghiêng Pisa nổi tiếng có chiều cao là $184{,}5$ feet. Góc nâng nhìn từ điểm $Q$ cách chân tháp $P$ một khoảng $123$ feet lên đỉnh $R$ của tháp có số đo là $60^\\circ$ (tháp nghiêng về phía $Q$). Tìm số đo góc $\\widehat{RPQ}$ và tìm khoảng cách từ đỉnh $R$ của tháp đến đường thẳng $PQ$ (làm tròn kết quả đến hàng phần mười).",
+   "correct_answer": "RPQ ≈ 84,6°; khoảng cách ≈ 183,7 ft",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin cho cạnh $PR$ trong tam giác $PQR$ (ẩn $QR$); định lí sin tìm $\\widehat{RPQ}$; khoảng cách $RH = PR\\sin\\widehat{RPQ}$.\n\nLời giải:\n$184{,}5^2 = 123^2 + QR^2 - 2 \\cdot 123 \\cdot QR\\cos 60^\\circ \\Leftrightarrow QR^2 - 123QR - 18911 = 0 \\Rightarrow QR \\approx 212{,}1$ (ft).\n$\\sin\\widehat{RPQ} = \\dfrac{QR\\sin 60^\\circ}{PR} \\approx 0{,}9956 \\Rightarrow \\widehat{RPQ} \\approx 84{,}6^\\circ$ (nhọn vì tháp nghiêng về phía $Q$).\n$RH = PR\\sin\\widehat{RPQ} \\approx 184{,}5 \\cdot 0{,}9956 \\approx 183{,}7$ (ft)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một mái hiên che cửa kính có độ cao $88$ inch (điểm $A$ là chân tường, $B$ là mép trên của cửa kính, $AB = 88$ inch) và mái hiên $BC$ tạo với vách tường một góc $\\widehat{ABC} = 50^\\circ$. Mục đích của mái hiên là che được ánh nắng mặt trời chiếu vào nhà khi góc giữa tia sáng mặt trời với mặt đất lớn hơn $65^\\circ$, tức tia sáng qua mép $C$ của mái hiên đi tới đúng chân tường $A$ tạo với mặt đất góc $65^\\circ$. Tính độ dài $L = BC$ của mái hiên (làm tròn kết quả đến hàng phần mười theo đơn vị inch).",
+   "correct_answer": "38,5",
+   "explanation": "Phương pháp giải:\nTrong tam giác $ABC$: $\\widehat{BAC} = 90^\\circ - 65^\\circ = 25^\\circ$, $\\widehat{ABC} = 50^\\circ$, $\\widehat{ACB} = 105^\\circ$; định lí sin.\n\nLời giải:\n$L = BC = \\dfrac{AB\\sin\\widehat{BAC}}{\\sin\\widehat{ACB}} = \\dfrac{88\\sin 25^\\circ}{\\sin 105^\\circ} \\approx 38{,}5$ (inch)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL",
+   "difficulty": "3",
+   "content": "Một tàu du lịch chạy với tốc độ trung bình $15$ hải lí/giờ khi đi từ San Juan (Puerto Rico) đến Barbados (Tây Ấn Độ), với khoảng cách $600$ hải lí. Để tránh một cơn bão nhiệt đới, thuyền trưởng cho thuyền rời San Juan theo hướng lệch một góc $20^\\circ$ so với hướng đi thẳng đến Barbados. Thuyền trưởng duy trì tốc độ $15$ hải lí/giờ trong $10$ giờ, sau đó cho tàu đi thẳng đến Barbados mà không gặp bão.\na) Tính góc mà thuyền trưởng quay đầu để đi thẳng đến Barbados.\nb) Tính từ sau khi rẽ, nếu tốc độ được duy trì ở mức $15$ hải lí/giờ thì sau bao lâu con tàu đến Barbados?",
+   "correct_answer": "a) ≈ 26,4°; b) ≈ 30,8 giờ",
+   "explanation": "Phương pháp giải:\nGọi $A$ (San Juan), $B$ (Barbados), $S$ (vị trí rẽ): $AS = 150$, $AB = 600$, $\\widehat{SAB} = 20^\\circ$; định lí côsin tìm $SB$; hệ quả định lí côsin tìm $\\widehat{ASB}$; góc quay $= 180^\\circ - \\widehat{ASB}$.\n\nLời giải:\na) $SB^2 = 150^2 + 600^2 - 2 \\cdot 150 \\cdot 600\\cos 20^\\circ \\approx 213355 \\Rightarrow SB \\approx 461{,}9$ (hải lí).\n$\\cos\\widehat{ASB} = \\dfrac{150^2 + 461{,}9^2 - 600^2}{2 \\cdot 150 \\cdot 461{,}9} \\approx -0{,}896 \\Rightarrow \\widehat{ASB} \\approx 153{,}6^\\circ$; góc quay đầu $\\approx 180^\\circ - 153{,}6^\\circ = 26{,}4^\\circ$.\nb) Thời gian $\\approx \\dfrac{461{,}9}{15} \\approx 30{,}8$ (giờ)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL",
+   "difficulty": "3",
+   "content": "Trong một chuyến bay thử nghiệm từ Chicago ($A$) tới Louisville ($B$), khoảng cách là $330$ dặm, viên phi công đã vô tình chọn hướng bay sai lệch đi một góc $10^\\circ$ so với hướng $AB$.\na) Nếu máy bay duy trì tốc độ trung bình $220$ dặm một giờ và lỗi sai về hướng bay được phát hiện ra sau $15$ phút (tại vị trí $C$), thì viên phi công nên điều chỉnh hướng bay chếch lên theo góc nào để bay tới được Louisville?\nb) Viên phi công nên duy trì tốc độ trung bình tiếp theo của máy bay là bao nhiêu để cho tổng thời gian của chuyến bay là $90$ phút?",
+   "correct_answer": "a) ≈ 12°; b) ≈ 221 dặm/giờ",
+   "explanation": "Phương pháp giải:\n$AC = 220 \\cdot \\dfrac{1}{4} = 55$ dặm; định lí côsin tìm $CB$; hệ quả định lí côsin tìm $\\widehat{ACB}$; góc chỉnh hướng $= 180^\\circ - \\widehat{ACB}$; thời gian còn lại $75$ phút.\n\nLời giải:\na) $CB^2 = 55^2 + 330^2 - 2 \\cdot 55 \\cdot 330\\cos 10^\\circ \\approx 76176 \\Rightarrow CB \\approx 276{,}0$ (dặm).\n$\\cos\\widehat{ACB} = \\dfrac{55^2 + 276^2 - 330^2}{2 \\cdot 55 \\cdot 276} \\approx -0{,}978 \\Rightarrow \\widehat{ACB} \\approx 168^\\circ$; góc chỉnh hướng $\\approx 12^\\circ$.\nb) Tốc độ $\\approx \\dfrac{276}{1{,}25} \\approx 221$ (dặm/giờ)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "4",
+   "content": "Người ta xây một sân khấu với sân có dạng của hai hình tròn giao nhau. Bán kính của hai hình tròn là $20$ m và $15$ m. Khoảng cách giữa hai tâm của hai hình tròn là $30$ m. Chi phí làm mỗi mét vuông phần giao nhau của hai hình tròn là $300$ nghìn đồng và chi phí làm mỗi mét vuông phần còn lại là $100$ nghìn đồng. Hỏi số tiền làm mặt sân khấu là bao nhiêu triệu đồng (làm tròn kết quả đến hàng đơn vị)?",
+   "correct_answer": "208",
+   "explanation": "Phương pháp giải:\nGọi $O_1$, $O_2$ là hai tâm, $A$ là một giao điểm. Hệ quả định lí côsin trong tam giác $O_1O_2A$ cho các góc $\\widehat{AO_1O_2}$, $\\widehat{AO_2O_1}$; phần giao là hợp của hai hình viên phân, mỗi viên phân $=$ hình quạt $-$ tam giác cân: $\\dfrac{\\pi R^2 n}{360} - \\dfrac{1}{2}R^2\\sin n^\\circ$ với $n$ là góc ở tâm.\n\nLời giải:\n$\\cos\\widehat{AO_1O_2} = \\dfrac{20^2 + 30^2 - 15^2}{2 \\cdot 20 \\cdot 30} \\approx 0{,}896 \\Rightarrow$ góc ở tâm $n_1 \\approx 52{,}77^\\circ$; $\\cos\\widehat{AO_2O_1} = \\dfrac{15^2 + 30^2 - 20^2}{2 \\cdot 15 \\cdot 30} \\approx 0{,}806 \\Rightarrow n_2 \\approx 72{,}67^\\circ$.\nViên phân 1: $\\dfrac{\\pi \\cdot 400 \\cdot 52{,}77}{360} - \\dfrac{1}{2} \\cdot 400\\sin 52{,}77^\\circ \\approx 24{,}9$; viên phân 2: $\\dfrac{\\pi \\cdot 225 \\cdot 72{,}67}{360} - \\dfrac{1}{2} \\cdot 225\\sin 72{,}67^\\circ \\approx 35{,}3$; phần giao $\\approx 60{,}2$ (m$^2$).\nTổng diện tích hai hình tròn $625\\pi \\approx 1963{,}5$; phần còn lại $\\approx 1903{,}3$ (m$^2$).\nSố tiền $\\approx 60{,}2 \\cdot 300 + 1903{,}3 \\cdot 100 \\approx 208390$ nghìn $\\approx 208{,}4$ triệu đồng."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Hai chiếc xe cùng xuất phát ở vị trí $A$, đi theo hai hướng tạo với nhau một góc $60^\\circ$. Xe thứ nhất chạy với tốc độ $30$ km/h, xe thứ hai chạy với tốc độ $40$ km/h. Sau thời gian $1{,}5$ giờ thì khoảng cách của hai xe bằng bao nhiêu ki-lô-mét (kết quả làm tròn đến hàng phần mười)?",
+   "correct_answer": "54,1",
+   "explanation": "Phương pháp giải:\nSau $1{,}5$ giờ: $AB = 45$, $AC = 60$; định lí côsin.\n\nLời giải:\n$BC^2 = 45^2 + 60^2 - 2 \\cdot 45 \\cdot 60\\cos 60^\\circ = 2925 \\Rightarrow BC \\approx 54{,}1$ (km)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Bác An cần đo khoảng cách từ một điểm $A$ trên bờ sông đến một điểm $B$ ở giữa hồ mà không thể đến trực tiếp được. Bác sử dụng giác kế để chọn điểm $C$ cùng nằm trên bờ với $A$ sao cho $\\widehat{BAC} = 30^\\circ$, $\\widehat{ACB} = 100^\\circ$ và cạnh $AC = 50$ m. Tính khoảng cách $AB$ (kết quả làm tròn đến hàng phần mười theo đơn vị mét).",
+   "correct_answer": "64,3",
+   "explanation": "Phương pháp giải:\n$\\widehat{B} = 50^\\circ$; định lí sin.\n\nLời giải:\n$AB = \\dfrac{AC\\sin C}{\\sin B} = \\dfrac{50\\sin 100^\\circ}{\\sin 50^\\circ} \\approx 64{,}3$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một ô tô muốn đi từ $A$ đến $C$ nhưng giữa $A$ và $C$ là một ngọn núi cao nên ô tô phải đi thành hai đoạn từ $A$ đến $B$ rồi từ $B$ đến $C$; các đoạn đường tạo thành tam giác $ABC$ có $AB = 15$ km, $BC = 20$ km và $\\widehat{ABC} = 120^\\circ$. Giả sử ô tô chạy $5$ km tốn một lít xăng, giá một lít xăng là $20000$ đồng. Nếu người ta làm một đoạn đường hầm xuyên núi chạy thẳng từ $A$ đến $C$, khi đó ô tô chạy trên con đường này sẽ tiết kiệm được bao nhiêu nghìn đồng so với chạy trên đường cũ (làm tròn kết quả đến hàng đơn vị)?",
+   "correct_answer": "18",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $AC$; quãng đường tiết kiệm $= AB + BC - AC$.\n\nLời giải:\n$AC^2 = 15^2 + 20^2 - 2 \\cdot 15 \\cdot 20\\cos 120^\\circ = 925 \\Rightarrow AC \\approx 30{,}41$ (km); tiết kiệm $\\approx 4{,}59$ km, tức $\\dfrac{4{,}59}{5} \\cdot 20000 \\approx 18350$ đồng $\\approx 18$ nghìn đồng."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN",
+   "difficulty": "3",
+   "content": "Một máy bay trực thăng $A$ quan sát hai tàu $B$ và $C$; $B$ cách trực thăng $23{,}8$ km và $C$ cách trực thăng $31{,}9$ km. Góc nhìn $\\widehat{BAC}$ từ trực thăng đến hai tàu là $83{,}6^\\circ$. Tính khoảng cách từ điểm $A$ đến cạnh $BC$ (kết quả làm tròn đến hàng đơn vị theo đơn vị ki-lô-mét).",
+   "correct_answer": "20",
+   "explanation": "Phương pháp giải:\n$S = \\dfrac{1}{2}AB \\cdot AC\\sin A$; định lí côsin tìm $BC$; khoảng cách $= \\dfrac{2S}{BC}$.\n\nLời giải:\n$S \\approx \\dfrac{1}{2} \\cdot 23{,}8 \\cdot 31{,}9\\sin 83{,}6^\\circ \\approx 377{,}3$; $BC^2 \\approx 23{,}8^2 + 31{,}9^2 - 2 \\cdot 23{,}8 \\cdot 31{,}9\\cos 83{,}6^\\circ \\approx 1414{,}7 \\Rightarrow BC \\approx 37{,}6$.\nKhoảng cách $\\approx \\dfrac{2 \\cdot 377{,}3}{37{,}6} \\approx 20$ (km)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+   "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "TLN",
+   "difficulty": "2",
+   "content": "Hai chiếc tàu thuỷ cùng xuất phát từ vị trí $A$, đi thẳng theo hai hướng hợp với nhau một góc $60^\\circ$. Tàu thứ nhất chạy với tốc độ $30$ km/h, tàu thứ hai chạy với tốc độ $40$ km/h. Sau $2$ giờ, tàu thứ nhất ở vị trí $C$, tàu thứ hai ở vị trí $B$. Gọi $S$ là diện tích của tam giác $ABC$. Tính $\\dfrac{S}{100\\sqrt{3}}$.",
+   "correct_answer": "12",
+   "explanation": "Phương pháp giải:\n$AC = 60$, $AB = 80$; $S = \\dfrac{1}{2}AB \\cdot AC\\sin A$.\n\nLời giải:\n$S = \\dfrac{1}{2} \\cdot 80 \\cdot 60\\sin 60^\\circ = 1200\\sqrt{3} \\Rightarrow \\dfrac{S}{100\\sqrt{3}} = 12$."
+  }
+ ]
+}

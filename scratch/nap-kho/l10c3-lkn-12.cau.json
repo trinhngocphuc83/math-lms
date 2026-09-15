@@ -1,0 +1,159 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Luyện kỹ năng Toán 10 - Trắc nghiệm hệ thức lượng tam giác thường (Giang Sơn), Vận dụng định lí sin, côsin, giải tam giác P3, tr. 25-26",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $ABC$ có $\\cos(A + B) = -\\dfrac{1}{8}$, $AC = 4$, $BC = 5$. Tính độ dài cạnh $AB$.",
+   "option_a": "$\\sqrt{46}$.", "option_b": "$11$.", "option_c": "$5\\sqrt{2}$.", "option_d": "$6$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$\\cos C = -\\cos(A + B)$ rồi định lí côsin cho cạnh $AB$.\n\nLời giải:\n$\\cos C = \\dfrac{1}{8}$. $AB^2 = 25 + 16 - 2 \\cdot 5 \\cdot 4 \\cdot \\dfrac{1}{8} = 36$, $AB = 6$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ thỏa mãn hệ thức $b + c = 2a$. Trong các mệnh đề sau, mệnh đề nào đúng?",
+   "option_a": "$\\cos B + \\cos C = 2\\cos A$.", "option_b": "$\\sin B + \\sin C = 2\\sin A$.", "option_c": "$\\sin B + \\sin C = \\dfrac{1}{2}\\sin A$.", "option_d": "$\\sin B + \\cos C = 2\\sin A$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: $a = 2R\\sin A$, $b = 2R\\sin B$, $c = 2R\\sin C$.\n\nLời giải:\n$b + c = 2a \\Leftrightarrow 2R\\sin B + 2R\\sin C = 4R\\sin A \\Leftrightarrow \\sin B + \\sin C = 2\\sin A$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tam giác $ABC$ có $AB = 6$ cm, $AC = 8$ cm và $BC = 10$ cm. Độ dài đường trung tuyến xuất phát từ đỉnh $A$ của tam giác bằng:",
+   "option_a": "$4$ cm.", "option_b": "$\\sqrt{3}$ cm.", "option_c": "$7$ cm.", "option_d": "$5$ cm.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nCông thức đường trung tuyến $m_a^2 = \\dfrac{2b^2 + 2c^2 - a^2}{4}$ (hoặc nhận ra tam giác vuông tại $A$).\n\nLời giải:\n$m_a^2 = \\dfrac{2 \\cdot 64 + 2 \\cdot 36 - 100}{4} = 25$, $m_a = 5$ cm.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tam giác $ABC$ vuông tại $A$ và có $AB = AC = a$. Tính độ dài đường trung tuyến $BM$ của tam giác đã cho.",
+   "option_a": "$BM = 1{,}5a$.", "option_b": "$BM = a\\sqrt{2}$.", "option_c": "$BM = a\\sqrt{3}$.", "option_d": "$BM = \\dfrac{a\\sqrt{5}}{2}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$M$ là trung điểm $AC$; tam giác $ABM$ vuông tại $A$.\n\nLời giải:\n$BM^2 = AB^2 + AM^2 = a^2 + \\dfrac{a^2}{4} = \\dfrac{5a^2}{4}$, $BM = \\dfrac{a\\sqrt{5}}{2}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tam giác $ABC$ có $AB = 9$ cm, $AC = 12$ cm và $BC = 15$ cm. Tính độ dài đường trung tuyến $AM$ của tam giác đã cho.",
+   "option_a": "$AM = \\dfrac{15}{2}$ cm.", "option_b": "$AM = 10$ cm.", "option_c": "$AM = 9$ cm.", "option_d": "$AM = \\dfrac{13}{2}$ cm.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nCông thức đường trung tuyến.\n\nLời giải:\n$AM^2 = \\dfrac{2 \\cdot 144 + 2 \\cdot 81 - 225}{4} = \\dfrac{225}{4}$, $AM = \\dfrac{15}{2}$ cm (tam giác vuông tại $A$, trung tuyến bằng nửa cạnh huyền).\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $ABC$ cân tại $C$, có $AB = 9$ cm và $AC = \\dfrac{15}{2}$ cm. Gọi $D$ là điểm đối xứng của $B$ qua $C$. Tính độ dài cạnh $AD$.",
+   "option_a": "$AD = 6$ cm.", "option_b": "$AD = 9$ cm.", "option_c": "$AD = 12$ cm.", "option_d": "$AD = 12\\sqrt{2}$ cm.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\n$C$ là trung điểm $BD$ nên $AC$ là trung tuyến của tam giác $ABD$; dùng công thức đường trung tuyến.\n\nLời giải:\n$BD = 2BC = 15$. $AC^2 = \\dfrac{2AB^2 + 2AD^2 - BD^2}{4} \\Rightarrow \\dfrac{225}{4} = \\dfrac{162 + 2AD^2 - 225}{4} \\Rightarrow AD^2 = 144$, $AD = 12$ cm.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ có $AB = 3$, $BC = 8$. Gọi $M$ là trung điểm của $BC$. Biết $\\cos\\widehat{AMB} = \\dfrac{5\\sqrt{13}}{26}$ và $AM > 3$. Tính độ dài cạnh $AC$.",
+   "option_a": "$AC = \\sqrt{13}$.", "option_b": "$AC = \\sqrt{7}$.", "option_c": "$AC = 13$.", "option_d": "$AC = 7$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin trong tam giác $ABM$ để tìm $AM$, rồi trong tam giác $AMC$ với $\\cos\\widehat{AMC} = -\\cos\\widehat{AMB}$.\n\nLời giải:\n$BM = 4$. $AB^2 = AM^2 + BM^2 - 2 \\cdot AM \\cdot BM\\cos\\widehat{AMB} \\Rightarrow AM^2 - \\dfrac{20\\sqrt{13}}{13}AM + 7 = 0$, nghiệm $AM = \\sqrt{13}$ (thoả $AM > 3$) hoặc $AM = \\dfrac{7\\sqrt{13}}{13}$ (loại).\n$AC^2 = AM^2 + MC^2 - 2 \\cdot AM \\cdot MC\\cos\\widehat{AMC} = 13 + 16 + 2 \\cdot \\sqrt{13} \\cdot 4 \\cdot \\dfrac{5\\sqrt{13}}{26} = 49$, $AC = 7$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $b = 7$; $c = 5$; $\\cos A = \\dfrac{3}{5}$. Độ dài đường cao $h_a$ của tam giác $\\triangle ABC$ là?",
+   "option_a": "$8$.", "option_b": "$\\dfrac{7\\sqrt{2}}{2}$.", "option_c": "$8\\sqrt{3}$.", "option_d": "$7$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nTính $S = \\dfrac{1}{2}bc\\sin A$, $a$ bằng định lí côsin, rồi $h_a = \\dfrac{2S}{a}$.\n\nLời giải:\n$\\sin A = \\dfrac{4}{5}$, $S = 14$; $a^2 = 49 + 25 - 42 = 32$, $a = 4\\sqrt{2}$.\n$h_a = \\dfrac{28}{4\\sqrt{2}} = \\dfrac{7\\sqrt{2}}{2}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho tam giác vuông, trong đó có một góc bằng trung bình cộng của hai góc còn lại. Cạnh lớn nhất của tam giác đó bằng $a$. Tính diện tích tam giác đó.",
+   "option_a": "$\\dfrac{a^2\\sqrt{2}}{4}$.", "option_b": "$\\dfrac{a^2\\sqrt{3}}{8}$.", "option_c": "$\\dfrac{a^2\\sqrt{3}}{4}$.", "option_d": "$\\dfrac{a^2\\sqrt{6}}{10}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nGóc bằng trung bình cộng hai góc kia thì bằng $60^\\circ$; tam giác vuông có góc $30^\\circ$, $60^\\circ$.\n\nLời giải:\nCạnh huyền $a$, hai cạnh góc vuông $a\\sin 30^\\circ = \\dfrac{a}{2}$ và $a\\sin 60^\\circ = \\dfrac{a\\sqrt{3}}{2}$.\n$S = \\dfrac{1}{2} \\cdot \\dfrac{a}{2} \\cdot \\dfrac{a\\sqrt{3}}{2} = \\dfrac{a^2\\sqrt{3}}{8}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Tính diện tích hình thoi $ABCD$ có cạnh bằng $a$ và góc $\\widehat{BAD} = 30^\\circ$.",
+   "option_a": "$S_{ABCD} = \\dfrac{a^2}{2}$.", "option_b": "$S_{ABCD} = \\dfrac{3a^2}{2}$.", "option_c": "$S_{ABCD} = \\dfrac{a^2}{4}$.", "option_d": "$S_{ABCD} = \\dfrac{3a^2}{4}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nHình thoi gồm hai tam giác $ABD$, $CBD$ bằng nhau; $S_{ABD} = \\dfrac{1}{2}AB \\cdot AD\\sin A$.\n\nLời giải:\n$S_{ABCD} = 2 \\cdot \\dfrac{1}{2}a \\cdot a\\sin 30^\\circ = \\dfrac{a^2}{2}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $ABC$ vuông tại $A$ có $AB = AC = a$. Điểm $M$ nằm trên cạnh $BC$ sao cho $BM = \\dfrac{BC}{3}$. Độ dài $AM$ bằng bao nhiêu?",
+   "option_a": "$\\dfrac{a\\sqrt{17}}{3}$.", "option_b": "$\\dfrac{a\\sqrt{5}}{3}$.", "option_c": "$\\dfrac{2a\\sqrt{2}}{3}$.", "option_d": "$\\dfrac{2a}{3}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin trong tam giác $ABM$ với $\\widehat{B} = 45^\\circ$.\n\nLời giải:\n$BC = a\\sqrt{2}$, $BM = \\dfrac{a\\sqrt{2}}{3}$.\n$AM^2 = a^2 + \\dfrac{2a^2}{9} - 2 \\cdot a \\cdot \\dfrac{a\\sqrt{2}}{3} \\cdot \\dfrac{\\sqrt{2}}{2} = a^2 + \\dfrac{2a^2}{9} - \\dfrac{2a^2}{3} = \\dfrac{5a^2}{9}$, $AM = \\dfrac{a\\sqrt{5}}{3}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $ABC$ có $AB = 4$; $AC = 6$; $\\cos B = \\dfrac{1}{8}$; $\\cos C = \\dfrac{3}{4}$. Tính cạnh $BC$.",
+   "option_a": "$7$.", "option_b": "$5$.", "option_c": "$3\\sqrt{3}$.", "option_d": "$2$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nHạ đường cao $AH$; $B$, $C$ nhọn nên $H$ nằm giữa $B$ và $C$, $BC = BH + HC = AB\\cos B + AC\\cos C$.\n\nLời giải:\n$BC = 4 \\cdot \\dfrac{1}{8} + 6 \\cdot \\dfrac{3}{4} = \\dfrac{1}{2} + \\dfrac{9}{2} = 5$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $ABC$. Khẳng định nào sau đây là đúng?",
+   "option_a": "$m_a^2 + m_b^2 + m_c^2 = \\dfrac{2}{3}(a^2 + b^2 + c^2)$.", "option_b": "$m_a^2 + m_b^2 + m_c^2 = \\dfrac{4}{3}(a^2 + b^2 + c^2)$.", "option_c": "$m_a^2 + m_b^2 + m_c^2 = \\dfrac{1}{3}(a^2 + b^2 + c^2)$.", "option_d": "$m_a^2 + m_b^2 + m_c^2 = \\dfrac{3}{4}(a^2 + b^2 + c^2)$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nCộng ba công thức đường trung tuyến.\n\nLời giải:\n$m_a^2 + m_b^2 + m_c^2 = \\dfrac{(2b^2 + 2c^2 - a^2) + (2a^2 + 2c^2 - b^2) + (2a^2 + 2b^2 - c^2)}{4} = \\dfrac{3(a^2 + b^2 + c^2)}{4}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ thỏa mãn $c = a \\cdot \\cos B$. Khẳng định nào sau đây là đúng?",
+   "option_a": "Tam giác $ABC$ là tam giác cân.", "option_b": "Tam giác $ABC$ là tam giác nhọn.", "option_c": "Tam giác $ABC$ là tam giác vuông.", "option_d": "Tam giác $ABC$ là tam giác tù.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nThay $\\cos B$ bằng hệ quả định lí côsin.\n\nLời giải:\n$c = a \\cdot \\dfrac{a^2 + c^2 - b^2}{2ac} \\Leftrightarrow 2c^2 = a^2 + c^2 - b^2 \\Leftrightarrow a^2 = b^2 + c^2$. Tam giác vuông tại $A$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho tam giác $ABC$, các đường cao $h_a, h_b, h_c$ thỏa mãn hệ thức $3h_a = 2h_b + h_c$. Tìm hệ thức giữa $a, b, c$.",
+   "option_a": "$\\dfrac{3}{a} = \\dfrac{2}{b} - \\dfrac{1}{c}$.", "option_b": "$3a = 2b + c$.", "option_c": "$3a = 2b - c$.", "option_d": "$\\dfrac{3}{a} = \\dfrac{2}{b} + \\dfrac{1}{c}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$h_a = \\dfrac{2S}{a}$, $h_b = \\dfrac{2S}{b}$, $h_c = \\dfrac{2S}{c}$.\n\nLời giải:\n$3 \\cdot \\dfrac{2S}{a} = 2 \\cdot \\dfrac{2S}{b} + \\dfrac{2S}{c} \\Leftrightarrow \\dfrac{3}{a} = \\dfrac{2}{b} + \\dfrac{1}{c}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $ABC$ có $BC = \\sqrt{5}$; $AC = 3$; $\\cot C = 2$. Tính độ dài cạnh $AB$.",
+   "option_a": "$6$.", "option_b": "$\\sqrt{2}$.", "option_c": "$\\dfrac{9}{5}$.", "option_d": "$2\\sqrt{10}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\n$\\cot C > 0$ nên $C$ nhọn; $\\cos^2 C = \\dfrac{\\cot^2 C}{1 + \\cot^2 C}$; định lí côsin.\n\nLời giải:\n$\\cos C = \\dfrac{2}{\\sqrt{5}}$. $AB^2 = 5 + 9 - 2 \\cdot \\sqrt{5} \\cdot 3 \\cdot \\dfrac{2}{\\sqrt{5}} = 2$, $AB = \\sqrt{2}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tính số đo góc $C$ của tam giác $ABC$ biết $a \\ne b$ và $a(a^2 - c^2) = b(b^2 - c^2)$.",
+   "option_a": "$C = 150^\\circ$.", "option_b": "$C = 120^\\circ$.", "option_c": "$C = 60^\\circ$.", "option_d": "$C = 30^\\circ$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nBiến đổi đẳng thức về $a^3 - b^3 = c^2(a - b)$ rồi chia cho $a - b \\ne 0$.\n\nLời giải:\n$a^2 + ab + b^2 = c^2 \\Rightarrow \\cos C = \\dfrac{a^2 + b^2 - c^2}{2ab} = \\dfrac{-ab}{2ab} = -\\dfrac{1}{2} \\Rightarrow C = 120^\\circ$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ có các trung tuyến $m_a = 15$, $m_b = 12$, $m_c = 9$. Tính diện tích $S$ của tam giác $ABC$.",
+   "option_a": "$70$.", "option_b": "$60$.", "option_c": "$72$.", "option_d": "$65$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nTừ $m_a^2 + m_b^2 + m_c^2 = \\dfrac{3}{4}(a^2 + b^2 + c^2)$ suy ra $a^2 + b^2 + c^2$, rồi tính từng cạnh từ công thức trung tuyến và dùng Heron dạng $16S^2 = 2a^2b^2 + 2b^2c^2 + 2c^2a^2 - a^4 - b^4 - c^4$.\n\nLời giải:\n$a^2 + b^2 + c^2 = \\dfrac{4}{3}(225 + 144 + 81) = 600$.\n$m_a^2 = \\dfrac{2(a^2 + b^2 + c^2) - 3a^2}{4} \\Rightarrow 225 = \\dfrac{1200 - 3a^2}{4} \\Rightarrow a^2 = 100$; tương tự $b^2 = 208$, $c^2 = 292$.\n$16S^2 = 2(100 \\cdot 208 + 208 \\cdot 292 + 292 \\cdot 100) - (100^2 + 208^2 + 292^2) = 82944 \\Rightarrow S = 72$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác $ABC$ thỏa mãn $a\\sin A + b\\sin B + c\\sin C = h_a + h_b + h_c$. Tính diện tích $S$ của tam giác $ABC$ theo $a$.",
+   "option_a": "$S_{ABC} = \\dfrac{a^2\\sqrt{3}}{4}$.", "option_b": "$S_{ABC} = \\dfrac{a^2\\sqrt{3}}{2}$.", "option_c": "$S_{ABC} = \\dfrac{3a^2\\sqrt{3}}{4}$.", "option_d": "$S_{ABC} = \\dfrac{2a^2\\sqrt{3}}{5}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\n$\\sin A = \\dfrac{a}{2R}$ và $h_a = \\dfrac{2S}{a} = \\dfrac{bc\\sin A}{a} = \\dfrac{bc}{2R}$ (tương tự cho $h_b$, $h_c$).\n\nLời giải:\nĐẳng thức trở thành $\\dfrac{a^2 + b^2 + c^2}{2R} = \\dfrac{bc + ca + ab}{2R} \\Leftrightarrow a^2 + b^2 + c^2 = ab + bc + ca \\Leftrightarrow (a - b)^2 + (b - c)^2 + (c - a)^2 = 0 \\Leftrightarrow a = b = c$.\nTam giác đều cạnh $a$: $S = \\dfrac{a^2\\sqrt{3}}{4}$.\nChọn A."
+  }
+ ]
+}

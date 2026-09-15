@@ -1,0 +1,183 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Luyện kỹ năng Toán 10 - Trắc nghiệm hệ thức lượng tam giác thường (Giang Sơn), Vận dụng cao P2, tr. 29-30",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tính diện tích $S$ của tam giác $ABC$ thỏa mãn $\\dfrac{a^2 + b^2 + c^2}{\\cot A + \\cot B + \\cot C} = 4$.",
+   "option_a": "$S = 1$.", "option_b": "$S = 2$.", "option_c": "$S = 3$.", "option_d": "$S = 4$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\n$\\cot A = \\dfrac{\\cos A}{\\sin A}$ với $\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc}$, $\\sin A = \\dfrac{a}{2R}$; rồi dùng $S = \\dfrac{abc}{4R}$.\n\nLời giải:\n$\\cot A = \\dfrac{R\\left(b^2 + c^2 - a^2\\right)}{abc}$; tương tự cho $\\cot B$, $\\cot C$. Cộng lại: $\\cot A + \\cot B + \\cot C = \\dfrac{R\\left(a^2 + b^2 + c^2\\right)}{abc}$.\nDo đó $\\dfrac{a^2 + b^2 + c^2}{\\cot A + \\cot B + \\cot C} = \\dfrac{abc}{R} = 4S = 4 \\Rightarrow S = 1$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác $ABC$ có $AB = \\dfrac{\\sqrt{6} - \\sqrt{2}}{2}$, $BC = \\sqrt{3}$, $CA = \\sqrt{2}$. Gọi $D$ là chân đường phân giác trong góc $\\widehat{A}$. Khi đó góc $\\widehat{ADB}$ bằng bao nhiêu độ?",
+   "option_a": "$90^\\circ$.", "option_b": "$60^\\circ$.", "option_c": "$45^\\circ$.", "option_d": "$75^\\circ$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nTính góc $A$, $B$ bằng hệ quả định lí côsin; $\\widehat{ADB} = 180^\\circ - \\widehat{B} - \\dfrac{\\widehat{A}}{2}$.\n\nLời giải:\n$AB^2 = \\dfrac{8 - 4\\sqrt{3}}{4} = 2 - \\sqrt{3}$.\n$\\cos A = \\dfrac{AB^2 + AC^2 - BC^2}{2 \\cdot AB \\cdot AC} = \\dfrac{2 - \\sqrt{3} + 2 - 3}{\\sqrt{2}\\left(\\sqrt{6} - \\sqrt{2}\\right)} = \\dfrac{1 - \\sqrt{3}}{2\\sqrt{3} - 2} = -\\dfrac{1}{2} \\Rightarrow \\widehat{A} = 120^\\circ$.\n$\\cos B = \\dfrac{AB^2 + BC^2 - AC^2}{2 \\cdot AB \\cdot BC} = \\dfrac{3 - \\sqrt{3}}{\\sqrt{3}\\left(\\sqrt{6} - \\sqrt{2}\\right)} = \\dfrac{3 - \\sqrt{3}}{\\sqrt{2}\\left(3 - \\sqrt{3}\\right)} = \\dfrac{\\sqrt{2}}{2} \\Rightarrow \\widehat{B} = 45^\\circ$.\n$\\widehat{ADB} = 180^\\circ - 45^\\circ - 60^\\circ = 75^\\circ$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác $ABC$ thỏa mãn $\\dfrac{1}{a + b} + \\dfrac{1}{b + c} = \\dfrac{3}{a + b + c}$. Tính $\\dfrac{c^2 + a^2 - b^2}{ac}$.",
+   "option_a": "$1$.", "option_b": "$\\dfrac{1}{2}$.", "option_c": "$\\dfrac{\\sqrt{3}}{2}$.", "option_d": "Kết quả khác.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nQuy đồng, rút gọn giả thiết về hệ thức giữa ba cạnh.\n\nLời giải:\n$(a + b + c)(a + 2b + c) = 3(a + b)(b + c)$. Đặt $s = a + c$: $(s + b)(s + 2b) = 3bs + 3ac + 3b^2 \\Leftrightarrow s^2 + 3bs + 2b^2 = 3bs + 3ac + 3b^2 \\Leftrightarrow (a + c)^2 - 3ac = b^2 \\Leftrightarrow a^2 + c^2 - b^2 = ac$.\nVậy $\\dfrac{c^2 + a^2 - b^2}{ac} = 1$ (khi đó $\\cos B = \\dfrac{1}{2}$, $\\widehat{B} = 60^\\circ$).\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác nhọn $ABC$ có $AD$ và $BE$ là hai đường cao, $\\cos\\widehat{ACB} = \\dfrac{1}{4}$, $DE = 2\\sqrt{3}$. Bán kính đường tròn ngoại tiếp tam giác $ABC$ bằng",
+   "option_a": "$\\dfrac{3\\sqrt{5}}{5}$.", "option_b": "$\\dfrac{2\\sqrt{3}}{3}$.", "option_c": "$\\dfrac{4\\sqrt{5}}{5}$.", "option_d": "$\\dfrac{16\\sqrt{5}}{5}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$CD = CA\\cos C$, $CE = CB\\cos C$ nên $\\triangle CDE \\backsim \\triangle CAB$ (c.g.c) với tỉ số $\\cos C$, suy ra $DE = AB\\cos C$; rồi $R = \\dfrac{AB}{2\\sin C}$.\n\nLời giải:\n$AB = \\dfrac{DE}{\\cos C} = 2\\sqrt{3} \\cdot 4 = 8\\sqrt{3}$; $\\sin C = \\sqrt{1 - \\dfrac{1}{16}} = \\dfrac{\\sqrt{15}}{4}$.\n$R = \\dfrac{8\\sqrt{3}}{2 \\cdot \\dfrac{\\sqrt{15}}{4}} = \\dfrac{16\\sqrt{3}}{\\sqrt{15}} = \\dfrac{16}{\\sqrt{5}} = \\dfrac{16\\sqrt{5}}{5}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = \\sqrt{2}$, $AC = \\sqrt{3}$ và $\\widehat{C} = 45^\\circ$. Biết rằng $BC > \\sqrt{2}$, khi đó độ dài $BC$ gần nhất với giá trị nào?",
+   "option_a": "$1{,}93$.", "option_b": "$1{,}56$.", "option_c": "$1{,}74$.", "option_d": "$1{,}82$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin cho cạnh $AB$, được phương trình bậc hai ẩn $BC$.\n\nLời giải:\n$2 = BC^2 + 3 - 2 \\cdot BC \\cdot \\sqrt{3} \\cdot \\dfrac{\\sqrt{2}}{2} \\Leftrightarrow BC^2 - \\sqrt{6}BC + 1 = 0 \\Leftrightarrow BC = \\dfrac{\\sqrt{6} \\pm \\sqrt{2}}{2}$.\nVì $BC > \\sqrt{2}$ nên $BC = \\dfrac{\\sqrt{6} + \\sqrt{2}}{2} \\approx 1{,}93$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°", "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho $a$, $b$ là các số dương và $a\\sin^4 x + b\\cos^4 x = \\dfrac{ab}{a + b}$. Khi đó $a^4\\sin^{10} x + b^4\\cos^{10} x$ có giá trị bằng",
+   "option_a": "$\\dfrac{a^4b^4}{(a + b)^4}$.", "option_b": "$\\dfrac{2a^4b^4}{(a + b)^4}$.", "option_c": "$\\dfrac{a^4b^4}{(a + b)^3}$.", "option_d": "$\\dfrac{a^5b^5}{(a + b)^5}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nĐặt $s = \\sin^2 x$, $\\cos^2 x = 1 - s$; giả thiết trở thành phương trình bậc hai theo $s$ có nghiệm kép.\n\nLời giải:\n$as^2 + b(1 - s)^2 = \\dfrac{ab}{a + b} \\Leftrightarrow (a + b)^2s^2 - 2b(a + b)s + b^2 = 0 \\Leftrightarrow \\left[(a + b)s - b\\right]^2 = 0 \\Leftrightarrow \\sin^2 x = \\dfrac{b}{a + b}$, $\\cos^2 x = \\dfrac{a}{a + b}$.\n$a^4\\sin^{10} x + b^4\\cos^{10} x = \\dfrac{a^4b^5 + b^4a^5}{(a + b)^5} = \\dfrac{a^4b^4(a + b)}{(a + b)^5} = \\dfrac{a^4b^4}{(a + b)^4}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = c$, $AC = b$, $BC = a$. Các cạnh $a$, $b$, $c$ thỏa mãn $b\\left(b^2 - a^2\\right) = c\\left(a^2 - c^2\\right)$. Xác định số đo góc $\\widehat{BAC}$.",
+   "option_a": "$\\widehat{BAC} = 30^\\circ$.", "option_b": "$\\widehat{BAC} = 45^\\circ$.", "option_c": "$\\widehat{BAC} = 60^\\circ$.", "option_d": "$\\widehat{BAC} = 120^\\circ$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nBiến đổi về $b^3 + c^3 = a^2(b + c)$ rồi chia cho $b + c$.\n\nLời giải:\n$b^2 - bc + c^2 = a^2 \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc} = \\dfrac{bc}{2bc} = \\dfrac{1}{2} \\Rightarrow \\widehat{BAC} = 60^\\circ$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có trọng tâm $G$, hai trung tuyến $BM = 6$ và $CN = 9$, $\\widehat{BGC} = 120^\\circ$. Tính diện tích tam giác $ABC$.",
+   "option_a": "$S = 6\\sqrt{3}$.", "option_b": "$S = 12\\sqrt{3}$.", "option_c": "$S = 18\\sqrt{3}$.", "option_d": "$S = 24$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\n$BG = \\dfrac{2}{3}BM$, $CG = \\dfrac{2}{3}CN$; $S_{ABC} = 3S_{GBC}$.\n\nLời giải:\n$BG = 4$, $CG = 6$; $S_{GBC} = \\dfrac{1}{2} \\cdot 4 \\cdot 6 \\cdot \\sin 120^\\circ = 6\\sqrt{3}$.\n$S_{ABC} = 3 \\cdot 6\\sqrt{3} = 18\\sqrt{3}$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác $ABC$ cân tại $A$ có $\\widehat{A} = 100^\\circ$. Gọi $P$ là một điểm nằm trong tam giác $ABC$ sao cho $\\widehat{PBC} = 20^\\circ$ và $\\widehat{PCB} = 30^\\circ$. Biết $AB = 5$, độ dài cạnh $BP$ là",
+   "option_a": "$10$.", "option_b": "$5$.", "option_c": "$5\\sqrt{3}$.", "option_d": "$\\dfrac{5}{2}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin trong tam giác $ABC$ để tính $BC$, rồi định lí sin trong tam giác $PBC$.\n\nLời giải:\n$\\widehat{B} = \\widehat{C} = 40^\\circ$. $BC = \\dfrac{AB\\sin A}{\\sin C} = \\dfrac{5\\sin 100^\\circ}{\\sin 40^\\circ} \\approx 7{,}660$.\nTrong tam giác $PBC$: $\\widehat{BPC} = 130^\\circ$, $BP = \\dfrac{BC\\sin\\widehat{PCB}}{\\sin\\widehat{BPC}} = \\dfrac{7{,}660 \\cdot \\sin 30^\\circ}{\\sin 130^\\circ} \\approx 5{,}00$.\n(Kiểm lại: nếu $BP = AB = 5$ thì tam giác $ABP$ cân, $\\widehat{BAP} = \\widehat{BPA} = 80^\\circ$, $\\widehat{APC} = 150^\\circ$ và $80^\\circ + 150^\\circ + 130^\\circ = 360^\\circ$, phù hợp.)\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ thỏa mãn $\\cot A + \\cot C = 2\\cot B$. Tìm giá trị nhỏ nhất của $P = b^2 - \\dfrac{a^2 + c^2}{b}$.",
+   "option_a": "$3$.", "option_b": "$2$.", "option_c": "$1$.", "option_d": "$-1$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$\\cot A = \\dfrac{R\\left(b^2 + c^2 - a^2\\right)}{abc}$ (từ hệ quả định lí côsin và định lí sin); tương tự cho $\\cot B$, $\\cot C$.\n\nLời giải:\nGiả thiết $\\Leftrightarrow \\left(b^2 + c^2 - a^2\\right) + \\left(a^2 + b^2 - c^2\\right) = 2\\left(a^2 + c^2 - b^2\\right) \\Leftrightarrow a^2 + c^2 = 2b^2$.\n$P = b^2 - \\dfrac{2b^2}{b} = b^2 - 2b = (b - 1)^2 - 1 \\ge -1$. Dấu bằng khi $b = 1$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác $ABC$ có các kí hiệu quy ước đã biết. Tính diện tích (đvdt) của tam giác $ABC$ khi $(a + b - c)(b + c - a)(a + c - b) = 6996r$.",
+   "option_a": "$874{,}5$.", "option_b": "$696$.", "option_c": "$920{,}5$.", "option_d": "$2650$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\n$a + b - c = 2(p - c)$, … nên vế trái bằng $8(p - a)(p - b)(p - c)$; công thức Heron $S^2 = p(p - a)(p - b)(p - c)$ và $S = pr$.\n\nLời giải:\n$(p - a)(p - b)(p - c) = \\dfrac{S^2}{p} = \\dfrac{(pr)^2}{p} = pr^2$.\nGiả thiết: $8pr^2 = 6996r \\Leftrightarrow pr = 874{,}5 \\Leftrightarrow S = 874{,}5$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho hình chữ nhật $ABCD$ có $AB = 8$, $AD = 6$. Gọi $P$ là trung điểm cạnh $CD$ và $Q$ là điểm thuộc cạnh $BC$ sao cho $QC = 2QB$. Tính bán kính đường tròn ngoại tiếp tam giác $APQ$.",
+   "option_a": "$\\dfrac{\\sqrt{55}}{2}$.", "option_b": "$\\dfrac{\\sqrt{442}}{5}$.", "option_c": "$4\\sqrt{2}$.", "option_d": "$\\dfrac{7\\sqrt{3}}{2}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nTính ba cạnh tam giác $APQ$ bằng Pythagore, diện tích bằng cách lấy hình chữ nhật trừ ba tam giác vuông, rồi $R = \\dfrac{AP \\cdot PQ \\cdot QA}{4S}$.\n\nLời giải:\n$DP = PC = 4$, $BQ = 2$, $QC = 4$.\n$AP^2 = 36 + 16 = 52$; $AQ^2 = 64 + 4 = 68$; $PQ^2 = 16 + 16 = 32$.\n$S_{APQ} = 48 - \\dfrac{1}{2} \\cdot 6 \\cdot 4 - \\dfrac{1}{2} \\cdot 8 \\cdot 2 - \\dfrac{1}{2} \\cdot 4 \\cdot 4 = 20$.\n$R = \\dfrac{\\sqrt{52 \\cdot 68 \\cdot 32}}{4 \\cdot 20} = \\dfrac{16\\sqrt{442}}{80} = \\dfrac{\\sqrt{442}}{5}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Tam giác $ABC$ có trọng tâm $G$. Hai trung tuyến $BM = 6$, $CN = 9$ và $\\widehat{BGC} = 120^\\circ$. Tính độ dài cạnh $AB$.",
+   "option_a": "$AB = \\sqrt{11}$.", "option_b": "$AB = \\sqrt{13}$.", "option_c": "$AB = 2\\sqrt{11}$.", "option_d": "$AB = 2\\sqrt{13}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$BG = \\dfrac{2}{3}BM$, $GN = \\dfrac{1}{3}CN$, $\\widehat{BGN} = 180^\\circ - \\widehat{BGC}$; định lí côsin trong tam giác $BGN$ rồi $AB = 2BN$.\n\nLời giải:\n$BG = 4$, $GN = 3$, $\\widehat{BGN} = 60^\\circ$.\n$BN^2 = 16 + 9 - 2 \\cdot 4 \\cdot 3\\cos 60^\\circ = 13 \\Rightarrow BN = \\sqrt{13} \\Rightarrow AB = 2\\sqrt{13}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "NLC", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $AB = c$, $BC = a$, $CA = b$. Nếu giữa $a$, $b$, $c$ có liên hệ $b^2 + c^2 = 2a^2$ thì độ dài đường trung tuyến xuất phát từ đỉnh $A$ của tam giác tính theo $a$ bằng:",
+   "option_a": "$\\dfrac{a\\sqrt{3}}{2}$.", "option_b": "$\\dfrac{a\\sqrt{3}}{3}$.", "option_c": "$2a\\sqrt{3}$.", "option_d": "$3a\\sqrt{3}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nCông thức đường trung tuyến.\n\nLời giải:\n$m_a^2 = \\dfrac{2\\left(b^2 + c^2\\right) - a^2}{4} = \\dfrac{4a^2 - a^2}{4} = \\dfrac{3a^2}{4} \\Rightarrow m_a = \\dfrac{a\\sqrt{3}}{2}$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Cho hình bình hành $ABCD$ có $AB = a$, $BC = b$, $BD = m$ và $AC = n$. Trong các biểu thức sau, biểu thức nào đúng:",
+   "option_a": "$m^2 + n^2 = 3\\left(a^2 + b^2\\right)$.", "option_b": "$m^2 + n^2 = 2\\left(a^2 + b^2\\right)$.", "option_c": "$2\\left(m^2 + n^2\\right) = a^2 + b^2$.", "option_d": "$3\\left(m^2 + n^2\\right) = a^2 + b^2$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin trong hai tam giác $ABD$ và $ABC$, với $\\widehat{ABC} = 180^\\circ - \\widehat{BAD}$ nên $\\cos\\widehat{ABC} = -\\cos\\widehat{BAD}$.\n\nLời giải:\n$BD^2 = a^2 + b^2 - 2ab\\cos\\widehat{BAD}$; $AC^2 = a^2 + b^2 - 2ab\\cos\\widehat{ABC} = a^2 + b^2 + 2ab\\cos\\widehat{BAD}$.\nCộng lại: $m^2 + n^2 = 2\\left(a^2 + b^2\\right)$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tính $\\dfrac{a + b + c}{4a - b}$ khi tam giác $ABC$ có đặc điểm $\\begin{cases} a = 2b\\cos C & (1) \\\\ a^2 = \\dfrac{a^3 - b^3 - c^3}{a - b - c} & (2) \\end{cases}$",
+   "option_a": "$2$.", "option_b": "$1$.", "option_c": "$3$.", "option_d": "$\\sqrt{3}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\n(1) với hệ quả định lí côsin cho $b = c$; (2) biến đổi cho $\\widehat{A} = 60^\\circ$.\n\nLời giải:\n(1): $a = 2b \\cdot \\dfrac{a^2 + b^2 - c^2}{2ab} \\Leftrightarrow a^2 = a^2 + b^2 - c^2 \\Leftrightarrow b = c$.\n(2): $a^3 - a^2b - a^2c = a^3 - b^3 - c^3 \\Leftrightarrow a^2(b + c) = b^3 + c^3 \\Leftrightarrow a^2 = b^2 - bc + c^2 \\Leftrightarrow \\cos A = \\dfrac{1}{2} \\Leftrightarrow \\widehat{A} = 60^\\circ$.\nTam giác cân có một góc $60^\\circ$ là tam giác đều: $a = b = c$. Vậy $\\dfrac{a + b + c}{4a - b} = \\dfrac{3a}{3a} = 1$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ có $AB = c$, $BC = a$, $CA = b$. Các cạnh $a$, $b$, $c$ liên hệ với nhau bởi đẳng thức $a^2 + b^2 = 5c^2$. Góc giữa hai trung tuyến $AM$ và $BN$ là góc nào?",
+   "option_a": "$30^\\circ$.", "option_b": "$45^\\circ$.", "option_c": "$60^\\circ$.", "option_d": "$90^\\circ$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nGọi $G$ là trọng tâm; $AG = \\dfrac{2}{3}m_a$, $BG = \\dfrac{2}{3}m_b$; so sánh $AG^2 + BG^2$ với $AB^2$.\n\nLời giải:\n$m_a^2 + m_b^2 = \\dfrac{2b^2 + 2c^2 - a^2 + 2a^2 + 2c^2 - b^2}{4} = \\dfrac{a^2 + b^2 + 4c^2}{4} = \\dfrac{9c^2}{4}$.\n$AG^2 + BG^2 = \\dfrac{4}{9}\\left(m_a^2 + m_b^2\\right) = c^2 = AB^2 \\Rightarrow \\widehat{AGB} = 90^\\circ$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ có $bc\\cos A + ca\\cos B + ab\\cos C = 6$. Tìm giá trị lớn nhất của $a + b + c$.",
+   "option_a": "$6$.", "option_b": "$8$.", "option_c": "$9$.", "option_d": "$10$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\n$2bc\\cos A = b^2 + c^2 - a^2$ (và tương tự) đưa giả thiết về $a^2 + b^2 + c^2$; rồi dùng $(a + b + c)^2 \\le 3\\left(a^2 + b^2 + c^2\\right)$.\n\nLời giải:\n$bc\\cos A + ca\\cos B + ab\\cos C = \\dfrac{a^2 + b^2 + c^2}{2} = 6 \\Rightarrow a^2 + b^2 + c^2 = 12$.\n$(a + b + c)^2 \\le 3 \\cdot 12 = 36 \\Rightarrow a + b + c \\le 6$. Dấu bằng khi $a = b = c = 2$ (tam giác đều).\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Cho tam giác $ABC$ thỏa mãn $h_a = \\sqrt{p(p - a)}$. Khẳng định nào sau đây đúng?",
+   "option_a": "$\\dfrac{2a - b}{2a + b} = \\dfrac{1}{3}$.", "option_b": "$\\dfrac{3c - b}{2c + b} = \\dfrac{2}{3}$.", "option_c": "$\\dfrac{2a - b}{2a + b} = \\dfrac{5}{3}$.", "option_d": "$\\dfrac{3c + 4b}{2c - b} = \\dfrac{7}{3}$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\n$h_a = \\dfrac{2S}{a}$ với $S = \\sqrt{p(p - a)(p - b)(p - c)}$ (Heron).\n\nLời giải:\n$\\dfrac{4p(p - a)(p - b)(p - c)}{a^2} = p(p - a) \\Leftrightarrow 4(p - b)(p - c) = a^2 \\Leftrightarrow (a + c - b)(a + b - c) = a^2 \\Leftrightarrow a^2 - (b - c)^2 = a^2 \\Leftrightarrow b = c$.\nKhi đó $\\dfrac{3c - b}{2c + b} = \\dfrac{2b}{3b} = \\dfrac{2}{3}$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Nhận dạng tam giác $ABC$ khi các cạnh và các góc thỏa mãn $\\cos B = \\dfrac{(a + b)(b + c - a)(a + c - b)}{2abc}$.",
+   "option_a": "Cân tại $B$.", "option_b": "Vuông tại $A$.", "option_c": "Vuông cân tại $C$.", "option_d": "Đều.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\n$(b + c - a)(a + c - b) = c^2 - (a - b)^2$; thay $\\cos B = \\dfrac{a^2 + c^2 - b^2}{2ac}$ rồi rút gọn.\n\nLời giải:\nGiả thiết $\\Leftrightarrow b\\left(a^2 + c^2 - b^2\\right) = (a + b)\\left[c^2 - (a - b)^2\\right]$.\nKhai triển vế phải: $ac^2 + bc^2 - a^3 + a^2b + ab^2 - b^3$. Vế trái: $a^2b + bc^2 - b^3$.\nHiệu vế trái trừ vế phải: $a^3 - ab^2 - ac^2 = a\\left(a^2 - b^2 - c^2\\right) = 0 \\Leftrightarrow a^2 = b^2 + c^2$.\nTam giác vuông tại $A$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "3",
+   "content": "Hai tam giác $ABC$, $DEF$ cùng nội tiếp đường tròn $(O)$ thỏa mãn điều kiện $\\sin A + \\sin B + \\sin C = \\sin D + \\sin E + \\sin F$. Nếu tam giác $ABC$ có chu vi bằng $3$ thì tam giác $DEF$ có chu vi là",
+   "option_a": "$3$.", "option_b": "$6$.", "option_c": "$2$.", "option_d": "$4$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nHai tam giác có cùng bán kính đường tròn ngoại tiếp $R$; định lí sin $\\sin A = \\dfrac{a}{2R}$, …\n\nLời giải:\n$\\dfrac{a + b + c}{2R} = \\dfrac{d + e + f}{2R} \\Rightarrow d + e + f = a + b + c = 3$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Chứng minh hệ thức, nhận dạng tam giác",
+   "question_type": "NLC", "difficulty": "4",
+   "content": "Tam giác $ABC$ thỏa mãn $2m_a = \\sqrt{b(b + 4c\\cos A)}$. Khẳng định nào sau đây đúng?",
+   "option_a": "$\\dfrac{2a - b}{2a + b} = \\dfrac{1}{3}$.", "option_b": "$\\dfrac{3c - b}{2c + b} = \\dfrac{2}{3}$.", "option_c": "$\\dfrac{3c + 4b}{2c - b} = \\dfrac{7}{3}$.", "option_d": "$\\dfrac{3c + 4b}{2c - b} = \\dfrac{5}{2}$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nBình phương, thay $2bc\\cos A = b^2 + c^2 - a^2$ và $4m_a^2 = 2b^2 + 2c^2 - a^2$.\n\nLời giải:\n$4m_a^2 = b^2 + 4bc\\cos A = b^2 + 2\\left(b^2 + c^2 - a^2\\right) = 3b^2 + 2c^2 - 2a^2$.\nMặt khác $4m_a^2 = 2b^2 + 2c^2 - a^2$, suy ra $b^2 = a^2 \\Leftrightarrow a = b$.\nKhi đó $\\dfrac{2a - b}{2a + b} = \\dfrac{a}{3a} = \\dfrac{1}{3}$.\nChọn A."
+  }
+ ]
+}

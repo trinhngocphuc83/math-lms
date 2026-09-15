@@ -1,0 +1,194 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Luyện kỹ năng Toán 10 - Trắc nghiệm hệ thức lượng tam giác thường (Giang Sơn), Cơ bản GTLG góc 0°-180° P2, tr. 5-6",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC",
+   "difficulty": "1",
+   "content": "Trong các đẳng thức sau đây, đẳng thức nào đúng?",
+   "option_a": "$\\sin(180^\\circ - \\alpha) = -\\sin\\alpha$.", "option_b": "$\\cos(180^\\circ - \\alpha) = \\cos\\alpha$.", "option_c": "$\\tan(180^\\circ - \\alpha) = \\tan\\alpha$.", "option_d": "$\\cot(180^\\circ - \\alpha) = -\\cot\\alpha$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nHai góc bù nhau: $\\sin(180^\\circ - \\alpha) = \\sin\\alpha$, $\\cos(180^\\circ - \\alpha) = -\\cos\\alpha$, $\\tan(180^\\circ - \\alpha) = -\\tan\\alpha$, $\\cot(180^\\circ - \\alpha) = -\\cot\\alpha$.\n\nLời giải:\nChỉ đẳng thức $\\cot(180^\\circ - \\alpha) = -\\cot\\alpha$ đúng.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC",
+   "difficulty": "1",
+   "content": "Cho $\\alpha$ và $\\beta$ là hai góc khác nhau và bù nhau, trong các đẳng thức sau đây đẳng thức nào sai?",
+   "option_a": "$\\sin\\alpha = \\sin\\beta$.", "option_b": "$\\cos\\alpha = -\\cos\\beta$.", "option_c": "$\\tan\\alpha = -\\tan\\beta$.", "option_d": "$\\cot\\alpha = \\cot\\beta$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nHai góc bù nhau có sin bằng nhau; côsin, tang, côtang đối nhau.\n\nLời giải:\n$\\beta = 180^\\circ - \\alpha$ nên $\\cot\\beta = -\\cot\\alpha$, do đó $\\cot\\alpha = \\cot\\beta$ là sai.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC",
+   "difficulty": "1",
+   "content": "Cho góc $\\alpha$ tù. Điều khẳng định nào sau đây là đúng?",
+   "option_a": "$\\sin\\alpha < 0$.", "option_b": "$\\cos\\alpha > 0$.", "option_c": "$\\tan\\alpha > 0$.", "option_d": "$\\cot\\alpha < 0$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nGóc tù ($90^\\circ < \\alpha < 180^\\circ$) có $\\sin\\alpha > 0$, $\\cos\\alpha < 0$ nên $\\tan\\alpha < 0$, $\\cot\\alpha < 0$.\n\nLời giải:\nKhẳng định đúng là $\\cot\\alpha < 0$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC",
+   "difficulty": "1",
+   "content": "Hai góc nhọn $\\alpha$ và $\\beta$ phụ nhau, hệ thức nào sau đây là sai?",
+   "option_a": "$\\sin\\alpha = \\cos\\beta$.", "option_b": "$\\tan\\alpha = \\cot\\beta$.", "option_c": "$\\cot\\beta = \\dfrac{1}{\\cot\\alpha}$.", "option_d": "$\\cos\\alpha = -\\sin\\beta$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nHai góc phụ nhau: $\\sin\\alpha = \\cos\\beta$, $\\cos\\alpha = \\sin\\beta$, $\\tan\\alpha = \\cot\\beta$.\n\nLời giải:\n$\\cos\\alpha = \\sin\\beta > 0$, nên $\\cos\\alpha = -\\sin\\beta$ là sai. Hệ thức C đúng vì $\\cot\\beta = \\tan\\alpha = \\dfrac{1}{\\cot\\alpha}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC",
+   "difficulty": "1",
+   "content": "Trên nửa đường tròn đơn vị cho điểm $M(x_0; y_0)$ sao cho $\\widehat{xOM} = \\alpha$ như hình bên. Tìm mệnh đề đúng.\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-l10c3-lkn-p5c7.png)",
+   "option_a": "$\\tan\\alpha = \\dfrac{x_0}{y_0}$.", "option_b": "$\\tan\\alpha = \\dfrac{y_0}{x_0}$.", "option_c": "$\\tan\\alpha = x_0$.", "option_d": "$\\tan\\alpha = y_0$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nTrên nửa đường tròn đơn vị: $\\sin\\alpha = y_0$, $\\cos\\alpha = x_0$, $\\tan\\alpha = \\dfrac{\\sin\\alpha}{\\cos\\alpha}$.\n\nLời giải:\n$\\tan\\alpha = \\dfrac{y_0}{x_0}$ (với $x_0 \\ne 0$).\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Đơn giản biểu thức $G = (1 - \\sin^2 x)\\cot^2 x + 1 - \\cot^2 x$.",
+   "option_a": "$\\sin^2 x$.", "option_b": "$\\cos^2 x$.", "option_c": "$\\dfrac{1}{\\cos x}$.", "option_d": "$\\cos x$.",
+   "correct_answer": "A",
+   "explanation": "Phương pháp giải:\nDùng $1 - \\sin^2 x = \\cos^2 x$ và $\\cot x = \\dfrac{\\cos x}{\\sin x}$.\n\nLời giải:\n$G = \\cos^2 x\\cot^2 x + 1 - \\cot^2 x = \\cot^2 x(\\cos^2 x - 1) + 1 = -\\cot^2 x \\sin^2 x + 1 = -\\cos^2 x + 1 = \\sin^2 x$.\nChọn A."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Đơn giản biểu thức $E = \\cot x + \\dfrac{\\sin x}{1 + \\cos x}$ ta được",
+   "option_a": "$\\sin x$.", "option_b": "$\\dfrac{1}{\\cos x}$.", "option_c": "$\\dfrac{1}{\\sin x}$.", "option_d": "$\\cos x$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nViết $\\cot x = \\dfrac{\\cos x}{\\sin x}$ rồi quy đồng, dùng $\\sin^2 x + \\cos^2 x = 1$.\n\nLời giải:\n$E = \\dfrac{\\cos x(1 + \\cos x) + \\sin^2 x}{\\sin x(1 + \\cos x)} = \\dfrac{\\cos x + \\cos^2 x + \\sin^2 x}{\\sin x(1 + \\cos x)} = \\dfrac{1 + \\cos x}{\\sin x(1 + \\cos x)} = \\dfrac{1}{\\sin x}$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "1",
+   "content": "Khẳng định nào sau đây là sai?",
+   "option_a": "$\\sin^2\\alpha + \\cos^2\\alpha = 1$.", "option_b": "$1 + \\cot^2\\alpha = \\dfrac{1}{\\sin^2\\alpha}$ $(\\sin\\alpha \\ne 0)$.", "option_c": "$\\tan\\alpha \\cdot \\cot\\alpha = -1$ $(\\sin\\alpha \\cdot \\cos\\alpha \\ne 0)$.", "option_d": "$1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}$ $(\\cos\\alpha \\ne 0)$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\nNhớ các hệ thức lượng giác cơ bản.\n\nLời giải:\n$\\tan\\alpha \\cdot \\cot\\alpha = 1$ chứ không phải $-1$, nên C sai.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác của một góc từ 0° đến 180°",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Bất đẳng thức nào dưới đây là đúng?",
+   "option_a": "$\\sin 90^\\circ < \\sin 100^\\circ$.", "option_b": "$\\cos 95^\\circ > \\cos 100^\\circ$.", "option_c": "$\\tan 85^\\circ < \\tan 125^\\circ$.", "option_d": "$\\cos 145^\\circ > \\cos 125^\\circ$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nTrên $[0^\\circ; 180^\\circ]$, $\\cos\\alpha$ giảm khi $\\alpha$ tăng; $\\sin 90^\\circ = 1$ là giá trị lớn nhất của sin; tang của góc nhọn dương, của góc tù âm.\n\nLời giải:\nA sai vì $\\sin 90^\\circ = 1 > \\sin 100^\\circ$. C sai vì $\\tan 85^\\circ > 0 > \\tan 125^\\circ$. D sai vì $145^\\circ > 125^\\circ$ nên $\\cos 145^\\circ < \\cos 125^\\circ$.\nB đúng vì $95^\\circ < 100^\\circ$ nên $\\cos 95^\\circ > \\cos 100^\\circ$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Cho $\\sin\\alpha = \\dfrac{3}{5}$, $(90^\\circ < \\alpha < 180^\\circ)$. Tính $P = \\cot(180^\\circ - \\alpha)$.",
+   "option_a": "$P = \\dfrac{3}{4}$.", "option_b": "$P = -\\dfrac{3}{4}$.", "option_c": "$P = -\\dfrac{4}{3}$.", "option_d": "$P = \\dfrac{4}{3}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nTính $\\cos\\alpha$ (âm vì góc tù), suy ra $\\cot\\alpha$, rồi dùng $\\cot(180^\\circ - \\alpha) = -\\cot\\alpha$.\n\nLời giải:\n$\\cos\\alpha = -\\sqrt{1 - \\dfrac{9}{25}} = -\\dfrac{4}{5}$, $\\cot\\alpha = \\dfrac{\\cos\\alpha}{\\sin\\alpha} = -\\dfrac{4}{3}$.\n$P = \\cot(180^\\circ - \\alpha) = -\\cot\\alpha = \\dfrac{4}{3}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Cho biết $\\cos\\alpha = -\\dfrac{2}{3}$. Tính $\\tan\\alpha$?",
+   "option_a": "$\\dfrac{5}{4}$.", "option_b": "$-\\dfrac{5}{2}$.", "option_c": "$\\dfrac{\\sqrt{5}}{2}$.", "option_d": "$-\\dfrac{\\sqrt{5}}{2}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$\\cos\\alpha < 0$ nên $\\alpha$ là góc tù, $\\tan\\alpha < 0$; dùng $1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}$.\n\nLời giải:\n$\\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha} - 1 = \\dfrac{9}{4} - 1 = \\dfrac{5}{4}$. Vì $\\tan\\alpha < 0$ nên $\\tan\\alpha = -\\dfrac{\\sqrt{5}}{2}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Đẳng thức nào sau đây là sai?",
+   "option_a": "$\\dfrac{1 - \\cos x}{\\sin x} = \\dfrac{\\sin x}{1 + \\cos x}$ $(x \\ne 0^\\circ, x \\ne 180^\\circ)$.", "option_b": "$\\tan x + \\cot x = \\dfrac{1}{\\sin x\\cos x}$ $(x \\ne 0^\\circ, 90^\\circ, 180^\\circ)$.", "option_c": "$\\tan^2 x + \\cot^2 x = \\dfrac{1}{\\sin^2 x\\cos^2 x} - 2$ $(x \\ne 0^\\circ, 90^\\circ, 180^\\circ)$.", "option_d": "$\\sin^2 2x + \\cos^2 2x = 2$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nDùng $\\sin^2 u + \\cos^2 u = 1$ với mọi góc $u$ và các hệ thức cơ bản.\n\nLời giải:\n$\\sin^2 2x + \\cos^2 2x = 1 \\ne 2$ nên D sai.\nA đúng vì $(1 - \\cos x)(1 + \\cos x) = \\sin^2 x$. B đúng vì $\\tan x + \\cot x = \\dfrac{\\sin^2 x + \\cos^2 x}{\\sin x\\cos x}$. C đúng vì $\\tan^2 x + \\cot^2 x = (\\tan x + \\cot x)^2 - 2$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Biểu thức $\\tan^2 x\\sin^2 x - \\tan^2 x + \\sin^2 x$ có giá trị bằng",
+   "option_a": "$-1$.", "option_b": "$0$.", "option_c": "$2$.", "option_d": "$1$.",
+   "correct_answer": "B",
+   "explanation": "Phương pháp giải:\nNhóm $\\tan^2 x$ rồi dùng $\\sin^2 x - 1 = -\\cos^2 x$ và $\\tan^2 x\\cos^2 x = \\sin^2 x$.\n\nLời giải:\n$\\tan^2 x(\\sin^2 x - 1) + \\sin^2 x = -\\tan^2 x\\cos^2 x + \\sin^2 x = -\\sin^2 x + \\sin^2 x = 0$.\nChọn B."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Với $0^\\circ \\le \\alpha \\le 180^\\circ$, $\\cos\\alpha$ bằng bao nhiêu nếu $\\cot\\alpha = -\\dfrac{1}{2}$?",
+   "option_a": "$\\pm\\dfrac{\\sqrt{5}}{5}$.", "option_b": "$\\dfrac{\\sqrt{5}}{2}$.", "option_c": "$-\\dfrac{\\sqrt{5}}{5}$.", "option_d": "$-\\dfrac{1}{3}$.",
+   "correct_answer": "C",
+   "explanation": "Phương pháp giải:\n$\\cot\\alpha < 0$ nên $\\alpha$ là góc tù, $\\cos\\alpha < 0$; dùng $\\tan\\alpha = \\dfrac{1}{\\cot\\alpha}$ và $1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}$.\n\nLời giải:\n$\\tan\\alpha = -2$, $\\cos^2\\alpha = \\dfrac{1}{1 + 4} = \\dfrac{1}{5}$. Vì $\\alpha$ tù nên $\\cos\\alpha = -\\dfrac{1}{\\sqrt{5}} = -\\dfrac{\\sqrt{5}}{5}$.\nChọn C."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Với $0^\\circ \\le \\alpha \\le 180^\\circ$, nếu $\\tan\\alpha = 3$ thì $\\cos\\alpha$ bằng bao nhiêu?",
+   "option_a": "$-\\dfrac{\\sqrt{10}}{10}$.", "option_b": "$\\dfrac{1}{3}$.", "option_c": "$\\pm\\dfrac{\\sqrt{10}}{10}$.", "option_d": "$\\dfrac{\\sqrt{10}}{10}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$\\tan\\alpha > 0$ nên $\\alpha$ là góc nhọn, $\\cos\\alpha > 0$; dùng $1 + \\tan^2\\alpha = \\dfrac{1}{\\cos^2\\alpha}$.\n\nLời giải:\n$\\cos^2\\alpha = \\dfrac{1}{1 + 9} = \\dfrac{1}{10}$, mà $\\cos\\alpha > 0$ nên $\\cos\\alpha = \\dfrac{\\sqrt{10}}{10}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "3",
+   "content": "Biết $\\cot\\alpha = -a$, $a > 0$. Tính $\\cos\\alpha$.",
+   "option_a": "$\\cos\\alpha = \\dfrac{a}{\\sqrt{1 + a^2}}$.", "option_b": "$\\cos\\alpha = \\dfrac{1}{\\sqrt{1 + a^2}}$.", "option_c": "$\\cos\\alpha = -\\dfrac{1}{\\sqrt{1 + a^2}}$.", "option_d": "$\\cos\\alpha = -\\dfrac{a}{\\sqrt{1 + a^2}}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\n$\\cot\\alpha < 0$ nên $\\alpha$ tù, $\\cos\\alpha < 0$; dùng $1 + \\cot^2\\alpha = \\dfrac{1}{\\sin^2\\alpha}$ và $\\cos\\alpha = \\cot\\alpha \\cdot \\sin\\alpha$.\n\nLời giải:\n$\\sin^2\\alpha = \\dfrac{1}{1 + a^2}$, $\\sin\\alpha > 0$ nên $\\sin\\alpha = \\dfrac{1}{\\sqrt{1 + a^2}}$.\n$\\cos\\alpha = \\cot\\alpha \\cdot \\sin\\alpha = -\\dfrac{a}{\\sqrt{1 + a^2}}$.\nChọn D."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác",
+   "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+   "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+   "question_type": "NLC",
+   "difficulty": "2",
+   "content": "Cho $\\alpha$ là góc tù và $\\sin\\alpha = \\dfrac{4}{5}$. Giá trị của biểu thức $A = 2\\sin\\alpha - \\cos\\alpha$ bằng",
+   "option_a": "$\\dfrac{-7}{5}$.", "option_b": "$\\dfrac{7}{5}$.", "option_c": "$1$.", "option_d": "$\\dfrac{11}{5}$.",
+   "correct_answer": "D",
+   "explanation": "Phương pháp giải:\nTính $\\cos\\alpha$ từ $\\sin^2\\alpha + \\cos^2\\alpha = 1$, góc tù nên $\\cos\\alpha < 0$.\n\nLời giải:\n$\\cos\\alpha = -\\sqrt{1 - \\dfrac{16}{25}} = -\\dfrac{3}{5}$.\n$A = 2 \\cdot \\dfrac{4}{5} + \\dfrac{3}{5} = \\dfrac{11}{5}$.\nChọn D."
+  }
+ ]
+}

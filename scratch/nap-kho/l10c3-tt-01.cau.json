@@ -1,0 +1,147 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Chuyên đề toán thực tế hệ thức lượng trong tam giác (Toán 10), câu 1-20",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Từ một tấm bìa hình tròn, bạn An cắt ra được một hình tam giác có các cạnh $AB = 8$ cm, $BC = 15$ cm và góc $\\widehat{B} = 60^\\circ$. Tính độ dài cạnh $AC$ và bán kính $R$ của miếng bìa.",
+   "correct_answer": "AC = 13 cm; R = 13√3/3 ≈ 7,5 cm",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $AC$; định lí sin $\\dfrac{AC}{\\sin B} = 2R$.\n\nLời giải:\n$AC^2 = AB^2 + BC^2 - 2AB \\cdot BC\\cos B = 64 + 225 - 2 \\cdot 8 \\cdot 15 \\cdot \\dfrac{1}{2} = 169 \\Rightarrow AC = 13$ cm.\n$R = \\dfrac{AC}{2\\sin B} = \\dfrac{13}{2\\sin 60^\\circ} = \\dfrac{13\\sqrt{3}}{3} \\approx 7{,}5$ cm."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Để đo khoảng cách từ vị trí $A$ đến vị trí $B$ ở hai bên bờ một cái ao, bạn An đi dọc bờ ao từ vị trí $A$ đến vị trí $C$ và tiến hành đo các góc $\\widehat{BAC}$, $\\widehat{BCA}$. Biết $AC = 25$ m, $\\widehat{BAC} = 59{,}95^\\circ$, $\\widehat{BCA} = 82{,}15^\\circ$. Hỏi khoảng cách từ vị trí $A$ đến vị trí $B$ là bao nhiêu mét (làm tròn kết quả đến hàng đơn vị)?",
+   "correct_answer": "40",
+   "explanation": "Phương pháp giải:\nTính góc $B$ rồi dùng định lí sin: $\\dfrac{AB}{\\sin C} = \\dfrac{AC}{\\sin B}$.\n\nLời giải:\n$\\widehat{ABC} = 180^\\circ - 59{,}95^\\circ - 82{,}15^\\circ = 37{,}9^\\circ$.\n$AB = \\dfrac{AC\\sin C}{\\sin B} = \\dfrac{25\\sin 82{,}15^\\circ}{\\sin 37{,}9^\\circ} \\approx 40{,}3 \\approx 40$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Hai tàu đánh cá cùng xuất phát từ bến $A$ và đi thẳng đều về hai vùng biển khác nhau, theo hai hướng tạo với nhau góc $75^\\circ$. Tàu thứ nhất đi với tốc độ $8$ hải lí một giờ và tàu thứ hai đi với tốc độ $12$ hải lí một giờ. Hỏi sau $2{,}5$ giờ thì khoảng cách giữa hai tàu là bao nhiêu hải lí (làm tròn kết quả đến hàng phần mười)?",
+   "correct_answer": "31,5",
+   "explanation": "Phương pháp giải:\nGọi $B$, $C$ là vị trí hai tàu sau $2{,}5$ giờ; định lí côsin trong tam giác $ABC$.\n\nLời giải:\n$AB = 2{,}5 \\cdot 8 = 20$; $AC = 2{,}5 \\cdot 12 = 30$ (hải lí).\n$BC^2 = 20^2 + 30^2 - 2 \\cdot 20 \\cdot 30\\cos 75^\\circ \\approx 989{,}4 \\Rightarrow BC \\approx 31{,}5$ (hải lí)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "3",
+   "content": "Người A đứng ở đỉnh của tòa nhà và quan sát chiếc diều, nhận thấy góc nâng (góc nghiêng giữa phương từ mắt của người A tới chiếc diều và phương nằm ngang) là $\\alpha = 35^\\circ$; khoảng cách từ đỉnh tòa nhà tới mắt người A là $1{,}5$ m. Cùng lúc đó ở dưới chân tòa nhà, người B cũng quan sát chiếc diều và thấy góc nâng là $\\beta = 75^\\circ$; khoảng cách từ mặt đất đến mắt người B cũng là $1{,}5$ m. Biết chiều cao của tòa nhà là $h = 20$ m. Chiếc diều bay cao bao nhiêu mét so với mặt đất (làm tròn kết quả đến hàng đơn vị)?",
+   "correct_answer": "26",
+   "explanation": "Phương pháp giải:\nGọi $M$, $N$ là vị trí mắt người B, người A ($MN = 20$ m, thẳng đứng), $D$ là chiếc diều. Tính các góc tam giác $MND$ rồi dùng định lí sin; chiều cao diều $= 1{,}5 + MD\\sin 75^\\circ$.\n\nLời giải:\n$\\widehat{MND} = 90^\\circ + 35^\\circ = 125^\\circ$, $\\widehat{NMD} = 90^\\circ - 75^\\circ = 15^\\circ$, $\\widehat{MDN} = 40^\\circ$.\n$MD = \\dfrac{MN\\sin\\widehat{MND}}{\\sin\\widehat{MDN}} = \\dfrac{20\\sin 125^\\circ}{\\sin 40^\\circ} \\approx 25{,}5$ (m).\nĐộ cao của diều so với mắt người B: $MD\\sin 75^\\circ \\approx 24{,}6$ m. Vậy diều bay cao $1{,}5 + 24{,}6 \\approx 26$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Tàu $A$ cách cảng $C$ một khoảng $3$ km và lệch hướng bắc một góc $47{,}45^\\circ$. Tàu $B$ cách cảng $C$ một khoảng $5$ km và lệch hướng bắc một góc $112{,}90^\\circ$ (hình vẽ). Hỏi khoảng cách giữa hai tàu là bao nhiêu ki-lô-mét (làm tròn kết quả đến hàng phần trăm)?\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-l10c3-tt-c8.png)",
+   "correct_answer": "4,64",
+   "explanation": "Phương pháp giải:\n$\\widehat{ACB} = 112{,}90^\\circ - 47{,}45^\\circ$; định lí côsin.\n\nLời giải:\n$\\widehat{ACB} = 65{,}45^\\circ$.\n$AB^2 = 3^2 + 5^2 - 2 \\cdot 3 \\cdot 5\\cos 65{,}45^\\circ \\approx 21{,}54 \\Rightarrow AB \\approx 4{,}64$ (km)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Từ một phần của miếng tôn hình tròn người ta cắt ra được một hình tam giác $ABC$ có $AB = 6$ cm, $AC = 8$ cm, $\\widehat{A} = 150^\\circ$. Tính bán kính của miếng tôn ban đầu (làm tròn kết quả đến hàng phần mười theo đơn vị xăng-ti-mét) và diện tích tam giác $ABC$.",
+   "correct_answer": "R ≈ 13,5 cm; S = 12 cm²",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $BC$; $R = \\dfrac{BC}{2\\sin A}$; $S = \\dfrac{1}{2}AB \\cdot AC\\sin A$.\n\nLời giải:\n$BC^2 = 36 + 64 - 2 \\cdot 6 \\cdot 8\\cos 150^\\circ \\approx 183{,}14 \\Rightarrow BC \\approx 13{,}5$ cm.\n$R = \\dfrac{BC}{2\\sin 150^\\circ} = BC \\approx 13{,}5$ cm.\n$S = \\dfrac{1}{2} \\cdot 6 \\cdot 8\\sin 150^\\circ = 12$ (cm$^2$)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Để tính khoảng cách giữa hai địa điểm $A$ và $B$ mà ta không thể đi trực tiếp từ $A$ đến $B$ (hai địa điểm nằm ở hai bên bờ một hồ nước, một đầm lầy, …), người ta tiến hành như sau: Chọn một địa điểm $C$ sao cho ta đo được các khoảng cách $AC$, $CB$ và góc $\\widehat{ACB}$. Sau khi đo ta nhận được: $AC = 1$ km, $CB = 800$ m và $\\widehat{ACB} = 105^\\circ$. Tính khoảng cách $AB$ theo đơn vị ki-lô-mét (làm tròn kết quả đến hàng phần trăm).",
+   "correct_answer": "1,43",
+   "explanation": "Phương pháp giải:\nĐổi $CB = 0{,}8$ km; định lí côsin.\n\nLời giải:\n$AB^2 = 1^2 + 0{,}8^2 - 2 \\cdot 1 \\cdot 0{,}8\\cos 105^\\circ \\approx 2{,}054 \\Rightarrow AB \\approx 1{,}433 \\approx 1{,}43$ (km)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "3",
+   "content": "Một người đi dọc bờ biển từ vị trí $A$ đến vị trí $B$ và quan sát một ngọn hải đăng $C$. Góc nghiêng của phương quan sát từ các vị trí $A$, $B$ tới ngọn hải đăng với đường đi của người quan sát lần lượt là $45^\\circ$ và $75^\\circ$ (tức là $\\widehat{CAB} = 45^\\circ$ và góc giữa $BC$ với tia $Bx$ tiếp tục đường đi là $75^\\circ$). Biết khoảng cách giữa hai vị trí $A$, $B$ là $30$ m. Ngọn hải đăng cách bờ biển bao nhiêu mét (làm tròn kết quả đến hàng đơn vị)?",
+   "correct_answer": "41",
+   "explanation": "Phương pháp giải:\nGóc ngoài: $\\widehat{ACB} = 75^\\circ - 45^\\circ = 30^\\circ$; định lí sin tìm $BC$; khoảng cách cần tìm là $CH = BC\\sin 75^\\circ$ ($H$ là hình chiếu của $C$ trên đường bờ biển).\n\nLời giải:\n$\\dfrac{BC}{\\sin 45^\\circ} = \\dfrac{AB}{\\sin 30^\\circ} \\Rightarrow BC = \\dfrac{30\\sin 45^\\circ}{\\sin 30^\\circ} = 30\\sqrt{2}$.\n$CH = BC\\sin 75^\\circ = 30\\sqrt{2}\\sin 75^\\circ \\approx 41$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Gia đình bạn An sở hữu một mảnh đất hình tam giác $MNP$. Chiều dài của hàng rào $MN$ là $150$ m, chiều dài của hàng rào $MP$ là $230$ m. Góc giữa hai hàng rào $MN$ và $MP$ là $110^\\circ$.\na) Diện tích mảnh đất mà gia đình bạn An sở hữu là bao nhiêu mét vuông (làm tròn kết quả đến hàng phần mười)?\nb) Chiều dài hàng rào $NP$ là bao nhiêu mét (làm tròn kết quả đến hàng phần mười)?",
+   "correct_answer": "a) S ≈ 16209,7 m²; b) NP ≈ 314,6 m",
+   "explanation": "Phương pháp giải:\n$S = \\dfrac{1}{2}MN \\cdot MP\\sin M$; định lí côsin.\n\nLời giải:\na) $S = \\dfrac{1}{2} \\cdot 150 \\cdot 230 \\cdot \\sin 110^\\circ \\approx 16209{,}7$ (m$^2$).\nb) $NP^2 = 150^2 + 230^2 - 2 \\cdot 150 \\cdot 230\\cos 110^\\circ \\approx 98999{,}4 \\Rightarrow NP \\approx 314{,}6$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Hai người $A$ và $B$ cùng quan sát một con tàu đang neo đậu ngoài khơi tại vị trí $C$. Người $A$ đứng trên bờ biển, người $B$ đứng trên một hòn đảo cách bờ một khoảng $AB = 100$ m. Hai người tiến hành đo đạc và thu được kết quả: $\\widehat{CAB} = 54^\\circ$, $\\widehat{CBA} = 74^\\circ$. Hỏi con tàu cách hòn đảo bao xa (làm tròn kết quả đến hàng đơn vị theo đơn vị mét)?",
+   "correct_answer": "103",
+   "explanation": "Phương pháp giải:\nTính $\\widehat{C}$ rồi định lí sin: $\\dfrac{BC}{\\sin A} = \\dfrac{AB}{\\sin C}$.\n\nLời giải:\n$\\widehat{C} = 180^\\circ - 54^\\circ - 74^\\circ = 52^\\circ$.\n$BC = \\dfrac{AB\\sin A}{\\sin C} = \\dfrac{100\\sin 54^\\circ}{\\sin 52^\\circ} \\approx 102{,}7 \\approx 103$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Một người đi dọc bờ biển từ vị trí $A$ đến vị trí $B$ và quan sát một con tàu $C$ đang neo đậu ngoài khơi. Người đó tiến hành đo đạc và thu được kết quả: $AB = 30$ m, $\\widehat{CAB} = 60^\\circ$, $\\widehat{CBA} = 50^\\circ$. Tính khoảng cách từ vị trí $A$ đến con tàu $C$ (làm tròn kết quả đến hàng phần mười theo đơn vị mét).",
+   "correct_answer": "24,5",
+   "explanation": "Phương pháp giải:\nTính $\\widehat{C}$ rồi định lí sin.\n\nLời giải:\n$\\widehat{C} = 180^\\circ - 60^\\circ - 50^\\circ = 70^\\circ$.\n$AC = \\dfrac{AB\\sin B}{\\sin C} = \\dfrac{30\\sin 50^\\circ}{\\sin 70^\\circ} \\approx 24{,}5$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL", "difficulty": "3",
+   "content": "Lúc 6 giờ sáng, bạn An đi xe đạp từ nhà (điểm $A$) đến trường (điểm $B$) phải leo lên và xuống một con dốc có đỉnh $C$. Cho biết đoạn thẳng $AB$ dài $762$ m, $\\widehat{A} = 6^\\circ$, $\\widehat{B} = 4^\\circ$.\na) Tính chiều cao $h$ của con dốc theo đơn vị mét (làm tròn kết quả đến hàng đơn vị).\nb) Hỏi bạn An đến trường lúc mấy giờ? Biết rằng tốc độ trung bình lên dốc là $4$ km/h và tốc độ trung bình khi xuống dốc là $19$ km/h.",
+   "correct_answer": "a) h ≈ 32 m; b) khoảng 6 giờ 6 phút",
+   "explanation": "Phương pháp giải:\n$\\widehat{ACB} = 170^\\circ$; định lí sin tìm $AC$, $BC$; $h = AC\\sin 6^\\circ$; thời gian $= \\dfrac{AC}{4} + \\dfrac{BC}{19}$ (đổi ra km).\n\nLời giải:\na) $AC = \\dfrac{AB\\sin B}{\\sin C} = \\dfrac{762\\sin 4^\\circ}{\\sin 170^\\circ} \\approx 306$ (m); $h = AC\\sin 6^\\circ \\approx 32$ (m).\nb) $BC = \\dfrac{762\\sin 6^\\circ}{\\sin 170^\\circ} \\approx 459$ (m).\n$t = \\dfrac{0{,}306}{4} + \\dfrac{0{,}459}{19} \\approx 0{,}1$ (giờ) $= 6$ (phút). Vậy bạn An đến trường lúc khoảng 6 giờ 6 phút."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "3",
+   "content": "Quan sát cây cầu dây văng. Tại trụ cao nhất, khoảng cách từ đỉnh trụ (vị trí $A$) tới chân trụ trên mặt cầu (vị trí $H$) là $150$ m, độ dài dây văng dài nhất nối từ đỉnh trụ xuống mặt cầu (vị trí $B$) là $300$ m, khoảng cách từ chân dây văng dài nhất tới chân trụ trên mặt cầu là $250$ m (hình vẽ). Tính độ dốc của cầu qua trụ nói trên, tức là góc nghiêng giữa đường cầu $BH$ và phương nằm ngang (làm tròn kết quả đến hàng phần mười theo đơn vị độ).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-l10c3-tt-c18.png)",
+   "correct_answer": "3,8",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin trong tam giác $ABH$ tìm $\\widehat{AHB}$; trụ $AH$ thẳng đứng nên độ dốc $= \\widehat{AHB} - 90^\\circ$.\n\nLời giải:\n$\\cos\\widehat{AHB} = \\dfrac{BH^2 + AH^2 - AB^2}{2BH \\cdot AH} = \\dfrac{250^2 + 150^2 - 300^2}{2 \\cdot 250 \\cdot 150} = -\\dfrac{1}{15} \\Rightarrow \\widehat{AHB} \\approx 93{,}8^\\circ$.\nĐộ dốc của cầu: $\\widehat{HBK} = 93{,}8^\\circ - 90^\\circ = 3{,}8^\\circ$ (góc ngoài của tam giác vuông $BHK$)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "3",
+   "content": "Một người đứng ở vị trí $A$ trên nóc một ngôi nhà cao $4$ m đang quan sát một cây cao cách ngôi nhà $20$ m và đo được $\\widehat{BAC} = 45^\\circ$ ($B$ là gốc cây, $C$ là ngọn cây, $H$ là chân ngôi nhà, $HB = 20$ m). Tính chiều cao của cây đó (làm tròn kết quả đến hàng phần mười theo đơn vị mét).",
+   "correct_answer": "17,3",
+   "explanation": "Phương pháp giải:\nPythagore trong tam giác $ABH$; $\\widehat{ABC} = 90^\\circ - \\widehat{ABH}$; định lí sin trong tam giác $ABC$.\n\nLời giải:\n$AB = \\sqrt{4^2 + 20^2} = 4\\sqrt{26}$ (m); $\\tan\\widehat{ABH} = \\dfrac{4}{20} = 0{,}2 \\Rightarrow \\widehat{ABH} \\approx 11{,}3^\\circ$.\n$\\widehat{ABC} \\approx 90^\\circ - 11{,}3^\\circ = 78{,}7^\\circ$; $\\widehat{ACB} \\approx 180^\\circ - 45^\\circ - 78{,}7^\\circ = 56{,}3^\\circ$.\n$BC = \\dfrac{AB\\sin A}{\\sin C} \\approx \\dfrac{4\\sqrt{26}\\sin 45^\\circ}{\\sin 56{,}3^\\circ} \\approx 17{,}3$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TL", "difficulty": "2",
+   "content": "Một công viên có dạng hình tam giác $ABC$ với $AB = 500$ m, $AC = 700$ m, $BC = 800$ m. Tính số đo các góc của tam giác đó.",
+   "correct_answer": "A ≈ 81°47'; B = 60°; C ≈ 38°13'",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin cho từng góc.\n\nLời giải:\nĐặt $a = BC = 800$, $b = AC = 700$, $c = AB = 500$.\n$\\cos A = \\dfrac{700^2 + 500^2 - 800^2}{2 \\cdot 700 \\cdot 500} = \\dfrac{1}{7} \\Rightarrow \\widehat{A} \\approx 81^\\circ 47'$.\n$\\cos B = \\dfrac{500^2 + 800^2 - 700^2}{2 \\cdot 500 \\cdot 800} = \\dfrac{1}{2} \\Rightarrow \\widehat{B} = 60^\\circ$.\n$\\cos C = \\dfrac{800^2 + 700^2 - 500^2}{2 \\cdot 800 \\cdot 700} = \\dfrac{11}{14} \\Rightarrow \\widehat{C} \\approx 38^\\circ 13'$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "1",
+   "content": "Tính diện tích một lá cờ hình tam giác cân có độ dài cạnh bên là $90$ cm và góc ở đỉnh là $35^\\circ$ (đơn vị cm$^2$, làm tròn kết quả đến hàng đơn vị).",
+   "correct_answer": "2323",
+   "explanation": "Phương pháp giải:\n$S = \\dfrac{1}{2}bc\\sin A$.\n\nLời giải:\n$S = \\dfrac{1}{2} \\cdot 90 \\cdot 90 \\cdot \\sin 35^\\circ \\approx 2323$ (cm$^2$)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Tính khoảng cách giữa hai điểm $P$ và $Q$ của một hồ nước. Cho biết từ một điểm $O$ cách hai điểm $P$ và $Q$ lần lượt là $1400$ m và $600$ m, người quan sát nhìn thấy một góc $\\widehat{POQ} = 76^\\circ$ (làm tròn kết quả đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "1383",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin trong tam giác $OPQ$.\n\nLời giải:\n$PQ = \\sqrt{OP^2 + OQ^2 - 2OP \\cdot OQ\\cos O} = \\sqrt{1400^2 + 600^2 - 2 \\cdot 1400 \\cdot 600\\cos 76^\\circ} \\approx 1383{,}3 \\approx 1383$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Tính khoảng cách từ vị trí $M$ của một người đang gọi điện thoại di động đến trạm phát sóng $B$, biết trạm phát sóng $A$ cách $M$ là $1{,}8$ km, hai trạm $A$, $B$ cách nhau $2$ km và $\\widehat{MAB} = 32^\\circ$ (làm tròn kết quả đến hàng phần trăm theo đơn vị ki-lô-mét).",
+   "correct_answer": "1,06",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin trong tam giác $MAB$.\n\nLời giải:\n$MB^2 = AB^2 + AM^2 - 2AB \\cdot AM\\cos A = 2^2 + 1{,}8^2 - 2 \\cdot 2 \\cdot 1{,}8\\cos 32^\\circ \\approx 1{,}134 \\Rightarrow MB \\approx 1{,}06$ (km)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Tính chiều dài của đường hầm $AB$ xuyên qua núi, biết một người quan sát đứng ở vị trí $M$ đo được $MA = 250$ m, $MB = 106$ m và $\\widehat{AMB} = 81^\\circ$ (làm tròn kết quả đến hàng đơn vị theo đơn vị mét).",
+   "correct_answer": "256",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin trong tam giác $MAB$.\n\nLời giải:\n$AB^2 = 250^2 + 106^2 - 2 \\cdot 250 \\cdot 106\\cos 81^\\circ \\approx 65445 \\Rightarrow AB \\approx 255{,}8 \\approx 256$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "TLN", "difficulty": "2",
+   "content": "Hai máy bay cùng cất cánh từ một sân bay nhưng bay theo hai hướng khác nhau. Một chiếc di chuyển với tốc độ $450$ km/h theo hướng tây và chiếc còn lại di chuyển theo hướng hợp với hướng bắc một góc $25^\\circ$ về phía tây với tốc độ $630$ km/h. Hỏi sau $90$ phút, hai máy bay cách nhau bao xa (làm tròn kết quả đến hàng đơn vị theo đơn vị ki-lô-mét)? Giả sử chúng đang ở cùng độ cao.",
+   "correct_answer": "900",
+   "explanation": "Phương pháp giải:\nGọi $O$, $A$, $B$ là vị trí sân bay và hai máy bay sau $90$ phút; $\\widehat{AOB} = 90^\\circ - 25^\\circ = 65^\\circ$; định lí côsin.\n\nLời giải:\n$OA = 450 \\cdot \\dfrac{3}{2} = 675$ (km); $OB = 630 \\cdot \\dfrac{3}{2} = 945$ (km).\n$AB^2 = 675^2 + 945^2 - 2 \\cdot 675 \\cdot 945\\cos 65^\\circ \\approx 809495 \\Rightarrow AB \\approx 900$ (km)."
+  }
+ ]
+}

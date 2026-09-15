@@ -1,0 +1,227 @@
+{
+ "grade": "10",
+ "subject": "Hình học",
+ "nguon": "Luyện kỹ năng Toán 10 - Trắc nghiệm đúng sai tổng hợp hệ thức lượng trong tam giác (Giang Sơn), P2, tr. 7-10",
+ "cau": [
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ biết $a = 3$ cm, $b = 4$ cm, $\\widehat{C} = 30^\\circ$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$c^2 = a^2 + b^2 - 2ab\\cos C$.",
+   "option_b": "$c \\approx 3{,}05$ (cm).",
+   "option_c": "$\\cos A \\approx 0{,}68$.",
+   "option_d": "$\\widehat{A} \\approx 47^\\circ$.",
+   "correct_answer": "ĐSĐĐ",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin tìm $c$, hệ quả định lí côsin tìm $\\cos A$.\n\nLời giải:\na) Đúng, định lí côsin.\nb) Sai: $c^2 = 9 + 16 - 24\\cos 30^\\circ \\approx 4{,}22 \\Rightarrow c \\approx 2{,}05$ (cm).\nc) Đúng: $\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc} \\approx \\dfrac{16 + 4{,}22 - 9}{2 \\cdot 4 \\cdot 2{,}05} \\approx 0{,}68$.\nd) Đúng: $\\cos A \\approx 0{,}68 \\Rightarrow \\widehat{A} \\approx 47^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "DS", "difficulty": "3",
+   "content": "Trên nóc một tòa nhà có một ăng-ten cao $5$ m. Từ vị trí quan sát $A$ cao $7$ m so với mặt đất, có thể nhìn thấy đỉnh $B$ và chân $C$ của cột ăng-ten dưới góc $50^\\circ$ và $40^\\circ$ so với phương nằm ngang. Gọi $H$ là chân tòa nhà, $D$ là điểm trên $CH$ ngang tầm với $A$ (hình vẽ).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-l10c3-ds-p7c2.png)\n\nXét tính đúng, sai của các khẳng định sau.",
+   "option_a": "$\\widehat{BAC} = 10^\\circ$.",
+   "option_b": "$\\dfrac{BC}{\\sin\\widehat{BAC}} = \\dfrac{AC}{\\sin\\widehat{ABC}}$.",
+   "option_c": "$AC \\approx 18{,}5$ m.",
+   "option_d": "Chiều cao của tòa nhà là $CH = CD + DH \\approx 17{,}9$ m.",
+   "correct_answer": "ĐĐĐS",
+   "explanation": "Phương pháp giải:\n$\\widehat{BAC} = 50^\\circ - 40^\\circ$, $\\widehat{ABC} = 90^\\circ - 50^\\circ = 40^\\circ$; định lí sin trong tam giác $ABC$; $CD = AC\\sin 40^\\circ$.\n\nLời giải:\na) Đúng: $\\widehat{BAC} = 50^\\circ - 40^\\circ = 10^\\circ$.\nb) Đúng, định lí sin.\nc) Đúng: $AC = \\dfrac{BC\\sin\\widehat{ABC}}{\\sin\\widehat{BAC}} = \\dfrac{5\\sin 40^\\circ}{\\sin 10^\\circ} \\approx 18{,}5$ (m).\nd) Sai: $CD = AC\\sin 40^\\circ \\approx 11{,}9$ m nên $CH \\approx 11{,}9 + 7 = 18{,}9$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "DS", "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có các cạnh $a = 3$ cm, $b = 4$ cm, $c = 5$ cm. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$p = 12$ (cm).",
+   "option_b": "$S_{ABC} = \\sqrt{p(p - a)(p - b)(p - c)}$.",
+   "option_c": "$S_{ABC} = 6$ (cm$^2$).",
+   "option_d": "$R = 3{,}5$ (cm).",
+   "correct_answer": "SĐĐS",
+   "explanation": "Phương pháp giải:\nTam giác $3$–$4$–$5$ vuông tại $A$ ($a^2 + b^2 = c^2$); $R$ bằng nửa cạnh huyền.\n\nLời giải:\na) Sai: $p = \\dfrac{3 + 4 + 5}{2} = 6$ (cm).\nb) Đúng, công thức Heron.\nc) Đúng: $S = \\sqrt{6 \\cdot 3 \\cdot 2 \\cdot 1} = 6$ (cm$^2$), hoặc $S = \\dfrac{1}{2} \\cdot 3 \\cdot 4 = 6$.\nd) Sai: tam giác vuông nên $R = \\dfrac{c}{2} = 2{,}5$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ biết các cạnh $a = 52{,}1$ cm, $b = 85$ cm, $c = 54$ cm. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$\\cos B = \\dfrac{a^2 + c^2 - b^2}{2ac}$.",
+   "option_b": "$\\widehat{A} \\approx 32^\\circ$.",
+   "option_c": "$\\widehat{B} \\approx 126^\\circ$.",
+   "option_d": "$\\widehat{C} \\approx 38^\\circ$.",
+   "correct_answer": "ĐSSĐ",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin cho từng góc.\n\nLời giải:\na) Đúng.\nb) Sai: $\\cos A = \\dfrac{85^2 + 54^2 - 52{,}1^2}{2 \\cdot 85 \\cdot 54} \\approx 0{,}809 \\Rightarrow \\widehat{A} \\approx 36^\\circ$.\nc) Sai: $\\cos B = \\dfrac{52{,}1^2 + 54^2 - 85^2}{2 \\cdot 52{,}1 \\cdot 54} \\approx -0{,}283 \\Rightarrow \\widehat{B} \\approx 106{,}5^\\circ$.\nd) Đúng: $\\widehat{C} \\approx 180^\\circ - 36^\\circ - 106{,}5^\\circ \\approx 37{,}5^\\circ \\approx 38^\\circ$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ biết cạnh $a = 137{,}5$ cm, $\\widehat{B} = 83^\\circ$, $\\widehat{C} = 57^\\circ$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$\\widehat{A} = 40^\\circ$.",
+   "option_b": "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = R$.",
+   "option_c": "$R \\approx 106{,}96$ cm (kết quả làm tròn đến hàng phần trăm).",
+   "option_d": "$b \\approx 179{,}4$ cm (kết quả làm tròn đến hàng phần chục).",
+   "correct_answer": "ĐSĐS",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: $\\dfrac{a}{\\sin A} = 2R$, $b = \\dfrac{a\\sin B}{\\sin A}$.\n\nLời giải:\na) Đúng: $\\widehat{A} = 180^\\circ - 83^\\circ - 57^\\circ = 40^\\circ$.\nb) Sai: tỉ số đó bằng $2R$.\nc) Đúng: $R = \\dfrac{a}{2\\sin A} = \\dfrac{137{,}5}{2\\sin 40^\\circ} \\approx 106{,}96$ (cm).\nd) Sai: $b = \\dfrac{137{,}5\\sin 83^\\circ}{\\sin 40^\\circ} \\approx 212{,}3$ (cm); còn $179{,}4$ cm là giá trị của $c$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có số đo các cạnh lần lượt là $7$, $9$ và $12$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$p = 14$.",
+   "option_b": "$S = 13\\sqrt{5}$.",
+   "option_c": "$R = \\dfrac{7\\sqrt{5}}{10}$.",
+   "option_d": "$r = \\sqrt{3}$.",
+   "correct_answer": "ĐSSS",
+   "explanation": "Phương pháp giải:\nCông thức Heron, $R = \\dfrac{abc}{4S}$, $r = \\dfrac{S}{p}$.\n\nLời giải:\na) Đúng: $p = \\dfrac{7 + 9 + 12}{2} = 14$.\nb) Sai: $S = \\sqrt{14 \\cdot 7 \\cdot 5 \\cdot 2} = \\sqrt{980} = 14\\sqrt{5}$.\nc) Sai: $R = \\dfrac{7 \\cdot 9 \\cdot 12}{4 \\cdot 14\\sqrt{5}} = \\dfrac{27}{2\\sqrt{5}} = \\dfrac{27\\sqrt{5}}{10}$.\nd) Sai: $r = \\dfrac{14\\sqrt{5}}{14} = \\sqrt{5}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "DS", "difficulty": "3",
+   "content": "Chùa Ông Núi – ngôi chùa cổ và nổi tiếng ở Bình Định, trong đó điểm nổi bật nhất của chùa chính là bức tượng Phật ngồi lớn nhất Đông Nam Á. Để tính chiều cao $AB$ của bức tượng, người ta đo ở hai vị trí $C$ và $D$ cách nhau $200$ m. Tại $C$ người ta đo được $\\widehat{BCE} = 52^\\circ$, $\\widehat{ACE} = 67^\\circ$, tại $D$ người ta đo được $\\widehat{BDC} = 23^\\circ$ ($E$ là hình chiếu của $A$, $B$ xuống mặt đất; $E$, $C$, $D$ thẳng hàng).\n\n![Hình ảnh](https://cmjithgtecypxmisbzvw.supabase.co/storage/v1/object/public/lesson_images/editor_images/nap-kho-l10c3-ds-p8c8.png)\n\nCác mệnh đề sau đúng hay sai?",
+   "option_a": "$\\widehat{BCD} = 128^\\circ$.",
+   "option_b": "$\\dfrac{BC}{\\sin D} = \\dfrac{CD}{\\sin B}$.",
+   "option_c": "$CE = BC \\cdot \\cos\\widehat{BCE} \\approx 89$ m.",
+   "option_d": "Chiều cao bức tượng tính được là $AB \\approx 108$ m.",
+   "correct_answer": "ĐĐSS",
+   "explanation": "Phương pháp giải:\nTrong tam giác $BCD$: $\\widehat{BCD} = 180^\\circ - 52^\\circ$, $\\widehat{CBD} = 180^\\circ - 128^\\circ - 23^\\circ = 29^\\circ$; định lí sin tìm $BC$; $CE = BC\\cos 52^\\circ$; $AB = AE - BE = CE\\left(\\tan 67^\\circ - \\tan 52^\\circ\\right)$.\n\nLời giải:\na) Đúng: $\\widehat{BCD} = 180^\\circ - 52^\\circ = 128^\\circ$.\nb) Đúng, định lí sin trong tam giác $BCD$.\nc) Sai: $BC = \\dfrac{CD\\sin 23^\\circ}{\\sin 29^\\circ} \\approx 161{,}2$ m, $CE = BC\\cos 52^\\circ \\approx 99{,}2$ m.\nd) Sai: $AB = CE\\left(\\tan 67^\\circ - \\tan 52^\\circ\\right) \\approx 99{,}2 \\cdot 1{,}076 \\approx 107$ m."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $\\widehat{A} = 135^\\circ$, $\\widehat{C} = 15^\\circ$ và $b = 12$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$\\widehat{B} = 30^\\circ$.",
+   "option_b": "$a = 12\\sqrt{2}$.",
+   "option_c": "$c \\approx 8{,}21$.",
+   "option_d": "$R = 15$.",
+   "correct_answer": "ĐĐSS",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin.\n\nLời giải:\na) Đúng: $\\widehat{B} = 180^\\circ - 135^\\circ - 15^\\circ = 30^\\circ$.\nb) Đúng: $a = \\dfrac{b\\sin A}{\\sin B} = \\dfrac{12 \\cdot \\dfrac{\\sqrt{2}}{2}}{\\dfrac{1}{2}} = 12\\sqrt{2}$.\nc) Sai: $c = \\dfrac{b\\sin C}{\\sin B} = 24\\sin 15^\\circ \\approx 6{,}21$.\nd) Sai: $R = \\dfrac{b}{2\\sin B} = \\dfrac{12}{1} = 12$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $AB = 3$, $AC = 6$, $\\widehat{BAC} = 60^\\circ$. Xác định tính đúng sai của các mệnh đề sau.",
+   "option_a": "$BC = 3\\sqrt{3}$.",
+   "option_b": "$S_{ABC} = \\dfrac{7\\sqrt{3}}{2}$.",
+   "option_c": "$h_a = 3$.",
+   "option_d": "$\\sin B = 2\\sin A$.",
+   "correct_answer": "ĐSĐS",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin; $S = \\dfrac{1}{2}bc\\sin A$; $h_a = \\dfrac{2S}{a}$; định lí sin.\n\nLời giải:\na) Đúng: $BC^2 = 9 + 36 - 2 \\cdot 3 \\cdot 6 \\cdot \\dfrac{1}{2} = 27$.\nb) Sai: $S = \\dfrac{1}{2} \\cdot 3 \\cdot 6 \\cdot \\dfrac{\\sqrt{3}}{2} = \\dfrac{9\\sqrt{3}}{2}$.\nc) Đúng: $h_a = \\dfrac{9\\sqrt{3}}{3\\sqrt{3}} = 3$.\nd) Sai: $\\sin B = \\dfrac{b\\sin A}{a} = \\dfrac{6 \\cdot \\dfrac{\\sqrt{3}}{2}}{3\\sqrt{3}} = 1$ (tam giác vuông tại $B$), còn $2\\sin A = \\sqrt{3} \\ne 1$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "DS", "difficulty": "1",
+   "content": "Cho tam giác $ABC$ có các cạnh $a = 6$ cm, $b = 8$ cm, $c = 10$ cm. Xét tính đúng, sai của các khẳng định sau.",
+   "option_a": "$p = 16$ (cm).",
+   "option_b": "$S = \\sqrt{p(p - a)(p - b)(p - c)}$.",
+   "option_c": "$S = 24$ (cm$^2$).",
+   "option_d": "$r = 4$ (cm).",
+   "correct_answer": "SĐĐS",
+   "explanation": "Phương pháp giải:\nTam giác vuông tại $C$ ($6^2 + 8^2 = 10^2$); $r = \\dfrac{S}{p}$.\n\nLời giải:\na) Sai: $p = \\dfrac{6 + 8 + 10}{2} = 12$ (cm).\nb) Đúng, công thức Heron.\nc) Đúng: $S = \\dfrac{1}{2} \\cdot 6 \\cdot 8 = 24$ (cm$^2$).\nd) Sai: $r = \\dfrac{24}{12} = 2$ (cm)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "DS", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $BC = \\sqrt{6}$, $CA = 2$, $AB = 1 + \\sqrt{3}$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$\\widehat{A} = 30^\\circ$.",
+   "option_b": "$\\widehat{B} = 35^\\circ$.",
+   "option_c": "$S = \\dfrac{3 + \\sqrt{3}}{2}$.",
+   "option_d": "$R = \\sqrt{2}$.",
+   "correct_answer": "SSĐĐ",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin; $S = \\dfrac{1}{2}bc\\sin A$; $R = \\dfrac{a}{2\\sin A}$.\n\nLời giải:\na) Sai: $\\cos A = \\dfrac{4 + (1 + \\sqrt{3})^2 - 6}{2 \\cdot 2(1 + \\sqrt{3})} = \\dfrac{2 + 2\\sqrt{3}}{4(1 + \\sqrt{3})} = \\dfrac{1}{2} \\Rightarrow \\widehat{A} = 60^\\circ$.\nb) Sai: $\\cos B = \\dfrac{6 + (1 + \\sqrt{3})^2 - 4}{2\\sqrt{6}(1 + \\sqrt{3})} = \\dfrac{\\sqrt{3}(\\sqrt{3} + 1)}{\\sqrt{6}(1 + \\sqrt{3})} = \\dfrac{\\sqrt{2}}{2} \\Rightarrow \\widehat{B} = 45^\\circ$.\nc) Đúng: $S = \\dfrac{1}{2} \\cdot 2 \\cdot (1 + \\sqrt{3})\\sin 60^\\circ = \\dfrac{3 + \\sqrt{3}}{2}$.\nd) Đúng: $R = \\dfrac{\\sqrt{6}}{2\\sin 60^\\circ} = \\dfrac{\\sqrt{6}}{\\sqrt{3}} = \\sqrt{2}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Giải tam giác",
+   "question_type": "DS", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = 15$, $AC = 20$ và $\\widehat{BAC} = 60^\\circ$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$BC \\approx 18$.",
+   "option_b": "$\\widehat{ABC} \\approx 75^\\circ$.",
+   "option_c": "$S \\approx 129$.",
+   "option_d": "$2R - 5r < 0$ (với $R$, $r$ lần lượt là bán kính đường tròn ngoại tiếp, nội tiếp tam giác $ABC$).",
+   "correct_answer": "ĐSSĐ",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin, hệ quả định lí côsin; $S = \\dfrac{1}{2}bc\\sin A$; $R = \\dfrac{a}{2\\sin A}$, $r = \\dfrac{S}{p}$.\n\nLời giải:\na) Đúng: $BC^2 = 225 + 400 - 2 \\cdot 15 \\cdot 20 \\cdot \\dfrac{1}{2} = 325 \\Rightarrow BC = 5\\sqrt{13} \\approx 18{,}03$.\nb) Sai: $\\cos B = \\dfrac{325 + 225 - 400}{2 \\cdot 18{,}03 \\cdot 15} \\approx 0{,}277 \\Rightarrow \\widehat{B} \\approx 74^\\circ$.\nc) Sai: $S = \\dfrac{1}{2} \\cdot 15 \\cdot 20\\sin 60^\\circ = 75\\sqrt{3} \\approx 129{,}9 \\approx 130$.\nd) Đúng: $R = \\dfrac{18{,}03}{2\\sin 60^\\circ} \\approx 10{,}4$; $p \\approx 26{,}5$, $r = \\dfrac{S}{p} \\approx 4{,}9$; $2R - 5r \\approx 20{,}8 - 24{,}5 < 0$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = R$.",
+   "option_b": "Nếu $a = 50$ cm, $\\widehat{B} = 65^\\circ$ và $\\widehat{C} = 45^\\circ$ thì bán kính đường tròn ngoại tiếp làm tròn kết quả đến hàng phần mười là $R = 26{,}6$ cm.",
+   "option_c": "Nếu $a = 10$, $\\widehat{B} = 80^\\circ$, $R = 10$ thì góc $\\widehat{C} = 60^\\circ$.",
+   "option_d": "Giả sử tam giác $ABC$ được bạn An đã cắt từ một tấm tôn hình tròn có bán kính $R = 1$ (m). Để tam giác $ABC$ có $\\widehat{A} = 45^\\circ$, $\\widehat{B} = 75^\\circ$ thì An phải cắt miếng tôn theo hai dây cung $AB \\approx 1{,}73$ (m) và $BC \\approx 1{,}41$ (m) (kết quả làm tròn đến hàng phần trăm).",
+   "correct_answer": "SĐSĐ",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin: $a = 2R\\sin A$.\n\nLời giải:\na) Sai: tỉ số bằng $2R$.\nb) Đúng: $\\widehat{A} = 70^\\circ$, $R = \\dfrac{50}{2\\sin 70^\\circ} \\approx 26{,}6$ (cm).\nc) Sai: $\\sin A = \\dfrac{a}{2R} = \\dfrac{1}{2} \\Rightarrow \\widehat{A} = 30^\\circ$ (vì $\\widehat{B} = 80^\\circ$ nên $\\widehat{A}$ không thể là $150^\\circ$), suy ra $\\widehat{C} = 70^\\circ$.\nd) Đúng: $\\widehat{C} = 60^\\circ$; $AB = 2R\\sin C = 2\\sin 60^\\circ \\approx 1{,}73$ (m); $BC = 2R\\sin A = 2\\sin 45^\\circ \\approx 1{,}41$ (m)."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "DS", "difficulty": "3",
+   "content": "Cho tam giác $ABC$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "$a\\sin C = c\\sin A$.",
+   "option_b": "Nếu $a = 7$, $\\widehat{B} = 60^\\circ$ và $\\widehat{C} = 75^\\circ$ thì $b = \\dfrac{7\\sqrt{6}}{2}$.",
+   "option_c": "Nếu $a = 7$, $\\widehat{B} = 60^\\circ$ và $\\widehat{C} = 75^\\circ$ thì $R = 7\\sqrt{2}$.",
+   "option_d": "Nếu $\\sin A = 2\\sin B\\cos C$ thì tam giác $ABC$ cân tại $A$.",
+   "correct_answer": "ĐĐSĐ",
+   "explanation": "Phương pháp giải:\nĐịnh lí sin và hệ quả định lí côsin.\n\nLời giải:\na) Đúng: từ $\\dfrac{a}{\\sin A} = \\dfrac{c}{\\sin C}$.\nb) Đúng: $\\widehat{A} = 45^\\circ$, $b = \\dfrac{a\\sin B}{\\sin A} = \\dfrac{7 \\cdot \\dfrac{\\sqrt{3}}{2}}{\\dfrac{\\sqrt{2}}{2}} = \\dfrac{7\\sqrt{6}}{2}$.\nc) Sai: $R = \\dfrac{a}{2\\sin A} = \\dfrac{7}{\\sqrt{2}} = \\dfrac{7\\sqrt{2}}{2}$.\nd) Đúng: $a = 2b \\cdot \\dfrac{a^2 + b^2 - c^2}{2ab} \\Leftrightarrow a^2 = a^2 + b^2 - c^2 \\Leftrightarrow b = c$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $a = 13$, $b = 8$, $c = 7$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "Góc $A$ bằng $60^\\circ$.",
+   "option_b": "Diện tích tam giác $ABC$ là $14\\sqrt{3}$.",
+   "option_c": "Chiều cao từ $A$ đến $BC$ là $\\dfrac{28\\sqrt{3}}{13}$.",
+   "option_d": "Bán kính đường tròn nội tiếp tam giác $ABC$ là $\\sqrt{3}$.",
+   "correct_answer": "SĐĐĐ",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin; $S = \\dfrac{1}{2}bc\\sin A$; $h_a = \\dfrac{2S}{a}$; $r = \\dfrac{S}{p}$.\n\nLời giải:\na) Sai: $\\cos A = \\dfrac{64 + 49 - 169}{2 \\cdot 8 \\cdot 7} = -\\dfrac{1}{2} \\Rightarrow \\widehat{A} = 120^\\circ$.\nb) Đúng: $S = \\dfrac{1}{2} \\cdot 8 \\cdot 7\\sin 120^\\circ = 14\\sqrt{3}$.\nc) Đúng: $h_a = \\dfrac{28\\sqrt{3}}{13}$.\nd) Đúng: $p = 14$, $r = \\dfrac{14\\sqrt{3}}{14} = \\sqrt{3}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $BC = a = 7$; $AC = b = 8$; $AB = c = 5$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "Góc $\\widehat{BAC} = 60^\\circ$.",
+   "option_b": "Diện tích tam giác $ABC$ là $10\\sqrt{3}$.",
+   "option_c": "Chiều cao từ $A$ đến $BC$ là $\\dfrac{20\\sqrt{3}}{7}$.",
+   "option_d": "Bán kính đường tròn ngoại tiếp tam giác $ABC$ là $\\dfrac{7\\sqrt{3}}{3}$.",
+   "correct_answer": "ĐĐĐĐ",
+   "explanation": "Phương pháp giải:\nHệ quả định lí côsin; $S = \\dfrac{1}{2}bc\\sin A$; $h_a = \\dfrac{2S}{a}$; $R = \\dfrac{a}{2\\sin A}$.\n\nLời giải:\na) Đúng: $\\cos A = \\dfrac{64 + 25 - 49}{2 \\cdot 8 \\cdot 5} = \\dfrac{1}{2}$.\nb) Đúng: $S = \\dfrac{1}{2} \\cdot 8 \\cdot 5\\sin 60^\\circ = 10\\sqrt{3}$.\nc) Đúng: $h_a = \\dfrac{20\\sqrt{3}}{7}$.\nd) Đúng: $R = \\dfrac{7}{2\\sin 60^\\circ} = \\dfrac{7}{\\sqrt{3}} = \\dfrac{7\\sqrt{3}}{3}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "DS", "difficulty": "2",
+   "content": "Cho tam giác $ABC$ có $AC = b = 7$; $AB = c = 5$; $\\cos A = \\dfrac{3}{5}$. Các mệnh đề sau đúng hay sai?",
+   "option_a": "Góc $A$ là góc tù.",
+   "option_b": "$a = 4\\sqrt{2}$.",
+   "option_c": "$\\sin A = -\\dfrac{4}{5}$.",
+   "option_d": "Độ dài đường cao hạ từ đỉnh $A$ bằng $\\dfrac{7\\sqrt{2}}{2}$.",
+   "correct_answer": "SĐSĐ",
+   "explanation": "Phương pháp giải:\nĐịnh lí côsin; $\\sin A = \\sqrt{1 - \\cos^2 A} > 0$; $h_a = \\dfrac{2S}{a}$.\n\nLời giải:\na) Sai: $\\cos A > 0$ nên $A$ nhọn.\nb) Đúng: $a^2 = 49 + 25 - 2 \\cdot 7 \\cdot 5 \\cdot \\dfrac{3}{5} = 32$.\nc) Sai: $\\sin A = \\dfrac{4}{5} > 0$.\nd) Đúng: $S = \\dfrac{1}{2} \\cdot 7 \\cdot 5 \\cdot \\dfrac{4}{5} = 14$, $h_a = \\dfrac{28}{4\\sqrt{2}} = \\dfrac{7\\sqrt{2}}{2}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính diện tích tam giác, bán kính đường tròn nội tiếp, đường cao",
+   "question_type": "DS", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ có $AB = 2$; $AC = 3$; $BC = 4$. Xét tính đúng sai của các mệnh đề sau.",
+   "option_a": "Diện tích của tam giác $ABC$ là $S_{ABC} = \\dfrac{3\\sqrt{15}}{4}$.",
+   "option_b": "Bán kính đường tròn nội tiếp của tam giác $ABC$ là $r = \\dfrac{\\sqrt{15}}{5}$.",
+   "option_c": "Gọi $M$, $N$ lần lượt là trung điểm của cạnh $AC$ và $AB$. Khi đó $S_{ANC} < S_{AMB}$.",
+   "option_d": "Gọi $D$ là điểm đối xứng của $N$ qua $B$ ($N$ là trung điểm $AB$). Khi đó $\\cos\\widehat{NCD} = \\dfrac{2\\sqrt{115}}{23}$.",
+   "correct_answer": "ĐSSĐ",
+   "explanation": "Phương pháp giải:\nHeron; $r = \\dfrac{S}{p}$; trung tuyến chia tam giác thành hai phần bằng nhau; định lí côsin trong các tam giác $ACD$, $NCD$ và công thức trung tuyến cho $CN$.\n\nLời giải:\na) Đúng: $p = \\dfrac{9}{2}$, $S = \\sqrt{\\dfrac{9}{2} \\cdot \\dfrac{5}{2} \\cdot \\dfrac{3}{2} \\cdot \\dfrac{1}{2}} = \\dfrac{\\sqrt{135}}{4} = \\dfrac{3\\sqrt{15}}{4}$.\nb) Sai: $r = \\dfrac{S}{p} = \\dfrac{3\\sqrt{15}}{4} \\cdot \\dfrac{2}{9} = \\dfrac{\\sqrt{15}}{6}$.\nc) Sai: $S_{ANC} = S_{AMB} = \\dfrac{1}{2}S_{ABC}$.\nd) Đúng: $AN = NB = BD = 1$ nên $AD = 3$, $ND = 2$. $\\cos A = \\dfrac{9 + 4 - 16}{12} = -\\dfrac{1}{4}$; $CD^2 = 9 + 9 + 2 \\cdot 3 \\cdot 3 \\cdot \\dfrac{1}{4} = \\dfrac{45}{2}$; $CN^2 = \\dfrac{2 \\cdot 16 + 2 \\cdot 9 - 4}{4} = \\dfrac{23}{2}$.\n$\\cos\\widehat{NCD} = \\dfrac{CN^2 + CD^2 - ND^2}{2 \\cdot CN \\cdot CD} = \\dfrac{34 - 4}{2\\sqrt{\\dfrac{23}{2} \\cdot \\dfrac{45}{2}}} = \\dfrac{30}{\\sqrt{1035}} = \\dfrac{10}{\\sqrt{115}} = \\dfrac{2\\sqrt{115}}{23}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Tính cạnh, góc của tam giác bằng định lí côsin, định lí sin",
+   "question_type": "DS", "difficulty": "3",
+   "content": "Cho tam giác $ABC$ cân tại $A$ có $\\widehat{C} = 30^\\circ$, $BC = 3$ cm. Xét tính đúng sai của các khẳng định sau.",
+   "option_a": "Bán kính đường tròn ngoại tiếp của tam giác $ABC$ là $R = \\sqrt{3}$.",
+   "option_b": "Diện tích tam giác $ABC$ là $\\dfrac{\\sqrt{3}}{4}$ (cm$^2$).",
+   "option_c": "$MB \\perp NC$, ở đó $M$, $N$ là trung điểm của $AC$ và $AB$.",
+   "option_d": "Trên tia đối của tia $AC$ ta lấy $D$ sao cho $BD = \\dfrac{3\\sqrt{2}}{2}$ cm. Khi đó $\\cos\\widehat{ABD} = \\dfrac{\\sqrt{6} - \\sqrt{2}}{4}$.",
+   "correct_answer": "ĐSSĐ",
+   "explanation": "Phương pháp giải:\n$\\widehat{B} = \\widehat{C} = 30^\\circ$, $\\widehat{A} = 120^\\circ$, $AB = AC = \\dfrac{BC\\sin C}{\\sin A} = \\sqrt{3}$; định lí sin, công thức trung tuyến, định lí côsin.\n\nLời giải:\na) Đúng: $R = \\dfrac{BC}{2\\sin A} = \\dfrac{3}{\\sqrt{3}} = \\sqrt{3}$.\nb) Sai: $S = \\dfrac{1}{2} \\cdot \\sqrt{3} \\cdot \\sqrt{3}\\sin 120^\\circ = \\dfrac{3\\sqrt{3}}{4}$.\nc) Sai: $BM^2 = CN^2 = \\dfrac{2 \\cdot 3 + 2 \\cdot 9 - 3}{4} = \\dfrac{21}{4}$; với $G$ là trọng tâm, $GB^2 + GC^2 = \\dfrac{4}{9}\\left(\\dfrac{21}{4} + \\dfrac{21}{4}\\right) = \\dfrac{14}{3} \\ne 9 = BC^2$ nên $\\widehat{BGC} \\ne 90^\\circ$.\nd) Đúng: $\\widehat{BAD} = 60^\\circ$. Định lí côsin trong tam giác $ABD$: $\\dfrac{9}{2} = 3 + AD^2 - \\sqrt{3}AD \\Rightarrow AD = \\dfrac{3 + \\sqrt{3}}{2}$.\n$\\cos\\widehat{ABD} = \\dfrac{AB^2 + BD^2 - AD^2}{2 \\cdot AB \\cdot BD} = \\dfrac{3 + \\dfrac{9}{2} - \\dfrac{12 + 6\\sqrt{3}}{4}}{2 \\cdot \\sqrt{3} \\cdot \\dfrac{3\\sqrt{2}}{2}} = \\dfrac{\\dfrac{9 - 3\\sqrt{3}}{2}}{3\\sqrt{6}} = \\dfrac{3 - \\sqrt{3}}{2\\sqrt{6}} = \\dfrac{\\sqrt{6} - \\sqrt{2}}{4}$."
+  },
+  {
+   "topic": "Chương 3. Hệ thức lượng trong tam giác", "lesson": "Bài 2. Hệ thức lượng trong tam giác", "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+   "question_type": "DS", "difficulty": "3",
+   "content": "Ông Ba có một mảnh vườn hình tam giác $ABC$ có $\\widehat{B} > 90^\\circ$. Cho biết độ dài các cạnh $AB$, $AC$ lần lượt là $20$ mét và $30$ mét; $\\widehat{BAC} = 45^\\circ$. Xét tính đúng sai của các khẳng định sau.",
+   "option_a": "Diện tích của mảnh vườn của ông Ba là $150\\sqrt{2}$ mét vuông.",
+   "option_b": "Ông Ba muốn dựng hàng rào bao quanh mảnh vườn theo các cạnh của tam giác $ABC$. Tổng độ dài của hàng rào là $21{,}25$ mét (làm tròn đến chữ số thứ hai sau dấu phẩy).",
+   "option_c": "Ông Ba lấy điểm $M$ trên cạnh $AC$ và dựng đoạn hàng rào $BM$ sao cho mảnh vườn được chia thành hai tam giác có diện tích bằng nhau. Khi đó đoạn hàng rào $BM$ có độ dài là $14{,}17$ mét (làm tròn đến chữ số thứ hai sau dấu phẩy).",
+   "option_d": "Ông Ba dựng hàng rào $BH$ vuông góc với cạnh $AC$ ($H$ thuộc $AC$). Khi đó $BH = 10\\sqrt{2}$ mét.",
+   "correct_answer": "ĐSĐĐ",
+   "explanation": "Phương pháp giải:\n$S = \\dfrac{1}{2}AB \\cdot AC\\sin A$; định lí côsin tìm $BC$; $M$ là trung điểm $AC$ nên $BM$ là trung tuyến; $BH = AB\\sin A$.\n\nLời giải:\na) Đúng: $S = \\dfrac{1}{2} \\cdot 20 \\cdot 30\\sin 45^\\circ = 150\\sqrt{2}$ (m$^2$).\nb) Sai: $BC^2 = 400 + 900 - 2 \\cdot 20 \\cdot 30\\cos 45^\\circ \\approx 451{,}47 \\Rightarrow BC \\approx 21{,}25$ m; tổng độ dài hàng rào là $20 + 30 + 21{,}25 = 71{,}25$ m.\nc) Đúng: $S_{ABM} = S_{CBM}$ nên $M$ là trung điểm $AC$; $BM^2 = \\dfrac{2 \\cdot 20^2 + 2 \\cdot 21{,}25^2 - 30^2}{4} \\approx 200{,}8 \\Rightarrow BM \\approx 14{,}17$ m.\nd) Đúng: $BH = AB\\sin 45^\\circ = 10\\sqrt{2}$ m."
+  }
+ ]
+}

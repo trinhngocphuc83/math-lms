@@ -21,7 +21,13 @@ Kho là tài sản thầy gom nhiều năm, một câu sai đáp án lọt vào 
 3. **Sao lưu và rút lại được.** Mỗi lượt ghi lưu danh sách mã câu; thầy không ưng thì rút
    nguyên lượt bằng một lệnh.
 4. **Thử trước, ghi sau.** Mọi script mặc định chỉ thử; thêm `ghi` mới đụng kho.
-5. **Viết tệp bằng công cụ Write/Edit, không dùng heredoc** — shell máy này nuốt dấu chéo
+5. **Lời giải phải đúng tầm chương trình của khối đang nạp** (thầy dặn 13/9/2026 khi nạp
+   lớp 10). Câu lớp 10 thì giải bằng kiến thức lớp 10 trở xuống: hệ thức lượng dùng định lí
+   sin/côsin, không dùng vectơ toạ độ hay đạo hàm; câu lớp 9 không dùng lượng giác góc tù;
+   câu lớp 8 không dùng định lí Thalès khi chưa học. Tài liệu tham khảo hay giải tắt bằng
+   công cụ lớp trên — phải viết lại theo cách học sinh khối đó được học. Học sinh đọc lời
+   giải để học, một bước "lạ" là các em mất tin.
+6. **Viết tệp bằng công cụ Write/Edit, không dùng heredoc** — shell máy này nuốt dấu chéo
    ngược, LaTeX `\frac` thành `frac`, `\n` thành `n`. Đã dính bảy lần.
 
 ## Các bước
