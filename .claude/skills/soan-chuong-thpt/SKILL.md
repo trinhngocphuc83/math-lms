@@ -128,8 +128,24 @@ mới để ảnh, và ảnh phải rộng **≥ 600 px**; nhỏ hơn thì cắt
 `cat-anh.mjs` của skill nạp kho. Màn chiếu tự xếp ảnh rộng (tỉ lệ > 2,5) xuống dưới đề,
 trải hết bề ngang; ảnh gần vuông mới đặt cạnh.
 
+Bảng có **phân số trong ô** (bảng giá trị lượng giác) thì kết dòng bằng `\\[6pt]` thay vì
+`\\`: KaTeX xếp dòng sát nhau, tử và mẫu của `\dfrac` chạm đường kẻ, nhìn từ cuối lớp thành
+một mớ. Bộ xuất Word đã biết bỏ phần `[6pt]` (15/9/2026), đừng sợ nó lọt vào ô.
+
 Nội dung bài giảng trong app **không phải markdown thuần**: nó có thẻ HTML để canh giữa và
 vẽ khung màu trên màn hình. Cứ giữ nguyên lối ấy khi soạn — bộ xuất Word đã biết gỡ thẻ.
+
+**Màn chiếu co cả slide lại cho vừa 1600×900** — slide nào dài là chữ nhỏ đi, không cuộn.
+Ba chỗ hay dài quá: mục *Phương pháp giải* kèm luôn mục *Bấm máy* (tách bằng `---`, bấm máy
+một slide riêng); ba công thức nối bằng `\qquad` trên một dòng `$$` (gãy giữa công thức —
+mỗi công thức một dòng `$$`); bảng chọn công thức đặt chung slide với sáu công thức diện
+tích. Lớp 10 chương 3 dính đủ ba (15/9/2026).
+
+**Khối quiz: hoặc `answer`, hoặc `phuong_phap_giai` + `cac_buoc_thuc_hien` — không để cả
+hai.** Màn chiếu bày *Phương pháp*, rồi nguyên văn `answer`, rồi các bước đánh số; để cả ba
+thì lời giải hiện hai lần. Trắc nghiệm giữ phương pháp + bước; tự luận giữ `answer` (bài
+giải mẫu bày ngay dưới đề). `va-giao-an.mjs` chỉ thêm bước cho khối *chưa có* lời giải nên
+không tự dọn chỗ này — script rót câu phải đặt đúng từ đầu.
 
 ## Bước 3 — Bài tập tự luyện
 
@@ -247,6 +263,14 @@ Xong máy rồi thì **mở app** (thầy đăng nhập Chrome, đi qua Claude i
 câu tương tác trên màn chiếu: bảng có đọc được từ cuối lớp không, "Xem lời giải" có ra
 từng bước không, diễn giải có chỗ nào nói sai kiến thức không. Chỉ khi nhìn thấy bằng
 mắt mới được báo là xong.
+
+Đường màn chiếu: `/present/<lessonId>?moduleId=<moduleId>`, phím → sang slide, phím F
+toàn màn hình. Bản chạy cục bộ (`npm run dev`) đòi đăng nhập mà tôi không được gõ mật
+khẩu, nên sửa mã app thì **đẩy lên Vercel rồi xem qua Chrome của thầy**. Đừng đổi cỡ cửa
+sổ Chrome giữa chừng: slide lệch khung cho tới khi tải lại trang.
+
+Tham số `--lop` của mọi script trong skill so khớp `ilike` với tên khoá học: phải ghi
+`--lop "TOÁN 10"`, ghi `--lop 10` là trúng "TOÁN CHUYÊN VÀO 10".
 
 ## Chạy script Node đụng vào mã của app
 
