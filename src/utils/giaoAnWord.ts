@@ -13,7 +13,7 @@ import {
   Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle,
   Table, TableRow, TableCell, WidthType, ShadingType,
 } from "docx";
-import { latexToDocxElement } from "./latexToDocxMath";
+import { latexToDocxElement, latexToDocxTable, laBangKeO } from "./latexToDocxMath";
 import { fetchImageWithDimensions, base64ToUint8Array } from "./exportDocx";
 import { anhWord } from "./mauDeThi";
 
@@ -406,6 +406,33 @@ export async function noiDungGiaoAnSangWord(
                     questionCounter++;
                 }
             }
+            continue;
+        }
+
+        /* BẢNG LATEX `$$\begin{array}{|c|c|} \hline … \end{array}$$` (bảng giá trị lượng
+           giác, bảng tần số): dựng thành BẢNG WORD THẬT. Bản trước để nó đi chung đường
+           công thức, nên `latexToDocxElement` in cả bảng thành MỘT công thức chảy dài,
+           các hàng ngăn bằng dấu ";" và chữ "[6pt]" lọt ra giữa dòng — Toán 10 chương 3
+           (15/9/2026) xuất ra đúng như thế mà soi-word không bắt được vì nó là công thức
+           Word hợp lệ. Bộ đề thi (exportDocx) đã dựng bảng thật từ lâu; nay bài giảng đi
+           cùng đường. Phần chữ đứng trước/sau bảng trên cùng dòng vẫn dựng như thường. */
+        if (laBangKeO(dongNay)) {
+            const RE_BANG = /\$\$?\s*\\begin\s*\{array\}[\s\S]*?\\end\s*\{array\}\s*\$\$?/;
+            let conLai = dongNay;
+            let m: RegExpMatchArray | null;
+            while ((m = conLai.match(RE_BANG)) && m.index !== undefined) {
+                const truoc = conLai.slice(0, m.index).trim();
+                if (truoc) bodyParagraphs.push(new Paragraph({ children: await buildRunsFromLine(truoc), spacing: { before: 80, after: 80 } }));
+                const bang = latexToDocxTable(m[0]);
+                if (bang) {
+                    bodyParagraphs.push(bang);
+                    bodyParagraphs.push(new Paragraph({ children: [], spacing: { after: 120 } }));
+                } else {
+                    bodyParagraphs.push(new Paragraph({ children: await buildRunsFromLine(m[0]) }));
+                }
+                conLai = conLai.slice(m.index + m[0].length);
+            }
+            if (conLai.trim()) bodyParagraphs.push(new Paragraph({ children: await buildRunsFromLine(conLai.trim()), spacing: { before: 80, after: 80 } }));
             continue;
         }
 

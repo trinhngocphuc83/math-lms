@@ -48,7 +48,7 @@ const dsTep = statSync(DUONG).isDirectory()
   ? readdirSync(DUONG).filter(x => x.endsWith('.docx') && !x.startsWith('~$')).sort().map(x => join(DUONG, x))
   : [DUONG];
 
-let tThe = 0, tLatex = 0, tSao = 0, tMau = 0, tCT = 0, tAnh = 0, tBang = 0, tGachDung = 0;
+let tThe = 0, tLatex = 0, tSao = 0, tMau = 0, tCT = 0, tAnh = 0, tBang = 0, tGachDung = 0, tBangChay = 0;
 const viDu = [];
 console.log(`${DUONG}\n`);
 console.log('    KB | công thức |  thẻ | LaTeX thô | dấu sao | chữ màu | bảng | gạch đứng | tệp');
@@ -73,6 +73,17 @@ for (const tep of dsTep) {
   const gachDung = chu.filter(c => /\|[^|]*\|/.test(c));
 
   const ct = (xml.match(/<m:oMath[ >]/g) || []).length;
+
+  /* BẢNG LATEX CHẢY THÀNH CÔNG THỨC: `\begin{array}` có `\hline` mà không được dựng thành
+     bảng Word thì thành MỘT công thức dài, hàng ngăn bằng ";" và chữ "[6pt]" lọt ra. Toán 10
+     chương 3 (15/9/2026) dính ở bảng giá trị lượng giác mà cột "LaTeX thô" không bắt được
+     vì nó là công thức Word hợp lệ. Dò: công thức có "[Npt]", hoặc dài mà nhiều dấu ";". */
+  const bangChay = [...xml.matchAll(/<m:oMath>([\s\S]*?)<\/m:oMath>/g)]
+    .map(m => [...m[1].matchAll(/<m:t[^>]*>([^<]*)<\/m:t>/g)].map(x => goXml(x[1])).join(''))
+    .filter(t => /\[\d+pt\]/.test(t) || ((t.match(/;/g) || []).length >= 2 && t.length > 150));
+  tBangChay += bangChay.length;
+  if (bangChay.length && viDu.length < 8) viDu.push(`bảng chảy · ${tep.split(/[\\/]/).pop()} · ${bangChay[0].slice(0, 80)}`);
+
   tThe += the.length; tLatex += latex.length; tSao += sao.length; tMau += mau.length;
   tBang += bang; tGachDung += gachDung.length;
   tCT += ct; tAnh += anh.length;
@@ -96,5 +107,6 @@ console.log(`   dấu sao markdown còn sót        : ${tSao}`);
 console.log(`   chữ còn tô màu ở phần lý thuyết : ${tMau}`);
 console.log(`   bảng dựng thật (<w:tbl>)        : ${tBang}`);
 console.log(`   dòng còn in ra dấu gạch đứng    : ${tGachDung}`);
+console.log(`   bảng LaTeX chảy thành công thức : ${tBangChay}`);
 for (const v of viDu) console.log(`      ${v}`);
-console.log(tThe + tLatex + tSao + tMau === 0 ? '\n   ✓ sạch' : '\n   ✗ còn rác, xem ví dụ bên trên');
+console.log(tThe + tLatex + tSao + tMau + tBangChay === 0 ? '\n   ✓ sạch' : '\n   ✗ còn rác, xem ví dụ bên trên');

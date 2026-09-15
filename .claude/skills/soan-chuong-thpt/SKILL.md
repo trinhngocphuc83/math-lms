@@ -207,6 +207,15 @@ liệu 200 câu thì không ai đọc hết:
 | dấu sao | Dấu nhấn mạnh markdown chưa dựng thành chữ đậm |
 | chữ màu | Màu trên màn hình lọt vào bản in (bản in để chữ đen) |
 | gạch đứng | Bảng markdown in ra nguyên dấu `|` thay vì thành bảng thật |
+| bảng chảy | Bảng LaTeX `\begin{array}…\hline` không thành bảng Word mà thành MỘT công thức dài, hàng ngăn bằng `;`, chữ `[6pt]` lọt ra |
+
+Cột **bảng chảy** là bài học 15/9/2026: bảng giá trị lượng giác Toán 10 chương 3 xuất ra
+thành một dòng công thức chảy dài với `; [6pt]` giữa các hàng, mà soi-word bản trước
+báo "✓ sạch" — vì đó là công thức Word hợp lệ, cột "LaTeX thô" không bắt được, còn tôi
+chỉ tin máy. Bộ dựng giáo án (`giaoAnWord.ts`) khi ấy chỉ biết bảng **markdown**; bảng
+LaTeX đi chung đường công thức. Nay nó dựng `\begin{array}` có `\hline` thành bảng Word
+thật như bộ đề thi, và soi-word có cột đo riêng. Nhưng bài học lớn hơn là: **soi-word
+báo sạch chưa phải là sạch — bài có bảng thì phải mở tệp Word ra nhìn bảng ấy**.
 
 Cột **bảng** phải khác 0 nếu bài có bảng. Đây là chỗ từng hỏng im lặng: bộ dựng giáo án
 không biết bảng markdown, nên mọi dòng `| Bước | Bấm |` rơi xuống nhánh chữ thường và in
