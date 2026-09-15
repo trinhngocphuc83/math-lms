@@ -687,6 +687,10 @@ function tachOBang(than: string): string[][] {
     else if (depth === 0 && than[k] === "&") { chotO(k); batDau = k + 1; }
     else if (depth === 0 && than[k] === "\\" && than[k + 1] === "\\") {
       chotO(k); batDau = k + 2; k++;
+      // \\[6pt] là giãn dòng (bảng có phân số cần nó để tử/mẫu không chạm đường kẻ)
+      // — bỏ phần [..] đi, không để lọt vào ô đầu của dòng sau.
+      const gian = than.slice(batDau).match(/^\s*\[[^\]]*\]/);
+      if (gian) { batDau += gian[0].length; k = batDau - 1; }
       hang.push(o); o = [];
     }
   }

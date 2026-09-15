@@ -345,12 +345,16 @@ export const presentationMarkdownComponents: any = {
         />
     ),
 
-    code: ({ node, inline, className, children, ...props }: any) =>
-        inline ? (
-            <code className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 text-[36px] font-mono" {...props}>{children}</code>
-        ) : (
-            <code className="block p-5 rounded-2xl bg-slate-900 text-slate-100 text-[32px] font-mono overflow-x-auto" {...props}>{children}</code>
-        ),
+    // react-markdown 10 không còn truyền `inline`: code trong dòng đến đây trần, còn khối
+    // code thì nằm trong <pre>. Nên `code` luôn dựng kiểu phím bấm (`SHIFT` `MENU` trong
+    // bảng Casio), khối đen chỉ dựng ở `pre` — trước đây mỗi phím thành một khối đen
+    // to hết bề ngang, bảng bấm máy dài cả trang.
+    code: ({ node, inline, className, children, ...props }: any) => (
+        <code className="px-2 py-0.5 rounded-md bg-slate-100 text-slate-800 text-[36px] font-mono" {...props}>{children}</code>
+    ),
+    pre: ({ node, children, ...props }: any) => (
+        <pre className="block p-5 my-4 rounded-2xl bg-slate-900 text-slate-100 text-[32px] font-mono overflow-x-auto [&_code]:bg-transparent [&_code]:text-slate-100 [&_code]:p-0" {...props}>{children}</pre>
+    ),
 
     // Thẻ nội dung (Ví dụ / Phương pháp / Lời giải / Chú ý / Kiến thức)
     blockquote: ({ node, style, children, ...props }: any) => {
