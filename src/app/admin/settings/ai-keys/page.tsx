@@ -15,6 +15,10 @@ export default function AdminAIKeysPage() {
   // Khoá lõi (biến môi trường trên Vercel) - chỉ có bản đã che, để thầy thấy chúng đang ở đâu
   const [coreKeys, setCoreKeys] = useState<string[]>([]);
   const [dangChepLoi, setDangChepLoi] = useState(false);
+  // Kho chung: app này đang dùng kho khoá ở dự án Supabase của app Toán (hai app dùng chung)
+  const [khoChung, setKhoChung] = useState(false);
+  const [khoaCucBoChuaGop, setKhoaCucBoChuaGop] = useState(0);
+  const [dangGop, setDangGop] = useState(false);
   // Ô dán một lúc nhiều khoá (mỗi dòng một khoá) - thêm từng ô một thì 10 khoá bấm 10 lần
   const [danNhieu, setDanNhieu] = useState('');
   const [loading, setLoading] = useState(true);
@@ -42,6 +46,8 @@ export default function AdminAIKeysPage() {
       const data = await res.json();
       setKeys(data.customKeys || []);
       setCoreKeys(data.coreKeys || []);
+      setKhoChung(!!data.khoChung);
+      setKhoaCucBoChuaGop(data.khoaCucBoChuaGop || 0);
 
       const resTotal = await fetch('/api/settings/ai-keys?action=totalCount');
       const dataTotal = await resTotal.json();
@@ -137,6 +143,26 @@ export default function AdminAIKeysPage() {
       alert('Lỗi kết nối máy chủ');
     } finally {
       setDangChepLoi(false);
+    }
+  };
+
+  /** Gộp khoá còn ở bảng riêng của app này sang kho chung. */
+  const gopKhoaCucBo = async () => {
+    if (!confirm(`Gộp ${khoaCucBoChuaGop} khoá của app này vào kho chung?`)) return;
+    setDangGop(true);
+    try {
+      const res = await fetch('/api/settings/ai-keys', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'gopCucBo' }),
+      });
+      const data = await res.json();
+      alert(res.ok ? data.message : (data.error || 'Gộp thất bại'));
+      if (res.ok) fetchData();
+    } catch {
+      alert('Lỗi kết nối máy chủ');
+    } finally {
+      setDangGop(false);
     }
   };
 
@@ -284,6 +310,36 @@ export default function AdminAIKeysPage() {
               Lưu thứ tự
             </button>
           </div>
+        </div>
+
+        {/* ===== Kho khoá chung cho cả hai app ===== */}
+        <div className={`mb-8 relative z-10 rounded-2xl border p-5 ${khoChung ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-white/5 border-white/10'}`}>
+          {khoChung ? (
+            <>
+              <p className="text-emerald-200 font-bold mb-1">✅ App này đang dùng KHO KHOÁ CHUNG (kho đặt ở dự án Supabase của app Toán).</p>
+              <p className="text-slate-300 text-sm">
+                Khoá thêm/xoá ở đây và sổ treo cạn hạn mức đều dùng chung cho cả hai app — nhập một lần, hai bên cùng thấy;
+                một khoá cạn hạn mức bên này thì bên kia cũng không thử lại.
+              </p>
+              {khoaCucBoChuaGop > 0 && (
+                <button onClick={gopKhoaCucBo} disabled={dangGop}
+                  className="mt-3 flex items-center gap-2 bg-emerald-500/20 hover:bg-emerald-500/40 text-emerald-200 px-5 py-2.5 rounded-xl font-bold border border-emerald-500/30 disabled:opacity-50">
+                  {dangGop ? <div className="w-4 h-4 border-2 border-emerald-200 border-t-transparent rounded-full animate-spin" /> : <Save className="w-4 h-4" />}
+                  Gộp {khoaCucBoChuaGop} khoá còn ở bảng riêng của app này vào kho chung
+                </button>
+              )}
+            </>
+          ) : (
+            <>
+              <p className="text-slate-200 font-bold mb-1">Kho khoá của app này là KHO RIÊNG (dự án Supabase của chính nó).</p>
+              <p className="text-slate-400 text-sm">
+                Đây là app giữ kho chung thì không cần làm gì. Còn muốn app này dùng chung kho với app kia,
+                khai báo hai biến môi trường trên Vercel rồi triển khai lại:
+                <code className="font-mono text-xs block mt-2 text-slate-300">KHO_KHOA_SUPABASE_URL = URL dự án Supabase giữ kho (của app Toán)</code>
+                <code className="font-mono text-xs block text-slate-300">KHO_KHOA_SERVICE_ROLE_KEY = service role key của dự án ấy</code>
+              </p>
+            </>
+          )}
         </div>
 
         {/* ===== Khoá lõi: nằm ở biến môi trường, chỉ sửa được bằng cách triển khai lại ===== */}

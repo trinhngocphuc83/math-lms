@@ -1,4 +1,4 @@
-import { createAdminClient } from '@/utils/supabase/admin';
+import { createKhoKhoaClient as createAdminClient } from '@/utils/supabase/khoKhoa';
 
 /**
  * Sổ treo khoá AI: khoá nào bị Google từ chối vì cạn hạn mức thì treo lại 24 giờ để

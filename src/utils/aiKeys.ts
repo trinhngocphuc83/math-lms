@@ -1,4 +1,5 @@
 import { createAdminClient } from '@/utils/supabase/admin';
+import { createKhoKhoaClient, dungKhoChung } from '@/utils/supabase/khoKhoa';
 
 /**
  * Quản lý danh sách khoá API Gemini.
@@ -49,7 +50,7 @@ export const getEnvKeysMasked = (): string[] => layKeyMoiTruong().map(cheKhoa);
 export const importEnvKeysToDb = async (): Promise<{ them: number; daCo: number; loi?: string }> => {
   const env = layKeyMoiTruong();
   try {
-    const supabase = createAdminClient();
+    const supabase = createKhoKhoaClient();
     const hienCo = new Set((await docBangKhoa()).map(r => r.api_key));
     const canThem = env.filter(k => !hienCo.has(k));
     if (canThem.length > 0) {
@@ -69,7 +70,7 @@ export const importEnvKeysToDb = async (): Promise<{ them: number; daCo: number;
  */
 async function docBangKhoa(): Promise<{ api_key: string; blocked_at: string | null; block_reason: string | null }[]> {
   try {
-    const supabase = createAdminClient();
+    const supabase = createKhoKhoaClient();
     const { data, error } = await supabase
       .from('ai_keys')
       .select('api_key, blocked_at, block_reason')
@@ -84,6 +85,36 @@ async function docBangKhoa(): Promise<{ api_key: string; blocked_at: string | nu
     return [];
   }
 }
+
+/**
+ * Khi app này dùng kho chung, bảng `ai_keys` của chính nó thành bảng cũ - đếm xem còn bao
+ * nhiêu khoá ở đó chưa có trong kho chung, và gộp sang khi thầy bấm nút.
+ */
+export const soKhoaCucBoChuaGop = async (): Promise<number> => {
+  if (!dungKhoChung()) return 0;
+  try {
+    const { data } = await createAdminClient().from('ai_keys').select('api_key');
+    const chung = new Set((await docBangKhoa()).map(r => r.api_key));
+    return (data || []).filter(r => !chung.has(r.api_key)).length;
+  } catch { return 0; }
+};
+
+export const gopKhoaCucBoVaoKhoChung = async (): Promise<{ them: number; loi?: string }> => {
+  if (!dungKhoChung()) return { them: 0, loi: 'App này chưa khai báo kho chung.' };
+  try {
+    const { data, error } = await createAdminClient().from('ai_keys').select('api_key');
+    if (error) throw error;
+    const chung = new Set((await docBangKhoa()).map(r => r.api_key));
+    const canThem = (data || []).map(r => r.api_key).filter(k => k && !chung.has(k));
+    if (canThem.length > 0) {
+      const { error: e2 } = await createKhoKhoaClient().from('ai_keys').insert(canThem.map(api_key => ({ api_key })));
+      if (e2) throw e2;
+    }
+    return { them: canThem.length };
+  } catch (err: any) {
+    return { them: 0, loi: err?.message };
+  }
+};
 
 /** Toàn bộ khoá khả dụng: biến môi trường + khoá thêm tay, đã bỏ trùng và bỏ rỗng. */
 export const getAllAIKeys = async (): Promise<string[]> => {
@@ -105,7 +136,7 @@ export const saveCustomKeys = async (newKeys: string[]): Promise<boolean> => {
   // Mỗi phần tử có thể là một khoá hoặc cả một đoạn dán nhiều khoá - tách hết ra
   const hopLe = Array.from(new Set(newKeys.flatMap(tachKhoa)));
   try {
-    const supabase = createAdminClient();
+    const supabase = createKhoKhoaClient();
     const hienCo = (await docBangKhoa()).map(r => r.api_key);
 
     const canXoa = hienCo.filter(k => !hopLe.includes(k));

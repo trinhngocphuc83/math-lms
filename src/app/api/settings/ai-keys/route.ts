@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
-import { getAllAIKeys, getCustomKeys, saveCustomKeys, getEnvKeysMasked, importEnvKeysToDb } from '@/utils/aiKeys';
+import { getAllAIKeys, getCustomKeys, saveCustomKeys, getEnvKeysMasked, importEnvKeysToDb, soKhoaCucBoChuaGop, gopKhoaCucBoVaoKhoChung } from '@/utils/aiKeys';
+import { dungKhoChung } from '@/utils/supabase/khoKhoa';
 import { requireAdmin, requireUser } from '@/utils/auth/guard';
 
 export async function GET(req: Request) {
@@ -21,7 +22,13 @@ export async function GET(req: Request) {
 
   const customKeys = await getCustomKeys();
   // Khoá lõi chỉ bày bản đã che - đủ để thầy đối chiếu xem khoá nào đang nằm ở biến môi trường
-  return NextResponse.json({ customKeys, coreKeys: getEnvKeysMasked() });
+  return NextResponse.json({
+    customKeys,
+    coreKeys: getEnvKeysMasked(),
+    // Kho chung: app này đang đọc/ghi khoá ở dự án Supabase của app Toán hay ở dự án riêng
+    khoChung: dungKhoChung(),
+    khoaCucBoChuaGop: await soKhoaCucBoChuaGop(),
+  });
 }
 
 export async function POST(req: Request) {
@@ -41,6 +48,13 @@ export async function POST(req: Request) {
           : `Không có khoá lõi nào mới: ${kq.daCo} khoá đều đã nằm trong cơ sở dữ liệu.`,
         ...kq,
       });
+    }
+
+    // Gộp khoá còn nằm ở bảng riêng của app này sang kho chung
+    if (body?.action === 'gopCucBo') {
+      const kq = await gopKhoaCucBoVaoKhoChung();
+      if (kq.loi) return NextResponse.json({ error: `Lỗi gộp khoá: ${kq.loi}` }, { status: 500 });
+      return NextResponse.json({ message: kq.them > 0 ? `Đã gộp ${kq.them} khoá của app này vào kho chung.` : 'Không còn khoá nào cần gộp.', ...kq });
     }
 
     const { keys } = body; // mảng các chuỗi API Key
