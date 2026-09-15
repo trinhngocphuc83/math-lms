@@ -1,0 +1,24 @@
+[
+  {
+    "ma": "CH_1789379482878_ch44",
+    "ket_luan": "Đề nói B nằm giữa A và D nhưng góc nâng tại A (63°) lớn hơn tại B (48°) — điểm gần chân tháp hơn phải có góc nâng lớn hơn, nên A mới là điểm ở giữa. Tính đúng ra h ≈ 61,4 m, không có phương án nào là 61,4 (đáp án đang ghi 60,5). Sửa đề cho A nằm giữa, thay bộ phương án để 61,4 là đáp án.",
+    "sua": {
+      "content": "Để đo chiều cao $h$ của một ngọn tháp, người ta chọn hai điểm $A$, $B$ trên mặt đất thẳng hàng với chân $D$ của tháp ($A$ nằm giữa $B$ và $D$), đo được $AB = 24$ m, $\\widehat{CAD} = 63^\\circ$, $\\widehat{CBD} = 48^\\circ$ ($C$ là đỉnh tháp). Chiều cao $h$ của tháp gần với giá trị nào sau đây?",
+      "option_a": "$55{,}3$ m.",
+      "option_b": "$68{,}9$ m.",
+      "option_c": "$61{,}4$ m.",
+      "option_d": "$31{,}3$ m.",
+      "correct_answer": "C",
+      "explanation": "Phương pháp giải:\nTrong tam giác $ABC$: $\\widehat{ABC} = 48^\\circ$, $\\widehat{BAC} = 180^\\circ - 63^\\circ = 117^\\circ$ (góc kề bù với $\\widehat{CAD}$), suy ra $\\widehat{ACB} = 15^\\circ$; định lí sin tìm $AC$; trong tam giác vuông $ACD$: $h = CD = AC\\sin 63^\\circ$.\n\nLời giải:\n$AC = \\dfrac{AB\\sin\\widehat{ABC}}{\\sin\\widehat{ACB}} = \\dfrac{24\\sin 48^\\circ}{\\sin 15^\\circ} \\approx 68{,}9$ (m).\n$h = CD = AC\\sin 63^\\circ \\approx 68{,}9 \\cdot 0{,}891 \\approx 61{,}4$ (m).\nChọn C."
+    }
+  },
+  {
+    "ma": "CH_1789351328527_x5f4",
+    "ket_luan": "P = −13/20 = −0,65 đúng bằng nửa đơn vị làm tròn, học sinh ghi −0,6 hay −0,7 đều có lí; đổi câu hỏi thành tính 20P để đáp án là số nguyên −13.",
+    "sua": {
+      "content": "Cho $\\cot\\alpha = -3$. Tính giá trị biểu thức $P = 20 \\cdot \\dfrac{\\sin^3\\alpha + \\cos^3\\alpha}{\\sin\\alpha - \\cos\\alpha}$.",
+      "correct_answer": "-13",
+      "explanation": "Phương pháp giải:\nChia cả tử và mẫu cho $\\sin^3\\alpha$; $\\dfrac{1}{\\sin^2\\alpha} = 1 + \\cot^2\\alpha$.\n\nLời giải:\n$\\dfrac{\\sin^3\\alpha + \\cos^3\\alpha}{\\sin\\alpha - \\cos\\alpha} = \\dfrac{1 + \\cot^3\\alpha}{\\left(1 + \\cot^2\\alpha\\right)(1 - \\cot\\alpha)} = \\dfrac{1 - 27}{10 \\cdot 4} = -\\dfrac{13}{20}$.\n$P = 20 \\cdot \\left(-\\dfrac{13}{20}\\right) = -13$."
+    }
+  }
+]

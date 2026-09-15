@@ -13,6 +13,8 @@ Chương hoàn chỉnh gồm các phần sau, dựng theo đúng thứ tự này
 4. **Bảng tổng hợp công thức cả chương** — module lý thuyết của bài `Cuối chương N`
 5. **Xuất Word bản giáo viên** — mỗi bài một tệp
 6. **Kiểm lại toàn bộ giáo án** (Bước 7) — `kiem-giao-an.mjs` về 0 lỗi, rồi mở app xem bằng mắt
+7. **Rà lại tính đúng đắn của TỪNG câu hỏi** (Bước 8) — `ra-cau.mjs` bày hết câu ra, giải lại
+   từng câu, sửa bằng `sua-cau-ra.mjs`. Chưa làm bước này thì **chưa được báo xong**.
 
 Đọc [references/cau-truc-va-han-ngach.md](references/cau-truc-va-han-ngach.md) **trước khi
 rút câu**: ở đó có số câu từng loại theo khối lớp, phân bố mức, khuôn đề, và cách rút cho
@@ -271,6 +273,49 @@ sổ Chrome giữa chừng: slide lệch khung cho tới khi tải lại trang.
 
 Tham số `--lop` của mọi script trong skill so khớp `ilike` với tên khoá học: phải ghi
 `--lop "TOÁN 10"`, ghi `--lop 10` là trúng "TOÁN CHUYÊN VÀO 10".
+
+## Bước 8 — Rà lại tính đúng đắn của từng câu hỏi
+
+`kiem-giao-an` chỉ soi **hình thức** (thiếu ảnh, lạc dạng, `answerIndex` lệch so với kho). Nó
+không biết đáp án trong kho có **đúng** hay không — mà kho là nơi sai nằm sẵn: câu bóc từ
+tài liệu mang theo cả lỗi của tài liệu, câu do AI bóc thì thêm lỗi của AI. Toán 12 chương 3
+(9/2026) qua kiem-giao-an 0 lỗi, thầy mở ra thấy "sai rất nhiều câu hỏi". Từ đó, chương nào
+cũng phải qua bước này, và **chưa rà thì chưa được báo xong**.
+
+```bash
+node .claude/skills/soan-chuong-thpt/scripts/ra-cau.mjs --lop "TOÁN 10" --chuong "Hệ thức lượng" --cuoi "Cuối chương 3"
+```
+
+Nó bày **mọi câu** của chương (bài giảng, tự luyện, đề — mỗi câu một lần, kèm chỗ đang dùng)
+ra `scratch/ra-cau/<chương>.md`: đề, phương án (đánh dấu ✔ phương án đang chọn), đáp án
+TLN, bốn ý Đúng/Sai với nhãn, và lời giải đang ghi. Rồi **đọc hết tệp ấy, giải lại từng
+câu** — 200 câu là chuyện bình thường, đọc theo từng khúc 700 dòng. Không có máy nào kiểm
+được toán đúng hay sai; mấy cờ máy gắn (`NGHI ĐÁP ÁN`, `LG KHÔNG KHỚP`, `ĐS MỘT MÀU`,
+`TLN >4 Ô`…) chỉ là chỗ nên đọc kĩ hơn, **không phải danh sách lỗi** — lần rà lớp 10 chương 3
+máy gắn 9 cờ thì cả 9 là báo giả, còn hai câu sai thật thì máy không thấy.
+
+Hai kiểu sai hay gặp mà chỉ giải lại mới lộ:
+
+- **Đề tự mâu thuẫn**: "B nằm giữa A và D" nhưng góc nâng tại A lớn hơn tại B (điểm gần
+  chân tháp hơn phải có góc nâng lớn hơn); tính đúng ra 61,4 m mà bốn phương án là 18 · 18,5
+  · 60 · 60,5 — tài liệu gốc đã sai, kho chép nguyên.
+- **Làm tròn nhập nhằng**: kết quả đúng bằng −0,65 mà đề bắt làm tròn tới hàng phần mười —
+  học sinh ghi −0,6 hay −0,7 đều có lí. Đổi đề hỏi $20P$ để đáp án là số nguyên.
+
+Ghi kết luận vào `scratch/ra-cau/<chương>-sua.json` (khuôn in ở cuối tệp .md: `ma`,
+`ket_luan`, `sua` gồm các cột của bảng `questions`, hoặc `bo: true`), rồi:
+
+```bash
+node .claude/skills/soan-chuong-thpt/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json ghi
+```
+
+Nó sửa kho **và** dựng lại khối quiz trong mọi module đang dùng câu ấy (kể cả bản trình
+chiếu), cùng quy tắc lời giải với script rót câu; `bo: true` thì gỡ khỏi bài và gắn cờ
+`[CÂU HỎI CÓ THỂ BỊ SAI ĐỀ - …]` vào đề trong kho để lần rút sau không lấy lại. Sửa xong
+chạy lại `kiem-giao-an.mjs` và xuất lại Word.
+
+Khi báo thầy, nói rõ **đã rà bao nhiêu câu, sửa câu nào, vì sao** — không nói "đã kiểm"
+chung chung.
 
 ## Chạy script Node đụng vào mã của app
 

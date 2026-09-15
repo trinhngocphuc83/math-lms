@@ -1,0 +1,21 @@
+{
+ "id": "9a44f2d4-92de-41c8-a14f-69d9b3fb9314",
+ "question_id": "CH_1789351328527_x5f4",
+ "grade": "10",
+ "subject": "Hình học",
+ "topic": "Chương 3. Hệ thức lượng trong tam giác",
+ "lesson": "Bài 1. Giá trị lượng giác của một góc từ 0° đến 180°",
+ "math_form": "Tính giá trị lượng giác còn lại, rút gọn và chứng minh biểu thức lượng giác",
+ "question_type": "TLN",
+ "difficulty": "3",
+ "content": "Cho $\\cot\\alpha = -3$. Tính giá trị biểu thức $P = \\dfrac{\\sin^3\\alpha + \\cos^3\\alpha}{\\sin\\alpha - \\cos\\alpha}$ (làm tròn kết quả đến hàng phần mười).",
+ "option_a": null,
+ "option_b": null,
+ "option_c": null,
+ "option_d": null,
+ "correct_answer": "-0,7",
+ "explanation": "Phương pháp giải:\nChia cả tử và mẫu cho $\\sin^3\\alpha$; $\\dfrac{1}{\\sin^2\\alpha} = 1 + \\cot^2\\alpha$.\n\nLời giải:\n$P = \\dfrac{1 + \\cot^3\\alpha}{\\left(1 + \\cot^2\\alpha\\right)(1 - \\cot\\alpha)} = \\dfrac{1 - 27}{10 \\cdot 4} = -\\dfrac{13}{20} = -0{,}65 \\approx -0{,}7$.",
+ "usage_count": 0,
+ "created_at": "2026-09-14T02:02:09.471242+00:00",
+ "image_url": null
+}

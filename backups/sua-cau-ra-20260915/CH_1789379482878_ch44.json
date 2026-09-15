@@ -1,0 +1,21 @@
+{
+ "id": "c6408135-ac34-4586-aa11-b27fcabc0b89",
+ "question_id": "CH_1789379482878_ch44",
+ "grade": "10",
+ "subject": "Hình học",
+ "topic": "Chương 3. Hệ thức lượng trong tam giác",
+ "lesson": "Bài 2. Hệ thức lượng trong tam giác",
+ "math_form": "Ứng dụng thực tế của hệ thức lượng trong tam giác",
+ "question_type": "NLC",
+ "difficulty": "3",
+ "content": "Để đo chiều cao $h$ của một ngọn tháp, người ta chọn hai điểm $A$, $B$ trên mặt đất thẳng hàng với chân $D$ của tháp ($B$ nằm giữa $A$ và $D$), đo được $AB = 24$ m, $\\widehat{CAD} = 63^\\circ$, $\\widehat{CBD} = 48^\\circ$ ($C$ là đỉnh tháp). Chiều cao $h$ của tháp gần với giá trị nào sau đây?",
+ "option_a": "$18$ m.",
+ "option_b": "$18{,}5$ m.",
+ "option_c": "$60$ m.",
+ "option_d": "$60{,}5$ m.",
+ "correct_answer": "D",
+ "explanation": "Phương pháp giải:\n$\\widehat{ACB} = 63^\\circ - 48^\\circ = 15^\\circ$; định lí sin trong tam giác $ABC$ tìm $AC$; $h = AC\\sin 63^\\circ$.\n\nLời giải:\n$AC = \\dfrac{AB\\sin 48^\\circ}{\\sin 15^\\circ} \\approx 68{,}9$ (m); $h = CD = AC\\sin 63^\\circ \\approx 61{,}4$ (m), gần $60{,}5$ m nhất.\nChọn D.",
+ "usage_count": 0,
+ "created_at": "2026-09-14T09:51:22.722951+00:00",
+ "image_url": null
+}
