@@ -12,6 +12,11 @@ type ModelAI = {
 
 export default function AdminAIKeysPage() {
   const [keys, setKeys] = useState<string[]>([]);
+  // Khoá lõi (biến môi trường trên Vercel) - chỉ có bản đã che, để thầy thấy chúng đang ở đâu
+  const [coreKeys, setCoreKeys] = useState<string[]>([]);
+  const [dangChepLoi, setDangChepLoi] = useState(false);
+  // Ô dán một lúc nhiều khoá (mỗi dòng một khoá) - thêm từng ô một thì 10 khoá bấm 10 lần
+  const [danNhieu, setDanNhieu] = useState('');
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
@@ -36,7 +41,8 @@ export default function AdminAIKeysPage() {
       const res = await fetch('/api/settings/ai-keys');
       const data = await res.json();
       setKeys(data.customKeys || []);
-      
+      setCoreKeys(data.coreKeys || []);
+
       const resTotal = await fetch('/api/settings/ai-keys?action=totalCount');
       const dataTotal = await resTotal.json();
       setTotalCount(dataTotal.count || 0);
@@ -106,6 +112,34 @@ export default function AdminAIKeysPage() {
     }
   };
 
+  /** Tách đoạn dán thành từng khoá, thêm vào danh sách (bỏ khoá đã có). */
+  const themTuDoanDan = () => {
+    const moi = danNhieu.split(/[\s,;]+/).map(k => k.trim()).filter(k => k.length >= 20 && !keys.includes(k));
+    if (moi.length === 0) { alert('Không thấy khoá nào mới trong đoạn vừa dán.'); return; }
+    setKeys([...keys.filter(k => k.trim() !== ''), ...moi]);
+    setDanNhieu('');
+  };
+
+  /** Chép khoá lõi (biến môi trường của bản đang chạy) vào CSDL để quản lý một chỗ. */
+  const chepKhoaLoi = async () => {
+    if (!confirm(`Chép ${coreKeys.length} khoá lõi vào cơ sở dữ liệu? Khoá đã có sẽ được bỏ qua.`)) return;
+    setDangChepLoi(true);
+    try {
+      const res = await fetch('/api/settings/ai-keys', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'importEnv' }),
+      });
+      const data = await res.json();
+      alert(res.ok ? data.message : (data.error || 'Chép thất bại'));
+      if (res.ok) fetchData();
+    } catch {
+      alert('Lỗi kết nối máy chủ');
+    } finally {
+      setDangChepLoi(false);
+    }
+  };
+
   const handleSave = async () => {
     setSaving(true);
     try {
@@ -160,7 +194,7 @@ export default function AdminAIKeysPage() {
               Các cổng này tự mở lại sau 24 giờ.
             </p>
           )}
-          <p className="text-sm text-slate-400 italic">* Lưu ý: Số lượng này đã bao gồm các Mã Khóa cài sẵn ở Lõi hệ thống (.env.local) và các Mã Khóa cộng dồn được thêm ở bên dưới.</p>
+          <p className="text-sm text-slate-400 italic">* Lưu ý: Số lượng này = {coreKeys.length} khoá lõi (biến môi trường trên máy chủ) + {keys.filter(k => k.trim()).length} khoá trong cơ sở dữ liệu (bên dưới), đã bỏ khoá trùng nhau.</p>
           <p className="text-sm text-slate-400 italic mt-1">* Gói miễn phí của Google giới hạn <strong className="text-slate-300">20 lượt/ngày cho mỗi khoá</strong>. Cần quét nhiều thì thêm nhiều khoá, hoặc nâng cấp gói trả phí.</p>
         </div>
 
@@ -252,10 +286,57 @@ export default function AdminAIKeysPage() {
           </div>
         </div>
 
+        {/* ===== Khoá lõi: nằm ở biến môi trường, chỉ sửa được bằng cách triển khai lại ===== */}
+        <div className="mb-8 relative z-10">
+          <h2 className="text-xl font-bold mb-2 flex items-center gap-2">
+            <Key className="w-5 h-5 text-amber-400" /> Khoá lõi đang ở biến môi trường ({coreKeys.length})
+          </h2>
+          <p className="text-slate-400 text-sm mb-3">
+            Đây là khoá khai báo lúc triển khai (Vercel → Settings → Environment Variables), chỉ hiện bản đã che.
+            Muốn quản lý mọi khoá ở một chỗ thì bấm chép vào cơ sở dữ liệu: từ đó sửa/xoá ngay trên trang này,
+            không phải triển khai lại. Chép xong có thể xoá dần biến môi trường trên Vercel.
+          </p>
+          {coreKeys.length === 0 ? (
+            <p className="text-slate-500 text-sm italic">Bản đang chạy không có khoá nào ở biến môi trường — mọi khoá đều nằm trong cơ sở dữ liệu.</p>
+          ) : (
+            <div className="flex flex-wrap gap-2 mb-3">
+              {coreKeys.map((k, i) => (
+                <span key={i} className="font-mono text-xs bg-amber-500/10 text-amber-200 border border-amber-500/30 px-3 py-1.5 rounded-lg">
+                  {k}{keys.some(x => x.startsWith(k.slice(0, 6)) && x.endsWith(k.slice(-4))) ? ' · đã có trong CSDL' : ''}
+                </span>
+              ))}
+            </div>
+          )}
+          {coreKeys.length > 0 && (
+            <button onClick={chepKhoaLoi} disabled={dangChepLoi}
+              className="flex items-center gap-2 bg-amber-500/20 hover:bg-amber-500/40 text-amber-200 px-5 py-2.5 rounded-xl font-bold border border-amber-500/30 disabled:opacity-50">
+              {dangChepLoi ? <div className="w-4 h-4 border-2 border-amber-200 border-t-transparent rounded-full animate-spin" /> : <Save className="w-4 h-4" />}
+              Chép {coreKeys.length} khoá lõi vào cơ sở dữ liệu
+            </button>
+          )}
+        </div>
+
         <div className="mb-6 relative z-10">
           <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-            <Key className="w-5 h-5 text-indigo-400" /> Danh sách Cổng A.I Mở Rộng (Cộng dồn)
+            <Key className="w-5 h-5 text-indigo-400" /> Khoá trong cơ sở dữ liệu ({keys.filter(k => k.trim()).length}) — sửa xong nhớ bấm Lưu
           </h2>
+
+          {/* Dán một lúc nhiều khoá */}
+          <div className="bg-white/5 border border-white/10 rounded-xl p-4 mb-4">
+            <p className="text-slate-400 text-sm mb-2">Dán nhiều khoá một lúc — mỗi khoá một dòng (hoặc cách nhau bằng dấu phẩy), rồi bấm tách:</p>
+            <textarea
+              value={danNhieu}
+              onChange={(e) => setDanNhieu(e.target.value)}
+              rows={3}
+              placeholder={'AIzaSy...\nAIzaSy...\nAQ.Ab8...'}
+              className="w-full bg-black/30 border border-white/10 rounded-lg px-3 py-2 text-white font-mono text-sm placeholder:text-slate-600 focus:border-indigo-500 outline-none"
+            />
+            <button onClick={themTuDoanDan}
+              className="mt-2 flex items-center gap-2 bg-indigo-500/20 hover:bg-indigo-500/40 text-indigo-300 px-4 py-2 rounded-lg font-bold text-sm border border-indigo-500/30">
+              <Plus className="w-4 h-4" /> Tách thành từng khoá và thêm vào danh sách
+            </button>
+          </div>
+
           <div className="space-y-4">
             {keys.length === 0 && (
               <div className="text-center py-8 bg-white/5 rounded-xl border border-white/10 border-dashed">

@@ -24,7 +24,43 @@ const layKeyMoiTruong = (): string[] => {
     const k = process.env[`GEMINI_API_KEY_${i}`];
     if (k) keys.push(k);
   }
-  return keys;
+  return Array.from(new Set(keys.map(k => k.trim()).filter(Boolean)));
+};
+
+/** Che khoá để bày lên màn hình: 6 kí tự đầu + 4 kí tự cuối, đủ nhận ra mà không lộ. */
+export const cheKhoa = (k: string): string => (k.length <= 12 ? k.slice(0, 3) + '…' : `${k.slice(0, 6)}…${k.slice(-4)}`);
+
+/**
+ * Tách một đoạn chữ dán vào thành danh sách khoá: thầy hay dán cả chục khoá vào MỘT ô,
+ * mỗi khoá một dòng hoặc cách nhau bằng dấu phẩy - bản trước coi cả đoạn là một khoá
+ * (dài ngoằng, Google từ chối) nên "thêm 9 khoá" mà hệ thống chỉ đếm được 1.
+ */
+export const tachKhoa = (text: string): string[] =>
+  Array.from(new Set(String(text || '').split(/[\s,;]+/).map(k => k.trim()).filter(k => k.length >= 20)));
+
+/** Khoá lõi (biến môi trường) đã che, để trang quản lý bày ra cho thầy đối chiếu. */
+export const getEnvKeysMasked = (): string[] => layKeyMoiTruong().map(cheKhoa);
+
+/**
+ * Chép khoá lõi (biến môi trường của bản đang chạy) vào bảng ai_keys, bỏ qua khoá đã có.
+ * Sau bước này thầy có thể xoá dần biến môi trường trên Vercel - mọi khoá nằm gọn trong CSDL,
+ * sửa/xoá ngay trên trang quản lý, không phải triển khai lại.
+ */
+export const importEnvKeysToDb = async (): Promise<{ them: number; daCo: number; loi?: string }> => {
+  const env = layKeyMoiTruong();
+  try {
+    const supabase = createAdminClient();
+    const hienCo = new Set((await docBangKhoa()).map(r => r.api_key));
+    const canThem = env.filter(k => !hienCo.has(k));
+    if (canThem.length > 0) {
+      const { error } = await supabase.from('ai_keys').insert(canThem.map(api_key => ({ api_key })));
+      if (error) throw error;
+    }
+    return { them: canThem.length, daCo: env.length - canThem.length };
+  } catch (err: any) {
+    console.error('[aiKeys] Lỗi chép khoá lõi vào CSDL:', err?.message);
+    return { them: 0, daCo: 0, loi: err?.message };
+  }
 };
 
 /**
@@ -66,7 +102,8 @@ export const getCustomKeys = async (): Promise<string[]> => {
  * thì thêm. Giữ nguyên trạng thái "đang bị treo" của những khoá cũ vẫn còn.
  */
 export const saveCustomKeys = async (newKeys: string[]): Promise<boolean> => {
-  const hopLe = Array.from(new Set(newKeys.map(k => k.trim()).filter(k => k !== '')));
+  // Mỗi phần tử có thể là một khoá hoặc cả một đoạn dán nhiều khoá - tách hết ra
+  const hopLe = Array.from(new Set(newKeys.flatMap(tachKhoa)));
   try {
     const supabase = createAdminClient();
     const hienCo = (await docBangKhoa()).map(r => r.api_key);
