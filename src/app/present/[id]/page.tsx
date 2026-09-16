@@ -263,7 +263,14 @@ export default function PresentationPage() {
         // Đo lại vài nhịp để bắt kịp lúc KaTeX và ảnh render xong.
         const t1 = setTimeout(measure, 120);
         const t2 = setTimeout(measure, 420);
-        return () => { cancelled = true; clearTimeout(t1); clearTimeout(t2); };
+        /* Đo lại MỖI KHI nội dung đổi cỡ, không chỉ khi sang slide: trò chơi trên lớp đổi
+           câu, lật đáp án, mở lời giải mà slide vẫn đứng nguyên - bản trước không đo lại nên
+           câu dài tràn khỏi canvas, hàng nút Đúng/Sai/Chuyền/Câu tiếp nằm dưới đáy, thầy
+           không thấy để bấm (16/9/2026, máy 1366x768). Phần tử đo nằm trong lớp scale
+           nhưng offsetHeight không ăn transform, nên không tự kích lại chính nó. */
+        const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => measure()) : null;
+        if (ro && measureRef.current) ro.observe(measureRef.current);
+        return () => { cancelled = true; clearTimeout(t1); clearTimeout(t2); ro?.disconnect(); };
     }, [currentSlideIndex, currentFragmentIndex, slides, autoFitEnabled]);
 
     const currentFragments = slides[currentSlideIndex] || [];

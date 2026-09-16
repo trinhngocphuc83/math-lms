@@ -17,6 +17,7 @@ import ReactCrop, { type Crop } from 'react-image-crop';
 import BlockEditor, { Block } from "./BlockEditor";
 import PushToBankModal from './PushToBankModal';
 import NhapCauTroChoiModal from '@/components/tro-choi/NhapCauTroChoiModal';
+import { demCauChuaRoMuc, doanMucChoBoCau } from '@/utils/doanMucBoCau';
 import 'react-image-crop/dist/ReactCrop.css';
 import confetti from 'canvas-confetti';
 import { Document, Packer, Paragraph, TextRun, AlignmentType } from "docx";
@@ -1201,8 +1202,29 @@ function EditorContent() {
   const [isBackupModalOpen, setIsBackupModalOpen] = useState(false);
   const [isPushToBankModalOpen, setIsPushToBankModalOpen] = useState(false);
   /* Bộ câu hỏi trò chơi (module type 'game'): nhập câu từ các phần khác của bài/chương, có tách ý */
-  const [moNhapTroChoi, setMoNhapTroChoi] = useState(false);
   const laModuleTroChoi = moduleType === 'game';
+  const [moNhapTroChoi, setMoNhapTroChoi] = useState(false);
+  /* Bộ câu hỏi trò chơi: đoán mức cho câu chưa rõ ngay trong bộ đang soạn (mức → điểm ±1/2/3). */
+  const [dangDoanMuc, setDangDoanMuc] = useState<{ xong: number; tong: number } | null>(null);
+  const soChuaRoMuc = laModuleTroChoi ? demCauChuaRoMuc(markdownContent || '').chuaRo : 0;
+  const doanMucBoCau = async () => {
+    if (dangDoanMuc || !soChuaRoMuc) return;
+    setDangDoanMuc({ xong: 0, tong: soChuaRoMuc });
+    try {
+      const kq = await doanMucChoBoCau(markdownContent || '', (xong, tong) => setDangDoanMuc({ xong, tong }));
+      if (kq.soDoan) {
+        setMarkdownContent(kq.markdown);
+        setBlocks(parseMarkdownToBlocks(kq.markdown));
+      }
+      alert(kq.soDoan
+        ? `AI đã đoán mức cho ${kq.soDoan}/${kq.soChuaRo} câu chưa rõ. Xem lại trong khối (trường "muc": 1 nhận biết · 2 thông hiểu · 3 vận dụng), rồi bấm Lưu.`
+        : 'AI không trả về mức nào (hết hạn mức hoặc lỗi mạng). Thử lại sau.');
+    } catch (e: any) {
+      alert(e?.message || 'AI đoán mức không chạy được.');
+    } finally {
+      setDangDoanMuc(null);
+    }
+  };
 
   /**
    * Lui MỘT BẬC chứ không văng hẳn ra ngoài.
@@ -2070,6 +2092,14 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
               <button onClick={() => setIsBackupModalOpen(true)} className="flex items-center gap-1.5 text-xs font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-md hover:bg-emerald-100 transition-colors shadow-sm" title="Sinh mẫu Prompt thủ công"><Bot className="w-3.5 h-3.5" /> Lấy Prompt Thủ Công</button>
               {laModuleTroChoi && (
                 <button onClick={() => setMoNhapTroChoi(true)} className="flex items-center gap-1.5 text-xs font-bold bg-orange-100 border border-orange-300 text-orange-800 px-3 py-1.5 rounded-md hover:bg-orange-200 transition-colors shadow-sm" title="Lấy câu từ tự luyện / đề / bài giảng của bài này hoặc cả chương, tách ý được">🎮 Nhập câu từ bài (tách ý)</button>
+              )}
+              {laModuleTroChoi && soChuaRoMuc > 0 && (
+                <button onClick={doanMucBoCau} disabled={!!dangDoanMuc}
+                        className="flex items-center gap-1.5 text-xs font-bold bg-violet-100 border border-violet-300 text-violet-800 px-3 py-1.5 rounded-md hover:bg-violet-200 transition-colors shadow-sm disabled:opacity-50"
+                        title="Câu chưa có mức thì trò chơi tính ±1. AI xếp mức nhận biết / thông hiểu / vận dụng cho từng câu, thầy sửa lại được trong khối">
+                  {dangDoanMuc ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
+                  {dangDoanMuc ? `Đang đoán mức ${dangDoanMuc.xong}/${dangDoanMuc.tong}…` : `AI đoán mức ${soChuaRoMuc} câu chưa rõ`}
+                </button>
               )}
               <button onClick={() => setGlobalTriggerBankModal(prev => prev + 1)} className="flex items-center gap-1.5 text-xs font-bold bg-amber-100 border border-amber-300 text-amber-800 px-3 py-1.5 rounded-md hover:bg-amber-200 transition-colors shadow-sm"><Database className="w-3.5 h-3.5" /> Rút từ Ngân hàng</button>
               <button onClick={() => setIsPushToBankModalOpen(true)} className="flex items-center gap-1.5 text-xs font-bold bg-fuchsia-100 border border-fuchsia-300 text-fuchsia-800 px-3 py-1.5 rounded-md hover:bg-fuchsia-200 transition-colors shadow-sm"><UploadCloud className="w-3.5 h-3.5" /> Đưa vào Ngân hàng</button>

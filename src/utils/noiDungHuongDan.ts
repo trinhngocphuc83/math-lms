@@ -561,10 +561,18 @@ Trò chơi **không** lấy câu từ Bài tập tự luyện hay đề ôn tậ
      Câu nhiều ý **a) b) c)…** được đánh dấu *"N ý"* kèm nút **Tách ý**: bấm là mỗi ý
      thành **một câu riêng**, phần dẫn giữ ở đầu mỗi câu, lời giải tách theo đúng ý.
      Mỗi câu chọn được **mức** (Nhận biết · Thông hiểu · Vận dụng) — chính là điểm
-     ±1 · ±2 · ±3 khi chơi; câu rút từ kho đã có sẵn mức. Bấm **Thêm N câu**.
+     ±1 · ±2 · ±3 khi chơi; câu rút từ kho đã có sẵn mức, câu soạn tay thì hiện
+     *"chưa rõ"* (khung vàng) và **sẽ tính ±1**. Đừng để vậy: bấm **✨ AI đoán mức cho N
+     câu chưa rõ** (hàng vàng dưới ô lọc) — máy xếp mức từng câu, thầy cô sửa lại chỗ nào
+     chưa ưng; hoặc tick nhiều câu rồi **đặt mức cho N câu đã tick** một lần. Bấm **Thêm N câu**.
    - **Rút từ Ngân hàng** — lấy thẳng từ kho theo bài, dạng, mức như soạn bài thường.
    - **Gõ tay** một câu mới bằng khối Câu hỏi như mọi bài giảng.
 3. Bấm **Lưu**. Sửa, xoá, sắp lại câu trong bộ như soạn bài bình thường.
+
+Bộ đã có sẵn mà còn câu chưa rõ mức (mở bộ lên thấy nút tím **✨ AI đoán mức N câu chưa
+rõ** trên thanh công cụ) thì bấm nút ấy: máy ghi \`"muc": 1/2/3\` vào từng khối, thầy cô
+xem lại rồi **Lưu**. Trên màn chiếu, góc phải mỗi câu ghi *Nhận biết · ±1* hay *Vận dụng
+· ±3* — thấy cả bài toàn ±1 là bộ chưa có mức.
 
 > Một bộ khoảng **10–20 câu** đủ mức là chơi được nhiều buổi: mỗi ván máy **xáo** rồi
 > lấy đúng số câu thầy cô đặt, nên hai ván ít khi trùng nhau. Chơi "Cả chương" thì máy
