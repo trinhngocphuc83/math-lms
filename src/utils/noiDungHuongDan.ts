@@ -2,7 +2,7 @@
  * Noi dung trang huong dan soan bai - MOT nguon dung cho ca hai cho:
  * hop "Huong dan" trong trinh soan va tep docs/huong-dan-soan-bai.md.
  *
- * SUA O docs/huong-dan-soan-bai.md roi chay scratch/dung-huong-dan.py,
+ * SUA O docs/huong-dan-soan-bai.md roi chay node scratch/dung-huong-dan.mjs,
  * dung sua thang tep nay.
  */
 
@@ -10,7 +10,7 @@ export const NOI_DUNG_HUONG_DAN = `Bảng tra nhanh. Mở lại bất cứ lúc 
 **trang lớp học** và **màn hình trình chiếu**.
 
 Phần 1–5 nói về soạn bài và Sổ tay. Phần 6–10 nói về lúc đứng lớp: gọi tên, cộng điểm,
-vinh danh và điều khiển bằng điện thoại.
+vinh danh và điều khiển bằng điện thoại. Phần 16 là ba trò chơi luyện tập trên lớp.
 
 ---
 
@@ -535,4 +535,160 @@ huynh*, xuất được ảnh cho từng em một, hoặc xuất cả loạt.
 - **Một em có hai bài** thì máy chặn không cho chốt — ghi đè lên nhau là mất một bài mà
   không ai biết. Bỏ bớt một tờ rồi chốt lại.
 - **Em chưa có bài** thì máy chỉ nhắc, không chặn: thầy cô tự quyết cho vắng hay chờ.
+
+---
+
+## 16. Trò chơi trên lớp — Truy đuổi · Chớp nhoáng · Đấu đội tiếp sức
+
+Ba trò chơi luyện tập ngay trên màn chiếu, **học sinh không cần điện thoại**: máy chiếu
+hiện câu, cả lớp trả lời bằng miệng, thẻ hoặc bảng con, thầy cô chấm bằng chuột hoặc từ
+điện thoại. Điểm cộng/trừ ghi thẳng vào **sổ điểm thưởng** của lớp.
+
+### 16.1 Chuẩn bị: Bộ câu hỏi trò chơi (làm một lần cho mỗi bài)
+
+Trò chơi **không** lấy câu từ Bài tập tự luyện hay đề ôn tập — ở đó có câu tự luận tám
+ý, một lượt chơi không làm nổi. Câu cho trò chơi nằm ở một mục riêng do thầy cô soạn:
+
+1. **Khóa học & Bài giảng** → mở bài → bấm **🎮 Thêm Bộ câu hỏi trò chơi** (nằm trên
+   nút *Thêm Mục con*). Mục này hiện màu cam, ghi rõ *học sinh không thấy* — học sinh
+   vào bài không thấy tab này.
+2. Bấm **Soạn bộ câu**. Đưa câu vào bằng một trong ba cách:
+   - **🎮 Nhập câu từ bài (tách ý)** — nút cam trên thanh công cụ. Hộp hiện **mọi câu**
+     tương tác của bài và của cả chương (tự luyện, luyện tập, đề, bài giảng), lọc theo
+     phần, tìm trong đề. Tick câu muốn lấy.
+     Câu nhiều ý **a) b) c)…** được đánh dấu *"N ý"* kèm nút **Tách ý**: bấm là mỗi ý
+     thành **một câu riêng**, phần dẫn giữ ở đầu mỗi câu, lời giải tách theo đúng ý.
+     Mỗi câu chọn được **mức** (Nhận biết · Thông hiểu · Vận dụng) — chính là điểm
+     ±1 · ±2 · ±3 khi chơi; câu rút từ kho đã có sẵn mức. Bấm **Thêm N câu**.
+   - **Rút từ Ngân hàng** — lấy thẳng từ kho theo bài, dạng, mức như soạn bài thường.
+   - **Gõ tay** một câu mới bằng khối Câu hỏi như mọi bài giảng.
+3. Bấm **Lưu**. Sửa, xoá, sắp lại câu trong bộ như soạn bài bình thường.
+
+> Một bộ khoảng **10–20 câu** đủ mức là chơi được nhiều buổi: mỗi ván máy **xáo** rồi
+> lấy đúng số câu thầy cô đặt, nên hai ván ít khi trùng nhau. Chơi "Cả chương" thì máy
+> gộp bộ của mọi bài trong chương.
+
+### 16.2 Vào chơi
+
+Đang trình chiếu bài (bài nào cũng được, kể cả bài giảng lý thuyết): bấm nút **🎮** ở
+thanh điều khiển dưới màn hình (cạnh 🎲 Gọi tên) hoặc phím **T** → màn **Chọn trò chơi**
+với ba thẻ. Bấm thẻ, hoặc phím **1** Truy đuổi · **2** Chớp nhoáng · **3** Đấu đội;
+**Esc** về bài giảng.
+
+Mọi trò cùng hỏi ở màn cài đặt:
+
+| Ô | Nghĩa |
+|---|---|
+| **Lấy câu từ** | *Bài này* = bộ câu hỏi của bài đang chiếu · *Cả chương* = gộp bộ của mọi bài trong chương |
+| **Số câu** | thầy cô đặt, máy nhớ lần sau |
+| **Lớp** | nhớ từ lần gọi tên gần nhất, chỉ xác nhận |
+
+Bài chưa có bộ câu hỏi thì máy báo ngay chỗ này và chỉ đường tạo (mục 16.1).
+
+**Thời gian mỗi câu** không hỏi ở màn cài đặt: dùng đúng **đồng hồ góc dưới phải** như
+mọi slide — bấm đồng hồ, gõ số giây/phút, chạy. Máy **nhớ** thời lượng ấy và **tự chạy
+đồng hồ** ở mỗi câu sau (kể cả khi chuyền hay đội khác giành). Chưa từng đặt thì đồng hồ
+không tự chạy, bấm một lần là nhớ.
+
+**Điểm mỗi câu** theo mức câu trong bộ: Nhận biết **±1** · Thông hiểu **±2** · Vận dụng
+**±3**. Đúng cộng, **sai trừ đúng bằng ngần ấy** (không có câu "làm cho có"). Điểm ghi
+ngay vào sổ điểm thưởng, lí do ghi rõ *"Truy đuổi · câu 3 · nhận chuyền · đúng"* —
+muốn sửa em nào thì mở bảng Gọi tên như thường.
+
+**Cách chấm** — giống nhau ở cả ba trò, máy tự chấm ba loại, tự luận thầy cô chấm:
+
+- **Trắc nghiệm**: bấm phương án em (hoặc đội) chọn → **Hiển thị đáp án** → máy chấm.
+- **Đúng/Sai 4 ý**: bấm Đ hoặc S ở từng ý theo em trả lời → **Hiển thị đáp án**; đúng
+  cả bốn ý mới tính đúng.
+- **Trả lời ngắn**: gõ số em nói vào ô → **Hiển thị đáp án**; "3,5" và "3.5" như nhau.
+- **Tự luận**: em trình bày, thầy cô bấm **Đúng +d** / **Sai −d**; chấm xong máy mới
+  lật bài giải mẫu.
+- Không bấm gì mà lật đáp án thì tính là **sai** (hết giờ chưa trả lời).
+
+### 16.3 🎯 Truy đuổi — gọi một em, sai thì chuyền
+
+Dùng khi ôn đầu giờ, muốn cả lớp căng vì ai cũng có thể bị gọi.
+
+1. **Quay** (phím **Q**): vòng quay dừng ở một em, tên hiện thẻ cam. Em đã được gọi tạm
+   ra khỏi vòng cho tới khi cả lớp được gọi hết (chung vòng quay với bảng Gọi tên). Muốn
+   chỉ định thì bấm **Chỉ định** rồi chọn tên.
+2. Câu hiện, đồng hồ chạy. Chấm như mục 16.2. Đúng: thẻ tên xanh, "+2".
+3. Sai: thẻ đỏ "−2", hiện nút **Chuyền 1/2** (phím **C**) → quay em khác, **cùng câu**,
+   cùng thang điểm. Chuyền tối đa **2 lần**; người thứ ba vẫn sai thì nút **Chữa**
+   (phím **L**) sáng lên — mở lời giải từng bước, không ai bị trừ thêm.
+4. **Câu tiếp** (Enter). **Kết thúc** bất cứ lúc nào → bảng tổng kết ai cộng/trừ bao
+   nhiêu, mấy lượt; **Chơi ván mới** hoặc **Về bài giảng**.
+
+### 16.4 ⚡ Chớp nhoáng — cả lớp trả lời, máy tự lật, gọi em giải thích
+
+Dùng cuối giờ hoặc ôn tập chương, nhịp nhanh.
+
+1. Câu hiện kèm dòng nhắc lớp trả lời bằng gì: trắc nghiệm **giơ thẻ A/B/C/D**, Đúng/Sai
+   **giơ thẻ xanh (Đúng) / đỏ (Sai)** từng ý, trả lời ngắn **viết bảng con**, tự luận
+   làm nháp chờ gọi.
+2. **Hết giờ máy tự lật đáp án** (không cần bấm). Lớp xong sớm thì bấm *Hiển thị đáp án*
+   để lật sớm. Tự luận không lật.
+3. Bấm **Gọi tên** (phím **Q**) → vòng quay chọn một em **giải thích cách làm** → thầy
+   cô bấm **Đúng +d / Sai −d** cho em ấy. Có thể **Gọi thêm** em thứ hai bổ sung. Câu
+   quá dễ thì **Bỏ qua, câu tiếp** — không ai được gọi, không ai bị trừ.
+4. **Lời giải** (phím **L**) mở lời giải từng bước. **Câu tiếp** (Enter). Tổng kết như
+   Truy đuổi.
+
+### 16.5 🏁 Đấu đội tiếp sức — chia đội, giơ bảng trước, người trình bày luân phiên
+
+Dùng cho tiết luyện tập 15 phút, lớp có bảng con.
+
+1. Cài đặt thêm: **Số đội** 2–4, **Điểm thưởng cuối trận cho mỗi em theo hạng đội**
+   (ví dụ hạng 1: +3, hạng 2: +2, hạng 3: +1; hoà thì cùng nhận). Bấm **Chia đội**.
+2. Máy chia xen kẽ theo danh sách thành Đội Đỏ · Xanh · Vàng · Tím, hiện đủ tên. **Bấm
+   tên một em** là chuyển em ấy sang đội kế; **Xáo lại** để chia lại. **Bắt đầu câu 1**
+   (Enter). Câu xếp mức tăng dần, **câu cuối tính gấp đôi** để đội đang thua còn cơ hội.
+3. Mỗi câu: bảng điểm các đội ở trên, đề ở dưới, đồng hồ chạy. Đội nào giơ bảng trước
+   → bấm thẻ đội (hoặc phím **1–4**) → thẻ sáng → chấm như mục 16.2.
+   - Đúng: đội cộng điểm, máy hiện **"Đội Vàng — Hồ Thị Ngọc Diệp trình bày"** (chọn
+     ngẫu nhiên em **chưa trình bày**; nút **Người khác** nếu em đó vắng). Em ấy đứng lên
+     nói cách làm — đây là phần "tiếp sức".
+   - Sai: đội bị trừ, thẻ đội mờ đi, nút **Đội khác giành** (phím **G**) → câu dựng lại
+     cho đội kế. Hết đội thì **Chữa**.
+   - Không đội nào giơ: bấm *Hiển thị đáp án* để chữa, không ai bị trừ.
+4. **Kết thúc** → bảng xếp hạng đội kèm tên thành viên; điểm thưởng theo hạng **tự ghi
+   cho từng em** (lí do *"Đấu đội · Đội Vàng · hạng 1"*).
+
+### 16.6 Điều khiển trò chơi từ điện thoại
+
+Ghép điện thoại như mục 13. Hàng nút dưới cùng có thêm **🎯 Trò chơi trên lớp**; bấm là
+màn chiếu mở màn chọn trò, điện thoại hiện ba nút chọn. Từ đó **mọi nút của trò đều có
+trên tay**, đổi theo từng bước: Bắt đầu · ± số câu · QUAY · Chỉ định · A/B/C/D · Đ/S từng
+ý · ô gõ số · Đúng/Sai tự luận · Chuyền · Đội khác giành · Người khác · Chữa · Câu tiếp ·
+Kết thúc · Chơi ván mới. Khung giữa hiện câu đang hỏi, tên em/đội đang trả lời, bảng điểm
+tạm. Đáp án đúng vẫn hiện sẵn trên máy thầy cô (viền xanh).
+
+### 16.7 Phím tắt trên máy chiếu
+
+| Phím | Việc |
+|---|---|
+| **T** | mở trò chơi (chỉ mở — đóng bằng nút trong trò, lỡ tay không mất ván) |
+| **1 / 2 / 3** | chọn trò ở màn chọn; trong Đấu đội là **đội 1–4 giơ bảng** |
+| **Q** | Quay / Gọi tên |
+| **C** | Chuyền (Truy đuổi) |
+| **G** | Đội khác giành (Đấu đội) |
+| **L** | Chữa / Lời giải |
+| **Enter** | Câu tiếp · Bắt đầu câu 1 |
+| **Esc** | về bài giảng (ở màn chọn trò) |
+
+Đang chơi thì mũi tên, Space, Enter và phím G **không** chuyển slide hay mở bảng Gọi tên
+— chúng là của trò chơi.
+
+### 16.8 Lưu ý và sự cố
+
+- **Tải lại trang trình chiếu là mất ván đang chơi** (điểm đã ghi thì còn). Đợt này trận
+  đấu chưa lưu vào cơ sở dữ liệu — đừng F5 giữa chừng.
+- **Điện thoại rớt mạng không sao**, máy chiếu giữ trận; cắm lại là khớp.
+- Lớp **chưa có học sinh** hay bài **chưa có bộ câu hỏi** thì máy báo ngay ở màn cài đặt.
+- Thẻ A/B/C/D và thẻ xanh/đỏ: in một bộ dùng nhiều buổi; không có thì cho giơ 1–4 ngón
+  tay / đứng lên = Đúng, ngồi = Sai — trò vẫn chạy y nguyên.
+- Muốn **sửa điểm** sau ván: mở bảng Gọi tên (🎲) → em đó → +/−, hoặc xem lịch sử điểm
+  thưởng theo nguồn *"trò chơi"* ở trang lớp.
+- **Chơi thử không ghi điểm thật**: chọn một lớp thử, hoặc chơi rồi xoá các dòng nguồn
+  *"trò chơi"* hôm đó trong sổ điểm thưởng.
 `;
