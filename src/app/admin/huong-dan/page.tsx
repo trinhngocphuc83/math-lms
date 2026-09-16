@@ -3,7 +3,7 @@
 import React, { Suspense } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { BookOpenText, GraduationCap, Search, Users, X } from "lucide-react";
 import { NOI_DUNG_HUONG_DAN } from "@/utils/noiDungHuongDan";
 import { NOI_DUNG_HUONG_DAN_HOC_SINH } from "@/utils/noiDungHuongDanHocSinh";
@@ -42,9 +42,12 @@ const BAI = {
 type MaBai = keyof typeof BAI;
 
 function TrangHuongDan() {
-  const router = useRouter();
   const sp = useSearchParams();
-  const maBai: MaBai = sp.get('bai') === 'hoc-sinh' ? 'hoc-sinh' : 'thay-co';
+  /* Bài đang đọc giữ trong state, chỉ ghi lại URL bằng history.replaceState (Next đồng bộ
+     với useSearchParams). Bản đầu dùng router.replace đổi query: đo trên Vercel bấm
+     "Cho học sinh" URL đứng im, nội dung không đổi. */
+  const [maBai, setMaBai] = React.useState<MaBai>(
+    () => (sp.get('bai') === 'hoc-sinh' ? 'hoc-sinh' : 'thay-co'));
   const bai = BAI[maBai];
 
   const [tim, setTim] = React.useState('');
@@ -94,7 +97,8 @@ function TrangHuongDan() {
   const doiBai = (ma: MaBai) => {
     setTim('');
     setMucDangXem(0);
-    router.replace(ma === 'thay-co' ? '/admin/huong-dan' : `/admin/huong-dan?bai=${ma}`);
+    setMaBai(ma);
+    window.history.replaceState(null, '', ma === 'thay-co' ? '/admin/huong-dan' : `/admin/huong-dan?bai=${ma}`);
     /* Khung cuộn là <main> của khu quản trị chứ không phải window. */
     document.getElementById('cam-nang-dau')?.scrollIntoView({ block: 'start' });
   };
