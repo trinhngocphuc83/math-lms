@@ -59,18 +59,22 @@ function TrangHuongDan() {
     return muc.filter(m => (m.ten + '\n' + m.than).toLowerCase().includes(t));
   }, [tim, muc]);
 
+  /* Cuộn TỨC THỜI, không 'smooth': khung cuộn là <main> của khu quản trị, đo trên Vercel
+     thấy scrollIntoView({behavior:'smooth'}) trong khung ấy đứng im ở scrollTop 98 - bản
+     tức thời thì tới đúng chỗ. */
   const nhay = React.useCallback((i: number) => {
-    document.getElementById(`cam-nang-muc-${i}`)
-      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById(`cam-nang-muc-${i}`)?.scrollIntoView({ block: 'start' });
     setMucDangXem(i);
   }, []);
 
-  /* ?muc=16 -> cuộn tới mục 16 sau khi dựng xong. */
+  /* ?muc=16 -> cuộn tới mục 16 sau khi dựng xong; nhảy hai lần vì lần đầu bố cục có thể
+     còn đổi (phông chữ, bảng rộng). */
   React.useEffect(() => {
     const m = Number(sp.get('muc'));
     if (!m || m < 1 || m > muc.length) return;
-    const t = setTimeout(() => nhay(m - 1), 80);
-    return () => clearTimeout(t);
+    const t1 = setTimeout(() => nhay(m - 1), 80);
+    const t2 = setTimeout(() => nhay(m - 1), 600);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
   }, [sp, muc.length, nhay]);
 
   /* Tô đậm mục đang đọc trên cột trái theo vị trí cuộn. */
@@ -91,13 +95,14 @@ function TrangHuongDan() {
     setTim('');
     setMucDangXem(0);
     router.replace(ma === 'thay-co' ? '/admin/huong-dan' : `/admin/huong-dan?bai=${ma}`);
-    window.scrollTo({ top: 0 });
+    /* Khung cuộn là <main> của khu quản trị chứ không phải window. */
+    document.getElementById('cam-nang-dau')?.scrollIntoView({ block: 'start' });
   };
 
   return (
     <div className="max-w-[1180px] mx-auto">
       {/* Dải đầu trang */}
-      <div className="rounded-3xl bg-gradient-to-r from-teal-600 to-teal-500 text-white px-6 py-5 md:px-8 md:py-6 mb-5 shadow-sm">
+      <div id="cam-nang-dau" className="rounded-3xl bg-gradient-to-r from-teal-600 to-teal-500 text-white px-6 py-5 md:px-8 md:py-6 mb-5 shadow-sm">
         <div className="flex flex-wrap items-center gap-4">
           <div className="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center shrink-0">
             <BookOpenText className="w-6 h-6" />
