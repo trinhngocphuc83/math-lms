@@ -83,7 +83,7 @@ export async function layCauTroChoi(lessonId: string, nguon: NguonCau): Promise<
   /* Bỏ câu trùng theo ĐỀ (câu tách từ một câu gốc có cùng sourceQuestionId nhưng đề khác) */
   const daCo = new Set<string>();
   return ra.filter(r => {
-    const k = String(r.quiz.question).replace(/s+/g, ' ').slice(0, 160);
+    const k = String(r.quiz.question).replace(/\s+/g, ' ').slice(0, 160);
     if (daCo.has(k)) return false;
     daCo.add(k); return true;
   }).map(r => ({

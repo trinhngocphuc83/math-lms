@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BookOpen, Users, GraduationCap, TrendingUp, Calendar, Clock, Activity, Target, PenTool, DollarSign, ListTodo, MoreVertical } from "lucide-react";
+import { BookOpen, Users, GraduationCap, TrendingUp, Calendar, Clock, Activity, Target, PenTool, DollarSign, ListTodo, MoreVertical, BookOpenText } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
@@ -227,6 +227,20 @@ export default function AdminDashboard() {
             <p className="text-teal-100 text-sm mb-8 opacity-90 font-medium">Bảng điều khiển siêu tốc dành cho Quản trị viên</p>
             
             <div className="space-y-4 flex-1">
+              {/* Cẩm nang để đầu và tô nổi: thầy cô mới vào là thấy ngay chỗ đọc hướng dẫn,
+                  không phải mò tới nút ❓ trong trang soạn bài. */}
+              <Link href="/admin/huong-dan" className="group flex items-center justify-between bg-amber-400/90 hover:bg-amber-300 p-4 rounded-2xl border border-amber-200/60 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+                <div className="flex items-center gap-3 text-amber-950">
+                  <div className="p-2 bg-white/40 rounded-xl group-hover:bg-white/60 transition-colors">
+                    <BookOpenText className="w-5 h-5" />
+                  </div>
+                  <div className="leading-tight">
+                    <span className="font-bold block">Cẩm nang hướng dẫn</span>
+                    <span className="text-[11.5px] font-medium opacity-80">Soạn bài · Đứng lớp · Trò chơi · Điện thoại</span>
+                  </div>
+                </div>
+              </Link>
+
               <Link href="/admin/exam-results" className="group flex items-center justify-between bg-white/10 hover:bg-white/20 p-4 rounded-2xl backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
                 <div className="flex items-center gap-3 text-white">
                   <div className="p-2 bg-white/10 rounded-xl group-hover:bg-white/20 transition-colors">

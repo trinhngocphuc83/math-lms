@@ -17,13 +17,14 @@ import { NOI_DUNG_HUONG_DAN } from "@/utils/noiDungHuongDan";
  * mỗi thẻ đều được gán lớp tường minh qua `components` bên dưới.
  */
 
-interface Muc {
+export interface Muc {
   ten: string;
   than: string;
 }
 
-/** Cắt bài hướng dẫn thành phần mở đầu + từng mục `##`. */
-function cheMuc(chu: string): { moDau: string; muc: Muc[] } {
+/** Cắt bài hướng dẫn thành phần mở đầu + từng mục `##`.
+ *  Xuất ra để trang /admin/huong-dan (cẩm nang mở toàn màn) dùng chung, khỏi dựng bản thứ hai. */
+export function cheMuc(chu: string): { moDau: string; muc: Muc[] } {
   const phan = chu.split(/\n(?=## )/);
   const moDau = /^## /.test(phan[0]) ? '' : phan.shift() || '';
   const muc = phan.map((p) => {
@@ -37,9 +38,9 @@ function cheMuc(chu: string): { moDau: string; muc: Muc[] } {
 }
 
 /** Bỏ số thứ tự đầu tên mục - số đã hiện riêng trong viên tròn. */
-const boSo = (ten: string) => ten.replace(/^\d+\.\s*/, '');
+export const boSo = (ten: string) => ten.replace(/^\d+\.\s*/, '');
 
-const THE = {
+export const THE = {
   p: (p: any) => <p className="text-[13.5px] leading-relaxed text-slate-600 my-2.5" {...p} />,
 
   h3: (p: any) => (

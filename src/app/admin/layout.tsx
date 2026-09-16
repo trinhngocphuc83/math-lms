@@ -20,7 +20,7 @@ import {
   ChevronUp,
   ChevronDown,
   X,
-  Menu, Smartphone, ClipboardList, ClipboardCheck, ScanLine } from "lucide-react";
+  Menu, Smartphone, ClipboardList, ClipboardCheck, ScanLine, BookOpenText } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
 export default function AdminLayout({
@@ -100,6 +100,8 @@ export default function AdminLayout({
       group: "Tổng quan",
       items: [
         { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
+        /* Cẩm nang từng chỉ nằm sau nút ❓ trong trang soạn bài nên ít ai biết có. */
+        { name: "Cẩm nang hướng dẫn", href: "/admin/huong-dan", icon: BookOpenText },
         { name: "Tài chính & Học phí", href: "/admin/finance", icon: DollarSign }
       ]
     },
@@ -148,6 +150,8 @@ export default function AdminLayout({
       items: group.items.filter(item => {
         if (userRole === 'admin') return true;
         if (item.name === 'Dashboard') return true;
+        // Cẩm nang là tài liệu đọc, giáo viên nào cũng cần
+        if (item.href === '/admin/huong-dan') return true;
         // Strictly block for teachers
         if (item.href.startsWith('/admin/settings') || item.href === '/admin/teachers') return false;
         // Check permissions array

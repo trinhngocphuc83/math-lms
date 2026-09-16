@@ -2,11 +2,13 @@
  * Noi dung trang huong dan soan bai - MOT nguon dung cho ca hai cho:
  * hop "Huong dan" trong trinh soan va tep docs/huong-dan-soan-bai.md.
  *
- * SUA O docs/huong-dan-soan-bai.md roi chay node scratch/dung-huong-dan.mjs,
+ * SUA O docs/huong-dan-soan-bai.md roi chay python scratch/dung-huong-dan.py
+ * (hoac node scratch/dung-huong-dan.mjs - hai ban ra cung mot tep),
  * dung sua thang tep nay.
  */
 
-export const NOI_DUNG_HUONG_DAN = `Bảng tra nhanh. Mở lại bất cứ lúc nào bằng nút **❓ Hướng dẫn** — có ở **trang soạn bài**,
+export const NOI_DUNG_HUONG_DAN = `Bảng tra nhanh. Đọc toàn màn ở mục **Cẩm nang hướng dẫn** trên thanh bên quản trị (hoặc thẻ
+vàng ở Dashboard); tra nhanh giữa việc thì bấm nút **❓ Hướng dẫn** — có ở **trang soạn bài**,
 **trang lớp học** và **màn hình trình chiếu**.
 
 Phần 1–5 nói về soạn bài và Sổ tay. Phần 6–10 nói về lúc đứng lớp: gọi tên, cộng điểm,
