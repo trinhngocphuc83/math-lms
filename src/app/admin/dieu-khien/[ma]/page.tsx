@@ -529,6 +529,7 @@ function BangTroChoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => void 
     );
   }
   if (tc.tro === 'dau-doi') return <BangDauDoi tc={tc} gui={gui} />;
+  if (tc.tro === 'chop-nhoang') return <BangChopNhoang tc={tc} gui={gui} />;
   /* Số câu và nguồn đọc từ máy chiếu (nơi giữ trạng thái thật), bấm ± là gửi số mới lên */
   const soCau = tc.caiDat?.soCau ?? 8;
   const nguon = tc.caiDat?.nguon ?? 'bai';
@@ -592,12 +593,14 @@ function BangNutTroChoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => vo
     return (<>
       <div className="grid grid-cols-2 gap-2">
         <button onClick={() => tro('chon-tro', 'truy-duoi')} className="bg-indigo-600 active:bg-indigo-700 text-white font-black py-4 rounded-2xl text-[17px]">🎯 Truy đuổi</button>
+        <button onClick={() => tro('chon-tro', 'chop-nhoang')} className="bg-sky-600 active:bg-sky-700 text-white font-black py-4 rounded-2xl text-[17px]">⚡ Chớp nhoáng</button>
         <button onClick={() => tro('chon-tro', 'dau-doi')} className="bg-amber-500 active:bg-amber-600 text-amber-950 font-black py-4 rounded-2xl text-[17px]">🏁 Đấu đội</button>
       </div>
       <button onClick={() => tro('dong')} className="w-full mt-2 py-2.5 rounded-xl bg-white/5 active:bg-white/10 text-slate-300 font-bold text-[13.5px]">Về bài giảng</button>
     </>);
   }
   if (tc.tro === 'dau-doi') return <BangNutDauDoi tc={tc} gui={gui} />;
+  if (tc.tro === 'chop-nhoang') return <BangNutChopNhoang tc={tc} gui={gui} />;
   const To = ({ onClick, mau, children }: { onClick: () => void; mau: string; children: React.ReactNode }) => (
     <button onClick={onClick} className={`${mau} w-full text-white font-black py-4 rounded-2xl text-[19px] flex items-center justify-center gap-2`}>{children}</button>
   );
@@ -819,6 +822,120 @@ function BangNutDauDoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => voi
         </div>
       </>);
     }
+    case 'tong-ket':
+      return (<><To onClick={() => tro('van-moi')} mau="bg-indigo-600 active:bg-indigo-700">Chơi ván mới</To>{dong}</>);
+    default:
+      return dong;
+  }
+}
+
+/* ---------- Chớp nhoáng: phần giữa và hàng nút trên điện thoại ---------- */
+
+function BangChopNhoang({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => void }) {
+  const tro = (hanh: string, gia?: any) => gui({ viec: 'tro-choi', hanh, gia });
+  const cd = tc.caiDat || { soCau: 6, nguon: 'bai' as const };
+  if (tc.giaiDoan === 'cai-dat' || tc.giaiDoan === 'tai') {
+    return (
+      <div className="rounded-2xl bg-white/5 border border-white/10 p-3">
+        <div className="text-[12px] font-black text-orange-300 uppercase tracking-widest mb-2">⚡ Chớp nhoáng · cài đặt</div>
+        <div className="grid grid-cols-2 gap-2 mb-3">
+          {(['bai', 'chuong'] as const).map(n => (
+            <button key={n} onClick={() => tro('nguon', n)}
+                    className={`py-2.5 rounded-xl font-black text-[14px] ${cd.nguon === n ? 'bg-indigo-600 text-white' : 'bg-white/10 text-slate-200'}`}>
+              {n === 'bai' ? 'Bài này' : 'Cả chương'}
+            </button>
+          ))}
+        </div>
+        <div className="text-[12.5px] text-slate-400 mb-1">Số câu</div>
+        <div className="flex items-center gap-2">
+          <button onClick={() => tro('so-cau', Math.max(1, cd.soCau - 1))} className="w-12 h-12 rounded-xl bg-white/10 active:bg-white/20 text-[22px] font-black">−</button>
+          <span className="flex-1 text-center text-[26px] font-black text-white tabular-nums">{cd.soCau}</span>
+          <button onClick={() => tro('so-cau', Math.min(50, cd.soCau + 1))} className="w-12 h-12 rounded-xl bg-white/10 active:bg-white/20 text-[22px] font-black">+</button>
+        </div>
+        <p className="text-[12px] text-slate-500 mt-2">Cả lớp trả lời, hết giờ máy tự lật đáp án, rồi gọi tên một em giải thích để chấm.</p>
+      </div>
+    );
+  }
+  if (tc.giaiDoan === 'tong-ket') {
+    return (
+      <div className="rounded-2xl bg-white/5 border border-white/10 p-3">
+        <div className="text-[12px] font-black text-orange-300 uppercase tracking-widest mb-2">⚡ Tổng kết</div>
+        {tc.bangDiem.length === 0 ? <p className="text-slate-400 text-[13px]">Chưa em nào được gọi.</p> : tc.bangDiem.map((d, i) => (
+          <div key={i} className="flex items-center gap-2 py-1.5 border-b border-white/5 last:border-0">
+            <span className="w-6 text-[12px] text-slate-500 font-black">{i + 1}</span>
+            <span className="flex-1 text-[14px] font-bold text-white truncate">{d.ten}</span>
+            <span className={`text-[15px] font-black tabular-nums ${d.diem > 0 ? 'text-emerald-300' : d.diem < 0 ? 'text-rose-300' : 'text-slate-400'}`}>{d.diem > 0 ? '+' + d.diem : d.diem}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return (
+    <div className="rounded-2xl bg-white/5 border border-white/10 p-3">
+      <div className="text-[12px] font-black text-orange-300 uppercase tracking-widest mb-1">⚡ Chớp nhoáng · câu {tc.cau}/{tc.tongCau}</div>
+      <div className="text-[13px] text-amber-200 font-bold">{TEN_MUC[tc.muc] || 'Nhận biết'} · ±{tc.diemCau}</div>
+      <div className="text-[22px] font-black text-white mt-1">{tc.tenHS || (tc.giaiDoan === 'hoi' ? 'Cả lớp đang trả lời…' : 'Bấm GỌI TÊN để chọn em giải thích')}</div>
+    </div>
+  );
+}
+
+function BangNutChopNhoang({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => void }) {
+  const tro = (hanh: string, gia?: any) => gui({ viec: 'tro-choi', hanh, gia });
+  const To = ({ onClick, mau, children }: { onClick: () => void; mau: string; children: React.ReactNode }) => (
+    <button onClick={onClick} className={`${mau} w-full text-white font-black py-4 rounded-2xl text-[19px] flex items-center justify-center gap-2`}>{children}</button>
+  );
+  const dong = (
+    <button onClick={() => tro('dong')}
+            className="w-full mt-2 py-2.5 rounded-xl bg-white/5 active:bg-white/10 text-slate-300 font-bold text-[13.5px] flex items-center justify-center gap-2">
+      <X className="w-4 h-4" /> Đóng trò chơi
+    </button>
+  );
+  const goiTen = <To onClick={() => tro('quay')} mau="bg-violet-600 active:bg-violet-700"><Dices className="w-7 h-7" /> {tc.lanChuyen ? 'GỌI THÊM' : 'GỌI TÊN'}</To>;
+  const cauTiep = <To onClick={() => tro('cau-tiep')} mau="bg-indigo-600 active:bg-indigo-700">{tc.cau >= tc.tongCau ? 'Tổng kết' : 'Câu tiếp'} <ChevronRight className="w-6 h-6" /></To>;
+  switch (tc.giaiDoan) {
+    case 'cai-dat': case 'tai':
+      return (<><To onClick={() => tro('bat-dau')} mau="bg-indigo-600 active:bg-indigo-700">{tc.giaiDoan === 'tai' ? 'Đang tải…' : '▶ Bắt đầu'}</To>{dong}</>);
+    case 'hoi':
+      return (<>
+        <p className="text-center text-[12.5px] text-slate-400 mb-2">Cả lớp đang trả lời — hết giờ máy tự lật; lớp xong sớm thì bấm <b>Hiển thị đáp án</b> ở trên. Tự luận: bấm Gọi tên.</p>
+        <div className="grid grid-cols-2 gap-2">
+          {goiTen}
+          <NutPhu onClick={() => tro('ket-thuc')} mau="bg-white/10 active:bg-white/20 text-slate-200">Kết thúc</NutPhu>
+        </div>
+      </>);
+    case 'lat':
+      return (<>
+        <div className="grid grid-cols-2 gap-2">{goiTen}{cauTiep}</div>
+        <div className="grid grid-cols-2 gap-2 mt-2">
+          <NutPhu onClick={() => tro('chua')} mau="bg-white/10 active:bg-white/20 text-slate-200">Lời giải</NutPhu>
+          <NutPhu onClick={() => tro('ket-thuc')} mau="bg-white/10 active:bg-white/20 text-slate-200">Kết thúc</NutPhu>
+        </div>
+      </>);
+    case 'quay':
+      return <p className="text-center text-[14px] text-violet-200 font-bold py-4">Vòng quay đang chạy…</p>;
+    case 'cham':
+      return (<>
+        <p className="text-center text-[12.5px] text-slate-400 mb-2">{tc.tenHS} giải thích xong — thầy chấm:</p>
+        <div className="grid grid-cols-2 gap-2">
+          <To onClick={() => tro('cham', true)} mau="bg-emerald-600 active:bg-emerald-700">Đúng +{tc.diemCau}</To>
+          <To onClick={() => tro('cham', false)} mau="bg-rose-600 active:bg-rose-700">Sai −{tc.diemCau}</To>
+        </div>
+      </>);
+    case 'ket-qua': case 'chua':
+      return (<>
+        {tc.ketQua && (
+          <div className={`text-center text-[15px] font-black mb-2 ${tc.ketQua === 'dung' ? 'text-emerald-300' : 'text-rose-300'}`}>
+            {tc.tenHS}: {tc.ketQua === 'dung' ? `đúng +${tc.diemCau}` : `sai −${tc.diemCau}`}
+          </div>
+        )}
+        <div className="grid grid-cols-2 gap-2">{goiTen}{cauTiep}</div>
+        <div className="grid grid-cols-2 gap-2 mt-2">
+          {tc.giaiDoan === 'ket-qua'
+            ? <NutPhu onClick={() => tro('chua')} mau="bg-white/10 active:bg-white/20 text-slate-200">Lời giải</NutPhu>
+            : <NutPhu onClick={() => gui({ viec: 'cuon', huong: 1 })} mau="bg-white/10 active:bg-white/20 text-slate-200">Cuộn xuống</NutPhu>}
+          <NutPhu onClick={() => tro('ket-thuc')} mau="bg-white/10 active:bg-white/20 text-slate-200">Kết thúc</NutPhu>
+        </div>
+      </>);
     case 'tong-ket':
       return (<><To onClick={() => tro('van-moi')} mau="bg-indigo-600 active:bg-indigo-700">Chơi ván mới</To>{dong}</>);
     default:
