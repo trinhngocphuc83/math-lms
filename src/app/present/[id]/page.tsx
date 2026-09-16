@@ -271,7 +271,9 @@ export default function PresentationPage() {
         const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => measure()) : null;
         if (ro && measureRef.current) ro.observe(measureRef.current);
         return () => { cancelled = true; clearTimeout(t1); clearTimeout(t2); ro?.disconnect(); };
-    }, [currentSlideIndex, currentFragmentIndex, slides, autoFitEnabled]);
+    /* moTroChoi/troDangChon/ttTroChoi: đo lại theo cả nhịp đổi trạng thái trò chơi, phòng khi
+       ResizeObserver chưa kịp (tab vừa được đưa ra trước, rendering từng bị tạm dừng). */
+    }, [currentSlideIndex, currentFragmentIndex, slides, autoFitEnabled, moTroChoi, troDangChon, ttTroChoi]);
 
     const currentFragments = slides[currentSlideIndex] || [];
 
