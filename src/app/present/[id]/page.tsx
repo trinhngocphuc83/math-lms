@@ -306,9 +306,11 @@ export default function PresentationPage() {
             const the = o?.tagName;
             if (the === 'INPUT' || the === 'TEXTAREA' || the === 'SELECT' || o?.isContentEditable) return;
 
-            if (e.key === 't' || e.key === 'T') { setMoTroChoi(v => !v); return; }
-            /* Đang chơi thì mũi tên/Enter là của trò chơi, không chuyển slide bên dưới */
-            if (moTroChoiRef.current && (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown' || e.key === 'ArrowLeft' || e.key === 'PageUp')) return;
+            /* Phím T chỉ MỞ trò chơi; đóng phải bấm nút Đóng/Về bài giảng trong trò — lỡ tay bấm T
+               giữa trận mà mất cả ván thì không ai chịu nổi. */
+            if (e.key === 't' || e.key === 'T') { setMoTroChoi(true); return; }
+            /* Đang chơi thì mũi tên/Enter/G/1-4 là của trò chơi, không chuyển slide, không mở Gọi tên */
+            if (moTroChoiRef.current && ['ArrowRight', ' ', 'Enter', 'PageDown', 'ArrowLeft', 'PageUp', 'g', 'G'].includes(e.key)) return;
 
             if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter' || e.key === 'PageDown') {
                 if (e.key === ' ' || e.key === 'PageDown') e.preventDefault();
@@ -793,10 +795,10 @@ export default function PresentationPage() {
                     <Dices className="w-7 h-7" />
                 </button>
                 <button
-                    onClick={() => setMoTroChoi(v => !v)}
+                    onClick={() => setMoTroChoi(true)}
                     className={`p-2.5 rounded-full transition-all text-white hover:scale-105 active:scale-95 ${
                         moTroChoi ? 'bg-orange-500/60 hover:bg-orange-500/80' : 'bg-orange-500/25 hover:bg-orange-500/45'}`}
-                    title="Trò chơi trên lớp (phím T)"
+                    title={moTroChoi ? 'Đang chơi — đóng bằng nút trong trò' : 'Trò chơi trên lớp (phím T)'}
                 >
                     <Gamepad2 className="w-7 h-7" />
                 </button>
