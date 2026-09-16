@@ -19,6 +19,7 @@ const TEN_NGUON: Record<string, { ten: string; mau: string }> = {
   luyen_tap:  { ten: 'Bài luyện tập',      mau: 'bg-teal-100 text-teal-700' },
   thi_online: { ten: 'Thi online',         mau: 'bg-sky-100 text-sky-700' },
   tien_bo:    { ten: 'Thưởng tiến bộ',     mau: 'bg-amber-100 text-amber-700' },
+  tro_choi:   { ten: 'Trò chơi trên lớp',  mau: 'bg-orange-100 text-orange-700' },
 };
 
 type DongChiTiet = { diem: number; nguon: string; ly_do: string; luc: string };

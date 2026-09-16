@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Trophy, Loader2, Sparkles, ClipboardList, Dumbbell, TrendingUp, Globe } from "lucide-react";
+import { Trophy, Loader2, Sparkles, ClipboardList, Dumbbell, TrendingUp, Globe, Gamepad2 } from "lucide-react";
 import { diemCuaToi, tongDiemTichLuy, thangNay, thangTruoc, LOI_CHUA_TAO_BANG, type DongDiem } from "@/utils/goiTenVaDiem";
 
 /**
@@ -17,6 +17,7 @@ const NHAN_NGUON: Record<string, { ten: string; Icon: any; mau: string }> = {
   luyen_tap:  { ten: 'Bài luyện tập',      Icon: Dumbbell,      mau: 'bg-teal-50 text-teal-600' },
   thi_online: { ten: 'Thi online',         Icon: Globe,         mau: 'bg-sky-50 text-sky-600' },
   tien_bo:    { ten: 'Thưởng tiến bộ',     Icon: TrendingUp,    mau: 'bg-amber-50 text-amber-600' },
+  tro_choi:   { ten: 'Trò chơi trên lớp',  Icon: Gamepad2,      mau: 'bg-orange-50 text-orange-600' },
 };
 
 export default function DiemThuongCuaToi() {

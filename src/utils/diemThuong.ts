@@ -10,7 +10,8 @@
  * Là lớn hơn HOẶC BẰNG, nên 9.0 chẵn được 3, 8.0 chẵn được 2, 7.0 chẵn được 1.
  */
 
-export type NguonDiem = 'tuong_tac' | 'kiem_tra' | 'luyen_tap' | 'thi_online' | 'tien_bo';
+/* tro_choi: điểm ± từ ba trò chơi trên lớp (ghiDiemTroChoi) - cộng thẳng vào tổng tháng như mọi nguồn. */
+export type NguonDiem = 'tuong_tac' | 'kiem_tra' | 'luyen_tap' | 'thi_online' | 'tien_bo' | 'tro_choi';
 
 /**
  * Điểm thưởng chỉ tính từ tháng này trở đi.
