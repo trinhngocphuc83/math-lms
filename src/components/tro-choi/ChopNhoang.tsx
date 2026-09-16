@@ -104,16 +104,19 @@ export default function ChopNhoang({ lessonId, lenhTuXa, lenhChoQuiz, gioConLai,
     ttQuiz.current = { hienDapAn: false, dangChon: null, buoc: 0, loiGiai: '' };
     guiQuiz('lam-lai');
     setHs(null); setKetQua(''); setSoLanGoi(0);
+    daChayTrongCau.current = false;
     setGiaiDoan('hoi');
     onBatDauCau?.(String(i));
   };
 
   /* Hết giờ thì máy tự lật đáp án (trừ tự luận) — đây là cái "chớp nhoáng" */
-  const gioTruoc = useRef(0);
+  /* Chỉ lật khi đồng hồ ĐÃ CHẠY trong câu này rồi về 0: sang câu mới đồng hồ dựng lại và báo 0
+     trước khi chạy — bản đầu coi đó là hết giờ, câu 2 vừa hiện đã lật đáp án. */
+  const daChayTrongCau = useRef(false);
   useEffect(() => {
     const g = gioConLai || 0;
-    if (giaiDoan === 'hoi' && !tuLuan && gioTruoc.current > 0 && g === 0) guiQuiz('hien-dap-an');
-    gioTruoc.current = g;
+    if (g > 0) daChayTrongCau.current = true;
+    else if (giaiDoan === 'hoi' && !tuLuan && daChayTrongCau.current) { daChayTrongCau.current = false; guiQuiz('hien-dap-an'); }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gioConLai]);
 
