@@ -41,8 +41,35 @@ export type Lenh =
    * `huong` = 1 là xuống, -1 là lên.
    */
   | { viec: 'cuon'; huong: 1 | -1 }
+  /**
+   * Trò chơi trên lớp (Truy đuổi, Chớp nhoáng, Đấu đội). Một kiểu lệnh chung, `hanh` là
+   * việc cụ thể: 'mo' (mở màn chọn trò), 'chon-tro', 'bat-dau', 'quay', 'chuyen', 'chi-dinh',
+   * 'cham' (Đúng/Sai cho tự luận), 'chua', 'cau-tiep', 'ket-thuc', 'dong'. Máy chiếu giữ
+   * trạng thái thật; điện thoại chỉ ra lệnh, giống mọi lệnh khác.
+   */
+  | { viec: 'tro-choi'; hanh: string; gia?: any }
+  /** Bấm Đ/S cho ý thứ `y` của cụm Đúng/Sai đang chiếu (trò chơi cần chấm được từ điện thoại) */
+  | { viec: 'chon-ds'; y: number; dung: boolean }
   /** Điện thoại vừa vào, xin máy chiếu phát lại trạng thái */
   | { viec: 'xin-trang-thai' };
+
+/** Trạng thái trò chơi phát xuống điện thoại — đủ để bày đúng mấy nút cần bấm lúc đó. */
+export interface TrangThaiTroChoi {
+  tro: 'truy-duoi' | 'chop-nhoang' | 'dau-doi';
+  /** 'chon' chọn trò · 'cai-dat' · 'quay' · 'hoi' · 'ket-qua' · 'chua' · 'tong-ket' */
+  giaiDoan: string;
+  cau: number;
+  tongCau: number;
+  muc: number;
+  diemCau: number;
+  tenHS: string;
+  /** Đã chuyền mấy lần ở câu này (Truy đuổi) */
+  lanChuyen: number;
+  /** Kết quả vừa chấm: 'dung' | 'sai' | '' */
+  ketQua: string;
+  /** Bảng điểm tạm trong trận: tên → điểm */
+  bangDiem: { ten: string; diem: number }[];
+}
 
 /** Trạng thái máy chiếu phát xuống điện thoại. */
 export interface TrangThaiChieu {
@@ -86,6 +113,8 @@ export interface TrangThaiChieu {
   /** Đang chữa câu thứ mấy trên tổng bao nhiêu câu (0 nếu slide này không phải câu hỏi) */
   soCau?: number;
   tongCau?: number;
+  /** Đang chơi trò chơi trên lớp — điện thoại đổi sang bảng nút của trò */
+  troChoi?: TrangThaiTroChoi | null;
 }
 
 const TEN_KENH = (ma: string) => `dieu-khien-${ma}`;
