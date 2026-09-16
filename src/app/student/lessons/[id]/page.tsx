@@ -589,9 +589,9 @@ export default function StudentLessonPage() {
         const { data: ch } = await supabase.from('chapters').select('loai').eq('id', lessonData.chapter_id).single();
         laOnTap = ch?.loai === 'on-tap';
       }
-      const dsMuc = laOnTap
-        ? (modulesData || []).filter((m: any) => m.type === 'practice')
-        : (modulesData || []);
+      /* Bộ câu hỏi trò chơi (type 'game') là của thầy chơi trên lớp, không bày cho học sinh */
+      const khongGame = (modulesData || []).filter((m: any) => m.type !== 'game');
+      const dsMuc = laOnTap ? khongGame.filter((m: any) => m.type === 'practice') : khongGame;
 
       if (lessonData) {
         setLesson({ ...lessonData, modules: dsMuc, lopKhoa, laOnTap });

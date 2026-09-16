@@ -10,6 +10,7 @@ import remarkBreaks from 'remark-breaks';
 import { Dices } from 'lucide-react';
 import { chuyenDiaChiAnh } from '@/components/CustomMarkdownComponents';
 import { ensureMathDelimiters } from '@/utils/latexFixer';
+import { xuongDongNgoaiCongThuc } from '@/utils/troChoi';
 
 /**
  * Một câu hỏi tương tác trên màn chiếu: đề → đáp án → lời giải, bấm được từ chuột lẫn
@@ -116,7 +117,7 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
      * bảng nào cả; học sinh nhìn bốn mệnh đề mà không có số liệu để xét (bắt được 12/9/2026).
      */
     const anhRieng = String(quizData.imageUrl || quizData.img_url || '').trim();
-    const deGocTho = String(quizData.question || '');
+    const deGocTho = xuongDongNgoaiCongThuc(String(quizData.question || ''));
     const deGoc = anhRieng && !deGocTho.includes(anhRieng)
         ? `${deGocTho}\n\n![Hình ảnh](${anhRieng})`
         : deGocTho;

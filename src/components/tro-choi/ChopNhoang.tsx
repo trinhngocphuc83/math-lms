@@ -92,7 +92,7 @@ export default function ChopNhoang({ lessonId, lenhTuXa, lenhChoQuiz, gioConLai,
     try {
       try { localStorage.setItem(NHO_SO_CAU, String(soCau)); localStorage.setItem(NHO_NGUON, nguon); localStorage.setItem(NHO_LOP, lopId); } catch { /* thôi */ }
       const [tatCa, tq] = await Promise.all([layCauTroChoi(lessonId, nguon), layTrangThaiQuay(lopId)]);
-      if (!tatCa.length) { setLoi('Bài này chưa có câu tương tác nào.'); setGiaiDoan('cai-dat'); return; }
+      if (!tatCa.length) { setLoi(nguon === 'bai' ? 'Bài này chưa có Bộ câu hỏi trò chơi. Vào Soạn bài → "Thêm Bộ câu hỏi trò chơi" rồi đưa câu vào (rút kho, hoặc nhập từ tự luyện có tách ý).' : 'Chương này chưa có Bộ câu hỏi trò chơi nào.'); setGiaiDoan('cai-dat'); return; }
       if (!tq.caLop.length) { setLoi('Lớp này chưa có học sinh.'); setGiaiDoan('cai-dat'); return; }
       setCauList(xao(tatCa).slice(0, Math.max(1, soCau)));
       setCaLop(tq.caLop); setConLai(tq.conLai); setVong(tq.vong);

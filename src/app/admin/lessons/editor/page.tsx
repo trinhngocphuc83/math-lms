@@ -16,6 +16,7 @@ import { createClient } from "@/utils/supabase/client";
 import ReactCrop, { type Crop } from 'react-image-crop';
 import BlockEditor, { Block } from "./BlockEditor";
 import PushToBankModal from './PushToBankModal';
+import NhapCauTroChoiModal from '@/components/tro-choi/NhapCauTroChoiModal';
 import 'react-image-crop/dist/ReactCrop.css';
 import confetti from 'canvas-confetti';
 import { Document, Packer, Paragraph, TextRun, AlignmentType } from "docx";
@@ -1199,6 +1200,9 @@ function EditorContent() {
   // Gemini Web Backup Modal
   const [isBackupModalOpen, setIsBackupModalOpen] = useState(false);
   const [isPushToBankModalOpen, setIsPushToBankModalOpen] = useState(false);
+  /* Bộ câu hỏi trò chơi (module type 'game'): nhập câu từ các phần khác của bài/chương, có tách ý */
+  const [moNhapTroChoi, setMoNhapTroChoi] = useState(false);
+  const laModuleTroChoi = moduleType === 'game';
 
   /**
    * Lui MỘT BẬC chứ không văng hẳn ra ngoài.
@@ -2064,6 +2068,9 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
               <button onClick={() => fileInputRef.current?.click()} className="flex items-center gap-1.5 text-xs font-medium bg-white border border-indigo-200 text-indigo-700 px-3 py-1.5 rounded-md hover:bg-indigo-50 transition-colors shadow-sm"><ImageIcon className="w-3.5 h-3.5" /> Tải File / Dán Ảnh (Ctrl+V)</button>
               <button onClick={() => { if (lastAnalyzedImages.length > 0) setCropImageSrc(lastAnalyzedImages[0]); setIsCropModalOpen(true); }} className="flex items-center gap-1.5 text-xs font-medium bg-orange-50 border border-orange-200 text-orange-700 px-3 py-1.5 rounded-md hover:bg-orange-100 transition-colors shadow-sm"><CropIcon className="w-3.5 h-3.5" /> Cắt Ảnh & Chèn</button>
               <button onClick={() => setIsBackupModalOpen(true)} className="flex items-center gap-1.5 text-xs font-medium bg-emerald-50 border border-emerald-200 text-emerald-700 px-3 py-1.5 rounded-md hover:bg-emerald-100 transition-colors shadow-sm" title="Sinh mẫu Prompt thủ công"><Bot className="w-3.5 h-3.5" /> Lấy Prompt Thủ Công</button>
+              {laModuleTroChoi && (
+                <button onClick={() => setMoNhapTroChoi(true)} className="flex items-center gap-1.5 text-xs font-bold bg-orange-100 border border-orange-300 text-orange-800 px-3 py-1.5 rounded-md hover:bg-orange-200 transition-colors shadow-sm" title="Lấy câu từ tự luyện / đề / bài giảng của bài này hoặc cả chương, tách ý được">🎮 Nhập câu từ bài (tách ý)</button>
+              )}
               <button onClick={() => setGlobalTriggerBankModal(prev => prev + 1)} className="flex items-center gap-1.5 text-xs font-bold bg-amber-100 border border-amber-300 text-amber-800 px-3 py-1.5 rounded-md hover:bg-amber-200 transition-colors shadow-sm"><Database className="w-3.5 h-3.5" /> Rút từ Ngân hàng</button>
               <button onClick={() => setIsPushToBankModalOpen(true)} className="flex items-center gap-1.5 text-xs font-bold bg-fuchsia-100 border border-fuchsia-300 text-fuchsia-800 px-3 py-1.5 rounded-md hover:bg-fuchsia-200 transition-colors shadow-sm"><UploadCloud className="w-3.5 h-3.5" /> Đưa vào Ngân hàng</button>
               <div className="relative">
@@ -2375,6 +2382,19 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
       )}
 
       {/* PUSH TO BANK MODAL */}
+      {moNhapTroChoi && lessonId && (
+        <NhapCauTroChoiModal
+          isOpen={moNhapTroChoi}
+          onClose={() => setMoNhapTroChoi(false)}
+          lessonId={lessonId}
+          onThem={(md, n) => {
+            const moi = (markdownContent && markdownContent.trim() ? markdownContent.trimEnd() + '\n\n' : '') + md + '\n';
+            setMarkdownContent(moi);
+            setBlocks(parseMarkdownToBlocks(moi));
+            alert(`Đã thêm ${n} câu vào bộ câu hỏi trò chơi. Nhớ bấm Lưu.`);
+          }}
+        />
+      )}
       {isPushToBankModalOpen && (
         <PushToBankModal
           isOpen={isPushToBankModalOpen}

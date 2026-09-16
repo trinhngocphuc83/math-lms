@@ -109,7 +109,7 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
     try {
       try { localStorage.setItem(NHO_SO_CAU, String(soCau)); localStorage.setItem(NHO_NGUON, nguon); localStorage.setItem(NHO_LOP, lopId); } catch { /* thôi */ }
       const [tatCa, tq] = await Promise.all([layCauTroChoi(lessonId, nguon), layTrangThaiQuay(lopId)]);
-      if (!tatCa.length) { setLoi('Bài này chưa có câu tương tác nào (chưa có Bài tập tự luyện).'); setGiaiDoan('cai-dat'); return; }
+      if (!tatCa.length) { setLoi(nguon === 'bai' ? 'Bài này chưa có Bộ câu hỏi trò chơi. Vào Soạn bài → "Thêm Bộ câu hỏi trò chơi" rồi đưa câu vào (rút kho, hoặc nhập từ tự luyện có tách ý).' : 'Chương này chưa có Bộ câu hỏi trò chơi nào.'); setGiaiDoan('cai-dat'); return; }
       if (!tq.caLop.length) { setLoi('Lớp này chưa có học sinh.'); setGiaiDoan('cai-dat'); return; }
       setCauList(xao(tatCa).slice(0, Math.max(1, soCau)));
       setCaLop(tq.caLop); setConLai(tq.conLai); setVong(tq.vong);
@@ -327,7 +327,7 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
         </div>
         <div className="rounded-2xl bg-indigo-50 border-[3px] border-indigo-100 px-8 py-5 text-[26px] text-slate-700 leading-relaxed mb-8">
           Vòng quay gọi một em → câu hiện → em trả lời, máy chấm. Đúng <b>+1/+2/+3</b> theo mức câu, sai <b>trừ</b> bằng ngần ấy.
-          Sai thì <b>chuyền</b> sang em khác, tối đa {TOI_DA_CHUYEN} lần rồi thầy chữa. Thời gian mỗi câu đặt bằng đồng hồ góc trên (nhớ cho câu sau).
+          Sai thì <b>chuyền</b> sang em khác, tối đa {TOI_DA_CHUYEN} lần rồi thầy chữa. Thời gian mỗi câu đặt bằng đồng hồ góc trên (nhớ cho câu sau). Câu lấy từ <b>Bộ câu hỏi trò chơi</b> của bài (hoặc của mọi bài trong chương).
         </div>
         {loi && <div className="text-rose-600 text-[26px] font-bold mb-4">{loi}</div>}
         <div className="flex justify-center gap-5">

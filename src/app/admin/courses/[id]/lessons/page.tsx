@@ -319,6 +319,19 @@ export default function CourseStructurePage() {
     }
   };
 
+  /** Tạo module 'game' cho bài — một bài một bộ, đặt cuối danh sách mục. */
+  const themBoCauHoiTroChoi = async (lessonId: string) => {
+    const lessonModules = modules.filter(m => m.lesson_id === lessonId);
+    const { data, error } = await supabase.from('lesson_modules').insert([{
+      lesson_id: lessonId, type: 'game', title: 'Bộ câu hỏi trò chơi', order_index: lessonModules.length + 1, content_markdown: '',
+    }]).select('id').single();
+    if (error) { alert('Lỗi tạo bộ câu hỏi trò chơi: ' + error.message); return; }
+    loadStructure();
+    if (data && confirm('Đã tạo Bộ câu hỏi trò chơi. Mở soạn ngay để đưa câu vào?')) {
+      window.location.href = `/admin/lessons/editor?lessonId=${lessonId}&moduleId=${data.id}`;
+    }
+  };
+
   const handleDeleteModule = async (id: string, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -455,7 +468,7 @@ export default function CourseStructurePage() {
                                     </div>
                                   ) : (
                                     <ul className="space-y-0.5 pl-3 border-l-2 border-teal-100 ml-2 py-0.5">
-                                      {lessonModules.filter(m => m.type !== 'practice').map(mod => {
+                                      {lessonModules.filter(m => m.type !== 'practice' && m.type !== 'game').map(mod => {
                                         let icon = <></>;
                                         if (mod.type === 'theory') icon = <BookOpen className="w-3.5 h-3.5 text-blue-500" />;
                                         if (mod.type === 'practice') icon = <Target className="w-3.5 h-3.5 text-rose-500" />;
@@ -530,6 +543,33 @@ export default function CourseStructurePage() {
                                         </div>
                                       )}
 
+                                      {/* BỘ CÂU HỎI TRÒ CHƠI (type 'game'): thầy đưa câu vào để chơi trên lớp; học sinh không thấy.
+                                          Thầy chốt 16/9/2026: tách khỏi Bài tập tự luyện vì tự luyện có câu tự luận 8 ý, không chơi được. */}
+                                      {lessonModules.filter(m => m.type === 'game').map(mod => (
+                                        <li key={mod.id} className="flex items-center justify-between px-2 py-1 mt-1 rounded border border-orange-200 bg-orange-50/60">
+                                          <div className="flex items-center gap-1.5 min-w-0">
+                                            <span className="text-[13px]">🎮</span>
+                                            <span className="text-[12.5px] font-bold text-orange-800 truncate">{mod.title}</span>
+                                            <span className="text-[10.5px] text-orange-600">· học sinh không thấy</span>
+                                          </div>
+                                          <div className="flex items-center gap-1 shrink-0">
+                                            <Link href={`/admin/lessons/editor?lessonId=${lesson.id}&moduleId=${mod.id}`} className="px-2 py-1 text-[11.5px] font-bold bg-white text-orange-700 hover:bg-orange-100 border border-orange-300 rounded transition-colors flex items-center gap-1">
+                                              <Edit2 className="w-3 h-3" /> Soạn bộ câu
+                                            </Link>
+                                            <button onClick={(e) => handleDeleteModule(mod.id, e)} className="p-1 text-red-400 hover:text-red-600 hover:bg-red-50 rounded transition-colors" title="Xóa">
+                                              <Trash2 className="w-3.5 h-3.5" />
+                                            </button>
+                                          </div>
+                                        </li>
+                                      ))}
+                                      {lessonModules.filter(m => m.type === 'game').length === 0 && (
+                                        <li className="flex justify-center pt-1">
+                                          <button onClick={() => themBoCauHoiTroChoi(lesson.id)}
+                                                  className="text-[11.5px] font-bold text-orange-600 hover:text-orange-800 bg-orange-50 hover:bg-orange-100 px-2 py-1 rounded transition-colors flex items-center gap-1 w-full justify-center border border-dashed border-orange-300">
+                                            <Plus className="w-3 h-3" /> 🎮 Thêm Bộ câu hỏi trò chơi
+                                          </button>
+                                        </li>
+                                      )}
                                       <li className="flex justify-center pt-1">
                                         <button
                                           onClick={() => openModuleModal(lesson.id, false)}
@@ -643,6 +683,7 @@ export default function CourseStructurePage() {
                     <option value="theory">📖 Lý thuyết & Phương pháp giải (Bài giảng tương tác)</option>
                     <option value="practice">🎯 Luyện tập (Trắc nghiệm/Điền khuyết)</option>
                     <option value="document">📄 Tài liệu & Video (Chữa bài)</option>
+                    <option value="game">🎮 Bộ câu hỏi trò chơi (học sinh không thấy)</option>
                   </select>
                 </div>
               )}
