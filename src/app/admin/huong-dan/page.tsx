@@ -102,7 +102,7 @@ function TrangHuongDan() {
   return (
     <div className="max-w-[1180px] mx-auto">
       {/* Dải đầu trang */}
-      <div id="cam-nang-dau" className="rounded-3xl bg-gradient-to-r from-teal-600 to-teal-500 text-white px-6 py-5 md:px-8 md:py-6 mb-5 shadow-sm">
+      <div id="cam-nang-dau" className="scroll-mt-[88px] rounded-3xl bg-gradient-to-r from-teal-600 to-teal-500 text-white px-6 py-5 md:px-8 md:py-6 mb-5 shadow-sm">
         <div className="flex flex-wrap items-center gap-4">
           <div className="w-11 h-11 rounded-2xl bg-white/20 flex items-center justify-center shrink-0">
             <BookOpenText className="w-6 h-6" />
@@ -149,7 +149,7 @@ function TrangHuongDan() {
       <div className="flex gap-6 items-start">
         {/* Cột mục lục - dính bên trái trên màn rộng */}
         {!tim && (
-          <nav className="hidden lg:block w-[250px] shrink-0 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto
+          <nav className="hidden lg:block w-[250px] shrink-0 sticky top-[88px] max-h-[calc(100vh-104px)] overflow-y-auto
                           bg-white rounded-2xl border border-slate-200 p-3 [scrollbar-width:thin]">
             <p className="text-[11px] font-black text-slate-400 uppercase tracking-wider px-2 mb-2">Mục lục</p>
             {muc.map((m, i) => (
@@ -168,7 +168,8 @@ function TrangHuongDan() {
           </nav>
         )}
 
-        {/* Thân bài */}
+        {/* Thân bài. scroll-mt-[88px] ở mỗi mục: header 'Khu vực Quản trị' của khu quản trị dính
+          trên (73px), không chừa thì tiêu đề mục chui xuống dưới header khi nhảy tới. */}
         <div ref={thanRef} className="flex-1 min-w-0 bg-white rounded-2xl border border-slate-200 px-5 py-5 md:px-8 md:py-7">
           {/* Màn hẹp: hàng viên nhảy mục thay cho cột trái */}
           {!tim && (
@@ -199,7 +200,7 @@ function TrangHuongDan() {
           ) : hienThi.map((m) => {
             const i = muc.indexOf(m);
             return (
-              <section key={`${maBai}-${i}`} id={`cam-nang-muc-${i}`} className="mb-9 scroll-mt-4">
+              <section key={`${maBai}-${i}`} id={`cam-nang-muc-${i}`} className="mb-9 scroll-mt-[88px]">
                 <h2 className="flex items-center gap-2.5 mb-3 pb-2 border-b-2 border-slate-100">
                   <span className="w-7 h-7 rounded-lg bg-teal-600 text-white text-[13px]
                                    font-black flex items-center justify-center shrink-0">
