@@ -69,6 +69,8 @@ export interface TrangThaiTroChoi {
   ketQua: string;
   /** Bảng điểm tạm trong trận: tên → điểm */
   bangDiem: { ten: string; diem: number }[];
+  /** Cài đặt đang chọn trên máy chiếu (để điện thoại hiện đúng số, không đoán) */
+  caiDat?: { soCau: number; nguon: 'bai' | 'chuong' };
 }
 
 /** Trạng thái máy chiếu phát xuống điện thoại. */

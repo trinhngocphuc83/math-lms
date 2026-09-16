@@ -520,8 +520,9 @@ function NutPhu({ onClick, mau, children }: {
 
 /** Phần giữa màn hình khi đang chơi mà không có câu hỏi: cài đặt, chờ quay, hoặc bảng tổng kết. */
 function BangTroChoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => void }) {
-  const [soCau, setSoCau] = React.useState(8);
-  const [nguon, setNguon] = React.useState<'bai' | 'chuong'>('bai');
+  /* Số câu và nguồn đọc từ máy chiếu (nơi giữ trạng thái thật), bấm ± là gửi số mới lên */
+  const soCau = tc.caiDat?.soCau ?? 8;
+  const nguon = tc.caiDat?.nguon ?? 'bai';
   if (tc.giaiDoan === 'cai-dat' || tc.giaiDoan === 'tai') {
     return (
       <div className="rounded-2xl bg-white/5 border border-white/10 p-3">
@@ -529,7 +530,7 @@ function BangTroChoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => void 
         <div className="text-[12.5px] text-slate-400 mb-1">Lấy câu từ</div>
         <div className="grid grid-cols-2 gap-2 mb-3">
           {(['bai', 'chuong'] as const).map(n => (
-            <button key={n} onClick={() => { setNguon(n); gui({ viec: 'tro-choi', hanh: 'nguon', gia: n }); }}
+            <button key={n} onClick={() => gui({ viec: 'tro-choi', hanh: 'nguon', gia: n })}
                     className={`py-2.5 rounded-xl font-black text-[14px] ${nguon === n ? 'bg-indigo-600 text-white' : 'bg-white/10 text-slate-200'}`}>
               {n === 'bai' ? 'Bài này' : 'Cả chương'}
             </button>
@@ -537,10 +538,10 @@ function BangTroChoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => void 
         </div>
         <div className="text-[12.5px] text-slate-400 mb-1">Số câu</div>
         <div className="flex items-center gap-2">
-          <button onClick={() => { const n = Math.max(1, soCau - 1); setSoCau(n); gui({ viec: 'tro-choi', hanh: 'so-cau', gia: n }); }}
+          <button onClick={() => gui({ viec: 'tro-choi', hanh: 'so-cau', gia: Math.max(1, soCau - 1) })}
                   className="w-12 h-12 rounded-xl bg-white/10 active:bg-white/20 text-[22px] font-black">−</button>
           <span className="flex-1 text-center text-[26px] font-black text-white tabular-nums">{soCau}</span>
-          <button onClick={() => { const n = Math.min(50, soCau + 1); setSoCau(n); gui({ viec: 'tro-choi', hanh: 'so-cau', gia: n }); }}
+          <button onClick={() => gui({ viec: 'tro-choi', hanh: 'so-cau', gia: Math.min(50, soCau + 1) })}
                   className="w-12 h-12 rounded-xl bg-white/10 active:bg-white/20 text-[22px] font-black">+</button>
         </div>
         <p className="text-[12px] text-slate-500 mt-2">Lớp chọn trên máy chiếu (đã nhớ từ lần gọi tên trước).</p>
@@ -579,7 +580,7 @@ function BangTroChoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => void 
 function BangNutTroChoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => void }) {
   const tro = (hanh: string, gia?: any) => gui({ viec: 'tro-choi', hanh, gia });
   const To = ({ onClick, mau, children }: { onClick: () => void; mau: string; children: React.ReactNode }) => (
-    <button onClick={onClick} className={`${mau} text-white font-black py-4 rounded-2xl text-[19px] flex items-center justify-center gap-2`}>{children}</button>
+    <button onClick={onClick} className={`${mau} w-full text-white font-black py-4 rounded-2xl text-[19px] flex items-center justify-center gap-2`}>{children}</button>
   );
   const dong = (
     <button onClick={() => tro('dong')}

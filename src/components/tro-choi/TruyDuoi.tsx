@@ -229,11 +229,11 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
     const bang = Object.values(bangDiem).sort((a, b) => b.diem - a.diem).map(d => ({ ten: d.ten, diem: d.diem }));
     onTrangThai?.({
       tro: 'truy-duoi', giaiDoan, cau: iCau + 1, tongCau: cauList.length, muc, diemCau,
-      tenHS: hs?.ten || '', lanChuyen, ketQua, bangDiem: bang,
+      tenHS: hs?.ten || '', lanChuyen, ketQua, bangDiem: bang, caiDat: { soCau, nguon },
     }, giaiDoan === 'hoi' || giaiDoan === 'cham-tl' || giaiDoan === 'ket-qua' || giaiDoan === 'chua' ? cau?.quiz || null : null,
     { hienDapAn: ttQuizHien.hienDapAn, dangChon: ttQuizHien.dangChon, buoc: ttQuizHien.buoc, loiGiai: ttQuizHien.loiGiai });
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [giaiDoan, iCau, cauList.length, muc, diemCau, hs, lanChuyen, ketQua, bangDiem, ttQuizHien]);
+  }, [giaiDoan, iCau, cauList.length, muc, diemCau, hs, lanChuyen, ketQua, bangDiem, ttQuizHien, soCau, nguon]);
 
   /* Phím tắt trên máy chiếu: Q quay · Enter câu tiếp · C chuyền · L chữa */
   useEffect(() => {
