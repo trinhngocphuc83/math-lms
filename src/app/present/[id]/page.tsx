@@ -22,6 +22,7 @@ import {
 import PresentationTimer from '@/components/presentation/PresentationTimer';
 import PresentationQuiz, { KATEX_CLASS } from '@/components/presentation/PresentationQuiz';
 import TruyDuoi from '@/components/tro-choi/TruyDuoi';
+import DauDoi from '@/components/tro-choi/DauDoi';
 import { Gamepad2 } from 'lucide-react';
 import type { TrangThaiTroChoi } from '@/utils/dieuKhienXa';
 import BangGoiTenVaDiem from '@/components/lop/BangGoiTenVaDiem';
@@ -47,6 +48,42 @@ const parseSlides = tachSlide;
 /* Lớp tiện ích cho KaTeX dùng chung mọi nơi trong slide. */
 
 // --- Quiz Component for Presentation ---
+/** Màn chọn trò chơi — ba thẻ, mỗi thẻ một trò của đợt 1; trò chưa dựng thì mờ đi. */
+function ChonTro({ onChon, onDong }: { onChon: (t: 'truy-duoi' | 'dau-doi') => void; onDong: () => void }) {
+    const TRO: { ma: 'truy-duoi' | 'dau-doi' | null; bieuTuong: string; ten: string; moTa: string; phim: string }[] = [
+        { ma: 'truy-duoi', bieuTuong: '🎯', ten: 'Truy đuổi', moTa: 'Vòng quay gọi một em. Sai thì chuyền sang em khác, tối đa 2 lần rồi thầy chữa.', phim: '1' },
+        { ma: null, bieuTuong: '⚡', ten: 'Chớp nhoáng', moTa: 'Cả lớp cùng trả lời, máy lật đáp án, gọi một em giải thích. (sắp có)', phim: '2' },
+        { ma: 'dau-doi', bieuTuong: '🏁', ten: 'Đấu đội tiếp sức', moTa: 'Chia đội, đội giơ bảng trước được chấm; đúng thì một em trong đội trình bày.', phim: '3' },
+    ];
+    useEffect(() => {
+        const h = (e: KeyboardEvent) => {
+            if (e.key === '1') onChon('truy-duoi'); else if (e.key === '3') onChon('dau-doi'); else if (e.key === 'Escape') onDong();
+        };
+        window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h);
+    }, [onChon, onDong]);
+    return (
+        <div className="w-full">
+            <div className="flex items-center gap-4 mb-8">
+                <span className="text-[42px]">🎮</span>
+                <h3 className="text-[42px] font-black text-indigo-800 m-0">Chọn trò chơi</h3>
+                <span className="text-[24px] text-slate-400">bấm thẻ hoặc phím 1 / 3 · Esc để về bài</span>
+            </div>
+            <div className="grid grid-cols-3 gap-8">
+                {TRO.map(t => (
+                    <button key={t.ten} disabled={!t.ma} onClick={() => t.ma && onChon(t.ma)}
+                            className={`text-left rounded-3xl border-[4px] p-8 transition-all ${t.ma
+                                ? 'border-indigo-200 bg-white hover:border-indigo-500 hover:-translate-y-1 shadow-lg'
+                                : 'border-slate-200 bg-slate-50 opacity-50 cursor-not-allowed'}`}>
+                        <div className="text-[72px] leading-none mb-4">{t.bieuTuong}</div>
+                        <div className="text-[36px] font-black text-slate-800 mb-2">{t.ten}</div>
+                        <div className="text-[24px] text-slate-500 leading-snug">{t.moTa}</div>
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+}
+
 /**
  * Đọc khối ```quiz``` ở đầu slide. Trả về null nếu slide không phải câu hỏi tương tác,
  * hoặc khối JSON viết sai - lúc đó điện thoại chỉ hiện nội dung như slide thường.
@@ -75,6 +112,7 @@ export default function PresentationPage() {
     /* TRÒ CHƠI TRÊN LỚP (đợt 1: Truy đuổi). Mở thì khung slide nhường chỗ cho trò; bài giảng
        vẫn ở nguyên slide đang chiếu, đóng trò là về đúng chỗ. */
     const [moTroChoi, setMoTroChoi] = useState(false);
+    const [troDangChon, setTroDangChon] = useState<'truy-duoi' | 'dau-doi' | null>(null);
     const [lenhChoTroChoi, setLenhChoTroChoi] = useState<{ hanh: string; gia?: any; dem: number } | null>(null);
     const [ttTroChoi, setTtTroChoi] = useState<TrangThaiTroChoi | null>(null);
     const [cauHoiTroChoi, setCauHoiTroChoi] = useState<any | null>(null);
@@ -332,7 +370,8 @@ export default function PresentationPage() {
                 case 'mo-san-khau': setMoSanKhau(true); break;
                 case 'tro-choi':
                     if (l.hanh === 'mo') setMoTroChoi(true);
-                    else if (l.hanh === 'dong') setMoTroChoi(false);
+                    else if (l.hanh === 'dong') { setMoTroChoi(false); setTroDangChon(null); }
+                    else if (l.hanh === 'chon-tro') setTroDangChon(l.gia === 'dau-doi' ? 'dau-doi' : 'truy-duoi');
                     else setLenhChoTroChoi(v => ({ hanh: l.hanh, gia: l.gia, dem: (v?.dem || 0) + 1 }));
                     break;
                 case 'chon-ds':
@@ -440,11 +479,13 @@ export default function PresentationPage() {
                 gioConLai,
                 soCau: dem.soCau,
                 tongCau: dem.tongCau,
-                troChoi: moTroChoi ? ttTroChoi : null,
+                troChoi: !moTroChoi ? null : troDangChon ? ttTroChoi : {
+                    tro: 'truy-duoi', giaiDoan: 'chon', cau: 0, tongCau: 0, muc: 0, diemCau: 0, tenHS: '', lanChuyen: 0, ketQua: '', bangDiem: [],
+                },
             };
         };
         if (phatTrangThai.current) phatTrangThai.current(layTrangThai.current());
-    }, [currentSlideIndex, currentFragmentIndex, slides, moGoiTen, trangThaiQuiz, gioConLai, buocQuiz, loiGiaiQuiz, moTroChoi, ttTroChoi, cauHoiTroChoi, quizTroChoi]);
+    }, [currentSlideIndex, currentFragmentIndex, slides, moGoiTen, trangThaiQuiz, gioConLai, buocQuiz, loiGiaiQuiz, moTroChoi, troDangChon, ttTroChoi, cauHoiTroChoi, quizTroChoi]);
 
     /* Ô số câu bám theo câu đang chiếu - trừ lúc Thầy cô đang gõ dở để nhảy đi chỗ khác. */
     useEffect(() => {
@@ -640,7 +681,22 @@ export default function PresentationPage() {
                         {/* flow-root: chặn margin-bottom của phần tử cuối "thoát" ra ngoài (margin collapse),
                             nếu không offsetHeight đo thiếu ~8px khiến nội dung vẫn dôi ra khỏi khung. */}
                         <div ref={measureRef} key={`${currentSlideIndex}-${currentFragmentIndex}`} className="w-full flow-root animate-in fade-in duration-300">
-                            {moTroChoi ? (
+                            {moTroChoi && !troDangChon ? (
+                                <ChonTro onChon={setTroDangChon} onDong={() => setMoTroChoi(false)} />
+                            ) : moTroChoi && troDangChon === 'dau-doi' ? (
+                                <DauDoi
+                                    lessonId={typeof params?.id === 'string' ? params.id : undefined}
+                                    lenhTuXa={lenhChoTroChoi}
+                                    lenhChoQuiz={lenhChoQuiz}
+                                    onTrangThai={(tt, cauHoi, q) => { setTtTroChoi(tt); setCauHoiTroChoi(cauHoi); setQuizTroChoi(q); }}
+                                    onBatDauCau={(khoa) => {
+                                        setKhoaGioTroChoi('dd-' + khoa);
+                                        let giay = 0; try { giay = parseInt(localStorage.getItem('thoi-luong-dat-gio-lan-truoc') || '0', 10); } catch { /* thôi */ }
+                                        if (giay > 0) setLenhChoGio(v => ({ viec: 'dat-gio', phut: giay / 60, dem: (v?.dem || 0) + 1, luc: Date.now() }));
+                                    }}
+                                    onDong={() => { setMoTroChoi(false); setTroDangChon(null); setTtTroChoi(null); setCauHoiTroChoi(null); }}
+                                />
+                            ) : moTroChoi ? (
                                 <TruyDuoi
                                     lessonId={typeof params?.id === 'string' ? params.id : undefined}
                                     lenhTuXa={lenhChoTroChoi}
@@ -652,7 +708,7 @@ export default function PresentationPage() {
                                         let giay = 0; try { giay = parseInt(localStorage.getItem('thoi-luong-dat-gio-lan-truoc') || '0', 10); } catch { /* thôi */ }
                                         if (giay > 0) setLenhChoGio(v => ({ viec: 'dat-gio', phut: giay / 60, dem: (v?.dem || 0) + 1, luc: Date.now() }));
                                     }}
-                                    onDong={() => { setMoTroChoi(false); setTtTroChoi(null); setCauHoiTroChoi(null); }}
+                                    onDong={() => { setMoTroChoi(false); setTroDangChon(null); setTtTroChoi(null); setCauHoiTroChoi(null); }}
                                 />
                             ) : isQuiz && quizData ? (
                                 <PresentationQuiz
