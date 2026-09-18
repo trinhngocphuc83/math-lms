@@ -468,7 +468,8 @@ export default function DauDoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai, o
         </div>
       )}
       {cau && (
-        <PresentationQuiz key={iCau} chamKin={giaiDoan === 'cham'} quizData={cau.quiz} lenhNgoai={lenhQuiz} onDoi={khiQuizDoi}
+        <PresentationQuiz key={iCau} chamKin={giaiDoan === 'cham'} khoa={giaiDoan !== 'cham' && giaiDoan !== 'hoi'}
+                          quizData={cau.quiz} lenhNgoai={lenhQuiz} onDoi={khiQuizDoi}
                           soCau={iCau + 1} tongCau={cauList.length} />
       )}
       {loi && <div className="text-rose-600 text-[24px] font-bold mt-4">{loi}</div>}

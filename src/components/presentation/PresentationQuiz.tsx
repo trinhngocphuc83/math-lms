@@ -34,7 +34,7 @@ export interface TrangThaiQuiz {
     daSai: number[];
 }
 
-export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau, chamKin }: {
+export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau, chamKin, khoa }: {
     quizData: any;
     /** Số thứ tự câu trong đề, để trên bảng ghi đúng "Câu 7" như tờ đề học sinh cầm. */
     soCau?: number;
@@ -53,6 +53,9 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
      * chuyền chỉ việc đọc — thầy bắt được ngay buổi chơi thật đầu tiên.
      */
     chamKin?: boolean;
+    /** Khoá thao tác (trò chơi đã chấm xong câu này / chưa tới lượt): không chọn phương án,
+        không có nút Chấm; nút Xem lời giải vẫn còn. */
+    khoa?: boolean;
 }) {
     /**
      * BA BƯỚC cho một câu, đi bằng đúng một nút: đề → đáp án → lời giải → về lại đề.
@@ -119,7 +122,7 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
         if (!lenhNgoai || lenhNgoai.dem === demDaLam.current) return;
         demDaLam.current = lenhNgoai.dem;
         if (lenhNgoai.viec === 'chon-dap-an' && typeof lenhNgoai.chon === 'number') {
-            if (!showAnswer && !daSai.includes(lenhNgoai.chon)) setSelectedIdx(lenhNgoai.chon);
+            if (!showAnswer && !khoa && !daSai.includes(lenhNgoai.chon)) setSelectedIdx(lenhNgoai.chon);
         } else if (lenhNgoai.viec === 'hien-dap-an') {
             /* Chấm kín: nút "Hiển thị đáp án" trên điện thoại ở bước đề nghĩa là Chấm */
             if (chamKin && buoc === 0 && type !== 'essay') cham(); else doiBuoc();
@@ -286,8 +289,8 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
                         return (
                             <button
                                 key={optIdx}
-                                disabled={showAnswer || biKhoa}
-                                onClick={() => setSelectedIdx(optIdx)}
+                                disabled={showAnswer || biKhoa || khoa}
+                                onClick={() => !khoa && setSelectedIdx(optIdx)}
                                 className={`flex-1 rounded-2xl border-[3px] px-8 py-6 transition-all duration-200 ${cls}`}
                             >
                                 <div className={`text-[42px] font-black uppercase text-slate-800 ${KATEX_CLASS}`}>
@@ -325,8 +328,8 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
                         return (
                             <button
                                 key={idx}
-                                disabled={biKhoa}
-                                onClick={() => !showAnswer && !biKhoa && setSelectedIdx(idx)}
+                                disabled={biKhoa || khoa}
+                                onClick={() => !showAnswer && !biKhoa && !khoa && setSelectedIdx(idx)}
                                 className={`w-full text-left rounded-2xl border-[3px] px-6 py-5 flex items-start gap-5 transition-all duration-200 ${cardCls}`}
                             >
                                 <div className={`w-[62px] h-[62px] rounded-full flex items-center justify-center text-[34px] font-black shrink-0 transition-colors ${badgeCls}`}>
@@ -374,7 +377,8 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
                                     <div className="shrink-0 flex gap-2">
                                         {[true, false].map(v => (
                                             <button key={String(v)}
-                                                    onClick={() => setChonCum(c => ({ ...c, [i]: v }))}
+                                                    disabled={khoa}
+                                                    onClick={() => !khoa && setChonCum(c => ({ ...c, [i]: v }))}
                                                     className={`w-[62px] h-[54px] rounded-xl text-[28px] font-black border-[3px] transition-colors ${
                                                       thayChon === v
                                                         ? 'bg-indigo-600 border-indigo-600 text-white'
@@ -416,6 +420,7 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
                             <input
                                 type="text"
                                 value={chuNhap}
+                                disabled={khoa}
                                 onChange={e => setChuNhap(e.target.value)}
                                 placeholder="Nhập câu trả lời vào đây..."
                                 className="w-full px-8 py-5 rounded-2xl border-[3px] border-indigo-200 focus:border-indigo-500 outline-none
@@ -504,7 +509,7 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
             <div className="mt-8 flex justify-center items-center gap-4">
                 {/* Chấm kín + tự luận + bước đề: không có nút — trò chơi chấm Đúng/Sai bằng nút riêng,
                     lật bài giải mẫu sau khi chấm. */}
-                {!(chamKin && type === 'essay' && buoc === 0) && (
+                {!(chamKin && type === 'essay' && buoc === 0) && !(khoa && buoc === 0) && (
                 <button
                     onClick={chamKin && buoc === 0 ? cham : doiBuoc}
                     className={`${chamKin && buoc === 0 ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-indigo-600 hover:bg-indigo-700'}

@@ -379,11 +379,11 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
     );
   }
 
-  /* ---- màn quay ---- */
-  if (giaiDoan === 'quay') {
-    return (
-      <div className="w-full">
-        {dauTrang}
+  /* ---- màn quay ----
+     KHÔNG return riêng nữa: trước đây màn quay là một nhánh return khác, PresentationQuiz bị
+     gỡ khỏi cây lúc quay người nhận chuyền rồi dựng lại mới tinh — phương án đã khoá đỏ
+     mất sạch (đo trên Vercel 18/9/2026). Nay khối quay chèn vào cùng cây, câu chỉ ẩn đi. */
+  const manQuay = giaiDoan === 'quay' && (
         <div className="grid grid-cols-[1fr_520px] gap-10 items-start">
           <div>
             <p className="text-[30px] text-slate-600 mb-4">
@@ -412,18 +412,19 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
             <Nut onClick={ketThuc} mau="bg-slate-400 hover:bg-slate-500"><Flag className="w-[34px] h-[34px]" /> Kết thúc</Nut>
           </div>
         </div>
-      </div>
-    );
-  }
+  );
 
-  /* ---- màn hỏi / chấm / kết quả / chữa ---- */
+  /* ---- màn quay / hỏi / chấm / kết quả / chữa (một cây, câu luôn được giữ) ---- */
   return (
     <div className="w-full">
       {dauTrang}
-      <div className="mb-5">{theTen}</div>
+      {manQuay}
+      {giaiDoan !== 'quay' && <div className="mb-5">{theTen}</div>}
       {cau && (
-        <PresentationQuiz key={iCau} chamKin quizData={cau.quiz} lenhNgoai={lenhQuiz} onDoi={khiQuizDoi}
-                          soCau={iCau + 1} tongCau={cauList.length} />
+        <div className={giaiDoan === 'quay' ? 'hidden' : ''}>
+          <PresentationQuiz key={iCau} chamKin khoa={giaiDoan !== 'hoi'} quizData={cau.quiz} lenhNgoai={lenhQuiz} onDoi={khiQuizDoi}
+                            soCau={iCau + 1} tongCau={cauList.length} />
+        </div>
       )}
       {loi && <div className="text-rose-600 text-[24px] font-bold mt-4">{loi}</div>}
 
