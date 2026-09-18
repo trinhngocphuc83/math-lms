@@ -863,6 +863,11 @@ export default function QuestionsPage() {
         isOpen={isCategoryModalOpen}
         onClose={() => setIsCategoryModalOpen(false)}
         onCategoriesUpdated={fetchCategories}
+        onXemCau={(loc) => {
+          /* Từ cây danh mục bấm "Xem câu": đặt bộ lọc đúng bài / dạng, về trang 1 */
+          setFilters({ grade: loc.grade, subject: loc.subject, topic: loc.topic, lesson: loc.lesson || "", math_form: loc.math_form || "", difficulty: "", question_type: "", thieuDapAn: "" });
+          setCurrentPage(1);
+        }}
       />
 
       <ExportScopeModal

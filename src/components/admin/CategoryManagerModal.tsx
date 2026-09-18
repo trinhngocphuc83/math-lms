@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { createClient } from "@/utils/supabase/client";
 import SoanYeuCauModal, { type DangTrong } from "@/components/admin/SoanYeuCauModal";
+import CayDanhMuc from "@/components/admin/CayDanhMuc";
 import { 
-  Database, UploadCloud, Download, Trash2, Search, X, FileSpreadsheet, Edit2, Sparkles
+  Database, UploadCloud, Download, Trash2, Search, X, FileSpreadsheet, Edit2, Sparkles, FolderTree, List
 } from "lucide-react";
 import Papa from "papaparse";
 import * as XLSX from "xlsx";
@@ -22,12 +23,17 @@ interface CategoryManagerModalProps {
   isOpen: boolean;
   onClose: () => void;
   onCategoriesUpdated: () => void;
+  /** Từ cây danh mục bấm "Xem câu": trang Ngân hàng đặt bộ lọc theo bài / dạng rồi hộp tự đóng. */
+  onXemCau?: (loc: { grade: string; subject: string; topic: string; lesson?: string; math_form?: string }) => void;
 }
 
-export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpdated }: CategoryManagerModalProps) {
+export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpdated, onXemCau }: CategoryManagerModalProps) {
   const supabase = createClient();
   const [categories, setCategories] = useState<CategoryData[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
+  /* Hai cách xem: CÂY (lớp › chương › bài › dạng kèm số câu — để soạn bài, thầy yêu cầu
+     18/9/2026) và BẢNG phẳng (để sửa, nhập Excel). Mặc định mở cây. */
+  const [cachXem, setCachXem] = useState<'cay' | 'bang'>('cay');
   const [isImporting, setIsImporting] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
@@ -362,12 +368,35 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
             </h2>
             <p className="text-sm text-gray-500 mt-1 font-medium">Quản lý cây thư mục và Import hàng loạt dạng toán từ file Excel.</p>
           </div>
-          <button onClick={onClose} className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors">
-            <X className="w-6 h-6" />
-          </button>
+          <div className="flex items-center gap-3">
+            <div className="flex p-1 rounded-xl bg-gray-100">
+              {([['cay', 'Cây danh mục', FolderTree], ['bang', 'Bảng', List]] as const).map(([ma, ten, Icon]) => (
+                <button key={ma} onClick={() => setCachXem(ma)}
+                        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-bold transition-colors ${
+                          cachXem === ma ? 'bg-white text-emerald-700 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
+                  <Icon className="w-4 h-4" /> {ten}
+                </button>
+              ))}
+            </div>
+            <button onClick={onClose} className="p-2 text-gray-400 hover:text-red-600 hover:bg-red-50 rounded-xl transition-colors">
+              <X className="w-6 h-6" />
+            </button>
+          </div>
         </div>
 
+        {/* Cây danh mục kèm số câu: chọn chương → xem từng bài có dạng gì, bao nhiêu câu, mức nào. */}
+        {cachXem === 'cay' && !isManualAdding && (
+          <div className="flex-1 min-h-0">
+            <CayDanhMuc
+              danhMuc={categories}
+              onSua={(d) => { setCachXem('bang'); startEditing(d as CategoryData); }}
+              onXemCau={onXemCau ? (loc) => { onXemCau(loc); onClose(); } : undefined}
+            />
+          </div>
+        )}
+
         {/* Toolbar */}
+        {(cachXem === 'bang' || isManualAdding) && <>
         <div className="p-5 border-b border-gray-100 flex items-center justify-between gap-4 bg-white">
           <div className="relative flex-1 max-w-md">
             <Search className="w-5 h-5 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
@@ -530,6 +559,7 @@ export default function CategoryManagerModal({ isOpen, onClose, onCategoriesUpda
             </table>
           )}
         </div>
+      </>}
       </div>
 
       {/* Nhờ AI soạn Yêu cầu cần đạt cho các dạng còn trống trong phạm vi đang lọc. */}
