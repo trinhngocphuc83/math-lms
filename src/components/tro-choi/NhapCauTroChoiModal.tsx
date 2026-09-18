@@ -1,6 +1,15 @@
 "use client";
 import React, { useEffect, useMemo, useState } from 'react';
-import { X, Scissors, Plus, Loader2, Search, Sparkles } from 'lucide-react';
+import { X, Scissors, Plus, Loader2, Search, Sparkles, Check } from 'lucide-react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
+import remarkBreaks from 'remark-breaks';
+import 'katex/dist/katex.min.css';
+import { chuyenDiaChiAnh } from '@/components/CustomMarkdownComponents';
+import { ensureMathDelimiters } from '@/utils/latexFixer';
 import { layCauNguonTroChoi, type CauNguon } from '@/app/actions/troChoi';
 import { tachYCau, soYTachDuoc, TEN_LOAI, TEN_MUC, xuongDongNgoaiCongThuc } from '@/utils/troChoi';
 import { doanMucDoNhieuCau } from '@/utils/datMucDo';
@@ -21,6 +30,73 @@ import { khoiQuizSangCauCanMucDo } from '@/utils/doanMucBoCau';
  * lại doanMucDoNhieuCau của bộ kiểm thử đề, mức 4 gộp về 3 vì trò chỉ có ba bậc) và ô đặt
  * mức hàng loạt cho câu đã tick; thầy vẫn sửa từng câu được.
  */
+const KATEX_NHO = '[&_.katex]:text-[#1e40af] [&_.katex-display]:my-1 [&_p]:my-0 [&_p+p]:mt-1';
+const PLUGINS = { remark: [remarkMath, remarkBreaks, remarkGfm], rehype: [rehypeKatex, rehypeRaw] };
+const ANH_NHO = {
+  img: ({ src, alt }: any) => <img src={src} alt={alt || 'hình'} className="inline-block max-h-[110px] w-auto rounded-lg border border-slate-200 my-1 align-middle" />,
+};
+/** Chữ có công thức → dựng KaTeX (đọc được ngay, thay cho `$\color{blue}…$` thô của bản đầu). */
+function Chu({ chu, className }: { chu: string; className?: string }) {
+  return (
+    <div className={`${KATEX_NHO} ${className || ''}`}>
+      <ReactMarkdown urlTransform={chuyenDiaChiAnh} components={ANH_NHO} remarkPlugins={PLUGINS.remark} rehypePlugins={PLUGINS.rehype}>
+        {ensureMathDelimiters(xuongDongNgoaiCongThuc(chu))}
+      </ReactMarkdown>
+    </div>
+  );
+}
+const chuPA = (o: any) => String(typeof o === 'string' ? o : (o?.content ?? o ?? '')).replace(/^(\s*\d+)\.(?=\s|$)/, '$1\\.');
+
+/**
+ * Xem trước một câu đúng như nó sẽ hiện: đề dựng KaTeX, phương án A–D với đáp án tô xanh,
+ * cụm Đúng/Sai với nhãn Đ/S từng ý, trả lời ngắn có đáp án. Thầy nhìn là biết câu ấy
+ * hỏi gì, khó cỡ nào — bản đầu in chuỗi LaTeX thô, "không tường minh, khó chọn" (17/9/2026).
+ */
+function XemCau({ q }: { q: any }) {
+  const type = String(q.type || 'multiple_choice');
+  return (
+    <div className="min-w-0">
+      <Chu chu={String(q.question || '')} className="text-[13.5px] leading-relaxed text-slate-800" />
+      {type === 'multiple_choice' && Array.isArray(q.options) && (
+        <div className="grid grid-cols-2 gap-x-4 gap-y-1 mt-1.5">
+          {q.options.map((o: any, k: number) => {
+            const dung = k === Number(q.answerIndex);
+            return (
+              <div key={k} className={`flex items-start gap-1.5 text-[12.5px] leading-snug ${dung ? 'text-emerald-700 font-semibold' : 'text-slate-600'}`}>
+                <span className={`shrink-0 w-5 h-5 rounded-full text-[11px] font-black flex items-center justify-center ${dung ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-500'}`}>
+                  {dung ? <Check className="w-3 h-3" /> : String.fromCharCode(65 + k)}
+                </span>
+                <Chu chu={chuPA(o)} className="min-w-0" />
+              </div>
+            );
+          })}
+        </div>
+      )}
+      {type === 'true_false' && (
+        <div className="mt-1 text-[12.5px] text-emerald-700 font-semibold">Đáp án: {Number(q.answerIndex) === 0 ? 'ĐÚNG' : 'SAI'}</div>
+      )}
+      {type === 'true_false_cluster' && Array.isArray(q.options) && (
+        <div className="flex flex-col gap-0.5 mt-1.5">
+          {q.options.map((o: any, k: number) => (
+            <div key={k} className="flex items-start gap-1.5 text-[12.5px] leading-snug text-slate-600">
+              <span className={`shrink-0 w-5 h-5 rounded text-[10px] font-black flex items-center justify-center ${o?.isTrue ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'}`}>
+                {o?.isTrue ? 'Đ' : 'S'}
+              </span>
+              <span className="shrink-0 font-bold text-slate-500">{o?.id || String.fromCharCode(97 + k)})</span>
+              <Chu chu={String(o?.content ?? o ?? '')} className="min-w-0" />
+            </div>
+          ))}
+        </div>
+      )}
+      {type === 'short_answer' && (
+        <div className="mt-1 flex items-center gap-2 text-[12.5px] text-emerald-700 font-semibold">
+          Đáp án: <Chu chu={String(q.exactAnswer || q.correctAnswer || q.answerText || '?')} />
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function NhapCauTroChoiModal({ isOpen, onClose, lessonId, onThem }: {
   isOpen: boolean;
   onClose: () => void;
@@ -107,7 +183,7 @@ export default function NhapCauTroChoiModal({ isOpen, onClose, lessonId, onThem 
   if (!isOpen) return null;
   return (
     <div className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-4xl max-h-[90vh] flex flex-col" onClick={e => e.stopPropagation()}>
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-5xl max-h-[92vh] flex flex-col" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200">
           <div>
             <h3 className="text-lg font-black text-slate-800">🎮 Nhập câu vào bộ câu hỏi trò chơi</h3>
@@ -163,19 +239,29 @@ export default function NhapCauTroChoiModal({ isOpen, onClose, lessonId, onThem 
           {loi && <div className="text-rose-600 font-bold">{loi}</div>}
           {!dangTai && !ds.length && <p className="text-slate-500 py-8 text-center">Bài và chương này chưa có câu tương tác nào ở các phần khác. Dùng "Rút từ Ngân hàng" để lấy câu từ kho.</p>}
           <div className="flex flex-col gap-2">
-            {hien.map(({ c, i }) => {
+            {hien.map(({ c, i }, viTri) => {
               const soY = soYTachDuoc(c.quiz);
-              const de = xuongDongNgoaiCongThuc(String(c.quiz.question)).replace(/!\[[^\]]*\]\([^)]*\)/g, '[hình]');
+              /* Tiêu đề nhóm khi sang phần khác — câu đi theo phần, thầy khỏi đọc lại dòng nguồn từng câu */
+              const dauNhom = viTri === 0 || hien[viTri - 1].c.moduleId !== c.moduleId;
+              const stt = ds.slice(0, i).filter(x => x.moduleId === c.moduleId).length + 1;
               return (
-                <label key={i} className={`flex gap-3 items-start rounded-xl border p-3 cursor-pointer transition-colors ${chon[i] ? 'border-indigo-400 bg-indigo-50/60' : 'border-slate-200 hover:border-slate-300'}`}>
+                <React.Fragment key={i}>
+                  {dauNhom && (
+                    <div className="sticky top-0 z-10 -mx-1 px-3 py-1.5 bg-slate-100/95 backdrop-blur rounded-lg text-[12px] font-black text-slate-600 flex items-center gap-2 mt-1">
+                      <span className="text-slate-400">{c.tenBai} ›</span> {c.tenModule}
+                      <span className="ml-auto font-bold text-slate-400">{ds.filter(x => x.moduleId === c.moduleId).length} câu</span>
+                    </div>
+                  )}
+                <label className={`flex gap-3 items-start rounded-xl border p-3 cursor-pointer transition-colors ${chon[i] ? 'border-indigo-400 bg-indigo-50/60' : 'border-slate-200 hover:border-slate-300'}`}>
                   <input type="checkbox" checked={!!chon[i]} onChange={e => setChon(ch => ({ ...ch, [i]: e.target.checked }))} className="mt-1.5 w-4 h-4" />
                   <div className="flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-2 text-[11px] font-bold mb-1">
+                      <span className="text-slate-400">#{stt}</span>
                       <span className="px-2 py-0.5 rounded bg-slate-100 text-slate-600">{TEN_LOAI[c.quiz.type] || c.quiz.type}</span>
-                      <span className="text-slate-400 truncate">{c.tenBai} › {c.tenModule}</span>
                       {soY >= 2 && <span className="px-2 py-0.5 rounded bg-amber-100 text-amber-800">{soY} ý</span>}
+                      {mucCua(i) > 0 && <span className="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700">{TEN_MUC[mucCua(i)]} · ±{mucCua(i)}</span>}
                     </div>
-                    <div className="text-[13px] text-slate-800 whitespace-pre-line line-clamp-4 font-mono">{de}</div>
+                    <XemCau q={c.quiz} />
                   </div>
                   <div className="shrink-0 flex flex-col items-end gap-1.5" onClick={e => e.preventDefault()}>
                     <select value={mucCua(i)} onChange={e => setMuc(m => ({ ...m, [i]: Number(e.target.value) }))}
@@ -194,6 +280,7 @@ export default function NhapCauTroChoiModal({ isOpen, onClose, lessonId, onThem 
                     )}
                   </div>
                 </label>
+                </React.Fragment>
               );
             })}
           </div>

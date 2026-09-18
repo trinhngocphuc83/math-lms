@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import { Dices, Play, Redo2, BookOpenCheck, ChevronRight, Flag, UserCheck, X, Loader2 } from 'lucide-react';
-import PresentationQuiz from '@/components/presentation/PresentationQuiz';
+import PresentationQuiz, { type TrangThaiQuiz } from '@/components/presentation/PresentationQuiz';
 import VongQuayTen from '@/components/lop/VongQuayTen';
 import { layCauTroChoi, ghiDiemTroChoi, type CauTroChoi, type NguonCau } from '@/app/actions/troChoi';
 import { layDsLop, layLopTheoBai, layTrangThaiQuay, ghiDaGoi } from '@/app/actions/goiTenVaDiem';
 import type { HocSinh } from '@/utils/goiTenVaDiem';
-import { diemTheoMuc, TEN_MUC, TEN_LOAI, xao, khopTraLoiNgan } from '@/utils/troChoi';
+import { diemTheoMuc, TEN_MUC, TEN_LOAI, xao } from '@/utils/troChoi';
 import type { TrangThaiTroChoi } from '@/utils/dieuKhienXa';
 
 /**
@@ -85,8 +85,8 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
   const demLenh = useRef(0);
   const guiQuiz = (viec: string, them: any = {}) => setLenhQuiz({ viec, ...them, dem: ++demLenh.current });
   /* Trạng thái chọn của câu đang chiếu (do PresentationQuiz báo lên) */
-  const ttQuiz = useRef<{ hienDapAn: boolean; dangChon: number | null; buoc: number; loiGiai: string; chonCum: Record<number, boolean>; chuNhap: string }>({
-    hienDapAn: false, dangChon: null, buoc: 0, loiGiai: '', chonCum: {}, chuNhap: '',
+  const ttQuiz = useRef<TrangThaiQuiz>({
+    hienDapAn: false, dangChon: null, buoc: 0, loiGiai: '', chonCum: {}, chuNhap: '', lanCham: 0, ketQuaCham: null, daSai: [],
   });
   const [ttQuizHien, setTtQuizHien] = useState(ttQuiz.current);
 
@@ -140,8 +140,12 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
     vaoCau();
   };
   const vaoCau = () => {
-    ttQuiz.current = { ...ttQuiz.current, hienDapAn: false, dangChon: null, buoc: 0, chonCum: {}, chuNhap: '' };
-    guiQuiz('lam-lai');
+    /* Nhận chuyền (lanChuyen > 0) thì KHÔNG dựng lại câu: phương án em trước chọn sai đã
+       khoá đỏ, đáp án vẫn giấu, em sau chọn trong phần còn lại. Chỉ câu mới mới xoá sạch. */
+    if (lanChuyen === 0) {
+      ttQuiz.current = { ...ttQuiz.current, hienDapAn: false, dangChon: null, buoc: 0, chonCum: {}, chuNhap: '', lanCham: 0, ketQuaCham: null, daSai: [] };
+      guiQuiz('lam-lai');
+    }
     setKetQua(''); setGiaiDoan('hoi');
     onBatDauCau?.(`${iCau}-${lanChuyen}`);
   };
@@ -161,24 +165,22 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
     try { await ghiDiemTroChoi(lopId, hs.id, d, lyDo, lessonId); }
     catch (e: any) { setLoi('Không ghi được điểm: ' + (e?.message || '')); }
   };
-  /** Máy tự chấm khi câu vừa lật đáp án (bấm trên bảng hoặc từ điện thoại). */
-  const tuCham = (t: typeof ttQuiz.current) => {
-    if (!cau) return;
-    const q = cau.quiz;
-    if (loai === 'essay') { setGiaiDoan('cham-tl'); return; }
-    let dung = false;
-    if (loai === 'multiple_choice' || loai === 'true_false') dung = t.dangChon !== null && t.dangChon === q.answerIndex;
-    else if (loai === 'true_false_cluster') {
-      const ds = q.options || [];
-      dung = ds.length > 0 && ds.every((o: any, i: number) => t.chonCum[i] !== undefined && !!o?.isTrue === !!t.chonCum[i]);
-    } else if (loai === 'short_answer') dung = khopTraLoiNgan(t.chuNhap, String(q.exactAnswer || q.correctAnswer || q.answerText || ''));
-    ghiKetQua(dung);
-  };
-  const khiQuizDoi = (t: typeof ttQuiz.current) => {
+  /**
+   * Câu tự chấm KÍN (PresentationQuiz chamKin): mỗi lần thầy bấm "Chấm", lanCham tăng và
+   * ketQuaCham cho biết đúng/sai — đúng thì câu tự lật đáp án, sai thì chỉ khoá phương án
+   * vừa chọn. Bản đầu chấm khi thấy hienDapAn lật lên, tức là phải lộ đáp án mới chấm được —
+   * em sai xong cả lớp đã thấy đáp án, chuyền là vô nghĩa (thầy bắt được 16/9/2026).
+   * Tự luận vẫn đi đường cũ: thầy bấm Hiển thị đáp án / Đúng-Sai.
+   */
+  const khiQuizDoi = (t: TrangThaiQuiz) => {
     const truoc = ttQuiz.current;
     ttQuiz.current = t; setTtQuizHien(t);
-    if (giaiDoan === 'hoi' && !truoc.hienDapAn && t.hienDapAn) tuCham(t);
+    if (giaiDoan !== 'hoi') return;
+    if (loai === 'essay') { if (!truoc.hienDapAn && t.hienDapAn) setGiaiDoan('cham-tl'); return; }
+    if (t.lanCham > truoc.lanCham && t.ketQuaCham) ghiKetQua(t.ketQuaCham === 'dung');
   };
+  /** Em không trả lời được (hết giờ, bó tay): tính sai, đáp án vẫn giấu để chuyền. */
+  const boTay = () => { if (giaiDoan === 'hoi') ghiKetQua(false); };
 
   /* ---- sau khi chấm ---- */
   const chuyen = () => {
@@ -211,7 +213,10 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
         if (em) chiDinh(em); else setChonTay(true);
         break;
       }
-      case 'cham': if (giaiDoan === 'cham-tl' || (giaiDoan === 'hoi' && loai === 'essay')) ghiKetQua(!!lenhTuXa.gia); break;
+      case 'cham':
+        if (giaiDoan === 'cham-tl' || (giaiDoan === 'hoi' && loai === 'essay')) ghiKetQua(!!lenhTuXa.gia);
+        else if (giaiDoan === 'hoi' && lenhTuXa.gia === false) boTay();
+        break;
       case 'chuyen': chuyen(); break;
       case 'chua': chua(); break;
       case 'cau-tiep': cauTiep(); break;
@@ -243,6 +248,7 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
       else if (e.key === 'Enter') { if (giaiDoan === 'ket-qua' || giaiDoan === 'chua') cauTiep(); }
       else if (e.key === 'c' || e.key === 'C') { if (giaiDoan === 'ket-qua' && ketQua === 'sai') chuyen(); }
       else if (e.key === 'l' || e.key === 'L') { if (giaiDoan === 'ket-qua') chua(); }
+      else if (e.key === 'b' || e.key === 'B') { if (giaiDoan === 'hoi' && loai !== 'essay') boTay(); }
     };
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
@@ -416,7 +422,7 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
       {dauTrang}
       <div className="mb-5">{theTen}</div>
       {cau && (
-        <PresentationQuiz key={`${iCau}-${lanChuyen}`} quizData={cau.quiz} lenhNgoai={lenhQuiz} onDoi={khiQuizDoi}
+        <PresentationQuiz key={iCau} chamKin quizData={cau.quiz} lenhNgoai={lenhQuiz} onDoi={khiQuizDoi}
                           soCau={iCau + 1} tongCau={cauList.length} />
       )}
       {loi && <div className="text-rose-600 text-[24px] font-bold mt-4">{loi}</div>}
@@ -445,11 +451,18 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
           <Nut onClick={ketThuc} mau="bg-slate-400 hover:bg-slate-500"><Flag className="w-[34px] h-[34px]" /> Kết thúc</Nut>
         </div>
       )}
-      {giaiDoan === 'hoi' && (
-        <p className="mt-6 text-center text-[24px] text-slate-400">
-          Bấm phương án em chọn (hoặc trên điện thoại) rồi <b>Hiển thị đáp án</b> — máy tự chấm.
-          {loai === 'essay' && ' Tự luận: nghe em trình bày rồi bấm Đúng/Sai.'}
-        </p>
+      {giaiDoan === 'hoi' && loai !== 'essay' && (
+        <div className="mt-6 flex flex-col items-center gap-4">
+          <p className="text-center text-[24px] text-slate-400">
+            Bấm phương án em chọn (hoặc trên điện thoại) rồi <b>✓ Chấm</b> — đúng mới lật đáp án, sai thì khoá phương án đó và chuyền được.
+          </p>
+          <Nut onClick={boTay} mau="bg-rose-500 hover:bg-rose-600" title="Phím B — em không trả lời được: tính sai, đáp án vẫn giấu">
+            <X className="w-[34px] h-[34px]" /> Bó tay −{diemCau}
+          </Nut>
+        </div>
+      )}
+      {giaiDoan === 'hoi' && loai === 'essay' && (
+        <p className="mt-6 text-center text-[24px] text-slate-400">Tự luận: nghe em trình bày rồi bấm Đúng/Sai.</p>
       )}
     </div>
   );

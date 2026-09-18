@@ -10,7 +10,7 @@ import remarkBreaks from 'remark-breaks';
 import { Dices } from 'lucide-react';
 import { chuyenDiaChiAnh } from '@/components/CustomMarkdownComponents';
 import { ensureMathDelimiters } from '@/utils/latexFixer';
-import { xuongDongNgoaiCongThuc } from '@/utils/troChoi';
+import { xuongDongNgoaiCongThuc, khopTraLoiNgan } from '@/utils/troChoi';
 
 /**
  * Một câu hỏi tương tác trên màn chiếu: đề → đáp án → lời giải, bấm được từ chuột lẫn
@@ -19,7 +19,22 @@ import { xuongDongNgoaiCongThuc } from '@/utils/troChoi';
  */
 export const KATEX_CLASS = '[&_.katex]:text-[#1e40af] [&_.katex-display]:my-4 [&_.katex-display]:text-[1.04em]';
 
-export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau }: {
+/** Trạng thái câu báo ngược ra ngoài (máy chiếu phát xuống điện thoại, trò chơi chấm điểm). */
+export interface TrangThaiQuiz {
+    hienDapAn: boolean;
+    dangChon: number | null;
+    buoc: number;
+    loiGiai: string;
+    chonCum: Record<number, boolean>;
+    chuNhap: string;
+    /** Chế độ chấm kín: số lần đã chấm và kết quả lần chấm gần nhất. */
+    lanCham: number;
+    ketQuaCham: 'dung' | 'sai' | null;
+    /** Phương án đã bị chọn sai (chấm kín) — khoá lại, em sau không chọn được nữa. */
+    daSai: number[];
+}
+
+export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen, soCau, tongCau, chamKin }: {
     quizData: any;
     /** Số thứ tự câu trong đề, để trên bảng ghi đúng "Câu 7" như tờ đề học sinh cầm. */
     soCau?: number;
@@ -27,9 +42,17 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
     /** Lệnh bấm từ điện thoại; `dem` tăng mỗi lần bấm nên bấm mấy lần chạy mấy lần. */
     lenhNgoai?: { viec: string; chon?: number; chu?: string; y?: number; dung?: boolean; dem: number } | null;
     /** Báo ngược ra để máy chiếu phát xuống điện thoại */
-    onDoi?: (tt: { hienDapAn: boolean; dangChon: number | null; buoc: number; loiGiai: string; chonCum: Record<number, boolean>; chuNhap: string }) => void;
+    onDoi?: (tt: TrangThaiQuiz) => void;
     /** Mở bảng Gọi tên & Điểm ngay tại câu đang chữa */
     onGoiTen?: () => void;
+    /**
+     * CHẤM KÍN (trò chơi Truy đuổi, Đấu đội): nút chính ở bước đề là "Chấm" thay vì "Hiển
+     * thị đáp án". Đúng thì mới lật đáp án; SAI thì chỉ tô đỏ phương án vừa chọn, khoá nó
+     * lại, đáp án vẫn giấu — để chuyền cho em khác / đội khác còn trả lời được. Bản đầu
+     * (16/9/2026) chấm bằng cách lật đáp án nên em sai là cả lớp thấy luôn đáp án, em nhận
+     * chuyền chỉ việc đọc — thầy bắt được ngay buổi chơi thật đầu tiên.
+     */
+    chamKin?: boolean;
 }) {
     /**
      * BA BƯỚC cho một câu, đi bằng đúng một nút: đề → đáp án → lời giải → về lại đề.
@@ -49,6 +72,46 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
     const [anhRong, setAnhRong] = useState(false);
     useEffect(() => { setAnhRong(false); }, [quizData]);
 
+    /* Chấm kín: phương án đã sai (khoá), câu trả lời ngắn đã sai, số lần chấm, kết quả. */
+    const [daSai, setDaSai] = useState<number[]>([]);
+    const [saiNgan, setSaiNgan] = useState<string[]>([]);
+    const [lanCham, setLanCham] = useState(0);
+    const [ketQuaCham, setKetQuaCham] = useState<'dung' | 'sai' | null>(null);
+    const [nhacChon, setNhacChon] = useState(false);
+
+    const type = quizData?.type || "multiple_choice";
+
+    /**
+     * Chấm mà không lật đáp án. Đúng → lật (bước 1). Sai → khoá phương án vừa chọn, xoá
+     * lựa chọn, đáp án vẫn giấu. Chưa chọn gì thì nhắc, không chấm — bấm nhầm là trừ điểm
+     * thật trong sổ.
+     */
+    const cham = () => {
+        if (!quizData || showAnswer) return;
+        let dung = false;
+        if (type === 'multiple_choice' || type === 'true_false') {
+            if (selectedIdx === null) { setNhacChon(true); return; }
+            dung = selectedIdx === quizData.answerIndex;
+            if (!dung) { setDaSai(d => d.includes(selectedIdx) ? d : [...d, selectedIdx]); setSelectedIdx(null); }
+        } else if (type === 'true_false_cluster') {
+            const ds = quizData.options || [];
+            if (!ds.length || ds.some((_: any, i: number) => chonCum[i] === undefined)) { setNhacChon(true); return; }
+            dung = ds.every((o: any, i: number) => !!o?.isTrue === !!chonCum[i]);
+            if (!dung) setChonCum({});
+        } else if (type === 'short_answer') {
+            if (!chuNhap.trim()) { setNhacChon(true); return; }
+            dung = khopTraLoiNgan(chuNhap, String(quizData.exactAnswer || quizData.correctAnswer || quizData.answerText || ''));
+            if (!dung) { setSaiNgan(s => [...s, chuNhap.trim()]); setChuNhap(''); }
+        } else {
+            return; /* tự luận: trò chơi chấm bằng nút Đúng/Sai riêng */
+        }
+        setNhacChon(false);
+        setKetQuaCham(dung ? 'dung' : 'sai');
+        setLanCham(n => n + 1);
+        if (dung) setBuoc(1);
+    };
+    useEffect(() => { if (nhacChon) { const t = setTimeout(() => setNhacChon(false), 1800); return () => clearTimeout(t); } }, [nhacChon]);
+
     /* Nhận lệnh từ điện thoại. Phải nằm TRƯỚC dòng thoát sớm bên dưới, nếu không React
        đếm số hook lệch giữa hai lần vẽ và vỡ trang. */
     const demDaLam = useRef(lenhNgoai?.dem ?? 0);
@@ -56,9 +119,12 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
         if (!lenhNgoai || lenhNgoai.dem === demDaLam.current) return;
         demDaLam.current = lenhNgoai.dem;
         if (lenhNgoai.viec === 'chon-dap-an' && typeof lenhNgoai.chon === 'number') {
-            if (!showAnswer) setSelectedIdx(lenhNgoai.chon);
+            if (!showAnswer && !daSai.includes(lenhNgoai.chon)) setSelectedIdx(lenhNgoai.chon);
         } else if (lenhNgoai.viec === 'hien-dap-an') {
-            doiBuoc();
+            /* Chấm kín: nút "Hiển thị đáp án" trên điện thoại ở bước đề nghĩa là Chấm */
+            if (chamKin && buoc === 0 && type !== 'essay') cham(); else doiBuoc();
+        } else if (lenhNgoai.viec === 'cham') {
+            cham();
         } else if (lenhNgoai.viec === 'xem-loi-giai') {
             setBuoc(2);
         } else if (lenhNgoai.viec === 'nhap-dap-an') {
@@ -68,6 +134,7 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
             if (!showAnswer) setChonCum(c => ({ ...c, [lenhNgoai.y as number]: !!lenhNgoai.dung }));
         } else if (lenhNgoai.viec === 'lam-lai') {
             setBuoc(0); setSelectedIdx(null); setChonCum({}); setChuNhap('');
+            setDaSai([]); setSaiNgan([]); setKetQuaCham(null); setNhacChon(false);
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lenhNgoai]);
@@ -91,13 +158,24 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
     });
 
     useEffect(() => {
-        onDoi?.({ hienDapAn: showAnswer, dangChon: selectedIdx, buoc, loiGiai, chonCum, chuNhap });
+        onDoi?.({ hienDapAn: showAnswer, dangChon: selectedIdx, buoc, loiGiai, chonCum, chuNhap, lanCham, ketQuaCham, daSai });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [showAnswer, selectedIdx, buoc, loiGiai, chonCum, chuNhap]);
+    }, [showAnswer, selectedIdx, buoc, loiGiai, chonCum, chuNhap, lanCham, ketQuaCham, daSai]);
 
     if (!quizData) return null;
 
-    const type = quizData.type || "multiple_choice";
+    /* Chấm kín mà vừa sai: dải đỏ nhắc, đáp án vẫn giấu. */
+    const daiSai = chamKin && !showAnswer && ketQuaCham === 'sai' && (
+        <div className="mb-5 rounded-2xl border-[3px] border-rose-300 bg-rose-50 px-7 py-3 text-[28px] font-bold text-rose-700 flex items-center gap-4">
+            <span className="text-[34px]">✗</span>
+            <span>Sai rồi — đáp án chưa lộ, {type === 'multiple_choice' || type === 'true_false' ? 'phương án đó đã khoá, ' : ''}bạn tiếp theo trả lời tiếp.</span>
+        </div>
+    );
+    const nhacChuaChon = nhacChon && (
+        <div className="mb-5 rounded-2xl border-[3px] border-amber-300 bg-amber-50 px-7 py-3 text-[28px] font-bold text-amber-800">
+            Chưa có câu trả lời — chọn đáp án (hoặc bấm "Bó tay") rồi mới chấm.
+        </div>
+    );
 
     /*
      * VỊ TRÍ ẢNH - đọc đúng cái thầy cô chọn trong trang soạn bài (Dưới đề / Bên phải /
@@ -165,6 +243,9 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
                 )}
             </div>
 
+            {daiSai}
+            {nhacChuaChon}
+
             {/* Ảnh sang một bên thì CẢ đề lẫn phương án cùng dồn sang bên kia - đúng cách
                 trang làm bài của học sinh đang làm, để mắt chỉ nhìn một lượt. */}
             <div className={canhNhau
@@ -194,16 +275,18 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
                         const isSelected = optIdx === selectedIdx;
                         const text = (quizData.options && quizData.options[optIdx]) ? quizData.options[optIdx] : (optIdx === 0 ? 'ĐÚNG' : 'SAI');
 
+                        const biKhoa = daSai.includes(optIdx);
                         let cls = 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50/40';
                         if (showAnswer && isCorrect) cls = 'border-emerald-500 bg-emerald-50';
-                        else if (showAnswer && isSelected) cls = 'border-red-400 bg-red-50';
+                        else if (showAnswer && (isSelected || biKhoa)) cls = 'border-red-400 bg-red-50';
                         else if (showAnswer) cls = 'border-slate-200 bg-white opacity-45';
+                        else if (biKhoa) cls = 'border-red-400 bg-red-50 opacity-60 line-through cursor-not-allowed';
                         else if (isSelected) cls = 'border-indigo-500 bg-indigo-50';
 
                         return (
                             <button
                                 key={optIdx}
-                                disabled={showAnswer}
+                                disabled={showAnswer || biKhoa}
                                 onClick={() => setSelectedIdx(optIdx)}
                                 className={`flex-1 rounded-2xl border-[3px] px-8 py-6 transition-all duration-200 ${cls}`}
                             >
@@ -227,10 +310,14 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
                         let cardCls = 'border-slate-200 bg-white hover:border-indigo-300 hover:bg-indigo-50/40';
                         let badgeCls = 'bg-slate-100 text-slate-500';
 
+                        const biKhoa = daSai.includes(idx);
                         if (showAnswer) {
                             if (isCorrect) { cardCls = 'border-emerald-500 bg-emerald-50'; badgeCls = 'bg-emerald-500 text-white'; }
-                            else if (isSelected) { cardCls = 'border-red-400 bg-red-50'; badgeCls = 'bg-red-500 text-white'; }
+                            else if (isSelected || biKhoa) { cardCls = 'border-red-400 bg-red-50'; badgeCls = 'bg-red-500 text-white'; }
                             else { cardCls = 'border-slate-200 bg-white opacity-45'; }
+                        } else if (biKhoa) {
+                            /* Chấm kín: phương án đã chọn sai — tô đỏ, khoá, nhưng đáp án đúng vẫn giấu */
+                            cardCls = 'border-red-400 bg-red-50 opacity-70 cursor-not-allowed'; badgeCls = 'bg-red-500 text-white';
                         } else if (isSelected) {
                             cardCls = 'border-indigo-500 bg-indigo-50'; badgeCls = 'bg-indigo-500 text-white';
                         }
@@ -238,11 +325,12 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
                         return (
                             <button
                                 key={idx}
-                                onClick={() => !showAnswer && setSelectedIdx(idx)}
+                                disabled={biKhoa}
+                                onClick={() => !showAnswer && !biKhoa && setSelectedIdx(idx)}
                                 className={`w-full text-left rounded-2xl border-[3px] px-6 py-5 flex items-start gap-5 transition-all duration-200 ${cardCls}`}
                             >
                                 <div className={`w-[62px] h-[62px] rounded-full flex items-center justify-center text-[34px] font-black shrink-0 transition-colors ${badgeCls}`}>
-                                    {String.fromCharCode(65 + idx)}
+                                    {biKhoa && !showAnswer ? '✗' : String.fromCharCode(65 + idx)}
                                 </div>
                                 <div className={`flex-1 min-w-0 text-[38px] leading-[1.45] text-slate-800 ${KATEX_CLASS}`}>
                                     <ReactMarkdown urlTransform={chuyenDiaChiAnh} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex, rehypeRaw]}>
@@ -319,6 +407,11 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
                 <div className="w-full">
                     {!showAnswer ? (
                         <div className="flex flex-col gap-3">
+                            {saiNgan.length > 0 && (
+                                <div className="text-[28px] font-bold text-rose-700">
+                                    Đã trả lời sai: {saiNgan.map((x, i) => <span key={i} className="inline-block mx-1 px-3 py-0.5 rounded-lg bg-rose-50 border border-rose-300 line-through">{x}</span>)}
+                                </div>
+                            )}
                             <label className="text-[34px] font-semibold text-slate-600">Học sinh trả lời:</label>
                             <input
                                 type="text"
@@ -409,13 +502,19 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
             )}
 
             <div className="mt-8 flex justify-center items-center gap-4">
+                {/* Chấm kín + tự luận + bước đề: không có nút — trò chơi chấm Đúng/Sai bằng nút riêng,
+                    lật bài giải mẫu sau khi chấm. */}
+                {!(chamKin && type === 'essay' && buoc === 0) && (
                 <button
-                    onClick={doiBuoc}
-                    className="bg-indigo-600 hover:bg-indigo-700 text-white px-10 py-4 rounded-full text-[32px] font-bold
-                               shadow-lg transition-all duration-200 hover:-translate-y-0.5"
+                    onClick={chamKin && buoc === 0 ? cham : doiBuoc}
+                    className={`${chamKin && buoc === 0 ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-indigo-600 hover:bg-indigo-700'}
+                               text-white px-10 py-4 rounded-full text-[32px] font-bold
+                               shadow-lg transition-all duration-200 hover:-translate-y-0.5`}
+                    title={chamKin && buoc === 0 ? 'Chấm — đúng mới lật đáp án, sai thì khoá phương án đó' : undefined}
                 >
-                    {buoc === 0 ? 'Hiển thị đáp án' : buoc === 1 && coLoiGiai ? 'Xem lời giải' : 'Làm lại'}
+                    {buoc === 0 ? (chamKin ? '✓ Chấm' : 'Hiển thị đáp án') : buoc === 1 && coLoiGiai ? 'Xem lời giải' : 'Làm lại'}
                 </button>
+                )}
 
                 {/* Gọi tên ngay tại câu - trước phải với xuống thanh dưới cùng màn hình */}
                 {onGoiTen && (

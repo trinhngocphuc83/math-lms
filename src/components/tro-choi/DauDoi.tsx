@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useRef, useState } from 'react';
 import { Play, ChevronRight, Flag, X, Loader2, Users, Redo2, BookOpenCheck, Shuffle, Mic } from 'lucide-react';
-import PresentationQuiz from '@/components/presentation/PresentationQuiz';
+import PresentationQuiz, { type TrangThaiQuiz } from '@/components/presentation/PresentationQuiz';
 import { layCauTroChoi, ghiDiemTroChoi, type CauTroChoi, type NguonCau } from '@/app/actions/troChoi';
 import { layDsLop, layLopTheoBai, layDsHocSinh } from '@/app/actions/goiTenVaDiem';
 import type { HocSinh } from '@/utils/goiTenVaDiem';
-import { diemTheoMuc, TEN_MUC, TEN_LOAI, xao, khopTraLoiNgan } from '@/utils/troChoi';
+import { diemTheoMuc, TEN_MUC, TEN_LOAI, xao } from '@/utils/troChoi';
 import type { TrangThaiTroChoi } from '@/utils/dieuKhienXa';
 
 /**
@@ -79,8 +79,8 @@ export default function DauDoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai, o
   const [lenhQuiz, setLenhQuiz] = useState<{ viec: string; chon?: number; chu?: string; y?: number; dung?: boolean; dem: number } | null>(null);
   const demLenh = useRef(0);
   const guiQuiz = (viec: string, them: any = {}) => setLenhQuiz({ viec, ...them, dem: ++demLenh.current });
-  const ttQuiz = useRef<{ hienDapAn: boolean; dangChon: number | null; buoc: number; loiGiai: string; chonCum: Record<number, boolean>; chuNhap: string }>({
-    hienDapAn: false, dangChon: null, buoc: 0, loiGiai: '', chonCum: {}, chuNhap: '',
+  const ttQuiz = useRef<TrangThaiQuiz>({
+    hienDapAn: false, dangChon: null, buoc: 0, loiGiai: '', chonCum: {}, chuNhap: '', lanCham: 0, ketQuaCham: null, daSai: [],
   });
   const [ttQuizHien, setTtQuizHien] = useState(ttQuiz.current);
   const [daGhiThuong, setDaGhiThuong] = useState(false);
@@ -128,9 +128,13 @@ export default function DauDoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai, o
       : i === den ? { ...d, thanhVien: [...d.thanhVien, h] } : d);
   });
   const xaoLai = () => setDoi(ds => chiaDoi(xao(ds.flatMap(d => d.thanhVien)), ds.length));
-  const vaoCau = (khoa: string) => {
-    ttQuiz.current = { ...ttQuiz.current, hienDapAn: false, dangChon: null, buoc: 0, chonCum: {}, chuNhap: '' };
-    guiQuiz('lam-lai');
+  const vaoCau = (khoa: string, giuCau = false) => {
+    /* Đội khác giành (giuCau): KHÔNG dựng lại câu — phương án đội trước chọn sai đã khoá đỏ,
+       đáp án vẫn giấu. Câu mới mới xoá sạch. */
+    if (!giuCau) {
+      ttQuiz.current = { ...ttQuiz.current, hienDapAn: false, dangChon: null, buoc: 0, chonCum: {}, chuNhap: '', lanCham: 0, ketQuaCham: null, daSai: [] };
+      guiQuiz('lam-lai');
+    }
     setKetQua(''); setDoiDangTraLoi(null); setNguoiTrinhBay(null);
     setGiaiDoan('hoi');
     onBatDauCau?.(khoa);
@@ -164,33 +168,28 @@ export default function DauDoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai, o
     if (em) daTrinhBay.current.add(em.id);
     setNguoiTrinhBay(em);
   };
-  const tuCham = (t: typeof ttQuiz.current) => {
-    if (!cau) return;
-    const q = cau.quiz;
-    let dung = false;
-    if (loai === 'multiple_choice' || loai === 'true_false') dung = t.dangChon !== null && t.dangChon === q.answerIndex;
-    else if (loai === 'true_false_cluster') {
-      const ds = q.options || [];
-      dung = ds.length > 0 && ds.every((o: any, i: number) => t.chonCum[i] !== undefined && !!o?.isTrue === !!t.chonCum[i]);
-    } else if (loai === 'short_answer') dung = khopTraLoiNgan(t.chuNhap, String(q.exactAnswer || q.correctAnswer || q.answerText || ''));
-    ghiKetQua(dung);
-  };
-  const khiQuizDoi = (t: typeof ttQuiz.current) => {
+  /**
+   * Đang chấm một đội (giaiDoan 'cham'): câu ở chế độ CHẤM KÍN — thầy bấm "Chấm", đúng mới
+   * lật đáp án, sai thì khoá phương án ấy, đáp án vẫn giấu để đội khác giành (bản đầu chấm
+   * bằng cách lật đáp án nên đội sai xong đội sau chỉ việc đọc — thầy bắt được 16/9/2026).
+   * Chưa đội nào giơ ('hoi') thì nút vẫn là "Hiển thị đáp án": lật là coi như không đội nào
+   * trả lời, chỉ chữa.
+   */
+  const khiQuizDoi = (t: TrangThaiQuiz) => {
     const truoc = ttQuiz.current;
     ttQuiz.current = t; setTtQuizHien(t);
-    if (!truoc.hienDapAn && t.hienDapAn) {
-      /* Lật đáp án khi chưa đội nào giơ: coi như không đội nào trả lời — chỉ chữa, không chấm */
-      if (giaiDoan === 'cham') tuCham(t);
-      else if (giaiDoan === 'hoi') { setKetQua(''); setGiaiDoan('ket-qua'); }
-    }
+    if (giaiDoan === 'cham' && t.lanCham > truoc.lanCham && t.ketQuaCham) ghiKetQua(t.ketQuaCham === 'dung');
+    else if (giaiDoan === 'hoi' && !truoc.hienDapAn && t.hienDapAn) { setKetQua(''); setGiaiDoan('ket-qua'); }
   };
+  /** Đội giơ bảng nhưng không trả lời được: tính sai, đáp án vẫn giấu để đội khác giành. */
+  const boTay = () => { if (giaiDoan === 'cham') ghiKetQua(false); };
 
   /* ---- sau khi chấm ---- */
   const conDoiGianh = doiDaThu.length < doi.length;
   const gianh = () => {
     /* Đội khác giành: dựng lại câu (xoá lựa chọn cũ), giữ danh sách đội đã sai */
     setLanThu(l => l + 1);
-    vaoCau(`${iCau}-${lanThu + 1}`);
+    vaoCau(`${iCau}-${lanThu + 1}`, true);
   };
   const chua = () => { guiQuiz('xem-loi-giai'); setGiaiDoan('chua'); };
   const cauTiep = () => {
@@ -226,7 +225,10 @@ export default function DauDoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai, o
       case 'bat-dau': if (giaiDoan === 'cai-dat') batDau(); else if (giaiDoan === 'chia-doi') batDauChoi(); break;
       case 'xao-doi': if (giaiDoan === 'chia-doi') xaoLai(); break;
       case 'doi-gio': if (typeof lenhTuXa.gia === 'number') doiGio(lenhTuXa.gia); break;
-      case 'cham': if (giaiDoan === 'cham-tl') ghiKetQua(!!lenhTuXa.gia); break;
+      case 'cham':
+        if (giaiDoan === 'cham-tl') ghiKetQua(!!lenhTuXa.gia);
+        else if (giaiDoan === 'cham' && lenhTuXa.gia === false) boTay();
+        break;
       case 'nguoi-khac': if (doiDangTraLoi !== null) chonNguoiTrinhBay(doiDangTraLoi, nguoiTrinhBay?.id); break;
       case 'gianh': if (giaiDoan === 'ket-qua' && ketQua === 'sai' && conDoiGianh) gianh(); break;
       case 'chua': if (giaiDoan === 'ket-qua') chua(); break;
@@ -264,6 +266,7 @@ export default function DauDoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai, o
       else if (e.key === 'Enter') { if (giaiDoan === 'ket-qua' || giaiDoan === 'chua') cauTiep(); else if (giaiDoan === 'chia-doi') batDauChoi(); }
       else if (e.key === 'g' || e.key === 'G') { if (giaiDoan === 'ket-qua' && ketQua === 'sai' && conDoiGianh) gianh(); }
       else if (e.key === 'l' || e.key === 'L') { if (giaiDoan === 'ket-qua') chua(); }
+      else if (e.key === 'b' || e.key === 'B') { if (giaiDoan === 'cham') boTay(); }
     };
     window.addEventListener('keydown', h);
     return () => window.removeEventListener('keydown', h);
@@ -465,7 +468,7 @@ export default function DauDoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai, o
         </div>
       )}
       {cau && (
-        <PresentationQuiz key={`${iCau}-${lanThu}`} quizData={cau.quiz} lenhNgoai={lenhQuiz} onDoi={khiQuizDoi}
+        <PresentationQuiz key={iCau} chamKin={giaiDoan === 'cham'} quizData={cau.quiz} lenhNgoai={lenhQuiz} onDoi={khiQuizDoi}
                           soCau={iCau + 1} tongCau={cauList.length} />
       )}
       {loi && <div className="text-rose-600 text-[24px] font-bold mt-4">{loi}</div>}
@@ -478,7 +481,12 @@ export default function DauDoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai, o
         </div>
       )}
       {giaiDoan === 'cham' && (
-        <p className="mt-6 text-center text-[24px] text-slate-400">Bấm đáp án đội {doiTL?.ten} viết trên bảng rồi <b>Hiển thị đáp án</b> — máy tự chấm.</p>
+        <div className="mt-6 flex flex-col items-center gap-4">
+          <p className="text-center text-[24px] text-slate-400">Bấm đáp án đội {doiTL?.ten} viết trên bảng rồi <b>✓ Chấm</b> — đúng mới lật đáp án, sai thì khoá phương án đó, đội khác giành được.</p>
+          <Nut onClick={boTay} mau="bg-rose-500 hover:bg-rose-600" title="Phím B — đội không trả lời được: tính sai, đáp án vẫn giấu">
+            <X className="w-[34px] h-[34px]" /> Bó tay −{diemCau * heSo}
+          </Nut>
+        </div>
       )}
 
       {(giaiDoan === 'ket-qua' || giaiDoan === 'chua') && (

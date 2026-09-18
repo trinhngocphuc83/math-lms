@@ -605,15 +605,23 @@ không tự chạy, bấm một lần là nhớ.
 ngay vào sổ điểm thưởng, lí do ghi rõ *"Truy đuổi · câu 3 · nhận chuyền · đúng"* —
 muốn sửa em nào thì mở bảng Gọi tên như thường.
 
-**Cách chấm** — giống nhau ở cả ba trò, máy tự chấm ba loại, tự luận thầy cô chấm:
+**Cách chấm** — Truy đuổi và Đấu đội chấm **kín**: nút xanh **✓ Chấm** thay cho *Hiển thị
+đáp án*. **Đúng thì máy mới lật đáp án**; **sai thì đáp án vẫn giấu**, chỉ phương án vừa
+chọn bị tô đỏ và khoá — em nhận chuyền (hay đội giành) chọn trong phần còn lại, không
+được "đọc đáp án" của bạn trước (lỗi bản đầu, thầy bắt được ngay buổi chơi thật 16/9).
+Đáp án chỉ lộ khi có người đúng hoặc thầy cô bấm **Chữa**.
 
-- **Trắc nghiệm**: bấm phương án em (hoặc đội) chọn → **Hiển thị đáp án** → máy chấm.
-- **Đúng/Sai 4 ý**: bấm Đ hoặc S ở từng ý theo em trả lời → **Hiển thị đáp án**; đúng
-  cả bốn ý mới tính đúng.
-- **Trả lời ngắn**: gõ số em nói vào ô → **Hiển thị đáp án**; "3,5" và "3.5" như nhau.
+- **Trắc nghiệm**: bấm phương án em (hoặc đội) chọn → **✓ Chấm**. Sai: phương án ấy gạch
+  đỏ, khoá; đúng: lật xanh.
+- **Đúng/Sai 4 ý**: bấm Đ hoặc S ở từng ý theo em trả lời → **✓ Chấm**; đúng cả bốn ý
+  mới tính đúng. Sai thì bốn ô Đ/S xoá trắng cho em sau.
+- **Trả lời ngắn**: gõ số em nói vào ô → **✓ Chấm**; "3,5" và "3.5" như nhau. Sai thì số
+  ấy hiện gạch ngang phía trên ô, em sau gõ số khác.
 - **Tự luận**: em trình bày, thầy cô bấm **Đúng +d** / **Sai −d**; chấm xong máy mới
   lật bài giải mẫu.
-- Không bấm gì mà lật đáp án thì tính là **sai** (hết giờ chưa trả lời).
+- **Bó tay −d** (phím **B**): em/đội không trả lời được, hết giờ — tính sai, đáp án vẫn
+  giấu để chuyền. Chưa chọn gì mà bấm *Chấm* thì máy chỉ nhắc, không trừ.
+- Chớp nhoáng khác: cả lớp trả lời rồi **máy tự lật** khi hết giờ, chấm sau (mục 16.4).
 
 ### 16.3 🎯 Truy đuổi — gọi một em, sai thì chuyền
 
@@ -622,10 +630,11 @@ Dùng khi ôn đầu giờ, muốn cả lớp căng vì ai cũng có thể bị 
 1. **Quay** (phím **Q**): vòng quay dừng ở một em, tên hiện thẻ cam. Em đã được gọi tạm
    ra khỏi vòng cho tới khi cả lớp được gọi hết (chung vòng quay với bảng Gọi tên). Muốn
    chỉ định thì bấm **Chỉ định** rồi chọn tên.
-2. Câu hiện, đồng hồ chạy. Chấm như mục 16.2. Đúng: thẻ tên xanh, "+2".
-3. Sai: thẻ đỏ "−2", hiện nút **Chuyền 1/2** (phím **C**) → quay em khác, **cùng câu**,
-   cùng thang điểm. Chuyền tối đa **2 lần**; người thứ ba vẫn sai thì nút **Chữa**
-   (phím **L**) sáng lên — mở lời giải từng bước, không ai bị trừ thêm.
+2. Câu hiện, đồng hồ chạy. Chấm như mục 16.2. Đúng: thẻ tên xanh, "+2", đáp án lật.
+3. Sai: thẻ đỏ "−2", **đáp án chưa lộ** (phương án sai bị khoá đỏ), hiện nút **Chuyền
+   1/2** (phím **C**) → quay em khác, **cùng câu**, cùng thang điểm, chọn trong phần còn
+   lại. Chuyền tối đa **2 lần**; người thứ ba vẫn sai thì nút **Chữa** (phím **L**) sáng
+   lên — lúc này mới lật đáp án và lời giải từng bước, không ai bị trừ thêm.
 4. **Câu tiếp** (Enter). **Kết thúc** bất cứ lúc nào → bảng tổng kết ai cộng/trừ bao
    nhiêu, mấy lượt; **Chơi ván mới** hoặc **Về bài giảng**.
 
@@ -658,8 +667,9 @@ Dùng cho tiết luyện tập 15 phút, lớp có bảng con.
    - Đúng: đội cộng điểm, máy hiện **"Đội Vàng — Hồ Thị Ngọc Diệp trình bày"** (chọn
      ngẫu nhiên em **chưa trình bày**; nút **Người khác** nếu em đó vắng). Em ấy đứng lên
      nói cách làm — đây là phần "tiếp sức".
-   - Sai: đội bị trừ, thẻ đội mờ đi, nút **Đội khác giành** (phím **G**) → câu dựng lại
-     cho đội kế. Hết đội thì **Chữa**.
+   - Sai: đội bị trừ, thẻ đội mờ đi, **đáp án chưa lộ** (phương án sai khoá đỏ), nút
+     **Đội khác giành** (phím **G**) → đội kế chọn trong phần còn lại. Hết đội thì **Chữa**
+     mới lật đáp án.
    - Không đội nào giơ: bấm *Hiển thị đáp án* để chữa, không ai bị trừ.
 4. **Kết thúc** → bảng xếp hạng đội kèm tên thành viên; điểm thưởng theo hạng **tự ghi
    cho từng em** (lí do *"Đấu đội · Đội Vàng · hạng 1"*).
@@ -681,6 +691,7 @@ tạm. Đáp án đúng vẫn hiện sẵn trên máy thầy cô (viền xanh).
 | **1 / 2 / 3** | chọn trò ở màn chọn; trong Đấu đội là **đội 1–4 giơ bảng** |
 | **Q** | Quay / Gọi tên |
 | **C** | Chuyền (Truy đuổi) |
+| **B** | Bó tay — em/đội không trả lời được, tính sai, đáp án vẫn giấu |
 | **G** | Đội khác giành (Đấu đội) |
 | **L** | Chữa / Lời giải |
 | **Enter** | Câu tiếp · Bắt đầu câu 1 |

@@ -13,7 +13,7 @@ import {
   ChevronLeft, ChevronRight, Dices, Trophy, Maximize2, Wifi, WifiOff,
   Plus, Minus, UserX, Undo2, X, Timer, Eye, EyeOff, Send, Check, LogOut, Mic, Loader2,
   ChevronUp, ChevronDown,
-  BookOpen,
+  BookOpen, CheckCircle2,
 } from "lucide-react";
 import { studentMarkdownComponents } from "@/components/CustomMarkdownComponents";
 import { moKenhDienThoai, type TrangThaiChieu, type TrangThaiTroChoi } from "@/utils/dieuKhienXa";
@@ -211,6 +211,8 @@ export default function TrangDieuKhien() {
             traLoiNgan={traLoiNgan}
             gui={gui}
             chonDS={!!tt?.troChoi}
+            chamKin={!!tt?.troChoi && ((tt.troChoi.tro === 'truy-duoi' && tt.troChoi.giaiDoan === 'hoi')
+              || (tt.troChoi.tro === 'dau-doi' && tt.troChoi.giaiDoan === 'cham'))}
           />
         ) : tt?.troChoi ? (
           <BangTroChoi tc={tt.troChoi} gui={gui} />
@@ -369,7 +371,7 @@ export default function TrangDieuKhien() {
  * giữa lớp cho các em chọn. Đáp án đúng hiện sẵn ngay trên máy Thầy cô (viền xanh mảnh)
  * để khỏi phải ngoái nhìn bảng mới biết đúng sai.
  */
-function BangCauHoi({ cauHoi, chu, datChu, traLoiNgan, gui, chonDS }: {
+function BangCauHoi({ cauHoi, chu, datChu, traLoiNgan, gui, chonDS, chamKin }: {
   cauHoi: NonNullable<TrangThaiChieu['cauHoi']>;
   chu: string;
   datChu: (s: string) => void;
@@ -377,6 +379,8 @@ function BangCauHoi({ cauHoi, chu, datChu, traLoiNgan, gui, chonDS }: {
   gui: (l: any) => void;
   /** Trò chơi: cụm Đúng/Sai bấm được Đ/S từng ý để máy chấm */
   chonDS?: boolean;
+  /** Trò chơi đang chấm kín: nút ở bước đề là "Chấm" (đúng mới lật, sai chỉ khoá phương án) */
+  chamKin?: boolean;
 }) {
   /* Đ/S đã bấm cho từng ý — chỉ để tô nút trên máy này; máy chiếu mới giữ trạng thái thật */
   const [daBamDS, setDaBamDS] = React.useState<Record<number, boolean>>({});
@@ -480,7 +484,7 @@ function BangCauHoi({ cauHoi, chu, datChu, traLoiNgan, gui, chonDS }: {
                     : 'bg-white/10 active:bg-white/20 text-slate-200'
               }`}>
         {cauHoi.buoc === 0
-          ? <><Eye className="w-5 h-5" /> Hiển thị đáp án</>
+          ? (chamKin ? <><CheckCircle2 className="w-5 h-5" /> Chấm</> : <><Eye className="w-5 h-5" /> Hiển thị đáp án</>)
           : cauHoi.buoc === 1 && cauHoi.loiGiai
             ? <><BookOpen className="w-5 h-5" /> Xem lời giải</>
             : <><EyeOff className="w-5 h-5" /> Làm lại</>}
@@ -624,8 +628,9 @@ function BangNutTroChoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => vo
       </>);
     case 'hoi':
       return (<>
-        <p className="text-center text-[12.5px] text-slate-400 mb-2">{tc.tenHS} đang trả lời — bấm phương án em chọn ở trên rồi <b>Hiển thị đáp án</b>, máy tự chấm.</p>
-        <div className="grid grid-cols-2 gap-2">
+        <p className="text-center text-[12.5px] text-slate-400 mb-2">{tc.tenHS} đang trả lời — bấm phương án em chọn ở trên rồi <b>Chấm</b>: đúng mới lật đáp án, sai thì khoá phương án đó để chuyền.</p>
+        <To onClick={() => tro('cham', false)} mau="bg-rose-600 active:bg-rose-700">Bó tay −{tc.diemCau}</To>
+        <div className="grid grid-cols-2 gap-2 mt-2">
           <NutPhu onClick={() => tro('ket-thuc')} mau="bg-white/10 active:bg-white/20 text-slate-200">Kết thúc</NutPhu>
           <NutPhu onClick={() => tro('dong')} mau="bg-white/10 active:bg-white/20 text-slate-200">Đóng</NutPhu>
         </div>
@@ -785,8 +790,9 @@ function BangNutDauDoi({ tc, gui }: { tc: TrangThaiTroChoi; gui: (l: any) => voi
       </>);
     case 'cham':
       return (<>
-        <p className="text-center text-[12.5px] text-slate-400 mb-2">{tc.tenHS} — bấm đáp án đội viết ở trên rồi <b>Hiển thị đáp án</b>.</p>
-        <div className="grid grid-cols-2 gap-2">
+        <p className="text-center text-[12.5px] text-slate-400 mb-2">{tc.tenHS} — bấm đáp án đội viết ở trên rồi <b>Chấm</b>: đúng mới lật đáp án, sai thì khoá phương án đó, đội khác giành được.</p>
+        <To onClick={() => tro('cham', false)} mau="bg-rose-600 active:bg-rose-700">Bó tay −{tc.diemCau}</To>
+        <div className="grid grid-cols-2 gap-2 mt-2">
           <NutPhu onClick={() => tro('ket-thuc')} mau="bg-white/10 active:bg-white/20 text-slate-200">Kết thúc</NutPhu>
           <NutPhu onClick={() => tro('dong')} mau="bg-white/10 active:bg-white/20 text-slate-200">Đóng</NutPhu>
         </div>
