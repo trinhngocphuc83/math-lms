@@ -370,6 +370,16 @@ không bao giờ chặn việc lưu câu.
 
 Muốn dọn các dạng cũ còn trống thì vào **Khối lớp & Danh mục** → **AI soạn Yêu cầu cần đạt**.
 
+### Cây danh mục — xem bài có dạng gì, bao nhiêu câu
+
+Trước khi soạn bài, mở **Ngân hàng Câu hỏi → Danh mục**: hộp mở sẵn tab **Cây danh mục**.
+Cột trái là Lớp › Phân môn › Chương, mỗi chương ghi *số dạng / số câu*. Bấm một chương thì
+bên phải bày **từng bài → từng dạng** với số câu, cơ cấu bốn mức (NB · TH · VD · VDC) và
+bốn loại (TN · Đ/S · TLN · TL), kèm yêu cầu cần đạt. Dạng **0 câu** tô hồng, mức trống tô
+hồng — nhìn một lượt biết bài nào đủ câu để soạn, dạng nào còn trống phải nạp thêm.
+Bấm **👁** cạnh chương / bài / dạng là Ngân hàng lọc đúng chỗ ấy để xem câu; **Sửa** nhảy
+sang tab **Bảng** (bảng phẳng cũ, để sửa tên và nhập Excel).
+
 ### Lọc kho chọn được nhiều
 
 Nút **Lọc kho** giờ mỗi mục là một danh sách **tick nhiều** — chọn hai ba chương, dăm bài
