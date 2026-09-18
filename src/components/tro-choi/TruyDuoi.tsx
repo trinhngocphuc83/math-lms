@@ -155,7 +155,9 @@ export default function TruyDuoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai,
     if (!hs || !cau) return;
     const d = dung ? diemCau : -diemCau;
     /* Tự luận chấm xong mới lật bài giải mẫu (em trình bày trước, lời giải sau) */
-    if (loai === 'essay' && !ttQuiz.current.hienDapAn) guiQuiz('hien-dap-an');
+    /* Tự luận: chỉ lật bài giải mẫu khi ĐÚNG. Sai thì giấu — em nhận chuyền / đội giành phải tự
+       làm; lật khi bấm Chữa. (Đo 18/9/2026: bản trước lật cả khi sai, chuyền xong bài giải nằm sẵn.) */
+    if (loai === 'essay' && dung && !ttQuiz.current.hienDapAn) guiQuiz('hien-dap-an');
     setKetQua(dung ? 'dung' : 'sai'); setDiemVua(d); setGiaiDoan('ket-qua');
     setBangDiem(b => {
       const cu = b[hs.id] || { id: hs.id, ten: hs.ten, diem: 0, luot: 0 };

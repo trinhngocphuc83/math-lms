@@ -152,7 +152,9 @@ export default function DauDoi({ lessonId, lenhTuXa, lenhChoQuiz, onTrangThai, o
   const ghiKetQua = (dung: boolean) => {
     if (doiDangTraLoi === null) return;
     const d = (dung ? diemCau : -diemCau) * heSo;
-    if (loai === 'essay' && !ttQuiz.current.hienDapAn) guiQuiz('hien-dap-an');
+    /* Tự luận: chỉ lật bài giải mẫu khi ĐÚNG. Sai thì giấu — em nhận chuyền / đội giành phải tự
+       làm; lật khi bấm Chữa. (Đo 18/9/2026: bản trước lật cả khi sai, chuyền xong bài giải nằm sẵn.) */
+    if (loai === 'essay' && dung && !ttQuiz.current.hienDapAn) guiQuiz('hien-dap-an');
     setDoi(ds => ds.map((x, i) => i === doiDangTraLoi ? { ...x, diem: x.diem + d } : x));
     setKetQua(dung ? 'dung' : 'sai');
     if (dung) chonNguoiTrinhBay(doiDangTraLoi);

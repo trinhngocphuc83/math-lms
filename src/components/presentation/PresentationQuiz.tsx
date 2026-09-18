@@ -509,7 +509,8 @@ export default function PresentationQuiz({ quizData, lenhNgoai, onDoi, onGoiTen,
             <div className="mt-8 flex justify-center items-center gap-4">
                 {/* Chấm kín + tự luận + bước đề: không có nút — trò chơi chấm Đúng/Sai bằng nút riêng,
                     lật bài giải mẫu sau khi chấm. */}
-                {!(chamKin && type === 'essay' && buoc === 0) && !(khoa && buoc === 0) && (
+                {/* Khoá: chỉ còn 'Xem lời giải' (bước 1 có lời giải); không Chấm, không Làm lại — trò chơi tự đi tiếp. */}
+                {!(chamKin && type === 'essay' && buoc === 0) && !(khoa && !(buoc === 1 && coLoiGiai)) && (
                 <button
                     onClick={chamKin && buoc === 0 ? cham : doiBuoc}
                     className={`${chamKin && buoc === 0 ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-indigo-600 hover:bg-indigo-700'}
