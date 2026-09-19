@@ -16,7 +16,7 @@
  *
  * Chạy thử trước; thêm `ghi` mới ghi. Sao lưu vào backups/sua-cau-ra-<ngày>/.
  *
- *   node .claude/skills/soan-chuong-thpt/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json [ghi]
+ *   node .claude/skills/thpt-12/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json [ghi]
  *
  * Cần hai hàm dùng chung ở scratch/ (có ở cả hai repo): tachDungSai.mjs (tách bốn ý Đúng/Sai
  * theo hai lối đánh nhãn của kho) và donDeCauHoi.mjs (bỏ cờ đầu đề, đổi "\n" thành xuống dòng).
@@ -71,12 +71,17 @@ function dungLaiKhoi(khoiCu, q) {
     Object.assign(d, { type: 'true_false_cluster', question: t.de, options: t.y });
   } else if (q.question_type === 'TLN') {
     Object.assign(d, { type: 'short_answer', question: donDe(q.content), exactAnswer: String(q.correct_answer).trim() });
+  } else if (khoiCu.epTuTuLuan) {
+    /* Khối trả lời ngắn ép từ câu TỰ LUẬN (skill giao-an-tu-luan): giữ kiểu trả lời ngắn, đáp số bỏ "≈" và đơn vị */
+    const dap = String(q.correct_answer || '').trim().replace(/^[≈~]\s*/, '').replace(/\s*(cm²|cm2|m²|m2|cm|dm|mm|km|m|độ|°|º)\s*\.?$/i, '').replace(/\.$/, '').trim();
+    if (!dap) throw new Error('khối ép từ tự luận mà kho không có correct_answer ngắn');
+    Object.assign(d, { type: 'short_answer', question: donDe(q.content), exactAnswer: dap });
   } else {
     Object.assign(d, { type: 'essay', question: donDe(q.content) });
   }
   const giai = xuongDong(q.explanation);
   const g = tachLoiGiai(q.explanation);
-  if (q.question_type === 'TL') { if (giai) d.answer = giai; }
+  if (q.question_type === 'TL' && !khoiCu.epTuTuLuan) { if (giai) d.answer = giai; }
   else if (g && (g.phuongPhap || g.buoc.length)) { if (g.phuongPhap) d.phuong_phap_giai = g.phuongPhap; if (g.buoc.length) d.cac_buoc_thuc_hien = g.buoc; }
   else if (giai) d.answer = giai;
   d.sourceQuestionId = q.id; d.maCauHoi = q.question_id;

@@ -23,7 +23,7 @@
  *   ✗ ĐÁP ÁN LỆCH    - answerIndex trong khối khác đáp án của câu gốc trong kho.
  *   ✗ THIẾU answerIndex - chọn đúng vẫn báo sai (đã có ở soi-chuong, đo lại cho đủ bộ).
  *
- *   node .claude/skills/soan-chuong-thpt/scripts/kiem-giao-an.mjs --lop 12 --chuong "PHÂN TÁN"
+ *   node .claude/skills/thpt-12/scripts/kiem-giao-an.mjs --lop 12 --chuong "PHÂN TÁN"
  *   thêm --json scratch/kiem-12c3.json để ghi danh sách lỗi ra tệp cho bộ vá đọc.
  */
 import { createClient } from '@supabase/supabase-js';
@@ -75,6 +75,13 @@ const { data: ch } = await sb.from('chapters').select('id,title')
 if (!ch?.length) { console.error('Không thấy chương'); process.exit(1); }
 const { data: dsBai } = await sb.from('lessons').select('id,title')
   .eq('chapter_id', ch[0].id).order('order_index');
+/* --cuoi "Cuối chương N": bài đề ôn tập ở chuyên đề Ôn tập & Kiểm tra (THPT lẫn THCS) — soi luôn các đề */
+const TEN_CUOI = lay('cuoi', null);
+if (TEN_CUOI) {
+  const { data: chOn } = await sb.from('chapters').select('id').eq('course_id', kh[0].id).eq('loai', 'on-tap');
+  const { data: bc } = chOn?.length ? await sb.from('lessons').select('id,title').eq('chapter_id', chOn[0].id).eq('title', TEN_CUOI).maybeSingle() : { data: null };
+  if (bc) dsBai.push(bc); else console.log(`   ⚠ không thấy "${TEN_CUOI}" trong chuyên đề ôn tập`);
+}
 const { data: modsGoc } = await sb.from('lesson_modules')
   .select('id,title,type,lesson_id,content_markdown,presentation_markdown').in('lesson_id', dsBai.map(b => b.id)).order('order_index');
 /* Bản trình chiếu (presentation_markdown) là bản màn chiếu đọc trước - soi như một module riêng */
@@ -215,7 +222,10 @@ for (const k of khoi) {
       if (idxKho >= 0 && idxKho !== d.answerIndex) ghi(k, 'ĐÁP ÁN LỆCH', `khối ${'ABCD'[d.answerIndex]} · kho ${'ABCD'[idxKho]}`);
     }
   }
-  if (loai === 'short_answer' && q && String(d.exactAnswer ?? '').trim() !== String(q.correct_answer ?? '').trim()) {
+  /* Khối ép từ câu tự luận (skill giao-an-tu-luan, epTuTuLuan): kho ghi "≈ 13,77 cm", khối ghi "13,77" —
+     so sau khi bỏ dấu xấp xỉ và đơn vị, không thì báo lệch giả. */
+  const gonDap = (x) => String(x ?? '').trim().replace(/^[≈~]\s*/, '').replace(/\s*(cm²|cm2|m²|m2|cm|dm|mm|km|m|độ|°|º)\s*\.?$/i, '').replace(/\.$/, '').trim();
+  if (loai === 'short_answer' && q && (d.epTuTuLuan ? gonDap(d.exactAnswer) !== gonDap(q.correct_answer) : String(d.exactAnswer ?? '').trim() !== String(q.correct_answer ?? '').trim())) {
     ghi(k, 'ĐÁP ÁN LỆCH', `khối "${d.exactAnswer}" · kho "${q.correct_answer}"`);
   }
   if (d.sourceQuestionId && !q) ghi(k, 'MẤT CÂU GỐC', `kho không còn ${d.sourceQuestionId}`);

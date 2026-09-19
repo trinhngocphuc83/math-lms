@@ -1,9 +1,14 @@
 ---
-name: soan-chuong-thpt
-description: Soạn trọn một chương Toán THPT (lớp 10, 11, 12) trong app math-lms - lý thuyết và phân dạng, bài tập tự luyện rút từ ngân hàng câu hỏi, năm đề ôn tập cuối chương, bảng tổng hợp công thức, rồi xuất tài liệu Word bản giáo viên. Dùng skill này bất cứ khi nào thầy cô nhắc tới soạn cả một chương, dựng bài tập tự luyện cho một bài, làm đề ôn tập cuối chương, rút câu từ ngân hàng vào bài học, kiểm tra một chương đã đủ dạng chưa, hay xuất chương ra Word - kể cả khi họ chỉ nói ngắn gọn kiểu "làm chương 5 đi", "soạn tiếp bài 2", "xuất chương này ra Word", hoặc "chương này thiếu dạng nào không".
+name: thpt-12
+description: Soạn trọn một chương Toán THPT (lớp 10, 11, 12) trong app math-lms theo khuôn đề thi tốt nghiệp - lý thuyết và phân dạng, bài tập tự luyện trắc nghiệm ba dạng thức (NLC, Đúng/Sai, trả lời ngắn) rút từ ngân hàng câu hỏi, năm đề ôn tập cuối chương, bảng tổng hợp công thức, rồi xuất Word bản giáo viên. Dùng khi thầy cô nhắc tới soạn cả một chương LỚP 10-12, dựng tự luyện cho một bài THPT, đề ôn cuối chương THPT, hay xuất chương THPT ra Word - kể cả nói ngắn "làm chương 5 đi", "soạn tiếp bài 2". Chương THCS (lớp 6-9, 100% tự luận) thì dùng skill giao-an-tu-luan.
 ---
 
-# Soạn trọn một chương THPT
+# Soạn trọn một chương THPT (skill thpt-12)
+
+Tên cũ `soan-chuong-thpt`, đổi thành `thpt-12` ngày 19/9/2026 khi tách khuôn THCS ra skill riêng
+`giao-an-tu-luan` (100% tự luận, đề tự luận 5 bài). Các script dùng chung (soi-chuong,
+kiem-giao-an, va-giao-an, ra-cau, sua-cau-ra, xuat-chuong-word, soi-word) nằm ở đây, skill THCS
+gọi sang bằng đường dẫn `.claude/skills/thpt-12/scripts/`.
 
 Chương hoàn chỉnh gồm các phần sau, dựng theo đúng thứ tự này vì phần sau ăn theo phần trước:
 
@@ -40,7 +45,7 @@ rồi mới `update`. Viết script ở chế độ thử trước, chỉ ghi th
 ## Bước 1 — Soi chương trước khi bắt tay
 
 ```bash
-node .claude/skills/soan-chuong-thpt/scripts/soi-chuong.mjs --lop 12 --chuong "NGUYÊN HÀM"
+node .claude/skills/thpt-12/scripts/soi-chuong.mjs --lop 12 --chuong "NGUYÊN HÀM"
 ```
 
 Cho ra ba thứ:
@@ -176,7 +181,7 @@ công thức (trị tuyệt đối, `$\ln|x|$`) **không phải** vách cột �
 ## Bước 6 — Xuất Word bản giáo viên
 
 ```bash
-node --experimental-strip-types .claude/skills/soan-chuong-thpt/scripts/xuat-chuong-word.mjs \
+node --experimental-strip-types .claude/skills/thpt-12/scripts/xuat-chuong-word.mjs \
      --lop 12 --chuong "NGUYÊN HÀM" --cuoi "Cuối chương 4" --tach
 ```
 
@@ -194,7 +199,7 @@ từng nặng 14 MB mà 13.9 MB là ảnh.
 Rồi soi tệp vừa xuất:
 
 ```bash
-node .claude/skills/soan-chuong-thpt/scripts/soi-word.mjs scratch/word/<thư mục vừa tạo>
+node .claude/skills/thpt-12/scripts/soi-word.mjs scratch/word/<thư mục vừa tạo>
 ```
 
 Cần thấy **0 ở cả bốn cột rác**. Mấy kiểu hỏng này đều im lặng — mở ra mới biết, mà tài
@@ -232,7 +237,7 @@ khi mở bài dạy lên trước lớp — thầy bắt được cả bảy tro
 chương 3):
 
 ```bash
-node .claude/skills/soan-chuong-thpt/scripts/kiem-giao-an.mjs --lop 12 --chuong "PHÂN TÁN"
+node .claude/skills/thpt-12/scripts/kiem-giao-an.mjs --lop 12 --chuong "PHÂN TÁN"
 ```
 
 | Lỗi | Nghĩa |
@@ -249,7 +254,7 @@ Phải về **0 lỗi**. Phần máy tự sửa được thì để máy sửa (
 sao lưu vào `backups/va-giao-an-<ngày>/`):
 
 ```bash
-node .claude/skills/soan-chuong-thpt/scripts/va-giao-an.mjs --lop 12 --chuong "PHÂN TÁN" --dong-bo-de ghi
+node .claude/skills/thpt-12/scripts/va-giao-an.mjs --lop 12 --chuong "PHÂN TÁN" --dong-bo-de ghi
 ```
 
 Nó thêm lời giải từng bước từ kho, ghép ảnh rời vào đề, chép lại đề từ kho sau khi kho
@@ -292,7 +297,7 @@ tài liệu mang theo cả lỗi của tài liệu, câu do AI bóc thì thêm l
 cũng phải qua bước này, và **chưa rà thì chưa được báo xong**.
 
 ```bash
-node .claude/skills/soan-chuong-thpt/scripts/ra-cau.mjs --lop "TOÁN 10" --chuong "Hệ thức lượng" --cuoi "Cuối chương 3"
+node .claude/skills/thpt-12/scripts/ra-cau.mjs --lop "TOÁN 10" --chuong "Hệ thức lượng" --cuoi "Cuối chương 3"
 ```
 
 Nó bày **mọi câu** của chương (bài giảng, tự luyện, đề — mỗi câu một lần, kèm chỗ đang dùng)
@@ -315,7 +320,7 @@ Ghi kết luận vào `scratch/ra-cau/<chương>-sua.json` (khuôn in ở cuối
 `ket_luan`, `sua` gồm các cột của bảng `questions`, hoặc `bo: true`), rồi:
 
 ```bash
-node .claude/skills/soan-chuong-thpt/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json ghi
+node .claude/skills/thpt-12/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json ghi
 ```
 
 Nó sửa kho **và** dựng lại khối quiz trong mọi module đang dùng câu ấy (kể cả bản trình
@@ -342,14 +347,13 @@ Ba kiểu sai nữa bắt được ở Toán 9 chương IV (19/9/2026, 106 câu,
 - **`correct_answer` của câu tự luận chứa nguyên lời giải** (4/181 câu): Word in "Đáp án:"
   cả trang rồi "Lời giải" thêm lần nữa. Thay bằng đáp số ngắn.
 
-## THCS: bài ôn tập nằm ngay trong chương
+## THCS thì sang skill `giao-an-tu-luan`
 
-Toán 9 không có chuyên đề ôn tập riêng như THPT: bài cuối chương là `Bài K. Ôn tập chương`
-**trong** chương, module lý thuyết của nó là bảng công thức, hai module `Luyện tập 1`,
-`Luyện tập 2` là đề. `xuat-chuong-word.mjs --cuoi "Bài 3. Ôn tập chương"` đã hiểu lối này:
-tìm trong chương khi không thấy ở chuyên đề ôn tập, và không xuất bài ấy như bài thường.
-Thầy đặt hạn ngạch riêng cho THCS (Toán 9 C4: mỗi bài **20 câu tự luận**, ưu tiên thông
-hiểu — 14 TH · 3 NB · 3 VD) thay cho khuôn 20 NLC + 4 DS + 6 TLN + 4 TL của THPT.
+Toán 6-9 có khuôn khác hẳn (100% tự luận, mỗi bài 20 câu tự luyện + bài tập ví dụ, 3-5 đề tự
+luận 5 bài ở "Cuối chương N"). Đừng ép khuôn THPT vào; chi tiết ở
+`.claude/skills/giao-an-tu-luan/SKILL.md`. `xuat-chuong-word.mjs` ở đây phục vụ cả hai: nhận
+`--cuoi "Cuối chương N"` (THPT lẫn THCS đều đặt đề ở chuyên đề Ôn tập & Kiểm tra) và xuất thêm
+module "Bài tập ví dụ" nếu bài có.
 
 ## Chạy script Node đụng vào mã của app
 

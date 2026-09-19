@@ -19,7 +19,7 @@
  * Không tự thay câu LẠC DẠNG hay câu THIẾU DỮ LIỆU mà kho cũng không có - hai việc ấy phải
  * người chọn câu khác / cắt lại hình; máy chỉ liệt kê.
  *
- *   node .claude/skills/soan-chuong-thpt/scripts/va-giao-an.mjs --lop 12 --chuong "PHÂN TÁN" [--dong-bo-de] [ghi]
+ *   node .claude/skills/thpt-12/scripts/va-giao-an.mjs --lop 12 --chuong "PHÂN TÁN" [--dong-bo-de] [ghi]
  * Không có `ghi` thì chỉ in ra sẽ sửa gì. Có `ghi` thì sao lưu module vào
  * backups/va-giao-an-<ngày>/ rồi mới update.
  */
@@ -127,7 +127,8 @@ for (const m of mods) {
       /* 5. truy nguồn - phải cùng LOẠI: kho có câu NLC và câu TLN chung một đề (biến thể),
             khớp mỗi chữ thì gắn nhầm, phép đo đáp án sau đó báo lệch giả. */
       const loaiKho = { multiple_choice: 'NLC', short_answer: 'TLN', true_false_cluster: 'DS' }[q.type || 'multiple_choice'];
-      if (q.sourceQuestionId && goc[q.sourceQuestionId] && loaiKho && goc[q.sourceQuestionId].question_type !== loaiKho) {
+      /* epTuTuLuan: khối trả lời ngắn ép từ câu TỰ LUẬN của kho (skill giao-an-tu-luan) — cố ý khác loại, giữ nguồn */
+      if (q.sourceQuestionId && goc[q.sourceQuestionId] && loaiKho && goc[q.sourceQuestionId].question_type !== loaiKho && !q.epTuTuLuan) {
         delete q.sourceQuestionId; nguon++;   // gắn nhầm từ lượt trước, gỡ ra để tìm lại
       }
       if (!q.sourceQuestionId) {

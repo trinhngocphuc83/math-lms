@@ -2,7 +2,7 @@
  * Soi tệp Word vừa xuất. Mấy kiểu hỏng ở đây đều là HỎNG IM LẶNG - mở ra mới thấy, mà
  * tài liệu 200 câu thì không ai đọc hết, nên phải kiểm bằng máy trước khi gửi.
  *
- *   node .claude/skills/soan-chuong-thpt/scripts/soi-word.mjs scratch/word/<thư mục hoặc tệp>
+ *   node .claude/skills/thpt-12/scripts/soi-word.mjs scratch/word/<thư mục hoặc tệp>
  *
  * Cần thấy gì: rác = 0 ở mọi cột. Công thức phải là <m:oMath> chứ không phải chữ "\frac".
  */

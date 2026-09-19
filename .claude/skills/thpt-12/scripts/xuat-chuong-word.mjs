@@ -8,7 +8,7 @@
  * không liền mạch, bỏ mất câu hỏi tương tác, và sai phông chữ.
  *
  * Cách chạy (từ gốc repo):
- *   node --experimental-strip-types .claude/skills/soan-chuong-thpt/scripts/xuat-chuong-word.mjs \
+ *   node --experimental-strip-types .claude/skills/thpt-12/scripts/xuat-chuong-word.mjs \
  *        --lop 12 --chuong "NGUYÊN HÀM" --cuoi "Cuối chương 4" [--tach] [--anh-goc]
  *
  *   --tach     mỗi bài một tệp (nên dùng): MathType chuyển 3000 công thức trong một tệp
@@ -251,6 +251,15 @@ for (const b of (dsBai || []).filter(x => /^Bài \d+\./.test(x.title) && x.id !=
   } else {
     console.log(`   ✗ ${b.title}: chưa có lý thuyết`);
   }
+  /* THCS (skill giao-an-tu-luan) có thêm module "Bài tập ví dụ" đứng trước tự luyện; THPT không có thì bỏ qua */
+  const viDu = await cauCuaModule(sb.from('lesson_modules').select('content_markdown')
+    .eq('lesson_id', b.id).eq('title', 'Bài tập ví dụ').maybeSingle());
+  if (viDu.length) {
+    ra.push(tieuDeLon(`BÀI TẬP VÍ DỤ — ${b.title.toUpperCase()}`, 30));
+    const con = await dungNoiDungWord(viDu, 'teacher');
+    if (con?.length) ra.push(...con);
+    ra.push(new Paragraph({ children: [new PageBreak()] }));
+  }
   const cau = await cauCuaModule(sb.from('lesson_modules').select('content_markdown')
     .eq('lesson_id', b.id).eq('title', 'Bài tập tự luyện').maybeSingle());
   if (cau.length) {
@@ -259,7 +268,7 @@ for (const b of (dsBai || []).filter(x => /^Bài \d+\./.test(x.title) && x.id !=
     if (con?.length) ra.push(...con);
   }
   const ten = `0${soBai}-${b.title.replace(/^Bài \d+\.\s*/, '').replace(/[\\/:*?"<>|]/g, '').replace(/\s+/g, '-')}`;
-  themTap(ten, `${b.title} · ${cau.length} câu tự luyện`, ra);
+  themTap(ten, `${b.title} · ${viDu.length ? viDu.length + ' ví dụ · ' : ''}${cau.length} câu tự luyện`, ra);
 }
 
 /* 3. Mỗi đề ôn tập cuối chương một tập */
