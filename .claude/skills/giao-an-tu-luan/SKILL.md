@@ -23,7 +23,7 @@ Chương hoàn chỉnh, dựng theo thứ tự này:
 5. **Bảng tổng hợp công thức** — tệp markdown, `dung-ly-thuyet.mjs --cuoi`
 6. **Kiểm giáo án** → **Rà từng câu** → **xuất Word** → **mở app xem** — dùng script chung của skill `thpt-12`
 
-Mọi script chạy từ **gốc repo** (cần `.env.local`, `scratch/donDeCauHoi.mjs`), tham số chung
+Mọi script chạy từ **gốc repo** (cần `.env.local` của app; hàm dọn đề dùng chung nằm ở `_chung/` trong thư mục skills), tham số chung
 `--lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG"` (khớp `ilike` với tên khoá / tên chương). Không có
 `--ghi` thì chỉ in ra để soát.
 

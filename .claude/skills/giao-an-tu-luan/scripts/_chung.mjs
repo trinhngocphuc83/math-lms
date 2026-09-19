@@ -1,13 +1,13 @@
 /**
  * Hàm dùng chung cho các script của skill giao-an-tu-luan (THCS, 100% tự luận).
- * Chạy từ gốc repo (cần .env.local và scratch/donDeCauHoi.mjs).
+ * Chạy từ gốc repo (cần .env.local); hàm dọn đề ở ../../_chung/ của thư mục skills.
  */
 import { createClient } from '@supabase/supabase-js';
 import { readFileSync } from 'fs';
 import { pathToFileURL } from 'url';
 import { resolve } from 'path';
 
-const { donDe, xuongDong } = await import(pathToFileURL(resolve('scratch/donDeCauHoi.mjs')).href);
+const { donDe, xuongDong } = await import(new URL('../../_chung/donDeCauHoi.mjs', import.meta.url).href);
 export { donDe, xuongDong };
 
 export const env = {};

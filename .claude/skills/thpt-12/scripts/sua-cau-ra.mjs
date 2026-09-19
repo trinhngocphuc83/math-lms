@@ -18,7 +18,7 @@
  *
  *   npm run -s skill -- .claude/skills/thpt-12/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json [ghi]
  *
- * Cần hai hàm dùng chung ở scratch/ (có ở cả hai repo): tachDungSai.mjs (tách bốn ý Đúng/Sai
+ * Hai hàm dùng chung nằm ở _chung/ của thư mục skills (ổ G): tachDungSai.mjs (tách bốn ý Đúng/Sai
  * theo hai lối đánh nhãn của kho) và donDeCauHoi.mjs (bỏ cờ đầu đề, đổi "\n" thành xuống dòng).
  */
 import { createClient } from '@supabase/supabase-js';
@@ -26,8 +26,8 @@ import { readFileSync, writeFileSync, mkdirSync } from 'fs';
 import { pathToFileURL } from 'url';
 import { resolve } from 'path';
 
-const { tachYDungSai } = await import(pathToFileURL(resolve('scratch/tachDungSai.mjs')).href);
-const { donDe, xuongDong } = await import(pathToFileURL(resolve('scratch/donDeCauHoi.mjs')).href);
+const { tachYDungSai } = await import(new URL('../../_chung/tachDungSai.mjs', import.meta.url).href);
+const { donDe, xuongDong } = await import(new URL('../../_chung/donDeCauHoi.mjs', import.meta.url).href);
 
 const CO = process.argv.slice(2);
 const TEP = CO.find(x => x.endsWith('.json'));
