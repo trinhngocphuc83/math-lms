@@ -1,7 +1,7 @@
 /**
  * Chuyển vài câu sang CHƯƠNG KHÁC (ap-ke-hoach-dang.mjs chỉ đổi bài/dạng trong một chương).
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/chuyen-cau-khac-chuong.mjs scratch/soi-dang/lop9-khac-chuong.json [ghi]
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/chuyen-cau-khac-chuong.mjs scratch/soi-dang/lop9-khac-chuong.json [ghi]
  *
  * Tệp JSON: { "lop": "9", "chuyen": { "<4 kí tự cuối mã câu>": ["Chương N. …", "Bài K. …", "tên dạng"], … } }
  * Dạng đích phải đã có trong question_categories (subject lấy theo dạng đích). Sao lưu trước khi ghi.

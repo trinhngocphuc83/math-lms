@@ -3,6 +3,9 @@ name: thpt-12
 description: Soạn trọn một chương Toán THPT (lớp 10, 11, 12) trong app math-lms theo khuôn đề thi tốt nghiệp - lý thuyết và phân dạng, bài tập tự luyện trắc nghiệm ba dạng thức (NLC, Đúng/Sai, trả lời ngắn) rút từ ngân hàng câu hỏi, năm đề ôn tập cuối chương, bảng tổng hợp công thức, rồi xuất Word bản giáo viên. Dùng khi thầy cô nhắc tới soạn cả một chương LỚP 10-12, dựng tự luyện cho một bài THPT, đề ôn cuối chương THPT, hay xuất chương THPT ra Word - kể cả nói ngắn "làm chương 5 đi", "soạn tiếp bài 2". Chương THCS (lớp 6-9, 100% tự luận) thì dùng skill giao-an-tu-luan.
 ---
 
+> Script chạy bằng launcher `npm run -s skill -- <đường dẫn> …` (skill nằm ở ổ G qua junction,
+> `node …` trực tiếp không thấy node_modules) — xem README.md ở thư mục skills.
+
 # Soạn trọn một chương THPT (skill thpt-12)
 
 Tên cũ `soan-chuong-thpt`, đổi thành `thpt-12` ngày 19/9/2026 khi tách khuôn THCS ra skill riêng
@@ -45,7 +48,7 @@ rồi mới `update`. Viết script ở chế độ thử trước, chỉ ghi th
 ## Bước 1 — Soi chương trước khi bắt tay
 
 ```bash
-node .claude/skills/thpt-12/scripts/soi-chuong.mjs --lop 12 --chuong "NGUYÊN HÀM"
+npm run -s skill -- .claude/skills/thpt-12/scripts/soi-chuong.mjs --lop 12 --chuong "NGUYÊN HÀM"
 ```
 
 Cho ra ba thứ:
@@ -181,7 +184,7 @@ công thức (trị tuyệt đối, `$\ln|x|$`) **không phải** vách cột �
 ## Bước 6 — Xuất Word bản giáo viên
 
 ```bash
-node --experimental-strip-types .claude/skills/thpt-12/scripts/xuat-chuong-word.mjs \
+npm run -s skill -- --experimental-strip-types .claude/skills/thpt-12/scripts/xuat-chuong-word.mjs \
      --lop 12 --chuong "NGUYÊN HÀM" --cuoi "Cuối chương 4" --tach
 ```
 
@@ -199,7 +202,7 @@ từng nặng 14 MB mà 13.9 MB là ảnh.
 Rồi soi tệp vừa xuất:
 
 ```bash
-node .claude/skills/thpt-12/scripts/soi-word.mjs scratch/word/<thư mục vừa tạo>
+npm run -s skill -- .claude/skills/thpt-12/scripts/soi-word.mjs scratch/word/<thư mục vừa tạo>
 ```
 
 Cần thấy **0 ở cả bốn cột rác**. Mấy kiểu hỏng này đều im lặng — mở ra mới biết, mà tài
@@ -237,7 +240,7 @@ khi mở bài dạy lên trước lớp — thầy bắt được cả bảy tro
 chương 3):
 
 ```bash
-node .claude/skills/thpt-12/scripts/kiem-giao-an.mjs --lop 12 --chuong "PHÂN TÁN"
+npm run -s skill -- .claude/skills/thpt-12/scripts/kiem-giao-an.mjs --lop 12 --chuong "PHÂN TÁN"
 ```
 
 | Lỗi | Nghĩa |
@@ -254,7 +257,7 @@ Phải về **0 lỗi**. Phần máy tự sửa được thì để máy sửa (
 sao lưu vào `backups/va-giao-an-<ngày>/`):
 
 ```bash
-node .claude/skills/thpt-12/scripts/va-giao-an.mjs --lop 12 --chuong "PHÂN TÁN" --dong-bo-de ghi
+npm run -s skill -- .claude/skills/thpt-12/scripts/va-giao-an.mjs --lop 12 --chuong "PHÂN TÁN" --dong-bo-de ghi
 ```
 
 Nó thêm lời giải từng bước từ kho, ghép ảnh rời vào đề, chép lại đề từ kho sau khi kho
@@ -269,7 +272,7 @@ bản cũ. Nhãn "(trình chiếu)" sau tên module là đang nói bản ấy.
 Kiểm luôn cây danh mục — soạn chương hay đụng tên bài, tên dạng:
 
 ```bash
-node .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs
+npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs
 ```
 
 Phải về 0 ✗ theo [docs/quy-uoc-danh-muc.md](../../../docs/quy-uoc-danh-muc.md). Tên bài trong
@@ -297,7 +300,7 @@ tài liệu mang theo cả lỗi của tài liệu, câu do AI bóc thì thêm l
 cũng phải qua bước này, và **chưa rà thì chưa được báo xong**.
 
 ```bash
-node .claude/skills/thpt-12/scripts/ra-cau.mjs --lop "TOÁN 10" --chuong "Hệ thức lượng" --cuoi "Cuối chương 3"
+npm run -s skill -- .claude/skills/thpt-12/scripts/ra-cau.mjs --lop "TOÁN 10" --chuong "Hệ thức lượng" --cuoi "Cuối chương 3"
 ```
 
 Nó bày **mọi câu** của chương (bài giảng, tự luyện, đề — mỗi câu một lần, kèm chỗ đang dùng)
@@ -320,7 +323,7 @@ Ghi kết luận vào `scratch/ra-cau/<chương>-sua.json` (khuôn in ở cuối
 `ket_luan`, `sua` gồm các cột của bảng `questions`, hoặc `bo: true`), rồi:
 
 ```bash
-node .claude/skills/thpt-12/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json ghi
+npm run -s skill -- .claude/skills/thpt-12/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json ghi
 ```
 
 Nó sửa kho **và** dựng lại khối quiz trong mọi module đang dùng câu ấy (kể cả bản trình

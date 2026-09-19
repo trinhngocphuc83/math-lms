@@ -19,7 +19,7 @@ const THU_MUC = process.argv[2];
 const RA = 'scratch/o-ngo';
 if (!THU_MUC) {
   console.error('Thiếu thư mục ảnh.');
-  console.error('  node --experimental-strip-types .claude/skills/soi-phieu-cham/scripts/cat-o-ngo.mjs "<thư mục ảnh>" [tên tệp]');
+  console.error('  npm run -s skill -- --experimental-strip-types .claude/skills/soi-phieu-cham/scripts/cat-o-ngo.mjs "<thư mục ảnh>" [tên tệp]');
   process.exit(1);
 }
 

@@ -3,6 +3,9 @@ name: soi-phieu-cham
 description: Soi lại những câu mà bộ chấm phiếu tô tròn tự gắn cờ "nét mờ" hoặc "không chắc". Cắt ảnh phóng to đúng chỗ đó, nhìn bằng mắt để phân xử, rồi báo cáo chỗ nào máy đọc sai. Dùng khi thầy cô vừa quét một tập phiếu và muốn yên tâm mà không phải tự dò từng tờ.
 ---
 
+> Script chạy bằng launcher `npm run -s skill -- <đường dẫn> …` (skill nằm ở ổ G qua junction,
+> `node …` trực tiếp không thấy node_modules) — xem README.md ở thư mục skills.
+
 # Soi lại chỗ máy gắn cờ
 
 ## Việc này giải quyết cái gì
@@ -30,7 +33,7 @@ cần `.env.local` và `src/utils/`.
 ### Bước 1 - cắt ảnh những chỗ bị gắn cờ
 
 ```
-node --experimental-strip-types .claude/skills/soi-phieu-cham/scripts/cat-o-ngo.mjs "<thư mục ảnh>"
+npm run -s skill -- --experimental-strip-types .claude/skills/soi-phieu-cham/scripts/cat-o-ngo.mjs "<thư mục ảnh>"
 ```
 
 Thêm tên một tệp ở cuối nếu chỉ muốn soi một tờ. Kết quả ra `scratch/o-ngo/`:
@@ -77,7 +80,7 @@ Ghi phán xử vào `scratch/o-ngo/phan-xu.json`, một phần tử cho mỗi m�
 ### Bước 3 - tổng kết
 
 ```
-node --experimental-strip-types .claude/skills/soi-phieu-cham/scripts/tong-ket.mjs
+npm run -s skill -- --experimental-strip-types .claude/skills/soi-phieu-cham/scripts/tong-ket.mjs
 ```
 
 In ra bốn nhóm:

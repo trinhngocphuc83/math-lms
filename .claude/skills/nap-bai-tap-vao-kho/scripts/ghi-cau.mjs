@@ -1,9 +1,9 @@
 /**
  * Bước 5: ghi tệp câu hỏi vào kho (chỉ khi kiem-cau.mjs không báo lỗi).
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/ghi-cau.mjs scratch/nap-kho/<tên>.cau.json        -> thử
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/ghi-cau.mjs scratch/nap-kho/<tên>.cau.json ghi    -> ghi thật
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/ghi-cau.mjs --rut backups/nap-kho-<ngày>/<tệp>.json -> RÚT LẠI một lượt đã ghi
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/ghi-cau.mjs scratch/nap-kho/<tên>.cau.json        -> thử
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/ghi-cau.mjs scratch/nap-kho/<tên>.cau.json ghi    -> ghi thật
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/ghi-cau.mjs --rut backups/nap-kho-<ngày>/<tệp>.json -> RÚT LẠI một lượt đã ghi
  *
  * Mỗi lượt ghi lưu danh sách mã câu vào backups/nap-kho-<ngày>/<tên>-<giờ>.json để rút lại được
  * nguyên lượt nếu thầy không ưng. Mã câu theo đúng khuôn app: CH_<mili giây>_<4 kí tự>.
@@ -62,4 +62,4 @@ const { error } = await sb.from('questions').insert(inserts);
 if (error) { console.log('✗', error.message); process.exit(1); }
 const tepLuot = `${th}/${basename(tep, '.cau.json')}-${new Date().toISOString().slice(11, 16).replace(':', '')}.json`;
 writeFileSync(tepLuot, JSON.stringify({ tep, nguon: goi.nguon, luc: new Date().toISOString(), ma: inserts.map(q => q.question_id) }, null, 1));
-console.log(`✓ đã ghi ${inserts.length} câu · rút lại được bằng: node .claude/skills/nap-bai-tap-vao-kho/scripts/ghi-cau.mjs --rut ${tepLuot}`);
+console.log(`✓ đã ghi ${inserts.length} câu · rút lại được bằng: npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/ghi-cau.mjs --rut ${tepLuot}`);

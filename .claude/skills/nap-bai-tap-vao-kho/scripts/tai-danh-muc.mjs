@@ -1,7 +1,7 @@
 /**
  * Bước 2: tải danh mục (chương › bài › dạng + yêu cầu cần đạt) của một khối để xếp câu vào ĐÚNG TÊN.
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/tai-danh-muc.mjs --lop 9 [--chuong "Đường tròn"]
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/tai-danh-muc.mjs --lop 9 [--chuong "Đường tròn"]
  *
  * Ghi ra scratch/nap-kho/danh-muc-lop<N>.md và .json. Tên dạng trong tệp câu hỏi phải chép
  * NGUYÊN VĂN từ đây - lệch một chữ là kho đẻ thêm dạng song sinh.

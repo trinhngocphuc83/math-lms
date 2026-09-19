@@ -6,8 +6,8 @@
  * kéo theo cả loạt lệch khác (La Mã / Ả Rập, hai tên cho một bài ôn tập, viết thường, thiếu
  * dấu chấm, sai chính tả, phân môn lệch). Bộ này đo đúng những chỗ ấy để không tái diễn.
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs            # kiểm
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs --cap-nhat # ghi lại cây chuẩn
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs            # kiểm
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs --cap-nhat # ghi lại cây chuẩn
  *
  * Cây chuẩn docs/cay-danh-muc.json = ảnh chụp cây lớp › phân môn › chương › bài đã được thầy
  * duyệt. Chương/bài mới xuất hiện trong kho mà không có trong cây chuẩn thì báo ⚠ - đúng SGK

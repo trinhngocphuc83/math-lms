@@ -3,6 +3,9 @@ name: giao-an-tu-luan
 description: Soạn trọn một chương Toán THCS (lớp 6, 7, 8, 9) trong app math-lms theo khuôn 100% TỰ LUẬN - lý thuyết và phân dạng có câu tương tác, mỗi bài một module "Bài tập ví dụ" và 20 câu "Bài tập tự luyện" rút từ ngân hàng, 3-5 đề ôn tập cuối chương kiểu 5 bài tự luận 90 phút, bảng tổng hợp công thức, rồi xuất Word bản giáo viên. Dùng khi thầy cô nhắc tới soạn chương / soạn bài / làm đề ôn cho LỚP 6-9, giáo án tự luận, đề tự luận, kể cả nói ngắn "soạn chương 5 toán 8", "làm đề ôn chương này". Lớp 10-12 (trắc nghiệm ba dạng thức) thì dùng skill thpt-12.
 ---
 
+> Script chạy bằng launcher `npm run -s skill -- <đường dẫn> …` (skill nằm ở ổ G qua junction,
+> `node …` trực tiếp không thấy node_modules) — xem README.md ở thư mục skills.
+
 # Giáo án tự luận — soạn trọn một chương THCS
 
 Khuôn do thầy chốt 19/9/2026 sau khi soạn thử Toán 9 chương IV; con số cụ thể ở
@@ -26,7 +29,7 @@ Mọi script chạy từ **gốc repo** (cần `.env.local`, `scratch/donDeCauHo
 
 ## Nguyên tắc xuyên suốt (giữ nguyên từ skill THPT)
 
-- **Đo trước, đo sau**: `node .claude/skills/thpt-12/scripts/soi-chuong.mjs --lop "TOÁN 9" --chuong "…"`.
+- **Đo trước, đo sau**: `npm run -s skill -- .claude/skills/thpt-12/scripts/soi-chuong.mjs --lop "TOÁN 9" --chuong "…"`.
 - **Bài tập chỉ rút từ kho**, mỗi câu mang `sourceQuestionId`. Kho chưa đủ thì nạp thêm bằng
   skill `nap-bai-tap-vao-kho` (sách của thầy ở ổ G) trước, không tự chế câu.
 - **Sao lưu trước khi ghi đè**; script nào cũng có chế độ thử.
@@ -36,7 +39,7 @@ Mọi script chạy từ **gốc repo** (cần `.env.local`, `scratch/donDeCauHo
 ## Bước 1 — Khung bài
 
 ```bash
-node .claude/skills/giao-an-tu-luan/scripts/dung-khung.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --de 4 --ghi
+npm run -s skill -- .claude/skills/giao-an-tu-luan/scripts/dung-khung.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --de 4 --ghi
 ```
 
 Đọc danh mục kho của chương (`question_categories`, bỏ bài "Ôn tập chương"), tạo mỗi bài một
@@ -92,7 +95,7 @@ lệch loại / lệch đáp án. **Chỉ hỏi điều đã dạy** tới mục
 hệ thức $b^2 = ab'$, $h^2 = b'c'$ — câu kho dùng chúng thì loại.
 
 ```bash
-node .claude/skills/giao-an-tu-luan/scripts/dung-ly-thuyet.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --bai 1 --tep scratch/giao-an-tu-luan/<chương>/lt-bai1.md --ghi
+npm run -s skill -- .claude/skills/giao-an-tu-luan/scripts/dung-ly-thuyet.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --bai 1 --tep scratch/giao-an-tu-luan/<chương>/lt-bai1.md --ghi
 ```
 
 Ghi cả `content_markdown` lẫn `presentation_markdown` (khung màu, tách slide) như các chương
@@ -101,7 +104,7 @@ Toán 9 đang có. Mã câu không có trong kho, hoặc ép TLN không được
 ## Bước 3 — Rút câu (một lượt cho cả chương)
 
 ```bash
-node .claude/skills/giao-an-tu-luan/scripts/rut-cau.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --de 4
+npm run -s skill -- .claude/skills/giao-an-tu-luan/scripts/rut-cau.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --de 4
 ```
 
 Cho từng bài: **Bài tập ví dụ** (2 câu/dạng, chỉ NB–TH, tối đa 10) và **Bài tập tự luyện**
@@ -118,7 +121,7 @@ In ra `✗ THIẾU` ở đâu thì kho chỗ ấy mỏng: nạp thêm kho, hoặ
 ## Bước 4 — Dựng module
 
 ```bash
-node .claude/skills/giao-an-tu-luan/scripts/dung-module.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --ghi
+npm run -s skill -- .claude/skills/giao-an-tu-luan/scripts/dung-module.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --ghi
 ```
 
 Mỗi câu một khối `quiz` tự luận: `answer` = "Phương pháp giải: … Lời giải: …" tách từ
@@ -138,18 +141,18 @@ Cột tên **không chứa LaTeX** (đưa điều kiện sang cột công thức
 thành chữ thường, có `$…$` là ra chữ thô. Rồi:
 
 ```bash
-node .claude/skills/giao-an-tu-luan/scripts/dung-ly-thuyet.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --cuoi --tep scratch/giao-an-tu-luan/<chương>/cong-thuc.md --ghi
+npm run -s skill -- .claude/skills/giao-an-tu-luan/scripts/dung-ly-thuyet.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --cuoi --tep scratch/giao-an-tu-luan/<chương>/cong-thuc.md --ghi
 ```
 
 ## Bước 6 — Kiểm, rà, xuất Word, xem app (script chung ở `thpt-12`)
 
 ```bash
-node .claude/skills/thpt-12/scripts/kiem-giao-an.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --cuoi "Cuối chương 4"
-node .claude/skills/thpt-12/scripts/ra-cau.mjs      --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --cuoi "Cuối chương 4"
-node .claude/skills/thpt-12/scripts/sua-cau-ra.mjs  scratch/ra-cau/<chương>-sua.json ghi
-node --experimental-strip-types .claude/skills/thpt-12/scripts/xuat-chuong-word.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --cuoi "Cuối chương 4" --tach
-node .claude/skills/thpt-12/scripts/soi-word.mjs scratch/word/<thư mục vừa tạo>
-node .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs
+npm run -s skill -- .claude/skills/thpt-12/scripts/kiem-giao-an.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --cuoi "Cuối chương 4"
+npm run -s skill -- .claude/skills/thpt-12/scripts/ra-cau.mjs      --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --cuoi "Cuối chương 4"
+npm run -s skill -- .claude/skills/thpt-12/scripts/sua-cau-ra.mjs  scratch/ra-cau/<chương>-sua.json ghi
+npm run -s skill -- --experimental-strip-types .claude/skills/thpt-12/scripts/xuat-chuong-word.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" --cuoi "Cuối chương 4" --tach
+npm run -s skill -- .claude/skills/thpt-12/scripts/soi-word.mjs scratch/word/<thư mục vừa tạo>
+npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-danh-muc.mjs
 ```
 
 Ý nghĩa từng lỗi của kiem-giao-an, cách đọc tệp rà câu, khuôn tệp sửa, cách soi Word — xem

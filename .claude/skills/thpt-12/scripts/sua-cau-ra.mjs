@@ -16,7 +16,7 @@
  *
  * Chạy thử trước; thêm `ghi` mới ghi. Sao lưu vào backups/sua-cau-ra-<ngày>/.
  *
- *   node .claude/skills/thpt-12/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json [ghi]
+ *   npm run -s skill -- .claude/skills/thpt-12/scripts/sua-cau-ra.mjs scratch/ra-cau/<chương>-sua.json [ghi]
  *
  * Cần hai hàm dùng chung ở scratch/ (có ở cả hai repo): tachDungSai.mjs (tách bốn ý Đúng/Sai
  * theo hai lối đánh nhãn của kho) và donDeCauHoi.mjs (bỏ cờ đầu đề, đổi "\n" thành xuống dòng).

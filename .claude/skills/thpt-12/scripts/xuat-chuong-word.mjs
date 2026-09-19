@@ -8,7 +8,7 @@
  * không liền mạch, bỏ mất câu hỏi tương tác, và sai phông chữ.
  *
  * Cách chạy (từ gốc repo):
- *   node --experimental-strip-types .claude/skills/thpt-12/scripts/xuat-chuong-word.mjs \
+ *   npm run -s skill -- --experimental-strip-types .claude/skills/thpt-12/scripts/xuat-chuong-word.mjs \
  *        --lop 12 --chuong "NGUYÊN HÀM" --cuoi "Cuối chương 4" [--tach] [--anh-goc]
  *
  *   --tach     mỗi bài một tệp (nên dùng): MathType chuyển 3000 công thức trong một tệp

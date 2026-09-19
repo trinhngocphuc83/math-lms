@@ -2,7 +2,7 @@
  * Kê một chương để SOI LẠI DẠNG bằng mắt: mỗi dạng kèm yêu cầu cần đạt và số câu, rồi từng câu
  * một dòng (mã, loại, mức, 110 ký tự đầu của đề) để đọc lướt và xếp lại.
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/soi-dang-chuong.mjs --lop 7 --chuong 1 [--tu 1 --den 6]
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/soi-dang-chuong.mjs --lop 7 --chuong 1 [--tu 1 --den 6]
  *
  * Ra: scratch/soi-dang/lop<N>-c<M>.json (đủ trường để bộ áp kế hoạch dùng) và in bảng ra màn
  * hình; --tu/--den chọn khoảng dạng để in (chương lớn thì in từng phần).

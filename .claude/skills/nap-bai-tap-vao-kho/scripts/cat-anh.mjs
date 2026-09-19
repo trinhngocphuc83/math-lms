@@ -1,7 +1,7 @@
 /**
  * Cắt hình vẽ ra khỏi ảnh trang rồi tải lên kho ảnh bài giảng, in ra địa chỉ để nhúng vào đề.
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/cat-anh.mjs <ảnh trang> <x> <y> <rộng> <cao> <tên-anh> [--xem]
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/cat-anh.mjs <ảnh trang> <x> <y> <rộng> <cao> <tên-anh> [--xem]
  *
  * Toạ độ tính bằng pixel trên chính ảnh trang (đã dựng ở bước 1). `--xem` chỉ cắt ra
  * scratch/nap-kho/xem/<tên>.png để mở lên nhìn cho đúng khung rồi mới tải; không có `--xem`

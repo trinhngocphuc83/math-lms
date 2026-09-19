@@ -1,7 +1,7 @@
 /**
  * Bước 1: kê tài liệu trong thư mục thầy để sẵn và chuẩn bị để đọc được.
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/liet-ke-tai-lieu.mjs "G:\My Drive\Bai tap Toan 9"
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/liet-ke-tai-lieu.mjs "G:\My Drive\Bai tap Toan 9"
  *
  * Với mỗi tệp:
  *   - PDF  → dựng từng trang thành ảnh PNG (pdftoppm, 130 dpi) vào scratch/nap-kho/<tên>/trang-NN.png,

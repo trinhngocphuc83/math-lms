@@ -1,7 +1,7 @@
 /**
  * Bước 4: soát tệp câu hỏi đã bóc TRƯỚC KHI ghi vào kho.
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-cau.mjs scratch/nap-kho/<tên>.cau.json
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/kiem-cau.mjs scratch/nap-kho/<tên>.cau.json
  *
  * Soát: danh mục có thật (đúng từng chữ) · mã loại, mức · đủ phương án, đáp án đúng khuôn ·
  * TLN tô được vào phiếu 4 ô · dấu $ cân · trùng với kho hoặc trùng trong chính tệp.

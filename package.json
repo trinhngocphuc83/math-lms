@@ -9,7 +9,8 @@
     "dev:safe": "npm run backup && node node_modules/next/dist/bin/next dev",
     "build": "node node_modules/next/dist/bin/next build",
     "start": "node node_modules/next/dist/bin/next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "skill": "node --preserve-symlinks --preserve-symlinks-main"
   },
   "dependencies": {
     "@base-ui/react": "^1.5.0",

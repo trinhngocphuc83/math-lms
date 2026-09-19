@@ -4,7 +4,7 @@
  * "Cuối chương N" trong chuyên đề Ôn tập & Kiểm tra với "Tổng hợp công thức cả chương" +
  * ĐỀ 1…ĐỀ k + Tài liệu & Video. Đã có thì giữ, thiếu gì tạo nấy — chạy lại không đẻ trùng.
  *
- *   node .claude/skills/giao-an-tu-luan/scripts/dung-khung.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" [--de 4] [--ghi]
+ *   npm run -s skill -- .claude/skills/giao-an-tu-luan/scripts/dung-khung.mjs --lop "TOÁN 9" --chuong "HỆ THỨC LƯỢNG" [--de 4] [--ghi]
  */
 import { sb, lay, co, timChuong, danhMucChuong, lopTu } from './_chung.mjs';
 

@@ -8,7 +8,7 @@
  *                   hiệu gì. Từng dính 19 khối.
  *   3. HẠN NGẠCH  - bài tập tự luyện có đủ số câu và đúng cơ cấu loại/mức không.
  *
- *   node .claude/skills/thpt-12/scripts/soi-chuong.mjs --lop 12 --chuong "NGUYÊN HÀM"
+ *   npm run -s skill -- .claude/skills/thpt-12/scripts/soi-chuong.mjs --lop 12 --chuong "NGUYÊN HÀM"
  */
 import { createClient } from '@supabase/supabase-js';
 import { readFileSync } from 'fs';

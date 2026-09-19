@@ -1,7 +1,7 @@
 /**
  * Áp một KẾ HOẠCH soi dạng cho một chương (sau khi đọc bằng mắt bằng soi-dang-chuong.mjs).
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/ap-ke-hoach-dang.mjs scratch/soi-dang/lop7-c1.ke-hoach.json [ghi]
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/ap-ke-hoach-dang.mjs scratch/soi-dang/lop7-c1.ke-hoach.json [ghi]
  *
  * Kế hoạch (JSON):
  * {

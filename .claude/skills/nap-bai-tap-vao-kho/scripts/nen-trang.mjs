@@ -2,7 +2,7 @@
  * Nén trang vở bài tập: bỏ các dòng chấm chấm "......" (chỗ trống để học sinh viết lời giải)
  * và khoảng trắng, rồi ghép nhiều trang lại thành ít ảnh cao để đọc một lần được nhiều đề.
  *
- *   node .claude/skills/nap-bai-tap-vao-kho/scripts/nen-trang.mjs <thư mục trang> <từ trang> <đến trang> [tên]
+ *   npm run -s skill -- .claude/skills/nap-bai-tap-vao-kho/scripts/nen-trang.mjs <thư mục trang> <từ trang> <đến trang> [tên]
  *
  * Ra scratch/nap-kho/nen/<tên>-<k>.png, mỗi ảnh cao tối đa ~2800 px, giữa các trang có vạch
  * ghi số trang gốc để còn quay lại cắt hình. Vở bài tập 22 trang thường nén còn 3–4 ảnh.

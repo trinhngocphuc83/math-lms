@@ -5,7 +5,7 @@
  * bỏ sót đúng cái mục quan trọng nhất. Máy đối chiếu thì không sót, và in ra con số để
  * thầy cô kiểm lại được.
  *
- *   node --experimental-strip-types .claude/skills/soi-phieu-cham/scripts/tong-ket.mjs
+ *   npm run -s skill -- --experimental-strip-types .claude/skills/soi-phieu-cham/scripts/tong-ket.mjs
  */
 import { readFileSync, existsSync } from 'fs';
 import { join } from 'path';

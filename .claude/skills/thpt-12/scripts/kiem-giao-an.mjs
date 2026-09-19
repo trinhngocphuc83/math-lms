@@ -23,7 +23,7 @@
  *   ✗ ĐÁP ÁN LỆCH    - answerIndex trong khối khác đáp án của câu gốc trong kho.
  *   ✗ THIẾU answerIndex - chọn đúng vẫn báo sai (đã có ở soi-chuong, đo lại cho đủ bộ).
  *
- *   node .claude/skills/thpt-12/scripts/kiem-giao-an.mjs --lop 12 --chuong "PHÂN TÁN"
+ *   npm run -s skill -- .claude/skills/thpt-12/scripts/kiem-giao-an.mjs --lop 12 --chuong "PHÂN TÁN"
  *   thêm --json scratch/kiem-12c3.json để ghi danh sách lỗi ra tệp cho bộ vá đọc.
  */
 import { createClient } from '@supabase/supabase-js';

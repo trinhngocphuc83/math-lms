@@ -19,7 +19,7 @@
  * Không tự thay câu LẠC DẠNG hay câu THIẾU DỮ LIỆU mà kho cũng không có - hai việc ấy phải
  * người chọn câu khác / cắt lại hình; máy chỉ liệt kê.
  *
- *   node .claude/skills/thpt-12/scripts/va-giao-an.mjs --lop 12 --chuong "PHÂN TÁN" [--dong-bo-de] [ghi]
+ *   npm run -s skill -- .claude/skills/thpt-12/scripts/va-giao-an.mjs --lop 12 --chuong "PHÂN TÁN" [--dong-bo-de] [ghi]
  * Không có `ghi` thì chỉ in ra sẽ sửa gì. Có `ghi` thì sao lưu module vào
  * backups/va-giao-an-<ngày>/ rồi mới update.
  */

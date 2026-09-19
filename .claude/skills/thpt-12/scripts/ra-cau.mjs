@@ -17,7 +17,7 @@
  *        ĐS MỘT MÀU    - bốn ý cùng Đúng hoặc cùng Sai (hợp lệ nhưng hay là dấu hiệu gắn nhầm)
  *        THIẾU LG      - không có lời giải để đối chiếu
  *
- *   node .claude/skills/thpt-12/scripts/ra-cau.mjs --lop "TOÁN 10" --chuong "Hệ thức lượng" --cuoi "Cuối chương 3"
+ *   npm run -s skill -- .claude/skills/thpt-12/scripts/ra-cau.mjs --lop "TOÁN 10" --chuong "Hệ thức lượng" --cuoi "Cuối chương 3"
  *   -> scratch/ra-cau/<chương>.md (đọc), scratch/ra-cau/<chương>.json (chỉ mục cho bộ sửa)
  *
  * Đọc xong, ghi kết luận vào scratch/ra-cau/<chương>-sua.json rồi chạy sua-cau-ra.mjs.
