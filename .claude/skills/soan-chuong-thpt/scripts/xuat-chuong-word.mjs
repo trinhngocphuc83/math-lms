@@ -149,6 +149,10 @@ if (TEN_CUOI) {
       .eq('chapter_id', chOn[0].id).eq('title', TEN_CUOI).maybeSingle();
     baiCC = data;
   }
+  /* THCS (Toán 9): bài ôn tập nằm NGAY TRONG chương ("Bài K. Ôn tập chương"), không có chuyên đề
+     ôn tập riêng như THPT. Tìm tiếp trong danh sách bài của chương; bài ấy sẽ được xuất như bài
+     cuối chương (bảng công thức + các đề), không xuất như bài thường. */
+  if (!baiCC) baiCC = (dsBai || []).find(x => x.title === TEN_CUOI) || null;
   if (!baiCC) console.log(`   ⚠ không thấy bài ôn tập "${TEN_CUOI}", bỏ qua phần đề và tổng hợp công thức`);
 }
 
@@ -235,7 +239,7 @@ if (baiCC) {
 
 /* 2. Mỗi bài một tập: lý thuyết và phân dạng, rồi bài tập tự luyện của chính bài đó */
 let soBai = 0;
-for (const b of (dsBai || []).filter(x => /^Bài \d+\./.test(x.title))) {
+for (const b of (dsBai || []).filter(x => /^Bài \d+\./.test(x.title) && x.id !== baiCC?.id)) {
   soBai++;
   const ra = [];
   const { data: m } = await sb.from('lesson_modules').select('content_markdown')

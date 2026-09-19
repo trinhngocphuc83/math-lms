@@ -326,6 +326,31 @@ chạy lại `kiem-giao-an.mjs` và xuất lại Word.
 Khi báo thầy, nói rõ **đã rà bao nhiêu câu, sửa câu nào, vì sao** — không nói "đã kiểm"
 chung chung.
 
+Ba kiểu sai nữa bắt được ở Toán 9 chương IV (19/9/2026, 106 câu, sửa 17):
+
+- **Kiến thức ngoài chương trình**: kho Toán 9 có câu giải bằng $AB^2 = BH \cdot BC$,
+  $OH^2 = MH \cdot HN$ (hệ thức cạnh – đường cao, chương trình **cũ**; Toán 9 mới chỉ học tỉ số
+  lượng giác), có câu dùng $\sin 120^\circ$ (góc tù). Giải lại bằng kiến thức đang dạy, hoặc
+  loại câu.
+- **Nhầm phần thập phân của độ thành phút**: $\tan^{-1} 1{,}667 = 59{,}04^\circ$ ghi thành
+  $59^\circ 04'$ (đúng là $59^\circ 2'$). Cứ thấy số phút trùng hai chữ số sau dấu phẩy là nghi.
+- **Trùng đề khác lời văn** giữa các module: "AB = 5, AC = 12" và "AB = 5 cm, AC = 12 cm,
+  tính TSLG góc B" là một bài, vân tay chữ của app không bắt được, hai câu lọt vào hai đề.
+  Chống bằng **vân tay số liệu** (dạng + bộ số trong đề, nhớ quy `2{,}5` về `2,5` trước) — xem
+  `scratch/l9c4/rut-tu-luyen.mjs`. Khi rút lại, danh sách "câu đã dùng" chỉ tính module lý
+  thuyết, không tính module đang dựng lại (tính vào là tự loại chính mình).
+- **`correct_answer` của câu tự luận chứa nguyên lời giải** (4/181 câu): Word in "Đáp án:"
+  cả trang rồi "Lời giải" thêm lần nữa. Thay bằng đáp số ngắn.
+
+## THCS: bài ôn tập nằm ngay trong chương
+
+Toán 9 không có chuyên đề ôn tập riêng như THPT: bài cuối chương là `Bài K. Ôn tập chương`
+**trong** chương, module lý thuyết của nó là bảng công thức, hai module `Luyện tập 1`,
+`Luyện tập 2` là đề. `xuat-chuong-word.mjs --cuoi "Bài 3. Ôn tập chương"` đã hiểu lối này:
+tìm trong chương khi không thấy ở chuyên đề ôn tập, và không xuất bài ấy như bài thường.
+Thầy đặt hạn ngạch riêng cho THCS (Toán 9 C4: mỗi bài **20 câu tự luận**, ưu tiên thông
+hiểu — 14 TH · 3 NB · 3 VD) thay cho khuôn 20 NLC + 4 DS + 6 TLN + 4 TL của THPT.
+
 ## Chạy script Node đụng vào mã của app
 
 Bộ dựng của app viết bằng TypeScript, nên phải `node --experimental-strip-types`. Ba chỗ
