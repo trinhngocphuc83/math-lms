@@ -5,7 +5,8 @@ import remarkMath from 'remark-math';
 import remarkGfm from 'remark-gfm';
 import remarkBreaks from 'remark-breaks';
 import rehypeKatex from 'rehype-katex';
-import { appMarkdownComponents } from '@/components/CustomMarkdownComponents';
+import { studentMarkdownComponents } from '@/components/CustomMarkdownComponents';
+import 'katex/dist/katex.min.css';
 
 /**
  * Chấm tay một lượt luyện tập (bảng exam_results).
@@ -26,7 +27,7 @@ interface ReviewModalProps {
 }
 
 const MD = ({ children }: { children: string }) => (
-  <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>
+  <ReactMarkdown components={studentMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>
     {children}
   </ReactMarkdown>
 );
