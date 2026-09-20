@@ -133,7 +133,12 @@ export function ensureMathDelimiters(raw: string | null | undefined): string {
   const s = String(raw ?? '').trim();
   if (!s) return '';
   if (s.includes('$')) return s;
+  // Chuỗi là markdown/văn xuôi (ảnh ![..](..), liên kết, địa chỉ web, thẻ HTML, nhiều
+  // dòng) thì không bọc: bài giải mẫu của câu tự luận trong app Lý từng là một dòng
+  // "![Hình ảnh](https://…/lesson_images/…)" — dấu _ trong địa chỉ làm hàm này tưởng là
+  // chỉ số dưới, bọc cả dòng vào $…$ nên màn chiếu in ra chữ nghiêng thay vì hình.
+  if (/\]\(|:\/\/|<[a-zA-Z]|\n/.test(s)) return s;
   // Có lệnh LaTeX (\frac, \sqrt...) hoặc mũ/chỉ số thì mới cần bọc
-  const coKyHieuToan = /\[a-zA-Z]+|[\^_]|\{|\}/.test(s);
+  const coKyHieuToan = /\\[a-zA-Z]+|[\^_]|\{|\}/.test(s);
   return coKyHieuToan ? `$${s}$` : s;
 }
