@@ -305,7 +305,7 @@ const InteractiveQuiz = ({ data, onPass, onEditCrop }: { data: any, onPass: () =
         {type === "essay" && (
           <div className="flex flex-col items-center gap-4 w-full max-w-xl mx-auto mt-2">
             <p className="text-slate-500 text-sm text-center font-medium leading-relaxed">
-              Giải ra nháp, chụp ảnh và tải lên đây để AI chấm.
+              Giải ra nháp, chụp ảnh và tải lên đây để thầy cô chấm.
             </p>
 
             <input type="file" ref={fileInputRef} onChange={handleImageSelect} accept="image/*, application/pdf, .docx" capture="environment" className="hidden" />

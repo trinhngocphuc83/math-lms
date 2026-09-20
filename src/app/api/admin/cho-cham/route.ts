@@ -22,14 +22,17 @@ export async function GET() {
     const guard = await requireStaff();
     if (!guard.ok) return guard.response;
 
-    const { data: nop, error } = await supabaseAdmin
-      .from("online_exam_submissions")
-      .select("id, exam_id, student_id, score, status, answers, created_at, submit_time")
-      .eq("status", "SUBMITTED")
-      .order("created_at", { ascending: true })
-      .limit(500);
+    const [{ data: nop, error }, luyenTap] = await Promise.all([
+      supabaseAdmin
+        .from("online_exam_submissions")
+        .select("id, exam_id, student_id, score, status, answers, created_at, submit_time")
+        .eq("status", "SUBMITTED")
+        .order("created_at", { ascending: true })
+        .limit(500),
+      layLuyenTapChoCham(),
+    ]);
     if (error) throw error;
-    if (!nop || nop.length === 0) return NextResponse.json({ ds: [] });
+    if (!nop || nop.length === 0) return NextResponse.json({ ds: luyenTap });
 
     const idDe = Array.from(new Set(nop.map((r) => r.exam_id).filter(Boolean)));
     const idHs = Array.from(new Set(nop.map((r) => r.student_id).filter(Boolean)));
@@ -71,8 +74,59 @@ export async function GET() {
       })
       .filter(Boolean);
 
-    return NextResponse.json({ ds });
+    return NextResponse.json({ ds: [...ds, ...luyenTap] });
   } catch (err: any) {
     return NextResponse.json({ error: err.message }, { status: 500 });
   }
+}
+
+/**
+ * Lượt LUYỆN TẬP trong bài giảng còn câu tự luận chưa chấm (exam_results có cờ
+ * `_choChamTuLuan` do save-score gắn lúc nộp; update-exam-result gỡ khi thầy cô lưu chốt).
+ * Trước đây hàng chờ chỉ gom bài thi online, nên tự luận trong bài luyện tập nằm im trong
+ * "Chấm điểm bài tập" mà không ai biết.
+ */
+async function layLuyenTapChoCham() {
+  const { data, error } = await supabaseAdmin
+    .from("exam_results")
+    .select("id, student_id, module_id, lesson_id, score, answers, created_at, is_reviewed")
+    .gt("answers->>_choChamTuLuan", "0")
+    .gt("attempt_number", 0)
+    .order("created_at", { ascending: true })
+    .limit(500);
+  if (error || !data) return [];
+  const chua = data.filter((r) => Number((r.answers as any)?._choChamTuLuan || 0) > 0 && !r.is_reviewed);
+  if (chua.length === 0) return [];
+
+  const idHs = Array.from(new Set(chua.map((r) => r.student_id).filter(Boolean)));
+  const idMod = Array.from(new Set(chua.map((r) => r.module_id).filter(Boolean)));
+  const idBai = Array.from(new Set(chua.map((r) => r.lesson_id).filter(Boolean)));
+  const [{ data: hs }, { data: mod }, { data: bai }] = await Promise.all([
+    supabaseAdmin.from("profiles").select("id, full_name, class_name").in("id", idHs),
+    idMod.length ? supabaseAdmin.from("lesson_modules").select("id, title").in("id", idMod) : Promise.resolve({ data: [] as any[] }),
+    idBai.length ? supabaseAdmin.from("lessons").select("id, title").in("id", idBai) : Promise.resolve({ data: [] as any[] }),
+  ]);
+  const tenHs = new Map((hs || []).map((h) => [h.id, h]));
+  const tenMod = new Map((mod || []).map((m) => [m.id, m.title]));
+  const tenBai = new Map((bai || []).map((b) => [b.id, b.title]));
+
+  return chua.map((r) => {
+    const chiTiet: any[] = (r.answers as any)?.gradingDetails || [];
+    const tl = chiTiet.filter((d) => d.type === "essay");
+    const soCau = tl.length || Number((r.answers as any)._choChamTuLuan);
+    const p: any = tenHs.get(r.student_id) || {};
+    return {
+      loai: "luyen_tap",
+      ket_qua_id: r.id,
+      exam_id: r.lesson_id,
+      student_id: r.student_id,
+      tenDe: `Luyện tập: ${tenMod.get(r.module_id) || tenBai.get(r.lesson_id) || "Bài luyện tập"}`,
+      tenHs: p.full_name || "Học sinh",
+      lop: p.class_name || "",
+      diemMayCham: r.score ?? null,
+      soCauTuLuan: soCau,
+      conThieu: soCau,
+      nopLuc: r.created_at,
+    };
+  });
 }

@@ -20,12 +20,18 @@ export async function PUT(request: Request) {
     const { id, score, answers } = await request.json();
     if (!id) return NextResponse.json({ error: 'Missing ID' }, { status: 400 });
 
+    /* Thầy cô đã chấm và chốt: gỡ cờ "chờ chấm tự luận" mà đường nộp bài gắn vào, nếu
+       không lượt này nằm mãi trong hàng chờ và quét điểm thưởng tháng bỏ qua nó. */
+    const answersChot = answers && typeof answers === 'object'
+      ? { ...answers, _choChamTuLuan: 0, _chotLuc: new Date().toISOString() }
+      : answers;
+
     const { data, error } = await supabaseAdmin
       .from('exam_results')
       .update({
         score: score,
         passed: score >= 7,
-        answers: answers,
+        answers: answersChot,
         is_reviewed: true // Đánh dấu giáo viên đã xem/chấm lại
       })
       .eq('id', id)

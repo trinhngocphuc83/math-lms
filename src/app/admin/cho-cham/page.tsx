@@ -11,6 +11,9 @@ import { ClipboardCheck, RefreshCw, Users, Clock, CheckCircle2 } from "lucide-re
  * muốn tìm bài cần chấm thì phải vào từng đề rồi dò từng em, đề nhiều là bỏ sót.
  */
 interface DongCho {
+  /** 'luyen_tap' = lượt luyện tập trong bài giảng (exam_results); không có = bài thi online. */
+  loai?: "luyen_tap";
+  ket_qua_id?: string;
   exam_id: string;
   student_id: string;
   tenDe: string;
@@ -58,7 +61,7 @@ export default function ChoChamPage() {
             <ClipboardCheck className="w-8 h-8 text-indigo-600" /> Chờ chấm
           </h1>
           <p className="text-slate-500 mt-1">
-            Bài thi online còn câu tự luận chưa chấm. Chấm đủ thì bài mới có điểm tổng và mới được tính điểm cộng.
+            Bài thi online và bài luyện tập còn câu tự luận chưa chấm. Chấm xong, lưu chốt thì bài mới có điểm tổng và mới được tính điểm cộng tháng.
           </p>
         </div>
         <button onClick={tai} disabled={dangTai}
@@ -107,14 +110,19 @@ export default function ChoChamPage() {
             </thead>
             <tbody>
               {hienThi.map((d, i) => (
-                <tr key={`${d.exam_id}_${d.student_id}`} className={i % 2 ? "bg-slate-50/50" : ""}>
+                <tr key={d.ket_qua_id || `${d.exam_id}_${d.student_id}`} className={i % 2 ? "bg-slate-50/50" : ""}>
                   <td className="px-5 py-3">
                     <div className="font-bold text-slate-800 flex items-center gap-2">
                       <Users className="w-4 h-4 text-slate-400" />{d.tenHs}
                     </div>
                     {d.lop && <div className="text-xs text-slate-500 ml-6">{d.lop}</div>}
                   </td>
-                  <td className="px-5 py-3 text-slate-700">{d.tenDe}</td>
+                  <td className="px-5 py-3 text-slate-700">
+                    {d.tenDe}
+                    <span className={`ml-2 text-[10px] font-black px-1.5 py-0.5 rounded ${d.loai === "luyen_tap" ? "bg-sky-100 text-sky-700" : "bg-violet-100 text-violet-700"}`}>
+                      {d.loai === "luyen_tap" ? "LUYỆN TẬP" : "THI ONLINE"}
+                    </span>
+                  </td>
                   <td className="px-5 py-3 text-center font-black text-slate-700">
                     {d.diemMayCham !== null ? Number(d.diemMayCham).toFixed(2) : "-"}
                   </td>
@@ -128,7 +136,9 @@ export default function ChoChamPage() {
                   </td>
                   <td className="px-5 py-3 text-right">
                     <Link
-                      href={`/admin/online-exams/${d.exam_id}/submissions/${d.student_id}`}
+                      href={d.loai === "luyen_tap"
+                        ? `/admin/exam-results?mo=${d.ket_qua_id}`
+                        : `/admin/online-exams/${d.exam_id}/submissions/${d.student_id}`}
                       className="bg-indigo-600 text-white font-bold px-4 py-2 rounded-lg hover:bg-indigo-700 text-xs"
                     >
                       Chấm bài

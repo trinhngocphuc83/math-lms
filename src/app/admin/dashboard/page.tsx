@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BookOpen, Users, GraduationCap, TrendingUp, Calendar, Clock, Activity, Target, PenTool, DollarSign, ListTodo, MoreVertical, BookOpenText } from "lucide-react";
+import { BookOpen, Users, TrendingUp, Calendar, Clock, Activity, PenTool, DollarSign, ListTodo, BookOpenText, ClipboardCheck, ArrowRight, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
@@ -41,6 +41,10 @@ export default function AdminDashboard() {
   const [chartData, setChartData] = useState<any[]>([]);
   const [recentActivities, setRecentActivities] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  /* Hàng chờ chấm tự luận (bài thi online + bài luyện tập) - máy không chấm tự luận, nên
+     thầy cô phải thấy ngay khi mở Dashboard là đang có bao nhiêu bài đợi mình. */
+  const [choCham, setChoCham] = useState<any[]>([]);
+  const [dangTaiChoCham, setDangTaiChoCham] = useState(true);
 
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -123,12 +127,22 @@ export default function AdminDashboard() {
     };
     
     fetchDashboardData();
+    fetch('/api/admin/cho-cham')
+      .then(r => r.ok ? r.json() : { ds: [] })
+      .then(d => setChoCham(d.ds || []))
+      .catch(() => setChoCham([]))
+      .finally(() => setDangTaiChoCham(false));
   }, []);
+
+  const soCauChoCham = choCham.reduce((t, d) => t + Number(d.conThieu || 0), 0);
+  const duongCham = (d: any) => d.loai === 'luyen_tap'
+    ? `/admin/exam-results?mo=${d.ket_qua_id}`
+    : `/admin/online-exams/${d.exam_id}/submissions/${d.student_id}`;
 
   const statCards = [
     { title: "Tổng Học Sinh", value: stats.totalStudents, icon: Users, color: "from-blue-500 to-indigo-600", shadow: "shadow-blue-500/30", bg: "bg-blue-50" },
     { title: "Tổng Khóa Học", value: stats.totalCourses, icon: BookOpen, color: "from-teal-400 to-emerald-500", shadow: "shadow-emerald-500/30", bg: "bg-teal-50" },
-    { title: "Kỳ Thi Trực Tuyến", value: stats.totalExams, icon: Target, color: "from-rose-400 to-red-500", shadow: "shadow-rose-500/30", bg: "bg-rose-50" },
+    { title: "Bài Chờ Chấm", value: choCham.length, icon: ClipboardCheck, color: choCham.length ? "from-amber-400 to-orange-500" : "from-emerald-400 to-teal-500", shadow: choCham.length ? "shadow-amber-500/30" : "shadow-emerald-500/30", bg: choCham.length ? "bg-amber-50" : "bg-emerald-50", href: "/admin/cho-cham" },
     { title: "Lượt Nộp Bài", value: stats.totalSubmissions, icon: TrendingUp, color: "from-violet-500 to-purple-600", shadow: "shadow-violet-500/30", bg: "bg-violet-50" },
   ];
 
@@ -148,10 +162,59 @@ export default function AdminDashboard() {
         </div>
       </div>
 
+      {/* Thông báo bài tự luận chờ chấm - đặt ngay dưới tiêu đề, trước mọi con số thống kê,
+          vì đây là việc duy nhất trên Dashboard cần thầy cô làm ngay. */}
+      {!dangTaiChoCham && (choCham.length > 0 ? (
+        <div className="rounded-3xl border-2 border-amber-300 bg-gradient-to-r from-amber-50 via-orange-50 to-amber-50 p-6 shadow-sm">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex items-start gap-4">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-white flex items-center justify-center shadow-lg shadow-amber-500/30 shrink-0">
+                <ClipboardCheck className="w-7 h-7" />
+              </div>
+              <div>
+                <h2 className="text-2xl font-black text-amber-900">
+                  Có {choCham.length} bài tự luận đang chờ chấm
+                  <span className="text-base font-bold text-amber-700 ml-2">({soCauChoCham} câu)</span>
+                </h2>
+                <p className="text-amber-800 font-medium mt-1">
+                  Máy không chấm tự luận. Học sinh đang thấy "chờ thầy cô chấm"; chấm xong và lưu chốt thì điểm mới tính vào bảng điểm và điểm thưởng tháng.
+                </p>
+              </div>
+            </div>
+            <Link href="/admin/cho-cham" className="shrink-0 inline-flex items-center gap-2 bg-amber-600 hover:bg-amber-700 text-white font-black px-6 py-3 rounded-2xl shadow-lg shadow-amber-600/30 transition-all hover:scale-[1.02]">
+              Vào chấm ngay <ArrowRight className="w-5 h-5" />
+            </Link>
+          </div>
+          <div className="mt-5 grid grid-cols-1 md:grid-cols-3 gap-3">
+            {choCham.slice(0, 3).map((d: any, i: number) => (
+              <Link key={d.ket_qua_id || `${d.exam_id}_${d.student_id}_${i}`} href={duongCham(d)}
+                className="bg-white/80 hover:bg-white rounded-2xl border border-amber-200 p-4 transition-all hover:shadow-md group">
+                <div className="flex items-center justify-between gap-2">
+                  <span className="font-bold text-slate-800 truncate">{d.tenHs}</span>
+                  <span className="text-[10px] font-black px-1.5 py-0.5 rounded bg-amber-100 text-amber-800 shrink-0">{d.conThieu} câu</span>
+                </div>
+                <div className="text-sm text-slate-600 truncate mt-1">{d.tenDe}</div>
+                <div className="text-xs text-slate-400 mt-2 flex items-center gap-1">
+                  <Clock className="w-3.5 h-3.5" /> {d.nopLuc ? new Date(d.nopLuc).toLocaleString('vi-VN', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : ''}
+                  {d.lop && <span className="ml-auto font-semibold text-slate-500">{d.lop}</span>}
+                </div>
+              </Link>
+            ))}
+          </div>
+          {choCham.length > 3 && (
+            <p className="text-sm text-amber-800 font-semibold mt-3">… và {choCham.length - 3} bài nữa trong hàng chờ.</p>
+          )}
+        </div>
+      ) : (
+        <div className="rounded-3xl border border-emerald-200 bg-emerald-50 px-6 py-4 flex items-center gap-3 text-emerald-800 font-semibold">
+          <CheckCircle2 className="w-5 h-5 text-emerald-600" /> Không có bài tự luận nào chờ chấm.
+        </div>
+      ))}
+
       {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {statCards.map((stat, idx) => (
-          <div key={idx} className="bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden">
+          <Link href={stat.href || '#'} key={idx} className={`block bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden ${stat.href ? '' : 'pointer-events-none'}`}>
             {/* Background Decoration */}
             <div className={`absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-10 bg-gradient-to-br ${stat.color} group-hover:scale-150 transition-transform duration-700`} />
             
@@ -169,7 +232,7 @@ export default function AdminDashboard() {
                 {loading ? <span className="animate-pulse">...</span> : <CountUp end={stat.value} />}
               </h3>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
 
@@ -239,6 +302,18 @@ export default function AdminDashboard() {
                     <span className="text-[11.5px] font-medium opacity-80">Soạn bài · Đứng lớp · Trò chơi · Điện thoại</span>
                   </div>
                 </div>
+              </Link>
+
+              <Link href="/admin/cho-cham" className="group flex items-center justify-between bg-white/10 hover:bg-white/20 p-4 rounded-2xl backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+                <div className="flex items-center gap-3 text-white">
+                  <div className="p-2 bg-white/10 rounded-xl group-hover:bg-white/20 transition-colors">
+                    <ClipboardCheck className="w-5 h-5" />
+                  </div>
+                  <span className="font-bold">Chờ chấm tự luận</span>
+                </div>
+                {choCham.length > 0 && (
+                  <span className="bg-amber-400 text-amber-950 text-xs font-black px-2.5 py-1 rounded-full shadow">{choCham.length}</span>
+                )}
               </Link>
 
               <Link href="/admin/exam-results" className="group flex items-center justify-between bg-white/10 hover:bg-white/20 p-4 rounded-2xl backdrop-blur-md border border-white/20 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">

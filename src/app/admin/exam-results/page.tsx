@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { Eye, Loader2, Search, Filter, AlertCircle, CheckCircle2, RefreshCw, Users, Trash2, BookOpen, Download, Edit3, Image as ImageIcon } from "lucide-react";
+import { Eye, Loader2, Search, Filter, AlertCircle, CheckCircle2, RefreshCw, Users, Trash2, BookOpen, Download, Edit3, Clock, Image as ImageIcon } from "lucide-react";
 import Link from "next/link";
 import { fetchExamResultsAdmin } from "./actions";
 import ReviewModal from './ReviewModal';
@@ -103,6 +103,11 @@ export default function ExamResultsPage() {
       setStudents(data.students || []);
       setLessons(data.lessons || []);
       setModules(data.modules || []);
+      /* Từ hàng chờ chấm / Dashboard bấm sang với ?mo=<id lượt làm> thì mở thẳng cửa sổ
+         chấm, khỏi phải dò lại em ấy trong bảng. */
+      const mo = new URLSearchParams(window.location.search).get('mo');
+      const dong = mo ? (data.results || []).find((r: any) => r.id === mo) : null;
+      if (dong) openReviewModal(dong);
     }
     
     setLoading(false);
@@ -395,6 +400,12 @@ export default function ExamResultsPage() {
                       ) : row.attempt_number === 0 ? (
                         <span className="inline-flex items-center gap-1 bg-orange-100 text-orange-600 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">
                           <Edit3 className="w-4 h-4" /> Đang làm
+                        </span>
+                      ) : Number(row.answers?._choChamTuLuan || 0) > 0 ? (
+                        /* Còn tự luận thầy cô chưa chấm: điểm đang thấy mới là phần máy chấm,
+                           chưa phán đạt/chưa đạt. Bấm mắt để chấm, lưu xong cờ tự gỡ. */
+                        <span className="inline-flex items-center gap-1 bg-amber-100 text-amber-800 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">
+                          <Clock className="w-4 h-4" /> Chờ chấm tự luận
                         </span>
                       ) : row.passed ? (
                         <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-full text-xs font-bold shadow-sm">

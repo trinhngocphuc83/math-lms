@@ -293,6 +293,23 @@ lật đáp án, cả lớp thấy ngay ý nào sai.
 **Câu tự luận:** hiện **bài giải mẫu** để cả lớp đối chiếu; thầy cô gọi em lên rồi cộng
 điểm bằng tay (hệ thống không tự chấm tự luận).
 
+### Chấm tự luận học sinh nộp — không còn AI chấm
+
+Từ 20/9/2026 app **không chấm tự luận bằng AI nữa** (không tiêu khoá API, không có điểm
+"máy đoán"). Mạch đi như sau:
+
+1. Em nộp bài (luyện tập trong bài giảng hoặc thi online): phần trắc nghiệm máy chấm ngay;
+   câu tự luận (chữ gõ + ảnh chụp) chuyển sang **hàng chờ**. Em thấy dòng *"chờ thầy cô
+   chấm"* và điểm hiện ra chỉ là phần trắc nghiệm — chưa phán đạt hay chưa đạt.
+2. **Dashboard** hiện ngay khung vàng *"Có N bài tự luận đang chờ chấm"* kèm 3 bài mới nhất;
+   thẻ **Bài chờ chấm** và nút **Chờ chấm tự luận** ở Truy cập nhanh cũng đếm số ấy. Mục
+   **Chờ chấm** ở thanh bên gom đủ cả thi online lẫn luyện tập, lọc theo lớp / đề.
+3. Bấm **Chấm bài** → cửa sổ chấm có đề, **lời giải mẫu**, chữ em gõ, ảnh em chụp; gõ điểm
+   và lời phê từng câu, bấm **Cộng từ bảng chi tiết** rồi **LƯU CHỐT ĐIỂM**.
+4. Lưu xong bài rời hàng chờ; điểm mới tính vào bảng điểm và **điểm thưởng tháng** (bài
+   còn chờ chấm thì quét điểm thưởng bỏ qua, để em làm tốt tự luận không bị thiệt). Em xem
+   lời phê ở lịch sử làm bài.
+
 ### Nhảy thẳng tới câu cần chữa
 
 Trên thanh trên cùng có ô **\`Câu ⬚ / 21\`** — gõ số rồi Enter là nhảy tới đúng câu đó, khỏi
@@ -451,7 +468,7 @@ gõ tên vào Claude Code, không phải nhớ các bước.
 
 Gõ dấu \`/\` rồi tên skill là xong. Đang có hai skill:
 
-### \`/soan-chuong-thpt\` — soạn trọn một chương
+### \`/thpt-12\` — soạn trọn một chương
 
 Soạn cả chương theo mạch: **lý thuyết → phân dạng → bài luyện tập → đề kiểm tra**, đúng
 hạn ngạch từng khối (lớp 12 chỉ 20 trắc nghiệm + 4 Đúng/Sai + 6 trả lời ngắn, không tự
@@ -459,7 +476,7 @@ luận; lớp 10–11 mới có 4 câu tự luận).
 
 Nói thẳng tên chương là được, ví dụ:
 
-> \`/soan-chuong-thpt\` chương Nguyên hàm – Tích phân, Toán 12
+> \`/thpt-12\` chương Nguyên hàm – Tích phân, Toán 12
 
 Skill tự soi kho xem chương ấy đã có gì, soạn phần còn thiếu, rồi **xuất ra Word** với
 công thức MathType (OMML) — mở bằng Word là sửa được ngay, không phải chuyển đổi gì.

@@ -158,20 +158,26 @@ export default function ReviewSubmissionPage() {
                        </div>
                      )}
 
-                     {/* AI Feedback */}
-                     {q.type === 'essay' && answers.aiFeedback?.[idx] && (
+                     {/* Lời phê của thầy cô cho câu tự luận (gradedFeedback do trang chấm tay ghi).
+                         Bài nộp từ thời còn AI chấm thì còn aiFeedback - vẫn hiện, nhưng ghi rõ
+                         là nhận xét cũ. Chưa chấm thì báo đang chờ. */}
+                     {q.type === 'essay' && (answers.gradedFeedback?.[idx] || answers.aiFeedback?.[idx] ? (
                        <div className="border-2 border-indigo-100 rounded-xl overflow-hidden mt-4">
                          <div className="bg-indigo-50 px-4 py-3 border-b border-indigo-100 flex items-center justify-between">
                            <div className="flex items-center gap-2 font-bold text-indigo-700">
-                             <CheckCircle2 className="w-5 h-5 text-emerald-500" /> Kết quả chấm điểm AI
+                             <CheckCircle2 className="w-5 h-5 text-emerald-500" /> {answers.gradedFeedback?.[idx] ? 'Lời phê của thầy cô' : 'Nhận xét (bản cũ)'}
                            </div>
-                           <div className="bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded-full">AI Đã chấm</div>
+                           <div className="bg-indigo-600 text-white text-xs font-bold px-2 py-1 rounded-full">Đã chấm</div>
                          </div>
-                         <div className="p-4 bg-white prose max-w-none text-sm text-slate-700">
-                           {answers.aiFeedback[idx]}
+                         <div className="p-4 bg-white prose max-w-none text-sm text-slate-700 whitespace-pre-wrap">
+                           {answers.gradedFeedback?.[idx] || answers.aiFeedback[idx]}
                          </div>
                        </div>
-                     )}
+                     ) : answers.gradedScores?.[idx] === undefined ? (
+                       <div className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-800">
+                         ⏳ Câu tự luận này đang chờ thầy cô chấm — điểm và lời phê sẽ hiện ở đây sau khi chấm.
+                       </div>
+                     ) : null)}
 
                    </div>
                  )}

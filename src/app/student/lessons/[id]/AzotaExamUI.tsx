@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useMemo } from "react";
-import { CheckCircle2, AlertCircle, Send, ListTodo, UploadCloud, X, Lightbulb, ListOrdered, Pin, Bot, Loader2, Image as ImageIcon, LayoutGrid } from 'lucide-react';
+import { CheckCircle2, AlertCircle, Send, ListTodo, UploadCloud, X, Lightbulb, ListOrdered, Pin, Clock, Loader2, Image as ImageIcon, LayoutGrid } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkMath from 'remark-math';
@@ -337,6 +337,8 @@ export default function AzotaExamUI({
 
      return { parts: res, totalQuizzes: qIndex, groupedParts: groups, availableTabs: tabs };
   }, [content]);
+  /* Số câu tự luận trong bài - có thì kết quả chỉ là phần máy chấm, còn lại chờ thầy cô. */
+  const soCauTuLuanTrongBai = parts.filter(p => p.type === 'quiz' && p.realType === 'essay').length;
 
   const [activeTab, setActiveTab] = useState<string>('');
 
@@ -432,7 +434,7 @@ export default function AzotaExamUI({
   };
 
   /**
-   * Câu tự luận: KHÔNG chấm bằng AI nữa, chuyển sang tự đối chiếu.
+   * Câu tự luận: KHÔNG chấm bằng AI, không chấm bằng máy - chỉ ghi nhận để thầy cô chấm.
    *
    * Đây từng là cửa học sinh tiêu khoá API nặng nhất: mỗi câu tự luận một lượt gọi. Đo
    * trên kho Toán ngày 04/09/2026: 448 câu tự luận trong 58 khối bài, 84 lượt ghi danh -
@@ -453,14 +455,11 @@ export default function AzotaExamUI({
       passed: null,
       choThayCham: true,
       sampleAnswer: sampleAnswer0,
-      feedback: sampleAnswer0
-        ? 'Câu tự luận — em đối chiếu với lời giải mẫu bên dưới. Thầy cô sẽ xem lại và cho điểm.'
-        : 'Câu tự luận — Thầy cô sẽ xem lại và cho điểm.',
+      feedback: '',
       score: `–/${maxScoreForQ.toFixed(2)}`,
     };
   };
 
-  const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
   const recalculateAndSaveScore = async (newScores: Record<string, { earned: number; max: number }>) => {
     let total = 0;
     Object.values(newScores).forEach(s => total += s.earned);
@@ -510,7 +509,7 @@ export default function AzotaExamUI({
 
   // === LOGIC CHẤM TOÀN BÀI THANG 10 ===
   const handleSubmit = async () => {
-    if (!window.confirm("Bạn có chắc chắn muốn nộp bài? Hệ thống sẽ tự động chấm điểm toàn bài trên thang điểm 10.")) return;
+    if (!window.confirm("Bạn có chắc chắn muốn nộp bài? Phần trắc nghiệm được chấm ngay trên thang 10; câu tự luận (nếu có) sẽ do thầy cô chấm và chốt điểm sau.")) return;
     
     setIsGradingAll(true);
 
@@ -564,7 +563,7 @@ export default function AzotaExamUI({
         immediateScore += earned;
         newQuestionScores[qIndex] = { earned, max: maxScoreQ };
       } else if (realType === 'essay') {
-        // Đánh dấu để chấm AI sau
+        // Gom câu tự luận: không chấm, chỉ ghi nhận bài làm để thầy cô chấm sau
         newQuestionScores[qIndex] = { earned: 0, max: maxScoreQ };
         essayTasks.push({ qIndex, data, maxScore: maxScoreQ });
       }
@@ -610,7 +609,7 @@ export default function AzotaExamUI({
       }
     });
 
-    // 5. Chấm essay TUẦN TỰ có DELAY
+    // 5. Ghi nhận câu tự luận (điểm để trống, chờ thầy cô)
     if (essayTasks.length > 0) {
       const gradingInit: Record<string, { isGrading: boolean; result?: any }> = {};
       essayTasks.forEach(t => { gradingInit[t.qIndex] = { isGrading: true }; });
@@ -641,6 +640,7 @@ export default function AzotaExamUI({
                  score: earned,
                  passed: previousResult.passed,
                  feedback: previousResult.feedback,
+                 studentAnswer: answers[qIndex.toString()]?.text || '',
                  images: answers[qIndex.toString()]?.images || []
               });
               return;
@@ -662,6 +662,7 @@ export default function AzotaExamUI({
                score: earned,
                passed: result.passed,
                feedback: result.feedback,
+               studentAnswer: answers[qIndex.toString()]?.text || '',
                images: answers[qIndex.toString()]?.images || []
             });
           } catch (err: any) {
@@ -680,7 +681,6 @@ export default function AzotaExamUI({
             });
           }
         }));
-        if (i + CHUNK_SIZE < essayTasks.length) await sleep(1500);
       }
 
       setQuestionScores(updatedScores);
@@ -746,8 +746,8 @@ export default function AzotaExamUI({
             <div className="w-16 h-16 rounded-full bg-indigo-100 flex items-center justify-center">
               <Loader2 className="w-10 h-10 text-indigo-600 animate-spin" />
             </div>
-            <h3 className="text-xl font-black text-gray-900 text-center">Đang chấm toàn bộ bài...</h3>
-            <p className="text-gray-500 text-center font-medium">Hệ thống AI đang phân tích và chấm điểm từng câu. Vui lòng chờ trong giây lát.</p>
+            <h3 className="text-xl font-black text-gray-900 text-center">Đang chấm bài...</h3>
+            <p className="text-gray-500 text-center font-medium">Máy chấm phần trắc nghiệm; câu tự luận sẽ chuyển tới thầy cô. Vui lòng chờ trong giây lát.</p>
             <div className="w-full bg-gray-200 rounded-full h-2 overflow-hidden">
               <div className="bg-indigo-600 h-2 rounded-full animate-pulse" style={{ width: '60%' }}></div>
             </div>
@@ -762,9 +762,23 @@ export default function AzotaExamUI({
               <div className="flex-1">
                  <h2 className="text-2xl font-extrabold text-indigo-900 mb-2">Kết quả làm bài</h2>
                  <p className="text-gray-600 font-medium">Bạn đã hoàn thành phần thi: <span className="font-bold text-gray-800">{title}</span></p>
-                 {isGradingAll && <p className="text-indigo-500 text-sm font-bold mt-1 animate-pulse">⏳ Đang chấm các câu tự luận...</p>}
-                 
-                  {!isGradingAll && score < 7 && (
+                 {isGradingAll && <p className="text-indigo-500 text-sm font-bold mt-1 animate-pulse">⏳ Đang ghi nhận bài làm...</p>}
+
+                  {/* Có tự luận: điểm đang thấy mới là phần máy chấm được, đừng phán đạt hay
+                      chưa đạt vội - thầy cô chấm tự luận xong mới chốt. */}
+                  {!isGradingAll && soCauTuLuanTrongBai > 0 && (
+                    <div className="mt-4 p-4 rounded-xl border border-amber-300 bg-amber-50 text-amber-900 animate-in fade-in slide-in-from-bottom-2">
+                      <p className="font-bold mb-1 flex items-center gap-2"><Clock className="w-5 h-5 text-amber-600" /> Bài có {soCauTuLuanTrongBai} câu tự luận đang chờ thầy cô chấm.</p>
+                      <p className="text-sm">Điểm bên cạnh mới là phần trắc nghiệm máy chấm được. Thầy cô chấm tự luận xong sẽ chốt điểm cả bài; em xem lại ở lịch sử làm bài.</p>
+                      <div className="flex flex-wrap items-center gap-3 mt-3">
+                         <button onClick={() => setShowExplanations(!showExplanations)} className="px-6 py-2 bg-amber-600 hover:bg-amber-700 text-white rounded-lg font-bold shadow-sm transition-colors text-sm flex items-center gap-2">
+                            <Lightbulb className="w-4 h-4"/> {showExplanations ? 'Ẩn Hướng Dẫn Giải' : 'Xem Toàn Bộ Hướng Dẫn Giải'}
+                         </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {!isGradingAll && soCauTuLuanTrongBai === 0 && score < 7 && (
                     <div className="mt-4 p-4 rounded-xl border border-red-200 bg-red-50 text-red-700 animate-in fade-in slide-in-from-bottom-2">
                       <p className="font-bold mb-2 flex items-center gap-2"><AlertCircle className="w-5 h-5" /> Bạn chưa đạt yêu cầu (&lt; 7đ).</p>
                       <p className="text-sm">Hãy xem kỹ Hướng dẫn giải bên dưới và làm lại bài nhé!</p>
@@ -779,7 +793,7 @@ export default function AzotaExamUI({
                     </div>
                   )}
                   
-                  {!isGradingAll && score >= 7 && (
+                  {!isGradingAll && soCauTuLuanTrongBai === 0 && score >= 7 && (
                     <div className="mt-4 p-4 rounded-xl border border-green-200 bg-green-50 text-green-700 animate-in fade-in slide-in-from-bottom-2">
                       <p className="font-bold flex items-center gap-2"><CheckCircle2 className="w-5 h-5" /> Chúc mừng bạn đã vượt qua bài luyện tập!</p>
                       <div className="flex flex-wrap items-center gap-3 mt-3">
@@ -1252,77 +1266,20 @@ export default function AzotaExamUI({
                           </div>
                        )}
 
-                       {/* Kết quả chấm AI cho Tự luận */}
+                       {/* Tự luận: máy không chấm, không gọi AI. Sau khi nộp chỉ báo em biết bài
+                           đang chờ thầy cô chấm; lời giải mẫu nằm ở phần Hướng dẫn giải phía trên. */}
                        {isEssay && (
-                          <div className="mt-2 p-6 rounded-2xl border-2 border-dashed border-indigo-300 bg-indigo-50/50 relative overflow-hidden">
-                             <div className="absolute -right-10 -bottom-10 opacity-10">
-                                <Bot className="w-40 h-40 text-indigo-600" />
+                          <div className="mt-2 p-5 rounded-2xl border-2 border-amber-300 bg-amber-50 flex items-start gap-4">
+                             <div className="shrink-0 w-11 h-11 rounded-full bg-white border border-amber-200 flex items-center justify-center shadow-sm">
+                                <Clock className="w-6 h-6 text-amber-600" />
                              </div>
-                             
-                             {gradingStatus[qIndex]?.result?.error || (gradingStatus[qIndex]?.result?.scoreNumber === 0 && !gradingStatus[qIndex]?.result?.passed && gradingStatus[qIndex]?.result?.feedback?.includes('Lỗi chấm')) ? (
-                                <div className="relative z-10 animate-in fade-in zoom-in-95 duration-300">
-                                   <div className="flex items-center gap-3 mb-4 border-b border-indigo-100 pb-3">
-                                      <div className="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center text-red-600 shadow-sm border border-red-200">
-                                         <AlertCircle className="w-6 h-6" />
-                                      </div>
-                                      <div>
-                                         <h4 className="text-xl font-black text-red-900">Lỗi trong quá trình chấm AI</h4>
-                                         <p className="text-sm font-bold text-red-600">Đã xảy ra lỗi hệ thống</p>
-                                      </div>
-                                      <button 
-                                        onClick={() => handleGradeEssay(qIndex, data)}
-                                        disabled={gradingStatus[qIndex]?.isGrading}
-                                        className="ml-auto bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-xl font-bold shadow-sm transition-colors disabled:opacity-50"
-                                      >
-                                        Thử chấm lại
-                                      </button>
-                                   </div>
-                                   <div className="text-slate-700 bg-white p-5 rounded-xl border border-red-100 shadow-sm">
-                                      <p className="font-medium text-red-600">{gradingStatus[qIndex].result.feedback || gradingStatus[qIndex].result.error}</p>
-                                   </div>
-                                </div>
-                             ) : gradingStatus[qIndex]?.result ? (
-                                <div className="relative z-10 animate-in fade-in zoom-in-95 duration-300">
-                                   <div className="flex items-center gap-3 mb-4 border-b border-indigo-100 pb-3">
-                                      <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 shadow-sm border border-green-200">
-                                         <CheckCircle2 className="w-6 h-6" />
-                                      </div>
-                                      <div>
-                                         <h4 className="text-xl font-black text-indigo-900">Kết quả chấm điểm AI</h4>
-                                         <p className="text-sm font-bold text-green-600">Đã chấm xong</p>
-                                      </div>
-                                      {gradingStatus[qIndex].result.score && (
-                                         <div className="ml-auto bg-indigo-600 text-white px-4 py-1.5 rounded-full font-black text-lg shadow-sm">
-                                            {gradingStatus[qIndex].result.score}
-                                         </div>
-                                      )}
-                                   </div>
-                                   <div className="prose prose-sm sm:prose-base max-w-none overflow-x-auto text-slate-700 bg-white p-5 rounded-xl border border-indigo-100 shadow-sm leading-relaxed">
-                                      <ReactMarkdown components={appMarkdownComponents} remarkPlugins={[remarkMath, remarkBreaks, remarkGfm]} rehypePlugins={[rehypeKatex]} urlTransform={(url) => url}>{gradingStatus[qIndex].result.feedback || ''}</ReactMarkdown>
-                                   </div>
-                                </div>
-                             ) : gradingStatus[qIndex]?.isGrading ? (
-                                <div className="relative z-10 flex items-center justify-center gap-4 py-4">
-                                   <Loader2 className="w-8 h-8 text-indigo-600 animate-spin" />
-                                   <p className="text-indigo-700 font-bold text-lg">AI đang chấm câu này...</p>
-                                </div>
-                             ) : (
-                                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                                   <div className="text-center md:text-left">
-                                      <h4 className="text-xl font-black text-indigo-900 flex items-center justify-center md:justify-start gap-2 mb-2">
-                                         <Bot className="w-6 h-6 text-indigo-600" /> AI Chấm Điểm Tự Luận
-                                      </h4>
-                                      <p className="text-indigo-700 font-medium">Hệ thống AI sẽ phân tích bài làm của bạn, đối chiếu với các bước giải để cho điểm chi tiết.</p>
-                                   </div>
-                                   <button 
-                                      onClick={() => handleGradeEssay(qIndex, data)}
-                                      disabled={gradingStatus[qIndex]?.isGrading}
-                                      className="shrink-0 bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 text-white px-8 py-3.5 rounded-xl font-black shadow-lg shadow-indigo-200 transition-all flex items-center gap-2 hover:-translate-y-1 active:scale-95"
-                                   >
-                                      <Bot className="w-5 h-5" /> BẮT ĐẦU CHẤM
-                                   </button>
-                                </div>
-                             )}
+                             <div>
+                                <h4 className="text-lg font-black text-amber-900">Câu tự luận — chờ thầy cô chấm</h4>
+                                <p className="text-amber-800 font-medium text-sm mt-1">
+                                   Bài làm của em (chữ và ảnh) đã gửi tới thầy cô. Điểm câu này chưa tính vào tổng;
+                                   thầy cô chấm xong sẽ chốt điểm và em thấy lời phê ở lịch sử làm bài.
+                                </p>
+                             </div>
                           </div>
                        )}
                     </div>
