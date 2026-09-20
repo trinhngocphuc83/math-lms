@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { BookOpen, Users, TrendingUp, Calendar, Clock, Activity, PenTool, DollarSign, ListTodo, BookOpenText, ClipboardCheck, ArrowRight, CheckCircle2 } from "lucide-react";
+import { BookOpen, Users, TrendingUp, Calendar, Clock, Activity, PenTool, DollarSign, ListTodo, BookOpenText, ClipboardCheck, ArrowRight, CheckCircle2, Target } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, AreaChart, Area } from 'recharts';
@@ -142,6 +142,7 @@ export default function AdminDashboard() {
   const statCards = [
     { title: "Tổng Học Sinh", value: stats.totalStudents, icon: Users, color: "from-blue-500 to-indigo-600", shadow: "shadow-blue-500/30", bg: "bg-blue-50" },
     { title: "Tổng Khóa Học", value: stats.totalCourses, icon: BookOpen, color: "from-teal-400 to-emerald-500", shadow: "shadow-emerald-500/30", bg: "bg-teal-50" },
+    { title: "Kỳ Thi Trực Tuyến", value: stats.totalExams, icon: Target, color: "from-rose-400 to-red-500", shadow: "shadow-rose-500/30", bg: "bg-rose-50", href: "/admin/online-exams" },
     { title: "Bài Chờ Chấm", value: choCham.length, icon: ClipboardCheck, color: choCham.length ? "from-amber-400 to-orange-500" : "from-emerald-400 to-teal-500", shadow: choCham.length ? "shadow-amber-500/30" : "shadow-emerald-500/30", bg: choCham.length ? "bg-amber-50" : "bg-emerald-50", href: "/admin/cho-cham" },
     { title: "Lượt Nộp Bài", value: stats.totalSubmissions, icon: TrendingUp, color: "from-violet-500 to-purple-600", shadow: "shadow-violet-500/30", bg: "bg-violet-50" },
   ];
@@ -212,9 +213,9 @@ export default function AdminDashboard() {
       ))}
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
         {statCards.map((stat, idx) => (
-          <Link href={stat.href || '#'} key={idx} className={`block bg-white rounded-3xl p-6 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden ${stat.href ? '' : 'pointer-events-none'}`}>
+          <Link href={stat.href || '#'} key={idx} className={`block bg-white rounded-3xl p-5 border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-500 group relative overflow-hidden ${stat.href ? '' : 'pointer-events-none'}`}>
             {/* Background Decoration */}
             <div className={`absolute -right-6 -top-6 w-24 h-24 rounded-full opacity-10 bg-gradient-to-br ${stat.color} group-hover:scale-150 transition-transform duration-700`} />
             
@@ -228,7 +229,7 @@ export default function AdminDashboard() {
             </div>
             <div className="relative z-10">
               <p className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-1">{stat.title}</p>
-              <h3 className="text-4xl font-black text-gray-800">
+              <h3 className="text-3xl xl:text-4xl font-black text-gray-800">
                 {loading ? <span className="animate-pulse">...</span> : <CountUp end={stat.value} />}
               </h3>
             </div>
