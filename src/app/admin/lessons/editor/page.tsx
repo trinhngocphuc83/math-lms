@@ -16,6 +16,7 @@ import { createClient } from "@/utils/supabase/client";
 import ReactCrop, { type Crop } from 'react-image-crop';
 import BlockEditor, { Block } from "./BlockEditor";
 import PushToBankModal from './PushToBankModal';
+import XuatDeTuBaiModal from '@/components/admin/XuatDeTuBaiModal';
 import NhapCauTroChoiModal from '@/components/tro-choi/NhapCauTroChoiModal';
 import { demCauChuaRoMuc, doanMucChoBoCau } from '@/utils/doanMucBoCau';
 import 'react-image-crop/dist/ReactCrop.css';
@@ -1172,6 +1173,8 @@ function EditorContent() {
   const [anhNguonHong, setAnhNguonHong] = useState(false);
   const [pendingText, setPendingText] = useState("");
   const [isExportMenuOpen, setIsExportMenuOpen] = useState(false);
+  /* Hộp xuất đề theo khuôn Quản lý Đề thi (đầu đề, PHẦN I/II/III, phiếu, hướng dẫn chấm). */
+  const [moXuatDe, setMoXuatDe] = useState(false);
 
   // Selection states for Course & Chapter
   const [courses, setCourses] = useState<any[]>([]);
@@ -2108,7 +2111,20 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
                   <Download className="w-3.5 h-3.5" /> Xuất Giáo Án (Word) <ChevronDown className="w-3.5 h-3.5" />
                 </button>
                 {isExportMenuOpen && (
-                  <div className="absolute top-full mt-2 right-0 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                  <div className="absolute top-full mt-2 right-0 w-72 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                    {/* Bài có câu hỏi thì xuất theo đúng khuôn Quản lý Đề thi: đầu đề, chia
+                        PHẦN I/II/III, phiếu trả lời, hướng dẫn chấm, trộn mã - thầy đòi hai
+                        chỗ xuất phải giống nhau. Hai mục dưới là đường cũ cho bài lý thuyết. */}
+                    {blocks.some(b => b.type === 'quiz') && (
+                      <>
+                        <button onClick={() => { setMoXuatDe(true); setIsExportMenuOpen(false); }} className="w-full text-left px-4 py-2.5 hover:bg-indigo-50 text-sm">
+                          <span className="font-bold text-indigo-700 flex items-center gap-1.5"><FileText className="w-4 h-4" /> Xuất đề thi (khuôn Quản lý Đề thi)…</span>
+                          <span className="block text-[11px] text-gray-500 mt-0.5">Đầu đề · Phần I/II/III · phiếu trả lời · hướng dẫn chấm · trộn mã</span>
+                        </button>
+                        <div className="my-1 border-t border-gray-100" />
+                        <div className="px-4 pt-1 pb-0.5 text-[10px] font-black uppercase tracking-wider text-gray-400">Giáo án lý thuyết</div>
+                      </>
+                    )}
                     <button onClick={() => { handleExportWord('student'); setIsExportMenuOpen(false); }} className="w-full text-left px-4 py-2 hover:bg-indigo-50 font-medium text-gray-700 text-sm">Bản Học Sinh (Chỉ Đề)</button>
                     <button onClick={() => { handleExportWord('teacher'); setIsExportMenuOpen(false); }} className="w-full text-left px-4 py-2 hover:bg-indigo-50 font-medium text-gray-700 text-sm">Bản Giáo Viên (Có Lời giải)</button>
                   </div>
@@ -2425,6 +2441,15 @@ ${ketQuaCatAnh.hong} câu không xử lý được, đã giữ dấu [CÓ HÌNH 
           }}
         />
       )}
+      <XuatDeTuBaiModal
+        isOpen={moXuatDe}
+        onClose={() => setMoXuatDe(false)}
+        markdown={editorMode === 'form' ? serializeBlocksToMarkdown(blocks) : markdownContent}
+        tenBai={moduleTitle || title}
+        tenKhoa={courses.find(c => c.id === selectedCourseId)?.title || ''}
+        khoaNho={moduleId || lessonId || undefined}
+      />
+
       {isPushToBankModalOpen && (
         <PushToBankModal
           isOpen={isPushToBankModalOpen}
