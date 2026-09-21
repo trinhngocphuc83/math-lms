@@ -337,7 +337,7 @@ export function tenTepDe(dauDe: DauDe, hauTo = ""): string {
   const goc = [dauDe.tenKyThi, dauDe.monLop, dauDe.maDe && `ma ${dauDe.maDe}`]
     .filter(Boolean).join(" ");
   const sach = goc
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[đĐ]/g, "d")
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/g, "d").replace(/Đ/g, "D")
     .replace(/[^a-zA-Z0-9]+/g, "_").replace(/^_+|_+$/g, "");
   return (sach || "De_kiem_tra") + (hauTo ? "_" + hauTo : "");
 }
