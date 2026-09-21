@@ -335,6 +335,24 @@ hai số lệch nhau). Trên điện thoại cũng có ô y hệt.
 Mỗi đề có thêm nút 📄 để **gắn link tải đề** (Google Drive) và **link video sửa đề**
 (YouTube). Học sinh bấm là tải được đề về in, và xem video chữa ngay trong app.
 
+### Xuất đề ra Word — cùng khuôn với Quản lý Đề thi
+
+Trong trình soạn, nút **Xuất Giáo Án (Word)** → **Xuất đề thi (khuôn Quản lý Đề thi)…**
+mở hộp xuất, dùng **chung bộ dựng** với Quản lý Đề thi nên hai nơi in ra giống hệt nhau:
+
+- **Cơ cấu đề** tự đếm từ các câu trong bài: Phần I trắc nghiệm · II Đúng/Sai · III trả
+  lời ngắn · IV tự luận, kèm **điểm từng phần** (mặc định 0,25 · 1 · 0,5 · 1 điểm/câu, sửa
+  được; tổng tô xanh khi tròn 10).
+- **Đầu đề in trên giấy**: tên lớp học, kỳ kiểm tra (lấy từ tên đề), môn – lớp (đoán từ
+  khoá học), năm học, thời gian, mã đề. Hộp **nhớ** theo từng đề để lần sau khỏi gõ lại.
+- **Số mã đề** 1–4: nhiều mã in trong cùng một tệp, cuối tệp có bảng đáp án các mã.
+- Bốn tệp: **Đề cho học sinh** · **Đề kèm lời giải** · **Phiếu trả lời** (lưới tô, dòng kẻ
+  tự luận, có QR để chấm quét ảnh) · **Hướng dẫn chấm** (đáp án, bảng luỹ tiến Đúng/Sai,
+  biểu điểm tự luận).
+
+Hai mục *Bản Học Sinh / Bản Giáo Viên* bên dưới là đường cũ, để in **bài lý thuyết**
+(có phân dạng, ví dụ) chứ không phải đề.
+
 ### Học sinh vào thế nào
 
 Trang chủ học sinh → **Ôn tập & Kiểm tra**. Không phải chọn khối — hệ thống biết em học
