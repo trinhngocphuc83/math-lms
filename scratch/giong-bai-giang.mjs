@@ -15,7 +15,7 @@
  * Kịch bản (lời giảng) soạn ở trang /admin/thu-giong; script này chỉ lo phần nhận tệp.
  */
 import { createClient } from '@supabase/supabase-js';
-import { readFileSync, readdirSync, renameSync, existsSync, mkdirSync, statSync } from 'fs';
+import { readFileSync, readdirSync, copyFileSync, unlinkSync, mkdirSync, statSync } from 'fs';
 import { execFileSync } from 'child_process';
 import { join } from 'path';
 import { homedir } from 'os';
@@ -103,7 +103,9 @@ if (ds.length !== 1) {
 
 mkdirSync(TAM, { recursive: true });
 const goc = join(TAM, `${khoa}.goc.mp3`);
-renameSync(join(TAI_VE, ds[0]), goc);
+/* Downloads ở ổ C còn repo ở ổ D - đổi tên qua hai ổ thì Windows báo EXDEV, phải chép rồi xoá. */
+copyFileSync(join(TAI_VE, ds[0]), goc);
+unlinkSync(join(TAI_VE, ds[0]));
 
 /* Chuẩn hoá nhịp và độ to như bên PowerPoint. Máy không có ffmpeg thì dùng bản gốc và
    để app tự đặt nhịp lúc phát (playbackRate) — vẫn nghe được, chỉ là không cân độ to. */
