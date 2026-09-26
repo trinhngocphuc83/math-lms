@@ -23,6 +23,9 @@ import { homedir } from 'os';
 const KHO = 'system-assets';
 const THU_MUC = 'giong-bai-giang';
 const NHIP = process.env.NHIP || '1.05';
+/* Độ to chuẩn (LUFS). Thầy nghe -14 thấy nhỏ, nâng lên -11; đỉnh giữ -1 dBTP nên
+   không vỡ tiếng. Máy chiếu lớp học loa yếu nên cần to hơn mức phát trên mạng. */
+const TO = process.env.TO || '-11';
 const TAI_VE = process.env.TAI_VE || join(homedir(), 'Downloads');
 const TAM = 'scratch/giong-tam';
 
@@ -113,7 +116,7 @@ let tep = goc;
 try {
   const ra = join(TAM, `${khoa}.mp3`);
   execFileSync('ffmpeg', ['-loglevel', 'error', '-y', '-i', goc, '-filter:a',
-    `atempo=${NHIP},loudnorm=I=-14:TP=-1.5:LRA=11`, '-ar', '44100', '-c:a', 'libmp3lame', '-b:a', '160k', ra]);
+    `atempo=${NHIP},loudnorm=I=${TO}:TP=-1.0:LRA=11`, '-ar', '44100', '-c:a', 'libmp3lame', '-b:a', '160k', ra]);
   tep = ra;
 } catch { console.log('(không có ffmpeg — dùng bản gốc, app tự chỉnh nhịp lúc phát)'); }
 

@@ -81,6 +81,11 @@ Viết mỗi bài một tệp `scratch/giao-an-tu-luan/<chương>/lt-bai<N>.md` 
 {{Q:CH_…:tln}}             ← ≥ 2 câu mỗi dạng
 ```
 
+**Mục *Phương pháp giải* viết ĐỦ Ý NHƯNG NGẮN** — mỗi bước một dòng, không diễn giải dài
+dòng (thầy chốt 26/9/2026). Lý do: bài giảng nay có giọng đọc AI, mà mục này được đọc
+thành tiếng ở đầu mỗi dạng; viết dài thì đoạn thu vừa tốn hạn mức ElevenLabs vừa nghe
+lê thê trước khi vào ví dụ. Phần giảng kỹ để dành cho *Hướng dẫn giải* của ví dụ mẫu.
+
 Nguồn để viết: sách thầy để ở ổ G (SGK quét → render trang PNG bằng `pymupdf` mà đọc; tài
 liệu bổ trợ có chữ → `page.get_text()`), và **tên dạng lấy đúng từ danh mục kho**, xếp dạng
 đông câu lên trước (dạng đông là dạng hay ra kiểm tra). Ví dụ mẫu tự viết, **đừng trùng số
@@ -181,3 +186,17 @@ nói rõ đã rà bao nhiêu câu, sửa câu nào, chỗ nào kho còn mỏng.
 - Chép khuôn từ chương thầy dựng tay trước đó (Toán 9 C3 có "Luyện tập 1/2" trong bài Ôn tập
   chương) là sai — quy ước đúng là đề ở `Cuối chương N`. Khuôn nằm ở tệp references, không nằm ở
   dữ liệu cũ.
+
+## Sắp hết dung lượng thì đóng gói bàn giao
+
+Đo bằng `mcp__ccd_session_mgmt__get_usage` (`{"session_id": "self"}`) ở **đầu phiên** và sau
+**mỗi mốc lớn**. Cửa sổ ngữ cảnh **≥ 90 %** hoặc hạn mức tài khoản 5 giờ / tuần **≥ 95 %** thì
+**dừng nhận việc mới**: ghi `BAN-GIAO.md` vào thư mục việc (`D:\claude\math-lms\scratch\<mã chương>\BAN-GIAO.md`, ví dụ `scratch\l9c4\`), lưu ra tệp những gì mới nằm trong đầu, rồi
+báo thầy — còn bao nhiêu, mở lại lúc nào, và **câu mở đầu chép nguyên được cho phiên mới**.
+
+Hạn mức tuần đã trên 90 % ngay từ đầu phiên thì **nói trước khi bắt tay**, đừng dựng nửa chừng
+rồi mới báo hết.
+
+Luật đầy đủ và mẫu tệp: `G:\My Drive\APP LMS\claude-skills\_chung\dong-goi-ban-giao.md`. Phiên sau có thể ở **tài khoản khác, máy khác** — không có
+ký ức phiên này, cũng không có bộ nhớ trong `~\.claude\projects`. Cái gì không ghi vào tệp
+là mất. Không chép khoá API hay mật khẩu vào tệp bàn giao.

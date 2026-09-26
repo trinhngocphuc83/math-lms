@@ -94,6 +94,11 @@ Mỗi bài cần đủ các dạng mà kho đang có. Mỗi dạng gồm:
 ```quiz   ← hai câu tương tác RÚT TỪ KHO, có answerIndex và sourceQuestionId
 ```
 
+**Mục *Phương pháp giải* viết ĐỦ Ý NHƯNG NGẮN** — mỗi bước một dòng, không diễn giải dài
+dòng (thầy chốt 26/9/2026). Lý do: bài giảng nay có giọng đọc AI, mà mục này được đọc
+thành tiếng ở đầu mỗi dạng; viết dài thì đoạn thu vừa tốn hạn mức ElevenLabs vừa nghe
+lê thê trước khi vào ví dụ. Phần giảng kỹ để dành cho *Hướng dẫn giải* của ví dụ mẫu.
+
 **Kĩ năng bấm máy** — đọc [references/ky-nang-casio-fx580.md](references/ky-nang-casio-fx580.md).
 Ở đó có tổ hợp phím, cú pháp, và quan trọng nhất là **giới hạn** của từng công cụ (SOLVE
 không giải nổi phương trình có `Σ`, TABLE không nhận công thức truy hồi, PreAns bay sạch khi
@@ -397,3 +402,17 @@ Không có cách nào nhìn tên mà biết cái nào là bản đã sửa.
 Mốc giờ chỉ còn dùng làm đường lui: nếu có tệp **đang mở trong Word** thì ghi đè báo bận
 (EBUSY/EPERM), script tự lánh sang `<tên chương>-<giờ>/` và **báo rõ trên màn hình** rằng
 phải đóng Word rồi xoá thư mục thừa.
+
+## Sắp hết dung lượng thì đóng gói bàn giao
+
+Đo bằng `mcp__ccd_session_mgmt__get_usage` (`{"session_id": "self"}`) ở **đầu phiên** và sau
+**mỗi mốc lớn**. Cửa sổ ngữ cảnh **≥ 90 %** hoặc hạn mức tài khoản 5 giờ / tuần **≥ 95 %** thì
+**dừng nhận việc mới**: ghi `BAN-GIAO.md` vào thư mục việc (`D:\claude\math-lms\scratch\<mã chương>\BAN-GIAO.md`, ví dụ `scratch\l9c4\`), lưu ra tệp những gì mới nằm trong đầu, rồi
+báo thầy — còn bao nhiêu, mở lại lúc nào, và **câu mở đầu chép nguyên được cho phiên mới**.
+
+Hạn mức tuần đã trên 90 % ngay từ đầu phiên thì **nói trước khi bắt tay**, đừng dựng nửa chừng
+rồi mới báo hết.
+
+Luật đầy đủ và mẫu tệp: `G:\My Drive\APP LMS\claude-skills\_chung\dong-goi-ban-giao.md`. Phiên sau có thể ở **tài khoản khác, máy khác** — không có
+ký ức phiên này, cũng không có bộ nhớ trong `~\.claude\projects`. Cái gì không ghi vào tệp
+là mất. Không chép khoá API hay mật khẩu vào tệp bàn giao.
