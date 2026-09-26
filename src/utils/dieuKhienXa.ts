@@ -50,6 +50,8 @@ export type Lenh =
   | { viec: 'tro-choi'; hanh: string; gia?: any }
   /** Bấm Đ/S cho ý thứ `y` của cụm Đúng/Sai đang chiếu (trò chơi cần chấm được từ điện thoại) */
   | { viec: 'chon-ds'; y: number; dung: boolean }
+  /** Giọng đọc bài giảng: bật, tắt, hay đọc lại ý đang chiếu. */
+  | { viec: 'am'; hanh: 'bat' | 'tat' | 'doc-lai' }
   /** Điện thoại vừa vào, xin máy chiếu phát lại trạng thái */
   | { viec: 'xin-trang-thai' };
 

@@ -13,7 +13,7 @@ import {
   ChevronLeft, ChevronRight, Dices, Trophy, Maximize2, Wifi, WifiOff,
   Plus, Minus, UserX, Undo2, X, Timer, Eye, EyeOff, Send, Check, LogOut, Mic, Loader2,
   ChevronUp, ChevronDown,
-  BookOpen, CheckCircle2,
+  BookOpen, CheckCircle2, Volume2, VolumeX, RotateCcw,
 } from "lucide-react";
 import { studentMarkdownComponents } from "@/components/CustomMarkdownComponents";
 import { moKenhDienThoai, type TrangThaiChieu, type TrangThaiTroChoi } from "@/utils/dieuKhienXa";
@@ -74,6 +74,8 @@ export default function TrangDieuKhien() {
   const [chuaThayChieu, setChuaThayChieu] = React.useState(false);
   const [xemKeTiep, setXemKeTiep] = React.useState(false);
   const [moBangGio, setMoBangGio] = React.useState(false);
+  /** Giọng đọc bài giảng đang bật hay tắt (máy chiếu giữ trạng thái thật, đây chỉ là nhãn nút). */
+  const [amBat, setAmBat] = React.useState(true);
   const [chuTraLoi, setChuTraLoi] = React.useState('');
   const [oCau, setOCau] = React.useState('');
   /** Nghe được câu nhưng không ra được số phút - khác với lỗi micro của bộ nghe. */
@@ -337,6 +339,21 @@ export default function TrangDieuKhien() {
                       className="py-2.5 rounded-xl bg-white/10 active:bg-white/20 text-slate-200
                                  font-bold text-[13px] flex items-center justify-center gap-1.5">
                 <ChevronDown className="w-4 h-4" /> Cuộn xuống
+              </button>
+            </div>
+
+            {/* Giọng đọc bài giảng (bài đã thu ở trang Thu giọng). Tắt được ngay giữa lớp
+                khi thầy muốn tự giảng, và cho đọc lại ý vừa rồi. */}
+            <div className="grid grid-cols-2 gap-2.5 mt-2">
+              <button onClick={() => { const m = !amBat; setAmBat(m); gui({ viec: 'am', hanh: m ? 'bat' : 'tat' }); }}
+                      className={`py-2.5 rounded-xl font-bold text-[13px] flex items-center justify-center gap-1.5
+                                 ${amBat ? 'bg-emerald-600 active:bg-emerald-700 text-white' : 'bg-white/10 active:bg-white/20 text-slate-200'}`}>
+                {amBat ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />} Giọng: {amBat ? 'BẬT' : 'TẮT'}
+              </button>
+              <button onClick={() => gui({ viec: 'am', hanh: 'doc-lai' })}
+                      className="py-2.5 rounded-xl bg-white/10 active:bg-white/20 text-slate-200
+                                 font-bold text-[13px] flex items-center justify-center gap-1.5">
+                <RotateCcw className="w-4 h-4" /> Đọc lại ý này
               </button>
             </div>
 

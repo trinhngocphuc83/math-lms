@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useRef, useLayoutEffect, useCallback } from 'react';
+import { useEffect, useState, useRef, useLayoutEffect, useCallback, useMemo } from 'react';
 import { useParams, useSearchParams, useRouter } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 import ReactMarkdown from 'react-markdown';
@@ -10,7 +10,7 @@ import rehypeKatex from 'rehype-katex';
 import rehypeRaw from 'rehype-raw';
 import remarkBreaks from 'remark-breaks';
 import 'katex/dist/katex.min.css';
-import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling, Dices, Smartphone, HelpCircle } from 'lucide-react';
+import { ChevronRight, ChevronLeft, ArrowLeft, Maximize2, Minimize2, BookOpen, Scaling, Dices, Smartphone, HelpCircle, Volume2, VolumeX, RotateCcw } from 'lucide-react';
 import { ensureMathDelimiters } from '@/utils/latexFixer';
 import React from 'react';
 import {
@@ -30,6 +30,7 @@ import BangGoiTenVaDiem from '@/components/lop/BangGoiTenVaDiem';
 import GhepDienThoaiModal from '@/components/presentation/GhepDienThoaiModal';
 import HuongDanSoanBaiModal from '@/components/admin/HuongDanSoanBaiModal';
 import { moKenhMayChieu, taoMaPhien, type Lenh, type TrangThaiChieu } from '@/utils/dieuKhienXa';
+import { BoPhatGiong, khoaDoan, taiKichBan, traTheoKhoa, urlTep, type KichBanGiong } from '@/utils/giongBaiGiang';
 import { tachSlide, viTriCauHoi, slideCuaCau } from '@/utils/tachSlide';
 
 /* Vùng nội dung bên trong canvas (đã trừ lề). Mọi phép đo auto-fit dựa trên đây. */
@@ -174,6 +175,16 @@ export default function PresentationPage() {
     const [naturalHeight, setNaturalHeight] = useState(0);
     const [autoFitEnabled, setAutoFitEnabled] = useState(true);
 
+    /* ─── GIỌNG ĐỌC AI ───────────────────────────────────────────────────────────
+       Bài có thu giọng (trang "Thu giọng bài giảng") thì vào slide là tự đọc, và ý
+       nào thu riêng thì HIỆN THEO LỜI - đọc xong ý này mới hiện ý sau, thầy khỏi bấm.
+       Bài chưa thu thì mọi thứ y như cũ. */
+    const [kichBanGiong, setKichBanGiong] = useState<KichBanGiong | null>(null);
+    const [batTieng, setBatTieng] = useState(true);
+    /* Trình duyệt chặn phát tự động khi trang chưa được chạm vào - hiện nút mời bật. */
+    const [chanTuPhat, setChanTuPhat] = useState(false);
+    const boPhat = useRef<BoPhatGiong | null>(null);
+
     const measureRef = useRef<HTMLDivElement>(null);
     /** Vùng cuộn của slide - để điện thoại cuộn được phần bị khuất. */
     const vungCuon = useRef<HTMLDivElement>(null);
@@ -276,6 +287,57 @@ export default function PresentationPage() {
     }, [currentSlideIndex, currentFragmentIndex, slides, autoFitEnabled, moTroChoi, troDangChon, ttTroChoi]);
 
     const currentFragments = slides[currentSlideIndex] || [];
+
+    /* Bộ phát dựng một lần cho cả trang: chỉ một tiếng vang lên tại một thời điểm. */
+    useEffect(() => {
+        boPhat.current = new BoPhatGiong();
+        try { setBatTieng(localStorage.getItem('giong_bai_giang_tat') !== '1'); } catch { /* bỏ */ }
+        return () => boPhat.current?.dung();
+    }, []);
+
+    useEffect(() => {
+        if (!moduleId) return;
+        taiKichBan(moduleId).then(kb => {
+            setKichBanGiong(kb);
+            if (kb?.nhip) boPhat.current?.datNhip(kb.nhip);
+        });
+    }, [moduleId]);
+
+    const giongTheoKhoa = useMemo(() => traTheoKhoa(kichBanGiong), [kichBanGiong]);
+    const doanDangO = giongTheoKhoa.get(khoaDoan(currentSlideIndex, currentFragmentIndex));
+
+    /* Vào slide/ý nào thì đọc đoạn ấy. Trò chơi, bảng gọi tên, sân khấu vinh danh đang mở
+       thì im - mấy màn đó có tiếng riêng, chồng lên nhau là không nghe ra gì. */
+    useEffect(() => {
+        const may = boPhat.current;
+        if (!may) return;
+        if (!batTieng || moTroChoi || moGoiTen || moSanKhau || !doanDangO?.mp3) { may.dung(); return; }
+        const soManh = (slides[currentSlideIndex] || []).length;
+        const manhNay = currentFragmentIndex;
+        may.onXong = () => {
+            /* Hiện theo lời: đọc xong ý này thì hiện ý kế tiếp TRONG CÙNG SLIDE. Không tự
+               sang slide mới - chuyển slide vẫn là quyền của thầy. */
+            if (manhNay < soManh - 1) setCurrentFragmentIndex(i => (i === manhNay ? i + 1 : i));
+        };
+        may.phat(urlTep(moduleId!, doanDangO.mp3!)).then(ok => setChanTuPhat(!ok));
+        return () => may.dung();
+    }, [doanDangO, batTieng, moTroChoi, moGoiTen, moSanKhau, currentSlideIndex, currentFragmentIndex, slides, moduleId]);
+
+    const doiTieng = useCallback((bat?: boolean) => {
+        setBatTieng(cu => {
+            const moi = bat === undefined ? !cu : bat;
+            try { localStorage.setItem('giong_bai_giang_tat', moi ? '0' : '1'); } catch { /* bỏ */ }
+            if (!moi) boPhat.current?.dung();
+            return moi;
+        });
+        setChanTuPhat(false);
+    }, []);
+
+    const docLai = useCallback(() => {
+        if (!doanDangO?.mp3 || !moduleId) return;
+        setChanTuPhat(false);
+        boPhat.current?.phat(urlTep(moduleId, doanDangO.mp3)).then(ok => setChanTuPhat(!ok));
+    }, [doanDangO, moduleId]);
 
     const goNext = useCallback(() => {
         const frags = slides[currentSlideIndex] || [];
@@ -406,6 +468,10 @@ export default function PresentationPage() {
                 case 'dung-gio':
                     setMoGioTuXa(false);
                     setLenhChoGio(v => ({ viec: 'dung-gio', dem: (v?.dem || 0) + 1, luc: Date.now() })); break;
+                /* Giọng đọc bài giảng - thầy đứng giữa lớp tắt tiếng hoặc cho đọc lại. */
+                case 'am':
+                    if (l.hanh === 'doc-lai') docLai(); else doiTieng(l.hanh === 'bat');
+                    break;
                 /* Cuộn phần đang chiếu - lời giải dài hơn một màn thì đuôi bị khuất, mà
                    thầy cô đang đứng giữa lớp không với tới chuột máy chiếu. */
                 case 'cuon': {
@@ -579,6 +645,18 @@ export default function PresentationPage() {
                 </div>
             )}
 
+            {/* Trình duyệt chặn tiếng tự phát cho tới khi người dùng chạm vào trang. Bày
+                nút một lần, bấm là mở khoá cho cả buổi. */}
+            {chanTuPhat && batTieng && (
+                <button
+                    onClick={docLai}
+                    className="absolute bottom-24 left-1/2 -translate-x-1/2 z-[60] flex items-center gap-2
+                               bg-amber-400 text-amber-950 font-black px-5 py-3 rounded-full shadow-2xl animate-pulse"
+                >
+                    <Volume2 className="w-5 h-5" /> Bấm để bật tiếng giảng
+                </button>
+            )}
+
             {/* Thanh điều khiển trên - tự ẩn */}
             <div className="absolute top-0 left-0 right-0 px-6 py-4 flex justify-between items-center z-50
                             opacity-0 hover:opacity-100 focus-within:opacity-100 transition-opacity duration-300
@@ -590,6 +668,27 @@ export default function PresentationPage() {
                     <h1 className="font-bold text-lg text-white/90 truncate">{moduleData.title}</h1>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
+                    {/* Giọng đọc: chỉ hiện khi bài đã thu, khỏi bày nút vô dụng cho bài chưa có. */}
+                    {kichBanGiong && kichBanGiong.doan.some(d => d.mp3) && (
+                        <div className="flex items-center gap-1">
+                            <button
+                                onClick={() => doiTieng()}
+                                className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold transition-colors border ${batTieng
+                                    ? 'bg-emerald-500/20 text-emerald-200 border-emerald-400/40'
+                                    : 'bg-white/5 text-white/60 border-white/10'}`}
+                                title="Bật/tắt giọng đọc bài giảng"
+                            >
+                                {batTieng ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+                                Giọng đọc: {batTieng ? 'BẬT' : 'TẮT'}
+                            </button>
+                            {batTieng && doanDangO?.mp3 && (
+                                <button onClick={docLai} title="Đọc lại ý này"
+                                    className="p-2 rounded-full bg-white/10 hover:bg-white/20 text-white/80">
+                                    <RotateCcw className="w-4 h-4" />
+                                </button>
+                            )}
+                        </div>
+                    )}
                     <button
                         onClick={() => setAutoFitEnabled(v => !v)}
                         className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-bold transition-colors border ${autoFitEnabled

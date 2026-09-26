@@ -4,7 +4,8 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { createPortal } from "react-dom";
-import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight, ChevronDown, X } from "lucide-react";
+import { BoPhatGiong, khoaTheoTrangHocSinh, taiKichBan, traTheoKhoa, urlTep, type KichBanGiong } from "@/utils/giongBaiGiang";
+import { Volume2, Pause, Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight, ChevronDown, X } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -421,7 +422,7 @@ const InteractiveQuiz = ({ data, onPass }: { data: any, onPass: () => void }) =>
 };
 
 // --- RENDER BÀI GIẢNG MARKDOWN DẠNG SÁCH LẬT (FLIPBOOK) ---
-const InteractiveFlipbook = ({ content }: { content: string }) => {
+const InteractiveFlipbook = ({ content, moduleId }: { content: string; moduleId?: string }) => {
   const pages = useMemo(() => {
      if (!content) return [];
      // Tách trang bằng ---
@@ -430,6 +431,52 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
 
   const [currentPage, setCurrentPage] = useState(0);
   const [passedQuizzes, setPassedQuizzes] = useState<Record<string, boolean>>({});
+
+  /* ─── NGHE GIẢNG ───────────────────────────────────────────────────────────────
+     Bài nào thầy cô đã thu giọng (trang "Thu giọng bài giảng") thì em bấm một nút là
+     nghe hết trang, như đang ngồi trong lớp. Bài chưa thu thì không có nút nào thêm. */
+  const [kichBan, setKichBan] = useState<KichBanGiong | null>(null);
+  const [dangNghe, setDangNghe] = useState(false);
+  const boPhat = useRef<BoPhatGiong | null>(null);
+  const hangDoi = useRef<string[]>([]);
+
+  useEffect(() => {
+    boPhat.current = new BoPhatGiong();
+    return () => boPhat.current?.dung();
+  }, []);
+
+  useEffect(() => {
+    if (!moduleId) { setKichBan(null); return; }
+    taiKichBan(moduleId).then(kb => {
+      setKichBan(kb);
+      if (kb?.nhip) boPhat.current?.datNhip(kb.nhip);
+    });
+  }, [moduleId]);
+
+  const khoaTrang = useMemo(() => khoaTheoTrangHocSinh(content), [content]);
+  const giong = useMemo(() => traTheoKhoa(kichBan), [kichBan]);
+  const khoaTrangNay = (khoaTrang[currentPage] || []).filter(k => giong.get(k)?.mp3);
+
+  /* Chuyển trang hay đóng bài thì tắt tiếng ngay - không để giọng trang trước đọc chồng. */
+  const dungNghe = () => { hangDoi.current = []; boPhat.current?.dung(); setDangNghe(false); };
+  useEffect(() => { dungNghe(); }, [currentPage, content]);
+
+  const phatTiep = async () => {
+    const k = hangDoi.current.shift();
+    if (!k || !moduleId) { setDangNghe(false); return; }
+    const d = giong.get(k);
+    const may = boPhat.current!;
+    may.onXong = () => { phatTiep(); };
+    const ok = await may.phat(urlTep(moduleId, d!.mp3!));
+    if (!ok) { setDangNghe(false); alert('Máy chưa cho phát tiếng. Em bấm lại lần nữa nhé.'); }
+  };
+
+  const bamNghe = () => {
+    if (dangNghe) { dungNghe(); return; }
+    hangDoi.current = [...khoaTrangNay];
+    setDangNghe(true);
+    phatTiep();
+  };
 
   // Reset khi nội dung thay đổi
   useEffect(() => {
@@ -486,6 +533,16 @@ const InteractiveFlipbook = ({ content }: { content: string }) => {
   // Từ tablet trở lên mới dùng lại kiểu thẻ nổi như cũ.
   return (
     <div className="flex flex-col min-h-[50vh] bg-white rounded-2xl sm:rounded-[2rem] border border-slate-200 sm:border-2 shadow-sm sm:shadow-[10px_10px_0px_0px_rgba(203,213,225,0.4)] px-4 py-6 sm:p-10 md:p-12">
+      {khoaTrangNay.length > 0 && (
+        <button
+          onClick={bamNghe}
+          className={`self-start mb-5 flex items-center gap-2 px-4 py-2.5 rounded-xl font-black text-[15px] transition-colors
+                      ${dangNghe ? 'bg-indigo-600 text-white' : 'bg-indigo-50 text-indigo-700 border border-indigo-200 hover:bg-indigo-100'}`}
+        >
+          {dangNghe ? <Pause className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+          {dangNghe ? 'Đang giảng… bấm để dừng' : 'Nghe thầy giảng trang này'}
+        </button>
+      )}
       <div className="flex-1">
         {parts.map((p, idx) => {
            if (p.type === 'md') {
@@ -873,7 +930,7 @@ export default function StudentLessonPage() {
                   // điểm, bài làm và trạng thái "đã nộp" của đề trước còn nguyên ở đề sau.
                   <AzotaExamUI key={activeModule.id} content={activeModule.content_markdown || ""} title={activeModule.title} lessonId={lesson.id} moduleId={activeModule.id} grade={lesson.lopKhoa} />
                ) : (
-                  <InteractiveFlipbook content={activeModule.content_markdown || ""} />
+                  <InteractiveFlipbook content={activeModule.content_markdown || ""} moduleId={activeModule.id} />
                )}
             </div>
          )}

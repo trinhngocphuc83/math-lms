@@ -20,7 +20,7 @@ import {
   ChevronUp,
   ChevronDown,
   X,
-  Menu, Smartphone, ClipboardList, ClipboardCheck, ScanLine, BookOpenText } from "lucide-react";
+  Menu, Smartphone, ClipboardList, ClipboardCheck, ScanLine, BookOpenText, Mic } from "lucide-react";
 import { createClient } from "@/utils/supabase/client";
 
 export default function AdminLayout({
@@ -113,6 +113,7 @@ export default function AdminLayout({
         { name: "Sổ Tay Công Thức", href: "/admin/handbook", icon: Library },
         { name: "Soạn bài bằng AI", href: "/admin/lessons/editor", icon: Sparkles },
         { name: "Ôn tập & Kiểm tra", href: "/admin/on-tap", icon: ClipboardList },
+        { name: "Thu giọng bài giảng", href: "/admin/thu-giong", icon: Mic },
         { name: "Điều khiển trình chiếu", href: "/admin/dieu-khien", icon: Smartphone },
         { name: "Lớp học (Classes)", href: "/admin/classes", icon: Users },
         { name: "Ngân hàng Câu hỏi", href: "/admin/questions", icon: FileEdit },
