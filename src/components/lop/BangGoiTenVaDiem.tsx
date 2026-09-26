@@ -25,6 +25,8 @@ import { NhacNen } from "@/utils/amThanhSanKhau";
 
 const NHO_LOP = 'lop-goi-ten-lan-truoc';
 const NHO_BEN = 'ben-bang-goi-ten';
+/* Nhớ công tắc "cộng tên nào thì tên ấy rời vòng quay" - xem chỗ dùng bên dưới. */
+const NHO_LIEN_THONG = 'goi-ten-lien-thong';
 
 export default function BangGoiTenVaDiem({
   isOpen, onClose, lopGoiY, lessonId, lenhTuXa, onDoiTrangThai, benCanh, onDoiBen,
@@ -98,6 +100,22 @@ export default function BangGoiTenVaDiem({
      nhau; nay Thầy cô tự chọn, mặc định vẫn 1 để thao tác nhanh vẫn như cũ. */
   const [diemChon, setDiemChon] = React.useState(1);
   const [vuaCong, setVuaCong] = React.useState('');
+  /*
+   * CỘNG CHO EM XUNG PHONG THÌ EM ẤY CŨNG RỜI VÒNG QUAY.
+   *
+   * Trước đây hai đường gọi tên KHÔNG nối nhau: bấm QUAY thì em trúng bị gạch khỏi vòng,
+   * còn chọn tên ở ô bên dưới thì chỉ cộng điểm - em vẫn nằm trong vòng nên lát sau quay
+   * lại trúng chính em đó, mà thầy cô cũng có thể gọi đi gọi lại một em trong cùng một
+   * vòng mà không hay. Đo trên sổ lớp ngày 26/9/2026: 305/400 lượt cộng điểm gần nhất
+   * không kèm lượt gọi nào, 93 lần một em được cộng nhiều lần trong cùng một ngày.
+   *
+   * Nay mặc định NỐI: cộng cho em nào thì ghi luôn lượt gọi của em đó. Tắt công tắc khi
+   * chỉ muốn thưởng thêm mà không tính là đã gọi (em phát biểu góp thêm, em giúp bạn...).
+   */
+  const [lienThong, setLienThong] = React.useState(true);
+  React.useEffect(() => {
+    setLienThong(localStorage.getItem(NHO_LIEN_THONG) !== '0');
+  }, []);
 
   /* ------------------------------------------------------------------ nạp lớp */
   React.useEffect(() => {
@@ -146,6 +164,19 @@ export default function BangGoiTenVaDiem({
     return () => document.removeEventListener('keydown', phim);
   }, [isOpen, onClose]);
 
+
+  /*
+   * Gọi hết lớp thì tự sang VÒNG MỚI ngay, không phải đóng bảng mở lại.
+   *
+   * Máy chủ vốn đã biết: hết người trong vòng thì tăng số vòng và đưa cả lớp vào lại
+   * (layTrangThaiQuay). Nhưng màn hình chỉ gạch tên tại chỗ, nên trước đây gọi tới em
+   * cuối cùng là bảng đứng ở "còn 0/17", bấm QUAY không ra ai. Nay thấy sạch vòng thì
+   * đọc lại trạng thái từ sổ - áp cho cả hai đường: quay trúng và cộng cho em xung phong.
+   */
+  React.useEffect(() => {
+    if (!isOpen || dangTai || dangQuay) return;
+    if (trangThai && trangThai.caLop.length > 0 && trangThai.conLai.length === 0) napLai();
+  }, [isOpen, dangTai, dangQuay, trangThai, napLai]);
 
   /** Những em thật sự được đưa vào vòng quay lúc này. */
   const dsQuay: HocSinh[] = (trangThai?.conLai || []).filter(h => !vangHomNay.has(h.id));
@@ -278,11 +309,21 @@ export default function BangGoiTenVaDiem({
       }, lessonId);
       /* Hiện TỔNG đọc lại từ sổ, không phải con số màn hình tự cộng: cộng mà không vào sổ
          thì tổng đứng yên, Thầy cô thấy ngay chứ không phải mở Sân khấu vinh danh mới biết. */
+      const roiVong = lienThong && !!trangThai?.conLai.some(h => h.id === hs.id);
       setVuaCong(duoc
-        ? `${diem > 0 ? '+' : ''}${diem} cho ${hs.ten} — tháng này ${tong} điểm`
+        ? `${diem > 0 ? '+' : ''}${diem} cho ${hs.ten} — tháng này ${tong} điểm${roiVong ? ' · đã rời vòng quay' : ''}`
         : 'Tháng này đã chốt, không cộng thêm được.');
       /* Nói ra cho cả lớp nghe, không phải chỉ mình thầy cô thấy con số nhảy. */
       if (duoc) noiCongDiem(hs.id, hs.ten, diem).catch(() => { /* im tiếng thì thôi */ });
+
+      /* Gọi tên rồi thì gạch khỏi vòng - trừ khi thầy cô tắt công tắc. Em đã ở ngoài vòng
+         (vừa quay trúng, hoặc vừa được cộng) thì thôi, không ghi lượt thêm lần nữa. */
+      if (duoc && lienThong && trangThai && trangThai.conLai.some(h => h.id === hs.id)) {
+        setTrangThai(t => t ? { ...t, conLai: t.conLai.filter(h => h.id !== hs.id) } : t);
+        ghiDaGoi(lopId, hs.id, trangThai.vong, lessonId)
+          .catch(() => setTrangThai(t => t && !t.conLai.some(h => h.id === hs.id)
+            ? { ...t, conLai: [...t.conLai, hs] } : t));
+      }
     } catch (e: any) {
       setVuaCong(e?.message === LOI_CHUA_TAO_BANG ? 'Chưa tạo bảng điểm.' : 'Không cộng được điểm.');
     }
@@ -519,6 +560,15 @@ export default function BangGoiTenVaDiem({
                       : <><Download className="w-3.5 h-3.5" /> Tải sẵn giọng</>}
                   </button>
                 </div>
+                {/* Công tắc nối hai đường gọi tên. Nhớ lựa chọn nên thầy cô đặt một lần
+                    là cả buổi, cả các buổi sau, đều theo ý ấy. */}
+                <label className="flex items-center gap-1.5 mb-2 cursor-pointer select-none w-fit"
+                       title="Bật: cộng cho em nào thì em đó cũng rời vòng quay như vừa được QUAY trúng. Tắt: chỉ cộng điểm, em vẫn nằm trong vòng.">
+                  <input type="checkbox" checked={lienThong}
+                         onChange={e => { setLienThong(e.target.checked); localStorage.setItem(NHO_LIEN_THONG, e.target.checked ? '1' : '0'); }}
+                         className="w-4 h-4 rounded border-slate-300 text-violet-600 focus:ring-violet-400" />
+                  <span className="text-[12px] font-bold text-slate-600">Cộng xong thì rời vòng quay</span>
+                </label>
                 <div className="flex items-center gap-2">
                   <select value={emKhac} onChange={e => setEmKhac(e.target.value)}
                           className="flex-1 min-w-0 px-3 py-2 rounded-xl border border-slate-200 text-[13px] outline-none focus:border-violet-400">
