@@ -75,12 +75,26 @@ export function nanBangLatex(raw: string | null | undefined): KetQuaNanBang {
     const sau = s.slice(k.cuoi).replace(/^[ \t]+/, '');
     const themTruoc = truoc && !truoc.endsWith('\n') ? '\n\n' : '';
     const themSau = sau && !sau.startsWith('\n') ? '\n\n' : '';
-    const boc = `$$${khoi}$$`;
+    /* Hai dấu $$ phải NẰM TRÊN DÒNG RIÊNG. Viết liền "$$\begin{array}" rồi xuống dòng thì
+       bộ dựng markdown cắt công thức theo từng dòng (app bật remark-breaks), KaTeX chỉ
+       nhận được khúc giữa và báo "\hline valid only within array environment" - đo bằng
+       chính chuỗi plugin của app, xem scratch/thu-remark.mjs. */
+    const boc = `$$\n${khoi}\n$$`;
 
     s = truoc + themTruoc + boc + themSau + sau;
     tu = truoc.length + themTruoc.length + boc.length;
     soBang++;
   }
+
+  /* Bảng ĐÃ bọc $$ nhưng viết liền "$$\begin{array}…" thì vẫn hỏng: bộ dựng markdown cắt
+     công thức theo từng dòng nên KaTeX chỉ nhận được khúc giữa. Đưa hai dấu $$ ra dòng
+     riêng - áp cho cả bảng do người gõ tay lẫn bảng máy đã nắn theo khuôn cũ. */
+  s = s.replace(/\$\$([\s\S]*?\\begin\{array\}[\s\S]*?\\end\{array\}[\s\S]*?)\$\$/g, (nguyen, trong) => {
+    const giua = String(trong).trim();
+    if (!giua.includes('\n')) return nguyen;           // một dòng phẳng thì vốn đã chạy được
+    const chuan = `$$\n${giua}\n$$`;
+    return chuan === nguyen ? nguyen : chuan;
+  });
 
   return { text: s, daSua: s !== goc, soBang };
 }
