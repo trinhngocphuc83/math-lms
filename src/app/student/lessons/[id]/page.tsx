@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
+import { createPortal } from "react-dom";
 import { Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight, ChevronDown, X } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
@@ -620,9 +621,13 @@ export default function StudentLessonPage() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [chromeHidden, setChromeHidden] = useState(false);
   const [moChonDe, setMoChonDe] = useState(false);
+  /* Toạ độ nút chọn đề, để vẽ menu ở lớp trên cùng của trang (xem chú thích chỗ menu). */
+  const [viTriChonDe, setViTriChonDe] = useState<{ top: number; right: number } | null>(null);
   /** Đang mở khung xem video sửa đề của đề hiện tại. */
   const [xemVideoSua, setXemVideoSua] = useState(false);
   const hopChonDe = useRef<HTMLDivElement>(null);
+  /** Khung menu vẽ ngoài body - phải tính cả nó khi soát 'bấm ra ngoài'. */
+  const menuChonDe = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
@@ -641,14 +646,28 @@ export default function StudentLessonPage() {
     return () => el.removeEventListener('scroll', onScroll);
   }, [loading]);
 
-  // Đóng menu chọn đề khi bấm ra ngoài - menu đè lên đề bài thì học sinh không đọc được
+  /* Đóng menu chọn đề khi bấm ra ngoài - menu đè lên đề bài thì học sinh không đọc được.
+     Dùng pointerdown chứ không mousedown: trên điện thoại chuỗi sự kiện chuột chỉ được
+     giả lập sau khi ngón tay nhấc lên, nên bấm ra ngoài phải chờ mới đóng.
+     Cuộn trang hay xoay máy cũng đóng: menu vẽ theo toạ độ cố định (xem chỗ vẽ menu) nên
+     không tự bám theo nút khi trang trượt đi. */
   useEffect(() => {
     if (!moChonDe) return;
-    const bamNgoai = (e: MouseEvent) => {
-      if (hopChonDe.current && !hopChonDe.current.contains(e.target as Node)) setMoChonDe(false);
+    const bamNgoai = (e: Event) => {
+      const t = e.target as Node;
+      if (hopChonDe.current?.contains(t) || menuChonDe.current?.contains(t)) return;
+      setMoChonDe(false);
     };
-    document.addEventListener('mousedown', bamNgoai);
-    return () => document.removeEventListener('mousedown', bamNgoai);
+    const dong = () => setMoChonDe(false);
+    document.addEventListener('pointerdown', bamNgoai);
+    window.addEventListener('resize', dong);
+    scrollRef.current?.addEventListener('scroll', dong, { passive: true });
+    const el = scrollRef.current;
+    return () => {
+      document.removeEventListener('pointerdown', bamNgoai);
+      window.removeEventListener('resize', dong);
+      el?.removeEventListener('scroll', dong);
+    };
   }, [moChonDe]);
 
   if (loading) return <div className="flex justify-center items-center h-screen bg-gray-50"><Loader2 className="w-10 h-10 animate-spin text-indigo-600" /></div>;
@@ -739,7 +758,11 @@ export default function StudentLessonPage() {
                     {isPracticeTabActive && practices.length > 1 && (
                        <div className="relative shrink-0 lg:hidden" ref={hopChonDe}>
                           <button
-                             onClick={() => setMoChonDe(v => !v)}
+                             onClick={e => {
+                                const r = (e.currentTarget as HTMLElement).getBoundingClientRect();
+                                setViTriChonDe({ top: r.bottom + 6, right: Math.max(8, window.innerWidth - r.right) });
+                                setMoChonDe(v => !v);
+                             }}
                              title={activeModule?.title}
                              className="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-bold bg-orange-50 border border-orange-200 text-orange-700 hover:bg-orange-100 transition-all max-w-[150px]"
                           >
@@ -749,18 +772,33 @@ export default function StudentLessonPage() {
                              </span>
                              <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform ${moChonDe ? 'rotate-180' : ''}`} />
                           </button>
-                          {moChonDe && (
-                             <div className="absolute right-0 top-full mt-1.5 w-64 max-h-[60vh] overflow-y-auto bg-white rounded-xl shadow-xl border border-gray-200 py-1 z-50">
+                          {/*
+                            * Menu vẽ THẲNG RA BODY, không nằm trong thanh tab.
+                            *
+                            * Thanh tab cuộn ngang (overflow-x-auto). Theo CSS, đặt cuộn cho
+                            * một trục thì trục kia cũng thôi "tràn ra ngoài" - nên menu bung
+                            * xuống dưới bị cắt mất sạch: học sinh bấm mà không thấy gì,
+                            * tưởng nút hỏng (báo ngày 26/9/2026, chỉ dính trên điện thoại vì
+                            * máy tính bày thẳng các đề ra hàng, không dùng menu này).
+                            */}
+                          {moChonDe && viTriChonDe && typeof document !== 'undefined' && createPortal(
+                             <div
+                                ref={menuChonDe}
+                                style={{ top: viTriChonDe.top, right: viTriChonDe.right }}
+                                className="fixed w-64 max-h-[60vh] overflow-y-auto bg-white rounded-xl shadow-2xl border border-gray-200 py-1 z-[120]"
+                             >
+                                <div className="px-3 pt-1 pb-1.5 text-[10px] font-black uppercase tracking-wider text-gray-400">Chọn đề luyện tập</div>
                                 {practices.map((pr: any) => (
                                    <button
                                       key={pr.id}
                                       onClick={() => { setActiveModuleId(pr.id); setMoChonDe(false); }}
-                                      className={`w-full text-left px-3 py-2 text-[13px] font-bold transition-colors ${activeModuleId === pr.id ? 'bg-orange-50 text-orange-700' : 'text-gray-600 hover:bg-gray-50'}`}
+                                      className={`w-full text-left px-3 py-2.5 text-[13px] font-bold transition-colors ${activeModuleId === pr.id ? 'bg-orange-50 text-orange-700' : 'text-gray-600 hover:bg-gray-50'}`}
                                    >
                                       {pr.title}
                                    </button>
                                 ))}
-                             </div>
+                             </div>,
+                             document.body,
                           )}
                        </div>
                     )}
