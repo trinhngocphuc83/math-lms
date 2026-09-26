@@ -245,6 +245,10 @@ J1. Công thức viết LaTeX CHUẨN, MỘT dấu gạch chéo: "$\\frac{1}{2}$
     Chỉ giữ hai gạch chéo ở đúng một chỗ: xuống dòng thật bên trong \\begin{cases},
     \\begin{array}, \\begin{aligned}.
 J2. TUYỆT ĐỐI KHÔNG xuống dòng thật bên trong một chuỗi. Cần xuống dòng thì viết \\\\n.
+J2b. BẢNG SỐ LIỆU (bảng tần số, bảng giá trị, bảng biến thiên) PHẢI bọc trong cặp $$, ví dụ
+    "$$\\\\begin{array}{|c|c|c|} \\\\hline \\\\text{Điểm} & 5 & 6 \\\\\\\\ \\\\hline \\\\text{Tần số} & 8 & 13 \\\\\\\\ \\\\hline \\\\end{array}$$".
+    Không bọc $$ thì bảng in ra thành chữ LaTeX thô giữa đề bài. Dấu xuống dòng giữa các
+    hàng của bảng viết BỐN gạch chéo trong JSON để sau khi đọc còn lại đúng hai gạch.
 J3. KHÔNG để dấu phẩy thừa trước dấu ] hoặc }.
 J4. KHÔNG viết thêm bất kỳ lời dẫn, lời chào hay giải thích nào ngoài mảng JSON.
 J5. Mỗi chuỗi phải mở và đóng bằng dấu nháy kép thẳng ("), không dùng nháy cong.

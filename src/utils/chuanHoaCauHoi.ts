@@ -10,6 +10,8 @@
 //
 // Mọi chỗ sửa đều kèm câu chữ cảnh báo để thầy cô soát lại, KHÔNG sửa lặng lẽ.
 
+
+import { nanBangLatex } from './nanBangLatex';
 /** Ký tự tối đa học sinh tô được ở phần Trả lời ngắn (Barem 2025). */
 export const SO_KY_TU_TRA_LOI_NGAN = 4;
 
@@ -361,6 +363,16 @@ export function chuanHoaCauHoi(q: {
     content = kq.content;
     correct = kq.correct_answer;
     canhBao.push(...kq.canhBao);
+  }
+
+  /* BẢNG SỐ LIỆU: bộ bóc câu hay trả về egin{array} để trần, KaTeX không dựng được nên
+     in ra nguyên chữ LaTeX giữa đề bài. Bọc lại vào $$...$$ và trả dấu xuống dòng cho nó. */
+  {
+    let soBang = 0;
+    const nan = (x: string) => { const k = nanBangLatex(x); if (k.daSua) soBang += k.soBang || 1; return k.text; };
+    content = nan(content);
+    [a, b, c, d] = [nan(a), nan(b), nan(c), nan(d)];
+    if (soBang) canhBao.push(`Có ${soBang} bảng số liệu viết LaTeX để trần nên máy đã bọc lại cho dựng thành bảng. Thầy cô xem lại bảng có đúng cột không.`);
   }
 
   if (q.question_type === 'TL') {

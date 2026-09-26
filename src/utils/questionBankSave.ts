@@ -6,6 +6,7 @@
 import type { QuestionData } from "./aiQuestionScan";
 import { toBankType, toDifficultyCode } from "./questionTypes";
 import { docDapAnDungSai, dapAnDungSaiDungKhuon } from "./chuanHoaCauHoi";
+import { nanBangLatex } from "./nanBangLatex";
 import { nanTenPhanLoai } from "./deThi";
 import { tachChuKhoiCongThuc } from "./tachChuKhoiCongThuc";
 import { doiVeTenChuan, doiVeTenDangChuan} from "./phanLoaiCauHoi";
@@ -268,13 +269,16 @@ export async function saveQuestionsToBank(supabase: any, questionsGoc: QuestionD
       // Chốt về mã chuẩn ngay trước khi ghi, tránh lọt nhãn chữ vào CSDL làm hỏng bộ lọc
       question_type: loai,
       difficulty: toDifficultyCode(q.difficulty) ?? '1',
-      content: q.content,
-      option_a: q.option_a,
-      option_b: q.option_b,
-      option_c: q.option_c,
-      option_d: q.option_d,
+      /* Bảng \begin{array} để trần thì KaTeX không dựng được, in ra chữ LaTeX thô giữa đề.
+         Nắn ngay trước khi ghi - đây là cửa chung của MỌI đường đưa câu vào kho, kể cả câu
+         lấy lại từ bản nháp soạn dở (bản nháp giữ nguyên văn AI trả về). */
+      content: nanBangLatex(q.content).text,
+      option_a: nanBangLatex(q.option_a).text,
+      option_b: nanBangLatex(q.option_b).text,
+      option_c: nanBangLatex(q.option_c).text,
+      option_d: nanBangLatex(q.option_d).text,
       correct_answer: nan.correct,
-      explanation: q.explanation,
+      explanation: nanBangLatex(q.explanation).text,
       image_url: q.image_url,
       usage_count: 0,
     };
