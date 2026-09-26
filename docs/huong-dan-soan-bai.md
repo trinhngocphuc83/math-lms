@@ -750,3 +750,49 @@ tạm. Đáp án đúng vẫn hiện sẵn trên máy thầy cô (viền xanh).
   thưởng theo nguồn *"trò chơi"* ở trang lớp.
 - **Chơi thử không ghi điểm thật**: chọn một lớp thử, hoặc chơi rồi xoá các dòng nguồn
   *"trò chơi"* hôm đó trong sổ điểm thưởng.
+
+---
+
+## 17. Giọng đọc AI cho bài giảng — thu như thu cho slide PowerPoint
+
+Bài giảng trong app nay **đọc thành tiếng được**: trên lớp chiếu lên là tự giảng, học sinh
+mở lại ở nhà bấm một nút là nghe. Giọng thu trên **ElevenLabs** rồi bỏ vào app, đúng lối đã
+làm với bài PowerPoint.
+
+### Làm ở đâu
+
+Thanh bên → **Thu giọng bài giảng** (`/admin/thu-giong`). Chọn **khoá học → bài → mục**
+(mặc định vào mục bài giảng). Máy cắt bài thành các **mảnh đọc được**: mỗi slide một mảnh,
+slide nào có ý hiện dần (`***`) thì mỗi ý một mảnh riêng. Câu hỏi tương tác **không đọc** —
+để học sinh tự nghĩ.
+
+### Bốn bước
+
+1. **✨ AI soạn lời còn trống** — máy đọc nội dung từng mảnh rồi viết 2–3 câu lời giảng
+   (bám chữ trên slide, không đọc công thức theo ký hiệu mà diễn ý, số viết bằng chữ).
+   Máy **không bao giờ đè lên lời thầy đã sửa**. Đọc lại, sửa từng ô, bấm **Lưu lời giảng**.
+   Mảnh nào để trống lời thì mảnh đó lặng.
+2. **📋 Chép hàng đợi** — lấy danh sách đoạn chưa thu kèm lời. Trang ghi sẵn **tổng ký tự và
+   số lượt ElevenLabs** (lượt ≈ 1,5 lần số chữ; gói miễn phí 10.000 lượt/tháng ≈ 2–3 bài).
+   Lời dài quá 260 ký tự được tô vàng nhắc rút ngắn.
+3. **Tạo giọng** trên elevenlabs.io: chọn giọng → model **Eleven v3** → dán lời từng đoạn →
+   Generate → tải mp3. Thu **một hai đoạn trước để nghe thử giọng**, ưng rồi mới thu hết.
+4. **⬆ Tải mp3** — kéo cả nắm tệp vừa tải vào, máy rải theo **đúng thứ tự hàng đợi** và tự
+   đo thời lượng; hoặc bấm ⬆ ở từng đoạn để tải riêng. Nghe thử bằng nút ▶ ngay tại dòng.
+
+### Trên lớp và ở nhà
+
+- **Máy chiếu**: vào slide là tự đọc. Slide có nhiều ý thì **đọc xong ý nào hiện ý ấy** —
+  thầy không phải bấm. Nút **🔊 Giọng đọc: BẬT/TẮT** ở thanh trên, cạnh đó là nút đọc lại.
+  Điện thoại điều khiển cũng có hai nút **Giọng: BẬT/TẮT** và **Đọc lại ý này**.
+- Máy chưa cho phát tiếng (chưa chạm vào màn hình lần nào) thì hiện nút vàng
+  **"Bấm để bật tiếng giảng"** — bấm một lần là xong cả buổi.
+- **Học sinh**: mỗi trang bài giảng có nút **Nghe thầy giảng trang này**, nghe hết trang rồi
+  tự dừng; chuyển trang thì tiếng tắt theo.
+
+### Sửa bài sau khi đã thu
+
+Sửa chữ trên slide thì đoạn ấy hiện **⚠ chữ đã đổi** ở trang thu giọng (máy so băm nội dung),
+thầy sửa lời rồi thu lại đúng đoạn đó — các đoạn khác giữ nguyên. Bên trang học sinh, mảnh
+nào chữ đã đổi thì **lặng** chứ không đọc nhầm sang ý khác.
+
