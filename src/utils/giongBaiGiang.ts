@@ -185,7 +185,12 @@ export class BoPhatGiong {
       a.preload = 'auto';
       a.onended = () => { const f = this.onXong; this.am = null; f?.(); };
       this.am = a;
-      await a.play();
+      /* Cửa sổ đang ở nền thì trình duyệt có khi giữ lời hứa của play() treo mãi - chờ
+         quá 6 giây coi như không phát được, để nơi gọi bày nút mời bật tiếng. */
+      await Promise.race([
+        a.play(),
+        new Promise((_, tuChoi) => setTimeout(() => tuChoi(new Error('play() treo')), 6000)),
+      ]);
       return true;
     } catch {
       /* Trình duyệt chặn phát tự động, hoặc tệp hỏng. */
@@ -202,25 +207,33 @@ export class BoPhatGiong {
   }
 }
 
+/** Tra đoạn đã thu theo BĂM NỘI DUNG - xem chú thích ở manhTheoTrangHocSinh. */
+export function traTheoChuKy(kb: KichBanGiong | null): Map<string, DoanGiong> {
+  const m = new Map<string, DoanGiong>();
+  for (const d of kb?.doan || []) if (d.mp3 && d.chuKy) m.set(d.chuKy, d);
+  return m;
+}
+
 /**
- * Khoá các đoạn giọng của TỪNG TRANG bên màn hình học sinh.
+ * Các mảnh đọc được của TỪNG TRANG bên màn hình học sinh, kèm băm nội dung.
  *
- * Trang học sinh cắt bài theo `---`, còn máy chiếu cắt nhỏ hơn (thêm `##`, `***`, câu hỏi).
- * `tachSlide` xử lý từng phần `---` một cách độc lập, nên chạy nó trên từng phần rồi cộng
- * dồn số slide là ra đúng chỉ số slide của cả bài - hai bên không thể lệch nhau.
+ * Trang học sinh cắt bài theo `---` và hiện bản E-LEARNING, còn kịch bản giọng dựng từ bản
+ * TRÌNH CHIẾU - module nào có hai bản thì hai bản khác nhau, nên khớp theo chỉ số slide là
+ * đọc nhầm sang ý khác. Vì vậy bên này tra giọng theo BĂM NỘI DUNG: mảnh nào chữ giống nhau
+ * thì nghe được, mảnh chỉ có ở bản trình chiếu thì lặng, không bao giờ đọc nhầm.
  */
-export function khoaTheoTrangHocSinh(markdown: string): string[][] {
+export function manhTheoTrangHocSinh(markdown: string): { khoa: string; chuKy: string }[][] {
   const trang = String(markdown || '').split(/(?:\r?\n|^)---(?:\r?\n|$)/).filter(p => p.trim() !== '');
-  const ra: string[][] = [];
+  const ra: { khoa: string; chuKy: string }[][] = [];
   let daQua = 0;
   for (const t of trang) {
     const sl = tachSlide(t);
-    const khoas: string[] = [];
+    const ds: { khoa: string; chuKy: string }[] = [];
     sl.forEach((manhs, i) => {
       if (laSlideCauHoi(manhs)) return;
-      manhs.forEach((m, k) => { if (trichNoiDung(m)) khoas.push(khoaDoan(daQua + i, k)); });
+      manhs.forEach((m, k) => { if (trichNoiDung(m)) ds.push({ khoa: khoaDoan(daQua + i, k), chuKy: bam(m) }); });
     });
-    ra.push(khoas);
+    ra.push(ds);
     daQua += sl.length;
   }
   return ra;

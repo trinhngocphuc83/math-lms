@@ -4,7 +4,7 @@ import React, { useEffect, useState, useMemo, useRef } from "react";
 import { useParams } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { createPortal } from "react-dom";
-import { BoPhatGiong, khoaTheoTrangHocSinh, taiKichBan, traTheoKhoa, urlTep, type KichBanGiong } from "@/utils/giongBaiGiang";
+import { BoPhatGiong, manhTheoTrangHocSinh, taiKichBan, traTheoChuKy, traTheoKhoa, urlTep, type KichBanGiong } from "@/utils/giongBaiGiang";
 import { Volume2, Pause, Loader2, ArrowLeft, ArrowRight, CheckCircle2, XCircle, AlertCircle, List, PlayCircle, FileText, Download, ChevronRight, ChevronDown, X } from "lucide-react";
 import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
@@ -453,27 +453,30 @@ const InteractiveFlipbook = ({ content, moduleId }: { content: string; moduleId?
     });
   }, [moduleId]);
 
-  const khoaTrang = useMemo(() => khoaTheoTrangHocSinh(content), [content]);
-  const giong = useMemo(() => traTheoKhoa(kichBan), [kichBan]);
-  const khoaTrangNay = (khoaTrang[currentPage] || []).filter(k => giong.get(k)?.mp3);
+  const manhTrang = useMemo(() => manhTheoTrangHocSinh(content), [content]);
+  const theoChuKy = useMemo(() => traTheoChuKy(kichBan), [kichBan]);
+  const theoKhoa = useMemo(() => traTheoKhoa(kichBan), [kichBan]);
+  /* Khớp theo băm nội dung trước (chắc chắn đúng mảnh), không có mới xét tới khoá. */
+  const mp3TrangNay = (manhTrang[currentPage] || [])
+    .map(m => theoChuKy.get(m.chuKy)?.mp3 || (theoKhoa.get(m.khoa)?.chuKy === m.chuKy ? theoKhoa.get(m.khoa)!.mp3 : ''))
+    .filter(Boolean) as string[];
 
   /* Chuyển trang hay đóng bài thì tắt tiếng ngay - không để giọng trang trước đọc chồng. */
   const dungNghe = () => { hangDoi.current = []; boPhat.current?.dung(); setDangNghe(false); };
   useEffect(() => { dungNghe(); }, [currentPage, content]);
 
   const phatTiep = async () => {
-    const k = hangDoi.current.shift();
-    if (!k || !moduleId) { setDangNghe(false); return; }
-    const d = giong.get(k);
+    const tep = hangDoi.current.shift();
+    if (!tep || !moduleId) { setDangNghe(false); return; }
     const may = boPhat.current!;
     may.onXong = () => { phatTiep(); };
-    const ok = await may.phat(urlTep(moduleId, d!.mp3!));
+    const ok = await may.phat(urlTep(moduleId, tep));
     if (!ok) { setDangNghe(false); alert('Máy chưa cho phát tiếng. Em bấm lại lần nữa nhé.'); }
   };
 
   const bamNghe = () => {
     if (dangNghe) { dungNghe(); return; }
-    hangDoi.current = [...khoaTrangNay];
+    hangDoi.current = [...mp3TrangNay];
     setDangNghe(true);
     phatTiep();
   };
@@ -533,7 +536,7 @@ const InteractiveFlipbook = ({ content, moduleId }: { content: string; moduleId?
   // Từ tablet trở lên mới dùng lại kiểu thẻ nổi như cũ.
   return (
     <div className="flex flex-col min-h-[50vh] bg-white rounded-2xl sm:rounded-[2rem] border border-slate-200 sm:border-2 shadow-sm sm:shadow-[10px_10px_0px_0px_rgba(203,213,225,0.4)] px-4 py-6 sm:p-10 md:p-12">
-      {khoaTrangNay.length > 0 && (
+      {mp3TrangNay.length > 0 && (
         <button
           onClick={bamNghe}
           className={`self-start mb-5 flex items-center gap-2 px-4 py-2.5 rounded-xl font-black text-[15px] transition-colors

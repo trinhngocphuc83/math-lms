@@ -34,7 +34,8 @@ const HE_SO_LUOT = 1.5;
 const LOI_DAN_AI = `Bạn là giáo viên đang giảng bài trên lớp. Viết LỜI GIẢNG để đọc thành tiếng cho từng mảnh slide dưới đây.
 
 LUẬT:
-- Mỗi mảnh 2 đến 4 câu, bám sát chữ trên slide, KHÔNG thêm kiến thức ngoài slide.
+- Mỗi mảnh 2 đến 3 câu, TỐI ĐA 220 ký tự — hạn mức thu giọng tính theo số chữ, viết dài là hết lượt.
+- Bám sát chữ trên slide, KHÔNG thêm kiến thức ngoài slide.
 - Câu ngắn, có nhịp, lôi cuốn, chống buồn ngủ. Mở mỗi mảnh bằng một câu móc ngắn.
 - KHÔNG đọc công thức dài theo ký hiệu — diễn ý bằng lời ("bình phương cạnh huyền bằng tổng bình phương hai cạnh góc vuông").
 - Số và ký hiệu viết bằng chữ để máy đọc đúng.
@@ -397,7 +398,9 @@ export default function ThuGiongPage() {
                       className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-y bg-white focus:border-indigo-400 outline-none"
                     />
                     <div className="flex items-center gap-2 mt-1.5 text-[11px] text-slate-500">
-                      <span>{d.loi.length} ký tự</span>
+                      <span className={d.loi.length > 260 ? 'font-bold text-amber-700' : ''}>
+                        {d.loi.length} ký tự{d.loi.length > 260 ? ' — dài, nên rút cho đỡ tốn lượt' : ''}
+                      </span>
                       {d.loi && <button onClick={() => chepLoi(d.khoa, d.loi)} className="flex items-center gap-1 font-bold text-indigo-600 hover:text-indigo-800">
                         {daChep === d.khoa ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />} chép lời
                       </button>}
